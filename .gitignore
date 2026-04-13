@@ -1,0 +1,16 @@
+# Secret files — never commit these
+.env
+responder.env
+zoom_start_url.txt
+
+# Data files
+leads.db
+leads.log
+reminders.log
+wix_contacts_cache.json
+wix_upload_progress.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo

@@ -1,0 +1,112 @@
+name: Webinar Reminders — 26 April
+
+on:
+  schedule:
+    # Morning reminder — 8:00 AM IST = 2:30 AM UTC
+    - cron: '30 2 26 4 *'
+    # 1 hour before — 5:00 PM IST = 11:30 AM UTC
+    - cron: '30 11 26 4 *'
+    # Starting now — 5:59 PM IST = 12:29 PM UTC
+    - cron: '29 12 26 4 *'
+  workflow_dispatch:
+    inputs:
+      reminder_type:
+        description: 'Reminder type'
+        required: true
+        type: choice
+        options:
+          - morning
+          - hour-before
+          - final
+        default: morning
+      dry_run:
+        description: 'Dry run (no messages sent)'
+        type: boolean
+        default: false
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # ── Restore leads DB ──────────────────────────────────────────────────
+      - name: Restore leads.db
+        uses: actions/cache@v4
+        with:
+          path: leads.db
+          key: leads-db-${{ github.run_id }}
+          restore-keys: leads-db-
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - run: pip install -r requirements.txt
+
+      # ── Write env files ───────────────────────────────────────────────────
+      - name: Write .env
+        run: |
+          cat > .env << 'EOF'
+          META_APP_ID=${{ secrets.META_APP_ID }}
+          META_APP_SECRET=${{ secrets.META_APP_SECRET }}
+          META_ACCESS_TOKEN=${{ secrets.META_ACCESS_TOKEN }}
+          META_AD_ACCOUNT_ID=${{ secrets.META_AD_ACCOUNT_ID }}
+          EOF
+
+      - name: Write responder.env
+        run: |
+          cat > responder.env << 'EOF'
+          META_ACCESS_TOKEN=${{ secrets.META_ACCESS_TOKEN }}
+          META_AD_ACCOUNT_ID=${{ secrets.META_AD_ACCOUNT_ID }}
+          META_PAGE_ID=${{ secrets.META_PAGE_ID }}
+          META_FORM_ID=${{ secrets.META_FORM_ID }}
+          SMTP_HOST=${{ secrets.SMTP_HOST }}
+          SMTP_PORT=${{ secrets.SMTP_PORT }}
+          SMTP_USER=${{ secrets.SMTP_USER }}
+          SMTP_PASS=${{ secrets.SMTP_PASS }}
+          FROM_EMAIL=${{ secrets.FROM_EMAIL }}
+          FROM_NAME=${{ secrets.FROM_NAME }}
+          WA_PROVIDER=${{ secrets.WA_PROVIDER }}
+          AISENSY_API_KEY=${{ secrets.AISENSY_API_KEY }}
+          AISENSY_CAMPAIGN=${{ secrets.AISENSY_CAMPAIGN }}
+          WIX_API_KEY=${{ secrets.WIX_API_KEY }}
+          WIX_SITE_ID=${{ secrets.WIX_SITE_ID }}
+          GOOGLE_SHEET_CSV_URL=${{ secrets.GOOGLE_SHEET_CSV_URL }}
+          WEBINAR_LINK=${{ secrets.WEBINAR_LINK }}
+          AISENSY_REMINDER_CAMP=${{ secrets.AISENSY_REMINDER_CAMP }}
+          AISENSY_FINAL_CAMP=${{ secrets.AISENSY_FINAL_CAMP }}
+          META_WA_PHONE_ID=${{ secrets.META_WA_PHONE_ID }}
+          META_WA_TEMPLATE=${{ secrets.META_WA_TEMPLATE }}
+          EOF
+
+      # ── Determine reminder type from schedule or manual input ─────────────
+      - name: Determine reminder type
+        id: type
+        run: |
+          HOUR=$(date -u +%-H)
+          MIN=$(date -u +%-M)
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "mode=${{ inputs.reminder_type }}" >> $GITHUB_OUTPUT
+            echo "dry=${{ inputs.dry_run }}" >> $GITHUB_OUTPUT
+          elif [ "$HOUR" = "2" ]; then
+            echo "mode=morning" >> $GITHUB_OUTPUT
+            echo "dry=false" >> $GITHUB_OUTPUT
+          elif [ "$HOUR" = "11" ]; then
+            echo "mode=hour-before" >> $GITHUB_OUTPUT
+            echo "dry=false" >> $GITHUB_OUTPUT
+          else
+            echo "mode=final" >> $GITHUB_OUTPUT
+            echo "dry=false" >> $GITHUB_OUTPUT
+          fi
+
+      # ── Send reminders ────────────────────────────────────────────────────
+      - name: Send reminders
+        run: |
+          FLAGS="--${{ steps.type.outputs.mode }}"
+          if [ "${{ steps.type.outputs.dry }}" = "true" ]; then
+            FLAGS="$FLAGS --dry-run"
+          fi
+          python send_reminders.py $FLAGS

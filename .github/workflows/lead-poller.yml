@@ -1,0 +1,73 @@
+name: Lead Poller
+
+on:
+  schedule:
+    # Every 10 minutes (GitHub Actions minimum reliable interval)
+    - cron: '*/10 * * * *'
+  workflow_dispatch:  # allow manual trigger
+
+jobs:
+  poll:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # ── Restore leads DB from previous run ───────────────────────────────
+      - name: Restore leads.db
+        uses: actions/cache@v4
+        with:
+          path: leads.db
+          key: leads-db-${{ github.run_id }}
+          restore-keys: leads-db-
+
+      # ── Set up Python ─────────────────────────────────────────────────────
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - run: pip install -r requirements.txt
+
+      # ── Write .env files from GitHub Secrets ─────────────────────────────
+      - name: Write .env
+        run: |
+          cat > .env << 'EOF'
+          META_APP_ID=${{ secrets.META_APP_ID }}
+          META_APP_SECRET=${{ secrets.META_APP_SECRET }}
+          META_ACCESS_TOKEN=${{ secrets.META_ACCESS_TOKEN }}
+          META_AD_ACCOUNT_ID=${{ secrets.META_AD_ACCOUNT_ID }}
+          EOF
+
+      - name: Write responder.env
+        run: |
+          cat > responder.env << 'EOF'
+          META_ACCESS_TOKEN=${{ secrets.META_ACCESS_TOKEN }}
+          META_AD_ACCOUNT_ID=${{ secrets.META_AD_ACCOUNT_ID }}
+          META_PAGE_ID=${{ secrets.META_PAGE_ID }}
+          META_FORM_ID=${{ secrets.META_FORM_ID }}
+          SMTP_HOST=${{ secrets.SMTP_HOST }}
+          SMTP_PORT=${{ secrets.SMTP_PORT }}
+          SMTP_USER=${{ secrets.SMTP_USER }}
+          SMTP_PASS=${{ secrets.SMTP_PASS }}
+          FROM_EMAIL=${{ secrets.FROM_EMAIL }}
+          FROM_NAME=${{ secrets.FROM_NAME }}
+          WA_PROVIDER=${{ secrets.WA_PROVIDER }}
+          AISENSY_API_KEY=${{ secrets.AISENSY_API_KEY }}
+          AISENSY_CAMPAIGN=${{ secrets.AISENSY_CAMPAIGN }}
+          WIX_API_KEY=${{ secrets.WIX_API_KEY }}
+          WIX_SITE_ID=${{ secrets.WIX_SITE_ID }}
+          GOOGLE_SHEET_CSV_URL=${{ secrets.GOOGLE_SHEET_CSV_URL }}
+          WEBINAR_LINK=${{ secrets.WEBINAR_LINK }}
+          AISENSY_REMINDER_CAMP=${{ secrets.AISENSY_REMINDER_CAMP }}
+          AISENSY_FINAL_CAMP=${{ secrets.AISENSY_FINAL_CAMP }}
+          META_WA_PHONE_ID=${{ secrets.META_WA_PHONE_ID }}
+          META_WA_TEMPLATE=${{ secrets.META_WA_TEMPLATE }}
+          EOF
+
+      # ── Run pollers ───────────────────────────────────────────────────────
+      - name: Poll Meta leads
+        run: python lead_responder.py --once
+
+      - name: Poll Google Form leads
+        run: python google_form_responder.py --once
