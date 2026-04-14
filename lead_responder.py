@@ -351,28 +351,54 @@ def send_whatsapp(lead):
         return False
 
 # ── Wix CRM ───────────────────────────────────────────────────────────────────
-def add_to_wix(lead):
-    """Create a contact in Wix CRM with name, email, phone and source tag."""
-    if not WIX_API_KEY:
-        return False
-
-    name   = lead.get("name", "")
-    parts  = name.split(None, 1)
-    first  = parts[0] if parts else ""
-    last   = parts[1] if len(parts) > 1 else ""
-    email  = lead.get("email", "")
-    phone  = lead.get("phone", "")
-    source = lead.get("source", "meta_form")
-    challenge = lead.get("challenge", "")
-
-    if phone and not phone.startswith("+"):
-        phone = "+91" + phone.lstrip("0")
-
-    headers = {
+def _wix_headers():
+    return {
         "Authorization": WIX_API_KEY,
         "wix-site-id":   WIX_SITE_ID,
         "Content-Type":  "application/json",
     }
+
+def _wix_find_contact(email, phone):
+    """Search Wix for an existing contact by email or phone.
+    Returns (id, revision) tuple or (None, None)."""
+    filters = []
+    if email:
+        filters.append({"info.emails.email": {"$eq": email}})
+    if phone:
+        filters.append({"info.phones.phone": {"$eq": phone}})
+    if not filters:
+        return None, None
+
+    query = {"filter": {"$or": filters} if len(filters) > 1 else filters[0]}
+    r = requests.post(
+        f"{WIX_BASE_URL}/query",
+        headers=_wix_headers(),
+        json={"query": query},
+        timeout=15,
+    )
+    if r.ok:
+        contacts = r.json().get("contacts", [])
+        if contacts:
+            c = contacts[0]
+            return c["id"], c.get("revision", "1")
+    return None, None
+
+def add_to_wix(lead):
+    """Upsert a contact in Wix CRM — search first, patch if exists, create if not."""
+    if not WIX_API_KEY:
+        return False
+
+    name      = lead.get("name", "")
+    parts     = name.split(None, 1)
+    first     = parts[0] if parts else ""
+    last      = parts[1] if len(parts) > 1 else ""
+    email     = lead.get("email", "")
+    phone     = lead.get("phone", "")
+    source    = lead.get("source", "meta_form")
+    challenge = lead.get("challenge", "")
+
+    if phone and not phone.startswith("+"):
+        phone = "+91" + phone.lstrip("0")
 
     info = {}
     if first or last:
@@ -381,18 +407,40 @@ def add_to_wix(lead):
         info["emails"] = {"items": [{"email": email, "tag": "UNTAGGED"}]}
     if phone:
         info["phones"] = {"items": [{"phone": phone, "tag": "UNTAGGED"}]}
-    # Store source + challenge as jobTitle so it's visible in the contact card
     tag_parts = [f"Webinar Lead [{source}]"]
     if challenge:
         tag_parts.append(challenge[:80])
     info["jobTitle"] = " · ".join(tag_parts)
 
     try:
-        r = requests.post(WIX_BASE_URL, headers=headers, json={"info": info}, timeout=15)
+        existing_id, revision = _wix_find_contact(email, phone)
+
+        if existing_id:
+            # Patch only non-identifier fields (name + jobTitle) — don't re-send
+            # email/phone as Wix rejects them as duplicates even on the same contact
+            patch_info = {}
+            if first or last:
+                patch_info["name"] = {"first": first, "last": last}
+            patch_info["jobTitle"] = info["jobTitle"]
+            r = requests.patch(
+                f"{WIX_BASE_URL}/{existing_id}",
+                headers=_wix_headers(),
+                json={"revision": revision, "info": patch_info},
+                timeout=15,
+            )
+            if r.ok:
+                log.info(f"  🏷  Wix CRM: contact updated ({email or phone})")
+            else:
+                log.info(f"  🏷  Wix CRM: contact already exists ({email or phone})")
+            return True
+
+        # No existing contact — create new
+        r = requests.post(WIX_BASE_URL, headers=_wix_headers(), json={"info": info}, timeout=15)
         if r.ok:
             log.info(f"  🏷  Wix CRM: contact added ({email or phone})")
             return True
         elif r.status_code == 409:
+            # Race condition — another process created it between our search and create
             log.info(f"  🏷  Wix CRM: contact already exists ({email or phone})")
             return True
         else:
