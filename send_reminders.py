@@ -56,11 +56,19 @@ log = logging.getLogger("reminders")
 # ── fetch all leads from DB ───────────────────────────────────────────────────
 def get_all_leads():
     con = sqlite3.connect(DB_PATH)
-    rows = con.execute(
-        "SELECT name, email, phone FROM leads WHERE name != '' OR email != '' OR phone != ''"
-    ).fetchall()
-    con.close()
-    return [{"name": r[0], "email": r[1], "phone": r[2]} for r in rows]
+    try:
+        rows = con.execute(
+            "SELECT name, email, phone, zoom_join_url FROM leads WHERE name != '' OR email != '' OR phone != ''"
+        ).fetchall()
+        return [{"name": r[0], "email": r[1], "phone": r[2], "zoom_join_url": r[3]} for r in rows]
+    except Exception:
+        # Fallback for older schema without zoom_join_url
+        rows = con.execute(
+            "SELECT name, email, phone FROM leads WHERE name != '' OR email != '' OR phone != ''"
+        ).fetchall()
+        return [{"name": r[0], "email": r[1], "phone": r[2], "zoom_join_url": None} for r in rows]
+    finally:
+        con.close()
 
 # ── email templates ───────────────────────────────────────────────────────────
 def email_morning(name):

@@ -36,7 +36,7 @@ BASE = Path(__file__).parent
 load_dotenv(BASE / ".env")
 load_dotenv(BASE / "responder.env")
 
-FORM_ID      = os.getenv("LEAD_FORM_ID",  "1262832622693917")
+FORM_ID      = os.getenv("LEAD_FORM_ID",  "1304691274903048")
 ACCESS_TOKEN = os.getenv("META_ACCESS_TOKEN")
 GRAPH        = "https://graph.facebook.com/v19.0"
 POLL_SECONDS = 300   # 5 minutes
@@ -81,19 +81,34 @@ def init_db():
     con = sqlite3.connect(DB_PATH)
     con.execute("""
         CREATE TABLE IF NOT EXISTS leads (
-            id           TEXT PRIMARY KEY,
-            created_time TEXT,
-            name         TEXT,
-            email        TEXT,
-            phone        TEXT,
-            challenge    TEXT,
-            email_sent   INTEGER DEFAULT 0,
-            wa_sent      INTEGER DEFAULT 0,
-            processed_at TEXT
+            id               TEXT PRIMARY KEY,
+            created_time     TEXT,
+            name             TEXT,
+            email            TEXT,
+            phone            TEXT,
+            challenge        TEXT,
+            email_sent       INTEGER DEFAULT 0,
+            wa_sent          INTEGER DEFAULT 0,
+            processed_at     TEXT,
+            zoom_join_url    TEXT,
+            zoom_registrant_id TEXT
         )
     """)
+    # Migrate: add zoom columns if upgrading from older schema
+    for col, typ in [("zoom_join_url", "TEXT"), ("zoom_registrant_id", "TEXT")]:
+        try:
+            con.execute(f"ALTER TABLE leads ADD COLUMN {col} {typ}")
+        except Exception:
+            pass
     con.commit()
     return con
+
+def save_zoom_registration(con, lead_id, join_url, registrant_id):
+    con.execute("""
+        UPDATE leads SET zoom_join_url=?, zoom_registrant_id=?
+        WHERE id=?
+    """, (join_url, registrant_id, lead_id))
+    con.commit()
 
 def is_new(con, lead_id):
     return con.execute("SELECT 1 FROM leads WHERE id=?", (lead_id,)).fetchone() is None

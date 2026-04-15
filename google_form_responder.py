@@ -33,7 +33,7 @@ load_dotenv(BASE / "responder.env")
 
 # Reuse email + WhatsApp senders from lead_responder
 sys.path.insert(0, str(BASE))
-from lead_responder import send_email, send_whatsapp, add_to_wix, init_db, save_lead, is_new, mark_sent
+from lead_responder import send_email, send_whatsapp, add_to_wix, init_db, save_lead, is_new, mark_sent, save_zoom_registration
 
 SHEET_CSV_URL = os.getenv("GOOGLE_SHEET_CSV_URL", "")
 POLL_SECONDS  = 300
