@@ -500,6 +500,162 @@ def _user_google_services():
         return None, None
 
 
+# ── AI-generated Q4 ───────────────────────────────────────────────────────────
+def _ai_generate_challenge_q(cfg: dict) -> tuple:
+    """Call Claude to generate a relevant multiple-choice Q4 for this event topic.
+    Returns (question_str, options_list) or ("", []) if unavailable."""
+    import json, requests as _req
+
+    api_key = os.getenv("ANTHROPIC_API_KEY", "")
+    if not api_key:
+        return "", []
+
+    event_name = cfg.get("event_name", "")
+    bullets = [cfg.get(f"bullet_{i}", "") for i in range(1, 4)]
+    bullets = [b for b in bullets if b]
+
+    prompt = (
+        "You are helping set up a webinar registration form for a functional health coach.\n\n"
+        f"Webinar title: {event_name}\n"
+        "Topics covered:\n"
+        + "\n".join(f"- {b}" for b in bullets)
+        + "\n\nGenerate a single registration form question (Q4) to understand the "
+        "registrant's biggest challenge related to this webinar topic. "
+        "Return ONLY a JSON object — no markdown, no explanation:\n\n"
+        "{\n"
+        '  "question": "What is your biggest [topic] challenge right now?",\n'
+        '  "options": ["Option 1", "Option 2", ..., "Other"]\n'
+        "}\n\n"
+        "Rules:\n"
+        "- 6–8 options total, always end with \"Other\"\n"
+        "- Options are specific, relatable pain points for this exact topic\n"
+        "- Question is concise (under 65 characters)\n"
+        "- Write from the registrant's perspective (their lived experience)"
+    )
+
+    try:
+        resp = _req.post(
+            "https://api.anthropic.com/v1/messages",
+            headers={
+                "x-api-key": api_key,
+                "anthropic-version": "2023-06-01",
+                "content-type": "application/json",
+            },
+            json={
+                "model": "claude-3-haiku-20240307",
+                "max_tokens": 500,
+                "messages": [{"role": "user", "content": prompt}],
+            },
+            timeout=30,
+        )
+        resp.raise_for_status()
+        text = resp.json()["content"][0]["text"].strip()
+        # Strip any accidental markdown fences
+        text = re.sub(r"^```json\s*|^```\s*|\s*```$", "", text, flags=re.MULTILINE).strip()
+        data = json.loads(text)
+        return data["question"], data["options"]
+    except Exception as e:
+        log.warning(f"  AI Q4 generation failed: {e}")
+        return "", []
+
+
+def _prompt_approve_q4(cfg: dict, slug: str) -> tuple:
+    """Generate Q4 via AI, show to user, get approval. Returns (question, options).
+    If already set in event.yaml, asks whether to regenerate or keep existing."""
+    existing_q    = cfg.get("challenge_question", "").strip()
+    existing_opts = cfg.get("challenge_options", [])
+
+    if existing_q and existing_opts:
+        print(f"\n{'─'*60}")
+        print("  Q4 already set in event.yaml:")
+        print(f"  \"{existing_q}\"")
+        for o in existing_opts:
+            print(f"    • {o}")
+        ans = input("\n  Keep this question? [Y/n]: ").strip().lower()
+        if ans not in ("n", "no"):
+            return existing_q, existing_opts
+        print("  Regenerating with AI…")
+
+    print("\n  Generating Q4 with AI…")
+    question, options = _ai_generate_challenge_q(cfg)
+
+    if not question:
+        # No API key or error — fall back to manual entry
+        print("  (ANTHROPIC_API_KEY not set — enter Q4 manually)")
+        question = input("  Question text: ").strip() or "What is your biggest challenge right now?"
+        print("  Enter options one per line. Empty line to finish. Last option should be 'Other'.")
+        options = []
+        while True:
+            opt = input(f"  Option {len(options)+1}: ").strip()
+            if not opt:
+                break
+            options.append(opt)
+
+    while True:
+        print(f"\n{'─'*60}")
+        print("  Proposed Q4:")
+        print(f"  \"{question}\"")
+        for i, o in enumerate(options, 1):
+            print(f"    {i}. {o}")
+        print(f"{'─'*60}")
+        ans = input("  [A]ccept  [R]egenerate  [E]dit  > ").strip().lower()
+
+        if ans in ("a", "accept", ""):
+            break
+        elif ans in ("r", "regen", "regenerate"):
+            print("  Regenerating…")
+            question, options = _ai_generate_challenge_q(cfg)
+            if not question:
+                print("  (generation failed — keeping previous)")
+                break
+        elif ans in ("e", "edit"):
+            new_q = input(f"  Question [{question}]: ").strip()
+            if new_q:
+                question = new_q
+            print("  Edit options (enter new text to replace, or press Enter to keep):")
+            new_opts = []
+            for i, o in enumerate(options, 1):
+                replacement = input(f"    {i}. [{o}]: ").strip()
+                new_opts.append(replacement if replacement else o)
+            extra = input("  Add option (or Enter to skip): ").strip()
+            if extra:
+                new_opts.append(extra)
+            options = new_opts
+        else:
+            print("  Please enter A, R, or E.")
+            continue
+
+    # Save approved Q4 back to event.yaml
+    yaml_path = BASE / "events" / slug / "event.yaml"
+    if yaml_path.exists():
+        content = yaml_path.read_text()
+        q_line    = f'challenge_question: "{question}"'
+        opts_block = "challenge_options:\n" + "\n".join(f'  - "{o}"' for o in options)
+
+        if "challenge_question:" in content:
+            # Replace existing block
+            content = re.sub(
+                r'challenge_question:.*?\n(challenge_options:.*?(?=\n\S|\Z))?',
+                q_line + "\n" + opts_block + "\n",
+                content,
+                flags=re.DOTALL,
+            )
+        else:
+            # Append before META ADS section (or at end)
+            insert_before = "# ── META ADS"
+            if insert_before in content:
+                content = content.replace(
+                    insert_before,
+                    q_line + "\n" + opts_block + "\n\n" + insert_before,
+                )
+            else:
+                content += "\n" + q_line + "\n" + opts_block + "\n"
+        yaml_path.write_text(content)
+        print(f"  ✅  Q4 saved to events/{slug}/event.yaml")
+
+    return question, options
+
+
 def create_google_form(cfg: dict, dry_run=False):
     """Create a Google Form + response Sheet for this event.
 
@@ -557,19 +713,16 @@ def create_google_form(cfg: dict, dry_run=False):
             ).execute()
             log.info(f"  Form copied: {form_id}")
         else:
+            # ── Get Q4 via AI + user approval ────────────────────────────────
+            challenge_q, challenge_opts = _prompt_approve_q4(cfg, slug)
+
             log.info("  Creating fresh form with standard questions…")
             new_form = forms_svc.forms().create(
                 body={"info": {"title": form_title}}
             ).execute()
             form_id  = new_form["formId"]
 
-            # Q4 — multiple choice, driven by event.yaml fields
-            challenge_q    = cfg.get(
-                "challenge_question",
-                "What is your biggest challenge right now?"
-            )
-            challenge_opts = cfg.get("challenge_options", [])
-            # Build Q4 as multiple-choice if options are defined, else open paragraph
+            # Build Q4 item
             if challenge_opts:
                 q4_item = {
                     "title": challenge_q,
@@ -584,7 +737,7 @@ def create_google_form(cfg: dict, dry_run=False):
                 }
             else:
                 q4_item = {
-                    "title": challenge_q,
+                    "title": challenge_q or "What is your biggest challenge right now?",
                     "questionItem": {"question": {
                         "required": False,
                         "textQuestion": {"paragraph": True},
@@ -689,8 +842,10 @@ def _print_manual_instructions(cfg, form_title, sheet_title, slug, template_id):
             f"  Click ⋮ → Make a copy → rename to:  {form_title}"
         )
     else:
-        challenge_q    = cfg.get("challenge_question", "What is your biggest challenge right now?")
-        challenge_opts = cfg.get("challenge_options", [])
+        # Generate / approve Q4 even for manual path
+        challenge_q, challenge_opts = _prompt_approve_q4(cfg, slug)
+        if not challenge_q:
+            challenge_q = "What is your biggest challenge right now?"
         q4_hint = (
             f"Multiple choice: {challenge_q}\n"
             + "\n".join(f"     • {o}" for o in challenge_opts)
