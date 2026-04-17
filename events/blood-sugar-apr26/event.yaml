@@ -1,0 +1,73 @@
+# ══════════════════════════════════════════════════════════════════════════════
+# event.yaml — Config for this event (slug: blood-sugar-apr26)
+#
+# Edit this file, then run:
+#   python3 setup_event.py blood-sugar-apr26
+#
+# That script will:
+#   ✅  Write all values to responder.env
+#   ✅  Update GitHub Actions cron schedules
+#   ✅  Create a new Zoom meeting and save the join link
+#   ✅  Print a checklist of remaining manual steps
+# ══════════════════════════════════════════════════════════════════════════════
+
+# ── EVENT DETAILS ─────────────────────────────────────────────────────────────
+event_name: "Balance Your Blood Sugar Naturally"
+event_tagline: "Free Live Workshop"
+event_date_display: "Sunday, 26 April 2026"      # shown in emails (any format)
+event_date_iso: "2026-04-26"                      # YYYY-MM-DD — used for cron
+event_time_ist: "6:00 PM IST"                     # shown in emails
+event_time_utc_hour: 12                           # cron hour (UTC). 6PM IST = 12:30 UTC
+event_time_utc_minute: 30                         # cron minute (UTC)
+
+# ── WHAT WE'LL COVER (3 bullet points — shown in reminder emails) ─────────────
+bullet_1: "Why you crash after meals — and it's not the food"
+bullet_2: "The 3 everyday foods silently spiking your glucose"
+bullet_3: "A simple 7-day reset protocol — no medication needed"
+
+# ── OFFERS ────────────────────────────────────────────────────────────────────
+# Discovery Consultation
+consultation_name: "Discovery Consultation"
+consultation_price: "₹6,500"
+consultation_duration: "30 minutes"
+consultation_booking_url: "https://www.theochretree.com/book-online/discovery-call"
+consultation_credit_days: 7   # days the consultation fee can be credited toward programme
+
+# Blood Sugar Balance Programme
+programme_name: "Blood Sugar Balance Programme"
+programme_price: "₹31,000"
+programme_price_post_consult: "₹24,500"   # after consultation credit
+programme_duration: "12 weeks"
+programme_booking_url: "https://www.theochretree.com/book-online/blood-sugar-balance-programme"
+
+# ── BRAND ─────────────────────────────────────────────────────────────────────
+coach_name: "Shivani Hari"
+coach_full_name: "Shivani Hariharan"
+coach_title: "Functional Health Coach"
+brand_name: "The Ochre Tree"
+instagram_handle: "@healwithshivanih"
+instagram_url: "https://instagram.com/healwithshivanih"
+
+# ── WHATSAPP / AISENSY CAMPAIGNS ──────────────────────────────────────────────
+# Create these campaigns in your AiSensy dashboard before the event
+# Each campaign name maps to an approved WhatsApp template
+aisensy_campaign_confirmation: "webinar_confirmation"   # sent on registration
+aisensy_campaign_reminder: "webinar_reminder"           # sent 1 hour before
+aisensy_campaign_final: "webinar_starting_now"          # sent 1 min before
+aisensy_campaign_attended: "webinar_attended"           # post-event: attended
+aisensy_campaign_noshow: "webinar_noshow"               # post-event: no-show
+
+# ── GOOGLE FORM ───────────────────────────────────────────────────────────────
+# ID of the template Google Form to duplicate for this event.
+# Leave blank to auto-create a fresh form with standard questions.
+# Find the ID in the form URL: docs.google.com/forms/d/{ID}/edit
+google_form_template_id: ""   # paste your template form ID here (to auto-copy for future events)
+google_sheet_id: ""           # paste the Sheet ID after creating + sharing it (Step 4)
+
+# ── META ADS ──────────────────────────────────────────────────────────────────
+meta_daily_budget_inr: 900
+meta_ad_account: "act_573413695267300"
+
+# ── LINKS (set AFTER event) ───────────────────────────────────────────────────
+# These are blank until after the event — set them before running post_event_followup.py
+replay_link: ""        # Zoom recording URL (available a few hours after the event ends)

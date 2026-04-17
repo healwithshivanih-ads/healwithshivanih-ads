@@ -2,6 +2,7 @@
 .env
 responder.env
 zoom_start_url.txt
+google_service_account.json
 
 # Data files
 leads.db

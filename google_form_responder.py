@@ -27,15 +27,18 @@ from datetime import datetime, timezone
 import requests
 from dotenv import load_dotenv
 
+# ── Load event-specific env BEFORE any os.getenv() calls ─────────────────────
 BASE = Path(__file__).parent
-load_dotenv(BASE / ".env")
-load_dotenv(BASE / "responder.env")
+sys.path.insert(0, str(BASE))
+from event_utils import early_load_event, EVENT_SLUG
+early_load_event()   # loads .env + responder.env + events/{slug}/event.env
 
 # Reuse email + WhatsApp senders from lead_responder
-sys.path.insert(0, str(BASE))
 from lead_responder import send_email, send_whatsapp, add_to_wix, init_db, save_lead, is_new, mark_sent, save_zoom_registration
 
 SHEET_CSV_URL = os.getenv("GOOGLE_SHEET_CSV_URL", "")
+SHEET_ID      = os.getenv("GOOGLE_SHEET_ID", "")
+SA_JSON       = os.getenv("GOOGLE_SERVICE_ACCOUNT_JSON", "google_service_account.json")
 POLL_SECONDS  = 300
 
 logging.basicConfig(
@@ -46,44 +49,94 @@ logging.basicConfig(
 log = logging.getLogger("form_responder")
 
 # ── Google Sheet polling ──────────────────────────────────────────────────────
-def fetch_sheet_rows():
-    """Download Google Sheet as CSV and return list of lead dicts."""
+def _rows_to_leads(headers: list, rows: list) -> list:
+    """Convert a list of header+value rows into our standard lead dicts."""
+    leads = []
+    for i, row in enumerate(rows):
+        row_dict = dict(zip(headers, row + [""] * max(0, len(headers) - len(row))))
+        name  = (row_dict.get("Full Name") or row_dict.get("Name") or "").strip()
+        email = (row_dict.get("Email ID:") or row_dict.get("Email") or
+                 row_dict.get("Email Address") or "").strip()
+        phone = (row_dict.get("Whatsapp Phone Number") or row_dict.get("Phone") or
+                 row_dict.get("Phone Number") or row_dict.get("WhatsApp Number") or "").strip()
+        challenge = (
+            row_dict.get("What's your biggest energy or blood sugar challenge right now?")
+            or row_dict.get("Challenge") or ""
+        ).strip()
+        ts = row_dict.get("Timestamp", "")
+        lead_id = f"gform_{i}_{ts.replace(' ','_').replace('/','').replace(':','')}"
+        leads.append({
+            "id":           lead_id,
+            "created_time": ts,
+            "name":         name,
+            "email":        email,
+            "phone":        phone,
+            "challenge":    challenge,
+            "source":       "google_form",
+        })
+    return leads
+
+
+def fetch_sheet_rows_api(sheet_id: str) -> list:
+    """Read Google Sheet via Drive export using the service account.
+    Uses Drive API (auth'd export) so no Sheets API or public sharing needed."""
+    sa_path = BASE / SA_JSON
+    if not sa_path.exists():
+        return []
+    try:
+        from google.oauth2 import service_account
+        from googleapiclient.discovery import build
+        import io as _io
+        creds = service_account.Credentials.from_service_account_file(
+            str(sa_path),
+            scopes=["https://www.googleapis.com/auth/drive.readonly"],
+        )
+        svc    = build("drive", "v3", credentials=creds)
+        data   = svc.files().export(
+            fileId=sheet_id, mimeType="text/csv"
+        ).execute()
+        reader  = csv.DictReader(_io.StringIO(data.decode("utf-8")))
+        rows    = list(reader)
+        if not rows:
+            return []
+        headers = list(rows[0].keys())
+        values  = [[row.get(h, "") for h in headers] for row in rows]
+        return _rows_to_leads(headers, values)
+    except Exception as e:
+        log.error(f"Drive sheet export failed: {e}")
+        return []
+
+
+def fetch_sheet_rows_csv() -> list:
+    """Fallback: download Google Sheet as public CSV."""
     if not SHEET_CSV_URL:
-        log.error("GOOGLE_SHEET_CSV_URL not set in responder.env")
         return []
     try:
         r = requests.get(SHEET_CSV_URL, timeout=30)
         r.raise_for_status()
-        reader = csv.DictReader(io.StringIO(r.text))
-        leads = []
-        for i, row in enumerate(reader):
-            # Map Google Form column names → standard fields
-            name  = (row.get("Full Name") or row.get("Name") or "").strip()
-            email = (row.get("Email ID:") or row.get("Email") or
-                     row.get("Email Address") or "").strip()
-            phone = (row.get("Whatsapp Phone Number") or row.get("Phone") or
-                     row.get("Phone Number") or row.get("WhatsApp Number") or "").strip()
-            challenge = (row.get("What's your biggest energy or blood sugar challenge right now?")
-                         or row.get("Challenge") or "").strip()
-            ts    = row.get("Timestamp", "")
-            # Use row index + timestamp as unique ID
-            lead_id = f"gform_{i}_{ts.replace(' ','_').replace('/','').replace(':','')}"
-            leads.append({
-                "id":           lead_id,
-                "created_time": ts,
-                "name":         name,
-                "email":        email,
-                "phone":        phone,
-                "challenge":    challenge,
-                "source":       "google_form",
-            })
-        return leads
+        reader  = csv.DictReader(io.StringIO(r.text))
+        rows    = list(reader)
+        if not rows:
+            return []
+        headers = list(rows[0].keys())
+        values  = [[row.get(h, "") for h in headers] for row in rows]
+        return _rows_to_leads(headers, values)
     except Exception as e:
-        log.error(f"Failed to fetch sheet: {e}")
+        log.error(f"Failed to fetch sheet CSV: {e}")
         return []
 
-def process_form_leads(con):
-    log.info("Checking Google Form for new responses…")
+
+def fetch_sheet_rows() -> list:
+    """Fetch sheet rows — prefers Sheets API (private), falls back to CSV URL."""
+    if SHEET_ID:
+        leads = fetch_sheet_rows_api(SHEET_ID)
+        if leads is not None:   # empty list is fine, None means error
+            return leads
+    return fetch_sheet_rows_csv()
+
+def process_form_leads(con, event_slug=""):
+    slug_label = f" [{event_slug}]" if event_slug else ""
+    log.info(f"Checking Google Form for new responses{slug_label}…")
     leads = fetch_sheet_rows()
     new_count = 0
     for lead in leads:
@@ -92,9 +145,9 @@ def process_form_leads(con):
         if not is_new(con, lead["id"]):
             continue
         new_count += 1
-        log.info(f"🆕 New form response: {lead['name']} | {lead['email']} | {lead['phone']}")
-        save_lead(con, lead)
-        add_to_wix(lead)
+        log.info(f"🆕 New form response{slug_label}: {lead['name']} | {lead['email']} | {lead['phone']}")
+        save_lead(con, lead, event_slug)
+        add_to_wix(lead, event_slug)
         email_ok = send_email(lead)
         wa_ok    = send_whatsapp(lead)
         mark_sent(con, lead["id"], email_ok, wa_ok)
@@ -126,7 +179,7 @@ def manual_add(con):
 
     print(f"\nSending to: {name} | {email} | {phone}")
     save_lead(con, lead)
-    add_to_wix(lead)
+    add_to_wix(lead, args.event if hasattr(args, "event") else "")
     email_ok = send_email(lead)
     wa_ok    = send_whatsapp(lead)
     mark_sent(con, lead["id"], email_ok, wa_ok)
@@ -179,7 +232,7 @@ def import_csv(con, filepath):
 
         log.info(f"  Sending to: {name} | {email} | {phone}")
         save_lead(con, lead)
-        add_to_wix(lead)
+        add_to_wix(lead)   # no event_slug context available in bulk import
         email_ok = send_email(lead)
         wa_ok    = send_whatsapp(lead)
         mark_sent(con, lead["id"], email_ok, wa_ok)
@@ -215,6 +268,7 @@ def main():
     parser.add_argument("--add",    action="store_true", help="Manually add a single lead")
     parser.add_argument("--import", metavar="CSV_FILE",  dest="import_csv", help="Import from CSV")
     parser.add_argument("--list",   action="store_true", help="List all leads")
+    parser.add_argument("--event",  default=EVENT_SLUG,  help="Event slug (e.g. blood-sugar-apr26)")
     args = parser.parse_args()
 
     con = init_db()
@@ -232,16 +286,17 @@ def main():
         return
 
     if args.once:
-        process_form_leads(con)
+        process_form_leads(con, args.event)
         return
 
     # Continuous loop
-    log.info(f"Google Form responder started — polling every {POLL_SECONDS}s")
+    slug_label = f" [{args.event}]" if args.event else ""
+    log.info(f"Google Form responder started{slug_label} — polling every {POLL_SECONDS}s")
     if not SHEET_CSV_URL:
         log.warning("GOOGLE_SHEET_CSV_URL not set — only --add and --import will work")
     while True:
         try:
-            process_form_leads(con)
+            process_form_leads(con, args.event)
         except Exception as e:
             log.error(f"Error: {e}")
         time.sleep(POLL_SECONDS)

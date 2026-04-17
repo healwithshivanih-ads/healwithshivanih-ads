@@ -31,10 +31,10 @@ from pathlib import Path
 import requests
 from dotenv import load_dotenv
 
-# ── config ────────────────────────────────────────────────────────────────────
+# ── Load event-specific env BEFORE any os.getenv() calls ─────────────────────
 BASE = Path(__file__).parent
-load_dotenv(BASE / ".env")
-load_dotenv(BASE / "responder.env")
+from event_utils import early_load_event, EVENT_SLUG
+early_load_event()   # loads .env + responder.env + events/{slug}/event.env
 
 FORM_ID      = os.getenv("LEAD_FORM_ID",  "1304691274903048")
 ACCESS_TOKEN = os.getenv("META_ACCESS_TOKEN")
@@ -44,10 +44,20 @@ POLL_SECONDS = 300   # 5 minutes
 # Email (SMTP)
 SMTP_HOST    = os.getenv("SMTP_HOST",    "smtp.gmail.com")
 SMTP_PORT    = int(os.getenv("SMTP_PORT", "587"))
-SMTP_USER    = os.getenv("SMTP_USER")       # your Gmail address
-SMTP_PASS    = os.getenv("SMTP_PASS")       # Gmail App Password (16 chars)
+SMTP_USER    = os.getenv("SMTP_USER")
+SMTP_PASS    = os.getenv("SMTP_PASS")
 FROM_NAME    = os.getenv("FROM_NAME",    "Shivani Hari")
 FROM_EMAIL   = os.getenv("FROM_EMAIL",   SMTP_USER or "")
+
+# Event identity (from event.env)
+WEBINAR_NAME = os.getenv("WEBINAR_NAME", "Balance Your Blood Sugar Naturally")
+WEBINAR_DATE = os.getenv("WEBINAR_DATE", "Sunday, 26 April 2026")
+WEBINAR_TIME = os.getenv("WEBINAR_TIME", "6:00 PM IST")
+BULLET_1     = os.getenv("WEBINAR_BULLET_1", "Why you crash after meals — and it's not the food")
+BULLET_2     = os.getenv("WEBINAR_BULLET_2", "The 3 everyday foods silently spiking your glucose")
+BULLET_3     = os.getenv("WEBINAR_BULLET_3", "A simple 7-day reset protocol — no medication needed")
+COACH_NAME   = os.getenv("COACH_NAME",   "Shivani Hari")
+IG_HANDLE    = os.getenv("INSTAGRAM_HANDLE", "@healwithshivanih")
 
 # Wix CRM
 WIX_API_KEY  = os.getenv("WIX_API_KEY", "")
@@ -81,21 +91,28 @@ def init_db():
     con = sqlite3.connect(DB_PATH)
     con.execute("""
         CREATE TABLE IF NOT EXISTS leads (
-            id               TEXT PRIMARY KEY,
-            created_time     TEXT,
-            name             TEXT,
-            email            TEXT,
-            phone            TEXT,
-            challenge        TEXT,
-            email_sent       INTEGER DEFAULT 0,
-            wa_sent          INTEGER DEFAULT 0,
-            processed_at     TEXT,
-            zoom_join_url    TEXT,
-            zoom_registrant_id TEXT
+            id                 TEXT PRIMARY KEY,
+            created_time       TEXT,
+            name               TEXT,
+            email              TEXT,
+            phone              TEXT,
+            challenge          TEXT,
+            source             TEXT DEFAULT 'meta_form',
+            email_sent         INTEGER DEFAULT 0,
+            wa_sent            INTEGER DEFAULT 0,
+            processed_at       TEXT,
+            zoom_join_url      TEXT,
+            zoom_registrant_id TEXT,
+            event_slug         TEXT DEFAULT ''
         )
     """)
-    # Migrate: add zoom columns if upgrading from older schema
-    for col, typ in [("zoom_join_url", "TEXT"), ("zoom_registrant_id", "TEXT")]:
+    # Migrations — add columns if upgrading from older schema
+    for col, typ in [
+        ("zoom_join_url",       "TEXT"),
+        ("zoom_registrant_id",  "TEXT"),
+        ("event_slug",          "TEXT DEFAULT ''"),
+        ("source",              "TEXT DEFAULT 'meta_form'"),
+    ]:
         try:
             con.execute(f"ALTER TABLE leads ADD COLUMN {col} {typ}")
         except Exception:
@@ -111,15 +128,17 @@ def save_zoom_registration(con, lead_id, join_url, registrant_id):
     con.commit()
 
 def is_new(con, lead_id):
+    """True if this lead_id hasn't been processed yet (globally unique per form submission)."""
     return con.execute("SELECT 1 FROM leads WHERE id=?", (lead_id,)).fetchone() is None
 
-def save_lead(con, lead):
+def save_lead(con, lead, event_slug=""):
     con.execute("""
         INSERT OR IGNORE INTO leads
-          (id, created_time, name, email, phone, challenge)
-        VALUES (?,?,?,?,?,?)
+          (id, created_time, name, email, phone, challenge, source, event_slug)
+        VALUES (?,?,?,?,?,?,?,?)
     """, (lead["id"], lead["created_time"], lead.get("name",""),
-          lead.get("email",""), lead.get("phone",""), lead.get("challenge","")))
+          lead.get("email",""), lead.get("phone",""), lead.get("challenge",""),
+          lead.get("source", "meta_form"), event_slug))
     con.commit()
 
 def mark_sent(con, lead_id, email_ok, wa_ok):
@@ -161,19 +180,27 @@ def fetch_leads():
     return leads
 
 # ── email ─────────────────────────────────────────────────────────────────────
-EMAIL_SUBJECT = "You're registered for the Free Blood Sugar Workshop 🎉"
+def _email_subject():
+    return f"You're registered for {WEBINAR_NAME} 🎉"
 
 def email_body_html(name, phone=""):
     first = name.split()[0] if name else "there"
+    date_iso = os.getenv("WEBINAR_DATE_ISO", "20260426")
+    cal_date = date_iso.replace("-", "")
+    cal_link = (
+        f"https://calendar.google.com/calendar/render?action=TEMPLATE"
+        f"&text={WEBINAR_NAME.replace(' ', '+')}"
+        f"&dates={cal_date}T123000Z/{cal_date}T143000Z"
+        f"&details=Free+live+workshop+with+{COACH_NAME.replace(' ', '+')}"
+        f"&location=Online"
+    )
     return f"""
 <html><body style="font-family:sans-serif;max-width:600px;margin:auto;color:#1a1a1a">
 <div style="background:#0d3d22;padding:32px;text-align:center;border-radius:12px 12px 0 0">
   <p style="color:#22c55e;font-size:13px;font-weight:800;letter-spacing:3px;margin:0">FREE LIVE WORKSHOP</p>
-  <h1 style="color:#fff;margin:12px 0 0;font-size:26px;line-height:1.3">
-    Balance Your Blood Sugar Naturally
-  </h1>
+  <h1 style="color:#fff;margin:12px 0 0;font-size:26px;line-height:1.3">{WEBINAR_NAME}</h1>
   <p style="color:rgba(255,255,255,0.75);margin:10px 0 0;font-size:15px">
-    📅 Sunday, 26 April 2026 &nbsp;·&nbsp; ⏰ 6:00 PM IST
+    📅 {WEBINAR_DATE} &nbsp;·&nbsp; ⏰ {WEBINAR_TIME}
   </p>
 </div>
 
@@ -182,23 +209,23 @@ def email_body_html(name, phone=""):
   <p>You're in! Your spot is confirmed for the free live workshop.</p>
 
   <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:20px;margin:20px 0">
-    <p style="margin:0 0 12px;font-weight:700;color:#0d3d22">In this 60-minute workshop you'll discover:</p>
-    <p style="margin:6px 0">✅ Why you crash after meals — and it's <em>not</em> the food</p>
-    <p style="margin:6px 0">✅ The 3 everyday foods silently spiking your glucose</p>
-    <p style="margin:6px 0">✅ A simple 7-day reset protocol — no medication needed</p>
+    <p style="margin:0 0 12px;font-weight:700;color:#0d3d22">In this workshop you'll discover:</p>
+    <p style="margin:6px 0">✅ {BULLET_1}</p>
+    <p style="margin:6px 0">✅ {BULLET_2}</p>
+    <p style="margin:6px 0">✅ {BULLET_3}</p>
   </div>
 
   <p style="font-weight:700">📅 Add to your calendar so you don't miss it:</p>
   <p>
-    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Balance+Your+Blood+Sugar+Workshop&dates=20260426T123000Z/20260426T143000Z&details=Free+live+workshop+with+Shivani+Hari&location=Online" style="background:#0d3d22;color:#fff;padding:12px 24px;border-radius:50px;text-decoration:none;font-weight:700;display:inline-block">Add to Google Calendar</a>
+    <a href="{cal_link}" style="background:#0d3d22;color:#fff;padding:12px 24px;border-radius:50px;text-decoration:none;font-weight:700;display:inline-block">Add to Google Calendar</a>
   </p>
 
-  <p>I'll send you a reminder the day before and the morning of the workshop.</p>
+  <p>I'll send you a reminder the morning of the workshop with your join link.</p>
   <p>If you have any questions in the meantime, just reply to this email.</p>
 
-  <p style="margin-top:32px">See you on the 26th! 💚<br>
-  <strong>Shivani Hari</strong><br>
-  <span style="color:#6b7280;font-size:13px">Functional Health Coach · @healwithshivanih</span>
+  <p style="margin-top:32px">See you there! 💚<br>
+  <strong>{COACH_NAME}</strong><br>
+  <span style="color:#6b7280;font-size:13px">Functional Health Coach · {IG_HANDLE}</span>
   </p>
 
   <hr style="border:none;border-top:1px solid #e5e7eb;margin:24px 0">
@@ -219,7 +246,7 @@ def send_email(lead):
         return False
 
     msg = MIMEMultipart("alternative")
-    msg["Subject"] = EMAIL_SUBJECT
+    msg["Subject"] = _email_subject()
     msg["From"]    = f"{FROM_NAME} <{FROM_EMAIL}>"
     msg["To"]      = lead["email"]
     msg.attach(MIMEText(email_body_html(lead.get("name",""), lead.get("phone","")), "html"))
@@ -239,15 +266,12 @@ def send_email(lead):
 # ── WhatsApp ──────────────────────────────────────────────────────────────────
 def wa_message(name):
     first = name.split()[0] if name else "there"
+    event_dt = f"{WEBINAR_DATE} · {WEBINAR_TIME}"
     return (
-        f"Hi {first}! 🌿 You're registered for *How to Regulate Your Blood Sugar* with Shivani Hari.\n\n"
-        f"📅 *Sunday, 26 April · 6:00 PM IST*\n\n"
-        f"We'll cover:\n"
-        f"→ Why you crash after meals\n"
-        f"→ 3 foods spiking your glucose\n"
-        f"→ A 7-day reset protocol\n\n"
+        f"Hi {first}! 🌿 You're registered for *{WEBINAR_NAME}* with {COACH_NAME}.\n\n"
+        f"📅 *{event_dt}*\n\n"
         f"I'll send your join link 1 hour before we start. See you there! 💚\n"
-        f"— Shivani (@healwithshivanih)"
+        f"— {COACH_NAME} ({IG_HANDLE})"
     )
 
 def send_whatsapp_interakt(lead):
@@ -294,12 +318,13 @@ def send_whatsapp_aisensy(lead):
         phone = "+91" + phone.lstrip("0")
     first = (lead.get("name") or "there").split()[0]
 
+    event_dt = f"{WEBINAR_DATE} · {WEBINAR_TIME}"
     payload = {
         "apiKey":       AISENSY_KEY,
         "campaignName": AISENSY_CAMP,
         "destination":  phone,
         "userName":     lead.get("name", ""),
-        "templateParams": [first, "26 April · 6:00 PM IST"],
+        "templateParams": [first, event_dt],
         "source":       "lead-gen-form",
         "media":        {},
     }
@@ -326,6 +351,7 @@ def send_whatsapp_meta(lead):
         return False
     first = (lead.get("name") or "there").split()[0]
 
+    event_dt = f"{WEBINAR_DATE} · {WEBINAR_TIME}"
     payload = {
         "messaging_product": "whatsapp",
         "to":                phone,
@@ -337,7 +363,7 @@ def send_whatsapp_meta(lead):
                 "type":       "body",
                 "parameters": [
                     {"type": "text", "text": first},
-                    {"type": "text", "text": "26 April · 6:00 PM IST"},
+                    {"type": "text", "text": event_dt},
                 ],
             }],
         },
@@ -398,8 +424,9 @@ def _wix_find_contact(email, phone):
             return c["id"], c.get("revision", "1")
     return None, None
 
-def add_to_wix(lead):
-    """Upsert a contact in Wix CRM — search first, patch if exists, create if not."""
+def add_to_wix(lead, event_slug=""):
+    """Upsert a contact in Wix CRM — search first, patch if exists, create if not.
+    event_slug is written into the contact's jobTitle so it's visible in the CRM."""
     if not WIX_API_KEY:
         return False
 
@@ -423,6 +450,8 @@ def add_to_wix(lead):
     if phone:
         info["phones"] = {"items": [{"phone": phone, "tag": "UNTAGGED"}]}
     tag_parts = [f"Webinar Lead [{source}]"]
+    if event_slug:
+        tag_parts.append(f"event:{event_slug}")
     if challenge:
         tag_parts.append(challenge[:80])
     info["jobTitle"] = " · ".join(tag_parts)
@@ -466,8 +495,9 @@ def add_to_wix(lead):
         return False
 
 # ── main loop ─────────────────────────────────────────────────────────────────
-def process_new_leads(con):
-    log.info("Checking for new leads…")
+def process_new_leads(con, event_slug=""):
+    slug_label = f" [{event_slug}]" if event_slug else ""
+    log.info(f"Checking for new leads{slug_label}…")
     leads = fetch_leads()
     new_count = 0
     for lead in leads:
@@ -477,9 +507,9 @@ def process_new_leads(con):
         name  = lead.get("name", "")
         email = lead.get("email", "")
         phone = lead.get("phone", "")
-        log.info(f"🆕 New lead: {name} | {email} | {phone}")
-        save_lead(con, lead)
-        add_to_wix(lead)
+        log.info(f"🆕 New lead{slug_label}: {name} | {email} | {phone}")
+        save_lead(con, lead, event_slug)
+        add_to_wix(lead, event_slug)
         email_ok = send_email(lead)
         wa_ok    = send_whatsapp(lead)
         mark_sent(con, lead["id"], email_ok, wa_ok)
@@ -522,6 +552,7 @@ def main():
     parser.add_argument("--once",  action="store_true", help="Poll once and exit (for cron)")
     parser.add_argument("--test",  action="store_true", help="Send test message to yourself")
     parser.add_argument("--list",  action="store_true", help="List all leads")
+    parser.add_argument("--event", default=EVENT_SLUG,  help="Event slug (e.g. blood-sugar-apr26)")
     args = parser.parse_args()
 
     con = init_db()
@@ -535,15 +566,16 @@ def main():
         return
 
     if args.once:
-        process_new_leads(con)
+        process_new_leads(con, args.event)
         return
 
     # Continuous loop
-    log.info(f"Lead responder started — polling every {POLL_SECONDS}s")
+    slug_label = f" [{args.event}]" if args.event else ""
+    log.info(f"Lead responder started{slug_label} — polling every {POLL_SECONDS}s")
     log.info(f"Form: {FORM_ID} | Email: {SMTP_USER or 'NOT SET'} | WhatsApp: {WA_PROVIDER}")
     while True:
         try:
-            process_new_leads(con)
+            process_new_leads(con, args.event)
         except Exception as e:
             log.error(f"Unexpected error: {e}")
         time.sleep(POLL_SECONDS)

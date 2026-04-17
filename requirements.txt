@@ -1,3 +1,7 @@
 facebook_business
 python-dotenv
 requests
+pyyaml
+google-auth
+google-auth-httplib2
+google-api-python-client
