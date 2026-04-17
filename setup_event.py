@@ -466,15 +466,48 @@ def _sa_email(sa_path: Path) -> str:
         return ""
 
 
+def _user_google_services():
+    """Return (drive, forms) clients using the user's OAuth refresh token.
+    Returns (None, None) if GOOGLE_REFRESH_TOKEN is not set."""
+    refresh_token = os.getenv("GOOGLE_REFRESH_TOKEN", "")
+    client_id     = os.getenv("GMAIL_CLIENT_ID", "")
+    client_secret = os.getenv("GMAIL_CLIENT_SECRET", "")
+    if not all([refresh_token, client_id, client_secret]):
+        return None, None
+    try:
+        import logging as _l
+        _l.getLogger("googleapiclient.discovery_cache").setLevel(_l.ERROR)
+        from google.oauth2.credentials import Credentials
+        from google.auth.transport.requests import Request
+        from googleapiclient.discovery import build
+        creds = Credentials(
+            token=None,
+            refresh_token=refresh_token,
+            token_uri="https://oauth2.googleapis.com/token",
+            client_id=client_id,
+            client_secret=client_secret,
+            scopes=[
+                "https://www.googleapis.com/auth/drive",
+                "https://www.googleapis.com/auth/forms.body",
+            ],
+        )
+        creds.refresh(Request())
+        drive = build("drive",  "v3", credentials=creds)
+        forms = build("forms",  "v1", credentials=creds)
+        return drive, forms
+    except Exception as e:
+        log.warning(f"  User OAuth failed: {e}")
+        return None, None
+
+
 def create_google_form(cfg: dict, dry_run=False):
-    """Print setup instructions for the Google Form + Sheet for this event.
+    """Create a Google Form + response Sheet for this event.
 
-    Service accounts can READ sheets shared with them but cannot CREATE Drive
-    files (no storage quota). So form/sheet creation stays with the user's
-    Google account, and our poller reads the sheet via the service account.
+    Uses the user's OAuth refresh token (GOOGLE_REFRESH_TOKEN in responder.env)
+    so files are created in Shivani's Drive — no storage quota issues.
+    Run python3 google_auth.py once to set up the refresh token.
 
-    If google_form_template_id is set in event.yaml, the template can be
-    duplicated manually (File → Make a copy) to reuse questions instantly.
+    Falls back to printing manual instructions if token is not available.
     """
     slug        = cfg["_slug"]
     name        = cfg["event_name"]
@@ -484,64 +517,173 @@ def create_google_form(cfg: dict, dry_run=False):
 
     from dotenv import load_dotenv
     load_dotenv(BASE / "responder.env")
-    sa_file   = BASE / os.getenv("GOOGLE_SERVICE_ACCOUNT_JSON", "google_service_account.json")
-    sa_email  = _sa_email(sa_file) if sa_file.exists() else "meta-ads-bot@...iam.gserviceaccount.com"
 
-    form_title  = f"Register: {name} — {date_str}"
-    sheet_title = f"Responses — {name} ({date_str})"
-    new_form_url = f"https://docs.google.com/forms/create?title={form_title.replace(' ', '+')}"
+    form_title   = f"Register: {name} — {date_str}"
+    sheet_title  = f"Responses — {name} ({date_str})"
+    description  = (
+        f"Free Live Workshop · {date_str} · {time_str}\n\n"
+        f"Fill in your details below to secure your free spot."
+    )
 
     if dry_run:
-        log.info("[DRY RUN] Would print Google Form setup instructions")
+        log.info("[DRY RUN] Would create Google Form + Sheet")
         return
 
+    log.info("Creating Google Form + Sheet…")
+    drive_svc, forms_svc = _user_google_services()
+
+    if not drive_svc:
+        _print_manual_instructions(cfg, form_title, sheet_title, slug, template_id)
+        return
+
+    try:
+        # ── Create or copy Form ───────────────────────────────────────────────
+        form_id = None
+        if template_id:
+            log.info(f"  Copying template form {template_id}…")
+            copied  = drive_svc.files().copy(
+                fileId=template_id,
+                body={"name": form_title},
+            ).execute()
+            form_id = copied["id"]
+            forms_svc.forms().batchUpdate(
+                formId=form_id,
+                body={"requests": [{
+                    "updateFormInfo": {
+                        "info": {"title": form_title, "description": description},
+                        "updateMask": "title,description",
+                    }
+                }]}
+            ).execute()
+            log.info(f"  Form copied: {form_id}")
+        else:
+            log.info("  Creating fresh form with standard questions…")
+            new_form = forms_svc.forms().create(
+                body={"info": {"title": form_title}}
+            ).execute()
+            form_id  = new_form["formId"]
+            forms_svc.forms().batchUpdate(
+                formId=form_id,
+                body={"requests": [
+                    {"updateFormInfo": {
+                        "info": {"description": description},
+                        "updateMask": "description",
+                    }},
+                    {"createItem": {"item": {
+                        "title": "Full Name",
+                        "questionItem": {"question": {"required": True, "textQuestion": {}}}
+                    }, "location": {"index": 0}}},
+                    {"createItem": {"item": {
+                        "title": "Email ID:",
+                        "questionItem": {"question": {"required": True, "textQuestion": {}}}
+                    }, "location": {"index": 1}}},
+                    {"createItem": {"item": {
+                        "title": "Whatsapp Phone Number",
+                        "questionItem": {"question": {"required": True, "textQuestion": {}}}
+                    }, "location": {"index": 2}}},
+                    {"createItem": {"item": {
+                        "title": "What's your biggest energy or blood sugar challenge right now?",
+                        "questionItem": {"question": {
+                            "required": False,
+                            "textQuestion": {"paragraph": True},
+                        }}
+                    }, "location": {"index": 3}}},
+                ]}
+            ).execute()
+            log.info(f"  Form created: {form_id}")
+
+        # ── Create response Sheet ─────────────────────────────────────────────
+        log.info(f"  Creating sheet: {sheet_title}…")
+        sheet_meta = drive_svc.files().create(
+            body={"name": sheet_title,
+                  "mimeType": "application/vnd.google-apps.spreadsheet"}
+        ).execute()
+        sheet_id  = sheet_meta["id"]
+        sheet_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}"
+        form_url  = f"https://docs.google.com/forms/d/{form_id}/edit"
+        log.info(f"  Sheet created: {sheet_id}")
+
+        # ── Share Sheet with service account so poller can read it ────────────
+        sa_file  = BASE / os.getenv("GOOGLE_SERVICE_ACCOUNT_JSON", "google_service_account.json")
+        sa_email = _sa_email(sa_file)
+        if sa_email:
+            drive_svc.permissions().create(
+                fileId=sheet_id,
+                body={"type": "user", "role": "reader", "emailAddress": sa_email},
+                sendNotificationEmail=False,
+            ).execute()
+            log.info(f"  Sheet shared with service account ({sa_email})")
+
+        # ── Write IDs to event.env ────────────────────────────────────────────
+        env_path = BASE / "events" / slug / "event.env"
+        content  = env_path.read_text() if env_path.exists() else ""
+        for key, val in [("GOOGLE_FORM_ID", form_id), ("GOOGLE_SHEET_ID", sheet_id)]:
+            if f"{key}=" in content:
+                content = re.sub(rf"{key}=.*", f"{key}={val}", content)
+            else:
+                content += f"\n{key}={val}\n"
+        env_path.write_text(content)
+        log.info(f"  IDs written to events/{slug}/event.env ✅")
+
+        # ── One remaining manual step: link form → sheet ──────────────────────
+        print(f"""
+╔══════════════════════════════════════════════════════════════════════╗
+║  GOOGLE FORM + SHEET CREATED ✅ — one step left (10 seconds)        ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+  Form  → {form_url}
+  Sheet → {sheet_url}
+
+  ⚠️  Link the form to the sheet (Google API limitation — must be done in UI):
+  1. Open the Form link above → click the  Responses  tab
+  2. Click the green Sheets icon → Select existing spreadsheet
+  3. Search for and pick:  {sheet_title}
+
+  Once linked, every sign-up flows into the sheet.
+  Our poller reads it every 10 min via the service account.
+
+  GOOGLE_FORM_ID  = {form_id}
+  GOOGLE_SHEET_ID = {sheet_id}
+  (saved to events/{slug}/event.env ✅)
+""")
+
+    except Exception as e:
+        log.error(f"Google Form creation failed: {e}")
+        _print_manual_instructions(cfg, form_title, sheet_title, slug, template_id)
+
+
+def _print_manual_instructions(cfg, form_title, sheet_title, slug, template_id):
+    """Fallback: print step-by-step instructions when OAuth token is missing."""
+    from dotenv import load_dotenv
+    load_dotenv(BASE / "responder.env")
+    sa_file  = BASE / os.getenv("GOOGLE_SERVICE_ACCOUNT_JSON", "google_service_account.json")
+    sa_email = _sa_email(sa_file) or "meta-ads-bot@healwithshivanih-automation.iam.gserviceaccount.com"
+
+    new_form_url = f"https://docs.google.com/forms/create?title={form_title.replace(' ', '+')}"
     if template_id:
         form_step = (
-            f"  a. Open your template form:\n"
-            f"       https://docs.google.com/forms/d/{template_id}/edit\n"
-            f"  b. Click ⋮ (top right) → Make a copy\n"
-            f"  c. Name it:  {form_title}\n"
-            f"  d. Update the title/date in the form header if needed"
+            f"  Open template: https://docs.google.com/forms/d/{template_id}/edit\n"
+            f"  Click ⋮ → Make a copy → rename to:  {form_title}"
         )
     else:
         form_step = (
-            f"  a. Create a new form: {new_form_url}\n"
-            f"  b. Add these 4 questions (Short answer; all required except last):\n"
-            f"       1. Full Name\n"
-            f"       2. Email ID:\n"
-            f"       3. Whatsapp Phone Number\n"
-            f"       4. What's your biggest energy or blood sugar challenge right now?\n"
-            f"  c. Save this form ID in event.yaml as  google_form_template_id\n"
-            f"     so future events can auto-copy it"
+            f"  Create at: {new_form_url}\n"
+            f"  Add 4 questions: Full Name · Email ID: · Whatsapp Phone Number · Challenge"
         )
 
     print(f"""
 ╔══════════════════════════════════════════════════════════════════════╗
-║  GOOGLE FORM SETUP — 4 steps, ~3 minutes                            ║
+║  Run python3 google_auth.py first to automate this step             ║
 ╚══════════════════════════════════════════════════════════════════════╝
 
-  STEP 1 — Create the Form in your Google account
-{form_step}
+  Until then, manual setup (~3 min):
 
-  STEP 2 — Create the response Sheet
-  a. Go to sheets.google.com → Blank spreadsheet
-  b. Name it:  {sheet_title}
-
-  STEP 3 — Link form → sheet
-  a. In the Form → click  Responses  tab
-  b. Click the green Sheets icon → Select existing spreadsheet
-  c. Pick:  {sheet_title}
-
-  STEP 4 — Share the Sheet with the automation bot (so our poller can read it)
-  a. In the Sheet → click Share
-  b. Add:  {sa_email}  (Viewer is enough)
-  c. Copy the Sheet ID from the URL:
-       docs.google.com/spreadsheets/d/{{SHEET_ID}}/edit
-  d. Add to events/{slug}/event.yaml:
-       google_sheet_id: "{{SHEET_ID}}"
-  e. Re-run:  python3 setup_event.py {slug} --no-zoom --no-wix --no-gform
-
-  Once done, our poller reads new sign-ups every 10 min via the service account.
+  1. Form:  {form_step}
+  2. Sheet: sheets.google.com → new sheet named:  {sheet_title}
+  3. Link:  Form → Responses → Sheets icon → pick the sheet above
+  4. Share the Sheet with:  {sa_email}  (Viewer)
+  5. Paste Sheet ID into events/{slug}/event.yaml → google_sheet_id
+  6. Re-run:  python3 setup_event.py {slug} --no-zoom --no-wix --no-gform
 """)
 
 

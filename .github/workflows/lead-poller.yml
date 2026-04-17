@@ -57,6 +57,9 @@ jobs:
           META_WA_PHONE_ID=${{ secrets.META_WA_PHONE_ID }}
           META_WA_TEMPLATE=${{ secrets.META_WA_TEMPLATE }}
           GOOGLE_SERVICE_ACCOUNT_JSON=google_service_account.json
+          GOOGLE_REFRESH_TOKEN=${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          GMAIL_CLIENT_ID=${{ secrets.GMAIL_CLIENT_ID }}
+          GMAIL_CLIENT_SECRET=${{ secrets.GMAIL_CLIENT_SECRET }}
           ENVEOF
 
       # ── Write Google service account key from GitHub Secret ───────────────
