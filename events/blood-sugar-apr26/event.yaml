@@ -64,6 +64,18 @@ aisensy_campaign_noshow: "webinar_noshow"               # post-event: no-show
 google_form_template_id: ""   # paste your template form ID here (to auto-copy for future events)
 google_sheet_id: ""           # paste the Sheet ID after creating + sharing it (Step 4)
 
+# Q4 — multiple choice question shown on the registration form
+# Tailor these to the webinar topic so you understand your audience
+challenge_question: "What's your biggest blood sugar challenge right now?"
+challenge_options:
+  - "Energy crashes after meals"
+  - "Sugar cravings I can't control"
+  - "High fasting blood sugar / told I'm pre-diabetic"
+  - "Weight gain despite eating healthy"
+  - "Constant fatigue and brain fog"
+  - "I just want to understand my numbers better"
+  - "Other"
+
 # ── META ADS ──────────────────────────────────────────────────────────────────
 meta_daily_budget_inr: 900
 meta_ad_account: "act_573413695267300"

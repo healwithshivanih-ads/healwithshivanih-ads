@@ -562,6 +562,35 @@ def create_google_form(cfg: dict, dry_run=False):
                 body={"info": {"title": form_title}}
             ).execute()
             form_id  = new_form["formId"]
+
+            # Q4 — multiple choice, driven by event.yaml fields
+            challenge_q    = cfg.get(
+                "challenge_question",
+                "What is your biggest challenge right now?"
+            )
+            challenge_opts = cfg.get("challenge_options", [])
+            # Build Q4 as multiple-choice if options are defined, else open paragraph
+            if challenge_opts:
+                q4_item = {
+                    "title": challenge_q,
+                    "questionItem": {"question": {
+                        "required": False,
+                        "choiceQuestion": {
+                            "type": "RADIO",
+                            "options": [{"value": o} for o in challenge_opts],
+                            "shuffle": False,
+                        },
+                    }},
+                }
+            else:
+                q4_item = {
+                    "title": challenge_q,
+                    "questionItem": {"question": {
+                        "required": False,
+                        "textQuestion": {"paragraph": True},
+                    }},
+                }
+
             forms_svc.forms().batchUpdate(
                 formId=form_id,
                 body={"requests": [
@@ -581,13 +610,7 @@ def create_google_form(cfg: dict, dry_run=False):
                         "title": "Whatsapp Phone Number",
                         "questionItem": {"question": {"required": True, "textQuestion": {}}}
                     }, "location": {"index": 2}}},
-                    {"createItem": {"item": {
-                        "title": "What's your biggest energy or blood sugar challenge right now?",
-                        "questionItem": {"question": {
-                            "required": False,
-                            "textQuestion": {"paragraph": True},
-                        }}
-                    }, "location": {"index": 3}}},
+                    {"createItem": {"item": q4_item, "location": {"index": 3}}},
                 ]}
             ).execute()
             log.info(f"  Form created: {form_id}")
@@ -666,9 +689,19 @@ def _print_manual_instructions(cfg, form_title, sheet_title, slug, template_id):
             f"  Click ⋮ → Make a copy → rename to:  {form_title}"
         )
     else:
+        challenge_q    = cfg.get("challenge_question", "What is your biggest challenge right now?")
+        challenge_opts = cfg.get("challenge_options", [])
+        q4_hint = (
+            f"Multiple choice: {challenge_q}\n"
+            + "\n".join(f"     • {o}" for o in challenge_opts)
+        ) if challenge_opts else f"Open text: {challenge_q}"
         form_step = (
             f"  Create at: {new_form_url}\n"
-            f"  Add 4 questions: Full Name · Email ID: · Whatsapp Phone Number · Challenge"
+            f"  Add 4 questions:\n"
+            f"    1. Full Name (Short answer, required)\n"
+            f"    2. Email ID: (Short answer, required)\n"
+            f"    3. Whatsapp Phone Number (Short answer, required)\n"
+            f"    4. {q4_hint}"
         )
 
     print(f"""
