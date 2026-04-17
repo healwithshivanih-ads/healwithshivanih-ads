@@ -112,6 +112,7 @@ def init_db():
         ("zoom_registrant_id",  "TEXT"),
         ("event_slug",          "TEXT DEFAULT ''"),
         ("source",              "TEXT DEFAULT 'meta_form'"),
+        ("post_event_group",    "TEXT"),   # 'attended' | 'noshow' | 'direct' — set by post_event_followup
     ]:
         try:
             con.execute(f"ALTER TABLE leads ADD COLUMN {col} {typ}")

@@ -78,7 +78,9 @@ challenge_options:
 
 # ── META ADS ──────────────────────────────────────────────────────────────────
 meta_daily_budget_inr: 900
+meta_spend_cap_inr: 5000           # total campaign spend cap (used in reports)
 meta_ad_account: "act_573413695267300"
+meta_campaign_id: "120244017478380305"   # paste campaign ID here after creating in Ads Manager
 
 # ── LINKS (set AFTER event) ───────────────────────────────────────────────────
 # These are blank until after the event — set them before running post_event_followup.py

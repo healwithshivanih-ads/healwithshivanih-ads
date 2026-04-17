@@ -319,6 +319,27 @@ def report_only(event_slug=""):
         print("⚠  REPLAY_LINK not set in responder.env — no-show emails will have no recording link")
     print()
 
+def _save_post_event_groups(attended, noshow, direct, event_slug):
+    """Write post_event_group into leads.db so report.py can include attendance breakdown."""
+    from lead_responder import init_db
+    con = init_db()
+    try:
+        for group_name, leads in [("attended", attended), ("noshow", noshow), ("direct", direct)]:
+            for lead in leads:
+                if lead.get("email"):
+                    con.execute("""
+                        UPDATE leads SET post_event_group = ?
+                        WHERE (email = ? OR phone = ?)
+                          AND (event_slug = ? OR event_slug = '')
+                    """, (group_name, lead["email"], lead.get("phone",""), event_slug))
+        con.commit()
+        log.info("  post_event_group written to leads.db ✅")
+    except Exception as e:
+        log.warning(f"  Could not write post_event_group: {e}")
+    finally:
+        con.close()
+
+
 def blast(dry_run=False, event_slug=""):
     attended, noshow, direct = categorise(dry_run, event_slug)
     total = len(attended) + len(noshow) + len(direct)
@@ -360,7 +381,19 @@ def blast(dry_run=False, event_slug=""):
             log.info(f"  ✉  Direct email → {lead['email']}")
 
     if not dry_run:
+        # Save attendance groups to DB so report.py can use them
+        _save_post_event_groups(attended, noshow, direct, event_slug)
         log.info("Done! Post-event follow-ups sent.")
+        # Auto-generate and email the campaign report PDF
+        try:
+            import subprocess
+            log.info("Generating campaign report PDF…")
+            subprocess.run(
+                [sys.executable, str(BASE / "report.py"), event_slug, "--email"],
+                check=True
+            )
+        except Exception as e:
+            log.warning(f"Report generation failed (non-critical): {e}")
 
 def main():
     parser = argparse.ArgumentParser()

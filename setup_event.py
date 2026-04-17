@@ -92,6 +92,7 @@ def write_event_env(cfg: dict, dry_run=False) -> dict:
         "GOOGLE_FORM_ID":               cfg.get("google_form_template_id", ""),
         "GOOGLE_SHEET_ID":              cfg.get("google_sheet_id", ""),
         "REPLAY_LINK":                  cfg.get("replay_link", ""),
+        "META_CAMPAIGN_ID":             str(cfg.get("meta_campaign_id", "")),
         # WEBINAR_LINK, WIX_EVENT_ID, GOOGLE_FORM_ID, GOOGLE_SHEET_ID
         # are overwritten after external service creation steps run
     }
