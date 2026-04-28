@@ -1,0 +1,70 @@
+slug: magnesium-glycinate
+display_name: Magnesium Glycinate
+category: mineral
+
+forms_available:
+  - capsule
+  - powder
+  - tablet
+
+typical_dose_range:
+  capsule:
+    min: 100
+    max: 400
+    unit: mg
+  powder:
+    min: 1
+    max: 4
+    unit: g
+  tablet:
+    min: 100
+    max: 400
+    unit: mg
+
+timing_options:
+  - evening
+  - bedtime
+
+take_with_food: optional
+
+contraindications:
+  conditions:
+    - severe_kidney_disease
+  medications: []
+  life_stages: []
+
+interactions:
+  with_supplements:
+    - slug: zinc
+      type: space_by_hours
+      hours: 2
+      reason: Compete for absorption
+    - slug: calcium
+      type: space_by_hours
+      hours: 2
+      reason: Competitive divalent cation absorption
+  with_foods: []
+  with_medications: []
+
+linked_to_topics:
+  - insomnia
+  - perimenopause
+  - pcos
+  - anxiety
+linked_to_mechanisms: []
+linked_to_claims: []
+
+notes_for_coach: |
+  Glycinate form generally well-tolerated; avoid magnesium oxide if GI sensitivity.
+notes_for_client: ""
+
+sources:
+  - id: vitaone-skill-practice-guide
+    location: practice_guide.md, sleep-supporting supplements
+    quote: "Magnesium glycinate (200-400mg before bed)"
+
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-04-28
+updated_by: shivani
