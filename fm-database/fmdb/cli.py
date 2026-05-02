@@ -21,6 +21,7 @@ from .ingest.loaders import ATTACHMENT_EXTENSIONS, load_document, mime_for
 from .ingest.types import IngestRequest
 from .plan import storage as plan_storage
 from .plan import transitions as plan_transitions
+from .plan import render as plan_render
 from .plan.checker import check_plan
 from .plan.models import (
     CatalogueSnapshot,
@@ -1028,6 +1029,29 @@ def cmd_plan_diff(args: argparse.Namespace) -> None:
     print(diff)
 
 
+def cmd_plan_render(args: argparse.Namespace) -> None:
+    """Render a client-facing plan as Markdown or standalone HTML."""
+    from .validator import load_all
+    root = _plans_root(args)
+    plan = plan_storage.load_plan(root, args.slug)
+    try:
+        client = plan_storage.load_client(root, plan.client_id)
+    except FileNotFoundError:
+        client = None
+    catalogue = load_all(DATA_DIR)
+    if args.format == "html":
+        out = plan_render.render_html(plan, client, catalogue)
+    else:
+        out = plan_render.render_markdown(plan, client, catalogue)
+    if args.output:
+        Path(args.output).write_text(out, encoding="utf-8")
+        print(f"wrote {args.format} → {args.output}")
+    else:
+        sys.stdout.write(out)
+        if not out.endswith("\n"):
+            sys.stdout.write("\n")
+
+
 def cmd_plan_delete(args: argparse.Namespace) -> None:
     root = _plans_root(args)
     if not args.yes:
@@ -1268,6 +1292,13 @@ def main() -> None:
     pdf.add_argument("slug_a")
     pdf.add_argument("slug_b")
     pdf.set_defaults(func=cmd_plan_diff)
+
+    prn = sub.add_parser("plan-render",
+                         help="render a client-facing plan as markdown or standalone HTML")
+    prn.add_argument("slug")
+    prn.add_argument("--format", choices=["markdown", "html"], default="markdown")
+    prn.add_argument("-o", "--output", help="write to file instead of stdout")
+    prn.set_defaults(func=cmd_plan_render)
 
     pd = sub.add_parser("plan-delete", help="delete a draft plan (irreversible)")
     pd.add_argument("slug")

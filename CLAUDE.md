@@ -14,7 +14,16 @@ published plans as JSON artifacts.
 
 ## Status
 
-**v0.23 (current)** — Lifecycle wired into the UI + AI sanity check on plans:
+**v0.24 (current)** — AI check button in Lifecycle tab + client-facing plan render (Markdown + HTML):
+- **🧠 Run AI sanity check button** added to the Lifecycle tab next to "Run plan-check" (draft state) and as a read-only inspect on published plans. Calls `ai_check_plan` with a spinner, renders concerns grouped by severity with metric cards (critical / warning / info / coherence / client-fit) + token telemetry. Draft state has a "💾 Save to plan" button to persist into `plan.ai_sanity_check`; published state is inspect-only (no overwrite of frozen records).
+- **Client-facing render** (`fmdb/plan/render.py` — new module). `render_markdown(plan, client, cat)` and `render_html(plan, client, cat)` turn the structured Plan into a hand-off artifact: catalogue slugs replaced with display names, mechanisms hidden (too clinical for client), `notes_for_coach` / `status_history` / `ai_sanity_check` / `version` / git SHA all stripped. Sections rephrased into plain English ("Daily practices", "What I'd like you to learn", "What to track").
+- HTML output is standalone: embeds print-friendly CSS (A4 page, brand-green palette `#14532d`, page-break-inside on tables, `@media print` rules). No external assets. Coach saves the HTML, opens in browser, hits `Cmd+P → Save as PDF` for a polished hand-off — avoids forcing weasyprint / wkhtmltopdf installs.
+- Zero new dependencies. Pure-Python markdown→HTML inline converter handles **bold** / *italic* / `code` / lists / tables / horizontal rules / continuation indents on list items.
+- New CLI: `fmdb plan-render <slug> [--format markdown|html] [-o FILE]`. Defaults to markdown to stdout.
+- New UI section in the Lifecycle tab: 📄 Client-facing export with "Download Markdown" + "Download HTML (print-ready)" + "Preview" buttons. Filename is `<slug>-v<N>.md/.html`.
+- Smoke-tested on `cl-001-2026-04-29-foundations` (renders three primary topics with first-sentence summaries) and a synthetic richer plan (supplement protocol table with two supplements, titration captured in notes block).
+
+**v0.23** — Lifecycle wired into the UI + AI sanity check on plans:
 - **Streamlit UI integration of the publish lifecycle** (`fmdb_ui/app.py`). Plan list now shows `slug · status · version` with a status filter. Plan editor heading renders a colored status badge (gray/yellow/green/orange/red). New **🚀 Lifecycle tab** on each plan with: status + version + catalogue snapshot date + git SHA, `status_history` timeline (state · by · at · reason), state-specific action buttons (draft → Run plan-check + Submit; ready → Publish with irreversible-checkbox confirm; published → Revoke with required reason + Create successor that pre-fills `supersedes`), and a diff viewer (two slug selectboxes → `st.code(diff, language="diff")`).
 - Inline plan-check findings before Submit — CRITICAL count blocks the action with a clear message; WARNING + INFO display but don't block. Two-step confirm pattern via `st.session_state` for irreversible actions (no JS modals — checkbox + button is the Streamlit-native way).
 - Punted: "Back to draft" from ready_to_publish (would require a new transition function and felt out of scope for v0.23).
@@ -460,7 +469,7 @@ Sidebar pages: 🧠 Assess & Suggest (default), 📋 Plans, 👥 Clients, 🧭 M
 1. **Finish PDF ingest pass** — ~30 VitaOne PDFs remaining (~$15 to do all). Phase 1 (10 cheatsheets) in flight at v0.20 commit.
 2. ~~Plan publish + diff-guard~~ — ✅ done in v0.22 (`plan-submit`, `plan-publish`, `plan-revoke`, `plan-supersede`, `plan-diff`).
 3. ~~AI sanity check on plans~~ — ✅ done in v0.23 (`fmdb plan-ai-check <slug>`; populates `plan.ai_sanity_check`).
-4. **Markdown / PDF render of plan** for client-facing print-ready output.
+4. ~~Markdown / PDF render of plan~~ — ✅ done in v0.24 (`fmdb plan-render` + Lifecycle-tab download buttons; PDF via browser Print-to-PDF).
 5. **Wire Resources into Plan editor** — "attach resource" buttons per plan section; auto-generate per-client folder of selected handouts.
 6. **Cross-link curated MindMap nodes to catalogue entities** (currently every node is a plain label; could fuzzy-match to existing slugs OR hand-author the linking).
 7. **Mine curated MindMap nodes → backlog suggestions** (874 imported nodes; many would surface useful catalogue additions).

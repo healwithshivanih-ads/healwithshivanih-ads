@@ -878,6 +878,61 @@ def _coach_user() -> str:
     return os.environ.get("FMDB_USER", "shivani")
 
 
+def _render_ai_concerns(result: dict, key_prefix: str) -> int:
+    """Render AI sanity-check result. Returns count of CRITICAL concerns."""
+    concerns = result.get("concerns", []) or []
+    overall = result.get("overall_assessment", "")
+    coh = result.get("coherence_score")
+    fit = result.get("client_fit_score")
+    usage = result.get("_usage", {}) or {}
+
+    if not concerns:
+        st.success("✅ AI sanity check found no concerns.")
+        if overall:
+            st.caption(overall)
+        return 0
+
+    counts = {"critical": 0, "warning": 0, "info": 0}
+    for c in concerns:
+        sev = c.get("severity", "info").lower()
+        if sev in counts:
+            counts[sev] += 1
+    cols = st.columns(5)
+    cols[0].metric("🔴 Critical", counts["critical"])
+    cols[1].metric("🟡 Warning", counts["warning"])
+    cols[2].metric("🔵 Info", counts["info"])
+    if coh is not None:
+        cols[3].metric("Coherence", f"{coh}/5")
+    if fit is not None:
+        cols[4].metric("Client fit", f"{fit}/5")
+    if overall:
+        st.info(f"**Overall:** {overall}")
+    for sev, icon in [("critical", "🔴"), ("warning", "🟡"), ("info", "🔵")]:
+        sev_concerns = [c for c in concerns if c.get("severity", "").lower() == sev]
+        if not sev_concerns:
+            continue
+        with st.expander(f"{icon} {sev.upper()} ({len(sev_concerns)})",
+                         expanded=(sev == "critical")):
+            for c in sev_concerns:
+                cat = c.get("category", "—")
+                where = c.get("where", "—")
+                msg = c.get("message", "")
+                fix = c.get("suggested_fix", "")
+                st.markdown(f"**[{cat}]** `{where}`")
+                st.markdown(msg)
+                if fix:
+                    st.caption(f"💡 Suggested fix: {fix}")
+                st.markdown("")
+    if usage:
+        st.caption(
+            f"📊 Tokens — input: {usage.get('input_tokens', '?')} · "
+            f"output: {usage.get('output_tokens', '?')} · "
+            f"cache read: {usage.get('cache_read_input_tokens', 0)} · "
+            f"cache write: {usage.get('cache_creation_input_tokens', 0)}"
+        )
+    return counts["critical"]
+
+
 def _render_findings(findings: list, key_prefix: str) -> int:
     """Render findings grouped by severity. Returns count of CRITICAL findings."""
     if not findings:
@@ -955,17 +1010,79 @@ def render_lifecycle_panel(plan: Plan, client: Client, cat, root: Path):
 
     st.divider()
 
+    # ----- Client-facing render -----
+    render_client_export(plan, client, cat)
+
+    st.divider()
+
     # ----- Diff viewer -----
     render_diff_viewer(plan, root)
 
 
+def render_client_export(plan: Plan, client: Optional[Client], cat):
+    """Markdown + HTML export for handing to the client."""
+    from fmdb.plan import render as plan_render
+    st.markdown("**📄 Client-facing export**")
+    st.caption(
+        "Strips slugs, status_history, ai_sanity_check, and coach notes. "
+        "Use the HTML download then your browser's Print → Save as PDF for a polished hand-off."
+    )
+    col_md, col_html, col_preview = st.columns([1, 1, 1])
+    md = plan_render.render_markdown(plan, client, cat)
+    htm = plan_render.render_html(plan, client, cat)
+    base_name = f"{plan.slug}-v{plan.version}"
+    col_md.download_button(
+        "⬇ Download Markdown",
+        data=md, file_name=f"{base_name}.md",
+        mime="text/markdown", key=f"dl_md_{plan.slug}",
+    )
+    col_html.download_button(
+        "⬇ Download HTML (print-ready)",
+        data=htm, file_name=f"{base_name}.html",
+        mime="text/html", key=f"dl_html_{plan.slug}",
+    )
+    if col_preview.button("👁 Preview", key=f"preview_{plan.slug}"):
+        st.session_state[f"_show_preview_{plan.slug}"] = \
+            not st.session_state.get(f"_show_preview_{plan.slug}", False)
+    if st.session_state.get(f"_show_preview_{plan.slug}"):
+        with st.expander("Markdown preview", expanded=True):
+            st.markdown(md)
+
+
 def _lifecycle_actions_draft(plan: Plan, client: Client, cat, root: Path, user: str):
     st.markdown("**Actions**")
-    c1, c2 = st.columns(2)
+    c1, c2, c3 = st.columns(3)
     if c1.button("🔍 Run plan-check", key=f"check_{plan.slug}"):
         st.session_state[f"_show_check_{plan.slug}"] = True
-    if c2.button("📤 Submit for publishing", key=f"submit_{plan.slug}", type="primary"):
+    if c2.button("🧠 Run AI sanity check", key=f"aichk_{plan.slug}",
+                 help="Layered Claude check for coherence, client fit, "
+                      "translation accuracy. ~$0.08 cold, ~$0.02 warm."):
+        with st.spinner("Calling Claude (≈10–20s)…"):
+            from fmdb.plan.ai_check import ai_check_plan
+            try:
+                result = ai_check_plan(plan, client, cat)
+                st.session_state[f"_ai_result_{plan.slug}"] = result
+            except Exception as e:
+                st.session_state[f"_ai_error_{plan.slug}"] = str(e)
+    if c3.button("📤 Submit for publishing", key=f"submit_{plan.slug}", type="primary"):
         st.session_state[f"_submit_attempt_{plan.slug}"] = True
+
+    # Inline AI sanity check display
+    if st.session_state.get(f"_ai_error_{plan.slug}"):
+        st.error(f"❌ AI check failed: {st.session_state.pop(f'_ai_error_{plan.slug}')}")
+    if st.session_state.get(f"_ai_result_{plan.slug}"):
+        st.markdown("**🧠 AI sanity check**")
+        ai_result = st.session_state[f"_ai_result_{plan.slug}"]
+        _render_ai_concerns(ai_result, f"ai_{plan.slug}")
+        save_col, clear_col = st.columns([1, 4])
+        if save_col.button("💾 Save to plan", key=f"ai_save_{plan.slug}"):
+            plan.ai_sanity_check = ai_result
+            plan.updated_by = user
+            plan_storage.write_plan(root, plan)
+            st.success("✅ Saved to plan.ai_sanity_check.")
+        if clear_col.button("Dismiss", key=f"ai_clear_{plan.slug}"):
+            st.session_state.pop(f"_ai_result_{plan.slug}", None)
+            st.rerun()
 
     # Inline plan-check display
     if st.session_state.get(f"_show_check_{plan.slug}") or \
@@ -1029,6 +1146,27 @@ def _lifecycle_actions_ready(plan: Plan, client: Client, cat, root: Path, user: 
 
 def _lifecycle_actions_published(plan: Plan, client: Client, root: Path, user: str):
     st.markdown("**Actions**")
+
+    # AI sanity check (read-only on published plans — don't save back)
+    if st.button("🧠 Run AI sanity check", key=f"aichk_pub_{plan.slug}",
+                 help="Inspect this published plan against the current catalogue."):
+        from fmdb.plan.ai_check import ai_check_plan
+        from fmdb.validator import load_all
+        with st.spinner("Calling Claude (≈10–20s)…"):
+            try:
+                cat = load_all(DATA_DIR)
+                result = ai_check_plan(plan, client, cat)
+                st.session_state[f"_ai_result_{plan.slug}"] = result
+            except Exception as e:
+                st.session_state[f"_ai_error_{plan.slug}"] = str(e)
+    if st.session_state.get(f"_ai_error_{plan.slug}"):
+        st.error(f"❌ AI check failed: {st.session_state.pop(f'_ai_error_{plan.slug}')}")
+    if st.session_state.get(f"_ai_result_{plan.slug}"):
+        _render_ai_concerns(st.session_state[f"_ai_result_{plan.slug}"], f"ai_{plan.slug}")
+        if st.button("Dismiss", key=f"ai_clear_pub_{plan.slug}"):
+            st.session_state.pop(f"_ai_result_{plan.slug}", None)
+            st.rerun()
+        st.divider()
 
     # Revoke + Successor side by side
     rev_col, sup_col = st.columns(2)
