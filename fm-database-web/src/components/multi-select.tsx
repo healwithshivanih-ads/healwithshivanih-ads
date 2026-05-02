@@ -1,5 +1,10 @@
 "use client";
 
+// TODO(next-turn): the Assess page (src/app/assess/assess-client.tsx) has a
+// duplicate inline MultiSelect from v0.28. Consolidate to use this shared
+// component — leave to a follow-up turn to avoid cross-territory edits while
+// the assess flow is being refactored.
+
 import { useMemo, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";

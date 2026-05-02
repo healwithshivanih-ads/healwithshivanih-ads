@@ -7,8 +7,17 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { runAssessAction, generateDraftAction, uploadFileAction } from "./actions";
-import type { AssessResult, AssessUsage } from "@/lib/fmdb/anthropic-types";
+import {
+  runAssessAction,
+  generateDraftAction,
+  uploadFileAction,
+  chatAction,
+} from "./actions";
+import type {
+  AssessResult,
+  AssessUsage,
+  ChatTurn,
+} from "@/lib/fmdb/anthropic-types";
 
 type Opt = { slug: string; label: string; aliases?: string[] };
 
@@ -420,6 +429,154 @@ function SuggestionsView({
   );
 }
 
+function ChatPanel({
+  clientId,
+  sessionId,
+  dryRun,
+}: {
+  clientId: string;
+  sessionId: string;
+  dryRun: boolean;
+}) {
+  const [history, setHistory] = useState<ChatTurn[]>([]);
+  const [draft, setDraft] = useState("");
+  const [usageByIndex, setUsageByIndex] = useState<
+    Record<number, AssessUsage | undefined>
+  >({});
+  const [error, setError] = useState<string | null>(null);
+  const [pending, startTransition] = useTransition();
+
+  const onSend = () => {
+    const msg = draft.trim();
+    if (!msg || pending) return;
+    setError(null);
+    const next: ChatTurn[] = [
+      ...history,
+      { role: "user", content: msg, at: new Date().toISOString() },
+    ];
+    setHistory(next);
+    setDraft("");
+    startTransition(async () => {
+      try {
+        const res = await chatAction({
+          client_id: clientId,
+          session_id: sessionId,
+          history,
+          user_message: msg,
+          dry_run: dryRun,
+        });
+        if (!res.ok || !res.assistant_message) {
+          setError(res.error || "Chat call failed");
+          return;
+        }
+        const reply: ChatTurn = {
+          role: "assistant",
+          content: res.assistant_message,
+          at: new Date().toISOString(),
+        };
+        setHistory((h) => {
+          const newHistory = [...h, reply];
+          setUsageByIndex((u) => ({ ...u, [newHistory.length - 1]: res.usage }));
+          return newHistory;
+        });
+      } catch (e) {
+        setError((e as Error).message);
+      }
+    });
+  };
+
+  const onKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      onSend();
+    }
+  };
+
+  return (
+    <Card>
+      <CardHeader className="pb-2">
+        <CardTitle className="text-sm">
+          💬 Chat — refine these suggestions
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-3">
+        <div className="text-xs text-muted-foreground">
+          Ask follow-ups: "is ashwagandha safe with Hashimoto's?", "swap
+          magnesium-glycinate for magnesium-threonate — implications?". Each
+          turn reuses the cached client + catalogue context (~$0.05–0.10).
+        </div>
+
+        <div className="border rounded p-3 max-h-[400px] overflow-y-auto bg-muted/30 space-y-3">
+          {history.length === 0 && (
+            <p className="text-sm text-muted-foreground italic">
+              No messages yet — ask anything about this assessment.
+            </p>
+          )}
+          {history.map((turn, i) => {
+            const isUser = turn.role === "user";
+            const usage = usageByIndex[i];
+            return (
+              <div
+                key={i}
+                className={
+                  isUser
+                    ? "flex justify-end"
+                    : "flex flex-col items-start gap-1"
+                }
+              >
+                <div
+                  className={
+                    isUser
+                      ? "max-w-[80%] rounded-lg px-3 py-2 text-sm bg-primary text-primary-foreground whitespace-pre-wrap"
+                      : "max-w-[85%] rounded-lg px-3 py-2 text-sm bg-background border whitespace-pre-wrap"
+                  }
+                >
+                  {turn.content}
+                </div>
+                {!isUser && usage && (
+                  <span className="text-[10px] text-muted-foreground pl-1">
+                    tokens — in: {usage.input_tokens ?? "?"} · out:{" "}
+                    {usage.output_tokens ?? "?"} · cache hit:{" "}
+                    {usage.cache_read_input_tokens ?? 0}
+                    {usage.model ? ` · ${usage.model}` : ""}
+                  </span>
+                )}
+              </div>
+            );
+          })}
+          {pending && (
+            <div className="flex items-center gap-2 text-xs text-muted-foreground">
+              <span className="inline-block w-3 h-3 border-2 border-current border-t-transparent rounded-full animate-spin" />
+              thinking…
+            </div>
+          )}
+        </div>
+
+        <div className="flex gap-2 items-end">
+          <textarea
+            value={draft}
+            onChange={(e) => setDraft(e.target.value)}
+            onKeyDown={onKeyDown}
+            placeholder="Ask a follow-up… (Enter to send, Shift+Enter for newline)"
+            rows={2}
+            className="flex-1 rounded border bg-background px-2 py-1 text-sm resize-y min-h-[40px]"
+            disabled={pending}
+          />
+          <Button onClick={onSend} disabled={pending || !draft.trim()}>
+            {pending ? "Sending…" : "Send"}
+          </Button>
+        </div>
+
+        {error && (
+          <p className="text-sm text-red-700 bg-red-50 border border-red-200 rounded p-2">
+            {error}
+          </p>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
+
 export function AssessClient({ clients, symptoms, topics }: Props) {
   const router = useRouter();
   const [clientId, setClientId] = useState<string>(clients[0]?.client_id ?? "");
@@ -716,6 +873,13 @@ export function AssessClient({ clients, symptoms, topics }: Props) {
               </Button>
             </CardContent>
           </Card>
+          {result.session_id && (
+            <ChatPanel
+              clientId={clientId}
+              sessionId={result.session_id}
+              dryRun={dryRun}
+            />
+          )}
         </div>
       )}
     </div>

@@ -3,11 +3,14 @@
 import {
   runAssess,
   generateDraftFromSuggestions,
+  runChat,
   saveClientUpload,
   type AssessInput,
   type AssessResult,
   type GenerateDraftInput,
   type GenerateDraftResult,
+  type ChatInput,
+  type ChatResult,
 } from "@/lib/fmdb/anthropic";
 
 export async function runAssessAction(
@@ -20,6 +23,10 @@ export async function generateDraftAction(
   input: GenerateDraftInput
 ): Promise<GenerateDraftResult> {
   return generateDraftFromSuggestions(input);
+}
+
+export async function chatAction(input: ChatInput): Promise<ChatResult> {
+  return runChat(input);
 }
 
 export async function uploadFileAction(

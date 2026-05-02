@@ -45,3 +45,28 @@ export interface GenerateDraftResult {
   path?: string;
   error?: string | null;
 }
+
+// ---------------------------------------------------------------------------
+// Multi-turn chat (Assess follow-up panel) — wraps fmdb.assess.suggester.chat.
+// ---------------------------------------------------------------------------
+
+export interface ChatTurn {
+  role: "user" | "assistant";
+  content: string;
+  at?: string; // ISO timestamp (set server-side on persist)
+}
+
+export interface ChatInput {
+  client_id: string;
+  session_id: string;
+  history: ChatTurn[];
+  user_message: string;
+  dry_run?: boolean;
+}
+
+export interface ChatResult {
+  ok: boolean;
+  assistant_message?: string;
+  usage?: AssessUsage;
+  error?: string | null;
+}

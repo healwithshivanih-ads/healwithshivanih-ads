@@ -37,6 +37,31 @@ interface HypothesizedDriver {
   reasoning: string;
 }
 
+interface PracticeItem {
+  name: string;
+  cadence: string;
+  details?: string;
+}
+
+interface EducationModuleItem {
+  target_kind: string; // "topic" | "mechanism" | "claim"
+  target_slug: string;
+  client_facing_summary?: string;
+}
+
+interface LabOrderItem {
+  test: string;
+  reason?: string;
+}
+
+interface ReferralItem {
+  to: string;
+  reason: string;
+  urgency: string; // matches ReferralUrgency enum
+}
+
+const REFERRAL_URGENCIES = ["routine", "soon", "urgent", "emergency"] as const;
+
 export interface PlanEditorProps {
   plan: Plan;
   topicOptions: MultiSelectOption[];
@@ -111,6 +136,21 @@ export function PlanEditor(props: PlanEditorProps) {
     (plan.hypothesized_drivers as HypothesizedDriver[]) ?? [];
   const tracking: Tracking = (plan.tracking as Tracking) ?? {};
   const nutrition = (plan.nutrition as Record<string, unknown>) ?? {};
+  const lifestyle: PracticeItem[] =
+    (plan.lifestyle_practices as PracticeItem[]) ?? [];
+  const education: EducationModuleItem[] =
+    (plan.education as EducationModuleItem[]) ?? [];
+  const labOrders: LabOrderItem[] = (plan.lab_orders as LabOrderItem[]) ?? [];
+  const referrals: ReferralItem[] = (plan.referrals as ReferralItem[]) ?? [];
+  const nutritionAdd: string[] = (nutrition.add as string[]) ?? [];
+  const nutritionReduce: string[] = (nutrition.reduce as string[]) ?? [];
+
+  function optionsForKind(kind: string): MultiSelectOption[] {
+    if (kind === "topic") return topicOptions;
+    if (kind === "mechanism") return mechanismOptions;
+    // claim — we don't load claims options into the editor; fall back to empty
+    return [];
+  }
 
   return (
     <div className="space-y-4">
@@ -585,45 +625,358 @@ export function PlanEditor(props: PlanEditorProps) {
                   onChange={(v) => patchNutrition("home_remedies", v)}
                 />
               </div>
-              <p className="text-xs text-muted-foreground italic">
-                {/* TODO(next-turn): add foods (add[] / reduce[]) freeform list editors. */}
-                Add / reduce food lists not yet wired — edit via Streamlit or
-                YAML for now.
-              </p>
+              <FreeformStringList
+                label="Foods to add"
+                value={nutritionAdd}
+                onChange={(v) => patchNutrition("add", v)}
+                placeholder="e.g. cooked leafy greens"
+                addLabel="+ Add food"
+              />
+              <FreeformStringList
+                label="Foods to reduce"
+                value={nutritionReduce}
+                onChange={(v) => patchNutrition("reduce", v)}
+                placeholder="e.g. ultra-processed snacks"
+                addLabel="+ Add food"
+              />
             </CardContent>
           </Card>
         </TabsContent>
 
-        {/* ─────────── Stub tabs ─────────── */}
+        {/* ─────────── Lifestyle ─────────── */}
         <TabsContent value="lifestyle">
           <Card>
-            <CardContent className="pt-6 text-sm text-muted-foreground">
-              {/* TODO(next-turn): list-of-PracticeItem editor. */}
-              Lifestyle practices editor — not yet wired. Use Streamlit / YAML.
+            <CardHeader>
+              <CardTitle>Lifestyle practices</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              {lifestyle.map((p, i) => (
+                <div
+                  key={i}
+                  className="border rounded-md p-3 space-y-2 bg-muted/20"
+                >
+                  <div className="flex gap-2">
+                    <Input
+                      placeholder="Name (e.g. morning sunlight)"
+                      value={p.name}
+                      onChange={(e) => {
+                        const next = [...lifestyle];
+                        next[i] = { ...next[i], name: e.target.value };
+                        patch("lifestyle_practices", next);
+                      }}
+                    />
+                    <Input
+                      placeholder="Cadence (e.g. daily)"
+                      value={p.cadence}
+                      onChange={(e) => {
+                        const next = [...lifestyle];
+                        next[i] = { ...next[i], cadence: e.target.value };
+                        patch("lifestyle_practices", next);
+                      }}
+                    />
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() =>
+                        patch(
+                          "lifestyle",
+                          lifestyle.filter((_, j) => j !== i)
+                        )
+                      }
+                    >
+                      Remove
+                    </Button>
+                  </div>
+                  <textarea
+                    placeholder="Details — how to do it, what to expect"
+                    value={p.details ?? ""}
+                    onChange={(e) => {
+                      const next = [...lifestyle];
+                      next[i] = { ...next[i], details: e.target.value };
+                      patch("lifestyle_practices", next);
+                    }}
+                    className="w-full text-sm border rounded-md p-2 min-h-[60px] bg-background"
+                  />
+                </div>
+              ))}
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() =>
+                  patch("lifestyle_practices", [
+                    ...lifestyle,
+                    { name: "", cadence: "", details: "" },
+                  ])
+                }
+              >
+                + Add practice
+              </Button>
             </CardContent>
           </Card>
         </TabsContent>
+
+        {/* ─────────── Education ─────────── */}
         <TabsContent value="education">
           <Card>
-            <CardContent className="pt-6 text-sm text-muted-foreground">
-              {/* TODO(next-turn): EducationModule list editor. */}
-              Education modules editor — not yet wired.
+            <CardHeader>
+              <CardTitle>Education modules</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              {education.map((em, i) => {
+                const opts = optionsForKind(em.target_kind);
+                return (
+                  <div
+                    key={i}
+                    className="border rounded-md p-3 space-y-2 bg-muted/20"
+                  >
+                    <div className="flex gap-2">
+                      <select
+                        value={em.target_kind}
+                        onChange={(e) => {
+                          const next = [...education];
+                          // Changing kind clears the slug — slugs aren't
+                          // interchangeable across topic/mechanism/claim.
+                          next[i] = {
+                            ...next[i],
+                            target_kind: e.target.value,
+                            target_slug: "",
+                          };
+                          patch("education", next);
+                        }}
+                        className="h-9 px-2 text-sm border rounded-md bg-background"
+                      >
+                        <option value="topic">topic</option>
+                        <option value="mechanism">mechanism</option>
+                        <option value="claim">claim</option>
+                      </select>
+                      <select
+                        value={em.target_slug}
+                        onChange={(e) => {
+                          const next = [...education];
+                          next[i] = { ...next[i], target_slug: e.target.value };
+                          patch("education", next);
+                        }}
+                        className="flex-1 h-9 px-2 text-sm border rounded-md bg-background"
+                      >
+                        <option value="">
+                          {em.target_kind === "claim"
+                            ? "— claim slug (paste below) —"
+                            : `— ${em.target_kind} —`}
+                        </option>
+                        {opts.map((o) => (
+                          <option key={o.value} value={o.value}>
+                            {o.label} ({o.value})
+                          </option>
+                        ))}
+                      </select>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={() =>
+                          patch(
+                            "education",
+                            education.filter((_, j) => j !== i)
+                          )
+                        }
+                      >
+                        Remove
+                      </Button>
+                    </div>
+                    {em.target_kind === "claim" && (
+                      <Input
+                        placeholder="Claim slug (no picker for claims yet)"
+                        value={em.target_slug}
+                        onChange={(e) => {
+                          const next = [...education];
+                          next[i] = {
+                            ...next[i],
+                            target_slug: e.target.value,
+                          };
+                          patch("education", next);
+                        }}
+                      />
+                    )}
+                    <textarea
+                      placeholder="Client-facing summary — what you'll actually say"
+                      value={em.client_facing_summary ?? ""}
+                      onChange={(e) => {
+                        const next = [...education];
+                        next[i] = {
+                          ...next[i],
+                          client_facing_summary: e.target.value,
+                        };
+                        patch("education", next);
+                      }}
+                      className="w-full text-sm border rounded-md p-2 min-h-[60px] bg-background"
+                    />
+                  </div>
+                );
+              })}
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() =>
+                  patch("education", [
+                    ...education,
+                    {
+                      target_kind: "topic",
+                      target_slug: "",
+                      client_facing_summary: "",
+                    },
+                  ])
+                }
+              >
+                + Add module
+              </Button>
             </CardContent>
           </Card>
         </TabsContent>
+
+        {/* ─────────── Labs ─────────── */}
         <TabsContent value="labs">
           <Card>
-            <CardContent className="pt-6 text-sm text-muted-foreground">
-              {/* TODO(next-turn): LabOrderItem list. */}
-              Lab orders editor — not yet wired.
+            <CardHeader>
+              <CardTitle>Lab orders</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              {labOrders.map((lo, i) => (
+                <div
+                  key={i}
+                  className="border rounded-md p-3 space-y-2 bg-muted/20"
+                >
+                  <div className="flex gap-2">
+                    <Input
+                      placeholder="Test (e.g. fT3, fT4, TPO antibodies)"
+                      value={lo.test}
+                      onChange={(e) => {
+                        const next = [...labOrders];
+                        next[i] = { ...next[i], test: e.target.value };
+                        patch("lab_orders", next);
+                      }}
+                    />
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() =>
+                        patch(
+                          "lab_orders",
+                          labOrders.filter((_, j) => j !== i)
+                        )
+                      }
+                    >
+                      Remove
+                    </Button>
+                  </div>
+                  <textarea
+                    placeholder="Reason — what you're looking for, why it matters now"
+                    value={lo.reason ?? ""}
+                    onChange={(e) => {
+                      const next = [...labOrders];
+                      next[i] = { ...next[i], reason: e.target.value };
+                      patch("lab_orders", next);
+                    }}
+                    className="w-full text-sm border rounded-md p-2 min-h-[60px] bg-background"
+                  />
+                </div>
+              ))}
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() =>
+                  patch("lab_orders", [
+                    ...labOrders,
+                    { test: "", reason: "" },
+                  ])
+                }
+              >
+                + Add lab
+              </Button>
             </CardContent>
           </Card>
         </TabsContent>
+
+        {/* ─────────── Referrals ─────────── */}
         <TabsContent value="referrals">
           <Card>
-            <CardContent className="pt-6 text-sm text-muted-foreground">
-              {/* TODO(next-turn): ReferralItem list with urgency dropdown. */}
-              Referrals editor — not yet wired.
+            <CardHeader>
+              <CardTitle>Referrals</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              {referrals.map((r, i) => (
+                <div
+                  key={i}
+                  className="border rounded-md p-3 space-y-2 bg-muted/20"
+                >
+                  <div className="flex gap-2">
+                    <Input
+                      placeholder="To (role/specialty — e.g. menopause-certified clinician)"
+                      value={r.to}
+                      onChange={(e) => {
+                        const next = [...referrals];
+                        next[i] = { ...next[i], to: e.target.value };
+                        patch("referrals", next);
+                      }}
+                    />
+                    <select
+                      value={r.urgency || "routine"}
+                      onChange={(e) => {
+                        const next = [...referrals];
+                        next[i] = { ...next[i], urgency: e.target.value };
+                        patch("referrals", next);
+                      }}
+                      className="h-9 px-2 text-sm border rounded-md bg-background"
+                    >
+                      {REFERRAL_URGENCIES.map((u) => (
+                        <option key={u} value={u}>
+                          {u}
+                        </option>
+                      ))}
+                    </select>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() =>
+                        patch(
+                          "referrals",
+                          referrals.filter((_, j) => j !== i)
+                        )
+                      }
+                    >
+                      Remove
+                    </Button>
+                  </div>
+                  <textarea
+                    placeholder="Reason — why this referral, what you want them to look at"
+                    value={r.reason}
+                    onChange={(e) => {
+                      const next = [...referrals];
+                      next[i] = { ...next[i], reason: e.target.value };
+                      patch("referrals", next);
+                    }}
+                    className="w-full text-sm border rounded-md p-2 min-h-[60px] bg-background"
+                  />
+                </div>
+              ))}
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() =>
+                  patch("referrals", [
+                    ...referrals,
+                    { to: "", reason: "", urgency: "routine" },
+                  ])
+                }
+              >
+                + Add referral
+              </Button>
             </CardContent>
           </Card>
         </TabsContent>
@@ -680,6 +1033,60 @@ export function PlanEditor(props: PlanEditorProps) {
         </span>
         <span>Version: {plan.version ?? 1}</span>
         <span>Updated: {String(plan.updated_at ?? "—")}</span>
+      </div>
+    </div>
+  );
+}
+
+interface FreeformStringListProps {
+  label: string;
+  value: string[];
+  onChange: (next: string[]) => void;
+  placeholder?: string;
+  addLabel?: string;
+}
+
+/** Vertical list of freeform string rows with Add at bottom + Remove per row. */
+function FreeformStringList({
+  label,
+  value,
+  onChange,
+  placeholder,
+  addLabel = "+ Add",
+}: FreeformStringListProps) {
+  return (
+    <div>
+      <label className="block text-sm font-medium mb-1.5">{label}</label>
+      <div className="space-y-2">
+        {value.map((v, i) => (
+          <div key={i} className="flex gap-2">
+            <Input
+              value={v}
+              placeholder={placeholder}
+              onChange={(e) => {
+                const next = [...value];
+                next[i] = e.target.value;
+                onChange(next);
+              }}
+            />
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => onChange(value.filter((_, j) => j !== i))}
+            >
+              Remove
+            </Button>
+          </div>
+        ))}
+        <Button
+          type="button"
+          variant="outline"
+          size="sm"
+          onClick={() => onChange([...value, ""])}
+        >
+          {addLabel}
+        </Button>
       </div>
     </div>
   );

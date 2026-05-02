@@ -15,6 +15,7 @@ import type {
   Topic,
 } from "@/lib/fmdb/types";
 import { PlanEditor } from "./plan-editor";
+import { PlanCheckPanel } from "./plan-check-panel";
 import type { MultiSelectOption } from "@/components/multi-select";
 
 export const dynamic = "force-dynamic";
@@ -84,7 +85,7 @@ export default async function PlanDetailPage({
   void _file;
 
   return (
-    <div className="space-y-6 max-w-5xl">
+    <div className="space-y-6">
       <Link
         href="/plans"
         className="text-sm text-muted-foreground hover:underline"
@@ -100,17 +101,24 @@ export default async function PlanDetailPage({
         </span>
       </div>
 
-      <PlanEditor
-        plan={editable}
-        topicOptions={toOptions(topics)}
-        symptomOptions={toOptions(symptoms)}
-        mechanismOptions={toOptions(mechanisms)}
-        supplementOptions={toOptions(supplements)}
-        cookingOptions={toOptions(cooking)}
-        remedyOptions={toOptions(remedies)}
-        resourceOptions={resources}
-        locked={locked}
-      />
+      <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_320px] gap-6 items-start">
+        <div className="min-w-0 max-w-5xl">
+          <PlanEditor
+            plan={editable}
+            topicOptions={toOptions(topics)}
+            symptomOptions={toOptions(symptoms)}
+            mechanismOptions={toOptions(mechanisms)}
+            supplementOptions={toOptions(supplements)}
+            cookingOptions={toOptions(cooking)}
+            remedyOptions={toOptions(remedies)}
+            resourceOptions={resources}
+            locked={locked}
+          />
+        </div>
+        <aside>
+          <PlanCheckPanel slug={plan.slug} />
+        </aside>
+      </div>
     </div>
   );
 }

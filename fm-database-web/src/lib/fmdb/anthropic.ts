@@ -10,12 +10,17 @@ export type {
   AssessResult,
   GenerateDraftInput,
   GenerateDraftResult,
+  ChatTurn,
+  ChatInput,
+  ChatResult,
 } from "./anthropic-types";
 import type {
   AssessInput,
   AssessResult,
   GenerateDraftInput,
   GenerateDraftResult,
+  ChatInput,
+  ChatResult,
 } from "./anthropic-types";
 
 const PYTHON =
@@ -72,6 +77,11 @@ export async function generateDraftFromSuggestions(
     input,
     30_000
   )) as GenerateDraftResult;
+  return result;
+}
+
+export async function runChat(input: ChatInput): Promise<ChatResult> {
+  const result = (await runShim("chat.py", input, 60_000)) as ChatResult;
   return result;
 }
 
