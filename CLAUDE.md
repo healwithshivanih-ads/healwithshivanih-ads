@@ -14,7 +14,18 @@ published plans as JSON artifacts.
 
 ## Status
 
-**v0.22 (current)** — Plan publish lifecycle (submit / publish / revoke / supersede / diff):
+**v0.23 (current)** — Lifecycle wired into the UI + AI sanity check on plans:
+- **Streamlit UI integration of the publish lifecycle** (`fmdb_ui/app.py`). Plan list now shows `slug · status · version` with a status filter. Plan editor heading renders a colored status badge (gray/yellow/green/orange/red). New **🚀 Lifecycle tab** on each plan with: status + version + catalogue snapshot date + git SHA, `status_history` timeline (state · by · at · reason), state-specific action buttons (draft → Run plan-check + Submit; ready → Publish with irreversible-checkbox confirm; published → Revoke with required reason + Create successor that pre-fills `supersedes`), and a diff viewer (two slug selectboxes → `st.code(diff, language="diff")`).
+- Inline plan-check findings before Submit — CRITICAL count blocks the action with a clear message; WARNING + INFO display but don't block. Two-step confirm pattern via `st.session_state` for irreversible actions (no JS modals — checkbox + button is the Streamlit-native way).
+- Punted: "Back to draft" from ready_to_publish (would require a new transition function and felt out of scope for v0.23).
+- **AI sanity check on plans** (`fmdb/plan/ai_check.py` — new module). Layers a Claude call on top of the deterministic checker for things the checker can't catch: coherence (does the protocol address the assessment?), client fit (does the plan respect `medical_history` / `active_conditions` / `medications` / `allergies`?), translation accuracy (does each `coach_rationale` match what the catalogue says about that supplement's mechanisms?), and completeness.
+- Subgraph-driven context: `_collect_plan_refs(plan)` + `_build_plan_subgraph(plan, cat)` pull only the catalogue records the plan actually references (topics, mechanisms, symptoms, supplements, claims) plus claims that cite in-scope entities. Alias-aware mechanism resolution. Plan + client snapshots strip provenance noise so the model sees substance.
+- Tool-use forces structured output: `{concerns: [{severity, category, message, where, suggested_fix?}], overall_assessment, coherence_score, client_fit_score}`. System prompt explicitly forbids re-flagging anything the deterministic checker handles.
+- Streaming + `cache_control: ephemeral` on the system block + catalogue subgraph block — first call ~$0.08, warm cache (within 5-min TTL) ~$0.02.
+- New CLI: `fmdb plan-ai-check <slug> [--save | --no-save]` (defaults to `--save`, persists into `plan.ai_sanity_check`). Mirrors `cmd_plan_check` output format. Exits 1 on any `critical` concern.
+- Smoke-tested on `cl-001-2026-04-29-foundations` (an empty draft): 3 critical + 2 warning + 2 info concerns, coherence=1/5, client_fit=2/5. Correctly identified the empty-shell issue + flagged a real client-fit concern (Hashimoto's vs future ashwagandha) + India-vegetarian nutrition note. No hallucinated slugs.
+
+**v0.22** — Plan publish lifecycle (submit / publish / revoke / supersede / diff):
 - New module `fmdb/plan/transitions.py` implements the full state machine: `draft → ready_to_publish → published → {superseded | revoked}`. Each transition appends a `StatusEvent` to `plan.status_history` with actor + reason + UTC timestamp.
 - **Submit gate.** `submit_plan()` re-runs `check_plan` and refuses to advance if any finding is `CRITICAL`. Errors surface the failing findings inline so the coach knows what to fix.
 - **Publish freezes the catalogue.** `publish_plan()` calls `git rev-parse --short HEAD` on the catalogue repo and pins `catalogue_snapshot.git_sha` + `snapshot_date` onto the plan before writing the versioned file. Re-runs the deterministic check first (catalogue may have drifted between submit and publish) and bumps `version` to `max(existing published versions) + 1`.
@@ -448,7 +459,7 @@ Sidebar pages: 🧠 Assess & Suggest (default), 📋 Plans, 👥 Clients, 🧭 M
 **Outstanding:**
 1. **Finish PDF ingest pass** — ~30 VitaOne PDFs remaining (~$15 to do all). Phase 1 (10 cheatsheets) in flight at v0.20 commit.
 2. ~~Plan publish + diff-guard~~ — ✅ done in v0.22 (`plan-submit`, `plan-publish`, `plan-revoke`, `plan-supersede`, `plan-diff`).
-3. **AI sanity check on plans** — layer Anthropic call on top of deterministic checker for coaching-translation accuracy and plan-vs-assessment coherence.
+3. ~~AI sanity check on plans~~ — ✅ done in v0.23 (`fmdb plan-ai-check <slug>`; populates `plan.ai_sanity_check`).
 4. **Markdown / PDF render of plan** for client-facing print-ready output.
 5. **Wire Resources into Plan editor** — "attach resource" buttons per plan section; auto-generate per-client folder of selected handouts.
 6. **Cross-link curated MindMap nodes to catalogue entities** (currently every node is a plain label; could fuzzy-match to existing slugs OR hand-author the linking).

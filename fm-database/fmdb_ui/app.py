@@ -72,7 +72,9 @@ def synthesize(*args, **kwargs):
 
 def ai_chat(*args, **kwargs):
     return suggester_mod.chat(*args, **kwargs)
+from fmdb.enums import PlanStatus
 from fmdb.plan import storage as plan_storage
+from fmdb.plan import transitions as plan_transitions
 from fmdb.plan.checker import check_plan
 from fmdb.plan.models import (
     CatalogueSnapshot,
@@ -188,6 +190,28 @@ def _evidence_badge(tier: str) -> str:
         f"<span style='display:inline-block; padding:2px 8px; "
         f"border-radius:10px; background:{color}; color:white; "
         f"font-size:0.75em; font-weight:500;'>{icon} {label}</span>"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Plan status badge helper
+# ---------------------------------------------------------------------------
+
+_PLAN_STATUS_STYLE = {
+    "draft":             ("#6c757d", "Draft"),               # gray
+    "ready_to_publish":  ("#c39000", "Ready to publish"),    # yellow/amber
+    "published":         ("#1f7a3a", "Published"),           # green
+    "superseded":        ("#c66400", "Superseded"),          # orange
+    "revoked":           ("#a82020", "Revoked"),             # red
+}
+
+
+def _plan_status_badge(status_value: str) -> str:
+    color, label = _PLAN_STATUS_STYLE.get(status_value, ("#666", status_value or "unknown"))
+    return (
+        f"<span style='display:inline-block; padding:3px 10px; "
+        f"border-radius:10px; background:{color}; color:white; "
+        f"font-size:0.8em; font-weight:600;'>{label}</span>"
     )
 
 
@@ -660,15 +684,41 @@ def render_plans_page():
         if not client_plans:
             st.info(f"No plans yet for `{client_choice}`. Create one in the **New plan** tab.")
         else:
-            chosen = st.selectbox(
-                "Plan",
-                [p.slug for p in client_plans],
-                format_func=lambda s: (
-                    f"{s} [{next((p.status.value for p in client_plans if p.slug == s), '?')}]"
-                ),
+            # Status filter
+            status_filter = st.multiselect(
+                "Filter by status",
+                options=[s.value for s in PlanStatus],
+                default=[s.value for s in PlanStatus],
+                key="plans_status_filter",
             )
-            plan = next(p for p in client_plans if p.slug == chosen)
-            render_plan_editor(plan, client, cat, root)
+            visible = [p for p in client_plans if p.status.value in status_filter]
+
+            # Compact summary table (slug · status · version)
+            with st.expander(f"📑 {len(visible)} plan(s) — slug · status · version", expanded=False):
+                for p in visible:
+                    color, label = _PLAN_STATUS_STYLE.get(
+                        p.status.value, ("#666", p.status.value)
+                    )
+                    st.markdown(
+                        f"- `{p.slug}` &nbsp; "
+                        f"<span style='color:{color}; font-weight:600'>{label}</span> &nbsp; "
+                        f"v{p.version}",
+                        unsafe_allow_html=True,
+                    )
+
+            if not visible:
+                st.info("No plans match the current status filter.")
+            else:
+                chosen = st.selectbox(
+                    "Plan",
+                    [p.slug for p in visible],
+                    format_func=lambda s: (
+                        f"{s} · v{next((p.version for p in visible if p.slug == s), '?')} "
+                        f"[{next((p.status.value for p in visible if p.slug == s), '?')}]"
+                    ),
+                )
+                plan = next(p for p in visible if p.slug == chosen)
+                render_plan_editor(plan, client, cat, root)
 
     with tab_new:
         render_new_plan_form(client, root)
@@ -731,10 +781,9 @@ def render_new_plan_form(client: Client, root: Path):
 def render_plan_editor(plan: Plan, client: Client, cat, root: Path):
     """Tabbed editor for a single plan + live plan-check sidebar."""
     st.markdown(
-        f"### `{plan.slug}` &nbsp;&nbsp;"
-        f"<span style='color:#888'>v{plan.version} · "
-        f"<b>{plan.status.value}</b> · "
-        f"client {plan.client_id}</span>",
+        f"### `{plan.slug}` &nbsp; · &nbsp; v{plan.version} &nbsp; "
+        f"{_plan_status_badge(plan.status.value)} &nbsp; "
+        f"<span style='color:#888'>client {plan.client_id}</span>",
         unsafe_allow_html=True,
     )
     st.caption(
@@ -785,6 +834,7 @@ def render_plan_editor(plan: Plan, client: Client, cat, root: Path):
             "🧪 Labs & Referrals",
             "📊 Tracking",
             "📝 Notes & Raw",
+            "🚀 Lifecycle",
         ])
 
         # === Assessment ===
@@ -814,6 +864,274 @@ def render_plan_editor(plan: Plan, client: Client, cat, root: Path):
         # === Notes & Raw ===
         with tabs[6]:
             edit_notes_raw(plan, editable, root)
+
+        # === Lifecycle ===
+        with tabs[7]:
+            render_lifecycle_panel(plan, client, cat, root)
+
+
+# ---------------------------------------------------------------------------
+# Lifecycle panel (status timeline + transition buttons + diff viewer)
+# ---------------------------------------------------------------------------
+
+def _coach_user() -> str:
+    return os.environ.get("FMDB_USER", "shivani")
+
+
+def _render_findings(findings: list, key_prefix: str) -> int:
+    """Render findings grouped by severity. Returns count of CRITICAL findings."""
+    if not findings:
+        st.success("✅ Plan check is clean — 0 findings.")
+        return 0
+    counts = {"CRITICAL": 0, "WARNING": 0, "INFO": 0}
+    for f in findings:
+        counts[f.severity] += 1
+    cols = st.columns(3)
+    cols[0].metric("🔴 Critical", counts["CRITICAL"])
+    cols[1].metric("🟡 Warning", counts["WARNING"])
+    cols[2].metric("🔵 Info", counts["INFO"])
+    for sev, icon in [("CRITICAL", "🔴"), ("WARNING", "🟡"), ("INFO", "🔵")]:
+        sev_findings = [f for f in findings if f.severity == sev]
+        if not sev_findings:
+            continue
+        with st.expander(f"{icon} {sev} ({len(sev_findings)})", expanded=(sev == "CRITICAL")):
+            for f in sev_findings:
+                st.markdown(f"**{f.section}.{f.field}** — {f.detail}")
+    return counts["CRITICAL"]
+
+
+def render_lifecycle_panel(plan: Plan, client: Client, cat, root: Path):
+    """Status timeline + transition buttons + diff viewer."""
+    st.subheader("🚀 Lifecycle")
+
+    # ----- Status header -----
+    snap = plan.catalogue_snapshot
+    snap_sha = snap.git_sha if (snap and snap.git_sha) else "—"
+    snap_date = snap.snapshot_date.isoformat() if (snap and snap.snapshot_date) else "—"
+    cols = st.columns([2, 1, 2, 2])
+    cols[0].markdown(
+        f"**Status**<br>{_plan_status_badge(plan.status.value)}",
+        unsafe_allow_html=True,
+    )
+    cols[1].markdown(f"**Version**<br>v{plan.version}", unsafe_allow_html=True)
+    cols[2].markdown(f"**Snapshot date**<br>{snap_date}", unsafe_allow_html=True)
+    cols[3].markdown(f"**Catalogue SHA**<br>`{snap_sha}`", unsafe_allow_html=True)
+    if plan.supersedes:
+        st.caption(f"This plan supersedes `{plan.supersedes}`.")
+
+    st.divider()
+
+    # ----- Status history timeline -----
+    st.markdown("**📜 Status history**")
+    if not plan.status_history:
+        st.caption("No transitions yet — plan is still in its initial state.")
+    else:
+        for ev in plan.status_history:
+            at_str = ev.at.isoformat(timespec="minutes") if ev.at else "—"
+            reason_str = f" — _{ev.reason}_" if ev.reason else ""
+            st.markdown(
+                f"- {_plan_status_badge(ev.state.value)} &nbsp; "
+                f"by **{ev.by}** at `{at_str}`{reason_str}",
+                unsafe_allow_html=True,
+            )
+
+    st.divider()
+
+    # ----- State-appropriate action buttons -----
+    status = plan.status
+    user = _coach_user()
+
+    if status == PlanStatus.draft:
+        _lifecycle_actions_draft(plan, client, cat, root, user)
+    elif status == PlanStatus.ready_to_publish:
+        _lifecycle_actions_ready(plan, client, cat, root, user)
+    elif status == PlanStatus.published:
+        _lifecycle_actions_published(plan, client, root, user)
+    else:  # superseded | revoked
+        st.info(
+            f"This plan is **{status.value}** — terminal state. "
+            "No further transitions available."
+        )
+
+    st.divider()
+
+    # ----- Diff viewer -----
+    render_diff_viewer(plan, root)
+
+
+def _lifecycle_actions_draft(plan: Plan, client: Client, cat, root: Path, user: str):
+    st.markdown("**Actions**")
+    c1, c2 = st.columns(2)
+    if c1.button("🔍 Run plan-check", key=f"check_{plan.slug}"):
+        st.session_state[f"_show_check_{plan.slug}"] = True
+    if c2.button("📤 Submit for publishing", key=f"submit_{plan.slug}", type="primary"):
+        st.session_state[f"_submit_attempt_{plan.slug}"] = True
+
+    # Inline plan-check display
+    if st.session_state.get(f"_show_check_{plan.slug}") or \
+            st.session_state.get(f"_submit_attempt_{plan.slug}"):
+        st.markdown("**Plan check findings**")
+        findings = check_plan(plan, client, cat)
+        critical = _render_findings(findings, f"chk_{plan.slug}")
+
+        if st.session_state.get(f"_submit_attempt_{plan.slug}"):
+            if critical:
+                st.error(
+                    f"❌ **Cannot submit** — {critical} CRITICAL finding(s). "
+                    "Fix these first."
+                )
+            else:
+                reason = st.text_input(
+                    "Submit note (optional)",
+                    key=f"submit_reason_{plan.slug}",
+                )
+                if st.button("✅ Confirm submit",
+                             key=f"submit_confirm_{plan.slug}", type="primary"):
+                    try:
+                        plan_transitions.submit_plan(
+                            root, plan.slug, by=user,
+                            catalogue_dir=DATA_DIR, reason=reason,
+                        )
+                        st.success("✅ Submitted to ready_to_publish.")
+                        st.session_state.pop(f"_submit_attempt_{plan.slug}", None)
+                        st.rerun()
+                    except (RuntimeError, ValueError) as e:
+                        st.error(f"❌ Submit failed: {e}")
+
+
+def _lifecycle_actions_ready(plan: Plan, client: Client, cat, root: Path, user: str):
+    st.markdown("**Actions**")
+    st.info(
+        "📌 This plan is **ready to publish**. Publishing is **irreversible** — "
+        "it freezes the catalogue snapshot to the current git SHA and bumps the version."
+    )
+
+    reason = st.text_input("Publish note (optional)", key=f"pub_reason_{plan.slug}")
+    confirm = st.checkbox(
+        "I understand this is irreversible",
+        key=f"pub_confirm_check_{plan.slug}",
+    )
+    if st.button("🚀 Publish now", key=f"pub_btn_{plan.slug}",
+                 type="primary", disabled=not confirm):
+        try:
+            _, written, sha = plan_transitions.publish_plan(
+                root, plan.slug, by=user,
+                catalogue_dir=DATA_DIR, reason=reason,
+            )
+            st.success(
+                f"✅ Published to `{written.name}`. "
+                f"Catalogue SHA frozen at `{sha or '—'}`."
+            )
+            st.rerun()
+        except (RuntimeError, ValueError) as e:
+            st.error(f"❌ Publish failed: {e}")
+
+
+def _lifecycle_actions_published(plan: Plan, client: Client, root: Path, user: str):
+    st.markdown("**Actions**")
+
+    # Revoke + Successor side by side
+    rev_col, sup_col = st.columns(2)
+
+    with rev_col:
+        st.markdown("##### 🛑 Revoke")
+        rev_reason = st.text_input(
+            "Reason (required)", key=f"rev_reason_{plan.slug}",
+        )
+        rev_confirm = st.checkbox(
+            "I understand revoke is irreversible",
+            key=f"rev_confirm_check_{plan.slug}",
+        )
+        if st.button("Revoke this plan", key=f"rev_btn_{plan.slug}",
+                     disabled=not (rev_confirm and rev_reason.strip())):
+            try:
+                plan_transitions.revoke_plan(
+                    root, plan.slug, by=user, reason=rev_reason,
+                )
+                st.success("✅ Plan revoked.")
+                st.rerun()
+            except (RuntimeError, ValueError) as e:
+                st.error(f"❌ Revoke failed: {e}")
+
+    with sup_col:
+        st.markdown("##### 🆕 Create successor")
+        st.caption(
+            "Creates a new draft pre-filled with `supersedes` pointing to "
+            "this plan. Edit it, submit, and publish to supersede this version."
+        )
+        new_slug_default = f"{plan.client_id}-{date.today().isoformat()}-successor"
+        new_slug = st.text_input(
+            "New plan slug", value=new_slug_default,
+            key=f"successor_slug_{plan.slug}",
+        )
+        if st.button("Create successor draft",
+                     key=f"successor_btn_{plan.slug}", type="primary"):
+            try:
+                # Refuse if slug exists
+                try:
+                    existing = plan_storage.find_plan_path(root, new_slug)
+                    st.error(
+                        f"❌ A plan with slug `{new_slug}` already exists at `{existing}`."
+                    )
+                except FileNotFoundError:
+                    now = datetime.now(timezone.utc)
+                    successor = Plan(
+                        slug=new_slug,
+                        client_id=plan.client_id,
+                        plan_period_start=date.today(),
+                        plan_period_weeks=plan.plan_period_weeks,
+                        plan_period_recheck_date=date.today() + timedelta(
+                            weeks=plan.plan_period_weeks),
+                        catalogue_snapshot=CatalogueSnapshot(snapshot_date=date.today()),
+                        created_at=now,
+                        updated_at=now,
+                        updated_by=user,
+                        supersedes=plan.slug,
+                    )
+                    p = plan_storage.write_plan(root, successor)
+                    st.success(
+                        f"✅ Created successor draft at `{p.name}`. "
+                        f"Switch the **Plan** selector at the top to `{new_slug}` "
+                        "to start editing it."
+                    )
+                    st.rerun()
+            except Exception as e:
+                st.error(f"❌ Couldn't create successor: {e}")
+
+
+def render_diff_viewer(plan: Plan, root: Path):
+    st.markdown("**🔀 Diff viewer**")
+    all_plans = plan_storage.list_plans(root)
+    if len(all_plans) < 2:
+        st.caption("Need at least 2 plans to diff.")
+        return
+    slugs = [p.slug for p in all_plans]
+    default_a = plan.slug if plan.slug in slugs else slugs[0]
+    default_b = plan.supersedes if (plan.supersedes and plan.supersedes in slugs) \
+        else (slugs[1] if slugs[0] == default_a else slugs[0])
+    c1, c2 = st.columns(2)
+    slug_a = c1.selectbox(
+        "Plan A", slugs,
+        index=slugs.index(default_a),
+        key=f"diff_a_{plan.slug}",
+    )
+    slug_b = c2.selectbox(
+        "Plan B", slugs,
+        index=slugs.index(default_b) if default_b in slugs else 0,
+        key=f"diff_b_{plan.slug}",
+    )
+    if st.button("Show diff", key=f"diff_btn_{plan.slug}"):
+        if slug_a == slug_b:
+            st.info("Pick two different plans to diff.")
+        else:
+            try:
+                diff = plan_transitions.diff_plans(root, slug_a, slug_b)
+                if not diff.strip():
+                    st.info("No differences.")
+                else:
+                    st.code(diff, language="diff")
+            except Exception as e:
+                st.error(f"❌ Diff failed: {e}")
 
 
 def _save(plan: Plan, root: Path, msg: str = "Saved."):

@@ -823,6 +823,86 @@ def cmd_plan_check(args: argparse.Namespace) -> None:
         sys.exit(1)
 
 
+def cmd_plan_ai_check(args: argparse.Namespace) -> None:
+    """Run AI sanity check on a plan and (optionally) persist the result.
+
+    Layered on top of cmd_plan_check: catches coherence / client-fit /
+    translation / completeness issues a deterministic checker can't see.
+    """
+    from datetime import datetime as _dt, timezone as _tz
+
+    from .plan.ai_check import ai_check_plan
+    from .validator import load_all
+
+    root = _plans_root(args)
+    plan = plan_storage.load_plan(root, args.slug)
+    try:
+        client = plan_storage.load_client(root, plan.client_id)
+    except FileNotFoundError:
+        print(
+            f"WARN: client {plan.client_id!r} not found — client-fit checks limited",
+            file=sys.stderr,
+        )
+        client = None
+    catalogue = load_all(DATA_DIR)
+
+    print(f"running AI sanity check on plan {args.slug}...", file=sys.stderr)
+    result = ai_check_plan(plan, client, catalogue)
+    result["checked_at"] = _dt.now(_tz.utc).isoformat()
+    result["checked_by"] = args.updated_by
+
+    concerns = result.get("concerns", [])
+    counts = {"critical": 0, "warning": 0, "info": 0}
+    for c in concerns:
+        sev = c.get("severity", "info")
+        if sev in counts:
+            counts[sev] += 1
+
+    print(
+        f"\nplan {args.slug}: {counts['critical']} critical, "
+        f"{counts['warning']} warning, {counts['info']} info"
+    )
+    print(
+        f"  coherence_score={result.get('coherence_score')}/5  "
+        f"client_fit_score={result.get('client_fit_score')}/5"
+    )
+    print(f"\noverall: {result.get('overall_assessment', '')}\n")
+
+    # Group + print by severity (CRITICAL first, then warning, then info)
+    severity_order = {"critical": 0, "warning": 1, "info": 2}
+    for c in sorted(concerns, key=lambda x: severity_order.get(x.get("severity", "info"), 9)):
+        sev = c.get("severity", "info").upper()
+        cat = c.get("category", "")
+        where = c.get("where", "")
+        msg = c.get("message", "")
+        print(f"  [{sev:8s}] ({cat}) {where}")
+        print(f"             {msg}")
+        if c.get("suggested_fix"):
+            print(f"             fix: {c['suggested_fix']}")
+        print()
+
+    usage = result.get("_usage", {})
+    if usage:
+        print(
+            f"usage: input={usage.get('input_tokens')} "
+            f"output={usage.get('output_tokens')} "
+            f"cache_read={usage.get('cache_read_input_tokens')} "
+            f"cache_creation={usage.get('cache_creation_input_tokens')}",
+            file=sys.stderr,
+        )
+
+    if args.save:
+        plan.ai_sanity_check = result
+        plan.updated_by = args.updated_by
+        plan_storage.write_plan(root, plan)
+        print(f"saved ai_sanity_check to plan {args.slug}", file=sys.stderr)
+    else:
+        print("(--no-save: result NOT persisted to plan)", file=sys.stderr)
+
+    if counts["critical"]:
+        sys.exit(1)
+
+
 def cmd_plan_add_supplement(args: argparse.Namespace) -> None:
     from datetime import datetime as _dt, timezone as _tz
     root = _plans_root(args)
@@ -1113,6 +1193,22 @@ def main() -> None:
     pc = sub.add_parser("plan-check", help="run deterministic plan checks against catalogue")
     pc.add_argument("slug")
     pc.set_defaults(func=cmd_plan_check)
+
+    pac = sub.add_parser(
+        "plan-ai-check",
+        help="run AI sanity check (coherence/client-fit/translation/completeness)",
+    )
+    pac.add_argument("slug")
+    pac.add_argument(
+        "--save", dest="save", action="store_true", default=True,
+        help="persist result to plan.ai_sanity_check (default)",
+    )
+    pac.add_argument(
+        "--no-save", dest="save", action="store_false",
+        help="print result but don't write to disk",
+    )
+    pac.add_argument("--updated-by", default=os.environ.get("FMDB_USER", "shivani"))
+    pac.set_defaults(func=cmd_plan_ai_check)
 
     pas = sub.add_parser("plan-add-supplement", help="add a supplement to a draft plan")
     pas.add_argument("slug", help="plan slug")
