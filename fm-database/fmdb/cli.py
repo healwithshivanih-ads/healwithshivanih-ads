@@ -20,6 +20,7 @@ from .ingest.extractor import get_extractor
 from .ingest.loaders import ATTACHMENT_EXTENSIONS, load_document, mime_for
 from .ingest.types import IngestRequest
 from .plan import storage as plan_storage
+from .plan import transitions as plan_transitions
 from .plan.checker import check_plan
 from .plan.models import (
     CatalogueSnapshot,
@@ -874,6 +875,79 @@ def cmd_plan_add_symptom(args: argparse.Namespace) -> None:
     print(f"added {kind} symptom {args.symptom_slug} to {args.slug}")
 
 
+def cmd_plan_submit(args: argparse.Namespace) -> None:
+    """draft → ready_to_publish (requires plan-check clean)."""
+    root = _plans_root(args)
+    try:
+        plan, _findings = plan_transitions.submit_plan(
+            root, args.slug, by=args.updated_by,
+            catalogue_dir=DATA_DIR, reason=args.reason or "",
+        )
+    except RuntimeError as e:
+        print(f"ERROR: {e}", file=sys.stderr)
+        sys.exit(2)
+    print(f"submitted: {args.slug} → ready_to_publish (v{plan.version})")
+    print(f"  → publish with: fmdb plan-publish {args.slug}")
+
+
+def cmd_plan_publish(args: argparse.Namespace) -> None:
+    """ready_to_publish → published (irreversible; freezes catalogue snapshot)."""
+    root = _plans_root(args)
+    try:
+        plan, written, sha = plan_transitions.publish_plan(
+            root, args.slug, by=args.updated_by,
+            catalogue_dir=DATA_DIR, reason=args.reason or "",
+        )
+    except RuntimeError as e:
+        print(f"ERROR: {e}", file=sys.stderr)
+        sys.exit(2)
+    print(f"published: {args.slug} v{plan.version}")
+    print(f"  → file:    {written}")
+    print(f"  → sha:     {sha or '(no git repo)'}")
+    print(f"  → snapshot date: {plan.catalogue_snapshot.snapshot_date}")
+
+
+def cmd_plan_revoke(args: argparse.Namespace) -> None:
+    """published → revoked (requires reason)."""
+    root = _plans_root(args)
+    try:
+        plan, written = plan_transitions.revoke_plan(
+            root, args.slug, by=args.updated_by, reason=args.reason,
+        )
+    except (RuntimeError, ValueError) as e:
+        print(f"ERROR: {e}", file=sys.stderr)
+        sys.exit(2)
+    print(f"revoked: {args.slug} v{plan.version} → {written}")
+
+
+def cmd_plan_supersede(args: argparse.Namespace) -> None:
+    """Publish a new plan that has supersedes=<old_slug>; flip old to superseded."""
+    root = _plans_root(args)
+    try:
+        new_plan, old_plan, written = plan_transitions.supersede_plan(
+            root, args.slug, by=args.updated_by,
+            catalogue_dir=DATA_DIR, reason=args.reason or "",
+        )
+    except RuntimeError as e:
+        print(f"ERROR: {e}", file=sys.stderr)
+        sys.exit(2)
+    print(f"superseded: {old_plan.slug} v{old_plan.version} → superseded")
+    print(f"published:  {new_plan.slug} v{new_plan.version} → {written}")
+
+
+def cmd_plan_diff(args: argparse.Namespace) -> None:
+    root = _plans_root(args)
+    try:
+        diff = plan_transitions.diff_plans(root, args.slug_a, args.slug_b)
+    except FileNotFoundError as e:
+        print(f"ERROR: {e}", file=sys.stderr)
+        sys.exit(2)
+    if not diff:
+        print(f"(no diff between {args.slug_a} and {args.slug_b})")
+        return
+    print(diff)
+
+
 def cmd_plan_delete(args: argparse.Namespace) -> None:
     root = _plans_root(args)
     if not args.yes:
@@ -1068,6 +1142,36 @@ def main() -> None:
                       help="add to tracking.symptoms_to_monitor instead of presenting_symptoms")
     pasy.add_argument("--updated-by", default=os.environ.get("FMDB_USER", "shivani"))
     pasy.set_defaults(func=cmd_plan_add_symptom)
+
+    psub = sub.add_parser("plan-submit", help="draft → ready_to_publish (requires plan-check clean)")
+    psub.add_argument("slug")
+    psub.add_argument("--reason", default="")
+    psub.add_argument("--updated-by", default=os.environ.get("FMDB_USER", "shivani"))
+    psub.set_defaults(func=cmd_plan_submit)
+
+    ppub = sub.add_parser("plan-publish", help="ready_to_publish → published (irreversible)")
+    ppub.add_argument("slug")
+    ppub.add_argument("--reason", default="")
+    ppub.add_argument("--updated-by", default=os.environ.get("FMDB_USER", "shivani"))
+    ppub.set_defaults(func=cmd_plan_publish)
+
+    prev = sub.add_parser("plan-revoke", help="published → revoked (requires reason)")
+    prev.add_argument("slug")
+    prev.add_argument("--reason", required=True, help="why this plan is being revoked")
+    prev.add_argument("--updated-by", default=os.environ.get("FMDB_USER", "shivani"))
+    prev.set_defaults(func=cmd_plan_revoke)
+
+    psup = sub.add_parser("plan-supersede",
+                          help="publish a new plan that replaces an old one (new plan must have supersedes=<old> set)")
+    psup.add_argument("slug", help="slug of the NEW plan (must be ready_to_publish + supersedes set)")
+    psup.add_argument("--reason", default="")
+    psup.add_argument("--updated-by", default=os.environ.get("FMDB_USER", "shivani"))
+    psup.set_defaults(func=cmd_plan_supersede)
+
+    pdf = sub.add_parser("plan-diff", help="textual diff between two plans (current versions)")
+    pdf.add_argument("slug_a")
+    pdf.add_argument("slug_b")
+    pdf.set_defaults(func=cmd_plan_diff)
 
     pd = sub.add_parser("plan-delete", help="delete a draft plan (irreversible)")
     pd.add_argument("slug")

@@ -14,7 +14,17 @@ published plans as JSON artifacts.
 
 ## Status
 
-**v0.21 (current)** — VitaOne course PDFs fully ingested (Phases 1–5):
+**v0.22 (current)** — Plan publish lifecycle (submit / publish / revoke / supersede / diff):
+- New module `fmdb/plan/transitions.py` implements the full state machine: `draft → ready_to_publish → published → {superseded | revoked}`. Each transition appends a `StatusEvent` to `plan.status_history` with actor + reason + UTC timestamp.
+- **Submit gate.** `submit_plan()` re-runs `check_plan` and refuses to advance if any finding is `CRITICAL`. Errors surface the failing findings inline so the coach knows what to fix.
+- **Publish freezes the catalogue.** `publish_plan()` calls `git rev-parse --short HEAD` on the catalogue repo and pins `catalogue_snapshot.git_sha` + `snapshot_date` onto the plan before writing the versioned file. Re-runs the deterministic check first (catalogue may have drifted between submit and publish) and bumps `version` to `max(existing published versions) + 1`.
+- **Revoke / supersede are clean.** Both transitions remove the now-stale `published/<slug>-vN.yaml` after writing the flipped record to `revoked/` or `superseded/`, so `load_plan` resolves to the current state instead of returning the stale published copy. Audit trail lives in `status_history` + git history.
+- **Supersede sequencing.** `supersede_plan(new_slug)` requires the new plan to be `ready_to_publish` AND have `supersedes=<old_slug>` set. It publishes the new plan first, then flips the old one — so the new published version exists before the old one disappears from `published/`.
+- **Diff.** `diff_plans(slug_a, slug_b)` returns a unified diff of the two plans' YAML dumps. Useful for "what changed between v1 and v2" reviews.
+- **5 new CLI commands** wired in `fmdb/cli.py`: `plan-submit`, `plan-publish`, `plan-revoke` (`--reason` required), `plan-supersede`, `plan-diff`. All honour `FMDB_PLANS_DIR` + `FMDB_USER`.
+- End-to-end smoke test passes: draft → add-topic → submit → publish (file lands at `published/<slug>-v1.yaml`, drafts/ + ready/ cleaned, git SHA `508c574` pinned) → revoke (clean handoff to `revoked/`, `plan-show` reflects new status) → supersede (new plan publishes, old plan flips to `superseded/`, no stale file in `published/`).
+
+**v0.21** — VitaOne course PDFs fully ingested (Phases 1–5):
 - Bulk-ingested all 22 remaining VitaOne PDFs (cheatsheets + e-books + LDN article + 11 toolkits) via `/tmp/phases-1to5-rest.sh`. Earlier rounds had landed 8 sessions of *Microbiome Mondays* + supplementation-dosage PDF + the first 4 cheatsheets.
 - Wrote `/tmp/approve-all-pending.py` that approves every staged batch with `--update` smart-merge + auto-fixes alias collisions on BOTH sides (staged candidates AND existing canonical files) before retry. 19 batches landed clean in this final pass.
 - **Defensive staging fix.** `fmdb/ingest/staging.py` now records-and-skips when the LLM emits a non-dict (string/null) for an entity slot, instead of crashing the whole batch with `AttributeError: 'str' object has no attribute 'get'`. Rejected entries surface in the batch manifest with `reason` + `raw_sample`.
@@ -246,10 +256,17 @@ Surfaced as colored badges (🟢 / 🟡 / 🟠 / 🔴) on every catalogue-refere
 
 `--update` triggers smart-merge (union lists, prefer non-empty new scalars); `--overwrite` is the rare destructive case.
 
-### Plan Lifecycle (revised v0.12)
+### Plan Lifecycle (revised v0.12, implemented v0.22)
 `draft → ready_to_publish → published → superseded | revoked`
 
-Simplified from the original 6-state design after dropping clinician sign-off. `ready_to_publish` requires plan-check pass; `published` is irreversible (edits = new plan with `supersedes:` field).
+Simplified from the original 6-state design after dropping clinician sign-off. Implemented in `fmdb/plan/transitions.py`:
+- `submit_plan` — gate is `check_plan` returning 0 CRITICAL findings.
+- `publish_plan` — irreversible. Freezes `catalogue_snapshot.git_sha` to the catalogue repo's HEAD, bumps `version`, writes `published/<slug>-vN.yaml`, removes `ready/<slug>.yaml`. Re-runs check first.
+- `revoke_plan` — published → revoked. Reason required. Removes the now-stale `published/<slug>-vN.yaml` after writing the flipped record so `load_plan` resolves to the revoked record.
+- `supersede_plan` — publishes a new plan that has `supersedes=<old_slug>` set, then flips the old plan from `published` to `superseded` (with the same cleanup).
+- `diff_plans` — unified diff between two plans' YAML dumps.
+
+Each transition appends a `StatusEvent` (state + by + at + reason) to `plan.status_history`.
 
 ### Storage Layout
 - **Catalogue YAML** → `fm-database/data/` (committed to repo; alphabetical entity dirs: `sources/`, `topics/`, `mechanisms/`, `symptoms/`, `claims/`, `supplements/`, `cooking_adjustments/`, `home_remedies/`, `mindmaps/`).
@@ -430,7 +447,7 @@ Sidebar pages: 🧠 Assess & Suggest (default), 📋 Plans, 👥 Clients, 🧭 M
 
 **Outstanding:**
 1. **Finish PDF ingest pass** — ~30 VitaOne PDFs remaining (~$15 to do all). Phase 1 (10 cheatsheets) in flight at v0.20 commit.
-2. **Plan publish + diff-guard** — wire `plan-submit` (draft → ready_to_publish) and `plan-publish` (ready → published, irreversible, freezes catalogue snapshot SHA). Plus `plan-diff <v1> <v2>` and `plan-supersede`.
+2. ~~Plan publish + diff-guard~~ — ✅ done in v0.22 (`plan-submit`, `plan-publish`, `plan-revoke`, `plan-supersede`, `plan-diff`).
 3. **AI sanity check on plans** — layer Anthropic call on top of deterministic checker for coaching-translation accuracy and plan-vs-assessment coherence.
 4. **Markdown / PDF render of plan** for client-facing print-ready output.
 5. **Wire Resources into Plan editor** — "attach resource" buttons per plan section; auto-generate per-client folder of selected handouts.
