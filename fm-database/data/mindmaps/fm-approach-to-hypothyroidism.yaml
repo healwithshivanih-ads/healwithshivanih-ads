@@ -3,6 +3,7 @@ display_name: Functional Medicine Approach to Hypothyroidism
 description: Multi-lens FM view of hypothyroidism — anatomy, autoimmune mechanism,
   root causes, factors affecting thyroid, signs/symptoms, lab testing, treatment.
   Imported from Vitaone Education Tools.
+aliases: []
 related_topics:
 - thyroid
 related_mechanisms: []
@@ -12,26 +13,91 @@ tree:
   - label: HPT Axis
     children:
     - label: Hypothalamus releases TRH
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Pituitary releases TSH
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Thyroid produces T4 and T3
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
   - label: Hormone Production
     children:
     - label: Thyroid produces 100% T4
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Thyroid produces 20% T3
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: 80% T3 converted peripherally
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
   - label: Deiodinase Enzymes
     children:
     - label: D1 Liver Kidney Lungs
       children:
       - label: Converts T4 to T3
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Converts RT3 to inactive T2
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: D2 Brain Myocardium Muscle
       children:
       - label: Intracellular T4 to T3
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: D3 Liver Brain Skin Placenta
       children:
       - label: Converts T4 to RT3
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Converts T3 to inactive T2
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
 - label: Hashimotos Autoimmune
   children:
   - label: Gut Dysfunction
@@ -39,121 +105,474 @@ tree:
     - label: Intestinal Permeability
       children:
       - label: Disrupted mucosal barrier
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: LPS enters bloodstream
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Triggers systemic inflammation
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Initiates autoimmune spectrum
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: topic
+      linked_slug: leaky-gut
+      notes: ''
     - label: Dysbiosis and SIBO
       children:
       - label: Altered GI flora
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Triggers thyroid dysfunction
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: topic
+    linked_slug: gut-dysfunction
+    notes: ''
   - label: Reverse T3
     children:
     - label: Metabolic brake
+      children: []
+      linked_kind: mechanism
+      linked_slug: reverse-t3-dominance
+      notes: ''
     - label: Competes with T3 for binding
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
   - label: Immune attacks thyroid gland
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
   - label: Targets TPO and Thyroglobulin
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
   - label: Chronic inflammation
+    children: []
+    linked_kind: topic
+    linked_slug: chronic-inflammation
+    notes: ''
   - label: Gradual tissue destruction
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
   - label: Reduced hormone production
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
 - label: Root Causes
   children:
   - label: Blood Sugar and Insulin Resistance
     children:
     - label: Hyperinsulinemia lowers T3
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Low thyroid causes malabsorption
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Decreased insulin synthesis
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Decreased glucose utilization
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Bidirectional metabolic loop
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
   - label: Chronic Stress and HPA Axis
     children:
     - label: CRH and cortisol inhibit TSH
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Th2 immune shift
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Promotes thyroid autoimmunity
       children:
       - label: Molecular mimicry
+        children: []
+        linked_kind: mechanism
+        linked_slug: molecular-mimicry
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
   - label: Infections
     children:
     - label: SARS CoV 2
       children:
       - label: Pro inflammatory cytokines
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Subclinical thyrotoxicosis
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
   - label: Steroid Hormone Dysfunction
     children:
     - label: T3 needed for Pregnenolone synthesis
       children:
       - label: Linked to Hashimotos and Graves
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Pregnenolone precursor to Progesterone
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Pregnenolone precursor to DHEA
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Low T3 limits hormone production
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
 - label: Factors Affecting Thyroid
   children:
   - label: Support Production
     children:
     - label: Iron and Iodine
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Tyrosine and Zinc
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Selenium and Magnesium
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Vitamins A B2 B3 B6 C D E
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
   - label: Improve T4 to T3 Conversion
     children:
     - label: Selenium
+      children: []
+      linked_kind: supplement
+      linked_slug: selenium
+      notes: ''
     - label: Zinc
+      children: []
+      linked_kind: supplement
+      linked_slug: zinc
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
   - label: Improve Cellular Sensitivity
     children:
     - label: Stress and Infection
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Vitamin A
+      children: []
+      linked_kind: supplement
+      linked_slug: vitamin-a
+      notes: ''
     - label: Zinc
+      children: []
+      linked_kind: supplement
+      linked_slug: zinc
+      notes: ''
     - label: Exercise
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
   - label: Inhibit Production
     children:
     - label: Fluoride antagonizes Iodine
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Pesticides and Plastics
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Mercury Cadmium Lead
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Celiac Disease
+      children: []
+      linked_kind: topic
+      linked_slug: autoimmune
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
   - label: Increase RT3 Conversion
     children:
     - label: Stress and Trauma
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Low calorie diets
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Inflammation and Cytokines
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Liver or Kidney dysfunction
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
 - label: Signs and Symptoms
   children:
   - label: Energy and Metabolism
     children:
     - label: Fatigue and Exhaustion
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Unexplained Weight Gain
+      children: []
+      linked_kind: symptom
+      linked_slug: weight-gain
+      notes: ''
     - label: Inability to Lose Weight
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
   - label: Temperature Regulation
     children:
     - label: Dry Coarse Itchy Skin
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Cold Hands and Feet
+      children: []
+      linked_kind: symptom
+      linked_slug: cold-intolerance
+      notes: ''
     - label: Low Body Temperature below 98.2F
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
   - label: Skin Hair and Nails
     children:
     - label: Hair Breaking or Falling Out
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Thinning Outer Eyebrows
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Brittle Nails
+      children: []
+      linked_kind: symptom
+      linked_slug: weak-peeling-nails
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
   - label: Neurological
     children:
     - label: Depression and Anxiety
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Restlessness and Moodiness
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Difficulty Concentrating
+      children: []
+      linked_kind: symptom
+      linked_slug: poor-concentration
+      notes: ''
     - label: Memory Problems
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
   - label: Musculoskeletal
     children:
     - label: Joint and Muscle Stiffness
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Carpal Tunnel Syndrome
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Tendonitis
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
   - label: Gastrointestinal
     children:
     - label: Constipation
+      children: []
+      linked_kind: topic
+      linked_slug: constipation
+      notes: ''
     - label: Slow Pulse
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
   - label: Cardiovascular and Reproductive
     children:
     - label: TSH 0.40 to 2.5
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Low Blood Pressure
+      children: []
+      linked_kind: symptom
+      linked_slug: low-blood-pressure
+      notes: ''
     - label: High Cholesterol
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Low Sex Drive
+      children: []
+      linked_kind: symptom
+      linked_slug: low-libido
+      notes: ''
     - label: Irregular Menstrual Cycles
+      children: []
+      linked_kind: symptom
+      linked_slug: irregular-menstrual-cycles
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
 - label: Functional Lab Testing
   children:
   - label: Dietary Interventions
@@ -161,49 +580,194 @@ tree:
     - label: Elimination Diet
       children:
       - label: Remove Gluten and Dairy
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Reduce Inflammation
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Identify Sensitivities
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: topic
+      linked_slug: elimination-diet
+      notes: ''
     - label: Cardiometabolic Food Plan
       children:
       - label: Low Glycemic Impact Foods
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: High Fiber
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Balanced Quality Fats
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Detox Food Plan
       children:
       - label: Support Liver and Kidneys
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Encourage Toxin Elimination
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Avoid Raw Goitrogens
       children:
       - label: Broccoli and Cauliflower
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Anti Inflammatory Foods
       children:
       - label: High Omega 3 Fatty Acids
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Remove
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
   - label: Optimal Ranges
     children:
     - label: Free T4 1.0 to 1.5
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Free T3 3.2 to 4.5
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Total T3 120 to 181
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Reverse T3 11 to 18
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: FT3 FT4 Ratio above 0.33
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
   - label: Thyroid Antibodies
     children:
     - label: TT3 RT3 Ratio above 6.0
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Celiac Panel with IgG Gliadin
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Anti TPO Antibodies
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Anti Thyroglobulin Antibodies
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
   - label: Root Cause Labs
     children:
     - label: Food Sensitivities IgG
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Toxic Minerals Panel
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Comprehensive Stool Analysis
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: SIBO Breath Test
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
   - label: Nutrient Evaluation
     children:
     - label: Ferritin
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: RBC Zinc and Selenium
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Vitamin D
+      children: []
+      linked_kind: supplement
+      linked_slug: vitamin-d
+      notes: ''
     - label: Urinary Iodine
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
 - label: Treatment Plan
   children:
   - label: Lifestyle Modifications
@@ -211,62 +775,234 @@ tree:
     - label: Gut Healing 5R Protocol
       children:
       - label: Replace
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Reinoculate
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Repair
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Rebalance
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Stress Reduction
       children:
       - label: Meditation
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Yoga
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Mindfulness
+        children: []
+        linked_kind: topic
+        linked_slug: mindfulness
+        notes: ''
+      linked_kind: topic
+      linked_slug: stress-management
+      notes: ''
     - label: Sleep Optimization
       children:
       - label: Restful High Quality Sleep
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Hormone Regulation
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Exercise and Movement
       children:
       - label: Selenium 200 to 400 mcg
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Improves Cellular Sensitivity
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
   - label: Supplements
     children:
     - label: Core Nutrients Daily
       children:
       - label: Zinc 15 to 30 mg
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Vitamin D 2000 IU
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Vitamin A 2000 IU
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Iodine 150 mcg
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Iron 15 to 20 mg women
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
     - label: Targeted Botanicals
       children:
       - label: Myo Inositol
+        children: []
+        linked_kind: supplement
+        linked_slug: myo-inositol
+        notes: ''
       - label: Nigella Sativa Black Cumin
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Ashwagandha 600 mg daily
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
   - label: Medications
     children:
     - label: Low Dose Naltrexone
       children:
       - label: Opioid antagonist rebound effect
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Increases endorphin production
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Modulates immune system
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Reduces inflammation
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Lowers anti thyroid antibodies
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Start 0.5 to 1.5 mg daily
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Target 3 to 4.5 mg daily
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Monotherapy T4 Levothyroxine
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: topic
+      linked_slug: low-dose-naltrexone
+      notes: ''
     - label: Thyroid Hormone Replacement
       children:
       - label: Monotherapy T3 Liothyronine
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Combination T4 plus T3
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Natural Desiccated Thyroid
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Start Low Go Slow approach
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Retest labs 6 to 8 weeks
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Absorption impaired by coffee
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
       - label: Absorption impaired by soy iron calcium
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
 sources:
 - id: vitaone-mind-map-tool
-  location: tools.vitaone.in/mind-maps
   quote: 'Imported from Vitaone Education Tools: ''Functional Medicine Approach to
     Hypothyroidism'''
+  location: tools.vitaone.in/mind-maps
 evidence_tier: strong
 version: 1
 status: active
