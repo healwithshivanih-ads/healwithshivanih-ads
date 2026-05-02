@@ -1,0 +1,40 @@
+slug: loose-stools
+display_name: Loose Stools / Diarrhea
+aliases:
+- loose stools
+- diarrhea
+- watery-stools
+- urgent-bowel-movements
+- frequent-stools
+- urgency
+category: gi
+severity: common
+description: 'Frequent, urgent, or watery bowel movements. Often alternating with
+
+  constipation in IBS-pattern dysbiosis. May indicate bile-acid
+
+  malabsorption, food triggers, infection, or inflammatory bowel disease
+
+  if persistent.
+
+  '
+when_to_refer: 'Blood in stool; nocturnal diarrhea (wakes from sleep); >2 weeks
+
+  duration; weight loss; fevers; recent travel or antibiotics
+
+  (think C. difficile).
+
+  '
+linked_to_topics:
+- microbiome
+- dysbiosis
+linked_to_mechanisms:
+- microbial-diversity-decline
+- leaky-gut
+sources:
+- id: thurlow-microbiome-session-6
+  location: Session 6 — Bowel Patterns
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

@@ -1,0 +1,41 @@
+slug: joint-pain
+display_name: Joint Pain
+aliases:
+- joint pain
+- arthralgia
+- achy-joints
+- joint-aches
+- joint-stiffness
+- morning-stiffness
+- joint stiffness
+- morning stiffness
+category: musculoskeletal
+severity: common
+description: 'Pain, soreness, or stiffness in one or more joints. New-onset
+
+  perimenopausal joint pain (often hands, knees, hips) is common and
+
+  thought to relate to declining estrogen''s effect on cartilage and
+
+  synovium plus inflammatory shifts.
+
+  '
+when_to_refer: 'Morning stiffness > 60 minutes (think autoimmune); new joint swelling;
+
+  with fevers, rash, or weight loss; with anti-CCP suspicion (RA workup).
+
+  '
+linked_to_topics:
+- perimenopause
+- autoimmune
+- inflammation
+linked_to_mechanisms:
+- estrogen-decline
+- chronic-inflammation
+sources:
+- id: vitaone-skill-practice-guide
+  location: practice_guide.md, Joint Pain / Autoimmune sections
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

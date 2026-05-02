@@ -1,0 +1,33 @@
+slug: reishi-mushroom
+display_name: Reishi Mushroom
+category: herb
+forms_available:
+- capsule
+- powder
+typical_dose_range:
+  capsule:
+    min: 300
+    max: 900
+    unit: mg
+  powder:
+    min: 300
+    max: 900
+    unit: mg
+timing_options:
+- evening
+take_with_food: optional
+notes_for_coach: Calming adaptogenic mushroom; evening dosing supports sleep and immune
+  regulation; may be sedating for some clients.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 3 - Supplement Table
+  quote: Reishi Mushroom - Calm, immunity, sleep - 300–900 mg/day - Evening
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

@@ -1,0 +1,45 @@
+slug: food-sensitivities
+display_name: Food Sensitivities
+aliases:
+- new food sensitivities
+- food-intolerances
+- food-reactivity
+- delayed-food-reactions
+- foods-i-used-to-tolerate
+- delayed food reactions
+- food intolerances
+category: gi
+severity: common
+description: 'New or worsening reactions to foods previously tolerated — typically
+
+  delayed (hours to days) GI, skin, joint, or cognitive symptoms after
+
+  exposure. In FM lens, often a downstream signal of leaky gut + immune
+
+  reactivity, especially in perimenopause as estrogen-supported barrier
+
+  integrity declines.
+
+  '
+when_to_refer: 'Acute IgE-mediated reactions (hives, anaphylaxis, swelling) — ER,
+  then
+
+  allergist. Severe weight loss / malabsorption — GI workup.
+
+  '
+linked_to_topics:
+- perimenopause
+- microbiome
+- dysbiosis
+- autoimmune
+linked_to_mechanisms:
+- leaky-gut
+- estrogen-decline
+- microbial-diversity-decline
+sources:
+- id: thurlow-microbiome-session-2
+  location: Session 2 — Food Sensitivities & Gut Permeability
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

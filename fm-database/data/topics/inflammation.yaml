@@ -1,0 +1,46 @@
+slug: inflammation
+display_name: Chronic Inflammation
+aliases:
+  - chronic-inflammation
+  - systemic-inflammation
+  - low-grade-inflammation
+summary: |
+  Stub topic — chronic low-grade inflammation as an upstream driver of
+  metabolic, autoimmune, cardiovascular, and neurodegenerative disease.
+  FM lens emphasizes diet (omega-6:omega-3 ratio, ultra-processed foods,
+  blood sugar), gut integrity, sleep, stress, environmental toxins, and
+  visceral adiposity as primary modifiable drivers. Markers: hs-CRP,
+  ferritin, fibrinogen, homocysteine, ApoB.
+
+  TODO: enrich with full FM perspective, marker reference ranges (clinician
+  scope), and intervention hierarchy. Created as stub to anchor cross-refs.
+common_symptoms:
+  - persistent fatigue
+  - joint or muscle aches
+  - brain fog
+  - frequent infections / slow wound healing
+red_flags:
+  - hs-CRP > 10 mg/L without obvious infection (refer)
+  - inflammation plus unexplained weight loss
+related_topics:
+  - autoimmune
+  - thyroid
+  - pcos
+key_mechanisms:
+  - leaky-gut
+  - omega-6-omega-3-imbalance
+  - visceral-adiposity
+coaching_scope_notes: |
+  Anti-inflammatory diet (Mediterranean / AIP), omega-3 intake, sleep,
+  stress reduction, blood sugar stability, weight management.
+clinician_scope_notes: |
+  Marker interpretation, NSAID / steroid management, workup for occult
+  infection or malignancy when indicated.
+sources:
+  - id: vitaone-skill-practice-guide
+    location: practice_guide.md, Inflammation section
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

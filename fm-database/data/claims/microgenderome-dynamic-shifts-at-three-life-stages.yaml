@@ -1,0 +1,34 @@
+slug: microgenderome-dynamic-shifts-at-three-life-stages
+statement: 'Women experience three key periods of dynamic microbiome shifts driven
+  by hormonal changes: puberty, pregnancy, and perimenopause/menopause — a phenomenon
+  referred to as the ''microgenderome.'''
+evidence_tier: fm_specific_thin
+rationale: The term 'microgenderome' is used in functional and integrative medicine
+  contexts. Evidence for sex-hormone-driven microbiome shifts at puberty, pregnancy,
+  and menopause is biologically plausible and supported by observational research,
+  but the term itself and the precise mechanistic framework described here are not
+  yet established in mainstream peer-reviewed consensus.
+coaching_translation: Women's gut bacteria change significantly at puberty, pregnancy,
+  and perimenopause — these aren't random changes, they're driven by your hormones.
+  This is why midlife is such a critical window for gut health.
+caveats:
+- '''Microgenderome'' is an emerging/FM-specific term with limited peer-reviewed literature
+  as of the transcript date.'
+- Source is expert course content, not primary literature.
+linked_to_topics:
+- microbiome
+- gut-hormone-axis
+- perimenopause
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-mondays
+  location: 'Session 1: Microbiome Foundations and Hormone Shifts'
+  quote: there's three key times in a woman's life where we see dynamic shifts in
+    the microbiome. Number one is puberty... then pregnancy... And then this comes
+    full circle in perimenopause with a decline of hormones.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

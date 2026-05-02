@@ -1,0 +1,38 @@
+slug: d-chiro-inositol
+display_name: D-Chiro-Inositol
+category: other
+forms_available:
+- capsule
+- powder
+typical_dose_range:
+  capsule:
+    min: 50
+    max: 100
+    unit: mg
+  powder:
+    min: 50
+    max: 100
+    unit: mg
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: optional
+linked_to_topics: []
+linked_to_claims: []
+notes_for_coach: Almost always paired with myo-inositol at a 40:1 ratio (myo:DCI)
+  for PCOS. Standalone high-dose DCI can impair oocyte quality — coach should ensure
+  the ratio is respected and refer to clinician for fertility-specific dosing. Also
+  relevant in insulin resistance protocols.
+notes_for_client: D-chiro-inositol works best when paired with myo-inositol at the
+  right ratio (40:1 myo to DCI). Most combination products are formulated this way.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-practice-guide
+  location: Seven Clinical Focus Areas > 2. Insulin Resistance > Coaching interventions
+  quote: 'Specific supplements: Inositol (myo-inositol and d-chiro-inositol), chromium,
+    berberine'
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

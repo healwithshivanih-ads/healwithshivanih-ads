@@ -1,0 +1,32 @@
+slug: healthy-food-symptoms-often-quantity-driven
+statement: Symptoms from otherwise healthy high-fiber or fermented foods (cruciferous
+  vegetables, beans, ferments) are often driven by quantity consumed rather than true
+  intolerance, and can typically be resolved by reducing portion size.
+evidence_tier: plausible_emerging
+rationale: The dose-response relationship between fiber intake and gastrointestinal
+  symptoms is well supported — rapid fiber increases overwhelm the microbiome's adaptive
+  capacity. Speaker's clinical recommendation to reduce quantity before removing food
+  entirely is consistent with evidence-based dietary guidance.
+coaching_translation: If healthy foods like broccoli, beans, or fermented foods are
+  causing gas and bloating, try smaller amounts first before cutting them out. The
+  gut often needs time and smaller doses to adapt.
+caveats:
+- Single-expert source.
+- True intolerance (e.g., FODMAP sensitivity, SIBO) can mimic quantity-driven symptoms
+  — clinician evaluation warranted if symptoms persist after dose reduction.
+linked_to_topics:
+- food-sensitivities
+- microbiome
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-2
+  location: When healthy foods cause symptoms
+  quote: What I think is more the issue, it's less about intolerance and more about
+    quantity. For a lot of women, I feel like it is quantity driven… if you don't
+    tolerate a cup of cruciferous vegetables, try a third of a cup or half a cup.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

@@ -1,0 +1,34 @@
+slug: fiber-intake-supports-estrogen-excretion-and-scfa-production
+statement: Dietary fiber promotes estrogen excretion and supports production of short-chain
+  fatty acids (SCFAs) by colonic bacteria, which reduce inflammation, support mucus
+  production, and stimulate endogenous GLP-1.
+evidence_tier: plausible_emerging
+rationale: The role of fiber in SCFA production and gut health is strongly supported.
+  The specific claim that fiber 'packages up and poops out estrogen' is mechanistically
+  plausible (fiber binding conjugated estrogens) but not directly confirmed by large
+  RCTs. Single-expert source.
+coaching_translation: Getting enough fiber helps your body move estrogen out through
+  the stool rather than recirculating it, and it also feeds the gut bacteria that
+  produce anti-inflammatory compounds.
+caveats:
+- Fiber tolerance is highly individual; introduction should be gradual.
+- Single-expert source.
+- SCFA-GLP-1 link is mechanistically supported but clinical relevance varies.
+linked_to_topics:
+- estrobolome
+- microbiome
+- perimenopause
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-3
+  location: Lifestyle Factors — Nutrition
+  quote: Fiber is very important because it helps to package up and poop out the estrogen...
+    in the large intestine in the microbiome, the colonocytes ferment it. And from
+    that fermentation, we get short chain fatty acids which are important for reducing
+    inflammation.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

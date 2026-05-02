@@ -1,0 +1,32 @@
+slug: estrogen-supports-intestinal-lining-and-microbial-diversity
+statement: Estrogen supports the small intestinal lining (acting like 'mortar between
+  bricks') and is influential for microbial diversity; as estrogen declines, microbial
+  diversity and gut barrier integrity decrease.
+evidence_tier: plausible_emerging
+rationale: Single-expert synthesis source. Biologically plausible mechanisms (estrogen
+  receptors in gut epithelium, estrobolome research) but no specific RCT cited. Consistent
+  with emerging literature.
+coaching_translation: Declining estrogen in perimenopause directly affects the health
+  of the gut lining and the variety of beneficial bacteria — this is why digestive
+  symptoms often appear or worsen during this transition.
+caveats:
+- Single-expert source (Thurlow); no specific peer-reviewed study cited.
+- Mechanism is biologically plausible and supported by emerging research but not yet
+  consensus.
+linked_to_topics:
+- perimenopause
+- microbiome
+- gut-hormone-axis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-6
+  location: Session 6 — Main Transcript, Estrogen Section
+  quote: Estrogen acts like the mortar in between the bricks. So it supports that
+    small intestinal lining. We know that it is incredibly influential for microbial
+    diversity.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

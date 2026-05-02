@@ -1,0 +1,35 @@
+slug: scfas-decline-with-hormones-fiber-supports-production
+statement: Short-chain fatty acid (SCFA) production declines as estrogen and progesterone
+  fall in midlife; adequate dietary fibre is the primary lever to maintain SCFA output,
+  which supports inflammation reduction, gut barrier integrity, GLP-1 secretion, and
+  bone health.
+evidence_tier: plausible_emerging
+rationale: SCFA production from fibre fermentation is well-established; the link between
+  hormone decline and reduced SCFA production is biologically plausible but the direct
+  hormonal regulation of SCFA output is less directly studied. Speaker notes butyrate's
+  ability to cross the blood-brain barrier, which is a known mechanism.
+coaching_translation: As hormones decline in perimenopause, your gut makes fewer protective
+  short-chain fatty acids. Eating more diverse fibre is the most powerful way to keep
+  production up.
+caveats:
+- Direct causal link between sex hormone decline and SCFA reduction is plausible but
+  not fully established in RCTs.
+- Single-expert source.
+linked_to_topics:
+- microbiome
+- gut-brain-axis
+- gut-hormone-axis
+- perimenopause
+- dysbiosis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-5
+  location: Short-Chain Fatty Acids section
+  quote: As we see declines in progesterone and estrogen, we start making less and
+    less short-chain fatty acids, and this is when fiber becomes very important.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

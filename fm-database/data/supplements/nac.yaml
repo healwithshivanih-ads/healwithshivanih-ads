@@ -1,0 +1,42 @@
+slug: nac
+display_name: NAC (N-Acetylcysteine)
+category: amino_acid
+forms_available:
+- capsule
+- powder
+- tablet
+typical_dose_range:
+  capsule:
+    min: 600
+    max: 1200
+    unit: mg
+  powder:
+    min: 600
+    max: 1200
+    unit: mg
+  tablet:
+    min: 600
+    max: 1200
+    unit: mg
+timing_options:
+- on_empty_stomach
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: optional
+notes_for_coach: Supports glutathione production for liver detox, antioxidant defence,
+  and PCOS; can be taken with or without food.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: NAC (N-Acetylcysteine) - Liver detox, antioxidant, mucus thinning - 600–1200
+    mg/day - Empty stomach or with meals
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

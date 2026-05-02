@@ -1,0 +1,40 @@
+slug: zinc
+display_name: Zinc
+category: mineral
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 15
+    max: 30
+    unit: mg
+  tablet:
+    min: 15
+    max: 30
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics: []
+linked_to_claims: []
+notes_for_coach: Zinc supports thyroid hormone conversion (T4 → T3) and immune regulation.
+  Also relevant in autoimmune protocols as zinc carnosine for gut lining repair. Take
+  with food to reduce nausea. Space away from magnesium-glycinate supplements when
+  possible to minimize mineral competition. Long-term high-dose zinc can deplete copper
+  — consider a zinc:copper ratio supplement or periodic copper monitoring.
+notes_for_client: Take zinc with food to avoid stomach upset. Zinc helps your thyroid
+  convert hormones into their active form and supports healthy immune function.
+evidence_tier: strong
+linked_to_mechanisms: []
+sources:
+- id: vitaone-practice-guide
+  location: Clinical Education for Clients > Thyroid Function Beyond TSH > Non-pharmaceutical
+    support for thyroid
+  quote: 'Zinc: Supports thyroid hormone conversion and immune regulation'
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

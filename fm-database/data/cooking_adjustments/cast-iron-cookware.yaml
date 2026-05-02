@@ -1,0 +1,42 @@
+slug: cast-iron-cookware
+display_name: Cast Iron Cookware
+aliases:
+  - cast-iron-pan
+  - cast-iron-tawa
+  - lohe-ki-kadai
+  - iron-skillet
+category: cookware
+summary: |
+  Replace non-stick (Teflon / PFOA / PFAS-coated) cookware with seasoned
+  cast iron, stainless steel, or pure clay. Cast iron has the additional
+  benefit of leaching small but meaningful amounts of dietary iron into
+  acidic foods (tomatoes, sambar, rasam) — relevant for women with
+  iron-deficiency or perimenopausal cycle changes.
+benefits:
+  - eliminates non-stick PFAS / PFOA exposure (linked to endocrine disruption)
+  - measurable iron transfer when cooking acidic foods
+  - durable; lasts generations with proper seasoning
+swap_from:
+  - non-stick / Teflon-coated pans
+  - PFAS-coated bakeware
+how_to_use: |
+  Season periodically with a thin layer of any cooking oil. Avoid soap
+  on seasoned surface — wipe clean with hot water and dry immediately
+  to prevent rust. For acidic dishes (tomato curries), expect more
+  iron transfer; minimize for clients with iron overload (e.g.
+  hemochromatosis).
+cautions:
+  - Avoid in clients with hemochromatosis or other iron-overload conditions.
+  - Heavy — may not suit clients with grip-strength or wrist issues.
+linked_to_topics:
+  - perimenopause
+  - thyroid
+linked_to_mechanisms: []
+sources:
+  - id: vitaone-skill-practice-guide
+    location: practice_guide.md, Cooking & Environment section
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

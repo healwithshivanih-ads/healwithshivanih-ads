@@ -1,0 +1,36 @@
+slug: digestive-enzymes
+display_name: Digestive Enzymes
+category: enzyme
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 1
+    max: 2
+    unit: capsules
+  tablet:
+    min: 1
+    max: 2
+    unit: tablets
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+notes_for_coach: Take just before main meals to support breakdown of proteins, fats,
+  and carbohydrates; useful for bloating and food intolerances.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: Digestive Enzymes - Digestive support - 1–2 caps before meals - Before main
+    meals
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

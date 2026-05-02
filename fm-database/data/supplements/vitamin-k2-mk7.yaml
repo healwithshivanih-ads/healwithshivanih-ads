@@ -1,0 +1,36 @@
+slug: vitamin-k2-mk7
+display_name: Vitamin K2 (MK-7)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 100
+    max: 180
+    unit: mcg
+  tablet:
+    min: 100
+    max: 180
+    unit: mcg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+notes_for_coach: Best paired with Vitamin D3 for synergistic bone and cardiovascular
+  support; MK-7 form has longer half-life than MK-4.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: Vitamin K2 (MK-7) - Calcium metabolism, bone health - 100–180 mcg/day - With
+    meals, especially with D3
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

@@ -1,0 +1,40 @@
+slug: zinc-carnosine
+display_name: Zinc Carnosine / Zinc
+category: mineral
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 15
+    max: 30
+    unit: mg
+  tablet:
+    min: 15
+    max: 30
+    unit: mg
+timing_options:
+- with_breakfast
+- with_dinner
+- with_lunch
+take_with_food: required
+linked_to_topics: []
+linked_to_claims: []
+notes_for_coach: Base supplement useful for acne, immunity, gut mucosal repair, acid
+  reflux, and thyroid; take with food to avoid nausea.
+notes_for_client: Zinc carnosine is a specialized form of zinc used to support the
+  healing of the gut lining, especially in autoimmune and digestive conditions.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-practice-guide
+  location: Seven Clinical Focus Areas > 6. Autoimmune Conditions > Coaching interventions
+  quote: 'Heal intestinal lining: Bone broth, L-glutamine, zinc carnosine'
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Zinc carnosine/ Any form Zinc - Immune, gut repair, mucosal lining /acid
+    reflux - 15-30 mg/day - With food (to avoid nausea) or after
+version: 2
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

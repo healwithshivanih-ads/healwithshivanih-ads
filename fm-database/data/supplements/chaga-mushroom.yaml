@@ -1,0 +1,37 @@
+slug: chaga-mushroom
+display_name: Chaga Mushroom
+category: herb
+forms_available:
+- capsule
+- powder
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 1000
+    unit: mg
+  powder:
+    min: 500
+    max: 1000
+    unit: mg
+timing_options:
+- morning
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: optional
+notes_for_coach: Potent antioxidant medicinal mushroom; used for immunity, detox,
+  and anti-aging; morning dosing preferred.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 3 - Supplement Table
+  quote: Chaga Mushroom - Antioxidant, immune health - 500–1000 mg/day - Morning or
+    with meals
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

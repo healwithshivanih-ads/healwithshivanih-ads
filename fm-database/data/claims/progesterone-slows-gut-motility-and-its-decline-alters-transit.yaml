@@ -1,0 +1,30 @@
+slug: progesterone-slows-gut-motility-and-its-decline-alters-transit
+statement: Progesterone slows gut motility; when progesterone declines in perimenopause,
+  transit time changes and women may experience new-onset constipation or altered
+  bowel patterns.
+evidence_tier: plausible_emerging
+rationale: Single-expert source. Progesterone's effect on smooth muscle is well-documented
+  pharmacologically; its role in gut transit in natural menopause transition is plausible
+  but not robustly RCT-confirmed.
+coaching_translation: Progesterone naturally slows how quickly food moves through
+  your digestive system. When it drops in perimenopause, your gut 'speed' can shift,
+  sometimes causing new constipation.
+caveats:
+- Single-expert source; mechanism is pharmacologically plausible but evidence in natural
+  perimenopause transition is emerging.
+linked_to_topics:
+- perimenopause
+- motility
+- constipation
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-6
+  location: Session 6 — Main Transcript, Progesterone Section
+  quote: It can help slow motility... When it declines, it can change the way that
+    transit time. So it changes how we move food through the digestive system.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

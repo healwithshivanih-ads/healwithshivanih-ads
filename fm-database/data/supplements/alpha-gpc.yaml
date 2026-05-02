@@ -1,0 +1,33 @@
+slug: alpha-gpc
+display_name: Alpha-GPC
+category: other
+forms_available:
+- capsule
+- powder
+typical_dose_range:
+  capsule:
+    min: 300
+    max: 600
+    unit: mg
+  powder:
+    min: 300
+    max: 600
+    unit: mg
+timing_options:
+- morning
+take_with_food: optional
+notes_for_coach: Highly bioavailable choline source for acetylcholine synthesis; supports
+  cognition and neuroprotection; best taken in the morning.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 3 - Supplement Table
+  quote: Alpha-GPC - Choline source, brain health - 300–600 mg/day - Morning
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

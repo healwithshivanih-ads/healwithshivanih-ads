@@ -1,0 +1,45 @@
+slug: hpa-axis-dysregulation
+display_name: HPA Axis Dysregulation
+aliases:
+  - hpa-axis-dysfunction
+  - chronic-stress-response
+  - cortisol-dysregulation
+  - cortisol-elevation
+category: endocrine
+summary: |
+  The hypothalamic-pituitary-adrenal axis becomes dysregulated under chronic
+  psychological, inflammatory, or metabolic stress, leading to inappropriate
+  cortisol patterns — typically elevated evening cortisol, blunted morning
+  cortisol, or a flattened diurnal slope. Drives downstream effects on
+  thyroid hormone conversion, blood sugar control, immune function, sleep
+  architecture, and gut barrier integrity.
+upstream_drivers:
+  - chronic psychological stress
+  - chronic inflammation
+  - blood sugar instability
+  - poor sleep
+  - undereating / over-exercise
+downstream_effects:
+  - reduced T4→T3 conversion (raises reverse T3)
+  - leaky gut via cortisol effects on tight junctions
+  - blunted morning cortisol → fatigue
+  - elevated evening cortisol → 3am wakeups
+  - immune dysregulation
+  - hyperglycemia, insulin resistance
+related_mechanisms:
+  - leaky-gut
+  - insulin-resistance
+linked_to_topics:
+  - anxiety
+  - insomnia
+  - thyroid
+  - perimenopause
+  - pcos
+sources:
+  - id: vitaone-skill-practice-guide
+    location: practice_guide.md, Nervous System & HPA section
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

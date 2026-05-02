@@ -1,0 +1,30 @@
+slug: cortisol-chronic-elevation-catabolic-immune-gut
+statement: Chronically elevated cortisol breaks down muscle (catabolism), lowers immune
+  function, contributes to leaky gut, and drives systemic inflammation.
+evidence_tier: strong
+rationale: Catabolic effects of chronic cortisol excess and immunosuppression are
+  well-established endocrinology. Cortisol's role in gut permeability and inflammation
+  has strong mechanistic backing.
+coaching_translation: While cortisol is helpful short-term (focus, alertness), chronic
+  stress keeps it elevated — and that wears down muscle, immunity, and gut integrity
+  over time.
+caveats:
+- Speaker is presenting established physiology; magnitude of effect varies with degree
+  of HPA dysregulation.
+linked_to_topics:
+- gut-brain-axis
+- microbiome
+- dysbiosis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-5
+  location: Cortisol section
+  quote: Cortisol over time can be very corrosive. It can be problematic because it
+    can break down muscle. It can be catabolic. It lowers are immunities, we're more
+    likely to get sick, contributes to leaky gut, it drives inflammation.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

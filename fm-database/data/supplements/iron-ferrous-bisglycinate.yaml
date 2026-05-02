@@ -1,0 +1,36 @@
+slug: iron-ferrous-bisglycinate
+display_name: Iron (Ferrous Bisglycinate)
+category: mineral
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 18
+    max: 30
+    unit: mg
+  tablet:
+    min: 18
+    max: 30
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+notes_for_coach: Bisglycinate form is gentler on the GI tract; pair with Vitamin C
+  to enhance absorption; iron supplementation should be guided by lab results.
+evidence_tier: confirm_with_clinician
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Iron (Ferrous Bisglycinate) - Hemoglobin, oxygen transport - 18–30 mg/day
+    - post any meal or with vitamin C
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

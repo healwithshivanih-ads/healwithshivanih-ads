@@ -1,0 +1,31 @@
+slug: estrogen-metabolism-requires-liver-and-gut-phases
+statement: 'Estrogen detoxification occurs in three sequential phases: phase one and
+  two in the liver (converting estrogens to water-soluble conjugates), and phase three
+  in the gut (microbial processing via the estrobolome for excretion or recirculation).'
+evidence_tier: plausible_emerging
+rationale: Hepatic phase 1/2 metabolism of estrogens is well-established. The designation
+  of gut microbial processing as a distinct 'phase three' is a functional medicine
+  framing with mechanistic plausibility but not uniformly adopted in peer-reviewed
+  literature. Source is single-expert transcript.
+coaching_translation: Your liver starts breaking down estrogen, but the gut has to
+  finish the job. Without a healthy gut microbiome, that final step doesn't happen
+  properly.
+caveats:
+- '''Phase three'' framing is functional medicine terminology; verify framing with
+  clinician.'
+- Single-expert source.
+linked_to_topics:
+- estrobolome
+- microbiome
+- gut-hormone-axis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-3
+  location: Estrogen Metabolism — Phase Three
+  quote: Phase three of detoxification is in the gut.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

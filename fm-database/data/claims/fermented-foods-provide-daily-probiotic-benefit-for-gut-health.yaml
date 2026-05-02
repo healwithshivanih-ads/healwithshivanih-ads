@@ -1,0 +1,31 @@
+slug: fermented-foods-provide-daily-probiotic-benefit-for-gut-health
+statement: Daily inclusion of fermented foods (sauerkraut, miso, kombucha, kefir,
+  yogurt) provides probiotic benefit and is recommended as a foundational food-first
+  strategy for gut health in midlife.
+evidence_tier: plausible_emerging
+rationale: Single-expert source. Fermented food consumption and microbiome diversity
+  is an active research area with positive signals (e.g., Wastyk et al. 2021 Cell);
+  recommendation here is from expert consensus without citing specific trials.
+coaching_translation: You don't need a probiotic pill to feed your microbiome — start
+  with 2–3 tablespoons of sauerkraut, a miso soup, or a low-sugar kombucha daily as
+  a food-first approach.
+caveats:
+- Single-expert source; food-first probiotic strategy is broadly recommended but specific
+  dose/strain evidence varies.
+- Fermented dairy may not be suitable for those with dairy sensitivity.
+linked_to_topics:
+- microbiome
+- dysbiosis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-6
+  location: Session 6 — Q&A, Fermented Foods Section
+  quote: Fermented foods, I think all of us need to include in our daily consumption
+    of foods. It could be two or three tablespoons of sauerkraut, it could be miso,
+    it could be maybe you're having low sugar kombucha.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

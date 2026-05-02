@@ -1,0 +1,43 @@
+slug: soak-and-sprout-legumes
+display_name: Soak and Sprout Legumes Before Cooking
+aliases:
+  - soak-dals
+  - sprout-moong
+  - bhigokar-pakana
+  - legume-soaking
+category: food_prep
+summary: |
+  Soak legumes (dals, chana, rajma, moong) for 6-12 hours before cooking,
+  and ideally sprout them for 12-24 hours afterward. Reduces phytates
+  (which bind minerals like iron, zinc, calcium), reduces oligosaccharides
+  (which cause bloating/gas), improves digestibility, and increases some
+  nutrient bioavailability. Traditional Indian practice; still common
+  in many homes but increasingly skipped due to time pressure.
+benefits:
+  - reduced bloating and gas from improved digestibility
+  - higher mineral bioavailability (iron, zinc, calcium)
+  - faster cooking (saves fuel and time once soaked)
+  - sprouted form has additional vitamin C and enzymes
+swap_from:
+  - cooking dry legumes directly from packet
+how_to_use: |
+  Rinse, then soak in 3x volume water for 6-12 hours (overnight).
+  Discard soak water. For sprouting: drain, tie loosely in a damp cloth,
+  leave in a warm spot for 12-24 hours until tiny tails appear. Cook
+  as usual (will cook ~30% faster). Pressure-cooking is fine.
+cautions:
+  - Sprouted legumes can carry bacteria — cook thoroughly during pregnancy
+    or for immunocompromised clients.
+linked_to_topics:
+  - microbiome
+  - dysbiosis
+linked_to_mechanisms:
+  - microbial-diversity-decline
+sources:
+  - id: vitaone-skill-practice-guide
+    location: practice_guide.md, Indian Kitchen Practices
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

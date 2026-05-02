@@ -1,0 +1,41 @@
+slug: coq10-ubiquinone
+display_name: CoQ10 (Ubiquinone/Ubiquinol)
+category: other
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 100
+    max: 300
+    unit: mg
+  tablet:
+    min: 100
+    max: 300
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics: []
+linked_to_claims: []
+notes_for_coach: Fat-soluble; take with meals; particularly relevant for clients on
+  statins, those experiencing fatigue, or aging-related mitochondrial decline.
+notes_for_client: CoQ10 is especially important if you are taking a statin medication.
+  Take it with a fatty meal for best absorption.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-practice-guide
+  location: Seven Clinical Focus Areas > 5. Cholesterol and Cardiovascular Health
+    > Coaching interventions
+  quote: 'Supplement support: Fish oil (if tolerated), CoQ10 if on statins, niacin'
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: CoQ10 (Ubiquinone/Ubiquinol) - Mitochondrial energy, heart health - 100–300
+    mg/day - With meal
+version: 2
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

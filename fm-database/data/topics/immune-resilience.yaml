@@ -1,0 +1,47 @@
+slug: immune-resilience
+display_name: Immune Resilience
+aliases:
+- immune support
+- immunosenescence prevention
+- gut-immune balance
+summary: Immune resilience describes the capacity of the aging immune system to mount
+  effective responses to infections, maintain tolerance, and avoid autoimmune dysregulation.
+  It declines with age and hormonal shifts but can be supported through lifestyle,
+  nutrition, and targeted interventions.
+common_symptoms:
+- frequent infections
+- poor vaccine response
+- slow wound healing
+- heightened chemical or food sensitivities
+- autoimmune flares
+red_flags:
+- recurrent or severe infections
+- new autoimmune diagnoses
+- unexplained fatigue and immune symptoms — refer to clinician
+related_topics:
+- inflammaging
+- autoimmune
+- microbiome
+- gut-hormone-axis
+- inflammation
+key_mechanisms:
+- gut-associated-lymphoid-tissue-regulation
+- th1-th2-balance
+- short-chain-fatty-acid-production
+coaching_scope_notes: Coaches can support immune resilience via fiber-rich diet, polyphenol
+  intake, sleep optimization, stress management, and nervous system regulation. Peptides,
+  LDN, HRT, and GLP-1 drugs are clinician territory.
+clinician_scope_notes: Thymic peptides (BPC-157, Thymosin Alpha-1, TB-4), low-dose
+  naltrexone, HRT, and GLP-1 agonists discussed as immune-supportive strategies —
+  all require prescriber involvement.
+evidence_tier: plausible_emerging
+sources:
+- id: thurlow-microbiome-session-8
+  location: Session 8 — 'The things that support immune balance' segment
+  quote: The things that support immune balance... we know fiber and short-chain fatty
+    acids are really important... I also think about polyphenols... obviously sleep
+    is really important... nervous system regulation.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

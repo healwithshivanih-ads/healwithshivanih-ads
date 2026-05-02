@@ -1,0 +1,30 @@
+slug: progesterone-supplementation-can-trigger-reflux
+statement: Starting exogenous progesterone supplementation can trigger or worsen reflux
+  due to its smooth muscle relaxation effects on the lower esophageal sphincter.
+evidence_tier: plausible_emerging
+rationale: Single-expert clinical observation. Progesterone's smooth-muscle-relaxing
+  effect on the LES is a plausible mechanism; commonly reported clinically but limited
+  direct RCT evidence in menopause-specific HRT context.
+coaching_translation: If you started progesterone and suddenly noticed more heartburn
+  or reflux, this is a known effect — worth discussing with your prescriber.
+out_of_scope_notes: Progesterone prescribing and dose adjustments for side-effect
+  management are clinician scope.
+caveats:
+- Single-expert clinical observation; no study cited.
+- Medication management is out of coaching scope.
+linked_to_topics:
+- perimenopause
+- dyspepsia
+- motility
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-6
+  location: Session 6 — Main Transcript, Reflux/Progesterone Section
+  quote: I see a lot of reflux, especially with changes in progesterone, and in particular
+    for those who suddenly start taking progesterone and all of a sudden they start
+    having a lot of reflux because it's a smooth muscle contractility type of hormone.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

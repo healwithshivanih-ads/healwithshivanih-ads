@@ -1,0 +1,40 @@
+slug: vitamin-c
+display_name: Vitamin C (Ascorbic Acid)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+- powder
+typical_dose_range:
+  capsule:
+    min: 1000
+    max: 2000
+    unit: mg
+  tablet:
+    min: 1000
+    max: 2000
+    unit: mg
+  powder:
+    min: 1000
+    max: 2000
+    unit: mg
+timing_options:
+- morning
+- on_waking
+take_with_food: optional
+notes_for_coach: Broad antioxidant and immune support; also used to enhance non-heme
+  iron absorption when co-administered with iron.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Vitamin C (Ascorbic Acid) - Immunity, antioxidant, collagen - 1000-2000 mg/day
+    - Anytime- morning
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

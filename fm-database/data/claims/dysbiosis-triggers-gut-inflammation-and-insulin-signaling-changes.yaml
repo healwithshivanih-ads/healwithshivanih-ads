@@ -1,0 +1,34 @@
+slug: dysbiosis-triggers-gut-inflammation-and-insulin-signaling-changes
+statement: Microbiome dysbiosis — the overgrowth of non-beneficial bacteria — triggers
+  increased gut inflammation that directly impairs insulin signaling, leading to fat
+  storage and visceral adiposity.
+evidence_tier: plausible_emerging
+rationale: The mechanistic link between dysbiosis, gut-derived LPS/inflammatory signaling,
+  and insulin resistance is well-supported in preclinical and early human research.
+  The direct chain from dysbiosis → inflammation → insulin signaling change → fat
+  storage is plausible and emerging.
+coaching_translation: When your gut bacteria become imbalanced, the resulting inflammation
+  disrupts how your body responds to insulin — making it easier to store fat, especially
+  around the belly.
+caveats:
+- Single-expert source; no specific studies cited.
+- Magnitude of effect in midlife women specifically has limited RCT evidence.
+linked_to_topics:
+- microbiome
+- insulin-resistance
+- visceral-adiposity
+- midlife-weight-gain
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-4
+  location: Session 4 — Gut Inflammation Weight Gain Loop
+  quote: We know that the inflammation in and of itself will actually change insulin
+    signaling in the gut. So this is an important distinction. We start with alterations
+    in the healthy bacteria. We then get an increase in inflammation, which actually
+    changes our insulin sensitivity. And that insulin change influences fat storage.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

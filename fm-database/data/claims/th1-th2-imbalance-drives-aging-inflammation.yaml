@@ -1,0 +1,32 @@
+slug: th1-th2-imbalance-drives-aging-inflammation
+statement: Aging shifts the balance of T helper cells (TH1/TH2), increasing pro-inflammatory
+  TH1 activity while reducing antibody-driven TH2 activity, leading to greater infection
+  susceptibility and chronic inflammation.
+evidence_tier: plausible_emerging
+rationale: TH1/TH2 imbalance with immunosenescence is discussed in geroscience literature,
+  though the directionality is debated (some research shows TH2 dominance in allergy
+  aging). Speaker simplifies for lay audience. Single expert source.
+coaching_translation: As we age, the 'attack mode' of our immune system stays elevated
+  while the 'memory and defense' mode weakens — meaning more inflammation and less
+  ability to fight new infections.
+caveats:
+- TH1/TH2 shift with aging is more nuanced in the literature; direction and magnitude
+  depend on context.
+- Single-expert source, no primary study cited.
+linked_to_topics:
+- inflammaging
+- immune-resilience
+- autoimmune
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-8
+  location: Session 8 — T helper cell segment
+  quote: TH1 is pro-inflammatory and fights infections. And then TH2 is anti-inflammatory,
+    antibody driven. So what starts to happen is we start losing some of these T helper
+    to effects. So we are more inflammatory, we are less antibody driven.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

@@ -1,0 +1,45 @@
+slug: fiber-gap
+display_name: Fiber Gap
+aliases:
+- dietary fiber deficiency
+- low fiber intake
+summary: The widespread shortfall between actual dietary fiber intake (often 5–15
+  g/day in Western populations) and recommended targets (25–35 g/day), with particular
+  relevance for women in midlife whose microbiome, hormonal clearance, and metabolic
+  health all depend on adequate fiber.
+common_symptoms:
+- constipation
+- bloating
+- weight gain
+- blood sugar dysregulation
+- estrogen recirculation symptoms
+red_flags:
+- persistent constipation unresponsive to fiber increase
+- rectal bleeding
+- unexplained weight loss — refer for colorectal evaluation
+related_topics:
+- microbiome
+- dysbiosis
+- estrobolome
+- gut-hormone-axis
+- scfa-short-chain-fatty-acids
+key_mechanisms:
+- microbiome-substrate-deprivation
+- impaired-scfa-production
+- estrogen-enterohepatic-recirculation
+coaching_scope_notes: Coaches can support gradual fiber increase (2–5 g increments),
+  food-first approaches, hydration pairing, and symptom tracking. Refer persistent
+  GI symptoms or suspected colorectal issues to a clinician.
+clinician_scope_notes: Evaluate underlying GI pathology if bloating or constipation
+  is refractory. Consider colonoscopy screening per guidelines, especially with family
+  history.
+evidence_tier: plausible_emerging
+sources:
+- id: thurlow-microbiome-session-7
+  location: Opening remarks [00:04:00]
+  quote: most are actually not consuming enough fiber and how that is actually having
+    a detrimental net effect on their microbiome.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

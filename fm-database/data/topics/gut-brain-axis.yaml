@@ -1,0 +1,55 @@
+slug: gut-brain-axis
+display_name: Gut-Brain Axis
+aliases:
+- gut-brain connection
+- microbiota-gut-brain axis
+summary: The bidirectional communication superhighway between the gut microbiome and
+  the brain, mediated primarily via the vagus nerve, neurotransmitter production,
+  short-chain fatty acids, and inflammatory cytokines. Disruption of this axis underlies
+  mood disorders, cognitive symptoms, and sleep disruption, particularly in midlife
+  women as sex hormones decline.
+common_symptoms:
+- anxiety
+- low mood
+- brain fog
+- insomnia
+- bloating
+- constipation
+- diarrhea
+- weight gain
+- cravings
+- fatigue
+- irritability
+red_flags:
+- persistent mood disorders requiring pharmacological management
+- severe cognitive decline beyond typical brain fog
+- chronic unresolvable sleep disruption
+related_topics:
+- microbiome
+- vagal-tone
+- dysbiosis
+- anxiety
+- insomnia
+- gut-hormone-axis
+- perimenopause
+key_mechanisms:
+- vagal-nerve-signaling
+- gut-derived-neurotransmitter-production
+- inflammatory-cytokine-transmission
+coaching_scope_notes: 'Coaches can support the gut-brain axis through lifestyle pillars:
+  dietary diversity (30 plant species/week), stress management, sleep hygiene, and
+  movement. Do not advise on pharmaceutical interventions (antidepressants, HRT, GLP-1s).'
+clinician_scope_notes: Antidepressants, anti-anxiety agents, mood stabilizers, HRT,
+  and GLP-1 prescribing are clinician territory. Persistent or severe mood/cognitive
+  symptoms warrant clinical referral.
+evidence_tier: strong
+sources:
+- id: thurlow-microbiome-session-5
+  location: Gut-Brain Axis section
+  quote: The gut and the brain are in constant communication. So think about this
+    as this communication superhighway between the gut and the brain. There is nothing
+    that goes on in the gut that does not get transmitted to the brain and vice versa.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

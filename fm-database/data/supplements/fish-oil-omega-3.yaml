@@ -1,0 +1,42 @@
+slug: fish-oil-omega-3
+display_name: Omega-3 (EPA/DHA)
+category: fatty_acid
+forms_available:
+- capsule
+- liquid
+typical_dose_range:
+  capsule:
+    min: 1000
+    max: 3000
+    unit: mg
+  liquid:
+    min: 1000
+    max: 3000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics: []
+linked_to_claims: []
+notes_for_coach: Base foundational supplement; supports cognition, hormones, cardiovascular
+  health, and inflammation reduction.
+notes_for_client: Take fish oil with a meal that contains fat for best absorption
+  and to avoid fishy aftertaste. Look for the EPA+DHA content on the label — that
+  is the active amount.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-practice-guide
+  location: Seven Clinical Focus Areas > 5. Cholesterol and Cardiovascular Health
+    > Coaching interventions
+  quote: 'Supplement support: Fish oil (if tolerated), CoQ10 if on statins, niacin'
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Omega-3 (EPA/DHA) - Inflammation, heart, brain - 1000–3000 mg/day - With
+    meals
+version: 2
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

@@ -1,0 +1,382 @@
+slug: adrenal-fatigue
+display_name: Adrenal Fatigue
+description: 'FM view of adrenal/HPA-axis dysregulation: physiology, stress response
+  stages, dysfunctional cortisol patterns, systemic connections, diagnosis, treatment.
+  Note: ''adrenal fatigue'' as a discrete diagnosis is FM-specific and not endocrinology
+  consensus. Imported from Vitaone Education Tools.'
+related_topics:
+- anxiety
+related_mechanisms: []
+tree:
+- label: Physiology & Hormones
+  children:
+  - label: Cortisol
+    children:
+    - label: Production Pathway
+      children:
+      - label: Cholesterol to Pregnenolone
+      - label: Pregnenolone to Cortisol
+      - label: ACTH Stimulates Release
+      - label: CRH Triggers ACTH
+    - label: Diurnal Pattern
+      children:
+      - label: Peak at Waking CAR
+      - label: 50% Rise Post Awakening
+      - label: Gradual Daytime Decline
+      - label: Nadir 12-3 AM
+    - label: Receptor Distribution
+      children:
+      - label: Glucocorticoid Receptors Everywhere
+      - label: Nuclear Receptor Gene Action
+      - label: Epigenetic DNA Methylation
+  - label: DHEA
+    children:
+    - label: Pregnenolone Derived
+      children:
+      - label: Cardiovascular Immune Metabolic
+    - label: Sex Steroid Reservoir
+    - label: T4 to T3 Conversion Aid
+    - label: Accelerates Stress Recovery
+      children:
+      - label: Normal 5:1 to 6:1
+    - label: Cortisol DHEA Ratio
+      children:
+      - label: High Ratio Overstimulated
+      - label: Low Both Depleted State
+    - label: Age Related Decline
+      children:
+      - label: DHEA Falls With Age
+      - label: Cortisol Often Rises
+      - label: Ratio Widens In Elderly
+  - label: HPA Axis
+    children:
+    - label: Hypothalamus Releases CRH AVP
+    - label: Pituitary Releases ACTH
+      children:
+      - label: Cortisol
+    - label: Adrenal Cortex Outputs
+      children:
+      - label: DHEAS
+      - label: Aldosterone
+    - label: Negative Feedback Loop
+      children:
+      - label: Cortisol Inhibits CRH
+      - label: Hippocampus Modulates
+      - label: Chronic Stress Breaks Loop
+- label: Stress Response Stages
+  children:
+  - label: Stage 1 Alarm
+    children:
+    - label: Circadian Pacemaker
+      children:
+      - label: Suprachiasmatic Nucleus
+      - label: Peripheral Clock Genes
+      - label: Disruption Causes Cascade
+    - label: Catecholamine Surge
+    - label: Fight or Flight Response
+    - label: Transient Cortisol Rise
+    - label: Body Mobilizes Resources
+  - label: Stage 2 Resistance
+    children:
+    - label: Sustained Hypercortisolism
+    - label: HPA Chronically Activated
+    - label: Early Dysfunction Signs
+    - label: Resources Being Depleted
+  - label: Stage 3 Exhaustion
+    children:
+    - label: HPA Capacity Overwhelmed
+    - label: Cortisol Precursors Depleted
+    - label: Hypocortisolism Emerges
+    - label: System Wide Consequences
+  - label: Eustress vs Distress
+    children:
+    - label: Eustress Enhances Performance
+    - label: Distress Exceeds Coping
+    - label: Both Activate HPA Axis
+    - label: Outcome Depends on Duration
+  - label: Allostatic Load
+    children:
+    - label: Cumulative Stress Burden
+    - label: Physical Psychological Environmental
+    - label: Early Life Adversity Impact
+    - label: Prenatal DNA Methylation
+- label: Dysfunctional Patterns
+  children:
+  - label: High AM Cortisol
+    children:
+    - label: Elevated CAR Preclinical Sign
+    - label: Hyperactive HPA Response
+    - label: Associated With High BMI
+    - label: Older Age Smoking Link
+    - label: Type D Personality Correlation
+  - label: High PM Cortisol
+    children:
+    - label: Primary Sleep Disruption
+    - label: Insomnia Easy Waking
+    - label: Reverse Pattern Variant
+      children:
+      - label: Unhappy Relationships
+    - label: Psychosocial Correlates
+      children:
+      - label: Low Socioeconomic Status
+      - label: Low Social Support
+  - label: Elevated Midday Cortisol
+    children:
+    - label: HPA Regulatory Dysfunction
+    - label: Chronic Stress Earlier Stage
+    - label: Depressive Symptoms Linked
+    - label: Anxiety Caregiver Stress
+    - label: Episodic vs Sustained Key
+  - label: Low Flattened Cortisol
+    children:
+    - label: Not An ICD Diagnosis
+    - label: Prefer Term HPA Dysregulation
+      children:
+      - label: Coronary Calcification
+    - label: Consequences
+      children:
+      - label: Cancer Prognosis Marker
+      - label: PTSD Association
+  - label: Low Flat No Variation
+    children:
+    - label: Rule Out Addisons First
+      children:
+      - label: Adverse Childhood Link
+    - label: Rule Out Pituitary Pathology
+      children:
+      - label: Infections Cancer
+    - label: Rule Out Organic Causes
+      children:
+      - label: Hemorrhage Infarction
+- label: Systemic Connections
+  children:
+  - label: Metabolic
+    children:
+    - label: Insulin Resistance
+      children:
+      - label: Drug Induced
+    - label: Elevated Triglycerides
+    - label: Central Weight Gain
+    - label: Blood Sugar Instability
+    - label: Hypoglycemia Low Cortisol
+  - label: Thyroid
+    children:
+    - label: TSH Suppressed
+    - label: T4 to T3 Impaired
+    - label: Reverse T3 Elevated
+    - label: Thyroid Receptor Resistance
+    - label: Autoimmune Risk Increased
+  - label: Immune System
+    children:
+    - label: Acute Anti-Inflammatory
+    - label: Chronic Pro-Inflammatory
+    - label: GCR Resistance Mechanism
+    - label: NK Cell Activity Reduced
+    - label: Infection Susceptibility
+  - label: Gut Health
+    children:
+    - label: IBS HPA Axis Link
+    - label: Vagal Tone Reduced
+    - label: Gut Permeability Increased
+    - label: Digestion Absorption Poor
+    - label: Microbiome Disrupted
+  - label: Sex Hormones
+    children:
+    - label: Pregnenolone Steal Concept
+    - label: Low Progesterone Estrogen
+    - label: Low Testosterone DHEA
+    - label: PCOS Pattern Link
+    - label: Early Perimenopause Risk
+  - label: Brain & Mood
+    children:
+    - label: Brain Fog Memory Loss
+    - label: Depression Anxiety
+    - label: PTSD Cortisol Pattern
+    - label: Hippocampal Damage Risk
+    - label: Dementia Alzheimer Link
+  - label: Cardiovascular
+    children:
+    - label: Coronary Calcification
+    - label: Hypertension
+    - label: Atherosclerosis Risk
+    - label: All Cause Mortality
+- label: Diagnosis
+  children:
+  - label: Why Single Serum Fails
+    children:
+    - label: Snapshot of Moving Target
+    - label: Misses Diurnal Pattern
+    - label: Pattern Is The Pathology
+    - label: T4 64-155 nmol Accepted
+    - label: Whitehall II Study Evidence
+  - label: Thyroid Cortisol Paradox
+    children:
+    - label: Cortisol 165-635 nmol Ignored
+    - label: TSH Stable Single Draw Works
+    - label: Cortisol Fluctuates Single Fails
+    - label: Logistical Barrier Not Scientific
+      children:
+      - label: Waking
+  - label: Optimal Testing
+    children:
+    - label: 4-Point Salivary Cortisol
+      children:
+      - label: 30 Min Post Waking
+      - label: Noon
+      - label: Evening
+      - label: Midnight
+    - label: DUTCH Test
+      children:
+      - label: Free Cortisol Pattern
+      - label: Metabolized Cortisol THF THE
+      - label: Total DHEA Production
+      - label: Sex Hormone Metabolites
+  - label: Blood Biomarkers High Cortisol
+    children:
+    - label: Elevated Fasting Glucose
+      children:
+      - label: Estrogen Phase 1 Ratios
+    - label: Elevated BUN Catabolism
+    - label: Elevated Triglycerides
+    - label: Elevated Sodium
+    - label: Low Potassium
+    - label: Low DHEAS
+  - label: Blood Biomarkers Low Cortisol
+    children:
+    - label: Low AM PM Cortisol
+    - label: Low DHEAS
+    - label: Low Sodium Potassium Ratio
+    - label: Elevated Potassium
+  - label: Evidence Base
+    children:
+    - label: Diet
+      children:
+      - label: Whole Unprocessed Foods
+      - label: Good Protein Omega 3 Fiber
+      - label: Avoid Caffeine Refined Carbs
+      - label: Avoid Prolonged Fasting
+    - label: 80 Studies Meta-Analysis
+    - label: 36823 Patients Adam 2017
+    - label: 10 of 12 Outcomes Predicted
+    - label: Flatter Slope Worse Health
+      children:
+      - label: Frequent Regular Meals
+- label: Treatment
+  children:
+  - label: Lifestyle
+    children:
+    - label: Exercise
+      children:
+      - label: Walking Cycling Swimming
+      - label: 20-30 Min Low Intensity
+      - label: Yoga Tai Chi Qigong
+      - label: Avoid Overtraining
+      - label: 3-4 Sessions Weekly
+    - label: Sleep
+      children:
+      - label: Consistent Sleep Schedule
+      - label: Morning Sunlight 10-15 Min
+      - label: Dark Cool Quiet Room
+      - label: No Blue Light Before Bed
+      - label: Breathing Meditation Routine
+    - label: Stress Reduction
+      children:
+      - label: Box Breathing 4-7-8
+      - label: Music Therapy
+      - label: Social Support Expansion
+      - label: Nature Exposure Rest Breaks
+  - label: Nutritional Supplements
+    children:
+    - label: Emotional Healing
+      children:
+      - label: NLP Brain Retraining
+      - label: EFT Emotion Release
+      - label: EMDR Somatic Therapy
+      - label: Counselling
+      - label: Spirituality
+      - label: Multivitamin Multimineral
+    - label: Foundation For All Stages
+      children:
+      - label: Vitamin C 1-2g
+      - label: Magnesium 400-600mg
+      - label: Omega 3 1-3g EPA DHA
+      - label: Zinc 20-50mg
+      - label: Selenium
+    - label: B Complex Cofactors
+      children:
+      - label: Ashwagandha 2-4g
+      - label: B5 Pantothenic 1000-1500mg
+      - label: B6 P5P 50-100mg
+      - label: Biotin 1000mcg
+      - label: Folate MTHF 400-800mcg
+      - label: Vitamin D
+  - label: Botanicals By Stage
+    children:
+    - label: Stage 1 Alarm
+      children:
+      - label: L-Theanine 200-1200mg
+      - label: 5-HTP 100-200mg HS
+      - label: Passion Flower 1g TID
+      - label: Valerian Root 100-200mg
+      - label: Schisandra 100mg BID
+      - label: Rehmannia 400-800mg
+      - label: Polygala 500-1000mg
+    - label: Stage 2 Resistance
+      children:
+      - label: Ashwagandha 2-4g
+      - label: Rhodiola 200-600mg
+      - label: Cordyceps 1g BID
+      - label: Siberian Ginseng 500mg BID
+      - label: St Johns Wort 300mg TID
+      - label: Phosphatidylserine 300-800mg
+    - label: Stage 3 Exhaustion
+      children:
+      - label: Ashwagandha 2-4g
+      - label: Licorice 100-200mg BID
+      - label: Rehmannia 400-800mg
+      - label: Cordyceps 1g BID
+      - label: Asian Ginseng 200-400mg
+  - label: Hormone Replacement
+    children:
+    - label: DHEA
+      children:
+      - label: Females 5-25mg BID
+      - label: Males 10-25mg BID
+      - label: Increase Dietary Sodium
+    - label: Pregnenolone 10-50mg BID
+      children:
+      - label: 5-10mg AM On Rising
+    - label: Oral Hydrocortisone
+      children:
+      - label: Add 2.5-5mg At Noon
+      - label: Max 20mg Per Day
+      - label: Rule Out Addisons First
+      - label: Physician Supervision Required
+  - label: Rule Out Serious Disease
+    children:
+    - label: Cushings Syndrome
+      children:
+      - label: Prolonged Steroid Use
+      - label: Pituitary Tumor
+      - label: Adrenal Tumor
+      - label: Ectopic ACTH Syndrome
+    - label: Addisons Disease
+      children:
+      - label: Autoimmune Most Common
+      - label: TB HIV Fungal Infections
+      - label: Cancer Adrenal Bleeding
+      - label: ACTH Stimulation Test
+    - label: Secondary Insufficiency
+      children:
+      - label: Overtraining Athletes
+      - label: Pituitary Pathology
+      - label: Steroid Withdrawal
+sources:
+- id: vitaone-mind-map-tool
+  location: tools.vitaone.in/mind-maps
+  quote: 'Imported from Vitaone Education Tools: ''Adrenal Dysfunction & HPA Axis'''
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

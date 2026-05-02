@@ -1,0 +1,48 @@
+slug: selenium
+display_name: Selenium (L-Selenomethionine)
+category: mineral
+forms_available:
+- capsule
+- tablet
+evidence_tier: plausible_emerging
+linked_to_topics:
+- thyroid
+linked_to_claims:
+- selenium-supplementation-reduces-tpo-antibodies-in-hashimotos
+- selenium-zinc-iron-required-for-t4-to-t3-conversion
+notes_for_coach: L-selenomethionine form is best absorbed; commonly used for Hashimoto's
+  thyroiditis and antioxidant defence; avoid long-term doses above 400 mcg/day.
+notes_for_client: Selenium supports your thyroid's ability to make and activate thyroid
+  hormones. The typical dose is 200 mcg daily, ideally with a meal.
+typical_dose_range:
+  capsule:
+    min: 200
+    max: 200
+    unit: mcg
+  tablet:
+    min: 200
+    max: 200
+    unit: mcg
+timing_options:
+- morning
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_mechanisms: []
+sources:
+- id: vitaone-evidence-tiers
+  location: TOPIC 1 — Thyroid / Claims & Tiers / Claim 3
+  quote: Deiodinase enzymes are selenoproteins (selenium-dependent).
+- id: vitaone-practice-guide
+  location: Clinical Education for Clients > Thyroid Function Beyond TSH > Non-pharmaceutical
+    support for thyroid
+  quote: 'Selenium: Critical for thyroid peroxidase function, 200 mcg daily'
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: Selenium (Lselenomethionine) - Thyroid support, antioxidant - 200 mcg/day
+    - With meals
+version: 3
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

@@ -1,0 +1,51 @@
+slug: chronic-inflammation
+display_name: Chronic Low-Grade Inflammation
+aliases:
+  - systemic-inflammation
+  - inflammatory-cytokine-release
+  - inflammatory-cytokine-signaling
+  - inflammatory-cytokine-transmission
+category: immune
+summary: |
+  Persistent low-grade activation of the innate immune system without an
+  acute infectious trigger — typically driven by visceral adiposity,
+  leaky gut + LPS translocation, dysbiosis, chronic stress, and dietary
+  drivers (refined carbs, oxidized seed oils, alcohol). Cytokines like
+  IL-6, TNF-α, and CRP rise. Underlies most modern chronic disease:
+  cardiovascular, neurodegenerative, autoimmune, metabolic. Distinct
+  from acute inflammation (which is protective and resolving).
+upstream_drivers:
+  - visceral adiposity
+  - leaky gut + LPS translocation
+  - dysbiosis
+  - HPA dysregulation / chronic stress
+  - poor sleep
+  - dietary drivers (refined carbs, ultra-processed foods)
+downstream_effects:
+  - elevated hs-CRP, IL-6, TNF-α
+  - insulin resistance amplification
+  - autoimmune flare risk
+  - cardiovascular plaque progression
+  - neuroinflammation / brain fog
+  - accelerated cellular aging (inflammaging)
+related_mechanisms:
+  - leaky-gut
+  - insulin-resistance
+  - hpa-axis-dysregulation
+  - microbial-diversity-decline
+linked_to_topics:
+  - inflammation
+  - autoimmune
+  - perimenopause
+  - thyroid
+  - pcos
+sources:
+  - id: vitaone-skill-practice-guide
+    location: practice_guide.md, Inflammation section
+  - id: thurlow-microbiome-session-8
+    location: Session 8 — Inflammaging
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

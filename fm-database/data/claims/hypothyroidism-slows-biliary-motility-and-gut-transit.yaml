@@ -1,0 +1,26 @@
+slug: hypothyroidism-slows-biliary-motility-and-gut-transit
+statement: Hypothyroidism slows biliary motility and intestinal transit, increasing
+  constipation and gallstone risk, reflecting the thyroid–gut connection.
+evidence_tier: strong
+rationale: Hypothyroidism leads to decreased gallbladder contractility, slower intestinal
+  transit, increased gallstone risk, and constipation — all well-documented in gastroenterology
+  literature. Thyroid hormone is also needed for bile acid synthesis.
+coaching_translation: Constipation is a commonly missed thyroid symptom. If gut and
+  thyroid are both struggling, they're likely talking to each other.
+caveats:
+- Constipation has many causes; coaches should encourage full workup rather than attributing
+  directly to thyroid without clinical confirmation.
+linked_to_topics:
+- thyroid
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-evidence-tiers
+  location: TOPIC 1 — Thyroid / Claims & Tiers / Claim 8
+  quote: Hypothyroidism → decreased gallbladder contractility, slower intestinal transit,
+    increased gallstone risk, and constipation.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

@@ -1,0 +1,50 @@
+slug: leaky-gut
+display_name: Leaky Gut (Intestinal Permeability)
+aliases:
+- intestinal permeability
+- gut barrier dysfunction
+- increased intestinal permeability
+summary: Leaky gut refers to a breach in the small intestinal lining — a single-cell-layer-thick
+  barrier held together by tight junctions — that allows food particles and other
+  antigens to enter the bloodstream, provoking immune activation and inflammation.
+  In midlife women, declining estrogen is a primary driver of increased gut permeability.
+common_symptoms:
+- bloating
+- joint pain
+- fatigue after eating
+- skin rashes
+- elevated heart rate after meals
+- digestive distress
+red_flags:
+- bloating that worsens progressively and does not improve
+- bloating upon waking that worsens throughout the day
+- unexplained weight loss or blood in stool — refer to clinician
+related_topics:
+- perimenopause
+- food-sensitivities
+- autoimmune
+- inflammation
+- microbiome
+- dysbiosis
+- gut-hormone-axis
+key_mechanisms:
+- tight-junction-disruption
+- estrogen-decline
+- immune-activation
+coaching_scope_notes: Coaches can educate on lifestyle and dietary factors that support
+  gut barrier integrity (stress reduction, whole foods, meal pacing). Diagnosis of
+  intestinal permeability requires clinician involvement.
+clinician_scope_notes: Intestinal permeability testing, pathology rule-out for progressive
+  bloating, and management of underlying conditions (SIBO, IBD) are out of coaching
+  scope.
+evidence_tier: plausible_emerging
+sources:
+- id: thurlow-microbiome-session-2
+  location: Why midlife changes food tolerance
+  quote: We know that estrogen acts as the mortar, kind of like bricks and mortar,
+    it's like the mortar. And when it starts declining, meaning when our estrogen
+    levels are declining, we are more likely to develop leaky gut.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

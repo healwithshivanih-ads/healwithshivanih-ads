@@ -1,0 +1,39 @@
+slug: l-glutamine
+display_name: L-Glutamine
+category: amino_acid
+forms_available:
+- powder
+- capsule
+typical_dose_range:
+  powder:
+    min: 5
+    max: 10
+    unit: g
+  capsule:
+    min: 5
+    max: 10
+    unit: g
+timing_options:
+- on_empty_stomach
+- morning
+- bedtime
+take_with_food: avoid
+linked_to_topics: []
+linked_to_claims: []
+notes_for_coach: Key nutrient for gut mucosal repair; take on an empty stomach for
+  leaky gut and IBD support.
+notes_for_client: L-glutamine powder is best taken on an empty stomach — first thing
+  in the morning or between meals — so it reaches your gut lining directly.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-practice-guide
+  location: Seven Clinical Focus Areas > 6. Autoimmune Conditions > Coaching interventions
+  quote: 'Heal intestinal lining: Bone broth, L-glutamine, zinc carnosine'
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: L-Glutamine - Gut healing, muscle recovery - 5–10 g/day - Empty stomach
+version: 2
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

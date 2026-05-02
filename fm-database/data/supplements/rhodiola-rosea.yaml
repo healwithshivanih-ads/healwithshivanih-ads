@@ -1,0 +1,34 @@
+slug: rhodiola-rosea
+display_name: Rhodiola Rosea
+category: herb
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 200
+    max: 500
+    unit: mg
+  tablet:
+    min: 200
+    max: 500
+    unit: mg
+timing_options:
+- morning
+take_with_food: optional
+notes_for_coach: Adaptogen for mental fatigue and burnout; best taken in the morning
+  or before high-stress events; avoid taking in the evening as it may be stimulating.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Rhodiola Rosea - Adaptogen, mental performance - 200–500 mg/day - Morning
+    or before stress events
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

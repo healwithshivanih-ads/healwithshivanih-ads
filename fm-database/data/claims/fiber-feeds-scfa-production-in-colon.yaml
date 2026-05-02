@@ -1,0 +1,33 @@
+slug: fiber-feeds-scfa-production-in-colon
+statement: Dietary fiber that reaches the colon is fermented by colonocytes and gut
+  bacteria to produce short-chain fatty acids (SCFAs) — including butyrate, acetate,
+  and propionate — which support gut lining integrity, reduce inflammation, and improve
+  insulin sensitivity.
+evidence_tier: plausible_emerging
+rationale: Well-established fermentation mechanism; speaker accurately describes SCFA
+  production. However, source is expert_consensus/moderate quality, not a cited RCT.
+  The mechanism itself has strong underlying science, but tier is capped at plausible_emerging
+  per source-type rules.
+coaching_translation: Every gram of fiber your client eats is potential fuel for producing
+  gut-healing SCFAs like butyrate. This is why fiber isn't just about regularity.
+caveats:
+- Source is synthesis/expert session — not primary literature. The fermentation mechanism
+  is well-established in peer-reviewed science; verify specific health outcome claims
+  with clinical references.
+linked_to_topics:
+- scfa-short-chain-fatty-acids
+- fiber-gap
+- microbiome
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-7
+  location: SCFA section [00:09:04]
+  quote: when you consume fiber it goes throughout your digestive system, gets to
+    your colon where it's fermented and from that fermentation process with the colonocytes
+    which are the cells in the colon you produce short chain fatty acids.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

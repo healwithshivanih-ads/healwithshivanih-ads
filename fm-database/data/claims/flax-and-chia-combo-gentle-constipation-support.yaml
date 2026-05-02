@@ -1,0 +1,33 @@
+slug: flax-and-chia-combo-gentle-constipation-support
+statement: A daily combination of one tablespoon each of fresh-ground flax seed and
+  chia seed is a gentle, well-tolerated method for increasing fiber intake and relieving
+  constipation, particularly in women.
+evidence_tier: fm_specific_thin
+rationale: Speaker gives an explicit dose recommendation (1 tbsp each) from clinical
+  practice. Mechanistically plausible given soluble fiber content of both seeds. No
+  RCT cited; thin peer-reviewed support for this specific combination.
+coaching_translation: 'Recommend this simple combo to clients struggling with constipation:
+  1 tbsp fresh-ground flax + 1 tbsp chia in a smoothie or liquid daily. It''s gentle,
+  non-bloating, and adds both fiber and protein.'
+caveats:
+- Dose is from single-expert clinical experience, not an RCT. Instruct clients to
+  consume with adequate water. Verify with clinician for clients on blood thinners
+  (flax has mild anticoagulant properties).
+linked_to_topics:
+- fiber-gap
+- microbiome
+linked_to_supplements:
+- flax-seed
+- chia-seed
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: thurlow-microbiome-session-7
+  location: Flax and chia recommendation [00:18:57]
+  quote: One tablespoon of fresh ground flax with one tablespoon of chia. You can
+    throw it into a smoothie... Very, very gentle, not bloating. It's a really good
+    way to bump your protein as well as your fiber intake.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

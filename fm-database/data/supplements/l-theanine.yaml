@@ -1,0 +1,46 @@
+slug: l-theanine
+display_name: L-Theanine
+category: amino_acid
+forms_available:
+- capsule
+- tablet
+- powder
+typical_dose_range:
+  capsule:
+    min: 100
+    max: 400
+    unit: mg
+  tablet:
+    min: 100
+    max: 400
+    unit: mg
+  powder:
+    min: 100
+    max: 200
+    unit: mg
+timing_options:
+- evening
+- bedtime
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics: []
+linked_to_claims: []
+notes_for_coach: Often stacked with caffeine for calm focus; also effective before
+  bed for sleep onset and stress reduction.
+notes_for_client: Take 100–200 mg in the evening to support a calm, relaxed state
+  before sleep.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-practice-guide
+  location: Sleep Optimization > Sleep-supporting supplements
+  quote: L-theanine (100-200mg)
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: L-Theanine - Calm focus, anxiety reduction - 100–400 mg/day - With caffeine
+    or before bed
+version: 2
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

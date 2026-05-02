@@ -1,0 +1,35 @@
+slug: probiotic-multi-strain
+display_name: Probiotics (Multi-Strain)
+category: probiotic
+forms_available:
+- capsule
+- powder
+typical_dose_range:
+  capsule:
+    min: 10
+    max: 50
+    unit: tablets
+  powder:
+    min: 10
+    max: 50
+    unit: tablets
+timing_options:
+- on_empty_stomach
+- bedtime
+take_with_food: avoid
+notes_for_coach: Higher CFU multi-strain formula suited for IBS, post-SIBO treatment,
+  and Candida recovery; best taken on empty stomach or at bedtime.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Probiotics (multi-strain) - Gut health, immunity, digestion - 10–50 billion
+    CFU/day - Empty stomach or bedtime
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

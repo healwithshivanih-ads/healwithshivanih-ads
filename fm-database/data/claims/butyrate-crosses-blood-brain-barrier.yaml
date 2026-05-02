@@ -1,0 +1,43 @@
+slug: butyrate-crosses-blood-brain-barrier
+statement: Butyrate, a key SCFA produced from fiber fermentation, can cross the blood-brain
+  barrier, suggesting a direct gut-brain connection with potential cognitive and neurological
+  relevance.
+evidence_tier: plausible_emerging
+rationale: Speaker correctly identifies butyrate's blood-brain barrier permeability.
+  Emerging area of research; no clinical study cited.
+coaching_translation: Butyrate from fiber doesn't just stay in the gut — it can reach
+  the brain. This is one reason fiber may support mood and cognitive health, not just
+  digestion.
+caveats:
+- Source is expert course content, not primary literature.
+- Most direct evidence is from animal models; human evidence for brain-crossing gut-derived
+  butyrate is still emerging.
+- Source is expert-consensus transcript.
+- BBB permeability of butyrate in humans is confirmed in preclinical models; clinical
+  significance is still emerging.
+- Source is expert session. Clinical implications for brain health are still emerging;
+  avoid overclaiming therapeutic benefit.
+linked_to_topics:
+- microbiome
+- gut-hormone-axis
+- scfa-short-chain-fatty-acids
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-mondays
+  location: 'Session 1: Microbiome Foundations and Hormone Shifts'
+  quote: Butyrate is a signaling molecule. It helps communicate between the gut and
+    the brain. It actually crosses the blood-brain barrier.
+- id: thurlow-microbiome-session-4
+  location: Session 4 — Microbiome as a Metabolic Organ
+  quote: One particular short chain fatty acid called butyrate actually crosses the
+    blood-brain barrier. That's a really important thing.
+- id: thurlow-microbiome-session-7
+  location: SCFA section [00:09:47]
+  quote: certain types of short chain fatty acids actually cross the blood brain barrier
+    like butyrate is one example.
+version: 3
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

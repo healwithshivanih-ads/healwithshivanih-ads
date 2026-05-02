@@ -1,0 +1,34 @@
+slug: polyphenols-support-immune-and-gut-health
+statement: Polyphenols from brightly pigmented fruits, vegetables, green tea, coffee,
+  and herbs provide immune-supportive and gut-health benefits, including via postbiotic
+  pathways (e.g., urolithin A).
+evidence_tier: plausible_emerging
+rationale: Polyphenol research is active and promising; urolithin A's mitochondrial
+  and immune effects are in early clinical trials. The broad claim about polyphenols
+  is biologically plausible but varies by compound. Single-expert source without citations.
+coaching_translation: Color your plate. Deeply pigmented vegetables, berries, green
+  tea, and herbs aren't just healthy foods — they send signals that support your gut
+  bacteria and help modulate inflammation.
+caveats:
+- Polyphenol effects are compound-specific and dose-dependent; broad claims should
+  be qualified.
+- Urolithin A evidence is early-stage.
+- Single-expert source.
+linked_to_topics:
+- microbiome
+- immune-resilience
+- inflammaging
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-8
+  location: Session 8 — immune balance supports segment
+  quote: I also think about polyphenols, so these are brightly pigmented fruits and
+    vegetables... urolithin A as a good example. It's also a postbiotic... things
+    like green tea and plain coffee and herbs and spices, all of these things matter
+    over time.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

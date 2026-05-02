@@ -1,0 +1,48 @@
+slug: visceral-adiposity
+display_name: Visceral Adiposity
+aliases:
+- visceral fat
+- abdominal fat
+- organ fat
+- apple shape
+summary: Visceral fat — fat deposited around vital organs — is pathogenic fat that
+  releases inflammatory cytokines and tumor necrosis factor, reinforcing insulin resistance
+  and perpetuating a self-amplifying cycle of inflammation and further fat accumulation.
+  It is distinct from subcutaneous fat and is a key driver of metabolic disease in
+  midlife women.
+common_symptoms:
+- abdominal 'spare tire'
+- apple-shaped body composition
+- elevated inflammatory markers
+- insulin resistance
+red_flags:
+- rapidly expanding waistline
+- signs of metabolic syndrome
+- escalating inflammatory symptoms
+related_topics:
+- midlife-weight-gain
+- insulin-resistance
+- microbiome
+- perimenopause
+key_mechanisms:
+- inflammatory-cytokine-release
+- insulin-resistance
+- dysbiosis-driven-inflammation
+coaching_scope_notes: Coaches can address dietary quality, fiber, sleep, and stress
+  — all of which impact visceral fat indirectly. Do not make diagnostic or body composition
+  assessment claims.
+clinician_scope_notes: Visceral adiposity is associated with elevated TNF-alpha and
+  other cytokines; assess via waist circumference, imaging, or metabolic markers.
+evidence_tier: strong
+sources:
+- id: thurlow-microbiome-session-4
+  location: Session 4 — Gut Inflammation Weight Gain Loop
+  quote: Visceral fat, the fat that is around our vital organs, is the pathogenic
+    fat. It is the fat that releases inflammatory cytokines and tumor necrosis factor
+    and all these very inflammatory signaling molecules that actually reinforce the
+    inflammation, reinforce the insulin sensitivity loss and amplifies more inflammation
+    and more accumulation of fat.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

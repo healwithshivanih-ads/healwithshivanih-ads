@@ -1,0 +1,46 @@
+slug: brain-fog
+display_name: Brain Fog
+aliases:
+- brain fog
+- mental-fog
+- feeling-foggy
+- cognitive-fog
+- cant-think-clearly
+- mental-fatigue
+- mental fog
+- cognitive fog
+- difficulty concentrating
+category: neurological
+severity: common
+description: 'Subjective sense of cognitive slowing, difficulty concentrating, word-
+
+  finding problems, or feeling "fuzzy." In FM lens, common drivers are
+
+  inflammation, blood sugar swings, perimenopausal hormone shifts, gut
+
+  dysbiosis (LPS crossing BBB), poor sleep, and thyroid dysfunction.
+
+  '
+when_to_refer: 'Sudden onset; with focal neurological signs; with severe memory loss;
+
+  if interferes significantly with work or daily function.
+
+  '
+linked_to_topics:
+- perimenopause
+- thyroid
+- microbiome
+- inflammation
+linked_to_mechanisms:
+- chronic-inflammation
+- leaky-gut
+- estrogen-decline
+sources:
+- id: vitaone-skill-practice-guide
+  location: practice_guide.md, Brain Fog cluster
+- id: thurlow-microbiome-mondays
+  location: Sessions 1, 5 — gut-brain
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

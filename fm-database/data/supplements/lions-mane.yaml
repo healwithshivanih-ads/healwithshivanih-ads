@@ -1,0 +1,35 @@
+slug: lions-mane
+display_name: Lion's Mane
+category: herb
+forms_available:
+- capsule
+- powder
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 1000
+    unit: mg
+  powder:
+    min: 500
+    max: 1000
+    unit: mg
+timing_options:
+- morning
+- mid_morning
+take_with_food: optional
+notes_for_coach: Medicinal mushroom supporting neurogenesis and cognitive function;
+  best taken in the morning or early afternoon to avoid potential sleep disruption.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: Lion's Mane - Brain support, neurogenesis - 500–1000 mg/day - Morning or
+    early afternoon
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

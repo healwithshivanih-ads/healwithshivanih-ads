@@ -1,0 +1,75 @@
+slug: estrobolome
+display_name: Estrobolome
+aliases:
+- estrogen microbiome
+- estrogen-modulating bacteria
+- gut estrogen axis
+- gut estrogen processing
+summary: The subset of gut microbiota responsible for metabolizing estrogens in the
+  gut, influencing whether estrogens are excreted or reabsorbed into circulation.
+  Fiber plays a key supporting role by binding estrogen and facilitating excretion.
+common_symptoms:
+- breast tenderness
+- weight loss resistance
+- bloating
+- hot flashes and night sweats
+- skin changes (rashes, hives, eczema)
+- brain fog
+- estrogen dominance symptoms despite low serum estrogen
+- estrogen dominance
+- hot flashes
+- night sweats
+- mood alterations
+- joint pain
+- new food sensitivities
+- skin changes (hives, eczema, psoriasis)
+- skin issues
+- estrogen dominance symptoms
+red_flags:
+- Persistent estrogen dominance symptoms in menopausal women — warrants testing (DUTCH,
+  GI-MAP) and clinician review
+- Unexpected weight gain after starting HRT — may reflect impaired estrobolome function
+- sudden worsening of bloating present all day
+- new diagnosis of autoimmune condition in perimenopause
+- sudden change in bowel habits
+- symptoms of significant estrogen excess or deficiency — refer to clinician
+related_topics:
+- microbiome
+- gut-hormone-axis
+- perimenopause
+- dysbiosis
+- inflammation
+- fiber-gap
+key_mechanisms:
+- beta-glucuronidase-activity
+- phase-3-estrogen-detoxification
+- microbial-diversity-decline
+- enterohepatic-estrogen-recirculation
+- gut-ovarian-axis
+- estrogen-enterohepatic-recirculation
+- fiber-estrogen-binding
+coaching_scope_notes: Coaches can educate on fiber's role in estrogen clearance and
+  support bowel regularity. HRT decisions are clinician scope.
+clinician_scope_notes: Assess estrogen recirculation in context of perimenopause/menopause
+  symptoms. HRT and targeted estrobolome interventions require clinical oversight.
+evidence_tier: plausible_emerging
+sources:
+- id: thurlow-microbiome-mondays
+  location: 'Session 1: Microbiome Foundations and Hormone Shifts'
+  quote: So it may be surprising to know that you can be in late perimenopause or
+    menopause and have low estrogen if we were to test it with blood, but actually
+    have symptoms of excess estrogen.
+- id: thurlow-microbiome-session-3
+  location: 'Session 3: Estrobolome and Estrogen Metabolism — Introduction'
+  quote: The health of our microbiome determines how well this works... this microbial
+    network is called the estrobolome.
+- id: thurlow-microbiome-session-7
+  location: Estrogen metabolism section [00:07:15]
+  quote: fiber helps us package up and poop out the extra estrogen and why I think
+    it's so important for us to be mindful of how estrogen is metabolized, because
+    if it's recirculated, it has the potential to not only cause symptoms, but can
+    also cause some disease progression.
+version: 3
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

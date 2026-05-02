@@ -1,0 +1,34 @@
+slug: phosphatidylserine
+display_name: Phosphatidylserine
+category: other
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 100
+    max: 300
+    unit: mg
+  tablet:
+    min: 100
+    max: 300
+    unit: mg
+timing_options:
+- evening
+take_with_food: optional
+notes_for_coach: Helps modulate cortisol and supports memory; evening dosing is useful
+  for adrenal support and sleep quality.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: Phosphatidylserine - Cortisol modulation, memory - 100–300 mg/day - Evening
+    or post-stress
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

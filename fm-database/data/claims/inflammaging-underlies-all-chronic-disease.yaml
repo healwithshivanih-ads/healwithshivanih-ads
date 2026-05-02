@@ -1,0 +1,30 @@
+slug: inflammaging-underlies-all-chronic-disease
+statement: Chronic low-grade inflammation (inflammaging) is at the basis of every
+  major chronic disease state.
+evidence_tier: plausible_emerging
+rationale: Single expert assertion from a clinical/functional medicine educator. Broadly
+  consistent with published geroscience literature on inflammaging (e.g., Franceschi
+  et al.), but stated here without citation. Source type is expert_consensus/moderate
+  quality.
+coaching_translation: Keeping inflammation low through daily habits — sleep, diet,
+  stress management — is one of the most powerful things you can do for long-term
+  health.
+caveats:
+- Single-expert source, no primary study cited; treat as plausible_emerging, not strong
+  consensus.
+- Broad claim — individual disease mechanisms vary significantly.
+linked_to_topics:
+- inflammaging
+- inflammation
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-8
+  location: Session 8 — opening immune shift segment
+  quote: Inflammation or inflamaging is at the basis for every single chronic disease
+    state that we have here in the United States and abroad.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

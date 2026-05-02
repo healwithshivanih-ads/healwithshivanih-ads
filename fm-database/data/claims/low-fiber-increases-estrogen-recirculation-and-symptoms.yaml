@@ -1,0 +1,29 @@
+slug: low-fiber-increases-estrogen-recirculation-and-symptoms
+statement: A low- or no-fiber diet increases the likelihood of estrogen recirculation,
+  which can exacerbate menopausal and perimenopausal symptoms including hot flashes,
+  skin issues, and weight loss resistance — even in full menopause.
+evidence_tier: plausible_emerging
+rationale: Speaker states this directly and it is mechanistically consistent with
+  estrobolome function. No controlled study cited.
+coaching_translation: Clients in perimenopause or menopause who aren't eating enough
+  fiber may be inadvertently recycling estrogen, worsening the very symptoms they're
+  trying to manage.
+caveats:
+- Source is expert session. Link between fiber intake and specific symptom severity
+  is plausible but individual variability is high.
+linked_to_topics:
+- estrobolome
+- fiber-gap
+- gut-hormone-axis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-7
+  location: Estrogen and constipation section [00:13:46]
+  quote: if you're eating a low fiber or no fiber diet, you are likely going to have
+    more estrogen recirculation. And yes, this can happen even in menopause.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

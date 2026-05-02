@@ -1,0 +1,29 @@
+slug: chronic-stress-disrupts-estrobolome-via-cortisol-and-leaky-gut
+statement: Chronic psychological stress elevates cortisol, which can increase intestinal
+  permeability ('leaky gut') and negatively impact the health of the estrobolome.
+evidence_tier: plausible_emerging
+rationale: Stress-induced gut permeability changes via cortisol and HPA-axis dysregulation
+  are mechanistically supported. The direct link to estrobolome disruption specifically
+  is a logical extension but not independently RCT-validated. Single-expert source.
+coaching_translation: When you're chronically stressed, your gut lining can become
+  more permeable and the estrogen-processing bacteria can be disrupted — it's not
+  just a mental health issue, it's a gut issue too.
+caveats:
+- Single-expert source.
+- Causal chain from stress to estrobolome disruption is inferred, not directly measured.
+linked_to_topics:
+- estrobolome
+- microbiome
+- dysbiosis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-3
+  location: Lifestyle Factors — Chronic Stress
+  quote: Stress can also lead to leaky gut, can also make us more susceptible to getting
+    sick... it absolutely impacts the health of the estrobolome.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

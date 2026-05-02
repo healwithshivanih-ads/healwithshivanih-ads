@@ -1,0 +1,36 @@
+slug: women-four-to-five-times-more-likely-autoimmune-in-perimenopause
+statement: Women are four to five times more likely to develop autoimmune conditions
+  during perimenopause and menopause, associated with a shift toward TH1-dominant
+  immune reactivity as estrogen declines.
+evidence_tier: plausible_emerging
+rationale: The increased incidence of autoimmune conditions in women and the association
+  with menopause-related immune changes is supported by observational literature.
+  The specific '4–5x' figure and TH1 dominance framing is stated by the expert without
+  citation in this transcript. Single-expert source.
+coaching_translation: The immune system changes significantly as estrogen declines.
+  Women in perimenopause are much more prone to developing new inflammatory and autoimmune
+  conditions — gut health and lifestyle choices matter more than ever during this
+  window.
+out_of_scope_notes: Autoimmune diagnosis, management, and immune modulation are clinician
+  scope. Coaches should refer clients with new autoimmune diagnoses to appropriate
+  medical providers.
+caveats:
+- 4–5x figure is not cited to a specific study in this transcript.
+- Single-expert source.
+- TH1 dominance framing is a functional medicine framework.
+linked_to_topics:
+- estrobolome
+- perimenopause
+- microbiome
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-3
+  location: Q&A — Autoimmune Conditions in Perimenopause
+  quote: Women are four to five times more likely to develop autoimmune conditions
+    in perimenopause and menopause. Our immune system becomes a bit more reactive.
+    It is more, we use the term TH1 dominant.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

@@ -1,0 +1,31 @@
+slug: parasympathetic-activation-before-meals-supports-digestion
+statement: Activating the parasympathetic nervous system before eating (e.g., 4–5
+  deep breaths, mindful pause) primes digestive secretions and improves gut readiness
+  for food.
+evidence_tier: plausible_emerging
+rationale: Single-expert source. Cephalic-phase digestive response and vagal activation
+  before meals are physiologically documented; RCT evidence for specific breath-count
+  protocols is thin.
+coaching_translation: Taking a few slow, deep breaths before meals — or pausing to
+  say grace, express gratitude, or just arrive at the table — tells your nervous system
+  it's safe to digest.
+caveats:
+- Single-expert source; specific protocol (4–5 breaths) is practical guidance without
+  direct RCT support.
+- Source is expert_consensus/moderate quality.
+linked_to_topics:
+- dyspepsia
+- motility
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-6
+  location: Session 6 — Main Transcript, Stress Regulation Section
+  quote: If we give ourselves four to five deep breaths before a meal or say grace...
+    that can be a really good way of telling your body, it's time to get out of the
+    sympathetic response.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

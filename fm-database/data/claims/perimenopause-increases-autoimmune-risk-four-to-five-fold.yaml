@@ -1,0 +1,38 @@
+slug: perimenopause-increases-autoimmune-risk-four-to-five-fold
+statement: Women are four to five times more likely to develop autoimmune conditions
+  during perimenopause and menopause, driven by a combination of leaky gut and age-related
+  immune system changes (immunosenescence).
+evidence_tier: plausible_emerging
+rationale: Speaker cites a specific figure (4–5x increased risk) and names immunosenescence
+  as a contributing mechanism alongside gut permeability. The female preponderance
+  for autoimmune disease in midlife is documented, though the specific 4–5x figure
+  in the perimenopause window requires primary source verification.
+coaching_translation: The immune system changes significantly in perimenopause, making
+  women more vulnerable to autoimmune conditions. A healthy gut and reduced inflammation
+  are important protective factors.
+out_of_scope_notes: Autoimmune diagnosis, monitoring, and treatment are strictly out
+  of coaching scope.
+caveats:
+- Specific 4–5x statistic not attributed to a named study; verify with primary literature
+  before citing.
+- Single-expert source (expert consensus, moderate quality).
+- Causal role of leaky gut in autoimmune development is plausible but not definitively
+  proven.
+linked_to_topics:
+- autoimmune
+- perimenopause
+- leaky-gut
+- inflammation
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-2
+  location: Why midlife changes food tolerance
+  quote: The leaky gut can oftentimes lead to autoimmune conditions. There are, we
+    are four to five times more likely to develop autoimmune conditions in perimenopause
+    and menopause. And that is a byproduct of not just this weakened leaky gut, it
+    is also a byproduct of how our immune system ages right along with us.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

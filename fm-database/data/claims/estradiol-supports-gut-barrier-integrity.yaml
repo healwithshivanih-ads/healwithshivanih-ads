@@ -1,0 +1,31 @@
+slug: estradiol-supports-gut-barrier-integrity
+statement: Estradiol supports gut barrier integrity; as estradiol declines in perimenopause
+  and menopause, intestinal permeability ('leaky gut') increases and systemic inflammation
+  rises.
+evidence_tier: plausible_emerging
+rationale: Estrogen receptor expression on gut epithelial cells and estrogen's role
+  in tight junction maintenance is mechanistically plausible and supported by preclinical
+  data. Clinical RCT evidence in humans is limited. Single-expert source.
+coaching_translation: Estrogen helps hold the gut lining together. When it drops in
+  menopause, the gut wall can become more permeable — letting inflammatory signals
+  into the bloodstream.
+caveats:
+- Mostly preclinical mechanistic data; human RCT evidence limited.
+- Single-expert source.
+linked_to_topics:
+- estrobolome
+- perimenopause
+- microbiome
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-3
+  location: Estrogen's Role in the Microbiome
+  quote: Estradiol, which is the predominant form of estrogen our bodies make, is
+    important for gut barrier integrity... as estrogen is declining, you're going
+    to have more leaky gut.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

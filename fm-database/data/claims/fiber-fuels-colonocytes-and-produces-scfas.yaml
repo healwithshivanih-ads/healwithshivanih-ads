@@ -1,0 +1,32 @@
+slug: fiber-fuels-colonocytes-and-produces-scfas
+statement: Dietary fiber is fermented by colonocytes in the large intestine to produce
+  short-chain fatty acids (butyrate, propionate, acetate), which support gut lining
+  integrity, immune balance, metabolic health, and estrogen metabolism.
+evidence_tier: strong
+rationale: The fermentation of dietary fiber to SCFAs by colonic microbiota is well-established
+  biochemistry with strong peer-reviewed support. The downstream roles of butyrate
+  in gut barrier function and immune regulation are consensus-level findings.
+coaching_translation: Fiber is the primary fuel for the cells lining your colon, and
+  it's how your gut bacteria make the signaling molecules that regulate inflammation,
+  blood sugar, and even estrogen detoxification.
+caveats:
+- Individual fiber tolerance varies widely; increases should be gradual (speaker recommends
+  starting low and increasing slowly toward 25–30g/day target).
+linked_to_topics:
+- microbiome
+- insulin-resistance
+- midlife-weight-gain
+- gut-hormone-axis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-4
+  location: Session 4 — Microbial Diversity and Metabolic Health / Fiber
+  quote: Fiber is a primary source of fuel for the colonocytes, which are actually
+    the cells in the colon. It's also important for estrogen metabolism. It's also
+    important for reducing inflammation, also important for insulin sensitivity.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

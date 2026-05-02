@@ -1,0 +1,29 @@
+slug: same
+display_name: SAMe (S-Adenosyl Methionine)
+category: other
+forms_available:
+- tablet
+typical_dose_range:
+  tablet:
+    min: 200
+    max: 600
+    unit: mg
+timing_options:
+- on_empty_stomach
+- morning
+take_with_food: avoid
+notes_for_coach: Methyl donor supporting mood, joint, and liver health; should not
+  be combined with antidepressants without clinician supervision.
+evidence_tier: confirm_with_clinician
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 3 - Supplement Table
+  quote: SAMe - Mood, joint & liver support - 200–600 mg/day - Empty stomach in morning
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

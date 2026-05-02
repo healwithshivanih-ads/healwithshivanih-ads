@@ -1,0 +1,40 @@
+slug: chromium
+display_name: Chromium Picolinate
+category: mineral
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 200
+    max: 400
+    unit: mcg
+  tablet:
+    min: 200
+    max: 400
+    unit: mcg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics: []
+linked_to_claims: []
+notes_for_coach: Supports blood sugar regulation and reduces sugar cravings; commonly
+  used with insulin resistance protocols.
+notes_for_client: Chromium is a trace mineral that helps your body use insulin more
+  effectively. Take it with meals.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-practice-guide
+  location: Seven Clinical Focus Areas > 2. Insulin Resistance > Coaching interventions
+  quote: 'Specific supplements: Inositol (myo-inositol and d-chiro-inositol), chromium,
+    berberine'
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Chromium Picolinate - Blood sugar regulation - 200–400 mcg/day - With meals
+version: 2
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

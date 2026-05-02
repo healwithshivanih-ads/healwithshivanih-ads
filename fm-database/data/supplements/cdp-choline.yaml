@@ -1,0 +1,34 @@
+slug: cdp-choline
+display_name: CDP Choline (Citicoline)
+category: other
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 250
+    max: 500
+    unit: mg
+  tablet:
+    min: 250
+    max: 500
+    unit: mg
+timing_options:
+- morning
+take_with_food: optional
+notes_for_coach: Supports acetylcholine synthesis for focus and mental clarity; morning
+  dosing avoids potential sleep disruption.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: CDP Choline (Citicoline) - Neurotransmitter synthesis - 250–500 mg/day -
+    Morning
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

@@ -1,0 +1,50 @@
+slug: cumin-coriander-fennel-tea
+display_name: CCF Tea (Cumin-Coriander-Fennel Infusion)
+aliases:
+  - ccf-tea
+  - cumin-coriander-fennel-water
+  - jeera-dhania-saunf-water
+  - ccf-water
+category: infused_water
+summary: |
+  Classic Ayurvedic three-seed infusion: equal parts whole cumin (jeera),
+  coriander (dhania), and fennel (saunf) seeds, simmered or steeped in
+  hot water. Traditionally taken sipped through the day to support
+  digestive fire (agni), reduce bloating, and gently mobilize bile flow.
+  Carminative effect is well-recognized for the seeds individually;
+  the combination is the traditional formulation.
+indications:
+  - bloating
+  - gas
+  - dysbiosis
+  - perimenopause
+contraindications:
+  - acute biliary colic (consult clinician)
+  - severe acid reflux during flares (some find fennel triggers reflux)
+preparation: |
+  Crush 1/2 tsp each of cumin, coriander, and fennel seeds (lightly
+  toast first if desired for aroma). Simmer in 4 cups water for 5-7
+  minutes; strain into a thermos. Sip warm through the day between
+  meals.
+typical_dose: |
+  3-4 cups per day, sipped between meals (not with meals — would dilute
+  digestive enzymes).
+duration: |
+  Daily for 4-8 weeks, then evaluate. Safe for ongoing use.
+timing_notes: |
+  Best between meals (mid-morning, mid-afternoon, evening). Avoid
+  drinking large volumes during meals.
+linked_to_topics:
+  - microbiome
+  - dysbiosis
+  - perimenopause
+linked_to_mechanisms:
+  - microbial-diversity-decline
+sources:
+  - id: vitaone-skill-practice-guide
+    location: practice_guide.md, Home Remedies / Indian Tradition
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

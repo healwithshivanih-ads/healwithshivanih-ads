@@ -1,0 +1,29 @@
+slug: 70-percent-immune-system-in-gut
+statement: Approximately 70% of the immune system resides in the gut, making the microbiome
+  the primary regulator of immune response.
+evidence_tier: plausible_emerging
+rationale: Widely cited figure in functional and integrative medicine relating to
+  gut-associated lymphoid tissue (GALT). Broadly supported by immunology literature,
+  though the exact percentage is a heuristic. Source is single expert, no citation
+  given.
+coaching_translation: Your gut isn't just for digestion — it's where the majority
+  of your immune activity happens. Caring for your gut is caring for your immunity.
+caveats:
+- The '70%' figure is a commonly cited heuristic; exact proportion varies by measurement
+  method.
+- Single-expert source without primary citation.
+linked_to_topics:
+- microbiome
+- immune-resilience
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-8
+  location: Session 8 — gut-immune interface segment
+  quote: 70% of our immune system lives in the gut, that's important to know... the
+    microbiome regulates the immune response.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

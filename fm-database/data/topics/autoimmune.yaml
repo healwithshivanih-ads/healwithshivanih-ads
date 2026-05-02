@@ -1,0 +1,58 @@
+slug: autoimmune
+display_name: Autoimmune Conditions
+aliases:
+- autoimmunity
+- autoimmune-disease
+- Hashimoto's
+- rheumatoid arthritis
+- celiac disease
+summary: Autoimmune conditions involve the immune system mistakenly attacking the
+  body's own tissues. Women are disproportionately affected, and risk rises sharply
+  in perimenopause and menopause due to declining estrogen, gut barrier disruption,
+  and immune dysregulation.
+common_symptoms:
+- joint pain
+- fatigue
+- brain fog
+- thyroid dysfunction
+- digestive disturbance
+- skin manifestations
+red_flags:
+- new joint swelling with morning stiffness > 60 min (refer rheumatology)
+- unexplained fevers, weight loss, night sweats
+- suspected new autoimmune flare without diagnosis
+- rapid symptom escalation
+- multi-system involvement
+- new diagnosis — requires rheumatology or specialist referral
+related_topics:
+- thyroid
+- perimenopause
+- inflammaging
+- immune-resilience
+- microbiome
+- dysbiosis
+- gut-hormone-axis
+key_mechanisms:
+- leaky-gut
+- molecular-mimicry
+- chronic-inflammation
+- estrogen-immune-modulation
+- gut-barrier-permeability
+- th1-th2-imbalance
+coaching_scope_notes: Coaches can address lifestyle contributors (stress, diet, sleep)
+  that modulate autoimmune risk. Do not advise on diagnosis or treatment of specific
+  autoimmune conditions.
+clinician_scope_notes: Hashimoto's, PCOS, rheumatoid arthritis, celiac disease cited
+  as examples requiring medical management.
+sources:
+- id: vitaone-skill-practice-guide
+  location: practice_guide.md, Autoimmune section
+- id: thurlow-microbiome-session-8
+  location: Session 8 — immune shift segment
+  quote: We are more prone to autoimmune conditions. We know we're four to five times
+    more likely to be diagnosed.
+evidence_tier: plausible_emerging
+version: 2
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

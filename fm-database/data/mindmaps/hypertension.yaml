@@ -1,0 +1,514 @@
+slug: hypertension
+display_name: Hypertension (FM Approach)
+description: IFM perspective on blood pressure — assessment equipment, exam techniques,
+  classification, risk factors, organ damage signs, JNC 8 algorithm, nutrition + lifestyle
+  interventions, natural antihypertensives, orthostatic hypotension. Imported from
+  Vitaone Education Tools.
+related_topics: []
+related_mechanisms: []
+tree:
+- label: IFM Perspective on BP
+  children:
+  - label: Root Causes of Endothelial Dysfunction
+    children:
+    - label: Inflammation
+    - label: Immune Dysfunction
+    - label: Oxidative Stress Imbalances
+  - label: 90% Lifetime Risk of Developing HTN
+  - label: Diet + Nutrition + Exercise Reduce Risk
+  - label: Stethoscope (Diaphragm AND Bell)
+    children:
+    - label: Pediatric
+- label: Assessment Equipment
+  children:
+  - label: Blood Pressure Cuffs
+    children:
+    - label: Small
+    - label: Regular
+    - label: Large Adult
+  - label: Aneroid Gauge + Cuffs
+    children:
+    - label: Thigh
+  - label: Oscillatory Device + Cuffs
+  - label: Oxygen Saturation Monitor
+  - label: Vascular Doppler
+- label: Patient Positioning
+  children:
+  - label: Arm Blood Pressures
+    children:
+    - label: Seated, Feet Flat, Back Supported
+    - label: Arm Forward, Parallel to Floor, Heart Level
+    - label: Take 2 Readings 1-2 Min Apart, Average Them
+  - label: Leg Blood Pressures
+    children:
+    - label: 'Prone: Popliteal Pressures (Thigh Cuff)'
+    - label: 'Supine: Dorsalis Pedis or Posterior Tibial'
+    - label: Use Bell of Stethoscope or Vascular Doppler
+      children:
+      - label: Elderly
+  - label: Orthostatic (Standing / Sitting / Lying)
+    children:
+    - label: Indications
+      children:
+      - label: Diabetes
+      - label: Autonomic Dysfunction
+      - label: Antihypertensive Use
+    - label: Protocol
+      children:
+      - label: 'Supine 2+ Min: Record BP + Pulse'
+      - label: 'Sit 2 Min: Record BP + Pulse'
+      - label: 'Stand 2 Min: Record BP + Pulse'
+  - label: Pre-Exam Preparation
+    children:
+    - label: 'Avoid 12 Hrs: Caffeine, Alcohol, Tobacco, OTC Meds'
+      children:
+      - label: 'Note: Dizziness, Lightheadedness, Palpitations'
+    - label: Patient Sits 5 Min Quiet
+    - label: Arms Free of Restrictive Clothing
+    - label: Clinician at Eye Level with Gauge
+    - label: 'Cuff Size: 20% Wider Than Extremity Diameter'
+- label: Exam Techniques and Methods
+  children:
+  - label: Bilateral Arm Pressures
+    children:
+    - label: 'New Patient: Both Arms AND Both Legs'
+    - label: Left Arm First, Then Right Arm
+    - label: Systolic Discrepancy ≤ 5 mmHg = Normal
+    - label: '> 5 mmHg = Abnormal'
+    - label: Cuff 2.5 cm Above Antecubital Space
+    - label: Bladder Over Brachial Artery, Snug Fit
+  - label: Arm Pressure Technique
+    children:
+    - label: Palpate Brachial Pulse, Inflate Until Pulse Lost
+    - label: Bell Over Brachial Artery
+    - label: Inflate 30 mmHg Above Pulse-Loss Point
+    - label: Deflate at 2-3 mmHg/sec
+    - label: Korotkoff Sound 1 = Systolic BP
+  - label: Office Elevations
+    children:
+    - label: Home Monitoring or 24-Hr Ambulatory BP
+    - label: Rule Out White Coat HTN
+    - label: Korotkoff Sound 5 = Diastolic BP
+    - label: Repeat Other Arm, Use Higher Reading
+  - label: Leg Pressures
+    children:
+    - label: 'Popliteal: Thigh Cuff Above Popliteal Fossa'
+    - label: 'Ankle: Lower Leg Cuff, Dorsalis Pedis or Post Tibial'
+    - label: 'Formula: Ankle Pressure / Brachial Pressure'
+- label: Clinical Exam Findings
+  children:
+  - label: 'Normal: SBP < 120 or DBP < 80'
+    children:
+    - label: 'No Risk Factors: Average Risk'
+    - label: No BP Intervention Needed
+    - label: 'No Risk Factors: Low Added Risk'
+      children:
+      - label: Lifestyle + Exercise + Diet
+  - label: Abnormal Findings and Symptoms
+    children:
+    - label: Hypotension
+    - label: Transient Dizziness
+    - label: 'Hypovolemia: 20 mmHg Drop Systolic + Diastolic, Pulse > 20 bpm Rise'
+    - label: 'Autonomic Dysfunction: No Pulse Rise Sit-to-Stand + Dizziness'
+    - label: Baroreceptor Dysfunction
+  - label: Asymmetric Arm Readings
+    children:
+    - label: Suggests Subclavian / Brachial Occlusion or Steal Syndrome
+    - label: Normo-Pressure Hydrocephalus
+  - label: Marked Arm-Leg Discrepancy
+    children:
+    - label: Suggests Coarctation of the Aorta
+    - label: Spinal Cord Injury / Regional Pain / Autonomic Dysfunction
+  - label: Ankle-Brachial Index (ABI)
+    children:
+    - label: Hypertension (See Classification)
+    - label: 'Normal: ABI ≥ 1.0'
+    - label: 'ABI < 0.9: Peripheral Vascular Disease (Sens 88%, Spec 82%)'
+    - label: 'Elevated ABI: Arterial Stiffening (DM, Atherosclerosis)'
+- label: BP Classification
+  children:
+  - label: 'Pre-Hypertension: SBP 120-139 or DBP 80-89'
+    children:
+    - label: '1-2 Risk Factors: Moderate Added Risk'
+      children:
+      - label: Lifestyle Months, Then Drug if Uncontrolled
+    - label: '3+ Risk Factors / MetSyn / DM: High Added Risk'
+      children:
+      - label: Lifestyle + Consider Drug
+    - label: 'Established CV or Renal Disease: Very High Added Risk'
+      children:
+      - label: Lifestyle + Immediate Drug
+  - label: 'Grade 1 HTN: SBP 140-159 or DBP 90-99'
+    children:
+    - label: 'No Risk Factors: Moderate Added Risk'
+      children:
+      - label: Lifestyle Months, Then Drug if Uncontrolled
+    - label: '1-2 Risk Factors: High Added Risk'
+      children:
+      - label: Lifestyle + Consider Drug
+    - label: '3+ Risk / MetSyn / DM: High Added Risk'
+      children:
+      - label: Lifestyle + Consider Drug
+    - label: 'Established CV/Renal: Very High Added Risk'
+      children:
+      - label: Immediate Drug
+  - label: 'Grade 2 HTN: SBP 160-179 or DBP 100-109'
+    children:
+    - label: 'No Risk Factors: High Added Risk'
+      children:
+      - label: Lifestyle + Consider Drug
+    - label: '1-2 Risk Factors: Very High Added Risk'
+      children:
+      - label: Lifestyle + Immediate Drug
+    - label: '3+ Risk / MetSyn / DM: Very High Added Risk'
+      children:
+      - label: Lifestyle + Immediate Drug
+  - label: Elevated SBP or DBP
+    children:
+    - label: 'Established CV/Renal: Very High Added Risk'
+      children:
+      - label: Lifestyle + Immediate Drug
+- label: Clinical Risk Factors
+  children:
+  - label: Age > 60
+  - label: Race / Ethnicity
+  - label: Smoking
+  - label: Elevated Pulse Pressure (Elderly)
+    children:
+    - label: Total Cholesterol > 190 mg/dL (5.0 mmol/L)
+  - label: Dyslipidemia
+    children:
+    - label: LDL > 115 mg/dL (3.0 mmol/L)
+    - label: 'HDL: Males < 40 mg/dL, Females < 46 mg/dL'
+  - label: Fasting Glucose 102-125 mg/dL (5.6-6.9 mmol/L)
+    children:
+    - label: Triglycerides > 150 mg/dL (1.7 mmol/L)
+  - label: Abnormal 1 or 2-Hr Glucose Tolerance Test
+  - label: Abdominal Obesity
+    children:
+    - label: Males > 102 cm (40 in)
+    - label: Females > 88 cm (35 in)
+  - label: Family Hx Premature CVD
+    children:
+    - label: Males < 55 Yrs
+    - label: Females < 65 Yrs
+  - label: Diabetes Mellitus
+  - label: Autoimmune Disease
+  - label: Heavy Metal Burden
+    children:
+    - label: Lead, Cadmium, Arsenic, Mercury
+- label: Subclinical Organ Damage Signs
+  children:
+  - label: Oral / Dental Infections
+  - label: 'ECG: LVH > 38 mm'
+  - label: 'ECHO: LVH Males > 125 g/m2, Females > 110 g/m2'
+  - label: Carotid Wall Thickening CIMT > 0.9 mm or Plaque
+  - label: Carotid-Femoral Pulse Wave Velocity > 12 m/sec
+  - label: ABI < 0.9
+  - label: Elevated Plasma Creatinine
+    children:
+    - label: Males 115-133 mmol/L
+    - label: Females 107-124 mmol/L
+  - label: Low GFR < 60 mL/min/1.73 m2
+  - label: Microalbuminuria 30-300 mg/24 hr
+    children:
+    - label: Cerebrovascular Disease / Stroke / TIA
+  - label: Established Disease
+    children:
+    - label: 'Heart Disease: MI, Angina, CHF, Revascularization'
+    - label: 'Renal Disease: Diabetic Nephropathy, Proteinuria'
+    - label: Peripheral Artery Disease
+- label: JNC 8 Treatment Algorithm
+  children:
+  - label: Protein
+    children:
+    - label: 'Non-Animal Protein: 1.5-1.8 g/kg/day'
+      children:
+      - label: Increases Glutathione
+    - label: 'Whey Protein: 30 g/day (ACEI Effect + Glutathione)'
+    - label: 'Carnitine: 1 g BID (Limits End Organ Damage)'
+    - label: 'Sardine Muscle Protein: 3 g/day (ACEI)'
+    - label: 'Bonito Protein: 1.5 g/day (Natural ACEI)'
+    - label: 'Soy Protein: 40 g/day (Activates PPARs)'
+    - label: 'Arginine: Up to 10 g/day (Vascular NO Precursor)'
+      children:
+      - label: Mild Diuresis + Vasodilation
+  - label: 'All Adults 18+: Diet and Lifestyle at ALL Stages'
+    children:
+    - label: Advanced Retinopathy
+    - label: 'Goal: SBP < 150 / DBP < 90'
+  - label: Age > 60 / No DM / No CKD
+    children:
+    - label: 'Black Patients: Thiazide or CCB (Alone or Combo)'
+    - label: 'Non-Black: Thiazide / ACEI / ARB / CCB'
+  - label: Age < 60 / No DM / No CKD
+    children:
+    - label: 'Goal: SBP < 140 / DBP < 90'
+  - label: All Ages with DM / No CKD
+    children:
+    - label: 'Goal: SBP < 140 / DBP < 90'
+    - label: 'All Races: ACEI or ARB (Alone or Combo)'
+  - label: All Ages with CKD
+    children:
+    - label: Mechanism
+      children:
+      - label: Induces Natriuresis
+      - label: Inhibits Tyrosine Kinase
+      - label: Decreases Vascular Smooth Muscle Hypertrophy
+      - label: Decreases Aldosterone
+    - label: 'Goal: SBP < 140 / DBP < 90'
+    - label: 'All Races: ACEI or ARB (Alone or Combo)'
+      children:
+      - label: Decreases Sympathetic Activity
+- label: Nutritional Interventions
+  children:
+  - label: Fats and Oils
+    children:
+    - label: 'Taurine: 6 g/day'
+      children:
+      - label: Increases Atrial Natriuretic Factor
+      - label: Increases Insulin Sensitivity
+    - label: Emphasize Polyunsaturated + Monounsaturated
+      children:
+      - label: Decreases Homocysteine
+    - label: Limit Saturated Fats
+    - label: Eliminate Trans Fats
+    - label: 'EPA + DHA: 3-4 g/day (1:1 to 4:1 Ratio)'
+    - label: 'Olive Oil: 40 g/day'
+    - label: 'Sesame Oil: 35 g/day'
+      children:
+      - label: Oatmeal
+  - label: Carbohydrates
+    children:
+    - label: Fiber Types
+      children:
+      - label: Psyllium
+      - label: Glucomannan
+    - label: Improves Insulin Sensitivity
+      children:
+      - label: Beta-Glucan
+  - label: Minerals
+    children:
+    - label: 'Sodium: Reduce to ≤ 2400 mg/day'
+    - label: 'Potassium: 60-120 mEq/day, K:Na Ratio 5:1'
+    - label: 'Magnesium: 500-1000 mg/day'
+    - label: 'Calcium: 500-1000 mg/day (Food or Supplement)'
+    - label: 'Zinc: 25-50 mg/day (Inhibits NFkB)'
+    - label: 'Vitamin D: Serum 36-50 ng/mL, Most Need 5000 IU/day'
+  - label: Vitamins
+    children:
+    - label: 'Vitamin E: 100 IU per 1 g EFA'
+    - label: 'Vitamin C: 250-500 mg Twice/Day'
+    - label: 'Riboflavin (B2): 25 mg/day'
+    - label: 'Vitamin B6: 5 mg/kg/day (Decreases SNS, Increases Insulin Sensitivity)'
+    - label: 'Methyl Folate / Folinic Acid: If Hyperhomocysteinemic'
+    - label: 'B12: If Hyperhomocysteinemic'
+  - label: Phytonutrients
+    children:
+    - label: 'Dark Chocolate / Cocoa: Up to 100 g/day'
+    - label: 'Lycopene: 10 mg/day (Tomato, Guava, Watermelon, Papaya)'
+    - label: 'Green Tea / Black Tea: > 600 cc/day'
+    - label: 'Quercetin: 500 mg Twice/Day'
+    - label: 'Celery: 4 Large Sticks/Day (3-N Butyl Phthalide + Apigenin)'
+    - label: 'Garlic: 2-4 Cloves/Day'
+    - label: 'Wakame Seaweed: 3-4 g/day'
+- label: Lifestyle Interventions
+  children:
+  - label: Stop or Limit Caffeine
+    children:
+    - label: 'Pomegranate Juice: 330 mL/day'
+    - label: Increases Vasoconstriction
+    - label: Increases Norepinephrine Levels
+    - label: Increases Pulse Wave Velocity
+    - label: Increases Plasma Renin Activity
+  - label: Limit Alcohol ≤ 1 Drink/Day
+    children:
+    - label: 8 oz Wine / 2 oz Hard Liquor / 24 oz Beer
+    - label: Alcohol Increases BP, Renin, Aldosterone, Cortisol
+  - label: Evaluate Heavy Metal Burden
+    children:
+    - label: Increases Vasoconstriction + Sympathetic Tone
+    - label: Lead, Arsenic, Cadmium, Mercury
+    - label: Increases Endothelial Dysfunction + Oxidative Stress
+  - label: Stop Smoking Tobacco
+    children:
+    - label: Increases Renin-Angiotensin + Carbon Monoxide
+    - label: Increases Platelet Aggregation + Coagulation Risk
+    - label: Increases Oxidative Stress + Inflammatory Markers
+    - label: Oral Contraceptives
+    - label: NSAIDs / COX-2 Inhibitors
+    - label: Antihistamines / Decongestants
+  - label: Discontinue BP-Raising Medications
+    children:
+    - label: Corticosteroids / Mineralocorticoids / Anabolic Steroids
+    - label: Sympathomimetics / Amphetamine-Like Drugs
+    - label: Carbenoxolone / Licorice
+    - label: TCA / MAO Inhibitors
+    - label: Ergot Alkaloids
+    - label: Diet Pills / Energy Pills
+    - label: Heavy Metal Supplements
+    - label: Erythropoietin Compounds
+    - label: Cyclosporin / Tacrolimus
+    - label: Bromocriptine / Metoclopramide
+  - label: Aerobic + Resistance Exercise
+    children:
+    - label: 60 Min/Day Combined Aerobic + Resistance
+    - label: 'Aerobic: 30 Min at 60-80% Max (220 - Age)'
+    - label: 4200 kJ/Week for Maximal CV Risk Reduction
+      children:
+      - label: Endothelial Nitric Oxide Synthase
+      - label: Nitric Oxide Levels
+    - label: Exercise Improves
+      children:
+      - label: Coronary Artery Flow
+      - label: Systemic Vascular Compliance
+      - label: Insulin Sensitivity
+    - label: Digitalis / Disulfiram / Lithium
+  - label: Behavior Modifications
+    children:
+    - label: 60% of HTN Patients are 20% Over Ideal Body Weight
+    - label: Stress Management
+      children:
+      - label: Respiratory Function (PFT, FEV1)
+      - label: Frontal Lobe Oxygen Delivery
+    - label: Biofeedback + Relaxation
+    - label: Pilates + Yoga
+    - label: Psychotherapy
+    - label: Hypnosis
+    - label: Meditation
+    - label: Spiritual + Religious Practices
+  - label: Weight Reduction
+    children:
+    - label: '4-5 kg Loss: Decreases SBP 7 pts / DBP 5 pts'
+      children:
+      - label: Cardiac Output
+      - label: LV Filling Pressure
+    - label: Weight Loss Improves
+      children:
+      - label: Insulin Sensitivity
+      - label: Catecholamine Levels
+      - label: Systemic Vascular Compliance
+      - label: Sodium Retention
+      - label: Sympathetic Tone
+- label: Natural Antihypertensive Classes
+  children:
+  - label: ACE Inhibitors (Foods)
+    children:
+    - label: Corn Protein (Zein)
+      children:
+      - label: Plasma Renin + Aldosterone Levels
+      - label: hs-CRP, TNF, IL-6, Oxidative Stress
+    - label: Egg Yolks
+    - label: 'Fish: Bonito, Dried Salted, Sardines, Tuna'
+    - label: Garlic
+    - label: Gelatin
+    - label: Hawthorne Berry
+    - label: Milk Protein (Casein)
+    - label: Pomegranate
+    - label: Sea Vegetables (Kelp)
+    - label: Seaweed (Wakame)
+  - label: ACE Inhibitors (Nutrients)
+    children:
+    - label: Wheat Germ (Hydrolyzed)
+    - label: Whey (Hydrolyzed)
+    - label: Omega-3 Fatty Acids
+    - label: Zinc
+    - label: Pycnogenol
+    - label: Melatonin
+  - label: ARBs (Foods)
+    children:
+    - label: Celery
+    - label: Fiber-Rich Foods
+    - label: Garlic
+    - label: Monounsaturated Fatty Acids (Olive Oil)
+    - label: N-Acetyl Cysteine
+  - label: ARBs (Nutrients)
+    children:
+    - label: Taurine
+    - label: Gamma Linolenic Acid
+    - label: Oleic Acid
+    - label: Potassium
+    - label: Vitamin B6 (Pyridoxine)
+    - label: Vitamin C
+  - label: Beta Blockers
+    children:
+    - label: Hawthorne Berry
+    - label: Resveratrol
+    - label: Coenzyme Q-10
+    - label: Celery
+  - label: Calcium Channel Blockers (Foods)
+    children:
+    - label: Garlic
+    - label: Hawthorne Berry
+    - label: Monounsaturated Fatty Acids
+    - label: N-Acetyl Cysteine
+    - label: Taurine
+  - label: Calcium Channel Blockers (Nutrients)
+    children:
+    - label: EPA
+    - label: DHA
+    - label: Oleic Acid
+    - label: Omega-3 Fatty Acids
+    - label: Calcium
+    - label: Magnesium
+  - label: Central Alpha Agonists (Foods)
+    children:
+    - label: Celery / Fiber / Garlic / Protein
+    - label: Taurine
+    - label: Vitamin B6 / C / E
+    - label: Alpha Lipoic Acid
+  - label: Central Alpha Agonists (Nutrients)
+    children:
+    - label: Gamma Linolenic Acid
+    - label: Potassium / Zinc
+    - label: Vitamin B6 / C
+  - label: Direct Renin Inhibitors
+    children:
+    - label: Vitamin D
+    - label: Celery / Fiber / Garlic
+    - label: Coenzyme Q-10
+- label: Orthostatic Hypotension
+  children:
+  - label: Normal Baro-Reflex Response (Standing)
+    children:
+    - label: Coenzyme Q-10
+    - label: 500-1000 cc Blood Pools in Splanchnic + Lower Extremities
+    - label: Decreased Venous Return, Cardiac Output, BP
+    - label: 'Reflex: Increased Sympathetic, Decreased Parasympathetic'
+    - label: 'Result: Increased Heart Rate + Peripheral Vascular Resistance'
+  - label: Normal Expected Changes on Standing
+    children:
+    - label: 'SBP Small Drop: ~5 mmHg'
+    - label: 'DBP Small Rise: ~5 mmHg'
+    - label: 'Pulse Rise: Up'
+  - label: Direct Vasodilators (Foods)
+    children:
+    - label: Monounsaturated Fatty Acids
+    - label: Soy
+    - label: Arginine / Taurine
+  - label: Direct Vasodilators (Nutrients)
+    children:
+    - label: Alpha Linolenic Acid
+    - label: Omega-3 Fatty Acids
+    - label: Calcium / Magnesium / Potassium
+    - label: Vitamin C / E
+  - label: Diuretics (Foods)
+    children:
+    - label: Celery / Hawthorne Berry / Protein
+    - label: L-Carnitine / Taurine
+    - label: Flavonoids
+  - label: Diuretics (Nutrients)
+    children:
+    - label: Gamma Linolenic Acid / Fiber
+    - label: Calcium / Magnesium / Potassium
+    - label: Vitamin B6 / C
+    - label: 'Vitamin E: High Gamma/Delta Tocopherols + Tocotrienols'
+sources:
+- id: vitaone-mind-map-tool
+  location: tools.vitaone.in/mind-maps
+  quote: 'Imported from Vitaone Education Tools: ''Blood Pressure'''
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

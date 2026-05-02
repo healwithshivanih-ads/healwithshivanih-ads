@@ -1,0 +1,32 @@
+slug: estrobolome-health-determines-estrogen-excretion-vs-recirculation
+statement: A healthy estrobolome promotes excretion of conjugated estrogens in stool;
+  an unhealthy one causes them to be reactivated and recirculated, amplifying estrogen-related
+  symptoms.
+evidence_tier: plausible_emerging
+rationale: The enterohepatic recirculation of estrogens via beta-glucuronidase is
+  a documented mechanism, but the direct clinical claim that 'most people' have unhealthy
+  estrobolomes driving symptoms is expert opinion not yet established by RCT consensus.
+  Source is a single expert, moderate-quality transcript.
+coaching_translation: Think of your gut as the final filter for estrogen. If that
+  filter isn't working well, estrogen gets recycled instead of removed, and that can
+  make perimenopausal symptoms feel much more intense.
+caveats:
+- Single-expert source; source is a moderated expert transcript, not primary literature.
+- Magnitude of population-level estrobolome dysfunction is not quantified in this
+  document.
+linked_to_topics:
+- estrobolome
+- perimenopause
+- dysbiosis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-3
+  location: Introduction / Estrogen recirculation
+  quote: In an unhealthy microbiome, which is most people, you recirculate your estrogen,
+    which just magnifies the symptoms we experience.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

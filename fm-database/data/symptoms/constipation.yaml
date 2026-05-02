@@ -1,0 +1,40 @@
+slug: constipation
+display_name: Constipation
+aliases:
+- hard-stools
+- infrequent-bowel-movements
+- straining-stools
+- incomplete-evacuation
+- sluggish-bowels
+- straining
+category: gi
+severity: common
+description: 'Infrequent (<3/week), hard, or difficult-to-pass stools. Slows estrogen
+
+  clearance via reduced enterohepatic transit; common in perimenopause
+
+  due to progesterone-mediated motility slowing and hypothyroidism.
+
+  '
+when_to_refer: 'Sudden change in bowel habit in midlife; blood in stool; severe
+
+  abdominal pain; weight loss; failure of basic measures over weeks.
+
+  '
+linked_to_topics:
+- perimenopause
+- estrobolome
+- thyroid
+- microbiome
+linked_to_mechanisms:
+- estrogen-enterohepatic-recirculation
+- microbial-diversity-decline
+sources:
+- id: thurlow-microbiome-mondays
+  location: Session 6 — Bowel Patterns
+- id: vitaone-skill-practice-guide
+  location: practice_guide.md, Gut section
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

@@ -1,0 +1,34 @@
+slug: alpha-lipoic-acid
+display_name: Alpha Lipoic Acid (ALA)
+category: other
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 100
+    max: 600
+    unit: mg
+  tablet:
+    min: 100
+    max: 600
+    unit: mg
+timing_options:
+- mid_afternoon
+take_with_food: optional
+notes_for_coach: R-form preferred (100 mg R = ~300 mg standard ALA); useful for neuropathy,
+  blood sugar support, and detox.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Alpha Lipoic Acid (ALA) - Antioxidant, blood sugar, nerve health - 300–600
+    mg/day (100 mg R Form) - anytime midday
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

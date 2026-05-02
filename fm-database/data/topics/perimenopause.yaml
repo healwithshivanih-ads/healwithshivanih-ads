@@ -1,0 +1,69 @@
+slug: perimenopause
+display_name: Perimenopause
+aliases:
+- peri
+- menopause-transition
+- hormone-transition
+- middlepause
+- menopause transition
+summary: The hormonal transition preceding menopause, characterized by fluctuating
+  and declining estrogen and progesterone, with wide-ranging effects on gut function,
+  microbiome diversity, inflammation, and autoimmune risk.
+common_symptoms:
+- night sweats / hot flashes
+- 3am wakeups
+- new-onset anxiety
+- brain fog
+- joint pain / stiffness
+- irregular cycles
+- weight gain (especially abdominal)
+- bloating
+- constipation
+- loose stools
+- new food sensitivities
+- reflux
+- new-onset IBS
+red_flags:
+- heavy bleeding > 7 days or soaking through pads hourly (refer GYN)
+- bleeding after 12 months of amenorrhea
+- severe mood changes with suicidality
+- persistent bloating unresponsive to dietary changes
+- new bowel changes not resolving
+related_topics:
+- insomnia
+- anxiety
+- pcos
+- microbiome
+- dysbiosis
+- gut-hormone-axis
+- constipation
+- dyspepsia
+- motility
+key_mechanisms:
+- low-progesterone
+- estrogen-fluctuation
+- insulin-resistance
+- hpa-axis-dysregulation
+- estrogen-decline
+- progesterone-decline
+- intestinal-permeability
+coaching_scope_notes: Coaches can support lifestyle, nutrition, and stress-management
+  strategies. Hormone-related decisions require clinician oversight.
+clinician_scope_notes: 'HRT decisions and prescribing require menopause-certified
+  clinician.
+
+  Coach can prepare client for that conversation but does not initiate.
+
+  '
+sources:
+- id: vitaone-skill-practice-guide
+  location: practice_guide.md, Menopause/Perimenopause section
+- id: thurlow-microbiome-session-6
+  location: Session 6 — Main Transcript, Introduction
+  quote: These are all hormonally mediated and they are sometimes worsened by neurotransmitter
+    changes.
+evidence_tier: plausible_emerging
+version: 2
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

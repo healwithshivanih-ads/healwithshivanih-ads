@@ -1,0 +1,49 @@
+slug: golden-milk
+display_name: Golden Milk (Turmeric Milk / Haldi Doodh)
+aliases:
+  - haldi-doodh
+  - turmeric-milk
+  - golden-latte
+category: kitchen_remedy
+summary: |
+  Traditional Indian preparation: warm milk infused with turmeric (haldi),
+  a pinch of black pepper (for curcumin bioavailability), and often
+  ginger and cardamom. Anti-inflammatory effect of curcumin is well-
+  studied; black pepper's piperine increases curcumin absorption ~20-fold.
+  Cultural context: traditionally given before bed for restful sleep,
+  recovery from illness, and joint stiffness.
+indications:
+  - inflammation
+  - joint-pain
+  - perimenopause
+contraindications:
+  - active gallbladder disease (turmeric stimulates bile flow)
+  - oxalate-restricted diets (turmeric is oxalate-rich)
+  - on anticoagulants (curcumin has mild anticoagulant effect — refer to clinician)
+  - true milk allergy (use plant milk instead)
+preparation: |
+  1 cup warm milk (cow, almond, oat, coconut), 1/4 tsp ground turmeric,
+  pinch of black pepper, optional 1/4 tsp ground ginger, 1 cardamom pod
+  crushed, optional 1 tsp honey or jaggery (added after removing from
+  heat). Simmer gently 5 minutes, do not boil hard.
+typical_dose: |
+  1 cup at bedtime, or 1 cup with a meal.
+duration: |
+  Daily as part of routine; safe long-term in food-amount turmeric.
+timing_notes: |
+  Bedtime is traditional — warm milk supports relaxation. Some find
+  it easier on digestion than supplemental curcumin capsules.
+linked_to_topics:
+  - inflammation
+  - perimenopause
+  - autoimmune
+linked_to_mechanisms:
+  - chronic-inflammation
+sources:
+  - id: vitaone-skill-practice-guide
+    location: practice_guide.md, Indian Tradition / Anti-Inflammatory
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

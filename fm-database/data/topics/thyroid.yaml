@@ -1,0 +1,55 @@
+slug: thyroid
+display_name: Thyroid
+aliases:
+- thyroid dysfunction
+- hypothyroidism
+- Hashimoto's thyroiditis
+- autoimmune thyroid disease
+summary: Thyroid health encompasses hormone synthesis, T4-to-T3 conversion, autoimmune
+  drivers (Hashimoto's), and the interplay of nutrients, stress, gut function, and
+  co-conditions like PCOS. A full diagnostic picture requires more than TSH alone,
+  and functional factors — cortisol, selenium, zinc, iron, Vitamin A — are central
+  to optimising thyroid physiology.
+common_symptoms:
+- fatigue
+- hair loss
+- constipation
+- weight gain
+- brain fog
+- anxiety
+- cold intolerance
+- slow gut motility
+red_flags:
+- goiter or thyroid nodules
+- rapid unexplained weight change
+- extreme heat or cold intolerance
+- palpitations
+- post-partum thyroid symptoms
+- suspected autoimmune disease without formal workup
+related_topics:
+- pcos
+- perimenopause
+- autoimmune
+- inflammation
+key_mechanisms:
+- t4-to-t3-conversion-impairment
+- hpa-axis-dysregulation
+- autoimmune-molecular-mimicry
+coaching_scope_notes: Coaches may teach the importance of a full thyroid panel vs
+  TSH alone, the role of stress in conversion, and dietary sources of selenium/zinc/iron/Vitamin
+  A. Supplement dosing, lab interpretation, medication decisions, and Red Light Therapy
+  protocols are outside coaching scope.
+clinician_scope_notes: Lab interpretation (including optimal ranges for Free T3, Reverse
+  T3, TPO/TgAb), selenium and Vitamin A supplementation dosing, levothyroxine decisions,
+  LLLT protocols, and any autoimmune workup requiring formal diagnosis should be managed
+  by a licensed clinician.
+evidence_tier: strong
+sources:
+- id: vitaone-evidence-tiers
+  location: TOPIC 1 — Thyroid / Claims & Tiers
+  quote: TSH misses early Hashimoto's, euthyroid-sick syndrome, conversion problems,
+    and autoimmune thyroid disease without elevated TSH.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

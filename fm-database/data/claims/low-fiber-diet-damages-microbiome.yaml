@@ -1,0 +1,30 @@
+slug: low-fiber-diet-damages-microbiome
+statement: A consistently low or zero-fiber diet starves key gut bacteria and negatively
+  impacts the microbiome, including bacteria that support insulin sensitivity.
+evidence_tier: plausible_emerging
+rationale: Mechanistically supported by microbiome research on substrate availability;
+  speaker references a physician colleague observing loss of insulin sensitivity in
+  long-term carnivore patients. No primary study cited.
+coaching_translation: Skipping fiber long-term doesn't just affect digestion — it
+  slowly depletes the gut bacteria your clients need for blood sugar balance and overall
+  health.
+caveats:
+- Single-expert source; specific clinical observation anecdotal. Corroborate with
+  microbiome literature.
+linked_to_topics:
+- fiber-gap
+- microbiome
+- dysbiosis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-7
+  location: Elimination diet discussion [00:10:01]
+  quote: he's starting to see patients who are long-term carnivores... who are losing
+    insulin sensitivity and are starving off key bacteria in their microbiome that
+    impact insulin sensitivity.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

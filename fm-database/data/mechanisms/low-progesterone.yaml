@@ -1,0 +1,40 @@
+slug: low-progesterone
+display_name: Low Progesterone (Perimenopausal)
+aliases:
+  - progesterone-decline
+  - progesterone-insufficiency
+category: endocrine
+summary: |
+  Progesterone is typically the FIRST sex hormone to decline in
+  perimenopause (often years before estrogen), as anovulatory cycles become
+  more common and the corpus luteum produces less. Progesterone is the
+  endogenous GABA-A receptor positive allosteric modulator (via
+  allopregnanolone) — its decline is a major driver of perimenopausal
+  insomnia, anxiety, and hot flashes. Also has anti-proliferative effects
+  on endometrium balancing estrogen.
+upstream_drivers:
+  - anovulation (intermittent in perimenopause)
+  - chronic stress (pregnenolone steal)
+  - early ovarian aging
+downstream_effects:
+  - sleep-onset insomnia, 3am wakeups
+  - new-onset anxiety, irritability
+  - heavier periods (unopposed estrogen)
+  - shorter luteal phase
+  - reduced GABAergic tone
+related_mechanisms:
+  - estrogen-decline
+  - hpa-axis-dysregulation
+  - gaba-a-receptor-modulation
+linked_to_topics:
+  - perimenopause
+  - insomnia
+  - anxiety
+sources:
+  - id: vitaone-skill-practice-guide
+    location: practice_guide.md, Hormones section
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

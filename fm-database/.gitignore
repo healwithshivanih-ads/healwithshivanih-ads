@@ -1,0 +1,12 @@
+# Pipeline transients — staged candidates and audit log are not canonical data
+data/staging/
+data/_audit.jsonl
+data/_backlog.yaml
+
+# Local virtualenv
+.venv/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo

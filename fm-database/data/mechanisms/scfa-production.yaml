@@ -1,0 +1,57 @@
+slug: scfa-production
+display_name: Short-Chain Fatty Acid Production
+aliases:
+- short-chain-fatty-acid-production
+- short-chain-fatty-acid-signaling
+- scfa-reduction
+- impaired-scfa-production
+- microbial-fermentation
+- colonocyte-fermentation
+- soluble-fiber-fermentation
+- blood-brain-barrier-crossing-butyrate
+category: gut
+summary: 'Microbial fermentation of soluble fiber in the colon produces short-chain
+
+  fatty acids — primarily acetate, propionate, and butyrate. Butyrate is
+
+  the preferred fuel for colonocytes (maintaining gut barrier integrity)
+
+  and crosses the blood-brain barrier with neuroprotective and
+
+  anti-inflammatory effects. SCFA production is a primary mechanism by
+
+  which fiber intake affects systemic inflammation, insulin sensitivity,
+
+  and mood regulation.
+
+  '
+upstream_drivers:
+- dietary fiber intake (especially soluble + fermentable)
+- microbial diversity
+- prebiotic foods (resistant starch, inulin)
+downstream_effects:
+- gut barrier maintenance (colonocyte fuel)
+- reduced systemic inflammation
+- improved insulin sensitivity (GPR43/41 signaling)
+- GLP-1 release stimulation
+- neurotransmitter precursor support
+- improved bowel motility
+related_mechanisms:
+- microbial-diversity-decline
+- leaky-gut
+- chronic-inflammation
+linked_to_topics:
+- microbiome
+- dysbiosis
+- inflammation
+- perimenopause
+sources:
+- id: thurlow-microbiome-session-7
+  location: Session 7 — Fiber Gap & Feeding the Microbiome
+- id: thurlow-microbiome-mondays
+  location: Session 1 — Microbiome Foundations
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

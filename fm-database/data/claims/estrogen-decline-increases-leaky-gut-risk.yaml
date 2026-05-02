@@ -1,0 +1,34 @@
+slug: estrogen-decline-increases-leaky-gut-risk
+statement: Declining estrogen in perimenopause and menopause increases the risk of
+  developing leaky gut by weakening the tight junctions of the small intestinal lining.
+evidence_tier: plausible_emerging
+rationale: Speaker grounds this in estrogen's structural role in maintaining gut barrier
+  integrity, using a 'bricks and mortar' analogy. Biologically plausible mechanism
+  with emerging research support; not yet consensus in the literature. Single-expert
+  source.
+coaching_translation: As estrogen drops in perimenopause, the gut lining becomes more
+  vulnerable to damage. This is one reason women may suddenly develop reactions to
+  foods they've always eaten.
+caveats:
+- Single-expert source (expert consensus, moderate quality); not derived from primary
+  RCT literature.
+- Causal directionality in humans is not fully established — association is better
+  documented than causation.
+linked_to_topics:
+- leaky-gut
+- perimenopause
+- gut-hormone-axis
+- food-sensitivities
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-2
+  location: Why midlife changes food tolerance
+  quote: We know that estrogen acts as the mortar, kind of like bricks and mortar,
+    it's like the mortar. And when it starts declining, meaning when our estrogen
+    levels are declining, we are more likely to develop leaky gut.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

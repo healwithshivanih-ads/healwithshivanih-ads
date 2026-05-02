@@ -1,0 +1,32 @@
+slug: estrogen-decline-increases-inflammation-and-leaky-gut-risk
+statement: Declining estrogen is associated with increased inflammation, increased
+  intestinal permeability (leaky gut), and a 4–5× higher risk of developing autoimmune
+  conditions in perimenopause and menopause.
+evidence_tier: plausible_emerging
+rationale: Single-expert synthesis. Estrogen's anti-inflammatory and gut-barrier roles
+  are biologically plausible; the 4–5× autoimmune risk figure is cited without a specific
+  study reference.
+coaching_translation: As estrogen falls, the gut barrier becomes more permeable, inflammation
+  rises, and the immune system can become dysregulated — making perimenopause a key
+  window for gut-health support.
+caveats:
+- Single-expert source; 4–5× autoimmune risk statistic not cited to a specific study.
+- Source type is expert_consensus/moderate quality — verify specific statistics with
+  clinician or primary literature.
+linked_to_topics:
+- perimenopause
+- microbiome
+- gut-hormone-axis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-6
+  location: Session 6 — Main Transcript, Estrogen Section
+  quote: We are much more likely to get leaky gut and leaky gut and autoimmune conditions
+    rise in this stage of life. We're four to five times more likely to develop an
+    autoimmune condition.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

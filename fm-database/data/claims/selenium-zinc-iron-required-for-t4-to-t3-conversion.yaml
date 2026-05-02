@@ -1,0 +1,28 @@
+slug: selenium-zinc-iron-required-for-t4-to-t3-conversion
+statement: Selenium, zinc, and iron are required cofactors for T4→T3 conversion and
+  thyroid hormone synthesis.
+evidence_tier: strong
+rationale: Deiodinase enzymes are selenoproteins (selenium-dependent). Zinc and iron
+  are cofactors in thyroid hormone synthesis and receptor function. Deficiency of
+  any impairs conversion. Iron deficiency in particular is commonly missed as a thyroid
+  issue.
+coaching_translation: Focus nutrition on selenium-rich foods (Brazil nuts — 2–3/day),
+  zinc-rich foods (pumpkin seeds, lentils), and iron-rich foods, especially for women
+  with hair loss and fatigue.
+caveats:
+- Supplementation beyond dietary sources should be guided by a clinician, particularly
+  for iron.
+linked_to_topics:
+- thyroid
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-evidence-tiers
+  location: TOPIC 1 — Thyroid / Claims & Tiers / Claim 3
+  quote: Deiodinase enzymes are selenoproteins (selenium-dependent). Zinc and iron
+    are cofactors in thyroid hormone synthesis and receptor function.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

@@ -14,12 +14,181 @@ published plans as JSON artifacts.
 
 ## Status
 
-**v0.1 (current)** — `Supplement` entity working end-to-end:
-- Pydantic schema + loader + validator + CLI (`validate`, `list`, `show <slug>`)
-- One seed entry: `magnesium-glycinate`
-- Located at `fm-database/`
+**v0.20 (current)** — PDF ingest + Resources Toolkit + 49 supplements added:
+- **PDF ingest support.** `fmdb/ingest/loaders.py` now lists `.pdf` and image extensions in `LOADERS`, with a stub-text return; `IngestRequest` gained an `attachments: list[dict]` field for binary content blocks. `cmd_ingest` detects PDF/image and loads bytes as base64 attachment. `AnthropicExtractor.extract()` rebuilds the user content as a list, putting PDF (`{"type": "document"}`) and image (`{"type": "image"}`) content blocks first, then the text payload.
+- **Streaming for large outputs.** Switched `messages.create` → `messages.stream(...)` with `get_final_message()`. Anthropic requires streaming for `max_tokens > 8192`. Default bumped to 32K.
+- **First PDF ingested**: `Supplementation Dosage.pdf` (105KB) → 49 new supplements + 15 enrichments to existing ones via smart-merge. Catalogue: **23 → 72 supplements**.
+- New module `fmdb/resources/`: **`Resource`** model (slug, title, kind, audience, description, content via file_path|url|text, related_topics/mechanisms/supplements, tags, shareable, license_notes, lifecycle). Stored at `~/fm-resources/` (separate from catalogue and from plans, override via `FMDB_RESOURCES_DIR`).
+- New sidebar page **🧰 Resources Toolkit** — browse with kind/audience/topic filters + text search; per-resource card with download button + open-link + inline-body expander; add-form supports file path / URL / inline markdown; bridges to catalogue topics/supplements/mechanisms.
+- **31 VitaOne PDFs auto-imported** as Resource records via `/tmp/import_vitaone_resources.py` — files stay in their original location at `~/fm-plans/Vitaone Resources from course/`, only metadata records are created. Heuristic kind classifier (cheatsheet / protocol / article / recipe / slide_deck / form) and topic mapping based on filename keywords.
+- Resource breakdown: 13 cheatsheets, 12 protocol toolkits, 3 articles, 1 form, 1 slide deck, 1 recipe collection. All marked `shareable: false` with VitaOne licence note.
 
-**Next:** Add `Source`, `Topic`, `Claim` entities; seed ~20 supplements from vitaone skill.
+**v0.19** — `MindMap` entity + Vitaone scrape (A + C):
+- New 9th catalogue entity: **`MindMap`** (slug, display_name, description, related_topics, related_mechanisms, recursive `tree: list[MindMapNode]`, sources, evidence_tier, lifecycle). `MindMapNode` is a recursive Pydantic model with `label`, `children`, optional `linked_kind`+`linked_slug` for re-centerable bridges to other catalogue entities.
+- Loader/validator/CLI integration (alias-aware reuse). Validator walks the recursive tree and warns on unresolved `linked_*` references; resolves `related_topics` and source citations the same as other entities.
+- New rendering: `curated_to_mermaid()` in `fmdb/assess/mindmap.py` converts a `MindMap` instance to Mermaid mindmap source. Mind Map page now has **two tabs**: 📘 Curated mind maps (lists `MindMap` entities) and 🌐 Auto from catalogue (existing).
+- **Scraped 3 MindMaps from Vitaone** (`tools.vitaone.in/mind-maps`) via Chrome MCP:
+  - `fm-approach-to-hypothyroidism` (199 nodes, 7 branches)
+  - `adrenal-fatigue` (287 nodes, 6 branches)
+  - `hypertension` (388 nodes, 13 branches)
+  - 874 nodes total. Source `vitaone-mind-map-tool` registered.
+  - Scraping technique: page is a Vite SPA with no runtime API. Used Chrome MCP to (1) click "Expand All" then recursively click `button[aria-label="Expand"]` until none remain, (2) walk DOM nodes with tailwind color classes to determine depth (indigo-100 → blue-50 → teal-50 → amber-50 → rose-50), (3) reconstruct parent-child via `closest depth-(d-1) node with smaller x and nearest y`, (4) JSON.stringify and trigger Blob download.
+- Catalogue: 12 sources, 26 topics, 10 mechanisms, 10 symptoms, 128 claims, 23 supplements, 3 cooking adjustments, 3 home remedies, **3 mindmaps**. 0 errors, 179 warnings (unchanged).
+
+**v0.18** — Mind Map page (auto-generated from catalogue):
+- New module `fmdb/assess/mindmap.py` — `build_tree(cat, kind, slug)` walks the catalogue's cross-links rooted at any entity (topic / mechanism / symptom / supplement / claim) and returns a 2-level tree grouped by relationship type. `to_mermaid(tree)` converts to Mermaid `mindmap` syntax.
+- New sidebar page **🧭 Mind Map** — pick any entity, render as horizontal collapsible tree (matches vitaone-style: root in centre, category branches like "Related topics / Key mechanisms / Common symptoms / Supplements / Cooking adjustments / Home remedies / Red flags", then atoms).
+- Renderer uses Mermaid via CDN (no extra pip dep) inside `streamlit.components.v1.html`. Custom theme matches the FM tool palette.
+- Side panel below the map shows the rooted entity's details (summary, evidence_tier badge, coaching/clinician scope notes); right column has clickable nav buttons to re-center on any visible child node.
+- Inspired by vitaone's mind-map tool (Functional Medicine Approach to Hypothyroidism, Adrenal Fatigue, Hypertension) — same horizontal-tree pattern but auto-generated from our catalogue rather than hand-curated. Hand-curated `MindMap` entity type deferred to a later turn.
+
+**v0.17** — coach UX polish: backlog, evidence surfacing, client edit/delete, session detail, cache fix:
+- **Catalogue Backlog** (new `fmdb/backlog.py` module). When the AI's analysis includes `catalogue_additions_suggested`, items are auto-captured into `data/_backlog.yaml` (gitignored). Items dedupe by `(kind, name)` and bump `seen_count` on repeated suggestions. New sidebar page **📝 Catalogue Backlog** with tabs: Open / Added / Rejected / Add manually. Status transitions are coach-driven (mark Added when actually authored to catalogue, Reject otherwise).
+- **Evidence-tier surfacing.** Every catalogue-referencing suggestion (drivers, topics, supplements) now displays a colored evidence-tier badge (🟢 strong / 🟡 plausible / 🟠 fm_specific_thin / 🔴 confirm_with_clinician). Each also has an expandable **📚 Catalogue sources** panel showing the original citations + verbatim quotes. Alias-aware lookup: if the AI uses a slug variant, the canonical entity's metadata is shown.
+- **Client edit + delete** (new **✏️ Edit / Delete** tab on Clients page). Edit form pre-fills all current fields, bumps `version` on save. Delete requires typing the `client_id` to enable — and refuses if any `drafts/`, `ready/`, or `published/` plans reference this client (revoke or delete plans first).
+- **Session timeline detail view.** The Assess page's prior-sessions panel is now a clickable timeline (newest first). Clicking **View** on a session opens its full record: presenting complaints, symptoms/topics selected, uploaded files, measurements snapshot, drivers identified, supplements suggested, synthesis notes, generated plan slug.
+- **The "stale module cache" bug is permanently fixed.** New code at the top of `fmdb_ui/app.py` evicts every cached `fmdb.*` module on every Streamlit script rerun. Adding a class to a model file no longer requires a full streamlit restart. Cost: ~50-100ms per rerun.
+- New `delete_client()` helper in `fmdb/plan/storage.py` with active-plan refusal + summary return value.
+- New tool-schema field `catalogue_additions_suggested` + system-prompt rule #14 telling the AI to populate it for items it would have suggested if they existed.
+
+**v0.16** — per-client directories + Sessions + history-aware Analyze:
+- **Storage restructure (auto-migrating).** `~/fm-plans/clients/<id>.yaml` → `~/fm-plans/clients/<id>/client.yaml` with sibling `files/` (lab/food uploads, dated) and `sessions/` (per-Analyze records). `_migrate_flat_clients()` runs on app start; idempotent.
+- New `Session` model — append-only record per Analyze run. Captures: selected symptoms/topics, presenting complaints, uploaded file refs, measurements snapshot, full AI output, chat log, optional `generated_plan_slug`. Stored at `clients/<id>/sessions/<id>-YYYY-MM-DD-NNN.yaml`.
+- New `UploadedFileRef` and `ChatTurn` sub-models (used inside Session).
+- New `Client.medical_history: list[str]` — past diagnoses + current status (e.g., "Hashimoto's diagnosed 2018, antibodies normalized 2023, on levothyroxine"). Distinct from `active_conditions`. Surfaced in client snapshot + sent to AI synthesis.
+- **History-aware Analyze.** When Analyze runs, prior sessions for this client are auto-bundled (compact form: date, drivers, supplements, extracted_labs, synthesis_notes) and passed to `synthesize()` as `session_history`. New system-prompt rule #13 instructs the AI to compare timepoints, weight toward adjustments not restarts on rechecks, surface unchanged symptoms despite prior protocol, and explain departures from prior plan.
+- Assess page shows a **🕰️ Prior sessions** expander listing each session's date / drivers / supplements when prior sessions exist.
+- Files uploaded during Analyze are persisted to `clients/<id>/files/<YYYY-MM-DD>-<filename>` with dedup-by-suffix; `UploadedFileRef` records what kind (lab_report | food_journal) and when.
+- Client form: `client_id` is now **auto-generated** (cl-001, cl-002, ...) instead of user-typed. Form has `clear_on_submit=False` so validation errors don't wipe data.
+
+**Per Shivani's preferences this turn:**
+- Single Session type (not intake/follow_up/check_in distinction).
+- History-aware Analyze auto-includes ALL prior sessions (no manual "compare with session X" picker).
+
+**v0.15** — bio + food log + follow-up chat (Assess workflow gets richer inputs and conversational refinement):
+- New `Measurements` sub-model on Client: height_cm, weight_kg, waist_cm, hip_cm, resting_heart_rate, blood_pressure, measured_on, notes. Computed properties: `bmi`, `waist_hip_ratio`, `bmr_mifflin_st_jeor(age, sex)` (Mifflin-St Jeor formula).
+- `Client.estimated_age()` derives age from `age_band` midpoint for BMR computation.
+- New Clients form section captures bio at intake; Assess client snapshot displays computed BMI / W:H / BMR with estimated age annotation.
+- Assess page adds **separate food-journal uploader** alongside lab uploader. Both pass to suggester with `kind: lab_report | food_journal` distinguisher; system prompt rule #10 instructs the model to derive nutrition patterns from food logs (not lab values), with India-specific defaults (rule #11).
+- New **chat panel** after suggestions: `ai_chat()` in suggester.py keeps message history in `st.session_state`, caches client+subgraph+suggestions context across turns (~$0.05-0.10 per turn). Uses `st.chat_message` / `st.chat_input` for native chat UI.
+- System prompt now uses bio: BMI > 25 + central adiposity flags visceral-adiposity / insulin-resistance pattern; BMR informs caloric advice; HR / BP flag CV risk.
+
+**Next-turn architecture** (proposed): per-client directories (`~/fm-plans/clients/<id>/{client.yaml, photo.jpg, files/, sessions/}`), `Session` entity for follow-up tracking (date, current symptoms, current measurements, AI analysis snapshot, chat log, generated plan reference), photo upload, session timeline view, history-aware Analyze.
+
+**v0.14** — Assess & Suggest workflow (the real product):
+- Pivot from "structured form" to "decision support tool" — coach inputs symptoms + topics + lab reports → tool synthesizes possible drivers + interventions drawn from the catalogue → coach reviews, picks, generates draft plan.
+- New module `fmdb/assess/`:
+  - `subgraph.py` — given selected symptoms + topics, walks the catalogue graph (symptom → topic + mechanism, topic → claims + supplements + cooking + remedies, mechanism → related-mechanism) to build a focused context bundle (~35K tokens for a typical query).
+  - `suggester.py` — Anthropic call with attached lab files (PDF/image as document/image content blocks), catalogue subgraph, client context. Tool-use forces structured output: ranked drivers, topics, lifestyle, nutrition (incl. cooking adjustments + home remedies), supplements, lab follow-ups, referrals, education framings. Slugs constrained to subgraph whitelist.
+- New Streamlit page **🧠 Assess & Suggest** (now the default landing page):
+  - Pick client → multi-select symptoms (with aliases shown) + topics + free-text → upload lab PDFs/images → click Analyze → suggestions render with checkboxes → click "Generate draft plan" → pre-filled YAML lands in `~/fm-plans/drafts/`.
+  - Live cost telemetry, evidence-tier flagging, contraindication checks vs client meds.
+- Empirical first call cost: ~$0.20 per analysis (35K input + 5-10K output, system prompt cached).
+
+**v0.13** — local web UI (Streamlit) — coach-friendly front-end:
+- New module `fmdb_ui/app.py` — single-file Streamlit app sitting on top of fmdb/ engine. Same models, same storage, same plan-check; only the presentation layer is new.
+- Launch via `./run-fmdb.sh` from project root → opens at `http://localhost:8501`. No server, no auth, no deploy.
+- 3 pages: **Plans** (the meat — picks client → tabbed editor for assessment / lifestyle / nutrition / education / supplements / labs / referrals / tracking, with live plan-check sidebar), **Clients** (list + new), **Catalogue Browser** (read-only).
+- Design rules: every form input is a dropdown populated from the live catalogue (no slug typing); errors say what to do next; live plan-check turns red on CRITICAL findings.
+- Future-proof: the UI is a thin layer. Native Mac wrapper (Tauri/Electron/SwiftUI) later changes only the front-end; the engine stays.
+
+**v0.12** — `Client` + `Plan` layer + deterministic plan-check:
+- New module `fmdb/plan/` separate from catalogue entities; plans live OUTSIDE this repo (PHI). Default plans root: `~/fm-plans/` (override via `FMDB_PLANS_DIR` env or `--plans-dir` flag).
+- New entities: **`Client`** (id, intake_date, age_band, sex, conditions, medications, allergies, goals, notes — opaque id, age band not exact birthdate). **`Plan`** (slug, client_id, plan_period, assessment, lifestyle, nutrition, education, supplement_protocol, lab_orders, referrals, tracking, lifecycle, catalogue_snapshot).
+- New enums: `PlanStatus` (draft / ready_to_publish / published / superseded / revoked), `ReferralUrgency`.
+- Storage layout: `<plans_root>/clients/`, `drafts/`, `ready/`, `published/<slug>-v<n>.yaml`, `superseded/`, `revoked/`. Status determines bucket. Versioned files for non-live buckets.
+- **Deterministic plan-check** (`fmdb plan-check <slug>`) — alias-aware xref of every catalogue reference (topics, mechanisms, symptoms, supplements, cooking_adjustments, home_remedies, claims) + supplement contraindication / med-interaction check against client + scope warning when supplement has `evidence_tier: confirm_with_clinician`. Severity: CRITICAL (blocks transition out of draft) | WARNING (requires ack) | INFO. Exits non-zero on CRITICAL.
+- CLI surface (12 new commands):
+  - `client-new`, `client-show`, `client-list`, `client-edit`
+  - `plan-new`, `plan-show`, `plan-list`, `plan-edit`, `plan-check`, `plan-delete`
+  - `plan-add-supplement`, `plan-add-topic`, `plan-add-symptom`
+- **v1 simplifications** (per Shivani):
+  - Single-author model — no clinician sign-off step. `confirm_with_clinician` evidence tier is the surface where the AI sanity check warns.
+  - Practices and tracking habits are FREEFORM strings, NOT entity types (overrode design-doc default — promote to entities only if duplication observed in real plans).
+  - No JSON export contract / mobile app for now — desktop-first build.
+- End-to-end smoke test verified: client-new → plan-new → add-{topic,symptom,supplement} → plan-show → plan-check (clean run + bogus refs both surface correctly).
+- Catalogue unchanged: 11 sources, 26 topics, 10 mechanisms, 10 symptoms, 128 claims, 23 supplements, 3 cooking_adjustments, 3 home_remedies. 0 errors, 179 warnings.
+
+**v0.11** — `CookingAdjustment` + `HomeRemedy` entities (Plan-section dependencies):
+- Both entities follow the established alias-aware pattern (full pipeline integration).
+- `CookingAdjustment`: cookware/oil/water/food-prep swaps with `swap_from`, `benefits`, `how_to_use`, `cautions`. Categories: cookware | oil | water | food_prep | storage | kitchen_tool | other.
+- `HomeRemedy`: Ayurvedic churans, infused waters, kashayams, kitchen remedies. Fields: `indications`, `contraindications`, `preparation`, `typical_dose`, `duration`, `timing_notes`. Categories: ayurvedic_churan | infused_water | herbal_tea | kashayam | kitchen_remedy | spice_blend | other.
+- 3 seed cooking adjustments (cast-iron-cookware, swap-to-ghee-or-coconut-oil, soak-and-sprout-legumes).
+- 3 seed home remedies (triphala-churan, cumin-coriander-fennel-tea, golden-milk).
+- CLI: `cooking-adjustments`, `show-cooking-adjustment`, `home-remedies`, `show-home-remedy`.
+- Catalogue: 11 sources, 26 topics, 10 mechanisms, 10 symptoms, 128 claims, 23 supplements, **3 cooking_adjustments**, **3 home_remedies**. 0 errors, 179 warnings (unchanged — new entities have valid xrefs).
+
+**Plan revision (per Shivani):**
+- Single-author model — coach authors all sections; no clinician sign-off step. The `evidence_tier: confirm_with_clinician` tag in catalogue entries is the surface where AI sanity-check warns against authoring without clinician input.
+- Lifecycle simplified: `draft → ready_to_publish → published → superseded | revoked`.
+- Mobile app deferred — desktop-first build with Markdown render for client-facing copy. No JSON export contract for now.
+- Build order updated: CookingAdjustment + HomeRemedy → Plan model → Plan CLI → deterministic sanity check → lifecycle → AI sanity check → publish + diff-guard → Markdown render.
+
+**v0.10** — `Symptom` entity + topic.common_symptoms cross-validation:
+- New entity: `Symptom` (slug, display_name, aliases, category, severity, description, when_to_refer, linked_to_topics, linked_to_mechanisms, sources)
+- Categories: gi | musculoskeletal | neurological | mood | sleep | skin | hormonal | metabolic | constitutional | cardiovascular | urinary | other. Severity: common | concerning | red_flag.
+- **Topic.common_symptoms now cross-validated** against the symptom slug+alias index. Lookup tries both verbatim alias match (catches space-containing client phrases like `"skin issues"`) and slugified form (catches `"brain fog"` → `brain-fog`).
+- 10 seed symptoms (bloating, brain-fog, fatigue, constipation, joint-pain, food-sensitivities, weight-gain, gas, loose-stools, skin-rash) with 50+ total aliases mapping client language → canonical.
+- Same alias-collision check as Mechanism / Topic — symptoms can't shadow each other or other entities' canonical slugs.
+- **Slug-collision policy with Topics is allowed** (e.g., `anxiety` exists as both — symptom `anxiety` is the felt experience, topic `anxiety` is the clinical area; cross-link via `symptom.linked_to_topics`).
+- **Data-quality signal surfaced**: 119 of 192 historical symptom-prose entries in topics don't resolve — mostly multi-symptom prose ("constipation or loose stools"), too-general labels ("thyroid dysfunction"), or atomic symptoms not yet seeded. Previously invisible; now counted and addressable.
+- Catalogue: 11 sources, 26 topics, 10 mechanisms, **10 symptoms**, 128 claims, 23 supplements. 0 errors, 179 warnings.
+
+**v0.9** — `Mechanism` entity + alias-aware cross-reference resolution:
+- New entity: `Mechanism` (slug, display_name, aliases, category, summary, upstream_drivers, downstream_effects, related_mechanisms, linked_to_topics, sources, evidence_tier). Categories: endocrine | neurological | immune | metabolic | gut | structural | signaling | other.
+- **Alias-aware resolution.** Validator builds a `{slug-or-alias → canonical-slug}` index per entity-with-aliases (mechanisms + topics). When `topic.key_mechanisms` references `intestinal-permeability`, validator finds it as an alias of canonical `leaky-gut` — no warning, no edit needed. Resolved ~37 of the 79 historical mechanism slug-variants automatically just by seeding 10 mechanisms with rich aliases.
+- **Alias collision detection.** New error: an alias that collides with another entity's canonical slug. Caught one real bug at first run (`gut-hormone-axis` had `estrobolome` as an alias, but `estrobolome` is its own topic).
+- 10 seed mechanisms covering: hpa-axis-dysregulation, leaky-gut, insulin-resistance, estrogen-decline, scfa-production, microbial-diversity-decline, chronic-inflammation, low-progesterone, estrogen-enterohepatic-recirculation, gaba-a-receptor-modulation. Long-tail (42 mechanism slugs) tracked as pending-refs, will fill from future ingests.
+- CLI: `mechanisms`, `show-mechanism <slug>`. Extractor schema + system-prompt rule #13 teach the model when to emit a Mechanism vs. fold it into a Topic.
+- Catalogue: **11 sources, 26 topics, 10 mechanisms, 128 claims, 23 supplements**, 0 errors, 60 warnings.
+
+**v0.8** — catalogue at production scale, pipeline survives real-world chaos:
+- Ingested all 8 sessions of Cynthia Thurlow's *Microbiome Mondays* course (8 separate Source records, one per session)
+- Catalogue: **11 sources, 26 topics, 128 claims, 23 supplements**, 0 errors, 18 warnings (4 cross-ref pending: `digestive-enzymes`, `tudca`; 14 forms-with-dose-unspecified — kept on purpose)
+- **Validator philosophy correction:** `forms_available` declared without `typical_dose_range` is now a **warning, not an error**. Reverses an earlier wrong move where I cleared form info on supplements lacking dose data — the right rule is "capture what you know, surface what you don't, don't discard." Symmetric error: a `typical_dose_range` key for a form NOT in `forms_available` (real inconsistency) still blocks.
+- `Warning_.is_xref` distinguishes unresolved cross-references from other gap warnings; `pending-refs` filters to xrefs only.
+- New `SourceType.llm_synthesis` + extractor system-prompt rule #12 self-throttles evidence_tier when source_type ∈ {llm_synthesis, other}
+- Schema additions: `SupplementForm.whole_food` (chia/flax/psyllium), `DoseUnit.tablespoons`
+- Smart-merge demonstrated at scale: across 8 topic conflicts and 2 claim conflicts, no canonical data was lost. **Caveat noted:** smart-merge will downgrade scalar `evidence_tier` if the new candidate is weaker. Future improvement: special-case evidence_tier so it never downgrades unless `--overwrite`.
+- Atomic approval prevented 2 broken commits (sessions 5 + 7) — pre-flight catches `forms_available` declared without dose ranges before any file moves
+- Total ingestion spend across the project so far: ~$1.34
+- New CLI: `fmdb pending-refs` lists every unresolved cross-reference grouped by target
+
+**v0.7** — pipeline hardened, catalogue grew 5×:
+- **Atomic approval.** `approve` pre-flights validation against a simulated post-state (current canonical + about-to-promote files merged in memory). Files only move to disk if the simulated state has zero errors. Rollback on commit failure. No more half-committed state.
+- **Validator split into errors vs warnings.** Errors block (schema, dupes, internal contradictions); unresolved cross-refs become non-blocking **warnings** so forward references survive in canonical files (no data loss). `validate` exits 0 on warnings-only; `--strict` flag elevates them.
+- **`pending-refs` CLI** lists every unresolved cross-ref grouped by target — answers "what stubs am I owed?" at a glance.
+- **Smart-merge on `--update`.** `approve --update` now unions lists (sources, interactions, topic links, etc.), prefers non-empty new scalars, keeps canonical otherwise. Bumps version. `--overwrite` retained for the rare destructive case. Demonstrated on magnesium-glycinate: kept its 4 topic links + claim link + zinc/calcium spacing rules + contraindications, gained richer notes + a second source citation.
+- **Schema additions.** `DoseUnit` gained `IU` (vitamin D, E, A) and `billion_CFU` (probiotics).
+- **Catalogue grew to:** 3 sources, 7 topics (added autoimmune, inflammation as stubs), 13 claims, **17 supplements** (14 added this round from practice_guide.md ingest).
+- **Pipeline runs so far:** 2 real LLM ingests (~$0.24 total), 0 partial-commits, 0 lost references.
+
+Open follow-ups: seed `calcium` supplement (last warning); enrich `vitamin-a` and stub `vitamin-d` with clinician-reviewed dose ranges; add PDF/transcript loaders.
+
+**v0.6** — first real LLM ingest landed:
+- `evidence_tiers.md` (TOPIC 1 Thyroid) extracted via `AnthropicExtractor` (claude-sonnet-4-6) → 1 topic + 11 claims + 2 stub supplements promoted to canonical
+- Catalogue now: 2 sources, 5 topics, 13 claims, 3 supplements
+- `.env` auto-loaded by CLI (`python-dotenv`, override=True so .env wins over stale shell exports)
+- API usage (input/output/cache tokens, stop_reason, model) logged into batch manifest + audit log
+- Validator loosened: empty `forms_available` now allowed for stub supplements (cross-field check still enforces consistency when forms ARE declared)
+- Known issue: approval is non-atomic — files move first, validator runs after; if validation fails canonical is left in inconsistent state. Requires manual cleanup. Fix: pre-flight validate against simulated post-state before promoting.
+
+**v0.5** — four entities + ingestion pipeline:
+- Entities: `Supplement`, `Source`, `Topic`, `Claim` (Pydantic + loader + validator + CLI)
+- Read CLI: `validate`, `list`, `show <slug>`, `sources`, `show-source <id>`, `topics`, `show-topic <slug>`, `claims`, `show-claim <slug>`
+- Pipeline CLI: `ingest <path>`, `review [batch]`, `approve <batch> [--only ENTITY/SLUG] [--update]`, `reject <batch> [--only ENTITY/SLUG]`, `audit -n N`
+- Cross-ref validation across all four entities: supplement→source/topic/claim, topic→source/related-topic, claim→source/topic/supplement
+- Pipeline architecture:
+  - `fmdb/ingest/loaders.py` — file → text (md/txt working; pdf/video/html stubs)
+  - `fmdb/ingest/extractor.py` — `Extractor` Protocol with `StubExtractor` and `AnthropicExtractor` (tool-use, prompt cache on system + schema)
+  - `fmdb/ingest/staging.py` — enrich extractor output with lifecycle fields, validate against Pydantic, write to `data/staging/<batch_id>/<entity>/<slug>.yaml`, mark new/conflict/rejected
+  - `fmdb/ingest/audit.py` — append-only JSONL at `data/_audit.jsonl`
+- Pipeline guarantees: source-first (auto-registers Source candidate from CLI metadata), Pydantic-validated before staging, conflict-safe (refuses overwrite without `--update`, bumps `version` on update), post-approval re-validation
+- Env: `FMDB_EXTRACTOR=stub|anthropic`, `FMDB_EXTRACTOR_MODEL`, `ANTHROPIC_API_KEY`, `FMDB_USER`
+- Seed entries unchanged from v0.4
+- `data/staging/` and `data/_audit.jsonl` gitignored
+
+**Next:** Wire a real ingest run against the vitaone evidence_tiers.md to seed ~10-20 claims + supplements; then PDF + transcript loaders; then plan schema + publishing flow.
 
 ## Architecture (Locked)
 

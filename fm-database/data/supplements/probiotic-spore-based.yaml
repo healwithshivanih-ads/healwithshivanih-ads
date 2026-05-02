@@ -1,0 +1,30 @@
+slug: probiotic-spore-based
+display_name: Probiotic (Spore-Based)
+category: probiotic
+forms_available:
+- capsule
+typical_dose_range:
+  capsule:
+    min: 4
+    max: 10
+    unit: tablets
+timing_options:
+- on_empty_stomach
+- morning
+take_with_food: avoid
+notes_for_coach: Spore-based strains (e.g. Bacillus coagulans) are heat-stable and
+  survive stomach acid; useful for SIBO, IBS, and immune support.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Probiotic (Spore-based) - Gut health, microbiome balance - 4-10 billion CFU/day
+    - Empty stomach or before meal
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

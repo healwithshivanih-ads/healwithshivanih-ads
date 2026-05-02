@@ -1,0 +1,45 @@
+slug: estrogen-enterohepatic-recirculation
+display_name: Estrogen Enterohepatic Recirculation (Estrobolome)
+aliases:
+  - estrogen-enterohepatic-circulation
+  - enterohepatic-estrogen-recirculation
+  - estrobolome-activity
+  - beta-glucuronidase-activity
+  - phase-3-estrogen-detoxification
+category: endocrine
+summary: |
+  After phase 2 conjugation in the liver, estrogen metabolites are excreted
+  via bile into the gut. The estrobolome — gut bacteria expressing
+  beta-glucuronidase — can deconjugate these metabolites in the colon,
+  releasing free estrogen for reabsorption into circulation. Healthy
+  estrobolome + regular bowel transit = appropriate estrogen clearance.
+  Dysbiotic estrobolome + constipation = excess estrogen recycling, which
+  can contribute to estrogen-dominant symptoms even with low circulating
+  estrogen levels in menopause.
+upstream_drivers:
+  - dysbiosis (overgrowth of beta-glucuronidase-producing species)
+  - low fiber intake (slow transit, less binding)
+  - constipation
+  - antibiotic disruption
+downstream_effects:
+  - excess estrogen reabsorption
+  - estrogen-dominant symptoms (breast tenderness, weight retention)
+  - amplification of environmental estrogen load
+  - altered estrogen metabolite ratios
+related_mechanisms:
+  - microbial-diversity-decline
+  - leaky-gut
+  - estrogen-decline
+linked_to_topics:
+  - estrobolome
+  - perimenopause
+  - microbiome
+  - dysbiosis
+sources:
+  - id: thurlow-microbiome-session-3
+    location: Session 3 — Estrobolome & Estrogen Metabolism
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

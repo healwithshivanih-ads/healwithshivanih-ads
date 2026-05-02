@@ -1,0 +1,33 @@
+slug: chronic-stress-and-elevated-cortisol-worsen-insulin-resistance
+statement: Chronically elevated cortisol from ongoing stress breaks down muscle (catabolism),
+  weakens the gut lining (contributing to leaky gut), raises glucose, raises insulin,
+  and promotes fat storage — all worsening insulin resistance.
+evidence_tier: strong
+rationale: The HPA-axis driven effects of cortisol on muscle catabolism, intestinal
+  permeability, glucose homeostasis, and insulin dynamics are well-established in
+  endocrinology and physiology literature.
+coaching_translation: Chronic stress isn't just emotionally draining — it physiologically
+  raises your blood sugar, breaks down muscle, and makes your gut leakier. Stress
+  management is a legitimate metabolic intervention.
+caveats:
+- The degree to which stress-management interventions can reverse these effects requires
+  individualized assessment.
+linked_to_topics:
+- midlife-weight-gain
+- insulin-resistance
+- microbiome
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-4
+  location: Session 4 — Stress, Cortisol, and Weight
+  quote: We know over time if cortisol is elevated, you will break down muscle that's
+    called catabolism. You will weaken the gut lining, which will contribute to leaky
+    gut, you will lessen your ability to fight off infection. It also influences fat
+    storage. When cortisol goes up, so does glucose, so does insulin, you will store
+    fat.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

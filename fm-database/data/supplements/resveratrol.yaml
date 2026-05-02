@@ -1,0 +1,37 @@
+slug: resveratrol
+display_name: Resveratrol
+category: other
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 100
+    max: 300
+    unit: mg
+  tablet:
+    min: 100
+    max: 300
+    unit: mg
+timing_options:
+- morning
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: optional
+notes_for_coach: Polyphenol antioxidant with anti-aging and cardiovascular benefits;
+  fat-soluble, so absorption may be improved with food.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 3 - Supplement Table
+  quote: Resveratrol - Anti-aging, antioxidant - 100–300 mg/day - Morning or with
+    meals
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

@@ -1,0 +1,29 @@
+slug: poor-sleep-negatively-impacts-estrobolome-health
+statement: Chronic sleep deprivation impairs estrobolome health and overall gut microbiome
+  function.
+evidence_tier: plausible_emerging
+rationale: Sleep disruption is associated with gut microbiome alterations in published
+  research. The specific estrobolome impact is a logical extension stated by the expert
+  but not independently cited with a study. Single-expert source.
+coaching_translation: Poor sleep doesn't just leave you feeling tired — it also undermines
+  the gut bacteria responsible for processing estrogen, creating a compounding effect
+  on hormonal symptoms.
+caveats:
+- Single-expert source.
+- Direct estrobolome-specific sleep research not cited in document.
+linked_to_topics:
+- estrobolome
+- microbiome
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-3
+  location: Lifestyle Factors — Sleep
+  quote: We know sleep patterns interrupt the estrobolome's health. So think about
+    it, if you're chronically sleep deprived, that's not helping your estrobolome
+    or your health.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

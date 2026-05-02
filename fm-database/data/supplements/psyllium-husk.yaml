@@ -1,0 +1,38 @@
+slug: psyllium-husk
+display_name: Psyllium Husk
+category: other
+forms_available:
+- capsule
+- powder
+- whole_food
+typical_dose_range: {}
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+- morning
+take_with_food: optional
+linked_to_topics:
+- fiber-gap
+- microbiome
+linked_to_claims:
+- psyllium-husk-best-tolerated-fiber-supplement
+- flax-and-chia-combo-gentle-constipation-support
+notes_for_coach: Speaker recommends organic psyllium husk as the simplest and best-tolerated
+  fiber supplement option. Powder form preferred as it is already broken down. Must
+  always be taken with ample water to avoid choking/obstruction risk.
+notes_for_client: Psyllium husk powder is a gentle way to boost your daily fiber.
+  Start with a small amount (around 5 g) mixed into water or a smoothie, and always
+  drink plenty of fluids with it.
+evidence_tier: fm_specific_thin
+linked_to_mechanisms: []
+sources:
+- id: thurlow-microbiome-session-7
+  location: Q&A — psyllium vs guar gum [00:27:56]
+  quote: If I were to pick one, I would probably say psyllium husk, especially if
+    it's organic or you know that it's been well sourced because it tends to be pretty
+    simple.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

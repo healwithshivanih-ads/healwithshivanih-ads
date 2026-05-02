@@ -1,0 +1,31 @@
+slug: greater-microbiome-diversity-means-more-insulin-sensitivity
+statement: Greater microbial diversity is associated with greater metabolic resilience,
+  including the ability to use both stored fat and carbohydrates for fuel, and improved
+  insulin sensitivity.
+evidence_tier: plausible_emerging
+rationale: Consistent with published associations between alpha-diversity and metabolic
+  markers, but mechanistic consensus and interventional data in perimenopausal women
+  are still emerging.
+coaching_translation: A diverse gut microbiome acts like a more flexible metabolic
+  engine — women with higher diversity tend to handle blood sugar fluctuations and
+  fuel switching better.
+caveats:
+- Association does not establish causation.
+- Single-expert source; no specific study cited.
+linked_to_topics:
+- microbiome
+- insulin-resistance
+- midlife-weight-gain
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-4
+  location: Session 4 — Microbial Diversity and Metabolic Health
+  quote: More diversity in the microbiome is better. It means we are more metabolically
+    resilient. It means we are very likely able to use both stored fat and stored
+    carbohydrates for fuel. We are also more insulin sensitive.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

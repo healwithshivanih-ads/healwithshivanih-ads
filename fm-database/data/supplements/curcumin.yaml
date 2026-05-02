@@ -1,0 +1,47 @@
+slug: curcumin
+display_name: Curcumin (with Piperine)
+category: herb
+forms_available:
+- capsule
+- tablet
+- powder
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 1000
+    unit: mg
+  tablet:
+    min: 500
+    max: 1000
+    unit: mg
+  powder:
+    min: 500
+    max: 2000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics: []
+linked_to_claims: []
+notes_for_coach: Fat-soluble; always pair with piperine (black pepper extract) or
+  phospholipid complex for bioavailability; key anti-inflammatory for joint pain and
+  immune support.
+notes_for_client: Look for curcumin products that specify enhanced absorption (e.g.,
+  'with piperine,' 'BCM-95,' or 'Meriva'). Standard turmeric powder has very low absorption.
+  Take with a meal.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-practice-guide
+  location: Seven Clinical Focus Areas > 6. Autoimmune Conditions > Coaching interventions
+  quote: 'Specific supplements: Curcumin, omega-3s, vitamin D'
+- id: vitaone-supplementation-dosage
+  location: Page 3 - Supplement Table
+  quote: Curcumin (with Piperine) - Anti-inflammatory, antioxidant - 500–1000 mg/day
+    - With fat-containing meals
+version: 2
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

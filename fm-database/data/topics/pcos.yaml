@@ -1,0 +1,46 @@
+slug: pcos
+display_name: PCOS / PCOD
+aliases:
+  - pcod
+  - polycystic-ovary-syndrome
+  - polycystic-ovarian-syndrome
+summary: |
+  Polycystic ovary syndrome — a metabolic-endocrine condition with three
+  recognized phenotypes (insulin-resistant, inflammatory, post-pill,
+  adrenal). FM lens treats insulin resistance and androgen excess as the
+  primary axes; presentation includes irregular cycles, acne, hirsutism,
+  weight gain, infertility.
+common_symptoms:
+  - irregular or absent cycles
+  - hormonal acne (jawline, chin)
+  - hirsutism (face, chest, abdomen)
+  - scalp hair thinning
+  - difficulty losing weight
+  - sugar / carb cravings
+  - infertility / anovulation
+red_flags:
+  - severely irregular bleeding requiring GYN evaluation
+  - suspected endometrial hyperplasia (long anovulatory periods)
+  - signs of true virilization (refer endocrinology)
+related_topics:
+  - perimenopause
+key_mechanisms:
+  - insulin-resistance
+  - androgen-excess
+  - chronic-inflammation
+  - hpa-axis-dysregulation
+coaching_scope_notes: |
+  Low-glycemic nutrition, resistance training, inositol / NAC / magnesium,
+  sleep, stress reduction, omega-3s. Coach can run a 12-week PCOS
+  reversal protocol.
+clinician_scope_notes: |
+  Diagnosis (Rotterdam criteria), metformin / GLP-1 / spironolactone,
+  fertility workup are clinician-only.
+sources:
+  - id: vitaone-skill-practice-guide
+    location: practice_guide.md, PCOS section
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-04-28
+updated_by: shivani

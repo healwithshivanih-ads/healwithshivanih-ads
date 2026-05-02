@@ -1,0 +1,36 @@
+slug: midlife-weight-gain-is-not-simply-calories-in-calories-out
+statement: Midlife weight gain in women is not simply a matter of caloric excess;
+  it involves at least 15–20 interacting factors including hormonal shifts, microbiome
+  changes, stress physiology, sleep disruption, impaired mitochondrial fat oxidation,
+  and inflammation.
+evidence_tier: plausible_emerging
+rationale: The multifactorial nature of midlife weight gain is supported across multiple
+  streams of research. The specific enumeration and weighting of 15–20 factors reflects
+  expert synthesis rather than any single trial, hence plausible_emerging rather than
+  strong.
+coaching_translation: If you're doing everything 'right' and still gaining weight
+  in midlife, that's not a personal failure — it reflects a genuine physiological
+  complexity. A deeper investigation (labs, stool testing, stress load, hormone optimization)
+  is warranted.
+caveats:
+- Framing of '15–20 factors' is speaker's synthesis, not a published model.
+- Source is expert-consensus transcript.
+linked_to_topics:
+- midlife-weight-gain
+- perimenopause
+- insulin-resistance
+- microbiome
+- visceral-adiposity
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-4
+  location: 'Session 4 — Q&A: Hysterectomy and Weight Resistance'
+  quote: It is absolutely not calories in calories out as the absolute only thing.
+    Cynthia's listed off probably 15, 20 things. And I added two more just to let
+    you know this is what happens and it can happen in midlife.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

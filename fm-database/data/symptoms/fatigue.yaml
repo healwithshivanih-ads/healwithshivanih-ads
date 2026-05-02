@@ -1,0 +1,45 @@
+slug: fatigue
+display_name: Fatigue
+aliases:
+- low-energy
+- tiredness
+- exhaustion
+- chronic-fatigue
+- persistent-fatigue
+- feeling-drained
+- low energy
+- persistent fatigue
+- chronic fatigue
+category: constitutional
+severity: common
+description: 'Persistent low energy disproportionate to activity, not relieved by
+
+  sleep. FM workup considers thyroid, ferritin, B12, vitamin D, sleep
+
+  apnea, HPA dysregulation, blood sugar, mitochondrial function,
+
+  chronic inflammation, and depression.
+
+  '
+when_to_refer: 'Severe / unrelenting fatigue; with weight loss; with low-grade fever;
+
+  with new neurological symptoms; if interfering with daily life or
+
+  associated with low mood / suicidality.
+
+  '
+linked_to_topics:
+- perimenopause
+- thyroid
+- inflammation
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- chronic-inflammation
+- insulin-resistance
+sources:
+- id: vitaone-skill-practice-guide
+  location: practice_guide.md, Fatigue cluster
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

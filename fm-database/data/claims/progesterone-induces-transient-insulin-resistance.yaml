@@ -1,0 +1,40 @@
+slug: progesterone-induces-transient-insulin-resistance
+statement: Progesterone — both endogenous (in the luteal phase) and exogenous (HRT)
+  — causes a physiological state of mild insulin resistance by diverting glucose availability,
+  and excess progesterone dosing can push susceptible women into clinically significant
+  insulin resistance with water retention and fat storage.
+evidence_tier: plausible_emerging
+rationale: Progesterone's insulin-antagonizing effects are documented in endocrinology
+  literature, particularly in luteal phase and pregnancy physiology. The extrapolation
+  to oral progesterone HRT dosing and its metabolic effects is clinically observed
+  but lacks large RCT confirmation across perimenopausal populations.
+coaching_translation: Even 'good' hormones like progesterone can tip the metabolic
+  balance if the dose isn't right. Water retention, breast tenderness, and abdominal
+  weight gain after starting HRT may signal that progesterone dose needs clinician
+  review.
+out_of_scope_notes: Progesterone dosing adjustments are strictly clinician territory.
+  Coaches should recognize symptoms (puffiness, ring tightness, breast heaviness)
+  as a referral cue.
+caveats:
+- Dose example given by Dr. Jones (300–400 mg oral progesterone causing problems,
+  reduced to 100–200 mg with improvement) is a single clinical anecdote.
+- Source is expert-consensus transcript, not primary literature.
+- Verify with clinician before any dose interpretation.
+linked_to_topics:
+- perimenopause
+- insulin-resistance
+- midlife-weight-gain
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-4
+  location: 'Session 4 — Q&A: HRT and Weight Gain'
+  quote: Progesterone, we need, but it also makes us women slightly insulin resistant.
+    And then we go on progesterone, and if somebody's already a little tipped into
+    the insulin resistant part, depending on the dose you go on, it can push you more
+    into insulin resistance, shifted the water, shifted electrolytes, shifted how
+    you manage water retention and you get puffy.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

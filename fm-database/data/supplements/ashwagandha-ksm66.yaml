@@ -1,0 +1,34 @@
+slug: ashwagandha-ksm66
+display_name: Ashwagandha (KSM-66)
+category: herb
+forms_available:
+- capsule
+- powder
+typical_dose_range:
+  capsule:
+    min: 300
+    max: 600
+    unit: mg
+  powder:
+    min: 300
+    max: 600
+    unit: mg
+timing_options:
+- morning
+take_with_food: optional
+notes_for_coach: KSM-66 standardised extract; commonly used for adrenal fatigue, thyroid
+  support, and anxiety; verify appropriateness for hypothyroid clients with clinician.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Ashwagandha (KSM-66) - Stress resilience, adrenal support - 300–600 mg/day
+    - Morning
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

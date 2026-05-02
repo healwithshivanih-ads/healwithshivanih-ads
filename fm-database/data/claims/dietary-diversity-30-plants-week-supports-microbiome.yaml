@@ -1,0 +1,29 @@
+slug: dietary-diversity-30-plants-week-supports-microbiome
+statement: Eating approximately 30 different plant species per week supports gut microbiome
+  diversity and overall gut-brain health.
+evidence_tier: plausible_emerging
+rationale: The '30 plants per week' guideline originates from the American Gut Project
+  (McDonald et al., 2018, mSystems) — a legitimate peer-reviewed source — though the
+  speaker does not cite it directly, referencing Dr. Robyn Chutkan instead. This is
+  the strongest diet-diversity claim in the document.
+coaching_translation: Aim for variety over perfection — trying to eat 30 different
+  plant foods each week (including herbs, spices, legumes, fruits, and vegetables)
+  measurably improves your gut microbiome.
+caveats:
+- Speaker references Dr. Robyn Chutkan but does not cite the underlying study directly.
+- 30-plant target is a practical heuristic, not a rigid clinical threshold.
+linked_to_topics:
+- microbiome
+- gut-brain-axis
+- dysbiosis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-5
+  location: Dietary Diversity section
+  quote: Talking about 30 plant species a week. We really want diversity in our diet.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

@@ -1,0 +1,29 @@
+slug: gut-produces-more-neurotransmitters-than-brain
+statement: The gut microbiome produces more neurotransmitters (including serotonin,
+  GABA, and dopamine) than the brain itself.
+evidence_tier: plausible_emerging
+rationale: Well-supported for serotonin (~90–95% produced in gut enterochromaffin
+  cells), but the broader claim for all neurotransmitters is a common FM simplification;
+  single-expert source without primary citation.
+coaching_translation: Most of your 'mood chemicals' actually originate in your gut
+  — which is why gut health is foundational for emotional wellbeing.
+caveats:
+- Source is expert consensus/synthesis; no specific RCT cited. Serotonin gut-production
+  is well-established; GABA and dopamine gut production is plausible but extent debated.
+- Single-expert source rule applies.
+linked_to_topics:
+- gut-brain-axis
+- microbiome
+- anxiety
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-5
+  location: Gut-Brain Axis section
+  quote: We know that we produce more neurotransmitters in our gut microbiome than
+    we actually do in our brain.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

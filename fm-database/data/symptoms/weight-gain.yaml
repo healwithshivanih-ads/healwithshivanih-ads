@@ -1,0 +1,44 @@
+slug: weight-gain
+display_name: Weight Gain (Midlife / Abdominal)
+aliases:
+- weight gain
+- midlife-weight-gain
+- abdominal-weight-gain
+- belly-fat
+- abdominal-spare-tire
+- weight-gain-around-the-middle
+- meno-belly
+- abdominal weight gain
+- weight gain (especially abdominal)
+- central weight gain
+category: metabolic
+severity: common
+description: 'Unexplained or disproportionate weight gain — especially central /
+
+  visceral — common in perimenopause and menopause. Driven by declining
+
+  estrogen, insulin resistance, sleep disruption, cortisol shifts,
+
+  and reduced muscle mass. Often resistant to caloric restriction alone.
+
+  '
+when_to_refer: 'Rapid (>5% body weight in <6 months) without lifestyle change; with
+
+  edema, dyspnea, or facial fullness (rule out cardiac, renal, Cushing).
+
+  '
+linked_to_topics:
+- perimenopause
+- pcos
+- inflammation
+linked_to_mechanisms:
+- insulin-resistance
+- estrogen-decline
+- hpa-axis-dysregulation
+sources:
+- id: thurlow-microbiome-session-4
+  location: Session 4 — Midlife Weight Gain & Metabolic Shifts
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

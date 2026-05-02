@@ -1,0 +1,35 @@
+slug: holy-basil
+display_name: Holy Basil (Tulsi)
+category: herb
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 300
+    max: 600
+    unit: mg
+  tablet:
+    min: 300
+    max: 600
+    unit: mg
+timing_options:
+- morning
+- mid_morning
+take_with_food: optional
+notes_for_coach: Adaptogen supporting stress, blood sugar, and inflammation; avoid
+  late-day dosing as it may be mildly stimulating.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 3 - Supplement Table
+  quote: Holy Basil (Tulsi) - Adaptogen, stress reduction - 300–600 mg/day - Morning
+    or midday
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

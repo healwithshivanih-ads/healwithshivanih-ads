@@ -1,0 +1,34 @@
+slug: estrobolome-regulates-estrogen-recycling-via-beta-glucuronidase
+statement: The estrobolome — a specialized collection of gut bacteria — regulates
+  estrogen recycling via the enzyme beta-glucuronidase, which cleaves conjugated estrogen
+  in the gut, determining whether it is excreted or reabsorbed into circulation.
+evidence_tier: plausible_emerging
+rationale: The estrobolome concept is supported by credible mechanistic research showing
+  that gut bacteria express beta-glucuronidase, which deconjugates estrogen metabolites
+  in the colon, enabling their reabsorption. This is a plausible and increasingly
+  recognized mechanism, though clinical trials demonstrating direct therapeutic implications
+  are still emerging.
+coaching_translation: Your gut bacteria play a direct role in deciding whether your
+  body eliminates excess estrogen or recycles it. An imbalanced gut means more estrogen
+  gets recycled — which can cause symptoms even when your blood estrogen looks low.
+caveats:
+- Source is expert course content, not primary literature.
+- Clinical significance of estrobolome modulation as a therapeutic target requires
+  more RCT evidence.
+linked_to_topics:
+- estrobolome
+- gut-hormone-axis
+- microbiome
+- perimenopause
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-mondays
+  location: 'Session 1: Microbiome Foundations and Hormone Shifts'
+  quote: in the estrobolome, we have these special bacteria that actually help determine
+    whether or not we can package up and poop out our extra estrogen.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

@@ -1,0 +1,40 @@
+slug: motility
+display_name: GI Motility Changes in Perimenopause
+aliases:
+- gut transit time
+- smooth muscle contractility
+- bowel motility
+summary: GI motility — the rate at which food moves through the digestive tract —
+  is regulated in part by estrogen and progesterone. Declining levels of both hormones
+  in perimenopause alter smooth muscle contractility and transit time, producing either
+  constipation or loose stools depending on the individual.
+common_symptoms:
+- constipation
+- loose stools
+- alternating bowel habits
+- bloating
+- IBS-like symptoms
+related_topics:
+- constipation
+- dysbiosis
+- gut-hormone-axis
+- perimenopause
+key_mechanisms:
+- smooth-muscle-contractility-decline
+- progesterone-decline
+- estrogen-decline
+coaching_scope_notes: Coaches can support motility through fiber guidance, hydration,
+  stress regulation, and meal-pacing strategies.
+clinician_scope_notes: Significant motility disorders or IBS diagnoses should be managed
+  with a gastroenterologist or functional medicine clinician.
+evidence_tier: plausible_emerging
+red_flags: []
+sources:
+- id: thurlow-microbiome-session-6
+  location: Session 6 — Main Transcript, Motility Section
+  quote: I typically see women that get alterations in smooth muscle contractility,
+    that is both a function of progesterone and estrogen.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

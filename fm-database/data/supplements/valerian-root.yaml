@@ -1,0 +1,34 @@
+slug: valerian-root
+display_name: Valerian Root
+category: herb
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 300
+    max: 600
+    unit: mg
+  tablet:
+    min: 300
+    max: 600
+    unit: mg
+timing_options:
+- bedtime
+take_with_food: optional
+notes_for_coach: Take 30–60 min before bed; useful for insomnia and anxiety; effects
+  may build over 1–2 weeks of consistent use.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 3 - Supplement Table
+  quote: Valerian Root - Sleep aid, relaxation - 300–600 mg/day - 30–60 minutes before
+    bed
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

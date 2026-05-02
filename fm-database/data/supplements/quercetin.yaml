@@ -1,0 +1,35 @@
+slug: quercetin
+display_name: Quercetin
+category: other
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 250
+    max: 500
+    unit: mg
+  tablet:
+    min: 250
+    max: 500
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+notes_for_coach: Mast cell stabiliser with antioxidant and anti-inflammatory properties;
+  useful for allergies, histamine intolerance, and chronic inflammation.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: Quercetin - Antioxidant, mast cell stabilizer - 250–500 mg/day - With meals
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

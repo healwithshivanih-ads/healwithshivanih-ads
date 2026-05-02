@@ -1,0 +1,32 @@
+slug: declining-estradiol-reduces-microbial-diversity-in-midlife
+statement: The decline and fluctuation of estradiol during perimenopause and menopause
+  reduces gut microbial diversity and increases systemic inflammation, worsening metabolic
+  health.
+evidence_tier: plausible_emerging
+rationale: Observational data supports associations between menopausal estrogen decline
+  and reduced microbial diversity; however, causality and magnitude are not established
+  by RCT. Expert framing is consistent with published associations. Single-expert
+  source.
+coaching_translation: As estrogen drops during the menopause transition, the variety
+  of beneficial bacteria in your gut tends to shrink — which can fan the flames of
+  inflammation and make weight management harder.
+caveats:
+- Single-expert source.
+- Observational associations do not confirm causality.
+linked_to_topics:
+- estrobolome
+- perimenopause
+- microbiome
+- dysbiosis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-3
+  location: What Changes to the Estrobolome in Midlife
+  quote: The shift in estrogen or estradiol reduces microbial diversity, increases
+    inflammation, and we become less metabolically healthy.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

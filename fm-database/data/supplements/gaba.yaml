@@ -1,0 +1,38 @@
+slug: gaba
+display_name: GABA
+category: amino_acid
+forms_available:
+- capsule
+- tablet
+- powder
+typical_dose_range:
+  capsule:
+    min: 100
+    max: 500
+    unit: mg
+  tablet:
+    min: 100
+    max: 500
+    unit: mg
+  powder:
+    min: 100
+    max: 500
+    unit: mg
+timing_options:
+- evening
+take_with_food: optional
+notes_for_coach: Oral GABA has limited BBB permeability; may act via enteric nervous
+  system or peripherally; useful for stress and sleep at lower doses.
+evidence_tier: fm_specific_thin
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 3 - Supplement Table
+  quote: GABA - Calming neurotransmitter - 100–500 mg/day - Evening or during anxiety
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

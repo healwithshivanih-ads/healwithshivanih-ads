@@ -1,0 +1,30 @@
+slug: hcl-decline-impairs-protein-digestion-in-midlife
+statement: Hydrochloric acid production declines with age and hormonal changes, impairing
+  the breakdown of amino acids and protein — a key contributor to bloating and heaviness
+  after protein-rich meals.
+evidence_tier: plausible_emerging
+rationale: Single-expert source. Age-related hypochlorhydria is documented in the
+  literature; the specific link to perimenopause hormonal changes is plausible but
+  not strongly evidenced by RCTs.
+coaching_translation: If you feel heavy or bloated after eating protein, your stomach
+  acid may be lower than optimal — a common change as we age and hormones shift.
+out_of_scope_notes: HCL supplementation dosing and testing are clinician scope.
+caveats:
+- Single-expert source.
+- HCL supplementation should be guided by a clinician — contraindicated in some GI
+  conditions.
+linked_to_topics:
+- dyspepsia
+- perimenopause
+linked_to_supplements:
+- digestive-enzymes
+linked_to_mechanisms: []
+sources:
+- id: thurlow-microbiome-session-6
+  location: Session 6 — Main Transcript, Digestive Enzyme Section
+  quote: It's important to note that we've talked a lot about how hydrochloric acid
+    can decline, which makes it harder for our bodies to break down amino acids.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

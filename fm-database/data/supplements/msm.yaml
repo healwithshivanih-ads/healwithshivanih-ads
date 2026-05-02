@@ -1,0 +1,41 @@
+slug: msm
+display_name: MSM (Methylsulfonylmethane)
+category: other
+forms_available:
+- capsule
+- powder
+- tablet
+typical_dose_range:
+  capsule:
+    min: 1000
+    max: 3000
+    unit: mg
+  powder:
+    min: 1000
+    max: 3000
+    unit: mg
+  tablet:
+    min: 1000
+    max: 3000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+notes_for_coach: Bioavailable sulfur compound for joint support, detox, and pain;
+  commonly used in arthritis and connective tissue protocols.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 3 - Supplement Table
+  quote: MSM (Methylsulfonylmethane) - Joint pain, inflammation - 1000–3000 mg/day
+    - With meals
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

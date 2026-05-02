@@ -1,0 +1,48 @@
+slug: insulin-resistance
+display_name: Insulin Resistance
+aliases:
+- impaired insulin sensitivity
+- blood sugar dysregulation
+- glucose metabolism impairment
+summary: 'Insulin resistance in midlife women arises from interacting causes: microbiome
+  dysbiosis altering insulin signaling in the gut, declining estrogen (an insulin-sensitizing
+  hormone), elevated cortisol from chronic stress, poor sleep, and excess progesterone
+  dosing. It drives fat storage, particularly visceral, and creates a feedback loop
+  with inflammation.'
+common_symptoms:
+- post-meal energy crashes
+- carbohydrate sensitivity
+- weight gain around abdomen
+- sugar cravings
+- bloating
+- water retention
+red_flags:
+- fasting glucose trends toward pre-diabetes
+- worsening metabolic markers despite lifestyle changes
+related_topics:
+- midlife-weight-gain
+- perimenopause
+- visceral-adiposity
+- microbiome
+- gut-hormone-axis
+- pcos
+key_mechanisms:
+- microbiome-dysbiosis
+- estrogen-decline
+- cortisol-elevation
+- progesterone-excess
+coaching_scope_notes: Coaches can support fiber intake, sleep hygiene, stress reduction,
+  and movement — all of which improve insulin sensitivity. Avoid interpreting lab
+  values.
+clinician_scope_notes: Progesterone dosing, HRT type and route, and GLP-1 agonists
+  are relevant clinical levers. Monitor fasting glucose, insulin, and HOMA-IR.
+evidence_tier: strong
+sources:
+- id: thurlow-microbiome-session-4
+  location: Session 4 — Estrogen, Hormones, and the Microbiome
+  quote: We know that estrogen is an insulin-sensitizing hormone. We know that it
+    influences fat storage patterns.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

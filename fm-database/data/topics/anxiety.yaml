@@ -1,0 +1,44 @@
+slug: anxiety
+display_name: Anxiety / Nervous System Dysregulation
+aliases:
+  - generalized-anxiety
+  - nervous-system-dysregulation
+  - stress-response
+summary: |
+  Persistent worry, hypervigilance, somatic anxiety symptoms. FM lens
+  emphasizes vagal tone, HPA-axis dysregulation, blood sugar swings,
+  magnesium / B6 insufficiency, gut-brain axis, and (in women 35+) low
+  progesterone driving GABAergic withdrawal.
+common_symptoms:
+  - racing thoughts
+  - chest tightness / shortness of breath
+  - tension headaches
+  - GI symptoms tied to stress
+  - sleep-onset insomnia
+red_flags:
+  - panic attacks with chest pain mimicking cardiac event (rule out cardiac)
+  - suicidal ideation
+  - active trauma symptoms requiring therapeutic processing
+  - substance use as primary coping
+related_topics:
+  - insomnia
+  - perimenopause
+key_mechanisms:
+  - hpa-axis-dysregulation
+  - low-vagal-tone
+  - low-progesterone
+  - blood-sugar-instability
+coaching_scope_notes: |
+  Breathwork, vagal exercises, somatic practices, magnesium/glycine,
+  caffeine reduction, blood-sugar stabilization, journaling.
+clinician_scope_notes: |
+  Diagnosed anxiety disorders, medication management, trauma therapy,
+  and panic disorder evaluation are out of coaching scope.
+sources:
+  - id: vitaone-skill-practice-guide
+    location: practice_guide.md, Nervous System section
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-04-28
+updated_by: shivani

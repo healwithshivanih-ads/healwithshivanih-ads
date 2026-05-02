@@ -1,0 +1,74 @@
+slug: vitamin-d
+display_name: Vitamin D3 + K2
+category: vitamin
+forms_available:
+- capsule
+- tablet
+- liquid
+typical_dose_range:
+  capsule:
+    min: 2000
+    max: 5000
+    unit: IU
+  tablet:
+    min: 2000
+    max: 5000
+    unit: IU
+timing_options:
+- with_breakfast
+- with_lunch
+- morning
+- mid_afternoon
+- with_dinner
+take_with_food: required
+contraindications:
+  conditions: []
+  medications: []
+  life_stages: []
+interactions:
+  with_supplements:
+  - slug: vitamin-a
+    type: take_together
+    reason: 'Vitamin A (retinoic acid) is the obligate RXR heterodimer partner for
+
+      the Vitamin D receptor (VDR). Adequate vitamin A status improves
+
+      downstream Vitamin D signaling.
+
+      '
+  with_foods: []
+  with_medications: []
+linked_to_topics:
+- autoimmune
+- inflammation
+- thyroid
+- pcos
+linked_to_mechanisms:
+- vdr-rxr-heterodimer-signaling
+- immune-modulation
+linked_to_claims:
+- vitamin-a-rxr-permission-slip-for-thyroid-and-vitamin-d-signaling
+notes_for_coach: Base foundational supplement recommended for every function; always
+  pair D3 with K2 for calcium metabolism support.
+notes_for_client: 'Daily sun exposure (10-30 minutes midday on bare skin) supports
+  vitamin D.
+
+  In winter, low-latitude residence, or with darker skin tones, your clinician
+
+  may recommend supplementation after checking your blood level.
+
+  '
+sources:
+- id: vitaone-evidence-tiers
+  location: TOPIC 3 — PCOS / Claim 4 (Vitamin D range debate)
+- id: vitaone-practice-guide
+  location: Autoimmune & Inflammation sections
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Vitamin D3 + K2 - Bone health, immune support, hormone balance - 2000–5000
+    IU/day - Morning or afternoon with meal or small meal
+evidence_tier: plausible_emerging
+version: 2
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

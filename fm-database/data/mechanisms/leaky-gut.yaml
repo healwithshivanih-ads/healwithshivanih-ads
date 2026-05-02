@@ -1,0 +1,52 @@
+slug: leaky-gut
+display_name: Leaky Gut (Intestinal Hyperpermeability)
+aliases:
+  - intestinal-permeability
+  - leaky-gut-intestinal-hyperpermeability
+  - gut-barrier-permeability
+  - gut-barrier-dysfunction
+  - gut-barrier-integrity
+  - tight-junction-disruption
+  - estrogen-driven-gut-barrier-integrity
+  - mucin-layer-support
+category: gut
+summary: |
+  Compromised integrity of the single-cell-thick small-intestinal lining,
+  with disruption of tight-junction proteins (zonulin upregulation, occludin
+  downregulation), allowing larger food particles, bacterial fragments
+  (LPS), and antigens to cross into the bloodstream and trigger systemic
+  immune activation. A core upstream driver in FM models of autoimmunity,
+  chronic inflammation, perimenopausal symptoms, and food sensitivities.
+upstream_drivers:
+  - dysbiosis (loss of beneficial species)
+  - chronic stress / cortisol elevation
+  - declining estrogen (perimenopause)
+  - NSAID and alcohol use
+  - gluten exposure (in susceptible individuals)
+  - low SCFA production
+downstream_effects:
+  - food sensitivities
+  - autoimmune flare risk
+  - systemic low-grade inflammation
+  - estrogen-immune dysregulation
+  - brain fog (LPS crossing BBB)
+related_mechanisms:
+  - hpa-axis-dysregulation
+  - microbial-diversity-decline
+  - chronic-inflammation
+linked_to_topics:
+  - autoimmune
+  - inflammation
+  - perimenopause
+  - dysbiosis
+  - microbiome
+sources:
+  - id: vitaone-skill-practice-guide
+    location: practice_guide.md, Gut & Inflammation sections
+  - id: thurlow-microbiome-mondays
+    location: Session 1 + Session 2 — gut barrier discussion
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

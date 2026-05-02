@@ -1,0 +1,30 @@
+slug: perimenopause-reduces-stress-resilience-via-progesterone-gaba
+statement: The perimenopause transition reduces stress resilience because declining
+  progesterone lowers GABA activity, narrowing the body's stress-response bandwidth.
+evidence_tier: plausible_emerging
+rationale: Progesterone's metabolite allopregnanolone is a positive GABA-A modulator;
+  its decline in perimenopause is a plausible mechanism for reduced GABAergic inhibition
+  and increased anxiety. Well-accepted in FM; emerging in conventional literature.
+coaching_translation: In perimenopause, your natural 'calm-down' system (GABA) loses
+  support as progesterone falls — meaning stress hits harder and recovery takes longer.
+caveats:
+- Mechanism is plausible and increasingly accepted but individual variation is high.
+- Single-expert source.
+linked_to_topics:
+- perimenopause
+- anxiety
+- gut-brain-axis
+- gut-hormone-axis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-5
+  location: Perimenopause and Stress Resilience section
+  quote: We are much less stress resilient and that has a lot to do with these changes
+    in progesterone and GABA and other neurotransmitters as well as fluctuations in
+    estrogen.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

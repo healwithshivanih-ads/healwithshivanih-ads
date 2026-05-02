@@ -1,0 +1,48 @@
+slug: dysbiosis
+display_name: Gut Dysbiosis
+aliases:
+- microbial imbalance
+- microbiome dysbiosis
+summary: Dysbiosis refers to an imbalance in the gut microbiome characterized by a
+  reduction in beneficial bacterial species and an overgrowth of inflammatory or opportunistic
+  organisms. It is common in perimenopause and menopause due to declining estrogen,
+  and is associated with increased intestinal permeability, systemic inflammation,
+  impaired estrogen metabolism, food sensitivities, and autoimmune risk.
+common_symptoms:
+- bloating
+- constipation or loose stools
+- food sensitivities
+- fatigue
+- brain fog
+- weight gain
+- skin issues
+red_flags:
+- Severe or persistent dysbiosis with opportunistic pathogens — requires clinician
+  management
+related_topics:
+- microbiome
+- gut-hormone-axis
+- perimenopause
+- autoimmune
+- inflammation
+key_mechanisms:
+- microbial-diversity-decline
+- leaky-gut-intestinal-hyperpermeability
+- inflammatory-cytokine-signaling
+coaching_scope_notes: 'Coaches can support microbiome rebalancing through food-first
+  strategies: fermented foods, prebiotic-rich vegetables, fiber diversity, sleep,
+  stress reduction. Probiotic supplementation is best guided by stool testing.'
+clinician_scope_notes: GI-MAP or similar stool tests can identify specific dysbiotic
+  organisms (e.g., Strep, Enterococcus), as well as inflammatory markers and compromised
+  digestive function. Antibiotic exposure can cause dysbiosis lasting 18 months to
+  8 years per emerging research.
+evidence_tier: strong
+sources:
+- id: thurlow-microbiome-mondays
+  location: 'Session 1: Microbiome Foundations and Hormone Shifts'
+  quote: In perimenopause and menopause, we tend to have more inflammatory species.
+    We start to have more dysbiotic organisms.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

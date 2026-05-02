@@ -1,0 +1,37 @@
+slug: iodine
+display_name: Iodine (Potassium Iodide / Sea Kelp)
+category: mineral
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 150
+    max: 300
+    unit: mcg
+  tablet:
+    min: 150
+    max: 300
+    unit: mcg
+timing_options:
+- morning
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: optional
+notes_for_coach: Critical for thyroid hormone synthesis; use cautiously in Hashimoto's
+  clients — always refer to clinician before adding iodine in autoimmune thyroid conditions.
+evidence_tier: confirm_with_clinician
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: Iodine (Potassium Iodide)/sea kelp - Thyroid hormone production - 150–300
+    mcg/day - With or without food
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

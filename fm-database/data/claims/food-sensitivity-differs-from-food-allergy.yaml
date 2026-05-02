@@ -1,0 +1,33 @@
+slug: food-sensitivity-differs-from-food-allergy
+statement: Food sensitivities (delayed immune or inflammatory response) are mechanistically
+  distinct from food allergies (IgE-mediated) and from food intolerances (enzyme deficiency);
+  sensitivities are generally not life-threatening but produce symptomatic reactions.
+evidence_tier: strong
+rationale: The immunological distinction between IgE-mediated allergy and non-IgE
+  delayed hypersensitivity is textbook physiology, explicitly grounded by the speaker
+  as a licensed clinician with allergy-specific clinical context.
+coaching_translation: A food sensitivity is not the same as an allergy. Allergies
+  involve a fast IgE immune reaction and can be life-threatening. Sensitivities involve
+  a slower immune or inflammatory response — uncomfortable, but generally not dangerous.
+out_of_scope_notes: Distinguishing allergy from sensitivity in individual clients
+  requires clinician evaluation and appropriate testing (IgE skin prick or RAST vs.
+  IgG panels).
+caveats:
+- While the distinction is textbook, the clinical validity of IgG testing for sensitivity
+  diagnosis remains debated in mainstream medicine.
+linked_to_topics:
+- food-sensitivities
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-2
+  location: Food sensitivity vs allergy differentiation
+  quote: Food intolerances can sometimes be related to lacking an enzyme, like think
+    about people that have a lactase deficient, or lactose deficiency, they lack the
+    enzyme lactase or a food sensitivity, which is a delayed immune response or it
+    can be an inflammatory response. It's an important differentiator because although
+    food sensitivities are annoying, they are generally not life-threatening.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

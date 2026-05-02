@@ -1,0 +1,35 @@
+slug: leaky-gut-triggers-immune-activation-and-food-sensitivities
+statement: Increased intestinal permeability (leaky gut) allows food particles, lipopolysaccharides
+  (LPS/endotoxin), and cytokines to enter the bloodstream, triggering chronic low-grade
+  immune activation and food sensitivities.
+evidence_tier: plausible_emerging
+rationale: Intestinal permeability and LPS translocation are documented in peer-reviewed
+  literature; the causal chain to food sensitivities is biologically plausible but
+  the 'leaky gut' construct remains debated in mainstream medicine. Source is single
+  expert at moderate quality.
+coaching_translation: When the gut wall becomes leaky, things that should stay in
+  the digestive tract escape into the bloodstream and trigger an immune alarm — which
+  can show up as new food intolerances, inflammation, and fatigue.
+caveats:
+- '''Leaky gut'' as a clinical entity is not universally accepted in conventional
+  medicine.'
+- Single-expert source; underlying mechanisms plausible but complexity is higher than
+  described.
+linked_to_topics:
+- microbiome
+- dysbiosis
+- inflammaging
+- autoimmune
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-8
+  location: Session 8 — leaky gut segment
+  quote: When we get leaky gut, we will leak food particles into the bloodstream.
+    And this in and of itself will trigger our immune system... we can leak lipopolysaccharides
+    or endotoxin, things that drive further inflammation.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

@@ -1,0 +1,65 @@
+slug: gut-hormone-axis
+display_name: Gut-Hormone Axis
+aliases:
+- gut ovarian axis
+- gut endocrine axis
+- hormone-gut connection
+- estrogen-gut connection
+- gut-estrogen axis
+summary: The gut-hormone axis describes the bidirectional relationship between the
+  gut microbiome and sex hormones. Estrogen modulates the gut lining and microbiome
+  composition, while gut bacteria regulate estrogen metabolism through enterohepatic
+  circulation. Declining estrogen in perimenopause/menopause disrupts this axis.
+common_symptoms:
+- vasomotor symptoms (hot flashes, night sweats)
+- weight gain around the abdomen
+- new food sensitivities
+- insulin resistance
+- brain fog
+- mood changes
+- sleep disruption
+- worsening gut permeability in menopause
+- new food intolerances
+- hormonal symptom flares
+- increased inflammation with hormone decline
+red_flags:
+- Persistent or worsening hot flashes despite lifestyle intervention — may indicate
+  need for clinical evaluation of HRT
+- Unexpected weight gain with HRT initiation — may signal impaired estrogen detoxification
+- symptoms suggesting hormone-driven autoimmune flare — refer to clinician
+related_topics:
+- microbiome
+- perimenopause
+- estrobolome
+- dysbiosis
+- inflammation
+- inflammaging
+- immune-resilience
+- autoimmune
+key_mechanisms:
+- estrogen-driven-gut-barrier-integrity
+- short-chain-fatty-acid-signaling
+- hpa-axis-dysregulation
+- estrogen-immune-modulation
+- estrogen-enterohepatic-circulation
+- gut-barrier-integrity
+coaching_scope_notes: Coaches can discuss lifestyle factors that support the gut-hormone
+  axis. HRT decisions belong with a clinician.
+clinician_scope_notes: The gut-hormone axis includes phase 3 estrogen detoxification
+  via gut bacteria (estrobolome). Dysbiosis can cause estrogen recirculation even
+  in menopausal women. DUTCH testing and GI-MAP can help identify detoxification bottlenecks.
+  HRT can positively shift the microbiome toward a premenopausal composition.
+evidence_tier: plausible_emerging
+sources:
+- id: thurlow-microbiome-mondays
+  location: 'Session 1: Microbiome Foundations and Hormone Shifts'
+  quote: there's a gut bone access, there's a gut ovarian access, there's a gut lung
+    access. name an organ system, there is a communication pattern.
+- id: thurlow-microbiome-session-8
+  location: Session 8 — estrogen and immune system segment
+  quote: Estrogen modulates the gut microbiome as well. And as we see a decline in
+    estrogen... our immune system gets a little bit cranky.
+version: 2
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

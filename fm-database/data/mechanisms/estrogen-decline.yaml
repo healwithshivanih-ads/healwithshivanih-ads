@@ -1,0 +1,48 @@
+slug: estrogen-decline
+display_name: Estrogen Decline (Perimenopausal / Menopausal)
+aliases:
+  - estrogen-fluctuation
+  - estrogen-driven-gut-barrier-integrity
+category: endocrine
+summary: |
+  Progressive decline (with marked fluctuations during perimenopause) of
+  ovarian estradiol (E2) production. Affects far more than vasomotor
+  symptoms: estrogen modulates gut barrier integrity, microbial diversity,
+  immune tolerance, bone turnover, lipid metabolism, vascular tone, mood
+  regulation, and sleep architecture. Decline drives much of the increase
+  in cardiovascular, autoimmune, and metabolic risk in midlife women.
+upstream_drivers:
+  - ovarian senescence (natural)
+  - surgical / chemotherapy-induced menopause
+downstream_effects:
+  - leaky gut (reduced tight-junction support)
+  - increased inflammatory microbiome species
+  - reduced microbial diversity
+  - bone resorption (osteopenia/osteoporosis risk)
+  - increased visceral adiposity
+  - LDL elevation
+  - vasomotor symptoms (hot flashes, night sweats)
+  - sleep disruption (3am wakeups)
+  - mood lability, new-onset anxiety
+related_mechanisms:
+  - leaky-gut
+  - microbial-diversity-decline
+  - chronic-inflammation
+  - low-progesterone
+linked_to_topics:
+  - perimenopause
+  - autoimmune
+  - inflammation
+  - microbiome
+  - estrobolome
+  - gut-hormone-axis
+sources:
+  - id: thurlow-microbiome-mondays
+    location: Sessions 1, 3, 4 — estrogen-microbiome discussion
+  - id: vitaone-skill-practice-guide
+    location: practice_guide.md, Menopause/Perimenopause section
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

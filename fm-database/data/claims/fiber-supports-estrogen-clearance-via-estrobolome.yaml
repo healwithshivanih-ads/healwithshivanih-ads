@@ -1,0 +1,30 @@
+slug: fiber-supports-estrogen-clearance-via-estrobolome
+statement: Adequate dietary fiber supports estrogen clearance by binding excess estrogen
+  in the gut after liver phase-one and phase-two detoxification, facilitating excretion
+  and reducing enterohepatic recirculation.
+evidence_tier: plausible_emerging
+rationale: Speaker describes the liver-gut detox pathway and fiber's role in binding
+  estrogen for excretion. Consistent with estrobolome research but no RCT cited.
+coaching_translation: Fiber acts like a sponge for excess estrogen in the gut — without
+  enough fiber, that estrogen gets reabsorbed and can drive symptoms like hot flashes
+  and weight gain.
+caveats:
+- Single-expert source. Estrobolome-fiber link is biologically plausible; peer-reviewed
+  support is growing but not yet strong consensus.
+linked_to_topics:
+- estrobolome
+- fiber-gap
+- gut-hormone-axis
+- microbiome
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-7
+  location: Fiber and estrogen section [00:12:31]
+  quote: Fiber helps to bind estrogen in the gut... depending on the health of the
+    gut, helps us determine whether or not we can bind up excess estrogen.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

@@ -1,0 +1,39 @@
+slug: gaba-a-receptor-modulation
+display_name: GABA-A Receptor Modulation
+aliases:
+  - gabaergic-tone
+  - allopregnanolone-signaling
+category: neurological
+summary: |
+  GABA-A receptor activity sets inhibitory tone in the CNS — driving
+  calm, sleep onset, and anxiolysis. Several endogenous and exogenous
+  modulators act here: allopregnanolone (progesterone metabolite) is a
+  positive allosteric modulator (its decline in perimenopause underlies
+  much of the anxiety/insomnia of that transition); magnesium acts as
+  a cofactor; L-theanine and glycine modulate adjacent inhibitory
+  systems. Benzodiazepines bind here directly.
+upstream_drivers:
+  - progesterone (via allopregnanolone)
+  - magnesium status
+  - L-theanine, glycine intake
+  - taurine
+downstream_effects:
+  - sleep onset latency
+  - anxiety / arousal regulation
+  - parasympathetic tone
+  - seizure threshold
+related_mechanisms:
+  - low-progesterone
+  - hpa-axis-dysregulation
+linked_to_topics:
+  - anxiety
+  - insomnia
+  - perimenopause
+sources:
+  - id: vitaone-skill-practice-guide
+    location: practice_guide.md, Sleep & Nervous System sections
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

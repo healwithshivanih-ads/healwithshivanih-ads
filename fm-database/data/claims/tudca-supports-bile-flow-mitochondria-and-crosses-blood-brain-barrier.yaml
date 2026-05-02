@@ -1,0 +1,33 @@
+slug: tudca-supports-bile-flow-mitochondria-and-crosses-blood-brain-barrier
+statement: TUDCA (tauroursodeoxycholic acid) supports biliary function, mitochondrial
+  health, and can cross the blood-brain barrier, making it a multi-purpose supplement
+  for midlife digestive and metabolic support.
+evidence_tier: plausible_emerging
+rationale: Single-expert source. TUDCA's hepatoprotective and bile-supportive properties
+  have published research; blood-brain barrier crossing and mitochondrial support
+  claims are emerging. No specific studies cited in transcript.
+coaching_translation: TUDCA is a bile acid supplement that may help with fat digestion,
+  mitochondrial energy, and even brain health — a versatile option for midlife gut
+  support, particularly if fat digestion is an issue.
+out_of_scope_notes: TUDCA dosing and clinical indication (especially for liver/biliary
+  conditions) should be confirmed with a clinician.
+caveats:
+- Single-expert source; multi-purpose claims are based on emerging research.
+- Dosing and clinical appropriateness require clinician confirmation.
+- Source is expert_consensus/moderate quality.
+linked_to_topics:
+- dyspepsia
+- perimenopause
+linked_to_supplements:
+- tudca
+linked_to_mechanisms: []
+sources:
+- id: thurlow-microbiome-session-6
+  location: Session 6 — Main Transcript, Digestive Support Section
+  quote: TUDCA, which is helpful for biliary support, also helpful for mitochondrial
+    support. And interestingly enough, TUDCA can actually cross the blood-brain barrier.
+    So a really important multi-purpose supplement.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

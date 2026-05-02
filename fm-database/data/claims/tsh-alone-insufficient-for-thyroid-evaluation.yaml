@@ -1,0 +1,27 @@
+slug: tsh-alone-insufficient-for-thyroid-evaluation
+statement: TSH alone is insufficient for a complete thyroid picture — Free T3, Free
+  T4, Reverse T3, TPO antibodies, TgAb, and TSI are also needed.
+evidence_tier: strong
+rationale: Well-established clinical reality acknowledged by leading endocrinology
+  societies. TSH misses early Hashimoto's, euthyroid-sick syndrome, conversion problems,
+  and autoimmune thyroid disease when TSH remains normal. Reflex TSH-only testing
+  in public labs is a recognised clinical gap.
+coaching_translation: If your symptoms point to thyroid but TSH is normal, ask for
+  a full panel. It doesn't always get ordered automatically.
+caveats:
+- Reflex testing in most public-system labs still starts with TSH only — clients may
+  need to advocate for a full panel.
+linked_to_topics:
+- thyroid
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-evidence-tiers
+  location: TOPIC 1 — Thyroid / Claims & Tiers / Claim 1
+  quote: TSH misses early Hashimoto's, euthyroid-sick syndrome, conversion problems,
+    and autoimmune thyroid disease without elevated TSH.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

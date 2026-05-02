@@ -1,0 +1,36 @@
+slug: sulforaphane
+display_name: Sulforaphane (Broccoli Extract)
+category: other
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 50
+    max: 100
+    unit: mg
+  tablet:
+    min: 50
+    max: 100
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+notes_for_coach: NRF2 activator supporting liver detox phase II, inflammation reduction,
+  and estrogen balance; potency varies by brand and myrosinase content.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: Sulforaphane (from Broccoli Extract) - Detox, antioxidant, NRF2 activator
+    - 50–100 mg/day - With meals
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

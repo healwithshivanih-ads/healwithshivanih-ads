@@ -1,0 +1,30 @@
+slug: microbiome-health-influences-circadian-clock-sleep
+statement: The quality and diversity of the gut microbiome directly influences circadian
+  rhythms, affecting sleep onset and duration.
+evidence_tier: plausible_emerging
+rationale: Bidirectional microbiome-circadian rhythm interactions are an emerging
+  area of research with plausible mechanisms via serotonin/melatonin precursors and
+  clock-gene signalling. Not yet consensus.
+coaching_translation: An unhealthy gut microbiome can disrupt your body clock — contributing
+  to difficulty falling or staying asleep, even when other sleep habits are dialled
+  in.
+caveats:
+- No specific RCTs cited; emerging field.
+- Single-expert source.
+linked_to_topics:
+- microbiome
+- gut-brain-axis
+- insomnia
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-5
+  location: Gut-Sleep section
+  quote: The quality of your gut microbiome absolutely influences your circadian clock...
+    if you have an unhealthy inhospitable microbiome constitution... that is going
+    to influence your circadian rhythms.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

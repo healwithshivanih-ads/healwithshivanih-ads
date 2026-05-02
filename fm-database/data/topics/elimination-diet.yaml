@@ -1,0 +1,43 @@
+slug: elimination-diet
+display_name: Elimination Diet
+aliases:
+- elimination-reintroduction protocol
+- Whole30
+- food elimination trial
+summary: An elimination diet involves systematically removing common trigger foods
+  (gluten, dairy, alcohol, sugar, grains, ultra-processed foods) for a defined period,
+  then reintroducing them one at a time to identify reactive foods. Presented as the
+  primary practical tool for identifying food sensitivities before or instead of lab
+  testing.
+common_symptoms:
+- unidentified food reactions
+- persistent bloating
+- fatigue
+- brain fog
+related_topics:
+- food-sensitivities
+- leaky-gut
+- microbiome
+- inflammation
+key_mechanisms:
+- trigger-food-removal
+- symptom-clearance
+- structured-reintroduction
+coaching_scope_notes: Coaches can guide clients through elimination and reintroduction
+  frameworks (e.g., Whole30-style protocols), support food journaling, and help interpret
+  symptom changes. Formal clinical diagnosis of sensitivities remains out of scope.
+clinician_scope_notes: If elimination diet fails to resolve symptoms, clinician-ordered
+  IgG or MRT testing may be warranted. Celiac screening should occur before full gluten
+  elimination.
+evidence_tier: plausible_emerging
+red_flags: []
+sources:
+- id: thurlow-microbiome-session-2
+  location: Q&A section — practical recommendations
+  quote: Do you think you have a sensitivity? I would just do like a whole 30. And
+    that's not meant to be done forever, but it can be a really insightful and helpful
+    tool.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

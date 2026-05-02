@@ -1,0 +1,43 @@
+slug: myo-inositol
+display_name: Myo-Inositol
+category: other
+forms_available:
+- powder
+- capsule
+typical_dose_range:
+  powder:
+    min: 2000
+    max: 4000
+    unit: mg
+  capsule:
+    min: 2000
+    max: 4000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_dinner
+- morning
+- mid_afternoon
+take_with_food: optional
+linked_to_topics: []
+linked_to_claims: []
+notes_for_coach: Best in split doses throughout the day; strong evidence base for
+  PCOS insulin sensitivity and ovarian health; also supports anxiety.
+notes_for_client: Inositol supports healthy insulin signaling. For PCOS, the ratio
+  of myo-inositol to d-chiro-inositol (40:1) matters — look for products formulated
+  at this ratio.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-practice-guide
+  location: Seven Clinical Focus Areas > 3. PCOS > Coaching interventions
+  quote: 'Inositol supplementation: Myo-inositol and d-chiro-inositol ratio critical
+    (often 40:1)'
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: Myo-Inositol - Insulin sensitivity, ovarian health - 2–4 g/day - Anytime,
+    best split doses
+version: 2
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

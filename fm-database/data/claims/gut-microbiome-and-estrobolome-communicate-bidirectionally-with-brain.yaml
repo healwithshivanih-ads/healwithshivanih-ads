@@ -1,0 +1,31 @@
+slug: gut-microbiome-and-estrobolome-communicate-bidirectionally-with-brain
+statement: The gut microbiome and estrobolome communicate bidirectionally with the
+  brain via the vagus nerve, influencing mood, cognition, and hormonal signaling.
+evidence_tier: plausible_emerging
+rationale: Gut-brain axis communication via the vagus nerve is well-documented; the
+  specific role of the estrobolome as a node in this axis is mechanistically plausible
+  but less directly studied. Single-expert source.
+coaching_translation: Your gut and your brain are in constant two-way conversation.
+  Supporting gut health isn't just about digestion — it can affect how you feel emotionally
+  and mentally too.
+caveats:
+- Estrobolome-specific bidirectional brain communication is extrapolated from broader
+  gut-brain axis research.
+- Single-expert source.
+linked_to_topics:
+- estrobolome
+- microbiome
+- gut-hormone-axis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-3
+  location: What Happens When the Estrobolome Is Not Balanced
+  quote: We forget the fact that there's this ongoing communication piece between
+    the estrobolome or the gut microbiome, if we wanna think broader, and the brain.
+    It goes via the vagus nerve.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

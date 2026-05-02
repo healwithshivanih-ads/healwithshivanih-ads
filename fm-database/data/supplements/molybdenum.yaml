@@ -1,0 +1,37 @@
+slug: molybdenum
+display_name: Molybdenum
+category: mineral
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 50
+    max: 250
+    unit: mcg
+  tablet:
+    min: 50
+    max: 250
+    unit: mcg
+timing_options:
+- morning
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: optional
+notes_for_coach: Enzyme cofactor for sulfite detoxification; used in sulfur sensitivity
+  and detox protocols.
+evidence_tier: fm_specific_thin
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 3 - Supplement Table
+  quote: Molybdenum - Sulfite detox, enzyme cofactor - 50–250 mcg/day - With or without
+    food
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

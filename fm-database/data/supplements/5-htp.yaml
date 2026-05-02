@@ -1,0 +1,35 @@
+slug: 5-htp
+display_name: 5-HTP
+category: amino_acid
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 50
+    max: 100
+    unit: mg
+  tablet:
+    min: 50
+    max: 100
+    unit: mg
+timing_options:
+- evening
+- bedtime
+take_with_food: optional
+notes_for_coach: Serotonin precursor; avoid combining with SSRIs or MAOIs without
+  clinician guidance due to serotonin syndrome risk.
+evidence_tier: confirm_with_clinician
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 3 - Supplement Table
+  quote: 5-HTP - Serotonin support, mood, sleep - 50–100 mg/day - Evening or before
+    bed
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

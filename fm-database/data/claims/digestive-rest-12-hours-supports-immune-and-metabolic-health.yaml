@@ -1,0 +1,33 @@
+slug: digestive-rest-12-hours-supports-immune-and-metabolic-health
+statement: Allowing 12–13 hours of overnight digestive rest can support immune and
+  metabolic health even without strict intermittent fasting.
+evidence_tier: fm_specific_thin
+rationale: Time-restricted eating research is growing, but the specific claim about
+  12–13 hours for immune benefit is an expert recommendation without citation in this
+  session. Metabolic benefits have some RCT support; immune-specific effects at this
+  duration are thin.
+coaching_translation: You don't have to do a rigid fasting protocol — simply finishing
+  dinner early and not eating until morning (aiming for 12–13 hours overnight) gives
+  your gut and immune system meaningful recovery time.
+caveats:
+- FM-specific recommendation; limited direct RCT evidence for immune outcomes at this
+  specific duration.
+- Single-expert source.
+- Clients with metabolic conditions or eating disorder history should consult a clinician
+  before extending fasting windows.
+linked_to_topics:
+- immune-resilience
+- inflammaging
+- microbiome
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-8
+  location: 'Session 8 — Q&A: immune support in menopause'
+  quote: Even if you don't abide by intermittent fasting, 12 to 13 hours of digestive
+    rest can be very, very effective.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

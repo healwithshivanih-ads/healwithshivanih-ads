@@ -1,0 +1,35 @@
+slug: hrt-may-preserve-younger-microbiome-profile
+statement: Hormone replacement therapy (HRT) may help preserve a more youthful gut
+  microbiome profile in perimenopausal and postmenopausal women.
+evidence_tier: plausible_emerging
+rationale: Speaker references research comparing pre-, peri-, and post-menopausal
+  microbiomes and notes HRT's ability to 'mimic a younger microbiome.' This aligns
+  with emerging research but no primary study is cited; stated as a prediction rather
+  than established indication.
+coaching_translation: Research suggests HRT may help maintain a healthier gut microbiome
+  during and after menopause — another potential benefit beyond bone and heart protection.
+caveats:
+- 'Speaker explicitly states: ''We don''t have a primary indication yet for using
+  HRT to improve the quality of the microbiome.'''
+- This is a forward-looking prediction, not current clinical guidance.
+- HRT decisions are clinician scope only.
+- Single-expert source.
+linked_to_topics:
+- microbiome
+- perimenopause
+- gut-hormone-axis
+out_of_scope_notes: HRT prescribing and management is outside coaching scope. Coaches
+  should not recommend HRT for microbiome purposes.
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-5
+  location: HRT and Microbiome section
+  quote: You can mimic a younger microbiome with hormone replacement therapy. We don't
+    have a primary indication yet for using hormone replacement therapy to improve
+    the quality of the microbiome, but it absolutely is looking like we will get to
+    a point where that will be very important.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

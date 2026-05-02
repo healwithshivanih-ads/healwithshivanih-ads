@@ -1,0 +1,44 @@
+slug: bloating
+display_name: Bloating
+aliases:
+- abdominal-distension
+- belly-swelling
+- feeling-puffy
+- bloated
+- puffy-belly
+- abdominal-bloating
+- post-meal bloating
+- persistent bloating
+category: gi
+severity: common
+description: 'Subjective sensation of fullness or pressure in the abdomen, often
+
+  accompanied by visible distension. Frequently postprandial; may worsen
+
+  through the day. In perimenopause, frequently driven by hormonal
+
+  shifts in motility, microbial diversity, and gut barrier integrity.
+
+  '
+when_to_refer: 'Persistent (>2 weeks) without clear dietary trigger; with weight loss;
+
+  with blood in stool; with severe pain. Refer urgently if rapidly
+
+  progressive in midlife women (rule out ovarian pathology).
+
+  '
+linked_to_topics:
+- microbiome
+- dysbiosis
+- perimenopause
+- estrobolome
+linked_to_mechanisms:
+- microbial-diversity-decline
+- leaky-gut
+sources:
+- id: thurlow-microbiome-mondays
+  location: Sessions 1, 6 — bloating discussion
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

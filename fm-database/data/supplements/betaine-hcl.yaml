@@ -1,0 +1,36 @@
+slug: betaine-hcl
+display_name: Betaine HCl
+category: other
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 650
+    max: 650
+    unit: mg
+  tablet:
+    min: 650
+    max: 650
+    unit: mg
+timing_options:
+- with_lunch
+- with_dinner
+take_with_food: required
+notes_for_coach: Take with protein-rich meals only; supports low stomach acid and
+  indigestion; contraindicated if client has active ulcers or is on NSAIDs/PPIs —
+  refer to clinician.
+evidence_tier: confirm_with_clinician
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: Betaine HCl - Stomach acid support - 650 mg with meals - With protein-rich
+    meals
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

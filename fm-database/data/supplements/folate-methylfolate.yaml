@@ -1,0 +1,40 @@
+slug: folate-methylfolate
+display_name: Folate (Methylfolate)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+- lozenge
+typical_dose_range:
+  capsule:
+    min: 800
+    max: 1200
+    unit: mcg
+  tablet:
+    min: 800
+    max: 1200
+    unit: mcg
+  lozenge:
+    min: 800
+    max: 1200
+    unit: mcg
+timing_options:
+- on_empty_stomach
+- morning
+take_with_food: avoid
+notes_for_coach: Base supplement; active methylfolate form preferred especially for
+  MTHFR variants; key for fertility, methylation, mood, and detox.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Folate (Methylfolate) - Methylation, pregnancy, detox - 800-1200 mcg/day
+    - sublingual morning pre breakfast OR homocysteine before breakfast
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

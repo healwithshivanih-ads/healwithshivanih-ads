@@ -1,0 +1,29 @@
+slug: stress-reduces-digestive-fire-parasympathetic
+statement: Chronic or acute stress suppresses parasympathetic nervous system activity,
+  reducing stomach acid (HCl), digestive enzyme secretion, and bile utilisation —
+  collectively impairing digestion.
+evidence_tier: strong
+rationale: The dependence of gastric acid secretion and digestive enzyme release on
+  parasympathetic tone is well-established physiology. Stress-induced HPA and sympathetic
+  activation suppressing digestive function is consensus.
+coaching_translation: Eating while stressed shuts down your digestive system — your
+  body cannot produce enough stomach acid or enzymes to properly break down food.
+caveats:
+- Speaker uses informal term 'digestive fire'; the underlying physiology is well-supported.
+linked_to_topics:
+- gut-brain-axis
+- vagal-tone
+- dysbiosis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-5
+  location: Stress and Digestion section
+  quote: The parasympathetic nervous system is what allows us to produce sufficient
+    amounts of hydrochloric acid, which break down protein into amino acids. It's
+    what signals digestive enzymes to be secreted.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

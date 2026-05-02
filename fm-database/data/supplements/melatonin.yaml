@@ -1,0 +1,54 @@
+slug: melatonin
+display_name: Melatonin
+category: other
+forms_available:
+- tablet
+- capsule
+- liquid
+- gummy
+- lozenge
+typical_dose_range:
+  tablet:
+    min: 3
+    max: 5
+    unit: mg
+  capsule:
+    min: 3
+    max: 5
+    unit: mg
+  liquid:
+    min: 0.5
+    max: 3
+    unit: mg
+  gummy:
+    min: 3
+    max: 5
+    unit: mg
+  lozenge:
+    min: 3
+    max: 5
+    unit: mg
+timing_options:
+- evening
+- bedtime
+take_with_food: optional
+linked_to_topics: []
+linked_to_claims: []
+notes_for_coach: Low dose (0.5–3 mg) is often sufficient; take 30 min before bed;
+  useful for jet lag and sleep onset issues.
+notes_for_client: Start with the lowest effective dose (0.5 mg). Higher doses are
+  not necessarily better and may cause grogginess the next morning.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-practice-guide
+  location: Sleep Optimization > Sleep-supporting supplements
+  quote: Melatonin (0.5-3mg, lower doses often most effective)
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: Melatonin - Sleep regulation, antioxidant - 3 mg-5 mg (low dose) - 30 minutes
+    before bedtime
+version: 2
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

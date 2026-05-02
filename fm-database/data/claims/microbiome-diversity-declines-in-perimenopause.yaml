@@ -1,0 +1,33 @@
+slug: microbiome-diversity-declines-in-perimenopause
+statement: Microbial diversity decreases as women transition from perimenopause to
+  menopause, correlating with reduced metabolic resilience, impaired fuel utilization,
+  and decreased insulin sensitivity.
+evidence_tier: plausible_emerging
+rationale: Speaker describes a well-mechanistically-plausible hormonal-microbiome
+  connection supported by emerging research. Estrogen's role in shaping microbiome
+  diversity is documented, but consensus-level RCTs in perimenopausal women remain
+  limited.
+coaching_translation: As estrogen declines in perimenopause, the diversity of your
+  gut bacteria also tends to decline — which can make your metabolism less flexible
+  and your blood sugar harder to regulate.
+caveats:
+- Single-expert source; no primary studies cited.
+- Directionality (hormones → diversity vs. diversity → hormone metabolism) is still
+  under investigation.
+linked_to_topics:
+- microbiome
+- perimenopause
+- midlife-weight-gain
+- insulin-resistance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-4
+  location: Session 4 — Microbial Diversity and Metabolic Health
+  quote: As we make this transition from perimenopause to menopause, we start seeing
+    reductions in the diversity of the bacteria, viruses, fungi, protozoa in the microbiome.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

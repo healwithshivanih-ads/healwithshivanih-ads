@@ -1,0 +1,30 @@
+slug: poor-sleep-worsens-insulin-resistance-and-metabolic-health
+statement: Insufficient sleep (particularly less than six hours per night cumulatively)
+  worsens insulin resistance and significantly increases the risk of developing diabetes
+  and poor metabolic health.
+evidence_tier: strong
+rationale: The association between sleep deprivation and impaired glucose metabolism,
+  insulin sensitivity, and T2D risk is robustly supported by multiple RCTs and large
+  epidemiological studies.
+coaching_translation: Sleep is a metabolic intervention, not a luxury. Consistently
+  sleeping less than 6 hours a night directly undermines your blood sugar control
+  and increases your risk of type 2 diabetes.
+caveats:
+- Speaker does not cite specific studies; however, this claim is consistent with strong
+  existing literature (e.g., Spiegel, Van Cauter et al.).
+linked_to_topics:
+- midlife-weight-gain
+- insulin-resistance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-4
+  location: Session 4 — Factors Impacting the Metabolic Microbiome / Sleep
+  quote: We also know that if you're not getting enough sleep, that will also worsen
+    insulin resistance. If you're getting less than six hours a night of sleep cumulatively
+    over time, you are more likely to develop diabetes and poor metabolic health.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

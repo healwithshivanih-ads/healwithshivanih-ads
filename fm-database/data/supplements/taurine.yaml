@@ -1,0 +1,37 @@
+slug: taurine
+display_name: Taurine
+category: amino_acid
+forms_available:
+- capsule
+- powder
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 1000
+    unit: mg
+  powder:
+    min: 500
+    max: 1000
+    unit: mg
+timing_options:
+- morning
+- mid_morning
+- mid_afternoon
+- evening
+take_with_food: optional
+notes_for_coach: Supports heart, cognition, sleep, and bile production; timing is
+  flexible.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Taurine - Electrolyte balance, heart & brain support/bile support - 500–1000
+    mg/day - Anytime
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

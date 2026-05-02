@@ -1,0 +1,47 @@
+slug: vagal-tone
+display_name: Vagal Tone
+aliases:
+- vagus nerve tone
+- HRV
+- heart rate variability
+- parasympathetic tone
+summary: Vagal tone reflects the functional strength of the vagus nerve—the longest
+  cranial nerve—which is the primary conduit of the gut-brain axis. Higher vagal tone
+  supports rest-and-digest physiology, better digestion, mood regulation, and stress
+  resilience. Chronic stress, trauma, and microbiome dysbiosis can suppress vagal
+  tone, measurable via HRV.
+common_symptoms:
+- low HRV
+- reduced stress resilience
+- digestive impairment
+- mood instability
+- poor sleep
+red_flags:
+- chronically low HRV unresponsive to lifestyle changes — may indicate trauma/PTSD
+  requiring specialist care
+- vagal syncope episodes (passing out with straining)
+related_topics:
+- gut-brain-axis
+- anxiety
+- insomnia
+- dysbiosis
+key_mechanisms:
+- parasympathetic-nervous-system-activation
+- hpa-axis-dysregulation
+coaching_scope_notes: Coaches can introduce vagal-toning practices (gargling, humming,
+  singing, breathwork, grounding, cold exposure). HRV wearables (Oura, Whoop) can
+  be used as trend monitors without over-fixation on single readings.
+clinician_scope_notes: Persistent very low HRV despite lifestyle intervention may
+  reflect PTSD, trauma history, or autonomic dysfunction requiring clinical or psychological
+  evaluation.
+evidence_tier: plausible_emerging
+sources:
+- id: thurlow-microbiome-session-5
+  location: Vagus Nerve section
+  quote: The vagus nerve... is really important for signaling between the digestive
+    system and the brain. We know that it heavily influences mood and digestion. It's
+    also incredibly sensitive to stress.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

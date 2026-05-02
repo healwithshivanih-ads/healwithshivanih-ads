@@ -1,0 +1,35 @@
+slug: vitamin-b6-p5p
+display_name: Vitamin B6 (Pyridoxal-5-Phosphate)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 15
+    max: 50
+    unit: mg
+  tablet:
+    min: 15
+    max: 50
+    unit: mg
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+notes_for_coach: Active P5P form supports mood, PMS, neurotransmitter synthesis, and
+  B6 metabolism; part of homocysteine defence formula.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Vitamin B6 (Pyridoxal-5-Phosphate) - Mood, hormone, B6 metabolism - 15–50
+    mg/day - Homocysteine defence formula
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

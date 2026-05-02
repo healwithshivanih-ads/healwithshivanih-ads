@@ -1,0 +1,45 @@
+slug: saccharomyces-boulardii
+display_name: Saccharomyces Boulardii
+category: probiotic
+forms_available:
+- capsule
+- powder
+timing_options:
+- morning
+- with_breakfast
+- with_lunch
+- with_dinner
+- bedtime
+take_with_food: optional
+linked_to_topics:
+- microbiome
+- dysbiosis
+- gut-brain-axis
+linked_to_claims:
+- antibiotic-use-can-disrupt-microbiome-for-years
+notes_for_coach: Beneficial yeast (not a bacteria); can be taken with or without food;
+  useful for traveler's diarrhea, antibiotic support, and fungal infections.
+notes_for_client: S. boulardii is a beneficial yeast that can help support your gut
+  microbiome, especially after antibiotics. It is not a permanent resident — you need
+  to take it consistently to maintain its benefits. Food-based sources (fermented
+  foods) remain the foundation.
+evidence_tier: plausible_emerging
+typical_dose_range:
+  capsule:
+    min: 2
+    max: 2
+    unit: capsules
+linked_to_mechanisms: []
+sources:
+- id: thurlow-microbiome-session-5
+  location: Q&A — Antibiotics and Microbiome
+  quote: Adding in things like beneficial yeast called sac boulardii... that's typically
+    what I recommend to kind of repopulate the gut.
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: Saccharomyces Boulardii - Gut protection, anti-pathogen - 2 times daily -
+    With or without food
+version: 2
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

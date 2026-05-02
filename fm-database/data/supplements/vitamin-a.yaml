@@ -1,0 +1,47 @@
+slug: vitamin-a
+display_name: Vitamin A (Retinyl Palmitate)
+category: vitamin
+forms_available:
+- capsule
+- liquid
+- tablet
+evidence_tier: confirm_with_clinician
+linked_to_topics:
+- thyroid
+linked_to_claims:
+- vitamin-a-rxr-permission-slip-for-thyroid-and-vitamin-d-signaling
+notes_for_coach: Fat-soluble vitamin; take with fat-containing meals; advise clients
+  not to exceed upper limits, especially if pregnant.
+notes_for_client: Vitamin A helps your body actually respond to thyroid hormone and
+  Vitamin D at the cellular level. You can get it from liver, egg yolks, full-fat
+  dairy, and from brightly coloured orange and yellow vegetables. Don't supplement
+  high doses without clinician guidance — too much retinol can be harmful.
+typical_dose_range:
+  capsule:
+    min: 2500
+    max: 5000
+    unit: IU
+  tablet:
+    min: 2500
+    max: 5000
+    unit: IU
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_mechanisms: []
+sources:
+- id: vitaone-evidence-tiers
+  location: TOPIC 1 — Thyroid / Claims & Tiers / Claim 7
+  quote: Note that high-dose retinol can be toxic — food-based retinol (liver, egg
+    yolks, dairy) or beta-carotene from brightly colored vegetables is the safe route
+    for coaching.
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: Vitamin A (Retinyl Palmitate) - Vision, immune support, skin - 2500–5000
+    IU/day - With fat-containing meals
+version: 2
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

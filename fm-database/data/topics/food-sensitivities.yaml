@@ -1,0 +1,56 @@
+slug: food-sensitivities
+display_name: Food Sensitivities
+aliases:
+- food reactivity
+- delayed food hypersensitivity
+- non-allergic food reactions
+summary: Food sensitivities are delayed immune or inflammatory responses to specific
+  foods — distinct from IgE-mediated food allergies and enzyme-deficiency intolerances.
+  They become particularly prevalent in midlife women due to declining estrogen, increased
+  gut permeability, microbiome shifts, and stress-impaired digestion.
+common_symptoms:
+- bloating
+- gas
+- fatigue after eating
+- brain fog
+- joint pain
+- skin rashes
+- elevated heart rate after eating
+- digestive distress
+- new alcohol intolerance
+red_flags:
+- anaphylaxis or throat-closing reactions — refer to allergist immediately
+- progressive worsening bloating — refer to clinician
+- tick-bite history with new meat intolerance (possible alpha-gal)
+related_topics:
+- leaky-gut
+- perimenopause
+- microbiome
+- dysbiosis
+- inflammation
+- autoimmune
+- elimination-diet
+- gut-hormone-axis
+key_mechanisms:
+- gut-barrier-dysfunction
+- delayed-immune-response
+- estrogen-decline
+- hpa-axis-dysregulation
+coaching_scope_notes: Coaches can support identification of trigger foods through
+  elimination/reintroduction frameworks, food journaling, and mindful eating practices.
+  Formal food sensitivity testing (IgG, MRT) and allergy diagnosis require clinician
+  referral.
+clinician_scope_notes: Distinguish IgE allergy from IgG sensitivity from enzyme deficiency.
+  Alpha-gal syndrome, celiac disease, and MCAS require clinical evaluation.
+evidence_tier: plausible_emerging
+sources:
+- id: thurlow-microbiome-session-2
+  location: Food sensitivity vs allergy differentiation
+  quote: Food intolerances can sometimes be related to lacking an enzyme, like think
+    about people that have a lactase deficient, or lactose deficiency, they lack the
+    enzyme lactase or a food sensitivity, which is a delayed immune response or it
+    can be an inflammatory response.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

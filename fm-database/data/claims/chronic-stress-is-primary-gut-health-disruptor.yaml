@@ -1,0 +1,33 @@
+slug: chronic-stress-is-primary-gut-health-disruptor
+statement: Chronic stress is the most under-addressed contributor to gut barrier disruption,
+  and adverse childhood events and trauma can accelerate immune and biological aging.
+evidence_tier: plausible_emerging
+rationale: HPA axis dysregulation and gut permeability are mechanistically linked;
+  ACE (adverse childhood events) research robustly documents accelerated aging and
+  immune dysregulation. Expert's framing is consistent with published evidence but
+  unsourced in this session.
+coaching_translation: Stress — especially chronic or trauma-rooted stress — is silently
+  eroding your gut lining and accelerating how fast your immune system ages. It may
+  be the most important thing to address.
+caveats:
+- Broad claim; stress-gut-immune pathway is plausible and supported in literature
+  but complex and multifactorial.
+- Single-expert source.
+linked_to_topics:
+- inflammaging
+- autoimmune
+- microbiome
+- dysbiosis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-8
+  location: 'Session 8 — Q&A: autoimmune and gut health connection'
+  quote: Chronic stress is the most under-addressed issue related to gut health of
+    anything that I have looked at... the complex inter-relationship between adverse
+    childhood events and trauma and how that ages our bodies faster.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

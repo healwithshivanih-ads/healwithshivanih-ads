@@ -1,0 +1,33 @@
+slug: beta-glucuronidase-regulates-estrogen-availability-and-excretion
+statement: Beta-glucuronidase, an enzyme produced by specific gut bacteria, cleaves
+  conjugated estrogens in the gut, regulating how much is excreted versus reabsorbed
+  and made bioavailable.
+evidence_tier: plausible_emerging
+rationale: Beta-glucuronidase activity and its role in deconjugating estrogens in
+  the gut is mechanistically supported in the literature. The 'Goldilocks' framing
+  of optimal enzyme levels is clinically plausible but not RCT-validated. Single-expert
+  source.
+coaching_translation: There's an enzyme in your gut that acts like a recycling switch
+  for estrogen. Too much activity and estrogen gets recycled instead of eliminated;
+  balance is the goal.
+out_of_scope_notes: Interpreting beta-glucuronidase values on GI-MAP or other stool
+  tests is clinician scope. Do not advise clients on enzyme supplementation.
+caveats:
+- Optimal beta-glucuronidase range is not defined in this document.
+- Single-expert source.
+linked_to_topics:
+- estrobolome
+- dysbiosis
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-3
+  location: Beta-Glucuronidase Section
+  quote: There's an enzyme that I mentioned earlier called beta glucuronidase. It's
+    an enzyme that helps break down estrogen and it influences how we recycle our
+    estrogen. It's produced by a specific gut bacteria and it helps regulate estrogen
+    availability.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

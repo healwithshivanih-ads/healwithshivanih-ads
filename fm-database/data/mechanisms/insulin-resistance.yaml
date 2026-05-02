@@ -1,0 +1,47 @@
+slug: insulin-resistance
+display_name: Insulin Resistance
+aliases:
+  - hyperinsulinemia
+  - blood-sugar-instability
+  - metabolic-dysfunction
+category: metabolic
+summary: |
+  Reduced cellular responsiveness to insulin (especially at muscle, liver,
+  adipose), driving compensatory hyperinsulinemia long before fasting glucose
+  rises. The single most important upstream driver of metabolic syndrome,
+  PCOS phenotype 1, midlife weight gain, NAFLD, and cardiovascular disease
+  in modern populations. Insulin elevation precedes HbA1c diagnosis by
+  ~10 years.
+upstream_drivers:
+  - chronic carbohydrate excess (especially refined)
+  - sedentary lifestyle (reduced muscle glucose disposal)
+  - poor sleep
+  - chronic stress (cortisol)
+  - visceral adiposity
+  - inflammation
+  - perimenopausal estrogen decline
+downstream_effects:
+  - elevated triglycerides, low HDL (TG:HDL > 2-3)
+  - small dense LDL
+  - hepatic de novo lipogenesis → NAFLD
+  - androgen excess in women → PCOS phenotype
+  - inflammation amplification
+  - eventual β-cell exhaustion → T2D
+related_mechanisms:
+  - hpa-axis-dysregulation
+  - chronic-inflammation
+  - visceral-adiposity
+linked_to_topics:
+  - pcos
+  - perimenopause
+  - inflammation
+sources:
+  - id: vitaone-evidence-tiers
+    location: TOPIC 2 Insulin Resistance & Diabetes
+  - id: vitaone-skill-practice-guide
+    location: practice_guide.md, Metabolic section
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

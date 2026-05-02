@@ -1,0 +1,41 @@
+slug: glycine
+display_name: Glycine
+category: amino_acid
+forms_available:
+- powder
+- capsule
+- tablet
+typical_dose_range:
+  powder:
+    min: 3
+    max: 5
+    unit: g
+  capsule:
+    min: 3
+    max: 5
+    unit: g
+  tablet:
+    min: 3
+    max: 5
+    unit: g
+timing_options:
+- evening
+- bedtime
+take_with_food: optional
+linked_to_topics: []
+linked_to_claims: []
+notes_for_coach: Glycine has evidence for improving subjective sleep quality and reducing
+  sleep latency. Powder form mixes easily into water or herbal tea. Consider pairing
+  with magnesium glycinate for sleep stack.
+notes_for_client: Mix 3–5 g of glycine powder into water or a warm drink in the evening
+  before bed.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-practice-guide
+  location: Sleep Optimization > Sleep-supporting supplements
+  quote: Glycine (3-5g)
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

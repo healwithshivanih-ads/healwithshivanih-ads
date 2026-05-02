@@ -1,0 +1,36 @@
+slug: bacopa-monnieri
+display_name: Bacopa Monnieri
+category: herb
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 300
+    max: 600
+    unit: mg
+  tablet:
+    min: 300
+    max: 600
+    unit: mg
+timing_options:
+- morning
+- with_breakfast
+- with_lunch
+take_with_food: optional
+notes_for_coach: Adaptogenic herb with cognitive-enhancing and stress-reducing properties;
+  effects are best seen with consistent use over 4–6 weeks.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: Bacopa Monnieri - Cognitive enhancement, stress - 300–600 mg/day - Morning
+    or with meals
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

@@ -1,0 +1,35 @@
+slug: copper-gluconate
+display_name: Copper (Gluconate)
+category: mineral
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 1
+    max: 2
+    unit: mg
+  tablet:
+    min: 1
+    max: 2
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+notes_for_coach: Copper and zinc compete for absorption; always balance with zinc;
+  typically added when supplementing zinc long-term.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 3 - Supplement Table
+  quote: Copper (Gluconate) - Collagen, iron metabolism - 1–2 mg/day - With meals
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

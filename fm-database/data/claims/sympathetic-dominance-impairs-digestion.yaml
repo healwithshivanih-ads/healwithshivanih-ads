@@ -1,0 +1,35 @@
+slug: sympathetic-dominance-impairs-digestion
+statement: Eating while in a sympathetically dominant (stressed) state reduces digestive
+  enzyme output, hydrochloric acid production, gut motility, and causes microbiome
+  shifts — impairing food breakdown and absorption.
+evidence_tier: plausible_emerging
+rationale: The autonomic nervous system's role in digestive physiology is well established
+  (parasympathetic = 'rest and digest'). The specific claim that sympathetic dominance
+  at mealtimes causes all enumerated deficits is mechanistically coherent and widely
+  cited in FM, though RCT evidence for meal-specific context is limited.
+coaching_translation: Your body can't digest food well when it's in 'fight or flight'
+  mode. Taking a few deep breaths before meals, sitting down, and eating without distractions
+  activates the parasympathetic system and meaningfully improves digestion.
+caveats:
+- Single-expert source.
+- Magnitude of acute sympathetic-state effects on digestion in healthy adults is not
+  well-quantified in RCTs.
+linked_to_topics:
+- food-sensitivities
+- microbiome
+- leaky-gut
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-2
+  location: Stress and food sensitivities
+  quote: If we're in the sympathetic side of our nervous system our body is literally
+    not in the right frame of mind to be able to break down and digest food… We literally
+    will get a decline in digestive enzymes. We will get a decline in hydrochloric
+    acid. We will get changes in motility in the gut. The gut will not move properly.
+    And we actually get microbiome shifts.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

@@ -1,0 +1,22 @@
+id: vitaone-mind-map-tool
+title: Vitaone Education Tools — Mind Maps
+source_type: expert_consensus
+quality: moderate
+authors:
+  - VitaOne Education
+url: https://tools.vitaone.in/mind-maps
+notes: |
+  Hand-curated clinical mind maps published by VitaOne Education at
+  tools.vitaone.in/mind-maps. Three maps imported on 2026-04-30:
+  Functional Medicine Approach to Hypothyroidism (199 nodes, 7 branches),
+  Adrenal Fatigue (287 nodes, 6 branches), Hypertension (388 nodes, 13
+  branches).
+
+  Source-tier: expert_consensus / moderate. The maps reflect VitaOne's
+  clinical synthesis. Specific node-level claims should be re-verified
+  against primary literature before being asserted as 'strong' tier in
+  derived catalogue entities.
+version: 1
+status: active
+updated_at: 2026-04-30
+updated_by: shivani

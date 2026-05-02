@@ -1,0 +1,41 @@
+slug: l-carnitine
+display_name: L-Carnitine
+category: amino_acid
+forms_available:
+- capsule
+- liquid
+- powder
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 2000
+    unit: mg
+  liquid:
+    min: 500
+    max: 2000
+    unit: mg
+  powder:
+    min: 500
+    max: 2000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+notes_for_coach: Supports fat metabolism and mitochondrial health; useful in PCOS,
+  fatigue, and workout recovery.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: L-Carnitine - Fat metabolism, energy production - 500–2000 mg/day - Before
+    meals or workout
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani
