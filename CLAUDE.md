@@ -14,7 +14,25 @@ published plans as JSON artifacts.
 
 ## Status
 
-**v0.27 (current)** — Backlog triage CLI (clean / show / promote / reject):
+**v0.28 (current)** — Path B turn 2: Plan editor + Assess workflow in Next.js:
+- **Plan editor** (`fm-database-web/src/app/plans/[slug]/`):
+  - New `lib/fmdb/writer.ts` — `writePlan()` with bucket routing (drafts/ready/published/superseded/revoked), versioned filenames where appropriate, cross-bucket cleanup so a status change doesn't leave orphans, ISO `updated_at` bump.
+  - New `actions.ts` Server Action `updatePlan(slug, patch)` — re-loads canonical plan first to avoid clobbering concurrent edits, refuses non-draft writes, calls `revalidatePath('/plans')` + `revalidatePath('/plans/[slug]')`.
+  - New `plan-editor.tsx` client component with all 10 tabs. Fully wired: Assessment (3 multi-selects + driver list-of-objects), Supplements (full SupplementItem editor), Tracking (habits + monitor symptoms + recheck questions), Nutrition (pattern + meal_timing + cooking + remedies), Resources (multi-select), Notes & Raw. Stubbed: Lifestyle, Education, Labs, Referrals (all list-of-Card pattern, copy from Supplements).
+  - New `components/multi-select.tsx` — shared search-as-you-type picker (slug stored, label shown). Used in 7 places.
+  - Editor locked when `status != 'draft'`.
+  - Round-trip smoke test: edited `notes_for_coach` on a real draft, confirmed YAML write + `updated_at` bump, restored from MD5-verified backup. Final MD5 matches original.
+- **Assess & Suggest workflow** (`fm-database-web/src/app/assess/`):
+  - **Architectural decision: shell out to Python.** New `scripts/assess.py` and `scripts/generate-draft.py` — thin stdin/stdout JSON shims that import `fmdb.assess.suggester.synthesize` and `fmdb_ui/app.py::generate_plan_from_suggestions`. Avoids re-implementing prompt cache + tool-use in TS; keeps Python as the single source of truth for AI calls.
+  - New `lib/fmdb/anthropic.ts` (Server Actions: `runAssess`, `generateDraftFromSuggestions`, `saveClientUpload`) shells out via `execFile`, 90s timeout, 32MB maxBuffer. Pure types split into `anthropic-types.ts` (Next 16 forbids non-async exports from `'use server'` files).
+  - New `app/assess/page.tsx` (RSC loads symptoms + topics + clients in parallel) + `assess-client.tsx` (interactive UI with file uploaders + per-suggestion include checkboxes + draft-generation button that redirects to `/plans/<slug>`).
+  - Sidebar-nav gets "🧠 Assess" link.
+  - Smoke test: dry-run shim returned `ok=true`, session persisted, generate-draft produced a clean draft YAML; test artifacts removed.
+- **Build + type-check both clean.** Routes: `/`, `/catalogue`, `/catalogue/[kind]/[slug]`, `/plans`, `/plans/[slug]`, `/assess` all building.
+- **Known surprise:** `subgraph_size_bytes` for one symptom + one topic was ~680KB JSON — much bigger than the 35K-token CLAUDE.md estimate. Worth profiling if real-world cost feels off (the size is bytes-of-JSON, not tokens — but still worth a look).
+- **TODOs for next turn:** Lifestyle/Education/Labs/Referrals tabs (same Card pattern as Supplements), nutrition `add[]`/`reduce[]` editors, multi-turn chat panel, session timeline on `/assess`, plan-check sidebar (shell out to `fmdb plan-check`), evidence-tier badges on suggestion items, catalogue-additions backlog auto-capture, refactor `MultiSelect` (Assess agent built a local copy not knowing the Plan-editor agent had built a shared one — small dedup).
+
+**v0.27** — Backlog triage CLI (clean / show / promote / reject):
 - 5 new CLI commands for working through the 612-item backlog from v0.25:
   - `fmdb backlog-list [--status open|added|rejected|all] [--kind X] [--search S] [--limit N]` — browse, sorted by `seen_count` desc.
   - `fmdb backlog-show <id>` — full YAML record (incl. `session_refs`).
@@ -521,4 +539,4 @@ Sidebar pages: 🧠 Assess & Suggest (default), 📋 Plans, 👥 Clients, 🧭 M
 9. **Edit / Delete client UI** — built. Active-plan-blocks-delete safeguard in place.
 10. **JSON export contract for Project 2 (mobile app)** — deferred indefinitely; desktop-first for now.
 11. **Native Mac wrapper (Tauri / Electron / SwiftUI)** — engine is UI-agnostic; wrap when the workflow stabilises.
-12. **Path B Next.js port — continue.** Scaffold landed in v0.26. Next priorities: structured Plan editor, Clients page, Resources Toolkit page, Assess & Suggest with AI suggester wiring, mechanism/symptom/claim detail pages, Mind Map Mermaid renderer.
+12. **Path B Next.js port — continue.** Plan editor (6/10 tabs wired) + Assess workflow (shell-out to Python) shipped in v0.28. Next priorities: remaining 4 plan-editor tabs (Lifestyle / Education / Labs / Referrals), nutrition add/reduce editors, multi-turn chat panel, session timeline on `/assess`, plan-check sidebar, evidence-tier badges on suggestions, Clients page, Resources Toolkit page, mechanism/symptom/claim detail pages, Mind Map Mermaid renderer, MultiSelect dedup.
