@@ -190,86 +190,238 @@ Open follow-ups: seed `calcium` supplement (last warning); enrich `vitamin-a` an
 
 **Next:** Wire a real ingest run against the vitaone evidence_tiers.md to seed ~10-20 claims + supplements; then PDF + transcript loaders; then plan schema + publishing flow.
 
-## Architecture (Locked)
+## Architecture (current)
 
-### 17 Catalogue Entity Types
-1. Topic — clinical area
-2. Symptom — fuzzy matching
-3. Mechanism — physiology
-4. **Claim** — evidence-tiered assertion (first-class entity)
-5. Supplement — abstract compound (Layer A; brand-agnostic)
-6. Food — single item
-7. LabTest — clinician-only (read access for coach)
-8. LifestylePractice — single practice
-9. DietaryPattern — eating frameworks
-10. ReferralTrigger — red flags
-11. Source — citation registry
-12. Recipe — pantry meals
-13. HomeRemedy — churans, infused waters
-14. CookingAdjustment — cookware, oil swaps
-15. MiscIntervention — catch-all
-16. Protocol — multi-week programs
-17. EducationalModule — learning units
+### Catalogue Entity Types — 9 built, 8 deferred
 
-### Authoring Model: Clinician-Partnered
-- Coach writes lifestyle, nutrition education sections
-- Clinician writes & signs prescriptive sections (supplements, labs)
+**Built:**
+1. **Source** — citation registry (12 entries: vitaone skill, evidence tiers ingest, practice guide, 8 Thurlow microbiome sessions, vitaone mind-map tool, vitaone supplementation dosage)
+2. **Topic** — clinical area (~26 entries: thyroid, perimenopause, anxiety, insomnia, pcos, microbiome, dysbiosis, autoimmune, inflammation, estrobolome, gut-hormone-axis, gut-brain-axis, etc.)
+3. **Mechanism** — physiology (~10 entries: hpa-axis-dysregulation, leaky-gut, insulin-resistance, estrogen-decline, scfa-production, etc.). Alias-aware resolution canonicalizes variant slugs.
+4. **Symptom** — client-facing experiences with severity + category (~10 entries: bloating, brain-fog, fatigue, joint-pain, etc.). Alias-aware lookup against `topic.common_symptoms` prose.
+5. **Claim** — evidence-tiered assertion (~128 entries). First-class entity citing source + linked to topics/mechanisms/supplements.
+6. **Supplement** — abstract compound (~72 entries after Vitaone Supplementation Dosage ingest)
+7. **CookingAdjustment** — cookware/oil/water/food-prep swaps (~3 entries)
+8. **HomeRemedy** — churans, infused waters, kashayams, kitchen remedies (~3 entries)
+9. **MindMap** — hand-curated clinical mind maps (~3 entries: 874 nodes scraped from vitaone for hypothyroidism, adrenal fatigue, hypertension)
+
+**Deferred (not yet modeled):**
+- Food, LabTest, LifestylePractice, DietaryPattern, Practice (currently freeform strings on Plan), Recipe, Protocol, EducationalModule, MiscIntervention. Promote to entities only after observing duplication in real plans.
+
+### Authoring Model — Single-author (revised v0.12)
+
+The original design called for clinician-partnered authoring with field-level signatures. **Per Shivani 2026-04-29:** single-author for v1 — coach (Shivani) authors all sections. The `evidence_tier: confirm_with_clinician` tag in catalogue entries is the surface where the AI sanity check warns against authoring without clinician input. Clinician sign-off layer can be added later without changing the data model.
 
 ### Evidence Tiers
 `strong` | `plausible_emerging` | `fm_specific_thin` | `confirm_with_clinician`
 
-### Plan Lifecycle
-`draft` → `in_review` → `awaiting_clarification` → `ready_to_publish` → `published` → `superseded` | `revoked`
+Surfaced as colored badges (🟢 / 🟡 / 🟠 / 🔴) on every catalogue-referencing suggestion in the UI, with expandable source-citation panels.
 
-### Storage
-- YAML catalogue committed to repo (this repo)
-- Plan/client data: gitignored
-- Audit log: JSONL
+### Source Quality
+`high` | `moderate` | `low`. Combined with `source_type` (internal_skill | peer_reviewed_paper | textbook | clinical_guideline | expert_consensus | book | website | llm_synthesis | other) so `llm_synthesis` outputs auto-throttle to lower evidence tiers in the extractor.
+
+### Validator: errors vs warnings
+- **Errors** block: schema failures, duplicate slugs, self-references, unfilled required citations, internal cross-field violations (e.g., `typical_dose_range` keyed to a form not in `forms_available`).
+- **Warnings** are non-blocking: unresolved cross-references (forward references — preserved in canonical files; resolve auto when the target is added). `forms_available` declared without `typical_dose_range` is a warning (stub supplement, dose TBD).
+
+`fmdb.cli pending-refs` lists every unresolved cross-ref grouped by target — the "what catalogue stubs do I owe?" view.
+
+### Atomic Approval
+`fmdb.cli approve <batch>` pre-flights validation against the simulated post-state (current canonical + about-to-promote files merged in memory). Files only move to disk if zero errors. Rollback on commit failure. **No half-committed state.**
+
+`--update` triggers smart-merge (union lists, prefer non-empty new scalars); `--overwrite` is the rare destructive case.
+
+### Plan Lifecycle (revised v0.12)
+`draft → ready_to_publish → published → superseded | revoked`
+
+Simplified from the original 6-state design after dropping clinician sign-off. `ready_to_publish` requires plan-check pass; `published` is irreversible (edits = new plan with `supersedes:` field).
+
+### Storage Layout
+- **Catalogue YAML** → `fm-database/data/` (committed to repo; alphabetical entity dirs: `sources/`, `topics/`, `mechanisms/`, `symptoms/`, `claims/`, `supplements/`, `cooking_adjustments/`, `home_remedies/`, `mindmaps/`).
+- **Catalogue transients** → `fm-database/data/staging/` (per-batch ingest staging) and `data/_audit.jsonl` and `data/_backlog.yaml` (gitignored).
+- **Client + Plan PHI** → `~/fm-plans/` (separate from repo). Per-client dirs: `clients/<id>/{client.yaml, photo.jpg, files/, sessions/}`. Plans bucket-routed by status: `drafts/`, `ready/`, `published/<slug>-v<n>.yaml`, `superseded/`, `revoked/`. Override via `FMDB_PLANS_DIR`.
+- **Resources Toolkit** (shareable artifacts) → `~/fm-resources/resources/<slug>.yaml`. Files referenced by absolute path; can live anywhere. Override via `FMDB_RESOURCES_DIR`.
 
 ## File Map
 
 ```
 fm-database/
-  fmdb/
+  fmdb/                           # Python package
     __init__.py
-    enums.py        # 8 enums (Timing, DoseUnit, EvidenceTier, ...)
-    models.py       # Pydantic Supplement + supporting classes
-    loader.py       # load_supplements, load_supplement
-    validator.py    # validate_all (7 check categories)
-    cli.py          # validate, list, show <slug>
+    enums.py                      # ~14 enums (DoseUnit, EvidenceTier, SourceType,
+                                  #   PlanStatus, MechanismCategory, SymptomCategory, ...)
+    models.py                     # Pydantic models for all 9 catalogue entities
+                                  #   + sub-models (DoseRange, Interactions, etc.)
+    loader.py                     # load_<entity>, load_<entities> for each type
+    validator.py                  # load_all, validate_loaded, overlay,
+                                  #   alias-aware resolution, error/warning split
+    cli.py                        # argparse front door — read commands, ingest pipeline,
+                                  #   client + plan CRUD, audit
+    backlog.py                    # catalogue-additions backlog (data/_backlog.yaml)
+    ingest/                       # AI ingest pipeline
+      types.py                    # IngestRequest, ExtractionResult, EntityType
+      loaders.py                  # file → text (md/txt/pdf/image; html stub);
+                                  #   pdf/image return stub-text + raw bytes attached
+                                  #   as document/image content blocks
+      extractor.py                # Extractor Protocol; Stub + Anthropic impls;
+                                  #   tool-use for structured output; cached system
+                                  #   prompt + schema; streaming for max_tokens > 8k
+      staging.py                  # enrich + Pydantic-validate + write
+                                  #   data/staging/<batch>/<entity>/<slug>.yaml;
+                                  #   atomic approve with simulated-post-state check
+                                  #   and smart-merge on --update
+      audit.py                    # JSONL audit log
+    plan/                         # Client + Plan layer (PHI; storage outside repo)
+      models.py                   # Client (with Measurements + medical_history),
+                                  #   Plan, Session, sub-models (HypothesizedDriver,
+                                  #   PracticeItem, NutritionPlan, EducationModule,
+                                  #   SupplementItem, LabOrderItem, ReferralItem,
+                                  #   Tracking, ChatTurn, UploadedFileRef, ...)
+      storage.py                  # plans_root() resolver, per-client dirs,
+                                  #   session CRUD, file storage, auto-migration
+                                  #   from legacy flat clients/<id>.yaml layout
+      checker.py                  # deterministic plan check: catalogue xref +
+                                  #   contraindication + scope + evidence-tier
+                                  #   honesty; severity CRITICAL | WARNING | INFO
+    assess/                       # Decision-support layer
+      subgraph.py                 # build focused catalogue context bundle
+                                  #   (~35K tokens) from selected symptoms+topics
+      suggester.py                # Anthropic call: structured suggestions tool-use
+                                  #   + multi-turn chat with cached context;
+                                  #   honors evidence_tier; food-log vs lab handling;
+                                  #   India context defaults; medical_history aware
+      mindmap.py                  # build_tree (auto from catalogue cross-refs);
+                                  #   curated_to_mermaid (for MindMap entities);
+                                  #   to_mermaid renderer
+    resources/                    # Resources Toolkit (separate ~/fm-resources/)
+      models.py                   # Resource entity
+      storage.py                  # CRUD; files referenced by absolute path
+  fmdb_ui/
+    app.py                        # Streamlit single-file UI; 7 sidebar pages:
+                                  #   Assess & Suggest, Plans, Clients, Mind Map,
+                                  #   Resources Toolkit, Catalogue Browser,
+                                  #   Catalogue Backlog. Auto-evicts stale fmdb
+                                  #   modules from sys.modules on each script
+                                  #   rerun (Streamlit cache-hell fix).
   data/
-    supplements/    # one YAML per supplement
+    sources/                      # one YAML per source (12 entries)
+    topics/                       # ~26 entries
+    mechanisms/                   # ~10 entries
+    symptoms/                     # ~10 entries
+    claims/                       # ~128 entries
+    supplements/                  # ~72 entries
+    cooking_adjustments/          # 3 entries
+    home_remedies/                # 3 entries
+    mindmaps/                     # 3 entries (vitaone scrape)
+    staging/                      # gitignored — ephemeral candidate batches
+    _audit.jsonl                  # gitignored — append-only audit log
+    _backlog.yaml                 # gitignored — catalogue additions backlog
   README.md
-  requirements.txt
+  requirements.txt                # pydantic, pyyaml, anthropic, python-dotenv, streamlit
+  run-fmdb.sh                     # robust launcher — kills zombies, clears pycache,
+                                  #   disables runOnSave, then starts streamlit
+  .env                            # gitignored — ANTHROPIC_API_KEY, FMDB_EXTRACTOR,
+                                  #   FMDB_USER, FMDB_EXTRACTOR_MODEL
+  .venv/                          # gitignored — local virtualenv
 ```
 
 ## Content Sources
 
-Tier 1 (own material) at `.claude/skills/vitaone-fm-reference/`:
+**Tier 1 (own material)** at `.claude/skills/vitaone-fm-reference/`:
 - `SKILL.md` — coaching scope (DO NOT use for prescriptive content rules)
 - `references/topic_index.md` — symptom clusters, red flags
-- `references/evidence_tiers.md` — 70+ tiered claims (model for Claim entity)
-- `references/practice_guide.md` — coaching guidance (LifestylePractice / DietaryPattern / HomeRemedy seeds)
-- `references/full_kb.md` — 122 posts
+- `references/evidence_tiers.md` — 70+ tiered claims (model for Claim entity); fully ingested as TOPIC 1 Thyroid → 11 claims + 1 topic + 2 supplement stubs
+- `references/practice_guide.md` — coaching guidance (DietaryPattern / HomeRemedy seeds); fully ingested → 13 supplements with dose info
+- `references/full_kb.md` — 122 posts (not yet ingested)
+
+**Tier 2 (licensed external)**:
+- Cynthia Thurlow *Microbiome Mondays* course — 8 transcripts at `~/Documents/Codex/.../transcripts/kb/`. Sessions 1-8 fully ingested → 102 claims + 7 new topics + 5 supplements.
+- VitaOne Education course PDFs — 31 PDFs at `~/fm-plans/Vitaone Resources from course/`. Supplementation Dosage fully ingested (49 new supplements + 15 enrichments). Phase 1 (10 cheatsheets) in progress at v0.20 commit. ~30 PDFs remaining.
+- VitaOne mind-maps tool (`tools.vitaone.in/mind-maps`) — 3 hand-curated maps scraped (874 nodes total) and stored as `MindMap` entities.
 
 ## Run
 
-```
+### Setup (one time)
+```bash
 cd fm-database
-pip install -r requirements.txt
-python -m fmdb.cli validate
-python -m fmdb.cli list
-python -m fmdb.cli show magnesium-glycinate
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+# create .env with ANTHROPIC_API_KEY for ingest + assess
 ```
 
-## Roadmap
+### Streamlit UI (the primary surface)
+```bash
+./run-fmdb.sh                                # opens http://localhost:8501
+```
+Sidebar pages: 🧠 Assess & Suggest (default), 📋 Plans, 👥 Clients, 🧭 Mind Map, 🧰 Resources Toolkit, 📚 Catalogue Browser, 📝 Catalogue Backlog.
 
-1. `Source` entity — registers vitaone skill + future inputs
-2. `Topic` entity — so `Supplement.linked_to_topics` resolves
-3. `Claim` entity — evidence-tiered assertions from evidence_tiers.md
-4. Seed ~20 supplements from vitaone content
-5. Ingestion pipeline — AI extraction → review CLI → approve
-6. Plan schema + publishing flow (lifecycle, AI sanity check, diff-guard)
-7. Plan storage (drafts/published/audit logs)
-8. Clinician signing workflow for prescriptive sections
-9. JSON export contract for Project 2 (mobile app)
+### CLI — read commands
+```bash
+.venv/bin/python -m fmdb.cli validate         # full catalogue check
+.venv/bin/python -m fmdb.cli pending-refs     # unresolved cross-refs grouped by target
+.venv/bin/python -m fmdb.cli {sources,topics,mechanisms,symptoms,claims,supplements,
+                              cooking-adjustments,home-remedies,mindmaps}
+.venv/bin/python -m fmdb.cli show-{source,topic,mechanism,symptom,claim,
+                                   supplement,cooking-adjustment,home-remedy,mindmap} <slug>
+```
+
+### CLI — ingest pipeline
+```bash
+# Stub backend (no API key required — exercises plumbing)
+.venv/bin/python -m fmdb.cli ingest path/to/doc.md \
+    --source-id my-doc --source-type book --source-quality moderate \
+    --extractor stub
+
+# Anthropic backend (set ANTHROPIC_API_KEY first)
+.venv/bin/python -m fmdb.cli ingest path/to/doc.md \
+    --source-id ev-tiers-thyroid \
+    --source-title "Vitaone Evidence Tiers — Thyroid" \
+    --source-type internal_skill \
+    --internal-path .claude/skills/.../evidence_tiers.md \
+    --instructions "Extract Topic 1 Thyroid only..."
+
+.venv/bin/python -m fmdb.cli review                       # list batches
+.venv/bin/python -m fmdb.cli review <batch-id>            # show one
+.venv/bin/python -m fmdb.cli approve <batch-id> --update  # smart-merge
+.venv/bin/python -m fmdb.cli approve <batch-id> --only topics/insomnia
+.venv/bin/python -m fmdb.cli reject  <batch-id>
+.venv/bin/python -m fmdb.cli audit -n 50
+```
+
+### CLI — client + plan
+```bash
+.venv/bin/python -m fmdb.cli client-new <id> --intake-date YYYY-MM-DD --age-band 45-50 --sex F
+.venv/bin/python -m fmdb.cli client-show <id>
+.venv/bin/python -m fmdb.cli client-list
+.venv/bin/python -m fmdb.cli client-edit <id>             # opens $EDITOR
+
+.venv/bin/python -m fmdb.cli plan-new <client-id> <plan-slug>
+.venv/bin/python -m fmdb.cli plan-add-{topic,symptom,supplement} <plan-slug> ...
+.venv/bin/python -m fmdb.cli plan-show <plan-slug>
+.venv/bin/python -m fmdb.cli plan-edit <plan-slug>        # opens $EDITOR
+.venv/bin/python -m fmdb.cli plan-check <plan-slug>       # deterministic check
+.venv/bin/python -m fmdb.cli plan-list [--client <id>] [--status <name>]
+```
+
+## Roadmap (what's next)
+
+**Done (v0.2 → v0.20):**
+- ✅ All 9 catalogue entity types built and seeded
+- ✅ AI ingestion pipeline (PDF + markdown + image attachments; streaming)
+- ✅ Plan + Client layer with sessions, history-aware Analyze, deterministic check
+- ✅ Streamlit UI with Assess workflow + multi-turn chat + Mind Map + Resources Toolkit
+- ✅ Catalogue backlog with auto-capture
+- ✅ Atomic approval, smart-merge, alias-aware resolution
+
+**Outstanding:**
+1. **Finish PDF ingest pass** — ~30 VitaOne PDFs remaining (~$15 to do all). Phase 1 (10 cheatsheets) in flight at v0.20 commit.
+2. **Plan publish + diff-guard** — wire `plan-submit` (draft → ready_to_publish) and `plan-publish` (ready → published, irreversible, freezes catalogue snapshot SHA). Plus `plan-diff <v1> <v2>` and `plan-supersede`.
+3. **AI sanity check on plans** — layer Anthropic call on top of deterministic checker for coaching-translation accuracy and plan-vs-assessment coherence.
+4. **Markdown / PDF render of plan** for client-facing print-ready output.
+5. **Wire Resources into Plan editor** — "attach resource" buttons per plan section; auto-generate per-client folder of selected handouts.
+6. **Cross-link curated MindMap nodes to catalogue entities** (currently every node is a plain label; could fuzzy-match to existing slugs OR hand-author the linking).
+7. **Mine curated MindMap nodes → backlog suggestions** (874 imported nodes; many would surface useful catalogue additions).
+8. **Promote freeform → entities when sprawl emerges:** Practice, TrackingHabit, Food, LabTest, Recipe, Protocol, EducationalModule.
+9. **Edit / Delete client UI** — built. Active-plan-blocks-delete safeguard in place.
+10. **JSON export contract for Project 2 (mobile app)** — deferred indefinitely; desktop-first for now.
+11. **Native Mac wrapper (Tauri / Electron / SwiftUI)** — engine is UI-agnostic; wrap when the workflow stabilises.
