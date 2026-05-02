@@ -1,0 +1,28 @@
+slug: garlic
+display_name: Garlic
+category: other
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+take_with_food: optional
+evidence_tier: fm_specific_thin
+interactions:
+  with_supplements: []
+  with_medications: []
+  with_foods: []
+contraindications:
+  conditions: []
+  medications: []
+  life_stages: []
+linked_to_topics: []
+sources:
+- id: vitaone-mind-map-tool
+  location: Surfaced from MindMap 'hypertension' under branch 'ACE Inhibitors (Foods)'
+    (depth 2).
+  quote: ''
+notes_for_coach: Surfaced from MindMap 'hypertension' under branch 'ACE Inhibitors
+  (Foods)' (depth 2).
+status: active
+version: 1
+updated_at: '2026-05-02'
+updated_by: shivani

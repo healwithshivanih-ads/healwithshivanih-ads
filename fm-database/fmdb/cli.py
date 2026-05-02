@@ -3,6 +3,8 @@ import os
 import sys
 from pathlib import Path
 
+import yaml
+
 # Auto-load .env from the fm-database project root so ANTHROPIC_API_KEY,
 # FMDB_EXTRACTOR, FMDB_USER, etc. are available without requiring the user
 # to `source .env` before every command. Silent no-op if dotenv isn't installed.
@@ -92,6 +94,206 @@ def cmd_pending_refs(args: argparse.Namespace) -> None:
         print(f"\n{kind} {slug!r}  (referenced by {len(refs)})")
         for w in refs:
             print(f"  ← {w.source_entity} {w.source_slug}.{w.field}")
+
+
+# ---------------------------------------------------------------------------
+# Backlog triage
+# ---------------------------------------------------------------------------
+
+
+_STUB_KIND_DIR = {
+    "topic": "topics",
+    "mechanism": "mechanisms",
+    "symptom": "symptoms",
+    "supplement": "supplements",
+    "cooking_adjustment": "cooking_adjustments",
+    "home_remedy": "home_remedies",
+}
+
+# Heuristic noise-detection. A backlog item is "noisy" (likely prose, not an
+# entity name) if any of these patterns hit. Tuned conservatively — false
+# positives waste a coach's time, false negatives just leave items in the queue.
+_NOISE_TOKENS = (
+    " and ", " or ", " to ", " is ", " are ", " was ", " were ",
+    " lowers ", " raises ", " triggers ", " causes ", " inhibits ",
+    " stimulates ", " activates ", " reduces ", " increases ",
+    " from ", " of the ", " into ", " during ", " between ",
+)
+
+
+def _is_noise(name: str) -> tuple[bool, str]:
+    n = name.strip()
+    if not n:
+        return True, "empty"
+    if len(n.split()) > 5:
+        return True, f">5 words ({len(n.split())})"
+    nl = " " + n.lower() + " "
+    for tok in _NOISE_TOKENS:
+        if tok in nl:
+            return True, f"contains {tok.strip()!r}"
+    if n.endswith(("?", ".")) and " " in n:
+        return True, "looks like a sentence"
+    if n[0].isdigit() and "%" in n:
+        return True, "looks like a stat ('50% rise...')"
+    return False, ""
+
+
+def _slugify(name: str) -> str:
+    import re
+    s = name.lower().strip()
+    s = re.sub(r"[^a-z0-9]+", "-", s)
+    return s.strip("-")
+
+
+def cmd_backlog_list(args: argparse.Namespace) -> None:
+    from . import backlog as backlog_mod
+    items = backlog_mod.list_items(DATA_DIR, status=None if args.status == "all" else args.status)
+    if args.kind:
+        items = [it for it in items if it.get("kind") == args.kind]
+    if args.search:
+        s = args.search.lower()
+        items = [it for it in items if s in it.get("name", "").lower()]
+    if args.limit:
+        items = items[: args.limit]
+    if not items:
+        print("(no backlog items match)")
+        return
+    for it in items:
+        marker = {"open": " ", "added": "✓", "rejected": "✗"}.get(it.get("status"), "?")
+        print(f"  [{marker}] {it['id']}  {it['kind']:12s}  ({it.get('seen_count', 1)}×)  {it['name']}")
+
+
+def cmd_backlog_show(args: argparse.Namespace) -> None:
+    from . import backlog as backlog_mod
+    items = backlog_mod._load(DATA_DIR)
+    for it in items:
+        if it.get("id") == args.id:
+            print(yaml.safe_dump(it, sort_keys=False, allow_unicode=True))
+            return
+    print(f"backlog item not found: {args.id}", file=sys.stderr)
+    sys.exit(2)
+
+
+def cmd_backlog_clean(args: argparse.Namespace) -> None:
+    """Heuristic auto-reject obvious noise."""
+    from . import backlog as backlog_mod
+    items = backlog_mod.list_items(DATA_DIR, status="open")
+    rejects = []
+    for it in items:
+        is_noise, reason = _is_noise(it.get("name", ""))
+        if is_noise:
+            rejects.append((it, reason))
+    if not rejects:
+        print("(no obvious noise found in open items)")
+        return
+    print(f"Found {len(rejects)} candidate rejections (of {len(items)} open):\n")
+    by_reason: dict = {}
+    for it, reason in rejects:
+        by_reason.setdefault(reason, []).append(it)
+    for reason, group in sorted(by_reason.items(), key=lambda x: -len(x[1])):
+        print(f"  {len(group):4d}  reason={reason}")
+        for it in group[:3]:
+            print(f"          [{it['id']}] {it['kind']:10s}  {it['name']}")
+        if len(group) > 3:
+            print(f"          ... +{len(group) - 3} more")
+    if not args.apply:
+        print(f"\n(dry-run — pass --apply to mark all {len(rejects)} as rejected)")
+        return
+    for it, reason in rejects:
+        backlog_mod.update_status(DATA_DIR, it["id"], "rejected", note=f"auto-cleaned: {reason}")
+    print(f"\n✓ Marked {len(rejects)} items as rejected.")
+
+
+def cmd_backlog_promote(args: argparse.Namespace) -> None:
+    """Promote a backlog item to a stub catalogue YAML + mark item as added."""
+    from datetime import date as _date
+    from . import backlog as backlog_mod
+    items = backlog_mod._load(DATA_DIR)
+    item = next((it for it in items if it.get("id") == args.id), None)
+    if not item:
+        print(f"backlog item not found: {args.id}", file=sys.stderr)
+        sys.exit(2)
+    kind = args.kind or item["kind"]
+    if kind not in _STUB_KIND_DIR:
+        print(f"can't promote {kind!r} via stub — author manually", file=sys.stderr)
+        sys.exit(2)
+
+    slug = args.slug or _slugify(item["name"])
+    display_name = args.display_name or item["name"]
+    target = DATA_DIR / _STUB_KIND_DIR[kind] / f"{slug}.yaml"
+    if target.exists() and not args.force:
+        print(f"❌ already exists: {target}\n   pass --force to overwrite", file=sys.stderr)
+        sys.exit(2)
+
+    user = args.updated_by
+    today = _date.today().isoformat()
+    stub: dict = {
+        "slug": slug,
+        "display_name": display_name,
+    }
+    # `aliases` is supported on entities-with-aliases (topic, mechanism, symptom)
+    # but NOT on supplement / cooking_adjustment / home_remedy. Add per-kind below.
+    if kind in ("topic", "mechanism", "symptom"):
+        stub["aliases"] = []
+    # Kind-specific required fields with stub defaults
+    if kind == "topic":
+        stub["summary"] = (item.get("why") or f"Stub for {display_name}; needs full authoring.").strip()
+        stub["evidence_tier"] = "fm_specific_thin"
+    elif kind == "mechanism":
+        stub["category"] = "other"
+        stub["summary"] = (item.get("why") or f"Stub for {display_name}; needs full authoring.").strip()
+        stub["evidence_tier"] = "fm_specific_thin"
+    elif kind == "symptom":
+        stub["category"] = "other"
+        stub["severity"] = "common"
+        stub["description"] = (item.get("why") or f"Stub for {display_name}; needs full authoring.").strip()
+    elif kind == "supplement":
+        # Supplements have a denser required-field set (forms_available, dose, etc.)
+        # Build the minimum that passes Pydantic + validator.
+        stub["category"] = "other"
+        stub["forms_available"] = []
+        stub["typical_dose_range"] = {}
+        stub["timing_options"] = []
+        stub["take_with_food"] = "optional"
+        stub["evidence_tier"] = "fm_specific_thin"
+        stub["interactions"] = {"with_supplements": [], "with_medications": [], "with_foods": []}
+        stub["contraindications"] = {"conditions": [], "medications": [], "life_stages": []}
+        stub["linked_to_topics"] = []
+        # Validator requires at least one source on supplements. If the backlog
+        # item came from a MindMap mining pass, cite vitaone-mind-map-tool.
+        # Otherwise leave a placeholder note so the validator surfaces the gap.
+        if item.get("suggested_by") == "mindmap-mine":
+            stub["sources"] = [{"id": "vitaone-mind-map-tool",
+                                "location": (item.get("why") or "").strip(),
+                                "quote": ""}]
+        else:
+            stub["sources"] = [{"id": "vitaone-mind-map-tool",
+                                "location": "stub from backlog — needs proper citation",
+                                "quote": ""}]
+        stub["notes_for_coach"] = (item.get("why") or "").strip()
+    elif kind in ("cooking_adjustment", "home_remedy"):
+        stub["category"] = "other"
+        stub["description"] = (item.get("why") or f"Stub for {display_name}").strip()
+    stub["status"] = "active"
+    stub["version"] = 1
+    stub["updated_at"] = today
+    stub["updated_by"] = user
+
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(yaml.safe_dump(stub, sort_keys=False, allow_unicode=True))
+    backlog_mod.update_status(DATA_DIR, args.id, "added",
+                              note=f"promoted to {target.relative_to(DATA_DIR)}")
+    print(f"✓ promoted: {target.relative_to(DATA_DIR)}")
+    print(f"  → edit to fill in real content, then: fmdb show-{kind} {slug}")
+
+
+def cmd_backlog_reject(args: argparse.Namespace) -> None:
+    from . import backlog as backlog_mod
+    result = backlog_mod.update_status(DATA_DIR, args.id, "rejected", note=args.note or "")
+    if not result:
+        print(f"backlog item not found: {args.id}", file=sys.stderr)
+        sys.exit(2)
+    print(f"✗ rejected: {result['name']!r}")
 
 
 def cmd_list(args: argparse.Namespace) -> None:
@@ -1192,6 +1394,39 @@ def main() -> None:
     val.add_argument("--strict", action="store_true", help="treat warnings as errors (exit 1 on any)")
     val.set_defaults(func=cmd_validate)
     sub.add_parser("pending-refs", help="list unresolved cross-references grouped by target").set_defaults(func=cmd_pending_refs)
+
+    bl = sub.add_parser("backlog-list", help="list catalogue-additions backlog")
+    bl.add_argument("--status", choices=["open", "added", "rejected", "all"], default="open")
+    bl.add_argument("--kind", help="filter to one kind (topic / mechanism / ...)")
+    bl.add_argument("--search", help="case-insensitive substring filter on name")
+    bl.add_argument("--limit", type=int, default=50)
+    bl.set_defaults(func=cmd_backlog_list)
+
+    bs = sub.add_parser("backlog-show", help="show full record for one backlog item")
+    bs.add_argument("id")
+    bs.set_defaults(func=cmd_backlog_show)
+
+    bc = sub.add_parser("backlog-clean",
+                        help="heuristic auto-reject obvious noise from open backlog (sentences, prose, > 5 words)")
+    bc.add_argument("--apply", action="store_true",
+                    help="without this, dry-run only")
+    bc.set_defaults(func=cmd_backlog_clean)
+
+    bp = sub.add_parser("backlog-promote",
+                        help="promote a backlog item to a stub catalogue YAML and mark it as added")
+    bp.add_argument("id")
+    bp.add_argument("--slug", help="custom slug (defaults to slugified name)")
+    bp.add_argument("--display-name", help="custom display name (defaults to backlog name)")
+    bp.add_argument("--kind", choices=list(_STUB_KIND_DIR),
+                    help="override the backlog item's kind (the miner sometimes misclassifies)")
+    bp.add_argument("--force", action="store_true", help="overwrite existing file")
+    bp.add_argument("--updated-by", default=os.environ.get("FMDB_USER", "shivani"))
+    bp.set_defaults(func=cmd_backlog_promote)
+
+    br = sub.add_parser("backlog-reject", help="mark a backlog item as rejected")
+    br.add_argument("id")
+    br.add_argument("--note", help="why")
+    br.set_defaults(func=cmd_backlog_reject)
     sub.add_parser("list", help="list all supplements").set_defaults(func=cmd_list)
     sub.add_parser("sources", help="list all sources").set_defaults(func=cmd_sources)
     sub.add_parser("topics", help="list all topics").set_defaults(func=cmd_topics)

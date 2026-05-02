@@ -14,7 +14,19 @@ published plans as JSON artifacts.
 
 ## Status
 
-**v0.26 (current)** — MindMap link/mine apply pass + Path B scaffold (Next.js + shadcn):
+**v0.27 (current)** — Backlog triage CLI (clean / show / promote / reject):
+- 5 new CLI commands for working through the 612-item backlog from v0.25:
+  - `fmdb backlog-list [--status open|added|rejected|all] [--kind X] [--search S] [--limit N]` — browse, sorted by `seen_count` desc.
+  - `fmdb backlog-show <id>` — full YAML record (incl. `session_refs`).
+  - `fmdb backlog-clean [--apply]` — heuristic auto-reject obvious prose/noise. Rules: > 5 words, contains verb-like tokens (` and `, ` is `, ` lowers `, ` triggers `, ...), ends in `?`/`.`, looks like a stat (`50% rise...`). Dry-run by default.
+  - `fmdb backlog-promote <id> [--kind X] [--slug X] [--display-name X] [--force]` — promote a backlog item to a stub catalogue YAML and mark `added`. `--kind` overrides the miner's kind classification (which defaulted to `topic` for ~80% of mined items, often wrongly). Stub schema is kind-aware: `aliases` only on entities-that-have-aliases (topic/mechanism/symptom — NOT supplement); supplement stubs auto-cite `vitaone-mind-map-tool` with the mining context as `location` so the validator's "no sources cited" check passes.
+  - `fmdb backlog-reject <id> [--note X]` — explicit reject.
+- **First triage pass run:**
+  - `backlog-clean --apply`: 167 items auto-rejected as noise (47 with > 6 words, 20 with ` to `, 20 with ` and `, etc.).
+  - First test promotion: `Garlic` (mined under hypertension MindMap → "ACE Inhibitors (Foods)") promoted as supplement stub. Catalogue size: 171 → 172 supplements. 0 errors after promotion.
+  - **Remaining: 444 open items** awaiting manual triage (363 topic, 48 supplement, 19 mechanism, 14 symptom).
+
+**v0.26** — MindMap link/mine apply pass + Path B scaffold (Next.js + shadcn):
 - **Applied the MindMap linking + mining passes** from v0.25:
   - `fmdb mindmap-link --all --apply`: 60 nodes resolved (adrenal-fatigue 13, hypothyroidism 24, hypertension 23) — by kind: 26 supplement, 20 topic, 11 symptom, 3 mechanism. Mindmap YAMLs committed.
   - `fmdb mindmap-mine --add-to-backlog`: 645 unlinked depth-2+ nodes queued into `data/_backlog.yaml` (gitignored) for triage.
