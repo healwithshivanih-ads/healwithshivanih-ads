@@ -14,7 +14,23 @@ published plans as JSON artifacts.
 
 ## Status
 
-**v0.24 (current)** — AI check button in Lifecycle tab + client-facing plan render (Markdown + HTML):
+**v0.25 (current)** — Resources attach-to-plan + MindMap node linking & mining:
+- **Resources Toolkit ↔ Plan integration.** New `Plan.attached_resources: list[str]` field (Resource slugs). Default empty so existing plans load unchanged.
+- New 📎 Resources tab in the Plan editor (between Tracking and Notes & Raw): attached-list with detach buttons + filter UI (text search + kind dropdown + audience dropdown defaulting to client/both). One-click attach.
+- `render_markdown` and `render_html` now accept `resources=None` and emit a `## Resources` section between Education and Supplements; coach-only resources hidden in the client-facing artifact. Per-resource: bold title + description + URL or "(See attached file: <basename>)".
+- `cmd_plan_render` (CLI) and `render_client_export` (UI Lifecycle tab) both load attached Resource records and pass them to the renderer. Lifecycle export shows a "📎 N resource(s) will be included" caption above the download buttons.
+- Punted: orphan-attachment warning in `plan-check` (silently skipped at render time for now).
+- **MindMap node linking + mining.** New module `fmdb/assess/mindmap_link.py`:
+  - `link_mindmap_nodes(mindmap, cat)` — walks the recursive tree and resolves each node label to a catalogue entity (priority order: topic → mechanism → symptom → supplement → claim) using the validator's existing alias-aware index. Sets `linked_kind` + `linked_slug` in place. First match wins; no fuzzy-matching beyond exact slug + alias + slugified-label.
+  - `mine_unlinked(mindmap, cat)` — unlinked depth-2+ nodes become catalogue-addition candidates. Heuristic `guessed_kind` from parent-chain keywords (symptom / mechanism / supplement / topic).
+- `curated_to_mermaid` now appends `[topic]/[mech]/[sx]/[supp]/[claim]/[cook]/[remedy]` badges to linked-node labels using the existing `_KIND_SHAPE` table. Auto-mode renderer untouched.
+- New CLI: `fmdb mindmap-link [<slug>] [--all] [--apply] [--dry-run]` and `fmdb mindmap-mine [--add-to-backlog]`.
+- **Dry-run results across the 3 imported MindMaps (871 nodes total):**
+  - Linked: **60 nodes** (~6.9%) — supplement 26, topic 20, symptom 11, mechanism 3.
+  - Mining candidates: **645 unlinked depth-2+ nodes**. Guessed-kind split: None=493, supplement=63, topic=33, mechanism=30, symptom=26.
+  - Mechanisms barely linked because most canonical slugs are FM jargon (`hpa-axis-dysregulation`, `leaky-gut`) while mindmap labels are descriptive prose. The validator's alias index caught the obvious ones (`Intestinal Permeability` → `leaky-gut` via alias).
+
+**v0.24** — AI check button in Lifecycle tab + client-facing plan render (Markdown + HTML):
 - **🧠 Run AI sanity check button** added to the Lifecycle tab next to "Run plan-check" (draft state) and as a read-only inspect on published plans. Calls `ai_check_plan` with a spinner, renders concerns grouped by severity with metric cards (critical / warning / info / coherence / client-fit) + token telemetry. Draft state has a "💾 Save to plan" button to persist into `plan.ai_sanity_check`; published state is inspect-only (no overwrite of frozen records).
 - **Client-facing render** (`fmdb/plan/render.py` — new module). `render_markdown(plan, client, cat)` and `render_html(plan, client, cat)` turn the structured Plan into a hand-off artifact: catalogue slugs replaced with display names, mechanisms hidden (too clinical for client), `notes_for_coach` / `status_history` / `ai_sanity_check` / `version` / git SHA all stripped. Sections rephrased into plain English ("Daily practices", "What I'd like you to learn", "What to track").
 - HTML output is standalone: embeds print-friendly CSS (A4 page, brand-green palette `#14532d`, page-break-inside on tables, `@media print` rules). No external assets. Coach saves the HTML, opens in browser, hits `Cmd+P → Save as PDF` for a polished hand-off — avoids forcing weasyprint / wkhtmltopdf installs.
@@ -470,9 +486,9 @@ Sidebar pages: 🧠 Assess & Suggest (default), 📋 Plans, 👥 Clients, 🧭 M
 2. ~~Plan publish + diff-guard~~ — ✅ done in v0.22 (`plan-submit`, `plan-publish`, `plan-revoke`, `plan-supersede`, `plan-diff`).
 3. ~~AI sanity check on plans~~ — ✅ done in v0.23 (`fmdb plan-ai-check <slug>`; populates `plan.ai_sanity_check`).
 4. ~~Markdown / PDF render of plan~~ — ✅ done in v0.24 (`fmdb plan-render` + Lifecycle-tab download buttons; PDF via browser Print-to-PDF).
-5. **Wire Resources into Plan editor** — "attach resource" buttons per plan section; auto-generate per-client folder of selected handouts.
-6. **Cross-link curated MindMap nodes to catalogue entities** (currently every node is a plain label; could fuzzy-match to existing slugs OR hand-author the linking).
-7. **Mine curated MindMap nodes → backlog suggestions** (874 imported nodes; many would surface useful catalogue additions).
+5. ~~Wire Resources into Plan editor~~ — ✅ done in v0.25 (`Plan.attached_resources` + 📎 Resources tab + render integration). Per-client folder of selected handouts deferred — coach hand-delivers files referenced by basename for now.
+6. ~~Cross-link curated MindMap nodes to catalogue entities~~ — ✅ done in v0.25 (`fmdb mindmap-link`; 60 of 871 nodes resolved automatically, rest visible as mining candidates).
+7. ~~Mine curated MindMap nodes → backlog suggestions~~ — ✅ done in v0.25 (`fmdb mindmap-mine`; 645 candidates surfaced with guessed kinds).
 8. **Promote freeform → entities when sprawl emerges:** Practice, TrackingHabit, Food, LabTest, Recipe, Protocol, EducationalModule.
 9. **Edit / Delete client UI** — built. Active-plan-blocks-delete safeguard in place.
 10. **JSON export contract for Project 2 (mobile app)** — deferred indefinitely; desktop-first for now.

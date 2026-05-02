@@ -102,7 +102,8 @@ def _client_label(client: Optional[Client]) -> str:
 # ---------------------------------------------------------------------------
 
 
-def render_markdown(plan: Plan, client: Optional[Client], cat) -> str:
+def render_markdown(plan: Plan, client: Optional[Client], cat,
+                    resources: Optional[list] = None) -> str:
     lines: list[str] = []
     p = lines.append
 
@@ -197,6 +198,34 @@ def render_markdown(plan: Plan, client: Optional[Client], cat) -> str:
             if ed.client_facing_summary:
                 p(f"  {ed.client_facing_summary}")
         p("")
+
+    # ---- Resources (attached handouts / links / inline notes) ----
+    if resources:
+        import os as _os
+        client_facing = [r for r in resources
+                         if getattr(r, "audience", "both") in ("client", "both")]
+        if client_facing:
+            p("## Resources")
+            p("")
+            for r in client_facing:
+                title = getattr(r, "title", None) or getattr(r, "slug", "Untitled")
+                p(f"- **{title}**")
+                desc = (getattr(r, "description", "") or "").strip()
+                if desc:
+                    p(f"  {desc}")
+                url = getattr(r, "url", None)
+                file_path = getattr(r, "file_path", None)
+                text = getattr(r, "text", None)
+                if url:
+                    p(f"  Link: {url}")
+                elif file_path:
+                    p(f"  (See attached file: {_os.path.basename(file_path)})")
+                elif text:
+                    snippet = text.strip()
+                    if len(snippet) > 280:
+                        snippet = snippet[:280].rstrip() + "…"
+                    p(f"  {snippet}")
+            p("")
 
     # ---- Supplements ----
     if plan.supplement_protocol:
@@ -335,10 +364,11 @@ def _md_inline_to_html(text: str) -> str:
 
 
 def render_html(plan: Plan, client: Optional[Client], cat,
-                title: Optional[str] = None) -> str:
+                title: Optional[str] = None,
+                resources: Optional[list] = None) -> str:
     """Standalone HTML — embeds CSS, no external assets. Ready for browser
     Print-to-PDF or save-as-PDF."""
-    md = render_markdown(plan, client, cat)
+    md = render_markdown(plan, client, cat, resources=resources)
     body_parts: list[str] = []
     in_table = False
     in_list = False

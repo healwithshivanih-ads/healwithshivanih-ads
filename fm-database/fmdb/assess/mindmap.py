@@ -299,13 +299,31 @@ def curated_to_mermaid(mm) -> str:
     return "\n".join(lines)
 
 
+_KIND_BADGE = {
+    "topic": "topic",
+    "mechanism": "mech",
+    "symptom": "sx",
+    "supplement": "supp",
+    "claim": "claim",
+    "cooking_adjustment": "cook",
+    "home_remedy": "remedy",
+}
+
+
 def _render_curated_node(node, indent: int, lines: list[str]) -> None:
-    """Render a MindMapNode (Pydantic instance, not the dict-based Tree)."""
+    """Render a MindMapNode (Pydantic instance, not the dict-based Tree).
+
+    Linked nodes get an inline kind badge so coaches can see at a glance
+    which labels resolve to a catalogue entity.
+    """
     pad = "  " * (indent + 1)
+    linked_kind = getattr(node, "linked_kind", None)
     label = _safe_label(node.label)
-    # Top-level branches & internal nodes get plain labels;
-    # nodes with linked_kind/slug get a shape that hints at type
-    shape_open, shape_close = _KIND_SHAPE.get(getattr(node, "linked_kind", None) or "", ("", ""))
+    if linked_kind and getattr(node, "linked_slug", None):
+        badge = _KIND_BADGE.get(linked_kind, linked_kind)
+        # Mermaid mindmap labels are space-tolerant; append a small marker.
+        label = f"{label} [{badge}]"
+    shape_open, shape_close = _KIND_SHAPE.get(linked_kind or "", ("", ""))
     if shape_open:
         lines.append(f"{pad}{shape_open}{label}{shape_close}")
     else:

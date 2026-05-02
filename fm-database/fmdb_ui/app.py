@@ -833,6 +833,7 @@ def render_plan_editor(plan: Plan, client: Client, cat, root: Path):
             "💊 Supplements",
             "🧪 Labs & Referrals",
             "📊 Tracking",
+            "📎 Resources",
             "📝 Notes & Raw",
             "🚀 Lifecycle",
         ])
@@ -861,12 +862,16 @@ def render_plan_editor(plan: Plan, client: Client, cat, root: Path):
         with tabs[5]:
             edit_tracking(plan, cat, editable, root)
 
-        # === Notes & Raw ===
+        # === Resources ===
         with tabs[6]:
+            edit_attached_resources(plan, editable, root)
+
+        # === Notes & Raw ===
+        with tabs[7]:
             edit_notes_raw(plan, editable, root)
 
         # === Lifecycle ===
-        with tabs[7]:
+        with tabs[8]:
             render_lifecycle_panel(plan, client, cat, root)
 
 
@@ -1027,9 +1032,28 @@ def render_client_export(plan: Plan, client: Optional[Client], cat):
         "Strips slugs, status_history, ai_sanity_check, and coach notes. "
         "Use the HTML download then your browser's Print → Save as PDF for a polished hand-off."
     )
+    # Load attached resources (silently skip orphans).
+    attached = []
+    if getattr(plan, "attached_resources", None):
+        res_root = resources_storage.resources_root()
+        for slug in plan.attached_resources:
+            try:
+                attached.append(resources_storage.load_resource(res_root, slug))
+            except FileNotFoundError:
+                pass
+    if attached:
+        client_facing_count = sum(
+            1 for r in attached if getattr(r, "audience", "both") in ("client", "both")
+        )
+        hidden = len(attached) - client_facing_count
+        suffix = f" ({hidden} coach-only hidden)" if hidden else ""
+        st.caption(f"📎 {client_facing_count} resource(s) will be included{suffix}.")
+    else:
+        st.caption("_(no resources attached — add some from the 📎 Resources tab)_")
+
     col_md, col_html, col_preview = st.columns([1, 1, 1])
-    md = plan_render.render_markdown(plan, client, cat)
-    htm = plan_render.render_html(plan, client, cat)
+    md = plan_render.render_markdown(plan, client, cat, resources=attached)
+    htm = plan_render.render_html(plan, client, cat, resources=attached)
     base_name = f"{plan.slug}-v{plan.version}"
     col_md.download_button(
         "⬇ Download Markdown",
@@ -1611,6 +1635,129 @@ def edit_tracking(plan: Plan, cat, editable: bool, root: Path):
         plan.tracking.symptoms_to_monitor = monitored
         plan.tracking.recheck_questions = [x.strip() for x in rq_str.splitlines() if x.strip()]
         _save(plan, root, "Tracking saved.")
+
+
+def edit_attached_resources(plan: Plan, editable: bool, root: Path):
+    """Attach/detach Resources (from ~/fm-resources/) to this plan. They'll
+    travel with the client-facing render."""
+    st.subheader("Attached resources")
+    st.caption(
+        "Handouts, cheatsheets, scripts, and links that should travel with this "
+        "plan. They appear in the client-facing render under '## Resources'. "
+        "Coach-only resources are hidden from the client export but stay attached."
+    )
+
+    res_root = resources_storage.resources_root()
+    resources_storage.ensure_layout(res_root)
+    all_res = resources_storage.list_resources(res_root)
+    by_slug = {r.slug: r for r in all_res}
+
+    # ---- Currently attached ----
+    attached_slugs = list(plan.attached_resources or [])
+    if not attached_slugs:
+        st.info("No resources attached yet — search below to attach handouts.")
+    else:
+        st.markdown(f"**Attached ({len(attached_slugs)}):**")
+        for slug in attached_slugs:
+            r = by_slug.get(slug)
+            cols = st.columns([8, 1])
+            if r is None:
+                cols[0].markdown(f"- ⚠️ `{slug}` *(missing — resource not found in `~/fm-resources/`)*")
+            else:
+                icon = _KIND_ICON.get(r.kind, "📎")
+                aud_badge = {
+                    "client": "🟢 client",
+                    "coach":  "🔒 coach",
+                    "both":   "👥 both",
+                }.get(r.audience, r.audience)
+                cols[0].markdown(
+                    f"- {icon} **{r.title}** "
+                    f"<span style='color:#888'>· {r.kind} · {aud_badge}</span>",
+                    unsafe_allow_html=True,
+                )
+                if r.description:
+                    cols[0].caption(r.description)
+            if editable and cols[1].button("✕ Detach", key=f"detach_res_{plan.slug}_{slug}"):
+                plan.attached_resources = [s for s in plan.attached_resources if s != slug]
+                _save(plan, root, f"Detached **{slug}**.")
+                st.rerun()
+
+    if not editable:
+        return
+
+    st.divider()
+    st.markdown("**🔎 Find resources to attach**")
+
+    # ---- Filter UI ----
+    col_q, col_kind, col_aud = st.columns([3, 2, 2])
+    query = col_q.text_input("Search title / description / tag", key=f"res_q_{plan.slug}")
+    kinds = sorted({r.kind for r in all_res})
+    kind_filter = col_kind.selectbox(
+        "Kind", ["(any)"] + kinds, index=0, key=f"res_kind_{plan.slug}",
+    )
+    aud_filter = col_aud.selectbox(
+        "Audience",
+        ["client or both", "client only", "both only", "coach only", "(any)"],
+        index=0,
+        key=f"res_aud_{plan.slug}",
+    )
+
+    attached_set = set(plan.attached_resources or [])
+    candidates = [r for r in all_res if r.slug not in attached_set]
+
+    # Apply audience filter
+    if aud_filter == "client or both":
+        candidates = [r for r in candidates if r.audience in ("client", "both")]
+    elif aud_filter == "client only":
+        candidates = [r for r in candidates if r.audience == "client"]
+    elif aud_filter == "both only":
+        candidates = [r for r in candidates if r.audience == "both"]
+    elif aud_filter == "coach only":
+        candidates = [r for r in candidates if r.audience == "coach"]
+
+    # Kind filter
+    if kind_filter != "(any)":
+        candidates = [r for r in candidates if r.kind == kind_filter]
+
+    # Text search
+    q = (query or "").strip().lower()
+    if q:
+        def _match(r):
+            blob = " ".join([
+                r.title or "", r.description or "", r.slug or "",
+                " ".join(r.tags or []),
+            ]).lower()
+            return q in blob
+        candidates = [r for r in candidates if _match(r)]
+
+    if not candidates:
+        st.caption("_No matching resources. Try clearing filters or add resources via the 🧰 Resources Toolkit page._")
+        return
+
+    st.caption(f"{len(candidates)} candidate(s)")
+    # Cap rendered rows to keep the UI snappy
+    for r in candidates[:50]:
+        cols = st.columns([8, 1])
+        icon = _KIND_ICON.get(r.kind, "📎")
+        aud_badge = {
+            "client": "🟢 client",
+            "coach":  "🔒 coach",
+            "both":   "👥 both",
+        }.get(r.audience, r.audience)
+        cols[0].markdown(
+            f"{icon} **{r.title}** "
+            f"<span style='color:#888'>· {r.kind} · {aud_badge}</span>",
+            unsafe_allow_html=True,
+        )
+        if r.description:
+            cols[0].caption(r.description)
+        if cols[1].button("📎 Attach", key=f"attach_res_{plan.slug}_{r.slug}"):
+            plan.attached_resources = list(plan.attached_resources or []) + [r.slug]
+            _save(plan, root, f"Attached **{r.title}**.")
+            st.rerun()
+
+    if len(candidates) > 50:
+        st.caption(f"…and {len(candidates) - 50} more. Refine the search to narrow.")
 
 
 def edit_notes_raw(plan: Plan, editable: bool, root: Path):

@@ -1032,6 +1032,7 @@ def cmd_plan_diff(args: argparse.Namespace) -> None:
 def cmd_plan_render(args: argparse.Namespace) -> None:
     """Render a client-facing plan as Markdown or standalone HTML."""
     from .validator import load_all
+    from .resources import storage as resources_storage
     root = _plans_root(args)
     plan = plan_storage.load_plan(root, args.slug)
     try:
@@ -1039,10 +1040,19 @@ def cmd_plan_render(args: argparse.Namespace) -> None:
     except FileNotFoundError:
         client = None
     catalogue = load_all(DATA_DIR)
+    # Load any attached resources; silently skip orphans so render still works.
+    attached = []
+    if getattr(plan, "attached_resources", None):
+        res_root = resources_storage.resources_root()
+        for slug in plan.attached_resources:
+            try:
+                attached.append(resources_storage.load_resource(res_root, slug))
+            except FileNotFoundError:
+                pass
     if args.format == "html":
-        out = plan_render.render_html(plan, client, catalogue)
+        out = plan_render.render_html(plan, client, catalogue, resources=attached)
     else:
-        out = plan_render.render_markdown(plan, client, catalogue)
+        out = plan_render.render_markdown(plan, client, catalogue, resources=attached)
     if args.output:
         Path(args.output).write_text(out, encoding="utf-8")
         print(f"wrote {args.format} → {args.output}")
@@ -1061,6 +1071,115 @@ def cmd_plan_delete(args: argparse.Namespace) -> None:
             return
     p = plan_storage.delete_plan(root, args.slug)
     print(f"deleted: {p}")
+
+
+def cmd_mindmap_link(args: argparse.Namespace) -> None:
+    """Resolve MindMap node labels against the catalogue alias index."""
+    import yaml
+
+    from .assess.mindmap_link import link_mindmap_nodes
+    from .loader import load_mindmap, load_mindmaps
+    from .validator import load_all
+
+    cat = load_all(DATA_DIR)
+    if getattr(args, "all", False):
+        mindmaps = load_mindmaps(DATA_DIR)
+    else:
+        if not args.slug:
+            print("error: provide a mindmap slug, or use --all")
+            sys.exit(2)
+        mindmaps = [load_mindmap(DATA_DIR, args.slug)]
+
+    agg = {"linked": 0, "already_linked": 0, "unlinked": 0, "total_nodes": 0,
+           "by_kind": {"topic": 0, "mechanism": 0, "symptom": 0, "supplement": 0, "claim": 0}}
+    for mm in mindmaps:
+        mm, stats = link_mindmap_nodes(mm, cat)
+        print(f"\n{mm.slug}")
+        print(f"  total nodes:    {stats['total_nodes']}")
+        print(f"  newly linked:   {stats['linked']}")
+        print(f"  already linked: {stats['already_linked']}")
+        print(f"  unlinked:       {stats['unlinked']}")
+        print(f"  by kind:        {stats['by_kind']}")
+        if stats["newly_linked_samples"]:
+            print(f"  sample of newly linked (up to 25):")
+            for label, kind, slug in stats["newly_linked_samples"]:
+                print(f"    {label!r}  ->  {kind}/{slug}")
+
+        for k, v in stats["by_kind"].items():
+            agg["by_kind"][k] += v
+        for k in ("linked", "already_linked", "unlinked", "total_nodes"):
+            agg[k] += stats[k]
+
+        if args.apply:
+            target = DATA_DIR / "mindmaps" / f"{mm.slug}.yaml"
+            target.write_text(
+                yaml.safe_dump(mm.model_dump(mode="json"), sort_keys=False, allow_unicode=True)
+            )
+            print(f"  wrote: {target}")
+
+    if len(mindmaps) > 1:
+        print("\n=== aggregate ===")
+        print(f"  total nodes:    {agg['total_nodes']}")
+        print(f"  newly linked:   {agg['linked']}")
+        print(f"  already linked: {agg['already_linked']}")
+        print(f"  unlinked:       {agg['unlinked']}")
+        print(f"  by kind:        {agg['by_kind']}")
+
+    if not args.apply:
+        print("\n(dry-run — pass --apply to write changes back to data/mindmaps/*.yaml)")
+
+
+def cmd_mindmap_mine(args: argparse.Namespace) -> None:
+    """Mine unlinked MindMap nodes for catalogue backlog candidates."""
+    from collections import Counter
+
+    from . import backlog
+    from .assess.mindmap_link import mine_unlinked
+    from .loader import load_mindmaps
+    from .validator import load_all
+
+    cat = load_all(DATA_DIR)
+    mindmaps = load_mindmaps(DATA_DIR)
+
+    all_candidates: list[dict] = []
+    for mm in mindmaps:
+        cands = mine_unlinked(mm, cat)
+        all_candidates.extend(cands)
+        print(f"  {mm.slug}: {len(cands)} candidates")
+
+    by_kind = Counter(c["guessed_kind"] for c in all_candidates)
+    by_depth = Counter(c["depth"] for c in all_candidates)
+    print(f"\nTotal candidates: {len(all_candidates)}")
+    print(f"By guessed_kind: {dict(by_kind)}")
+    print(f"By depth: {dict(sorted(by_depth.items()))}")
+
+    samples_per_kind: dict[str, list[dict]] = {}
+    for c in all_candidates:
+        samples_per_kind.setdefault(str(c["guessed_kind"]), []).append(c)
+    for k, items in samples_per_kind.items():
+        print(f"\n  Sample for kind={k} (showing 5):")
+        for c in items[:5]:
+            print(f"    {c['label']!r}  (parent={c['parent_label']!r}, mm={c['mindmap_slug']})")
+
+    if args.add_to_backlog:
+        added = 0
+        for c in all_candidates:
+            kind = c["guessed_kind"] or "topic"
+            why = (
+                f"Surfaced from MindMap {c['mindmap_slug']!r} under "
+                f"branch {c['parent_label']!r} (depth {c['depth']})."
+            )
+            backlog.add(
+                DATA_DIR,
+                kind=kind,
+                name=c["label"],
+                why=why,
+                suggested_by="mindmap-mine",
+            )
+            added += 1
+        print(f"\nAdded {added} items to backlog at {DATA_DIR}/_backlog.yaml")
+    else:
+        print("\n(dry-run — pass --add-to-backlog to enqueue these into the catalogue backlog)")
 
 
 def main() -> None:
@@ -1304,6 +1423,27 @@ def main() -> None:
     pd.add_argument("slug")
     pd.add_argument("--yes", action="store_true", help="skip confirmation")
     pd.set_defaults(func=cmd_plan_delete)
+
+    # ---- mindmap link / mine ----
+    mml = sub.add_parser(
+        "mindmap-link",
+        help="resolve MindMap node labels against the catalogue alias index",
+    )
+    mml.add_argument("slug", nargs="?", help="mindmap slug (omit if --all)")
+    mml.add_argument("--all", action="store_true", help="run against every mindmap")
+    mml.add_argument("--apply", action="store_true",
+                     help="write updated YAML back to disk (default is dry-run)")
+    mml.add_argument("--dry-run", action="store_true",
+                     help="explicit dry-run flag (default behavior; ignored if --apply set)")
+    mml.set_defaults(func=cmd_mindmap_link)
+
+    mmm = sub.add_parser(
+        "mindmap-mine",
+        help="mine unlinked MindMap nodes for catalogue-backlog candidates",
+    )
+    mmm.add_argument("--add-to-backlog", action="store_true",
+                     help="enqueue all candidates into _backlog.yaml")
+    mmm.set_defaults(func=cmd_mindmap_mine)
 
     args = p.parse_args()
     args.func(args)

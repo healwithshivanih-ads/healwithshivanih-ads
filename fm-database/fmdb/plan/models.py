@@ -321,6 +321,11 @@ class Plan(BaseModel):
     # ---- tracking ----
     tracking: Tracking = Field(default_factory=Tracking)
 
+    # ---- attached resources (Resource slugs from ~/fm-resources/) ----
+    # Surfaced in the client-facing render and intended to travel with the
+    # plan as a handout bundle. Coach attaches via the 📎 Resources tab.
+    attached_resources: list[str] = Field(default_factory=list)
+
     # ---- provenance ----
     status: PlanStatus = PlanStatus.draft
     status_history: list[StatusEvent] = Field(default_factory=list)
