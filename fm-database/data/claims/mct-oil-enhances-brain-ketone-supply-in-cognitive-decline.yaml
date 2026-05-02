@@ -1,0 +1,29 @@
+slug: mct-oil-enhances-brain-ketone-supply-in-cognitive-decline
+statement: Adding MCT oil on a low-carb diet enhances ketone supply to the brain,
+  supporting cognitive energy in early Alzheimer's or Parkinson's.
+evidence_tier: plausible_emerging
+rationale: MCTs are rapidly converted to ketones in the liver, providing an alternative
+  brain fuel. Small trials in MCI and Alzheimer's show modest cognitive benefits.
+  Evidence is promising but not yet RCT consensus.
+coaching_translation: MCT oil gives your brain a quick-access ketone fuel source that
+  doesn't depend on blood sugar — useful when brain energy metabolism is impaired.
+out_of_scope_notes: MCT oil dosing and use in diagnosed neurodegenerative conditions
+  should be supervised by a clinician.
+caveats:
+- Source is expert consensus. MCT oil can cause GI distress at high doses; start low
+  and increase gradually.
+- Source is an expert-consensus cheatsheet, not a cited RCT.
+linked_to_topics:
+- cognitive-decline
+- low-carb-diet
+linked_to_supplements:
+- mct-oil
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: Functional Medicine Clinical Applications
+  quote: Add MCT oil for cognitive energy in early Alzheimer's or Parkinson's cases.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

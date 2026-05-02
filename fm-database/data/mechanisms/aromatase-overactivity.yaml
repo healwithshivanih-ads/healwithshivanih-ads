@@ -1,0 +1,34 @@
+slug: aromatase-overactivity
+display_name: Aromatase Overactivity
+aliases:
+- excess aromatization
+- androgen-to-estrogen conversion
+- high aromatase
+category: endocrine
+summary: Aromatase converts androgens (testosterone) to estrogens. Adipose tissue,
+  insulin excess, and inflammation upregulate aromatase, contributing to estrogen
+  dominance in women and low testosterone in men.
+upstream_drivers:
+- insulin-resistance
+- excess-adipose-tissue
+- chronic-inflammation
+- zinc-deficiency
+downstream_effects:
+- estrogen-dominance
+- low-testosterone-men
+- pcos-androgen-imbalance
+related_mechanisms:
+- insulin-resistance
+- chronic-inflammation
+linked_to_topics:
+- estrogen-dominance
+- pcos
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: Top Nutrients to Balance Estrogen
+  quote: Regulates aromatase enzyme, balancing estrogen–testosterone ratio.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

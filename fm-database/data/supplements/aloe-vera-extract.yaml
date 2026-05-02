@@ -1,0 +1,40 @@
+slug: aloe-vera-extract
+display_name: Aloe Vera Extract
+category: herb
+forms_available:
+- liquid
+- capsule
+typical_dose_range:
+  liquid:
+    min: 30
+    max: 60
+    unit: ml
+  capsule:
+    min: 300
+    max: 600
+    unit: mg
+timing_options:
+- morning
+- on_empty_stomach
+take_with_food: avoid
+linked_to_topics:
+- gerd
+- h-pylori-infection
+- leaky-gut
+linked_to_claims:
+- l-glutamine-enterocyte-fuel-gut-repair
+notes_for_coach: Decolorized/purified aloe (emodin-free) recommended. Soothes mucosal
+  tissue. Use food-grade inner leaf fillet juice. Avoid whole leaf aloe for gut issues
+  — laxative effect.
+notes_for_client: Aloe vera juice (inner leaf, decolorized) is a gentle, soothing
+  remedy for irritated gut and esophageal lining — best taken on an empty stomach.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-cheatsheet
+  location: H. Pylori Infection Cheatsheet — Gut Healing Nutrients
+  quote: 'Aloe vera extract: 1–2 oz juice or 300 mg capsule/day'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

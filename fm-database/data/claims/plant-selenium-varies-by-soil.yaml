@@ -1,0 +1,27 @@
+slug: plant-selenium-varies-by-soil
+statement: Selenium content in plant foods varies significantly based on soil selenium
+  concentrations where plants are grown.
+evidence_tier: strong
+rationale: Well-established in nutritional geochemistry; cited by Oregon State University
+  Linus Pauling Institute in document.
+coaching_translation: You can't always count on plant foods to reliably deliver selenium
+  — it depends on where they were grown. Brazil nuts (even 1–2 per day) are a consistent
+  and potent source.
+caveats:
+- Brazil nuts are extremely high in selenium (544 mcg/oz) — overconsumption can lead
+  to selenosis.
+linked_to_topics:
+- selenium-status
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Selenium'
+  quote: Plant sources of selenium may have variable selenium content, as their assimilation
+    of this important nutrient depends on concentrations of the soil in which they
+    are grown.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

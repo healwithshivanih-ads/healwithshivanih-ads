@@ -1,0 +1,28 @@
+slug: resistance-training-improves-glucose-disposal
+statement: Resistance training (2–3 sessions per week, 2–3 sets of 8–12 reps per major
+  muscle group) improves glucose disposal and insulin sensitivity.
+evidence_tier: strong
+rationale: Well-established in exercise physiology literature; resistance training
+  increases GLUT-4 protein content in skeletal muscle and improves insulin-stimulated
+  glucose uptake.
+coaching_translation: Building muscle through weight training is one of the most powerful
+  ways to improve how your body handles blood sugar — muscle is your biggest glucose
+  disposal organ.
+linked_to_topics:
+- insulin-resistance
+- blood-sugar-dysfunction
+- type-2-diabetes
+linked_to_mechanisms:
+- insulin-resistance
+caveats: []
+out_of_scope_notes: ''
+linked_to_supplements: []
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 7.3.1 — Movement
+  quote: Resistance training- each major muscle group 2–3 × week⁻¹; 2–3 sets of 8–12
+    reps.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

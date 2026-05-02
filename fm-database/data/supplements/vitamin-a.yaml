@@ -1,5 +1,5 @@
 slug: vitamin-a
-display_name: Vitamin A (Retinyl Palmitate)
+display_name: Vitamin A
 category: vitamin
 forms_available:
 - capsule
@@ -8,19 +8,23 @@ forms_available:
 evidence_tier: confirm_with_clinician
 linked_to_topics:
 - thyroid
+- hypothyroidism
+- immune-support
 linked_to_claims:
 - vitamin-a-rxr-permission-slip-for-thyroid-and-vitamin-d-signaling
-notes_for_coach: Fat-soluble vitamin; take with fat-containing meals; advise clients
-  not to exceed upper limits, especially if pregnant.
-notes_for_client: Vitamin A helps your body actually respond to thyroid hormone and
-  Vitamin D at the cellular level. You can get it from liver, egg yolks, full-fat
-  dairy, and from brightly coloured orange and yellow vegetables. Don't supplement
-  high doses without clinician guidance — too much retinol can be harmful.
+- vitamin-a-zinc-exercise-improve-thyroid-cell-sensitivity
+- key-nutrients-required-for-thyroid-hormone-production
+- vitamin-a-anti-inflammatory-respiratory-support
+notes_for_coach: 'CAUTION: 10,000–25,000 IU/day is a HIGH dose with teratogenicity
+  and hepatotoxicity risk. This dosing range is strictly confirm_with_clinician. Do
+  NOT recommend without explicit clinician direction. Contraindicated in pregnancy.'
+notes_for_client: Vitamin A at high doses must only be taken under direct supervision
+  of your healthcare provider. It can be harmful if taken incorrectly.
 typical_dose_range:
   capsule:
-    min: 2500
-    max: 5000
-    unit: IU
+    min: 10000
+    max: 25000
+    unit: mcg
   tablet:
     min: 2500
     max: 5000
@@ -41,7 +45,15 @@ sources:
   location: Page 2 - Supplement Table
   quote: Vitamin A (Retinyl Palmitate) - Vision, immune support, skin - 2500–5000
     IU/day - With fat-containing meals
-version: 2
+- id: vitaone-thyroid-toolkit
+  location: Factors that Affect Thyroid Function
+  quote: 'Factors that improve cellular sensitivity to thyroid hormones: Vitamin A,
+    Exercise, Zinc.'
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Vitamin A is anti-inflammatory, enhances immune function, and supports the
+    lining of the respiratory tract.
+version: 4
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-02'
 updated_by: shivani

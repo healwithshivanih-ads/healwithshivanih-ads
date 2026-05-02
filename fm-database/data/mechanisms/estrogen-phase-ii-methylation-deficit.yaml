@@ -1,0 +1,39 @@
+slug: estrogen-phase-ii-methylation-deficit
+display_name: Impaired Phase II Estrogen Methylation (COMT/Glucuronidation)
+aliases:
+- poor estrogen methylation
+- COMT dysfunction
+- impaired glucuronidation
+- phase II liver detox deficit
+category: metabolic
+summary: The COMT enzyme and glucuronidation pathway in the liver methylate and conjugate
+  estrogen metabolites for excretion. Deficits in B6, B12, folate, magnesium, or MTHFR
+  variants impair this process, increasing reactive 4-OH estrogens and circulating
+  estrogen load.
+upstream_drivers:
+- mthfr-variant
+- nutrient-deficiency-b-vitamins
+- chronic-stress
+- poor-liver-function
+downstream_effects:
+- elevated-4-oh-estrogen
+- dna-adduct-formation
+- estrogen-dominance
+- pms
+related_mechanisms:
+- estrogen-enterohepatic-recirculation
+- hpa-axis-dysregulation
+linked_to_topics:
+- estrogen-dominance
+- perimenopause
+- pcos
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: Top Nutrients to Balance Estrogen
+  quote: Supports COMT enzyme in methylation of estrogen metabolites; reduces PMS
+    and anxiety.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

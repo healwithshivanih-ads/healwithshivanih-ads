@@ -1,0 +1,23 @@
+slug: muscle-tension
+display_name: Muscle Tension
+aliases:
+- tight muscles
+- neck tension
+- stress-related muscle tightness
+category: musculoskeletal
+severity: common
+description: Chronic muscle tightness and tension, particularly in the neck and shoulders,
+  driven by ongoing sympathetic activation.
+linked_to_topics:
+- chronic-stress
+linked_to_mechanisms:
+- sympathetic-nervous-system-activation
+when_to_refer: ''
+sources:
+- id: vitaone-adrenal-toolkit
+  location: Effects of Chronic Stress — Musculoskeletal
+  quote: Causes muscle tension, Tension in neck, Headaches/migraines
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,28 @@
+slug: 4-7-8-breathing-promotes-relaxation
+statement: The 4-7-8 breathing technique (inhale 4 counts, hold 7, exhale 8) can induce
+  deep relaxation when repeated for up to five cycles.
+evidence_tier: plausible_emerging
+rationale: Extended exhalation relative to inhalation is consistent with parasympathetic
+  activation research; 4-7-8 is a widely used clinical protocol though specific RCT
+  evidence is limited.
+coaching_translation: Try breathing in for 4, holding for 7, and breathing out slowly
+  for 8 — it's a simple technique you can use anywhere to feel calmer.
+caveats:
+- No specific RCT cited in source document.
+- Clients with respiratory conditions should check with their clinician before using
+  breath-hold techniques.
+linked_to_topics:
+- stress-management
+- mindfulness
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Mindful Breathing
+  quote: The following abdominal breathing exercise, often called 4-7-8 breathing,
+    can help you start breathing mindfully.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,29 @@
+slug: berberine-improves-insulin-resistance-and-tg
+statement: Berberine improves insulin resistance and lowers triglycerides, making
+  it useful in metabolic dyslipidemia.
+evidence_tier: plausible_emerging
+rationale: Berberine has been studied in RCTs for glycemic and lipid outcomes, particularly
+  in Chinese populations, with promising but not yet consensus-level evidence in Western
+  guidelines.
+coaching_translation: Berberine is a plant compound that can help your body use insulin
+  better and lower high triglycerides — a two-for-one benefit when metabolic dysfunction
+  is driving lipid imbalance.
+caveats:
+- Source is an expert synthesis cheatsheet.
+- Berberine can interact with medications (e.g., metformin, anticoagulants) — advise
+  clinician review.
+- Not suitable during pregnancy.
+out_of_scope_notes: Drug interactions and dosing should be reviewed by a clinician.
+linked_to_topics:
+- dyslipidemia
+linked_to_supplements:
+- berberine
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 5
+  quote: 'Berberine: Improves insulin resistance + TG.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

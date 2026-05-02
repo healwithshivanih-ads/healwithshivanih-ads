@@ -1,0 +1,25 @@
+slug: menstrual-irregularities
+display_name: Menstrual Irregularities
+aliases:
+- irregular periods
+- heavy periods
+- missed periods
+- cycle disruption
+category: hormonal
+severity: common
+description: Thyroid dysfunction commonly disrupts menstrual cycle regularity through
+  hormonal cross-talk with estrogen and progesterone axes.
+linked_to_topics:
+- thyroid
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- estrogen-dominance-thyroid-blunting
+when_to_refer: ''
+sources:
+- id: vitaone-thyroid-cheatsheet
+  location: Biohacking Thyroid Function Cheatsheet — Thyroid Dysfunction Symptoms
+  quote: Menstrual irregularities
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

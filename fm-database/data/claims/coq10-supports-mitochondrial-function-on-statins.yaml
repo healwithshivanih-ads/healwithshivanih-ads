@@ -1,0 +1,28 @@
+slug: coq10-supports-mitochondrial-function-on-statins
+statement: CoQ10 supports mitochondrial function and is especially relevant for individuals
+  on statin therapy, which depletes CoQ10.
+evidence_tier: plausible_emerging
+rationale: Statins inhibit HMG-CoA reductase, which also reduces CoQ10 synthesis.
+  CoQ10 repletion in statin users is biologically plausible and commonly practiced
+  in FM, though RCT evidence for symptom benefit is mixed.
+coaching_translation: If you're on a statin medication, your body may produce less
+  CoQ10 — a nutrient essential for energy production in every cell. CoQ10 supplementation
+  is commonly recommended to support energy and muscle health.
+caveats:
+- Source is an expert synthesis cheatsheet.
+- CoQ10 dosing and indication in statin users should be confirmed with prescribing
+  clinician.
+linked_to_topics:
+- dyslipidemia
+linked_to_supplements:
+- coq10
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 5
+  quote: 'CoQ10: Support mitochondrial function, esp. if on statins.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

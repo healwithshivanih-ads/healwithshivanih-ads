@@ -1,0 +1,27 @@
+slug: probiotics-gut-microbiome-detox-support
+statement: A healthy gut microbiome supports liver detoxification by recycling B vitamins,
+  aiding Phase III elimination, and repairing gut integrity after antibiotic use.
+evidence_tier: plausible_emerging
+rationale: Document explicitly states 'A healthy gut equals better B vitamin recycling'
+  and lists probiotics for cirrhosis and post-antibiotic recovery. Gut-liver axis
+  is an active research area.
+coaching_translation: Supporting your gut bacteria with probiotics and fermented foods
+  helps your liver detox more effectively and replenishes key vitamins.
+caveats:
+- Specific strains matter — clinician guidance recommended for medical conditions
+- Source is FM synthesis
+linked_to_topics:
+- liver-detoxification
+- methylation-mthfr
+linked_to_supplements:
+- probiotics
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet — 6 Ways to Overcome MTHFR
+  quote: Support the Microbiome – A healthy gut equals better B vitamin recycling.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

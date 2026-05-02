@@ -1,0 +1,37 @@
+slug: nightshade-sensitivity
+display_name: Nightshade Food Sensitivity
+aliases:
+- solanaceae sensitivity
+- solanine intolerance
+summary: Adverse reactions to edible Solanaceae plants (tomato, potato, eggplant,
+  peppers, chillies) in sensitive individuals, potentially mediated by alkaloids such
+  as solanine and capsaicin, causing GI, skin, neurological, and cardiovascular symptoms.
+common_symptoms:
+- abdominal-pain
+- diarrhea
+- skin-itchiness
+- joint-pain
+- fatigue
+red_flags:
+- cardiac arrhythmia
+- difficulty breathing
+- neurological symptoms — refer immediately
+related_topics:
+- elimination-diet
+- autoimmune-protocol
+key_mechanisms:
+- glycoalkaloid-toxicity
+- immune-food-reactivity
+coaching_scope_notes: Coaches can support nightshade removal during elimination and
+  track symptom response. Severe reactions require clinician evaluation.
+evidence_tier: fm_specific_thin
+clinician_scope_notes: ''
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: Nightshade Food Triggers
+  quote: The edible plants can cause adverse food reactions, inflammation, and other
+    health concerns in a small number of individuals.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

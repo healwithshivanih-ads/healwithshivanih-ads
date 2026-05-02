@@ -1,0 +1,34 @@
+slug: green-tea-egcg
+display_name: Green Tea Extract (EGCG)
+category: herb
+forms_available:
+- capsule
+- tablet
+timing_options:
+- morning
+- mid_morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- liver-detoxification
+- heavy-metal-toxicity
+linked_to_claims:
+- egcg-nrf2-antioxidant-detox
+- egcg-hemochromatosis-oxidative-stress
+notes_for_coach: EGCG upregulates Nrf2 antioxidant pathways. Avoid in iron-deficiency
+  anemia as it may impair iron absorption. Use 1-2 cups/day of green tea or consider
+  standardised extract. Avoid high-dose extracts on empty stomach — may cause nausea.
+notes_for_client: Green tea contains powerful antioxidants that activate your body's
+  natural defence enzymes. Use 1–2 cups daily. Avoid if you have iron-deficiency anaemia.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Top Superfoods for Detoxification
+  quote: Polyphenols upregulate Nrf2 pathway → enhances antioxidant enzymes (SOD,
+    catalase, GSH).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

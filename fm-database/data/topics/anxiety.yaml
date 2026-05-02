@@ -1,44 +1,62 @@
 slug: anxiety
-display_name: Anxiety / Nervous System Dysregulation
+display_name: Anxiety & Chronic Stress Response
 aliases:
-  - generalized-anxiety
-  - nervous-system-dysregulation
-  - stress-response
-summary: |
-  Persistent worry, hypervigilance, somatic anxiety symptoms. FM lens
-  emphasizes vagal tone, HPA-axis dysregulation, blood sugar swings,
-  magnesium / B6 insufficiency, gut-brain axis, and (in women 35+) low
-  progesterone driving GABAergic withdrawal.
+- generalized-anxiety
+- nervous-system-dysregulation
+- stress-response
+- nervous system dysregulation
+- chronic worry
+- hypervigilance
+summary: Anxiety as a functional medicine presentation linked to HPA over-activation,
+  low GABA, low serotonin, high norepinephrine, digital overstimulation, and poor
+  vagal tone.
 common_symptoms:
-  - racing thoughts
-  - chest tightness / shortness of breath
-  - tension headaches
-  - GI symptoms tied to stress
-  - sleep-onset insomnia
+- racing thoughts
+- chest tightness / shortness of breath
+- tension headaches
+- GI symptoms tied to stress
+- sleep-onset insomnia
+- racing-thoughts
+- palpitations
+- sweating
+- insomnia
+- wired-but-tired
+- restlessness
 red_flags:
-  - panic attacks with chest pain mimicking cardiac event (rule out cardiac)
-  - suicidal ideation
-  - active trauma symptoms requiring therapeutic processing
-  - substance use as primary coping
+- panic attacks with chest pain mimicking cardiac event (rule out cardiac)
+- suicidal ideation
+- active trauma symptoms requiring therapeutic processing
+- substance use as primary coping
+- Panic attacks with chest pain — rule out cardiac cause
+- Suicidal ideation — immediate referral
 related_topics:
-  - insomnia
-  - perimenopause
+- insomnia
+- perimenopause
+- hpa-axis-dysregulation
+- gut-brain-axis
+- vagal-tone
 key_mechanisms:
-  - hpa-axis-dysregulation
-  - low-vagal-tone
-  - low-progesterone
-  - blood-sugar-instability
-coaching_scope_notes: |
-  Breathwork, vagal exercises, somatic practices, magnesium/glycine,
-  caffeine reduction, blood-sugar stabilization, journaling.
-clinician_scope_notes: |
-  Diagnosed anxiety disorders, medication management, trauma therapy,
+- hpa-axis-dysregulation
+- low-vagal-tone
+- low-progesterone
+- blood-sugar-instability
+- gaba-a-receptor-modulation
+coaching_scope_notes: Breathwork, adaptogens, magnesium, L-theanine, GABA support,
+  sleep hygiene within scope. Diagnosis and psychiatric medications out of scope.
+clinician_scope_notes: 'Diagnosed anxiety disorders, medication management, trauma
+  therapy,
+
   and panic disorder evaluation are out of coaching scope.
+
+  '
 sources:
-  - id: vitaone-skill-practice-guide
-    location: practice_guide.md, Nervous System section
-evidence_tier: strong
-version: 1
+- id: vitaone-skill-practice-guide
+  location: practice_guide.md, Nervous System section
+- id: vitaone-adrenal-cheatsheet
+  location: 50 Hormones Cheatsheet — GABA row (p.6)
+  quote: '↓ Anxiety, insomnia, restlessness. Solution: GABA support, Mg, L-theanine.'
+evidence_tier: plausible_emerging
+version: 2
 status: active
-updated_at: 2026-04-28
+updated_at: '2026-05-02'
 updated_by: shivani

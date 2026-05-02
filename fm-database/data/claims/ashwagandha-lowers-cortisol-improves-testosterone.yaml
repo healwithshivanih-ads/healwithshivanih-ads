@@ -1,0 +1,28 @@
+slug: ashwagandha-lowers-cortisol-improves-testosterone
+statement: Ashwagandha lowers cortisol and improves testosterone and sperm parameters
+  in men under chronic stress.
+evidence_tier: plausible_emerging
+rationale: Multiple RCTs (including KSM-66 standardized extract) show cortisol reduction
+  and modest testosterone improvements. Effect size is modest but consistent across
+  studies. Source is expert synthesis.
+coaching_translation: Ashwagandha is an adaptogen that reduces stress hormones and
+  supports testosterone — particularly helpful for men dealing with chronic stress
+  and fatigue.
+caveats:
+- Source is expert synthesis
+- Dose 300–600 mg/day
+- KSM-66 form preferred
+linked_to_topics:
+- low-progesterone
+linked_to_supplements:
+- ashwagandha-ksm66
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: Key Supplements to Biohack Testosterone
+  quote: Lowers cortisol; improves sperm/testosterone.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,30 @@
+slug: adequate-fiber-aids-toxin-excretion
+statement: Consuming more than 35 grams of dietary fiber daily supports healthy bowel
+  elimination and enhances excretion of toxins (including bile-bound hepatic metabolites)
+  via stool.
+evidence_tier: plausible_emerging
+rationale: Fiber's role in stool bulk and transit is well-established (strong evidence);
+  its specific role in binding and excreting bile-conjugated toxins is biologically
+  plausible and supported by some evidence but the 35g threshold specific to detox
+  is FM-specific guidance.
+coaching_translation: Eating plenty of plant foods — aiming for over 35g of fiber
+  daily — helps keep you regular and ensures your body can flush out what the liver
+  has processed.
+caveats:
+- The 35g/day threshold is a functional medicine recommendation; general fiber guidelines
+  are 25–38g/day depending on sex/age.
+linked_to_topics:
+- liver-detoxification
+- gut-liver-axis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-liver-detox-toolkit
+  location: Sequencing a Detoxification Program
+  quote: Ensuring adequate daily dietary fiber intake—which means consuming more than
+    35 grams of fiber daily—will aid elimination of stool and thus endotoxins.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

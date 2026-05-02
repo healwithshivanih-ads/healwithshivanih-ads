@@ -1,0 +1,30 @@
+slug: hepatic-lipogenesis
+display_name: Hepatic Lipogenesis
+aliases:
+- de novo lipogenesis
+- liver fat synthesis
+category: metabolic
+summary: Conversion of excess dietary carbohydrates and sugars into triglycerides
+  in the liver. A key driver of NAFLD. Suppressed by low-carb diets.
+upstream_drivers:
+- high-carbohydrate-diet
+- fructose-excess
+- insulin-resistance
+downstream_effects:
+- nafld
+- dyslipidaemia
+related_mechanisms:
+- insulin-resistance
+- systemic-inflammation
+linked_to_topics:
+- nafld
+- low-carb-diet
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: Functional Medicine Clinical Applications
+  quote: Decreases hepatic lipogenesis and inflammation
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

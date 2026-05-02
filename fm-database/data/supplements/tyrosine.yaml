@@ -1,0 +1,35 @@
+slug: tyrosine
+display_name: L-Tyrosine
+category: amino_acid
+forms_available:
+- capsule
+- powder
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 1000
+    unit: mg
+timing_options:
+- morning
+- on_empty_stomach
+take_with_food: avoid
+linked_to_topics:
+- hypothyroidism
+linked_to_claims: []
+notes_for_coach: Tyrosine is the amino acid backbone of both T3 and T4. Deficiency
+  impairs hormone synthesis. Food sources include eggs, chicken, legumes. Supplementation
+  is fm_specific_thin — used in practice but limited RCT support for thyroid outcomes
+  specifically.
+notes_for_client: Tyrosine is an amino acid that your thyroid uses to build its hormones.
+  Good dietary sources include eggs, meat, and legumes.
+evidence_tier: fm_specific_thin
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 6: Nutrient Deficiencies'
+  quote: 'Tyrosine (amino acid): Backbone of both T3 and T4. Deficiency effects: Impaired
+    hormone synthesis.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

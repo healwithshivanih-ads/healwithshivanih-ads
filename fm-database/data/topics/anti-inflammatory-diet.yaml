@@ -1,0 +1,40 @@
+slug: anti-inflammatory-diet
+display_name: Anti-Inflammatory Diet
+aliases:
+- AID
+- functional medicine anti-inflammatory diet
+summary: A nutritional plan emphasizing whole, unprocessed foods rich in antioxidants,
+  omega-3 fatty acids, and fiber while avoiding processed foods, refined carbohydrates,
+  and sugary beverages to reduce chronic inflammation.
+common_symptoms:
+- brain-fog
+- joint-pain
+- bloating
+- fatigue
+- mood-changes
+red_flags: []
+related_topics:
+- chronic-inflammation
+- gut-health
+- metabolic-syndrome
+- immune-support
+key_mechanisms:
+- oxidative-stress
+- cytokine-dysregulation
+- gut-microbiome-modulation
+coaching_scope_notes: Core coaching topic. Coaches can guide food choices, meal planning,
+  and elimination of pro-inflammatory foods. Personalize for individual sensitivities
+  (e.g., dairy).
+clinician_scope_notes: Dairy elimination and individual food sensitivities may require
+  clinical assessment.
+evidence_tier: strong
+sources:
+- id: vitaone-inflammation-toolkit
+  location: Anti Inflammatory Diet — What is an Anti-Inflammatory Diet?
+  quote: An anti-inflammatory diet is a nutritional plan that focuses on reducing
+    chronic inflammation in the body through the consumption of specific foods and
+    the avoidance of others.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

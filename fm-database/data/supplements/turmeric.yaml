@@ -1,0 +1,37 @@
+slug: turmeric
+display_name: Turmeric
+category: herb
+forms_available:
+- powder
+- liquid
+typical_dose_range:
+  powder:
+    min: 0.5
+    max: 5
+    unit: g
+timing_options:
+- morning
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- cardiometabolic-health
+- phytonutrient-dense-diet
+linked_to_claims:
+- phytonutrient-smoothies-support-cardio-and-brain-health
+notes_for_coach: Featured prominently in the Brain Smoothie and Inflammation Control
+  Smoothie. Fresh or ground form used. Bioavailability enhanced by pairing with black
+  pepper (piperine); toolkit does not specify this but coaches may suggest it.
+notes_for_client: Turmeric is a powerful anti-inflammatory spice. Use fresh root or
+  ground powder in smoothies and soups.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cardiometabolic-toolkit
+  location: Phytonutrient Smoothie Recipes — Brain Smoothie
+  quote: ½ to 1 teaspoon turmeric, ground
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,25 @@
+slug: indigestion
+display_name: Indigestion
+aliases:
+- dyspepsia
+- upset stomach
+- stomach discomfort after eating
+category: gi
+severity: common
+description: Discomfort or pain in the upper abdomen, often after eating, linked to
+  low stomach acid or GERD.
+linked_to_topics:
+- hypochlorhydria
+- gerd
+- gut-dysfunction
+linked_to_mechanisms:
+- hypochlorhydria-mechanism
+when_to_refer: ''
+sources:
+- id: vitaone-gut-toolkit
+  location: Testing for Low Stomach Acidity — Common Symptoms of Hypochlorhydria
+  quote: Indigestion, diarrhea, or constipation
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

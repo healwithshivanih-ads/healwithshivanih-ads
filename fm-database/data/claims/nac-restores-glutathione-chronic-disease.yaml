@@ -1,0 +1,29 @@
+slug: nac-restores-glutathione-chronic-disease
+statement: Supplementing with NAC helps to restore the body's level of glutathione,
+  which is depleted in many chronic diseases due to oxidative stress.
+evidence_tier: plausible_emerging
+rationale: Berk et al. 2019 (BMC Med) RCT and Coles et al. 2018 (J Clin Pharmacol)
+  cited in document support NAC's glutathione-restoring activity in bipolar disorder
+  and Parkinson's.
+coaching_translation: NAC is a building block for glutathione — your body's master
+  antioxidant. It may be especially relevant when fighting chronic illness or high
+  oxidative load.
+caveats:
+- Therapeutic NAC dosing is out of coaching scope.
+- Specific clinical conditions (bipolar disorder, Parkinson's) require medical management.
+out_of_scope_notes: Clinical use of NAC for specific diseases requires clinician oversight.
+linked_to_topics:
+- mitochondrial-health-nutrition
+linked_to_supplements:
+- nac-n-acetyl-cysteine
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-toolkit
+  location: Nutrients for Mitochondrial Health
+  quote: Supplementing with NAC helps to restore the body's level of glutathione.
+    Glutathione is a powerful antioxidant produced inside the body, and it can be
+    depleted in many chronic diseases due to oxidative stress.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

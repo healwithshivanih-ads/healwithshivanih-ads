@@ -1,0 +1,28 @@
+slug: gluten-free-diet-may-benefit-hashimotos
+statement: Some people with Hashimoto's may benefit from a gluten-free diet, as gluten
+  is often implicated in autoimmune conditions.
+evidence_tier: plausible_emerging
+rationale: Molecular mimicry between gliadin and thyroid antigens is a proposed mechanism.
+  Several small studies show gluten elimination reduces TPO antibodies in Hashimoto's
+  patients, especially those with co-occurring celiac disease or NCGS. Evidence is
+  not yet consensus.
+coaching_translation: Removing gluten is one of the most common dietary changes recommended
+  for Hashimoto's. Even without celiac disease, some people see a reduction in antibodies
+  and symptoms.
+caveats:
+- Evidence is strongest in those with confirmed celiac disease or gluten sensitivity.
+- Source is educational toolkit; not a systematic review.
+linked_to_topics:
+- hashimotos-hypothyroidism
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-thyroid-toolkit
+  location: Dietary Changes
+  quote: 'Gluten-Free Diet: Gluten is often implicated in autoimmune conditions. Some
+    people with Hashimoto''s may benefit from a gluten-free diet.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,40 @@
+slug: gut-fermentation-dysbiosis
+display_name: Gut Fermentation by Dysbiotic Bacteria
+aliases:
+- carbohydrate fermentation
+- FODMAP fermentation
+- bacterial fermentation of unabsorbed carbs
+category: gut
+summary: Poorly absorbed fermentable carbohydrates (fructans, GOS, fructose, polyols)
+  pass undigested into the colon and small intestine where dysbiotic bacteria ferment
+  them, producing excess gas (hydrogen, methane), causing distension, bloating, altered
+  motility, and pain.
+upstream_drivers:
+- FODMAP-rich diet
+- gut-dysbiosis
+- low-digestive-enzyme-activity
+- SIBO
+downstream_effects:
+- bloating
+- abdominal-gas
+- abdominal-cramping
+- altered-bowel-motility
+- acid-reflux
+related_mechanisms:
+- fructose-malabsorption
+- lactase-deficiency-osmotic-load
+linked_to_topics:
+- low-fodmap-diet
+- ibs
+- sibo
+- gut-dysbiosis
+evidence_tier: strong
+sources:
+- id: vitaone-elimination-diet-cheatsheet
+  location: Functional Medicine Table — Understanding FODMAP Mechanisms / Oligosaccharides
+    row
+  quote: Poorly digested; fermented by bacteria → gas, bloating.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

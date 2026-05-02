@@ -1,0 +1,41 @@
+slug: impaired-t4-to-t3-conversion
+display_name: Impaired T4 to T3 Conversion
+aliases:
+- poor peripheral conversion
+- deiodinase insufficiency
+- T4-T3 conversion disorder
+category: metabolic
+summary: T4 (inactive storage hormone) must be converted to T3 (active hormone) by
+  deiodinase enzymes in peripheral tissues (liver, gut, kidney, brain). This process
+  is blocked by high cortisol, inflammatory cytokines, selenium/zinc deficiency, low-calorie
+  diets, gut dysfunction, and certain medications, shunting T4 toward inactive reverse
+  T3 instead.
+upstream_drivers:
+- high-cortisol
+- selenium-deficiency
+- zinc-deficiency
+- gut-dysbiosis
+- chronic-inflammation
+- low-calorie-diet
+downstream_effects:
+- elevated-reverse-t3
+- cellular-hypothyroidism
+- fatigue
+- brain-fog
+related_mechanisms:
+- reverse-t3-dominance
+- hpa-axis-dysregulation
+linked_to_topics:
+- t3-conversion-disorder
+- hypothyroidism
+- hashimotos-thyroiditis
+evidence_tier: strong
+sources:
+- id: vitaone-thyroid-ebook
+  location: Chapter 3 & Chapter 6
+  quote: ~80% comes from conversion of T4 → T3 by enzymes called deiodinases. High
+    cortisol inhibits 5′-deiodinase, the enzyme that converts T4 into active T3.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

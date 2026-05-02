@@ -1,0 +1,26 @@
+slug: new-food-sensitivities
+display_name: New Food Sensitivities
+aliases:
+- food intolerances
+- multiple food reactions
+- food sensitivity expansion
+category: gi
+severity: common
+description: Progressive development of reactions to a widening range of foods, often
+  associated with gut dysbiosis, intestinal hyperpermeability, and reduced digestive
+  enzyme capacity.
+when_to_refer: Refer if anaphylactic reactions or severe elimination of food groups
+  risking nutritional deficiency.
+linked_to_topics:
+- gut-dysbiosis
+- low-fodmap-diet
+linked_to_mechanisms:
+- gut-fermentation-dysbiosis
+sources:
+- id: vitaone-elimination-diet-cheatsheet
+  location: FODMAP Food Cheatsheet — Legumes & Pulses row
+  quote: Legume reintroduction signals improved gut tolerance post-dysbiosis correction.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

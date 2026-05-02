@@ -1,0 +1,32 @@
+slug: metabolic-flexibility
+display_name: Metabolic Flexibility
+aliases:
+- fuel switching
+- metabolic switching
+- glucose-fat switching
+category: metabolic
+summary: The body's capacity to switch between glucose and fat oxidation as primary
+  fuel sources depending on availability and demand. Impaired in insulin resistance
+  and metabolic syndrome. Restored by low-carb diets combined with intermittent fasting.
+upstream_drivers:
+- insulin-resistance
+- high-carbohydrate-diet
+downstream_effects:
+- improved-energy-regulation
+- fat-oxidation
+- reduced-cravings
+related_mechanisms:
+- insulin-resistance
+- mitochondrial-efficiency
+linked_to_topics:
+- low-carb-diet
+- metabolic-syndrome
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: The Science of Low-Carb Diets
+  quote: Restores body's ability to switch between glucose and fat for energy.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,26 @@
+slug: gluten-free-not-always-low-fodmap
+statement: Gluten-free products are not automatically low-FODMAP; the relevant variable
+  in IBS/SIBO is fermentability, not gluten content.
+evidence_tier: plausible_emerging
+rationale: 'Clinically important distinction: gluten-free products may use high-FODMAP
+  ingredients (e.g., inulin, chicory root, high-fructose syrups). The FODMAP content,
+  not gluten per se, drives IBS symptoms in most non-coeliac patients.'
+coaching_translation: Just because something says 'gluten-free' on the label doesn't
+  mean it's safe for your gut right now. We need to check if it's also low-FODMAP.
+caveats:
+- Coeliac disease requires strict gluten avoidance regardless of FODMAP content —
+  always clinician-confirmed.
+linked_to_topics:
+- low-fodmap-diet
+- ibs
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-elimination-diet-cheatsheet
+  location: FODMAP Food Cheatsheet — Grains row
+  quote: Gluten-free ≠ always low-FODMAP - focus on fermentability, not just gluten.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

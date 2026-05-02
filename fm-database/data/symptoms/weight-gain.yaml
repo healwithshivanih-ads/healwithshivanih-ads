@@ -1,27 +1,24 @@
 slug: weight-gain
-display_name: Weight Gain (Midlife / Abdominal)
+display_name: Weight Gain
 aliases:
 - weight gain
 - midlife-weight-gain
-- abdominal-weight-gain
-- belly-fat
 - abdominal-spare-tire
 - weight-gain-around-the-middle
 - meno-belly
 - abdominal weight gain
 - weight gain (especially abdominal)
 - central weight gain
+- unexplained weight gain
+- can't lose weight
+- metabolic weight gain
+- slow metabolism
+- difficulty losing weight
+- gaining weight for no reason
 category: metabolic
 severity: common
-description: 'Unexplained or disproportionate weight gain — especially central /
-
-  visceral — common in perimenopause and menopause. Driven by declining
-
-  estrogen, insulin resistance, sleep disruption, cortisol shifts,
-
-  and reduced muscle mass. Often resistant to caloric restriction alone.
-
-  '
+description: Unintended weight gain associated with testosterone deficiency (high
+  SHBG) or estrogen dominance/insulin resistance.
 when_to_refer: 'Rapid (>5% body weight in <6 months) without lifestyle change; with
 
   edema, dyspnea, or facial fullness (rule out cardiac, renal, Cushing).
@@ -31,14 +28,41 @@ linked_to_topics:
 - perimenopause
 - pcos
 - inflammation
+- thyroid
+- hypothyroidism
+- t3-conversion-disorder
+- hashimotos-hypothyroidism
+- sex-hormone-binding-globulin
+- estrogen-metabolism
 linked_to_mechanisms:
 - insulin-resistance
 - estrogen-decline
 - hpa-axis-dysregulation
+- t4-to-t3-conversion-block
+- reverse-t3-elevation
+- impaired-t4-to-t3-conversion
+- hpt-axis-dysregulation
+- thyroid-hormone-conversion
+- shbg-hormone-binding
 sources:
 - id: thurlow-microbiome-session-4
   location: Session 4 — Midlife Weight Gain & Metabolic Shifts
-version: 1
+- id: vitaone-thyroid-cheatsheet
+  location: Biohacking Thyroid Function Cheatsheet — Thyroid Dysfunction Symptoms
+  quote: Weight changes (gain in hypo, loss in hyper)
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 4: Functions of Thyroid Hormones'
+  quote: Slows body's metabolism which can lead to weight gain
+- id: vitaone-thyroid-toolkit
+  location: Why is it Important to Address Hashimoto's Hypothyroidism?
+  quote: 'Weight Gain and Metabolic Issues: Hypothyroidism slows down metabolism,
+    often leading to unexplained weight gain and difficulty losing weight, even with
+    diet and exercise.'
+- id: vitaone-sex-hormones-toolkit
+  location: Sex Hormone Binding Globulin (SHBG) — Page 01
+  quote: This can cause symptoms associated with testosterone deficiency, including
+    fatigue, decreased libido, weight gain, mood changes.
+version: 5
 status: active
-updated_at: 2026-04-29
+updated_at: '2026-05-02'
 updated_by: shivani

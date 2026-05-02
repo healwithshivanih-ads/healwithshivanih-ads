@@ -8,34 +8,63 @@ forms_available:
 typical_dose_range:
   capsule:
     min: 500
-    max: 1500
+    max: 1000
     unit: mcg
   tablet:
-    min: 500
-    max: 1500
+    min: 1000
+    max: 1000
     unit: mcg
   lozenge:
     min: 500
-    max: 1500
+    max: 1000
     unit: mcg
 timing_options:
 - on_waking
 - on_empty_stomach
 - morning
-take_with_food: avoid
-notes_for_coach: Base supplement; methylcobalamin form preferred for methylation support,
-  fatigue, and nerve health; part of homocysteine defence formula.
-evidence_tier: plausible_emerging
-linked_to_topics: []
+- with_breakfast
+take_with_food: optional
+notes_for_coach: 'Methylcobalamin preferred for methylation issues; hydroxocobalamin
+  is best default. Small, frequent sublingual doses absorb best. Test early in vegans,
+  elderly, metformin users. Optimal serum B12: 450–800 pg/mL.'
+evidence_tier: strong
+linked_to_topics:
+- thyroid
+- estrogen-dominance
+- insulin-resistance
+- vitamin-b-complex-deficiency
+- nutrient-deficiency-depression
 linked_to_mechanisms: []
-linked_to_claims: []
-notes_for_client: ''
+linked_to_claims:
+- selenium-supports-t4-t3-conversion
+- b-vitamins-critical-for-phase-ii-estrogen-methylation
+- metformin-depletes-b12
+- high-folate-masks-b12-deficiency
+- metformin-depletes-b12-folate
+notes_for_client: Sublingual (under-tongue) B12 is well absorbed. Vegans and older
+  adults often need regular supplementation as this vitamin is mostly found in animal
+  foods.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
   quote: Vitamin B12 (Methylcobalamin) - Energy, nerve function, methylation - 500–1500
     mcg/day - Morning, empty stomach
-version: 1
+- id: vitaone-thyroid-cheatsheet
+  location: Clinical Action Steps — Support T4→T3 Conversion
+  quote: Selenium (100–200 µg/day), Zinc Glycinate (20–30 mg/day), Iron, Active B2/B6/B12
+- id: vitaone-sex-hormones-cheatsheet
+  location: Top Nutrients to Balance Estrogen
+  quote: Critical for methylation (Phase II detox) of estrogen. In PCOS or high estrogen,
+    support with methylated forms (B6 P5P, methyl-B12, methyl-folate).
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Medication-Induced
+    Depletions
+  quote: Vitamin B12 (1000 mcg/day)
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin B12 (Cobalamin)
+  quote: 'Supplements: Hydroxocobalamin (best default), methylcobalamin (for methylation
+    issues).'
+version: 5
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-02'
 updated_by: shivani

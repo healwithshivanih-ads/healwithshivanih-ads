@@ -1,0 +1,22 @@
+slug: nausea
+display_name: Nausea
+aliases:
+- feeling sick
+- queasy
+- upset stomach
+category: gi
+severity: common
+description: Sensation of stomach upset and urge to vomit. A listed gastrointestinal
+  side effect of LDN.
+linked_to_topics:
+- low-dose-naltrexone
+linked_to_mechanisms: []
+when_to_refer: ''
+sources:
+- id: vitaone-ldn-article
+  location: LDN potential side effects
+  quote: 'Gastrointestinal: Nausea, Abdominal Pain, Diarrhea, Anorexia'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,29 @@
+slug: myo-inositol-regulates-tsh-fsh-insulin-signaling
+statement: Myo-inositol plays a role in cell signaling and hormone regulation of TSH,
+  FSH, and insulin, making it potentially relevant to thyroid and metabolic health.
+evidence_tier: plausible_emerging
+rationale: Myo-inositol is a second messenger involved in TSH receptor signaling in
+  thyroid cells. Small trials combining myo-inositol with selenium have shown reductions
+  in TSH and thyroid antibodies. Document provides mechanistic description without
+  citing a specific study.
+coaching_translation: Myo-inositol is a nutrient found in fruits and vegetables that
+  helps thyroid cells respond to TSH signals. It may support thyroid hormone production
+  and is being studied for autoimmune thyroid conditions.
+caveats:
+- Source does not cite a specific RCT for myo-inositol and thyroid outcomes.
+- Source is an educational toolkit — treat as plausible_emerging.
+linked_to_topics:
+- hypothyroidism
+- hashimotos-hypothyroidism
+linked_to_supplements:
+- myo-inositol
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-toolkit
+  location: Myo-Inositol
+  quote: Cell signaling and hormone regulation of TSH, FSH and insulin
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

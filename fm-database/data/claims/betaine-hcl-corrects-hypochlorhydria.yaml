@@ -1,0 +1,31 @@
+slug: betaine-hcl-corrects-hypochlorhydria
+statement: Betaine HCl supplementation with meals can correct hypochlorhydria, improving
+  protein digestion and nutrient absorption, and reducing SIBO/SIFO risk.
+evidence_tier: fm_specific_thin
+rationale: Betaine HCl challenge is used as both a diagnostic and therapeutic tool
+  in FM. Limited RCT evidence for oral Betaine HCl correcting clinical hypochlorhydria;
+  mostly expert consensus and case reports.
+coaching_translation: For clients with low stomach acid symptoms (bloating after protein,
+  undigested food in stool), Betaine HCl with meals may help — but dosing must be
+  guided by a clinician.
+out_of_scope_notes: Dosing titration and contraindications (active ulcers, NSAIDs)
+  are clinician scope.
+caveats:
+- Contraindicated with active peptic ulcers or NSAID use. Dosing must be supervised
+  by clinician. FM-specific clinical consensus, not RCT-validated.
+linked_to_topics:
+- hypochlorhydria
+- sibo
+- gerd
+linked_to_supplements:
+- betaine-hcl
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Gut Health Cheatsheet — Low Stomach Acid
+  quote: Betaine HCl (with meals), Digestive bitters, Zinc carnosine, ACV — Acid is
+    essential for sterilizing + absorbing nutrients. Correct before killing protocols.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

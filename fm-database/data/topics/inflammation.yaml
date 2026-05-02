@@ -1,46 +1,60 @@
 slug: inflammation
-display_name: Chronic Inflammation
+display_name: Chronic Low-Grade Inflammation
 aliases:
-  - chronic-inflammation
-  - systemic-inflammation
-  - low-grade-inflammation
-summary: |
-  Stub topic — chronic low-grade inflammation as an upstream driver of
-  metabolic, autoimmune, cardiovascular, and neurodegenerative disease.
-  FM lens emphasizes diet (omega-6:omega-3 ratio, ultra-processed foods,
-  blood sugar), gut integrity, sleep, stress, environmental toxins, and
-  visceral adiposity as primary modifiable drivers. Markers: hs-CRP,
-  ferritin, fibrinogen, homocysteine, ApoB.
-
-  TODO: enrich with full FM perspective, marker reference ranges (clinician
-  scope), and intervention hierarchy. Created as stub to anchor cross-refs.
+- systemic-inflammation
+- low-grade-inflammation
+- neuroinflammation
+- cytokine load
+- low-grade systemic inflammation
+summary: Persistent sub-clinical inflammatory state driven by chronic stress, emotional
+  suppression, loneliness, gut dysbiosis, or metabolic dysfunction, underpinning most
+  chronic disease.
 common_symptoms:
-  - persistent fatigue
-  - joint or muscle aches
-  - brain fog
-  - frequent infections / slow wound healing
+- persistent fatigue
+- joint or muscle aches
+- brain fog
+- frequent infections / slow wound healing
+- fatigue
+- joint-pain
+- brain-fog
+- autoimmune-flares
+- weight-gain
 red_flags:
-  - hs-CRP > 10 mg/L without obvious infection (refer)
-  - inflammation plus unexplained weight loss
+- hs-CRP > 10 mg/L without obvious infection (refer)
+- inflammation plus unexplained weight loss
+- Very elevated hs-CRP or ESR — refer for workup
+- Signs of sepsis or acute infection
 related_topics:
-  - autoimmune
-  - thyroid
-  - pcos
+- autoimmune
+- thyroid
+- pcos
+- gut-brain-axis
+- leaky-gut
+- dyspepsia
+- hpa-axis-dysregulation
 key_mechanisms:
-  - leaky-gut
-  - omega-6-omega-3-imbalance
-  - visceral-adiposity
-coaching_scope_notes: |
-  Anti-inflammatory diet (Mediterranean / AIP), omega-3 intake, sleep,
-  stress reduction, blood sugar stability, weight management.
-clinician_scope_notes: |
-  Marker interpretation, NSAID / steroid management, workup for occult
+- leaky-gut
+- omega-6-omega-3-imbalance
+- visceral-adiposity
+- chronic-inflammation
+- hpa-axis-dysregulation
+coaching_scope_notes: Anti-inflammatory diet, omega-3 support, curcumin, polyphenols,
+  and stress reduction are within coaching scope.
+clinician_scope_notes: 'Marker interpretation, NSAID / steroid management, workup
+  for occult
+
   infection or malignancy when indicated.
+
+  '
 sources:
-  - id: vitaone-skill-practice-guide
-    location: practice_guide.md, Inflammation section
-evidence_tier: strong
-version: 1
+- id: vitaone-skill-practice-guide
+  location: practice_guide.md, Inflammation section
+- id: vitaone-adrenal-cheatsheet
+  location: Practitioner's Clinical Takeaway — Loneliness section (p.19)
+  quote: Chronic loneliness silently activates inflammatory genes, accelerates biological
+    aging, and reduces recovery.
+evidence_tier: plausible_emerging
+version: 2
 status: active
-updated_at: 2026-04-29
+updated_at: '2026-05-02'
 updated_by: shivani

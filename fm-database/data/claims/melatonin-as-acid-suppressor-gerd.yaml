@@ -1,0 +1,26 @@
+slug: melatonin-as-acid-suppressor-gerd
+statement: Melatonin can be used as an acid-suppressing agent during the PPI tapering
+  process as a bridge after H2 blockers.
+evidence_tier: plausible_emerging
+rationale: Several small RCTs have evaluated melatonin for GERD with promising results.
+  Mechanistically, melatonin is produced in the GI tract and may modulate LES tone.
+caveats:
+- Evidence is from small trials. Standard of care still favors H2 blockers as PPI
+  bridges.
+- Dosing requires clinician guidance.
+linked_to_topics:
+- gerd
+linked_to_supplements:
+- melatonin
+coaching_translation: ''
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
+    — Supplement recommendations'
+  quote: 'Acid suppressing: Melatonin'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,27 @@
+slug: reducing-fermentable-carbs-starves-dysbiotic-bacteria
+statement: Reducing fermentable carbohydrates starves dysbiotic gut bacteria, supporting
+  microbiome reset in conditions like SIBO, IBS, and candida overgrowth.
+evidence_tier: plausible_emerging
+rationale: Fermentable carbohydrates (FODMAPs, refined sugars) are primary substrates
+  for dysbiotic bacteria. Restriction is commonly used in clinical FM practice for
+  SIBO/IBS. Evidence is growing but not yet full consensus.
+coaching_translation: Eating fewer fermentable carbs — like sugar and certain fibres
+  — removes the food source for problematic gut bacteria, giving your microbiome a
+  chance to reset.
+caveats:
+- Source is expert consensus. Should transition to fibre reintroduction after acute
+  gut reset phase to avoid long-term microbiome impoverishment.
+- Source is an expert-consensus cheatsheet, not primary literature.
+linked_to_topics:
+- low-carb-diet
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: The Science of Low-Carb Diets
+  quote: Reducing fermentable carbs starves dysbiotic bacteria.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

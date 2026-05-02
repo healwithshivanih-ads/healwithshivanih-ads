@@ -1,0 +1,25 @@
+slug: vitamin-d-increases-shbg
+statement: Vitamin D supplementation is associated with increased SHBG levels.
+evidence_tier: plausible_emerging
+rationale: Listed in the document's SHBG-increasing medications/supplements table.
+  Observational and some interventional evidence supports this association; mechanism
+  involves hepatic SHBG synthesis.
+coaching_translation: Vitamin D may help raise SHBG, which can be beneficial if your
+  levels are low and you're experiencing androgen excess symptoms.
+caveats:
+- Magnitude of effect is modest and context-dependent. Lab monitoring of SHBG and
+  vitamin D 25-OH levels recommended.
+linked_to_topics:
+- sex-hormone-binding-globulin
+linked_to_supplements:
+- vitamin-d
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-sex-hormones-toolkit
+  location: Sex Hormone Binding Globulin (SHBG) — Page 01
+  quote: Vitamin D [Increases SHBG — Medications and Supplements]
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

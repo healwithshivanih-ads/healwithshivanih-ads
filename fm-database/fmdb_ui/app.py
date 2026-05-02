@@ -100,10 +100,58 @@ from fmdb.validator import load_all
 # ---------------------------------------------------------------------------
 
 st.set_page_config(
-    page_title="FM Database",
+    page_title="FM Coach",
+    page_icon="🌿",
     layout="wide",
     initial_sidebar_state="expanded",
 )
+
+# ---------------------------------------------------------------------------
+# Global CSS polish — softens Streamlit's default look without leaving Streamlit
+# ---------------------------------------------------------------------------
+st.markdown("""
+<style>
+/* Tighten section spacing */
+.block-container { padding-top: 2rem; padding-bottom: 3rem; max-width: 1400px; }
+/* Headings — softer hierarchy */
+h1 { font-weight: 600; letter-spacing: -0.02em; color: #1a3a52; }
+h2 { font-weight: 600; letter-spacing: -0.01em; margin-top: 1.5rem; color: #1a3a52; }
+h3 { font-weight: 600; color: #2c4a63; }
+/* Sidebar — softer */
+section[data-testid="stSidebar"] { background: #f7f5f0; }
+section[data-testid="stSidebar"] .stRadio label p { font-size: 0.95rem; padding: 0.2rem 0; }
+/* Buttons — softer corners, less aggressive */
+button[kind="primary"] {
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    background: #2d6a4f !important;
+    border: none !important;
+}
+button[kind="primary"]:hover { background: #1e4d38 !important; }
+button[kind="secondary"] { border-radius: 8px !important; font-weight: 500 !important; }
+/* Containers (with border=True) — softer borders, light wash */
+[data-testid="stContainer"] > div[data-testid="stContainerInner"] {
+    background: #fcfbf8 !important;
+}
+/* Captions — slightly bigger and softer */
+.stCaption, [data-testid="stCaptionContainer"] { color: #6b7d8c; font-size: 0.85rem; }
+/* Badges/chips for entity types — used by the mind map cards */
+.fm-chip {
+    display: inline-block; padding: 3px 10px; border-radius: 12px;
+    font-size: 0.75rem; font-weight: 500; margin-right: 4px;
+}
+.fm-chip-topic { background: #e3f2fd; color: #0d47a1; }
+.fm-chip-mechanism { background: #f3e5f5; color: #4a148c; }
+.fm-chip-symptom { background: #e8f5e9; color: #1b5e20; }
+.fm-chip-supplement { background: #fff3e0; color: #e65100; }
+.fm-chip-claim { background: #fffde7; color: #827717; }
+.fm-chip-cooking { background: #fce4ec; color: #880e4f; }
+.fm-chip-remedy { background: #e0f2f1; color: #004d40; }
+/* Hide some streamlit clutter */
+footer { visibility: hidden; }
+[data-testid="stToolbar"] { visibility: hidden; }
+</style>
+""", unsafe_allow_html=True)
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 
@@ -147,8 +195,8 @@ def _evidence_badge(tier: str) -> str:
 # Sidebar — page navigation + global state
 # ---------------------------------------------------------------------------
 
-st.sidebar.title("FM Database")
-st.sidebar.caption("v0.12 — local web UI")
+st.sidebar.markdown("## 🌿 FM Coach")
+st.sidebar.caption("Functional medicine workspace")
 
 page = st.sidebar.radio(
     "Page",
@@ -2096,139 +2144,274 @@ def _render_curated_mindmaps_tab(cat):
         st.code(src, language="text")
 
 
+_KIND_LABEL = {
+    "topic":              ("🟦", "Clinical area",      "fm-chip-topic"),
+    "mechanism":          ("🟪", "Mechanism",          "fm-chip-mechanism"),
+    "symptom":            ("🟩", "Symptom",            "fm-chip-symptom"),
+    "supplement":         ("🟧", "Supplement",         "fm-chip-supplement"),
+    "claim":              ("🟨", "Claim",              "fm-chip-claim"),
+    "cooking_adjustment": ("🍳", "Cooking adjustment", "fm-chip-cooking"),
+    "home_remedy":        ("🌿", "Home remedy",        "fm-chip-remedy"),
+}
+
+
+def _entity_display_name(cat, kind: str, slug: str) -> str:
+    """Look up the display name (not slug) for any entity."""
+    if kind == "topic":
+        e = next((t for t in cat.topics if t.slug == slug), None)
+        return e.display_name if e else slug
+    if kind == "mechanism":
+        e = next((m for m in cat.mechanisms if m.slug == slug), None)
+        return e.display_name if e else slug
+    if kind == "symptom":
+        e = next((s for s in cat.symptoms if s.slug == slug), None)
+        return e.display_name if e else slug
+    if kind == "supplement":
+        e = next((s for s in cat.supplements if s.slug == slug), None)
+        return e.display_name if e else slug
+    if kind == "claim":
+        e = next((c for c in cat.claims if c.slug == slug), None)
+        return (e.statement[:60] + "…") if (e and len(e.statement) > 60) else (e.statement if e else slug)
+    if kind == "cooking_adjustment":
+        e = next((c for c in cat.cooking_adjustments if c.slug == slug), None)
+        return e.display_name if e else slug
+    if kind == "home_remedy":
+        e = next((h for h in cat.home_remedies if h.slug == slug), None)
+        return e.display_name if e else slug
+    return slug
+
+
 def _render_auto_mindmap_tab(cat):
-    st.caption(
-        "Pick any entity and see it as the root of a tree of everything it "
-        "connects to in the catalogue. Useful for exploring."
+    st.markdown(
+        "Pick any concept and see how it connects across your catalogue. "
+        "**Click any related card** to drill into it."
     )
 
-    # Build entity options grouped by kind
-    options: list[tuple[str, str, str]] = []  # (label, kind, slug)
+    # Build all selectable entities
+    options: list[tuple[str, str, str]] = []  # (kind, slug, display)
     for t in sorted(cat.topics, key=lambda x: x.display_name.lower()):
-        options.append((f"🟦 [topic] {t.display_name} ({t.slug})", "topic", t.slug))
+        options.append(("topic", t.slug, t.display_name))
     for m in sorted(cat.mechanisms, key=lambda x: x.display_name.lower()):
-        options.append((f"🟪 [mechanism] {m.display_name} ({m.slug})", "mechanism", m.slug))
+        options.append(("mechanism", m.slug, m.display_name))
     for s in sorted(cat.symptoms, key=lambda x: x.display_name.lower()):
-        options.append((f"🟩 [symptom] {s.display_name} ({s.slug})", "symptom", s.slug))
+        options.append(("symptom", s.slug, s.display_name))
     for s in sorted(cat.supplements, key=lambda x: x.display_name.lower()):
-        options.append((f"🟧 [supplement] {s.display_name} ({s.slug})", "supplement", s.slug))
+        options.append(("supplement", s.slug, s.display_name))
     for c in sorted(cat.claims, key=lambda x: x.slug):
-        options.append((f"🟨 [claim] {c.slug}", "claim", c.slug))
+        options.append(("claim", c.slug, c.statement[:60] + ("…" if len(c.statement) > 60 else "")))
 
     if not options:
-        st.warning("Catalogue is empty.")
+        st.info("Catalogue is empty.")
         return
 
-    # Default to a topic if available
-    default_idx = 0
-    for i, (_, kind, _) in enumerate(options):
-        if kind == "topic":
-            default_idx = i
-            break
+    # ---- Navigation history in session state ----
+    if "mm_history" not in st.session_state:
+        st.session_state["mm_history"] = []
+    if "mm_current" not in st.session_state:
+        # Default to perimenopause topic if present, else first option
+        default = next((o for o in options if o[:2] == ("topic", "perimenopause")), options[0])
+        st.session_state["mm_current"] = default
 
-    # Allow re-centering via session_state set by the navigator widget
-    rc = st.session_state.get("mindmap_recenter")
+    # Honor a "recenter" request set by clicking a card
+    rc = st.session_state.pop("mm_recenter", None)
     if rc:
-        for i, (_, kind, slug) in enumerate(options):
-            if kind == rc[0] and slug == rc[1]:
-                default_idx = i
-                st.session_state.pop("mindmap_recenter", None)
-                break
+        new_o = next((o for o in options if o[:2] == rc), None)
+        if new_o:
+            st.session_state["mm_history"].append(st.session_state["mm_current"])
+            st.session_state["mm_current"] = new_o
 
-    chosen = st.selectbox(
-        "Center on",
-        options=list(range(len(options))),
-        format_func=lambda i: options[i][0],
-        index=default_idx,
-        key="mindmap_choice",
-    )
-    label, kind, slug = options[chosen]
+    cur_kind, cur_slug, cur_display = st.session_state["mm_current"]
 
-    tree = build_tree(cat, kind, slug)
+    # ---- Top bar: back + dropdown ----
+    nav_cols = st.columns([1, 6, 2])
+    with nav_cols[0]:
+        if st.session_state["mm_history"]:
+            if st.button("← Back", use_container_width=True):
+                st.session_state["mm_current"] = st.session_state["mm_history"].pop()
+                st.rerun()
+        else:
+            st.markdown("")
+    with nav_cols[1]:
+        labels = [f"{_KIND_LABEL[o[0]][0]}  {o[2]}" for o in options]
+        cur_label = f"{_KIND_LABEL[cur_kind][0]}  {cur_display}"
+        try:
+            cur_idx = labels.index(cur_label)
+        except ValueError:
+            cur_idx = 0
+        chosen = st.selectbox(
+            "Jump to",
+            labels,
+            index=cur_idx,
+            key=f"mm_picker_{cur_kind}_{cur_slug}",
+            label_visibility="collapsed",
+        )
+        if chosen != cur_label:
+            new_o = options[labels.index(chosen)]
+            st.session_state["mm_history"].append(st.session_state["mm_current"])
+            st.session_state["mm_current"] = new_o
+            st.rerun()
+    with nav_cols[2]:
+        show_slugs = st.checkbox("Show technical IDs", value=False, key="mm_show_slugs")
+
+    st.write("")  # spacing
+
+    # ---- Build the tree of related entities ----
+    tree = build_tree(cat, cur_kind, cur_slug)
     if tree is None:
-        st.error(f"Couldn't build a tree for {kind}/{slug}.")
+        st.error(f"Couldn't build a connection map for this entry.")
         return
 
-    # Render the mindmap
-    mermaid_src = to_mermaid(tree)
-    _render_mermaid(mermaid_src, height_px=900)
+    # ---- HERO CARD: the centered entity ----
+    icon, kind_label, _ = _KIND_LABEL.get(cur_kind, ("⚪", cur_kind, ""))
 
-    # ---- side info + navigation list ----
-    st.divider()
-    col_info, col_nav = st.columns([1, 1])
-
-    with col_info:
-        st.subheader("📖 Selected entity")
-        if kind == "topic":
-            ent = next((t for t in cat.topics if t.slug == slug), None)
+    with st.container(border=True):
+        # Header with icon + name + tier
+        if cur_kind == "topic":
+            ent = next((t for t in cat.topics if t.slug == cur_slug), None)
+            header_html = (
+                f"<div style='display:flex; align-items:center; gap:14px; margin-bottom:8px;'>"
+                f"<span style='font-size:2rem;'>{icon}</span>"
+                f"<div><div style='font-size:0.75rem; color:#6b7d8c; text-transform:uppercase; letter-spacing:0.05em;'>{kind_label}</div>"
+                f"<div style='font-size:1.6rem; font-weight:600; color:#1a3a52;'>{cur_display}</div></div>"
+                f"</div>"
+            )
+            st.markdown(header_html, unsafe_allow_html=True)
             if ent:
-                st.markdown(f"**{ent.display_name}** &nbsp; {_evidence_badge(ent.evidence_tier.value)}",
-                            unsafe_allow_html=True)
-                st.write(ent.summary)
+                st.markdown(_evidence_badge(ent.evidence_tier.value), unsafe_allow_html=True)
+                st.markdown(ent.summary or "*(no summary)*")
                 if ent.coaching_scope_notes:
-                    st.info(f"**Coaching scope:** {ent.coaching_scope_notes}")
+                    st.success(f"**What you can coach on:** {ent.coaching_scope_notes}")
                 if ent.clinician_scope_notes:
-                    st.warning(f"**Clinician scope:** {ent.clinician_scope_notes}")
-        elif kind == "mechanism":
-            ent = next((m for m in cat.mechanisms if m.slug == slug), None)
+                    st.warning(f"**Refer / clinician territory:** {ent.clinician_scope_notes}")
+                if ent.red_flags:
+                    with st.expander(f"🚨 Red flags ({len(ent.red_flags)})"):
+                        for rf in ent.red_flags:
+                            st.markdown(f"- {rf}")
+        elif cur_kind == "mechanism":
+            ent = next((m for m in cat.mechanisms if m.slug == cur_slug), None)
+            header_html = (
+                f"<div style='display:flex; align-items:center; gap:14px; margin-bottom:8px;'>"
+                f"<span style='font-size:2rem;'>{icon}</span>"
+                f"<div><div style='font-size:0.75rem; color:#6b7d8c; text-transform:uppercase; letter-spacing:0.05em;'>{kind_label} · {ent.category.value if ent else ''}</div>"
+                f"<div style='font-size:1.6rem; font-weight:600; color:#1a3a52;'>{cur_display}</div></div>"
+                f"</div>"
+            )
+            st.markdown(header_html, unsafe_allow_html=True)
             if ent:
-                st.markdown(f"**{ent.display_name}** &nbsp; `{ent.category.value}` &nbsp; "
-                            f"{_evidence_badge(ent.evidence_tier.value)}", unsafe_allow_html=True)
-                st.write(ent.summary)
-        elif kind == "symptom":
-            ent = next((s for s in cat.symptoms if s.slug == slug), None)
+                st.markdown(_evidence_badge(ent.evidence_tier.value), unsafe_allow_html=True)
+                st.markdown(ent.summary or "")
+                if ent.upstream_drivers:
+                    st.markdown("**Upstream drivers:** " + ", ".join(ent.upstream_drivers))
+                if ent.downstream_effects:
+                    st.markdown("**Downstream effects:** " + ", ".join(ent.downstream_effects))
+        elif cur_kind == "symptom":
+            ent = next((s for s in cat.symptoms if s.slug == cur_slug), None)
+            header_html = (
+                f"<div style='display:flex; align-items:center; gap:14px; margin-bottom:8px;'>"
+                f"<span style='font-size:2rem;'>{icon}</span>"
+                f"<div><div style='font-size:0.75rem; color:#6b7d8c; text-transform:uppercase; letter-spacing:0.05em;'>{kind_label} · {ent.category.value if ent else ''} · {ent.severity.value if ent else ''}</div>"
+                f"<div style='font-size:1.6rem; font-weight:600; color:#1a3a52;'>{cur_display}</div></div>"
+                f"</div>"
+            )
+            st.markdown(header_html, unsafe_allow_html=True)
             if ent:
-                st.markdown(f"**{ent.display_name}** &nbsp; `{ent.category.value}` · `{ent.severity.value}`")
-                st.write(ent.description)
+                st.markdown(ent.description or "")
                 if ent.when_to_refer:
                     st.warning(f"**When to refer:** {ent.when_to_refer}")
-        elif kind == "supplement":
-            ent = next((s for s in cat.supplements if s.slug == slug), None)
+                if ent.aliases:
+                    st.caption(f"Also called: {', '.join(ent.aliases)}")
+        elif cur_kind == "supplement":
+            ent = next((s for s in cat.supplements if s.slug == cur_slug), None)
+            header_html = (
+                f"<div style='display:flex; align-items:center; gap:14px; margin-bottom:8px;'>"
+                f"<span style='font-size:2rem;'>{icon}</span>"
+                f"<div><div style='font-size:0.75rem; color:#6b7d8c; text-transform:uppercase; letter-spacing:0.05em;'>{kind_label} · {ent.category.value if ent else ''}</div>"
+                f"<div style='font-size:1.6rem; font-weight:600; color:#1a3a52;'>{cur_display}</div></div>"
+                f"</div>"
+            )
+            st.markdown(header_html, unsafe_allow_html=True)
             if ent:
-                st.markdown(f"**{ent.display_name}** &nbsp; `{ent.category.value}` &nbsp; "
-                            f"{_evidence_badge(ent.evidence_tier.value)}", unsafe_allow_html=True)
+                st.markdown(_evidence_badge(ent.evidence_tier.value), unsafe_allow_html=True)
+                if ent.forms_available:
+                    st.markdown(f"**Forms:** {', '.join(f.value for f in ent.forms_available)}")
+                if ent.typical_dose_range:
+                    doses = ", ".join(
+                        f"{form}: {dr.min}–{dr.max} {dr.unit.value}"
+                        for form, dr in ent.typical_dose_range.items()
+                    )
+                    st.markdown(f"**Typical dose:** {doses}")
+                if ent.timing_options:
+                    st.markdown(f"**Timing:** {', '.join(t.value for t in ent.timing_options)}")
                 if ent.notes_for_coach:
-                    st.write(ent.notes_for_coach)
-        elif kind == "claim":
-            ent = next((c for c in cat.claims if c.slug == slug), None)
+                    st.info(ent.notes_for_coach)
+                if ent.contraindications.conditions:
+                    st.warning("**Avoid in:** " + ", ".join(ent.contraindications.conditions))
+        elif cur_kind == "claim":
+            ent = next((c for c in cat.claims if c.slug == cur_slug), None)
+            header_html = (
+                f"<div style='display:flex; align-items:center; gap:14px; margin-bottom:8px;'>"
+                f"<span style='font-size:2rem;'>{icon}</span>"
+                f"<div><div style='font-size:0.75rem; color:#6b7d8c; text-transform:uppercase; letter-spacing:0.05em;'>{kind_label}</div>"
+                f"<div style='font-size:1.4rem; font-weight:600; color:#1a3a52;'>{ent.statement if ent else cur_slug}</div></div>"
+                f"</div>"
+            )
+            st.markdown(header_html, unsafe_allow_html=True)
             if ent:
-                st.markdown(f"**{ent.statement}** &nbsp; {_evidence_badge(ent.evidence_tier.value)}",
-                            unsafe_allow_html=True)
+                st.markdown(_evidence_badge(ent.evidence_tier.value), unsafe_allow_html=True)
                 if ent.coaching_translation:
-                    st.info(f"**In session:** {ent.coaching_translation}")
+                    st.success(f"**In session, you might say:** {ent.coaching_translation}")
+                if ent.caveats:
+                    st.markdown("**Caveats:** " + " · ".join(ent.caveats))
+        if show_slugs:
+            st.caption(f"`{cur_kind}/{cur_slug}`")
 
-    with col_nav:
-        st.subheader("🧭 Re-center on a child")
-        st.caption("Mermaid maps are static images. Click a child below to redraw with that as root.")
-        # Walk the tree's leaves (nodes with kind+slug)
-        nav_items: list[tuple[str, str]] = []  # (kind, slug)
-        def _walk(node: Tree):
-            if node.get("kind") not in ("group", "alias", "redflag", "warning",
-                                        "driver", "effect", "tier", ""):
-                if node.get("slug"):
-                    nav_items.append((node["kind"], node["slug"]))
-            for c in node.get("children", []):
-                _walk(c)
-        for c in tree["children"]:
-            _walk(c)
-        # dedupe
-        seen = set()
-        unique_nav = []
-        for ki, sl in nav_items:
-            if (ki, sl) in seen:
-                continue
-            seen.add((ki, sl))
-            unique_nav.append((ki, sl))
-        if not unique_nav:
-            st.caption("(no navigable children)")
-        else:
-            for ki, sl in unique_nav[:30]:
-                if st.button(f"↪ {ki}: {sl}", key=f"nav_{ki}_{sl}"):
-                    st.session_state["mindmap_recenter"] = (ki, sl)
-                    st.rerun()
+    st.write("")
 
-    with st.expander("🔧 Mermaid source"):
-        st.code(mermaid_src, language="text")
+    # ---- Connection rows: each group as cards in a 4-column grid ----
+    # Filter out groups that are pure-text (no clickable entities)
+    NAVIGABLE_KINDS = {"topic", "mechanism", "symptom", "supplement", "claim",
+                       "cooking_adjustment", "home_remedy"}
+
+    for branch in tree["children"]:
+        children = branch.get("children", [])
+        if not children:
+            continue
+        # Check if any children are navigable (have a slug + clickable kind)
+        navigable = [c for c in children if c.get("slug") and c.get("kind") in NAVIGABLE_KINDS]
+        text_only = [c for c in children if not (c.get("slug") and c.get("kind") in NAVIGABLE_KINDS)]
+
+        st.markdown(f"#### {branch['label']}")
+
+        # Render navigable as a card grid
+        if navigable:
+            for row_start in range(0, len(navigable), 4):
+                row_items = navigable[row_start:row_start + 4]
+                row_cols = st.columns(4)
+                for col, item in zip(row_cols, row_items):
+                    with col:
+                        item_kind = item["kind"]
+                        item_slug = item["slug"]
+                        item_display = _entity_display_name(cat, item_kind, item_slug)
+                        item_icon = _KIND_LABEL.get(item_kind, ("⚪", "", ""))[0]
+                        # Use a button for clickability — Streamlit doesn't have proper card click
+                        button_label = f"{item_icon}  {item_display}"
+                        if show_slugs:
+                            button_label += f"\n\n`{item_slug}`"
+                        if st.button(
+                            button_label,
+                            key=f"mmcard_{cur_kind}_{cur_slug}_{item_kind}_{item_slug}",
+                            use_container_width=True,
+                        ):
+                            st.session_state["mm_recenter"] = (item_kind, item_slug)
+                            st.rerun()
+
+        # Render text-only items (free-text symptoms, red flags, drivers/effects) as a list
+        if text_only:
+            with st.container(border=True):
+                for item in text_only:
+                    st.markdown(f"- {item['label']}")
+
+        st.write("")
 
 
 # ---------------------------------------------------------------------------

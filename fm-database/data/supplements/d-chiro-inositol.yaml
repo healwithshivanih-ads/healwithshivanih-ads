@@ -1,13 +1,13 @@
 slug: d-chiro-inositol
 display_name: D-Chiro-Inositol
-category: other
+category: vitamin
 forms_available:
 - capsule
 - powder
 typical_dose_range:
   capsule:
-    min: 50
-    max: 100
+    min: 100
+    max: 600
     unit: mg
   powder:
     min: 50
@@ -16,15 +16,18 @@ typical_dose_range:
 timing_options:
 - with_breakfast
 - with_dinner
+- morning
 take_with_food: optional
-linked_to_topics: []
-linked_to_claims: []
-notes_for_coach: Almost always paired with myo-inositol at a 40:1 ratio (myo:DCI)
-  for PCOS. Standalone high-dose DCI can impair oocyte quality — coach should ensure
-  the ratio is respected and refer to clinician for fertility-specific dosing. Also
-  relevant in insulin resistance protocols.
-notes_for_client: D-chiro-inositol works best when paired with myo-inositol at the
-  right ratio (40:1 myo to DCI). Most combination products are formulated this way.
+linked_to_topics:
+- pcos
+- insulin-resistance
+linked_to_claims:
+- myo-inositol-d-chiro-inositol-40-1-restores-ovulation-pcos
+- inositol-glucose-uptake-pcos
+notes_for_coach: Typically used in combination with myo-inositol (40:1 ratio). Specifically
+  cited for PCOS-related insulin resistance.
+notes_for_client: D-chiro-inositol is a form of inositol with particular benefits
+  for insulin regulation in PCOS.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -32,7 +35,15 @@ sources:
   location: Seven Clinical Focus Areas > 2. Insulin Resistance > Coaching interventions
   quote: 'Specific supplements: Inositol (myo-inositol and d-chiro-inositol), chromium,
     berberine'
-version: 1
+- id: vitaone-sex-hormones-cheatsheet
+  location: PCOS Supplement Cheatsheet
+  quote: 'D-Chiro Inositol: Improves insulin sensitivity and reduces AMH; Restores
+    menstrual regularity; 100–600 mg/day; ideal ratio 40:1 with Myo.'
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Insulin Resistance
+  quote: Inositol (esp. D-chiro) — Improves glucose uptake & insulin sensitivity.
+    Inositol helpful in metabolic syndrome and PCOS-related insulin issues.
+version: 3
 status: active
-updated_at: '2026-04-29'
+updated_at: '2026-05-02'
 updated_by: shivani

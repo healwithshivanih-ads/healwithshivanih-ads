@@ -1,0 +1,27 @@
+slug: gluten-linked-to-autoimmune-thyroid-disease
+statement: Gluten has a strong link with autoimmune thyroid disease via molecular
+  mimicry between gliadin and thyroid tissue.
+evidence_tier: plausible_emerging
+rationale: The document states a 'strong link with autoimmune thyroid disease (molecular
+  mimicry with gliadin).' Association between celiac/gluten sensitivity and Hashimoto's
+  is supported in literature, but causation for gluten-free diet in non-celiac Hashimoto's
+  is not proven by consensus RCTs.
+coaching_translation: Removing or reducing gluten may help calm thyroid autoimmunity,
+  especially if you have Hashimoto's or other autoimmune conditions.
+caveats:
+- Source is synthesis; primary citation not provided
+- Evidence strongest in celiac disease; benefit in non-celiac Hashimoto's is emerging
+linked_to_topics:
+- hashimotos-thyroiditis
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 9: Nutrition Strategies'
+  quote: 'Gluten: Strong link with autoimmune thyroid disease (molecular mimicry with
+    gliadin).'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

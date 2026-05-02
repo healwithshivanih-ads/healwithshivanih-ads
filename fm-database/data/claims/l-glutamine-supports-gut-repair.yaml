@@ -1,0 +1,31 @@
+slug: l-glutamine-supports-gut-repair
+statement: L-glutamine, zinc carnosine, and probiotics support gut repair by healing
+  the intestinal mucosa in leaky gut.
+evidence_tier: plausible_emerging
+rationale: L-glutamine as enterocyte fuel and gut mucosal support has clinical backing.
+  Zinc carnosine's mucosal-protective properties are reasonably supported. Combination
+  with probiotics for gut repair is a common FM approach with plausible but not robust
+  RCT evidence.
+coaching_translation: The gut-healing trio — L-glutamine, zinc carnosine, and probiotics
+  — is widely used to repair the gut lining and reduce leaky gut symptoms.
+caveats:
+- Source is educational synthesis.
+- Verify dosing with clinician, especially zinc carnosine in context of overall zinc
+  status.
+linked_to_topics:
+- leaky-gut
+- chronic-inflammation
+linked_to_supplements:
+- l-glutamine
+- zinc-carnosine
+- probiotics
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Inflammation Cheatsheet — Page 02
+  quote: Use probiotics, L-glutamine, zinc carnosine
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

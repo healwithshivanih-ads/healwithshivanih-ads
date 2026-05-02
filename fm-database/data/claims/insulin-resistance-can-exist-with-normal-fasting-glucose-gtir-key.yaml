@@ -1,0 +1,28 @@
+slug: insulin-resistance-can-exist-with-normal-fasting-glucose-gtir-key
+statement: Insulin resistance in PCOS can exist with normal fasting glucose and insulin
+  — Glucose Tolerance with Insulin Response (GTIR) testing is key to uncover hidden
+  insulin resistance.
+evidence_tier: plausible_emerging
+rationale: Compensated insulin resistance with normal fasting values is well-recognized;
+  post-challenge insulin elevation (GTIR) is a more sensitive marker. This is acknowledged
+  in PCOS literature but GTIR is not universally standardized.
+coaching_translation: Normal blood sugar tests don't rule out insulin resistance in
+  PCOS. A specialized challenge test (GTIR) may be needed to get the full picture.
+out_of_scope_notes: Ordering and interpreting GTIR testing is a clinician responsibility.
+caveats:
+- Source is expert synthesis
+- GTIR testing requires clinician order and interpretation
+linked_to_topics:
+- pcos
+linked_to_mechanisms:
+- insulin-resistance
+linked_to_supplements: []
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: PCOD Cheatsheet — Functional Medicine Clinical Wisdom
+  quote: Insulin resistance can exist with normal fasting glucose & insulin - GTIR
+    is key.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

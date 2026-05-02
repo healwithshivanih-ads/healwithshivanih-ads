@@ -1,0 +1,32 @@
+slug: nrf2-pathway-activation
+display_name: Nrf2 Pathway Activation
+aliases:
+- Nrf2 upregulation
+- nuclear factor erythroid 2
+- antioxidant response element
+category: signaling
+summary: The Nrf2 transcription pathway upregulates endogenous antioxidant enzymes
+  (SOD, catalase, glutathione). Activated by polyphenols such as EGCG (green tea)
+  and sulforaphane (cruciferous vegetables). Key mechanism linking dietary polyphenols
+  to enhanced cellular detox capacity.
+upstream_drivers:
+- polyphenol-intake
+- oxidative-stress
+downstream_effects:
+- increased-sod-catalase-gsh
+- reduced-oxidative-stress
+related_mechanisms:
+- glutathione-depletion
+- cyp450-phase-i-activation
+linked_to_topics:
+- liver-detoxification
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Top Superfoods for Detoxification
+  quote: Polyphenols upregulate Nrf2 pathway → enhances antioxidant enzymes (SOD,
+    catalase, GSH).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,28 @@
+slug: glutamine-repairs-gut-lining
+statement: The amino acid glutamine is a key nutrient for repairing the gut lining,
+  which is often in short supply in a compromised gut.
+evidence_tier: plausible_emerging
+rationale: Glutamine is the primary fuel for enterocytes and has supportive evidence
+  for gut barrier repair in critical illness and some GI conditions. Evidence in general
+  functional gut dysfunction is thinner.
+coaching_translation: Glutamine is a building block your gut lining uses to repair
+  itself, especially when it's been under stress.
+caveats:
+- Most strong evidence is from critical care or clinical GI disease settings. Evidence
+  in general gut dysfunction is emerging.
+linked_to_topics:
+- gut-dysfunction
+linked_to_supplements:
+- l-glutamine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-toolkit
+  location: The 5R Framework for Gut Restoration — Repair
+  quote: Help the lining of the GI tract repair itself by supplying key nutrients
+    that can often be in short supply in a compromised gut, such as zinc, antioxidants
+    (e.g. vitamins A, C, and E), fish oil, and the amino acid glutamine.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

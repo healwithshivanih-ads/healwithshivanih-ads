@@ -1,0 +1,35 @@
+slug: methylation-cycle
+display_name: Methylation Cycle
+aliases:
+- one-carbon cycle
+- MTHFR pathway
+- SAM cycle
+category: metabolic
+summary: The methylation cycle involves transfer of methyl groups critical for DNA
+  repair, neurotransmitter synthesis, gene expression, and detoxification. B12 and
+  folate (as methylcobalamin and methyltetrahydrofolate) are rate-limiting cofactors.
+  MTHFR genetic variants reduce enzymatic efficiency, requiring active-form B vitamins.
+upstream_drivers:
+- dietary-folate
+- vitamin-b12-intake
+- mthfr-genotype
+downstream_effects:
+- homocysteine-levels
+- dna-methylation
+- neurotransmitter-synthesis
+- detoxification-capacity
+related_mechanisms:
+- homocysteine-metabolism
+linked_to_topics:
+- folate-deficiency
+- vitamin-b12-deficiency
+evidence_tier: strong
+sources:
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Vitamin B12'
+  quote: Those who have high homocysteine levels or genetic variants in methylation
+    genes may respond better to 'active' forms of vitamin B12 such as methylcobalamin.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

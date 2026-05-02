@@ -1,0 +1,29 @@
+slug: cyclical-low-carb-useful-for-hormonal-and-thyroid-health
+statement: A cyclical low-carb approach (low-carb weekdays, carb refeed weekends)
+  is useful for hormonal support, athletes, and patients prone to thyroid or adrenal
+  issues on strict keto.
+evidence_tier: fm_specific_thin
+rationale: Common in FM and sports nutrition practice. Mechanistic rationale involves
+  T3 support from carbohydrate intake and HPA axis stabilisation. Direct RCT evidence
+  for this cycling protocol is thin.
+coaching_translation: If you feel exhausted or hormonal on a strict low-carb diet,
+  planned 'carb refeed' days on weekends can help support thyroid function and energy
+  levels while still achieving metabolic benefits.
+caveats:
+- Source is expert consensus. Evidence for specific cyclical protocols is largely
+  practice-based.
+- Thyroid and hormonal impacts of strict keto require clinician monitoring.
+linked_to_topics:
+- low-carb-diet
+- pcos
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: Macronutrient Framework (for Clinical Guidance)
+  quote: Useful for female patients prone to fatigue on strict keto.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

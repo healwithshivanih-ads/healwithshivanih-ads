@@ -1,0 +1,27 @@
+slug: low-carb-lowers-postprandial-glucose-and-insulin
+statement: Reducing dietary carbohydrates lowers postprandial glucose, which in turn
+  lowers insulin and promotes fat mobilisation.
+evidence_tier: strong
+rationale: Well-established physiological mechanism supported by consensus in metabolic
+  research. Postprandial glucose and insulin response to carbohydrate intake is a
+  foundational principle of metabolic physiology.
+coaching_translation: Eating fewer carbs means your blood sugar rises less after meals,
+  your body releases less insulin, and you're more likely to burn stored fat for energy.
+caveats:
+- Source is an expert-consensus cheatsheet, not primary literature. Tier reflects
+  established mechanistic consensus, not document-cited RCTs.
+linked_to_topics:
+- low-carb-diet
+- metabolic-syndrome
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: The Science of Low-Carb Diets
+  quote: Reducing carbohydrates lowers postprandial glucose → lowers insulin → promotes
+    fat mobilization.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

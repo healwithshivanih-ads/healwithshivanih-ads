@@ -1,0 +1,80 @@
+slug: vitamin-d3
+display_name: Vitamin D3
+category: vitamin
+forms_available:
+- capsule
+- tablet
+- liquid
+typical_dose_range:
+  capsule:
+    min: 5000
+    max: 5000
+    unit: mcg
+  liquid:
+    min: 1000
+    max: 5000
+    unit: IU
+timing_options:
+- morning
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- pcos
+- low-carb-diet
+- candida-overgrowth
+- ibd
+- leaky-gut
+- hairfall
+- knee-pain
+- hashimotos-thyroiditis
+- hypothyroidism
+- insulin-resistance
+- blood-sugar-dysfunction
+linked_to_claims:
+- low-carb-improves-pcos-hormonal-markers
+- vitamin-d-low-linked-recurrent-candida
+- vitamin-d3-superior-to-d2
+- magnesium-optimize-before-high-dose-vitamin-d
+- vitamin-d-deficiency-increases-hashimotos-risk
+- vitamin-d-adequate-levels-enhance-insulin-sensitivity
+- micronutrient-deficiency-impairs-insulin-receptor-signalling
+- low-vitamin-d-associated-with-insulin-resistance
+- vitamin-d3-supplementation-for-low-levels
+notes_for_coach: Fat-soluble — always take with a meal containing fat. Blood levels
+  should be monitored and dosing adjusted by a clinician. D3 is the preferred supplemental
+  form.
+notes_for_client: Vitamin D acts like a hormone and supports your pancreas's insulin-producing
+  cells. Get tested before supplementing so your provider can dial in the right dose
+  for you.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: Functional Medicine Clinical Applications
+  quote: Combine with magnesium, inositol, and Vitamin D3.
+- id: vitaone-gut-cheatsheet
+  location: Candida Infection — Supplement Stack
+  quote: Vitamin D3 — 2000–5000 IU/day (based on serum levels) — Strengthens immunity;
+    low Vit D linked to recurrent Candida
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin D (with Calcium & Phosphorus)
+  quote: 'Supplement: D3 best; always balance higher doses with vitamins A, K, and
+    E.'
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 9: Targeted Supplements'
+  quote: 'Vitamin D3 + K2: Modulates immunity and bone health.'
+- id: vitaone-blood-sugar-ebook
+  location: Section 7.2 — Targeted Supplementation
+  quote: 'Vitamin D3 + K2: Modulates immune-endocrine axis; deficiency linked to IR.
+    5000 IU D3+ 90 µg K2.'
+- id: vitaone-blood-sugar-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: Many studies show that lower vitamin D levels are associated with insulin
+    resistance. Those with low blood levels should supplement with vitamin D3 and
+    monitor their blood levels to adjust supplement dosages accordingly.
+version: 6
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

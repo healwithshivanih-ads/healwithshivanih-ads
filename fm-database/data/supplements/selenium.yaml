@@ -1,5 +1,5 @@
 slug: selenium
-display_name: Selenium (L-Selenomethionine)
+display_name: Selenium
 category: mineral
 forms_available:
 - capsule
@@ -7,21 +7,42 @@ forms_available:
 evidence_tier: plausible_emerging
 linked_to_topics:
 - thyroid
+- autoimmune-disease
+- psoriasis
+- chronic-inflammation
+- hairfall
+- hashimotos-thyroiditis
+- t3-conversion-disorder
+- hypothyroidism
+- hashimotos-hypothyroidism
+- liver-detoxification
+- mercury-amalgam-removal
 linked_to_claims:
 - selenium-supplementation-reduces-tpo-antibodies-in-hashimotos
 - selenium-zinc-iron-required-for-t4-to-t3-conversion
-notes_for_coach: L-selenomethionine form is best absorbed; commonly used for Hashimoto's
-  thyroiditis and antioxidant defence; avoid long-term doses above 400 mcg/day.
-notes_for_client: Selenium supports your thyroid's ability to make and activate thyroid
-  hormones. The typical dose is 200 mcg daily, ideally with a meal.
+- selenium-supports-t4-t3-conversion
+- iodine-supplementation-requires-testing-and-selenium-balance
+- selenium-reduces-tpo-hashimotos
+- selenium-hashimotos-intervention
+- selenium-reduces-thyroid-antibodies
+- low-free-t3-with-normal-tsh-indicates-conversion-disorder
+- selenium-zinc-increase-t4-to-t3-conversion
+- selenium-may-reduce-tpo-antibodies
+- key-nutrients-required-for-thyroid-hormone-production
+- selenium-vitamin-e-antioxidant-support-detox
+notes_for_coach: Selenium is both a Phase I antioxidant (as listed in the diagram)
+  and a glutathione peroxidase cofactor. Upper tolerable intake is 400 mcg/day — narrow
+  therapeutic window. Clinician supervision required.
+notes_for_client: Selenium is a trace mineral that activates key antioxidant enzymes.
+  Stay within recommended amounts — too much can be harmful.
 typical_dose_range:
   capsule:
     min: 200
-    max: 200
+    max: 300
     unit: mcg
   tablet:
     min: 200
-    max: 200
+    max: 400
     unit: mcg
 timing_options:
 - morning
@@ -42,7 +63,25 @@ sources:
   location: Page 2 - Supplement Table
   quote: Selenium (Lselenomethionine) - Thyroid support, antioxidant - 200 mcg/day
     - With meals
-version: 3
+- id: vitaone-thyroid-cheatsheet
+  location: Clinical Action Steps — Support T4→T3 Conversion
+  quote: Selenium (100–200 µg/day), Zinc Glycinate (20–30 mg/day), Iron, Active B2/B6/B12
+- id: vitaone-inflammation-cheatsheet
+  location: Autoimmune Disease Cheatsheet — Page 25
+  quote: Selenium (200 mcg/day) reduces TPO in Hashimoto's.
+- id: vitaone-nutrition-cheatsheet
+  location: Selenium – The Antioxidant & Thyroid Cofactor
+  quote: 'Best form: Selenomethionine.'
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 9: Targeted Supplements'
+  quote: 'Selenium (100–200 mcg/day): Reduces antibodies, improves conversion.'
+- id: vitaone-thyroid-toolkit
+  location: Nutrient Optimization
+  quote: 'Selenium: Essential for thyroid hormone conversion and may reduce TPO antibodies.'
+- id: vitaone-liver-detox-toolkit
+  location: Dental Amalgam Removal Protocol — Pre-Procedure
+  quote: 'Selenium: 200–300 mcg'
+version: 9
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-02'
 updated_by: shivani

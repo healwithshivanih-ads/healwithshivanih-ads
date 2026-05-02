@@ -1,5 +1,5 @@
 slug: probiotic-multi-strain
-display_name: Probiotics (Multi-Strain)
+display_name: Multi-Strain Probiotic
 category: probiotic
 forms_available:
 - capsule
@@ -8,7 +8,7 @@ typical_dose_range:
   capsule:
     min: 10
     max: 50
-    unit: tablets
+    unit: capsules
   powder:
     min: 10
     max: 50
@@ -16,20 +16,55 @@ typical_dose_range:
 timing_options:
 - on_empty_stomach
 - bedtime
-take_with_food: avoid
-notes_for_coach: Higher CFU multi-strain formula suited for IBS, post-SIBO treatment,
-  and Candida recovery; best taken on empty stomach or at bedtime.
+- morning
+- with_breakfast
+take_with_food: optional
+notes_for_coach: 10–50B CFU cited. Support microbiota diversity to reduce LPS burden
+  and improve SCFA production. Pair with prebiotic fibres for synbiotic effect.
 evidence_tier: plausible_emerging
-linked_to_topics: []
+linked_to_topics:
+- thyroid
+- leaky-gut
+- dysbiosis
+- estrobolome
+- estrogen-dominance
+- pcos
+- gut-brain-axis
+- microbiome
+- adrenal-dysfunction
+- insulin-resistance
 linked_to_mechanisms: []
-linked_to_claims: []
-notes_for_client: ''
+linked_to_claims:
+- leaky-gut-triggers-hashimotos
+- liver-gut-account-for-60-70-t4-t3-conversion
+- probiotics-reduce-beta-glucuronidase-estrogen-recycling
+- serotonin-gut-microbiome-mood-link
+- loneliness-activates-inflammatory-pathways
+- lps-dysbiosis-insulin-resistance
+notes_for_client: A good probiotic supports the healthy bacteria in your gut, which
+  directly influences your blood sugar and inflammation levels.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
   quote: Probiotics (multi-strain) - Gut health, immunity, digestion - 10–50 billion
     CFU/day - Empty stomach or bedtime
-version: 1
+- id: vitaone-thyroid-cheatsheet
+  location: What Nutritionists/Health Coaches Miss — Ignore Gut Health
+  quote: Repair gut with probiotics, prebiotics, L-glutamine, and zinc carnosine
+- id: vitaone-sex-hormones-cheatsheet
+  location: Estrogen Dominance Supplement Cheatsheet
+  quote: 'Probiotics (L. Rhamnosus, B. Longum): Rebalances estrobolome; reduces β-glucuronidase;
+    Daily; choose multi-strain for gut symptoms.'
+- id: vitaone-adrenal-cheatsheet
+  location: The Anti-Stress Hormones / Clinical Interventions (p.22, p.12)
+  quote: 'Heal gut microbiome; add probiotics (L. plantarum, B. longum). Gut–Brain
+    Axis Repair: Restore microbial + vagal health. Polyphenols, Prebiotics, Butyrate,
+    Mindful eating.'
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Gut Dysbiosis
+    / Endotoxemia
+  quote: Probiotic (10–50B CFU)
+version: 5
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-02'
 updated_by: shivani

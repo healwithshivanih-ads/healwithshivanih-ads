@@ -1,0 +1,26 @@
+slug: diabetic-nerve-pain
+display_name: Diabetic Nerve Pain
+aliases:
+- diabetic neuropathy
+- peripheral neuropathy
+- neuropathic pain
+- nerve pain in feet
+category: neurological
+severity: concerning
+description: Nerve pain or numbness, commonly in the extremities, associated with
+  prolonged high blood glucose and oxidative damage to nerve tissue.
+when_to_refer: Always refer to a clinician for diagnosis and management of diabetic
+  neuropathy.
+linked_to_topics:
+- blood-sugar-dysfunction
+linked_to_mechanisms:
+- insulin-resistance
+sources:
+- id: vitaone-blood-sugar-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: Multiple studies have shown that alpha lipoic acid also reduces symptoms
+    of diabetic nerve pain.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

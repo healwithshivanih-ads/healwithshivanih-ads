@@ -1,0 +1,36 @@
+slug: chlorella
+display_name: Chlorella
+category: other
+forms_available:
+- capsule
+- powder
+- tablet
+typical_dose_range:
+  capsule:
+    min: 1000
+    max: 2000
+    unit: mg
+timing_options:
+- on_empty_stomach
+- morning
+take_with_food: optional
+linked_to_topics:
+- mercury-amalgam-removal
+- liver-detoxification
+linked_to_claims:
+- chlorella-binds-mercury-post-amalgam
+notes_for_coach: Used peri-amalgam removal as a mercury binder. Mouth swish protocol
+  (2000mg in 2oz water, swish 30sec, spit) plus oral dosing. Do not use within 2 hours
+  of activated charcoal.
+notes_for_client: Chlorella is a green algae used to help bind heavy metals like mercury
+  in your gut. Use as directed around dental visits — timing matters.
+evidence_tier: fm_specific_thin
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-toolkit
+  location: Dental Amalgam Removal Protocol
+  quote: The chlorella can help bind and prevent mercury absorption.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

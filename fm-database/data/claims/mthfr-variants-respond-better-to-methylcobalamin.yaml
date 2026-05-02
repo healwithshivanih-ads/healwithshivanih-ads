@@ -1,0 +1,31 @@
+slug: mthfr-variants-respond-better-to-methylcobalamin
+statement: Individuals with high homocysteine levels or MTHFR genetic variants may
+  respond better to active forms of vitamin B12 (methylcobalamin) and natural folate
+  rather than folic acid.
+evidence_tier: plausible_emerging
+rationale: Mech et al. 2016 (J Clin Psychiatry) RCT supports this in MDD patients
+  with MTHFR variants. Biologically plausible based on methylation cycle impairment.
+coaching_translation: If you've been told you have an MTHFR gene variant, you may
+  benefit from the 'active' forms of B12 and folate — methylcobalamin and methylfolate.
+  Check with your doctor before switching.
+caveats:
+- MTHFR testing and interpretation is out of coaching scope — refer to clinician.
+- Source is an educational toolkit, not a primary study.
+out_of_scope_notes: Genotyping and active-form supplementation dosing requires clinician
+  oversight.
+linked_to_topics:
+- vitamin-b12-deficiency
+- folate-deficiency
+linked_to_supplements:
+- vitamin-b12
+- folate
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Vitamin B12'
+  quote: Those who have high homocysteine levels or genetic variants in methylation
+    genes may respond better to 'active' forms of vitamin B12 such as methylcobalamin.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

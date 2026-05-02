@@ -1,0 +1,32 @@
+slug: coq10-improves-fatigue-ms-neuropathy-parkinson
+statement: Supplementing with CoQ10 has been shown to improve fatigue and depression
+  in patients with multiple sclerosis, and improve symptoms of diabetic neuropathy
+  and Parkinson's disease.
+evidence_tier: plausible_emerging
+rationale: Supported by Sanoobar et al. 2015 (Nutr Neurosci) and Sanoobar et al. 2016
+  (Nutr Neurosci) RCTs, and Yoritaka et al. 2015 (Parkinsonism Relat Disord), all
+  cited in document.
+coaching_translation: CoQ10 is a key player in energy production and is naturally
+  depleted by aging and statin medications. It may be especially helpful for fatigue
+  and neurological symptoms.
+caveats:
+- Evidence is condition-specific (MS, Parkinson's, diabetic neuropathy).
+- Dosing requires clinician oversight; statins specifically deplete CoQ10.
+- Statin medication adjustment is out of coaching scope.
+out_of_scope_notes: CoQ10 dosing and its interaction with statin therapy requires
+  clinician involvement.
+linked_to_topics:
+- mitochondrial-health-nutrition
+linked_to_supplements:
+- coenzyme-q10
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-toolkit
+  location: Nutrients for Mitochondrial Health
+  quote: Supplementing with CoQ10 has been shown to improve fatigue and depression
+    in patients with multiple sclerosis, as well as improve symptoms of diabetic neuropathy
+    and Parkinson's disease.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

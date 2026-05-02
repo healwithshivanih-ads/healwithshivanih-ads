@@ -1,0 +1,51 @@
+slug: vitamin-b-complex-deficiency
+display_name: B-Vitamin Deficiency & Functional Roles
+aliases:
+- B vitamin deficiency
+- thiamin deficiency
+- riboflavin deficiency
+- niacin deficiency
+- B6 deficiency
+- B12 deficiency
+- folate deficiency
+summary: The B-vitamin family plays interconnected roles in energy metabolism, methylation,
+  neurotransmitter synthesis, and red blood cell formation. Deficiencies present with
+  overlapping symptoms including fatigue, neuropathy, mood disturbances, and anemia.
+  Each B vitamin has a preferred bioavailable form that outperforms the cheaper inactive
+  form.
+common_symptoms:
+- fatigue
+- brain-fog
+- neuropathy
+- mood-disturbances
+- anemia
+- insomnia
+- poor-memory
+- hair-loss
+red_flags:
+- megaloblastic anemia with neurological symptoms
+- seizures (severe thiamin deficiency)
+- irreversible neurological damage from B12 deficiency
+key_mechanisms:
+- methylation-cycle-dysfunction
+- neurotransmitter-synthesis-impairment
+- mitochondrial-energy-production
+related_topics:
+- nutrient-deficiency-depression
+- hairfall
+- methylation
+coaching_scope_notes: Coaches can educate on food sources, preferred supplement forms,
+  and lifestyle factors that raise demand. Do not diagnose or prescribe therapeutic
+  doses for diagnosed deficiency states.
+clinician_scope_notes: Lab work (MCV, homocysteine, MMA, RBC folate) needed before
+  high-dose B12 or folate supplementation. High folate can mask B12 deficiency.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: The Vitamin Cliff Notes They Don't Teach You
+  quote: Essential Functional Medicine insights for doctors, nutritionists & health
+    coaches - simplified into practitioner-ready notes.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

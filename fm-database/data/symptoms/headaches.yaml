@@ -1,0 +1,26 @@
+slug: headaches
+display_name: Chronic Headaches / Migraines
+aliases:
+- migraines
+- chronic headaches
+- inflammatory headaches
+category: neurological
+severity: common
+description: Recurring headaches or migraines, which can be triggered or worsened
+  by food sensitivities, gut dysbiosis, magnesium deficiency, and systemic inflammation.
+when_to_refer: Thunderclap headache, new neurological symptoms, or rapidly escalating
+  pattern — urgent medical referral.
+linked_to_topics:
+- food-sensitivity
+- chronic-inflammation
+linked_to_mechanisms:
+- nf-kb-activation
+- gut-dysbiosis
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Food Allergy vs Food Sensitivity — Page 04
+  quote: 'NERVOUS: Brain fog, headaches, migraines'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

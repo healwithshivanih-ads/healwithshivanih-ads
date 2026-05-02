@@ -1,0 +1,41 @@
+slug: mitochondrial-health-nutrition
+display_name: Mitochondrial Health & Nutritional Support
+aliases:
+- mitochondrial dysfunction
+- cellular energy production
+- ATP support
+summary: Mitochondria convert food and oxygen into ATP. Poor mitochondrial function
+  is implicated in heart disease, diabetes, memory decline, and neurological conditions.
+  Key nutrients support energy production or reduce oxidative stress from free radical
+  byproducts. Dietary and lifestyle optimization is the foundation; supplementation
+  is adjunctive.
+common_symptoms:
+- fatigue
+- brain-fog
+- low-mood
+- cognitive-decline
+red_flags:
+- suspected primary mitochondrial disease — refer to specialist
+related_topics:
+- magnesium-insufficiency
+- vitamin-b12-deficiency
+- folate-deficiency
+- essential-fatty-acids
+key_mechanisms:
+- mitochondrial-atp-production
+- oxidative-stress
+- free-radical-production
+coaching_scope_notes: Coaches can support nutrient-dense dietary patterns and lifestyle
+  habits that support mitochondrial health. Supplement dosing should involve a clinician.
+clinician_scope_notes: 'Key supplements: CoQ10, carnitine, ALA, NAC, B vitamins, magnesium,
+  omega-3s, vitamin C. Personalize based on labs, medications, and health history.'
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-nutrition-toolkit
+  location: Nutrients for Mitochondrial Health
+  quote: Poor mitochondrial function has been identified as a factor in the development
+    of heart disease, diabetes, memory decline, and other neurological conditions.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

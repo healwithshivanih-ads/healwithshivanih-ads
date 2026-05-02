@@ -1,0 +1,58 @@
+slug: ibs
+display_name: Irritable Bowel Syndrome (IBS)
+aliases:
+- irritable bowel syndrome
+- IBS-D
+- IBS-C
+- functional bowel disorder
+- irritable bowel
+summary: A functional gut disorder characterised by recurrent abdominal pain, bloating,
+  altered bowel habits, and gas. FODMAPs are a major dietary trigger. Root causes
+  in functional medicine include dysbiosis, SIBO, low HCl, and poor enzyme function.
+common_symptoms:
+- cramping-pain
+- bloating
+- constipation
+- diarrhea
+- gas
+- urgency
+- abdominal-cramping
+- abdominal-gas
+- osmotic-diarrhea
+red_flags:
+- blood in stool
+- unintended weight loss
+- nocturnal symptoms — rule out IBD
+- Blood in stool
+- Unexplained weight loss
+- Nocturnal diarrhoea
+- Family history of IBD or colorectal cancer
+related_topics:
+- sibo
+- gut-dysbiosis
+- leaky-gut
+- gerd
+- low-fodmap-diet
+key_mechanisms:
+- visceral-hypersensitivity
+- gut-brain-axis-dysregulation
+- impaired-gut-motility
+- gut-fermentation-dysbiosis
+- fructose-malabsorption
+- lactase-deficiency-osmotic-load
+coaching_scope_notes: Support with low-FODMAP meal planning, stress reduction, and
+  food-symptom journaling. Do not diagnose; refer red flags to clinician.
+clinician_scope_notes: Rome IV criteria for diagnosis. Consider SIBO breath test,
+  comprehensive stool analysis, and colonoscopy to rule out IBD.
+evidence_tier: strong
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Gut Health Cheatsheet
+  quote: IBS = functional, not structural. Treat gut-brain axis.
+- id: vitaone-elimination-diet-cheatsheet
+  location: Functional Medicine Table — Understanding FODMAP Mechanisms
+  quote: Common in wheat, garlic, onion, legumes - major IBS trigger foods.
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

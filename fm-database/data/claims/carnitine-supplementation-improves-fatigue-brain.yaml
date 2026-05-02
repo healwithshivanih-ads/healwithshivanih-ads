@@ -1,0 +1,29 @@
+slug: carnitine-supplementation-improves-fatigue-brain
+statement: Supplementing with carnitine may improve fatigue and brain function; low
+  carnitine contributes to decreased energy production and mitochondrial dysfunction.
+evidence_tier: plausible_emerging
+rationale: Malaguarnera et al. 2007 (Am J Clin Nutr) RCT in centenarians supports
+  fatigue and cognitive improvements with L-carnitine. Li et al. 2015 (PLoS One) meta-analysis
+  supports peripheral neuropathy. Evidence is strong in specific populations but not
+  universal.
+coaching_translation: Carnitine is like a 'fat taxi' — it helps shuttle fats into
+  your cells' energy factories. Some people, especially older adults, may notice improved
+  energy and mental clarity with carnitine support.
+caveats:
+- Dosing requires clinician oversight.
+- Source is an educational toolkit citing RCTs — evidence is population-specific.
+out_of_scope_notes: Therapeutic carnitine dosing is out of coaching scope.
+linked_to_topics:
+- mitochondrial-health-nutrition
+linked_to_supplements:
+- l-carnitine
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-toolkit
+  location: Nutrients for Mitochondrial Health
+  quote: Some studies have indicated that supplementing with carnitine may improve
+    fatigue and brain function.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

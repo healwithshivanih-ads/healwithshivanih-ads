@@ -1,0 +1,38 @@
+slug: relaxation-response
+display_name: Relaxation Response
+aliases:
+- parasympathetic activation
+- Benson relaxation response
+- rest-and-digest response
+category: neurological
+summary: A mind-body state discovered by Dr. Herbert Benson (Harvard) characterized
+  by decreased heart rate, blood pressure, respiratory rate, cortisol, noradrenaline,
+  oxygen consumption, and muscle tension — the physiological counterpart to the stress
+  response.
+upstream_drivers:
+- breathwork
+- meditation
+- progressive-muscle-relaxation
+downstream_effects:
+- cortisol-reduction
+- blood-pressure-lowering
+- improved-sleep
+- reduced-anxiety
+related_mechanisms:
+- hpa-axis-dysregulation
+- sympathetic-nervous-system-activation
+linked_to_topics:
+- chronic-stress
+- hpa-axis-dysregulation
+evidence_tier: strong
+sources:
+- id: vitaone-adrenal-toolkit
+  location: The Relaxation Response
+  quote: The Relaxation Response is a simple, effective, mind/body approach to relieving
+    stress. Discovered by Dr. Benson at Harvard Medical School, it is routinely recommended
+    to treat patients suffering from heart conditions, high blood pressure, chronic
+    pain, insomnia, and many other physical ailments.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

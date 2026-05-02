@@ -1,0 +1,26 @@
+slug: chronic-inflammation
+display_name: Chronic Inflammation
+aliases:
+- low-grade inflammation
+- inflammatory state
+- systemic inflammation symptoms
+category: constitutional
+severity: common
+description: Persistent low-grade inflammatory state contributing to cardiometabolic
+  and other chronic disease risk, addressed through diet, fasting, and targeted phytonutrients.
+linked_to_topics:
+- cardiometabolic-health
+- intermittent-fasting
+- phytonutrient-dense-diet
+linked_to_mechanisms:
+- systemic-inflammation
+- oxidative-stress
+when_to_refer: ''
+sources:
+- id: vitaone-cardiometabolic-toolkit
+  location: Intermittent Fasting — Improves/Decreases Table
+  quote: 'Fasting Decreases: Inflammation.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

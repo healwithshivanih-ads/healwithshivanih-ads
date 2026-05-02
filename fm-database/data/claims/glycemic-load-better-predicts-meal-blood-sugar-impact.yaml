@@ -1,0 +1,26 @@
+slug: glycemic-load-better-predicts-meal-blood-sugar-impact
+statement: Glycaemic Load (GL), which accounts for both GI and actual carbohydrate
+  portion, provides a more accurate measure of how a meal impacts blood sugar than
+  GI alone.
+evidence_tier: strong
+rationale: GL extends GI by incorporating portion size; well-validated in nutritional
+  epidemiology as a better predictor of glycaemic response.
+coaching_translation: It's not just what you eat but how much. A small portion of
+  a high-GI food may have less blood sugar impact than a large portion of a moderate-GI
+  food.
+linked_to_topics:
+- blood-sugar-dysfunction
+caveats:
+- Source is FM synthesis.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 1.4 — Whole vs Refined Carbohydrates
+  quote: GL takes into account actual portions of food, and is thus a more realistic
+    measure of how a meal or snack impacts blood sugar.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

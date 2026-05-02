@@ -1,0 +1,29 @@
+slug: coq10-crucial-for-statin-users
+statement: CoQ10 (as ubiquinol) is crucial for statin users, as statins deplete CoQ10
+  and mitochondrial energy production is compromised.
+evidence_tier: plausible_emerging
+rationale: Statins inhibit the mevalonate pathway, reducing endogenous CoQ10 synthesis.
+  CoQ10 supplementation in statin users is biologically rational; clinical evidence
+  for symptom improvement is mixed but mechanistically credible.
+coaching_translation: If you're taking a statin medication, your body's natural CoQ10
+  levels may be lower — this nutrient is vital for energy production in every cell.
+caveats:
+- Specific dosing (100–200 mg/day ubiquinol) should be confirmed with prescribing
+  clinician.
+- Source is expert consensus.
+out_of_scope_notes: Medication management and therapeutic dosing are clinician scope.
+linked_to_topics:
+- insulin-resistance
+linked_to_supplements:
+- coq10-ubiquinone
+linked_to_mechanisms:
+- mitochondrial-dysfunction
+sources:
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Mitochondrial
+    Dysfunction
+  quote: CoQ10 is crucial for statin users.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

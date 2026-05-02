@@ -1,0 +1,26 @@
+slug: if-improves-blood-pressure-and-antioxidant-activity
+statement: Intermittent fasting improves blood pressure and antioxidant activity.
+evidence_tier: plausible_emerging
+rationale: Supported by the document's summary table and cited references including
+  de Cabo & Mattson (NEJM 2019). Mechanism plausibly linked to reduced oxidative stress
+  and improved vascular function.
+coaching_translation: Fasting approaches have been associated with lower blood pressure
+  and better antioxidant defenses in the body.
+caveats:
+- Fasting is contraindicated in those with pre-existing low blood pressure
+- Clinician monitoring recommended
+linked_to_topics:
+- intermittent-fasting
+- cardiometabolic-health
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cardiometabolic-toolkit
+  location: Intermittent Fasting — Improves/Decreases Table
+  quote: 'Intermittent fasting Improves: Blood pressure, Antioxidant activity, Blood
+    sugar metabolism, Brain function.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

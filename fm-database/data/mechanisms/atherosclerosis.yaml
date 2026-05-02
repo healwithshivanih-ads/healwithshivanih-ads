@@ -1,0 +1,38 @@
+slug: atherosclerosis
+display_name: Atherosclerosis
+aliases:
+- atheromatous vascular disease
+- coronary atherosclerosis
+- arterial plaque
+category: structural
+summary: Atheromatous vascular disease is the underlying pathology of CVD, leading
+  to coronary artery disease, cerebrovascular disease, and peripheral vascular disease.
+upstream_drivers:
+- systemic-inflammation
+- insulin-resistance
+- dyslipidemia
+- smoking
+- hypertension
+- elevated-homocysteine
+downstream_effects:
+- coronary-artery-disease
+- heart-failure
+- cardiac-arrhythmias
+- peripheral-vascular-disease
+related_mechanisms:
+- systemic-inflammation
+- insulin-resistance
+- oxidative-stress
+linked_to_topics:
+- cardiovascular-dysfunction
+- hypertension
+evidence_tier: strong
+sources:
+- id: vitaone-cv-toolkit
+  location: CVD Risk Analysis
+  quote: The underlying pathology is atheromatous vascular disease, resulting in coronary
+    artery disease (CAD), cerebrovascular disease, and peripheral vascular disease.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

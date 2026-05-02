@@ -1,0 +1,22 @@
+slug: low-hdl
+display_name: Low HDL Cholesterol
+aliases:
+- reduced HDL
+- low good cholesterol
+category: metabolic
+severity: concerning
+description: Low HDL cholesterol is a component of dyslipidemia associated with elevated
+  cardiovascular risk and often linked to insulin resistance and metabolic syndrome.
+linked_to_topics:
+- dyslipidemia
+linked_to_mechanisms:
+- insulin-resistance
+when_to_refer: ''
+sources:
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 1
+  quote: Dyslipidemia = Imbalance in lipid fractions ↑LDL, ↑TG, ↓HDL, ↑ApoB, ↑Lp(a).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

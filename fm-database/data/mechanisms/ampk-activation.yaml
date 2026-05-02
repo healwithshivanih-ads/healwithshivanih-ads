@@ -1,0 +1,32 @@
+slug: ampk-activation
+display_name: AMPK Activation
+aliases:
+- AMP-activated protein kinase activation
+- cellular energy sensing
+category: metabolic
+summary: AMPK is a master cellular energy sensor. Its activation (e.g., by berberine
+  or exercise) enhances glucose uptake, fatty acid oxidation, and mitochondrial biogenesis,
+  improving insulin sensitivity.
+upstream_drivers:
+- berberine
+- exercise
+- caloric-restriction
+- metformin
+downstream_effects:
+- improved-glucose-uptake
+- improved-insulin-sensitivity
+- increased-glut4-expression
+related_mechanisms:
+- insulin-resistance
+- mitochondrial-dysfunction
+linked_to_topics:
+- insulin-resistance
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-blood-sugar-cheatsheet
+  location: Insulin Resistance Cheatsheet — Therapeutic Considerations
+  quote: Berberine = "Natural Metformin" – Supports AMPK activation
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

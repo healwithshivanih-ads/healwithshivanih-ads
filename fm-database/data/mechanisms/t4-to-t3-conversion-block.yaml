@@ -1,0 +1,38 @@
+slug: t4-to-t3-conversion-block
+display_name: T4 → T3 Conversion Block
+aliases:
+- impaired deiodinase activity
+- peripheral conversion failure
+- T4-T3 conversion impairment
+category: endocrine
+summary: Peripheral conversion of T4 (inactive) to T3 (active) occurs primarily in
+  the liver and gut microbiome. Deficiencies in selenium, zinc, and iron; chronic
+  stress; inflammation; and liver/gut dysfunction impair deiodinase enzymes, reducing
+  active T3 and potentially increasing reverse T3.
+upstream_drivers:
+- selenium-deficiency
+- zinc-deficiency
+- iron-deficiency
+- chronic-inflammation
+- hpa-axis-dysregulation
+- leaky-gut
+- liver-congestion
+downstream_effects:
+- low-free-t3
+- elevated-reverse-t3
+- functional-hypothyroidism
+related_mechanisms:
+- hpa-axis-dysregulation
+- leaky-gut
+- chronic-inflammation
+linked_to_topics:
+- thyroid
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-thyroid-cheatsheet
+  location: Thyroid Disorders Cheatsheet — Free T3 row
+  quote: Selenium, zinc, iron deficiency; stress; inflammation; liver/gut issues
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

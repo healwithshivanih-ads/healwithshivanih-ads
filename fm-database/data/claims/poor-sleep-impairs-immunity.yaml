@@ -1,0 +1,28 @@
+slug: poor-sleep-impairs-immunity
+statement: Poor sleep quality impairs NK cell activity, disrupts circadian immune
+  rhythm, and is a first-line intervention for immune recovery.
+evidence_tier: strong
+rationale: Sleep's role in immune function, NK cell activity, T-cell proliferation,
+  and cytokine regulation is extensively documented in peer-reviewed literature.
+coaching_translation: Sleep is the single most powerful immune modulator available
+  to your clients — and the most overlooked. Sleeping before 11pm, 7–9 hours, in a
+  dark cool room is a non-negotiable foundation.
+caveats:
+- Source is educational synthesis; the underlying sleep-immunity relationship is strongly
+  evidenced in the literature.
+linked_to_topics:
+- chronic-inflammation
+- autoimmune-disease
+- fasting-immune-health
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Lifestyle Strategies — Page 18
+  quote: 'Sleep quality: Restores circadian immune rhythm → NK cell activity → First-line
+    intervention'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

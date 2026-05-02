@@ -1,0 +1,29 @@
+slug: iodine-supplementation-requires-testing-and-selenium-balance
+statement: Iodine supplementation (150–300 µg/day if deficient) should only be initiated
+  after testing and must be balanced with adequate selenium to avoid worsening autoimmunity.
+evidence_tier: confirm_with_clinician
+rationale: The document states '150–300 µg/day if deficient, balance with selenium'
+  and 'Test before supplementing.' Excess iodine without selenium can worsen Hashimoto's
+  — a well-documented clinical concern.
+coaching_translation: Iodine can be helpful or harmful for your thyroid depending
+  on your levels and immune status — this is one where testing first and working with
+  your doctor is essential.
+out_of_scope_notes: Testing serum iodine and determining supplementation need is clinician
+  scope. Coaches should not recommend iodine dosing independently.
+caveats:
+- Iodine excess in autoimmune thyroid disease can worsen antibody levels.
+- Dose from synthesis document — must be clinician-guided.
+linked_to_topics:
+- thyroid
+linked_to_supplements:
+- iodine
+- selenium
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-cheatsheet
+  location: Clinical Action Steps — Balance Iodine Intake
+  quote: 150–300 µg/day if deficient, balance with selenium
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

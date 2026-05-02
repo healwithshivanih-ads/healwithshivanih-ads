@@ -1,0 +1,26 @@
+slug: elevated-fasting-insulin
+display_name: Elevated Fasting Insulin
+aliases:
+- high fasting insulin
+- hyperinsulinemia
+- high insulin levels
+category: metabolic
+severity: concerning
+description: Fasting insulin above the functional range (>5 µIU/mL), indicating compensatory
+  hyperinsulinemia and early insulin resistance even when fasting glucose appears
+  normal.
+when_to_refer: Refer if fasting insulin >15 µIU/mL or if accompanied by HbA1c ≥5.7%;
+  evaluate for PCOS in females.
+linked_to_topics:
+- insulin-resistance
+- pcos
+linked_to_mechanisms:
+- insulin-resistance
+sources:
+- id: vitaone-blood-sugar-cheatsheet
+  location: Insulin Resistance Cheatsheet — Clinical Symptoms
+  quote: Elevated fasting insulin, HOMA-IR
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,29 @@
+slug: medicinal-mushrooms-immune-antioxidant-antiviral
+statement: Medicinal mushrooms support the immune system while having antioxidant
+  and antiviral effects.
+evidence_tier: plausible_emerging
+rationale: Cited RCTs include Dai et al. (J Am Coll Nutr 2015) on shiitake improving
+  human immunity. Reishi, Lion's Mane, and Maitake data cited from preclinical and
+  early human studies. Dosing must be individualized by genus/species.
+coaching_translation: Medicinal mushrooms like shiitake, reishi, and maitake have
+  been studied for their immune-boosting and antioxidant properties.
+out_of_scope_notes: Dosing must be individualized by species and validated methods
+  — clinician consultation required.
+linked_to_topics:
+- immune-support
+- chronic-inflammation
+linked_to_supplements:
+- medicinal-mushrooms
+caveats:
+- Dosing is species-specific and must be individualized per clinician guidance.
+- Evidence quality varies widely by mushroom species.
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Medicinal mushrooms have been shown to support the immune system while having
+    antioxidant and antiviral effects.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

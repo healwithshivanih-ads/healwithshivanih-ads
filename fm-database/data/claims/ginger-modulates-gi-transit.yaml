@@ -1,0 +1,24 @@
+slug: ginger-modulates-gi-transit
+statement: Ginger is a GI transit time modulator, supporting gut motility during PPI
+  tapering.
+evidence_tier: plausible_emerging
+rationale: Ginger has documented prokinetic and anti-nausea properties with some RCT
+  support for gastroparesis and nausea, and is widely used for gut motility.
+linked_to_topics:
+- gerd
+- gut-dysfunction
+linked_to_supplements:
+- ginger
+coaching_translation: ''
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
+    — Supplement recommendations'
+  quote: 'Transit time modulators: Iberogast, D-limonene, ginger, probiotics, triphala'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,31 @@
+slug: methylated-b-vitamins-mthfr-support
+statement: MTHFR-positive individuals should use activated/methylated B vitamin forms
+  (5-MTHF, methylcobalamin, P5P, riboflavin-5'-phosphate) to bypass enzymatic impairment
+  and support methylation.
+evidence_tier: plausible_emerging
+rationale: Document explicitly recommends active/methylated B vitamin forms for MTHFR
+  support. The rationale is biochemically sound — MTHFR SNPs reduce conversion of
+  standard forms. No RCT cited in source.
+coaching_translation: If you have an MTHFR gene variation, choose vitamins in their
+  'activated' forms — your body can use them directly without needing to convert them.
+out_of_scope_notes: MTHFR genetic testing and interpretation, and therapeutic dosing,
+  are clinician scope.
+caveats:
+- Standard folic acid supplementation may be counterproductive in MTHFR positive individuals
+- Source is FM synthesis
+- Dosing requires clinician guidance
+linked_to_topics:
+- methylation-mthfr
+linked_to_supplements:
+- 5-mthf
+- methylcobalamin
+- b-complex
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet — 6 Ways to Overcome MTHFR
+  quote: Use Activated Nutrients – Always choose methylated or coenzyme forms.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

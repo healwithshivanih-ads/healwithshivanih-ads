@@ -1,0 +1,30 @@
+slug: dim-shifts-estrogen-to-2-oh-pathway
+statement: DIM (Diindolylmethane) shifts estrogen metabolism toward the protective
+  2-OH pathway, reducing PMS, breast tenderness, and acne.
+evidence_tier: plausible_emerging
+rationale: DIM promotes CYP1A1-mediated Phase I hydroxylation favoring 2-hydroxyestrone
+  over more proliferative metabolites. Mechanism is biologically credible; RCT evidence
+  is limited and mostly small trials. Source is an expert synthesis cheatsheet, not
+  primary literature.
+coaching_translation: DIM from cruciferous vegetables and supplements helps your body
+  process estrogen in a safer direction, potentially easing period-related symptoms.
+caveats:
+- Source is expert synthesis, not primary RCT data
+- Avoid in frank low-estrogen states (menopause without dominance)
+- Verify dose with clinician
+linked_to_topics:
+- estrogen-dominance
+- perimenopause
+linked_to_supplements:
+- dim
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: Estrogen Dominance Supplement Cheatsheet
+  quote: Shifts estrogen metabolism to safer 2-OH pathway; Reduces PMS, breast tenderness,
+    acne.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

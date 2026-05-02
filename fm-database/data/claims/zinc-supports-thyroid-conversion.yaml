@@ -1,0 +1,26 @@
+slug: zinc-supports-thyroid-conversion
+statement: Zinc (20–30 mg/day as Zinc Glycinate) supports T4 → T3 conversion and thyroid
+  hormone production.
+evidence_tier: plausible_emerging
+rationale: Zinc is a cofactor for thyroid hormone synthesis and deiodinase activity.
+  The document specifies Zinc Glycinate 20–30 mg/day for conversion support.
+coaching_translation: Zinc helps convert your thyroid hormone to the active form your
+  body can use. Glycinate form is gentler on the stomach.
+out_of_scope_notes: Dosing should be verified with clinician. Long-term high zinc
+  can deplete copper.
+caveats:
+- Dose from synthesis document — verify with clinician.
+- Monitor copper status with prolonged supplementation.
+linked_to_topics:
+- thyroid
+linked_to_supplements:
+- zinc
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-cheatsheet
+  location: Clinical Action Steps — Support T4→T3 Conversion
+  quote: Selenium (100–200 µg/day), Zinc Glycinate (20–30 mg/day), Iron, Active B2/B6/B12
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

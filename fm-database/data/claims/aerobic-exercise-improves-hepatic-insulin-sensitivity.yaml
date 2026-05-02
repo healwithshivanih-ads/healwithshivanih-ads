@@ -1,0 +1,26 @@
+slug: aerobic-exercise-improves-hepatic-insulin-sensitivity
+statement: Seven days of aerobic training can improve hepatic insulin sensitivity,
+  partly via stimulation of hepatic AMPK to suppress hepatic glucose production.
+evidence_tier: plausible_emerging
+rationale: Mechanistically sound; hepatic AMPK activation during exercise is documented,
+  though the 7-day timeline and magnitude of effect may vary by population.
+coaching_translation: Just one week of consistent aerobic exercise can begin improving
+  how your liver manages blood sugar.
+caveats:
+- Source is an educational toolkit; specific 7-day claim should be verified against
+  primary hepatology/exercise physiology literature.
+linked_to_topics:
+- blood-sugar-dysfunction
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-blood-sugar-toolkit
+  location: Antigravity Exercises
+  quote: It has been seen that 7 days of aerobic training, improves hepatic insulin
+    sensitivity. It has also been understood that hepatic AMPK is stimulated during
+    exercise and may facilitate improved suppression of HGP.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,36 @@
+slug: cognitive-decline
+display_name: Cognitive Decline
+aliases:
+- brain fog
+- early Alzheimer's
+- Parkinson's
+- neuroinflammation
+- post-COVID fatigue
+summary: Progressive deterioration in cognitive function. Low-carb and ketogenic diets
+  enhance ketone supply to the brain, providing an alternative fuel source particularly
+  relevant in early Alzheimer's and Parkinson's. MCT oil is noted as an adjunct.
+common_symptoms:
+- brain-fog
+- memory-loss
+- fatigue
+- poor-concentration
+related_topics:
+- low-carb-diet
+- metabolic-syndrome
+key_mechanisms:
+- mitochondrial-efficiency
+- neuroinflammation
+- ketone-metabolism
+coaching_scope_notes: Food-based support (low-carb, MCT-rich foods). MCT oil dosing
+  is clinician scope.
+evidence_tier: plausible_emerging
+red_flags: []
+clinician_scope_notes: ''
+sources:
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: Functional Medicine Clinical Applications
+  quote: Enhances ketone supply to brain
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

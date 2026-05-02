@@ -1,0 +1,29 @@
+slug: selenium-may-reduce-tpo-antibodies
+statement: Selenium supplementation is essential for thyroid hormone conversion and
+  may reduce TPO antibodies in Hashimoto's.
+evidence_tier: plausible_emerging
+rationale: Multiple small RCTs have found selenium supplementation (typically 200
+  mcg/day as selenomethionine) reduces anti-TPO antibody levels. Effect on clinical
+  outcomes is less clear. This is one of the better-supported nutrient interventions
+  in Hashimoto's.
+coaching_translation: Selenium is one of the most studied nutrients for Hashimoto's
+  — it may help lower the antibodies attacking your thyroid. Foods like Brazil nuts
+  are a good natural source.
+caveats:
+- 'Dose-dependent: excess selenium is toxic. Supplementation at doses above 400 mcg/day
+  is not recommended without clinician oversight.'
+- Evidence is from small trials; not yet strong consensus for clinical outcomes.
+linked_to_topics:
+- hashimotos-hypothyroidism
+linked_to_supplements:
+- selenium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-toolkit
+  location: Nutrient Optimization
+  quote: 'Selenium: Essential for thyroid hormone conversion and may reduce TPO antibodies.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

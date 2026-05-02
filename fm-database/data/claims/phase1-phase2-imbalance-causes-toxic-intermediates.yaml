@@ -1,0 +1,30 @@
+slug: phase1-phase2-imbalance-causes-toxic-intermediates
+statement: Imbalances between Phase I and Phase II liver detoxification can cause
+  accumulation or overproduction of toxic intermediate metabolites, increasing oxidative
+  stress and tissue damage.
+evidence_tier: plausible_emerging
+rationale: Well-established mechanistic model in functional/integrative medicine;
+  CYP450 enzyme dynamics and conjugation kinetics are documented in pharmacology literature,
+  but the specific claim about clinical imbalance and intermediate accumulation as
+  a driver of disease is based on functional medicine consensus rather than a specific
+  RCT.
+coaching_translation: If your liver's processing steps get out of sync, partially
+  processed toxins can pile up and cause harm — which is why supporting both phases
+  through diet and targeted nutrients matters.
+caveats:
+- Source is an educational toolkit, not primary peer-reviewed literature. No specific
+  RCT cited.
+linked_to_topics:
+- liver-detoxification
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-toolkit
+  location: Features of the Detox Food Plan
+  quote: Imbalances between phase I & phase II detoxification can cause accumulation
+    or overproduction of toxic intermediate metabolites.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

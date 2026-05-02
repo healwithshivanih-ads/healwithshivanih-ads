@@ -1,0 +1,30 @@
+slug: zinc-l-carnosine
+display_name: Zinc L-Carnosine
+category: mineral
+forms_available:
+- capsule
+- tablet
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- gerd
+- gut-dysfunction
+linked_to_claims:
+- zinc-l-carnosine-repairs-gut-lining
+notes_for_coach: Specifically listed under the 'Repair' category in the PPI taper
+  supplement protocol alongside aloe vera. Dosing requires clinician guidance.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+notes_for_client: ''
+sources:
+- id: vitaone-gut-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
+    — Supplement recommendations'
+  quote: 'Repair: Zinc l-carnosine, aloe vera'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

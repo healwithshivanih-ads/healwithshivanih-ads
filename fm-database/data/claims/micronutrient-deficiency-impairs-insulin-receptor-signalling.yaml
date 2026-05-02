@@ -1,0 +1,31 @@
+slug: micronutrient-deficiency-impairs-insulin-receptor-signalling
+statement: Low chromium, magnesium, and vitamin D impairs insulin-receptor signalling,
+  contributing to insulin resistance.
+evidence_tier: plausible_emerging
+rationale: 'Mechanistic basis is credible: magnesium is a cofactor for insulin receptor
+  tyrosine kinase; chromium potentiates insulin signalling; vitamin D receptors are
+  expressed in pancreatic beta-cells. Some RCTs support supplementation benefit in
+  deficiency states.'
+coaching_translation: Being low in certain nutrients — like magnesium, chromium, and
+  vitamin D — can make it harder for your body to respond to insulin properly.
+linked_to_topics:
+- insulin-resistance
+- blood-sugar-dysfunction
+linked_to_mechanisms:
+- insulin-resistance
+linked_to_supplements:
+- magnesium-glycinate
+- chromium-picolinate
+- vitamin-d3
+caveats:
+- Source is FM synthesis; effect size and dose-response require clinician review.
+out_of_scope_notes: ''
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 4.0.2 — Mechanistic Contributors
+  quote: Micronutrient insufficiency- low chromium, magnesium, vitamin D impairs insulin-receptor
+    signalling.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

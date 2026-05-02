@@ -1,0 +1,29 @@
+slug: magnesium-supports-cortisol-gaba-sleep
+statement: Magnesium (particularly glycinate form) supports cortisol regulation, GABAergic
+  calming, and sleep quality, making it a key micronutrient in HPA axis recovery.
+evidence_tier: plausible_emerging
+rationale: Magnesium's role in NMDA/GABA modulation and HPA axis buffering is well-supported
+  mechanistically; RCT evidence for specific forms in adrenal recovery is emerging.
+coaching_translation: Magnesium glycinate is one of the most broadly useful nutrients
+  for stress recovery — it helps your nervous system calm down and improves sleep
+  quality.
+caveats:
+- Source is synthesis. Dose ranges not specified in document — verify with clinician.
+- GI tolerance varies by form; glycinate is generally well tolerated.
+linked_to_topics:
+- adrenal-dysfunction
+- anxiety
+- insomnia
+linked_to_supplements:
+- magnesium-glycinate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-adrenal-cheatsheet
+  location: Functional Medicine Integration Tips (p.23)
+  quote: 'Optimize micronutrients needed for anti-stress hormone synthesis: Vitamin
+    C, B5, B6, Mg, Zinc, Omega-3, Cholesterol (for hormone backbone).'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

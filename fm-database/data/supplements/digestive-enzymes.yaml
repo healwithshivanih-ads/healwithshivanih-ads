@@ -18,19 +18,41 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: required
-notes_for_coach: Take just before main meals to support breakdown of proteins, fats,
-  and carbohydrates; useful for bloating and food intolerances.
+notes_for_coach: Part of the 5R 'Replace' step. Recommended when digestive secretions
+  are compromised. Specific formulation and dosing should be guided by a clinician.
 evidence_tier: plausible_emerging
-linked_to_topics: []
+linked_to_topics:
+- liver-detoxification
+- low-fodmap-diet
+- ibs
+- sibo
+- gut-dysfunction
+- hypochlorhydria
 linked_to_mechanisms: []
-linked_to_claims: []
-notes_for_client: ''
+linked_to_claims:
+- digestive-enzymes-bile-flow-gallstone
+- fodmap-4-phase-fm-protocol
+- proteins-fodmap-free-ideal-base
+- replacing-digestive-secretions-supports-digestion
+notes_for_client: These help your body break down food more completely, reducing the
+  load on your gut and preventing undigested food from being fermented by bacteria.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 2 - Supplement Table
   quote: Digestive Enzymes - Digestive support - 1–2 caps before meals - Before main
     meals
-version: 1
+- id: vitaone-liver-detox-cheatsheet
+  location: Liver Disease Cheatsheet — Gallstone-Related Liver Dysfunction
+  quote: Taurine, Phosphatidylcholine, Digestive enzymes
+- id: vitaone-elimination-diet-cheatsheet
+  location: Functional Medicine Approach to Using Low-FODMAP Clinically — Gut-Healing
+    Phase
+  quote: Add L-glutamine, zinc carnosine, digestive enzymes, bitters.
+- id: vitaone-gut-toolkit
+  location: The 5R Framework for Gut Restoration — Replace
+  quote: 'Replace digestive secretions: add back things like digestive enzymes, hydrochloric
+    acid, and bile acids that are required for proper digestion.'
+version: 4
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-02'
 updated_by: shivani

@@ -1,0 +1,45 @@
+slug: chronic-stress
+display_name: Chronic Stress
+aliases:
+- prolonged stress
+- allostatic load
+summary: Prolonged mental or physical stress that has lasting systemic effects including
+  increased risk of heart disease, depression, diabetes, dementia, cancer, and digestive
+  symptoms. Activates the HPA axis and sympathetic nervous system chronically.
+common_symptoms:
+- fatigue
+- insomnia
+- digestive-pain
+- bloating
+- headache
+- muscle-tension
+- low-libido
+- irregular-periods
+- shortness-of-breath
+- anxiety
+red_flags:
+- Persistent high blood pressure
+- Signs of heart disease
+- Severe depression requiring immediate care
+related_topics:
+- hpa-axis-dysregulation
+- cortisol-dysregulation
+key_mechanisms:
+- hpa-axis-dysregulation
+- sympathetic-nervous-system-activation
+coaching_scope_notes: Coaches can support MBSR, sleep hygiene, breathwork, movement,
+  nutrition, and social connection strategies. Refer out for clinical mental health
+  conditions.
+clinician_scope_notes: Chronic stress increases risk of cardiovascular, metabolic,
+  and neurodegenerative disease. Refer for counseling as needed.
+evidence_tier: strong
+sources:
+- id: vitaone-adrenal-toolkit
+  location: Effects of Chronic Stress
+  quote: People who report higher levels of chronic stress are more likely to develop
+    heart disease, depression, diabetes, dementia, cancer, digestive symptoms, and
+    more.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

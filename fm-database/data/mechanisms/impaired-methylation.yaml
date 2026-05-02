@@ -1,0 +1,37 @@
+slug: impaired-methylation
+display_name: Impaired Methylation
+aliases:
+- methylation dysfunction
+- undermethylation
+- MTHFR-related methylation impairment
+category: metabolic
+summary: Reduced methyl group availability — often due to MTHFR SNPs, B vitamin deficiency,
+  or oxidative stress — impairs Phase II detoxification, DNA repair, neurotransmitter
+  synthesis, and hormone clearance. Results in elevated homocysteine and reduced glutathione.
+upstream_drivers:
+- mthfr-snp
+- b-vitamin-deficiency
+- oxidative-stress
+downstream_effects:
+- homocysteine-elevation
+- glutathione-depletion
+- estrogen-accumulation
+- histamine-buildup
+related_mechanisms:
+- homocysteine-elevation
+- glutathione-depletion
+- phase-ii-conjugation
+linked_to_topics:
+- methylation-mthfr
+- liver-detoxification
+- estrogen-dominance
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet
+  quote: 'Methylation plays a crucial role in Phase II liver detoxification, especially
+    in: Heavy metal detox, Estrogen clearance, Histamine breakdown.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

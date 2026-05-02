@@ -1,0 +1,27 @@
+slug: omega-3-reduces-cytokines
+statement: Omega-3 fatty acids (EPA/DHA) reduce inflammatory cytokines, promote immune
+  tolerance, and are clinically useful in heart disease, arthritis, depression, and
+  autoimmunity.
+evidence_tier: strong
+rationale: EPA/DHA's anti-inflammatory effects via competitive inhibition of arachidonic
+  acid, reduction of NF-κB, and production of resolvins/protectins are well-established
+  in peer-reviewed literature.
+coaching_translation: Omega-3s are one of the most evidence-backed anti-inflammatory
+  interventions. Recommend oily fish 2x/week and consider 2–3g EPA/DHA daily as supplement.
+caveats:
+- High doses (>3g/day) may affect bleeding — advise clinician check if on anticoagulants.
+linked_to_topics:
+- chronic-inflammation
+- autoimmune-disease
+linked_to_supplements:
+- omega-3-fish-oil
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: 100 Anti-Inflammatory Foods — Page 09
+  quote: 'EPA/DHA reduce cytokines. Clinical Use: Heart, Arthritis, Depression'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,26 @@
+slug: omega-3-index-8pct-reduces-inflammation
+statement: An Omega-3 Index >8% helps reduce inflammatory cytokines in autoimmune
+  conditions.
+evidence_tier: plausible_emerging
+rationale: The Omega-3 Index (erythrocyte EPA+DHA %) is an established biomarker for
+  cardiovascular risk; its application as an anti-inflammatory target in autoimmunity
+  is plausible but less directly studied.
+coaching_translation: Omega-3 Index testing helps personalize omega-3 supplementation.
+  A result >8% is the functional medicine target.
+caveats:
+- Omega-3 Index testing is a clinician-ordered lab. Source is educational synthesis.
+out_of_scope_notes: Lab ordering and interpretation is clinician scope.
+linked_to_topics:
+- autoimmune-disease
+- chronic-inflammation
+linked_to_supplements:
+- omega-3-fish-oil
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Autoimmune Disease Cheatsheet — Page 24
+  quote: Omega-3 index > 8% helps reduce inflammatory cytokines.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

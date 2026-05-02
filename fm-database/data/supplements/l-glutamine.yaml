@@ -10,20 +10,41 @@ typical_dose_range:
     max: 10
     unit: g
   capsule:
-    min: 5
-    max: 10
-    unit: g
+    min: 1500
+    max: 3000
+    unit: mg
 timing_options:
 - on_empty_stomach
 - morning
 - bedtime
-take_with_food: avoid
-linked_to_topics: []
-linked_to_claims: []
-notes_for_coach: Key nutrient for gut mucosal repair; take on an empty stomach for
-  leaky gut and IBD support.
-notes_for_client: L-glutamine powder is best taken on an empty stomach — first thing
-  in the morning or between meals — so it reaches your gut lining directly.
+- evening
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- thyroid
+- leaky-gut
+- sibo
+- gerd
+- h-pylori-infection
+- candida-overgrowth
+- chronic-inflammation
+- food-sensitivity
+- low-fodmap-diet
+- ibs
+- gut-dysfunction
+linked_to_claims:
+- leaky-gut-triggers-hashimotos
+- gluten-free-reduces-hashimotos-triggers
+- liver-gut-account-for-60-70-t4-t3-conversion
+- l-glutamine-enterocyte-fuel-gut-repair
+- leaky-gut-drives-systemic-inflammation
+- l-glutamine-supports-gut-repair
+- fodmap-4-phase-fm-protocol
+- glutamine-repairs-gut-lining
+notes_for_coach: Key amino acid for gut lining repair in the 5R framework. Often used
+  for intestinal permeability support. Dosing requires clinician guidance.
+notes_for_client: Glutamine is a building block that helps repair and maintain the
+  gut lining.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -33,7 +54,25 @@ sources:
 - id: vitaone-supplementation-dosage
   location: Page 2 - Supplement Table
   quote: L-Glutamine - Gut healing, muscle recovery - 5–10 g/day - Empty stomach
-version: 2
+- id: vitaone-thyroid-cheatsheet
+  location: Thyroid Disorders Cheatsheet — Anti-TPO Clinical Action Steps
+  quote: Gluten-free diet, gut repair (L-glutamine, probiotics), vitamin D optimization
+- id: vitaone-gut-cheatsheet
+  location: Leaky Gut & Inflammation — Supplement Strategy
+  quote: L-Glutamine — Enterocyte fuel — Core gut repair
+- id: vitaone-inflammation-cheatsheet
+  location: Inflammation Cheatsheet — Page 02
+  quote: Use probiotics, L-glutamine, zinc carnosine
+- id: vitaone-elimination-diet-cheatsheet
+  location: Functional Medicine Approach to Using Low-FODMAP Clinically — Gut-Healing
+    Phase
+  quote: Add L-glutamine, zinc carnosine, digestive enzymes, bitters.
+- id: vitaone-gut-toolkit
+  location: The 5R Framework for Gut Restoration — Repair
+  quote: Help the lining of the GI tract repair itself by supplying key nutrients
+    that can often be in short supply in a compromised gut, such as zinc, antioxidants
+    (e.g. vitamins A, C, and E), fish oil, and the amino acid glutamine.
+version: 7
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-02'
 updated_by: shivani

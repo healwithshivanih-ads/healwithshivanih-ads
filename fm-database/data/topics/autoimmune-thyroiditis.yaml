@@ -1,0 +1,38 @@
+slug: autoimmune-thyroiditis
+display_name: Autoimmune Thyroiditis (Hashimoto's)
+aliases:
+- AIT
+- Hashimoto's thyroiditis
+- autoimmune hypothyroidism
+summary: Autoimmune attack on thyroid tissue driven by anti-thyroid antibodies and
+  chronic inflammation, leading to progressive hypothyroidism. LDN is proposed to
+  reduce inflammation, lower anti-thyroid antibody levels, and improve T4→T3 conversion.
+common_symptoms:
+- fatigue
+- brain-fog
+- weight-gain
+- cold-intolerance
+red_flags:
+- rapidly-rising-tsh
+- thyroid-nodules
+- severe-hypothyroid-symptoms
+related_topics:
+- low-dose-naltrexone
+key_mechanisms:
+- endorphin-immune-modulation
+- opioid-rebound-upregulation
+coaching_scope_notes: Coaches may support lifestyle and dietary factors. LDN prescribing
+  and thyroid hormone monitoring are clinician scope.
+clinician_scope_notes: LDN may reduce anti-thyroid antibodies and inflammation. Monitor
+  thyroid hormone levels closely as thyroid dose requirements may change with LDN.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-ldn-article
+  location: LDN and Autoimmune Thyroiditis (AIT)
+  quote: 'Likely MOI Thyroiditis: Reduce overall inflammation, Reduce levels of anti-thyroid
+    antibodies, Improve thyroid transport into cells, Increase T4 to T3 conversion,
+    Reduce T4 to reverse T3 conversion.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

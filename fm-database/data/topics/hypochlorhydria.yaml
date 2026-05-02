@@ -1,0 +1,63 @@
+slug: hypochlorhydria
+display_name: Hypochlorhydria (Low Stomach Acid)
+aliases:
+- low stomach acid
+- low HCl
+- stomach acid deficiency
+summary: A condition of insufficient hydrochloric acid (HCl) production in the stomach,
+  impairing protein digestion, mineral absorption (B12, iron, calcium, magnesium,
+  zinc, copper), and gut immune defense. Symptoms often mimic high stomach acid.
+common_symptoms:
+- bloating-after-protein-meals
+- early-satiety
+- reflux
+- belching
+- undigested-food-in-stool
+- bloating
+- belching-after-meals
+- indigestion
+- constipation
+- diarrhea
+- multiple-food-allergies
+- nausea-after-supplements
+- weak-peeling-nails
+- acne
+- chronic-candida-infections
+red_flags:
+- significant B12 deficiency
+- recurrent infections
+- H. pylori confirmed
+- Peptic ulcer disease (contraindication to HCl supplementation)
+- Persistent iron deficiency anemia unresponsive to supplementation
+related_topics:
+- sibo
+- gerd
+- h-pylori-infection
+- gut-dysbiosis
+- gut-dysfunction
+- candida-overgrowth
+key_mechanisms:
+- impaired-gastric-acid-production
+- hypochlorhydria-mechanism
+- gut-dysbiosis
+coaching_scope_notes: Coaches may educate on symptoms and dietary context. The self-test
+  and betaine HCl dosing protocol is clinician-supervised only.
+clinician_scope_notes: Betaine HCl challenge test (350–750 mg per meal titration up
+  to 5 capsules) should be clinician-supervised. Contraindicated with peptic ulcer
+  disease.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Gut Health Cheatsheet / Gut Dysbiosis vs SIBO vs SIFO vs Hypochlorhydria
+  quote: Acid is essential for sterilizing + absorbing nutrients. Correct before killing
+    protocols. Feels better with Betaine HCl, low protein tolerance.
+- id: vitaone-gut-toolkit
+  location: Testing for Low Stomach Acidity
+  quote: As we age, stomach cells produce less acid, called Hydrochloric Acid (HCl).
+    Certain medications can also lower stomach acid. This change in acidity affects
+    the body's ability to digest protein, absorb minerals, and protect the body against
+    food poisoning, H. pylori, parasites, and other infections.
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

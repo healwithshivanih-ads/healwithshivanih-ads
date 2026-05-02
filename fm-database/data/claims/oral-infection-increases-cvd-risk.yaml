@@ -1,0 +1,25 @@
+slug: oral-infection-increases-cvd-risk
+statement: Teeth and mouth infections increase cardiovascular disease risk.
+evidence_tier: plausible_emerging
+rationale: Oral infection is biologically plausible as a CVD risk factor via systemic
+  inflammatory pathways, and is increasingly recognized in cardiovascular research,
+  though not yet consensus.
+coaching_translation: Encourage clients to prioritize dental health as part of their
+  cardiovascular wellness plan.
+caveats:
+- Source lists this as a risk factor without citation; evidence is plausible but not
+  fully consensus-level.
+linked_to_topics:
+- cardiovascular-dysfunction
+linked_to_mechanisms:
+- systemic-inflammation
+out_of_scope_notes: ''
+linked_to_supplements: []
+sources:
+- id: vitaone-cv-toolkit
+  location: CVD Risk Analysis — Modifiable Risk Factors
+  quote: Teeth and mouth infection increases risk
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

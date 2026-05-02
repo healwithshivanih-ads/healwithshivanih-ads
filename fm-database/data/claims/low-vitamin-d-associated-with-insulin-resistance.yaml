@@ -1,0 +1,26 @@
+slug: low-vitamin-d-associated-with-insulin-resistance
+statement: Lower vitamin D levels are associated with insulin resistance.
+evidence_tier: plausible_emerging
+rationale: Supported by Chiu et al. 2004 (AJCN) cited in document; observational association
+  is well-replicated though causality and optimal supplementation targets are still
+  debated.
+coaching_translation: Low vitamin D is commonly linked to blood sugar problems — getting
+  your levels checked is a worthwhile first step.
+caveats:
+- Association, not proven causation. Supplementation benefit is most clear in deficient
+  individuals. Monitor blood levels with clinician.
+linked_to_topics:
+- blood-sugar-dysfunction
+linked_to_supplements:
+- vitamin-d3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-blood-sugar-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: Many studies show that lower vitamin D levels are associated with insulin
+    resistance.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

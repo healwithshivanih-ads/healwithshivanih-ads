@@ -1,0 +1,38 @@
+slug: glucomannan
+display_name: Glucomannan
+category: other
+forms_available:
+- powder
+- capsule
+typical_dose_range:
+  powder:
+    min: 2
+    max: 4
+    unit: g
+  capsule:
+    min: 2
+    max: 4
+    unit: g
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- dyslipidemia
+linked_to_claims:
+- fiber-psyllium-glucomannan-lowers-ldl-tg
+notes_for_coach: Highly viscous soluble fiber from konjac root. Take with large amounts
+  of water. Can lower post-meal blood sugar as well as LDL. Separate from medications.
+notes_for_client: Glucomannan is a natural fiber that helps lower cholesterol and
+  triglycerides. Take it with a large glass of water before meals.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 5
+  quote: 'Fiber (psyllium, glucomannan): ↓LDL, ↓TG.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

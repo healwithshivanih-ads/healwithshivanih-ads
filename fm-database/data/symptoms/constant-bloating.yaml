@@ -1,0 +1,27 @@
+slug: constant-bloating
+display_name: Constant Bloating
+aliases:
+- persistent bloating
+- all-day bloating
+category: gi
+severity: common
+description: Persistent abdominal distension throughout the day, most often driven
+  by SIBO and gas from small intestinal bacterial fermentation.
+when_to_refer: If accompanied by unintended weight loss, blood in stool, or severe
+  pain — refer to gastroenterologist.
+linked_to_topics:
+- sibo
+- gut-dysbiosis
+- hypochlorhydria
+linked_to_mechanisms:
+- bacterial-fermentation-carbs
+- impaired-gut-motility
+sources:
+- id: vitaone-gut-cheatsheet
+  location: 100 Gut Symptoms — Bloating
+  quote: Constant bloating — SIBO — Gas from small intestinal bacteria — Herbal antimicrobials
+    + low FODMAP
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

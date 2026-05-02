@@ -1,0 +1,28 @@
+slug: 80-90-percent-hypothyroid-is-autoimmune
+statement: An estimated 80–90% of hypothyroid cases are autoimmune (Hashimoto's),
+  yet autoimmunity is frequently overlooked in conventional treatment.
+evidence_tier: plausible_emerging
+rationale: The document states '80–90% of hypothyroid cases are autoimmune'. This
+  figure is cited widely in FM literature; epidemiological studies support Hashimoto's
+  as the leading cause of hypothyroidism in iodine-sufficient regions, though the
+  exact percentage varies.
+coaching_translation: Most people with an underactive thyroid have an immune system
+  issue driving it — addressing gut health and inflammation matters as much as the
+  thyroid itself.
+caveats:
+- No specific study cited in source document.
+- Source is expert-consensus; treat as plausible_emerging.
+linked_to_topics:
+- thyroid
+- autoimmune
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-cheatsheet
+  location: What Doctors Miss — Ignore Autoimmunity (Hashimoto's)
+  quote: 80–90% of hypothyroid cases are autoimmune
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

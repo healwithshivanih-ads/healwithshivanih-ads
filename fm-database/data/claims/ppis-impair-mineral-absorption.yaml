@@ -1,0 +1,26 @@
+slug: ppis-impair-mineral-absorption
+statement: Proton pump inhibitors (PPIs) impair absorption of magnesium, calcium,
+  iron, B12, and zinc through acid suppression; periodic assessment and repletion
+  is recommended.
+evidence_tier: strong
+rationale: PPI-induced hypomagnesemia, iron malabsorption, and B12 deficiency are
+  documented in clinical literature and recognized in drug labeling. Strong consensus
+  evidence.
+coaching_translation: Clients on long-term PPIs should discuss regular nutrient monitoring
+  with their doctor.
+out_of_scope_notes: PPI management and nutrient repletion prescription is clinician
+  territory.
+caveats:
+- Risk increases with duration of PPI use.
+linked_to_topics:
+- medicine-nutrient-interactions
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Medicine-Nutrient Interactions Cheatsheet
+  quote: Acid suppression impairs mineral absorption. Periodically assess and replenish.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

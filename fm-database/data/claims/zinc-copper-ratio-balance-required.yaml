@@ -1,0 +1,26 @@
+slug: zinc-copper-ratio-balance-required
+statement: Zinc supplementation above 50 mg/day risks inducing copper deficiency;
+  a Zn:Cu ratio of approximately 10:1 should be maintained in long-term supplementation.
+evidence_tier: strong
+rationale: Zinc and copper compete for intestinal absorption via metallothionein.
+  Zinc-induced copper deficiency is well documented in the literature and recognized
+  in clinical guidelines.
+coaching_translation: If recommending zinc, remind clients not to exceed 30 mg/day
+  without pairing with 1–2 mg copper.
+out_of_scope_notes: Doses above 30 mg/day should be supervised by a clinician.
+caveats:
+- Copper excess also causes toxicity — maintain ratio.
+linked_to_topics:
+- medicine-nutrient-interactions
+linked_to_supplements:
+- zinc-bisglycinate
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Zinc – The Immune & Repair Mineral
+  quote: 'Supplement: 15–30 mg/day safe; >50 mg/day risks copper deficiency. Clinical
+    pearl: Always balance with copper (Zn:Cu ratio ~10:1).'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

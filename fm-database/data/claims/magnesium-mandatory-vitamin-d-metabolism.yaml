@@ -1,0 +1,27 @@
+slug: magnesium-mandatory-vitamin-d-metabolism
+statement: Magnesium is a mandatory cofactor for proper Vitamin D metabolism and is
+  required when supplementing Vitamin D.
+evidence_tier: plausible_emerging
+rationale: Magnesium is a cofactor in multiple steps of Vitamin D synthesis and activation
+  (25-hydroxylation, 1-alpha-hydroxylation). Without adequate magnesium, Vitamin D
+  supplementation may be less effective. This is mechanistically supported.
+coaching_translation: Always take magnesium when supplementing Vitamin D. Without
+  it, your body can't properly activate Vitamin D.
+caveats:
+- Source is educational synthesis.
+linked_to_topics:
+- autoimmune-disease
+- psoriasis
+linked_to_supplements:
+- magnesium-glycinate
+- vitamin-d3-k2
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Psoriasis Cheatsheet — Page 28
+  quote: Magnesium (400–600 mg/day) is mandatory for proper Vitamin D metabolism
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

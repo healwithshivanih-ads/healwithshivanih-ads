@@ -1,0 +1,25 @@
+slug: shallow-breathing-causes-tension-and-fatigue
+statement: Shallow breathing (not using the diaphragm) may lead to increased tension
+  and fatigue.
+evidence_tier: plausible_emerging
+rationale: Consistent with respiratory physiology — thoracic-dominant breathing reduces
+  tidal volume and may sustain sympathetic arousal. Broadly accepted in functional
+  medicine and mind-body literature.
+coaching_translation: If you're breathing shallowly into your chest most of the day,
+  it can keep your body in a low-level stress state, leaving you tense and tired.
+caveats:
+- No specific study cited; source is an educational toolkit.
+linked_to_topics:
+- stress-management
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Mindful Breathing
+  quote: Shallow breathing may lead to tension and fatigue. Breathing with your diaphragm
+    tends to reduce stress and improve energy.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,27 @@
+slug: fasting-contraindicated-in-multiple-populations
+statement: Intermittent fasting is not recommended for those who are frail, pregnant,
+  breastfeeding, have eating disorders, underweight BMI, are insulin-dependent diabetics,
+  have heart arrhythmias, low blood pressure, or HPA axis disorders.
+evidence_tier: confirm_with_clinician
+rationale: Safety contraindications require clinician assessment; these are clinical
+  screening criteria, not coaching-level decisions.
+coaching_translation: Fasting is not right for everyone. Before starting any fasting
+  plan, it's important to check with your doctor or healthcare provider.
+out_of_scope_notes: Coaches must not recommend or initiate fasting protocols for clients
+  in any of these categories without explicit clinician clearance.
+linked_to_topics:
+- intermittent-fasting
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-cardiometabolic-toolkit
+  location: Intermittent Fasting — Who Should not Fast or Fast with Caution?
+  quote: Fasting is not recommended for those who are frail, pregnant, or breastfeeding,
+    individuals with eating disorders or disordered eating behaviors, those with an
+    underweight BMI, insulin-dependent diabetics, those with heart arrhythmias, or
+    low blood pressure, or HPA axis disorders.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,27 @@
+slug: ldn-positive-outcomes-crps
+statement: Low-dose naltrexone showed positive outcomes in two CRPS patients when
+  used in combination with other therapies, likely via TLR4 antagonism and microglial
+  attenuation.
+evidence_tier: plausible_emerging
+rationale: Cited to Journal of Neuroimmune Pharmacology. Only two patients — extremely
+  limited evidence, but mechanistically coherent with TLR4/glial pathway.
+coaching_translation: A small case report found LDN helped two patients with severe
+  nerve pain (CRPS) — possibly by calming overactive immune cells in the nervous system.
+caveats:
+- Only 2 patients reported — case report level evidence. Cannot generalize.
+- Used in combination with other therapies — LDN-specific effect unclear.
+linked_to_topics:
+- low-dose-naltrexone
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-ldn-article
+  location: Preliminary Research Abounds for cancer and autoimmune disease
+  quote: An article in the Journal of Neuroimmune Pharmacology showed positive outcomes
+    for two CRPS patients after they were treated with low-dose naltrexone, in combination
+    with other CRPS therapies.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

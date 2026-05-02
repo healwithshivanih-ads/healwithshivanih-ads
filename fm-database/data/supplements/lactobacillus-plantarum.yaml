@@ -1,0 +1,34 @@
+slug: lactobacillus-plantarum
+display_name: Lactobacillus plantarum
+category: probiotic
+forms_available:
+- capsule
+- powder
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- low-fodmap-diet
+- sibo
+- gut-dysbiosis
+- ibs
+linked_to_claims:
+- fodmap-4-phase-fm-protocol
+notes_for_coach: Recommended during the Elimination Phase of the low-FODMAP protocol.
+  Has research support in IBS symptom reduction. Clinician should confirm strain and
+  dosing.
+notes_for_client: A well-studied beneficial bacteria that helps restore gut balance
+  during your elimination phase.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-elimination-diet-cheatsheet
+  location: Functional Medicine Approach to Using Low-FODMAP Clinically — Elimination
+    Phase
+  quote: Strict low-FODMAP diet + probiotics (S. boulardii, L. plantarum).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

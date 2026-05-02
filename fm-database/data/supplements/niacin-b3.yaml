@@ -1,0 +1,36 @@
+slug: niacin-b3
+display_name: Vitamin B3 (Niacin / Nicotinamide)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 100
+    max: 2000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- vitamin-b-complex-deficiency
+notes_for_coach: Prefer nicotinamide, NR, or NMN in multivitamins over nicotinic acid
+  to avoid flushing. For NAD+ boosting, NMN and NR are more bioavailable. Therapeutic
+  doses require methylation support (methyl donors). Higher doses (cholesterol lowering)
+  are clinician territory.
+notes_for_client: Niacin supplements come in different forms. The 'no-flush' forms
+  (nicotinamide, NR) are gentler. Always take with food.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+linked_to_claims: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin B3 (Niacin)
+  quote: 'Typical doses: 100–2000 mg depending on use. Higher doses should be balanced
+    with methylation support.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

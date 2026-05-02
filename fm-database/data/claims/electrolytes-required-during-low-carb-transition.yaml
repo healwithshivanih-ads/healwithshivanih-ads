@@ -1,0 +1,29 @@
+slug: electrolytes-required-during-low-carb-transition
+statement: Electrolyte repletion (sodium, potassium, magnesium) is essential during
+  low-carb dietary transitions to prevent keto flu symptoms.
+evidence_tier: plausible_emerging
+rationale: Carbohydrate restriction reduces insulin, which lowers renal sodium reabsorption,
+  leading to urinary losses of sodium, potassium, and magnesium. Electrolyte supplementation
+  is standard clinical practice in this context.
+coaching_translation: When you cut carbs, your kidneys release more sodium and water
+  — taking potassium and magnesium with it. Replenishing these minerals helps prevent
+  headaches, cramps, and fatigue during the first 1–2 weeks.
+caveats:
+- Source is expert consensus. Specific electrolyte dosing should be clinician-guided,
+  especially in patients with kidney or cardiac conditions.
+linked_to_topics:
+- low-carb-diet
+- metabolic-syndrome
+linked_to_supplements:
+- magnesium-glycinate
+- electrolytes
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: The Science of Low-Carb Diets — Adaptation Phase (Week 3–4)
+  quote: Add electrolytes (Na, Mg, K), increase fiber (chia, flax).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

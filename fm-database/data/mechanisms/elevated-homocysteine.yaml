@@ -1,0 +1,33 @@
+slug: elevated-homocysteine
+display_name: Elevated Homocysteine
+aliases:
+- hyperhomocysteinemia
+- homocysteine elevation
+- folate-deficiency marker
+category: metabolic
+summary: High homocysteine is a marker of folate (folic acid) deficiency and an independent
+  cardiovascular risk factor. Men with extremely high levels have 3x greater risk
+  of heart attack.
+upstream_drivers:
+- folic-acid-deficiency
+- vitamin-b12-deficiency
+- vitamin-b6-deficiency
+downstream_effects:
+- atherosclerosis
+- increased-heart-attack-risk
+related_mechanisms:
+- atherosclerosis
+- systemic-inflammation
+linked_to_topics:
+- cardiovascular-dysfunction
+evidence_tier: strong
+sources:
+- id: vitaone-cv-toolkit
+  location: CVD Risk Analysis — Lab Results
+  quote: Men with extremely high homocysteine levels were three times more likely
+    to have a heart attack than others. Homocysteine levels is a measure of folic
+    acid deficiency.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

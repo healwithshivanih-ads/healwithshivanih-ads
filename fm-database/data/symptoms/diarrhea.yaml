@@ -1,0 +1,34 @@
+slug: diarrhea
+display_name: Diarrhea
+aliases:
+- loose stools
+- frequent bowel movements
+- watery stools
+- running stomach
+category: gi
+severity: common
+description: Frequent, loose, or watery stools, often triggered by high-FODMAP foods,
+  food intolerances, or osmotic shifts in the gut.
+when_to_refer: Bloody diarrhea, fever, dehydration, or duration >2 weeks.
+linked_to_topics:
+- gut-dysfunction
+- hypochlorhydria
+- low-fodmap-diet
+- elimination-diet
+- ibs
+linked_to_mechanisms:
+- gut-dysbiosis
+- hypochlorhydria-mechanism
+- colonic-fermentation
+- gut-motility-dysregulation
+sources:
+- id: vitaone-gut-toolkit
+  location: Testing for Low Stomach Acidity
+  quote: Indigestion, diarrhea, or constipation
+- id: vitaone-elimination-diet-toolkit
+  location: Low Fodmap Diet Symptom Tracker — Section 1
+  quote: Diarrhea
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,30 @@
+slug: ldn-crohns-benefit-cochrane-2014
+statement: Data from one small study suggests LDN may provide a benefit in clinical
+  and endoscopic response in adult patients with active Crohn's disease, though evidence
+  is currently insufficient to recommend its use.
+evidence_tier: plausible_emerging
+rationale: Directly cited to Cochrane Library, February 2014. Authors themselves concluded
+  insufficient evidence; signal of benefit with acceptable safety profile noted.
+coaching_translation: Early research hints that LDN may help with Crohn's symptoms
+  and gut healing — but the evidence isn't strong enough yet for a definitive recommendation.
+caveats:
+- Cochrane 2014 explicitly concluded 'insufficient evidence to recommend.' Small study
+  sample sizes.
+- Further research is needed.
+linked_to_topics:
+- low-dose-naltrexone
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-ldn-article
+  location: Preliminary Research Abounds for cancer and autoimmune disease
+  quote: A study published online in the Cochrane Library in February 2014 discusses
+    using low-dose naltrexone to induce remission in Crohn's Disease. Although the
+    authors conclude there is insufficient evidence to recommend and further research
+    is needed, data from one small study suggests that LDN may provide a benefit in
+    clinical and endoscopic response in adult patients with active Crohn's disease.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

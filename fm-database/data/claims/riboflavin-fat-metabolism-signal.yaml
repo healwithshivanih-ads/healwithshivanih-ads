@@ -1,0 +1,26 @@
+slug: riboflavin-fat-metabolism-signal
+statement: Difficulty tolerating high-fat diets may signal low riboflavin, as riboflavin
+  is required for fat oxidation (beta-oxidation).
+evidence_tier: plausible_emerging
+rationale: Riboflavin (B2) is a cofactor for FAD/FMN in the electron transport chain
+  and fatty acid oxidation. The clinical heuristic is plausible mechanistically but
+  lacks direct clinical trial support.
+coaching_translation: If a client reports fatigue or GI upset on high-fat diets, riboflavin
+  status is worth discussing with their clinician.
+caveats:
+- Source is a synthesis document. No specific RCT cited.
+linked_to_topics:
+- vitamin-b-complex-deficiency
+linked_to_supplements:
+- riboflavin-b2
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin B2 (Riboflavin)
+  quote: Riboflavin is the fat-burner-difficulty on high-fat diets can point to low
+    riboflavin.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

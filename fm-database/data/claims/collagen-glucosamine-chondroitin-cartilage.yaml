@@ -1,0 +1,28 @@
+slug: collagen-glucosamine-chondroitin-cartilage
+statement: Collagen peptides combined with glucosamine and chondroitin support cartilage
+  regeneration and are a first-line supplement intervention for osteoarthritis-related
+  knee pain.
+evidence_tier: plausible_emerging
+rationale: Glucosamine and chondroitin have RCT evidence (GAIT trial and others) with
+  modest-to-moderate effect on OA pain. Collagen peptides have emerging RCT evidence.
+  Combined use is FM standard but not universal clinical consensus.
+coaching_translation: For clients with knee osteoarthritis, a collagen + glucosamine/chondroitin
+  stack is a well-supported starting point.
+caveats:
+- Source is a synthesis document.
+- GAIT trial showed benefit mainly in moderate-severe OA subgroup.
+linked_to_topics:
+- knee-pain
+linked_to_supplements:
+- collagen-peptides
+- glucosamine-chondroitin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Knee Pain Cheatsheet
+  quote: Collagen peptides, MSM, Glucosamine + Chondroitin, Vitamin D3 + K2
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

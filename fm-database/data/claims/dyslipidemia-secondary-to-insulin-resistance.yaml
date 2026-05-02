@@ -1,0 +1,26 @@
+slug: dyslipidemia-secondary-to-insulin-resistance
+statement: Dyslipidemia is rarely a primary disorder; it is often secondary to insulin
+  resistance, hypothyroidism, NAFLD, chronic stress, or poor sleep.
+evidence_tier: plausible_emerging
+rationale: Document explicitly frames dyslipidemia as secondary to multiple root causes.
+  This functional medicine framing is biologically plausible and clinically used,
+  but the cheatsheet is a synthesis source.
+coaching_translation: Abnormal cholesterol or triglycerides are usually a symptom
+  of a deeper issue — like blood sugar dysregulation, thyroid problems, or chronic
+  stress — not just a cholesterol problem.
+caveats:
+- Source is an expert synthesis cheatsheet, not primary literature.
+linked_to_topics:
+- dyslipidemia
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 2
+  quote: Dyslipidemia is rarely primary → Often secondary to Insulin resistance, Hypothyroidism,
+    NAFLD, Chronic stress & cortisol excess, Poor sleep.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

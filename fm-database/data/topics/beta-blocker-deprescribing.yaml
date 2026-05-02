@@ -1,0 +1,42 @@
+slug: beta-blocker-deprescribing
+display_name: Beta Blocker De-Prescribing & Tapering
+aliases:
+- beta blocker withdrawal
+- antihypertensive tapering
+summary: Structured protocol for safely withdrawing patients from beta blocker therapy,
+  including taper schedule, blood pressure monitoring, nutraceutical support, and
+  lifestyle recommendations. Best candidates are stable patients on monotherapy with
+  healthy BMI and good lifestyle compliance.
+common_symptoms:
+- headache
+- joint-pain
+- palpitations
+- feeling-of-being-unwell
+red_flags:
+- history of myocardial infarction
+- congestive heart failure
+- uncontrolled hypertension
+- atrial fibrillation
+related_topics:
+- hypertension
+- cardiovascular-dysfunction
+key_mechanisms:
+- beta-adrenergic-blockade-rebound
+coaching_scope_notes: Coaches can support dietary guidelines (DASH/Cardiometabolic
+  Food Plan, salt restriction), lifestyle (exercise, stress reduction, tobacco/alcohol
+  avoidance), and weight management. Supplement selection and taper schedule are clinician-directed.
+clinician_scope_notes: Reduce dose by 25% in week 1, then 50% every 1-2 weeks based
+  on tolerance. Reinstate if BP exceeds 140/90 (<60 yrs) or 150/90 (≥60 yrs) on 3+
+  readings. Nutraceutical support list provided.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-cv-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
+  quote: For the past 25 years, beta blockers have been used as the primary treatment
+    for lowering blood pressure. However, these drugs are associated with increased
+    rates of depression, fatigue, constipation, erectile dysfunction, and cognitive
+    decline.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

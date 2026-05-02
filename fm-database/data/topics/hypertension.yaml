@@ -1,0 +1,38 @@
+slug: hypertension
+display_name: Hypertension
+aliases:
+- high blood pressure
+- elevated blood pressure
+summary: Major contributor to cardiovascular events, affecting 29.1% of US adults
+  over 18. Both lifestyle and pharmacological interventions are used; beta blockers
+  have historically been first-line but are now considered third-line per JNC-8.
+common_symptoms:
+- headache
+- palpitations
+red_flags:
+- BP >140/90 on three or more readings in adults under 60
+- BP >150/90 in adults over 60
+- uncontrolled hypertension with polypharmacy
+related_topics:
+- cardiovascular-dysfunction
+- metabolic-syndrome
+key_mechanisms:
+- atherosclerosis
+- systemic-inflammation
+- insulin-resistance
+coaching_scope_notes: Support DASH or Cardiometabolic Food Plan, salt restriction,
+  weight management, exercise (30 min/day at 60-80% max aerobic capacity), stress
+  reduction. Blood pressure medication changes are out of scope.
+clinician_scope_notes: Beta blocker de-prescribing/tapering protocols included. JNC-8
+  recommends beta blockers only as third-line. Monitor BP twice daily during taper.
+evidence_tier: strong
+sources:
+- id: vitaone-cv-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Practitioners'
+  quote: Hypertension is a major contributor to cardiovascular events in the US, affecting
+    29.1% of adults over the age of 18, according to statistics from the Centers for
+    Disease Control.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

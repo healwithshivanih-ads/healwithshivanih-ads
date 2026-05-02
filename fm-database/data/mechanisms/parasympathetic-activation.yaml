@@ -1,0 +1,37 @@
+slug: parasympathetic-activation
+display_name: Parasympathetic Nervous System Activation
+aliases:
+- relaxation response
+- vagal activation
+- rest-and-digest
+category: neurological
+summary: Diaphragmatic breathing and mind-body practices activate parasympathetic
+  centers in the brain, counteracting the stress response, reducing cortisol output,
+  and improving venous return to the heart.
+upstream_drivers:
+- diaphragmatic-breathing
+- mindfulness-practice
+- gratitude-practice
+downstream_effects:
+- reduced-stress
+- lower-blood-pressure
+- improved-sleep
+- better-concentration
+related_mechanisms:
+- hpa-axis-dysregulation
+linked_to_topics:
+- stress-management
+- mindfulness
+- gratitude-practice
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Mindful Breathing
+  quote: Abdominal breathing, or diaphragmatic breathing, is a powerful way to decrease
+    stress by activating relaxation centers in the brain. The abdominal expansion
+    causes negative pressure to pull blood into the chest, improving the venous flow
+    of blood back to the heart.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

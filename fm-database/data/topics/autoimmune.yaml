@@ -1,15 +1,15 @@
 slug: autoimmune
-display_name: Autoimmune Conditions
+display_name: Autoimmune Conditions & Stress
 aliases:
 - autoimmunity
-- autoimmune-disease
 - Hashimoto's
 - rheumatoid arthritis
 - celiac disease
-summary: Autoimmune conditions involve the immune system mistakenly attacking the
-  body's own tissues. Women are disproportionately affected, and risk rises sharply
-  in perimenopause and menopause due to declining estrogen, gut barrier disruption,
-  and immune dysregulation.
+- immune dysregulation
+- autoimmune flares
+summary: Chronic stress triggers immune dysregulation via cortisol rhythm disruption,
+  Th1/Th2/Th17 imbalance, and gut barrier breakdown, precipitating or worsening autoimmune
+  conditions.
 common_symptoms:
 - joint pain
 - fatigue
@@ -17,6 +17,10 @@ common_symptoms:
 - thyroid dysfunction
 - digestive disturbance
 - skin manifestations
+- joint-pain
+- brain-fog
+- autoimmune-flares
+- food-sensitivities
 red_flags:
 - new joint swelling with morning stiffness > 60 min (refer rheumatology)
 - unexplained fevers, weight loss, night sweats
@@ -24,6 +28,7 @@ red_flags:
 - rapid symptom escalation
 - multi-system involvement
 - new diagnosis — requires rheumatology or specialist referral
+- Rapidly progressive symptoms — refer to rheumatologist/immunologist
 related_topics:
 - thyroid
 - perimenopause
@@ -32,6 +37,10 @@ related_topics:
 - microbiome
 - dysbiosis
 - gut-hormone-axis
+- hpa-axis-dysregulation
+- leaky-gut
+- inflammation
+- gut-brain-axis
 key_mechanisms:
 - leaky-gut
 - molecular-mimicry
@@ -39,9 +48,9 @@ key_mechanisms:
 - estrogen-immune-modulation
 - gut-barrier-permeability
 - th1-th2-imbalance
-coaching_scope_notes: Coaches can address lifestyle contributors (stress, diet, sleep)
-  that modulate autoimmune risk. Do not advise on diagnosis or treatment of specific
-  autoimmune conditions.
+- hpa-axis-dysregulation
+coaching_scope_notes: Gut repair, anti-inflammatory diet, adaptogens, trauma resolution
+  practices within scope. Diagnosis and immunosuppressants out of scope.
 clinician_scope_notes: Hashimoto's, PCOS, rheumatoid arthritis, celiac disease cited
   as examples requiring medical management.
 sources:
@@ -51,8 +60,12 @@ sources:
   location: Session 8 — immune shift segment
   quote: We are more prone to autoimmune conditions. We know we're four to five times
     more likely to be diagnosed.
+- id: vitaone-adrenal-cheatsheet
+  location: Stress & Chronic Diseases Link (p.9)
+  quote: Stress triggers immune dysregulation & flares. Cortisol rhythm disruption
+    → Th1/Th2/Th17 imbalance, gut barrier breakdown.
 evidence_tier: plausible_emerging
-version: 2
+version: 3
 status: active
-updated_at: '2026-04-29'
+updated_at: '2026-05-02'
 updated_by: shivani

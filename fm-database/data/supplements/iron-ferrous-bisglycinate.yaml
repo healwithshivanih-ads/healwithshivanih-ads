@@ -17,20 +17,28 @@ timing_options:
 - with_breakfast
 - with_lunch
 - with_dinner
-take_with_food: required
-notes_for_coach: Bisglycinate form is gentler on the GI tract; pair with Vitamin C
-  to enhance absorption; iron supplementation should be guided by lab results.
-evidence_tier: confirm_with_clinician
-linked_to_topics: []
+- on_empty_stomach
+- morning
+take_with_food: avoid
+notes_for_coach: Iron deficiency impairs thyroid peroxidase activity and T4→T3 conversion.
+  Test ferritin before supplementing. Bisglycinate form has better tolerance and absorption.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- thyroid
 linked_to_mechanisms: []
-linked_to_claims: []
-notes_for_client: ''
+linked_to_claims:
+- selenium-supports-t4-t3-conversion
+notes_for_client: Low iron is a hidden cause of thyroid conversion problems. Testing
+  ferritin (iron stores) is important before supplementing.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
   quote: Iron (Ferrous Bisglycinate) - Hemoglobin, oxygen transport - 18–30 mg/day
     - post any meal or with vitamin C
-version: 1
+- id: vitaone-thyroid-cheatsheet
+  location: Clinical Action Steps — Support T4→T3 Conversion
+  quote: Selenium (100–200 µg/day), Zinc Glycinate (20–30 mg/day), Iron, Active B2/B6/B12
+version: 2
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-02'
 updated_by: shivani

@@ -1,0 +1,32 @@
+slug: stress-disrupts-hpo-axis-pcos
+statement: Chronic psychological stress disrupts the hypothalamic-pituitary-ovarian
+  (HPO) axis by elevating cortisol, altering LH:FSH ratio, and increasing androgens,
+  contributing to PCOS and infertility.
+evidence_tier: plausible_emerging
+rationale: Biologically plausible mechanism supported by FM literature; no primary
+  RCT cited in this document.
+coaching_translation: Stress management is a frontline strategy for cycle regularity
+  and PCOS — not just a nice-to-have.
+caveats:
+- Source is educational synthesis. Specific study citations absent.
+- Lab interpretation and prescribing out of coaching scope.
+linked_to_topics:
+- pcos
+- adrenal-dysfunction
+- hpa-axis-dysregulation
+linked_to_supplements:
+- ashwagandha-ksm66
+- myo-inositol
+- magnesium-glycinate
+- vitamin-b6-p5p
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-adrenal-cheatsheet
+  location: Stress & Chronic Diseases Link (p.9)
+  quote: Stress disrupts HPO axis and ovulation. Elevated cortisol → altered LH:FSH
+    ratio, ↑ androgens.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,40 +1,68 @@
 slug: low-progesterone
-display_name: Low Progesterone (Perimenopausal)
+display_name: Low Progesterone
 aliases:
-  - progesterone-decline
-  - progesterone-insufficiency
+- progesterone-decline
+- progesterone-insufficiency
+- progesterone deficiency
+- progesterone insufficiency
+- low luteal progesterone
+- luteal phase defect
+- estrogen dominance relative
 category: endocrine
-summary: |
-  Progesterone is typically the FIRST sex hormone to decline in
-  perimenopause (often years before estrogen), as anovulatory cycles become
-  more common and the corpus luteum produces less. Progesterone is the
-  endogenous GABA-A receptor positive allosteric modulator (via
-  allopregnanolone) — its decline is a major driver of perimenopausal
-  insomnia, anxiety, and hot flashes. Also has anti-proliferative effects
-  on endometrium balancing estrogen.
+summary: Progesterone depletion resulting from pregnenolone steal, chronic stress,
+  or poor luteal function. Manifests as PMS, anxiety, insomnia, estrogen dominance,
+  and cycle irregularity.
 upstream_drivers:
-  - anovulation (intermittent in perimenopause)
-  - chronic stress (pregnenolone steal)
-  - early ovarian aging
+- anovulation (intermittent in perimenopause)
+- chronic stress (pregnenolone steal)
+- early ovarian aging
+- hpa-axis-dysregulation
+- anovulation
+- estrogen-dominance
+- nutrient-deficiency
+- gut-dysbiosis
+- pregnenolone-steal
+- chronic-stress
 downstream_effects:
-  - sleep-onset insomnia, 3am wakeups
-  - new-onset anxiety, irritability
-  - heavier periods (unopposed estrogen)
-  - shorter luteal phase
-  - reduced GABAergic tone
+- sleep-onset insomnia, 3am wakeups
+- new-onset anxiety, irritability
+- heavier periods (unopposed estrogen)
+- shorter luteal phase
+- reduced GABAergic tone
+- chronic-inflammation
+- pms
+- anxiety
+- insomnia
+- infertility
+- heavy-periods
+- estrogen-dominance
+- irregular-cycles
 related_mechanisms:
-  - estrogen-decline
-  - hpa-axis-dysregulation
-  - gaba-a-receptor-modulation
+- estrogen-decline
+- hpa-axis-dysregulation
+- gaba-a-receptor-modulation
+- chronic-inflammation
+- estrogen-enterohepatic-recirculation
+- pregnenolone-steal
 linked_to_topics:
-  - perimenopause
-  - insomnia
-  - anxiety
+- perimenopause
+- insomnia
+- anxiety
+- low-progesterone
+- pcos
 sources:
-  - id: vitaone-skill-practice-guide
-    location: practice_guide.md, Hormones section
-evidence_tier: strong
-version: 1
+- id: vitaone-skill-practice-guide
+  location: practice_guide.md, Hormones section
+- id: vitaone-sex-hormones-cheatsheet
+  location: Progesterone Is Anti-Inflammatory
+  quote: NF-κB Inhibition → Directly downregulates pro-inflammatory cytokines (IL-6,
+    TNF-α).
+- id: vitaone-adrenal-cheatsheet
+  location: 50 Hormones Cheatsheet — Progesterone row (p.4)
+  quote: 'Anxiety, insomnia, PMS, estrogen dominance, PCOS. Solution: Vit B6, Mg,
+    Vitex, stress reduction.'
+evidence_tier: plausible_emerging
+version: 3
 status: active
-updated_at: 2026-04-29
+updated_at: '2026-05-02'
 updated_by: shivani

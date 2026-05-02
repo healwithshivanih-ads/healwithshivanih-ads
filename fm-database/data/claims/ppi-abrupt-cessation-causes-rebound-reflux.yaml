@@ -1,0 +1,24 @@
+slug: ppi-abrupt-cessation-causes-rebound-reflux
+statement: Stopping PPIs abruptly is not recommended because it commonly causes rebound
+  acid hypersecretion and reflux symptoms, which are reversible and short-term.
+evidence_tier: strong
+rationale: Rebound acid hypersecretion after PPI discontinuation is a well-documented
+  pharmacological effect supported by clinical evidence.
+coaching_translation: If you stop acid-blocking medication suddenly, symptoms can
+  temporarily worsen. A gradual taper — guided by your doctor — is the safer approach.
+out_of_scope_notes: PPI tapering schedules must be clinician-directed.
+linked_to_topics:
+- gerd
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-gut-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Patients'
+  quote: Stopping PPIs abruptly is not recommended. The best way to discontinue is
+    to taper down slowly. It is common to experience some reflux symptoms while tapering.
+    This is known as rebound acid reflux, which is a reversible and short term effect.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

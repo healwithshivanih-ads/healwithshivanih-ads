@@ -1,0 +1,38 @@
+slug: licorice-root
+display_name: Licorice Root (Glycyrrhizin)
+category: herb
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 200
+    max: 400
+    unit: mg
+timing_options:
+- morning
+- with_breakfast
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- immune-support
+linked_to_claims:
+- licorice-root-antiviral-immune-short-term
+notes_for_coach: 'CAUTION: Short-term use only (<4 weeks). Must be standardized to
+  glycyrrhizin. Risk of hypertension, hypokalemia, and hypertension encephalopathy
+  with prolonged use or excess. Strictly confirm_with_clinician. Divide doses throughout
+  day.'
+notes_for_client: Licorice root must only be used for short periods (less than 4 weeks)
+  and under your healthcare provider's supervision. Overuse can cause dangerous side
+  effects including high blood pressure.
+evidence_tier: confirm_with_clinician
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Licorice is commonly found in Traditional Chinese Medicine (TCM) formulations
+    and supports immune system function and reduces viral growth.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

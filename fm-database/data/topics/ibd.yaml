@@ -1,0 +1,44 @@
+slug: ibd
+display_name: IBD (Crohn's / Ulcerative Colitis)
+aliases:
+- inflammatory bowel disease
+- Crohn's disease
+- ulcerative colitis
+summary: Autoimmune inflammatory bowel conditions driven by gut barrier dysfunction,
+  dysbiosis, autoimmunity, and diet triggers. Characterized by chronic mucosal inflammation.
+  Requires clinician management; functional medicine can support as adjunct.
+common_symptoms:
+- chronic-urgency
+- diarrhea
+- gas
+- abdominal-pain
+- fatigue
+- weight-loss
+red_flags:
+- blood in stool
+- severe abdominal pain
+- fever with GI symptoms — refer to gastroenterology
+related_topics:
+- leaky-gut
+- gut-dysbiosis
+- ibs
+key_mechanisms:
+- leaky-gut
+- gut-dysbiosis-mechanism
+- nfkb-activation
+coaching_scope_notes: Coaches may support dietary and lifestyle adjustments (AIP diet,
+  stress reduction) as adjunct to medical care only. All clinical decisions must be
+  made by the treating clinician.
+clinician_scope_notes: Gut microbiome & intestinal health markers test. Calm inflammation
+  + repair gut lining. Check for stealth infections.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Gut Health Cheatsheet
+  quote: Autoimmunity, gut barrier dysfunction, dysbiosis, diet triggers — Curcumin,
+    Boswellia, Probiotics (if tolerated), Omega-3, Vitamin D — Calm inflammation +
+    repair gut lining. Check for stealth infections.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

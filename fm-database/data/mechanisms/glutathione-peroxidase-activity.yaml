@@ -1,0 +1,34 @@
+slug: glutathione-peroxidase-activity
+display_name: Glutathione Peroxidase Antioxidant Activity
+aliases:
+- GSH
+- glutathione system
+- GPx activity
+category: immune
+summary: Glutathione is the body's primary intracellular antioxidant. Selenium is
+  a required cofactor for glutathione peroxidase enzymes. NAC is a precursor for glutathione
+  synthesis. Chronic disease and oxidative stress deplete glutathione stores.
+upstream_drivers:
+- selenium-status
+- nac-intake
+- oxidative-load
+downstream_effects:
+- cellular-oxidative-protection
+- immune-function
+- mitochondrial-integrity
+related_mechanisms:
+- oxidative-stress
+linked_to_topics:
+- selenium-status
+- mitochondrial-health-nutrition
+evidence_tier: strong
+sources:
+- id: vitaone-nutrition-toolkit
+  location: Nutrients for Mitochondrial Health
+  quote: Supplementing with NAC helps to restore the body's level of glutathione.
+    Glutathione is a powerful antioxidant produced inside the body, and it can be
+    depleted in many chronic diseases due to oxidative stress.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,26 @@
+slug: iron-deficiency-most-common-nutritional-deficiency
+statement: Iron deficiency is the most common nutritional deficiency in the world
+  and can cause anemia affecting oxygen transport.
+evidence_tier: strong
+rationale: Established by WHO and NIH; supported by extensive epidemiological and
+  clinical literature. The document cites NIH ODS and USDA references.
+coaching_translation: Many people — especially women of reproductive age and vegetarians
+  — may not be getting enough iron from diet alone. Focus on iron-rich foods and pair
+  plant sources with vitamin C to boost absorption.
+caveats:
+- Iron supplementation dosing must involve a clinician — excess iron is harmful.
+linked_to_topics:
+- iron-deficiency
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Iron'
+  quote: Iron deficiency is the most common nutritional deficiency in the world and
+    can cause anemia, a condition that affects the transport of oxygen throughout
+    the body.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

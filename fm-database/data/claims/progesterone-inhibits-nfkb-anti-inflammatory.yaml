@@ -1,0 +1,32 @@
+slug: progesterone-inhibits-nfkb-anti-inflammatory
+statement: Progesterone directly inhibits NF-κB signaling, downregulating pro-inflammatory
+  cytokines (IL-6, TNF-α) and acting as a systemic anti-inflammatory modulator beyond
+  its reproductive role.
+evidence_tier: plausible_emerging
+rationale: Progesterone's NF-κB inhibitory action has been demonstrated in cell and
+  animal studies. Progesterone receptors are expressed in immune cells. Translation
+  to clinical anti-inflammatory outcomes in humans is supported by indirect evidence.
+coaching_translation: Progesterone is more than a fertility hormone — it actively
+  calms inflammation in the body. Low progesterone from stress or poor ovulation means
+  more systemic inflammation.
+caveats:
+- Source is expert synthesis
+- Most mechanistic data from cell/animal models; human RCT data on progesterone as
+  anti-inflammatory agent is limited
+linked_to_topics:
+- low-progesterone
+- inflammation
+linked_to_mechanisms:
+- low-progesterone
+- chronic-inflammation
+out_of_scope_notes: ''
+linked_to_supplements: []
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: Progesterone Is Anti-Inflammatory
+  quote: NF-κB Inhibition → Directly downregulates pro-inflammatory cytokines (IL-6,
+    TNF-α).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

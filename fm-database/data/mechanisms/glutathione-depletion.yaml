@@ -1,0 +1,36 @@
+slug: glutathione-depletion
+display_name: Glutathione Depletion
+aliases:
+- low glutathione
+- GSH deficiency
+- antioxidant depletion
+category: metabolic
+summary: Reduced intracellular glutathione — the body's master antioxidant — results
+  in increased oxidative stress, impaired Phase II detoxification, and poor heavy
+  metal clearance. MTHFR mutations reduce glutathione synthesis by impairing methylation.
+  Supported by NAC, glycine, and liposomal glutathione.
+upstream_drivers:
+- impaired-methylation
+- oxidative-stress
+- toxin-load
+downstream_effects:
+- oxidative-stress
+- impaired-phase-ii-detox
+- heavy-metal-accumulation
+related_mechanisms:
+- impaired-methylation
+- oxidative-stress
+- phase-ii-conjugation
+linked_to_topics:
+- methylation-mthfr
+- liver-detoxification
+- heavy-metal-toxicity
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet
+  quote: Reduce glutathione, increasing oxidative stress.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

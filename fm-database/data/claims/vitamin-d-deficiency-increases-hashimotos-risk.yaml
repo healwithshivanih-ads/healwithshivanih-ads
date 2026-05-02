@@ -1,0 +1,28 @@
+slug: vitamin-d-deficiency-increases-hashimotos-risk
+statement: Vitamin D deficiency is associated with increased Hashimoto's risk and
+  higher thyroid antibody levels.
+evidence_tier: plausible_emerging
+rationale: The document lists vitamin D's role as 'immune regulation' with deficiency
+  causing 'increased Hashimoto's risk, higher antibodies.' This is consistent with
+  observational literature on vitamin D and autoimmunity, though interventional RCT
+  evidence is mixed.
+coaching_translation: Optimizing vitamin D levels supports immune regulation and may
+  help reduce the immune activation driving Hashimoto's.
+caveats:
+- Source is synthesis without primary study citation
+- Association observed; causation not firmly established by RCT consensus
+linked_to_topics:
+- hashimotos-thyroiditis
+linked_to_supplements:
+- vitamin-d3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 6: Nutrient Deficiencies'
+  quote: 'Vitamin D: Immune regulation. Deficiency effects: Increased Hashimoto''s
+    risk, higher antibodies.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

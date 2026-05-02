@@ -1,0 +1,30 @@
+slug: abdominal-gas
+display_name: Abdominal Gas / Flatulence
+aliases:
+- wind
+- gassiness
+- farting
+- intestinal gas
+category: gi
+severity: common
+description: Excess gas in the GI tract from bacterial fermentation of poorly absorbed
+  carbohydrates (FODMAPs). Particularly pronounced with fructans (wheat, garlic, onion),
+  GOS (legumes), and polyols.
+when_to_refer: Refer if accompanied by bloody stool, significant weight loss, or nocturnal
+  symptoms.
+linked_to_topics:
+- low-fodmap-diet
+- ibs
+- sibo
+- gut-dysbiosis
+linked_to_mechanisms:
+- gut-fermentation-dysbiosis
+- polyol-fermentation-motility
+sources:
+- id: vitaone-elimination-diet-cheatsheet
+  location: Functional Medicine Table — Understanding FODMAP Mechanisms
+  quote: Poorly digested; fermented by bacteria → gas, bloating.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

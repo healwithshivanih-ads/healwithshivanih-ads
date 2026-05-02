@@ -1,0 +1,28 @@
+slug: elevated-homocysteine-promotes-oxidative-stress-and-endothelial-dysfunction
+statement: Elevated homocysteine (>7 µmol/L) from impaired methylation promotes oxidative
+  stress and endothelial dysfunction, compounding cardiovascular risk in insulin resistance.
+evidence_tier: plausible_emerging
+rationale: Association between hyperhomocysteinaemia and cardiovascular risk is well-established;
+  causal link to IR is plausible but less direct. B-vitamin supplementation lowers
+  homocysteine.
+coaching_translation: High homocysteine — often from low B-vitamin intake — can damage
+  blood vessels and worsen the cardiovascular risk that comes with blood sugar problems.
+linked_to_topics:
+- insulin-resistance
+- metabolic-syndrome
+linked_to_mechanisms:
+- insulin-resistance
+linked_to_supplements:
+- b-complex
+caveats:
+- Source is FM synthesis. Lab testing and B-vitamin dosing is clinician scope.
+out_of_scope_notes: ''
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 4.0.2 — Mechanistic Contributors
+  quote: Impaired methylation- elevated homocysteine (>7µmol/L) promotes oxidative
+    stress and endothelial dysfunction.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

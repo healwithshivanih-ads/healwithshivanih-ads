@@ -1,0 +1,25 @@
+slug: hot-flashes
+display_name: Hot Flashes / Vasomotor Symptoms
+aliases:
+- hot flushes
+- night sweats
+- vasomotor symptoms
+- sweating episodes
+category: hormonal
+severity: common
+description: Sudden episodes of heat, flushing, and sweating associated with declining
+  estrogen during perimenopause and menopause.
+when_to_refer: Refer for evaluation of HRT candidacy or if frequency severely impacts
+  quality of life.
+linked_to_topics:
+- perimenopause
+linked_to_mechanisms:
+- estrogen-decline
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: Functional Medicine Clinical Insights — Daily Estrogen-Balancing Routine
+  quote: 'Perimenopause / Hot Flashes: Lignans, omega-3, magnesium.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

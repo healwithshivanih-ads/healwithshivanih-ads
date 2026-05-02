@@ -1,0 +1,29 @@
+slug: berberine-insulin-sensitivity-nafld
+statement: Berberine improves insulin sensitivity and supports hepatic fat reduction
+  in NAFLD and metabolic syndrome.
+evidence_tier: plausible_emerging
+rationale: Listed as key supplement for NAFLD focused on insulin sensitivity. Berberine
+  has emerging RCT evidence for glucose/lipid metabolism but source does not cite
+  specific studies.
+coaching_translation: Berberine is a plant compound that helps the body use insulin
+  more effectively, which is key for reducing liver fat.
+out_of_scope_notes: Berberine interacts with multiple medications. Coaches should
+  flag for clinician review before recommending.
+caveats:
+- Drug interactions possible (metformin, blood thinners)
+- Clinician review required
+- Source is FM synthesis
+linked_to_topics:
+- nafld
+linked_to_supplements:
+- berberine
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Liver Disease Cheatsheet — NAFLD
+  quote: Omega-3, Vitamin E, Berberine, NAC — Focus on insulin sensitivity & weight
+    loss; key is reducing hepatic fat.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

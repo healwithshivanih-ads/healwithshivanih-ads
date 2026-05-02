@@ -1,0 +1,46 @@
+slug: adrenal-dysfunction
+display_name: Adrenal Dysfunction & Chronic Stress
+aliases:
+- adrenal fatigue
+- adrenal burnout
+- HPA exhaustion
+summary: A functional medicine framework describing how chronic emotional, digital,
+  or metabolic stressors exhaust adrenal output, alter cortisol:DHEA ratio, and predispose
+  to a wide range of chronic diseases.
+common_symptoms:
+- fatigue
+- burnout
+- wired-but-tired
+- low-libido
+- poor-sleep
+- salt-craving
+- anxiety
+- poor-stress-tolerance
+red_flags:
+- Severe postural hypotension suggesting true adrenal insufficiency (Addison's)
+- Rapid weight gain with purple striae suggesting Cushing's
+related_topics:
+- hpa-axis-dysregulation
+- inflammation
+- thyroid
+- pcos
+- insomnia
+- anxiety
+key_mechanisms:
+- hpa-axis-dysregulation
+- pregnenolone-steal
+- chronic-inflammation
+coaching_scope_notes: Focus on sleep, light hygiene, breathwork, adaptogens, and micronutrient
+  support. Cortisol:DHEA lab testing requires clinician.
+clinician_scope_notes: Rule out Addison's and Cushing's. Use DUTCH or 4-point salivary
+  cortisol. Assess DHEA-S, hs-CRP, fasting glucose.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-adrenal-cheatsheet
+  location: How Chronic Stress, Anger, or Grief Translate into Physical Diseases (p.10)
+  quote: Persistent HPA activation → ↑ Cortisol, ↓ DHEA → Mitochondrial suppression,
+    altered glucose metabolism
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

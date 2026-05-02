@@ -1,0 +1,25 @@
+slug: tg-hdl-ratio-marker-of-insulin-resistance
+statement: A TG:HDL ratio of 0.5–1.9 is ideal; an elevated ratio is a marker of insulin
+  resistance and higher cardiovascular disease risk.
+evidence_tier: plausible_emerging
+rationale: Document lists TG:HDL ratio with ideal range 0.5–1.9 as a marker of insulin
+  resistance. Widely used in FM practice; supported by observational data but not
+  a single RCT.
+coaching_translation: Your TG-to-HDL ratio is a simple calculation from a standard
+  blood test that reveals how well your body handles blood sugar and fat metabolism.
+caveats:
+- Source is an expert synthesis cheatsheet.
+- Ideal range thresholds vary by population; confirm with clinician.
+linked_to_topics:
+- dyslipidemia
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 3
+  quote: TG:HDL ratio — Marker of insulin resistance — 0.5 - 1.9 is ideal.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

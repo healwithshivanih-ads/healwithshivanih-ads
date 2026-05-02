@@ -1,0 +1,35 @@
+slug: endocrine-disruption
+display_name: Endocrine Disruption
+aliases:
+- hormone disruption
+- EDC exposure
+- endocrine-disrupting chemicals
+category: endocrine
+summary: Exposure to endocrine-disrupting chemicals (EDCs) such as BPA, phthalates,
+  triclosan, propylene glycol, pesticides, and heavy metals can interfere with hormone
+  synthesis, binding, and signaling, contributing to obesity, metabolic dysfunction,
+  infertility, and thyroid disruption.
+upstream_drivers:
+- bpa-plasticizer-exposure
+- pesticide-herbicide-exposure
+- triclosan-exposure
+downstream_effects:
+- hormonal-imbalance
+- metabolic-dysfunction
+- infertility
+related_mechanisms:
+- oxidative-stress
+linked_to_topics:
+- toxic-body-burden
+- oral-toxin-exposure
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-liver-detox-toolkit
+  location: Avoiding Environmental Toxins
+  quote: Limiting ingestion of genetically modified organisms (GMOs) & heavy metals,
+    all of which have been associated with disruption to the endocrine system resulting
+    in obesity and metabolic disturbances like diabetes, is also recommended.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

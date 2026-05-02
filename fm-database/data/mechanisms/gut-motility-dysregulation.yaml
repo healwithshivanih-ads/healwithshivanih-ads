@@ -1,0 +1,34 @@
+slug: gut-motility-dysregulation
+display_name: Gut Motility Dysregulation
+aliases:
+- altered intestinal motility
+- MMC dysfunction
+category: gut
+summary: Disruption of normal intestinal contractile patterns including the migrating
+  motor complex (MMC), leading to either accelerated transit (diarrhea) or slowed
+  transit (constipation, bloating, SIBO risk).
+upstream_drivers:
+- vagal-tone-dysregulation
+- colonic-fermentation
+- low-fiber-intake
+downstream_effects:
+- constipation
+- diarrhea
+- bloating
+- sibo
+related_mechanisms:
+- vagal-tone-dysregulation
+- colonic-fermentation
+linked_to_topics:
+- low-fodmap-diet
+- gut-brain-axis
+- ibs
+evidence_tier: strong
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: FODMAP Plan SOS Solutions — Bloating and Gas
+  quote: Enhances MMC (migrating motor complex).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

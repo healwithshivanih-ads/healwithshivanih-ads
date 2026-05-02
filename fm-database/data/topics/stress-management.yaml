@@ -1,0 +1,35 @@
+slug: stress-management
+display_name: Stress Management
+aliases:
+- stress reduction
+- relaxation practices
+summary: Behavioral and mind-body practices—including diaphragmatic breathing and
+  gratitude journaling—that activate the parasympathetic nervous system, reduce perceived
+  stress, and support overall physical and mental wellbeing.
+common_symptoms:
+- tension
+- fatigue
+- poor-concentration
+- anxiety
+red_flags: []
+related_topics:
+- sleep-hygiene
+- mindfulness
+- self-care
+key_mechanisms:
+- parasympathetic-activation
+- hpa-axis-dysregulation
+coaching_scope_notes: Coaches can teach and support breathing exercises, gratitude
+  journaling, and self-care goal-setting. These are within coaching scope.
+clinician_scope_notes: If client reports clinical anxiety, panic disorder, or PTSD,
+  refer to mental health clinician.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Mindful Breathing
+  quote: Abdominal breathing, or diaphragmatic breathing, is a powerful way to decrease
+    stress by activating relaxation centers in the brain.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

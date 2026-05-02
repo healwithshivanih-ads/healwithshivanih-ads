@@ -1,0 +1,27 @@
+slug: beta-blockers-not-first-line-for-hypertension
+statement: Per JNC-8 guidelines, beta blockers are not recommended as first-line therapy
+  for hypertension and should typically be considered as a third-line agent.
+evidence_tier: strong
+rationale: Directly references JNC-8 guidelines, a consensus clinical guideline. Supported
+  by referenced JAMA 2012 study (Bangalore et al.) and Carlberg et al. Lancet 2004.
+coaching_translation: If your client is on a beta blocker for blood pressure only,
+  it's worth encouraging them to discuss alternatives with their doctor.
+out_of_scope_notes: Medication change decisions are strictly clinician scope.
+caveats:
+- Beta blockers remain indicated for secondary prevention of cardiac events and arrhythmias
+  such as atrial fibrillation.
+linked_to_topics:
+- hypertension
+- beta-blocker-deprescribing
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-cv-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Practitioners'
+  quote: Beta blocker therapy is not recommended as first-line therapy of hypertension.
+    According to JNC-8 guidelines, they should typically be considered as a third-line
+    agent.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

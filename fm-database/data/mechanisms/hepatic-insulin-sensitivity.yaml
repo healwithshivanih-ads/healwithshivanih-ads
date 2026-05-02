@@ -1,0 +1,31 @@
+slug: hepatic-insulin-sensitivity
+display_name: Hepatic Insulin Sensitivity & AMPK Activation
+aliases:
+- liver insulin sensitivity
+- hepatic glucose production suppression
+- hepatic AMPK
+category: metabolic
+summary: The liver regulates endogenous glucose production (HGP). Aerobic exercise
+  activates hepatic AMPK, which suppresses hepatic glucose output and improves hepatic
+  insulin sensitivity, contributing to overall glucose control.
+upstream_drivers:
+- aerobic-exercise
+downstream_effects:
+- reduced-hepatic-glucose-production
+- improved-fasting-glucose
+related_mechanisms:
+- skeletal-muscle-glucose-uptake
+- insulin-resistance
+linked_to_topics:
+- blood-sugar-dysfunction
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-blood-sugar-toolkit
+  location: Antigravity Exercises
+  quote: It has been seen that 7 days of aerobic training, improves hepatic insulin
+    sensitivity. It has also been understood that hepatic AMPK is stimulated during
+    exercise and may facilitate improved suppression of HGP.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

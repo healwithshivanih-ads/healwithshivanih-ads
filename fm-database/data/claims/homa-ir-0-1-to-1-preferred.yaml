@@ -1,0 +1,26 @@
+slug: homa-ir-0-1-to-1-preferred
+statement: A HOMA-IR of 0.1–1.0 is the preferred range for assessing low insulin resistance
+  risk; values above this indicate increasing resistance.
+evidence_tier: fm_specific_thin
+rationale: HOMA-IR is a validated clinical tool, but the preferred range cited here
+  (0.1–1.0) is a functional medicine tightening of conventional thresholds. Conventional
+  medicine typically flags >2.5 as insulin resistant.
+coaching_translation: HOMA-IR is a score that combines fasting glucose and insulin
+  — keeping it under 1 is an optimal target in functional medicine.
+caveats:
+- Specific range is FM-specific and tighter than conventional thresholds; verify with
+  clinician.
+- Lab ordering is clinician scope.
+out_of_scope_notes: Lab interpretation is clinician scope.
+linked_to_topics:
+- insulin-resistance
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-blood-sugar-cheatsheet
+  location: Insulin Resistance Cheatsheet — Labs to Monitor
+  quote: 0.1 - 1.0 preferred (assess insulin resistance risk)
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

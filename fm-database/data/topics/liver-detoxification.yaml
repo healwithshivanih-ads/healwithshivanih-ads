@@ -1,0 +1,64 @@
+slug: liver-detoxification
+display_name: Liver Detoxification
+aliases:
+- hepatic detox
+- liver cleansing
+- detox phases
+- metabolic detoxification
+- phase 1 phase 2 detox
+summary: The liver is the primary hub of metabolic detoxification, processing lipid-soluble
+  toxins through Phase I (cytochrome P450 enzymes) and Phase II (conjugation pathways)
+  into water-soluble metabolites for excretion via bile, stool, and urine. Nutritional
+  support of these pathways is a cornerstone of Functional Medicine detox protocols.
+common_symptoms:
+- fatigue
+- brain-fog
+- skin-breakouts
+- bloating
+- chemical-sensitivities
+- unexplained-weight-gain
+- headache
+- mood-changes
+red_flags:
+- jaundice
+- ascites
+- hepatic-encephalopathy
+- progressive neurological symptoms
+- unexplained significant weight loss
+related_topics:
+- nafld
+- methylation-mthfr
+- estrogen-dominance
+- heavy-metal-toxicity
+- elimination-diet
+- gut-liver-axis
+- toxic-body-burden
+- mercury-amalgam-removal
+key_mechanisms:
+- cyp450-phase-i-activation
+- phase-ii-conjugation
+- phase-iii-elimination
+- cytochrome-p450-phase1
+- phase2-conjugation
+- gut-liver-axis
+coaching_scope_notes: Coaches can support dietary changes, hydration, fiber intake,
+  and reduction of environmental exposures. Supplement protocols and fasting regimens
+  require clinician direction.
+clinician_scope_notes: Phase I/II enzyme induction/inhibition, supplement dosing,
+  and ordering detox labs (CBC, CMP, GFR, 25-OH Vitamin D) are clinician scope.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Functional Detox Phases
+  quote: Detoxification isn't about pushing toxins out — It's about supporting pathways
+    that process, neutralize, and eliminate safely.
+- id: vitaone-liver-detox-toolkit
+  location: Sequencing a Detoxification Program
+  quote: The liver is the hub of detoxification processes. When the liver is neglected
+    or overburdened through increased toxic load or lack of nutrients, it can become
+    congested & sluggish, resulting in greater toxicity & increased symptom frequency
+    and severity.
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

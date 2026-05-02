@@ -1,0 +1,29 @@
+slug: taurine-bile-flow-gallstone-prevention
+statement: Taurine supports bile acid conjugation and bile flow, playing a role in
+  gallstone prevention alongside phosphatidylcholine and digestive enzymes.
+evidence_tier: plausible_emerging
+rationale: Listed for gallstone-related liver dysfunction; document notes fiber and
+  hydration also key in prevention. Taurine's role in bile acid conjugation is biochemically
+  established.
+coaching_translation: Taurine helps your body make healthy bile, which supports fat
+  digestion and may reduce the risk of gallstones.
+caveats:
+- Source is FM synthesis
+- Dosing requires clinician verification
+linked_to_topics:
+- liver-detoxification
+linked_to_supplements:
+- taurine
+- phosphatidylcholine
+- digestive-enzymes
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Liver Disease Cheatsheet — Gallstone-Related Liver Dysfunction
+  quote: Taurine, Phosphatidylcholine, Digestive enzymes — Support bile flow; fiber
+    & hydration play key role in prevention.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

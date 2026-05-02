@@ -1,0 +1,34 @@
+slug: mitochondrial-energy-production
+display_name: Mitochondrial Energy Production
+aliases:
+- ATP synthesis
+- cellular energy metabolism
+- oxidative phosphorylation
+category: metabolic
+summary: Magnesium is a cofactor for >300 enzymes including those central to ATP production.
+  B1 (thiamin), B2 (riboflavin), B3 (niacin), and B5 (pantothenic acid) are all required
+  for the electron transport chain and Krebs cycle. CoQ10 is also essential and is
+  depleted by statins.
+upstream_drivers:
+- magnesium-deficiency
+- b-vitamin-deficiency
+- coq10-depletion
+- statin-use
+downstream_effects:
+- fatigue
+- muscle-weakness
+- cognitive-decline
+related_mechanisms:
+- methylation-cycle-dysfunction
+linked_to_topics:
+- vitamin-b-complex-deficiency
+- medicine-nutrient-interactions
+evidence_tier: strong
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Magnesium – The Calming Mineral
+  quote: Co-factor for >300 enzymes - central to ATP production and energy metabolism.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

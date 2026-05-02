@@ -4,10 +4,11 @@ category: other
 forms_available:
 - capsule
 - tablet
+- powder
 typical_dose_range:
   capsule:
     min: 100
-    max: 300
+    max: 400
     unit: mg
   tablet:
     min: 100
@@ -15,20 +16,34 @@ typical_dose_range:
     unit: mg
 timing_options:
 - evening
+- morning
+- with_breakfast
+- with_lunch
 take_with_food: optional
-notes_for_coach: Helps modulate cortisol and supports memory; evening dosing is useful
-  for adrenal support and sleep quality.
+notes_for_coach: Supports cortisol blunting and cognitive resilience under stress.
+  Often combined with adaptogens for adrenal recovery protocols. Verify dose with
+  clinician.
 evidence_tier: plausible_emerging
-linked_to_topics: []
+linked_to_topics:
+- adrenal-dysfunction
+- hpa-axis-dysregulation
+- anxiety
 linked_to_mechanisms: []
-linked_to_claims: []
-notes_for_client: ''
+linked_to_claims:
+- phosphatidylserine-blunts-cortisol-response
+- adaptogens-rebalance-hpa-axis
+notes_for_client: Phosphatidylserine is a brain-supportive nutrient that helps soften
+  your cortisol stress response and protects memory.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 2 - Supplement Table
   quote: Phosphatidylserine - Cortisol modulation, memory - 100–300 mg/day - Evening
     or post-stress
-version: 1
+- id: vitaone-adrenal-cheatsheet
+  location: Clinical Patterns Seen in Practice (p.15)
+  quote: 'Adrenal: Cortisol flattening, "wired but tired". Adaptogens, phosphatidylserine,
+    circadian restoration.'
+version: 2
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-02'
 updated_by: shivani

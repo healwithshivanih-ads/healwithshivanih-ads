@@ -1,0 +1,28 @@
+slug: tg-hdl-ratio-above-one-indicates-ir
+statement: A TG:HDL-C ratio >1 indicates insulin resistance and atherogenic dyslipidaemia
+  risk.
+evidence_tier: plausible_emerging
+rationale: TG:HDL ratio is a commonly used surrogate marker for insulin resistance
+  and small dense LDL in FM/integrative medicine; growing observational evidence but
+  not universally adopted in conventional guidelines.
+coaching_translation: Your triglyceride-to-HDL ratio on a lipid panel can be a clue
+  to insulin resistance — lower is better.
+out_of_scope_notes: Lab ordering and interpretation is clinician scope.
+linked_to_topics:
+- insulin-resistance
+- metabolic-syndrome
+linked_to_mechanisms:
+- insulin-resistance
+caveats:
+- Source is FM synthesis. Cut-off of ≤1.0 is FM-specific and stricter than some published
+  thresholds.
+linked_to_supplements: []
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 6.2 — Secondary Markers to Check
+  quote: 'TG : HDL-C Ratio: ≤1.0. Ratio > 1 indicates insulin resistance and atherogenic
+    risk.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

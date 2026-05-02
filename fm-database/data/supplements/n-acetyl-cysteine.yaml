@@ -1,0 +1,46 @@
+slug: n-acetyl-cysteine
+display_name: N-Acetyl-Cysteine (NAC)
+category: amino_acid
+forms_available:
+- capsule
+- tablet
+- powder
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- estrogen-metabolism
+- beta-blocker-deprescribing
+- cardiovascular-dysfunction
+- liver-detoxification
+- mercury-amalgam-removal
+linked_to_claims:
+- melatonin-nac-methylated-b-vitamins-support-estrogen
+- glutathione-nac-support-mercury-detox
+notes_for_coach: NAC is a glutathione precursor. Can substitute for liposomal glutathione.
+  Clinician oversight required for dosing.
+notes_for_client: NAC helps your body make more glutathione — your built-in detox
+  and antioxidant molecule.
+evidence_tier: plausible_emerging
+typical_dose_range:
+  capsule:
+    min: 600
+    max: 1200
+    unit: mg
+linked_to_mechanisms: []
+sources:
+- id: vitaone-sex-hormones-toolkit
+  location: Estrogen Metabolism — Page 02
+  quote: There is also some evidence that melatonin, N-acetyl-cystine, & methylated
+    B vitamins may support healthy estrogen metabolism as well.
+- id: vitaone-cv-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
+  quote: N-Acetyl cysteine
+- id: vitaone-liver-detox-toolkit
+  location: Dental Amalgam Removal Protocol
+  quote: 'N-Acetyl-Cysteine (NAC): 600–1200 mg'
+version: 3
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

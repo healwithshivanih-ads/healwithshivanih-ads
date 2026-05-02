@@ -1,0 +1,32 @@
+slug: glutathione
+display_name: Glutathione (Liposomal)
+category: other
+forms_available:
+- capsule
+- liquid
+timing_options:
+- morning
+- on_empty_stomach
+take_with_food: avoid
+linked_to_topics:
+- liver-detoxification
+- methylation-mthfr
+- heavy-metal-toxicity
+linked_to_claims:
+- glutathione-master-antioxidant-detox
+notes_for_coach: Liposomal glutathione is preferred for oral supplementation due to
+  poor gut absorption of standard oral forms. Used in cirrhosis, MTHFR, and heavy
+  metal protocols. Clinician oversight recommended.
+notes_for_client: Glutathione is your body's most powerful antioxidant. Liposomal
+  forms are best absorbed and help support liver detoxification.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet — 6 Ways to Overcome MTHFR
+  quote: Balance Glutathione – NAC, liposomal glutathione, glycine.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

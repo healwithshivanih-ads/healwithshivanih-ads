@@ -8,7 +8,7 @@ forms_available:
 typical_dose_range:
   capsule:
     min: 200
-    max: 400
+    max: 300
     unit: mg
   powder:
     min: 200
@@ -16,12 +16,14 @@ typical_dose_range:
     unit: mg
   tablet:
     min: 200
-    max: 400
+    max: 300
     unit: mg
 timing_options:
 - evening
 - bedtime
-take_with_food: avoid
+- with_dinner
+- with_breakfast
+take_with_food: optional
 contraindications:
   conditions:
   - severe_kidney_disease
@@ -44,13 +46,53 @@ linked_to_topics:
 - perimenopause
 - pcos
 - anxiety
+- thyroid
+- estrogen-dominance
+- low-progesterone
+- adrenal-dysfunction
+- hpa-axis-dysregulation
+- insulin-resistance
+- low-carb-diet
+- metabolic-syndrome
+- gerd
+- ibs
+- chronic-inflammation
+- autoimmune-disease
+- psoriasis
+- nutrient-deficiency-depression
+- hairfall
+- knee-pain
+- hypothyroidism
+- t3-conversion-disorder
+- blood-sugar-dysfunction
+- drug-induced-nutrient-depletion
+- beta-blocker-deprescribing
+- hypertension
+- elimination-diet
 linked_to_mechanisms: []
 linked_to_claims:
 - magnesium-glycinate-improves-sleep-quality
-notes_for_coach: Base foundational supplement; preferred form for sleep, anxiety,
-  and muscle cramps due to high bioavailability and gentle GI profile.
-notes_for_client: Take 200–400 mg in the evening or at bedtime to support relaxation
-  and sleep quality. Can be taken with or without food.
+- chronic-stress-elevates-rt3-functional-hypothyroidism
+- magnesium-supports-comt-estrogen-methylation
+- magnesium-supports-cortisol-gaba-sleep
+- omega-3-reduces-cytokine-load-stress
+- magnesium-insulin-receptor-atp
+- electrolytes-required-during-low-carb-transition
+- low-carb-improves-pcos-hormonal-markers
+- magnesium-supports-gut-motility-constipation
+- low-magnesium-elevated-autoantibodies
+- magnesium-mandatory-vitamin-d-metabolism
+- magnesium-optimize-before-high-dose-vitamin-d
+- magnesium-glycinate-threonate-for-mental-calm
+- micronutrient-deficiency-impairs-insulin-receptor-signalling
+- whole-foods-supply-micronutrients-supporting-insulin-sensitivity
+- statins-deplete-multiple-nutrients
+- magnesium-reduces-migraine-frequency
+notes_for_coach: Glycinate form is better tolerated GI-wise than citrate for some
+  clients. Cited dose 200–300 mg in this document — verify with clinician for individual
+  use. Do not recommend specific doses to clients without clinician input.
+notes_for_client: Magnesium supports muscle relaxation and may help with headaches.
+  Ask your doctor or nutritionist about the right dose for you.
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, sleep-supporting supplements
@@ -62,8 +104,51 @@ sources:
   location: Page 1 - Supplement Table
   quote: Magnesium Glycinate - Calmness, sleep, muscle function - 200–400 mg/day -
     Evening or night without food
+- id: vitaone-thyroid-cheatsheet
+  location: Clinical Action Steps — Reduce Reverse T3
+  quote: Adaptogens (ashwagandha, rhodiola), magnesium Glycinate, good sleep hygiene
+- id: vitaone-sex-hormones-cheatsheet
+  location: Estrogen Dominance Supplement Cheatsheet
+  quote: 'Magnesium Glycinate: Supports estrogen clearance + liver methylation; Reduces
+    irritability, cramps, anxiety; 200-400 mg at night.'
+- id: vitaone-adrenal-cheatsheet
+  location: How Chronic Stress, Anger, or Grief Translate into Physical Diseases (p.10)
+  quote: GABA support, Mg, L-theanine... Stress-modulating nutrients (Active B5, Mg
+    Glycinate, Liposomal Vit C).
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Mitochondrial
+    Dysfunction
+  quote: Ionic Magnesium (300–400 mg/day)
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: Functional Medicine Clinical Applications
+  quote: Combine with magnesium, inositol, and Vitamin D3.
+- id: vitaone-gut-cheatsheet
+  location: Acid Reflux Cheatsheet
+  quote: Magnesium glycinate, digestive bitters (if low acid), Peppermint-free [for
+    Hiatal Hernia-related Reflux]
+- id: vitaone-inflammation-cheatsheet
+  location: Inflammation Cheatsheet — Page 02
+  quote: Magnesium (glycinate or threonate)
+- id: vitaone-nutrition-cheatsheet
+  location: Magnesium – The Calming Mineral
+  quote: 'Supplements: Glycinate/threonate (nervous system), citrate (constipation),
+    malate (energy). Avoid oxide.'
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 9: Targeted Supplements'
+  quote: 'Magnesium (bisglycinate or citrate): Supports TSH regulation, energy production.'
+- id: vitaone-blood-sugar-ebook
+  location: Section 7.2 — Targeted Supplementation
+  quote: 'Magnesium (citrate/glycinate): Cofactor for insulin receptor tyrosine-kinase
+    & GLUT-4 activation. 200-400 mg elemental.'
+- id: vitaone-cv-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
+  quote: Magnesium glycinate
+- id: vitaone-elimination-diet-toolkit
+  location: FODMAP Plan SOS Solutions — Migraine/Headache
+  quote: Magnesium Citrate / Glycinate (200–300 mg). Relaxes cerebral blood vessels.
+    Helps neurotransmitter regulation. Prevents tension headaches.
 evidence_tier: plausible_emerging
-version: 3
+version: 15
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-02'
 updated_by: shivani

@@ -1,0 +1,30 @@
+slug: selenium-reduces-thyroid-antibodies
+statement: Selenium supplementation (100–200 mcg/day) reduces thyroid antibody levels
+  and improves T4-to-T3 conversion in autoimmune thyroid disease.
+evidence_tier: plausible_emerging
+rationale: Selenium is the cofactor for deiodinase selenoproteins that convert T4
+  to T3. The document states 100-200 mcg/day 'reduces antibodies, improves conversion'
+  but does not cite a specific RCT. Multiple trials (e.g., Toulis et al.) support
+  antibody reduction in Hashimoto's; however, this document is a synthesis without
+  primary citation.
+coaching_translation: Eating 1-2 Brazil nuts daily or supplementing with selenium
+  supports both thyroid hormone activation and a calmer immune response in Hashimoto's.
+caveats:
+- Source is educational synthesis without primary RCT citation
+- Dose of 100-200 mcg requires clinician oversight — selenium has a narrow therapeutic
+  window
+linked_to_topics:
+- hashimotos-thyroiditis
+- t3-conversion-disorder
+linked_to_supplements:
+- selenium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 9: Targeted Supplements'
+  quote: 'Selenium (100–200 mcg/day): Reduces antibodies, improves conversion.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

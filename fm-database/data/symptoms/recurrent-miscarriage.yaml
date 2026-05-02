@@ -1,0 +1,26 @@
+slug: recurrent-miscarriage
+display_name: Recurrent Miscarriage / Infertility
+aliases:
+- pregnancy loss
+- recurrent pregnancy loss
+- miscarriage
+category: hormonal
+severity: concerning
+description: Recurrent miscarriage is a clinical indicator for MTHFR mutation testing,
+  as impaired methylation disrupts DNA synthesis, homocysteine metabolism, and placental
+  vascular health.
+when_to_refer: Always refer to OB/GYN or reproductive medicine specialist. Coaches
+  support lifestyle and nutritional foundations only.
+linked_to_topics:
+- methylation-mthfr
+linked_to_mechanisms:
+- impaired-methylation
+- homocysteine-elevation
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet — Who Should You Test
+  quote: Recurrent miscarriages or infertility
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

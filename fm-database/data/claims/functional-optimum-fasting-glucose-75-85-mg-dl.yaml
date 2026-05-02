@@ -1,0 +1,28 @@
+slug: functional-optimum-fasting-glucose-75-85-mg-dl
+statement: The functional medicine optimum for fasting plasma glucose is 75–85 mg/dL,
+  representing the 'ideal metabolic zone,' tighter than the conventional normal range
+  of 70–99 mg/dL.
+evidence_tier: fm_specific_thin
+rationale: FM-specific interpretation that uses a narrower optimal window. Conventional
+  guidelines use 70–99 mg/dL as normal; the FM tighter range has limited peer-reviewed
+  validation.
+coaching_translation: In functional medicine, the target fasting blood sugar range
+  is tighter than what you'd see on a standard lab report — aiming for 75–85 is considered
+  the sweet spot.
+out_of_scope_notes: Lab interpretation is clinician scope.
+linked_to_topics:
+- blood-sugar-dysfunction
+caveats:
+- Source is FM synthesis. The document shows two slightly different FM-optimal ranges
+  (75–85 in the table vs 90–100 in the text). Verify with clinician.
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 3.3 — Blood-Sugar Numbers in Context
+  quote: Functional optimum (90–100mg/dL fasting; <120mg/dL two-hour)- tighter range
+    linked to best metabolic outcomes.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

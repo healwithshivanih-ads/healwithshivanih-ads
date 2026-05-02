@@ -1,0 +1,30 @@
+slug: chlorella-binds-mercury-post-amalgam
+statement: Chlorella can help bind mercury and prevent its absorption following dental
+  amalgam removal when used as a mouth swish and oral supplement.
+evidence_tier: fm_specific_thin
+rationale: Chlorella's metal-binding properties are biologically plausible and referenced
+  in some preliminary studies, but robust RCT evidence specifically for peri-amalgam-removal
+  mercury binding is lacking. This is a common FM protocol recommendation.
+coaching_translation: Using chlorella as directed around amalgam removal appointments
+  is a commonly used FM strategy to support mercury clearance — work with your practitioner
+  on timing and dosage.
+out_of_scope_notes: Specific dosing and timing during a dental procedure should be
+  guided by a clinician.
+caveats:
+- Evidence is primarily theoretical/animal; no large human RCTs for this specific
+  use. Dosing is clinician scope.
+- Source is an educational toolkit (llm_synthesis-adjacent expert consensus).
+linked_to_topics:
+- mercury-amalgam-removal
+linked_to_supplements:
+- chlorella
+- activated-charcoal
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-toolkit
+  location: Dental Amalgam Removal Protocol
+  quote: The chlorella can help bind and prevent mercury absorption.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

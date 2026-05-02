@@ -1,0 +1,28 @@
+slug: fluoride-bpa-block-thyroid-receptors
+statement: Environmental toxins including fluoride, BPA, phthalates, and pesticides
+  block thyroid receptors and compete with iodine uptake, impairing thyroid function.
+evidence_tier: plausible_emerging
+rationale: The document lists fluoride, BPA, pesticides, and plastics as thyroid receptor
+  blockers. Evidence for BPA and thyroid disruption exists in animal and some human
+  studies; fluoride's thyroid effects are an active research area.
+coaching_translation: Everyday exposures — fluoride in water, plastic food containers,
+  pesticide residues — can interfere with how well your thyroid hormone works at the
+  cell level.
+caveats:
+- Human RCT evidence is limited; primarily animal/observational data.
+- Expert-consensus source.
+linked_to_topics:
+- thyroid
+linked_to_supplements:
+- nac
+- milk-thistle
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-cheatsheet
+  location: What Nutritionists/Health Coaches Miss — Ignore Toxin Exposure
+  quote: Fluoride, BPA, pesticides, and plastics block thyroid receptors
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

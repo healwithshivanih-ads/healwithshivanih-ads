@@ -1,52 +1,162 @@
 slug: leaky-gut
 display_name: Leaky Gut (Intestinal Hyperpermeability)
 aliases:
-  - intestinal-permeability
-  - leaky-gut-intestinal-hyperpermeability
-  - gut-barrier-permeability
-  - gut-barrier-dysfunction
-  - gut-barrier-integrity
-  - tight-junction-disruption
-  - estrogen-driven-gut-barrier-integrity
-  - mucin-layer-support
+- intestinal-permeability
+- leaky-gut-intestinal-hyperpermeability
+- gut-barrier-permeability
+- gut-barrier-integrity
+- tight-junction-disruption
+- estrogen-driven-gut-barrier-integrity
+- mucin-layer-support
+- intestinal-hyperpermeability
+- increased gut permeability
+- intestinal permeability
+- gut barrier dysfunction
+- LPS translocation
+- intestinal hyperpermeability
+- tight junction disruption
 category: gut
-summary: |
-  Compromised integrity of the single-cell-thick small-intestinal lining,
-  with disruption of tight-junction proteins (zonulin upregulation, occludin
-  downregulation), allowing larger food particles, bacterial fragments
-  (LPS), and antigens to cross into the bloodstream and trigger systemic
-  immune activation. A core upstream driver in FM models of autoimmunity,
-  chronic inflammation, perimenopausal symptoms, and food sensitivities.
+summary: Increased permeability of the intestinal epithelial lining, allowing undigested
+  food particles, toxins, and pathogens to enter the bloodstream and trigger systemic
+  inflammation. Associated with autoimmune diseases, food sensitivities, and skin
+  conditions.
 upstream_drivers:
-  - dysbiosis (loss of beneficial species)
-  - chronic stress / cortisol elevation
-  - declining estrogen (perimenopause)
-  - NSAID and alcohol use
-  - gluten exposure (in susceptible individuals)
-  - low SCFA production
+- dysbiosis (loss of beneficial species)
+- chronic stress / cortisol elevation
+- declining estrogen (perimenopause)
+- NSAID and alcohol use
+- gluten exposure (in susceptible individuals)
+- low SCFA production
+- dysbiosis
+- gluten-sensitivity
+- toxin-exposure
+- chronic-stress
+- hpa-axis-dysregulation
+- mast-cell-activation
+- high-refined-carb-diet
+- stress
+- zonulin-upregulation
+- lps-signaling
+- gut-dysbiosis-mechanism
+- NSAIDs
+- gluten
+- alcohol
+- gut-dysbiosis
+- food-sensitivities
+- nsaids
+- sibo
+- chronic-inflammation
+- poor-diet
+- infections
+- environmental-toxins
+- hypochlorhydria-mechanism
 downstream_effects:
-  - food sensitivities
-  - autoimmune flare risk
-  - systemic low-grade inflammation
-  - estrogen-immune dysregulation
-  - brain fog (LPS crossing BBB)
+- food sensitivities
+- autoimmune flare risk
+- systemic low-grade inflammation
+- estrogen-immune dysregulation
+- brain fog (LPS crossing BBB)
+- hashimotos-autoimmune-cascade
+- t4-to-t3-conversion-block
+- chronic-inflammation
+- autoimmune-flares
+- food-sensitivities
+- altered-serotonin-synthesis
+- insulin-resistance
+- chronic-systemic-inflammation
+- autoimmune-activation
+- neuroinflammation
+- estrogen-dominance
+- mast-cell-activation
+- lps-endotoxemia
+- nf-kb-activation
+- systemic-inflammation
+- thyroid-autoimmunity
+- nutrient-malabsorption
+- chronic-immune-activation
 related_mechanisms:
-  - hpa-axis-dysregulation
-  - microbial-diversity-decline
-  - chronic-inflammation
+- hpa-axis-dysregulation
+- microbial-diversity-decline
+- chronic-inflammation
+- hashimotos-autoimmune-cascade
+- insulin-resistance
+- scfa-production
+- zonulin-upregulation
+- lps-signaling
+- nfkb-activation
+- reduced-scfas
+- gut-dysbiosis
+- lps-endotoxemia
+- nf-kb-activation
+- thyroid-autoimmunity
+- molecular-mimicry
+- autoimmune-thyroid-attack
+- hypochlorhydria-mechanism
 linked_to_topics:
-  - autoimmune
-  - inflammation
-  - perimenopause
-  - dysbiosis
-  - microbiome
+- autoimmune
+- inflammation
+- perimenopause
+- dysbiosis
+- microbiome
+- thyroid
+- leaky-gut
+- gut-brain-axis
+- food-sensitivities
+- insulin-resistance
+- gut-dysbiosis
+- sibo
+- candida-overgrowth
+- ibd
+- chronic-inflammation
+- autoimmune-disease
+- food-sensitivity
+- psoriasis
+- hashimotos-thyroiditis
+- t3-conversion-disorder
+- hashimotos-hypothyroidism
+- gut-dysfunction
+- gut-microbiome
 sources:
-  - id: vitaone-skill-practice-guide
-    location: practice_guide.md, Gut & Inflammation sections
-  - id: thurlow-microbiome-mondays
-    location: Session 1 + Session 2 — gut barrier discussion
-evidence_tier: strong
-version: 1
+- id: vitaone-skill-practice-guide
+  location: practice_guide.md, Gut & Inflammation sections
+- id: thurlow-microbiome-mondays
+  location: Session 1 + Session 2 — gut barrier discussion
+- id: vitaone-thyroid-cheatsheet
+  location: Biohacking Thyroid Function Cheatsheet — Optimize Liver & Gut Health
+  quote: 60–70% of T4 →T3 conversion occurs in the liver & gut microbiome
+- id: vitaone-adrenal-cheatsheet
+  location: The Functional Medicine Cascade of Emotional Stress (p.11)
+  quote: Altered gut barrier & microbiome → Immune dysregulation & hormonal shifts
+    → Chronic disease expression
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Gut Dysbiosis
+    / Endotoxemia
+  quote: LPS from dysbiosis increases insulin resistance. Support microbiota diversity
+    and SCFA production.
+- id: vitaone-gut-cheatsheet
+  location: Leaky Gut & Inflammation — The Missing Link
+  quote: Tight junction damage → Increased intestinal permeability → Antigen leakage
+    → Root cause of chronic inflammation
+- id: vitaone-inflammation-cheatsheet
+  location: Autoimmune Disease Cheatsheet — Page 23
+  quote: Gut permeability (leaky gut) is a major trigger. Zonulin elevation = red
+    flag for gut barrier breakdown. 70%+ of the immune system is in the gut lining.
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 6: Causes of Thyroid Disorders'
+  quote: 'Leaky gut (intestinal permeability): Allows antigens and food proteins to
+    enter the bloodstream, triggering immune reactions.'
+- id: vitaone-thyroid-toolkit
+  location: Addressing Autoimmune Triggers
+  quote: A focus on healing the gut, as leaky gut syndrome is often associated with
+    autoimmune conditions. The 5R protocol (Remove, Replace, Reinoculate, Repair,
+    and Rebalance) is often used.
+- id: vitaone-gut-toolkit
+  location: The 5R Framework for Gut Restoration
+  quote: GI issues may underlie chronic health problems that seem unrelated to digestive
+    health, including autoimmune diseases such as rheumatoid arthritis and type 1
+    diabetes, skin problems such as eczema and acne rosacea.
+evidence_tier: plausible_emerging
+version: 9
 status: active
-updated_at: 2026-04-29
+updated_at: '2026-05-02'
 updated_by: shivani

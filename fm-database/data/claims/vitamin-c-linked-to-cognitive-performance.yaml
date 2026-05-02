@@ -1,0 +1,27 @@
+slug: vitamin-c-linked-to-cognitive-performance
+statement: There is an association between the body's vitamin C level and cognitive
+  performance; vitamin C may be depleted in people with cognitive impairment such
+  as Alzheimer's disease.
+evidence_tier: plausible_emerging
+rationale: Supported by Travica et al. 2019 cross-sectional study (Front Aging Neurosci)
+  and systematic review (Nutrients, 2017) cited in document.
+coaching_translation: Getting enough vitamin C from fruits and vegetables isn't just
+  about immune health — it may also protect your brain and mood.
+caveats:
+- Most evidence is observational/cross-sectional — causality not established.
+- Source is an educational toolkit synthesizing study data.
+linked_to_topics:
+- mitochondrial-health-nutrition
+linked_to_supplements:
+- vitamin-c
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-toolkit
+  location: Nutrients for Mitochondrial Health
+  quote: Studies have found an association between the body's vitamin C level and
+    cognitive performance.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

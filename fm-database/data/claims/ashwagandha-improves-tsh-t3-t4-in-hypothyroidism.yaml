@@ -1,0 +1,31 @@
+slug: ashwagandha-improves-tsh-t3-t4-in-hypothyroidism
+statement: Eight weeks of ashwagandha (600 mg/day root extract) significantly improved
+  serum TSH, T3, and T4 levels compared to placebo in subjects with elevated TSH.
+evidence_tier: plausible_emerging
+rationale: A 2018 prospective, randomized, double-blind, placebo-controlled study
+  of 50 subjects is referenced. T3 increased 18.6% at 4 weeks and 41.5% at 8 weeks;
+  T4 increased 9.3% at 4 weeks and 19.6% at 8 weeks. Single trial; needs independent
+  replication.
+coaching_translation: Ashwagandha has been studied in a clinical trial and may help
+  normalize thyroid hormone levels in people with subclinical hypothyroidism.
+caveats:
+- Single trial cited; source does not provide full journal citation.
+- Dosing should be confirmed with clinician, especially in Hashimoto's (autoimmune
+  caution with adaptogens).
+- Source is educational toolkit — treat as plausible_emerging.
+linked_to_topics:
+- hypothyroidism
+- hashimotos-hypothyroidism
+linked_to_supplements:
+- ashwagandha
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-toolkit
+  location: Ashwagandha (Withania somnifera)
+  quote: Eight weeks of treatment with ashwagandha 600 mg/day significantly improved
+    serum TSH, T3, and T4 levels when compared to placebo.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,35 @@
+slug: ground-flax-seed
+display_name: Ground Flax Seed (Flax Meal)
+category: fatty_acid
+forms_available:
+- powder
+typical_dose_range:
+  powder:
+    min: 7
+    max: 14
+    unit: g
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- cardiometabolic-health
+- phytonutrient-dense-diet
+linked_to_claims:
+- ground-flax-seed-supports-cardiometabolic-smoothie
+notes_for_coach: Instruct clients to store ground flax in the refrigerator and use
+  within 3–4 weeks to prevent oxidation. Whole flax seeds pass undigested; ground
+  or meal form is preferred for nutrient absorption.
+notes_for_client: Add 1–2 tablespoons of ground flax to your smoothie for a boost
+  of heart-healthy omega-3 fats and fiber. Keep it in the fridge so it stays fresh.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cardiometabolic-toolkit
+  location: Building a Better Smoothie — Flax Seeds
+  quote: Add 1 to 2 tablespoons of ground flax seeds (or flax meal) to the blender.
+    Store extra ground flax seed or flax meal in fridge for up to 3 to 4 weeks.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

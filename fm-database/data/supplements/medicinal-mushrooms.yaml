@@ -1,0 +1,39 @@
+slug: medicinal-mushrooms
+display_name: Medicinal Mushrooms
+category: herb
+forms_available:
+- capsule
+- powder
+- tablet
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 3000
+    unit: mg
+timing_options:
+- morning
+- with_breakfast
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- immune-support
+- chronic-inflammation
+linked_to_claims:
+- medicinal-mushrooms-immune-antioxidant-antiviral
+notes_for_coach: Includes shiitake, reishi, lion's mane, maitake, and AHCC. Dosing
+  must be individualized by species per the document. RCT evidence cited for shiitake
+  (Dai et al. 2015). Clinician oversight needed for dosing.
+notes_for_client: Different medicinal mushrooms (shiitake, reishi, maitake) have different
+  effects. Your practitioner can help identify which is right for you and at what
+  dose.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Medicinal mushrooms have been shown to support the immune system while having
+    antioxidant and antiviral effects.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

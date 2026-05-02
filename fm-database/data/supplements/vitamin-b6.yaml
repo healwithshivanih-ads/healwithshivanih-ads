@@ -1,0 +1,32 @@
+slug: vitamin-b6
+display_name: Vitamin B6 (Pyridoxine)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+evidence_tier: plausible_emerging
+notes_for_coach: Listed as support during beta blocker tapering (B6, B12). B6 is also
+  depleted by loop diuretics. B6 is a cofactor in homocysteine metabolism; deficiency
+  elevates homocysteine and cardiovascular risk.
+notes_for_client: Vitamin B6 helps keep homocysteine levels in a healthy range, which
+  is important for heart health.
+timing_options:
+- with_breakfast
+- with_lunch
+take_with_food: optional
+linked_to_topics:
+- drug-induced-nutrient-depletion
+- beta-blocker-deprescribing
+- cardiovascular-dysfunction
+linked_to_mechanisms:
+- elevated-homocysteine
+typical_dose_range: {}
+linked_to_claims: []
+sources:
+- id: vitaone-cv-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
+  quote: Vitamin B6, B12
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

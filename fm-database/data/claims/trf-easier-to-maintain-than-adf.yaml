@@ -1,0 +1,26 @@
+slug: trf-easier-to-maintain-than-adf
+statement: Time Restricted Feeding (TRF) may be easier to maintain long-term compared
+  to Alternate Day Fasting (ADF).
+evidence_tier: plausible_emerging
+rationale: Stated in the document referencing study findings; Trepanowski et al. (JAMA
+  Intern Med 2017) on ADF provides comparative context.
+coaching_translation: Eating within a consistent daily window (like 8 hours) may be
+  easier to stick with over time than alternating fasting and eating days.
+caveats:
+- Individual adherence varies significantly
+- Source is a practitioner toolkit, not primary study
+linked_to_topics:
+- intermittent-fasting
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-cardiometabolic-toolkit
+  location: Intermittent Fasting — Who Benefits from Fasting?
+  quote: Some studies indicate that Time Restricted Feeding (TRF) may be easier to
+    maintain long-term compared to other forms of fasting, like Alternate Day Fasting
+    (ADF).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

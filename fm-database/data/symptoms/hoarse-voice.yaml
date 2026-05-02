@@ -1,0 +1,23 @@
+slug: hoarse-voice
+display_name: Hoarseness of Voice
+aliases:
+- gravelly voice
+- hoarse voice
+- voice changes
+category: other
+severity: common
+description: Voice changes including hoarseness or gravelly quality due to myxedema
+  of the vocal cords or thyroid enlargement affecting surrounding structures.
+when_to_refer: Refer if hoarseness is progressive or accompanied by dysphagia or goiter.
+linked_to_topics:
+- hypothyroidism
+- hashimotos-hypothyroidism
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-toolkit
+  location: Symptoms of Hashimoto's Hypothyroidism
+  quote: Hoarseness of Voice
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

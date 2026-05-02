@@ -1,0 +1,35 @@
+slug: loneliness-activates-inflammatory-pathways
+statement: Chronic social disconnection activates pro-inflammatory pathways (IL-6,
+  TNF-α, CRP) via HPA axis and sympathetic nervous system overdrive, mirroring the
+  inflammatory response to infection or physical injury.
+evidence_tier: plausible_emerging
+rationale: Supported by psychoneuroimmunology research including fMRI overlap of social
+  pain and physical pain in ACC/insula. Document references this but does not cite
+  specific authors/studies.
+coaching_translation: Loneliness is a physical health risk factor, not just an emotional
+  one. Community and connection are part of your anti-inflammatory protocol.
+caveats:
+- Document cites fMRI evidence conceptually but does not name specific studies — treat
+  as plausible_emerging.
+- Individual variability is significant.
+linked_to_topics:
+- inflammation
+- autoimmune
+- adrenal-dysfunction
+linked_to_supplements:
+- fish-oil-omega-3
+- magnesium-glycinate
+- curcumin
+- rhodiola-rosea
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-adrenal-cheatsheet
+  location: Why Loneliness Is the New Inflammation (p.17)
+  quote: Functional MRI studies show that social rejection and physical pain share
+    overlapping brain regions (anterior cingulate cortex & insula). This means the
+    body interprets loneliness as injury → initiating a pro-inflammatory immune response.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

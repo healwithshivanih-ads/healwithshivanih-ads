@@ -1,0 +1,36 @@
+slug: fructose-malabsorption
+display_name: Fructose Malabsorption
+aliases:
+- dietary fructose intolerance
+- excess fructose absorption failure
+category: gut
+summary: When fructose intake exceeds glucose in the intestinal lumen, the GLUT5 transporter
+  is overwhelmed and unabsorbed fructose passes to the colon, creating an osmotic
+  load and substrate for fermentation, causing bloating, gas, and altered stool.
+upstream_drivers:
+- high-fructose diet
+- SIBO
+- gut-dysbiosis
+downstream_effects:
+- bloating
+- abdominal-gas
+- osmotic-diarrhea
+- acid-reflux
+related_mechanisms:
+- gut-fermentation-dysbiosis
+- lactase-deficiency-osmotic-load
+linked_to_topics:
+- low-fodmap-diet
+- ibs
+- sibo
+evidence_tier: strong
+sources:
+- id: vitaone-elimination-diet-cheatsheet
+  location: Functional Medicine Table — Understanding FODMAP Mechanisms / Monosaccharides
+    row
+  quote: 'Fructose (excess over glucose): Poorly absorbed → fermentation, osmotic
+    load. Found in honey, apples, mango — balance with glucose (fruit combining).'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,75 @@
+slug: hpa-axis-dysregulation
+display_name: HPA Axis Dysregulation
+aliases:
+- adrenal dysfunction
+- adrenal fatigue
+- cortisol imbalance
+- allostatic load
+- HPA axis dysfunction
+- adrenal exhaustion
+summary: The hypothalamus-pituitary-adrenal axis is the body's central stress response
+  system. Dysfunction can manifest as low cortisol states (fatigue, hypoglycemia,
+  low blood pressure), high cortisol states (weight gain, insomnia, insulin resistance),
+  or adrenal hyperplasia. Chronic activation leads to DHEA depletion, immune suppression,
+  and metabolic dysregulation.
+common_symptoms:
+- fatigue
+- burnout
+- wired-but-tired
+- poor-sleep
+- low-libido
+- anxiety
+- brain-fog
+- insomnia
+- hypoglycemia
+- low-blood-pressure
+- weight-gain-abdomen
+- craving-sweets
+- craving-salt
+- lethargic-depression
+- agitated-depression
+red_flags:
+- Signs of Addison's disease (severe low BP, salt craving, pigmentation)
+- Cushing's syndrome (central obesity, purple striae)
+- Scars, elbows, nipples, or skin near nails that are unusually dark — possible Addison's
+  disease
+- Low blood pressure with drop on standing — orthostatic hypotension
+- Excessive dark male-pattern hair growth in women — possible adrenal hyperplasia
+related_topics:
+- anxiety
+- insomnia
+- perimenopause
+- pcos
+- inflammation
+- autoimmune
+- thyroid
+- chronic-stress
+- cortisol-dysregulation
+- insulin-resistance
+key_mechanisms:
+- hpa-axis-dysregulation
+- pregnenolone-steal
+- chronic-inflammation
+- cortisol-excess
+- dhea-depletion
+coaching_scope_notes: Coaches can support lifestyle, sleep, nutrition, and stress
+  management. Questionnaire scoring and salivary cortisol interpretation require clinician
+  oversight.
+clinician_scope_notes: Use blood and salivary cortisol testing in conjunction with
+  questionnaire. Items marked * require physical examination. Adrenal hyperplasia
+  section warrants referral.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-adrenal-cheatsheet
+  location: Functional Wisdom / Anti-Stress Hormones section (p.23)
+  quote: Chronic stress raises cortisol. Healing begins when you restore the anti-stress
+    hormones that rebuild the body.
+- id: vitaone-adrenal-toolkit
+  location: HPA Axis Questionnaire
+  quote: The hypothalamus, pituitary, adrenal (HPA) axis is the body's central stress
+    response system. This questionnaire is designed to help assess and differentiate
+    possible dysfunction within this system.
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

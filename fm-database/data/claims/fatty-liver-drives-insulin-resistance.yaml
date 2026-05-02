@@ -1,0 +1,28 @@
+slug: fatty-liver-drives-insulin-resistance
+statement: Liver fat (NAFLD) drives insulin resistance; taurine and choline support
+  bile production, methylation, and hepatocyte repair.
+evidence_tier: plausible_emerging
+rationale: Hepatic fat accumulation is mechanistically linked to hepatic insulin resistance
+  via diacylglycerol-PKC pathway. Choline and taurine roles in hepatic fat metabolism
+  have biological plausibility and some clinical evidence, though large RCTs are limited.
+coaching_translation: A fatty liver quietly blocks insulin signalling — nutrients
+  like choline and taurine help the liver process and clear that fat.
+caveats:
+- Source is expert consensus; specific studies not cited.
+linked_to_topics:
+- insulin-resistance
+linked_to_supplements:
+- taurine
+- milk-thistle
+linked_to_mechanisms:
+- insulin-resistance
+out_of_scope_notes: ''
+sources:
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Fatty Liver (NAFLD)
+  quote: Liver fat drives insulin resistance. Taurine + choline support bile, methylation,
+    and hepatocyte repair.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

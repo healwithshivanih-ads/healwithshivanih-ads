@@ -1,0 +1,25 @@
+slug: oral-contraceptives-deplete-b-vitamins-minerals
+statement: Oral contraceptives and HRT deplete B6, B12, folate, magnesium, and zinc;
+  active B-complex and mineral co-supplementation is recommended.
+evidence_tier: plausible_emerging
+rationale: OCP-induced depletion of B6, folate, and magnesium is supported by observational
+  studies. The clinical significance and need for routine supplementation is accepted
+  in FM but not yet standard of care.
+coaching_translation: Women on the pill may benefit from a good B-complex with active
+  forms and a magnesium supplement.
+out_of_scope_notes: Prescribing and monitoring is clinician territory.
+caveats:
+- Monitor mood, skin, and homocysteine levels as per clinical notes in source.
+linked_to_topics:
+- medicine-nutrient-interactions
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Medicine-Nutrient Interactions Cheatsheet
+  quote: Always co-supplement with active B-complex & minerals. Watch mood, skin,
+    and homocysteine.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

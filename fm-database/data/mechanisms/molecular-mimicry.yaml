@@ -1,0 +1,47 @@
+slug: molecular-mimicry
+display_name: Molecular Mimicry
+aliases:
+- cross-reactivity
+- antigen mimicry
+- immune cross-reactivity
+- gliadin-thyroid mimicry
+category: immune
+summary: The immune system mistakes the body's own tissues for foreign invaders due
+  to structural similarity between foreign antigens (e.g., gluten/gliadin, viruses)
+  and thyroid tissue proteins, triggering autoimmune attack on the thyroid.
+upstream_drivers:
+- leaky-gut
+- gluten-exposure
+- dairy-proteins
+- hidden-infections
+- viral-infections
+downstream_effects:
+- autoantibody-production
+- th17-dominance
+- autoimmune-flares
+- thyroid-autoimmunity
+- anti-tpo-production
+- hashimotos-thyroiditis
+related_mechanisms:
+- leaky-gut
+- th17-dominance
+- thyroid-autoimmunity
+linked_to_topics:
+- autoimmune-disease
+- food-sensitivity
+- hashimotos-thyroiditis
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Autoimmune Disease Cheatsheet — Page 23
+  quote: Dairy proteins mimic human tissue = molecular mimicry.
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 6: Causes of Thyroid Disorders'
+  quote: Molecular mimicry is when the immune system mistakes the body's own tissues
+    for foreign invaders due to structural similarity, leading to autoimmune attack.
+    The immune system confuses foreign particles (like viruses, gluten) with thyroid
+    tissue.
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

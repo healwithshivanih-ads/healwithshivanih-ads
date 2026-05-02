@@ -1,0 +1,38 @@
+slug: hashimotos-autoimmune-cascade
+display_name: Hashimoto's Autoimmune Cascade
+aliases:
+- TPO antibody elevation
+- thyroid autoimmunity
+- molecular mimicry thyroid
+category: immune
+summary: Leaky gut, gluten sensitivity, and molecular mimicry allow gut-derived antigens
+  to trigger autoimmune attack on thyroid peroxidase (TPO) and thyroglobulin (Tg),
+  driving progressive destruction of thyroid tissue. EBV and Yersinia infections are
+  identified co-triggers.
+upstream_drivers:
+- leaky-gut
+- gluten-sensitivity
+- molecular-mimicry
+- viral-infections
+- iodine-imbalance
+downstream_effects:
+- elevated-anti-tpo
+- elevated-anti-tg
+- reduced-thyroid-output
+- hypothyroidism
+related_mechanisms:
+- leaky-gut
+- chronic-inflammation
+linked_to_topics:
+- thyroid
+- autoimmune
+- leaky-gut
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-thyroid-cheatsheet
+  location: Thyroid Disorders Cheatsheet — Anti-TPO row
+  quote: Leaky gut, gluten sensitivity, molecular mimicry, toxins
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

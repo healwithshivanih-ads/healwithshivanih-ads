@@ -1,0 +1,30 @@
+slug: melatonin-reduces-inflammation-sleep
+statement: In addition to promoting restful sleep, melatonin reduces inflammation
+  by modulating inflammasome activation.
+evidence_tier: plausible_emerging
+rationale: Cited Favero et al. (Int J Endocrinol 2017) supports melatonin's anti-inflammatory
+  role via inflammasome modulation. COVID-19 adjuvant use (Zhang et al. Life Sci 2020)
+  is emerging.
+coaching_translation: Melatonin helps you sleep AND has anti-inflammatory properties.
+  Sleep quality itself is a key driver of inflammation levels.
+out_of_scope_notes: 5–20 mg is a wide dose range; upper end requires clinician guidance.
+  Interactions with SSRIs and anticoagulants noted in references.
+linked_to_topics:
+- immune-support
+- chronic-inflammation
+linked_to_supplements:
+- melatonin
+caveats:
+- High doses (>5 mg) should be clinician-supervised.
+- Drug interactions with SSRIs and anticoagulants noted.
+- Source is expert consensus.
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: In addition to promoting restful sleep, melatonin has been shown to reduce
+    inflammation.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

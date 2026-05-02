@@ -1,0 +1,31 @@
+slug: cyp450-phase-i-activation
+display_name: CYP450 Phase I Activation
+aliases:
+- phase I detoxification
+- cytochrome P450 activation
+- toxin bioactivation
+category: metabolic
+summary: Phase I of liver detoxification converts lipophilic toxins into reactive
+  intermediates via cytochrome P450 enzymes. Key nutritional activators include green
+  tea, citrus, cruciferous vegetables, and turmeric. Over-activation without Phase
+  II support can increase reactive intermediate burden.
+upstream_drivers:
+- toxin-exposure
+- alcohol-intake
+downstream_effects:
+- reactive-intermediate-formation
+- oxidative-stress
+related_mechanisms:
+- phase-ii-conjugation
+- oxidative-stress
+linked_to_topics:
+- liver-detoxification
+evidence_tier: strong
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Functional Detox Phases
+  quote: 'Phase I – Activation: Converts toxins → reactive intermediates via CYP450.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

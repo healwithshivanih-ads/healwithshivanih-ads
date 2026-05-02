@@ -1,0 +1,28 @@
+slug: omega-3s-reduce-gut-inflammation
+statement: Omega-3 fatty acids have potent anti-inflammatory properties; inflammation
+  in the gut can negatively impact brain function, and omega-3s help reduce this.
+evidence_tier: strong
+rationale: Anti-inflammatory mechanism of EPA/DHA is well-established. Reduction of
+  systemic and gut inflammation by omega-3s is supported by numerous RCTs.
+coaching_translation: Eating fatty fish (salmon, sardines) or taking fish oil helps
+  cool gut inflammation, which in turn benefits brain health.
+linked_to_topics:
+- gut-brain-axis
+- gut-dysfunction
+linked_to_supplements:
+- fish-oil
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-toolkit
+  location: 'Gut-Brain Axis: Nutrition''s Impact on Mental Health — Omega-3 Fatty
+    Acids'
+  quote: Omega-3 fatty acids, found in fatty fish (salmon, mackerel, sardines) & plant
+    sources like flaxseeds & walnuts, have potent anti-inflammatory properties. Inflammation
+    in the gut can negatively impact brain function, & omega-3s help to reduce this
+    inflammation.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

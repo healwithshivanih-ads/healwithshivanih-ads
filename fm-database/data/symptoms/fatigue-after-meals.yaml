@@ -1,0 +1,24 @@
+slug: fatigue-after-meals
+display_name: Post-Meal Fatigue
+aliases:
+- fatigue after eating
+- post-prandial tiredness
+- food coma
+- afternoon energy crash
+category: metabolic
+severity: common
+description: Energy slump occurring after meals, often linked to postprandial glucose
+  spikes followed by reactive hypoglycaemia in insulin-resistant individuals.
+linked_to_topics:
+- insulin-resistance
+linked_to_mechanisms:
+- insulin-resistance
+when_to_refer: ''
+sources:
+- id: vitaone-blood-sugar-cheatsheet
+  location: Insulin Resistance Cheatsheet — Clinical Symptoms
+  quote: Fatigue after meals
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

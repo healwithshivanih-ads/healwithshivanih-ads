@@ -1,0 +1,30 @@
+slug: selenium-vitamin-e-antioxidant-support-detox
+statement: Selenium and Vitamin E provide antioxidant protection supporting Phase
+  I detoxification and reducing oxidative damage from free radical intermediates during
+  mercury detoxification.
+evidence_tier: plausible_emerging
+rationale: Selenium is a cofactor for glutathione peroxidase; Vitamin E is a lipid-soluble
+  antioxidant. Both are well-established antioxidant nutrients. Their specific use
+  peri-amalgam removal is FM protocol consensus without dedicated RCTs.
+coaching_translation: Selenium and Vitamin E help protect your cells from the oxidative
+  stress that comes with detoxification.
+out_of_scope_notes: Doses (Selenium 200–300 mcg; Vitamin E 200–400 IU) are clinician
+  scope; selenium toxicity is possible at high doses.
+caveats:
+- Selenium has a narrow therapeutic window; upper tolerable intake is 400 mcg/day.
+  Verify with clinician.
+linked_to_topics:
+- liver-detoxification
+- mercury-amalgam-removal
+linked_to_supplements:
+- selenium
+- vitamin-e
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-toolkit
+  location: Dental Amalgam Removal Protocol — Pre-Procedure
+  quote: 'Selenium: 200–300 mcg / Vitamin E: 200–400 IU'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

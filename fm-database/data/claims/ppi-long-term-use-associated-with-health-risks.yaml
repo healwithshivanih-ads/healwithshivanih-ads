@@ -1,0 +1,27 @@
+slug: ppi-long-term-use-associated-with-health-risks
+statement: Long-term PPI use is associated with increased risk of intestinal infections,
+  hip fracture, kidney failure, and pneumonia.
+evidence_tier: strong
+rationale: Multiple observational studies and meta-analyses have linked long-term
+  PPI use to these risks. Current guidelines recommend using PPIs at the lowest effective
+  dose for the shortest necessary duration.
+coaching_translation: PPIs are helpful short-term, but long-term use has been linked
+  to several health concerns. Working with your doctor to taper off when appropriate
+  is a reasonable goal.
+out_of_scope_notes: PPI tapering is a clinician-supervised process. Coaches should
+  support lifestyle and dietary changes only.
+linked_to_topics:
+- gerd
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-gut-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Patients'
+  quote: Long-term use of PPIs has been associated with a number of health concerns,
+    including increased risk of intestinal infections, hip fracture, kidney failure,
+    and pneumonia.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

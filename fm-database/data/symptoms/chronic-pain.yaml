@@ -1,0 +1,26 @@
+slug: chronic-pain
+display_name: Chronic Pain
+aliases:
+- persistent pain
+- widespread pain
+- ongoing pain
+category: musculoskeletal
+severity: concerning
+description: Persistent pain lasting more than 3 months, often involving central sensitization.
+  Reported to decrease with LDN in conditions like fibromyalgia and CRPS.
+when_to_refer: Refer if pain is severe, neuropathic, or unresponsive to lifestyle/coaching
+  interventions.
+linked_to_topics:
+- low-dose-naltrexone
+linked_to_mechanisms:
+- tlr4-microglial-inhibition
+- opioid-rebound-upregulation
+sources:
+- id: vitaone-ldn-article
+  location: So, how does LDN work?
+  quote: many patients report an improved sense of well-being and a decrease in overall
+    pain, as one might expect with higher levels of opioid production in the body.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

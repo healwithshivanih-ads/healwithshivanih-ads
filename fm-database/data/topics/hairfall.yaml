@@ -1,0 +1,49 @@
+slug: hairfall
+display_name: Hair Loss (Functional Medicine Approach)
+aliases:
+- hair fall
+- alopecia
+- telogen effluvium
+- androgenic alopecia
+- postpartum hair loss
+- thyroid hair loss
+- PCOS hair loss
+summary: Hair loss has multiple root causes including nutrient deficiencies (iron,
+  biotin, zinc, B12, folate), thyroid dysfunction, hormonal imbalance (PCOS, androgenic
+  alopecia, postpartum), and stress (telogen effluvium). A root-cause approach with
+  targeted testing and supplementation is preferred over symptom-only treatment.
+common_symptoms:
+- hair-thinning
+- hair-shedding
+- dry-brittle-hair
+- slow-hair-growth
+- receding-hairline
+red_flags:
+- scarring alopecia — refer to dermatology
+- sudden complete hair loss (alopecia totalis)
+key_mechanisms:
+- hpa-axis-dysregulation
+- thyroid-dysfunction
+- androgen-excess
+- nutrient-deficiency
+related_topics:
+- vitamin-b-complex-deficiency
+- thyroid-health
+- pcos
+coaching_scope_notes: Coaches can support dietary protein, stress management, scalp
+  care, and general nutrient repletion. Hormonal and thyroid root causes require clinician
+  evaluation.
+clinician_scope_notes: Order ferritin, B12, zinc, biotin, folate, TSH, free T3/T4,
+  Anti-TPO, DHT, testosterone, SHBG, LH:FSH, DHEA-S, fasting insulin as indicated
+  by type.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Hairfall Cheatsheet
+  quote: Always personalize supplement choice based on root cause (nutritional, hormonal,
+    stress-related, autoimmune). Avoid symptom-only approaches - address gut, hormones,
+    and nutrient status for sustainable regrowth.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

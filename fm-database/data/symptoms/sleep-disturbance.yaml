@@ -1,0 +1,25 @@
+slug: sleep-disturbance
+display_name: Sleep Disturbances
+aliases:
+- poor sleep
+- waking at night
+- trouble sleeping
+category: sleep
+severity: common
+description: Disrupted sleep patterns, which can both cause and result from GI distress,
+  histamine excess, and HPA axis dysregulation.
+linked_to_topics:
+- gut-brain-axis
+- histamine-intolerance
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- diamine-oxidase-deficiency
+when_to_refer: ''
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: Low Fodmap Diet Symptom Tracker — Section 2
+  quote: Sleep disturbances
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

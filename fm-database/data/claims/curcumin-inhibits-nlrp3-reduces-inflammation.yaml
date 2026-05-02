@@ -1,0 +1,30 @@
+slug: curcumin-inhibits-nlrp3-reduces-inflammation
+statement: Curcumin inhibits NLRP3 inflammasome activation and suppresses IL-1B production,
+  reducing inflammation.
+evidence_tier: strong
+rationale: Multiple cited peer-reviewed studies (Yin et al. J Immunol 2018, Gong et
+  al. Mol Immunol 2018, Zhao et al. Int Immunopharmacol 2019) demonstrate curcumin's
+  NLRP3 inhibition mechanism in vitro and in vivo.
+coaching_translation: Curcumin, found in turmeric, has been studied extensively for
+  its ability to calm the body's inflammatory signaling pathways.
+out_of_scope_notes: Dosing (500–1000 mg 2x daily) requires clinician oversight. Pharmacokinetic
+  herb-drug interactions noted in references.
+linked_to_topics:
+- chronic-inflammation
+- immune-support
+linked_to_supplements:
+- curcumin
+caveats:
+- Bioavailability of standard curcumin is poor; phytosome or piperine-enhanced forms
+  preferred.
+- Source mixes well-studied mechanisms with emerging COVID-19 claims.
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Curcumin has been shown to reduce inflammation and decrease viral activity
+    for COVID-19.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

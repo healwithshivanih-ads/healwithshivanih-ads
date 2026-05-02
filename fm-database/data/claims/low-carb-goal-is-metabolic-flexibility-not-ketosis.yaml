@@ -1,0 +1,25 @@
+slug: low-carb-goal-is-metabolic-flexibility-not-ketosis
+statement: The goal of a low-carb dietary strategy is metabolic flexibility — the
+  ability to switch between fuel sources — not achieving or maintaining ketosis.
+evidence_tier: plausible_emerging
+rationale: A principle-based framing common in FM practice. Metabolic flexibility
+  is a measurable physiological state with growing research support. Framing 'smart-carb'
+  over 'no-carb' helps with patient adherence and avoids unnecessary restriction.
+coaching_translation: The aim isn't to force your body into ketosis forever — it's
+  to teach your body to comfortably use both carbs and fat for fuel, giving you better
+  energy, mood, and metabolic health.
+caveats:
+- Source is expert consensus / synthesis document.
+linked_to_topics:
+- low-carb-diet
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: Functional Wisdom
+  quote: The goal isn't ketosis; it's metabolic flexibility.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

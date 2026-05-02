@@ -1,0 +1,29 @@
+slug: neuropathy
+display_name: Peripheral Neuropathy / Tingling
+aliases:
+- tingling in hands and feet
+- numbness
+- burning sensation
+- pins and needles
+- paresthesia
+category: neurological
+severity: concerning
+description: Tingling, numbness, or burning in extremities; associated with B1, B6,
+  B12 deficiency, and high-dose B6 toxicity (>100mg/day).
+when_to_refer: Persistent or progressive neuropathy requires neurological workup to
+  rule out diabetes, B12 deficiency with subacute combined degeneration.
+linked_to_topics:
+- vitamin-b-complex-deficiency
+linked_to_mechanisms:
+- methylation-cycle-dysfunction
+- mitochondrial-energy-production
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin B1 (Thiamin)
+  quote: Deficiency can lead to poor glucose control; tingling, numbness, or burning
+    in the hands/feet; weakness of eye muscles; rapid heartbeat; loss of coordination;
+    apathy or confusion.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

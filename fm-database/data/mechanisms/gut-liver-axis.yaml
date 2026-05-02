@@ -1,0 +1,36 @@
+slug: gut-liver-axis
+display_name: Gut–Liver Axis
+aliases:
+- gut liver connection
+- enterohepatic circulation
+category: gut
+summary: 'The gut and liver are functionally linked: toxins processed by the liver
+  are released via bile into the intestine for stool excretion; inadequate bowel motility
+  or dysbiosis can allow re-absorption (enterohepatic recirculation) of toxins, increasing
+  body burden. Adequate dietary fiber (>35g/day) and daily bowel movements are critical
+  for toxin elimination.'
+upstream_drivers:
+- constipation
+- dysbiosis
+- leaky-gut
+downstream_effects:
+- increased-toxic-body-burden
+- hepatic-congestion
+related_mechanisms:
+- leaky-gut
+- cytochrome-p450-phase1
+- phase2-conjugation
+linked_to_topics:
+- liver-detoxification
+- toxic-body-burden
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-liver-detox-toolkit
+  location: Sequencing a Detoxification Program
+  quote: The goal of the Detox Food Plan is to create a gut–liver axis of support
+    while lowering the burden on the immune system and providing adequate nourishment
+    through foods and liquids.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

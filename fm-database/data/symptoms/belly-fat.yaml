@@ -1,0 +1,27 @@
+slug: belly-fat
+display_name: Abdominal / Visceral Fat
+aliases:
+- belly fat
+- visceral adiposity
+- central obesity
+- abdominal weight gain
+category: metabolic
+severity: concerning
+description: Excess fat accumulation in the abdominal region, often reflecting elevated
+  fasting insulin and insulin resistance.
+when_to_refer: Refer if BMI >35 or metabolic syndrome criteria met; assess for fatty
+  liver (NAFLD).
+linked_to_topics:
+- insulin-resistance
+- pcos
+linked_to_mechanisms:
+- insulin-resistance
+- hpa-axis-dysregulation
+sources:
+- id: vitaone-blood-sugar-cheatsheet
+  location: Insulin Resistance Cheatsheet — Clinical Symptoms
+  quote: Belly fat, PCOD/PCOS
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

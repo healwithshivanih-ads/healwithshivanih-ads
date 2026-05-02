@@ -1,0 +1,41 @@
+slug: dgl-licorice
+display_name: DGL Licorice (Deglycyrrhizinated Licorice)
+category: herb
+forms_available:
+- tablet
+- capsule
+- powder
+typical_dose_range:
+  tablet:
+    min: 400
+    max: 1600
+    unit: mg
+  capsule:
+    min: 400
+    max: 800
+    unit: mg
+timing_options:
+- morning
+- mid_morning
+- mid_afternoon
+take_with_food: avoid
+linked_to_topics:
+- gerd
+- h-pylori-infection
+- hypochlorhydria
+linked_to_claims:
+- betaine-hcl-corrects-hypochlorhydria
+notes_for_coach: Take before meals for mucosal coating effect. DGL (not whole licorice)
+  — safe for blood pressure. 400mg 2-3x/day before meals for H. pylori and GERD support.
+notes_for_client: DGL licorice is a soothing herb that coats and protects the stomach
+  and esophageal lining — take it before meals for best effect.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-cheatsheet
+  location: H. Pylori Infection Cheatsheet — Antimicrobial Support
+  quote: 'DGL (Deglycyrrhizinated Licorice): 400 mg, 2–3x/day before meals'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

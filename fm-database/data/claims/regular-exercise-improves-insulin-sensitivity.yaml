@@ -1,0 +1,24 @@
+slug: regular-exercise-improves-insulin-sensitivity
+statement: Regular exercise, including aerobic and resistance training, produces sustained
+  improvements in insulin sensitivity and glucose disposal.
+evidence_tier: strong
+rationale: Consensus position reflected in diabetes management guidelines; supported
+  by numerous RCTs and endorsed by the document explicitly.
+coaching_translation: Consistent exercise is one of the most evidence-backed tools
+  for keeping blood sugar balanced long-term.
+linked_to_topics:
+- blood-sugar-dysfunction
+caveats: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-blood-sugar-toolkit
+  location: Antigravity Exercises
+  quote: Regular exercise results in sustained improvements in insulin sensitivity
+    and glucose disposal. Acute bouts of moderate-intensity exercise spread throughout
+    the week are quite beneficial in managing IR and obesity.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,5 +1,5 @@
 slug: brain-fog
-display_name: Brain Fog
+display_name: Brain Fog / Difficulty Concentrating
 aliases:
 - brain fog
 - mental-fog
@@ -10,37 +10,160 @@ aliases:
 - mental fog
 - cognitive fog
 - difficulty concentrating
+- cognitive slowing
+- poor concentration
+- feeling foggy
+- slow thinking
+- cognitive cloudiness
+- mental fatigue
+- poor focus
+- mental cloudiness
+- trouble concentration
+- difficulty focusing
+- fuzzy thinking
+- cloudy thinking
+- cognitive dullness
+- can't think clearly
+- mental fuzziness
+- forgetfulness
+- poor memory
+- cognitive sluggishness
+- reduced mental clarity
+- memory issues
+- cognitive difficulties
 category: neurological
 severity: common
-description: 'Subjective sense of cognitive slowing, difficulty concentrating, word-
-
-  finding problems, or feeling "fuzzy." In FM lens, common drivers are
-
-  inflammation, blood sugar swings, perimenopausal hormone shifts, gut
-
-  dysbiosis (LPS crossing BBB), poor sleep, and thyroid dysfunction.
-
-  '
-when_to_refer: 'Sudden onset; with focal neurological signs; with severe memory loss;
-
-  if interferes significantly with work or daily function.
-
-  '
+description: Impaired mental clarity, focus, and cognitive function, often reported
+  in association with food intolerances, gut dysbiosis, and histamine excess.
+when_to_refer: Progressive cognitive decline, neurological signs (tremors), or sudden
+  onset warrant urgent referral.
 linked_to_topics:
 - perimenopause
 - thyroid
 - microbiome
 - inflammation
+- adrenal-dysfunction
+- hpa-axis-dysregulation
+- methylation-mthfr
+- liver-detoxification
+- heavy-metal-toxicity
+- low-dose-naltrexone
+- autoimmune-thyroiditis
+- cognitive-decline
+- low-carb-diet
+- leaky-gut
+- candida-overgrowth
+- sibo
+- gut-dysbiosis
+- chronic-inflammation
+- autoimmune-disease
+- food-sensitivity
+- vitamin-b-complex-deficiency
+- nutrient-deficiency-depression
+- hypothyroidism
+- t3-conversion-disorder
+- insulin-resistance
+- blood-sugar-dysfunction
+- hashimotos-hypothyroidism
+- anti-inflammatory-diet
+- vitamin-b12-deficiency
+- folate-deficiency
+- mitochondrial-health-nutrition
+- essential-fatty-acids
+- toxic-body-burden
+- elimination-diet
+- gluten-sensitivity
+- histamine-intolerance
+- gut-brain-axis
 linked_to_mechanisms:
 - chronic-inflammation
 - leaky-gut
 - estrogen-decline
+- t4-to-t3-conversion-block
+- reverse-t3-elevation
+- hpa-axis-dysregulation
+- dopaminergic-downregulation
+- impaired-methylation
+- glutathione-depletion
+- tlr4-microglial-inhibition
+- mitochondrial-efficiency
+- ketone-metabolism
+- systemic-inflammation
+- lps-signaling
+- gut-brain-axis-dysregulation
+- nf-kb-activation
+- lps-endotoxemia
+- gut-dysbiosis
+- methylation-cycle-dysfunction
+- neurotransmitter-synthesis-impairment
+- neuroinflammation
+- impaired-t4-to-t3-conversion
+- reverse-t3-dominance
+- insulin-resistance
+- thyroid-hormone-conversion
+- cytokine-dysregulation
+- oxidative-stress
+- mitochondrial-atp-production
+- homocysteine-metabolism
+- endocrine-disruption
+- gut-barrier-dysfunction
+- immune-food-reactivity
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Brain Fog cluster
 - id: thurlow-microbiome-mondays
   location: Sessions 1, 5 — gut-brain
-version: 1
+- id: vitaone-thyroid-cheatsheet
+  location: Biohacking Thyroid Function Cheatsheet — Thyroid Dysfunction Symptoms
+  quote: Cognitive slowing, brain fog
+- id: vitaone-adrenal-cheatsheet
+  location: How Digital Overstimulation Blunts Emotional Awareness — Mechanism 5 (p.14)
+  quote: Brain fog, fatigue, irritability, and mood instability.
+- id: vitaone-liver-detox-cheatsheet
+  location: Top Superfoods for Detoxification
+  quote: Use in metal toxicity, brain fog, fatigue.
+- id: vitaone-ldn-article
+  location: LDN potential side effects
+  quote: 'Central Nervous System: Anxiety, Drowsiness, Headache, Insomnia, Vivid Dreams,
+    Mood Change, Trouble Concentration'
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: Functional Medicine Clinical Applications
+  quote: Enhances ketone supply to brain
+- id: vitaone-gut-cheatsheet
+  location: 100 Gut Symptoms — Systemic Manifestations
+  quote: Brain fog — Leaky gut — Endotoxins cross BBB — Glutamine + NAC + probiotics
+- id: vitaone-inflammation-cheatsheet
+  location: Inflammation Cheatsheet — Page 02
+  quote: Neuro – Brain fog, mood issues, poor sleep
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamins & Minerals Your Patient's Body Might Be Crying Out For
+  quote: Neuropathy, brain fog, fatigue
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 7: Impact of Thyroid Diseases on the Whole Body'
+  quote: Brain fog, depression, neuropathy
+- id: vitaone-blood-sugar-ebook
+  location: Section 4.2.1 — Compensated Insulin Resistance (Early IR)
+  quote: Post-meal fatigue, sugar cravings, brain fog, mild weight gain around the
+    abdomen.
+- id: vitaone-thyroid-toolkit
+  location: Symptoms of Hashimoto's Hypothyroidism
+  quote: Memory Issues and Brain Fog
+- id: vitaone-inflammation-toolkit
+  location: Anti Inflammatory Diet — Benefits of Following an Anti-Inflammatory Diet
+  quote: Reduction in brain fog and improvement in mood disorders like depression
+    and anxiety.
+- id: vitaone-nutrition-toolkit
+  location: Nutrients for Mitochondrial Health
+  quote: Studies also indicate that supplementing with omega-3 fatty acids can enhance
+    cognitive function.
+- id: vitaone-liver-detox-toolkit
+  location: Detox Food Plan — Body Burden
+  quote: Medical researchers are recognizing more symptoms related to the buildup
+    of toxins, including... cognitive difficulties.
+- id: vitaone-elimination-diet-toolkit
+  location: Low Fodmap Diet Symptom Tracker — Section 2
+  quote: Brain fog / difficulty concentrating
+version: 16
 status: active
-updated_at: 2026-04-29
+updated_at: '2026-05-02'
 updated_by: shivani

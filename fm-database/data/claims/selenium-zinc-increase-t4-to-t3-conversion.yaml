@@ -1,0 +1,29 @@
+slug: selenium-zinc-increase-t4-to-t3-conversion
+statement: Selenium and zinc increase the conversion of T4 to active T3, supporting
+  thyroid hormone availability at the cellular level.
+evidence_tier: strong
+rationale: 'Well-established: deiodinase enzymes responsible for T4→T3 conversion
+  are selenoproteins; zinc supports deiodinase activity. Documented in peer-reviewed
+  literature and represented in this document.'
+coaching_translation: Ensuring adequate selenium and zinc through diet or supplementation
+  supports your body's ability to convert inactive thyroid hormone (T4) into the active
+  form (T3).
+caveats:
+- Source is an educational toolkit; no specific primary study cited for this claim.
+  Mechanism is well-established in biochemistry literature.
+linked_to_topics:
+- hypothyroidism
+- hashimotos-hypothyroidism
+linked_to_supplements:
+- selenium
+- zinc
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-toolkit
+  location: Factors that Affect Thyroid Function
+  quote: 'Factors that increase conversion of T4 to T3: Selenium, Zinc.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

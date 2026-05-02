@@ -1,0 +1,25 @@
+slug: flatulence
+display_name: Gas / Flatulence
+aliases:
+- wind
+- passing gas
+- farting
+- excessive gas
+category: gi
+severity: common
+description: Excessive intestinal gas production from bacterial fermentation of undigested
+  carbohydrates, leading to frequent or uncomfortable passage of gas.
+linked_to_topics:
+- low-fodmap-diet
+- elimination-diet
+linked_to_mechanisms:
+- colonic-fermentation
+when_to_refer: ''
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: Low Fodmap Diet Symptom Tracker — Section 1
+  quote: Gas / flatulence
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

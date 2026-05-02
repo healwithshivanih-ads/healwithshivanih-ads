@@ -1,0 +1,29 @@
+slug: curcumin-nfkb-inhibition-gut-inflammation
+statement: Curcumin inhibits NF-κB signaling, reducing gut-driven chronic pain, inflammation,
+  and autoimmune activation.
+evidence_tier: plausible_emerging
+rationale: Curcumin's NF-κB inhibitory properties are supported by multiple in vitro
+  and some clinical studies. Bioavailability is a key limitation requiring formulation
+  consideration (liposomal, piperine-enhanced).
+coaching_translation: Curcumin (the active compound in turmeric) works at the root
+  of inflammation by switching off an inflammatory signal in cells — look for high-absorption
+  forms.
+caveats:
+- Bioavailability of standard curcumin is poor — recommend enhanced formulations.
+  Source is educational synthesis.
+linked_to_topics:
+- leaky-gut
+- ibd
+- gut-dysbiosis
+linked_to_supplements:
+- curcumin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Leaky Gut & Inflammation — Supplement Strategy
+  quote: Curcumin — NF-κB inhibition — Chronic pain & autoimmune
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

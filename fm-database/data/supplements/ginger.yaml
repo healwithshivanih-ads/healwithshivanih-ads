@@ -1,0 +1,34 @@
+slug: ginger
+display_name: Ginger
+category: herb
+forms_available:
+- capsule
+- tablet
+- liquid
+- powder
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- gerd
+- gut-dysfunction
+linked_to_claims:
+- ginger-modulates-gi-transit
+notes_for_coach: Listed as a 'transit time modulator' in the PPI taper supplement
+  protocol. Also widely used for nausea and bloating.
+notes_for_client: Ginger can help with nausea and supports healthy gut motility. It
+  can be used fresh in cooking, as tea, or in supplement form.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
+    — Supplement recommendations'
+  quote: 'Transit time modulators: Iberogast, D-limonene, ginger, probiotics, triphala'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

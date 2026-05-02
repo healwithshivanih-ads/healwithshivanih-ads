@@ -1,0 +1,48 @@
+slug: vitamin-e
+display_name: Vitamin E (Tocopherols)
+category: vitamin
+forms_available:
+- capsule
+- liquid
+- tablet
+timing_options:
+- with_breakfast
+- with_dinner
+- with_lunch
+take_with_food: required
+linked_to_topics:
+- nafld
+- liver-detoxification
+- gerd
+- gut-dysfunction
+- mercury-amalgam-removal
+linked_to_claims:
+- vitamin-e-antioxidant-nafld
+- vitamin-e-antioxidant-gi-protection
+- selenium-vitamin-e-antioxidant-support-detox
+notes_for_coach: Fat-soluble antioxidant listed as Phase I protective nutrient. Mixed
+  tocopherol forms preferred. High doses may interact with anticoagulants.
+notes_for_client: Vitamin E protects cell membranes from oxidative damage — take it
+  with a meal containing fat for best absorption.
+evidence_tier: plausible_emerging
+typical_dose_range:
+  capsule:
+    min: 200
+    max: 400
+    unit: mg
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Liver Disease Cheatsheet — NAFLD
+  quote: Omega-3, Vitamin E, Berberine, NAC
+- id: vitaone-gut-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
+    — Supplement recommendations'
+  quote: 'Antioxidants: Artemisia asiatica, curcumin, quercetin, vitamin E'
+- id: vitaone-liver-detox-toolkit
+  location: Dental Amalgam Removal Protocol — Pre-Procedure
+  quote: 'Vitamin E: 200–400 IU'
+version: 3
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

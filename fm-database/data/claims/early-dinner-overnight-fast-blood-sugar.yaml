@@ -1,0 +1,24 @@
+slug: early-dinner-overnight-fast-blood-sugar
+statement: Recommending early dinner and 12–14 hours of overnight fasting supports
+  improved insulin sensitivity and metabolic health.
+evidence_tier: plausible_emerging
+rationale: Time-restricted eating (TRE) aligned with circadian biology has emerging
+  evidence for improving insulin sensitivity, fasting glucose, and TG levels. RCTs
+  are early-stage; not yet consensus.
+coaching_translation: Finishing dinner by 7pm and not eating until 7–9am gives your
+  body a metabolic reset overnight — this simple timing shift can improve blood sugar
+  levels.
+linked_to_topics:
+- insulin-resistance
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-blood-sugar-cheatsheet
+  location: Insulin Resistance Cheatsheet — Therapeutic Considerations
+  quote: 'Meal Timing: Recommend early dinner & 12–14 hr overnight fasting'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

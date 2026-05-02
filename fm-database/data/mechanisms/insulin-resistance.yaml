@@ -1,47 +1,235 @@
 slug: insulin-resistance
 display_name: Insulin Resistance
 aliases:
-  - hyperinsulinemia
-  - blood-sugar-instability
-  - metabolic-dysfunction
+- hyperinsulinemia
+- blood-sugar-instability
+- metabolic-dysfunction
+- impaired insulin signaling
+- metabolic insulin resistance
+- glucose dysregulation
+- metabolic syndrome
+- impaired insulin signalling
+- peripheral insulin resistance
+- cellular insulin insensitivity
+- impaired glucose metabolism
+- impaired insulin sensitivity
+- hyperinsulinaemia
+- IR
+- metabolic inflammation
+- poor insulin sensitivity
+- dysglycemia
+- blood sugar dysregulation
+- IRS-1 pathway dysfunction
+- GLUT-4 translocation failure
+- tissue insulin unresponsiveness
 category: metabolic
-summary: |
-  Reduced cellular responsiveness to insulin (especially at muscle, liver,
-  adipose), driving compensatory hyperinsulinemia long before fasting glucose
-  rises. The single most important upstream driver of metabolic syndrome,
-  PCOS phenotype 1, midlife weight gain, NAFLD, and cardiovascular disease
-  in modern populations. Insulin elevation precedes HbA1c diagnosis by
-  ~10 years.
+summary: Reduced cellular response to insulin leading to elevated blood glucose and
+  compensatory hyperinsulinemia. Intermittent fasting protocols and low-glycemic diets
+  may improve insulin sensitivity.
 upstream_drivers:
-  - chronic carbohydrate excess (especially refined)
-  - sedentary lifestyle (reduced muscle glucose disposal)
-  - poor sleep
-  - chronic stress (cortisol)
-  - visceral adiposity
-  - inflammation
-  - perimenopausal estrogen decline
+- chronic carbohydrate excess (especially refined)
+- sedentary lifestyle (reduced muscle glucose disposal)
+- poor sleep
+- chronic stress (cortisol)
+- visceral adiposity
+- inflammation
+- perimenopausal estrogen decline
+- high-glycemic-diet
+- chronic-stress
+- poor-sleep
+- sedentary-lifestyle
+- excess-adiposity
+- chronic-cortisol-elevation
+- hpa-axis-dysregulation
+- inflammatory-cytokines
+- low-adiponectin
+- chronic-inflammation
+- leaky-gut
+- mitochondrial-dysfunction
+- high-refined-carb-diet
+- high-fructose-intake
+- obesity
+- high-carbohydrate-diet
+- visceral-adiposity
+- poor-diet
+- gut-dysbiosis
+- magnesium-deficiency
+- chromium-deficiency
+- high-androgen-state
+- visceral-adipose-inflammation
+- micronutrient-deficiency-chromium-magnesium-vitd
+- high-glycaemic-diet
+- physical-inactivity
+- sleep-deprivation
+- westernised-diet
+- micronutrient-deficiency
+- sedentary lifestyle
+- high glycemic diet
+- metabolic syndrome
+- abdominal-obesity
+- excess caloric intake
+- physical inactivity
+- chronic inflammation
 downstream_effects:
-  - elevated triglycerides, low HDL (TG:HDL > 2-3)
-  - small dense LDL
-  - hepatic de novo lipogenesis → NAFLD
-  - androgen excess in women → PCOS phenotype
-  - inflammation amplification
-  - eventual β-cell exhaustion → T2D
+- elevated triglycerides, low HDL (TG:HDL > 2-3)
+- small dense LDL
+- hepatic de novo lipogenesis → NAFLD
+- androgen excess in women → PCOS phenotype
+- inflammation amplification
+- eventual β-cell exhaustion → T2D
+- elevated-androgens-pcos
+- low-shbg
+- anovulation
+- low-testosterone-men
+- aromatase-overactivity
+- weight-gain
+- visceral-fat
+- pcos
+- type-2-diabetes
+- leptin-resistance
+- elevated-fasting-insulin
+- hyperglycaemia
+- dyslipidaemia
+- fatty-liver
+- elevated-triglycerides
+- low-hdl
+- small-dense-ldl
+- elevated-apob
+- hepatic-fat-accumulation
+- systemic-inflammation
+- nafld
+- metabolic-syndrome
+- nf-kb-activation
+- elevated-crp
+- immune-suppression
+- cardiovascular-risk
+- blood-sugar-dysregulation
+- sugar-cravings
+- metabolic-joint-pain
+- hair-loss
+- compensatory-hyperinsulinaemia
+- pancreatic-beta-cell-dysfunction
+- hypertension
+- advanced-glycation-end-products
+- hyperinsulinemia
+- prediabetes
+- impaired estrogen metabolism
+- low SHBG
+- estrogen dominance
+- increased DHT
+- atherosclerosis
+- elevated-fibrinogen
+- elevated fasting glucose
+- elevated triglycerides
+- type 2 diabetes risk
+- metabolic syndrome
 related_mechanisms:
-  - hpa-axis-dysregulation
-  - chronic-inflammation
-  - visceral-adiposity
+- hpa-axis-dysregulation
+- chronic-inflammation
+- visceral-adiposity
+- aromatase-overactivity
+- leaky-gut
+- gut-dysbiosis
+- oxidative-stress
+- hepatic-lipid-accumulation
+- metabolic-flexibility
+- hepatic-lipogenesis
+- systemic-inflammation
+- nf-kb-activation
+- lps-endotoxemia
+- gut-barrier-dysfunction
+- pancreatic-beta-cell-dysfunction
+- advanced-glycation-end-products
+- skeletal-muscle-glucose-uptake
+- hepatic-insulin-sensitivity
+- hepatic-estrogen-detoxification
+- shbg-hormone-binding
+- atherosclerosis
 linked_to_topics:
-  - pcos
-  - perimenopause
-  - inflammation
+- pcos
+- perimenopause
+- inflammation
+- estrogen-dominance
+- adrenal-dysfunction
+- insulin-resistance
+- dysbiosis
+- dyslipidemia
+- nafld
+- liver-detoxification
+- low-carb-diet
+- metabolic-syndrome
+- chronic-inflammation
+- fasting-immune-health
+- hairfall
+- knee-pain
+- blood-sugar-dysfunction
+- type-2-diabetes
+- estrogen-metabolism
+- sex-hormone-binding-globulin
+- cardiovascular-dysfunction
+- drug-induced-nutrient-depletion
+- cardiometabolic-health
+- intermittent-fasting
 sources:
-  - id: vitaone-evidence-tiers
-    location: TOPIC 2 Insulin Resistance & Diabetes
-  - id: vitaone-skill-practice-guide
-    location: practice_guide.md, Metabolic section
+- id: vitaone-evidence-tiers
+  location: TOPIC 2 Insulin Resistance & Diabetes
+- id: vitaone-skill-practice-guide
+  location: practice_guide.md, Metabolic section
+- id: vitaone-sex-hormones-cheatsheet
+  location: PCOD Cheatsheet — Key Mediators
+  quote: Hyperinsulinemia → stimulates theca cells → ↑ androgens; Low SHBG → ↑ free
+    testosterone.
+- id: vitaone-adrenal-cheatsheet
+  location: Stress & Chronic Diseases Link (p.9)
+  quote: 'Chronic cortisol elevation →↑ gluconeogenesis, insulin resistance. Key Mechanisms:
+    HPA axis overdrive, sympathetic dominance, inflammatory cytokines.'
+- id: vitaone-blood-sugar-cheatsheet
+  location: Insulin Resistance Cheatsheet — Therapeutic Considerations
+  quote: Resistance Training improves GLUT4 receptor expression
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 2
+  quote: Dyslipidemia is rarely primary → Often secondary to Insulin resistance, Hypothyroidism,
+    NAFLD, Chronic stress & cortisol excess, Poor sleep.
+- id: vitaone-liver-detox-cheatsheet
+  location: Liver Disease Cheatsheet
+  quote: Insulin resistance, high fructose/sugar intake, obesity, inflammation
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: The Science of Low-Carb Diets
+  quote: Reducing carbohydrates lowers postprandial glucose → lowers insulin → promotes
+    fat mobilization.
+- id: vitaone-inflammation-cheatsheet
+  location: Fasting & Immune Health Link — Page 15
+  quote: 'Improved insulin sensitivity: Stable blood sugar → Better immune signaling
+    → Metabolic-immune link'
+- id: vitaone-nutrition-cheatsheet
+  location: Magnesium – The Calming Mineral
+  quote: Stabilizes blood sugar by aiding insulin signaling.
+- id: vitaone-blood-sugar-ebook
+  location: Section 2.3 — Cellular Glucose Uptake and Intracellular Metabolism
+  quote: Insulin binds to its receptor on target cells (muscle, adipose, liver), initiating
+    a signalling cascade (IRS-1 → PI3K → Akt) that translocates GLUT-4 transporters
+    to the cell surface, thereby permitting glucose entry.
+- id: vitaone-blood-sugar-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: Insulin resistance causes the body to make more and more insulin in order
+    to keep blood sugars in a healthy range. Over time, the body's ability to produce
+    higher amounts of insulin is exhausted, which can lead to the development of prediabetes,
+    and eventually, type 2 diabetes.
+- id: vitaone-sex-hormones-toolkit
+  location: Estrogen Metabolism — Disrupts Healthy Estrogen Metabolism — Page 03
+  quote: Insulin Resistance and obesity impair estrogen metabolism. Estrogen is believed
+    to positively influence insulin sensitivity and weight, but conversely, insulin
+    resistance and obesity are thought to negatively influence estrogen metabolism.
+- id: vitaone-cv-toolkit
+  location: CVD Risk Analysis — Lab Results
+  quote: Insulin resistance increases risk
+- id: vitaone-cardiometabolic-toolkit
+  location: Intermittent Fasting — Who Benefits from Fasting?
+  quote: Shorter-duration human & animal studies show that fasting may be beneficial
+    for insulin resistance, blood sugar, blood pressure, inflammation, short-term
+    weight loss, and brain health.
 evidence_tier: strong
-version: 1
+version: 14
 status: active
-updated_at: 2026-04-29
+updated_at: '2026-05-02'
 updated_by: shivani

@@ -1,0 +1,29 @@
+slug: lps-dysbiosis-insulin-resistance
+statement: LPS released from gut dysbiosis enters circulation and increases insulin
+  resistance by triggering systemic inflammation.
+evidence_tier: plausible_emerging
+rationale: Endotoxemia-driven insulin resistance is well-described in animal models
+  and has mechanistic human data (elevated LPS associated with metabolic syndrome),
+  but causal interventional evidence in humans is still emerging.
+coaching_translation: An imbalanced gut microbiome can leak bacterial toxins into
+  the bloodstream, quietly raising inflammation and making insulin resistance worse.
+linked_to_topics:
+- dysbiosis
+- insulin-resistance
+linked_to_mechanisms:
+- leaky-gut
+- chronic-inflammation
+- insulin-resistance
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Gut Dysbiosis
+    / Endotoxemia
+  quote: LPS from dysbiosis increases insulin resistance. Support microbiota diversity
+    and SCFA production.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

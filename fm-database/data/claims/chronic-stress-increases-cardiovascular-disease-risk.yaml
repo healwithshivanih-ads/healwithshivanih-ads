@@ -1,0 +1,27 @@
+slug: chronic-stress-increases-cardiovascular-disease-risk
+statement: Chronic stress increases the risk of heart disease, high blood pressure,
+  and stroke.
+evidence_tier: strong
+rationale: 'Cited reference: Wirtz PH, von Känel R. Psychological Stress, Inflammation,
+  and Coronary Heart Disease. Curr Cardiol Rep. 2017;19(11):111. Also supported by
+  APA and CDC references in document.'
+coaching_translation: Long-term stress is hard on your heart. Managing stress daily
+  is a direct investment in your heart health.
+caveats:
+- Source is a clinical toolkit synthesizing multiple references; direct RCT not quoted
+  but peer-reviewed citations provided.
+linked_to_topics:
+- chronic-stress
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-adrenal-toolkit
+  location: Effects of Chronic Stress
+  quote: People who report higher levels of chronic stress are more likely to develop
+    heart disease, depression, diabetes, dementia, cancer, digestive symptoms, and
+    more.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

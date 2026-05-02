@@ -1,0 +1,31 @@
+slug: coq10-carnitine-support-mitochondrial-repair
+statement: CoQ10, alpha-lipoic acid, and carnitine support mitochondrial repair and
+  are useful in autoimmune fatigue and post-viral recovery.
+evidence_tier: plausible_emerging
+rationale: Mitochondrial dysfunction in autoimmune fatigue is increasingly recognized.
+  These nutrients are mechanistic cofactors for electron transport chain function
+  and antioxidant defense. Clinical evidence for this combination in autoimmune fatigue
+  is emerging.
+coaching_translation: If your client has deep fatigue alongside autoimmune issues,
+  mitochondrial support (CoQ10, carnitine) can be a helpful complement to the anti-inflammatory
+  protocol.
+caveats:
+- Source is educational synthesis.
+- Carnitine dosing and alpha-lipoic acid protocols require clinician oversight in
+  complex cases.
+linked_to_topics:
+- autoimmune-disease
+- chronic-inflammation
+- fasting-immune-health
+linked_to_supplements:
+- coq10
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Autoimmune Disease Cheatsheet — Page 25
+  quote: CoQ10, ALA, and carnitine support mitochondrial repair.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,30 @@
+slug: l-arginine
+display_name: L-Arginine
+category: amino_acid
+forms_available:
+- capsule
+- powder
+evidence_tier: plausible_emerging
+notes_for_coach: Listed as nutraceutical support during beta blocker tapering. L-arginine
+  is a precursor to nitric oxide, which supports vascular tone. Specific dosing requires
+  clinician guidance.
+notes_for_client: L-arginine is an amino acid involved in blood vessel relaxation.
+  Use only as directed by your clinician.
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- beta-blocker-deprescribing
+- cardiovascular-dysfunction
+typical_dose_range: {}
+linked_to_mechanisms: []
+linked_to_claims: []
+sources:
+- id: vitaone-cv-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
+  quote: Arginine
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,26 @@
+slug: probiotics-should-follow-sibo-eradication
+statement: Probiotics should generally be introduced after the eradication phase in
+  SIBO, not during, to avoid exacerbating fermentation.
+evidence_tier: fm_specific_thin
+rationale: FM clinical consensus — some evidence that adding probiotics during active
+  SIBO may worsen fermentation symptoms. Standard FM protocol sequences probiotics
+  post-eradication. Limited direct RCT evidence.
+coaching_translation: Timing matters with probiotics — starting them too early when
+  bacteria are still overgrown can make bloating worse before it gets better.
+caveats:
+- FM clinical consensus, limited direct RCT evidence. Individual tolerance varies.
+linked_to_topics:
+- sibo
+- gut-dysbiosis
+linked_to_supplements:
+- broad-spectrum-probiotics
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-cheatsheet
+  location: SIBO Cheatsheet — Best Practices
+  quote: Probiotics usually after eradication, not during.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

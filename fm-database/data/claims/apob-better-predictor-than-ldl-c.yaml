@@ -1,0 +1,27 @@
+slug: apob-better-predictor-than-ldl-c
+statement: ApoB is a better predictor of cardiovascular disease risk than LDL-C and
+  directly measures atherogenic particle number.
+evidence_tier: plausible_emerging
+rationale: Document states ApoB is a 'better predictor than LDL-C' and a 'direct measure
+  of atherogenic particles.' Supported by emerging lipidology consensus but sourced
+  from a synthesis cheatsheet, not a primary RCT.
+coaching_translation: Standard cholesterol tests don't tell the whole story — ApoB
+  measures the actual number of harmful particles in the blood, which matters more
+  for heart risk.
+caveats:
+- Source is an expert synthesis cheatsheet, not primary literature. Verify specific
+  cut-offs with clinician.
+- ApoB testing requires clinician order and interpretation.
+linked_to_topics:
+- dyslipidemia
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 3
+  quote: ApoB — Direct measure of atherogenic particles — Better predictor than LDL-C.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

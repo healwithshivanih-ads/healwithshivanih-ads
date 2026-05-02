@@ -1,0 +1,37 @@
+slug: hpt-axis-dysregulation
+display_name: HPT Axis Dysregulation
+aliases:
+- hypothalamic-pituitary-thyroid axis dysfunction
+- HPAT dysregulation
+category: endocrine
+summary: The Hypothalamic-Pituitary-Thyroid (HPT) axis is the central regulatory loop
+  for thyroid hormone production. The hypothalamus releases TRH → pituitary secretes
+  TSH → thyroid produces T4/T3. Negative feedback keeps balance. Disruption by stress,
+  inflammation, or pituitary damage impairs thyroid output.
+upstream_drivers:
+- chronic-stress
+- hpa-axis-dysregulation
+- pituitary-dysfunction
+- poor-sleep
+downstream_effects:
+- subclinical-hypothyroidism
+- overt-hypothyroidism
+- impaired-t4-to-t3-conversion
+related_mechanisms:
+- hpa-axis-dysregulation
+- impaired-t4-to-t3-conversion
+linked_to_topics:
+- hypothyroidism
+- hyperthyroidism
+- t3-conversion-disorder
+evidence_tier: strong
+sources:
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 1: Anatomy and Physiology'
+  quote: The thyroid does not work alone, it is part of the Hypothalamic-Pituitary-Thyroid
+    (HPT) axis. This feedback loop keeps thyroid activity balanced, preventing both
+    under- and overactivity.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

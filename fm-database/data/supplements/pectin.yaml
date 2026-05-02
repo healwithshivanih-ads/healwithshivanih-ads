@@ -1,0 +1,30 @@
+slug: pectin
+display_name: Pectin
+category: other
+forms_available:
+- powder
+- capsule
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- gerd
+- gut-dysfunction
+linked_to_claims:
+- pectin-protects-gi-lining
+notes_for_coach: Listed under 'Protect' in the PPI taper protocol. A soluble fiber
+  with gut-lining protective properties.
+evidence_tier: fm_specific_thin
+typical_dose_range: {}
+linked_to_mechanisms: []
+notes_for_client: ''
+sources:
+- id: vitaone-gut-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
+    — Supplement recommendations'
+  quote: 'Protect: Alginate, pectin, DGL, slippery elm'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

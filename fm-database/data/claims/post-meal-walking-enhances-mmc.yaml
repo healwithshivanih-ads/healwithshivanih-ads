@@ -1,0 +1,27 @@
+slug: post-meal-walking-enhances-mmc
+statement: Post-meal walking and Vajrasana (kneeling pose) for 10 minutes improves
+  diaphragm movement, enhances the migrating motor complex (MMC), and reduces bloating
+  and gas.
+evidence_tier: plausible_emerging
+rationale: Physical activity post-meal is associated with improved gastric emptying
+  and MMC activity in small studies; Vajrasana has traditional Ayurvedic evidence
+  and emerging physiological plausibility.
+coaching_translation: A 10-minute gentle walk or kneeling sit after meals can significantly
+  reduce post-meal bloating by keeping things moving through your gut.
+linked_to_topics:
+- low-fodmap-diet
+- gut-brain-axis
+linked_to_mechanisms:
+- gut-motility-dysregulation
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: FODMAP Plan SOS Solutions — Bloating and Gas
+  quote: 10-Min Post-Meal Vajrasana and walking. Improves diaphragm movement → gas
+    release. Enhances MMC (migrating motor complex).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

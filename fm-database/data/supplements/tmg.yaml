@@ -1,0 +1,32 @@
+slug: tmg
+display_name: TMG (Trimethylglycine / Betaine)
+category: other
+forms_available:
+- capsule
+- tablet
+- powder
+timing_options:
+- with_breakfast
+- with_lunch
+take_with_food: required
+linked_to_topics:
+- methylation-mthfr
+- liver-detoxification
+linked_to_claims:
+- tmg-homocysteine-lowering-methylation
+notes_for_coach: TMG (betaine) is a methyl donor that supports homocysteine clearance
+  via the BHMT pathway — an alternative methylation route. Useful alongside folate/B12.
+  Clinician verification of dosing recommended.
+notes_for_client: TMG (trimethylglycine) acts as a methyl donor to help lower homocysteine
+  and support liver and methylation health.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet — Foundational Support
+  quote: Choline, Betaine (TMG) for homocysteine metabolism
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

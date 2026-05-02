@@ -1,0 +1,36 @@
+slug: riboflavin-b2
+display_name: Vitamin B2 (Riboflavin)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 2
+    max: 400
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+take_with_food: required
+linked_to_topics:
+- vitamin-b-complex-deficiency
+linked_to_claims:
+- riboflavin-fat-metabolism-signal
+- riboflavin-400mg-migraine-reduction
+notes_for_coach: 'Preferred form: Riboflavin-5''-phosphate (active coenzyme form).
+  Typical maintenance 2–5 mg/day; 200–400 mg/day for migraine (clinician-supervised).
+  Urine turns bright yellow — reassure clients this is normal.'
+notes_for_client: This B vitamin is best taken with food. Your urine may turn bright
+  yellow — that's normal and harmless.
+evidence_tier: strong
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin B2 (Riboflavin)
+  quote: Riboflavin-5'-phosphate is the preferred active supplement form; taken with
+    meals.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

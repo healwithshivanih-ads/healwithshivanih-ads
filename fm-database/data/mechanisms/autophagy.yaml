@@ -1,0 +1,35 @@
+slug: autophagy
+display_name: Autophagy
+aliases:
+- cellular autophagy
+- autophagic flux
+- cellular cleanup
+category: metabolic
+summary: Cellular self-cleaning process triggered by fasting, caloric restriction,
+  and mTOR suppression. Clears damaged organelles and proteins, improves immune surveillance,
+  reduces infection risk, and supports immune cell renewal.
+upstream_drivers:
+- fasting
+- caloric-restriction
+- mtor-suppression
+- ampk-activation
+downstream_effects:
+- improved-immune-surveillance
+- reduced-inflammation
+- infection-resilience
+related_mechanisms:
+- mtor-suppression
+- ampk-activation
+linked_to_topics:
+- fasting-immune-health
+- chronic-inflammation
+evidence_tier: strong
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Fasting & Immune Health Link — Page 15
+  quote: 'Autophagy activation: Clearance of damaged cells → Improved immune efficiency
+    → Infection resilience'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

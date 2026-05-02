@@ -1,0 +1,41 @@
+slug: vitamin-d3-k2
+display_name: Vitamin D3 + K2
+category: vitamin
+forms_available:
+- capsule
+- tablet
+- liquid
+- gummy
+typical_dose_range:
+  capsule:
+    min: 1000
+    max: 5000
+    unit: mcg
+timing_options:
+- with_breakfast
+- with_lunch
+take_with_food: required
+linked_to_topics:
+- chronic-inflammation
+- autoimmune-disease
+- psoriasis
+linked_to_claims:
+- vitamin-d-critical-for-treg-function
+- vitamin-d-k2-immune-tolerance
+notes_for_coach: Always combine D3 with K2 (MK-7 form, 100–200mcg) to prevent vascular
+  calcification. Take with the largest fat-containing meal. Standard coaching doses
+  1000–5000 IU; HIGH doses (30,000+ IU) in psoriasis/autoimmunity are clinician-only
+  (Coimbra Protocol).
+notes_for_client: Vitamin D3 and K2 work together — D3 for immune function, K2 to
+  direct calcium to bones and away from arteries. Take with your largest meal of the
+  day.
+evidence_tier: strong
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Inflammation Cheatsheet — Page 02
+  quote: Vitamin D3 + K2
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

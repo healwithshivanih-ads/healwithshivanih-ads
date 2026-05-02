@@ -1,0 +1,28 @@
+slug: quercetin-antiviral-inhibits-influenza-entry
+statement: Quercetin acts as an antiviral agent, inhibiting influenza A virus entry
+  and decreasing viral growth.
+evidence_tier: plausible_emerging
+rationale: Cited study (Wu et al. Viruses 2015) demonstrates quercetin inhibits IAV
+  entry in vitro. Systematic review (Somerville et al. Adv Nutr 2016) supports flavonoid
+  effect on upper respiratory infections. Evidence is promising but limited in humans.
+coaching_translation: Quercetin, a natural compound in fruits and vegetables, may
+  help slow the spread of viruses in the body.
+out_of_scope_notes: Specific dosing requires clinician guidance.
+linked_to_topics:
+- immune-support
+- chronic-inflammation
+linked_to_supplements:
+- quercetin
+caveats:
+- Most antiviral evidence is in vitro or animal models. Human RCT data limited.
+- Source is expert consensus toolkit.
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Quercetin is found in fruits and vegetables and has a wide range of benefits,
+    including decreasing viral growth.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

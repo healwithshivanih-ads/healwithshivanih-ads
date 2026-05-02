@@ -232,6 +232,15 @@ def stage(
     by_type = result.by_type()
     for entity in ("topics", "mechanisms", "symptoms", "claims", "supplements"):
         for raw in by_type.get(entity, []):
+            # Defensive: LLM occasionally emits a string or other non-dict
+            # in an entity slot. Don't crash the whole batch — record + skip.
+            if not isinstance(raw, dict):
+                manifest["entries"].append({
+                    "entity": entity, "slug": None, "status": "rejected",
+                    "reason": f"LLM emitted {type(raw).__name__} (expected dict)",
+                    "raw_sample": str(raw)[:120],
+                })
+                continue
             slug = raw.get("slug")
             if not slug:
                 manifest["entries"].append({

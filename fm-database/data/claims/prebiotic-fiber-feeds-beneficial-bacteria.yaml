@@ -1,0 +1,29 @@
+slug: prebiotic-fiber-feeds-beneficial-bacteria
+statement: Prebiotics — dietary fibers found in garlic, leeks, onions, chicory, oats,
+  barley, flax, wheat, and FOS supplements — selectively stimulate the growth of beneficial
+  gut microorganisms.
+evidence_tier: strong
+rationale: Prebiotic fermentation by gut microbiota is well-established mechanistically
+  and in human trials. Inulin and FOS are among the most studied.
+coaching_translation: Feeding your good gut bacteria with prebiotic foods (garlic,
+  onions, oats, bananas) is like fertilizing a garden — it helps beneficial microbes
+  thrive.
+linked_to_topics:
+- gut-microbiome
+- gut-dysfunction
+- gut-brain-axis
+linked_to_supplements:
+- fructooligosaccharides
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-toolkit
+  location: The 5R Framework for Gut Restoration — Reinoculate
+  quote: Prebiotics are food ingredients that selectively stimulate the growth of
+    beneficial microorganisms already in the colon. In other words, prebiotics feed
+    probiotics.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

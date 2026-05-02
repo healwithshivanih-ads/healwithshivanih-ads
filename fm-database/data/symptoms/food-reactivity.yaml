@@ -1,0 +1,29 @@
+slug: food-reactivity
+display_name: Food Reactivity / New Food Sensitivities
+aliases:
+- new food intolerances
+- multiple food sensitivities
+- food reactions
+- food intolerance
+category: gi
+severity: common
+description: Developing reactions to previously tolerated foods, often indicating
+  leaky gut and immune dysregulation. Can involve GI, skin, neurological, or musculoskeletal
+  symptoms.
+when_to_refer: If IgE-mediated (rapid onset, anaphylaxis risk) — refer to allergist.
+linked_to_topics:
+- food-sensitivity
+- leaky-gut
+- chronic-inflammation
+linked_to_mechanisms:
+- leaky-gut
+- gut-dysbiosis
+- molecular-mimicry
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Inflammation Cheatsheet — Page 02
+  quote: Gut – Bloating, food reactivity, ↑ Zonulin
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,53 @@
+slug: intermittent-fasting
+display_name: Intermittent Fasting
+aliases:
+- IF
+- time-restricted feeding
+- TRF
+- alternate day fasting
+- ADF
+- modified fasting
+- fasting mimicking diet
+- FMD
+summary: Structured cycles alternating calorie restriction with normal eating. Variants
+  include Time Restricted Feeding (12–16 hr fasting window), Alternate Day Fasting
+  (≤600 kcal fasting days), Modified Fasting (10–20% calorie reduction), and Fasting
+  Mimicking Diet (5-day ketogenic, monthly). Shown in shorter-duration studies to
+  benefit insulin resistance, blood sugar, blood pressure, inflammation, and brain
+  health.
+common_symptoms:
+- elevated-triglycerides
+- elevated-blood-sugar
+- high-blood-pressure
+- chronic-inflammation
+red_flags:
+- dizziness or lightheadedness on standing while fasting
+- hypoglycemia
+- heart arrhythmia
+related_topics:
+- cardiometabolic-health
+- blood-sugar-regulation
+- metabolic-syndrome
+key_mechanisms:
+- insulin-resistance
+- systemic-inflammation
+- oxidative-stress
+coaching_scope_notes: Coaches may educate on IF types and general safety guidelines.
+  Protocol selection, medical screening, and electrolyte supplementation require clinician
+  guidance.
+clinician_scope_notes: 'Contraindicated in: frail, pregnant/breastfeeding, eating
+  disorders, underweight BMI, insulin-dependent diabetes, heart arrhythmias, low BP,
+  HPA axis disorders. Type 2 diabetes and metabolic syndrome patients need supervised
+  protocol.'
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-cardiometabolic-toolkit
+  location: Intermittent Fasting — Who Benefits from Fasting?
+  quote: Shorter-duration human & animal studies show that fasting may be beneficial
+    for insulin resistance, blood sugar, blood pressure, inflammation, short-term
+    weight loss, and brain health. Longer-term studies on the effectiveness of fasting
+    on sustained weight loss and other health outcomes is still needed.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,33 @@
+slug: fish-and-toxins-safe-food
+display_name: Fish Safety & Mercury Exposure
+aliases:
+- mercury in fish
+- safe fish consumption
+- PCBs in fish
+summary: Fish is a nutrient-dense protein source rich in omega-3s, vitamin D, and
+  minerals. However, some species bioaccumulate mercury, dioxins, and PCBs. Choosing
+  low-mercury, omega-3-rich species and following EPA/AHA consumption guidelines optimizes
+  benefit while minimizing toxin exposure.
+common_symptoms: []
+red_flags:
+- high mercury exposure — neurological, digestive, immune toxicity; particularly harmful
+  in pregnancy, children, elderly
+related_topics:
+- essential-fatty-acids
+- vitamin-d-deficiency
+key_mechanisms:
+- heavy-metal-toxicity
+coaching_scope_notes: Coaches can help clients choose safe fish species and follow
+  AHA/EPA frequency recommendations.
+clinician_scope_notes: Children, pregnant/nursing individuals, and the elderly should
+  be counseled specifically on EPA fish consumption guidelines.
+evidence_tier: strong
+sources:
+- id: vitaone-nutrition-toolkit
+  location: 'Fish and Toxins: Safe Food Guidelines'
+  quote: Some fish also contain higher levels of heavy metals such as mercury, which
+    can be toxic to the nervous, digestive, and immune systems.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

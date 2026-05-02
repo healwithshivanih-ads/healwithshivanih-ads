@@ -1,0 +1,40 @@
+slug: gluten-sensitivity
+display_name: Gluten Sensitivity / Gluten Intolerance
+aliases:
+- non-celiac gluten sensitivity
+- NCGS
+- wheat intolerance
+summary: A condition in which ingestion of gluten-containing grains triggers adverse
+  GI and/or systemic symptoms in the absence of celiac disease autoimmunity or wheat
+  allergy.
+common_symptoms:
+- bloating
+- abdominal-pain
+- diarrhea
+- brain-fog
+- fatigue
+- skin-rash
+red_flags:
+- persistent diarrhea with weight loss (celiac)
+- iron deficiency anaemia
+- dermatitis herpetiformis
+related_topics:
+- elimination-diet
+- low-fodmap-diet
+- celiac-disease
+key_mechanisms:
+- gut-barrier-dysfunction
+- immune-food-reactivity
+coaching_scope_notes: Coaches can support gluten-free food swaps and label-reading
+  education. Celiac diagnosis requires clinician referral.
+evidence_tier: strong
+clinician_scope_notes: ''
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: A Guide to Eating Gluten-Free
+  quote: Cutting gluten out of your diet may seem difficult and restrictive. Fortunately,
+    there are many healthy and delicious foods that are naturally gluten-free.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

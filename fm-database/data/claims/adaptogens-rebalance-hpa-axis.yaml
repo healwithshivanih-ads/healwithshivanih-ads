@@ -1,0 +1,32 @@
+slug: adaptogens-rebalance-hpa-axis
+statement: Adaptogenic herbs (ashwagandha, rhodiola) help rebalance HPA axis function,
+  support cortisol rhythm restoration, and reduce adrenal burnout symptoms.
+evidence_tier: plausible_emerging
+rationale: Ashwagandha and rhodiola have RCTs supporting cortisol reduction and stress
+  resilience; however this document is a synthesis and does not cite those specific
+  trials.
+coaching_translation: Adaptogenic herbs like ashwagandha and rhodiola help your stress
+  system find balance — not by suppressing stress, but by improving your body's adaptability.
+caveats:
+- Source is educational synthesis. Specific dosing should be verified with clinician.
+- Quality and form of adaptogen matters — standardized extracts preferred.
+linked_to_topics:
+- adrenal-dysfunction
+- hpa-axis-dysregulation
+- anxiety
+- insomnia
+linked_to_supplements:
+- ashwagandha-ksm66
+- rhodiola-rosea
+- holy-basil
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-adrenal-cheatsheet
+  location: Clinical Interventions — Integrative Framework (p.12)
+  quote: 'Neuroendocrine Support: Rebalance HPA axis. Ashwagandha, Phosphatidylserine,
+    Rhodiola, Liposomal Vitamin C, Active B5.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

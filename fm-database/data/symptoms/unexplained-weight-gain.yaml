@@ -1,0 +1,26 @@
+slug: unexplained-weight-gain
+display_name: Unexplained Weight Gain
+aliases:
+- weight gain from toxins
+- obesogen effect
+- toxic weight gain
+category: metabolic
+severity: common
+description: Weight gain that is disproportionate to caloric intake, potentially linked
+  to toxin-induced metabolic disruption and endocrine disruption.
+when_to_refer: Rule out hypothyroidism, Cushing's syndrome, medications, or eating
+  disorders.
+linked_to_topics:
+- toxic-body-burden
+- liver-detoxification
+linked_to_mechanisms:
+- endocrine-disruption
+sources:
+- id: vitaone-liver-detox-toolkit
+  location: Why Detox?
+  quote: No matter what the diet may be, when toxins are injected into animals, they
+    have a greater chance of gaining weight.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

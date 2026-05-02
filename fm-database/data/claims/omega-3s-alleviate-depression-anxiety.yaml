@@ -1,0 +1,27 @@
+slug: omega-3s-alleviate-depression-anxiety
+statement: Omega-3 supplementation may alleviate symptoms of depression and anxiety
+  by supporting both gut and brain health.
+evidence_tier: plausible_emerging
+rationale: Multiple meta-analyses support omega-3 (particularly EPA) supplementation
+  for depression. Evidence for anxiety is more mixed. Effect partially mediated through
+  anti-inflammatory and gut-brain mechanisms.
+caveats:
+- Effect is adjunctive — not a standalone treatment for clinical depression.
+- EPA appears more effective than DHA for mood disorders.
+linked_to_topics:
+- gut-brain-axis
+linked_to_supplements:
+- fish-oil
+coaching_translation: ''
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-toolkit
+  location: 'Gut-Brain Axis: Nutrition''s Impact on Mental Health — Omega-3 Fatty
+    Acids'
+  quote: Studies suggest that omega-3 supplementation may alleviate symptoms of depression
+    and anxiety by supporting both gut and brain health.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

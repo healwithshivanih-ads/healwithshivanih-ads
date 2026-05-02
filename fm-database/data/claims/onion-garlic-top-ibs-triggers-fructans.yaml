@@ -1,0 +1,26 @@
+slug: onion-garlic-top-ibs-triggers-fructans
+statement: Onion and garlic are among the top IBS trigger foods due to their high
+  fructan content; garlic-infused oil retains flavour without FODMAP load.
+evidence_tier: strong
+rationale: Fructans in allium vegetables are well-established high-FODMAP components
+  validated by Monash University FODMAP testing. Garlic-infused oil as a substitute
+  is a validated clinical strategy as fructans are water-soluble (not oil-soluble).
+coaching_translation: Garlic and onion are hidden in many sauces and spice mixes.
+  Swap to garlic-infused olive oil or use the green tops of spring onions to get the
+  flavour without the bloating trigger.
+caveats:
+- Individual tolerance varies; systematic reintroduction testing is recommended.
+linked_to_topics:
+- low-fodmap-diet
+- ibs
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-elimination-diet-cheatsheet
+  location: HIGH FODMAP VEGETABLES — Practitioner Insight
+  quote: Onion & garlic = top IBS triggers due to fructans. Use infused oils instead.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

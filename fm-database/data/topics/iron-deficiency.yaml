@@ -1,0 +1,36 @@
+slug: iron-deficiency
+display_name: Iron Deficiency & Dietary Iron
+aliases:
+- iron deficiency anemia
+- low iron
+- anaemia
+summary: 'Iron is a mineral critical for oxygen transport and energy production. Deficiency
+  is the most common nutritional deficiency worldwide and can cause anemia. Absorption
+  varies by form: heme iron (animal sources) is better absorbed; nonheme iron (plant/animal)
+  is less so but predominates in the diet.'
+common_symptoms:
+- fatigue
+- brain-fog
+- shortness-of-breath
+red_flags:
+- severe anemia — refer to clinician for lab evaluation and therapeutic dosing
+related_topics:
+- mitochondrial-health-nutrition
+- folate-deficiency
+key_mechanisms:
+- heme-vs-nonheme-iron-absorption
+coaching_scope_notes: Coaches can support dietary iron optimization. Supplemental
+  iron dosing requires clinician oversight.
+clinician_scope_notes: 'RDA varies: males 17 mg/day, females 21 mg/day, pregnancy
+  35 mg/day. Lab confirmation recommended before supplementing.'
+evidence_tier: strong
+sources:
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Iron'
+  quote: Iron deficiency is the most common nutritional deficiency in the world and
+    can cause anemia, a condition that affects the transport of oxygen throughout
+    the body.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

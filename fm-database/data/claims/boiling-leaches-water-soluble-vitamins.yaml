@@ -1,0 +1,24 @@
+slug: boiling-leaches-water-soluble-vitamins
+statement: Boiling causes significant loss of water-soluble vitamins and minerals
+  into the cooking liquid; these nutrients are largely lost if the liquid is discarded.
+evidence_tier: strong
+rationale: Established nutritional chemistry; water-soluble vitamins (B vitamins,
+  C) readily leach into boiling water. Consistent with major nutrition education resources.
+coaching_translation: Boiling vegetables can cause you to pour most of their vitamins
+  down the drain. Opt for steaming or blanching when possible, or use the cooking
+  water in soups.
+caveats: []
+linked_to_topics: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-nutrition-toolkit
+  location: Cooking to Preserve Nutrients
+  quote: Because boiling is an intense process, most of the nutrients leech out of
+    the food and into the cooking liquid. If the food is drained before eating, many
+    of the vitamins & minerals will be lost.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

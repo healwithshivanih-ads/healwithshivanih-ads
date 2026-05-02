@@ -1,0 +1,26 @@
+slug: beta-blockers-deplete-coq10-and-melatonin
+statement: Beta blockers deplete CoQ10 and melatonin.
+evidence_tier: plausible_emerging
+rationale: Drug-nutrient depletion by beta blockers (particularly CoQ10) has mechanistic
+  plausibility and some clinical evidence, but formal RCT-level consensus on routine
+  supplementation is limited.
+coaching_translation: Clients on beta blockers may benefit from discussing CoQ10 support
+  with their clinician.
+out_of_scope_notes: Specific supplementation to address drug-induced depletion requires
+  clinician guidance.
+caveats:
+- Source is an educational toolkit, not primary literature. Verify with clinician.
+linked_to_topics:
+- drug-induced-nutrient-depletion
+- beta-blocker-deprescribing
+linked_to_supplements:
+- coenzyme-q10
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cv-toolkit
+  location: Cardiovascular Drugs and Potential Nutrient Deficiency
+  quote: 'Beta Blockers: CoQ10, Melatonin'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

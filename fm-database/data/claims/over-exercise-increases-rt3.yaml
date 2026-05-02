@@ -1,0 +1,26 @@
+slug: over-exercise-increases-rt3
+statement: Over-exercise worsens adrenal stress and increases reverse T3, making intense
+  exercise counterproductive for thyroid-compromised individuals.
+evidence_tier: plausible_emerging
+rationale: The document explicitly states 'Over-exercise worsens adrenal stress and
+  increases Reverse T3.' This is consistent with the known effect of excessive exercise
+  on cortisol and deiodinase pathways.
+coaching_translation: If your thyroid is struggling, pushing hard at the gym can make
+  it worse by spiking cortisol and lowering active thyroid hormone. Gentle movement
+  is often more effective.
+caveats:
+- No specific study cited. Expert-consensus source.
+linked_to_topics:
+- thyroid
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-thyroid-cheatsheet
+  location: What Nutritionists/Health Coaches Miss — Suggest Intense Exercise for
+    Weight Loss
+  quote: Over-exercise worsens adrenal stress and increases Reverse T3
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

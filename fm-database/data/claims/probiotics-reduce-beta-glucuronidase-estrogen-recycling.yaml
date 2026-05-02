@@ -1,0 +1,27 @@
+slug: probiotics-reduce-beta-glucuronidase-estrogen-recycling
+statement: Specific probiotics (L. rhamnosus, B. longum) rebalance the estrobolome
+  by reducing beta-glucuronidase activity, lowering estrogen recycling.
+evidence_tier: plausible_emerging
+rationale: Preclinical and observational data support the role of specific Lactobacillus
+  and Bifidobacterium strains in lowering beta-glucuronidase. Clinical RCT data specifically
+  on estrogen metabolites is emerging.
+coaching_translation: Probiotic-rich foods and targeted probiotic supplements support
+  the gut bacteria responsible for properly clearing estrogen from the body.
+caveats:
+- Source is expert synthesis
+- Strain specificity matters — multi-strain products may vary
+linked_to_topics:
+- estrobolome
+- estrogen-dominance
+linked_to_supplements:
+- probiotic-multi-strain
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: Estrogen Dominance Supplement Cheatsheet
+  quote: Rebalances estrobolome; reduces β-glucuronidase; Reduced estrogen recycling.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

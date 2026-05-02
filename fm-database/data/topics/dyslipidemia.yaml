@@ -1,0 +1,47 @@
+slug: dyslipidemia
+display_name: Dyslipidemia
+aliases:
+- lipid imbalance
+- abnormal cholesterol
+- hyperlipidemia
+summary: Dyslipidemia is an imbalance in lipid fractions (↑LDL, ↑TG, ↓HDL, ↑ApoB,
+  ↑Lp(a)) driven by metabolic dysfunction, chronic inflammation, oxidative stress,
+  and gut dysbiosis. From a functional medicine lens, it is rarely primary and is
+  often secondary to insulin resistance, hypothyroidism, NAFLD, chronic stress, or
+  poor sleep.
+common_symptoms:
+- fatigue
+- chest-tightness
+- xanthomas
+red_flags:
+- tg-above-500
+- lpa-very-high-with-family-history-cvd
+- apob-above-120
+related_topics:
+- insulin-resistance
+- hypothyroidism
+- nafld
+- cardiovascular-disease
+- metabolic-syndrome
+key_mechanisms:
+- insulin-resistance
+- chronic-inflammation
+- oxidative-stress
+- gut-dysbiosis
+coaching_scope_notes: Coaches can support dietary changes (Mediterranean/anti-inflammatory),
+  lifestyle optimization (sleep, stress, exercise), and supplement education. Biomarker
+  interpretation and supplement dosing require clinician oversight.
+clinician_scope_notes: Order advanced lipid panel (ApoB, LDL-P, TG:HDL, Lp(a), oxidized
+  LDL, hs-CRP, fasting insulin/HOMA-IR). Investigate secondary causes. Monitor liver
+  enzymes with niacin.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Sections 1 & 2
+  quote: Dyslipidemia = Imbalance in lipid fractions ↑LDL, ↑TG, ↓HDL, ↑ApoB, ↑Lp(a).
+    Root cause = Metabolic dysfunction, chronic inflammation, oxidative stress, gut
+    dysbiosis.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,30 @@
+slug: gi-issues-underlie-systemic-chronic-disease
+statement: GI dysfunction may underlie chronic health problems that appear unrelated
+  to digestion, including autoimmune diseases (rheumatoid arthritis, type 1 diabetes),
+  skin conditions (eczema, acne rosacea), and cardiovascular disease.
+evidence_tier: plausible_emerging
+rationale: The 5R framework document asserts this link. There is plausible mechanistic
+  support (leaky gut, dysbiosis-driven immune activation) but robust RCT evidence
+  causally linking gut dysfunction to all these conditions is incomplete.
+coaching_translation: Your gut health can affect your whole body — skin flares, joint
+  pain, and immune issues may all trace back to digestive imbalances.
+caveats:
+- Source is a practitioner education toolkit, not primary literature. These associations
+  are plausible but not all are proven by RCTs.
+- Autoimmune disease management requires clinician oversight.
+linked_to_topics:
+- gut-dysfunction
+- leaky-gut
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-gut-toolkit
+  location: The 5R Framework for Gut Restoration
+  quote: GI issues may underlie chronic health problems that seem unrelated to digestive
+    health, including autoimmune diseases such as rheumatoid arthritis and type 1
+    diabetes, skin problems such as eczema and acne rosacea, and heart disease.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

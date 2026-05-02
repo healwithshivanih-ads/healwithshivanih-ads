@@ -1,5 +1,5 @@
 slug: chromium
-display_name: Chromium Picolinate
+display_name: Chromium
 category: mineral
 forms_available:
 - capsule
@@ -7,7 +7,7 @@ forms_available:
 typical_dose_range:
   capsule:
     min: 200
-    max: 400
+    max: 1000
     unit: mcg
   tablet:
     min: 200
@@ -18,13 +18,20 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: required
-linked_to_topics: []
-linked_to_claims: []
-notes_for_coach: Supports blood sugar regulation and reduces sugar cravings; commonly
-  used with insulin resistance protocols.
-notes_for_client: Chromium is a trace mineral that helps your body use insulin more
-  effectively. Take it with meals.
-evidence_tier: plausible_emerging
+linked_to_topics:
+- pcos
+- insulin-resistance
+- blood-sugar-dysfunction
+linked_to_claims:
+- chromium-biotin-combo-may-lower-hba1c
+notes_for_coach: Evidence inconsistent. Contraindicated in kidney disease. Chromium
+  picolinate studied most (Martin et al. 2006, Diabetes Care). Chromium + biotin combination
+  studied for lipids and HbA1c (Albarracin et al. 2007). Always refer dosing to a
+  clinician.
+notes_for_client: Chromium is a trace mineral that may help support blood sugar control,
+  especially when combined with biotin. Not suitable if you have kidney problems —
+  check with your doctor first.
+evidence_tier: fm_specific_thin
 linked_to_mechanisms: []
 sources:
 - id: vitaone-practice-guide
@@ -34,7 +41,19 @@ sources:
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
   quote: Chromium Picolinate - Blood sugar regulation - 200–400 mcg/day - With meals
-version: 2
+- id: vitaone-sex-hormones-cheatsheet
+  location: PCOS Supplement Cheatsheet
+  quote: 'Chromium Picolinate: Enhances glucose metabolism; Reduces cravings & insulin
+    spikes; 200–400 mcg/day; best with meals.'
+- id: vitaone-blood-sugar-cheatsheet
+  location: Insulin Resistance Cheatsheet — Nutrients to Support Insulin Sensitivity
+  quote: Magnesium  Chromium
+- id: vitaone-blood-sugar-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: Studies looking at the effect of chromium supplementation on insulin resistance
+    and glucose control are inconsistent, with a smaller number of studies showing
+    positive benefits, mainly in those who have diabetes.
+version: 5
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-02'
 updated_by: shivani

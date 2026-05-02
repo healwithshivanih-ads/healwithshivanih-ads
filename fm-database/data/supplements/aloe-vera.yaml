@@ -1,0 +1,31 @@
+slug: aloe-vera
+display_name: Aloe Vera
+category: herb
+forms_available:
+- liquid
+- capsule
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- gerd
+- gut-dysfunction
+linked_to_claims:
+- aloe-vera-repairs-gut-lining
+notes_for_coach: Listed under 'Repair' in the PPI taper supplement protocol. Juice
+  form is typically used for GI soothing. Confirm with clinician for appropriate form
+  and dosing.
+evidence_tier: fm_specific_thin
+typical_dose_range: {}
+linked_to_mechanisms: []
+notes_for_client: ''
+sources:
+- id: vitaone-gut-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
+    — Supplement recommendations'
+  quote: 'Repair: Zinc l-carnosine, aloe vera'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

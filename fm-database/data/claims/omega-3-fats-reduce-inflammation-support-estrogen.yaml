@@ -1,0 +1,28 @@
+slug: omega-3-fats-reduce-inflammation-support-estrogen
+statement: Omega-3 fats from fish, fish oil, and flax reduce inflammation, which may
+  indirectly support healthy estrogen metabolism.
+evidence_tier: plausible_emerging
+rationale: Document cites Larsson et al. (Am J Clin Nutr, 2004) on long-chain n-3
+  fatty acids and cancer prevention mechanisms. Anti-inflammatory effect of omega-3s
+  is strongly established; indirect estrogen pathway support is plausible but not
+  proven.
+coaching_translation: Including wild-caught salmon, sardines, or fish oil in your
+  diet may help keep inflammation low, which supports better hormone balance.
+caveats:
+- Mechanism linking omega-3 anti-inflammation to estrogen metabolism is indirect.
+  Farm-raised fish should be avoided due to PCB content per the document.
+linked_to_topics:
+- estrogen-metabolism
+linked_to_supplements:
+- omega-3-fish-oil
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-sex-hormones-toolkit
+  location: Estrogen Metabolism — Promotes Healthy Estrogen Metabolism — Page 02
+  quote: Omega 3 fats from fish, fish oil, and flax have been shown to reduce levels
+    of inflammation in the body, which may indirectly support healthy estrogen metabolism.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

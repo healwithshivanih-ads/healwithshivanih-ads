@@ -4,29 +4,63 @@ category: mineral
 forms_available:
 - capsule
 - tablet
+- lozenge
 typical_dose_range:
   capsule:
-    min: 15
-    max: 30
+    min: 30
+    max: 60
     unit: mg
   tablet:
-    min: 15
-    max: 30
+    min: 30
+    max: 60
+    unit: mg
+  lozenge:
+    min: 10
+    max: 25
     unit: mg
 timing_options:
 - with_breakfast
 - with_lunch
 - with_dinner
+- evening
 take_with_food: required
-linked_to_topics: []
-linked_to_claims: []
-notes_for_coach: Zinc supports thyroid hormone conversion (T4 → T3) and immune regulation.
-  Also relevant in autoimmune protocols as zinc carnosine for gut lining repair. Take
-  with food to reduce nausea. Space away from magnesium-glycinate supplements when
-  possible to minimize mineral competition. Long-term high-dose zinc can deplete copper
-  — consider a zinc:copper ratio supplement or periodic copper monitoring.
-notes_for_client: Take zinc with food to avoid stomach upset. Zinc helps your thyroid
-  convert hormones into their active form and supports healthy immune function.
+linked_to_topics:
+- thyroid
+- estrogen-dominance
+- pcos
+- adrenal-dysfunction
+- immune-resilience
+- insulin-resistance
+- methylation-mthfr
+- nafld
+- hypothyroidism
+- t3-conversion-disorder
+- hashimotos-thyroiditis
+- hashimotos-hypothyroidism
+- gut-dysfunction
+- hypochlorhydria
+- gerd
+- blood-sugar-dysfunction
+- immune-support
+linked_to_claims:
+- zinc-supports-thyroid-conversion
+- zinc-regulates-aromatase-balances-estrogen-testosterone
+- chronic-cortisol-elevation-drives-insulin-resistance
+- zinc-immune-liver-support
+- low-free-t3-with-normal-tsh-indicates-conversion-disorder
+- selenium-zinc-increase-t4-to-t3-conversion
+- vitamin-a-zinc-exercise-improve-thyroid-cell-sensitivity
+- key-nutrients-required-for-thyroid-hormone-production
+- zinc-supports-gut-lining-repair
+- hcl-needed-for-b12-mineral-absorption
+- zinc-lowers-homa-ir
+- low-zinc-impairs-insulin-secretion
+- zinc-antiviral-immune-support
+notes_for_coach: 'Multiple forms listed: acetate, citrate, picolinate, glycinate (oral
+  systemic); gluconate (lozenge for local throat effect). Divide doses throughout
+  day. High doses >30 mg/day should be clinician-supervised — copper depletion risk.'
+notes_for_client: Zinc is an essential mineral for immune function. Take with food
+  to avoid nausea. Don't exceed recommended dose without your practitioner's guidance.
 evidence_tier: strong
 linked_to_mechanisms: []
 sources:
@@ -34,7 +68,44 @@ sources:
   location: Clinical Education for Clients > Thyroid Function Beyond TSH > Non-pharmaceutical
     support for thyroid
   quote: 'Zinc: Supports thyroid hormone conversion and immune regulation'
-version: 1
+- id: vitaone-thyroid-cheatsheet
+  location: Clinical Action Steps — Support T4→T3 Conversion
+  quote: Selenium (100–200 µg/day), Zinc Glycinate (20–30 mg/day), Iron, Active B2/B6/B12
+- id: vitaone-sex-hormones-cheatsheet
+  location: Estrogen Dominance Supplement Cheatsheet
+  quote: 'Zinc: Modulates aromatase + supports progesterone; Helps acne, hair thinning;
+    15–30 mg/day; add copper if long-term.'
+- id: vitaone-adrenal-cheatsheet
+  location: 50 Hormones Cheatsheet — T4/Testosterone rows (p.4)
+  quote: 'Solution: Iodine, selenium, zinc, thyroid meds if required... Solution:
+    Strength training, zinc, Vit D, HRT if indicated.'
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Medication-Induced
+    Depletions
+  quote: Zinc glycinate (15–30 mg/day)
+- id: vitaone-liver-detox-cheatsheet
+  location: Liver Disease Cheatsheet — Viral Hepatitis
+  quote: Vitamin D, Zinc, Omega-3, Silymarin
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 2: Role of Nutrients in Hormone Production'
+  quote: 'Zinc and Iron: Required for TPO function and receptor activity.'
+- id: vitaone-thyroid-toolkit
+  location: Nutrient Optimization
+  quote: 'Zinc: Important for immune function and thyroid hormone metabolism.'
+- id: vitaone-gut-toolkit
+  location: The 5R Framework for Gut Restoration — Repair
+  quote: Help the lining of the GI tract repair itself by supplying key nutrients
+    that can often be in short supply in a compromised gut, such as zinc, antioxidants
+    (e.g. vitamins A, C, and E), fish oil, and the amino acid glutamine.
+- id: vitaone-blood-sugar-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: Zinc supplementation has been shown in multiple studies to lower HOMA-IR,
+    a measure of insulin resistance.
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: A large body of research shows that zinc has strong anti-viral properties
+    against many viruses.
+version: 11
 status: active
-updated_at: '2026-04-29'
+updated_at: '2026-05-02'
 updated_by: shivani

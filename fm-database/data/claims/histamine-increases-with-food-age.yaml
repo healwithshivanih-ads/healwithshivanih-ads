@@ -1,0 +1,25 @@
+slug: histamine-increases-with-food-age
+statement: Histamine content in foods increases with age, ripening, storage, and fermentation;
+  freshly prepared foods have lower histamine loads.
+evidence_tier: strong
+rationale: Maintz & Novak 2007 AJCN (cited) and Comas-Basté 2020 Biomolecules (cited)
+  confirm time- and temperature-dependent histamine accumulation in protein-rich foods.
+coaching_translation: To keep histamine low, eat freshly cooked meals, avoid leftovers,
+  and refrigerate or freeze food immediately rather than leaving it at room temperature.
+linked_to_topics:
+- histamine-intolerance
+linked_to_mechanisms:
+- diamine-oxidase-deficiency
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: Histamine Food Triggers
+  quote: Foods that may normally be low in histamine will have increasing amounts
+    of histamine as they age, or ripen... especially those with higher protein content
+    (e.g., leftover beef).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

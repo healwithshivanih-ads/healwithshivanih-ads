@@ -1,0 +1,24 @@
+slug: gut-produces-90-percent-serotonin
+statement: The gut produces around 90% of the body's serotonin, the 'feel-good' neurotransmitter,
+  linking gut health directly to mental well-being.
+evidence_tier: strong
+rationale: Enterochromaffin cells in the gut are the dominant site of serotonin production
+  in the body. This is well-established in neurogastroenterology literature.
+coaching_translation: Your gut is sometimes called your 'second brain' — it produces
+  the vast majority of your body's serotonin, the mood-regulating neurotransmitter.
+linked_to_topics:
+- gut-brain-axis
+- gut-microbiome
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-gut-toolkit
+  location: 'Gut-Brain Axis: Nutrition''s Impact on Mental Health'
+  quote: The gut produces around 90% of the body's serotonin, the 'feel-good' neurotransmitter,
+    linking it directly to mental well-being.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

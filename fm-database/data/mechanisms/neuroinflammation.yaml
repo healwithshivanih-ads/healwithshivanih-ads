@@ -1,0 +1,34 @@
+slug: neuroinflammation
+display_name: Neuroinflammation
+aliases:
+- brain inflammation
+- central nervous system inflammation
+- neuro-inflammatory pathway
+category: immune
+summary: Omega-3 fatty acids (EPA/DHA) exert anti-inflammatory effects via modulation
+  of serotonin/dopamine receptor expression and neuronal membrane fluidity. Low omega-3
+  index correlates with elevated CRP and depressive symptoms. Magnesium regulates
+  NMDA receptors and reduces excitotoxicity.
+upstream_drivers:
+- omega-3-deficiency
+- magnesium-deficiency
+- elevated-crp
+downstream_effects:
+- depressive-symptoms
+- cognitive-decline
+- anxiety
+related_mechanisms:
+- methylation-cycle-dysfunction
+- neurotransmitter-synthesis-impairment
+linked_to_topics:
+- nutrient-deficiency-depression
+- knee-pain
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: How Nutrient Deficiencies (B12, Folate, Omega-3, Magnesium) Mimic Depression
+  quote: Anti-inflammatory, modulate serotonin/dopamine receptors, neuronal fluidity
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,29 @@
+slug: nac-breaks-candida-biofilms
+statement: N-Acetyl Cysteine (NAC) disrupts Candida biofilms and boosts glutathione,
+  supporting both antifungal activity and liver detoxification.
+evidence_tier: plausible_emerging
+rationale: NAC's biofilm-disrupting activity against Candida has in vitro support.
+  Glutathione-boosting effects are well-established. Clinical applicability in oral
+  supplementation for gut Candida is FM-emerging.
+coaching_translation: NAC helps break down the protective shell that Candida builds
+  around itself, making it easier to clear — and it also supports your liver's detox
+  capacity.
+caveats:
+- 600-1200mg/day range is therapeutic — clinician guidance needed. Source is educational
+  synthesis.
+linked_to_topics:
+- candida-overgrowth
+- sluggish-bile-flow
+linked_to_supplements:
+- nac
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Candida Infection — Supplement Stack
+  quote: N-Acetyl Cysteine (NAC) — Breaks Candida biofilms + boosts glutathione —
+    8–12 weeks
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,59 @@
+slug: gerd
+display_name: Gastroesophageal Reflux Disease (GERD)
+aliases:
+- gastroesophageal reflux disease
+- acid reflux
+- LPR
+- silent reflux
+- heartburn
+- GERD
+summary: A chronic condition where stomach acid flows back into the esophagus, causing
+  heartburn. Affects ~20% of US adults weekly. Associated with significant healthcare
+  costs (~$15–20B/year in the US). Managed with PPIs, lifestyle changes, and natural
+  supplements during tapering.
+common_symptoms:
+- heartburn
+- sour-taste
+- regurgitation
+- belching
+- hoarseness
+- chronic-cough
+- acid-reflux
+red_flags:
+- persistent dysphagia
+- unintended weight loss
+- hematemesis — refer for endoscopy
+- Barrett's Esophagus
+- Reflux disease > LA Grade B
+- Hiatal hernia > 3 cm
+- Gastroparesis
+- Gastrin >300 pg/mL
+related_topics:
+- hypochlorhydria
+- sibo
+- h-pylori-infection
+- ibs
+- gut-dysfunction
+key_mechanisms:
+- les-dysfunction
+- impaired-gastric-acid-production
+- hypochlorhydria-mechanism
+coaching_scope_notes: Coaches can support dietary trigger avoidance and lifestyle
+  modifications. PPI tapering and supplement dosing require clinician supervision.
+clinician_scope_notes: PPI tapering protocol, H2 blocker transitions, and high-risk
+  factor assessment (Barrett's, hiatal hernia, gastrin levels) are clinician-scope.
+evidence_tier: strong
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Acid Reflux Cheatsheet — Supplement Stack
+  quote: Always personalize supplement choice based on root cause (SIBO, hypochlorhydria,
+    stress, structural, or diet-related). Avoid chronic antacid use - support natural
+    acid balance and gut healing instead.
+- id: vitaone-gut-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
+  quote: Gastroesophageal Reflux Disease (GERD) is a significant contributor to healthcare
+    costs in the US, and the prevalence of GERD is steadily increasing.
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

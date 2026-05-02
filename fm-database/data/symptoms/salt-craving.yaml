@@ -1,0 +1,24 @@
+slug: salt-craving
+display_name: Salt Craving
+aliases:
+- craving salty foods
+- electrolyte craving
+category: constitutional
+severity: common
+description: Intense desire for salt, often indicating low aldosterone or cortisol
+  levels, as seen in adrenal insufficiency or HPA exhaustion.
+when_to_refer: If accompanied by severe hypotension, hyperpigmentation — refer for
+  Addison's workup.
+linked_to_topics:
+- adrenal-dysfunction
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+sources:
+- id: vitaone-adrenal-cheatsheet
+  location: 50 Hormones Cheatsheet — Cortisol row (p.4)
+  quote: '↓ Fatigue, low BP, salt craving, Addison''s-like. Solution: Salt, Vit C,
+    adrenal support (B5, licorice).'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

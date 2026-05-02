@@ -1,0 +1,29 @@
+slug: sleep-under-6h-raises-insulin-resistance
+statement: Sleep duration <6 hours per night raises insulin resistance by approximately
+  20%.
+evidence_tier: plausible_emerging
+rationale: Short sleep is associated with impaired glucose metabolism in multiple
+  studies; the ≈20% figure is plausible but the specific quantification should be
+  treated cautiously from this source.
+coaching_translation: Getting less than 6 hours of sleep can significantly worsen
+  how your body handles blood sugar. Prioritising 7–9 hours is a powerful metabolic
+  lever.
+linked_to_topics:
+- insulin-resistance
+- blood-sugar-dysfunction
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- insulin-resistance
+caveats:
+- The ≈20% figure is an approximation from FM synthesis; specific RCT not cited. Verify
+  with primary literature.
+out_of_scope_notes: ''
+linked_to_supplements: []
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 7.3.2 — Sleep Hygiene
+  quote: Target 7-9 h nightly; <6 h raises insulin resistance by ≈ 20 %.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

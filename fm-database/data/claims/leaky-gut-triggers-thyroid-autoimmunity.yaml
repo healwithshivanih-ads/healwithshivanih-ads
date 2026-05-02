@@ -1,0 +1,28 @@
+slug: leaky-gut-triggers-thyroid-autoimmunity
+statement: Leaky gut (increased intestinal permeability) allows undigested proteins
+  and toxins into the bloodstream, triggering immune activation that can initiate
+  or perpetuate thyroid autoimmunity.
+evidence_tier: plausible_emerging
+rationale: The link between intestinal permeability and autoimmune thyroid disease
+  is biologically plausible and increasingly supported by emerging research, though
+  large RCTs establishing causation are lacking. Document states this clearly as a
+  mechanism.
+coaching_translation: Healing your gut is a foundational step for Hashimoto's — what
+  leaks through your gut wall can confuse your immune system into attacking your thyroid.
+caveats:
+- Source is synthesis; direct RCT evidence in thyroid autoimmunity is limited
+linked_to_topics:
+- hashimotos-thyroiditis
+- t3-conversion-disorder
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 6: Other Contributing Factors'
+  quote: Leaky gut (increased intestinal permeability) allows undigested proteins
+    and toxins to enter the bloodstream, triggering autoimmune reactions.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

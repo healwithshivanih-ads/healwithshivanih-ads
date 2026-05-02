@@ -1,0 +1,35 @@
+slug: homocysteine-metabolism
+display_name: Homocysteine Metabolism
+aliases:
+- methylation cycle
+- homocysteine clearance
+- one-carbon metabolism
+category: metabolic
+summary: Homocysteine is an amino acid intermediate in the methionine cycle. Elevated
+  homocysteine is associated with increased risk of cardiovascular disease, dementia,
+  and depression. B12 and folate are essential cofactors for its re-methylation; MTHFR
+  variants impair this pathway, increasing risk.
+upstream_drivers:
+- vitamin-b12-status
+- folate-status
+- mthfr-variants
+- dietary-methionine
+downstream_effects:
+- cardiovascular-disease-risk
+- cognitive-decline
+- depression-risk
+related_mechanisms:
+- methylation-cycle
+linked_to_topics:
+- folate-deficiency
+- vitamin-b12-deficiency
+evidence_tier: strong
+sources:
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Folate'
+  quote: Folate is essential for the metabolism of homocysteine, an amino acid that
+    in high amounts may contribute to heart disease, dementia, and depression.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

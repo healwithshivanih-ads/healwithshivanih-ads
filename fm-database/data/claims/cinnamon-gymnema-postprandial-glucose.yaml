@@ -1,0 +1,28 @@
+slug: cinnamon-gymnema-postprandial-glucose
+statement: Ceylon cinnamon and Gymnema sylvestre blunt postprandial glucose spikes,
+  reduce cravings, and enhance postprandial glycaemic control.
+evidence_tier: plausible_emerging
+rationale: Both herbs have plausible mechanisms (cinnamon improves GLUT4 translocation;
+  gymnema reduces intestinal glucose absorption) and small RCT evidence for modest
+  blood sugar lowering. Evidence is not yet at consensus tier.
+coaching_translation: Ceylon cinnamon and Gymnema are two herbs with solid early evidence
+  for reducing blood sugar spikes after meals.
+caveats:
+- Dose cited (cinnamon 1–2 g/day; gymnema 200–400 mg/day) should be verified with
+  clinician.
+- Must be Ceylon cinnamon, not cassia, due to coumarin content.
+linked_to_topics:
+- insulin-resistance
+linked_to_mechanisms:
+- insulin-resistance
+out_of_scope_notes: ''
+linked_to_supplements: []
+sources:
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Postprandial Glucose
+    Spikes
+  quote: Blunts glucose spikes, reduces cravings. Enhances postprandial glycemic control.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

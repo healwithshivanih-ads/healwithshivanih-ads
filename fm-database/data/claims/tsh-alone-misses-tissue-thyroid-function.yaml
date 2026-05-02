@@ -1,0 +1,28 @@
+slug: tsh-alone-misses-tissue-thyroid-function
+statement: TSH alone does not reflect tissue-level thyroid function; a full panel
+  (FT3, FT4, rT3, Anti-TPO, Anti-Tg) is required for accurate assessment.
+evidence_tier: plausible_emerging
+rationale: The document explicitly states TSH 'doesn't reflect tissue-level thyroid
+  function' and advocates testing FT3, FT4, rT3, and antibodies. This is a common
+  FM position; mainstream consensus still uses TSH as first-line but acknowledges
+  its limitations.
+coaching_translation: Your TSH coming back 'normal' doesn't mean your thyroid is working
+  optimally at the cell level — a fuller panel gives a much clearer picture.
+out_of_scope_notes: Lab ordering and interpretation is clinician scope. Coaches can
+  educate clients to ask their doctor for a full panel.
+caveats:
+- Source is an expert-consensus cheatsheet, not primary RCT literature.
+- Functional reference ranges (e.g., TSH 3–5 µU/mL as 'suboptimal') differ from conventional
+  lab ranges.
+linked_to_topics:
+- thyroid
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-thyroid-cheatsheet
+  location: What Doctors Miss — Focus Only on TSH
+  quote: TSH doesn't reflect tissue-level thyroid function
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

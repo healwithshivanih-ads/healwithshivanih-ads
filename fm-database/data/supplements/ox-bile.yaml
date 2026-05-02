@@ -1,0 +1,35 @@
+slug: ox-bile
+display_name: Ox Bile
+category: enzyme
+forms_available:
+- capsule
+typical_dose_range:
+  capsule:
+    min: 125
+    max: 500
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- sluggish-bile-flow
+- candida-overgrowth
+linked_to_claims:
+- sluggish-bile-flow-overlooked-root-cause
+notes_for_coach: Direct bile replacement — particularly useful post-cholecystectomy
+  or severe steatorrhea. Take with fat-containing meals. Clinician oversight for dosing.
+notes_for_client: Ox bile provides direct bile salts to help digest fats — especially
+  helpful if your gallbladder has been removed or your bile flow is significantly
+  impaired.
+evidence_tier: fm_specific_thin
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Sluggish Bile Flow — Supplements That Improve Bile Flow
+  quote: Ox Bile — Direct bile replacement — Steatorrhea, after gallbladder removal
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

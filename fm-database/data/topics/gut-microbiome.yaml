@@ -1,0 +1,36 @@
+slug: gut-microbiome
+display_name: Gut Microbiome & Personalized Nutrition
+aliases:
+- gut flora
+- microbiota
+- gut bacteria
+summary: The collection of trillions of microorganisms in the digestive tract that
+  aid digestion, regulate immunity, influence metabolism, and communicate with the
+  brain. Microbiome composition is unique to each individual and shapes responses
+  to different foods, supporting the case for personalized nutrition.
+common_symptoms:
+- bloating
+- diarrhea
+- constipation
+- brain-fog
+- mood-changes
+related_topics:
+- gut-dysfunction
+- gut-brain-axis
+key_mechanisms:
+- gut-dysbiosis
+- gut-brain-signaling
+coaching_scope_notes: Coaches can educate on prebiotic/probiotic foods, fermented
+  food preparation, and fiber-rich diets to support microbiome diversity.
+evidence_tier: strong
+red_flags: []
+clinician_scope_notes: ''
+sources:
+- id: vitaone-gut-toolkit
+  location: 'Gut Microbiome and Personalized Nutrition: The Future of Diets'
+  quote: The human gut contains trillions of microorganisms that not only aid digestion
+    but also influence overall health—from immunity to mental well-being.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

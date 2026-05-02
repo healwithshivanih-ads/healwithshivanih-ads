@@ -1,0 +1,25 @@
+slug: treating-inflammation-without-gut-healing-causes-relapse
+statement: Treating inflammation without healing the gut leads to relapse, because
+  the gut barrier is the primary source of the inflammatory signal.
+evidence_tier: fm_specific_thin
+rationale: Core FM principle with biological plausibility, but limited direct RCT
+  evidence. Mechanistically coherent given the gut-immune-inflammation triangle described.
+coaching_translation: Anti-inflammatory supplements alone won't fix the root cause
+  if the gut is still leaking — healing the gut lining is the first priority.
+caveats:
+- This is a functional medicine principle — limited direct RCT evidence for this framing.
+  Source is educational synthesis.
+linked_to_topics:
+- leaky-gut
+- ibd
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Leaky Gut & Inflammation — Gut-Immune-Inflammation Triangle
+  quote: Treating inflammation without healing the gut leads to relapse.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

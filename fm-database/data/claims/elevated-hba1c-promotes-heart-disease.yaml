@@ -1,0 +1,28 @@
+slug: elevated-hba1c-promotes-heart-disease
+statement: Elevated HbA1c reflects advanced glycation end product (AGE) formation,
+  which promotes heart disease, dementia, and accelerated aging through inflammation
+  and oxidative stress.
+evidence_tier: strong
+rationale: The link between HbA1c, AGEs, inflammation, and cardiovascular outcomes
+  is well-established in the peer-reviewed literature. Optimal HbA1c is stated as
+  <5.5.
+coaching_translation: Blood sugar balance matters for heart health — keeping blood
+  sugar stable through diet helps lower your risk.
+out_of_scope_notes: HbA1c testing and interpretation requires clinician oversight.
+linked_to_topics:
+- cardiovascular-dysfunction
+linked_to_mechanisms:
+- advanced-glycation-end-products
+- systemic-inflammation
+caveats: []
+linked_to_supplements: []
+sources:
+- id: vitaone-cv-toolkit
+  location: CVD Risk Analysis — Lab Results
+  quote: These create inflammation & oxidative stress throughout the body, and promote
+    heart disease and dementia and accelerating aging. The Hemoglobin AIC should ideally
+    be less than 5.5.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

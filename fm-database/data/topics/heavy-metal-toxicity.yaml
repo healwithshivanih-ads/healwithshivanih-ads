@@ -1,0 +1,35 @@
+slug: heavy-metal-toxicity
+display_name: Heavy Metal Toxicity / Exposure
+aliases:
+- heavy metal detox
+- metal toxicity
+- mercury toxicity
+- lead toxicity
+summary: Accumulation of heavy metals (mercury, lead, etc.) due to environmental exposure
+  and impaired detoxification pathways. Methylation supports heavy metal clearance.
+  Functional approach uses chelating foods (cilantro, chlorella) and glutathione support
+  (NAC).
+common_symptoms:
+- brain-fog
+- fatigue
+- chemical-sensitivities
+red_flags:
+- acute-heavy-metal-poisoning
+related_topics:
+- liver-detoxification
+- methylation-mthfr
+key_mechanisms:
+- glutathione-depletion
+- phase-ii-conjugation
+coaching_scope_notes: Coaches can educate on food-based binders (cilantro, chlorella)
+  and glutathione support foods. Chelation therapy is clinician scope.
+evidence_tier: plausible_emerging
+clinician_scope_notes: ''
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Top Superfoods for Detoxification
+  quote: Cilantro & Parsley — Chelating herbs that bind heavy metals (mercury, lead).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

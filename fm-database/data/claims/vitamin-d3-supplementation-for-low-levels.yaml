@@ -1,0 +1,25 @@
+slug: vitamin-d3-supplementation-for-low-levels
+statement: Individuals with low vitamin D blood levels should supplement with vitamin
+  D3 and monitor blood levels to adjust dosage.
+evidence_tier: confirm_with_clinician
+rationale: Dosing of vitamin D3 requires baseline testing, monitoring, and individualised
+  adjustment — outside coaching scope.
+coaching_translation: If your vitamin D is low, your doctor can test and prescribe
+  the right dose for you.
+out_of_scope_notes: Supplement dosing and blood level monitoring require clinician
+  oversight.
+linked_to_topics:
+- blood-sugar-dysfunction
+linked_to_supplements:
+- vitamin-d3
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-blood-sugar-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: Those with low blood levels should supplement with vitamin D3 and monitor
+    their blood levels to adjust supplement dosages accordingly.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

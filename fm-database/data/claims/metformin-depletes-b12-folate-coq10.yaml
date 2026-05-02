@@ -1,0 +1,27 @@
+slug: metformin-depletes-b12-folate-coq10
+statement: Metformin use is associated with depletion of CoQ10, folic acid, and vitamin
+  B12.
+evidence_tier: strong
+rationale: Metformin-induced B12 depletion is well-established in the literature.
+  CoQ10 and folate depletion have plausible mechanisms and emerging evidence.
+coaching_translation: Clients on metformin should have their B12 and folate levels
+  monitored by their clinician.
+out_of_scope_notes: Lab monitoring and supplementation decisions require clinician
+  guidance.
+caveats:
+- B12 depletion by metformin is strong evidence; CoQ10 and folate are plausible_emerging.
+linked_to_topics:
+- drug-induced-nutrient-depletion
+linked_to_supplements:
+- coenzyme-q10
+- vitamin-b12
+- folate
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cv-toolkit
+  location: Cardiovascular Drugs and Potential Nutrient Deficiency
+  quote: 'Metformin: CoQ10, Folic acid, Vitamin B12'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

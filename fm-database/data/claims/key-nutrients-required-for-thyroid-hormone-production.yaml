@@ -1,0 +1,32 @@
+slug: key-nutrients-required-for-thyroid-hormone-production
+statement: Thyroid hormone production requires adequate intake of iron, iodine, tyrosine,
+  zinc, selenium, and vitamins E, B2, B3, B6, C, and D.
+evidence_tier: strong
+rationale: 'Well-established biochemistry: iodine and tyrosine are substrate for T4/T3
+  synthesis; TPO (selenium-dependent) catalyzes the process; iron is needed for TPO
+  activity; B vitamins and antioxidant vitamins support the enzymatic pathway.'
+coaching_translation: Your thyroid needs a wide range of nutrients to make hormones.
+  Deficiencies in any of these — especially iodine, selenium, zinc, or iron — can
+  impair thyroid function.
+caveats:
+- Source is an educational toolkit; no specific study cited per nutrient.
+linked_to_topics:
+- hypothyroidism
+- hashimotos-hypothyroidism
+linked_to_supplements:
+- selenium
+- zinc
+- iodine
+- iron
+- vitamin-d
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-toolkit
+  location: Factors that Affect Thyroid Function
+  quote: 'Nutrients: iron, iodine, tyrosine, zinc, selenium vitamin E, B2, B3, B6,
+    C, D'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

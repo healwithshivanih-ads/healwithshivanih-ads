@@ -23,13 +23,19 @@ timing_options:
 - bedtime
 - morning
 - with_breakfast
+- mid_morning
+- mid_afternoon
 take_with_food: optional
-linked_to_topics: []
-linked_to_claims: []
-notes_for_coach: Often stacked with caffeine for calm focus; also effective before
-  bed for sleep onset and stress reduction.
-notes_for_client: Take 100–200 mg in the evening to support a calm, relaxed state
-  before sleep.
+linked_to_topics:
+- anxiety
+- insomnia
+- adrenal-dysfunction
+linked_to_claims:
+- magnesium-supports-cortisol-gaba-sleep
+notes_for_coach: Promotes alpha-wave brain activity and GABA/serotonin support without
+  sedation. Pairs well with magnesium for anxiety and sleep. Safe for daytime use.
+notes_for_client: L-theanine is the calming compound in green tea — it helps settle
+  anxiety and racing thoughts without making you drowsy.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -40,7 +46,10 @@ sources:
   location: Page 1 - Supplement Table
   quote: L-Theanine - Calm focus, anxiety reduction - 100–400 mg/day - With caffeine
     or before bed
-version: 2
+- id: vitaone-adrenal-cheatsheet
+  location: 50 Hormones Cheatsheet — GABA row (p.6)
+  quote: '↓ Anxiety, insomnia, restlessness. Solution: GABA support, Mg, L-theanine.'
+version: 3
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-02'
 updated_by: shivani

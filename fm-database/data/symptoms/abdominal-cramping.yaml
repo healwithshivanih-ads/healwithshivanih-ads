@@ -1,0 +1,31 @@
+slug: abdominal-cramping
+display_name: Abdominal Cramping
+aliases:
+- stomach cramps
+- gut cramps
+- belly cramps
+- intestinal cramps
+- abdominal pain
+category: gi
+severity: common
+description: Intermittent or colicky abdominal pain linked to osmotic and fermentation-driven
+  distension of the gut lumen, particularly after consuming high-FODMAP foods such
+  as dairy (lactose), legumes (GOS), or wheat (fructans).
+when_to_refer: Refer if severe, persistent, or associated with fever, vomiting, or
+  blood in stool.
+linked_to_topics:
+- low-fodmap-diet
+- ibs
+- sibo
+linked_to_mechanisms:
+- lactase-deficiency-osmotic-load
+- gut-fermentation-dysbiosis
+sources:
+- id: vitaone-elimination-diet-cheatsheet
+  location: Functional Medicine Table — Understanding FODMAP Mechanisms / Disaccharides
+    row
+  quote: Malabsorbed if lactase deficient → osmotic diarrhea, cramps.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,15 +1,12 @@
 slug: thyroid
-display_name: Thyroid
+display_name: Thyroid Dysfunction
 aliases:
 - thyroid dysfunction
-- hypothyroidism
 - Hashimoto's thyroiditis
 - autoimmune thyroid disease
-summary: Thyroid health encompasses hormone synthesis, T4-to-T3 conversion, autoimmune
-  drivers (Hashimoto's), and the interplay of nutrients, stress, gut function, and
-  co-conditions like PCOS. A full diagnostic picture requires more than TSH alone,
-  and functional factors — cortisol, selenium, zinc, iron, Vitamin A — are central
-  to optimising thyroid physiology.
+summary: Thyroid dysfunction encompasses hypo-, hyper-, and autoimmune thyroid conditions.
+  Functional Medicine emphasises root-cause identification across production, conversion,
+  and utilisation pathways rather than relying solely on TSH.
 common_symptoms:
 - fatigue
 - hair loss
@@ -19,6 +16,13 @@ common_symptoms:
 - anxiety
 - cold intolerance
 - slow gut motility
+- weight-gain
+- hair-thinning
+- brain-fog
+- cold-intolerance
+- mood-changes
+- menstrual-irregularities
+- palpitations
 red_flags:
 - goiter or thyroid nodules
 - rapid unexplained weight change
@@ -26,30 +30,39 @@ red_flags:
 - palpitations
 - post-partum thyroid symptoms
 - suspected autoimmune disease without formal workup
+- Palpitations and tremors suggesting hyperthyroid crisis
+- Positive TPO/Tg antibodies with rapidly worsening symptoms — refer to endocrinologist
 related_topics:
 - pcos
 - perimenopause
 - autoimmune
 - inflammation
+- leaky-gut
+- dysbiosis
+- gut-hormone-axis
+- food-sensitivities
 key_mechanisms:
 - t4-to-t3-conversion-impairment
 - hpa-axis-dysregulation
 - autoimmune-molecular-mimicry
-coaching_scope_notes: Coaches may teach the importance of a full thyroid panel vs
-  TSH alone, the role of stress in conversion, and dietary sources of selenium/zinc/iron/Vitamin
-  A. Supplement dosing, lab interpretation, medication decisions, and Red Light Therapy
-  protocols are outside coaching scope.
-clinician_scope_notes: Lab interpretation (including optimal ranges for Free T3, Reverse
-  T3, TPO/TgAb), selenium and Vitamin A supplementation dosing, levothyroxine decisions,
-  LLLT protocols, and any autoimmune workup requiring formal diagnosis should be managed
-  by a licensed clinician.
-evidence_tier: strong
+- t4-to-t3-conversion-block
+- leaky-gut
+coaching_scope_notes: Coaches can support lifestyle, nutrition, gut health, stress
+  reduction, and sleep hygiene. Lab interpretation, medication decisions, and specific
+  dosing are out of scope — refer to clinician.
+clinician_scope_notes: 'Full panel recommended: TSH, FT3, FT4, rT3, Anti-TPO, Anti-Tg.
+  Monitor every 8–12 weeks. Assess cortisol, gut health, and liver enzymes as co-factors.'
+evidence_tier: plausible_emerging
 sources:
 - id: vitaone-evidence-tiers
   location: TOPIC 1 — Thyroid / Claims & Tiers
   quote: TSH misses early Hashimoto's, euthyroid-sick syndrome, conversion problems,
     and autoimmune thyroid disease without elevated TSH.
-version: 1
+- id: vitaone-thyroid-cheatsheet
+  location: Biohacking Thyroid Function Cheatsheet
+  quote: Thyroid dysfunction, whether hypo, hyper, or autoimmune can persist even
+    with 'normal' TSH if deeper imbalances are missed.
+version: 2
 status: active
-updated_at: '2026-04-29'
+updated_at: '2026-05-02'
 updated_by: shivani

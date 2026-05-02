@@ -1,0 +1,48 @@
+slug: b-complex
+display_name: B-Complex (B12 + B9/Folate)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+timing_options:
+- with_breakfast
+- morning
+take_with_food: optional
+linked_to_topics:
+- liver-detoxification
+- methylation-mthfr
+- hypothyroidism
+- hashimotos-thyroiditis
+- insulin-resistance
+- blood-sugar-dysfunction
+linked_to_claims:
+- methylated-b-vitamins-mthfr-support
+- elevated-homocysteine-promotes-oxidative-stress-and-endothelial-dysfunction
+notes_for_coach: 'Document specifies B12 1500 mcg, B9 100 mg. Note: B9 at 100 mg is
+  unusually high (standard folate supplementation is 400–800 mcg; 5 mg is therapeutic).
+  Verify doses with clinician — likely a document error. Methylated forms (methylcobalamin,
+  methylfolate) preferred.'
+notes_for_client: B vitamins support methylation — the body's detoxification and repair
+  system — and help lower homocysteine, which can damage blood vessels.
+evidence_tier: plausible_emerging
+typical_dose_range:
+  capsule:
+    min: 1500
+    max: 1500
+    unit: mcg
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet — 6 Ways to Overcome MTHFR
+  quote: Use Activated Nutrients – Always choose methylated or coenzyme forms.
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 9: Targeted Supplements'
+  quote: 'B-complex vitamins: Needed for methylation and energy metabolism.'
+- id: vitaone-blood-sugar-ebook
+  location: Section 7.2 — Targeted Supplementation
+  quote: 'B-complex- B12, B9: Supports methylation; lowers homocysteine. B12- 1500mcg,
+    B9- 100mg.'
+version: 3
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,25 @@
+slug: high-mercury-fish-toxic-to-nervous-digestive-immune
+statement: Mercury in certain fish (shark, swordfish, king mackerel, tilefish, etc.)
+  can be toxic to the nervous, digestive, and immune systems.
+evidence_tier: strong
+rationale: Well-established toxicology; consistent with EPA and FDA fish consumption
+  advisories. Document references EPA guidelines.
+coaching_translation: Some fish are best avoided or strictly limited due to high mercury
+  content — especially for children, pregnant women, and those with high fish intake.
+caveats:
+- Pregnant women, children, and elderly are the highest-risk groups — refer to clinician/dietitian
+  for personalized guidance.
+linked_to_topics:
+- fish-and-toxins-safe-food
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-nutrition-toolkit
+  location: 'Fish and Toxins: Safe Food Guidelines'
+  quote: Some fish also contain higher levels of heavy metals such as mercury, which
+    can be toxic to the nervous, digestive, and immune systems.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

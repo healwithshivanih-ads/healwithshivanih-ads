@@ -1,13 +1,15 @@
 slug: estrobolome
-display_name: Estrobolome
+display_name: Estrobolome & Gut Estrogen Clearance
 aliases:
 - estrogen microbiome
 - estrogen-modulating bacteria
 - gut estrogen axis
 - gut estrogen processing
-summary: The subset of gut microbiota responsible for metabolizing estrogens in the
-  gut, influencing whether estrogens are excreted or reabsorbed into circulation.
-  Fiber plays a key supporting role by binding estrogen and facilitating excretion.
+- beta-glucuronidase activity
+- estrogen recycling
+summary: The estrobolome is the collection of gut bacteria that metabolize estrogen.
+  High beta-glucuronidase activity deconjugates excreted estrogens, allowing reabsorption
+  and driving estrogen dominance.
 common_symptoms:
 - breast tenderness
 - weight loss resistance
@@ -25,6 +27,10 @@ common_symptoms:
 - skin changes (hives, eczema, psoriasis)
 - skin issues
 - estrogen dominance symptoms
+- constipation
+- acne
+- pms
+- heavy-periods
 red_flags:
 - Persistent estrogen dominance symptoms in menopausal women — warrants testing (DUTCH,
   GI-MAP) and clinician review
@@ -40,6 +46,7 @@ related_topics:
 - dysbiosis
 - inflammation
 - fiber-gap
+- estrogen-dominance
 key_mechanisms:
 - beta-glucuronidase-activity
 - phase-3-estrogen-detoxification
@@ -48,8 +55,8 @@ key_mechanisms:
 - gut-ovarian-axis
 - estrogen-enterohepatic-recirculation
 - fiber-estrogen-binding
-coaching_scope_notes: Coaches can educate on fiber's role in estrogen clearance and
-  support bowel regularity. HRT decisions are clinician scope.
+coaching_scope_notes: Coaches can guide probiotic-rich foods, fiber intake, and reduction
+  of processed foods to support healthy estrobolome function.
 clinician_scope_notes: Assess estrogen recirculation in context of perimenopause/menopause
   symptoms. HRT and targeted estrobolome interventions require clinical oversight.
 evidence_tier: plausible_emerging
@@ -69,7 +76,11 @@ sources:
     it's so important for us to be mindful of how estrogen is metabolized, because
     if it's recirculated, it has the potential to not only cause symptoms, but can
     also cause some disease progression.
-version: 3
+- id: vitaone-sex-hormones-cheatsheet
+  location: Top Nutrients to Balance Estrogen
+  quote: Improve gut estrogen clearance by modulating the estrobolome and reducing
+    β-glucuronidase activity.
+version: 4
 status: active
-updated_at: '2026-04-29'
+updated_at: '2026-05-02'
 updated_by: shivani

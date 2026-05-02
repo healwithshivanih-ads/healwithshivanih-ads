@@ -1,0 +1,30 @@
+slug: thyroid-supplements-may-contain-undisclosed-t3-t4
+statement: Researchers tested 10 popular thyroid supplements sold online and found
+  that 9 contained either T4, T3, or both, with some delivering T3 >10 mcg/day and
+  T4 up to 91.6 mcg/day.
+evidence_tier: plausible_emerging
+rationale: This is a documented finding (likely the 2013 Kang et al. study in Thyroid
+  journal) highlighting a patient safety risk. Unregulated thyroid hormones in supplements
+  can cause thyrotoxicosis.
+coaching_translation: Many 'thyroid support' supplements sold online actually contain
+  hidden thyroid hormones — which can be dangerous. Always check ingredients and consult
+  a clinician before taking any thyroid-specific supplement.
+out_of_scope_notes: Safety concern — coaches should flag this to clients and always
+  recommend clinician review of any thyroid-labelled supplement.
+caveats:
+- This is a significant safety caveat for coaching practice.
+- Source does not provide full citation for the study referenced.
+linked_to_topics:
+- hypothyroidism
+- hashimotos-hypothyroidism
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-thyroid-toolkit
+  location: Watch out for supplements with a kick
+  quote: Researchers tested 10 popular thyroid supplements sold online and found that
+    9 contained veither T4, T3 or both
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

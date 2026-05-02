@@ -1,0 +1,32 @@
+slug: methylcobalamin
+display_name: Methylcobalamin (Active B12)
+category: vitamin
+forms_available:
+- tablet
+- lozenge
+- liquid
+- capsule
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- methylation-mthfr
+linked_to_claims:
+- methylcobalamin-b12-mthfr-homocysteine
+notes_for_coach: Methylcobalamin is the active, neurologically bioavailable form of
+  B12. Preferred over cyanocobalamin for MTHFR-positive patients. Sublinguals improve
+  absorption. Dosing should be clinician-confirmed.
+notes_for_client: Methylcobalamin is the active form of B12 that your body can use
+  directly to support energy, nerves, and methylation.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet — Foundational Support
+  quote: 'B12: Methylcobalamin'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

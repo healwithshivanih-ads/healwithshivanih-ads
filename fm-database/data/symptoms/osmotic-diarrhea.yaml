@@ -1,0 +1,29 @@
+slug: osmotic-diarrhea
+display_name: Osmotic Diarrhea
+aliases:
+- loose stools
+- watery stool
+- diarrhea after dairy
+- loose motions
+category: gi
+severity: common
+description: Loose, watery stools triggered when unabsorbed solutes (lactose, fructose,
+  polyols) draw water into the intestinal lumen. Characteristic of lactase deficiency
+  and fructose malabsorption.
+when_to_refer: Refer if chronic, severe, or associated with blood/mucus, significant
+  weight loss, or systemic symptoms.
+linked_to_topics:
+- low-fodmap-diet
+- ibs
+- sibo
+linked_to_mechanisms:
+- lactase-deficiency-osmotic-load
+- fructose-malabsorption
+sources:
+- id: vitaone-elimination-diet-cheatsheet
+  location: Functional Medicine Table — Understanding FODMAP Mechanisms
+  quote: Malabsorbed if lactase deficient → osmotic diarrhea, cramps.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

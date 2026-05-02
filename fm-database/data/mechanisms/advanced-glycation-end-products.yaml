@@ -1,0 +1,50 @@
+slug: advanced-glycation-end-products
+display_name: Advanced Glycation End Products (AGEs)
+aliases:
+- AGEs
+- glycation
+- protein glycation
+- glycated proteins
+- HbA1c-related glycation
+category: metabolic
+summary: Sugars and proteins combine to form AGEs when blood glucose is chronically
+  elevated (reflected by HbA1c >5.5). AGEs create inflammation and oxidative stress,
+  promote heart disease and dementia, and accelerate aging.
+upstream_drivers:
+- chronic-hyperglycaemia
+- high-glycaemic-diet
+- hyperglycemia
+- insulin-resistance
+downstream_effects:
+- microvascular-complications
+- endothelial-dysfunction
+- accelerated-atherogenesis
+- insulin-resistance
+- systemic-inflammation
+- oxidative-stress
+- atherosclerosis
+- accelerated-aging
+related_mechanisms:
+- insulin-resistance
+- chronic-inflammation
+- systemic-inflammation
+linked_to_topics:
+- type-2-diabetes
+- blood-sugar-dysfunction
+- cardiovascular-dysfunction
+evidence_tier: strong
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 2.3 — Cellular Glucose Uptake and Intracellular Metabolism
+  quote: Persistent oversupply of glucose directs flux through the hexosamine pathway
+    and promotes formation of advanced glycation end-products (AGEs), both implicated
+    in insulin resistance and vascular injury.
+- id: vitaone-cv-toolkit
+  location: CVD Risk Analysis — Lab Results
+  quote: It measures sugars and proteins combining into glycated proteins called AGEs
+    (advanced glycation end products)...These create inflammation & oxidative stress
+    throughout the body, and promote heart disease and dementia and accelerating aging.
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

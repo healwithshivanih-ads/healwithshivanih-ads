@@ -1,0 +1,34 @@
+slug: rhodiola
+display_name: Rhodiola Rosea
+category: herb
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 200
+    max: 600
+    unit: mg
+timing_options:
+- morning
+- with_breakfast
+- mid_morning
+take_with_food: optional
+linked_to_topics:
+- chronic-inflammation
+- fasting-immune-health
+linked_to_claims: []
+notes_for_coach: Stimulating adaptogen — best taken in the morning. May worsen insomnia
+  if taken late. Useful in fatigue-dominant presentations with stress axis involvement.
+notes_for_client: Rhodiola is an energizing adaptogen best taken in the morning to
+  support your stress response and reduce fatigue.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Inflammation Cheatsheet — Page 02
+  quote: Use adaptogens (ashwagandha, rhodiola)
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

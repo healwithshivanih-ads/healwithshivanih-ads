@@ -1,0 +1,36 @@
+slug: polyol-fermentation-motility
+display_name: Polyol Fermentation & Gut Motility Slowing
+aliases:
+- sorbitol fermentation
+- mannitol fermentation
+- xylitol intolerance
+category: gut
+summary: Sugar alcohols (sorbitol, mannitol, xylitol) are rapidly fermented by colonic
+  bacteria and also exert an osmotic effect that slows intestinal motility, resulting
+  in prolonged distension, bloating, and abdominal pain. Found in artificial sweeteners,
+  avocado, and mushrooms.
+upstream_drivers:
+- polyol-rich diet
+- dysbiosis
+- slow gut motility
+downstream_effects:
+- bloating
+- abdominal-pain
+- slowed-gut-motility
+related_mechanisms:
+- gut-fermentation-dysbiosis
+linked_to_topics:
+- low-fodmap-diet
+- ibs
+- sibo
+evidence_tier: strong
+sources:
+- id: vitaone-elimination-diet-cheatsheet
+  location: Functional Medicine Table — Understanding FODMAP Mechanisms / Polyols
+    row
+  quote: Ferment rapidly; slow motility → bloating, pain. Found in artificial sweeteners,
+    avocado, mushrooms - test tolerance.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

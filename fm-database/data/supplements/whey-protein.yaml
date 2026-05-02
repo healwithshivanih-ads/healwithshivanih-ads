@@ -1,0 +1,38 @@
+slug: whey-protein
+display_name: Whey Protein Powder
+category: other
+forms_available:
+- powder
+evidence_tier: plausible_emerging
+notes_for_coach: Used as a protein source in the Cardio Smoothie (2 tablespoons).
+  Suitable for most adults; dairy-sensitive clients should use plant-based alternatives
+  (soy, pea).
+notes_for_client: Adding a scoop of protein powder to your smoothie helps keep you
+  full and supports muscle health.
+timing_options:
+- with_breakfast
+- morning
+- with_lunch
+take_with_food: optional
+linked_to_topics:
+- beta-blocker-deprescribing
+- cardiovascular-dysfunction
+- cardiometabolic-health
+typical_dose_range:
+  powder:
+    min: 14
+    max: 28
+    unit: g
+linked_to_mechanisms: []
+linked_to_claims: []
+sources:
+- id: vitaone-cv-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
+  quote: Whey protein
+- id: vitaone-cardiometabolic-toolkit
+  location: Building a Better Smoothie — Protein
+  quote: Whey powder – 2 T
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

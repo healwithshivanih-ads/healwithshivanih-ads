@@ -1,0 +1,35 @@
+slug: diamine-oxidase-deficiency
+display_name: Diamine Oxidase (DAO) Deficiency
+aliases:
+- DAO insufficiency
+- histamine degradation impairment
+category: metabolic
+summary: Reduced activity of the enzyme diamine oxidase, which normally degrades ingested
+  histamine in the gut mucosa, leading to elevated circulating histamine and multi-system
+  histamine intolerance symptoms after consuming histamine-rich or histamine-releasing
+  foods.
+upstream_drivers:
+- gut-mucosal-damage
+- genetic-polymorphism
+- certain-medications
+downstream_effects:
+- histamine-overload
+- headache
+- skin-flushing
+- gi-symptoms
+related_mechanisms:
+- mast-cell-degranulation
+- immune-food-reactivity
+linked_to_topics:
+- histamine-intolerance
+- elimination-diet
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: Histamine Food Triggers
+  quote: A food may contribute to an individual's histamine load by containing histamine,
+    releasing histamine, or inhibiting enzymes that break down histamine in the body.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

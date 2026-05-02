@@ -1,0 +1,38 @@
+slug: salicylate-sensitivity
+display_name: Salicylate Intolerance
+aliases:
+- salicylate sensitivity
+- aspirin-sensitive enteropathy
+summary: Adverse reactions to naturally occurring salicylates in foods (fruits, vegetables,
+  spices) causing GI inflammation, respiratory symptoms, and skin reactions in sensitive
+  individuals.
+common_symptoms:
+- hives
+- bloating
+- diarrhea
+- nasal-polyps
+- asthma
+- sinusitis
+red_flags:
+- aspirin-exacerbated respiratory disease
+- nasal polyps with asthma — ENT/allergy referral
+related_topics:
+- elimination-diet
+- histamine-intolerance
+key_mechanisms:
+- arachidonic-acid-pathway-dysregulation
+- immune-food-reactivity
+coaching_scope_notes: Coaches can support low-salicylate food choices during elimination
+  phase. Aspirin-exacerbated disease requires physician management.
+evidence_tier: plausible_emerging
+clinician_scope_notes: ''
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: Salicylate Food Triggers
+  quote: Salicylates in foods may cause a reaction in a small number of individuals.
+    They may cause symptoms when consumed in large doses and should be avoided by
+    those who are salicylate-intolerant.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,39 @@
+slug: t3-conversion-disorder
+display_name: T3 Conversion Disorder / Functional Hypothyroidism
+aliases:
+- functional hypothyroidism
+- cellular hypothyroidism
+- poor T4 to T3 conversion
+summary: A functional state where the thyroid produces adequate T4 but peripheral
+  conversion to active T3 is impaired, resulting in hypothyroid symptoms despite 'normal'
+  TSH and T4 labs. Linked to stress, inflammation, gut dysfunction, and nutrient deficiencies.
+common_symptoms:
+- fatigue
+- brain-fog
+- weight-gain
+- cold-intolerance
+- depression
+- hair-thinning
+red_flags:
+- Worsening symptoms despite normal TSH on medication
+related_topics:
+- hypothyroidism
+- hashimotos-thyroiditis
+key_mechanisms:
+- impaired-t4-to-t3-conversion
+- hpa-axis-dysregulation
+- reverse-t3-dominance
+coaching_scope_notes: Address stress, gut health, selenium and zinc status. Low fT3
+  with normal TSH/T4 is a key coaching flag — refer for labs and clinician oversight.
+clinician_scope_notes: 'Lab pattern: Normal TSH, normal T4, but low Free T3. Consider
+  T4+T3 combination therapy. Check Free T3/Free T4 ratio.'
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 5: Disorders of the Thyroid'
+  quote: 'Thyroid gland makes adequate T4, but the body cannot efficiently convert
+    it to active T3. Labs: Normal TSH, normal T4, but low T3.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

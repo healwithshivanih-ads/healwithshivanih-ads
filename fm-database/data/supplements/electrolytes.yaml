@@ -1,0 +1,34 @@
+slug: electrolytes
+display_name: Electrolytes (Calcium, Magnesium, Sodium, Potassium, Chloride)
+category: mineral
+forms_available:
+- powder
+- capsule
+- tablet
+- liquid
+timing_options:
+- morning
+- mid_morning
+- mid_afternoon
+take_with_food: optional
+linked_to_topics:
+- intermittent-fasting
+- cardiometabolic-health
+linked_to_claims:
+- electrolyte-supplementation-recommended-during-fasting
+notes_for_coach: Recommended during fasting days per practitioner guidance. Individual
+  electrolyte needs vary. Flag for clinician to specify type and dose, especially
+  for clients with hypertension, kidney disease, or on diuretics.
+notes_for_client: On fasting days, keeping your electrolytes balanced with a clinician-recommended
+  supplement can help prevent dizziness and fatigue.
+evidence_tier: confirm_with_clinician
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cardiometabolic-toolkit
+  location: Intermittent Fasting — Personalized Recommendations
+  quote: Electrolytes (calcium, magnesium, sodium, potassium, chloride)
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

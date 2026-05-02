@@ -1,0 +1,32 @@
+slug: omega3-epa-dha-mood-anti-inflammatory
+statement: Omega-3 fatty acids (EPA+DHA) at 1–3 g/day exert anti-inflammatory effects,
+  modulate serotonin/dopamine receptor expression, and improve symptoms of depression
+  and anxiety, particularly at an EPA:DHA ratio of 2:1.
+evidence_tier: plausible_emerging
+rationale: Multiple meta-analyses support EPA-dominant omega-3 supplementation for
+  depression (Mocking et al., 2016). Anti-inflammatory mechanisms are well characterized.
+  Plausible_emerging rather than strong as consensus on dosing and specific indications
+  is still evolving.
+coaching_translation: A quality EPA/DHA supplement (1–3 g/day with more EPA than DHA)
+  can support mood alongside a fish-rich diet.
+caveats:
+- Source is a synthesis document.
+- Warfarin + fish oil + aspirin combination carries bleeding risk — clinician oversight
+  required.
+linked_to_topics:
+- nutrient-deficiency-depression
+- knee-pain
+linked_to_supplements:
+- omega-3-epa-dha
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: How Nutrient Deficiencies (B12, Folate, Omega-3, Magnesium) Mimic Depression
+  quote: 'EPA:DHA ratio 2:1 for mood disorders
+
+    -Use 1–3g/day EPA-DHA blend + 10-15 gram Flaxseed Oil for at least 3 months.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

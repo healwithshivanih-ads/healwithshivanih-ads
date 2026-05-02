@@ -1,0 +1,26 @@
+slug: resistance-training-glut4-expression
+statement: Resistance training improves GLUT4 receptor expression in muscle cells,
+  enhancing glucose uptake independent of insulin.
+evidence_tier: strong
+rationale: Exercise physiology literature (multiple RCTs and meta-analyses) consistently
+  demonstrates that resistance training upregulates GLUT4 translocation in skeletal
+  muscle, improving insulin-independent glucose disposal.
+coaching_translation: Lifting weights or doing resistance exercise is one of the most
+  powerful tools for blood sugar — it literally trains your muscles to absorb glucose
+  better.
+linked_to_topics:
+- insulin-resistance
+linked_to_mechanisms:
+- insulin-resistance
+- ampk-activation
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: vitaone-blood-sugar-cheatsheet
+  location: Insulin Resistance Cheatsheet — Therapeutic Considerations
+  quote: Resistance Training improves GLUT4 receptor expression
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

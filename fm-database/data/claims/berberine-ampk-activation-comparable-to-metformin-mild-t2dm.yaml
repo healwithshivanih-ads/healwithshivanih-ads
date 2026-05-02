@@ -1,0 +1,32 @@
+slug: berberine-ampk-activation-comparable-to-metformin-mild-t2dm
+statement: Berberine activates AMPK and has been described as comparable to metformin
+  in mild T2DM.
+evidence_tier: plausible_emerging
+rationale: Several RCTs (including Yin et al., 2008 in Metabolism) support berberine's
+  glucose-lowering effect via AMPK activation. Described as 'comparable to metformin'
+  is an FM-context claim that warrants clinician oversight.
+coaching_translation: Berberine is a plant compound that helps cells use glucose more
+  efficiently, but because it can lower blood sugar significantly, always work with
+  a clinician before using it.
+out_of_scope_notes: Dosing and use alongside medications (especially metformin, hypoglycaemics)
+  is clinician scope.
+linked_to_topics:
+- insulin-resistance
+- type-2-diabetes
+linked_to_mechanisms:
+- insulin-resistance
+linked_to_supplements:
+- berberine
+caveats:
+- Source is FM synthesis. Do not use alongside glucose-lowering medications without
+  clinician supervision. 'Comparable to metformin' is a strong claim requiring verification
+  against primary RCTs.
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 7.2 — Targeted Supplementation
+  quote: 'Berberine: AMPK activation; comparable to metformin in mild T2DM. 500 mg
+    twice a day.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

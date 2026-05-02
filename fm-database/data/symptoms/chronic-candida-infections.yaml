@@ -1,0 +1,26 @@
+slug: chronic-candida-infections
+display_name: Chronic Candida Infections
+aliases:
+- recurrent yeast infections
+- candida overgrowth symptoms
+- fungal overgrowth
+category: gi
+severity: common
+description: Recurring candida infections of the gut or mucous membranes, associated
+  with low stomach acid, dysbiosis, or high-sugar diet.
+when_to_refer: Systemic candidiasis requires medical management.
+linked_to_topics:
+- candida-overgrowth
+- hypochlorhydria
+- gut-dysfunction
+linked_to_mechanisms:
+- gut-dysbiosis
+- hypochlorhydria-mechanism
+sources:
+- id: vitaone-gut-toolkit
+  location: Testing for Low Stomach Acidity — Common Symptoms of Hypochlorhydria
+  quote: Chronic candida infections
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

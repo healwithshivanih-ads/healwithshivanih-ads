@@ -1,0 +1,32 @@
+slug: mindfulness
+display_name: Mindfulness
+aliases:
+- mindful awareness
+- present-moment awareness
+summary: The practice of deliberately directing attention to present-moment experience,
+  including mindful breathing exercises, to reduce stress, improve concentration,
+  and support emotional regulation.
+common_symptoms:
+- poor-concentration
+- anxiety
+- tension
+red_flags: []
+related_topics:
+- stress-management
+- self-care
+key_mechanisms:
+- parasympathetic-activation
+coaching_scope_notes: Coaches can teach the 4-7-8 breathing technique and encourage
+  daily mindfulness practice.
+evidence_tier: plausible_emerging
+clinician_scope_notes: ''
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Mindful Breathing
+  quote: When you mindfully incorporate abdominal breathing exercises into your daily
+    routine, you may find that focusing your attention on your breath during stressful
+    moments becomes easier to do.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

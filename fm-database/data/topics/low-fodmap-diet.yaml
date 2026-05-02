@@ -1,0 +1,63 @@
+slug: low-fodmap-diet
+display_name: Low FODMAP Diet
+aliases:
+- FODMAP elimination
+- FODMAP diet
+- fermentable carbohydrate restriction
+- low fermentable carbohydrate diet
+summary: A 2–6 week dietary protocol restricting Fermentable Oligosaccharides, Disaccharides,
+  Monosaccharides and Polyols to reduce IBS-type symptoms, followed by systematic
+  reintroduction to identify personal triggers and widen diet variety.
+common_symptoms:
+- bloating
+- abdominal-gas
+- abdominal-cramping
+- osmotic-diarrhea
+- acid-reflux
+- abdominal-pain
+- flatulence
+- diarrhea
+- constipation
+- urgency-to-defecate
+red_flags:
+- Symptoms persisting despite strict low-FODMAP compliance (consider SIBO testing
+  or IBD workup)
+- Significant unintentional weight loss
+- Blood in stool
+- failure to improve after 6 weeks
+- unintentional weight loss
+- rectal bleeding
+related_topics:
+- sibo
+- ibs
+- gut-dysbiosis
+- leaky-gut
+- elimination-diet
+- gut-brain-axis
+key_mechanisms:
+- gut-fermentation-dysbiosis
+- lactase-deficiency-osmotic-load
+- fructose-malabsorption
+- colonic-fermentation
+- osmotic-fluid-shift
+- gut-motility-dysregulation
+coaching_scope_notes: Coaches can implement portion-based food charts, meal plans,
+  and symptom trackers. The reintroduction phase should be monitored; complex presentations
+  need dietitian or clinician supervision.
+clinician_scope_notes: Rule out celiac and IBD before starting Low FODMAP. Dietitian-supervised
+  reintroduction recommended for complex cases.
+evidence_tier: strong
+sources:
+- id: vitaone-elimination-diet-cheatsheet
+  location: FODMAP Diet Cheatsheet — Introduction
+  quote: FODMAPs = Fermentable Oligo-, Di-, Mono-saccharides And Polyols. They're
+    not 'bad foods' - they're poorly absorbed carbs that ferment and feed dysbiotic
+    bacteria, driving IBS, SIBO, and bloating.
+- id: vitaone-elimination-diet-toolkit
+  location: Low Fodmap Detailed Chart (Indian Version)
+  quote: This Low FODMAP chart is a practical, portion-based guide for clinicians
+    and patients to reduce IBS-type symptoms during the short elimination phase.
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

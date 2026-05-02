@@ -1,0 +1,36 @@
+slug: lps-signaling
+display_name: LPS / Endotoxin Signaling
+aliases:
+- endotoxemia
+- lipopolysaccharide signaling
+- TLR-4 activation
+category: immune
+summary: Bacterial lipopolysaccharides (LPS) from gram-negative bacteria translocate
+  through a permeable gut wall into circulation, activating TLR-4 receptors and triggering
+  metabolic and systemic inflammation.
+upstream_drivers:
+- leaky-gut
+- gut-dysbiosis-mechanism
+downstream_effects:
+- metabolic-inflammation
+- nfkb-activation
+- fatty-liver
+- obesity
+- diabetes
+related_mechanisms:
+- leaky-gut
+- nfkb-activation
+- zonulin-upregulation
+linked_to_topics:
+- leaky-gut
+- gut-dysbiosis
+- ibd
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Leaky Gut & Inflammation — Why Leaky Gut Creates Chronic Inflammation
+  quote: LPS signaling — Activates TLR-4 pathway — Metabolic inflammation
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

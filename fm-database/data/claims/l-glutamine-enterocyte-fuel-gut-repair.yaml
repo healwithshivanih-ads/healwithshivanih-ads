@@ -1,0 +1,28 @@
+slug: l-glutamine-enterocyte-fuel-gut-repair
+statement: L-Glutamine serves as the primary fuel for intestinal enterocytes and supports
+  tight junction healing, making it a core supplement for leaky gut repair.
+evidence_tier: plausible_emerging
+rationale: L-Glutamine as enterocyte fuel is well-established in parenteral nutrition
+  literature. Its role in tight junction repair has clinical trial support (Rapin
+  & Wiernsperger), though RCT consensus in oral supplementation for leaky gut is emerging.
+coaching_translation: L-Glutamine is like food for the cells lining your gut — it
+  helps seal the lining and reduce inflammation.
+caveats:
+- Dosing (5-10g/day for SIBO/gut repair) should be confirmed with clinician. Avoid
+  in cancer patients without medical supervision.
+linked_to_topics:
+- leaky-gut
+- sibo
+- gerd
+linked_to_supplements:
+- l-glutamine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Leaky Gut & Inflammation — Supplement Strategy
+  quote: L-Glutamine — Enterocyte fuel — Core gut repair
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

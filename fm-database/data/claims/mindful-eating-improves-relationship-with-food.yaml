@@ -1,0 +1,26 @@
+slug: mindful-eating-improves-relationship-with-food
+statement: Mindful and intuitive eating practices can improve one's relationship with
+  food and body, and help identify emotional versus physical hunger cues.
+evidence_tier: plausible_emerging
+rationale: Yu et al. 2020 (J Altern Complement Med) systematic review on mindfulness-based
+  interventions for problematic eating behaviors cited in document.
+coaching_translation: Learning to eat mindfully — slowing down, removing distractions,
+  and tuning into hunger and fullness — can transform your relationship with food
+  over time.
+caveats:
+- Takes weeks to months of consistent practice to establish.
+- Not a replacement for clinical treatment of eating disorders.
+linked_to_topics:
+- mindful-intuitive-eating
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-nutrition-toolkit
+  location: Mindful and Intuitive Eating
+  quote: Mindful and intuitive eating can help improve your relationship with food
+    and your body.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,46 @@
+slug: nafld
+display_name: Non-Alcoholic Fatty Liver Disease (NAFLD)
+aliases:
+- fatty liver
+- hepatic steatosis
+- non-alcoholic fatty liver
+- NAFLD
+summary: Accumulation of fat in the liver not caused by alcohol. Low-carb diets decrease
+  hepatic lipogenesis and inflammation. Supported by omega-3s, NAC, and liver-supportive
+  foods.
+common_symptoms:
+- fatigue
+- right-upper-quadrant-discomfort
+- brain-fog
+- metabolic-syndrome
+red_flags:
+- elevated-alt-ast
+- cirrhosis-progression
+- hepatic-encephalopathy
+related_topics:
+- metabolic-syndrome
+- insulin-resistance
+- liver-detoxification
+- low-carb-diet
+key_mechanisms:
+- insulin-resistance
+- hepatic-lipid-accumulation
+- oxidative-stress
+- hepatic-lipogenesis
+- systemic-inflammation
+coaching_scope_notes: Recommend low-carb food choices, omega-3-rich foods, cruciferous
+  vegetables, and beetroot. NAC is clinician scope.
+clinician_scope_notes: Order LFT, USG, Fasting Insulin, Lipid Profile, HbA1c. Key
+  is reducing hepatic fat via insulin sensitisation.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Liver Disease Cheatsheet
+  quote: Insulin resistance, high fructose/sugar intake, obesity, inflammation
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: Functional Medicine Clinical Applications
+  quote: Decreases hepatic lipogenesis and inflammation
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

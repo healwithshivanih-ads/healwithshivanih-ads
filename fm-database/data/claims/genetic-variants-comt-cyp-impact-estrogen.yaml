@@ -1,0 +1,28 @@
+slug: genetic-variants-comt-cyp-impact-estrogen
+statement: Genetic variants in COMT, CYP1A1, CYP1B1, and GST may impair estrogen detoxification;
+  diet and lifestyle modifications can be supportive for carriers of these variants.
+evidence_tier: plausible_emerging
+rationale: Functional genomics plausibility is strong; these enzymes are directly
+  involved in estrogen Phase I and II metabolism. Clinical utility of testing and
+  intervention is emerging, not RCT-established.
+coaching_translation: Some people have gene variants that slow estrogen clearance
+  — nutrition and lifestyle strategies are especially important for them.
+out_of_scope_notes: Genetic testing interpretation and variant-specific supplement
+  protocols require clinician oversight.
+caveats:
+- Source is expert synthesis. Actionable intervention data for specific genotypes
+  is still emerging.
+linked_to_topics:
+- estrogen-metabolism
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-sex-hormones-toolkit
+  location: Estrogen Metabolism — Disrupts Healthy Estrogen Metabolism — Page 03
+  quote: Several genetic variants related to detoxification may impact estrogen metabolism,
+    including COMT, CYP1A1, CYP1B1, and GST. Research shows that diet and lifestyle
+    modifications can be supportive for individuals with some of these genetic variants.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -4,6 +4,7 @@ category: herb
 forms_available:
 - capsule
 - powder
+- tablet
 typical_dose_range:
   capsule:
     min: 300
@@ -15,20 +16,49 @@ typical_dose_range:
     unit: mg
 timing_options:
 - morning
+- with_breakfast
+- evening
+- bedtime
 take_with_food: optional
-notes_for_coach: KSM-66 standardised extract; commonly used for adrenal fatigue, thyroid
-  support, and anxiety; verify appropriateness for hypothyroid clients with clinician.
+notes_for_coach: Key adaptogen for HPA axis support. Supports cortisol regulation,
+  DHEA recovery, and thyroid function. Well-researched. Avoid in active hyperthyroidism.
+  Verify dose with clinician.
 evidence_tier: plausible_emerging
-linked_to_topics: []
+linked_to_topics:
+- thyroid
+- low-progesterone
+- pcos
+- perimenopause
+- adrenal-dysfunction
+- hpa-axis-dysregulation
+- anxiety
+- insomnia
 linked_to_mechanisms: []
-linked_to_claims: []
-notes_for_client: ''
+linked_to_claims:
+- chronic-stress-elevates-rt3-functional-hypothyroidism
+- ashwagandha-lowers-cortisol-improves-testosterone
+- pregnenolone-steal-cortisol-reduces-progesterone
+- adaptogens-rebalance-hpa-axis
+- low-dhea-high-cortisol-indicates-adrenal-burnout
+- chronic-cortisol-elevation-drives-insulin-resistance
+notes_for_client: Ashwagandha is an ancient herb that helps your body adapt to stress
+  and supports healthy cortisol balance.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
   quote: Ashwagandha (KSM-66) - Stress resilience, adrenal support - 300–600 mg/day
     - Morning
-version: 1
+- id: vitaone-thyroid-cheatsheet
+  location: Clinical Action Steps — Reduce Reverse T3
+  quote: Adaptogens (ashwagandha, rhodiola), magnesium Glycinate, good sleep hygiene
+- id: vitaone-sex-hormones-cheatsheet
+  location: Progesterone Is Anti-Inflammatory — Supplement Approach
+  quote: Adaptogens (Ashwagandha, Rhodiola) → Support HPA axis and ovulation.
+- id: vitaone-adrenal-cheatsheet
+  location: Clinical Interventions — Integrative Framework (p.12)
+  quote: 'Neuroendocrine Support: Rebalance HPA axis. Ashwagandha, Phosphatidylserine,
+    Rhodiola, Liposomal Vitamin C, Active B5.'
+version: 4
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-02'
 updated_by: shivani

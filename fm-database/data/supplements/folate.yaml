@@ -1,0 +1,52 @@
+slug: folate
+display_name: Folate (Vitamin B9 / Methylfolate)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+evidence_tier: strong
+notes_for_coach: Methylfolate (5-MTHF) is the active form, preferred for those with
+  MTHFR variants. Folic acid is synthetic and requires enzymatic conversion. Critical
+  in pregnancy for neural tube defect prevention.
+notes_for_client: Folate is essential for cell growth, brain health, and a healthy
+  pregnancy. Leafy greens and legumes are the best food sources. If you have the MTHFR
+  gene variant, methylfolate supplements may work better for you.
+timing_options:
+- with_breakfast
+- morning
+take_with_food: optional
+linked_to_topics:
+- drug-induced-nutrient-depletion
+- cardiovascular-dysfunction
+- folate-deficiency
+- mitochondrial-health-nutrition
+linked_to_claims:
+- high-homocysteine-triples-heart-attack-risk
+- metformin-depletes-b12-folate-coq10
+- folate-mthfr-natural-vs-folic-acid
+- mthfr-variants-respond-better-to-methylcobalamin
+- b-vitamins-improve-cognitive-function-mild-ci
+linked_to_mechanisms:
+- elevated-homocysteine
+typical_dose_range:
+  capsule:
+    min: 400
+    max: 800
+    unit: mcg
+  tablet:
+    min: 400
+    max: 800
+    unit: mcg
+sources:
+- id: vitaone-cv-toolkit
+  location: CVD Risk Analysis — Lab Results
+  quote: Homocysteine levels is a measure of folic acid deficiency.
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Folate'
+  quote: Folate helps the body produce and maintain new cells. This is especially
+    important during periods of rapid growth and cell division, such as infancy and
+    pregnancy.
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

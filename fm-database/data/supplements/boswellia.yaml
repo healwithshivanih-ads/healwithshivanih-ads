@@ -1,0 +1,40 @@
+slug: boswellia
+display_name: Boswellia (Boswellia serrata)
+category: herb
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 300
+    max: 500
+    unit: mg
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- chronic-inflammation
+- autoimmune-disease
+- knee-pain
+linked_to_claims:
+- quercetin-boswellia-resveratrol-anti-inflammatory
+- curcumin-boswellia-joint-inflammation
+notes_for_coach: AKBA-standardized extract (e.g., 5-Loxin, AprèsFlex) has RCT evidence
+  for OA knee pain. Combine with curcumin for synergistic anti-inflammatory effect.
+  Generally well tolerated.
+notes_for_client: Boswellia is a resin from Indian frankincense tree with anti-inflammatory
+  properties. Best taken with a fatty meal.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Autoimmune Disease Cheatsheet — Page 25
+  quote: Boswellia, resveratrol, quercetin = powerful anti-inflammatory tools.
+- id: vitaone-nutrition-cheatsheet
+  location: Knee Pain Cheatsheet
+  quote: Collagen, Bromelain, Vitamin C, Boswellia
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

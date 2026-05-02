@@ -1,0 +1,33 @@
+slug: 2-oh-estrogen-pathway-protective-anti-proliferative
+statement: The 2-OH estrogen metabolite pathway is anti-proliferative and associated
+  with low cancer risk, while 4-OH metabolites can damage DNA and 16-OH metabolites
+  promote tissue growth and fibroids.
+evidence_tier: plausible_emerging
+rationale: The 2:16-OH ratio as a marker of estrogen cancer risk has been investigated
+  in observational studies (notably Bradlow et al.), though its use as a definitive
+  cancer biomarker is not yet consensus. 4-OH catecholestrogens forming DNA adducts
+  is a mechanistically established concern.
+coaching_translation: Not all estrogen is the same — the 'safe' form (2-OH) protects
+  you, while other forms can promote tissue overgrowth. Diet and detox support help
+  keep the safe form dominant.
+caveats:
+- Source is expert synthesis without specific RCT citations
+- Ratio testing (DUTCH or serum metabolites) requires clinician interpretation
+- 2:16-OH as a cancer risk marker is not universally accepted
+linked_to_topics:
+- estrogen-dominance
+- perimenopause
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: Estrogen Detoxification Pathways (2-OH, 4-OH, 16-OH) Cheatsheet
+  quote: '2-OH (Protective): Safely metabolizes estrogen — Anti-proliferative, low
+    cancer risk. 4-OH (Reactive): Can damage DNA if not neutralized — Linked to breast/uterine
+    cancer. 16-OH (Proliferative): Binds strongly to estrogen receptors — Promotes
+    tissue growth, PMS, fibroids.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

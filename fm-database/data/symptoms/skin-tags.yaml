@@ -1,0 +1,22 @@
+slug: skin-tags
+display_name: Skin Tags
+aliases:
+- acrochordons
+- skin growths
+category: skin
+severity: common
+description: Small benign skin growths often associated with hyperinsulinemia and
+  insulin resistance.
+linked_to_topics:
+- insulin-resistance
+linked_to_mechanisms:
+- insulin-resistance
+when_to_refer: ''
+sources:
+- id: vitaone-blood-sugar-cheatsheet
+  location: Insulin Resistance Cheatsheet — Clinical Symptoms
+  quote: Skin tags
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

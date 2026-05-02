@@ -1,0 +1,39 @@
+slug: essential-fatty-acids
+display_name: Essential Fatty Acids (Omega-3 & Omega-6)
+aliases:
+- EFAs
+- omega-3
+- omega-6
+- EPA DHA
+- ALA
+summary: EFAs cannot be synthesized by the body and must be obtained through diet.
+  Omega-3s (ALA, EPA, DHA) are anti-inflammatory; omega-6s (LA, AA) are pro-inflammatory
+  at excess ratios. A dietary ratio of 4:1 (omega-6:omega-3) or lower may reduce inflammation
+  and chronic disease risk. Emphasis on EPA/DHA from fatty fish.
+common_symptoms:
+- joint-pain
+- brain-fog
+- dry-skin
+red_flags: []
+related_topics:
+- mitochondrial-health-nutrition
+- fish-and-toxins-safe-food
+- cardiovascular-health
+key_mechanisms:
+- omega-6-omega-3-ratio
+- eicosanoid-signaling
+coaching_scope_notes: Coaches can educate on food sources of EPA/DHA and the importance
+  of a balanced omega-6:omega-3 ratio.
+clinician_scope_notes: Supplemental fish oil dosing (EPA/DHA) should be individualized;
+  higher doses may affect bleeding and require monitoring.
+evidence_tier: strong
+sources:
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Essential Fatty Acids'
+  quote: Some research suggests that ratios 4:1 and lower may reduce inflammation
+    and lower the risk of chronic disease. Emphasis should be placed on increasing
+    EPA and DHA omega-3 consumption.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

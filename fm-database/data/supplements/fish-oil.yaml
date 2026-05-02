@@ -1,0 +1,34 @@
+slug: fish-oil
+display_name: Fish Oil (Omega-3)
+category: fatty_acid
+forms_available:
+- capsule
+- liquid
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- gut-dysfunction
+- gut-brain-axis
+linked_to_claims:
+- omega-3s-reduce-gut-inflammation
+- omega-3s-alleviate-depression-anxiety
+notes_for_coach: Listed in both the 5R Repair step and gut-brain axis nutrition section.
+  Anti-inflammatory properties relevant to gut and brain health.
+notes_for_client: Omega-3s from fish oil or fatty fish (salmon, sardines, mackerel)
+  help reduce inflammation in the gut and support brain health.
+evidence_tier: strong
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-toolkit
+  location: 'Gut-Brain Axis: Nutrition''s Impact on Mental Health — Omega-3 Fatty
+    Acids'
+  quote: Omega-3 fatty acids, found in fatty fish (salmon, mackerel, sardines) & plant
+    sources like flaxseeds & walnuts, have potent anti-inflammatory properties.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,28 @@
+slug: bpa-plasticizers-disrupt-endocrine-function
+statement: Bisphenol-A (BPA) and other plasticizers from canned foods and plastic
+  containers disrupt endocrine gland function.
+evidence_tier: plausible_emerging
+rationale: BPA's estrogenic activity and endocrine-disrupting effects are among the
+  most studied in environmental toxicology; evidence includes epidemiological studies,
+  animal data, and some human exposure studies. Consensus on the magnitude of risk
+  at low exposures is still debated.
+coaching_translation: Minimizing canned food and plastic food storage — especially
+  for acidic foods — is a practical step to reduce hormone-disrupting chemical exposure.
+caveats:
+- Mechanistic evidence is strong; human clinical causation at typical exposure levels
+  is still debated by regulatory bodies.
+linked_to_topics:
+- toxic-body-burden
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-toolkit
+  location: Avoiding Environmental Toxins
+  quote: Limit exposure to canned foods (e.g., meat, fish) and plastic bottles/containers
+    of water and high-acid foods due to the presence of toxins like bisphenol-A and
+    other plasticizers that have been shown to disrupt the endocrine gland function.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

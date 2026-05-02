@@ -1,0 +1,30 @@
+slug: vitamin-d-rdas-may-be-too-low
+statement: Current RDAs for vitamin D (600 IU) may be too low for optimal non-skeletal
+  health; higher intakes are often needed to maintain adequate blood levels.
+evidence_tier: plausible_emerging
+rationale: Widely discussed in functional medicine and supported by observational
+  data, though optimal serum levels are debated. Document does not cite a specific
+  RCT for this claim.
+coaching_translation: The official recommendation for vitamin D is a starting point,
+  but many people need more — especially those with limited sun exposure. A clinician
+  can check your blood level and recommend the right dose.
+caveats:
+- Optimal dosing above RDA requires clinician assessment and lab values.
+- Vitamin D is fat-soluble and can accumulate to toxic levels.
+out_of_scope_notes: Specific supplementation dosing above RDA is out of coaching scope
+  — requires clinician.
+linked_to_topics:
+- vitamin-d-deficiency
+linked_to_supplements:
+- vitamin-d
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Vitamin D'
+  quote: Research indicates that the current RDAs may be too low for supporting optimal,
+    non-skeletal health. Much higher intake may be required to maintain adequate blood
+    levels.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

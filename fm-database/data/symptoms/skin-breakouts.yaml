@@ -1,0 +1,29 @@
+slug: skin-breakouts
+display_name: Skin Breakouts / Acne
+aliases:
+- skin detox reactions
+- breakouts
+- pimples
+- skin congestion
+category: skin
+severity: common
+description: Skin eruptions associated with liver-gut detox burden, estrogen dominance,
+  and poor Phase II and III elimination. Functional approach focuses on liver and
+  gut detox support.
+when_to_refer: Refer for severe cystic acne, hormonal workup, or if unresponsive to
+  dietary intervention.
+linked_to_topics:
+- liver-detoxification
+- estrogen-dominance
+linked_to_mechanisms:
+- phase-ii-conjugation
+- phase-iii-elimination
+- impaired-methylation
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Functional Detox Phases — Clinical Tips
+  quote: Skin Breakouts / Acne — Liver + gut detox — Beets + crucifers + flaxseed.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

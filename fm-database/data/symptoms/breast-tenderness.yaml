@@ -1,0 +1,27 @@
+slug: breast-tenderness
+display_name: Breast Tenderness / Fibrocystic Breasts
+aliases:
+- mastalgia
+- breast pain
+- tender breasts
+- fibrocystic breast changes
+category: hormonal
+severity: common
+description: Cyclical or persistent breast pain/tenderness commonly associated with
+  estrogen dominance, elevated prolactin, or high 16-OH estrogen metabolite burden.
+when_to_refer: Refer for new unilateral lump, skin changes, or post-menopausal breast
+  pain for imaging.
+linked_to_topics:
+- estrogen-dominance
+- low-progesterone
+linked_to_mechanisms:
+- estrogen-enterohepatic-recirculation
+- low-progesterone
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: Estrogen Detoxification Pathways — When You See These Patterns Clinically
+  quote: PMS, fibroids, breast tenderness.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

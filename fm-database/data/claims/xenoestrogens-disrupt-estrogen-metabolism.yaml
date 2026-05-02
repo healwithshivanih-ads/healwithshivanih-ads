@@ -1,0 +1,26 @@
+slug: xenoestrogens-disrupt-estrogen-metabolism
+statement: Xenoestrogens — chemicals in personal care and home products that mimic
+  estrogen — disrupt healthy estrogen metabolism.
+evidence_tier: plausible_emerging
+rationale: Document references Teitelbaum et al. (Reprod Toxicol, 2015) on endocrine
+  disrupting chemicals in breast cancer. Xenoestrogen disruption of hormone signaling
+  is well-documented in research, though human intervention data is limited.
+coaching_translation: Swapping conventional personal care and cleaning products for
+  cleaner alternatives (check ewg.org) reduces your daily xenoestrogen load.
+caveats:
+- Epidemiological associations exist but establishing individual causality is difficult.
+  Environmental burden is cumulative.
+linked_to_topics:
+- estrogen-metabolism
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-sex-hormones-toolkit
+  location: Estrogen Metabolism — Disrupts Healthy Estrogen Metabolism — Page 03
+  quote: Xenoestrogens are chemicals that mimic estrogen in the body. Many personal
+    care and home products contain chemicals that can disrupt healthy estrogen metabolism.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

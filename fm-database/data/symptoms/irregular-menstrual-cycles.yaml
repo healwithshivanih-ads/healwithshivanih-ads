@@ -1,0 +1,31 @@
+slug: irregular-menstrual-cycles
+display_name: Irregular Menstrual Cycles
+aliases:
+- irregular periods
+- heavy periods
+- menstrual irregularity
+- frequent periods
+category: hormonal
+severity: common
+description: Menstrual irregularities including longer, heavier, or more frequent
+  cycles caused by the effect of thyroid hormone deficiency on the hypothalamic-pituitary-ovarian
+  axis.
+when_to_refer: Refer if cycles are severely disrupted or associated with infertility.
+linked_to_topics:
+- hypothyroidism
+- hashimotos-thyroiditis
+- hashimotos-hypothyroidism
+linked_to_mechanisms:
+- hpt-axis-dysregulation
+sources:
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 4: Functions of Thyroid Hormones'
+  quote: Irregular menstruation and decreased or increased menstrual flow. Fertility
+    can also be affected.
+- id: vitaone-thyroid-toolkit
+  location: Symptoms of Hashimoto's Hypothyroidism
+  quote: Irregular Menstrual Cycles
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

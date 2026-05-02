@@ -1,0 +1,27 @@
+slug: dhea-is-precursor-to-sex-hormones
+statement: DHEA serves as a precursor to testosterone and estrogen and supports immune
+  resistance, bone density, cholesterol, and body composition.
+evidence_tier: plausible_emerging
+rationale: DHEA as a steroid precursor is established biochemistry. Its downstream
+  benefits (immune, bone, lipids, muscle) are plausible and supported by observational
+  studies, though RCT evidence for supplementation is mixed.
+coaching_translation: DHEA is a foundational hormone that the body uses to make testosterone
+  and estrogen, protect bones and muscles, and fight infection.
+caveats:
+- DHEA supplementation is out of coaching scope; clinician oversight required.
+- Source is expert consensus toolkit.
+linked_to_topics:
+- hpa-axis-dysregulation
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-adrenal-toolkit
+  location: Hypercortisolism — Functions of DHEA
+  quote: Precursor to testosterone and estrogen, Improves resistance to viruses, bacteria,
+    parasites, allergies & cancer, Prevents osteoporosis, Lowers total and LDL cholesterol,
+    Increases muscle mass and decreases body fat
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

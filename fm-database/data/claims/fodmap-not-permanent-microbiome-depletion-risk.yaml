@@ -1,0 +1,27 @@
+slug: fodmap-not-permanent-microbiome-depletion-risk
+statement: Long-term low-FODMAP dieting risks microbiome depletion and should be used
+  short-term only (2–6 weeks elimination phase), followed by systematic reintroduction.
+evidence_tier: plausible_emerging
+rationale: 'Biological plausibility is strong: prebiotic fibres (FODMAPs) feed beneficial
+  bacteria, and chronic restriction reduces microbial diversity. Early trials support
+  this concern. No specific RCT cited in this document.'
+coaching_translation: Low-FODMAP is a healing phase, not a lifestyle. Once your gut
+  calms down, the goal is to bring back as many foods as possible to feed a diverse,
+  healthy microbiome.
+caveats:
+- Source is an educational cheatsheet, not primary literature. No specific RCT cited.
+- Degree of depletion varies with baseline diversity and protocol duration.
+linked_to_topics:
+- low-fodmap-diet
+- gut-dysbiosis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-elimination-diet-cheatsheet
+  location: Practitioner Tips
+  quote: Don't keep patients on low-FODMAP long-term - it can cause microbiome depletion.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -5,36 +5,103 @@ forms_available:
 - capsule
 - tablet
 - powder
+- liquid
+- gummy
 typical_dose_range:
   capsule:
-    min: 1000
-    max: 2000
+    min: 2000
+    max: 3000
     unit: mg
   tablet:
-    min: 1000
-    max: 2000
+    min: 250
+    max: 1000
     unit: mg
   powder:
+    min: 2000
+    max: 3000
+    unit: mg
+  liquid:
     min: 1000
-    max: 2000
+    max: 1000
     unit: mg
 timing_options:
 - morning
 - on_waking
+- with_breakfast
+- mid_morning
+- with_lunch
+- with_dinner
+- on_empty_stomach
 take_with_food: optional
-notes_for_coach: Broad antioxidant and immune support; also used to enhance non-heme
-  iron absorption when co-administered with iron.
+notes_for_coach: Used pre-amalgam removal (2–3g/day for 7 days) and continued post-procedure.
+  Listed as Phase I antioxidant protective nutrient. Higher IV doses on procedure
+  day are clinician scope.
 evidence_tier: plausible_emerging
-linked_to_topics: []
+linked_to_topics:
+- thyroid
+- estrogen-dominance
+- low-progesterone
+- pcos
+- adrenal-dysfunction
+- hpa-axis-dysregulation
+- inflammation
+- immune-resilience
+- knee-pain
+- hairfall
+- hypothyroidism
+- immune-support
+- chronic-inflammation
+- mitochondrial-health-nutrition
+- liver-detoxification
+- mercury-amalgam-removal
 linked_to_mechanisms: []
-linked_to_claims: []
-notes_for_client: ''
+linked_to_claims:
+- adaptogens-rebalance-hpa-axis
+- low-dhea-high-cortisol-indicates-adrenal-burnout
+- collagen-glucosamine-chondroitin-cartilage
+- vitamin-c-coadministration-improves-levothyroxine-absorption
+- vitamin-c-immune-cellular-support
+- vitamin-c-linked-to-cognitive-performance
+- selenium-vitamin-e-antioxidant-support-detox
+notes_for_client: Vitamin C is a powerful antioxidant that helps protect your cells
+  during detoxification. High-dose IV vitamin C on procedure day requires a clinician.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
   quote: Vitamin C (Ascorbic Acid) - Immunity, antioxidant, collagen - 1000-2000 mg/day
     - Anytime- morning
-version: 1
+- id: vitaone-thyroid-cheatsheet
+  location: Clinical Action Steps — Support Adrenals
+  quote: Vitamin C, B5, adaptogens, circadian rhythm correction
+- id: vitaone-sex-hormones-cheatsheet
+  location: Top Nutrients to Balance Estrogen
+  quote: 'Liposomal Vitamin C: Aids progesterone production and supports adrenal detox
+    of estrogen.'
+- id: vitaone-adrenal-cheatsheet
+  location: 50 Hormones Cheatsheet — Cortisol row / Emotional Stress table (p.4, p.10)
+  quote: 'Solution: Salt, Vit C, adrenal support (B5, licorice)... Adrenal adaptogens,
+    phosphatidylserine, stress-modulating nutrients (Active B5, Mg Glycinate, Liposomal
+    Vit C).'
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin C (Ascorbic Acid)
+  quote: 'Supplement: Plain ascorbic acid works; buffered/liposomal improve tolerance.'
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 10: Absorption and Optimization'
+  quote: Co-administration of Vitamin C (500-1000 mg) can increase serum T4 and T3
+    levels.
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Vitamin C contributes to immune defense by supporting various cellular functions
+    of the immune system.
+- id: vitaone-nutrition-toolkit
+  location: Nutrients for Mitochondrial Health
+  quote: Vitamin C is a vitamin and antioxidant which protects the mitochondria from
+    oxidative stress. Some studies have indicated that restoring the body's vitamin
+    C may help improve feelings of anxiety, fatigue, and well-being.
+- id: vitaone-liver-detox-toolkit
+  location: Dental Amalgam Removal Protocol — Pre-Procedure
+  quote: 'Vitamin C: 2–3 grams'
+version: 9
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-02'
 updated_by: shivani

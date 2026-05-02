@@ -1,0 +1,40 @@
+slug: testosterone-health
+display_name: Testosterone Health & 5-Alpha Reductase Activity
+aliases:
+- DHT excess
+- 5-alpha reductase inhibition
+- androgen balance
+summary: Healthy testosterone levels depend in part on limiting excess conversion
+  to DHT via the enzyme 5-alpha reductase. Excess DHT is linked to BPH, hair loss
+  in men and women, and acne/facial hair in women. Foods, herbs, and phytonutrients
+  can modulate this enzyme activity.
+common_symptoms:
+- hair-loss
+- acne
+- prostate-enlargement
+- decreased-libido
+- fatigue
+red_flags:
+- rapid unexplained hair loss
+- signs of testosterone deficiency (bone loss, severe fatigue)
+related_topics:
+- benign-prostatic-hyperplasia
+- sex-hormone-binding-globulin
+key_mechanisms:
+- five-alpha-reductase-conversion
+- dht-excess
+coaching_scope_notes: Coaches can support dietary 5-alpha reductase inhibitors (green
+  tea, flaxseed, fatty fish, soy) and relevant supplement support as directed by clinician.
+clinician_scope_notes: Clinician should assess testosterone and DHT labs. Supplement
+  and herb dosing for 5-alpha reductase inhibition should be clinician-directed.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-sex-hormones-toolkit
+  location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors — Page
+    06'
+  quote: There are several foods, herbs, and supplements that can be used to inhibit
+    or slow 5-areductase activity and thus decrease or prevent these symptoms.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

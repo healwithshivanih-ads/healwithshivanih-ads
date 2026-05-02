@@ -1,0 +1,29 @@
+slug: gut-microbiome-diversity-restores-tolerance
+statement: Gut microbiome diversity is key to restoring immune tolerance; low Akkermansia
+  and Faecalibacterium are linked to immune dysfunction.
+evidence_tier: plausible_emerging
+rationale: Emerging research robustly associates microbiome diversity with immune
+  regulation. Akkermansia muciniphila and Faecalibacterium prausnitzii depletion is
+  observed in multiple autoimmune and inflammatory conditions.
+coaching_translation: Feeding your gut bacteria with diverse plant fibers, fermented
+  foods, and prebiotics is one of the most powerful ways to support immune balance.
+caveats:
+- Microbiome testing for specific species is specialist/clinician scope.
+- Source is educational synthesis.
+linked_to_topics:
+- autoimmune-disease
+- leaky-gut
+- chronic-inflammation
+linked_to_supplements:
+- probiotics
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Autoimmune Disease Cheatsheet — Page 24
+  quote: Gut microbiome diversity = key to restoring tolerance. Low Akkermansia &
+    Faecalibacterium linked with immune dysfunction.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

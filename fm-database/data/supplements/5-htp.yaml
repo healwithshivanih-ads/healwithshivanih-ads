@@ -1,5 +1,5 @@
 slug: 5-htp
-display_name: 5-HTP
+display_name: 5-HTP (5-Hydroxytryptophan)
 category: amino_acid
 forms_available:
 - capsule
@@ -7,7 +7,7 @@ forms_available:
 typical_dose_range:
   capsule:
     min: 50
-    max: 100
+    max: 200
     unit: mg
   tablet:
     min: 50
@@ -16,20 +16,31 @@ typical_dose_range:
 timing_options:
 - evening
 - bedtime
+- with_dinner
 take_with_food: optional
-notes_for_coach: Serotonin precursor; avoid combining with SSRIs or MAOIs without
-  clinician guidance due to serotonin syndrome risk.
-evidence_tier: confirm_with_clinician
-linked_to_topics: []
+notes_for_coach: Direct serotonin precursor. Do NOT combine with SSRIs/SNRIs or MAOIs
+  (serotonin syndrome risk). Should not be used long-term without B6 cofactor. Clinician
+  review recommended.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- anxiety
+- insomnia
+- gut-brain-axis
 linked_to_mechanisms: []
-linked_to_claims: []
-notes_for_client: ''
+linked_to_claims:
+- serotonin-gut-microbiome-mood-link
+notes_for_client: 5-HTP helps your body make serotonin — the mood-balancing brain
+  chemical. It's best taken in the evening.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 3 - Supplement Table
   quote: 5-HTP - Serotonin support, mood, sleep - 50–100 mg/day - Evening or before
     bed
-version: 1
+- id: vitaone-adrenal-cheatsheet
+  location: The Anti-Stress Hormones (p.22)
+  quote: 'Serotonin: Calms nervous system, regulates appetite, mood, and gut motility.
+    Anxiety, depression, gut dysmotility, sugar cravings.'
+version: 2
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-02'
 updated_by: shivani

@@ -1,0 +1,25 @@
+slug: poor-concentration
+display_name: Poor Concentration
+aliases:
+- difficulty concentrating
+- brain fog
+- lack of focus
+- scattered thinking
+category: neurological
+severity: common
+description: Difficulty maintaining mental focus, which may be improved through mindful
+  breathing practices.
+when_to_refer: If significantly impairing daily function, refer to clinician.
+linked_to_topics:
+- stress-management
+- mindfulness
+linked_to_mechanisms:
+- parasympathetic-activation
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Mindful Breathing
+  quote: Mindful, deep breathing can also help sharpen your ability to concentrate.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,30 @@
+slug: halogen-iodine-competition
+display_name: Halogen-Iodine Competition
+aliases:
+- fluoride iodine displacement
+- bromide thyroid interference
+- endocrine disruptor thyroid block
+category: endocrine
+summary: Environmental halogens (fluoride, bromide, chlorine) and endocrine disruptors
+  (BPA, phthalates, pesticides) compete with iodine for thyroid uptake receptors,
+  impairing thyroid hormone synthesis and receptor binding.
+upstream_drivers:
+- fluoride-exposure
+- bpa-exposure
+- pesticide-exposure
+downstream_effects:
+- impaired-t4-t3-synthesis
+- thyroid-receptor-blockade
+related_mechanisms:
+- t4-to-t3-conversion-block
+linked_to_topics:
+- thyroid
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-thyroid-cheatsheet
+  location: Biohacking Thyroid Function Cheatsheet — Reduce Toxin Load
+  quote: Halogens (fluoride, bromide, chlorine) compete with iodine uptake
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

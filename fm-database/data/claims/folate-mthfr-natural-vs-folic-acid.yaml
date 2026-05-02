@@ -1,0 +1,26 @@
+slug: folate-mthfr-natural-vs-folic-acid
+statement: Individuals with MTHFR variants may respond better to natural food-form
+  folate versus synthetic folic acid supplements.
+evidence_tier: plausible_emerging
+rationale: Plausible based on MTHFR enzyme impairment reducing conversion of folic
+  acid to active 5-MTHF. Document cites Linus Pauling Institute and NIH ODS.
+coaching_translation: For some people with a common gene variant, synthetic folic
+  acid in supplements may not be as usable as the natural folate in leafy greens and
+  legumes.
+caveats:
+- MTHFR status requires genetic testing by a clinician.
+linked_to_topics:
+- folate-deficiency
+linked_to_supplements:
+- folate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Folate'
+  quote: Some individuals, like those with genetic variants in MTHFR, may respond
+    better to natural folate versus folic acid.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

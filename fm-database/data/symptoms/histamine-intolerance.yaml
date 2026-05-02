@@ -1,0 +1,33 @@
+slug: histamine-intolerance
+display_name: Histamine Intolerance
+aliases:
+- histamine sensitivity
+- histamine overload
+- DAO deficiency
+- flushing after wine
+category: gi
+severity: common
+description: Excessive histamine response due to DAO enzyme deficiency and/or dysbiosis.
+  Manifests as flushing, rashes, gut upset, bloating, and headaches after high-histamine
+  foods.
+when_to_refer: Refer if symptoms are severe or if anaphylaxis risk is present.
+linked_to_topics:
+- methylation-mthfr
+- gut-dysbiosis
+- leaky-gut
+linked_to_mechanisms:
+- impaired-methylation
+- gut-dysbiosis-mechanism
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet
+  quote: With MTHFR mutations, impaired methylation can lead to toxin build-up, estrogen
+    dominance, and histamine intolerance.
+- id: vitaone-gut-cheatsheet
+  location: 100 Gut Symptoms — Gut-Metabolic & Nutrient Issues
+  quote: Histamine intolerance — DAO enzyme deficiency, Dysbiosis — Flushing, rashes,
+    gut upset — Low-histamine diet + DAO support
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,34 @@
+slug: low-libido
+display_name: Low Libido / Reduced Fertility
+aliases:
+- reduced sex drive
+- low sexual desire
+- decreased sex drive
+- low sex drive
+- reduced libido
+category: hormonal
+severity: common
+description: Reduced sexual desire and potential fertility impairment caused by chronic
+  stress suppressing reproductive hormones downstream of DHEA depletion.
+when_to_refer: Refer if suspected hypogonadism or pituitary pathology.
+linked_to_topics:
+- adrenal-dysfunction
+- hpa-axis-dysregulation
+- perimenopause
+- chronic-stress
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- pregnenolone-steal
+- dhea-depletion
+sources:
+- id: vitaone-adrenal-cheatsheet
+  location: 50 Hormones Cheatsheet — Testosterone row (p.4)
+  quote: '↓ Low libido, fatigue, sarcopenia. Solution: Strength training, zinc, Vit
+    D, HRT if indicated.'
+- id: vitaone-adrenal-toolkit
+  location: Effects of Chronic Stress — Reproduction
+  quote: ↓ Libido and fertility, Can cause menstrual irregularities
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

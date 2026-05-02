@@ -1,0 +1,28 @@
+slug: probiotics-may-reduce-hba1c-in-t2d
+statement: Probiotics may have beneficial effects on reducing blood sugar, insulin,
+  and HbA1c, especially in those with type 2 or gestational diabetes.
+evidence_tier: plausible_emerging
+rationale: Wang et al. 2017 (J Pediatr Endocrinol Metab) meta-analysis of RCTs cited
+  directly in document supports this claim, though effect size and strain specificity
+  are variable.
+coaching_translation: Adding fermented foods like yogurt, kefir, kimchi, or a probiotic
+  supplement may help improve blood sugar markers, especially if you have diabetes.
+caveats:
+- Effect is strain-specific. Evidence strongest for T2D and gestational diabetes.
+  Emerging, not consensus.
+linked_to_topics:
+- blood-sugar-dysfunction
+linked_to_supplements:
+- probiotics
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-blood-sugar-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: There is also emerging research which shows that probiotics may have beneficial
+    effects on reducing blood sugar, insulin, and Hemoglobin A1c, especially for those
+    who have type 2 or gestational diabetes.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

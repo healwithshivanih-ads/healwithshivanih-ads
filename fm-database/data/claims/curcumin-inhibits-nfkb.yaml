@@ -1,0 +1,29 @@
+slug: curcumin-inhibits-nfkb
+statement: Curcumin inhibits NF-κB signaling and lowers CRP, making it clinically
+  useful in arthritis, IBD, and metabolic syndrome.
+evidence_tier: plausible_emerging
+rationale: Multiple RCTs and mechanistic studies support curcumin's NF-κB inhibition
+  and CRP-lowering effects, though bioavailability of standard curcumin is poor without
+  co-administration of piperine or phospholipid formulations.
+coaching_translation: Curcumin (turmeric) is one of the most evidence-backed anti-inflammatory
+  foods/supplements. Pair it with black pepper and fat for best effect.
+caveats:
+- Bioavailability of standard curcumin is low — enhanced forms (phytosomal, piperine-enhanced)
+  required for clinical effect.
+- Source is educational synthesis, not primary literature citation.
+linked_to_topics:
+- chronic-inflammation
+- autoimmune-disease
+linked_to_supplements:
+- curcumin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: 100 Anti-Inflammatory Foods — Page 06
+  quote: 'Turmeric (Curcumin): Inhibits NF-κB, lowers CRP. Clinical Use: Arthritis,
+    IBD, Metabolic Syndrome'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

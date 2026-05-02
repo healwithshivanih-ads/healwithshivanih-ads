@@ -1,0 +1,34 @@
+slug: endorphin-immune-modulation
+display_name: Endorphin-Mediated Immune Modulation
+aliases:
+- opioid immune regulation
+- endogenous opioid immunomodulation
+category: immune
+summary: Elevated endogenous opioid (endorphin/enkephalin) levels resulting from LDN-induced
+  rebound interact with immune cells including T-regulatory cells, cytotoxic T cells,
+  and NK cells, regulating inflammatory cytokines, reducing oxidative stress, and
+  improving mucosal healing.
+upstream_drivers:
+- opioid-rebound-upregulation
+downstream_effects:
+- regulated-inflammatory-cytokines
+- t-reg-cell-modulation
+- nk-cell-activity
+- mucosal-healing
+- tissue-repair
+related_mechanisms:
+- opioid-rebound-upregulation
+- tlr4-microglial-inhibition
+linked_to_topics:
+- low-dose-naltrexone
+- autoimmune-thyroiditis
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-ldn-article
+  location: So, how does LDN work?
+  quote: Increased endorphin activity results in improved modulation of the immune
+    system.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

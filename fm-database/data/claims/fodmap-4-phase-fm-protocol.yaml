@@ -1,0 +1,35 @@
+slug: fodmap-4-phase-fm-protocol
+statement: 'The functional medicine FODMAP protocol comprises four sequential phases:
+  Elimination (4–6 weeks), Gut-Healing (4–8 weeks), Reintroduction (6–10 weeks), and
+  Personalization (ongoing), each with distinct objectives and clinical interventions.'
+evidence_tier: plausible_emerging
+rationale: The phased approach is consistent with Monash University and IFM FODMAP
+  frameworks. Specific phase durations and supplements cited are clinical convention
+  rather than single RCT-derived timelines.
+coaching_translation: 'Think of this as a 4-step journey: first we remove triggers,
+  then we repair your gut lining, then we carefully test foods one group at a time,
+  and finally we build your personalised long-term diet.'
+out_of_scope_notes: Gut-healing phase interventions (L-glutamine dosing, zinc carnosine)
+  require clinician oversight for dosing.
+caveats:
+- Phase durations are approximate; individual clinical response should guide progression.
+- Source is an educational cheatsheet, not primary literature.
+linked_to_topics:
+- low-fodmap-diet
+- ibs
+- sibo
+linked_to_supplements:
+- l-glutamine
+- zinc-carnosine
+- saccharomyces-boulardii
+linked_to_mechanisms: []
+sources:
+- id: vitaone-elimination-diet-cheatsheet
+  location: Functional Medicine Approach to Using Low-FODMAP Clinically
+  quote: 'Elimination Phase: Strict low-FODMAP diet + probiotics (S. boulardii, L.
+    plantarum). Gut-Healing Phase: Add L-glutamine, zinc carnosine, digestive enzymes,
+    bitters.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

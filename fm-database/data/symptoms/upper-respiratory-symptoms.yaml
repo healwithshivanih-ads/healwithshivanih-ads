@@ -1,0 +1,27 @@
+slug: upper-respiratory-symptoms
+display_name: Upper Respiratory Symptoms
+aliases:
+- URI symptoms
+- cold symptoms
+- flu symptoms
+- respiratory infection symptoms
+category: constitutional
+severity: common
+description: Nasal congestion, sore throat, cough, and related symptoms associated
+  with viral upper respiratory infections including influenza and COVID-19.
+when_to_refer: Severe dyspnea, high fever, or oxygen desaturation — refer to emergency
+  care immediately.
+linked_to_topics:
+- immune-support
+linked_to_mechanisms:
+- cytokine-dysregulation
+- oxidative-stress
+sources:
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Vitamin D enhances immune system function, reduces viral growth, and can
+    reduce upper respiratory infections.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

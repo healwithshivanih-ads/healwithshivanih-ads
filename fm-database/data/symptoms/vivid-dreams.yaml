@@ -1,0 +1,23 @@
+slug: vivid-dreams
+display_name: Vivid Dreams
+aliases:
+- intense dreams
+- disturbing dreams
+- night dreams
+category: sleep
+severity: common
+description: Unusually intense or vivid dreaming, a frequently reported side effect
+  of LDN especially when taken at bedtime.
+linked_to_topics:
+- low-dose-naltrexone
+linked_to_mechanisms: []
+when_to_refer: ''
+sources:
+- id: vitaone-ldn-article
+  location: LDN potential side effects
+  quote: 'Central Nervous System: Anxiety, Drowsiness, Headache, Insomnia, Vivid Dreams,
+    Mood Change, Trouble Concentration'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

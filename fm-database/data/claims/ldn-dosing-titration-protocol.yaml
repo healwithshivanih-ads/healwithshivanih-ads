@@ -1,0 +1,27 @@
+slug: ldn-dosing-titration-protocol
+statement: LDN is typically started at 0.5–1.5 mg/day and increased to 3–4.5 mg/day
+  over 2–4 weeks; it is given at night, shifting to morning with food if sleep disturbance
+  occurs.
+evidence_tier: confirm_with_clinician
+rationale: Specific dosing protocol — clinician scope only. Included for catalogue
+  completeness but must not be used by coaches to advise clients.
+coaching_translation: Your doctor will start you on a very low dose and gradually
+  increase it over a few weeks. If it disrupts your sleep, they may switch you to
+  a morning dose with food.
+caveats:
+- All dosing decisions are strictly clinician scope.
+- Thyroid hormone levels must be monitored as dose requirements may change.
+out_of_scope_notes: Coaches must not advise on LDN dosing. Refer to prescribing clinician.
+linked_to_topics:
+- low-dose-naltrexone
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-ldn-article
+  location: Treatment with LDN
+  quote: Start 0.5-1.5 mg/day, increase up to 3-4.5 mg/day over 2-4 weeks. Given at
+    night but if sleep distance then shift it to morning-after meal.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

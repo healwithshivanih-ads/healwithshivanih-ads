@@ -1,0 +1,43 @@
+slug: cardiometabolic-health
+display_name: Cardiometabolic Health
+aliases:
+- cardiovascular metabolic health
+- cardio-metabolic diet
+summary: A functional medicine dietary approach targeting cardiovascular and metabolic
+  risk factors including blood pressure, blood sugar, cholesterol, triglycerides,
+  and inflammation through whole-food, phytonutrient-rich eating patterns, targeted
+  smoothies, and intermittent fasting protocols.
+common_symptoms:
+- elevated-triglycerides
+- high-blood-pressure
+- elevated-blood-sugar
+- chronic-inflammation
+red_flags:
+- heart arrhythmia
+- insulin-dependent diabetes requiring fasting guidance
+- low blood pressure with fasting
+related_topics:
+- intermittent-fasting
+- blood-sugar-regulation
+- metabolic-syndrome
+key_mechanisms:
+- insulin-resistance
+- systemic-inflammation
+- oxidative-stress
+coaching_scope_notes: Coaches may support dietary pattern changes, smoothie building,
+  phytonutrient variety, and general IF education. Specific fasting protocols, medication
+  interactions, and lab interpretation require clinician oversight.
+clinician_scope_notes: Prescribe fasting type, duration, and supplement support. Monitor
+  blood sugar, blood pressure, and electrolytes. Screen for contraindications (arrhythmia,
+  HPA axis disorders, eating disorders, underweight BMI, pregnancy).
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-cardiometabolic-toolkit
+  location: Intermittent Fasting — Who Benefits from Fasting?
+  quote: Shorter-duration human & animal studies show that fasting may be beneficial
+    for insulin resistance, blood sugar, blood pressure, inflammation, short-term
+    weight loss, and brain health.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

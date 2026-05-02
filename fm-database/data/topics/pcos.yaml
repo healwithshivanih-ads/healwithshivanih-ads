@@ -1,46 +1,87 @@
 slug: pcos
-display_name: PCOS / PCOD
+display_name: Polycystic Ovary Syndrome (PCOS)
 aliases:
-  - pcod
-  - polycystic-ovary-syndrome
-  - polycystic-ovarian-syndrome
-summary: |
-  Polycystic ovary syndrome — a metabolic-endocrine condition with three
-  recognized phenotypes (insulin-resistant, inflammatory, post-pill,
-  adrenal). FM lens treats insulin resistance and androgen excess as the
-  primary axes; presentation includes irregular cycles, acne, hirsutism,
-  weight gain, infertility.
+- pcod
+- polycystic-ovary-syndrome
+- polycystic-ovarian-syndrome
+- PCOD
+- polycystic ovarian disease
+- polycystic ovary disease
+- polycystic ovary syndrome
+- hyperandrogenism
+- PCOS
+- polycystic ovaries
+summary: A hormonal condition characterised by insulin resistance, androgen excess,
+  and ovulatory dysfunction. Low-carb diets improve ovulation, insulin sensitivity,
+  and androgen balance. Adjunct support includes magnesium, inositol, and Vitamin
+  D3.
 common_symptoms:
-  - irregular or absent cycles
-  - hormonal acne (jawline, chin)
-  - hirsutism (face, chest, abdomen)
-  - scalp hair thinning
-  - difficulty losing weight
-  - sugar / carb cravings
-  - infertility / anovulation
+- irregular or absent cycles
+- hormonal acne (jawline, chin)
+- hirsutism (face, chest, abdomen)
+- scalp hair thinning
+- difficulty losing weight
+- sugar / carb cravings
+- infertility / anovulation
+- irregular-periods
+- acne
+- hair-thinning
+- weight-gain
+- fatigue
+- mood-swings
+- infertility
+- hair-loss
+- belly-fat
+- sugar-cravings
+- elevated-fasting-insulin
 red_flags:
-  - severely irregular bleeding requiring GYN evaluation
-  - suspected endometrial hyperplasia (long anovulatory periods)
-  - signs of true virilization (refer endocrinology)
+- severely irregular bleeding requiring GYN evaluation
+- suspected endometrial hyperplasia (long anovulatory periods)
+- signs of true virilization (refer endocrinology)
+- infertility requiring ART
+- severe hyperandrogenism
+- metabolic syndrome
+- Severe virilization — refer to endocrinology
 related_topics:
-  - perimenopause
+- perimenopause
+- estrogen-dominance
+- insulin-resistance
+- inflammation
+- dysbiosis
+- gut-hormone-axis
+- hpa-axis-dysregulation
+- low-carb-diet
+- metabolic-syndrome
 key_mechanisms:
-  - insulin-resistance
-  - androgen-excess
-  - chronic-inflammation
-  - hpa-axis-dysregulation
-coaching_scope_notes: |
-  Low-glycemic nutrition, resistance training, inositol / NAC / magnesium,
-  sleep, stress reduction, omega-3s. Coach can run a 12-week PCOS
-  reversal protocol.
-clinician_scope_notes: |
-  Diagnosis (Rotterdam criteria), metformin / GLP-1 / spironolactone,
-  fertility workup are clinician-only.
+- insulin-resistance
+- androgen-excess
+- chronic-inflammation
+- hpa-axis-dysregulation
+- aromatase-overactivity
+coaching_scope_notes: Support with low-carb food choices; inositol and Vitamin D3
+  recommendations require clinician oversight on dosing.
+clinician_scope_notes: Run fasting glucose AND GTIR — normal fasting insulin does
+  not rule out IR. Always evaluate thyroid. Avoid Vitex with high LH.
 sources:
-  - id: vitaone-skill-practice-guide
-    location: practice_guide.md, PCOS section
-evidence_tier: strong
-version: 1
+- id: vitaone-skill-practice-guide
+  location: practice_guide.md, PCOS section
+- id: vitaone-sex-hormones-cheatsheet
+  location: PCOD Cheatsheet
+  quote: Polycystic Ovarian Disease (PCOD) is not just a reproductive disorder - it's
+    a metabolic-hormonal condition. Rooted in insulin resistance, chronic inflammation,
+    and HPO axis disruption.
+- id: vitaone-adrenal-cheatsheet
+  location: Stress & Chronic Diseases Link (p.9)
+  quote: 'PCOD / Infertility: Stress disrupts HPO axis and ovulation. Elevated cortisol
+    → altered LH:FSH ratio, ↑ androgens.'
+- id: vitaone-blood-sugar-cheatsheet
+  location: Insulin Resistance Cheatsheet — Therapeutic Considerations
+  quote: In PCOS, prioritize anti-androgenic and insulin-sensitizing strategies
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: Functional Medicine Clinical Applications
+  quote: Improves ovulation, insulin sensitivity, androgen balance
+evidence_tier: plausible_emerging
+version: 5
 status: active
-updated_at: 2026-04-28
+updated_at: '2026-05-02'
 updated_by: shivani

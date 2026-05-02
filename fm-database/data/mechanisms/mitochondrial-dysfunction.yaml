@@ -1,0 +1,32 @@
+slug: mitochondrial-dysfunction
+display_name: Mitochondrial Dysfunction
+aliases:
+- low ATP production
+- oxidative phosphorylation impairment
+- mitochondrial impairment
+category: metabolic
+summary: Impaired mitochondrial function reduces ATP production and increases oxidative
+  stress, degrading insulin receptor signalling and contributing to metabolic disease.
+  CoQ10 and magnesium are key cofactors.
+upstream_drivers:
+- oxidative-stress
+- nutrient-deficiencies
+- chronic-inflammation
+downstream_effects:
+- insulin-resistance
+- fatigue
+- elevated-reactive-oxygen-species
+related_mechanisms:
+- insulin-resistance
+- chronic-inflammation
+linked_to_topics:
+- insulin-resistance
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-blood-sugar-cheatsheet
+  location: Insulin Resistance Cheatsheet — Root Cause Framework
+  quote: Low ATP production, oxidative stress, poor nutrient status, Inflammation
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

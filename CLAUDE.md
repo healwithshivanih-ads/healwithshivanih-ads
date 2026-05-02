@@ -14,7 +14,22 @@ published plans as JSON artifacts.
 
 ## Status
 
-**v0.20 (current)** — PDF ingest + Resources Toolkit + 49 supplements added:
+**v0.21 (current)** — VitaOne course PDFs fully ingested (Phases 1–5):
+- Bulk-ingested all 22 remaining VitaOne PDFs (cheatsheets + e-books + LDN article + 11 toolkits) via `/tmp/phases-1to5-rest.sh`. Earlier rounds had landed 8 sessions of *Microbiome Mondays* + supplementation-dosage PDF + the first 4 cheatsheets.
+- Wrote `/tmp/approve-all-pending.py` that approves every staged batch with `--update` smart-merge + auto-fixes alias collisions on BOTH sides (staged candidates AND existing canonical files) before retry. 19 batches landed clean in this final pass.
+- **Defensive staging fix.** `fmdb/ingest/staging.py` now records-and-skips when the LLM emits a non-dict (string/null) for an entity slot, instead of crashing the whole batch with `AttributeError: 'str' object has no attribute 'get'`. Rejected entries surface in the batch manifest with `reason` + `raw_sample`.
+- Cleaned up 2 orphan staging dirs (no `_meta.json` from aborted runs).
+- **Catalogue size delta:**
+  - Sources: 12 → **39**
+  - Topics: 26 → **110**
+  - Mechanisms: 10 → **116**
+  - Symptoms: 10 → **143**
+  - Claims: 128 → **546**
+  - Supplements: 72 → **171**
+  - Cooking adjustments / home remedies / mindmaps: 3 / 3 / 3 (unchanged this round)
+- Validate: **0 errors, 504 warnings** (all warnings are non-blocking unresolved cross-refs — the long tail of slugs the model referenced but hasn't yet been seeded; tracked via `fmdb pending-refs`).
+
+**v0.20** — PDF ingest + Resources Toolkit + 49 supplements added:
 - **PDF ingest support.** `fmdb/ingest/loaders.py` now lists `.pdf` and image extensions in `LOADERS`, with a stub-text return; `IngestRequest` gained an `attachments: list[dict]` field for binary content blocks. `cmd_ingest` detects PDF/image and loads bytes as base64 attachment. `AnthropicExtractor.extract()` rebuilds the user content as a list, putting PDF (`{"type": "document"}`) and image (`{"type": "image"}`) content blocks first, then the text payload.
 - **Streaming for large outputs.** Switched `messages.create` → `messages.stream(...)` with `get_final_message()`. Anthropic requires streaming for `max_tokens > 8192`. Default bumped to 32K.
 - **First PDF ingested**: `Supplementation Dosage.pdf` (105KB) → 49 new supplements + 15 enrichments to existing ones via smart-merge. Catalogue: **23 → 72 supplements**.

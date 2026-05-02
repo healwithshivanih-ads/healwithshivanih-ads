@@ -1,0 +1,22 @@
+slug: gerd-affects-20-percent-us-adults-weekly
+statement: About 20% of adults in the US experience heartburn symptoms weekly, and
+  GERD is a steadily increasing and significant contributor to healthcare costs.
+evidence_tier: strong
+rationale: Epidemiological data on GERD prevalence is well-established. The statistic
+  cited aligns with published epidemiological literature.
+coaching_translation: Heartburn is extremely common — roughly 1 in 5 adults experiences
+  it weekly. It's worth taking seriously and addressing with your healthcare team.
+linked_to_topics:
+- gerd
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-gut-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
+  quote: About 20% of adults in the U.S. experience heartburn symptoms weekly.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

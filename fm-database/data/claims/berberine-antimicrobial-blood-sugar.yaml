@@ -1,0 +1,31 @@
+slug: berberine-antimicrobial-blood-sugar
+statement: Berberine has broad antimicrobial activity against Candida, SIBO-related
+  bacteria, and H. pylori, while also supporting blood sugar balance.
+evidence_tier: plausible_emerging
+rationale: Berberine has multiple RCTs for blood glucose lowering (comparable to metformin
+  in some studies) and in vitro antimicrobial evidence. Clinical antimicrobial use
+  in SIBO/Candida is FM-specific synthesis with plausible mechanism.
+coaching_translation: Berberine is a multi-tasking botanical that can help with gut
+  infections and blood sugar at the same time — but doses are therapeutic and need
+  clinician oversight.
+out_of_scope_notes: Therapeutic dosing (300-500mg 2-3x/day) and drug interactions
+  (especially with metformin, statins) require clinician review.
+caveats:
+- Drug interactions possible — must be cleared by clinician. Source is educational
+  synthesis for antimicrobial use.
+linked_to_topics:
+- candida-overgrowth
+- sibo
+- gut-dysbiosis
+linked_to_supplements:
+- berberine
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Candida Infection — Supplement Stack
+  quote: Berberine 300–500 mg, 2–3x/day — Antimicrobial, balances gut microbiota,
+    supports blood sugar
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

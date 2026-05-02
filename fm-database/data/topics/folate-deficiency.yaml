@@ -1,0 +1,37 @@
+slug: folate-deficiency
+display_name: Folate Deficiency
+aliases:
+- low folate
+- folic acid deficiency
+- folate insufficiency
+summary: Folate is a water-soluble B vitamin critical for DNA synthesis, cell division,
+  red blood cell formation, and homocysteine metabolism. High homocysteine is linked
+  to heart disease, dementia, and depression. MTHFR variants affect folic acid metabolism;
+  these individuals may prefer natural folate over synthetic folic acid.
+common_symptoms:
+- fatigue
+- low-mood
+- brain-fog
+red_flags:
+- neural tube defects in pregnancy — adequate folate intake essential preconception
+  and in first trimester
+related_topics:
+- vitamin-b12-deficiency
+- mitochondrial-health-nutrition
+key_mechanisms:
+- methylation-cycle
+- homocysteine-metabolism
+coaching_scope_notes: Coaches can guide dietary folate intake and flag MTHFR considerations
+  for clinician follow-up.
+clinician_scope_notes: MTHFR variants may require methylfolate supplementation. RDA
+  expressed in dietary folate equivalents (DFEs).
+evidence_tier: strong
+sources:
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Folate'
+  quote: Folate is essential for the metabolism of homocysteine, an amino acid that
+    in high amounts may contribute to heart disease, dementia, and depression.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

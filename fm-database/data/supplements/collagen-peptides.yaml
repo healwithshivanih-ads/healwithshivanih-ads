@@ -1,0 +1,36 @@
+slug: collagen-peptides
+display_name: Collagen Peptides
+category: amino_acid
+forms_available:
+- powder
+- capsule
+typical_dose_range:
+  powder:
+    min: 5
+    max: 15
+    unit: g
+timing_options:
+- with_breakfast
+- morning
+- mid_morning
+take_with_food: optional
+linked_to_topics:
+- hairfall
+- knee-pain
+linked_to_claims:
+- collagen-glucosamine-chondroitin-cartilage
+notes_for_coach: Marine collagen (type I) preferred for hair and skin; bovine (type
+  I+III) for joint and gut. Pair with vitamin C to support collagen synthesis. Evidence
+  growing for OA knee pain and skin elasticity.
+notes_for_client: Collagen powder dissolves easily in coffee, smoothies, or water.
+  Pair with a vitamin C source for best results.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Hairfall – Supplement Stack
+  quote: Marine/Bovine Collagen, Liposomal Vitamin C, L-Lysine
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

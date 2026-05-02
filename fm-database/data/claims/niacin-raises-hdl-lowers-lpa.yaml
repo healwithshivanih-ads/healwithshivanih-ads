@@ -1,0 +1,31 @@
+slug: niacin-raises-hdl-lowers-lpa
+statement: Niacin raises HDL and lowers Lp(a) but requires liver enzyme monitoring
+  due to hepatotoxicity risk.
+evidence_tier: plausible_emerging
+rationale: Niacin's HDL-raising and Lp(a)-lowering effects are documented in trials,
+  though its clinical benefit has been questioned in recent outcomes trials. Liver
+  monitoring is a real clinical requirement.
+coaching_translation: Niacin (vitamin B3) can help raise your good cholesterol and
+  lower a genetic risk factor called Lp(a), but it needs to be used under medical
+  supervision because of liver effects.
+caveats:
+- Niacin supplementation at therapeutic doses requires clinician supervision and liver
+  enzyme monitoring.
+- Source is an expert synthesis cheatsheet.
+- Recent outcomes trials (AIM-HIGH, HPS2-THRIVE) have questioned cardiovascular benefit
+  of niacin on top of statins.
+out_of_scope_notes: Therapeutic niacin dosing is outside coaching scope — refer to
+  clinician.
+linked_to_topics:
+- dyslipidemia
+linked_to_supplements:
+- niacin
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 5
+  quote: 'Niacin: ↑HDL, ↓Lp(a) (monitor liver enzymes).'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,5 +1,5 @@
 slug: fatigue
-display_name: Fatigue
+display_name: Fatigue / Low Energy
 aliases:
 - low-energy
 - tiredness
@@ -10,36 +10,157 @@ aliases:
 - low energy
 - persistent fatigue
 - chronic fatigue
+- no stamina
+- post-COVID fatigue
+- chronic tiredness
+- immune fatigue
+- always tired
+- no energy
+- lethargy
+- feeling wiped out
+- feeling drained
+- lack of energy
+- low vitality
+- energy crash
 category: constitutional
 severity: common
-description: 'Persistent low energy disproportionate to activity, not relieved by
-
-  sleep. FM workup considers thyroid, ferritin, B12, vitamin D, sleep
-
-  apnea, HPA dysregulation, blood sugar, mitochondrial function,
-
-  chronic inflammation, and depression.
-
-  '
-when_to_refer: 'Severe / unrelenting fatigue; with weight loss; with low-grade fever;
-
-  with new neurological symptoms; if interfering with daily life or
-
-  associated with low mood / suicidality.
-
-  '
+description: Persistent tiredness or low energy, common during elimination diets due
+  to electrolyte shifts, reduced caloric density, or nutrient deficiencies; may also
+  reflect underlying food reactivity.
+when_to_refer: Severe or unexplained fatigue, suspected anaemia, thyroid dysfunction.
 linked_to_topics:
 - perimenopause
 - thyroid
 - inflammation
+- methylation-mthfr
+- nafld
+- liver-detoxification
+- heavy-metal-toxicity
+- low-carb-diet
+- cognitive-decline
+- metabolic-syndrome
+- gut-dysbiosis
+- candida-overgrowth
+- sibo
+- leaky-gut
+- chronic-inflammation
+- autoimmune-disease
+- fasting-immune-health
+- vitamin-b-complex-deficiency
+- nutrient-deficiency-depression
+- medicine-nutrient-interactions
+- hypothyroidism
+- t3-conversion-disorder
+- hashimotos-thyroiditis
+- hashimotos-hypothyroidism
+- sex-hormone-binding-globulin
+- testosterone-health
+- anti-inflammatory-diet
+- cardiovascular-dysfunction
+- beta-blocker-deprescribing
+- drug-induced-nutrient-depletion
+- stress-management
+- self-care
+- hpa-axis-dysregulation
+- hypercortisolism
+- iron-deficiency
+- magnesium-insufficiency
+- vitamin-b12-deficiency
+- mitochondrial-health-nutrition
+- toxic-body-burden
+- mold-mycotoxin-exposure
+- elimination-diet
+- low-fodmap-diet
+- gut-brain-axis
 linked_to_mechanisms:
 - hpa-axis-dysregulation
 - chronic-inflammation
 - insulin-resistance
+- t4-to-t3-conversion-block
+- reverse-t3-elevation
+- impaired-methylation
+- glutathione-depletion
+- mitochondrial-efficiency
+- reduced-scfas
+- lps-signaling
+- gut-brain-axis-dysregulation
+- nf-kb-activation
+- mitochondrial-energy-production
+- methylation-cycle-dysfunction
+- impaired-t4-to-t3-conversion
+- hpt-axis-dysregulation
+- thyroid-hormone-conversion
+- shbg-hormone-binding
+- cytokine-dysregulation
+- oxidative-stress
+- parasympathetic-activation
+- dhea-depletion
+- mitochondrial-atp-production
+- heme-vs-nonheme-iron-absorption
+- cytochrome-p450-phase1
+- gut-barrier-dysfunction
+- immune-food-reactivity
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Fatigue cluster
-version: 1
+- id: vitaone-thyroid-cheatsheet
+  location: Biohacking Thyroid Function Cheatsheet — Thyroid Dysfunction Symptoms
+  quote: Fatigue, low stamina
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet
+  quote: Chronic fatigue, fibromyalgia, migraines
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: The Science of Low-Carb Diets
+  quote: Use in chronic fatigue, fibromyalgia, neuroinflammation, post-COVID fatigue.
+- id: vitaone-gut-cheatsheet
+  location: 100 Gut Symptoms — Systemic Manifestations
+  quote: Fatigue — Dysbiosis — Mitochondrial stress — Mitochondrial nutrients (CoQ10,
+    B-vits)
+- id: vitaone-inflammation-cheatsheet
+  location: Inflammation Cheatsheet — Page 02
+  quote: Fatigue, low energy
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamins & Minerals Your Patient's Body Might Be Crying Out For
+  quote: 'Deficiency: Fatigue, pallor, breathlessness (esp. menstruating females)'
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 5: Disorders of the Thyroid'
+  quote: Classic features such as fatigue, dry skin, constipation, hair loss, weight
+    gain, depression, slow pulse.
+- id: vitaone-thyroid-toolkit
+  location: Why is it Important to Address Hashimoto's Hypothyroidism?
+  quote: 'Fatigue and Weakness: A lack of thyroid hormones can cause persistent fatigue,
+    muscle weakness, and low energy levels, affecting daily activities and overall
+    quality of life.'
+- id: vitaone-sex-hormones-toolkit
+  location: Sex Hormone Binding Globulin (SHBG) — Page 01
+  quote: High concentrations of SHBG in the body can lead to increased bound testosterone...
+    This can cause symptoms associated with testosterone deficiency, including fatigue.
+- id: vitaone-inflammation-toolkit
+  location: Anti Inflammatory Diet — Who is the Anti-Inflammatory Diet Useful For?
+  quote: 'Chronic Pain Conditions: Like fibromyalgia and chronic fatigue syndrome.'
+- id: vitaone-cv-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Practitioners'
+  quote: Beta blocker therapy has been associated with increased rates of depression,
+    fatigue, constipation, erectile dysfunction, and cognitive slowing.
+- id: vitaone-health-coaching-toolkit
+  location: Mindful Breathing
+  quote: Shallow breathing may lead to tension and fatigue.
+- id: vitaone-adrenal-toolkit
+  location: 'HPA Axis Questionnaire — Section 1: Low cortisol state'
+  quote: Fatigue, Inability to handle even slight stresses
+- id: vitaone-nutrition-toolkit
+  location: Nutrients for Mitochondrial Health
+  quote: Some studies have indicated that supplementing with carnitine may improve
+    fatigue and brain function.
+- id: vitaone-liver-detox-toolkit
+  location: Why Detox?
+  quote: One of the biggest reasons for a detoxification program is when a person
+    experiences a lack of energy. Fatigue is one of the primary reasons people make
+    changes to their lifestyle.
+- id: vitaone-elimination-diet-toolkit
+  location: FODMAP Plan SOS Solutions — Low Energy/Fatigue
+  quote: Fatigue often worsens from dehydration + low minerals.
+version: 17
 status: active
-updated_at: 2026-04-29
+updated_at: '2026-05-02'
 updated_by: shivani

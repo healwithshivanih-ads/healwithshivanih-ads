@@ -4,10 +4,12 @@ aliases:
 - intestinal permeability
 - gut barrier dysfunction
 - increased intestinal permeability
-summary: Leaky gut refers to a breach in the small intestinal lining — a single-cell-layer-thick
-  barrier held together by tight junctions — that allows food particles and other
-  antigens to enter the bloodstream, provoking immune activation and inflammation.
-  In midlife women, declining estrogen is a primary driver of increased gut permeability.
+- intestinal hyperpermeability
+- increased gut permeability
+summary: Breakdown of the intestinal epithelial barrier allowing antigens, LPS, and
+  toxins to enter systemic circulation, triggering immune activation, systemic inflammation,
+  and autoimmunity. Zonulin is a key biomarker. Driven by dysbiosis, food sensitivities,
+  stress, alcohol, and NSAIDs.
 common_symptoms:
 - bloating
 - joint pain
@@ -15,10 +17,20 @@ common_symptoms:
 - skin rashes
 - elevated heart rate after meals
 - digestive distress
+- brain-fog
+- joint-pain
+- skin-rashes
+- food-sensitivities
+- fatigue
+- food-reactivity
 red_flags:
 - bloating that worsens progressively and does not improve
 - bloating upon waking that worsens throughout the day
 - unexplained weight loss or blood in stool — refer to clinician
+- autoimmune disease diagnosis
+- multiple food intolerances developing rapidly
+- elevated zonulin + autoimmune flare
+- active SIBO or parasites
 related_topics:
 - perimenopause
 - food-sensitivities
@@ -27,16 +39,30 @@ related_topics:
 - microbiome
 - dysbiosis
 - gut-hormone-axis
+- gut-dysbiosis
+- sibo
+- candida-overgrowth
+- ibd
+- chronic-inflammation
+- autoimmune-disease
+- food-sensitivity
 key_mechanisms:
 - tight-junction-disruption
 - estrogen-decline
 - immune-activation
-coaching_scope_notes: Coaches can educate on lifestyle and dietary factors that support
-  gut barrier integrity (stress reduction, whole foods, meal pacing). Diagnosis of
-  intestinal permeability requires clinician involvement.
-clinician_scope_notes: Intestinal permeability testing, pathology rule-out for progressive
-  bloating, and management of underlying conditions (SIBO, IBD) are out of coaching
-  scope.
+- zonulin-upregulation
+- lps-signaling
+- nfkb-activation
+- reduced-scfas
+- leaky-gut
+- gut-dysbiosis
+- lps-endotoxemia
+coaching_scope_notes: Coach can support gut-healing diet, probiotic foods, stress
+  reduction, and sleep. L-glutamine, zinc carnosine, and probiotics as supplements
+  require clinician input for dosing.
+clinician_scope_notes: Assess zonulin, calprotectin, GI-MAP. Address SIBO, Candida,
+  parasites. Support with L-glutamine, zinc carnosine, probiotics, enzymes or HCl
+  as needed.
 evidence_tier: plausible_emerging
 sources:
 - id: thurlow-microbiome-session-2
@@ -44,7 +70,15 @@ sources:
   quote: We know that estrogen acts as the mortar, kind of like bricks and mortar,
     it's like the mortar. And when it starts declining, meaning when our estrogen
     levels are declining, we are more likely to develop leaky gut.
-version: 1
+- id: vitaone-gut-cheatsheet
+  location: Leaky Gut & Inflammation — The Missing Link
+  quote: Tight junction damage → Increased intestinal permeability → Antigen leakage
+    → Root cause of chronic inflammation
+- id: vitaone-inflammation-cheatsheet
+  location: Autoimmune Disease Cheatsheet — Page 23
+  quote: Gut permeability (leaky gut) is a major trigger. Zonulin elevation = red
+    flag for gut barrier breakdown.
+version: 3
 status: active
-updated_at: '2026-04-29'
+updated_at: '2026-05-02'
 updated_by: shivani

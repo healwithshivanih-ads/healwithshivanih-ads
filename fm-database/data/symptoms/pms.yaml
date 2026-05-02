@@ -1,0 +1,37 @@
+slug: pms
+display_name: PMS (Premenstrual Syndrome)
+aliases:
+- premenstrual syndrome
+- premenstrual symptoms
+- luteal phase symptoms
+- period mood changes
+- cycle-related mood changes
+category: hormonal
+severity: common
+description: Cluster of physical and emotional symptoms in the luteal phase linked
+  to low progesterone, relative estrogen dominance, and HPA axis disruption.
+when_to_refer: Severe PMDD with functional impairment warrants psychiatric/gynecological
+  assessment.
+linked_to_topics:
+- estrogen-dominance
+- low-progesterone
+- pcos
+- perimenopause
+- adrenal-dysfunction
+linked_to_mechanisms:
+- low-progesterone
+- estrogen-enterohepatic-recirculation
+- chronic-inflammation
+- hpa-axis-dysregulation
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: Estrogen Dominance Supplement Cheatsheet
+  quote: Reduces PMS, breast tenderness, acne.
+- id: vitaone-adrenal-cheatsheet
+  location: 50 Hormones Cheatsheet — Progesterone row (p.4)
+  quote: '↓ PMS, infertility, anxiety, irregular cycles. Solution: Vit B6, Mg, Vitex,
+    stress reduction.'
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

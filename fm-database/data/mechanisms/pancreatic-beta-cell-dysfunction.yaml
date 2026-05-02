@@ -1,0 +1,36 @@
+slug: pancreatic-beta-cell-dysfunction
+display_name: Pancreatic β-Cell Dysfunction
+aliases:
+- beta-cell fatigue
+- beta-cell failure
+- beta-cell apoptosis
+category: endocrine
+summary: Sustained demand for compensatory insulin secretion exhausts β-cell reserve,
+  leading to progressive β-cell fatigue, reduced insulin output, and ultimately apoptosis.
+  Marks the transition from compensated IR to prediabetes and T2DM.
+upstream_drivers:
+- insulin-resistance
+- chronic-hyperglycaemia
+- glucotoxicity
+- lipotoxicity
+downstream_effects:
+- overt-hyperglycaemia
+- declining-c-peptide
+- exogenous-insulin-dependence
+related_mechanisms:
+- insulin-resistance
+- advanced-glycation-end-products
+linked_to_topics:
+- type-2-diabetes
+- prediabetes
+- insulin-resistance
+evidence_tier: strong
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 3.4 — Continuum of Blood-Sugar Dysfunction
+  quote: Later, as pancreatic β-cells tire, insulin levels may normalise or fall even
+    while glucose climbs.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

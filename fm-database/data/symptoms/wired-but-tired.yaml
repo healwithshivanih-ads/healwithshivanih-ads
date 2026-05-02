@@ -1,0 +1,29 @@
+slug: wired-but-tired
+display_name: Wired but Tired
+aliases:
+- cortisol flattening fatigue
+- hyperaroused exhaustion
+- tired but can't sleep
+category: neurological
+severity: common
+description: A state of simultaneous mental over-activation and physical exhaustion,
+  typically indicating HPA axis dysregulation with flattened or dysrhythmic cortisol
+  pattern.
+when_to_refer: If accompanied by severe postural hypotension or signs of Addison's,
+  refer to endocrinologist.
+linked_to_topics:
+- adrenal-dysfunction
+- hpa-axis-dysregulation
+- insomnia
+- anxiety
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- dopaminergic-downregulation
+sources:
+- id: vitaone-adrenal-cheatsheet
+  location: Clinical Patterns Seen in Practice (p.15)
+  quote: 'Adrenal: Cortisol flattening, "wired but tired"'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

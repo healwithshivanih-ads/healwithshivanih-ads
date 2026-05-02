@@ -9,12 +9,12 @@ forms_available:
 - lozenge
 typical_dose_range:
   tablet:
-    min: 3
-    max: 5
+    min: 0.5
+    max: 10
     unit: mg
   capsule:
-    min: 3
-    max: 5
+    min: 0.5
+    max: 10
     unit: mg
   liquid:
     min: 0.5
@@ -32,12 +32,23 @@ timing_options:
 - evening
 - bedtime
 take_with_food: optional
-linked_to_topics: []
-linked_to_claims: []
-notes_for_coach: Low dose (0.5–3 mg) is often sufficient; take 30 min before bed;
-  useful for jet lag and sleep onset issues.
-notes_for_client: Start with the lowest effective dose (0.5 mg). Higher doses are
-  not necessarily better and may cause grogginess the next morning.
+linked_to_topics:
+- insomnia
+- adrenal-dysfunction
+- gerd
+- estrogen-metabolism
+- immune-support
+- chronic-inflammation
+linked_to_claims:
+- magnesium-supports-cortisol-gaba-sleep
+- melatonin-as-acid-suppressor-gerd
+- melatonin-nac-methylated-b-vitamins-support-estrogen
+- melatonin-reduces-inflammation-sleep
+notes_for_coach: Document lists 5–20 mg; the upper end (>5 mg) requires clinician
+  oversight. Most sleep evidence supports lower doses (0.5–5 mg). Anti-inflammatory
+  mechanism via inflammasome modulation is emerging. Interactions with SSRIs and anticoagulants.
+notes_for_client: Melatonin is most commonly used to support sleep quality. It also
+  has anti-inflammatory properties. Start with the lowest effective dose.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -48,7 +59,23 @@ sources:
   location: Page 2 - Supplement Table
   quote: Melatonin - Sleep regulation, antioxidant - 3 mg-5 mg (low dose) - 30 minutes
     before bedtime
-version: 2
+- id: vitaone-adrenal-cheatsheet
+  location: The Anti-Stress Hormones (p.22)
+  quote: 'Melatonin: Antioxidant, anti-inflammatory, and sleep-regulating; counterbalances
+    cortisol. Sleep disturbance, immune dysfunction, accelerated aging.'
+- id: vitaone-gut-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
+    — Supplement recommendations'
+  quote: 'Acid suppressing: Melatonin'
+- id: vitaone-sex-hormones-toolkit
+  location: Estrogen Metabolism — Page 02
+  quote: There is also some evidence that melatonin, N-acetyl-cystine, & methylated
+    B vitamins may support healthy estrogen metabolism as well.
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: In addition to promoting restful sleep, melatonin has been shown to reduce
+    inflammation.
+version: 6
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-02'
 updated_by: shivani

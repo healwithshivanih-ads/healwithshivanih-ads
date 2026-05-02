@@ -1,0 +1,30 @@
+slug: magnesium-reduces-migraine-frequency
+statement: Magnesium citrate or glycinate (200–300 mg) may reduce migraine frequency
+  by relaxing cerebral blood vessels, supporting neurotransmitter regulation, and
+  preventing tension headaches.
+evidence_tier: plausible_emerging
+rationale: Several RCTs show magnesium supplementation reduces migraine frequency;
+  American Headache Society lists it as prophylactic option. Specific dosing from
+  this source should be verified with clinician.
+out_of_scope_notes: Specific supplement dosing is out of coaching scope — recommend
+  clinician consultation for migraine management.
+coaching_translation: Magnesium may help with headaches and migraines — your doctor
+  or nutritionist can advise whether a supplement makes sense for you.
+caveats:
+- Dose recommendation (200–300 mg) from educational toolkit — verify with clinician.
+- Diarrhoea can occur with citrate form at higher doses.
+linked_to_topics:
+- elimination-diet
+linked_to_supplements:
+- magnesium-citrate
+- magnesium-glycinate
+linked_to_mechanisms: []
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: FODMAP Plan SOS Solutions — Migraine/Headache
+  quote: Magnesium Citrate / Glycinate (200–300 mg). Relaxes cerebral blood vessels.
+    Helps neurotransmitter regulation. Prevents tension headaches.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,35 @@
+slug: omega-6-omega-3-ratio
+display_name: Omega-6 to Omega-3 Ratio
+aliases:
+- LA:ALA ratio
+- inflammatory fatty acid balance
+- n-6:n-3 ratio
+category: immune
+summary: The Western diet typically features a high omega-6:omega-3 ratio (15–20:1),
+  promoting a pro-inflammatory eicosanoid environment. Ratios of 4:1 or lower are
+  associated with reduced inflammation and lower chronic disease risk. Increasing
+  EPA/DHA intake is the primary leverage point.
+upstream_drivers:
+- dietary-fat-composition
+- processed-food-intake
+- seed-oil-consumption
+downstream_effects:
+- systemic-inflammation
+- cardiovascular-risk
+- cognitive-function
+related_mechanisms:
+- eicosanoid-signaling
+linked_to_topics:
+- essential-fatty-acids
+- mitochondrial-health-nutrition
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Essential Fatty Acids'
+  quote: Some research suggests that ratios 4:1 and lower may reduce inflammation
+    and lower the risk of chronic disease. Emphasis should be placed on increasing
+    EPA and DHA omega-3 consumption.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

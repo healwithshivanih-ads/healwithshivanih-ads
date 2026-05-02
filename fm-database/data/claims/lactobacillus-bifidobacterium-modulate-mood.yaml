@@ -1,0 +1,28 @@
+slug: lactobacillus-bifidobacterium-modulate-mood
+statement: Specific probiotic strains, particularly Lactobacillus and Bifidobacterium
+  species, are effective at modulating mood and stress levels via the gut-brain axis.
+evidence_tier: plausible_emerging
+rationale: Psychobiotic trials using L. rhamnosus, L. helveticus R0052 + B. longum
+  R0175 (and similar combinations) show mood and stress biomarker improvements in
+  RCTs. Evidence is promising but strain-specific and not yet mainstream clinical
+  consensus.
+caveats:
+- Strain specificity is critical — general probiotic supplements may not replicate
+  trial results.
+- Effect sizes are modest.
+linked_to_topics:
+- gut-brain-axis
+linked_to_supplements:
+- probiotics
+coaching_translation: ''
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-toolkit
+  location: 'Gut-Brain Axis: Nutrition''s Impact on Mental Health — Probiotics'
+  quote: Specific strains of probiotics, such as Lactobacillus & Bifidobacterium,
+    are particularly effective at modulating mood and stress levels.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

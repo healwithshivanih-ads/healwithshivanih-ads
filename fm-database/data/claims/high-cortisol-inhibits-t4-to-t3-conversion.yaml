@@ -1,0 +1,29 @@
+slug: high-cortisol-inhibits-t4-to-t3-conversion
+statement: Elevated cortisol from chronic stress inhibits 5'-deiodinase, blocking
+  T4-to-T3 conversion and shunting T4 toward inactive reverse T3.
+evidence_tier: plausible_emerging
+rationale: Glucocorticoids are known to suppress type-1 deiodinase activity; this
+  is a well-described mechanism in stress physiology and is documented in the source.
+  Treated as plausible_emerging because the document is a synthesis without specific
+  trial citation.
+coaching_translation: Chronic stress actively blocks your thyroid from working properly
+  — managing stress is a direct thyroid support strategy, not just a wellness nicety.
+caveats:
+- Source is synthesis; mechanism is well-described but primary citation not provided
+linked_to_topics:
+- t3-conversion-disorder
+- hypothyroidism
+linked_to_supplements:
+- ashwagandha
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 6: Chronic Stress and Inflammation'
+  quote: High cortisol inhibits 5′-deiodinase, the enzyme that converts T4 into active
+    T3. Instead, more T4 is shunted toward reverse T3 (rT3), which is inactive and
+    blocks T3 receptors.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

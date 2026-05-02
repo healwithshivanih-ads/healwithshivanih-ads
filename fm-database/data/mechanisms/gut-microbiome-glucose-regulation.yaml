@@ -1,0 +1,31 @@
+slug: gut-microbiome-glucose-regulation
+display_name: Gut Microbiome Influence on Glucose Regulation
+aliases:
+- microbiome-insulin axis
+- gut bacteria glucose modulation
+category: gut
+summary: Probiotic bacteria passing through the digestive tract may beneficially influence
+  blood sugar, insulin levels, and HbA1c, particularly in individuals with type 2
+  or gestational diabetes, via gut microbiome modulation.
+upstream_drivers:
+- dysbiosis
+- poor-diet
+downstream_effects:
+- reduced-hba1c
+- reduced-fasting-insulin
+- reduced-fasting-glucose
+related_mechanisms:
+- insulin-resistance
+linked_to_topics:
+- blood-sugar-dysfunction
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-blood-sugar-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: There is also emerging research which shows that probiotics may have beneficial
+    effects on reducing blood sugar, insulin, and Hemoglobin A1c, especially for those
+    who have type 2 or gestational diabetes.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

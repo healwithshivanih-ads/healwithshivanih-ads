@@ -1,0 +1,26 @@
+slug: fluoride-toxins-inhibit-thyroid-hormone-production
+statement: Fluoride (as an iodine antagonist), pesticides, mercury, cadmium, and lead
+  inhibit proper thyroid hormone production.
+evidence_tier: plausible_emerging
+rationale: Fluoride competes with iodine at the sodium-iodide symporter. Heavy metals
+  disrupt thyroid enzyme activity. Observational and animal studies support this;
+  large-scale human RCTs are limited.
+coaching_translation: Environmental exposures including fluoride in water and heavy
+  metals can interfere with your thyroid's ability to make hormones.
+caveats:
+- Source is an educational toolkit; no specific study cited.
+- Fluoride-iodine antagonism evidence is primarily from animal and ecological studies.
+linked_to_topics:
+- hypothyroidism
+- hashimotos-hypothyroidism
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-thyroid-toolkit
+  location: Factors that Affect Thyroid Function
+  quote: 'Fluoride (antagonist to iodine), Toxins: pesticides, mercury, cadmium, lead'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

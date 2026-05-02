@@ -1,0 +1,31 @@
+slug: infertility
+display_name: Infertility / Reproductive Dysfunction
+aliases:
+- difficulty conceiving
+- recurrent miscarriage
+- reproductive issues
+- fertility issues
+- reproductive toxicity
+category: hormonal
+severity: concerning
+description: Difficulty conceiving or reproductive irregularities potentially linked
+  to endocrine-disrupting chemicals (BPA, phthalates, pesticides, heavy metals).
+when_to_refer: All fertility concerns should involve a reproductive medicine clinician.
+linked_to_topics:
+- hypothyroidism
+- hashimotos-hypothyroidism
+- toxic-body-burden
+linked_to_mechanisms:
+- endocrine-disruption
+sources:
+- id: vitaone-thyroid-toolkit
+  location: Symptoms of Hashimoto's Hypothyroidism
+  quote: Infertility
+- id: vitaone-liver-detox-toolkit
+  location: Detox Food Plan — Body Burden
+  quote: Medical researchers are recognizing more symptoms related to the buildup
+    of toxins, including... infertility.
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

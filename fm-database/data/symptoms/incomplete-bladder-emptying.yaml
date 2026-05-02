@@ -1,0 +1,23 @@
+slug: incomplete-bladder-emptying
+display_name: Incomplete Bladder Emptying
+aliases:
+- feeling of retained urine
+- not emptying bladder fully
+category: urinary
+severity: common
+description: Sensation that the bladder has not fully emptied after urination; a key
+  BPH symptom scored on the AUA Symptom Index.
+when_to_refer: Refer if moderate-severe AUA score (≥8) or if urinary retention develops.
+linked_to_topics:
+- benign-prostatic-hyperplasia
+linked_to_mechanisms:
+- five-alpha-reductase-conversion
+sources:
+- id: vitaone-sex-hormones-toolkit
+  location: BPH Symptom Index — Page 05
+  quote: During the last month or so, how often have you had a sensation of not emptying
+    your bladder completely after you finished urinating?
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

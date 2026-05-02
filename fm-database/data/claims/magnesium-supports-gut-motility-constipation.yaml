@@ -1,0 +1,28 @@
+slug: magnesium-supports-gut-motility-constipation
+statement: Magnesium supports smooth muscle function and gut motility, making it effective
+  for constipation and improving transit time.
+evidence_tier: plausible_emerging
+rationale: Magnesium's osmotic and smooth-muscle-relaxing effects on bowel function
+  are well-supported. Magnesium citrate/oxide for constipation has clinical evidence.
+coaching_translation: Magnesium is a gentle, natural way to support regular bowel
+  movements — it helps the gut muscles relax and move things along.
+caveats:
+- 'Form matters: magnesium citrate/oxide for bowel motility; magnesium glycinate for
+  sleep/relaxation. High doses can cause loose stools.'
+linked_to_topics:
+- ibs
+- sibo
+linked_to_supplements:
+- magnesium-citrate
+- magnesium-glycinate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-cheatsheet
+  location: 100 Gut Symptoms — Constipation
+  quote: Constipation + fatigue — Low magnesium — Smooth muscle dysfunction — Magnesium
+    citrate
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,43 @@
+slug: nac-n-acetyl-cysteine
+display_name: N-Acetyl Cysteine (NAC)
+category: amino_acid
+forms_available:
+- capsule
+- tablet
+- powder
+typical_dose_range:
+  capsule:
+    min: 600
+    max: 1800
+    unit: mg
+  powder:
+    min: 600
+    max: 1800
+    unit: mg
+timing_options:
+- morning
+- with_breakfast
+- on_empty_stomach
+take_with_food: optional
+linked_to_topics:
+- mitochondrial-health-nutrition
+linked_to_claims:
+- nac-restores-glutathione-chronic-disease
+notes_for_coach: 'NAC is a glutathione precursor. Note: NAC has FDA regulatory complexity
+  in the US as a supplement — advise clients to confirm availability and discuss with
+  clinician. Therapeutic dosing for clinical conditions is out of coaching scope.'
+notes_for_client: NAC helps your body make glutathione — its most powerful internal
+  antioxidant. It may support detoxification and protect cells under chronic stress.
+  Check with your doctor before starting.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-toolkit
+  location: Nutrients for Mitochondrial Health
+  quote: N-acetyl cysteine (NAC) is an antioxidant that indirectly protects mitochondria
+    from oxidative stress. Supplementing with NAC helps to restore the body's level
+    of glutathione.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

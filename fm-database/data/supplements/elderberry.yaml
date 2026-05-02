@@ -1,0 +1,40 @@
+slug: elderberry
+display_name: Elderberry (Sambucus nigra)
+category: herb
+forms_available:
+- capsule
+- liquid
+- gummy
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 500
+    unit: mg
+  liquid:
+    min: 15
+    max: 30
+    unit: ml
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- immune-support
+linked_to_claims:
+- elderberry-reduces-upper-respiratory-symptoms
+notes_for_coach: Best evidence for reducing duration of upper respiratory infections.
+  Meta-analysis cited (Hawkins et al. 2019). Generally well-tolerated. COVID-19 specific
+  evidence was not established at time of publication.
+notes_for_client: Elderberry has the best evidence among herbs for reducing cold and
+  flu duration. It's generally safe at standard doses.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Elderberry is packed with vitamin C, dietary fiber, and antioxidants. It
+    has been used extensively in the prevention of influenza.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

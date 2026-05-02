@@ -1,0 +1,28 @@
+slug: free-t3-free-t4-ratio-predicts-conversion-quality
+statement: 'The Free T3/Free T4 ratio predicts the balance between thyroid hormone
+  activation and braking: a low ratio indicates cellular hypothyroidism (poor T4-to-T3
+  conversion).'
+evidence_tier: plausible_emerging
+rationale: The document presents the fT3/fT4 ratio as a functional marker for conversion
+  quality. This ratio is used in functional medicine practice and has emerging research
+  support as a predictor of thyroid symptoms independent of TSH.
+coaching_translation: Your T3-to-T4 ratio tells you whether your body is actually
+  activating the thyroid hormone it makes. Ask your doctor to calculate this from
+  your free T3 and free T4 results.
+out_of_scope_notes: Lab ratio interpretation is clinician scope.
+caveats:
+- Not a standard conventional lab interpretation tool
+- Requires clinician context for action
+linked_to_topics:
+- t3-conversion-disorder
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 8: Diagnosing Thyroid Diseases'
+  quote: 'Free T3 / Free T4 Ratio: Predicts balance between activation (T3) and ''brake''
+    (reverse T3). Low ratio = cellular hypothyroidism (poor conversion).'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

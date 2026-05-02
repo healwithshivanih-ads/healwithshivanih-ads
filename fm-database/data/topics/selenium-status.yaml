@@ -1,0 +1,34 @@
+slug: selenium-status
+display_name: Selenium & Antioxidant Defense
+aliases:
+- selenium deficiency
+- low selenium
+summary: Selenium is an essential trace element found in plant foods, seafood, meats,
+  and enriched grains. Soil concentration governs plant selenium content, leading
+  to geographic variability. Selenium supports antioxidant enzyme systems and thyroid
+  function.
+common_symptoms:
+- fatigue
+- frequent-illness
+red_flags:
+- excess selenium supplementation can be toxic — refer to clinician before supplementing
+related_topics:
+- mitochondrial-health-nutrition
+key_mechanisms:
+- glutathione-peroxidase-activity
+coaching_scope_notes: Coaches can guide dietary selenium sources. Brazil nuts are
+  highly concentrated — even 1–2 nuts/day can meet needs. Supplement dosing requires
+  clinician oversight due to narrow therapeutic window.
+clinician_scope_notes: 'DRI: adults 60 µg/day. Upper tolerable intake level is 400
+  µg/day. Brazil nuts average 544 µg/oz — overconsumption is a real risk.'
+evidence_tier: strong
+sources:
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Selenium'
+  quote: Plant sources of selenium may have variable selenium content, as their assimilation
+    of this important nutrient depends on concentrations of the soil in which they
+    are grown.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,26 @@
+slug: skeletal-muscle-primary-glucose-uptake-site
+statement: Skeletal muscle is the primary site for glucose uptake after a meal, and
+  exercise enhances this via both insulin-dependent and insulin-independent mechanisms.
+evidence_tier: strong
+rationale: Well-established physiology supported by extensive exercise metabolism
+  literature; consistent with GLUT4 translocation research.
+coaching_translation: Building and using your muscles — especially after meals — is
+  one of the most powerful ways to manage blood sugar naturally.
+linked_to_topics:
+- blood-sugar-dysfunction
+linked_to_supplements: []
+caveats:
+- Source is an educational toolkit, not primary literature; mechanism is strongly
+  corroborated by independent research.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-blood-sugar-toolkit
+  location: Antigravity Exercises
+  quote: Your skeletal muscle determines your health. It is the primary site for glucose
+    uptake after a meal. Exercise enhances skeletal muscle glucose uptake using both
+    insulin-dependent & insulin-independent mechanisms.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

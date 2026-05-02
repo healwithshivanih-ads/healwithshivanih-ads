@@ -1,0 +1,33 @@
+slug: inositol
+display_name: Myo-Inositol (+ D-Chiro Inositol for PCOS)
+category: other
+forms_available:
+- capsule
+- powder
+typical_dose_range:
+  powder:
+    min: 2000
+    max: 4000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- hairfall
+notes_for_coach: Myo-inositol + D-chiro inositol at 40:1 ratio is the most studied
+  form for PCOS (insulin sensitization, androgen reduction, cycle regulation). Multiple
+  RCTs in PCOS. Combine with omega-3 and magnesium for hormonal hair loss.
+notes_for_client: Inositol is a natural compound that helps with insulin sensitivity
+  and hormonal balance, particularly useful in PCOS.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+linked_to_claims: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Hairfall Cheatsheet
+  quote: Inositol, Omega-3, Myo+D-Chiro inositol, Magnesium
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,27 @@
+slug: muscle-cramps
+display_name: Muscle Cramps / Restless Legs
+aliases:
+- leg cramps
+- restless legs
+- muscle spasms
+- night cramps
+- charley horse
+category: musculoskeletal
+severity: common
+description: Involuntary muscle contractions and restless legs at night; classic signs
+  of magnesium and potassium deficiency. Also associated with loop diuretic use.
+linked_to_topics:
+- vitamin-b-complex-deficiency
+- medicine-nutrient-interactions
+linked_to_mechanisms:
+- mitochondrial-energy-production
+when_to_refer: ''
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Magnesium – The Calming Mineral
+  quote: 'Deficiency clues: Muscle cramps, restless legs, insomnia, palpitations,
+    migraines, PMS.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

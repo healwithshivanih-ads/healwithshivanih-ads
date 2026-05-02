@@ -1,0 +1,28 @@
+slug: omega-3-reduces-triglycerides
+statement: Omega-3 fatty acids (EPA/DHA) reduce triglycerides and exert anti-inflammatory
+  effects relevant to dyslipidemia management.
+evidence_tier: strong
+rationale: Omega-3 TG-lowering is one of the best-established supplement effects in
+  cardiovascular medicine, supported by multiple RCTs and meta-analyses. Document
+  corroborates this.
+coaching_translation: Fish oil (EPA and DHA) is one of the most researched supplements
+  for lowering high triglycerides and calming inflammation in the cardiovascular system.
+caveats:
+- High-dose omega-3 for very high TG is a medical intervention — dose above ~2g/day
+  EPA+DHA should be supervised by a clinician.
+- Source is an expert synthesis cheatsheet; dose verification required.
+out_of_scope_notes: Prescription omega-3 dosing (e.g., 4g/day for hypertriglyceridemia)
+  is outside coaching scope.
+linked_to_topics:
+- dyslipidemia
+linked_to_supplements:
+- omega-3
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 5
+  quote: 'Omega-3 (EPA/DHA): ↓TG, anti-inflammatory.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

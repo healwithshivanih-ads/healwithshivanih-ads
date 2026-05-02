@@ -1,0 +1,29 @@
+slug: egcg-anti-inflammatory-antiviral
+statement: Green tea's EGCG reduces inflammation, enhances immune function, and targets
+  processes involved in COVID-19 replication.
+evidence_tier: plausible_emerging
+rationale: Matsumoto et al. (BMC Complement Altern Med 2011) RCT on green tea catechins
+  for influenza prevention in healthcare workers is cited. EGCG's NLRP3 inhibition
+  (Lee et al. Molecules 2019) is cited. COVID-19 replication data is largely in silico/preclinical.
+coaching_translation: Green tea and its active compound EGCG have anti-inflammatory
+  effects and some evidence for supporting immune defense against viruses.
+linked_to_topics:
+- immune-support
+- chronic-inflammation
+linked_to_supplements:
+- egcg
+caveats:
+- High-dose EGCG extracts have hepatotoxicity risk per USP review (Oketch-Rabah et
+  al. 2020).
+- COVID-19 replication targeting is primarily in silico evidence.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: In addition to reducing inflammation, green tea enhances the immune system
+    and targets one of the processes involved in COVID-19 replication.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

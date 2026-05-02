@@ -1,0 +1,25 @@
+slug: smoking-increases-cvd-risk
+statement: Smoking tobacco significantly increases the chance of developing cardiovascular
+  disease.
+evidence_tier: strong
+rationale: Smoking is one of the most robustly established modifiable CVD risk factors
+  across decades of epidemiological and clinical research.
+coaching_translation: Tobacco cessation is one of the highest-impact modifiable changes
+  a client can make for heart health.
+linked_to_topics:
+- cardiovascular-dysfunction
+linked_to_mechanisms:
+- systemic-inflammation
+- atherosclerosis
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: vitaone-cv-toolkit
+  location: CVD Risk Analysis — Modifiable Risk Factors
+  quote: Smoking tobacco significantly increases the chance of developing cardiovascular
+    disease.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

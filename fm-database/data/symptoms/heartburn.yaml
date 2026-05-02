@@ -1,0 +1,48 @@
+slug: heartburn
+display_name: Heartburn / Acid Reflux
+aliases:
+- burning chest
+- acid burning
+- pyrosis
+- acid reflux
+- burning in chest
+- GERD symptoms
+- rebound acid reflux
+- reflux
+- GERD
+- acid indigestion
+category: gi
+severity: common
+description: Burning sensation in the chest or throat due to gastric acid reflux;
+  can be triggered or worsened by certain foods, eating too fast, or lying down after
+  meals.
+when_to_refer: Dysphagia, unexplained weight loss, or symptoms unresponsive to lifestyle
+  changes.
+linked_to_topics:
+- gerd
+- hypochlorhydria
+- sibo
+- gut-dysfunction
+- elimination-diet
+- low-fodmap-diet
+linked_to_mechanisms:
+- les-dysfunction
+- impaired-gastric-acid-production
+- hypochlorhydria-mechanism
+- gut-motility-dysregulation
+sources:
+- id: vitaone-gut-cheatsheet
+  location: 100 Gut Symptoms — Reflux & Belching
+  quote: 'Heartburn — GERD — LES dysfunction — Lifestyle: elevate bed, avoid late
+    meals'
+- id: vitaone-gut-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Patients'
+  quote: It is common to experience some reflux symptoms while tapering. This is known
+    as rebound acid reflux, which is a reversible and short term effect.
+- id: vitaone-elimination-diet-toolkit
+  location: Low Fodmap Diet Symptom Tracker — Section 1
+  quote: Heartburn / reflux
+version: 3
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

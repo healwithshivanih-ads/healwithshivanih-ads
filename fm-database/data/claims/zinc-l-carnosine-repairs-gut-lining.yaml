@@ -1,0 +1,25 @@
+slug: zinc-l-carnosine-repairs-gut-lining
+statement: Zinc l-carnosine is recommended for gut lining repair during PPI tapering.
+evidence_tier: plausible_emerging
+rationale: Zinc l-carnosine has been studied for gastroprotective effects and gastric
+  mucosal repair, with some RCT evidence in gastric ulcer and H. pylori contexts.
+caveats:
+- Evidence is primarily from Japanese studies and specific GI conditions; broader
+  gut repair evidence is emerging.
+linked_to_topics:
+- gerd
+- gut-dysfunction
+linked_to_supplements:
+- zinc-l-carnosine
+coaching_translation: ''
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
+    — Supplement recommendations'
+  quote: 'Repair: Zinc l-carnosine, aloe vera'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,43 @@
+slug: mood-changes
+display_name: Mood Disorders / Behavioral Changes
+aliases:
+- low mood
+- irritability
+- emotional changes
+- emotional dysregulation
+- behavior changes
+category: mood
+severity: common
+description: Changes in mood, affect, or behavior associated with neurotoxic effects
+  of accumulated toxins.
+when_to_refer: Suicidal ideation, severe psychiatric symptoms, or sudden personality
+  change require urgent referral.
+linked_to_topics:
+- thyroid
+- anxiety
+- chronic-inflammation
+- anti-inflammatory-diet
+- toxic-body-burden
+- liver-detoxification
+linked_to_mechanisms:
+- t4-to-t3-conversion-block
+- hpa-axis-dysregulation
+- cytokine-dysregulation
+- oxidative-stress
+- endocrine-disruption
+sources:
+- id: vitaone-thyroid-cheatsheet
+  location: Biohacking Thyroid Function Cheatsheet — Thyroid Dysfunction Symptoms
+  quote: Mood changes (anxiety, depression)
+- id: vitaone-inflammation-toolkit
+  location: Anti Inflammatory Diet — Benefits of Following an Anti-Inflammatory Diet
+  quote: Reduction in brain fog and improvement in mood disorders like depression
+    and anxiety.
+- id: vitaone-liver-detox-toolkit
+  location: Detox Food Plan — Body Burden
+  quote: Medical researchers are recognizing more symptoms related to the buildup
+    of toxins, including... behavior and mood disorders.
+version: 3
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

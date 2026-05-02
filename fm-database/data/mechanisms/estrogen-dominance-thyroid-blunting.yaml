@@ -1,0 +1,32 @@
+slug: estrogen-dominance-thyroid-blunting
+display_name: Estrogen Dominance — Thyroid Blunting
+aliases:
+- estrogen excess thyroid binding
+- high TBG from estrogen
+category: endocrine
+summary: Excess estrogen increases thyroid-binding globulin (TBG), reducing free T4
+  and T3 available to tissues. Low progesterone and adrenal dysregulation further
+  blunt thyroid receptor response.
+upstream_drivers:
+- estrogen-excess
+- low-progesterone
+- liver-congestion
+- low-protein-intake
+downstream_effects:
+- high-total-t4-t3
+- low-free-thyroid-hormones
+- functional-hypothyroidism
+related_mechanisms:
+- hpa-axis-dysregulation
+linked_to_topics:
+- thyroid
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-thyroid-cheatsheet
+  location: Biohacking Thyroid Function Cheatsheet — Investigate Hormonal Cross-Talk
+  quote: Estrogen dominance, low progesterone, adrenal dysregulation can blunt thyroid
+    response
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

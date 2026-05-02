@@ -1,0 +1,28 @@
+slug: probiotics-enhance-immune-response
+statement: Probiotics can enhance immune response by crowding out harmful bacteria,
+  while prebiotics boost the overall health of beneficial microbes, thus strengthening
+  the immune system.
+evidence_tier: plausible_emerging
+rationale: A large portion of immune tissue (GALT) is gut-associated. Multiple studies
+  show probiotic effects on immune markers. Consensus is growing but strain-specific
+  effects vary.
+coaching_translation: A healthy gut microbiome is one of your best immune defenses
+  — good bacteria in the gut directly support immune function.
+linked_to_topics:
+- gut-microbiome
+- gut-dysfunction
+linked_to_supplements:
+- probiotics
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-toolkit
+  location: 'Prebiotics and Probiotics: Their Role in Gut Health — Benefits'
+  quote: A large portion of the immune system resides in the gut. Probiotics can enhance
+    immune response by crowding out harmful bacteria, while prebiotics boost the overall
+    health of beneficial microbes, thus strengthening the immune system.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,34 @@
+slug: vagal-tone-dysregulation
+display_name: Vagal Tone Dysregulation
+aliases:
+- low vagal tone
+- parasympathetic insufficiency
+category: neurological
+summary: Reduced parasympathetic (vagal) drive impairs gut motility via the migrating
+  motor complex, increases intestinal permeability, and amplifies visceral pain perception;
+  stress further suppresses vagal tone creating a gut-brain feedback loop.
+upstream_drivers:
+- chronic-stress
+- hpa-axis-dysregulation
+- poor-sleep
+downstream_effects:
+- slowed-gut-motility
+- bloating
+- constipation
+- visceral-hypersensitivity
+related_mechanisms:
+- hpa-axis-dysregulation
+- gut-motility-dysregulation
+linked_to_topics:
+- gut-brain-axis
+- ibs
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: FODMAP Plan SOS Solutions — Migraine/Headache
+  quote: Longer exhale stimulates the vagus nerve. Reduces sympathetic firing → cranial
+    vasodilation normalizes.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

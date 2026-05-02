@@ -1,0 +1,42 @@
+slug: beta-glucans
+display_name: Beta-Glucans
+category: other
+forms_available:
+- capsule
+- tablet
+- powder
+typical_dose_range:
+  capsule:
+    min: 250
+    max: 500
+    unit: mg
+  powder:
+    min: 250
+    max: 500
+    unit: mg
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- immune-support
+- chronic-inflammation
+linked_to_claims:
+- beta-glucans-immune-modulation-respiratory
+notes_for_coach: Multiple RCTs cited for yeast-derived beta-glucans (1,3/1,6) reducing
+  URI symptoms and enhancing innate immunity. Generally well-tolerated. Source varies
+  (yeast, oat, mushroom) — efficacy may differ by source.
+notes_for_client: Beta-glucans from yeast or mushrooms have been shown in clinical
+  trials to help reduce cold and flu symptoms. They're generally safe and well-tolerated.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Beta glucans are both anti-inflammatory and enhance immune function while
+    specifically benefitting those with upper respiratory tract infections caused
+    by viruses.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,30 @@
+slug: leaky-gut-triggers-hashimotos
+statement: Dysbiosis and leaky gut trigger thyroid autoimmunity by allowing antigens
+  to drive molecular mimicry against thyroid tissue.
+evidence_tier: plausible_emerging
+rationale: The document links leaky gut, gluten sensitivity, and molecular mimicry
+  to positive Anti-TPO antibodies. Gut permeability and autoimmune thyroid disease
+  association is an emerging research area.
+coaching_translation: Your gut barrier is your immune system's gatekeeper. When it's
+  leaky, the immune system can start attacking your thyroid by mistake.
+caveats:
+- Mechanistic evidence is biologically plausible but clinical RCT evidence is thin.
+- Source is expert consensus.
+linked_to_topics:
+- thyroid
+- leaky-gut
+- autoimmune
+linked_to_supplements:
+- l-glutamine
+- probiotic-multi-strain
+- zinc-carnosine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-cheatsheet
+  location: What Nutritionists/Health Coaches Miss — Ignore Gut Health
+  quote: Dysbiosis & leaky gut trigger thyroid autoimmunity
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

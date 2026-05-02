@@ -1,0 +1,26 @@
+slug: portion-size-determines-fodmap-load
+statement: FODMAP content is dose-dependent; many foods are low FODMAP only up to
+  a specific serving size, and exceeding that threshold triggers symptoms.
+evidence_tier: strong
+rationale: Monash University FODMAP app data and RCTs demonstrate that threshold effects
+  exist for most FODMAP foods; portion creep is a primary reason for failed symptom
+  response.
+coaching_translation: It is not just WHAT you eat but HOW MUCH — even 'safe' foods
+  can cause symptoms if you have too large a portion.
+caveats:
+- Individual thresholds vary; systematic reintroduction is needed to personalise.
+linked_to_topics:
+- low-fodmap-diet
+linked_to_mechanisms:
+- colonic-fermentation
+out_of_scope_notes: ''
+linked_to_supplements: []
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: Low FODMAP Vegetarian Diet Plan
+  quote: Portion size matters (many foods are low only up to a certain serve, and
+    IBS tends to have a 'dose response').
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

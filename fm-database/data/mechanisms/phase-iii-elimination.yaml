@@ -1,0 +1,28 @@
+slug: phase-iii-elimination
+display_name: Phase III Elimination
+aliases:
+- toxin elimination
+- hepatic elimination
+- biliary elimination
+category: gut
+summary: Phase III eliminates conjugated toxins via bile, stool, and urine. Requires
+  adequate fiber (flax, chia), hydration, and a healthy gut microbiome. Impaired elimination
+  leads to toxin recirculation.
+upstream_drivers:
+- phase-ii-conjugation
+downstream_effects:
+- toxin-recirculation-if-impaired
+- bowel-regularity
+related_mechanisms:
+- phase-ii-conjugation
+linked_to_topics:
+- liver-detoxification
+evidence_tier: strong
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Functional Detox Phases
+  quote: 'Phase III – Elimination: Eliminates conjugated toxins via bile, stool, urine.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

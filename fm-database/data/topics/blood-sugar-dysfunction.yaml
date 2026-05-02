@@ -1,0 +1,68 @@
+slug: blood-sugar-dysfunction
+display_name: Blood Sugar Dysfunction
+aliases:
+- dysglycaemia
+- glucose dysregulation
+- glycaemic imbalance
+- insulin resistance
+- IR
+- type 2 diabetes risk
+summary: A spectrum of conditions from insulin resistance through prediabetes to type
+  2 diabetes, driven by impaired insulin secretion or tissue responsiveness. Managed
+  through diet, exercise, micronutrient support, sleep, and stress management.
+common_symptoms:
+- post-meal-fatigue
+- sugar-cravings
+- brain-fog
+- energy-crashes
+- increased-thirst
+- abdominal-weight-gain
+- mood-swings
+- blurry-vision
+- frequent-urination
+- fatigue
+- blood-sugar-spikes
+- weight-gain
+red_flags:
+- fasting glucose ≥126 mg/dL
+- HbA1c ≥6.5%
+- unintended weight loss with polyuria
+- recurrent hypoglycaemic episodes
+- peripheral neuropathy
+- visual changes
+- diagnosed type 2 diabetes requiring medication
+- gestational diabetes
+- kidney disease (contraindicates chromium)
+related_topics:
+- insulin-resistance
+- metabolic-syndrome
+- type-2-diabetes
+- prediabetes
+- obesity
+key_mechanisms:
+- insulin-resistance
+- pancreatic-beta-cell-dysfunction
+- advanced-glycation-end-products
+- skeletal-muscle-glucose-uptake
+- hepatic-insulin-sensitivity
+coaching_scope_notes: Coaches can support lifestyle, dietary, and supplement education.
+  Supplement dosing and lab interpretation (HbA1c, HOMA-IR, vitamin D levels) must
+  be referred to a clinician.
+clinician_scope_notes: Monitor HbA1c, fasting glucose, HOMA-IR, vitamin D, zinc, and
+  magnesium levels. Chromium contraindicated in kidney disease. Adjust supplement
+  doses based on blood work.
+evidence_tier: strong
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Chapter 7 — Functional-Medicine Interventions
+  quote: 'Early identification of insulin resistance enables prevention and often
+    reversal of dysglycaemia through a three-pillar approach: dietary optimisation,
+    targeted supplementation, and lifestyle re-engineering.'
+- id: vitaone-blood-sugar-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: Insulin resistance (IR) is a condition where muscles & other tissues in the
+    body do not respond to insulin as expected.
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

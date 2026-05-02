@@ -1,0 +1,29 @@
+slug: omega-3-supplementation-muscle-mass-elderly
+statement: Supplementing with omega-3 fatty acids has been shown to have a positive
+  effect on muscle mass and walking speed, particularly in people aged 60 years or
+  older.
+evidence_tier: plausible_emerging
+rationale: Supported by Huang et al. 2020 meta-analysis (Nutrients, 12(12):3739) cited
+  in document references.
+coaching_translation: For older adults, omega-3s aren't just heart health — they may
+  also help preserve muscle and physical function. Eating fatty fish 2x/week or discussing
+  supplementation with your doctor is worthwhile.
+caveats:
+- Evidence is strongest in adults 60+; younger population data is more limited.
+linked_to_topics:
+- mitochondrial-health-nutrition
+- essential-fatty-acids
+linked_to_supplements:
+- fish-oil-omega-3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-toolkit
+  location: Nutrients for Mitochondrial Health
+  quote: Supplementing with omega-3 fatty acids has been shown to have a positive
+    effect on muscle mass & walking speed, particularly in people aged 60 years or
+    older.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,29 @@
+slug: beta-glucans-immune-modulation-respiratory
+statement: Beta-glucans are anti-inflammatory, enhance immune function, and specifically
+  benefit those with viral upper respiratory tract infections.
+evidence_tier: plausible_emerging
+rationale: Multiple cited RCTs (Auinger et al. Eur J Nutr 2013; Dharsono et al. J
+  Am Coll Nutr 2019; Nieman et al. Med Sci Sports Exerc 2008) support beta-glucan's
+  immune-enhancing and URI-reducing effects.
+coaching_translation: Beta-glucans from yeast and mushrooms have been shown in clinical
+  trials to help reduce cold and flu symptoms and support your immune defenses.
+linked_to_topics:
+- immune-support
+- chronic-inflammation
+linked_to_supplements:
+- beta-glucans
+caveats:
+- Source is expert consensus toolkit.
+- Evidence base strongest for yeast-derived beta-glucans in athletes and older adults.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Beta glucans are both anti-inflammatory and enhance immune function while
+    specifically benefitting those with upper respiratory tract infections caused
+    by viruses.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

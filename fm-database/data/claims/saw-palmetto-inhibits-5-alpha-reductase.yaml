@@ -1,0 +1,28 @@
+slug: saw-palmetto-inhibits-5-alpha-reductase
+statement: Saw palmetto (Serenoa repens) inhibits 5-alpha reductase activity, supporting
+  healthy testosterone levels and potentially reducing BPH symptoms.
+evidence_tier: plausible_emerging
+rationale: Saw palmetto's 5-alpha reductase inhibition is one of the most studied
+  herbal mechanisms for BPH, supported by multiple trials, though systematic reviews
+  have mixed results. Document lists it as a clinician-prescribed herb.
+coaching_translation: Saw palmetto is a commonly used herb for prostate support and
+  hormone balance — use only as directed by your clinician.
+out_of_scope_notes: Dosing must be clinician-directed. Do not self-prescribe for BPH
+  without clinical evaluation.
+caveats:
+- Evidence from RCTs is mixed (some positive, some no effect vs. placebo). Clinician
+  guidance required.
+linked_to_topics:
+- testosterone-health
+- benign-prostatic-hyperplasia
+linked_to_supplements:
+- saw-palmetto
+linked_to_mechanisms: []
+sources:
+- id: vitaone-sex-hormones-toolkit
+  location: Maintaining Healthy Testosterone Levels — Page 06
+  quote: Saw Palmetto (Serenoa repens) [inhibits 5-a Reductase]
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

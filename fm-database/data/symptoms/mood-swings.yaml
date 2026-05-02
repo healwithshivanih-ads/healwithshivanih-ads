@@ -1,0 +1,25 @@
+slug: mood-swings
+display_name: Mood Swings
+aliases:
+- irritability
+- emotional instability
+- blood sugar mood changes
+category: mood
+severity: common
+description: Rapid shifts in mood, irritability, or emotional reactivity associated
+  with blood glucose fluctuations affecting neurotransmitter balance.
+linked_to_topics:
+- insulin-resistance
+- blood-sugar-dysfunction
+linked_to_mechanisms:
+- insulin-resistance
+when_to_refer: ''
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 4.2.2 — Progressing Insulin Resistance
+  quote: Energy 'crashes,' intensified cravings, increased thirst, mood swings, expanding
+    waist circumference.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

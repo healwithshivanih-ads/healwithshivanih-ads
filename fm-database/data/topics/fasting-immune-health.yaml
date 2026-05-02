@@ -1,0 +1,45 @@
+slug: fasting-immune-health
+display_name: Fasting & Immune Health
+aliases:
+- intermittent fasting immune effects
+- time-restricted eating immunity
+- therapeutic fasting
+summary: Fasting modulates immunity through autophagy, mTOR suppression, AMPK activation,
+  reduced NF-κB, and gut immune reset. Benefits include lower chronic inflammation,
+  improved immune efficiency, and support for autoimmune conditions. Contraindicated
+  in chronic stress, active infection, eating disorder history, and hypothyroidism.
+common_symptoms:
+- post-viral-fatigue
+- recurrent-infections
+- metabolic-syndrome-symptoms
+red_flags:
+- active infection
+- eating disorder history
+- hypothyroidism
+- chronic burnout
+related_topics:
+- chronic-inflammation
+- autoimmune-disease
+- leaky-gut
+- metabolic-syndrome
+key_mechanisms:
+- autophagy
+- mtor-suppression
+- ampk-activation
+- nf-kb-activation
+coaching_scope_notes: Coaches can introduce 12–14hr overnight fasting for most clients
+  and discuss time-restricted eating for metabolic inflammation. Cyclic fasting, prolonged
+  fasting, and fasting in autoimmune cases requires clinician oversight.
+clinician_scope_notes: Screen stress axis and thyroid before fasting protocols. Ensure
+  protein sufficiency, especially in autoimmune cases. Avoid fasting during illness.
+  Cyclic fasting (1–2x/week) for stable patients only.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Fasting & Immune Health Link — Page 17
+  quote: Fasting does not 'boost' immunity. It optimizes immune efficiency when used
+    correctly and suppresses it when misused.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

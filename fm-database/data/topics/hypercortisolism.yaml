@@ -1,0 +1,46 @@
+slug: hypercortisolism
+display_name: Hypercortisolism
+aliases:
+- elevated cortisol
+- high cortisol state
+- Cushing's-like pattern
+summary: Chronic elevation of cortisol from prolonged stress leads to diminished immune
+  function, lowered insulin sensitivity, poor sleep, elevated lipids, water retention,
+  cellular potassium loss, and DHEA depletion.
+common_symptoms:
+- weight-gain-abdomen
+- insomnia
+- craving-sweets
+- agitated-depression
+- stretch-marks
+- osteoporosis
+red_flags:
+- Stretch marks not from weight loss
+- Central obesity with buffalo hump and moon face — possible Cushing's syndrome requiring
+  referral
+related_topics:
+- hpa-axis-dysregulation
+- chronic-stress
+- insulin-resistance
+key_mechanisms:
+- cortisol-excess
+- hpa-axis-dysregulation
+- dhea-depletion
+coaching_scope_notes: Support dietary changes (avoid refined sugar, caffeine, alcohol),
+  sleep habits, and stress management. Do not diagnose Cushing's syndrome.
+clinician_scope_notes: Distinguish functional hypercortisolism from pathological Cushing's
+  syndrome via testing. Items with * require physical exam.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-adrenal-toolkit
+  location: Hypercortisolism
+  quote: 'The results of high cortisol and adrenaline levels from prolonged stress
+    include: Diminished immune function, Depletion of cortisol, resulting in low blood
+    sugar, Less restful sleep, Increased lipid levels of blood fats, Water retention,
+    Loss of cellular potassium, a very important mineral, Lowered insulin sensitivity,
+    with a higher susceptibility to diabetes, Loss of the capacity to produce sufficient
+    DHEA.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

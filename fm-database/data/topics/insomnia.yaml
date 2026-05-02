@@ -1,43 +1,58 @@
 slug: insomnia
-display_name: Insomnia / Sleep Disruption
+display_name: Insomnia & Sleep Disruption
 aliases:
-  - sleep
-  - poor-sleep
-  - sleep-onset-difficulty
-  - night-waking
-summary: |
-  Difficulty falling asleep, staying asleep, or non-restorative sleep. From an
-  FM lens, common drivers are nervous-system dysregulation, evening cortisol
-  elevation, low progesterone (perimenopause), magnesium insufficiency, blood
-  sugar dips, and circadian misalignment from light/screen exposure.
+- sleep
+- poor-sleep
+- sleep-onset-difficulty
+- night-waking
+- poor sleep
+- sleep disturbance
+- delayed sleep onset
+- poor REM
+summary: Sleep disruption driven by cortisol dysregulation, low melatonin, GABA-glutamate
+  imbalance, blue light exposure, and circadian mismatch.
 common_symptoms:
-  - difficulty falling asleep
-  - waking 2-4am unable to return to sleep
-  - non-restorative sleep / morning fatigue
-  - racing thoughts at bedtime
-  - 3am cortisol spike
+- difficulty falling asleep
+- waking 2-4am unable to return to sleep
+- non-restorative sleep / morning fatigue
+- racing thoughts at bedtime
+- 3am cortisol spike
+- difficulty-falling-asleep
+- 3am-wakeups
+- non-restorative-sleep
+- daytime-fatigue
 red_flags:
-  - persistent insomnia with low mood / suicidality (refer mental health)
-  - witnessed apnea, loud snoring, gasping (refer for sleep study)
-  - excessive daytime sleepiness despite adequate hours in bed
+- persistent insomnia with low mood / suicidality (refer mental health)
+- witnessed apnea, loud snoring, gasping (refer for sleep study)
+- excessive daytime sleepiness despite adequate hours in bed
+- Sleep apnea symptoms — refer for sleep study
 related_topics:
-  - perimenopause
-  - anxiety
+- perimenopause
+- anxiety
+- hpa-axis-dysregulation
+- gut-brain-axis
+- vagal-tone
 key_mechanisms:
-  - hpa-axis-dysregulation
-  - low-progesterone
-  - blood-sugar-instability
-coaching_scope_notes: |
-  Sleep hygiene, breathwork, light exposure, dinner timing, glycine/magnesium
-  supplementation, journaling. Coach can run sleep-focused 8-week protocol.
-clinician_scope_notes: |
-  Persistent >3 weeks unresponsive to lifestyle, suspected OSA, or insomnia
+- hpa-axis-dysregulation
+- low-progesterone
+- blood-sugar-instability
+- gaba-a-receptor-modulation
+coaching_scope_notes: Sleep hygiene, magnesium glycinate, melatonin, glycine, no-blue-light
+  routines, circadian reset are within scope.
+clinician_scope_notes: 'Persistent >3 weeks unresponsive to lifestyle, suspected OSA,
+  or insomnia
+
   with mood disorder requires clinician.
+
+  '
 sources:
-  - id: vitaone-skill-practice-guide
-    location: practice_guide.md, Sleep section
-evidence_tier: strong
-version: 1
+- id: vitaone-skill-practice-guide
+  location: practice_guide.md, Sleep section
+- id: vitaone-adrenal-cheatsheet
+  location: 50 Hormones Cheatsheet — Melatonin row (p.4)
+  quote: '↓ Insomnia, jet lag. Solution: Sleep hygiene, magnesium, melatonin support.'
+evidence_tier: plausible_emerging
+version: 2
 status: active
-updated_at: 2026-04-28
+updated_at: '2026-05-02'
 updated_by: shivani

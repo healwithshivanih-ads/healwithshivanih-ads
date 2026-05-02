@@ -1,0 +1,35 @@
+slug: reduced-scfas
+display_name: Reduced Short-Chain Fatty Acids (SCFAs)
+aliases:
+- low butyrate
+- SCFA deficiency
+- low butyrate production
+category: gut
+summary: Dysbiosis reduces populations of SCFA-producing bacteria (e.g. Faecalibacterium),
+  diminishing butyrate and other SCFAs. SCFAs are critical for colonocyte health,
+  mucosal immunity, and anti-inflammatory signaling. Low SCFAs impair gut barrier
+  integrity and immune regulation.
+upstream_drivers:
+- gut-dysbiosis-mechanism
+- low-fiber-diet
+- antibiotics
+downstream_effects:
+- leaky-gut
+- poor-immune-regulation
+- colon-inflammation
+related_mechanisms:
+- leaky-gut
+- gut-dysbiosis-mechanism
+linked_to_topics:
+- gut-dysbiosis
+- leaky-gut
+- ibd
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Leaky Gut & Inflammation — Why Leaky Gut Creates Chronic Inflammation
+  quote: Reduced SCFAs — Loss of anti-inflammatory signaling — Poor immune regulation
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

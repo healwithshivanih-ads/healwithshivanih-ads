@@ -1,0 +1,35 @@
+slug: lps-endotoxemia
+display_name: LPS Endotoxemia
+aliases:
+- lipopolysaccharide translocation
+- metabolic endotoxemia
+- endotoxin load
+category: immune
+summary: Lipopolysaccharide (LPS) from gram-negative bacterial cell walls enters systemic
+  circulation through a leaky gut, acting as a major immune disruptor that triggers
+  NF-κB and systemic inflammation.
+upstream_drivers:
+- leaky-gut
+- gut-dysbiosis
+- high-fat-high-sugar-diet
+downstream_effects:
+- nf-kb-activation
+- systemic-inflammation
+- insulin-resistance
+related_mechanisms:
+- leaky-gut
+- gut-dysbiosis
+- nf-kb-activation
+linked_to_topics:
+- chronic-inflammation
+- autoimmune-disease
+- leaky-gut
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Autoimmune Disease Cheatsheet — Page 25
+  quote: LPS (endotoxin) = major immune disruptor.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,26 @@
+slug: ashwagandha-cortisol-hair-loss
+statement: Ashwagandha reduces cortisol and supports adrenal recovery, making it useful
+  in telogen effluvium and postpartum hair loss driven by chronic stress.
+evidence_tier: plausible_emerging
+rationale: Ashwagandha (KSM-66 and Sensoril extracts) has RCT evidence for cortisol
+  reduction and stress scores (Chandrasekhar et al., 2012, IJANM). Its application
+  in hair loss is FM clinical practice; direct RCTs for hair regrowth are lacking.
+coaching_translation: Ashwagandha is a well-researched adaptogen for stress resilience
+  and may help with stress-related hair loss.
+caveats:
+- Autoimmune thyroid disease patients should use with caution and consult clinician.
+- Source is a synthesis document.
+linked_to_topics:
+- hairfall
+linked_to_supplements:
+- ashwagandha
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Hairfall – Supplement Stack
+  quote: Lowers cortisol & supports postpartum or chronic stress–related loss
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

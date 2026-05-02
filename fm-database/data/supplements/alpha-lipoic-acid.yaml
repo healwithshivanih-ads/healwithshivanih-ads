@@ -1,34 +1,73 @@
 slug: alpha-lipoic-acid
-display_name: Alpha Lipoic Acid (ALA)
+display_name: Alpha-Lipoic Acid (ALA)
 category: other
 forms_available:
 - capsule
 - tablet
 typical_dose_range:
   capsule:
-    min: 100
+    min: 300
     max: 600
     unit: mg
   tablet:
-    min: 100
+    min: 300
     max: 600
     unit: mg
 timing_options:
 - mid_afternoon
+- with_breakfast
+- with_lunch
+- with_dinner
+- on_empty_stomach
+- morning
+- mid_morning
 take_with_food: optional
-notes_for_coach: R-form preferred (100 mg R = ~300 mg standard ALA); useful for neuropathy,
-  blood sugar support, and detox.
+notes_for_coach: 'Note: ALA here refers to alpha-lipoic acid (not alpha-linolenic
+  acid). Both antioxidant and cofactor roles in mitochondrial energy production. Evidence
+  strongest for diabetic neuropathy. Dosing requires clinician guidance.'
 evidence_tier: plausible_emerging
-linked_to_topics: []
+linked_to_topics:
+- pcos
+- insulin-resistance
+- blood-sugar-dysfunction
+- type-2-diabetes
+- mitochondrial-health-nutrition
 linked_to_mechanisms: []
-linked_to_claims: []
-notes_for_client: ''
+linked_to_claims:
+- berberine-ampk-natural-metformin
+- ala-reduces-diabetic-nerve-pain
+- ala-supports-healthy-weight-and-insulin-sensitivity
+- ala-improves-diabetic-neuropathy-insulin-sensitivity
+notes_for_client: Alpha-lipoic acid is a versatile antioxidant that both supports
+  energy production and helps protect your cells from damage. It's been studied for
+  nerve symptoms and blood sugar support.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
   quote: Alpha Lipoic Acid (ALA) - Antioxidant, blood sugar, nerve health - 300–600
     mg/day (100 mg R Form) - anytime midday
-version: 1
+- id: vitaone-sex-hormones-cheatsheet
+  location: PCOS Supplement Cheatsheet
+  quote: 'Alpha Lipoic Acid (ALA): Improves insulin sensitivity + mitochondrial function;
+    Reduces glucose spikes, weight support; 300–600 mg/day with meals.'
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Insulin Resistance
+  quote: Alpha Lipoic Acid (300–600 mg/day)
+- id: vitaone-blood-sugar-ebook
+  location: Section 7.2 — Targeted Supplementation
+  quote: 'Alpha-lipoic acid (ALA): Antioxidant; improves mitochondrial glucose oxidation.
+    300-600 mg.'
+- id: vitaone-blood-sugar-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: Multiple studies have shown that alpha lipoic acid also reduces symptoms
+    of diabetic nerve pain. Some research shows that alpha lipoic acid supports healthy
+    weight, which in turn supports insulin sensitivity.
+- id: vitaone-nutrition-toolkit
+  location: Nutrients for Mitochondrial Health
+  quote: Alpha-lipoic acid (ALA), is an essential nutrient for mitochondrial energy
+    production. ALA also acts as a powerful antioxidant to reduce oxidative stress
+    during cellular energy production.
+version: 6
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-02'
 updated_by: shivani

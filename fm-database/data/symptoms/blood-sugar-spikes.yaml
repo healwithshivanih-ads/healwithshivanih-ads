@@ -1,0 +1,27 @@
+slug: blood-sugar-spikes
+display_name: Blood Sugar Spikes / Glucose Surges
+aliases:
+- postprandial glucose spike
+- sugar crash
+- energy crash after eating
+- glucose surge
+category: metabolic
+severity: common
+description: Rapid rise in blood glucose after meals, often followed by a crash in
+  energy. Linked to insulin resistance and impaired glucose disposal.
+when_to_refer: If accompanied by extreme thirst, frequent urination, or blurred vision
+  — refer for diabetes screening.
+linked_to_topics:
+- blood-sugar-dysfunction
+linked_to_mechanisms:
+- insulin-resistance
+- skeletal-muscle-glucose-uptake
+sources:
+- id: vitaone-blood-sugar-toolkit
+  location: Antigravity Exercises
+  quote: This exercise helps decrease glucose spikes by 30-50%, builds strong ankles,
+    strengthens feet, and improves blood circulation and lymph flow.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

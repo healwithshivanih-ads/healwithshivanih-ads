@@ -1,0 +1,25 @@
+slug: dgl-protects-gi-lining
+statement: DGL (deglycyrrhizinated licorice) protects the GI lining and is recommended
+  during PPI tapering.
+evidence_tier: plausible_emerging
+rationale: DGL has demulcent and cytoprotective properties; some clinical evidence
+  supports its use for peptic ulcer and gastric discomfort, though large RCT data
+  is limited.
+caveats:
+- Evidence base is moderate; most studies are older or small.
+linked_to_topics:
+- gerd
+linked_to_supplements:
+- dgl
+coaching_translation: ''
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
+    — Supplement recommendations'
+  quote: 'Protect: Alginate, pectin, DGL, slippery elm'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

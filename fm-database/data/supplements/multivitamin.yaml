@@ -1,0 +1,29 @@
+slug: multivitamin
+display_name: Multivitamin
+category: vitamin
+forms_available:
+- capsule
+- tablet
+timing_options:
+- with_breakfast
+take_with_food: required
+linked_to_topics:
+- intermittent-fasting
+- cardiometabolic-health
+notes_for_coach: Listed as an optional supplement during fasting protocols. Useful
+  to prevent micronutrient deficiencies during calorie-restricted days. Clinician
+  to specify formula.
+notes_for_client: Taking a multivitamin during fasting periods can help fill nutritional
+  gaps when your food intake is lower.
+evidence_tier: confirm_with_clinician
+typical_dose_range: {}
+linked_to_mechanisms: []
+linked_to_claims: []
+sources:
+- id: vitaone-cardiometabolic-toolkit
+  location: Intermittent Fasting — Personalized Recommendations
+  quote: Multivitamin
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,33 @@
+slug: hunger-satiety-signaling
+display_name: Hunger & Satiety Signaling
+aliases:
+- appetite regulation
+- hunger cues
+- fullness signals
+- satiety hormones
+category: endocrine
+summary: Internal hunger and satiety cues are regulated by hormonal (ghrelin, leptin)
+  and neural signals. High sugar/processed food intake, eating disorders, and diabetes
+  can blunt these signals. Mindful eating practices restore awareness of these cues.
+upstream_drivers:
+- blood-sugar-dysregulation
+- processed-food-intake
+- eating-disorder-history
+- eating-pace
+downstream_effects:
+- caloric-intake-regulation
+- body-weight-homeostasis
+- food-relationship-health
+related_mechanisms: []
+linked_to_topics:
+- mindful-intuitive-eating
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-nutrition-toolkit
+  location: Mindful and Intuitive Eating
+  quote: People with eating disorders and diabetes, or those who eat lots of sugar
+    and processed foods may find it difficult to notice hunger and fullness.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

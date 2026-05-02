@@ -1,0 +1,35 @@
+slug: five-alpha-reductase-conversion
+display_name: 5-Alpha Reductase Testosterone-to-DHT Conversion
+aliases:
+- 5AR activity
+- testosterone-DHT conversion
+- dihydrotestosterone production
+category: endocrine
+summary: 5-alpha reductase converts testosterone to dihydrotestosterone (DHT), a more
+  potent androgen. Excess activity reduces available testosterone and drives DHT-mediated
+  effects including prostate growth, androgenic hair loss, and androgenic acne.
+upstream_drivers:
+- high testosterone substrate
+- genetic predisposition
+- insulin resistance
+downstream_effects:
+- dht-excess
+- prostate-enlargement
+- androgenic-hair-loss
+- acne
+related_mechanisms:
+- insulin-resistance
+- shbg-hormone-binding
+linked_to_topics:
+- testosterone-health
+- benign-prostatic-hyperplasia
+evidence_tier: strong
+sources:
+- id: vitaone-sex-hormones-toolkit
+  location: Maintaining Healthy Testosterone Levels — Page 06
+  quote: 5-a reductase is a key enzyme in the body which regulates the conversion
+    of testosterone to a hormone called dihydrotestosterone (DHT).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

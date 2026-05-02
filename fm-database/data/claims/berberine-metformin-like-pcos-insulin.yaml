@@ -1,0 +1,29 @@
+slug: berberine-metformin-like-pcos-insulin
+statement: Berberine acts as an AMPK activator with metformin-like insulin-lowering
+  effects, improving insulin resistance and PCOS metabolic outcomes.
+evidence_tier: plausible_emerging
+rationale: Multiple RCTs show berberine improves fasting glucose, insulin, lipids,
+  and PCOS symptoms comparably to metformin. AMPK activation mechanism is well-characterized.
+  Evidence is promising but not yet strong consensus.
+coaching_translation: Berberine works similarly to the diabetes drug metformin to
+  improve how your body responds to insulin — a key driver of PCOS.
+caveats:
+- Avoid during pregnancy
+- Cycle every 8–12 weeks
+- Source is expert synthesis
+- Dose 300–500 mg × 2–3/day
+linked_to_topics:
+- pcos
+- estrogen-dominance
+linked_to_supplements:
+- berberine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: PCOD Cheatsheet — Supplement Approach
+  quote: Berberine → metformin-like effect, also gut-modulating.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

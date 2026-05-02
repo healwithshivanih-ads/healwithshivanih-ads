@@ -1,0 +1,31 @@
+slug: dim-i3c-support-estrogen-metabolism
+statement: DIM (diindolylmethane) and Indole-3-Carbinol (I3C), derived from cruciferous
+  vegetables, are commonly recommended supplements to support healthy estrogen metabolism.
+evidence_tier: plausible_emerging
+rationale: Thomson et al. (Nutr Rev, 2016) cited in document references specifically
+  supports DIM chemopreventive properties in breast cancer. Evidence from experimental
+  and some human studies exists but is not RCT consensus.
+coaching_translation: DIM and I3C are concentrated forms of the active compounds in
+  broccoli — your clinician may recommend them if your estrogen metabolism needs extra
+  support.
+out_of_scope_notes: Dosing should be individualized by clinician — document explicitly
+  states 'Supplement recommendations should always be tailored for each person's unique
+  physiology and health goals.'
+caveats:
+- Evidence is from experimental and limited human studies, not RCT consensus. Dose
+  must be clinician-determined.
+linked_to_topics:
+- estrogen-metabolism
+linked_to_supplements:
+- dim
+- indole-3-carbinol
+linked_to_mechanisms: []
+sources:
+- id: vitaone-sex-hormones-toolkit
+  location: Estrogen Metabolism — Promotes Healthy Estrogen Metabolism — Page 02
+  quote: Two commonly recommended supplements, diindolylmethane (DIM), and Indole-3-carbinol
+    (I3C), are extracted from cruciferous vegetables.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

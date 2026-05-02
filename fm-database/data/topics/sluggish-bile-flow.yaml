@@ -1,0 +1,50 @@
+slug: sluggish-bile-flow
+display_name: Sluggish Bile Flow
+aliases:
+- bile insufficiency
+- cholestasis
+- impaired bile flow
+- biliary stasis
+summary: Reduced or impaired bile production, flow, or gallbladder contraction leading
+  to poor fat digestion, detox impairment, dysbiosis, and hormone imbalance. A hidden
+  root cause behind estrogen dominance, bloating, constipation, skin issues, fatigue,
+  and thyroid imbalance. Root causes include low-fat diets, estrogen dominance, SIBO/dysbiosis,
+  poor liver detox, hypothyroidism, and high inflammation.
+common_symptoms:
+- bloating
+- nausea
+- pale-stools
+- constipation
+- right-sided-pain
+- steatorrhea
+- itchy-skin
+- fatigue
+red_flags:
+- jaundice — urgent referral
+- sharp pain under right rib — evaluate for gallstones
+- persistent pale stools — check bile obstruction
+related_topics:
+- gut-dysbiosis
+- sibo
+- leaky-gut
+- gerd
+key_mechanisms:
+- sluggish-bile-flow-mechanism
+- impaired-phase-ii-iii-detox
+coaching_scope_notes: Coaches can support dietary strategies (bitter greens, healthy
+  fats, lemon water, beetroot, artichoke), lifestyle changes, and stress reduction.
+  Supplement protocols (TUDCA, ox bile) and lab monitoring require clinician guidance.
+clinician_scope_notes: 'Monitor ALT/AST, GGT, bilirubin, vitamin D, thyroid panel,
+  stool beta-glucuronidase. Red flags: jaundice (urgent referral), sharp RUQ pain,
+  persistent pale stools. 8–12 weeks to restore bile flow.'
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Sluggish Bile Flow — Functional Wisdom
+  quote: 'Sluggish bile flow is one of the most overlooked root causes of: Estrogen
+    dominance, Bloating, Constipation, Skin issues, Fatigue, Thyroid imbalance, Poor
+    detoxification. Improving bile flow is often the missing link in chronic cases.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

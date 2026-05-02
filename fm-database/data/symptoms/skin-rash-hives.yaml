@@ -1,0 +1,30 @@
+slug: skin-rash-hives
+display_name: Skin Rash / Hives / Itching
+aliases:
+- urticaria
+- hives
+- itchy skin
+- skin flushing
+- redness
+category: skin
+severity: common
+description: Skin reactions including itching, redness, flushing, or raised welts
+  (urticaria), often associated with histamine excess, nightshade alkaloids, or salicylate
+  intolerance.
+when_to_refer: Angioedema, breathing difficulty, or anaphylaxis — emergency referral.
+linked_to_topics:
+- histamine-intolerance
+- nightshade-sensitivity
+- salicylate-sensitivity
+- elimination-diet
+linked_to_mechanisms:
+- immune-food-reactivity
+- diamine-oxidase-deficiency
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: Histamine Food Triggers — Symptoms
+  quote: 'Skin: itching, redness, flushing, hives'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,5 +1,5 @@
 slug: coq10-ubiquinone
-display_name: CoQ10 (Ubiquinone/Ubiquinol)
+display_name: CoQ10 (Ubiquinone / Ubiquinol)
 category: other
 forms_available:
 - capsule
@@ -7,7 +7,7 @@ forms_available:
 typical_dose_range:
   capsule:
     min: 100
-    max: 300
+    max: 400
     unit: mg
   tablet:
     min: 100
@@ -18,12 +18,18 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: required
-linked_to_topics: []
-linked_to_claims: []
-notes_for_coach: Fat-soluble; take with meals; particularly relevant for clients on
-  statins, those experiencing fatigue, or aging-related mitochondrial decline.
-notes_for_client: CoQ10 is especially important if you are taking a statin medication.
-  Take it with a fatty meal for best absorption.
+linked_to_topics:
+- pcos
+- adrenal-dysfunction
+- inflammation
+linked_to_claims:
+- emotional-stress-cascade-chronic-disease
+notes_for_coach: Mitochondrial electron transport chain cofactor. Supports cardiovascular
+  and mitochondrial resilience in chronic stress context. Fat-soluble — take with
+  food.
+notes_for_client: CoQ10 is a key nutrient for your cellular energy factories (mitochondria)
+  and heart health, especially important when chronic stress has depleted your energy
+  reserves.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -35,7 +41,14 @@ sources:
   location: Page 1 - Supplement Table
   quote: CoQ10 (Ubiquinone/Ubiquinol) - Mitochondrial energy, heart health - 100–300
     mg/day - With meal
-version: 2
+- id: vitaone-sex-hormones-cheatsheet
+  location: Advanced PCOS-Specific Support
+  quote: 'CoQ10: Enhances mitochondrial & egg quality; 100–200 mg/day preconception.'
+- id: vitaone-adrenal-cheatsheet
+  location: Organ–Emotion Axis (p.11)
+  quote: 'Heart: Grief, lack of joy. Hypertension, palpitations, CAD. CoQ10, meditation,
+    heart-rate variability work.'
+version: 4
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-02'
 updated_by: shivani

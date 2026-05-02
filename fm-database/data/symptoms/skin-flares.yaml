@@ -1,0 +1,31 @@
+slug: skin-flares
+display_name: Skin Flares (Eczema / Acne / Psoriasis)
+aliases:
+- skin issues
+- eczema
+- rashes
+- skin inflammation
+- skin plaques
+category: skin
+severity: common
+description: Inflammatory skin manifestations including eczema, acne, and psoriatic
+  plaques driven by gut-skin axis dysfunction, food sensitivities, and immune dysregulation.
+when_to_refer: Widespread or rapidly worsening skin disease, signs of infection, or
+  psoriatic arthritis — refer to dermatology or rheumatology.
+linked_to_topics:
+- psoriasis
+- chronic-inflammation
+- food-sensitivity
+- autoimmune-disease
+linked_to_mechanisms:
+- th17-dominance
+- leaky-gut
+- gut-dysbiosis
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Inflammation Cheatsheet — Page 02
+  quote: Skin issues (eczema, acne)
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

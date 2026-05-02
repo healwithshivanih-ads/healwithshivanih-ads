@@ -1,0 +1,35 @@
+slug: zinc-bisglycinate
+display_name: Zinc Bisglycinate
+category: mineral
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 15
+    max: 30
+    unit: mg
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- hairfall
+- knee-pain
+linked_to_claims:
+- zinc-copper-ratio-balance-required
+notes_for_coach: Bisglycinate has superior absorption vs sulfate/oxide. Always balance
+  with copper at ~10:1 ratio. Do not exceed 50 mg/day without clinician supervision.
+  Take with food to reduce nausea.
+notes_for_client: Zinc bisglycinate is easy on the stomach. Always take with food.
+  If taking zinc long-term, make sure you're getting some copper too.
+evidence_tier: strong
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin & Mineral Inactive vs Bio-Available Form Cheatsheet
+  quote: 'Zinc Bisglycinate: Bisglycinate has superior absorption'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

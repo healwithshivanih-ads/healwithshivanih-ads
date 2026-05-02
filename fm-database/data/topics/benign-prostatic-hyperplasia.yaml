@@ -1,0 +1,45 @@
+slug: benign-prostatic-hyperplasia
+display_name: Benign Prostatic Hyperplasia (BPH)
+aliases:
+- BPH
+- enlarged prostate
+- prostate enlargement
+summary: BPH is a condition involving prostate gland enlargement, commonly associated
+  with excess DHT conversion via 5-alpha reductase. Symptoms include incomplete bladder
+  emptying, urinary urgency, frequency, weak stream, and nocturia. Severity is assessed
+  via the American Urological Association Symptom Index.
+common_symptoms:
+- incomplete-bladder-emptying
+- urinary-urgency
+- urinary-frequency
+- weak-urinary-stream
+- straining-to-urinate
+- nocturia
+red_flags:
+- severe BPH score (20-35)
+- urinary retention
+- hematuria
+related_topics:
+- testosterone-health
+- five-alpha-reductase-activity
+key_mechanisms:
+- five-alpha-reductase-conversion
+- dht-excess
+coaching_scope_notes: Coaches can support dietary and lifestyle interventions (fatty
+  fish, green tea, flaxseed, stress management). BPH diagnosis and scoring require
+  clinician evaluation.
+clinician_scope_notes: AUA Symptom Index scores 0-7 mild, 8-19 moderate, 20-35 severe.
+  Refer for urological evaluation at moderate-severe scores or if red flags present.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-sex-hormones-toolkit
+  location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors — Page
+    06'
+  quote: 5-a reductase is a key enzyme in the body which regulates the conversion
+    of testosterone to a hormone called dihydrotestosterone (DHT). When testosterone
+    is converted to DHT, testosterone is lowered and can no longer work effectively.
+    This can result in conditions such as enlargement of the prostate in men.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

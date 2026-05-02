@@ -1,0 +1,26 @@
+slug: ala-improves-diabetic-neuropathy-insulin-sensitivity
+statement: Alpha-lipoic acid (ALA) can improve diabetic neuropathy and insulin sensitivity.
+evidence_tier: plausible_emerging
+rationale: Supported by Han et al. 2018 (Minerva Endocrinol) and Agathos et al. 2018
+  (J Int Med Res) cited in document. Multiple RCTs in diabetic neuropathy population.
+coaching_translation: Alpha-lipoic acid is a powerful antioxidant that may help with
+  nerve symptoms and blood sugar sensitivity in people with diabetes. Talk to your
+  doctor before adding this supplement.
+caveats:
+- Primarily studied in diabetic populations.
+- Dosing and application is out of coaching scope.
+out_of_scope_notes: Therapeutic ALA dosing for neuropathy or metabolic conditions
+  requires clinician oversight.
+linked_to_topics:
+- mitochondrial-health-nutrition
+linked_to_supplements:
+- alpha-lipoic-acid
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-toolkit
+  location: Nutrients for Mitochondrial Health
+  quote: Studies indicate that ALA can improve diabetic neuropathy and insulin sensitivity.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

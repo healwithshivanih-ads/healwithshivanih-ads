@@ -7,7 +7,7 @@ forms_available:
 typical_dose_range:
   capsule:
     min: 100
-    max: 180
+    max: 200
     unit: mcg
   tablet:
     min: 100
@@ -18,19 +18,27 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: required
-notes_for_coach: Best paired with Vitamin D3 for synergistic bone and cardiovascular
-  support; MK-7 form has longer half-life than MK-4.
+notes_for_coach: 'MK-7 has longer half-life than MK-4; blend of both is ideal. Always
+  pair with vitamin D3. CRITICAL: Patients on warfarin must maintain consistent K
+  intake — do not start/stop without clinician guidance.'
 evidence_tier: plausible_emerging
-linked_to_topics: []
+linked_to_topics:
+- knee-pain
 linked_to_mechanisms: []
-linked_to_claims: []
-notes_for_client: ''
+linked_to_claims:
+- vitamin-k2-mk7-superior-for-bone-cardiovascular
+notes_for_client: K2 helps direct calcium into your bones instead of your arteries.
+  Best taken with a fat-containing meal. If you take warfarin, always discuss K2 with
+  your doctor first.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 2 - Supplement Table
   quote: Vitamin K2 (MK-7) - Calcium metabolism, bone health - 100–180 mcg/day - With
     meals, especially with D3
-version: 1
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin K (K1 & K2)
+  quote: 'Supplement: Blend of MK-4 + MK-7 ideal.'
+version: 2
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-02'
 updated_by: shivani

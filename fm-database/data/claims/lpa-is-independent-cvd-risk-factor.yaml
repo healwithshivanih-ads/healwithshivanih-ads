@@ -1,0 +1,24 @@
+slug: lpa-is-independent-cvd-risk-factor
+statement: Lp(a) is a small, dense, highly inflammatory lipoprotein strongly influenced
+  by genetics and is an independent risk factor for heart disease.
+evidence_tier: strong
+rationale: Lp(a) as an independent, largely genetically determined CVD risk factor
+  is well-established in cardiovascular medicine.
+out_of_scope_notes: Lp(a) testing and management requires clinician oversight.
+linked_to_topics:
+- cardiovascular-dysfunction
+linked_to_mechanisms:
+- atherosclerosis
+- systemic-inflammation
+coaching_translation: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: vitaone-cv-toolkit
+  location: CVD Risk Analysis — Lab Results
+  quote: It is a small, dense, highly inflammatory lipoprotein and its level is strongly
+    influenced by genetics. While Lp(a) is an independent risk factor for heart disease.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

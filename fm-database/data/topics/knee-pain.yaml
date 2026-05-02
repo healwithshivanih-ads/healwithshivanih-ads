@@ -1,0 +1,48 @@
+slug: knee-pain
+display_name: Knee Pain (Functional Medicine Approach)
+aliases:
+- joint pain
+- osteoarthritis
+- rheumatoid arthritis
+- gout knee
+- metabolic joint pain
+summary: Knee pain encompasses multiple conditions (osteoarthritis, rheumatoid arthritis,
+  gout, post-injury, metabolic/obesity-related, hormonal) each with distinct root
+  causes including collagen breakdown, autoimmunity, uric acid buildup, and insulin
+  resistance. Functional Medicine uses anti-inflammatory diet, targeted supplementation,
+  and lifestyle modification.
+common_symptoms:
+- joint-stiffness
+- joint-swelling
+- knee-pain
+- morning-stiffness
+- reduced-mobility
+red_flags:
+- hot swollen joint with fever — rule out septic arthritis
+- severe joint deformity
+- acute gout attack not resolving
+key_mechanisms:
+- systemic-inflammation
+- collagen-degradation
+- insulin-resistance
+- gut-permeability
+related_topics:
+- osteoarthritis
+- rheumatoid-arthritis
+- gout
+coaching_scope_notes: Coaches can support anti-inflammatory dietary patterns, weight
+  management, movement, and stress reduction. Autoimmune and gout cases require clinician
+  management.
+clinician_scope_notes: Order Vitamin D, hs-CRP, RA factor, Anti-CCP, ANA, ESR, uric
+  acid, insulin, HbA1c, X-ray/MRI as indicated by subtype.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Knee Pain Cheatsheet
+  quote: Always personalize supplement protocols based on root cause (autoimmune,
+    metabolic, injury, or degenerative). Avoid chronic NSAID dependence, focus on
+    reducing inflammation and improving joint function naturally.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

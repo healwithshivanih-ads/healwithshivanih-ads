@@ -1,0 +1,47 @@
+slug: low-dose-naltrexone
+display_name: Low Dose Naltrexone (LDN)
+aliases:
+- LDN
+- low-dose naltrexone therapy
+summary: LDN (1.5–4.5 mg/day) is an off-label use of the opioid antagonist naltrexone.
+  At low doses it transiently blocks opioid receptors, provoking a compensatory rebound
+  elevation in endogenous opioids (endorphins, enkephalins) and upregulating opioid
+  receptors. This results in immune modulation, anti-inflammatory effects via TLR4
+  antagonism and microglial inhibition, and inhibition of aberrant cell proliferation.
+  Over 500 PubMed studies address its use in autoimmunity, fibromyalgia, Crohn's disease,
+  MS, and cancer.
+common_symptoms:
+- chronic-pain
+- fatigue
+- inflammation
+- autoimmune-flare
+red_flags:
+- concurrent-opioid-use
+- active-opioid-dependence
+related_topics:
+- autoimmune-thyroiditis
+- fibromyalgia
+- crohns-disease
+- multiple-sclerosis
+key_mechanisms:
+- opioid-rebound-upregulation
+- tlr4-microglial-inhibition
+- endorphin-immune-modulation
+coaching_scope_notes: Coaches can educate clients on what LDN is and how it works
+  mechanistically. All prescribing, dosing, and monitoring decisions are strictly
+  clinician scope. Clients should be directed to a functional medicine physician for
+  a prescription.
+clinician_scope_notes: Start 0.5–1.5 mg/day; titrate to 3–4.5 mg/day over 2–4 weeks.
+  Monitor thyroid hormone levels if used in AIT as dose requirements may change. Caution
+  with concurrent opioid medications — LDN will displace opioids and precipitate withdrawal.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-ldn-article
+  location: Introduction
+  quote: if you check PubMed, there are currently over 500 studies published on the
+    various uses of LDN, from pain relief, fibromyalgia, Crohn's disease, multiple
+    sclerosis, systemic sclerosis, and even cancer.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

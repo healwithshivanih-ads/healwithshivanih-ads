@@ -7,34 +7,88 @@ aliases:
 - incomplete-evacuation
 - sluggish-bowels
 - straining
+- slow bowels
+- infrequent stools
+- sluggish digestion
+- hard stools
+- difficulty passing stool
+- sluggish bowels
+- sluggish bowel
+- infrequent bowel movements
+- slow gut motility
+- poor elimination
 category: gi
 severity: common
-description: 'Infrequent (<3/week), hard, or difficult-to-pass stools. Slows estrogen
-
-  clearance via reduced enterohepatic transit; common in perimenopause
-
-  due to progesterone-mediated motility slowing and hypothyroidism.
-
-  '
-when_to_refer: 'Sudden change in bowel habit in midlife; blood in stool; severe
-
-  abdominal pain; weight loss; failure of basic measures over weeks.
-
-  '
+description: Infrequent or difficult bowel movements, often with hard stools; may
+  be related to low fiber intake, dehydration, or impaired gut motility during elimination
+  diets.
+when_to_refer: No bowel movement for >7 days, blood in stool, or new onset after age
+  50.
 linked_to_topics:
 - perimenopause
 - estrobolome
 - thyroid
 - microbiome
+- constipation
+- gut-dysbiosis
+- sibo
+- hypochlorhydria
+- sluggish-bile-flow
+- hypothyroidism
+- hashimotos-hypothyroidism
+- gut-dysfunction
+- beta-blocker-deprescribing
+- liver-detoxification
+- toxic-body-burden
+- low-fodmap-diet
+- elimination-diet
+- ibs
 linked_to_mechanisms:
 - estrogen-enterohepatic-recirculation
 - microbial-diversity-decline
+- t4-to-t3-conversion-block
+- impaired-gut-motility
+- impaired-t4-to-t3-conversion
+- thyroid-hormone-conversion
+- gut-dysbiosis
+- hypochlorhydria-mechanism
+- gut-liver-axis
+- gut-motility-dysregulation
+- colonic-fermentation
 sources:
 - id: thurlow-microbiome-mondays
   location: Session 6 — Bowel Patterns
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Gut section
-version: 1
+- id: vitaone-thyroid-cheatsheet
+  location: Biohacking Thyroid Function Cheatsheet — Thyroid Dysfunction Symptoms
+  quote: Constipation or diarrhea
+- id: vitaone-gut-cheatsheet
+  location: Gut Health Cheatsheet — Constipation
+  quote: Hypothyroid, low fiber, dehydration, dysbiosis, magnesium deficiency — Rule
+    out thyroid & motility issues. Hydration + lifestyle are non-negotiable
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 4: Functions of Thyroid Hormones'
+  quote: Decreased bowel movements, backing up stool makes you constipated.
+- id: vitaone-thyroid-toolkit
+  location: Thyroid Screening Questionnaire
+  quote: I am constipated (less than 1 bowel movement daily)
+- id: vitaone-gut-toolkit
+  location: Testing for Low Stomach Acidity
+  quote: Indigestion, diarrhea, or constipation
+- id: vitaone-cv-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Practitioners'
+  quote: Beta blocker therapy has been associated with increased rates of depression,
+    fatigue, constipation, erectile dysfunction, and cognitive slowing.
+- id: vitaone-liver-detox-toolkit
+  location: Sequencing a Detoxification Program
+  quote: Without movement of the bowels, excretion of toxins is limited (as most of
+    them exit in stool).
+- id: vitaone-elimination-diet-toolkit
+  location: FODMAP Plan SOS Solutions — Constipation
+  quote: Use PHGG (partially hydrolyzed guar gum) if possible — BEST for IBS-C. Soluble
+    fiber is better tolerated than insoluble for many with IBS.
+version: 9
 status: active
-updated_at: 2026-04-29
+updated_at: '2026-05-02'
 updated_by: shivani

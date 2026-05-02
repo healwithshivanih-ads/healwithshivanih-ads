@@ -1,0 +1,27 @@
+slug: fat-oxidation-enhances-mitochondrial-atp-reduces-oxidative-stress
+statement: Switching to fat oxidation on a low-carb diet enhances mitochondrial ATP
+  yield and lowers oxidative stress.
+evidence_tier: plausible_emerging
+rationale: Biologically plausible and supported by mechanistic data; fat oxidation
+  produces higher ATP per molecule and lower ROS relative to glucose oxidation in
+  certain contexts. Full RCT consensus is still emerging.
+coaching_translation: When your body burns fat for fuel instead of sugar, your cells
+  produce energy more efficiently and with less cellular stress — which may help with
+  fatigue and brain fog.
+caveats:
+- Source is an expert-consensus document, not primary literature.
+linked_to_topics:
+- low-carb-diet
+- cognitive-decline
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: The Science of Low-Carb Diets
+  quote: Switching to fat oxidation enhances mitochondrial ATP yield and lowers oxidative
+    stress.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

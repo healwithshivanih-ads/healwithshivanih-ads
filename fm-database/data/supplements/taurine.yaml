@@ -18,20 +18,39 @@ timing_options:
 - mid_morning
 - mid_afternoon
 - evening
+- with_breakfast
+- with_dinner
 take_with_food: optional
-notes_for_coach: Supports heart, cognition, sleep, and bile production; timing is
-  flexible.
+notes_for_coach: Listed as nutraceutical support during beta blocker tapering. Taurine
+  has emerging evidence for blood pressure support and cardiovascular protection.
+  Specific dosing requires clinician guidance.
 evidence_tier: plausible_emerging
-linked_to_topics: []
+linked_to_topics:
+- insulin-resistance
+- liver-detoxification
+- beta-blocker-deprescribing
+- cardiovascular-dysfunction
 linked_to_mechanisms: []
-linked_to_claims: []
-notes_for_client: ''
+linked_to_claims:
+- fatty-liver-drives-insulin-resistance
+- taurine-bile-flow-gallstone-prevention
+notes_for_client: Taurine is an amino acid with potential cardiovascular benefits.
+  Use only as directed by your clinician.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
   quote: Taurine - Electrolyte balance, heart & brain support/bile support - 500–1000
     mg/day - Anytime
-version: 1
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Fatty Liver (NAFLD)
+  quote: Taurine (500–1000 mg/day)
+- id: vitaone-liver-detox-cheatsheet
+  location: Liver Disease Cheatsheet — Gallstone-Related Liver Dysfunction
+  quote: Taurine, Phosphatidylcholine, Digestive enzymes
+- id: vitaone-cv-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
+  quote: Taurine
+version: 4
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-02'
 updated_by: shivani

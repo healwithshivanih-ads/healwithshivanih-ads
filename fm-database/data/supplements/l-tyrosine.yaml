@@ -8,7 +8,7 @@ forms_available:
 typical_dose_range:
   capsule:
     min: 500
-    max: 1000
+    max: 2000
     unit: mg
   powder:
     min: 500
@@ -21,20 +21,29 @@ typical_dose_range:
 timing_options:
 - on_empty_stomach
 - morning
+- mid_morning
 take_with_food: avoid
-notes_for_coach: Dopamine and thyroid hormone precursor; best on an empty stomach
-  in the morning for focus and low thyroid support.
+notes_for_coach: Precursor to dopamine, norepinephrine, epinephrine, and thyroid hormones.
+  Best taken away from food. Use cautiously with thyroid conditions or stimulant medications.
 evidence_tier: plausible_emerging
-linked_to_topics: []
+linked_to_topics:
+- adrenal-dysfunction
+- anxiety
 linked_to_mechanisms: []
-linked_to_claims: []
-notes_for_client: ''
+linked_to_claims:
+- adaptogens-rebalance-hpa-axis
+notes_for_client: L-tyrosine is an amino acid that helps build your focus and motivation
+  brain chemicals, especially useful when stress has depleted your drive.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 2 - Supplement Table
   quote: L-Tyrosine - Neurotransmitter precursor, focus/thyroid - 500–1000 mg/day
     - Empty stomach in morning
-version: 1
+- id: vitaone-adrenal-cheatsheet
+  location: 50 Hormones Cheatsheet — Noradrenaline row (p.5)
+  quote: 'Low motivation, low BP, poor concentration. Solution: Tyrosine, exercise,
+    balanced meals.'
+version: 2
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-02'
 updated_by: shivani

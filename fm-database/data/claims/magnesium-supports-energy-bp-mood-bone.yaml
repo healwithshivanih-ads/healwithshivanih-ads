@@ -1,0 +1,27 @@
+slug: magnesium-supports-energy-bp-mood-bone
+statement: Magnesium supports energy production, blood pressure, blood sugar metabolism,
+  bone health, mood, and digestive regularity.
+evidence_tier: strong
+rationale: Multiple RCTs support magnesium's role in these domains. Document references
+  Zhang et al. 2016 (Hypertension) for blood pressure and Tarleton et al. 2017 (PLoS
+  One) for depression.
+coaching_translation: Magnesium is a foundational mineral that touches nearly every
+  system in the body — especially energy, mood, digestion, and heart health.
+caveats: []
+linked_to_topics:
+- magnesium-insufficiency
+- mitochondrial-health-nutrition
+linked_to_supplements:
+- magnesium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Magnesium'
+  quote: Magnesium is used widely throughout the body. It supports energy production,
+    blood pressure, blood sugar metabolism, bone health, mood, digestive regularity,
+    and much more.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

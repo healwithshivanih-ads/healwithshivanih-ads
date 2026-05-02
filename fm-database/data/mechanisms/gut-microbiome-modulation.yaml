@@ -1,0 +1,33 @@
+slug: gut-microbiome-modulation
+display_name: Gut Microbiome Modulation
+aliases:
+- gut flora balance
+- microbiome support
+- gut health
+category: gut
+summary: The gut microbiome plays a critical role in immune regulation and inflammation.
+  Fermented foods and fiber-rich whole foods support a balanced microbiome, which
+  in turn controls systemic inflammation.
+upstream_drivers:
+- poor-diet
+- antibiotic-use
+- stress
+downstream_effects:
+- cytokine-dysregulation
+- intestinal-permeability
+- systemic-inflammation
+related_mechanisms:
+- cytokine-dysregulation
+- oxidative-stress
+linked_to_topics:
+- anti-inflammatory-diet
+- chronic-inflammation
+evidence_tier: strong
+sources:
+- id: vitaone-inflammation-toolkit
+  location: Anti Inflammatory Diet — Benefits of Following an Anti-Inflammatory Diet
+  quote: Supports gut health, which is critical for controlling inflammation.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

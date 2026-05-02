@@ -1,45 +1,190 @@
 slug: hpa-axis-dysregulation
 display_name: HPA Axis Dysregulation
 aliases:
-  - hpa-axis-dysfunction
-  - chronic-stress-response
-  - cortisol-dysregulation
-  - cortisol-elevation
+- hpa-axis-dysfunction
+- chronic-stress-response
+- cortisol-dysregulation
+- cortisol-elevation
+- adrenal-thyroid axis imbalance
+- cortisol dysregulation
+- adrenal fatigue
+- cortisol steal
+- pregnenolone steal
+- adrenal stress response
+- HPA dysfunction
+- HPA overdrive
+- cortisol-DHEA imbalance
+- adrenal axis dysfunction
+- allostatic overload
+- chronic cortisol elevation
+- stress-glucose axis
+- adrenal-gut axis
+- stress response gut
+- adrenal dysfunction
+- stress-immune axis
+- chronic stress response
+- adrenal-thyroid connection
+- cortisol excess
+- stress hyperglycaemia
+- hypothalamic-pituitary-adrenal axis dysfunction
+- stress axis dysregulation
 category: endocrine
-summary: |
-  The hypothalamic-pituitary-adrenal axis becomes dysregulated under chronic
-  psychological, inflammatory, or metabolic stress, leading to inappropriate
-  cortisol patterns — typically elevated evening cortisol, blunted morning
-  cortisol, or a flattened diurnal slope. Drives downstream effects on
-  thyroid hormone conversion, blood sugar control, immune function, sleep
-  architecture, and gut barrier integrity.
+summary: Chronic activation of the hypothalamus-pituitary-adrenal axis leads to dysregulated
+  cortisol secretion patterns, initially elevated then potentially depleted, disrupting
+  metabolism, immunity, sleep, and mood.
 upstream_drivers:
-  - chronic psychological stress
-  - chronic inflammation
-  - blood sugar instability
-  - poor sleep
-  - undereating / over-exercise
+- chronic psychological stress
+- chronic inflammation
+- blood sugar instability
+- poor sleep
+- undereating / over-exercise
+- chronic-stress
+- circadian-disruption
+- over-exercise
+- chronic-psychological-stress
+- poor-sleep
+- caloric-restriction
+- overtraining
+- chronic-emotional-stress
+- digital-overstimulation
+- loneliness
+- inflammatory-load
+- sleep-deprivation
+- circadian-misalignment
+- dysbiosis
+- trauma
+- magnesium-deficiency
+- psychological-stress
+- poor-nutrition
 downstream_effects:
-  - reduced T4→T3 conversion (raises reverse T3)
-  - leaky gut via cortisol effects on tight junctions
-  - blunted morning cortisol → fatigue
-  - elevated evening cortisol → 3am wakeups
-  - immune dysregulation
-  - hyperglycemia, insulin resistance
+- reduced T4→T3 conversion (raises reverse T3)
+- leaky gut via cortisol effects on tight junctions
+- blunted morning cortisol → fatigue
+- elevated evening cortisol → 3am wakeups
+- immune dysregulation
+- hyperglycemia, insulin resistance
+- elevated-reverse-t3
+- functional-hypothyroidism
+- adrenal-fatigue
+- low-progesterone
+- low-testosterone
+- estrogen-dominance-relative
+- anovulation
+- elevated-cortisol
+- low-dhea
+- mitochondrial-suppression
+- insulin-resistance
+- gut-barrier-breakdown
+- immune-dysregulation
+- elevated-fasting-glucose
+- visceral-fat
+- leaky-gut
+- low-siga
+- gut-dysbiosis-mechanism
+- morning-diarrhea
+- immune-suppression
+- autoimmune-flares
+- elevated-crp
+- gut-permeability
+- telogen-effluvium
+- insomnia
+- mood-disorders
+- hormonal-imbalance
+- impaired-t4-to-t3-conversion
+- reverse-t3-dominance
+- hypothyroidism
+- visceral-adipose-inflammation
+- cortisol-excess
+- dhea-depletion
+- sleep-disruption
 related_mechanisms:
-  - leaky-gut
-  - insulin-resistance
+- leaky-gut
+- insulin-resistance
+- t4-to-t3-conversion-block
+- reverse-t3-elevation
+- low-progesterone
+- chronic-inflammation
+- pregnenolone-steal
+- gut-brain-axis-dysregulation
+- nf-kb-activation
+- th17-dominance
+- systemic-inflammation
+- neurotransmitter-synthesis-impairment
+- impaired-t4-to-t3-conversion
+- hpt-axis-dysregulation
+- reverse-t3-dominance
+- visceral-adipose-inflammation
+- cortisol-excess
+- dhea-depletion
+- sympathetic-nervous-system-activation
 linked_to_topics:
-  - anxiety
-  - insomnia
-  - thyroid
-  - perimenopause
-  - pcos
+- anxiety
+- insomnia
+- thyroid
+- perimenopause
+- pcos
+- low-progesterone
+- adrenal-dysfunction
+- autoimmune
+- inflammation
+- gut-brain-axis
+- insulin-resistance
+- ibs
+- leaky-gut
+- gut-dysbiosis
+- chronic-inflammation
+- autoimmune-disease
+- psoriasis
+- fasting-immune-health
+- hairfall
+- nutrient-deficiency-depression
+- t3-conversion-disorder
+- hypothyroidism
+- blood-sugar-dysfunction
+- hpa-axis-dysregulation
+- chronic-stress
+- hypercortisolism
 sources:
-  - id: vitaone-skill-practice-guide
-    location: practice_guide.md, Nervous System & HPA section
+- id: vitaone-skill-practice-guide
+  location: practice_guide.md, Nervous System & HPA section
+- id: vitaone-thyroid-cheatsheet
+  location: Thyroid Disorders Cheatsheet — Cortisol row
+  quote: Chronic stress, circadian disruption
+- id: vitaone-sex-hormones-cheatsheet
+  location: Common Triggers for Low Progesterone
+  quote: Chronic stress → High cortisol steals pregnenolone (pregnenolone steal).
+- id: vitaone-adrenal-cheatsheet
+  location: How Chronic Stress, Anger, or Grief Translate into Physical Diseases (p.10)
+  quote: Persistent HPA activation → ↑ Cortisol, ↓ DHEA → Mitochondrial suppression,
+    altered glucose metabolism
+- id: vitaone-blood-sugar-cheatsheet
+  location: Insulin Resistance Cheatsheet — Root Cause Framework
+  quote: Chronic cortisol elevation, sleep deprivation, circadian misalignment
+- id: vitaone-gut-cheatsheet
+  location: Leaky Gut & Inflammation — Practitioner Clinical Rules
+  quote: Stress must be addressed — Cortisol worsens permeability
+- id: vitaone-inflammation-cheatsheet
+  location: Autoimmune Disease Cheatsheet — Page 23
+  quote: Cortisol dysregulation suppresses resolution of inflammation. Adrenal dysfunction
+    = poor immune modulation.
+- id: vitaone-nutrition-cheatsheet
+  location: Hairfall – Supplement Stack
+  quote: Lowers cortisol & supports postpartum or chronic stress–related loss
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 6: Causes of Thyroid Disorders'
+  quote: Stress dysregulates the hypothalamic-pituitary-adrenal (HPA) axis, which
+    also interacts with the thyroid axis (HPAT). Chronic stress lowers TRH release
+    from the hypothalamus and TSH release from the pituitary.
+- id: vitaone-blood-sugar-ebook
+  location: Section 4.0.2 — Mechanistic Contributors
+  quote: Hyper-cortisolaemia- cortisol increases hepatic gluconeogenesis & visceral
+    fat deposition.
+- id: vitaone-adrenal-toolkit
+  location: HPA Axis Questionnaire
+  quote: The hypothalamus, pituitary, adrenal (HPA) axis is the body's central stress
+    response system.
 evidence_tier: strong
-version: 1
+version: 11
 status: active
-updated_at: 2026-04-29
+updated_at: '2026-05-02'
 updated_by: shivani

@@ -1,0 +1,27 @@
+slug: sibo-major-driver-ibs
+statement: SIBO is a major driver of IBS symptoms, with 70–80% overlap between the
+  two conditions.
+evidence_tier: plausible_emerging
+rationale: This statistic is widely cited in functional medicine and gastroenterology
+  literature (Pimentel et al.) but the document does not cite a specific study. Source
+  is an educational cheatsheet (expert synthesis). Overlap is clinically recognized
+  but exact percentage varies.
+coaching_translation: Many clients labeled with IBS may actually have SIBO — testing
+  with a breath test can help identify this.
+caveats:
+- Source is an educational synthesis, not primary literature. 70-80% overlap figure
+  widely cited but verify with clinician.
+linked_to_topics:
+- sibo
+- ibs
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-gut-cheatsheet
+  location: SIBO Cheatsheet — Why It Matters
+  quote: Major driver of IBS symptoms (70–80% overlap).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

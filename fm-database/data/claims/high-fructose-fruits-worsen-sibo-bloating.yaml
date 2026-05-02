@@ -1,0 +1,29 @@
+slug: high-fructose-fruits-worsen-sibo-bloating
+statement: High-fructose fruits (apples, pears, mango, watermelon) worsen fructose
+  malabsorption in SIBO, exacerbating bloating and acid reflux.
+evidence_tier: plausible_emerging
+rationale: Fructose malabsorption is well-established; exacerbation in SIBO context
+  (where transit time and bacterial load amplify fermentation) is biologically plausible
+  and consistent with clinical FODMAP practice.
+coaching_translation: During your elimination phase, swap apples, mangoes, and watermelon
+  for blueberries, strawberries, or kiwi — they give you the same sweetness and antioxidants
+  without the bloating trigger.
+caveats:
+- Individual tolerance thresholds vary. Reintroduce systematically during the reintroduction
+  phase.
+linked_to_topics:
+- low-fodmap-diet
+- ibs
+- sibo
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-elimination-diet-cheatsheet
+  location: LOW FODMAP FRUITS — Practitioner Insight
+  quote: High-fructose fruits worsen fructose malabsorption with SIBO, causing bloating
+    & acid reflux.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

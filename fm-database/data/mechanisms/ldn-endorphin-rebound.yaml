@@ -1,0 +1,33 @@
+slug: ldn-endorphin-rebound
+display_name: LDN Endorphin Rebound Mechanism
+aliases:
+- low-dose naltrexone mechanism
+- opioid receptor rebound
+category: immune
+summary: At low doses (1.5–4.5 mg), naltrexone transiently blocks opioid receptors
+  for 4–6 hours, creating a perceived opioid deficiency. The body compensates with
+  a rebound increase in endorphin and enkephalin production lasting 18–20 hours, which
+  enhances immune regulation, reduces inflammation, regulates T-regulatory cells,
+  and modulates GI tract function.
+upstream_drivers:
+- autoimmune-dysregulation
+- endorphin-deficiency
+downstream_effects:
+- reduced-inflammation
+- t-reg-cell-regulation
+- reduced-anti-thyroid-antibodies
+related_mechanisms:
+- autoimmune-thyroid-attack
+linked_to_topics:
+- hashimotos-hypothyroidism
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-thyroid-toolkit
+  location: LDN History
+  quote: Discovered that at lower doses, Naltrexone acted as a short-term antagonist
+    (4-6 hours) and then had a 'rebound' effect of increasing the production of endogenous
+    opioids such as endorphins and enkephalins.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

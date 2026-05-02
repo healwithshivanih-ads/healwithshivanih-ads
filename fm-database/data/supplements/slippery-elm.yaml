@@ -1,0 +1,31 @@
+slug: slippery-elm
+display_name: Slippery Elm
+category: herb
+forms_available:
+- capsule
+- powder
+- tablet
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- gerd
+- gut-dysfunction
+linked_to_claims:
+- slippery-elm-protects-gi-lining
+notes_for_coach: Listed under 'Protect' in the PPI taper protocol. Acts as a demulcent,
+  coating and soothing mucous membranes.
+evidence_tier: fm_specific_thin
+typical_dose_range: {}
+linked_to_mechanisms: []
+notes_for_client: ''
+sources:
+- id: vitaone-gut-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
+    — Supplement recommendations'
+  quote: 'Protect: Alginate, pectin, DGL, slippery elm'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

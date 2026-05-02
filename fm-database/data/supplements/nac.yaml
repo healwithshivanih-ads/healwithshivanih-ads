@@ -1,5 +1,5 @@
 slug: nac
-display_name: NAC (N-Acetylcysteine)
+display_name: N-Acetylcysteine (NAC)
 category: amino_acid
 forms_available:
 - capsule
@@ -8,11 +8,11 @@ forms_available:
 typical_dose_range:
   capsule:
     min: 600
-    max: 1200
+    max: 900
     unit: mg
   powder:
     min: 600
-    max: 1200
+    max: 900
     unit: mg
   tablet:
     min: 600
@@ -23,20 +23,79 @@ timing_options:
 - with_breakfast
 - with_lunch
 - with_dinner
+- morning
+- mid_afternoon
+- mid_morning
 take_with_food: optional
-notes_for_coach: Supports glutathione production for liver detox, antioxidant defence,
-  and PCOS; can be taken with or without food.
+notes_for_coach: NAC is a glutathione precursor. Taken twice daily. Has applications
+  beyond immune support (brain health, liver support). Confirm with clinician — some
+  safety considerations and drug interactions apply.
 evidence_tier: plausible_emerging
-linked_to_topics: []
+linked_to_topics:
+- thyroid
+- estrogen-dominance
+- pcos
+- inflammation
+- adrenal-dysfunction
+- autoimmune
+- nafld
+- liver-detoxification
+- methylation-mthfr
+- heavy-metal-toxicity
+- low-carb-diet
+- candida-overgrowth
+- sluggish-bile-flow
+- leaky-gut
+- chronic-inflammation
+- autoimmune-disease
+- immune-support
 linked_to_mechanisms: []
-linked_to_claims: []
-notes_for_client: ''
+linked_to_claims:
+- fluoride-bpa-block-thyroid-receptors
+- nac-boosts-glutathione-phase-ii-detox-estrogen
+- emotional-stress-cascade-chronic-disease
+- nac-glutathione-precursor-detox
+- nac-nafld-antioxidant
+- low-carb-decreases-hepatic-lipogenesis-in-nafld
+- nac-breaks-candida-biofilms
+- nac-glutathione-support-t-regs
+- nac-boosts-glutathione-supports-immunity
+notes_for_client: NAC helps your body produce glutathione, a powerful antioxidant.
+  It supports immune function and has been studied for respiratory illness.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
   quote: NAC (N-Acetylcysteine) - Liver detox, antioxidant, mucus thinning - 600–1200
     mg/day - Empty stomach or with meals
-version: 1
+- id: vitaone-thyroid-cheatsheet
+  location: Clinical Action Steps — Liver Detox Support
+  quote: NAC, milk thistle, cruciferous veggies, hydration
+- id: vitaone-sex-hormones-cheatsheet
+  location: Estrogen Dominance Supplement Cheatsheet
+  quote: 'NAC (N-Acetylcysteine): Boosts glutathione & Phase II detox; 600–1800 mg/day;
+    best for acne + high estrogen.'
+- id: vitaone-adrenal-cheatsheet
+  location: How Chronic Stress, Anger, or Grief Translate into Physical Diseases (p.10)
+  quote: Support liver detox (NAC, milk thistle), regulate estrogen metabolism, vagal
+    activation.
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet — 6 Ways to Overcome MTHFR
+  quote: Balance Glutathione – NAC, liposomal glutathione, glycine.
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: Functional Medicine Clinical Applications
+  quote: Combine with omega-3s, NAC, and liver-support foods (beetroot, crucifers).
+- id: vitaone-gut-cheatsheet
+  location: Candida Infection — Supplement Stack
+  quote: N-Acetyl Cysteine (NAC) 600–1200 mg/day — Breaks Candida biofilms + boosts
+    glutathione
+- id: vitaone-inflammation-cheatsheet
+  location: Autoimmune Disease Cheatsheet — Page 25
+  quote: NAC and glutathione support antioxidant defense and T-regs.
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: N-acetylcysteine promotes the production of glutathione, a potent antioxidant
+    that supports immune function. It also reduces the severity of the flu.
+version: 9
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-02'
 updated_by: shivani

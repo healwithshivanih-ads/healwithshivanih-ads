@@ -1,0 +1,39 @@
+slug: vitamin-b12-deficiency
+display_name: Vitamin B12 Deficiency
+aliases:
+- low B12
+- cobalamin deficiency
+- pernicious anemia risk
+summary: Vitamin B12 is required for red blood cell production, brain health, DNA
+  synthesis, and homocysteine metabolism. Found almost exclusively in animal foods
+  and fortified products. High-risk groups include vegans, elderly, those with GI
+  conditions, and people on certain medications (PPIs, Metformin).
+common_symptoms:
+- fatigue
+- brain-fog
+- numbness-tingling
+- low-mood
+red_flags:
+- pernicious anemia — refer for B12 injections if poor absorption confirmed
+related_topics:
+- folate-deficiency
+- mitochondrial-health-nutrition
+key_mechanisms:
+- methylation-cycle
+- homocysteine-metabolism
+coaching_scope_notes: Coaches can support dietary B12 optimization and flag high-risk
+  individuals for clinician review.
+clinician_scope_notes: Methylcobalamin preferred for those with high homocysteine
+  or MTHFR variants. Proton pump inhibitors, H2 blockers, and Metformin may deplete
+  B12.
+evidence_tier: strong
+sources:
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Vitamin B12'
+  quote: Vitamin B12 is a water-soluble nutrient required to make healthy red blood
+    cells, support brain health, make DNA, metabolize homocysteine, and prevent pernicious
+    anemia.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

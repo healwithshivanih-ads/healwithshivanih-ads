@@ -1,0 +1,25 @@
+slug: biotin-interferes-with-lab-tests
+statement: Biotin supplementation can cause false results in many laboratory assays;
+  it should be stopped 3–4 days before lab work.
+evidence_tier: strong
+rationale: FDA and multiple laboratory bodies have issued warnings about biotin interference
+  in immunoassays (troponin, thyroid, hormones). This is consensus-accepted.
+coaching_translation: Always remind clients taking biotin to stop it 3–4 days before
+  any blood test.
+caveats:
+- Particularly important for thyroid panels, cardiac markers, and hormone tests.
+linked_to_topics:
+- vitamin-b-complex-deficiency
+- hairfall
+linked_to_supplements:
+- biotin-b7
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin B7 (Biotin)
+  quote: 'Clinical Wisdom: Stop biotin 3-4 days before lab work to avoid false results.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

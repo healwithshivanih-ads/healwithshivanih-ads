@@ -1,0 +1,25 @@
+slug: magnesium-supports-insulin-function
+statement: Magnesium supports insulin function and participates in hundreds of metabolic
+  reactions in the body.
+evidence_tier: plausible_emerging
+rationale: Magnesium is a cofactor for insulin receptor signaling and glucose transporter
+  activity; mechanistically well-established. Gröber et al. 2015 cited.
+coaching_translation: Magnesium is a behind-the-scenes mineral that helps insulin
+  do its job properly.
+linked_to_topics:
+- blood-sugar-dysfunction
+linked_to_supplements:
+- magnesium
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-blood-sugar-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: Magnesium is an essential mineral that supports bone health, blood pressure,
+    and insulin function. It also participates in hundreds of metabolic reactions
+    in the body.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

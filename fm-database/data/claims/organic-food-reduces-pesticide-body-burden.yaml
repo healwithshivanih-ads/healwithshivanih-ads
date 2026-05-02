@@ -1,0 +1,26 @@
+slug: organic-food-reduces-pesticide-body-burden
+statement: Buying and eating organically grown food reduces intake of pesticides,
+  herbicides, and insecticides, thereby lowering the total toxic body burden.
+evidence_tier: plausible_emerging
+rationale: Studies have shown measurable reductions in urinary pesticide metabolites
+  when switching to organic diets (e.g., Lu et al., 2006). Consensus on long-term
+  health outcome differences is still emerging.
+coaching_translation: Choosing organic produce — especially for the 'Dirty Dozen'
+  — is one of the most practical ways to reduce your daily pesticide load.
+caveats:
+- Cost and access can be barriers. Prioritizing the EWG Dirty Dozen is a practical
+  middle ground.
+linked_to_topics:
+- toxic-body-burden
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-liver-detox-toolkit
+  location: Avoiding Environmental Toxins
+  quote: Buying organically grown food helps to ensure a minimal intake of pesticides,
+    herbicides, and insecticides.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

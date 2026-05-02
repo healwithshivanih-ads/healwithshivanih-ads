@@ -1,0 +1,32 @@
+slug: low-dhea-high-cortisol-indicates-adrenal-burnout
+statement: A low DHEA with high or flattened cortisol ratio is a functional marker
+  of adrenal burnout/fatigue, associated with low energy, depression, low libido,
+  and immune suppression.
+evidence_tier: plausible_emerging
+rationale: Cortisol:DHEA ratio is used clinically in FM practice; epidemiological
+  studies link low DHEA-S to poor health outcomes, though causality in 'adrenal burnout'
+  specifically is not RCT-confirmed.
+coaching_translation: Testing your cortisol-to-DHEA ratio gives a snapshot of how
+  depleted your stress-response system is.
+out_of_scope_notes: Lab ordering, interpretation, and DHEA supplementation are out
+  of coaching scope — refer to clinician.
+caveats:
+- Lab testing and result interpretation require clinician.
+- Source is educational synthesis without specific study citations.
+linked_to_topics:
+- adrenal-dysfunction
+- hpa-axis-dysregulation
+linked_to_supplements:
+- ashwagandha-ksm66
+- rhodiola-rosea
+- vitamin-c
+- phosphatidylserine
+linked_to_mechanisms: []
+sources:
+- id: vitaone-adrenal-cheatsheet
+  location: Functional Medicine Integration Tips (p.23)
+  quote: Always test Cortisol:DHEA ratio to assess stress adaptation.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

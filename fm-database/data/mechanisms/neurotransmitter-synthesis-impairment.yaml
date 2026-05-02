@@ -1,0 +1,37 @@
+slug: neurotransmitter-synthesis-impairment
+display_name: Neurotransmitter Synthesis Impairment
+aliases:
+- low serotonin
+- low dopamine
+- impaired monoamine synthesis
+category: neurological
+summary: B6 (as P5P) converts amino acids into neurotransmitters including serotonin,
+  dopamine, and GABA. B12 and folate support methylation required for neurotransmitter
+  production and recycling. Omega-3 fatty acids modulate receptor sensitivity. Deficiency
+  of any of these produces mood symptoms that can mimic clinical depression.
+upstream_drivers:
+- b6-deficiency
+- b12-deficiency
+- folate-deficiency
+- omega-3-deficiency
+downstream_effects:
+- low-mood
+- anxiety
+- poor-sleep
+- irritability
+related_mechanisms:
+- methylation-cycle-dysfunction
+- neuroinflammation
+linked_to_topics:
+- nutrient-deficiency-depression
+- vitamin-b-complex-deficiency
+evidence_tier: strong
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin B6 (Pyridoxine)
+  quote: Converts amino acids into neurotransmitters, glucose, or new proteins; clears
+    ammonia; stabilizes blood sugar.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

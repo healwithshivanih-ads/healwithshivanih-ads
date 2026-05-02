@@ -1,0 +1,40 @@
+slug: mct-oil
+display_name: MCT Oil
+category: fatty_acid
+forms_available:
+- liquid
+- powder
+typical_dose_range:
+  liquid:
+    min: 5
+    max: 30
+    unit: ml
+  powder:
+    min: 5
+    max: 20
+    unit: g
+timing_options:
+- morning
+- with_breakfast
+- mid_morning
+take_with_food: optional
+linked_to_topics:
+- cognitive-decline
+- low-carb-diet
+linked_to_claims:
+- mct-oil-enhances-brain-ketone-supply-in-cognitive-decline
+notes_for_coach: Start at low dose (5ml) and titrate up to avoid GI distress. Best
+  used in the context of a low-carb dietary pattern to maximise ketone production.
+notes_for_client: MCT oil is a type of fat that your body quickly converts into ketones
+  — a clean brain fuel. Start with 1 teaspoon in coffee or a smoothie and build up
+  gradually to avoid stomach upset.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: Functional Medicine Clinical Applications
+  quote: Add MCT oil for cognitive energy in early Alzheimer's or Parkinson's cases.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,25 @@
+slug: kidney-stones
+display_name: Kidney Stones
+aliases:
+- nephrolithiasis
+- renal calculi
+- urinary stones
+category: urinary
+severity: concerning
+description: Formation of mineral crystals in the kidneys, most commonly calcium oxalate;
+  dietary oxalate restriction is a key management strategy in recurrent nephrolithiasis.
+when_to_refer: Any suspected kidney stone requires medical evaluation for type, obstruction,
+  and recurrence prevention.
+linked_to_topics:
+- oxalate-sensitivity
+linked_to_mechanisms:
+- oxalate-accumulation
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: Oxalate Food Triggers — Symptoms
+  quote: 'Urinary: excessive oxalate in urine (hyperoxaluria), kidney stones, acute
+    and chronic kidney disease.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,36 @@
+slug: gut-brain-signaling
+display_name: Gut-Brain Signaling
+aliases:
+- gut-brain axis pathway
+- enteric-CNS communication
+- microbiome-brain crosstalk
+category: neurological
+summary: Bidirectional communication between gut microbiota and the CNS via vagus
+  nerve, neurotransmitters (serotonin, GABA), hormones, and immune mediators. The
+  gut produces ~90% of serotonin. Dysbiosis disrupts this signaling, contributing
+  to anxiety, depression, and cognitive dysfunction.
+upstream_drivers:
+- gut-dysbiosis
+- poor-diet
+- chronic-stress
+downstream_effects:
+- anxiety
+- depression
+- mood-dysregulation
+- cognitive-decline
+related_mechanisms:
+- gut-dysbiosis
+- serotonin-production-gut
+linked_to_topics:
+- gut-brain-axis
+- gut-microbiome
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-gut-toolkit
+  location: 'Gut-Brain Axis: Nutrition''s Impact on Mental Health'
+  quote: The gut produces around 90% of the body's serotonin, the 'feel-good' neurotransmitter,
+    linking it directly to mental well-being.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

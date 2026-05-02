@@ -1,0 +1,48 @@
+slug: low-carb-diet
+display_name: Low-Carb Diet
+aliases:
+- low carbohydrate diet
+- smart-carb diet
+- carbohydrate restriction
+- ketogenic diet
+summary: A dietary strategy that strategically reduces carbohydrate intake to reset
+  metabolism, improve insulin signalling, reduce inflammation, and restore metabolic
+  flexibility. Ranges from moderate low-carb (25–30% carbs) to ketogenic (5–10% carbs)
+  with clinical applications in diabetes, PCOS, NAFLD, autoimmune conditions, obesity,
+  and cognitive decline.
+common_symptoms:
+- insulin-resistance
+- fatigue
+- brain-fog
+- weight-gain
+- cravings
+red_flags:
+- aggressive-carb-restriction-in-hypothyroid-or-adrenal-fatigue
+- high-insulin-dose-without-supervision
+related_topics:
+- insulin-resistance
+- metabolic-syndrome
+- pcos
+- nafld
+- type-2-diabetes
+- cognitive-decline
+key_mechanisms:
+- insulin-regulation
+- metabolic-flexibility
+- mitochondrial-efficiency
+coaching_scope_notes: Coaches can guide food group choices, meal timing, electrolyte
+  support, and phased transitions. Macronutrient targets and lab monitoring (HbA1c,
+  HOMA-IR, lipids, thyroid) are clinician scope.
+clinician_scope_notes: Monitor fasting insulin, HOMA-IR, postprandial glucose, lipid
+  profile, thyroid panel every 8–12 weeks. Avoid aggressive carb restriction in hypothyroid,
+  adrenal fatigue, or pregnancy. Supervise patients on high insulin doses.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: The Science of Low-Carb Diets
+  quote: Reducing carbohydrates lowers postprandial glucose → lowers insulin → promotes
+    fat mobilization.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,5 +1,5 @@
 slug: gaba
-display_name: GABA
+display_name: GABA (Gamma-Aminobutyric Acid)
 category: amino_acid
 forms_available:
 - capsule
@@ -7,8 +7,8 @@ forms_available:
 - powder
 typical_dose_range:
   capsule:
-    min: 100
-    max: 500
+    min: 250
+    max: 750
     unit: mg
   tablet:
     min: 100
@@ -20,19 +20,28 @@ typical_dose_range:
     unit: mg
 timing_options:
 - evening
+- bedtime
 take_with_food: optional
-notes_for_coach: Oral GABA has limited BBB permeability; may act via enteric nervous
-  system or peripherally; useful for stress and sleep at lower doses.
+notes_for_coach: Peripheral GABA supplementation has limited CNS penetration; PharmaGABA
+  form may have better effects. Pairs with L-theanine and magnesium. Generally low
+  side effect profile at typical doses.
 evidence_tier: fm_specific_thin
-linked_to_topics: []
+linked_to_topics:
+- anxiety
+- insomnia
 linked_to_mechanisms: []
-linked_to_claims: []
-notes_for_client: ''
+linked_to_claims:
+- magnesium-supports-cortisol-gaba-sleep
+notes_for_client: GABA is your brain's natural calm signal. Supplementing it in the
+  evening can help with winding down and sleep.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 3 - Supplement Table
   quote: GABA - Calming neurotransmitter - 100–500 mg/day - Evening or during anxiety
-version: 1
+- id: vitaone-adrenal-cheatsheet
+  location: 50 Hormones Cheatsheet — GABA row (p.6)
+  quote: '↓ Anxiety, insomnia, restlessness. Solution: GABA support, Mg, L-theanine.'
+version: 2
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-02'
 updated_by: shivani

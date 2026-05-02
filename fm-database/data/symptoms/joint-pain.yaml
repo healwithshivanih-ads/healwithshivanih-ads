@@ -9,33 +9,74 @@ aliases:
 - morning-stiffness
 - joint stiffness
 - morning stiffness
+- joint aches
+- muscle and joint pain
+- knee pain
+- achy joints
+- stiff joints
+- arthritis pain
+- muscle cramps
+- arthritis
+- achy muscles
+- muscle weakness
+- muscle stiffness
+- myalgia
+- tingling in joints
+- joint inflammation
 category: musculoskeletal
 severity: common
-description: 'Pain, soreness, or stiffness in one or more joints. New-onset
-
-  perimenopausal joint pain (often hands, knees, hips) is common and
-
-  thought to relate to declining estrogen''s effect on cartilage and
-
-  synovium plus inflammatory shifts.
-
-  '
-when_to_refer: 'Morning stiffness > 60 minutes (think autoimmune); new joint swelling;
-
-  with fevers, rash, or weight loss; with anti-CCP suspicion (RA workup).
-
-  '
+description: Pain in one or more joints; listed as a withdrawal symptom during beta
+  blocker tapering.
+when_to_refer: Severe swelling, redness, warmth, or joint deformity — refer to rheumatologist.
 linked_to_topics:
 - perimenopause
 - autoimmune
 - inflammation
+- chronic-inflammation
+- autoimmune-disease
+- food-sensitivity
+- psoriasis
+- knee-pain
+- hypothyroidism
+- hyperthyroidism
+- hashimotos-hypothyroidism
+- anti-inflammatory-diet
+- beta-blocker-deprescribing
 linked_to_mechanisms:
 - estrogen-decline
 - chronic-inflammation
+- nf-kb-activation
+- th17-dominance
+- molecular-mimicry
+- systemic-inflammation
+- gut-barrier-dysfunction
+- insulin-resistance
+- impaired-t4-to-t3-conversion
+- nlrp3-inflammasome-activation
+- cytokine-dysregulation
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Joint Pain / Autoimmune sections
-version: 1
+- id: vitaone-inflammation-cheatsheet
+  location: Inflammation Cheatsheet — Page 02
+  quote: Autoimmune – Joint pain, flares, +ANA
+- id: vitaone-nutrition-cheatsheet
+  location: Knee Pain Cheatsheet
+  quote: Joint stiffness, pain on movement, morning stiffness
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 7: Impact of Thyroid Diseases on the Whole Body'
+  quote: Cramps, stiffness, joint pain
+- id: vitaone-thyroid-toolkit
+  location: Symptoms of Hashimoto's Hypothyroidism
+  quote: Muscle Aches and Joint Pain
+- id: vitaone-inflammation-toolkit
+  location: Anti Inflammatory Diet — Who is the Anti-Inflammatory Diet Useful For?
+  quote: 'Autoimmune Diseases: Conditions like rheumatoid arthritis, lupus, and multiple
+    sclerosis.'
+- id: vitaone-cv-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
+  quote: Joint pain
+version: 7
 status: active
-updated_at: 2026-04-29
+updated_at: '2026-05-02'
 updated_by: shivani

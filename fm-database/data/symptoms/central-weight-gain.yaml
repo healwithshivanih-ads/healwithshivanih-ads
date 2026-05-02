@@ -1,0 +1,28 @@
+slug: central-weight-gain
+display_name: Central / Visceral Weight Gain
+aliases:
+- belly fat
+- abdominal obesity
+- visceral fat
+- cortisol belly
+category: metabolic
+severity: common
+description: Accumulation of fat around the abdomen driven by chronic cortisol elevation
+  promoting visceral fat deposition and appetite dysregulation via leptin/ghrelin.
+when_to_refer: If metabolic syndrome or Cushing's suspected, refer to endocrinologist.
+linked_to_topics:
+- adrenal-dysfunction
+- pcos
+- inflammation
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- insulin-resistance
+sources:
+- id: vitaone-adrenal-cheatsheet
+  location: Stress & Chronic Diseases Link (p.9)
+  quote: 'Cortisol dysregulation → visceral fat deposition. Key Mechanisms: Insulin
+    resistance, appetite dysregulation via leptin/ghrelin.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

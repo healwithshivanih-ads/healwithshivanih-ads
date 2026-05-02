@@ -1,0 +1,26 @@
+slug: magnesium-deficiency-increases-t2d-risk
+statement: People who do not get enough magnesium are at higher risk for type 2 diabetes,
+  heart disease, metabolic syndrome, and osteoporosis.
+evidence_tier: plausible_emerging
+rationale: Supported by Gröber et al. 2015 (Nutrients) cited in document; epidemiological
+  data consistently links low dietary magnesium to metabolic disease risk.
+coaching_translation: Eating magnesium-rich foods (leafy greens, nuts, avocado, legumes)
+  is a simple way to support your blood sugar and heart health.
+caveats:
+- Observational data; causality direction debated. Supplementation benefit clearest
+  in deficient individuals.
+linked_to_topics:
+- blood-sugar-dysfunction
+linked_to_supplements:
+- magnesium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-blood-sugar-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: People who do not get enough magnesium in their diet are at higher risk for
+    type 2 diabetes, heart disease, metabolic syndrome, and osteoporosis.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

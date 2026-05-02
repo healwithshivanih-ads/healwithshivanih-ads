@@ -1,0 +1,27 @@
+slug: weight-gain-abdomen
+display_name: Central / Abdominal Weight Gain
+aliases:
+- belly weight gain
+- truncal obesity
+- weight gain around abdomen
+- buffalo hump
+- moon face
+category: metabolic
+severity: concerning
+description: Weight gain around the abdomen, back of neck, and face/cheeks associated
+  with chronic cortisol elevation promoting central adiposity.
+when_to_refer: If accompanied by stretch marks and moon facies, refer to rule out
+  Cushing's syndrome.
+linked_to_topics:
+- hypercortisolism
+- hpa-axis-dysregulation
+linked_to_mechanisms:
+- cortisol-excess
+sources:
+- id: vitaone-adrenal-toolkit
+  location: 'HPA Axis Questionnaire — Section 2: Elevated cortisol state'
+  quote: Weight gain around your abdomen, back of neck, and in the face and cheeks*
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

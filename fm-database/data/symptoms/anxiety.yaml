@@ -1,0 +1,83 @@
+slug: anxiety
+display_name: Anxiety / Nervousness
+aliases:
+- hormonal anxiety
+- premenstrual anxiety
+- luteal anxiety
+- nervousness
+- on-edge feeling
+- worry
+- feeling anxious
+- anxious
+- nervous
+- on edge
+- sympathetic dominance
+- wired
+- restlessness
+- hyperactivity
+- agitation
+- anxiousness
+- gut-related anxiety
+- stress
+- nervous energy
+- stress anxiety
+category: mood
+severity: common
+description: Feelings of anxiety and nervousness driven by adrenaline oversecretion
+  during chronic stress.
+when_to_refer: Refer for clinical evaluation if anxiety is severe or interferes with
+  daily functioning.
+linked_to_topics:
+- low-progesterone
+- perimenopause
+- pcos
+- low-dose-naltrexone
+- nutrient-deficiency-depression
+- hyperthyroidism
+- gut-brain-axis
+- gut-microbiome
+- stress-management
+- mindfulness
+- self-care
+- chronic-stress
+- hpa-axis-dysregulation
+linked_to_mechanisms:
+- low-progesterone
+- hpa-axis-dysregulation
+- neurotransmitter-synthesis-impairment
+- neuroinflammation
+- hpt-axis-dysregulation
+- gut-brain-signaling
+- gut-dysbiosis
+- parasympathetic-activation
+- sympathetic-nervous-system-activation
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: Progesterone Is Anti-Inflammatory — Supplement Approach
+  quote: Magnesium glycinate → Improves GABA activity, reduces stress-driven progesterone
+    loss.
+- id: vitaone-ldn-article
+  location: LDN potential side effects
+  quote: 'Central Nervous System: Anxiety, Drowsiness, Headache, Insomnia, Vivid Dreams,
+    Mood Change, Trouble Concentration'
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamins & Minerals Your Patient's Body Might Be Crying Out For
+  quote: Insomnia, anxiety, sympathetic dominance
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 7: System-wise Impact'
+  quote: Anxiety, tremors, insomnia
+- id: vitaone-gut-toolkit
+  location: 'Prebiotics and Probiotics: Their Role in Gut Health'
+  quote: A healthy gut microbiome supported by prebiotics and probiotics can positively
+    impact mental health, reducing symptoms of anxiety and depression.
+- id: vitaone-health-coaching-toolkit
+  location: Mindful Breathing
+  quote: This is an important skill that can help you deal with stress, anxiety, and
+    negative emotions in a positive way.
+- id: vitaone-adrenal-toolkit
+  location: Hypercortisolism
+  quote: The oversecretion of adrenaline can cause you to feel anxious and nervous.
+version: 7
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

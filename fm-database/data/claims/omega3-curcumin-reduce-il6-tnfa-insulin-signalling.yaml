@@ -1,0 +1,33 @@
+slug: omega3-curcumin-reduce-il6-tnfa-insulin-signalling
+statement: Omega-3s (EPA/DHA) and curcumin reduce IL-6 and TNF-α, thereby reducing
+  inflammation-impaired insulin signalling.
+evidence_tier: plausible_emerging
+rationale: Both omega-3s and curcumin have RCT evidence for reducing inflammatory
+  cytokines. The direct causal link to improved insulin signalling is mechanistically
+  credible but not uniformly confirmed in large trials.
+coaching_translation: Inflammation blocks insulin from working properly — omega-3s
+  and curcumin are two of the best-studied natural anti-inflammatories that can help
+  restore that signalling.
+caveats:
+- Source is expert consensus; specific RCTs not cited.
+- Doses listed (EPA/DHA 2–3 g/day; curcumin 500 mg BID with piperine) should be verified
+  with clinician.
+linked_to_topics:
+- insulin-resistance
+- inflammation
+linked_to_supplements:
+- fish-oil-omega-3
+- curcumin
+linked_to_mechanisms:
+- chronic-inflammation
+- insulin-resistance
+out_of_scope_notes: ''
+sources:
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Chronic Inflammation
+  quote: Inflammation impairs insulin signaling. Omega-3s and curcumin reduce IL-6,
+    TNF-α.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

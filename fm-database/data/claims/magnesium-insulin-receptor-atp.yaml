@@ -1,0 +1,30 @@
+slug: magnesium-insulin-receptor-atp
+statement: Magnesium improves insulin receptor activity and ATP production, making
+  it a key nutrient in insulin resistance and mitochondrial support.
+evidence_tier: plausible_emerging
+rationale: Magnesium is a cofactor in over 300 enzymatic reactions including those
+  governing glucose transport and insulin receptor tyrosine kinase activity. Epidemiological
+  data link low magnesium with insulin resistance; RCT evidence shows modest improvements
+  in glycaemic markers.
+coaching_translation: Magnesium is one of the most important minerals for blood sugar
+  — it helps insulin receptors work properly and keeps your cells energised.
+caveats:
+- Source is expert consensus cheatsheet; dose (300–400 mg/day ionic magnesium) should
+  be verified with clinician.
+linked_to_topics:
+- insulin-resistance
+linked_to_supplements:
+- magnesium-glycinate
+linked_to_mechanisms:
+- insulin-resistance
+- mitochondrial-dysfunction
+out_of_scope_notes: ''
+sources:
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Mitochondrial
+    Dysfunction
+  quote: Magnesium improves insulin receptor activity and ATP production.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

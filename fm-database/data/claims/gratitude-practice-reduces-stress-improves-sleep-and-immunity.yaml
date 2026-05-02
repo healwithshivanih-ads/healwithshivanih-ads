@@ -1,0 +1,32 @@
+slug: gratitude-practice-reduces-stress-improves-sleep-and-immunity
+statement: Regular gratitude practice is linked to decreased stress levels, lowered
+  blood pressure, better sleep quality, and stronger immune systems.
+evidence_tier: plausible_emerging
+rationale: Emmons and McCullough (2003) and subsequent studies suggest psychophysiological
+  benefits of gratitude; consensus is growing but not yet at RCT-level for all outcomes
+  listed.
+coaching_translation: Writing down what you're grateful for regularly isn't just feel-good
+  — research suggests it can genuinely lower your stress, help you sleep better, and
+  even support your immune system.
+caveats:
+- Source cites Robert A. Emmons PhD as expert but does not cite a specific study by
+  name.
+- Causal directionality not fully established for all outcomes (e.g., blood pressure,
+  immunity).
+linked_to_topics:
+- gratitude-practice
+- stress-management
+- self-care
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Practicing Gratitude with the IFM Gratitude Journal
+  quote: These benefits include decreased stress levels, lowered blood pressure, better
+    sleep quality, stronger immune systems, and increased feelings of joy, happiness,
+    forgiveness, and compassion.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

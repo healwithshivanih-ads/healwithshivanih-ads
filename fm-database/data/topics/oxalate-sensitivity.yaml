@@ -1,0 +1,37 @@
+slug: oxalate-sensitivity
+display_name: Oxalate Sensitivity / Hyperoxaluria
+aliases:
+- dietary oxalate intolerance
+- hyperoxaluria
+summary: Elevated dietary oxalate intake or impaired oxalate metabolism leading to
+  excessive urinary oxalate, kidney stone risk, and musculoskeletal or GI symptoms
+  in susceptible individuals.
+common_symptoms:
+- kidney-stones
+- burning-sensation
+- abdominal-pain
+- muscle-weakness
+- diarrhea
+red_flags:
+- recurrent nephrolithiasis
+- acute kidney injury — refer to nephrologist
+related_topics:
+- elimination-diet
+- kidney-stone-prevention
+key_mechanisms:
+- oxalate-accumulation
+- renal-oxalate-excretion
+coaching_scope_notes: Coaches can support low-oxalate food choices and cooking techniques
+  (soaking, boiling). Kidney disease management requires clinician supervision.
+evidence_tier: plausible_emerging
+clinician_scope_notes: ''
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: Oxalate Food Triggers
+  quote: Oxalates are naturally occurring molecules found in plants and in the human
+    body. Because the body cannot process oxalates, they are usually eliminated through
+    the stool and urine.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

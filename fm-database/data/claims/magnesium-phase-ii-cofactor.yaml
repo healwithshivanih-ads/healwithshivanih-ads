@@ -1,0 +1,28 @@
+slug: magnesium-phase-ii-cofactor
+statement: Magnesium is a required cofactor for Phase II liver conjugation and methylation
+  cycle enzymes.
+evidence_tier: plausible_emerging
+rationale: Document lists magnesium under Phase II conjugation key nutrients and under
+  MTHFR foundational support. Magnesium's role as enzymatic cofactor is broadly established
+  but the specific Phase II liver application in this context is from FM synthesis.
+coaching_translation: Magnesium is needed for your liver's conjugation enzymes to
+  work properly. Many people are deficient and don't realise it.
+caveats:
+- Source is FM synthesis
+- Preferred form (glycinate, malate) not specified in document — recommend clinician
+  confirmation
+linked_to_topics:
+- methylation-mthfr
+- liver-detoxification
+linked_to_supplements:
+- magnesium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Functional Detox Phases
+  quote: Beets, garlic, sulfur foods, B vitamins, magnesium, NAC.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

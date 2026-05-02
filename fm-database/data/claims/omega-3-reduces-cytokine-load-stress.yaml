@@ -1,0 +1,30 @@
+slug: omega-3-reduces-cytokine-load-stress
+statement: Omega-3 fatty acids (EPA/DHA) reduce pro-inflammatory cytokine load (IL-6,
+  TNF-α, CRP) in the context of chronic stress and emotional suppression.
+evidence_tier: plausible_emerging
+rationale: Strong mechanistic and RCT support for omega-3 anti-inflammatory effects
+  generally; specific application to stress-driven inflammation documented in this
+  synthesis.
+coaching_translation: Fish oil (omega-3) helps dampen the inflammation that chronic
+  stress creates in your body.
+caveats:
+- Source is educational synthesis. Does not cite specific trials.
+- Quality of fish oil (oxidation, purity) is important. Verify dose with clinician.
+linked_to_topics:
+- inflammation
+- adrenal-dysfunction
+- anxiety
+- gut-brain-axis
+linked_to_supplements:
+- fish-oil-omega-3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-adrenal-cheatsheet
+  location: Clinical Interventions — Integrative Framework (p.12)
+  quote: 'Inflammation Control: Reduce cytokine load. Omega-3, Curcumin, Magnesium,
+    Resveratrol.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,34 @@
+slug: subclinical-hypothyroidism
+display_name: Subclinical Hypothyroidism
+aliases:
+- early hypothyroidism
+- mild thyroid insufficiency
+summary: A milder form of hypothyroidism characterized by elevated TSH with normal
+  free T4. Indicates the thyroid is under stress but overt symptoms may be absent.
+  May or may not progress to overt hypothyroidism.
+common_symptoms:
+- fatigue
+- weight-gain
+- cold-intolerance
+red_flags:
+- Progression to overt hypothyroidism
+- Elevated cardiovascular risk
+related_topics:
+- hashimotos-hypothyroidism
+- hypothyroidism
+key_mechanisms:
+- thyroid-hormone-conversion
+coaching_scope_notes: Lab interpretation is clinician scope. Coaches can support lifestyle
+  factors that optimize thyroid function.
+evidence_tier: strong
+clinician_scope_notes: ''
+sources:
+- id: vitaone-thyroid-toolkit
+  location: How is Hashimoto's Different from Subclinical Hypothyroidism?
+  quote: Subclinical hypothyroidism is a milder form of hypothyroidism that is characterized
+    by elevated levels of thyroid-stimulating hormone (TSH) with normal levels of
+    free thyroxine (T4).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

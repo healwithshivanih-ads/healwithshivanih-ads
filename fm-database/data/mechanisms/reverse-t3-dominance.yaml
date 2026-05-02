@@ -1,0 +1,39 @@
+slug: reverse-t3-dominance
+display_name: Reverse T3 Dominance
+aliases:
+- high rT3
+- rT3 elevation
+- metabolic brake
+category: endocrine
+summary: When T4 is preferentially converted to inactive reverse T3 (rT3) instead
+  of active T3, rT3 competes with T3 for receptor binding sites, blocking thyroid
+  hormone action at the cellular level and producing hypothyroid-like symptoms despite
+  normal serum labs.
+upstream_drivers:
+- high-cortisol
+- chronic-stress
+- inflammation
+- nutrient-deficiencies
+- low-calorie-diet
+- chronic-illness
+downstream_effects:
+- cellular-hypothyroidism
+- fatigue
+- brain-fog
+- weight-gain
+related_mechanisms:
+- impaired-t4-to-t3-conversion
+- hpa-axis-dysregulation
+linked_to_topics:
+- t3-conversion-disorder
+- hypothyroidism
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 3: Thyroid Hormones'
+  quote: High rT3 with low free T3 can create symptoms of hypothyroidism even when
+    labs appear 'normal.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

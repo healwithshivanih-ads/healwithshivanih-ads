@@ -1,0 +1,25 @@
+slug: abdominal-bloating
+display_name: Abdominal Bloating
+aliases:
+- belly bloating
+- puffy belly
+- stomach bloating
+- GI bloating
+category: gi
+severity: common
+description: Slowed movement of food through the digestive tract and decreased gastric
+  juice secretion in hypothyroid states can cause bloating, heartburn, and GI discomfort.
+linked_to_topics:
+- hypothyroidism
+linked_to_mechanisms:
+- impaired-t4-to-t3-conversion
+when_to_refer: ''
+sources:
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 4: Functions of Thyroid Hormones'
+  quote: Slows the movement of food through digestive tract, decreased secretion of
+    gastric juices which can leave belly bloated.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

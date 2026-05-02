@@ -1,0 +1,33 @@
+slug: dgl
+display_name: DGL (Deglycyrrhizinated Licorice)
+category: herb
+forms_available:
+- tablet
+- capsule
+- powder
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- gerd
+- gut-dysfunction
+linked_to_claims:
+- dgl-protects-gi-lining
+notes_for_coach: Listed under the 'Protect' category in the PPI taper supplement protocol.
+  Deglycyrrhizinated form avoids blood pressure concerns of regular licorice.
+notes_for_client: DGL is a licorice extract that helps soothe and protect the stomach
+  lining. It's often used during acid-reducing medication tapering.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
+    — Supplement recommendations'
+  quote: 'Protect: Alginate, pectin, DGL, slippery elm'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

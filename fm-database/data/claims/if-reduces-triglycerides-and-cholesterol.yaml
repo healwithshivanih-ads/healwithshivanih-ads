@@ -1,0 +1,26 @@
+slug: if-reduces-triglycerides-and-cholesterol
+statement: Intermittent fasting decreases triglycerides and cholesterol.
+evidence_tier: plausible_emerging
+rationale: Referenced by Trepanowski et al. (JAMA Intern Med 2017) and Mattson et
+  al. (2017); table in document explicitly lists cholesterol and triglycerides as
+  outcomes improved by IF.
+coaching_translation: Following an intermittent fasting pattern may help lower your
+  blood fat levels, including triglycerides and cholesterol.
+caveats:
+- Effect size varies by fasting protocol and individual metabolic baseline
+- Source document synthesizes multiple study types
+linked_to_topics:
+- intermittent-fasting
+- cardiometabolic-health
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-cardiometabolic-toolkit
+  location: Intermittent Fasting — Improves/Decreases Table
+  quote: 'Intermittent fasting Decreases: Cholesterol, Free radicals, Inflammation,
+    Triglycerides.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

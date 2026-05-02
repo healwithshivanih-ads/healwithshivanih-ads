@@ -1,0 +1,24 @@
+slug: riboflavin-400mg-migraine-reduction
+statement: Riboflavin at 200–400 mg/day may reduce migraine frequency.
+evidence_tier: plausible_emerging
+rationale: Multiple RCTs have examined riboflavin for migraine prophylaxis with positive
+  results (Schoenen et al., 1998; Cephalalgia). The dose range cited here is consistent
+  with those studies, but this is a synthesis document.
+coaching_translation: High-dose riboflavin is sometimes used by clinicians for migraine
+  prevention — discuss with their doctor.
+out_of_scope_notes: Prescribing therapeutic doses for migraine is clinician territory.
+caveats:
+- Dose of 200–400 mg/day is therapeutic; requires clinician oversight.
+linked_to_topics:
+- vitamin-b-complex-deficiency
+linked_to_supplements:
+- riboflavin-b2
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin B2 (Riboflavin)
+  quote: 200-400 mg/day may be required in migraines or rare genetic conditions.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

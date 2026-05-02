@@ -1,14 +1,16 @@
 slug: perimenopause
-display_name: Perimenopause
+display_name: Perimenopause & Menopause Hormone Transition
 aliases:
 - peri
 - menopause-transition
 - hormone-transition
 - middlepause
 - menopause transition
-summary: The hormonal transition preceding menopause, characterized by fluctuating
-  and declining estrogen and progesterone, with wide-ranging effects on gut function,
-  microbiome diversity, inflammation, and autoimmune risk.
+- climacteric
+- peri-menopause
+summary: The hormonal transition characterized by declining ovarian progesterone and
+  eventual estrogen fluctuation, associated with hot flashes, anxiety, insomnia, and
+  metabolic changes.
 common_symptoms:
 - night sweats / hot flashes
 - 3am wakeups
@@ -23,12 +25,20 @@ common_symptoms:
 - new food sensitivities
 - reflux
 - new-onset IBS
+- hot-flashes
+- anxiety
+- insomnia
+- brain-fog
+- irregular-periods
+- breast-tenderness
 red_flags:
 - heavy bleeding > 7 days or soaking through pads hourly (refer GYN)
 - bleeding after 12 months of amenorrhea
 - severe mood changes with suicidality
 - persistent bloating unresponsive to dietary changes
 - new bowel changes not resolving
+- unexplained heavy bleeding after menopause
+- new breast lumps
 related_topics:
 - insomnia
 - anxiety
@@ -39,6 +49,9 @@ related_topics:
 - constipation
 - dyspepsia
 - motility
+- estrogen-dominance
+- low-progesterone
+- inflammation
 key_mechanisms:
 - low-progesterone
 - estrogen-fluctuation
@@ -47,8 +60,8 @@ key_mechanisms:
 - estrogen-decline
 - progesterone-decline
 - intestinal-permeability
-coaching_scope_notes: Coaches can support lifestyle, nutrition, and stress-management
-  strategies. Hormone-related decisions require clinician oversight.
+coaching_scope_notes: Coaches may support phytoestrogen foods, stress reduction, and
+  sleep hygiene. HRT decisions require clinician.
 clinician_scope_notes: 'HRT decisions and prescribing require menopause-certified
   clinician.
 
@@ -62,8 +75,11 @@ sources:
   location: Session 6 — Main Transcript, Introduction
   quote: These are all hormonally mediated and they are sometimes worsened by neurotransmitter
     changes.
+- id: vitaone-sex-hormones-cheatsheet
+  location: Common Triggers for Low Progesterone
+  quote: Perimenopause & menopause → Natural decline in ovarian progesterone.
 evidence_tier: plausible_emerging
-version: 2
+version: 3
 status: active
-updated_at: '2026-04-29'
+updated_at: '2026-05-02'
 updated_by: shivani

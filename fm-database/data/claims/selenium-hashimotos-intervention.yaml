@@ -1,0 +1,28 @@
+slug: selenium-hashimotos-intervention
+statement: Selenium (100–200 mcg/day as selenomethionine) should be optimized before
+  iodine supplementation in autoimmune thyroid patients (Hashimoto's, Graves') to
+  reduce oxidative thyroid stress.
+evidence_tier: plausible_emerging
+rationale: Selenium supplementation in Hashimoto's reducing TPO antibodies is supported
+  by several RCTs (Toulis et al. 2010, Thyroid). The 'selenium first, then iodine'
+  principle is FM consensus; the specific sequencing lacks direct RCT evidence.
+coaching_translation: Remind clients with thyroid autoimmunity to discuss selenium
+  status with their clinician before any iodine supplementation.
+out_of_scope_notes: Managing autoimmune thyroid disease is clinician territory.
+caveats:
+- '>400 mcg/day long-term risks toxicity (hair loss, nail brittleness).'
+- Source is a synthesis document.
+linked_to_topics:
+- hairfall
+linked_to_supplements:
+- selenium
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Selenium – The Antioxidant & Thyroid Cofactor
+  quote: 'Clinical pearl: Always optimize selenium and antioxidant nutrients before
+    supplementing iodine in autoimmune thyroid patients.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,25 @@
+slug: steatorrhea
+display_name: Steatorrhea (Fatty Stools)
+aliases:
+- fatty stools
+- oily stools
+- pale stools
+- greasy stool
+category: gi
+severity: concerning
+description: Fat malabsorption resulting in pale, greasy, foul-smelling stools. Indicates
+  bile acid insufficiency, pancreatic insufficiency, or fat-soluble vitamin deficiency.
+when_to_refer: Persistent steatorrhea — refer for pancreatic and biliary workup.
+linked_to_topics:
+- sluggish-bile-flow
+linked_to_mechanisms:
+- sluggish-bile-flow-mechanism
+sources:
+- id: vitaone-gut-cheatsheet
+  location: 100 Gut Symptoms — Gut-Metabolic & Nutrient Issues
+  quote: Steatorrhea (fatty stools) — Bile acid insufficiency — Gallbladder/liver
+    issue — Ox bile + bitters
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

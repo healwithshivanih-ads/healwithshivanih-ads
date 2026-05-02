@@ -1,0 +1,31 @@
+slug: pregnenolone-steal-cortisol-reduces-progesterone
+statement: Chronic stress causes excess cortisol to divert pregnenolone away from
+  progesterone synthesis, lowering luteal progesterone and driving PMS, anxiety, and
+  poor sleep.
+evidence_tier: plausible_emerging
+rationale: The shared steroidogenic precursor pregnenolone can be directed toward
+  cortisol under stress; however, 'pregnenolone steal' as a direct cause of progesterone
+  deficiency has mechanistic plausibility but limited human clinical evidence. Commonly
+  cited in FM practice.
+coaching_translation: When you're chronically stressed, your body 'steals' raw material
+  away from making progesterone to make stress hormones instead — a key reason why
+  stress tanks your mood and cycle quality.
+caveats:
+- Pregnenolone steal is a widely cited FM concept with limited direct human RCT evidence
+- Source is expert synthesis
+linked_to_topics:
+- low-progesterone
+- perimenopause
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- low-progesterone
+out_of_scope_notes: ''
+linked_to_supplements: []
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: Common Triggers for Low Progesterone
+  quote: Chronic stress → High cortisol steals pregnenolone (pregnenolone steal).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

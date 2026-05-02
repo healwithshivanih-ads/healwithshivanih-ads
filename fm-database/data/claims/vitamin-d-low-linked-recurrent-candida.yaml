@@ -1,0 +1,27 @@
+slug: vitamin-d-low-linked-recurrent-candida
+statement: Low vitamin D is linked to recurrent Candida infections due to its role
+  in mucosal and systemic immune function.
+evidence_tier: plausible_emerging
+rationale: Vitamin D's immunomodulatory role and its association with mucosal immunity
+  are supported in the literature. Direct link to Candida recurrence is plausible
+  but the synthesis document does not cite specific studies.
+coaching_translation: Getting vitamin D levels checked and optimized may help if you're
+  prone to recurring yeast or fungal infections.
+caveats:
+- Dosing (2000-5000 IU) should be based on serum 25(OH)D levels — clinician scope.
+  Source is educational synthesis.
+linked_to_topics:
+- candida-overgrowth
+linked_to_supplements:
+- vitamin-d3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Candida Infection — Supplement Stack
+  quote: Vitamin D3 — Strengthens immunity; low Vit D linked to recurrent Candida
+    — Ongoing (monitor levels)
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

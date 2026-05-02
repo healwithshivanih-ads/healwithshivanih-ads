@@ -1,45 +1,56 @@
 slug: estrogen-enterohepatic-recirculation
-display_name: Estrogen Enterohepatic Recirculation (Estrobolome)
+display_name: Estrogen Enterohepatic Recirculation
 aliases:
-  - estrogen-enterohepatic-circulation
-  - enterohepatic-estrogen-recirculation
-  - estrobolome-activity
-  - beta-glucuronidase-activity
-  - phase-3-estrogen-detoxification
-category: endocrine
-summary: |
-  After phase 2 conjugation in the liver, estrogen metabolites are excreted
-  via bile into the gut. The estrobolome — gut bacteria expressing
-  beta-glucuronidase — can deconjugate these metabolites in the colon,
-  releasing free estrogen for reabsorption into circulation. Healthy
-  estrobolome + regular bowel transit = appropriate estrogen clearance.
-  Dysbiotic estrobolome + constipation = excess estrogen recycling, which
-  can contribute to estrogen-dominant symptoms even with low circulating
-  estrogen levels in menopause.
+- estrogen-enterohepatic-circulation
+- enterohepatic-estrogen-recirculation
+- estrobolome-activity
+- beta-glucuronidase-activity
+- phase-3-estrogen-detoxification
+- estrogen reabsorption
+- beta-glucuronidase-driven estrogen recycling
+- gut estrogen reconversion
+category: gut
+summary: Conjugated estrogens excreted into the gut via bile are deconjugated by bacterial
+  beta-glucuronidase, allowing free estrogen to be reabsorbed into portal circulation,
+  elevating systemic estrogen load.
 upstream_drivers:
-  - dysbiosis (overgrowth of beta-glucuronidase-producing species)
-  - low fiber intake (slow transit, less binding)
-  - constipation
-  - antibiotic disruption
+- dysbiosis (overgrowth of beta-glucuronidase-producing species)
+- low fiber intake (slow transit, less binding)
+- constipation
+- antibiotic disruption
+- gut-dysbiosis
+- low-fiber-diet
+- antibiotic-use
 downstream_effects:
-  - excess estrogen reabsorption
-  - estrogen-dominant symptoms (breast tenderness, weight retention)
-  - amplification of environmental estrogen load
-  - altered estrogen metabolite ratios
+- excess estrogen reabsorption
+- estrogen-dominant symptoms (breast tenderness, weight retention)
+- amplification of environmental estrogen load
+- altered estrogen metabolite ratios
+- estrogen-dominance
+- pms
+- heavy-periods
+- breast-tenderness
 related_mechanisms:
-  - microbial-diversity-decline
-  - leaky-gut
-  - estrogen-decline
+- microbial-diversity-decline
+- leaky-gut
+- estrogen-decline
+- estrogen-phase-ii-methylation-deficit
 linked_to_topics:
-  - estrobolome
-  - perimenopause
-  - microbiome
-  - dysbiosis
+- estrobolome
+- perimenopause
+- microbiome
+- dysbiosis
+- estrogen-dominance
+- pcos
 sources:
-  - id: thurlow-microbiome-session-3
-    location: Session 3 — Estrobolome & Estrogen Metabolism
+- id: thurlow-microbiome-session-3
+  location: Session 3 — Estrobolome & Estrogen Metabolism
+- id: vitaone-sex-hormones-cheatsheet
+  location: Top Nutrients to Balance Estrogen
+  quote: Improve gut estrogen clearance by modulating the estrobolome and reducing
+    β-glucuronidase activity.
 evidence_tier: plausible_emerging
-version: 1
+version: 2
 status: active
-updated_at: 2026-04-29
+updated_at: '2026-05-02'
 updated_by: shivani

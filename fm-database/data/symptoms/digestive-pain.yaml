@@ -1,0 +1,24 @@
+slug: digestive-pain
+display_name: Digestive Pain / GI Distress
+aliases:
+- stomach pain from stress
+- digestive difficulties
+- gut pain
+category: gi
+severity: common
+description: Digestive pain, gas, bloating, nausea and appetite loss triggered or
+  worsened by chronic stress through reduced blood flow to gut and lowered digestive
+  enzyme output.
+linked_to_topics:
+- chronic-stress
+linked_to_mechanisms:
+- sympathetic-nervous-system-activation
+when_to_refer: ''
+sources:
+- id: vitaone-adrenal-toolkit
+  location: Effects of Chronic Stress — Digestion
+  quote: Can trigger digestive pain, gas, bloating, nausea and loss of appetite
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

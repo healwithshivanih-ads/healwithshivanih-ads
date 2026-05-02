@@ -1,0 +1,29 @@
+slug: hpa-axis-questionnaire-identifies-cortisol-state
+statement: The HPA Axis Questionnaire can help identify and differentiate low cortisol,
+  elevated cortisol, and adrenal hyperplasia states when used alongside blood and
+  salivary cortisol testing.
+evidence_tier: confirm_with_clinician
+rationale: Questionnaire-based tools are screening aids, not diagnostic. Interpretation
+  requires clinician oversight and correlation with lab testing.
+coaching_translation: This questionnaire is a starting point to understand whether
+  your stress hormones may be running high, low, or indicating a need for further
+  testing — always pair it with clinical testing.
+out_of_scope_notes: Coaches should not interpret questionnaire scores as diagnoses.
+  All flagged results should be referred to a clinician for blood and salivary cortisol
+  testing.
+caveats:
+- Not a diagnostic tool. Physical exam items (*) must be assessed by a clinician.
+  Adrenal hyperplasia section warrants direct referral.
+linked_to_topics:
+- hpa-axis-dysregulation
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-adrenal-toolkit
+  location: 'HPA Axis Questionnaire: Practitioner Interpretive Key'
+  quote: Use this information in conjunction with blood testing and salivary cortisol
+    testing.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

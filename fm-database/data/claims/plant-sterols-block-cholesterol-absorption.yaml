@@ -1,0 +1,26 @@
+slug: plant-sterols-block-cholesterol-absorption
+statement: Plant sterols and stanols block intestinal cholesterol absorption, reducing
+  LDL-C levels.
+evidence_tier: strong
+rationale: Plant sterol/stanol LDL lowering is supported by multiple RCTs and recognized
+  by major cardiovascular guidelines (ACC/AHA). Document directly states this mechanism.
+coaching_translation: Plant sterols — found in fortified foods or supplements — work
+  by blocking the absorption of cholesterol in your gut, lowering your LDL without
+  medication.
+caveats:
+- Source is an expert synthesis cheatsheet.
+- Dose matters — typical effective dose is 2g/day; clinician should confirm.
+linked_to_topics:
+- dyslipidemia
+linked_to_supplements:
+- plant-sterols
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 5
+  quote: 'Plant sterols/stanols: Block cholesterol absorption.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

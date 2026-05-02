@@ -1,0 +1,43 @@
+slug: hashimotos-thyroiditis
+display_name: Hashimoto's Thyroiditis
+aliases:
+- Hashimoto's disease
+- autoimmune hypothyroidism
+- chronic lymphocytic thyroiditis
+summary: Autoimmune condition where the immune system produces Anti-TPO and Anti-Tg
+  antibodies that attack the thyroid gland, leading to chronic inflammation and eventual
+  hypothyroidism. Most common cause of hypothyroidism in iodine-sufficient regions.
+common_symptoms:
+- fatigue
+- weight-gain
+- brain-fog
+- hair-thinning
+- cold-intolerance
+- depression
+- constipation
+red_flags:
+- Rapidly enlarging goiter
+- Dysphagia or stridor
+- High antibodies with rapidly declining thyroid function
+related_topics:
+- hypothyroidism
+- leaky-gut
+- t3-conversion-disorder
+key_mechanisms:
+- thyroid-autoimmunity
+- leaky-gut
+- molecular-mimicry
+coaching_scope_notes: Focus on anti-inflammatory diet, gluten removal, gut healing,
+  stress management, selenium and vitamin D support. Refer for lab monitoring.
+clinician_scope_notes: Diagnose via Anti-TPO and/or Anti-Tg antibodies + TSH/T3/T4
+  pattern. Antibody retesting every 6-8 months is sufficient.
+evidence_tier: strong
+sources:
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 6: Causes of Thyroid Disorders'
+  quote: Hashimoto's is an autoimmune condition where the immune system produces antibodies
+    like Anti-TPO (thyroid peroxidase) and Anti-Tg (thyroglobulin).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

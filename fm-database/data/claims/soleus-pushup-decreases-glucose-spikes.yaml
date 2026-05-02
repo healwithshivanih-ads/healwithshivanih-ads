@@ -1,0 +1,26 @@
+slug: soleus-pushup-decreases-glucose-spikes
+statement: The soleus push-up exercise may decrease postprandial glucose spikes by
+  30–50%.
+evidence_tier: plausible_emerging
+rationale: Plausible mechanism via localised soleus muscle activation driving GLUT4-mediated
+  glucose uptake; specific 30–50% figure requires verification from primary research
+  (likely referencing Singhal et al. 2022, iScience).
+coaching_translation: A simple seated calf raise (soleus push-up) done after meals
+  may cut blood sugar spikes nearly in half — worth trying as a daily habit.
+caveats:
+- Specific percentage figure (30–50%) not directly cited in document; verify with
+  primary literature before quoting to clients.
+linked_to_topics:
+- blood-sugar-dysfunction
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-blood-sugar-toolkit
+  location: Antigravity Exercises
+  quote: This exercise helps decrease glucose spikes by 30-50%, builds strong ankles,
+    strengthens feet, and improves blood circulation and lymph flow.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

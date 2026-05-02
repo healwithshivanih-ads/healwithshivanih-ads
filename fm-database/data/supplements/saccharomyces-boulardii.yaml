@@ -1,5 +1,5 @@
 slug: saccharomyces-boulardii
-display_name: Saccharomyces Boulardii
+display_name: Saccharomyces boulardii
 category: probiotic
 forms_available:
 - capsule
@@ -15,19 +15,27 @@ linked_to_topics:
 - microbiome
 - dysbiosis
 - gut-brain-axis
+- candida-overgrowth
+- gut-dysbiosis
+- h-pylori-infection
+- low-fodmap-diet
+- sibo
+- ibs
 linked_to_claims:
 - antibiotic-use-can-disrupt-microbiome-for-years
-notes_for_coach: Beneficial yeast (not a bacteria); can be taken with or without food;
-  useful for traveler's diarrhea, antibiotic support, and fungal infections.
-notes_for_client: S. boulardii is a beneficial yeast that can help support your gut
-  microbiome, especially after antibiotics. It is not a permanent resident — you need
-  to take it consistently to maintain its benefits. Food-based sources (fermented
-  foods) remain the foundation.
+- saccharomyces-boulardii-outcompetes-candida-restores-balance
+- fodmap-4-phase-fm-protocol
+notes_for_coach: Used during the Elimination Phase of the FODMAP protocol alongside
+  strict low-FODMAP diet. A yeast-based probiotic that is not affected by antibacterial
+  antimicrobials. Check with clinician for dosing.
+notes_for_client: This is a friendly yeast probiotic that helps calm your gut during
+  the early stages of your protocol. It works differently from bacterial probiotics
+  and is resilient during antibiotic-type treatments.
 evidence_tier: plausible_emerging
 typical_dose_range:
   capsule:
-    min: 2
-    max: 2
+    min: 5
+    max: 10
     unit: capsules
 linked_to_mechanisms: []
 sources:
@@ -39,7 +47,15 @@ sources:
   location: Page 2 - Supplement Table
   quote: Saccharomyces Boulardii - Gut protection, anti-pathogen - 2 times daily -
     With or without food
-version: 2
+- id: vitaone-gut-cheatsheet
+  location: H. Pylori Infection Cheatsheet — Microbiome Restoration
+  quote: 'Saccharomyces boulardii: 250–500 mg, 1–2x/day (well-studied for H. pylori
+    support & antibiotic protection)'
+- id: vitaone-elimination-diet-cheatsheet
+  location: Functional Medicine Approach to Using Low-FODMAP Clinically — Elimination
+    Phase
+  quote: Strict low-FODMAP diet + probiotics (S. boulardii, L. plantarum).
+version: 4
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-02'
 updated_by: shivani

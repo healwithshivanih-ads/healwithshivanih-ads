@@ -1,0 +1,35 @@
+slug: serotonin-gut-microbiome-mood-link
+statement: Approximately 90% of serotonin is produced in the gut; chronic stress,
+  dysbiosis, and gut-brain axis disruption deplete serotonin, contributing to anxiety,
+  depression, and gut dysmotility.
+evidence_tier: plausible_emerging
+rationale: The 90% gut-serotonin statistic is well-cited in neurogastroenterology.
+  Mechanistic link to stress/dysbiosis is credible; RCT intervention evidence for
+  gut healing restoring serotonin is emerging.
+coaching_translation: Your gut makes most of your mood hormone (serotonin) — healing
+  your gut is part of improving your emotional wellbeing.
+caveats:
+- Peripheral serotonin does not directly cross the blood-brain barrier; mechanism
+  of mood effect is indirect.
+- Source is educational synthesis.
+linked_to_topics:
+- gut-brain-axis
+- anxiety
+- microbiome
+- dysbiosis
+linked_to_supplements:
+- 5-htp
+- vitamin-b6-p5p
+- magnesium-glycinate
+- probiotic-multi-strain
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-adrenal-cheatsheet
+  location: The Anti-Stress Hormones (p.22)
+  quote: 'Serotonin: Gut (90%) & brain. Calms nervous system, regulates appetite,
+    mood, and gut motility. Anxiety, depression, gut dysmotility, sugar cravings.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -3,6 +3,7 @@ display_name: SAMe (S-Adenosyl Methionine)
 category: other
 forms_available:
 - tablet
+- capsule
 typical_dose_range:
   tablet:
     min: 200
@@ -12,18 +13,26 @@ timing_options:
 - on_empty_stomach
 - morning
 take_with_food: avoid
-notes_for_coach: Methyl donor supporting mood, joint, and liver health; should not
-  be combined with antidepressants without clinician supervision.
-evidence_tier: confirm_with_clinician
-linked_to_topics: []
+notes_for_coach: SAMe is a methyl donor used in alcoholic liver disease and methylation
+  support. Best taken on an empty stomach. Avoid in bipolar disorder. Clinician oversight
+  required for dosing.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- liver-detoxification
+- methylation-mthfr
 linked_to_mechanisms: []
-linked_to_claims: []
-notes_for_client: ''
+linked_to_claims:
+- same-methylation-liver-support
+notes_for_client: SAMe supports liver detoxification pathways and mood. It's best
+  taken away from food for optimal absorption.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 3 - Supplement Table
   quote: SAMe - Mood, joint & liver support - 200–600 mg/day - Empty stomach in morning
-version: 1
+- id: vitaone-liver-detox-cheatsheet
+  location: Liver Disease Cheatsheet — Alcoholic Liver Disease
+  quote: Silymarin (Milk thistle), NAC, B-complex, SAMe
+version: 2
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-02'
 updated_by: shivani

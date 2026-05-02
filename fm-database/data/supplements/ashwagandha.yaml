@@ -1,0 +1,67 @@
+slug: ashwagandha
+display_name: Ashwagandha Root
+category: herb
+forms_available:
+- capsule
+- powder
+- tablet
+typical_dose_range:
+  capsule:
+    min: 600
+    max: 600
+    unit: mg
+  tablet:
+    min: 600
+    max: 600
+    unit: mg
+  powder:
+    min: 5
+    max: 15
+    unit: g
+timing_options:
+- with_breakfast
+- evening
+- bedtime
+- with_dinner
+- morning
+take_with_food: optional
+linked_to_topics:
+- chronic-inflammation
+- fasting-immune-health
+- hairfall
+- hypothyroidism
+- t3-conversion-disorder
+- hashimotos-hypothyroidism
+- cardiometabolic-health
+linked_to_claims:
+- ashwagandha-cortisol-hair-loss
+- high-cortisol-inhibits-t4-to-t3-conversion
+- ashwagandha-improves-tsh-t3-t4-in-hypothyroidism
+notes_for_coach: Listed as a base liquid herb option for cardiometabolic smoothies
+  (1 tablespoon powdered root). Adaptogenic herb; discuss with clinician for clients
+  on thyroid or immunosuppressant medications.
+notes_for_client: Ashwagandha root is an adaptogenic herb that may be brewed into
+  your smoothie base tea for added support.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Inflammation Cheatsheet — Page 02
+  quote: Use adaptogens (ashwagandha, rhodiola)
+- id: vitaone-nutrition-cheatsheet
+  location: Hairfall – Supplement Stack
+  quote: Ashwagandha, Shatavari, Rhodiola
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 9: Targeted Supplements'
+  quote: 'Ashwagandha: Supports hypothyroidism, lowers stress. Caution: Avoid in hyperthyroidism.'
+- id: vitaone-thyroid-toolkit
+  location: Ashwagandha (Withania somnifera)
+  quote: Eight weeks of treatment with ashwagandha 600 mg/day significantly improved
+    serum TSH, T3, and T4 levels when compared to placebo.
+- id: vitaone-cardiometabolic-toolkit
+  location: Building a Better Smoothie — Base Liquids
+  quote: Ashwaganda root, powdered – 1 T
+version: 5
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani
