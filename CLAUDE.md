@@ -14,7 +14,23 @@ published plans as JSON artifacts.
 
 ## Status
 
-**v0.25 (current)** — Resources attach-to-plan + MindMap node linking & mining:
+**v0.26 (current)** — MindMap link/mine apply pass + Path B scaffold (Next.js + shadcn):
+- **Applied the MindMap linking + mining passes** from v0.25:
+  - `fmdb mindmap-link --all --apply`: 60 nodes resolved (adrenal-fatigue 13, hypothyroidism 24, hypertension 23) — by kind: 26 supplement, 20 topic, 11 symptom, 3 mechanism. Mindmap YAMLs committed.
+  - `fmdb mindmap-mine --add-to-backlog`: 645 unlinked depth-2+ nodes queued into `data/_backlog.yaml` (gitignored) for triage.
+- **Path B scaffold** (`fm-database-web/` — sibling to `fm-database/`, NOT inside it). Read-only Next.js + shadcn rebuild of the coach UI; the Streamlit app stays alive as fallback during migration. Stack: Next.js 16.2.4 (App Router, Turbopack), React 19.2.4, TypeScript 5 strict, Tailwind v4, shadcn (base-nova preset, neutral palette). Components installed: button, card, badge, table, input, select, tabs. Used `npm` (no pnpm available locally).
+- Layout: `src/app/` (App Router), `src/components/` (sidebar-nav, evidence-tier-badge, plan-status-badge, catalogue-table + 7 shadcn UI), `src/lib/fmdb/` (paths.ts, types.ts, loader.ts).
+- **Routes built this turn:**
+  - `/` — landing card + sidebar shell
+  - `/catalogue` — tabbed table view across all 6 entity types (Topics 110, Mechanisms 116, Symptoms 143, Supplements 171, Claims 546, Sources 39 — counts read live from disk, match catalogue v0.21+ exactly)
+  - `/catalogue/[kind]/[slug]` — detail (full implementation for topics + supplements; other kinds show raw slug only — TODO marker)
+  - `/plans` — list view with status badge + version
+  - `/plans/[slug]` — read-only detail (Topics + Symptoms structured; rest dumps raw JSON for now)
+- Data path: server components read YAML directly via `js-yaml` from `fm-database/data/` (override via `FMDB_CATALOGUE_DIR`) and `~/fm-plans/` (override via `FMDB_PLANS_DIR`). No DB, no API mutations, no auth — desktop coaching tool, single user.
+- Build: PASS (one non-blocking Turbopack NFT-tracing warning on dynamic-path reads in `loader.ts` — runtime fine). Smoke-tested 6 routes returning 200.
+- **TODOs for next turns** (marked `// TODO(next-turn)` in code): mechanism / symptom / claim / source / mindmap / cooking / remedy detail pages, structured Plan editor, Clients page, Mind Map Mermaid renderer, Resources Toolkit, Catalogue Backlog, Assess & Suggest workflow + AI suggester wiring, plan-check sidebar, live filter/search inputs.
+
+**v0.25** — Resources attach-to-plan + MindMap node linking & mining:
 - **Resources Toolkit ↔ Plan integration.** New `Plan.attached_resources: list[str]` field (Resource slugs). Default empty so existing plans load unchanged.
 - New 📎 Resources tab in the Plan editor (between Tracking and Notes & Raw): attached-list with detach buttons + filter UI (text search + kind dropdown + audience dropdown defaulting to client/both). One-click attach.
 - `render_markdown` and `render_html` now accept `resources=None` and emit a `## Resources` section between Education and Supplements; coach-only resources hidden in the client-facing artifact. Per-resource: bold title + description + URL or "(See attached file: <basename>)".
@@ -493,3 +509,4 @@ Sidebar pages: 🧠 Assess & Suggest (default), 📋 Plans, 👥 Clients, 🧭 M
 9. **Edit / Delete client UI** — built. Active-plan-blocks-delete safeguard in place.
 10. **JSON export contract for Project 2 (mobile app)** — deferred indefinitely; desktop-first for now.
 11. **Native Mac wrapper (Tauri / Electron / SwiftUI)** — engine is UI-agnostic; wrap when the workflow stabilises.
+12. **Path B Next.js port — continue.** Scaffold landed in v0.26. Next priorities: structured Plan editor, Clients page, Resources Toolkit page, Assess & Suggest with AI suggester wiring, mechanism/symptom/claim detail pages, Mind Map Mermaid renderer.
