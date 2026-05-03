@@ -14,7 +14,13 @@ published plans as JSON artifacts.
 
 ## Status
 
-**v0.33 (current)** — Backlog triage UX: real-use bugs fixed + Attach feature + inline suggestion chips:
+**v0.34 (current)** — Assess page UX fixes + Clients workflow:
+- **Invisible symptom/topic pickers fixed.** Root cause: `MultiSelect` with `showOnEmpty` renders an `absolute`-positioned floating dropdown that was hidden behind the next Card's background. New `InlinePicker` component renders a search input + scrollable checkbox list in normal document flow (no `absolute`, no z-index). All 143 symptoms / 110 topics visible immediately; typing filters inline. Selected items shown as removable chips above the list.
+- **Lab upload moved to step 3** (was step 5, unreachable once steps 2+3 appeared broken). New order: Client → Symptoms → Lab reports + food journals → Topics → Presenting complaints → Analyze. Upload inputs no longer disabled on load (client is always pre-selected).
+- **Clients page blank-space fixed.** `NewClientForm` was inside a `flex justify-between` header row — when expanded, it created a tall card on the right while the left was nearly empty. Moved the form to its own full-width block below the title. Collapsed state shows a right-aligned `+ New client` button; expanded state fills full width.
+- **Client detail page workflow.** New action bar at the top: "🧠 Run assessment" (→ `/assess?client=<id>`) and "+ New plan". Uploaded files card lists `clients/<id>/files/` contents. Assess page reads `?client=<id>` search param and pre-selects that client in the picker.
+
+**v0.33** — Backlog triage UX: real-use bugs fixed + Attach feature + inline suggestion chips:
 - **Mermaid syntax fixed.** Mermaid v11.14.0 rejected `[Label [type]]` nested brackets in curated mindmap nodes. Fixed in `fmdb/assess/mindmap.py`: badge format changed from `f"{label} [{badge}]"` to `f"{label} · {badge}"` (middle-dot separator is safe inside any shape).
 - **Clients page overhauled.** Was fully read-only — no way to add a client, no clickable rows. Fixed:
   - New `app/clients/actions.ts` Server Action `createClient()` shells out to `fmdb client-new`.
