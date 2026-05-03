@@ -14,7 +14,27 @@ published plans as JSON artifacts.
 
 ## Status
 
-**v0.32 (current)** — Catalogue detail pages for the remaining 6 kinds + Source listing bugfix:
+**v0.33 (current)** — Backlog triage UX: real-use bugs fixed + Attach feature + inline suggestion chips:
+- **Mermaid syntax fixed.** Mermaid v11.14.0 rejected `[Label [type]]` nested brackets in curated mindmap nodes. Fixed in `fmdb/assess/mindmap.py`: badge format changed from `f"{label} [{badge}]"` to `f"{label} · {badge}"` (middle-dot separator is safe inside any shape).
+- **Clients page overhauled.** Was fully read-only — no way to add a client, no clickable rows. Fixed:
+  - New `app/clients/actions.ts` Server Action `createClient()` shells out to `fmdb client-new`.
+  - New `app/clients/new-client-form.tsx` collapsible form (Client ID, display name, intake date, age band, sex, conditions, medications, allergies, goals, notes). Redirects to new client detail page on success.
+  - Every cell in the clients table is now wrapped in `<Link>` so clicking any row navigates to `/clients/<id>`.
+  - `client_id` column on the Plans page also linked to `/clients/<id>`.
+- **Backlog Attach action.** New third action alongside Promote + Reject. Lets coach tag a backlog fragment to an existing catalogue entity instead of creating a new stub. Three modes:
+  - `claim` — creates a new Claim with `statement = item.name`, citing `vitaone-mind-map-tool` as source, linked to the target entity.
+  - `alias` — appends the item name to `target.aliases` (topic / mechanism / symptom only — those are the only kinds with an `aliases` field on the Pydantic model).
+  - `notes` — appends to `target.notes_for_coach` (supplement only).
+  - Backend: new `fmdb backlog-attach` CLI verb in `fmdb/cli.py`; `fmdb/backlog.py` gains `mark_attached()` which flips status to `"attached"` and records `attached_as` + `attached_to`. Shim `scripts/backlog-action.py` extended with `action == "attach"` branch. Server Action `attachBacklogItem(input: AttachInput)` added to `actions.ts`.
+  - UI: `AttachForm` component in `backlog-table-client.tsx` — mode selector, target kind selector, search-filtered entity list (pre-filled from parent-chain heuristic). Mode-validation messages (alias → only topic/mech/symptom; notes → only supplement).
+- **Inline suggestion chips.** Each open backlog row now shows a 💡 chip under the item name before the coach opens any disclosure:
+  - `computeSuggestion(item, catalogue)` derives target kind from item.kind, finds target entity via `parseParentLabel(why)` + `suggestTarget()` (exact → alias → partial match), picks mode (alias when ≤ 3 words + no verb pattern + aliases-capable kind; claim otherwise).
+  - Clicking the chip pre-fills and auto-opens `AttachForm` with the suggested mode/kind/slug already selected. Coach just confirms or tweaks.
+  - `AttachForm` refactored to accept `initialOpen / overrideMode / overrideTargetKind / overrideTargetSlug` props; rows extracted into `BacklogRow` component (valid hook scope) which bumps a `key` on chip-click to force remount with fresh state.
+  - `BacklogItem` type gains `attached_as` + `attached_to` fields; attached rows display `→ mechanism/hpa-axis-dysregulation` in the status cell.
+- Type-check clean throughout.
+
+**v0.32** — Catalogue detail pages for the remaining 6 kinds + Source listing bugfix:
 - **Detail renderers landed for** Mechanism, Symptom, Claim, Source, CookingAdjustment, HomeRemedy. Joins the existing Topic + Supplement renderers — `/catalogue/[kind]/[slug]` now renders all 8 kinds with structured field views.
 - **Latent Source bug fixed.** Source records on disk use `id` (not `slug`) and `quality` (not `source_quality`); the catalogue listing was producing `/catalogue/sources/undefined` links because the table normalization didn't synthesize a `slug`. Fixed in `src/app/catalogue/page.tsx` — Source rows now get `slug: s.slug ?? s.id`. Type also updated.
 - **TypeScript types tightened to match Python** for the affected entities (`Mechanism`, `Symptom`, `Claim`, `Source`, `CookingAdjustment`, `HomeRemedy`): added missing fields (`sources`, `evidence_tier`, `summary`, `linked_to_mechanisms`, `linked_to_supplements`, `publisher`, `doi`, `id`, etc.). Pydantic still owns validation; types just describe what the renderer actually reads.
@@ -569,7 +589,7 @@ npm install                                  # one time
 npm run dev                                  # opens http://localhost:3000
 npm run build && npm run type-check          # before committing
 ```
-14 routes: `/`, `/catalogue` (+ all 8 detail kinds), `/plans` (+ 10-tab editor + plan-check + lifecycle + Markdown/HTML export), `/assess` (Analyze + chat with auto-rehydrated history), `/clients` (+ detail), `/resources` (+ detail), `/mindmap` (+ Mermaid detail), `/backlog` (with bulk reject + mark-added).
+14 routes: `/`, `/catalogue` (+ all 8 detail kinds), `/plans` (+ 10-tab editor + plan-check + lifecycle + Markdown/HTML export), `/assess` (Analyze + chat with auto-rehydrated history), `/clients` (+ detail + add-client form), `/resources` (+ detail), `/mindmap` (+ Mermaid detail), `/backlog` (with bulk reject + mark-added + Attach action + per-row 💡 suggestion chips).
 
 ### Path A — Streamlit UI (fallback, still maintained)
 ```bash
@@ -636,11 +656,14 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 
 ### CLI — backlog triage + mindmap link/mine
 ```bash
-.venv/bin/python -m fmdb.cli backlog-list [--status open|added|rejected|all] [--kind X] [--search S]
+.venv/bin/python -m fmdb.cli backlog-list [--status open|added|rejected|attached|all] [--kind X] [--search S]
 .venv/bin/python -m fmdb.cli backlog-show <id>
 .venv/bin/python -m fmdb.cli backlog-clean [--apply]      # heuristic auto-reject prose/noise
 .venv/bin/python -m fmdb.cli backlog-promote <id> [--kind X] [--slug X] [--display-name X]
 .venv/bin/python -m fmdb.cli backlog-reject <id> [--note X]
+.venv/bin/python -m fmdb.cli backlog-attach <id> --mode claim|alias|notes \
+    --target-kind topic|mechanism|symptom|supplement \
+    --target-slug <slug> [--evidence-tier X] [--force] [--note X]
 
 .venv/bin/python -m fmdb.cli mindmap-link [<slug>] [--all] [--apply] [--dry-run]
 .venv/bin/python -m fmdb.cli mindmap-mine [--add-to-backlog]
@@ -648,23 +671,23 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 
 ## Roadmap (what's next)
 
-**Done (v0.2 → v0.32):**
+**Done (v0.2 → v0.33):**
 - ✅ All 9 catalogue entity types built and seeded (39 sources, 110 topics, 116 mechanisms, 143 symptoms, 546 claims, 172 supplements, 3+3+3 ca/hr/mindmaps)
 - ✅ AI ingestion pipeline (PDF + markdown + image attachments; streaming) — all 31 VitaOne PDFs ingested
 - ✅ Plan + Client layer with sessions, history-aware Analyze, deterministic check, AI sanity check, publish lifecycle (submit/publish/revoke/supersede/diff), markdown+HTML render
 - ✅ Atomic approval, smart-merge, alias-aware resolution, error/warning split
-- ✅ Backlog triage CLI (clean/show/promote/reject) — 167 noise auto-rejected
+- ✅ Backlog triage CLI (clean/show/promote/reject/attach) — 167 noise auto-rejected
 - ✅ Curated MindMap node linking + mining (60 nodes linked, 645 candidates queued)
 - ✅ Streamlit UI (Path A) with all 7 sidebar pages — fallback
-- ✅ Path B (Next.js + shadcn) — 14 routes, feature parity with Streamlit, typed engine API, lifecycle in UI, plan-check + AI-check sidebars, multi-turn chat with rehydration, bulk backlog actions, Mermaid mindmap, error toasts, all 8 catalogue detail pages
+- ✅ Path B (Next.js + shadcn) — 14 routes, feature parity with Streamlit, typed engine API, lifecycle in UI, plan-check + AI-check sidebars, multi-turn chat with rehydration, bulk backlog actions + Attach + suggestion chips, Mermaid mindmap (fixed for v11), error toasts, all 8 catalogue detail pages, clickable clients table + add-client form
 
 **Outstanding (in rough priority order):**
 1. **Coach actually uses it daily.** Real bugs from real use will be more useful than another speculative turn. The product is past the "more code" threshold.
-2. **Triage the 444 open backlog items** via the bulk-action UI in `/backlog` — coach work, no code needed.
+2. **Triage the 444 open backlog items** via the `/backlog` UI — now much faster with suggestion chips. Coach work, no code needed.
 3. **Type the inner `suggestions` payload** (likely_drivers, supplement_suggestions, etc.) as nested Pydantic models. Requires migrating `Session.ai_analysis: dict` → typed model on disk + rewriting all string-keyed reads in `app.py` and shim consumers. Deferred from v0.31.
-4. **Improve backlog mining heuristic** — currently 80% of mined items default to `topic` (often wrongly). Better parent-chain rules would reduce manual `--kind` override during triage.
+4. **Improve backlog mining heuristic** — currently 80% of mined items default to `topic` (often wrongly). Better parent-chain rules + improved `computeSuggestion` target-kind logic would reduce manual override.
 5. **Promote freeform → entities when sprawl emerges:** Practice, TrackingHabit, Food, LabTest, Recipe, Protocol, EducationalModule. Watch for duplication in real plans first.
-6. **Path B polish (deferred from v0.30/v0.31/v0.32):** click-to-recenter on linked MindMap nodes; session timeline detail view (per-session drilldown — sessions table only renders summary today); photo upload + edit/delete on Clients (read-only); colored split-diff for plan diff viewer; backlog page pagination (currently full DOM table); migrate lifecycle-actions successor-synthesis off the permissive `Plan` index signature so it can be dropped; `created_at` recompute on `createSuccessor` (currently inherits old period dates); evidence-tier badges on suggestion items in Assess.
+6. **Path B polish (deferred):** click-to-recenter on linked MindMap nodes; session timeline detail view; photo upload + edit/delete on Clients; colored split-diff for plan diff viewer; backlog page pagination (currently full DOM table); migrate lifecycle-actions successor-synthesis off the permissive `Plan` index signature; `created_at` recompute on `createSuccessor`; evidence-tier badges on suggestion items in Assess.
 7. **Ingest UI in Path B** — currently coach uses CLI for `fmdb ingest`. Drag-drop + metadata form + review/approve in shadcn would help if she ingests new content often.
 8. **JSON export contract for Project 2 (mobile app)** — deferred indefinitely; desktop-first.
 9. **Native Mac wrapper (Tauri / Electron / SwiftUI)** — engine is UI-agnostic; wrap when workflow stabilises.
