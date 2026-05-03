@@ -102,7 +102,16 @@ export default async function PlansPage({
                     </Link>
                   </TableCell>
                   <TableCell className="font-mono text-xs">
-                    {p.client_id ?? "—"}
+                    {p.client_id ? (
+                      <Link
+                        href={`/clients/${p.client_id}`}
+                        className="hover:underline"
+                      >
+                        {p.client_id}
+                      </Link>
+                    ) : (
+                      "—"
+                    )}
                   </TableCell>
                   <TableCell>
                     <PlanStatusBadge status={p.status ?? p._bucket} />

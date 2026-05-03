@@ -321,8 +321,10 @@ def _render_curated_node(node, indent: int, lines: list[str]) -> None:
     label = _safe_label(node.label)
     if linked_kind and getattr(node, "linked_slug", None):
         badge = _KIND_BADGE.get(linked_kind, linked_kind)
-        # Mermaid mindmap labels are space-tolerant; append a small marker.
-        label = f"{label} [{badge}]"
+        # Mermaid mindmap shape syntax uses [] / () — putting [topic] inside
+        # a [shape] gives [Label [topic]] which trips the parser. Use a
+        # middle-dot separator that's safe inside any shape bracket.
+        label = f"{label} · {badge}"
     shape_open, shape_close = _KIND_SHAPE.get(linked_kind or "", ("", ""))
     if shape_open:
         lines.append(f"{pad}{shape_open}{label}{shape_close}")
