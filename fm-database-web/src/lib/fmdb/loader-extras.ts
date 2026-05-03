@@ -178,7 +178,7 @@ export interface BacklogItem {
   kind: string;
   name: string;
   why?: string;
-  status: "open" | "added" | "rejected" | string;
+  status: "open" | "added" | "rejected" | "attached" | string;
   suggested_by?: string;
   created_at?: string;
   last_seen_at?: string;
@@ -186,6 +186,10 @@ export interface BacklogItem {
   session_refs?: unknown[];
   status_changed_at?: string;
   status_note?: string;
+  // set by the attach action: "claim" | "alias" | "notes"
+  attached_as?: string;
+  // set by the attach action: "<kind>/<slug>"
+  attached_to?: string;
   extra?: Record<string, unknown>;
 }
 

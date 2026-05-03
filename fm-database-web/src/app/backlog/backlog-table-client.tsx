@@ -25,6 +25,10 @@ import {
   type AttachTargetKind,
 } from "./actions";
 
+// ---------------------------------------------------------------------------
+// Types
+// ---------------------------------------------------------------------------
+
 export interface CatalogueOption {
   slug: string;
   label: string;
@@ -38,6 +42,17 @@ export interface CatalogueOptions {
   claim: CatalogueOption[];
 }
 
+interface SuggestionResult {
+  mode: AttachMode;
+  targetKind: AttachTargetKind;
+  targetSlug: string;
+  targetLabel: string;
+}
+
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
+
 const KIND_OPTIONS = [
   "topic",
   "mechanism",
@@ -48,6 +63,12 @@ const KIND_OPTIONS = [
   "home_remedy",
 ];
 
+const KINDS_WITH_ALIASES = new Set<AttachTargetKind>([
+  "topic",
+  "mechanism",
+  "symptom",
+]);
+
 function slugify(s: string): string {
   return s
     .toLowerCase()
@@ -56,6 +77,85 @@ function slugify(s: string): string {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 }
+
+function parseParentLabel(why: string | undefined): string | null {
+  // "Surfaced from MindMap '<mm>' under branch '<parent>' (depth N)."
+  const m = why?.match(/under branch '([^']+)'/);
+  return m?.[1] ?? null;
+}
+
+function suggestTarget(
+  parentLabel: string | null,
+  options: CatalogueOption[]
+): string | null {
+  if (!parentLabel) return null;
+  const needle = parentLabel.toLowerCase().trim();
+  // exact label / slug / alias match first
+  const exact = options.find(
+    (o) =>
+      o.label.toLowerCase() === needle ||
+      o.slug.toLowerCase() === needle ||
+      o.aliases.some((a) => a.toLowerCase() === needle)
+  );
+  if (exact) return exact.slug;
+  // partial — needle contained in label or an alias
+  const partial = options.find(
+    (o) =>
+      o.label.toLowerCase().includes(needle) ||
+      o.aliases.some((a) => a.toLowerCase().includes(needle))
+  );
+  return partial?.slug ?? null;
+}
+
+/**
+ * Compute a best-guess attach suggestion for a backlog item.
+ *
+ * Target-kind heuristic  (in priority order):
+ *   supplement → supplement, symptom → symptom, mechanism → mechanism, else → topic
+ *
+ * Mode heuristic:
+ *   ≤ 3 words + aliases-capable kind + no verb pattern → alias
+ *   everything else → claim
+ *
+ * Returns null when no matching target entity can be found in the catalogue.
+ */
+function computeSuggestion(
+  item: BacklogItem,
+  catalogue: CatalogueOptions
+): SuggestionResult | null {
+  const parentLabel = parseParentLabel(item.why);
+
+  const targetKind: AttachTargetKind = (() => {
+    if (item.kind === "supplement") return "supplement";
+    if (item.kind === "symptom") return "symptom";
+    if (item.kind === "mechanism") return "mechanism";
+    return "topic";
+  })();
+
+  const opts = catalogue[targetKind] ?? [];
+  const targetSlug = suggestTarget(parentLabel, opts);
+  if (!targetSlug) return null;
+
+  const targetLabel =
+    opts.find((o) => o.slug === targetSlug)?.label ?? targetSlug;
+
+  // Mode: alias when the name is short + no verb-like pattern + target supports aliases
+  const wordCount = item.name.trim().split(/\s+/).length;
+  const hasVerbPattern =
+    /\b(lowers?|raises?|increases?|decreases?|reduces?|causes?|activates?|inhibits?|promotes?|suppresses?|drives?|triggers?|affects?|modulates?|regulates?|converts?|blocks?|impairs?|enhances?|supports?|stimulates?|depletes?)\b/i.test(
+      item.name
+    );
+  const mode: AttachMode =
+    wordCount <= 3 && KINDS_WITH_ALIASES.has(targetKind) && !hasVerbPattern
+      ? "alias"
+      : "claim";
+
+  return { mode, targetKind, targetSlug, targetLabel };
+}
+
+// ---------------------------------------------------------------------------
+// PromoteForm
+// ---------------------------------------------------------------------------
 
 function PromoteForm({ item }: { item: BacklogItem }) {
   return (
@@ -120,82 +220,57 @@ function PromoteForm({ item }: { item: BacklogItem }) {
 }
 
 // ---------------------------------------------------------------------------
-// Attach: tag this backlog fragment to an existing entity instead of creating
-// a new one. Three modes: claim (new Claim linked to target), alias (append
-// to target.aliases), notes (append to target.notes_for_coach — supplement
-// only). Suggests a target by parsing the parent label out of `why`.
+// AttachForm
+// Accepts optional override values so the suggestion chip can pre-fill it.
+// The `key` prop on AttachForm in BacklogRow forces a remount when overrides
+// change, so useState initialises from the new props each time.
 // ---------------------------------------------------------------------------
-
-const KINDS_WITH_ALIASES = new Set<AttachTargetKind>([
-  "topic",
-  "mechanism",
-  "symptom",
-]);
-
-function parseParentLabel(why: string | undefined): string | null {
-  // "Surfaced from MindMap '<mm>' under branch '<parent>' (depth N)."
-  const m = why?.match(/under branch '([^']+)'/);
-  return m?.[1] ?? null;
-}
-
-function suggestTarget(
-  parentLabel: string | null,
-  kind: AttachTargetKind,
-  options: CatalogueOption[]
-): string | null {
-  if (!parentLabel) return null;
-  const needle = parentLabel.toLowerCase().trim();
-  // exact label/slug match first
-  const exact = options.find(
-    (o) =>
-      o.label.toLowerCase() === needle ||
-      o.slug.toLowerCase() === needle ||
-      o.aliases.some((a) => a.toLowerCase() === needle)
-  );
-  if (exact) return exact.slug;
-  // partial — needle contained in label/alias
-  const partial = options.find(
-    (o) =>
-      o.label.toLowerCase().includes(needle) ||
-      o.aliases.some((a) => a.toLowerCase().includes(needle))
-  );
-  return partial?.slug ?? null;
-}
 
 function AttachForm({
   item,
   catalogue,
+  initialOpen = false,
+  overrideMode,
+  overrideTargetKind,
+  overrideTargetSlug,
 }: {
   item: BacklogItem;
   catalogue: CatalogueOptions;
+  initialOpen?: boolean;
+  overrideMode?: AttachMode;
+  overrideTargetKind?: AttachTargetKind;
+  overrideTargetSlug?: string;
 }) {
   const parentLabel = parseParentLabel(item.why);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(initialOpen);
   const [pending, startTransition] = useTransition();
 
-  // Best-guess defaults from the parent chain
-  const defaultMode: AttachMode = "claim";
-  const defaultKind: AttachTargetKind = (() => {
-    // If the backlog item's kind is supplement / symptom, prefer those as targets
-    if (item.kind === "supplement") return "supplement";
-    if (item.kind === "symptom") return "symptom";
-    if (item.kind === "mechanism") return "mechanism";
-    return "topic";
-  })();
+  // Resolve initial state: override props win over heuristic defaults
+  const initKind: AttachTargetKind =
+    overrideTargetKind ??
+    (() => {
+      if (item.kind === "supplement") return "supplement";
+      if (item.kind === "symptom") return "symptom";
+      if (item.kind === "mechanism") return "mechanism";
+      return "topic";
+    })();
 
-  const [mode, setMode] = useState<AttachMode>(defaultMode);
-  const [targetKind, setTargetKind] = useState<AttachTargetKind>(defaultKind);
-  const [targetSlug, setTargetSlug] = useState<string>(() => {
-    const opts = catalogue[defaultKind] ?? [];
-    return suggestTarget(parentLabel, defaultKind, opts) ?? opts[0]?.slug ?? "";
-  });
+  const initSlug: string =
+    overrideTargetSlug ??
+    (() => {
+      const opts = catalogue[initKind] ?? [];
+      return suggestTarget(parentLabel, opts) ?? opts[0]?.slug ?? "";
+    })();
+
+  const [mode, setMode] = useState<AttachMode>(overrideMode ?? "claim");
+  const [targetKind, setTargetKind] = useState<AttachTargetKind>(initKind);
+  const [targetSlug, setTargetSlug] = useState<string>(initSlug);
   const [search, setSearch] = useState<string>("");
 
-  // Recompute suggestion when target kind changes
   function changeTargetKind(k: AttachTargetKind) {
     setTargetKind(k);
     const opts = catalogue[k] ?? [];
-    setTargetSlug(suggestTarget(parentLabel, k, opts) ?? opts[0]?.slug ?? "");
+    setTargetSlug(suggestTarget(parentLabel, opts) ?? opts[0]?.slug ?? "");
     setSearch("");
   }
 
@@ -213,7 +288,6 @@ function AttachForm({
       .slice(0, 50);
   }, [options, search]);
 
-  // Mode validation: alias only on topic/mechanism/symptom; notes only on supplement
   const modeIsValid =
     (mode === "alias" && KINDS_WITH_ALIASES.has(targetKind)) ||
     (mode === "notes" && targetKind === "supplement") ||
@@ -362,6 +436,10 @@ function AttachForm({
   );
 }
 
+// ---------------------------------------------------------------------------
+// RejectForm
+// ---------------------------------------------------------------------------
+
 function RejectForm({ item }: { item: BacklogItem }) {
   return (
     <details className="text-xs">
@@ -394,6 +472,133 @@ function RejectForm({ item }: { item: BacklogItem }) {
   );
 }
 
+// ---------------------------------------------------------------------------
+// BacklogRow — isolated component so per-row useState is valid in a loop.
+// Holds the "attach trigger" state: when the suggestion chip is clicked, we
+// bump `attachKey` (forces AttachForm remount) and set `attachOverride` so
+// the form opens pre-filled with the suggested values.
+// ---------------------------------------------------------------------------
+
+function BacklogRow({
+  item,
+  catalogue,
+  isSelected,
+  onToggle,
+}: {
+  item: BacklogItem;
+  catalogue: CatalogueOptions;
+  isSelected: boolean;
+  onToggle: (on: boolean) => void;
+}) {
+  const isOpen = item.status === "open";
+
+  // Precompute suggestion once per render (cheap — pure catalogue lookup)
+  const suggestion = useMemo(
+    () => computeSuggestion(item, catalogue),
+    [item, catalogue]
+  );
+
+  // Incrementing the key forces AttachForm to remount with fresh initial state
+  const [attachKey, setAttachKey] = useState(0);
+  const [attachOverride, setAttachOverride] =
+    useState<SuggestionResult | null>(null);
+
+  function applyChip(s: SuggestionResult) {
+    setAttachOverride(s);
+    setAttachKey((k) => k + 1);
+  }
+
+  return (
+    <TableRow className={isSelected ? "bg-primary/5" : undefined}>
+      {/* Checkbox */}
+      <TableCell>
+        {isOpen ? (
+          <input
+            type="checkbox"
+            aria-label={`Select ${item.name}`}
+            checked={isSelected}
+            onChange={(e) => onToggle(e.target.checked)}
+          />
+        ) : null}
+      </TableCell>
+
+      {/* Kind */}
+      <TableCell>
+        <Badge variant="outline">{item.kind}</Badge>
+      </TableCell>
+
+      {/* Name + suggestion chip */}
+      <TableCell className="text-sm">
+        <div>{item.name}</div>
+        {isOpen && suggestion && (
+          <button
+            type="button"
+            title={`Click to pre-fill Attach form: ${suggestion.mode} → ${suggestion.targetKind}/${suggestion.targetSlug}`}
+            onClick={() => applyChip(suggestion)}
+            className="mt-1 inline-flex items-center gap-1 text-[11px] text-emerald-700 hover:text-emerald-900 hover:underline cursor-pointer"
+          >
+            <span>💡</span>
+            <span className="font-medium">{suggestion.mode}</span>
+            <span className="text-muted-foreground">→</span>
+            <span className="font-medium">{suggestion.targetLabel}</span>
+            <span className="text-muted-foreground">
+              ({suggestion.targetKind})
+            </span>
+          </button>
+        )}
+      </TableCell>
+
+      {/* Why */}
+      <TableCell className="text-xs text-muted-foreground max-w-md">
+        <span className="line-clamp-2">{item.why ?? "—"}</span>
+      </TableCell>
+
+      {/* Seen */}
+      <TableCell className="text-sm">{item.seen_count ?? 1}</TableCell>
+
+      {/* By */}
+      <TableCell className="text-xs">{item.suggested_by ?? "—"}</TableCell>
+
+      {/* Created */}
+      <TableCell className="text-xs">
+        {(item.created_at ?? "").slice(0, 10)}
+      </TableCell>
+
+      {/* Actions */}
+      <TableCell>
+        {isOpen ? (
+          <div className="flex flex-col gap-1.5">
+            <PromoteForm item={item} />
+            <AttachForm
+              key={attachKey}
+              item={item}
+              catalogue={catalogue}
+              initialOpen={attachOverride != null}
+              overrideMode={attachOverride?.mode}
+              overrideTargetKind={attachOverride?.targetKind}
+              overrideTargetSlug={attachOverride?.targetSlug}
+            />
+            <RejectForm item={item} />
+          </div>
+        ) : (
+          <span className="text-xs text-muted-foreground italic">
+            {item.status}
+            {item.status === "attached" && item.attached_to && (
+                <span className="ml-1 text-emerald-700">
+                  → {item.attached_to}
+                </span>
+              )}
+          </span>
+        )}
+      </TableCell>
+    </TableRow>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// BacklogTableClient — public export
+// ---------------------------------------------------------------------------
+
 export function BacklogTableClient({
   items,
   catalogue,
@@ -405,8 +610,6 @@ export function BacklogTableClient({
   const [bulkNote, setBulkNote] = useState("");
   const [pending, startTransition] = useTransition();
 
-  // Only "open" rows are selectable — bulk actions are no-ops on
-  // already-handled items, and we surface that by hiding their checkbox.
   const selectableIds = useMemo(
     () => items.filter((it) => it.status === "open").map((it) => it.id),
     [items]
@@ -491,7 +694,6 @@ export function BacklogTableClient({
 
   return (
     <div className="space-y-3">
-      {/* Bulk action toolbar — only renders when at least one row is selected. */}
       {selected.size > 0 && (
         <div className="rounded-md border bg-muted/40 p-3 flex flex-wrap gap-2 items-end sticky top-0 z-10 backdrop-blur">
           <span className="text-sm font-medium self-center">
@@ -524,7 +726,9 @@ export function BacklogTableClient({
             onClick={handleBulkMarkAdded}
             disabled={pending}
           >
-            {pending ? "Working…" : `✓ Mark ${selected.size} as added without stub`}
+            {pending
+              ? "Working…"
+              : `✓ Mark ${selected.size} as added without stub`}
           </Button>
           <Button
             type="button"
@@ -561,56 +765,15 @@ export function BacklogTableClient({
             </TableRow>
           </TableHeader>
           <TableBody>
-            {items.map((it) => {
-              const isOpen = it.status === "open";
-              const isSelected = selected.has(it.id);
-              return (
-                <TableRow
-                  key={it.id}
-                  className={isSelected ? "bg-primary/5" : undefined}
-                >
-                  <TableCell>
-                    {isOpen ? (
-                      <input
-                        type="checkbox"
-                        aria-label={`Select ${it.name}`}
-                        checked={isSelected}
-                        onChange={(e) => toggleOne(it.id, e.target.checked)}
-                      />
-                    ) : null}
-                  </TableCell>
-                  <TableCell>
-                    <Badge variant="outline">{it.kind}</Badge>
-                  </TableCell>
-                  <TableCell className="text-sm">{it.name}</TableCell>
-                  <TableCell className="text-xs text-muted-foreground max-w-md">
-                    <span className="line-clamp-2">{it.why ?? "—"}</span>
-                  </TableCell>
-                  <TableCell className="text-sm">
-                    {it.seen_count ?? 1}
-                  </TableCell>
-                  <TableCell className="text-xs">
-                    {it.suggested_by ?? "—"}
-                  </TableCell>
-                  <TableCell className="text-xs">
-                    {(it.created_at ?? "").slice(0, 10)}
-                  </TableCell>
-                  <TableCell>
-                    {isOpen ? (
-                      <div className="flex flex-col gap-1.5">
-                        <PromoteForm item={it} />
-                        <AttachForm item={it} catalogue={catalogue} />
-                        <RejectForm item={it} />
-                      </div>
-                    ) : (
-                      <span className="text-xs text-muted-foreground italic">
-                        {it.status}
-                      </span>
-                    )}
-                  </TableCell>
-                </TableRow>
-              );
-            })}
+            {items.map((it) => (
+              <BacklogRow
+                key={it.id}
+                item={it}
+                catalogue={catalogue}
+                isSelected={selected.has(it.id)}
+                onToggle={(on) => toggleOne(it.id, on)}
+              />
+            ))}
           </TableBody>
         </Table>
       </div>
