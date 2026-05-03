@@ -137,7 +137,11 @@ export type PlanStatus =
   | "superseded"
   | "revoked";
 
-export interface Plan {
+/**
+ * Strict declared shape for Plan — every field the editor reads or writes.
+ * No index signature here, so unknown keys fail at type-check.
+ */
+export interface PlanFields {
   slug: string;
   client_id?: string;
   schema_version?: number;
@@ -155,11 +159,37 @@ export interface Plan {
   lab_orders?: unknown[];
   referrals?: unknown[];
   tracking?: Record<string, unknown>;
+  attached_resources?: string[];
+  notes_for_coach?: string;
   status?: PlanStatus;
   version?: number;
+  updated_at?: string;
+  updated_by?: string;
   catalogue_snapshot?: Record<string, unknown>;
+  // Loader-only metadata (set when reading from disk).
+  _bucket?: string;
+  _file?: string;
+  // Lifecycle bookkeeping (synthesized by lifecycle-actions on supersede).
+  supersedes?: string;
+  status_history?: unknown[];
+}
+
+/**
+ * Permissive Plan type used by loader output and lifecycle workflows that
+ * synthesize successors with ad-hoc fields. Has an index signature so old
+ * call-sites don't break. For typed-update paths, use `PlanPatch` (strict).
+ */
+export interface Plan extends PlanFields {
   [key: string]: unknown;
 }
+
+/**
+ * Strict patch type for partial plan updates. Only the explicitly declared
+ * `PlanFields` keys are accepted — typos like `{lifestyle: [...]}` (real
+ * key: `lifestyle_practices`) fail at type-check rather than silently no-op
+ * the save. v0.30.
+ */
+export type PlanPatch = Partial<PlanFields>;
 
 export interface Client {
   client_id: string;

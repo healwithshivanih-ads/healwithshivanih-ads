@@ -680,7 +680,7 @@ export function PlanEditor(props: PlanEditorProps) {
                       size="sm"
                       onClick={() =>
                         patch(
-                          "lifestyle",
+                          "lifestyle_practices",
                           lifestyle.filter((_, j) => j !== i)
                         )
                       }

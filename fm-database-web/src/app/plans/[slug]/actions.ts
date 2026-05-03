@@ -5,7 +5,7 @@ import { spawn } from "node:child_process";
 import path from "node:path";
 import { loadPlanBySlug } from "@/lib/fmdb/loader";
 import { writePlan } from "@/lib/fmdb/writer";
-import type { Plan } from "@/lib/fmdb/types";
+import type { Plan, PlanPatch } from "@/lib/fmdb/types";
 
 export interface PlanCheckFinding {
   severity: "CRITICAL" | "WARNING" | "INFO";
@@ -78,7 +78,7 @@ export async function runPlanCheck(slug: string): Promise<PlanCheckResult> {
  */
 export async function updatePlan(
   slug: string,
-  patch: Partial<Plan>
+  patch: PlanPatch
 ): Promise<{ ok: true } | { ok: false; error: string }> {
   const current = await loadPlanBySlug(slug);
   if (!current) return { ok: false, error: `Plan ${slug} not found` };

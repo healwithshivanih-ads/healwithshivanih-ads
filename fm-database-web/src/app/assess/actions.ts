@@ -5,12 +5,15 @@ import {
   generateDraftFromSuggestions,
   runChat,
   saveClientUpload,
+  loadSessionChatHistory,
   type AssessInput,
   type AssessResult,
   type GenerateDraftInput,
   type GenerateDraftResult,
   type ChatInput,
   type ChatResult,
+  type LoadSessionChatInput,
+  type LoadSessionChatResult,
 } from "@/lib/fmdb/anthropic";
 
 export async function runAssessAction(
@@ -27,6 +30,12 @@ export async function generateDraftAction(
 
 export async function chatAction(input: ChatInput): Promise<ChatResult> {
   return runChat(input);
+}
+
+export async function loadSessionChatAction(
+  input: LoadSessionChatInput
+): Promise<LoadSessionChatResult> {
+  return loadSessionChatHistory(input);
 }
 
 export async function uploadFileAction(

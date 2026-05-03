@@ -21,6 +21,7 @@ import type {
   GenerateDraftResult,
   ChatInput,
   ChatResult,
+  ChatTurn,
 } from "./anthropic-types";
 
 const PYTHON =
@@ -82,6 +83,34 @@ export async function generateDraftFromSuggestions(
 
 export async function runChat(input: ChatInput): Promise<ChatResult> {
   const result = (await runShim("chat.py", input, 60_000)) as ChatResult;
+  return result;
+}
+
+// ---------------------------------------------------------------------------
+// Session chat-log rehydrate — reads the persisted chat_log from a session
+// YAML so the Assess chat panel can preload prior turns on page reload.
+// ---------------------------------------------------------------------------
+
+export interface LoadSessionChatInput {
+  client_id: string;
+  session_id: string;
+  dry_run?: boolean;
+}
+
+export interface LoadSessionChatResult {
+  ok: boolean;
+  chat_log: ChatTurn[];
+  error?: string | null;
+}
+
+export async function loadSessionChatHistory(
+  input: LoadSessionChatInput
+): Promise<LoadSessionChatResult> {
+  const result = (await runShim(
+    "load-session-chat.py",
+    input,
+    15_000
+  )) as LoadSessionChatResult;
   return result;
 }
 

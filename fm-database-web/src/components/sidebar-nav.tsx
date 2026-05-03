@@ -8,6 +8,10 @@ const NAV = [
   { href: "/assess", label: "🧠 Assess" },
   { href: "/catalogue", label: "Catalogue" },
   { href: "/plans", label: "Plans" },
+  { href: "/clients", label: "👥 Clients" },
+  { href: "/resources", label: "🧰 Resources" },
+  { href: "/mindmap", label: "🧭 Mind Map" },
+  { href: "/backlog", label: "📝 Backlog" },
 ];
 
 export function SidebarNav() {

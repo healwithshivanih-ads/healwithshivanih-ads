@@ -1,17 +1,19 @@
 "use client";
 
-import { useMemo, useState, useTransition } from "react";
+import { useEffect, useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import type { Client } from "@/lib/fmdb/types";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { MultiSelect, type MultiSelectOption } from "@/components/multi-select";
 import {
   runAssessAction,
   generateDraftAction,
   uploadFileAction,
   chatAction,
+  loadSessionChatAction,
 } from "./actions";
 import type {
   AssessResult,
@@ -34,94 +36,14 @@ interface UploadedRef {
   kind: "lab_report" | "food_journal";
 }
 
-function MultiSelect({
-  label,
-  options,
-  selected,
-  onChange,
-  searchPlaceholder = "search…",
-}: {
-  label: string;
-  options: Opt[];
-  selected: string[];
-  onChange: (next: string[]) => void;
-  searchPlaceholder?: string;
-}) {
-  const [q, setQ] = useState("");
-  const filtered = useMemo(() => {
-    const ql = q.toLowerCase().trim();
-    if (!ql) return options.slice(0, 60);
-    return options
-      .filter((o) => {
-        if (o.slug.toLowerCase().includes(ql)) return true;
-        if (o.label.toLowerCase().includes(ql)) return true;
-        return (o.aliases || []).some((a) => a.toLowerCase().includes(ql));
-      })
-      .slice(0, 60);
-  }, [q, options]);
-
-  const toggle = (slug: string) => {
-    if (selected.includes(slug)) onChange(selected.filter((s) => s !== slug));
-    else onChange([...selected, slug]);
-  };
-
-  return (
-    <div className="space-y-2">
-      <div className="flex items-center justify-between">
-        <label className="text-sm font-medium">{label}</label>
-        <span className="text-xs text-muted-foreground">
-          {selected.length} selected
-        </span>
-      </div>
-      <Input
-        value={q}
-        onChange={(e) => setQ(e.target.value)}
-        placeholder={searchPlaceholder}
-      />
-      {selected.length > 0 && (
-        <div className="flex flex-wrap gap-1">
-          {selected.map((s) => (
-            <Badge
-              key={s}
-              variant="secondary"
-              className="cursor-pointer"
-              onClick={() => toggle(s)}
-            >
-              {s} ×
-            </Badge>
-          ))}
-        </div>
-      )}
-      <div className="max-h-48 overflow-y-auto rounded-md border bg-background">
-        {filtered.length === 0 ? (
-          <div className="p-3 text-sm text-muted-foreground">No matches</div>
-        ) : (
-          filtered.map((o) => (
-            <label
-              key={o.slug}
-              className="flex items-start gap-2 px-3 py-1.5 text-sm hover:bg-accent cursor-pointer"
-            >
-              <input
-                type="checkbox"
-                checked={selected.includes(o.slug)}
-                onChange={() => toggle(o.slug)}
-                className="mt-1"
-              />
-              <span className="flex-1">
-                <span className="font-medium">{o.label}</span>
-                <span className="text-muted-foreground"> ({o.slug})</span>
-                {o.aliases && o.aliases.length > 0 && (
-                  <span className="block text-xs text-muted-foreground">
-                    aka: {o.aliases.slice(0, 4).join(", ")}
-                  </span>
-                )}
-              </span>
-            </label>
-          ))
-        )}
-      </div>
-    </div>
-  );
+/** Adapt the Assess shim's `{slug, label, aliases}` shape to the shared
+ * MultiSelect's `{value, label, aliases}` shape. */
+function toMultiSelectOptions(opts: Opt[]): MultiSelectOption[] {
+  return opts.map((o) => ({
+    value: o.slug,
+    label: o.label,
+    aliases: o.aliases,
+  }));
 }
 
 function UsageStats({ usage, subgraphBytes }: { usage?: AssessUsage; subgraphBytes?: number }) {
@@ -446,6 +368,30 @@ function ChatPanel({
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
 
+  // Rehydrate persisted chat_log when the session changes, so reloading the
+  // page or coming back later restores the conversation. Only seeds when
+  // local state is empty — never clobbers in-flight messages. Cancels via
+  // an `ignore` flag if the session id changes mid-fetch (prevents the
+  // stale response from a prior session overwriting the current one).
+  useEffect(() => {
+    if (!clientId || !sessionId) return;
+    let ignore = false;
+    (async () => {
+      const res = await loadSessionChatAction({
+        client_id: clientId,
+        session_id: sessionId,
+        dry_run: dryRun,
+      });
+      if (ignore) return;
+      if (res.ok && res.chat_log.length > 0) {
+        setHistory((current) => (current.length === 0 ? res.chat_log : current));
+      }
+    })();
+    return () => {
+      ignore = true;
+    };
+  }, [clientId, sessionId, dryRun]);
+
   const onSend = () => {
     const msg = draft.trim();
     if (!msg || pending) return;
@@ -579,6 +525,8 @@ function ChatPanel({
 
 export function AssessClient({ clients, symptoms, topics }: Props) {
   const router = useRouter();
+  const symptomOptions = useMemo(() => toMultiSelectOptions(symptoms), [symptoms]);
+  const topicOptions = useMemo(() => toMultiSelectOptions(topics), [topics]);
   const [clientId, setClientId] = useState<string>(clients[0]?.client_id ?? "");
   const [selectedSymptoms, setSelectedSymptoms] = useState<string[]>([]);
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
@@ -728,10 +676,12 @@ export function AssessClient({ clients, symptoms, topics }: Props) {
         <CardContent>
           <MultiSelect
             label="Pick all that apply"
-            options={symptoms}
-            selected={selectedSymptoms}
+            options={symptomOptions}
+            value={selectedSymptoms}
             onChange={setSelectedSymptoms}
-            searchPlaceholder="search symptoms (name or alias)…"
+            placeholder="search symptoms (name or alias)…"
+            limit={60}
+            showOnEmpty
           />
         </CardContent>
       </Card>
@@ -744,10 +694,12 @@ export function AssessClient({ clients, symptoms, topics }: Props) {
         <CardContent>
           <MultiSelect
             label="Clinical areas in play"
-            options={topics}
-            selected={selectedTopics}
+            options={topicOptions}
+            value={selectedTopics}
             onChange={setSelectedTopics}
-            searchPlaceholder="search topics…"
+            placeholder="search topics…"
+            limit={60}
+            showOnEmpty
           />
         </CardContent>
       </Card>

@@ -4,7 +4,7 @@ import path from "node:path";
 import yaml from "js-yaml";
 import { notFound } from "next/navigation";
 import { PlanStatusBadge } from "@/components/plan-status-badge";
-import { loadAllOfKind, loadPlanBySlug } from "@/lib/fmdb/loader";
+import { loadAllOfKind, loadAllPlans, loadPlanBySlug } from "@/lib/fmdb/loader";
 import { getResourcesRoot } from "@/lib/fmdb/paths";
 import type {
   CookingAdjustment,
@@ -16,6 +16,7 @@ import type {
 } from "@/lib/fmdb/types";
 import { PlanEditor } from "./plan-editor";
 import { PlanCheckPanel } from "./plan-check-panel";
+import { LifecyclePanel } from "./lifecycle-panel";
 import type { MultiSelectOption } from "@/components/multi-select";
 
 export const dynamic = "force-dynamic";
@@ -64,7 +65,7 @@ export default async function PlanDetailPage({
   const plan = await loadPlanBySlug(slug);
   if (!plan) notFound();
 
-  const [topics, symptoms, mechanisms, supplements, cooking, remedies, resources] =
+  const [topics, symptoms, mechanisms, supplements, cooking, remedies, resources, allPlans] =
     await Promise.all([
       loadAllOfKind<Topic>("topics"),
       loadAllOfKind<Symptom>("symptoms"),
@@ -73,7 +74,9 @@ export default async function PlanDetailPage({
       loadAllOfKind<CookingAdjustment>("cooking_adjustments"),
       loadAllOfKind<HomeRemedy>("home_remedies"),
       loadResourceOptions(),
+      loadAllPlans(),
     ]);
+  const allPlanSlugs = allPlans.map((p) => p.slug).sort();
 
   const status = plan.status ?? plan._bucket;
   const locked = status !== "draft";
@@ -100,6 +103,25 @@ export default async function PlanDetailPage({
           {plan.client_id ?? "—"}
         </span>
       </div>
+
+      <LifecyclePanel
+        slug={plan.slug}
+        status={status as typeof plan.status}
+        version={plan.version}
+        catalogueSnapshot={
+          (plan.catalogue_snapshot as { git_sha?: string; snapshot_date?: string } | undefined) ?? null
+        }
+        statusHistory={
+          (plan.status_history as Array<{
+            state?: string;
+            by?: string;
+            at?: string;
+            reason?: string;
+          }>) ?? []
+        }
+        supersedes={plan.supersedes as string | undefined}
+        allPlanSlugs={allPlanSlugs}
+      />
 
       <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_320px] gap-6 items-start">
         <div className="min-w-0 max-w-5xl">
