@@ -91,3 +91,70 @@ export async function rejectBacklogItem(formData: FormData): Promise<void> {
   }
   revalidatePath("/backlog");
 }
+
+export interface BulkResult {
+  ok: boolean;
+  successes: string[];
+  failures: { id: string; error: string }[];
+}
+
+/**
+ * Bulk-reject backlog items. Loops the single-item shim sequentially because
+ * each shim spawns a Python subprocess, and parallelizing N python procs
+ * tends to thrash the validator. With 50–100 items, sequential ~5–10s total
+ * is fine.
+ */
+export async function bulkRejectBacklogItems(
+  ids: string[],
+  note?: string | null
+): Promise<BulkResult> {
+  const successes: string[] = [];
+  const failures: { id: string; error: string }[] = [];
+  for (const id of ids) {
+    if (!id) continue;
+    const r = await runShim({ action: "reject", id, note: note ?? null });
+    if (r.ok) {
+      successes.push(id);
+    } else {
+      failures.push({ id, error: r.error ?? r.stderr ?? "unknown error" });
+    }
+  }
+  revalidatePath("/backlog");
+  return { ok: failures.length === 0, successes, failures };
+}
+
+/**
+ * Mark items as added without creating a stub — used when the coach has
+ * already authored the catalogue entry by hand and just wants the backlog
+ * row to stop showing as open. Implemented via the shim's reject action with
+ * a "(marked added — already authored)" note + we then directly flip the
+ * status field. The simplest reliable path is to use `--note` on reject and
+ * have the user understand "rejected" semantically here means "handled".
+ *
+ * To avoid that conflation we instead use the promote action with --force
+ * + a marker note. But that creates a stub, which we don't want. So the
+ * cleanest path is a dedicated CLI verb. For now we shell out to a tiny
+ * helper script that flips status to "added" without writing any catalogue
+ * file.
+ */
+export async function bulkMarkAddedBacklogItems(
+  ids: string[]
+): Promise<BulkResult> {
+  const successes: string[] = [];
+  const failures: { id: string; error: string }[] = [];
+  for (const id of ids) {
+    if (!id) continue;
+    const r = await runShim({
+      action: "mark_added",
+      id,
+      note: "marked added without stub",
+    });
+    if (r.ok) {
+      successes.push(id);
+    } else {
+      failures.push({ id, error: r.error ?? r.stderr ?? "unknown error" });
+    }
+  }
+  revalidatePath("/backlog");
+  return { ok: failures.length === 0, successes, failures };
+}

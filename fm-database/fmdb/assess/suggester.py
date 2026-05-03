@@ -17,6 +17,8 @@ import json
 import os
 from typing import Any
 
+from .results import AssessResult, AssessUsage, ChatContext, ChatResult
+
 
 # JSON schema for the structured response. Intentionally narrow — every
 # suggestion must reference a slug or a clear text rationale.
@@ -306,10 +308,40 @@ def synthesize(
     session_history: list[dict[str, Any]] | None = None,
     model: str | None = None,
     max_tokens: int = 8192,
-) -> dict[str, Any]:
-    """Make the synthesis call. Returns the parsed tool_use payload + usage stats.
+) -> AssessResult:
+    """Synthesize FM-coaching suggestions for one client / one analysis.
 
-    `lab_files` is a list of {filename, mime_type, data_b64} dicts.
+    Calls Claude with the system prompt + cached catalogue subgraph + the
+    client context + any uploaded lab/food-journal files (PDF, image, or
+    text — base64-encoded in `lab_files`). Forces a single tool call to
+    the `synthesize_assessment` tool so the response is always structured.
+
+    Args:
+        client_context: opaque dict of client demographics, conditions,
+            measurements, etc. — passed through to the model verbatim.
+        selected_symptom_slugs / selected_topic_slugs: the coach's
+            selections; constrain the catalogue subgraph.
+        subgraph: pre-built catalogue subset from
+            `fmdb.assess.subgraph.build_subgraph()`. The model is
+            instructed never to reference a slug outside this bundle.
+        lab_files: optional list of `{filename, mime_type, data_b64}`
+            (and an optional `kind: "lab_report" | "food_journal"`).
+            Attached as document/image content blocks.
+        additional_notes: free-text presenting complaints from the coach.
+        session_history: optional compact prior-session summaries for
+            recheck visits (oldest → newest).
+        model / max_tokens: Anthropic call overrides.
+
+    Returns:
+        `AssessResult` with `.suggestions` (the parsed tool_use payload —
+        see `_TOOL_INPUT_SCHEMA` for the nested shape) and `.usage`
+        (token telemetry).
+
+    Side effects: none. The caller is responsible for persisting the
+        result to a Session record on disk if desired.
+
+    Raises:
+        RuntimeError if the `anthropic` SDK is not installed.
     """
     try:
         from anthropic import Anthropic
@@ -396,20 +428,20 @@ def synthesize(
     )
 
     usage = getattr(resp, "usage", None)
-    usage_dict = {
-        "model": model,
-        "stop_reason": getattr(resp, "stop_reason", None),
-        "input_tokens": getattr(usage, "input_tokens", None),
-        "output_tokens": getattr(usage, "output_tokens", None),
-        "cache_creation_input_tokens": getattr(usage, "cache_creation_input_tokens", None),
-        "cache_read_input_tokens": getattr(usage, "cache_read_input_tokens", None),
-    }
+    usage_obj = AssessUsage(
+        model=model,
+        stop_reason=getattr(resp, "stop_reason", None),
+        input_tokens=getattr(usage, "input_tokens", None),
+        output_tokens=getattr(usage, "output_tokens", None),
+        cache_creation_input_tokens=getattr(usage, "cache_creation_input_tokens", None),
+        cache_read_input_tokens=getattr(usage, "cache_read_input_tokens", None),
+    )
 
     for block in resp.content:
         if getattr(block, "type", None) == "tool_use" and block.name == "synthesize_assessment":
-            return {"suggestions": block.input or {}, "usage": usage_dict}
+            return AssessResult(suggestions=block.input or {}, usage=usage_obj)
 
-    return {"suggestions": {}, "usage": usage_dict}
+    return AssessResult(suggestions={}, usage=usage_obj)
 
 
 # ---------------------------------------------------------------------------
@@ -439,19 +471,44 @@ Rules:
 
 def chat(
     *,
-    chat_context: dict[str, Any],
+    chat_context: ChatContext | dict[str, Any],
     messages: list[dict[str, Any]],
     model: str | None = None,
     max_tokens: int = 1500,
-) -> dict[str, Any]:
-    """Continue a conversation about a previously-synthesized assessment.
+) -> ChatResult:
+    """Continue a multi-turn conversation about a prior assessment.
 
-    `chat_context` carries: client_ctx, subgraph, selected_symptoms,
-        selected_topics, additional_notes, suggestions (from last synthesize).
+    The first user turn injected into the API call is a cached preamble
+    containing `chat_context` (client + subgraph + prior suggestions),
+    so subsequent turns reuse the cache. Each call still pays output
+    tokens; cache reads make input cheap.
 
-    `messages` is the running [{role, content}] history. The last message
-    should be the new user question.
+    Args:
+        chat_context: either a `ChatContext` model or a plain dict with
+            the same keys (`client_ctx`, `subgraph`, `selected_symptoms`,
+            `selected_topics`, `additional_notes`, `suggestions`,
+            `session_history`). Dicts are accepted for backward
+            compatibility and coerced internally.
+        messages: full running chat history as `[{role, content}]`. The
+            LAST entry must be the new user question.
+        model / max_tokens: Anthropic call overrides.
+
+    Returns:
+        `ChatResult` with `.reply` (concatenated assistant text blocks)
+        and `.usage` (token telemetry).
+
+    Side effects: none. The caller persists chat turns to the Session
+        record.
+
+    Raises:
+        RuntimeError if the `anthropic` SDK is not installed.
     """
+    # Coerce dict → ChatContext for uniform field access. `extra=ignore`
+    # on the model keeps unknown keys from breaking older callers.
+    if isinstance(chat_context, dict):
+        ctx = ChatContext.model_validate(chat_context)
+    else:
+        ctx = chat_context
     try:
         from anthropic import Anthropic
     except ImportError as e:
@@ -465,13 +522,13 @@ def chat(
     context_text = (
         "Conversation context (cached across turns):\n\n"
         + json.dumps({
-            "client": chat_context.get("client_ctx", {}),
-            "selected_symptoms": chat_context.get("selected_symptoms", []),
-            "selected_topics": chat_context.get("selected_topics", []),
-            "additional_notes": chat_context.get("additional_notes", ""),
-            "prior_suggestions": chat_context.get("suggestions", {}),
-            "session_history": chat_context.get("session_history", []),
-            "catalogue_subgraph": chat_context.get("subgraph", {}),
+            "client": ctx.client_ctx,
+            "selected_symptoms": ctx.selected_symptoms,
+            "selected_topics": ctx.selected_topics,
+            "additional_notes": ctx.additional_notes,
+            "prior_suggestions": ctx.suggestions,
+            "session_history": ctx.session_history,
+            "catalogue_subgraph": ctx.subgraph,
         }, indent=2)
     )
 
@@ -507,18 +564,18 @@ def chat(
     )
 
     usage = getattr(resp, "usage", None)
-    usage_dict = {
-        "model": model,
-        "stop_reason": getattr(resp, "stop_reason", None),
-        "input_tokens": getattr(usage, "input_tokens", None),
-        "output_tokens": getattr(usage, "output_tokens", None),
-        "cache_creation_input_tokens": getattr(usage, "cache_creation_input_tokens", None),
-        "cache_read_input_tokens": getattr(usage, "cache_read_input_tokens", None),
-    }
+    usage_obj = AssessUsage(
+        model=model,
+        stop_reason=getattr(resp, "stop_reason", None),
+        input_tokens=getattr(usage, "input_tokens", None),
+        output_tokens=getattr(usage, "output_tokens", None),
+        cache_creation_input_tokens=getattr(usage, "cache_creation_input_tokens", None),
+        cache_read_input_tokens=getattr(usage, "cache_read_input_tokens", None),
+    )
 
     # Concatenate text blocks of the assistant response
     text_parts = []
     for block in resp.content:
         if getattr(block, "type", None) == "text":
             text_parts.append(block.text)
-    return {"reply": "".join(text_parts), "usage": usage_dict}
+    return ChatResult(reply="".join(text_parts), usage=usage_obj)

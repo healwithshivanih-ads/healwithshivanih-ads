@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useState, useTransition } from "react";
+import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 import type { Client } from "@/lib/fmdb/types";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -367,6 +368,22 @@ function ChatPanel({
   >({});
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+  const isFirstScroll = useRef<boolean>(true);
+
+  // Auto-scroll to the bottom on rehydration (instant) and on every new
+  // turn (smooth). The first non-empty render is detected via a ref flag so
+  // we don't animate the initial chat-log fill.
+  useEffect(() => {
+    if (history.length === 0) return;
+    const el = scrollRef.current;
+    if (!el) return;
+    el.scrollTo({
+      top: el.scrollHeight,
+      behavior: isFirstScroll.current ? "instant" : "smooth",
+    });
+    isFirstScroll.current = false;
+  }, [history.length]);
 
   // Rehydrate persisted chat_log when the session changes, so reloading the
   // page or coming back later restores the conversation. Only seeds when
@@ -383,7 +400,11 @@ function ChatPanel({
         dry_run: dryRun,
       });
       if (ignore) return;
-      if (res.ok && res.chat_log.length > 0) {
+      if (!res.ok) {
+        toast.error(res.error ?? "Failed to load chat history");
+        return;
+      }
+      if (res.chat_log.length > 0) {
         setHistory((current) => (current.length === 0 ? res.chat_log : current));
       }
     })();
@@ -412,7 +433,9 @@ function ChatPanel({
           dry_run: dryRun,
         });
         if (!res.ok || !res.assistant_message) {
-          setError(res.error || "Chat call failed");
+          const msg = res.error || "Chat call failed";
+          setError(msg);
+          toast.error(msg);
           return;
         }
         const reply: ChatTurn = {
@@ -452,7 +475,10 @@ function ChatPanel({
           turn reuses the cached client + catalogue context (~$0.05–0.10).
         </div>
 
-        <div className="border rounded p-3 max-h-[400px] overflow-y-auto bg-muted/30 space-y-3">
+        <div
+          ref={scrollRef}
+          className="border rounded p-3 max-h-[400px] overflow-y-auto bg-muted/30 space-y-3"
+        >
           {history.length === 0 && (
             <p className="text-sm text-muted-foreground italic">
               No messages yet — ask anything about this assessment.
@@ -596,7 +622,9 @@ export function AssessClient({ clients, symptoms, topics }: Props) {
           dry_run: dryRun,
         });
         if (!res.ok) {
-          setError(res.error || "Analyze failed");
+          const msg = res.error || "Analyze failed";
+          setError(msg);
+          toast.error(msg);
           setResult(null);
         } else {
           setResult(res);
@@ -619,8 +647,11 @@ export function AssessClient({ clients, symptoms, topics }: Props) {
           picks,
         });
         if (!res.ok) {
-          setError(res.error || "Draft generation failed");
+          const msg = res.error || "Draft generation failed";
+          setError(msg);
+          toast.error(msg);
         } else if (res.slug) {
+          toast.success(`Draft plan created at ${res.slug}`);
           router.push(`/plans/${res.slug}`);
         }
       } catch (e) {

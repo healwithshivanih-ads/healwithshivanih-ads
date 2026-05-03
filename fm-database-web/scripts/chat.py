@@ -182,7 +182,10 @@ def main() -> int:
     messages.append({"role": "user", "content": user_message})
 
     if dry_run:
-        result = _synthetic_reply(user_message, len(history))
+        # Synthetic reply uses the historical dict shape.
+        synthetic = _synthetic_reply(user_message, len(history))
+        assistant_text = synthetic["reply"]
+        usage = synthetic["usage"]
     else:
         if not os.environ.get("ANTHROPIC_API_KEY"):
             json.dump({"ok": False, "error": "ANTHROPIC_API_KEY not set"}, sys.stdout)
@@ -196,9 +199,10 @@ def main() -> int:
                 sys.stdout,
             )
             return 1
-
-    assistant_text = result.get("reply", "")
-    usage = result.get("usage", {})
+        # `result` is a ChatResult Pydantic model. Serialize at boundary
+        # so the JSON over stdout matches TypeScript ChatResult.
+        assistant_text = result.reply
+        usage = result.usage.model_dump()
 
     # Persist both turns to session.chat_log (in-place update).
     try:

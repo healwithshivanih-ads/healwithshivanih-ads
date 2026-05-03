@@ -61,6 +61,35 @@ def main() -> int:
         argv = [str(PY), "-m", "fmdb.cli", "backlog-reject", str(item_id)]
         if payload.get("note"):
             argv += ["--note", str(payload["note"])]
+    elif action == "mark_added":
+        # Flip the backlog row's status to "added" without creating a stub.
+        # Used when the coach has already authored the catalogue entry by
+        # hand. Calls fmdb.backlog.update_status directly via -c so we don't
+        # need a new CLI verb in fm-database/.
+        sys.path.insert(0, str(FMDB_ROOT))
+        try:
+            from fmdb import backlog as backlog_mod  # type: ignore
+            note = payload.get("note") or "marked added without stub"
+            res = backlog_mod.update_status(
+                FMDB_ROOT / "data", str(item_id), "added", note=str(note)
+            )
+            if res is None:
+                json.dump({
+                    "ok": False, "error": f"backlog item not found: {item_id}",
+                    "code": 1, "stdout": "", "stderr": "",
+                }, sys.stdout)
+                return 1
+            json.dump({
+                "ok": True, "stdout": f"marked {item_id} added",
+                "stderr": "", "code": 0, "error": None,
+            }, sys.stdout)
+            return 0
+        except Exception as e:  # noqa: BLE001
+            json.dump({
+                "ok": False, "error": f"{type(e).__name__}: {e}",
+                "code": 1, "stdout": "", "stderr": "",
+            }, sys.stdout)
+            return 1
     else:
         json.dump({"ok": False, "error": f"unknown action: {action}", "code": 2}, sys.stdout)
         return 2

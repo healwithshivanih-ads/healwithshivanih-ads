@@ -220,7 +220,11 @@ def main() -> int:
         })
 
     if dry_run:
-        result = _synthetic_result(payload)
+        # Synthetic result still uses the historical dict shape — both
+        # branches are unified into the same accessors below.
+        synthetic = _synthetic_result(payload)
+        suggestions = synthetic["suggestions"]
+        usage = synthetic["usage"]
     else:
         if not os.environ.get("ANTHROPIC_API_KEY"):
             json.dump({"ok": False, "error": "ANTHROPIC_API_KEY not set"}, sys.stdout)
@@ -239,6 +243,11 @@ def main() -> int:
         except Exception as e:
             json.dump({"ok": False, "error": f"synthesize() failed: {type(e).__name__}: {e}"}, sys.stdout)
             return 1
+        # `result` is an AssessResult Pydantic model. We serialize at the
+        # stdout boundary so the JSON wire format matches what the
+        # TypeScript AssessResult type expects.
+        suggestions = result.suggestions
+        usage = result.usage.model_dump()
 
     # ----- persist session -----
     sid = plan_storage.next_session_id(root, client.client_id, today)
@@ -252,16 +261,16 @@ def main() -> int:
         presenting_complaints=complaints,
         uploaded_files=file_refs,
         measurements_snapshot=client.measurements,
-        ai_analysis=result.get("suggestions", {}),
-        api_usage=result.get("usage", {}),
+        ai_analysis=suggestions,
+        api_usage=usage,
     )
     plan_storage.write_session(root, sess)
 
     json.dump({
         "ok": True,
         "session_id": sid,
-        "suggestions": result.get("suggestions", {}),
-        "usage": result.get("usage", {}),
+        "suggestions": suggestions,
+        "usage": usage,
         "subgraph_size_bytes": subgraph_bytes,
         "error": None,
     }, sys.stdout, default=str)

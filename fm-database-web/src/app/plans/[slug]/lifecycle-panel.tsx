@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -84,6 +85,11 @@ export function LifecyclePanel({
 
   function notify(ok: boolean, text: string) {
     setMessage({ kind: ok ? "ok" : "err", text });
+    if (ok) {
+      toast.success(text);
+    } else {
+      toast.error(text);
+    }
   }
 
   function refreshAfterMutate() {
@@ -95,7 +101,7 @@ export function LifecyclePanel({
   function handleSubmit() {
     startTransition(async () => {
       const r = await submitPlan(slug, reason);
-      notify(r.ok, r.ok ? "Submitted to ready_to_publish." : r.error ?? "Submit failed.");
+      notify(r.ok, r.ok ? "Plan submitted." : r.error ?? "Submit failed.");
       if (r.ok) refreshAfterMutate();
     });
   }
@@ -103,10 +109,11 @@ export function LifecyclePanel({
   function handlePublish() {
     startTransition(async () => {
       const r = await publishPlan(slug, reason);
+      const v = (r.plan?.version as number | undefined) ?? version;
       notify(
         r.ok,
         r.ok
-          ? `Published. Catalogue SHA frozen at ${r.git_sha ?? "—"}.`
+          ? `Plan published v${v ?? "?"}. Catalogue SHA frozen at ${r.git_sha ?? "—"}.`
           : r.error ?? "Publish failed."
       );
       if (r.ok) refreshAfterMutate();
@@ -116,7 +123,7 @@ export function LifecyclePanel({
   function handleRevoke() {
     startTransition(async () => {
       const r = await revokePlan(slug, reason);
-      notify(r.ok, r.ok ? "Revoked." : r.error ?? "Revoke failed.");
+      notify(r.ok, r.ok ? "Plan revoked." : r.error ?? "Revoke failed.");
       if (r.ok) refreshAfterMutate();
     });
   }
@@ -153,7 +160,7 @@ export function LifecyclePanel({
       notify(
         r.ok,
         r.ok
-          ? `Created successor draft ${successorSlug}.`
+          ? `Successor draft created at ${successorSlug}.`
           : r.error ?? "Failed to create successor."
       );
       if (r.ok) refreshAfterMutate();

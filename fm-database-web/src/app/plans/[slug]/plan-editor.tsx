@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import { toast } from "sonner";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -124,8 +125,10 @@ export function PlanEditor(props: PlanEditorProps) {
       if (res.ok) {
         setDirty(false);
         setSaveResult("Saved.");
+        toast.success("Plan saved");
       } else {
         setSaveResult(`Error: ${res.error}`);
+        toast.error(res.error ?? "Save failed");
       }
     });
   }

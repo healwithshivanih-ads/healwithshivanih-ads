@@ -2141,14 +2141,14 @@ def render_assess_page():
                         presenting_complaints=free_text_symptoms,
                         uploaded_files=file_refs,
                         measurements_snapshot=client.measurements,
-                        ai_analysis=result.get("suggestions", {}),
-                        api_usage=result.get("usage", {}),
+                        ai_analysis=result.suggestions,
+                        api_usage=result.usage.model_dump(),
                     )
                     plan_storage.write_session(root, sess)
                     st.session_state["current_session_id"] = sid
 
                     # Auto-capture catalogue additions the AI flagged
-                    additions = (result.get("suggestions", {}) or {}).get("catalogue_additions_suggested") or []
+                    additions = (result.suggestions or {}).get("catalogue_additions_suggested") or []
                     captured = 0
                     for it in additions:
                         if not it.get("name"):
@@ -2176,7 +2176,7 @@ def render_assess_page():
                         "selected_symptoms": selected_symptoms,
                         "selected_topics": selected_topics,
                         "additional_notes": free_text_symptoms,
-                        "suggestions": result.get("suggestions", {}),
+                        "suggestions": result.suggestions,
                         "session_history": history_bundle,
                     }
                 except Exception as e:
@@ -2196,16 +2196,18 @@ def render_assess_page():
         )
         return
 
-    suggestions = result.get("suggestions", {})
-    usage = result.get("usage", {})
+    # `result` is an AssessResult Pydantic model; .suggestions is the
+    # tool_use payload dict, .usage is an AssessUsage model.
+    suggestions = result.suggestions or {}
+    usage = result.usage
 
     st.divider()
     st.header("✨ Suggestions")
     st.caption(
-        f"model: {usage.get('model', '?')} · "
-        f"in: {usage.get('input_tokens', '?')} tokens · "
-        f"out: {usage.get('output_tokens', '?')} tokens · "
-        f"stop: {usage.get('stop_reason', '?')}"
+        f"model: {usage.model or '?'} · "
+        f"in: {usage.input_tokens if usage.input_tokens is not None else '?'} tokens · "
+        f"out: {usage.output_tokens if usage.output_tokens is not None else '?'} tokens · "
+        f"stop: {usage.stop_reason or '?'}"
     )
 
     if suggestions.get("synthesis_notes"):
@@ -2479,13 +2481,15 @@ def render_assess_page():
                             chat_context=chat_context,
                             messages=chat_messages,
                         )
-                        reply = out.get("reply", "(no reply)")
+                        # `out` is a ChatResult Pydantic model.
+                        reply = out.reply or "(no reply)"
                         st.markdown(reply)
                         chat_messages.append({"role": "assistant", "content": reply})
-                        u = out.get("usage", {})
+                        u = out.usage
                         st.caption(
-                            f"in: {u.get('input_tokens', '?')} (cache_r: {u.get('cache_read_input_tokens', '?')}) · "
-                            f"out: {u.get('output_tokens', '?')} tokens"
+                            f"in: {u.input_tokens if u.input_tokens is not None else '?'} "
+                            f"(cache_r: {u.cache_read_input_tokens if u.cache_read_input_tokens is not None else '?'}) · "
+                            f"out: {u.output_tokens if u.output_tokens is not None else '?'} tokens"
                         )
                     except Exception as e:
                         st.error("**Chat failed.** Details below.")
