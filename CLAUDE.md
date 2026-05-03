@@ -345,16 +345,16 @@ Open follow-ups: seed `calcium` supplement (last warning); enrich `vitamin-a` an
 
 ### Catalogue Entity Types — 9 built, 8 deferred
 
-**Built:**
-1. **Source** — citation registry (12 entries: vitaone skill, evidence tiers ingest, practice guide, 8 Thurlow microbiome sessions, vitaone mind-map tool, vitaone supplementation dosage)
-2. **Topic** — clinical area (~26 entries: thyroid, perimenopause, anxiety, insomnia, pcos, microbiome, dysbiosis, autoimmune, inflammation, estrobolome, gut-hormone-axis, gut-brain-axis, etc.)
-3. **Mechanism** — physiology (~10 entries: hpa-axis-dysregulation, leaky-gut, insulin-resistance, estrogen-decline, scfa-production, etc.). Alias-aware resolution canonicalizes variant slugs.
-4. **Symptom** — client-facing experiences with severity + category (~10 entries: bloating, brain-fog, fatigue, joint-pain, etc.). Alias-aware lookup against `topic.common_symptoms` prose.
-5. **Claim** — evidence-tiered assertion (~128 entries). First-class entity citing source + linked to topics/mechanisms/supplements.
-6. **Supplement** — abstract compound (~72 entries after Vitaone Supplementation Dosage ingest)
-7. **CookingAdjustment** — cookware/oil/water/food-prep swaps (~3 entries)
-8. **HomeRemedy** — churans, infused waters, kashayams, kitchen remedies (~3 entries)
-9. **MindMap** — hand-curated clinical mind maps (~3 entries: 874 nodes scraped from vitaone for hypothyroidism, adrenal fatigue, hypertension)
+**Built (counts as of v0.32):**
+1. **Source** — citation registry (39 entries: vitaone skill, evidence tiers ingest, practice guide, 8 Thurlow microbiome sessions, vitaone mind-map tool, vitaone supplementation dosage, all VitaOne Phase 1–5 cheatsheets/e-books/toolkits)
+2. **Topic** — clinical area (110 entries: thyroid, perimenopause, anxiety, insomnia, pcos, microbiome, dysbiosis, autoimmune, inflammation, estrobolome, gut-hormone-axis, etc.)
+3. **Mechanism** — physiology (116 entries: hpa-axis-dysregulation, leaky-gut, insulin-resistance, estrogen-decline, scfa-production, etc.). Alias-aware resolution canonicalizes variant slugs.
+4. **Symptom** — client-facing experiences with severity + category (143 entries: bloating, brain-fog, fatigue, joint-pain, etc.). Alias-aware lookup against `topic.common_symptoms` prose.
+5. **Claim** — evidence-tiered assertion (546 entries). First-class entity citing source + linked to topics/mechanisms/supplements.
+6. **Supplement** — abstract compound (172 entries after VitaOne ingest + Garlic backlog promotion)
+7. **CookingAdjustment** — cookware/oil/water/food-prep swaps (3 entries)
+8. **HomeRemedy** — churans, infused waters, kashayams, kitchen remedies (3 entries)
+9. **MindMap** — hand-curated clinical mind maps (3 entries: 871 nodes scraped from vitaone for hypothyroidism, adrenal fatigue, hypertension; 60 nodes auto-linked to catalogue, 645 unlinked queued in backlog)
 
 **Deferred (not yet modeled):**
 - Food, LabTest, LifestylePractice, DietaryPattern, Practice (currently freeform strings on Plan), Recipe, Protocol, EducationalModule, MiscIntervention. Promote to entities only after observing duplication in real plans.
@@ -441,39 +441,58 @@ fm-database/
       checker.py                  # deterministic plan check: catalogue xref +
                                   #   contraindication + scope + evidence-tier
                                   #   honesty; severity CRITICAL | WARNING | INFO
+      transitions.py              # publish lifecycle: submit / publish / revoke /
+                                  #   supersede / diff. Freezes catalogue git SHA
+                                  #   on publish. Cleans stale published/ files
+                                  #   on revoke + supersede so load_plan resolves
+                                  #   to current state.
+      ai_check.py                 # AI sanity-check layer on top of deterministic
+                                  #   checker — coherence / client_fit / translation /
+                                  #   completeness. Cached subgraph (~$0.02 warm).
+      render.py                   # client-facing markdown + standalone HTML output
+                                  #   (slugs → display names, mechanisms hidden,
+                                  #   provenance stripped). Print-to-PDF via browser.
     assess/                       # Decision-support layer
       subgraph.py                 # build focused catalogue context bundle
                                   #   (~35K tokens) from selected symptoms+topics
-      suggester.py                # Anthropic call: structured suggestions tool-use
-                                  #   + multi-turn chat with cached context;
-                                  #   honors evidence_tier; food-log vs lab handling;
-                                  #   India context defaults; medical_history aware
+      suggester.py                # synthesize() + chat() Anthropic calls.
+                                  #   Returns typed AssessResult / ChatResult
+                                  #   (Pydantic). Cached system + subgraph blocks.
+      results.py                  # AssessUsage / AssessResult / ChatResult /
+                                  #   ChatContext Pydantic models. Wire format
+                                  #   stable for shim callers.
       mindmap.py                  # build_tree (auto from catalogue cross-refs);
-                                  #   curated_to_mermaid (for MindMap entities);
+                                  #   curated_to_mermaid (linked-node badges);
                                   #   to_mermaid renderer
+      mindmap_link.py             # link_mindmap_nodes (alias-aware resolution
+                                  #   topic→mech→symptom→supp→claim) + mine_unlinked
+                                  #   (depth-2+ candidates → backlog).
     resources/                    # Resources Toolkit (separate ~/fm-resources/)
       models.py                   # Resource entity
       storage.py                  # CRUD; files referenced by absolute path
   fmdb_ui/
-    app.py                        # Streamlit single-file UI; 7 sidebar pages:
-                                  #   Assess & Suggest, Plans, Clients, Mind Map,
-                                  #   Resources Toolkit, Catalogue Browser,
-                                  #   Catalogue Backlog. Auto-evicts stale fmdb
-                                  #   modules from sys.modules on each script
-                                  #   rerun (Streamlit cache-hell fix).
+    app.py                        # Streamlit single-file UI (Path A — primary
+                                  #   surface through v0.25; still maintained as
+                                  #   fallback). 7 sidebar pages: Assess & Suggest,
+                                  #   Plans, Clients, Mind Map, Resources Toolkit,
+                                  #   Catalogue Browser, Catalogue Backlog.
+                                  #   Auto-evicts stale fmdb modules from
+                                  #   sys.modules on each rerun.
   data/
-    sources/                      # one YAML per source (12 entries)
-    topics/                       # ~26 entries
-    mechanisms/                   # ~10 entries
-    symptoms/                     # ~10 entries
-    claims/                       # ~128 entries
-    supplements/                  # ~72 entries
+    sources/                      # 39 entries (post-VitaOne ingest, v0.21)
+    topics/                       # 110 entries
+    mechanisms/                   # 116 entries
+    symptoms/                     # 143 entries
+    claims/                       # 546 entries
+    supplements/                  # 172 entries (post-Garlic backlog promotion)
     cooking_adjustments/          # 3 entries
     home_remedies/                # 3 entries
-    mindmaps/                     # 3 entries (vitaone scrape)
+    mindmaps/                     # 3 entries (vitaone scrape, 60 nodes linked)
     staging/                      # gitignored — ephemeral candidate batches
     _audit.jsonl                  # gitignored — append-only audit log
     _backlog.yaml                 # gitignored — catalogue additions backlog
+                                  #   (612 items: 167 auto-rejected, 1 promoted,
+                                  #   444 open awaiting triage)
   README.md
   requirements.txt                # pydantic, pyyaml, anthropic, python-dotenv, streamlit
   run-fmdb.sh                     # robust launcher — kills zombies, clears pycache,
@@ -481,6 +500,42 @@ fm-database/
   .env                            # gitignored — ANTHROPIC_API_KEY, FMDB_EXTRACTOR,
                                   #   FMDB_USER, FMDB_EXTRACTOR_MODEL
   .venv/                          # gitignored — local virtualenv
+
+fm-database-web/                  # Path B — Next.js + shadcn rebuild of the coach UI
+                                  #   (sibling to fm-database/, NOT inside it).
+                                  #   Feature parity with Streamlit as of v0.30+.
+                                  #   Stack: Next.js 16.2 (App Router, Turbopack),
+                                  #   React 19, TS5 strict, Tailwind v4, shadcn
+                                  #   (base-nova, neutral). Zero DB / auth / API
+                                  #   mutations — server components read YAML
+                                  #   directly; Server Actions write back to YAML.
+  src/
+    app/                          # 14 routes: /, /catalogue, /catalogue/[kind]/[slug]
+                                  #   (all 8 kinds), /plans, /plans/[slug] (10-tab
+                                  #   editor + plan-check sidebar + lifecycle panel +
+                                  #   client-facing export), /assess (Analyze + chat),
+                                  #   /clients (+ detail), /resources (+ detail),
+                                  #   /mindmap (+ detail with Mermaid), /backlog
+                                  #   (with bulk actions).
+    components/                   # sidebar-nav, evidence-tier-badge,
+                                  #   plan-status-badge, catalogue-table,
+                                  #   multi-select (shared), + 7 shadcn ui/.
+    lib/fmdb/                     # paths.ts (resolves to ../fm-database/data and
+                                  #   ~/fm-plans by default; FMDB_*_DIR overrides),
+                                  #   types.ts (lenient TS shapes mirroring Pydantic),
+                                  #   loader.ts + loader-extras.ts + writer.ts,
+                                  #   anthropic.ts + anthropic-types.ts (shell-out
+                                  #   wrappers around Python suggester).
+  scripts/                        # Python shims (use fm-database/.venv).
+                                  #   assess.py, chat.py, load-session-chat.py,
+                                  #   plan-check.py, plan-lifecycle.py,
+                                  #   plan-render.py, render-mindmap.py,
+                                  #   backlog-action.py — all stdin/stdout JSON,
+                                  #   import fmdb.* directly. --dry-run flags
+                                  #   for AI-touching shims.
+  package.json                    # next, react, tailwind, sonner (toasts), mermaid,
+                                  #   js-yaml, @radix-ui/* (via shadcn).
+  AGENTS.md / CLAUDE.md           # "this is NOT the Next.js you know" reminder.
 ```
 
 ## Content Sources
@@ -507,11 +562,20 @@ python3 -m venv .venv
 # create .env with ANTHROPIC_API_KEY for ingest + assess
 ```
 
-### Streamlit UI (the primary surface)
+### Path B — Next.js UI (current primary surface as of v0.30+)
+```bash
+cd fm-database-web
+npm install                                  # one time
+npm run dev                                  # opens http://localhost:3000
+npm run build && npm run type-check          # before committing
+```
+14 routes: `/`, `/catalogue` (+ all 8 detail kinds), `/plans` (+ 10-tab editor + plan-check + lifecycle + Markdown/HTML export), `/assess` (Analyze + chat with auto-rehydrated history), `/clients` (+ detail), `/resources` (+ detail), `/mindmap` (+ Mermaid detail), `/backlog` (with bulk reject + mark-added).
+
+### Path A — Streamlit UI (fallback, still maintained)
 ```bash
 ./run-fmdb.sh                                # opens http://localhost:8501
 ```
-Sidebar pages: 🧠 Assess & Suggest (default), 📋 Plans, 👥 Clients, 🧭 Mind Map, 🧰 Resources Toolkit, 📚 Catalogue Browser, 📝 Catalogue Backlog.
+Same 7 sidebar pages — useful if Path B breaks during a turn.
 
 ### CLI — read commands
 ```bash
@@ -558,29 +622,49 @@ Sidebar pages: 🧠 Assess & Suggest (default), 📋 Plans, 👥 Clients, 🧭 M
 .venv/bin/python -m fmdb.cli plan-show <plan-slug>
 .venv/bin/python -m fmdb.cli plan-edit <plan-slug>        # opens $EDITOR
 .venv/bin/python -m fmdb.cli plan-check <plan-slug>       # deterministic check
+.venv/bin/python -m fmdb.cli plan-ai-check <plan-slug>    # AI sanity check (~$0.02–$0.08)
 .venv/bin/python -m fmdb.cli plan-list [--client <id>] [--status <name>]
+
+# publish lifecycle
+.venv/bin/python -m fmdb.cli plan-submit <slug>           # draft → ready_to_publish
+.venv/bin/python -m fmdb.cli plan-publish <slug>          # → published; freezes git SHA
+.venv/bin/python -m fmdb.cli plan-revoke <slug> --reason "..."
+.venv/bin/python -m fmdb.cli plan-supersede <new-slug>    # new must have supersedes set
+.venv/bin/python -m fmdb.cli plan-diff <slug-a> <slug-b>
+.venv/bin/python -m fmdb.cli plan-render <slug> [--format markdown|html] [-o FILE]
+```
+
+### CLI — backlog triage + mindmap link/mine
+```bash
+.venv/bin/python -m fmdb.cli backlog-list [--status open|added|rejected|all] [--kind X] [--search S]
+.venv/bin/python -m fmdb.cli backlog-show <id>
+.venv/bin/python -m fmdb.cli backlog-clean [--apply]      # heuristic auto-reject prose/noise
+.venv/bin/python -m fmdb.cli backlog-promote <id> [--kind X] [--slug X] [--display-name X]
+.venv/bin/python -m fmdb.cli backlog-reject <id> [--note X]
+
+.venv/bin/python -m fmdb.cli mindmap-link [<slug>] [--all] [--apply] [--dry-run]
+.venv/bin/python -m fmdb.cli mindmap-mine [--add-to-backlog]
 ```
 
 ## Roadmap (what's next)
 
-**Done (v0.2 → v0.20):**
-- ✅ All 9 catalogue entity types built and seeded
-- ✅ AI ingestion pipeline (PDF + markdown + image attachments; streaming)
-- ✅ Plan + Client layer with sessions, history-aware Analyze, deterministic check
-- ✅ Streamlit UI with Assess workflow + multi-turn chat + Mind Map + Resources Toolkit
-- ✅ Catalogue backlog with auto-capture
-- ✅ Atomic approval, smart-merge, alias-aware resolution
+**Done (v0.2 → v0.32):**
+- ✅ All 9 catalogue entity types built and seeded (39 sources, 110 topics, 116 mechanisms, 143 symptoms, 546 claims, 172 supplements, 3+3+3 ca/hr/mindmaps)
+- ✅ AI ingestion pipeline (PDF + markdown + image attachments; streaming) — all 31 VitaOne PDFs ingested
+- ✅ Plan + Client layer with sessions, history-aware Analyze, deterministic check, AI sanity check, publish lifecycle (submit/publish/revoke/supersede/diff), markdown+HTML render
+- ✅ Atomic approval, smart-merge, alias-aware resolution, error/warning split
+- ✅ Backlog triage CLI (clean/show/promote/reject) — 167 noise auto-rejected
+- ✅ Curated MindMap node linking + mining (60 nodes linked, 645 candidates queued)
+- ✅ Streamlit UI (Path A) with all 7 sidebar pages — fallback
+- ✅ Path B (Next.js + shadcn) — 14 routes, feature parity with Streamlit, typed engine API, lifecycle in UI, plan-check + AI-check sidebars, multi-turn chat with rehydration, bulk backlog actions, Mermaid mindmap, error toasts, all 8 catalogue detail pages
 
-**Outstanding:**
-1. **Finish PDF ingest pass** — ~30 VitaOne PDFs remaining (~$15 to do all). Phase 1 (10 cheatsheets) in flight at v0.20 commit.
-2. ~~Plan publish + diff-guard~~ — ✅ done in v0.22 (`plan-submit`, `plan-publish`, `plan-revoke`, `plan-supersede`, `plan-diff`).
-3. ~~AI sanity check on plans~~ — ✅ done in v0.23 (`fmdb plan-ai-check <slug>`; populates `plan.ai_sanity_check`).
-4. ~~Markdown / PDF render of plan~~ — ✅ done in v0.24 (`fmdb plan-render` + Lifecycle-tab download buttons; PDF via browser Print-to-PDF).
-5. ~~Wire Resources into Plan editor~~ — ✅ done in v0.25 (`Plan.attached_resources` + 📎 Resources tab + render integration). Per-client folder of selected handouts deferred — coach hand-delivers files referenced by basename for now.
-6. ~~Cross-link curated MindMap nodes to catalogue entities~~ — ✅ done in v0.25 (`fmdb mindmap-link`; 60 of 871 nodes resolved automatically, rest visible as mining candidates).
-7. ~~Mine curated MindMap nodes → backlog suggestions~~ — ✅ done in v0.25 (`fmdb mindmap-mine`; 645 candidates surfaced with guessed kinds).
-8. **Promote freeform → entities when sprawl emerges:** Practice, TrackingHabit, Food, LabTest, Recipe, Protocol, EducationalModule.
-9. **Edit / Delete client UI** — built. Active-plan-blocks-delete safeguard in place.
-10. **JSON export contract for Project 2 (mobile app)** — deferred indefinitely; desktop-first for now.
-11. **Native Mac wrapper (Tauri / Electron / SwiftUI)** — engine is UI-agnostic; wrap when the workflow stabilises.
-12. **Path B Next.js port — continue.** v0.30 brought feature parity with the Streamlit sidebar: lifecycle transitions in UI, all 4 sidebar pages, Patch type tightened, MultiSelect deduped, chat rehydration. Remaining polish: Mermaid renderer for MindMap (Option A — currently nested `<ul>`); click-to-recenter on linked MindMap nodes; session timeline detail view; photo upload + edit/delete on Clients (read-only this turn); bulk backlog actions (multi-select reject/promote — current row disclosure painful for the 444 open items); backlog page pagination (currently full DOM table); colored split-diff for plan diff viewer; auto-scroll chat after rehydration; mechanism/symptom/claim/source/cooking/remedy catalogue detail pages; evidence-tier badges on suggestion items; Promote/Reject error toasts (currently silent revalidate on error); migrate lifecycle-actions successor-synthesis off the permissive `Plan` index signature so we can drop it entirely; `created_at` recompute on `createSuccessor` (currently inherits old period dates).
+**Outstanding (in rough priority order):**
+1. **Coach actually uses it daily.** Real bugs from real use will be more useful than another speculative turn. The product is past the "more code" threshold.
+2. **Triage the 444 open backlog items** via the bulk-action UI in `/backlog` — coach work, no code needed.
+3. **Type the inner `suggestions` payload** (likely_drivers, supplement_suggestions, etc.) as nested Pydantic models. Requires migrating `Session.ai_analysis: dict` → typed model on disk + rewriting all string-keyed reads in `app.py` and shim consumers. Deferred from v0.31.
+4. **Improve backlog mining heuristic** — currently 80% of mined items default to `topic` (often wrongly). Better parent-chain rules would reduce manual `--kind` override during triage.
+5. **Promote freeform → entities when sprawl emerges:** Practice, TrackingHabit, Food, LabTest, Recipe, Protocol, EducationalModule. Watch for duplication in real plans first.
+6. **Path B polish (deferred from v0.30/v0.31/v0.32):** click-to-recenter on linked MindMap nodes; session timeline detail view (per-session drilldown — sessions table only renders summary today); photo upload + edit/delete on Clients (read-only); colored split-diff for plan diff viewer; backlog page pagination (currently full DOM table); migrate lifecycle-actions successor-synthesis off the permissive `Plan` index signature so it can be dropped; `created_at` recompute on `createSuccessor` (currently inherits old period dates); evidence-tier badges on suggestion items in Assess.
+7. **Ingest UI in Path B** — currently coach uses CLI for `fmdb ingest`. Drag-drop + metadata form + review/approve in shadcn would help if she ingests new content often.
+8. **JSON export contract for Project 2 (mobile app)** — deferred indefinitely; desktop-first.
+9. **Native Mac wrapper (Tauri / Electron / SwiftUI)** — engine is UI-agnostic; wrap when workflow stabilises.
