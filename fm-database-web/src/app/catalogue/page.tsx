@@ -24,9 +24,11 @@ export default async function CataloguePage() {
       loadAllOfKind<Source>("sources"),
     ]);
 
-  // Source records use `title` rather than `display_name`; normalize for the table.
+  // Source records use `id` (not `slug`) and `title` (not `display_name`) on disk.
+  // Normalize both for the table + link routing.
   const sourcesNormalized: BaseEntity[] = sources.map((s) => ({
     ...s,
+    slug: (s.slug ?? s.id) as string,
     display_name: s.display_name ?? s.title,
   }));
 

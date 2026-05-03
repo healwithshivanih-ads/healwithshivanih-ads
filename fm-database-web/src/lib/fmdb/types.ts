@@ -65,6 +65,8 @@ export interface Claim extends BaseEntity {
   coaching_translation?: string;
   caveats?: string[];
   linked_to_topics?: string[];
+  linked_to_mechanisms?: string[];
+  linked_to_supplements?: string[];
   out_of_scope_notes?: string;
 }
 
@@ -93,13 +95,18 @@ export interface Supplement extends BaseEntity {
 }
 
 export interface Source extends BaseEntity {
+  // Sources use `id` on disk, not `slug`. The catalogue page normalizes
+  // `slug` to mirror `id` for routing; both are populated here.
+  id?: string;
   title?: string;
   source_type?: string;
-  source_quality?: "high" | "moderate" | "low";
+  quality?: "high" | "moderate" | "low";
   authors?: string[];
   url?: string;
   year?: number;
+  publisher?: string;
   internal_path?: string;
+  doi?: string;
   notes?: string;
 }
 
@@ -112,20 +119,26 @@ export interface MindMap extends BaseEntity {
 
 export interface CookingAdjustment extends BaseEntity {
   category?: string;
+  summary?: string;
   swap_from?: string;
   benefits?: string[];
   how_to_use?: string;
   cautions?: string[];
+  linked_to_topics?: string[];
+  linked_to_mechanisms?: string[];
 }
 
 export interface HomeRemedy extends BaseEntity {
   category?: string;
+  summary?: string;
   indications?: string[];
   contraindications?: string[];
   preparation?: string;
   typical_dose?: string;
   duration?: string;
   timing_notes?: string;
+  linked_to_topics?: string[];
+  linked_to_mechanisms?: string[];
 }
 
 // ---- Plan + Client (PHI) ----
