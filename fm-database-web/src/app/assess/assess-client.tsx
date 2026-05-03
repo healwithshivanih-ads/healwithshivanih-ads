@@ -6,9 +6,7 @@ import { toast } from "sonner";
 import type { Client } from "@/lib/fmdb/types";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { MultiSelect, type MultiSelectOption } from "@/components/multi-select";
 import {
   runAssessAction,
   generateDraftAction,
@@ -38,14 +36,127 @@ interface UploadedRef {
   kind: "lab_report" | "food_journal";
 }
 
-/** Adapt the Assess shim's `{slug, label, aliases}` shape to the shared
- * MultiSelect's `{value, label, aliases}` shape. */
-function toMultiSelectOptions(opts: Opt[]): MultiSelectOption[] {
-  return opts.map((o) => ({
-    value: o.slug,
-    label: o.label,
-    aliases: o.aliases,
-  }));
+// ---------------------------------------------------------------------------
+// InlinePicker — replaces the floating-dropdown MultiSelect for Assess.
+// Renders a search box + a scrollable checkbox list that is always visible
+// (no absolute positioning, no z-index fighting with adjacent cards).
+// ---------------------------------------------------------------------------
+function InlinePicker({
+  options,
+  value,
+  onChange,
+  placeholder,
+  maxHeight = "16rem",
+}: {
+  options: Opt[];
+  value: string[];
+  onChange: (next: string[]) => void;
+  placeholder: string;
+  maxHeight?: string;
+}) {
+  const [query, setQuery] = useState("");
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return options;
+    return options.filter(
+      (o) =>
+        o.label.toLowerCase().includes(q) ||
+        o.slug.toLowerCase().includes(q) ||
+        (o.aliases ?? []).some((a) => a.toLowerCase().includes(q))
+    );
+  }, [query, options]);
+
+  function toggle(slug: string) {
+    if (value.includes(slug)) onChange(value.filter((v) => v !== slug));
+    else onChange([...value, slug]);
+  }
+
+  const labelOf = (slug: string) =>
+    options.find((o) => o.slug === slug)?.label ?? slug;
+
+  return (
+    <div className="space-y-2">
+      {/* Selected chips */}
+      {value.length > 0 && (
+        <div className="flex flex-wrap gap-1.5 pb-1">
+          {value.map((v) => (
+            <Badge key={v} variant="secondary" className="gap-1 pr-1 text-xs">
+              {labelOf(v)}
+              <button
+                type="button"
+                onClick={() => toggle(v)}
+                aria-label={`Remove ${v}`}
+                className="ml-0.5 hover:text-destructive"
+              >
+                ×
+              </button>
+            </Badge>
+          ))}
+          <button
+            type="button"
+            onClick={() => onChange([])}
+            className="text-xs text-muted-foreground hover:underline self-center"
+          >
+            clear all
+          </button>
+        </div>
+      )}
+
+      {/* Search */}
+      <input
+        type="text"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder={placeholder}
+        className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+      />
+
+      {/* Inline scrollable list — never floating, always in flow */}
+      <div
+        className="border rounded-md divide-y overflow-y-auto"
+        style={{ maxHeight }}
+      >
+        {filtered.length === 0 ? (
+          <div className="px-3 py-2 text-sm text-muted-foreground">
+            No matches for &ldquo;{query}&rdquo;
+          </div>
+        ) : (
+          filtered.map((o) => {
+            const checked = value.includes(o.slug);
+            return (
+              <label
+                key={o.slug}
+                className={`flex items-center gap-2 px-3 py-2 cursor-pointer select-none hover:bg-muted/50 ${
+                  checked ? "bg-primary/5 font-medium" : ""
+                }`}
+              >
+                <input
+                  type="checkbox"
+                  checked={checked}
+                  onChange={() => toggle(o.slug)}
+                  className="rounded shrink-0"
+                />
+                <span className="text-sm">{o.label}</span>
+                <span className="ml-auto text-[11px] text-muted-foreground font-mono shrink-0">
+                  {o.slug}
+                </span>
+              </label>
+            );
+          })
+        )}
+      </div>
+
+      <p className="text-xs text-muted-foreground">
+        {value.length > 0
+          ? `${value.length} selected · `
+          : ""}
+        {filtered.length === options.length
+          ? `${options.length} options — type to filter`
+          : `${filtered.length} of ${options.length} shown`}
+      </p>
+    </div>
+  );
 }
 
 function UsageStats({ usage, subgraphBytes }: { usage?: AssessUsage; subgraphBytes?: number }) {
@@ -552,8 +663,6 @@ function ChatPanel({
 
 export function AssessClient({ clients, symptoms, topics, initialClientId }: Props) {
   const router = useRouter();
-  const symptomOptions = useMemo(() => toMultiSelectOptions(symptoms), [symptoms]);
-  const topicOptions = useMemo(() => toMultiSelectOptions(topics), [topics]);
   const [clientId, setClientId] = useState<string>(
     // Prefer the URL-supplied initialClientId if it matches a real client
     (initialClientId && clients.find((c) => c.client_id === initialClientId))
@@ -711,92 +820,75 @@ export function AssessClient({ clients, symptoms, topics, initialClientId }: Pro
           <CardTitle className="text-base">2. Symptoms</CardTitle>
         </CardHeader>
         <CardContent>
-          <MultiSelect
-            label="Pick all that apply"
-            options={symptomOptions}
+          <InlinePicker
+            options={symptoms}
             value={selectedSymptoms}
             onChange={setSelectedSymptoms}
-            placeholder="search symptoms (name or alias)…"
-            limit={60}
-            showOnEmpty
+            placeholder="Type to filter (name or alias)…"
+            maxHeight="18rem"
           />
         </CardContent>
       </Card>
 
-      {/* Step 3: topics */}
+      {/* Step 3: uploads — moved here so it's visible before analysis */}
       <Card>
         <CardHeader className="pb-2">
-          <CardTitle className="text-base">3. Topics (optional)</CardTitle>
+          <CardTitle className="text-base">3. Lab reports &amp; food journals</CardTitle>
         </CardHeader>
-        <CardContent>
-          <MultiSelect
-            label="Clinical areas in play"
-            options={topicOptions}
-            value={selectedTopics}
-            onChange={setSelectedTopics}
-            placeholder="search topics…"
-            limit={60}
-            showOnEmpty
-          />
-        </CardContent>
-      </Card>
-
-      {/* Step 4: complaints */}
-      <Card>
-        <CardHeader className="pb-2">
-          <CardTitle className="text-base">4. Presenting complaints</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <textarea
-            value={complaints}
-            onChange={(e) => setComplaints(e.target.value)}
-            rows={4}
-            placeholder="What did the client describe today? Anything that doesn't fit a symptom above…"
-            className="w-full rounded-md border bg-background px-3 py-2 text-sm"
-          />
-        </CardContent>
-      </Card>
-
-      {/* Step 5: uploads */}
-      <Card>
-        <CardHeader className="pb-2">
-          <CardTitle className="text-base">5. Lab reports + food journals</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-3">
-          <div className="space-y-1">
-            <label className="text-sm font-medium">Lab reports (PDF / image)</label>
-            <input
-              type="file"
-              multiple
-              accept=".pdf,image/*,.txt,.md"
-              onChange={(e) => handleUpload(e.target.files, "lab_report")}
-              className="block text-sm"
-              disabled={uploadPending || !clientId}
-            />
-          </div>
-          <div className="space-y-1">
-            <label className="text-sm font-medium">Food journals</label>
-            <input
-              type="file"
-              multiple
-              accept=".pdf,image/*,.txt,.md"
-              onChange={(e) => handleUpload(e.target.files, "food_journal")}
-              className="block text-sm"
-              disabled={uploadPending || !clientId}
-            />
+        <CardContent className="space-y-4">
+          <div className="grid sm:grid-cols-2 gap-4">
+            <div className="space-y-1.5">
+              <label className="text-sm font-medium block">
+                Lab reports
+                <span className="ml-1 text-xs font-normal text-muted-foreground">
+                  (PDF, image, text)
+                </span>
+              </label>
+              <input
+                type="file"
+                multiple
+                accept=".pdf,image/*,.txt,.md"
+                onChange={(e) => handleUpload(e.target.files, "lab_report")}
+                className="block w-full text-sm file:mr-3 file:py-1 file:px-3 file:rounded file:border file:border-input file:bg-background file:text-xs file:font-medium"
+                disabled={uploadPending}
+              />
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-sm font-medium block">
+                Food journals
+                <span className="ml-1 text-xs font-normal text-muted-foreground">
+                  (PDF, image, text)
+                </span>
+              </label>
+              <input
+                type="file"
+                multiple
+                accept=".pdf,image/*,.txt,.md"
+                onChange={(e) => handleUpload(e.target.files, "food_journal")}
+                className="block w-full text-sm file:mr-3 file:py-1 file:px-3 file:rounded file:border file:border-input file:bg-background file:text-xs file:font-medium"
+                disabled={uploadPending}
+              />
+            </div>
           </div>
           {uploadPending && (
             <p className="text-xs text-muted-foreground">Uploading…</p>
           )}
           {uploads.length > 0 && (
-            <div className="text-xs space-y-1">
+            <div className="space-y-1 border rounded-md p-2">
+              <p className="text-xs font-medium text-muted-foreground mb-1">
+                Attached ({uploads.length})
+              </p>
               {uploads.map((u, i) => (
-                <div key={i} className="flex items-center gap-2">
-                  <Badge variant="outline">{u.kind}</Badge>
-                  <span>{u.filename}</span>
+                <div key={i} className="flex items-center gap-2 text-xs">
+                  <Badge variant="outline" className="text-[10px]">
+                    {u.kind === "lab_report" ? "lab" : "food"}
+                  </Badge>
+                  <span className="truncate">{u.filename}</span>
                   <button
+                    type="button"
                     onClick={() => setUploads(uploads.filter((_, j) => j !== i))}
-                    className="text-muted-foreground hover:text-destructive"
+                    className="ml-auto text-muted-foreground hover:text-destructive shrink-0"
+                    aria-label="Remove"
                   >
                     ×
                   </button>
@@ -804,6 +896,38 @@ export function AssessClient({ clients, symptoms, topics, initialClientId }: Pro
               ))}
             </div>
           )}
+        </CardContent>
+      </Card>
+
+      {/* Step 4: topics */}
+      <Card>
+        <CardHeader className="pb-2">
+          <CardTitle className="text-base">4. Topics <span className="text-sm font-normal text-muted-foreground">(optional)</span></CardTitle>
+        </CardHeader>
+        <CardContent>
+          <InlinePicker
+            options={topics}
+            value={selectedTopics}
+            onChange={setSelectedTopics}
+            placeholder="Type to filter clinical areas…"
+            maxHeight="14rem"
+          />
+        </CardContent>
+      </Card>
+
+      {/* Step 5: complaints */}
+      <Card>
+        <CardHeader className="pb-2">
+          <CardTitle className="text-base">5. Presenting complaints <span className="text-sm font-normal text-muted-foreground">(optional)</span></CardTitle>
+        </CardHeader>
+        <CardContent>
+          <textarea
+            value={complaints}
+            onChange={(e) => setComplaints(e.target.value)}
+            rows={4}
+            placeholder="What did the client describe today? Anything that doesn't fit the symptoms above…"
+            className="w-full rounded-md border bg-background px-3 py-2 text-sm"
+          />
         </CardContent>
       </Card>
 
