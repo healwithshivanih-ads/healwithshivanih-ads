@@ -90,6 +90,29 @@ def main() -> int:
                 "code": 1, "stdout": "", "stderr": "",
             }, sys.stdout)
             return 1
+    elif action == "attach":
+        argv = [str(PY), "-m", "fmdb.cli", "backlog-attach", str(item_id)]
+        mode = payload.get("mode")
+        target_kind = payload.get("target_kind")
+        target_slug = payload.get("target_slug")
+        if not mode or not target_kind or not target_slug:
+            json.dump({"ok": False,
+                       "error": "attach requires mode, target_kind, target_slug",
+                       "code": 2}, sys.stdout)
+            return 2
+        argv += ["--mode", str(mode),
+                 "--target-kind", str(target_kind),
+                 "--target-slug", str(target_slug)]
+        if payload.get("slug"):
+            argv += ["--slug", str(payload["slug"])]
+        if payload.get("evidence_tier"):
+            argv += ["--evidence-tier", str(payload["evidence_tier"])]
+        if payload.get("force"):
+            argv += ["--force"]
+        if payload.get("note"):
+            argv += ["--note", str(payload["note"])]
+        if payload.get("updated_by"):
+            argv += ["--updated-by", str(payload["updated_by"])]
     else:
         json.dump({"ok": False, "error": f"unknown action: {action}", "code": 2}, sys.stdout)
         return 2

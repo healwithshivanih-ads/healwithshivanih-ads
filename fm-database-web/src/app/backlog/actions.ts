@@ -92,6 +92,57 @@ export async function rejectBacklogItem(formData: FormData): Promise<void> {
   revalidatePath("/backlog");
 }
 
+export type AttachMode = "claim" | "alias" | "notes";
+export type AttachTargetKind =
+  | "topic"
+  | "mechanism"
+  | "symptom"
+  | "supplement"
+  | "claim";
+
+export interface AttachInput {
+  id: string;
+  mode: AttachMode;
+  target_kind: AttachTargetKind;
+  target_slug: string;
+  slug?: string | null;            // for claim mode (override default slugify)
+  evidence_tier?: string | null;   // for claim mode
+  force?: boolean;
+  note?: string | null;
+}
+
+/**
+ * Attach a backlog item to an existing catalogue entity instead of creating
+ * a new entity. Three modes:
+ *  - claim: creates a new Claim with statement=name, citing the source the
+ *    item came from, linked to the target entity.
+ *  - alias: appends the backlog name to the target entity's `aliases` list
+ *    (only topic / mechanism / symptom support aliases on the model).
+ *  - notes: appends to the target's `notes_for_coach` field (supplement only
+ *    in v1; other kinds don't have a generic notes field).
+ */
+export async function attachBacklogItem(
+  input: AttachInput
+): Promise<BacklogActionResult> {
+  if (!input.id || !input.mode || !input.target_kind || !input.target_slug) {
+    return { ok: false, error: "id, mode, target_kind, target_slug required" };
+  }
+  const r = await runShim({
+    action: "attach",
+    id: input.id,
+    mode: input.mode,
+    target_kind: input.target_kind,
+    target_slug: input.target_slug,
+    slug: input.slug ?? null,
+    evidence_tier: input.evidence_tier ?? null,
+    force: input.force ?? false,
+    note: input.note ?? null,
+    updated_by: "shivani",
+  });
+  revalidatePath("/backlog");
+  return r;
+}
+
 export interface BulkResult {
   ok: boolean;
   successes: string[];

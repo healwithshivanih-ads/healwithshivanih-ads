@@ -287,6 +287,144 @@ def cmd_backlog_promote(args: argparse.Namespace) -> None:
     print(f"  → edit to fill in real content, then: fmdb show-{kind} {slug}")
 
 
+_ALIAS_KINDS = {"topic", "mechanism", "symptom"}  # only these have aliases on the model
+_TARGET_KIND_DIR = {
+    "topic": "topics",
+    "mechanism": "mechanisms",
+    "symptom": "symptoms",
+    "supplement": "supplements",
+    "claim": "claims",
+}
+
+
+def cmd_backlog_attach(args: argparse.Namespace) -> None:
+    """Attach a backlog item to an existing catalogue entity instead of
+    promoting it to a new entity. Three modes:
+
+    - `claim`: create a new Claim with statement=name, citing the source the
+      item came from, linked to the target entity.
+    - `alias`: append the backlog name as an alias of the target entity
+      (only topic / mechanism / symptom support aliases).
+    - `notes`: append the backlog context to the target entity's notes-like
+      field (currently only supported for supplements via notes_for_coach).
+    """
+    from datetime import date as _date
+    from . import backlog as backlog_mod
+    items = backlog_mod._load(DATA_DIR)
+    item = next((it for it in items if it.get("id") == args.id), None)
+    if not item:
+        print(f"backlog item not found: {args.id}", file=sys.stderr)
+        sys.exit(2)
+
+    mode = args.mode
+    target_kind = args.target_kind
+    target_slug = args.target_slug
+    user = args.updated_by
+    today = _date.today().isoformat()
+    name = item.get("name", "").strip()
+    why = (item.get("why") or "").strip()
+    if target_kind not in _TARGET_KIND_DIR:
+        print(f"unknown target kind: {target_kind}", file=sys.stderr)
+        sys.exit(2)
+
+    target_path = DATA_DIR / _TARGET_KIND_DIR[target_kind] / f"{target_slug}.yaml"
+    if not target_path.exists():
+        print(f"target entity not found: {target_path.relative_to(DATA_DIR)}", file=sys.stderr)
+        sys.exit(2)
+
+    if mode == "alias":
+        if target_kind not in _ALIAS_KINDS:
+            print(f"alias mode requires target kind in {sorted(_ALIAS_KINDS)}; got {target_kind!r}",
+                  file=sys.stderr)
+            sys.exit(2)
+        target_doc = yaml.safe_load(target_path.read_text()) or {}
+        aliases = target_doc.setdefault("aliases", []) or []
+        if name in aliases:
+            print(f"(alias {name!r} already on {target_kind}/{target_slug} — no change)")
+        else:
+            aliases.append(name)
+            target_doc["aliases"] = aliases
+            target_doc["updated_at"] = today
+            target_doc["updated_by"] = user
+            target_doc["version"] = int(target_doc.get("version", 1)) + 1
+            target_path.write_text(yaml.safe_dump(target_doc, sort_keys=False, allow_unicode=True))
+            print(f"✓ added alias {name!r} → {target_kind}/{target_slug}")
+
+    elif mode == "claim":
+        # Build a stub Claim that passes Pydantic + validator.
+        slug = args.slug or _slugify(name)
+        claim_path = DATA_DIR / "claims" / f"{slug}.yaml"
+        if claim_path.exists() and not args.force:
+            print(f"❌ claim already exists: {claim_path.relative_to(DATA_DIR)}\n"
+                  f"   pass --force to overwrite, or use --slug to pick a different slug",
+                  file=sys.stderr)
+            sys.exit(2)
+        link_field = {
+            "topic": "linked_to_topics",
+            "mechanism": "linked_to_mechanisms",
+            "supplement": "linked_to_supplements",
+        }.get(target_kind)
+        if not link_field:
+            # symptom and claim aren't valid claim-link targets in the model
+            print(f"claim mode can't link to target kind {target_kind!r}; "
+                  f"use topic / mechanism / supplement", file=sys.stderr)
+            sys.exit(2)
+        claim_doc: dict = {
+            "slug": slug,
+            "statement": name,
+            "evidence_tier": args.evidence_tier or "fm_specific_thin",
+            "rationale": "",
+            "coaching_translation": "",
+            "out_of_scope_notes": "",
+            "caveats": [],
+            "linked_to_topics": [],
+            "linked_to_mechanisms": [],
+            "linked_to_supplements": [],
+            "sources": [{"id": "vitaone-mind-map-tool",
+                         "location": why or f"backlog item {args.id}",
+                         "quote": ""}],
+            "version": 1,
+            "status": "active",
+            "updated_at": today,
+            "updated_by": user,
+        }
+        claim_doc[link_field] = [target_slug]
+        claim_path.write_text(yaml.safe_dump(claim_doc, sort_keys=False, allow_unicode=True))
+        print(f"✓ created claim: claims/{slug}.yaml → linked to {target_kind}/{target_slug}")
+
+    elif mode == "notes":
+        if target_kind != "supplement":
+            print(f"notes mode currently only supports supplement targets; "
+                  f"got {target_kind!r}. Use claim or alias for other kinds.",
+                  file=sys.stderr)
+            sys.exit(2)
+        target_doc = yaml.safe_load(target_path.read_text()) or {}
+        existing = (target_doc.get("notes_for_coach") or "").rstrip()
+        appendix = f"From MindMap: {name}"
+        if why:
+            appendix += f"  ({why})"
+        target_doc["notes_for_coach"] = (
+            f"{existing}\n\n{appendix}".strip() if existing else appendix
+        )
+        target_doc["updated_at"] = today
+        target_doc["updated_by"] = user
+        target_doc["version"] = int(target_doc.get("version", 1)) + 1
+        target_path.write_text(yaml.safe_dump(target_doc, sort_keys=False, allow_unicode=True))
+        print(f"✓ appended to {target_kind}/{target_slug}.notes_for_coach")
+
+    else:
+        print(f"unknown mode: {mode!r} (expected: claim | alias | notes)", file=sys.stderr)
+        sys.exit(2)
+
+    backlog_mod.mark_attached(
+        DATA_DIR, args.id,
+        attached_as=mode,
+        target_kind=target_kind,
+        target_slug=target_slug,
+        note=args.note or "",
+    )
+
+
 def cmd_backlog_reject(args: argparse.Namespace) -> None:
     from . import backlog as backlog_mod
     result = backlog_mod.update_status(DATA_DIR, args.id, "rejected", note=args.note or "")
@@ -1427,6 +1565,26 @@ def main() -> None:
     br.add_argument("id")
     br.add_argument("--note", help="why")
     br.set_defaults(func=cmd_backlog_reject)
+
+    ba = sub.add_parser("backlog-attach",
+        help="attach a backlog item to an existing entity (as claim / alias / notes) instead of creating a new entity")
+    ba.add_argument("id")
+    ba.add_argument("--mode", required=True, choices=["claim", "alias", "notes"],
+                    help="claim: new Claim linked to target | alias: append to target.aliases (topic/mech/symptom only) | notes: append to target.notes_for_coach (supplement only)")
+    ba.add_argument("--target-kind", required=True, choices=list(_TARGET_KIND_DIR),
+                    help="kind of the entity to attach to")
+    ba.add_argument("--target-slug", required=True,
+                    help="slug of the existing entity to attach to")
+    ba.add_argument("--slug",
+                    help="custom slug for the new claim (claim mode only; defaults to slugified backlog name)")
+    ba.add_argument("--evidence-tier",
+                    choices=["strong", "plausible_emerging", "fm_specific_thin", "confirm_with_clinician"],
+                    help="evidence tier for the new claim (default: fm_specific_thin)")
+    ba.add_argument("--force", action="store_true",
+                    help="overwrite an existing claim file (claim mode only)")
+    ba.add_argument("--note", help="status_note recorded on the backlog row")
+    ba.add_argument("--updated-by", default=os.environ.get("FMDB_USER", "shivani"))
+    ba.set_defaults(func=cmd_backlog_attach)
     sub.add_parser("list", help="list all supplements").set_defaults(func=cmd_list)
     sub.add_parser("sources", help="list all sources").set_defaults(func=cmd_sources)
     sub.add_parser("topics", help="list all topics").set_defaults(func=cmd_topics)

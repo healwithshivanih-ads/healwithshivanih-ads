@@ -20,7 +20,23 @@ import {
   rejectBacklogItem,
   bulkRejectBacklogItems,
   bulkMarkAddedBacklogItems,
+  attachBacklogItem,
+  type AttachMode,
+  type AttachTargetKind,
 } from "./actions";
+
+export interface CatalogueOption {
+  slug: string;
+  label: string;
+  aliases: string[];
+}
+export interface CatalogueOptions {
+  topic: CatalogueOption[];
+  mechanism: CatalogueOption[];
+  symptom: CatalogueOption[];
+  supplement: CatalogueOption[];
+  claim: CatalogueOption[];
+}
 
 const KIND_OPTIONS = [
   "topic",
@@ -103,6 +119,249 @@ function PromoteForm({ item }: { item: BacklogItem }) {
   );
 }
 
+// ---------------------------------------------------------------------------
+// Attach: tag this backlog fragment to an existing entity instead of creating
+// a new one. Three modes: claim (new Claim linked to target), alias (append
+// to target.aliases), notes (append to target.notes_for_coach — supplement
+// only). Suggests a target by parsing the parent label out of `why`.
+// ---------------------------------------------------------------------------
+
+const KINDS_WITH_ALIASES = new Set<AttachTargetKind>([
+  "topic",
+  "mechanism",
+  "symptom",
+]);
+
+function parseParentLabel(why: string | undefined): string | null {
+  // "Surfaced from MindMap '<mm>' under branch '<parent>' (depth N)."
+  const m = why?.match(/under branch '([^']+)'/);
+  return m?.[1] ?? null;
+}
+
+function suggestTarget(
+  parentLabel: string | null,
+  kind: AttachTargetKind,
+  options: CatalogueOption[]
+): string | null {
+  if (!parentLabel) return null;
+  const needle = parentLabel.toLowerCase().trim();
+  // exact label/slug match first
+  const exact = options.find(
+    (o) =>
+      o.label.toLowerCase() === needle ||
+      o.slug.toLowerCase() === needle ||
+      o.aliases.some((a) => a.toLowerCase() === needle)
+  );
+  if (exact) return exact.slug;
+  // partial — needle contained in label/alias
+  const partial = options.find(
+    (o) =>
+      o.label.toLowerCase().includes(needle) ||
+      o.aliases.some((a) => a.toLowerCase().includes(needle))
+  );
+  return partial?.slug ?? null;
+}
+
+function AttachForm({
+  item,
+  catalogue,
+}: {
+  item: BacklogItem;
+  catalogue: CatalogueOptions;
+}) {
+  const parentLabel = parseParentLabel(item.why);
+  const [open, setOpen] = useState(false);
+  const [pending, startTransition] = useTransition();
+
+  // Best-guess defaults from the parent chain
+  const defaultMode: AttachMode = "claim";
+  const defaultKind: AttachTargetKind = (() => {
+    // If the backlog item's kind is supplement / symptom, prefer those as targets
+    if (item.kind === "supplement") return "supplement";
+    if (item.kind === "symptom") return "symptom";
+    if (item.kind === "mechanism") return "mechanism";
+    return "topic";
+  })();
+
+  const [mode, setMode] = useState<AttachMode>(defaultMode);
+  const [targetKind, setTargetKind] = useState<AttachTargetKind>(defaultKind);
+  const [targetSlug, setTargetSlug] = useState<string>(() => {
+    const opts = catalogue[defaultKind] ?? [];
+    return suggestTarget(parentLabel, defaultKind, opts) ?? opts[0]?.slug ?? "";
+  });
+  const [search, setSearch] = useState<string>("");
+
+  // Recompute suggestion when target kind changes
+  function changeTargetKind(k: AttachTargetKind) {
+    setTargetKind(k);
+    const opts = catalogue[k] ?? [];
+    setTargetSlug(suggestTarget(parentLabel, k, opts) ?? opts[0]?.slug ?? "");
+    setSearch("");
+  }
+
+  const options = catalogue[targetKind] ?? [];
+  const filtered = useMemo(() => {
+    const q = search.toLowerCase().trim();
+    if (!q) return options.slice(0, 50);
+    return options
+      .filter(
+        (o) =>
+          o.slug.toLowerCase().includes(q) ||
+          o.label.toLowerCase().includes(q) ||
+          o.aliases.some((a) => a.toLowerCase().includes(q))
+      )
+      .slice(0, 50);
+  }, [options, search]);
+
+  // Mode validation: alias only on topic/mechanism/symptom; notes only on supplement
+  const modeIsValid =
+    (mode === "alias" && KINDS_WITH_ALIASES.has(targetKind)) ||
+    (mode === "notes" && targetKind === "supplement") ||
+    (mode === "claim" && targetKind !== "symptom" && targetKind !== "claim");
+
+  function handleAttach() {
+    if (!targetSlug) {
+      toast.error("pick a target entity first");
+      return;
+    }
+    if (!modeIsValid) {
+      toast.error(`mode '${mode}' isn't valid for target kind '${targetKind}'`);
+      return;
+    }
+    startTransition(async () => {
+      const r = await attachBacklogItem({
+        id: item.id,
+        mode,
+        target_kind: targetKind,
+        target_slug: targetSlug,
+      });
+      if (r.ok) {
+        const verb =
+          mode === "claim"
+            ? "created claim linked to"
+            : mode === "alias"
+              ? "added as alias of"
+              : "appended to notes of";
+        toast.success(`${verb} ${targetKind}/${targetSlug}`);
+        setOpen(false);
+      } else {
+        toast.error(r.error ?? r.stderr ?? "attach failed");
+      }
+    });
+  }
+
+  if (!open) {
+    return (
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        className="text-xs text-emerald-700 hover:underline cursor-pointer text-left"
+      >
+        Attach
+      </button>
+    );
+  }
+
+  return (
+    <div className="text-xs space-y-2 mt-2 p-2 bg-emerald-50 border border-emerald-200 rounded">
+      <div className="flex items-center justify-between">
+        <span className="font-semibold text-emerald-900">Attach</span>
+        <button
+          type="button"
+          onClick={() => setOpen(false)}
+          className="text-muted-foreground hover:underline"
+        >
+          cancel
+        </button>
+      </div>
+
+      <div className="grid grid-cols-2 gap-2">
+        <div className="flex flex-col">
+          <label className="text-[10px] uppercase text-muted-foreground">
+            Attach as
+          </label>
+          <select
+            value={mode}
+            onChange={(e) => setMode(e.target.value as AttachMode)}
+            className="text-xs border rounded px-1.5 py-1 bg-background"
+          >
+            <option value="claim">Claim (statement linked to target)</option>
+            <option value="alias">Alias (synonym of target)</option>
+            <option value="notes">Notes (append to target)</option>
+          </select>
+        </div>
+        <div className="flex flex-col">
+          <label className="text-[10px] uppercase text-muted-foreground">
+            Target kind
+          </label>
+          <select
+            value={targetKind}
+            onChange={(e) =>
+              changeTargetKind(e.target.value as AttachTargetKind)
+            }
+            className="text-xs border rounded px-1.5 py-1 bg-background"
+          >
+            <option value="topic">topic</option>
+            <option value="mechanism">mechanism</option>
+            <option value="symptom">symptom</option>
+            <option value="supplement">supplement</option>
+          </select>
+        </div>
+      </div>
+
+      <div className="flex flex-col">
+        <label className="text-[10px] uppercase text-muted-foreground">
+          Target entity
+          {parentLabel && (
+            <span className="ml-1 normal-case text-emerald-700">
+              (parent: <em>{parentLabel}</em>)
+            </span>
+          )}
+        </label>
+        <input
+          type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="search by name…"
+          className="text-xs border rounded px-1.5 py-1 bg-background mb-1"
+        />
+        <select
+          value={targetSlug}
+          onChange={(e) => setTargetSlug(e.target.value)}
+          size={Math.min(6, Math.max(3, filtered.length))}
+          className="text-xs border rounded px-1 py-1 bg-background"
+        >
+          {filtered.length === 0 && <option value="">(no matches)</option>}
+          {filtered.map((o) => (
+            <option key={o.slug} value={o.slug}>
+              {o.label} ({o.slug})
+            </option>
+          ))}
+        </select>
+      </div>
+
+      {!modeIsValid && (
+        <div className="text-[11px] text-rose-700">
+          {mode === "alias"
+            ? "alias mode requires target kind: topic / mechanism / symptom"
+            : mode === "notes"
+              ? "notes mode currently only supports supplement targets"
+              : "claim mode can't link to symptom or claim targets"}
+        </div>
+      )}
+
+      <button
+        type="button"
+        onClick={handleAttach}
+        disabled={pending || !modeIsValid || !targetSlug}
+        className="text-xs px-2 py-1 rounded bg-emerald-700 text-white disabled:opacity-50"
+      >
+        {pending ? "Attaching…" : "Attach"}
+      </button>
+    </div>
+  );
+}
+
 function RejectForm({ item }: { item: BacklogItem }) {
   return (
     <details className="text-xs">
@@ -135,7 +394,13 @@ function RejectForm({ item }: { item: BacklogItem }) {
   );
 }
 
-export function BacklogTableClient({ items }: { items: BacklogItem[] }) {
+export function BacklogTableClient({
+  items,
+  catalogue,
+}: {
+  items: BacklogItem[];
+  catalogue: CatalogueOptions;
+}) {
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [bulkNote, setBulkNote] = useState("");
   const [pending, startTransition] = useTransition();
@@ -334,6 +599,7 @@ export function BacklogTableClient({ items }: { items: BacklogItem[] }) {
                     {isOpen ? (
                       <div className="flex flex-col gap-1.5">
                         <PromoteForm item={it} />
+                        <AttachForm item={it} catalogue={catalogue} />
                         <RejectForm item={it} />
                       </div>
                     ) : (

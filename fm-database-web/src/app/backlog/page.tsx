@@ -1,5 +1,13 @@
 import Link from "next/link";
 import { loadBacklog } from "@/lib/fmdb/loader-extras";
+import { loadAllOfKind } from "@/lib/fmdb/loader";
+import type {
+  Topic,
+  Mechanism,
+  Symptom,
+  Supplement,
+  Claim,
+} from "@/lib/fmdb/types";
 import { BacklogTableClient } from "./backlog-table-client";
 
 export const dynamic = "force-dynamic";
@@ -21,7 +29,44 @@ export default async function BacklogPage({
 }) {
   const { status: statusParam, kind, q } = await searchParams;
   const status = statusParam ?? "open";
-  const all = await loadBacklog();
+  const [all, topics, mechanisms, symptoms, supplements, claims] =
+    await Promise.all([
+      loadBacklog(),
+      loadAllOfKind<Topic>("topics"),
+      loadAllOfKind<Mechanism>("mechanisms"),
+      loadAllOfKind<Symptom>("symptoms"),
+      loadAllOfKind<Supplement>("supplements"),
+      loadAllOfKind<Claim>("claims"),
+    ]);
+
+  // Slim catalogue snapshot for the Attach picker — slug + display_name.
+  // Aliases included on entities that have them so search can match
+  // mindmap labels that look more like an alias than the canonical slug.
+  const slim = (
+    rows: Array<{ slug?: string; display_name?: string; aliases?: string[] }>
+  ) =>
+    rows
+      .filter((r) => r.slug)
+      .map((r) => ({
+        slug: r.slug as string,
+        label: r.display_name ?? (r.slug as string),
+        aliases: r.aliases ?? [],
+      }));
+
+  const catalogue = {
+    topic: slim(topics),
+    mechanism: slim(mechanisms),
+    symptom: slim(symptoms),
+    supplement: slim(supplements),
+    claim: claims
+      .filter((c) => c.slug)
+      .map((c) => ({
+        slug: c.slug as string,
+        label: c.statement?.slice(0, 80) ?? (c.slug as string),
+        aliases: [] as string[],
+      })),
+  };
+
   const qLower = (q ?? "").toLowerCase();
 
   const filtered = all.filter((it) => {
@@ -114,7 +159,7 @@ export default async function BacklogPage({
         )}
       </form>
 
-      <BacklogTableClient items={sorted} />
+      <BacklogTableClient items={sorted} catalogue={catalogue} />
     </div>
   );
 }

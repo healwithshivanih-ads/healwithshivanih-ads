@@ -110,6 +110,34 @@ def update_status(data_dir: Path, item_id: str, status: str, note: str = "") -> 
     return None
 
 
+def mark_attached(
+    data_dir: Path,
+    item_id: str,
+    *,
+    attached_as: str,        # "claim" | "alias" | "notes"
+    target_kind: str,        # "topic" | "mechanism" | "symptom" | "supplement" | "claim"
+    target_slug: str,
+    note: str = "",
+) -> Optional[dict[str, Any]]:
+    """Flip a backlog item to `attached` and record where it landed.
+
+    Caller is responsible for the actual file mutation (creating the claim,
+    adding the alias, etc.). This is just bookkeeping.
+    """
+    items = _load(data_dir)
+    for it in items:
+        if it.get("id") == item_id:
+            it["status"] = "attached"
+            it["status_changed_at"] = datetime.now(timezone.utc).isoformat()
+            it["attached_as"] = attached_as
+            it["attached_to"] = f"{target_kind}/{target_slug}"
+            if note:
+                it["status_note"] = note
+            _save(data_dir, items)
+            return it
+    return None
+
+
 def delete(data_dir: Path, item_id: str) -> bool:
     items = _load(data_dir)
     new_items = [it for it in items if it.get("id") != item_id]
