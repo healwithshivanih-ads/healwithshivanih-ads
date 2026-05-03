@@ -74,9 +74,11 @@ export function NewClientForm() {
 
   if (!open) {
     return (
-      <Button onClick={() => setOpen(true)} variant="default">
-        + New client
-      </Button>
+      <div className="flex justify-end">
+        <Button onClick={() => setOpen(true)} variant="default">
+          + New client
+        </Button>
+      </div>
     );
   }
 

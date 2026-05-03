@@ -32,19 +32,19 @@ export default async function ClientsPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-start justify-between gap-4 flex-wrap">
-        <div>
-          <h1 className="text-3xl font-bold">Clients</h1>
-          <p className="text-muted-foreground mt-1">
-            Reading from{" "}
-            <code className="font-mono text-xs">
-              {getPlansRoot()}/clients/
-            </code>
-            .
-          </p>
-        </div>
-        <NewClientForm />
+      <div>
+        <h1 className="text-3xl font-bold">Clients</h1>
+        <p className="text-muted-foreground mt-1">
+          Reading from{" "}
+          <code className="font-mono text-xs">
+            {getPlansRoot()}/clients/
+          </code>
+          .
+        </p>
       </div>
+
+      {/* Form renders as a full-width block so there's no wasted side-space */}
+      <NewClientForm />
 
       {sorted.length === 0 ? (
         <Card>

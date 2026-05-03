@@ -28,6 +28,7 @@ interface Props {
   clients: Client[];
   symptoms: Opt[];
   topics: Opt[];
+  initialClientId?: string;
 }
 
 interface UploadedRef {
@@ -549,11 +550,16 @@ function ChatPanel({
   );
 }
 
-export function AssessClient({ clients, symptoms, topics }: Props) {
+export function AssessClient({ clients, symptoms, topics, initialClientId }: Props) {
   const router = useRouter();
   const symptomOptions = useMemo(() => toMultiSelectOptions(symptoms), [symptoms]);
   const topicOptions = useMemo(() => toMultiSelectOptions(topics), [topics]);
-  const [clientId, setClientId] = useState<string>(clients[0]?.client_id ?? "");
+  const [clientId, setClientId] = useState<string>(
+    // Prefer the URL-supplied initialClientId if it matches a real client
+    (initialClientId && clients.find((c) => c.client_id === initialClientId))
+      ? initialClientId
+      : (clients[0]?.client_id ?? "")
+  );
   const [selectedSymptoms, setSelectedSymptoms] = useState<string[]>([]);
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
   const [complaints, setComplaints] = useState("");

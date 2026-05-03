@@ -4,7 +4,12 @@ import { AssessClient } from "./assess-client";
 
 export const dynamic = "force-dynamic";
 
-export default async function AssessPage() {
+export default async function AssessPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ client?: string }>;
+}) {
+  const { client: clientParam } = await searchParams;
   const [symptoms, topics, clients] = await Promise.all([
     loadAllOfKind<Symptom>("symptoms"),
     loadAllOfKind<Topic>("topics"),
@@ -42,6 +47,7 @@ export default async function AssessPage() {
         clients={clientOpts}
         symptoms={symptomOpts}
         topics={topicOpts}
+        initialClientId={clientParam}
       />
     </div>
   );

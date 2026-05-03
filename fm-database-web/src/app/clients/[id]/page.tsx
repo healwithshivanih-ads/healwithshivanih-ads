@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -15,6 +16,9 @@ import {
   loadClientSessions,
 } from "@/lib/fmdb/loader-extras";
 import { loadAllPlans } from "@/lib/fmdb/loader";
+import fs from "node:fs/promises";
+import path from "node:path";
+import { getPlansRoot } from "@/lib/fmdb/paths";
 
 export const dynamic = "force-dynamic";
 
@@ -49,6 +53,15 @@ export default async function ClientDetailPage({
     client.measurements as Record<string, unknown> | undefined
   );
 
+  // List uploaded files from clients/<id>/files/ if the folder exists
+  const filesDir = path.join(getPlansRoot(), "clients", id, "files");
+  let uploadedFiles: string[] = [];
+  try {
+    uploadedFiles = await fs.readdir(filesDir);
+  } catch {
+    // folder doesn't exist yet — fine
+  }
+
   return (
     <div className="space-y-6">
       <div>
@@ -65,6 +78,29 @@ export default async function ClientDetailPage({
           {client.client_id} · {client.age_band ?? "—"} · {client.sex ?? "—"} ·
           intake {client.intake_date ?? "—"}
         </p>
+      </div>
+
+      {/* ── Action bar ── */}
+      <div className="flex flex-wrap gap-3 p-4 rounded-lg border bg-muted/30">
+        <div className="flex-1 min-w-0">
+          <p className="text-sm font-medium">Next steps</p>
+          <p className="text-xs text-muted-foreground mt-0.5">
+            Run an assessment to upload lab reports / food journals and generate
+            a draft plan. Files are stored under{" "}
+            <code className="font-mono">
+              fm-plans/clients/{id}/files/
+            </code>{" "}
+            automatically.
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-2 items-center shrink-0">
+          <Link href={`/assess?client=${id}`}>
+            <Button>🧠 Run assessment</Button>
+          </Link>
+          <Link href={`/plans/new?client=${id}`}>
+            <Button variant="outline">＋ New plan</Button>
+          </Link>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -212,6 +248,32 @@ export default async function ClientDetailPage({
                 ))}
               </TableBody>
             </Table>
+          )}
+        </CardContent>
+      </Card>
+
+      {/* ── Uploaded files ── */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Uploaded files ({uploadedFiles.length})</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {uploadedFiles.length === 0 ? (
+            <p className="text-sm text-muted-foreground">
+              No files yet. Lab reports and food journals are uploaded during the{" "}
+              <Link href={`/assess?client=${id}`} className="underline">
+                assessment workflow
+              </Link>
+              .
+            </p>
+          ) : (
+            <ul className="space-y-1">
+              {uploadedFiles.sort().map((f) => (
+                <li key={f} className="text-sm font-mono text-muted-foreground">
+                  {f}
+                </li>
+              ))}
+            </ul>
           )}
         </CardContent>
       </Card>
