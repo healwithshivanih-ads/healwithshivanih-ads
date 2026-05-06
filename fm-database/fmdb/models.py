@@ -205,6 +205,7 @@ class Symptom(BaseModel):
     when_to_refer: str = ""
     linked_to_topics: list[str] = Field(default_factory=list)
     linked_to_mechanisms: list[str] = Field(default_factory=list)
+    notes_for_coach: str = ""
     sources: list[SourceCitation] = Field(default_factory=list)
     version: int = 1
     status: EntityStatus = EntityStatus.active
@@ -233,6 +234,7 @@ class Mechanism(BaseModel):
     downstream_effects: list[str] = Field(default_factory=list)
     related_mechanisms: list[str] = Field(default_factory=list)
     linked_to_topics: list[str] = Field(default_factory=list)
+    notes_for_coach: str = ""
     sources: list[SourceCitation] = Field(default_factory=list)
     evidence_tier: EvidenceTier
     version: int = 1
@@ -292,6 +294,7 @@ class Topic(BaseModel):
     key_mechanisms: list[str] = Field(default_factory=list)
     coaching_scope_notes: str = ""
     clinician_scope_notes: str = ""
+    notes_for_coach: str = ""
     sources: list[SourceCitation] = Field(default_factory=list)
     evidence_tier: EvidenceTier
     version: int = 1
