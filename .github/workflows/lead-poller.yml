@@ -1,9 +1,9 @@
 name: Lead Poller (all events)
 
 on:
-  schedule:
-    # Every 10 minutes
-    - cron: '*/10 * * * *'
+  # DISABLED 2026-05-06 — replaced by real-time Meta webhook at
+  # https://ochre-followup.fly.dev/api/webhooks/meta + cron tick safety net.
+  # Keeping file for reference only.
   workflow_dispatch:
 
 jobs:
