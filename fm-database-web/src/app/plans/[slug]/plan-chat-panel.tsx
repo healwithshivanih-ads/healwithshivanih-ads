@@ -37,8 +37,13 @@ function ChatBubble({ turn }: { turn: ChatTurn & { updated?: boolean } }) {
         }`}
       >
         {turn.content}
-        {!isUser && (turn as ChatTurn & { updated?: boolean }).updated && (
-          <p className="mt-1 text-[11px] font-medium text-emerald-600">✓ Plan updated</p>
+        {!isUser && (turn as ChatTurn & { updated?: boolean; revertedToDraft?: boolean }).updated && (
+          <p className="mt-1 text-[11px] font-medium text-emerald-600">
+            ✓ Plan updated
+            {(turn as ChatTurn & { updated?: boolean; revertedToDraft?: boolean }).revertedToDraft && (
+              <span className="ml-1 text-amber-600">· moved back to Draft</span>
+            )}
+          </p>
         )}
       </div>
     </div>
@@ -80,10 +85,11 @@ export function PlanChatPanel({ slug, clientId, isLocked }: Props) {
         return;
       }
 
-      const assistantTurn: ChatTurn & { updated?: boolean } = {
+      const assistantTurn: ChatTurn & { updated?: boolean; revertedToDraft?: boolean } = {
         role: "assistant",
         content: result.reply ?? "Done.",
         updated: result.updated,
+        revertedToDraft: result.revertedToDraft,
       };
       setHistory((h) => [...h, assistantTurn]);
     });
@@ -96,21 +102,17 @@ export function PlanChatPanel({ slug, clientId, isLocked }: Props) {
     }
   }
 
-  if (isLocked) {
-    return (
-      <div className="rounded-lg border border-dashed bg-muted/30 px-4 py-6 text-center text-sm text-muted-foreground">
-        Chat is only available for draft plans.
-      </div>
-    );
-  }
-
   return (
     <div className="flex flex-col gap-3">
       {/* Intro */}
       <div className="rounded-md bg-muted/40 border px-3 py-2.5 text-xs text-muted-foreground space-y-1">
         <p className="font-medium text-foreground/80">💬 Ask me to modify this plan</p>
-        <p>Try: <em>"Add magnesium glycinate 400mg at bedtime"</em>, <em>"Remove the second lab test"</em>, <em>"Change lifestyle to include daily 20-min walk"</em></p>
-        <p className="text-[11px]">For meal plan letter edits, use the Export tab → Generate client documents → refinement chat.</p>
+        <p>Try: <em>&ldquo;Add magnesium glycinate 400mg at bedtime&rdquo;</em>, <em>&ldquo;Remove the second lab test&rdquo;</em>, <em>&ldquo;Change lifestyle to include daily 20-min walk&rdquo;</em></p>
+        {isLocked ? (
+          <p className="text-amber-700 font-medium">⚠ Making changes will move this plan back to Draft status.</p>
+        ) : (
+          <p className="text-[11px]">For meal plan letter edits, use the Export tab → Generate client documents → refinement chat.</p>
+        )}
       </div>
 
       {/* Chat history */}

@@ -2,7 +2,7 @@
 
 import { runShim } from "@/lib/fmdb/shim";
 import { loadPlanBySlug } from "@/lib/fmdb/loader";
-import { updatePlan } from "./actions";
+import { updatePlanForChat } from "./actions";
 import type { Plan } from "@/lib/fmdb/types";
 import path from "node:path";
 import fs from "node:fs/promises";
@@ -18,6 +18,7 @@ export interface PlanChatResult {
   ok: boolean;
   reply?: string;
   updated?: boolean; // true if a patch was applied
+  revertedToDraft?: boolean; // true if plan was moved from ready back to draft
   error?: string;
 }
 
@@ -42,10 +43,11 @@ export async function planChatAction(
   const plan = await loadPlanBySlug(slug);
   if (!plan) return { ok: false, error: `Plan ${slug} not found` };
 
-  // Only allow chat on drafts
+  // Allow chat on draft + ready_to_publish (ready plans revert to draft on edit)
   const status = (plan.status ?? plan._bucket) as string;
-  if (status !== "draft") {
-    return { ok: false, error: `Plan is ${status} — only draft plans can be edited via chat.` };
+  const editableStatuses = ["draft", "ready_to_publish", "ready"];
+  if (!editableStatuses.includes(status)) {
+    return { ok: false, error: `Plan is ${status} — only draft and ready-to-publish plans can be edited via chat.` };
   }
 
   // Load client data
@@ -82,13 +84,15 @@ export async function planChatAction(
 
   // Apply patch if non-empty
   let updated = false;
+  let revertedToDraft = false;
   if (Object.keys(patch).length > 0) {
-    const applyResult = await updatePlan(slug, patch as Partial<Plan>);
+    const applyResult = await updatePlanForChat(slug, patch as Partial<Plan>);
     if (!applyResult.ok) {
       return { ok: false, error: (applyResult as { ok: false; error: string }).error };
     }
     updated = true;
+    revertedToDraft = (applyResult as { ok: true; revertedToDraft?: boolean }).revertedToDraft ?? false;
   }
 
-  return { ok: true, reply, updated };
+  return { ok: true, reply, updated, revertedToDraft };
 }

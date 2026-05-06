@@ -26,6 +26,7 @@ import {
   createSuccessor,
 } from "./lifecycle-actions";
 import { ClientLetterButton } from "@/app/clients/[id]/client-letter-button";
+import { PlanChatPanel } from "./plan-chat-panel";
 import type { PlanStatus } from "@/lib/fmdb/types";
 
 interface StatusEvent {
@@ -74,7 +75,7 @@ export function LifecyclePanel({
   allPlanSlugs,
 }: LifecyclePanelProps) {
   const router = useRouter();
-  const [tab, setTab] = useState<"lifecycle" | "export">("lifecycle");
+  const [tab, setTab] = useState<"lifecycle" | "export" | "chat">("lifecycle");
 
   // Shared pending state
   const [isPending, startTransition] = useTransition();
@@ -207,6 +208,7 @@ export function LifecyclePanel({
           {([
             ["lifecycle", "🚀 Lifecycle"],
             ["export", "📤 Export"],
+            ["chat", "💬 Chat"],
           ] as const).map(([key, label]) => (
             <button
               key={key}
@@ -493,6 +495,17 @@ export function LifecyclePanel({
               <ClientLetterButton planSlug={slug} clientId={clientId ?? ""} />
             </div>
           </>
+        )}
+
+        {/* ══════════════════════════════════════════════════════
+            CHAT TAB
+        ══════════════════════════════════════════════════════ */}
+        {tab === "chat" && (
+          <PlanChatPanel
+            slug={slug}
+            clientId={clientId ?? ""}
+            isLocked={status !== "draft"}
+          />
         )}
 
       </CardContent>

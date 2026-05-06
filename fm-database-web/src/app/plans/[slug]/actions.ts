@@ -153,6 +153,45 @@ export async function updatePlan(
 }
 
 /**
+ * Like updatePlan but also allows ready_to_publish plans — reverts them to draft
+ * so the coach can continue editing via chat. Published/revoked/superseded are blocked.
+ */
+export async function updatePlanForChat(
+  slug: string,
+  patch: PlanPatch
+): Promise<{ ok: true; revertedToDraft?: boolean } | { ok: false; error: string }> {
+  const current = await loadPlanBySlug(slug);
+  if (!current) return { ok: false, error: `Plan ${slug} not found` };
+
+  const status = (current.status ?? current._bucket) as string;
+  const editableStatuses = ["draft", "ready_to_publish", "ready"];
+  if (!editableStatuses.includes(status)) {
+    return {
+      ok: false,
+      error: `Plan is ${status} — only draft and ready-to-publish plans can be edited via chat.`,
+    };
+  }
+
+  const { _bucket, _file, ...rest } = current;
+  void _bucket;
+  void _file;
+
+  const revertedToDraft = status !== "draft";
+  const next: Plan = {
+    ...rest,
+    ...patch,
+    slug,
+    // Revert to draft if currently in ready_to_publish
+    ...(revertedToDraft ? { status: "draft" } : {}),
+  } as Plan;
+
+  await writePlan(next);
+  revalidatePath(`/plans/${slug}`);
+  revalidatePath("/plans");
+  return { ok: true, revertedToDraft };
+}
+
+/**
  * Permanently delete a plan file from disk.
  * Published plans cannot be deleted — use Revoke instead.
  */
