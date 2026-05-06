@@ -154,6 +154,7 @@ export default async function PlanDetailPage({
             resourceOptions={resources}
             supplementSources={supplementSources}
             locked={locked}
+            clientId={plan.client_id as string | undefined}
           />
         </div>
         <aside>

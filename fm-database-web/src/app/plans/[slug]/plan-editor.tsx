@@ -12,6 +12,7 @@ import { updatePlan, saveSupplementSources } from "./actions";
 import type { SupplementSourcesMap } from "./actions";
 import type { Plan } from "@/lib/fmdb/types";
 import { ProtocolTemplatePicker } from "./protocol-template-picker";
+import { PlanChatPanel } from "./plan-chat-panel";
 
 interface SupplementItem {
   supplement_slug: string;
@@ -196,6 +197,8 @@ export interface PlanEditorProps {
   supplementSources: SupplementSourcesMap;
   /** True when on-disk status is anything other than "draft". */
   locked: boolean;
+  /** Client ID for the chat panel */
+  clientId?: string;
 }
 
 function clone<T>(x: T): T {
@@ -750,6 +753,7 @@ export function PlanEditor(props: PlanEditorProps) {
     remedyOptions,
     supplementSources: initialSources,
     locked,
+    clientId,
   } = props;
 
   const [plan, setPlan] = useState<Plan>(() => clone(initial));
@@ -924,6 +928,7 @@ export function PlanEditor(props: PlanEditorProps) {
           <TabsTrigger value="tracking">Tracking</TabsTrigger>
           <TabsTrigger value="resources">Resources</TabsTrigger>
           <TabsTrigger value="notes">Notes &amp; Raw</TabsTrigger>
+          <TabsTrigger value="chat">💬 Chat</TabsTrigger>
         </TabsList>
 
         {/* ─────────── Assessment ─────────── */}
@@ -1766,6 +1771,22 @@ export function PlanEditor(props: PlanEditorProps) {
               </CardContent>
             </Card>
           </div>
+        </TabsContent>
+
+        {/* ─────────── Chat ─────────── */}
+        <TabsContent value="chat">
+          <Card>
+            <CardHeader>
+              <CardTitle>AI Plan Assistant</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <PlanChatPanel
+                slug={plan.slug as string}
+                clientId={clientId ?? ""}
+                isLocked={locked}
+              />
+            </CardContent>
+          </Card>
         </TabsContent>
       </Tabs>
 
