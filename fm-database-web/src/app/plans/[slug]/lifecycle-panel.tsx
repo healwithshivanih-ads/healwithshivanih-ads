@@ -24,8 +24,8 @@ import {
   renderPlan,
   renderLabOrders,
   createSuccessor,
-  generateClientLetter,
 } from "./lifecycle-actions";
+import { ClientLetterButton } from "@/app/clients/[id]/client-letter-button";
 import type { PlanStatus } from "@/lib/fmdb/types";
 
 interface StatusEvent {
@@ -80,9 +80,6 @@ export function LifecyclePanel({
   const [isPending, startTransition] = useTransition();
 
   // Export tab state
-  const [letterPending, startLetterTransition] = useTransition();
-  const [letterMarkdown, setLetterMarkdown] = useState<string | null>(null);
-  const [letterHtml, setLetterHtml] = useState<string | null>(null);
   const [previewText, setPreviewText] = useState<string | null>(null);
   const [previewFmt, setPreviewFmt] = useState<"markdown" | "html">("markdown");
 
@@ -486,67 +483,14 @@ export function LifecyclePanel({
               )}
             </div>
 
-            {/* AI meal plan */}
+            {/* AI meal plan — full 4-type selector */}
             <div className="space-y-2 rounded-md border border-emerald-200 bg-emerald-50/40 p-3">
-              <div className="text-xs font-medium text-emerald-800">❤️ Generate meal plan</div>
+              <div className="text-xs font-medium text-emerald-800">❤️ Generate client documents</div>
               <p className="text-[11px] text-muted-foreground">
-                AI writes a warm, personalised 2-week meal plan in your voice — Indian recipes,
-                supplement guidance, lifestyle tips. Uses the client&apos;s dietary preferences and
-                non-negotiables. Takes 30–60 s.
+                Meal plan, supplement guide, coaching plan, or all-in-one. Uses the client&apos;s
+                dietary preferences and plan data. Saves to disk — revisit any time.
               </p>
-              <div className="flex flex-wrap gap-2">
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className="border-emerald-500 text-emerald-700 hover:bg-emerald-50"
-                  disabled={letterPending}
-                  onClick={() => {
-                    startLetterTransition(async () => {
-                      const res = await generateClientLetter(slug, clientId ?? "");
-                      if (res.ok && res.markdown) {
-                        setLetterMarkdown(res.markdown);
-                        setLetterHtml(res.html ?? null); // branded HTML from brand_html.py
-                        toast.success("Meal plan generated!");
-                      } else {
-                        toast.error(res.error ?? "Failed to generate meal plan");
-                      }
-                    });
-                  }}
-                >
-                  {letterPending ? "✍️ Writing…" : "✍️ Generate Meal Plan"}
-                </Button>
-                {letterMarkdown && (
-                  <>
-                    <Button size="sm" variant="outline"
-                      onClick={() => downloadAs(`${slug}-meal-plan.md`, letterMarkdown, "text/markdown")}>
-                      ⬇ Download .md
-                    </Button>
-                    {letterHtml ? (
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="border-indigo-400 text-indigo-700 hover:bg-indigo-50"
-                        onClick={() => downloadAs(`${slug}-meal-plan.html`, letterHtml, "text/html")}
-                      >
-                        ⬇ HTML (print-ready)
-                      </Button>
-                    ) : null}
-                    <Button size="sm" variant="ghost" onClick={() => { setLetterMarkdown(null); setLetterHtml(null); }}>
-                      Dismiss
-                    </Button>
-                  </>
-                )}
-              </div>
-              {letterHtml && (
-                <p className="text-[10px] text-indigo-600">
-                  Open the HTML in Chrome → <kbd className="bg-muted px-1 rounded">Cmd+P → Save as PDF</kbd> for a print-ready document.
-                </p>
-              )}
-              {letterMarkdown && (
-                <pre className="overflow-auto bg-white border rounded p-3 text-[11px] max-h-[32rem] whitespace-pre-wrap">
-                  {letterMarkdown}
-                </pre>
-              )}
+              <ClientLetterButton planSlug={slug} clientId={clientId ?? ""} />
             </div>
           </>
         )}
