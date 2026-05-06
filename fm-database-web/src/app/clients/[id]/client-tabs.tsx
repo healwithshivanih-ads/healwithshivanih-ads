@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/table";
 import { AssessClient } from "@/app/assess/assess-client";
 import { HealthTrends } from "./health-trends";
+import { ReportsTab } from "./reports-tab";
 import { ClientLetterButton } from "./client-letter-button";
 import { DeleteClientButton } from "./delete-client-button";
 import { PreferencesEditor } from "./preferences-editor";
@@ -65,20 +66,21 @@ interface ClientTabsProps {
   meds: string[];
   allergies: string[];
   keyMarkers: Array<{ label: string; value: number; unit?: string; flag: string; computed?: boolean }>;
-  defaultTab?: "overview" | "assess" | "plans" | "health";
+  defaultTab?: "overview" | "assess" | "plans" | "health" | "reports";
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Tab bar
 // ──────────────────────────────────────────────────────────────────────────────
 
-type Tab = "overview" | "assess" | "plans" | "health";
+type Tab = "overview" | "assess" | "plans" | "health" | "reports";
 
 const TABS: { key: Tab; label: string }[] = [
   { key: "overview", label: "Overview" },
   { key: "assess",   label: "🧠 Assess" },
   { key: "plans",    label: "📋 Plans" },
   { key: "health",   label: "📈 Health" },
+  { key: "reports",  label: "🗂 Reports" },
 ];
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -186,6 +188,11 @@ export function ClientPageTabs({
               <span className="ml-1.5 text-[10px] font-semibold px-1.5 py-0 rounded-full bg-[#D6A2A2]/30 text-[#7A3D3D]">
                 🧪
               </span>
+            )}
+            {t.key === "reports" && (client.external_reports ?? []).length > 0 && (
+              <Badge variant="secondary" className="ml-1.5 text-[10px] px-1.5 py-0">
+                {(client.external_reports as unknown[]).length}
+              </Badge>
             )}
           </button>
         ))}
@@ -920,6 +927,13 @@ export function ClientPageTabs({
             </div>
           )}
         </div>
+      )}
+
+      {/* ══════════════════════════════════════════════════════════════════════
+           REPORTS TAB
+         ══════════════════════════════════════════════════════════════════════ */}
+      {activeTab === "reports" && (
+        <ReportsTab clientId={clientId} />
       )}
 
       {/* ══════════════════════════════════════════════════════════════════════

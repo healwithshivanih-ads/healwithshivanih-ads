@@ -468,3 +468,169 @@ export async function updateClientPreferences(
     return { ok: false, error: e.message ?? "Failed to update client" };
   }
 }
+
+// ── External reports ──────────────────────────────────────────────────────────
+
+export interface ExternalReport {
+  id: string;
+  type: string;
+  display_type: string;
+  file_name: string;
+  file_path: string;           // absolute path on disk
+  date_uploaded: string;       // ISO
+  date_of_report?: string;     // ISO — from report or manually entered
+  lab_name?: string;
+  key_findings: string[];
+  summary: string;
+  extracted: Record<string, unknown>;
+}
+
+export interface UploadReportInput {
+  clientId: string;
+  reportType: string;
+  fileDataBase64: string;
+  fileName: string;
+  dateOfReport?: string;       // optional manual override
+}
+
+export interface UploadReportResult {
+  ok: boolean;
+  report?: ExternalReport;
+  error?: string;
+}
+
+export async function uploadReportAction(input: UploadReportInput): Promise<UploadReportResult> {
+  try {
+    const yaml = await import("js-yaml");
+    const plansRoot = getPlansRoot();
+    const clientDir = path.join(plansRoot, "clients", input.clientId);
+    const reportsDir = path.join(clientDir, "reports");
+    await fs.mkdir(reportsDir, { recursive: true });
+
+    // Save file to disk
+    const ext = path.extname(input.fileName) || ".pdf";
+    const datestamp = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+    const safeName = input.fileName.replace(/[^a-zA-Z0-9._-]/g, "_");
+    const diskName = `${datestamp}-${input.reportType}-${safeName}`;
+    const filePath = path.join(reportsDir, diskName);
+
+    const buf = Buffer.from(input.fileDataBase64, "base64");
+    await fs.writeFile(filePath, buf);
+
+    // Call extraction shim
+    let extracted: Record<string, unknown> = {};
+    let key_findings: string[] = [];
+    let summary = "";
+    let date_of_report: string | undefined = input.dateOfReport;
+    let lab_name: string | undefined;
+
+    try {
+      const shimResult = await runScript("extract-report.py", {
+        file_path: filePath,
+        report_type: input.reportType,
+        file_name: input.fileName,
+        client_id: input.clientId,
+      }, 120_000) as Record<string, unknown>;
+
+      if (shimResult.ok) {
+        extracted = (shimResult.extracted as Record<string, unknown>) ?? {};
+        key_findings = (shimResult.key_findings as string[]) ?? [];
+        summary = (shimResult.summary as string) ?? "";
+        if (!date_of_report) date_of_report = shimResult.date_of_report as string | undefined;
+        lab_name = shimResult.lab_name as string | undefined;
+      } else {
+        // Extraction failed but file is saved — store with empty extracted data
+        summary = `Extraction failed: ${shimResult.error ?? "unknown error"}`;
+      }
+    } catch (err) {
+      summary = `Extraction error: ${String(err)}`;
+    }
+
+    // Build report object
+    const DISPLAY_NAMES: Record<string, string> = {
+      gi_stool_test: "GI Stool Analysis",
+      dutch_test: "DUTCH Hormone Panel",
+      dexa_scan: "DEXA Scan",
+      genetic_test: "Genetic / Nutrigenomic Test",
+      food_sensitivity: "Food Sensitivity Panel",
+      organic_acids: "Organic Acids Test (OAT)",
+      imaging: "Imaging / Radiology Report",
+      other: "Other Report",
+    };
+
+    const reportId = `${Date.now()}-${input.reportType}`;
+    const report: ExternalReport = {
+      id: reportId,
+      type: input.reportType,
+      display_type: DISPLAY_NAMES[input.reportType] ?? input.reportType,
+      file_name: input.fileName,
+      file_path: filePath,
+      date_uploaded: new Date().toISOString().slice(0, 10),
+      date_of_report,
+      lab_name: lab_name || undefined,
+      key_findings,
+      summary,
+      extracted,
+    };
+
+    // Append to client.yaml
+    const clientYaml = path.join(clientDir, "client.yaml");
+    let data: Record<string, unknown> = {};
+    try {
+      const rawYaml = await fs.readFile(clientYaml, "utf8");
+      data = (yaml.load(rawYaml) as Record<string, unknown>) ?? {};
+    } catch { /* new client or missing yaml */ }
+
+    const existing = (data.external_reports as ExternalReport[]) ?? [];
+    data.external_reports = [...existing, report];
+    await fs.writeFile(
+      clientYaml,
+      yaml.dump(data, { noRefs: true, sortKeys: false }),
+      "utf8"
+    );
+
+    revalidatePath(`/clients/${input.clientId}`);
+    return { ok: true, report };
+  } catch (err) {
+    return { ok: false, error: String(err) };
+  }
+}
+
+export async function getClientReportsAction(clientId: string): Promise<ExternalReport[]> {
+  try {
+    const yaml = await import("js-yaml");
+    const plansRoot = getPlansRoot();
+    const clientYaml = path.join(plansRoot, "clients", clientId, "client.yaml");
+    const raw = await fs.readFile(clientYaml, "utf8");
+    const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
+    return (data.external_reports as ExternalReport[]) ?? [];
+  } catch {
+    return [];
+  }
+}
+
+export async function deleteReportAction(clientId: string, reportId: string): Promise<{ ok: boolean; error?: string }> {
+  try {
+    const yaml = await import("js-yaml");
+    const plansRoot = getPlansRoot();
+    const clientDir = path.join(plansRoot, "clients", clientId);
+    const clientYaml = path.join(clientDir, "client.yaml");
+
+    const raw = await fs.readFile(clientYaml, "utf8");
+    const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
+    const reports = (data.external_reports as ExternalReport[]) ?? [];
+
+    const toDelete = reports.find((r) => r.id === reportId);
+    if (toDelete?.file_path) {
+      try { await fs.unlink(toDelete.file_path); } catch { /* already gone */ }
+    }
+
+    data.external_reports = reports.filter((r) => r.id !== reportId);
+    await fs.writeFile(clientYaml, yaml.dump(data, { noRefs: true, sortKeys: false }), "utf8");
+
+    revalidatePath(`/clients/${clientId}`);
+    return { ok: true };
+  } catch (err) {
+    return { ok: false, error: String(err) };
+  }
+}

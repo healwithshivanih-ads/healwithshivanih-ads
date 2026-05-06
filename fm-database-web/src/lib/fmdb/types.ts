@@ -240,6 +240,19 @@ export interface Client {
     computed?: boolean;
   }>;
   lab_markers_date?: string;
+  external_reports?: Array<{
+    id: string;
+    type: string;
+    display_type: string;
+    file_name: string;
+    file_path: string;
+    date_uploaded: string;
+    date_of_report?: string;
+    lab_name?: string;
+    key_findings: string[];
+    summary: string;
+    extracted: Record<string, unknown>;
+  }>;
   health_snapshots?: Array<{
     date: string;           // YYYY-MM-DD
     source: string;         // e.g. "transcript-call.pdf", "manual-2026-05-04"
