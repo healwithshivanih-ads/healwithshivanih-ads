@@ -44,7 +44,8 @@ interface LifecyclePayload {
 
 function runShim<T = unknown>(
   scriptName: string,
-  payload: unknown
+  payload: unknown,
+  timeoutMs: number = TIMEOUT_MS
 ): Promise<T> {
   return new Promise<T>((resolve) => {
     const py = path.join(FMDB_ROOT, ".venv/bin/python");
@@ -59,7 +60,7 @@ function runShim<T = unknown>(
       } catch {
         // ignore
       }
-    }, TIMEOUT_MS);
+    }, timeoutMs);
 
     child.stdout.on("data", (b) => (stdout += b.toString()));
     child.stderr.on("data", (b) => (stderr += b.toString()));
@@ -156,6 +157,102 @@ export async function renderPlan(
   return runShim<RenderResult>("plan-render.py", { slug, format });
 }
 
+export async function renderLabOrders(
+  slug: string,
+  format: "markdown" | "html"
+): Promise<RenderResult> {
+  const plan = await loadPlanBySlug(slug);
+  if (!plan) return { ok: false, error: `Plan ${slug} not found.` };
+
+  interface LabOrder { test: string; reason?: string }
+  const labs = (plan.lab_orders as LabOrder[] | undefined) ?? [];
+  if (labs.length === 0) {
+    return { ok: false, error: "No lab orders on this plan yet." };
+  }
+
+  const clientName = (plan.client_id as string | undefined) ?? "Client";
+  const date = new Date().toLocaleDateString("en-IN", {
+    day: "numeric", month: "long", year: "numeric",
+  });
+
+  const md = [
+    `# Lab Order Sheet — ${clientName}`,
+    `*Prepared by Functional Health Coach Shivani Hari · ${date}*`,
+    "",
+    "Please get the following tests done **before your next session**.",
+    "Go to a diagnostic lab of your choice (SRL, Dr Lal, Metropolis, or your local lab).",
+    "",
+    "---",
+    "",
+    "## Tests to order",
+    "",
+    ...labs.map((l: LabOrder) => {
+      const reason = l.reason ? `\n  > *${l.reason}*` : "";
+      return `- **${l.test}**${reason}`;
+    }),
+    "",
+    "---",
+    "",
+    "**Important:**",
+    "- Most tests require a **fasting blood draw** (10–12 hours, water only). Check with your lab.",
+    "- If you have your period, note it on the requisition — some hormone tests need cycle-day context.",
+    "- Share the soft copy report with me as soon as you receive it.",
+    "",
+    "*Questions? WhatsApp me directly.*",
+  ].join("\n");
+
+  if (format === "markdown") {
+    return { ok: true, content: md };
+  }
+
+  // Simple HTML version
+  const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab Order Sheet — ${clientName}</title>
+<style>
+  body { font-family: Georgia, serif; max-width: 720px; margin: 48px auto; padding: 0 24px; color: #1a1a1a; line-height: 1.7; }
+  h1 { font-size: 1.6rem; margin-bottom: 4px; }
+  .subtitle { color: #666; font-size: 0.9rem; margin-bottom: 24px; }
+  hr { border: none; border-top: 1px solid #ddd; margin: 24px 0; }
+  h2 { font-size: 1.15rem; margin-bottom: 12px; }
+  ul { padding-left: 20px; }
+  li { margin-bottom: 10px; }
+  li strong { font-size: 1rem; }
+  .reason { display: block; color: #555; font-size: 0.875rem; font-style: italic; margin-top: 2px; }
+  .note { background: #fafaf8; border: 1px solid #e5e5e0; border-radius: 6px; padding: 16px 20px; font-size: 0.9rem; }
+  .note ul { margin: 8px 0 0 0; }
+  @media print { body { margin: 24px; } }
+</style>
+</head>
+<body>
+  <h1>Lab Order Sheet — ${clientName}</h1>
+  <p class="subtitle">Prepared by Functional Health Coach Shivani Hari &middot; ${date}</p>
+  <p>Please get the following tests done <strong>before your next session</strong>.<br>
+  Go to a diagnostic lab of your choice (SRL, Dr Lal, Metropolis, or your local lab).</p>
+  <hr>
+  <h2>Tests to order</h2>
+  <ul>
+    ${labs.map((l: LabOrder) => `<li><strong>${l.test}</strong>${l.reason ? `<span class="reason">${l.reason}</span>` : ""}</li>`).join("\n    ")}
+  </ul>
+  <hr>
+  <div class="note">
+    <strong>Important:</strong>
+    <ul>
+      <li>Most tests require a <strong>fasting blood draw</strong> (10–12 hours, water only). Check with your lab.</li>
+      <li>If you have your period, note it on the requisition — some hormone tests need cycle-day context.</li>
+      <li>Share the soft copy report with me as soon as you receive it.</li>
+    </ul>
+    <p style="margin-bottom:0"><em>Questions? WhatsApp me directly.</em></p>
+  </div>
+</body>
+</html>`;
+
+  return { ok: true, content: html };
+}
+
 /**
  * Create a successor draft plan from an existing published plan. Loads the
  * old plan, clones its YAML into drafts/<newSlug>.yaml with `supersedes`
@@ -212,4 +309,158 @@ export async function createSuccessor(
   bust(newSlug);
   revalidatePath("/plans");
   return { ok: true };
+}
+
+// ---------------------------------------------------------------------------
+// Generate AI client letter (friendly, personalised, meal-plan + recipes)
+// ---------------------------------------------------------------------------
+
+export interface ClientLetterResult {
+  ok: boolean;
+  markdown?: string | null;
+  html?: string | null;
+  error?: string | null;
+}
+
+export interface WeightLossParams {
+  enabled: boolean;
+  goal_kg?: number;
+  goal_weeks?: number;
+  activity_level?: "sedentary" | "light" | "moderate" | "active";
+  pace?: "slow" | "moderate" | "faster";
+  exercise_current?: string;
+  exercise_open_to?: string;
+  exercise_days_per_week?: number;
+  exercise_limitations?: string;
+}
+
+export interface RefinedLetterResult {
+  ok: boolean;
+  markdown?: string | null;
+  html?: string | null;
+  reply?: string | null;
+  error?: string | null;
+}
+
+export interface ChatTurn {
+  role: "user" | "assistant";
+  content: string;
+}
+
+export async function refineLetter(
+  currentMarkdown: string,
+  message: string,
+  history: ChatTurn[],
+  planSlug?: string,
+  clientId?: string
+): Promise<RefinedLetterResult> {
+  const result = await runShim<RefinedLetterResult>(
+    "refine-letter.py",
+    {
+      markdown: currentMarkdown,
+      message,
+      history,
+      plan_slug: planSlug ?? "",
+      client_id: clientId ?? "",
+    },
+    180_000
+  );
+  // Auto-save refined version to disk
+  if (result.ok && result.markdown && planSlug && clientId) {
+    await saveMealPlan(planSlug, clientId, result.markdown, result.html ?? null);
+  }
+  return result;
+}
+
+// ---------------------------------------------------------------------------
+// Meal plan persistence — save/load to clients/<id>/meal-plans/<slug>.md|html
+// ---------------------------------------------------------------------------
+
+export interface MealPlanData {
+  ok: boolean;
+  markdown?: string;
+  html?: string;
+  savedAt?: string;   // ISO timestamp of last save
+  error?: string;
+}
+
+async function getMealPlanDir(clientId: string): Promise<string> {
+  const root = getPlansRoot();
+  const dir = path.join(root, "clients", clientId, "meal-plans");
+  await fs.mkdir(dir, { recursive: true });
+  return dir;
+}
+
+export type LetterType = "consolidated" | "meal_plan" | "supplement_plan" | "coaching_plan";
+
+/** File stem for a given letter type — consolidated keeps the bare planSlug for backwards compat. */
+function letterFileStem(planSlug: string, letterType: LetterType): string {
+  return letterType === "consolidated" ? planSlug : `${planSlug}-${letterType}`;
+}
+
+export async function saveMealPlan(
+  planSlug: string,
+  clientId: string,
+  markdown: string,
+  html: string | null,
+  letterType: LetterType = "consolidated"
+): Promise<{ ok: boolean; error?: string }> {
+  try {
+    const dir = await getMealPlanDir(clientId);
+    const stem = letterFileStem(planSlug, letterType);
+    await fs.writeFile(path.join(dir, `${stem}.md`), markdown, "utf-8");
+    if (html) {
+      await fs.writeFile(path.join(dir, `${stem}.html`), html, "utf-8");
+    }
+    return { ok: true };
+  } catch (e) {
+    return { ok: false, error: String(e) };
+  }
+}
+
+export async function loadMealPlan(
+  planSlug: string,
+  clientId: string,
+  letterType: LetterType = "consolidated"
+): Promise<MealPlanData> {
+  try {
+    const root = getPlansRoot();
+    const stem = letterFileStem(planSlug, letterType);
+    const mdPath = path.join(root, "clients", clientId, "meal-plans", `${stem}.md`);
+    const htmlPath = path.join(root, "clients", clientId, "meal-plans", `${stem}.html`);
+
+    const markdown = await fs.readFile(mdPath, "utf-8");
+    const stat = await fs.stat(mdPath);
+    let html: string | undefined;
+    try { html = await fs.readFile(htmlPath, "utf-8"); } catch { /* html optional */ }
+
+    return { ok: true, markdown, html, savedAt: stat.mtime.toISOString() };
+  } catch {
+    return { ok: false };
+  }
+}
+
+export async function generateClientLetter(
+  planSlug: string,
+  clientId: string,
+  weightLoss?: WeightLossParams,
+  letterType: LetterType = "consolidated",
+  coachNotes?: string
+): Promise<ClientLetterResult> {
+  const result = await runShim<ClientLetterResult>(
+    "render-client-letter.py",
+    {
+      plan_slug: planSlug,
+      client_id: clientId,
+      weight_loss: weightLoss ?? null,
+      letter_type: letterType,
+      coach_notes: coachNotes ?? "",
+    },
+    240_000   // 12-week plan is larger — 4 min ceiling
+  );
+  // Auto-save to disk so the coach can navigate away and come back
+  if (result.ok && result.markdown) {
+    await saveMealPlan(planSlug, clientId, result.markdown, result.html ?? null, letterType);
+  }
+  return result;
 }

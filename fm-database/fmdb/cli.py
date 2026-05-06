@@ -923,17 +923,32 @@ def cmd_client_new(args: argparse.Namespace) -> None:
     root = _plans_root(args)
     plan_storage.ensure_layout(root)
     now = _dt.now(_tz.utc)
+
+    # Resolve DOB → age_band if dob provided
+    dob: "_date | None" = None
+    age_band = args.age_band or ""
+    if args.dob:
+        dob = _date.fromisoformat(args.dob)
+        if not age_band:
+            # Compute 5-year band from DOB
+            today = _date.today()
+            age = today.year - dob.year - ((today.month, today.day) < (dob.month, dob.day))
+            lo = (age // 5) * 5
+            age_band = f"{lo}-{lo + 5}"
+
     client = Client(
         client_id=args.client_id,
         display_name=args.display_name or "",
         intake_date=_date.fromisoformat(args.intake_date),
-        age_band=args.age_band,
+        date_of_birth=dob,
+        age_band=age_band,
         sex=args.sex,
         active_conditions=list(args.condition or []),
         current_medications=list(args.medication or []),
         known_allergies=list(args.allergy or []),
         goals=list(args.goal or []),
         notes=args.notes or "",
+        mobile_number=args.mobile or None,
         created_at=now,
         updated_at=now,
         updated_by=args.updated_by,
@@ -1682,13 +1697,15 @@ def main() -> None:
     cn.add_argument("client_id", help="opaque id (lowercase-hyphen)")
     cn.add_argument("--display-name", help="for coach reference; can be a pseudonym")
     cn.add_argument("--intake-date", required=True, help="YYYY-MM-DD")
-    cn.add_argument("--age-band", required=True, help="e.g. 45-50")
+    cn.add_argument("--dob", help="date of birth YYYY-MM-DD (preferred; auto-derives age-band)")
+    cn.add_argument("--age-band", default="", help="e.g. 45-50 (legacy; derived from --dob if not set)")
     cn.add_argument("--sex", required=True, choices=["F", "M", "other"])
     cn.add_argument("--condition", action="append", help="active condition (repeatable)")
     cn.add_argument("--medication", action="append", help="current medication (repeatable)")
     cn.add_argument("--allergy", action="append", help="known allergy (repeatable)")
     cn.add_argument("--goal", action="append", help="client goal (repeatable)")
     cn.add_argument("--notes", help="freeform")
+    cn.add_argument("--mobile", help="mobile number (used for duplicate detection)")
     cn.add_argument("--updated-by", default=os.environ.get("FMDB_USER", "shivani"))
     cn.set_defaults(func=cmd_client_new)
 

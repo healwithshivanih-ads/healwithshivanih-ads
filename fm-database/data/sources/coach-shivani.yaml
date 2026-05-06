@@ -4,13 +4,12 @@ source_type: expert_consensus
 quality: moderate
 authors:
 - Shivani Hari
-notes: >-
-  Personal clinical notes, lived experience, and practice wisdom from functional
-  health coach Shivani Hari. These notes represent practical implementations,
-  protocol refinements, and client-specific insights accumulated through direct
-  coaching practice. Not peer-reviewed — used to supplement evidence-based
-  catalogue entries with real-world context.
-version: 1
+notes: Personal clinical notes, lived experience, and practice wisdom from functional
+  health coach Shivani Hari. These notes represent practical implementations, protocol
+  refinements, and client-specific insights accumulated through direct coaching practice.
+  Not peer-reviewed — used to supplement evidence-based catalogue entries with real-world
+  context.
+version: 3
 status: active
 updated_at: '2026-05-06'
 updated_by: shivani

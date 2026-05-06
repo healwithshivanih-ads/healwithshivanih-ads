@@ -1,0 +1,36 @@
+slug: fenugreek-overnight-soak-blood-sugar
+statement: Soaking fenugreek (methi) seeds overnight and consuming the strained soaking
+  water on an empty stomach may support blood sugar regulation and insulin sensitivity.
+evidence_tier: fm_specific_thin
+rationale: Coach clinical observation. Fenugreek has a plausible mechanism via soluble
+  fibre (galactomannan) slowing glucose absorption and improving insulin receptor
+  sensitivity, with some supporting RCT evidence, but the specific overnight-soak
+  preparation tip is drawn from traditional/FM practice rather than primary literature.
+coaching_translation: Try soaking a teaspoon of methi (fenugreek) seeds in a glass
+  of water overnight. In the morning, strain out the seeds and drink the water on
+  an empty stomach. This is a traditional practice that may help with blood sugar
+  and insulin balance.
+caveats:
+- Source is a coach clinical observation, not a peer-reviewed study — verify with
+  clinician before recommending to clients on glucose-lowering medication, as additive
+  effects are possible.
+- The overnight-soak preparation specifically (vs. seed powder or capsule) has limited
+  direct RCT evidence; benefit is inferred from fenugreek's known mechanisms.
+- Dose of seeds used for soaking was not specified — typical traditional practice
+  is 1–2 teaspoons.
+linked_to_topics:
+- insulin-resistance
+- type-2-diabetes
+linked_to_supplements:
+- fenugreek
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coach-shivani
+  location: Coach Observation
+  quote: Soak methi seeds in water overnight and drink the sieved water the next morning.
+    Good for insulin resistance and diabetes.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

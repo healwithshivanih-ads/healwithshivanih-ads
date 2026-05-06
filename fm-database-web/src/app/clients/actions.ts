@@ -3,58 +3,143 @@
 import { execFile } from "child_process";
 import { promisify } from "util";
 import path from "path";
+import fs from "node:fs/promises";
 import { revalidatePath } from "next/cache";
+import { loadAllClients } from "@/lib/fmdb/loader";
+import { getPlansRoot } from "@/lib/fmdb/paths";
 
 const execFileP = promisify(execFile);
 
 const FMDB_REPO = path.resolve(process.cwd(), "../fm-database");
 const PYTHON = path.join(FMDB_REPO, ".venv/bin/python");
+const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
+
+/**
+ * Correct stdin-piping helper. Node's execFile doesn't actually use the
+ * `input` option — you must write to child.stdin explicitly. Matches the
+ * pattern in lib/fmdb/anthropic.ts:runShim.
+ */
+async function runScript(
+  scriptName: string,
+  payload: unknown,
+  timeoutMs = 90_000
+): Promise<unknown> {
+  const scriptPath = path.join(SCRIPTS_DIR, scriptName);
+  const child = execFile(PYTHON, [scriptPath], {
+    timeout: timeoutMs,
+    maxBuffer: 8 * 1024 * 1024,
+    cwd: FMDB_REPO,
+  });
+  child.stdin?.end(JSON.stringify(payload));
+
+  let stdout = "";
+  let stderr = "";
+  child.stdout?.on("data", (chunk: Buffer | string) => (stdout += chunk));
+  child.stderr?.on("data", (chunk: Buffer | string) => (stderr += chunk));
+
+  await new Promise<void>((resolve, reject) => {
+    child.on("error", reject);
+    child.on("close", () => resolve());
+  });
+
+  if (!stdout.trim()) {
+    throw new Error(`Script produced no output. stderr: ${stderr.slice(0, 600)}`);
+  }
+  return JSON.parse(stdout);
+}
 
 export type CreateClientInput = {
-  client_id: string;
+  // client_id is auto-generated; not collected from the form
   display_name?: string;
   intake_date: string;       // YYYY-MM-DD
-  age_band: string;          // e.g. "45-50"
+  date_of_birth: string;     // YYYY-MM-DD — system calculates age from this
   sex: "F" | "M" | "other";
+  mobile_number: string;     // required — used for duplicate detection
   conditions?: string[];     // free-text
   medications?: string[];
   allergies?: string[];
   goals?: string[];
   notes?: string;
+  dietary_preference?: string;
+  foods_to_avoid?: string;
+  non_negotiables?: string;
 };
 
 export type CreateClientResult =
   | { ok: true; client_id: string }
   | { ok: false; error: string };
 
+/** Normalise a phone number for comparison: strip spaces, dashes, parens, leading zeros */
+function normaliseMobile(n: string): string {
+  return n.replace(/[\s\-().+]/g, "").replace(/^0+/, "");
+}
+
+/** Auto-generate the next client ID by scanning existing cl-NNN dirs. */
+async function nextClientId(): Promise<string> {
+  const root = getPlansRoot();
+  const clientsDir = path.join(root, "clients");
+  let maxN = 0;
+  try {
+    const entries = await fs.readdir(clientsDir);
+    for (const entry of entries) {
+      const m = entry.match(/^cl-(\d+)$/);
+      if (m) maxN = Math.max(maxN, parseInt(m[1], 10));
+    }
+  } catch {
+    // directory doesn't exist yet — start from 0
+  }
+  return `cl-${String(maxN + 1).padStart(3, "0")}`;
+}
+
 /**
  * Create a new client by shelling out to `fmdb client-new`.
- * Mirrors the existing Python CLI semantics so storage stays canonical.
+ * Auto-generates a client ID and checks for duplicate mobile number.
  */
 export async function createClient(
   input: CreateClientInput
 ): Promise<CreateClientResult> {
-  if (!input.client_id || !input.intake_date || !input.age_band || !input.sex) {
-    return { ok: false, error: "client_id, intake_date, age_band, sex are required" };
+  if (!input.intake_date || !input.date_of_birth || !input.sex) {
+    return { ok: false, error: "intake_date, date_of_birth, sex are required" };
   }
-  if (!/^[a-z0-9-]+$/.test(input.client_id)) {
-    return {
-      ok: false,
-      error: "client_id must be lowercase letters, digits, and hyphens",
-    };
+  if (!input.mobile_number?.trim()) {
+    return { ok: false, error: "mobile_number is required" };
   }
+
+  // Duplicate mobile check
+  const norm = normaliseMobile(input.mobile_number.trim());
+  if (norm.length >= 7) {
+    const existing = await loadAllClients();
+    const dupe = existing.find((c) => {
+      const cm = (c as { mobile_number?: string }).mobile_number;
+      return cm && normaliseMobile(cm) === norm;
+    });
+    if (dupe) {
+      return {
+        ok: false,
+        error: `A client with this mobile number already exists: ${dupe.client_id}${
+          (dupe as { display_name?: string }).display_name
+            ? ` (${(dupe as { display_name?: string }).display_name})`
+            : ""
+        }. Check if this is the same person before creating a new record.`,
+      };
+    }
+  }
+
+  const clientId = await nextClientId();
 
   const args: string[] = [
     "-m",
     "fmdb.cli",
     "client-new",
-    input.client_id,
+    clientId,
     "--intake-date",
     input.intake_date,
-    "--age-band",
-    input.age_band,
+    "--dob",
+    input.date_of_birth,
     "--sex",
     input.sex,
+    "--mobile",
+    input.mobile_number.trim(),
   ];
   if (input.display_name) args.push("--display-name", input.display_name);
   for (const c of input.conditions ?? []) args.push("--condition", c);
@@ -75,7 +160,311 @@ export async function createClient(
     return { ok: false, error: stderr.trim() || e.message || "client-new failed" };
   }
 
+  // Patch dietary preference fields directly into the YAML if provided.
+  // Uses replace-or-append so we never create duplicate YAML keys (the Python
+  // client-new CLI already writes these fields as empty strings).
+  if (input.dietary_preference || input.foods_to_avoid || input.non_negotiables) {
+    try {
+      const clientYaml = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
+      const raw = await fs.readFile(clientYaml, "utf8");
+
+      /** Replace an existing `key: ...` line in place, or append if absent. */
+      function patchYamlField(yaml: string, key: string, value: string): string {
+        const v = JSON.stringify(value);
+        const lineRe = new RegExp(`^${key}:.*$`, "m");
+        return lineRe.test(yaml)
+          ? yaml.replace(lineRe, `${key}: ${v}`)
+          : yaml.trimEnd() + `\n${key}: ${v}\n`;
+      }
+
+      let patched = raw;
+      if (input.dietary_preference) patched = patchYamlField(patched, "dietary_preference", input.dietary_preference);
+      if (input.foods_to_avoid)     patched = patchYamlField(patched, "foods_to_avoid",     input.foods_to_avoid);
+      if (input.non_negotiables)    patched = patchYamlField(patched, "non_negotiables",     input.non_negotiables);
+
+      await fs.writeFile(clientYaml, patched, "utf8");
+    } catch {
+      // non-fatal — dietary prefs missing is OK, just won't be in the letter
+    }
+  }
+
   revalidatePath("/clients");
-  revalidatePath(`/clients/${input.client_id}`);
-  return { ok: true, client_id: input.client_id };
+  revalidatePath(`/clients/${clientId}`);
+  return { ok: true, client_id: clientId };
+}
+
+// ── Delete client ──────────────────────────────────────────────────────────
+
+export type DeleteClientResult =
+  | { ok: true }
+  | { ok: false; error: string };
+
+/**
+ * Permanently delete a client directory and all their sessions/files.
+ * No plan-safety check — intended for test cleanup. Re-enable check later.
+ */
+export async function deleteClient(
+  clientId: string
+): Promise<DeleteClientResult> {
+  if (!clientId || !/^[a-z0-9-]+$/.test(clientId)) {
+    return { ok: false, error: "Invalid client id" };
+  }
+
+  const root = getPlansRoot();
+  const clientDir = path.join(root, "clients", clientId);
+
+  try {
+    await fs.rm(clientDir, { recursive: true, force: true });
+  } catch (err) {
+    const e = err as { message?: string };
+    return { ok: false, error: e.message ?? "Failed to delete client directory" };
+  }
+
+  revalidatePath("/clients");
+  return { ok: true };
+}
+
+// ── Transcript parsing for client intake ──────────────────────────────────
+
+export type ParsedClientData = {
+  display_name?: string;
+  date_of_birth?: string;    // YYYY-MM-DD
+  estimated_age?: number;    // if DOB not found
+  sex?: "F" | "M" | "other";
+  mobile_number?: string;
+  active_conditions: string[];
+  current_medications: string[];
+  known_allergies: string[];
+  goals: string[];
+  key_symptoms: string[];
+  notes: string;
+  intake_date?: string;
+  fields_found: number;
+};
+
+export type ParseTranscriptResult =
+  | { ok: true; data: ParsedClientData }
+  | { ok: false; error: string };
+
+/**
+ * Parse a consultation transcript (file upload OR URL) and extract client intake data.
+ * The form uses the result to pre-populate fields; the coach fills any gaps.
+ */
+export async function parseTranscriptForClient(
+  formData: FormData
+): Promise<ParseTranscriptResult> {
+  const url = formData.get("url") as string | null;
+  const file = formData.get("file") as File | null;
+
+  if (!url?.trim() && !file) {
+    return { ok: false, error: "Provide a file or a URL" };
+  }
+
+  let transcript_path: string | null = null;
+  let mime_type = "text/plain";
+  let tmp_path: string | null = null;
+
+  if (file && file.size > 0) {
+    // Save upload to a temp file
+    const os = await import("node:os");
+    const ext = file.name.endsWith(".pdf") ? ".pdf" : ".txt";
+    mime_type = ext === ".pdf" ? "application/pdf" : "text/plain";
+    tmp_path = path.join(os.tmpdir(), `fmdb-intake-${Date.now()}${ext}`);
+    const buf = Buffer.from(await file.arrayBuffer());
+    await fs.writeFile(tmp_path, buf);
+    transcript_path = tmp_path;
+  }
+
+  const payload = JSON.stringify({
+    transcript_path: transcript_path ?? undefined,
+    transcript_url: url?.trim() || undefined,
+    mime_type,
+    dry_run: false,
+  });
+
+  try {
+    const result = await runScript(
+      "extract-client-from-transcript.py",
+      {
+        transcript_path: transcript_path ?? undefined,
+        transcript_url: url?.trim() || undefined,
+        mime_type,
+        dry_run: false,
+      },
+      90_000
+    ) as { ok: boolean; error?: string; [key: string]: unknown };
+
+    if (tmp_path) await fs.unlink(tmp_path).catch(() => {});
+
+    if (!result.ok) {
+      return { ok: false, error: result.error ?? "Script failed" };
+    }
+    const { ok: _ok, error: _err, ...data } = result;
+    return { ok: true, data: data as ParsedClientData };
+  } catch (err) {
+    if (tmp_path) await fs.unlink(tmp_path).catch(() => {});
+    const e = err as { message?: string };
+    return { ok: false, error: e.message || "Script failed" };
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Generate a trusted educational topic brief for a client
+// ---------------------------------------------------------------------------
+
+export interface TopicBriefResult {
+  ok: boolean;
+  markdown?: string | null;
+  html?: string | null;
+  error?: string | null;
+}
+
+export async function generateTopicBrief(
+  clientId: string,
+  topicSlug: string
+): Promise<TopicBriefResult> {
+  try {
+    const result = await runScript(
+      "render-topic-brief.py",
+      { client_id: clientId, topic_slug: topicSlug },
+      180_000   // Claude Sonnet can take 60–120s for a 1000-word doc
+    ) as TopicBriefResult;
+    return result;
+  } catch (err) {
+    const e = err as { message?: string };
+    return { ok: false, error: e.message ?? "Script failed" };
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Update dietary preferences for an existing client
+// ---------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------
+// Update clinical profile (medications, conditions, history, allergies, goals)
+// ---------------------------------------------------------------------------
+
+export interface UpdateClientProfileInput {
+  client_id: string;
+  active_conditions?: string[];
+  medications?: string[];
+  medical_history?: string[];
+  allergies?: string[];
+  goals?: string[];
+  notes?: string;
+}
+
+export type UpdateClientProfileResult =
+  | { ok: true }
+  | { ok: false; error: string };
+
+export async function updateClientProfile(
+  input: UpdateClientProfileInput
+): Promise<UpdateClientProfileResult> {
+  const clientYaml = path.join(
+    getPlansRoot(),
+    "clients",
+    input.client_id,
+    "client.yaml"
+  );
+  try {
+    const yaml = await import("js-yaml");
+    const raw = await fs.readFile(clientYaml, "utf8");
+    const data = yaml.load(raw) as Record<string, unknown>;
+
+    if (input.active_conditions !== undefined)
+      data.active_conditions = input.active_conditions;
+    // write to whichever key already exists for medications
+    if (input.medications !== undefined) {
+      if ("current_medications" in data) {
+        data.current_medications = input.medications;
+      } else {
+        data.medications = input.medications;
+      }
+    }
+    if (input.medical_history !== undefined)
+      data.medical_history = input.medical_history;
+    if (input.allergies !== undefined) {
+      if ("known_allergies" in data) {
+        data.known_allergies = input.allergies;
+      } else {
+        data.allergies = input.allergies;
+      }
+    }
+    if (input.goals !== undefined) data.goals = input.goals;
+    if (input.notes !== undefined) data.notes = input.notes;
+
+    data.updated_at = new Date().toISOString();
+
+    await fs.writeFile(
+      clientYaml,
+      yaml.dump(data, { noRefs: true, sortKeys: false }),
+      "utf8"
+    );
+
+    revalidatePath(`/clients/${input.client_id}`);
+    return { ok: true };
+  } catch (err) {
+    const e = err as { message?: string };
+    return { ok: false, error: e.message ?? "Failed to update client profile" };
+  }
+}
+
+// ---------------------------------------------------------------------------
+
+export interface UpdatePreferencesInput {
+  client_id: string;
+  dietary_preference?: string;
+  foods_to_avoid?: string;
+  non_negotiables?: string;
+  city?: string;
+  country?: string;
+}
+
+export type UpdatePreferencesResult =
+  | { ok: true }
+  | { ok: false; error: string };
+
+export async function updateClientPreferences(
+  input: UpdatePreferencesInput
+): Promise<UpdatePreferencesResult> {
+  const clientYaml = path.join(
+    getPlansRoot(),
+    "clients",
+    input.client_id,
+    "client.yaml"
+  );
+
+  try {
+    // Load YAML, patch fields, write back
+    const yaml = await import("js-yaml");
+    const raw = await fs.readFile(clientYaml, "utf8");
+    const data = yaml.load(raw) as Record<string, unknown>;
+
+    if (input.dietary_preference !== undefined)
+      data.dietary_preference = input.dietary_preference;
+    if (input.foods_to_avoid !== undefined)
+      data.foods_to_avoid = input.foods_to_avoid;
+    if (input.non_negotiables !== undefined)
+      data.non_negotiables = input.non_negotiables;
+    if (input.city !== undefined)
+      data.city = input.city;
+    if (input.country !== undefined)
+      data.country = input.country;
+
+    // bump updated_at
+    data.updated_at = new Date().toISOString();
+
+    await fs.writeFile(
+      clientYaml,
+      yaml.dump(data, { noRefs: true, sortKeys: false }),
+      "utf8"
+    );
+
+    revalidatePath(`/clients/${input.client_id}`);
+    return { ok: true };
+  } catch (err) {
+    const e = err as { message?: string };
+    return { ok: false, error: e.message ?? "Failed to update client" };
+  }
 }

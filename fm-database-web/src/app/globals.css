@@ -117,6 +117,16 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* ── Brand palette ─────────────────────────────────────────────────────── */
+:root {
+  --brand-bone:    #F7F4F3;
+  --brand-ink:     #0D0D0D;
+  --brand-indigo:  #2B2D42;
+  --brand-lavender:#8D99AE;
+  --brand-rose:    #D6A2A2;
+  --font-heading: var(--font-libre-baskerville, "Georgia", serif);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -128,3 +138,22 @@
     @apply font-sans;
   }
 }
+
+/* ── Brand typography utilities ─────────────────────────────────────────── */
+.font-brand {
+  font-family: var(--font-heading);
+}
+.text-brand-bone    { color: var(--brand-bone); }
+.text-brand-ink     { color: var(--brand-ink); }
+.text-brand-indigo  { color: var(--brand-indigo); }
+.text-brand-lavender{ color: var(--brand-lavender); }
+.text-brand-rose    { color: var(--brand-rose); }
+.bg-brand-bone      { background-color: var(--brand-bone); }
+.bg-brand-ink       { background-color: var(--brand-ink); }
+.bg-brand-indigo    { background-color: var(--brand-indigo); }
+.bg-brand-lavender  { background-color: var(--brand-lavender); }
+.bg-brand-rose      { background-color: var(--brand-rose); }
+.border-brand-indigo { border-color: var(--brand-indigo); }
+.border-brand-lavender { border-color: var(--brand-lavender); }
+.border-brand-rose  { border-color: var(--brand-rose); }
+.ring-brand-indigo  { --tw-ring-color: var(--brand-indigo); }

@@ -98,12 +98,64 @@ def _client_label(client: Optional[Client]) -> str:
 
 
 # ---------------------------------------------------------------------------
+# Dietary-preference safety filter
+# ---------------------------------------------------------------------------
+
+# Keywords that flag a food item as non-vegetarian / non-vegan
+_MEAT_FISH_KEYWORDS = {
+    "fish", "salmon", "sardine", "sardines", "tuna", "mackerel", "anchovy",
+    "anchovies", "cod", "halibut", "tilapia", "trout", "herring", "haddock",
+    "seafood", "shrimp", "prawn", "prawns", "crab", "lobster", "clam",
+    "clams", "mussel", "mussels", "oyster", "oysters", "scallop", "scallops",
+    "squid", "octopus",
+    "chicken", "turkey", "duck", "lamb", "beef", "pork", "bacon", "ham",
+    "sausage", "meat", "poultry", "venison", "bison", "liver", "organ meat",
+}
+
+_ANIMAL_KEYWORDS = _MEAT_FISH_KEYWORDS | {
+    "egg", "eggs", "dairy", "milk", "cheese", "paneer", "yoghurt", "yogurt",
+    "ghee", "butter", "cream", "honey",
+}
+
+# Preferences where meat & fish are disallowed (fish allowed for Pescatarian)
+_NO_MEAT_FISH = {"vegetarian", "vegan", "eggetarian"}
+_NO_FISH_EITHER = {"vegetarian", "vegan", "eggetarian"}  # same set for now
+
+
+def _dietary_pref(client: Optional[Client]) -> str:
+    if not client:
+        return "vegetarian"
+    pref = (getattr(client, "dietary_preference", None) or "vegetarian").lower().strip()
+    # Normalise variants: "vegetarian jain", "strict vegetarian", etc. → "vegetarian"
+    if "vegetarian" in pref:
+        return "vegetarian"
+    return pref
+
+
+def _filter_food_items(items: list[str], client: Optional[Client]) -> tuple[list[str], list[str]]:
+    """Return (kept, removed) lists after filtering items that violate dietary preference."""
+    pref = _dietary_pref(client)
+    if pref in ("non-vegetarian", "other", ""):
+        return items, []
+    kept, removed = [], []
+    for item in items:
+        item_lower = item.lower()
+        is_meat_fish = any(kw in item_lower for kw in _MEAT_FISH_KEYWORDS)
+        if is_meat_fish:
+            removed.append(item)
+        else:
+            kept.append(item)
+    return kept, removed
+
+
+# ---------------------------------------------------------------------------
 # Markdown
 # ---------------------------------------------------------------------------
 
 
 def render_markdown(plan: Plan, client: Optional[Client], cat,
-                    resources: Optional[list] = None) -> str:
+                    resources: Optional[list] = None,
+                    supplement_sources: Optional[dict] = None) -> str:
     lines: list[str] = []
     p = lines.append
 
@@ -165,15 +217,19 @@ def render_markdown(plan: Plan, client: Optional[Client], cat,
             p(f"**Overall pattern:** {n.pattern}")
             p("")
         if n.add:
-            p("**Add more of:**")
-            for f in n.add:
-                p(f"- {f}")
-            p("")
+            add_kept, _ = _filter_food_items(n.add, client)
+            if add_kept:
+                p("**Add more of:**")
+                for f in add_kept:
+                    p(f"- {f}")
+                p("")
         if n.reduce:
-            p("**Reduce or avoid:**")
-            for f in n.reduce:
-                p(f"- {f}")
-            p("")
+            reduce_kept, _ = _filter_food_items(n.reduce, client)
+            if reduce_kept:
+                p("**Reduce or avoid:**")
+                for f in reduce_kept:
+                    p(f"- {f}")
+                p("")
         if n.meal_timing:
             p(f"**Meal timing:** {n.meal_timing}")
             p("")
@@ -228,6 +284,7 @@ def render_markdown(plan: Plan, client: Optional[Client], cat,
             p("")
 
     # ---- Supplements ----
+    _supp_sources = supplement_sources or {}
     if plan.supplement_protocol:
         p("## Supplement protocol")
         p("")
@@ -257,6 +314,33 @@ def render_markdown(plan: Plan, client: Optional[Client], cat,
         if notes_block:
             p("**Notes:**")
             for line in notes_block:
+                p(line)
+            p("")
+        # Where to source
+        source_lines = []
+        for s in plan.supplement_protocol:
+            if not s.supplement_slug:
+                continue
+            src = _supp_sources.get(s.supplement_slug) or {}
+            brand = (src.get("brand") or "").strip()
+            url = (src.get("url") or "").strip()
+            code = (src.get("code") or "").strip()
+            if not (brand or url):
+                continue
+            name = _supplement_display(s.supplement_slug, cat)
+            if url and brand:
+                link = f"[{brand}]({url})"
+            elif url:
+                link = url
+            else:
+                link = brand
+            line = f"- **{name}** — {link}"
+            if code:
+                line += f" · use code **{code}**"
+            source_lines.append(line)
+        if source_lines:
+            p("**Where to source:**")
+            for line in source_lines:
                 p(line)
             p("")
 
@@ -311,6 +395,180 @@ def render_markdown(plan: Plan, client: Optional[Client], cat,
 
 
 # ---------------------------------------------------------------------------
+# Print-only HTML — supplement tables + weekly habit tracker.
+# No prose sections, no file links. Intended to be printed as a one-page
+# quick-reference the client keeps on the fridge.
+# ---------------------------------------------------------------------------
+
+
+_PRINT_CSS = """
+@page { size: A4 landscape; margin: 12mm 14mm; }
+* { box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #1f2937; line-height: 1.4; font-size: 12px;
+  max-width: 100%; margin: 0; padding: 0;
+}
+h1 { color: #14532d; font-size: 16px; margin: 0 0 2px; padding-bottom: 4px;
+     border-bottom: 2px solid #14532d; }
+h2 { color: #166534; font-size: 13px; margin: 14px 0 6px;
+     border-left: 3px solid #86efac; padding-left: 8px; }
+.meta { color: #6b7280; font-size: 11px; margin-bottom: 10px; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 12px; font-size: 11px; }
+th, td { border: 1px solid #d1d5db; padding: 5px 7px; text-align: left; vertical-align: middle; }
+th { background: #ecfdf5; color: #065f46; font-weight: 600; }
+tr:nth-child(even) td { background: #f9fafb; }
+td.day { text-align: center; width: 36px; color: #9ca3af; }
+td.active { background: #dcfce7; color: #14532d; text-align: center; font-weight: bold; }
+td.week-on { background: #dcfce7; color: #166534; text-align: center; }
+td.week-off { background: #f3f4f6; color: #d1d5db; text-align: center; }
+.footer { margin-top: 14px; padding-top: 6px; border-top: 1px solid #d1d5db;
+           color: #6b7280; font-size: 10px; }
+.print-btn {
+  position: fixed; top: 12px; right: 14px;
+  background: #14532d; color: #fff; border: none;
+  padding: 6px 16px; border-radius: 5px; font-size: 12px;
+  cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,.2);
+}
+.print-btn:hover { background: #166534; }
+@media print {
+  .print-btn { display: none; }
+  body { font-size: 11px; }
+}
+"""
+
+
+def _cadence_days(cadence: str) -> list[bool]:
+    """Return a 7-element bool list (Mon→Sun) from a cadence string."""
+    c = (cadence or "daily").lower()
+    if "daily" in c or "every day" in c:
+        return [True] * 7
+    if "weekday" in c:
+        return [True, True, True, True, True, False, False]
+    if "weekend" in c:
+        return [False, False, False, False, False, True, True]
+    # parse "3x" / "3 times" / "3 days"
+    import re
+    m = re.search(r"(\d)", c)
+    if m:
+        n = int(m.group(1))
+        # spread evenly across the week
+        days = [False] * 7
+        step = 7 // max(n, 1)
+        for i in range(n):
+            days[min(i * step, 6)] = True
+        return days
+    if "twice" in c or "2x" in c:
+        return [True, False, False, True, False, False, True]
+    # default: daily
+    return [True] * 7
+
+
+def render_print_html(plan: "Plan", client: "Optional[Client]", cat,
+                      supplement_sources: "Optional[dict]" = None) -> str:
+    """Compact print-ready HTML: supplement protocol table, supplement
+    timeline, and weekly habit tracker. No prose, no file paths. Landscape A4."""
+    _supp_sources = supplement_sources or {}
+    parts: list[str] = []
+    p = parts.append
+
+    client_name = _client_label(client)
+    p(f"<h1>{client_name} Plan</h1>")
+    p(f'<div class="meta">Period: {plan.plan_period_start.isoformat()} – '
+      f'{plan.plan_period_recheck_date.isoformat()} '
+      f'({plan.plan_period_weeks} weeks) &nbsp;·&nbsp; '
+      f'Recheck: {plan.plan_period_recheck_date.isoformat()}</div>')
+
+    # ── Supplement protocol table ──────────────────────────────────────────
+    if plan.supplement_protocol:
+        p("<h2>Supplement protocol</h2>")
+        p("<table>")
+        p("<thead><tr><th>Supplement</th><th>Form</th><th>Dose</th>"
+          "<th>When</th><th>With food</th><th>Duration</th><th>Notes</th></tr></thead>")
+        p("<tbody>")
+        for s in plan.supplement_protocol:
+            name = _supplement_display(s.supplement_slug, cat)
+            form = html.escape(s.form or "—")
+            dose = html.escape(s.dose or "—")
+            timing = html.escape(s.timing or "—")
+            food = html.escape(str(s.take_with_food or "—"))
+            dur = f"{s.duration_weeks} wks" if s.duration_weeks else "—"
+            # strip coach-only evidence-tier note from rationale
+            rationale = (s.coach_rationale or "").split("\n\n[evidence-tier note]")[0].strip()
+            notes = html.escape(rationale[:120] + ("…" if len(rationale) > 120 else "") if rationale else "")
+            p(f"<tr><td><strong>{html.escape(name)}</strong></td>"
+              f"<td>{form}</td><td>{dose}</td><td>{timing}</td>"
+              f"<td>{food}</td><td>{dur}</td><td>{notes}</td></tr>")
+        p("</tbody></table>")
+
+        # ── Supplement timeline (week-by-week) ──────────────────────────
+        weeks = plan.plan_period_weeks or 8
+        if any(s.duration_weeks and s.duration_weeks < weeks for s in plan.supplement_protocol):
+            p("<h2>Supplement timeline</h2>")
+            p("<table>")
+            header_cells = "".join(f"<th>W{w}</th>" for w in range(1, weeks + 1))
+            p(f"<thead><tr><th>Supplement</th>{header_cells}</tr></thead>")
+            p("<tbody>")
+            for s in plan.supplement_protocol:
+                name = _supplement_display(s.supplement_slug, cat)
+                active_weeks = int(s.duration_weeks) if s.duration_weeks else weeks
+                cells = ""
+                for w in range(1, weeks + 1):
+                    if w <= active_weeks:
+                        cells += '<td class="week-on">✓</td>'
+                    else:
+                        cells += '<td class="week-off">·</td>'
+                p(f"<tr><td><strong>{html.escape(name)}</strong></td>{cells}</tr>")
+            p("</tbody></table>")
+
+    # ── Weekly habit tracker ───────────────────────────────────────────────
+    days_header = "<th>Habit / Practice</th><th>Frequency</th>"
+    days_header += "".join(f"<th>{d}</th>" for d in ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"])
+
+    rows: list[tuple[str, str, list[bool]]] = []
+
+    for prac in plan.lifestyle_practices:
+        rows.append((prac.name, prac.cadence or "daily", _cadence_days(prac.cadence or "daily")))
+
+    for habit in plan.tracking.habits:
+        rows.append((habit.name, habit.cadence or "daily", _cadence_days(habit.cadence or "daily")))
+
+    if rows:
+        p("<h2>Weekly tracker</h2>")
+        p("<table>")
+        p(f"<thead><tr>{days_header}</tr></thead><tbody>")
+        for name, cadence, active in rows:
+            cells = ""
+            for on in active:
+                if on:
+                    cells += '<td class="active">✓</td>'
+                else:
+                    cells += '<td class="day">·</td>'
+            p(f"<tr><td><strong>{html.escape(name)}</strong></td>"
+              f"<td>{html.escape(cadence)}</td>{cells}</tr>")
+        p("</tbody></table>")
+
+    # ── Footer ─────────────────────────────────────────────────────────────
+    from datetime import date as _date
+    p('<div class="footer">'
+      f'Prepared {_date.today().isoformat()} &nbsp;·&nbsp; '
+      f'Recheck: {plan.plan_period_recheck_date.isoformat()}'
+      '</div>')
+
+    page_title = f"{client_name} Plan — Tables"
+    return (
+        "<!DOCTYPE html>\n"
+        f'<html lang="en"><head><meta charset="utf-8">'
+        f"<title>{html.escape(page_title)}</title>"
+        f"<style>{_PRINT_CSS}</style>"
+        "</head><body>\n"
+        '<button class="print-btn" onclick="window.print()">🖨 Print</button>\n'
+        + "\n".join(parts)
+        + "\n</body></html>"
+    )
+
+
+# ---------------------------------------------------------------------------
 # HTML (standalone, with print-friendly CSS)
 # ---------------------------------------------------------------------------
 
@@ -341,11 +599,19 @@ tr:nth-child(even) td { background: #f9fafb; }
 hr { border: none; border-top: 1px solid #d1d5db; margin: 24px 0 12px; }
 .meta { color: #6b7280; font-size: 13px; }
 .section { page-break-inside: avoid; }
+.print-btn {
+  position: fixed; top: 16px; right: 16px;
+  background: #14532d; color: #fff; border: none;
+  padding: 8px 18px; border-radius: 6px; font-size: 14px;
+  cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,.2);
+}
+.print-btn:hover { background: #166534; }
 @media print {
   body { margin: 0; padding: 0; }
   h2 { page-break-after: avoid; }
   table { page-break-inside: auto; }
   tr { page-break-inside: avoid; page-break-after: auto; }
+  .print-btn { display: none; }
 }
 """
 
@@ -365,10 +631,11 @@ def _md_inline_to_html(text: str) -> str:
 
 def render_html(plan: Plan, client: Optional[Client], cat,
                 title: Optional[str] = None,
-                resources: Optional[list] = None) -> str:
+                resources: Optional[list] = None,
+                supplement_sources: Optional[dict] = None) -> str:
     """Standalone HTML — embeds CSS, no external assets. Ready for browser
     Print-to-PDF or save-as-PDF."""
-    md = render_markdown(plan, client, cat, resources=resources)
+    md = render_markdown(plan, client, cat, resources=resources, supplement_sources=supplement_sources)
     body_parts: list[str] = []
     in_table = False
     in_list = False
@@ -447,12 +714,14 @@ def render_html(plan: Plan, client: Optional[Client], cat,
     _flush_table()
 
     page_title = title or f"{_client_label(client)} Plan"
+    print_button = '<button class="print-btn" onclick="window.print()">🖨 Print</button>\n'
     return (
         "<!DOCTYPE html>\n"
         f'<html lang="en"><head><meta charset="utf-8">'
         f"<title>{html.escape(page_title)}</title>"
         f"<style>{_HTML_CSS}</style>"
         "</head><body>\n"
+        + print_button
         + "\n".join(body_parts)
         + "\n</body></html>"
     )

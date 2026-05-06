@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -52,13 +53,17 @@ export default async function ResourcesPage({
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold">Resources Toolkit</h1>
-        <p className="text-muted-foreground mt-1">
-          Reading from{" "}
-          <code className="font-mono">{getResourcesRoot()}/resources/</code>.
-          Read-only.
-        </p>
+      <div className="flex items-start justify-between gap-4 flex-wrap">
+        <div>
+          <h1 className="text-3xl font-bold">Resources Toolkit</h1>
+          <p className="text-muted-foreground mt-1 text-sm">
+            Reading from{" "}
+            <code className="font-mono text-xs">{getResourcesRoot()}/resources/</code>.
+          </p>
+        </div>
+        <Link href="/resources/generate" className="shrink-0">
+          <Button>🔬 Generate evidence brief</Button>
+        </Link>
       </div>
 
       <form className="flex gap-2 flex-wrap items-end" action="/resources">

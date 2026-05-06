@@ -9,6 +9,8 @@ import type {
   Claim,
 } from "@/lib/fmdb/types";
 import { BacklogTableClient } from "./backlog-table-client";
+import { loadSupplementLinks } from "./supplement-links-actions";
+import { SupplementLinksClient } from "./supplement-links-client";
 
 export const dynamic = "force-dynamic";
 
@@ -25,11 +27,12 @@ const KIND_OPTIONS = [
 export default async function BacklogPage({
   searchParams,
 }: {
-  searchParams: Promise<{ status?: string; kind?: string; q?: string }>;
+  searchParams: Promise<{ status?: string; kind?: string; q?: string; tab?: string }>;
 }) {
-  const { status: statusParam, kind, q } = await searchParams;
+  const { status: statusParam, kind, q, tab: tabParam } = await searchParams;
+  const activeTab = tabParam ?? "backlog";
   const status = statusParam ?? "open";
-  const [all, topics, mechanisms, symptoms, supplements, claims] =
+  const [all, topics, mechanisms, symptoms, supplements, claims, suppLinks] =
     await Promise.all([
       loadBacklog(),
       loadAllOfKind<Topic>("topics"),
@@ -37,6 +40,7 @@ export default async function BacklogPage({
       loadAllOfKind<Symptom>("symptoms"),
       loadAllOfKind<Supplement>("supplements"),
       loadAllOfKind<Claim>("claims"),
+      loadSupplementLinks(),
     ]);
 
   // Slim catalogue snapshot for the Attach picker — slug + display_name.
@@ -88,13 +92,39 @@ export default async function BacklogPage({
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold">Catalogue Backlog</h1>
+        <h1 className="text-3xl font-bold">Backlog</h1>
         <p className="text-muted-foreground mt-1">
-          Suggestions captured from AI runs and the mind-map miner. Promote good
-          ones to the catalogue or reject the rest.
+          Catalogue suggestions and supplement affiliate links.
         </p>
       </div>
 
+      {/* Tab bar */}
+      <div className="flex gap-1 border-b">
+        {[
+          { id: "backlog", label: "📝 Catalogue Backlog" },
+          { id: "links", label: `🔗 Supplement Links${suppLinks.length ? ` (${suppLinks.length})` : ""}` },
+        ].map(({ id, label }) => (
+          <Link
+            key={id}
+            href={`/backlog?tab=${id}`}
+            className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
+              activeTab === id
+                ? "border-primary text-primary"
+                : "border-transparent text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            {label}
+          </Link>
+        ))}
+      </div>
+
+      {/* Supplement Links tab */}
+      {activeTab === "links" && (
+        <SupplementLinksClient initialLinks={suppLinks} />
+      )}
+
+      {/* Backlog tab */}
+      {activeTab === "backlog" && <>
       <div className="flex gap-2 flex-wrap">
         {STATUS_OPTIONS.map((opt) => {
           const params = new URLSearchParams();
@@ -160,6 +190,7 @@ export default async function BacklogPage({
       </form>
 
       <BacklogTableClient items={sorted} catalogue={catalogue} />
+      </>}
     </div>
   );
 }

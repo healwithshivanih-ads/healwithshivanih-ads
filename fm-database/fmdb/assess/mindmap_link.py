@@ -124,32 +124,109 @@ def link_mindmap_nodes(mindmap: MindMap, cat: Loaded) -> tuple[MindMap, dict[str
 # ---------------------------------------------------------------------------
 
 
-_GUESS_RULES = [
-    # (substring, kind) — first hit in the parent chain wins
-    ("symptom", "symptom"),
-    ("sign", "symptom"),
-    ("mechanism", "mechanism"),
-    ("driver", "mechanism"),
-    ("trigger", "mechanism"),
-    ("root cause", "mechanism"),
-    ("pathway", "mechanism"),
+# Ordered by specificity — first match wins per label.
+# Each tuple: (substring_to_find_in_label_lowercase, catalogue_kind)
+_GUESS_RULES: list[tuple[str, str]] = [
+    # ── Supplements ──────────────────────────────────────────────────────────
     ("supplement", "supplement"),
+    ("nutraceutical", "supplement"),
+    ("herbal", "supplement"),
+    ("herb ", "supplement"),           # trailing space avoids "herbicide"
+    ("botanical", "supplement"),
     ("nutrient", "supplement"),
     ("vitamin", "supplement"),
-    ("herb", "supplement"),
+    ("mineral", "supplement"),
+    ("probiotic", "supplement"),
+    ("prebiotic", "supplement"),
+    ("adaptogen", "supplement"),
+    ("remedy", "supplement"),
+    ("natural therapy", "supplement"),
+    ("natural treatment", "supplement"),
+    ("naturopathic", "supplement"),
+    ("functional food", "supplement"),
+    ("therapeutic food", "supplement"),
+    ("ace inhibitor food", "supplement"),  # e.g. "ACE Inhibitors (Foods)"
+    ("ace inhibitors", "supplement"),
+    ("diuretic food", "supplement"),
+    ("vasodilat", "supplement"),       # vasodilating foods
+    ("calcium channel", "supplement"),
+    ("anti-inflammatory food", "supplement"),
+    ("anti inflammatory food", "supplement"),
+    ("foods", "supplement"),           # "Foods That..." branches
+    ("food ", "supplement"),           # "Food Sources", "Food-Based..."
+    ("diet supplement", "supplement"),
+    ("essential oil", "supplement"),
+    ("tincture", "supplement"),
+    ("extract", "supplement"),
+
+    # ── Mechanisms ───────────────────────────────────────────────────────────
+    ("mechanism", "mechanism"),
+    ("pathophysiology", "mechanism"),
+    ("pathogenesis", "mechanism"),
+    ("root cause", "mechanism"),
+    ("underlying cause", "mechanism"),
+    ("driver", "mechanism"),
+    ("dysfunction", "mechanism"),
+    ("pathway", "mechanism"),
+    ("cascade", "mechanism"),
+    ("axis", "mechanism"),
+    ("imbalance", "mechanism"),
+    ("dysregulation", "mechanism"),
+    ("resistance", "mechanism"),
+    ("deficiency mechanism", "mechanism"),
+    ("inflammation pathway", "mechanism"),
+
+    # ── Symptoms ─────────────────────────────────────────────────────────────
+    ("symptom", "symptom"),
+    ("sign ", "symptom"),              # "Signs and Symptoms"
+    ("signs and", "symptom"),
+    ("complaint", "symptom"),
+    ("presentation", "symptom"),
+    ("clinical feature", "symptom"),
+    ("manifestation", "symptom"),
+    ("effect on", "symptom"),
+    ("associated symptom", "symptom"),
+    ("common symptom", "symptom"),
+
+    # ── Topics (catch-all clinical areas) ────────────────────────────────────
     ("topic", "topic"),
-    ("pattern", "topic"),
     ("condition", "topic"),
+    ("syndrome", "topic"),
+    ("disorder", "topic"),
+    ("disease", "topic"),
+    ("pattern", "topic"),
+    ("lifestyle", "topic"),
+    ("stress", "topic"),
+    ("sleep", "topic"),
+    ("exercise", "topic"),
+    ("movement", "topic"),
+    ("approach", "topic"),
+    ("strategy", "topic"),
+    ("management", "topic"),
+    ("support", "topic"),
 ]
 
 
+def _guess_kind_from_label(label: str) -> str | None:
+    """Guess kind from a single label string using the rules table."""
+    low = label.lower()
+    for needle, kind in _GUESS_RULES:
+        if needle in low:
+            return kind
+    return None
+
+
 def _guess_kind(parent_chain: list[str]) -> str | None:
-    """Walk parents from nearest to root, looking for a kind hint."""
+    """Walk parent chain from nearest ancestor to root, returning first match.
+
+    If no parent label matches, the caller should try the item label itself
+    via _guess_kind_from_label.
+    """
+    # Walk nearest-ancestor first (reversed)
     for label in reversed(parent_chain):
-        low = label.lower()
-        for needle, kind in _GUESS_RULES:
-            if needle in low:
-                return kind
+        kind = _guess_kind_from_label(label)
+        if kind:
+            return kind
     return None
 
 
@@ -174,12 +251,16 @@ def mine_unlinked(mindmap: MindMap, cat: Loaded) -> list[dict[str, Any]]:
             already_linked = bool(node.linked_kind and node.linked_slug)
             resolves = _resolve_label(node.label, indexes) is not None
             if not already_linked and not resolves:
+                guessed = _guess_kind(parent_chain)
+                if guessed is None:
+                    # Fall back: try guessing from the item's own label
+                    guessed = _guess_kind_from_label(node.label)
                 out.append({
                     "label": node.label,
                     "depth": depth,
                     "parent_label": parent_chain[-1] if parent_chain else "",
                     "mindmap_slug": mindmap.slug,
-                    "guessed_kind": _guess_kind(parent_chain),
+                    "guessed_kind": guessed,
                 })
         for child in node.children:
             _walk(child, depth + 1, parent_chain + [node.label])

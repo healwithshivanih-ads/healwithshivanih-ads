@@ -41,6 +41,7 @@ def main() -> int:
     from fmdb.plan import storage as plan_storage
     from fmdb.plan import render as plan_render
     from fmdb.resources import storage as resources_storage
+    import yaml as _yaml
 
     data_dir = FMDB_ROOT / "data"
     root = plan_storage.plans_root()
@@ -71,11 +72,20 @@ def main() -> int:
         except Exception:
             pass
 
+    # Load shared supplement sources (product recommendations)
+    supplement_sources: dict = {}
+    try:
+        sources_file = root / "supplement-sources.yaml"
+        if sources_file.exists():
+            supplement_sources = _yaml.safe_load(sources_file.read_text()) or {}
+    except Exception:
+        pass
+
     try:
         if fmt == "html":
-            content = plan_render.render_html(plan, client, cat, resources=attached)
+            content = plan_render.render_html(plan, client, cat, resources=attached, supplement_sources=supplement_sources)
         else:
-            content = plan_render.render_markdown(plan, client, cat, resources=attached)
+            content = plan_render.render_markdown(plan, client, cat, resources=attached, supplement_sources=supplement_sources)
     except Exception as e:  # noqa: BLE001
         return _emit({"ok": False, "error": f"render failed: {type(e).__name__}: {e}"})
 

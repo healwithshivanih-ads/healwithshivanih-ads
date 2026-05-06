@@ -17,7 +17,7 @@ import json
 import os
 from typing import Any
 
-from .results import AssessResult, AssessUsage, ChatContext, ChatResult
+from .results import AssessResult, AssessUsage, AssessSuggestions, ChatContext, ChatResult
 
 
 # JSON schema for the structured response. Intentionally narrow — every
@@ -65,6 +65,7 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
                     "topic_slug": {"type": "string"},
                     "role": {"type": "string", "description": "primary | contributing"},
                     "rationale": {"type": "string"},
+                    "confidence_pct": {"type": "integer", "description": "0–100 confidence that this topic is meaningfully implicated. 100 = near-certain from labs/symptoms. 50 = plausible. <30 = speculative."},
                 },
             },
         },
@@ -255,6 +256,21 @@ HARD RULES (violating these breaks the downstream system):
     over kale-and-quinoa stereotypes; ghee / coconut oil over avocado oil
     when both are reasonable.
 
+12. DIETARY PREFERENCE is a hard constraint. `client_context.dietary_preference`
+    will be one of: Vegetarian | Vegetarian Jain | Vegan | Eggetarian |
+    Pescatarian | Non-vegetarian | Other. Obey it strictly in ALL nutrition
+    suggestions (pattern, add, reduce, meal_timing, cooking_adjustments,
+    home_remedies):
+    - Vegetarian / Vegetarian Jain / Vegan / Eggetarian: NEVER mention fish,
+      seafood, meat, or poultry anywhere — not even as "optional" or "if you
+      eat". Substitute plant-based proteins (dals, legumes, tempeh, seeds,
+      paneer for Eggetarian & Vegetarian). Vegetarian Jain additionally avoids
+      root vegetables (onion, garlic, potato, carrot, beetroot) — respect that.
+    - Pescatarian: fish and seafood are allowed; no meat or poultry.
+    - Non-vegetarian: all whole-food proteins are allowed.
+    - If `dietary_preference` is absent or blank, default to Vegetarian (India
+      default — safer to exclude than to recommend meat unnecessarily).
+
 14. CATALOGUE ADDITIONS. When you'd have suggested something useful but the
     slug isn't in the subgraph, populate `catalogue_additions_suggested` with
     the item — kind (topic/mechanism/symptom/supplement/claim/cooking_adjustment/
@@ -262,6 +278,17 @@ HARD RULES (violating these breaks the downstream system):
     later and decides whether to add to the catalogue. Be specific: "tudca"
     not "bile-flow supplement", "racing-thoughts" not "anxiety-related symptom".
     Surface 2-5 items per analysis when relevant.
+
+15. TOPICS CONFIDENCE. For each entry in `topics_in_play`, populate
+    `confidence_pct` (0–100) reflecting how certain you are that the topic is
+    meaningfully implicated: 80–100 = clear lab or symptom evidence; 50–79 =
+    plausible pattern; 30–49 = speculative; <30 = weak signal only.
+
+16. ELAPSED TIME. If `days_since_last_prescription` is set in the user payload,
+    open `synthesis_notes` with a sentence about elapsed time and how it affects
+    the assessment (e.g., "It has been X days since the last protocol — enough
+    time to assess response to prior supplements. Look for symptom trends and
+    adjust rather than restart.").
 
 13. SESSION HISTORY (`session_history` in the user payload). If non-empty,
     earlier sessions for this same client are listed oldest → newest. Use
@@ -306,8 +333,9 @@ def synthesize(
     lab_files: list[dict[str, Any]] | None = None,
     additional_notes: str = "",
     session_history: list[dict[str, Any]] | None = None,
+    days_since_last_prescription: int | None = None,
     model: str | None = None,
-    max_tokens: int = 8192,
+    max_tokens: int = 16000,
 ) -> AssessResult:
     """Synthesize FM-coaching suggestions for one client / one analysis.
 
@@ -394,6 +422,7 @@ def synthesize(
         "selected_topics": selected_topic_slugs,
         "additional_notes": additional_notes,
         "session_history": session_history or [],
+        "days_since_last_prescription": days_since_last_prescription,
         "catalogue_subgraph": subgraph,
     }
     content.append({
@@ -412,7 +441,10 @@ def synthesize(
         "input_schema": _TOOL_INPUT_SCHEMA,
     }
 
-    resp = client.messages.create(
+    # Use streaming so the HTTP connection returns incrementally — avoids
+    # hitting the Node.js execFile timeout (previously 90s) while waiting
+    # for the full synchronous response from a long tool-use generation.
+    with client.messages.stream(
         model=model,
         max_tokens=max_tokens,
         system=[
@@ -425,7 +457,8 @@ def synthesize(
         tools=[tool],
         tool_choice={"type": "tool", "name": "synthesize_assessment"},
         messages=[{"role": "user", "content": content}],
-    )
+    ) as stream:
+        resp = stream.get_final_message()
 
     usage = getattr(resp, "usage", None)
     usage_obj = AssessUsage(
@@ -439,9 +472,10 @@ def synthesize(
 
     for block in resp.content:
         if getattr(block, "type", None) == "tool_use" and block.name == "synthesize_assessment":
-            return AssessResult(suggestions=block.input or {}, usage=usage_obj)
+            suggestions = AssessSuggestions.model_validate(block.input or {})
+            return AssessResult(suggestions=suggestions, usage=usage_obj)
 
-    return AssessResult(suggestions={}, usage=usage_obj)
+    return AssessResult(suggestions=AssessSuggestions(), usage=usage_obj)
 
 
 # ---------------------------------------------------------------------------

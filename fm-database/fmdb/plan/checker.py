@@ -147,10 +147,14 @@ def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Fin
                         target=item.supplement_slug,
                     ))
 
-        # Form sanity: declared form actually exists in the supplement entity
+        # Form sanity: declared form contains at least one catalogue form word.
+        # The AI often writes descriptive strings like "KSM-66 standardized
+        # extract capsule" — we accept these as long as a catalogue form token
+        # appears anywhere in the string (case-insensitive substring match).
         if item.form:
             valid_forms = {f.value for f in supp.forms_available}
-            if valid_forms and item.form not in valid_forms:
+            form_lower = item.form.lower()
+            if valid_forms and not any(vf in form_lower for vf in valid_forms):
                 findings.append(Finding(
                     "WARNING", "supplement_protocol", "form",
                     f"{item.supplement_slug!r} doesn't list {item.form!r} as an "

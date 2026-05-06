@@ -1,11 +1,59 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { spawn } from "node:child_process";
+import fs from "node:fs/promises";
 import path from "node:path";
+import yaml from "js-yaml";
 import { loadPlanBySlug } from "@/lib/fmdb/loader";
 import { writePlan } from "@/lib/fmdb/writer";
+import { getPlansRoot } from "@/lib/fmdb/paths";
 import type { Plan, PlanPatch } from "@/lib/fmdb/types";
+
+// ─── Supplement sources ────────────────────────────────────────────────────────
+
+export interface SupplementSource {
+  brand?: string;
+  url?: string;
+  code?: string;
+  vitaone_ref?: string;
+}
+
+export type SupplementSourcesMap = Record<string, SupplementSource>;
+
+function supplementSourcesPath(): string {
+  return path.join(getPlansRoot(), "supplement-sources.yaml");
+}
+
+export async function loadSupplementSources(): Promise<SupplementSourcesMap> {
+  try {
+    const raw = await fs.readFile(supplementSourcesPath(), "utf-8");
+    return (yaml.load(raw) as SupplementSourcesMap) ?? {};
+  } catch {
+    return {};
+  }
+}
+
+/**
+ * Merge updates into the shared supplement-sources.yaml.
+ * Only the keys present in `updates` are touched; others are preserved.
+ */
+export async function saveSupplementSources(
+  updates: SupplementSourcesMap
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  try {
+    const current = await loadSupplementSources();
+    const merged = { ...current };
+    for (const [slug, src] of Object.entries(updates)) {
+      merged[slug] = { ...(current[slug] ?? {}), ...src };
+    }
+    await fs.writeFile(supplementSourcesPath(), yaml.dump(merged, { sortKeys: true }), "utf-8");
+    return { ok: true };
+  } catch (e) {
+    return { ok: false, error: String(e) };
+  }
+}
 
 export interface PlanCheckFinding {
   severity: "CRITICAL" | "WARNING" | "INFO";
@@ -102,4 +150,28 @@ export async function updatePlan(
   revalidatePath(`/plans/${slug}`);
   revalidatePath("/plans");
   return { ok: true };
+}
+
+/**
+ * Permanently delete a plan file from disk.
+ * Published plans cannot be deleted — use Revoke instead.
+ */
+export async function deletePlan(
+  slug: string
+): Promise<{ ok: false; error: string } | never> {
+  const plan = await loadPlanBySlug(slug);
+  if (!plan) return { ok: false, error: `Plan ${slug} not found` };
+
+  const status = plan.status ?? plan._bucket;
+  if (status === "published") {
+    return {
+      ok: false,
+      error: "Published plans cannot be deleted. Use Revoke instead.",
+    };
+  }
+
+  await fs.unlink(plan._file);
+  revalidatePath("/plans");
+  // redirect() throws internally — it must not be inside try/catch
+  redirect("/plans");
 }

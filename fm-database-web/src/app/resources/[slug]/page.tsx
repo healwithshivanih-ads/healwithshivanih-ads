@@ -68,23 +68,37 @@ export default async function ResourceDetailPage({
             </div>
           )}
           {r.file_path && (
-            <div>
+            <div className="space-y-2">
               <div className="text-xs uppercase text-muted-foreground">
                 File
               </div>
-              <div className="font-mono text-xs">
-                {path.basename(r.file_path)}
+              <div className="flex items-center gap-3 flex-wrap">
+                <span className="font-mono text-sm font-medium">
+                  {path.basename(r.file_path as string)}
+                </span>
+                {r.size_bytes !== undefined && (
+                  <span className="text-xs text-muted-foreground">
+                    {Math.round((r.size_bytes as number) / 1024)} KB
+                  </span>
+                )}
+                <a
+                  href={`/resources/${encodeURIComponent(r.slug)}/file`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-xs px-2.5 py-1 rounded-md bg-primary text-primary-foreground hover:opacity-90"
+                >
+                  📄 Open / View
+                </a>
+                <a
+                  href={`/resources/${encodeURIComponent(r.slug)}/file`}
+                  download={path.basename(r.file_path as string)}
+                  className="text-xs px-2.5 py-1 rounded-md border hover:bg-accent"
+                >
+                  ⬇ Download
+                </a>
               </div>
-              <div className="text-xs text-muted-foreground mt-0.5">
-                {r.file_path}
-              </div>
-              {r.size_bytes !== undefined && (
-                <div className="text-xs text-muted-foreground">
-                  {Math.round(r.size_bytes / 1024)} KB · {r.mime_type ?? ""}
-                </div>
-              )}
-              <div className="text-xs text-muted-foreground mt-1 italic">
-                Open in Finder via the path above.
+              <div className="text-xs text-muted-foreground font-mono break-all">
+                {r.file_path as string}
               </div>
             </div>
           )}

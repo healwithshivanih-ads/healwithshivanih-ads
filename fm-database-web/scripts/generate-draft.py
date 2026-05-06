@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
@@ -62,7 +63,22 @@ def main() -> int:
 
     now = datetime.now(timezone.utc)
     today = date.today()
-    base_slug = f"{client.client_id}-{today.isoformat()}-assess"
+
+    # Build a human-readable slug: e.g. dhanishta-plan-1-2026-05-05-cl-005
+    display = (client.display_name or client.client_id or "client").split()[0]
+    first_name_slug = re.sub(r"[^a-z0-9]+", "-", display.lower()).strip("-")
+    # Count existing plans for this client to derive plan number
+    try:
+        all_plans = plan_storage.list_plans(root)
+        client_plan_count = sum(
+            1 for p in all_plans if (p.client_id or "") == client_id
+        )
+    except Exception:
+        client_plan_count = 0
+    plan_num = client_plan_count + 1
+    base_slug = f"{first_name_slug}-plan-{plan_num}-{today.isoformat()}-{client.client_id}"
+
+    # Dedup: if this exact slug already exists, append -2, -3, …
     slug = base_slug
     n = 1
     while True:

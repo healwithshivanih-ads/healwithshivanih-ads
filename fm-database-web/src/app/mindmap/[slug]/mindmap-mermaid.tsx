@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import type { MindMapNode } from "@/lib/fmdb/loader-extras";
 
@@ -12,13 +13,34 @@ interface Props {
 }
 
 const KIND_COLORS: Record<string, string> = {
-  topic: "bg-blue-100 text-blue-900",
-  mechanism: "bg-purple-100 text-purple-900",
-  symptom: "bg-amber-100 text-amber-900",
-  supplement: "bg-emerald-100 text-emerald-900",
-  claim: "bg-rose-100 text-rose-900",
-  cooking_adjustment: "bg-orange-100 text-orange-900",
-  home_remedy: "bg-teal-100 text-teal-900",
+  topic: "bg-blue-100 text-blue-800 hover:bg-blue-200",
+  mechanism: "bg-purple-100 text-purple-800 hover:bg-purple-200",
+  symptom: "bg-amber-100 text-amber-800 hover:bg-amber-200",
+  supplement: "bg-emerald-100 text-emerald-800 hover:bg-emerald-200",
+  claim: "bg-rose-100 text-rose-800 hover:bg-rose-200",
+  cooking_adjustment: "bg-orange-100 text-orange-800 hover:bg-orange-200",
+  home_remedy: "bg-teal-100 text-teal-800 hover:bg-teal-200",
+};
+
+const KIND_LABELS: Record<string, string> = {
+  topic: "Topic",
+  mechanism: "Mechanism",
+  symptom: "Symptom",
+  supplement: "Supplement",
+  claim: "Claim",
+  cooking_adjustment: "Cooking",
+  home_remedy: "Remedy",
+};
+
+// Map kind → catalogue URL segment (plural)
+const KIND_URL: Record<string, string> = {
+  topic: "topics",
+  mechanism: "mechanisms",
+  symptom: "symptoms",
+  supplement: "supplements",
+  claim: "claims",
+  cooking_adjustment: "cooking_adjustments",
+  home_remedy: "home_remedies",
 };
 
 function NodeTree({ nodes }: { nodes: MindMapNode[] | undefined }) {
@@ -27,17 +49,19 @@ function NodeTree({ nodes }: { nodes: MindMapNode[] | undefined }) {
     <ul className="ml-4 border-l border-border pl-3 space-y-1">
       {nodes.map((n, i) => (
         <li key={i} className="text-sm">
-          <div className="flex items-baseline gap-2 flex-wrap">
-            <span>{n.label}</span>
-            {n.linked_kind && n.linked_slug && (
-              <span
-                className={`text-[10px] uppercase font-semibold px-1.5 py-0.5 rounded ${
-                  KIND_COLORS[n.linked_kind] ?? "bg-muted text-muted-foreground"
+          <div className="flex items-baseline gap-2 flex-wrap py-0.5">
+            <span className="leading-snug">{n.label}</span>
+            {n.linked_kind && n.linked_slug && KIND_URL[n.linked_kind] && (
+              <Link
+                href={`/catalogue/${KIND_URL[n.linked_kind]}/${n.linked_slug}`}
+                className={`inline-flex items-center gap-1 text-[10px] font-semibold px-1.5 py-0.5 rounded transition-colors cursor-pointer ${
+                  KIND_COLORS[n.linked_kind] ?? "bg-muted text-muted-foreground hover:bg-accent"
                 }`}
-                title={`linked to ${n.linked_kind}/${n.linked_slug}`}
+                title={`View full ${n.linked_kind} entry: ${n.linked_slug}`}
               >
-                {n.linked_kind}: {n.linked_slug}
-              </span>
+                <span>{KIND_LABELS[n.linked_kind] ?? n.linked_kind}</span>
+                <span className="opacity-60">↗</span>
+              </Link>
             )}
             {n.notes && (
               <span className="text-xs text-muted-foreground italic">
@@ -134,18 +158,19 @@ export function MindMapMermaid({ slug, mermaidSource, renderError, fallbackTree 
               Mermaid render failed: {renderFailure}. Showing outline below.
             </p>
           )}
-          {!renderFailure && (
+          {!renderFailure && !renderedSvg && (
+            <div className="border rounded-md p-4 bg-background overflow-auto max-h-[80vh]">
+              <p className="text-xs text-muted-foreground italic">
+                Rendering mind map…
+              </p>
+            </div>
+          )}
+          {!renderFailure && renderedSvg && (
             <div
               ref={containerRef}
               className="border rounded-md p-4 bg-background overflow-auto max-h-[80vh]"
-              dangerouslySetInnerHTML={renderedSvg ? { __html: renderedSvg } : undefined}
-            >
-              {!renderedSvg && (
-                <p className="text-xs text-muted-foreground italic">
-                  Rendering mind map…
-                </p>
-              )}
-            </div>
+              dangerouslySetInnerHTML={{ __html: renderedSvg }}
+            />
           )}
           {renderFailure && <NodeTree nodes={fallbackTree} />}
         </>

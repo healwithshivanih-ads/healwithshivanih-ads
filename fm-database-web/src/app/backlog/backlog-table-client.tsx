@@ -85,24 +85,37 @@ function parseParentLabel(why: string | undefined): string | null {
 }
 
 function suggestTarget(
-  parentLabel: string | null,
+  needle: string | null,
   options: CatalogueOption[]
 ): string | null {
-  if (!parentLabel) return null;
-  const needle = parentLabel.toLowerCase().trim();
-  // exact label / slug / alias match first
+  if (!needle || options.length === 0) return null;
+  const low = needle.toLowerCase().trim();
+  const slugged = slugify(needle);
+
+  // 1. Exact label / slug / alias match
   const exact = options.find(
     (o) =>
-      o.label.toLowerCase() === needle ||
-      o.slug.toLowerCase() === needle ||
-      o.aliases.some((a) => a.toLowerCase() === needle)
+      o.label.toLowerCase() === low ||
+      o.slug === slugged ||
+      o.slug === low ||
+      o.aliases.some((a) => a.toLowerCase() === low)
   );
   if (exact) return exact.slug;
-  // partial — needle contained in label or an alias
+
+  // 2. Slug contains needle or needle contains slug
+  const slugMatch = options.find(
+    (o) => o.slug.includes(slugged) || slugged.includes(o.slug)
+  );
+  if (slugMatch) return slugMatch.slug;
+
+  // 3. Label/alias partial match (needle in label or label in needle)
   const partial = options.find(
     (o) =>
-      o.label.toLowerCase().includes(needle) ||
-      o.aliases.some((a) => a.toLowerCase().includes(needle))
+      o.label.toLowerCase().includes(low) ||
+      low.includes(o.label.toLowerCase()) ||
+      o.aliases.some(
+        (a) => a.toLowerCase().includes(low) || low.includes(a.toLowerCase())
+      )
   );
   return partial?.slug ?? null;
 }
@@ -133,7 +146,22 @@ function computeSuggestion(
   })();
 
   const opts = catalogue[targetKind] ?? [];
-  const targetSlug = suggestTarget(parentLabel, opts);
+  if (opts.length === 0) return null;
+
+  // Try parent label first, then item name, then each word from item name
+  // (≥ 4 chars), then opts[0] as absolute last resort.
+  const targetSlug =
+    suggestTarget(parentLabel, opts) ??
+    suggestTarget(item.name, opts) ??
+    item.name
+      .split(/\s+/)
+      .filter((w) => w.length >= 4)
+      .reduce<string | null>(
+        (found, word) => found ?? suggestTarget(word, opts),
+        null
+      ) ??
+    opts[0]?.slug;
+
   if (!targetSlug) return null;
 
   const targetLabel =
@@ -337,9 +365,9 @@ function AttachForm({
   }
 
   return (
-    <div className="text-xs space-y-2 mt-2 p-2 bg-emerald-50 border border-emerald-200 rounded">
+    <div className="text-xs space-y-3 mt-2 p-3 bg-emerald-50 border border-emerald-200 rounded">
       <div className="flex items-center justify-between">
-        <span className="font-semibold text-emerald-900">Attach</span>
+        <span className="font-semibold text-emerald-900">Link to catalogue</span>
         <button
           type="button"
           onClick={() => setOpen(false)}
@@ -349,46 +377,59 @@ function AttachForm({
         </button>
       </div>
 
-      <div className="grid grid-cols-2 gap-2">
-        <div className="flex flex-col">
-          <label className="text-[10px] uppercase text-muted-foreground">
-            Attach as
-          </label>
-          <select
-            value={mode}
-            onChange={(e) => setMode(e.target.value as AttachMode)}
-            className="text-xs border rounded px-1.5 py-1 bg-background"
-          >
-            <option value="claim">Claim (statement linked to target)</option>
-            <option value="alias">Alias (synonym of target)</option>
-            <option value="notes">Notes (append to target)</option>
-          </select>
-        </div>
-        <div className="flex flex-col">
-          <label className="text-[10px] uppercase text-muted-foreground">
-            Target kind
-          </label>
-          <select
-            value={targetKind}
-            onChange={(e) =>
-              changeTargetKind(e.target.value as AttachTargetKind)
-            }
-            className="text-xs border rounded px-1.5 py-1 bg-background"
-          >
-            <option value="topic">topic</option>
-            <option value="mechanism">mechanism</option>
-            <option value="symptom">symptom</option>
-            <option value="supplement">supplement</option>
-          </select>
-        </div>
+      {/* Plain-English help */}
+      <div className="text-[11px] text-emerald-800 bg-emerald-100/60 rounded p-2 space-y-1">
+        <p>Choose what to do with <strong>&ldquo;{item.name}&rdquo;</strong>:</p>
+        <ul className="ml-3 space-y-0.5 list-disc">
+          <li><strong>Add connection</strong> — records that this item is linked to a topic/mechanism (e.g. "CoQ10 supports adrenal function"). Most common choice.</li>
+          <li><strong>Add as alternate name</strong> — marks it as another name for an existing entry (topics/mechanisms/symptoms only). E.g. "CoQ10" as an alias of "coenzyme-q10".</li>
+          <li><strong>Append to notes</strong> — adds a free-form note onto a supplement entry.</li>
+        </ul>
+        <p className="mt-1 text-emerald-700">💡 A supplement can relate to multiple issues — just attach once per issue.</p>
       </div>
 
-      <div className="flex flex-col">
-        <label className="text-[10px] uppercase text-muted-foreground">
-          Target entity
+      {/* What to do */}
+      <div className="flex flex-col gap-1">
+        <label className="text-[10px] uppercase text-muted-foreground font-semibold">
+          What to do
+        </label>
+        <select
+          value={mode}
+          onChange={(e) => setMode(e.target.value as AttachMode)}
+          className="text-xs border rounded px-1.5 py-1 bg-background"
+        >
+          <option value="claim">Add connection (creates a link)</option>
+          <option value="alias">Add as alternate name / synonym</option>
+          <option value="notes">Append to notes of a supplement</option>
+        </select>
+      </div>
+
+      {/* Connect to which type of thing */}
+      <div className="flex flex-col gap-1">
+        <label className="text-[10px] uppercase text-muted-foreground font-semibold">
+          Connect to
+        </label>
+        <select
+          value={targetKind}
+          onChange={(e) =>
+            changeTargetKind(e.target.value as AttachTargetKind)
+          }
+          className="text-xs border rounded px-1.5 py-1 bg-background"
+        >
+          <option value="topic">Health topic (e.g. thyroid, perimenopause, stress)</option>
+          <option value="mechanism">Body mechanism (e.g. HPA axis, inflammation)</option>
+          <option value="symptom">Symptom (e.g. fatigue, brain fog)</option>
+          <option value="supplement">Another supplement</option>
+        </select>
+      </div>
+
+      {/* Which specific entry */}
+      <div className="flex flex-col gap-1">
+        <label className="text-[10px] uppercase text-muted-foreground font-semibold">
+          Which one
           {parentLabel && (
-            <span className="ml-1 normal-case text-emerald-700">
-              (parent: <em>{parentLabel}</em>)
+            <span className="ml-1 normal-case text-emerald-700 font-normal">
+              — found under <em>&ldquo;{parentLabel}&rdquo;</em> in mindmap
             </span>
           )}
         </label>
@@ -396,8 +437,8 @@ function AttachForm({
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder="search by name…"
-          className="text-xs border rounded px-1.5 py-1 bg-background mb-1"
+          placeholder="type to search…"
+          className="text-xs border rounded px-1.5 py-1 bg-background"
         />
         <select
           value={targetSlug}
@@ -408,19 +449,19 @@ function AttachForm({
           {filtered.length === 0 && <option value="">(no matches)</option>}
           {filtered.map((o) => (
             <option key={o.slug} value={o.slug}>
-              {o.label} ({o.slug})
+              {o.label}
             </option>
           ))}
         </select>
       </div>
 
       {!modeIsValid && (
-        <div className="text-[11px] text-rose-700">
+        <div className="text-[11px] text-rose-700 bg-rose-50 rounded p-1.5">
           {mode === "alias"
-            ? "alias mode requires target kind: topic / mechanism / symptom"
+            ? "Alternate name only works for: health topic, body mechanism, or symptom"
             : mode === "notes"
-              ? "notes mode currently only supports supplement targets"
-              : "claim mode can't link to symptom or claim targets"}
+              ? "Append to notes only works when connecting to a supplement"
+              : "Add connection can't target a symptom or another connection — pick a topic, mechanism, or supplement"}
         </div>
       )}
 
@@ -428,9 +469,9 @@ function AttachForm({
         type="button"
         onClick={handleAttach}
         disabled={pending || !modeIsValid || !targetSlug}
-        className="text-xs px-2 py-1 rounded bg-emerald-700 text-white disabled:opacity-50"
+        className="text-xs px-2.5 py-1.5 rounded bg-emerald-700 text-white disabled:opacity-50 font-medium"
       >
-        {pending ? "Attaching…" : "Attach"}
+        {pending ? "Saving…" : "✓ Save connection"}
       </button>
     </div>
   );
@@ -533,15 +574,20 @@ function BacklogRow({
         {isOpen && suggestion && (
           <button
             type="button"
-            title={`Click to pre-fill Attach form: ${suggestion.mode} → ${suggestion.targetKind}/${suggestion.targetSlug}`}
+            title={`Suggested action: ${suggestion.mode === "alias" ? "add as alternate name of" : suggestion.mode === "notes" ? "append to notes of" : "link to"} ${suggestion.targetLabel} (${suggestion.targetKind})`}
             onClick={() => applyChip(suggestion)}
             className="mt-1 inline-flex items-center gap-1 text-[11px] text-emerald-700 hover:text-emerald-900 hover:underline cursor-pointer"
           >
             <span>💡</span>
-            <span className="font-medium">{suggestion.mode}</span>
-            <span className="text-muted-foreground">→</span>
+            <span className="font-medium">
+              {suggestion.mode === "alias"
+                ? "Alias of"
+                : suggestion.mode === "notes"
+                  ? "Note on"
+                  : "Link to"}
+            </span>
             <span className="font-medium">{suggestion.targetLabel}</span>
-            <span className="text-muted-foreground">
+            <span className="text-muted-foreground italic">
               ({suggestion.targetKind})
             </span>
           </button>

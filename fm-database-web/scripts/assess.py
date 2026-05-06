@@ -18,12 +18,14 @@ Writes JSON to stdout:
   "ok": bool,
   "session_id": str,
   "suggestions": {...},       # full synthesize() output
+  "computed_ratios": [...],   # derived FM markers from extracted_labs
   "usage": {...},
   "subgraph_size": int,       # bytes
   "error": str | null
 }
 
 Persists a Session record to ~/fm-plans/clients/<id>/sessions/<sid>.yaml on success.
+Also persists computed lab_markers to the client YAML (latest only).
 """
 
 from __future__ import annotations
@@ -71,7 +73,7 @@ def _synthetic_result(payload: dict) -> dict:
                  "supporting_evidence": sym[:2]},
             ] if sym else [],
             "topics_in_play": [
-                {"topic_slug": t, "role": "primary", "rationale": "[dry-run]"}
+                {"topic_slug": t, "role": "primary", "rationale": "[dry-run]", "confidence_pct": 50}
                 for t in top[:2]
             ],
             "additional_symptoms_to_screen": [],
@@ -120,6 +122,7 @@ def main() -> int:
     complaints = payload.get("complaints") or ""
     attachments = payload.get("attachments") or []
     dry_run = bool(payload.get("dry_run"))
+    session_date_str = payload.get("session_date") or None  # ISO YYYY-MM-DD or None (defaults to today)
 
     if not client_id:
         json.dump({"ok": False, "error": "client_id is required"}, sys.stdout)
@@ -151,7 +154,7 @@ def main() -> int:
     lab_files: list[dict] = []
     file_refs: list[UploadedFileRef] = []
     now = datetime.now(timezone.utc)
-    today = date.today()
+    today = date.fromisoformat(session_date_str) if session_date_str else date.today()
     for att in attachments:
         path = att.get("path")
         if not path or not os.path.exists(path):
@@ -181,6 +184,7 @@ def main() -> int:
         "age_band": client.age_band,
         "estimated_age": age,
         "sex": client.sex,
+        "dietary_preference": client.dietary_preference or "Vegetarian",
         "active_conditions": client.active_conditions,
         "medical_history": client.medical_history,
         "current_medications": client.current_medications,
@@ -209,6 +213,7 @@ def main() -> int:
         history_bundle.append({
             "session_id": s.session_id,
             "date": s.date.isoformat(),
+            "generated_plan_slug": s.generated_plan_slug,
             "selected_symptoms": s.selected_symptoms,
             "selected_topics": s.selected_topics,
             "drivers": [d.get("mechanism_slug") for d in (ai.get("likely_drivers") or [])],
@@ -219,12 +224,32 @@ def main() -> int:
             "synthesis_notes": ai.get("synthesis_notes", ""),
         })
 
+    # Calculate days_since_last_prescription from history_bundle
+    days_since_last_prescription: int | None = None
+    for s in reversed(history_bundle):
+        if s.get("generated_plan_slug"):
+            try:
+                last_date = date.fromisoformat(s["date"])
+                days_since_last_prescription = (today - last_date).days
+            except Exception:
+                pass
+            break
+
+    # Check for an existing session today (same-day reuse to avoid duplicates)
+    existing_today_session: Session | None = None
+    for s in prior:
+        if s.date == today:
+            existing_today_session = s
+            # Use the most recent one from today
+    existing_sid: str | None = existing_today_session.session_id if existing_today_session else None
+
     if dry_run:
-        # Synthetic result still uses the historical dict shape — both
-        # branches are unified into the same accessors below.
+        # Synthetic result parsed into typed model so both branches share
+        # the same attribute-access interface below.
+        from fmdb.assess.results import AssessSuggestions, AssessUsage
         synthetic = _synthetic_result(payload)
-        suggestions = synthetic["suggestions"]
-        usage = synthetic["usage"]
+        suggestions = AssessSuggestions.model_validate(synthetic["suggestions"])
+        usage = AssessUsage.model_validate(synthetic["usage"]).model_dump()
     else:
         if not os.environ.get("ANTHROPIC_API_KEY"):
             json.dump({"ok": False, "error": "ANTHROPIC_API_KEY not set"}, sys.stdout)
@@ -239,37 +264,167 @@ def main() -> int:
                 lab_files=lab_files,
                 additional_notes=complaints,
                 session_history=history_bundle,
+                days_since_last_prescription=days_since_last_prescription,
             )
         except Exception as e:
             json.dump({"ok": False, "error": f"synthesize() failed: {type(e).__name__}: {e}"}, sys.stdout)
             return 1
-        # `result` is an AssessResult Pydantic model. We serialize at the
-        # stdout boundary so the JSON wire format matches what the
-        # TypeScript AssessResult type expects.
+        # `result` is an AssessResult Pydantic model with typed .suggestions.
         suggestions = result.suggestions
         usage = result.usage.model_dump()
 
-    # ----- persist session -----
-    sid = plan_storage.next_session_id(root, client.client_id, today)
-    sess = Session(
-        session_id=sid,
-        client_id=client.client_id,
-        date=today,
-        created_at=now,
-        selected_symptoms=symptoms,
-        selected_topics=topics,
-        presenting_complaints=complaints,
-        uploaded_files=file_refs,
-        measurements_snapshot=client.measurements,
-        ai_analysis=suggestions,
-        api_usage=usage,
-    )
-    plan_storage.write_session(root, sess)
+    # ----- compute FM lab ratios -----
+    from fmdb.assess.lab_ratios import compute_ratios
+    extracted_labs = [lab.model_dump() for lab in suggestions.extracted_labs]
+    computed_ratios = compute_ratios(extracted_labs)
+
+    # ----- persist lab_markers + per-report health snapshots to client YAML -----
+    try:
+        import yaml
+        from datetime import datetime as _dt
+
+        def _parse_report_date(d: object) -> str | None:
+            """Convert 'DD/Mon/YYYY' (or ISO) to YYYY-MM-DD.  Returns None on failure."""
+            if not d:
+                return None
+            import re as _re
+            s = _re.sub(r"^(\d{1,2})/([A-Za-z]{3})/(\d{4})$", r"\2 \1 \3", str(d).strip())
+            for fmt in ("%b %d %Y", "%Y-%m-%d", "%d/%m/%Y", "%b %Y", "%d-%b-%Y"):
+                try:
+                    return _dt.strptime(s, fmt).strftime("%Y-%m-%d")
+                except ValueError:
+                    pass
+            return None
+
+        client_p = plan_storage.client_path(root, client_id)
+        raw_client = yaml.safe_load(client_p.read_text())
+
+        # Save FM computed markers (most-recent values, already handled by _find)
+        if computed_ratios:
+            # Use the latest date_drawn across all extracted labs as the markers date
+            all_dates = [_parse_report_date(l.get("date_drawn")) for l in extracted_labs]
+            latest_report_date = max((d for d in all_dates if d), default=today.isoformat())
+            raw_client["lab_markers"] = computed_ratios
+            raw_client["lab_markers_date"] = latest_report_date
+
+        # Build one health snapshot per distinct report date so health trends can
+        # show how each marker changed between appointments.
+        date_groups: dict[str, list[dict]] = {}
+        undated: list[dict] = []
+        for lab in extracted_labs:
+            rd = _parse_report_date(lab.get("date_drawn"))
+            if rd:
+                date_groups.setdefault(rd, []).append(lab)
+            else:
+                undated.append(lab)
+
+        # If there's only one date group (or none), fall back to a single
+        # snapshot dated today so the data still appears on the timeline.
+        if not date_groups and undated:
+            date_groups[today.isoformat()] = undated
+
+        existing_snaps: list = raw_client.get("health_snapshots") or []
+        for report_date, labs in sorted(date_groups.items()):
+            snap_source = f"lab-report-{report_date}"
+            # Remove any previous snapshot for the same date+source, then re-add.
+            existing_snaps = [
+                s for s in existing_snaps
+                if not (s.get("date") == report_date and s.get("source") == snap_source)
+            ]
+            import re as _re2
+            # Strip date suffixes the AI appends to test names, e.g.
+            # "TSH (Ultrasensitive) - Jan 2026" → "TSH (Ultrasensitive)"
+            # so the trends chart groups them as one series across snapshots.
+            _DATE_SUFFIX = _re2.compile(
+                r"\s*[-–]\s*(?:\d{1,2}[/\-])?(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*"
+                r"[\s/\-]*\d{4}\s*$", _re2.IGNORECASE)
+            snap_lab_values = [
+                {
+                    "test_name": _DATE_SUFFIX.sub("", l["test_name"]).strip(),
+                    "value": str(l["value"]),
+                    "unit": l.get("unit") or "",
+                }
+                for l in labs
+            ]
+            existing_snaps.append({
+                "date": report_date,
+                "source": snap_source,
+                "lab_values": snap_lab_values,
+            })
+
+        raw_client["health_snapshots"] = existing_snaps
+        client_p.write_text(yaml.safe_dump(raw_client, sort_keys=False, allow_unicode=True))
+    except Exception:
+        pass  # non-fatal — ratios still returned in the response
+
+    # ----- persist session (reuse today's or create new) -----
+    if existing_sid:
+        # Update existing session for today
+        try:
+            sess = plan_storage.load_session(root, client_id, existing_sid)
+            # Update the ai_analysis and related fields in-place
+            from dataclasses import replace
+            updated = Session(
+                session_id=sess.session_id,
+                client_id=sess.client_id,
+                date=sess.date,
+                created_at=sess.created_at,
+                selected_symptoms=symptoms,
+                selected_topics=topics,
+                presenting_complaints=complaints,
+                uploaded_files=file_refs if file_refs else sess.uploaded_files,
+                measurements_snapshot=client.measurements,
+                ai_analysis=suggestions.model_dump(),
+                api_usage=usage,
+                chat_log=sess.chat_log,
+                generated_plan_slug=sess.generated_plan_slug,
+                coach_notes=sess.coach_notes,
+                next_session_planned=sess.next_session_planned,
+            )
+            plan_storage.update_session(root, updated)
+            sid = existing_sid
+        except Exception:
+            # Fall through to creating a new session if update fails
+            sid = plan_storage.next_session_id(root, client.client_id, today)
+            sess = Session(
+                session_id=sid,
+                client_id=client.client_id,
+                date=today,
+                created_at=now,
+                selected_symptoms=symptoms,
+                selected_topics=topics,
+                presenting_complaints=complaints,
+                uploaded_files=file_refs,
+                measurements_snapshot=client.measurements,
+                ai_analysis=suggestions.model_dump(),
+                api_usage=usage,
+            )
+            try:
+                plan_storage.write_session(root, sess)
+            except FileExistsError:
+                plan_storage.update_session(root, sess)
+    else:
+        sid = plan_storage.next_session_id(root, client.client_id, today)
+        sess = Session(
+            session_id=sid,
+            client_id=client.client_id,
+            date=today,
+            created_at=now,
+            selected_symptoms=symptoms,
+            selected_topics=topics,
+            presenting_complaints=complaints,
+            uploaded_files=file_refs,
+            measurements_snapshot=client.measurements,
+            ai_analysis=suggestions.model_dump(),
+            api_usage=usage,
+        )
+        plan_storage.write_session(root, sess)
 
     json.dump({
         "ok": True,
         "session_id": sid,
-        "suggestions": suggestions,
+        "suggestions": suggestions.model_dump(),
+        "computed_ratios": computed_ratios,
         "usage": usage,
         "subgraph_size_bytes": subgraph_bytes,
         "error": None,

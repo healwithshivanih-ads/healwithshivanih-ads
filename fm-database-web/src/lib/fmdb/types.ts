@@ -39,6 +39,7 @@ export interface Topic extends BaseEntity {
   key_mechanisms?: string[];
   coaching_scope_notes?: string;
   clinician_scope_notes?: string;
+  notes_for_coach?: string;
 }
 
 export interface Mechanism extends BaseEntity {
@@ -48,6 +49,7 @@ export interface Mechanism extends BaseEntity {
   downstream_effects?: string[];
   related_mechanisms?: string[];
   linked_to_topics?: string[];
+  notes_for_coach?: string;
 }
 
 export interface Symptom extends BaseEntity {
@@ -57,6 +59,7 @@ export interface Symptom extends BaseEntity {
   when_to_refer?: string;
   linked_to_topics?: string[];
   linked_to_mechanisms?: string[];
+  notes_for_coach?: string;
 }
 
 export interface Claim extends BaseEntity {
@@ -92,6 +95,7 @@ export interface Supplement extends BaseEntity {
   linked_to_mechanisms?: string[];
   linked_to_claims?: string[];
   notes?: string;
+  notes_for_coach?: string;
 }
 
 export interface Source extends BaseEntity {
@@ -207,15 +211,51 @@ export type PlanPatch = Partial<PlanFields>;
 export interface Client {
   client_id: string;
   intake_date?: string;
-  age_band?: string;
+  date_of_birth?: string;   // YYYY-MM-DD — preferred; system computes age from this
+  age_band?: string;        // legacy fallback if DOB not set
   sex?: string;
+  email?: string;           // client email for sending plan handouts
+  next_contact_date?: string; // YYYY-MM-DD — coach-set follow-up reminder
   active_conditions?: string[];
   medications?: string[];
+  current_medications?: string[];
   allergies?: string[];
+  known_allergies?: string[];
   goals?: string[];
   notes?: string;
+  mobile_number?: string;
+  dietary_preference?: string;   // Vegetarian | Non-vegetarian | Vegan | Eggetarian | Pescatarian | Other
+  foods_to_avoid?: string;       // free form
+  non_negotiables?: string;      // things they won't give up
   medical_history?: string[];
   measurements?: Record<string, unknown>;
+  display_name?: string;
+  lab_markers?: Array<{
+    marker_name: string;
+    value: number;
+    unit: string;
+    reference_range: string;
+    flag: string;
+    fm_interpretation: string;
+    computed?: boolean;
+  }>;
+  lab_markers_date?: string;
+  health_snapshots?: Array<{
+    date: string;           // YYYY-MM-DD
+    source: string;         // e.g. "transcript-call.pdf", "manual-2026-05-04"
+    measurements?: {
+      height_cm?: number | null;
+      weight_kg?: number | null;
+      bp_systolic?: number | null;
+      bp_diastolic?: number | null;
+      hr_bpm?: number | null;
+      waist_cm?: number | null;
+      hip_cm?: number | null;
+    };
+    lab_values?: Array<{ test_name: string; value: string; unit: string }>;
+    medications?: string[];
+    conditions?: string[];
+  }>;
   [key: string]: unknown;
 }
 

@@ -171,6 +171,85 @@ export function countMindMapNodes(tree: MindMapNode[] | undefined): {
   return { total, linked };
 }
 
+// ---- MindMap Pathway Finder ----
+
+export interface MindMapMatch {
+  /** Breadcrumb path from the top-level branch down to the matched node */
+  path: string[];
+  nodeLabel: string;
+  linkedKind: string;
+  linkedSlug: string;
+}
+
+export interface MindMapPathwayResult {
+  mindmapSlug: string;
+  mindmapName: string;
+  /** Nodes matched by the selected symptoms / topics */
+  matches: MindMapMatch[];
+  /** Labels of each top-level branch (for at-a-glance summary) */
+  topLevelBranches: string[];
+}
+
+function walkForMatches(
+  nodes: MindMapNode[],
+  matchSlugs: Set<string>,
+  matchKinds: Set<string>,
+  pathSoFar: string[]
+): MindMapMatch[] {
+  const results: MindMapMatch[] = [];
+  for (const node of nodes) {
+    const currentPath = [...pathSoFar, node.label];
+    if (
+      node.linked_kind &&
+      node.linked_slug &&
+      matchKinds.has(node.linked_kind) &&
+      matchSlugs.has(node.linked_slug)
+    ) {
+      results.push({
+        path: currentPath,
+        nodeLabel: node.label,
+        linkedKind: node.linked_kind,
+        linkedSlug: node.linked_slug,
+      });
+    }
+    if (node.children?.length) {
+      results.push(...walkForMatches(node.children, matchSlugs, matchKinds, currentPath));
+    }
+  }
+  return results;
+}
+
+export async function findMindMapPathways(
+  symptomSlugs: string[],
+  topicSlugs: string[]
+): Promise<MindMapPathwayResult[]> {
+  if (!symptomSlugs.length && !topicSlugs.length) return [];
+
+  const matchSlugs = new Set([...symptomSlugs, ...topicSlugs]);
+  const matchKinds = new Set<string>();
+  if (symptomSlugs.length) matchKinds.add("symptom");
+  if (topicSlugs.length) matchKinds.add("topic");
+
+  const maps = await loadAllMindMaps();
+  const results: MindMapPathwayResult[] = [];
+
+  for (const m of maps) {
+    if (!m.tree?.length) continue;
+    const matches = walkForMatches(m.tree, matchSlugs, matchKinds, []);
+    if (!matches.length) continue;
+    results.push({
+      mindmapSlug: m.slug,
+      mindmapName: m.display_name ?? m.slug,
+      matches,
+      topLevelBranches: m.tree.map((n) => n.label),
+    });
+  }
+
+  // Most matches first
+  results.sort((a, b) => b.matches.length - a.matches.length);
+  return results;
+}
+
 // ---- Backlog ----
 
 export interface BacklogItem {

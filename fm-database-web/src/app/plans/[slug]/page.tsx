@@ -17,6 +17,10 @@ import type {
 import { PlanEditor } from "./plan-editor";
 import { PlanCheckPanel } from "./plan-check-panel";
 import { LifecyclePanel } from "./lifecycle-panel";
+import { DeletePlanButton } from "./delete-plan-button";
+import { SendToClientButton } from "./send-to-client-modal";
+import { loadSupplementSources } from "./actions";
+import { loadAllClients } from "@/lib/fmdb/loader";
 import type { MultiSelectOption } from "@/components/multi-select";
 
 export const dynamic = "force-dynamic";
@@ -65,7 +69,7 @@ export default async function PlanDetailPage({
   const plan = await loadPlanBySlug(slug);
   if (!plan) notFound();
 
-  const [topics, symptoms, mechanisms, supplements, cooking, remedies, resources, allPlans] =
+  const [topics, symptoms, mechanisms, supplements, cooking, remedies, resources, allPlans, supplementSources, allClients] =
     await Promise.all([
       loadAllOfKind<Topic>("topics"),
       loadAllOfKind<Symptom>("symptoms"),
@@ -75,8 +79,13 @@ export default async function PlanDetailPage({
       loadAllOfKind<HomeRemedy>("home_remedies"),
       loadResourceOptions(),
       loadAllPlans(),
+      loadSupplementSources(),
+      loadAllClients(),
     ]);
   const allPlanSlugs = allPlans.map((p) => p.slug).sort();
+  const planClient = plan.client_id
+    ? allClients.find((c) => c.client_id === plan.client_id)
+    : undefined;
 
   const status = plan.status ?? plan._bucket;
   const locked = status !== "draft";
@@ -102,10 +111,19 @@ export default async function PlanDetailPage({
         <span className="text-sm text-muted-foreground font-mono">
           {plan.client_id ?? "—"}
         </span>
+        <div className="ml-auto flex items-center gap-2">
+          <SendToClientButton
+            planSlug={plan.slug}
+            clientEmail={planClient?.email}
+            clientName={planClient?.display_name ?? planClient?.client_id}
+          />
+          <DeletePlanButton slug={plan.slug} status={status} />
+        </div>
       </div>
 
       <LifecyclePanel
         slug={plan.slug}
+        clientId={plan.client_id as string | undefined}
         status={status as typeof plan.status}
         version={plan.version}
         catalogueSnapshot={
@@ -134,6 +152,7 @@ export default async function PlanDetailPage({
             cookingOptions={toOptions(cooking)}
             remedyOptions={toOptions(remedies)}
             resourceOptions={resources}
+            supplementSources={supplementSources}
             locked={locked}
           />
         </div>

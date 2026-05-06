@@ -725,6 +725,7 @@ export default async function CatalogueDetailPage({
   if (!SUPPORTED.has(kind)) notFound();
 
   let body: React.ReactNode;
+
   switch (kind) {
     case "topics": {
       const t = await loadOne<Topic>("topics", slug);

@@ -2090,6 +2090,7 @@ def render_assess_page():
                         "age_band": client.age_band,
                         "estimated_age": age,
                         "sex": client.sex,
+                        "dietary_preference": client.dietary_preference or "Vegetarian",
                         "active_conditions": client.active_conditions,
                         "medical_history": client.medical_history,
                         "current_medications": client.current_medications,
@@ -2141,23 +2142,23 @@ def render_assess_page():
                         presenting_complaints=free_text_symptoms,
                         uploaded_files=file_refs,
                         measurements_snapshot=client.measurements,
-                        ai_analysis=result.suggestions,
+                        ai_analysis=result.suggestions.model_dump(),
                         api_usage=result.usage.model_dump(),
                     )
                     plan_storage.write_session(root, sess)
                     st.session_state["current_session_id"] = sid
 
                     # Auto-capture catalogue additions the AI flagged
-                    additions = (result.suggestions or {}).get("catalogue_additions_suggested") or []
+                    additions = result.suggestions.catalogue_additions_suggested
                     captured = 0
                     for it in additions:
-                        if not it.get("name"):
+                        if not it.name:
                             continue
                         backlog_mod.add(
                             DATA_DIR,
-                            kind=it.get("kind", "other"),
-                            name=it["name"],
-                            why=it.get("why", ""),
+                            kind=it.kind or "other",
+                            name=it.name,
+                            why=it.why or "",
                             suggested_by="ai",
                             source_session_id=sid,
                             source_client_id=client.client_id,
@@ -2176,7 +2177,7 @@ def render_assess_page():
                         "selected_symptoms": selected_symptoms,
                         "selected_topics": selected_topics,
                         "additional_notes": free_text_symptoms,
-                        "suggestions": result.suggestions,
+                        "suggestions": result.suggestions.model_dump(),
                         "session_history": history_bundle,
                     }
                 except Exception as e:
@@ -2196,9 +2197,9 @@ def render_assess_page():
         )
         return
 
-    # `result` is an AssessResult Pydantic model; .suggestions is the
-    # tool_use payload dict, .usage is an AssessUsage model.
-    suggestions = result.suggestions or {}
+    # `result` is an AssessResult Pydantic model; .suggestions is a typed
+    # AssessSuggestions model, .usage is an AssessUsage model.
+    suggestions = result.suggestions
     usage = result.usage
 
     st.divider()
@@ -2210,8 +2211,8 @@ def render_assess_page():
         f"stop: {usage.stop_reason or '?'}"
     )
 
-    if suggestions.get("synthesis_notes"):
-        st.info(f"**🧐 Synthesis notes:** {suggestions['synthesis_notes']}")
+    if suggestions.synthesis_notes:
+        st.info(f"**🧐 Synthesis notes:** {suggestions.synthesis_notes}")
 
     # Track which suggestions to add to a draft plan
     if "plan_draft_picks" not in st.session_state:
@@ -2225,39 +2226,39 @@ def render_assess_page():
         return new
 
     # ----- Extracted labs -----
-    if suggestions.get("extracted_labs"):
-        with st.expander(f"🧪 Extracted lab values ({len(suggestions['extracted_labs'])})", expanded=True):
-            for i, lab in enumerate(suggestions["extracted_labs"]):
+    if suggestions.extracted_labs:
+        with st.expander(f"🧪 Extracted lab values ({len(suggestions.extracted_labs)})", expanded=True):
+            for i, lab in enumerate(suggestions.extracted_labs):
                 cols = st.columns([3, 2, 2, 5])
-                cols[0].markdown(f"**{lab.get('test_name', '?')}**")
-                v = lab.get("value", "?")
-                u = lab.get("unit", "")
+                cols[0].markdown(f"**{lab.test_name or '?'}**")
+                v = lab.value or "?"
+                u = lab.unit or ""
                 cols[1].markdown(f"{v} {u}")
-                flag = lab.get("flag", "")
+                flag = lab.flag or ""
                 color = {"low": "🔵", "high": "🔴", "normal": "🟢", "optimal": "🟢", "suboptimal": "🟡"}.get(flag.lower(), "⚪")
                 cols[2].markdown(f"{color} {flag or '—'}")
-                cols[3].caption(lab.get("fm_interpretation", "—"))
+                cols[3].caption(lab.fm_interpretation or "—")
 
     # ----- Likely drivers -----
     cat_mechs = {m.slug: m for m in cat.mechanisms}
     cat_mech_aliases = {a: m.slug for m in cat.mechanisms for a in m.aliases}
-    if suggestions.get("likely_drivers"):
+    if suggestions.likely_drivers:
         st.subheader("🎯 Likely root-cause mechanisms")
-        for d in suggestions["likely_drivers"]:
-            mech_slug = d.get("mechanism_slug", "?")
+        for d in suggestions.likely_drivers:
+            mech_slug = d.mechanism_slug or "?"
             canonical = cat_mech_aliases.get(mech_slug, mech_slug)
             mech = cat_mechs.get(canonical)
             with st.container(border=True):
                 cols = st.columns([4, 1])
                 with cols[0]:
-                    line = [f"**#{d.get('rank', '?')} — {mech_slug}**"]
+                    line = [f"**#{d.rank or '?'} — {mech_slug}**"]
                     if mech:
                         line.append(_evidence_badge(mech.evidence_tier.value))
                     st.markdown(" &nbsp; ".join(line), unsafe_allow_html=True)
-                    st.caption(d.get("reasoning", ""))
-                    if d.get("supporting_evidence"):
+                    st.caption(d.reasoning or "")
+                    if d.supporting_evidence:
                         st.markdown("_Supporting evidence:_")
-                        for ev in d["supporting_evidence"]:
+                        for ev in d.supporting_evidence:
                             st.markdown(f"  - {ev}")
                     if mech and mech.sources:
                         with st.expander("📚 Catalogue sources for this mechanism"):
@@ -2274,82 +2275,82 @@ def render_assess_page():
     # ----- Topics in play -----
     cat_topics = {t.slug: t for t in cat.topics}
     cat_topic_aliases = {a: t.slug for t in cat.topics for a in t.aliases}
-    if suggestions.get("topics_in_play"):
+    if suggestions.topics_in_play:
         st.subheader("🗂️ Topics in play")
-        for t in suggestions["topics_in_play"]:
-            t_slug = t.get("topic_slug")
+        for t in suggestions.topics_in_play:
+            t_slug = t.topic_slug
             canonical_t = cat_topic_aliases.get(t_slug, t_slug)
             topic = cat_topics.get(canonical_t)
             with st.container(border=True):
                 cols = st.columns([4, 1])
                 with cols[0]:
-                    role = t.get("role", "?")
+                    role = t.role or "?"
                     icon = "🟢" if role == "primary" else "🟡"
                     line = [f"{icon} **{t_slug}** ({role})"]
                     if topic:
                         line.append(_evidence_badge(topic.evidence_tier.value))
                     st.markdown(" &nbsp; ".join(line), unsafe_allow_html=True)
-                    if t.get("rationale"):
-                        st.caption(t["rationale"])
+                    if t.rationale:
+                        st.caption(t.rationale)
                 with cols[1]:
                     _check(f"topic_{t_slug}_{role}")
 
     # ----- Additional symptoms to screen -----
-    if suggestions.get("additional_symptoms_to_screen"):
+    if suggestions.additional_symptoms_to_screen:
         with st.expander("🔍 Symptoms worth screening (the coach didn't mention these)", expanded=False):
-            for s in suggestions["additional_symptoms_to_screen"]:
-                st.markdown(f"- **{s.get('symptom_slug')}** — {s.get('why_screen', '')}")
+            for s in suggestions.additional_symptoms_to_screen:
+                st.markdown(f"- **{s.symptom_slug}** — {s.why_screen or ''}")
 
     # ----- Lifestyle -----
-    if suggestions.get("lifestyle_suggestions"):
+    if suggestions.lifestyle_suggestions:
         st.subheader("🌿 Lifestyle suggestions")
-        for i, ls in enumerate(suggestions["lifestyle_suggestions"]):
+        for i, ls in enumerate(suggestions.lifestyle_suggestions):
             with st.container(border=True):
                 cols = st.columns([4, 1])
                 with cols[0]:
-                    st.markdown(f"**{ls.get('name', '?')}** &nbsp; _({ls.get('cadence', '?')})_")
-                    if ls.get("details"):
-                        st.caption(ls["details"])
-                    st.markdown(f"_{ls.get('rationale', '')}_")
-                    if ls.get("addresses_mechanism"):
-                        st.caption(f"Addresses: {', '.join(ls['addresses_mechanism'])}")
+                    st.markdown(f"**{ls.name or '?'}** &nbsp; _({ls.cadence or '?'})_")
+                    if ls.details:
+                        st.caption(ls.details)
+                    st.markdown(f"_{ls.rationale or ''}_")
+                    if ls.addresses_mechanism:
+                        st.caption(f"Addresses: {', '.join(ls.addresses_mechanism)}")
                 with cols[1]:
-                    _check(f"lifestyle_{i}_{ls.get('name', '')}")
+                    _check(f"lifestyle_{i}_{ls.name or ''}")
 
     # ----- Nutrition -----
-    nut = suggestions.get("nutrition_suggestions") or {}
-    if nut and any(nut.values()):
+    nut = suggestions.nutrition_suggestions
+    if nut and any([nut.pattern, nut.add, nut.reduce, nut.meal_timing, nut.cooking_adjustment_slugs, nut.home_remedy_slugs, nut.rationale]):
         st.subheader("🥗 Nutrition")
         with st.container(border=True):
             cols = st.columns([4, 1])
             with cols[0]:
-                if nut.get("pattern"):
-                    st.markdown(f"**Pattern:** {nut['pattern']}")
-                if nut.get("add"):
+                if nut.pattern:
+                    st.markdown(f"**Pattern:** {nut.pattern}")
+                if nut.add:
                     st.markdown("**Add:**")
-                    for x in nut["add"]:
+                    for x in nut.add:
                         st.markdown(f"- {x}")
-                if nut.get("reduce"):
+                if nut.reduce:
                     st.markdown("**Reduce:**")
-                    for x in nut["reduce"]:
+                    for x in nut.reduce:
                         st.markdown(f"- {x}")
-                if nut.get("meal_timing"):
-                    st.markdown(f"**Meal timing:** {nut['meal_timing']}")
-                if nut.get("cooking_adjustment_slugs"):
-                    st.markdown(f"**Cooking adjustments:** {', '.join(nut['cooking_adjustment_slugs'])}")
-                if nut.get("home_remedy_slugs"):
-                    st.markdown(f"**Home remedies:** {', '.join(nut['home_remedy_slugs'])}")
-                if nut.get("rationale"):
-                    st.caption(nut["rationale"])
+                if nut.meal_timing:
+                    st.markdown(f"**Meal timing:** {nut.meal_timing}")
+                if nut.cooking_adjustment_slugs:
+                    st.markdown(f"**Cooking adjustments:** {', '.join(nut.cooking_adjustment_slugs)}")
+                if nut.home_remedy_slugs:
+                    st.markdown(f"**Home remedies:** {', '.join(nut.home_remedy_slugs)}")
+                if nut.rationale:
+                    st.caption(nut.rationale)
             with cols[1]:
                 _check("nutrition_block")
 
     # ----- Supplements -----
-    if suggestions.get("supplement_suggestions"):
+    if suggestions.supplement_suggestions:
         st.subheader("💊 Supplement candidates")
         cat_supps = {s.slug: s for s in cat.supplements}
-        for sp in suggestions["supplement_suggestions"]:
-            slug = sp.get("supplement_slug", "?")
+        for sp in suggestions.supplement_suggestions:
+            slug = sp.supplement_slug or "?"
             cat_supp = cat_supps.get(slug)
             with st.container(border=True):
                 cols = st.columns([4, 1])
@@ -2363,18 +2364,18 @@ def render_assess_page():
                     st.markdown(" &nbsp; ".join(header_parts), unsafe_allow_html=True)
 
                     bits = []
-                    if sp.get("form"): bits.append(sp["form"])
-                    if sp.get("dose"): bits.append(sp["dose"])
-                    if sp.get("timing"): bits.append(sp["timing"])
-                    if sp.get("duration_weeks"): bits.append(f"{sp['duration_weeks']}wk")
+                    if sp.form: bits.append(sp.form)
+                    if sp.dose: bits.append(sp.dose)
+                    if sp.timing: bits.append(sp.timing)
+                    if sp.duration_weeks: bits.append(f"{sp.duration_weeks}wk")
                     if bits:
                         st.caption(" / ".join(bits))
-                    if sp.get("rationale"):
-                        st.markdown(f"_{sp['rationale']}_")
-                    if sp.get("evidence_tier_caveat"):
-                        st.warning(f"⚠️ {sp['evidence_tier_caveat']}")
-                    if sp.get("contraindication_check"):
-                        st.error(f"🚫 {sp['contraindication_check']}")
+                    if sp.rationale:
+                        st.markdown(f"_{sp.rationale}_")
+                    if sp.evidence_tier_caveat:
+                        st.warning(f"⚠️ {sp.evidence_tier_caveat}")
+                    if sp.contraindication_check:
+                        st.error(f"🚫 {sp.contraindication_check}")
                     if cat_supp and cat_supp.sources:
                         with st.expander("📚 Catalogue sources for this supplement"):
                             for src in cat_supp.sources:
@@ -2388,31 +2389,31 @@ def render_assess_page():
                     _check(f"supp_{slug}")
 
     # ----- Lab follow-ups -----
-    if suggestions.get("lab_followups"):
+    if suggestions.lab_followups:
         st.subheader("🧪 Lab follow-ups")
-        for i, lf in enumerate(suggestions["lab_followups"]):
+        for i, lf in enumerate(suggestions.lab_followups):
             with st.container(border=True):
                 cols = st.columns([4, 1])
-                cols[0].markdown(f"**{lf.get('test', '?')}** — {lf.get('reason', '')}")
+                cols[0].markdown(f"**{lf.test or '?'}** — {lf.reason or ''}")
                 with cols[1]:
-                    _check(f"lab_{i}_{lf.get('test', '')}")
+                    _check(f"lab_{i}_{lf.test or ''}")
 
     # ----- Referrals -----
-    if suggestions.get("referral_triggers"):
+    if suggestions.referral_triggers:
         st.subheader("🚨 Referral triggers")
-        for i, r in enumerate(suggestions["referral_triggers"]):
+        for i, r in enumerate(suggestions.referral_triggers):
             with st.container(border=True):
                 cols = st.columns([4, 1])
                 with cols[0]:
-                    urgency = r.get("urgency", "routine")
+                    urgency = r.urgency or "routine"
                     icon = {"emergency": "🚨", "urgent": "🔴", "soon": "🟡", "routine": "🔵"}.get(urgency, "🔵")
-                    st.markdown(f"{icon} **Refer to:** {r.get('to', '?')} _({urgency})_")
-                    st.caption(r.get("reason", ""))
+                    st.markdown(f"{icon} **Refer to:** {r.to or '?'} _({urgency})_")
+                    st.caption(r.reason or "")
                 with cols[1]:
                     _check(f"ref_{i}", default=urgency in ("emergency", "urgent"))
 
     # ----- Catalogue additions suggested by AI -----
-    additions = suggestions.get("catalogue_additions_suggested") or []
+    additions = suggestions.catalogue_additions_suggested
     if additions:
         st.subheader("🆕 Catalogue additions suggested")
         st.caption(
@@ -2424,9 +2425,9 @@ def render_assess_page():
             for it in backlog_mod.list_items(DATA_DIR, status="open")
         }
         for it in additions:
-            kind = it.get("kind", "?")
-            name = it.get("name", "?")
-            why = it.get("why", "")
+            kind = it.kind or "?"
+            name = it.name or "?"
+            why = it.why or ""
             with st.container(border=True):
                 in_backlog = (kind, name.lower()) in existing_open
                 badge = "📝 in backlog" if in_backlog else "✨ new"
@@ -2435,16 +2436,16 @@ def render_assess_page():
                     st.caption(why)
 
     # ----- Education framings -----
-    if suggestions.get("education_framings"):
+    if suggestions.education_framings:
         st.subheader("🎓 Coaching framings")
-        for i, ed in enumerate(suggestions["education_framings"]):
+        for i, ed in enumerate(suggestions.education_framings):
             with st.container(border=True):
                 cols = st.columns([4, 1])
                 with cols[0]:
-                    st.markdown(f"**{ed.get('target_kind')}/{ed.get('target_slug')}**")
-                    st.markdown(ed.get("client_facing_summary", ""))
+                    st.markdown(f"**{ed.target_kind}/{ed.target_slug}**")
+                    st.markdown(ed.client_facing_summary or "")
                 with cols[1]:
-                    _check(f"edu_{i}_{ed.get('target_slug', '')}")
+                    _check(f"edu_{i}_{ed.target_slug or ''}")
 
     # ---------- Chat panel — follow-up Q&A about this assessment ----------
     st.divider()
@@ -2528,7 +2529,7 @@ def render_assess_page():
 def generate_plan_from_suggestions(
     *,
     client: Client,
-    suggestions: dict,
+    suggestions,
     picks: dict,
     root: Path,
     cat,
@@ -2562,17 +2563,17 @@ def generate_plan_from_suggestions(
     )
 
     # Hypothesized drivers
-    for d in suggestions.get("likely_drivers", []) or []:
-        if picks.get(f"driver_{d.get('mechanism_slug')}", True):
+    for d in suggestions.likely_drivers:
+        if picks.get(f"driver_{d.mechanism_slug}", True):
             plan.hypothesized_drivers.append(HypothesizedDriver(
-                mechanism=d.get("mechanism_slug", ""),
-                reasoning=d.get("reasoning", ""),
+                mechanism=d.mechanism_slug or "",
+                reasoning=d.reasoning or "",
             ))
 
     # Topics
-    for t in suggestions.get("topics_in_play", []) or []:
-        role = t.get("role", "primary")
-        slug_t = t.get("topic_slug", "")
+    for t in suggestions.topics_in_play:
+        role = t.role or "primary"
+        slug_t = t.topic_slug or ""
         if not slug_t:
             continue
         if picks.get(f"topic_{slug_t}_{role}", True):
@@ -2582,76 +2583,76 @@ def generate_plan_from_suggestions(
                 plan.primary_topics.append(slug_t)
 
     # Lifestyle
-    for i, ls in enumerate(suggestions.get("lifestyle_suggestions", []) or []):
-        if picks.get(f"lifestyle_{i}_{ls.get('name', '')}", True):
+    for i, ls in enumerate(suggestions.lifestyle_suggestions):
+        if picks.get(f"lifestyle_{i}_{ls.name or ''}", True):
             plan.lifestyle_practices.append(PracticeItem(
-                name=ls.get("name", ""),
-                cadence=ls.get("cadence", "daily"),
-                details=ls.get("details", ""),
+                name=ls.name or "",
+                cadence=ls.cadence or "daily",
+                details=ls.details or "",
             ))
 
     # Nutrition (single block check)
-    nut = suggestions.get("nutrition_suggestions") or {}
+    nut = suggestions.nutrition_suggestions
     if nut and picks.get("nutrition_block", True):
         plan.nutrition = NutritionPlan(
-            pattern=nut.get("pattern", ""),
-            add=nut.get("add", []) or [],
-            reduce=nut.get("reduce", []) or [],
-            meal_timing=nut.get("meal_timing", ""),
-            cooking_adjustments=nut.get("cooking_adjustment_slugs", []) or [],
-            home_remedies=nut.get("home_remedy_slugs", []) or [],
+            pattern=nut.pattern or "",
+            add=nut.add or [],
+            reduce=nut.reduce or [],
+            meal_timing=nut.meal_timing or "",
+            cooking_adjustments=nut.cooking_adjustment_slugs or [],
+            home_remedies=nut.home_remedy_slugs or [],
         )
 
     # Supplements
-    for sp in suggestions.get("supplement_suggestions", []) or []:
-        slug_s = sp.get("supplement_slug", "")
+    for sp in suggestions.supplement_suggestions:
+        slug_s = sp.supplement_slug or ""
         if not slug_s:
             continue
         if picks.get(f"supp_{slug_s}", True):
             plan.supplement_protocol.append(SupplementItem(
                 supplement_slug=slug_s,
-                form=sp.get("form", "") or "",
-                dose=sp.get("dose", "") or "",
-                timing=sp.get("timing", "") or "",
-                duration_weeks=sp.get("duration_weeks"),
-                coach_rationale=(sp.get("rationale", "") or "") + (
-                    f"\n\n[evidence-tier note] {sp['evidence_tier_caveat']}"
-                    if sp.get("evidence_tier_caveat") else ""
+                form=sp.form or "",
+                dose=sp.dose or "",
+                timing=sp.timing or "",
+                duration_weeks=sp.duration_weeks,
+                coach_rationale=(sp.rationale or "") + (
+                    f"\n\n[evidence-tier note] {sp.evidence_tier_caveat}"
+                    if sp.evidence_tier_caveat else ""
                 ),
             ))
 
     # Lab follow-ups
-    for i, lf in enumerate(suggestions.get("lab_followups", []) or []):
-        if picks.get(f"lab_{i}_{lf.get('test', '')}", True):
+    for i, lf in enumerate(suggestions.lab_followups):
+        if picks.get(f"lab_{i}_{lf.test or ''}", True):
             plan.lab_orders.append(LabOrderItem(
-                test=lf.get("test", ""),
-                reason=lf.get("reason", ""),
+                test=lf.test or "",
+                reason=lf.reason or "",
             ))
 
     # Referrals
-    for i, r in enumerate(suggestions.get("referral_triggers", []) or []):
-        urgency = r.get("urgency", "routine")
+    for i, r in enumerate(suggestions.referral_triggers):
+        urgency = r.urgency or "routine"
         if picks.get(f"ref_{i}", True):
             plan.referrals.append(ReferralItem(
-                to=r.get("to", ""),
-                reason=r.get("reason", ""),
+                to=r.to or "",
+                reason=r.reason or "",
                 urgency=urgency,
             ))
 
     # Education
-    for i, ed in enumerate(suggestions.get("education_framings", []) or []):
-        if picks.get(f"edu_{i}_{ed.get('target_slug', '')}", True):
+    for i, ed in enumerate(suggestions.education_framings):
+        if picks.get(f"edu_{i}_{ed.target_slug or ''}", True):
             plan.education.append(EducationModule(
-                target_kind=ed.get("target_kind", "topic"),
-                target_slug=ed.get("target_slug", ""),
-                client_facing_summary=ed.get("client_facing_summary", ""),
+                target_kind=ed.target_kind or "topic",
+                target_slug=ed.target_slug or "",
+                client_facing_summary=ed.client_facing_summary or "",
             ))
 
     # Notes
-    if suggestions.get("synthesis_notes") or free_text_notes:
+    if suggestions.synthesis_notes or free_text_notes:
         plan.notes_for_coach = (
             (f"Free-text intake: {free_text_notes}\n\n" if free_text_notes else "")
-            + (f"AI synthesis notes: {suggestions['synthesis_notes']}" if suggestions.get("synthesis_notes") else "")
+            + (f"AI synthesis notes: {suggestions.synthesis_notes}" if suggestions.synthesis_notes else "")
         )
 
     plan_storage.write_plan(root, plan)

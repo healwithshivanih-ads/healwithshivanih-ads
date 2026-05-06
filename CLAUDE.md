@@ -14,7 +14,206 @@ published plans as JSON artifacts.
 
 ## Status
 
-**v0.34 (current)** — Assess page UX fixes + Clients workflow:
+**v0.44 (current)** — Coach Knowledge ingest tab, catalogue check before staging, Enrich links panel, Add Source consolidated into Ingest:
+
+- **💬 Coach Knowledge tab on `/ingest`** — zero-friction clinical observation capture:
+  - New tab "💬 Coach Knowledge" in the Ingest page tab bar.
+  - **Two-phase flow**: type an observation → "🔍 Check catalogue first" → AI checks for conflicts/support → then stage.
+  - **Phase 1 — catalogue check** (`scripts/coach-knowledge-check.py`): keyword extraction (4+ char words, hyphenated compounds, stopword filtered) → YAML file scoring (slug match = 2× bonus) → top 15 candidates → Haiku call returns `{related: [{kind, slug, relation: "supports"|"conflicts"|"overlaps"|"referenced", relation_note}], assessment, is_new_ground}`.
+  - **Assessment banner**: red if conflicts, green if new ground, blue if overlaps. Shows each related entry as a `RelatedEntryCard` with colour-coded relation badge, relation note, summary excerpt, and existing `notes_for_coach`.
+  - **Stage button**: "⚠ Stage anyway" (red) if conflicts, "🧠 Stage observation" (amber) otherwise. Editing the text resets back to idle.
+  - **Phase 2 — staging** (`scripts/coach-knowledge.py`): writes observation to temp `.md`, calls `fmdb ingest` with `source-id=coach-shivani` and a specialized extraction prompt that emits Claims with `notes_for_coach` = original wording + `coaching_translation` = actionable phrasing.
+  - Auth fix: `load_dotenv(FMDB_ROOT / ".env", override=True)` with fallback manual parser that strips `export ` prefix — fixes Haiku "could not resolve authentication" error.
+
+- **🔗 Enrich links before approving** — add cross-links to staged entities before `approve`:
+  - `EnrichPanel` component appears inside every pending `BatchPanel` (below Approve/Reject buttons). Lazy-loads staged entities on expand via `listStagedEntitiesAction`.
+  - Per-entity `EnrichEntityRow`: collapsible row showing entity kind / display_name / slug. Inputs for `linked_to_topics`, `linked_to_mechanisms`, `linked_to_supplements`, `linked_to_claims` (comma-separated slugs) + `notes_for_coach` textarea.
+  - Saves via `patchStagedEntityAction` → `ingest-action.py` `patch_staged_entity` action: union-merges list fields (`dict.fromkeys` dedup), overwrites string fields, writes back with `yaml.dump(sort_keys=False)`.
+  - **New ingest-action.py actions**: `list_staged_entities` (reads `_meta.json` entries, loads each staged YAML, returns `{entity, slug, status, display_name, linked_to_*, notes_for_coach}`); `patch_staged_entity` (union-merges + overwrites); `batch_status` (reads `_meta.json` status field).
+
+- **✅ BatchPanel status check** — already-approved/rejected batches show read-only banner:
+  - `getBatchStatusAction` called on mount. If `status === "approved"` or `"rejected"`, renders coloured read-only banner ("✓ Already approved — entries are in the catalogue") with only a "👁 Review YAML" button. No Approve/Reject actions shown.
+  - Fixes: `vitaone-health-coaching-toolkit` batch with `status: "approved"` in `_meta.json` was always showing as pending.
+
+- **📚 Add Source consolidated into Ingest** — no more separate sidebar page:
+  - "📚 Add Source" is now the 4th tab on `/ingest` (`AddSourceTab` component). Full form: ID, title, type, quality, authors, year, publisher, URL, DOI, notes. Saves via `saveSourceAction` → `source-save.py`.
+  - After save: shows success banner with link to `/catalogue/sources/{id}` + explanation to then ingest the document with the same ID.
+  - `{ href: "/sources", label: "📚 Add Source" }` removed from `KB_NAV` in `sidebar-nav.tsx`. The `/sources` route still exists but is no longer linked from sidebar.
+
+- **New actions in `src/app/ingest/actions.ts`**: `checkCoachKnowledgeAction`, `runCoachKnowledgeAction`, `getBatchStatusAction`, `listStagedEntitiesAction`, `patchStagedEntityAction`, `saveSourceAction` (consolidated from `/sources/actions.ts`).
+
+**v0.43** — Split document types, coach knowledge field, /sources route, shim extraction:
+
+- **✂️ Split Generate Meal Plan into 4 document types** (`client-letter-button.tsx` + `lifecycle-actions.ts` + `render-client-letter.py`):
+  - **4 letter types**: `"consolidated"` (all sections), `"meal_plan"` (nutrition/meals only), `"supplement_plan"` (short intro + Python-generated schedule), `"coaching_plan"` (lifestyle/education/labs/tracking).
+  - **`LetterType`** TypeScript union type in `lifecycle-actions.ts`. `saveMealPlan` / `loadMealPlan` / `generateClientLetter` all accept `letterType` (default `"consolidated"` for backward compat).
+  - **File stems**: consolidated → `{planSlug}.md/.html`, others → `{planSlug}-{type}.md/.html`.
+  - **`render-client-letter.py`**: 3 new prompt builders (`_build_prompt_meal_plan`, `_build_prompt_supplement_plan`, `_build_prompt_coaching_plan`) + dispatcher in `_build_prompt()` routing by `letter_type`.
+  - **UI (`client-letter-button.tsx`)**: 4-type selector cards in idle state (emoji + desc + "✓ saved" badge). Loads all saved types on mount in parallel. Tab bar in ready state shows each saved type. Weight loss form only shown for types that `needsWeightLoss` (consolidated + meal_plan).
+  - **`type_meta` dict** maps each letter_type to its HTML title/subtitle.
+
+- **📝 Coach knowledge / custom notes field** (`coachNotes` parameter):
+  - Optional freeform textarea shown in asking state before generation: `"e.g. Soak 1 tsp methi seeds overnight and drink the water first thing in the morning…"`
+  - Passed through `generateClientLetter()` → Python shim → woven naturally into each of the 4 prompt variants as a `coach_notes_block`.
+  - All 4 prompt builders include the notes block if non-empty.
+
+- **📚 /sources route** — new "Add Source" page in the Next.js UI:
+  - `src/app/sources/page.tsx` + `src/app/sources/source-client.tsx`: full form (ID, title, type, quality, authors, year, publisher, URL, DOI, notes). On save: calls `saveSourceAction`, shows success badge linking to `/catalogue/sources/{id}`.
+  - `src/app/sources/actions.ts`: uses `runShim` from `@/lib/fmdb/shim`. Revalidates `/catalogue` + `/sources`.
+  - `scripts/source-save.py`: Python shim writing new Source entities to `fm-database/data/sources/`. Validates enums, returns `{ok, id, already_existed, error}`.
+  - Sidebar: `{ href: "/sources", label: "📚 Add Source" }` added to `KB_NAV`.
+
+- **🔧 `runShim` extracted to shared utility** (`src/lib/fmdb/shim.ts`):
+  - Previously a private function inside `anthropic.ts`. Extracted to `src/lib/fmdb/shim.ts` as an exported utility.
+  - `sources/actions.ts` imports from `@/lib/fmdb/shim` (not from `anthropic.ts`).
+  - `PYTHON` and `SCRIPTS_DIR` constants also exported from `shim.ts`.
+
+- **🗂 Worktree cleanup**: stale `admiring-montalcini-75c3f5` worktree (frozen at v0.34) removed entirely. All its `/sources` work ported cleanly to main.
+
+- **📦 Catalogue counts updated (post adrenal-hormones batch approval)**:
+  - 82 sources / **318** topics / **408** mechanisms / **378** symptoms / **1,492** claims / 279 supplements.
+
+**v0.42** — Ingest all-clear + approve_all hardening:
+
+- **✅ All 58 staging batches approved** — catalogue now fully committed. Final counts: 80 sources / 314 topics / 401 mechanisms / 366 symptoms / 1,418 claims / 279 supplements.
+- **🔧 approve_all hardened** (`scripts/ingest-action.py`):
+  - Was treating "staged file missing" (56 batches already approved in a prior session but `_meta.json` never marked) as failures → showed 57 failed. Now detects the phrase in stderr, marks those `_meta.json` files `status: approved`, counts as `skipped` not `failed`. Correct output: `approved=1 skipped=56 failed=0`.
+  - Alias collision auto-fix pattern: when a staging batch has an alias that matches a canonical slug in the same entity kind, remove the alias from the staging file before re-running approve. The approve validator treats this as an error and aborts the whole batch. Fixed manually for the two nutrition cheatsheet batches; a Python helper script was used to find all collisions in bulk and strip them in one pass.
+  - **Root cause of alias collisions**: the AI extractor generates aliases including terms that already exist as their own canonical entities (e.g. `hypothyroidism` as alias on `thyroid` topic, `anxiety` as alias on `mood-changes-and-anxiety` symptom, `neuropathy` as alias on `tingling-numbness` symptom). This is expected — just strip the colliding alias and approve.
+
+**v0.41** — Supplement schedule, affiliate links, ingest upgrades, git commit button, 12-week client letter, per-week print buttons:
+
+- **💊 Python-generated supplement schedule** in client letter (`scripts/render-client-letter.py`):
+  - Supplement section is 100% Python-generated HTML — AI is explicitly told NOT to write supplement table. Guarantees every supplement in the plan appears even if AI is unfamiliar with it (e.g. Slippery Elm).
+  - `_build_supplement_schedule_html(supplements)` → visual timeline (bubble cards per slot) + print-ready table with Supplement / Timing / Dose / Rationale / Where to buy columns.
+  - 7 timing slots in chronological order: Early Morning → Breakfast → Mid-Morning → Lunch → Afternoon (With Dinner labelled "🌆") → Bedtime. `_timing_slot()` maps free-text timing strings (e.g. "dinner", "6 pm", "bedtime") to the correct slot.
+  - **Print schedule button** (`🖨 Print Schedule`): JS isolates `#supplement-schedule` div, calls `window.print()`, restores. Print CSS hides "Where to buy" column (no URLs on printed output), hides all other page content. No URL footer, no client code on printout.
+  - `brand_html.py` has full CSS for `#supplement-schedule`, `.timeline-slot`, `.schedule-table`, `.buy-badge-vitaone/amazon/iherb`. Print rules: `.no-print { display: none !important }`.
+
+- **🗓 Per-week print buttons on the meal plan** (`scripts/brand_html.py`):
+  - `_wrap_week_sections(html)` detects `## Week N` headings in the AI-generated markdown and wraps each in `<div id="print-week-N" class="week-section">`.
+  - `_wrap_no_print_sections(html)` wraps Referral / Recipe / Appendix headings in `<div class="no-print">` so they hide on print.
+  - **Per-week print bar** injected above each `week-section`: a subtle bar with a "🖨 Print Week N" button and "🍽 Meal plan · 7-day table" label. Clicking sets `body[data-print-week="N"]`, calls `window.print()`, clears the attribute. CSS uses `body[data-print-week] .content > *:not(.week-section) { display: none }` and `body[data-print-week="N"] .week-section:not(#print-week-N) { display: none }` to isolate exactly one week.
+  - **✦ Recipe linking**: `✦ heading` anchors in the Recipes appendix are indexed. `✦` symbols in meal plan table cells become clickable links to their recipe anchor.
+  - **Print-optimised table CSS**: meal plan 7-day tables use condensed font, word-wrap, no link underlines. Fits cleanly on A4 without truncation.
+  - `_wrap_week_sections` and `_wrap_no_print_sections` called inside `wrap_in_brand_html()` before returning the final HTML.
+
+- **💌 12-week client letter generator** on the plan page (`src/app/clients/[id]/client-letter-button.tsx`):
+  - **`ClientLetterButton`** component on the client detail page (Assessments / Plans tabs) — triggers `generateClientLetter()` server action.
+  - **Weight loss questionnaire** (`WeightLossForm`) shown before generation: "Is weight loss a goal?" Yes → asks goal kg, goal weeks, activity level (sedentary/light/moderate/active), pace (slow/moderate/faster), current exercise, what she's open to, days/week, physical limitations. No → skips directly to generation.
+  - **`WeightLossParams`** interface in `lifecycle-actions.ts`: `enabled, goal_kg, goal_weeks, activity_level, pace, exercise_current, exercise_open_to, exercise_days_per_week, exercise_limitations`.
+  - **`_calc_calorie_targets(client, wl)`** in `render-client-letter.py`: computes TDEE (Mifflin-St Jeor for the client's age/weight/height/sex + activity multiplier), calculates phase-by-phase calorie targets across 12 weeks (2-2-4-2-2 week phases scaled to goal_weeks). If goal_kg + goal_weeks given, back-calculates required daily deficit; if only pace given, uses fixed weekly loss. Returns `{phases: [{weeks, daily_kcal, phase_label}], ...}`.
+  - **Prompt structure** (`_build_prompt`): 12-week healing journey letter. Weeks 1–2 only get the full 2×7-day meal plan tables; weeks 3–4 get a teaser paragraph only (full plan sent later). Remaining phases get one-paragraph roadmap blurbs. Calorie targets per meal (breakfast 25% / lunch 35% / dinner 30% / snacks 10%) are BINDING — AI must hit them. Seasonal produce (computed from month), location-aware, dietary preference-aware (Vegetarian Jain → no root veg at all, no underground veg). AI writes the letter; supplement section placeholder points to the Python-generated section injected separately.
+  - **Saved meal plan** (`saveMealPlan` / `loadMealPlan`): generated letter (markdown + branded HTML) saved to `~/fm-plans/clients/<id>/meal-plan-<slug>.json`. Loaded on mount so regeneration is optional. Shows "✓ Saved · last generated DD Mon HH:MM".
+  - **Refinement chat**: After generation, inline `ChatTurn[]` panel for multi-turn edits ("swap day 3 dinner", "reduce week 1 calories slightly", "make tone warmer"). Each turn calls `refineLetter()` → `refine-letter.py`. History passed back each turn. Saves refined letter to disk.
+  - **Downloads**: "⬇ Download branded HTML" (Cmd+P → PDF in Chrome) + "⬇ Markdown" + "Preview" toggle.
+
+- **🥗 Dietary preferences on client profile** (`src/app/clients/[id]/preferences-editor.tsx`):
+  - `PreferencesEditor` card on the client detail page — shows dietary_preference, location (city), and any food non-negotiables. Inline editable. Saved to `client.yaml` via `updateClientPreferencesAction`.
+  - Used by `render-client-letter.py` to tailor meal plan (Jain → no root veg, vegetarian/non-vegetarian recipes, regional produce, seasonal foods for that city).
+
+- **🔗 VitaOne affiliate links** — complete 158-keyword catalog across all 4 pages of vitaone.in/shop verified and corrected:
+  - Referral code: `?pr=vita13720sh` on every VitaOne URL via `_v()` helper.
+  - Priority chain: custom links → VitaOne catalog → Amazon fallback → iHerb fallback → no link.
+  - Fixed wrong slugs: NAC (`-17` not `-21`), MCT Oil (`3z-inby-uz48-mct-oil-8`), Betaine HCL (`-116` not `-32`).
+  - Slippery elm intentionally NOT mapped to VitaOne — coach uses custom link or iHerb.
+
+- **🔗 Supplement Links tab in `/backlog`** — CRUD UI for custom affiliate links (Amazon, iHerb, brand sites) for supplements not on VitaOne:
+  - Backed by `~/fm-plans/supplement_links.yaml`.
+  - New files: `src/app/backlog/supplement-links-actions.ts` (Server Actions: `loadSupplementLinks`, `upsertSupplementLink`, `deleteSupplementLink`), `src/app/backlog/supplement-links-client.tsx` (`SupplementLinksClient`, `LinkRow`, `AddLinkForm`).
+  - Tab bar added to `/backlog` page — "📝 Catalogue Backlog" | "🔗 Supplement Links (N)".
+
+- **📛 Human-readable plan names** — `scripts/generate-draft.py` now generates slugs like `shivani-plan-1-2026-05-06-cl-001` (first name + plan number + date + client code) instead of opaque UUIDs.
+
+- **📚 Dashboard git commit button** — amber banner on dashboard counts uncommitted `fm-database/data/` files and lets coach commit in one click:
+  - `src/app/catalogue-commit-action.ts` — `getCatalogueStatus()` (counts by entity type) + `commitCatalogueData(message?)` (git add + git commit with author Shivani).
+  - `src/app/catalogue-commit-button.tsx` — client component, shows breakdown (N topics · N mechanisms · etc.), optional commit message input, refresh button. Auto-hides when nothing pending.
+  - No global git config on this machine — author set via `GIT_AUTHOR_NAME/EMAIL` env vars in the action.
+
+- **⬆️ Ingest UI upgrades** (`/ingest`):
+  - **Images** — drop zone now accepts `.png .jpg .jpeg .webp`. Python backend already handled these as binary vision attachments; UI now exposes them. Shows image preview before submitting.
+  - **URLs** — new "🔗 URL / link" tab. Paste any web URL; Python shim fetches it (`requests`), converts HTML→markdown via `html2text` (installed in venv), saves to temp file, runs through ingest pipeline. PDFs hosted online downloaded as binary. Source ID + title auto-filled from URL on blur.
+  - **⚡ Approve all pending** — amber panel at bottom of `/ingest`. "Check count" shows N pending batches. "✅ Approve all N pending" runs `fmdb approve --update` on every unapproved staging batch sequentially. Shows approved/failed counts + expandable log. New server action: `approveAllPendingAction()`, `countPendingBatchesAction()`. Python handler: `approve_all` + `count_pending` actions in `ingest-action.py`.
+  - **Bug fix** — `ingest-action.py` was calling `python fmdb/cli.py` (causes `ImportError: attempted relative import`). Fixed to `python -m fmdb.cli` everywhere via `run_cli()`.
+
+- **v0.40** — Search, email, ingest UI, follow-up reminders + full clinical check-in workflow:
+- **🔍 Global search (`/search`)** — full-text search across clients, plans, topics, symptoms, supplements, mechanisms. Results grouped by type with colour chips. `⌘K` shortcut from anywhere in the app opens search instantly. Search bar in sidebar with `⌘K` badge. URL param `?q=` makes searches bookmarkable. Sidebar nav updated with all 9 routes including new Search, Assess, Plans, Ingest links.
+- **📧 Email client (`📧 Send to client` button on plan page)** — compose modal: editable To / Subject / Intro, then Preview (renders plan HTML via existing `plan-render.py` in an iframe), then Send. Sent via Gmail SMTP using nodemailer. Client email field on client detail page (click `+ Add email` → saves to `client.yaml`, clickable mailto link). Configured via `GMAIL_USER` + `GMAIL_APP_PASSWORD` in `.env.local`. Example file at `.env.local.example`. nodemailer@8 installed.
+- **⬆️ Ingest UI (`/ingest`)** — drag-drop or click-to-browse PDF/Markdown. Source metadata form (ID, title, type, quality, extraction instructions). Runs the existing Python ingest pipeline (~1–5 min, ~$0.10–0.50/PDF). Batch panel on success with Review (YAML preview) / Approve (smart-merge toggle) / Reject. "Existing staging batches" expander loads any prior batch by ID. New shim: `scripts/ingest-action.py`.
+- **📅 Follow-up reminders** — `next_contact_date` field on clients. Set/edit from the client detail contact widget (alongside email + mobile). Dashboard: overdue follow-ups as top-priority `📅 Follow-ups due` section (violet, above protocol_complete). Upcoming (next 7 days, not yet overdue) shown as a compact strip between stats bar and triage sections. Counts toward "Need attention" stat.
+- **🏃 Production server (PM2)** — `npm run build` done, PM2 installed locally (`./node_modules/.bin/pm2`), `ecosystem.config.js` created. Server runs at `http://localhost:3002` in production mode. Start with: `./node_modules/.bin/pm2 start ecosystem.config.js`. Stop with: `./node_modules/.bin/pm2 stop fm-coach`. Logs at `~/.pm2/logs/`.
+- **Check-in workflow complete** (from prior session): `handleSave` in `check-in-form.tsx` calls `appendCheckInToPlanAction` → appends formatted markdown block to `plan.notes_for_coach`. Protocol adherence rating (4-option grid). Lab ordering from check-in (grouped quick-add chips + custom entry). Check-in timeline in plan Notes tab (`CheckInTimeline` component parses `---\n📋 Check-in` separator).
+- **Client contact widget** — shows email (clickable mailto) + mobile + next_contact_date. Inline editable, saves to `client.yaml` via `updateClientFieldsAction`. Appears under the page header on every client detail page.
+- Build + type-check clean. **20 routes** generating.
+
+**v0.39** — Mindmap cross-reference in Assess + 8 new curated mindmaps:
+- **🧭 Root cause pathways panel** in Assess page. `MindMapContextPanel` component fires automatically as symptoms/topics are selected — no button needed. Calls `getMindMapPathways()` server action → `findMindMapPathways()` in `loader-extras.ts` which recursively walks all mindmap trees matching `linked_slug` against selected symptom/topic slugs. Results grouped by mindmap (most matches first), then by top-level branch within each map. Each match shows full breadcrumb path → bold node name → clickable `symptom/topic ↗` chip linking to the catalogue detail page. "ALSO IN THIS MAP" chips show unmatched branches. "View full map ↗" links to `/mindmap/<slug>`. Collapses/expands per map. Real test: bloating + fatigue + anxiety → **found in 7 mind maps** simultaneously.
+- **8 new curated mindmaps** (each with 6-branch template: Clinical Presentation / Root Mechanisms / FM Approach / Interventions / Coaching Goals / Labs to Track):
+  - `gut-health` — Gut Health & Microbiome (82 nodes, 37 linked)
+  - `adrenal-stress` — Adrenal Dysfunction & Stress Response (81 nodes, 34 linked)
+  - `sex-hormones-perimenopause` — Sex Hormones & Perimenopause (93 nodes, 35 linked)
+  - `blood-sugar-insulin-resistance` — Blood Sugar Dysregulation & Insulin Resistance (85 nodes, 33 linked)
+  - `chronic-inflammation` — Chronic Inflammation (80 nodes, 32 linked)
+  - `liver-detoxification` — Liver Health & Detoxification (84 nodes, 25 linked)
+  - `emotional-wellbeing` — Emotional Wellbeing & Mental Health (90 nodes, 39 linked)
+  - `thyroid-dysfunction` — Thyroid Dysfunction/Hashimoto's (built prior session, 146 nodes, 51 linked)
+  - All slugs verified against catalogue before linking. All validated with 0 errors.
+- **Total mindmap library:** 11 maps (incl. 3 vitaone-scraped), 1,612 nodes, 355 linked (22%).
+- **Mindmap nodes now clickable** — `mindmap-mermaid.tsx` NodeTree changed linked chips from `<span>` to `<Link>` pointing to `/catalogue/<kind>/<slug>`.
+- **New files:** `src/app/assess/mindmap-actions.ts` (server action), `MindMapContextPanel` added to `assess-client.tsx`, `findMindMapPathways()` + `MindMapMatch` + `MindMapPathwayResult` added to `loader-extras.ts`.
+- API usage limit hit for May (resets June 1) — mindmaps are hand-curated YAML, no API needed.
+- Build + type-check clean. All 14 routes.
+
+**v0.38** — Typed inner `suggestions` payload + improved backlog mining heuristic:
+- **Item 4 — Typed `AssessSuggestions` inner payload.** `results.py` now has 11 sub-models (`ExtractedLab`, `LikelyDriver`, `TopicInPlay`, `AdditionalSymptomToScreen`, `LifestyleSuggestion`, `NutritionSuggestions`, `SupplementSuggestion`, `LabFollowup`, `ReferralTrigger`, `EducationFraming`, `CatalogueAdditionSuggested`) + `AssessSuggestions` wrapping them all. `AssessResult.suggestions` is now `AssessSuggestions` (not `dict`). All models use `ConfigDict(extra="ignore")` for forward compatibility. `synthesize()` calls `AssessSuggestions.model_validate(tool_input)` before constructing the result. All callers updated: `fmdb_ui/app.py` (attribute access throughout), `scripts/assess.py` (attribute access + `model_dump()` at JSON boundary), `anthropic-types.ts` (full TypeScript interfaces), `assess-client.tsx` (`SuggestionsView` takes typed `AssessSuggestions`). Sessions on disk remain plain `dict` — typed access when needed via `model_validate()`. Wire format unchanged — `model_dump()` at all JSON boundaries.
+- **Item 5 — Improved backlog mining heuristic.** `mindmap_link.py`: `_GUESS_RULES` expanded from 13 to 60 entries (30 supplement markers — "herb ", "botanical", "vitamin", "mineral", "probiotic", "adaptogen", "ace inhibitors", "vasodilat", ...; 15 mechanism markers — "pathophysiology", "root cause", "driver", "dysfunction", "cascade", "axis", ...; 10 symptom markers; 15 topic markers). New `_guess_kind_from_label()` standalone function applies rules to a single label (not just parent chain). `_walk()` in `mine_unlinked` now falls back to `_guess_kind_from_label(node.label)` when parent chain gives `None` — reduces the 80% "default to topic" rate. `backlog-table-client.tsx`: `suggestTarget()` upgraded to 3-tier matching (exact label/slug/alias → slug substring → bidirectional partial label). `computeSuggestion()` uses 4-level cascade (parent label → item name → 4+ char words from name → `opts[0]` as last resort) — every backlog item now gets a suggestion chip regardless of name quality.
+- Build + type-check clean. All 14 routes.
+
+**v0.37** — Health data tracking: manual entry, editable form, snapshots & trends:
+- **Manual health data entry panel** in Assess page (Step 2, alongside transcript upload):
+  - Free-text textarea → "✨ Parse with AI" (Haiku) → populates editable form. Coach types anything: "weight 68kg, TSH 4.2 mIU/L, BP 118/76, on levothyroxine 50mcg, Hashimoto's" and it organises automatically.
+  - "Open blank form" button — skips AI, opens `HealthDataEditor` directly for structured input.
+- **`HealthDataEditor` React component** — fully editable before saving:
+  - Lab values table (test name / value / unit rows — add/remove/edit)
+  - Measurements grid (height, weight, waist, BP systolic/diastolic, HR — number inputs)
+  - Medications list (add/remove/edit with doses)
+  - Conditions list (add/remove/edit)
+  - "💾 Save to client profile" button — deduplicates against existing profile data + appends immutable health snapshot
+- **Editable form feeds from both transcript and manual entry** — `mergeHealthData()` helper deduplicates lab values (by test_name), measurements (non-null wins, b takes precedence), and string lists (case-insensitive dedup). Both entry paths write into the same `editableHealthData` state.
+- **`health_snapshots: list[dict]` field** added to `Client` Pydantic model in Python. Each apply-call via `update-client-data.py` appends an immutable snapshot: `{date, source, measurements:{...}, lab_values:[...], medications:[...], conditions:[...]}`. Same-date+same-source deduplication on append.
+- **Health trends section** on `/clients/[id]` page (appears automatically once snapshots exist):
+  - **📈 Charts tab** — SVG sparklines (no extra dep) per metric: latest value + delta (±) vs previous + date. Covers weight, BP sys/dia, HR, waist + all verbally-reported lab values + FM computed ratios (colored cards from last assess).
+  - **🗓 Timeline tab** — reverse-chronological cards per snapshot: date, source tag, all values captured that session.
+- **New scripts:** `scripts/parse-health-text.py` (Haiku call on typed text → `ExtractedHealthData`), `scripts/update-client-data.py` (merge into profile + append snapshot).
+- **New TypeScript:** `ExtractedLabValue`, `ExtractedMeasurements`, `ExtractedHealthData` interfaces in `anthropic.ts`; `parseHealthText()` + `ParseHealthTextResult`; `parseHealthTextAction()` + `applyTranscriptDataAction()` + `ApplyClientDataInput` Server Actions; `HealthTrends` client component in `src/app/clients/[id]/health-trends.tsx`; `health_snapshots` added to `Client` interface in `types.ts`.
+- Build + type-check clean. All 14 routes.
+
+**v0.36** — Assess UX overhaul + transcript symptom extraction:
+- **Hierarchical symptom picker (`CategoryPicker`)** — two-level accordion: 8 categories (Digestive, Hormonal, Neurological, etc.) → concept clusters (e.g. "Depression / Low Mood" groups 5 variant slugs) → expandable sub-variants. Single-item clusters skip the expand button. 📞 badge on any symptom matched from transcript.
+- **Formatted synthesis notes (`SynthesisNotes` component)** — splits AI output on `\n\n`, detects list items and section headers. No longer a wall of text.
+- **Topics confidence %** — AI returns `confidence_pct` per topic suggestion (added to `topics_in_play` schema in `suggester.py`). Shown as a thin progress bar + percentage text below each topic chip. "💡 AI suggested" badge for topics not in the coach's original selections.
+- **Session deduplication** — `assess.py` shim checks if a session for today's date already exists for the client; if so, updates in-place instead of creating a new one.
+- **Lab marker ratio calculations** (`fmdb/assess/lab_ratios.py`) — `compute_ratios()` calculates HOMA-IR, TG/HDL, T3/T4, fT3/rT3, LDL/HDL, transferrin saturation, hsCRP, B12, Vitamin D from `extracted_labs`. Returned as `computed_ratios` in `AssessResult`. `ComputedRatiosCard` component shows 🟢/🟡/🔴 flagged ratios prominently on the Assess results page.
+- **Client quick snapshot panel** on `/clients/[id]` page — compact card above the action bar showing: age/sex/intake + days ago, conditions as Badge chips, medications, allergies, goals, computed BMI, latest lab markers with colour dots.
+- **Transcript upload** (📞 Upload consultation transcript, Step 2 of Assess):
+  - `scripts/extract-symptoms.py` — Haiku call accepts `.txt`/`.pdf` transcript; extracts matched symptom slugs + supporting quotes + structured health data (lab values, measurements, medications, conditions).
+  - `extractSymptomsFromTranscript()` + `extractTranscriptAction()` — saves upload to temp dir, calls shim, cleans up.
+  - Found symptoms auto-merged into `selectedSymptoms`; health data flows into the editable `HealthDataEditor`.
+  - Toast summarises all findings: "Extracted from transcript: 5 symptoms, 3 lab values, 1 medication, 1 condition".
+- **Port note:** `fm-database-web` runs on port **3002** (port 3000 occupied by another app on this machine).
+- Build + type-check clean. All 14 routes.
+
+**v0.35** — Fix "Analyse with AI" max_tokens truncation error:
+- **Root cause confirmed.** Two compounding issues caused "assess.py produced no output. stderr:":
+  1. `synthesize()` in `fmdb/assess/suggester.py` used `messages.create()` (blocking/non-streaming) with `max_tokens=8192`. A real assessment call generates ~10,870 output tokens and takes **~3m24s** (measured). The old 90s `execFile` timeout in `runAssess` reliably killed the Python process mid-response, before `json.dump` ran → stdout empty → "produced no output".
+  2. When `max_tokens=8192` was hit exactly (stop_reason: max_tokens), the tool-use JSON payload was truncated → unparseable.
+- **Fixes applied:**
+  - Switched `synthesize()` to `messages.stream()` + `get_final_message()` — same pattern as the ingest extractor. More robust for long-running connections.
+  - Bumped `synthesize()` default to `max_tokens=16000` (Anthropic supports up to 16K on claude-sonnet-4-x).
+  - Bumped `runAssess` timeout from 90s → 360s (6 min). At ~53 tokens/sec, a 16K-token response takes ~300s; 360s gives safe headroom.
+- No wire-format changes — `AssessResult` shape is identical.
+
+**v0.34** — Assess page UX fixes + Clients workflow:
 - **Invisible symptom/topic pickers fixed.** Root cause: `MultiSelect` with `showOnEmpty` renders an `absolute`-positioned floating dropdown that was hidden behind the next Card's background. New `InlinePicker` component renders a search input + scrollable checkbox list in normal document flow (no `absolute`, no z-index). All 143 symptoms / 110 topics visible immediately; typing filters inline. Selected items shown as removable chips above the list.
 - **Lab upload moved to step 3** (was step 5, unreachable once steps 2+3 appeared broken). New order: Client → Symptoms → Lab reports + food journals → Topics → Presenting complaints → Analyze. Upload inputs no longer disabled on load (client is always pre-selected).
 - **Clients page blank-space fixed.** `NewClientForm` was inside a `flex justify-between` header row — when expanded, it created a tall card on the right while the left was nearly empty. Moved the form to its own full-width block below the title. Collapsed state shows a right-aligned `+ New client` button; expanded state fills full width.
@@ -371,16 +570,16 @@ Open follow-ups: seed `calcium` supplement (last warning); enrich `vitamin-a` an
 
 ### Catalogue Entity Types — 9 built, 8 deferred
 
-**Built (counts as of v0.32):**
-1. **Source** — citation registry (39 entries: vitaone skill, evidence tiers ingest, practice guide, 8 Thurlow microbiome sessions, vitaone mind-map tool, vitaone supplementation dosage, all VitaOne Phase 1–5 cheatsheets/e-books/toolkits)
-2. **Topic** — clinical area (110 entries: thyroid, perimenopause, anxiety, insomnia, pcos, microbiome, dysbiosis, autoimmune, inflammation, estrobolome, gut-hormone-axis, etc.)
-3. **Mechanism** — physiology (116 entries: hpa-axis-dysregulation, leaky-gut, insulin-resistance, estrogen-decline, scfa-production, etc.). Alias-aware resolution canonicalizes variant slugs.
-4. **Symptom** — client-facing experiences with severity + category (143 entries: bloating, brain-fog, fatigue, joint-pain, etc.). Alias-aware lookup against `topic.common_symptoms` prose.
-5. **Claim** — evidence-tiered assertion (546 entries). First-class entity citing source + linked to topics/mechanisms/supplements.
-6. **Supplement** — abstract compound (172 entries after VitaOne ingest + Garlic backlog promotion)
+**Built (counts as of v0.43):**
+1. **Source** — citation registry (**82** entries: vitaone skill, evidence tiers, practice guide, 8 Thurlow microbiome sessions, vitaone mind-map tool, supplementation dosage, all VitaOne Phase 1–5 PDFs, coconote FM lectures, Barbara O'Neill, ask-expert sessions, Instagram posts, research papers, nutrition cheatsheets, adrenal hormones batch)
+2. **Topic** — clinical area (**318** entries)
+3. **Mechanism** — physiology (**408** entries). Alias-aware resolution canonicalizes variant slugs.
+4. **Symptom** — client-facing experiences with severity + category (**378** entries). Alias-aware lookup against `topic.common_symptoms` prose.
+5. **Claim** — evidence-tiered assertion (**1,492** entries). First-class entity citing source + linked to topics/mechanisms/supplements.
+6. **Supplement** — abstract compound (279 entries)
 7. **CookingAdjustment** — cookware/oil/water/food-prep swaps (3 entries)
 8. **HomeRemedy** — churans, infused waters, kashayams, kitchen remedies (3 entries)
-9. **MindMap** — hand-curated clinical mind maps (3 entries: 871 nodes scraped from vitaone for hypothyroidism, adrenal fatigue, hypertension; 60 nodes auto-linked to catalogue, 645 unlinked queued in backlog)
+9. **MindMap** — hand-curated clinical mind maps (11 entries: 3 vitaone-scraped + 8 new curated; 1,612 nodes, 355 linked)
 
 **Deferred (not yet modeled):**
 - Food, LabTest, LifestylePractice, DietaryPattern, Practice (currently freeform strings on Plan), Recipe, Protocol, EducationalModule, MiscIntervention. Promote to entities only after observing duplication in real plans.
@@ -505,16 +704,17 @@ fm-database/
                                   #   Auto-evicts stale fmdb modules from
                                   #   sys.modules on each rerun.
   data/
-    sources/                      # 39 entries (post-VitaOne ingest, v0.21)
-    topics/                       # 110 entries
-    mechanisms/                   # 116 entries
-    symptoms/                     # 143 entries
-    claims/                       # 546 entries
-    supplements/                  # 172 entries (post-Garlic backlog promotion)
+    sources/                      # 82 entries (as of v0.43)
+    topics/                       # 318 entries
+    mechanisms/                   # 408 entries
+    symptoms/                     # 378 entries
+    claims/                       # 1,492 entries
+    supplements/                  # 279 entries
     cooking_adjustments/          # 3 entries
     home_remedies/                # 3 entries
-    mindmaps/                     # 3 entries (vitaone scrape, 60 nodes linked)
+    mindmaps/                     # 11 entries (3 vitaone-scraped + 8 curated)
     staging/                      # gitignored — ephemeral candidate batches
+                                  #   ALL batches approved as of v0.43. Zero pending.
     _audit.jsonl                  # gitignored — append-only audit log
     _backlog.yaml                 # gitignored — catalogue additions backlog
                                   #   (612 items: 167 auto-rejected, 1 promoted,
@@ -536,13 +736,15 @@ fm-database-web/                  # Path B — Next.js + shadcn rebuild of the c
                                   #   mutations — server components read YAML
                                   #   directly; Server Actions write back to YAML.
   src/
-    app/                          # 14 routes: /, /catalogue, /catalogue/[kind]/[slug]
+    app/                          # 22 routes: /, /catalogue, /catalogue/[kind]/[slug]
                                   #   (all 8 kinds), /plans, /plans/[slug] (10-tab
                                   #   editor + plan-check sidebar + lifecycle panel +
                                   #   client-facing export), /assess (Analyze + chat),
-                                  #   /clients (+ detail), /resources (+ detail),
-                                  #   /mindmap (+ detail with Mermaid), /backlog
-                                  #   (with bulk actions).
+                                  #   /clients (+ detail), /resources (+ detail +
+                                  #   /resources/generate), /mindmap (+ detail with
+                                  #   Mermaid), /backlog (with bulk actions +
+                                  #   Supplement Links tab), /sources (Add Source),
+                                  #   /search, /ingest.
     components/                   # sidebar-nav, evidence-tier-badge,
                                   #   plan-status-badge, catalogue-table,
                                   #   multi-select (shared), + 7 shadcn ui/.
@@ -551,17 +753,171 @@ fm-database-web/                  # Path B — Next.js + shadcn rebuild of the c
                                   #   types.ts (lenient TS shapes mirroring Pydantic),
                                   #   loader.ts + loader-extras.ts + writer.ts,
                                   #   anthropic.ts + anthropic-types.ts (shell-out
-                                  #   wrappers around Python suggester).
-  scripts/                        # Python shims (use fm-database/.venv).
-                                  #   assess.py, chat.py, load-session-chat.py,
-                                  #   plan-check.py, plan-lifecycle.py,
-                                  #   plan-render.py, render-mindmap.py,
-                                  #   backlog-action.py — all stdin/stdout JSON,
-                                  #   import fmdb.* directly. --dry-run flags
-                                  #   for AI-touching shims.
-  package.json                    # next, react, tailwind, sonner (toasts), mermaid,
-                                  #   js-yaml, @radix-ui/* (via shadcn).
-  AGENTS.md / CLAUDE.md           # "this is NOT the Next.js you know" reminder.
+                                  #   wrappers around Python suggester),
+                                  #   shim.ts (runShim + PYTHON + SCRIPTS_DIR —
+                                  #   extracted from anthropic.ts; used by any
+                                  #   Server Action that shells out to Python).
+  scripts/                        # Python shims — all use fm-database/.venv,
+                                  #   all stdin/stdout JSON.
+    source-save.py                # Write new Source entity to fm-database/data/sources/.
+                                  #   Validates SourceType + SourceQuality enums.
+                                  #   Returns {ok, id, already_existed, error}.
+    assess.py                     # Haiku/Sonnet → synthesize() → AssessResult JSON
+    chat.py                       # multi-turn assess chat → ChatResult JSON
+    load-session-chat.py          # load prior chat log for a session
+    plan-check.py                 # deterministic plan-check → findings JSON
+    plan-lifecycle.py             # submit/publish/revoke/supersede/diff actions
+    plan-render.py                # markdown or HTML client-facing export
+    render-mindmap.py             # curated_to_mermaid() → Mermaid source string
+    backlog-action.py             # promote/reject/attach backlog items
+    extract-symptoms.py           # Haiku: transcript → symptom slugs + health data
+    extract-client-from-transcript.py  # Haiku: transcript → client profile fields
+    parse-health-text.py          # Haiku: free-form text → ExtractedHealthData JSON
+    update-client-data.py         # merge health data into client.yaml + append snapshot
+    compute-ratios.py             # compute FM lab ratios (HOMA-IR, TG/HDL, etc.)
+    save-session.py               # persist assess session to YAML
+    render-topic-brief.py         # Sonnet: generate evidence brief for a topic
+    generate-info-pack.py         # PubMed search + Sonnet synthesis → Resource YAML
+    generate-draft.py             # generate draft plan YAML from assess suggestions.
+                                  #   Slugs: <first_name>-plan-N-YYYY-MM-DD-<client_id>
+    render-client-letter.py       # 12-week client letter generator (the big one):
+                                  #   - VITAONE_CATALOG: 158-keyword dict → (name, url)
+                                  #     pairs with ?pr=vita13720sh referral appended
+                                  #   - _v(slug, name) builds VitaOne URL tuples
+                                  #   - _vitaone_link() / _vitaone_url_only(): lookup
+                                  #     by supplement name (lowercase, longest match)
+                                  #   - _timing_slot(): maps free-text timing → one of
+                                  #     7 canonical slots (Early Morning / Breakfast /
+                                  #     Mid-Morning / Lunch / Afternoon / With Dinner /
+                                  #     Bedtime)
+                                  #   - _build_supplement_schedule_html(): builds the
+                                  #     supplement section as pure Python HTML — visual
+                                  #     bubble-card timeline + print-ready table.
+                                  #     AI is told NOT to write this section.
+                                  #     Print button isolates #supplement-schedule,
+                                  #     calls window.print(), restores. No URL footer.
+                                  #   - _calc_calorie_targets(client, wl): TDEE via
+                                  #     Mifflin-St Jeor + activity multiplier; phases
+                                  #     scaled to goal_weeks; back-calculates from
+                                  #     goal_kg + goal_weeks if given.
+                                  #   - _build_prompt(letter_type, coach_notes):
+                                  #     Dispatcher → routes to 3 helpers:
+                                  #     _build_prompt_meal_plan() — nutrition only
+                                  #     _build_prompt_supplement_plan() — short intro
+                                  #       + Python schedule injected, no AI supps section
+                                  #     _build_prompt_coaching_plan() — lifestyle/
+                                  #       education/labs/tracking, no meal tables
+                                  #     Consolidated falls through to original logic.
+                                  #     All 4 variants include coach_notes_block.
+                                  #   - type_meta dict maps letter_type to HTML
+                                  #     title/subtitle for branding.
+                                  #   - Consolidated: 12-week healing journey letter.
+                                  #     Weeks 1–2 get full 2×7-day meal plan tables
+                                  #     with BINDING calorie targets. Weeks 3–4 = teaser
+                                  #     only. Weeks 5–12 = roadmap blurbs. Seasonal
+                                  #     produce, location-aware, Jain/veg/non-veg aware.
+                                  #     Supplement section placeholder at 3c — AI skips
+                                  #     it; Python injects it post-generation.
+    refine-letter.py              # Multi-turn letter refinement via Sonnet.
+                                  #   Accepts markdown + chat history + user message.
+                                  #   Returns updated markdown + assistant reply.
+    brand_html.py                 # Shared brand HTML wrapper for all letter output:
+                                  #   - wrap_in_brand_html(md, title, subtitle) →
+                                  #     full standalone HTML with Shivani Hari brand CSS
+                                  #   - _wrap_week_sections(html): detects "## Week N"
+                                  #     headings, wraps each in
+                                  #     <div id="print-week-N" class="week-section">
+                                  #   - _wrap_no_print_sections(html): wraps
+                                  #     Referral/Appendix/Recipe headings in
+                                  #     <div class="no-print">
+                                  #   - Per-week print bar injected above each week:
+                                  #     "🖨 Print Week N" button sets
+                                  #     body[data-print-week="N"] attr, calls
+                                  #     window.print(), clears. CSS hides all other
+                                  #     weeks via body[data-print-week] selectors.
+                                  #   - ✦ Recipe linking: ✦ headings in Recipes
+                                  #     appendix indexed; ✦ in meal table cells
+                                  #     become clickable anchor links.
+                                  #   - Full print CSS: A4, 14mm margins, tables
+                                  #     fit on page, buy links hidden on print,
+                                  #     week-print-bar hidden on print.
+                                  #   - CSS sections: supplement-schedule,
+                                  #     timeline-slot/track, schedule-table,
+                                  #     buy-badge-vitaone/amazon/iherb,
+                                  #     week-section, week-print-bar, week-print-btn,
+                                  #     print-page-footer, no-print, recipe links.
+    ingest-action.py              # Shim: ingest | review | approve | reject |
+                                  #   count_pending | approve_all actions.
+                                  #   approve_all: detects "staged file missing"
+                                  #   in stderr → marks _meta.json approved,
+                                  #   counts as skipped not failed.
+  src/app/catalogue-commit-action.ts  # getCatalogueStatus() + commitCatalogueData()
+                                  #   Author: Shivani <shivanihari@gmail.com> via env vars.
+  src/app/catalogue-commit-button.tsx # Amber banner "📚 N uncommitted". Auto-hides.
+  src/app/backlog/supplement-links-actions.ts  # CRUD for ~/fm-plans/supplement_links.yaml
+  src/app/backlog/supplement-links-client.tsx  # Table + AddLinkForm for affiliate URLs
+  src/app/sources/
+    page.tsx                      # RSC — /sources route; renders <SourceClient />
+    source-client.tsx             # "use client" — full source form (ID, title, type,
+                                  #   quality, authors, year, publisher, URL, DOI,
+                                  #   notes). On save: calls saveSourceAction, shows
+                                  #   success badge linking to /catalogue/sources/{id}.
+    actions.ts                    # saveSourceAction — uses runShim from shim.ts.
+                                  #   Revalidates /catalogue + /sources.
+  src/app/clients/[id]/
+    client-letter-button.tsx      # "use client" — ClientLetterButton component:
+                                  #   4 letter types: consolidated, meal_plan,
+                                  #   supplement_plan, coaching_plan.
+                                  #   Idle: 4 type selector cards (emoji + desc +
+                                  #   "✓ saved" badge). Loads all saved types on mount
+                                  #   in parallel. Asking: coach notes textarea +
+                                  #   weight loss form (only for consolidated/meal_plan).
+                                  #   Ready: tab bar per saved type + per-type downloads.
+                                  #   Calls generateClientLetter(letterType, coachNotes).
+                                  #   Refinement chat panel (multi-turn, saves each turn).
+    preferences-editor.tsx        # "use client" — dietary_preference + location +
+                                  #   food non-negotiables. Saved to client.yaml.
+                                  #   Used by render-client-letter.py for meal plan.
+    client-contact-widget.tsx     # inline-editable email + mobile + next_contact_date
+    health-trends.tsx             # SVG sparklines + snapshot timeline
+    client-tabs.tsx               # main client detail tabbed layout
+                                  #   (Overview / Assessments / Plans / Check-in)
+    check-in-form.tsx             # Check-in workflow (adherence rating, lab orders,
+                                  #   appends to plan.notes_for_coach)
+  src/app/plans/[slug]/
+    lifecycle-actions.ts          # Server Actions: generateClientLetter(),
+                                  #   refineLetter(), saveMealPlan(), loadMealPlan(),
+                                  #   submitPlan, publishPlan, revokePlan, etc.
+                                  #   WeightLossParams + LetterType interfaces here.
+                                  #   LetterType = "consolidated"|"meal_plan"|
+                                  #   "supplement_plan"|"coaching_plan".
+                                  #   letterFileStem(): consolidated→planSlug,
+                                  #   others→{planSlug}-{type}.
+                                  #   All 3 functions accept optional letterType param
+                                  #   (default "consolidated" for backward compat).
+                                  #   Saves to ~/fm-plans/clients/<id>/meal-plans/.
+    lifecycle-panel.tsx           # lifecycle transitions UI
+    send-to-client-modal.tsx      # Compose → Preview → Send email flow
+  src/app/search/
+    page.tsx                      # RSC — full-text search across all entity types
+    search-input.tsx              # debounced input + ⌘K shortcut
+  src/app/ingest/
+    page.tsx                      # RSC — /ingest with cost notice
+    ingest-client.tsx             # drag-drop upload (PDF/MD/images) + URL tab +
+                                  #   BatchPanel + ApproveAllPanel
+    actions.ts                    # runIngestAction, approveAllPendingAction,
+                                  #   countPendingBatchesAction, etc.
+  src/app/api/email/actions.ts    # renderPlanHtmlAction, sendClientEmailAction,
+                                  #   updateClientFieldsAction
+  src/app/resources/generate/
+    page.tsx                      # /resources/generate route
+    info-pack-form.tsx            # PubMed topic search form → generate-info-pack.py
+    actions.ts                    # generateInfoPackAction server action
+  ecosystem.config.js             # PM2: `next start --port 3002` as fm-coach daemon
+  .env.local.example              # GMAIL_USER + GMAIL_APP_PASSWORD template
+  package.json                    # next, react, tailwind, sonner, mermaid, js-yaml,
+                                  #   @radix-ui/* (shadcn), nodemailer@8, pm2
+  AGENTS.md / CLAUDE.md           # "this is NOT the Next.js you know" reminder
 ```
 
 ## Content Sources
@@ -575,8 +931,11 @@ fm-database-web/                  # Path B — Next.js + shadcn rebuild of the c
 
 **Tier 2 (licensed external)**:
 - Cynthia Thurlow *Microbiome Mondays* course — 8 transcripts at `~/Documents/Codex/.../transcripts/kb/`. Sessions 1-8 fully ingested → 102 claims + 7 new topics + 5 supplements.
-- VitaOne Education course PDFs — 31 PDFs at `~/fm-plans/Vitaone Resources from course/`. Supplementation Dosage fully ingested (49 new supplements + 15 enrichments). Phase 1 (10 cheatsheets) in progress at v0.20 commit. ~30 PDFs remaining.
+- VitaOne Education course PDFs — 31 PDFs at `~/fm-plans/Vitaone Resources from course/`. ALL ingested and approved as of v0.42 (all 58 staging batches cleared). Includes cheatsheets for all vitamins, minerals, mood, hair, joint, thyroid, nutrition deficiency, medication interactions.
 - VitaOne mind-maps tool (`tools.vitaone.in/mind-maps`) — 3 hand-curated maps scraped (874 nodes total) and stored as `MindMap` entities.
+- CocoNote FM lectures, Barbara O'Neill videos, ask-expert sessions, vitaone instagram posts, cold water immersion paper — all ingested and approved.
+
+**Meal plan storage**: `~/fm-plans/clients/<id>/meal-plans/{stem}.md/.html` where stem is `{planSlug}` for consolidated or `{planSlug}-{type}` for specific types. Generated by `render-client-letter.py`, saved by `saveMealPlan(planSlug, clientId, markdown, html, letterType)` server action. Loaded on mount — all 4 types loaded in parallel by `ClientLetterButton`.
 
 ## Run
 
@@ -592,10 +951,32 @@ python3 -m venv .venv
 ```bash
 cd fm-database-web
 npm install                                  # one time
-npm run dev                                  # opens http://localhost:3000
+npm run dev -- -p 3002                       # opens http://localhost:3002 (dev mode)
+                                             # (port 3000 used by another app on this machine)
+
+# Production (preferred):
+npm run build                                # build once
+./node_modules/.bin/pm2 start ecosystem.config.js   # start as daemon on port 3002
+./node_modules/.bin/pm2 stop fm-coach               # stop
+./node_modules/.bin/pm2 logs fm-coach               # view logs
+
 npm run build && npm run type-check          # before committing
+
+# Email sending: add GMAIL_USER + GMAIL_APP_PASSWORD to .env.local
+# (see .env.local.example — needs a Google App Password, not your normal password)
 ```
-14 routes: `/`, `/catalogue` (+ all 8 detail kinds), `/plans` (+ 10-tab editor + plan-check + lifecycle + Markdown/HTML export), `/assess` (Analyze + chat with auto-rehydrated history), `/clients` (+ detail + add-client form), `/resources` (+ detail), `/mindmap` (+ Mermaid detail), `/backlog` (with bulk reject + mark-added + Attach action + per-row 💡 suggestion chips).
+**22 routes:** `/`, `/search`, `/catalogue` (+ all 8 detail kinds), `/plans` (+ 10-tab editor + plan-check + lifecycle + Markdown/HTML export + 📧 Send to client), `/assess` (Analyze + chat with auto-rehydrated history), `/clients` (+ detail + add-client form + contact widget + check-in form + 💌 Generate Meal Plan (4 types) button + preferences editor), `/resources` (+ detail + `/resources/generate` PubMed evidence brief), `/mindmap` (+ Mermaid detail), `/backlog` (with bulk reject + mark-added + Attach action + per-row 💡 suggestion chips + 🔗 Supplement Links tab), `/ingest` (📁 file upload: PDF/MD/images + 🔗 URL tab + ⚡ Approve all pending button + per-batch Review/Approve/Reject), `/sources` (Add Source — form writes directly to fm-database/data/sources/).
+
+**Key invariants:**
+- `ingest-action.py` calls `python -m fmdb.cli` (NOT `python fmdb/cli.py` — causes ImportError).
+- `html2text` installed in fm-database/.venv (needed for URL ingest HTML→markdown).
+- No global git config on this machine — commit author set via env vars in `catalogue-commit-action.ts`.
+- Port 3002 (port 3000 used by another app). PM2 process name: `fm-coach`.
+- Meal plan letter takes 2–3 min to generate (Sonnet, long output). Saves to `~/fm-plans/clients/<id>/meal-plans/{stem}.md/.html`. Loads on page mount — no need to regenerate. All 4 letter types are independent files.
+- Coach notes (`coachNotes` param) are passed to all 4 prompt variants — weave in custom tips like "Soak methi seeds overnight, drink water first thing". Shown as textarea in the asking state before generation.
+- `brand_html.py` is the shared brand wrapper for ALL letter/plan HTML output. Edit CSS there, not inline.
+- Per-week print: `body[data-print-week="N"]` attr set by JS → CSS shows only that week-section. Works without any server round-trip.
+- Supplement print: `#supplement-schedule` isolated by JS before `window.print()`. Buy links hidden via `.no-print` CSS class on print.
 
 ### Path A — Streamlit UI (fallback, still maintained)
 ```bash
@@ -677,23 +1058,52 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 
 ## Roadmap (what's next)
 
-**Done (v0.2 → v0.33):**
-- ✅ All 9 catalogue entity types built and seeded (39 sources, 110 topics, 116 mechanisms, 143 symptoms, 546 claims, 172 supplements, 3+3+3 ca/hr/mindmaps)
-- ✅ AI ingestion pipeline (PDF + markdown + image attachments; streaming) — all 31 VitaOne PDFs ingested
-- ✅ Plan + Client layer with sessions, history-aware Analyze, deterministic check, AI sanity check, publish lifecycle (submit/publish/revoke/supersede/diff), markdown+HTML render
-- ✅ Atomic approval, smart-merge, alias-aware resolution, error/warning split
+**Done (v0.2 → v0.44):**
+- ✅ All 9 catalogue entity types built and seeded (82 sources, 318 topics, 408 mechanisms, 378 symptoms, 1,492 claims, 279 supplements, 3+3+11 ca/hr/mindmaps)
+- ✅ AI ingestion pipeline (PDF + markdown + image attachments; streaming) — all VitaOne PDFs + coconote + Barbara O'Neill + ask-expert + instagram posts ingested
+- ✅ All 58 staging batches approved (v0.42). Catalogue: 0 errors, ~1,272 non-blocking warnings.
+- ✅ Plan + Client layer with sessions, history-aware Analyze, deterministic check, AI sanity check, publish lifecycle, markdown+HTML render
+- ✅ Atomic approval, smart-merge, alias-aware resolution, error/warning split. approve_all now detects "staged file missing" and marks as skipped.
 - ✅ Backlog triage CLI (clean/show/promote/reject/attach) — 167 noise auto-rejected
 - ✅ Curated MindMap node linking + mining (60 nodes linked, 645 candidates queued)
 - ✅ Streamlit UI (Path A) with all 7 sidebar pages — fallback
-- ✅ Path B (Next.js + shadcn) — 14 routes, feature parity with Streamlit, typed engine API, lifecycle in UI, plan-check + AI-check sidebars, multi-turn chat with rehydration, bulk backlog actions + Attach + suggestion chips, Mermaid mindmap (fixed for v11), error toasts, all 8 catalogue detail pages, clickable clients table + add-client form
+- ✅ Path B (Next.js + shadcn) — 22 routes, full feature parity + client letter
+- ✅ Assess page: hierarchical CategoryPicker, topics confidence %, session deduplication, FM ratio calculations, client quick snapshot, formatted synthesis notes
+- ✅ Transcript upload in Assess: extracts symptoms + lab values + measurements + medications + conditions via Haiku
+- ✅ Manual health data entry in Assess: free-text → Haiku parse, OR blank editable form. Merge from both sources.
+- ✅ Health snapshots stored per appointment on Client YAML (`health_snapshots: list[dict]`)
+- ✅ Health trends section on Client detail page: SVG sparklines per metric + timeline tab
+- ✅ Typed inner `suggestions` payload: 11 Pydantic sub-models, TypeScript interfaces, typed `SuggestionsView`
+- ✅ Improved backlog mining heuristic: 60-entry `_GUESS_RULES`, `suggestTarget` 3-tier matching, 4-level `computeSuggestion` cascade
+- ✅ 11 curated mindmaps (3 VitaOne-scraped + 8 new), 1,612 nodes, 355 linked. MindMapContextPanel in Assess.
+- ✅ **💌 12-week client letter generator** — `ClientLetterButton` on client detail page. Weight loss questionnaire (goal kg/weeks, activity, pace, exercise detail). `_calc_calorie_targets()` computes TDEE + phase targets. `render-client-letter.py` generates warm 12-week healing journey letter with two 7-day meal plan tables for weeks 1-2. Supplement section injected by Python post-generation. Saves to disk. Refinement chat (multi-turn). Download branded HTML / Markdown.
+- ✅ **🗓 Per-week print buttons** — `brand_html.py` wraps AI-generated markdown in `<div id="print-week-N" class="week-section">` divs. Per-week print bar shows "🖨 Print Week N". JS sets `body[data-print-week="N"]`, CSS isolates that week, `window.print()`. No server round-trip. Works in browser.
+- ✅ **💊 Python-generated supplement schedule** — visual bubble timeline + table. 7 timing slots. `_build_supplement_schedule_html()`. "🖨 Print Schedule" button isolates `#supplement-schedule`. Buy links hidden on print.
+- ✅ **🔗 VitaOne affiliate links** — 158-keyword catalog, `?pr=vita13720sh` on all URLs. Priority chain: custom → VitaOne → Amazon → iHerb → none.
+- ✅ **🥗 Client dietary preferences** — `PreferencesEditor` card (dietary_preference, location, non-negotiables). Used by meal plan generator.
+- ✅ **🔗 Supplement Links tab** in `/backlog` — CRUD for `~/fm-plans/supplement_links.yaml`
+- ✅ **📚 Dashboard git commit button** — amber banner, counts by entity type, optional commit message
+- ✅ **⚡ Approve all pending** on /ingest — now correctly skips already-approved batches, marks `_meta.json` status
+- ✅ Ingest: images + URL tab + HTML→markdown via html2text
+- ✅ 📧 Email: Send to client, Gmail SMTP, nodemailer
+- ✅ 🔍 Global search (⌘K), follow-up reminders, check-in workflow, client contact widget
+- ✅ PubMed evidence brief generator (`/resources/generate`)
+- ✅ **✂️ Split document types** — 4 separate letter types (consolidated/meal_plan/supplement_plan/coaching_plan). Each saves independently. UI shows 4 selector cards + tab bar per saved type.
+- ✅ **📝 Coach knowledge field** — `coachNotes` textarea weaves custom tips into all 4 document types.
+- ✅ **🔧 shim.ts** — `runShim` extracted from `anthropic.ts` to shared `src/lib/fmdb/shim.ts`.
+- ✅ **💬 Coach Knowledge ingest tab** — type a clinical observation, AI checks catalogue (keyword search + Haiku), then stages via normal fmdb ingest pipeline. `coach-knowledge-check.py` + `coach-knowledge.py`.
+- ✅ **🔗 Enrich links before approving** — `EnrichPanel` in BatchPanel, per-entity `EnrichEntityRow` adds `linked_to_*` cross-links and `notes_for_coach` to staged YAMLs before approve.
+- ✅ **✅ BatchPanel status check** — already-approved/rejected batches show read-only banner; no more phantom "approve" buttons on completed batches.
+- ✅ **📚 Add Source tab on /ingest** — consolidated from separate `/sources` sidebar page. 4th tab in Ingest. Sidebar "📚 Add Source" link removed.
 
 **Outstanding (in rough priority order):**
-1. **Coach actually uses it daily.** Real bugs from real use will be more useful than another speculative turn. The product is past the "more code" threshold.
-2. **Triage the 444 open backlog items** via the `/backlog` UI — now much faster with suggestion chips. Coach work, no code needed.
-3. **Type the inner `suggestions` payload** (likely_drivers, supplement_suggestions, etc.) as nested Pydantic models. Requires migrating `Session.ai_analysis: dict` → typed model on disk + rewriting all string-keyed reads in `app.py` and shim consumers. Deferred from v0.31.
-4. **Improve backlog mining heuristic** — currently 80% of mined items default to `topic` (often wrongly). Better parent-chain rules + improved `computeSuggestion` target-kind logic would reduce manual override.
-5. **Promote freeform → entities when sprawl emerges:** Practice, TrackingHabit, Food, LabTest, Recipe, Protocol, EducationalModule. Watch for duplication in real plans first.
-6. **Path B polish (deferred):** click-to-recenter on linked MindMap nodes; session timeline detail view; photo upload + edit/delete on Clients; colored split-diff for plan diff viewer; backlog page pagination (currently full DOM table); migrate lifecycle-actions successor-synthesis off the permissive `Plan` index signature; `created_at` recompute on `createSuccessor`; evidence-tier badges on suggestion items in Assess.
-7. **Ingest UI in Path B** — currently coach uses CLI for `fmdb ingest`. Drag-drop + metadata form + review/approve in shadcn would help if she ingests new content often.
-8. **JSON export contract for Project 2 (mobile app)** — deferred indefinitely; desktop-first.
-9. **Native Mac wrapper (Tauri / Electron / SwiftUI)** — engine is UI-agnostic; wrap when workflow stabilises.
+1. **Coach uses it daily.** Real bugs from real use are more valuable than speculative code.
+2. **Configure email** — add `GMAIL_USER` + `GMAIL_APP_PASSWORD` to `.env.local`. Needs Google App Password: https://myaccount.google.com/apppasswords
+3. **Triage the 444 open backlog items** via `/backlog` UI — suggestion chips make it fast. Coach work, no code needed.
+5. **Health trends — more appointment data needed** to make charts meaningful. Populates naturally with use.
+6. **More mindmaps** (when ready): Cardiovascular, PCOS, Autoimmune, Sleep/Circadian, Energy/Mitochondrial, Bone Health. Use 6-branch template.
+7. **Promote freeform → entities when sprawl emerges:** Practice, TrackingHabit, Food, LabTest, Recipe, Protocol, EducationalModule. Watch for duplication in real plans first.
+8. **Path B polish (deferred):** click-to-recenter on linked MindMap nodes; photo upload + edit/delete on Clients; colored split-diff for plan diff viewer; backlog page pagination.
+9. **Persistent public URL** — `ngrok http 3002` or `ssh -R 80:localhost:3002 nokey@localhost.run`.
+10. **JSON export contract for Project 2 (mobile app)** — deferred indefinitely; desktop-first.
+11. **Commit pending catalogue changes** — run `git add data/ && git commit` from fm-database/ if any YAML edits have been made without committing.

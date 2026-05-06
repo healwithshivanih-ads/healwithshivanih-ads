@@ -66,7 +66,7 @@ async function runShim(
 }
 
 export async function runAssess(input: AssessInput): Promise<AssessResult> {
-  const result = (await runShim("assess.py", input)) as AssessResult;
+  const result = (await runShim("assess.py", input, 360_000)) as AssessResult;
   return result;
 }
 
@@ -83,6 +83,93 @@ export async function generateDraftFromSuggestions(
 
 export async function runChat(input: ChatInput): Promise<ChatResult> {
   const result = (await runShim("chat.py", input, 60_000)) as ChatResult;
+  return result;
+}
+
+// ---------------------------------------------------------------------------
+// Transcript symptom extraction — fast Haiku call, returns matched slugs.
+// ---------------------------------------------------------------------------
+
+export interface ExtractSymptomsInput {
+  transcript_text?: string;
+  transcript_path?: string;
+  transcript_url?: string;   // URL (Google Doc, direct link) — fetched server-side by the script
+  mime_type?: string;
+  symptom_catalogue: Array<{ slug: string; label: string; aliases?: string[] }>;
+  dry_run?: boolean;
+}
+
+export interface SymptomMention {
+  slug: string;
+  quote: string;
+}
+
+export interface ExtractedLabValue {
+  test_name: string;
+  value: string;
+  unit: string;
+  date_drawn?: string | null;
+}
+
+export interface ExtractedMeasurements {
+  height_cm?: number | null;
+  weight_kg?: number | null;
+  bp_systolic?: number | null;
+  bp_diastolic?: number | null;
+  hr_bpm?: number | null;
+  waist_cm?: number | null;
+  hip_cm?: number | null;
+}
+
+export interface ExtractedHealthData {
+  lab_values: ExtractedLabValue[];
+  measurements: ExtractedMeasurements;
+  medications: string[];
+  conditions: string[];
+}
+
+export interface ExtractSymptomsResult {
+  ok: boolean;
+  matched_slugs: string[];
+  mentions: SymptomMention[];
+  extracted_data?: ExtractedHealthData;
+  error?: string | null;
+}
+
+export async function extractSymptomsFromTranscript(
+  input: ExtractSymptomsInput
+): Promise<ExtractSymptomsResult> {
+  const result = (await runShim(
+    "extract-symptoms.py",
+    input,
+    60_000
+  )) as ExtractSymptomsResult;
+  return result;
+}
+
+// ---------------------------------------------------------------------------
+// Parse free-form coach text into structured health data (no symptom catalogue needed).
+// ---------------------------------------------------------------------------
+
+export interface ParseHealthTextInput {
+  text: string;
+  dry_run?: boolean;
+}
+
+export interface ParseHealthTextResult {
+  ok: boolean;
+  extracted_data?: ExtractedHealthData;
+  error?: string | null;
+}
+
+export async function parseHealthText(
+  input: ParseHealthTextInput
+): Promise<ParseHealthTextResult> {
+  const result = (await runShim(
+    "parse-health-text.py",
+    input,
+    30_000
+  )) as ParseHealthTextResult;
   return result;
 }
 

@@ -1,0 +1,42 @@
+slug: fenugreek
+display_name: Fenugreek (Methi Seeds)
+category: herb
+forms_available:
+- powder
+- capsule
+- tablet
+typical_dose_range:
+  powder:
+    min: 2
+    max: 5
+    unit: g
+timing_options:
+- on_waking
+- on_empty_stomach
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- insulin-resistance
+- type-2-diabetes
+linked_to_claims:
+- fenugreek-overnight-soak-blood-sugar
+notes_for_coach: 'Coach Shivani''s original tip: ''Soak methi seeds in water overnight
+  and drink the sieved water the next morning. Good for insulin resistance and diabetes.''
+  Preparation: soak ~1–2 tsp of whole methi seeds in a glass of water overnight; strain
+  in the morning and have the water on an empty stomach. The seeds themselves can
+  be eaten or discarded.'
+notes_for_client: Fenugreek (methi) seeds soaked overnight produce a mucilaginous
+  water rich in soluble fibre, which may help slow glucose absorption and support
+  healthy insulin levels. Drink the strained water first thing in the morning before
+  eating.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: coach-shivani
+  location: Coach Observation
+  quote: Soak methi seeds in water overnight and drink the sieved water the next morning.
+    Good for insulin resistance and diabetes.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

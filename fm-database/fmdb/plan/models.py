@@ -92,7 +92,8 @@ class Client(BaseModel):
     client_id: str
     display_name: str = ""              # for coach's reference; can be pseudonym
     intake_date: date
-    age_band: str                       # e.g. "45-50"
+    date_of_birth: Optional[date] = None   # preferred; used to compute exact age
+    age_band: str = ""                  # legacy / derived from DOB; kept for backward compat
     sex: str                            # F | M | other
     active_conditions: list[str] = Field(default_factory=list)
     medical_history: list[str] = Field(default_factory=list)  # past diagnoses, in-remission conditions, surgeries, prior dx with current status
@@ -100,17 +101,46 @@ class Client(BaseModel):
     known_allergies: list[str] = Field(default_factory=list)
     goals: list[str] = Field(default_factory=list)
     notes: str = ""
+    # Dietary preferences — used when generating the client-facing meal plan letter
+    dietary_preference: str = ""   # Vegetarian | Non-vegetarian | Vegan | Eggetarian | Pescatarian | Other
+    foods_to_avoid: str = ""       # Free form: "brinjal, bitter gourd, raw onion"
+    non_negotiables: str = ""      # Things they won't give up: "morning chai, weekly mutton"
+    city: str = ""                 # e.g. "Mumbai", "Chennai" — used for seasonal/regional meal planning
+    country: str = ""              # e.g. "India", "UK" — used for seasonal produce and recipes
+    mobile_number: Optional[str] = None   # for duplicate-check; stored hashed or partial if needed
+    email: Optional[str] = None           # client email — used by "Send to client" feature
+    next_contact_date: Optional[str] = None  # YYYY-MM-DD follow-up reminder date
     measurements: Measurements = Field(default_factory=Measurements)
     photo_filename: Optional[str] = None    # filename relative to client dir; populated after dir restructure (next turn)
+    lab_markers: list[dict] = Field(default_factory=list)  # computed FM ratios from most recent lab analysis
+    lab_markers_date: Optional[str] = None
+    # Longitudinal health data snapshots — one entry per appointment/data-entry event.
+    # Each dict: {date, source, measurements:{...}, lab_values:[{test_name,value,unit}],
+    #             medications:[str], conditions:[str]}
+    health_snapshots: list[dict] = Field(default_factory=list)
     version: int = 1
     status: EntityStatus = EntityStatus.active
     created_at: datetime
     updated_at: datetime
     updated_by: str
 
-    # Helper: estimate age from age_band midpoint (e.g. "45-50" → 47).
-    # Used for BMR calculation when exact age isn't recorded.
+    def exact_age(self) -> Optional[int]:
+        """Compute exact age in years from date_of_birth. Returns None if DOB not set."""
+        if not self.date_of_birth:
+            return None
+        from datetime import date as _date
+        today = _date.today()
+        dob = self.date_of_birth
+        age = today.year - dob.year
+        if (today.month, today.day) < (dob.month, dob.day):
+            age -= 1
+        return age
+
     def estimated_age(self) -> Optional[int]:
+        """Best-effort age: exact from DOB if available, midpoint of age_band otherwise."""
+        exact = self.exact_age()
+        if exact is not None:
+            return exact
         try:
             parts = self.age_band.replace("–", "-").split("-")
             if len(parts) == 2:
@@ -119,6 +149,13 @@ class Client(BaseModel):
             return int(self.age_band)
         except Exception:
             return None
+
+    def age_display(self) -> str:
+        """Human-readable age string for display."""
+        if self.date_of_birth:
+            age = self.exact_age()
+            return f"{self.date_of_birth.isoformat()} (age {age})" if age is not None else str(self.date_of_birth)
+        return self.age_band or "—"
 
     @field_validator("client_id")
     @classmethod
