@@ -1,0 +1,44 @@
+slug: autoimmune-disease
+display_name: Autoimmune Disease
+aliases:
+- autoimmunity
+- immune confusion
+- loss of immune tolerance
+summary: A state of immune dysregulation in which loss of self-tolerance drives tissue
+  attack. Root causes include leaky gut, infections, toxic load, stress, and methylation
+  defects. Modifiable with functional medicine approaches.
+common_symptoms:
+- joint-pain
+- fatigue
+- brain-fog
+- skin-flares
+- thyroid-dysfunction
+red_flags:
+- active autoimmune flare
+- patients on immunosuppressants or biologics
+- signs of organ damage
+related_topics:
+- chronic-inflammation
+- leaky-gut
+- food-sensitivity
+- psoriasis
+key_mechanisms:
+- leaky-gut
+- molecular-mimicry
+- th17-dominance
+coaching_scope_notes: Coach can guide elimination diets, stress reduction, sleep optimization,
+  and anti-inflammatory lifestyle. All supplement dosing and lab interpretation require
+  clinician involvement.
+clinician_scope_notes: Test ANA, RF, TPO, TG, CCP, hs-CRP, ferritin, Vit D (aim 50–90
+  ng/mL), homocysteine, MTHFR status. GI-MAP, zonulin, advanced antibody testing (Cyrex)
+  as indicated.
+evidence_tier: strong
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Autoimmune Disease Cheatsheet — Page 23
+  quote: Autoimmunity is not an immune system 'attack'–it's immune confusion. The
+    root cause is loss of immune tolerance, not hyperimmunity.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

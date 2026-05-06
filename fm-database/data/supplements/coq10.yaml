@@ -1,0 +1,62 @@
+slug: coq10
+display_name: CoQ10 (Coenzyme Q10)
+category: other
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 100
+    max: 300
+    unit: mg
+  tablet:
+    min: 100
+    max: 300
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- dyslipidemia
+- chronic-inflammation
+- autoimmune-disease
+- fasting-immune-health
+- medicine-nutrient-interactions
+- knee-pain
+- blood-sugar-dysfunction
+linked_to_claims:
+- coq10-supports-mitochondrial-function-on-statins
+- coq10-carnitine-support-mitochondrial-repair
+- statins-deplete-coq10
+- coq10-increases-insulin-sensitivity-non-diabetics
+- coq10-modestly-lowers-glucose-t2d
+notes_for_coach: Fat-soluble — take with a meal. Ubiquinol form preferred for absorption,
+  especially in those over 40. Body production declines with age and statin use. Moradi
+  et al. 2016 meta-analysis supports modest glycemic benefit in T2D. Defer dosing
+  to clinician.
+notes_for_client: CoQ10 is a natural antioxidant your body makes for energy production.
+  Levels drop with age and with statin medications. It may help improve insulin sensitivity
+  and modestly lower blood sugar.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 5
+  quote: 'CoQ10: Support mitochondrial function, esp. if on statins.'
+- id: vitaone-inflammation-cheatsheet
+  location: Autoimmune Disease Cheatsheet — Page 25
+  quote: CoQ10, ALA, and carnitine support mitochondrial repair.
+- id: vitaone-nutrition-cheatsheet
+  location: Medicine-Nutrient Interactions Cheatsheet
+  quote: Fatigue, muscle pain common. Replenish CoQ10 (100–200 mg/day), monitor 25(OH)D.
+- id: vitaone-blood-sugar-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: CoQ10 has been shown to increase insulin sensitivity in individuals who do
+    not have diabetes & may modestly lower glucose in individuals who have type 2
+    diabetes.
+version: 4
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

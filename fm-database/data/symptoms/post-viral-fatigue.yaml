@@ -1,0 +1,28 @@
+slug: post-viral-fatigue
+display_name: Post-Viral Fatigue
+aliases:
+- long COVID fatigue
+- post-viral syndrome
+- viral recovery fatigue
+category: constitutional
+severity: concerning
+description: Persistent fatigue following viral illness, linked to immune dysregulation,
+  mitochondrial dysfunction, and residual inflammation. Fasting (with protein sufficiency)
+  and mitochondrial nutrients may support recovery.
+when_to_refer: If severe functional impairment, cardiac symptoms, or dyspnea — refer
+  for medical evaluation.
+linked_to_topics:
+- fasting-immune-health
+- chronic-inflammation
+- autoimmune-disease
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- nf-kb-activation
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Fasting & Immune Health Link — Page 15
+  quote: 'Post-viral fatigue: Supports cellular repair'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

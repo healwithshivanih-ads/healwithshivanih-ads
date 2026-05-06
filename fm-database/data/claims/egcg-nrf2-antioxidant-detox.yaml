@@ -1,0 +1,29 @@
+slug: egcg-nrf2-antioxidant-detox
+statement: EGCG from green tea upregulates the Nrf2 antioxidant pathway, enhancing
+  endogenous antioxidant enzymes (SOD, catalase, glutathione) to reduce oxidative
+  stress during detoxification.
+evidence_tier: plausible_emerging
+rationale: Document explicitly cites Nrf2 pathway upregulation by EGCG polyphenols.
+  Nrf2 activation by EGCG has mechanistic support in the literature; this source does
+  not cite a specific RCT.
+coaching_translation: Green tea's EGCG helps activate your body's own antioxidant
+  defence system, making it a powerful daily detox ally.
+caveats:
+- Avoid with iron-deficiency anemia
+- Source is FM synthesis without primary citation
+- High-dose extract may cause liver stress at very high doses
+linked_to_topics:
+- liver-detoxification
+linked_to_supplements:
+- green-tea-egcg
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Top Superfoods for Detoxification
+  quote: Polyphenols upregulate Nrf2 pathway → enhances antioxidant enzymes (SOD,
+    catalase, GSH).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

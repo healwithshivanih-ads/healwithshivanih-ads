@@ -1,0 +1,36 @@
+slug: visceral-adipose-inflammation
+display_name: Visceral Adipose Inflammation
+aliases:
+- adipokine dysregulation
+- adipose-derived inflammation
+- central adiposity inflammation
+category: immune
+summary: Enlarged visceral adipocytes secrete pro-inflammatory adipokines and cytokines
+  that inhibit insulin receptor phosphorylation, promoting systemic insulin resistance
+  and dyslipidaemia via VLDL overproduction.
+upstream_drivers:
+- obesity
+- central-adiposity
+- high-glycaemic-diet
+- physical-inactivity
+downstream_effects:
+- insulin-resistance
+- dyslipidaemia
+- hypertension
+- nafld
+related_mechanisms:
+- insulin-resistance
+- chronic-inflammation
+- hpa-axis-dysregulation
+linked_to_topics:
+- insulin-resistance
+- metabolic-syndrome
+evidence_tier: strong
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: 'Section 4.1 — Effects of Insulin Resistance: Metabolic Syndrome'
+  quote: Visceral fat secretes pro-inflammatory adipokines that impair insulin signalling.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

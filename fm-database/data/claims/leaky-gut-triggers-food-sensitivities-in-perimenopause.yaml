@@ -1,0 +1,32 @@
+slug: leaky-gut-triggers-food-sensitivities-in-perimenopause
+statement: Increased intestinal permeability (leaky gut) in perimenopause allows food
+  particles to enter the bloodstream, triggering immune responses and new food sensitivities
+  (commonly gluten, dairy, grains, sugar, alcohol).
+evidence_tier: plausible_emerging
+rationale: Single-expert source. The intestinal permeability → immune activation →
+  food sensitivity pathway is a recognized mechanism in functional medicine, though
+  robust RCT evidence for menopause-specific progression is limited.
+coaching_translation: New food intolerances in perimenopause — like suddenly reacting
+  to gluten, dairy, or alcohol — are often not random. They can reflect a more permeable
+  gut lining triggered by hormone changes.
+caveats:
+- Single-expert source; intestinal permeability in perimenopause is plausible but
+  not confirmed by large RCTs.
+- Leaky gut as a distinct clinical entity is debated in conventional medicine.
+linked_to_topics:
+- perimenopause
+- microbiome
+- dysbiosis
+- gut-hormone-axis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-6
+  location: Session 6 — Main Transcript, Gut Barrier Section
+  quote: We get a transient leaky gut that will leak food particles into the bloodstream
+    and trigger an immune response.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

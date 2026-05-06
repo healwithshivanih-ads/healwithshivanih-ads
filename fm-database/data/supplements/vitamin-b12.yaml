@@ -1,0 +1,58 @@
+slug: vitamin-b12
+display_name: Vitamin B12 (Cobalamin)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+- liquid
+- lozenge
+evidence_tier: strong
+notes_for_coach: Methylcobalamin form preferred for those with MTHFR variants or high
+  homocysteine. Cyanocobalamin is more stable/cost-effective for general use. Sublingual/lozenge
+  may improve absorption in those with low stomach acid or intrinsic factor deficiency.
+notes_for_client: B12 is mainly found in animal foods. If you're plant-based, older,
+  or on certain medications, your levels may be low. A sublingual (under-the-tongue)
+  form can help with absorption.
+timing_options:
+- with_breakfast
+- morning
+take_with_food: optional
+linked_to_topics:
+- drug-induced-nutrient-depletion
+- beta-blocker-deprescribing
+- cardiovascular-dysfunction
+- vitamin-b12-deficiency
+- mitochondrial-health-nutrition
+linked_to_claims:
+- metformin-depletes-b12-folate-coq10
+- b12-vegans-higher-deficiency-risk
+- mthfr-variants-respond-better-to-methylcobalamin
+- b-vitamins-improve-cognitive-function-mild-ci
+linked_to_mechanisms:
+- elevated-homocysteine
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 2000
+    unit: mcg
+  tablet:
+    min: 500
+    max: 2000
+    unit: mcg
+  lozenge:
+    min: 500
+    max: 2000
+    unit: mcg
+sources:
+- id: vitaone-cv-toolkit
+  location: Cardiovascular Drugs and Potential Nutrient Deficiency
+  quote: 'Metformin: CoQ10, Folic acid, Vitamin B12'
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Vitamin B12'
+  quote: Vitamin B12 is a water-soluble nutrient required to make healthy red blood
+    cells, support brain health, make DNA, metabolize homocysteine, and prevent pernicious
+    anemia.
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

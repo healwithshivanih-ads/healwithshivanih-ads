@@ -1,0 +1,23 @@
+slug: heme-iron-better-absorbed-than-nonheme
+statement: Heme iron from animal sources is better absorbed by the body than nonheme
+  iron from plant sources, but accounts for only ~10% of dietary iron intake.
+evidence_tier: strong
+rationale: Well-established nutritional physiology; consistent across major nutrition
+  bodies (NIH ODS, Linus Pauling Institute).
+coaching_translation: If you eat mostly plant-based foods, you may need more iron-rich
+  foods or to pair them with vitamin C to help absorption.
+caveats: []
+linked_to_topics:
+- iron-deficiency
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Iron'
+  quote: Heme iron comes from animal food sources and is well absorbed by the body,
+    but accounts for only about 10% of iron in the diet.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

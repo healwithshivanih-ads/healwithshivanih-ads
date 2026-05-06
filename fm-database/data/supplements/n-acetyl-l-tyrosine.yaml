@@ -1,0 +1,37 @@
+slug: n-acetyl-l-tyrosine
+display_name: N-Acetyl L-Tyrosine
+category: amino_acid
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 350
+    max: 700
+    unit: mg
+  tablet:
+    min: 350
+    max: 700
+    unit: mg
+timing_options:
+- morning
+- mid_morning
+- with_breakfast
+- with_lunch
+take_with_food: optional
+notes_for_coach: More soluble form of L-Tyrosine; dopamine precursor useful for ADHD,
+  fatigue, and mental performance.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 3 - Supplement Table
+  quote: N-Acetyl L-Tyrosine - Focus, dopamine precursor - 350–700 mg/day - With or
+    without food
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

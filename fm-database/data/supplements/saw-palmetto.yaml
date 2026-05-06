@@ -1,0 +1,41 @@
+slug: saw-palmetto
+display_name: Saw Palmetto (Serenoa repens)
+category: herb
+forms_available:
+- capsule
+- tablet
+- liquid
+typical_dose_range:
+  capsule:
+    min: 160
+    max: 320
+    unit: mg
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- hairfall
+- testosterone-health
+- benign-prostatic-hyperplasia
+notes_for_coach: Most-studied herbal 5-alpha reductase inhibitor. RCT evidence is
+  mixed; clinician should determine appropriateness and dose. Listed as a prescription
+  item in the document's clinical table.
+notes_for_client: Saw palmetto is a traditional herb used to support prostate health
+  and reduce excess DHT — use only as prescribed by your clinician.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+linked_to_claims:
+- saw-palmetto-inhibits-5-alpha-reductase
+- 5ar-inhibition-reduces-bph-hair-loss-acne
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Hairfall Cheatsheet
+  quote: Saw palmetto, Zinc Glycinate, Biotin, Omega-3
+- id: vitaone-sex-hormones-toolkit
+  location: Maintaining Healthy Testosterone Levels — Page 06
+  quote: Saw Palmetto (Serenoa repens) [Herbs that Inhibit 5-a Reductase]
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

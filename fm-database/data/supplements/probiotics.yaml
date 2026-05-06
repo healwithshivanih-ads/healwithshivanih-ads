@@ -1,0 +1,70 @@
+slug: probiotics
+display_name: Probiotics
+category: probiotic
+forms_available:
+- capsule
+- powder
+- liquid
+timing_options:
+- morning
+- on_empty_stomach
+- with_breakfast
+- bedtime
+- with_lunch
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- liver-detoxification
+- methylation-mthfr
+- leaky-gut
+- chronic-inflammation
+- autoimmune-disease
+- food-sensitivity
+- gut-dysfunction
+- gut-microbiome
+- gut-brain-axis
+- gerd
+- blood-sugar-dysfunction
+linked_to_claims:
+- probiotics-gut-microbiome-detox-support
+- gut-microbiome-diversity-restores-tolerance
+- probiotic-monotherapy-insufficient
+- probiotics-reduce-anxiety-depression
+- probiotics-restore-gut-flora-after-antibiotics
+- probiotics-enhance-immune-response
+- lactobacillus-bifidobacterium-modulate-mood
+- probiotics-may-reduce-hba1c-in-t2d
+notes_for_coach: Emerging, not consensus. Meta-analysis (Wang et al. 2017, J Pediatr
+  Endocrinol Metab) shows effect primarily in T2D/gestational diabetes. Strain specificity
+  matters — coach can recommend fermented food sources; specific strain selection
+  is clinician territory.
+notes_for_client: Probiotics are beneficial bacteria that support your gut health
+  and may help reduce blood sugar and HbA1c levels, especially if you have type 2
+  or gestational diabetes.
+evidence_tier: plausible_emerging
+typical_dose_range:
+  capsule:
+    min: 10
+    max: 50
+    unit: g
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Liver Disease Cheatsheet — Cirrhosis
+  quote: BCAA, Vitamin K, Probiotics, Glutathione
+- id: vitaone-inflammation-cheatsheet
+  location: Inflammation Cheatsheet — Page 02
+  quote: Use probiotics, L-glutamine, zinc carnosine
+- id: vitaone-gut-toolkit
+  location: The 5R Framework for Gut Restoration — Reinoculate
+  quote: Help beneficial bacteria flourish by ingesting probiotic foods or supplements
+    that contain the 'good' GI bacteria such as bifidobacteria and lactobacillus species.
+- id: vitaone-blood-sugar-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: There is also emerging research which shows that probiotics may have beneficial
+    effects on reducing blood sugar, insulin, and Hemoglobin A1c, especially for those
+    who have type 2 or gestational diabetes.
+version: 4
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

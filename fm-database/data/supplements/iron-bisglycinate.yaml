@@ -1,0 +1,34 @@
+slug: iron-bisglycinate
+display_name: Iron Bisglycinate
+category: mineral
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 25
+    max: 50
+    unit: mg
+timing_options:
+- on_empty_stomach
+- morning
+take_with_food: avoid
+linked_to_topics:
+- hairfall
+notes_for_coach: Bisglycinate form is gentlest on the gut vs ferrous sulfate. Enhance
+  absorption with vitamin C. Avoid taking with tea, coffee, calcium, or phytates.
+  Always check ferritin + iron studies + CRP before supplementing — iron overload
+  is harmful.
+notes_for_client: Iron bisglycinate is much easier on your stomach than standard iron
+  supplements. Take it away from tea, coffee, and dairy for best absorption.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+linked_to_claims: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin & Mineral Inactive vs Bio-Available Form Cheatsheet
+  quote: 'Iron Bisglycinate: Bisglycinate = gentle on gut'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

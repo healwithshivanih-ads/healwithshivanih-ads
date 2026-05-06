@@ -1,0 +1,31 @@
+slug: elimination-diet-gold-standard-food-sensitivity
+statement: Elimination diet with systematic reintroduction is the gold standard for
+  identifying food sensitivities; top suspects include gluten, dairy, soy, corn, eggs,
+  and sugar.
+evidence_tier: plausible_emerging
+rationale: Elimination-reintroduction is widely accepted as the most clinically practical
+  method for identifying non-IgE food reactions. IgG/IgA panels are adjunctive. Strong
+  functional medicine consensus.
+coaching_translation: A 4–6 week elimination diet removing gluten, dairy, soy, corn,
+  eggs, and sugar, followed by careful reintroduction, is the most reliable way to
+  identify which foods are triggering your symptoms.
+caveats:
+- Elimination diets should be supervised to ensure nutritional adequacy.
+- Not a substitute for allergen testing in suspected IgE allergy.
+linked_to_topics:
+- food-sensitivity
+- autoimmune-disease
+- leaky-gut
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Food Allergy vs Food Sensitivity / Autoimmune Disease Cheatsheet — Pages
+    04, 24
+  quote: Elimination diet + reintroduction (gold standard); Gluten, dairy, soy, corn,
+    eggs, and sugar = top suspects.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

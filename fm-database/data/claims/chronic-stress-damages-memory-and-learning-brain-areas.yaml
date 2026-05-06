@@ -1,0 +1,27 @@
+slug: chronic-stress-damages-memory-and-learning-brain-areas
+statement: Chronic stress damages areas of the brain responsible for memory and learning,
+  increasing risk of Alzheimer's and dementia.
+evidence_tier: plausible_emerging
+rationale: 'Cited references: Vyas S et al. Neural Plast. 2016 (chronic stress and
+  neurodegeneration); Mravec B et al. Cell Mol Neurobiol. 2018 (brain under stress
+  and Alzheimer''s). Plausible_emerging because while referenced, long-term causality
+  in humans is not fully established.'
+coaching_translation: Chronic stress can literally shrink brain areas involved in
+  memory. Stress management protects brain health long-term.
+caveats:
+- Mechanistic and epidemiological evidence; RCT causality in humans is difficult to
+  establish.
+linked_to_topics:
+- chronic-stress
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-adrenal-toolkit
+  location: Effects of Chronic Stress — Brain & Nervous System
+  quote: Damages areas of brain responsible for memory and learning, ↑ Risk of Alzheimer's
+    and dementia
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

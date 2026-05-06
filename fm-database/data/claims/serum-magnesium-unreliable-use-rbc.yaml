@@ -1,0 +1,24 @@
+slug: serum-magnesium-unreliable-use-rbc
+statement: Serum magnesium is an unreliable marker of magnesium status; RBC magnesium
+  is a more accurate functional test.
+evidence_tier: plausible_emerging
+rationale: Serum magnesium is tightly regulated and stays normal until severe depletion;
+  RBC magnesium better reflects intracellular stores. This is accepted in functional
+  medicine; less consistently used in conventional medicine.
+coaching_translation: Encourage clients to ask their clinician about RBC magnesium
+  testing rather than relying on standard serum magnesium.
+out_of_scope_notes: Lab interpretation is clinician territory.
+caveats:
+- RBC Mg target of 6.0–6.5 mg/dL per this document — verify with clinician.
+linked_to_topics:
+- nutrient-deficiency-depression
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Magnesium – The Calming Mineral
+  quote: 'Lab pearl: Serum magnesium is unreliable; RBC magnesium is more accurate.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

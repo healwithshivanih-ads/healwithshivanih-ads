@@ -1,0 +1,27 @@
+slug: hashimotos-progresses-to-worsening-thyroid-function
+statement: Unlike subclinical hypothyroidism, Hashimoto's disease typically leads
+  to progressive worsening of thyroid function over time due to ongoing autoimmune
+  destruction.
+evidence_tier: strong
+rationale: 'Established in endocrinology: ongoing TPO-antibody-mediated thyroid destruction
+  results in progressive reduction of thyroid tissue and hormone output.'
+coaching_translation: Hashimoto's is not just a thyroid issue — it's an immune system
+  issue that tends to worsen over time if the underlying autoimmune triggers aren't
+  addressed.
+caveats:
+- Rate of progression varies widely between individuals.
+linked_to_topics:
+- hashimotos-hypothyroidism
+- subclinical-hypothyroidism
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-thyroid-toolkit
+  location: How is Hashimoto's Different from Subclinical Hypothyroidism?
+  quote: Subclinical hypothyroidism may or may not progress to overt hypothyroidism,
+    while Hashimoto's typically leads to worsening thyroid function over time.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,30 @@
+slug: vitamin-d-adequate-levels-enhance-insulin-sensitivity
+statement: Adequate vitamin D levels (optimal 50–90 ng/mL) enhance insulin sensitivity
+  and modulate immune-inflammatory tone.
+evidence_tier: plausible_emerging
+rationale: VDR expression in beta-cells and muscle cells is established; observational
+  data link deficiency to IR. RCT results for supplementation are mixed but lean toward
+  benefit in deficient populations.
+coaching_translation: Keeping your vitamin D levels in a healthy range may support
+  your body's ability to respond to insulin. Many people are deficient without knowing
+  it.
+out_of_scope_notes: Testing 25-OH vitamin D and determining appropriate dose is clinician
+  scope.
+linked_to_topics:
+- insulin-resistance
+- blood-sugar-dysfunction
+linked_to_supplements:
+- vitamin-d3
+caveats:
+- Source is FM synthesis. The optimal range of 50–90 ng/mL is FM-specific and higher
+  than conventional 'normal'. Verify with clinician.
+linked_to_mechanisms: []
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 6.2 — Secondary Markers to Check
+  quote: Vitamin D (25-OH D)- Optimal 50-90 ng/mL. Adequate levels enhance insulin
+    sensitivity and modulate immune-inflammatory tone.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

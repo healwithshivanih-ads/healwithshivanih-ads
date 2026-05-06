@@ -1,0 +1,29 @@
+slug: soaked-flaxseeds-help-constipation-pcos
+statement: Soaked flaxseeds combined with soaked prunes provide mucilage for stool
+  softening, omega-3 fatty acids to reduce intestinal inflammation, and may benefit
+  gut health in PCOS.
+evidence_tier: plausible_emerging
+rationale: Flaxseed mucilage and lignan content have RCT support for stool softening;
+  omega-3s reduce intestinal inflammation. PCOS-gut connection is plausible but less
+  directly studied.
+caveats:
+- Source is an educational toolkit — source type warrants plausible_emerging tier.
+- Flaxseed oil should not be used in cooking (heat-sensitive).
+coaching_translation: Soaking flaxseeds overnight and eating them in the morning with
+  prunes is a gentle, natural way to ease constipation and support your gut lining.
+linked_to_topics:
+- elimination-diet
+- low-fodmap-diet
+linked_to_mechanisms:
+- gut-motility-dysregulation
+out_of_scope_notes: ''
+linked_to_supplements: []
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: FODMAP Plan SOS Solutions — Constipation
+  quote: Soaked Flaxseeds + 2 prunes soaked overnight. Mucilage softens stools. Omega-3
+    reduces intestinal inflammation. Helps PCOS + gut lining.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

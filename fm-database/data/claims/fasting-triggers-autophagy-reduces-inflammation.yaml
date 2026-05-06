@@ -1,0 +1,28 @@
+slug: fasting-triggers-autophagy-reduces-inflammation
+statement: Fasting triggers autophagy and reduces chronic inflammation through mTOR
+  suppression, AMPK activation, and reduced NF-κB signaling.
+evidence_tier: plausible_emerging
+rationale: The mechanistic links between fasting, mTOR suppression, AMPK activation,
+  autophagy, and reduced NF-κB are well-supported in pre-clinical and emerging clinical
+  research. Clinical translation to immune optimization requires more RCTs.
+coaching_translation: A 12–16 hour overnight fast can help your body activate its
+  self-cleaning process (autophagy) and reduce background inflammation — one of the
+  most powerful lifestyle levers available.
+caveats:
+- Should not be applied to clients with eating disorder history, active infections,
+  hypothyroidism, or chronic burnout without clinician oversight.
+- Source is educational synthesis.
+linked_to_topics:
+- fasting-immune-health
+- chronic-inflammation
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Fasting & Immune Health Link — Page 15
+  quote: 'Autophagy: Cellular ''cleanup'' → Improved immune surveillance'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

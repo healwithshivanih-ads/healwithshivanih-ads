@@ -1,0 +1,29 @@
+slug: if-improves-insulin-resistance-and-blood-sugar
+statement: Intermittent fasting may improve insulin resistance and blood sugar metabolism
+  based on shorter-duration human and animal studies.
+evidence_tier: plausible_emerging
+rationale: Multiple referenced studies (Patterson 2015, Mattson 2017, de Cabo 2019
+  in NEJM) support benefit of IF on insulin sensitivity and glucose; longer-term RCTs
+  are still needed.
+coaching_translation: Structured eating windows or fasting days may help your body
+  use insulin more effectively and stabilize blood sugar over time.
+caveats:
+- Evidence is primarily from shorter-duration studies
+- Longer-term sustained benefit not yet established
+- Insulin-dependent diabetics should only pursue under clinician supervision
+linked_to_topics:
+- intermittent-fasting
+- cardiometabolic-health
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-cardiometabolic-toolkit
+  location: Intermittent Fasting — Who Benefits from Fasting?
+  quote: Shorter-duration human & animal studies show that fasting may be beneficial
+    for insulin resistance, blood sugar, blood pressure, inflammation, short-term
+    weight loss, and brain health.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

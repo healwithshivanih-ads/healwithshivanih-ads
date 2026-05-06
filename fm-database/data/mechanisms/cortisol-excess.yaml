@@ -1,0 +1,36 @@
+slug: cortisol-excess
+display_name: Cortisol Excess
+aliases:
+- hypercortisolaemia
+- elevated cortisol
+- glucocorticoid excess
+category: endocrine
+summary: Prolonged elevation of cortisol suppresses immune function, lowers insulin
+  sensitivity, disrupts sleep architecture, promotes central adiposity, depletes potassium,
+  and inhibits DHEA production.
+upstream_drivers:
+- hpa-axis-dysregulation
+- chronic-stress
+downstream_effects:
+- insulin-resistance
+- dhea-depletion
+- immune-suppression
+- insomnia
+- central-obesity
+related_mechanisms:
+- hpa-axis-dysregulation
+- dhea-depletion
+- insulin-resistance
+linked_to_topics:
+- hypercortisolism
+- hpa-axis-dysregulation
+evidence_tier: strong
+sources:
+- id: vitaone-adrenal-toolkit
+  location: Hypercortisolism
+  quote: Lowered insulin sensitivity, with a higher susceptibility to diabetes, Loss
+    of the capacity to produce sufficient DHEA.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

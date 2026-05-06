@@ -1,0 +1,33 @@
+slug: glutathione-master-antioxidant-detox
+statement: Glutathione is the body's master antioxidant, essential for Phase II liver
+  detoxification, and is depleted by MTHFR mutations and chronic oxidative stress.
+  Liposomal forms offer superior oral bioavailability.
+evidence_tier: plausible_emerging
+rationale: Document references glutathione depletion as a consequence of MTHFR mutation
+  and lists liposomal glutathione for cirrhosis and MTHFR protocols. Glutathione's
+  antioxidant role is well-established; liposomal bioavailability superiority is plausible
+  but has limited direct RCT evidence.
+coaching_translation: Glutathione is your body's top detox molecule. MTHFR mutations
+  and toxic loads deplete it — liposomal glutathione is the most bioavailable oral
+  form.
+caveats:
+- Liposomal bioavailability advantage not uniformly proven in RCTs
+- High doses require clinician oversight
+- Source is FM synthesis
+linked_to_topics:
+- liver-detoxification
+- methylation-mthfr
+linked_to_supplements:
+- glutathione
+- nac
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Liver Disease Cheatsheet — Cirrhosis
+  quote: BCAA, Vitamin K, Probiotics, Glutathione — Manage complications (ascites,
+    encephalopathy), protein balance essential.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

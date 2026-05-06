@@ -1,0 +1,35 @@
+slug: partially-hydrolyzed-guar-gum
+display_name: Partially Hydrolyzed Guar Gum (PHGG)
+category: other
+forms_available:
+- powder
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+- morning
+take_with_food: optional
+linked_to_topics:
+- fiber-gap
+- microbiome
+linked_to_claims:
+- psyllium-husk-best-tolerated-fiber-supplement
+notes_for_coach: Speaker notes PHGG mixes well and is well tolerated by some, but
+  others (including speaker personally) find it causes bloating at any dose. Presented
+  as a secondary option to psyllium husk. Bio-individual tolerance varies considerably.
+  No dose was explicitly stated by speaker.
+notes_for_client: PHGG is a type of soluble fiber supplement that dissolves easily
+  in water. Some people love it; others find it causes bloating. If you try it, start
+  with a very small amount and see how your body responds.
+evidence_tier: fm_specific_thin
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: thurlow-microbiome-session-7
+  location: Q&A — psyllium vs guar gum [00:28:06]
+  quote: there's something called PHGG. It's partially hydrogenated guar gum... Some
+    people tolerate it really well and others do not.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

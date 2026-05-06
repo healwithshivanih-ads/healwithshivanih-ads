@@ -1,0 +1,46 @@
+slug: swap-to-ghee-or-coconut-oil
+display_name: Swap to Ghee or Coconut Oil for High-Heat Cooking
+aliases:
+  - ghee-for-cooking
+  - coconut-oil-for-cooking
+  - replace-seed-oils
+  - desi-ghee-cooking
+category: oil
+summary: |
+  Replace industrial seed oils (sunflower, soybean, corn, canola, "vegetable
+  oil") with traditional saturated fats — ghee (clarified butter) or
+  unrefined coconut oil — for high-heat Indian cooking. Both are stable at
+  high temperatures (high smoke point, low oxidation), and ghee is the
+  traditional cultural default. Reduces oxidized-lipid intake which is a
+  contributor to chronic inflammation in modern diets.
+benefits:
+  - high smoke point — minimal oxidation at tadka / dosa / paratha temperatures
+  - culturally familiar; easy compliance
+  - ghee provides butyrate (short-chain fatty acid)
+  - coconut oil provides medium-chain triglycerides (MCT)
+swap_from:
+  - refined sunflower oil
+  - refined soybean oil
+  - canola oil
+  - 'generic "vegetable oil" (unspecified blend)'
+how_to_use: |
+  Use ghee for tadka, sautéing, parathas, rotis. Use unrefined coconut
+  oil for South Indian cooking, dosas, sweets. For salads / unheated use,
+  cold-pressed olive oil is preferable to either. 1-2 tsp per cooked dish
+  is ample — fat is calorie-dense.
+cautions:
+  - For clients with familial hypercholesterolemia or known statin
+    intolerance, defer to clinician on saturated-fat targets.
+  - Ghee is dairy-derived — avoid in true dairy/casein allergy.
+linked_to_topics:
+  - inflammation
+linked_to_mechanisms:
+  - chronic-inflammation
+sources:
+  - id: vitaone-skill-practice-guide
+    location: practice_guide.md, Nutrition / Cooking section
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

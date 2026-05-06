@@ -1,0 +1,32 @@
+slug: lemon-balm
+display_name: Lemon Balm
+category: herb
+forms_available:
+- capsule
+- tablet
+- liquid
+timing_options:
+- morning
+- evening
+- bedtime
+take_with_food: optional
+linked_to_topics:
+- gerd
+- gut-brain-axis
+linked_to_claims:
+- lemon-balm-reduces-anxiety-gerd
+notes_for_coach: Listed under 'Anxiety' in the PPI taper protocol, recognizing the
+  stress-GERD connection. Traditionally used as a calming herb.
+evidence_tier: fm_specific_thin
+typical_dose_range: {}
+linked_to_mechanisms: []
+notes_for_client: ''
+sources:
+- id: vitaone-gut-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
+    — Supplement recommendations'
+  quote: 'Anxiety: Lemon balm'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

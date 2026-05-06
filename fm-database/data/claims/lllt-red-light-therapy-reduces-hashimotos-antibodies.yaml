@@ -1,0 +1,34 @@
+slug: lllt-red-light-therapy-reduces-hashimotos-antibodies
+statement: Low-level laser therapy (LLLT) / Red Light Therapy directed at the thyroid
+  reduces TPO antibodies and may improve thyroid function in Hashimoto's thyroiditis.
+evidence_tier: plausible_emerging
+rationale: A placebo-controlled RCT (Höfling et al., Brazil) showed LLLT reduced TPO
+  antibodies, normalised thyroid volume in 25% of patients, and lowered levothyroxine
+  requirements. A 2023 larger study (n=350) confirmed T3 and T3/T4 ratio improvement
+  plus antibody reduction combined with Vitamin D, iron, and selenium. Evidence is
+  from a small number of research groups; most trials used clinic-grade 830nm lasers,
+  not consumer devices.
+coaching_translation: There's real but early research that medical-grade laser therapy
+  on the thyroid may help Hashimoto's. Consumer red-light devices aren't the same,
+  and this should be done with clinician oversight if at all.
+caveats:
+- Evidence is from a small number of research groups.
+- Trials used clinic-grade 830nm lasers — extrapolation to consumer home devices is
+  speculative.
+- Do not recommend specific devices, wavelengths, or protocols.
+out_of_scope_notes: Recommending specific devices, wavelengths, or LLLT protocols
+  is outside coaching scope. Education only.
+linked_to_topics:
+- thyroid
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-evidence-tiers
+  location: TOPIC 1 — Thyroid / Claims & Tiers / Claim 11
+  quote: A placebo-controlled RCT (Höfling et al., Brazil) showed LLLT reduced TPO
+    antibodies, normalized thyroid volume in 25% of patients, and lowered levothyroxine
+    requirements.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

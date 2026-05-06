@@ -1,0 +1,32 @@
+slug: b-vitamins-critical-for-phase-ii-estrogen-methylation
+statement: Active B vitamins (B6 P5P, methylated B12, methyl-folate) are critical
+  cofactors for Phase II methylation of estrogen metabolites, especially in PCOS or
+  MTHFR variants.
+evidence_tier: plausible_emerging
+rationale: One-carbon methylation requires B6, B12, and folate as cofactors. MTHFR
+  variants reduce methylfolate availability, impairing COMT function and estrogen
+  methylation. Mechanistically well-established; clinical trials specific to estrogen
+  outcomes are sparse.
+coaching_translation: Methylated B vitamins are essential for the liver pathway that
+  neutralizes estrogen — especially important if you have MTHFR gene variants.
+caveats:
+- Source is expert synthesis
+- Use methylated forms (P5P, methyl-B12, methyl-folate) when MTHFR is suspected
+- Verify with clinician
+linked_to_topics:
+- estrogen-dominance
+linked_to_supplements:
+- vitamin-b6-p5p
+- vitamin-b12-methylcobalamin
+- folate-methylfolate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: Top Nutrients to Balance Estrogen
+  quote: Critical for methylation (Phase II detox) of estrogen. In PCOS or high estrogen,
+    support with methylated forms (B6 P5P, methyl-B12, methyl-folate).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

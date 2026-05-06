@@ -1,0 +1,30 @@
+slug: liver-gut-account-for-60-70-t4-t3-conversion
+statement: 60–70% of T4 → T3 conversion occurs in the liver and gut microbiome, making
+  gut and liver health central to thyroid hormone activation.
+evidence_tier: plausible_emerging
+rationale: The document states this figure directly. Peripheral deiodinase activity
+  in liver and gut is well-established physiologically; the specific 60–70% figure
+  is frequently cited in FM literature though primary citation is not provided.
+coaching_translation: Your thyroid hormone needs your liver and gut bacteria to activate
+  it. Poor gut health or a sluggish liver can leave you feeling hypothyroid even with
+  adequate T4.
+caveats:
+- Specific percentage is not attributed to a primary study in the source.
+- Source is expert consensus.
+linked_to_topics:
+- thyroid
+- leaky-gut
+- dysbiosis
+linked_to_supplements:
+- l-glutamine
+- probiotic-multi-strain
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-cheatsheet
+  location: Biohacking Thyroid Function Cheatsheet — Optimize Liver & Gut Health
+  quote: 60–70% of T4 →T3 conversion occurs in the liver & gut microbiome
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

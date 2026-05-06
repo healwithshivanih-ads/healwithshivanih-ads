@@ -1,0 +1,26 @@
+slug: multiple-food-allergies
+display_name: Multiple Food Allergies / Sensitivities
+aliases:
+- food intolerances
+- new food sensitivities
+- food reactions
+category: gi
+severity: common
+description: Reactivity to multiple foods, often indicating compromised gut barrier
+  function or hypochlorhydria reducing adequate protein digestion.
+linked_to_topics:
+- hypochlorhydria
+- gut-dysfunction
+- candida-overgrowth
+linked_to_mechanisms:
+- leaky-gut
+- hypochlorhydria-mechanism
+when_to_refer: ''
+sources:
+- id: vitaone-gut-toolkit
+  location: Testing for Low Stomach Acidity — Common Symptoms of Hypochlorhydria
+  quote: Multiple food allergies
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

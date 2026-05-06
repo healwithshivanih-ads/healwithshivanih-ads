@@ -1,0 +1,29 @@
+slug: 5ar-inhibition-reduces-bph-hair-loss-acne
+statement: Inhibiting or slowing 5-alpha reductase activity with foods, herbs, and
+  supplements reduces excess DHT production, thereby decreasing or preventing prostate
+  enlargement, hair loss, and androgenic acne.
+evidence_tier: plausible_emerging
+rationale: Mechanistically supported; pharmaceutical 5-AR inhibitors (finasteride)
+  have strong RCT evidence. Natural inhibitors have plausible but less-proven efficacy.
+  Document is expert synthesis.
+coaching_translation: Certain foods and supplements can naturally slow the enzyme
+  that converts testosterone to DHT — supporting prostate health and reducing hair
+  loss and acne.
+caveats:
+- Natural 5-AR inhibitors have weaker evidence than pharmaceutical inhibitors. Source
+  is expert consensus synthesis.
+linked_to_topics:
+- testosterone-health
+- benign-prostatic-hyperplasia
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-sex-hormones-toolkit
+  location: Maintaining Healthy Testosterone Levels — Page 06
+  quote: There are several foods, herbs, and supplements that can be used to inhibit
+    or slow 5-areductase activity and thus decrease or prevent these symptoms.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

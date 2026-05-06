@@ -1,0 +1,31 @@
+slug: 70-percent-immunity-gut-galt
+statement: Approximately 70% of immune cells reside in the gut-associated lymphoid
+  tissue (GALT), making gut health a primary lever for immune function.
+evidence_tier: plausible_emerging
+rationale: The GALT contains the largest collection of immune cells in the body. The
+  ~70% figure is widely cited in immunology education; exact percentages vary by measurement
+  methodology but the principle is well-accepted.
+coaching_translation: Most of your immune system lives in your gut. Healing the gut
+  is healing the immune system — this is why food, probiotics, and gut repair come
+  first.
+caveats:
+- The exact '70%' figure is a commonly cited estimate; the underlying principle is
+  well-supported.
+- Source is educational synthesis.
+linked_to_topics:
+- leaky-gut
+- chronic-inflammation
+- autoimmune-disease
+linked_to_supplements:
+- probiotics
+- l-glutamine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Functional Medicine Implementation Tips — Page 13
+  quote: Emphasize gut health first - 70% of immune cells are in the GALT.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

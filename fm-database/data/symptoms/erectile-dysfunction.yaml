@@ -1,0 +1,24 @@
+slug: erectile-dysfunction
+display_name: Erectile Dysfunction
+aliases:
+- ED
+- sexual dysfunction
+- impotence
+category: hormonal
+severity: common
+description: Inability to achieve or maintain an erection; a known side effect of
+  beta blocker therapy.
+when_to_refer: Discuss with prescribing clinician if suspected to be medication-related.
+linked_to_topics:
+- beta-blocker-deprescribing
+- cardiovascular-dysfunction
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cv-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
+  quote: these drugs are associated with increased rates of depression, fatigue, constipation,
+    erectile dysfunction, and cognitive decline.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

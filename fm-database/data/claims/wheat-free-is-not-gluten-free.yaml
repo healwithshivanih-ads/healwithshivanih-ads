@@ -1,0 +1,24 @@
+slug: wheat-free-is-not-gluten-free
+statement: Wheat-free products are not necessarily gluten-free, as barley and rye
+  also contain gluten.
+evidence_tier: strong
+rationale: Celiac Disease Foundation guidance (cited) establishes that gluten includes
+  gliadin (wheat), hordein (barley), and secalin (rye); 'wheat-free' labelling does
+  not exclude these.
+coaching_translation: Always look for the certified 'gluten-free' label, not just
+  'wheat-free', when shopping.
+linked_to_topics:
+- gluten-sensitivity
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: A Guide to Eating Gluten-Free — Tips
+  quote: Remember that 'wheat-free' is not the same thing as 'gluten-free'. When in
+    doubt, only purchase products with the certified gluten-free label.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

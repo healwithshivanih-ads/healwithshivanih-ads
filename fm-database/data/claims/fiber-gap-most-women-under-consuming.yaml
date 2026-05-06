@@ -1,0 +1,28 @@
+slug: fiber-gap-most-women-under-consuming
+statement: Most women consume far less fiber than recommended, with typical intake
+  of 5–15 g/day versus expert targets of 25–35 g/day, representing a clinically significant
+  gap.
+evidence_tier: plausible_emerging
+rationale: Speaker cites clinical observation and expert consensus targets; no specific
+  RCT cited. Single-expert source (expert_consensus, moderate quality). Well-aligned
+  with published dietary survey data but not referenced directly.
+coaching_translation: Most clients are falling well short of their daily fiber goal.
+  Help them audit their current intake and set a realistic, gradual increase plan.
+caveats:
+- Source is a single expert/practitioner session, not primary literature. Verify population-level
+  intake data with published dietary surveys (e.g., NHANES).
+linked_to_topics:
+- fiber-gap
+- microbiome
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-7
+  location: Opening remarks [00:05:37]
+  quote: could be anywhere from five, eight, 10 grams a day... I would say the average
+    person is probably doing 15 or 20, maybe max.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

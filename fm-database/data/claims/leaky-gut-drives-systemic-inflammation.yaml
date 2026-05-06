@@ -1,0 +1,33 @@
+slug: leaky-gut-drives-systemic-inflammation
+statement: Leaky gut (intestinal permeability) drives chronic, low-grade systemic
+  inflammation via LPS endotoxemia, NF-κB activation, and mast cell activation.
+evidence_tier: plausible_emerging
+rationale: 'Mechanistically well-supported: zonulin, LPS/TLR-4, and NF-κB pathways
+  are established in peer-reviewed literature. However, the clinical entity ''leaky
+  gut'' as a diagnostic category remains debated and the source is a synthesis document.'
+coaching_translation: A damaged gut lining can trigger inflammation throughout the
+  body — not just digestive symptoms, but joint pain, skin issues, brain fog, and
+  mood changes.
+out_of_scope_notes: Lab interpretation (zonulin, calprotectin) and clinical diagnosis
+  are clinician scope.
+caveats:
+- '''Leaky gut'' as a standalone diagnosis is not universally accepted in conventional
+  medicine. Source is educational synthesis.'
+linked_to_topics:
+- leaky-gut
+- gut-dysbiosis
+- ibd
+linked_to_supplements:
+- l-glutamine
+- zinc-carnosine
+- omega-3
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Leaky Gut & Inflammation — The Missing Link
+  quote: Tight junction damage → Increased intestinal permeability → Antigen leakage
+    → Root cause of chronic inflammation
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

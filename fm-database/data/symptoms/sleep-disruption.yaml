@@ -1,0 +1,24 @@
+slug: sleep-disruption
+display_name: Sleep Disruption
+aliases:
+- poor sleep
+- cortisol-related sleep issues
+- wakefulness
+category: sleep
+severity: common
+description: Disrupted sleep can occur when low-carb diets trigger cortisol spikes,
+  warranting reintroduction of complex carbohydrates at dinner.
+when_to_refer: Refer if sleep disruption is severe or accompanied by anxiety/mood
+  disorder.
+linked_to_topics:
+- low-carb-diet
+linked_to_mechanisms:
+- insulin-resistance
+sources:
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: Precautions for Practitioners
+  quote: Reintroduce complex carbs if cortisol spikes or sleep disruption occur.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

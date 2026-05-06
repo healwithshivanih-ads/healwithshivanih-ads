@@ -1,0 +1,26 @@
+slug: high-folate-masks-b12-deficiency
+statement: High folate intake can mask vitamin B12 deficiency by correcting megaloblastic
+  anemia while allowing irreversible neurological damage to progress.
+evidence_tier: strong
+rationale: This is a well-established principle in clinical medicine; supported by
+  multiple case reports and included in standard medical textbooks and guidelines.
+coaching_translation: 'Remind coaches: always consider B12 status alongside folate
+  — especially in vegans, elderly, or those on folate supplements.'
+out_of_scope_notes: B12 and folate lab interpretation is clinician territory.
+caveats:
+- Particularly important in vegans, vegetarians, elderly, and those with pernicious
+  anemia.
+linked_to_topics:
+- vitamin-b-complex-deficiency
+linked_to_supplements:
+- vitamin-b12-methylcobalamin
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin B12 (Cobalamin)
+  quote: High folate intake can mask B12 deficiency, worsening neurological damage—always
+    check both.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

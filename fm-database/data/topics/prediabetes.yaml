@@ -1,0 +1,42 @@
+slug: prediabetes
+display_name: Prediabetes
+aliases:
+- impaired fasting glucose
+- impaired glucose tolerance
+- borderline diabetes
+summary: Intermediate stage between insulin resistance and overt T2DM, characterised
+  by fasting glucose 100–125 mg/dL and HbA1c 5.7–6.4%, where β-cell output no longer
+  fully compensates for resistance.
+common_symptoms:
+- blurry-vision
+- frequent-urination
+- persistent-fatigue
+- slow-wound-healing
+- abdominal-obesity
+- recurrent-skin-infections
+red_flags:
+- fasting glucose ≥ 126 mg/dL
+- HbA1c ≥ 6.5%
+- rapid progression of symptoms
+related_topics:
+- insulin-resistance
+- type-2-diabetes
+- metabolic-syndrome
+key_mechanisms:
+- insulin-resistance
+- pancreatic-beta-cell-dysfunction
+coaching_scope_notes: This stage is highly reversible with lifestyle intervention.
+  Focus on cardiometabolic dietary pattern, resistance training, and sleep optimisation.
+clinician_scope_notes: Monitor HbA1c and fasting glucose every 3–6 months. Consider
+  metformin in high-risk cases. Assess for metabolic syndrome components.
+evidence_tier: strong
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 4.2.3 — Prediabetes
+  quote: 'β-cells begin to fatigue; insulin output no longer fully compensates for
+    resistance. Symptoms: Blurry vision, frequent urination, persistent fatigue, slower
+    wound healing.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

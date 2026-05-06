@@ -1,0 +1,27 @@
+slug: avoid-aggressive-carb-restriction-in-hypothyroid-adrenal-fatigue-pregnancy
+statement: Aggressive carbohydrate restriction should be avoided in patients with
+  hypothyroidism, adrenal fatigue, or pregnancy.
+evidence_tier: confirm_with_clinician
+rationale: Very low carbohydrate intake can suppress T3 conversion and worsen HPA
+  axis dysregulation. Pregnancy requires adequate glucose for foetal development.
+  This is a clinician-scope safety consideration.
+coaching_translation: If you have a thyroid condition, signs of adrenal burnout, or
+  are pregnant, a very strict low-carb diet may not be appropriate — always check
+  with your doctor first.
+out_of_scope_notes: Determining suitability of carb restriction in these populations
+  is outside coaching scope. Refer to clinician.
+caveats:
+- Clinician oversight required for these populations.
+linked_to_topics:
+- low-carb-diet
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: Precautions for Practitioners
+  quote: Avoid aggressive carb restriction in hypothyroid, adrenal fatigue, or pregnancy
+    cases.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,39 @@
+slug: iron
+display_name: Iron
+category: mineral
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 15
+    max: 20
+    unit: mg
+  tablet:
+    min: 15
+    max: 20
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+take_with_food: optional
+linked_to_topics:
+- hypothyroidism
+linked_to_claims:
+- key-nutrients-required-for-thyroid-hormone-production
+notes_for_coach: Recommended for menstruating women (15–20 mg/day). Iron is required
+  for TPO activity. Iron supplementation should be guided by serum ferritin/iron panel
+  — clinician scope. Can interfere with levothyroxine absorption — take 4 hours apart.
+notes_for_client: Iron is needed for thyroid hormone production and is especially
+  important if you have heavy periods. Don't supplement without getting your iron
+  levels tested first.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-toolkit
+  location: Routine daily supplementation in a hypothyroid patient
+  quote: 'Iron: 15-20 mg (in a menstruating woman)'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

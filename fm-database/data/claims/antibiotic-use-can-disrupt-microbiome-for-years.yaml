@@ -1,0 +1,35 @@
+slug: antibiotic-use-can-disrupt-microbiome-for-years
+statement: A single round of antibiotics can disrupt gut microbiome composition for
+  18 months to potentially up to 8 years, with downstream effects on GABA and serotonin
+  production and mood.
+evidence_tier: plausible_emerging
+rationale: Antibiotic-induced microbiome disruption is well-documented; the long-duration
+  estimates (18–24 months from Thurlow's book; up to 8 years cited from a social media
+  reference by Dr. Karan Rajan) reflect emerging research but the 8-year figure is
+  from a single cited paper via social media, not a directly verified source.
+coaching_translation: Even one course of antibiotics can set back your gut health
+  significantly — rebuilding through fermented foods, fibre, and targeted probiotics
+  is important afterwards.
+caveats:
+- The 8-year figure is sourced from a social media post (Dr. Karan Rajan) referencing
+  a paper — not a directly cited peer-reviewed source.
+- Individual recovery varies widely by baseline microbiome health, diet, and lifestyle.
+- Single-expert source rule applies.
+linked_to_topics:
+- microbiome
+- dysbiosis
+- gut-brain-axis
+- anxiety
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-5
+  location: Q&A — Antibiotics and Microbiome
+  quote: It can be anywhere from 18 to 24 months that the microbiome takes a hit after
+    a round of antibiotics... there was a paper that said one round of antibiotics
+    can disrupt your microbiome for up to eight years.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

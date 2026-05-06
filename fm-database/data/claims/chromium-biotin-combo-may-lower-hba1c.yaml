@@ -1,0 +1,27 @@
+slug: chromium-biotin-combo-may-lower-hba1c
+statement: Chromium combined with biotin (vitamin B7) may help lower HbA1c, blood
+  sugar, and cholesterol in people with type 2 diabetes.
+evidence_tier: fm_specific_thin
+rationale: Albarracin et al. 2007 (J Cardiometab Syndr) RCT cited in document; effect
+  is specific to the combination and mainly in T2D; evidence base is thin.
+coaching_translation: Some research suggests that taking chromium together with biotin
+  may help with blood sugar and cholesterol in type 2 diabetes.
+caveats:
+- Evidence inconsistent for chromium alone. Combination effect from single RCT. Contraindicated
+  in kidney disease. Refer to clinician.
+out_of_scope_notes: Chromium dosing requires clinician guidance, especially given
+  kidney disease contraindication.
+linked_to_topics:
+- blood-sugar-dysfunction
+linked_to_supplements:
+- chromium
+linked_to_mechanisms: []
+sources:
+- id: vitaone-blood-sugar-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: Other studies suggest that chromium and biotin (vitamin B7) combined may
+    help lower Hemoglobin A1c, blood sugar & cholesterol.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

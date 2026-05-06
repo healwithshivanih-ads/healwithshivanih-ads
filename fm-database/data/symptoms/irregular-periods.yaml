@@ -1,0 +1,37 @@
+slug: irregular-periods
+display_name: Irregular / Absent Menstrual Periods
+aliases:
+- irregular cycles
+- oligomenorrhea
+- missed periods
+- anovulatory cycles
+- menstrual irregularities
+- skipped periods
+- cycle disruption
+category: hormonal
+severity: concerning
+description: Disrupted or absent menstrual cycles caused by chronic stress affecting
+  the HPA-HPG axis interplay, or by adrenal hyperplasia in non-menopausal women.
+when_to_refer: Refer if persistent to rule out adrenal hyperplasia, PCOS, or thyroid
+  dysfunction.
+linked_to_topics:
+- pcos
+- low-progesterone
+- hpa-axis-dysregulation
+- chronic-stress
+linked_to_mechanisms:
+- insulin-resistance
+- hpa-axis-dysregulation
+- low-progesterone
+- dhea-depletion
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: Estrogen Dominance Supplement Cheatsheet
+  quote: Improves cycle regularity.
+- id: vitaone-adrenal-toolkit
+  location: 'HPA Axis Questionnaire — Section 3: Adrenal hyperplasia'
+  quote: Irregular or no periods (not menopausal)
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

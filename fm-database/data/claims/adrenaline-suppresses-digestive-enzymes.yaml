@@ -1,0 +1,24 @@
+slug: adrenaline-suppresses-digestive-enzymes
+statement: During stress, adrenaline surges suppress digestive enzyme output and reduce
+  blood flow to digestive organs, impairing digestion.
+evidence_tier: plausible_emerging
+rationale: 'Biologically plausible: sympathetic activation diverts blood from splanchnic
+  circulation and reduces parasympathetic-driven digestive secretions. Widely accepted
+  in FM but limited direct RCT evidence.'
+coaching_translation: When you're stressed, your body shunts resources away from digestion
+  — this is why stress causes bloating, gas, and stomach pain.
+linked_to_topics:
+- chronic-stress
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-adrenal-toolkit
+  location: Hypercortisolism
+  quote: As adrenaline surges during stress, digestive enzymes are simultaneously
+    lowered, and blood sugar levels initially rise.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

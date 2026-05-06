@@ -1,0 +1,28 @@
+slug: elevated-blood-sugar
+display_name: Elevated Blood Sugar
+aliases:
+- hyperglycemia
+- high fasting glucose
+- blood sugar imbalance
+- unbalanced blood sugar
+category: metabolic
+severity: concerning
+description: Elevated fasting or postprandial glucose levels indicating impaired blood
+  sugar metabolism, a core cardiometabolic risk factor.
+when_to_refer: Refer to clinician for fasting glucose ≥100 mg/dL, HbA1c ≥5.7%, or
+  any insulin-dependent diabetes diagnosis before initiating fasting protocols.
+linked_to_topics:
+- cardiometabolic-health
+- intermittent-fasting
+linked_to_mechanisms:
+- insulin-resistance
+sources:
+- id: vitaone-cardiometabolic-toolkit
+  location: Intermittent Fasting — Who Should not Fast or Fast with Caution?
+  quote: For those with type 2 diabetes, metabolic syndrome, or symptoms related to
+    unbalanced blood sugar, it is strongly advised to work with an experienced healthcare
+    practitioner.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,34 @@
+slug: tg-hdl-ratio-outperforms-fasting-glucose
+statement: |
+  The triglyceride-to-HDL ratio outperforms fasting glucose as a marker
+  of insulin resistance and cardiovascular risk.
+evidence_tier: strong
+rationale: |
+  Multiple cohort studies (Vega et al., McLaughlin et al., Kannel et al.)
+  show TG:HDL ratio correlates strongly with insulin resistance, small
+  dense LDL, and cardiovascular risk. Cutoffs vary by ethnicity:
+  >3.0 in Caucasian/Mexican-American populations, >2.0 in African-American.
+  Outperforms fasting glucose specifically for metabolic-syndrome detection.
+coaching_translation: |
+  "Your triglyceride-to-HDL ratio tells us more about metabolic health
+  than fasting glucose alone. A practical target is under 2 for women
+  and under 2.8 for men. Ask your clinician for a lipid panel that
+  includes both."
+out_of_scope_notes: |
+  Coach educates on what the ratio means and why it matters; lab ordering
+  and interpretation belong to the clinician.
+caveats:
+  - ethnic variation in cutoffs is significant (Indian / South Asian data thin)
+  - fasting state affects triglyceride values
+linked_to_topics: []
+linked_to_mechanisms:
+  - insulin-resistance
+  - small-dense-ldl
+linked_to_supplements: []
+sources:
+  - id: vitaone-skill-practice-guide
+    location: evidence_tiers.md, Topic 2 Insulin Resistance, claim 4
+version: 1
+status: active
+updated_at: 2026-04-28
+updated_by: shivani

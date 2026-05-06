@@ -1,0 +1,39 @@
+slug: niacin
+display_name: Niacin (Vitamin B3)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 2000
+    unit: mg
+  tablet:
+    min: 500
+    max: 2000
+    unit: mg
+timing_options:
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- dyslipidemia
+linked_to_claims:
+- niacin-raises-hdl-lowers-lpa
+notes_for_coach: Therapeutic niacin for HDL/Lp(a) effects requires clinician supervision
+  and liver enzyme monitoring. Flushing is common; sustained-release forms reduce
+  flushing but may increase hepatotoxicity risk. Outside coaching scope at therapeutic
+  doses.
+notes_for_client: Niacin is a B vitamin that can raise good cholesterol (HDL) and
+  lower a genetic risk factor called Lp(a). It must be used under medical supervision
+  because it can affect the liver.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 5
+  quote: 'Niacin: ↑HDL, ↓Lp(a) (monitor liver enzymes).'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

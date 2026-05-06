@@ -1,0 +1,26 @@
+slug: cognitive-decline
+display_name: Cognitive Decline / Brain Fog
+aliases:
+- brain fog
+- cognitive slowing
+- memory issues
+- mental fog
+category: neurological
+severity: concerning
+description: Reduced cognitive speed or clarity; associated with beta blocker therapy
+  (cognitive slowing) and with AGE-driven neurological damage from hyperglycemia.
+when_to_refer: Refer if progressive or accompanied by other neurological symptoms.
+linked_to_topics:
+- beta-blocker-deprescribing
+- cardiovascular-dysfunction
+linked_to_mechanisms:
+- advanced-glycation-end-products
+sources:
+- id: vitaone-cv-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
+  quote: these drugs are associated with increased rates of depression, fatigue, constipation,
+    erectile dysfunction, and cognitive decline.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

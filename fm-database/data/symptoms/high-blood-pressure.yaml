@@ -1,0 +1,27 @@
+slug: high-blood-pressure
+display_name: High Blood Pressure
+aliases:
+- hypertension
+- elevated blood pressure
+category: cardiovascular
+severity: concerning
+description: Elevated systolic or diastolic blood pressure. Intermittent fasting protocols
+  (especially FMD) and dietary approaches may support blood pressure reduction.
+when_to_refer: Refer for readings consistently above 140/90 mmHg, symptomatic hypertension,
+  or if on antihypertensive medications.
+linked_to_topics:
+- cardiometabolic-health
+- intermittent-fasting
+linked_to_mechanisms:
+- systemic-inflammation
+- oxidative-stress
+sources:
+- id: vitaone-cardiometabolic-toolkit
+  location: Intermittent Fasting — Fasting Mimicking Diet
+  quote: This 5-day, very low-calorie, low carbohydrate, structured food plan has
+    been shown in a limited number of studies to improve body composition and lower
+    blood pressure after three consecutive cycles (3 months).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

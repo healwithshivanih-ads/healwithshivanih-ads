@@ -1,0 +1,30 @@
+slug: nac-glutathione-precursor-detox
+statement: NAC (N-Acetyl Cysteine) replenishes glutathione, supporting Phase II liver
+  detoxification and heavy metal clearance.
+evidence_tier: plausible_emerging
+rationale: Document lists NAC across multiple liver conditions and MTHFR protocols
+  for glutathione support. Glutathione's role as master antioxidant and Phase II cofactor
+  is well-established; the specific clinical applications here are FM-synthesis level.
+coaching_translation: NAC is a building block for glutathione — your body's most powerful
+  detox molecule — supporting liver health and toxin clearance.
+caveats:
+- Dose ranges not specified in document
+- Verify with clinician
+- Source is FM synthesis
+linked_to_topics:
+- liver-detoxification
+- methylation-mthfr
+- heavy-metal-toxicity
+linked_to_supplements:
+- nac
+- glutathione
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet — 6 Ways to Overcome MTHFR
+  quote: Balance Glutathione – NAC, liposomal glutathione, glycine.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

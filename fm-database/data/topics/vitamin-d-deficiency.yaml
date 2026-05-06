@@ -1,0 +1,38 @@
+slug: vitamin-d-deficiency
+display_name: Vitamin D Deficiency
+aliases:
+- low vitamin D
+- hypovitaminosis D
+- vitamin D insufficiency
+summary: Vitamin D is a fat-soluble vitamin naturally found in few foods. It regulates
+  calcium/phosphorus, supports bone health, immune function, and cell growth. Sunlight
+  exposure is a primary source. Current RDAs may be too low for optimal non-skeletal
+  health; supplementation is often required.
+common_symptoms:
+- fatigue
+- bone-pain
+- frequent-illness
+- low-mood
+red_flags:
+- severely low 25-OH-D levels — clinician assessment for supplementation protocol
+  required
+related_topics:
+- fish-and-toxins-safe-food
+- mitochondrial-health-nutrition
+key_mechanisms:
+- calcium-phosphorus-regulation
+coaching_scope_notes: Coaches can encourage dietary sources and sensible sun exposure.
+  Supplementation above RDA requires clinician guidance and lab values.
+clinician_scope_notes: RDA 600 IU/day for adults; optimal blood levels often require
+  higher doses. Sunblock SPF>15 blocks 100% of cutaneous synthesis.
+evidence_tier: strong
+sources:
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Vitamin D'
+  quote: Research indicates that the current RDAs may be too low for supporting optimal,
+    non-skeletal health. Much higher intake may be required to maintain adequate blood
+    levels.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

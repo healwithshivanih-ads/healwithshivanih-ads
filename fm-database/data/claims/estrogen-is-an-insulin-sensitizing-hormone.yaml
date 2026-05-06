@@ -1,0 +1,30 @@
+slug: estrogen-is-an-insulin-sensitizing-hormone
+statement: Estrogen functions as an insulin-sensitizing hormone; its decline during
+  the menopause transition contributes to increased insulin resistance and reduced
+  metabolic health.
+evidence_tier: plausible_emerging
+rationale: The insulin-sensitizing properties of estradiol are supported by mechanistic
+  and observational evidence; however, the direct claim that this is the primary driver
+  of perimenopausal metabolic decline requires nuance. Single-expert source.
+coaching_translation: One reason metabolism often shifts in menopause is that estrogen
+  — which helped keep blood sugar stable — is no longer present in the same amounts.
+caveats:
+- Multiple factors contribute to perimenopausal insulin resistance beyond estrogen
+  decline.
+- Single-expert source.
+linked_to_topics:
+- estrobolome
+- perimenopause
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-3
+  location: Estrogen's Role in the Microbiome
+  quote: Estrogen shapes metabolic signaling because it is an insulin sensitizing
+    hormone... up until we go through perimenopause and menopause, we are generally
+    more insulin sensitive.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

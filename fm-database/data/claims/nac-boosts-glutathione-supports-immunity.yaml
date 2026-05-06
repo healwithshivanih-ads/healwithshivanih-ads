@@ -1,0 +1,30 @@
+slug: nac-boosts-glutathione-supports-immunity
+statement: N-Acetylcysteine (NAC) promotes glutathione production and supports immune
+  function, reducing severity of flu-like illness.
+evidence_tier: plausible_emerging
+rationale: NAC's role as a glutathione precursor is well-established (strong mechanism).
+  Its clinical benefit for flu severity and COVID-19 is plausible and supported by
+  McCarty & DiNicolantonio (Prog Cardiovasc Dis 2020) but lacks large COVID-specific
+  RCTs.
+coaching_translation: NAC is an amino acid that helps your body make glutathione,
+  one of its most important antioxidants, which also supports your immune defenses.
+out_of_scope_notes: Dosing requires clinician supervision. Contraindications exist
+  in some conditions.
+linked_to_topics:
+- immune-support
+- chronic-inflammation
+linked_to_supplements:
+- nac
+caveats:
+- Source is expert consensus. COVID-19 specific evidence was emerging at time of publication.
+- Verify current evidence with clinician.
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: N-acetylcysteine promotes the production of glutathione, a potent antioxidant
+    that supports immune function. It also reduces the severity of the flu.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

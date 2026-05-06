@@ -1,0 +1,48 @@
+slug: glycine
+display_name: Glycine
+category: amino_acid
+forms_available:
+- powder
+- capsule
+- tablet
+typical_dose_range:
+  powder:
+    min: 2000
+    max: 5000
+    unit: mg
+  capsule:
+    min: 3
+    max: 5
+    unit: g
+  tablet:
+    min: 3
+    max: 5
+    unit: g
+timing_options:
+- evening
+- bedtime
+take_with_food: optional
+linked_to_topics:
+- insomnia
+- adrenal-dysfunction
+linked_to_claims:
+- magnesium-supports-cortisol-gaba-sleep
+notes_for_coach: Supports sleep quality and core body temperature drop at night. Also
+  important for collagen and glutathione synthesis. Sweet taste makes it easy to add
+  to evening drinks.
+notes_for_client: Glycine is a calming amino acid that supports restful sleep and
+  helps your body recover overnight.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-practice-guide
+  location: Sleep Optimization > Sleep-supporting supplements
+  quote: Glycine (3-5g)
+- id: vitaone-adrenal-cheatsheet
+  location: Functional Medicine Interventions — Digital Overstimulation (p.16)
+  quote: 'Sleep Optimization: Rebuild circadian recovery. No blue light post-sunset,
+    glycine, magnesium, dark exposure.'
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,27 @@
+slug: sls-causes-oral-lesions-and-inflammation
+statement: Sodium lauryl sulfate (SLS/SLES) in toothpaste can cause chronic oral lesions
+  (canker sores), cracking at the corners of the mouth, tissue irritation, inflammation,
+  and may trigger hypersensitivity to certain metals.
+evidence_tier: plausible_emerging
+rationale: Some clinical evidence supports SLS as a trigger for recurrent aphthous
+  stomatitis; the hypersensitivity claim is FM-specific with thin peer-reviewed support.
+coaching_translation: If you get recurring mouth ulcers or irritation, switching to
+  an SLS-free toothpaste may help.
+caveats:
+- Source is an educational toolkit. SLS-canker sore link has some supporting literature
+  but is not consensus.
+linked_to_topics:
+- oral-toxin-exposure
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-liver-detox-toolkit
+  location: Avoiding Toxins in Oral Health
+  quote: It can cause chronic oral lesions (canker sores), & cracking at the corners
+    of the mouth. It is often very irritating to oral tissues, triggers inflammation,
+    & also has the potential to trigger hypersensitivity to certain metals.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

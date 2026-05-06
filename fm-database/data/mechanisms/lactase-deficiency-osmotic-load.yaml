@@ -1,0 +1,34 @@
+slug: lactase-deficiency-osmotic-load
+display_name: Lactase Deficiency & Osmotic Diarrhea
+aliases:
+- lactose intolerance mechanism
+- lactose malabsorption
+- lactase insufficiency
+category: gut
+summary: Deficient brush-border lactase enzyme results in undigested lactose reaching
+  the colon, where it draws water osmotically and is fermented by bacteria, causing
+  cramping, diarrhea, and bloating. Confirmed by hydrogen breath test.
+upstream_drivers:
+- low lactase expression
+- gut mucosal damage
+- dysbiosis
+downstream_effects:
+- osmotic-diarrhea
+- abdominal-cramping
+- bloating
+related_mechanisms:
+- gut-fermentation-dysbiosis
+linked_to_topics:
+- low-fodmap-diet
+- ibs
+evidence_tier: strong
+sources:
+- id: vitaone-elimination-diet-cheatsheet
+  location: Functional Medicine Table — Understanding FODMAP Mechanisms / Disaccharides
+    row
+  quote: Malabsorbed if lactase deficient → osmotic diarrhea, cramps. Common in dairy;
+    test with hydrogen breath test.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

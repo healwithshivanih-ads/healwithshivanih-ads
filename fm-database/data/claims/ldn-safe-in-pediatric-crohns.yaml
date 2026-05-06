@@ -1,0 +1,26 @@
+slug: ldn-safe-in-pediatric-crohns
+statement: Naltrexone therapy appears safe with limited toxicity when given to children
+  with Crohn's disease and may reduce disease activity.
+evidence_tier: plausible_emerging
+rationale: Cited to Journal of Clinical Gastroenterology, April 2013. Pediatric safety
+  data is encouraging but sample sizes are small.
+coaching_translation: A 2013 study found LDN was well-tolerated in children with Crohn's
+  and may even help reduce disease activity.
+caveats:
+- Pediatric dosing is strictly clinician scope.
+- Small study — needs replication.
+out_of_scope_notes: Pediatric prescribing is clinician scope only.
+linked_to_topics:
+- low-dose-naltrexone
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-ldn-article
+  location: Preliminary Research Abounds for cancer and autoimmune disease
+  quote: In the Journal of Clinical Gastroenterology April 2013, Naltrexone therapy
+    appears safe with limited toxicity when given to children with Crohn's disease
+    and may even reduce disease activity.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

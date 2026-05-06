@@ -1,0 +1,28 @@
+slug: magnesium-supports-comt-estrogen-methylation
+statement: Magnesium glycinate supports the COMT enzyme for estrogen metabolite methylation
+  and reduces PMS-related irritability, cramps, and anxiety.
+evidence_tier: plausible_emerging
+rationale: COMT is a magnesium-dependent methyltransferase; deficiency impairs catecholestrogen
+  methylation. Magnesium's role in COMT function is mechanistically established. PMS
+  reduction by magnesium has some RCT support though studies are heterogeneous.
+coaching_translation: Getting enough magnesium (especially glycinate form) supports
+  the liver enzymes that process estrogen and may ease period-related mood and cramping.
+caveats:
+- Source is expert synthesis
+- Dose 200–400 mg at night; verify with clinician
+linked_to_topics:
+- estrogen-dominance
+- low-progesterone
+linked_to_supplements:
+- magnesium-glycinate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: Top Nutrients to Balance Estrogen
+  quote: Supports COMT enzyme in methylation of estrogen metabolites; reduces PMS
+    and anxiety.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

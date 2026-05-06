@@ -1,0 +1,33 @@
+slug: abdominal-pain
+display_name: Abdominal Pain / Cramping
+aliases:
+- stomach pain
+- belly pain
+- gut pain
+- stomach cramps
+- tummy ache
+category: gi
+severity: common
+description: Pain or cramping in the abdomen, frequently triggered by food-related
+  distension or spasm of the intestinal smooth muscle.
+linked_to_topics:
+- low-dose-naltrexone
+- low-fodmap-diet
+- elimination-diet
+- ibs
+linked_to_mechanisms:
+- colonic-fermentation
+- gut-motility-dysregulation
+when_to_refer: Severe or acute pain, bloody stool, fever, or unintentional weight
+  loss.
+sources:
+- id: vitaone-ldn-article
+  location: LDN potential side effects
+  quote: 'Gastrointestinal: Nausea, Abdominal Pain, Diarrhea, Anorexia'
+- id: vitaone-elimination-diet-toolkit
+  location: Low Fodmap Diet Symptom Tracker — Section 1
+  quote: Abdominal pain / cramping
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,29 @@
+slug: 5r-framework-improves-gut-symptoms
+statement: The 5R program (Remove, Replace, Reinoculate, Repair, Rebalance) can lead
+  to dramatic improvement in GI symptoms and sometimes complete resolution when applied
+  to chronic health issues.
+evidence_tier: fm_specific_thin
+rationale: The 5R framework is widely used in functional medicine with strong clinical
+  rationale but lacks large-scale RCT validation as a complete protocol.
+coaching_translation: A structured approach — removing triggers, restoring digestion,
+  reseeding good bacteria, repairing the gut lining, and rebalancing lifestyle — is
+  the foundation of gut healing.
+caveats:
+- Evidence for the 5R protocol as a whole system is primarily from functional medicine
+  clinical practice. Individual components (e.g., probiotics, fiber) have stronger
+  independent evidence.
+- Source is an expert-consensus toolkit.
+linked_to_topics:
+- gut-dysfunction
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-gut-toolkit
+  location: The 5R Framework for Gut Restoration
+  quote: When applied to various chronic health issues, the 5R program can lead to
+    dramatic improvement in symptoms, and sometimes even complete resolution.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

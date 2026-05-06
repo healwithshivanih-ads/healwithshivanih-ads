@@ -1,0 +1,31 @@
+slug: statins-deplete-multiple-nutrients
+statement: HMG-CoA reductase inhibitors (statins) deplete carnitine, copper, CoQ10,
+  essential fatty acids, selenium, vitamin D, vitamin E, and zinc.
+evidence_tier: plausible_emerging
+rationale: Statin-induced CoQ10 depletion is mechanistically well-explained (shared
+  mevalonate pathway). Depletion of other nutrients is plausible but evidence varies
+  in quality.
+coaching_translation: Clients on statins should discuss nutrient monitoring (especially
+  CoQ10 and vitamin D) with their clinician.
+out_of_scope_notes: Specific supplementation to replace statin-depleted nutrients
+  requires clinician oversight.
+caveats:
+- Source is an educational toolkit. Statin-CoQ10 depletion has strong mechanistic
+  backing; others are plausible emerging.
+linked_to_topics:
+- drug-induced-nutrient-depletion
+- cardiovascular-dysfunction
+linked_to_supplements:
+- coenzyme-q10
+- carnitine
+- vitamin-d
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cv-toolkit
+  location: Cardiovascular Drugs and Potential Nutrient Deficiency
+  quote: 'HMG-CoA Reductase: Carnitine, Copper, CoQ10, Essential Fatty Acids (EFAs),
+    Selenium, Vitamin D, Vitamin E, Zinc'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

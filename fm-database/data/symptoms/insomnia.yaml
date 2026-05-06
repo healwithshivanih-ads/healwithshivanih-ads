@@ -1,0 +1,62 @@
+slug: insomnia
+display_name: Insomnia / Sleep Disruption
+aliases:
+- poor sleep
+- sleep disturbance
+- waking at night
+- can't sleep
+- 3am-wakeups
+- trouble sleeping
+- restless sleep
+- difficulty falling asleep
+- difficulty sleeping
+- wakefulness
+- trouble falling asleep
+- trouble staying asleep
+- wired at bedtime
+category: sleep
+severity: common
+description: Difficulty initiating or maintaining sleep, associated with elevated
+  cortisol in the evening disrupting the natural cortisol decline needed for sleep
+  onset.
+when_to_refer: If persistent despite lifestyle interventions; rule out sleep apnea
+  or psychiatric conditions.
+linked_to_topics:
+- low-progesterone
+- perimenopause
+- low-dose-naltrexone
+- vitamin-b-complex-deficiency
+- nutrient-deficiency-depression
+- medicine-nutrient-interactions
+- hyperthyroidism
+- hpa-axis-dysregulation
+- hypercortisolism
+- chronic-stress
+linked_to_mechanisms:
+- low-progesterone
+- hpa-axis-dysregulation
+- neurotransmitter-synthesis-impairment
+- hpt-axis-dysregulation
+- cortisol-excess
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: How to Balance Progesterone Hormone
+  quote: Progesterone = calming hormone; poor sleep lowers luteal production.
+- id: vitaone-ldn-article
+  location: LDN potential side effects
+  quote: 'Central Nervous System: Anxiety, Drowsiness, Headache, Insomnia, Vivid Dreams,
+    Mood Change, Trouble Concentration'
+- id: vitaone-nutrition-cheatsheet
+  location: Magnesium – The Calming Mineral
+  quote: Supports GABA and serotonin pathways → improves sleep and reduces anxiety.
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 6: Causes of Thyroid Disorders'
+  quote: The thyroid follows a circadian rhythm, with TSH peaking at night. Poor or
+    irregular sleep disrupts this rhythm, leading to blunted or abnormal TSH secretion.
+- id: vitaone-adrenal-toolkit
+  location: 'HPA Axis Questionnaire — Section 2: Elevated cortisol state'
+  quote: Trouble falling or staying asleep
+version: 5
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

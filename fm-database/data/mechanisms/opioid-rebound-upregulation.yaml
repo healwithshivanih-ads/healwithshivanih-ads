@@ -1,0 +1,38 @@
+slug: opioid-rebound-upregulation
+display_name: Opioid Receptor Rebound Upregulation
+aliases:
+- endorphin rebound
+- OGF receptor rebound
+- compensatory opioid elevation
+category: neurological
+summary: 'LDN blocks opioid receptors (including OGF receptors) for 4–6 hours daily.
+  Cells sensing opioid deficiency respond via positive feedback: endorphin production
+  increases, receptor density and sensitivity increase, creating an 18–20 hour window
+  of elevated endogenous opioid activity that inhibits cell proliferation and modulates
+  immune function.'
+upstream_drivers:
+- low-dose-naltrexone-administration
+downstream_effects:
+- increased-endorphin-production
+- immune-modulation
+- inhibition-of-cell-proliferation
+- improved-sense-of-wellbeing
+- pain-reduction
+related_mechanisms:
+- tlr4-microglial-inhibition
+- endorphin-immune-modulation
+linked_to_topics:
+- low-dose-naltrexone
+- autoimmune-thyroiditis
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-ldn-article
+  location: So, how does LDN work?
+  quote: 'Interference of opioid peptide–opioid receptor interactions for a short
+    time each day (from 4-6 hours) with LDN provided a subsequent window of time (18–20
+    hours) for the increased levels of endogenous opioids and opioid receptors to
+    elicit a robust functional response: the inhibition of cell proliferation.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

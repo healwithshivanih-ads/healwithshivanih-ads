@@ -1,0 +1,48 @@
+slug: gaba-a-receptor-modulation
+display_name: GABA-Glutamate Imbalance
+aliases:
+- gabaergic-tone
+- allopregnanolone-signaling
+- GABA deficiency
+- excitatory dominance
+- glutamate excess
+category: neurological
+summary: Chronic stress and digital overstimulation tip the excitatory/inhibitory
+  balance toward glutamate dominance (excitatory), reducing GABAergic tone and manifesting
+  as anxiety, insomnia, and restlessness.
+upstream_drivers:
+- progesterone (via allopregnanolone)
+- magnesium status
+- L-theanine, glycine intake
+- taurine
+- chronic-stress
+- digital-overstimulation
+- magnesium-deficiency
+downstream_effects:
+- sleep onset latency
+- anxiety / arousal regulation
+- parasympathetic tone
+- seizure threshold
+- anxiety
+- insomnia
+- restlessness
+- racing-thoughts
+related_mechanisms:
+- low-progesterone
+- hpa-axis-dysregulation
+linked_to_topics:
+- anxiety
+- insomnia
+- perimenopause
+sources:
+- id: vitaone-skill-practice-guide
+  location: practice_guide.md, Sleep & Nervous System sections
+- id: vitaone-adrenal-cheatsheet
+  location: The Biochemical-Emotional Link (p.15)
+  quote: 'GABA-Glutamate Balance: Excitatory dominance → Restlessness, racing thoughts,
+    insomnia.'
+evidence_tier: plausible_emerging
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

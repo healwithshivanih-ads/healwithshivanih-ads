@@ -1,0 +1,24 @@
+slug: craving-sweets
+display_name: Sugar / Sweet Cravings
+aliases:
+- craving sweets
+- sugar cravings
+- carb cravings
+category: metabolic
+severity: common
+description: Intense craving for sweet foods, associated with elevated cortisol states
+  and blood sugar dysregulation.
+linked_to_topics:
+- hpa-axis-dysregulation
+- hypercortisolism
+linked_to_mechanisms:
+- cortisol-excess
+when_to_refer: ''
+sources:
+- id: vitaone-adrenal-toolkit
+  location: 'HPA Axis Questionnaire — Section 2: Elevated cortisol state'
+  quote: Craving sweets
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

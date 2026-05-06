@@ -1,0 +1,28 @@
+slug: scfa-production-supports-brain-gut-health
+statement: A high-fiber diet promotes diverse gut bacteria that produce SCFAs, which
+  reduce inflammation, support brain health, and are linked to improved mood and lower
+  risk of depression.
+evidence_tier: plausible_emerging
+rationale: SCFA production from fiber fermentation is well-established. Links between
+  SCFAs, gut barrier integrity, and brain health are supported by animal and emerging
+  human studies.
+coaching_translation: Eating more fruits, vegetables, legumes, and whole grains feeds
+  your gut bacteria to produce compounds that protect your brain and support a positive
+  mood.
+linked_to_topics:
+- gut-brain-axis
+- gut-microbiome
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-gut-toolkit
+  location: 'Gut-Brain Axis: Nutrition''s Impact on Mental Health — Fiber-Rich Foods'
+  quote: A high-fiber diet promotes the growth of diverse gut bacteria, which produce
+    short-chain fatty acids (SCFAs) that support brain health by reducing inflammation
+    and promoting a healthy brain-gut connection.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

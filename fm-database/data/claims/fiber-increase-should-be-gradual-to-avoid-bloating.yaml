@@ -1,0 +1,28 @@
+slug: fiber-increase-should-be-gradual-to-avoid-bloating
+statement: Fiber intake should be increased gradually in 2–5 g increments to minimize
+  GI side effects such as bloating and gas; bloating is most often caused by too much
+  fiber too quickly or the wrong type, not an inherent intolerance.
+evidence_tier: plausible_emerging
+rationale: Speaker gives specific clinical guidance on incremental increases. Consistent
+  with standard dietary practice. No RCT cited; single-expert source.
+coaching_translation: 'If a client says fiber makes them bloat, reassure them: it''s
+  almost always about quantity or type, not a permanent intolerance. Help them start
+  small — 2 to 5 grams more per day — and build slowly.'
+caveats:
+- Specific increment (2–5 g) is speaker's clinical heuristic, not from a cited study.
+linked_to_topics:
+- fiber-gap
+- microbiome
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-7
+  location: How to increase fiber section [00:18:20]
+  quote: I have three to five grams at a time. I might even say two to five grams
+    at a time... it's less about that that particular food doesn't agree with you,
+    and more about very likely quantity.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

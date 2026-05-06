@@ -1,0 +1,31 @@
+slug: chronic-cortisol-elevation-drives-insulin-resistance
+statement: Chronic cortisol elevation increases gluconeogenesis and drives insulin
+  resistance, underpinning type 2 diabetes and metabolic syndrome.
+evidence_tier: plausible_emerging
+rationale: Well-established physiological mechanism; however this document is an educational
+  synthesis without primary study citations.
+coaching_translation: Chronic stress keeps blood sugar elevated even without dietary
+  changes — managing stress is as important as eating well for blood sugar balance.
+caveats:
+- Source is an educational cheatsheet, not primary literature. No specific RCT cited.
+- Verify with clinician for individual glucose management.
+linked_to_topics:
+- adrenal-dysfunction
+- pcos
+- inflammation
+linked_to_supplements:
+- magnesium-glycinate
+- chromium
+- berberine
+- fish-oil-omega-3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-adrenal-cheatsheet
+  location: Stress & Chronic Diseases Link (p.9)
+  quote: Chronic cortisol elevation →↑ gluconeogenesis, insulin resistance. HPA axis
+    overdrive, sympathetic dominance, inflammatory cytokines.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

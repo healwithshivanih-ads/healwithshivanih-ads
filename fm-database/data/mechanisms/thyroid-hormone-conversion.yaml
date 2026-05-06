@@ -1,0 +1,52 @@
+slug: thyroid-hormone-conversion
+display_name: T4 to T3 / Reverse T3 Conversion
+aliases:
+- T4 to T3 conversion
+- deiodinase activity
+- selenium-dependent thyroid activation
+- T4-T3 conversion
+- reverse T3 dominance
+category: endocrine
+summary: T4 (thyroxine) is converted peripherally to active T3 or inactive reverse
+  T3 (RT3). Selenium and zinc promote T4-to-T3 conversion. Stress, inflammation, toxins,
+  low-calorie diets, infections, and liver/kidney dysfunction shift conversion toward
+  RT3. RT3 and T3 compete for cellular binding sites.
+upstream_drivers:
+- selenium-deficiency
+- iodine-deficiency
+- autoimmune-thyroid-disease
+- stress
+- inflammation
+- zinc-deficiency
+- liver-dysfunction
+- low-calorie-diet
+- infections
+- environmental-toxins
+downstream_effects:
+- hypothyroid-symptoms
+- fatigue
+- hair-loss
+- weight-gain
+- hypothyroid-symptoms-despite-normal-tsh
+- cellular-hypothyroidism
+related_mechanisms:
+- hpa-axis-dysregulation
+- autoimmune-thyroid-attack
+linked_to_topics:
+- hairfall
+- hypothyroidism
+- hashimotos-hypothyroidism
+evidence_tier: strong
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Selenium – The Antioxidant & Thyroid Cofactor
+  quote: Converts T4 → T3, critical for thyroid health.
+- id: vitaone-thyroid-toolkit
+  location: Factors that Affect Thyroid Function
+  quote: 'Factors that increase conversion of T4 to RT3: Stress, Trauma, Low-calorie
+    diet, Inflammation (cytokines, etc.), Toxins, Infections, Liver/kidney dysfunction,
+    Certain medications. Factors that increase conversion of T4 to T3: Selenium, Zinc.'
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

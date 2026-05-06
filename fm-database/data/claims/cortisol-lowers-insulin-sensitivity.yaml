@@ -1,0 +1,24 @@
+slug: cortisol-lowers-insulin-sensitivity
+statement: Chronic cortisol elevation lowers insulin sensitivity and increases susceptibility
+  to type 2 diabetes.
+evidence_tier: strong
+rationale: 'Well-established mechanism: glucocorticoids promote gluconeogenesis and
+  antagonize insulin signaling. Supported by endocrinology textbook references in
+  the source document.'
+coaching_translation: High stress = high cortisol = higher blood sugar and more insulin
+  resistance over time. Managing stress is part of blood sugar management.
+linked_to_topics:
+- hypercortisolism
+- hpa-axis-dysregulation
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-adrenal-toolkit
+  location: Hypercortisolism
+  quote: Lowered insulin sensitivity, with a higher susceptibility to diabetes
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,34 @@
+slug: fiber-intake-of-25-30g-daily-is-recommended-target
+statement: Research suggests 25–30 grams of dietary fiber per day as the optimal intake
+  target, though individual tolerance varies widely (some tolerate as little as 10
+  g, others up to 50 g), requiring slow, gradual increases.
+evidence_tier: plausible_emerging
+rationale: The 25–30 g/day fiber target is consistent with major dietary guidelines
+  and epidemiological evidence. Individual variability in tolerance is well-recognized.
+  Rated plausible_emerging because the source is expert-consensus, and optimal targets
+  specifically for perimenopausal women via microbiome outcomes have less specific
+  RCT support.
+coaching_translation: Aim to work toward 25–30 grams of fiber a day, but go slowly
+  — increase by only a few grams per week. Your gut bacteria need time to adapt, and
+  jumping up too fast can cause significant bloating and discomfort.
+caveats:
+- Individual tolerances vary widely; bio-individual approach is necessary.
+- Rapid fiber increases can cause GI distress.
+linked_to_topics:
+- microbiome
+- midlife-weight-gain
+- insulin-resistance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-4
+  location: Session 4 — Factors Impacting the Metabolic Microbiome / Fiber
+  quote: The research suggests anywhere from 25 to 30 grams what we should be ideally
+    shooting for. I have patients that don't tolerate more than 10 and I have others
+    that tolerate 50. It is a very bio-individual and you have to slowly increase
+    your intake.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

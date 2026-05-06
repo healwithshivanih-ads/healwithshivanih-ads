@@ -1,0 +1,26 @@
+slug: sibo-causes-nutrient-deficiencies
+statement: SIBO leads to nutrient deficiencies including B12, iron, and fat-soluble
+  vitamins due to malabsorption in the small intestine.
+evidence_tier: plausible_emerging
+rationale: Bacterial overgrowth in the small intestine competes for and consumes B12
+  and damages absorptive surfaces. Clinically well-established mechanism, though citation
+  not provided.
+coaching_translation: If your client has SIBO, they may also have low B12, iron, or
+  vitamin D — worth flagging for clinician testing.
+caveats:
+- Source is an educational cheatsheet — no specific RCT cited. Verify micronutrient
+  status with clinician labs.
+linked_to_topics:
+- sibo
+linked_to_supplements:
+- methylcobalamin-b12
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-cheatsheet
+  location: SIBO Cheatsheet — Why It Matters
+  quote: Leads to nutrient deficiencies (B12, iron, fat-soluble vitamins).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,28 @@
+slug: omega-3-ratio-4-to-1-reduces-inflammation
+statement: An omega-6 to omega-3 dietary ratio of 4:1 or lower may reduce inflammation
+  and lower the risk of chronic disease.
+evidence_tier: plausible_emerging
+rationale: Supported by Simopoulos' widely cited work on EFA ratios; the document
+  acknowledges 'some research suggests' — indicating emerging rather than consensus
+  evidence.
+coaching_translation: Modern diets tend to have way too much omega-6 (from vegetable
+  oils) relative to omega-3. Increasing fatty fish, walnuts, chia, and flaxseeds while
+  reducing processed seed oils can help rebalance this.
+caveats:
+- Optimal ratio is debated; the dietary AI for omega-3 remains low (1.1–1.6 g/day
+  ALA).
+linked_to_topics:
+- essential-fatty-acids
+linked_to_supplements:
+- fish-oil-omega-3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Essential Fatty Acids'
+  quote: Some research suggests that ratios 4:1 and lower may reduce inflammation
+    and lower the risk of chronic disease.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

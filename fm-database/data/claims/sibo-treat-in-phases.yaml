@@ -1,0 +1,24 @@
+slug: sibo-treat-in-phases
+statement: 'SIBO should be treated in four phases: Eradication → Motility Support
+  → Gut Repair → Reintroduction, not stopped at antimicrobials alone.'
+evidence_tier: fm_specific_thin
+rationale: Four-phase approach is FM clinical consensus. Relapse rates are high without
+  addressing motility and gut repair. Not validated by a specific RCT in this document.
+coaching_translation: Treating SIBO isn't just about killing bacteria — you also need
+  to restore gut movement, repair the lining, and gradually reintroduce foods.
+caveats:
+- FM clinical consensus protocol — not validated by a specific RCT. Antimicrobial
+  phase requires clinician oversight.
+linked_to_topics:
+- sibo
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Gut Health Cheatsheet — SIBO
+  quote: 'Treat in phases: Kill → Motility → Restore. Don''t stop at antimicrobials.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

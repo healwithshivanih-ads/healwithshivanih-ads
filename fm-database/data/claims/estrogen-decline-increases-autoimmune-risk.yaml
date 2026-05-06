@@ -1,0 +1,31 @@
+slug: estrogen-decline-increases-autoimmune-risk
+statement: Declining estrogen in perimenopause and menopause significantly increases
+  susceptibility to autoimmune conditions, with women being four to five times more
+  likely to be diagnosed.
+evidence_tier: plausible_emerging
+rationale: Estrogen's immunomodulatory role is recognized in the literature; elevated
+  female autoimmune prevalence is well-documented. The 4–5x figure is cited without
+  a primary source in this document. Single expert source.
+coaching_translation: The hormonal changes of midlife aren't just about hot flashes
+  — they can shift your immune system in ways that raise your risk for conditions
+  like Hashimoto's and rheumatoid arthritis.
+caveats:
+- 4–5x statistic not sourced to a specific study; verify with clinician.
+- Prevalence differences between sexes are real but multifactorial beyond estrogen
+  alone.
+linked_to_topics:
+- autoimmune
+- inflammaging
+- gut-hormone-axis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-8
+  location: Session 8 — immune shift segment
+  quote: We are more prone to autoimmune conditions. We know we're four to five times
+    more likely to be diagnosed.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

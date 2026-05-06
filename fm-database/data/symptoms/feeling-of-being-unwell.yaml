@@ -1,0 +1,22 @@
+slug: feeling-of-being-unwell
+display_name: General Feeling of Being Unwell
+aliases:
+- malaise
+- feeling off
+- not feeling right
+category: constitutional
+severity: common
+description: Non-specific sense of unwellness; a listed withdrawal symptom during
+  beta blocker tapering.
+linked_to_topics:
+- beta-blocker-deprescribing
+linked_to_mechanisms: []
+when_to_refer: ''
+sources:
+- id: vitaone-cv-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
+  quote: Feeling of being unwell
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

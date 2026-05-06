@@ -1,0 +1,32 @@
+slug: phase2-conjugation
+display_name: Phase II Conjugation (Liver Detox)
+aliases:
+- phase 2 detox
+- conjugation pathways
+- biotransformation
+category: metabolic
+summary: 'Phase II involves conjugation reactions (sulfation, glucuronidation, glutathione
+  conjugation, acetylation, amino acid conjugation, methylation) that attach polar
+  groups to Phase I intermediates, rendering them water-soluble for excretion via
+  bile/feces, kidneys/urine, or serum. Key nutrients: glycine, taurine, glutamine,
+  NAC, cysteine, methionine.'
+upstream_drivers:
+- cytochrome-p450-phase1
+downstream_effects:
+- toxin-excretion-via-stool
+- toxin-excretion-via-urine
+related_mechanisms:
+- cytochrome-p450-phase1
+- methylation
+linked_to_topics:
+- liver-detoxification
+evidence_tier: strong
+sources:
+- id: vitaone-liver-detox-toolkit
+  location: Features of the Detox Food Plan
+  quote: Imbalances between phase I & phase II detoxification can cause accumulation
+    or overproduction of toxic intermediate metabolites.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

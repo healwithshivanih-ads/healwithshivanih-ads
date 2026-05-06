@@ -1,0 +1,32 @@
+slug: gluten-free-diet-reduces-thyroid-antibodies-in-hashimotos
+statement: A gluten-free diet reduces thyroid antibodies (TPO, TgAb) in people with
+  Hashimoto's thyroiditis who do not have coeliac disease.
+evidence_tier: fm_specific_thin
+rationale: Meta-analyses show non-significant trends toward reduced antibodies (TgAb
+  effect size -0.39, TPOAb -0.40; both p > 0.05 across pooled studies). Evidence is
+  much stronger for patients with coexisting celiac disease or NCGS, where Hashimoto's-celiac
+  co-prevalence is 3–4×. Some individual RCTs show benefit, others show benefit in
+  the control group.
+coaching_translation: For most people with Hashimoto's, the research on gluten-free
+  diets is mixed. If gut symptoms, strong family autoimmune history, or unscreened
+  celiac risk are present, a 6-week strict gluten elimination is a low-risk personal
+  experiment worth considering after a clinician conversation.
+caveats:
+- Evidence is much stronger for those with coexisting celiac or NCGS.
+- Pooled meta-analysis results are non-significant for non-celiac Hashimoto's.
+- Do not prescribe gluten-free universally for all Hashimoto's patients.
+linked_to_topics:
+- thyroid
+- autoimmune
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-evidence-tiers
+  location: TOPIC 1 — Thyroid / Claims & Tiers / Claim 5
+  quote: Meta-analyses show non-significant trends toward reduced antibodies (TgAb
+    effect size -0.39, TPOAb -0.40; both p > 0.05 across pooled studies).
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

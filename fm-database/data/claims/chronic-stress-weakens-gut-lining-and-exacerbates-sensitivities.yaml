@@ -1,0 +1,33 @@
+slug: chronic-stress-weakens-gut-lining-and-exacerbates-sensitivities
+statement: Chronic stress elevates cortisol, which weakens the gut lining, lowers
+  immune response, and impairs digestive motility — compounding food sensitivity risk.
+evidence_tier: plausible_emerging
+rationale: The HPA-axis/gut-barrier relationship is a well-supported area of psychoneuroimmunology.
+  Speaker correctly identifies cortisol as catabolic and gut-barrier-disrupting. Consensus
+  is growing but RCT evidence specifically linking chronic cortisol to food sensitivity
+  onset is limited.
+coaching_translation: Chronic stress is not just a mental health issue — it directly
+  harms the gut lining and weakens digestion, making food sensitivities more likely.
+  Stress reduction is a genuine gut health tool.
+caveats:
+- Single-expert source.
+- Direct causal link between cortisol and food sensitivity development requires more
+  RCT support.
+linked_to_topics:
+- food-sensitivities
+- leaky-gut
+- inflammation
+- microbiome
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-2
+  location: Stress and food sensitivities
+  quote: So if over time we're dealing with chronic stress, that can break down muscle.
+    So it's catabolic. It can lower our immune response. So it may is more likely
+    to get opportunistic infections and it can also weaken the gut lining.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

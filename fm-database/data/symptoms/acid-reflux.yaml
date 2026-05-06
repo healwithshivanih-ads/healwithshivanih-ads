@@ -1,0 +1,30 @@
+slug: acid-reflux
+display_name: Acid Reflux / GERD
+aliases:
+- reflux
+- GERD
+- acid indigestion
+- burning in chest after eating
+category: gi
+severity: common
+description: Retrograde flow of gastric acid into the oesophagus, aggravated by FODMAP-related
+  fermentation-driven intra-abdominal pressure increases and fructose malabsorption
+  in SIBO.
+when_to_refer: Refer if frequent (>2×/week), not responding to dietary change, or
+  associated with dysphagia or weight loss.
+linked_to_topics:
+- low-fodmap-diet
+- ibs
+- sibo
+linked_to_mechanisms:
+- gut-fermentation-dysbiosis
+- fructose-malabsorption
+sources:
+- id: vitaone-elimination-diet-cheatsheet
+  location: LOW FODMAP FRUITS — Practitioner Insight
+  quote: High-fructose fruits worsen fructose malabsorption with SIBO, causing bloating
+    & acid reflux.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

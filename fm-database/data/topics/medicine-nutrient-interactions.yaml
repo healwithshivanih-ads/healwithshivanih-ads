@@ -1,0 +1,38 @@
+slug: medicine-nutrient-interactions
+display_name: Drug-Nutrient Interactions
+aliases:
+- medication-nutrient depletion
+- drug-induced nutrient deficiency
+summary: Many commonly prescribed medications deplete key nutrients. Statins deplete
+  CoQ10 and vitamin D; metformin depletes B12 and folate; PPIs impair absorption of
+  magnesium, calcium, iron, B12, and zinc; oral contraceptives deplete B6, B12, folate,
+  magnesium, and zinc. Awareness and proactive repletion can prevent secondary deficiencies.
+common_symptoms:
+- fatigue
+- muscle-pain
+- neuropathy
+- brain-fog
+- mood-disturbances
+red_flags:
+- warfarin + fish oil + aspirin combination — bleeding risk
+- chemotherapy antioxidant interaction — refer to oncologist
+key_mechanisms:
+- nutrient-depletion-by-drugs
+- mitochondrial-dysfunction
+related_topics:
+- vitamin-b-complex-deficiency
+- magnesium-deficiency
+coaching_scope_notes: Coaches should be aware of common drug-nutrient depletions to
+  support dietary compensations. All supplementation alongside medications must be
+  discussed with the prescribing clinician.
+clinician_scope_notes: Prescribers should routinely assess nutrient status in patients
+  on long-term statins, metformin, PPIs, OCPs, diuretics, anticonvulsants, and corticosteroids.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Medicine-Nutrient Interactions Cheatsheet
+  quote: Clinician-focused For Function Medicine Doctors, Nutritionist & Health Coaches.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

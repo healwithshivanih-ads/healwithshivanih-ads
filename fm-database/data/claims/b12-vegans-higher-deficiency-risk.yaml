@@ -1,0 +1,28 @@
+slug: b12-vegans-higher-deficiency-risk
+statement: Strict vegetarians and vegans are at higher risk for vitamin B12 deficiency
+  due to avoidance of animal foods; those with celiac disease, Crohn's, low stomach
+  acid, or on PPIs/Metformin are also at elevated risk.
+evidence_tier: strong
+rationale: Established nutritional science; cited by NIH ODS reference in document.
+  B12 is found almost exclusively in animal-derived foods.
+coaching_translation: If you follow a plant-based diet or take acid-blocking medications,
+  your B12 status should be checked regularly. B12 deficiency can develop slowly and
+  affect brain and nerve health.
+caveats:
+- Lab testing required to confirm deficiency before supplementation is indicated.
+out_of_scope_notes: Diagnosing B12 deficiency and selecting therapeutic dosing is
+  out of coaching scope.
+linked_to_topics:
+- vitamin-b12-deficiency
+linked_to_supplements:
+- vitamin-b12
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Vitamin B12'
+  quote: Strict vegetarians and vegans are at higher risk for vitamin B12 deficiency
+    because of the avoidance of animal foods.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

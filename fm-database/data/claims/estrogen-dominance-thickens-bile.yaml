@@ -1,0 +1,29 @@
+slug: estrogen-dominance-thickens-bile
+statement: Estrogen dominance thickens bile, increasing the risk of sludge and poor
+  bile flow, creating a bidirectional relationship between hormonal imbalance and
+  gut dysfunction.
+evidence_tier: plausible_emerging
+rationale: Estrogen's effect on bile composition and gallstone risk is supported in
+  pharmacological literature (oral contraceptive studies). The direct causal loop
+  to sluggish bile flow in the FM context is a synthesis-level claim.
+coaching_translation: Hormone imbalances and gut issues are often connected — supporting
+  bile flow can help the body clear excess estrogen more effectively.
+caveats:
+- Source is educational synthesis. Estrogen-bile relationship has some literature
+  support but the full FM framing is plausible emerging.
+linked_to_topics:
+- sluggish-bile-flow
+- candida-overgrowth
+linked_to_supplements:
+- tudca
+- milk-thistle
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Sluggish Bile Flow — Root Causes
+  quote: Estrogen Dominance — Estrogen thickens bile — Poor flow + sludge risk
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

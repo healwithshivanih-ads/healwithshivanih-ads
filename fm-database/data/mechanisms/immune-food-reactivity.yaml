@@ -1,0 +1,36 @@
+slug: immune-food-reactivity
+display_name: Immune-Mediated Food Reactivity
+aliases:
+- food intolerance immune response
+- non-IgE food reaction
+category: immune
+summary: Non-IgE-mediated immune activation triggered by specific food antigens (gluten,
+  nightshade alkaloids, salicylates, histamine), producing inflammatory cytokines
+  and contributing to GI and systemic symptoms.
+upstream_drivers:
+- gut-barrier-dysfunction
+- dysbiosis
+- genetic-predisposition
+downstream_effects:
+- gi-inflammation
+- skin-reactions
+- neurological-symptoms
+- joint-pain
+related_mechanisms:
+- gut-barrier-dysfunction
+- mast-cell-degranulation
+linked_to_topics:
+- elimination-diet
+- nightshade-sensitivity
+- histamine-intolerance
+- salicylate-sensitivity
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: Nightshade Food Triggers
+  quote: The edible plants can cause adverse food reactions, inflammation, and other
+    health concerns in a small number of individuals.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

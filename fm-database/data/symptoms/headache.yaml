@@ -1,0 +1,44 @@
+slug: headache
+display_name: Headache / Migraine
+aliases:
+- tension headache
+- stress headache
+- migraines
+- head pain
+- toxic headache
+- migraine
+- head pressure
+category: neurological
+severity: common
+description: Head pain ranging from tension-type to migraine; during elimination diets
+  can be triggered by electrolyte drop, low carbohydrate intake, histamine from foods,
+  or withdrawal from caffeine/sugar.
+linked_to_topics:
+- chronic-stress
+- toxic-body-burden
+- elimination-diet
+- histamine-intolerance
+- gut-brain-axis
+linked_to_mechanisms:
+- sympathetic-nervous-system-activation
+- oxidative-stress
+- diamine-oxidase-deficiency
+- vagal-tone-dysregulation
+when_to_refer: Thunderclap headache, new neurological deficit, or first severe headache
+  — rule out serious pathology.
+sources:
+- id: vitaone-adrenal-toolkit
+  location: Effects of Chronic Stress — Musculoskeletal
+  quote: Tension in neck, Headaches/migraines
+- id: vitaone-liver-detox-toolkit
+  location: Detox Food Plan — Body Burden
+  quote: Medical researchers are recognizing more symptoms related to the buildup
+    of toxins, including... headaches.
+- id: vitaone-elimination-diet-toolkit
+  location: FODMAP Plan SOS Solutions — Migraine/Headache
+  quote: If migraines worsen — check for histamine reactions from fermented foods,
+    tomatoes, citrus, leftover foods.
+version: 3
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

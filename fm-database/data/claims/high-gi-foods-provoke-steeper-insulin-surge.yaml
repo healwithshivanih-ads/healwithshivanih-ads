@@ -1,0 +1,25 @@
+slug: high-gi-foods-provoke-steeper-insulin-surge
+statement: High-GI foods provoke a steeper insulin surge and provide lower satiety
+  compared with low-GI foods.
+evidence_tier: strong
+rationale: Extensively documented in GI/GL research; high-GI foods rapidly raise blood
+  glucose, triggering larger insulin responses. Satiety research also well-established.
+coaching_translation: Foods like white bread and sugary drinks spike your blood sugar
+  fast, which triggers a big insulin response and leaves you hungry again sooner.
+linked_to_topics:
+- blood-sugar-dysfunction
+- insulin-resistance
+caveats:
+- Source is FM synthesis; GI research is well-established but individual glycaemic
+  responses vary.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 1.4 — Whole vs Refined Carbohydrates
+  quote: High-GI foods provoke a steeper insulin surge and provide lower satiety.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

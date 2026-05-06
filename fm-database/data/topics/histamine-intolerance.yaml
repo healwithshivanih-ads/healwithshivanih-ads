@@ -1,0 +1,38 @@
+slug: histamine-intolerance
+display_name: Histamine Intolerance
+aliases:
+- histamine sensitivity
+- biogenic amine intolerance
+summary: A condition in which histamine from food (or released/blocking diamine oxidase)
+  exceeds the body's capacity to degrade it, causing multi-system symptoms including
+  skin flushing, headaches, GI upset, and cardiovascular changes.
+common_symptoms:
+- skin-flushing
+- hives
+- headache
+- bloating
+- diarrhea
+- runny-nose
+- menstrual-pain
+red_flags:
+- anaphylaxis-like reactions (true allergy must be excluded)
+related_topics:
+- elimination-diet
+- ibs
+- mast-cell-activation
+key_mechanisms:
+- diamine-oxidase-deficiency
+- mast-cell-degranulation
+coaching_scope_notes: Coaches can support a low-histamine food plan and freshness
+  strategies. Suspected mastocytosis or anaphylaxis requires urgent clinician referral.
+evidence_tier: plausible_emerging
+clinician_scope_notes: ''
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: Histamine Food Triggers
+  quote: Histamine plays many roles within the body. One of its most familiar roles
+    is triggering allergic type reactions (e.g., runny nose, itching, hives).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,31 @@
+slug: chronic-inflammation-drives-multiple-chronic-diseases
+statement: Chronic inflammation is a major underlying driver of insulin resistance,
+  autoimmune conditions, depression/brain fog, leaky gut, hormonal imbalances, and
+  cardiovascular disease.
+evidence_tier: strong
+rationale: Well-established across multiple peer-reviewed bodies of literature. Chronic
+  low-grade inflammation is a convergent mechanism for most non-communicable chronic
+  diseases.
+coaching_translation: Most of your clients' chronic symptoms — fatigue, brain fog,
+  joint pain, gut issues — likely share inflammation as a root driver. Addressing
+  it through diet, sleep, and stress is foundational.
+caveats:
+- Source is an educational cheatsheet without primary citations; the claim itself
+  is well-supported in peer-reviewed literature.
+linked_to_topics:
+- chronic-inflammation
+- autoimmune-disease
+- leaky-gut
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Inflammation Cheatsheet — Page 02
+  quote: 'Chronic inflammation contributes to: Insulin resistance, Autoimmune conditions,
+    Depression and brain fog, Gut issues and leaky gut, Hormonal imbalances, Cardiovascular
+    disease.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,37 @@
+slug: caprylic-acid
+display_name: Caprylic Acid
+category: fatty_acid
+forms_available:
+- capsule
+- liquid
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 1000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- candida-overgrowth
+- gut-dysbiosis
+linked_to_claims:
+- berberine-antimicrobial-blood-sugar
+notes_for_coach: Derived from coconut oil. Disrupts yeast cell walls — potent antifungal.
+  Rotate with oregano and berberine every 2-3 weeks to avoid resistance. Take with
+  meals.
+notes_for_client: Caprylic acid is a natural antifungal fat derived from coconut oil
+  that disrupts the cell walls of Candida and other yeast organisms.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Candida Infection — Supplement Stack
+  quote: Caprylic Acid (from Coconut oil) 500-1000 mg, 2–3x/day with meals — Potent
+    antifungal; disrupts yeast cell walls
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

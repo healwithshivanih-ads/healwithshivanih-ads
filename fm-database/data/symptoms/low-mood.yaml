@@ -1,0 +1,56 @@
+slug: low-mood
+display_name: Low Mood / Depressive Symptoms
+aliases:
+- sadness
+- feeling down
+- apathy
+- emotional flatness
+- low motivation
+- mood changes
+- low affect
+- joylessness
+- depressed mood
+- melancholy
+category: mood
+severity: common
+description: Persistent low mood, sadness, or depressive symptoms. Linked to B12/folate
+  deficiency (especially with MTHFR variants), magnesium insufficiency, CoQ10 depletion,
+  and vitamin C depletion.
+when_to_refer: Refer if meeting criteria for clinical depression, suicidal ideation,
+  or if symptoms do not improve with nutritional optimization.
+linked_to_topics:
+- nutrient-deficiency-depression
+- gratitude-practice
+- self-care
+- vitamin-b12-deficiency
+- folate-deficiency
+- magnesium-insufficiency
+- mitochondrial-health-nutrition
+linked_to_mechanisms:
+- neurotransmitter-synthesis-impairment
+- methylation-cycle-dysfunction
+- neuroinflammation
+- parasympathetic-activation
+- homocysteine-metabolism
+- methylation-cycle
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: How Nutrient Deficiencies (B12, Folate, Omega-3, Magnesium) Mimic Depression
+  quote: '- Fatigue, apathy, brain fog
+
+    - Low motivation, sadness
+
+    - Cognitive decline mistaken as "depression"'
+- id: vitaone-health-coaching-toolkit
+  location: Practicing Gratitude with the IFM Gratitude Journal
+  quote: These benefits include decreased stress levels, lowered blood pressure, better
+    sleep quality, stronger immune systems, and increased feelings of joy, happiness,
+    forgiveness, and compassion.
+- id: vitaone-nutrition-toolkit
+  location: Nutrients for Mitochondrial Health
+  quote: Restoring the body's magnesium can have a protective role in heart health,
+    blood pressure, and is associated with improvements in depressive symptoms.
+version: 3
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

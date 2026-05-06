@@ -1,0 +1,38 @@
+slug: th17-dominance
+display_name: Th17 Immune Dominance
+aliases:
+- Th1/Th17 skewing
+- IL-17 pathway
+- Th17 overactivation
+category: immune
+summary: Overactivation of Th17 cells produces IL-17, IL-23, and TNF-α, driving tissue
+  inflammation, autoimmune flares (including psoriasis), and gut barrier disruption.
+  Modulated by Vitamin D (T-reg support), omega-3s, curcumin, and gut microbiome restoration.
+upstream_drivers:
+- leaky-gut
+- gut-dysbiosis
+- vitamin-d-deficiency
+- chronic-stress
+- molecular-mimicry
+downstream_effects:
+- skin-plaques
+- joint-inflammation
+- gut-inflammation
+- autoimmune-flares
+related_mechanisms:
+- nf-kb-activation
+- leaky-gut
+- molecular-mimicry
+linked_to_topics:
+- psoriasis
+- autoimmune-disease
+- chronic-inflammation
+evidence_tier: strong
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Psoriasis Cheatsheet — Page 28
+  quote: 'Immune dysregulation: Th1/Th17 dominance → cytokines (TNF-α, IL-17, IL-23)'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

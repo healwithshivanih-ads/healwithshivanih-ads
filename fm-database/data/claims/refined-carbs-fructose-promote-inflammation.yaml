@@ -1,0 +1,25 @@
+slug: refined-carbs-fructose-promote-inflammation
+statement: Refined carbohydrates and sugary beverages high in fructose promote inflammation
+  and should be avoided on an anti-inflammatory diet.
+evidence_tier: strong
+rationale: 'Well-supported by metabolic research: refined carbohydrates spike blood
+  sugar driving insulin resistance and inflammatory signaling; fructose drives hepatic
+  lipogenesis and inflammatory cytokine production.'
+coaching_translation: White bread, pastries, soda, and sweetened drinks spike blood
+  sugar and fuel the inflammatory pathways your body is trying to calm.
+linked_to_topics:
+- anti-inflammatory-diet
+- chronic-inflammation
+linked_to_supplements: []
+caveats:
+- Source is educational toolkit.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-toolkit
+  location: Anti Inflammatory Diet — Foods to Avoid
+  quote: 'Sugary Beverages: High in fructose, which can promote inflammation.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

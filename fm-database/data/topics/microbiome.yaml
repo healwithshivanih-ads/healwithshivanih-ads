@@ -1,0 +1,91 @@
+slug: microbiome
+display_name: Gut Microbiome
+aliases:
+- gut microbiome
+- gut flora
+- gut bacteria
+- microbiota
+- intestinal microbiota
+summary: The complex community of microorganisms residing in the gastrointestinal
+  tract, central to digestion, immune regulation, hormone metabolism, and SCFA production.
+  Fiber is a primary substrate for maintaining microbial diversity and function.
+common_symptoms:
+- bloating
+- constipation or loose stools
+- new food sensitivities
+- weight loss resistance
+- brain fog
+- fatigue after eating
+- abdominal distension
+- gas
+- loose stools
+- reduced SCFA production
+- increased opportunistic infections
+- digestive upset
+- food intolerances
+- fatigue
+- immune dysregulation
+- dysbiosis
+- impaired immunity
+- hormonal imbalance
+red_flags:
+- Persistent bloating present on waking that worsens throughout the day — warrants
+  evaluation to rule out ovarian cancer or other pathology
+- New-onset blood in stool or significant change in bowel habits — refer for GI evaluation
+- Bloating accompanied by unexplained weight loss
+- persistent bloody stool
+- unintentional weight loss
+- severe abdominal pain — refer to GI specialist
+related_topics:
+- perimenopause
+- estrobolome
+- gut-hormone-axis
+- dysbiosis
+- inflammation
+- autoimmune
+- constipation
+- dyspepsia
+- inflammaging
+- immune-resilience
+- fiber-gap
+- scfa-short-chain-fatty-acids
+key_mechanisms:
+- microbial-diversity-decline
+- short-chain-fatty-acid-production
+- leaky-gut-intestinal-hyperpermeability
+- scfa-reduction
+- dysbiosis
+- gut-associated-lymphoid-tissue-regulation
+- estrogen-enterohepatic-circulation
+- microbial-fermentation
+- scfa-production
+- estrobolome-activity
+coaching_scope_notes: Coaches can encourage dietary diversity (30 plant varieties/week),
+  gradual fiber increase, and fermented food inclusion.
+clinician_scope_notes: Stool testing (e.g., GI-MAP) can identify dysbiosis, beta-glucuronidase
+  levels, inflammatory markers (calprotectin), and digestive enzyme insufficiency.
+  Antibiotic use, proton pump inhibitors, and oral contraceptives can significantly
+  disrupt the microbiome and warrant monitoring.
+evidence_tier: strong
+sources:
+- id: thurlow-microbiome-mondays
+  location: 'Session 1: Microbiome Foundations and Hormone Shifts'
+  quote: we have 40 trillion with a T, bacteria, viruses, fungi, protozoa that encompass
+    the gut microbiome. There are more of them than there are of human cells in the
+    body.
+- id: thurlow-microbiome-session-6
+  location: Session 6 — Main Transcript, Microbiome Section
+  quote: We've talked about the microbiome, 40 trillion bacteria, viruses, fungi,
+    protozoa that encompass the part of our large intestine and colon.
+- id: thurlow-microbiome-session-8
+  location: Session 8 — gut-immune interface segment
+  quote: 70% of our immune system lives in the gut... the microbiome regulates the
+    immune response.
+- id: thurlow-microbiome-session-7
+  location: Fiber and estrogen section [00:07:10]
+  quote: fiber is really important for estrogen metabolism... the estrobolome is the
+    kind of key estrogen processing center of the microbiome.
+version: 4
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

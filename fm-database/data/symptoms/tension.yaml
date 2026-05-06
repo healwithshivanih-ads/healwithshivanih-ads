@@ -1,0 +1,25 @@
+slug: tension
+display_name: Tension
+aliases:
+- muscle tension
+- physical tension
+- tightness
+category: musculoskeletal
+severity: common
+description: Physical tightness or tension often associated with shallow breathing
+  and chronic stress.
+when_to_refer: If tension is severe, chronic, or accompanied by pain, refer to physiotherapist
+  or clinician.
+linked_to_topics:
+- stress-management
+- mindfulness
+linked_to_mechanisms:
+- parasympathetic-activation
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Mindful Breathing
+  quote: Shallow breathing may lead to tension and fatigue.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,32 @@
+slug: butyrate-production
+display_name: Colonic Butyrate Production
+aliases:
+- short-chain fatty acid production
+- SCFA butyrate
+category: gut
+summary: Microbial fermentation of dietary fiber produces butyrate, the primary energy
+  source for colonocytes; butyrate supports gut barrier integrity, reduces colonic
+  inflammation, and improves colon motility.
+upstream_drivers:
+- adequate-soluble-fiber-intake
+- diverse-microbiome
+- ghee-consumption
+downstream_effects:
+- improved-colon-motility
+- gut-barrier-support
+- anti-inflammatory-effect
+related_mechanisms:
+- gut-barrier-dysfunction
+- colonic-fermentation
+linked_to_topics:
+- low-fodmap-diet
+- elimination-diet
+evidence_tier: strong
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: FODMAP Plan SOS Solutions — Constipation
+  quote: Ghee provides butyrate → improves colon motility.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

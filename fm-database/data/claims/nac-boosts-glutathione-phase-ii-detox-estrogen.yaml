@@ -1,0 +1,29 @@
+slug: nac-boosts-glutathione-phase-ii-detox-estrogen
+statement: NAC (N-Acetylcysteine) boosts glutathione and Phase II liver detox, lowers
+  inflammation, and improves ovulation in PCOS.
+evidence_tier: plausible_emerging
+rationale: NAC is a glutathione precursor with established antioxidant and anti-inflammatory
+  properties. Some RCTs show improved ovulation rates in PCOS. Mechanistic link to
+  estrogen Phase II detox (glutathione conjugation) is biologically plausible.
+coaching_translation: NAC is a powerful antioxidant precursor that supports liver
+  detox of estrogen and has shown promise for improving ovulation in PCOS.
+caveats:
+- Source is expert synthesis
+- Best for acne + high estrogen pattern
+- Dose 600–1800 mg/day
+linked_to_topics:
+- estrogen-dominance
+- pcos
+linked_to_supplements:
+- nac
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: Estrogen Dominance Supplement Cheatsheet
+  quote: Boosts glutathione & Phase II detox; Lowers inflammation & improves liver
+    function.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

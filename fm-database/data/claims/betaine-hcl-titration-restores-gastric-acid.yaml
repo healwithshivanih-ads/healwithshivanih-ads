@@ -1,0 +1,30 @@
+slug: betaine-hcl-titration-restores-gastric-acid
+statement: A betaine HCl titration protocol (starting at 350–750 mg per protein meal,
+  increasing to up to 5 capsules) can help identify and address HCl deficiency in
+  patients with hypochlorhydria.
+evidence_tier: fm_specific_thin
+rationale: The HCl challenge test is widely used in FM practice. Controlled clinical
+  trial evidence is limited. Contraindicated in peptic ulcer disease.
+out_of_scope_notes: This protocol is clinician-supervised only. Coaches should not
+  recommend specific dosing. Refer clients to their healthcare provider.
+caveats:
+- Must be supervised by a clinician.
+- Contraindicated with peptic ulcer disease.
+- Source is a practitioner toolkit, not primary RCT evidence.
+linked_to_topics:
+- hypochlorhydria
+linked_to_supplements:
+- betaine-hcl
+coaching_translation: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-toolkit
+  location: Testing for Low Stomach Acidity — Self-Testing and Treatment for Low HCl
+  quote: Begin by taking one 350-750 mg capsule of betaine HCl with a protein-containing
+    meal. A normal response in a healthy person would be discomfort—basically heartburn.
+    If you do not feel a burning sensation, begin taking two capsules with each protein-containing
+    meal.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

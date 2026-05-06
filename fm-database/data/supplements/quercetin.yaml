@@ -1,0 +1,77 @@
+slug: quercetin
+display_name: Quercetin
+category: herb
+forms_available:
+- capsule
+- tablet
+- powder
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 1000
+    unit: mg
+  tablet:
+    min: 500
+    max: 1000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+- morning
+take_with_food: optional
+notes_for_coach: Phytosome form has higher bioavailability (500 mg 2x daily vs 1000
+  mg 2x daily for standard). Antiviral and anti-inflammatory properties. Confirm with
+  clinician for dosing.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- estrogen-dominance
+- pcos
+- inflammation
+- immune-resilience
+- chronic-inflammation
+- autoimmune-disease
+- food-sensitivity
+- gerd
+- gut-dysfunction
+- testosterone-health
+- benign-prostatic-hyperplasia
+- immune-support
+linked_to_mechanisms: []
+linked_to_claims:
+- omega-3-reduces-cytokine-load-stress
+- quercetin-boswellia-resveratrol-anti-inflammatory
+- quercetin-antioxidant-gi-protection
+- 5ar-inhibition-reduces-bph-hair-loss-acne
+- quercetin-antiviral-inhibits-influenza-entry
+notes_for_client: Quercetin is a plant compound found in apples, onions, and berries.
+  The supplement form is more concentrated and may support immune defense.
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: Quercetin - Antioxidant, mast cell stabilizer - 250–500 mg/day - With meals
+- id: vitaone-sex-hormones-cheatsheet
+  location: Advanced Support — Estrogen Dominance Supplement Cheatsheet
+  quote: 'Quercetin: Lowers mast cell activation & inflammation; PMS, endometriosis.'
+- id: vitaone-adrenal-cheatsheet
+  location: 50 Hormones Cheatsheet — Histamine row (p.6)
+  quote: 'Histamine: Allergies, hives, histamine intolerance. Solution: DAO support,
+    Vit C, quercetin.'
+- id: vitaone-inflammation-cheatsheet
+  location: Inflammation Cheatsheet — Page 02
+  quote: Quercetin, Boswellia, Resveratrol
+- id: vitaone-gut-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
+    — Supplement recommendations'
+  quote: 'Antioxidants: Artemisia asiatica, curcumin, quercetin, vitamin E'
+- id: vitaone-sex-hormones-toolkit
+  location: Maintaining Healthy Testosterone Levels — Page 06
+  quote: Quercetin [Nutrients/Phytonutrients that Inhibit 5-a Reductase]
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Quercetin is found in fruits and vegetables and has a wide range of benefits,
+    including decreasing viral growth.
+version: 7
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

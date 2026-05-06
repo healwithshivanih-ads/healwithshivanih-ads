@@ -1,0 +1,28 @@
+slug: legume-pre-soaking-reduces-symptoms
+statement: Pre-soaking legumes reduces their symptom-producing potential by approximately
+  30–40% by leaching galactooligosaccharides (GOS) into the soaking water.
+evidence_tier: plausible_emerging
+rationale: GOS are water-soluble; soaking and discarding the water is a recognised
+  culinary technique to reduce oligosaccharide load. The 30–40% figure cited is plausible
+  but not attributed to a specific RCT in this document.
+coaching_translation: Soak dried beans overnight and discard the soaking water before
+  cooking. This can cut the gas-causing compounds by roughly a third, making legumes
+  much easier to tolerate.
+caveats:
+- Exact percentage reduction varies by legume type, soaking duration, and cooking
+  method. No specific study cited in source document.
+linked_to_topics:
+- low-fodmap-diet
+- ibs
+- sibo
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-elimination-diet-cheatsheet
+  location: HIGH FODMAP PROTEIN ADD-ONS & LEGUMES — Practitioner Insight
+  quote: Legumes = GOS → high fermentation. Pre-soaking reduces symptoms by 30–40%.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

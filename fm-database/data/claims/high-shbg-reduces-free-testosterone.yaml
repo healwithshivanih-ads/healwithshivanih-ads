@@ -1,0 +1,31 @@
+slug: high-shbg-reduces-free-testosterone
+statement: High SHBG concentrations preferentially bind testosterone, reducing free
+  testosterone and causing testosterone deficiency symptoms including fatigue, low
+  libido, weight gain, mood changes, decreased muscle mass, and decreased bone mineral
+  density.
+evidence_tier: plausible_emerging
+rationale: Well-established that SHBG binds testosterone with higher affinity than
+  estrogen; document is an expert consensus synthesis without specific RCT citation
+  for this assertion.
+coaching_translation: If your SHBG is high, there may be less active testosterone
+  available for your body, which can leave you feeling tired, less interested in sex,
+  and struggling to maintain muscle.
+caveats:
+- Source is expert consensus/synthesis — no specific RCT cited. Verify free testosterone
+  labs with clinician.
+linked_to_topics:
+- sex-hormone-binding-globulin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-sex-hormones-toolkit
+  location: Sex Hormone Binding Globulin (SHBG) — Page 01
+  quote: High concentrations of SHBG in the body can lead to increased bound testosterone,
+    as SHBG more easily binds to testosterone than to estrogen. This can cause symptoms
+    associated with testosterone deficiency, including fatigue, decreased libido,
+    weight gain, mood changes, decreased muscle mass, and decreased bone mineral density.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

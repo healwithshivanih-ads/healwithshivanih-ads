@@ -1,0 +1,25 @@
+slug: polyols-potent-fermenters-avoid-sugar-free-gum
+statement: Polyols (sorbitol, mannitol, xylitol) are potent fermenters; sugar-free
+  chewing gum is a common hidden source and should be avoided on a low-FODMAP protocol.
+evidence_tier: strong
+rationale: Xylitol and sorbitol in sugar-free gum are well-documented osmotic laxatives
+  and fermentation substrates. This is validated in the FODMAP literature.
+coaching_translation: Check labels on sugar-free gum, mints, and 'diet' foods — if
+  you see sorbitol, mannitol, or xylitol in the ingredients, put it back. These sugar
+  alcohols are major bloating triggers.
+linked_to_topics:
+- low-fodmap-diet
+- ibs
+linked_to_mechanisms:
+- polyol-fermentation-motility
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: vitaone-elimination-diet-cheatsheet
+  location: FODMAP Food Cheatsheet — Sweeteners row
+  quote: Polyols are potent fermenters; avoid sugar-free gum.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

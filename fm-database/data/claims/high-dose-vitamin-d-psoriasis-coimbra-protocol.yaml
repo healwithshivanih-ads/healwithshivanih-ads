@@ -1,0 +1,37 @@
+slug: high-dose-vitamin-d-psoriasis-coimbra-protocol
+statement: High-dose Vitamin D3 (30,000–100,000 IU/day) can modulate the immune system
+  and improve psoriatic skin lesions via downregulation of Th17/TNF pathways (Coimbra
+  Protocol), but requires strict clinical monitoring.
+evidence_tier: confirm_with_clinician
+rationale: The Coimbra Protocol is used in clinical practice internationally for autoimmune
+  diseases including psoriasis. Evidence is primarily from case series and clinical
+  experience. Hypercalcemia and renal toxicity risks make this strictly a clinician-supervised
+  protocol.
+coaching_translation: High-dose Vitamin D for psoriasis is a specialized medical protocol
+  — this is NOT something to try without a doctor. If your client is interested, refer
+  them to a clinician trained in this approach.
+out_of_scope_notes: High-dose Vitamin D protocols are strictly outside coaching scope.
+  Requires serum calcium, ionized calcium, PTH, kidney function, and 25(OH)D monitoring
+  every 2–3 months. Coaches must refer.
+caveats:
+- 'Coaching scope: refer to clinician only.'
+- Contraindicated in CKD, kidney stones, hypercalcemia, hyperparathyroidism, sarcoidosis.
+- Always requires K2 (MK-7 200–400 mcg/day) and magnesium (400–600 mg/day) co-administration.
+- Low-calcium diet and high hydration (2.5–3L/day) mandatory.
+linked_to_topics:
+- psoriasis
+- autoimmune-disease
+linked_to_supplements:
+- vitamin-d3-k2
+- magnesium-glycinate
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Psoriasis Cheatsheet — Page 28
+  quote: High-dose Vitamin D can modulate the immune system, downregulate Th17/TNF
+    pathways, & improve skin lesions. Requires strict monitoring to prevent hypercalcemia
+    and kidney stress.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

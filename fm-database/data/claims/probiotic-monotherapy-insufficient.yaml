@@ -1,0 +1,27 @@
+slug: probiotic-monotherapy-insufficient
+statement: Probiotic monotherapy is rarely sufficient for gut immune restoration —
+  diet and prebiotics are crucial co-interventions.
+evidence_tier: plausible_emerging
+rationale: The concept that probiotics require prebiotic substrate and dietary context
+  for efficacy is clinically well-reasoned and increasingly supported in the microbiome
+  literature.
+coaching_translation: Taking a probiotic capsule alone won't fix your gut. You need
+  to pair it with prebiotic-rich foods (garlic, oats, flaxseed, legumes) and fermented
+  foods.
+caveats:
+- Source is educational synthesis.
+linked_to_topics:
+- leaky-gut
+- autoimmune-disease
+linked_to_supplements:
+- probiotics
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Autoimmune Disease Cheatsheet — Page 24
+  quote: Probiotic monotherapy rarely sufficient—diet & prebiotics are crucial.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

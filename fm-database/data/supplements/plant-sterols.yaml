@@ -1,0 +1,40 @@
+slug: plant-sterols
+display_name: Plant Sterols / Stanols
+category: other
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 1600
+    max: 3000
+    unit: mg
+  tablet:
+    min: 1600
+    max: 3000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- dyslipidemia
+linked_to_claims:
+- plant-sterols-block-cholesterol-absorption
+notes_for_coach: Effective dose is ~2g/day with meals. Well-supported by RCTs and
+  recognized in ACC/AHA guidelines. Most effective when taken with the highest-cholesterol
+  meals. May slightly reduce fat-soluble vitamin absorption.
+notes_for_client: Plant sterols work like cholesterol blockers in your gut — they
+  help prevent cholesterol from being absorbed, which lowers your LDL levels. Take
+  them with meals.
+evidence_tier: strong
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 5
+  quote: 'Plant sterols/stanols: Block cholesterol absorption.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

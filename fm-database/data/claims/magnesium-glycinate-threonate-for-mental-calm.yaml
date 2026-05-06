@@ -1,0 +1,29 @@
+slug: magnesium-glycinate-threonate-for-mental-calm
+statement: Magnesium glycinate and threonate are preferred forms for nervous system
+  support (sleep, anxiety, cognition), while citrate is preferred for constipation
+  and malate for energy; oxide should be avoided due to poor absorption.
+evidence_tier: plausible_emerging
+rationale: Form-specific evidence is limited but mechanistically plausible. Glycinate's
+  glycine content has calming properties. Threonate (as Magtein) has animal and some
+  human data for brain penetration. This is widely accepted FM teaching but RCT comparisons
+  between forms are sparse.
+coaching_translation: For sleep and anxiety support, recommend magnesium glycinate.
+  For brain/cognition, magnesium threonate. Avoid oxide — it's poorly absorbed.
+caveats:
+- Source is a synthesis document.
+- Optimal RBC Mg target 6.0–6.5 mg/dL — verify with clinician.
+linked_to_topics:
+- nutrient-deficiency-depression
+linked_to_supplements:
+- magnesium-glycinate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Magnesium – The Calming Mineral
+  quote: 'Supplements: Glycinate/threonate (nervous system), citrate (constipation),
+    malate (energy). Avoid oxide.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

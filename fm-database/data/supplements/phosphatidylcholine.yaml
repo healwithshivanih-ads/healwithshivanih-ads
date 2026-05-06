@@ -1,0 +1,30 @@
+slug: phosphatidylcholine
+display_name: Phosphatidylcholine
+category: other
+forms_available:
+- capsule
+- liquid
+timing_options:
+- with_breakfast
+- with_lunch
+take_with_food: required
+linked_to_topics:
+- liver-detoxification
+linked_to_claims:
+- phosphatidylcholine-bile-flow-support
+notes_for_coach: Phosphatidylcholine is a key component of bile and cell membranes.
+  Used to support bile flow and liver membrane integrity. Clinician review recommended
+  for dosing.
+notes_for_client: Phosphatidylcholine is a fat-like nutrient that supports healthy
+  bile production and liver cell health.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Liver Disease Cheatsheet — Gallstone-Related Liver Dysfunction
+  quote: Taurine, Phosphatidylcholine, Digestive enzymes
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

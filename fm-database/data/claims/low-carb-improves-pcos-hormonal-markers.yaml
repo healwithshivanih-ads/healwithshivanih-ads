@@ -1,0 +1,28 @@
+slug: low-carb-improves-pcos-hormonal-markers
+statement: A low-carb diet improves ovulation, insulin sensitivity, and androgen balance
+  in women with PCOS.
+evidence_tier: plausible_emerging
+rationale: Several small trials show low-carb diets reduce androgens and improve menstrual
+  regularity in PCOS via insulin lowering. Larger RCTs are lacking. Combines well
+  with inositol and Vitamin D3.
+coaching_translation: Reducing carbs can help balance hormones in PCOS by lowering
+  insulin — which in turn helps reduce testosterone levels and improve cycle regularity.
+caveats:
+- Source is expert consensus. Evidence is from small trials. Inositol and Vitamin
+  D3 co-supplementation requires clinician-guided dosing.
+linked_to_topics:
+- pcos
+- low-carb-diet
+linked_to_supplements:
+- myo-inositol
+- vitamin-d3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: Functional Medicine Clinical Applications
+  quote: Improves ovulation, insulin sensitivity, androgen balance
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

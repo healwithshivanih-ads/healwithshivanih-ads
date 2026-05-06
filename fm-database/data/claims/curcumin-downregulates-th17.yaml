@@ -1,0 +1,27 @@
+slug: curcumin-downregulates-th17
+statement: Curcumin downregulates NF-κB and Th17 immune pathways, making it a useful
+  tool in autoimmune and inflammatory conditions.
+evidence_tier: plausible_emerging
+rationale: Pre-clinical and early clinical evidence supports curcumin's modulation
+  of Th17/Treg balance. Relevant for psoriasis, IBD, and other Th17-driven conditions.
+coaching_translation: Turmeric-based curcumin can help rebalance overactive immune
+  responses driving autoimmune conditions — best used with clinician guidance for
+  therapeutic doses.
+caveats:
+- Source is educational synthesis. Verify dosing with clinician for therapeutic use.
+- Enhanced bioavailability forms required.
+linked_to_topics:
+- autoimmune-disease
+- psoriasis
+linked_to_supplements:
+- curcumin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Autoimmune Disease Cheatsheet — Page 25
+  quote: Curcumin downregulates NF-κB and Th17.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

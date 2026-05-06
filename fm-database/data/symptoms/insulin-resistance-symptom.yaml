@@ -1,0 +1,30 @@
+slug: insulin-resistance-symptom
+display_name: Insulin Resistance (Clinical Presentation)
+aliases:
+- high fasting insulin
+- poor blood sugar control
+- postprandial glucose spikes
+- carb cravings
+category: metabolic
+severity: concerning
+description: Elevated fasting insulin, HOMA-IR, and postprandial glucose indicating
+  impaired cellular insulin response. Presents with cravings, weight gain, fatigue,
+  and difficulty losing weight.
+when_to_refer: Refer for HOMA-IR, fasting insulin, and HbA1c assessment. Clinician
+  oversight required for medication management.
+linked_to_topics:
+- low-carb-diet
+- pcos
+- nafld
+- metabolic-syndrome
+linked_to_mechanisms:
+- insulin-resistance
+- hepatic-lipogenesis
+sources:
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: The Science of Low-Carb Diets
+  quote: Monitor fasting insulin, HOMA-IR, & postprandial glucose.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

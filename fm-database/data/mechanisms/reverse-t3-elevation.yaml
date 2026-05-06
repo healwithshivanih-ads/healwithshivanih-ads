@@ -1,0 +1,34 @@
+slug: reverse-t3-elevation
+display_name: Reverse T3 Elevation (Thyroid Resistance)
+aliases:
+- rT3 dominance
+- functional hypothyroidism
+- thyroid resistance
+category: endocrine
+summary: Under chronic stress, high cortisol diverts T4 conversion toward the inactive
+  reverse T3 (rT3) rather than active T3, creating functional hypothyroidism even
+  when TSH appears normal.
+upstream_drivers:
+- hpa-axis-dysregulation
+- chronic-inflammation
+- infection
+- trauma
+downstream_effects:
+- fatigue
+- weight-gain
+- brain-fog
+- cold-intolerance
+related_mechanisms:
+- t4-to-t3-conversion-block
+- hpa-axis-dysregulation
+linked_to_topics:
+- thyroid
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-thyroid-cheatsheet
+  location: Biohacking Thyroid Function Cheatsheet — Balance Stress Response
+  quote: Chronic stress → high cortisol → ↑ rT3 → functional hypothyroidism
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

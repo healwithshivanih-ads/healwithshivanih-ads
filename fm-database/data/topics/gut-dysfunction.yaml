@@ -1,0 +1,51 @@
+slug: gut-dysfunction
+display_name: Gut Dysfunction
+aliases:
+- GI dysfunction
+- digestive dysfunction
+- gut health
+summary: A broad functional medicine category covering impaired digestion, dysbiosis,
+  leaky gut, hypochlorhydria, and related GI disorders. Problems with the GI tract
+  can underlie chronic conditions including autoimmune diseases, skin disorders, and
+  cardiovascular disease.
+common_symptoms:
+- bloating
+- gas
+- constipation
+- diarrhea
+- indigestion
+- undigested-food-in-stool
+- nausea-after-supplements
+- upper-digestive-tract-gassiness
+red_flags:
+- Barrett's Esophagus
+- Reflux disease > LA Grade B
+- Hiatal hernia > 3 cm
+- Gastroparesis
+- Gastrin >300 pg/mL
+related_topics:
+- hypochlorhydria
+- candida-overgrowth
+- gerd
+- gut-microbiome
+- gut-brain-axis
+key_mechanisms:
+- gut-dysbiosis
+- leaky-gut
+- hypochlorhydria-mechanism
+coaching_scope_notes: Coaches can support dietary changes (elimination diets, anti-candida
+  plans, 5R framework), lifestyle modifications, and home fermentation practices.
+  Refer to clinician for lab interpretation, PPI tapering, and HCl dosing.
+clinician_scope_notes: PPI tapering, HCl/betaine supplementation protocol, GERD grading,
+  and Barrett's Esophagus management are clinician-scope.
+evidence_tier: strong
+sources:
+- id: vitaone-gut-toolkit
+  location: The 5R Framework for Gut Restoration
+  quote: A properly functioning digestive system is critical to good health. In fact,
+    problems with the gastrointestinal (GI) tract can cause more than just stomach
+    aches, gas & bloating or diarrhea.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

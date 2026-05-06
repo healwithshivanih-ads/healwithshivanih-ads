@@ -1,0 +1,43 @@
+slug: magnesium-glycinate-improves-sleep-quality
+statement: |
+  Magnesium glycinate, taken in the evening, improves sleep onset and
+  sleep quality, particularly in adults with low magnesium status or
+  perimenopausal sleep disruption.
+evidence_tier: plausible_emerging
+rationale: |
+  Magnesium is a cofactor for GABA-A receptor function and NMDA-receptor
+  antagonism, both relevant to sleep onset. Several small RCTs in older
+  adults and insomnia populations show modest improvements in sleep
+  latency and subjective sleep quality with magnesium supplementation.
+  Evidence is more consistent in deficient or insufficient populations;
+  benefit in replete adults is less clear. Glycinate form is preferred
+  for tolerability (vs. oxide) but specific superiority for sleep is
+  not strongly established.
+coaching_translation: |
+  "Many people sleep better with magnesium glycinate 200-400mg in the
+  evening, especially if they're under-eating leafy greens or are in
+  perimenopause. It's low-risk to try for 2-3 weeks and see how you
+  respond."
+out_of_scope_notes: |
+  Do not dose for clients with known kidney disease without clinician
+  approval. Do not present as a treatment for diagnosed insomnia disorder.
+caveats:
+  - benefit clearer in magnesium-deficient/insufficient populations
+  - oxide form poorly tolerated; glycinate / threonate / malate preferred
+  - avoid in severe kidney disease without clinician sign-off
+linked_to_topics:
+  - insomnia
+  - perimenopause
+linked_to_mechanisms:
+  - gaba-a-receptor-modulation
+  - nmda-receptor-antagonism
+linked_to_supplements:
+  - magnesium-glycinate
+sources:
+  - id: vitaone-skill-practice-guide
+    location: practice_guide.md, sleep-supporting supplements
+    quote: "Magnesium glycinate (200-400mg before bed)"
+version: 1
+status: active
+updated_at: 2026-04-28
+updated_by: shivani

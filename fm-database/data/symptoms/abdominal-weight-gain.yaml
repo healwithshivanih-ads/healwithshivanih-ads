@@ -1,0 +1,30 @@
+slug: abdominal-weight-gain
+display_name: Abdominal Weight Gain
+aliases:
+- central obesity
+- belly fat
+- expanding waist
+- visceral fat accumulation
+- android obesity
+category: metabolic
+severity: common
+description: Accumulation of fat around the abdomen (waist >35 in men, >31 in women),
+  driven by hyperinsulinaemia promoting visceral fat deposition.
+when_to_refer: Refer if waist circumference meets metabolic syndrome criteria alongside
+  other markers.
+linked_to_topics:
+- insulin-resistance
+- metabolic-syndrome
+linked_to_mechanisms:
+- insulin-resistance
+- visceral-adipose-inflammation
+- hpa-axis-dysregulation
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 4.2.1 — Compensated Insulin Resistance (Early IR)
+  quote: Post-meal fatigue, sugar cravings, brain fog, mild weight gain around the
+    abdomen.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

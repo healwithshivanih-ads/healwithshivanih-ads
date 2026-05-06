@@ -1,0 +1,36 @@
+slug: l-methylfolate
+display_name: L-Methylfolate (5-MTHF / Folate)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 400
+    max: 5000
+    unit: mcg
+timing_options:
+- with_breakfast
+- morning
+take_with_food: optional
+linked_to_topics:
+- vitamin-b-complex-deficiency
+- nutrient-deficiency-depression
+linked_to_claims:
+- avoid-synthetic-folic-acid-prefer-methylfolate
+- high-folate-masks-b12-deficiency
+notes_for_coach: 'Use L-methylfolate (5-MTHF) rather than folic acid, especially in
+  those with MTHFR variants. Always assess B12 alongside folate. Optimal RBC folate
+  target: 400–637 ng/mL.'
+notes_for_client: This is the most usable form of folate, suitable for people with
+  the MTHFR gene variant. Always pair folate supplementation with B12 checks.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin & Mineral Inactive vs Bio-Available Form Cheatsheet
+  quote: Many people can't convert folic acid effectively.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

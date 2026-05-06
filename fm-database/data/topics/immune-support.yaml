@@ -1,0 +1,38 @@
+slug: immune-support
+display_name: Immune Support
+aliases:
+- immune function
+- immune modulation
+- antiviral support
+summary: Optimization of immune function through nutraceuticals, botanicals, and diet
+  to enhance defense against viral and bacterial infections, including COVID-19 and
+  influenza.
+common_symptoms:
+- frequent-illness
+- fatigue
+- upper-respiratory-symptoms
+red_flags:
+- High fever, difficulty breathing, or severe respiratory distress — refer immediately
+related_topics:
+- chronic-inflammation
+- anti-inflammatory-diet
+- gut-health
+key_mechanisms:
+- cytokine-dysregulation
+- nlrp3-inflammasome-activation
+- oxidative-stress
+coaching_scope_notes: Coaches can support general immune-boosting lifestyle habits.
+  All specific nutraceutical dosing in this section requires clinician oversight.
+clinician_scope_notes: COVID-19 nutraceutical doses listed require clinician supervision.
+  Vitamin A toxicity risk at stated doses. Licorice root limited to <4 weeks.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Research on specific botanical and nutraceutical agents indicates they may
+    have a role in the pre-exposure & early phase of COVID-19 based on their ability
+    to improve the immune response to, and recovery from viral illnesses.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

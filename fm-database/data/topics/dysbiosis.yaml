@@ -1,0 +1,57 @@
+slug: dysbiosis
+display_name: Gut Dysbiosis / Endotoxemia
+aliases:
+- microbial imbalance
+- microbiome dysbiosis
+- gut dysbiosis
+- LPS endotoxemia
+- microbiome imbalance
+summary: Microbial imbalance in the gut that can increase intestinal permeability,
+  drive LPS endotoxemia, and worsen insulin resistance via systemic low-grade inflammation.
+common_symptoms:
+- bloating
+- constipation or loose stools
+- food sensitivities
+- fatigue
+- brain fog
+- weight gain
+- skin issues
+red_flags:
+- Severe or persistent dysbiosis with opportunistic pathogens — requires clinician
+  management
+related_topics:
+- microbiome
+- gut-hormone-axis
+- perimenopause
+- autoimmune
+- inflammation
+- insulin-resistance
+- leaky-gut
+key_mechanisms:
+- microbial-diversity-decline
+- leaky-gut-intestinal-hyperpermeability
+- inflammatory-cytokine-signaling
+- leaky-gut
+- chronic-inflammation
+- scfa-production
+coaching_scope_notes: Support with fermented foods, prebiotic fibres, probiotic supplementation,
+  and elimination of processed foods.
+clinician_scope_notes: GI-MAP or similar stool tests can identify specific dysbiotic
+  organisms (e.g., Strep, Enterococcus), as well as inflammatory markers and compromised
+  digestive function. Antibiotic exposure can cause dysbiosis lasting 18 months to
+  8 years per emerging research.
+evidence_tier: plausible_emerging
+sources:
+- id: thurlow-microbiome-mondays
+  location: 'Session 1: Microbiome Foundations and Hormone Shifts'
+  quote: In perimenopause and menopause, we tend to have more inflammatory species.
+    We start to have more dysbiotic organisms.
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Gut Dysbiosis
+    / Endotoxemia
+  quote: LPS from dysbiosis increases insulin resistance. Support microbiota diversity
+    and SCFA production.
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,38 @@
+slug: gut-brain-axis-dysregulation
+display_name: Gut-Brain Axis Dysregulation
+aliases:
+- gut-brain imbalance
+- ENS dysfunction
+- vagus nerve dysregulation
+- serotonin-gut-brain
+category: neurological
+summary: Bidirectional communication between gut microbiome and CNS via the vagus
+  nerve, enteric nervous system, and neurotransmitters (especially serotonin). Dysbiosis
+  and gut inflammation dysregulate serotonin/tryptophan metabolism, contributing to
+  anxiety, depression, IBS, and brain fog.
+upstream_drivers:
+- gut-dysbiosis-mechanism
+- leaky-gut
+- chronic-stress
+downstream_effects:
+- anxiety
+- depression
+- brain-fog
+- ibs
+- mood-swings
+related_mechanisms:
+- reduced-scfas
+- lps-signaling
+linked_to_topics:
+- ibs
+- gut-dysbiosis
+- leaky-gut
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Gut Health Cheatsheet
+  quote: IBS = functional, not structural. Treat gut-brain axis.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

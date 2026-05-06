@@ -1,0 +1,54 @@
+slug: betaine-hcl
+display_name: Betaine HCl
+category: other
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 350
+    max: 750
+    unit: mg
+  tablet:
+    min: 650
+    max: 650
+    unit: mg
+timing_options:
+- with_lunch
+- with_dinner
+- with_breakfast
+take_with_food: required
+notes_for_coach: Titration protocol (350–750 mg up to 5 capsules per protein meal)
+  must be supervised by a clinician. Do NOT recommend dosing independently. Contraindicated
+  with peptic ulcer disease.
+evidence_tier: fm_specific_thin
+linked_to_topics:
+- hypochlorhydria
+- sibo
+- gerd
+- gut-dysfunction
+linked_to_mechanisms: []
+linked_to_claims:
+- betaine-hcl-corrects-hypochlorhydria
+- hypochlorhydria-must-correct-before-kill-protocols
+- betaine-hcl-titration-restores-gastric-acid
+- hcl-needed-for-b12-mineral-absorption
+notes_for_client: Only use Betaine HCl under the guidance of your healthcare provider.
+  Do not empty capsules into food. Stop if you feel burning and consult your practitioner.
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: Betaine HCl - Stomach acid support - 650 mg with meals - With protein-rich
+    meals
+- id: vitaone-gut-cheatsheet
+  location: Gut Health Cheatsheet — Low Stomach Acid
+  quote: Betaine HCl (with meals), Digestive bitters, Zinc carnosine, ACV — Acid is
+    essential for sterilizing + absorbing nutrients.
+- id: vitaone-gut-toolkit
+  location: Testing for Low Stomach Acidity — Self-Testing and Treatment for Low HCl
+  quote: Begin by taking one 350-750 mg capsule of betaine HCl with a protein-containing
+    meal.
+version: 3
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

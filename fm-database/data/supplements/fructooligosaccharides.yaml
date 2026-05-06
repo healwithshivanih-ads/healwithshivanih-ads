@@ -1,0 +1,33 @@
+slug: fructooligosaccharides
+display_name: Fructo-Oligosaccharides (FOS)
+category: other
+forms_available:
+- powder
+- capsule
+- tablet
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- gut-microbiome
+- gut-dysfunction
+linked_to_claims:
+- prebiotic-fiber-feeds-beneficial-bacteria
+notes_for_coach: Cited as a prebiotic supplement source. Feeds beneficial gut bacteria
+  in the colon. Start low and slow to avoid gas/bloating in sensitive individuals.
+notes_for_client: FOS is a prebiotic fiber that feeds the good bacteria in your gut.
+  It's found in foods like garlic, onions, and chicory, and is also available as a
+  supplement.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-toolkit
+  location: The 5R Framework for Gut Restoration — Reinoculate
+  quote: Another good prebiotic source is a supplement called 'fructo-oligosaccharide'
+    or FOS.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

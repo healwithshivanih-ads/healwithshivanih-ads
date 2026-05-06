@@ -1,0 +1,35 @@
+slug: women-4-5x-more-likely-autoimmune-in-perimenopause
+statement: Women are four to five times more likely to develop autoimmune conditions
+  during perimenopause and menopause, partly due to declining estrogen impairing gut
+  barrier integrity.
+evidence_tier: plausible_emerging
+rationale: Epidemiological data show women develop autoimmune diseases at higher rates
+  than men, and risk appears to increase with hormonal transitions. The 4–5x figure
+  is cited clinically but its specific derivation from perimenopause onset (vs. general
+  female sex) is not well-defined in RCTs. Estrogen's role in modulating gut barrier
+  and immune function is mechanistically supported.
+coaching_translation: Perimenopause is a time when the immune system becomes more
+  reactive. This is why new autoimmune diagnoses — like Hashimoto's or rheumatoid
+  arthritis — are more common in this stage of life.
+caveats:
+- The '4–5x' statistic is cited without a specific study reference in the transcript.
+- Source is expert course content, not primary literature.
+- Autoimmune risk in women is multifactorial — hormones are one contributor among
+  many.
+linked_to_topics:
+- perimenopause
+- autoimmune
+- microbiome
+- gut-hormone-axis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-mondays
+  location: 'Session 1: Microbiome Foundations and Hormone Shifts'
+  quote: We tend to be more likely to develop autoimmune conditions four to five times
+    more likely.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

@@ -1,0 +1,30 @@
+slug: homocysteine-elevation
+display_name: Homocysteine Elevation
+aliases:
+- hyperhomocysteinemia
+- high homocysteine
+category: metabolic
+summary: Elevated plasma homocysteine, a marker of impaired methylation, is associated
+  with vascular damage, thyroid dysfunction, and increased cardiovascular risk. Reduced
+  by methylated B vitamins (B12, B6, folate) and betaine (TMG).
+upstream_drivers:
+- impaired-methylation
+- b-vitamin-deficiency
+downstream_effects:
+- vascular-damage
+- thyroid-dysfunction
+- cardiovascular-risk
+related_mechanisms:
+- impaired-methylation
+- glutathione-depletion
+linked_to_topics:
+- methylation-mthfr
+evidence_tier: strong
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet
+  quote: Elevate homocysteine, damaging the thyroid and vascular tissues.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

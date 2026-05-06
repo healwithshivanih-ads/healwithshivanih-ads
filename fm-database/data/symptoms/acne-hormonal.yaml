@@ -1,0 +1,28 @@
+slug: acne-hormonal
+display_name: Hormonal Acne
+aliases:
+- hormonal breakouts
+- androgen-driven acne
+- chin acne
+- jawline acne
+category: skin
+severity: common
+description: Acne driven by elevated androgens, insulin resistance, or poor estrogen
+  clearance, typically cyclical or localized to chin and jawline.
+when_to_refer: Refer for severe cystic acne requiring dermatology or prescription
+  treatment.
+linked_to_topics:
+- estrogen-dominance
+- pcos
+linked_to_mechanisms:
+- aromatase-overactivity
+- insulin-resistance
+- estrogen-enterohepatic-recirculation
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: Top Nutrients to Balance Estrogen
+  quote: Useful for PCOS, acne, PMS.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

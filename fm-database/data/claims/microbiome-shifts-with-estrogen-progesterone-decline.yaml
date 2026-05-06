@@ -1,0 +1,39 @@
+slug: microbiome-shifts-with-estrogen-progesterone-decline
+statement: Changes in estrogen and progesterone during perimenopause alter the composition
+  of gut bacteria, viruses, and fungi, and reduce short-chain fatty acids (butyrate,
+  propionate, acetate) and regulatory T-cell function, increasing inflammation and
+  immune dysregulation.
+evidence_tier: plausible_emerging
+rationale: Estrogen's influence on microbiome composition is a well-documented area
+  of emerging research. SCFA reductions and Treg alterations are plausible downstream
+  effects. Speaker names specific SCFAs and cell types, adding mechanistic depth.
+  Full consensus is not yet established.
+coaching_translation: Hormone changes in perimenopause don't just affect hot flashes
+  — they reshape the gut microbiome, reduce protective fatty acids like butyrate,
+  and weaken immune regulation, all of which increase inflammation and food reactivity.
+caveats:
+- Single-expert source.
+- Speaker uses 'piperonate' — likely intended 'propionate'; verify terminology.
+- Treg changes linked specifically to perimenopausal hormone shifts have limited direct
+  RCT evidence.
+linked_to_topics:
+- microbiome
+- dysbiosis
+- perimenopause
+- gut-hormone-axis
+- inflammation
+- food-sensitivities
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-2
+  location: Microbiome and immune tolerance
+  quote: With changes in estrogen and progesterone, we get changes in the types of
+    bacteria, viruses, fungi we have in the gut. We also get changes in short chain
+    fatty acids. These are things like butyrate, piperonate, acetate. And these are
+    important for reducing inflammation in the body.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

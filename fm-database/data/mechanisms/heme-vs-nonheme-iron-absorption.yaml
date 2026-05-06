@@ -1,0 +1,35 @@
+slug: heme-vs-nonheme-iron-absorption
+display_name: Heme vs. Nonheme Iron Absorption
+aliases:
+- iron bioavailability
+- heme iron
+- nonheme iron
+category: metabolic
+summary: Heme iron (from animal sources) is absorbed efficiently (~25%) regardless
+  of dietary context. Nonheme iron (from plants and some animal foods) is absorbed
+  less readily and is inhibited by phytates, polyphenols, and calcium, but enhanced
+  by vitamin C. Heme iron accounts for ~10% of dietary iron despite being better absorbed.
+upstream_drivers:
+- dietary iron source
+- vitamin-c-intake
+- phytate-content
+downstream_effects:
+- iron-status
+- hemoglobin-synthesis
+- oxygen-transport
+related_mechanisms:
+- phytate-mineral-binding
+linked_to_topics:
+- iron-deficiency
+evidence_tier: strong
+sources:
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Iron'
+  quote: Heme iron comes from animal food sources and is well absorbed by the body,
+    but accounts for only about 10% of iron in the diet. Nonheme iron is found in
+    both plant and animal foods. It is absorbed less readily, but accounts for the
+    majority of dietary iron.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

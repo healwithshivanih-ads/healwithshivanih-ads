@@ -1,0 +1,68 @@
+slug: hypothyroidism
+display_name: Hypothyroidism
+aliases:
+- underactive thyroid
+- overt hypothyroidism
+- subclinical hypothyroidism
+- low thyroid
+summary: A condition in which the thyroid gland produces insufficient thyroid hormones,
+  slowing metabolism and affecting energy, mood, weight, and many other bodily functions.
+  Can be primary, subclinical, or autoimmune (Hashimoto's) in origin.
+common_symptoms:
+- fatigue
+- weight-gain
+- cold-intolerance
+- brain-fog
+- depression
+- constipation
+- hair-thinning
+- dry-skin
+- brittle-nails
+- brittle-hair
+- hair-loss
+- irregular-menstrual-cycles
+- joint-pain
+- hoarse-voice
+- goiter
+red_flags:
+- Bradycardia or very slow heart rate
+- Severe cognitive decline
+- Myxedema coma signs
+- Stunted growth in children
+- Cardiovascular complications (high cholesterol, hypertension)
+- Infertility or recurrent miscarriage
+- Myxedema coma (severe untreated hypothyroidism)
+related_topics:
+- hashimotos-thyroiditis
+- t3-conversion-disorder
+- hyperthyroidism
+- hashimotos-hypothyroidism
+- subclinical-hypothyroidism
+- autoimmune-thyroiditis
+key_mechanisms:
+- hpt-axis-dysregulation
+- impaired-t4-to-t3-conversion
+- thyroid-autoimmunity
+- thyroid-hormone-conversion
+- hpa-axis-dysregulation
+- autoimmune-thyroid-attack
+coaching_scope_notes: Coaches can support lifestyle, diet, and nutrient optimization.
+  Lab interpretation and medication decisions (e.g., levothyroxine, NDT) are clinician
+  scope.
+clinician_scope_notes: Diagnosis via TSH, free T4, thyroid antibodies. Medication
+  management (levothyroxine, NDT) is prescriber scope. Monitor thyroid panels when
+  adding supplements that affect conversion.
+evidence_tier: strong
+sources:
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 5: Disorders of the Thyroid'
+  quote: Thyroid fails to produce enough hormones to meet the body's needs.
+- id: vitaone-thyroid-toolkit
+  location: Understanding Hashimoto's Hypothyroidism
+  quote: Hashimoto's hypothyroidism, also known simply as Hashimoto's disease, is
+    an autoimmune disorder in which the immune system mistakenly attacks the thyroid
+    gland, leading to chronic inflammation & gradual destruction of thyroid tissue.
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

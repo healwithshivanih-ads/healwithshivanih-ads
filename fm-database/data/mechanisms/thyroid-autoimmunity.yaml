@@ -1,0 +1,39 @@
+slug: thyroid-autoimmunity
+display_name: Thyroid Autoimmunity
+aliases:
+- autoimmune thyroid attack
+- anti-TPO mediated thyroid destruction
+- Hashimoto's immune cascade
+category: immune
+summary: The immune system produces antibodies (Anti-TPO, Anti-Tg) against thyroid
+  tissue components. T-cells (helper, cytotoxic, regulatory) mediate actual destruction.
+  Triggered by leaky gut, molecular mimicry, infections, and genetic predisposition.
+  Degree of destruction depends on T-cell activity, not antibody levels alone.
+upstream_drivers:
+- leaky-gut
+- molecular-mimicry
+- chronic-inflammation
+- infections
+- genetic-predisposition
+downstream_effects:
+- hypothyroidism
+- impaired-t4-to-t3-conversion
+- goiter
+related_mechanisms:
+- leaky-gut
+- molecular-mimicry
+- chronic-inflammation
+linked_to_topics:
+- hashimotos-thyroiditis
+- hyperthyroidism
+- hypothyroidism
+evidence_tier: strong
+sources:
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 6: Causes of Thyroid Disorders'
+  quote: Autoimmunity occurs when the immune system mistakenly identifies the body's
+    own tissues as threats and begins to attack them.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

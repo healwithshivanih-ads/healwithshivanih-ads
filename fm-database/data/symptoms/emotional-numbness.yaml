@@ -1,0 +1,28 @@
+slug: emotional-numbness
+display_name: Emotional Numbness / Flatness
+aliases:
+- emotional blunting
+- inability to feel joy
+- anhedonia
+- apathy
+category: mood
+severity: common
+description: Reduced capacity to experience or express emotions, often linked to dopaminergic
+  downregulation, serotonin depletion, and cortisol flattening from digital overstimulation
+  or chronic stress.
+when_to_refer: If associated with severe depression or suicidal ideation, refer to
+  mental health professional.
+linked_to_topics:
+- adrenal-dysfunction
+- anxiety
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- dopaminergic-downregulation
+sources:
+- id: vitaone-adrenal-cheatsheet
+  location: Clinical Patterns Seen in Practice (p.15)
+  quote: 'Mental–Emotional: Low motivation, inability to feel joy or sadness, "numbness"'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

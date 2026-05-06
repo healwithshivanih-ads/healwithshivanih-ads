@@ -1,0 +1,38 @@
+slug: methylation-cycle-dysfunction
+display_name: Methylation Cycle Dysfunction
+aliases:
+- impaired methylation
+- MTHFR dysfunction
+- one-carbon metabolism impairment
+category: metabolic
+summary: The methylation cycle requires folate (as 5-MTHF), B12, B6, choline, and
+  riboflavin as cofactors. Dysfunction leads to elevated homocysteine, impaired neurotransmitter
+  synthesis, poor DNA repair, and increased cancer/cardiovascular risk. MTHFR variants
+  reduce conversion efficiency and increase need for active forms.
+upstream_drivers:
+- mthfr-genetic-variant
+- folate-deficiency
+- b12-deficiency
+- riboflavin-deficiency
+- choline-deficiency
+downstream_effects:
+- elevated-homocysteine
+- impaired-neurotransmitter-synthesis
+- dna-damage
+- mood-disorders
+related_mechanisms:
+- neurotransmitter-synthesis-impairment
+- mitochondrial-energy-production
+linked_to_topics:
+- vitamin-b-complex-deficiency
+- nutrient-deficiency-depression
+evidence_tier: strong
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin B9 (Folate)
+  quote: Folate is the methylation driver-it regulates DNA synthesis, neurotransmitters,
+    histamine clearance, and creatine/choline production.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

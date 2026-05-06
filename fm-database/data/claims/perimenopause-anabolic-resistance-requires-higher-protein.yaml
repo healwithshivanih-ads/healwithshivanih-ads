@@ -1,0 +1,34 @@
+slug: perimenopause-anabolic-resistance-requires-higher-protein
+statement: Women in perimenopause and menopause experience anabolic resistance, meaning
+  more dietary protein is required to trigger muscle protein synthesis — at least
+  30 grams per meal is recommended.
+evidence_tier: plausible_emerging
+rationale: Anabolic resistance in aging and in the context of sex hormone decline
+  is an active research area with plausible evidence. The 30g-per-meal threshold for
+  muscle protein synthesis stimulation is commonly cited in protein metabolism literature,
+  though optimal amounts in perimenopausal women specifically continue to be studied.
+coaching_translation: As hormones decline, the body becomes less efficient at building
+  muscle from protein. Aim for at least 30 grams of protein per meal — not just per
+  day — to ensure the muscle-building signal is triggered.
+caveats:
+- Single-expert source.
+- Exact threshold (30g) is an approximation; individual needs vary by body weight,
+  activity level, and protein source quality.
+- Verify specific protein targets with a clinician or registered dietitian for individualized
+  guidance.
+linked_to_topics:
+- perimenopause
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-2
+  location: Q&A — protein recommendations
+  quote: You need at least 30 grams of protein to trigger muscle protein synthesis.
+    This is really important… we kind of buffer up against anabolic resistance in
+    perimenopause and menopause, which means we need more protein to trigger muscle
+    protein synthesis.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

@@ -1,0 +1,39 @@
+slug: impaired-gut-motility
+display_name: Impaired Gut Motility
+aliases:
+- slow motility
+- gut dysmotility
+- stasis
+- migrating motor complex dysfunction
+category: gut
+summary: Reduced peristalsis and migrating motor complex (MMC) activity allows bacterial
+  stagnation and fermentation in the small intestine, a primary driver of SIBO, methane
+  SIBO (constipation-type), and night-time gas.
+upstream_drivers:
+- vagus-nerve-dysfunction
+- hypothyroidism
+- chronic-stress
+- adhesions
+- opioid-use
+- low-stomach-acid
+downstream_effects:
+- sibo
+- fermentation-overload
+- constipation
+- bloating
+related_mechanisms:
+- gut-brain-axis-dysregulation
+linked_to_topics:
+- sibo
+- ibs
+- hypochlorhydria
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-gut-cheatsheet
+  location: SIBO Cheatsheet — Root Causes
+  quote: Impaired motility (vagus dysfunction, hypothyroidism, diabetes, adhesions,
+    opioid use) — Root Causes [of SIBO]
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,29 @@
+slug: addressing-autoimmunity-can-reduce-thyroid-medication-dose
+statement: Addressing root causes of autoimmunity (gut healing, anti-inflammatory
+  diet, reducing triggers) can reduce thyroid hormone replacement dose requirements
+  in Hashimoto's and Graves' patients.
+evidence_tier: fm_specific_thin
+rationale: The document states that addressing autoimmunity 'can reduce dose requirements.'
+  This is a functional medicine clinical observation with mechanistic plausibility,
+  but lacks RCT evidence. Classified as fm_specific_thin.
+coaching_translation: Working on the root causes of your Hashimoto's — like gut health,
+  diet, and stress — may mean your thyroid medication needs to be adjusted over time.
+  Keep your doctor in the loop.
+out_of_scope_notes: Medication dose adjustment is strictly clinician scope.
+caveats:
+- Source is synthesis; no RCT evidence provided
+- Dose changes must be clinician-directed
+linked_to_topics:
+- hashimotos-thyroiditis
+- hypothyroidism
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 10: Autoimmunity and Hormone Needs'
+  quote: Addressing autoimmunity (gut healing, anti-inflammatory diet, reducing triggers)
+    can reduce dose requirements.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

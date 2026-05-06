@@ -1,0 +1,1954 @@
+slug: hypertension
+display_name: Hypertension (FM Approach)
+description: IFM perspective on blood pressure — assessment equipment, exam techniques,
+  classification, risk factors, organ damage signs, JNC 8 algorithm, nutrition + lifestyle
+  interventions, natural antihypertensives, orthostatic hypotension. Imported from
+  Vitaone Education Tools.
+aliases: []
+related_topics: []
+related_mechanisms: []
+tree:
+- label: IFM Perspective on BP
+  children:
+  - label: Root Causes of Endothelial Dysfunction
+    children:
+    - label: Inflammation
+      children: []
+      linked_kind: topic
+      linked_slug: inflammation
+      notes: ''
+    - label: Immune Dysfunction
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Oxidative Stress Imbalances
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: 90% Lifetime Risk of Developing HTN
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Diet + Nutrition + Exercise Reduce Risk
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Stethoscope (Diaphragm AND Bell)
+    children:
+    - label: Pediatric
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: Assessment Equipment
+  children:
+  - label: Blood Pressure Cuffs
+    children:
+    - label: Small
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Regular
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Large Adult
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Aneroid Gauge + Cuffs
+    children:
+    - label: Thigh
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Oscillatory Device + Cuffs
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Oxygen Saturation Monitor
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Vascular Doppler
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: Patient Positioning
+  children:
+  - label: Arm Blood Pressures
+    children:
+    - label: Seated, Feet Flat, Back Supported
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Arm Forward, Parallel to Floor, Heart Level
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Take 2 Readings 1-2 Min Apart, Average Them
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Leg Blood Pressures
+    children:
+    - label: 'Prone: Popliteal Pressures (Thigh Cuff)'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Supine: Dorsalis Pedis or Posterior Tibial'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Use Bell of Stethoscope or Vascular Doppler
+      children:
+      - label: Elderly
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Orthostatic (Standing / Sitting / Lying)
+    children:
+    - label: Indications
+      children:
+      - label: Diabetes
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Autonomic Dysfunction
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Antihypertensive Use
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Protocol
+      children:
+      - label: 'Supine 2+ Min: Record BP + Pulse'
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: 'Sit 2 Min: Record BP + Pulse'
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: 'Stand 2 Min: Record BP + Pulse'
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Pre-Exam Preparation
+    children:
+    - label: 'Avoid 12 Hrs: Caffeine, Alcohol, Tobacco, OTC Meds'
+      children:
+      - label: 'Note: Dizziness, Lightheadedness, Palpitations'
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Patient Sits 5 Min Quiet
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Arms Free of Restrictive Clothing
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Clinician at Eye Level with Gauge
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Cuff Size: 20% Wider Than Extremity Diameter'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: Exam Techniques and Methods
+  children:
+  - label: Bilateral Arm Pressures
+    children:
+    - label: 'New Patient: Both Arms AND Both Legs'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Left Arm First, Then Right Arm
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Systolic Discrepancy ≤ 5 mmHg = Normal
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: '> 5 mmHg = Abnormal'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Cuff 2.5 cm Above Antecubital Space
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Bladder Over Brachial Artery, Snug Fit
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Arm Pressure Technique
+    children:
+    - label: Palpate Brachial Pulse, Inflate Until Pulse Lost
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Bell Over Brachial Artery
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Inflate 30 mmHg Above Pulse-Loss Point
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Deflate at 2-3 mmHg/sec
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Korotkoff Sound 1 = Systolic BP
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Office Elevations
+    children:
+    - label: Home Monitoring or 24-Hr Ambulatory BP
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Rule Out White Coat HTN
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Korotkoff Sound 5 = Diastolic BP
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Repeat Other Arm, Use Higher Reading
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Leg Pressures
+    children:
+    - label: 'Popliteal: Thigh Cuff Above Popliteal Fossa'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Ankle: Lower Leg Cuff, Dorsalis Pedis or Post Tibial'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Formula: Ankle Pressure / Brachial Pressure'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: Clinical Exam Findings
+  children:
+  - label: 'Normal: SBP < 120 or DBP < 80'
+    children:
+    - label: 'No Risk Factors: Average Risk'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: No BP Intervention Needed
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'No Risk Factors: Low Added Risk'
+      children:
+      - label: Lifestyle + Exercise + Diet
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Abnormal Findings and Symptoms
+    children:
+    - label: Hypotension
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Transient Dizziness
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Hypovolemia: 20 mmHg Drop Systolic + Diastolic, Pulse > 20 bpm Rise'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Autonomic Dysfunction: No Pulse Rise Sit-to-Stand + Dizziness'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Baroreceptor Dysfunction
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Asymmetric Arm Readings
+    children:
+    - label: Suggests Subclavian / Brachial Occlusion or Steal Syndrome
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Normo-Pressure Hydrocephalus
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Marked Arm-Leg Discrepancy
+    children:
+    - label: Suggests Coarctation of the Aorta
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Spinal Cord Injury / Regional Pain / Autonomic Dysfunction
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Ankle-Brachial Index (ABI)
+    children:
+    - label: Hypertension (See Classification)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Normal: ABI ≥ 1.0'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'ABI < 0.9: Peripheral Vascular Disease (Sens 88%, Spec 82%)'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Elevated ABI: Arterial Stiffening (DM, Atherosclerosis)'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: BP Classification
+  children:
+  - label: 'Pre-Hypertension: SBP 120-139 or DBP 80-89'
+    children:
+    - label: '1-2 Risk Factors: Moderate Added Risk'
+      children:
+      - label: Lifestyle Months, Then Drug if Uncontrolled
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: '3+ Risk Factors / MetSyn / DM: High Added Risk'
+      children:
+      - label: Lifestyle + Consider Drug
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Established CV or Renal Disease: Very High Added Risk'
+      children:
+      - label: Lifestyle + Immediate Drug
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: 'Grade 1 HTN: SBP 140-159 or DBP 90-99'
+    children:
+    - label: 'No Risk Factors: Moderate Added Risk'
+      children:
+      - label: Lifestyle Months, Then Drug if Uncontrolled
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: '1-2 Risk Factors: High Added Risk'
+      children:
+      - label: Lifestyle + Consider Drug
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: '3+ Risk / MetSyn / DM: High Added Risk'
+      children:
+      - label: Lifestyle + Consider Drug
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Established CV/Renal: Very High Added Risk'
+      children:
+      - label: Immediate Drug
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: 'Grade 2 HTN: SBP 160-179 or DBP 100-109'
+    children:
+    - label: 'No Risk Factors: High Added Risk'
+      children:
+      - label: Lifestyle + Consider Drug
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: '1-2 Risk Factors: Very High Added Risk'
+      children:
+      - label: Lifestyle + Immediate Drug
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: '3+ Risk / MetSyn / DM: Very High Added Risk'
+      children:
+      - label: Lifestyle + Immediate Drug
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Elevated SBP or DBP
+    children:
+    - label: 'Established CV/Renal: Very High Added Risk'
+      children:
+      - label: Lifestyle + Immediate Drug
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: Clinical Risk Factors
+  children:
+  - label: Age > 60
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Race / Ethnicity
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Smoking
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Elevated Pulse Pressure (Elderly)
+    children:
+    - label: Total Cholesterol > 190 mg/dL (5.0 mmol/L)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Dyslipidemia
+    children:
+    - label: LDL > 115 mg/dL (3.0 mmol/L)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'HDL: Males < 40 mg/dL, Females < 46 mg/dL'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: topic
+    linked_slug: dyslipidemia
+    notes: ''
+  - label: Fasting Glucose 102-125 mg/dL (5.6-6.9 mmol/L)
+    children:
+    - label: Triglycerides > 150 mg/dL (1.7 mmol/L)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Abnormal 1 or 2-Hr Glucose Tolerance Test
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Abdominal Obesity
+    children:
+    - label: Males > 102 cm (40 in)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Females > 88 cm (35 in)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: symptom
+    linked_slug: central-weight-gain
+    notes: ''
+  - label: Family Hx Premature CVD
+    children:
+    - label: Males < 55 Yrs
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Females < 65 Yrs
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Diabetes Mellitus
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Autoimmune Disease
+    children: []
+    linked_kind: topic
+    linked_slug: autoimmune-disease
+    notes: ''
+  - label: Heavy Metal Burden
+    children:
+    - label: Lead, Cadmium, Arsenic, Mercury
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: Subclinical Organ Damage Signs
+  children:
+  - label: Oral / Dental Infections
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: 'ECG: LVH > 38 mm'
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: 'ECHO: LVH Males > 125 g/m2, Females > 110 g/m2'
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Carotid Wall Thickening CIMT > 0.9 mm or Plaque
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Carotid-Femoral Pulse Wave Velocity > 12 m/sec
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: ABI < 0.9
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Elevated Plasma Creatinine
+    children:
+    - label: Males 115-133 mmol/L
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Females 107-124 mmol/L
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Low GFR < 60 mL/min/1.73 m2
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Microalbuminuria 30-300 mg/24 hr
+    children:
+    - label: Cerebrovascular Disease / Stroke / TIA
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Established Disease
+    children:
+    - label: 'Heart Disease: MI, Angina, CHF, Revascularization'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Renal Disease: Diabetic Nephropathy, Proteinuria'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Peripheral Artery Disease
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: JNC 8 Treatment Algorithm
+  children:
+  - label: Protein
+    children:
+    - label: 'Non-Animal Protein: 1.5-1.8 g/kg/day'
+      children:
+      - label: Increases Glutathione
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Whey Protein: 30 g/day (ACEI Effect + Glutathione)'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Carnitine: 1 g BID (Limits End Organ Damage)'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Sardine Muscle Protein: 3 g/day (ACEI)'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Bonito Protein: 1.5 g/day (Natural ACEI)'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Soy Protein: 40 g/day (Activates PPARs)'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Arginine: Up to 10 g/day (Vascular NO Precursor)'
+      children:
+      - label: Mild Diuresis + Vasodilation
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: 'All Adults 18+: Diet and Lifestyle at ALL Stages'
+    children:
+    - label: Advanced Retinopathy
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Goal: SBP < 150 / DBP < 90'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Age > 60 / No DM / No CKD
+    children:
+    - label: 'Black Patients: Thiazide or CCB (Alone or Combo)'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Non-Black: Thiazide / ACEI / ARB / CCB'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Age < 60 / No DM / No CKD
+    children:
+    - label: 'Goal: SBP < 140 / DBP < 90'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: All Ages with DM / No CKD
+    children:
+    - label: 'Goal: SBP < 140 / DBP < 90'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'All Races: ACEI or ARB (Alone or Combo)'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: All Ages with CKD
+    children:
+    - label: Mechanism
+      children:
+      - label: Induces Natriuresis
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Inhibits Tyrosine Kinase
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Decreases Vascular Smooth Muscle Hypertrophy
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Decreases Aldosterone
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Goal: SBP < 140 / DBP < 90'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'All Races: ACEI or ARB (Alone or Combo)'
+      children:
+      - label: Decreases Sympathetic Activity
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: Nutritional Interventions
+  children:
+  - label: Fats and Oils
+    children:
+    - label: 'Taurine: 6 g/day'
+      children:
+      - label: Increases Atrial Natriuretic Factor
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Increases Insulin Sensitivity
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Emphasize Polyunsaturated + Monounsaturated
+      children:
+      - label: Decreases Homocysteine
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Limit Saturated Fats
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Eliminate Trans Fats
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'EPA + DHA: 3-4 g/day (1:1 to 4:1 Ratio)'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Olive Oil: 40 g/day'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Sesame Oil: 35 g/day'
+      children:
+      - label: Oatmeal
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Carbohydrates
+    children:
+    - label: Fiber Types
+      children:
+      - label: Psyllium
+        children: []
+        linked_kind: supplement
+        linked_slug: psyllium
+        notes: ''
+      - label: Glucomannan
+        children: []
+        linked_kind: supplement
+        linked_slug: glucomannan
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Improves Insulin Sensitivity
+      children:
+      - label: Beta-Glucan
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Minerals
+    children:
+    - label: 'Sodium: Reduce to ≤ 2400 mg/day'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Potassium: 60-120 mEq/day, K:Na Ratio 5:1'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Magnesium: 500-1000 mg/day'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Calcium: 500-1000 mg/day (Food or Supplement)'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Zinc: 25-50 mg/day (Inhibits NFkB)'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Vitamin D: Serum 36-50 ng/mL, Most Need 5000 IU/day'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Vitamins
+    children:
+    - label: 'Vitamin E: 100 IU per 1 g EFA'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Vitamin C: 250-500 mg Twice/Day'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Riboflavin (B2): 25 mg/day'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Vitamin B6: 5 mg/kg/day (Decreases SNS, Increases Insulin Sensitivity)'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Methyl Folate / Folinic Acid: If Hyperhomocysteinemic'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'B12: If Hyperhomocysteinemic'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Phytonutrients
+    children:
+    - label: 'Dark Chocolate / Cocoa: Up to 100 g/day'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Lycopene: 10 mg/day (Tomato, Guava, Watermelon, Papaya)'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Green Tea / Black Tea: > 600 cc/day'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Quercetin: 500 mg Twice/Day'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Celery: 4 Large Sticks/Day (3-N Butyl Phthalide + Apigenin)'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Garlic: 2-4 Cloves/Day'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Wakame Seaweed: 3-4 g/day'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: Lifestyle Interventions
+  children:
+  - label: Stop or Limit Caffeine
+    children:
+    - label: 'Pomegranate Juice: 330 mL/day'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Increases Vasoconstriction
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Increases Norepinephrine Levels
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Increases Pulse Wave Velocity
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Increases Plasma Renin Activity
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Limit Alcohol ≤ 1 Drink/Day
+    children:
+    - label: 8 oz Wine / 2 oz Hard Liquor / 24 oz Beer
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Alcohol Increases BP, Renin, Aldosterone, Cortisol
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Evaluate Heavy Metal Burden
+    children:
+    - label: Increases Vasoconstriction + Sympathetic Tone
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Lead, Arsenic, Cadmium, Mercury
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Increases Endothelial Dysfunction + Oxidative Stress
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Stop Smoking Tobacco
+    children:
+    - label: Increases Renin-Angiotensin + Carbon Monoxide
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Increases Platelet Aggregation + Coagulation Risk
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Increases Oxidative Stress + Inflammatory Markers
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Oral Contraceptives
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: NSAIDs / COX-2 Inhibitors
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Antihistamines / Decongestants
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Discontinue BP-Raising Medications
+    children:
+    - label: Corticosteroids / Mineralocorticoids / Anabolic Steroids
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Sympathomimetics / Amphetamine-Like Drugs
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Carbenoxolone / Licorice
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: TCA / MAO Inhibitors
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Ergot Alkaloids
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Diet Pills / Energy Pills
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Heavy Metal Supplements
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Erythropoietin Compounds
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Cyclosporin / Tacrolimus
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Bromocriptine / Metoclopramide
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Aerobic + Resistance Exercise
+    children:
+    - label: 60 Min/Day Combined Aerobic + Resistance
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Aerobic: 30 Min at 60-80% Max (220 - Age)'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 4200 kJ/Week for Maximal CV Risk Reduction
+      children:
+      - label: Endothelial Nitric Oxide Synthase
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Nitric Oxide Levels
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Exercise Improves
+      children:
+      - label: Coronary Artery Flow
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Systemic Vascular Compliance
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Insulin Sensitivity
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Digitalis / Disulfiram / Lithium
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Behavior Modifications
+    children:
+    - label: 60% of HTN Patients are 20% Over Ideal Body Weight
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Stress Management
+      children:
+      - label: Respiratory Function (PFT, FEV1)
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Frontal Lobe Oxygen Delivery
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: topic
+      linked_slug: stress-management
+      notes: ''
+    - label: Biofeedback + Relaxation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Pilates + Yoga
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Psychotherapy
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Hypnosis
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Meditation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Spiritual + Religious Practices
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Weight Reduction
+    children:
+    - label: '4-5 kg Loss: Decreases SBP 7 pts / DBP 5 pts'
+      children:
+      - label: Cardiac Output
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: LV Filling Pressure
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Weight Loss Improves
+      children:
+      - label: Insulin Sensitivity
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Catecholamine Levels
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Systemic Vascular Compliance
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Sodium Retention
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Sympathetic Tone
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: Natural Antihypertensive Classes
+  children:
+  - label: ACE Inhibitors (Foods)
+    children:
+    - label: Corn Protein (Zein)
+      children:
+      - label: Plasma Renin + Aldosterone Levels
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: hs-CRP, TNF, IL-6, Oxidative Stress
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Egg Yolks
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Fish: Bonito, Dried Salted, Sardines, Tuna'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Garlic
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Gelatin
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Hawthorne Berry
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Milk Protein (Casein)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Pomegranate
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Sea Vegetables (Kelp)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Seaweed (Wakame)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: ACE Inhibitors (Nutrients)
+    children:
+    - label: Wheat Germ (Hydrolyzed)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Whey (Hydrolyzed)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Omega-3 Fatty Acids
+      children: []
+      linked_kind: supplement
+      linked_slug: omega-3-fatty-acids
+      notes: ''
+    - label: Zinc
+      children: []
+      linked_kind: supplement
+      linked_slug: zinc
+      notes: ''
+    - label: Pycnogenol
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Melatonin
+      children: []
+      linked_kind: supplement
+      linked_slug: melatonin
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: ARBs (Foods)
+    children:
+    - label: Celery
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Fiber-Rich Foods
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Garlic
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Monounsaturated Fatty Acids (Olive Oil)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: N-Acetyl Cysteine
+      children: []
+      linked_kind: supplement
+      linked_slug: n-acetyl-cysteine
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: ARBs (Nutrients)
+    children:
+    - label: Taurine
+      children: []
+      linked_kind: supplement
+      linked_slug: taurine
+      notes: ''
+    - label: Gamma Linolenic Acid
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Oleic Acid
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Potassium
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Vitamin B6 (Pyridoxine)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Vitamin C
+      children: []
+      linked_kind: supplement
+      linked_slug: vitamin-c
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Beta Blockers
+    children:
+    - label: Hawthorne Berry
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Resveratrol
+      children: []
+      linked_kind: supplement
+      linked_slug: resveratrol
+      notes: ''
+    - label: Coenzyme Q-10
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Celery
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Calcium Channel Blockers (Foods)
+    children:
+    - label: Garlic
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Hawthorne Berry
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Monounsaturated Fatty Acids
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: N-Acetyl Cysteine
+      children: []
+      linked_kind: supplement
+      linked_slug: n-acetyl-cysteine
+      notes: ''
+    - label: Taurine
+      children: []
+      linked_kind: supplement
+      linked_slug: taurine
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Calcium Channel Blockers (Nutrients)
+    children:
+    - label: EPA
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: DHA
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Oleic Acid
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Omega-3 Fatty Acids
+      children: []
+      linked_kind: supplement
+      linked_slug: omega-3-fatty-acids
+      notes: ''
+    - label: Calcium
+      children: []
+      linked_kind: supplement
+      linked_slug: calcium
+      notes: ''
+    - label: Magnesium
+      children: []
+      linked_kind: supplement
+      linked_slug: magnesium
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Central Alpha Agonists (Foods)
+    children:
+    - label: Celery / Fiber / Garlic / Protein
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Taurine
+      children: []
+      linked_kind: supplement
+      linked_slug: taurine
+      notes: ''
+    - label: Vitamin B6 / C / E
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Alpha Lipoic Acid
+      children: []
+      linked_kind: supplement
+      linked_slug: alpha-lipoic-acid
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Central Alpha Agonists (Nutrients)
+    children:
+    - label: Gamma Linolenic Acid
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Potassium / Zinc
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Vitamin B6 / C
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Direct Renin Inhibitors
+    children:
+    - label: Vitamin D
+      children: []
+      linked_kind: supplement
+      linked_slug: vitamin-d
+      notes: ''
+    - label: Celery / Fiber / Garlic
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Coenzyme Q-10
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: Orthostatic Hypotension
+  children:
+  - label: Normal Baro-Reflex Response (Standing)
+    children:
+    - label: Coenzyme Q-10
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 500-1000 cc Blood Pools in Splanchnic + Lower Extremities
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Decreased Venous Return, Cardiac Output, BP
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Reflex: Increased Sympathetic, Decreased Parasympathetic'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Result: Increased Heart Rate + Peripheral Vascular Resistance'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Normal Expected Changes on Standing
+    children:
+    - label: 'SBP Small Drop: ~5 mmHg'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'DBP Small Rise: ~5 mmHg'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Pulse Rise: Up'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Direct Vasodilators (Foods)
+    children:
+    - label: Monounsaturated Fatty Acids
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Soy
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Arginine / Taurine
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Direct Vasodilators (Nutrients)
+    children:
+    - label: Alpha Linolenic Acid
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Omega-3 Fatty Acids
+      children: []
+      linked_kind: supplement
+      linked_slug: omega-3-fatty-acids
+      notes: ''
+    - label: Calcium / Magnesium / Potassium
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Vitamin C / E
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Diuretics (Foods)
+    children:
+    - label: Celery / Hawthorne Berry / Protein
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: L-Carnitine / Taurine
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Flavonoids
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Diuretics (Nutrients)
+    children:
+    - label: Gamma Linolenic Acid / Fiber
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Calcium / Magnesium / Potassium
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Vitamin B6 / C
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 'Vitamin E: High Gamma/Delta Tocopherols + Tocotrienols'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+sources:
+- id: vitaone-mind-map-tool
+  quote: 'Imported from Vitaone Education Tools: ''Blood Pressure'''
+  location: tools.vitaone.in/mind-maps
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

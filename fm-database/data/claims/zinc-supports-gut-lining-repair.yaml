@@ -1,0 +1,27 @@
+slug: zinc-supports-gut-lining-repair
+statement: Zinc is a key nutrient for repairing the GI tract lining, which is often
+  deficient in a compromised gut.
+evidence_tier: plausible_emerging
+rationale: Zinc plays a role in intestinal barrier function and tissue repair. Some
+  evidence supports zinc supplementation in gut permeability. Zinc l-carnosine has
+  specific evidence for gastric mucosal protection.
+coaching_translation: Zinc helps maintain and repair your gut wall. Low levels — common
+  with poor absorption — can slow gut healing.
+linked_to_topics:
+- gut-dysfunction
+- gerd
+linked_to_supplements:
+- zinc
+- zinc-l-carnosine
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-toolkit
+  location: The 5R Framework for Gut Restoration — Repair
+  quote: Help the lining of the GI tract repair itself by supplying key nutrients
+    that can often be in short supply in a compromised gut, such as zinc.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

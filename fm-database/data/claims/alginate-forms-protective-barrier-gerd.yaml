@@ -1,0 +1,23 @@
+slug: alginate-forms-protective-barrier-gerd
+statement: Alginate forms a physical protective barrier in the esophagus/stomach to
+  reduce acid reflux during PPI tapering.
+evidence_tier: plausible_emerging
+rationale: Alginate-based formulations (e.g., Gaviscon) have RCT evidence for GERD
+  symptom relief. The mechanism (raft formation) is well-characterized.
+linked_to_topics:
+- gerd
+linked_to_supplements:
+- alginate
+coaching_translation: ''
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
+    — Supplement recommendations'
+  quote: 'Protect: Alginate, pectin, DGL, slippery elm'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

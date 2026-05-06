@@ -1,0 +1,44 @@
+slug: iron-ferrous-bisglycinate
+display_name: Iron (Ferrous Bisglycinate)
+category: mineral
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 18
+    max: 30
+    unit: mg
+  tablet:
+    min: 18
+    max: 30
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+- on_empty_stomach
+- morning
+take_with_food: avoid
+notes_for_coach: Iron deficiency impairs thyroid peroxidase activity and T4→T3 conversion.
+  Test ferritin before supplementing. Bisglycinate form has better tolerance and absorption.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- thyroid
+linked_to_mechanisms: []
+linked_to_claims:
+- selenium-supports-t4-t3-conversion
+notes_for_client: Low iron is a hidden cause of thyroid conversion problems. Testing
+  ferritin (iron stores) is important before supplementing.
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Iron (Ferrous Bisglycinate) - Hemoglobin, oxygen transport - 18–30 mg/day
+    - post any meal or with vitamin C
+- id: vitaone-thyroid-cheatsheet
+  location: Clinical Action Steps — Support T4→T3 Conversion
+  quote: Selenium (100–200 µg/day), Zinc Glycinate (20–30 mg/day), Iron, Active B2/B6/B12
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

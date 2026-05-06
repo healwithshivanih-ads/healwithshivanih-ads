@@ -1,0 +1,27 @@
+slug: elderberry-reduces-upper-respiratory-symptoms
+statement: Elderberry (Sambucus nigra) supplementation effectively reduces duration
+  and severity of upper respiratory symptoms.
+evidence_tier: plausible_emerging
+rationale: Hawkins et al. (Complement Ther Med 2019) meta-analysis of RCTs cited;
+  demonstrates elderberry effectively treats upper respiratory symptoms. Evidence
+  base is growing but still limited in size.
+coaching_translation: Elderberry is one of the better-studied herbs for shortening
+  colds and respiratory infections.
+linked_to_topics:
+- immune-support
+linked_to_supplements:
+- elderberry
+caveats:
+- COVID-19-specific evidence was not yet available at time of this toolkit's publication.
+- Source is expert consensus.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Elderberry is packed with vitamin C, dietary fiber, and antioxidants. It
+    has been used extensively in the prevention of influenza.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

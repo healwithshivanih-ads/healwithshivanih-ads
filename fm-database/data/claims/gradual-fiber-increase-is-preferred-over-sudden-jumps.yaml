@@ -1,0 +1,30 @@
+slug: gradual-fiber-increase-is-preferred-over-sudden-jumps
+statement: Fiber intake should be increased gradually (e.g., from 10g to 12g/day rather
+  than jumping to 30g) to avoid worsening GI symptoms; personalized fiber targets
+  are preferred over a universal dose.
+evidence_tier: plausible_emerging
+rationale: Single-expert recommendation consistent with general GI guidance. Gradual
+  fiber increases to prevent gas/bloating are clinically sensible and broadly recommended,
+  though cited here from expert opinion only.
+coaching_translation: Start by tracking your current fiber intake for a few days,
+  then increase by just 2–3g at a time. Everyone's optimal fiber amount is different
+  — it's not one-size-fits-all.
+caveats:
+- Single-expert source; recommendation is practical and consistent with general GI
+  guidance but not sourced to a specific trial.
+linked_to_topics:
+- constipation
+- dyspepsia
+- microbiome
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-6
+  location: Session 6 — Main Transcript, Fiber Section
+  quote: If you're consuming 10 grams a day, I would never suggest you go to 30. I
+    would say maybe you go from 10 to 12 grams.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

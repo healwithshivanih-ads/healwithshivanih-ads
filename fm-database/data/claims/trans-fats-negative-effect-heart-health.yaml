@@ -1,0 +1,24 @@
+slug: trans-fats-negative-effect-heart-health
+statement: Trans fats have a negative effect on heart health and should be avoided;
+  they can be listed as zero on food labels if a serving contains less than 0.5 grams.
+evidence_tier: strong
+rationale: Strong consensus from AHA, WHO, and FDA. Trans fat restriction is established
+  public health policy. The labeling loophole described is a real FDA regulation.
+coaching_translation: Even if a food label says 0g trans fat, it may still contain
+  small amounts. Check the ingredient list for 'partially hydrogenated' oils to be
+  sure.
+caveats: []
+linked_to_topics: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-nutrition-toolkit
+  location: Understanding Food Labels
+  quote: Because of their negative effect on heart health, avoid trans fats. A food
+    label can list the trans fat content as zero if amount contained in one serving
+    is less than 0.5 grams.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

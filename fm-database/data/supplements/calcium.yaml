@@ -1,0 +1,94 @@
+slug: calcium
+display_name: Calcium
+category: mineral
+forms_available:
+- capsule
+- tablet
+- powder
+typical_dose_range: {}
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+contraindications:
+  conditions:
+  - hypercalcemia
+  - history_of_calcium_kidney_stones
+  medications: []
+  life_stages: []
+interactions:
+  with_supplements:
+  - slug: magnesium-glycinate
+    type: space_by_hours
+    hours: 2
+    reason: 'Reciprocal of the magnesium-side rule. Calcium and magnesium are
+
+      competing divalent cations; co-dosing reduces absorption of both.
+
+      '
+  - slug: zinc
+    type: space_by_hours
+    hours: 2
+    reason: 'Calcium reduces zinc absorption when taken simultaneously.
+
+      '
+  - slug: vitamin-d
+    type: take_together
+    reason: 'Vitamin D is required for intestinal calcium absorption. They are
+
+      co-prescribed for bone health.
+
+      '
+  with_foods: []
+  with_medications: []
+linked_to_topics:
+- perimenopause
+linked_to_mechanisms:
+- bone-mineral-density
+- calcium-magnesium-balance
+linked_to_claims: []
+notes_for_coach: 'STUB — dose deliberately blank. FM stance is FOOD-FIRST for calcium:
+
+  dairy, sardines/small fish with bones, leafy greens (collards, kale),
+
+  sesame seeds, ragi, almonds. Supplementation routinely is *not* the FM
+
+  default — excess supplemental calcium has been associated with
+
+  cardiovascular concerns in some studies and competes with magnesium
+
+  (most modern populations are magnesium-deficient, not calcium-deficient).
+
+  Supplementation, when needed, is a clinician decision based on bone
+
+  density, dietary intake, and CKD/CV risk profile.
+
+
+  Vitaone perspective ("Bone Health Beyond Calcium" post): bone health
+
+  needs vitamin D, K2, magnesium, weight-bearing exercise, protein,
+
+  and gut absorption — not just calcium dosing.
+
+  '
+notes_for_client: 'Most people get enough calcium from food (dairy, ragi, sesame,
+  leafy
+
+  greens, small fish with bones). Bone health depends on vitamin D, K2,
+
+  magnesium, protein, and weight-bearing movement together — not calcium
+
+  alone. Talk to your clinician before starting a calcium supplement.
+
+  '
+sources:
+- id: vitaone-skill-practice-guide
+  location: practice_guide.md (referenced via magnesium spacing rule)
+- id: vitaone-practice-guide
+  location: Mineral balance discussions
+evidence_tier: confirm_with_clinician
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

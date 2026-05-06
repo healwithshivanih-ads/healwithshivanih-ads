@@ -1,0 +1,25 @@
+slug: upper-digestive-tract-gassiness
+display_name: Upper Digestive Tract Gassiness
+aliases:
+- upper GI gas
+- stomach gas
+- gassiness after eating
+category: gi
+severity: common
+description: Excess gas in the upper digestive tract, often associated with hypochlorhydria
+  or dysbiosis.
+linked_to_topics:
+- hypochlorhydria
+- gut-dysfunction
+linked_to_mechanisms:
+- hypochlorhydria-mechanism
+- gut-dysbiosis
+when_to_refer: ''
+sources:
+- id: vitaone-gut-toolkit
+  location: Testing for Low Stomach Acidity — Common Symptoms of Hypochlorhydria
+  quote: Upper digestive tract gassiness
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,27 @@
+slug: probiotics-restore-gut-flora-after-antibiotics
+statement: Probiotics in supplement or food form are often needed to help reestablish
+  balanced gut flora after antibiotic use, which kills both beneficial and harmful
+  bacteria.
+evidence_tier: strong
+rationale: Multiple RCTs support probiotic use for prevention of antibiotic-associated
+  diarrhea and microbiome restoration. Strong consensus exists.
+coaching_translation: If you've taken antibiotics, replenishing your gut bacteria
+  with fermented foods (yogurt, kefir, kimchi) or a probiotic supplement is a well-supported
+  strategy.
+linked_to_topics:
+- gut-dysfunction
+- gut-microbiome
+linked_to_supplements:
+- probiotics
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-toolkit
+  location: The 5R Framework for Gut Restoration — Reinoculate
+  quote: Use of antibiotics kills both good and bad bacteria. Probiotics in the form
+    of supplements or food are often needed to help reestablish a balanced gut flora.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,28 @@
+slug: calorie-restriction-reduces-t4-to-t3-conversion
+statement: Severe or prolonged calorie restriction reduces T4-to-T3 conversion and
+  increases reverse T3, creating a functional hypothyroid state.
+evidence_tier: plausible_emerging
+rationale: This is a well-described physiological adaptation to fasting/restriction
+  (the 'low T3 syndrome of calorie restriction'). Mechanistically robust; the document
+  clearly states this. Treated as plausible_emerging as source is a synthesis.
+coaching_translation: Very low-calorie diets can backfire by slowing your thyroid
+  conversion — sustainable, nutrient-dense eating supports better thyroid function
+  than crash dieting.
+caveats:
+- Source is synthesis; specific calorie threshold not defined
+linked_to_topics:
+- t3-conversion-disorder
+- hypothyroidism
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 6: Other Contributing Factors'
+  quote: Severe or prolonged calorie restriction signals the body to conserve energy.
+    This reduces conversion of T4 into active T3 and increases production of reverse
+    T3 (inactive).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

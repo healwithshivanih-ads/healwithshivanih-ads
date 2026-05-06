@@ -1,0 +1,28 @@
+slug: post-meal-movement-blunts-glucose-peaks
+statement: Anti-gravity activity (15-min walk, stair climbing, calf raises) within
+  20 minutes of meals blunts post-prandial glucose peaks.
+evidence_tier: plausible_emerging
+rationale: 'Credible mechanism: muscle contraction activates GLUT-4 translocation
+  independently of insulin (AMPK-mediated). Postprandial walk studies show modest
+  glucose attenuation.'
+coaching_translation: A short walk or some light movement right after meals is one
+  of the easiest ways to stop blood sugar from spiking too high.
+linked_to_topics:
+- blood-sugar-dysfunction
+- insulin-resistance
+linked_to_mechanisms:
+- insulin-resistance
+caveats:
+- Source is FM synthesis; effect varies by exercise type and individual metabolic
+  state.
+out_of_scope_notes: ''
+linked_to_supplements: []
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 7.3.1 — Movement
+  quote: 'Anti-gravity post-meal activity- within 20min of meals: 15-min walk, stair
+    climbing, calf raises, or wall sits to blunt glucose peaks.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

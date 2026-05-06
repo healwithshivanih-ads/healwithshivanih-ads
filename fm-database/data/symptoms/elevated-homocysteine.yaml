@@ -1,0 +1,25 @@
+slug: elevated-homocysteine
+display_name: Elevated Homocysteine
+aliases:
+- high homocysteine
+- hyperhomocysteinemia
+category: cardiovascular
+severity: concerning
+description: A metabolic marker of impaired methylation and B vitamin insufficiency.
+  Elevated homocysteine damages vascular tissue and is associated with MTHFR mutations,
+  thyroid dysfunction, cardiovascular risk, and recurrent miscarriage.
+when_to_refer: Refer for cardiovascular risk assessment if significantly elevated.
+  Requires clinician interpretation of homocysteine lab values.
+linked_to_topics:
+- methylation-mthfr
+linked_to_mechanisms:
+- homocysteine-elevation
+- impaired-methylation
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet — Who Should You Test
+  quote: Elevated homocysteine
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

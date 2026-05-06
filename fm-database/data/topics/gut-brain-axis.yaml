@@ -1,0 +1,93 @@
+slug: gut-brain-axis
+display_name: Gut-Brain Axis
+aliases:
+- gut-brain connection
+- microbiota-gut-brain axis
+- brain-gut axis
+- enteric nervous system connection
+- mind-gut connection
+- enteric nervous system communication
+summary: Bidirectional communication network between the gastrointestinal tract and
+  the central nervous system via neural, hormonal, and immune pathways; stress and
+  nervous system tone directly influence gut motility, secretion, and microbiome composition.
+common_symptoms:
+- anxiety
+- low mood
+- brain fog
+- insomnia
+- bloating
+- constipation
+- diarrhea
+- weight gain
+- cravings
+- fatigue
+- irritability
+- depression
+- ibs
+- brain-fog
+- sugar-cravings
+- poor-sleep
+- mood-changes
+- cognitive-decline
+- abdominal-pain
+red_flags:
+- persistent mood disorders requiring pharmacological management
+- severe cognitive decline beyond typical brain fog
+- chronic unresolvable sleep disruption
+- Blood in stool
+- Unexplained weight loss — refer for GI workup
+related_topics:
+- microbiome
+- vagal-tone
+- dysbiosis
+- anxiety
+- insomnia
+- gut-hormone-axis
+- perimenopause
+- leaky-gut
+- hpa-axis-dysregulation
+- gut-microbiome
+- gut-dysfunction
+- ibs
+- low-fodmap-diet
+- vagus-nerve-activation
+key_mechanisms:
+- vagal-nerve-signaling
+- gut-derived-neurotransmitter-production
+- inflammatory-cytokine-transmission
+- leaky-gut
+- hpa-axis-dysregulation
+- chronic-inflammation
+- gut-brain-signaling
+- serotonin-production-gut
+- gut-dysbiosis
+- vagal-tone-dysregulation
+- gut-motility-dysregulation
+coaching_scope_notes: Coaches can incorporate vagus-nerve practices (breathwork, mindful
+  eating, post-meal walking) as part of gut-brain axis support.
+clinician_scope_notes: Antidepressants, anti-anxiety agents, mood stabilizers, HRT,
+  and GLP-1 prescribing are clinician territory. Persistent or severe mood/cognitive
+  symptoms warrant clinical referral.
+evidence_tier: strong
+sources:
+- id: thurlow-microbiome-session-5
+  location: Gut-Brain Axis section
+  quote: The gut and the brain are in constant communication. So think about this
+    as this communication superhighway between the gut and the brain. There is nothing
+    that goes on in the gut that does not get transmitted to the brain and vice versa.
+- id: vitaone-adrenal-cheatsheet
+  location: Stress & Chronic Diseases Link (p.9)
+  quote: 'Stress worsens gut motility, permeability and inflammation. Key Mechanisms:
+    Vagal tone reduction, mast cell activation.'
+- id: vitaone-gut-toolkit
+  location: 'Gut-Brain Axis: Nutrition''s Impact on Mental Health'
+  quote: The gut-brain axis refers to the complex, bidirectional communication between
+    the gastrointestinal tract and the central nervous system.
+- id: vitaone-elimination-diet-toolkit
+  location: Low FODMAP Vegetarian Diet Plan
+  quote: Your gut listens to your nervous system, so we'll pair the food plan with
+    vagus-calming lifestyle rituals.
+version: 4
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,27 @@
+slug: prolonged-stress-depletes-dhea
+statement: Chronic stress causes DHEA levels to fall as the adrenal glands can no
+  longer sustain their output, signifying adrenal exhaustion.
+evidence_tier: plausible_emerging
+rationale: Biologically plausible mechanism; DHEA depletion under chronic stress is
+  documented in functional medicine literature but the concept of 'adrenal exhaustion'
+  as a discrete syndrome lacks strong RCT consensus.
+coaching_translation: When you're under stress for too long, your adrenal glands get
+  depleted — and DHEA, which protects hormones, immunity, and bones, starts to drop.
+caveats:
+- The term 'adrenal exhaustion' is FM-specific; not a recognized ICD diagnosis. Source
+  is an expert consensus toolkit, not primary literature.
+linked_to_topics:
+- hpa-axis-dysregulation
+- hypercortisolism
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-adrenal-toolkit
+  location: Hypercortisolism
+  quote: If this becomes chronic, the adrenals can no longer keep up with the demand,
+    and DHEA levels begin to fall, signifying adrenal exhaustion.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

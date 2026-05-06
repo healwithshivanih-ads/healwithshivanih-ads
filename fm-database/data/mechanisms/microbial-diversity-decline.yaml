@@ -1,0 +1,46 @@
+slug: microbial-diversity-decline
+display_name: Microbial Diversity Decline
+aliases:
+  - microbiome-dysbiosis
+  - dysbiosis
+  - dysbiosis-driven-inflammation
+  - microbiome-substrate-deprivation
+category: gut
+summary: |
+  Loss of bacterial species richness and evenness in the gut microbiome,
+  with concurrent overgrowth of inflammatory or opportunistic organisms.
+  Key driver of declining SCFA production, weakened gut barrier, altered
+  estrogen recycling, and increased systemic inflammation. Accelerates
+  in perimenopause/menopause as estrogen declines, and is amplified by
+  antibiotic exposure, low-fiber diets, and chronic stress.
+upstream_drivers:
+  - low dietary fiber intake (low plant diversity)
+  - antibiotic exposure
+  - chronic stress
+  - estrogen decline (perimenopause)
+  - ultra-processed-food intake
+downstream_effects:
+  - reduced SCFA production
+  - leaky gut progression
+  - altered estrogen recycling (estrobolome dysfunction)
+  - increased inflammatory species (proteobacteria expansion)
+  - food sensitivities
+  - elevated autoimmune risk
+related_mechanisms:
+  - scfa-production
+  - leaky-gut
+  - estrogen-decline
+linked_to_topics:
+  - microbiome
+  - dysbiosis
+  - autoimmune
+  - perimenopause
+  - estrobolome
+sources:
+  - id: thurlow-microbiome-mondays
+    location: Sessions 1, 2, 7 — diversity discussion
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

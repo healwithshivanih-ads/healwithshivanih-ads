@@ -1,0 +1,32 @@
+slug: estrogen-decline-reduces-bile-production-impairing-fat-digestion
+statement: Estrogen is important for bile production; as estrogen declines in menopause,
+  bile flow decreases, impairing fat emulsification and increasing the risk of steatorrhea,
+  post-meal bloating, and gallbladder issues.
+evidence_tier: plausible_emerging
+rationale: Single-expert source. Estrogen's role in bile acid metabolism and cholesterol
+  gallstone risk in menopause is supported by some published research, but the direct
+  coaching-level claim is from a single expert.
+coaching_translation: Declining estrogen can reduce bile flow, making it harder to
+  break down fats — you might notice more bloating after fatty meals or greasy stools.
+out_of_scope_notes: Steatocrit testing, gallbladder evaluation, and ox bile / bile
+  salt supplementation are clinician scope.
+caveats:
+- Single-expert source.
+- Steatorrhea or gallbladder symptoms require medical evaluation before supplement
+  interventions.
+linked_to_topics:
+- perimenopause
+- dyspepsia
+linked_to_supplements:
+- tudca
+linked_to_mechanisms: []
+sources:
+- id: thurlow-microbiome-session-6
+  location: Session 6 — Main Transcript, Bile Section
+  quote: Estrogen is important for bile production. Bile is what breaks down and emulsifies
+    fats. So if our bile flow decreases, we're not going to be able to break down
+    fats quite as well.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

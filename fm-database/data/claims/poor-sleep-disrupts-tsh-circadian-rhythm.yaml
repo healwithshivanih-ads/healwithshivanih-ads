@@ -1,0 +1,28 @@
+slug: poor-sleep-disrupts-tsh-circadian-rhythm
+statement: Poor or irregular sleep disrupts the thyroid's circadian TSH peak (which
+  normally occurs at night), leading to abnormal TSH secretion and impaired thyroid
+  function.
+evidence_tier: plausible_emerging
+rationale: The document states the thyroid follows circadian rhythm with TSH peaking
+  at night, and poor sleep disrupts this. This is consistent with published data on
+  TSH circadian variation, though intervention trials on sleep and thyroid outcomes
+  specifically are limited.
+coaching_translation: Consistent, quality sleep isn't just rest — it directly regulates
+  your thyroid hormone output overnight.
+caveats:
+- Source is synthesis without primary citation
+linked_to_topics:
+- hypothyroidism
+- t3-conversion-disorder
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 6: Other Contributing Factors'
+  quote: The thyroid follows a circadian rhythm, with TSH peaking at night. Poor or
+    irregular sleep disrupts this rhythm, leading to blunted or abnormal TSH secretion.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

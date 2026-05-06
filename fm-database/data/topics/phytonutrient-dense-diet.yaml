@@ -1,0 +1,34 @@
+slug: phytonutrient-dense-diet
+display_name: Phytonutrient-Dense Diet
+aliases:
+- rainbow eating
+- colorful diet
+- plant-rich diet
+summary: A dietary strategy emphasizing a wide variety of colorful whole plant foods
+  (berries, dark leafy greens, beets, pomegranate, turmeric, ginger) to provide antioxidants,
+  polyphenols, and anti-inflammatory compounds supporting cardiometabolic and brain
+  health.
+common_symptoms:
+- chronic-inflammation
+- oxidative-stress-symptoms
+related_topics:
+- cardiometabolic-health
+- anti-inflammatory-diet
+key_mechanisms:
+- systemic-inflammation
+- oxidative-stress
+coaching_scope_notes: Coaches can guide clients to build smoothies and meals around
+  diverse phytonutrient categories using the rainbow framework. Focus on practical
+  food choices and recipe variety.
+evidence_tier: plausible_emerging
+red_flags: []
+clinician_scope_notes: ''
+sources:
+- id: vitaone-cardiometabolic-toolkit
+  location: Building a Better Smoothie
+  quote: Smoothies can be a great complement to your food plan and can help to make
+    'food as medicine' delicious and nutritious.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

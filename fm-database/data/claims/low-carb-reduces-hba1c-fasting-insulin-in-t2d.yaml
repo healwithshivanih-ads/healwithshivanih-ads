@@ -1,0 +1,28 @@
+slug: low-carb-reduces-hba1c-fasting-insulin-in-t2d
+statement: A low-carb diet reduces HbA1c, fasting insulin, and body weight in Type
+  2 Diabetes.
+evidence_tier: strong
+rationale: Multiple RCTs and systematic reviews support low-carb dietary patterns
+  for improving glycaemic markers in Type 2 Diabetes. This is among the better-evidenced
+  claims in this document.
+coaching_translation: For people with Type 2 Diabetes, reducing carbs can meaningfully
+  lower your blood sugar average (HbA1c), reduce insulin levels, and support weight
+  loss.
+out_of_scope_notes: Monitor glucose closely; avoid implementing without clinician
+  supervision if patient is on high insulin doses — hypoglycaemia risk.
+caveats:
+- Tier reflects broader literature consensus; the source document itself is expert
+  consensus, not a cited RCT.
+linked_to_topics:
+- low-carb-diet
+- metabolic-syndrome
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: Functional Medicine Clinical Applications
+  quote: Reduces HbA1c, fasting insulin, weight
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

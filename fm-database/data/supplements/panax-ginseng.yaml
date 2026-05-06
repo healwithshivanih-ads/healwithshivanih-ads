@@ -1,0 +1,33 @@
+slug: panax-ginseng
+display_name: Panax Ginseng
+category: herb
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 200
+    max: 400
+    unit: mg
+  tablet:
+    min: 200
+    max: 400
+    unit: mg
+timing_options:
+- morning
+take_with_food: optional
+notes_for_coach: Adaptogen for energy, cognition, and immunity; morning dosing only
+  — can be stimulating and disrupt sleep if taken late in the day.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 3 - Supplement Table
+  quote: Panax Ginseng - Energy, cognition, immunity - 200–400 mg/day - Morning
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

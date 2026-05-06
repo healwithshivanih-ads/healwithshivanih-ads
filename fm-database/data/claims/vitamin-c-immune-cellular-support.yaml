@@ -1,0 +1,30 @@
+slug: vitamin-c-immune-cellular-support
+statement: Vitamin C supports immune defense via cellular immune functions and has
+  been used clinically in severe COVID-19.
+evidence_tier: plausible_emerging
+rationale: Vitamin C's role in immune cellular function is well-established. Its IV
+  use in ICU COVID-19 settings is emerging; oral use at 1–3 g/day is generally safe.
+  The ICU application is clinical, not a coaching recommendation.
+coaching_translation: Vitamin C supports the immune cells that fight infection. At
+  normal supplement doses it's generally safe and may help reduce illness duration.
+out_of_scope_notes: IV/high-dose ICU use is strictly a clinical intervention. Oral
+  1–3 g/day coaching-level.
+linked_to_topics:
+- immune-support
+- chronic-inflammation
+linked_to_supplements:
+- vitamin-c
+caveats:
+- ICU IV Vitamin C use is a clinical intervention outside coaching scope.
+- Source is expert consensus toolkit, not primary RCT citation for COVID-19 oral use.
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Vitamin C contributes to immune defense by supporting various cellular functions
+    of the immune system. Vitamin C has been used in hospital ICUs to treat COVID-19
+    infection.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

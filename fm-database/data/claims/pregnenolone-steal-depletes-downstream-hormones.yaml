@@ -1,0 +1,35 @@
+slug: pregnenolone-steal-depletes-downstream-hormones
+statement: Under chronic stress, pregnenolone is preferentially shunted toward cortisol
+  synthesis, depleting DHEA, progesterone, and other downstream hormones — a pattern
+  referred to as 'pregnenolone steal'.
+evidence_tier: fm_specific_thin
+rationale: Common FM teaching with plausible biochemistry; specific clinical RCT evidence
+  for this phenomenon is thin.
+coaching_translation: When your body is in chronic stress mode, it 'steals' building
+  blocks from your calming and restorative hormones to make more stress hormone.
+caveats:
+- '''Pregnenolone steal'' is widely used in FM but not fully validated in conventional
+  endocrinology RCTs.'
+- Source is educational cheatsheet synthesis.
+linked_to_topics:
+- adrenal-dysfunction
+- perimenopause
+- pcos
+- anxiety
+- insomnia
+linked_to_supplements:
+- ashwagandha-ksm66
+- vitamin-b6-p5p
+- magnesium-glycinate
+- vitamin-c
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-adrenal-cheatsheet
+  location: The Anti-Stress Hormones — Pregnenolone row (p.22)
+  quote: '"Pregnenolone steal" in chronic stress → low hormones, fatigue, memory loss,
+    mood changes.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

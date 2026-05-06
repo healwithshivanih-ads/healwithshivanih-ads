@@ -1,0 +1,33 @@
+slug: perimenopause-increases-inflammatory-microbiome-species
+statement: In perimenopause and menopause, declining estrogen leads to increased inflammatory
+  and dysbiotic microbial species in the gut, reducing overall microbial diversity.
+evidence_tier: plausible_emerging
+rationale: Observational and mechanistic studies support that estrogen decline is
+  associated with shifts in gut microbial composition, including reductions in Lactobacillus
+  and increases in pro-inflammatory organisms. This is biologically plausible given
+  estrogen's role in gut barrier integrity. Causality and clinical significance are
+  still being studied.
+coaching_translation: When estrogen drops in perimenopause, it changes the types of
+  bacteria in your gut — more 'weeds' and fewer beneficial species. This shift can
+  make your symptoms worse and your gut harder to heal.
+caveats:
+- Source is expert course content, not primary literature.
+- Direction of causality (hormones → microbiome vs. microbiome → hormone symptoms)
+  is not fully established.
+linked_to_topics:
+- perimenopause
+- microbiome
+- dysbiosis
+- gut-hormone-axis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-mondays
+  location: 'Session 1: Microbiome Foundations and Hormone Shifts'
+  quote: In perimenopause and menopause, we tend to have more inflammatory species.
+    We start to have more dysbiotic organisms.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

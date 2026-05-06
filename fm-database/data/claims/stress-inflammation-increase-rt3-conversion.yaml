@@ -1,0 +1,29 @@
+slug: stress-inflammation-increase-rt3-conversion
+statement: Stress, inflammation, trauma, low-calorie diets, toxins, infections, and
+  liver/kidney dysfunction increase conversion of T4 to inactive reverse T3 (RT3),
+  reducing active thyroid hormone.
+evidence_tier: plausible_emerging
+rationale: RT3 dominance is a recognized functional medicine concept. Cytokines downregulate
+  deiodinase-1 and upregulate deiodinase-3, increasing RT3. RCT evidence for the full
+  clinical picture is limited.
+coaching_translation: Chronic stress, inflammation, and poor diet can cause your body
+  to produce more of an inactive form of thyroid hormone, leaving you feeling hypothyroid
+  even if labs look normal.
+caveats:
+- Source is an educational toolkit; no specific RCT cited.
+- RT3 dominance as a clinical entity is debated in mainstream endocrinology.
+linked_to_topics:
+- hypothyroidism
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-toolkit
+  location: Factors that Affect Thyroid Function
+  quote: 'Factors that increase conversion of T4 to RT3: Stress, Trauma, Low-calorie
+    diet, Inflammation (cytokines, etc.), Toxins, Infections, Liver/kidney dysfunction,
+    Certain medications.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

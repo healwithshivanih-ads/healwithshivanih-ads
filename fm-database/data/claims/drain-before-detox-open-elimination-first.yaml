@@ -1,0 +1,27 @@
+slug: drain-before-detox-open-elimination-first
+statement: Effective detoxification requires opening elimination pathways (gut, liver,
+  lymph) before introducing binders or herbs, to prevent toxin recirculation.
+evidence_tier: fm_specific_thin
+rationale: This is a core functional medicine principle stated explicitly in the document.
+  It is biologically plausible (binders without open elimination may cause retox)
+  but lacks formal peer-reviewed consensus.
+coaching_translation: Before adding detox supplements or herbs, make sure your gut
+  is moving, your liver is supported, and your lymph is flowing. Always drain before
+  you detox.
+caveats:
+- FM-specific principle — thin peer-reviewed support
+- Source is FM educational synthesis
+linked_to_topics:
+- liver-detoxification
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Functional Wisdom
+  quote: 'The goal: Drain before detox. Always open gut, liver, lymph before using
+    binders or herbs.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

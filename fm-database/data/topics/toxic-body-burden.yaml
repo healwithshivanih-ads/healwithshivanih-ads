@@ -1,0 +1,42 @@
+slug: toxic-body-burden
+display_name: Toxic Body Burden
+aliases:
+- toxic load
+- body burden
+- cumulative toxin load
+summary: The cumulative accumulation of environmental toxicants (heavy metals, pesticides,
+  plasticizers, industrial chemicals) in the body that, when exceeding the individual's
+  clearance capacity, may contribute to a range of chronic symptoms and diseases.
+common_symptoms:
+- fatigue
+- unexplained-weight-gain
+- brain-fog
+- headache
+- mood-changes
+- infertility
+red_flags:
+- progressive neurological symptoms (tremors, cognitive decline)
+- suspected heavy metal poisoning
+related_topics:
+- liver-detoxification
+- elimination-diet
+- mercury-amalgam-removal
+- mold-mycotoxin-exposure
+key_mechanisms:
+- cytochrome-p450-phase1
+- endocrine-disruption
+- oxidative-stress
+coaching_scope_notes: Coaches can help clients audit environmental exposures, adopt
+  organic/clean food choices, and reduce plastic/chemical exposures in home and kitchen.
+clinician_scope_notes: Heavy metal testing, advanced detox protocols, and assessment
+  of genetic enzyme variants (SNPs) require clinician oversight.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-liver-detox-toolkit
+  location: Detox Food Plan — What is Detox?
+  quote: Scientists estimate that the average adult carries within her or his body
+    at least 700 toxins and that a newborn's body can contain over 200 toxins.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

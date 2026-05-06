@@ -1,0 +1,27 @@
+slug: low-fodmap-therapeutic-phase-not-permanent
+statement: The low-FODMAP diet is a therapeutic phase to calm inflammation, retrain
+  digestion, and rebuild microbial balance — once healed, the goal is dietary diversity,
+  not ongoing restriction.
+evidence_tier: plausible_emerging
+rationale: Consistent with functional medicine principles and Monash University FODMAP
+  research framing; reintroduction is a defined phase in the validated protocol.
+coaching_translation: Think of low-FODMAP like a reset button — you remove the triggers
+  temporarily, let your gut heal, then gradually add foods back to build long-term
+  resilience.
+caveats:
+- Source is a practitioner cheatsheet, not a primary research paper.
+linked_to_topics:
+- low-fodmap-diet
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-elimination-diet-cheatsheet
+  location: Functional Wisdom
+  quote: Low-FODMAP is not forever. It's a therapeutic phase - to calm inflammation,
+    retrain digestion, and rebuild microbial balance. Once healed, the goal is diversity,
+    not restriction.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

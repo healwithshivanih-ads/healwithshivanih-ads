@@ -1,0 +1,31 @@
+slug: estrogen-modulates-gut-microbiome-and-barrier
+statement: Estrogen fortifies the small intestinal lining, quiets inflammation, supports
+  insulin sensitivity, and modulates the gut microbiome; its decline disrupts all
+  of these functions.
+evidence_tier: plausible_emerging
+rationale: Consistent with published research on the estrobolome and estrogen receptor
+  expression in gut epithelium, but synthesized here without specific citations. Single
+  expert source at moderate quality.
+coaching_translation: Estrogen does far more than regulate your cycle — it actively
+  maintains your gut wall, controls inflammation, and shapes which gut bacteria thrive.
+  When estrogen drops, all of this can be affected.
+caveats:
+- Mechanistic claim from single expert; underlying biology is plausible but specific
+  magnitudes of effect not quantified here.
+linked_to_topics:
+- gut-hormone-axis
+- microbiome
+- inflammaging
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-8
+  location: Session 8 — estrogen and immune system segment
+  quote: Estrogen plays a role in the immune system... it modulates immune activity...
+    estrogen quiets inflammation... estrogen is important for insulin sensitivity.
+    Estrogen modulates the gut microbiome as well.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

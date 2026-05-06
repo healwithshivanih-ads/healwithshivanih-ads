@@ -1,0 +1,39 @@
+slug: pregnenolone-steal
+display_name: Pregnenolone Steal
+aliases:
+- cortisol steal
+- progesterone steal
+- pregnenolone shunting
+category: endocrine
+summary: Under chronic stress, adrenal mitochondria preferentially divert pregnenolone
+  (the mother hormone) toward cortisol synthesis at the expense of DHEA, progesterone,
+  and other downstream hormones, resulting in fatigue, mood changes, and hormonal
+  deficiency.
+upstream_drivers:
+- chronic-stress
+- hpa-axis-dysregulation
+downstream_effects:
+- low-progesterone
+- low-dhea
+- low-hormones
+- fatigue
+- memory-loss
+- mood-changes
+related_mechanisms:
+- hpa-axis-dysregulation
+- low-progesterone
+linked_to_topics:
+- adrenal-dysfunction
+- perimenopause
+- anxiety
+- insomnia
+evidence_tier: fm_specific_thin
+sources:
+- id: vitaone-adrenal-cheatsheet
+  location: The Anti-Stress Hormones (p.22)
+  quote: '"Pregnenolone steal" in chronic stress → low hormones, fatigue, memory loss,
+    mood changes.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

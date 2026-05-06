@@ -1,0 +1,25 @@
+slug: shortness-of-breath
+display_name: Shortness of Breath / Shallow Breathing
+aliases:
+- breathlessness from stress
+- shallow breathing
+- stress breathing
+category: other
+severity: common
+description: Stress-induced shortness of breath and shallow breathing patterns that
+  can reduce oxygen delivery to vital organs over time, and may worsen asthma or COPD.
+when_to_refer: Refer if breathing difficulties are severe or associated with known
+  respiratory disease.
+linked_to_topics:
+- chronic-stress
+linked_to_mechanisms:
+- sympathetic-nervous-system-activation
+sources:
+- id: vitaone-adrenal-toolkit
+  location: Effects of Chronic Stress — Respiratory System
+  quote: Cause shortness of breath and worsen asthma or COPD, Can cause shallow breathing
+    which over time may ↓ oxygen to vital organs
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

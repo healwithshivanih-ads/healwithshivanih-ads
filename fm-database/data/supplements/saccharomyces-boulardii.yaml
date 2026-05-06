@@ -1,0 +1,61 @@
+slug: saccharomyces-boulardii
+display_name: Saccharomyces boulardii
+category: probiotic
+forms_available:
+- capsule
+- powder
+timing_options:
+- morning
+- with_breakfast
+- with_lunch
+- with_dinner
+- bedtime
+take_with_food: optional
+linked_to_topics:
+- microbiome
+- dysbiosis
+- gut-brain-axis
+- candida-overgrowth
+- gut-dysbiosis
+- h-pylori-infection
+- low-fodmap-diet
+- sibo
+- ibs
+linked_to_claims:
+- antibiotic-use-can-disrupt-microbiome-for-years
+- saccharomyces-boulardii-outcompetes-candida-restores-balance
+- fodmap-4-phase-fm-protocol
+notes_for_coach: Used during the Elimination Phase of the FODMAP protocol alongside
+  strict low-FODMAP diet. A yeast-based probiotic that is not affected by antibacterial
+  antimicrobials. Check with clinician for dosing.
+notes_for_client: This is a friendly yeast probiotic that helps calm your gut during
+  the early stages of your protocol. It works differently from bacterial probiotics
+  and is resilient during antibiotic-type treatments.
+evidence_tier: plausible_emerging
+typical_dose_range:
+  capsule:
+    min: 5
+    max: 10
+    unit: capsules
+linked_to_mechanisms: []
+sources:
+- id: thurlow-microbiome-session-5
+  location: Q&A — Antibiotics and Microbiome
+  quote: Adding in things like beneficial yeast called sac boulardii... that's typically
+    what I recommend to kind of repopulate the gut.
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: Saccharomyces Boulardii - Gut protection, anti-pathogen - 2 times daily -
+    With or without food
+- id: vitaone-gut-cheatsheet
+  location: H. Pylori Infection Cheatsheet — Microbiome Restoration
+  quote: 'Saccharomyces boulardii: 250–500 mg, 1–2x/day (well-studied for H. pylori
+    support & antibiotic protection)'
+- id: vitaone-elimination-diet-cheatsheet
+  location: Functional Medicine Approach to Using Low-FODMAP Clinically — Elimination
+    Phase
+  quote: Strict low-FODMAP diet + probiotics (S. boulardii, L. plantarum).
+version: 4
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

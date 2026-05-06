@@ -1,0 +1,33 @@
+slug: dietary-fiber-and-scfas-support-immune-balance
+statement: Dietary fiber fermented in the large intestine produces short-chain fatty
+  acids (especially butyrate) that support intestinal colonocyte health and immune
+  balance.
+evidence_tier: plausible_emerging
+rationale: Butyrate's role in colonocyte energy supply and gut barrier integrity is
+  well-documented. Its immunomodulatory effects are also studied (regulatory T cell
+  induction). Source is single expert without specific citations, so plausible_emerging
+  is appropriate per rules.
+coaching_translation: Eating fiber-rich foods feeds the bacteria that produce butyrate
+  — a compound that literally fuels your gut lining and helps calm immune overactivation.
+caveats:
+- Source does not cite specific RCTs; evidence for immune modulation via butyrate
+  is promising but not yet fully consensus-level.
+- Single-expert source.
+linked_to_topics:
+- microbiome
+- immune-resilience
+- inflammaging
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-8
+  location: Session 8 — immune balance supports segment
+  quote: We know fiber and short-chain fatty acids are really important... when we
+    consume fiber, it goes to the digestive system, goes to the large intestine where
+    it's fermented, and the colonocytes then create these short-chain fatty acids.
+    Butyrate is probably the best known one.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

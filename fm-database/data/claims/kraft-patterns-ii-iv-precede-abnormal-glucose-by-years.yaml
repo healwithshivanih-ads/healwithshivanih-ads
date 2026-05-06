@@ -1,0 +1,30 @@
+slug: kraft-patterns-ii-iv-precede-abnormal-glucose-by-years
+statement: Kraft insulin response patterns II–IV signal hyperinsulinaemia years before
+  fasting glucose or HbA1c become abnormal, enabling earlier detection of insulin
+  resistance.
+evidence_tier: fm_specific_thin
+rationale: The Kraft GTIR test is used in FM practice; Joseph Kraft's observational
+  work supports the concept, but the test is not widely validated in large prospective
+  RCTs and is not standard of care.
+coaching_translation: A specialised insulin response test can detect hidden blood
+  sugar problems years before standard tests show anything wrong — worth discussing
+  with your clinician.
+out_of_scope_notes: GTIR test ordering and interpretation is clinician scope.
+linked_to_topics:
+- insulin-resistance
+- blood-sugar-dysfunction
+linked_to_mechanisms:
+- insulin-resistance
+- pancreatic-beta-cell-dysfunction
+caveats:
+- Source is FM synthesis. Kraft GTIR has thin peer-reviewed validation; not widely
+  used in conventional practice. Clinician scope.
+linked_to_supplements: []
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Chapter 6 — Understanding Laboratory Reports
+  quote: Patterns II-IV often precede abnormal glucose values by several years.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,26 @@
+slug: joint-muscle-pain
+display_name: Joint / Muscle Pain
+aliases:
+- joint pain
+- muscle pain
+- myalgia
+- arthralgia
+- body aches
+category: musculoskeletal
+severity: common
+description: Pain in joints or muscles, which some clients report improving on elimination
+  diets; may reflect reduction in systemic inflammation or food-reactive immune activation.
+when_to_refer: Hot, swollen joints or systemic features — rheumatology referral.
+linked_to_topics:
+- elimination-diet
+- nightshade-sensitivity
+linked_to_mechanisms:
+- immune-food-reactivity
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: Low Fodmap Diet Symptom Tracker — Section 2
+  quote: Joint / muscle pain
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

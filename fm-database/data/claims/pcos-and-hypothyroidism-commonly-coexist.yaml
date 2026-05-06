@@ -1,0 +1,27 @@
+slug: pcos-and-hypothyroidism-commonly-coexist
+statement: PCOS and hypothyroidism commonly coexist, with a 2–3× higher rate of hypothyroidism
+  in PCOS versus controls.
+evidence_tier: strong
+rationale: Meta-analyses show a 2–3× higher rate of subclinical/overt hypothyroidism
+  in PCOS vs. controls. Both conditions share insulin resistance and autoimmune pathways,
+  and standard of care for new PCOS diagnoses now includes thyroid workup.
+coaching_translation: If you have PCOS, your thyroid deserves checking — and vice
+  versa. They often travel together.
+caveats:
+- Thyroid testing and interpretation is a clinician responsibility; coaches can educate
+  on the association and encourage workup.
+linked_to_topics:
+- thyroid
+- pcos
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-evidence-tiers
+  location: TOPIC 1 — Thyroid / Claims & Tiers / Claim 9
+  quote: Meta-analyses show 2-3× higher rate of subclinical/overt hypothyroidism in
+    PCOS vs. controls.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

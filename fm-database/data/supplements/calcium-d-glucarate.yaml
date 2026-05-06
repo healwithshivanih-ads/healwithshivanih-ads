@@ -1,0 +1,50 @@
+slug: calcium-d-glucarate
+display_name: Calcium D-Glucarate
+category: mineral
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 1500
+    unit: mg
+  tablet:
+    min: 250
+    max: 500
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: optional
+notes_for_coach: Inhibits beta-glucuronidase to prevent estrogen reabsorption. Ideal
+  for sluggish liver pattern, heavy periods, bloating. Combine with probiotics for
+  gut dysbiosis / estrobolome issues.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- thyroid
+- estrogen-dominance
+- estrobolome
+linked_to_mechanisms: []
+linked_to_claims:
+- estrogen-dominance-raises-tbg-reduces-free-thyroid-hormones
+- calcium-d-glucarate-prevents-estrogen-reabsorption
+notes_for_client: Helps your body clear used estrogen through the gut instead of recycling
+  it back into the bloodstream.
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: Calcium D-Glucarate - Estrogen detox, liver phase 2 - 250–500 mg/day - With
+    meals
+- id: vitaone-thyroid-cheatsheet
+  location: Thyroid Disorders Cheatsheet — Total T4/Total T3 Clinical Action Steps
+  quote: Support liver detox, adequate protein, balance estrogen metabolism
+- id: vitaone-sex-hormones-cheatsheet
+  location: Estrogen Dominance Supplement Cheatsheet
+  quote: 'Calcium D-Glucarate: Supports glucuronidation & prevents estrogen reabsorption;
+    500–1500 mg/day; ideal for sluggish liver.'
+version: 3
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

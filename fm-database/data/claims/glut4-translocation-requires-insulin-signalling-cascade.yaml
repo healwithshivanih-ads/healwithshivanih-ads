@@ -1,0 +1,27 @@
+slug: glut4-translocation-requires-insulin-signalling-cascade
+statement: Insulin-mediated glucose uptake into muscle, adipose, and liver cells requires
+  an intact IRS-1 → PI3K → Akt signalling cascade that translocates GLUT-4 transporters
+  to the cell surface.
+evidence_tier: strong
+rationale: Molecular mechanism of insulin action is extensively characterised in peer-reviewed
+  literature.
+coaching_translation: Insulin works like a key that triggers a chain reaction inside
+  cells, opening 'doors' (GLUT-4) that let glucose in for energy.
+linked_to_topics:
+- blood-sugar-dysfunction
+- insulin-resistance
+linked_to_mechanisms:
+- insulin-resistance
+caveats: []
+out_of_scope_notes: ''
+linked_to_supplements: []
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 2.3 — Cellular Glucose Uptake
+  quote: Insulin binds to its receptor on target cells (muscle, adipose, liver), initiating
+    a signalling cascade (IRS-1 → PI3K → Akt) that translocates GLUT-4 transporters
+    to the cell surface, thereby permitting glucose entry.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

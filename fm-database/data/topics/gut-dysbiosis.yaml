@@ -1,0 +1,53 @@
+slug: gut-dysbiosis
+display_name: Gut Dysbiosis
+aliases:
+- microbiome imbalance
+- intestinal dysbiosis
+- dysbiotic bacteria
+summary: An imbalance in the gut microbiome where pathogenic or dysbiotic bacteria
+  outcompete beneficial strains, driving fermentation of unabsorbed carbohydrates
+  and systemic inflammation. FODMAP restriction reduces fermentation load; reintroduction
+  of prebiotic fibres rebuilds diversity.
+common_symptoms:
+- bloating
+- irregular-stools
+- fatigue
+- food-cravings
+- skin-rashes
+- abdominal-gas
+- new-food-sensitivities
+red_flags:
+- autoimmune flares
+- severe unrelenting diarrhea
+- Persistent diarrhea with blood or mucus
+related_topics:
+- sibo
+- leaky-gut
+- hypochlorhydria
+- candida-overgrowth
+- ibs
+- low-fodmap-diet
+key_mechanisms:
+- gut-dysbiosis-mechanism
+- reduced-scfas
+- leaky-gut
+- gut-fermentation-dysbiosis
+coaching_scope_notes: Guide clients on prebiotic reintroduction once symptoms stabilize.
+  Stool testing interpretation is clinician-scope.
+clinician_scope_notes: 'Order gut microbiome test. Therapeutic focus: restore microbial
+  balance — always secondary to diet/lifestyle changes.'
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Gut Health Cheatsheet
+  quote: Imbalance of gut microbiota (good vs bad bacteria) — Poor diet, antibiotics,
+    toxins, low fiber, stress — Broad-spectrum probiotics, Prebiotics, Polyphenols,
+    Butyrate
+- id: vitaone-elimination-diet-cheatsheet
+  location: FODMAP Diet Cheatsheet — Introduction
+  quote: They're not 'bad foods' - they're poorly absorbed carbs that ferment and
+    feed dysbiotic bacteria, driving IBS, SIBO, and bloating.
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

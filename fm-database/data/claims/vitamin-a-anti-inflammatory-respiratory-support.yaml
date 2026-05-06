@@ -1,0 +1,31 @@
+slug: vitamin-a-anti-inflammatory-respiratory-support
+statement: Vitamin A is anti-inflammatory, enhances immune function, and supports
+  the lining of the respiratory tract.
+evidence_tier: plausible_emerging
+rationale: Cited Huang et al. (J Clin Med 2018) reviews Vitamin A's immune role. The
+  stated dose (10,000–25,000 IU/day) is high and carries teratogenicity and hepatotoxicity
+  risk per cited references (Rothman et al. NEJM 1995).
+coaching_translation: Vitamin A plays a role in keeping the immune system and respiratory
+  tract healthy.
+out_of_scope_notes: Doses of 10,000–25,000 IU/day are HIGH and require strict clinician
+  supervision. Teratogenic in pregnancy. Hepatotoxicity risk. NOT appropriate for
+  coaching-led supplementation.
+linked_to_topics:
+- immune-support
+linked_to_supplements:
+- vitamin-a
+caveats:
+- MUST be supervised by a clinician. Teratogenic at high doses — contraindicated in
+  pregnancy.
+- Hepatotoxicity risk at stated doses.
+- Confirm_with_clinician for any supplementation above 5,000 IU/day.
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Vitamin A is anti-inflammatory, enhances immune function, and supports the
+    lining of the respiratory tract.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

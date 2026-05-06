@@ -1,0 +1,43 @@
+slug: oregano-oil
+display_name: Oregano Oil
+category: herb
+forms_available:
+- capsule
+- liquid
+typical_dose_range:
+  capsule:
+    min: 100
+    max: 200
+    unit: mg
+  liquid:
+    min: 3
+    max: 5
+    unit: drops
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- candida-overgrowth
+- sibo
+- gut-dysbiosis
+- h-pylori-infection
+linked_to_claims:
+- berberine-antimicrobial-blood-sugar
+notes_for_coach: Carvacrol ≥70% is the active antifungal/antimicrobial component.
+  Broad-spectrum — use for 2-4 weeks then rotate. Can disrupt beneficial bacteria
+  with prolonged use.
+notes_for_client: Oregano oil is a powerful natural antimicrobial that can help fight
+  Candida and harmful gut bacteria — best used in short courses and rotated with other
+  antifungals.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Candida Infection — Supplement Stack
+  quote: Oregano Oil (Carvacrol ≥ 70%) — 100–200 mg softgel, 2x/day — Broad-spectrum
+    antifungal; strong against resistant Candida
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

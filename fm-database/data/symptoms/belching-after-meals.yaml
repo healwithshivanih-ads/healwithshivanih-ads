@@ -1,0 +1,25 @@
+slug: belching-after-meals
+display_name: Belching / Burping After Meals
+aliases:
+- burping
+- belching
+- eructation
+- gas after eating
+category: gi
+severity: common
+description: Frequent belching or burping, particularly immediately after meals, often
+  a sign of hypochlorhydria or dysbiosis.
+linked_to_topics:
+- hypochlorhydria
+- gut-dysfunction
+linked_to_mechanisms:
+- hypochlorhydria-mechanism
+when_to_refer: ''
+sources:
+- id: vitaone-gut-toolkit
+  location: Testing for Low Stomach Acidity — Common Symptoms of Hypochlorhydria
+  quote: Bloating, belching, burning, and flatulence immediately after meals
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

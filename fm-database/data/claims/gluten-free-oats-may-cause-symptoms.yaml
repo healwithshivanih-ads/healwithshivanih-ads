@@ -1,0 +1,29 @@
+slug: gluten-free-oats-may-cause-symptoms
+statement: Certified gluten-free oats may still cause adverse symptoms in people with
+  celiac disease or gluten intolerance due to structural similarity to gluten and
+  cross-contamination risk during processing.
+evidence_tier: strong
+rationale: Celiac Disease Foundation and Gluten Intolerance Group guidance (cited
+  in document references) state that avenin in oats cross-reacts in a subset of celiac
+  patients.
+coaching_translation: Even oats labelled gluten-free can bother some people with celiac
+  or gluten sensitivity — trial with caution and track symptoms.
+caveats:
+- Only applies to celiac and gluten-sensitive individuals; most people tolerate GF
+  oats.
+linked_to_topics:
+- gluten-sensitivity
+linked_to_mechanisms:
+- gut-barrier-dysfunction
+- immune-food-reactivity
+out_of_scope_notes: ''
+linked_to_supplements: []
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: A Guide to Eating Gluten-Free
+  quote: Gluten-free oats have a similar structure to gluten-containing grains. Also,
+    they may be contaminated with gluten-containing grains during processing.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,35 @@
+slug: multiple-food-sensitivities-signal-gut-microbiome-dysfunction
+statement: The presence of multiple simultaneous food sensitivities is more likely
+  a sign of underlying gut microbiome dysfunction than true intolerance to each individual
+  food.
+evidence_tier: fm_specific_thin
+rationale: This is a clinical heuristic frequently used in functional medicine — when
+  many foods trigger reactions, the gut environment (permeability, dysbiosis) is suspect
+  rather than the individual foods. Biologically plausible but not validated by RCTs
+  as a diagnostic criterion.
+coaching_translation: If you're reacting to many different foods, the problem probably
+  isn't all those foods — it's likely your gut health. Focusing on healing the gut
+  often reduces the number of reactive foods over time.
+caveats:
+- Single-expert source; clinical observation, not peer-reviewed diagnostic criterion.
+- Source is expert consensus, moderate quality — treat as a coaching framework, not
+  a clinical rule.
+linked_to_topics:
+- food-sensitivities
+- microbiome
+- dysbiosis
+- leaky-gut
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-2
+  location: Why midlife changes food tolerance
+  quote: More often than not, when I start seeing a lot of food sensitivities, I'm
+    already thinking about what's going on in the gut microbiome, because we should
+    not be sensitive to everything, right? More often than not, it's a reflection
+    of what's going on kind of intrinsically at the gut level.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

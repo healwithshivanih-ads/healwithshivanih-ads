@@ -1,0 +1,28 @@
+slug: hypoglycemia-symptoms
+display_name: Reactive Hypoglycemia
+aliases:
+- dizzy between meals
+- irritable if skipping meals
+- sleepy without food
+- blood sugar crashes
+- hangry
+category: metabolic
+severity: common
+description: Dizziness, irritability, or sleepiness when going without food for 4–5
+  hours; relieved by eating. Associated with low cortisol impairing gluconeogenesis.
+when_to_refer: If symptoms are severe or occur frequently, refer for glucose tolerance
+  and cortisol testing.
+linked_to_topics:
+- hpa-axis-dysregulation
+linked_to_mechanisms:
+- cortisol-excess
+- hpa-axis-dysregulation
+sources:
+- id: vitaone-adrenal-toolkit
+  location: 'HPA Axis Questionnaire — Section 1: Low cortisol state'
+  quote: 'Hypoglycemia: dizzy, irritable, or sleepy if you go without food for 4-5
+    hours; symptoms relieved by food'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

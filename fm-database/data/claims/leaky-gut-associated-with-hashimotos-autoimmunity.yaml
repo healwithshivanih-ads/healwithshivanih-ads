@@ -1,0 +1,29 @@
+slug: leaky-gut-associated-with-hashimotos-autoimmunity
+statement: Leaky gut syndrome is often associated with autoimmune conditions including
+  Hashimoto's, and healing the gut may help address autoimmune triggers.
+evidence_tier: plausible_emerging
+rationale: Intestinal permeability is increasingly linked to autoimmune conditions
+  via molecular mimicry and immune activation. Direct RCT evidence for gut healing
+  reducing Hashimoto's antibodies is emerging but not yet consensus.
+coaching_translation: Gut health may be a key driver of your immune system's attack
+  on your thyroid. Supporting gut healing could help calm the autoimmune process.
+caveats:
+- Source is an educational toolkit; no specific RCT cited for gut healing and Hashimoto's
+  outcomes specifically.
+- 5R protocol is a functional medicine framework without independent RCT backing for
+  AIT.
+linked_to_topics:
+- hashimotos-hypothyroidism
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-toolkit
+  location: Addressing Autoimmune Triggers
+  quote: A focus on healing the gut, as leaky gut syndrome is often associated with
+    autoimmune conditions. The 5R protocol (Remove, Replace, Reinoculate, Repair,
+    and Rebalance) is often used.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

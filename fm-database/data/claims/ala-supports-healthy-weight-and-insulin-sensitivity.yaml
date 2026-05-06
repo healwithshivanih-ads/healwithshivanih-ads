@@ -1,0 +1,26 @@
+slug: ala-supports-healthy-weight-and-insulin-sensitivity
+statement: Alpha lipoic acid supports healthy weight, which in turn supports insulin
+  sensitivity.
+evidence_tier: plausible_emerging
+rationale: Kucukgoncu et al. 2017 (Obesity Reviews) meta-analysis of RCTs cited in
+  document shows modest weight loss effect with ALA supplementation.
+coaching_translation: ALA may help with weight management, and since carrying less
+  excess weight improves blood sugar control, it's a two-for-one benefit.
+caveats:
+- Weight loss effect in meta-analysis is modest (~1.5 kg). Not a substitute for diet
+  and exercise.
+linked_to_topics:
+- blood-sugar-dysfunction
+linked_to_supplements:
+- alpha-lipoic-acid
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-blood-sugar-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: Some research shows that alpha lipoic acid supports healthy weight, which
+    in turn supports insulin sensitivity.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

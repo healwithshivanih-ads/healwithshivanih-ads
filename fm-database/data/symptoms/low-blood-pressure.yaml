@@ -1,0 +1,25 @@
+slug: low-blood-pressure
+display_name: Low Blood Pressure / Orthostatic Hypotension
+aliases:
+- dizziness on standing
+- postural hypotension
+- lightheaded when standing
+- drop in BP on standing
+category: cardiovascular
+severity: concerning
+description: Low blood pressure or a drop in blood pressure upon standing, associated
+  with low cortisol states and mineralocorticoid insufficiency.
+when_to_refer: Refer for adrenal function and electrolyte testing; persistent orthostatic
+  hypotension warrants medical evaluation for Addison's disease.
+linked_to_topics:
+- hpa-axis-dysregulation
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+sources:
+- id: vitaone-adrenal-toolkit
+  location: 'HPA Axis Questionnaire — Section 1: Low cortisol state'
+  quote: Low blood pressure and/or drop of blood pressure on standing*
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,30 @@
+slug: phytonutrient-smoothies-support-cardio-and-brain-health
+statement: Condition-specific smoothies combining polyphenol-rich fruits, dark leafy
+  greens, green tea, and anti-inflammatory spices (turmeric, ginger) support cardiometabolic
+  and brain health.
+evidence_tier: plausible_emerging
+rationale: Ingredients like blueberries, pomegranate, beet, turmeric, and green tea
+  each have independent evidence for cardiovascular and cognitive benefit; the combined
+  'food as medicine' smoothie approach is a FM-standard practice with plausible but
+  not RCT-confirmed synergistic benefit.
+coaching_translation: Blending together colorful fruits, greens, and anti-inflammatory
+  spices into daily smoothies is a practical way to pack in heart- and brain-supporting
+  nutrients.
+caveats:
+- No single RCT tests the specific smoothie combinations listed
+- Individual ingredient evidence varies from strong to emerging
+linked_to_topics:
+- cardiometabolic-health
+- phytonutrient-dense-diet
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-cardiometabolic-toolkit
+  location: Building a Better Smoothie
+  quote: Smoothies can be a great complement to your food plan and can help to make
+    'food as medicine' delicious and nutritious.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

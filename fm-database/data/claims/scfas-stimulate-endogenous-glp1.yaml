@@ -1,0 +1,29 @@
+slug: scfas-stimulate-endogenous-glp1
+statement: SCFAs play an important role in endogenous GLP-1 regulation, supporting
+  satiety through natural mechanisms analogous to (but distinct from) synthetic GLP-1
+  drugs.
+evidence_tier: plausible_emerging
+rationale: Speaker explicitly links SCFAs to endogenous GLP-1. This is a plausible
+  and emerging area of research; not yet consensus. No study cited.
+coaching_translation: Fiber-fed SCFAs help the body make its own natural version of
+  the satiety signal that GLP-1 drugs mimic. This is a key reason high-fiber diets
+  support appetite regulation.
+caveats:
+- Source is expert session, not primary literature. Research on SCFA-GLP-1 axis is
+  emerging; verify with current literature.
+linked_to_topics:
+- scfa-short-chain-fatty-acids
+- fiber-gap
+- gut-hormone-axis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-7
+  location: SCFA section [00:09:34]
+  quote: short chain fatty acids are intercoally interwoven with endogenous, what
+    we make inside our body, GLP-1 regulation.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

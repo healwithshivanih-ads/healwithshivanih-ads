@@ -1,0 +1,29 @@
+slug: molecular-mimicry-gluten-drives-hashimotos
+statement: Molecular mimicry between gluten proteins and thyroid tissue is a plausible
+  mechanism driving autoimmune thyroid disease (Hashimoto's).
+evidence_tier: plausible_emerging
+rationale: The molecular mimicry hypothesis has biochemical support via tissue transglutaminase
+  cross-reactivity and gliadin-thyroid epitope similarity. The clinical implication
+  — that gluten triggers or perpetuates Hashimoto's — is plausible but has less RCT
+  support than the underlying mechanism suggests.
+coaching_translation: There's biological overlap between gluten proteins and thyroid
+  tissue — which may be why some people's thyroid antibodies drop when they stop eating
+  gluten. The research is still working out who this applies to most.
+caveats:
+- Teach as mechanism only, not as a definitive causal claim.
+- RCT-level clinical evidence is weaker than the mechanistic basis.
+linked_to_topics:
+- thyroid
+- autoimmune
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-evidence-tiers
+  location: TOPIC 1 — Thyroid / Claims & Tiers / Claim 6
+  quote: The molecular mimicry hypothesis has biochemical support (tissue transglutaminase
+    cross-reactivity, gliadin-thyroid epitope similarity).
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

@@ -1,0 +1,28 @@
+slug: electrolyte-supplementation-recommended-during-fasting
+statement: Electrolyte supplementation (calcium, magnesium, sodium, potassium, chloride)
+  and adequate filtered water intake are recommended on fasting days.
+evidence_tier: confirm_with_clinician
+rationale: Electrolyte needs during fasting are individualized and clinician-directed.
+  Dosing and specific electrolyte choices require professional guidance.
+coaching_translation: Staying hydrated and replenishing minerals like magnesium and
+  potassium on fasting days helps your body adjust. Your practitioner will guide the
+  specifics.
+out_of_scope_notes: Specific electrolyte supplement selection and dosing should be
+  personalized by the treating clinician.
+linked_to_topics:
+- intermittent-fasting
+linked_to_supplements:
+- magnesium-glycinate
+- electrolytes
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cardiometabolic-toolkit
+  location: Intermittent Fasting — General Recommendations for Fasting
+  quote: Drink plenty of filtered water on fasting days. Your functional medicine
+    practitioner may also recommend electrolytes or other supplements personalized
+    for you.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

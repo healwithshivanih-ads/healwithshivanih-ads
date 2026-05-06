@@ -1,0 +1,27 @@
+slug: increased-thirst
+display_name: Increased Thirst
+aliases:
+- polydipsia
+- always thirsty
+- excessive thirst
+category: metabolic
+severity: common
+description: Persistent thirst associated with elevated blood glucose causing osmotic
+  diuresis and fluid losses.
+when_to_refer: Refer if accompanied by frequent urination and fasting glucose ≥ 100
+  mg/dL.
+linked_to_topics:
+- blood-sugar-dysfunction
+- prediabetes
+- type-2-diabetes
+linked_to_mechanisms:
+- insulin-resistance
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 4.2.2 — Progressing Insulin Resistance
+  quote: Energy 'crashes,' intensified cravings, increased thirst, mood swings, expanding
+    waist circumference.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

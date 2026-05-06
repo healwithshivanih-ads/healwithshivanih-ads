@@ -1,0 +1,38 @@
+slug: depression
+display_name: Depression
+aliases:
+- low mood
+- sadness
+- depressive symptoms
+- mood changes
+- feeling depressed
+- restlessness
+- moodiness
+category: mood
+severity: concerning
+description: Depressed mood or depressive symptoms; a known side effect of beta blocker
+  therapy.
+when_to_refer: Refer if clinically significant or suicidal ideation present.
+linked_to_topics:
+- hypothyroidism
+- t3-conversion-disorder
+- hashimotos-hypothyroidism
+- beta-blocker-deprescribing
+linked_to_mechanisms:
+- impaired-t4-to-t3-conversion
+- hpa-axis-dysregulation
+sources:
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 4: Functions of Thyroid Hormones'
+  quote: Low T3 Production contributes to depression, Anxiety and Sadness
+- id: vitaone-thyroid-toolkit
+  location: Symptoms of Hashimoto's Hypothyroidism
+  quote: Depression and Anxiety
+- id: vitaone-cv-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Practitioners'
+  quote: Beta blocker therapy has been associated with increased rates of depression,
+    fatigue, constipation, erectile dysfunction, and cognitive slowing.
+version: 3
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,29 @@
+slug: type-2-diabetes-reversible-with-lifestyle
+statement: Type 2 diabetes can be reversed with exercise combined with diet and lifestyle
+  modification.
+evidence_tier: plausible_emerging
+rationale: Supported by landmark trials (DiRECT, Look AHEAD) though 'reversal' vs.
+  'remission' terminology is debated; strong evidence for remission in early T2D with
+  aggressive lifestyle intervention.
+coaching_translation: Many people have put type 2 diabetes into remission through
+  consistent diet and exercise changes — it's not an inevitable life sentence.
+caveats:
+- '''Reversal'' is contested in clinical literature; ''remission'' is preferred. Effect
+  size depends on disease duration and baseline HbA1c. Coaching does not manage T2D
+  — refer to clinician.'
+out_of_scope_notes: Managing diagnosed type 2 diabetes is outside coaching scope.
+  Direct clients to their clinician for monitoring and medication management.
+linked_to_topics:
+- blood-sugar-dysfunction
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-blood-sugar-toolkit
+  location: Antigravity Exercises
+  quote: Today, exercise is recommended as one of the first management strategies
+    for patients with type 2 diabetes, and, together with diet and lifestyle modification,
+    it is possible to reverse the condition completely.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

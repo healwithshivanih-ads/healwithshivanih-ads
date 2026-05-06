@@ -1,0 +1,35 @@
+slug: artichoke-extract
+display_name: Artichoke Extract
+category: herb
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 300
+    max: 600
+    unit: mg
+  tablet:
+    min: 300
+    max: 600
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+notes_for_coach: Stimulates bile flow to support digestion and liver health; useful
+  in detox and sluggish digestion protocols.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: Artichoke Extract - Bile flow, liver support - 300–600 mg/day - With meals
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

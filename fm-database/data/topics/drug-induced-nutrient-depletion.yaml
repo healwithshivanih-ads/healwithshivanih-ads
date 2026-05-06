@@ -1,0 +1,36 @@
+slug: drug-induced-nutrient-depletion
+display_name: Drug-Induced Nutrient Depletion (Cardiovascular Medications)
+aliases:
+- medication-nutrient depletion
+- statin nutrient depletion
+- diuretic nutrient loss
+summary: Common cardiovascular medications including beta blockers, statins (HMG-CoA
+  reductase inhibitors), diuretics, ACE inhibitors, ARBs, and metformin deplete key
+  nutrients such as CoQ10, magnesium, zinc, B vitamins, and essential fatty acids.
+common_symptoms:
+- fatigue
+- muscle-weakness
+- cognitive-decline
+red_flags:
+- severe CoQ10 depletion with statin use and myopathy symptoms
+related_topics:
+- cardiovascular-dysfunction
+- hypertension
+key_mechanisms:
+- drug-nutrient-interaction
+coaching_scope_notes: Coaches can educate clients about potential nutrient depletions
+  and encourage discussion with their prescribing clinician. Do not recommend specific
+  supplement dosing to replace drug-depleted nutrients without clinician guidance.
+clinician_scope_notes: HMG-CoA reductase inhibitors (statins) deplete CoQ10, carnitine,
+  copper, EFAs, selenium, vitamins D and E, and zinc. Metformin depletes CoQ10, folic
+  acid, and B12. Monitor and supplement accordingly.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-cv-toolkit
+  location: Cardiovascular Drugs and Potential Nutrient Deficiency
+  quote: Common medications, including over-the-counter drugs, can potentially deplete
+    the body of vital nutrients.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

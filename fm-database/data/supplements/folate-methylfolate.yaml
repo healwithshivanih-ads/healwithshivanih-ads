@@ -1,0 +1,54 @@
+slug: folate-methylfolate
+display_name: Folate (Methyltetrahydrofolate / 5-MTHF)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+- lozenge
+typical_dose_range:
+  capsule:
+    min: 400
+    max: 1000
+    unit: mcg
+  tablet:
+    min: 800
+    max: 1200
+    unit: mcg
+  lozenge:
+    min: 800
+    max: 1200
+    unit: mcg
+timing_options:
+- on_empty_stomach
+- morning
+- with_breakfast
+take_with_food: optional
+notes_for_coach: Listed as methyl tetrahydrofolate form for medication-induced depletion
+  protocol. Active form bypasses MTHFR gene variants.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- estrogen-dominance
+- pcos
+- insulin-resistance
+linked_to_mechanisms: []
+linked_to_claims:
+- b-vitamins-critical-for-phase-ii-estrogen-methylation
+- metformin-depletes-b12
+notes_for_client: Folate (in its active methylated form) supports healthy cell metabolism
+  and is important if your metformin depletes key nutrients.
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Folate (Methylfolate) - Methylation, pregnancy, detox - 800-1200 mcg/day
+    - sublingual morning pre breakfast OR homocysteine before breakfast
+- id: vitaone-sex-hormones-cheatsheet
+  location: Estrogen Dominance Supplement Cheatsheet
+  quote: Use with MTHF if MTHFR issue suspected.
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Medication-Induced
+    Depletions
+  quote: Folate (as methyl tetra hydro folate)
+version: 3
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

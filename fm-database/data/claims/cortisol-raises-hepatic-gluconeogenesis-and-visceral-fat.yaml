@@ -1,0 +1,27 @@
+slug: cortisol-raises-hepatic-gluconeogenesis-and-visceral-fat
+statement: Cortisol increases hepatic gluconeogenesis and visceral fat deposition,
+  directly worsening insulin resistance.
+evidence_tier: strong
+rationale: Well-characterised in endocrinology; glucocorticoid-induced hyperglycaemia
+  and visceral adiposity are established clinical phenomena.
+coaching_translation: Chronic stress keeps your cortisol elevated, which makes your
+  liver pump out more glucose and encourages fat storage around your waist — both
+  of which make insulin resistance worse.
+linked_to_topics:
+- insulin-resistance
+- blood-sugar-dysfunction
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- insulin-resistance
+caveats: []
+out_of_scope_notes: ''
+linked_to_supplements: []
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 4.0.2 — Mechanistic Contributors
+  quote: Hyper-cortisolaemia- cortisol increases hepatic gluconeogenesis & visceral
+    fat deposition.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,34 @@
+slug: phase-ii-conjugation
+display_name: Phase II Conjugation
+aliases:
+- liver conjugation
+- detox conjugation
+- biotransformation phase II
+category: metabolic
+summary: Phase II neutralises reactive intermediates from Phase I by conjugating them
+  with molecules (glucuronide, sulfate, glutathione, methyl groups) for safe excretion.
+  Requires B vitamins, magnesium, NAC, sulfur foods, and methylation support.
+upstream_drivers:
+- cyp450-phase-i-activation
+- impaired-methylation
+downstream_effects:
+- phase-iii-elimination
+- estrogen-clearance
+- heavy-metal-clearance
+related_mechanisms:
+- cyp450-phase-i-activation
+- impaired-methylation
+- phase-iii-elimination
+linked_to_topics:
+- liver-detoxification
+- estrogen-dominance
+- methylation-mthfr
+evidence_tier: strong
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Functional Detox Phases
+  quote: 'Phase II – Conjugation: Neutralizes reactive intermediates for excretion.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

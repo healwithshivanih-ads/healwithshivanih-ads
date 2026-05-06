@@ -1,0 +1,26 @@
+slug: hcl-needed-for-b12-mineral-absorption
+statement: Adequate HCl is required to absorb vitamin B12 and several minerals including
+  iron, calcium, magnesium, zinc, and copper.
+evidence_tier: strong
+rationale: 'Well-established that gastric acid is required for the release of B12
+  from food proteins and for the solubilization of minerals. Reference: Hunt et al.,
+  Gut 2015.'
+coaching_translation: Without enough stomach acid, your body can't properly absorb
+  key nutrients like B12, iron, and magnesium — even if you're eating them.
+linked_to_topics:
+- hypochlorhydria
+- gut-dysfunction
+linked_to_supplements:
+- betaine-hcl
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-toolkit
+  location: Testing for Low Stomach Acidity
+  quote: Having enough HCI is needed to absorb vitamin B12 and several minerals (such
+    as iron, calcium, magnesium, zinc, and copper).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

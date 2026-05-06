@@ -1,0 +1,68 @@
+slug: thyroid
+display_name: Thyroid Dysfunction
+aliases:
+- thyroid dysfunction
+- Hashimoto's thyroiditis
+- autoimmune thyroid disease
+summary: Thyroid dysfunction encompasses hypo-, hyper-, and autoimmune thyroid conditions.
+  Functional Medicine emphasises root-cause identification across production, conversion,
+  and utilisation pathways rather than relying solely on TSH.
+common_symptoms:
+- fatigue
+- hair loss
+- constipation
+- weight gain
+- brain fog
+- anxiety
+- cold intolerance
+- slow gut motility
+- weight-gain
+- hair-thinning
+- brain-fog
+- cold-intolerance
+- mood-changes
+- menstrual-irregularities
+- palpitations
+red_flags:
+- goiter or thyroid nodules
+- rapid unexplained weight change
+- extreme heat or cold intolerance
+- palpitations
+- post-partum thyroid symptoms
+- suspected autoimmune disease without formal workup
+- Palpitations and tremors suggesting hyperthyroid crisis
+- Positive TPO/Tg antibodies with rapidly worsening symptoms — refer to endocrinologist
+related_topics:
+- pcos
+- perimenopause
+- autoimmune
+- inflammation
+- leaky-gut
+- dysbiosis
+- gut-hormone-axis
+- food-sensitivities
+key_mechanisms:
+- t4-to-t3-conversion-impairment
+- hpa-axis-dysregulation
+- autoimmune-molecular-mimicry
+- t4-to-t3-conversion-block
+- leaky-gut
+coaching_scope_notes: Coaches can support lifestyle, nutrition, gut health, stress
+  reduction, and sleep hygiene. Lab interpretation, medication decisions, and specific
+  dosing are out of scope — refer to clinician.
+clinician_scope_notes: 'Full panel recommended: TSH, FT3, FT4, rT3, Anti-TPO, Anti-Tg.
+  Monitor every 8–12 weeks. Assess cortisol, gut health, and liver enzymes as co-factors.'
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-evidence-tiers
+  location: TOPIC 1 — Thyroid / Claims & Tiers
+  quote: TSH misses early Hashimoto's, euthyroid-sick syndrome, conversion problems,
+    and autoimmune thyroid disease without elevated TSH.
+- id: vitaone-thyroid-cheatsheet
+  location: Biohacking Thyroid Function Cheatsheet
+  quote: Thyroid dysfunction, whether hypo, hyper, or autoimmune can persist even
+    with 'normal' TSH if deeper imbalances are missed.
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

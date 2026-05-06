@@ -1,0 +1,29 @@
+slug: antibiotics-decimate-microbiome-including-beneficial-bacteria
+statement: Antibiotic use can decimate the microbiome by eliminating both beneficial
+  and pathogenic bacteria, with meaningful downstream effects on metabolic health
+  — though antibiotics are sometimes medically necessary.
+evidence_tier: strong
+rationale: The broad-spectrum disruption of gut microbiota by antibiotics is very
+  well-established in microbiology and clinical research. The long-term metabolic
+  consequences are an active area of study but the disruption itself is consensus-level.
+coaching_translation: Antibiotics are sometimes essential, but they do significantly
+  disrupt your gut bacteria. After any antibiotic course, prioritizing probiotic foods
+  and prebiotic fiber to support microbiome recovery is a reasonable strategy.
+caveats:
+- Speaker explicitly states antibiotics are sometimes necessary and no one should
+  be shamed for taking them.
+linked_to_topics:
+- microbiome
+- midlife-weight-gain
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-4
+  location: Session 4 — Factors Impacting the Metabolic Microbiome / Medication Exposure
+  quote: Antibiotics over time can decimate the microbiome. It can actually kill off
+    the beneficial and the problematic bacteria.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

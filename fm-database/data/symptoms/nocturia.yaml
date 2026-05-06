@@ -1,0 +1,24 @@
+slug: nocturia
+display_name: Nocturia
+aliases:
+- nighttime urination
+- waking to urinate
+- getting up at night to pee
+category: urinary
+severity: common
+description: Waking during the night to urinate; a core BPH symptom and sleep disruptor
+  scored on the AUA Symptom Index.
+when_to_refer: Refer if severe or associated with other urinary red flags.
+linked_to_topics:
+- benign-prostatic-hyperplasia
+linked_to_mechanisms:
+- five-alpha-reductase-conversion
+sources:
+- id: vitaone-sex-hormones-toolkit
+  location: BPH Symptom Index — Page 05
+  quote: During the last month, how many times did you most typically get up to urinate
+    from the time you went to bed at night until the time you got up in the morning?
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

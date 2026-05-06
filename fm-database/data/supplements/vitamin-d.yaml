@@ -1,0 +1,125 @@
+slug: vitamin-d
+display_name: Vitamin D
+category: vitamin
+forms_available:
+- capsule
+- tablet
+- liquid
+typical_dose_range:
+  capsule:
+    min: 600
+    max: 5000
+    unit: mcg
+  tablet:
+    min: 600
+    max: 5000
+    unit: mcg
+  liquid:
+    min: 600
+    max: 5000
+    unit: mcg
+timing_options:
+- with_breakfast
+- with_lunch
+- morning
+- mid_afternoon
+- with_dinner
+take_with_food: required
+contraindications:
+  conditions: []
+  medications: []
+  life_stages: []
+interactions:
+  with_supplements:
+  - slug: vitamin-a
+    type: take_together
+    reason: 'Vitamin A (retinoic acid) is the obligate RXR heterodimer partner for
+
+      the Vitamin D receptor (VDR). Adequate vitamin A status improves
+
+      downstream Vitamin D signaling.
+
+      '
+  with_foods: []
+  with_medications: []
+linked_to_topics:
+- autoimmune
+- inflammation
+- thyroid
+- pcos
+- perimenopause
+- insulin-resistance
+- nafld
+- hashimotos-hypothyroidism
+- sex-hormone-binding-globulin
+- immune-support
+- chronic-inflammation
+- drug-induced-nutrient-depletion
+- cardiovascular-dysfunction
+- vitamin-d-deficiency
+linked_to_mechanisms:
+- vdr-rxr-heterodimer-signaling
+- immune-modulation
+linked_to_claims:
+- vitamin-a-rxr-permission-slip-for-thyroid-and-vitamin-d-signaling
+- gluten-free-reduces-hashimotos-triggers
+- omega3-curcumin-reduce-il6-tnfa-insulin-signalling
+- vitamin-d-immune-viral-hepatitis
+- vitamin-d-deficiency-common-in-autoimmune-disease
+- key-nutrients-required-for-thyroid-hormone-production
+- vitamin-d-increases-shbg
+- vitamin-d-enhances-immunity-reduces-respiratory-infections
+- statins-deplete-multiple-nutrients
+- vitamin-d-rdas-may-be-too-low
+notes_for_coach: Fat-soluble — take with a meal containing fat. RDA is 600 IU; optimal
+  levels often require higher doses guided by 25-OH-D lab values. Clinician involvement
+  essential for dosing above RDA.
+notes_for_client: Vitamin D is hard to get from food alone, and most people who avoid
+  the sun need to supplement. Your doctor can check your blood levels and recommend
+  the right dose for you.
+sources:
+- id: vitaone-evidence-tiers
+  location: TOPIC 3 — PCOS / Claim 4 (Vitamin D range debate)
+- id: vitaone-practice-guide
+  location: Autoimmune & Inflammation sections
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Vitamin D3 + K2 - Bone health, immune support, hormone balance - 2000–5000
+    IU/day - Morning or afternoon with meal or small meal
+- id: vitaone-thyroid-cheatsheet
+  location: Thyroid Disorders Cheatsheet — Anti-TPO Clinical Action Steps
+  quote: Gluten-free diet, gut repair (L-glutamine, probiotics), vitamin D optimization
+- id: vitaone-sex-hormones-cheatsheet
+  location: PCOS Supplement Cheatsheet
+  quote: 'Vitamin D3: Regulates AMH, insulin, and ovarian receptors; Better ovulation
+    and mood; Keep levels 50–80 ng/mL; 2000–5000 IU/day.'
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Chronic Inflammation
+  quote: Vitamin D3 (50–70 ng/mL)
+- id: vitaone-liver-detox-cheatsheet
+  location: Liver Disease Cheatsheet — Viral Hepatitis
+  quote: Vitamin D, Zinc, Omega-3, Silymarin
+- id: vitaone-thyroid-toolkit
+  location: Nutrient Optimization
+  quote: 'Vitamin D: Deficiency is common in autoimmune diseases; supplementation
+    may help modulate the immune response.'
+- id: vitaone-sex-hormones-toolkit
+  location: Sex Hormone Binding Globulin (SHBG) — Page 01
+  quote: Vitamin D [Increases SHBG — Medications and Supplements]
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Vitamin D enhances immune system function, reduces viral growth, and can
+    reduce upper respiratory infections.
+- id: vitaone-cv-toolkit
+  location: Cardiovascular Drugs and Potential Nutrient Deficiency
+  quote: 'HMG-CoA Reductase: ...Vitamin D'
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Vitamin D'
+  quote: In some instances, optimal vitamin D levels can only be achieved with supplementation.
+    Your functional medicine practitioner may suggest supplementing above the RDA
+    based upon laboratory values, your individual health concerns, and other factors.
+evidence_tier: strong
+version: 11
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

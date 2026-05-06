@@ -1,0 +1,31 @@
+slug: estrogen-decline-reduces-serotonin-melatonin
+statement: Declining estrogen in perimenopause and menopause reduces serotonin synthesis
+  and melatonin secretion, contributing to mood disruption and sleep deterioration.
+evidence_tier: plausible_emerging
+rationale: Estrogen's modulation of serotonergic pathways is biologically well-supported;
+  the downstream effect on melatonin (via serotonin as precursor) is plausible. Interventional
+  evidence is emerging rather than consensus.
+coaching_translation: As estrogen falls during perimenopause, your brain produces
+  less serotonin and melatonin — directly impacting mood and sleep quality.
+caveats:
+- Single-expert source; no specific studies cited.
+- Magnitude of effect varies by individual and other factors such as stress and gut
+  health.
+linked_to_topics:
+- perimenopause
+- gut-brain-axis
+- insomnia
+- anxiety
+- gut-hormone-axis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-5
+  location: Gut-Sleep section
+  quote: Estrogen is really important for serotonin synthesis. It is also really important
+    for melatonin secretion.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

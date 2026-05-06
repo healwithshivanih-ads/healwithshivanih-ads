@@ -1,0 +1,37 @@
+slug: nf-kb-activation
+display_name: NF-κB Activation
+aliases:
+- nuclear factor kappa B
+- NF-kB inflammatory pathway
+category: signaling
+summary: Master transcription factor that upregulates pro-inflammatory cytokines (TNF-α,
+  IL-6, IL-1β) and drives chronic inflammation. Inhibited by curcumin, omega-3s, EGCG,
+  resveratrol, quercetin, and fasting.
+upstream_drivers:
+- insulin-resistance
+- gut-dysbiosis
+- lps-endotoxemia
+- oxidative-stress
+- chronic-stress
+downstream_effects:
+- elevated-crp
+- cytokine-storm
+- tissue-damage
+- autoimmune-flares
+related_mechanisms:
+- leaky-gut
+- th17-dominance
+- insulin-resistance
+linked_to_topics:
+- chronic-inflammation
+- autoimmune-disease
+- psoriasis
+evidence_tier: strong
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: 100 Anti-Inflammatory Foods — Page 06
+  quote: 'Turmeric (Curcumin): Inhibits NF-κB, lowers CRP'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

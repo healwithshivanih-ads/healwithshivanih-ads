@@ -1,0 +1,30 @@
+slug: chemical-sensitivities
+display_name: Multiple Chemical Sensitivities
+aliases:
+- chemical sensitivity
+- MCS
+- toxin sensitivities
+- environmental sensitivities
+category: other
+severity: concerning
+description: Heightened reactivity to environmental chemicals, often associated with
+  impaired liver detoxification pathways and MTHFR mutations. Indicates compromised
+  Phase I/II detox capacity.
+when_to_refer: Refer if significantly impairing daily function; consider mold/mycotoxin
+  workup.
+linked_to_topics:
+- methylation-mthfr
+- liver-detoxification
+- heavy-metal-toxicity
+linked_to_mechanisms:
+- impaired-methylation
+- glutathione-depletion
+- cyp450-phase-i-activation
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet — Who Should You Test
+  quote: Detoxification issues (multiple chemical sensitivities)
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

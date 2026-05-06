@@ -1,0 +1,32 @@
+slug: selenium-supplementation-reduces-tpo-antibodies-in-hashimotos
+statement: Selenium supplementation (beyond food sources) reduces TPO antibodies in
+  Hashimoto's thyroiditis, particularly in selenium-deficient individuals.
+evidence_tier: plausible_emerging
+rationale: A 2024 systematic review and meta-analysis of RCTs (Huwiler et al., Thyroid,
+  2024) found selenium supplementation significantly reduced TPO antibodies at 3 months
+  (SMD -0.46) and 6 months (SMD -0.80). However, ~90% of studies showed patients were
+  selenium-deficient at baseline; benefit in selenium-replete patients is less clear,
+  and progression to hypothyroidism has not been conclusively shown to change.
+coaching_translation: Research suggests selenium can help lower thyroid antibodies
+  in Hashimoto's, especially if the person is selenium-deficient. A clinician can
+  assess whether supplementation makes sense.
+caveats:
+- Most benefit is in selenium-deficient patients.
+- Clinical endpoint (progression to hypothyroidism) not conclusively changed.
+- Do not recommend specific doses — refer to clinician.
+out_of_scope_notes: Selenium supplementation dosing is a clinician decision.
+linked_to_topics:
+- thyroid
+linked_to_supplements:
+- selenium
+linked_to_mechanisms: []
+sources:
+- id: vitaone-evidence-tiers
+  location: TOPIC 1 — Thyroid / Claims & Tiers / Claim 4
+  quote: A 2024 systematic review and meta-analysis of RCTs (Huwiler et al., Thyroid,
+    2024) found selenium supplementation significantly reduced TPO antibodies at 3
+    months (SMD -0.46) and 6 months (SMD -0.80).
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

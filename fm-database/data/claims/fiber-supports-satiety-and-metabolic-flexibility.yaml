@@ -1,0 +1,28 @@
+slug: fiber-supports-satiety-and-metabolic-flexibility
+statement: Dietary fiber supports satiety, stabilizes blood sugar, and can contribute
+  to metabolic flexibility — making it a useful tool for managing midlife weight gain.
+evidence_tier: plausible_emerging
+rationale: Speaker links fiber to satiety and blood sugar stabilization. Well-aligned
+  with general nutrition science but presented in expert-session context without specific
+  study citations.
+coaching_translation: Pairing protein with fiber at every meal is one of the most
+  effective strategies for helping clients feel full, manage blood sugar, and resist
+  midlife weight creep.
+caveats:
+- Source is expert session. Satiety and glycemic effects of fiber are well-supported
+  in the literature; metabolic flexibility claims are more general.
+linked_to_topics:
+- fiber-gap
+- scfa-short-chain-fatty-acids
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-7
+  location: Fiber and weight gain section [00:14:37]
+  quote: fiber can help with satiety. We know that it's integral in helping to stabilize
+    blood sugar and can support metabolic flexibility.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

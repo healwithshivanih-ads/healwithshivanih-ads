@@ -1,0 +1,30 @@
+slug: microbiome-communicates-with-every-organ-system
+statement: The gut microbiome communicates bidirectionally with every organ system
+  in the body, including a gut-bone axis, gut-ovarian axis, and gut-lung axis.
+evidence_tier: plausible_emerging
+rationale: The existence of gut-organ axes (gut-brain, gut-ovarian, gut-bone) is supported
+  by a growing body of research, but the full extent of bidirectional communication
+  across all organ systems remains an active area of investigation. Well-established
+  for gut-brain and gut-immune axes; still emerging for gut-ovarian and gut-bone.
+coaching_translation: Your gut health doesn't just affect digestion — it influences
+  your hormones, bones, brain, and immune system. Supporting your microbiome has whole-body
+  benefits.
+caveats:
+- Source is an expert-led course transcript, not primary literature. Claims represent
+  synthesis of current understanding, not a specific RCT.
+- Gut-ovarian and gut-bone axes have less RCT support than gut-brain axis.
+linked_to_topics:
+- microbiome
+- gut-hormone-axis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-mondays
+  location: 'Session 1: Microbiome Foundations and Hormone Shifts'
+  quote: there's a gut bone access, there's a gut ovarian access, there's a gut lung
+    access. name an organ system, there is a communication pattern.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

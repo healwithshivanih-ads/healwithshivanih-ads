@@ -1,0 +1,32 @@
+slug: leaky-gut-major-autoimmune-trigger
+statement: Gut permeability (leaky gut) is a major trigger for autoimmune disease,
+  with zonulin elevation serving as a red flag for gut barrier breakdown.
+evidence_tier: plausible_emerging
+rationale: Zonulin as a regulator of tight junctions is mechanistically well-described.
+  The causal link between leaky gut and autoimmune disease initiation is plausible
+  and supported by emerging research, though not yet mainstream consensus.
+coaching_translation: A leaky gut can confuse the immune system and trigger or worsen
+  autoimmune conditions. Healing the gut is often a first step in managing autoimmunity.
+caveats:
+- Leaky gut / zonulin testing is a functional medicine convention; not universally
+  accepted in mainstream medicine.
+- Source is educational synthesis.
+linked_to_topics:
+- leaky-gut
+- autoimmune-disease
+- chronic-inflammation
+linked_to_supplements:
+- l-glutamine
+- zinc-carnosine
+- probiotics
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Autoimmune Disease Cheatsheet — Page 23
+  quote: Gut permeability (leaky gut) is a major trigger. Zonulin elevation = red
+    flag for gut barrier breakdown.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

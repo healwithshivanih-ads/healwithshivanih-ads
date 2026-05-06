@@ -1,0 +1,26 @@
+slug: testosterone-produced-during-rem-sleep
+statement: Testosterone is primarily produced during deep sleep (especially REM),
+  and optimizing sleep to 7–9 hours is the foundational biohack for testosterone support.
+evidence_tier: plausible_emerging
+rationale: Testosterone secretion follows a circadian pattern with peak production
+  during sleep; sleep deprivation studies show significant testosterone reduction.
+  Sleep is widely recognized as the most impactful modifiable factor for testosterone.
+  Source is expert synthesis.
+coaching_translation: Your body makes most of its testosterone while you sleep. Prioritizing
+  7–9 hours of quality sleep is the most important thing you can do for hormone optimization.
+caveats:
+- Source is expert synthesis
+- Sleep apnea should be ruled out in men with low testosterone and poor sleep
+linked_to_topics:
+- pcos
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: Biohacking Testosterone — How to Biohack Testosterone
+  quote: Testosterone is primarily produced during deep sleep (especially REM).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

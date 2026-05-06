@@ -1,0 +1,108 @@
+slug: bloating
+display_name: Bloating / Abdominal Distension
+aliases:
+- abdominal-distension
+- belly-swelling
+- feeling-puffy
+- bloated
+- puffy-belly
+- post-meal bloating
+- persistent bloating
+- abdominal bloating
+- belly bloat
+- abdominal distension
+- puffy belly
+- gassiness
+- distension
+- belly swelling
+- gassy belly
+- gassy
+- gas and bloating
+- stomach bloat
+- feeling full and gassy
+- gut distension
+- abdominal discomfort
+- gassy and bloated
+- stomach bloating
+category: gi
+severity: common
+description: Sensation of abdominal fullness, tightness, or visible distension, often
+  related to gas accumulation from fermentation of poorly absorbed carbohydrates.
+when_to_refer: Persistent bloating with weight loss, rectal bleeding, or change in
+  bowel habit lasting >6 weeks.
+linked_to_topics:
+- microbiome
+- dysbiosis
+- perimenopause
+- estrobolome
+- estrogen-dominance
+- liver-detoxification
+- sibo
+- gut-dysbiosis
+- hypochlorhydria
+- candida-overgrowth
+- ibs
+- leaky-gut
+- food-sensitivity
+- chronic-inflammation
+- low-fodmap-diet
+- gut-dysfunction
+- anti-inflammatory-diet
+- chronic-stress
+- elimination-diet
+linked_to_mechanisms:
+- microbial-diversity-decline
+- leaky-gut
+- estrogen-enterohepatic-recirculation
+- bile-flow-regulation
+- phase-iii-elimination
+- bacterial-fermentation-carbs
+- impaired-gut-motility
+- gut-dysbiosis
+- gut-fermentation-dysbiosis
+- fructose-malabsorption
+- polyol-fermentation-motility
+- lactase-deficiency-osmotic-load
+- hypochlorhydria-mechanism
+- gut-microbiome-modulation
+- cytokine-dysregulation
+- sympathetic-nervous-system-activation
+- colonic-fermentation
+- gut-motility-dysregulation
+sources:
+- id: thurlow-microbiome-mondays
+  location: Sessions 1, 6 — bloating discussion
+- id: vitaone-sex-hormones-cheatsheet
+  location: Top Nutrients to Balance Estrogen
+  quote: Use in constipation, bloating, PMS, acne.
+- id: vitaone-liver-detox-cheatsheet
+  location: Top Superfoods for Detoxification
+  quote: Use in bloating, poor digestion, skin detox.
+- id: vitaone-gut-cheatsheet
+  location: Gut Dysbiosis vs SIBO vs SIFO vs Hypochlorhydria
+  quote: Gas, bloating — Irregular stools — Fatigue — Food cravings — Skin issues
+    [Gut Dysbiosis symptoms]
+- id: vitaone-inflammation-cheatsheet
+  location: Inflammation Cheatsheet — Page 02
+  quote: Gut – Bloating, food reactivity, ↑ Zonulin
+- id: vitaone-elimination-diet-cheatsheet
+  location: FODMAP Diet Cheatsheet — Introduction
+  quote: They're not 'bad foods' - they're poorly absorbed carbs that ferment and
+    feed dysbiotic bacteria, driving IBS, SIBO, and bloating.
+- id: vitaone-gut-toolkit
+  location: Testing for Low Stomach Acidity — Common Symptoms of Hypochlorhydria
+  quote: Bloating, belching, burning, and flatulence immediately after meals
+- id: vitaone-inflammation-toolkit
+  location: Anti Inflammatory Diet — Who is the Anti-Inflammatory Diet Useful For?
+  quote: 'Digestive Disorders: Such as inflammatory bowel disease (IBD) and irritable
+    bowel syndrome (IBS).'
+- id: vitaone-adrenal-toolkit
+  location: Effects of Chronic Stress — Digestion
+  quote: Can trigger digestive pain, gas, bloating, nausea and loss of appetite
+- id: vitaone-elimination-diet-toolkit
+  location: 'Low Fodmap Diet Symptom Tracker — Section 1: Gastrointestinal Symptoms'
+  quote: Abdominal bloating / distension
+version: 10
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

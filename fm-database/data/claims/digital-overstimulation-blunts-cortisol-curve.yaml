@@ -1,0 +1,31 @@
+slug: digital-overstimulation-blunts-cortisol-curve
+statement: Continuous digital stimulation (screens, notifications, multitasking) creates
+  a chronic low-level alert state that blunts the diurnal cortisol curve, reducing
+  emotional reactivity and stress resilience.
+evidence_tier: fm_specific_thin
+rationale: Plausible mechanism extending HPA dysregulation to digital context; thin
+  peer-reviewed support specific to diurnal cortisol and screen use.
+coaching_translation: Your phone habit may be exhausting your stress hormones just
+  as much as emotional or work stress — digital hygiene is part of adrenal recovery.
+caveats:
+- Source is educational synthesis. No specific studies cited.
+- Concept is emerging and not yet consensus in mainstream endocrinology.
+linked_to_topics:
+- adrenal-dysfunction
+- anxiety
+- insomnia
+linked_to_supplements:
+- ashwagandha-ksm66
+- phosphatidylserine
+- magnesium-glycinate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-adrenal-cheatsheet
+  location: How Digital Overstimulation Blunts Emotional Awareness (p.14)
+  quote: Continuous low-level alert mode from digital input → Blunted diurnal cortisol
+    curve → fatigue, poor emotional reactivity, low resilience.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

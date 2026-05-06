@@ -1,0 +1,33 @@
+slug: vitamin-d-critical-for-treg-function
+statement: Vitamin D is critical for T-regulatory (T-reg) cell function, with functional
+  medicine targets of 50–90 ng/mL serum 25(OH)D for autoimmune modulation.
+evidence_tier: plausible_emerging
+rationale: Vitamin D's role in T-reg differentiation is well-supported mechanistically
+  and in observational studies. The 50–90 ng/mL target range is a functional medicine
+  convention exceeding standard medical guidance; clinical evidence for this specific
+  range in autoimmunity is emerging.
+coaching_translation: Getting enough Vitamin D is essential for immune balance. Sun
+  exposure, fatty fish, and egg yolks are food sources; supplementation with D3+K2
+  is commonly recommended.
+caveats:
+- Optimal range of 50–90 ng/mL is a functional medicine convention, not mainstream
+  medical consensus.
+- Vitamin D level testing and dosing is clinician scope.
+- High-dose Vitamin D protocols (Coimbra) are strictly clinician-supervised.
+out_of_scope_notes: Vitamin D lab ordering, interpretation, and high-dose protocols
+  are clinician scope only.
+linked_to_topics:
+- autoimmune-disease
+- chronic-inflammation
+- psoriasis
+linked_to_supplements:
+- vitamin-d3-k2
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Autoimmune Disease Cheatsheet — Page 23
+  quote: Vitamin D is critical for T-reg function (aim 50–90 ng/mL).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,28 @@
+slug: disordered-eating
+display_name: Disordered Eating Patterns
+aliases:
+- emotional eating
+- binge eating
+- food obsession
+- restrictive eating
+category: mood
+severity: concerning
+description: Unhealthy patterns of eating driven by emotional rather than physiological
+  cues, difficulty honoring hunger/fullness signals, or disordered relationships with
+  food.
+when_to_refer: Refer to registered dietitian and/or mental health professional if
+  clinical eating disorder is suspected (anorexia, bulimia, ARFID, BED).
+linked_to_topics:
+- mindful-intuitive-eating
+linked_to_mechanisms:
+- hunger-satiety-signaling
+sources:
+- id: vitaone-nutrition-toolkit
+  location: Mindful and Intuitive Eating
+  quote: Mindful and intuitive eating practices are helpful for everyone, but they
+    are especially important for those who have suffered from eating disorders, or
+    who feel like food controls their life.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

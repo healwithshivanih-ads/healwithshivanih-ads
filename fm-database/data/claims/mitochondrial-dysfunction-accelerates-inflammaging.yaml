@@ -1,0 +1,33 @@
+slug: mitochondrial-dysfunction-accelerates-inflammaging
+statement: After age 40, dysfunctional mitochondria outnumber healthy ones, and this
+  imbalance — worsened by poor metabolic health (diabetes, fatty liver, PCOS, insulin
+  resistance) — accelerates inflammaging.
+evidence_tier: plausible_emerging
+rationale: Mitochondrial decline with age and its link to inflammation (via reactive
+  oxygen species and NLRP3 inflammasome) is well-described in the literature, though
+  the 'more dysfunctional than healthy' framing is a simplification. Single expert
+  source.
+coaching_translation: Your cells' energy generators decline with age, especially in
+  midlife, and the worse your metabolic health, the faster this happens — adding fuel
+  to the fire of chronic inflammation.
+caveats:
+- The claim that dysfunctional mitochondria outnumber healthy ones after 40 is a heuristic
+  simplification.
+- Single-expert source without specific citation.
+linked_to_topics:
+- inflammaging
+- autoimmune
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-8
+  location: Session 8 — immune shift and mitochondria segment
+  quote: We know after the age of 40 that we have more dysfunctional mitochondria
+    than we have healthier ones. And this really accelerates if we have poor metabolic
+    health, if we have diabetes, if we have fatty liver, if we have PCOS, insulin
+    resistance.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

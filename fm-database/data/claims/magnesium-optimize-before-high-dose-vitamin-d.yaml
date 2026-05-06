@@ -1,0 +1,28 @@
+slug: magnesium-optimize-before-high-dose-vitamin-d
+statement: Magnesium deficiency should be corrected before initiating high-dose vitamin
+  D supplementation, as magnesium is required for vitamin D metabolism and deficiency
+  worsens calcium and vitamin D metabolism.
+evidence_tier: plausible_emerging
+rationale: Magnesium is a cofactor for vitamin D hydroxylation enzymes. Uwitonze &
+  Razzaque (2018, J Am Osteopath Assoc) support this. Mechanistically strong, clinical
+  trial evidence is limited.
+coaching_translation: Before recommending high-dose vitamin D, encourage magnesium-rich
+  foods and consider a magnesium supplement.
+caveats:
+- High-dose vitamin D prescribing is clinician territory.
+- Source is synthesis document.
+linked_to_topics:
+- vitamin-b-complex-deficiency
+linked_to_supplements:
+- magnesium-glycinate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Magnesium – The Calming Mineral
+  quote: Magnesium deficiency worsens calcium and vitamin D metabolism → always optimize
+    Mg before pushing high-dose D or Ca.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

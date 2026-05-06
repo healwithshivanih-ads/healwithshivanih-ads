@@ -1,0 +1,35 @@
+slug: emotional-stress-cascade-chronic-disease
+statement: Chronic emotional states (stress, anger, grief, fear, emotional suppression)
+  alter HPA axis function, immune response, neurotransmitters, gut integrity, and
+  mitochondrial function, creating the biochemical foundation for chronic disease.
+evidence_tier: plausible_emerging
+rationale: The neuro-endocrine-immune connection is a recognized framework in psychoneuroimmunology.
+  This document synthesizes this without citing specific studies.
+coaching_translation: How you feel emotionally has a direct chemical impact on your
+  body — addressing emotional patterns is part of physical healing.
+caveats:
+- Source is an educational cheatsheet synthesis. Treat as plausible_emerging.
+- Emotional root-cause assessment should involve qualified psychotherapist where indicated.
+linked_to_topics:
+- adrenal-dysfunction
+- inflammation
+- autoimmune
+- gut-brain-axis
+linked_to_supplements:
+- ashwagandha-ksm66
+- phosphatidylserine
+- magnesium-glycinate
+- vitamin-c
+- fish-oil-omega-3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-adrenal-cheatsheet
+  location: How Chronic Stress, Anger, or Grief Translate into Physical Diseases (p.10)
+  quote: Chronic emotional states alter HPA axis, immune response, neurotransmitters,
+    gut integrity, and mitochondrial function, creating the foundation for chronic
+    disease.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

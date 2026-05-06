@@ -1,0 +1,63 @@
+slug: dim
+display_name: Diindolylmethane (DIM)
+category: other
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 100
+    max: 300
+    unit: mg
+  tablet:
+    min: 100
+    max: 200
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+notes_for_coach: DIM is a cruciferous-derived compound commonly recommended for estrogen
+  metabolism support. Dosing must be clinician-determined. Document explicitly notes
+  supplement recommendations should be tailored to individual physiology.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- thyroid
+- estrogen-dominance
+- pcos
+- perimenopause
+- estrogen-metabolism
+linked_to_mechanisms: []
+linked_to_claims:
+- estrogen-dominance-raises-tbg-reduces-free-thyroid-hormones
+- dim-shifts-estrogen-to-2-oh-pathway
+- 2-oh-estrogen-pathway-protective-anti-proliferative
+- stress-disrupts-hpo-axis-pcos
+- dim-i3c-support-estrogen-metabolism
+- cruciferous-vegetables-support-estrogen-metabolism
+notes_for_client: DIM is a concentrated form of a compound found naturally in broccoli
+  and cabbage that helps your body process estrogen more efficiently.
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: DIM (Diindolylmethane) - Estrogen metabolism - 100–200 mg/day - With meals
+- id: vitaone-thyroid-cheatsheet
+  location: Thyroid Disorders Cheatsheet — Total T4/Total T3 Clinical Action Steps
+  quote: Support liver detox, adequate protein, balance estrogen metabolism
+- id: vitaone-sex-hormones-cheatsheet
+  location: Estrogen Dominance Supplement Cheatsheet
+  quote: 'DIM (Diindolylmethane): Shifts estrogen metabolism to safer 2-OH pathway;
+    100-200 mg/day; avoid in very low estrogen states.'
+- id: vitaone-adrenal-cheatsheet
+  location: 50 Hormones Cheatsheet — Estrogen row (p.4)
+  quote: '↑ PMS, fibroids, weight gain, clot risk. Solution: Cruciferous veggies,
+    DIM, fiber, liver detox.'
+- id: vitaone-sex-hormones-toolkit
+  location: Estrogen Metabolism — Page 02
+  quote: Two commonly recommended supplements, diindolylmethane (DIM), and Indole-3-carbinol
+    (I3C), are extracted from cruciferous vegetables.
+version: 5
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

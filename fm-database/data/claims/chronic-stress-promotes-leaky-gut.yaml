@@ -1,0 +1,30 @@
+slug: chronic-stress-promotes-leaky-gut
+statement: Chronic stress increases intestinal permeability (leaky gut), which can
+  provoke immune responses and contribute to food sensitivities and autoimmune conditions.
+evidence_tier: plausible_emerging
+rationale: Stress-induced intestinal permeability has preclinical and some clinical
+  support, and the link between leaky gut and immune activation is a recognised mechanism.
+  However, direct causation to autoimmune disease in humans requires more RCT data.
+coaching_translation: Long-term stress can wear down the gut lining, letting food
+  particles into the bloodstream and triggering immune reactions — sometimes showing
+  up as new food sensitivities.
+caveats:
+- Single-expert source; no specific studies cited.
+- The term 'leaky gut' is widely used in FM but intestinal permeability measurement
+  and clinical significance remain debated in conventional medicine.
+linked_to_topics:
+- gut-brain-axis
+- dysbiosis
+- microbiome
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-5
+  location: Stress and Digestion section
+  quote: It also increases our propensity for leaky gut. And leaky gut is what oftentimes
+    leads to autoimmune conditions.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

@@ -1,0 +1,31 @@
+slug: antibiotic-exposure-disrupts-estrobolome
+statement: Inappropriate or excessive antibiotic use can disrupt the gut lining, cause
+  intestinal permeability, and directly disrupt the estrobolome by eliminating estrogen-metabolizing
+  bacteria.
+evidence_tier: plausible_emerging
+rationale: Antibiotic disruption of gut microbiome composition is well-established.
+  The specific downstream effect on estrobolome function and estrogen metabolism is
+  mechanistically plausible but not directly quantified in the source. Single-expert
+  source.
+coaching_translation: Antibiotics can wipe out beneficial gut bacteria, including
+  those involved in estrogen metabolism. Recovery of the estrobolome after antibiotic
+  use is an important consideration.
+caveats:
+- Appropriate antibiotic use is sometimes medically necessary; avoid stigmatizing
+  use.
+- Single-expert source.
+linked_to_topics:
+- estrobolome
+- microbiome
+- dysbiosis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-3
+  location: Lifestyle Factors — Antibiotic Exposure
+  quote: They can also disrupt the estrobolome if they're used inappropriately.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

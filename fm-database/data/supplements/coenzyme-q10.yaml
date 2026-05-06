@@ -1,0 +1,56 @@
+slug: coenzyme-q10
+display_name: Coenzyme Q10 (CoQ10)
+category: other
+forms_available:
+- capsule
+- tablet
+- liquid
+evidence_tier: plausible_emerging
+notes_for_coach: Listed as Phase I antioxidant protective nutrient and used in pre-amalgam
+  removal protocol. Fat-soluble — best absorbed with fatty meal.
+notes_for_client: CoQ10 supports your cells' energy production and acts as an antioxidant.
+  Best absorbed with a meal that contains some fat.
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- drug-induced-nutrient-depletion
+- beta-blocker-deprescribing
+- cardiovascular-dysfunction
+- mitochondrial-health-nutrition
+- liver-detoxification
+- mercury-amalgam-removal
+linked_to_claims:
+- beta-blockers-deplete-coq10-and-melatonin
+- statins-deplete-multiple-nutrients
+- metformin-depletes-b12-folate-coq10
+- coq10-improves-fatigue-ms-neuropathy-parkinson
+- selenium-vitamin-e-antioxidant-support-detox
+typical_dose_range:
+  capsule:
+    min: 100
+    max: 300
+    unit: mg
+  tablet:
+    min: 100
+    max: 400
+    unit: mg
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cv-toolkit
+  location: Cardiovascular Drugs and Potential Nutrient Deficiency
+  quote: 'Beta Blockers: CoQ10, Melatonin'
+- id: vitaone-nutrition-toolkit
+  location: Nutrients for Mitochondrial Health
+  quote: Coenzyme Q10 (CoQ10) is a key component in cellular energy production. It
+    has anti-inflammatory and antioxidant properties, helping mitochondria remain
+    efficient and healthy.
+- id: vitaone-liver-detox-toolkit
+  location: Dental Amalgam Removal Protocol — Pre-Procedure
+  quote: 'CoQ-10: 100–300 mg'
+version: 3
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,30 @@
+slug: processed-oils-high-omega6-promote-inflammation
+statement: Commonly used processed cooking oils (canola, corn, soybean, sunflower,
+  safflower, grapeseed, cottonseed) are high in omega-6 fatty acids and can contribute
+  to chronic inflammation; regular consumption is not recommended.
+evidence_tier: plausible_emerging
+rationale: The pro-inflammatory potential of excessive omega-6 intake relative to
+  omega-3 is biologically plausible and supported by some research, though the effect
+  of specific cooking oils on CVD outcomes is debated.
+coaching_translation: Encourage clients to swap processed seed oils for more stable,
+  less processed options like olive oil, avocado oil, ghee, or coconut oil.
+caveats:
+- Evidence on individual cooking oils and CVD is nuanced; meta-analyses show mixed
+  results. This is a plausible, commonly held functional medicine position.
+linked_to_topics:
+- cardiovascular-dysfunction
+linked_to_mechanisms:
+- omega-6-excess
+- systemic-inflammation
+out_of_scope_notes: ''
+linked_to_supplements: []
+sources:
+- id: vitaone-cv-toolkit
+  location: A Guide to Cooking with Fats and Oils
+  quote: These fats and oils are also high in omega-6 fatty acids, which can contribute
+    to chronic inflammation in the body. Because of this, regularly consuming fats
+    and oils from this list is not recommended.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

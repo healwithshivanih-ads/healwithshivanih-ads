@@ -1,0 +1,25 @@
+slug: keto-flu
+display_name: Keto Flu
+aliases:
+- carb withdrawal symptoms
+- low-carb transition symptoms
+- electrolyte depletion symptoms
+category: constitutional
+severity: common
+description: Transient symptoms during the first 1–2 weeks of low-carb dietary transition
+  including headache, fatigue, muscle cramps, and irritability, largely driven by
+  electrolyte loss and adaptation.
+when_to_refer: Refer if symptoms are severe or prolonged beyond 2 weeks.
+linked_to_topics:
+- low-carb-diet
+- metabolic-syndrome
+linked_to_mechanisms:
+- metabolic-flexibility
+sources:
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: Functional Medicine Clinical Applications
+  quote: Emphasize hydration + electrolytes to prevent "keto flu."
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

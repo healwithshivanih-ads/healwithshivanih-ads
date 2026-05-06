@@ -1,0 +1,49 @@
+slug: cardiovascular-dysfunction
+display_name: Cardiovascular Dysfunction
+aliases:
+- CVD
+- heart disease
+- cardiovascular disease
+summary: A broad category encompassing coronary artery disease, cerebrovascular disease,
+  peripheral vascular disease, heart failure, and cardiac arrhythmias. Underlying
+  pathology is atheromatous vascular disease driven by modifiable and non-modifiable
+  risk factors.
+common_symptoms:
+- chest-pain
+- palpitations
+- fatigue
+- shortness-of-breath
+- hypertension
+red_flags:
+- acute chest pain
+- uncontrolled hypertension (>140/90)
+- history of myocardial infarction
+- congestive heart failure diagnosis
+- advanced retinopathy
+- peripheral artery disease
+related_topics:
+- hypertension
+- insulin-resistance
+- metabolic-syndrome
+- dyslipidemia
+key_mechanisms:
+- atherosclerosis
+- systemic-inflammation
+- insulin-resistance
+coaching_scope_notes: 'Coaches can support modifiable risk factor reduction: diet,
+  exercise, weight management, smoking cessation, stress reduction. Lab interpretation
+  and medication decisions are out of scope.'
+clinician_scope_notes: Includes management of beta blockers, statins, diuretics, ACE
+  inhibitors, and monitoring of advanced biomarkers (Lp(a), ApoB, hs-CRP, HbA1c, homocysteine).
+  Beta blocker tapering requires clinician supervision.
+evidence_tier: strong
+sources:
+- id: vitaone-cv-toolkit
+  location: CVD Risk Analysis
+  quote: The cardiovascular diseases (CVDs) considered been the major cause of morbidity
+    and mortality in India over the last several decades, and are rapidly catching
+    up with this epidemic.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

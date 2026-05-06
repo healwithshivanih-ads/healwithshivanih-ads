@@ -1,0 +1,30 @@
+slug: iberogast
+display_name: Iberogast
+category: herb
+forms_available:
+- liquid
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- gerd
+- gut-dysfunction
+linked_to_claims:
+- iberogast-modulates-gi-transit
+notes_for_coach: A multi-herb liquid formula listed as a transit time modulator during
+  PPI tapering. Requires clinician direction for appropriate use.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+notes_for_client: ''
+sources:
+- id: vitaone-gut-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
+    — Supplement recommendations'
+  quote: 'Transit time modulators: Iberogast, D-limonene, ginger, probiotics, triphala'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

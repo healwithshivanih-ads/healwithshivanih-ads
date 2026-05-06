@@ -1,0 +1,36 @@
+slug: mercury-amalgam-removal
+display_name: Mercury Amalgam Removal Protocol
+aliases:
+- dental amalgam removal
+- silver filling removal
+summary: Removal of mercury-containing dental amalgam fillings carries risk of mercury
+  vapor exposure. A structured pre- and post-procedure nutritional protocol using
+  antioxidants, binders (charcoal, chlorella), and supportive nutrients is used in
+  Functional Medicine to reduce mercury absorption and support detoxification.
+common_symptoms:
+- fatigue
+- brain-fog
+- mood-changes
+red_flags:
+- active periodontal infection (contraindication to procedure)
+- elevated mercury levels on lab testing
+related_topics:
+- liver-detoxification
+- toxic-body-burden
+key_mechanisms:
+- heavy-metal-toxicity
+- oxidative-stress
+coaching_scope_notes: Coaches can support the pre/post nutritional protocol education
+  but should not advise on amalgam removal timing or lab interpretation.
+clinician_scope_notes: Lab assessments (CBC, CMP, GFR, Vitamin D) and IV nutrient
+  support are clinician scope. Amalgam removal decisions require a dentist.
+evidence_tier: fm_specific_thin
+sources:
+- id: vitaone-liver-detox-toolkit
+  location: Dental Amalgam Removal Protocol
+  quote: Ask your dentist if they use all of these protective measures before agreeing
+    to any mercury amalgam removal procedures.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

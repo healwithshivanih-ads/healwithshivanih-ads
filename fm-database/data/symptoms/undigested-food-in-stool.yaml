@@ -1,0 +1,23 @@
+slug: undigested-food-in-stool
+display_name: Undigested Food in Stool
+aliases:
+- food particles in stool
+- poorly digested food
+category: gi
+severity: common
+description: Visible undigested food particles in stool, indicating inadequate digestive
+  enzyme activity or low stomach acid.
+when_to_refer: Persistent finding should prompt evaluation for malabsorption syndromes.
+linked_to_topics:
+- hypochlorhydria
+- gut-dysfunction
+linked_to_mechanisms:
+- hypochlorhydria-mechanism
+sources:
+- id: vitaone-gut-toolkit
+  location: Testing for Low Stomach Acidity — Common Symptoms of Hypochlorhydria
+  quote: Undigested food in stool
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

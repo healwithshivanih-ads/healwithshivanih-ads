@@ -1,0 +1,29 @@
+slug: phytonutrient-dense-diet-supports-detox-pathways
+statement: A diet high in phytonutrient density (rich in plant foods, cruciferous
+  vegetables, garlic, onions) supports all stages of liver and kidney detoxification,
+  reduces inflammation, and enhances body alkalinization for kidney toxin excretion.
+evidence_tier: plausible_emerging
+rationale: Cruciferous vegetables and their glucosinolate derivatives (inducing Phase
+  II enzymes like glutathione-S-transferase) have strong mechanistic and some clinical
+  evidence. Broader claims about alkalinization and detox are FM-specific with thinner
+  evidence.
+coaching_translation: Filling your plate with colorful vegetables — especially broccoli,
+  kale, garlic, and onions — gives your detox pathways the plant-based fuel they need.
+caveats:
+- Source is an educational toolkit. The alkalinization claim has limited clinical
+  evidence.
+linked_to_topics:
+- liver-detoxification
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-liver-detox-toolkit
+  location: Features of the Detox Food Plan
+  quote: This food plan is rich in plant foods that are essential in all stages of
+    detoxification, especially those involved in processes occurring in the gut, liver,
+    & kidneys.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

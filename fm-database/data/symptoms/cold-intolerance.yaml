@@ -1,0 +1,39 @@
+slug: cold-intolerance
+display_name: Cold Intolerance
+aliases:
+- always cold
+- feeling cold
+- cold hands and feet
+- heat intolerance
+- sensitivity to cold
+- feeling cold all the time
+- low body temperature
+category: metabolic
+severity: common
+description: Persistent sensation of cold, cold extremities, or subnormal basal body
+  temperature (below 98.2°F) resulting from reduced metabolic heat production in hypothyroidism.
+linked_to_topics:
+- thyroid
+- hypothyroidism
+- t3-conversion-disorder
+- hashimotos-hypothyroidism
+linked_to_mechanisms:
+- t4-to-t3-conversion-block
+- impaired-t4-to-t3-conversion
+- thyroid-hormone-conversion
+when_to_refer: ''
+sources:
+- id: vitaone-thyroid-cheatsheet
+  location: Biohacking Thyroid Function Cheatsheet — Thyroid Dysfunction Symptoms
+  quote: Cold or heat intolerance
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 7: System-wise Impact'
+  quote: Weight gain, fatigue, cold intolerance
+- id: vitaone-thyroid-toolkit
+  location: Thyroid Screening Questionnaire
+  quote: My hands and feet are cold to the touch and I frequently feel cold when others
+    do not.
+version: 3
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

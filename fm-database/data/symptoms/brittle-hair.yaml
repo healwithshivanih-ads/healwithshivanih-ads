@@ -1,0 +1,24 @@
+slug: brittle-hair
+display_name: Brittle Hair & Hair Loss
+aliases:
+- coarse hair
+- hair breaking
+- hair falling out
+- dry hair
+category: skin
+severity: common
+description: Hair becomes rough, coarse, dry, brittle, or falls out due to reduced
+  metabolic support to hair follicles in hypothyroidism.
+linked_to_topics:
+- hypothyroidism
+- hashimotos-hypothyroidism
+linked_to_mechanisms: []
+when_to_refer: ''
+sources:
+- id: vitaone-thyroid-toolkit
+  location: Thyroid Screening Questionnaire
+  quote: My hair is rough, coarse dry, breaking, brittle, or falling out
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

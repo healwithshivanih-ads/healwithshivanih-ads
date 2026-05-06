@@ -1,0 +1,41 @@
+slug: cdp-choline
+display_name: Choline (CDP-Choline / Phosphatidylcholine)
+category: other
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 250
+    max: 500
+    unit: mg
+  tablet:
+    min: 250
+    max: 500
+    unit: mg
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+notes_for_coach: Choline (CDP/PPC forms) listed for NAFLD support. Supports bile production
+  and hepatic fat metabolism. Dose not specified — verify with clinician.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- insulin-resistance
+linked_to_mechanisms: []
+linked_to_claims:
+- fatty-liver-drives-insulin-resistance
+notes_for_client: Choline is an essential nutrient for liver health — it helps prevent
+  fat build-up in the liver which can worsen blood sugar.
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: CDP Choline (Citicoline) - Neurotransmitter synthesis - 250–500 mg/day -
+    Morning
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Fatty Liver (NAFLD)
+  quote: Choline (CDP/PPC)
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

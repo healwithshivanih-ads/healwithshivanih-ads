@@ -1,0 +1,28 @@
+slug: overnight-rice-increases-resistant-starch
+statement: Cooling cooked starchy foods (e.g., rice, potatoes) to ≤5°C and reheating
+  increases resistant starch content from <1g to ~2–3g per 100g, lowering post-prandial
+  glucose and insulin excursion.
+evidence_tier: plausible_emerging
+rationale: Retrogradation of amylose/amylopectin on cooling is chemically established.
+  Functional RS studies show reduced glycaemic response; second-meal effect has RCT
+  support, though specific RS dose effects need more study.
+coaching_translation: Cooking rice or potatoes and refrigerating them overnight before
+  eating (even if reheated) increases resistant starch, which is gentler on blood
+  sugar.
+linked_to_topics:
+- blood-sugar-dysfunction
+linked_to_supplements: []
+caveats:
+- Source is FM synthesis; specific RCTs not cited. Individual RS content varies by
+  starch type and processing.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 1.5 — Resistant Starch
+  quote: Refrigerated 'overnight rice' or cold potato salad typically contains≈2–3g
+    RS per 100g, compared with <1g in freshly cooked equivalents.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,36 @@
+slug: sourdough-preferred-for-gluten-reintroduction
+statement: For individuals who have been gluten-free and wish to reintroduce gluten,
+  fermented sourdough bread is a preferable starting point due to its fermentation
+  process, which may reduce gluten reactivity.
+evidence_tier: fm_specific_thin
+rationale: Sourdough fermentation does partially degrade gluten peptides, and some
+  small studies suggest improved tolerability in non-celiac gluten sensitivity — but
+  evidence is limited and does not apply to celiac disease. This is consistent with
+  FM practice but not mainstream clinical guidance.
+coaching_translation: If trying to reintroduce gluten, sourdough bread is the gentlest
+  option because fermentation breaks down some of the problematic proteins. It's still
+  best used as an occasional treat, not a daily staple.
+out_of_scope_notes: Celiac disease patients should not attempt gluten reintroduction
+  without medical supervision. Coaches should not advise gluten reintroduction for
+  clients who have not been screened for celiac.
+caveats:
+- Single-expert source.
+- Sourdough fermentation reduces but does not eliminate gluten — not safe for celiac
+  disease.
+- Evidence for sourdough tolerability in non-celiac gluten sensitivity is from small,
+  preliminary studies only.
+linked_to_topics:
+- food-sensitivities
+- elimination-diet
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-2
+  location: Q&A — gluten reintroduction
+  quote: If you really want to reintroduce gluten, I would say go with sourdough,
+    which is at least fermented… I would at least start with sourdough as a starting
+    point.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

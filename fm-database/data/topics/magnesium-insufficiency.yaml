@@ -1,0 +1,37 @@
+slug: magnesium-insufficiency
+display_name: Magnesium Insufficiency
+aliases:
+- low magnesium
+- magnesium deficiency
+- hypomagnesemia
+summary: Magnesium is essential for energy production, blood pressure, blood sugar
+  metabolism, bone health, mood, and digestive regularity. Nearly half of US adults
+  consume less than the RDA. Inadequacy is widespread and clinically relevant.
+common_symptoms:
+- fatigue
+- muscle-cramps
+- constipation
+- low-mood
+- high-blood-pressure
+red_flags:
+- severe hypomagnesemia — cardiac arrhythmia risk, refer to clinician
+related_topics:
+- mitochondrial-health-nutrition
+- cardiovascular-health
+key_mechanisms:
+- mitochondrial-atp-production
+- hpa-axis-dysregulation
+coaching_scope_notes: Coaches can guide dietary magnesium optimization. Form selection
+  and therapeutic dosing should involve a clinician.
+clinician_scope_notes: 'RDA: men 340 mg/day, women 310 mg/day. Multiple forms available
+  (glycinate, citrate, oxide). Form selection depends on health goal.'
+evidence_tier: strong
+sources:
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Magnesium'
+  quote: Magnesium inadequacy is very common, with almost half of adults in the US
+    getting less than the RDA.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

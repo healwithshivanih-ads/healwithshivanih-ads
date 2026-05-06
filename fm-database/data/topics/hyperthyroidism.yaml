@@ -1,0 +1,43 @@
+slug: hyperthyroidism
+display_name: Hyperthyroidism
+aliases:
+- overactive thyroid
+- primary hyperthyroidism
+- Graves' disease
+summary: Condition where the thyroid produces excess hormones (low TSH, high T3/T4).
+  Most commonly caused by Graves' disease (autoimmune TSH-receptor stimulation). Requires
+  acute medical management.
+common_symptoms:
+- weight-loss
+- palpitations
+- anxiety
+- tremors
+- heat-intolerance
+- insomnia
+- diarrhea
+red_flags:
+- Thyroid storm
+- Severe tachycardia or arrhythmia
+- Exophthalmos (Graves' eye disease)
+- Unintentional rapid weight loss
+related_topics:
+- hashimotos-thyroiditis
+- hypothyroidism
+key_mechanisms:
+- thyroid-autoimmunity
+- hpt-axis-dysregulation
+coaching_scope_notes: Hyperthyroidism requires acute medical management and cannot
+  be effectively treated through functional medicine approaches alone. Refer immediately.
+  Avoid over-exercising.
+clinician_scope_notes: Diagnose via TRAb (TSH Receptor Antibody) for Graves'. Radioiodine
+  uptake scan differentiates Graves' vs thyroiditis vs toxic nodules.
+evidence_tier: strong
+sources:
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 9: Functional Medicine Interventions'
+  quote: Hyperthyroidism requires acute medical management and cannot be effectively
+    treated through functional medicine approaches alone.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

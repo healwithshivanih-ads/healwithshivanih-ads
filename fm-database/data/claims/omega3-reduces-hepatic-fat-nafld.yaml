@@ -1,0 +1,27 @@
+slug: omega3-reduces-hepatic-fat-nafld
+statement: Omega-3 fatty acids support insulin sensitivity and reduction of hepatic
+  fat in NAFLD.
+evidence_tier: plausible_emerging
+rationale: Listed as a key supplement for NAFLD alongside berberine and NAC. Clinical
+  insight emphasises insulin sensitivity and weight loss. No specific study cited
+  in the source document.
+coaching_translation: Omega-3 fats help reduce fat stored in the liver and improve
+  how the body handles blood sugar.
+caveats:
+- Source is FM synthesis — no primary study cited
+- Dosing requires clinician confirmation
+linked_to_topics:
+- nafld
+linked_to_supplements:
+- omega-3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Liver Disease Cheatsheet — NAFLD
+  quote: Omega-3, Vitamin E, Berberine, NAC — Focus on insulin sensitivity & weight
+    loss; key is reducing hepatic fat.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

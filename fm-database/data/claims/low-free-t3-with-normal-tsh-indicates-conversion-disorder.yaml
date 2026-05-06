@@ -1,0 +1,30 @@
+slug: low-free-t3-with-normal-tsh-indicates-conversion-disorder
+statement: Low free T3 with normal TSH and normal T4 indicates T3 conversion disorder
+  / cellular hypothyroidism, producing hypothyroid symptoms despite 'normal' labs.
+evidence_tier: plausible_emerging
+rationale: This is a recognized functional medicine diagnostic pattern. The document
+  explicitly links this pattern to stress, inflammation, gut dysfunction, and nutrient
+  deficiencies. It is well-supported mechanistically but remains outside mainstream
+  diagnostic consensus.
+coaching_translation: If you feel hypothyroid but your TSH is 'normal,' ask your doctor
+  to check your free T3 — that's the hormone that actually does the work in your cells.
+out_of_scope_notes: Lab interpretation is clinician scope. Coaches can flag the pattern
+  and refer.
+caveats:
+- Not a conventional diagnostic category — may not be recognized by all clinicians
+- Requires full thyroid panel (fT3, fT4, TSH) for assessment
+linked_to_topics:
+- t3-conversion-disorder
+- hypothyroidism
+linked_to_supplements:
+- selenium
+- zinc
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 8: Diagnosing Thyroid Diseases'
+  quote: Low fT3 with normal TSH/T4 = conversion disorder.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

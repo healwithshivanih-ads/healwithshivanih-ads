@@ -1,0 +1,26 @@
+slug: avoid-refined-sugar-caffeine-alcohol-for-adrenal-support
+statement: Avoiding refined sugars, caffeine, and alcohol supports adrenal recovery
+  in states of cortisol dysregulation.
+evidence_tier: plausible_emerging
+rationale: Refined sugar and caffeine stimulate cortisol and adrenaline secretion;
+  alcohol disrupts HPA axis regulation and sleep architecture. Avoiding them is a
+  logical supportive strategy though direct RCT for adrenal restoration specifically
+  is thin.
+coaching_translation: Sugar, caffeine, and alcohol all push your adrenal system harder.
+  Cutting back gives your stress response system a chance to recover.
+caveats:
+- Source is expert consensus toolkit. Individual tolerance varies.
+linked_to_topics:
+- hpa-axis-dysregulation
+- hypercortisolism
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-adrenal-toolkit
+  location: Hypercortisolism — Restoration
+  quote: Avoid refined sugars, caffeine, and alcohol in the diet.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

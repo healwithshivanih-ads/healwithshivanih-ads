@@ -1,0 +1,29 @@
+slug: homa-ir-reflects-hepatic-insulin-sensitivity
+statement: HOMA-IR (calculated from fasting glucose × fasting insulin ÷ 405) reflects
+  hepatic insulin sensitivity and tracks change over time; values >2.6 indicate significant
+  insulin resistance with higher cardiometabolic risk.
+evidence_tier: strong
+rationale: HOMA-IR is a validated clinical tool widely used in research and clinical
+  practice.
+coaching_translation: HOMA-IR is a simple score calculated from two fasting blood
+  tests that tells you how hard your body is working to keep blood sugar normal.
+out_of_scope_notes: 'Clinician scope: ordering and interpreting fasting labs.'
+linked_to_topics:
+- insulin-resistance
+- blood-sugar-dysfunction
+linked_to_mechanisms:
+- insulin-resistance
+caveats:
+- Interpretation cut-offs vary by lab; document presents slightly different cut-offs
+  in two sections — verify with clinician.
+linked_to_supplements: []
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Chapter 6 — Understanding Laboratory Reports
+  quote: 'HOMA-IR (Homeostatic Model Assessment of Insulin Resistance): Calculated
+    value Formula: HOMA-IR = [fasting glucose (mg/dL) × fasting insulin (µIU/mL)]
+    ÷ 405.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

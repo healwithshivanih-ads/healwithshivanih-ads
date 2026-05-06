@@ -1,0 +1,80 @@
+slug: gut-dysbiosis
+display_name: Gut Dysbiosis
+aliases:
+- intestinal microbiome imbalance
+- dysbiosis
+- dysbiotic bacteria
+- microbiome imbalance
+- SIBO
+- candida overgrowth
+- intestinal dysbiosis
+- microbial imbalance
+- dysbacteriosis
+- abnormal gut flora
+category: gut
+summary: An imbalance in the composition of gut microbiota, with reduction of beneficial
+  bacteria (Lactobacillus, Bifidobacterium) and overgrowth of pathogenic organisms.
+  Driven by antibiotics, poor diet, stress, and medications. Downstream effects include
+  impaired immunity, leaky gut, and altered mood via the gut-brain axis.
+upstream_drivers:
+- poor-diet
+- antibiotic-use
+- chronic-stress
+- high-fermentable-carbohydrate-diet
+- stress
+- antibiotics
+- alcohol
+- nsaids
+- ppi-use
+downstream_effects:
+- increased-intestinal-permeability
+- systemic-inflammation
+- altered-bile-acid-metabolism
+- ibs
+- sibo
+- leaky-gut
+- lps-endotoxemia
+- immune-dysregulation
+- immune-dysfunction
+- mood-disorders
+- candida-overgrowth
+related_mechanisms:
+- chronic-inflammation
+- insulin-resistance
+- systemic-inflammation
+- leaky-gut
+- lps-endotoxemia
+- nf-kb-activation
+- hypochlorhydria-mechanism
+- gut-brain-signaling
+linked_to_topics:
+- dyslipidemia
+- low-carb-diet
+- leaky-gut
+- chronic-inflammation
+- autoimmune-disease
+- food-sensitivity
+- gut-dysfunction
+- gut-microbiome
+- gut-brain-axis
+- candida-overgrowth
+evidence_tier: strong
+sources:
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 4
+  quote: Gut health → Dysbiosis, increased intestinal permeability.
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: The Science of Low-Carb Diets
+  quote: Reducing fermentable carbs starves dysbiotic bacteria.
+- id: vitaone-inflammation-cheatsheet
+  location: Autoimmune Disease Cheatsheet — Page 24
+  quote: Low Akkermansia & Faecalibacterium linked with immune dysfunction. Probiotic
+    monotherapy rarely sufficient—diet & prebiotics are crucial.
+- id: vitaone-gut-toolkit
+  location: The 5R Framework for Gut Restoration — Reinoculate
+  quote: Use of antibiotics kills both good and bad bacteria. Probiotics in the form
+    of supplements or food are often needed to help reestablish a balanced gut flora.
+version: 4
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

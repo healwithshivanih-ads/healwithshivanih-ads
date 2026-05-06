@@ -1,0 +1,51 @@
+slug: inflammaging
+display_name: Inflammaging
+aliases:
+- immune aging
+- chronic low-grade inflammation with aging
+- inflamaging
+summary: Inflammaging refers to the chronic, low-grade, sterile inflammation that
+  accumulates with biological aging. It underlies virtually every chronic disease
+  state and is accelerated by poor metabolic health, mitochondrial dysfunction, declining
+  sex hormones, and gut barrier disruption.
+common_symptoms:
+- fatigue
+- joint pain
+- brain fog
+- muscle pain
+- skin rashes
+- eczema
+- psoriasis
+- increased food sensitivities
+- recurrent infections
+red_flags:
+- new autoimmune diagnosis in midlife
+- persistent fatigue unresponsive to rest
+- rapidly worsening food intolerances
+- recurrent infections
+related_topics:
+- autoimmune
+- inflammation
+- microbiome
+- dysbiosis
+- gut-hormone-axis
+- immune-resilience
+key_mechanisms:
+- mitochondrial-dysfunction
+- gut-barrier-permeability
+- th1-th2-imbalance
+coaching_scope_notes: 'Coaches can support lifestyle factors that modulate inflammaging:
+  dietary fiber, polyphenols, sleep hygiene, nervous system regulation, and stress
+  management. Do not diagnose or interpret labs.'
+clinician_scope_notes: HRT, low-dose naltrexone, peptide therapy, and GLP-1 agonists
+  discussed in this session require clinician oversight and prescribing.
+evidence_tier: plausible_emerging
+sources:
+- id: thurlow-microbiome-session-8
+  location: 'Session 8: Gut-Immune Connection and Inflammaging — main transcript'
+  quote: Inflammation or inflamaging is at the basis for every single chronic disease
+    state that we have here in the United States and abroad.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

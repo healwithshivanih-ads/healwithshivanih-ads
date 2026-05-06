@@ -1,0 +1,35 @@
+slug: nfkb-activation
+display_name: NF-κB Activation
+aliases:
+- nuclear factor kappa B
+- pro-inflammatory gene expression
+category: signaling
+summary: NF-κB is a master transcription factor for pro-inflammatory cytokine production.
+  Activated by LPS, dysbiosis, and gut-derived antigens, it drives chronic pain, fatigue,
+  and systemic inflammation.
+upstream_drivers:
+- lps-signaling
+- leaky-gut
+- gut-dysbiosis-mechanism
+downstream_effects:
+- chronic-inflammation
+- pain
+- fatigue
+- ibs
+- ibd
+related_mechanisms:
+- lps-signaling
+- leaky-gut
+linked_to_topics:
+- leaky-gut
+- ibd
+- gut-dysbiosis
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Leaky Gut & Inflammation — Why Leaky Gut Creates Chronic Inflammation
+  quote: NF-κB activation — Pro-inflammatory gene expression — Pain, fatigue
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

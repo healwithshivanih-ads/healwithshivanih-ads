@@ -1,0 +1,27 @@
+slug: berberine-ampk-natural-metformin
+statement: Berberine supports AMPK activation and improves glucose uptake and insulin
+  sensitivity, functioning similarly to metformin.
+evidence_tier: plausible_emerging
+rationale: Multiple RCTs (not cited by name in source) support berberine's glucose-lowering
+  effect comparable to metformin in T2D. AMPK activation is its established mechanism.
+  Evidence is promising but not yet at full consensus tier.
+coaching_translation: Berberine is a plant compound that activates the same cellular
+  energy switch as the diabetes drug metformin — it can help the body use blood sugar
+  more effectively.
+caveats:
+- Dosing (500 mg BID) should be confirmed with clinician, especially alongside medications.
+- Source is expert consensus; specific RCTs not cited.
+out_of_scope_notes: Therapeutic dosing for T2D management is clinician scope.
+linked_to_topics:
+- insulin-resistance
+linked_to_supplements:
+- berberine
+linked_to_mechanisms: []
+sources:
+- id: vitaone-blood-sugar-cheatsheet
+  location: Insulin Resistance Cheatsheet — Therapeutic Considerations
+  quote: Berberine = "Natural Metformin" – Supports AMPK activation
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

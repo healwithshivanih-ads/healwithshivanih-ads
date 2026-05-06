@@ -1,0 +1,36 @@
+slug: biotin-b7
+display_name: Vitamin B7 (Biotin)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 300
+    max: 10000
+    unit: mcg
+timing_options:
+- with_breakfast
+- morning
+take_with_food: optional
+linked_to_topics:
+- vitamin-b-complex-deficiency
+- hairfall
+linked_to_claims:
+- biotin-interferes-with-lab-tests
+notes_for_coach: Only one active form (D-Biotin). Stop 3–4 days before labs. High
+  doses may interfere with B5 and compete for absorption. 300 mcg typical; high-dose
+  hair protocols (2500–10,000 mcg) should be supervised.
+notes_for_client: 'Biotin is important for hair and nail strength. IMPORTANT: Stop
+  taking it 3–4 days before any blood test as it can cause false results.'
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin B7 (Biotin)
+  quote: 'Supplement: 300 mcg typical; high doses (thousands mcg/day) safe but may
+    interfere with B5 & lab tests.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

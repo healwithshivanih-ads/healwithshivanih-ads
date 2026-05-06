@@ -1,0 +1,32 @@
+slug: ldn-reduces-anti-thyroid-antibodies-in-ait
+statement: LDN may reduce overall inflammation and anti-thyroid antibody levels in
+  autoimmune thyroiditis, and may improve T4-to-T3 conversion while reducing T4-to-reverse-T3
+  conversion.
+evidence_tier: fm_specific_thin
+rationale: Listed as a proposed MOI for AIT in a functional medicine practitioner
+  document. Biologically plausible given LDN's immune-modulating effects, but direct
+  RCT evidence for these specific thyroid endpoints is thin.
+coaching_translation: LDN may help reduce the immune attack on the thyroid and improve
+  how the thyroid hormone gets activated in your cells — though your doctor needs
+  to monitor your thyroid labs closely.
+caveats:
+- Source is practitioner document. No primary study cited for thyroid-specific endpoints.
+  Thyroid hormone monitoring is clinician scope.
+- Source is expert consensus/synthesis — treat as fm_specific_thin.
+out_of_scope_notes: Thyroid hormone level monitoring and dose adjustment are strictly
+  clinician scope.
+linked_to_topics:
+- low-dose-naltrexone
+- autoimmune-thyroiditis
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-ldn-article
+  location: LDN and Autoimmune Thyroiditis (AIT)
+  quote: 'Likely MOI Thyroiditis: Reduce overall inflammation, Reduce levels of anti-thyroid
+    antibodies, Improve thyroid transport into cells, Increase T4 to T3 conversion,
+    Reduce T4 to reverse T3 conversion.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

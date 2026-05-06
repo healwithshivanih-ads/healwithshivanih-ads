@@ -1,0 +1,26 @@
+slug: lethargic-depression
+display_name: Lethargic Depression
+aliases:
+- low-energy depression
+- flat mood with fatigue
+- depressive fatigue
+category: mood
+severity: concerning
+description: Depression characterized by low energy, lethargy, and excessive sleep
+  need, associated with low cortisol states.
+when_to_refer: Refer for mental health evaluation if clinically significant depression
+  is present.
+linked_to_topics:
+- hpa-axis-dysregulation
+- chronic-stress
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- dhea-depletion
+sources:
+- id: vitaone-adrenal-toolkit
+  location: 'HPA Axis Questionnaire — Section 1: Low cortisol state'
+  quote: Lethargic depression, Excessive need for sleep
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,28 @@
+slug: gut-inflammation-transmits-to-brain-mood
+statement: Chronic gut inflammation is transmitted to the brain via the gut-brain
+  axis, manifesting as mood disorders, irritability, and brain fog.
+evidence_tier: plausible_emerging
+rationale: Biologically plausible and supported by emerging research on the gut-brain
+  inflammatory axis; inflammatory cytokines (IL-6, TNF) are specifically named as
+  modulators of mood. Single-expert source without cited RCTs.
+coaching_translation: An inflamed gut sends inflammatory signals to your brain — this
+  can show up as irritability, low mood, or difficulty thinking clearly.
+caveats:
+- No specific studies cited; single-expert synthesis source.
+- Mechanism via cytokines (IL-6, TNF) is credible but individual variation is significant.
+linked_to_topics:
+- gut-brain-axis
+- dysbiosis
+- anxiety
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-5
+  location: Gut Inflammation and Brain section
+  quote: If you have an inflamed gut, you are going to get inflammation that is transmitted
+    to the brain and vice versa.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

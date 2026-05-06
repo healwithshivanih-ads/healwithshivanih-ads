@@ -1,0 +1,25 @@
+slug: testosterone-protects-against-cad
+statement: Higher levels of testosterone in men have been found to offer greater than
+  five-fold protection against coronary artery disease.
+evidence_tier: plausible_emerging
+rationale: Some studies have found inverse associations between testosterone and CAD,
+  but the evidence is not uniformly consensus-level. Source lacks specific citation.
+caveats:
+- Source states this without citing a specific study. Treat as plausible emerging.
+- Testosterone management is clinician scope.
+out_of_scope_notes: Testosterone testing and supplementation is strictly clinician
+  scope.
+linked_to_topics:
+- cardiovascular-dysfunction
+coaching_translation: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-cv-toolkit
+  location: CVD Risk Analysis — Lab Results
+  quote: levels of testosterone have been found to offer men greater than five-fold
+    protection against coronary artery disease.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

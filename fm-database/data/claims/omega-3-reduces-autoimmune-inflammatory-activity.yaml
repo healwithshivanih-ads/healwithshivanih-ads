@@ -1,0 +1,28 @@
+slug: omega-3-reduces-autoimmune-inflammatory-activity
+statement: Omega-3 fatty acids have anti-inflammatory properties that can help reduce
+  autoimmune activity in thyroid conditions.
+evidence_tier: plausible_emerging
+rationale: EPA/DHA reduce pro-inflammatory eicosanoid production and downregulate
+  NF-κB. Anti-inflammatory benefit is well-established; specific Hashimoto's antibody
+  reduction evidence is limited.
+coaching_translation: Eating more omega-3-rich foods (fatty fish, flaxseeds, walnuts)
+  or supplementing can help reduce the inflammation that drives the autoimmune attack
+  on your thyroid.
+caveats:
+- No Hashimoto's-specific RCT cited in source document.
+- Source is an educational toolkit.
+linked_to_topics:
+- hashimotos-hypothyroidism
+linked_to_supplements:
+- omega-3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-toolkit
+  location: Nutrient Optimization
+  quote: 'Omega-3 Fatty Acids: Anti-inflammatory properties that can help reduce autoimmune
+    activity.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

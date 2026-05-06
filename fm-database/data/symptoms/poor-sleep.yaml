@@ -1,0 +1,27 @@
+slug: poor-sleep
+display_name: Poor Sleep Quality
+aliases:
+- trouble sleeping
+- unrefreshing sleep
+- waking tired
+category: sleep
+severity: common
+description: Difficulty sleeping or waking unrefreshed; linked to chronic stress and
+  amenable to gratitude practice and self-care interventions.
+when_to_refer: If sleep apnoea or clinical insomnia is suspected, refer to clinician.
+linked_to_topics:
+- gratitude-practice
+- self-care
+- stress-management
+linked_to_mechanisms:
+- parasympathetic-activation
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Practicing Gratitude with the IFM Gratitude Journal
+  quote: These benefits include decreased stress levels, lowered blood pressure, better
+    sleep quality, stronger immune systems, and increased feelings of joy, happiness,
+    forgiveness, and compassion.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

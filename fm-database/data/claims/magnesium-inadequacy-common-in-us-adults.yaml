@@ -1,0 +1,25 @@
+slug: magnesium-inadequacy-common-in-us-adults
+statement: Nearly half of US adults consume less than the RDA for magnesium, making
+  insufficiency very common.
+evidence_tier: strong
+rationale: NHANES data consistently shows widespread suboptimal magnesium intake in
+  the US population. Cited by NIH ODS reference in document.
+coaching_translation: Most people don't get enough magnesium from food. Prioritizing
+  nuts, seeds, leafy greens, and whole grains can meaningfully close this gap.
+caveats:
+- Form selection and dosing for supplementation should involve a clinician.
+linked_to_topics:
+- magnesium-insufficiency
+linked_to_supplements:
+- magnesium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Magnesium'
+  quote: Magnesium inadequacy is very common, with almost half of adults in the US
+    getting less than the RDA.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

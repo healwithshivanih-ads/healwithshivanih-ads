@@ -1,0 +1,56 @@
+slug: psyllium-husk
+display_name: Psyllium Husk (Isabgol)
+category: other
+forms_available:
+- capsule
+- powder
+- whole_food
+typical_dose_range:
+  powder:
+    min: 1
+    max: 2
+    unit: teaspoons
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+- morning
+- evening
+- bedtime
+take_with_food: avoid
+linked_to_topics:
+- fiber-gap
+- microbiome
+- dysbiosis
+- insulin-resistance
+- low-fodmap-diet
+- elimination-diet
+linked_to_claims:
+- psyllium-husk-best-tolerated-fiber-supplement
+- flax-and-chia-combo-gentle-constipation-support
+- lps-dysbiosis-insulin-resistance
+- psyllium-husk-low-fodmap-approved
+notes_for_coach: Low FODMAP approved per Monash. Must be taken with adequate water
+  to prevent choking or obstruction. Best for IBS-C. PHGG is preferred by some clinicians
+  for IBS-C.
+notes_for_client: Take 1 tsp in a full glass of warm water. Always drink extra water
+  throughout the day when using psyllium.
+evidence_tier: strong
+linked_to_mechanisms: []
+sources:
+- id: thurlow-microbiome-session-7
+  location: Q&A — psyllium vs guar gum [00:27:56]
+  quote: If I were to pick one, I would probably say psyllium husk, especially if
+    it's organic or you know that it's been well sourced because it tends to be pretty
+    simple.
+- id: vitaone-blood-sugar-cheatsheet
+  location: Insulin Resistance Cheatsheet — Nutrients to Support Insulin Sensitivity
+  quote: Fiber (soluble + insoluble)
+- id: vitaone-elimination-diet-toolkit
+  location: FODMAP Plan SOS Solutions — Constipation
+  quote: Psyllium Husk (Isabgol) – 1 tsp in warm water. Low FODMAP approved. Soluble
+    fiber → gel formation → smooth stool movement.
+version: 3
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

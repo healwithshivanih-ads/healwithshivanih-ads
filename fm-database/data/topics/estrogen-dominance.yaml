@@ -1,0 +1,59 @@
+slug: estrogen-dominance
+display_name: Estrogen Dominance
+aliases:
+- estrogen excess
+- unopposed estrogen
+- high estrogen
+- oestrogen dominance
+- relative estrogen excess
+summary: 'A state of excess estrogen relative to progesterone, often linked to impaired
+  Phase II liver conjugation and insufficient dietary fiber. MTHFR mutations and sluggish
+  methylation can worsen estrogen clearance. Key dietary strategy: broccoli sprouts,
+  flaxseed, beets.'
+common_symptoms:
+- pms
+- heavy-periods
+- breast-tenderness
+- bloating
+- mood-swings
+- acne
+- weight-gain
+- fibroids
+red_flags:
+- family history of hormone-dependent cancers
+- abnormal uterine bleeding
+- suspected fibroid or endometriosis requiring imaging
+- fibroids-rapid-growth
+- breast-mass
+related_topics:
+- perimenopause
+- pcos
+- estrobolome
+- gut-hormone-axis
+- inflammation
+- liver-detoxification
+- methylation-mthfr
+key_mechanisms:
+- estrogen-enterohepatic-recirculation
+- estrogen-phase-ii-methylation-deficit
+- aromatase-overactivity
+- impaired-methylation
+- phase-ii-conjugation
+coaching_scope_notes: Coaches can support dietary estrogen detox (cruciferous vegetables,
+  flaxseed, fiber). Do not advise on hormone replacement or lab interpretation.
+clinician_scope_notes: Monitor E2, progesterone, SHBG, LFTs, stool beta-glucuronidase.
+  Use minimum 8–12 weeks before assessing supplement response.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: Functional Wisdom — Estrogen Dominance Supplement Cheatsheet
+  quote: Estrogen dominance isn't 'too much estrogen'. It's poor metabolism, poor
+    clearance, poor gut reconversion, and low progesterone balance.
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet
+  quote: With MTHFR mutations, impaired methylation can lead to toxin build-up, estrogen
+    dominance, and histamine intolerance.
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

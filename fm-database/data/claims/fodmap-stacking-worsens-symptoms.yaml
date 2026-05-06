@@ -1,0 +1,27 @@
+slug: fodmap-stacking-worsens-symptoms
+statement: Combining multiple moderate-FODMAP foods in one meal ('stacking') can push
+  total FODMAP load above the symptom threshold even when individual foods appear
+  safe.
+evidence_tier: strong
+rationale: Monash-based clinical guidance consistently identifies 'stacking' as a
+  leading cause of persistent symptoms on Low FODMAP; total colonic FODMAP load drives
+  fermentation.
+coaching_translation: Even if each food seems fine on its own, eating too many moderate-FODMAP
+  items in one sitting can still upset your gut. Spread them out or choose just one
+  per meal.
+linked_to_topics:
+- low-fodmap-diet
+linked_to_mechanisms:
+- colonic-fermentation
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: Low Fodmap Detailed Chart (Indian Version)
+  quote: The most common reasons patients fail Low FODMAP are not willpower, they're
+    portion creep, stacking multiple moderate-FODMAP foods in one meal.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

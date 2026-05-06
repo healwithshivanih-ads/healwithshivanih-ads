@@ -1,0 +1,59 @@
+slug: estrogen-decline
+display_name: Estrogen Decline (Perimenopause/Menopause)
+aliases:
+- estrogen-fluctuation
+- estrogen-driven-gut-barrier-integrity
+- falling estrogen
+- ovarian estrogen decline
+- menopausal estrogen loss
+category: endocrine
+summary: Progressive decline in ovarian estradiol production during perimenopause
+  and menopause, contributing to vasomotor symptoms, mood changes, bone loss, and
+  altered metabolic risk.
+upstream_drivers:
+- ovarian senescence (natural)
+- surgical / chemotherapy-induced menopause
+- ovarian-aging
+- perimenopause
+- surgical-menopause
+downstream_effects:
+- leaky gut (reduced tight-junction support)
+- increased inflammatory microbiome species
+- reduced microbial diversity
+- bone resorption (osteopenia/osteoporosis risk)
+- increased visceral adiposity
+- LDL elevation
+- vasomotor symptoms (hot flashes, night sweats)
+- sleep disruption (3am wakeups)
+- mood lability, new-onset anxiety
+- hot-flashes
+- anxiety
+- insomnia
+- bone-loss
+- metabolic-dysfunction
+related_mechanisms:
+- leaky-gut
+- microbial-diversity-decline
+- chronic-inflammation
+- low-progesterone
+- hpa-axis-dysregulation
+linked_to_topics:
+- perimenopause
+- autoimmune
+- inflammation
+- microbiome
+- estrobolome
+- gut-hormone-axis
+sources:
+- id: thurlow-microbiome-mondays
+  location: Sessions 1, 3, 4 — estrogen-microbiome discussion
+- id: vitaone-skill-practice-guide
+  location: practice_guide.md, Menopause/Perimenopause section
+- id: vitaone-sex-hormones-cheatsheet
+  location: Common Triggers for Low Progesterone
+  quote: Perimenopause & menopause → Natural decline in ovarian progesterone.
+evidence_tier: strong
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

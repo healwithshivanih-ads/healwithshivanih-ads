@@ -1,0 +1,36 @@
+slug: glucosamine-chondroitin
+display_name: Glucosamine + Chondroitin
+category: other
+forms_available:
+- capsule
+- tablet
+- powder
+typical_dose_range:
+  capsule:
+    min: 1500
+    max: 1500
+    unit: mg
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- knee-pain
+linked_to_claims:
+- collagen-glucosamine-chondroitin-cartilage
+notes_for_coach: 'Standard dosing: 1500 mg glucosamine sulfate + 1200 mg chondroitin
+  sulfate daily. GAIT trial showed benefit in moderate-severe OA. Shell fish-derived
+  — check for shellfish allergy; vegan forms available.'
+notes_for_client: Glucosamine and chondroitin help nourish your joint cartilage. Take
+  consistently for at least 2–3 months to assess benefit. If you have shellfish allergy,
+  ask for a vegan form.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Knee Pain Cheatsheet
+  quote: Collagen peptides, MSM, Glucosamine + Chondroitin, Vitamin D3 + K2
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,25 @@
+slug: fluid-retention
+display_name: Fluid Retention
+aliases:
+- water retention
+- edema
+- puffiness
+category: metabolic
+severity: common
+description: Excess fluid retention associated with elevated free estrogen or androgen
+  excess from low SHBG.
+linked_to_topics:
+- sex-hormone-binding-globulin
+- estrogen-metabolism
+linked_to_mechanisms:
+- shbg-hormone-binding
+when_to_refer: ''
+sources:
+- id: vitaone-sex-hormones-toolkit
+  location: Sex Hormone Binding Globulin (SHBG) — Page 01
+  quote: This can lead to increased free testosterone and estrogen in the body, which
+    can lead to symptoms like hair loss, acne, and excess fluid retention.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

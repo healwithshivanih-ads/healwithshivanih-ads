@@ -1,0 +1,30 @@
+slug: vitamin-d-enhances-immunity-reduces-respiratory-infections
+statement: Vitamin D enhances immune system function, reduces viral growth, and decreases
+  upper respiratory infections.
+evidence_tier: strong
+rationale: Martineau et al. (Health Technol Assess 2019) individual participant data
+  meta-analysis of Vitamin D supplementation and acute respiratory infections is cited.
+  Multiple RCTs cited support immune modulation.
+coaching_translation: Vitamin D is a key immune regulator. Adequate levels are associated
+  with fewer and less severe respiratory infections.
+out_of_scope_notes: 5,000 IU/day is a therapeutic dose requiring clinician oversight
+  and lab monitoring (25-OH-D levels). Hypercalcemia risk at high doses noted in references.
+linked_to_topics:
+- immune-support
+- chronic-inflammation
+linked_to_supplements:
+- vitamin-d
+caveats:
+- Therapeutic dosing (5,000 IU) requires clinician supervision and periodic 25-OH-D
+  monitoring.
+- Drug interaction with statins noted in references (Schwartz JB 2009).
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Vitamin D enhances immune system function, reduces viral growth, and can
+    reduce upper respiratory infections.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

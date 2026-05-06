@@ -1,0 +1,27 @@
+slug: hair-loss-often-a-t3-conversion-issue-not-just-low-tsh
+statement: Hair loss correlates better with Free T3 levels and T3/T4 conversion status
+  than with TSH alone — conversion issues are a commonly missed driver.
+evidence_tier: plausible_emerging
+rationale: Hair loss correlates better with Free T3 and T3 levels than TSH alone.
+  Iron deficiency, low Free T3, and Reverse T3 elevation are common hair-loss drivers
+  that TSH misses. A coaching-level suggestion to check a full panel plus ferritin
+  is clinically sound.
+coaching_translation: Hair fall is a whole-body symptom. Thyroid matters, but so does
+  ferritin, protein intake, stress, and nutrient status. A full workup usually reveals
+  which of these is actually driving it.
+caveats:
+- Lab ordering and interpretation must be referred to a clinician.
+- Multiple causes of hair loss exist; thyroid conversion is one of several to investigate.
+linked_to_topics:
+- thyroid
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-evidence-tiers
+  location: TOPIC 1 — Thyroid / Claims & Tiers / Claim 10
+  quote: Hair loss correlates better with Free T3 and T3 levels than TSH alone.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

@@ -1,0 +1,38 @@
+slug: bile-flow-regulation
+display_name: Bile Flow Regulation
+aliases:
+- bile secretion
+- choleretic activity
+- biliary flow
+- gallbladder drainage
+category: gut
+summary: Adequate bile production and flow is essential for Phase III elimination
+  (toxin excretion via bile/stool), fat-soluble vitamin absorption, and cholesterol
+  clearance. Impaired bile flow (bile stasis) contributes to gallstone formation,
+  estrogen recirculation, and digestive dysfunction. Supported by taurine, phosphatidylcholine,
+  artichoke, dandelion, and turmeric.
+upstream_drivers:
+- low-fiber-diet
+- high-cholesterol
+- dehydration
+- sedentary-lifestyle
+downstream_effects:
+- gallstone-formation
+- impaired-fat-digestion
+- estrogen-recirculation
+related_mechanisms:
+- phase-iii-elimination
+- phase-ii-conjugation
+linked_to_topics:
+- liver-detoxification
+- nafld
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Liver Disease Cheatsheet
+  quote: Bile stasis, high cholesterol, low fiber diet — Taurine, Phosphatidylcholine,
+    Digestive enzymes — Support bile flow; fiber & hydration play key role in prevention.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

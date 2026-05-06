@@ -1,0 +1,33 @@
+slug: pregnancy-anti-inflammatory-immune-shift
+statement: Pregnancy induces a trimester-specific immune shift toward anti-inflammatory
+  dominance in the second trimester, often improving autoimmune conditions like RA,
+  MS, and Hashimoto's.
+evidence_tier: plausible_emerging
+rationale: The immunological changes of pregnancy, including Th2 shift, T-reg expansion,
+  and progesterone-mediated immune tolerance, are well-documented. Improvement of
+  Th1-driven autoimmune conditions in pregnancy is clinically observed, though mechanisms
+  are complex.
+coaching_translation: Pregnancy is one of nature's most powerful anti-inflammatory
+  states. Understanding this can help us apply similar principles — like supporting
+  immune tolerance through gut health, omega-3s, and stress reduction — outside of
+  pregnancy.
+caveats:
+- Postpartum inflammatory rebound is a significant risk period.
+- Pregnancy supplementation requires clinician oversight.
+- Source is educational synthesis.
+out_of_scope_notes: Managing autoimmune conditions in pregnancy is strictly clinician
+  scope.
+linked_to_topics:
+- chronic-inflammation
+- autoimmune-disease
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Pregnancy is Anti-Inflammatory — Page 21
+  quote: Autoimmune conditions (RA, MS, Hashimoto's) often improve during pregnancy
+    due to immune tolerance.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

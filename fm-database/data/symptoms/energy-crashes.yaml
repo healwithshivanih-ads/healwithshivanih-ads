@@ -1,0 +1,26 @@
+slug: energy-crashes
+display_name: Energy Crashes
+aliases:
+- afternoon energy slump
+- blood sugar crash
+- post-prandial energy crash
+- wired but tired
+category: metabolic
+severity: common
+description: Sudden drops in energy, often mid-afternoon or 1–2 hours after meals,
+  associated with reactive hypoglycaemia in the context of progressing insulin resistance.
+linked_to_topics:
+- insulin-resistance
+- blood-sugar-dysfunction
+linked_to_mechanisms:
+- insulin-resistance
+when_to_refer: ''
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 4.2.2 — Progressing Insulin Resistance
+  quote: Energy 'crashes,' intensified cravings, increased thirst, mood swings, expanding
+    waist circumference.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

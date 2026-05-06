@@ -1,0 +1,43 @@
+slug: sugar-cravings
+display_name: Sugar Cravings
+aliases:
+- carb cravings
+- sweet cravings
+- craving sweets
+- wanting sugar
+- sweet tooth
+- blood sugar swings
+- poor glucose control
+- intensified cravings
+category: metabolic
+severity: common
+description: Persistent desire for sweet or high-carbohydrate foods, often driven
+  by blood glucose instability and reactive hypoglycaemia.
+linked_to_topics:
+- insulin-resistance
+- candida-overgrowth
+- gut-dysbiosis
+- medicine-nutrient-interactions
+- blood-sugar-dysfunction
+linked_to_mechanisms:
+- insulin-resistance
+- gut-brain-axis-dysregulation
+when_to_refer: ''
+sources:
+- id: vitaone-blood-sugar-cheatsheet
+  location: Insulin Resistance Cheatsheet — Clinical Symptoms
+  quote: Sugar cravings
+- id: vitaone-gut-cheatsheet
+  location: 100 Gut Symptoms — Appetite & Satiety Changes
+  quote: Sugar cravings — Gastritis — Yeast-driven — Antifungal diet + probiotics
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamins & Minerals Your Patient's Body Might Be Crying Out For
+  quote: Sugar cravings, poor glycemic control
+- id: vitaone-blood-sugar-ebook
+  location: Section 4.2.1 — Compensated Insulin Resistance (Early IR)
+  quote: Post-meal fatigue, sugar cravings, brain fog, mild weight gain around the
+    abdomen, intermittent headaches, skin tags/acanthosis nigricans, increased hunger.
+version: 4
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,36 @@
+slug: leaky-gut-provokes-immune-response-to-foods
+statement: When the small intestinal lining is breached, food particles leak into
+  the bloodstream and provoke an immune response, resulting in food sensitivity symptoms.
+evidence_tier: plausible_emerging
+rationale: This describes the proposed mechanism of non-IgE food sensitivity via intestinal
+  hyperpermeability. The mechanistic model is well-articulated in functional medicine
+  literature and has emerging support, though peer-reviewed RCT consensus remains
+  limited.
+coaching_translation: A compromised gut lining lets partially digested food into the
+  bloodstream, where the immune system treats it as a threat — causing reactions like
+  bloating, rashes, fatigue, or joint pain.
+caveats:
+- Single-expert source; mechanism is plausible but not fully validated in peer-reviewed
+  consensus.
+- Symptom variability is high — some individuals with leaky gut may have no overt
+  symptoms.
+linked_to_topics:
+- leaky-gut
+- food-sensitivities
+- inflammation
+- autoimmune
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-2
+  location: Why midlife changes food tolerance
+  quote: If you have a breach in your small intestinal lining and you develop leaky
+    gut, you're gonna provoke an immune response. So you may find that when you eat
+    these favorite foods, let's just use dairy as a really good example… they consume
+    dairy, they have a leaky gut, the food particles leak into the bloodstream, it
+    provokes an immune response, you start to feel poorly.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

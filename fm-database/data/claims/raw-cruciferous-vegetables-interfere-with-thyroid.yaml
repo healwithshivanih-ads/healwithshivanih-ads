@@ -1,0 +1,28 @@
+slug: raw-cruciferous-vegetables-interfere-with-thyroid
+statement: Raw cruciferous vegetables (e.g., broccoli, cauliflower, cabbage) can interfere
+  with thyroid function; cooking reduces their goitrogenic effects.
+evidence_tier: plausible_emerging
+rationale: Glucosinolates in raw crucifers are converted to goitrin, which can inhibit
+  thyroid peroxidase. Cooking partially deactivates these compounds. Clinical significance
+  is debated and likely only relevant at high intake or with iodine deficiency.
+coaching_translation: If you have thyroid issues, it's fine to eat cruciferous vegetables
+  — just make sure to cook them, as raw forms may mildly interfere with thyroid hormone
+  production.
+caveats:
+- Effect is likely small in those with adequate iodine intake.
+- Source is an educational toolkit.
+linked_to_topics:
+- hashimotos-hypothyroidism
+- hypothyroidism
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-thyroid-toolkit
+  location: Avoiding Goitrogens
+  quote: Raw cruciferous vegetables (e.g., broccoli, cauliflower, cabbage) can interfere
+    with thyroid function. Cooking these vegetables can reduce their goitrogenic effects.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,27 @@
+slug: nac-glutathione-support-t-regs
+statement: NAC and glutathione support antioxidant defense and T-regulatory cell function
+  in autoimmune conditions.
+evidence_tier: plausible_emerging
+rationale: NAC as a glutathione precursor with immunomodulatory properties is well-studied.
+  Its specific role in T-reg support in autoimmunity is mechanistically sound but
+  clinical evidence in autoimmune patients is emerging.
+coaching_translation: NAC helps your body produce glutathione — your master antioxidant
+  — which is often depleted in chronic inflammation and autoimmunity.
+caveats:
+- Source is educational synthesis. Verify dosing with clinician.
+- GlyNAC protocols are clinician scope.
+linked_to_topics:
+- autoimmune-disease
+- chronic-inflammation
+linked_to_supplements:
+- nac
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Autoimmune Disease Cheatsheet — Page 25
+  quote: NAC and glutathione support antioxidant defense and T-regs.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

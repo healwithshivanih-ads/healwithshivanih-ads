@@ -1,0 +1,33 @@
+slug: bone-broth-used-in-fm-for-gut-immune-support
+statement: Bone broth has been used extensively in functional medicine to support
+  patients with digestive concerns, immune system dysfunction, brittle hair/skin/nails,
+  and poor nutritional intake, though research on its benefits is limited.
+evidence_tier: fm_specific_thin
+rationale: Bone broth is widely used in FM practice but clinical evidence is limited.
+  Risk of lead/heavy metal contamination is documented (Hsu et al., Food Nutr Res
+  2017; Monro et al., Med Hypotheses 2013).
+coaching_translation: Bone broth is a traditional food that many people find supportive
+  for gut healing — but the research is still catching up. Discuss with your practitioner,
+  especially if you have concerns about heavy metals.
+caveats:
+- Research on health benefits is limited.
+- Risk of lead and other heavy metal contamination — always discuss with a healthcare
+  provider.
+- 'References: Hsu et al. Food Nutr Res 2017; Monro et al. Med Hypotheses 2013.'
+linked_to_topics:
+- gut-dysfunction
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-gut-toolkit
+  location: Bone Broth
+  quote: Bone broth has been used extensively in functional medicine to support patients
+    with digestive concerns, immune system dysfunction, brittle hair, skin, and nails,
+    and poor nutritional intake. Although bone broth has been widely used for these
+    purposes and others, research is limited about the health benefits of bone broth.
+    Additionally, there is a risk of lead and other heavy metal contamination.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

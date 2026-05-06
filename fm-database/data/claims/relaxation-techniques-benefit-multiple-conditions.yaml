@@ -1,0 +1,27 @@
+slug: relaxation-techniques-benefit-multiple-conditions
+statement: Scholarly research shows that practicing relaxation techniques benefits
+  individuals with anxiety, depression, heart disease, high blood pressure, insomnia,
+  and chronic pain.
+evidence_tier: strong
+rationale: Broad research base for relaxation/mind-body techniques across these conditions.
+  Document cites scholarly research generally; consistent with published systematic
+  reviews on mindfulness and relaxation.
+coaching_translation: Relaxation practices aren't just for stress — they have documented
+  benefits for anxiety, sleep, pain, blood pressure, and heart health.
+caveats:
+- No specific studies cited by author in this section; general scholarly reference.
+linked_to_topics:
+- chronic-stress
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-adrenal-toolkit
+  location: Strategies for Transforming Stress
+  quote: 'In scholarly research, practicing relaxation techniques benefited individuals
+    with a variety of conditions including: Anxiety, Depression, Heart disease, High
+    blood pressure, Insomnia.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

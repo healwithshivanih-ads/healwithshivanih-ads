@@ -1,0 +1,30 @@
+slug: quercetin-boswellia-resveratrol-anti-inflammatory
+statement: Quercetin, Boswellia, and resveratrol are powerful anti-inflammatory tools
+  useful in autoimmune and inflammatory conditions.
+evidence_tier: plausible_emerging
+rationale: All three have mechanistic and early clinical evidence for anti-inflammatory
+  activity (quercetin via NF-κB/histamine, boswellic acids via 5-LOX inhibition, resveratrol
+  via SIRT1/NF-κB). Not yet mainstream consensus but widely used in functional medicine.
+coaching_translation: Quercetin (apples, onions), boswellia, and resveratrol (berries,
+  dark chocolate) are plant compounds that help calm inflammatory pathways — available
+  as foods and supplements.
+caveats:
+- Source is educational synthesis.
+- Drug interactions possible — verify with clinician if on medications.
+linked_to_topics:
+- chronic-inflammation
+- autoimmune-disease
+linked_to_supplements:
+- quercetin
+- boswellia
+- resveratrol
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Autoimmune Disease Cheatsheet — Page 25
+  quote: Boswellia, resveratrol, quercetin = powerful anti-inflammatory tools.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

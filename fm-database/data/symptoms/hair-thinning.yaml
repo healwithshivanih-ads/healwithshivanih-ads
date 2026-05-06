@@ -1,0 +1,57 @@
+slug: hair-thinning
+display_name: Hair Thinning / Hair Loss
+aliases:
+- hair loss
+- thinning hair
+- brittle hair
+- dry skin
+- rough skin
+- female pattern hair loss
+- androgenic alopecia
+- hair fall
+- hairfall
+- alopecia
+- balding
+- losing hair
+- hair shedding
+- receding hairline
+- coarse hair
+- eyebrow thinning
+category: skin
+severity: common
+description: Hair thinning on scalp, face, and body including loss of outer third
+  of eyebrows, associated with hypothyroid states due to impaired hair follicle activity.
+linked_to_topics:
+- thyroid
+- pcos
+- estrogen-dominance
+- hairfall
+- hypothyroidism
+- hashimotos-thyroiditis
+linked_to_mechanisms:
+- t4-to-t3-conversion-block
+- aromatase-overactivity
+- insulin-resistance
+- hpa-axis-dysregulation
+- thyroid-hormone-conversion
+- impaired-t4-to-t3-conversion
+when_to_refer: Scarring alopecia, alopecia areata, or rapid complete hair loss require
+  dermatology referral.
+sources:
+- id: vitaone-thyroid-cheatsheet
+  location: Biohacking Thyroid Function Cheatsheet — Thyroid Dysfunction Symptoms
+  quote: Hair thinning, dry skin
+- id: vitaone-sex-hormones-cheatsheet
+  location: Estrogen Dominance Supplement Cheatsheet
+  quote: Helps acne, hair thinning.
+- id: vitaone-nutrition-cheatsheet
+  location: Zinc – The Immune & Repair Mineral
+  quote: Deficiency = poor wound healing, frequent infections, hair loss, white nail
+    spots, loss of taste/smell.
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 4: Functions of Thyroid Hormones'
+  quote: Hairfall & Thinking of Hair, Coarse Hair on Scalp, face and Body
+version: 4
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

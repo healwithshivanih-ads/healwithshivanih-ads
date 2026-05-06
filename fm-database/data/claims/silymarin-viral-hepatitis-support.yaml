@@ -1,0 +1,28 @@
+slug: silymarin-viral-hepatitis-support
+statement: Silymarin supports immune modulation and hepatoprotection in viral hepatitis
+  B and C.
+evidence_tier: plausible_emerging
+rationale: Listed as a key supplement alongside Vitamin D and Zinc for viral hepatitis.
+  Clinical insight notes immune modulation. No specific RCT referenced.
+coaching_translation: Milk thistle may help protect the liver during viral hepatitis
+  by supporting immune function and reducing liver cell damage.
+caveats:
+- Antiviral management is clinician scope
+- Avoid hepatotoxic agents concurrently
+- Source is FM synthesis document
+linked_to_topics:
+- nafld
+- liver-detoxification
+linked_to_supplements:
+- milk-thistle
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Liver Disease Cheatsheet — Viral Hepatitis
+  quote: Vitamin D, Zinc, Omega-3, Silymarin — Immune modulation + antiviral management;
+    avoid hepatotoxic agents.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

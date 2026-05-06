@@ -1,0 +1,25 @@
+slug: gentle-cooking-preserves-more-nutrients
+statement: Gentle cooking methods (steaming, blanching, baking) using minimal heat,
+  liquid, and time best preserve nutrient content in foods.
+evidence_tier: strong
+rationale: Well-established nutritional science principle; water-soluble vitamins
+  (B vitamins, vitamin C) are most vulnerable to heat and leaching. Fat-soluble vitamins
+  (A, D, E, K) require dietary fat for absorption.
+coaching_translation: How you cook matters as much as what you eat. Steam or lightly
+  sauté vegetables, and save the cooking liquid in soups/stews to preserve the nutrients
+  that leach out.
+caveats: []
+linked_to_topics: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-nutrition-toolkit
+  location: Cooking to Preserve Nutrients
+  quote: When it comes to maximizing nutrient content, gentle cooking methods are
+    generally better. So, use as little heat, liquid, and time as possible to cook
+    your food.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

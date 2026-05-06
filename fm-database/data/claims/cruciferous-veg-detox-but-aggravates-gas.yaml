@@ -1,0 +1,28 @@
+slug: cruciferous-veg-detox-but-aggravates-gas
+statement: Cruciferous vegetables (cauliflower, broccoli, cabbage) are detox-supportive
+  but may aggravate gas in sensitive individuals; they should be reintroduced after
+  initial gut-healing phases.
+evidence_tier: plausible_emerging
+rationale: Crucifers contain GOS, raffinose, and sulphur compounds that increase fermentation.
+  Their glucosinolate content supports phase II detoxification. Timing of reintroduction
+  post-gut repair is consistent with FODMAP clinical protocols.
+coaching_translation: Broccoli and cauliflower are superfoods for liver detox, but
+  they can cause serious gas if your gut isn't ready. Hold them off for now and we'll
+  bring them back once your symptoms settle.
+caveats:
+- Broccoli heads are lower FODMAP than stalks; portion size matters.
+linked_to_topics:
+- low-fodmap-diet
+- ibs
+- sibo
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-elimination-diet-cheatsheet
+  location: FODMAP Food Cheatsheet — Vegetables (Non-Cruciferous) row
+  quote: Crucifers are detox-supportive but may aggravate gas - reintroduce post-gut-healing.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

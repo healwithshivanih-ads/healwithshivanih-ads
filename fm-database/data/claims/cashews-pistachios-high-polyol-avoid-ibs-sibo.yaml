@@ -1,0 +1,26 @@
+slug: cashews-pistachios-high-polyol-avoid-ibs-sibo
+statement: Cashews and pistachios have high polyol content and should be avoided in
+  IBS and SIBO; almonds are tolerable at ≤10 nuts per serving.
+evidence_tier: plausible_emerging
+rationale: 'Consistent with Monash FODMAP data: cashews and pistachios are high in
+  GOS and polyols. Almond serving-size guidance reflects FODMAP threshold research.'
+coaching_translation: Stick to walnuts, chia, flaxseed, or up to 10 almonds at a time.
+  Save cashews and pistachios for after your reintroduction phase.
+caveats:
+- FODMAP content is serving-size dependent; small quantities may be tolerable for
+  some individuals.
+linked_to_topics:
+- low-fodmap-diet
+- ibs
+- sibo
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-elimination-diet-cheatsheet
+  location: FODMAP Food Cheatsheet — Nuts & Seeds row
+  quote: Cashews and pistachios have high polyols - avoid in IBS/SIBO.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

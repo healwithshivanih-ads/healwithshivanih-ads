@@ -1,0 +1,36 @@
+slug: oral-toxin-exposure
+display_name: Oral Toxin Exposure from Dental & Personal Care Products
+aliases:
+- dental product toxins
+- oral care chemicals
+summary: Common oral health products (toothpaste, mouthwash, dental floss) contain
+  ingredients—including triclosan, SLS, fluoride, propylene glycol, titanium dioxide,
+  and alcohol—that may disrupt the oral microbiome, absorb through oral mucosa into
+  the bloodstream, and contribute to systemic toxic burden.
+common_symptoms:
+- canker-sores
+- oral-inflammation
+- gum-irritation
+red_flags:
+- signs of oral cancer
+- persistent oral lesions not resolving
+related_topics:
+- toxic-body-burden
+- mercury-amalgam-removal
+- endocrine-disruption
+key_mechanisms:
+- endocrine-disruption
+- oral-microbiome-disruption
+coaching_scope_notes: Coaches can educate clients on ingredient avoidance and guide
+  selection of natural oral care products.
+evidence_tier: plausible_emerging
+clinician_scope_notes: ''
+sources:
+- id: vitaone-liver-detox-toolkit
+  location: Avoiding Toxins in Oral Health
+  quote: This poses a significant concern, given the mouth and gums' heightened susceptibility
+    to absorb and transfer substances directly into the blood stream.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

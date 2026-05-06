@@ -1,0 +1,53 @@
+slug: hashimotos-hypothyroidism
+display_name: Hashimoto's Hypothyroidism
+aliases:
+- Hashimoto's disease
+- autoimmune thyroiditis
+- chronic lymphocytic thyroiditis
+summary: An autoimmune disorder where the immune system produces antibodies against
+  thyroid peroxidase (TPO) and thyroglobulin (Tg), causing chronic thyroid inflammation,
+  progressive tissue destruction, and eventual hypothyroidism. The most common cause
+  of hypothyroidism in developed countries.
+common_symptoms:
+- fatigue
+- weight-gain
+- cold-intolerance
+- constipation
+- brain-fog
+- depression
+- dry-skin
+- brittle-hair
+- hair-loss
+- irregular-menstrual-cycles
+- joint-pain
+- hoarse-voice
+- goiter
+- infertility
+red_flags:
+- Goiter with compressive symptoms (difficulty swallowing/breathing)
+- Elevated TPO antibodies with worsening symptoms
+- Pregnancy complications
+related_topics:
+- hypothyroidism
+- subclinical-hypothyroidism
+- leaky-gut
+key_mechanisms:
+- autoimmune-thyroid-attack
+- thyroid-hormone-conversion
+- leaky-gut
+coaching_scope_notes: Coaches can support AIP diet, gluten/dairy elimination trials,
+  stress management, sleep, and targeted nutrient optimization. Antibody testing and
+  medication management are clinician scope.
+clinician_scope_notes: Diagnose with TSH, free T4, anti-TPO, anti-Tg antibodies, and
+  thyroid ultrasound. Manage with levothyroxine or NDT. Monitor antibodies over time.
+evidence_tier: strong
+sources:
+- id: vitaone-thyroid-toolkit
+  location: Understanding Hashimoto's Hypothyroidism
+  quote: In Hashimoto's disease, the immune system produces antibodies that attack
+    the thyroid gland, specifically targeting thyroid peroxidase (TPO) and thyroglobulin
+    (Tg), which are essential for thyroid hormone production.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,28 @@
+slug: thiamin-carbohydrate-metabolism-signal
+statement: Difficulty tolerating high-carbohydrate diets may signal low thiamin, as
+  thiamin is the primary cofactor for carbohydrate metabolism.
+evidence_tier: plausible_emerging
+rationale: Thiamin (B1) is required for pyruvate dehydrogenase and alpha-ketoglutarate
+  dehydrogenase in carbohydrate metabolism. The clinical heuristic is FM-teaching
+  based; direct RCT evidence for this dietary symptom pattern is limited.
+coaching_translation: If your client struggles with heavy carb meals (fatigue, brain
+  fog after eating), consider exploring thiamin-rich foods or supplementation.
+caveats:
+- Source is a synthesis document, not primary literature. Verify with clinician for
+  therapeutic dosing.
+- 100 mg multiple times daily mentioned as safe — confirm clinically before recommending.
+linked_to_topics:
+- vitamin-b-complex-deficiency
+linked_to_supplements:
+- thiamin-b1
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin B1 (Thiamin)
+  quote: Thiamin is the carbohydrate metabolizer-struggling with high-carb diets can
+    signal low thiamin.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

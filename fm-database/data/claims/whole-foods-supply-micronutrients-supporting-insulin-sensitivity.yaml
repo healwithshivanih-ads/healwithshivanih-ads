@@ -1,0 +1,28 @@
+slug: whole-foods-supply-micronutrients-supporting-insulin-sensitivity
+statement: Whole carbohydrate foods supply micronutrients (magnesium, chromium, B-vitamins)
+  and polyphenols that support insulin sensitivity.
+evidence_tier: plausible_emerging
+rationale: 'Credible mechanistic basis: magnesium and chromium are cofactors for insulin
+  receptor signalling; polyphenols inhibit alpha-glucosidase. Observational and some
+  RCT support exists but not fully consensus-level.'
+coaching_translation: Choosing whole grains, legumes, and vegetables over refined
+  carbs provides nutrients your body needs to respond to insulin properly.
+linked_to_topics:
+- blood-sugar-dysfunction
+- insulin-resistance
+linked_to_supplements:
+- magnesium-glycinate
+- chromium-picolinate
+caveats:
+- Source is FM synthesis; specific studies not cited.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 1.4 — Whole vs Refined Carbohydrates
+  quote: Whole foods also supply micronutrients (magnesium, chromium, B-vitamins)
+    and polyphenols that support insulin sensitivity.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

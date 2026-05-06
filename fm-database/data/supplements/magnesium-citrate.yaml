@@ -1,0 +1,45 @@
+slug: magnesium-citrate
+display_name: Magnesium Citrate
+category: mineral
+forms_available:
+- capsule
+- powder
+- tablet
+typical_dose_range:
+  capsule:
+    min: 200
+    max: 300
+    unit: mg
+  powder:
+    min: 200
+    max: 400
+    unit: mg
+timing_options:
+- evening
+- bedtime
+take_with_food: optional
+linked_to_topics:
+- ibs
+- sibo
+- elimination-diet
+linked_to_claims:
+- magnesium-supports-gut-motility-constipation
+- magnesium-reduces-migraine-frequency
+notes_for_coach: Citrate form has mild osmotic laxative effect — may also help IBS-C.
+  Can cause loose stools at higher doses. Verify dosing with clinician.
+notes_for_client: Magnesium citrate may help with headaches and constipation. Higher
+  doses can cause diarrhoea — start low.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-cheatsheet
+  location: 100 Gut Symptoms — Constipation
+  quote: Constipation + fatigue — Low magnesium — Smooth muscle dysfunction — Magnesium
+    citrate
+- id: vitaone-elimination-diet-toolkit
+  location: FODMAP Plan SOS Solutions — Migraine/Headache
+  quote: Magnesium Citrate / Glycinate (200–300 mg). Relaxes cerebral blood vessels.
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

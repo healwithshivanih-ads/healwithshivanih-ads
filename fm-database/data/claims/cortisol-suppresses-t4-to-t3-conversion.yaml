@@ -1,0 +1,26 @@
+slug: cortisol-suppresses-t4-to-t3-conversion
+statement: Cortisol and chronic stress suppress T4→T3 conversion by inhibiting deiodinase
+  enzymes and increasing Reverse T3.
+evidence_tier: strong
+rationale: Cortisol inhibits Type 1 and Type 2 deiodinase enzymes (which convert T4
+  to active T3), suppresses TSH secretion, and increases reverse T3 (inactive). This
+  stress physiology → 'euthyroid sick syndrome' pattern is documented textbook endocrinology.
+coaching_translation: Chronic stress changes how your body converts thyroid hormone
+  — which is why stress work isn't optional for thyroid health.
+caveats:
+- Euthyroid sick syndrome is a clinical finding; coaches should not diagnose it, but
+  can educate on the mechanism.
+linked_to_topics:
+- thyroid
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-evidence-tiers
+  location: TOPIC 1 — Thyroid / Claims & Tiers / Claim 2
+  quote: Cortisol inhibits Type 1 and Type 2 deiodinase enzymes (which convert T4
+    to active T3), suppresses TSH secretion, and increases reverse T3 (inactive).
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

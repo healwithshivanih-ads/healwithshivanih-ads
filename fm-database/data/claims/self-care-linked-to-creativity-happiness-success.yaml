@@ -1,0 +1,25 @@
+slug: self-care-linked-to-creativity-happiness-success
+statement: People who regularly take time to recharge and restore are more creative,
+  happier, and more successful.
+evidence_tier: plausible_emerging
+rationale: Consistent with wellbeing and positive psychology research; the document
+  cites 'research' generically without a specific citation.
+coaching_translation: Self-care isn't selfish — taking time to rest and restore actually
+  makes you more effective, creative, and happier in all areas of life.
+caveats:
+- No specific study cited; source is an educational toolkit.
+- Source is expert_consensus quality; treat as plausible_emerging.
+linked_to_topics:
+- self-care
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Self-Care Questionnaire
+  quote: Research shows that people who take time to recharge and restore are more
+    creative, happier, and more successful.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

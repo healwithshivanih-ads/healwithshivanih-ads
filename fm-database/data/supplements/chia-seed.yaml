@@ -1,0 +1,62 @@
+slug: chia-seed
+display_name: Chia Seeds
+category: other
+forms_available:
+  - whole_food
+  - powder
+typical_dose_range:
+  whole_food:
+    min: 1
+    max: 2
+    unit: tablespoons
+  powder:
+    min: 1
+    max: 2
+    unit: tablespoons
+timing_options:
+  - with_breakfast
+  - mid_morning
+  - mid_afternoon
+take_with_food: optional
+contraindications:
+  conditions:
+    - severe_dysphagia
+  medications: []
+  life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+    - medication: warfarin_or_anticoagulants
+      type: avoid_together
+      reason: |
+        Chia is a meaningful source of omega-3 ALA; high intakes plus
+        anticoagulants may increase bleeding risk. Defer to clinician.
+linked_to_topics:
+  - microbiome
+  - dysbiosis
+  - perimenopause
+  - estrobolome
+linked_to_mechanisms:
+  - soluble-fiber-fermentation
+  - scfa-production
+  - bowel-motility
+linked_to_claims:
+  - flax-and-chia-combo-gentle-constipation-support
+notes_for_coach: |
+  Whole-food source of soluble + insoluble fiber, omega-3 ALA, calcium,
+  magnesium. Best soaked or ground for absorption — whole seeds may pass
+  through. Start at 1 tsp/day and ramp slowly to avoid bloating.
+  Always pair with adequate water (≥250 ml per tablespoon).
+notes_for_client: |
+  Soak 1-2 tablespoons of chia seeds in water, milk, or yogurt for at
+  least 15 minutes before eating. Start small and drink plenty of water.
+  Helps with constipation and feeds the good bacteria in your gut.
+sources:
+  - id: thurlow-microbiome-session-7
+    location: Session 7 — Fiber Gap & Feeding the Microbiome
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

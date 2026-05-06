@@ -1,0 +1,29 @@
+slug: estrogen-dominance-raises-tbg-reduces-free-thyroid-hormones
+statement: Estrogen dominance raises thyroid-binding globulin (TBG), reducing free
+  T3 and T4 availability, which can manifest as functional hypothyroidism despite
+  normal TSH.
+evidence_tier: plausible_emerging
+rationale: The document notes high Total T4/T3 indicates estrogen dominance and that
+  'Estrogen dominance, low progesterone, adrenal dysregulation can blunt thyroid response.'
+coaching_translation: High oestrogen can 'trap' your thyroid hormones so they can't
+  reach your cells — supporting liver detox and estrogen metabolism can help free
+  them up.
+caveats:
+- Expert-consensus source; no primary study cited.
+linked_to_topics:
+- thyroid
+linked_to_supplements:
+- dim
+- calcium-d-glucarate
+- milk-thistle
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-cheatsheet
+  location: Biohacking Thyroid Function Cheatsheet — Investigate Hormonal Cross-Talk
+  quote: Estrogen dominance, low progesterone, adrenal dysregulation can blunt thyroid
+    response
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

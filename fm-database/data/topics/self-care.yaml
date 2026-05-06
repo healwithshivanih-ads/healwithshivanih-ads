@@ -1,0 +1,36 @@
+slug: self-care
+display_name: Self-Care
+aliases:
+- self-care practices
+- wellness habits
+summary: A multi-domain framework covering physical, mental/emotional/spiritual, professional,
+  and social wellbeing practices. Research links consistent self-care with greater
+  creativity, happiness, and overall health outcomes.
+common_symptoms:
+- fatigue
+- burnout
+- low-mood
+- social-isolation
+red_flags:
+- persistent low mood or hopelessness unresponsive to self-care
+related_topics:
+- stress-management
+- sleep-hygiene
+- mindfulness
+key_mechanisms:
+- parasympathetic-activation
+coaching_scope_notes: Coaches can use the Self-Care Questionnaire as a reflective
+  tool to identify gaps and set goals across physical, emotional, professional, and
+  social domains.
+clinician_scope_notes: Not a diagnostic tool; refer if client flags significant psychological
+  distress.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Self-Care Questionnaire
+  quote: Research shows that people who take time to recharge and restore are more
+    creative, happier, and more successful.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

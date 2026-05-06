@@ -1,0 +1,27 @@
+slug: thyroid-dysfunction-is-metabolic-signaling-not-calorie-issue
+statement: Thyroid dysfunction is a metabolic signalling and inflammation issue, not
+  primarily a calorie imbalance — nutrition plans should address inflammation, gut
+  health, and insulin balance.
+evidence_tier: plausible_emerging
+rationale: The document states 'Thyroid dysfunction isn't a calorie issue — it's a
+  metabolic signaling and inflammation issue.' This framing aligns with FM's root-cause
+  approach to metabolism.
+coaching_translation: Cutting calories harder won't fix a sluggish thyroid. Reducing
+  inflammation and healing the gut gives the body what it needs to regulate metabolism.
+caveats:
+- Expert-consensus framing; not derived from a specific RCT.
+linked_to_topics:
+- thyroid
+- inflammation
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-thyroid-cheatsheet
+  location: What Nutritionists/Health Coaches Miss — Focus on Calories or Weight Loss
+  quote: Thyroid dysfunction isn't a calorie issue - it's a metabolic signaling and
+    inflammation issue
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

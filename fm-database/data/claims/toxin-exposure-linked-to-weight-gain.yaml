@@ -1,0 +1,28 @@
+slug: toxin-exposure-linked-to-weight-gain
+statement: Toxin exposure (independent of diet) may contribute to weight gain through
+  metabolic and endocrine disruption, as evidenced by animal studies showing greater
+  weight gain when toxins are injected regardless of diet.
+evidence_tier: plausible_emerging
+rationale: Obesogen research (animal models with endocrine disruptors like BPA, phthalates)
+  supports this claim at a mechanistic level; human RCT evidence is limited. The document
+  cites 'recent studies' without specific references.
+coaching_translation: Toxins in our environment can interfere with metabolism and
+  hormones in ways that make it harder to maintain a healthy weight — reducing exposure
+  is part of the picture.
+caveats:
+- Evidence cited is animal data; human clinical evidence is correlational. No specific
+  study named.
+linked_to_topics:
+- toxic-body-burden
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-toolkit
+  location: Why Detox?
+  quote: No matter what the diet may be, when toxins are injected into animals, they
+    have a greater chance of gaining weight.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

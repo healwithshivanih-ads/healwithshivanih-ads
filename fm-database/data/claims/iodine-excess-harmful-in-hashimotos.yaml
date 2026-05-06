@@ -1,0 +1,29 @@
+slug: iodine-excess-harmful-in-hashimotos
+statement: While iodine is essential for thyroid hormone production, excess iodine
+  can be harmful in Hashimoto's and supplementation should be approached with caution.
+evidence_tier: plausible_emerging
+rationale: High iodine intake can increase TPO antibody levels and exacerbate autoimmune
+  thyroiditis in susceptible individuals. Optimal intake (150 mcg/day) from food sources
+  is generally safe.
+coaching_translation: Unlike most thyroid nutrients, more iodine is not always better
+  — especially in Hashimoto's. Stick to food sources and avoid high-dose iodine supplements
+  unless directed by a clinician.
+out_of_scope_notes: Iodine supplementation dosing in Hashimoto's is clinician scope.
+caveats:
+- Source is an educational toolkit.
+- This is an important safety caveat for coaches recommending thyroid support supplements.
+linked_to_topics:
+- hashimotos-hypothyroidism
+linked_to_supplements:
+- iodine
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-toolkit
+  location: Ensuring Adequate Iodine Intake
+  quote: Iodine is essential for thyroid hormone production, but excess iodine can
+    be harmful in Hashimoto's. Foods like seaweed, eggs, and dairy provide iodine,
+    but supplementation should be approached with caution.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

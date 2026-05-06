@@ -1,0 +1,38 @@
+slug: shbg-hormone-binding
+display_name: SHBG Hormone Binding & Free Hormone Regulation
+aliases:
+- sex hormone binding
+- free testosterone regulation
+- SHBG transport
+category: endocrine
+summary: SHBG binds circulating testosterone and estrogen, rendering them biologically
+  inactive during transport. SHBG preferentially binds testosterone. High SHBG reduces
+  free testosterone; low SHBG raises free androgens and estrogens, shifting hormonal
+  balance.
+upstream_drivers:
+- aging
+- liver disease
+- hyperthyroidism
+- insulin resistance
+- obesity
+- low-fat diet
+downstream_effects:
+- testosterone-deficiency-symptoms
+- androgen-excess-symptoms
+- estrogen-excess
+related_mechanisms:
+- insulin-resistance
+- hepatic-estrogen-detoxification
+linked_to_topics:
+- sex-hormone-binding-globulin
+evidence_tier: strong
+sources:
+- id: vitaone-sex-hormones-toolkit
+  location: Sex Hormone Binding Globulin (SHBG) — Page 01
+  quote: When hormones bind to SHBG, they are essentially inactivated. High concentrations
+    of SHBG in the body can lead to increased bound testosterone, as SHBG more easily
+    binds to testosterone than to estrogen.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,29 @@
+slug: nigella-sativa-rct-reduces-tsh-tpo-antibodies
+statement: An 8-week RCT of 1g Nigella sativa twice daily showed significant decreases
+  in TSH and anti-TPO antibodies and an increase in T3 compared to placebo.
+evidence_tier: plausible_emerging
+rationale: A single RCT is referenced. Results are promising but replication is needed.
+  Therapeutic effects attributed to antioxidant, immunomodulatory, and thyroid-resynthesizing
+  properties.
+coaching_translation: Black cumin seed (Nigella sativa) has shown promising results
+  in one clinical trial for Hashimoto's — reducing the antibodies attacking the thyroid
+  and improving thyroid hormone levels.
+caveats:
+- Single RCT — replication needed before strong recommendation.
+- Source is an educational toolkit referencing a study without full citation details.
+- Source type is expert consensus/educational; treat as plausible_emerging.
+linked_to_topics:
+- hashimotos-hypothyroidism
+linked_to_supplements:
+- nigella-sativa
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-toolkit
+  location: Nigella sativa (Black Cumin)
+  quote: Experimental group showed significant decrease in TSH, decrease in anti-TPO
+    antibodies and increase in T3
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

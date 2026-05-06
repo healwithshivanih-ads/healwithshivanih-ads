@@ -1,0 +1,29 @@
+slug: saccharomyces-boulardii-outcompetes-candida-restores-balance
+statement: Saccharomyces boulardii outcompetes Candida and pathogenic bacteria, restores
+  gut microbiome balance, and is well-studied for H. pylori support and antibiotic-associated
+  dysbiosis.
+evidence_tier: plausible_emerging
+rationale: S. boulardii has strong RCT evidence for antibiotic-associated diarrhea
+  and traveler's diarrhea. Evidence for H. pylori adjunct and Candida competition
+  is emerging. Source is synthesis.
+coaching_translation: Saccharomyces boulardii is a beneficial yeast (not bacteria)
+  that helps crowd out harmful organisms during and after antibiotic treatment.
+caveats:
+- Use with caution in immunocompromised patients. Source is educational synthesis.
+linked_to_topics:
+- candida-overgrowth
+- gut-dysbiosis
+- h-pylori-infection
+linked_to_supplements:
+- saccharomyces-boulardii
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Candida Infection — Supplement Stack
+  quote: Saccharomyces boulardii — Outcompetes Candida, restores gut balance — 8–12
+    weeks (can extend)
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

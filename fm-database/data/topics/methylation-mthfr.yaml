@@ -1,0 +1,47 @@
+slug: methylation-mthfr
+display_name: Methylation & MTHFR
+aliases:
+- MTHFR mutation
+- methylation cycle
+- folate metabolism
+- one-carbon metabolism
+summary: MTHFR enzyme converts folate (B9) to its active form 5-MTHF, essential for
+  DNA synthesis, detoxification, neurotransmitter production, hormone regulation,
+  and immune modulation. SNPs C677T and A1298C reduce enzyme efficiency by up to 70%,
+  impairing methylation and Phase II liver detox, elevating homocysteine, and increasing
+  oxidative stress.
+common_symptoms:
+- elevated-homocysteine
+- fatigue
+- brain-fog
+- anxiety
+- recurrent-miscarriage
+- chemical-sensitivities
+red_flags:
+- recurrent-miscarriage
+- elevated-homocysteine-vascular-risk
+- severe-autoimmune-flare
+related_topics:
+- liver-detoxification
+- estrogen-dominance
+- histamine-intolerance
+- autoimmune-thyroid
+key_mechanisms:
+- impaired-methylation
+- homocysteine-elevation
+- glutathione-depletion
+coaching_scope_notes: Coaches can recommend methylated B-vitamin forms, dietary support
+  (beets, leafy greens), anti-inflammatory diet, stress management, and toxin reduction.
+  MTHFR genetic testing and lab interpretation is clinician scope.
+clinician_scope_notes: Order MTHFR genetic test, homocysteine, methylation panel,
+  OAT, CBC+MCV, serum B12 & folate, CRP, ferritin, HS-CRP. Always individualise treatment.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet
+  quote: MTHFR (methylenetetrahydrofolate reductase) is a key enzyme in the methylation
+    cycle that converts folate (B9) into its active form, 5-MTHF.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

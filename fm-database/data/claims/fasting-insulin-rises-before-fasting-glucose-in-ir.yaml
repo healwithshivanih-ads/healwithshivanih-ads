@@ -1,0 +1,26 @@
+slug: fasting-insulin-rises-before-fasting-glucose-in-ir
+statement: Fasting insulin rises before fasting glucose becomes abnormal, making it
+  the first biochemical warning sign of insulin resistance.
+evidence_tier: strong
+rationale: Well-established in the insulin resistance literature; compensatory hyperinsulinaemia
+  precedes impaired fasting glucose by years.
+coaching_translation: Your blood sugar can still look 'normal' on a standard test
+  while your insulin is already working overtime — which is why testing insulin matters.
+out_of_scope_notes: Lab ordering and interpretation is clinician scope.
+linked_to_topics:
+- insulin-resistance
+- blood-sugar-dysfunction
+linked_to_mechanisms:
+- insulin-resistance
+- pancreatic-beta-cell-dysfunction
+caveats:
+- Source is FM synthesis.
+linked_to_supplements: []
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Chapter 6 — Understanding Laboratory Reports
+  quote: 'Fasting Insulin: Rises before glucose; first biochemical warning sign.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,28 @@
+slug: 5-mthf-active-folate-mthfr-support
+statement: 5-MTHF is the active form of folate that bypasses the MTHFR enzyme, making
+  it the preferred supplemental form for individuals with MTHFR mutations.
+evidence_tier: plausible_emerging
+rationale: Document recommends 5-MTHF as first-line foundational support for MTHFR-positive
+  patients. The rationale is mechanistically sound — 5-MTHF does not require MTHFR
+  conversion. No RCT cited.
+coaching_translation: 5-MTHF is the form of folate your body can use immediately,
+  bypassing the faulty MTHFR enzyme.
+out_of_scope_notes: Folate dosing in pregnancy, methylation disorders, and psychiatric
+  conditions is clinician scope.
+caveats:
+- Do not recommend standard folic acid as a substitute
+- Dosing requires clinician verification
+- Source is FM synthesis
+linked_to_topics:
+- methylation-mthfr
+linked_to_supplements:
+- 5-mthf
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet — Foundational Support
+  quote: 'Active folate: 5-MTHF'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,43 @@
+slug: psoriasis
+display_name: Psoriasis
+aliases:
+- plaque psoriasis
+- guttate psoriasis
+- psoriatic disease
+summary: A chronic inflammatory skin condition driven by Th1/Th17 immune dysregulation,
+  gut-skin axis dysfunction, nutrient deficiencies (Vit D, omega-3s, zinc, selenium,
+  magnesium), and environmental triggers. Functional medicine addresses root causes
+  including gut health, toxin load, stress, and dietary triggers.
+common_symptoms:
+- skin-plaques
+- skin-flares
+- joint-pain
+- fatigue
+red_flags:
+- psoriatic arthritis
+- metabolic comorbidities (CVD, diabetes)
+- widespread infection
+related_topics:
+- autoimmune-disease
+- chronic-inflammation
+- leaky-gut
+key_mechanisms:
+- th17-dominance
+- leaky-gut
+- hpa-axis-dysregulation
+coaching_scope_notes: Coach can support anti-inflammatory diet, elimination protocol
+  (gluten, dairy, nightshades, sugar, alcohol), stress management, sleep hygiene,
+  and sunlight guidance. High-dose Vitamin D protocol is clinician-only.
+clinician_scope_notes: Assess CBC, hs-CRP, ESR, Vit D, zinc, selenium, magnesium,
+  GI-MAP, zonulin, ANA, HLA-Cw6, fasting insulin, glucose, lipids. High-dose Vitamin
+  D (Coimbra Protocol) requires strict calcium/kidney monitoring every 2–3 months.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Psoriasis Cheatsheet — Page 28
+  quote: 'Immune dysregulation: Th1/Th17 dominance → cytokines (TNF-α, IL-17, IL-23);
+    Gut-skin axis: Dysbiosis, leaky gut, Candida, SIBO'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

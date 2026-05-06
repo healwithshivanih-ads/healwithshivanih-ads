@@ -1,0 +1,28 @@
+slug: ground-flax-seed-supports-cardiometabolic-smoothie
+statement: Adding 1–2 tablespoons of ground flax seeds to daily smoothies contributes
+  fiber and healthy fats as part of a cardiometabolic dietary pattern.
+evidence_tier: plausible_emerging
+rationale: Ground flax is well-established for ALA omega-3 content and soluble fiber
+  (lignans). The toolkit includes it as a standard smoothie component for cardiometabolic
+  support.
+coaching_translation: A tablespoon or two of ground flax in your smoothie adds heart-healthy
+  fats and fiber to support your cardiometabolic goals.
+caveats:
+- Store ground flax in fridge; oxidizes quickly
+- Source is a practitioner toolkit without specific RCT citations for this use
+linked_to_topics:
+- cardiometabolic-health
+- phytonutrient-dense-diet
+linked_to_supplements:
+- ground-flax-seed
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cardiometabolic-toolkit
+  location: Building a Better Smoothie — Flax Seeds
+  quote: Add 1 to 2 tablespoons of ground flax seeds (or flax meal) to the blender.
+    Store extra ground flax seed or flax meal in fridge for up to 3 to 4 weeks.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

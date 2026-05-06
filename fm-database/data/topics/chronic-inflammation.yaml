@@ -1,0 +1,60 @@
+slug: chronic-inflammation
+display_name: Chronic Inflammation
+aliases:
+- silent inflammation
+- low-grade inflammation
+- systemic inflammation
+- neuroinflammation
+summary: Persistent, low-grade inflammation linked to heart disease, diabetes, autoimmune
+  disorders, neurodegenerative disease, and cancer. Addressed in functional medicine
+  via diet, nutraceuticals, and lifestyle modification targeting root causes.
+common_symptoms:
+- fatigue
+- brain-fog
+- bloating
+- joint-pain
+- skin-issues
+- resistant-weight-gain
+- mood-changes
+red_flags:
+- autoimmune flares
+- active infection
+- patients on steroids or biologics
+- pregnancy and breastfeeding
+- Unintentional weight loss with persistent inflammation — refer for cancer screening
+- Severe joint swelling or organ involvement — refer to rheumatologist
+related_topics:
+- autoimmune-disease
+- leaky-gut
+- food-sensitivity
+- metabolic-syndrome
+- psoriasis
+- anti-inflammatory-diet
+- gut-health
+- immune-support
+key_mechanisms:
+- nf-kb-activation
+- leaky-gut
+- insulin-resistance
+- nlrp3-inflammasome-activation
+- oxidative-stress
+- cytokine-dysregulation
+coaching_scope_notes: Coaches can support anti-inflammatory dietary and lifestyle
+  changes. Supplement recommendations from this toolkit require clinician supervision.
+clinician_scope_notes: CRP is noted as a key biomarker. Clinician oversight needed
+  for dosing nutraceuticals, especially Vitamin A and licorice root.
+evidence_tier: strong
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Inflammation Cheatsheet — Page 02
+  quote: Chronic inflammation is often silent but it's a major driver of fatigue,
+    gut issues, brain fog, autoimmunity, and metabolic dysfunction.
+- id: vitaone-inflammation-toolkit
+  location: Anti Inflammatory Diet — What is an Anti-Inflammatory Diet?
+  quote: Chronic inflammation is a persistent, low-grade inflammation that can lead
+    to various health issues over time, such as heart disease, diabetes, autoimmune
+    disorders, and certain cancers.
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

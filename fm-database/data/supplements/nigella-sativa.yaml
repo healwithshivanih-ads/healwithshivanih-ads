@@ -1,0 +1,43 @@
+slug: nigella-sativa
+display_name: Nigella sativa (Black Cumin Seed)
+category: herb
+forms_available:
+- capsule
+- powder
+- liquid
+typical_dose_range:
+  capsule:
+    min: 1000
+    max: 2000
+    unit: mg
+  powder:
+    min: 1
+    max: 2
+    unit: g
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- hashimotos-hypothyroidism
+linked_to_claims:
+- nigella-sativa-rct-reduces-tsh-tpo-antibodies
+- nigella-sativa-improves-oxidative-stress-hashimotos
+notes_for_coach: 'RCT used 1g BID (2g/day total). Attributed effects: antioxidant,
+  immunomodulatory, potential thyroid gland repair and resynthesis support. Also showed
+  improved lipids, BMI, and endothelial function in AITD. Limited studies; plausible_emerging
+  tier.'
+notes_for_client: Black cumin seed has been studied in a clinical trial for Hashimoto's
+  with promising results — it may help reduce the antibodies attacking your thyroid
+  and improve thyroid hormone levels.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-toolkit
+  location: Nigella sativa (Black Cumin)
+  quote: Experimental group showed significant decrease in TSH, decrease in anti-TPO
+    antibodies and increase in T3
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

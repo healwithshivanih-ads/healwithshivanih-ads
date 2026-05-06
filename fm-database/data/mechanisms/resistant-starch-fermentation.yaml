@@ -1,0 +1,35 @@
+slug: resistant-starch-fermentation
+display_name: Resistant Starch Fermentation
+aliases:
+- RS fermentation
+- colonic starch fermentation
+- second-meal effect
+category: gut
+summary: Resistant starch escapes small-intestinal hydrolysis, reaches the colon intact,
+  and is fermented by anaerobic microbiota to short-chain fatty acids (butyrate).
+  This lowers post-prandial glucose and insulin excursion and improves glycaemic control
+  at the subsequent meal (the 'second-meal effect').
+upstream_drivers:
+- retrogradation-of-cooked-starches
+- dietary-resistant-starch-intake
+downstream_effects:
+- reduced-postprandial-glucose
+- reduced-insulin-demand
+- improved-gut-microbiota
+related_mechanisms:
+- insulin-resistance
+linked_to_topics:
+- blood-sugar-dysfunction
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 1.5 — Resistant Starch
+  quote: 'RS resists hydrolysis by human α-amylase, passes intact to the colon, &
+    is fermented by anaerobic microbiota to short-chain fatty acids such as butyrate.
+    Functionally, RS behaves like soluble fibre: it lowers the post-prandial glucose
+    & insulin excursion & improves glycaemic control at the subsequent meal (the second-meal
+    effect).'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

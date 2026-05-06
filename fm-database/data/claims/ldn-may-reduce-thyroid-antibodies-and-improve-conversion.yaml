@@ -1,0 +1,31 @@
+slug: ldn-may-reduce-thyroid-antibodies-and-improve-conversion
+statement: Low dose naltrexone (LDN) may reduce overall inflammation, lower anti-thyroid
+  antibody levels, improve thyroid hormone transport into cells, increase T4-to-T3
+  conversion, and reduce T4-to-reverse-T3 conversion in autoimmune thyroiditis.
+evidence_tier: fm_specific_thin
+rationale: The proposed mechanism is physiologically plausible. However, the document
+  explicitly states 'there are no published studies about the impact of LDN on AIT.'
+  Evidence is extrapolated from studies in other autoimmune conditions (MS, Crohn's,
+  fibromyalgia).
+coaching_translation: Low dose naltrexone is a prescription medication being explored
+  for autoimmune thyroid conditions. While the mechanism makes sense, it hasn't been
+  studied specifically in Hashimoto's yet. This is a clinician conversation.
+out_of_scope_notes: LDN is a prescription medication — prescribing, dosing, and monitoring
+  are fully clinician scope. Coaches should not recommend LDN.
+caveats:
+- No published studies on LDN specifically for autoimmune thyroiditis as of document
+  date.
+- LDN requires a prescription.
+- Thyroid hormone levels may change with LDN — monitoring by clinician is essential.
+linked_to_topics:
+- hashimotos-hypothyroidism
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-thyroid-toolkit
+  location: LDN and Autoimmune Thyroiditis (AIT)
+  quote: However, there are no published studies about the impact of LDN on AIT
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

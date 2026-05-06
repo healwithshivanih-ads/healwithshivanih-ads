@@ -1,0 +1,38 @@
+slug: colonic-fermentation
+display_name: Colonic Fermentation of Fermentable Carbohydrates
+aliases:
+- FODMAP fermentation
+- carbohydrate malabsorption fermentation
+category: gut
+summary: Poorly absorbed short-chain carbohydrates (FODMAPs) reach the colon where
+  bacterial fermentation produces gas (H2, CH4, H2S), causing distension, bloating,
+  pain, and altered bowel habit. Dose-response relationship means symptom threshold
+  varies per individual.
+upstream_drivers:
+- high-fodmap-diet
+- dysbiosis
+- small-intestinal-bacterial-overgrowth
+downstream_effects:
+- bloating
+- flatulence
+- abdominal-pain
+- diarrhea
+- constipation
+related_mechanisms:
+- osmotic-fluid-shift
+- gut-motility-dysregulation
+linked_to_topics:
+- low-fodmap-diet
+- ibs
+- elimination-diet
+evidence_tier: strong
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: Low Fodmap Detailed Chart (Indian Version)
+  quote: The most common reasons patients fail Low FODMAP are not willpower, they're
+    portion creep, stacking multiple moderate-FODMAP foods in one meal, hidden FODMAP
+    ingredients.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

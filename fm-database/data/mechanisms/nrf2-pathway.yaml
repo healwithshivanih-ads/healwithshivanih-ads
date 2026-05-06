@@ -1,0 +1,32 @@
+slug: nrf2-pathway
+display_name: Nrf2 Antioxidant Pathway
+aliases:
+- Nrf2 activation
+- phase II detox
+- antioxidant response element
+category: signaling
+summary: Nuclear factor erythroid 2-related factor 2 (Nrf2) is the master regulator
+  of antioxidant and detox gene expression. Activated by sulforaphane (cruciferous
+  vegetables), it suppresses inflammatory cytokines and enhances Phase II detox enzymes.
+upstream_drivers:
+- sulforaphane
+- oxidative-stress
+- fasting
+downstream_effects:
+- reduced-oxidative-stress
+- phase-ii-detox-activation
+- reduced-inflammatory-cytokines
+related_mechanisms:
+- nf-kb-activation
+linked_to_topics:
+- chronic-inflammation
+- autoimmune-disease
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: 100 Anti-Inflammatory Foods — Page 06
+  quote: 'Kale: Sulforaphane activates Nrf2 → Detox, Cancer prevention'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

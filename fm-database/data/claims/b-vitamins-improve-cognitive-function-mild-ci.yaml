@@ -1,0 +1,31 @@
+slug: b-vitamins-improve-cognitive-function-mild-ci
+statement: Supplementation with B vitamins has been shown to improve mental performance
+  in those with mild cognitive impairment.
+evidence_tier: plausible_emerging
+rationale: Supported by Ma et al. 2019 (Curr Alzheimer Res) and de Jager et al. 2012
+  (Int J Geriatr Psychiatry), both RCTs cited in document references. Evidence strongest
+  in those with elevated homocysteine.
+coaching_translation: B vitamins — especially B12, folate, and B6 — are important
+  for brain health. If memory or focus is a concern, making sure you're getting enough
+  of these nutrients is a smart first step.
+caveats:
+- Evidence is strongest in those with high homocysteine or documented deficiency.
+- Dosing should be directed by a clinician.
+linked_to_topics:
+- mitochondrial-health-nutrition
+- vitamin-b12-deficiency
+- folate-deficiency
+linked_to_supplements:
+- vitamin-b12
+- folate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-toolkit
+  location: Nutrients for Mitochondrial Health
+  quote: Supplementation with B vitamins has been shown to improve mental performance
+    in those with mild cognitive impairment.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

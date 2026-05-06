@@ -1,0 +1,33 @@
+slug: ketone-metabolism
+display_name: Ketone Metabolism
+aliases:
+- ketosis
+- ketogenesis
+- brain ketone supply
+category: metabolic
+summary: Production and utilisation of ketone bodies (BHB, acetoacetate) as an alternative
+  fuel, particularly for the brain. Enhanced by low-carb/ketogenic diets and MCT oil.
+  Relevant in cognitive decline, Alzheimer's, and Parkinson's.
+upstream_drivers:
+- carbohydrate-restriction
+- fasting
+- mct-oil-intake
+downstream_effects:
+- improved-brain-energy
+- reduced-neuroinflammation
+- metabolic-flexibility
+related_mechanisms:
+- mitochondrial-efficiency
+- metabolic-flexibility
+linked_to_topics:
+- cognitive-decline
+- low-carb-diet
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: Functional Medicine Clinical Applications
+  quote: Enhances ketone supply to brain
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

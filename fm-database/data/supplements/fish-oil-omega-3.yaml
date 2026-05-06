@@ -1,0 +1,81 @@
+slug: fish-oil-omega-3
+display_name: Fish Oil (Omega-3 EPA/DHA)
+category: fatty_acid
+forms_available:
+- capsule
+- liquid
+typical_dose_range:
+  capsule:
+    min: 1000
+    max: 3000
+    unit: mg
+  liquid:
+    min: 1000
+    max: 3000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- thyroid
+- inflammation
+- estrogen-dominance
+- pcos
+- perimenopause
+- adrenal-dysfunction
+- anxiety
+- gut-brain-axis
+- insulin-resistance
+- essential-fatty-acids
+- mitochondrial-health-nutrition
+linked_to_claims:
+- gluten-free-reduces-hashimotos-triggers
+- omega-3-modulates-estrogen-receptor-lowers-prostaglandins
+- omega-3-reduces-cytokine-load-stress
+- loneliness-activates-inflammatory-pathways
+- omega3-curcumin-reduce-il6-tnfa-insulin-signalling
+- omega-3-ratio-4-to-1-reduces-inflammation
+- omega-3-supplementation-muscle-mass-elderly
+notes_for_coach: Take with a meal for absorption and to reduce fishy aftertaste. Quality
+  varies greatly — advise clients to choose brands tested for heavy metals. High doses
+  may affect bleeding; refer to clinician.
+notes_for_client: Omega-3s from fatty fish (EPA and DHA) support your heart, brain,
+  joints, and muscle health. If you don't eat fish 2x/week, a fish oil supplement
+  can help fill the gap.
+evidence_tier: strong
+linked_to_mechanisms: []
+sources:
+- id: vitaone-practice-guide
+  location: Seven Clinical Focus Areas > 5. Cholesterol and Cardiovascular Health
+    > Coaching interventions
+  quote: 'Supplement support: Fish oil (if tolerated), CoQ10 if on statins, niacin'
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Omega-3 (EPA/DHA) - Inflammation, heart, brain - 1000–3000 mg/day - With
+    meals
+- id: vitaone-thyroid-cheatsheet
+  location: What Doctors Miss — Prescribe Medication Without Diet Guidance
+  quote: Recommend anti-inflammatory, gluten-free, gut-friendly diet with adequate
+    protein, selenium, and omega-3s
+- id: vitaone-sex-hormones-cheatsheet
+  location: Estrogen Dominance Supplement Cheatsheet
+  quote: 'Omega-3 (EPA/DHA): Reduces aromatase activity & inflammation; Decreases
+    cramps, mood swings; 1000–2000 mg/day EPA+DHA.'
+- id: vitaone-adrenal-cheatsheet
+  location: Clinical Interventions — Integrative Framework (p.12)
+  quote: 'Inflammation Control: Reduce cytokine load. Omega-3, Curcumin, Magnesium,
+    Resveratrol.'
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Chronic Inflammation
+  quote: Omega-3 (EPA/DHA) (2–3 g/day)
+- id: vitaone-nutrition-toolkit
+  location: Nutrients for Mitochondrial Health
+  quote: Omega-3 fatty acids (EPA & DHA) are used by mitochondria to produce energy.
+    Both EPA and DHA reduce inflammation, which indirectly protects the health of
+    mitochondria.
+version: 7
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,30 @@
+slug: poor-sleep-worsens-microbiome-bidirectional
+statement: 'Sleep disruption and microbiome dysbiosis form a vicious cycle: poor sleep
+  alters microbiome composition, and a dysbiotic microbiome further disrupts sleep.'
+evidence_tier: plausible_emerging
+rationale: Bidirectional relationship is mechanistically plausible and supported by
+  emerging human observational and animal data; however, interventional RCT evidence
+  is still limited.
+coaching_translation: Bad sleep and a disrupted gut microbiome feed each other — improving
+  one tends to help the other.
+caveats:
+- Mechanism is plausible; causal intervention studies in humans are limited.
+- Single-expert source.
+linked_to_topics:
+- insomnia
+- microbiome
+- gut-brain-axis
+- dysbiosis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-5
+  location: Gut-Sleep section
+  quote: We know that sleep disruption also alters the microbiome. So it becomes this
+    vicious cycle. The microbes can influence your sleep and then your poor sleep
+    can worsen the microbiome.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

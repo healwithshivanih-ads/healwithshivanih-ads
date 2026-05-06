@@ -1,0 +1,27 @@
+slug: low-carb-reduces-age-and-cytokine-load
+statement: A low-carb diet reduces advanced glycation end-products (AGEs) and pro-inflammatory
+  cytokines (IL-6, TNF-α).
+evidence_tier: plausible_emerging
+rationale: Dietary carbohydrate reduction lowers glycation substrate availability
+  and has been associated with reduced inflammatory markers in observational and small
+  trial data. Not yet fully RCT-confirmed at consensus level.
+coaching_translation: Cutting back on carbs — especially refined ones — can reduce
+  the inflammatory signals in your body that contribute to joint pain, autoimmune
+  flares, and heart disease risk.
+caveats:
+- Source is an expert-consensus cheatsheet. Inflammatory cytokine data is from observational
+  and small trial studies.
+linked_to_topics:
+- low-carb-diet
+- nafld
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: The Science of Low-Carb Diets
+  quote: Lower carb = reduced AGE and cytokine load (IL-6, TNF-α).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

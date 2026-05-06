@@ -1,0 +1,26 @@
+slug: vitamin-a-zinc-exercise-improve-thyroid-cell-sensitivity
+statement: Vitamin A, zinc, and exercise improve cellular sensitivity to thyroid hormones.
+evidence_tier: plausible_emerging
+rationale: Vitamin A (retinol) is known to support thyroid hormone receptor expression.
+  Zinc supports receptor function. Exercise increases T3 uptake. Mechanism is biologically
+  plausible though direct RCT evidence for combined cellular sensitivity is limited.
+coaching_translation: Getting enough vitamin A and zinc, and staying active, can help
+  your cells respond better to thyroid hormones even when hormone levels are normal.
+caveats:
+- Source is an educational toolkit; no specific study cited.
+linked_to_topics:
+- hypothyroidism
+linked_to_supplements:
+- vitamin-a
+- zinc
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-toolkit
+  location: Factors that Affect Thyroid Function
+  quote: 'Factors that improve cellular sensitivity to thyroid hormones: Vitamin A,
+    Exercise, Zinc.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

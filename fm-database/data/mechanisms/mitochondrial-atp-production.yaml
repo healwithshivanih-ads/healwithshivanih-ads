@@ -1,0 +1,36 @@
+slug: mitochondrial-atp-production
+display_name: Mitochondrial ATP Production
+aliases:
+- cellular energy production
+- oxidative phosphorylation
+- electron transport chain
+category: metabolic
+summary: Mitochondria convert macronutrients and oxygen into ATP via oxidative phosphorylation.
+  Key cofactors include B vitamins, magnesium, CoQ10, carnitine, and omega-3 fatty
+  acids. Byproduct free radicals must be neutralized by antioxidants (ALA, vitamin
+  C, NAC/glutathione, CoQ10) to prevent oxidative damage.
+upstream_drivers:
+- nutrient-cofactor-availability
+- oxygen-supply
+- mitochondrial-mass
+downstream_effects:
+- energy-availability
+- cognitive-function
+- metabolic-health
+- free-radical-production
+related_mechanisms:
+- oxidative-stress
+- free-radical-production
+linked_to_topics:
+- mitochondrial-health-nutrition
+evidence_tier: strong
+sources:
+- id: vitaone-nutrition-toolkit
+  location: Nutrients for Mitochondrial Health
+  quote: Mitochondria are the parts of cells responsible for creating energy. They
+    are like tiny power plants in every cell of the body, converting food and oxygen
+    into cellular energy in the form of adenosine triphosphate ('ATP').
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

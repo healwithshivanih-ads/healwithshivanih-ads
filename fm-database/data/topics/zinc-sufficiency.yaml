@@ -1,0 +1,34 @@
+slug: zinc-sufficiency
+display_name: Zinc & Immune/Enzymatic Function
+aliases:
+- zinc deficiency
+- low zinc
+- zinc status
+summary: Zinc is an essential trace mineral required by over 100 enzymes. It supports
+  growth, immune function, neurological function, taste and smell, and protects cell
+  membranes from oxidative damage. Bioavailability is lower from plant sources due
+  to phytates.
+common_symptoms:
+- frequent-illness
+- loss-of-taste-or-smell
+- slow-wound-healing
+red_flags: []
+related_topics:
+- mitochondrial-health-nutrition
+key_mechanisms:
+- phytate-mineral-binding
+coaching_scope_notes: Coaches can educate on dietary zinc sources and phytate-reduction
+  strategies (soaking, sprouting legumes/grains).
+clinician_scope_notes: 'RDA: men 14 mg/day, women 8 mg/day. Supplemental zinc above
+  UL can impair copper absorption.'
+evidence_tier: strong
+sources:
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Zinc'
+  quote: Over 100 enzymes in the body require zinc to function. Zinc is necessary
+    for normal growth and development, immune and neurological function, proper sense
+    of taste and smell.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

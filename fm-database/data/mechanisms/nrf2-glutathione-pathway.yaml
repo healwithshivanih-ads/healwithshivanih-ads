@@ -1,0 +1,32 @@
+slug: nrf2-glutathione-pathway
+display_name: Nrf2 / Glutathione Antioxidant Pathway
+aliases:
+- Nrf2 activation
+- sulforaphane-Nrf2
+- glutathione production
+category: immune
+summary: Sulforaphane from cruciferous vegetables upregulates Nrf2, a transcription
+  factor that induces glutathione synthesis and phase II detoxification enzymes. This
+  pathway supports clearance of carcinogenic estrogen metabolites and reactive oxygen
+  species.
+upstream_drivers:
+- sulforaphane intake
+- cruciferous vegetable consumption
+downstream_effects:
+- increased glutathione
+- enhanced estrogen detoxification
+- reduced oxidative stress
+related_mechanisms:
+- hepatic-estrogen-detoxification
+linked_to_topics:
+- estrogen-metabolism
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-sex-hormones-toolkit
+  location: Estrogen Metabolism — Page 02
+  quote: Sulphoraphane supports the body in producing glutathione, a key antioxidant,
+    and also upregulates another important detoxification pathway called Nrf2.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

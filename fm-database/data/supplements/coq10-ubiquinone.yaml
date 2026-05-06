@@ -1,0 +1,54 @@
+slug: coq10-ubiquinone
+display_name: CoQ10 (Ubiquinone / Ubiquinol)
+category: other
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 100
+    max: 400
+    unit: mg
+  tablet:
+    min: 100
+    max: 300
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- pcos
+- adrenal-dysfunction
+- inflammation
+linked_to_claims:
+- emotional-stress-cascade-chronic-disease
+notes_for_coach: Mitochondrial electron transport chain cofactor. Supports cardiovascular
+  and mitochondrial resilience in chronic stress context. Fat-soluble — take with
+  food.
+notes_for_client: CoQ10 is a key nutrient for your cellular energy factories (mitochondria)
+  and heart health, especially important when chronic stress has depleted your energy
+  reserves.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-practice-guide
+  location: Seven Clinical Focus Areas > 5. Cholesterol and Cardiovascular Health
+    > Coaching interventions
+  quote: 'Supplement support: Fish oil (if tolerated), CoQ10 if on statins, niacin'
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: CoQ10 (Ubiquinone/Ubiquinol) - Mitochondrial energy, heart health - 100–300
+    mg/day - With meal
+- id: vitaone-sex-hormones-cheatsheet
+  location: Advanced PCOS-Specific Support
+  quote: 'CoQ10: Enhances mitochondrial & egg quality; 100–200 mg/day preconception.'
+- id: vitaone-adrenal-cheatsheet
+  location: Organ–Emotion Axis (p.11)
+  quote: 'Heart: Grief, lack of joy. Hypertension, palpitations, CAD. CoQ10, meditation,
+    heart-rate variability work.'
+version: 4
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

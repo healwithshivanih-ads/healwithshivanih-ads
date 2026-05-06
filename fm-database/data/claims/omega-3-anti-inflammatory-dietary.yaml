@@ -1,0 +1,27 @@
+slug: omega-3-anti-inflammatory-dietary
+statement: Omega-3 fatty acids from fatty fish, seeds, and nuts are particularly important
+  anti-inflammatory dietary components.
+evidence_tier: strong
+rationale: Well-established evidence base for omega-3 fatty acids (EPA/DHA) reducing
+  inflammatory markers. The document identifies these as a key anti-inflammatory dietary
+  component.
+coaching_translation: Eating foods rich in omega-3 fats — like salmon, walnuts, and
+  flaxseeds — is one of the most evidence-backed dietary strategies for reducing inflammation.
+linked_to_topics:
+- anti-inflammatory-diet
+- chronic-inflammation
+caveats:
+- Source is educational toolkit, not primary RCT citation for this specific claim.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-inflammation-toolkit
+  location: Anti Inflammatory Diet — How to Follow an Anti-Inflammatory Diet
+  quote: 'Omega-3 fatty acids are particularly important. Examples: Fatty fish (salmon,
+    mackerel), avocados, nuts (walnuts, almonds), seeds (flaxseeds, chia seeds), and
+    olive oil.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

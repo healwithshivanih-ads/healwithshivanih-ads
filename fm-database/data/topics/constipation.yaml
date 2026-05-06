@@ -1,0 +1,43 @@
+slug: constipation
+display_name: Constipation in Perimenopause & Menopause
+aliases:
+- bowel irregularity
+- slow transit
+- new-onset constipation midlife
+summary: Constipation is a common but underrecognized digestive symptom in perimenopause
+  and menopause, driven by declining estrogen and progesterone altering smooth muscle
+  contractility and gut transit time.
+common_symptoms:
+- infrequent bowel movements
+- hard stools
+- straining
+- bloating
+- new-onset IBS diagnosis
+red_flags:
+- persistent bloating not improving in a middle-aged woman
+- bloating as possible sign of late-stage ovarian cancer
+- new bowel changes not resolving warrant gastroenterology evaluation
+related_topics:
+- perimenopause
+- microbiome
+- dysbiosis
+- gut-hormone-axis
+- dyspepsia
+key_mechanisms:
+- smooth-muscle-contractility-decline
+- progesterone-mediated-motility-slowing
+- estrogen-decline
+coaching_scope_notes: Coaches can support lifestyle strategies (fiber increase, stress
+  regulation, hydration, meal pacing). Red-flag symptoms must be referred to a clinician.
+clinician_scope_notes: New-onset bowel changes in midlife women require evaluation
+  to rule out structural/oncologic causes before attributing to hormonal changes.
+evidence_tier: plausible_emerging
+sources:
+- id: thurlow-microbiome-session-6
+  location: Session 6 — Main Transcript, Bowel Patterns Section
+  quote: When we get changes in perimenopause and menopause, you may see more constipation
+    or regular bowel patterns.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

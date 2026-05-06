@@ -1,0 +1,30 @@
+slug: omega-3-modulates-estrogen-receptor-lowers-prostaglandins
+statement: Omega-3 fatty acids (EPA/DHA) modulate estrogen receptor sensitivity, lower
+  prostaglandin excess, and reduce aromatase activity — beneficial for endometriosis,
+  painful menses, and breast tenderness.
+evidence_tier: plausible_emerging
+rationale: EPA and DHA competitively inhibit arachidonic acid-derived prostaglandins
+  (PGE2), which mediate menstrual pain and inflammation. Anti-inflammatory effect
+  on aromatase is biologically plausible. RCT evidence for dysmenorrhea is moderate.
+coaching_translation: Omega-3 fats from fatty fish, flaxseed, and walnuts reduce the
+  inflammatory signals that worsen period pain and hormone imbalance.
+caveats:
+- Source is expert synthesis
+- Dose 1000–2000 mg EPA+DHA/day
+linked_to_topics:
+- estrogen-dominance
+- pcos
+- perimenopause
+linked_to_supplements:
+- fish-oil-omega-3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: Top Nutrients to Balance Estrogen
+  quote: Anti-inflammatory; modulates estrogen receptor sensitivity & lowers prostaglandin
+    excess.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

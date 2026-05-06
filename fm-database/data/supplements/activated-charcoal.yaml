@@ -1,0 +1,35 @@
+slug: activated-charcoal
+display_name: Activated Charcoal
+category: other
+forms_available:
+- capsule
+- powder
+typical_dose_range:
+  capsule:
+    min: 800
+    max: 1000
+    unit: mg
+timing_options:
+- on_empty_stomach
+take_with_food: avoid
+linked_to_topics:
+- mercury-amalgam-removal
+linked_to_claims:
+- activated-charcoal-binds-ingested-mercury
+notes_for_coach: Used specifically peri-amalgam-removal. Must NOT be taken within
+  2 hours of chlorella, supplements, or medications as it binds them indiscriminately.
+  Stop 2 days post-procedure. Clinician scope for this protocol.
+notes_for_client: Activated charcoal acts like a sponge in your gut to trap mercury
+  that might be swallowed during dental work. Do not take it close to other supplements
+  or medications.
+evidence_tier: fm_specific_thin
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-toolkit
+  location: Dental Amalgam Removal Protocol
+  quote: Take 800–1000 mg right before your dental visit, then 800–1000 mg more immediately
+    after the visit. The charcoal can help bind ingested mercury.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

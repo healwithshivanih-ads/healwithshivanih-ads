@@ -1,0 +1,28 @@
+slug: vitamin-d-k2-immune-tolerance
+statement: Vitamin D–A–K2 synergy modulates immune tolerance and reduces autoantibody
+  production.
+evidence_tier: plausible_emerging
+rationale: The synergistic role of D3, A, and K2 in immune tolerance is mechanistically
+  supported. K2 (MK-7) prevents vascular calcification from D-driven calcium mobilization.
+  Clinical evidence for combined supplementation in autoimmunity is emerging.
+coaching_translation: Always pair Vitamin D3 with K2 — they work as a team. D3 supports
+  immunity while K2 directs calcium safely to bones.
+caveats:
+- Source is educational synthesis. Verify dosing with clinician.
+- High-dose D3+K2 protocols require lab monitoring.
+linked_to_topics:
+- autoimmune-disease
+- psoriasis
+linked_to_supplements:
+- vitamin-d3-k2
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Immune-Boosting Grocery List — Page 12
+  quote: 'Vitamin D, A, K2 synergy: Modulates immune tolerance, reduces autoantibody
+    production.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

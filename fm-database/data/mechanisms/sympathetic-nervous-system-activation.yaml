@@ -1,0 +1,35 @@
+slug: sympathetic-nervous-system-activation
+display_name: Sympathetic Nervous System Activation (Fight-or-Flight)
+aliases:
+- fight-or-flight response
+- sympathoadrenal activation
+- adrenaline surge
+category: neurological
+summary: Stress activates the sympathetic nervous system, releasing adrenaline and
+  suppressing digestive enzyme production, diverting blood from digestive organs,
+  raising heart rate and blood pressure, and causing shallow breathing.
+upstream_drivers:
+- chronic-stress
+- psychological-stressors
+downstream_effects:
+- digestive-enzyme-suppression
+- elevated-heart-rate
+- elevated-blood-pressure
+- anxiety
+- digestive-pain
+- bloating
+related_mechanisms:
+- hpa-axis-dysregulation
+linked_to_topics:
+- chronic-stress
+- hpa-axis-dysregulation
+evidence_tier: strong
+sources:
+- id: vitaone-adrenal-toolkit
+  location: Hypercortisolism
+  quote: As adrenaline surges during stress, digestive enzymes are simultaneously
+    lowered, and blood sugar levels initially rise.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

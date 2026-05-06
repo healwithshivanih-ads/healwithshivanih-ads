@@ -1,0 +1,29 @@
+slug: zinc-antiviral-immune-support
+statement: Zinc has strong antiviral properties against many viruses and is essential
+  for immune system integrity.
+evidence_tier: strong
+rationale: Multiple cited peer-reviewed studies (Shankar & Prasad Am J Clin Nutr 1998;
+  te Velthuis et al. PLoS Pathog 2010; Barnett et al. Am J Clin Nutr 2016 RCT) establish
+  zinc's role in immune function and viral inhibition, including coronavirus RNA polymerase
+  inhibition.
+coaching_translation: Zinc is an essential mineral your immune system relies on to
+  fight off viruses. Many people are mildly deficient.
+out_of_scope_notes: Dosing (30–60 mg/day) and form selection require clinician guidance.
+  Excess zinc can cause copper depletion.
+linked_to_topics:
+- immune-support
+linked_to_supplements:
+- zinc
+caveats:
+- High doses (30–60 mg/day) should only be used short-term under clinician supervision.
+- Zinc gluconate lozenge form is distinct from oral systemic supplementation.
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: A large body of research shows that zinc has strong anti-viral properties
+    against many viruses.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

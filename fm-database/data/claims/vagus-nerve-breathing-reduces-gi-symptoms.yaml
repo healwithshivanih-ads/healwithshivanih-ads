@@ -1,0 +1,28 @@
+slug: vagus-nerve-breathing-reduces-gi-symptoms
+statement: Extended exhale breathing (inhale 4 sec, exhale 6–8 sec) activates the
+  vagus nerve, reduces sympathetic tone, and can alleviate gut-brain axis-driven GI
+  symptoms and migraine.
+evidence_tier: plausible_emerging
+rationale: Parasympathetic activation via slow diaphragmatic breathing is supported
+  by HRV research and vagal nerve stimulation studies; clinical application to IBS
+  has emerging RCT support.
+coaching_translation: A simple breathing exercise — breathe in for 4 seconds, out
+  for 6–8 — can calm your nervous system and ease gut symptoms, especially during
+  a flare.
+linked_to_topics:
+- gut-brain-axis
+- low-fodmap-diet
+linked_to_mechanisms:
+- vagal-tone-dysregulation
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: FODMAP Plan SOS Solutions — Migraine/Headache
+  quote: Longer exhale stimulates the vagus nerve. Reduces sympathetic firing → cranial
+    vasodilation normalizes.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,31 @@
+slug: zonulin-upregulation
+display_name: Zonulin Upregulation
+aliases:
+- zonulin pathway
+- tight junction opening
+category: gut
+summary: Zonulin, a protein modulated by gluten and gut bacteria, opens tight junctions
+  in the intestinal epithelium, causing persistent intestinal permeability.
+upstream_drivers:
+- gluten-exposure
+- gut-dysbiosis-mechanism
+- stress
+downstream_effects:
+- leaky-gut
+- antigen-leakage
+- systemic-inflammation
+related_mechanisms:
+- leaky-gut
+- lps-signaling
+linked_to_topics:
+- leaky-gut
+- gerd
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Leaky Gut & Inflammation — Why Leaky Gut Creates Chronic Inflammation
+  quote: Zonulin upregulation — Opens tight junctions — Persistent permeability
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

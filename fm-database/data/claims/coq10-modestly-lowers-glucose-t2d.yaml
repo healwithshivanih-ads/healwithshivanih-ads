@@ -1,0 +1,26 @@
+slug: coq10-modestly-lowers-glucose-t2d
+statement: CoQ10 may modestly lower glucose levels in individuals with type 2 diabetes.
+evidence_tier: plausible_emerging
+rationale: Moradi et al. 2016 meta-analysis cited in document; effect described as
+  modest — consistent with secondary glucose-lowering rather than primary treatment.
+coaching_translation: CoQ10 isn't a blood sugar medication, but research shows it
+  can modestly help lower glucose in people with type 2 diabetes.
+caveats:
+- Effect is modest. Not a substitute for diabetes medication. Refer to clinician for
+  T2D management.
+out_of_scope_notes: Managing T2D glucose levels requires clinician oversight.
+linked_to_topics:
+- blood-sugar-dysfunction
+linked_to_supplements:
+- coq10
+linked_to_mechanisms: []
+sources:
+- id: vitaone-blood-sugar-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: CoQ10 has been shown to increase insulin sensitivity in individuals who do
+    not have diabetes & may modestly lower glucose in individuals who have type 2
+    diabetes.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

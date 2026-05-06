@@ -1,0 +1,32 @@
+slug: 90-percent-serotonin-made-in-gut
+statement: Approximately 90% of serotonin — a key neurotransmitter involved in mood,
+  sleep, and gut motility — is produced in the gut, and the composition of gut microbes
+  directly influences GABA and dopamine production.
+evidence_tier: strong
+rationale: The finding that ~90–95% of the body's serotonin is produced by enterochromaffin
+  cells in the gut is well-established textbook physiology supported by decades of
+  research. The role of gut microbiota in influencing GABA and dopamine precursors
+  is supported by mechanistic studies and animal models, with growing human evidence.
+coaching_translation: Your gut is your body's main serotonin factory. The types of
+  bacteria you have in your gut directly affect your mood, sleep, and ability to feel
+  calm. This is why gut health and mental health are so deeply connected.
+caveats:
+- While serotonin is produced in the gut, peripherally produced serotonin does not
+  cross the blood-brain barrier directly — its systemic effects and relationship to
+  brain serotonin are complex.
+- Source is expert course content; the 90% figure is consistent with published physiology.
+linked_to_topics:
+- microbiome
+- gut-hormone-axis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-mondays
+  location: 'Session 1: Microbiome Foundations and Hormone Shifts'
+  quote: 90% of serotonin, which is a key neurotransmitter is actually made in the
+    gut and the microbes we have influence GABA.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

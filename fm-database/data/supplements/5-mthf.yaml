@@ -1,0 +1,30 @@
+slug: 5-mthf
+display_name: 5-MTHF (Active Folate)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+timing_options:
+- with_breakfast
+- morning
+take_with_food: optional
+linked_to_topics:
+- methylation-mthfr
+linked_to_claims:
+- 5-mthf-active-folate-mthfr-support
+notes_for_coach: 5-MTHF is the active, methylated form of folate (B9), bypassing the
+  MTHFR enzyme. Essential for MTHFR-positive individuals. Standard folic acid supplementation
+  may be ineffective or counterproductive. Dosing requires clinician guidance.
+notes_for_client: 5-MTHF is the ready-to-use form of folate that your body can use
+  directly, especially important if you have an MTHFR variation.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet — Foundational Support
+  quote: 'Active folate: 5-MTHF'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,24 @@
+slug: dizziness-on-fasting
+display_name: Dizziness / Lightheadedness During Fasting
+aliases:
+- lightheadedness
+- orthostatic dizziness
+- fasting dizziness
+category: neurological
+severity: concerning
+description: A common side effect when beginning an intermittent fasting regimen,
+  potentially related to electrolyte shifts or dehydration.
+when_to_refer: Discontinue fast and consult clinician if dizziness is severe, recurrent,
+  or associated with syncope.
+linked_to_topics:
+- intermittent-fasting
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cardiometabolic-toolkit
+  location: Intermittent Fasting — General Recommendations for Fasting
+  quote: Be aware of your movement as you may feel dizzy or lightheaded, especially
+    when first starting a fast.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

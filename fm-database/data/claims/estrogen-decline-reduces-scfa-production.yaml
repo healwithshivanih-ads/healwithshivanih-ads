@@ -1,0 +1,34 @@
+slug: estrogen-decline-reduces-scfa-production
+statement: The decline in estrogen during perimenopause and menopause is associated
+  with a reduction in short-chain fatty acid production (butyrate, propionate, acetate),
+  negatively affecting gut lining integrity, immune function, metabolic health, and
+  brain health.
+evidence_tier: plausible_emerging
+rationale: The estrobolome's role in estrogen metabolism and estrogen's influence
+  on microbial composition are established. The specific link from estrogen decline
+  → reduced SCFA production is mechanistically coherent but still emerging in human
+  perimenopausal populations.
+coaching_translation: As estrogen levels drop in perimenopause, the gut bacteria that
+  produce beneficial fatty acids (like butyrate) also decline — which is one reason
+  dietary fiber becomes even more important at this life stage.
+caveats:
+- Single-expert source; no primary studies cited.
+- Causal direction is still under investigation in human trials.
+linked_to_topics:
+- perimenopause
+- microbiome
+- gut-hormone-axis
+- midlife-weight-gain
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-4
+  location: Session 4 — Factors Impacting the Metabolic Microbiome / Fiber
+  quote: In the absence of hormones or the decline in hormones in perimenopause and
+    menopause, we see a reduction in short-chain fatty acids. This is butyrate, propionate,
+    acetate.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

@@ -1,0 +1,28 @@
+slug: fasting-insulin-functional-range-2-5-uiu-ml
+statement: Fasting insulin functional range is 2.6–5 µIU/mL; values above this indicate
+  declining insulin sensitivity before fasting glucose becomes abnormal.
+evidence_tier: fm_specific_thin
+rationale: The functional range cited (2.6–5 µIU/mL) is narrower than conventional
+  lab normals and is used in functional medicine to identify early insulin resistance.
+  Standard lab ranges are broader; peer-reviewed consensus supports elevated fasting
+  insulin as a risk marker but does not uniformly endorse this specific cut-off.
+coaching_translation: A fasting insulin below 5 is the goal — if it's higher, blood
+  sugar regulation strategies (diet, movement, sleep) are worth prioritising even
+  if your fasting glucose looks 'normal'.
+caveats:
+- Source is expert consensus / FM cheatsheet, not primary literature. Specific cut-off
+  should be confirmed with ordering clinician.
+- Lab interpretation is clinician scope.
+out_of_scope_notes: Lab ordering and result interpretation is clinician scope.
+linked_to_topics:
+- insulin-resistance
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-blood-sugar-cheatsheet
+  location: Insulin Resistance Cheatsheet — Labs to Monitor
+  quote: 'Ideal range: 2.6–5 µIU/mL (functional range)'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

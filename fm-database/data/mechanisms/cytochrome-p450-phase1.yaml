@@ -1,0 +1,35 @@
+slug: cytochrome-p450-phase1
+display_name: Phase I Cytochrome P450 Detoxification
+aliases:
+- CYP450 enzymes
+- phase 1 liver detox
+- hepatic oxidation
+category: metabolic
+summary: 'Phase I involves CYP450 enzyme-mediated reactions (oxidation, reduction,
+  hydrolysis, hydration, dehalogenation) that convert lipid-soluble toxins into more
+  polar intermediary metabolites. These intermediates can be more reactive/toxic and
+  require rapid Phase II processing. Nutrients: riboflavin (B2), niacin (B3), pyridoxine
+  (B6), folate, B12, glutathione, branched-chain amino acids, flavonoids, phospholipids.'
+upstream_drivers:
+- toxic-body-burden
+- environmental-chemical-exposure
+- alcohol-intake
+downstream_effects:
+- reactive-oxygen-intermediate-production
+- phase2-conjugation
+related_mechanisms:
+- phase2-conjugation
+- oxidative-stress
+linked_to_topics:
+- liver-detoxification
+- toxic-body-burden
+evidence_tier: strong
+sources:
+- id: vitaone-liver-detox-toolkit
+  location: Features of the Detox Food Plan
+  quote: Enzymes involved in detoxification (phase I, phase II) within the liver are
+    well recognized.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

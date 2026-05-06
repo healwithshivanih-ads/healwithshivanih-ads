@@ -1,0 +1,28 @@
+slug: mthfr-c677t-reduces-enzyme-70-percent
+statement: The C677T homozygous MTHFR mutation reduces MTHFR enzyme efficiency by
+  up to 70%, significantly impairing folate conversion to 5-MTHF and downstream methylation.
+evidence_tier: plausible_emerging
+rationale: Document explicitly states C677T homozygous causes 'up to 70% reduction'
+  in enzyme function. This figure is consistent with published literature but source
+  is FM synthesis — no primary study cited.
+coaching_translation: Having two copies of the C677T MTHFR variant can reduce your
+  body's ability to use folate by up to 70%, impacting detox, mood, and energy.
+out_of_scope_notes: MTHFR genetic testing, interpretation, and treatment decisions
+  are clinician scope. Coaches provide educational context only.
+caveats:
+- Exact % reduction varies by study
+- Source is FM synthesis
+- MTHFR mutations are not a disease — impact depends on environmental/lifestyle factors
+linked_to_topics:
+- methylation-mthfr
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet — What Is the MTHFR Gene
+  quote: Mutations (SNPs) in this gene especially C677T and A1298C—can significantly
+    reduce enzyme efficiency. C677T homozygous — Up to 70% reduction.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

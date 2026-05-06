@@ -1,0 +1,24 @@
+slug: mindful-breathing-improves-concentration
+statement: Regular mindful, deep breathing can sharpen the ability to concentrate.
+evidence_tier: plausible_emerging
+rationale: Consistent with attentional control models of mindfulness; plausible via
+  prefrontal cortex upregulation during relaxation states, though no specific RCT
+  cited in this document.
+coaching_translation: Taking a few deep breaths before tasks that require focus can
+  genuinely help you concentrate better.
+caveats:
+- No specific study cited in source.
+linked_to_topics:
+- mindfulness
+- stress-management
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Mindful Breathing
+  quote: Mindful, deep breathing can also help sharpen your ability to concentrate.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,29 @@
+slug: curcumin-boswellia-joint-inflammation
+statement: Bioavailable curcumin and boswellia reduce joint inflammation and stiffness
+  in osteoarthritis and rheumatoid arthritis.
+evidence_tier: plausible_emerging
+rationale: Curcumin and Boswellia serrata (AKBA) have multiple RCTs supporting reduction
+  in joint pain and inflammatory markers (CRP, IL-6). Standard curcumin has low bioavailability;
+  phospholipid-complexed or piperine-enhanced forms are required. Growing evidence
+  base.
+coaching_translation: Look for curcumin supplements with enhanced bioavailability
+  (e.g., with piperine or phospholipids). Boswellia is a good companion for joint
+  stiffness.
+caveats:
+- Bioavailability of standard curcumin is very poor — form matters.
+- Source is a synthesis document.
+linked_to_topics:
+- knee-pain
+linked_to_supplements:
+- curcumin
+- boswellia
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Knee Pain – Supplement Stack
+  quote: Curcumin (bioavailable), Boswellia, Omega-3
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

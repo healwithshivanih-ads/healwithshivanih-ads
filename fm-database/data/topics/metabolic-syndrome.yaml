@@ -1,0 +1,57 @@
+slug: metabolic-syndrome
+display_name: Metabolic Syndrome
+aliases:
+- obesity
+- metabolic syndrome
+- cardiometabolic risk
+- MetSyn
+- syndrome X
+- cardiometabolic syndrome
+summary: A cluster of central adiposity, dyslipidaemia, hypertension, and hyperglycaemia
+  representing the initial clinical expression of insulin resistance, significantly
+  elevating cardiovascular and T2DM risk.
+common_symptoms:
+- weight-gain
+- fatigue
+- cravings
+- high-blood-sugar
+- central-adiposity
+- elevated-triglycerides
+- low-hdl
+- hypertension
+- elevated-fasting-glucose
+red_flags:
+- severe-obesity
+- uncontrolled-hypertension
+- TG > 250 mg/dL
+- blood pressure ≥ 140/90 mmHg
+- fasting glucose ≥ 100 mg/dL with high insulin
+related_topics:
+- low-carb-diet
+- insulin-resistance
+- type-2-diabetes
+- nafld
+- blood-sugar-dysfunction
+key_mechanisms:
+- insulin-resistance
+- metabolic-flexibility
+- visceral-adipose-inflammation
+coaching_scope_notes: Lifestyle modification (diet, exercise, sleep, stress) is the
+  primary coaching lever. Reinforce waist circumference tracking and dietary glycaemic
+  load reduction.
+evidence_tier: strong
+clinician_scope_notes: Diagnose per IDF/AHA criteria. Screen lipid panel, blood pressure,
+  fasting glucose and insulin. Manage hypertension and dyslipidaemia pharmacologically
+  as needed.
+sources:
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: Functional Medicine Clinical Applications
+  quote: Promotes fat loss and satiety
+- id: vitaone-blood-sugar-ebook
+  location: 'Section 4.1 — Effects of Insulin Resistance: Metabolic Syndrome'
+  quote: Insulin resistance initially represents as Metabolic Syndrome, characterised
+    by the following clinical and laboratory findings.
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

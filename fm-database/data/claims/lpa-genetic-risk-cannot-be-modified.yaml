@@ -1,0 +1,28 @@
+slug: lpa-genetic-risk-cannot-be-modified
+statement: Lp(a) is a genetically determined cardiovascular risk factor that cannot
+  be easily modified, though lifestyle interventions still matter.
+evidence_tier: plausible_emerging
+rationale: Document states Lp(a) is a genetic risk factor that 'can't be modified
+  easily, but lifestyle still matters.' Consistent with current lipidology literature.
+coaching_translation: Lp(a) is largely set by your genes, but focusing on reducing
+  overall inflammation and other risk factors through lifestyle still makes a real
+  difference.
+caveats:
+- Source is an expert synthesis cheatsheet.
+- Very high Lp(a) with family history of CVD warrants early clinical referral for
+  aggressive prevention strategy.
+out_of_scope_notes: Lp(a)-specific pharmacological interventions (e.g., PCSK9 inhibitors,
+  emerging RNA therapies) are outside coaching scope.
+linked_to_topics:
+- dyslipidemia
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 3
+  quote: Lp(a) — Genetic risk factor — Can't be modified easily, but lifestyle still
+    matters.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

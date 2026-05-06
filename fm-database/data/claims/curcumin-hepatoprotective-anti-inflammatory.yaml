@@ -1,0 +1,30 @@
+slug: curcumin-hepatoprotective-anti-inflammatory
+statement: Curcumin (turmeric) is a potent anti-inflammatory and hepatoprotective
+  agent that supports liver regeneration and bile flow, with bioavailability significantly
+  enhanced by black pepper (piperine).
+evidence_tier: plausible_emerging
+rationale: Document identifies curcumin as hepatoprotective with bile flow support.
+  Piperine-enhanced bioavailability is well-documented. Document claims '2000% better
+  absorption' — this is plausible but figure is approximate and source is FM synthesis.
+coaching_translation: Turmeric can help protect and regenerate liver tissue and improve
+  bile flow. Always combine with black pepper to unlock its benefits.
+caveats:
+- 2000% absorption figure is approximate; exact enhancement varies by formulation
+- Source is FM synthesis
+- Phytosome/liposomal forms also available
+linked_to_topics:
+- liver-detoxification
+- nafld
+linked_to_supplements:
+- curcumin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Top Superfoods for Detoxification
+  quote: Supports liver regeneration & bile flow. Combine with black pepper for 2000%
+    better absorption. Ideal in toxic liver, inflammation, joint pain.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

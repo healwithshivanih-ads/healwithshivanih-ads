@@ -1,0 +1,27 @@
+slug: proteins-fodmap-free-ideal-base
+statement: Animal and plant proteins (eggs, chicken, fish, firm tofu, tempeh) are
+  inherently FODMAP-free and serve as a reliable base for low-FODMAP meal planning;
+  symptoms arising with protein foods indicate weak digestion, not FODMAP content.
+evidence_tier: strong
+rationale: 'Well-established: FODMAPs are carbohydrate-based; pure proteins contain
+  no fermentable carbohydrates. This is foundational to the Monash FODMAP framework.'
+coaching_translation: Meat, fish, eggs, and plain tofu won't trigger your FODMAP symptoms
+  — they're your safe anchor foods. If you're reacting to them, it's likely a digestion
+  issue rather than a FODMAP issue.
+out_of_scope_notes: HCl supplementation for digestive support requires clinician oversight.
+caveats:
+- Processed meats with fillers (starches, onion powder) can be high-FODMAP. Always
+  check ingredients.
+linked_to_topics:
+- low-fodmap-diet
+- ibs
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-elimination-diet-cheatsheet
+  location: FODMAP Food Cheatsheet — Protein Sources row
+  quote: Protein is FODMAP-free - ideal base for low-FODMAP elimination.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

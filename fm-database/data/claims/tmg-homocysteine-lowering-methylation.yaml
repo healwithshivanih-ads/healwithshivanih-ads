@@ -1,0 +1,30 @@
+slug: tmg-homocysteine-lowering-methylation
+statement: TMG (betaine/trimethylglycine), combined with B6, B12, and folate, lowers
+  elevated homocysteine and supports methylation cycle function.
+evidence_tier: plausible_emerging
+rationale: Document lists TMG alongside B vitamins for homocysteine lowering. The
+  BHMT pathway using betaine as a methyl donor is biochemically established. No specific
+  RCT cited in the source.
+coaching_translation: TMG (betaine) acts as a methyl donor to help reduce homocysteine
+  levels and keep your methylation cycle running smoothly.
+caveats:
+- Verify dose with clinician
+- Source is FM synthesis
+- Consider alongside full B complex
+linked_to_topics:
+- methylation-mthfr
+linked_to_supplements:
+- tmg
+- b-complex
+- 5-mthf
+- methylcobalamin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet — 6 Ways to Overcome MTHFR
+  quote: Lower Homocysteine – Add TMG, B6, B12, folate, magnesium.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

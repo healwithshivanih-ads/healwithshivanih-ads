@@ -1,0 +1,26 @@
+slug: sunblock-blocks-vitamin-d-synthesis
+statement: Sunblock with SPF greater than 15 blocks 100% of vitamin D production in
+  the skin.
+evidence_tier: strong
+rationale: Well-established photobiology; consistent with NIH ODS and Linus Pauling
+  Institute guidance cited in the document.
+coaching_translation: Regular sunscreen use, while important for skin protection,
+  eliminates cutaneous vitamin D synthesis — making dietary sources and possible supplementation
+  more important.
+caveats:
+- Balance between UV exposure for vitamin D and skin cancer risk is individual — refer
+  clients with high-risk skin profiles to a clinician.
+linked_to_topics:
+- vitamin-d-deficiency
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Vitamin D'
+  quote: Sunblock with an SPF of more than 15 blocks 100% of vitamin D production
+    in the skin.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

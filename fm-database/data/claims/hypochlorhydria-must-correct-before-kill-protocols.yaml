@@ -1,0 +1,30 @@
+slug: hypochlorhydria-must-correct-before-kill-protocols
+statement: Low stomach acid (hypochlorhydria) must be corrected before implementing
+  antimicrobial kill protocols, as it is foundational to SIBO/SIFO development.
+evidence_tier: fm_specific_thin
+rationale: 'Mechanistically sound: gastric acid sterilizes the upper GI, and hypochlorhydria
+  is a recognized root cause of bacterial overgrowth. Clinical sequencing recommendation
+  is FM-specific consensus.'
+coaching_translation: Starting herbal antimicrobials before addressing low stomach
+  acid is like trying to clear a clogged drain without fixing the underlying flow
+  problem.
+caveats:
+- Sequencing recommendation is FM clinical consensus, not RCT-validated. Betaine HCl
+  use must be supervised by clinician.
+linked_to_topics:
+- hypochlorhydria
+- sibo
+- candida-overgrowth
+linked_to_supplements:
+- betaine-hcl
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Gut Dysbiosis vs SIBO vs SIFO vs Hypochlorhydria
+  quote: Foundational to address before treating SIBO/SIFO — Betaine HCl, digestive
+    bitters, manage stress
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

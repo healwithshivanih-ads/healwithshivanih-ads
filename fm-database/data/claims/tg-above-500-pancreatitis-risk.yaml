@@ -1,0 +1,25 @@
+slug: tg-above-500-pancreatitis-risk
+statement: Triglycerides above 500 mg/dL carry a significant risk of acute pancreatitis
+  and require urgent clinical action.
+evidence_tier: strong
+rationale: The association between severe hypertriglyceridemia (>500 mg/dL) and pancreatitis
+  risk is well-established in clinical medicine and major guidelines.
+coaching_translation: If triglycerides are above 500, this is a medical emergency
+  risk — do not manage this with lifestyle changes alone. Refer immediately to a doctor.
+caveats:
+- This is a red-flag threshold requiring immediate clinical referral — outside coaching
+  management scope.
+out_of_scope_notes: Urgent referral required. Do not manage TG > 500 mg/dL with coaching
+  interventions alone.
+linked_to_topics:
+- dyslipidemia
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 6
+  quote: TG > 500 mg/dL → Pancreatitis risk → Urgent action.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

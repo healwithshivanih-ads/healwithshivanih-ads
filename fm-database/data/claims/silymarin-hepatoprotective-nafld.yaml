@@ -1,0 +1,29 @@
+slug: silymarin-hepatoprotective-nafld
+statement: Silymarin (milk thistle) supports liver detoxification and restores antioxidants
+  in alcoholic liver disease and general liver dysfunction.
+evidence_tier: plausible_emerging
+rationale: Document lists silymarin as key supplement for alcoholic liver disease
+  with clinical insight to 'support detoxification, restore antioxidants'. Source
+  is FM educational material without primary RCT citation.
+coaching_translation: Milk thistle is a well-known herbal liver protector that helps
+  the liver process toxins and recover from damage.
+caveats:
+- Source is FM educational synthesis — no primary RCT cited
+- Dosing requires clinician verification
+- Strict alcohol abstinence remains essential in ALD
+linked_to_topics:
+- nafld
+- liver-detoxification
+linked_to_supplements:
+- milk-thistle
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Liver Disease Cheatsheet — Alcoholic Liver Disease
+  quote: Silymarin (Milk thistle), NAC, B-complex, SAMe — Support detoxification,
+    restore antioxidants, strict alcohol abstinence critical.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

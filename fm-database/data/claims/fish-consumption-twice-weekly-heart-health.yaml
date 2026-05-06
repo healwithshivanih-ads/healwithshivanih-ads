@@ -1,0 +1,27 @@
+slug: fish-consumption-twice-weekly-heart-health
+statement: The American Heart Association recommends eating fish at least two times
+  per week as part of a healthy diet, given its association with lower risk of heart
+  attacks, strokes, and death from heart disease.
+evidence_tier: strong
+rationale: AHA guideline recommendation backed by extensive epidemiological and RCT
+  data on omega-3 fatty acids and cardiovascular outcomes.
+coaching_translation: Eating fatty fish like salmon, sardines, or mackerel twice a
+  week is one of the best evidence-based dietary habits for heart health.
+caveats:
+- Choose low-mercury species (salmon, sardines, herring, trout) to balance benefits
+  and risks.
+linked_to_topics:
+- fish-and-toxins-safe-food
+- essential-fatty-acids
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-nutrition-toolkit
+  location: 'Fish and Toxins: Safe Food Guidelines'
+  quote: As a general rule, the American Heart Association recommends eating fish
+    at least two times per week as part of a healthy diet.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,27 @@
+slug: ldn-anti-inflammatory-via-microglial-action
+statement: LDN may operate as a novel anti-inflammatory agent in the central nervous
+  system via action on microglial cells, independent of its opioid receptor activity.
+evidence_tier: plausible_emerging
+rationale: Cited to Clinical Rheumatology study. TLR4 antagonism and microglial attenuation
+  are mechanistically described. Independence from opioid receptor activity is a key
+  claim, biologically plausible but not yet consensus.
+coaching_translation: LDN may calm brain-level inflammation by quieting overactivated
+  immune cells in the nervous system — a different pathway from its opioid effects.
+caveats:
+- Source is practitioner synthesis. Mechanism plausible; human RCT data limited.
+linked_to_topics:
+- low-dose-naltrexone
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-ldn-article
+  location: Preliminary Research Abounds for cancer and autoimmune disease
+  quote: LDN may operate as a novel anti-inflammatory agent in the central nervous
+    system, via action on microglial cells. These effects may be unique to low dosages
+    of naltrexone and appear to be entirely independent of naltrexone's better-known
+    activity on opioid receptors.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

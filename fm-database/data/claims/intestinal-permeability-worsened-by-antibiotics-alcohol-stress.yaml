@@ -1,0 +1,31 @@
+slug: intestinal-permeability-worsened-by-antibiotics-alcohol-stress
+statement: Antibiotics, alcohol, and chronic stress are primary disruptors of the
+  small intestinal lining barrier, contributing to gut permeability and autoimmune
+  risk.
+evidence_tier: plausible_emerging
+rationale: All three factors have documented effects on gut microbiome composition
+  and/or tight junction proteins in peer-reviewed literature, though magnitude and
+  reversibility vary. Stated without citations in this session.
+coaching_translation: The three biggest everyday threats to your gut lining are antibiotics
+  (necessary sometimes, but impactful), alcohol, and chronic stress. Minimizing them
+  protects your gut wall and your immune system.
+caveats:
+- Single-expert source; relative contributions of each factor are not quantified.
+- Antibiotic necessity should always be assessed by a clinician.
+linked_to_topics:
+- microbiome
+- dysbiosis
+- autoimmune
+- inflammaging
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-8
+  location: 'Session 8 — Q&A: gut health and autoimmune connection'
+  quote: A lot to do with what disrupts that very delicate, small intestinal lining
+    barrier, antibiotics, alcohol, chronic stress.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

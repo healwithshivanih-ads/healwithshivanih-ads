@@ -1,0 +1,31 @@
+slug: infrared-sauna-supports-toxin-excretion-via-sweat
+statement: Near-infrared sauna therapy supports toxin excretion through sweat and
+  may assist digestive and elimination organ function, but replaces minerals (especially
+  magnesium) lost through sweating.
+evidence_tier: fm_specific_thin
+rationale: Sweat-based excretion of some toxicants (heavy metals, BPA) has been shown
+  in some studies, but the clinical significance relative to renal/hepatic clearance
+  is debated. The mineral replacement guidance is well-reasoned physiologically.
+coaching_translation: Infrared sauna can be a helpful addition for detox support,
+  but stay well-hydrated and replenish minerals — especially magnesium — after sessions.
+out_of_scope_notes: Contraindicated in pregnancy and for children under 5. Mineral
+  replacement strategy should involve a knowledgeable practitioner.
+caveats:
+- Avoid during pregnancy. Children under 5 should not use. Evidence for sweat-based
+  toxin elimination is preliminary.
+- Start with 10–20 min sessions only.
+linked_to_topics:
+- liver-detoxification
+- toxic-body-burden
+linked_to_supplements:
+- magnesium
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-toolkit
+  location: How to Make an Infrared Sauna Lamp — Protocol
+  quote: I do advise Starting with Magnesium because you will loose lot of magnesium
+    through sweat.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

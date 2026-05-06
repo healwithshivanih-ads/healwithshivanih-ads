@@ -1,0 +1,27 @@
+slug: fiber-psyllium-glucomannan-lowers-ldl-tg
+statement: Soluble fiber (psyllium, glucomannan) lowers LDL and triglycerides through
+  bile acid sequestration and gut mechanisms.
+evidence_tier: strong
+rationale: Psyllium's LDL-lowering effect is well-supported by multiple RCTs and is
+  FDA-recognized. Glucomannan also has RCT evidence. Document references both.
+coaching_translation: Adding soluble fiber like psyllium husk or glucomannan to your
+  daily routine is a well-researched way to reduce LDL cholesterol and triglycerides
+  naturally.
+caveats:
+- Source is an expert synthesis cheatsheet; specific doses not provided.
+- Psyllium can interfere with medication absorption — take away from medications.
+linked_to_topics:
+- dyslipidemia
+linked_to_supplements:
+- psyllium
+- glucomannan
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 5
+  quote: 'Fiber (psyllium, glucomannan): ↓LDL, ↓TG.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,28 @@
+slug: nasal-congestion
+display_name: Nasal Congestion / Runny Nose / Sinusitis
+aliases:
+- stuffy nose
+- runny nose
+- nasal polyps
+- sneezing
+- sinusitis
+category: other
+severity: common
+description: Upper respiratory symptoms including nasal congestion, rhinorrhoea, sneezing,
+  or sinusitis; common in histamine intolerance and salicylate sensitivity.
+when_to_refer: Persistent sinusitis with polyps, asthma exacerbation — ENT/allergy
+  referral.
+linked_to_topics:
+- histamine-intolerance
+- salicylate-sensitivity
+linked_to_mechanisms:
+- immune-food-reactivity
+- diamine-oxidase-deficiency
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: Salicylate Food Triggers — Symptoms
+  quote: 'Respiratory: stuffy nose, runny nose, sinusitis, nasal polyps, asthma'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

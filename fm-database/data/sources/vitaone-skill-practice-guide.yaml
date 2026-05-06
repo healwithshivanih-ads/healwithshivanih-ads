@@ -1,0 +1,17 @@
+id: vitaone-skill-practice-guide
+title: Vitaone FM Reference — Practice Guide
+source_type: internal_skill
+quality: moderate
+authors:
+  - shivani
+internal_path: .claude/skills/vitaone-fm-reference/references/practice_guide.md
+notes: |
+  Coaching-scope practice guide bundled with the vitaone-fm-reference skill.
+  Used as a seed source for LifestylePractice, DietaryPattern, HomeRemedy,
+  and supplement coach-notes. Not a substitute for clinician-signed
+  prescriptive content; supplements citing only this source default to
+  evidence_tier fm_specific_thin unless corroborated.
+version: 1
+status: active
+updated_at: 2026-04-28
+updated_by: shivani

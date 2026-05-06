@@ -1,0 +1,1450 @@
+slug: adrenal-fatigue
+display_name: Adrenal Fatigue
+description: 'FM view of adrenal/HPA-axis dysregulation: physiology, stress response
+  stages, dysfunctional cortisol patterns, systemic connections, diagnosis, treatment.
+  Note: ''adrenal fatigue'' as a discrete diagnosis is FM-specific and not endocrinology
+  consensus. Imported from Vitaone Education Tools.'
+aliases: []
+related_topics:
+- anxiety
+related_mechanisms: []
+tree:
+- label: Physiology & Hormones
+  children:
+  - label: Cortisol
+    children:
+    - label: Production Pathway
+      children:
+      - label: Cholesterol to Pregnenolone
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Pregnenolone to Cortisol
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: ACTH Stimulates Release
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: CRH Triggers ACTH
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Diurnal Pattern
+      children:
+      - label: Peak at Waking CAR
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: 50% Rise Post Awakening
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Gradual Daytime Decline
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Nadir 12-3 AM
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Receptor Distribution
+      children:
+      - label: Glucocorticoid Receptors Everywhere
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Nuclear Receptor Gene Action
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Epigenetic DNA Methylation
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: DHEA
+    children:
+    - label: Pregnenolone Derived
+      children:
+      - label: Cardiovascular Immune Metabolic
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Sex Steroid Reservoir
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: T4 to T3 Conversion Aid
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Accelerates Stress Recovery
+      children:
+      - label: Normal 5:1 to 6:1
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Cortisol DHEA Ratio
+      children:
+      - label: High Ratio Overstimulated
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Low Both Depleted State
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Age Related Decline
+      children:
+      - label: DHEA Falls With Age
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Cortisol Often Rises
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Ratio Widens In Elderly
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: HPA Axis
+    children:
+    - label: Hypothalamus Releases CRH AVP
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Pituitary Releases ACTH
+      children:
+      - label: Cortisol
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Adrenal Cortex Outputs
+      children:
+      - label: DHEAS
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Aldosterone
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Negative Feedback Loop
+      children:
+      - label: Cortisol Inhibits CRH
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Hippocampus Modulates
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Chronic Stress Breaks Loop
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: Stress Response Stages
+  children:
+  - label: Stage 1 Alarm
+    children:
+    - label: Circadian Pacemaker
+      children:
+      - label: Suprachiasmatic Nucleus
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Peripheral Clock Genes
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Disruption Causes Cascade
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Catecholamine Surge
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Fight or Flight Response
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Transient Cortisol Rise
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Body Mobilizes Resources
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Stage 2 Resistance
+    children:
+    - label: Sustained Hypercortisolism
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: HPA Chronically Activated
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Early Dysfunction Signs
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Resources Being Depleted
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Stage 3 Exhaustion
+    children:
+    - label: HPA Capacity Overwhelmed
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Cortisol Precursors Depleted
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Hypocortisolism Emerges
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: System Wide Consequences
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Eustress vs Distress
+    children:
+    - label: Eustress Enhances Performance
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Distress Exceeds Coping
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Both Activate HPA Axis
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Outcome Depends on Duration
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Allostatic Load
+    children:
+    - label: Cumulative Stress Burden
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Physical Psychological Environmental
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Early Life Adversity Impact
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Prenatal DNA Methylation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: topic
+    linked_slug: hpa-axis-dysregulation
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: Dysfunctional Patterns
+  children:
+  - label: High AM Cortisol
+    children:
+    - label: Elevated CAR Preclinical Sign
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Hyperactive HPA Response
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Associated With High BMI
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Older Age Smoking Link
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Type D Personality Correlation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: High PM Cortisol
+    children:
+    - label: Primary Sleep Disruption
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Insomnia Easy Waking
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Reverse Pattern Variant
+      children:
+      - label: Unhappy Relationships
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Psychosocial Correlates
+      children:
+      - label: Low Socioeconomic Status
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Low Social Support
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Elevated Midday Cortisol
+    children:
+    - label: HPA Regulatory Dysfunction
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Chronic Stress Earlier Stage
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Depressive Symptoms Linked
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Anxiety Caregiver Stress
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Episodic vs Sustained Key
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Low Flattened Cortisol
+    children:
+    - label: Not An ICD Diagnosis
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Prefer Term HPA Dysregulation
+      children:
+      - label: Coronary Calcification
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Consequences
+      children:
+      - label: Cancer Prognosis Marker
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: PTSD Association
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Low Flat No Variation
+    children:
+    - label: Rule Out Addisons First
+      children:
+      - label: Adverse Childhood Link
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Rule Out Pituitary Pathology
+      children:
+      - label: Infections Cancer
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Rule Out Organic Causes
+      children:
+      - label: Hemorrhage Infarction
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: Systemic Connections
+  children:
+  - label: Metabolic
+    children:
+    - label: Insulin Resistance
+      children:
+      - label: Drug Induced
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: topic
+      linked_slug: blood-sugar-dysfunction
+      notes: ''
+    - label: Elevated Triglycerides
+      children: []
+      linked_kind: symptom
+      linked_slug: elevated-triglycerides
+      notes: ''
+    - label: Central Weight Gain
+      children: []
+      linked_kind: symptom
+      linked_slug: weight-gain
+      notes: ''
+    - label: Blood Sugar Instability
+      children: []
+      linked_kind: mechanism
+      linked_slug: insulin-resistance
+      notes: ''
+    - label: Hypoglycemia Low Cortisol
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Thyroid
+    children:
+    - label: TSH Suppressed
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: T4 to T3 Impaired
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Reverse T3 Elevated
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Thyroid Receptor Resistance
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Autoimmune Risk Increased
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: topic
+    linked_slug: thyroid
+    notes: ''
+  - label: Immune System
+    children:
+    - label: Acute Anti-Inflammatory
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Chronic Pro-Inflammatory
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: GCR Resistance Mechanism
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: NK Cell Activity Reduced
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Infection Susceptibility
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Gut Health
+    children:
+    - label: IBS HPA Axis Link
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Vagal Tone Reduced
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Gut Permeability Increased
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Digestion Absorption Poor
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Microbiome Disrupted
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: topic
+    linked_slug: gut-dysfunction
+    notes: ''
+  - label: Sex Hormones
+    children:
+    - label: Pregnenolone Steal Concept
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Low Progesterone Estrogen
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Low Testosterone DHEA
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: PCOS Pattern Link
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Early Perimenopause Risk
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Brain & Mood
+    children:
+    - label: Brain Fog Memory Loss
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Depression Anxiety
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: PTSD Cortisol Pattern
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Hippocampal Damage Risk
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Dementia Alzheimer Link
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Cardiovascular
+    children:
+    - label: Coronary Calcification
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Hypertension
+      children: []
+      linked_kind: topic
+      linked_slug: hypertension
+      notes: ''
+    - label: Atherosclerosis Risk
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: All Cause Mortality
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: Diagnosis
+  children:
+  - label: Why Single Serum Fails
+    children:
+    - label: Snapshot of Moving Target
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Misses Diurnal Pattern
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Pattern Is The Pathology
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: T4 64-155 nmol Accepted
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Whitehall II Study Evidence
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Thyroid Cortisol Paradox
+    children:
+    - label: Cortisol 165-635 nmol Ignored
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: TSH Stable Single Draw Works
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Cortisol Fluctuates Single Fails
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Logistical Barrier Not Scientific
+      children:
+      - label: Waking
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Optimal Testing
+    children:
+    - label: 4-Point Salivary Cortisol
+      children:
+      - label: 30 Min Post Waking
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Noon
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Evening
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Midnight
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: DUTCH Test
+      children:
+      - label: Free Cortisol Pattern
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Metabolized Cortisol THF THE
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Total DHEA Production
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Sex Hormone Metabolites
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Blood Biomarkers High Cortisol
+    children:
+    - label: Elevated Fasting Glucose
+      children:
+      - label: Estrogen Phase 1 Ratios
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Elevated BUN Catabolism
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Elevated Triglycerides
+      children: []
+      linked_kind: symptom
+      linked_slug: elevated-triglycerides
+      notes: ''
+    - label: Elevated Sodium
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Low Potassium
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Low DHEAS
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Blood Biomarkers Low Cortisol
+    children:
+    - label: Low AM PM Cortisol
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Low DHEAS
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Low Sodium Potassium Ratio
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Elevated Potassium
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Evidence Base
+    children:
+    - label: Diet
+      children:
+      - label: Whole Unprocessed Foods
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Good Protein Omega 3 Fiber
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Avoid Caffeine Refined Carbs
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Avoid Prolonged Fasting
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 80 Studies Meta-Analysis
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 36823 Patients Adam 2017
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 10 of 12 Outcomes Predicted
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Flatter Slope Worse Health
+      children:
+      - label: Frequent Regular Meals
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: Treatment
+  children:
+  - label: Lifestyle
+    children:
+    - label: Exercise
+      children:
+      - label: Walking Cycling Swimming
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: 20-30 Min Low Intensity
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Yoga Tai Chi Qigong
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Avoid Overtraining
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: 3-4 Sessions Weekly
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Sleep
+      children:
+      - label: Consistent Sleep Schedule
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Morning Sunlight 10-15 Min
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Dark Cool Quiet Room
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: No Blue Light Before Bed
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Breathing Meditation Routine
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: topic
+      linked_slug: insomnia
+      notes: ''
+    - label: Stress Reduction
+      children:
+      - label: Box Breathing 4-7-8
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Music Therapy
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Social Support Expansion
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Nature Exposure Rest Breaks
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: topic
+      linked_slug: stress-management
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Nutritional Supplements
+    children:
+    - label: Emotional Healing
+      children:
+      - label: NLP Brain Retraining
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: EFT Emotion Release
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: EMDR Somatic Therapy
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Counselling
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Spirituality
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Multivitamin Multimineral
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Foundation For All Stages
+      children:
+      - label: Vitamin C 1-2g
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Magnesium 400-600mg
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Omega 3 1-3g EPA DHA
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Zinc 20-50mg
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Selenium
+        children: []
+        linked_kind: supplement
+        linked_slug: selenium
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: B Complex Cofactors
+      children:
+      - label: Ashwagandha 2-4g
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: B5 Pantothenic 1000-1500mg
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: B6 P5P 50-100mg
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Biotin 1000mcg
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Folate MTHF 400-800mcg
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Vitamin D
+        children: []
+        linked_kind: supplement
+        linked_slug: vitamin-d
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Botanicals By Stage
+    children:
+    - label: Stage 1 Alarm
+      children:
+      - label: L-Theanine 200-1200mg
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: 5-HTP 100-200mg HS
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Passion Flower 1g TID
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Valerian Root 100-200mg
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Schisandra 100mg BID
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Rehmannia 400-800mg
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Polygala 500-1000mg
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Stage 2 Resistance
+      children:
+      - label: Ashwagandha 2-4g
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Rhodiola 200-600mg
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Cordyceps 1g BID
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Siberian Ginseng 500mg BID
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: St Johns Wort 300mg TID
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Phosphatidylserine 300-800mg
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Stage 3 Exhaustion
+      children:
+      - label: Ashwagandha 2-4g
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Licorice 100-200mg BID
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Rehmannia 400-800mg
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Cordyceps 1g BID
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Asian Ginseng 200-400mg
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Hormone Replacement
+    children:
+    - label: DHEA
+      children:
+      - label: Females 5-25mg BID
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Males 10-25mg BID
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Increase Dietary Sodium
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Pregnenolone 10-50mg BID
+      children:
+      - label: 5-10mg AM On Rising
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Oral Hydrocortisone
+      children:
+      - label: Add 2.5-5mg At Noon
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Max 20mg Per Day
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Rule Out Addisons First
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Physician Supervision Required
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Rule Out Serious Disease
+    children:
+    - label: Cushings Syndrome
+      children:
+      - label: Prolonged Steroid Use
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Pituitary Tumor
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Adrenal Tumor
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Ectopic ACTH Syndrome
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Addisons Disease
+      children:
+      - label: Autoimmune Most Common
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: TB HIV Fungal Infections
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Cancer Adrenal Bleeding
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: ACTH Stimulation Test
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Secondary Insufficiency
+      children:
+      - label: Overtraining Athletes
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Pituitary Pathology
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Steroid Withdrawal
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+sources:
+- id: vitaone-mind-map-tool
+  quote: 'Imported from Vitaone Education Tools: ''Adrenal Dysfunction & HPA Axis'''
+  location: tools.vitaone.in/mind-maps
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

@@ -1,0 +1,36 @@
+slug: autoimmune-thyroid-attack
+display_name: Autoimmune Thyroid Attack
+aliases:
+- TPO antibody production
+- anti-thyroid antibody attack
+- thyroid autoimmunity
+category: immune
+summary: The immune system produces antibodies (anti-TPO and anti-Tg) that target
+  thyroid peroxidase and thyroglobulin, causing chronic thyroid inflammation and gradual
+  destruction of thyroid tissue, ultimately reducing hormone output.
+upstream_drivers:
+- leaky-gut
+- hpa-axis-dysregulation
+- gluten-sensitivity
+- environmental-toxin-exposure
+downstream_effects:
+- reduced-thyroid-hormone-production
+- hypothyroidism
+- elevated-tsh
+related_mechanisms:
+- thyroid-hormone-conversion
+- leaky-gut
+linked_to_topics:
+- hashimotos-hypothyroidism
+- hypothyroidism
+evidence_tier: strong
+sources:
+- id: vitaone-thyroid-toolkit
+  location: Understanding Hashimoto's Hypothyroidism
+  quote: In Hashimoto's disease, the immune system produces antibodies that attack
+    the thyroid gland, specifically targeting thyroid peroxidase (TPO) and thyroglobulin
+    (Tg), which are essential for thyroid hormone production.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,25 @@
+slug: slow-wound-healing
+display_name: Slow Wound Healing
+aliases:
+- delayed healing
+- wounds that won't heal
+- poor wound healing
+category: skin
+severity: concerning
+description: Impaired skin repair due to neutrophil dysfunction under hyperglycaemia
+  and reduced microcirculation from AGE-related vascular changes.
+when_to_refer: Refer if chronic wounds present; evaluate for diabetes complications.
+linked_to_topics:
+- prediabetes
+- type-2-diabetes
+linked_to_mechanisms:
+- advanced-glycation-end-products
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 4.2.3 — Prediabetes
+  quote: Blurry vision, frequent urination, persistent fatigue, slower wound healing,
+    abdominal obesity, recurrent skin infections.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

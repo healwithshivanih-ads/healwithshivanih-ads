@@ -1,0 +1,39 @@
+slug: psyllium
+display_name: Psyllium Husk
+category: other
+forms_available:
+- powder
+- capsule
+typical_dose_range:
+  powder:
+    min: 5
+    max: 15
+    unit: g
+  capsule:
+    min: 3
+    max: 6
+    unit: g
+timing_options:
+- with_breakfast
+- with_dinner
+- bedtime
+take_with_food: optional
+linked_to_topics:
+- dyslipidemia
+linked_to_claims:
+- fiber-psyllium-glucomannan-lowers-ldl-tg
+notes_for_coach: Take with a large glass of water. Must be taken well away from medications
+  (at least 1–2 hours) as it can reduce drug absorption. FDA-approved health claim
+  for cholesterol reduction.
+notes_for_client: Psyllium husk is a soluble fiber that helps lower LDL cholesterol
+  and triglycerides. Mix it in water or smoothies — always take with plenty of fluids.
+evidence_tier: strong
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 5
+  quote: 'Fiber (psyllium, glucomannan): ↓LDL, ↓TG.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

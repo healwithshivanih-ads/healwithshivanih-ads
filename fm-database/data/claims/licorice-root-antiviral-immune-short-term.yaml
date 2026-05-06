@@ -1,0 +1,31 @@
+slug: licorice-root-antiviral-immune-short-term
+statement: Licorice root (glycyrrhizin) supports immune function, reduces viral growth,
+  and has documented antiviral activity including against SARS-associated coronavirus.
+evidence_tier: plausible_emerging
+rationale: Cinatl et al. (Lancet 2003) documents glycyrrhizin activity against SARS
+  coronavirus. Antiviral and TCM evidence base exists. However, significant safety
+  risks (hypertension, hypokalemia) limit use to short-term (<4 weeks) under supervision.
+coaching_translation: Licorice root has traditional and emerging research support
+  for immune and antiviral effects, but it must only be used short-term and under
+  a clinician's care.
+out_of_scope_notes: Strictly confirm_with_clinician. Risk of hypertension, hypokalemia,
+  and hypertension encephalopathy at doses noted in references. Short-term use only
+  (<4 weeks).
+linked_to_topics:
+- immune-support
+linked_to_supplements:
+- licorice-root
+caveats:
+- Must be used <4 weeks only under clinician supervision.
+- Risk of hypertension, hypokalemia, and encephalopathy with excess use.
+- Standardized to glycyrrhizin content required.
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Licorice is commonly found in Traditional Chinese Medicine (TCM) formulations
+    and supports immune system function and reduces viral growth.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

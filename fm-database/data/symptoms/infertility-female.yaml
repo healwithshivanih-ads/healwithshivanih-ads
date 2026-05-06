@@ -1,0 +1,28 @@
+slug: infertility-female
+display_name: Female Infertility / Ovulatory Dysfunction
+aliases:
+- anovulatory infertility
+- difficulty conceiving
+- ovulation problems
+- corpus luteum deficiency
+category: hormonal
+severity: concerning
+description: Inability to conceive often linked to anovulation in PCOS, luteal phase
+  deficiency, or thyroid dysfunction.
+when_to_refer: Refer to reproductive endocrinology after 6–12 months of trying depending
+  on age.
+linked_to_topics:
+- pcos
+- low-progesterone
+linked_to_mechanisms:
+- insulin-resistance
+- low-progesterone
+- hpa-axis-dysregulation
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: How to Balance Progesterone Hormone — Understanding Progesterone Dysregulation
+  quote: Infertility, spotting before periods, low basal body temp.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

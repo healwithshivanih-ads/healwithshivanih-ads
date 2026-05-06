@@ -1,0 +1,33 @@
+slug: pms-pmdd-history-predicts-rockier-perimenopause
+statement: Women with a history of significant PMS or PMDD are likely to experience
+  more pronounced mood disruption during the perimenopause and menopause transition
+  due to heightened sensitivity to hormonal fluctuations.
+evidence_tier: fm_specific_thin
+rationale: This is a clinically observed pattern noted by the speaker and colleagues
+  (Dr. Jolene Brighton cited anecdotally). It is biologically plausible given shared
+  hormonal sensitivity mechanisms, but is stated as observational/anecdotal without
+  supporting RCT data.
+coaching_translation: If you had strong PMS or PMDD earlier in life, perimenopause
+  mood changes may be more intense — this is a known pattern, not a personal failing.
+caveats:
+- Explicitly stated as anecdotal/observational by the speaker.
+- No peer-reviewed citation provided.
+- Single-expert source.
+linked_to_topics:
+- perimenopause
+- anxiety
+- gut-hormone-axis
+out_of_scope_notes: Management of PMDD or severe perimenopausal mood disorders (antidepressants,
+  HRT) is clinician scope.
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-5
+  location: Perimenopause and Mood section
+  quote: Women that have bad PMS, women that have PMDD... probably are gonna have
+    a rockier course through perimenopause because they are just more sensitive to
+    hormonal fluctuations.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

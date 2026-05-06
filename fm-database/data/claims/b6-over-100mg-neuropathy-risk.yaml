@@ -1,0 +1,24 @@
+slug: b6-over-100mg-neuropathy-risk
+statement: Vitamin B6 supplementation above 100 mg/day carries a risk of peripheral
+  neuropathy.
+evidence_tier: strong
+rationale: This is well-established; pyridoxine neurotoxicity at high doses is documented
+  in the literature and recognized by regulatory agencies (EU, TGA).
+coaching_translation: Remind clients to stay under 100 mg/day for B6 unless supervised
+  by a clinician.
+out_of_scope_notes: Clinician should supervise any dose above 50 mg/day.
+caveats:
+- Source is a synthesis document, but the underlying toxicity data is consensus-established.
+linked_to_topics:
+- vitamin-b-complex-deficiency
+linked_to_supplements:
+- pyridoxal-5-phosphate-p5p
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin B6 (Pyridoxine)
+  quote: 'Safety: Keep under 100 mg/day; higher doses risk neuropathy.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

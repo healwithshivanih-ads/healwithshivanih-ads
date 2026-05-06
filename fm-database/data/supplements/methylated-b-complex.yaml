@@ -1,0 +1,32 @@
+slug: methylated-b-complex
+display_name: Methylated B Vitamins
+category: vitamin
+forms_available:
+- capsule
+- tablet
+timing_options:
+- with_breakfast
+- morning
+take_with_food: required
+linked_to_topics:
+- estrogen-metabolism
+linked_to_claims:
+- melatonin-nac-methylated-b-vitamins-support-estrogen
+- genetic-variants-comt-cyp-impact-estrogen
+notes_for_coach: Methylated B vitamins support COMT enzyme activity, which is critical
+  for Phase II methylation of catechol estrogens (4-OHE1 → 4-MeOE1). Particularly
+  relevant for clients with COMT variants. Clinician to guide specific form and dose.
+notes_for_client: Methylated B vitamins help your body process and clear estrogen
+  safely, especially if you have certain genetic variants.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-sex-hormones-toolkit
+  location: Estrogen Metabolism — Page 02
+  quote: N-acetyl-cystine, & methylated B vitamins may support healthy estrogen metabolism
+    as well.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

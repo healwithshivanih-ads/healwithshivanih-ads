@@ -1,0 +1,37 @@
+slug: burnout
+display_name: Burnout
+aliases:
+- adrenal fatigue
+- chronic fatigue
+- HPA exhaustion
+- exhaustion syndrome
+- professional exhaustion
+- compassion fatigue
+- work exhaustion
+- depleted
+category: constitutional
+severity: concerning
+description: A state of chronic occupational and personal depletion characterised
+  by disengagement, reduced efficacy, and emotional exhaustion, assessed through the
+  professional and social domains of the Self-Care Questionnaire.
+when_to_refer: Refer to mental health clinician or occupational health if burnout
+  is severe or impairing function.
+linked_to_topics:
+- adrenal-dysfunction
+- hpa-axis-dysregulation
+- self-care
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- pregnenolone-steal
+sources:
+- id: vitaone-adrenal-cheatsheet
+  location: The Anti-Stress Hormones — DHEA row (p.22)
+  quote: Low energy, depression, burnout, low libido, low immunity, premature aging.
+- id: vitaone-health-coaching-toolkit
+  location: Self-Care Questionnaire
+  quote: Research shows that people who take time to recharge and restore are more
+    creative, happier, and more successful.
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,31 @@
+slug: regular-bowel-movements-support-estrogen-clearance
+statement: Regular bowel movements are important for adequate estrogen clearance,
+  as constipation allows more time for deconjugation and reabsorption of estrogens
+  in the gut.
+evidence_tier: plausible_emerging
+rationale: The mechanism is physiologically plausible — transit time affects estrogen
+  reabsorption. However, the direct clinical claim that regular (ideally daily) bowel
+  movements are required for adequate estrogen clearance in women is expert opinion
+  not confirmed by RCT. Single-expert source.
+coaching_translation: If you're not having regular bowel movements, estrogen that
+  should be leaving the body may be getting reabsorbed. Hydration and fiber are first-line
+  supports.
+caveats:
+- '''Daily'' is not a universal standard; sudden changes in bowel habit are more clinically
+  significant than absolute frequency.'
+- Single-expert source.
+linked_to_topics:
+- estrobolome
+- perimenopause
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-3
+  location: Beta-Glucuronidase / Bowel Movement Section
+  quote: This is why daily bowel movements, I think are really important... we want
+    to be making sure we're having regular bowel movements.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

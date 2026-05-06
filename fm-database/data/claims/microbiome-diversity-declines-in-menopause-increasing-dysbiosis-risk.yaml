@@ -1,0 +1,31 @@
+slug: microbiome-diversity-declines-in-menopause-increasing-dysbiosis-risk
+statement: Microbial diversity in the gut decreases during menopause transition, increasing
+  susceptibility to dysbiosis, opportunistic infections, altered fermentation, and
+  reduced short-chain fatty acid production.
+evidence_tier: plausible_emerging
+rationale: Single-expert source. The menopause-microbiome-diversity link is a growing
+  area of research (estrobolome, menopausal microbiome studies) but consensus-level
+  evidence is not yet established.
+coaching_translation: Menopause shifts your gut ecology — beneficial bacteria decline
+  and 'weeds' can take over. Supporting diversity through varied plant foods and fermented
+  foods becomes especially important during this transition.
+caveats:
+- Single-expert source; emerging but not yet consensus-level evidence.
+- Source is expert_consensus/moderate quality.
+linked_to_topics:
+- microbiome
+- dysbiosis
+- perimenopause
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-6
+  location: Session 6 — Main Transcript, Microbiome Section
+  quote: What starts to change is we get reduced diversity... We start having more
+    issues with opportunistic infection... We get changes in fermentation patterns,
+    which can show up as a reduction in short chain fatty acids.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

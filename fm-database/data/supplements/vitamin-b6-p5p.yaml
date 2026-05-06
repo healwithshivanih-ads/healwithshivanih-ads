@@ -1,0 +1,58 @@
+slug: vitamin-b6-p5p
+display_name: Vitamin B6 (P5P — Active Form)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 25
+    max: 100
+    unit: mg
+  tablet:
+    min: 15
+    max: 50
+    unit: mg
+timing_options:
+- morning
+- with_breakfast
+take_with_food: required
+notes_for_coach: P5P is the active form of B6, cofactor for serotonin, dopamine, and
+  progesterone synthesis. Important for PMS, PCOS, and neurotransmitter support. High
+  doses (>200mg/day) can cause peripheral neuropathy — verify with clinician.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- thyroid
+- estrogen-dominance
+- low-progesterone
+- pcos
+- adrenal-dysfunction
+- anxiety
+- insomnia
+linked_to_mechanisms: []
+linked_to_claims:
+- selenium-supports-t4-t3-conversion
+- b-vitamins-critical-for-phase-ii-estrogen-methylation
+- stress-disrupts-hpo-axis-pcos
+- serotonin-gut-microbiome-mood-link
+notes_for_client: Active B6 supports production of calming brain chemicals like serotonin,
+  and helps balance hormones related to your cycle.
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Vitamin B6 (Pyridoxal-5-Phosphate) - Mood, hormone, B6 metabolism - 15–50
+    mg/day - Homocysteine defence formula
+- id: vitaone-thyroid-cheatsheet
+  location: Clinical Action Steps — Support T4→T3 Conversion
+  quote: Selenium (100–200 µg/day), Zinc Glycinate (20–30 mg/day), Iron, Active B2/B6/B12
+- id: vitaone-sex-hormones-cheatsheet
+  location: Progesterone Is Anti-Inflammatory — Supplement Approach
+  quote: Vitamin B6 (P5P form) → Essential for progesterone synthesis.
+- id: vitaone-adrenal-cheatsheet
+  location: 50 Hormones Cheatsheet — Progesterone row (p.4)
+  quote: '↓ PMS, infertility, anxiety, irregular cycles. Solution: Vit B6, Mg, Vitex,
+    stress reduction.'
+version: 4
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

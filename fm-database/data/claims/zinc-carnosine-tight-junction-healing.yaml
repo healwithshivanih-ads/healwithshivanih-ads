@@ -1,0 +1,28 @@
+slug: zinc-carnosine-tight-junction-healing
+statement: Zinc carnosine supports tight junction healing and reduces mucosal inflammation,
+  with clinical use in histamine-related and inflammatory gut conditions.
+evidence_tier: plausible_emerging
+rationale: Zinc carnosine has clinical trial data for H. pylori and gastric mucosal
+  healing. Its role in tight junction repair has some mechanistic support. Source
+  is synthesis but mechanism is biologically plausible.
+coaching_translation: Zinc carnosine is a gut-specific form of zinc that helps strengthen
+  the gut lining — not just any zinc supplement does this.
+caveats:
+- Therapeutic doses (37.5mg 2x/day for H. pylori) require clinician guidance. Source
+  is educational synthesis.
+linked_to_topics:
+- leaky-gut
+- h-pylori-infection
+- gerd
+linked_to_supplements:
+- zinc-carnosine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Leaky Gut & Inflammation — Supplement Strategy
+  quote: Zinc carnosine — Tight junction healing — Histamine + inflammation
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

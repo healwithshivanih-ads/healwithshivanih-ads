@@ -1,0 +1,82 @@
+slug: berberine
+display_name: Berberine
+category: herb
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 1000
+    unit: mg
+  tablet:
+    min: 500
+    max: 1500
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- pcos
+- estrogen-dominance
+- insulin-resistance
+- dyslipidemia
+- nafld
+- liver-detoxification
+- candida-overgrowth
+- sibo
+- gut-dysbiosis
+- h-pylori-infection
+- type-2-diabetes
+- blood-sugar-dysfunction
+linked_to_claims:
+- berberine-metformin-like-pcos-insulin
+- berberine-ampk-natural-metformin
+- inositol-glucose-uptake-pcos
+- berberine-improves-insulin-resistance-and-tg
+- berberine-insulin-sensitivity-nafld
+- berberine-antimicrobial-blood-sugar
+- berberine-ampk-activation-comparable-to-metformin-mild-t2dm
+notes_for_coach: 500 mg twice daily with meals. AMPK activator — do not use alongside
+  metformin or other hypoglycaemic agents without clinician oversight. May cause GI
+  discomfort initially.
+notes_for_client: Berberine is a plant extract that helps your cells use glucose more
+  efficiently. Because it can lower blood sugar, it's important to use it with your
+  doctor's knowledge if you take any diabetes medication.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-practice-guide
+  location: Seven Clinical Focus Areas > 2. Insulin Resistance > Coaching interventions
+  quote: 'Specific supplements: Inositol (myo-inositol and d-chiro-inositol), chromium,
+    berberine'
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Berberine - Blood sugar, gut antimicrobial - 500 mg 2–2x/day - Before meals
+- id: vitaone-sex-hormones-cheatsheet
+  location: PCOS Supplement Cheatsheet
+  quote: Berberine → metformin-like effect, also gut-modulating; 300–500 mg × 2–3/day;
+    avoid in pregnancy.
+- id: vitaone-blood-sugar-cheatsheet
+  location: Insulin Resistance Cheatsheet — Therapeutic Considerations
+  quote: Berberine = "Natural Metformin" – Supports AMPK activation
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 5
+  quote: 'Berberine: Improves insulin resistance + TG.'
+- id: vitaone-liver-detox-cheatsheet
+  location: Liver Disease Cheatsheet — NAFLD
+  quote: Omega-3, Vitamin E, Berberine, NAC
+- id: vitaone-gut-cheatsheet
+  location: Candida Infection — Supplement Stack
+  quote: Berberine 300–500 mg, 2–3x/day — Antimicrobial, balances gut microbiota,
+    supports blood sugar
+- id: vitaone-blood-sugar-ebook
+  location: Section 7.2 — Targeted Supplementation
+  quote: 'Berberine: AMPK activation; comparable to metformin in mild T2DM. 500 mg
+    twice a day.'
+version: 8
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

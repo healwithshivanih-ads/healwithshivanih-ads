@@ -1,0 +1,37 @@
+slug: mold-mycotoxin-exposure
+display_name: Mold & Mycotoxin Exposure
+aliases:
+- mycotoxin illness
+- mold sensitivity
+- aflatoxin exposure
+summary: Molds produce mycotoxins (e.g., aflatoxin) that can contaminate common foods
+  (grains, nuts, dried fruit, aged cheese, processed meats) and cause symptoms ranging
+  from mild (itching, fatigue, watery eyes) to severe. Reducing dietary mold exposure
+  is a component of detoxification protocols.
+common_symptoms:
+- fatigue
+- itching
+- watery-eyes
+- breathing-difficulty
+red_flags:
+- severe respiratory symptoms
+- immunocompromised individuals with significant mold exposure
+related_topics:
+- toxic-body-burden
+- liver-detoxification
+- elimination-diet
+key_mechanisms:
+- mycotoxin-immune-activation
+coaching_scope_notes: Coaches can educate on high-mold foods to avoid and food storage
+  practices to reduce mycotoxin exposure.
+evidence_tier: plausible_emerging
+clinician_scope_notes: ''
+sources:
+- id: vitaone-liver-detox-toolkit
+  location: Foods Rich in Mold Protein Allergens
+  quote: One such toxin, aflatoxin, has been shown to cause cancer and is most commonly
+    found in peanuts and corn.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

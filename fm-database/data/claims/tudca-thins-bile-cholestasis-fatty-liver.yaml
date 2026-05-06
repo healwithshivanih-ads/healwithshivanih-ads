@@ -1,0 +1,26 @@
+slug: tudca-thins-bile-cholestasis-fatty-liver
+statement: TUDCA (tauroursodeoxycholic acid) thins bile and reduces toxicity, with
+  clinical use in sludge, cholestasis, and fatty liver.
+evidence_tier: plausible_emerging
+rationale: TUDCA has some human clinical trial evidence for cholestatic liver disease
+  and bile flow improvement. Use in fatty liver and gut contexts is plausible_emerging.
+coaching_translation: TUDCA is a bile acid supplement that helps thin sluggish bile
+  and support liver health — particularly useful when bile flow is impaired.
+out_of_scope_notes: Clinical use in cholestasis and fatty liver requires clinician
+  oversight and monitoring of liver enzymes.
+caveats:
+- Therapeutic use requires clinician supervision, especially in cholestasis or liver
+  disease. Source is educational synthesis.
+linked_to_topics:
+- sluggish-bile-flow
+linked_to_supplements:
+- tudca
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Sluggish Bile Flow — Supplements That Improve Bile Flow
+  quote: TUDCA — Thins bile + reduces toxicity — Sludge, cholestasis, fatty liver
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

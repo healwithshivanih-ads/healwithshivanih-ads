@@ -1,0 +1,31 @@
+slug: vitex-supports-luteal-progesterone-pms
+statement: Vitex agnus-castus (chasteberry) supports luteal phase progesterone production
+  and is beneficial for PMS and irregular cycles, but should be avoided in high LH
+  states such as PCOS.
+evidence_tier: plausible_emerging
+rationale: Vitex acts on pituitary dopamine receptors to reduce prolactin and support
+  LH pulsatility. Some RCT evidence for PMS symptom reduction. Contraindicated in
+  high-LH PCOS as it may worsen LH dominance.
+coaching_translation: Chasteberry can help rebalance the hormonal signals that support
+  the second half of your cycle — but it's not right for everyone, especially those
+  with PCOS.
+out_of_scope_notes: Determining LH status and appropriateness of Vitex requires clinician
+  assessment.
+caveats:
+- Avoid in high LH states — common in PCOS
+- Not for use in pregnancy
+- Source is expert synthesis
+linked_to_topics:
+- low-progesterone
+- perimenopause
+- pcos
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: Cautions — Practitioner Protocol Guidelines
+  quote: Avoid Vitex in high LH states (common in PCOS).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

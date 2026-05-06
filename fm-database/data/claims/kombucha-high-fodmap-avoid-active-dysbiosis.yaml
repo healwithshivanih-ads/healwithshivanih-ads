@@ -1,0 +1,28 @@
+slug: kombucha-high-fodmap-avoid-active-dysbiosis
+statement: Kombucha (unpasteurised) is high-FODMAP and should be avoided during active
+  dysbiosis or SIBO treatment.
+evidence_tier: plausible_emerging
+rationale: Kombucha contains residual sugars and live bacterial cultures that may
+  exacerbate fermentation in a dysbiotic gut. Classification as high-FODMAP is consistent
+  with clinical guidance; however formal FODMAP testing data is limited.
+coaching_translation: Kombucha sounds healthy but it can actually feed the wrong bacteria
+  when your gut is already out of balance. Hold off during your elimination phase
+  and reintroduce later.
+caveats:
+- Pasteurised or low-sugar commercial kombucha may have a different FODMAP profile;
+  always check labels.
+linked_to_topics:
+- low-fodmap-diet
+- sibo
+- gut-dysbiosis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-elimination-diet-cheatsheet
+  location: FODMAP Food Cheatsheet — Beverages row
+  quote: Kombucha is high FODMAP - avoid during active dysbiosis.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

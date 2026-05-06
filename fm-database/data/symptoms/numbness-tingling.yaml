@@ -1,0 +1,30 @@
+slug: numbness-tingling
+display_name: Numbness / Tingling (Peripheral)
+aliases:
+- pins and needles
+- neuropathy symptoms
+- peripheral numbness
+- tingling hands feet
+category: neurological
+severity: concerning
+description: Sensations of numbness, tingling, or prickling, often in the extremities.
+  Associated with B12 deficiency, diabetic neuropathy, and CoQ10/ALA depletion in
+  neurological conditions.
+when_to_refer: Refer if persistent, progressive, or associated with known diabetes,
+  B12 deficiency labs, or neurological symptoms.
+linked_to_topics:
+- vitamin-b12-deficiency
+- mitochondrial-health-nutrition
+linked_to_mechanisms:
+- methylation-cycle
+- mitochondrial-atp-production
+sources:
+- id: vitaone-nutrition-toolkit
+  location: Nutrients for Mitochondrial Health
+  quote: Supplementing with CoQ10 has been shown to improve fatigue and depression
+    in patients with multiple sclerosis, as well as improve symptoms of diabetic neuropathy
+    and Parkinson's disease.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

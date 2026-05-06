@@ -1,0 +1,31 @@
+slug: stress-worsens-hot-flashes-and-metabolic-outcomes
+statement: Research supports that chronic stress worsens hot flash frequency and severity,
+  and also worsens metabolic outcomes in perimenopausal and menopausal women.
+evidence_tier: plausible_emerging
+rationale: There is observational and some interventional evidence linking psychological
+  stress to increased vasomotor symptom burden. The metabolic effects of chronic stress
+  (via cortisol) in midlife women are biologically plausible. However, the speaker's
+  reference to 'the research' is non-specific and this is an expert-synthesis source.
+coaching_translation: Stress doesn't just affect your mood — it directly makes hot
+  flashes worse and makes it harder to maintain a healthy metabolism in perimenopause.
+  Managing stress is as important as diet and exercise at this stage.
+caveats:
+- Source is expert course content, not primary literature.
+- Specific studies are not cited.
+- Effect sizes vary across study populations.
+linked_to_topics:
+- perimenopause
+- gut-hormone-axis
+- microbiome
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-mondays
+  location: 'Session 1: Microbiome Foundations and Hormone Shifts'
+  quote: we know based on research that stress worsens hot flashes. And I think this
+    is important, is if we look at the research, hot flashes are not benign.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

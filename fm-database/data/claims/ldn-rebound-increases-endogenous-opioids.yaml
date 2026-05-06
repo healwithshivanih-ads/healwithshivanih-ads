@@ -1,0 +1,29 @@
+slug: ldn-rebound-increases-endogenous-opioids
+statement: Low-dose naltrexone transiently blocks opioid receptors (4–6 hours), triggering
+  a compensatory rebound that elevates endogenous opioid production and receptor sensitivity
+  for 18–20 hours.
+evidence_tier: plausible_emerging
+rationale: Mechanism described by Penn State researchers and cited in source; biological
+  plausibility is strong but large-scale RCTs are lacking.
+coaching_translation: LDN works like a 'reset button' for your body's natural pain-relief
+  system — a brief daily block causes your body to produce more of its own feel-good,
+  pain-relieving chemicals.
+caveats:
+- Source is a practitioner synthesis document, not primary literature. Mechanism is
+  plausible and cited in peer-reviewed work but no author/year/journal directly quoted.
+linked_to_topics:
+- low-dose-naltrexone
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-ldn-article
+  location: So, how does LDN work?
+  quote: Interference of opioid peptide–opioid receptor interactions for a short time
+    each day (from 4-6 hours) with LDN provided a subsequent window of time (18–20
+    hours) for the increased levels of endogenous opioids and opioid receptors to
+    elicit a robust functional response.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

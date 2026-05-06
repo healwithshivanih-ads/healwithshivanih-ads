@@ -1,0 +1,28 @@
+slug: hair-loss
+display_name: Hair Loss
+aliases:
+- androgenic alopecia
+- thinning hair
+- alopecia
+category: skin
+severity: common
+description: Hair thinning or loss in men and women, associated with excess DHT from
+  5-alpha reductase activity, or with low SHBG and elevated free androgens.
+when_to_refer: Refer if rapid or patchy hair loss, signs of autoimmune alopecia, or
+  concurrent hormonal disorder requiring lab evaluation.
+linked_to_topics:
+- testosterone-health
+- sex-hormone-binding-globulin
+linked_to_mechanisms:
+- five-alpha-reductase-conversion
+- shbg-hormone-binding
+sources:
+- id: vitaone-sex-hormones-toolkit
+  location: Sex Hormone Binding Globulin (SHBG) — Page 01
+  quote: When SHBG levels in the body are low... This can lead to increased free testosterone
+    and estrogen in the body, which can lead to symptoms like hair loss, acne, and
+    excess fluid retention.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

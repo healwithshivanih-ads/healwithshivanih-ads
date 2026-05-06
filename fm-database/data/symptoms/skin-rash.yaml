@@ -1,0 +1,39 @@
+slug: skin-rash
+display_name: Skin Rash / Skin Reactivity
+aliases:
+- skin rashes
+- skin issues
+- eczema-flare
+- itchy-skin
+- new-skin-rash
+- skin-eruptions
+- skin manifestations
+category: skin
+severity: common
+description: 'New-onset or worsening skin reactivity — eczema, urticaria, dermatitis
+
+  patterns. In FM lens, frequently a downstream marker of leaky gut and
+
+  immune reactivity (food triggers, dysbiosis, histamine intolerance).
+
+  '
+when_to_refer: 'Blistering or rapidly-spreading rash; mucosal involvement; fevers;
+
+  signs of cellulitis or systemic illness; suspected drug reaction.
+
+  '
+linked_to_topics:
+- microbiome
+- dysbiosis
+- autoimmune
+- inflammation
+linked_to_mechanisms:
+- leaky-gut
+- chronic-inflammation
+sources:
+- id: thurlow-microbiome-session-2
+  location: Session 2 — Food Sensitivities & Gut Permeability
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

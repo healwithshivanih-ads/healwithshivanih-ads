@@ -1,0 +1,59 @@
+slug: chromium
+display_name: Chromium
+category: mineral
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 200
+    max: 1000
+    unit: mcg
+  tablet:
+    min: 200
+    max: 400
+    unit: mcg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- pcos
+- insulin-resistance
+- blood-sugar-dysfunction
+linked_to_claims:
+- chromium-biotin-combo-may-lower-hba1c
+notes_for_coach: Evidence inconsistent. Contraindicated in kidney disease. Chromium
+  picolinate studied most (Martin et al. 2006, Diabetes Care). Chromium + biotin combination
+  studied for lipids and HbA1c (Albarracin et al. 2007). Always refer dosing to a
+  clinician.
+notes_for_client: Chromium is a trace mineral that may help support blood sugar control,
+  especially when combined with biotin. Not suitable if you have kidney problems —
+  check with your doctor first.
+evidence_tier: fm_specific_thin
+linked_to_mechanisms: []
+sources:
+- id: vitaone-practice-guide
+  location: Seven Clinical Focus Areas > 2. Insulin Resistance > Coaching interventions
+  quote: 'Specific supplements: Inositol (myo-inositol and d-chiro-inositol), chromium,
+    berberine'
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Chromium Picolinate - Blood sugar regulation - 200–400 mcg/day - With meals
+- id: vitaone-sex-hormones-cheatsheet
+  location: PCOS Supplement Cheatsheet
+  quote: 'Chromium Picolinate: Enhances glucose metabolism; Reduces cravings & insulin
+    spikes; 200–400 mcg/day; best with meals.'
+- id: vitaone-blood-sugar-cheatsheet
+  location: Insulin Resistance Cheatsheet — Nutrients to Support Insulin Sensitivity
+  quote: Magnesium  Chromium
+- id: vitaone-blood-sugar-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: Studies looking at the effect of chromium supplementation on insulin resistance
+    and glucose control are inconsistent, with a smaller number of studies showing
+    positive benefits, mainly in those who have diabetes.
+version: 5
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

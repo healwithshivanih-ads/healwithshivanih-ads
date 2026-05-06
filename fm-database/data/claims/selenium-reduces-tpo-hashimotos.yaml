@@ -1,0 +1,26 @@
+slug: selenium-reduces-tpo-hashimotos
+statement: Selenium at 200 mcg/day reduces TPO antibodies in Hashimoto's thyroiditis.
+evidence_tier: plausible_emerging
+rationale: Multiple small RCTs (including Toulis et al. 2010 Thyroid meta-analysis)
+  support selenium reducing TPO-Ab in Hashimoto's. Not yet mainstream standard of
+  care but with reasonable clinical evidence.
+coaching_translation: Selenium is an important mineral for thyroid immune health.
+  Two Brazil nuts a day provides approximately 200 mcg — an easy food-first approach.
+caveats:
+- Selenium >400 mcg/day is toxic — do not exceed.
+- Lab monitoring of TPO antibodies is clinician scope.
+- Source is educational synthesis.
+out_of_scope_notes: Ordering/interpreting TPO antibody labs is clinician scope.
+linked_to_topics:
+- autoimmune-disease
+linked_to_supplements:
+- selenium
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Autoimmune Disease Cheatsheet — Page 25
+  quote: Selenium (200 mcg/day) reduces TPO in Hashimoto's.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

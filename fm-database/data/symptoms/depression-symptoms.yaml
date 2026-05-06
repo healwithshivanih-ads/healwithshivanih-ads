@@ -1,0 +1,27 @@
+slug: depression-symptoms
+display_name: Depression / Low Mood
+aliases:
+- low mood
+- depressive symptoms
+- gut-related depression
+category: mood
+severity: common
+description: Depressive symptoms associated with altered gut microbiome and disrupted
+  gut-brain signaling, including reduced serotonin availability.
+when_to_refer: Refer to mental health professional for clinical depression.
+linked_to_topics:
+- gut-brain-axis
+- gut-microbiome
+linked_to_mechanisms:
+- gut-brain-signaling
+- gut-dysbiosis
+sources:
+- id: vitaone-gut-toolkit
+  location: 'Gut-Brain Axis: Nutrition''s Impact on Mental Health — Gut Health and
+    Mental Health: The Science'
+  quote: Studies show that individuals with mood disorders like anxiety and depression
+    often have altered gut microbiomes.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

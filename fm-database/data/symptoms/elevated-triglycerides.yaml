@@ -1,0 +1,31 @@
+slug: elevated-triglycerides
+display_name: Elevated Triglycerides
+aliases:
+- high TG
+- hypertriglyceridemia
+- high triglycerides
+category: cardiovascular
+severity: concerning
+description: Elevated blood triglyceride levels, a cardiometabolic risk marker that
+  may be improved by fasting and phytonutrient-rich dietary patterns.
+when_to_refer: Refer to clinician for lab interpretation and medication review if
+  triglycerides remain elevated despite dietary intervention.
+linked_to_topics:
+- dyslipidemia
+- cardiometabolic-health
+- intermittent-fasting
+linked_to_mechanisms:
+- insulin-resistance
+- chronic-inflammation
+- systemic-inflammation
+sources:
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 6
+  quote: TG > 500 mg/dL → Pancreatitis risk → Urgent action.
+- id: vitaone-cardiometabolic-toolkit
+  location: Intermittent Fasting — Improves/Decreases Table
+  quote: 'Intermittent fasting Decreases: Triglycerides.'
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

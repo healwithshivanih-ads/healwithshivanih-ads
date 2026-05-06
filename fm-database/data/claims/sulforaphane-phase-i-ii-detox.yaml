@@ -1,0 +1,28 @@
+slug: sulforaphane-phase-i-ii-detox
+statement: Cruciferous vegetables containing sulforaphane, indole-3-carbinol, and
+  DIM are potent activators of both Phase I and Phase II liver detox enzymes (GST,
+  CYP450), with clinical utility in estrogen dominance, acne, and fatty liver.
+evidence_tier: plausible_emerging
+rationale: Document explicitly names sulforaphane, I3C, and DIM as Phase I/II detox
+  activators. These mechanisms have reasonable mechanistic support. No specific RCT
+  cited.
+coaching_translation: Eating broccoli sprouts, kale, cabbage, and cauliflower activates
+  your liver's detox enzymes and supports hormone clearance.
+caveats:
+- Source is FM synthesis
+- I3C/DIM interactions with hormone-sensitive conditions — flag for clinician review
+linked_to_topics:
+- liver-detoxification
+- estrogen-dominance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Top Superfoods for Detoxification — Cruciferous Vegetables
+  quote: Contain sulforaphane, indole-3-carbinol, & DIM -powerful Phase I & II detox
+    activators.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

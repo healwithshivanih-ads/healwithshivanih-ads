@@ -1,0 +1,30 @@
+slug: curcumin-hemochromatosis-oxidative-stress
+statement: Curcumin and green tea extract help reduce oxidative stress in hemochromatosis,
+  where iron overload drives hepatic damage.
+evidence_tier: plausible_emerging
+rationale: Document lists curcumin and green tea extract as key supplements for hemochromatosis.
+  Phlebotomy is classified as medical intervention. Antioxidant mechanisms are biologically
+  plausible but source is FM synthesis.
+coaching_translation: Curcumin and green tea antioxidants may help protect the liver
+  from oxidative damage caused by iron overload.
+out_of_scope_notes: Phlebotomy and iron status monitoring are clinician scope. Coaches
+  should not advise on iron supplementation in this context.
+caveats:
+- Iron status monitoring strictly required — clinician scope
+- Green tea may impair iron absorption
+- Source is FM synthesis
+linked_to_topics:
+- liver-detoxification
+linked_to_supplements:
+- curcumin
+- green-tea-egcg
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Liver Disease Cheatsheet — Hemochromatosis
+  quote: Curcumin, Green tea extract, Phlebotomy (medical) — Reduce oxidative stress;
+    strict monitoring of iron status needed.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

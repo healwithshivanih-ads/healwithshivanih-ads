@@ -1,0 +1,25 @@
+slug: tg-hdl-ratio-insulin-sensitivity-marker
+statement: A Triglyceride:HDL ratio of 0.5–1.9 is a useful surrogate marker for checking
+  insulin sensitivity; higher values suggest worsening metabolic dysfunction.
+evidence_tier: plausible_emerging
+rationale: TG:HDL ratio correlates with insulin resistance and small dense LDL in
+  several observational studies. FM practitioners use it as a non-invasive proxy when
+  fasting insulin testing is unavailable. Not yet a consensus diagnostic standard.
+coaching_translation: Ask your doctor for a standard lipid panel — dividing your triglycerides
+  by your HDL gives a quick snapshot of how well your body handles blood sugar.
+caveats:
+- Association-based marker; not diagnostic on its own.
+- Source is expert consensus cheatsheet.
+linked_to_topics:
+- insulin-resistance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-blood-sugar-cheatsheet
+  location: Insulin Resistance Cheatsheet — Labs to Monitor
+  quote: 0.5 - 1.9 (Check for insulin sensitivity)
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

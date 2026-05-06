@@ -1,0 +1,23 @@
+slug: elevated-apob
+display_name: Elevated ApoB
+aliases:
+- high apolipoprotein B
+- high atherogenic particle count
+category: cardiovascular
+severity: concerning
+description: Elevated ApoB is a direct measure of atherogenic lipoprotein particle
+  number, considered a better predictor of CVD risk than LDL-C alone.
+when_to_refer: ApoB > 120 is a strong indication for clinical intervention.
+linked_to_topics:
+- dyslipidemia
+linked_to_mechanisms:
+- insulin-resistance
+- chronic-inflammation
+sources:
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 3
+  quote: ApoB — Direct measure of atherogenic particles — Better predictor than LDL-C.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

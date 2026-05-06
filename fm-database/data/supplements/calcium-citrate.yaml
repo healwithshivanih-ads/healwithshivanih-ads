@@ -1,0 +1,33 @@
+slug: calcium-citrate
+display_name: Calcium Citrate
+category: mineral
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  tablet:
+    min: 500
+    max: 1200
+    unit: mg
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- knee-pain
+notes_for_coach: Citrate form absorbed without stomach acid (preferred over carbonate
+  for older adults or PPI users). Always pair with vitamin D3 and K2. Hydroxyapatite
+  is a natural alternative that also provides phosphorus and other bone minerals.
+notes_for_client: Calcium citrate can be taken with or without food, unlike calcium
+  carbonate. Always pair with vitamin D and K2.
+evidence_tier: strong
+linked_to_mechanisms: []
+linked_to_claims: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Calcium & Phosphorus – The Bone Builders
+  quote: 'Supplement: Citrate (best absorption); hydroxyapatite bone meal (natural).'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

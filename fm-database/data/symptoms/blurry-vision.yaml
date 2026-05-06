@@ -1,0 +1,26 @@
+slug: blurry-vision
+display_name: Blurry Vision
+aliases:
+- visual blurring
+- fuzzy vision
+- vision changes
+category: neurological
+severity: concerning
+description: Transient or persistent blurring of vision due to fluid shifts in the
+  lens from elevated blood glucose, or early diabetic retinopathy in advanced disease.
+when_to_refer: Refer for ophthalmologic assessment if persistent, and to clinician
+  for glucose workup.
+linked_to_topics:
+- prediabetes
+- type-2-diabetes
+linked_to_mechanisms:
+- advanced-glycation-end-products
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 4.2.3 — Prediabetes
+  quote: Blurry vision, frequent urination, persistent fatigue, slower wound healing,
+    abdominal obesity, recurrent skin infections.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

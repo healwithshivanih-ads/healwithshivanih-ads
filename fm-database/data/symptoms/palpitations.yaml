@@ -1,0 +1,41 @@
+slug: palpitations
+display_name: Heart Palpitations
+aliases:
+- heart racing
+- tremors
+- fast heartbeat
+- shakiness
+- racing heart
+- irregular heartbeat
+- tachycardia
+- heart fluttering
+category: cardiovascular
+severity: concerning
+description: Sensation of abnormal or irregular heartbeat; a common withdrawal symptom
+  when tapering beta blockers and a cardiovascular red flag in general.
+when_to_refer: Refer if persistent, associated with dizziness/syncope, or if new-onset
+  during beta blocker taper.
+linked_to_topics:
+- thyroid
+- hyperthyroidism
+- hypertension
+- cardiovascular-dysfunction
+- beta-blocker-deprescribing
+linked_to_mechanisms:
+- hpt-axis-dysregulation
+- beta-adrenergic-blockade-rebound
+sources:
+- id: vitaone-thyroid-cheatsheet
+  location: Biohacking Thyroid Function Cheatsheet — Thyroid Dysfunction Symptoms
+  quote: Palpitations, tremors (in hyper)
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 5: Disorders of the Thyroid'
+  quote: 'Symptoms: Weight loss, anxiety, palpitations, tremors, heat intolerance,
+    insomnia.'
+- id: vitaone-cv-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
+  quote: Palpitations
+version: 3
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,23 @@
+slug: lifestyle-factors-required-alongside-supplements
+statement: Taking supplements without addressing physical activity, sleep, and stress
+  management is unlikely to address insulin resistance long-term.
+evidence_tier: strong
+rationale: Consistent with functional medicine and mainstream clinical guidance; lifestyle
+  interventions have the largest effect size on insulin sensitivity.
+coaching_translation: Supplements are tools, not solutions. The real foundation for
+  blood sugar balance is movement, sleep, and stress management — build those first.
+linked_to_topics:
+- blood-sugar-dysfunction
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-blood-sugar-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: Taking a supplement without addressing these lifestyle factors is unlikely
+    to address insulin resistance long-term.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

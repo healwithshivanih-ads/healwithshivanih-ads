@@ -1,0 +1,34 @@
+slug: elevated-fibrinogen
+display_name: Elevated Fibrinogen
+aliases:
+- hypercoagulability
+- clotting risk
+- fibrinogen elevation
+category: signaling
+summary: Elevated fibrinogen (>300) increases risk of thrombotic events (heart attacks,
+  strokes), is a marker of inflammation, and is associated with insulin resistance
+  and diabetes.
+upstream_drivers:
+- insulin-resistance
+- systemic-inflammation
+- diabetes
+downstream_effects:
+- thrombosis
+- heart-attack
+- stroke
+related_mechanisms:
+- systemic-inflammation
+- insulin-resistance
+linked_to_topics:
+- cardiovascular-dysfunction
+evidence_tier: strong
+sources:
+- id: vitaone-cv-toolkit
+  location: CVD Risk Analysis — Lab Results
+  quote: This measures your risk of clotting, which can cause heart attacks & strokes.
+    It is also a spin of inflammation and is associated with insulin resistance and
+    diabetes.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

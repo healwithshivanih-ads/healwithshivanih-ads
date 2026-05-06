@@ -1,0 +1,31 @@
+slug: vitamin-k2-calcium-trafficking
+display_name: Vitamin K2 Calcium Trafficking
+aliases:
+- calcium routing by K2
+- osteocalcin activation
+- matrix Gla protein activation
+category: structural
+summary: Vitamin K2 activates osteocalcin and matrix Gla protein (MGP), directing
+  calcium into bones and preventing arterial and soft-tissue calcification. MK-7 has
+  a longer half-life than MK-4 and is preferred for systemic effects. Always balance
+  high-dose vitamin D with K2 to prevent hypercalcemia and vascular calcium deposition.
+upstream_drivers:
+- vitamin-k2-deficiency
+- vitamin-d-supplementation-without-k2
+downstream_effects:
+- arterial-calcification
+- weak-bones
+- kidney-stones
+related_mechanisms: []
+linked_to_topics:
+- knee-pain
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin K (K1 & K2)
+  quote: Vitamin K = calcium traffic controller - puts calcium into bone, keeps it
+    out of arteries, kidneys, cartilage.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

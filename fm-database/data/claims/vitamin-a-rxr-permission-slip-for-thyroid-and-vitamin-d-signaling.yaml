@@ -1,0 +1,36 @@
+slug: vitamin-a-rxr-permission-slip-for-thyroid-and-vitamin-d-signaling
+statement: Vitamin A (as retinoic acid) is required for thyroid hormone receptor and
+  Vitamin D receptor function via the RXR heterodimer — without it, T3 and Vitamin
+  D signalling are impaired.
+evidence_tier: strong
+rationale: RXR (Retinoid X Receptor, requires Vitamin A/retinoic acid) is the obligate
+  heterodimer partner for both the Vitamin D receptor (VDR) and thyroid hormone receptor
+  (TR). Without adequate retinoic acid, D and T3 signalling is impaired at the receptor
+  level. This is well-established molecular biology. Clinical evidence that Vitamin
+  A supplementation improves thyroid function is more limited but biologically consistent.
+coaching_translation: Vitamin A isn't just about vision — it's a 'permission slip'
+  that lets your body respond to Vitamin D and thyroid hormone properly. The molecular
+  biology is solid. Food-based sources (liver, egg yolks, dairy, brightly coloured
+  vegetables) are the safe route.
+caveats:
+- Clinical outcome evidence is more limited than the mechanism.
+- High-dose retinol supplementation can be toxic — food-based retinol or beta-carotene
+  is the coaching-safe approach.
+- Supplementation dosing is a clinician decision.
+out_of_scope_notes: Vitamin A supplement dosing is outside coaching scope due to toxicity
+  risk at high doses.
+linked_to_topics:
+- thyroid
+linked_to_supplements:
+- vitamin-a
+linked_to_mechanisms: []
+sources:
+- id: vitaone-evidence-tiers
+  location: TOPIC 1 — Thyroid / Claims & Tiers / Claim 7
+  quote: RXR (Retinoid X Receptor, requires Vitamin A/retinoic acid) is the obligate
+    heterodimer partner for both Vitamin D receptor (VDR) AND thyroid hormone receptor
+    (TR).
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

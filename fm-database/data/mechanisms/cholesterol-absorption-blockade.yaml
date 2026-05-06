@@ -1,0 +1,26 @@
+slug: cholesterol-absorption-blockade
+display_name: Cholesterol Absorption Blockade
+aliases:
+- phytosterol mechanism
+- sterol competition
+category: gut
+summary: Plant sterols and stanols structurally resemble cholesterol and competitively
+  inhibit its absorption in the small intestine, reducing LDL-C levels.
+upstream_drivers:
+- plant-sterol-supplementation
+downstream_effects:
+- reduced-ldl-c
+- reduced-total-cholesterol
+related_mechanisms:
+- insulin-resistance
+linked_to_topics:
+- dyslipidemia
+evidence_tier: strong
+sources:
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 5
+  quote: 'Plant sterols/stanols: Block cholesterol absorption.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

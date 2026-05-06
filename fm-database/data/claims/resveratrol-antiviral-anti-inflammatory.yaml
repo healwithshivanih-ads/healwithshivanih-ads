@@ -1,0 +1,31 @@
+slug: resveratrol-antiviral-anti-inflammatory
+statement: Resveratrol, a natural polyphenol from red grapes, has anti-inflammatory
+  and antiviral properties including activity against coronavirus relatives.
+evidence_tier: plausible_emerging
+rationale: Lin et al. (BMC Infect Dis 2017) demonstrates effective MERS-CoV inhibition
+  by resveratrol in vitro. Palamara et al. (J Infect Dis 2005) shows influenza A inhibition.
+  Clinical human data remains limited.
+coaching_translation: Resveratrol, found in red grapes and berries, has shown anti-inflammatory
+  and antiviral effects in research studies.
+linked_to_topics:
+- immune-support
+- chronic-inflammation
+linked_to_supplements:
+- resveratrol
+caveats:
+- Most antiviral evidence is in vitro. Human clinical data limited.
+- Potential adverse effects and drug interactions noted in references (Shaito et al.
+  Int J Mol Sci 2020).
+- Caution in pregnancy and certain cancer contexts.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Resveratrol, a natural compound found in red grapes, has many beneficial
+    health effects and has been shown in the lab to attack a relative of the COVID-19
+    virus.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

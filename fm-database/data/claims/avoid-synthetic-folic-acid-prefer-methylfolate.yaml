@@ -1,0 +1,30 @@
+slug: avoid-synthetic-folic-acid-prefer-methylfolate
+statement: Synthetic folic acid should be avoided in favour of natural food folates
+  or L-methylfolate (5-MTHF) supplements, as many people (particularly those with
+  MTHFR variants) cannot efficiently convert folic acid.
+evidence_tier: plausible_emerging
+rationale: MTHFR C677T/A1298C variants reduce 5-MTHF production. Unmetabolized folic
+  acid in circulation is a documented phenomenon. Methylfolate supplementation bypasses
+  this issue. Evidence basis is mechanistic and observational; RCT evidence for clinical
+  superiority in general population is mixed.
+coaching_translation: If choosing a folate supplement, look for 'L-methylfolate' or
+  '5-MTHF' on the label rather than 'folic acid'.
+caveats:
+- MTHFR testing is out of coaching scope.
+- Source is a synthesis document — no specific RCT cited.
+linked_to_topics:
+- vitamin-b-complex-deficiency
+- nutrient-deficiency-depression
+linked_to_supplements:
+- l-methylfolate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin B9 (Folate)
+  quote: 'Clinical Wisdom: Avoid synthetic folic acid; prioritize natural folates
+    from foods or methylfolate supplements if needed.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

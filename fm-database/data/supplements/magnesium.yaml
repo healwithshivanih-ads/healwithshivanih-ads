@@ -1,0 +1,68 @@
+slug: magnesium
+display_name: Magnesium
+category: mineral
+forms_available:
+- capsule
+- tablet
+- powder
+timing_options:
+- with_dinner
+- bedtime
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- methylation-mthfr
+- liver-detoxification
+- blood-sugar-dysfunction
+- magnesium-insufficiency
+- mitochondrial-health-nutrition
+- mercury-amalgam-removal
+linked_to_claims:
+- magnesium-phase-ii-cofactor
+- magnesium-deficiency-increases-t2d-risk
+- magnesium-supports-insulin-function
+- magnesium-inadequacy-common-in-us-adults
+- magnesium-supports-energy-bp-mood-bone
+- infrared-sauna-supports-toxin-excretion-via-sweat
+notes_for_coach: Recommended as baseline pre-amalgam removal and as first mineral
+  to replenish after infrared sauna sessions (lost through sweat). Many forms available;
+  glycinate/malate are well-tolerated.
+notes_for_client: Magnesium is essential for hundreds of body processes and is lost
+  through sweat — especially important to replenish after sauna sessions.
+evidence_tier: plausible_emerging
+typical_dose_range:
+  capsule:
+    min: 400
+    max: 600
+    unit: mg
+  powder:
+    min: 100
+    max: 400
+    unit: mg
+  tablet:
+    min: 100
+    max: 400
+    unit: mg
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-cheatsheet
+  location: Functional Detox Phases
+  quote: Beets, garlic, sulfur foods, B vitamins, magnesium, NAC.
+- id: vitaone-blood-sugar-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: Magnesium is an essential mineral that supports bone health, blood pressure,
+    and insulin function. People who do not get enough magnesium in their diet are
+    at higher risk for type 2 diabetes, heart disease, metabolic syndrome, and osteoporosis.
+- id: vitaone-nutrition-toolkit
+  location: Nutrients for Mitochondrial Health
+  quote: Magnesium is a mineral that is necessary for optimal mitochondrial function.
+    Restoring the body's magnesium can have a protective role in heart health, blood
+    pressure, and is associated with improvements in depressive symptoms.
+- id: vitaone-liver-detox-toolkit
+  location: How to Make an Infrared Sauna Lamp — Protocol
+  quote: I do advise Starting with Magnesium because you will loose lot of magnesium
+    through sweat.
+version: 4
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,24 @@
+slug: gas-and-bloating
+display_name: Gas & Bloating
+aliases:
+- abdominal bloating
+- gassy stomach
+- puffy belly
+category: gi
+severity: common
+description: Digestive discomfort including gas production and abdominal distension.
+  A well-documented benefit of probiotic use is improvement in these symptoms.
+linked_to_topics:
+- blood-sugar-dysfunction
+linked_to_mechanisms:
+- gut-microbiome-glucose-regulation
+when_to_refer: ''
+sources:
+- id: vitaone-blood-sugar-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: Some of the well documented benefits associated with probiotics are improvement
+    in digestive symptoms, like gas & bloating.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

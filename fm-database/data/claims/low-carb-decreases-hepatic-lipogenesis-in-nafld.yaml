@@ -1,0 +1,28 @@
+slug: low-carb-decreases-hepatic-lipogenesis-in-nafld
+statement: A low-carb diet decreases hepatic lipogenesis and liver inflammation in
+  NAFLD.
+evidence_tier: plausible_emerging
+rationale: 'Mechanistically sound: reduced carbohydrate intake lowers insulin-driven
+  de novo lipogenesis. Supported by a growing body of clinical trial data though not
+  yet at full consensus.'
+coaching_translation: Cutting carbs reduces the signal that tells your liver to make
+  fat, which can help reverse fatty liver disease.
+caveats:
+- Source is expert consensus. Combine with omega-3s and NAC (clinician scope) for
+  comprehensive liver support.
+linked_to_topics:
+- nafld
+- low-carb-diet
+linked_to_supplements:
+- omega-3
+- nac
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: Functional Medicine Clinical Applications
+  quote: Decreases hepatic lipogenesis and inflammation
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

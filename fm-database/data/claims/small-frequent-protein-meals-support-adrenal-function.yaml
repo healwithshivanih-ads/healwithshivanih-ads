@@ -1,0 +1,25 @@
+slug: small-frequent-protein-meals-support-adrenal-function
+statement: Eating several small meals containing protein each day helps stabilize
+  blood sugar and support adrenal function.
+evidence_tier: plausible_emerging
+rationale: Protein-containing meals blunt postprandial glucose excursions and reduce
+  the cortisol response to hypoglycemia. Frequent small meals for adrenal support
+  is FM convention with plausible mechanism.
+coaching_translation: Eating protein-rich meals every few hours prevents blood sugar
+  dips that force your adrenals to work harder to maintain glucose levels.
+caveats:
+- FM-specific dietary advice; limited direct RCT evidence for adrenal outcomes specifically.
+  Source is expert consensus toolkit.
+linked_to_topics:
+- hpa-axis-dysregulation
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-adrenal-toolkit
+  location: Hypercortisolism — Restoration
+  quote: Eat several small meals containing protein each day.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

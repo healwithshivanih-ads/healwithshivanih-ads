@@ -1,0 +1,36 @@
+slug: declining-estrogen-causes-leaky-gut
+statement: Declining estrogen in perimenopause impairs the integrity of the small
+  intestinal lining (tight junctions), increasing intestinal permeability (leaky gut)
+  and the likelihood of food particles entering the bloodstream and triggering immune
+  responses.
+evidence_tier: plausible_emerging
+rationale: Estrogen's role in maintaining tight junction proteins and gut barrier
+  integrity has mechanistic support from animal and in vitro studies. The clinical
+  link to perimenopausal leaky gut and downstream food sensitivity and autoimmunity
+  is biologically plausible but direct human RCT evidence is limited.
+coaching_translation: Think of estrogen as the mortar between the bricks of your gut
+  lining. As estrogen drops in perimenopause, that 'mortar' weakens — and your gut
+  becomes more permeable, which can trigger food sensitivities and immune reactions.
+caveats:
+- Source is expert course content, not primary literature.
+- Direct RCT evidence in perimenopausal humans is limited; much evidence is mechanistic
+  or animal-based.
+linked_to_topics:
+- perimenopause
+- microbiome
+- dysbiosis
+- autoimmune
+- gut-hormone-axis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-mondays
+  location: 'Session 1: Microbiome Foundations and Hormone Shifts'
+  quote: declining estrogen can lead to more leaky gut... we recognize that less estrogen
+    impacts the ability to maintain the structure of the small intestinal lining,
+    which is one cell layer thick.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

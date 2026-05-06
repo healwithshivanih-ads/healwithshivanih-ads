@@ -1,0 +1,32 @@
+slug: digestive-enzyme-production-declines-with-age-and-menopause
+statement: Digestive enzyme production declines with age and hormonal changes in menopause,
+  making long-term digestive enzyme supplementation a reasonable strategy for many
+  midlife women.
+evidence_tier: plausible_emerging
+rationale: Single-expert source. Age-related decline in pancreatic enzyme output is
+  documented; the specific menopausal hormone link and recommendation for lifelong
+  supplementation are from expert opinion.
+coaching_translation: Just as your hormones change with age, so does your body's ability
+  to produce digestive enzymes. Supporting digestion with enzymes — especially with
+  your largest meal — may be a long-term strategy, not just a short-term fix.
+caveats:
+- Single-expert source; lifelong supplementation recommendation is expert opinion,
+  not based on cited RCTs.
+- Supplement need varies individually; start conservatively.
+linked_to_topics:
+- dyspepsia
+- perimenopause
+linked_to_supplements:
+- digestive-enzymes
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: thurlow-microbiome-session-6
+  location: Session 6 — Q&A, Digestive Enzymes Question
+  quote: We know that our digestive enzyme production is going down and declining,
+    just like everything else. So I do think it's a long-term strategy to support
+    digestion.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

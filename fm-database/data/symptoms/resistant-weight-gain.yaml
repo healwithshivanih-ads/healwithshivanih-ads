@@ -1,0 +1,28 @@
+slug: resistant-weight-gain
+display_name: Resistant Weight Gain
+aliases:
+- stubborn weight
+- difficulty losing weight
+- metabolic weight gain
+- inflammation-related weight
+category: metabolic
+severity: common
+description: Inability to lose weight despite dietary efforts, often linked to insulin
+  resistance, metabolic inflammation, HPA axis dysregulation, and gut dysbiosis.
+when_to_refer: Rule out hypothyroidism, Cushing's, or medication-induced weight gain
+  with clinician.
+linked_to_topics:
+- chronic-inflammation
+- autoimmune-disease
+linked_to_mechanisms:
+- insulin-resistance
+- hpa-axis-dysregulation
+- nf-kb-activation
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Inflammation Cheatsheet — Page 02
+  quote: Resistant weight gain
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

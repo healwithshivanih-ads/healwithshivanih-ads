@@ -1,0 +1,50 @@
+slug: midlife-weight-gain
+display_name: Midlife Weight Gain
+aliases:
+- weight loss resistance in midlife
+- middle-age weight gain
+- perimenopausal weight gain
+summary: Midlife weight gain is a multifactorial phenomenon driven by intersecting
+  hormonal changes (estrogen, progesterone, testosterone, cortisol), microbiome dysbiosis,
+  insulin resistance, inflammation, sleep disruption, and stress physiology. It is
+  not reducible to simple caloric excess and often emerges even when women are doing
+  everything 'right'.
+common_symptoms:
+- abdominal fat accumulation
+- weight loss resistance
+- sugar cravings
+- bloating
+- energy crashes after meals
+- joint aches
+- poor sleep
+- increased carbohydrate sensitivity
+red_flags:
+- persistent weight gain despite optimized diet, sleep, and exercise — warrants deeper
+  lab workup (thyroid, stool testing, inflammatory markers, estrogen metabolism)
+- rapidly progressive visceral adiposity
+- suspected underlying trauma or toxin exposure
+related_topics:
+- perimenopause
+- microbiome
+- insulin-resistance
+- visceral-adiposity
+- gut-hormone-axis
+key_mechanisms:
+- microbiome-dysbiosis
+- hpa-axis-dysregulation
+- insulin-resistance
+coaching_scope_notes: Coaches can explore sleep quality, stress management, dietary
+  fiber, food quality, and movement. Lab interpretation and HRT/GLP-1 discussions
+  are clinician territory.
+clinician_scope_notes: Consider stool testing, zonulin, thyroid optimization, estrogen
+  metabolism pathways, HRT dosing, and GLP-1 candidacy for refractory cases.
+evidence_tier: plausible_emerging
+sources:
+- id: thurlow-microbiome-session-4
+  location: 'Session 4: Midlife Weight Gain and Metabolic Shifts — Introduction'
+  quote: The midlife weight connection of how our gut influences our metabolism is
+    what we're gonna talk about tonight.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

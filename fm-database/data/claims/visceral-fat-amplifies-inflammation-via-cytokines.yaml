@@ -1,0 +1,34 @@
+slug: visceral-fat-amplifies-inflammation-via-cytokines
+statement: Visceral fat releases inflammatory cytokines (including tumor necrosis
+  factor) that reinforce insulin resistance and drive further fat accumulation — creating
+  a self-perpetuating inflammatory-metabolic loop.
+evidence_tier: strong
+rationale: The role of visceral adipose tissue as an endocrine organ secreting TNF-alpha,
+  IL-6, and other adipokines that worsen insulin resistance is well-established in
+  peer-reviewed literature.
+coaching_translation: Belly fat isn't passive — it actively produces inflammatory
+  signals that make your body store even more fat and become more insulin resistant,
+  which is why addressing it early matters.
+caveats:
+- Extrapolation to coaching interventions requires referral to clinician for advanced
+  metabolic assessment.
+linked_to_topics:
+- visceral-adiposity
+- insulin-resistance
+- midlife-weight-gain
+- microbiome
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-4
+  location: Session 4 — Gut Inflammation Weight Gain Loop
+  quote: Visceral fat, the fat that is around our vital organs, is the pathogenic
+    fat. It is the fat that releases inflammatory cytokines and tumor necrosis factor
+    and all these very inflammatory signaling molecules that actually reinforce the
+    inflammation, reinforce the insulin sensitivity loss and amplifies more inflammation
+    and more accumulation of fat.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

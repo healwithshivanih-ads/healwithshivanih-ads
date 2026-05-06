@@ -1,0 +1,29 @@
+slug: relaxation-response-reduces-cortisol-and-bp
+statement: Practicing the Relaxation Response technique reduces cortisol, noradrenaline,
+  heart rate, blood pressure, respiratory rate, and muscle tension.
+evidence_tier: strong
+rationale: Dr. Herbert Benson's Relaxation Response is one of the most studied mind-body
+  interventions (Harvard Medical School). Multiple RCTs support its effects on cardiovascular
+  and neuroendocrine markers.
+coaching_translation: A simple daily breathing and relaxation practice for 10–20 minutes
+  can measurably lower your stress hormones, heart rate, and blood pressure.
+caveats:
+- No specific studies cited by author/year/journal in this document; attributed to
+  Dr. Benson/Harvard.
+linked_to_topics:
+- chronic-stress
+- hpa-axis-dysregulation
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-adrenal-toolkit
+  location: The Relaxation Response
+  quote: 'Some qualities of the Relaxation Response include: Decreased heart rate,
+    Decreased blood pressure, Lower respiratory rate, Lower pulse rate, Reduction
+    of noradrenaline, Decreased oxygen consumption, Decreased muscle tension, Reduction
+    of cortisol.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

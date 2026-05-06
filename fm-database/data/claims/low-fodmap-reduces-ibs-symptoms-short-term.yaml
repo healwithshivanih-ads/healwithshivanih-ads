@@ -1,0 +1,29 @@
+slug: low-fodmap-reduces-ibs-symptoms-short-term
+statement: The Low FODMAP diet is a short-term, research-backed approach that reduces
+  IBS-type GI symptoms by limiting fermentable carbohydrates.
+evidence_tier: strong
+rationale: Multiple RCTs and systematic reviews (cited in Monash University research)
+  confirm the Low FODMAP diet reduces IBS symptom scores significantly compared to
+  control diets in the 2–6 week elimination phase.
+coaching_translation: Following a Low FODMAP eating plan for 4–6 weeks can meaningfully
+  reduce your bloating, pain, and bowel irregularity — it is not a forever diet but
+  a detective tool.
+caveats:
+- Source document is an educational toolkit, not a primary research paper; Monash
+  University RCTs support the core claim.
+linked_to_topics:
+- low-fodmap-diet
+- ibs
+- elimination-diet
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: Low FODMAP Vegetarian Diet Plan
+  quote: Low FODMAP is a short-term, research-backed approach (not a forever-elimination)
+    designed to calm IBS-type symptoms while you figure out your personal triggers.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

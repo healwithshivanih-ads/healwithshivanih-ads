@@ -1,0 +1,29 @@
+slug: sleep-is-critical-for-immune-resilience
+statement: Adequate sleep is a primary driver of immune resilience; poor or insufficient
+  sleep increases susceptibility to infections and viral illness.
+evidence_tier: plausible_emerging
+rationale: Sleep and immune function have strong mechanistic support in the literature
+  (cytokine regulation, NK cell activity), though this session cites no specific study.
+  Single-expert source rules apply; defaulting to plausible_emerging.
+coaching_translation: Sleep isn't passive recovery — it's when your immune system
+  does critical repair and memory-building work. Prioritizing sleep is one of the
+  highest-leverage things you can do for immunity.
+caveats:
+- No specific study cited; strong broader evidence base makes this plausible_emerging
+  rather than speculative.
+- Single-expert source.
+linked_to_topics:
+- immune-resilience
+- inflammaging
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-8
+  location: Session 8 — immune balance supports segment
+  quote: Obviously sleep is really important... if I'm sleeping, I can be exposed
+    to bugs and viruses and not get sick.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

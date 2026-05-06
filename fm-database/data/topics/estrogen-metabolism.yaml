@@ -1,0 +1,46 @@
+slug: estrogen-metabolism
+display_name: Estrogen Metabolism
+aliases:
+- estrogen detoxification
+- estrogen pathways
+- estrogen dominance
+summary: Estrogen metabolism encompasses the production, use, and elimination of estrogens
+  (E1, E2, E3) and their metabolites primarily via the liver, digestive tract, and
+  urinary system. Disruptions lead to accumulation of carcinogenic metabolites (4-OHE1)
+  and estrogen dominance, increasing risk for breast, ovarian, and prostate cancer
+  as well as worsening endometriosis, PMS, PCOS, and PMDD.
+common_symptoms:
+- estrogen-dominance-symptoms
+- pms-symptoms
+- breast-tenderness
+- mood-changes
+- weight-gain
+red_flags:
+- family history of hormone-related cancers
+- signs of endometriosis or PCOS not previously diagnosed
+related_topics:
+- sex-hormone-binding-globulin
+- testosterone-health
+- insulin-resistance
+- detoxification
+key_mechanisms:
+- hepatic-estrogen-detoxification
+- comt-methylation
+- cyp1a1-cyp1b1-hydroxylation
+- insulin-resistance
+coaching_scope_notes: Coaches can support dietary fiber, cruciferous vegetable intake,
+  antioxidant foods, omega-3s, alcohol reduction, exercise, and stress management.
+  Supplement recommendations require clinician guidance.
+clinician_scope_notes: Genetic variants COMT, CYP1A1, CYP1B1, and GST influence estrogen
+  detox. Oral contraceptives and HRT influence estrogen metabolism and may increase
+  hormone-related cancer risk.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-sex-hormones-toolkit
+  location: Estrogen Metabolism — Page 02
+  quote: Estrogen metabolism is a term that describes the production, use, & elimination
+    of estrogens through various pathways in the body.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

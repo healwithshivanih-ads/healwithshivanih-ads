@@ -1,0 +1,34 @@
+slug: mastic-gum
+display_name: Mastic Gum
+category: herb
+forms_available:
+- capsule
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 1000
+    unit: mg
+timing_options:
+- morning
+- evening
+take_with_food: avoid
+linked_to_topics:
+- h-pylori-infection
+- gerd
+linked_to_claims:
+- hypochlorhydria-must-correct-before-kill-protocols
+notes_for_coach: Resin from Pistacia lentiscus — H. pylori antimicrobial with some
+  clinical trial support. 500mg 2x/day, typically taken on empty stomach. Used as
+  part of antimicrobial rotation.
+notes_for_client: Mastic gum is a natural resin with antibacterial properties — it's
+  been used to help fight H. pylori and soothe the stomach lining.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-cheatsheet
+  location: H. Pylori Infection Cheatsheet — Antimicrobial Support
+  quote: 'Mastic gum: 500 mg, 2x/day'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

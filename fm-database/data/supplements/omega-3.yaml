@@ -1,0 +1,73 @@
+slug: omega-3
+display_name: Omega-3 Fatty Acids (EPA/DHA)
+category: fatty_acid
+forms_available:
+- capsule
+- liquid
+typical_dose_range:
+  capsule:
+    min: 1000
+    max: 3000
+    unit: mg
+  liquid:
+    min: 5
+    max: 15
+    unit: ml
+timing_options:
+- with_breakfast
+- with_dinner
+- with_lunch
+take_with_food: required
+linked_to_topics:
+- dyslipidemia
+- nafld
+- liver-detoxification
+- low-carb-diet
+- leaky-gut
+- ibd
+- candida-overgrowth
+- sluggish-bile-flow
+- low-fodmap-diet
+- ibs
+- gut-dysbiosis
+- hashimotos-hypothyroidism
+linked_to_claims:
+- omega-3-reduces-triglycerides
+- omega3-reduces-hepatic-fat-nafld
+- low-carb-decreases-hepatic-lipogenesis-in-nafld
+- leaky-gut-drives-systemic-inflammation
+- fodmap-4-phase-fm-protocol
+- omega-3-reduces-autoimmune-inflammatory-activity
+notes_for_coach: 'Supports reduction of systemic inflammation that drives autoimmune
+  thyroid activity. Food sources: fatty fish (salmon, sardines), flaxseeds, chia seeds,
+  walnuts. Supplementation dose not specified in document — typical therapeutic range
+  is 1–3 g EPA+DHA/day.'
+notes_for_client: Omega-3s help calm the inflammation behind your immune system's
+  attack on your thyroid. Aim for fatty fish 2–3x per week or consider a fish oil
+  supplement.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 5
+  quote: 'Omega-3 (EPA/DHA): ↓TG, anti-inflammatory.'
+- id: vitaone-liver-detox-cheatsheet
+  location: Liver Disease Cheatsheet — NAFLD
+  quote: Omega-3, Vitamin E, Berberine, NAC
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: Functional Medicine Clinical Applications
+  quote: Combine with omega-3s, NAC, and liver-support foods (beetroot, crucifers).
+- id: vitaone-gut-cheatsheet
+  location: Leaky Gut & Inflammation — Supplement Strategy
+  quote: Omega-3 — Anti-inflammatory — Joint, brain, hormone cases
+- id: vitaone-elimination-diet-cheatsheet
+  location: Final Practitioner Guideline
+  quote: 'Combine with gut-healing nutrients: glutamine, zinc carnosine, omega-3.'
+- id: vitaone-thyroid-toolkit
+  location: Nutrient Optimization
+  quote: 'Omega-3 Fatty Acids: Anti-inflammatory properties that can help reduce autoimmune
+    activity.'
+version: 6
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,28 @@
+slug: heavy-periods
+display_name: Heavy Periods (Menorrhagia)
+aliases:
+- menorrhagia
+- heavy menstrual bleeding
+- flooding periods
+- heavy flow
+category: hormonal
+severity: concerning
+description: Excessive menstrual blood loss, often associated with estrogen dominance,
+  fibroids, or endometriosis.
+when_to_refer: Refer if causing anemia, or if imaging needed to rule out fibroids/polyps/endometrial
+  hyperplasia.
+linked_to_topics:
+- estrogen-dominance
+- low-progesterone
+linked_to_mechanisms:
+- estrogen-enterohepatic-recirculation
+- low-progesterone
+- chronic-inflammation
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: Estrogen Dominance Supplement Cheatsheet
+  quote: Reduces heavy periods, bloating.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

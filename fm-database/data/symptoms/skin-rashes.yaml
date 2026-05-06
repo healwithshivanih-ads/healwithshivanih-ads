@@ -1,0 +1,30 @@
+slug: skin-rashes
+display_name: Skin Rashes / Gut-Skin Symptoms
+aliases:
+- rashes
+- eczema
+- itchy skin
+- skin breakouts
+- gut-skin connection
+category: skin
+severity: common
+description: Skin symptoms including rashes, eczema, acne, and itching linked to gut
+  permeability, dysbiosis, candida, or mast cell activation via the gut-skin axis.
+when_to_refer: Severe or worsening skin conditions — refer to dermatology alongside
+  gut workup.
+linked_to_topics:
+- leaky-gut
+- gut-dysbiosis
+- candida-overgrowth
+linked_to_mechanisms:
+- leaky-gut
+- lps-signaling
+sources:
+- id: vitaone-gut-cheatsheet
+  location: 100 Gut Symptoms — Systemic Manifestations
+  quote: Skin rashes — Gut permeability — Gut-skin axis — Zinc + probiotics + elimination
+    diet
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

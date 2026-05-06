@@ -1,0 +1,87 @@
+slug: systemic-inflammation
+display_name: Systemic Inflammation
+aliases:
+- chronic low-grade inflammation
+- cytokine load
+- AGE-driven inflammation
+- chronic inflammation
+- low-grade inflammation
+- inflammatory state
+- elevated CRP
+- inflammatory cytokine production
+- hs-CRP elevation
+- inflammatory burden
+category: immune
+summary: Persistent activation of pro-inflammatory pathways contributing to cardiovascular
+  disease, metabolic dysfunction, and neurodegeneration. Dietary phytonutrients (turmeric,
+  ginger, pomegranate, dark berries) and intermittent fasting may reduce inflammatory
+  markers.
+upstream_drivers:
+- high-carbohydrate-diet
+- refined-sugar
+- dysbiosis
+- poor-diet
+- insulin-resistance
+- gut-barrier-dysfunction
+- omega-3-deficiency
+- hyperglycemia
+- omega-6-excess
+- smoking
+- oral-infection
+- poor diet quality
+- excess adiposity
+- gut dysbiosis
+- oxidative stress
+downstream_effects:
+- autoimmune-conditions
+- cardiovascular-disease
+- joint-disorders
+- joint-pain
+- fatigue
+- hair-loss
+- cognitive-decline
+- mood-disorders
+- atherosclerosis
+- heart-disease-progression
+- dementia
+- elevated triglycerides
+- endothelial dysfunction
+- elevated blood pressure
+- impaired blood sugar metabolism
+related_mechanisms:
+- insulin-resistance
+- gut-dysbiosis
+- neuroinflammation
+- gut-barrier-dysfunction
+- atherosclerosis
+- oxidative-stress
+linked_to_topics:
+- low-carb-diet
+- nafld
+- knee-pain
+- hairfall
+- nutrient-deficiency-depression
+- cardiovascular-dysfunction
+- cardiometabolic-health
+- intermittent-fasting
+- phytonutrient-dense-diet
+evidence_tier: strong
+sources:
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: The Science of Low-Carb Diets
+  quote: Lower carb = reduced AGE and cytokine load (IL-6, TNF-α).
+- id: vitaone-nutrition-cheatsheet
+  location: Knee Pain – Diet & Lifestyle Guidelines
+  quote: Chronic stress drives inflammation—use yoga nidra, deep breathing.
+- id: vitaone-cv-toolkit
+  location: CVD Risk Analysis — Lab Results
+  quote: C-reactive protein is a marker associated with the production of inflammatory
+    cytokines, which represent a threat to cardiovascular health.
+- id: vitaone-cardiometabolic-toolkit
+  location: Intermittent Fasting — Who Benefits from Fasting?
+  quote: Fasting may be beneficial for insulin resistance, blood sugar, blood pressure,
+    inflammation, short-term weight loss, and brain health.
+version: 4
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

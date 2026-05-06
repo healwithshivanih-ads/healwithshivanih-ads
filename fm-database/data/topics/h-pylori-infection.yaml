@@ -1,0 +1,47 @@
+slug: h-pylori-infection
+display_name: H. Pylori Infection
+aliases:
+- Helicobacter pylori
+- H pylori
+summary: Spiral-shaped bacteria colonizing the stomach lining, weakening the protective
+  mucous layer and increasing stomach acid damage and inflammation. Can persist silently
+  for years. Linked to gastritis, peptic ulcers, GERD, dysbiosis, leaky gut, and increased
+  risk of gastric cancer.
+common_symptoms:
+- bloating
+- burping
+- indigestion
+- nausea
+- abdominal-pain-empty-stomach
+- loss-of-appetite
+- fatigue
+red_flags:
+- hematemesis
+- melena
+- unexplained weight loss
+- dysphagia — urgent referral for endoscopy; increased gastric cancer risk
+related_topics:
+- hypochlorhydria
+- gerd
+- gut-dysbiosis
+- leaky-gut
+key_mechanisms:
+- mucosal-barrier-disruption
+- impaired-gastric-acid-production
+coaching_scope_notes: Coaches can support anti-inflammatory dietary changes, stress
+  management, and sleep hygiene. Antimicrobial protocols and H. pylori testing must
+  be clinician-directed.
+clinician_scope_notes: 'Gold standard test: Urea Breath Test (UBT). Stool antigen
+  test also highly accurate. Blood IgG not recommended for active infection. Treat
+  in phases: Antimicrobial → Gut healing → Microbiome restoration.'
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-gut-cheatsheet
+  location: H. Pylori Infection Cheatsheet
+  quote: H. pylori = A spiral-shaped bacteria that colonizes the stomach lining. Weakens
+    the protective mucous layer → increases stomach acid damage → inflammation. Can
+    persist silently for years, leading to chronic gut dysfunction.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

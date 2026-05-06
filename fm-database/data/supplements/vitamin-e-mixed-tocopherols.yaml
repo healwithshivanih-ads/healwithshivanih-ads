@@ -1,0 +1,36 @@
+slug: vitamin-e-mixed-tocopherols
+display_name: Vitamin E (Mixed Tocopherols)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 100
+    max: 400
+    unit: IU
+  tablet:
+    min: 100
+    max: 400
+    unit: IU
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+notes_for_coach: Mixed tocopherol form (including gamma) preferred over isolated alpha-tocopherol;
+  fat-soluble antioxidant for skin, cardiovascular, and hormonal support.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 3 - Supplement Table
+  quote: Vitamin E (Mixed Tocopherols) - Antioxidant, skin & heart health - 100–400
+    IU/day - With meals
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

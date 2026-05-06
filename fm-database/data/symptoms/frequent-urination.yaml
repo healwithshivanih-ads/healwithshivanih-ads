@@ -1,0 +1,26 @@
+slug: frequent-urination
+display_name: Frequent Urination
+aliases:
+- polyuria
+- urinating frequently
+- needing to pee often
+category: urinary
+severity: common
+description: Increased urinary frequency due to osmotic diuresis from elevated blood
+  glucose spilling into urine.
+when_to_refer: Refer if fasting glucose ≥ 100 mg/dL or HbA1c ≥ 5.7% to rule out prediabetes/diabetes.
+linked_to_topics:
+- prediabetes
+- type-2-diabetes
+- blood-sugar-dysfunction
+linked_to_mechanisms:
+- insulin-resistance
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 4.2.3 — Prediabetes
+  quote: Blurry vision, frequent urination, persistent fatigue, slower wound healing,
+    abdominal obesity, recurrent skin infections.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

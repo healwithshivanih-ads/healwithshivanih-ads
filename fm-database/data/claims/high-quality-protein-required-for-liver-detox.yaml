@@ -1,0 +1,27 @@
+slug: high-quality-protein-required-for-liver-detox
+statement: High-quality dietary protein, providing specific amino acids, is required
+  for efficient Phase II liver detoxification and toxin clearance.
+evidence_tier: plausible_emerging
+rationale: Phase II conjugation reactions (glutathione conjugation, amino acid conjugation,
+  methylation) require amino acid substrates (glycine, taurine, cysteine, methionine,
+  glutamine). This is biochemically well-supported; clinical RCT evidence for dietary
+  protein intake specifically optimizing detox outcomes is thin.
+coaching_translation: Getting enough quality protein (from clean animal or plant sources)
+  gives your liver the building blocks it needs to neutralize toxins.
+caveats:
+- Source is an educational toolkit; no specific RCT cited.
+linked_to_topics:
+- liver-detoxification
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-liver-detox-toolkit
+  location: Features of the Detox Food Plan
+  quote: Protein is a key nutrient that enables the liver to effectively process toxins
+    within the body. Specific amino acids (building blocks of protein) are required
+    for certain types of toxin clearance.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,76 @@
+slug: flax-seed
+display_name: Flaxseed (Lignans)
+category: other
+forms_available:
+- whole_food
+- powder
+typical_dose_range:
+  whole_food:
+    min: 1
+    max: 2
+    unit: tablespoons
+  powder:
+    min: 10
+    max: 20
+    unit: g
+timing_options:
+- with_breakfast
+- mid_morning
+- mid_afternoon
+- morning
+take_with_food: required
+contraindications:
+  conditions:
+  - severe_dysphagia
+  - bowel_obstruction
+  medications: []
+  life_stages:
+  - pregnancy_first_trimester
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: oral_hormone_therapy
+    type: space_by_hours
+    reason: 'Lignans in flax may modestly bind/clear estrogen via the
+
+      estrobolome; space oral HRT by ≥2 hours.
+
+      '
+  - medication: warfarin_or_anticoagulants
+    type: avoid_together
+    reason: 'Omega-3 ALA + lignan content may increase bleeding risk with
+
+      anticoagulants. Defer to clinician.
+
+      '
+linked_to_topics:
+- microbiome
+- dysbiosis
+- perimenopause
+- estrobolome
+- estrogen-dominance
+linked_to_mechanisms:
+- lignan-estrogen-modulation
+- soluble-fiber-fermentation
+- scfa-production
+linked_to_claims:
+- flax-and-chia-combo-gentle-constipation-support
+- fiber-binds-estrogen-prevents-enterohepatic-recirculation
+notes_for_coach: 1–2 tbsp/day ground flax. Lignans act as weak phytoestrogens competing
+  at estrogen receptors and increasing SHBG. Avoid in high-histamine patients without
+  tolerance testing.
+notes_for_client: Ground flaxseed provides fiber and plant compounds that gently regulate
+  estrogen activity — especially helpful during perimenopause.
+sources:
+- id: thurlow-microbiome-session-7
+  location: Session 7 — Fiber Gap & Feeding the Microbiome
+- id: vitaone-sex-hormones-cheatsheet
+  location: Estrogen Dominance Supplement Cheatsheet
+  quote: 'Flaxseed (Lignans): Modulates estrogen receptors & increases SHBG; Improves
+    cycle regularity; 1–2 tbsp/day ground flax; avoid in histamine flare.'
+evidence_tier: plausible_emerging
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,39 @@
+slug: estrogen-decline-reduces-hcl-digestive-enzymes-bile
+statement: Declining estrogen in perimenopause is associated with reductions in hydrochloric
+  acid, digestive enzymes, and bile quality, impairing the breakdown of proteins,
+  carbohydrates, fats, and contributing to food sensitivities.
+evidence_tier: plausible_emerging
+rationale: 'Speaker describes three distinct digestive deficits tied to estrogen decline:
+  HCl (protein digestion), enzymes (carb/fat), and bile (fat emulsification). The
+  estrogen–bile connection is reasonably supported in the literature; HCl and enzyme
+  effects are biologically plausible but have thinner direct evidence. Single-expert
+  source.'
+coaching_translation: As estrogen falls, the body produces less stomach acid, fewer
+  digestive enzymes, and lower-quality bile — making it harder to break down proteins,
+  fats, and carbohydrates properly, which can trigger sensitivity-like symptoms.
+caveats:
+- Single-expert source; individual mechanisms vary in strength of evidence.
+- HCl decline specifically tied to estrogen has less robust direct evidence than bile
+  quality connection.
+- Verify with clinician if digestive enzyme or HCl support is being considered.
+linked_to_topics:
+- perimenopause
+- food-sensitivities
+- leaky-gut
+- gut-hormone-axis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-2
+  location: Why midlife changes food tolerance
+  quote: We also see declines in things like hydrochloric acid. This is what helps
+    us break down protein in our stomach to amino acids. We also get reductions in
+    digestive enzymes, which can impact the way we break down carbohydrates and fats.
+    And our bile quality is intricately interwoven with estrogen, which means that
+    as our estrogen is declining, you may notice you become less able to break down
+    and emulsify fats.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

@@ -1,0 +1,29 @@
+slug: calcium-d-glucarate-prevents-estrogen-reabsorption
+statement: Calcium D-glucarate supports glucuronidation and prevents estrogen reabsorption
+  in the gut, reducing heavy periods and bloating.
+evidence_tier: plausible_emerging
+rationale: Calcium D-glucarate inhibits beta-glucuronidase, the enzyme responsible
+  for deconjugating estrogen in the gut, thereby limiting enterohepatic recirculation.
+  Mechanistically sound; human RCT data is limited.
+coaching_translation: Calcium D-glucarate helps your body eliminate used estrogen
+  via the gut rather than reabsorbing it.
+caveats:
+- Source is expert synthesis
+- Dose range (500–1500 mg/day) should be confirmed with clinician
+- Ideal for sluggish liver patterns
+linked_to_topics:
+- estrogen-dominance
+- estrobolome
+linked_to_supplements:
+- calcium-d-glucarate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: Estrogen Dominance Supplement Cheatsheet
+  quote: Supports glucuronidation & prevents estrogen reabsorption; Reduces heavy
+    periods, bloating.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

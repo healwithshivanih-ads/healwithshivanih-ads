@@ -1,0 +1,50 @@
+slug: omega-3-fish-oil
+display_name: Omega-3 Fish Oil (EPA/DHA)
+category: fatty_acid
+forms_available:
+- capsule
+- liquid
+typical_dose_range:
+  capsule:
+    min: 2000
+    max: 3000
+    unit: mg
+  liquid:
+    min: 2000
+    max: 3000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- chronic-inflammation
+- autoimmune-disease
+- psoriasis
+- estrogen-metabolism
+- sex-hormone-binding-globulin
+linked_to_claims:
+- omega-3-reduces-cytokines
+- omega-3-index-8pct-reduces-inflammation
+- fish-oil-lowers-il6-tnf
+- omega-3-fats-reduce-inflammation-support-estrogen
+- whey-protein-epa-dha-decrease-shbg
+notes_for_coach: EPA/DHA reduces inflammation (well-established) and may indirectly
+  support estrogen metabolism. Also listed as SHBG-decreasing. Prefer marine-sourced;
+  avoid farm-raised fish due to PCB content.
+notes_for_client: Fish oil helps reduce inflammation throughout the body, which supports
+  hormone balance and healthy estrogen processing.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-cheatsheet
+  location: Inflammation Cheatsheet — Page 02
+  quote: Omega-3 (2–3g/day)
+- id: vitaone-sex-hormones-toolkit
+  location: Estrogen Metabolism — Page 02
+  quote: Omega 3 fats from fish, fish oil, and flax have been shown to reduce levels
+    of inflammation in the body, which may indirectly support healthy estrogen metabolism.
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

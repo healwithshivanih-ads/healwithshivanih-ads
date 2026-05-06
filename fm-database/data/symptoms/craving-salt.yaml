@@ -1,0 +1,23 @@
+slug: craving-salt
+display_name: Salt Cravings
+aliases:
+- craving salty foods
+- craving pretzels or pickles
+- salty food cravings
+category: metabolic
+severity: common
+description: Intense craving for salty foods, associated with low cortisol and aldosterone
+  insufficiency causing sodium loss.
+linked_to_topics:
+- hpa-axis-dysregulation
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+when_to_refer: ''
+sources:
+- id: vitaone-adrenal-toolkit
+  location: 'HPA Axis Questionnaire — Section 1: Low cortisol state'
+  quote: Craving salty foods-pretzels, pickles etc.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

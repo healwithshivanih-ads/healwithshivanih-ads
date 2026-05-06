@@ -1,0 +1,38 @@
+slug: hypochlorhydria-mechanism
+display_name: Reduced Gastric Acid Secretion
+aliases:
+- low HCl production
+- impaired gastric acid
+- hypochlorhydria pathway
+category: gut
+summary: Age-related or medication-induced reduction in HCl production impairs protein
+  digestion, mineral absorption (B12, iron, calcium, magnesium, zinc, copper), and
+  immune defense against pathogens (H. pylori, parasites). Creates conditions for
+  SIBO and candida overgrowth.
+upstream_drivers:
+- aging
+- ppi-use
+- chronic-medications
+downstream_effects:
+- mineral-malabsorption
+- sibo
+- candida-overgrowth
+- chronic-infections
+related_mechanisms:
+- gut-dysbiosis
+- leaky-gut
+linked_to_topics:
+- hypochlorhydria
+- gerd
+- gut-dysfunction
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-gut-toolkit
+  location: Testing for Low Stomach Acidity
+  quote: Without enough stomach acid, we are more vulnerable to decreased immune resistance
+    and a variety of other health problems such as overgrowth of bacteria in the small
+    intestine.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

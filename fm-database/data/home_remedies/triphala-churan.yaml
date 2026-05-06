@@ -1,0 +1,51 @@
+slug: triphala-churan
+display_name: Triphala Churan
+aliases:
+  - triphala-powder
+  - triphala
+  - three-fruit-churan
+category: ayurvedic_churan
+summary: |
+  Classic Ayurvedic preparation combining three fruits — Amalaki (Indian
+  gooseberry), Bibhitaki (bibhitaki), and Haritaki — in equal parts. Used
+  for centuries as a gentle, non-laxative-dependence-forming bowel
+  regulator and digestive tonic. Modern research suggests modest effects
+  on gut barrier integrity, microbial balance, and antioxidant status,
+  though FDA-grade evidence is thin.
+indications:
+  - constipation
+  - dysbiosis
+  - microbiome
+contraindications:
+  - pregnancy and breastfeeding (insufficient safety data)
+  - severe diarrhea
+  - active acute GI inflammation
+preparation: |
+  Available as powder (churan) or tablets/capsules. Powder is traditional —
+  bitter and astringent in taste.
+typical_dose: |
+  1/2 to 1 teaspoon of powder mixed in warm water, taken at bedtime
+  on empty stomach. Tablets/capsules: per manufacturer instructions
+  (typically 500mg-1g at bedtime).
+duration: |
+  4-12 weeks for digestive reset; safe for longer-term use at lower
+  doses (1/4 tsp).
+timing_notes: |
+  Bedtime, empty stomach (at least 2 hours after dinner). The
+  traditional logic: works overnight to mobilize the bowel for
+  morning evacuation.
+linked_to_topics:
+  - microbiome
+  - dysbiosis
+  - estrobolome
+linked_to_mechanisms:
+  - microbial-diversity-decline
+  - estrogen-enterohepatic-recirculation
+sources:
+  - id: vitaone-skill-practice-guide
+    location: practice_guide.md, Ayurvedic Churans
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

@@ -1,0 +1,32 @@
+slug: gas
+display_name: Excess Gas / Flatulence
+aliases:
+- excessive-gas
+- belching
+- eructation
+- burping
+- flatulence (excessive)
+category: gi
+severity: common
+description: 'Increased intestinal gas with belching or flatulence, often bothersome
+
+  socially. Common with dysbiosis, SIBO, fermentable-carb sensitivities
+
+  (FODMAP), low stomach acid, and fiber-introduction missteps.
+
+  '
+when_to_refer: 'With weight loss, blood in stool, severe pain, or persistent fevers.
+
+  '
+linked_to_topics:
+- microbiome
+- dysbiosis
+linked_to_mechanisms:
+- microbial-diversity-decline
+sources:
+- id: thurlow-microbiome-mondays
+  location: Sessions 1, 6
+version: 1
+status: active
+updated_at: 2026-04-29
+updated_by: shivani

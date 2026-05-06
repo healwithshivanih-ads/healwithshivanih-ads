@@ -1,0 +1,31 @@
+slug: dysbiosis-worsens-perimenopausal-vasomotor-and-hormonal-symptoms
+statement: Dysbiosis of the estrobolome can worsen vasomotor symptoms (hot flashes,
+  night sweats) and other perimenopausal symptoms by disrupting estrogen metabolism
+  and amplifying systemic inflammation.
+evidence_tier: plausible_emerging
+rationale: Mechanistic plausibility exists via estrogen recirculation and gut-brain
+  axis signaling; however, direct RCT evidence linking estrobolome dysbiosis to vasomotor
+  symptom severity is limited. This is consistent with FM expert consensus framing.
+  Single-expert source.
+coaching_translation: If hot flashes or night sweats seem more intense than expected,
+  the health of your gut microbiome may be a contributing factor — not just declining
+  hormone levels.
+caveats:
+- Causal direction not confirmed by RCTs.
+- Single-expert source.
+linked_to_topics:
+- estrobolome
+- perimenopause
+- dysbiosis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-3
+  location: What Happens When the Estrobolome Is Not Balanced
+  quote: It could be that the health of your estrobolome is driving your vasomotor
+    symptoms, your hot flashes, your waking up at night, being drenched in sweats.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

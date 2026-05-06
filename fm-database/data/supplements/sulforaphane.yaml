@@ -1,0 +1,51 @@
+slug: sulforaphane
+display_name: Sulforaphane
+category: other
+forms_available:
+- capsule
+- tablet
+- powder
+typical_dose_range:
+  capsule:
+    min: 30
+    max: 100
+    unit: mg
+  tablet:
+    min: 50
+    max: 100
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+- morning
+take_with_food: optional
+notes_for_coach: Nrf2 pathway activator — induces endogenous antioxidant production.
+  Liver detox support for anger/hepatic stagnation. Broccoli sprout source preferred.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- estrogen-dominance
+- inflammation
+- autoimmune
+linked_to_mechanisms: []
+linked_to_claims:
+- emotional-stress-cascade-chronic-disease
+notes_for_client: Sulforaphane, found in broccoli sprouts, activates your body's own
+  antioxidant and detox defenses.
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: Sulforaphane (from Broccoli Extract) - Detox, antioxidant, NRF2 activator
+    - 50–100 mg/day - With meals
+- id: vitaone-sex-hormones-cheatsheet
+  location: Estrogen Detoxification Pathways — Clinical Support Strategy
+  quote: Crucifers, DIM, I3C, green tea, sulforaphane — Induce liver detox enzymes
+    (CYP1A1).
+- id: vitaone-adrenal-cheatsheet
+  location: Organ–Emotion Axis (p.11)
+  quote: 'Liver: Anger, resentment. Detox support (Sulforaphane, NAC, bitters), emotional
+    release practices.'
+version: 3
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

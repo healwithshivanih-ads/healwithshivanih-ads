@@ -1,0 +1,106 @@
+slug: chronic-inflammation
+display_name: Chronic Low-Grade Inflammation
+aliases:
+- inflammatory-cytokine-release
+- inflammatory-cytokine-signaling
+- inflammatory-cytokine-transmission
+- low-grade inflammation
+- systemic inflammatory state
+- systemic inflammation
+- inflammaging
+- cytokine load
+- low-grade systemic inflammation
+- meta-inflammation
+category: immune
+summary: Persistent low-grade inflammation, reflected by elevated hs-CRP, promotes
+  endothelial dysfunction and atherogenesis, amplifying cardiovascular risk in dyslipidemia.
+upstream_drivers:
+- visceral adiposity
+- leaky gut + LPS translocation
+- dysbiosis
+- HPA dysregulation / chronic stress
+- poor sleep
+- dietary drivers (refined carbs, ultra-processed foods)
+- leaky-gut
+- food-sensitivities
+- toxin-exposure
+- gut-dysbiosis
+- insulin-resistance
+- low-progesterone
+- xenoestrogen-exposure
+- poor-diet
+- hpa-axis-dysregulation
+- loneliness
+- emotional-suppression
+- mitochondrial-dysfunction
+- oxidative-stress
+- chronic-stress
+downstream_effects:
+- elevated hs-CRP, IL-6, TNF-α
+- insulin resistance amplification
+- autoimmune flare risk
+- cardiovascular plaque progression
+- neuroinflammation / brain fog
+- accelerated cellular aging (inflammaging)
+- t4-to-t3-conversion-block
+- reverse-t3-elevation
+- hashimotos-autoimmune-cascade
+- estrogen-dominance
+- anovulation
+- pcos-progression
+- endometriosis-pain
+- low-testosterone
+- insulin-resistance
+- endothelial-dysfunction
+- neuroinflammation
+- autoimmune-flares
+- accelerated-aging
+- elevated-hs-crp
+- oxidized-ldl
+related_mechanisms:
+- leaky-gut
+- insulin-resistance
+- hpa-axis-dysregulation
+- microbial-diversity-decline
+- oxidative-stress
+- gut-dysbiosis
+linked_to_topics:
+- inflammation
+- autoimmune
+- perimenopause
+- thyroid
+- pcos
+- estrogen-dominance
+- low-progesterone
+- gut-brain-axis
+- adrenal-dysfunction
+- insulin-resistance
+- dysbiosis
+- dyslipidemia
+sources:
+- id: vitaone-skill-practice-guide
+  location: practice_guide.md, Inflammation section
+- id: thurlow-microbiome-session-8
+  location: Session 8 — Inflammaging
+- id: vitaone-thyroid-cheatsheet
+  location: Thyroid Disorders Cheatsheet — Reverse T3 row
+  quote: Chronic stress, inflammation, infection, high cortisol, trauma
+- id: vitaone-sex-hormones-cheatsheet
+  location: PCOD Cheatsheet — Key Mediators
+  quote: Inflammatory cytokines → worsen IR & ovarian dysfunction.
+- id: vitaone-adrenal-cheatsheet
+  location: The Neuroimmune Mechanism of Loneliness (p.17)
+  quote: 'Cytokine Storm (Low-Grade): ↑ IL-6, TNF-α, CRP → immune cell activation.
+    Clinical Implication: Chronic inflammation, autoimmune triggers.'
+- id: vitaone-blood-sugar-cheatsheet
+  location: Insulin Resistance Cheatsheet — Root Cause Framework
+  quote: Low-grade systemic inflammation, elevated hs-CRP, IL-6, TNF-α
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 2
+  quote: Root cause = Metabolic dysfunction, chronic inflammation, oxidative stress,
+    gut dysbiosis.
+evidence_tier: strong
+version: 6
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

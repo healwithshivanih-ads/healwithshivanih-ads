@@ -1,0 +1,28 @@
+slug: vitamin-c-coadministration-improves-levothyroxine-absorption
+statement: Co-administration of Vitamin C (500–1000 mg) with levothyroxine can increase
+  serum T4 and T3 levels by improving absorption.
+evidence_tier: plausible_emerging
+rationale: The document states this as a best practice. Some small studies (e.g.,
+  Vita et al. 2014) support vitamin C improving levothyroxine absorption, particularly
+  in those with gastric issues. Source is a synthesis so treated as plausible_emerging.
+coaching_translation: Taking vitamin C with thyroid medication may help your body
+  absorb it better — check with your prescribing doctor before making this change.
+out_of_scope_notes: Medication co-administration guidance is clinician scope. Coaches
+  should flag and refer.
+caveats:
+- This applies to levothyroxine medication, not stand-alone thyroid support
+- Always confirm with prescribing clinician before adjusting medication timing
+linked_to_topics:
+- hypothyroidism
+linked_to_supplements:
+- vitamin-c
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 10: Absorption and Optimization'
+  quote: Co-administration of Vitamin C (500-1000 mg) can increase serum T4 and T3
+    levels.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

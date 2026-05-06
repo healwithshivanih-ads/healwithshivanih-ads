@@ -1,0 +1,37 @@
+slug: testosterone-to-estrogen-imbalance-causes-apple-shape
+statement: When testosterone is supplemented without adequate estrogen replacement,
+  the relative testosterone excess can shift fat distribution toward an apple-shaped
+  (abdominal) pattern in women due to androgen receptor density in the midsection.
+evidence_tier: plausible_emerging
+rationale: Androgen receptor distribution influencing adipose depot patterns is mechanistically
+  supported. The clinical observation that testosterone-only HRT without estrogen
+  leads to central fat redistribution is reported in FM/integrative practice but lacks
+  strong RCT data in perimenopausal women.
+coaching_translation: Starting testosterone HRT before estrogen is optimized can sometimes
+  cause unexpected belly fat gain. This is a conversation to have with a hormone-literate
+  clinician before or during HRT.
+out_of_scope_notes: HRT type, sequencing, and dosing are clinician decisions. Coaches
+  should recognize unexpected central weight gain after testosterone initiation as
+  a referral cue.
+caveats:
+- Single-expert source (Dr. Jones clinical observation).
+- Not supported by large RCTs in perimenopausal women as of transcript date.
+linked_to_topics:
+- perimenopause
+- midlife-weight-gain
+- visceral-adiposity
+- insulin-resistance
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-4
+  location: 'Session 4 — Q&A: Hysterectomy and Weight Resistance'
+  quote: If you push testosterone too much, not everybody, don't panic if you're on
+    testosterone, but if you push testosterone first and your estrogen is really quite
+    low, you get an imbalance in the body — and what happens is we, as women, have
+    a lot of those receptors in our midsection for testosterone and it skews us towards
+    apple shape as opposed to pear shape.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

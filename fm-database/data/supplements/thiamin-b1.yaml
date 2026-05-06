@@ -1,0 +1,36 @@
+slug: thiamin-b1
+display_name: Vitamin B1 (Thiamin)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  tablet:
+    min: 10
+    max: 100
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- vitamin-b-complex-deficiency
+linked_to_claims:
+- thiamin-carbohydrate-metabolism-signal
+notes_for_coach: Start with thiamin HCl for cost-effectiveness. If poor response,
+  consider benfotiamine (fat-soluble, better absorbed) or TPP forms. Retention improves
+  when spread throughout the day with meals.
+notes_for_client: Thiamin helps your body use carbohydrates for energy. Best absorbed
+  when spread across meals.
+evidence_tier: strong
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin B1 (Thiamin)
+  quote: Start with thiamin HCl for cost-effectiveness; explore benfotiamine, TPP,
+    or TTFD if clinical response is inadequate.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,24 @@
+slug: urinary-urgency
+display_name: Urinary Urgency
+aliases:
+- bladder urgency
+- can't hold urine
+- difficulty postponing urination
+category: urinary
+severity: common
+description: Difficulty postponing urination; a BPH symptom reflecting reduced bladder
+  control from prostate enlargement.
+when_to_refer: Refer if accompanied by pain, blood in urine, or severe AUA score.
+linked_to_topics:
+- benign-prostatic-hyperplasia
+linked_to_mechanisms:
+- five-alpha-reductase-conversion
+sources:
+- id: vitaone-sex-hormones-toolkit
+  location: BPH Symptom Index — Page 05
+  quote: During the last month or so, how often have you found it difficult to postpone
+    urination?
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

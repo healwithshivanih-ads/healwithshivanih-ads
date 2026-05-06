@@ -1,0 +1,25 @@
+slug: ldn-inhibits-cell-proliferation
+statement: LDN exerts a profound inhibitory effect on cell proliferation via opioid
+  receptor blockade and subsequent elevation in endogenous opioids.
+evidence_tier: plausible_emerging
+rationale: Cited to Penn State research group; mechanism is described but no specific
+  RCT or trial data with author/year provided in source document.
+coaching_translation: LDN may help slow down abnormal cell growth — which is one reason
+  it is being studied in cancer and autoimmune conditions.
+caveats:
+- Source is practitioner synthesis. No specific RCT cited. Clinician scope — not for
+  coaching recommendations.
+out_of_scope_notes: Cancer treatment claims are strictly clinician/oncologist scope.
+linked_to_topics:
+- low-dose-naltrexone
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-ldn-article
+  location: So, how does LDN work?
+  quote: opioid receptor blockade by LDN provokes a compensatory elevation in endogenous
+    opioids and opioid receptors that can function even after LDN is no longer available.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

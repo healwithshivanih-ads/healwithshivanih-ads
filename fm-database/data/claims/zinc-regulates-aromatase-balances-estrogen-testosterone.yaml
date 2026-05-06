@@ -1,0 +1,28 @@
+slug: zinc-regulates-aromatase-balances-estrogen-testosterone
+statement: Zinc glycinate regulates aromatase enzyme activity, helping balance the
+  estrogen-to-testosterone ratio and supporting progesterone.
+evidence_tier: plausible_emerging
+rationale: Zinc is an established aromatase inhibitor cofactor and is required for
+  androgen synthesis. Evidence for aromatase inhibition in vivo is mechanistically
+  sound; clinical trial data for hormonal outcomes is limited.
+coaching_translation: Zinc is a key mineral for keeping estrogen and testosterone
+  in balance — useful for PCOS, PMS, and acne.
+caveats:
+- Source is expert synthesis
+- Add copper if using long-term (>3 months)
+- Dose 15–30 mg/day
+linked_to_topics:
+- estrogen-dominance
+- pcos
+linked_to_supplements:
+- zinc
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: Top Nutrients to Balance Estrogen
+  quote: Regulates aromatase enzyme, balancing estrogen–testosterone ratio.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

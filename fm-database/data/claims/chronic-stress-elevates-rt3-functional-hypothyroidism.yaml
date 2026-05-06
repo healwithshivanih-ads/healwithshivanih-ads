@@ -1,0 +1,28 @@
+slug: chronic-stress-elevates-rt3-functional-hypothyroidism
+statement: Chronic stress elevates cortisol, which increases conversion of T4 to inactive
+  reverse T3 (rT3), creating functional hypothyroidism.
+evidence_tier: plausible_emerging
+rationale: The document states 'Chronic stress → high cortisol → ↑ rT3 → functional
+  hypothyroidism.' Cortisol's inhibition of deiodinase type 1 and promotion of type
+  3 deiodinase is a biologically credible mechanism.
+coaching_translation: When you're chronically stressed, your body deliberately dials
+  down active thyroid hormone as a survival response — managing stress is thyroid
+  medicine.
+caveats:
+- No specific RCT cited. Plausible mechanism from expert-consensus source.
+linked_to_topics:
+- thyroid
+linked_to_supplements:
+- ashwagandha-ksm66
+- rhodiola-rosea
+- magnesium-glycinate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-cheatsheet
+  location: Biohacking Thyroid Function Cheatsheet — Balance Stress Response
+  quote: Chronic stress → high cortisol → ↑ rT3 → functional hypothyroidism
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

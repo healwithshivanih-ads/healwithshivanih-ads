@@ -1,0 +1,25 @@
+slug: fermentation-improves-fodmap-digestibility
+statement: Fermentation of dosa/idli batter reduces FODMAP content and improves digestibility
+  of legume-based batters.
+evidence_tier: plausible_emerging
+rationale: Fermentation partially degrades fructans and GOS in legumes via microbial
+  action; Monash University research supports that fermented forms of some legume-grain
+  batters are better tolerated.
+coaching_translation: Traditional fermented batters like dosa and idli are generally
+  better tolerated on Low FODMAP than unfermented lentil dishes — the fermentation
+  process breaks down some of the problem carbohydrates.
+linked_to_topics:
+- low-fodmap-diet
+linked_to_mechanisms:
+- colonic-fermentation
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: Low FODMAP Vegetarian Diet Plan — Rice–Moong Dal Dosa
+  quote: Fermentation improves digestibility.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

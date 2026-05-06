@@ -1,0 +1,26 @@
+slug: peripheral-neuropathy
+display_name: Peripheral Neuropathy
+aliases:
+- numbness in hands and feet
+- tingling feet
+- diabetic neuropathy
+- pins and needles
+category: neurological
+severity: concerning
+description: Numbness, tingling, or burning in the extremities due to nerve damage
+  from chronic hyperglycaemia and AGE accumulation on peripheral nerves.
+when_to_refer: Refer for neurological evaluation and comprehensive diabetes workup.
+linked_to_topics:
+- type-2-diabetes
+- blood-sugar-dysfunction
+linked_to_mechanisms:
+- advanced-glycation-end-products
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 4.2.4 — Type 2 Diabetes Mellitus
+  quote: Persistent fatigue, peripheral neuropathic symptoms (numbness, tingling),
+    visual changes, weight fluctuations, erectile dysfunction, frequent infections.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

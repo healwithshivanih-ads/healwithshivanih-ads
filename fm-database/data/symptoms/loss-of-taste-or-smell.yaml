@@ -1,0 +1,25 @@
+slug: loss-of-taste-or-smell
+display_name: Loss of Taste or Smell
+aliases:
+- anosmia
+- dysgeusia
+- poor taste
+- reduced smell
+category: neurological
+severity: common
+description: Reduced or absent sense of taste or smell, which is a classic sign of
+  zinc deficiency.
+when_to_refer: Refer if sudden onset (possible viral etiology) or if associated with
+  neurological symptoms.
+linked_to_topics:
+- zinc-sufficiency
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Zinc'
+  quote: Zinc is necessary for normal growth and development, immune and neurological
+    function, proper sense of taste and smell.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

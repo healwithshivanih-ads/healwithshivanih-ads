@@ -1,0 +1,26 @@
+slug: foul-smelling-gas
+display_name: Foul-Smelling Gas
+aliases:
+- sulfur gas
+- foul flatulence
+- rotten egg gas
+category: gi
+severity: common
+description: Malodorous flatulence driven by sulfur-producing bacterial imbalance
+  or H2S-type SIBO. Associated with dysbiosis and sulfur SIBO.
+linked_to_topics:
+- sibo
+- gut-dysbiosis
+linked_to_mechanisms:
+- bacterial-fermentation-carbs
+- gut-dysbiosis-mechanism
+when_to_refer: ''
+sources:
+- id: vitaone-gut-cheatsheet
+  location: 100 Gut Symptoms — Gas & Flatulence
+  quote: Foul-smelling gas — Dysbiosis — Sulfur bacteria imbalance — Probiotics +
+    activated charcoal
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

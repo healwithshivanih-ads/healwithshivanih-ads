@@ -1,0 +1,28 @@
+slug: persistent-bloating-in-midlife-women-warrants-medical-evaluation
+statement: Persistent bloating in middle-aged women that does not improve is a red
+  flag requiring medical evaluation, as it can in some cases be a sign of late-stage
+  ovarian cancer.
+evidence_tier: confirm_with_clinician
+rationale: Red-flag clinical guideline, not a coaching intervention. Ovarian cancer
+  presenting as persistent bloating is a well-established clinical concern warranting
+  immediate referral.
+coaching_translation: If a client reports persistent bloating that isn't improving
+  with lifestyle changes, this is a referral moment — not a coaching intervention.
+out_of_scope_notes: Entirely clinician scope. Coaches should refer immediately and
+  not attempt to manage this symptom without medical clearance.
+caveats:
+- This is a red flag, not a coaching intervention.
+linked_to_topics:
+- constipation
+- perimenopause
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-6
+  location: Session 6 — Main Transcript, Red Flags Section
+  quote: Persistent bloating for any middle-aged women needs to be evaluated. It sometimes
+    can be a sign of late-stage ovarian cancer.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

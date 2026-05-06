@@ -1,0 +1,27 @@
+slug: post-meal-fatigue
+display_name: Post-Meal Fatigue
+aliases:
+- after-eating tiredness
+- food coma
+- postprandial drowsiness
+- energy crash after eating
+category: metabolic
+severity: common
+description: Tiredness or low energy occurring within 1–2 hours after a meal, often
+  associated with compensatory hyperinsulinaemia causing reactive glucose dip.
+when_to_refer: Refer if associated with fasting glucose ≥ 100 mg/dL or fasting insulin
+  > 6 µIU/mL.
+linked_to_topics:
+- insulin-resistance
+- blood-sugar-dysfunction
+linked_to_mechanisms:
+- insulin-resistance
+sources:
+- id: vitaone-blood-sugar-ebook
+  location: Section 4.2.1 — Compensated Insulin Resistance (Early IR)
+  quote: Post-meal fatigue, sugar cravings, brain fog, mild weight gain around the
+    abdomen, intermittent headaches, skin tags/acanthosis nigricans, increased hunger.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

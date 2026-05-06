@@ -1,0 +1,25 @@
+slug: anti-inflammatory-diet-reduces-crp
+statement: Following an anti-inflammatory diet lowers levels of inflammatory markers
+  such as C-reactive protein (CRP).
+evidence_tier: strong
+rationale: CRP reduction through dietary pattern change is well-supported by epidemiological
+  and intervention studies. Source cites CRP as a key marker improved by the diet.
+coaching_translation: Eating more whole foods, vegetables, and healthy fats while
+  cutting processed foods and sugar can measurably lower inflammation in your body.
+linked_to_topics:
+- anti-inflammatory-diet
+- chronic-inflammation
+caveats:
+- Source is expert consensus/educational material, not primary literature citation
+  for this specific claim.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-inflammation-toolkit
+  location: Anti Inflammatory Diet — Benefits of Following an Anti-Inflammatory Diet
+  quote: 'Reduced Inflammation: Lower levels of markers like C-reactive protein (CRP).'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

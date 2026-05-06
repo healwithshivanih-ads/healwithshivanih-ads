@@ -1,0 +1,29 @@
+slug: lifestyle-first-before-supplements-for-gut-health
+statement: Sleep quality and stress management are foundational prerequisites for
+  gut health and should be addressed before layering in probiotic or prebiotic supplements.
+evidence_tier: plausible_emerging
+rationale: There is good mechanistic and observational support for sleep and stress
+  as modulators of the gut microbiome. The clinical recommendation to prioritize lifestyle
+  before supplements is consistent with functional medicine practice and emerging
+  evidence, though it represents expert opinion rather than a specific RCT finding.
+coaching_translation: 'Before reaching for a probiotic, focus on the basics: sleep
+  and stress management are the most foundational things you can do for your gut.
+  Supplements work better when the foundation is solid.'
+caveats:
+- Source is expert course content representing clinical opinion, not a specific trial.
+- Individual circumstances (e.g., severe gut dysbiosis) may require earlier supplemental
+  support per clinician guidance.
+linked_to_topics:
+- microbiome
+- dysbiosis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-mondays
+  location: 'Session 1: Microbiome Foundations and Hormone Shifts'
+  quote: sleep and stress management are critically foundational to gut health.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

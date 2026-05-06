@@ -1,0 +1,41 @@
+slug: sluggish-bile-flow-mechanism
+display_name: Sluggish Bile Flow
+aliases:
+- cholestasis
+- biliary stasis
+- impaired bile acid cycling
+category: metabolic
+summary: Reduced or impaired bile production, gallbladder contraction, or bile acid
+  recycling impairing fat digestion, fat-soluble vitamin absorption, and phase II/III
+  hepatic detoxification. Estrogen thickens bile; SIBO/dysbiosis reduces bile acid
+  recycling; low-fat diets cause gallbladder under-stimulation.
+upstream_drivers:
+- estrogen-dominance
+- sibo
+- gut-dysbiosis-mechanism
+- hypothyroidism
+- low-fat-diet
+- high-inflammation
+downstream_effects:
+- steatorrhea
+- fat-soluble-vitamin-deficiencies
+- constipation
+- estrogen-dominance
+- dysbiosis
+related_mechanisms:
+- impaired-phase-ii-iii-detox
+- gut-dysbiosis-mechanism
+linked_to_topics:
+- sluggish-bile-flow
+- gut-dysbiosis
+- leaky-gut
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Sluggish Bile Flow — What Sluggish Bile Flow Does
+  quote: Poor Bile Production — Inadequate fat digestion & detox — Bloating, nausea,
+    pale stools
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

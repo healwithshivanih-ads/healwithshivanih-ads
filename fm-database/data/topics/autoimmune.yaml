@@ -1,0 +1,71 @@
+slug: autoimmune
+display_name: Autoimmune Conditions & Stress
+aliases:
+- autoimmunity
+- Hashimoto's
+- rheumatoid arthritis
+- celiac disease
+- immune dysregulation
+- autoimmune flares
+summary: Chronic stress triggers immune dysregulation via cortisol rhythm disruption,
+  Th1/Th2/Th17 imbalance, and gut barrier breakdown, precipitating or worsening autoimmune
+  conditions.
+common_symptoms:
+- joint pain
+- fatigue
+- brain fog
+- thyroid dysfunction
+- digestive disturbance
+- skin manifestations
+- joint-pain
+- brain-fog
+- autoimmune-flares
+- food-sensitivities
+red_flags:
+- new joint swelling with morning stiffness > 60 min (refer rheumatology)
+- unexplained fevers, weight loss, night sweats
+- suspected new autoimmune flare without diagnosis
+- rapid symptom escalation
+- multi-system involvement
+- new diagnosis — requires rheumatology or specialist referral
+- Rapidly progressive symptoms — refer to rheumatologist/immunologist
+related_topics:
+- thyroid
+- perimenopause
+- inflammaging
+- immune-resilience
+- microbiome
+- dysbiosis
+- gut-hormone-axis
+- hpa-axis-dysregulation
+- leaky-gut
+- inflammation
+- gut-brain-axis
+key_mechanisms:
+- leaky-gut
+- molecular-mimicry
+- chronic-inflammation
+- estrogen-immune-modulation
+- gut-barrier-permeability
+- th1-th2-imbalance
+- hpa-axis-dysregulation
+coaching_scope_notes: Gut repair, anti-inflammatory diet, adaptogens, trauma resolution
+  practices within scope. Diagnosis and immunosuppressants out of scope.
+clinician_scope_notes: Hashimoto's, PCOS, rheumatoid arthritis, celiac disease cited
+  as examples requiring medical management.
+sources:
+- id: vitaone-skill-practice-guide
+  location: practice_guide.md, Autoimmune section
+- id: thurlow-microbiome-session-8
+  location: Session 8 — immune shift segment
+  quote: We are more prone to autoimmune conditions. We know we're four to five times
+    more likely to be diagnosed.
+- id: vitaone-adrenal-cheatsheet
+  location: Stress & Chronic Diseases Link (p.9)
+  quote: Stress triggers immune dysregulation & flares. Cortisol rhythm disruption
+    → Th1/Th2/Th17 imbalance, gut barrier breakdown.
+evidence_tier: plausible_emerging
+version: 3
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

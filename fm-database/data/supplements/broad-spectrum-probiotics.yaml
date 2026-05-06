@@ -1,0 +1,38 @@
+slug: broad-spectrum-probiotics
+display_name: Broad-Spectrum Probiotics
+category: probiotic
+forms_available:
+- capsule
+- powder
+typical_dose_range:
+  capsule:
+    min: 10
+    max: 50
+    unit: capsules
+timing_options:
+- with_breakfast
+- morning
+take_with_food: optional
+linked_to_topics:
+- gut-dysbiosis
+- leaky-gut
+- ibd
+linked_to_claims:
+- probiotics-should-follow-sibo-eradication
+notes_for_coach: Avoid blind use — strain selection matters. Include Bifidobacteria,
+  Lactobacilli, Faecalibacterium if targeting SCFA production. Delay until after eradication
+  phase in SIBO. Avoid in active SIFO.
+notes_for_client: Probiotics help rebuild a healthy gut microbiome — but timing and
+  strain selection matter. Your practitioner can guide which type is right for your
+  stage of healing.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Gut Health Cheatsheet — Gut Dysbiosis
+  quote: Broad-spectrum probiotics, Prebiotics, Polyphenols, Butyrate — Balance =
+    feed good microbes, not just kill bad ones. Diet is key.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

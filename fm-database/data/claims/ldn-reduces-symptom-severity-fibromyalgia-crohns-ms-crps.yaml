@@ -1,0 +1,29 @@
+slug: ldn-reduces-symptom-severity-fibromyalgia-crohns-ms-crps
+statement: LDN has been demonstrated to reduce symptom severity in fibromyalgia, Crohn's
+  disease, multiple sclerosis, and complex regional pain syndrome.
+evidence_tier: plausible_emerging
+rationale: Cited to a study in Clinical Rheumatology. Multiple conditions covered
+  by small trials. Cochrane 2014 review for Crohn's found insufficient evidence for
+  recommendation but signal of benefit.
+coaching_translation: Research — though still early — suggests LDN may meaningfully
+  reduce symptoms in several difficult-to-treat conditions including fibromyalgia,
+  Crohn's, MS, and severe pain syndromes.
+caveats:
+- Evidence base consists of small trials. Cochrane 2014 concluded insufficient evidence.
+  Clinical Rheumatology citation is named but no author/year/volume given.
+- Source is practitioner synthesis document.
+linked_to_topics:
+- low-dose-naltrexone
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-ldn-article
+  location: Preliminary Research Abounds for cancer and autoimmune disease
+  quote: Low Dose Naltrexone(LDN) has been demonstrated to reduce symptom severity
+    in conditions such as fibromyalgia, Crohn's disease, multiple sclerosis, and complex
+    regional pain syndrome.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

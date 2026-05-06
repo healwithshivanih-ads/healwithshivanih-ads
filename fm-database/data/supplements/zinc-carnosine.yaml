@@ -1,0 +1,68 @@
+slug: zinc-carnosine
+display_name: Zinc Carnosine
+category: mineral
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 75
+    max: 150
+    unit: mg
+  tablet:
+    min: 15
+    max: 30
+    unit: mg
+timing_options:
+- with_breakfast
+- with_dinner
+- with_lunch
+- on_empty_stomach
+- bedtime
+take_with_food: required
+linked_to_topics:
+- thyroid
+- leaky-gut
+- gerd
+- h-pylori-infection
+- chronic-inflammation
+- low-fodmap-diet
+- ibs
+- sibo
+linked_to_claims:
+- leaky-gut-triggers-hashimotos
+- zinc-carnosine-tight-junction-healing
+- l-glutamine-supports-gut-repair
+- fodmap-4-phase-fm-protocol
+notes_for_coach: Used in the Gut-Healing Phase alongside L-glutamine to support mucosal
+  integrity and enzyme function. Dosing is clinician-scope. Distinct from elemental
+  zinc — the carnosine chelate has specific gastric mucosal properties.
+notes_for_client: Zinc carnosine is a special compound that helps strengthen and repair
+  your gut lining. It works best taken with meals.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-practice-guide
+  location: Seven Clinical Focus Areas > 6. Autoimmune Conditions > Coaching interventions
+  quote: 'Heal intestinal lining: Bone broth, L-glutamine, zinc carnosine'
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Zinc carnosine/ Any form Zinc - Immune, gut repair, mucosal lining /acid
+    reflux - 15-30 mg/day - With food (to avoid nausea) or after
+- id: vitaone-thyroid-cheatsheet
+  location: What Nutritionists/Health Coaches Miss — Ignore Gut Health
+  quote: Repair gut with probiotics, prebiotics, L-glutamine, and zinc carnosine
+- id: vitaone-gut-cheatsheet
+  location: H. Pylori Infection Cheatsheet — Gut Healing Nutrients
+  quote: 'Zinc-carnosine: 37.5 mg, 2x/day — L-glutamine: 5 g powder, 1–2x/day'
+- id: vitaone-inflammation-cheatsheet
+  location: Inflammation Cheatsheet — Page 02
+  quote: Use probiotics, L-glutamine, zinc carnosine
+- id: vitaone-elimination-diet-cheatsheet
+  location: Functional Medicine Approach to Using Low-FODMAP Clinically — Gut-Healing
+    Phase
+  quote: Add L-glutamine, zinc carnosine, digestive enzymes, bitters.
+version: 6
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

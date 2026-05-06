@@ -1,0 +1,25 @@
+slug: sleep-before-10pm-supports-adrenal-recovery
+statement: Getting adequate sleep and going to bed by 10:00 PM supports adrenal hormone
+  restoration.
+evidence_tier: fm_specific_thin
+rationale: The specific 10 PM bedtime recommendation is FM/integrative medicine conventional
+  wisdom, correlating with cortisol's natural nadir and growth hormone secretion patterns,
+  but lacks specific RCT support for this exact recommendation.
+coaching_translation: Your adrenals do much of their repair during the first half
+  of the night. Getting to bed before 10 PM helps protect this recovery window.
+caveats:
+- The 10 PM cutoff is FM convention, not RCT-backed. Source is an expert consensus
+  toolkit.
+linked_to_topics:
+- hpa-axis-dysregulation
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-adrenal-toolkit
+  location: Hypercortisolism — Restoration
+  quote: Get adequate sleep and go to bed by 10:00 pm.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

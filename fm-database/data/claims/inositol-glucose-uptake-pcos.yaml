@@ -1,0 +1,31 @@
+slug: inositol-glucose-uptake-pcos
+statement: Inositol (especially D-chiro-inositol) improves glucose uptake and insulin
+  sensitivity, and is particularly helpful in metabolic syndrome and PCOS-related
+  insulin issues.
+evidence_tier: plausible_emerging
+rationale: D-chiro-inositol and myo-inositol have RCT evidence in PCOS for improving
+  insulin sensitivity and ovulatory function. Evidence in broader T2D populations
+  is smaller but mechanistically supported.
+coaching_translation: Inositol is a B-vitamin-like nutrient that plays a direct role
+  in insulin signalling — it has good evidence in PCOS specifically for improving
+  blood sugar and hormone balance.
+caveats:
+- Dose not specified in document for standalone inositol; clinician consultation advised.
+- Source is expert consensus.
+linked_to_topics:
+- insulin-resistance
+- pcos
+linked_to_supplements:
+- myo-inositol
+- d-chiro-inositol
+linked_to_mechanisms:
+- insulin-resistance
+out_of_scope_notes: ''
+sources:
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Insulin Resistance
+  quote: Inositol helpful in metabolic syndrome and PCOS-related insulin issues.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

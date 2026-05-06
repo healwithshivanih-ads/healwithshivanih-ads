@@ -1,0 +1,35 @@
+slug: pyridoxal-5-phosphate-p5p
+display_name: Vitamin B6 (P5P / Pyridoxal-5'-Phosphate)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 10
+    max: 50
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+take_with_food: optional
+linked_to_topics:
+- vitamin-b-complex-deficiency
+linked_to_claims:
+- b6-over-100mg-neuropathy-risk
+notes_for_coach: 'P5P (active form) preferred over pyridoxine HCl — no liver conversion
+  needed. Safety ceiling: 100 mg/day maximum. Target ~3–3.5 mg per 100g protein intake.
+  Needs rise with estrogen dominance and inflammation.'
+notes_for_client: P5P is the ready-to-use form of B6. Do not exceed 100 mg/day unless
+  directed by your doctor, as higher doses can cause nerve tingling.
+evidence_tier: strong
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin B6 (Pyridoxine)
+  quote: 'Supplement: P5P (active form) preferred over pyridoxine HCl. Safety: Keep
+    under 100 mg/day; higher doses risk neuropathy.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

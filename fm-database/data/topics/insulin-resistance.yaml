@@ -1,0 +1,85 @@
+slug: insulin-resistance
+display_name: Insulin Resistance
+aliases:
+- impaired insulin sensitivity
+- blood sugar dysregulation
+- glucose metabolism impairment
+- IR
+- metabolic insulin dysfunction
+- cellular insulin insensitivity
+summary: A state in which target cells (muscle, liver, adipose) fail to respond adequately
+  to insulin signalling, requiring compensatory hyperinsulinaemia to maintain euglycaemia.
+  Progresses through recognisable clinical stages from early IR to T2DM if unaddressed.
+common_symptoms:
+- post-meal energy crashes
+- carbohydrate sensitivity
+- weight gain around abdomen
+- sugar cravings
+- bloating
+- water retention
+- belly-fat
+- skin-tags
+- fatigue-after-meals
+- sugar-cravings
+- elevated-fasting-insulin
+- post-meal-fatigue
+- brain-fog
+- abdominal-weight-gain
+- energy-crashes
+- acanthosis-nigricans
+- mood-swings
+red_flags:
+- fasting glucose trends toward pre-diabetes
+- worsening metabolic markers despite lifestyle changes
+- HbA1c progressing toward 6.5%+
+- fasting glucose consistently >100 mg/dL
+- symptomatic hypoglycaemia
+- HOMA-IR > 2.9
+- fasting insulin > 25 µIU/mL
+- fasting glucose ≥ 126 mg/dL
+related_topics:
+- midlife-weight-gain
+- perimenopause
+- visceral-adiposity
+- microbiome
+- gut-hormone-axis
+- pcos
+- dysbiosis
+- inflammation
+- leaky-gut
+- blood-sugar-dysfunction
+- metabolic-syndrome
+- type-2-diabetes
+- prediabetes
+key_mechanisms:
+- microbiome-dysbiosis
+- estrogen-decline
+- cortisol-elevation
+- progesterone-excess
+- insulin-resistance
+- chronic-inflammation
+- hpa-axis-dysregulation
+- visceral-adipose-inflammation
+coaching_scope_notes: Support low-GI dietary patterns, resistance training, sleep
+  optimisation, and stress reduction. Supplement education on magnesium, chromium,
+  vitamin D within scope.
+clinician_scope_notes: Assess HOMA-IR, fasting insulin, C-peptide, GTIR/Kraft curve.
+  Evaluate for LADA, secondary causes (statin use, thyroid). Manage metabolic syndrome
+  components.
+evidence_tier: strong
+sources:
+- id: thurlow-microbiome-session-4
+  location: Session 4 — Estrogen, Hormones, and the Microbiome
+  quote: We know that estrogen is an insulin-sensitizing hormone. We know that it
+    influences fat storage patterns.
+- id: vitaone-blood-sugar-cheatsheet
+  location: Insulin Resistance Cheatsheet — Clinical Symptoms
+  quote: Elevated fasting insulin, HOMA-IR
+- id: vitaone-blood-sugar-ebook
+  location: Chapter 4 — Insulin Resistance and Type 2 Diabetes
+  quote: Insulin resistance evolves through recognisable clinical stages. Early recognition
+    permits timely intervention before β-cell failure occurs.
+version: 3
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

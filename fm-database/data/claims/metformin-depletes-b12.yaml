@@ -1,0 +1,27 @@
+slug: metformin-depletes-b12
+statement: Metformin use depletes vitamin B12 and repletion of key micronutrients
+  is essential to avoid downstream neurological or metabolic complications.
+evidence_tier: strong
+rationale: Metformin-induced B12 depletion is well-established in the clinical literature
+  with multiple observational and interventional studies confirming the association
+  and benefit of B12 monitoring/supplementation.
+coaching_translation: If you or your client take metformin, make sure B12 levels are
+  being monitored — this medication is well-known to reduce B12 absorption over time.
+caveats:
+- Supplement dosing and monitoring require clinician oversight.
+out_of_scope_notes: Metformin management and lab monitoring are clinician scope.
+linked_to_topics:
+- insulin-resistance
+linked_to_supplements:
+- vitamin-b12-methylcobalamin
+linked_to_mechanisms: []
+sources:
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Medication-Induced
+    Depletions
+  quote: Metformin depletes B12. Replete key micronutrients to avoid downstream neurological
+    or metabolic complications.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

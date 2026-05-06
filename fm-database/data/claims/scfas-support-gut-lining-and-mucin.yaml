@@ -1,0 +1,25 @@
+slug: scfas-support-gut-lining-and-mucin
+statement: SCFAs help create and maintain the mucin layer lining the digestive tract,
+  protecting the gut wall from permeability.
+evidence_tier: plausible_emerging
+rationale: Speaker specifically mentions SCFAs creating mucin. Mechanistically credible
+  and supported by cell biology research, but no study cited.
+coaching_translation: SCFAs produced from fiber help keep the protective mucus lining
+  of the gut intact — important for clients dealing with leaky gut or inflammation.
+caveats:
+- Single-expert source; verify with primary literature on butyrate and mucin synthesis.
+linked_to_topics:
+- scfa-short-chain-fatty-acids
+- microbiome
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-7
+  location: SCFA section [00:09:14]
+  quote: short chain fatty acids reduce inflammation. They help with creating mucin
+    which is the lining of mucus in the in the digestive system.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

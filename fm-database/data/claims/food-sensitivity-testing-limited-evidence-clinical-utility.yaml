@@ -1,0 +1,38 @@
+slug: food-sensitivity-testing-limited-evidence-clinical-utility
+statement: IgG food sensitivity testing and MRT testing have limited supporting research
+  but may provide clinical value for patients who have not improved with a standard
+  elimination diet.
+evidence_tier: fm_specific_thin
+rationale: 'The speaker explicitly acknowledges the research is ''not all that compelling''
+  while citing anecdotal clinical utility. This matches the mainstream scientific
+  position: IgG testing is not endorsed by major allergy bodies as diagnostic, but
+  is used in FM practice. Appropriately flagged as adjunct, not first-line.'
+coaching_translation: Blood tests for food sensitivities (like IgG panels or MRT)
+  don't have strong scientific backing, but some practitioners find them useful when
+  elimination diets alone haven't provided enough answers. They're best used as a
+  supplement to, not a replacement for, an elimination diet.
+out_of_scope_notes: Ordering, interpreting, and acting on IgG or MRT food sensitivity
+  panels requires clinician involvement.
+caveats:
+- 'Speaker''s own assessment: ''the research on food sensitivity testing is not all
+  that compelling.'''
+- IgG antibodies may reflect exposure, not pathological sensitivity — clinical interpretation
+  is complex.
+- Single-expert source; testing recommendations should be clinician-directed.
+linked_to_topics:
+- food-sensitivities
+- elimination-diet
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-2
+  location: Q&A — food sensitivity testing
+  quote: If you look at the research on food sensitivity testing, it's not all that
+    compelling. However, I would say anecdotally with patients, I found it to be very
+    valuable. So I think this really speaks to if you've done a traditional elimination
+    diet and you're not feeling like you're getting improvement in symptoms, I think
+    doing IgG testing can be helpful.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

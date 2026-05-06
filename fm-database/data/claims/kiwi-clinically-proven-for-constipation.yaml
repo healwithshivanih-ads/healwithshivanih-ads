@@ -1,0 +1,26 @@
+slug: kiwi-clinically-proven-for-constipation
+statement: Eating 1–2 kiwi fruits daily is clinically proven to improve stool frequency
+  and consistency in constipation.
+evidence_tier: strong
+rationale: Multiple RCTs (including Udani 2009, Mazur 2012) demonstrate kiwifruit
+  actinidin enzyme and soluble fiber improve stool frequency; the document explicitly
+  states 'clinically proven for constipation'.
+coaching_translation: Adding one kiwi a day is one of the most evidence-backed food
+  strategies for constipation — and it is also Low FODMAP at one piece.
+caveats:
+- Kiwi is a salicylate-containing food; check for salicylate sensitivity.
+linked_to_topics:
+- low-fodmap-diet
+- elimination-diet
+linked_to_mechanisms:
+- gut-motility-dysregulation
+out_of_scope_notes: ''
+linked_to_supplements: []
+sources:
+- id: vitaone-elimination-diet-toolkit
+  location: FODMAP Plan SOS Solutions — Constipation
+  quote: This is clinically proven for constipation and Low FODMAP approved in 1 piece.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

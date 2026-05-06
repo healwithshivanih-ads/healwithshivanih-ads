@@ -1,0 +1,26 @@
+slug: statins-deplete-coq10
+statement: Statins deplete CoQ10, commonly causing fatigue and muscle pain; CoQ10
+  supplementation at 100–200 mg/day is a standard functional medicine intervention.
+evidence_tier: plausible_emerging
+rationale: Statins inhibit the mevalonate pathway, reducing CoQ10 synthesis. The depletion
+  is biochemically established. RCT evidence for CoQ10 supplementation reversing statin
+  myopathy is mixed (some positive, some null). Plausible_emerging is appropriate.
+coaching_translation: Clients on statins who experience fatigue or muscle pain should
+  discuss CoQ10 with their prescriber.
+out_of_scope_notes: CoQ10 dosing in the context of statin therapy should be supervised
+  by a clinician.
+caveats:
+- Evidence for clinical benefit of CoQ10 in statin myopathy remains mixed in RCTs.
+linked_to_topics:
+- medicine-nutrient-interactions
+linked_to_supplements:
+- coq10
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Medicine-Nutrient Interactions Cheatsheet
+  quote: Fatigue, muscle pain common. Replenish CoQ10 (100–200 mg/day), monitor 25(OH)D.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

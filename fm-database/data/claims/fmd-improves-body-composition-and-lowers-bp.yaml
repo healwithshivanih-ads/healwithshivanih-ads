@@ -1,0 +1,30 @@
+slug: fmd-improves-body-composition-and-lowers-bp
+statement: The Fasting Mimicking Diet (5-day, very low-calorie, low-carbohydrate monthly
+  protocol) has been shown in a limited number of studies to improve body composition
+  and lower blood pressure after three consecutive cycles.
+evidence_tier: plausible_emerging
+rationale: 'Directly cited: Wei et al. (Sci Transl Med 2017) is referenced in the
+  document. Evidence is promising but from a limited number of studies.'
+coaching_translation: A specific 5-day monthly fasting approach may help improve body
+  composition and blood pressure, but it should be done under clinician guidance.
+out_of_scope_notes: Protocol selection and medical clearance for FMD must be handled
+  by clinician.
+caveats:
+- Limited number of studies
+- Requires clinician supervision
+- Not appropriate for many populations (pregnant, frail, eating disorder history)
+linked_to_topics:
+- intermittent-fasting
+- cardiometabolic-health
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-cardiometabolic-toolkit
+  location: Intermittent Fasting — Fasting Mimicking Diet
+  quote: This 5-day, very low-calorie, low carbohydrate, structured food plan has
+    been shown in a limited number of studies to improve body composition and lower
+    blood pressure after three consecutive cycles (3 months).
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,27 @@
+slug: ala-reduces-diabetic-nerve-pain
+statement: Alpha lipoic acid reduces symptoms of diabetic nerve pain.
+evidence_tier: plausible_emerging
+rationale: Supported by Porasuphatana et al. 2012 (Asia Pac J Clin Nutr) RCT cited
+  in document; IV ALA has stronger evidence but oral forms also studied. Multiple
+  trials support neuropathy symptom reduction.
+coaching_translation: Alpha lipoic acid is an antioxidant that research shows can
+  help ease nerve pain in people with diabetes.
+caveats:
+- Strongest evidence is for IV ALA; oral evidence is more modest. Symptom management
+  of diabetic neuropathy requires clinician oversight.
+out_of_scope_notes: Diabetic neuropathy treatment is outside coaching scope — refer
+  to clinician.
+linked_to_topics:
+- blood-sugar-dysfunction
+linked_to_supplements:
+- alpha-lipoic-acid
+linked_to_mechanisms: []
+sources:
+- id: vitaone-blood-sugar-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: Multiple studies have shown that alpha lipoic acid also reduces symptoms
+    of diabetic nerve pain.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

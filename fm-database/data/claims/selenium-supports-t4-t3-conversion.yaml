@@ -1,0 +1,27 @@
+slug: selenium-supports-t4-t3-conversion
+statement: Selenium (100–200 µg/day) supports T4 → T3 conversion via deiodinase enzyme
+  activity and is a key nutrient for thyroid function.
+evidence_tier: plausible_emerging
+rationale: Selenium is an essential cofactor for iodothyronine deiodinase and thyroid
+  peroxidase. The document recommends 100–200 µg/day. RCTs on selenium and thyroid
+  function exist but are primarily in autoimmune contexts.
+coaching_translation: Selenium is the mineral your thyroid enzymes need to turn inactive
+  T4 into the active T3 your cells actually use.
+out_of_scope_notes: Specific dosing recommendations should be confirmed with a clinician.
+  Excess selenium is toxic.
+caveats:
+- Dose range (100–200 µg/day) from synthesis document — verify with clinician.
+- Upper tolerable limit for selenium is 400 µg/day; toxicity risk above this.
+linked_to_topics:
+- thyroid
+linked_to_supplements:
+- selenium
+linked_to_mechanisms: []
+sources:
+- id: vitaone-thyroid-cheatsheet
+  location: Clinical Action Steps — Support T4→T3 Conversion
+  quote: Selenium (100–200 µg/day), Zinc Glycinate (20–30 mg/day), Iron, Active B2/B6/B12
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,31 @@
+slug: triphala
+display_name: Triphala
+category: herb
+forms_available:
+- capsule
+- tablet
+- powder
+timing_options:
+- evening
+- bedtime
+take_with_food: optional
+linked_to_topics:
+- gerd
+- gut-dysfunction
+linked_to_claims:
+- triphala-modulates-gi-transit
+notes_for_coach: Listed as a transit time modulator in the PPI taper protocol. An
+  Ayurvedic formula with mild laxative and GI motility-supportive properties.
+evidence_tier: fm_specific_thin
+typical_dose_range: {}
+linked_to_mechanisms: []
+notes_for_client: ''
+sources:
+- id: vitaone-gut-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
+    — Supplement recommendations'
+  quote: 'Transit time modulators: Iberogast, D-limonene, ginger, probiotics, triphala'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

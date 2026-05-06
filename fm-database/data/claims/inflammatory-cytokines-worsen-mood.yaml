@@ -1,0 +1,29 @@
+slug: inflammatory-cytokines-worsen-mood
+statement: Pro-inflammatory cytokines such as IL-6 and TNF-alpha can directly worsen
+  mood regulation and exacerbate anxiety and depression.
+evidence_tier: plausible_emerging
+rationale: The cytokine-mood hypothesis has meaningful supporting literature (e.g.,
+  sickness behaviour research), but speaker does not cite specific papers. Plausible_emerging
+  is appropriate given expert-consensus source type.
+coaching_translation: Inflammation in the body — including from the gut — can chemically
+  worsen anxiety and depression, not just situational stress.
+caveats:
+- No specific studies cited by speaker.
+- Causal direction and magnitude in healthy populations without frank inflammatory
+  disease is still under study.
+linked_to_topics:
+- gut-brain-axis
+- anxiety
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-5
+  location: Gut Inflammation and Brain section
+  quote: There are particular signaling molecules... called cytokines that can affect
+    mood regulation, especially the inflammatory ones, interleukin 6, tumor necrosis
+    factor, all of which can absolutely worsen mood.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

@@ -1,0 +1,79 @@
+slug: milk-thistle
+display_name: Milk Thistle (Silymarin)
+category: herb
+forms_available:
+- capsule
+- tablet
+- liquid
+typical_dose_range:
+  capsule:
+    min: 200
+    max: 400
+    unit: mg
+  tablet:
+    min: 150
+    max: 300
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: optional
+notes_for_coach: Supports hepatocyte repair and liver detoxification — useful for
+  Candida die-off reactions and sluggish bile. 200-400mg/day of standardized silymarin
+  extract.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- thyroid
+- estrogen-dominance
+- inflammation
+- adrenal-dysfunction
+- insulin-resistance
+- nafld
+- liver-detoxification
+- methylation-mthfr
+- candida-overgrowth
+- sluggish-bile-flow
+linked_to_mechanisms: []
+linked_to_claims:
+- fluoride-bpa-block-thyroid-receptors
+- estrogen-dominance-raises-tbg-reduces-free-thyroid-hormones
+- nac-boosts-glutathione-phase-ii-detox-estrogen
+- emotional-stress-cascade-chronic-disease
+- fatty-liver-drives-insulin-resistance
+- silymarin-hepatoprotective-nafld
+- silymarin-viral-hepatitis-support
+- sluggish-bile-flow-overlooked-root-cause
+- nac-breaks-candida-biofilms
+notes_for_client: Milk thistle supports liver health and helps the liver process toxins
+  released during a Candida cleanse or when bile flow is sluggish.
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: Milk Thistle (Silymarin) - Liver regeneration, antioxidant - 150–300 mg/day
+    - With meals
+- id: vitaone-thyroid-cheatsheet
+  location: Clinical Action Steps — Liver Detox Support
+  quote: NAC, milk thistle, cruciferous veggies, hydration
+- id: vitaone-sex-hormones-cheatsheet
+  location: Advanced Support — Estrogen Dominance Supplement Cheatsheet
+  quote: 'Milk Thistle (Silymarin): Liver detox + antioxidant; High LFTs + estrogen
+    overload.'
+- id: vitaone-adrenal-cheatsheet
+  location: How Chronic Stress, Anger, or Grief Translate into Physical Diseases (p.10)
+  quote: Support liver detox (NAC, milk thistle), regulate estrogen metabolism, vagal
+    activation.
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Fatty Liver (NAFLD)
+  quote: Milk Thistle (Silymarin) (300 mg BID)
+- id: vitaone-liver-detox-cheatsheet
+  location: Liver Disease Cheatsheet — Alcoholic Liver Disease
+  quote: Silymarin (Milk thistle), NAC, B-complex, SAMe
+- id: vitaone-gut-cheatsheet
+  location: Candida Infection — Supplement Stack
+  quote: Milk Thistle (Silymarin) 200–400 mg/day — Supports liver detoxification from
+    Candida die-off
+version: 7
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

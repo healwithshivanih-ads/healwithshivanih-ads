@@ -1,0 +1,64 @@
+slug: elimination-diet
+display_name: Elimination Diet
+aliases:
+- elimination-reintroduction protocol
+- Whole30
+- food elimination trial
+- food elimination protocol
+- exclusion diet
+summary: A structured short-term dietary protocol that removes common food triggers
+  (gluten, dairy, soy, nightshades, oxalates, salicylates, histamines, high-FODMAP
+  foods) to identify individual food sensitivities and reduce GI and systemic symptoms,
+  followed by systematic reintroduction.
+common_symptoms:
+- unidentified food reactions
+- persistent bloating
+- fatigue
+- brain fog
+- bloating
+- abdominal-pain
+- diarrhea
+- constipation
+- brain-fog
+- headache
+- skin-rash
+related_topics:
+- food-sensitivities
+- leaky-gut
+- microbiome
+- inflammation
+- ibs
+- food-intolerance
+- low-fodmap-diet
+- gluten-sensitivity
+- histamine-intolerance
+key_mechanisms:
+- trigger-food-removal
+- symptom-clearance
+- structured-reintroduction
+- gut-barrier-dysfunction
+- immune-food-reactivity
+- colonic-fermentation
+coaching_scope_notes: Coaches can support food swaps, meal planning, and symptom tracking.
+  Diagnosis of celiac disease, allergy, or IBD requires clinician referral.
+clinician_scope_notes: Celiac serology, allergy testing, and formal food challenge
+  protocols are outside coaching scope.
+evidence_tier: strong
+red_flags:
+- severe weight loss during elimination
+- signs of nutritional deficiency
+- worsening symptoms beyond expected die-off
+sources:
+- id: thurlow-microbiome-session-2
+  location: Q&A section — practical recommendations
+  quote: Do you think you have a sensitivity? I would just do like a whole 30. And
+    that's not meant to be done forever, but it can be a really insightful and helpful
+    tool.
+- id: vitaone-elimination-diet-toolkit
+  location: Low FODMAP Vegetarian Diet Plan
+  quote: Low FODMAP is a short-term, research-backed approach (not a forever-elimination)
+    designed to calm IBS-type symptoms while you figure out your personal triggers.
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

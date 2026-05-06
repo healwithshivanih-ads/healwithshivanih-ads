@@ -1,0 +1,92 @@
+slug: oxidative-stress
+display_name: Oxidative Stress
+aliases:
+- reactive oxygen species excess
+- antioxidant deficiency
+- reactive oxygen species
+- ROS elevation
+- glutathione depletion
+- free radical burden
+- free radical damage
+- ROS accumulation
+- ROS overload
+category: metabolic
+summary: Phase I processing generates reactive oxygen intermediates (superoxide, free
+  radicals) that can cause secondary tissue damage if not quenched by antioxidant
+  nutrients. Antioxidant protective nutrients include carotenoids (Vit A), ascorbic
+  acid (Vit C), tocopherols (Vit E), selenium, CoQ10, zinc, manganese, bioflavonoids,
+  silymarin, pycnogenol.
+upstream_drivers:
+- poor-diet
+- toxin-exposure
+- chronic-inflammation
+- environmental-toxins
+- viral-infection
+- poor diet
+- smoking
+- excess calories
+- inflammation
+- mitochondrial-atp-production
+- cytochrome-p450-phase1
+- toxic-body-burden
+downstream_effects:
+- oxidized-ldl
+- endothelial-damage
+- plaque-formation
+- nlrp3-inflammasome-activation
+- tissue-damage
+- immune-dysfunction
+- endothelial damage
+- LDL oxidation
+- accelerated aging
+- cell-death
+- premature-aging
+- chronic-disease-risk
+- mitochondrial-dysfunction
+- secondary-tissue-damage
+- increased-inflammatory-signaling
+related_mechanisms:
+- chronic-inflammation
+- insulin-resistance
+- nlrp3-inflammasome-activation
+- cytokine-dysregulation
+- systemic-inflammation
+- mitochondrial-atp-production
+- glutathione-peroxidase-activity
+- cytochrome-p450-phase1
+- phase2-conjugation
+linked_to_topics:
+- dyslipidemia
+- chronic-inflammation
+- immune-support
+- cardiometabolic-health
+- phytonutrient-dense-diet
+- mitochondrial-health-nutrition
+- liver-detoxification
+- toxic-body-burden
+- mercury-amalgam-removal
+evidence_tier: strong
+sources:
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 3
+  quote: Oxidized LDL — Shows oxidative burden — Address antioxidants & inflammation.
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations — NAC'
+  quote: N-acetylcysteine promotes the production of glutathione, a potent antioxidant
+    that supports immune function.
+- id: vitaone-cardiometabolic-toolkit
+  location: Intermittent Fasting — Improves/Decreases Table
+  quote: 'Intermittent fasting Improves: Antioxidant activity. Decreases: Free radicals.'
+- id: vitaone-nutrition-toolkit
+  location: Nutrients for Mitochondrial Health
+  quote: Free radicals need to be neutralized or they will create damage (often referred
+    to as 'oxidative stress') in the body. Excess free radicals can damage the body
+    by initiating the death of cells, leading to premature aging.
+- id: vitaone-liver-detox-toolkit
+  location: Features of the Detox Food Plan
+  quote: Key antioxidants help protect the body and support biotransformation of these
+    metabolites.
+version: 5
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

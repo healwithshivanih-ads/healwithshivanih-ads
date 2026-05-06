@@ -1,0 +1,41 @@
+slug: hepatic-estrogen-detoxification
+display_name: Hepatic Estrogen Detoxification & Phase I/II Metabolism
+aliases:
+- estrogen liver metabolism
+- CYP estrogen hydroxylation
+- COMT methylation of estrogens
+- estrogen phase II conjugation
+category: metabolic
+summary: Estrogens are primarily metabolized in the liver via CYP enzymes (CYP1A1,
+  CYP1B1) producing hydroxylated metabolites (2-OHE1, 4-OHE1, 16-OHE1), which are
+  then methylated (COMT) or conjugated for excretion. Preferential 4-hydroxylation
+  yields carcinogenic catechol estrogens. Poor detoxification leads to accumulation
+  of harmful metabolites, enterohepatic recirculation, and estrogen dominance.
+upstream_drivers:
+- genetic variants (COMT, CYP1A1, CYP1B1, GST)
+- alcohol consumption
+- xenoestrogen exposure
+- insulin resistance
+- obesity
+- low fiber diet
+downstream_effects:
+- estrogen-dominance
+- increased-cancer-risk
+- pms-exacerbation
+- endometriosis-exacerbation
+related_mechanisms:
+- insulin-resistance
+- shbg-hormone-binding
+- nrf2-glutathione-pathway
+linked_to_topics:
+- estrogen-metabolism
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-sex-hormones-toolkit
+  location: Estrogen Metabolism — Page 02
+  quote: Estrogen metabolites which are primarily metabolized in the liver & excreted
+    from the body through the digestive and urinary tracts.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,27 @@
+slug: hyperinsulinemia-stimulates-theca-cells-increases-androgens
+statement: Hyperinsulinemia in PCOS stimulates ovarian theca cells to overproduce
+  androgens and lowers SHBG, increasing free testosterone.
+evidence_tier: strong
+rationale: 'Well-established mechanism: insulin receptors on theca cells upregulate
+  CYP17A1 (androgen synthesis enzyme); insulin also suppresses hepatic SHBG production.
+  This is consensus-level in reproductive endocrinology literature.'
+coaching_translation: When insulin is chronically high, it signals the ovaries to
+  make too much testosterone — which is why managing blood sugar is so central to
+  PCOS care.
+linked_to_topics:
+- pcos
+linked_to_mechanisms:
+- insulin-resistance
+- aromatase-overactivity
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: vitaone-sex-hormones-cheatsheet
+  location: PCOD Cheatsheet — Key Mediators
+  quote: Hyperinsulinemia → stimulates theca cells → ↑ androgens; Low SHBG → ↑ free
+    testosterone.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

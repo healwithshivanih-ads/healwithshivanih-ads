@@ -1,0 +1,31 @@
+slug: elimination-diets-designed-for-short-term-use-only
+statement: Elimination diets (e.g., carnivore, ketogenic) are designed for short-term
+  use of 30–90 days; sustained long-term use may deplete fiber-dependent microbiome
+  bacteria and impair insulin sensitivity.
+evidence_tier: plausible_emerging
+rationale: Speaker makes a clear clinical assertion about the time-limited design
+  of elimination diets and cites a colleague's observation of insulin sensitivity
+  loss in long-term carnivores. Plausible mechanism; no controlled study cited.
+coaching_translation: If a client has been in strict elimination mode for more than
+  3 months, it's worth having a gentle conversation about slowly reintroducing fiber-rich
+  plant foods to support their microbiome.
+caveats:
+- Based on single-expert observation and practitioner anecdote. Encourage clinician
+  involvement for clients with complex dietary histories.
+linked_to_topics:
+- fiber-gap
+- microbiome
+- dysbiosis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-7
+  location: Elimination diet discussion [00:10:17]
+  quote: those elimination diets, they're designed to be short-term, 30, 60, 90 days
+    max. They are not designed to be a long-term diet. And if you are using them as
+    such, you may be negatively impacting your microbiome.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

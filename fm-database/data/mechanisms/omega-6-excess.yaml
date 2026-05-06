@@ -1,0 +1,30 @@
+slug: omega-6-excess
+display_name: Omega-6 Excess / Omega-3:6 Imbalance
+aliases:
+- excess omega-6
+- pro-inflammatory fat intake
+- linoleic acid excess
+category: metabolic
+summary: Processed cooking oils (canola, corn, soybean, sunflower, safflower, grapeseed,
+  cottonseed) are high in omega-6 fatty acids, which can contribute to chronic inflammation
+  when consumed in excess relative to omega-3 intake.
+upstream_drivers:
+- processed-oil-consumption
+- poor-diet
+downstream_effects:
+- systemic-inflammation
+- atherosclerosis
+related_mechanisms:
+- systemic-inflammation
+linked_to_topics:
+- cardiovascular-dysfunction
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-cv-toolkit
+  location: A Guide to Cooking with Fats and Oils
+  quote: These fats and oils are also high in omega-6 fatty acids, which can contribute
+    to chronic inflammation in the body.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,32 @@
+slug: indole-3-carbinol
+display_name: Indole-3-Carbinol (I3C)
+category: other
+forms_available:
+- capsule
+- tablet
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- estrogen-metabolism
+linked_to_claims:
+- dim-i3c-support-estrogen-metabolism
+- cruciferous-vegetables-support-estrogen-metabolism
+notes_for_coach: I3C is a precursor to DIM, also derived from cruciferous vegetables.
+  It is a precursor in gut conversion to DIM. Clinician should determine which form
+  is most appropriate.
+notes_for_client: I3C is a natural compound from cruciferous vegetables that supports
+  healthy estrogen processing in the body.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-sex-hormones-toolkit
+  location: Estrogen Metabolism — Page 02
+  quote: Two commonly recommended supplements, diindolylmethane (DIM), and Indole-3-carbinol
+    (I3C), are extracted from cruciferous vegetables.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

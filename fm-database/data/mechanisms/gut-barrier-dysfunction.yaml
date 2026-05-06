@@ -1,0 +1,49 @@
+slug: gut-barrier-dysfunction
+display_name: Gut Barrier Dysfunction
+aliases:
+- leaky gut
+- intestinal hyperpermeability
+- increased gut permeability
+- increased intestinal permeability
+category: gut
+summary: Compromise of tight junction proteins in intestinal epithelium allowing luminal
+  antigens, bacteria, and toxins to translocate into the bloodstream, triggering systemic
+  immune activation and inflammation.
+upstream_drivers:
+- zinc-deficiency
+- dysbiosis
+- antibiotic-use
+- gluten-exposure-in-sensitive-individuals
+- chronic-stress
+- high-fodmap-load
+downstream_effects:
+- nutrient-malabsorption
+- immune-activation
+- food-sensitivities
+- systemic-inflammation
+- food-reactivity
+- brain-fog
+- fatigue
+related_mechanisms:
+- systemic-inflammation
+- immune-food-reactivity
+- colonic-fermentation
+linked_to_topics:
+- hairfall
+- knee-pain
+- elimination-diet
+- gluten-sensitivity
+- ibs
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Zinc – The Immune & Repair Mineral
+  quote: Enhances gut barrier integrity → key in leaky gut & chronic diarrhea cases.
+- id: vitaone-elimination-diet-toolkit
+  location: Food Swaps/Replacements
+  quote: Gluten may be present as malt in some of these products. The risk of cross-contamination
+    also persists for nuts and oats.
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

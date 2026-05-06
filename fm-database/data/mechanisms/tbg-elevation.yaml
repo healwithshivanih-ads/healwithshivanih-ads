@@ -1,0 +1,34 @@
+slug: tbg-elevation
+display_name: Thyroid-Binding Globulin Elevation
+aliases:
+- TBG excess
+- estrogen-driven TBG increase
+- reduced free thyroid hormone
+category: endocrine
+summary: Estrogen (from dominance, OCP use, or HRT) increases thyroid-binding globulin
+  (TBG) in the blood, causing more T4 and T3 to be bound and unavailable to tissues.
+  This reduces free T3/T4 levels and can produce functional hypothyroid symptoms even
+  with normal total hormone levels.
+upstream_drivers:
+- estrogen-dominance
+- oral-contraceptive-use
+- hrt
+downstream_effects:
+- reduced-free-t3
+- reduced-free-t4
+- functional-hypothyroidism
+related_mechanisms:
+- impaired-t4-to-t3-conversion
+linked_to_topics:
+- hypothyroidism
+- t3-conversion-disorder
+evidence_tier: strong
+sources:
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 6: Causes of Thyroid Disorders'
+  quote: 'Estrogen dominance: Increased Thyroid-binding globulin (TBG) means more
+    hormone bound, less free hormone available.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

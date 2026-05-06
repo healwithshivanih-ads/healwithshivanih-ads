@@ -1,0 +1,26 @@
+slug: low-shbg-raises-free-androgens-estrogens
+statement: Low SHBG leads to elevated free testosterone and estrogen, manifesting
+  as hair loss, acne, and excess fluid retention.
+evidence_tier: plausible_emerging
+rationale: Mechanistically sound; low SHBG reduces hormone buffering capacity. Source
+  is expert synthesis without primary RCT citation.
+coaching_translation: Low SHBG means hormones circulate more freely, which can show
+  up as acne, hair thinning, or feeling puffy.
+caveats:
+- Source is expert consensus/synthesis. Lab confirmation required.
+linked_to_topics:
+- sex-hormone-binding-globulin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-sex-hormones-toolkit
+  location: Sex Hormone Binding Globulin (SHBG) — Page 01
+  quote: When SHBG levels in the body are low, there is not enough binding power to
+    keep sex hormones within the optimal range. This can lead to increased free testosterone
+    and estrogen in the body, which can lead to symptoms like hair loss, acne, and
+    excess fluid retention.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

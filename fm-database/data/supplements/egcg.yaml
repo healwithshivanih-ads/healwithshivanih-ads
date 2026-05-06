@@ -1,0 +1,37 @@
+slug: egcg
+display_name: EGCG (Epigallocatechin Gallate / Green Tea Extract)
+category: herb
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 225
+    max: 400
+    unit: mg
+timing_options:
+- morning
+- with_breakfast
+- mid_morning
+take_with_food: optional
+linked_to_topics:
+- immune-support
+- chronic-inflammation
+linked_to_claims:
+- egcg-anti-inflammatory-antiviral
+notes_for_coach: Green tea (4 cups/day) is an accessible dietary approach. Concentrated
+  EGCG extracts carry hepatotoxicity risk per USP review — use with caution and clinician
+  awareness. Avoid with empty stomach for sensitive individuals.
+notes_for_client: Drinking 3–4 cups of green tea daily is a safe way to get EGCG.
+  Concentrated extracts should be discussed with your practitioner first.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: In addition to reducing inflammation, green tea enhances the immune system
+    and targets one of the processes involved in COVID-19 replication.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

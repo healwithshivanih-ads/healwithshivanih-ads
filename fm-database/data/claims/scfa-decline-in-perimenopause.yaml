@@ -1,0 +1,35 @@
+slug: scfa-decline-in-perimenopause
+statement: Women in perimenopause and menopause produce fewer short-chain fatty acids
+  (SCFAs — butyrate, propionate, acetate), which are critical signaling molecules
+  for gut integrity, immune balance, endogenous GLP-1 production, and brain health.
+evidence_tier: plausible_emerging
+rationale: SCFAs are produced by colonic fermentation of dietary fiber and are well-established
+  as key regulators of gut barrier function, immune modulation, and metabolic signaling
+  (strong evidence for SCFAs in general). The specific association with hormonal decline
+  in perimenopause reducing SCFA production is biologically plausible and supported
+  by observational data but not yet confirmed by large RCTs.
+coaching_translation: As estrogen declines, your gut produces fewer of the 'good signaling
+  molecules' — called short-chain fatty acids — that protect your gut lining, support
+  your immune system, and even influence your appetite and brain. Dietary fiber is
+  the main way to keep these molecules flowing.
+caveats:
+- Source is expert course content, not primary literature.
+- The causal link between perimenopausal hormone decline and SCFA reduction is supported
+  by observational and mechanistic data, not large human RCTs.
+linked_to_topics:
+- perimenopause
+- microbiome
+- gut-hormone-axis
+- estrobolome
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-mondays
+  location: 'Session 1: Microbiome Foundations and Hormone Shifts'
+  quote: as we are navigating perimenopause and menopause, we start making less short
+    chain fatty acids.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

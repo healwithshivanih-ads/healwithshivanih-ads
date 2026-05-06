@@ -1,0 +1,27 @@
+slug: iodine-excess-can-worsen-hashimotos
+statement: Excess iodine can worsen Hashimoto's thyroiditis or trigger hyperthyroidism,
+  so iodine should be consumed in moderation rather than high-dose supplemented.
+evidence_tier: plausible_emerging
+rationale: 'The document warns ''Caution: Excess iodine can worsen Hashimoto''s or
+  trigger hyperthyroidism.'' The Wolff-Chaikoff effect (iodine excess blocking hormone
+  synthesis) is well described, and excess iodine''s role in triggering autoimmune
+  thyroid flares is biologically plausible.'
+coaching_translation: More iodine is not better — especially in Hashimoto's. Focus
+  on food sources (seaweed in small amounts, eggs, fish) rather than high-dose supplements.
+caveats:
+- Source is synthesis; dose thresholds not specified
+- Iodine supplementation should be clinician-guided in thyroid disease
+linked_to_topics:
+- hashimotos-thyroiditis
+- hyperthyroidism
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 9: Nutrition Strategies'
+  quote: 'Caution: Excess iodine can worsen Hashimoto''s or trigger hyperthyroidism.'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

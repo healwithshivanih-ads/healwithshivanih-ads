@@ -1,0 +1,40 @@
+slug: ginger-root
+display_name: Ginger Root
+category: herb
+forms_available:
+- capsule
+- tablet
+- powder
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 1000
+    unit: mg
+  tablet:
+    min: 500
+    max: 1000
+    unit: mg
+  powder:
+    min: 500
+    max: 1000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+notes_for_coach: Anti-inflammatory and digestive herb; useful for nausea, indigestion,
+  and inflammatory conditions.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Page 3 - Supplement Table
+  quote: Ginger Root - Anti-inflammatory, digestion - 500–1000 mg/day - With meals
+version: 1
+status: active
+updated_at: '2026-04-30'
+updated_by: shivani

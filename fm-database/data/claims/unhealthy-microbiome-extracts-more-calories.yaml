@@ -1,0 +1,31 @@
+slug: unhealthy-microbiome-extracts-more-calories
+statement: The less healthy the microbiome, the more energy is extracted from the
+  same food — meaning two women eating identical diets may absorb different numbers
+  of calories depending on microbiome health.
+evidence_tier: plausible_emerging
+rationale: Speaker cites 'actual research' supporting differential caloric extraction
+  based on microbiome composition. This aligns with emerging science (e.g., Turnbaugh
+  et al. on germ-free mice; human twin studies), but single-expert source with no
+  specific citation; rated plausible_emerging.
+coaching_translation: The same meal can have different metabolic effects depending
+  on the health of your gut bacteria — another reason why gut health is foundational,
+  not optional.
+caveats:
+- Source is expert-consensus transcript; no specific study cited.
+- Effect size in humans is debated; rated plausible_emerging not strong.
+linked_to_topics:
+- microbiome
+- midlife-weight-gain
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: thurlow-microbiome-session-4
+  location: Session 4 — Microbiome as a Metabolic Organ
+  quote: The less healthy your microbiome is, the more energy extraction will occur.
+    Meaning you could have two women eat the same exact diet and dependent on the
+    health of their microbiome, one woman may extract more calories than the other.
+version: 1
+status: active
+updated_at: '2026-04-29'
+updated_by: shivani

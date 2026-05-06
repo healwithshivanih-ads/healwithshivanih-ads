@@ -1,0 +1,59 @@
+slug: sibo
+display_name: Small Intestinal Bacterial Overgrowth (SIBO)
+aliases:
+- small intestinal bacterial overgrowth
+- methane SIBO
+- hydrogen SIBO
+- small bowel overgrowth
+- SIBO
+summary: Overgrowth of bacteria in the small intestine causing fermentation of carbohydrates,
+  gas, bloating, and nutrient malabsorption. Low-FODMAP diet is a key adjunct therapy.
+  Herbal antimicrobials and specific probiotics (S. boulardii, L. plantarum) are used
+  alongside dietary restriction.
+common_symptoms:
+- constant-bloating
+- bloating-within-30-60-min-of-meals
+- distension
+- diarrhea-or-constipation
+- flatulence
+- brain-fog
+- bloating
+- abdominal-gas
+- abdominal-cramping
+- osmotic-diarrhea
+- acid-reflux
+red_flags:
+- significant B12 deficiency
+- severe malabsorption
+- weight loss
+- Severe malnutrition or malabsorption
+- Structural GI abnormality on imaging
+related_topics:
+- gut-dysbiosis
+- hypochlorhydria
+- leaky-gut
+- ibs
+- low-fodmap-diet
+key_mechanisms:
+- bacterial-fermentation-carbs
+- impaired-gut-motility
+- leaky-gut
+- gut-fermentation-dysbiosis
+coaching_scope_notes: Coach can support low-FODMAP food choices and lifestyle during
+  SIBO protocols. Antimicrobial selection and breath testing are clinician-scope.
+clinician_scope_notes: Diagnose via hydrogen/methane breath test. Prescribe herbal
+  or pharmaceutical antimicrobials. GI MAP useful for microbiome precision.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-gut-cheatsheet
+  location: SIBO Cheatsheet
+  quote: An abnormal overgrowth of bacteria in the small intestine (>10³ CFU/mL),
+    leading to maldigestion, malabsorption, and systemic symptoms. Major driver of
+    IBS symptoms (70–80% overlap).
+- id: vitaone-elimination-diet-cheatsheet
+  location: Practitioner Tips
+  quote: 'Combine with SIBO protocols: herbal antimicrobials + probiotics.'
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

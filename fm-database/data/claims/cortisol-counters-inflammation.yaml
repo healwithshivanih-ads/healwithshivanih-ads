@@ -1,0 +1,23 @@
+slug: cortisol-counters-inflammation
+statement: Cortisol functions to counter inflammation and allergies as part of its
+  normal physiological role.
+evidence_tier: strong
+rationale: 'Well-established: cortisol is a glucocorticoid with potent anti-inflammatory
+  actions, suppressing cytokine production and immune cell activity. Textbook endocrinology.'
+coaching_translation: Cortisol isn't all bad — in the right amounts it keeps inflammation
+  in check. Problems arise when levels are chronically too high or too low.
+linked_to_topics:
+- hpa-axis-dysregulation
+- hypercortisolism
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-adrenal-toolkit
+  location: Hypercortisolism — Functions of cortisol
+  quote: Counters inflammation and allergies
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

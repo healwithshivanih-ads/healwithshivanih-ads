@@ -1,0 +1,25 @@
+slug: vitamin-d3-superior-to-d2
+statement: Vitamin D3 (cholecalciferol) is more effective than vitamin D2 (ergocalciferol)
+  at raising serum 25(OH)D levels.
+evidence_tier: strong
+rationale: Multiple meta-analyses confirm D3 raises 25(OH)D more effectively and durably
+  than D2 (Tripkovic et al., 2012, Am J Clin Nutr). This is considered consensus.
+coaching_translation: When recommending a vitamin D supplement, always choose D3 over
+  D2.
+caveats:
+- Optimal serum target (30–40 ng/mL) and dosing should be guided by serum 25(OH)D
+  testing — clinician territory.
+linked_to_topics:
+- vitamin-b-complex-deficiency
+linked_to_supplements:
+- vitamin-d3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin & Mineral Inactive vs Bio-Available Form Cheatsheet
+  quote: D3 is more effective in raising serum 25(OH)D levels.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

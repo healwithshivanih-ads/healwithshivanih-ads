@@ -1,0 +1,54 @@
+slug: candida-overgrowth
+display_name: Candida Overgrowth
+aliases:
+- candidiasis
+- SIFO
+- small intestinal fungal overgrowth
+- yeast overgrowth
+- intestinal candida
+summary: Overgrowth of Candida yeast in the gut, associated with symptoms such as
+  chronic candida infections, bloating, and food sensitivities. Managed with an anti-candida
+  food plan eliminating sugars, refined grains, fermented foods, and certain fungi.
+common_symptoms:
+- bloating
+- sugar-cravings
+- brain-fog
+- fatigue
+- vaginal-yeast-infections
+- oral-thrush
+- white-coated-tongue
+- nail-fungus
+- itchy-skin
+- chronic-candida-infections
+- multiple-food-allergies
+- upper-digestive-tract-gassiness
+red_flags:
+- systemic candidiasis in immunocompromised patients — urgent referral
+- Systemic or invasive candidiasis — requires medical management
+related_topics:
+- gut-dysbiosis
+- leaky-gut
+- sibo
+- hypochlorhydria
+- gut-dysfunction
+key_mechanisms:
+- yeast-fermentation-ethanol-toxins
+- biofilm-formation
+- leaky-gut
+- gut-dysbiosis
+coaching_scope_notes: Coaches can support the Anti-Candida Food Plan under practitioner
+  guidance. Dietary prescription is subject to healthcare professional discretion.
+clinician_scope_notes: Systemic candidiasis or persistent cases require medical evaluation
+  and antifungal therapy.
+evidence_tier: fm_specific_thin
+sources:
+- id: vitaone-gut-cheatsheet
+  location: Gut Health Cheatsheet / Candida Infection Cheatsheet
+  quote: Starve + kill + restore. Recurrent Candida = check glucose/insulin resistance.
+- id: vitaone-gut-toolkit
+  location: Testing for Low Stomach Acidity — Common Symptoms of Hypochlorhydria
+  quote: Chronic candida infections
+version: 2
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

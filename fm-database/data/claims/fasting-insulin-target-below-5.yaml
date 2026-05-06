@@ -1,0 +1,29 @@
+slug: fasting-insulin-target-below-5
+statement: Fasting insulin should ideally be below 5 µIU/mL; elevated fasting insulin
+  is a key indicator of insulin resistance driving dyslipidemia.
+evidence_tier: fm_specific_thin
+rationale: Target fasting insulin <5 is commonly used in functional medicine but is
+  not a universally adopted clinical threshold in mainstream guidelines. Biologically
+  plausible as a sensitivity marker.
+coaching_translation: Your fasting insulin level — not just blood sugar — can reveal
+  early insulin resistance before it shows up on standard tests. A target below 5
+  is used in functional medicine practice.
+caveats:
+- Source is an expert synthesis cheatsheet.
+- Fasting insulin <5 as a specific threshold is FM-specific; mainstream labs use wider
+  reference ranges.
+- Interpret with clinician.
+out_of_scope_notes: Lab interpretation is outside coaching scope.
+linked_to_topics:
+- dyslipidemia
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 3
+  quote: Fasting Insulin / HOMA-IR — Insulin resistance check — Target fasting insulin
+    <5.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

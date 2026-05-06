@@ -1,0 +1,27 @@
+slug: vitamin-k2-mk7-superior-for-bone-cardiovascular
+statement: Vitamin K2 (particularly MK-7) is more effective than K1 for bone mineralization
+  and cardiovascular protection because it activates osteocalcin and matrix Gla protein,
+  directing calcium into bone and away from arteries.
+evidence_tier: plausible_emerging
+rationale: MK-7 has longer half-life and superior carboxylation of osteocalcin vs
+  K1. Observational studies (Rotterdam, PREDIMED) support K2 for cardiovascular outcomes.
+  RCT evidence for MK-7 specifically is growing but not yet consensus.
+coaching_translation: K2 (MK-7 form) is the preferred choice when supplementing for
+  bone or heart health, not K1.
+caveats:
+- Patients on warfarin must not change K intake without clinician supervision.
+- Source is synthesis document.
+linked_to_topics:
+- knee-pain
+linked_to_supplements:
+- vitamin-k2-mk7
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin & Mineral Inactive vs Bio-Available Form Cheatsheet
+  quote: K2 is more effective for bone and cardiovascular health.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

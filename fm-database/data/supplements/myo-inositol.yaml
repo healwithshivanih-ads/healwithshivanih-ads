@@ -1,0 +1,74 @@
+slug: myo-inositol
+display_name: Myo-Inositol
+category: other
+forms_available:
+- powder
+- capsule
+typical_dose_range:
+  powder:
+    min: 2000
+    max: 4000
+    unit: mg
+  capsule:
+    min: 2000
+    max: 4000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_dinner
+- morning
+- mid_afternoon
+- evening
+take_with_food: optional
+linked_to_topics:
+- pcos
+- adrenal-dysfunction
+- insulin-resistance
+- low-carb-diet
+- hypothyroidism
+- hashimotos-hypothyroidism
+linked_to_claims:
+- myo-inositol-d-chiro-inositol-40-1-restores-ovulation-pcos
+- stress-disrupts-hpo-axis-pcos
+- inositol-glucose-uptake-pcos
+- low-carb-improves-pcos-hormonal-markers
+- myo-inositol-regulates-tsh-fsh-insulin-signaling
+notes_for_coach: Acts as a second messenger in TSH receptor signaling. Found naturally
+  in fruits, vegetables, legumes, cereals, and nuts. Often combined with selenium
+  in thyroid protocols. No specific dose cited in document — typically 2–4 g/day in
+  studies. Emerging evidence, not yet consensus.
+notes_for_client: Myo-inositol is a natural compound found in many foods that helps
+  your thyroid cells respond to the hormone signals telling them to produce thyroid
+  hormones.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-practice-guide
+  location: Seven Clinical Focus Areas > 3. PCOS > Coaching interventions
+  quote: 'Inositol supplementation: Myo-inositol and d-chiro-inositol ratio critical
+    (often 40:1)'
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: Myo-Inositol - Insulin sensitivity, ovarian health - 2–4 g/day - Anytime,
+    best split doses
+- id: vitaone-sex-hormones-cheatsheet
+  location: PCOS Supplement Cheatsheet
+  quote: 'Myo-Inositol: Improves insulin signaling; supports ovarian function; Better
+    ovulation, reduced androgens; 2–4 g/day; combine with D-Chiro for best results.'
+- id: vitaone-adrenal-cheatsheet
+  location: Stress & Chronic Diseases Link (p.9)
+  quote: 'PCOD / Infertility... Clinical Actions: Insulin regulation, inositol, adaptogens,
+    mind-body therapy.'
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Insulin Resistance
+  quote: Inositol (esp. D-chiro) — Improves glucose uptake & insulin sensitivity.
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: Functional Medicine Clinical Applications
+  quote: Combine with magnesium, inositol, and Vitamin D3.
+- id: vitaone-thyroid-toolkit
+  location: Myo-Inositol
+  quote: Cell signaling and hormone regulation of TSH, FSH and insulin
+version: 7
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

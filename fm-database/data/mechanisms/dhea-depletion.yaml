@@ -1,0 +1,36 @@
+slug: dhea-depletion
+display_name: DHEA Depletion
+aliases:
+- low DHEA
+- adrenal exhaustion
+- DHEA insufficiency
+category: endocrine
+summary: Under chronic stress, adrenal DHEA output falls as the glands can no longer
+  sustain output. DHEA is a precursor to testosterone and estrogen, supports immune
+  resistance, prevents osteoporosis, lowers cholesterol, and increases muscle mass.
+  Its depletion signals adrenal exhaustion.
+upstream_drivers:
+- chronic-stress
+- hpa-axis-dysregulation
+- cortisol-excess
+downstream_effects:
+- hormonal-imbalance
+- immune-suppression
+- osteoporosis
+- muscle-loss
+related_mechanisms:
+- cortisol-excess
+- hpa-axis-dysregulation
+linked_to_topics:
+- hpa-axis-dysregulation
+- hypercortisolism
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-adrenal-toolkit
+  location: Hypercortisolism
+  quote: If this becomes chronic, the adrenals can no longer keep up with the demand,
+    and DHEA levels begin to fall, signifying adrenal exhaustion.
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

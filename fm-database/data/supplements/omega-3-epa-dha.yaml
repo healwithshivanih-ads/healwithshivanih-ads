@@ -1,0 +1,55 @@
+slug: omega-3-epa-dha
+display_name: Omega-3 (EPA + DHA)
+category: fatty_acid
+forms_available:
+- capsule
+- liquid
+typical_dose_range:
+  capsule:
+    min: 1000
+    max: 2000
+    unit: mg
+  liquid:
+    min: 1000
+    max: 2000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_dinner
+- with_lunch
+take_with_food: required
+linked_to_topics:
+- nutrient-deficiency-depression
+- hairfall
+- knee-pain
+- insulin-resistance
+- blood-sugar-dysfunction
+- metabolic-syndrome
+- cardiovascular-dysfunction
+- drug-induced-nutrient-depletion
+- beta-blocker-deprescribing
+linked_to_claims:
+- omega3-epa-dha-mood-anti-inflammatory
+- statins-deplete-multiple-nutrients
+notes_for_coach: Listed as EFA supplementation (EPA+DHA and GLA) in beta blocker tapering
+  support, and as a nutrient depleted by statins. EPA+DHA have robust evidence for
+  cardiovascular risk reduction. Specific dosing requires clinician guidance.
+notes_for_client: Omega-3 fatty acids from fish oil support heart and vascular health.
+  They may also be depleted by statin medications.
+evidence_tier: strong
+linked_to_mechanisms: []
+sources:
+- id: vitaone-nutrition-cheatsheet
+  location: How Nutrient Deficiencies (B12, Folate, Omega-3, Magnesium) Mimic Depression
+  quote: Anti-inflammatory, modulate serotonin/dopamine receptors, neuronal fluidity
+- id: vitaone-blood-sugar-ebook
+  location: Section 7.2 — Targeted Supplementation
+  quote: 'Omega-3 (EPA + DHA): Anti-inflammatory; enhances adipocyte insulin sensitivity.
+    1-2 g combined.'
+- id: vitaone-cv-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
+  quote: EFA supplementation including EPA+DHA and GLA
+version: 3
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani

@@ -1,0 +1,31 @@
+slug: glutathione-nac-support-mercury-detox
+statement: Glutathione (liposomal) or N-Acetyl-Cysteine (NAC) supplementation supports
+  antioxidant defenses and detoxification around mercury amalgam removal.
+evidence_tier: plausible_emerging
+rationale: Glutathione is the primary endogenous antioxidant and a key Phase II conjugation
+  agent; NAC is a well-characterized glutathione precursor. Their use peri-amalgam
+  removal is biologically well-supported but specific RCT evidence for this protocol
+  is lacking.
+coaching_translation: Glutathione and NAC help your body's natural detox system handle
+  the oxidative stress of mercury exposure.
+out_of_scope_notes: Dosing (glutathione 500–1000 mg; NAC 600–1200 mg) is clinician
+  scope.
+caveats:
+- Specific protocol doses require clinician supervision. Source is an educational
+  toolkit.
+linked_to_topics:
+- mercury-amalgam-removal
+- liver-detoxification
+linked_to_supplements:
+- glutathione-liposomal
+- n-acetyl-cysteine
+linked_to_mechanisms: []
+sources:
+- id: vitaone-liver-detox-toolkit
+  location: Dental Amalgam Removal Protocol — Pre-Procedure
+  quote: 'Glutathione (liposomal, standard): 500 mg–1000 mg or N-Acetyl-Cysteine (NAC):
+    600–1200 mg'
+version: 1
+status: active
+updated_at: '2026-05-02'
+updated_by: shivani
