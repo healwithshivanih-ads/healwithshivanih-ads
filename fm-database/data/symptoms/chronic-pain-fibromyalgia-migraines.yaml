@@ -1,0 +1,31 @@
+slug: chronic-pain-fibromyalgia-migraines
+display_name: Chronic Pain, Fibromyalgia & Migraines
+aliases:
+- muscle pain
+- tension headaches
+- joint pain
+- low pain tolerance
+- fibro pain
+category: musculoskeletal
+severity: concerning
+description: Chronic pain, fibromyalgia, migraines, tension headaches, joint pain,
+  and low pain tolerance linked to stress amplification, central sensitization, inflammation,
+  endorphins, growth hormone, anger patterns, and neuroimmune activation.
+when_to_refer: Refer for fibromyalgia diagnosis, neurological causes of headache,
+  or pain requiring medication management.
+linked_to_topics:
+- chronic-inflammation
+- chronic-stress
+linked_to_mechanisms:
+- neuroimmune-inflammation-loop
+- sympathetic-dominance
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Symptoms Discussed
+  quote: Chronic pain, fibromyalgia, migraines, tension headaches, joint pain, and
+    low pain tolerance — Linked to stress amplification, central sensitization, inflammation,
+    endorphins, growth hormone, anger patterns, and neuroimmune activation.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

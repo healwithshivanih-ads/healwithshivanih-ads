@@ -1,0 +1,30 @@
+slug: melatonin-counterbalances-cortisol
+statement: Melatonin is described as antioxidant, anti-inflammatory, sleep-regulating,
+  and counterbalancing cortisol.
+evidence_tier: plausible_emerging
+rationale: Melatonin's antioxidant, anti-inflammatory, and sleep-regulating properties
+  have credible research support. Source is expert consensus without primary citations.
+coaching_translation: Supporting melatonin through dark nights, morning sunlight,
+  and sleep hygiene is a key coaching recommendation.
+caveats:
+- Melatonin supplement dosing is clinician-scope.
+- Source is expert consensus without direct citations.
+linked_to_topics:
+- sleep
+- chronic-stress
+- chronic-inflammation
+linked_to_supplements:
+- melatonin
+- magnesium
+- vitamin-b6
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 24
+  quote: Melatonin is described as antioxidant, anti-inflammatory, sleep-regulating,
+    and counterbalancing cortisol.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

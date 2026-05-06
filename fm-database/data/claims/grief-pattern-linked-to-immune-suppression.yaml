@@ -1,0 +1,29 @@
+slug: grief-pattern-linked-to-immune-suppression
+statement: Grief and unresolved sadness are described as involving vagal inhibition,
+  immune suppression, and oxygen dysregulation.
+evidence_tier: fm_specific_thin
+rationale: Grief-related immune suppression has some research support (e.g., reduced
+  NK cell activity in bereavement); the oxygen dysregulation framing is more FM-specific.
+  Source is expert consensus without primary citations.
+coaching_translation: Supporting immune nutrition, community connection, breathwork,
+  and gentle movement may help clients processing grief.
+caveats:
+- Source is expert consensus without direct citations.
+- Grief-related depression or immune dysfunction requires appropriate professional
+  support.
+linked_to_topics:
+- chronic-stress
+linked_to_supplements:
+- zinc
+- vitamin-c
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 12
+  quote: Grief and unresolved sadness are described as involving vagal inhibition,
+    immune suppression, and oxygen dysregulation.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

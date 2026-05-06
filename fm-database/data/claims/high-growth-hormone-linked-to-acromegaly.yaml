@@ -1,0 +1,24 @@
+slug: high-growth-hormone-linked-to-acromegaly
+statement: High growth hormone is described as causing acromegaly, joint pain, and
+  insulin resistance.
+evidence_tier: confirm_with_clinician
+rationale: Acromegaly is a rare but serious medical condition requiring endocrinological
+  diagnosis and management.
+out_of_scope_notes: Growth hormone testing and acromegaly management are strictly
+  clinician-scope.
+caveats:
+- 'Red flag: acromegaly requires clinician referral.'
+linked_to_topics:
+- insulin-resistance
+coaching_translation: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 6
+  quote: High growth hormone is described as causing acromegaly, joint pain, and insulin
+    resistance.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

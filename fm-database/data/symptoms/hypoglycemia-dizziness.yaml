@@ -1,0 +1,27 @@
+slug: hypoglycemia-dizziness
+display_name: Hypoglycemia, Dizziness & Weakness
+aliases:
+- blood sugar crash
+- shaky between meals
+- light-headed
+- weakness after skipping meals
+category: metabolic
+severity: concerning
+description: Hypoglycemia, dizziness, and weakness linked to low glucagon and blood
+  sugar instability.
+when_to_refer: Refer if diabetes, severe hypoglycemia, or medication-related blood
+  sugar issues.
+linked_to_topics:
+- insulin-resistance
+- adrenal-fatigue
+linked_to_mechanisms:
+- hpa-axis-overactivation
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Symptoms Discussed
+  quote: Hypoglycemia, dizziness, and weakness — Linked to low glucagon and blood
+    sugar instability.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

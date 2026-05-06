@@ -1,5 +1,5 @@
 slug: pcos
-display_name: PCOS & Hormonal Dysregulation
+display_name: PCOS (Polycystic Ovary Syndrome)
 aliases:
 - pcod
 - polycystic-ovary-syndrome
@@ -13,9 +13,9 @@ aliases:
 - polycystic ovaries
 - androgen excess
 - hormonal hair loss
-summary: PCOS and androgen-driven hair loss are linked to insulin resistance, high
-  androgens, inositol, omega-3, magnesium, and dietary changes emphasizing low refined
-  carbohydrates.
+summary: Insulin resistance, high insulin, high LH, androgens, low progesterone, low
+  adiponectin, stress disruption of the HPO axis, and PCOS support strategies are
+  mentioned.
 common_symptoms:
 - irregular or absent cycles
 - hormonal acne (jawline, chin)
@@ -40,6 +40,9 @@ common_symptoms:
 - low-mood
 - hormonal-hair-loss
 - mood-changes
+- irregular-cycles
+- central-weight-gain
+- pms
 red_flags:
 - severely irregular bleeding requiring GYN evaluation
 - suspected endometrial hyperplasia (long anovulatory periods)
@@ -54,6 +57,8 @@ red_flags:
 - uncontrolled insulin resistance
 - fertility-concerns-require-clinician
 - labs-required-lh-fsh-testosterone
+- infertility requiring fertility treatment
+- high androgens needing hormonal therapy
 related_topics:
 - perimenopause
 - estrogen-dominance
@@ -68,6 +73,8 @@ related_topics:
 - hair-loss
 - nutrition-deficiency
 - chronic-inflammation
+- adrenal-fatigue
+- chronic-stress
 key_mechanisms:
 - insulin-resistance
 - androgen-excess
@@ -77,12 +84,12 @@ key_mechanisms:
 - aromatase-upregulation
 - nutrient-dependent-energy-metabolism
 - oxidative-stress-and-inflammation
-coaching_scope_notes: Support with dietary pattern, stress, and movement. Inositol
-  and hormonal supplementation should be personalized with clinician and relevant
-  labs (LH:FSH, testosterone, DHEA-S, fasting insulin).
-clinician_scope_notes: LH:FSH, testosterone, DHEA-S, and fasting insulin interpretation;
-  Vitex and adaptogen use in PCOS; and fertility-related protocols are clinical scope
-  items.
+- hpa-axis-overactivation
+- anti-stress-hormone-restoration
+coaching_scope_notes: Low-GI diet, fiber, protein balance, stress reduction, and seed
+  cycling support are coaching-appropriate.
+clinician_scope_notes: LH:FSH ratio, androgen testing, fertility treatment, and hormonal
+  therapy decisions require clinician oversight.
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, PCOS section
@@ -115,8 +122,13 @@ sources:
   location: Topics Covered
   quote: PCOS and androgen-driven hair loss are linked to insulin resistance, high
     androgens, inositol, omega-3, magnesium, and dietary changes.
-evidence_tier: plausible_emerging
-version: 8
+- id: vitaone-fm-adrenal-hormones
+  location: Topics Covered
+  quote: Insulin resistance, high insulin, high LH, androgens, low progesterone, low
+    adiponectin, stress disruption of the HPO axis, and PCOS support strategies are
+    mentioned.
+evidence_tier: confirm_with_clinician
+version: 9
 status: active
 updated_at: '2026-05-06'
 updated_by: shivani

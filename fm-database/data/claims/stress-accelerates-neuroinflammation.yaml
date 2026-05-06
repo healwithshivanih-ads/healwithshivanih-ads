@@ -1,0 +1,27 @@
+slug: stress-accelerates-neuroinflammation
+statement: Stress is described as accelerating neuroinflammation and oxidative damage
+  in neurodegenerative disorders.
+evidence_tier: fm_specific_thin
+rationale: Neuroinflammation and oxidative stress in neurodegeneration are active
+  research areas; stress as an accelerant is plausible but thin at coaching level.
+  Source is expert consensus without primary citations.
+coaching_translation: Stress reduction, antioxidant-rich diet, sleep, and polyphenols
+  may support neuroprotection.
+caveats:
+- Source is expert consensus without direct citations.
+- Neurodegenerative disease management requires clinician involvement.
+linked_to_topics:
+- chronic-stress
+- chronic-inflammation
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 11
+  quote: Stress is described as accelerating neuroinflammation and oxidative damage
+    in neurodegenerative disorders.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

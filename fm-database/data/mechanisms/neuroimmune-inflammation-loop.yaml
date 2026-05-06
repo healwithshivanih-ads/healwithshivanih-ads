@@ -1,0 +1,49 @@
+slug: neuroimmune-inflammation-loop
+display_name: Neuroimmune Inflammation Loop
+aliases:
+- psychoneuroimmunology pathway
+- stress-immune loop
+- cytokine-mood loop
+category: immune
+summary: Emotional stress and loneliness activate immune pathways and increase inflammatory
+  cytokines (IL-6, TNF-alpha, hs-CRP), driving neuroinflammation, autoimmune flares,
+  fatigue, and accelerated aging.
+upstream_drivers:
+- social-isolation
+- perceived-rejection
+- unresolved-emotions
+- chronic-stress
+- grief
+- anger
+- emotional-suppression
+- dysregulated-vagal-tone
+downstream_effects:
+- elevated-hs-crp
+- elevated-il-6
+- elevated-tnf-alpha
+- neuroinflammation
+- autoimmune-flares
+- fatigue
+- insulin-resistance
+- low-mood
+related_mechanisms:
+- hpa-axis-overactivation
+- gut-brain-axis-disruption
+- sympathetic-dominance
+linked_to_topics:
+- chronic-inflammation
+- chronic-stress
+- depression-like-symptoms
+- leaky-gut
+- gut-dysbiosis
+- cardiovascular-health
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Key Mechanisms Explained — neuroimmune-inflammation-loop
+  quote: Emotional stress and loneliness are described as activating immune pathways
+    and increasing inflammatory cytokines.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

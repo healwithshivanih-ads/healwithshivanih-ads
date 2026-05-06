@@ -1,0 +1,27 @@
+slug: low-gaba-linked-to-anxiety-and-insomnia
+statement: Low GABA is described as causing anxiety, insomnia, and restlessness.
+evidence_tier: plausible_emerging
+rationale: GABAergic deficit in anxiety and sleep is a credible mechanism; however,
+  direct GABA supplementation's efficacy is debated. Source is expert consensus without
+  primary citations.
+coaching_translation: Magnesium and L-theanine may support GABA activity and promote
+  calming. Sleep hygiene is a key coaching lever.
+caveats:
+- Source is expert consensus without direct citations.
+- Benzodiazepine or GABA medication decisions are clinician-scope.
+linked_to_topics:
+- depression-like-symptoms
+- sleep
+linked_to_supplements:
+- magnesium
+- l-theanine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 8
+  quote: Low GABA is described as causing anxiety, insomnia, and restlessness.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

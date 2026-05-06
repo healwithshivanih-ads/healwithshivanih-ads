@@ -1,0 +1,26 @@
+slug: low-adiponectin-linked-to-metabolic-syndrome
+statement: Low adiponectin is described as causing metabolic syndrome and insulin
+  resistance.
+evidence_tier: plausible_emerging
+rationale: Adiponectin's role in insulin sensitivity and metabolic health is credible
+  and well-discussed in the literature. Source is expert consensus without primary
+  citations.
+coaching_translation: Mediterranean diet, omega-3 foods, and exercise may support
+  adiponectin levels.
+caveats:
+- Source is expert consensus without direct citations.
+linked_to_topics:
+- insulin-resistance
+- pcos
+linked_to_supplements:
+- omega-3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 6
+  quote: Low adiponectin is described as causing metabolic syndrome and insulin resistance.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

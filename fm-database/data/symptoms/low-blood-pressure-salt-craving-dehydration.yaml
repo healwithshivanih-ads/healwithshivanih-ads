@@ -1,0 +1,28 @@
+slug: low-blood-pressure-salt-craving-dehydration
+display_name: Low Blood Pressure, Salt Craving & Dehydration
+aliases:
+- hypotension
+- craving salt
+- feeling dehydrated
+- orthostatic dizziness
+category: cardiovascular
+severity: concerning
+description: Low blood pressure, salt craving, and dehydration linked to low cortisol,
+  low aldosterone, low renin, adrenal issues, and fluid-balance dysfunction.
+when_to_refer: Refer if severe, persistent, or consistent with Addison's disease;
+  requires cortisol and aldosterone testing.
+linked_to_topics:
+- adrenal-fatigue
+- hpa-axis
+linked_to_mechanisms:
+- raas-and-fluid-balance
+- hpa-axis-overactivation
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Symptoms Discussed
+  quote: Low blood pressure, salt craving, and dehydration - Linked to low cortisol,
+    low aldosterone, low renin, adrenal issues, and fluid-balance dysfunction.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

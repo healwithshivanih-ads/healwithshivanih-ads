@@ -1,0 +1,32 @@
+slug: digital-overstimulation-linked-to-low-dopamine-and-serotonin
+statement: Digital overstimulation is described as downregulating dopamine, depleting
+  serotonin through chronic stimulation and poor sleep, and producing low motivation,
+  anxiety, irritability, and low mood.
+evidence_tier: fm_specific_thin
+rationale: Neurotransmitter depletion from chronic digital overstimulation is a plausible
+  FM framing; thin direct peer-reviewed evidence at coaching level. Source is expert
+  consensus without primary citations.
+coaching_translation: Digital detox strategies, sleep optimization, and neurotransmitter
+  precursor nutrition (tryptophan, tyrosine, B6) are coaching-appropriate supports.
+caveats:
+- Source is expert consensus without direct citations.
+linked_to_topics:
+- depression-like-symptoms
+- sleep
+linked_to_supplements:
+- tyrosine
+- vitamin-b6
+- magnesium
+- omega-3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 17
+  quote: Digital overstimulation is described as downregulating dopamine, depleting
+    serotonin through chronic stimulation and poor sleep, and producing low motivation,
+    anxiety, irritability, and low mood.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

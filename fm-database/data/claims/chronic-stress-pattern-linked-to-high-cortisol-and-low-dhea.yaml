@@ -1,0 +1,31 @@
+slug: chronic-stress-pattern-linked-to-high-cortisol-and-low-dhea
+statement: Chronic stress from fear or overwhelm is described as producing persistent
+  HPA activation with increased cortisol and decreased DHEA.
+evidence_tier: fm_specific_thin
+rationale: The cortisol:DHEA ratio shift under chronic stress is a functional medicine
+  framing with plausible mechanistic basis; thin primary evidence at coaching level.
+  Source is expert consensus without primary citations.
+coaching_translation: Clients with burnout, overwhelm, and low resilience may benefit
+  from adrenal-support nutrition (B5, vitamin C, magnesium) and stress-reduction practices.
+caveats:
+- Source is expert consensus without direct citations.
+- DHEA supplementation requires clinician oversight.
+linked_to_topics:
+- adrenal-fatigue
+- chronic-stress
+linked_to_supplements:
+- phosphatidylserine
+- vitamin-b5
+- magnesium
+- vitamin-c
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 12
+  quote: Chronic stress from fear or overwhelm is described as producing persistent
+    HPA activation with increased cortisol and decreased DHEA.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

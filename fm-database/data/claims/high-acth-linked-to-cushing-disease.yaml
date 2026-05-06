@@ -1,0 +1,22 @@
+slug: high-acth-linked-to-cushing-disease
+statement: High ACTH is described as causing Cushing's disease with high cortisol.
+evidence_tier: confirm_with_clinician
+rationale: Cushing's disease requires endocrinological diagnosis and medical management.
+out_of_scope_notes: ACTH testing, Cushing's diagnosis, and cortisol-related medical
+  management are strictly clinician-scope.
+caveats:
+- 'Red flag: suspected Cushing''s disease requires clinician referral.'
+linked_to_topics:
+- adrenal-fatigue
+- hpa-axis
+coaching_translation: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 7
+  quote: High ACTH is described as causing Cushing's disease with high cortisol.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

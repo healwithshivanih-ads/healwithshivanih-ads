@@ -1,5 +1,5 @@
 slug: insulin-resistance
-display_name: Insulin Resistance & Glycemic Control
+display_name: Insulin Resistance
 aliases:
 - impaired insulin sensitivity
 - blood sugar dysregulation
@@ -14,9 +14,9 @@ aliases:
 - glycemic dysregulation
 - metabolic syndrome nutrition
 - blood sugar imbalance
-summary: Magnesium, potassium, chromium, omega-3, and inositol are linked to glycemic
-  control and insulin sensitivity. Nutrient deficiency and dietary patterns are described
-  as contributing to insulin resistance and related metabolic symptoms.
+- glucose dysregulation
+summary: Chronic cortisol elevation, leptin resistance, low adiponectin, PCOS, obesity,
+  and stress-related glucose dysregulation are linked to insulin resistance.
 common_symptoms:
 - post-meal energy crashes
 - carbohydrate sensitivity
@@ -52,6 +52,8 @@ common_symptoms:
 - pcos-related-hair-loss
 - hair-loss
 - joint-pain
+- central-weight-gain
+- hypoglycemia
 red_flags:
 - fasting glucose trends toward pre-diabetes
 - worsening metabolic markers despite lifestyle changes
@@ -72,6 +74,9 @@ red_flags:
 - uncontrolled diabetes requiring medical management
 - persistent-poor-glycemic-control
 - pcos-with-labs-required
+- Type 1 diabetes symptoms
+- severe hypoglycemia
+- acromegaly
 related_topics:
 - midlife-weight-gain
 - perimenopause
@@ -98,6 +103,8 @@ related_topics:
 - hair-loss
 - cardiovascular-health
 - chronic-inflammation
+- adrenal-fatigue
+- chronic-stress
 key_mechanisms:
 - microbiome-dysbiosis
 - estrogen-decline
@@ -114,11 +121,12 @@ key_mechanisms:
 - hepatic-steatosis
 - nutrient-dependent-energy-metabolism
 - oxidative-stress-and-inflammation
-coaching_scope_notes: Support lifestyle, food choices, and movement. Refer for fasting
-  insulin, HbA1c, and lipid labs. Inositol and chromium supplementation should be
-  personalized with clinician.
-clinician_scope_notes: Metformin-B12 interaction, HbA1c and fasting insulin monitoring,
-  and supplement dosing for glycemic control are clinical items.
+- hpa-axis-overactivation
+- anti-stress-hormone-restoration
+coaching_scope_notes: Low-GI diet, fiber, protein balance, movement, intermittent
+  fasting guidance, and stress reduction are coaching-appropriate.
+clinician_scope_notes: Fasting insulin, HbA1c, diabetes medication adjustments, and
+  PCOS hormonal workup require clinician oversight.
 evidence_tier: plausible_emerging
 sources:
 - id: thurlow-microbiome-session-4
@@ -151,7 +159,11 @@ sources:
   location: Topics Covered
   quote: Magnesium, potassium, chromium, omega-3, inositol, and metabolic joint or
     hair symptoms are linked to glycemic control.
-version: 8
+- id: vitaone-fm-adrenal-hormones
+  location: Topics Covered
+  quote: Chronic cortisol elevation, leptin resistance, low adiponectin, PCOS, obesity,
+    and stress-related glucose dysregulation are linked to insulin resistance.
+version: 9
 status: active
 updated_at: '2026-05-06'
 updated_by: shivani

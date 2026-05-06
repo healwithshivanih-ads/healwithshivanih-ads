@@ -1,0 +1,30 @@
+slug: high-cortisol-linked-to-central-weight-gain
+statement: High cortisol is described as causing central weight gain, anxiety, poor
+  sleep, and hypertension.
+evidence_tier: fm_specific_thin
+rationale: Cortisol's role in central adiposity and metabolic dysregulation is biologically
+  plausible and referenced in FM literature, but the cheatsheet does not cite primary
+  RCTs; source is expert consensus of moderate quality.
+coaching_translation: When clients report central weight gain alongside high stress,
+  cortisol dysregulation may be a contributing factor worth exploring with a clinician.
+caveats:
+- Source is a practitioner FM cheatsheet without direct citations; treat as expert
+  consensus, not primary evidence.
+- Individual assessment needed before attributing weight gain to cortisol alone.
+linked_to_topics:
+- adrenal-fatigue
+- chronic-stress
+- insulin-resistance
+linked_to_supplements:
+- ashwagandha
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 4
+  quote: High cortisol is described as causing central weight gain, anxiety, poor
+    sleep, and hypertension.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

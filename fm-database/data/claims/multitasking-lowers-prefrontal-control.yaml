@@ -1,0 +1,27 @@
+slug: multitasking-lowers-prefrontal-control
+statement: Multitasking is described as lowering prefrontal control and empathy centers,
+  impairing emotional processing and self-regulation.
+evidence_tier: fm_specific_thin
+rationale: Cognitive load and prefrontal function research supports the general concept;
+  the specific empathy-center framing is more FM-interpretive. Source is expert consensus
+  without primary citations.
+coaching_translation: Encouraging mono-tasking, scheduled tech-free time, and mindfulness
+  supports prefrontal recovery and emotional regulation.
+caveats:
+- Source is expert consensus without direct citations.
+- Thin peer-reviewed support at coaching level.
+linked_to_topics:
+- chronic-stress
+- depression-like-symptoms
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 16
+  quote: Multitasking is described as lowering prefrontal control and empathy centers,
+    impairing emotional processing and self-regulation.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

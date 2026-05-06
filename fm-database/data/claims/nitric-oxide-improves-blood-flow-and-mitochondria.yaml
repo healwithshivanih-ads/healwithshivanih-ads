@@ -1,0 +1,28 @@
+slug: nitric-oxide-improves-blood-flow-and-mitochondria
+statement: Nitric oxide is described as a vasodilator that reduces inflammation and
+  improves blood flow and mitochondrial function.
+evidence_tier: plausible_emerging
+rationale: Nitric oxide's vasodilatory and anti-inflammatory roles are well-established.
+  Source is expert consensus without primary citations.
+coaching_translation: Dietary nitrates (beetroot, spinach), exercise, and citrulline-containing
+  foods may support nitric oxide production.
+caveats:
+- Source is expert consensus without direct citations.
+- Blood pressure medication interactions require clinician oversight.
+linked_to_topics:
+- cardiovascular-health
+- chronic-inflammation
+linked_to_supplements:
+- magnesium
+- coq10
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 24
+  quote: Nitric oxide is described as a vasodilator that reduces inflammation and
+    improves blood flow and mitochondrial function.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

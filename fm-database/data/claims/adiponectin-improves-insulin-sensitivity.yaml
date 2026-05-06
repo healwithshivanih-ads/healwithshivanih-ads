@@ -1,0 +1,28 @@
+slug: adiponectin-improves-insulin-sensitivity
+statement: Adiponectin is described as improving insulin sensitivity, reducing inflammation,
+  and supporting metabolic resilience.
+evidence_tier: plausible_emerging
+rationale: Adiponectin's role in insulin sensitivity and inflammation has credible
+  research support. Source is expert consensus without primary citations.
+coaching_translation: Mediterranean diet, omega-3 foods, and exercise may support
+  adiponectin production and metabolic resilience.
+caveats:
+- Source is expert consensus without direct citations.
+linked_to_topics:
+- insulin-resistance
+- chronic-inflammation
+- pcos
+linked_to_supplements:
+- omega-3
+- magnesium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 24
+  quote: Adiponectin is described as improving insulin sensitivity, reducing inflammation,
+    and supporting metabolic resilience.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

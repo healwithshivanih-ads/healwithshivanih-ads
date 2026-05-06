@@ -1,0 +1,42 @@
+slug: raas-and-fluid-balance
+display_name: RAAS & Fluid Balance
+aliases:
+- renin-angiotensin-aldosterone system
+- aldosterone regulation
+- adrenal fluid control
+category: endocrine
+summary: Aldosterone, renin, angiotensin II, ANP, BNP, ADH, sodium, and potassium
+  are described as stress- and adrenal-relevant fluid balance systems affecting blood
+  pressure and hydration.
+upstream_drivers:
+- adrenal-dysfunction
+- kidney-signaling
+- heart-strain
+- low-sodium
+- low-potassium
+- hydration-status
+downstream_effects:
+- low-blood-pressure
+- salt-craving
+- dehydration
+- hypertension
+- fluid-retention
+- low-sodium
+- low-potassium
+related_mechanisms:
+- hpa-axis-overactivation
+- sympathetic-dominance
+linked_to_topics:
+- adrenal-fatigue
+- cardiovascular-health
+evidence_tier: confirm_with_clinician
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Key Mechanisms Explained — raas-and-fluid-balance
+  quote: Aldosterone, renin, angiotensin II, ANP, BNP, ADH, sodium, potassium, hydration,
+    and blood pressure are described as stress- and adrenal-relevant fluid balance
+    systems.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

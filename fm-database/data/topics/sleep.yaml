@@ -1,0 +1,40 @@
+slug: sleep
+display_name: Sleep Optimization
+aliases:
+- sleep disruption
+- circadian rhythm
+- sleep recovery
+summary: Low melatonin, digital overstimulation, blue light exposure, cortisol dysregulation,
+  GABA-glutamate imbalance, and poor circadian recovery are linked to sleep issues.
+common_symptoms:
+- insomnia
+- poor-rem-sleep
+- delayed-sleep-onset
+- jet-lag
+- early-waking
+- daytime-fatigue
+red_flags:
+- sleep apnea requiring diagnosis
+- severe insomnia with psychiatric comorbidity
+related_topics:
+- adrenal-fatigue
+- chronic-stress
+- depression-like-symptoms
+key_mechanisms:
+- digital-overstimulation
+- anti-stress-hormone-restoration
+coaching_scope_notes: Morning sunlight, no blue light after sunset, no-screen routine,
+  glycine-rich foods, magnesium, and circadian-aligned eating are coaching-appropriate.
+clinician_scope_notes: Melatonin dosing, sleep medication decisions, and sleep study
+  referral are clinician-scope.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Symptoms Discussed
+  quote: Poor sleep, jet lag, poor REM, and delayed sleep onset — Linked to low melatonin,
+    digital overstimulation, blue light exposure, cortisol dysregulation, GABA-glutamate
+    imbalance, and poor circadian recovery.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

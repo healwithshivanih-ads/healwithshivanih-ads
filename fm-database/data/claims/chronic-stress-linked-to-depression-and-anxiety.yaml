@@ -1,0 +1,29 @@
+slug: chronic-stress-linked-to-depression-and-anxiety
+statement: Chronic stress is described as altering neurotransmitter levels and BDNF
+  through HPA-axis dysregulation and gut-brain-axis disruption.
+evidence_tier: plausible_emerging
+rationale: HPA-axis dysregulation and its effects on serotonin, dopamine, and BDNF
+  are credible and growing areas of research. Source is expert consensus without primary
+  citations.
+coaching_translation: Stress management, gut health nutrition, exercise (which raises
+  BDNF), and sleep are key coaching tools for mood support.
+caveats:
+- Source is expert consensus without direct citations.
+- Clinical depression requires clinician and mental health professional involvement.
+linked_to_topics:
+- chronic-stress
+- depression-like-symptoms
+- gut-dysbiosis
+linked_to_supplements:
+- omega-3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 11
+  quote: Chronic stress is described as altering neurotransmitter levels and BDNF
+    through HPA-axis dysregulation and gut-brain-axis disruption.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

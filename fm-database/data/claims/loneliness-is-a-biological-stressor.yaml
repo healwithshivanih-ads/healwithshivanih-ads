@@ -1,0 +1,26 @@
+slug: loneliness-is-a-biological-stressor
+statement: Loneliness is described as a biological stressor rather than merely an
+  emotional state.
+evidence_tier: plausible_emerging
+rationale: Research by Cacioppo and others has established loneliness as having measurable
+  physiological effects including HPA activation and immune changes. Source is expert
+  consensus without primary citations.
+coaching_translation: Social connection is a legitimate health coaching domain with
+  physiological impact.
+caveats:
+- Source is expert consensus without direct citations.
+linked_to_topics:
+- chronic-stress
+- chronic-inflammation
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 19
+  quote: Loneliness is described as a biological stressor rather than merely an emotional
+    state.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

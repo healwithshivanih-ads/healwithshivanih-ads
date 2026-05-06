@@ -1,0 +1,27 @@
+slug: emotional-stress-may-show-as-patterns-before-labs
+statement: Emotional stress is described as sometimes appearing first as fatigue,
+  dysautonomia, inflammatory trends, and hormonal flattening before obvious lab abnormalities.
+evidence_tier: fm_specific_thin
+rationale: Subclinical functional dysregulation preceding lab changes is a core FM
+  concept with biological plausibility; direct peer-reviewed support at coaching level
+  is thin. Source is expert consensus without primary citations.
+coaching_translation: Clients may present with real symptoms before labs are 'out
+  of range'; symptom patterns are valuable data in functional coaching.
+caveats:
+- Source is expert consensus without direct citations.
+- Red flags must still be referred to clinicians regardless of lab status.
+linked_to_topics:
+- chronic-stress
+- adrenal-fatigue
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 14
+  quote: Emotional stress is described as sometimes appearing first as fatigue, dysautonomia,
+    inflammatory trends, and hormonal flattening before obvious lab abnormalities.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

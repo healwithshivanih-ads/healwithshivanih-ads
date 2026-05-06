@@ -1,0 +1,25 @@
+slug: high-npy-linked-to-stress-eating
+statement: High neuropeptide Y is described as causing obesity and stress-driven overeating.
+evidence_tier: fm_specific_thin
+rationale: NPY's role in stress-driven appetite is biologically plausible but thin
+  in coaching-level peer-reviewed literature. Source is expert consensus without primary
+  citations.
+coaching_translation: Stress management and balanced protein intake may help modulate
+  appetite-driving stress neuropeptides.
+caveats:
+- Source is expert consensus without direct citations.
+- Thin peer-reviewed support at coaching level.
+linked_to_topics:
+- insulin-resistance
+- chronic-stress
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 8
+  quote: High neuropeptide Y is described as causing obesity and stress-driven overeating.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

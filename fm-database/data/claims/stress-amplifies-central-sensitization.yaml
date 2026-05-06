@@ -1,0 +1,27 @@
+slug: stress-amplifies-central-sensitization
+statement: Stress is described as amplifying central sensitization and inflammation
+  in chronic pain and fibromyalgia.
+evidence_tier: fm_specific_thin
+rationale: Central sensitization in fibromyalgia and chronic pain has emerging research
+  support; stress amplification is biologically plausible but thin in direct coaching-level
+  evidence. Source is expert consensus without primary citations.
+coaching_translation: Stress reduction, vagal tone support, and anti-inflammatory
+  nutrition may help modulate pain sensitivity.
+caveats:
+- Fibromyalgia diagnosis and chronic pain management require clinician involvement.
+- Source is expert consensus without direct citations.
+linked_to_topics:
+- chronic-stress
+- chronic-inflammation
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 11
+  quote: Stress is described as amplifying central sensitization and inflammation
+    in chronic pain and fibromyalgia.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

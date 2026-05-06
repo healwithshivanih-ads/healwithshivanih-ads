@@ -7,9 +7,8 @@ aliases:
 - intestinal hyperpermeability
 - increased gut permeability
 - leaky gut syndrome
-summary: Zinc and probiotics are connected to gut barrier integrity in autoimmune
-  and chronic diarrhea contexts. Impaired barrier is described as an upstream driver
-  of nutrient deficiency and systemic inflammation.
+summary: Stress and loneliness are linked to altered gut barrier, gut permeability,
+  dysbiosis, autoimmune triggers, and mood changes.
 common_symptoms:
 - bloating
 - joint pain
@@ -28,6 +27,8 @@ common_symptoms:
 - autoimmune-joint-pain
 - nutrient-malabsorption
 - nutrient-deficiency
+- autoimmune-flares
+- mood-changes
 red_flags:
 - bloating that worsens progressively and does not improve
 - bloating upon waking that worsens throughout the day
@@ -43,6 +44,8 @@ red_flags:
 - autoimmune conditions requiring medical diagnosis and management
 - autoimmune-disease-onset
 - persistent-diarrhea
+- autoimmune disease progression
+- new food allergy with systemic symptoms
 related_topics:
 - perimenopause
 - food-sensitivities
@@ -65,6 +68,8 @@ related_topics:
 - probiotic-and-prebiotic-support
 - joint-pain
 - nutrition-deficiency
+- chronic-stress
+- depression-like-symptoms
 key_mechanisms:
 - tight-junction-disruption
 - estrogen-decline
@@ -80,11 +85,12 @@ key_mechanisms:
 - gut-immune-barrier-function
 - microbiome-nutrient-synthesis
 - gut-barrier-and-nutrient-absorption
-coaching_scope_notes: Zinc, L-glutamine, probiotics, and fermented foods are common
-  coaching tools; personalize to root cause. Autoimmune context requires clinician
-  oversight.
-clinician_scope_notes: Intestinal permeability testing and autoimmune gut protocols
-  are clinical scope items.
+- gut-brain-axis-disruption
+- neuroimmune-inflammation-loop
+coaching_scope_notes: Elimination diet support, probiotic/prebiotic foods, stress
+  reduction, and gut-healing nutrition are coaching-appropriate.
+clinician_scope_notes: Zonulin testing, autoimmune panels, and GI pathology workup
+  are clinician-scope.
 evidence_tier: fm_specific_thin
 sources:
 - id: thurlow-microbiome-session-2
@@ -118,7 +124,11 @@ sources:
   location: Topics Covered
   quote: Zinc and probiotics are connected to gut barrier integrity and autoimmune
     or chronic diarrhea contexts.
-version: 7
+- id: vitaone-fm-adrenal-hormones
+  location: Topics Covered
+  quote: Stress and loneliness are linked to altered gut barrier, gut permeability,
+    dysbiosis, autoimmune triggers, and mood changes.
+version: 8
 status: active
 updated_at: '2026-05-06'
 updated_by: shivani

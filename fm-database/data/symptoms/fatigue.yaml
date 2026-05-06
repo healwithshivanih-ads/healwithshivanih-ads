@@ -35,13 +35,16 @@ aliases:
 - constant tiredness
 - yawning
 - cellular fatigue
+- wired but tired
+- can't get going
 category: constitutional
 severity: common
-description: Persistent lack of energy linked to deficiencies of thiamin, B5, B7,
-  B12, iron, copper, iodine, selenium, potassium, sodium, vitamin C, and depression-mimicking
-  nutrient patterns.
-when_to_refer: If fatigue is severe, unexplained, or persistent despite dietary optimization;
-  if accompanied by neurological symptoms, arrhythmia, or anemia unresponsive to iron.
+description: Persistent low energy or exhaustion linked to low cortisol, low DHEA,
+  chronic stress, HPA-axis dysregulation, low B12/iron, cortisol flattening, adrenal
+  burnout, low adiponectin, low melatonin, loneliness, and neuroendocrine dysregulation.
+when_to_refer: Refer if fatigue is severe, unexplained by lifestyle, or accompanied
+  by Addison's-like symptoms, thyroid abnormalities, or unresponsive to sleep/stress
+  interventions.
 linked_to_topics:
 - perimenopause
 - thyroid
@@ -127,6 +130,8 @@ linked_to_topics:
 - nutrition-deficiency
 - methylation
 - depression-like-symptoms
+- adrenal-fatigue
+- sleep
 linked_to_mechanisms:
 - hpa-axis-dysregulation
 - chronic-inflammation
@@ -184,6 +189,8 @@ linked_to_mechanisms:
 - nutrient-dependent-energy-metabolism
 - methylation-support
 - thyroid-nutrient-synergy
+- hpa-axis-overactivation
+- digital-overstimulation
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Fatigue cluster
@@ -296,7 +303,12 @@ sources:
   quote: Fatigue - Mentioned with deficiencies of thiamin, B5, B7, B12, iron, copper,
     iodine, selenium, potassium, sodium, vitamin C, and depression-mimicking nutrient
     patterns.
-version: 42
+- id: vitaone-fm-adrenal-hormones
+  location: Symptoms Discussed
+  quote: Fatigue - Discussed with low cortisol, low DHEA, chronic stress, low B12/iron
+    contexts, cortisol flattening, adrenal fatigue/burnout, low adiponectin, low melatonin/GH,
+    loneliness, and neuroendocrine dysregulation.
+version: 43
 status: active
 updated_at: '2026-05-06'
 updated_by: shivani

@@ -1,0 +1,30 @@
+slug: dopamine-overload-causes-emotional-flatness
+statement: Constant novelty from scrolling, likes, and pings is described as overstimulating
+  reward pathways and desensitizing dopamine receptors, leading to emotional flatness,
+  reduced motivation, and addiction-like behavior.
+evidence_tier: fm_specific_thin
+rationale: Dopamine receptor desensitization from reward overstimulation is a credible
+  neuroscience concept; its direct measurement and coaching intervention evidence
+  is thin. Source is expert consensus without primary citations.
+coaching_translation: Digital detox, nature exposure, and reducing social media use
+  are coaching tools for clients with low motivation and emotional flatness.
+caveats:
+- Source is expert consensus without direct citations.
+- Addiction-like behavior may require psychological or psychiatric referral.
+linked_to_topics:
+- depression-like-symptoms
+- chronic-stress
+linked_to_supplements:
+- tyrosine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 16
+  quote: Constant novelty from scrolling, likes, and pings is described as overstimulating
+    reward pathways and desensitizing dopamine receptors, leading to emotional flatness,
+    reduced motivation, and addiction-like behavior.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

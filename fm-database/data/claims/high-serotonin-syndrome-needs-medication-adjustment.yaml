@@ -1,0 +1,23 @@
+slug: high-serotonin-syndrome-needs-medication-adjustment
+statement: High serotonin is described as a rare serotonin syndrome pattern with agitation
+  and diarrhea requiring medication or supplement adjustment.
+evidence_tier: confirm_with_clinician
+rationale: Serotonin syndrome is a medical emergency requiring clinician management.
+out_of_scope_notes: Serotonin syndrome diagnosis and management are strictly clinician-scope.
+  Coaches must refer immediately.
+caveats:
+- 'Red flag: refer immediately if serotonin syndrome is suspected.'
+linked_to_topics:
+- depression-like-symptoms
+coaching_translation: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 5
+  quote: High serotonin is described as a rare serotonin syndrome pattern with agitation
+    and diarrhea requiring medication or supplement adjustment.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

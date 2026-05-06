@@ -1,14 +1,14 @@
 slug: chronic-stress
-display_name: Chronic Stress & Its Systemic Effects
+display_name: Chronic Stress
 aliases:
 - prolonged stress
 - allostatic load
 - chronic psychological stress
-summary: Chronic stress describes prolonged periods of mental stress with lasting
-  effects on the entire body — including the brain, heart, digestive system, adrenal
-  glands, musculoskeletal system, and reproductive system. People with higher chronic
-  stress are more likely to develop heart disease, depression, diabetes, dementia,
-  and cancer.
+- perceived stress
+- psychosocial stress
+summary: Stress is presented as a primary driver of chronic disease through HPA activation,
+  sympathetic dominance, inflammation, mitochondrial strain, gut disruption, and hormonal
+  shifts.
 common_symptoms:
 - fatigue
 - insomnia
@@ -22,6 +22,11 @@ common_symptoms:
 - anxiety
 - headaches
 - menstrual-irregularities
+- brain-fog
+- central-weight-gain
+- depression-like-symptoms
+- low-motivation
+- poor-focus
 red_flags:
 - Persistent high blood pressure
 - Signs of heart disease
@@ -30,22 +35,35 @@ red_flags:
 - heart disease risk
 - new onset diabetes
 - dementia risk
+- psychosis or mania
+- serotonin syndrome
+- severe hypertension
+- clot risk
 related_topics:
 - hpa-axis-dysregulation
 - cortisol-dysregulation
 - hpa-axis-dysfunction
 - hypercortisolism
+- adrenal-fatigue
+- hpa-axis
+- chronic-inflammation
+- gut-dysbiosis
+- cardiovascular-health
+- depression-like-symptoms
 key_mechanisms:
 - hpa-axis-dysregulation
 - sympathetic-nervous-system-activation
 - sympathoadrenal-activation
 - cortisol-dhea-imbalance
-coaching_scope_notes: 'Coaches can deliver stress reduction strategies: sleep 7–9
-  hours, daily walks, deep breathing, gratitude journaling, MBSR, yoga/tai chi/qi
-  gong, social support, time in nature, digital detox, and reframing self-talk.'
-clinician_scope_notes: Refer for counseling or mental health assessment when chronic
-  stress is severe. Consider referral for adrenal and cardiovascular risk evaluation.
-evidence_tier: strong
+- hpa-axis-overactivation
+- sympathetic-dominance
+- neuroimmune-inflammation-loop
+coaching_scope_notes: Stress awareness, digital hygiene, community connection, sleep
+  regularity, movement, breathwork, journaling, and mindfulness are coaching-safe
+  domains.
+clinician_scope_notes: Stress-driven hormone imbalances, medication-related neurotransmitter
+  effects, autoimmune flares, and cardiovascular risk require clinician evaluation.
+evidence_tier: plausible_emerging
 sources:
 - id: vitaone-adrenal-toolkit
   location: Effects of Chronic Stress
@@ -57,7 +75,12 @@ sources:
   quote: People who report higher levels of chronic stress are more likely to develop
     heart disease, depression, diabetes, dementia, cancer, digestive symptoms, and
     more.
-version: 2
+- id: vitaone-fm-adrenal-hormones
+  location: Topics Covered
+  quote: Stress is presented as a primary driver of chronic disease through HPA activation,
+    sympathetic dominance, inflammation, mitochondrial strain, gut disruption, and
+    hormonal shifts.
+version: 3
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-05-06'
 updated_by: shivani

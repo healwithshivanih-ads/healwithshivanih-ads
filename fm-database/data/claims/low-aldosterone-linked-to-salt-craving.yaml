@@ -1,0 +1,23 @@
+slug: low-aldosterone-linked-to-salt-craving
+statement: Low aldosterone is described as causing low blood pressure, salt craving,
+  and dehydration.
+evidence_tier: confirm_with_clinician
+rationale: Aldosterone deficiency is a clinical condition requiring medical evaluation
+  and potential hormone replacement.
+out_of_scope_notes: Aldosterone testing and management are clinician-scope.
+caveats:
+- Requires clinician evaluation; may indicate Addison's-like adrenal insufficiency.
+linked_to_topics:
+- adrenal-fatigue
+coaching_translation: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 6
+  quote: Low aldosterone is described as causing low blood pressure, salt craving,
+    and dehydration.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

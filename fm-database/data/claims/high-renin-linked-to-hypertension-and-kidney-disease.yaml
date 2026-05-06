@@ -1,0 +1,22 @@
+slug: high-renin-linked-to-hypertension-and-kidney-disease
+statement: High renin is described as causing hypertension and kidney disease.
+evidence_tier: confirm_with_clinician
+rationale: Renin-angiotensin system dysregulation is a medical condition requiring
+  clinical diagnosis and pharmaceutical management.
+out_of_scope_notes: Renin testing, RAAS management, and antihypertensive therapy are
+  clinician-scope.
+caveats:
+- Requires clinician evaluation.
+linked_to_topics:
+- cardiovascular-health
+coaching_translation: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 9
+  quote: High renin is described as causing hypertension and kidney disease.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

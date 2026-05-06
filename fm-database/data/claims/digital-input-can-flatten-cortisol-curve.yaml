@@ -1,0 +1,31 @@
+slug: digital-input-can-flatten-cortisol-curve
+statement: Continuous low-level alert mode from digital input is described as causing
+  a blunted diurnal cortisol curve with fatigue, poor emotional reactivity, and low
+  resilience.
+evidence_tier: fm_specific_thin
+rationale: Cortisol rhythm flattening and chronic alert states from digital overuse
+  is a plausible FM framing; direct peer-reviewed evidence is thin. Source is expert
+  consensus without primary citations.
+coaching_translation: Morning sunlight, digital-free periods, and sleep hygiene are
+  coaching tools for cortisol rhythm restoration.
+caveats:
+- Source is expert consensus without direct citations.
+- Cortisol testing is clinician-scope.
+linked_to_topics:
+- adrenal-fatigue
+- chronic-stress
+linked_to_supplements:
+- ashwagandha
+- phosphatidylserine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 16
+  quote: Continuous low-level alert mode from digital input is described as causing
+    a blunted diurnal cortisol curve with fatigue, poor emotional reactivity, and
+    low resilience.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

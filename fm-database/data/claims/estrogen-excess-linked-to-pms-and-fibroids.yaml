@@ -1,0 +1,25 @@
+slug: estrogen-excess-linked-to-pms-and-fibroids
+statement: High estrogen is described as causing PMS, fibroids, weight gain, and clot
+  risk.
+evidence_tier: confirm_with_clinician
+rationale: Estrogen excess and its relationship to PMS and fibroids is clinically
+  recognized, but clot risk and hormonal management require clinician oversight.
+out_of_scope_notes: Estrogen testing, fibroid diagnosis, and HRT decisions are clinician-scope.
+caveats:
+- Clot risk requires immediate clinician referral.
+- Source is expert consensus without direct citations.
+linked_to_topics:
+- pcos
+linked_to_supplements:
+- dim
+coaching_translation: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 4
+  quote: High estrogen is described as causing PMS, fibroids, weight gain, and clot
+    risk.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

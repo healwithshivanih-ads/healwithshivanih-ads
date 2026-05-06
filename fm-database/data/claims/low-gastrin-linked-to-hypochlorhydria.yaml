@@ -1,0 +1,24 @@
+slug: low-gastrin-linked-to-hypochlorhydria
+statement: Low gastrin is described as causing poor digestion, hypochlorhydria, and
+  bloating.
+evidence_tier: confirm_with_clinician
+rationale: Gastrin and stomach acid regulation is clinically relevant; PPI use and
+  gastrin testing require clinician oversight.
+out_of_scope_notes: Gastrin testing and HCl replacement therapy are clinician-scope.
+caveats:
+- Source is expert consensus without direct citations.
+linked_to_topics:
+- gut-dysbiosis
+linked_to_supplements:
+- zinc
+coaching_translation: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 6
+  quote: Low gastrin is described as causing poor digestion, hypochlorhydria, and
+    bloating.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

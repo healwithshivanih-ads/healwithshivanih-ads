@@ -1,0 +1,47 @@
+slug: sympathetic-dominance
+display_name: Sympathetic Dominance (Fight-or-Flight)
+aliases:
+- fight-or-flight activation
+- SNS overactivation
+- catecholamine excess
+category: neurological
+summary: Persistent fight-or-flight activation increases catecholamines, heart rate,
+  blood pressure, and shallow breathing, suppressing parasympathetic recovery and
+  driving inflammation.
+upstream_drivers:
+- stress
+- anger
+- grief
+- loneliness
+- notifications
+- multitasking
+- caffeine
+- stimulants
+- sensory-overload
+downstream_effects:
+- hypertension
+- palpitations
+- panic-attacks
+- gi-dysregulation
+- fatigue
+- poor-hrv
+- chronic-inflammation
+related_mechanisms:
+- hpa-axis-overactivation
+- neuroimmune-inflammation-loop
+linked_to_topics:
+- cardiovascular-health
+- adrenal-fatigue
+- chronic-inflammation
+- gut-dysbiosis
+- chronic-stress
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Key Mechanisms Explained — sympathetic-dominance
+  quote: Persistent fight-or-flight activation is described as increasing catecholamines,
+    heart rate, blood pressure, shallow breathing, and alert-mode physiology.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

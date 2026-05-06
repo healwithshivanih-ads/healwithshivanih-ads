@@ -1,0 +1,27 @@
+slug: low-t4-linked-to-hypothyroid-symptoms
+statement: Low T4 is described as causing hypothyroid symptoms including fatigue,
+  dry skin, and cold intolerance.
+evidence_tier: confirm_with_clinician
+rationale: Thyroid hormone levels and their clinical interpretation require clinician
+  assessment. Coaching cannot advise on thyroid hormone levels.
+out_of_scope_notes: Thyroid panel interpretation and thyroid medication are clinician-scope.
+caveats:
+- Requires clinician evaluation and testing.
+- Source is expert consensus without direct citations.
+linked_to_topics:
+- thyroid
+linked_to_supplements:
+- iodine
+- selenium
+- zinc
+coaching_translation: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 4
+  quote: Low T4 is described as causing hypothyroid symptoms including fatigue, dry
+    skin, and cold intolerance.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

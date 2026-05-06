@@ -1,0 +1,30 @@
+slug: chronic-cortisol-elevation-linked-to-insulin-resistance
+statement: Chronic cortisol elevation is described as increasing gluconeogenesis and
+  insulin resistance.
+evidence_tier: plausible_emerging
+rationale: Cortisol's gluconeogenic action and its contribution to insulin resistance
+  is a well-described physiological mechanism with supporting research. Source is
+  expert consensus without primary citations.
+coaching_translation: Stress reduction, sleep, and blood sugar-stabilizing nutrition
+  are key levers for clients with both elevated stress and metabolic concerns.
+caveats:
+- Source is expert consensus without direct citations.
+- Insulin resistance assessment requires clinician testing.
+linked_to_topics:
+- chronic-stress
+- insulin-resistance
+- adrenal-fatigue
+linked_to_supplements:
+- magnesium
+- omega-3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 11
+  quote: Chronic cortisol elevation is described as increasing gluconeogenesis and
+    insulin resistance.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

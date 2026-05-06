@@ -1,0 +1,40 @@
+slug: hpa-axis
+display_name: HPA Axis Regulation
+aliases:
+- hypothalamic-pituitary-adrenal axis
+- stress-response axis
+summary: CRH, ACTH, cortisol, DHEA, aldosterone, and diurnal cortisol rhythm are discussed
+  as central stress-regulation pathways.
+common_symptoms:
+- fatigue
+- anxiety
+- insomnia
+- brain-fog
+- salt-craving
+- poor-resilience
+red_flags:
+- suspected Cushing's disease (high ACTH/cortisol)
+- Addison's-like pattern
+- pituitary pathology
+related_topics:
+- adrenal-fatigue
+- chronic-stress
+- insulin-resistance
+- thyroid
+key_mechanisms:
+- hpa-axis-overactivation
+- cortisol-dhea-imbalance
+coaching_scope_notes: Diurnal rhythm support through sleep, light exposure, and stress
+  management is coaching-appropriate.
+clinician_scope_notes: ACTH, CRH testing, cortisol replacement, and pituitary/adrenal
+  evaluation are clinician-scope.
+evidence_tier: strong
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Topics Covered
+  quote: CRH, ACTH, cortisol, DHEA, aldosterone, and diurnal cortisol rhythm are discussed
+    as central stress-regulation pathways.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

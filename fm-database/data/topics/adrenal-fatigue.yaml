@@ -1,0 +1,51 @@
+slug: adrenal-fatigue
+display_name: Adrenal Fatigue / HPA-Axis Burnout
+aliases:
+- adrenal burnout
+- adrenal exhaustion
+- HPA-axis overload
+- cortisol dysregulation
+summary: Functional medicine framing of cortisol dysregulation, low DHEA, HPA-axis
+  overload, burnout, low resilience, and adrenal support strategies. Not a conventional
+  medical diagnosis.
+common_symptoms:
+- fatigue
+- low-blood-pressure
+- salt-craving
+- anxiety
+- poor-sleep
+- brain-fog
+- low-libido
+- central-weight-gain
+red_flags:
+- Addison's-like symptoms (severe low BP, salt craving with dehydration)
+- severe fatigue unresponsive to lifestyle
+- suspected Cushing's disease
+- acute adrenal insufficiency signs
+related_topics:
+- chronic-stress
+- hpa-axis
+- insulin-resistance
+- thyroid
+- depression-like-symptoms
+- sleep
+key_mechanisms:
+- hpa-axis-overactivation
+- cortisol-dhea-imbalance
+- anti-stress-hormone-restoration
+coaching_scope_notes: Coach can support sleep regularity, morning sunlight, digital
+  boundaries, stress awareness, food quality, protein/fiber balance, breathwork, and
+  community connection. Avoid framing as a medical diagnosis.
+clinician_scope_notes: Cortisol testing, DHEA-S interpretation, hormone replacement,
+  DUTCH test interpretation, and ruling out Addison's disease or Cushing's are clinician-scope
+  items.
+evidence_tier: fm_specific_thin
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Topics Covered
+  quote: Functional medicine framing of cortisol dysregulation, low DHEA, HPA-axis
+    overload, burnout, low resilience, and adrenal support strategies.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

@@ -1,0 +1,50 @@
+slug: digital-overstimulation
+display_name: Digital Overstimulation & Neuroendocrine Dysregulation
+aliases:
+- screen overload
+- dopamine hijack
+- reward pathway dysregulation
+- tech-driven HPA activation
+category: neurological
+summary: Constant screen exposure, notifications, scrolling, and multitasking rewire
+  reward pathways, dysregulate the HPA axis, blunt interoception, and deplete dopamine
+  and serotonin.
+upstream_drivers:
+- novelty-exposure
+- social-media
+- multitasking
+- blue-light
+- cognitive-load
+- sensory-overload
+- poor-digital-boundaries
+downstream_effects:
+- emotional-numbness
+- reduced-motivation
+- poor-stress-recovery
+- fatigue
+- insomnia
+- brain-fog
+- irritability
+- mood-instability
+- dysbiosis
+related_mechanisms:
+- hpa-axis-overactivation
+- cortisol-dhea-imbalance
+- gut-brain-axis-disruption
+linked_to_topics:
+- adrenal-fatigue
+- depression-like-symptoms
+- chronic-stress
+- gut-dysbiosis
+- sleep
+evidence_tier: fm_specific_thin
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Key Mechanisms Explained — digital-overstimulation
+  quote: Constant screen exposure, notifications, scrolling, and multitasking are
+    described as rewiring reward pathways, dysregulating the HPA axis, and blunting
+    interoception.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

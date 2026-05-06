@@ -1,0 +1,32 @@
+slug: anti-stress-hormone-synthesis-needs-micronutrients
+statement: The source lists vitamin C, B5, B6, magnesium, zinc, omega-3, and cholesterol
+  as micronutrients or substrates needed for anti-stress hormone synthesis.
+evidence_tier: fm_specific_thin
+rationale: These micronutrients are recognized cofactors or substrates for steroid
+  hormone and neurotransmitter synthesis; the specific 'anti-stress hormone synthesis'
+  framing is FM-specific. Source is expert consensus without primary citations.
+coaching_translation: Ensuring dietary adequacy of these micronutrients through food-first
+  approaches is a coaching-appropriate recommendation.
+caveats:
+- Source is expert consensus without direct citations.
+- Specific supplement dosing requires clinician guidance.
+linked_to_topics:
+- adrenal-fatigue
+linked_to_supplements:
+- vitamin-c
+- vitamin-b5
+- vitamin-b6
+- magnesium
+- zinc
+- omega-3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 25
+  quote: The source lists vitamin C, B5, B6, magnesium, zinc, omega-3, and cholesterol
+    as micronutrients or substrates needed for anti-stress hormone synthesis.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

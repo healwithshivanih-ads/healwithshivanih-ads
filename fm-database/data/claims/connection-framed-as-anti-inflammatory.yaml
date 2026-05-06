@@ -1,0 +1,27 @@
+slug: connection-framed-as-anti-inflammatory
+statement: The source states that the opposite of inflammation is connection rather
+  than an anti-inflammatory.
+evidence_tier: fm_specific_thin
+rationale: Social connection as an anti-inflammatory is a high-level FM framing with
+  biological plausibility based on loneliness-inflammation research; this specific
+  framing is FM-specific. Source is expert consensus without primary citations.
+coaching_translation: Community, belonging, and social connection are legitimate anti-inflammatory
+  coaching prescriptions.
+caveats:
+- Source is expert consensus without direct citations.
+- This is a conceptual FM statement, not a clinical intervention claim.
+linked_to_topics:
+- chronic-inflammation
+- chronic-stress
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 21
+  quote: The source states that the opposite of inflammation is connection rather
+    than an anti-inflammatory.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

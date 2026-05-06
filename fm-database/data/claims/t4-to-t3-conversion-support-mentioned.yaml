@@ -1,0 +1,27 @@
+slug: t4-to-t3-conversion-support-mentioned
+statement: Low T3 symptoms are described as fatigue, constipation, and weight gain,
+  with selenium, zinc, and liver health suggested for T4-to-T3 conversion support.
+evidence_tier: confirm_with_clinician
+rationale: Selenium and zinc are known cofactors for deiodinase enzymes that convert
+  T4 to T3; however, thyroid management requires clinician oversight.
+out_of_scope_notes: T3 testing interpretation, conversion therapy, and thyroid medication
+  are clinician-scope.
+caveats:
+- Nutrient cofactor support is plausible but should be personalized by a clinician.
+- Source is expert consensus without direct citations.
+linked_to_topics:
+- thyroid
+linked_to_supplements:
+- selenium
+- zinc
+coaching_translation: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 4
+  quote: Low T3 symptoms are described as fatigue, constipation, and weight gain,
+    with selenium, zinc, and liver health suggested for T4-to-T3 conversion support.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

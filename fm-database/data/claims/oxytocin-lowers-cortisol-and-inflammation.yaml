@@ -1,0 +1,30 @@
+slug: oxytocin-lowers-cortisol-and-inflammation
+statement: Oxytocin is described as lowering cortisol, blood pressure, and inflammation
+  while supporting bonding.
+evidence_tier: fm_specific_thin
+rationale: Oxytocin's anti-stress and anti-inflammatory properties have some research
+  support; however, the clinical application at coaching level is thin. Source is
+  expert consensus without primary citations.
+coaching_translation: Touch therapy, community, gratitude, and positive social interactions
+  may naturally support oxytocin production.
+caveats:
+- Source is expert consensus without direct citations.
+- Oxytocin therapy is clinician-scope.
+linked_to_topics:
+- chronic-stress
+- cardiovascular-health
+- chronic-inflammation
+linked_to_supplements:
+- magnesium
+- vitamin-d
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 24
+  quote: Oxytocin is described as lowering cortisol, blood pressure, and inflammation
+    while supporting bonding.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

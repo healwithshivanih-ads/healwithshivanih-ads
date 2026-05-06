@@ -1,0 +1,27 @@
+slug: social-rejection-and-pain-share-brain-regions
+statement: Functional MRI studies are described as showing that social rejection and
+  physical pain share overlapping brain regions including the anterior cingulate cortex
+  and insula.
+evidence_tier: plausible_emerging
+rationale: fMRI evidence for social pain and physical pain overlap (Eisenberger et
+  al.) is a recognized research finding. Source is expert consensus referencing this
+  without direct citation.
+coaching_translation: Social pain is real and physiological; validating clients' experiences
+  of rejection or loneliness as a pain experience is clinically appropriate.
+caveats:
+- Source references fMRI evidence without direct citation.
+linked_to_topics:
+- chronic-stress
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 19
+  quote: Functional MRI studies are described as showing that social rejection and
+    physical pain share overlapping brain regions including the anterior cingulate
+    cortex and insula.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

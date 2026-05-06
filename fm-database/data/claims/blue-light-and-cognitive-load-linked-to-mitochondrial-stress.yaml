@@ -1,0 +1,27 @@
+slug: blue-light-and-cognitive-load-linked-to-mitochondrial-stress
+statement: Blue light, EMF, and cognitive load are described as causing mitochondrial
+  stress, brain fog, fatigue, irritability, and mood instability.
+evidence_tier: fm_specific_thin
+rationale: Blue light's effect on circadian rhythm is well-supported; direct mitochondrial
+  stress from blue light and EMF is an emerging and FM-specific framing. Source is
+  expert consensus without primary citations.
+coaching_translation: Blue-light-blocking strategies after sunset, reduced screen
+  time, and circadian-aligned sleep are coaching-appropriate recommendations.
+caveats:
+- Source is expert consensus without direct citations.
+- EMF-mitochondrial stress framing has thin peer-reviewed support.
+linked_to_topics:
+- chronic-stress
+- sleep
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 16
+  quote: Blue light, EMF, and cognitive load are described as causing mitochondrial
+    stress, brain fog, fatigue, irritability, and mood instability.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

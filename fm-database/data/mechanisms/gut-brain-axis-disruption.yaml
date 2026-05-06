@@ -1,0 +1,46 @@
+slug: gut-brain-axis-disruption
+display_name: Gut-Brain Axis Disruption
+aliases:
+- gut-brain dysregulation
+- enteric nervous system dysregulation
+- microbiome-mood axis disruption
+category: gut
+summary: Stress disrupts gut motility, permeability, microbiome balance, vagal tone,
+  mast cell activation, and neurotransmitter-related gut signaling, producing IBS,
+  dysbiosis, altered serotonin synthesis, and mood changes.
+upstream_drivers:
+- hpa-axis-dysregulation
+- circadian-mismatch
+- digital-overstimulation
+- loneliness
+- stress
+- emotional-suppression
+- low-vagal-tone
+downstream_effects:
+- ibs
+- ibd
+- dysbiosis
+- sibo
+- food-sensitivities
+- leaky-gut
+- altered-serotonin-synthesis
+- mood-changes
+- inflammation
+related_mechanisms:
+- neuroimmune-inflammation-loop
+- hpa-axis-overactivation
+linked_to_topics:
+- gut-dysbiosis
+- leaky-gut
+- depression-like-symptoms
+- chronic-inflammation
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Key Mechanisms Explained — gut-brain-axis-disruption
+  quote: Stress is described as disrupting gut motility, permeability, microbiome
+    balance, vagal tone, mast cell activation, and neurotransmitter-related gut signaling.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

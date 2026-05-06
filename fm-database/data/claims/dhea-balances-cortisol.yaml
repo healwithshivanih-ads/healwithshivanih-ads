@@ -1,0 +1,28 @@
+slug: dhea-balances-cortisol
+statement: DHEA is described as balancing cortisol while supporting resilience, mood,
+  immune balance, and mitochondrial function.
+evidence_tier: fm_specific_thin
+rationale: DHEA's roles in adrenal health and resilience are recognized in FM; supplemental
+  DHEA's clinical efficacy is debated and requires clinician oversight. Source is
+  expert consensus without primary citations.
+out_of_scope_notes: DHEA supplementation requires clinician-ordered testing and monitoring.
+caveats:
+- DHEA supplementation must not be recommended without clinician oversight.
+- Avoid in hormone-sensitive cancers, PCOS with androgen excess, pregnancy.
+- Source is expert consensus without direct citations.
+linked_to_topics:
+- adrenal-fatigue
+- chronic-stress
+linked_to_supplements:
+- dhea
+coaching_translation: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 24
+  quote: DHEA is described as balancing cortisol while supporting resilience, mood,
+    immune balance, and mitochondrial function.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

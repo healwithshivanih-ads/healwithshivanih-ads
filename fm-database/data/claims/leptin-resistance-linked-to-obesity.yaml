@@ -1,0 +1,25 @@
+slug: leptin-resistance-linked-to-obesity
+statement: High leptin is described as leptin resistance leading to obesity.
+evidence_tier: plausible_emerging
+rationale: Leptin resistance as a driver of obesity is a credible and emerging mechanism;
+  peer-reviewed evidence is growing. Source is expert consensus without primary citations.
+coaching_translation: Anti-inflammatory diet, intermittent fasting, and omega-3 foods
+  may support leptin sensitivity.
+caveats:
+- Source is expert consensus without direct citations.
+- Individual metabolic assessment needed.
+linked_to_topics:
+- insulin-resistance
+- chronic-inflammation
+linked_to_supplements:
+- omega-3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 6
+  quote: High leptin is described as leptin resistance leading to obesity.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

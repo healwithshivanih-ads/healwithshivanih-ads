@@ -1,0 +1,29 @@
+slug: stress-linked-to-cardiovascular-disease
+statement: Stress is described as increasing blood pressure, heart rate, endothelial
+  dysfunction, oxidative stress, and inflammation in cardiovascular disease.
+evidence_tier: plausible_emerging
+rationale: The relationship between psychosocial stress and cardiovascular disease
+  has credible mechanistic and epidemiological support. Source is expert consensus
+  without primary citations.
+coaching_translation: Mind-body practices, dietary nitrates, exercise, and stress
+  management are important coaching tools for cardiovascular health.
+caveats:
+- Source is expert consensus without direct citations.
+- Cardiovascular risk management requires clinician involvement.
+linked_to_topics:
+- chronic-stress
+- cardiovascular-health
+- chronic-inflammation
+linked_to_supplements:
+- citrulline
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 11
+  quote: Stress is described as increasing blood pressure, heart rate, endothelial
+    dysfunction, oxidative stress, and inflammation in cardiovascular disease.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

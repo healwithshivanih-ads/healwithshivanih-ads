@@ -1,0 +1,31 @@
+slug: progesterone-calms-cns
+statement: Progesterone is described as calming the central nervous system through
+  GABAergic effects and improving sleep, mood, and estrogen dominance balance.
+evidence_tier: fm_specific_thin
+rationale: Progesterone's GABAergic metabolite (allopregnanolone) and its anxiolytic
+  effects have research support; however, progesterone therapy decisions are clinician-scope.
+  Source is expert consensus without primary citations.
+out_of_scope_notes: Progesterone therapy is clinician-scope.
+caveats:
+- Progesterone supplementation requires clinician oversight.
+- Source is expert consensus without direct citations.
+linked_to_topics:
+- adrenal-fatigue
+- sleep
+- pcos
+linked_to_supplements:
+- vitamin-b6
+- magnesium
+- zinc
+- vitex
+coaching_translation: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 24
+  quote: Progesterone is described as calming the central nervous system through GABAergic
+    effects and improving sleep, mood, and estrogen dominance balance.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

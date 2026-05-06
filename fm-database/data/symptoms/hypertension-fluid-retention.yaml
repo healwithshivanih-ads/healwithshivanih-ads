@@ -1,0 +1,33 @@
+slug: hypertension-fluid-retention
+display_name: Hypertension & Fluid Retention
+aliases:
+- high blood pressure
+- swelling
+- puffiness
+- oedema
+- fluid overload
+category: cardiovascular
+severity: concerning
+description: Hypertension, endothelial dysfunction, CAD, heart strain, and fluid retention
+  linked to stress, catecholamines, aldosterone, renin, angiotensin II, low ANP/BNP/nitric
+  oxide, and loneliness.
+when_to_refer: Refer for severe hypertension, heart failure, CAD diagnosis, or medication
+  management.
+linked_to_topics:
+- cardiovascular-health
+- chronic-stress
+- adrenal-fatigue
+linked_to_mechanisms:
+- raas-and-fluid-balance
+- sympathetic-dominance
+- neuroimmune-inflammation-loop
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Symptoms Discussed
+  quote: Hypertension, endothelial dysfunction, CAD, heart strain, and fluid retention
+    — Linked to stress, catecholamines, aldosterone, renin, angiotensin II, low ANP,
+    BNP, nitric oxide status, and loneliness.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

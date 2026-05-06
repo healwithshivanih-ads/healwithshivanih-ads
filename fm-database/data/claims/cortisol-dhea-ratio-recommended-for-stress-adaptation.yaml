@@ -1,0 +1,26 @@
+slug: cortisol-dhea-ratio-recommended-for-stress-adaptation
+statement: The source recommends testing the cortisol:DHEA ratio to assess stress
+  adaptation.
+evidence_tier: confirm_with_clinician
+rationale: Cortisol:DHEA ratio testing and interpretation are clinician-scope; coaches
+  can discuss the concept but not order or interpret results.
+out_of_scope_notes: Lab testing, functional range interpretation, and DHEA/cortisol
+  management are clinician-scope.
+caveats:
+- Coaches can discuss the concept of stress adaptation but not interpret lab results.
+- Source is expert consensus without direct citations.
+linked_to_topics:
+- adrenal-fatigue
+- chronic-stress
+linked_to_supplements:
+- dhea
+coaching_translation: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Pages 24-25
+  quote: The source recommends testing the cortisol:DHEA ratio to assess stress adaptation.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

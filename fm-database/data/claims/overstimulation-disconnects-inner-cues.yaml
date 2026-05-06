@@ -1,0 +1,26 @@
+slug: overstimulation-disconnects-inner-cues
+statement: Chronic overstimulation is described as disconnecting patients from hunger,
+  fullness, fatigue, emotional states, intuition, and gut feelings.
+evidence_tier: fm_specific_thin
+rationale: Interoceptive disconnection from chronic stimulation is a plausible concept
+  with growing research interest; thin at coaching-level evidence. Source is expert
+  consensus without primary citations.
+coaching_translation: Mindful eating, journaling, sensory grounding, and digital-free
+  meals may help clients reconnect with internal body cues.
+caveats:
+- Source is expert consensus without direct citations.
+linked_to_topics:
+- chronic-stress
+- gut-dysbiosis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 17
+  quote: Chronic overstimulation is described as disconnecting patients from hunger,
+    fullness, fatigue, emotional states, intuition, and gut feelings.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

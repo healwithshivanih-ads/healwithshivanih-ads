@@ -1,39 +1,60 @@
 slug: cortisol-dhea-imbalance
-display_name: Cortisol–DHEA Imbalance
+display_name: Cortisol:DHEA Imbalance
 aliases:
 - adrenal exhaustion
 - DHEA depletion
 - cortisol-DHEA ratio shift
+- cortisol-DHEA ratio dysregulation
+- stress adaptation imbalance
+- adrenal ratio shift
 category: endocrine
-summary: Under chronic stress, sustained demand for cortisol output eventually depletes
-  DHEA, as adrenal capacity is overwhelmed. Low DHEA impairs immune defense, reduces
-  muscle mass, lowers bone density, and reduces sex hormone precursor availability.
-  Chronically elevated cortisol simultaneously drives insulin resistance, weight gain,
-  and immune suppression.
+summary: High cortisol and low DHEA reflect impaired stress adaptation and resilience;
+  associated with burnout, low immunity, depression, and premature aging.
 upstream_drivers:
 - hpa-axis-dysregulation
 - chronic-psychological-stress
+- persistent-hpa-activation
+- social-isolation
+- chronic-emotional-stress
+- digital-stress
+- poor-circadian-rhythm
+- burnout
 downstream_effects:
 - immune-suppression
 - insulin-resistance
 - osteoporosis
 - low-libido
 - reduced-muscle-mass
+- low-energy
+- depression
+- burnout
+- low-immunity
+- premature-aging
+- fatigue
 related_mechanisms:
 - hpa-axis-dysregulation
 - insulin-resistance
 - sympathoadrenal-activation
+- hpa-axis-overactivation
+- anti-stress-hormone-restoration
 linked_to_topics:
 - hypercortisolism
 - adrenal-hormone-function
 - hpa-axis-dysfunction
-evidence_tier: strong
+- adrenal-fatigue
+- depression-like-symptoms
+- insulin-resistance
+evidence_tier: fm_specific_thin
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Hypercortisolism
   quote: If this becomes chronic, the adrenals can no longer keep up with the demand,
     and DHEA levels begin to fall, signifying adrenal exhaustion.
-version: 1
+- id: vitaone-fm-adrenal-hormones
+  location: Key Mechanisms Explained — cortisol-dhea-imbalance
+  quote: Cortisol and DHEA are framed as opposing or balancing stress-adaptation markers,
+    with high cortisol and low DHEA reflecting impaired resilience.
+version: 2
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-05-06'
 updated_by: shivani

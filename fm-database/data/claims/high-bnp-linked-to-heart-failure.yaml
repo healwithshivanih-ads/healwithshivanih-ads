@@ -1,0 +1,22 @@
+slug: high-bnp-linked-to-heart-failure
+statement: High BNP is described as a heart failure and fluid overload marker.
+evidence_tier: confirm_with_clinician
+rationale: BNP is a clinical biomarker for heart failure; interpretation and management
+  are strictly medical.
+out_of_scope_notes: BNP testing, heart failure diagnosis, and cardiac medication are
+  clinician-scope.
+caveats:
+- 'Red flag: elevated BNP requires clinician referral.'
+linked_to_topics:
+- cardiovascular-health
+coaching_translation: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 9
+  quote: High BNP is described as a heart failure and fluid overload marker.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

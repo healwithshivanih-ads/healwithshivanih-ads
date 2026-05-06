@@ -1,0 +1,26 @@
+slug: pregnenolone-steal-linked-to-fatigue-and-memory-loss
+statement: Chronic stress is described as causing pregnenolone steal with low hormones,
+  fatigue, memory loss, and mood changes.
+evidence_tier: fm_specific_thin
+rationale: Pregnenolone steal is a common FM concept with theoretical mechanistic
+  basis; it is not validated in primary literature as a discrete clinical entity.
+  Source is expert consensus without primary citations.
+out_of_scope_notes: Pregnenolone supplementation requires clinician oversight.
+caveats:
+- Pregnenolone steal is an FM model, not a validated clinical diagnosis.
+- Source is expert consensus without direct citations.
+linked_to_topics:
+- adrenal-fatigue
+linked_to_supplements:
+- pregnenolone
+coaching_translation: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 24
+  quote: Chronic stress is described as causing pregnenolone steal with low hormones,
+    fatigue, memory loss, and mood changes.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

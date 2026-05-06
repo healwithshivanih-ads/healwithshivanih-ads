@@ -1,0 +1,28 @@
+slug: low-serotonin-linked-to-depression-ibs-and-insomnia
+statement: Low serotonin is described as causing depression, IBS, and insomnia.
+evidence_tier: plausible_emerging
+rationale: Serotonin's role in mood, gut motility, and sleep is a well-described mechanism;
+  the gut produces ~90% of serotonin. Source is expert consensus without primary citations.
+coaching_translation: Supporting serotonin precursors through tryptophan-rich foods,
+  B6, and gut health may support mood and digestion.
+caveats:
+- Antidepressant decisions and serotonin testing are clinician-scope.
+- Source is expert consensus without direct citations.
+linked_to_topics:
+- depression-like-symptoms
+- gut-dysbiosis
+- sleep
+linked_to_supplements:
+- tryptophan
+- vitamin-b6
+- magnesium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 5
+  quote: Low serotonin is described as causing depression, IBS, and insomnia.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

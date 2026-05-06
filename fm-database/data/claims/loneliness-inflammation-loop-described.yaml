@@ -1,0 +1,32 @@
+slug: loneliness-inflammation-loop-described
+statement: The loneliness-inflammation loop describes social isolation as leading
+  to threat perception, cortisol and sympathetic surge, cytokine upregulation, neuroinflammation,
+  gut dysbiosis, fatigue, insulin resistance, low mood, and autoimmune tendency.
+evidence_tier: fm_specific_thin
+rationale: This is an integrated FM systems model for loneliness; individual components
+  have credible support but the full cascade framing is FM-specific. Source is expert
+  consensus without primary citations.
+coaching_translation: The loneliness-inflammation loop is a useful coaching framework
+  for clients with unexplained fatigue, low mood, and metabolic concerns who report
+  social isolation.
+caveats:
+- Source is expert consensus without direct citations.
+- This is a systems model, not a validated single clinical pathway.
+linked_to_topics:
+- chronic-stress
+- chronic-inflammation
+- gut-dysbiosis
+- insulin-resistance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 21
+  quote: The loneliness-inflammation loop is described as social isolation leading
+    to threat perception, cortisol and sympathetic surge, cytokine upregulation, neuroinflammation,
+    gut dysbiosis, fatigue, insulin resistance, low mood, and autoimmune tendency.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

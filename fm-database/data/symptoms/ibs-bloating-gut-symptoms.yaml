@@ -1,0 +1,35 @@
+slug: ibs-bloating-gut-symptoms
+display_name: IBS, Bloating & Gut Dysfunction
+aliases:
+- bloated belly
+- puffy belly
+- poor digestion
+- stomach pain
+- food sensitivities
+- low stomach acid
+- loose stools
+category: gi
+severity: common
+description: IBS, IBD, gut dysmotility, bloating, poor digestion, low stomach acid,
+  and food sensitivities linked to stress, serotonin, gastrin, gut-brain disruption,
+  vagal tone reduction, and dysbiosis.
+when_to_refer: Refer if IBD diagnosis, SIBO, bleeding, or severe symptoms requiring
+  medical workup.
+linked_to_topics:
+- gut-dysbiosis
+- leaky-gut
+- chronic-stress
+- depression-like-symptoms
+linked_to_mechanisms:
+- gut-brain-axis-disruption
+- neuroimmune-inflammation-loop
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Symptoms Discussed
+  quote: IBS, IBD, gut dysmotility, bloating, poor digestion, low stomach acid, and
+    food sensitivities — Linked to stress, serotonin, gastrin, secretin, CCK, gut-brain
+    disruption, vagal tone reduction, and dysbiosis.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

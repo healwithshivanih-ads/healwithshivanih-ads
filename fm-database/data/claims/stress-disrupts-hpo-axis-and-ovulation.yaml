@@ -1,0 +1,26 @@
+slug: stress-disrupts-hpo-axis-and-ovulation
+statement: Stress is described as disrupting the HPO axis and ovulation through elevated
+  cortisol, altered LH:FSH ratio, and increased androgens.
+evidence_tier: confirm_with_clinician
+rationale: HPO-axis disruption and its effect on ovulation require clinician assessment
+  and hormonal workup. Fertility treatment is outside coaching scope.
+out_of_scope_notes: LH:FSH testing, fertility treatment, and hormonal management are
+  clinician-scope.
+caveats:
+- Infertility requires clinician referral.
+- Source is expert consensus without direct citations.
+linked_to_topics:
+- pcos
+- chronic-stress
+coaching_translation: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 11
+  quote: Stress is described as disrupting the HPO axis and ovulation through elevated
+    cortisol, altered LH:FSH ratio, and increased androgens.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

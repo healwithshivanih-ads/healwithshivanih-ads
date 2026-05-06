@@ -9,9 +9,8 @@ aliases:
 - inflammatory burden
 - inflammatory load
 - neuroinflammation
-summary: Omega-3, vitamin D, vitamin E, curcumin, boswellia, and antioxidants are
-  discussed for mood, hair, and joint symptoms related to chronic inflammation. Oxidative
-  stress and inflammatory diets are described as upstream drivers.
+summary: Emotional stress, loneliness, digital overstimulation, cytokines, neuroinflammation,
+  and oxidative stress are described as inflammation drivers.
 common_symptoms:
 - fatigue
 - brain-fog
@@ -27,6 +26,8 @@ common_symptoms:
 - mood-changes-anxiety
 - cognitive-dullness
 - poor-wound-healing
+- low-mood
+- autoimmune-flares
 red_flags:
 - autoimmune flares
 - active infection
@@ -44,6 +45,8 @@ red_flags:
 - persistent inflammatory pain unresponsive to lifestyle
 - cardiovascular-risk
 - autoimmune-activity
+- autoimmune flares requiring immunosuppression
+- cancer-related hypercalcemia
 related_topics:
 - autoimmune-disease
 - leaky-gut
@@ -65,6 +68,7 @@ related_topics:
 - hair-loss
 - cardiovascular-health
 - nutrition-deficiency
+- chronic-stress
 key_mechanisms:
 - nf-kb-activation
 - leaky-gut
@@ -78,11 +82,12 @@ key_mechanisms:
 - lps-mediated-immune-activation
 - oxidative-stress-and-inflammation
 - gut-barrier-and-nutrient-absorption
-coaching_scope_notes: Encourage anti-inflammatory dietary patterns and food-first
-  antioxidant sources. High-dose antioxidant supplementation during illness or medication
-  use requires clinician coordination.
-clinician_scope_notes: High-dose antioxidant timing during chemotherapy and anti-inflammatory
-  supplementation alongside NSAIDs or anticoagulants are clinical scope items.
+- neuroimmune-inflammation-loop
+- gut-brain-axis-disruption
+coaching_scope_notes: Anti-inflammatory diet, omega-3 foods, stress reduction, sleep,
+  movement, and social connection are coaching-appropriate.
+clinician_scope_notes: hs-CRP, IL-6, TNF-alpha interpretation, autoimmune workup,
+  and immunosuppressive therapy are clinician-scope.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-inflammation-cheatsheet
@@ -113,7 +118,11 @@ sources:
   location: Topics Covered
   quote: Omega-3, vitamin D, vitamin E, curcumin, boswellia, antioxidants, and inflammatory
     diets are discussed for mood, hair, and joint symptoms.
-version: 6
+- id: vitaone-fm-adrenal-hormones
+  location: Topics Covered
+  quote: Emotional stress, loneliness, digital overstimulation, cytokines, neuroinflammation,
+    and oxidative stress are described as inflammation drivers.
+version: 7
 status: active
 updated_at: '2026-05-06'
 updated_by: shivani

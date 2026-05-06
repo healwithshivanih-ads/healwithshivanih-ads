@@ -1,0 +1,25 @@
+slug: stress-linked-to-visceral-fat
+statement: Cortisol dysregulation is described as driving visceral fat deposition
+  through insulin resistance and appetite dysregulation via leptin and ghrelin.
+evidence_tier: plausible_emerging
+rationale: Cortisol-mediated visceral fat deposition via appetite hormones is a credible
+  and well-discussed mechanism. Source is expert consensus without primary citations.
+coaching_translation: Stress reduction, adequate sleep, and blood sugar support may
+  help reduce cortisol-driven visceral fat accumulation.
+caveats:
+- Source is expert consensus without direct citations.
+linked_to_topics:
+- chronic-stress
+- insulin-resistance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 11
+  quote: Cortisol dysregulation is described as driving visceral fat deposition through
+    insulin resistance and appetite dysregulation via leptin and ghrelin.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

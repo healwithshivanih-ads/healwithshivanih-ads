@@ -1,0 +1,28 @@
+slug: emotions-have-biochemical-footprints
+statement: Chronic emotional states are described as altering the HPA axis, immune
+  response, neurotransmitters, gut integrity, and mitochondrial function.
+evidence_tier: fm_specific_thin
+rationale: The psychoneuroimmunological framing of emotions is biologically credible;
+  direct mechanistic evidence at the coaching intervention level is thin. Source is
+  expert consensus without primary citations.
+coaching_translation: Emotional health work — journaling, therapy, somatic practices
+  — is a legitimate part of functional health coaching.
+caveats:
+- Source is expert consensus without direct citations.
+- Psychiatric and trauma-related work requires appropriate professional referral.
+linked_to_topics:
+- chronic-stress
+- chronic-inflammation
+- gut-dysbiosis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 12
+  quote: Chronic emotional states are described as altering the HPA axis, immune response,
+    neurotransmitters, gut integrity, and mitochondrial function.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

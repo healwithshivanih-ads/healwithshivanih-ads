@@ -1,0 +1,24 @@
+slug: prolactin-excess-linked-to-infertility-and-low-libido
+statement: High prolactin is described as causing infertility, galactorrhea, and low
+  libido.
+evidence_tier: confirm_with_clinician
+rationale: Hyperprolactinemia requires clinical testing and medical management. Galactorrhea
+  and infertility are referral indications.
+out_of_scope_notes: Prolactin testing, diagnosis, and treatment are strictly clinician-scope.
+caveats:
+- Galactorrhea and infertility are red-flag referral indicators.
+linked_to_topics:
+- pcos
+linked_to_supplements:
+- vitamin-b6
+coaching_translation: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 5
+  quote: High prolactin is described as causing infertility, galactorrhea, and low
+    libido.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

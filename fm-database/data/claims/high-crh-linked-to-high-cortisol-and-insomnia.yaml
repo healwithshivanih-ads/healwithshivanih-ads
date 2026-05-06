@@ -1,0 +1,22 @@
+slug: high-crh-linked-to-high-cortisol-and-insomnia
+statement: High CRH is described as causing anxiety, insomnia, and high cortisol.
+evidence_tier: confirm_with_clinician
+rationale: CRH as a clinical marker is part of HPA-axis evaluation; interpretation
+  requires clinician oversight.
+out_of_scope_notes: CRH testing and HPA-axis medical evaluation are clinician-scope.
+caveats:
+- Source is expert consensus without direct citations.
+linked_to_topics:
+- adrenal-fatigue
+- sleep
+coaching_translation: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 7
+  quote: High CRH is described as causing anxiety, insomnia, and high cortisol.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

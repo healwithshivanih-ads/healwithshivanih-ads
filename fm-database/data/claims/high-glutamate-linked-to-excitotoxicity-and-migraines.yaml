@@ -1,0 +1,27 @@
+slug: high-glutamate-linked-to-excitotoxicity-and-migraines
+statement: High glutamate is described as causing anxiety, excitotoxicity, and migraines.
+evidence_tier: fm_specific_thin
+rationale: Glutamate excitotoxicity is a recognized neurological mechanism, but its
+  clinical use as a coaching-level target is thin. Source is expert consensus without
+  primary citations.
+coaching_translation: Magnesium and taurine may support excitatory-inhibitory balance;
+  reducing MSG-heavy processed foods is a reasonable suggestion.
+caveats:
+- Source is expert consensus without direct citations.
+- Migraine diagnosis and treatment are clinician-scope.
+linked_to_topics:
+- chronic-inflammation
+- depression-like-symptoms
+linked_to_supplements:
+- magnesium
+- taurine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 8
+  quote: High glutamate is described as causing anxiety, excitotoxicity, and migraines.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

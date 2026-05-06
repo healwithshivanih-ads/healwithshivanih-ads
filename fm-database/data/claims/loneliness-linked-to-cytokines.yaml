@@ -1,0 +1,26 @@
+slug: loneliness-linked-to-cytokines
+statement: Loneliness is described as increasing IL-6, TNF-alpha, and CRP with immune
+  cell activation.
+evidence_tier: plausible_emerging
+rationale: Loneliness-cytokine associations (IL-6, TNF-alpha, CRP) have credible peer-reviewed
+  support. Source is expert consensus without primary citations.
+coaching_translation: Anti-inflammatory nutrition and social connection are complementary
+  coaching tools for loneliness-related inflammation.
+caveats:
+- Source is expert consensus without direct citations.
+linked_to_topics:
+- chronic-inflammation
+linked_to_supplements:
+- omega-3
+- curcumin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 19
+  quote: Loneliness is described as increasing IL-6, TNF-alpha, and CRP with immune
+    cell activation.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

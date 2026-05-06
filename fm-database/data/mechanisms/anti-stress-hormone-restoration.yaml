@@ -1,0 +1,48 @@
+slug: anti-stress-hormone-restoration
+display_name: Anti-Stress Hormone Restoration
+aliases:
+- anabolic hormone repair
+- stress-buffer hormone synthesis
+- adrenal anabolic balance
+category: endocrine
+summary: DHEA, pregnenolone, progesterone, oxytocin, melatonin, serotonin, endorphins,
+  adiponectin, nitric oxide, and growth hormone are framed as anti-stress or repair
+  hormones requiring adequate micronutrients, sleep, and lifestyle inputs.
+upstream_drivers:
+- deep-sleep
+- circadian-rhythm
+- healthy-fats
+- adequate-protein
+- exercise
+- sunlight
+- community
+- gut-microbiome-support
+- stress-reduction
+downstream_effects:
+- improved-resilience
+- improved-mood
+- immune-balance
+- metabolic-resilience
+- better-sleep
+- tissue-repair
+- improved-bonding
+related_mechanisms:
+- cortisol-dhea-imbalance
+- hpa-axis-overactivation
+linked_to_topics:
+- adrenal-fatigue
+- sleep
+- insulin-resistance
+- cardiovascular-health
+- depression-like-symptoms
+evidence_tier: fm_specific_thin
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Key Mechanisms Explained — anti-stress-hormone-restoration
+  quote: The source frames DHEA, pregnenolone, progesterone, oxytocin, melatonin,
+    serotonin, endorphins, adiponectin, nitric oxide, and growth hormone as anti-stress
+    or repair hormones.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

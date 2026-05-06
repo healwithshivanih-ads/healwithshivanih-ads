@@ -1,0 +1,24 @@
+slug: high-testosterone-linked-to-pcos-in-women
+statement: High testosterone is described as causing aggression, acne, and PCOS in
+  women.
+evidence_tier: confirm_with_clinician
+rationale: Androgen excess in women is a recognized feature of PCOS; hormonal testing
+  and therapy require clinician management.
+out_of_scope_notes: Androgen testing and anti-androgen therapy are clinician-scope.
+caveats:
+- Hormonal testing required for confirmation.
+- Source is expert consensus without direct citations.
+linked_to_topics:
+- pcos
+- insulin-resistance
+coaching_translation: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 4
+  quote: High testosterone is described as causing aggression, acne, and PCOS in women.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

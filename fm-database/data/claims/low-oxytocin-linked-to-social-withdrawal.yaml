@@ -1,0 +1,27 @@
+slug: low-oxytocin-linked-to-social-withdrawal
+statement: Low oxytocin is described as causing social withdrawal, poor bonding, and
+  depression.
+evidence_tier: fm_specific_thin
+rationale: Oxytocin's role in bonding and mood is biologically plausible; however,
+  oxytocin as a coaching-level intervention is thin in peer-reviewed evidence. Source
+  is expert consensus without primary citations.
+coaching_translation: Encouraging community connection, physical affection, and group
+  activities may naturally support oxytocin levels.
+caveats:
+- Source is expert consensus without direct citations.
+- Oxytocin therapy is clinician-scope.
+linked_to_topics:
+- depression-like-symptoms
+- chronic-stress
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 5
+  quote: Low oxytocin is described as causing social withdrawal, poor bonding, and
+    depression.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

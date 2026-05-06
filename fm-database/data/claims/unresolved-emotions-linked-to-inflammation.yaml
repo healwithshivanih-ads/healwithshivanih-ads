@@ -1,0 +1,25 @@
+slug: unresolved-emotions-linked-to-inflammation
+statement: The source states that unresolved emotions create unresolved inflammation.
+evidence_tier: fm_specific_thin
+rationale: This is a high-level FM framing with biological plausibility; direct evidence
+  for this exact claim at coaching level is thin. Source is expert consensus without
+  primary citations.
+coaching_translation: Emotional health work is a legitimate and important component
+  of anti-inflammatory health coaching.
+caveats:
+- Source is expert consensus without direct citations.
+- This is a conceptual FM model, not a peer-reviewed clinical statement.
+linked_to_topics:
+- chronic-stress
+- chronic-inflammation
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 14
+  quote: The source states that unresolved emotions create unresolved inflammation.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

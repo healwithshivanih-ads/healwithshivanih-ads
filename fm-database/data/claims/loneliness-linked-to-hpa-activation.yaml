@@ -1,0 +1,31 @@
+slug: loneliness-linked-to-hpa-activation
+statement: Chronic isolation is described as increasing cortisol, lowering DHEA, and
+  disrupting circadian rhythm.
+evidence_tier: fm_specific_thin
+rationale: Loneliness-related cortisol elevation has research support; the DHEA and
+  circadian framing is more FM-specific. Source is expert consensus without primary
+  citations.
+coaching_translation: Social connection and community are protective against HPA overactivation;
+  group coaching and community building are legitimate coaching modalities.
+caveats:
+- Source is expert consensus without direct citations.
+- DHEA testing and management are clinician-scope.
+linked_to_topics:
+- adrenal-fatigue
+- chronic-stress
+linked_to_supplements:
+- rhodiola
+- ashwagandha
+- vitamin-c
+- vitamin-b5
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 19
+  quote: Chronic isolation is described as increasing cortisol, lowering DHEA, and
+    disrupting circadian rhythm.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

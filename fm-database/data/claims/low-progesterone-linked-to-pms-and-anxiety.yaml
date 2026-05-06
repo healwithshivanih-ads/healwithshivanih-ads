@@ -1,0 +1,28 @@
+slug: low-progesterone-linked-to-pms-and-anxiety
+statement: Low progesterone is described as causing PMS, infertility, anxiety, and
+  irregular cycles.
+evidence_tier: confirm_with_clinician
+rationale: Progesterone's role in PMS and anxiety via GABAergic mechanisms is biologically
+  plausible; however, progesterone testing and therapy require clinician oversight.
+out_of_scope_notes: Progesterone testing and hormone therapy are clinician-scope.
+caveats:
+- Infertility requires clinician referral.
+- Source is expert consensus without direct citations.
+linked_to_topics:
+- pcos
+- adrenal-fatigue
+linked_to_supplements:
+- vitamin-b6
+- magnesium
+- vitex
+coaching_translation: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 4
+  quote: Low progesterone is described as causing PMS, infertility, anxiety, and irregular
+    cycles.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

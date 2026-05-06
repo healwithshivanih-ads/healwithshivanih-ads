@@ -1,0 +1,28 @@
+slug: high-histamine-linked-to-allergies-and-hives
+statement: High histamine is described as causing allergies, hives, and histamine
+  intolerance.
+evidence_tier: plausible_emerging
+rationale: Histamine intolerance is a growing clinical concept with emerging evidence;
+  DAO deficiency and gut dysbiosis as contributing factors have biological plausibility.
+  Source is expert consensus without primary citations.
+coaching_translation: Low-histamine dietary support, DAO-supporting nutrients (vitamin
+  C, quercetin), and gut health may help manage histamine load.
+caveats:
+- Source is expert consensus without direct citations.
+- Allergy diagnosis and antihistamine prescribing are clinician-scope.
+linked_to_topics:
+- chronic-inflammation
+- gut-dysbiosis
+linked_to_supplements:
+- vitamin-c
+- quercetin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 8
+  quote: High histamine is described as causing allergies, hives, and histamine intolerance.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

@@ -1,0 +1,26 @@
+slug: high-tsh-indicates-hypothyroid-pattern
+statement: High TSH is described as a hypothyroidism indicator requiring thyroid root-cause
+  treatment.
+evidence_tier: confirm_with_clinician
+rationale: TSH interpretation is a clinical lab function. Coaching cannot diagnose
+  or treat thyroid conditions.
+out_of_scope_notes: TSH interpretation and thyroid treatment are strictly clinician-scope.
+caveats:
+- Lab interpretation requires clinician oversight.
+- Source is expert consensus without direct citations.
+linked_to_topics:
+- thyroid
+linked_to_supplements:
+- iodine
+- selenium
+coaching_translation: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 4
+  quote: High TSH is described as a hypothyroidism indicator requiring thyroid root-cause
+    treatment.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

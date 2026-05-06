@@ -1,0 +1,24 @@
+slug: high-aldosterone-linked-to-hypertension-and-low-potassium
+statement: High aldosterone is described as causing hypertension, fluid retention,
+  and low potassium.
+evidence_tier: confirm_with_clinician
+rationale: Hyperaldosteronism is a diagnosable medical condition; blood pressure and
+  electrolyte management require clinician oversight.
+out_of_scope_notes: Aldosterone testing, electrolyte management, and antihypertensive
+  therapy are clinician-scope.
+caveats:
+- Requires clinician evaluation.
+linked_to_topics:
+- cardiovascular-health
+coaching_translation: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 6
+  quote: High aldosterone is described as causing hypertension, fluid retention, and
+    low potassium.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani
