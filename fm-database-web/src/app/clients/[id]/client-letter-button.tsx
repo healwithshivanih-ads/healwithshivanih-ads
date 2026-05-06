@@ -370,29 +370,40 @@ export function ClientLetterButton({ planSlug, clientId }: Props) {
   // ── ready ──────────────────────────────────────────────────────────────────
   return (
     <div className="space-y-3">
-      {/* Saved indicator + type tabs */}
-      <div className="flex items-center gap-2 flex-wrap">
-        {LETTER_TYPES.map((lt) =>
-          savedTypes[lt.type] ? (
+      {/* All 4 type cards — always visible. Saved = switch to it; unsaved = generate it */}
+      <div className="grid grid-cols-2 gap-2">
+        {LETTER_TYPES.map((lt) => {
+          const isCurrent = lt.type === letterType;
+          const isSaved = !!savedTypes[lt.type];
+          return (
             <button
               key={lt.type}
-              onClick={() => switchToType(lt.type)}
-              className={`text-[10px] rounded px-2 py-0.5 border transition-colors ${
-                lt.type === letterType
-                  ? "bg-emerald-600 text-white border-emerald-600"
-                  : "border-emerald-300 text-emerald-700 hover:bg-emerald-50"
+              onClick={() => {
+                if (isSaved) {
+                  switchToType(lt.type);
+                } else {
+                  setLetterType(lt.type);
+                  setStage("asking");
+                }
+              }}
+              className={`flex flex-col items-start gap-0.5 rounded-lg border px-3 py-2.5 text-left text-xs transition-colors ${
+                isCurrent && isSaved
+                  ? "border-emerald-500 bg-emerald-50"
+                  : "hover:bg-accent hover:border-foreground/30"
               }`}
             >
-              {lt.emoji} {lt.label}
+              <span className="font-medium">{lt.emoji} {lt.label}</span>
+              <span className="text-muted-foreground text-[10px]">{lt.desc}</span>
+              {isSaved ? (
+                <span className="text-emerald-600 text-[10px] mt-0.5">
+                  {isCurrent ? "▶ viewing" : "✓ saved — click to view"}
+                </span>
+              ) : (
+                <span className="text-muted-foreground text-[10px] mt-0.5">click to generate</span>
+              )}
             </button>
-          ) : null
-        )}
-        <button
-          className="text-[10px] rounded px-2 py-0.5 border border-dashed border-muted-foreground/40 text-muted-foreground hover:border-foreground/30 transition-colors"
-          onClick={() => setStage("idle")}
-        >
-          + Generate another
-        </button>
+          );
+        })}
       </div>
 
       {savedAt && (
@@ -407,9 +418,9 @@ export function ClientLetterButton({ planSlug, clientId }: Props) {
         <Button size="sm" variant="outline"
           className="border-emerald-500 text-emerald-700 hover:bg-emerald-50 text-xs"
           disabled={refinePending}
-          onClick={() => { setLetterType(letterType); setStage("asking"); }}
+          onClick={() => setStage("asking")}
         >
-          ↺ Regenerate
+          ↺ Regenerate {meta.label}
         </Button>
         {letter?.html && (
           <Button size="sm" variant="outline"
