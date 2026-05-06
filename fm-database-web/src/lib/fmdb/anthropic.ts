@@ -142,7 +142,7 @@ export async function extractSymptomsFromTranscript(
   const result = (await runShim(
     "extract-symptoms.py",
     input,
-    60_000
+    120_000   // large lab panels (78+ markers) need up to 2 min
   )) as ExtractSymptomsResult;
   return result;
 }

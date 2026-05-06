@@ -256,7 +256,7 @@ def main() -> int:
     user_content.extend(content_blocks)
     # Text content
     if transcript_text:
-        user_content.append({"type": "text", "text": instruction + transcript_text[:14000]})
+        user_content.append({"type": "text", "text": instruction + transcript_text[:30000]})
     else:
         user_content.append({"type": "text", "text": instruction})
 
@@ -272,7 +272,7 @@ def main() -> int:
     try:
         resp = client.messages.create(
             model="claude-haiku-4-5",
-            max_tokens=2048,
+            max_tokens=8192,   # large lab panels (78+ markers) + full symptom catalogue need the full Haiku limit
             messages=[{"role": "user", "content": user_content}],
         )
     except Exception as e:

@@ -10,9 +10,10 @@ import { Badge } from "@/components/ui/badge";
 import { MultiSelect, type MultiSelectOption } from "@/components/multi-select";
 import { updatePlan, saveSupplementSources } from "./actions";
 import type { SupplementSourcesMap } from "./actions";
-import type { Plan } from "@/lib/fmdb/types";
+import type { Plan, PlanStatus } from "@/lib/fmdb/types";
 import { ProtocolTemplatePicker } from "./protocol-template-picker";
 import { PlanChatPanel } from "./plan-chat-panel";
+import { LifecyclePanel } from "./lifecycle-panel";
 
 interface SupplementItem {
   supplement_slug: string;
@@ -199,6 +200,15 @@ export interface PlanEditorProps {
   locked: boolean;
   /** Client ID for the chat panel */
   clientId?: string;
+  /** Lifecycle panel props — passed through so the 🚀 Lifecycle tab can render inline */
+  lifecycleProps: {
+    status: PlanStatus | undefined;
+    version?: number;
+    catalogueSnapshot?: { git_sha?: string; snapshot_date?: string } | null;
+    statusHistory: Array<{ state?: string; by?: string; at?: string; reason?: string }>;
+    supersedes?: string;
+    allPlanSlugs: string[];
+  };
 }
 
 function clone<T>(x: T): T {
@@ -742,6 +752,120 @@ function LabOrdersEditor({
   );
 }
 
+// ── Supplement Combobox ────────────────────────────────────────────────────────
+// Typeahead input that filters catalog options while typing.
+// Allows freeform values (not restricted to catalog).
+// Shows "✓ catalog" badge when a catalog match is active.
+function SupplementCombobox({
+  value,
+  options,
+  allSlugs,
+  onChange,
+  disabled,
+}: {
+  value: string;
+  options: MultiSelectOption[];
+  allSlugs: string[];   // slugs already in the plan (for conflict hint)
+  onChange: (slug: string) => void;
+  disabled?: boolean;
+}) {
+  // Show the display name if it's a catalog entry, else show the raw value
+  const catalog = options.find((o) => o.value === value);
+  const [text, setText] = useState(() => catalog?.label ?? value);
+  const [open, setOpen] = useState(false);
+
+  const filtered = text.trim().length === 0
+    ? options.slice(0, 30)
+    : options.filter(
+        (o) =>
+          o.label.toLowerCase().includes(text.toLowerCase()) ||
+          o.value.toLowerCase().includes(text.toLowerCase())
+      ).slice(0, 40);
+
+  function select(opt: MultiSelectOption) {
+    setText(opt.label);
+    onChange(opt.value);
+    setOpen(false);
+  }
+
+  function handleBlur() {
+    // slight delay so a click-in-list fires before blur
+    setTimeout(() => {
+      setOpen(false);
+      // if nothing in catalog matches the text, save freeform
+      const match = options.find((o) => o.label.toLowerCase() === text.trim().toLowerCase());
+      if (match) {
+        onChange(match.value);
+      } else if (text.trim()) {
+        // slugify freeform text
+        const slug = text.trim().toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+        onChange(slug || text.trim());
+      }
+    }, 150);
+  }
+
+  const isInCatalog = !!options.find((o) => o.value === value);
+  // Simple conflict hint: check if any selected supp has known interactions with this one
+  const otherSlugs = allSlugs.filter((s) => s !== value && s !== "");
+
+  return (
+    <div className="relative flex-1">
+      <div className="flex items-center gap-1.5">
+        <input
+          type="text"
+          value={text}
+          disabled={disabled}
+          placeholder="Type to search catalog or enter custom name…"
+          className="flex-1 h-9 px-3 text-sm border rounded-md bg-background disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-ring"
+          onChange={(e) => {
+            setText(e.target.value);
+            setOpen(true);
+          }}
+          onFocus={() => setOpen(true)}
+          onBlur={handleBlur}
+        />
+        {isInCatalog && (
+          <span className="shrink-0 text-[10px] bg-emerald-100 text-emerald-700 border border-emerald-300 rounded-full px-1.5 py-0.5 font-semibold whitespace-nowrap">
+            ✓ catalog
+          </span>
+        )}
+        {value && !isInCatalog && (
+          <span className="shrink-0 text-[10px] bg-amber-100 text-amber-700 border border-amber-300 rounded-full px-1.5 py-0.5 font-semibold whitespace-nowrap">
+            custom
+          </span>
+        )}
+      </div>
+      {open && filtered.length > 0 && (
+        <div className="absolute top-full left-0 right-0 mt-0.5 z-50 bg-background border rounded-md shadow-lg max-h-60 overflow-y-auto">
+          {filtered.map((o) => {
+            const selected = o.value === value;
+            const otherHasConflict = otherSlugs.some(
+              (s) => o.value.includes(s) || s.includes(o.value)
+            );
+            return (
+              <button
+                key={o.value}
+                type="button"
+                onMouseDown={() => select(o)}
+                className={[
+                  "w-full text-left px-3 py-2 text-sm flex items-center gap-2 hover:bg-muted/50 transition-colors",
+                  selected ? "bg-primary/10 font-medium" : "",
+                ].join(" ")}
+              >
+                <span className="flex-1 truncate">{o.label}</span>
+                <span className="text-[10px] text-muted-foreground font-mono shrink-0">{o.value}</span>
+                {otherHasConflict && (
+                  <span className="shrink-0 text-[10px] text-amber-600">⚠</span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export function PlanEditor(props: PlanEditorProps) {
   const {
     plan: initial,
@@ -754,6 +878,7 @@ export function PlanEditor(props: PlanEditorProps) {
     supplementSources: initialSources,
     locked,
     clientId,
+    lifecycleProps,
   } = props;
 
   const [plan, setPlan] = useState<Plan>(() => clone(initial));
@@ -761,6 +886,9 @@ export function PlanEditor(props: PlanEditorProps) {
   const [dirty, setDirty] = useState(false);
   const [isPending, startTransition] = useTransition();
   const [saveResult, setSaveResult] = useState<string | null>(null);
+  // editAnyway: coach can unlock an active/published plan for careful edits
+  const [editAnyway, setEditAnyway] = useState(false);
+  const effectiveLocked = locked && !editAnyway;
 
   // ── Timeline state (mirrors plan_period_* fields) ──────────────────────────
   const [timelineStart, setTimelineStart] = useState<string>(
@@ -864,14 +992,88 @@ export function PlanEditor(props: PlanEditorProps) {
 
   return (
     <div className="space-y-4">
-      {locked && (
-        <div className="rounded-md border border-amber-300/50 bg-amber-50 dark:bg-amber-950/30 px-4 py-3 text-sm">
-          This plan is <strong>{plan.status}</strong> — switch back to drafts
-          to edit, or use the lifecycle CLI (
-          <code>fmdb plan-revoke</code> / <code>plan-supersede</code>) to make
-          a new revision.
+      {locked && !editAnyway && (
+        <div className="rounded-md border border-amber-200 bg-amber-50 px-4 py-3 flex flex-col sm:flex-row sm:items-center gap-3">
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-semibold text-amber-800">
+              📌 This plan is {lifecycleProps.status?.replace(/_/g, " ")} — it has been sent to the client
+            </p>
+            <p className="text-xs text-amber-700 mt-0.5">
+              Edit carefully, or archive this plan and create a new version to start fresh.
+            </p>
+          </div>
+          <div className="flex gap-2 shrink-0">
+            <button
+              onClick={() => setEditAnyway(true)}
+              className="text-xs font-semibold px-3 py-1.5 rounded-md border border-amber-400 bg-white text-amber-800 hover:bg-amber-50 transition-colors"
+            >
+              ✏️ Edit anyway
+            </button>
+          </div>
         </div>
       )}
+      {locked && editAnyway && (
+        <div className="rounded-md border border-amber-200 bg-amber-50/50 px-4 py-2 flex items-center gap-2 text-xs text-amber-700">
+          <span>⚠️ Editing an active plan — changes save immediately to the client record.</span>
+          <button onClick={() => setEditAnyway(false)} className="ml-auto underline hover:text-amber-900">Lock again</button>
+        </div>
+      )}
+
+      {/* ── Next-step action card ── */}
+      {(() => {
+        const st = lifecycleProps.status;
+        if (st === "draft" || st === "ready_to_publish") {
+          return (
+            <div className="rounded-lg border border-emerald-200 bg-emerald-50/50 px-4 py-3 flex flex-col sm:flex-row sm:items-center gap-3">
+              <div className="flex-1 min-w-0">
+                <p className="text-xs text-emerald-700 font-semibold uppercase tracking-wide">Next step</p>
+                <p className="text-sm font-semibold text-emerald-900 mt-0.5">
+                  Build the protocol, then activate the plan
+                </p>
+                <p className="text-xs text-emerald-700 mt-0.5">
+                  Fill in supplements, nutrition, and lifestyle below — then go to the <strong>Lifecycle tab</strong> to activate.
+                </p>
+              </div>
+              <button
+                onClick={() => {
+                  // scroll to the Lifecycle tab trigger
+                  document
+                    .querySelector<HTMLButtonElement>('[data-state][value="lifecycle"], button[aria-label*="lifecycle"], [data-radix-collection-item]')
+                    ?.click();
+                  // fallback: find by text
+                  const tabs = document.querySelectorAll<HTMLButtonElement>('[role="tab"]');
+                  tabs.forEach((t) => { if (t.textContent?.includes("Lifecycle")) t.click(); });
+                }}
+                className="shrink-0 text-sm font-semibold px-4 py-2 rounded-lg bg-emerald-700 text-white hover:bg-emerald-800 transition-colors"
+              >
+                🚀 Go to Lifecycle tab →
+              </button>
+            </div>
+          );
+        }
+        if (st === "published" && clientId) {
+          return (
+            <div className="rounded-lg border border-violet-200 bg-violet-50/50 px-4 py-3 flex flex-col sm:flex-row sm:items-center gap-3">
+              <div className="flex-1 min-w-0">
+                <p className="text-xs text-violet-700 font-semibold uppercase tracking-wide">Next step</p>
+                <p className="text-sm font-semibold text-violet-900 mt-0.5">
+                  Generate and send client letters
+                </p>
+                <p className="text-xs text-violet-700 mt-0.5">
+                  Plan is active. Go to the client page to generate the meal plan, supplement guide, and lifestyle letter.
+                </p>
+              </div>
+              <a
+                href={`/clients/${clientId}?tab=plan`}
+                className="shrink-0 text-sm font-semibold px-4 py-2 rounded-lg bg-violet-700 text-white hover:bg-violet-800 transition-colors"
+              >
+                📤 Go to client → Documents →
+              </a>
+            </div>
+          );
+        }
+        return null;
+      })()}
 
       <div className="flex items-center justify-between gap-3 sticky top-0 z-10 bg-background/80 backdrop-blur py-2 -mx-2 px-2">
         <div className="text-sm text-muted-foreground">
@@ -887,20 +1089,20 @@ export function PlanEditor(props: PlanEditorProps) {
         <Button
           type="button"
           onClick={save}
-          disabled={!dirty || isPending || locked}
+          disabled={!dirty || isPending || effectiveLocked}
         >
           {isPending ? "Saving…" : "Save"}
         </Button>
       </div>
 
-      <ProtocolTemplatePicker onApply={applyTemplate} disabled={locked} />
+      <ProtocolTemplatePicker onApply={applyTemplate} disabled={effectiveLocked} />
 
       {/* ── Plan timeline ── */}
       <PlanTimelineCard
         startDate={timelineStart}
         weeks={timelineWeeks}
         primaryTopics={(plan.primary_topics as string[]) ?? []}
-        locked={locked}
+        locked={effectiveLocked}
         onStartDateChange={(d) => {
           setTimelineStart(d);
           handleTimelineChange(d, timelineWeeks);
@@ -916,80 +1118,527 @@ export function PlanEditor(props: PlanEditorProps) {
         <SupplementScheduleCard supplements={(plan.supplement_protocol as SupplementItem[]) ?? []} />
       )}
 
-      <Tabs defaultValue="assessment">
+      <Tabs defaultValue="protocol">
         <TabsList>
-          <TabsTrigger value="assessment">Assessment</TabsTrigger>
-          <TabsTrigger value="lifestyle">Lifestyle</TabsTrigger>
-          <TabsTrigger value="nutrition">Nutrition</TabsTrigger>
-          <TabsTrigger value="education">Education</TabsTrigger>
-          <TabsTrigger value="supplements">Supplements</TabsTrigger>
-          <TabsTrigger value="labs">Labs</TabsTrigger>
-          <TabsTrigger value="referrals">Referrals</TabsTrigger>
-          <TabsTrigger value="tracking">Tracking</TabsTrigger>
-          <TabsTrigger value="resources">Resources</TabsTrigger>
-          <TabsTrigger value="notes">Notes &amp; Raw</TabsTrigger>
-          <TabsTrigger value="chat">💬 Chat</TabsTrigger>
+          <TabsTrigger value="protocol">📋 Protocol</TabsTrigger>
+          <TabsTrigger value="documents">📄 Documents</TabsTrigger>
+          <TabsTrigger value="lifecycle">🚀 Lifecycle</TabsTrigger>
         </TabsList>
 
-        {/* ─────────── Assessment ─────────── */}
-        <TabsContent value="assessment">
-          <Card>
-            <CardHeader>
-              <CardTitle>Assessment</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium mb-1.5">
-                  Primary topics
-                </label>
-                <MultiSelect
-                  options={topicOptions}
-                  value={plan.primary_topics ?? []}
-                  onChange={(v) => patch("primary_topics", v)}
+        {/* ═══════════════════════════════════════════════════════════════════
+            📋 PROTOCOL TAB — all clinical sections in one scrolling view
+        ═══════════════════════════════════════════════════════════════════ */}
+        <TabsContent value="protocol">
+          <div className="space-y-3 pt-2">
+
+            {/* ── AI Chat — pinned near top so coach can use it to fill in sections ── */}
+            <details className="group">
+              <summary className="flex items-center gap-2 cursor-pointer select-none rounded-md border border-violet-200 bg-violet-50/40 px-4 py-3 text-sm font-semibold hover:bg-violet-50/60 list-none">
+                <span className="transition-transform group-open:rotate-90 text-muted-foreground text-xs">▶</span>
+                💬 AI Plan Assistant
+                <span className="ml-auto text-[10px] text-violet-600 font-normal">Ask AI to fill in, adjust, or review any section</span>
+              </summary>
+              <div className="pt-2 px-1">
+                <PlanChatPanel
+                  slug={plan.slug as string}
+                  clientId={clientId ?? ""}
+                  isLocked={effectiveLocked}
                 />
               </div>
-              <div>
-                <label className="block text-sm font-medium mb-1.5">
-                  Contributing topics
-                </label>
-                <MultiSelect
-                  options={topicOptions}
-                  value={plan.contributing_topics ?? []}
-                  onChange={(v) => patch("contributing_topics", v)}
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1.5">
-                  Presenting symptoms
-                </label>
-                <MultiSelect
-                  options={symptomOptions}
-                  value={plan.presenting_symptoms ?? []}
-                  onChange={(v) => patch("presenting_symptoms", v)}
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1.5">
-                  Hypothesized drivers
-                </label>
-                <div className="space-y-3">
-                  {drivers.map((d, i) => (
-                    <div
-                      key={i}
-                      className="border rounded-md p-3 space-y-2 bg-muted/20"
-                    >
-                      <div className="flex gap-2">
-                        <select
-                          value={d.mechanism}
+            </details>
+
+            {/* ── Assessment ── */}
+            <details open className="group">
+              <summary className="flex items-center gap-2 cursor-pointer select-none rounded-md border bg-muted/30 px-4 py-3 text-sm font-semibold hover:bg-muted/50 list-none">
+                <span className="transition-transform group-open:rotate-90 text-muted-foreground text-xs">▶</span>
+                Assessment
+                {((plan.primary_topics as string[] | undefined)?.length ?? 0) > 0 && (
+                  <Badge variant="secondary" className="ml-auto text-[10px]">
+                    {(plan.primary_topics as string[]).length} topic{(plan.primary_topics as string[]).length !== 1 ? "s" : ""}
+                  </Badge>
+                )}
+              </summary>
+              <div className="pt-3 space-y-4 px-1">
+                <div>
+                  <label className="block text-sm font-medium mb-1.5">Primary topics</label>
+                  <MultiSelect
+                    options={topicOptions}
+                    value={plan.primary_topics ?? []}
+                    onChange={(v) => patch("primary_topics", v)}
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1.5">Contributing topics</label>
+                  <MultiSelect
+                    options={topicOptions}
+                    value={plan.contributing_topics ?? []}
+                    onChange={(v) => patch("contributing_topics", v)}
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1.5">Presenting symptoms</label>
+                  <MultiSelect
+                    options={symptomOptions}
+                    value={plan.presenting_symptoms ?? []}
+                    onChange={(v) => patch("presenting_symptoms", v)}
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1.5">Hypothesized drivers</label>
+                  <div className="space-y-3">
+                    {drivers.map((d, i) => (
+                      <div key={i} className="border rounded-md p-3 space-y-2 bg-muted/20">
+                        <div className="flex gap-2">
+                          <select
+                            value={d.mechanism}
+                            onChange={(e) => {
+                              const next = [...drivers];
+                              next[i] = { ...next[i], mechanism: e.target.value };
+                              patch("hypothesized_drivers", next);
+                            }}
+                            className="flex-1 h-9 px-2 text-sm border rounded-md bg-background"
+                          >
+                            <option value="">— mechanism —</option>
+                            {mechanismOptions.map((o) => (
+                              <option key={o.value} value={o.value}>
+                                {o.label} ({o.value})
+                              </option>
+                            ))}
+                          </select>
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            onClick={() => {
+                              const next = drivers.filter((_, j) => j !== i);
+                              patch("hypothesized_drivers", next);
+                            }}
+                          >
+                            Remove
+                          </Button>
+                        </div>
+                        <textarea
+                          value={d.reasoning}
                           onChange={(e) => {
                             const next = [...drivers];
-                            next[i] = { ...next[i], mechanism: e.target.value };
+                            next[i] = { ...next[i], reasoning: e.target.value };
                             patch("hypothesized_drivers", next);
+                          }}
+                          placeholder="Reasoning — why this is in play for this client"
+                          className="w-full text-sm border rounded-md p-2 min-h-[60px] bg-background"
+                        />
+                      </div>
+                    ))}
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() =>
+                        patch("hypothesized_drivers", [
+                          ...drivers,
+                          { mechanism: "", reasoning: "" },
+                        ])
+                      }
+                    >
+                      + Add driver
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            {/* ── Supplements ── */}
+            <details open className="group">
+              <summary className="flex items-center gap-2 cursor-pointer select-none rounded-md border bg-muted/30 px-4 py-3 text-sm font-semibold hover:bg-muted/50 list-none">
+                <span className="transition-transform group-open:rotate-90 text-muted-foreground text-xs">▶</span>
+                Supplement protocol
+                {supplements.length > 0 && (
+                  <Badge variant="secondary" className="ml-auto text-[10px]">
+                    {supplements.length}
+                  </Badge>
+                )}
+              </summary>
+              <div className="pt-3 space-y-3 px-1">
+                {supplements.map((s, i) => (
+                  <div key={i} className="border rounded-md p-3 space-y-2 bg-muted/20">
+                    <div className="flex gap-2 items-center">
+                      <SupplementCombobox
+                        value={s.supplement_slug}
+                        options={supplementOptions}
+                        allSlugs={supplements.map((x) => x.supplement_slug)}
+                        disabled={effectiveLocked}
+                        onChange={(slug) => {
+                          const next = [...supplements];
+                          next[i] = { ...next[i], supplement_slug: slug };
+                          patch("supplement_protocol", next);
+                        }}
+                      />
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={() =>
+                          patch("supplement_protocol", supplements.filter((_, j) => j !== i))
+                        }
+                      >
+                        Remove
+                      </Button>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2">
+                      <Input
+                        placeholder="Form (e.g. capsule)"
+                        value={s.form ?? ""}
+                        onChange={(e) => {
+                          const next = [...supplements];
+                          next[i] = { ...next[i], form: e.target.value };
+                          patch("supplement_protocol", next);
+                        }}
+                      />
+                      <Input
+                        placeholder="Dose (e.g. 200-400 mg)"
+                        value={s.dose ?? ""}
+                        onChange={(e) => {
+                          const next = [...supplements];
+                          next[i] = { ...next[i], dose: e.target.value };
+                          patch("supplement_protocol", next);
+                        }}
+                      />
+                      <Input
+                        placeholder="Timing (e.g. evening)"
+                        value={s.timing ?? ""}
+                        onChange={(e) => {
+                          const next = [...supplements];
+                          next[i] = { ...next[i], timing: e.target.value };
+                          patch("supplement_protocol", next);
+                        }}
+                      />
+                      <Input
+                        placeholder="Take with food"
+                        value={s.take_with_food ?? ""}
+                        onChange={(e) => {
+                          const next = [...supplements];
+                          next[i] = { ...next[i], take_with_food: e.target.value };
+                          patch("supplement_protocol", next);
+                        }}
+                      />
+                      <Input
+                        type="number"
+                        placeholder="Duration (weeks)"
+                        value={s.duration_weeks ?? ""}
+                        onChange={(e) => {
+                          const next = [...supplements];
+                          const v = e.target.value;
+                          next[i] = { ...next[i], duration_weeks: v === "" ? null : Number(v) };
+                          patch("supplement_protocol", next);
+                        }}
+                      />
+                      <Input
+                        placeholder="Titration"
+                        value={s.titration ?? ""}
+                        onChange={(e) => {
+                          const next = [...supplements];
+                          next[i] = { ...next[i], titration: e.target.value };
+                          patch("supplement_protocol", next);
+                        }}
+                      />
+                    </div>
+                    <textarea
+                      placeholder="Coach rationale — why for this client"
+                      value={s.coach_rationale ?? ""}
+                      onChange={(e) => {
+                        const next = [...supplements];
+                        next[i] = { ...next[i], coach_rationale: e.target.value };
+                        patch("supplement_protocol", next);
+                      }}
+                      className="w-full text-sm border rounded-md p-2 min-h-[60px] bg-background"
+                    />
+                    {s.supplement_slug && (
+                      <details className="mt-1">
+                        <summary className="cursor-pointer text-xs text-muted-foreground select-none py-1 flex items-center gap-1.5">
+                          <span className="font-medium text-foreground/70">📦 Source from</span>
+                          {sources[s.supplement_slug]?.url && (
+                            <a
+                              href={sources[s.supplement_slug].url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="text-blue-600 underline text-[10px]"
+                            >
+                              {sources[s.supplement_slug].brand || "link ↗"}
+                            </a>
+                          )}
+                          {!sources[s.supplement_slug]?.url && sources[s.supplement_slug]?.brand && (
+                            <span className="text-[10px] text-foreground/60">{sources[s.supplement_slug].brand}</span>
+                          )}
+                          {!sources[s.supplement_slug]?.brand && !sources[s.supplement_slug]?.url && (
+                            <span className="text-[10px] text-muted-foreground italic">not set</span>
+                          )}
+                        </summary>
+                        <div className="mt-2 space-y-2 pl-1 border-l-2 border-muted">
+                          <div className="grid grid-cols-2 gap-2">
+                            <Input
+                              placeholder="Brand / product name"
+                              value={sources[s.supplement_slug]?.brand ?? ""}
+                              onChange={(e) => patchSource(s.supplement_slug, "brand", e.target.value)}
+                              className="text-xs h-8"
+                            />
+                            <Input
+                              placeholder="Affiliate / buy URL"
+                              value={sources[s.supplement_slug]?.url ?? ""}
+                              onChange={(e) => patchSource(s.supplement_slug, "url", e.target.value)}
+                              className="text-xs h-8 font-mono"
+                            />
+                          </div>
+                          <Input
+                            placeholder="Code (e.g. SHIVANI10)"
+                            value={sources[s.supplement_slug]?.code ?? ""}
+                            onChange={(e) => patchSource(s.supplement_slug, "code", e.target.value)}
+                            className="text-xs h-8 w-48"
+                          />
+                          {sources[s.supplement_slug]?.vitaone_ref && (
+                            <p className="text-[10px] text-muted-foreground bg-muted/40 rounded px-2 py-1">
+                              <span className="font-medium">VitaOne ref:</span>{" "}
+                              {sources[s.supplement_slug].vitaone_ref}
+                            </p>
+                          )}
+                          <p className="text-[10px] text-muted-foreground">
+                            Shared across all plans — changes apply to all clients.
+                          </p>
+                        </div>
+                      </details>
+                    )}
+                  </div>
+                ))}
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={() =>
+                    patch("supplement_protocol", [
+                      ...supplements,
+                      {
+                        supplement_slug: "",
+                        form: "",
+                        dose: "",
+                        timing: "",
+                        take_with_food: "",
+                        duration_weeks: null,
+                        titration: "",
+                        coach_rationale: "",
+                      },
+                    ])
+                  }
+                >
+                  + Add supplement
+                </Button>
+              </div>
+            </details>
+
+            {/* ── Nutrition ── */}
+            <details className="group">
+              <summary className="flex items-center gap-2 cursor-pointer select-none rounded-md border bg-muted/30 px-4 py-3 text-sm font-semibold hover:bg-muted/50 list-none">
+                <span className="transition-transform group-open:rotate-90 text-muted-foreground text-xs">▶</span>
+                Nutrition
+                {(nutrition.pattern as string | undefined) && (
+                  <span className="ml-auto text-xs text-muted-foreground font-normal truncate max-w-[200px]">
+                    {nutrition.pattern as string}
+                  </span>
+                )}
+              </summary>
+              <div className="pt-3 space-y-4 px-1">
+                <div>
+                  <label className="block text-sm font-medium mb-1.5">Pattern</label>
+                  <Input
+                    value={(nutrition.pattern as string) ?? ""}
+                    onChange={(e) => patchNutrition("pattern", e.target.value)}
+                    placeholder="e.g. gentle anti-inflammatory"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1.5">Meal timing</label>
+                  <Input
+                    value={(nutrition.meal_timing as string) ?? ""}
+                    onChange={(e) => patchNutrition("meal_timing", e.target.value)}
+                    placeholder="e.g. 12-hour overnight fast"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1.5">Cooking adjustments</label>
+                  <MultiSelect
+                    options={cookingOptions}
+                    value={(nutrition.cooking_adjustments as string[]) ?? []}
+                    onChange={(v) => patchNutrition("cooking_adjustments", v)}
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1.5">Home remedies</label>
+                  <MultiSelect
+                    options={remedyOptions}
+                    value={(nutrition.home_remedies as string[]) ?? []}
+                    onChange={(v) => patchNutrition("home_remedies", v)}
+                  />
+                </div>
+                <FreeformStringList
+                  label="Foods to add"
+                  value={nutritionAdd}
+                  onChange={(v) => patchNutrition("add", v)}
+                  placeholder="e.g. cooked leafy greens"
+                  addLabel="+ Add food"
+                />
+                <FreeformStringList
+                  label="Foods to reduce"
+                  value={nutritionReduce}
+                  onChange={(v) => patchNutrition("reduce", v)}
+                  placeholder="e.g. ultra-processed snacks"
+                  addLabel="+ Add food"
+                />
+              </div>
+            </details>
+
+            {/* ── Lifestyle ── */}
+            <details className="group">
+              <summary className="flex items-center gap-2 cursor-pointer select-none rounded-md border bg-muted/30 px-4 py-3 text-sm font-semibold hover:bg-muted/50 list-none">
+                <span className="transition-transform group-open:rotate-90 text-muted-foreground text-xs">▶</span>
+                Lifestyle practices
+                {lifestyle.length > 0 && (
+                  <Badge variant="secondary" className="ml-auto text-[10px]">
+                    {lifestyle.length}
+                  </Badge>
+                )}
+              </summary>
+              <div className="pt-3 space-y-3 px-1">
+                {lifestyle.map((p, i) => (
+                  <div key={i} className="border rounded-md p-3 space-y-2 bg-muted/20">
+                    <div className="flex gap-2">
+                      <Input
+                        placeholder="Name (e.g. morning sunlight)"
+                        value={p.name}
+                        onChange={(e) => {
+                          const next = [...lifestyle];
+                          next[i] = { ...next[i], name: e.target.value };
+                          patch("lifestyle_practices", next);
+                        }}
+                      />
+                      <Input
+                        placeholder="Cadence (e.g. daily)"
+                        value={p.cadence}
+                        onChange={(e) => {
+                          const next = [...lifestyle];
+                          next[i] = { ...next[i], cadence: e.target.value };
+                          patch("lifestyle_practices", next);
+                        }}
+                      />
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={() =>
+                          patch("lifestyle_practices", lifestyle.filter((_, j) => j !== i))
+                        }
+                      >
+                        Remove
+                      </Button>
+                    </div>
+                    <textarea
+                      placeholder="Details — how to do it, what to expect"
+                      value={p.details ?? ""}
+                      onChange={(e) => {
+                        const next = [...lifestyle];
+                        next[i] = { ...next[i], details: e.target.value };
+                        patch("lifestyle_practices", next);
+                      }}
+                      className="w-full text-sm border rounded-md p-2 min-h-[60px] bg-background"
+                    />
+                  </div>
+                ))}
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={() =>
+                    patch("lifestyle_practices", [
+                      ...lifestyle,
+                      { name: "", cadence: "", details: "" },
+                    ])
+                  }
+                >
+                  + Add practice
+                </Button>
+              </div>
+            </details>
+
+            {/* ── Labs ── */}
+            <details className="group">
+              <summary className="flex items-center gap-2 cursor-pointer select-none rounded-md border bg-muted/30 px-4 py-3 text-sm font-semibold hover:bg-muted/50 list-none">
+                <span className="transition-transform group-open:rotate-90 text-muted-foreground text-xs">▶</span>
+                Lab orders
+                {labOrders.length > 0 && (
+                  <Badge variant="secondary" className="ml-auto text-[10px]">
+                    {labOrders.length}
+                  </Badge>
+                )}
+              </summary>
+              <div className="pt-3 px-1">
+                <LabOrdersEditor
+                  labOrders={labOrders}
+                  locked={effectiveLocked}
+                  onChange={(next) => patch("lab_orders", next)}
+                />
+              </div>
+            </details>
+
+            {/* ── Education ── */}
+            <details className="group">
+              <summary className="flex items-center gap-2 cursor-pointer select-none rounded-md border bg-muted/30 px-4 py-3 text-sm font-semibold hover:bg-muted/50 list-none">
+                <span className="transition-transform group-open:rotate-90 text-muted-foreground text-xs">▶</span>
+                Education modules
+                {education.length > 0 && (
+                  <Badge variant="secondary" className="ml-auto text-[10px]">
+                    {education.length}
+                  </Badge>
+                )}
+              </summary>
+              <div className="pt-3 space-y-3 px-1">
+                {education.map((em, i) => {
+                  const opts =
+                    em.target_kind === "topic"
+                      ? educationTopicOptions
+                      : optionsForKind(em.target_kind);
+                  return (
+                    <div key={i} className="border rounded-md p-3 space-y-2 bg-muted/20">
+                      <div className="flex gap-2">
+                        <select
+                          value={em.target_kind}
+                          onChange={(e) => {
+                            const next = [...education];
+                            next[i] = {
+                              ...next[i],
+                              target_kind: e.target.value,
+                              target_slug: "",
+                            };
+                            patch("education", next);
+                          }}
+                          className="h-9 px-2 text-sm border rounded-md bg-background"
+                        >
+                          <option value="topic">topic</option>
+                          <option value="mechanism">mechanism</option>
+                          <option value="claim">claim</option>
+                        </select>
+                        <select
+                          value={em.target_slug}
+                          onChange={(e) => {
+                            const next = [...education];
+                            next[i] = { ...next[i], target_slug: e.target.value };
+                            patch("education", next);
                           }}
                           className="flex-1 h-9 px-2 text-sm border rounded-md bg-background"
                         >
-                          <option value="">— mechanism —</option>
-                          {mechanismOptions.map((o) => (
+                          <option value="">
+                            {em.target_kind === "claim"
+                              ? "— claim slug (paste below) —"
+                              : `— ${em.target_kind} —`}
+                          </option>
+                          {opts.map((o) => (
                             <option key={o.value} value={o.value}>
                               {o.label} ({o.value})
                             </option>
@@ -999,571 +1648,88 @@ export function PlanEditor(props: PlanEditorProps) {
                           type="button"
                           variant="outline"
                           size="sm"
-                          onClick={() => {
-                            const next = drivers.filter((_, j) => j !== i);
-                            patch("hypothesized_drivers", next);
-                          }}
+                          onClick={() =>
+                            patch("education", education.filter((_, j) => j !== i))
+                          }
                         >
                           Remove
                         </Button>
                       </div>
+                      {em.target_kind === "claim" && (
+                        <Input
+                          placeholder="Claim slug (no picker for claims yet)"
+                          value={em.target_slug}
+                          onChange={(e) => {
+                            const next = [...education];
+                            next[i] = { ...next[i], target_slug: e.target.value };
+                            patch("education", next);
+                          }}
+                        />
+                      )}
                       <textarea
-                        value={d.reasoning}
+                        placeholder="Client-facing summary — what you'll actually say"
+                        value={em.client_facing_summary ?? ""}
                         onChange={(e) => {
-                          const next = [...drivers];
-                          next[i] = { ...next[i], reasoning: e.target.value };
-                          patch("hypothesized_drivers", next);
+                          const next = [...education];
+                          next[i] = { ...next[i], client_facing_summary: e.target.value };
+                          patch("education", next);
                         }}
-                        placeholder="Reasoning — why this is in play for this client"
                         className="w-full text-sm border rounded-md p-2 min-h-[60px] bg-background"
                       />
                     </div>
-                  ))}
-                  <Button
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    onClick={() =>
-                      patch("hypothesized_drivers", [
-                        ...drivers,
-                        { mechanism: "", reasoning: "" },
-                      ])
-                    }
-                  >
-                    + Add driver
-                  </Button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        {/* ─────────── Supplements ─────────── */}
-        <TabsContent value="supplements">
-          <Card>
-            <CardHeader>
-              <CardTitle>Supplement protocol</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {supplements.map((s, i) => (
-                <div
-                  key={i}
-                  className="border rounded-md p-3 space-y-2 bg-muted/20"
-                >
-                  <div className="flex gap-2 items-center">
-                    <select
-                      value={s.supplement_slug}
-                      onChange={(e) => {
-                        const next = [...supplements];
-                        next[i] = {
-                          ...next[i],
-                          supplement_slug: e.target.value,
-                        };
-                        patch("supplement_protocol", next);
-                      }}
-                      className="flex-1 h-9 px-2 text-sm border rounded-md bg-background"
-                    >
-                      <option value="">— supplement —</option>
-                      {supplementOptions.map((o) => (
-                        <option key={o.value} value={o.value}>
-                          {o.label} ({o.value})
-                        </option>
-                      ))}
-                    </select>
-                    <Button
-                      type="button"
-                      variant="outline"
-                      size="sm"
-                      onClick={() =>
-                        patch(
-                          "supplement_protocol",
-                          supplements.filter((_, j) => j !== i)
-                        )
-                      }
-                    >
-                      Remove
-                    </Button>
-                  </div>
-                  <div className="grid grid-cols-2 gap-2">
-                    <Input
-                      placeholder="Form (e.g. capsule)"
-                      value={s.form ?? ""}
-                      onChange={(e) => {
-                        const next = [...supplements];
-                        next[i] = { ...next[i], form: e.target.value };
-                        patch("supplement_protocol", next);
-                      }}
-                    />
-                    <Input
-                      placeholder="Dose (e.g. 200-400 mg)"
-                      value={s.dose ?? ""}
-                      onChange={(e) => {
-                        const next = [...supplements];
-                        next[i] = { ...next[i], dose: e.target.value };
-                        patch("supplement_protocol", next);
-                      }}
-                    />
-                    <Input
-                      placeholder="Timing (e.g. evening)"
-                      value={s.timing ?? ""}
-                      onChange={(e) => {
-                        const next = [...supplements];
-                        next[i] = { ...next[i], timing: e.target.value };
-                        patch("supplement_protocol", next);
-                      }}
-                    />
-                    <Input
-                      placeholder="Take with food"
-                      value={s.take_with_food ?? ""}
-                      onChange={(e) => {
-                        const next = [...supplements];
-                        next[i] = {
-                          ...next[i],
-                          take_with_food: e.target.value,
-                        };
-                        patch("supplement_protocol", next);
-                      }}
-                    />
-                    <Input
-                      type="number"
-                      placeholder="Duration (weeks)"
-                      value={s.duration_weeks ?? ""}
-                      onChange={(e) => {
-                        const next = [...supplements];
-                        const v = e.target.value;
-                        next[i] = {
-                          ...next[i],
-                          duration_weeks: v === "" ? null : Number(v),
-                        };
-                        patch("supplement_protocol", next);
-                      }}
-                    />
-                    <Input
-                      placeholder="Titration"
-                      value={s.titration ?? ""}
-                      onChange={(e) => {
-                        const next = [...supplements];
-                        next[i] = { ...next[i], titration: e.target.value };
-                        patch("supplement_protocol", next);
-                      }}
-                    />
-                  </div>
-                  <textarea
-                    placeholder="Coach rationale — why for this client"
-                    value={s.coach_rationale ?? ""}
-                    onChange={(e) => {
-                      const next = [...supplements];
-                      next[i] = {
-                        ...next[i],
-                        coach_rationale: e.target.value,
-                      };
-                      patch("supplement_protocol", next);
-                    }}
-                    className="w-full text-sm border rounded-md p-2 min-h-[60px] bg-background"
-                  />
-
-                  {/* ── Source from (shared product recommendation) ── */}
-                  {s.supplement_slug && (
-                    <details className="mt-1">
-                      <summary className="cursor-pointer text-xs text-muted-foreground select-none py-1 flex items-center gap-1.5">
-                        <span className="font-medium text-foreground/70">📦 Source from</span>
-                        {sources[s.supplement_slug]?.url && (
-                          <a
-                            href={sources[s.supplement_slug].url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={(e) => e.stopPropagation()}
-                            className="text-blue-600 underline text-[10px]"
-                          >
-                            {sources[s.supplement_slug].brand || "link ↗"}
-                          </a>
-                        )}
-                        {!sources[s.supplement_slug]?.url && sources[s.supplement_slug]?.brand && (
-                          <span className="text-[10px] text-foreground/60">{sources[s.supplement_slug].brand}</span>
-                        )}
-                        {!sources[s.supplement_slug]?.brand && !sources[s.supplement_slug]?.url && (
-                          <span className="text-[10px] text-muted-foreground italic">not set</span>
-                        )}
-                      </summary>
-                      <div className="mt-2 space-y-2 pl-1 border-l-2 border-muted">
-                        <div className="grid grid-cols-2 gap-2">
-                          <Input
-                            placeholder="Brand / product name"
-                            value={sources[s.supplement_slug]?.brand ?? ""}
-                            onChange={(e) => patchSource(s.supplement_slug, "brand", e.target.value)}
-                            className="text-xs h-8"
-                          />
-                          <Input
-                            placeholder="Affiliate / buy URL"
-                            value={sources[s.supplement_slug]?.url ?? ""}
-                            onChange={(e) => patchSource(s.supplement_slug, "url", e.target.value)}
-                            className="text-xs h-8 font-mono"
-                          />
-                        </div>
-                        <Input
-                          placeholder="Code (e.g. SHIVANI10)"
-                          value={sources[s.supplement_slug]?.code ?? ""}
-                          onChange={(e) => patchSource(s.supplement_slug, "code", e.target.value)}
-                          className="text-xs h-8 w-48"
-                        />
-                        {sources[s.supplement_slug]?.vitaone_ref && (
-                          <p className="text-[10px] text-muted-foreground bg-muted/40 rounded px-2 py-1">
-                            <span className="font-medium">VitaOne ref:</span>{" "}
-                            {sources[s.supplement_slug].vitaone_ref}
-                          </p>
-                        )}
-                        <p className="text-[10px] text-muted-foreground">
-                          Shared across all plans — changes apply to all clients.
-                        </p>
-                      </div>
-                    </details>
-                  )}
-                </div>
-              ))}
-              <Button
-                type="button"
-                variant="outline"
-                size="sm"
-                onClick={() =>
-                  patch("supplement_protocol", [
-                    ...supplements,
-                    {
-                      supplement_slug: "",
-                      form: "",
-                      dose: "",
-                      timing: "",
-                      take_with_food: "",
-                      duration_weeks: null,
-                      titration: "",
-                      coach_rationale: "",
-                    },
-                  ])
-                }
-              >
-                + Add supplement
-              </Button>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        {/* ─────────── Tracking ─────────── */}
-        <TabsContent value="tracking">
-          <Card>
-            <CardHeader>
-              <CardTitle>Tracking</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium mb-1.5">
-                  Habits
-                </label>
-                <div className="space-y-2">
-                  {(tracking.habits ?? []).map((h, i) => (
-                    <div key={i} className="flex gap-2">
-                      <Input
-                        placeholder="Name (e.g. nightly walk)"
-                        value={h.name}
-                        onChange={(e) => {
-                          const next = [...(tracking.habits ?? [])];
-                          next[i] = { ...next[i], name: e.target.value };
-                          patchTracking("habits", next);
-                        }}
-                      />
-                      <Input
-                        placeholder="Cadence"
-                        value={h.cadence}
-                        onChange={(e) => {
-                          const next = [...(tracking.habits ?? [])];
-                          next[i] = { ...next[i], cadence: e.target.value };
-                          patchTracking("habits", next);
-                        }}
-                      />
-                      <Button
-                        type="button"
-                        variant="outline"
-                        size="sm"
-                        onClick={() => {
-                          const next = (tracking.habits ?? []).filter(
-                            (_, j) => j !== i
-                          );
-                          patchTracking("habits", next);
-                        }}
-                      >
-                        Remove
-                      </Button>
-                    </div>
-                  ))}
-                  <Button
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    onClick={() =>
-                      patchTracking("habits", [
-                        ...(tracking.habits ?? []),
-                        { name: "", cadence: "" },
-                      ])
-                    }
-                  >
-                    + Add habit
-                  </Button>
-                </div>
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1.5">
-                  Symptoms to monitor
-                </label>
-                <MultiSelect
-                  options={symptomOptions}
-                  value={tracking.symptoms_to_monitor ?? []}
-                  onChange={(v) => patchTracking("symptoms_to_monitor", v)}
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1.5">
-                  Recheck questions
-                </label>
-                <div className="space-y-2">
-                  {(tracking.recheck_questions ?? []).map((q, i) => (
-                    <div key={i} className="flex gap-2">
-                      <Input
-                        value={q}
-                        onChange={(e) => {
-                          const next = [...(tracking.recheck_questions ?? [])];
-                          next[i] = e.target.value;
-                          patchTracking("recheck_questions", next);
-                        }}
-                      />
-                      <Button
-                        type="button"
-                        variant="outline"
-                        size="sm"
-                        onClick={() => {
-                          const next = (
-                            tracking.recheck_questions ?? []
-                          ).filter((_, j) => j !== i);
-                          patchTracking("recheck_questions", next);
-                        }}
-                      >
-                        Remove
-                      </Button>
-                    </div>
-                  ))}
-                  <Button
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    onClick={() =>
-                      patchTracking("recheck_questions", [
-                        ...(tracking.recheck_questions ?? []),
-                        "",
-                      ])
-                    }
-                  >
-                    + Add question
-                  </Button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        {/* ─────────── Nutrition (partial; multi-selects only) ─────────── */}
-        <TabsContent value="nutrition">
-          <Card>
-            <CardHeader>
-              <CardTitle>Nutrition</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium mb-1.5">
-                  Pattern
-                </label>
-                <Input
-                  value={(nutrition.pattern as string) ?? ""}
-                  onChange={(e) => patchNutrition("pattern", e.target.value)}
-                  placeholder="e.g. gentle anti-inflammatory"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1.5">
-                  Meal timing
-                </label>
-                <Input
-                  value={(nutrition.meal_timing as string) ?? ""}
-                  onChange={(e) =>
-                    patchNutrition("meal_timing", e.target.value)
+                  );
+                })}
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={() =>
+                    patch("education", [
+                      ...education,
+                      { target_kind: "topic", target_slug: "", client_facing_summary: "" },
+                    ])
                   }
-                  placeholder="e.g. 12-hour overnight fast"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1.5">
-                  Cooking adjustments
-                </label>
-                <MultiSelect
-                  options={cookingOptions}
-                  value={(nutrition.cooking_adjustments as string[]) ?? []}
-                  onChange={(v) => patchNutrition("cooking_adjustments", v)}
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1.5">
-                  Home remedies
-                </label>
-                <MultiSelect
-                  options={remedyOptions}
-                  value={(nutrition.home_remedies as string[]) ?? []}
-                  onChange={(v) => patchNutrition("home_remedies", v)}
-                />
-              </div>
-              <FreeformStringList
-                label="Foods to add"
-                value={nutritionAdd}
-                onChange={(v) => patchNutrition("add", v)}
-                placeholder="e.g. cooked leafy greens"
-                addLabel="+ Add food"
-              />
-              <FreeformStringList
-                label="Foods to reduce"
-                value={nutritionReduce}
-                onChange={(v) => patchNutrition("reduce", v)}
-                placeholder="e.g. ultra-processed snacks"
-                addLabel="+ Add food"
-              />
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        {/* ─────────── Lifestyle ─────────── */}
-        <TabsContent value="lifestyle">
-          <Card>
-            <CardHeader>
-              <CardTitle>Lifestyle practices</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {lifestyle.map((p, i) => (
-                <div
-                  key={i}
-                  className="border rounded-md p-3 space-y-2 bg-muted/20"
                 >
-                  <div className="flex gap-2">
-                    <Input
-                      placeholder="Name (e.g. morning sunlight)"
-                      value={p.name}
-                      onChange={(e) => {
-                        const next = [...lifestyle];
-                        next[i] = { ...next[i], name: e.target.value };
-                        patch("lifestyle_practices", next);
-                      }}
-                    />
-                    <Input
-                      placeholder="Cadence (e.g. daily)"
-                      value={p.cadence}
-                      onChange={(e) => {
-                        const next = [...lifestyle];
-                        next[i] = { ...next[i], cadence: e.target.value };
-                        patch("lifestyle_practices", next);
-                      }}
-                    />
-                    <Button
-                      type="button"
-                      variant="outline"
-                      size="sm"
-                      onClick={() =>
-                        patch(
-                          "lifestyle_practices",
-                          lifestyle.filter((_, j) => j !== i)
-                        )
-                      }
-                    >
-                      Remove
-                    </Button>
-                  </div>
-                  <textarea
-                    placeholder="Details — how to do it, what to expect"
-                    value={p.details ?? ""}
-                    onChange={(e) => {
-                      const next = [...lifestyle];
-                      next[i] = { ...next[i], details: e.target.value };
-                      patch("lifestyle_practices", next);
-                    }}
-                    className="w-full text-sm border rounded-md p-2 min-h-[60px] bg-background"
-                  />
-                </div>
-              ))}
-              <Button
-                type="button"
-                variant="outline"
-                size="sm"
-                onClick={() =>
-                  patch("lifestyle_practices", [
-                    ...lifestyle,
-                    { name: "", cadence: "", details: "" },
-                  ])
-                }
-              >
-                + Add practice
-              </Button>
-            </CardContent>
-          </Card>
-        </TabsContent>
+                  + Add module
+                </Button>
+              </div>
+            </details>
 
-        {/* ─────────── Education ─────────── */}
-        <TabsContent value="education">
-          <Card>
-            <CardHeader>
-              <CardTitle>Education modules</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {education.map((em, i) => {
-                // Education tab uses a curated subset for topics to avoid duplicates.
-                const opts =
-                  em.target_kind === "topic"
-                    ? educationTopicOptions
-                    : optionsForKind(em.target_kind);
-                return (
-                  <div
-                    key={i}
-                    className="border rounded-md p-3 space-y-2 bg-muted/20"
-                  >
+            {/* ── Referrals ── */}
+            <details className="group">
+              <summary className="flex items-center gap-2 cursor-pointer select-none rounded-md border bg-muted/30 px-4 py-3 text-sm font-semibold hover:bg-muted/50 list-none">
+                <span className="transition-transform group-open:rotate-90 text-muted-foreground text-xs">▶</span>
+                Referrals
+                {referrals.length > 0 && (
+                  <Badge variant="secondary" className="ml-auto text-[10px]">
+                    {referrals.length}
+                  </Badge>
+                )}
+              </summary>
+              <div className="pt-3 space-y-3 px-1">
+                {referrals.map((r, i) => (
+                  <div key={i} className="border rounded-md p-3 space-y-2 bg-muted/20">
                     <div className="flex gap-2">
-                      <select
-                        value={em.target_kind}
+                      <Input
+                        placeholder="To (role/specialty — e.g. menopause-certified clinician)"
+                        value={r.to}
                         onChange={(e) => {
-                          const next = [...education];
-                          // Changing kind clears the slug — slugs aren't
-                          // interchangeable across topic/mechanism/claim.
-                          next[i] = {
-                            ...next[i],
-                            target_kind: e.target.value,
-                            target_slug: "",
-                          };
-                          patch("education", next);
+                          const next = [...referrals];
+                          next[i] = { ...next[i], to: e.target.value };
+                          patch("referrals", next);
+                        }}
+                      />
+                      <select
+                        value={r.urgency || "routine"}
+                        onChange={(e) => {
+                          const next = [...referrals];
+                          next[i] = { ...next[i], urgency: e.target.value };
+                          patch("referrals", next);
                         }}
                         className="h-9 px-2 text-sm border rounded-md bg-background"
                       >
-                        <option value="topic">topic</option>
-                        <option value="mechanism">mechanism</option>
-                        <option value="claim">claim</option>
-                      </select>
-                      <select
-                        value={em.target_slug}
-                        onChange={(e) => {
-                          const next = [...education];
-                          next[i] = { ...next[i], target_slug: e.target.value };
-                          patch("education", next);
-                        }}
-                        className="flex-1 h-9 px-2 text-sm border rounded-md bg-background"
-                      >
-                        <option value="">
-                          {em.target_kind === "claim"
-                            ? "— claim slug (paste below) —"
-                            : `— ${em.target_kind} —`}
-                        </option>
-                        {opts.map((o) => (
-                          <option key={o.value} value={o.value}>
-                            {o.label} ({o.value})
-                          </option>
+                        {REFERRAL_URGENCIES.map((u) => (
+                          <option key={u} value={u}>{u}</option>
                         ))}
                       </select>
                       <Button
@@ -1571,222 +1737,261 @@ export function PlanEditor(props: PlanEditorProps) {
                         variant="outline"
                         size="sm"
                         onClick={() =>
-                          patch(
-                            "education",
-                            education.filter((_, j) => j !== i)
-                          )
+                          patch("referrals", referrals.filter((_, j) => j !== i))
                         }
                       >
                         Remove
                       </Button>
                     </div>
-                    {em.target_kind === "claim" && (
-                      <Input
-                        placeholder="Claim slug (no picker for claims yet)"
-                        value={em.target_slug}
-                        onChange={(e) => {
-                          const next = [...education];
-                          next[i] = {
-                            ...next[i],
-                            target_slug: e.target.value,
-                          };
-                          patch("education", next);
-                        }}
-                      />
-                    )}
                     <textarea
-                      placeholder="Client-facing summary — what you'll actually say"
-                      value={em.client_facing_summary ?? ""}
+                      placeholder="Reason — why this referral, what you want them to look at"
+                      value={r.reason}
                       onChange={(e) => {
-                        const next = [...education];
-                        next[i] = {
-                          ...next[i],
-                          client_facing_summary: e.target.value,
-                        };
-                        patch("education", next);
+                        const next = [...referrals];
+                        next[i] = { ...next[i], reason: e.target.value };
+                        patch("referrals", next);
                       }}
                       className="w-full text-sm border rounded-md p-2 min-h-[60px] bg-background"
                     />
                   </div>
-                );
-              })}
-              <Button
-                type="button"
-                variant="outline"
-                size="sm"
-                onClick={() =>
-                  patch("education", [
-                    ...education,
-                    {
-                      target_kind: "topic",
-                      target_slug: "",
-                      client_facing_summary: "",
-                    },
-                  ])
-                }
-              >
-                + Add module
-              </Button>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        {/* ─────────── Labs ─────────── */}
-        <TabsContent value="labs">
-          <LabOrdersEditor
-            labOrders={labOrders}
-            locked={locked}
-            onChange={(next) => patch("lab_orders", next)}
-          />
-        </TabsContent>
-
-        {/* ─────────── Referrals ─────────── */}
-        <TabsContent value="referrals">
-          <Card>
-            <CardHeader>
-              <CardTitle>Referrals</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {referrals.map((r, i) => (
-                <div
-                  key={i}
-                  className="border rounded-md p-3 space-y-2 bg-muted/20"
+                ))}
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={() =>
+                    patch("referrals", [
+                      ...referrals,
+                      { to: "", reason: "", urgency: "routine" },
+                    ])
+                  }
                 >
-                  <div className="flex gap-2">
-                    <Input
-                      placeholder="To (role/specialty — e.g. menopause-certified clinician)"
-                      value={r.to}
-                      onChange={(e) => {
-                        const next = [...referrals];
-                        next[i] = { ...next[i], to: e.target.value };
-                        patch("referrals", next);
-                      }}
-                    />
-                    <select
-                      value={r.urgency || "routine"}
-                      onChange={(e) => {
-                        const next = [...referrals];
-                        next[i] = { ...next[i], urgency: e.target.value };
-                        patch("referrals", next);
-                      }}
-                      className="h-9 px-2 text-sm border rounded-md bg-background"
-                    >
-                      {REFERRAL_URGENCIES.map((u) => (
-                        <option key={u} value={u}>
-                          {u}
-                        </option>
-                      ))}
-                    </select>
+                  + Add referral
+                </Button>
+              </div>
+            </details>
+
+            {/* ── Tracking ── */}
+            <details className="group">
+              <summary className="flex items-center gap-2 cursor-pointer select-none rounded-md border bg-muted/30 px-4 py-3 text-sm font-semibold hover:bg-muted/50 list-none">
+                <span className="transition-transform group-open:rotate-90 text-muted-foreground text-xs">▶</span>
+                Tracking
+                {((tracking.habits?.length ?? 0) + (tracking.symptoms_to_monitor?.length ?? 0)) > 0 && (
+                  <Badge variant="secondary" className="ml-auto text-[10px]">
+                    {(tracking.habits?.length ?? 0) + (tracking.symptoms_to_monitor?.length ?? 0)} items
+                  </Badge>
+                )}
+              </summary>
+              <div className="pt-3 space-y-6 px-1">
+                <div>
+                  <label className="block text-sm font-medium mb-1.5">Habits</label>
+                  <div className="space-y-2">
+                    {(tracking.habits ?? []).map((h, i) => (
+                      <div key={i} className="flex gap-2">
+                        <Input
+                          placeholder="Name (e.g. nightly walk)"
+                          value={h.name}
+                          onChange={(e) => {
+                            const next = [...(tracking.habits ?? [])];
+                            next[i] = { ...next[i], name: e.target.value };
+                            patchTracking("habits", next);
+                          }}
+                        />
+                        <Input
+                          placeholder="Cadence"
+                          value={h.cadence}
+                          onChange={(e) => {
+                            const next = [...(tracking.habits ?? [])];
+                            next[i] = { ...next[i], cadence: e.target.value };
+                            patchTracking("habits", next);
+                          }}
+                        />
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          onClick={() => {
+                            const next = (tracking.habits ?? []).filter((_, j) => j !== i);
+                            patchTracking("habits", next);
+                          }}
+                        >
+                          Remove
+                        </Button>
+                      </div>
+                    ))}
                     <Button
                       type="button"
                       variant="outline"
                       size="sm"
                       onClick={() =>
-                        patch(
-                          "referrals",
-                          referrals.filter((_, j) => j !== i)
-                        )
+                        patchTracking("habits", [
+                          ...(tracking.habits ?? []),
+                          { name: "", cadence: "" },
+                        ])
                       }
                     >
-                      Remove
+                      + Add habit
                     </Button>
                   </div>
-                  <textarea
-                    placeholder="Reason — why this referral, what you want them to look at"
-                    value={r.reason}
-                    onChange={(e) => {
-                      const next = [...referrals];
-                      next[i] = { ...next[i], reason: e.target.value };
-                      patch("referrals", next);
-                    }}
-                    className="w-full text-sm border rounded-md p-2 min-h-[60px] bg-background"
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1.5">Symptoms to monitor</label>
+                  <MultiSelect
+                    options={symptomOptions}
+                    value={tracking.symptoms_to_monitor ?? []}
+                    onChange={(v) => patchTracking("symptoms_to_monitor", v)}
                   />
                 </div>
-              ))}
-              <Button
-                type="button"
-                variant="outline"
-                size="sm"
-                onClick={() =>
-                  patch("referrals", [
-                    ...referrals,
-                    { to: "", reason: "", urgency: "routine" },
-                  ])
-                }
-              >
-                + Add referral
-              </Button>
-            </CardContent>
-          </Card>
+                <div>
+                  <label className="block text-sm font-medium mb-1.5">Recheck questions</label>
+                  <div className="space-y-2">
+                    {(tracking.recheck_questions ?? []).map((q, i) => (
+                      <div key={i} className="flex gap-2">
+                        <Input
+                          value={q}
+                          onChange={(e) => {
+                            const next = [...(tracking.recheck_questions ?? [])];
+                            next[i] = e.target.value;
+                            patchTracking("recheck_questions", next);
+                          }}
+                        />
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          onClick={() => {
+                            const next = (tracking.recheck_questions ?? []).filter((_, j) => j !== i);
+                            patchTracking("recheck_questions", next);
+                          }}
+                        >
+                          Remove
+                        </Button>
+                      </div>
+                    ))}
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() =>
+                        patchTracking("recheck_questions", [
+                          ...(tracking.recheck_questions ?? []),
+                          "",
+                        ])
+                      }
+                    >
+                      + Add question
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            {/* ── Resources ── */}
+            {props.resourceOptions.length > 0 && (
+              <details className="group">
+                <summary className="flex items-center gap-2 cursor-pointer select-none rounded-md border bg-muted/30 px-4 py-3 text-sm font-semibold hover:bg-muted/50 list-none">
+                  <span className="transition-transform group-open:rotate-90 text-muted-foreground text-xs">▶</span>
+                  Attached resources
+                  {((plan.attached_resources as string[] | undefined)?.length ?? 0) > 0 && (
+                    <Badge variant="secondary" className="ml-auto text-[10px]">
+                      {(plan.attached_resources as string[]).length}
+                    </Badge>
+                  )}
+                </summary>
+                <div className="pt-3 px-1">
+                  <MultiSelect
+                    options={props.resourceOptions}
+                    value={(plan.attached_resources as string[]) ?? []}
+                    onChange={(v) => patch("attached_resources", v)}
+                  />
+                </div>
+              </details>
+            )}
+
+            {/* ── Notes & Raw ── */}
+            <details className="group">
+              <summary className="flex items-center gap-2 cursor-pointer select-none rounded-md border bg-muted/30 px-4 py-3 text-sm font-semibold hover:bg-muted/50 list-none">
+                <span className="transition-transform group-open:rotate-90 text-muted-foreground text-xs">▶</span>
+                Notes &amp; Raw
+              </summary>
+              <div className="pt-3 space-y-4 px-1">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Notes for coach</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <textarea
+                      value={(plan.notes_for_coach as string) ?? ""}
+                      onChange={(e) => patch("notes_for_coach", e.target.value)}
+                      placeholder="Private working notes…"
+                      className="w-full text-sm border rounded-md p-2 min-h-[120px] bg-background font-mono"
+                    />
+                  </CardContent>
+                </Card>
+                <CheckInTimeline notesForCoach={(plan.notes_for_coach as string) ?? ""} />
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-sm text-muted-foreground font-normal">Raw plan (read-only)</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <pre className="text-xs bg-muted/40 p-3 rounded-md overflow-x-auto max-h-[400px]">
+                      {JSON.stringify(plan, null, 2)}
+                    </pre>
+                  </CardContent>
+                </Card>
+              </div>
+            </details>
+
+
+          </div>
         </TabsContent>
-        <TabsContent value="resources">
-          <Card>
-            <CardHeader>
-              <CardTitle>Attached resources</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {props.resourceOptions.length === 0 ? (
+
+        {/* ═══════════════════════════════════════════════════════════════════
+            📄 DOCUMENTS TAB — link to client page for letter generation
+        ═══════════════════════════════════════════════════════════════════ */}
+        <TabsContent value="documents">
+          <div className="pt-4 space-y-4">
+            <Card>
+              <CardHeader>
+                <CardTitle>Client-facing letters</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
                 <p className="text-sm text-muted-foreground">
-                  No resources found at <code>~/fm-resources/</code>.
+                  Generate client-facing documents (consolidated letter, meal plan, supplement plan, lifestyle guide) from the client page.
                 </p>
-              ) : (
-                <MultiSelect
-                  options={props.resourceOptions}
-                  value={(plan.attached_resources as string[]) ?? []}
-                  onChange={(v) => patch("attached_resources", v)}
-                />
-              )}
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        {/* ─────────── Notes & Raw ─────────── */}
-        <TabsContent value="notes">
-          <div className="space-y-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Notes for coach</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <textarea
-                  value={(plan.notes_for_coach as string) ?? ""}
-                  onChange={(e) => patch("notes_for_coach", e.target.value)}
-                  placeholder="Private working notes…"
-                  className="w-full text-sm border rounded-md p-2 min-h-[120px] bg-background font-mono"
-                />
-              </CardContent>
-            </Card>
-
-            {/* Check-in timeline — parsed from notes_for_coach check-in blocks */}
-            <CheckInTimeline notesForCoach={(plan.notes_for_coach as string) ?? ""} />
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-sm text-muted-foreground font-normal">Raw plan (read-only)</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <pre className="text-xs bg-muted/40 p-3 rounded-md overflow-x-auto max-h-[400px]">
-                  {JSON.stringify(plan, null, 2)}
-                </pre>
+                {clientId ? (
+                  <a
+                    href={`/clients/${clientId}?tab=plan`}
+                    className="inline-flex items-center gap-1.5 rounded-md border border-border bg-muted/40 px-4 py-2 text-sm font-medium hover:bg-muted transition-colors"
+                  >
+                    Go to client page → Documents tab ↗
+                  </a>
+                ) : (
+                  <p className="text-sm text-amber-600 dark:text-amber-400">
+                    No client linked to this plan. Assign a client ID to enable letter generation.
+                  </p>
+                )}
               </CardContent>
             </Card>
           </div>
         </TabsContent>
 
-        {/* ─────────── Chat ─────────── */}
-        <TabsContent value="chat">
-          <Card>
-            <CardHeader>
-              <CardTitle>AI Plan Assistant</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <PlanChatPanel
-                slug={plan.slug as string}
-                clientId={clientId ?? ""}
-                isLocked={locked}
-              />
-            </CardContent>
-          </Card>
+        {/* ═══════════════════════════════════════════════════════════════════
+            🚀 LIFECYCLE TAB — plan lifecycle transitions + export
+        ═══════════════════════════════════════════════════════════════════ */}
+        <TabsContent value="lifecycle">
+          <div className="pt-2">
+            <LifecyclePanel
+              slug={plan.slug as string}
+              clientId={clientId}
+              status={lifecycleProps.status}
+              version={lifecycleProps.version}
+              catalogueSnapshot={lifecycleProps.catalogueSnapshot}
+              statusHistory={lifecycleProps.statusHistory}
+              supersedes={lifecycleProps.supersedes}
+              allPlanSlugs={lifecycleProps.allPlanSlugs}
+            />
+          </div>
         </TabsContent>
       </Tabs>
 

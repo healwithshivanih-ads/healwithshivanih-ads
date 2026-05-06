@@ -110,6 +110,7 @@ class Client(BaseModel):
     mobile_number: Optional[str] = None   # for duplicate-check; stored hashed or partial if needed
     email: Optional[str] = None           # client email — used by "Send to client" feature
     next_contact_date: Optional[str] = None  # YYYY-MM-DD follow-up reminder date
+    family_history: Optional[str] = None  # hereditary diseases / family health history
     measurements: Measurements = Field(default_factory=Measurements)
     photo_filename: Optional[str] = None    # filename relative to client dir; populated after dir restructure (next turn)
     lab_markers: list[dict] = Field(default_factory=list)  # computed FM ratios from most recent lab analysis

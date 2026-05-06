@@ -55,11 +55,13 @@ export type CreateClientInput = {
   date_of_birth: string;     // YYYY-MM-DD — system calculates age from this
   sex: "F" | "M" | "other";
   mobile_number: string;     // required — used for duplicate detection
+  email?: string;
   conditions?: string[];     // free-text
   medications?: string[];
   allergies?: string[];
   goals?: string[];
   notes?: string;
+  family_history?: string;   // hereditary diseases / family health history
   dietary_preference?: string;
   foods_to_avoid?: string;
   non_negotiables?: string;
@@ -160,10 +162,10 @@ export async function createClient(
     return { ok: false, error: stderr.trim() || e.message || "client-new failed" };
   }
 
-  // Patch dietary preference fields directly into the YAML if provided.
+  // Patch extra fields directly into the YAML if provided.
   // Uses replace-or-append so we never create duplicate YAML keys (the Python
-  // client-new CLI already writes these fields as empty strings).
-  if (input.dietary_preference || input.foods_to_avoid || input.non_negotiables) {
+  // client-new CLI doesn't accept these flags yet).
+  if (input.dietary_preference || input.foods_to_avoid || input.non_negotiables || input.email || input.family_history) {
     try {
       const clientYaml = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
       const raw = await fs.readFile(clientYaml, "utf8");
@@ -178,6 +180,8 @@ export async function createClient(
       }
 
       let patched = raw;
+      if (input.email)              patched = patchYamlField(patched, "email",              input.email);
+      if (input.family_history)     patched = patchYamlField(patched, "family_history",     input.family_history);
       if (input.dietary_preference) patched = patchYamlField(patched, "dietary_preference", input.dietary_preference);
       if (input.foods_to_avoid)     patched = patchYamlField(patched, "foods_to_avoid",     input.foods_to_avoid);
       if (input.non_negotiables)    patched = patchYamlField(patched, "non_negotiables",     input.non_negotiables);
@@ -416,6 +420,7 @@ export interface UpdatePreferencesInput {
   client_id: string;
   dietary_preference?: string;
   foods_to_avoid?: string;
+  reported_triggers?: string;
   non_negotiables?: string;
   city?: string;
   country?: string;
@@ -445,6 +450,8 @@ export async function updateClientPreferences(
       data.dietary_preference = input.dietary_preference;
     if (input.foods_to_avoid !== undefined)
       data.foods_to_avoid = input.foods_to_avoid;
+    if (input.reported_triggers !== undefined)
+      data.reported_triggers = input.reported_triggers;
     if (input.non_negotiables !== undefined)
       data.non_negotiables = input.non_negotiables;
     if (input.city !== undefined)

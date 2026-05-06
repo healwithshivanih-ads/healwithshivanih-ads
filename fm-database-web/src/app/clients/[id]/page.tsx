@@ -118,10 +118,24 @@ const ALL_TOPICS: { slug: string; display_name: string }[] = [
 
 export default async function ClientDetailPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ id: string }>;
+  searchParams: Promise<{ tab?: string; session_type?: string }>;
 }) {
-  const { id } = await params;
+  const [{ id }, { tab, session_type }] = await Promise.all([params, searchParams]);
+  // Map old tab names → new 3-tab structure (backward compat with existing deep-links)
+  const defaultTab: "overview" | "sessions" | "plan" =
+    tab === "sessions" ? "sessions"
+    : tab === "plan"   ? "plan"
+    : tab === "timeline" ? "sessions"          // old → new
+    : tab === "protocol" ? "plan"              // old → new
+    : tab === "send"     ? "plan"              // old → new
+    : tab === "documents" ? "plan"             // old → new
+    : "overview";
+  const defaultSessionType = (session_type === "check_in" || session_type === "full_assessment" || session_type === "pre_intake" || session_type === "quick_note")
+    ? session_type as "check_in" | "full_assessment" | "pre_intake" | "quick_note"
+    : undefined;
 
   // Parallel data fetch — client info + sessions + plans + symptom/topic catalogue
   const [client, rawSessions, allPlans, symptoms, topics] = await Promise.all([
@@ -399,11 +413,11 @@ export default async function ClientDetailPage({
             )}
           </div>
           <Link
-            href={`/assess?client=${id}`}
+            href={`/clients/${id}?tab=sessions`}
             className="shrink-0 inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all hover:opacity-90"
             style={{ background: "var(--brand-indigo)", color: "#fff" }}
           >
-            🧠 Start return assessment
+            🗓 Record session
           </Link>
         </div>
       )}
@@ -428,6 +442,8 @@ export default async function ClientDetailPage({
         meds={meds}
         allergies={allergies}
         keyMarkers={keyMarkers}
+        defaultTab={defaultTab}
+        defaultSessionType={defaultSessionType}
       />
     </div>
   );

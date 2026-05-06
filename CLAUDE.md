@@ -14,7 +14,146 @@ published plans as JSON artifacts.
 
 ## Status
 
-**v0.44 (current)** — Coach Knowledge ingest tab, catalogue check before staging, Enrich links panel, Add Source consolidated into Ingest:
+**v0.48 (current)** — Client page 3-tab redesign + lab extraction fix + intake form fields:
+
+- **🗂 Client page tab redesign: Overview | 🗓 Sessions | 📋 Plan** (3 tabs, was 4)
+  - Removed "Protocol" and "Send" as separate tabs. Merged into single **Plan** tab.
+  - `type Tab = "overview" | "sessions" | "plan"` in `client-tabs.tsx`.
+  - `page.tsx` accepts `?tab=overview|sessions|plan`. Backward compat: `timeline`→`sessions`, `protocol`→`plan`, `send`→`plan`, `documents`→`plan`.
+  - Dashboard CTAs and all deep-links updated to use new tab names.
+
+- **🗓 Sessions tab** (was "Timeline"):
+  - All session recording (pre-intake / full session / check-in / quick note) + session history + health trends.
+  - Pending labs banner points to "start session" not "run assessment".
+  - Session history pill labels: `full_assessment` → **"Full session"** (not "Assessment").
+  - AI synthesis label in expanded history: "AI synthesis" → "AI analysis".
+
+- **📋 Plan tab** (merged Protocol + Send):
+  - If no plan: CTA card → "📋 Start a session" + "＋ Create manually".
+  - If draft: plan header card + Edit + **🚀 Activate** inline.
+  - If published: plan card + "View plan" + "💬 Log check-in" + **📤 Client letters** section (SendPackageButton) — no separate Send tab needed.
+  - Follow-up plan generator here (published only).
+  - Archived plans in collapsible `<details>`.
+  - **External Reports** moved here from the old Send tab (always visible at bottom).
+
+- **🚦 Workflow stage banner language simplified** (removed "Step X of 3"):
+  - `no_plan` → "No plan yet" + "📋 Start session →"
+  - `draft` → "Draft plan ready — fill the protocol and activate" + "📋 Go to Plan →"
+  - `active` → "Plan is active — generate and send client letters" + "📤 Generate letters →"
+  - `recheck` → "Protocol complete · Time for a new session" + "📋 New session →"
+
+- **"Assessment" word removed from UI** (was appearing 5+ times on same page):
+  - `SESSION_TYPE_META.full_assessment.label`: "Assessment" → "Full session"
+  - Session form section header: "🧠 Full Assessment" → "🔍 Full session — AI analysis"
+  - All banner/action buttons: "🧠 Run assessment" → "📋 Start session" / "📋 New session"
+  - Protocol no-plan card: "🧠 Run assessment" → "📋 Start a session"
+  - Overview action bar: "🧠 Run assessment" → "📋 New session"
+  - Tab bar: "🗓 Timeline" → "🗓 Sessions"
+  - Uploaded files empty state: "Timeline tab" → "Sessions tab"
+  - Education pack: "assessment topics" → "topics from sessions"
+  - Sessions summary button: "view full timeline" → "view full history"
+  - Pending labs banner: "run assessment" → "start session"
+
+- **🔧 Lab extraction fix** (`scripts/extract-symptoms.py`):
+  - `max_tokens` raised from `4096` → `8192` (Haiku's maximum).
+  - Root cause: full 379-symptom catalogue (~60KB) + 78-lab PDF together exceeded 4096 output tokens, truncating the JSON mid-object → `JSONDecodeError`.
+  - `extractSymptomsFromTranscript` timeout raised 60s → 120s.
+  - Dedup guard added in `assess-client.tsx` `setUploads` to prevent duplicate file entries on retry.
+
+- **📝 Intake form new fields** (`new-client-form.tsx` + `actions.ts` + Python model):
+  - **Email** field added (after mobile number, type="email"). Auto-filled from transcript parsing.
+  - **Family history / hereditary diseases** field added (2-col grid alongside Notes).
+  - `family_history: Optional[str] = None` added to Python `Client` model in `fmdb/plan/models.py` to avoid `ValidationError` on load (model uses `extra="forbid"`).
+
+**v0.47** — Client page single-workspace redesign + plan editor UX fixes:
+
+- **🗂 Client page tab redesign: Overview | 📋 Protocol | 📤 Send | 🗓 Timeline**
+  - Dropped "Documents" tab. New tabs: **Protocol** (plan status + activate) and **Send** (letter generation only).
+  - `type Tab = "overview" | "protocol" | "send" | "timeline"` in `client-tabs.tsx`.
+  - `page.tsx` accepts `?tab=overview|protocol|send|timeline`. `"documents"` silently remaps to `"send"` for backward compat with existing deep-links.
+
+- **🚦 Workflow stage banner** (always visible, changes per stage):
+  - `workflowStage: "no_plan" | "draft" | "active" | "recheck"` computed from `activePlan` at component top.
+  - `no_plan` → amber banner "Step 1 of 3 · Run an assessment →" button.
+  - `draft` → slate banner "Step 2 of 3 · Edit and activate" → "📋 Go to Protocol →".
+  - `active` → green banner "Step 3 of 3 · Generate letters" → "📤 Go to Send →".
+  - `recheck` → indigo banner "Protocol complete · Reassess →".
+  - Tab badges: Protocol gets `!` chip when draft; Send gets `→` chip when active.
+
+- **📋 Protocol tab** — replaces the old separate `/plans/[slug]` lifecycle round-trip:
+  - `activePlan`, `activePlanStatus`, `recheckDue`, `workflowStage` computed once at component level (not inside IIFEs).
+  - No plan → big card with "🧠 Run assessment" + "＋ Create plan manually" buttons.
+  - Draft/ready plan → status card + "✏️ Edit plan" link + **🚀 Activate plan** inline button (no navigation needed).
+  - Published plan → "✅ Active" + "💬 Log check-in" + "📤 Generate client letters →" buttons.
+  - Archived plans in collapsible `<details>` below.
+  - Follow-up plan generator (previously in Documents tab) moved here, published plans only.
+
+- **🚀 Inline Activate button** — eliminates the /plans/[slug] → Lifecycle tab round-trip:
+  - `handleActivate(planSlug)` calls `submitPlan` + `publishPlan` server actions in sequence from the client page.
+  - Error from `submitPlan` → toast "Plan check failed — open the plan editor to fix errors".
+  - Success → `toast.success("✅ Plan activated!")` + `router.refresh()`.
+  - `isActivating` state drives spinner. `useRouter` from `next/navigation` imported.
+  - `submitPlan` and `publishPlan` imported from `@/app/plans/[slug]/lifecycle-actions`.
+
+- **📤 Send tab** — letter generation only:
+  - Shows `SendPackageButton` for published plans only.
+  - Draft/no plan → "No active plan" card with CTA to Protocol or Timeline.
+  - External reports section retained.
+  - `ClientLetterButton` import removed entirely (was already demoted to Advanced, now gone).
+
+- **Plan editor UX fixes** (earlier in this session):
+  - `effectiveLocked` bug fixed — `sed` had incorrectly replaced `locked` → `effectiveLocked` inside `PlanTimelineCard` and `LabOrdersEditor` sub-components which have their own `locked` prop. Fixed by reverting those occurrences.
+  - `SupplementCombobox` — typeahead combobox replacing `<select>` for supplement slug input. Filters catalog options, allows freeform, shows "✓ catalog" / "custom" badge. Uses `onMouseDown` to avoid blur-before-click race.
+  - Lifecycle panel: single **🚀 Activate plan** button (calls `submitPlan` + `publishPlan` in sequence). Archive/Revoke buried in `<details>` danger zone. Removed prominent Submit step.
+  - AI Plan Assistant (`💬` details) moved to TOP of Protocol tab (was at bottom, hard to find).
+  - SendPackageButton: per-type "✏️ Edit" toggle opens monospace textarea; "💾 Apply edits to download" updates the markdown blob; markdown download uses edited content.
+  - "Go to Lifecycle tab" passive breadcrumb removed — replaced with context-aware next-step cards (now superseded by the workflow stage banner system).
+
+**v0.46** — SendPackageButton, plan editor 3 tabs, vertical timeline cards, dashboard deep-links:
+
+- **📤 `SendPackageButton`** — batch letter generator in Documents tab:
+  - New `src/app/clients/[id]/send-package-button.tsx` component. "📤 Send package" collapsible trigger → package builder panel.
+  - 4 letter types as checkboxes (Meal Plan ✓, Supplement Guide ✓, Lifestyle Guide ☐, Full Wellness Letter ☐). Standard delivery = first two.
+  - Loads all 4 saved letters on mount in parallel via `loadMealPlan`. Shows "✓ Saved DD Mon HH:MM" badge on already-generated types.
+  - Sequential generation: `for (const pkg of checkedTypes) { await generateClientLetter(planSlug, clientId, undefined, pkg.type, coachNotes) }`. Per-type status: `idle | pending | done | error`.
+  - Per-type download buttons (HTML + Markdown) once done. Coach notes textarea weaved into all selected letters.
+  - Documents tab restructured: Protocol row full-width → "📤 Client letters" section with `SendPackageButton` as primary + `ClientLetterButton` demoted to `<details>` "Advanced" disclosure.
+
+- **📋 Plan editor simplified from 10 tabs → 3 tabs** (background agent):
+  - `plan-editor.tsx`: 10-tab Tabs block replaced with 3 tabs: **📋 Protocol** (9 collapsible `<details>` sections + PlanChatPanel), **📄 Documents** (static link to client page), **🚀 Lifecycle** (renders `<LifecyclePanel>` inline).
+  - `LifecyclePanel` moved out of `page.tsx` into the Lifecycle tab inside `PlanEditor`. `page.tsx` passes `lifecycleProps` to `<PlanEditor>` and no longer renders `<LifecyclePanel>` directly.
+  - `PlanEditorProps` gains `lifecycleProps: { status, version, catalogueSnapshot, statusHistory, supersedes, allPlanSlugs }`.
+
+- **🗓 Vertical timeline cards in Timeline tab**:
+  - Replaced `<Table>` session history (~130 lines of JSX) with vertical timeline UI.
+  - Connector: `absolute left-[18px] top-5 bottom-5 w-px bg-border`. Each session: colored dot + collapsible card.
+  - Dot colors: full_assessment `#2B2D42`, pre_intake `#D6A2A2`, check_in `#8D99AE`, quick_note `#E8A87C`.
+  - Collapsed: type badge + date + lab chip + stat chips + `summaryLine` (derived from session type).
+  - Expanded: topics, symptoms, presenting complaints, AI synthesis notes, labs ordered.
+
+- **🔗 Dashboard deep-links + `?tab=` URL param**:
+  - `clients/[id]/page.tsx`: accepts `searchParams: Promise<{ tab?: string }>`. Passes `defaultTab` to `<ClientPageTabs>`. Valid values (v0.47+): `"overview" | "protocol" | "send" | "timeline"`.
+  - Returning client banner link → `/clients/${id}?tab=sessions` (was `?tab=timeline`; updated v0.48).
+  - Dashboard `SECTION_META` CTAs for `protocol_complete`, `labs_pending`, `returning`, `new_client` all point to `/clients/${id}?tab=sessions`.
+
+**v0.45** — Client page tab restructure + reported_triggers + lifestyle_guide rename:
+
+- **🗓 Client page tabs simplified** from 5 → 3: **Overview / Timeline / Documents**
+  - **Overview** — bio snapshot, active plan quick-access, action buttons, profile editor, preferences, labs
+  - **Timeline** — record a session (4 types: Pre-intake / Full Assessment / Check-in / Quick Note) + session history feed + health trends sparklines
+  - **Documents** — plans list with protocol link + ClientLetterButton per plan + external reports
+  - `SessionType` expanded: added `"quick_note"` type for between-session ad-hoc notes (the amaranth use case). `QuickNoteForm` inline component — free-text + source (client message / phone call / coach observation). Saves via `saveSessionAction`.
+  - `SESSION_TYPE_META` and `SaveSessionInput.session_type` union updated to include `quick_note`.
+
+- **🌿 Renamed `coaching_plan` letter type → `lifestyle_guide`** to eliminate naming collision:
+  - `LetterType` union updated in `lifecycle-actions.ts`
+  - UI label changed from "Coaching Plan" to "Lifestyle Guide" with 🌿 emoji in `client-letter-button.tsx`
+  - `render-client-letter.py`: function renamed `_build_prompt_lifestyle_guide`, dispatcher updated, `type_meta` dict key updated to `"lifestyle_guide"`
+  - Plan card in Documents tab: "🗂 Coaching Plan" section renamed to "🗂 Protocol"
+
+- **⚠ `reported_triggers` field** (from v0.44 work) added to `PreferencesEditor`, `actions.ts`, `render-client-letter.py`
+
+**v0.44** — Coach Knowledge ingest tab, catalogue check before staging, Enrich links panel, Add Source consolidated into Ingest:
 
 - **💬 Coach Knowledge tab on `/ingest`** — zero-friction clinical observation capture:
   - New tab "💬 Coach Knowledge" in the Ingest page tab bar.
@@ -42,13 +181,30 @@ published plans as JSON artifacts.
 
 - **New actions in `src/app/ingest/actions.ts`**: `checkCoachKnowledgeAction`, `runCoachKnowledgeAction`, `getBatchStatusAction`, `listStagedEntitiesAction`, `patchStagedEntityAction`, `saveSourceAction` (consolidated from `/sources/actions.ts`).
 
+**v0.45** — Client page tab restructure + reported_triggers + lifestyle_guide rename:
+
+- **🗓 Client page tabs simplified** from 5 → 3: **Overview / Timeline / Documents**
+  - **Overview** — bio snapshot, active plan quick-access, action buttons, profile editor, preferences, labs
+  - **Timeline** — record a session (4 types: Pre-intake / Full Assessment / Check-in / Quick Note) + session history feed + health trends sparklines
+  - **Documents** — plans list with protocol link + ClientLetterButton per plan + external reports
+  - `SessionType` expanded: added `"quick_note"` type for between-session ad-hoc notes (the amaranth use case). `QuickNoteForm` inline component — free-text + source (client message / phone call / coach observation). Saves via `saveSessionAction`.
+  - `SESSION_TYPE_META` and `SaveSessionInput.session_type` union updated to include `quick_note`.
+
+- **🌿 Renamed `coaching_plan` letter type → `lifestyle_guide`** to eliminate naming collision:
+  - `LetterType` union updated in `lifecycle-actions.ts`
+  - UI label changed from "Coaching Plan" to "Lifestyle Guide" with 🌿 emoji in `client-letter-button.tsx`
+  - `render-client-letter.py`: function renamed `_build_prompt_lifestyle_guide`, dispatcher updated, `type_meta` dict key updated to `"lifestyle_guide"`
+  - Plan card in Documents tab: "🗂 Coaching Plan" section renamed to "🗂 Protocol"
+
+- **⚠ `reported_triggers` field** (from v0.44 work) added to `PreferencesEditor`, `actions.ts`, `render-client-letter.py`
+
 **v0.43** — Split document types, coach knowledge field, /sources route, shim extraction:
 
 - **✂️ Split Generate Meal Plan into 4 document types** (`client-letter-button.tsx` + `lifecycle-actions.ts` + `render-client-letter.py`):
-  - **4 letter types**: `"consolidated"` (all sections), `"meal_plan"` (nutrition/meals only), `"supplement_plan"` (short intro + Python-generated schedule), `"coaching_plan"` (lifestyle/education/labs/tracking).
+  - **4 letter types**: `"consolidated"` (all sections), `"meal_plan"` (nutrition/meals only), `"supplement_plan"` (short intro + Python-generated schedule), `"lifestyle_guide"` (habits/education/labs/tracking) [previously called `coaching_plan`].
   - **`LetterType`** TypeScript union type in `lifecycle-actions.ts`. `saveMealPlan` / `loadMealPlan` / `generateClientLetter` all accept `letterType` (default `"consolidated"` for backward compat).
   - **File stems**: consolidated → `{planSlug}.md/.html`, others → `{planSlug}-{type}.md/.html`.
-  - **`render-client-letter.py`**: 3 new prompt builders (`_build_prompt_meal_plan`, `_build_prompt_supplement_plan`, `_build_prompt_coaching_plan`) + dispatcher in `_build_prompt()` routing by `letter_type`.
+  - **`render-client-letter.py`**: 3 new prompt builders (`_build_prompt_meal_plan`, `_build_prompt_supplement_plan`, `_build_prompt_lifestyle_guide`) + dispatcher in `_build_prompt()` routing by `letter_type`.
   - **UI (`client-letter-button.tsx`)**: 4-type selector cards in idle state (emoji + desc + "✓ saved" badge). Loads all saved types on mount in parallel. Tab bar in ready state shows each saved type. Weight loss form only shown for types that `needsWeightLoss` (consolidated + meal_plan).
   - **`type_meta` dict** maps each letter_type to its HTML title/subtitle.
 
@@ -805,7 +961,7 @@ fm-database-web/                  # Path B — Next.js + shadcn rebuild of the c
                                   #     _build_prompt_meal_plan() — nutrition only
                                   #     _build_prompt_supplement_plan() — short intro
                                   #       + Python schedule injected, no AI supps section
-                                  #     _build_prompt_coaching_plan() — lifestyle/
+                                  #     _build_prompt_lifestyle_guide() — lifestyle/
                                   #       education/labs/tracking, no meal tables
                                   #     Consolidated falls through to original logic.
                                   #     All 4 variants include coach_notes_block.
@@ -865,23 +1021,41 @@ fm-database-web/                  # Path B — Next.js + shadcn rebuild of the c
     actions.ts                    # saveSourceAction — uses runShim from shim.ts.
                                   #   Revalidates /catalogue + /sources.
   src/app/clients/[id]/
-    client-letter-button.tsx      # "use client" — ClientLetterButton component:
-                                  #   4 letter types: consolidated, meal_plan,
-                                  #   supplement_plan, coaching_plan.
-                                  #   Idle: 4 type selector cards (emoji + desc +
-                                  #   "✓ saved" badge). Loads all saved types on mount
-                                  #   in parallel. Asking: coach notes textarea +
-                                  #   weight loss form (only for consolidated/meal_plan).
-                                  #   Ready: tab bar per saved type + per-type downloads.
-                                  #   Calls generateClientLetter(letterType, coachNotes).
-                                  #   Refinement chat panel (multi-turn, saves each turn).
+    send-package-button.tsx       # "use client" — SendPackageButton component:
+                                  #   "📤 Send package" collapsible trigger. 4 letter
+                                  #   types as checkboxes (meal_plan ✓, supplement_plan
+                                  #   ✓, lifestyle_guide ☐, consolidated ☐). Loads all
+                                  #   4 saved types on mount in parallel. Sequential
+                                  #   generation with per-type progress tracking.
+                                  #   Coach notes textarea. Per-type HTML/MD downloads.
+                                  #   Per-type ✏️ Edit toggle → monospace textarea →
+                                  #   "💾 Apply edits to download" updates mdBlob.
+                                  #   Primary action in Send tab.
+    client-letter-button.tsx      # "use client" — ClientLetterButton: advanced
+                                  #   per-type flow (weight loss questionnaire,
+                                  #   refinement chat). NOT imported in client-tabs.tsx
+                                  #   anymore — kept for potential future use only.
     preferences-editor.tsx        # "use client" — dietary_preference + location +
                                   #   food non-negotiables. Saved to client.yaml.
                                   #   Used by render-client-letter.py for meal plan.
     client-contact-widget.tsx     # inline-editable email + mobile + next_contact_date
     health-trends.tsx             # SVG sparklines + snapshot timeline
-    client-tabs.tsx               # main client detail tabbed layout
-                                  #   (Overview / Assessments / Plans / Check-in)
+    client-tabs.tsx               # main client detail tabbed layout.
+                                  #   Tabs: Overview | 🗓 Sessions | 📋 Plan (3 tabs)
+                                  #   type Tab = "overview"|"sessions"|"plan"
+                                  #   Workflow stage banner always visible at top:
+                                  #     no_plan → draft → active → recheck
+                                  #   activePlan / activePlanStatus / workflowStage
+                                  #     computed at component top (not inside IIFEs).
+                                  #   handleActivate(slug): submitPlan + publishPlan
+                                  #     inline — no /plans/[slug] navigation needed.
+                                  #   Sessions tab: session recording + history + trends.
+                                  #   Plan tab: plan card + Activate + edit link +
+                                  #     SendPackageButton (when active) + external reports.
+                                  #   SESSION_TYPE_META: full_assessment label = "Full session"
+                                  #   Accepts defaultTab ("overview"|"sessions"|"plan").
+                                  #   Backward compat: timeline→sessions, protocol→plan,
+                                  #   send→plan, documents→plan.
     check-in-form.tsx             # Check-in workflow (adherence rating, lab orders,
                                   #   appends to plan.notes_for_coach)
   src/app/plans/[slug]/
@@ -890,13 +1064,19 @@ fm-database-web/                  # Path B — Next.js + shadcn rebuild of the c
                                   #   submitPlan, publishPlan, revokePlan, etc.
                                   #   WeightLossParams + LetterType interfaces here.
                                   #   LetterType = "consolidated"|"meal_plan"|
-                                  #   "supplement_plan"|"coaching_plan".
+                                  #   "supplement_plan"|"lifestyle_guide".
                                   #   letterFileStem(): consolidated→planSlug,
                                   #   others→{planSlug}-{type}.
                                   #   All 3 functions accept optional letterType param
                                   #   (default "consolidated" for backward compat).
                                   #   Saves to ~/fm-plans/clients/<id>/meal-plans/.
-    lifecycle-panel.tsx           # lifecycle transitions UI
+    lifecycle-panel.tsx           # lifecycle transitions UI. Now rendered inside
+                                  #   the 🚀 Lifecycle tab of PlanEditor (not
+                                  #   standalone on page.tsx).
+    plan-editor.tsx               # 10-tab editor → 3 tabs: 📋 Protocol (9 collapsible
+                                  #   <details> sections + PlanChatPanel), 📄 Documents
+                                  #   (link to client page), 🚀 Lifecycle (LifecyclePanel).
+                                  #   Accepts lifecycleProps from page.tsx.
     send-to-client-modal.tsx      # Compose → Preview → Send email flow
   src/app/search/
     page.tsx                      # RSC — full-text search across all entity types
@@ -965,15 +1145,26 @@ npm run build && npm run type-check          # before committing
 # Email sending: add GMAIL_USER + GMAIL_APP_PASSWORD to .env.local
 # (see .env.local.example — needs a Google App Password, not your normal password)
 ```
-**22 routes:** `/`, `/search`, `/catalogue` (+ all 8 detail kinds), `/plans` (+ 10-tab editor + plan-check + lifecycle + Markdown/HTML export + 📧 Send to client), `/assess` (Analyze + chat with auto-rehydrated history), `/clients` (+ detail + add-client form + contact widget + check-in form + 💌 Generate Meal Plan (4 types) button + preferences editor), `/resources` (+ detail + `/resources/generate` PubMed evidence brief), `/mindmap` (+ Mermaid detail), `/backlog` (with bulk reject + mark-added + Attach action + per-row 💡 suggestion chips + 🔗 Supplement Links tab), `/ingest` (📁 file upload: PDF/MD/images + 🔗 URL tab + ⚡ Approve all pending button + per-batch Review/Approve/Reject), `/sources` (Add Source — form writes directly to fm-database/data/sources/).
+**22 routes:** `/`, `/search`, `/catalogue` (+ all 8 detail kinds), `/plans` (+ 3-tab editor: Protocol/Documents/Lifecycle + plan-check sidebar + Markdown/HTML export + 📧 Send to client), `/assess` (Analyze + chat with auto-rehydrated history), `/clients` (+ detail with `?tab=overview|timeline|documents` deep-linking + add-client form + contact widget + check-in form + 📤 SendPackageButton + ClientLetterButton + preferences editor), `/resources` (+ detail + `/resources/generate` PubMed evidence brief), `/mindmap` (+ Mermaid detail), `/backlog` (with bulk reject + mark-added + Attach action + per-row 💡 suggestion chips + 🔗 Supplement Links tab), `/ingest` (📁 file upload: PDF/MD/images + 🔗 URL tab + ⚡ Approve all pending button + per-batch Review/Approve/Reject), `/sources` (Add Source — form writes directly to fm-database/data/sources/).
 
 **Key invariants:**
 - `ingest-action.py` calls `python -m fmdb.cli` (NOT `python fmdb/cli.py` — causes ImportError).
 - `html2text` installed in fm-database/.venv (needed for URL ingest HTML→markdown).
 - No global git config on this machine — commit author set via env vars in `catalogue-commit-action.ts`.
 - Port 3002 (port 3000 used by another app). PM2 process name: `fm-coach`.
+- Client page tabs: `type Tab = "overview" | "sessions" | "plan"` (3 tabs as of v0.48). Backward compat: `?tab=timeline|protocol|send|documents` all map to new names. `?tab=sessions` was "timeline". `?tab=plan` was "protocol" and "send".
+- `activePlan`, `activePlanStatus`, `workflowStage` defined at component top of `ClientPageTabs` — NOT inside JSX IIFEs. `todayStr` defined immediately after measurements state.
+- `handleActivate(slug)` calls `submitPlan` + `publishPlan` from `lifecycle-actions` inline. On error: toast. On success: `router.refresh()`.
+- `ClientLetterButton` is no longer imported in `client-tabs.tsx`. `send-package-button.tsx` is the sole letter-generation entry point (in Plan tab, published plans only).
+- `SESSION_TYPE_META.full_assessment.label` = `"Full session"` (NOT "Assessment"). Icon = `"🔍"`. Changed in v0.48 to reduce "assessment" overuse.
+- Dashboard CTAs and `client/[id]/page.tsx` returning-client link all use `?tab=sessions` (was `?tab=timeline`).
+- `plan-editor.tsx` Documents tab links use `?tab=plan` (was `?tab=documents`).
+- `extract-symptoms.py` uses `max_tokens=8192` (Haiku's max). DO NOT lower this — full symptom catalogue + large lab PDFs need the full limit or JSON is truncated.
+- `extractSymptomsFromTranscript` timeout: 120,000ms (2 min). Large lab panels need this headroom.
+- `family_history: Optional[str] = None` in Python `Client` model (`fmdb/plan/models.py`). Required because model uses `extra="forbid"` — adding YAML fields without updating Python causes ValidationError.
 - Meal plan letter takes 2–3 min to generate (Sonnet, long output). Saves to `~/fm-plans/clients/<id>/meal-plans/{stem}.md/.html`. Loads on page mount — no need to regenerate. All 4 letter types are independent files.
 - Coach notes (`coachNotes` param) are passed to all 4 prompt variants — weave in custom tips like "Soak methi seeds overnight, drink water first thing". Shown as textarea in the asking state before generation.
+- `generateClientLetter(planSlug, clientId, weightLoss?, letterType?, coachNotes?)` — weightLoss is 3rd, letterType is 4th. When generating without weight loss params, pass `undefined` explicitly: `generateClientLetter(planSlug, clientId, undefined, pkg.type, coachNotes)`. Mixing up arg order causes TS2345.
 - `brand_html.py` is the shared brand wrapper for ALL letter/plan HTML output. Edit CSS there, not inline.
 - Per-week print: `body[data-print-week="N"]` attr set by JS → CSS shows only that week-section. Works without any server round-trip.
 - Supplement print: `#supplement-schedule` isolated by JS before `window.print()`. Buy links hidden via `.no-print` CSS class on print.
@@ -1058,7 +1249,13 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 
 ## Roadmap (what's next)
 
-**Done (v0.2 → v0.44):**
+**Done (v0.2 → v0.46):**
+- ✅ **🗂 Client page single-workspace redesign (v0.47)** — tabs: Overview | 📋 Protocol | 📤 Send | 🗓 Timeline. Workflow stage banner. Inline Activate button. No more back-and-forth to /plans/[slug] just to activate. Send tab = letter generation only (published plans).
+- ✅ **Plan editor UX fixes (v0.47)** — `effectiveLocked` sub-component bug fixed. `SupplementCombobox` typeahead. Lifecycle single Activate button. AI chat at top of Protocol tab. Edit-before-send textarea in SendPackageButton.
+- ✅ **📤 SendPackageButton** — batch letter generator. 4 types, sequential generation, coach notes, per-type HTML/MD downloads, ✏️ Edit before download.
+- ✅ **📋 Plan editor 3 tabs** — Protocol (9 collapsible sections) / Documents / Lifecycle. LifecyclePanel moved into Lifecycle tab inside PlanEditor.
+- ✅ **🗓 Vertical timeline cards in Timeline tab** — colored dot + card UI. Expandable detail.
+- ✅ **🔗 Dashboard deep-links + `?tab=` support** — client detail page reads `?tab=overview|sessions|plan`. Full backward compat: old names (`timeline`→`sessions`, `protocol`/`send`/`documents`→`plan`). Dashboard CTAs use `?tab=sessions`.
 - ✅ All 9 catalogue entity types built and seeded (82 sources, 318 topics, 408 mechanisms, 378 symptoms, 1,492 claims, 279 supplements, 3+3+11 ca/hr/mindmaps)
 - ✅ AI ingestion pipeline (PDF + markdown + image attachments; streaming) — all VitaOne PDFs + coconote + Barbara O'Neill + ask-expert + instagram posts ingested
 - ✅ All 58 staging batches approved (v0.42). Catalogue: 0 errors, ~1,272 non-blocking warnings.
@@ -1088,7 +1285,7 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 - ✅ 📧 Email: Send to client, Gmail SMTP, nodemailer
 - ✅ 🔍 Global search (⌘K), follow-up reminders, check-in workflow, client contact widget
 - ✅ PubMed evidence brief generator (`/resources/generate`)
-- ✅ **✂️ Split document types** — 4 separate letter types (consolidated/meal_plan/supplement_plan/coaching_plan). Each saves independently. UI shows 4 selector cards + tab bar per saved type.
+- ✅ **✂️ Split document types** — 4 separate letter types (consolidated/meal_plan/supplement_plan/lifestyle_guide). Each saves independently. UI shows 4 selector cards + tab bar per saved type.
 - ✅ **📝 Coach knowledge field** — `coachNotes` textarea weaves custom tips into all 4 document types.
 - ✅ **🔧 shim.ts** — `runShim` extracted from `anthropic.ts` to shared `src/lib/fmdb/shim.ts`.
 - ✅ **💬 Coach Knowledge ingest tab** — type a clinical observation, AI checks catalogue (keyword search + Haiku), then stages via normal fmdb ingest pipeline. `coach-knowledge-check.py` + `coach-knowledge.py`.

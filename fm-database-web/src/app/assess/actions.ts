@@ -46,7 +46,7 @@ export interface SessionSummary {
   supplement_count: number;
   synthesis_notes?: string;
   /** Parsed from the [session_type: ...] prefix in presenting_complaints */
-  session_type: "pre_intake" | "full_assessment" | "check_in";
+  session_type: "pre_intake" | "full_assessment" | "check_in" | "quick_note";
   /** Parsed from the [Requested labs: ...] marker in coach_notes */
   requested_labs: string[];
 }
@@ -189,9 +189,14 @@ export async function extractTranscriptAction(
       symptom_catalogue: symptomCatalogue,
       dry_run: dryRun,
     };
-    return await extractSymptomsFromTranscript(input);
+    const result = await extractSymptomsFromTranscript(input);
+    if (!result.ok) {
+      console.error("[extractTranscriptAction] extraction returned ok:false", result.error);
+    }
+    return result;
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
+    console.error("[extractTranscriptAction] threw:", msg);
     return { ok: false, matched_slugs: [], mentions: [], error: msg.slice(0, 400) };
   }
 }
@@ -360,7 +365,7 @@ export async function applyTranscriptDataAction(
 
 export interface SaveSessionInput {
   client_id: string;
-  session_type: "pre_intake" | "check_in";
+  session_type: "pre_intake" | "check_in" | "quick_note";
   session_date?: string;               // ISO YYYY-MM-DD; defaults to today
   selected_symptoms?: string[];
   presenting_complaints?: string;

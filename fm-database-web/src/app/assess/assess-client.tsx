@@ -1740,7 +1740,11 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
           toast.error(`${file.name}: upload failed — ${(e as Error).message}`);
           continue;
         }
-        setUploads((u) => [...u, { filePath: savedPath, filename: file.name, mime_type: mime, kind }]);
+        // Guard: skip if this filename is already in the uploads list (prevents duplicates on retry)
+        setUploads((u) => {
+          if (u.some(x => x.filename === file.name && x.kind === kind)) return u;
+          return [...u, { filePath: savedPath, filename: file.name, mime_type: mime, kind }];
+        });
 
         // Step 2: for lab reports, extract using the saved path (string only — no binary)
         if (kind === "lab_report") {

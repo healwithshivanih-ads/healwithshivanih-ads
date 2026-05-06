@@ -42,11 +42,13 @@ export function NewClientForm() {
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [sex, setSex] = useState<"F" | "M" | "other">("F");
   const [mobileNumber, setMobileNumber] = useState("");
+  const [email, setEmail] = useState("");
   const [conditions, setConditions] = useState("");
   const [medications, setMedications] = useState("");
   const [allergies, setAllergies] = useState("");
   const [goals, setGoals] = useState("");
   const [notes, setNotes] = useState("");
+  const [familyHistory, setFamilyHistory] = useState("");
   const [dietaryPreference, setDietaryPreference] = useState("");
   const [foodsToAvoid, setFoodsToAvoid] = useState("");
   const [nonNegotiables, setNonNegotiables] = useState("");
@@ -57,6 +59,7 @@ export function NewClientForm() {
     setDateOfBirth("");
     setSex("F");
     setMobileNumber("");
+    setEmail("");
     setConditions("");
     setMedications("");
     setDietaryPreference("");
@@ -65,6 +68,7 @@ export function NewClientForm() {
     setAllergies("");
     setGoals("");
     setNotes("");
+    setFamilyHistory("");
     setAutoFilled(new Set());
     setParseError(null);
     setParsedSymptoms([]);
@@ -84,6 +88,7 @@ export function NewClientForm() {
     if (data.date_of_birth) { setDateOfBirth(data.date_of_birth); filled.add("dateOfBirth"); }
     if (data.sex) { setSex(data.sex); filled.add("sex"); }
     if (data.mobile_number) { setMobileNumber(data.mobile_number); filled.add("mobileNumber"); }
+    if ((data as { email?: string }).email) { setEmail((data as { email?: string }).email!); filled.add("email"); }
     if (data.intake_date) { setIntakeDate(data.intake_date); filled.add("intakeDate"); }
 
     if (data.active_conditions.length > 0) {
@@ -150,11 +155,13 @@ export function NewClientForm() {
         date_of_birth: dateOfBirth,
         sex,
         mobile_number: mobileNumber.trim(),
+        email: email.trim() || undefined,
         conditions: splitLines(conditions),
         medications: splitLines(medications),
         allergies: splitLines(allergies),
         goals: splitLines(goals),
         notes: notes.trim() || undefined,
+        family_history: familyHistory.trim() || undefined,
         dietary_preference: dietaryPreference || undefined,
         foods_to_avoid: foodsToAvoid.trim() || undefined,
         non_negotiables: nonNegotiables.trim() || undefined,
@@ -345,6 +352,17 @@ export function NewClientForm() {
                 required
               />
             </Field>
+            <Field
+              label={<>Email{isAuto("email") && <AutoBadge />}</>}
+              hint="for sending client letters and reports"
+            >
+              <Input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="anjali@example.com"
+              />
+            </Field>
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
@@ -362,9 +380,19 @@ export function NewClientForm() {
             </Field>
           </div>
 
-          <Field label={<>Notes{isAuto("notes") && <AutoBadge />}</>}>
-            <Textarea value={notes} onChange={setNotes} rows={3} placeholder="anything that doesn't fit elsewhere" />
-          </Field>
+          <div className="grid gap-4 md:grid-cols-2">
+            <Field label={<>Notes{isAuto("notes") && <AutoBadge />}</>}>
+              <Textarea value={notes} onChange={setNotes} rows={3} placeholder="anything that doesn't fit elsewhere" />
+            </Field>
+            <Field label="Family / hereditary history" hint="conditions running in the family — used in assessment">
+              <Textarea
+                value={familyHistory}
+                onChange={setFamilyHistory}
+                rows={3}
+                placeholder={"diabetes (mother)\nheart disease (father)\nthyroid conditions (maternal side)"}
+              />
+            </Field>
+          </div>
 
           {/* ── Food & lifestyle preferences (used for client meal plan letter) ── */}
           <div className="rounded-md border border-amber-200 bg-amber-50/40 p-3 space-y-3">

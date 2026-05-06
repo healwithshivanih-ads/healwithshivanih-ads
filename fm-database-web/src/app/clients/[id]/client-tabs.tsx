@@ -4,29 +4,22 @@
  * ClientPageTabs — tabbed hub for /clients/[id].
  *
  * Tabs:
- *   Overview  — bio, clinical, lab panels, preferences, files, topic brief
- *   Assess    — AssessClient in fixed-client mode (no client picker)
- *   Plans     — client's plans list + actions
- *   Health    — health trends sparklines + timeline
+ *   Overview  — bio, clinical snapshot, lab panels, preferences, files, education pack
+ *   Sessions  — record a session (full session / pre-intake / check-in / quick note) + session history
+ *   Plan      — plan status, edit, activate, and client letter generation (merged Protocol + Send)
  */
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import { AssessClient } from "@/app/assess/assess-client";
 import { HealthTrends } from "./health-trends";
 import { ReportsTab } from "./reports-tab";
-import { ClientLetterButton } from "./client-letter-button";
+import { SendPackageButton } from "./send-package-button";
 import { DeleteClientButton } from "./delete-client-button";
 import { PreferencesEditor } from "./preferences-editor";
 import { ClientProfileEditor } from "./client-profile-editor";
@@ -36,6 +29,7 @@ import { LabPanels } from "./lab-panels";
 import { SessionTypePicker, type SessionType } from "./session-type-picker";
 import { PreIntakeForm } from "./pre-intake-form";
 import { CheckInForm } from "./check-in-form";
+import { generateFollowUpPlan, submitPlan, publishPlan } from "@/app/plans/[slug]/lifecycle-actions";
 import type { Client } from "@/lib/fmdb/types";
 import type { SessionSummary } from "@/app/assess/actions";
 
@@ -66,21 +60,20 @@ interface ClientTabsProps {
   meds: string[];
   allergies: string[];
   keyMarkers: Array<{ label: string; value: number; unit?: string; flag: string; computed?: boolean }>;
-  defaultTab?: "overview" | "assess" | "plans" | "health" | "reports";
+  defaultTab?: "overview" | "sessions" | "plan";
+  defaultSessionType?: "check_in" | "full_assessment" | "pre_intake" | "quick_note";
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Tab bar
 // ──────────────────────────────────────────────────────────────────────────────
 
-type Tab = "overview" | "assess" | "plans" | "health" | "reports";
+type Tab = "overview" | "sessions" | "plan";
 
 const TABS: { key: Tab; label: string }[] = [
-  { key: "overview", label: "Overview" },
-  { key: "assess",   label: "🧠 Assess" },
-  { key: "plans",    label: "📋 Plans" },
-  { key: "health",   label: "📈 Health" },
-  { key: "reports",  label: "🗂 Reports" },
+  { key: "overview",  label: "Overview"    },
+  { key: "sessions",  label: "🗓 Sessions" },
+  { key: "plan",      label: "📋 Plan"     },
 ];
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -88,18 +81,85 @@ const TABS: { key: Tab; label: string }[] = [
 // ──────────────────────────────────────────────────────────────────────────────
 
 const SESSION_TYPE_META: Record<
-  "pre_intake" | "full_assessment" | "check_in",
+  "pre_intake" | "full_assessment" | "check_in" | "quick_note",
   { icon: string; label: string; pill: string }
 > = {
-  pre_intake:      { icon: "📋", label: "Pre-intake",  pill: "bg-[#D6A2A2]/20 text-[#7A3D3D]" },
-  full_assessment: { icon: "🧠", label: "Assessment",  pill: "bg-[#2B2D42]/10 text-[#2B2D42]" },
-  check_in:        { icon: "💬", label: "Check-in",    pill: "bg-[#8D99AE]/20 text-[#3D4A5C]" },
+  pre_intake:      { icon: "📋", label: "Pre-intake",    pill: "bg-[#D6A2A2]/20 text-[#7A3D3D]" },
+  full_assessment: { icon: "🔍", label: "Full session",  pill: "bg-[#2B2D42]/10 text-[#2B2D42]" },
+  check_in:        { icon: "💬", label: "Check-in",      pill: "bg-[#8D99AE]/20 text-[#3D4A5C]" },
+  quick_note:      { icon: "📌", label: "Quick Note",    pill: "bg-[#E8A87C]/20 text-[#7A4A2A]" },
 };
 
-function LabMarkerDot({ flag }: { flag: string }) {
-  if (flag === "optimal") return <span title="optimal">🟢</span>;
-  if (flag === "suboptimal") return <span title="suboptimal">🟡</span>;
-  return <span title={flag}>🔴</span>;
+// ── QuickNoteForm ─────────────────────────────────────────────────────────────
+
+import { saveSessionAction } from "@/app/assess/actions";
+
+function QuickNoteForm({ clientId, onSaved }: { clientId: string; onSaved: (id: string) => void }) {
+  const [note, setNote] = useState("");
+  const [source, setSource] = useState("client_message");
+  const [isPending, startTransition] = useTransition();
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSave = () => {
+    if (!note.trim()) return;
+    setError(null);
+    startTransition(async () => {
+      const res = await saveSessionAction({
+        client_id: clientId,
+        session_type: "quick_note",
+        presenting_complaints: `[source: ${source}]\n${note.trim()}`,
+      });
+      if (res.ok && res.session_id) {
+        setNote("");
+        onSaved(res.session_id);
+      } else {
+        setError(res.error ?? "Failed to save note");
+      }
+    });
+  };
+
+  return (
+    <div className="space-y-3">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 items-start">
+        <div className="sm:col-span-2">
+          <label className="text-xs font-medium block mb-1 text-muted-foreground">What happened?</label>
+          <textarea
+            rows={3}
+            value={note}
+            onChange={(e) => setNote(e.target.value)}
+            placeholder="e.g. Client messaged — can't find amaranth leaves for Wednesday's recipe. Swapped to spinach. She'll adjust quantity."
+            className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm resize-none focus:outline-none focus:ring-1"
+            style={{ borderColor: "var(--brand-lavender, #8D99AE)" }}
+          />
+        </div>
+        <div>
+          <label className="text-xs font-medium block mb-1 text-muted-foreground">Source</label>
+          <select
+            value={source}
+            onChange={(e) => setSource(e.target.value)}
+            className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+          >
+            <option value="client_message">Client message / WhatsApp</option>
+            <option value="phone_call">Phone call</option>
+            <option value="coach_observation">Coach observation</option>
+            <option value="other">Other</option>
+          </select>
+          <button
+            onClick={handleSave}
+            disabled={isPending || !note.trim()}
+            className="mt-2 w-full text-sm font-semibold px-4 py-2 rounded-lg text-white transition-all disabled:opacity-50"
+            style={{ background: "var(--brand-indigo, #2B2D42)" }}
+          >
+            {isPending ? "Saving…" : "📌 Save note"}
+          </button>
+        </div>
+      </div>
+      {error && <p className="text-xs text-red-600">{error}</p>}
+      <p className="text-[11px] text-muted-foreground">
+        Quick notes appear in the session history and are visible in future AI analyses. They do not trigger a new session.
+      </p>
+    </div>
+  );
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -126,31 +186,121 @@ export function ClientPageTabs({
   allergies,
   keyMarkers,
   defaultTab = "overview",
+  defaultSessionType,
 }: ClientTabsProps) {
-  const [activeTab, setActiveTab] = useState<Tab>(defaultTab);
-  const [sessionType, setSessionType] = useState<SessionType>("full_assessment");
+  const router = useRouter();
+  const [activeTab, setActiveTab] = useState<Tab>(defaultTab ?? "overview");
+  const [sessionType, setSessionType] = useState<SessionType>(defaultSessionType ?? "full_assessment");
   const [savedSessionId, setSavedSessionId] = useState<string | null>(null);
   const [expandedSessionId, setExpandedSessionId] = useState<string | null>(null);
+  const [followUpOpenFor, setFollowUpOpenFor] = useState<string | null>(null);
+  const [followUpSlug, setFollowUpSlug] = useState("");
+  const [followUpWeeks, setFollowUpWeeks] = useState("");
+  const [followUpGenerating, setFollowUpGenerating] = useState(false);
+  const [followUpResult, setFollowUpResult] = useState<{ ok: boolean; newSlug?: string; summary?: string; error?: string } | null>(null);
+  const [isActivating, setIsActivating] = useState(false);
   const m = client.measurements as Record<string, unknown> | undefined;
+  const todayStr = new Date().toISOString().slice(0, 10);
 
-  // Derive pending labs: find the most recent session (any type) that has
-  // requested_labs, only if no full_assessment has occurred after it.
-  // This covers both pre-intake lab orders AND mid-protocol check-in lab orders.
+  // ── Workflow stage ─────────────────────────────────────────────────────────
+  const activePlan = plans.find((p) =>
+    ["draft", "ready_to_publish", "published"].includes(p.status ?? p._bucket ?? "")
+  );
+  const activePlanStatus = activePlan ? (activePlan.status ?? activePlan._bucket ?? "draft") : null;
+  const recheckDue = activePlan?.plan_period_recheck_date
+    ? activePlan.plan_period_recheck_date < todayStr
+    : false;
+  const workflowStage: "no_plan" | "draft" | "active" | "recheck" =
+    !activePlan ? "no_plan"
+    : (activePlanStatus === "published" && recheckDue) ? "recheck"
+    : activePlanStatus === "published" ? "active"
+    : "draft";
+
+  // Inline activate plan handler (submit + publish in one click)
+  async function handleActivate(planSlug: string) {
+    setIsActivating(true);
+    try {
+      const sub = await submitPlan(planSlug, "Activated from client page");
+      if (!sub.ok) { toast.error(sub.error ?? "Plan check failed — open the plan editor to fix errors"); setIsActivating(false); return; }
+      const pub = await publishPlan(planSlug, "Activated from client page");
+      if (!pub.ok) { toast.error(pub.error ?? "Activation failed"); setIsActivating(false); return; }
+      toast.success("✅ Plan activated!");
+      router.refresh();
+    } catch (e) {
+      toast.error(String(e));
+    } finally {
+      setIsActivating(false);
+    }
+  }
+
+  // Derive pending labs
   const pendingLabsInfo = (() => {
-    // sessions is sorted newest-first
     const labIdx = sessions.findIndex((s) => s.requested_labs.length > 0);
     if (labIdx === -1) return null;
-    // check if any full_assessment session is NEWER (lower index = more recent)
-    const hasAssessmentAfter = sessions.slice(0, labIdx).some((s) => s.session_type === "full_assessment");
-    if (hasAssessmentAfter) return null;
+    const hasSessionAfter = sessions.slice(0, labIdx).some((s) => s.session_type === "full_assessment");
+    if (hasSessionAfter) return null;
     return sessions[labIdx];
   })();
 
-  // Plan completion: a published plan whose recheck date has passed
-  const todayStr = new Date().toISOString().slice(0, 10);
-
   return (
     <div className="space-y-4">
+      {/* ── Workflow stage banner ── */}
+      {workflowStage === "no_plan" && (
+        <div className="rounded-xl border-2 px-4 py-3 flex items-center gap-3 flex-wrap" style={{ borderColor: "#E8A87C", background: "#FEF9F5" }}>
+          <span className="text-lg">📋</span>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-semibold" style={{ color: "var(--brand-indigo)" }}>No plan yet</p>
+            <p className="text-xs text-muted-foreground mt-0.5">Record a session → AI analyses root causes → generates a draft plan → activate.</p>
+          </div>
+          <button onClick={() => { setActiveTab("sessions"); setSessionType("full_assessment"); setSavedSessionId(null); }}
+            className="shrink-0 text-sm font-semibold px-4 py-2 rounded-lg text-white" style={{ background: "var(--brand-indigo)" }}>
+            📋 Start session →
+          </button>
+        </div>
+      )}
+      {workflowStage === "draft" && activePlan && (
+        <div className="rounded-xl border-2 px-4 py-3 flex items-center gap-3 flex-wrap" style={{ borderColor: "#8D99AE", background: "var(--brand-bone, #FAF8F5)" }}>
+          <span className="text-lg">🟡</span>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-semibold" style={{ color: "var(--brand-indigo)" }}>Draft plan ready — fill the protocol and activate</p>
+            <p className="text-xs text-muted-foreground mt-0.5">Edit supplements, lifestyle, and nutrition in the plan editor, then activate.</p>
+          </div>
+          <button onClick={() => setActiveTab("plan")}
+            className="shrink-0 text-sm font-semibold px-4 py-2 rounded-lg border" style={{ borderColor: "var(--brand-indigo)", color: "var(--brand-indigo)" }}>
+            📋 Go to Plan →
+          </button>
+        </div>
+      )}
+      {workflowStage === "active" && activePlan && (
+        <div className="rounded-xl border-2 px-4 py-3 flex items-center gap-3 flex-wrap" style={{ borderColor: "#7BBF9A", background: "#F0FAF5" }}>
+          <span className="text-lg">🟢</span>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-semibold text-emerald-800">Plan is active — generate and send client letters</p>
+            <p className="text-xs text-emerald-700 mt-0.5">
+              {activePlan.plan_period_recheck_date ? `Recheck due ${activePlan.plan_period_recheck_date}` : "Plan is running."}
+              {" "}Generate meal plan, supplement guide, and lifestyle letter.
+            </p>
+          </div>
+          <button onClick={() => setActiveTab("plan")}
+            className="shrink-0 text-sm font-semibold px-4 py-2 rounded-lg text-white bg-emerald-700 hover:bg-emerald-800 transition-colors">
+            📤 Generate letters →
+          </button>
+        </div>
+      )}
+      {workflowStage === "recheck" && activePlan && (
+        <div className="rounded-xl border-2 px-4 py-3 flex items-center gap-3 flex-wrap" style={{ borderColor: "var(--brand-indigo)", background: "var(--brand-bone, #FAF8F5)" }}>
+          <span className="text-lg">✅</span>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-semibold" style={{ color: "var(--brand-indigo)" }}>Protocol complete · Recheck was {activePlan.plan_period_recheck_date}</p>
+            <p className="text-xs text-muted-foreground mt-0.5">Time for a new session — review progress and plan the next phase.</p>
+          </div>
+          <button onClick={() => { setActiveTab("sessions"); setSessionType("full_assessment"); setSavedSessionId(null); }}
+            className="shrink-0 text-sm font-semibold px-4 py-2 rounded-lg text-white" style={{ background: "var(--brand-indigo)" }}>
+            📋 New session →
+          </button>
+        </div>
+      )}
+
       {/* ── Tab bar ── */}
       <div className="flex gap-0 border-b">
         {TABS.map((t) => (
@@ -165,34 +315,21 @@ export function ClientPageTabs({
             )}
           >
             {t.label}
-            {t.key === "plans" && plans.length > 0 && (
+            {t.key === "sessions" && sessions.length > 0 && (
               <Badge variant="secondary" className="ml-1.5 text-[10px] px-1.5 py-0">
-                {plans.length}
+                {sessions.length}
               </Badge>
             )}
-            {t.key === "plans" && plans.some((p) =>
-              (p.status ?? p._bucket) === "published" &&
-              p.plan_period_recheck_date &&
-              p.plan_period_recheck_date < todayStr
-            ) && (
-              <span className="ml-1 text-[10px] font-semibold px-1.5 py-0 rounded-full bg-emerald-100 text-emerald-800">
-                ✅
-              </span>
-            )}
-            {t.key === "health" && (client.health_snapshots ?? []).length > 0 && (
-              <Badge variant="secondary" className="ml-1.5 text-[10px] px-1.5 py-0">
-                {(client.health_snapshots ?? []).length}
-              </Badge>
-            )}
-            {t.key === "assess" && pendingLabsInfo != null && (
+            {t.key === "sessions" && pendingLabsInfo != null && (
               <span className="ml-1.5 text-[10px] font-semibold px-1.5 py-0 rounded-full bg-[#D6A2A2]/30 text-[#7A3D3D]">
                 🧪
               </span>
             )}
-            {t.key === "reports" && (client.external_reports ?? []).length > 0 && (
-              <Badge variant="secondary" className="ml-1.5 text-[10px] px-1.5 py-0">
-                {(client.external_reports as unknown[]).length}
-              </Badge>
+            {t.key === "plan" && workflowStage === "draft" && (
+              <span className="ml-1.5 text-[10px] font-semibold px-1.5 py-0 rounded-full bg-amber-100 text-amber-800">!</span>
+            )}
+            {t.key === "plan" && workflowStage === "active" && (
+              <span className="ml-1.5 text-[10px] font-semibold px-1.5 py-0 rounded-full bg-emerald-100 text-emerald-800">→</span>
             )}
           </button>
         ))}
@@ -281,27 +418,81 @@ export function ClientPageTabs({
             </CardContent>
           </Card>
 
+          {/* Active plan quick-access */}
+          {(() => {
+            const ap = plans.find((p) =>
+              ["draft", "ready_to_publish", "published"].includes(p.status ?? p._bucket ?? "")
+            );
+            if (!ap) return null;
+            const st = ap.status ?? ap._bucket ?? "draft";
+            const dot = st === "published" ? "🟢" : st === "ready_to_publish" ? "🔵" : "🟡";
+            return (
+              <div className="flex items-center gap-3 px-4 py-3 rounded-lg border-2 text-sm flex-wrap" style={{ borderColor: "var(--brand-indigo, #2B2D42)", background: "var(--brand-bone, #FAF8F5)" }}>
+                <span className="text-base">{dot}</span>
+                <div className="flex-1 min-w-0">
+                  <span className="font-semibold" style={{ color: "var(--brand-indigo, #2B2D42)" }}>Active plan: </span>
+                  <Link href={`/plans/${ap.slug}`} className="font-mono text-xs hover:underline" style={{ color: "var(--brand-indigo, #2B2D42)" }}>
+                    {ap.slug}
+                  </Link>
+                  {ap.plan_period_recheck_date && (
+                    <span className="ml-2 text-xs text-muted-foreground">· recheck {ap.plan_period_recheck_date}</span>
+                  )}
+                </div>
+                <div className="flex gap-2 shrink-0">
+                  <Link href={`/plans/${ap.slug}`}>
+                    <button className="text-xs font-semibold px-3 py-1.5 rounded-lg text-white transition-all hover:opacity-90" style={{ background: "var(--brand-indigo, #2B2D42)" }}>
+                      🗂 Open plan
+                    </button>
+                  </Link>
+                  <button
+                    onClick={() => { setActiveTab("sessions"); setSessionType("check_in"); setSavedSessionId(null); }}
+                    className="text-xs font-semibold px-3 py-1.5 rounded-lg border transition-all hover:bg-muted"
+                  >
+                    💬 Log check-in
+                  </button>
+                </div>
+              </div>
+            );
+          })()}
+
           {/* Action bar */}
           <div className="flex flex-wrap gap-3 p-4 rounded-lg border bg-muted/30">
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium">Next steps</p>
+              <p className="text-sm font-medium">Quick actions</p>
               <p className="text-xs text-muted-foreground mt-0.5">
-                Use the <strong>Assess</strong> tab to upload transcripts / lab reports and generate
-                a draft plan. Use the <strong>Plans</strong> tab to view and manage existing plans.
+                <strong>Sessions</strong> — record interactions and run AI analysis.{" "}
+                <strong>Plan</strong> — view, edit, activate the protocol and generate client letters.
               </p>
             </div>
             <div className="flex flex-wrap gap-2 items-center shrink-0">
               <button
-                onClick={() => setActiveTab("assess")}
+                onClick={() => { setActiveTab("sessions"); setSessionType("full_assessment"); setSavedSessionId(null); }}
                 className="inline-flex items-center gap-1 rounded-md bg-primary px-3 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
               >
-                🧠 Run assessment
+                📋 New session
               </button>
-              <Link href={`/plans/new?client=${clientId}`}>
-                <button className="inline-flex items-center gap-1 rounded-md border bg-background px-3 py-2 text-sm font-medium shadow-sm hover:bg-muted">
-                  ＋ New plan
-                </button>
-              </Link>
+              {plans.some((p) =>
+                ["draft", "ready_to_publish", "published"].includes(p.status ?? p._bucket ?? "")
+              ) ? (
+                <div className="relative group">
+                  <button
+                    disabled
+                    className="inline-flex items-center gap-1 rounded-md border bg-muted px-3 py-2 text-sm font-medium text-muted-foreground cursor-not-allowed opacity-60"
+                    title="Close or revoke the active plan before creating a new one"
+                  >
+                    ＋ New plan
+                  </button>
+                  <div className="absolute right-0 top-full mt-1 z-10 hidden group-hover:block w-64 rounded-md border bg-popover p-3 text-xs text-muted-foreground shadow-lg">
+                    This client already has an active plan. Revoke or close it before starting a new protocol.
+                  </div>
+                </div>
+              ) : (
+                <Link href={`/plans/new?client=${clientId}`}>
+                  <button className="inline-flex items-center gap-1 rounded-md border bg-background px-3 py-2 text-sm font-medium shadow-sm hover:bg-muted">
+                    ＋ New plan
+                  </button>
+                </Link>
+              )}
               <DeleteClientButton clientId={clientId} />
             </div>
           </div>
@@ -342,7 +533,6 @@ export function ClientPageTabs({
                       if (!waist || !hip) return null;
                       const ratio = Math.round((waist / hip) * 100) / 100;
                       const sex = (client.sex as string | undefined)?.toUpperCase();
-                      // Optimal: W:H < 0.80 for women, < 0.90 for men
                       const threshold = sex === "M" ? 0.90 : 0.80;
                       const flagCls = ratio < threshold
                         ? "bg-emerald-50 border-emerald-200 text-emerald-800"
@@ -427,7 +617,7 @@ export function ClientPageTabs({
                 {meds.length > 0 && (
                   <div>
                     <div className="text-xs uppercase text-muted-foreground">Medications</div>
-                    <ul className="list-disc list-inside">{meds.map((m, i) => <li key={i}>{m}</li>)}</ul>
+                    <ul className="list-disc list-inside">{meds.map((med, i) => <li key={i}>{med}</li>)}</ul>
                   </div>
                 )}
                 {allergies.length > 0 && (
@@ -446,6 +636,7 @@ export function ClientPageTabs({
             initial={{
               dietary_preference: (client as { dietary_preference?: string }).dietary_preference,
               foods_to_avoid: (client as { foods_to_avoid?: string }).foods_to_avoid,
+              reported_triggers: (client as { reported_triggers?: string }).reported_triggers,
               non_negotiables: (client as { non_negotiables?: string }).non_negotiables,
               city: (client as { city?: string }).city,
               country: (client as { country?: string }).country,
@@ -457,7 +648,7 @@ export function ClientPageTabs({
             <CardHeader className="pb-2">
               <CardTitle>Lab Panels</CardTitle>
               <p className="text-xs text-muted-foreground mt-0.5">
-                FM-optimal ranges · markers updated each assessment session
+                FM-optimal ranges · markers updated each session
                 {client.lab_markers_date ? ` · last updated ${client.lab_markers_date}` : ""}
               </p>
             </CardHeader>
@@ -476,10 +667,10 @@ export function ClientPageTabs({
                 <p className="text-sm text-muted-foreground">
                   No files yet. Lab reports and food journals are uploaded in the{" "}
                   <button
-                    onClick={() => setActiveTab("assess")}
+                    onClick={() => setActiveTab("sessions")}
                     className="underline hover:text-foreground"
                   >
-                    Assess tab
+                    Sessions tab
                   </button>
                   .
                 </p>
@@ -498,7 +689,7 @@ export function ClientPageTabs({
             <CardHeader className="pb-2">
               <CardTitle>📚 Education pack</CardTitle>
               <p className="text-xs text-muted-foreground mt-0.5">
-                Send a branded email with AI-generated topic briefs — cites NHS, NIH, WHO, ICMR and other government sources. Topics from this client&apos;s assessments are pre-selected.
+                Send a branded email with AI-generated topic briefs — cites NHS, NIH, WHO, ICMR and other government sources.
               </p>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -518,152 +709,30 @@ export function ClientPageTabs({
               </div>
               {assessmentTopics.length > 0 && (
                 <p className="text-xs text-muted-foreground">
-                  <span className="font-medium">{assessmentTopics.length} assessment topic{assessmentTopics.length !== 1 ? "s" : ""} pre-selected:</span>{" "}
+                  <span className="font-medium">{assessmentTopics.length} topic{assessmentTopics.length !== 1 ? "s" : ""} from sessions pre-selected:</span>{" "}
                   {assessmentTopics.map((t) => t.label).join(", ")}
                 </p>
               )}
             </CardContent>
           </Card>
 
-          {/* Sessions table */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Sessions ({sessions.length})</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {sessions.length === 0 ? (
-                <p className="text-sm text-muted-foreground">No sessions recorded.</p>
-              ) : (
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Type</TableHead>
-                      <TableHead>Date</TableHead>
-                      <TableHead>Topics / Notes</TableHead>
-                      <TableHead>Plan</TableHead>
-                      <TableHead className="w-6" />
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {sessions.map((s, i) => {
-                      const typeMeta = SESSION_TYPE_META[s.session_type];
-                      const sid = s.session_id ?? `idx-${i}`;
-                      const isExpanded = expandedSessionId === sid;
-                      return (
-                        <>
-                          <TableRow
-                            key={sid}
-                            className="cursor-pointer hover:bg-muted/40"
-                            onClick={() => setExpandedSessionId(isExpanded ? null : sid)}
-                          >
-                            <TableCell>
-                              <span className={`inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded-full ${typeMeta.pill}`}>
-                                {typeMeta.icon} {typeMeta.label}
-                              </span>
-                              {s.requested_labs.length > 0 && (
-                                <span className="ml-1.5 text-[10px] text-muted-foreground">🧪 {s.requested_labs.length} labs</span>
-                              )}
-                            </TableCell>
-                            <TableCell className="text-sm tabular-nums">{s.date ?? "—"}</TableCell>
-                            <TableCell className="text-xs text-muted-foreground max-w-[200px] truncate">
-                              {s.session_type === "full_assessment"
-                                ? (s.selected_topics ?? []).join(", ") || "—"
-                                : s.session_type === "check_in"
-                                ? (() => { const m = (s.presenting_complaints ?? "").match(/Progress:\s*([^\n]+)/); return m ? m[1].slice(0, 60) : "—"; })()
-                                : s.selected_symptoms?.slice(0, 3).join(", ") || "—"}
-                            </TableCell>
-                            <TableCell className="text-sm">
-                              {s.generated_plan_slug ? (
-                                <Link href={`/plans/${s.generated_plan_slug}`} className="font-mono text-xs hover:underline" onClick={(e) => e.stopPropagation()}>
-                                  {s.generated_plan_slug}
-                                </Link>
-                              ) : "—"}
-                            </TableCell>
-                            <TableCell className="text-xs text-muted-foreground w-6">
-                              {isExpanded ? "▲" : "▼"}
-                            </TableCell>
-                          </TableRow>
-                          {isExpanded && (
-                            <TableRow key={`${sid}-detail`}>
-                              <TableCell colSpan={5} className="bg-muted/20 p-0">
-                                <div className="px-4 py-3 space-y-3 text-xs">
-                                  {/* Stats row */}
-                                  {(s.driver_count > 0 || s.supplement_count > 0 || s.requested_labs.length > 0) && (
-                                    <div className="flex flex-wrap gap-2">
-                                      {s.driver_count > 0 && (
-                                        <span className="px-2 py-0.5 rounded-full bg-[#2B2D42]/10 text-[#2B2D42] font-medium">
-                                          🔍 {s.driver_count} driver{s.driver_count !== 1 ? "s" : ""}
-                                        </span>
-                                      )}
-                                      {s.supplement_count > 0 && (
-                                        <span className="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 font-medium">
-                                          💊 {s.supplement_count} supplement{s.supplement_count !== 1 ? "s" : ""}
-                                        </span>
-                                      )}
-                                      {s.requested_labs.length > 0 && (
-                                        <span className="px-2 py-0.5 rounded-full bg-[#D6A2A2]/20 text-[#7A3D3D] font-medium">
-                                          🧪 {s.requested_labs.length} lab{s.requested_labs.length !== 1 ? "s" : ""} ordered
-                                        </span>
-                                      )}
-                                    </div>
-                                  )}
-                                  {/* Topics / symptoms */}
-                                  {(s.selected_topics ?? []).length > 0 && (
-                                    <div>
-                                      <span className="text-muted-foreground font-medium uppercase tracking-wide text-[10px]">Topics: </span>
-                                      {(s.selected_topics ?? []).join(", ")}
-                                    </div>
-                                  )}
-                                  {(s.selected_symptoms ?? []).length > 0 && (
-                                    <div>
-                                      <span className="text-muted-foreground font-medium uppercase tracking-wide text-[10px]">Symptoms: </span>
-                                      {(s.selected_symptoms ?? []).join(", ")}
-                                    </div>
-                                  )}
-                                  {/* Presenting complaints */}
-                                  {s.presenting_complaints && (
-                                    <div className="rounded-md border bg-background p-2.5 text-muted-foreground whitespace-pre-wrap leading-relaxed">
-                                      {s.presenting_complaints.slice(0, 600)}
-                                      {s.presenting_complaints.length > 600 && "…"}
-                                    </div>
-                                  )}
-                                  {/* AI synthesis */}
-                                  {s.synthesis_notes && (
-                                    <div>
-                                      <div className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-1">AI synthesis</div>
-                                      <p className="italic text-muted-foreground leading-relaxed">{s.synthesis_notes}</p>
-                                    </div>
-                                  )}
-                                  {/* Labs ordered */}
-                                  {s.requested_labs.length > 0 && (
-                                    <div>
-                                      <div className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-1">Labs ordered</div>
-                                      <div className="flex flex-wrap gap-1">
-                                        {s.requested_labs.map((lab) => (
-                                          <span key={lab} className="px-2 py-0.5 rounded-full border border-amber-200 bg-amber-50 text-amber-800">{lab}</span>
-                                        ))}
-                                      </div>
-                                    </div>
-                                  )}
-                                </div>
-                              </TableCell>
-                            </TableRow>
-                          )}
-                        </>
-                      );
-                    })}
-                  </TableBody>
-                </Table>
-              )}
-            </CardContent>
-          </Card>
+          {/* Sessions summary — brief count; full history in Sessions tab */}
+          {sessions.length > 0 && (
+            <button
+              onClick={() => setActiveTab("sessions")}
+              className="w-full text-left rounded-lg border px-4 py-3 bg-muted/20 hover:bg-muted/40 transition-colors"
+            >
+              <span className="text-sm font-medium">{sessions.length} session{sessions.length !== 1 ? "s" : ""} recorded</span>
+              <span className="ml-2 text-xs text-muted-foreground">→ view full history</span>
+            </button>
+          )}
         </div>
       )}
 
       {/* ══════════════════════════════════════════════════════════════════════
-           ASSESS TAB
+           SESSIONS TAB — record new sessions + full session history
          ══════════════════════════════════════════════════════════════════════ */}
-      {activeTab === "assess" && (
+      {activeTab === "sessions" && (
         <div className="space-y-6">
           {/* ── Pending labs banner ── */}
           {pendingLabsInfo && sessionType !== "pre_intake" && (
@@ -685,7 +754,7 @@ export function ClientPageTabs({
                   <p className="text-xs mt-1" style={{ color: "var(--brand-lavender)" }}>
                     {pendingLabsInfo.requested_labs.length} test{pendingLabsInfo.requested_labs.length !== 1 ? "s" : ""} ordered
                     {pendingLabsInfo.session_type === "check_in" ? " at check-in" : " at pre-intake"}{" "}
-                    ({pendingLabsInfo.date ?? "—"}). Run a Full Assessment once results are in.
+                    ({pendingLabsInfo.date ?? "—"}). Run a full session once results are in.
                   </p>
                 </div>
                 <button
@@ -696,7 +765,7 @@ export function ClientPageTabs({
                   className="shrink-0 text-sm font-semibold px-4 py-2 rounded-lg transition-all hover:opacity-90"
                   style={{ background: "var(--brand-indigo)", color: "#fff" }}
                 >
-                  Labs received → run assessment
+                  Labs received → start session
                 </button>
               </div>
               <div className="flex flex-wrap gap-1.5">
@@ -717,246 +786,240 @@ export function ClientPageTabs({
             </div>
           )}
 
-          {/* Session type picker — always visible at top */}
-          <SessionTypePicker value={sessionType} onChange={(v) => {
-            setSessionType(v);
-            setSavedSessionId(null);
-          }} />
-
-          {/* Divider */}
-          <div className="border-t" />
-
-          {/* Saved confirmation banner */}
-          {savedSessionId && (
-            <div
-              className="rounded-lg px-4 py-3 text-sm flex items-center gap-2"
-              style={{ background: "var(--brand-bone)", color: "var(--brand-indigo)" }}
-            >
-              <span className="text-base">✅</span>
-              <div>
-                <span className="font-semibold">Session saved</span>
-                <span className="ml-2 font-mono text-xs opacity-70">{savedSessionId}</span>
-              </div>
+          {/* ── Record a new session ── */}
+          <div className="rounded-xl border p-5 space-y-4" style={{ background: "var(--brand-bone)" }}>
+            <div>
+              <h3 className="font-brand text-lg font-bold" style={{ color: "var(--brand-indigo)" }}>
+                Record a session
+              </h3>
+              <p className="text-xs mt-0.5" style={{ color: "var(--brand-lavender)" }}>
+                What kind of interaction is this?
+              </p>
             </div>
-          )}
 
-          {/* Form for selected session type */}
-          {sessionType === "pre_intake" && (
-            <PreIntakeForm
-              clientId={clientId}
-              onSaved={(id) => setSavedSessionId(id)}
-            />
-          )}
+            <SessionTypePicker value={sessionType} onChange={(v) => {
+              setSessionType(v);
+              setSavedSessionId(null);
+            }} />
 
-          {sessionType === "full_assessment" && (
-            <div className="space-y-2">
+            <div className="border-t" />
+
+            {savedSessionId && (
               <div
-                className="rounded-xl px-5 py-4"
-                style={{ background: "var(--brand-bone)" }}
+                className="rounded-lg px-4 py-3 text-sm flex items-center gap-2"
+                style={{ background: "var(--brand-bone)", color: "var(--brand-indigo)" }}
               >
-                <h3
-                  className="font-brand text-lg font-bold mb-0.5"
-                  style={{ color: "var(--brand-indigo)" }}
-                >
-                  🧠 Full Assessment
-                </h3>
-                <p className="text-xs" style={{ color: "var(--brand-lavender)" }}>
-                  Upload transcripts, lab reports, and food journals. AI analyses
-                  root causes and generates supplement + lifestyle suggestions.
-                  Each run is saved as a session and can generate a draft plan.
-                </p>
+                <span className="text-base">✅</span>
+                <div>
+                  <span className="font-semibold">Session saved</span>
+                  <span className="ml-2 font-mono text-xs opacity-70">{savedSessionId}</span>
+                </div>
               </div>
-              <AssessClient
-                fixedClientId={clientId}
-                symptoms={symptoms}
-                topics={topics}
-                initialSessions={sessions}
+            )}
+
+            {sessionType === "pre_intake" && (
+              <PreIntakeForm
+                clientId={clientId}
+                onSaved={(id) => setSavedSessionId(id)}
               />
-            </div>
-          )}
+            )}
 
-          {sessionType === "check_in" && (
-            <CheckInForm
-              clientId={clientId}
-              currentPlanSlug={plans.find((p) =>
-                (p.status ?? p._bucket) === "published"
-              )?.slug}
-              onSaved={(id) => setSavedSessionId(id)}
-            />
-          )}
-        </div>
-      )}
+            {sessionType === "full_assessment" && (
+              <div className="space-y-2">
+                <div
+                  className="rounded-xl px-5 py-4"
+                  style={{ background: "rgba(43,45,66,0.04)" }}
+                >
+                  <h3
+                    className="font-brand text-base font-bold mb-0.5"
+                    style={{ color: "var(--brand-indigo)" }}
+                  >
+                    🔍 Full session — AI analysis
+                  </h3>
+                  <p className="text-xs" style={{ color: "var(--brand-lavender)" }}>
+                    Upload transcripts, lab reports, and food journals. AI analyses
+                    root causes and generates supplement + lifestyle suggestions.
+                  </p>
+                </div>
+                <AssessClient
+                  fixedClientId={clientId}
+                  symptoms={symptoms}
+                  topics={topics}
+                  initialSessions={sessions}
+                />
+              </div>
+            )}
 
-      {/* ══════════════════════════════════════════════════════════════════════
-           PLANS TAB
-         ══════════════════════════════════════════════════════════════════════ */}
-      {activeTab === "plans" && (
-        <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold">Plans ({plans.length})</h2>
-            <Link href={`/plans/new?client=${clientId}`}>
-              <button className="inline-flex items-center gap-1 rounded-md border bg-background px-3 py-2 text-sm font-medium shadow-sm hover:bg-muted">
-                ＋ New plan
-              </button>
-            </Link>
+            {sessionType === "check_in" && (
+              <CheckInForm
+                clientId={clientId}
+                currentPlanSlug={plans.find((p) =>
+                  (p.status ?? p._bucket) === "published"
+                )?.slug}
+                currentReportedTriggers={(client as { reported_triggers?: string }).reported_triggers}
+                onSaved={(id) => setSavedSessionId(id)}
+              />
+            )}
+
+            {sessionType === "quick_note" && (
+              <QuickNoteForm
+                clientId={clientId}
+                onSaved={(id) => setSavedSessionId(id)}
+              />
+            )}
           </div>
 
-          {plans.length === 0 ? (
-            <Card>
-              <CardContent className="pt-6 pb-5 text-center">
-                <p className="text-sm text-muted-foreground">No plans yet.</p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Run an assessment in the{" "}
-                  <button
-                    onClick={() => setActiveTab("assess")}
-                    className="underline hover:text-foreground"
-                  >
-                    Assess tab
-                  </button>{" "}
-                  to generate a draft plan.
-                </p>
-              </CardContent>
-            </Card>
-          ) : (
-            <div className="space-y-4">
-              {plans
-                .slice()
-                .sort((a, b) => {
-                  // newest first — sort by plan_period_start descending
-                  const da = a.plan_period_start ?? "";
-                  const db = b.plan_period_start ?? "";
-                  return db.localeCompare(da);
-                })
-                .map((p) => {
-                  const status = p.status ?? p._bucket ?? "draft";
-                  const statusColor =
-                    status === "published"  ? "bg-emerald-100 text-emerald-800 border-emerald-200" :
-                    status === "draft"       ? "bg-muted text-muted-foreground border-border" :
-                    status === "ready_to_publish" ? "bg-blue-100 text-blue-800 border-blue-200" :
-                    status === "revoked"     ? "bg-red-100 text-red-700 border-red-200" :
-                    "bg-muted text-muted-foreground border-border";
-                  return (
-                    <Card key={p.slug} className="overflow-hidden">
-                      {/* Protocol complete banner */}
-                      {(p.status ?? p._bucket) === "published" &&
-                        p.plan_period_recheck_date &&
-                        p.plan_period_recheck_date < todayStr && (
-                        <div className="flex flex-col sm:flex-row sm:items-center gap-3 px-5 py-3 border-b bg-emerald-50 border-emerald-200">
-                          <div className="flex-1 min-w-0">
-                            <p className="text-sm font-semibold text-emerald-800">
-                              ✅ Protocol complete — recheck date was {p.plan_period_recheck_date}
-                            </p>
-                            <p className="text-xs text-emerald-700 mt-0.5">
-                              Time to reassess. Run a full assessment to review progress and update the protocol.
-                            </p>
-                          </div>
-                          <button
-                            onClick={() => { setActiveTab("assess"); setSessionType("full_assessment"); setSavedSessionId(null); }}
-                            className="shrink-0 text-sm font-semibold px-4 py-2 rounded-lg bg-emerald-700 text-white hover:bg-emerald-800 transition-colors"
-                          >
-                            🧠 Reassess now
-                          </button>
-                        </div>
-                      )}
+          {/* ── Session history — vertical timeline ── */}
+          {sessions.length > 0 && (
+            <div className="space-y-3">
+              <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
+                Session history ({sessions.length})
+              </h3>
 
-                      {/* Plan header */}
-                      <div className="flex items-center gap-3 px-5 py-3 border-b bg-muted/20">
-                        <Link href={`/plans/${p.slug}`} className="font-mono text-sm font-medium hover:underline flex-1">
-                          {p.slug}
-                        </Link>
-                        <span className={`text-[11px] font-medium px-2 py-0.5 rounded border ${statusColor}`}>
-                          {status.replace(/_/g, " ")}
-                        </span>
-                        {p.version && p.version > 1 && (
-                          <span className="text-[11px] text-muted-foreground">v{p.version}</span>
-                        )}
-                        {p.plan_period_start && (
-                          <span className="text-xs text-muted-foreground hidden sm:inline">
-                            from {p.plan_period_start}
-                          </span>
-                        )}
-                      </div>
+              <div className="relative">
+                <div className="absolute left-[18px] top-5 bottom-5 w-px bg-border" />
 
-                      {/* Two sections side by side */}
-                      <div className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x">
-                        {/* Coaching Plan */}
-                        <div className="px-5 py-4 space-y-2">
-                          <div className="flex items-center gap-2">
-                            <span className="text-sm font-semibold">🗂 Coaching Plan</span>
-                            <span className="text-[10px] text-muted-foreground uppercase tracking-wide">
-                              Protocol & supplements
-                            </span>
-                          </div>
-                          <p className="text-xs text-muted-foreground leading-relaxed">
-                            Structured protocol: supplements, lifestyle practices, education
-                            modules, labs, and referrals.
-                            {status === "published" && (
-                              <span className="block mt-0.5 text-emerald-700">
-                                Published — read-only. Create a successor draft to edit.
+                <div className="space-y-3">
+                  {sessions.map((s, i) => {
+                    const typeMeta = SESSION_TYPE_META[s.session_type];
+                    const sid = s.session_id ?? `idx-${i}`;
+                    const isExpanded = expandedSessionId === sid;
+
+                    const summaryLine =
+                      s.session_type === "full_assessment"
+                        ? (s.selected_topics ?? []).slice(0, 3).join(", ") || null
+                        : s.session_type === "check_in"
+                        ? (() => {
+                            const cm = (s.presenting_complaints ?? "").match(/Progress:\s*([^\n]+)/);
+                            return cm ? cm[1].slice(0, 80) : null;
+                          })()
+                        : s.session_type === "quick_note"
+                        ? (s.presenting_complaints ?? "").replace(/^\[source:[^\]]+\]\s*/i, "").trim().slice(0, 100) || null
+                        : (s.selected_symptoms ?? []).slice(0, 3).join(", ") || null;
+
+                    const dotColor =
+                      s.session_type === "full_assessment" ? "#2B2D42"
+                      : s.session_type === "pre_intake"    ? "#D6A2A2"
+                      : s.session_type === "check_in"      ? "#8D99AE"
+                      :                                       "#E8A87C";
+
+                    return (
+                      <div key={sid} className="relative flex gap-4 pl-10">
+                        <div
+                          className="absolute left-3 top-3.5 w-3 h-3 rounded-full border-2 border-background shrink-0 z-10"
+                          style={{ background: dotColor, boxShadow: "0 0 0 2px #e2e8f0" }}
+                        />
+
+                        <button
+                          className="w-full text-left rounded-xl border bg-card px-4 py-3 hover:shadow-sm transition-all focus:outline-none focus-visible:ring-2"
+                          onClick={() => setExpandedSessionId(isExpanded ? null : sid)}
+                        >
+                          <div className="flex items-start justify-between gap-3">
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <span className={`inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded-full ${typeMeta.pill}`}>
+                                {typeMeta.icon} {typeMeta.label}
                               </span>
-                            )}
-                          </p>
-                          <Link
-                            href={`/plans/${p.slug}`}
-                            className="inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline"
-                          >
-                            {status === "draft" || status === "ready_to_publish"
-                              ? "Open & edit plan →"
-                              : "View plan →"}
-                          </Link>
-                        </div>
-
-                        {/* Meal Plan Letter */}
-                        <div className="px-5 py-4 space-y-2">
-                          <div className="flex items-center gap-2">
-                            <span className="text-sm font-semibold">🍽 Meal Plan</span>
-                            <span className="text-[10px] text-muted-foreground uppercase tracking-wide">
-                              Client-facing letter
+                              <span className="text-xs tabular-nums text-muted-foreground">
+                                {s.date ?? "—"}
+                              </span>
+                              {s.requested_labs.length > 0 && (
+                                <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200">
+                                  🧪 {s.requested_labs.length} lab{s.requested_labs.length !== 1 ? "s" : ""}
+                                </span>
+                              )}
+                            </div>
+                            <span className="text-[10px] text-muted-foreground shrink-0 mt-0.5">
+                              {isExpanded ? "▲" : "▼"}
                             </span>
                           </div>
-                          <p className="text-xs text-muted-foreground leading-relaxed">
-                            AI-generated 12-week meal plan with Indian recipes, supplement
-                            guide, and lifestyle instructions tailored for the client.
-                          </p>
-                          <ClientLetterButton planSlug={p.slug} clientId={clientId} />
-                        </div>
+
+                          {(s.driver_count > 0 || s.supplement_count > 0 || s.generated_plan_slug) && (
+                            <div className="flex flex-wrap gap-1.5 mt-2">
+                              {s.driver_count > 0 && (
+                                <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-[#2B2D42]/8 text-[#2B2D42]">
+                                  🔍 {s.driver_count} driver{s.driver_count !== 1 ? "s" : ""}
+                                </span>
+                              )}
+                              {s.supplement_count > 0 && (
+                                <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800">
+                                  💊 {s.supplement_count} supp{s.supplement_count !== 1 ? "s" : ""}
+                                </span>
+                              )}
+                              {s.generated_plan_slug && (
+                                <Link
+                                  href={`/plans/${s.generated_plan_slug}`}
+                                  className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-blue-50 text-blue-800 hover:bg-blue-100 transition-colors"
+                                  onClick={(e) => e.stopPropagation()}
+                                >
+                                  📋 {s.generated_plan_slug}
+                                </Link>
+                              )}
+                            </div>
+                          )}
+
+                          {summaryLine && !isExpanded && (
+                            <p className="text-xs text-muted-foreground mt-1.5 line-clamp-2 leading-relaxed">
+                              {summaryLine}
+                              {(s.session_type === "full_assessment" && (s.selected_topics ?? []).length > 3) ||
+                               (s.session_type === "pre_intake" && (s.selected_symptoms ?? []).length > 3)
+                                ? " …" : ""}
+                            </p>
+                          )}
+
+                          {isExpanded && (
+                            <div className="mt-3 pt-3 border-t space-y-3 text-xs text-left">
+                              {(s.selected_topics ?? []).length > 0 && (
+                                <div>
+                                  <span className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold">Topics: </span>
+                                  <span className="text-muted-foreground">{(s.selected_topics ?? []).join(", ")}</span>
+                                </div>
+                              )}
+                              {(s.selected_symptoms ?? []).length > 0 && (
+                                <div>
+                                  <span className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold">Symptoms: </span>
+                                  <span className="text-muted-foreground">{(s.selected_symptoms ?? []).join(", ")}</span>
+                                </div>
+                              )}
+                              {s.presenting_complaints && (
+                                <div className="rounded-md border bg-background p-2.5 text-muted-foreground whitespace-pre-wrap leading-relaxed">
+                                  {s.presenting_complaints.slice(0, 600)}
+                                  {s.presenting_complaints.length > 600 && "…"}
+                                </div>
+                              )}
+                              {s.synthesis_notes && (
+                                <div>
+                                  <div className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-1">AI analysis</div>
+                                  <p className="italic text-muted-foreground leading-relaxed">{s.synthesis_notes}</p>
+                                </div>
+                              )}
+                              {s.requested_labs.length > 0 && (
+                                <div>
+                                  <div className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-1">Labs ordered</div>
+                                  <div className="flex flex-wrap gap-1">
+                                    {s.requested_labs.map((lab) => (
+                                      <span key={lab} className="px-2 py-0.5 rounded-full border border-amber-200 bg-amber-50 text-amber-800">{lab}</span>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          )}
+                        </button>
                       </div>
-                    </Card>
-                  );
-                })}
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           )}
-        </div>
-      )}
 
-      {/* ══════════════════════════════════════════════════════════════════════
-           REPORTS TAB
-         ══════════════════════════════════════════════════════════════════════ */}
-      {activeTab === "reports" && (
-        <ReportsTab clientId={clientId} />
-      )}
-
-      {/* ══════════════════════════════════════════════════════════════════════
-           HEALTH TAB
-         ══════════════════════════════════════════════════════════════════════ */}
-      {activeTab === "health" && (
-        <div className="space-y-4">
-          {(client.health_snapshots ?? []).length === 0 ? (
-            <Card>
-              <CardContent className="pt-6 pb-5 text-center">
-                <p className="text-sm text-muted-foreground">No health snapshots yet.</p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Health data (measurements, lab values, medications, conditions) recorded
-                  during an assessment will appear here as sparkline charts and a timeline.
-                </p>
-              </CardContent>
-            </Card>
-          ) : (
+          {/* ── Health trends ── */}
+          {(client.health_snapshots ?? []).length > 0 && (
             <Card>
               <CardHeader className="pb-2">
-                <CardTitle>Health trends</CardTitle>
+                <CardTitle>📈 Health trends</CardTitle>
                 <p className="text-xs text-muted-foreground mt-0.5">
-                  {(client.health_snapshots ?? []).length} snapshot{(client.health_snapshots ?? []).length !== 1 ? "s" : ""} recorded across appointments
+                  {(client.health_snapshots ?? []).length} snapshot{(client.health_snapshots ?? []).length !== 1 ? "s" : ""} across sessions
                 </p>
               </CardHeader>
               <CardContent>
@@ -964,6 +1027,228 @@ export function ClientPageTabs({
               </CardContent>
             </Card>
           )}
+        </div>
+      )}
+
+      {/* ══════════════════════════════════════════════════════════════════════
+           PLAN TAB — plan status, edit, activate, + client letter generation
+         ══════════════════════════════════════════════════════════════════════ */}
+      {activeTab === "plan" && (
+        <div className="space-y-4">
+          {workflowStage === "no_plan" ? (
+            /* ── No plan ── */
+            <Card>
+              <CardContent className="pt-8 pb-8 flex flex-col items-center text-center gap-5">
+                <div className="text-4xl">📋</div>
+                <div>
+                  <p className="text-base font-semibold">No active plan yet</p>
+                  <p className="text-sm text-muted-foreground mt-1 max-w-sm">
+                    Record a full session first — AI analyses root causes and auto-generates a draft plan you can then fill in and activate.
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-3 justify-center">
+                  <button
+                    onClick={() => { setActiveTab("sessions"); setSessionType("full_assessment"); setSavedSessionId(null); }}
+                    className="px-5 py-2.5 rounded-lg text-sm font-semibold text-white"
+                    style={{ background: "var(--brand-indigo)" }}
+                  >
+                    📋 Start a session
+                  </button>
+                  <Link href={`/plans/new?client=${clientId}`}>
+                    <button className="px-5 py-2.5 rounded-lg text-sm font-semibold border hover:bg-muted">
+                      ＋ Create plan manually
+                    </button>
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
+          ) : activePlan ? (
+            /* ── Plan exists ── */
+            <div className="space-y-4">
+              {/* Plan header card */}
+              <div className="rounded-xl border-2 p-5 space-y-4" style={{ borderColor: "var(--brand-indigo, #2B2D42)", background: "var(--brand-bone, #FAF8F5)" }}>
+                <div className="flex items-start justify-between gap-3 flex-wrap">
+                  <div>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="text-lg">{activePlanStatus === "published" ? "🟢" : "🟡"}</span>
+                      <span className="font-semibold text-base" style={{ color: "var(--brand-indigo)" }}>
+                        {activePlanStatus === "published" ? "Active plan" : "Draft plan"}
+                      </span>
+                      <span className={`text-[11px] font-medium px-2 py-0.5 rounded border ${
+                        activePlanStatus === "published"        ? "bg-emerald-100 text-emerald-800 border-emerald-200" :
+                        activePlanStatus === "ready_to_publish" ? "bg-blue-100 text-blue-800 border-blue-200" :
+                                                                  "bg-amber-50 text-amber-800 border-amber-200"
+                      }`}>
+                        {(activePlanStatus ?? "draft").replace(/_/g, " ")}
+                      </span>
+                      {activePlan.version && activePlan.version > 1 && (
+                        <span className="text-[11px] text-muted-foreground">v{activePlan.version}</span>
+                      )}
+                    </div>
+                    <p className="text-xs font-mono mt-1 text-muted-foreground">{activePlan.slug}</p>
+                    {activePlan.plan_period_start && (
+                      <p className="text-xs text-muted-foreground mt-0.5">
+                        Started {activePlan.plan_period_start}
+                        {activePlan.plan_period_recheck_date ? ` · recheck ${activePlan.plan_period_recheck_date}` : ""}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                {/* Action buttons */}
+                <div className="flex flex-wrap gap-3">
+                  <Link href={`/plans/${activePlan.slug}`}>
+                    <button className="inline-flex items-center gap-1.5 rounded-lg px-5 py-2.5 text-sm font-semibold border hover:bg-muted transition-all">
+                      ✏️ {activePlanStatus === "published" ? "View plan" : "Edit plan"}
+                    </button>
+                  </Link>
+
+                  {activePlanStatus !== "published" && (
+                    <button
+                      onClick={() => handleActivate(activePlan.slug)}
+                      disabled={isActivating}
+                      className="inline-flex items-center gap-1.5 rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-all disabled:opacity-50"
+                      style={{ background: "var(--brand-indigo)" }}
+                    >
+                      {isActivating ? (
+                        <><span className="animate-spin inline-block text-base">⏳</span> Activating…</>
+                      ) : "🚀 Activate plan"}
+                    </button>
+                  )}
+
+                  {activePlanStatus === "published" && (
+                    <button
+                      onClick={() => { setActiveTab("sessions"); setSessionType("check_in"); setSavedSessionId(null); }}
+                      className="inline-flex items-center gap-1.5 rounded-lg border px-5 py-2.5 text-sm font-semibold hover:bg-muted transition-all"
+                    >
+                      💬 Log check-in
+                    </button>
+                  )}
+                </div>
+
+                {activePlanStatus !== "published" && (
+                  <p className="text-xs text-muted-foreground border-t pt-3">
+                    ✏️ Fill the protocol in the plan editor (supplements, lifestyle, nutrition, labs), then click <strong>Activate</strong> to mark it live.
+                  </p>
+                )}
+              </div>
+
+              {/* ── Letter generation — shown for active plans ── */}
+              {activePlanStatus === "published" && (
+                <div className="space-y-3">
+                  <div>
+                    <h3 className="text-sm font-semibold">📤 Client letters</h3>
+                    <p className="text-xs text-muted-foreground mt-0.5">
+                      Generate meal plan, supplement guide, and lifestyle guide — edit if needed, then download and share.
+                    </p>
+                  </div>
+                  <SendPackageButton
+                    planSlug={activePlan.slug}
+                    clientId={clientId}
+                    clientEmail={client.email as string | undefined}
+                    clientName={(client.display_name ?? client.client_id) as string | undefined}
+                  />
+                </div>
+              )}
+
+              {/* Follow-up plan generator — published plans only */}
+              {activePlanStatus === "published" && (
+                <div className="rounded-xl border px-5 py-4 bg-muted/10">
+                  {followUpOpenFor !== activePlan.slug ? (
+                    <button
+                      onClick={() => {
+                        setFollowUpOpenFor(activePlan.slug);
+                        setFollowUpResult(null);
+                        const baseSlug = activePlan.slug.replace(/-phase(\d+)$/, (_, n) => `-phase${parseInt(n) + 1}`);
+                        setFollowUpSlug(baseSlug === activePlan.slug ? `${activePlan.slug}-phase2` : baseSlug);
+                        setFollowUpWeeks("");
+                      }}
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border border-emerald-300 text-emerald-800 bg-emerald-50 hover:bg-emerald-100 transition-all"
+                    >
+                      🔄 Generate AI follow-up plan for next phase
+                    </button>
+                  ) : (
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <p className="text-sm font-semibold" style={{ color: "var(--brand-indigo)" }}>🔄 Generate follow-up plan</p>
+                        <button onClick={() => { setFollowUpOpenFor(null); setFollowUpResult(null); }} className="text-xs text-muted-foreground hover:text-foreground">Cancel</button>
+                      </div>
+                      <p className="text-xs text-muted-foreground">AI reads the previous plan + check-in notes and generates an adjusted protocol — graduated doses, updated lifestyle, refined nutrition.</p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                          <label className="text-[11px] font-medium text-muted-foreground uppercase tracking-wide block mb-1">New plan slug</label>
+                          <input type="text" value={followUpSlug} onChange={(e) => setFollowUpSlug(e.target.value.trim().toLowerCase().replace(/[^a-z0-9-]/g, "-"))}
+                            placeholder="e.g. shivani-plan-1-phase2-cl-001" className="w-full rounded-md border border-input bg-background px-2 py-1.5 text-xs font-mono focus:outline-none" />
+                        </div>
+                        <div>
+                          <label className="text-[11px] font-medium text-muted-foreground uppercase tracking-wide block mb-1">Phase weeks (e.g. 3–8)</label>
+                          <input type="text" value={followUpWeeks} onChange={(e) => setFollowUpWeeks(e.target.value)}
+                            placeholder="e.g. 3-8" className="w-full rounded-md border border-input bg-background px-2 py-1.5 text-xs focus:outline-none" />
+                        </div>
+                      </div>
+                      {followUpResult && !followUpResult.ok && (
+                        <p className="text-xs text-red-700 rounded-md border border-red-200 bg-red-50 px-3 py-2">❌ {followUpResult.error}</p>
+                      )}
+                      {followUpResult?.ok && followUpResult.newSlug && (
+                        <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 space-y-1.5">
+                          <p className="text-sm font-semibold text-emerald-800">✅ Follow-up plan created!</p>
+                          {followUpResult.summary && <p className="text-xs text-emerald-700 leading-relaxed">{followUpResult.summary}</p>}
+                          <Link href={`/plans/${followUpResult.newSlug}`} className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-900 underline hover:no-underline">
+                            Open {followUpResult.newSlug} →
+                          </Link>
+                        </div>
+                      )}
+                      {!followUpResult?.ok && (
+                        <button
+                          onClick={async () => {
+                            if (!followUpSlug.trim()) { toast.error("Enter a new plan slug"); return; }
+                            setFollowUpGenerating(true);
+                            setFollowUpResult(null);
+                            try {
+                              const r = await generateFollowUpPlan(activePlan.slug, followUpSlug, followUpWeeks || "next phase", clientId);
+                              setFollowUpResult({ ok: r.ok, newSlug: r.newSlug, summary: r.adjustmentSummary, error: r.error });
+                              if (r.ok) toast.success(`Follow-up plan created: ${r.newSlug}`);
+                              else toast.error(r.error ?? "Generation failed");
+                            } finally { setFollowUpGenerating(false); }
+                          }}
+                          disabled={followUpGenerating || !followUpSlug.trim()}
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all disabled:opacity-50"
+                          style={{ background: "var(--brand-indigo, #2B2D42)" }}
+                        >
+                          {followUpGenerating ? <><span className="animate-spin inline-block">⏳</span> Generating (~60s)…</> : <>🤖 Generate follow-up plan</>}
+                        </button>
+                      )}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Older / archived plans */}
+              {plans.filter((p) => !["draft", "ready_to_publish", "published"].includes(p.status ?? p._bucket ?? "")).length > 0 && (
+                <details className="group">
+                  <summary className="cursor-pointer text-xs text-muted-foreground hover:text-foreground select-none list-none flex items-center gap-1">
+                    <span className="group-open:hidden">▶</span><span className="hidden group-open:inline">▼</span>
+                    <span>{plans.filter((p) => !["draft", "ready_to_publish", "published"].includes(p.status ?? p._bucket ?? "")).length} archived / previous plan(s)</span>
+                  </summary>
+                  <div className="mt-3 space-y-2">
+                    {plans.filter((p) => !["draft", "ready_to_publish", "published"].includes(p.status ?? p._bucket ?? "")).map((p) => (
+                      <div key={p.slug} className="flex items-center gap-3 px-4 py-2.5 rounded-lg border bg-muted/20">
+                        <Link href={`/plans/${p.slug}`} className="font-mono text-xs hover:underline flex-1">{p.slug}</Link>
+                        <span className="text-[10px] text-muted-foreground px-2 py-0.5 rounded border bg-background">{(p.status ?? p._bucket ?? "").replace(/_/g, " ")}</span>
+                        {p.plan_period_start && <span className="text-[10px] text-muted-foreground hidden sm:inline">{p.plan_period_start}</span>}
+                      </div>
+                    ))}
+                  </div>
+                </details>
+              )}
+            </div>
+          ) : null}
+
+          {/* External reports — always at bottom of Plan tab */}
+          <div className="pt-2">
+            <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-2">External reports</h3>
+            <ReportsTab clientId={clientId} />
+          </div>
         </div>
       )}
     </div>
