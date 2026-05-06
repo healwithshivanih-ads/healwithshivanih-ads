@@ -529,17 +529,27 @@ const LAB_GROUPS: { group: string; tests: { label: string; hint?: string }[] }[]
   {
     group: "Gut & microbiome",
     tests: [
-      { label: "GI-MAP (comprehensive stool analysis)", hint: "pathogens, commensals, zonulin, calprotectin" },
-      { label: "Comprehensive Stool Analysis – Genova GI Effects", hint: "Genova Diagnostics — microbiome + digestion + inflammation markers" },
-      { label: "Comprehensive Stool Analysis – Doctor's Data", hint: "Doctor's Data — culture + sensitivity, yeast, parasitology" },
-      { label: "Viome Gut Intelligence Test", hint: "metatranscriptomic microbiome + food recommendations" },
-      { label: "SIBO breath test (H₂ + CH₄)", hint: "small intestine bacterial overgrowth" },
-      { label: "H. pylori (stool antigen or breath)", hint: "gastric infection — affects B12, iron" },
-      { label: "Stool calprotectin", hint: "intestinal inflammation marker" },
-      { label: "Pancreatic elastase (stool)", hint: "exocrine pancreatic insufficiency screen" },
-      { label: "Stool short-chain fatty acids (SCFA)", hint: "butyrate, propionate, acetate — microbiome health proxy" },
-      { label: "Zonulin (serum or stool)", hint: "intestinal permeability / leaky gut" },
-      { label: "Secretory IgA (stool)", hint: "mucosal immune defence" },
+      // ── Microbiome sequencing (India-available) ──────────────────────────
+      { label: "LRB Gut Microbiome Test (Leucine Rich Bio)", hint: "India's leading 16S rRNA gut microbiome sequencing — diversity, dysbiosis, pathogen screen" },
+      { label: "Gut microbiome sequencing (Mybiome / Aster / Neuberg)", hint: "shotgun or 16S sequencing — available at select Indian labs" },
+      // ── Standard stool tests (widely available at Dr Lal / Thyrocare / SRL / Metropolis / Apollo) ──
+      { label: "Comprehensive stool analysis (Dr Lal PathLabs / SRL / Metropolis)", hint: "culture + sensitivity, ova & parasites, occult blood, microscopy" },
+      { label: "Stool routine & microscopy", hint: "pus cells, RBCs, ova, cysts, fat globules — available at any diagnostic lab" },
+      { label: "Stool culture & sensitivity", hint: "identifies bacterial pathogens + antibiotic sensitivity" },
+      { label: "Stool for ova, cysts & parasites (O&P)", hint: "Giardia, Cryptosporidium, Entamoeba, hookworm — very common in India" },
+      { label: "Stool occult blood (FOBT)", hint: "colorectal bleeding screen — available everywhere" },
+      // ── Functional markers (available at Dr Lal / Thyrocare / Metropolis / specialty labs) ──
+      { label: "H. pylori (stool antigen)", hint: "most accurate non-invasive H. pylori test — widely available in India" },
+      { label: "H. pylori breath test (UBT)", hint: "urea breath test — available at major diagnostic centres" },
+      { label: "Stool calprotectin", hint: "intestinal inflammation — available at Dr Lal, SRL, Metropolis, Thyrocare" },
+      { label: "Stool lactoferrin", hint: "mucosal inflammation marker — available at Neuberg, Apollo, SRL" },
+      { label: "Pancreatic elastase (stool)", hint: "exocrine pancreatic insufficiency — Dr Lal PathLabs, Neuberg Diagnostics" },
+      { label: "Secretory IgA (stool)", hint: "mucosal immune defence — specialty labs: Neuberg, Lilac Insights, some Apollo centres" },
+      { label: "Zonulin (serum)", hint: "intestinal permeability / leaky gut — serum version available at Redcliffe, Dr Lal, Neuberg" },
+      // ── Breath tests ──────────────────────────────────────────────────────
+      { label: "SIBO breath test – lactulose (H₂ + CH₄)", hint: "small intestine bacterial overgrowth — available at Kokilaben, Fortis, select GI clinics" },
+      { label: "Lactose intolerance breath test", hint: "hydrogen breath test — widely available at gastro centres" },
+      { label: "Fructose intolerance breath test", hint: "hydrogen breath test — select gastro centres in major cities" },
     ],
   },
   {
