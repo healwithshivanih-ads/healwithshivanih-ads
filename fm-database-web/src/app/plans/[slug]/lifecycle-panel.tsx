@@ -24,6 +24,7 @@ import {
   renderPlan,
   renderLabOrders,
   createSuccessor,
+  generateFollowUpPlan,
 } from "./lifecycle-actions";
 import { ClientLetterButton } from "@/app/clients/[id]/client-letter-button";
 import { PlanChatPanel } from "./plan-chat-panel";
@@ -93,6 +94,10 @@ export function LifecyclePanel({
   const [reason, setReason] = useState("");
   const [confirmChecked, setConfirmChecked] = useState(false);
   const [successorSlug, setSuccessorSlug] = useState("");
+  const [followUpSlug, setFollowUpSlug] = useState("");
+  const [followUpPhase, setFollowUpPhase] = useState("");
+  const [followUpPending, startFollowUpTransition] = useTransition();
+  const [followUpSummary, setFollowUpSummary] = useState<string | null>(null);
   const [diffA, setDiffA] = useState(slug);
   const [diffB, setDiffB] = useState("");
   const [diffText, setDiffText] = useState<string | null>(null);
@@ -154,6 +159,21 @@ export function LifecyclePanel({
       const r = await createSuccessor(slug, successorSlug);
       notify(r.ok, r.ok ? `Successor draft created at ${successorSlug}.` : r.error ?? "Failed to create successor.");
       if (r.ok) refreshAfterMutate();
+    });
+  }
+
+  function handleFollowUp() {
+    if (!followUpSlug.trim()) { notify(false, "Enter a slug for the follow-up plan."); return; }
+    setFollowUpSummary(null);
+    startFollowUpTransition(async () => {
+      const r = await generateFollowUpPlan(slug, followUpSlug.trim(), followUpPhase.trim(), clientId ?? "");
+      if (r.ok) {
+        notify(true, `Follow-up plan created: ${r.newSlug}`);
+        setFollowUpSummary(r.adjustmentSummary ?? null);
+        router.push(`/plans/${r.newSlug}`);
+      } else {
+        notify(false, r.error ?? "Failed to generate follow-up plan.");
+      }
     });
   }
 
@@ -358,10 +378,49 @@ export function LifecyclePanel({
                   </Button>
                 </div>
 
-                <div className="space-y-2 rounded-md border p-3">
-                  <div className="text-xs font-medium">🆕 Successor / Supersede</div>
+                {/* ✨ AI Follow-up plan */}
+                <div className="space-y-2 rounded-md border border-violet-200 bg-violet-50/40 p-3">
+                  <div className="text-xs font-medium text-violet-900">✨ Generate follow-up plan (next phase)</div>
                   <p className="text-xs text-muted-foreground">
-                    Create a successor draft, or publish a ready successor and flip this to superseded.
+                    AI reads the current plan + check-in notes and generates an adjusted plan for the next phase —
+                    progressing doses, updating labs, and refining lifestyle based on how the client responded.
+                  </p>
+                  <div className="grid grid-cols-2 gap-2">
+                    <div>
+                      <label className="text-[10px] text-muted-foreground uppercase tracking-wide">New plan slug</label>
+                      <Input
+                        placeholder={`${slug}-phase2`}
+                        value={followUpSlug}
+                        onChange={(e) => setFollowUpSlug(e.target.value)}
+                        className="mt-0.5 text-xs font-mono"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-[10px] text-muted-foreground uppercase tracking-wide">Phase weeks (optional)</label>
+                      <Input
+                        placeholder="e.g. 3–8"
+                        value={followUpPhase}
+                        onChange={(e) => setFollowUpPhase(e.target.value)}
+                        className="mt-0.5 text-xs"
+                      />
+                    </div>
+                  </div>
+                  <Button size="sm" className="bg-violet-700 hover:bg-violet-800 text-white"
+                    onClick={handleFollowUp} disabled={followUpPending || !followUpSlug.trim()}>
+                    {followUpPending ? "✨ Generating…" : "✨ Generate AI follow-up plan →"}
+                  </Button>
+                  {followUpSummary && (
+                    <div className="rounded-md bg-violet-50 border border-violet-200 px-3 py-2 text-xs text-violet-800">
+                      <p className="font-medium mb-1">AI adjustments made:</p>
+                      <p>{followUpSummary}</p>
+                    </div>
+                  )}
+                </div>
+
+                <div className="space-y-2 rounded-md border p-3">
+                  <div className="text-xs font-medium">🆕 Manual successor / Supersede</div>
+                  <p className="text-xs text-muted-foreground">
+                    Clone this plan into a blank new draft, or publish a ready successor and flip this to superseded.
                   </p>
                   <Input
                     placeholder="Successor slug"
@@ -370,7 +429,7 @@ export function LifecyclePanel({
                   />
                   <div className="flex gap-2 flex-wrap">
                     <Button size="sm" variant="outline" onClick={handleCreateSuccessor} disabled={isPending}>
-                      Create successor draft
+                      Clone to draft
                     </Button>
                     <Button size="sm" onClick={handleSupersede} disabled={isPending}>
                       Publish + supersede

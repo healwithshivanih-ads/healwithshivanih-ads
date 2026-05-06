@@ -312,6 +312,114 @@ export async function createSuccessor(
 }
 
 // ---------------------------------------------------------------------------
+// Generate AI follow-up plan (next phase, adjusted from previous plan)
+// ---------------------------------------------------------------------------
+
+const FMDB_PLANS_DIR = process.env.FMDB_PLANS_DIR ?? `${process.env.HOME}/fm-plans`;
+
+async function loadClientData(clientId: string): Promise<Record<string, unknown>> {
+  try {
+    const clientFile = path.join(FMDB_PLANS_DIR, "clients", clientId, "client.yaml");
+    const raw = await fs.readFile(clientFile, "utf-8");
+    return (yaml.load(raw) as Record<string, unknown>) ?? {};
+  } catch {
+    return {};
+  }
+}
+
+export interface FollowUpResult {
+  ok: boolean;
+  newSlug?: string;
+  adjustmentSummary?: string;
+  error?: string;
+}
+
+/**
+ * Clone old plan → run AI to adjust for next phase → save as new draft.
+ * The AI reads the previous plan + check-in notes from notes_for_coach
+ * and returns a patch (changed fields only) for the follow-up phase.
+ */
+export async function generateFollowUpPlan(
+  oldSlug: string,
+  newSlug: string,
+  phaseWeeks: string,
+  clientId: string
+): Promise<FollowUpResult> {
+  if (!newSlug?.trim()) return { ok: false, error: "New plan slug is required." };
+  if (newSlug === oldSlug) return { ok: false, error: "New slug must differ from old slug." };
+
+  const old = await loadPlanBySlug(oldSlug);
+  if (!old) return { ok: false, error: `Plan ${oldSlug} not found.` };
+
+  const existing = await loadPlanBySlug(newSlug);
+  if (existing) return { ok: false, error: `Plan ${newSlug} already exists.` };
+
+  const clientData = await loadClientData(clientId);
+
+  // Strip loader-only fields
+  const { _bucket, _file, ...oldRest } = old;
+  void _bucket; void _file;
+
+  // Call AI to generate adjustments
+  const shimResult = await runShim("generate-follow-up.py", {
+    old_plan_data: oldRest,
+    client_data: clientData,
+    new_slug: newSlug,
+    phase_weeks: phaseWeeks,
+    check_in_notes: "", // AI will extract from notes_for_coach
+  }, 120_000);
+
+  const result = shimResult as {
+    ok: boolean;
+    plan_patch?: Record<string, unknown>;
+    adjustment_summary?: string;
+    error?: string;
+  };
+
+  if (!result.ok) return { ok: false, error: result.error ?? "AI generation failed" };
+
+  const patch = result.plan_patch ?? {};
+  const summary = result.adjustment_summary ?? "";
+
+  // Build successor: clone old plan + apply AI patch
+  const today = new Date().toISOString().slice(0, 10);
+  const successor: Record<string, unknown> = {
+    ...oldRest,
+    ...patch,
+    slug: newSlug,
+    status: "draft",
+    version: 0,
+    supersedes: oldSlug,
+    status_history: [],
+    catalogue_snapshot: undefined,
+    updated_at: today,
+    // Prepend AI summary to notes_for_coach
+    notes_for_coach: summary
+      ? `[Phase ${phaseWeeks} adjustments]\n${summary}\n\n---\n\n${(oldRest.notes_for_coach as string) ?? ""}`
+      : (patch.notes_for_coach as string ?? (oldRest.notes_for_coach as string) ?? ""),
+  };
+
+  const root = getPlansRoot();
+  const draftsDir = path.join(root, "drafts");
+  await fs.mkdir(draftsDir, { recursive: true });
+
+  try {
+    await writePlan(successor as Parameters<typeof writePlan>[0]);
+  } catch {
+    const filePath = path.join(draftsDir, `${newSlug}.yaml`);
+    await fs.writeFile(
+      filePath,
+      yaml.dump(successor, { noRefs: true, sortKeys: false }),
+      "utf-8"
+    );
+  }
+
+  revalidatePath("/plans");
+  revalidatePath(`/plans/${newSlug}`);
+  return { ok: true, newSlug, adjustmentSummary: summary };
+}
+
+// ---------------------------------------------------------------------------
 // Generate AI client letter (friendly, personalised, meal-plan + recipes)
 // ---------------------------------------------------------------------------
 
