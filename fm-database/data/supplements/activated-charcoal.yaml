@@ -14,14 +14,17 @@ timing_options:
 take_with_food: avoid
 linked_to_topics:
 - mercury-amalgam-removal
+- dental-amalgam-mercury
+- metabolic-detoxification
 linked_to_claims:
 - activated-charcoal-binds-ingested-mercury
-notes_for_coach: Used specifically peri-amalgam-removal. Must NOT be taken within
-  2 hours of chlorella, supplements, or medications as it binds them indiscriminately.
-  Stop 2 days post-procedure. Clinician scope for this protocol.
-notes_for_client: Activated charcoal acts like a sponge in your gut to trap mercury
-  that might be swallowed during dental work. Do not take it close to other supplements
-  or medications.
+- activated-charcoal-binds-ingested-mercury-post-amalgam-removal
+notes_for_coach: 'Used specifically around dental amalgam removal: 800-1000mg immediately
+  before procedure, immediately after, and next morning/afternoon. Discontinue by
+  day 2 post-procedure. Do not take within 2 hours of chlorella. Adult doses only.'
+notes_for_client: Activated charcoal works like a sponge in your gut to bind and remove
+  mercury and other toxins before they can be absorbed. Only use for the short window
+  around your dental appointment as directed.
 evidence_tier: fm_specific_thin
 linked_to_mechanisms: []
 sources:
@@ -29,7 +32,13 @@ sources:
   location: Dental Amalgam Removal Protocol
   quote: Take 800–1000 mg right before your dental visit, then 800–1000 mg more immediately
     after the visit. The charcoal can help bind ingested mercury.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Dental Amalgam Removal Protocol — Dental Procedure Day and Post-Procedure
+    Regimen
+  quote: 'Activated charcoal: Take 800–1000 mg right before your dental visit, then
+    800–1000 mg more immediately after the visit... The charcoal can help bind ingested
+    mercury.'
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

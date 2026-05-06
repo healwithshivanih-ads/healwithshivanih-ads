@@ -1,0 +1,39 @@
+slug: leaky-gut-mechanism
+display_name: Intestinal Hyperpermeability (Leaky Gut)
+aliases:
+- gut barrier dysfunction
+- intestinal permeability
+- leaky gut
+category: gut
+summary: Breakdown of tight junctions in the intestinal epithelium allowing luminal
+  pathogens, lipopolysaccharides, and undigested food particles to enter systemic
+  circulation, triggering immune activation and systemic inflammation.
+upstream_drivers:
+- dysbiosis
+- poor-diet
+- stress
+- toxin-exposure
+- low-stomach-acid
+downstream_effects:
+- systemic-inflammation
+- food-sensitivities
+- autoimmune-activation
+- brain-fog
+- joint-pain
+related_mechanisms:
+- dysbiosis
+- systemic-inflammation
+- nutrient-malabsorption
+linked_to_topics:
+- leaky-gut
+- chronic-pain-and-fatigue
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-chronic-pain-fatigue
+  location: Digestion Section
+  quote: It is, it is, you know, allow the, that institute, pathogen, bacteria, viruses
+    to go to the, to the mandarin.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

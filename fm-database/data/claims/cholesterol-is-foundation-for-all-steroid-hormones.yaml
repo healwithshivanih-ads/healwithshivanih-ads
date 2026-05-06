@@ -1,0 +1,33 @@
+slug: cholesterol-is-foundation-for-all-steroid-hormones
+statement: Cholesterol is the precursor for all steroid hormones; inadequate cholesterol
+  (e.g., from statin use driving total cholesterol below ~160 mg/dL) will impair synthesis
+  of pregnenolone and downstream hormones including progesterone, DHEA, testosterone,
+  estrogen, and cortisol.
+evidence_tier: strong
+rationale: 'Well-established biochemistry: the steroidogenesis pathway begins with
+  cholesterol → pregnenolone. Clinical teaching from the lecture directly links very
+  low cholesterol to impaired sex hormone production. This is supported by standard
+  biochemistry literature.'
+coaching_translation: If a client is on a statin and has very low cholesterol plus
+  hormonal symptoms, flag this for clinician review — cholesterol is literally the
+  raw material for hormone production.
+caveats:
+- Optimal cholesterol threshold for hormone synthesis is not precisely defined in
+  the literature; the specific values cited (163–220 mg/dL) are from this lecture's
+  expert opinion, not RCT data.
+- Source is expert consensus lecture — verify with primary literature for exact thresholds.
+linked_to_topics:
+- steroidogenesis
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-sex-hormones
+  location: Steroidogenesis Pathway
+  quote: It is the cholesterol. If you are not seeing the base foundation of your
+    patient's body... the first thing that we have to correct is the cholesterol profile
+    of the person.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

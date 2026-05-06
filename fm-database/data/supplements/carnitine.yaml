@@ -6,11 +6,11 @@ forms_available:
 - tablet
 - liquid
 evidence_tier: plausible_emerging
-notes_for_coach: Listed as both a statin-depleted nutrient and as nutraceutical support
-  during beta blocker tapering. Carnitine plays a role in fatty acid transport in
-  cardiac cells. Specific dosing requires clinician guidance.
-notes_for_client: Carnitine is involved in energy production in heart cells and may
-  be depleted by statin medications.
+notes_for_coach: Carnitine is depleted by statins and is essential for fatty acid
+  transport into mitochondria for energy production, including in cardiac muscle.
+  Listed in both the statin nutrient depletion table and beta blocker tapering protocol.
+notes_for_client: L-carnitine helps your body use fat for energy and supports heart
+  muscle function. Statin medications may reduce carnitine levels. Take with a meal.
 timing_options:
 - with_breakfast
 - with_lunch
@@ -18,6 +18,8 @@ take_with_food: optional
 linked_to_topics:
 - drug-induced-nutrient-depletion
 - beta-blocker-deprescribing
+- drug-induced-nutrient-depletion-cardiovascular
+- cardiovascular-dysfunction
 linked_to_claims:
 - statins-deplete-multiple-nutrients
 typical_dose_range: {}
@@ -26,7 +28,11 @@ sources:
 - id: vitaone-cv-toolkit
   location: Cardiovascular Drugs and Potential Nutrient Deficiency
   quote: 'HMG-CoA Reductase: Carnitine'
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Cardiovascular Drugs and Potential Nutrient Deficiency
+  quote: 'HMG-CoA Reductase: Carnitine, Copper, CoQ10, Essential Fatty Acids (EFAs),
+    Selenium, Vitamin D, Vitamin E, Zinc'
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

@@ -1,0 +1,31 @@
+slug: berberine-pcsk9-inhibitor-lowers-ldl-and-blood-sugar
+statement: Berberine is proposed to function as a PCSK9 inhibitor, lowering LDL cholesterol
+  and blood sugar, and has utility in dysbiosis management due to its antibiotic properties.
+evidence_tier: plausible_emerging
+rationale: Berberine's LDL-lowering and glucose-lowering effects are supported by
+  multiple RCTs. The PCSK9 inhibition mechanism has emerging evidence but is not yet
+  consensus-level.
+coaching_translation: Berberine is an herbal supplement with growing evidence for
+  lowering both cholesterol and blood sugar. It has antibiotic properties so should
+  be used strategically, not continuously.
+out_of_scope_notes: Berberine dosing, duration, and drug interactions (especially
+  with metformin or statins) require clinician oversight.
+caveats:
+- Antibiotic properties argue against continuous long-term use without clinician guidance.
+- PCSK9 inhibition mechanism is emerging, not established consensus.
+- Source is expert lecture — specific RCT citations not provided.
+linked_to_topics:
+- dyslipidemia
+- metabolic-syndrome
+linked_to_supplements:
+- berberine
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: LDL-Lowering Nutraceuticals
+  quote: Berberine, Shilpa talked about, we think it's a PCSK9 inhibitor. You'll hear
+    more about that later, but I do use berberine to lower blood sugar.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

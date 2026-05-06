@@ -1,0 +1,37 @@
+slug: glucuronidation-impairment
+display_name: Glucuronidation Impairment
+aliases:
+- UGT1A1 deficiency
+- bilirubin conjugation defect
+- phase 2 glucuronidation defect
+category: metabolic
+summary: Glucuronidation is a major Phase 2 conjugation pathway in the liver that
+  binds toxins and bilirubin to glucuronic acid, making them water-soluble for excretion.
+  Genetic variants (e.g., UGT1A1 in Gilbert syndrome) or nutritional deficiencies
+  can impair this pathway, reducing elimination of 40–50% of toxins processed by this
+  route.
+upstream_drivers:
+- ugt1a1-genetic-variant
+- nutritional-deficiencies
+downstream_effects:
+- elevated-unconjugated-bilirubin
+- reduced-toxin-elimination
+- increased-toxic-burden
+related_mechanisms:
+- phase-1-phase-2-detox-imbalance
+- methylation-defect
+linked_to_topics:
+- gilbert-syndrome
+- liver-detox-phase-1-and-phase-2
+evidence_tier: strong
+sources:
+- id: coconote-fm-liver-detox-part2
+  location: Bilirubin & Phase 2 Explanation
+  quote: bilirubin has to bind to glucuronidic gluconic acids and that is going to
+    convert into conjugated intermediate means unconjugated and the last phase that
+    is water soluble is actually your conjugate deliverance means it's going to the
+    liquid acid and that becomes water soluble
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

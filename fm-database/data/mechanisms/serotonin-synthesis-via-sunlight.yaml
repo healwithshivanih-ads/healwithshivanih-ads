@@ -1,0 +1,30 @@
+slug: serotonin-synthesis-via-sunlight
+display_name: Serotonin Synthesis via Sunlight
+aliases:
+- sunlight-serotonin pathway
+- UV-pineal-serotonin
+- photoneuroendocrine serotonin
+category: neurological
+summary: Ultraviolet rays from sunlight travel through neurochemical pathways in the
+  eye, stimulate the pineal gland, and trigger serotonin release. Serotonin is the
+  primary mood-regulating neurotransmitter. Regular outdoor sunlight exposure is proposed
+  as a natural antidepressant mechanism.
+upstream_drivers:
+- sunlight-exposure
+downstream_effects:
+- improved-mood
+- reduced-depression-risk
+related_mechanisms:
+- prefrontal-cortex-function
+linked_to_topics:
+- depression-lifestyle
+evidence_tier: plausible_emerging
+sources:
+- id: barbara-oneil-healing-mind
+  location: Sunshine Section
+  quote: the ultraviolet rays from the sun go through the neurochemical pathways in
+    the eye, hit the pineal gland and cause a release in serotonin.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

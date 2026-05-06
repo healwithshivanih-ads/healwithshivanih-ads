@@ -3,23 +3,54 @@ display_name: Elevated Homocysteine
 aliases:
 - high homocysteine
 - hyperhomocysteinemia
+- methylation marker
+- methylation marker elevated
+- raised homocysteine
 category: cardiovascular
 severity: concerning
-description: A metabolic marker of impaired methylation and B vitamin insufficiency.
-  Elevated homocysteine damages vascular tissue and is associated with MTHFR mutations,
-  thyroid dysfunction, cardiovascular risk, and recurrent miscarriage.
-when_to_refer: Refer for cardiovascular risk assessment if significantly elevated.
-  Requires clinician interpretation of homocysteine lab values.
+description: Above-normal blood homocysteine levels indicating impaired methylation,
+  B vitamin deficiency, or MTHFR dysfunction. Associated with cardiovascular disease,
+  stroke, dementia, and neural tube defects.
+when_to_refer: Refer to clinician for plasma homocysteine testing and cardiovascular
+  risk assessment, especially if levels are chronically elevated despite B vitamin
+  supplementation.
 linked_to_topics:
 - methylation-mthfr
+- homocysteine-and-methylation
+- coagulation-imbalance
+- cardiometabolic-disease
+- chronic-toxicity-assessment
+- liver-detox-phase-1-and-phase-2
+- homocysteine-elevation
+- mthfr-gene-variant
+- folate-vitamin-b9
+- vitamin-b12
 linked_to_mechanisms:
 - homocysteine-elevation
 - impaired-methylation
+- methylation-impairment
+- ldl-oxidation-and-glycation
+- endothelial-injury
+- methylation-defect
+- impaired-homocysteine-remethylation
+- mthfr-enzyme-dysfunction
 sources:
 - id: vitaone-liver-detox-cheatsheet
   location: Methylation & MTHFR Cheatsheet — Who Should You Test
   quote: Elevated homocysteine
-version: 1
+- id: coconote-fm-biomarkers-cvs
+  location: Homocysteine and Clotting
+  quote: So if you have high homocysteine, that means you have methylation defect.
+- id: coconote-fm-liver-detox-part2
+  location: Homocysteine & Methylation Section
+  quote: if you look at the homosexual level, then you think about the difficulty
+    in phase 2 because the methylation pathway is not optimized. So I teach you that
+    homosexual is the primary indicator of the methylation defect apart from B2M.
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: Homocysteine section
+  quote: Raised levels of homocysteine generally indicate a potential risk of getting
+    heart attacks as well as many neurological disorders like stroke and dementia.
+version: 4
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

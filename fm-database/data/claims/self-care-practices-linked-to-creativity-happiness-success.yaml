@@ -1,0 +1,27 @@
+slug: self-care-practices-linked-to-creativity-happiness-success
+statement: People who regularly take time to recharge and restore are more creative,
+  happier, and more successful.
+evidence_tier: plausible_emerging
+rationale: Consistent with positive psychology literature and occupational health
+  research showing that recovery activities restore cognitive and emotional resources,
+  supporting performance and wellbeing. The claim is broad and the source does not
+  cite specific studies.
+coaching_translation: Investing in your own recovery—through rest, play, and self-care—isn't
+  selfish; it actually makes you better at everything else in life.
+caveats:
+- Broad claim; no specific study cited in the document.
+- Source is an internal educational toolkit.
+linked_to_topics:
+- self-care
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Self-Care Questionnaire
+  quote: Research shows that people who take time to recharge and restore are more
+    creative, happier, and more successful.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

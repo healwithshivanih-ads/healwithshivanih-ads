@@ -1,0 +1,29 @@
+slug: easy-bruising-bleeding
+display_name: Easy Bruising & Bleeding
+aliases:
+- bruising easily
+- gum bleeding
+- bleeding gums
+- corkscrew hairs
+category: cardiovascular
+severity: concerning
+description: Easy bruising, bleeding, calcified arteries, kidney stones, and weak
+  bones linked to vitamin K deficiency; bleeding gums and poor wound healing linked
+  to vitamin C deficiency.
+when_to_refer: Significant or spontaneous bleeding, or any patient on anticoagulants
+  such as warfarin, requires clinician oversight.
+linked_to_topics:
+- nutrition-deficiency
+- medication-nutrient-interactions
+- bone-health
+linked_to_mechanisms:
+- calcium-trafficking-and-bone-mineralization
+sources:
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Symptoms Discussed
+  quote: Easy bruising, bleeding, calcified arteries, kidney stones, and weak bones
+    - Linked to vitamin K deficiency.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

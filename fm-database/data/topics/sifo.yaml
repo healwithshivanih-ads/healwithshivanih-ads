@@ -1,0 +1,45 @@
+slug: sifo
+display_name: Small Intestinal Fungal Overgrowth (SIFO)
+aliases:
+- small intestinal fungal overgrowth
+- intestinal candida overgrowth
+- gut fungal dysbiosis
+summary: SIFO is a condition where abnormally large numbers of fungi or yeast (>1000
+  per mL) are found in the small intestine. It frequently co-occurs with SIBO and
+  contributes to gut inflammation, immune dysregulation, and systemic symptoms including
+  skin manifestations.
+common_symptoms:
+- bloating
+- white-coating-on-tongue
+- genital-itching
+- urticaria
+- fatigue
+- brain-fog
+red_flags:
+- invasive candidiasis
+- candidemia
+related_topics:
+- sibo
+- leaky-gut-syndrome
+- gut-brain-axis-dysfunction
+key_mechanisms:
+- gut-dysbiosis
+- intestinal-barrier-dysfunction
+- fungal-overgrowth-toxin-production
+coaching_scope_notes: Coaches can support dietary interventions to reduce fungal feeding
+  substrates, lifestyle stress reduction, and probiotic support (e.g., Saccharomyces
+  boulardii). Antifungal prescriptions are out of scope.
+clinician_scope_notes: GI mapping (PCR stool) is gold standard. Antifungals (fluconazole,
+  nystatin, echinocandins) are prescription only. Monitor for resistance. Co-treat
+  with SIBO protocols when mixed presentation exists.
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-sibo-sifo
+  location: SIFO Definition
+  quote: Small intestinal fungal pore growth. A condition where abnormally large numbers
+    of fungi or yeast, more than 1000 per ml are found in the small intestine is known
+    as SIBO.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

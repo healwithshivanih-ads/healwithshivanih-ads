@@ -1,5 +1,5 @@
 slug: vitamin-d
-display_name: Vitamin D
+display_name: Vitamin D3
 category: vitamin
 forms_available:
 - capsule
@@ -7,15 +7,15 @@ forms_available:
 - liquid
 typical_dose_range:
   capsule:
-    min: 600
+    min: 1000
     max: 5000
     unit: mcg
   tablet:
-    min: 600
+    min: 1000
     max: 5000
-    unit: mcg
+    unit: IU
   liquid:
-    min: 600
+    min: 1000
     max: 5000
     unit: mcg
 timing_options:
@@ -57,6 +57,20 @@ linked_to_topics:
 - drug-induced-nutrient-depletion
 - cardiovascular-dysfunction
 - vitamin-d-deficiency
+- thyroid-dysfunction
+- immune-support-covid-19
+- calcium-deficiency
+- calcium-metabolism
+- intestinal-permeability
+- 5r-gut-healing-protocol
+- cardiovascular-disease-prevention
+- sibo
+- leaky-gut-syndrome
+- statin-therapy-risks-and-benefits
+- dyslipidemia-management
+- hormonal-nutrition-foundations
+- medication-induced-nutrient-depletion
+- immune-nutrition
 linked_to_mechanisms:
 - vdr-rxr-heterodimer-signaling
 - immune-modulation
@@ -71,12 +85,22 @@ linked_to_claims:
 - vitamin-d-enhances-immunity-reduces-respiratory-infections
 - statins-deplete-multiple-nutrients
 - vitamin-d-rdas-may-be-too-low
-notes_for_coach: Fat-soluble — take with a meal containing fat. RDA is 600 IU; optimal
-  levels often require higher doses guided by 25-OH-D lab values. Clinician involvement
-  essential for dosing above RDA.
-notes_for_client: Vitamin D is hard to get from food alone, and most people who avoid
-  the sun need to supplement. Your doctor can check your blood levels and recommend
-  the right dose for you.
+- vitamin-d-deficiency-common-in-autoimmune-thyroid-disease
+- vitamin-d-modulates-immune-response
+- vitamin-d-enhances-immune-function-reduces-respiratory-infections
+- low-vitamin-d-reduces-serum-calcium
+- high-dose-vitamin-d-raises-serum-calcium
+- vitamin-d-supports-gut-repair
+- gut-repair-nutrients-support-epithelial-regeneration
+- fix-nutritional-foundations-first-in-sibo
+- vitamin-d-supports-cardiovascular-risk-reduction
+- vitamin-d-signals-genes-like-hormones
+- statins-deplete-coq10-and-vitamin-d
+notes_for_coach: Vitamin D is fat-soluble and should be taken with a meal. Statin
+  use is associated with lower vitamin D levels. Testing 25(OH)D before supplementing
+  and dosing are clinician decisions.
+notes_for_client: Vitamin D supports your immune system, bones, and mood. It can be
+  depleted by some medications, including statins.
 sources:
 - id: vitaone-evidence-tiers
   location: TOPIC 3 — PCOS / Claim 4 (Vitamin D range debate)
@@ -118,8 +142,45 @@ sources:
   quote: In some instances, optimal vitamin D levels can only be achieved with supplementation.
     Your functional medicine practitioner may suggest supplementing above the RDA
     based upon laboratory values, your individual health concerns, and other factors.
-evidence_tier: strong
-version: 11
+- id: vitaone-health-coaching-toolkit
+  location: Management of Hashimoto's — Nutrient Optimization
+  quote: 'Vitamin D: Deficiency is common in autoimmune diseases; supplementation
+    may help modulate the immune response.'
+- id: coconote-fm-calcium-deficiency
+  location: Causes of High Serum Calcium
+  quote: Low vitamin D high dose supplementation. So in conventional medicine, you
+    can see 60,000 IU of vitamin D that most doctors prescribe, but I don't believe
+    that we should prescribe vitamin D in high doses for vitamin D deficiency. For
+    deficiency of vitamin D, we should consider a low dose, maybe 5,000, 10,000 IU
+    a day.
+- id: coconote-fm-intestinal-permeability
+  location: 5R Protocol – Repair
+  quote: Vitamin D and all the B vitamins are important.
+- id: coconote-fm-intestinal-permeability-anish
+  location: 5R Protocol — Repair
+  quote: Vitamin D and all the B vitamins are important.
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Micronutrients in Clinical Practice
+  quote: Every one of my patients leaves the office with vitamin D, vitamin K.
+- id: coconote-fm-sibo-sifo
+  location: GI Map / Nutritional Analysis
+  quote: Fix the base foundation of the body first. Please do not go into the complexities
+    of the patient... let us fix on the vitamin D, folate first, I guess 40% of this
+    or her problem will be solved.
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Natural alternatives to statins section
+  quote: We can use the nutrition like vitamin D and magnesium. We can be like the
+    home city level.
+- id: ask-expert-hormonal-health-bhrt
+  location: Vitamin D and Gene Signaling
+  quote: The only other thing that can signal genes is vitamin D... regularity of
+    supplementation of vitamin D is more effective than episodic supplementation of
+    vitamin D. There's lots of papers on that.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXjjIqJjMSR/
+  quote: Every statin that lowers cholesterol also drains CoQ10 and vitamin D.
+evidence_tier: plausible_emerging
+version: 22
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

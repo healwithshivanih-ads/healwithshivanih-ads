@@ -1,0 +1,28 @@
+slug: cwi-increases-t-lymphocytes-interleukins
+statement: Regular cold water immersion increases circulating interleukins and T-lymphocytes
+  in winter swimmers compared to non-swimmers.
+evidence_tier: plausible_emerging
+rationale: Immunological changes (T-cell counts, interleukin profiles) were measured
+  in winter swimmer cohorts in the review. Direction of effect is not uniformly beneficial
+  — immune modulation rather than simple enhancement is more accurate.
+coaching_translation: Regular cold water exposure appears to tune the immune system,
+  though scientists are still working out exactly what this means for everyday health.
+out_of_scope_notes: Immune biomarker interpretation (specific interleukin profiles,
+  T-cell subsets) is clinician scope.
+caveats:
+- Specific interleukins not uniformly identified as pro- or anti-inflammatory
+- Comparison populations may differ in lifestyle
+- Findings on respiratory infections were inconclusive
+linked_to_topics:
+- cold-water-immersion
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: espeland-2022-cold-water-immersion
+  location: Immune Response
+  quote: Research showed increased interleukins and T-lymphocytes in regular winter
+    swimmers, with reduced upper respiratory infections compared to non-swimmers.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

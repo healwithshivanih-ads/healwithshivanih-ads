@@ -1,0 +1,41 @@
+slug: magnesium-musculoskeletal-health
+display_name: Magnesium & Musculoskeletal Health
+aliases:
+- magnesium muscle cramps
+- magnesium bone health
+summary: Magnesium is essential for muscle relaxation (counterbalancing calcium-driven
+  contraction), post-exercise recovery, and bone mineralisation. Deficiency presents
+  as cramps, restless leg syndrome, fibromyalgia, jaw tension, chronic neck/back pain,
+  and impaired bone density.
+common_symptoms:
+- muscle-cramps
+- restless-leg-syndrome
+- delayed-muscle-recovery
+- fibromyalgia-pain
+- jaw-tension
+- chronic-back-pain
+- osteoporosis
+red_flags:
+- severe-muscle-weakness
+- seizures
+related_topics:
+- magnesium-deficiency
+- osteoporosis
+- fibromyalgia
+key_mechanisms:
+- calcium-magnesium-imbalance
+- muscle-relaxation-contraction-balance
+coaching_scope_notes: Coaches can support athletes and active clients with dietary
+  and supplementation strategies to reduce cramps and improve recovery.
+clinician_scope_notes: Evaluate magnesium alongside calcium and vitamin D in osteoporosis
+  management.
+evidence_tier: strong
+sources:
+- id: coconote-fm-magnesium-deficiency
+  location: Musculoskeletal system
+  quote: Calcium is responsible for the contraction of the muscles while the counterpart
+    which is magnesium which is responsible for the relaxation of the muscles.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

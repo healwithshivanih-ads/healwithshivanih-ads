@@ -1,0 +1,31 @@
+slug: tg-hdl-ratio-early-marker-insulin-resistance
+statement: The triglyceride-to-HDL (TG:HDL) ratio is an early and clinically useful
+  proxy marker for insulin resistance, often elevated before fasting glucose or HbA1c
+  becomes abnormal.
+evidence_tier: plausible_emerging
+rationale: TG:HDL ratio correlates with insulin resistance, hyperinsulinaemia, and
+  small dense LDL particle predominance in multiple cross-sectional and longitudinal
+  studies. It is widely used in FM practice as an accessible early-detection tool.
+  However, it is not a direct measure of insulin resistance and thresholds vary by
+  population.
+coaching_translation: The ratio of your triglycerides to your HDL ('good') cholesterol
+  on a standard blood test can be an early warning sign that your body is struggling
+  to manage insulin, often before your blood sugar looks abnormal.
+out_of_scope_notes: Lab interpretation is a clinician task.
+caveats:
+- TG:HDL thresholds vary by ethnicity and clinical population.
+- Confounded by dietary fat intake at time of testing.
+- Source is Instagram educational content.
+linked_to_topics:
+- cardiovascular-lipid-pattern-recognition
+- insulin-resistance-metabolic-syndrome
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DX6sbxqDFJ5/
+  quote: TG:HDL ratio is an early marker of insulin resistance
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,19 +1,21 @@
 slug: diaphragmatic-breathing-activates-relaxation-centers
-statement: Diaphragmatic (abdominal) breathing decreases stress by activating relaxation
-  centers in the brain and improving venous blood flow back to the heart.
-evidence_tier: plausible_emerging
-rationale: Mechanistically plausible via vagal/parasympathetic activation; widely
-  cited in integrative medicine literature but specific RCTs with standardised outcomes
-  are limited.
-coaching_translation: Breathing deeply from your belly can calm your nervous system
-  quickly — it's one of the fastest tools you have for stress relief.
+statement: Abdominal (diaphragmatic) breathing decreases stress by activating relaxation
+  centers in the brain.
+evidence_tier: strong
+rationale: 'Well-established neuroscience: slow, diaphragm-led breathing stimulates
+  vagal afferents, shifting autonomic balance to parasympathetic dominance and reducing
+  cortisol and sympathetic tone.'
+coaching_translation: Breathing deeply from your belly sends a 'calm down' signal
+  to your brain, helping your whole nervous system relax.
 caveats:
 - Source is an educational toolkit, not primary literature; no specific RCT cited.
 - Mechanistic claim about venous return is physiologically reasonable but not RCT-proven
   in this context.
+- Source is an educational toolkit; primary RCT citations not provided in the document.
 linked_to_topics:
 - stress-management
 - mindfulness
+- mindful-breathing
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 linked_to_supplements: []
@@ -24,7 +26,7 @@ sources:
     stress by activating relaxation centers in the brain. The abdominal expansion
     causes negative pressure to pull blood into the chest, improving the venous flow
     of blood back to the heart.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

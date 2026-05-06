@@ -1,0 +1,34 @@
+aliases:
+- poor sleep
+- disrupted sleep
+- disturbed sleep
+- waking at night
+- 3am wakeups
+category: sleep
+description: Difficulty falling or staying asleep, often driven by vasomotor symptoms
+  (night sweats) and declining progesterone (which has sedative/anxiolytic properties)
+  during perimenopause and menopause.
+display_name: Sleep Disturbances
+linked_to_mechanisms:
+- gut-brain-axis-dysregulation
+- estrogen-progesterone-decline
+linked_to_topics:
+- gut-brain-axis
+- histamine-intolerance
+- menopause
+- perimenopause
+severity: common
+slug: sleep-disturbances
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Low Fodmap Diet Symptom Tracker — Section 2
+  quote: Sleep disturbances
+- id: coconote-fm-sex-hormones
+  location: Case Study — Rekha
+  quote: had very low energy levels, now here are the very menopausal symptoms appearing.
+    Disturbed sleep and was diagnosed with hypothyroidism also.
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani
+version: 2
+when_to_refer: ''

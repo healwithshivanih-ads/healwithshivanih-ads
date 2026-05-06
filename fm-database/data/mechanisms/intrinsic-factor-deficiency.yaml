@@ -1,0 +1,34 @@
+slug: intrinsic-factor-deficiency
+display_name: Intrinsic Factor Deficiency (Pernicious Anemia Mechanism)
+aliases:
+- pernicious anemia mechanism
+- IF deficiency
+category: gut
+summary: Parietal cells in the stomach produce intrinsic factor (IF), which is essential
+  for the absorption of B12 and folate in the ileum. Damage or reduced activity of
+  parietal cells — from hypothyroidism, autoimmune gastritis, or chronic PPI use —
+  reduces IF production, leading to B12 and folate deficiency and megaloblastic anemia.
+upstream_drivers:
+- hypothyroidism
+- ppi-use
+- autoimmune-gastritis
+downstream_effects:
+- b12-folate-anemia
+- elevated-mcv-mch-mchc
+related_mechanisms:
+- low-stomach-acid-iron-absorption
+linked_to_topics:
+- b12-folate-anemia
+evidence_tier: strong
+sources:
+- id: coconote-fm-iron-deficiency-anemia
+  location: Secondary Biomarkers / B12 Anemia section
+  quote: The intrinsic factor which it produces which eventually helps us in the absorption
+    of B12 and folate. So again, if there is a decrease in the activity of the parietal
+    cells, it could cause hypothyroidism, decrease in HCL, and again, decrease in
+    the intrinsic factor, which eventually causes decrease in the B12 and the folate
+    absorption.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

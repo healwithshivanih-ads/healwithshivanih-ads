@@ -1,0 +1,30 @@
+slug: dehydration-causes-negative-thought-patterns
+statement: Dehydration can cause the brain to develop negative thought patterns, as
+  the brain (85% water) requires adequate hydration for optimal neurotransmitter function
+  and prefrontal cortex performance.
+evidence_tier: plausible_emerging
+rationale: Dehydration impairing cognitive function and mood is supported by research
+  (e.g., mild dehydration affecting mood and cognition). The specific mechanism of
+  'negative thought patterns from dehydration' is a functional extension of known
+  dehydration-cognition effects.
+coaching_translation: If you're feeling anxious, irritable, or stuck in negative thinking,
+  try drinking a glass of water — your brain may simply be thirsty.
+caveats:
+- Source is expert lecture
+- Direct RCT evidence for dehydration → negative thought patterns specifically is
+  not cited
+linked_to_topics:
+- hydration-and-brain-function
+- depression-lifestyle
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-healing-mind
+  location: Hydration Section
+  quote: Did you know that your brain can develop negative thought patterns when it
+    is dehydrated?
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

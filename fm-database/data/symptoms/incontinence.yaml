@@ -1,0 +1,32 @@
+slug: incontinence
+display_name: Urinary Incontinence
+aliases:
+- stress incontinence
+- urge incontinence
+- leaky bladder
+- bladder leakage
+- coughing leakage
+category: urinary
+severity: common
+description: Involuntary loss of urine, particularly with coughing, sneezing, bearing
+  down, or urgency. Associated with loss of Lactobacillus crispatus in vaginal and
+  bladder microbiomes. Oral crispatus restoration has been shown in exploratory studies
+  to reduce incontinence by approximately half.
+when_to_refer: If severe, progressive, or associated with prolapse or neurological
+  symptoms—refer to urogynecology.
+linked_to_topics:
+- vaginal-microbiome
+- perimenopause-microbiome
+linked_to_mechanisms:
+- lactobacillus-crispatus-dominance
+- gut-vaginal-microbiome-axis
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Incontinence and crispatus discussion
+  quote: Getting crispatus restored reduces urgent stress incontinence, that is coughing,
+    sneezing, bearing down, and weighing yourself, which is socially crippling and
+    embarrassing.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

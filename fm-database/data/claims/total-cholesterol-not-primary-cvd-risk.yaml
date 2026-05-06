@@ -1,0 +1,31 @@
+slug: total-cholesterol-not-primary-cvd-risk
+statement: Total cholesterol and LDL-C alone are not the primary risk factors for
+  cardiovascular disease; low HDL and small-dense LDL particles are more predictive.
+evidence_tier: plausible_emerging
+rationale: The document explicitly debunks the 'high cholesterol = heart disease'
+  narrative, emphasizing LDL particle size and low HDL as more atherogenic. This aligns
+  with emerging consensus in advanced lipidology (particle-focused risk) but remains
+  an evolving area vs. conventional guidelines.
+coaching_translation: Your total cholesterol number tells only part of the story.
+  What matters more is whether your protective cholesterol (HDL) is high enough and
+  whether your LDL particles are the small, dangerous type.
+caveats:
+- Mainstream guidelines still use LDL-C as a primary treatment target; this claim
+  represents an advanced/functional medicine perspective.
+- Source is expert lecture (moderate quality).
+linked_to_topics:
+- lipid-panel-interpretation
+- atherosclerosis
+- cardiometabolic-disease
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-biomarkers-cvs
+  location: Lipid Burden and Cholesterol Myths
+  quote: The myth one is high cholesterol and high LDL is the number one cause for
+    heart disease in this country. That is wrong.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

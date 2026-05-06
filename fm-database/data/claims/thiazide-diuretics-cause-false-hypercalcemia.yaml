@@ -1,0 +1,28 @@
+slug: thiazide-diuretics-cause-false-hypercalcemia
+statement: Thiazide diuretics can cause falsely elevated serum calcium by interfering
+  with renal calcium excretion, and should be considered when interpreting hypercalcemia
+  in hypertensive patients.
+evidence_tier: strong
+rationale: Thiazide diuretics are well-known to reduce renal calcium excretion (used
+  therapeutically in hypercalciuria). The resulting elevation in serum calcium is
+  a recognized drug effect, well-documented in pharmacology.
+coaching_translation: If someone is on a water pill (thiazide diuretic) for blood
+  pressure, their calcium may look high on labs even without a true problem — this
+  is a known medication effect that a doctor needs to interpret.
+out_of_scope_notes: Medication interpretation is out of coaching scope. Refer to prescribing
+  clinician.
+caveats: []
+linked_to_topics:
+- calcium-metabolism
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-calcium-deficiency
+  location: Causes of High Serum Calcium
+  quote: if some hypertension hypertensive patient if they are taking them diuretic
+    like thiazide diuretics they have a false increase of calcium because this drug
+    also interfere with an excretion of calcium
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

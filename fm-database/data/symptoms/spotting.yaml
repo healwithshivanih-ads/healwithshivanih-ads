@@ -1,0 +1,30 @@
+slug: spotting
+display_name: Intermenstrual Spotting
+aliases:
+- breakthrough bleeding
+- brown spotting
+- mid-cycle spotting
+- fine thread spotting
+category: hormonal
+severity: common
+description: Light bleeding or brown discharge occurring between menstrual periods.
+  A classic symptom of relative estrogen dominance with low progesterone and/or anovulation.
+  The endometrial lining, thickened by estrogen without opposing progesterone, continuously
+  sheds in small amounts.
+when_to_refer: If spotting continues for >2-3 cycles, refer for pelvic ultrasound
+  to rule out fibroids or endometrial pathology.
+linked_to_topics:
+- estrogen-dominance
+- luteal-phase-defect
+linked_to_mechanisms:
+- progesterone-deficiency
+- estrogen-driven-cell-proliferation
+sources:
+- id: coconote-fm-estrogen-dominance
+  location: Q&A — Spotting
+  quote: Definitely no progesterone but very high estrogen dominance. Because it is
+    the endometrial tissue that is constantly shedding.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

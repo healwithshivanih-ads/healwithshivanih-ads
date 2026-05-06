@@ -1,0 +1,26 @@
+slug: anaphylaxis
+display_name: Anaphylaxis
+aliases:
+- severe allergic reaction
+- throat swelling
+- loss of consciousness from allergy
+category: cardiovascular
+severity: red_flag
+description: Severe, life-threatening systemic allergic reaction involving throat
+  edema, respiratory compromise, and potential loss of consciousness. Exclusive to
+  IgE-mediated reactions; not seen in IgG food sensitivity.
+when_to_refer: Immediate emergency referral — call emergency services. Do not manage
+  in coaching context.
+linked_to_topics:
+- food-allergy-ige-mediated
+linked_to_mechanisms:
+- mast-cell-degranulation-histamine-release
+sources:
+- id: coconote-fm-food-allergies-sensitivities
+  location: IgE vs IgG Differentiation Section
+  quote: anaphylaxis, you can consider severe food sensitivity where you have edema
+    in your throat and that's the very severe conditions and acute conditions
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

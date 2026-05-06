@@ -1,0 +1,28 @@
+slug: all-drugs-have-acid-effect-on-body
+statement: All pharmaceutical drugs have an acid-forming effect on the body.
+evidence_tier: fm_specific_thin
+rationale: This is a broad generalization common in naturopathic and functional medicine
+  contexts. While some drug classes (e.g., aspirin, NSAIDs) do contribute to acidic
+  conditions, the claim that ALL drugs are acid-forming is a sweeping generalization
+  without robust peer-reviewed backing across all drug classes.
+coaching_translation: Medications can sometimes add to the body's acid burden — a
+  reason why supporting the body with alkaline-forming whole foods is especially important
+  for those on multiple medications.
+out_of_scope_notes: Coaches must NOT advise clients to alter, reduce, or stop medications
+  based on this claim. Any medication-related discussion is strictly clinician scope.
+caveats:
+- Broad generalization not supported uniformly across all drug classes.
+- Source is expert consensus/lecture, not primary literature.
+- Out of coaching scope to apply this claim to individual medication decisions.
+linked_to_topics:
+- ph-balance-and-diet
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-fresh-cheeses-ph
+  location: Acid-Forming Foods Section
+  quote: All your drugs have an acid effect on the body.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

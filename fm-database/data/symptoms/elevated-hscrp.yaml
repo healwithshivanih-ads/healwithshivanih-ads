@@ -1,0 +1,40 @@
+slug: elevated-hscrp
+display_name: Elevated High-Sensitivity CRP (hsCRP)
+aliases:
+- high-sensitivity CRP
+- raised CRP
+- systemic inflammatory marker
+- high hsCRP
+- elevated CRP
+- systemic inflammation marker
+category: cardiovascular
+severity: concerning
+description: Elevated hsCRP reflects systemic low-grade inflammation and is a cardiovascular
+  risk marker. The document identifies it as a factor increasing clotting tendency
+  and driving atherosclerosis progression.
+when_to_refer: Discuss with clinician as part of comprehensive cardiovascular risk
+  assessment.
+linked_to_topics:
+- cardiometabolic-disease
+- atherosclerosis
+- endothelial-dysfunction
+- cardiovascular-risk-assessment
+- atherosclerosis-pathogenesis
+linked_to_mechanisms:
+- chronic-inflammation
+- inflammatory-cascade
+- coagulation-anticoagulation-imbalance
+sources:
+- id: coconote-fm-biomarkers-cvs
+  location: Immune and Toxic Burden
+  quote: For cardiovascular disease, we look at the high sensitivity C-reactive protein
+    and that is increased in this patient.
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Young patient cardiac arrest mechanism section
+  quote: If you have an underlying hsCRP that is pro-inflammatory that you can say
+    clotting mechanism is high your spike protein your high homocysteine all the factors
+    they actually increase your clotting mechanism.
+version: 2
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

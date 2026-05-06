@@ -1,0 +1,31 @@
+slug: correct-dhea-before-replacing-testosterone
+statement: In clinical practice, DHEA-S should be assessed and corrected as a first-line
+  intervention before initiating testosterone or estrogen/progesterone replacement
+  therapy.
+evidence_tier: fm_specific_thin
+rationale: This is a functional medicine clinical principle grounded in steroidogenesis
+  biochemistry. The sequential approach (fix precursors first) is biologically rational
+  but lacks dedicated RCT validation as a clinical protocol.
+coaching_translation: When a client's hormones are all low, check if DHEA-S is low
+  too — fixing the upstream precursor may be more impactful than jumping straight
+  to hormone replacement.
+out_of_scope_notes: DHEA supplementation and hormone replacement decisions are clinician
+  scope.
+caveats:
+- Source is expert consensus; thin peer-reviewed support for this specific clinical
+  sequencing as a protocol.
+linked_to_topics:
+- steroidogenesis
+- menopause
+linked_to_supplements:
+- dhea
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-sex-hormones
+  location: Steroidogenesis Pathway
+  quote: If the value of DHEA sulfate is not only low, then there is no point of replacing
+    their testosterone
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

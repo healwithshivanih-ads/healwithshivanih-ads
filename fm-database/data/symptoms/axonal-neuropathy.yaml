@@ -1,0 +1,29 @@
+slug: axonal-neuropathy
+display_name: Axonal Neuropathy
+aliases:
+- peripheral neuropathy
+- neurological symptoms B12 deficiency
+- axillary neuropathy
+- nerve damage from B12 deficiency
+category: neurological
+severity: concerning
+description: Nerve damage resulting from methylmalonic acid accumulation due to B12
+  deficiency and MMCM enzyme failure. Presents as fatigue, confusion, and mental/cognitive
+  issues.
+when_to_refer: Refer to clinician if neurological symptoms are progressive, persistent,
+  or accompanied by other B12 deficiency signs.
+linked_to_topics:
+- vitamin-b12
+- mthfr-gene-variant
+linked_to_mechanisms:
+- methylmalonyl-coa-pathway
+sources:
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: Methylcobalamin / MMCM section
+  quote: Methylmalonic acid will be accumulated in the body. So what that would do
+    is that it will cause symptoms of axillary neuropathy. And these are showcased
+    in the body in terms of fatigue, in terms of confusion, mental issues.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

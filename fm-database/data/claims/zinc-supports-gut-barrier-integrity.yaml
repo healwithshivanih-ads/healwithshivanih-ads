@@ -1,0 +1,35 @@
+slug: zinc-supports-gut-barrier-integrity
+statement: Zinc enhances gut barrier integrity in leaky gut and chronic diarrhea contexts.
+evidence_tier: fm_specific_thin
+rationale: Zinc's role in tight junction protein synthesis and gut mucosal repair
+  is plausible; clinical trial evidence is emerging but not yet robust.
+coaching_translation: Zinc-rich foods (oysters, red meat, pumpkin seeds) and zinc
+  carnosine supplements may support gut lining health.
+caveats:
+- Source is a practitioner cheatsheet without primary citations.
+- The leaky gut concept itself has variable clinical evidence.
+- Source is practitioner cheatsheet.
+- High-dose zinc risks copper depletion; keep at coaching-appropriate food levels
+  unless clinician directs supplementation.
+linked_to_topics:
+- leaky-gut
+- gut-dysbiosis
+- nutrition-deficiency
+linked_to_supplements:
+- zinc
+- zinc-carnosine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 10
+  quote: Zinc is described as enhancing gut barrier integrity in leaky gut and chronic
+    diarrhea cases.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 10
+  quote: Zinc is described as enhancing gut barrier integrity in leaky gut and chronic
+    diarrhea cases.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

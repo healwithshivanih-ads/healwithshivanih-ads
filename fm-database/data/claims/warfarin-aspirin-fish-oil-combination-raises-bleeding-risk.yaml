@@ -1,0 +1,32 @@
+slug: warfarin-aspirin-fish-oil-combination-raises-bleeding-risk
+statement: The combination of warfarin, aspirin, and fish oil raises bleeding risk
+  and requires INR monitoring.
+evidence_tier: confirm_with_clinician
+rationale: Additive anticoagulant and antiplatelet effects of warfarin, aspirin, and
+  omega-3 increasing bleeding risk is clinically recognized.
+out_of_scope_notes: Any supplement recommendation involving anticoagulant medications
+  requires clinician oversight.
+caveats:
+- Source is a practitioner cheatsheet; this interaction is also clinically established.
+- Never recommend fish oil or omega-3 supplements to clients on warfarin and aspirin
+  without clinician approval and INR monitoring.
+linked_to_topics:
+- medication-nutrient-interactions
+linked_to_supplements:
+- omega-3
+- fish-oil
+coaching_translation: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 21
+  quote: Warfarin, aspirin, and fish oil are listed together as a bleeding-risk combination
+    requiring INR monitoring.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 21
+  quote: Warfarin, aspirin, and fish oil are listed together as a bleeding-risk combination
+    requiring INR monitoring.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

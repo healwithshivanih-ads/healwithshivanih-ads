@@ -1,0 +1,27 @@
+slug: body-pain
+display_name: Body Pain
+aliases:
+- generalised body ache
+- musculoskeletal pain
+- aching all over
+category: musculoskeletal
+severity: common
+description: Diffuse body pain reported as a presenting complaint, potentially linked
+  to nutritional deficiencies, low-grade systemic inflammation, and elevated homocysteine.
+  Also improved following treatment addressing insulin resistance and methylation.
+when_to_refer: If myalgia is severe or associated with statin use (rule out statin-induced
+  myopathy — creatine kinase elevation).
+linked_to_topics:
+- cardiovascular-risk-assessment
+- methylation-defect-elevated-homocysteine
+linked_to_mechanisms:
+- systemic-inflammation-cv
+- methylation-defect-homocysteine
+sources:
+- id: vitaone-cvs-risk-assessment
+  location: Progress (Slide 25)
+  quote: Fatigue, Body pain and low grade fever better
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

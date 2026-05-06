@@ -3,22 +3,30 @@ display_name: Oral Microbiome Disruption
 aliases:
 - oral dysbiosis
 - mouth bacteria imbalance
+- dental microbiome imbalance
 category: immune
-summary: Certain dental product ingredients (SLS, alcohol-based mouthwashes, triclosan)
-  disrupt the balance of commensal oral bacteria, promote inflammation, and can increase
-  susceptibility to oral lesions and infections.
+summary: Certain oral care ingredients (alcohol-based mouthwashes, SLS, triclosan,
+  artificial sweeteners) disrupt the balance of beneficial and harmful oral bacteria,
+  contributing to inflammation, oral lesions, and potential systemic health impacts
+  through transmucosal absorption.
 upstream_drivers:
 - sodium-lauryl-sulfate-exposure
 - alcohol-mouthwash-use
 - triclosan-exposure
+- sls-exposure
+- artificial-sweetener-ingestion
 downstream_effects:
 - canker-sores
 - oral-inflammation
 - increased-oral-cancer-risk
+- gum-inflammation
+- gut-microbiome-alteration
 related_mechanisms:
 - endocrine-disruption
+- endocrine-disruption-by-toxicants
 linked_to_topics:
 - oral-toxin-exposure
+- oral-health-toxins
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-liver-detox-toolkit
@@ -26,7 +34,12 @@ sources:
   quote: Certain ingredients in these oral health products have the potential to disrupt
     the delicate balance of 'good' & 'bad' bacteria in our mouths, crucial for maintaining
     oral health.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Avoiding Toxins in Oral Health
+  quote: Certain ingredients in these oral health products have the potential to disrupt
+    the delicate balance of 'good' & 'bad' bacteria in our mouths, crucial for maintaining
+    oral health.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

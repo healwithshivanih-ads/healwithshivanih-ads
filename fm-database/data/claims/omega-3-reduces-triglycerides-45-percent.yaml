@@ -1,0 +1,31 @@
+slug: omega-3-reduces-triglycerides-45-percent
+statement: Omega-3 fatty acids at 4g/day (as evaluated in the Lavazza trial) produced
+  a 45% reduction in triglycerides, with an expected transient LDL increase due to
+  improved lipoprotein lipase receptor efficiency.
+evidence_tier: strong
+rationale: Referenced as an early trial with specific results. The mechanism (lipoprotein
+  lipase receptor normalization) is well-established. The LDL rise is a known pharmacological
+  consequence.
+coaching_translation: High-dose omega-3 supplements are one of the most effective
+  natural tools for lowering elevated blood fats (triglycerides). A slight rise in
+  LDL is expected and not dangerous.
+caveats:
+- '''Lavazza trial'' name appears to be a transcription variant — likely the LOVAZA
+  trial. Verify specific citation.'
+- Source is lecture transcript — verify exact trial citation with primary literature.
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-disease-prevention
+linked_to_supplements:
+- omega-3-fatty-acids
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Omega-3 Clinical Evidence
+  quote: This is one of the early studies looking at Lavazza, four grams a day, 45%
+    reduction in triglycerides.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

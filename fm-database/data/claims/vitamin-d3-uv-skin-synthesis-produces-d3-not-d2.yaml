@@ -1,0 +1,25 @@
+slug: vitamin-d3-uv-skin-synthesis-produces-d3-not-d2
+statement: When UV rays from the sun fall on the skin, the form of vitamin D produced
+  is vitamin D3 (cholecalciferol), not D2 (ergocalciferol). Vitamin D2 is primarily
+  derived from plant sources such as mushrooms and yeast.
+evidence_tier: strong
+rationale: Well-established photobiological fact. UV-B radiation converts 7-dehydrocholesterol
+  in the skin to pre-vitamin D3, which isomerises to vitamin D3. Vitamin D2 comes
+  from UV-irradiated ergosterol in fungi/plants.
+coaching_translation: The vitamin D your body makes from sunlight is D3 — the same
+  form as most supplements. D2 comes from plants like mushrooms.
+caveats: []
+linked_to_topics:
+- vitamin-d3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-vitamin-d3-k2
+  location: Vitamin D Sources
+  quote: When the sun's UV rays also falls on the skin, vitamin D3 is the form that
+    is produced.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,23 @@
+slug: lethargy
+display_name: Lethargy
+aliases:
+- low energy
+- tiredness
+- exhaustion
+- feeling run down
+category: constitutional
+severity: common
+description: General feeling of tiredness and low energy, commonly associated with
+  zinc deficiency affecting metabolic and immune processes.
+when_to_refer: If severe or accompanied by other systemic symptoms, refer to a physician.
+linked_to_topics:
+- zinc-deficiency
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-zinc-deficiency
+  location: Signs and Symptoms
+  quote: Lethargy, loss of appetite, slow wound healing, non-responsive anemia.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

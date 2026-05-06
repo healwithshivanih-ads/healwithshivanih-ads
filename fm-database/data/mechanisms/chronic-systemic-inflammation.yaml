@@ -1,0 +1,58 @@
+slug: chronic-systemic-inflammation
+display_name: Chronic Systemic Inflammation
+aliases:
+- low-grade inflammation
+- systemic inflammatory burden
+- inflammation
+- systemic inflammation
+- inflammatory burden
+category: immune
+summary: Persistent, low-grade inflammatory state driven by visceral adiposity, poor
+  diet, gut permeability, food sensitivities, and environmental triggers. Evidenced
+  by elevated CRP, ESR, and other inflammatory markers. Drives risk of cardiovascular
+  disease, cancer, diabetes, and autoimmunity.
+upstream_drivers:
+- oxidative-stress
+- poor-dietary-quality
+- insulin-resistance
+- excess-adiposity
+- visceral-adiposity
+- intestinal-hyperpermeability
+- pro-inflammatory-diet
+- food-sensitivities
+downstream_effects:
+- cardiovascular-disease-risk
+- insulin-resistance
+- elevated-triglycerides
+- endothelial-dysfunction
+- cardiovascular-disease
+- cancer
+- autoimmunity
+related_mechanisms:
+- oxidative-stress
+- insulin-resistance
+- intestinal-hyperpermeability
+linked_to_topics:
+- cardiometabolic-diet
+- intermittent-fasting
+- anti-inflammatory-diet
+- visceral-adiposity
+- metabolic-syndrome
+- autoimmunity-triad
+- body-composition-assessment
+evidence_tier: strong
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Intermittent Fasting — Who Benefits from Fasting?
+  quote: Shorter-duration human & animal studies show that fasting may be beneficial
+    for insulin resistance, blood sugar, blood pressure, inflammation, short-term
+    weight loss, and brain health.
+- id: coconote-fm-body-composition-bmi
+  location: Case Discussion Section
+  quote: Her pain in her body, her inflammation, her signs of increased intestinal
+    permeability, her uncertainty, her fear, the injury, her poor diet, it's all interconnected
+    and influencing the inflammation in her body.
+version: 2
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

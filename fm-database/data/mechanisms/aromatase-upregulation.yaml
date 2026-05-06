@@ -1,0 +1,40 @@
+slug: aromatase-upregulation
+display_name: Aromatase Enzyme Upregulation
+aliases:
+- aromatase activity
+- testosterone-to-estrogen conversion
+- aromatization
+category: endocrine
+summary: Aromatase enzymes convert androgens (testosterone, androstenedione) into
+  estrogens. Upregulation occurs in the presence of insulin resistance, obesity (adipose
+  tissue), and systemic inflammation (elevated prostaglandins, hs-CRP). This results
+  in excess estrogen production, driving estrogen dominance. Natural aromatase inhibitors
+  (green tea, blueberries, grape seed extract, DIM) can modulate this pathway.
+upstream_drivers:
+- insulin-resistance
+- systemic-inflammation
+- obesity
+- belly-fat-adipose-estrogen
+downstream_effects:
+- estrogen-dominance
+- pcos
+- uterine-fibroids
+- reduced-free-testosterone
+related_mechanisms:
+- beta-glucuronidase-estrogen-reabsorption
+- progesterone-deficiency
+linked_to_topics:
+- estrogen-dominance
+- pcos
+- estrogen-metabolism
+evidence_tier: strong
+sources:
+- id: coconote-fm-estrogen-dominance
+  location: How Does Inflammation Relate to Estrogen?
+  quote: If there is a lot of inflammation, these inflammatory markers will upregulate
+    the aromatase activity, they will form estrogen. The insulin resistance is also
+    forming this estrogen.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

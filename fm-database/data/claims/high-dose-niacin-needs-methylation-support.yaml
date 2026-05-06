@@ -1,0 +1,30 @@
+slug: high-dose-niacin-needs-methylation-support
+statement: Higher niacin doses require balance with methylation support nutrients.
+evidence_tier: confirm_with_clinician
+rationale: High-dose niacin consumes methyl groups and can deplete SAM-e; this is
+  a clinically relevant interaction requiring professional oversight.
+out_of_scope_notes: Dosing and methylation protocol management at therapeutic niacin
+  levels is outside coaching scope.
+caveats:
+- Source is a practitioner cheatsheet without primary citations.
+- High-dose niacin (above 100mg) is a therapeutic dose requiring clinical supervision.
+- Confirm with prescribing clinician before implementing high-dose niacin protocols.
+linked_to_topics:
+- methylation
+- medication-nutrient-interactions
+linked_to_supplements:
+- niacin
+- tmg
+coaching_translation: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 4
+  quote: Higher niacin doses are described as needing balance with methylation support.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 4
+  quote: Higher niacin doses are described as needing balance with methylation support.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

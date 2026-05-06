@@ -1,0 +1,31 @@
+slug: hba1c-above-5-5-promotes-cv-disease-and-dementia
+statement: Elevated HbA1c above 5.5 reflects advanced glycation end products (AGEs)
+  that create inflammation and oxidative stress, promoting heart disease, dementia,
+  and accelerated ageing.
+evidence_tier: plausible_emerging
+rationale: The link between glycation, AGEs, and cardiovascular/neurological disease
+  is biologically well-supported. The specific HbA1c threshold of 5.5 as the functional
+  medicine optimal (versus standard 6.5 diagnostic cut-off) is FM-specific. AGE-driven
+  inflammation in atherosclerosis has mechanistic support but the clinical threshold
+  claim is not from RCT data.
+coaching_translation: Your HbA1c tells us how much sugar damage is happening in your
+  body. Keeping it below 5.5 is ideal — above that, your blood vessels and brain are
+  being slowly damaged by sugar-protein interactions.
+caveats:
+- The functional optimal threshold of 5.5 is FM-specific; mainstream diagnostic threshold
+  is 6.5 for diabetes.
+- Source is an educational case study, not primary research.
+linked_to_topics:
+- insulin-resistance
+- cardiovascular-risk-assessment
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cvs-risk-assessment
+  location: Lab Results (Slide 16)
+  quote: The hemoglobin A1C should ideally be less than 5.5.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

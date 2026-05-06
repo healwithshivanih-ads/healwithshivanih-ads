@@ -1,0 +1,27 @@
+slug: upper-respiratory-infections
+display_name: Upper Respiratory Infections
+aliases:
+- frequent colds
+- getting sick often
+- recurrent colds
+- coughs and colds
+- URIs
+category: constitutional
+severity: common
+description: Frequent or recurrent upper respiratory tract infections (colds, sinusitis).
+  Regular winter swimming has been associated with reduced incidence compared to non-swimmers,
+  though evidence is inconclusive.
+when_to_refer: Refer if infections are unusually frequent, severe, or prolonged —
+  consider immune deficiency workup.
+linked_to_topics:
+- cold-water-immersion
+linked_to_mechanisms: []
+sources:
+- id: espeland-2022-cold-water-immersion
+  location: Immune Response
+  quote: Research showed increased interleukins and T-lymphocytes in regular winter
+    swimmers, with reduced upper respiratory infections compared to non-swimmers.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

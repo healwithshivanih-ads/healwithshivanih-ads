@@ -1,0 +1,31 @@
+slug: bile-acid-insufficiency
+display_name: Bile Acid Insufficiency / Fat Emulsification Impairment
+aliases:
+- bile insufficiency
+- fat malabsorption
+- impaired fat emulsification
+category: gut
+summary: Bile acids produced by the gallbladder and released into the duodenum are
+  essential for emulsifying dietary fats, enabling lipase activity and fat-soluble
+  vitamin absorption. Reduced bile acid production or secretion leads to fat maldigestion
+  and steatorrhoea.
+upstream_drivers:
+- gallbladder-dysfunction
+- bile-duct-obstruction
+downstream_effects:
+- fat-malabsorption
+- fat-soluble-vitamin-deficiency
+related_mechanisms:
+- impaired-protein-digestion
+linked_to_topics:
+- digestive-enzyme-insufficiency
+evidence_tier: strong
+sources:
+- id: coconote-fm-hypochlorhydria
+  location: Overview of Digestion
+  quote: The gallbladder produces bile, which helps in the production of, which helps
+    by giving bile acids, which help in the emulsification of fat.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

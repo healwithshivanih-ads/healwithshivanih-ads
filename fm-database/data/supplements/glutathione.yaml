@@ -1,32 +1,48 @@
 slug: glutathione
-display_name: Glutathione (Liposomal)
-category: other
+display_name: Glutathione
+category: amino_acid
 forms_available:
 - capsule
 - liquid
+- powder
 timing_options:
 - morning
 - on_empty_stomach
-take_with_food: avoid
+take_with_food: optional
 linked_to_topics:
 - liver-detoxification
 - methylation-mthfr
 - heavy-metal-toxicity
+- liver-detoxification-phases
 linked_to_claims:
 - glutathione-master-antioxidant-detox
-notes_for_coach: Liposomal glutathione is preferred for oral supplementation due to
-  poor gut absorption of standard oral forms. Used in cirrhosis, MTHFR, and heavy
-  metal protocols. Clinician oversight recommended.
-notes_for_client: Glutathione is your body's most powerful antioxidant. Liposomal
-  forms are best absorbed and help support liver detoxification.
+- phase2-requires-glutathione-for-conjugation
+- optimize-phase2-before-phase1
+notes_for_coach: Glutathione is the primary Phase 2 conjugation molecule. Precursor
+  support (N-acetylcysteine, glycine, glutamine) may be more bioavailable than direct
+  supplementation. Dosing should be confirmed with clinician.
+notes_for_client: Glutathione is your body's master antioxidant and detox molecule.
+  Supporting its levels helps your liver neutralize harmful chemicals more effectively.
 evidence_tier: plausible_emerging
-typical_dose_range: {}
+typical_dose_range:
+  capsule:
+    min: 250
+    max: 1000
+    unit: mg
+  powder:
+    min: 250
+    max: 1000
+    unit: mg
 linked_to_mechanisms: []
 sources:
 - id: vitaone-liver-detox-cheatsheet
   location: Methylation & MTHFR Cheatsheet — 6 Ways to Overcome MTHFR
   quote: Balance Glutathione – NAC, liposomal glutathione, glycine.
-version: 1
+- id: coconote-fm-liver-detox-part1
+  location: Phase 2 Conjugation Pathways
+  quote: The other important pathway is glutathione, there's about 20 oxygens, so
+    we can bind glutathione with anything.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

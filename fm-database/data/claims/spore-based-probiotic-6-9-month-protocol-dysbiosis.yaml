@@ -1,0 +1,30 @@
+slug: spore-based-probiotic-6-9-month-protocol-dysbiosis
+statement: Spore-based probiotics (Bacillus strains) require 6–9 months of continuous
+  use to meaningfully shift the gut microbiome environment in chronic dysbiosis, particularly
+  where biofilm formation is present.
+evidence_tier: plausible_emerging
+rationale: Spore-forming probiotics (e.g., Bacillus coagulans, B. subtilis) survive
+  stomach acid and colonize the large intestine. Emerging evidence supports their
+  role in microbiome modulation, though 6–9 month timeline is largely based on clinical
+  observation rather than controlled trials.
+coaching_translation: Spore-based probiotics are a long game — 6–9 months minimum.
+  Set your client's expectations accordingly and support consistency.
+caveats:
+- Source is expert FM lecture (moderate quality). Specific strain selection and evidence
+  quality varies.
+linked_to_topics:
+- gut-dysbiosis
+linked_to_supplements:
+- spore-based-probiotic
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-approach-inflammation
+  location: Probiotics – Spore-Based Protocol
+  quote: they have a capability to change the environment of the gut and that should
+    be described for longer time. You cannot describe it for 1 or 2 months, it should
+    be 6 to 9 months.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,31 @@
+slug: gut-estrogen-reabsorption
+display_name: Gut Estrogen Reabsorption (Enterohepatic Recirculation)
+aliases:
+- enterohepatic estrogen circulation
+- estrogen recirculation
+category: gut
+summary: Estrogen metabolites excreted into the digestive tract can be deconjugated
+  by gut bacteria and reabsorbed into circulation if fiber and healthy elimination
+  are insufficient. Dietary fiber binds estrogen metabolites, preventing reabsorption.
+upstream_drivers:
+- low-fiber-diet
+- dysbiosis
+- constipation
+downstream_effects:
+- elevated-circulating-estrogen
+- estrogen-dominance
+related_mechanisms:
+- hepatic-estrogen-metabolism
+linked_to_topics:
+- estrogen-metabolism
+- estrogen-dominance
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Estrogen Metabolism — Promotes Healthy Estrogen Metabolism
+  quote: Fiber binds harmful estrogen metabolites and other toxins in the digestive
+    tract, which can be eliminated by the body.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

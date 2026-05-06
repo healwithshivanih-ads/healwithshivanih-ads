@@ -1,0 +1,37 @@
+slug: oral-health-toxins
+display_name: Oral Health Toxins
+aliases:
+- dental product toxins
+- oral care chemical exposure
+summary: Chemicals found in common oral health products (toothpaste, mouthwash, dental
+  floss) including triclosan, SLS/SLES, artificial sweeteners, propylene glycol, titanium
+  dioxide, fluoride, and PTFE-coated floss. The mouth and gums are highly susceptible
+  to absorbing these substances directly into the bloodstream.
+common_symptoms:
+- canker-sores
+- gum-inflammation
+- hormonal-disruption-symptoms
+red_flags:
+- persistent oral lesions not resolving with product change — refer to dentist/physician
+related_topics:
+- environmental-toxin-exposure
+- dental-amalgam-mercury
+- toxic-body-burden
+key_mechanisms:
+- endocrine-disruption-by-toxicants
+- oral-microbiome-disruption
+coaching_scope_notes: Coaches can educate clients on safer oral product choices (natural
+  chalk/clay toothpaste, alcohol-free mouthwash, non-PTFE floss) as part of toxin-reduction
+  lifestyle coaching.
+clinician_scope_notes: Fluoride use, amalgam management, and oral health diagnoses
+  are dental/medical scope.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Avoiding Toxins in Oral Health
+  quote: This poses a significant concern, given the mouth and gums' heightened susceptibility
+    to absorb and transfer substances directly into the blood stream.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

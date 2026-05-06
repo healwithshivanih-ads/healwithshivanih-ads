@@ -1,0 +1,83 @@
+slug: cardiovascular-risk-assessment
+display_name: Cardiovascular Risk Assessment (Primary Prevention)
+aliases:
+- CVS risk assessment
+- CV risk
+- heart disease risk stratification
+- ASCVD risk
+- 10-year cardiovascular risk
+- atherosclerotic risk scoring
+- cardiac risk calculation
+- 10-year heart attack risk
+- ACC/AHA risk calculator
+summary: Framework for calculating a patient's 10-year absolute risk of developing
+  cardiovascular disease using validated tools (e.g., Mayo Clinic / ACC/AHA calculator),
+  distinguishing primary from secondary prevention, and determining whether statin
+  therapy offers meaningful absolute risk reduction.
+common_symptoms:
+- body-pain
+- fatigue
+- high-blood-pressure
+- high-cholesterol
+- low-grade-fever
+- chest-pain
+- dyslipidemia
+red_flags:
+- hs-crp-raised
+- homocysteine-raised
+- high-triglycerides-low-hdl
+- insulin-resistance-confirmed
+- carotid-wall-thickening
+- LDL greater than 190
+- prior cardiovascular event
+- diabetes with cardiovascular risk factors
+- history-of-prior-heart-attack
+- known-atherosclerosis
+- ldl-above-190-familial-hypercholesterolemia
+related_topics:
+- dyslipidemia
+- hypertension
+- insulin-resistance
+- methylation-defect
+- metabolic-syndrome
+- statin-therapy-primary-prevention
+- lifestyle-medicine-for-hyperlipidemia
+- statin-therapy-risks-and-benefits
+- ldl-particle-size-and-number
+- atherosclerosis-pathogenesis
+- dyslipidemia-management
+key_mechanisms:
+- insulin-resistance
+- methylation-defect-elevated-homocysteine
+- oxidative-stress-vascular
+- atherosclerosis
+- endothelial-dysfunction
+- ldl-oxidation
+- inflammatory-cascade
+coaching_scope_notes: Coaches may educate clients on how to use the publicly available
+  ACC/AHA calculator and help them understand absolute vs. relative risk reduction.
+  Coaches should not interpret lab values clinically or recommend starting, stopping,
+  or dose-changing medications.
+clinician_scope_notes: Secondary prevention patients (prior MI, stent, stroke) and
+  those with familial hypercholesterolemia (LDL >190) are outside coaching scope and
+  require clinician-led statin decisions.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-cvs-risk-assessment
+  location: Functional lab analysis (Slide 18)
+  quote: 'With the FLR report we can infer that the patient has: 1. Insulin Resistance
+    2. Methylation defect 3. Nutrition Deficiency'
+- id: coconote-fm-reality-of-statins
+  location: Absolute vs. Relative Risk Introduction
+  quote: Your absolute risk is the risk of developing a disease over a given period
+    of time. For example, what is your risk of having an atherosclerotic cardiovascular
+    event over the next 10 years?
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Calculating cardiovascular risk section
+  quote: Mayo Clinic has given this calculator for everybody who want to calculate
+    the risk for calculating heart attack. Now you can see on the current list, there
+    is an ACC, AHA, AS, CBD guideline.
+version: 3
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

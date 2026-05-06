@@ -4,10 +4,14 @@ aliases:
 - silent inflammation
 - low-grade inflammation
 - systemic inflammation
+- persistent inflammation
+- low-grade chronic inflammation
+- inflammatory burden
+- inflammatory load
 - neuroinflammation
-summary: Persistent, low-grade inflammation linked to heart disease, diabetes, autoimmune
-  disorders, neurodegenerative disease, and cancer. Addressed in functional medicine
-  via diet, nutraceuticals, and lifestyle modification targeting root causes.
+summary: Omega-3, vitamin D, vitamin E, curcumin, boswellia, and antioxidants are
+  discussed for mood, hair, and joint symptoms related to chronic inflammation. Oxidative
+  stress and inflammatory diets are described as upstream drivers.
 common_symptoms:
 - fatigue
 - brain-fog
@@ -16,6 +20,13 @@ common_symptoms:
 - skin-issues
 - resistant-weight-gain
 - mood-changes
+- skin-itching
+- constipation
+- diarrhea
+- hair-loss
+- mood-changes-anxiety
+- cognitive-dullness
+- poor-wound-healing
 red_flags:
 - autoimmune flares
 - active infection
@@ -23,6 +34,16 @@ red_flags:
 - pregnancy and breastfeeding
 - Unintentional weight loss with persistent inflammation — refer for cancer screening
 - Severe joint swelling or organ involvement — refer to rheumatologist
+- Signs of acute inflammation with fever, severe pain, or rapid organ involvement
+  — refer to clinician
+- Autoimmune flare unresponsive to dietary intervention
+- Signs of acute infection requiring antibiotics
+- Anti-nuclear antibody elevation with active tissue destruction
+- High neutrophil-to-lymphocyte ratio with poor prognosis
+- autoimmune flares requiring medical management
+- persistent inflammatory pain unresponsive to lifestyle
+- cardiovascular-risk
+- autoimmune-activity
 related_topics:
 - autoimmune-disease
 - leaky-gut
@@ -32,6 +53,18 @@ related_topics:
 - anti-inflammatory-diet
 - gut-health
 - immune-support
+- immune-support-covid-19
+- gut-dysbiosis
+- oxidative-stress
+- omega-3-omega-6-balance
+- autoimmune-conditions
+- food-sensitivities
+- joint-pain
+- depression-like-symptoms
+- thyroid
+- hair-loss
+- cardiovascular-health
+- nutrition-deficiency
 key_mechanisms:
 - nf-kb-activation
 - leaky-gut
@@ -39,11 +72,18 @@ key_mechanisms:
 - nlrp3-inflammasome-activation
 - oxidative-stress
 - cytokine-dysregulation
-coaching_scope_notes: Coaches can support anti-inflammatory dietary and lifestyle
-  changes. Supplement recommendations from this toolkit require clinician supervision.
-clinician_scope_notes: CRP is noted as a key biomarker. Clinician oversight needed
-  for dosing nutraceuticals, especially Vitamin A and licorice root.
-evidence_tier: strong
+- gut-dysbiosis
+- nf-kappa-b-activation
+- arachidonic-acid-cascade
+- lps-mediated-immune-activation
+- oxidative-stress-and-inflammation
+- gut-barrier-and-nutrient-absorption
+coaching_scope_notes: Encourage anti-inflammatory dietary patterns and food-first
+  antioxidant sources. High-dose antioxidant supplementation during illness or medication
+  use requires clinician coordination.
+clinician_scope_notes: High-dose antioxidant timing during chemotherapy and anti-inflammatory
+  supplementation alongside NSAIDs or anticoagulants are clinical scope items.
+evidence_tier: plausible_emerging
 sources:
 - id: vitaone-inflammation-cheatsheet
   location: Inflammation Cheatsheet — Page 02
@@ -54,7 +94,26 @@ sources:
   quote: Chronic inflammation is a persistent, low-grade inflammation that can lead
     to various health issues over time, such as heart disease, diabetes, autoimmune
     disorders, and certain cancers.
-version: 2
+- id: vitaone-health-coaching-toolkit
+  location: Anti Inflammatory Diet — What is an Anti-Inflammatory Diet?
+  quote: Chronic inflammation is a persistent, low-grade inflammation that can lead
+    to various health issues over time, such as heart disease, diabetes, autoimmune
+    disorders, and certain cancers.
+- id: coconote-fm-approach-inflammation
+  location: Introduction – Chronic Inflammation Overview
+  quote: chronic inflammation is responsible for all the disease, all the chronic
+    inflammation that the patient work in, complaining with diabetes or hypertension
+    or thyroid disease or ulcerative colitis or immune inflammation or Alzheimer or
+    axillocerosis.
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Topics Covered
+  quote: Omega-3, vitamin D, vitamin E, curcumin, boswellia, antioxidants, and inflammatory
+    diets are discussed for mood, hair, and joint symptoms.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Topics Covered
+  quote: Omega-3, vitamin D, vitamin E, curcumin, boswellia, antioxidants, and inflammatory
+    diets are discussed for mood, hair, and joint symptoms.
+version: 6
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-06'
 updated_by: shivani

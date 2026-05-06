@@ -1,24 +1,37 @@
 slug: sleep-disruption
-display_name: Sleep Disruption
+display_name: Sleep Disruption (Hormonal)
 aliases:
 - poor sleep
 - cortisol-related sleep issues
 - wakefulness
+- waking at night
+- poor sleep quality
+- menopausal insomnia
+- progesterone and sleep
 category: sleep
 severity: common
-description: Disrupted sleep can occur when low-carb diets trigger cortisol spikes,
-  warranting reintroduction of complex carbohydrates at dinner.
-when_to_refer: Refer if sleep disruption is severe or accompanied by anxiety/mood
-  disorder.
+description: Difficulty falling or staying asleep, particularly associated with declining
+  progesterone levels. Progesterone is produced in multiple brain regions and supports
+  sleep quality.
+when_to_refer: Refer if chronic and severely impacting daily function — consider hormonal
+  evaluation alongside sleep study if sleep apnea suspected.
 linked_to_topics:
 - low-carb-diet
+- perimenopause-and-menopause
+- progesterone-physiology
+- bioidentical-hormone-replacement-therapy
 linked_to_mechanisms:
 - insulin-resistance
+- genomic-hormone-signaling
 sources:
 - id: vitaone-cardiometabolic-diet-cheatsheet
   location: Precautions for Practitioners
   quote: Reintroduce complex carbs if cortisol spikes or sleep disruption occur.
-version: 1
+- id: ask-expert-hormonal-health-bhrt
+  location: Progesterone's Systemic Roles
+  quote: we actually make progesterone in six different places in our brain. That's
+    one of the reasons we sleep better when we're young.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

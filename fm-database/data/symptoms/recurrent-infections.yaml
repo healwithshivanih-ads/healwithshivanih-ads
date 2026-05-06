@@ -1,0 +1,22 @@
+slug: recurrent-infections
+display_name: Recurrent Infections
+aliases:
+- frequent infections
+- low immunity
+- immune suppression
+category: constitutional
+severity: common
+description: Increased susceptibility to infections due to iron deficiency impairing
+  immune system function.
+linked_to_topics:
+- iron-deficiency-anemia
+linked_to_mechanisms: []
+when_to_refer: ''
+sources:
+- id: coconote-fm-iron-deficiency-anemia
+  location: Symptoms of Iron Deficiency section
+  quote: Infections because the immune system is on the lower side.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

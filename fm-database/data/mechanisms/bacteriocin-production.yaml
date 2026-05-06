@@ -1,0 +1,35 @@
+slug: bacteriocin-production
+display_name: Bacteriocin Production by Beneficial Microbes
+aliases:
+- natural antibiotic production
+- bacteriocin antimicrobial activity
+category: immune
+summary: Certain probiotic species (L. reuteri, L. gasseri, Bacillus subtilis) produce
+  bacteriocins—natural antibiotics that selectively inhibit and kill fecal pathogens
+  like E. coli, Klebsiella, and Pseudomonas in the small intestine. This is the proposed
+  mechanism by which SIBO yogurt reduces fecal microbial overgrowth. Initial die-off
+  may cause transient diarrhea from LPS release.
+upstream_drivers:
+- probiotic-colonization
+- high-count-fermented-yogurt
+downstream_effects:
+- sibo-resolution
+- reduction-in-endotoxemia
+- transient-diarrhea-die-off
+related_mechanisms:
+- endotoxemia
+- gut-vaginal-microbiome-axis
+linked_to_topics:
+- sibo
+- gut-microbiome
+evidence_tier: plausible_emerging
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: SIBO yogurt and bacteriocin discussion
+  quote: Microbes like reuteri, Lactobacillus gasseri, Bacillus subtilis, these are
+    bacteriocin-producing species. That is, they produce natural antibiotics that
+    kill fecal microbes.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

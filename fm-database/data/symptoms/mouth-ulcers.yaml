@@ -1,0 +1,28 @@
+slug: mouth-ulcers
+display_name: Mouth Ulcers
+aliases:
+- oral ulcers
+- recurrent mouth sores
+- aphthous ulcers
+- canker sores
+category: gi
+severity: common
+description: Recurrent painful sores in the mouth linked to folate and/or B12 deficiency,
+  reflecting impaired cell turnover in mucosal tissues.
+linked_to_topics:
+- iron-deficiency-anemia
+- folate-vitamin-b9
+- vitamin-b12
+linked_to_mechanisms: []
+when_to_refer: Refer if persistent or recurring despite nutritional support.
+sources:
+- id: coconote-fm-iron-deficiency-anemia
+  location: Symptoms of Iron Deficiency section
+  quote: Mouth ulcers recurrent.
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: Folate Deficiency Signs & Symptoms
+  quote: Others like mouth ulcers, diarrhea, neurological symptoms.
+version: 2
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

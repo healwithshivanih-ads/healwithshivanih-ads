@@ -1,0 +1,28 @@
+slug: untreated-hypothyroidism-increases-cardiovascular-risk
+statement: Untreated hypothyroidism can lead to elevated risk of heart disease, high
+  cholesterol levels, and high blood pressure.
+evidence_tier: strong
+rationale: The association between hypothyroidism and dyslipidemia, hypertension,
+  and cardiovascular risk is well-established in the medical literature and clinical
+  guidelines.
+coaching_translation: Getting thyroid dysfunction properly diagnosed and treated isn't
+  just about energy and weight — untreated low thyroid can significantly increase
+  heart disease risk.
+out_of_scope_notes: Cardiovascular risk assessment and management require clinician
+  oversight.
+linked_to_topics:
+- thyroid-dysfunction
+- hashimotos-hypothyroidism
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Understanding Hashimoto's Hypothyroidism — Why is it Important to Address
+    Hashimoto's?
+  quote: Untreated hypothyroidism can lead to an elevated risk of heart disease, high
+    cholesterol levels, and high blood pressure.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

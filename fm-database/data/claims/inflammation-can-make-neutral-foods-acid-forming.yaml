@@ -1,0 +1,29 @@
+slug: inflammation-can-make-neutral-foods-acid-forming
+statement: If there is existing inflammation in the body, foods that are ordinarily
+  neutral (such as potatoes) may shift toward having an acid-forming effect.
+evidence_tier: fm_specific_thin
+rationale: This is a nuanced claim made in the context of potatoes (ordinarily near-neutral
+  on PRAL scales). The idea that systemic inflammation alters how foods are metabolised
+  is biologically plausible but is not a well-characterised mechanism in the PRAL
+  literature.
+coaching_translation: Your body's current state matters. If you have a lot of inflammation,
+  even normally neutral foods can add to the acid burden — another reason to address
+  underlying inflammation.
+caveats:
+- Source is an expert lecture.
+- The mechanism by which inflammation shifts a food's effective acid load is not described
+  or cited.
+- This is a generalisation that requires clinical context to apply individually.
+linked_to_topics:
+- acid-alkaline-balance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-acid-alkaline-foods
+  location: Main lecture body
+  quote: Potatoes aren't acid, but if you have inflammation in your body, it can be.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

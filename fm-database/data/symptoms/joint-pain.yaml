@@ -6,7 +6,6 @@ aliases:
 - achy-joints
 - joint-aches
 - joint-stiffness
-- morning-stiffness
 - joint stiffness
 - morning stiffness
 - joint aches
@@ -20,14 +19,26 @@ aliases:
 - achy muscles
 - muscle weakness
 - muscle stiffness
-- myalgia
 - tingling in joints
 - joint inflammation
+- joint aching
+- joint discomfort
+- arthralgias
+- swollen joints
+- sore joints
+- joint swelling
+- rheumatic pain
+- inflamed joints
+- aches and pains
+- muscle pain
+- gout
+- musculoskeletal pain
 category: musculoskeletal
 severity: common
-description: Pain in one or more joints; listed as a withdrawal symptom during beta
-  blocker tapering.
-when_to_refer: Severe swelling, redness, warmth, or joint deformity — refer to rheumatologist.
+description: Diffuse joint or muscle pain associated with systemic endotoxemia from
+  SIBO. Microbiome-driven inflammation can manifest in musculoskeletal symptoms.
+when_to_refer: Swollen joints, autoimmune arthritis, or fever with joint pain—refer
+  to rheumatology.
 linked_to_topics:
 - perimenopause
 - autoimmune
@@ -42,6 +53,20 @@ linked_to_topics:
 - hashimotos-hypothyroidism
 - anti-inflammatory-diet
 - beta-blocker-deprescribing
+- chronic-pain-and-fatigue
+- fibromyalgia
+- leaky-gut
+- omega-3-omega-6-balance
+- autoimmunity-leaky-gut-triad
+- intestinal-permeability
+- autoimmunity-leaky-gut-connection
+- omega-3-fatty-acids
+- arachidonic-acid-cascade
+- menopause
+- lectin-sensitivity
+- ph-balance
+- sibo
+- gut-microbiome
 linked_to_mechanisms:
 - estrogen-decline
 - chronic-inflammation
@@ -54,6 +79,18 @@ linked_to_mechanisms:
 - impaired-t4-to-t3-conversion
 - nlrp3-inflammasome-activation
 - cytokine-dysregulation
+- oxidative-stress
+- omega-3-deficiency-inflammation
+- nutrient-malabsorption
+- arachidonic-acid-cascade
+- nf-kappa-b-activation
+- tight-junction-dysregulation
+- lps-translocation
+- resolvin-spm-production
+- estrogen-progesterone-decline
+- lectin-gut-inflammation
+- cellular-ph-dysregulation
+- endotoxemia
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Joint Pain / Autoimmune sections
@@ -76,7 +113,46 @@ sources:
 - id: vitaone-cv-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
   quote: Joint pain
-version: 7
+- id: vitaone-health-coaching-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
+  quote: Joint pain
+- id: coconote-fm-chronic-pain-fatigue
+  location: Supplements Section
+  quote: Most of the time when people are complaining about lower back pain or they
+    have like arthritis pain or joint pain, high quality omega and Vitamin high doses
+    of vitamin K2, T3 is super important.
+- id: coconote-fm-approach-inflammation
+  location: Anti-Inflammatory Herbs and Supplements
+  quote: if somebody having a bone pain or rheumatoid arthritis or joint pain, I would
+    like to use phosphalia.
+- id: coconote-fm-intestinal-permeability
+  location: Cross Reactivity and Molecular Mimicry
+  quote: so your cartilage amino acid sequence is matching to your gluten amino acid
+    sequence and immune system is creating antibody for gluten but by mistake is targeting
+    your cartilage... and that's why the immune system target your joint and there
+    is a there is an inflammation in the joint.
+- id: coconote-fm-intestinal-permeability-anish
+  location: Pathophysiology of Autoimmunity
+  quote: Your B cell is actually creating antibody for gluten, but by mistake, targeting
+    your cartilage because the amino acid sequence is matching so immune system the
+    antibody is binding to your cartilage… and that's why the immune system target
+    your joint and there is an inflammation in the joint.
+- id: coconote-fm-omega-3-fatty-acids
+  location: Rheumatoid Arthritis Study Slide
+  quote: higher rates of remission were seen. And you know, the percent inhibition
+    of inflammatory compounds like TNF-alpha and interleukin-1-beta were seen with
+    EPA and DHA consumption.
+- id: coconote-fm-sex-hormones
+  location: Symptoms of Menopause Transition
+  quote: muscle and joint pains as well.
+- id: barbara-oneil-ph-balance
+  location: Nightshade Vegetables Section
+  quote: If someone has arthritis or gout, they're best eliminating those nut-shaped
+    vegetables because both of those conditions are high inflammation.
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: SIBO symptoms discussion
+  quote: You've got SIBO, you've got bloating and diarrhea and joint pain and anxiety.
+version: 17
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

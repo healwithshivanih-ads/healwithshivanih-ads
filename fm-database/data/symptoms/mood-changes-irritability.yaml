@@ -1,0 +1,24 @@
+slug: mood-changes-irritability
+display_name: Mood Changes / Irritability
+aliases:
+- mood swings
+- emotional sensitivity
+- anxious gut
+category: mood
+severity: common
+description: Changes in mood, irritability, or emotional dysregulation commonly reported
+  during elimination diet transitions and linked to gut-brain axis communication.
+linked_to_topics:
+- gut-brain-axis
+- elimination-diet
+linked_to_mechanisms:
+- gut-brain-axis-dysregulation
+when_to_refer: ''
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Low Fodmap Diet Symptom Tracker — Section 2
+  quote: Mood changes / irritability
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,39 @@
+slug: antigravity-exercise-for-blood-sugar
+display_name: Anti-Gravity Exercise for Blood Sugar Management
+aliases:
+- resistance-bearing exercise
+- anti-gravity workout
+summary: A category of exercises that work against gravitational force (e.g., stair
+  climbing, squats, yoga, soleus push-ups), which enhance skeletal muscle glucose
+  uptake via both insulin-dependent and insulin-independent mechanisms, improving
+  insulin sensitivity and glucose disposal.
+common_symptoms:
+- glucose-spikes
+- weight-gain
+- fatigue
+red_flags:
+- uncontrolled hyperglycemia during exercise
+- hypoglycemic episodes post-exercise in medicated individuals
+related_topics:
+- blood-sugar-dysfunction
+- insulin-resistance
+key_mechanisms:
+- skeletal-muscle-glucose-uptake
+- hepatic-ampk-activation
+- nitric-oxide-production
+coaching_scope_notes: Coaches can recommend starting 15 minutes of anti-gravity exercise
+  45 minutes post-lunch and dinner, gradually increasing. Suitable for client action
+  planning.
+clinician_scope_notes: Clients on insulin or oral hypoglycemics should consult their
+  prescriber before significantly increasing exercise intensity.
+evidence_tier: strong
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Antigravity Exercises
+  quote: Exercise enhances skeletal muscle glucose uptake using both insulin-dependent
+    & insulin-independent mechanisms, and regular exercise results in sustained improvements
+    in insulin sensitivity and glucose disposal.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,33 @@
+slug: lchf-improves-t2d-and-pcos-via-insulin-reduction
+statement: Low-carbohydrate high-fat (LCHF) diets improve type 2 diabetes outcomes
+  and restore menstrual cycles in PCOS by reducing insulin demand and correcting insulin
+  resistance.
+evidence_tier: plausible_emerging
+rationale: Multiple RCTs and systematic reviews support LCHF for improving HbA1c and
+  fasting insulin in T2D, and emerging evidence supports LCHF for improving hormonal
+  profiles and cycle regularity in PCOS. However, long-term adherence and optimal
+  carbohydrate thresholds remain debated.
+coaching_translation: Reducing carbohydrate intake significantly can help the body
+  need less insulin, which improves blood sugar control in diabetes and may help restore
+  regular periods in PCOS.
+caveats:
+- Carbohydrate threshold varies individually.
+- Women may require carb cycling to protect thyroid and adrenal function on long-term
+  LCHF.
+- Source is Instagram educational content.
+linked_to_topics:
+- metabolic-health-lchf
+- pcos-fertility
+- insulin-resistance-metabolic-syndrome
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DX1jE67jI4m/
+  quote: Type 2 diabetes improves when insulin demand reduces → PCOS patients regain
+    cycles when insulin resistance is corrected
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

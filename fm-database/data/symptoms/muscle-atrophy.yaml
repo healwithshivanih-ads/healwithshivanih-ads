@@ -1,0 +1,26 @@
+slug: muscle-atrophy
+display_name: Muscle Atrophy
+aliases:
+- muscle wasting
+- muscle loss
+- sarcopenia from statins
+category: musculoskeletal
+severity: concerning
+description: Progressive loss of muscle mass associated with statin use, potentially
+  mediated by mitochondrial dysfunction from CoQ10 depletion. Particularly concerning
+  in elderly patients where it may increase fall risk.
+when_to_refer: Refer to clinician if significant muscle wasting is observed, especially
+  in elderly patients at fall risk.
+linked_to_topics:
+- statin-side-effects
+linked_to_mechanisms:
+- coq10-depletion
+- mevalonate-pathway-inhibition
+sources:
+- id: coconote-fm-reality-of-statins
+  location: Side Effects of Statins Section
+  quote: Elderly can have higher risk of falls.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

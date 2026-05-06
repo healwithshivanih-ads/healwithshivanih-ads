@@ -1,0 +1,30 @@
+slug: reduce-it-omega3-25-percent-event-reduction
+statement: The REDUCE-IT trial demonstrated that 4g/day of EPA produced a 25% reduction
+  in primary cardiovascular endpoints and 13% reduction in mortality compared to placebo
+  in statin-treated patients.
+evidence_tier: strong
+rationale: REDUCE-IT is a landmark RCT (NEJM 2018) directly referenced by name. Results
+  are widely cited in cardiology literature.
+coaching_translation: A major clinical trial showed that taking high-dose EPA omega-3
+  (4 grams/day) on top of statin therapy significantly reduced heart attacks, strokes,
+  and death.
+caveats:
+- REDUCE-IT used prescription icosapentaenoic acid (Vascepa), not generic fish oil
+  — clinical distinction matters.
+- Source is lecture transcript — peer-reviewed RCT corroborates this claim.
+linked_to_topics:
+- cardiovascular-disease-prevention
+- dyslipidemia
+linked_to_supplements:
+- omega-3-fatty-acids
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: REDUCE-IT Trial
+  quote: REDUCE-IT, if we look at primary endpoints, 25% reduction in events. This
+    is four grams a day of EPA, 13% reduction in mortality, reduction in fatal stroke.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

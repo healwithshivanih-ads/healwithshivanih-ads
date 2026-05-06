@@ -1,0 +1,41 @@
+slug: vitamin-k2
+display_name: Vitamin K2
+category: vitamin
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 90
+    max: 200
+    unit: mcg
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- chronic-pain-and-fatigue
+- menopause
+linked_to_claims:
+- vitamin-d3-k2-magnesium-boron-calcium-absorption
+- vitamin-d-supports-reproductive-health-and-bone
+notes_for_coach: Recommended alongside Vitamin D3 for bone and cardiovascular support
+  in menopausal women. K2 directs calcium to bones and away from arterial walls.
+notes_for_client: Vitamin K2 works with Vitamin D to help keep calcium in your bones
+  where it belongs, rather than in your arteries.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-chronic-pain-fatigue
+  location: Supplements Section
+  quote: Most of the time when people are complaining about lower back pain or they
+    have like arthritis pain or joint pain, high quality omega and Vitamin high doses
+    of vitamin K2, T3 is super important.
+- id: coconote-fm-sex-hormones
+  location: Management — Supplementation
+  quote: Vitamin D is very important when it comes to supporting in Vitamin K2 and
+    when it comes to supporting the reproductive health.
+version: 2
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,30 @@
+slug: fix-digestive-enzymes-first-in-sibo
+statement: In SIBO treatment, restoring digestive enzyme function should be the first
+  therapeutic step before introducing probiotics, prebiotics, or complex herbals,
+  as chronic gut dysfunction reduces endogenous enzyme activity.
+evidence_tier: fm_specific_thin
+rationale: Clinically logical sequencing supported by functional medicine principles.
+  Fecal elastase-1 as a marker of enzyme insufficiency is validated, but the 'enzymes
+  first' sequencing is FM-specific with thin peer-reviewed support.
+coaching_translation: Before loading up on probiotics or herbs, we first make sure
+  your gut can actually digest food properly. Without enzymes, the rest of the protocol
+  won't work as well.
+caveats:
+- Source is expert consensus lecture. Therapeutic sequencing is FM-specific and not
+  validated in RCTs.
+- Fecal elastase interpretation requires clinician oversight.
+linked_to_topics:
+- sibo
+linked_to_supplements:
+- digestive-enzymes
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-sibo-sifo
+  location: GI Map / Treatment Protocol
+  quote: First fix that. The rest we will see later. The probiotics and the prebiotics.
+    First we have to fix on the digestive enzyme dysfunction.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

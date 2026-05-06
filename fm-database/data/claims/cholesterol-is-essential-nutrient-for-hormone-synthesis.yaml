@@ -1,0 +1,31 @@
+slug: cholesterol-is-essential-nutrient-for-hormone-synthesis
+statement: Cholesterol is an essential nutrient required for the synthesis of steroid
+  hormones including testosterone, cortisol, aldosterone, and estrogen; indiscriminate
+  reduction is not warranted.
+evidence_tier: strong
+rationale: This is a well-established biochemical fact — cholesterol is the precursor
+  to all steroid hormones. The document uses this to argue against routinely reducing
+  cholesterol below clinically meaningful thresholds. The biochemistry is textbook-level
+  established.
+coaching_translation: Cholesterol isn't just 'bad fat' — it's a building block for
+  your hormones. Your body needs it. The goal isn't to drive cholesterol as low as
+  possible; it's to have the right kind, in the right amount.
+caveats:
+- While the biochemistry is established (strong tier), the clinical implication that
+  statins should therefore be avoided broadly is a separate claim requiring nuanced
+  risk-benefit analysis per patient.
+linked_to_topics:
+- statin-therapy-risks-and-benefits
+- dyslipidemia-management
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Cholesterol as a nutrient section
+  quote: All the hormones. Detergiron, you can say cortisol, aldosterone, estrogen,
+    every hormone is made from cholesterol. So why do you want to reduce the cholesterol?
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

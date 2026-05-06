@@ -1,0 +1,25 @@
+slug: ionized-calcium-is-functional-marker
+statement: Ionized calcium is the active, free form of serum calcium and is the preferred
+  functional marker, as it represents the 50% of serum calcium available for cellular
+  processes.
+evidence_tier: strong
+rationale: 'Well-established biochemistry: ionized calcium is the metabolically active
+  fraction. This is standard clinical teaching.'
+coaching_translation: When checking calcium status, ionized calcium is more meaningful
+  than total calcium because it shows the portion your body can actually use.
+caveats: []
+linked_to_topics:
+- calcium-metabolism
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-calcium-deficiency
+  location: Calcium Fractions in Blood
+  quote: Ionized means active and free that can really act on a cellular process or
+    in a metabolism. So ionized calcium is actually active form and as we know 50%
+    of serum calcium level is in ionized form.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

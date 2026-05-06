@@ -1,0 +1,26 @@
+slug: steaming-as-nutrient-preserving-cooking-method
+statement: Steaming (used for fish, dhokla, idli, and beans in this plan) preserves
+  heat-sensitive micronutrients better than boiling or frying, supporting micronutrient
+  density in a cardiometabolic diet.
+evidence_tier: strong
+rationale: Multiple recipes use steaming as the primary cooking method (Lemony Steamed
+  Fish, Dhokla, Lentil Idli, Steamed Moth Beans). The superiority of steaming over
+  boiling for water-soluble vitamin retention is well-established nutritional science.
+coaching_translation: Steaming food is one of the best ways to keep vitamins and minerals
+  intact. This plan leans on steaming for fish, snacks, and legumes for exactly that
+  reason.
+linked_to_topics:
+- cardiometabolic-diet
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-cardiometabolic-recipes
+  location: Lemony Steamed Fish
+  quote: Cover & steam on medium-low for 8–10 minutes, or until the fish flakes easily
+    with a fork.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

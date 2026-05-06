@@ -1,0 +1,34 @@
+slug: licorice-root-supports-immune-and-reduces-viral-growth
+statement: Licorice root standardized to glycyrrhizin (200–400 mg daily in divided
+  doses, short-term <4 weeks) supports immune system function and reduces viral growth.
+evidence_tier: plausible_emerging
+rationale: Glycyrrhizin has demonstrated antiviral activity against SARS-CoV (Cinatl
+  et al. 2003, Lancet) and influenza in vitro (Michaelis et al. 2011, PLoS One). Human
+  RCT evidence for immune support and COVID-19 is limited. Safety concerns (hypertension,
+  hypokalemia) limit use to short-term.
+coaching_translation: Licorice root has been used in Traditional Chinese Medicine
+  for centuries and contains compounds shown to fight certain viruses. It should only
+  be used short-term and under practitioner supervision.
+out_of_scope_notes: Short-term use only (<4 weeks). Risk of hypertension, hypokalemia,
+  and hypertension encephalopathy with excessive use (documented in referenced case
+  reports). CLINICIAN SUPERVISION REQUIRED.
+caveats:
+- Short-term use only — maximum 4 weeks.
+- Risk of hypertension, hypokalemia, and fluid retention with excessive or prolonged
+  use.
+- Contraindicated in hypertension, heart disease, kidney disease, and pregnancy.
+- Clinician supervision required for this supplement.
+linked_to_topics:
+- immune-support-covid-19
+linked_to_supplements:
+- licorice-root
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Licorice is commonly found in Traditional Chinese Medicine (TCM) formulations
+    and supports immune system function and reduces viral growth.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

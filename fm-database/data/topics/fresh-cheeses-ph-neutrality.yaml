@@ -1,0 +1,29 @@
+slug: fresh-cheeses-ph-neutrality
+display_name: Fresh Cheeses and pH Neutrality
+aliases:
+- paneer pH
+- fresh cheese alkalinity
+- neutral pH foods
+summary: Fresh cheeses (such as Indian paneer/chhena) are described as sitting at
+  a near-neutral pH of approximately 7, distinguishing them from more acid-forming
+  aged dairy products and placing them in a more balanced category within the acid-alkaline
+  dietary framework.
+common_symptoms: []
+red_flags: []
+related_topics:
+- ph-balance-and-diet
+key_mechanisms:
+- dietary-acid-load
+coaching_scope_notes: Can be used to help clients understand that not all dairy is
+  equally acid-forming; fresh cheeses may be a more pH-neutral protein option.
+evidence_tier: fm_specific_thin
+clinician_scope_notes: ''
+sources:
+- id: barbara-oneil-fresh-cheeses-ph
+  location: Fresh Cheeses Section
+  quote: A lot of Indian dishes have those little fresh cheeses in them and they are
+    basically a pH of 7 fetter. So your fresh cheeses will sit at the pH of 7.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

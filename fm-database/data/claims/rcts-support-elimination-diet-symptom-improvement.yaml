@@ -1,0 +1,29 @@
+slug: rcts-support-elimination-diet-symptom-improvement
+statement: Randomized controlled trials testing elimination diets show participants
+  experiencing significant improvement in baseline symptoms.
+evidence_tier: strong
+rationale: Speaker explicitly references RCTs on elimination diets with significant
+  symptom improvement at baseline. This aligns with published peer-reviewed evidence
+  on elimination diets in conditions such as IBS, autoimmune conditions, and food
+  sensitivities.
+coaching_translation: When a clinician prescribes an elimination diet, you can confidently
+  tell clients that this approach has strong trial evidence behind it — your job is
+  to help them stick with it.
+caveats:
+- No specific study citation (author, year, journal) provided in the source document.
+- Population, condition, and specific foods eliminated are unspecified.
+linked_to_topics:
+- elimination-diet
+- chronic-disease-management
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-future-fm
+  location: Evidence Supporting Coaching Integration Section
+  quote: We have randomized controlled trials testing out elimination diets and participants
+    showing baseline symptoms improving significantly.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

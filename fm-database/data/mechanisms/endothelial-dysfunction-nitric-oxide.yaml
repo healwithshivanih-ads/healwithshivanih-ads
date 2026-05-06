@@ -1,0 +1,34 @@
+slug: endothelial-dysfunction-nitric-oxide
+display_name: Endothelial Dysfunction via Nitric Oxide Impairment
+aliases:
+- NO deficiency
+- ADMA nitric oxide blockade
+- endothelial nitric oxide pathway
+category: signaling
+summary: A healthy endothelium produces nitric oxide (NO), promoting vasodilation,
+  reduced thrombosis, and calcium regulation. Nitric oxide is impaired by elevated
+  ADMA (blocked by proton pump inhibitors), oxidative stress, and inflammation, contributing
+  to arterial stiffness and increased cardiovascular risk.
+upstream_drivers:
+- ppi-adma-elevation
+- oxidative-stress
+- inflammation
+downstream_effects:
+- arterial-stiffness
+- increased-thrombosis
+- hypertension
+related_mechanisms:
+- oxidized-ldl-inflammasome-activation
+- nf-kappab-suppression
+linked_to_topics:
+- cardiovascular-disease-prevention
+evidence_tier: strong
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Vascular Integrity and Nitric Oxide
+  quote: A healthy endothelium produces nitric oxide. Lots of nitric oxide, lots of
+    vasodilatation, less stiffness of the vessel.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

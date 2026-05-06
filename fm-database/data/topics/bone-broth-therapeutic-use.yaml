@@ -1,0 +1,27 @@
+slug: bone-broth-therapeutic-use
+display_name: Bone Broth — Therapeutic Use
+aliases:
+- stock
+- collagen broth
+summary: Long-simmered animal bones (lamb/goat) with vegetables and optional apple
+  cider vinegar to extract minerals and gelatin. Used as a warm, gut-supportive, anti-inflammatory
+  beverage or soup base in the cardiometabolic context.
+key_mechanisms:
+- gut-lining-support
+- anti-inflammatory-signaling
+coaching_scope_notes: Apple cider vinegar is included optionally to help extract minerals
+  from bones. Minimum 1.5 hours simmer recommended.
+evidence_tier: fm_specific_thin
+common_symptoms: []
+red_flags: []
+related_topics: []
+clinician_scope_notes: ''
+sources:
+- id: vitaone-cardiometabolic-recipes
+  location: Bone Broth
+  quote: A few drops of apple cider vinegar (optional, helps extract minerals). Cover
+    and let it simmer gently for 2–3 hours.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -3,32 +3,44 @@ display_name: Gratitude Practice
 aliases:
 - gratitude journaling
 - IFM gratitude journal
-summary: A structured reflective practice of recognizing and writing about things
-  one is grateful for, linked to decreased stress, lower blood pressure, better sleep,
-  stronger immunity, and improved mood.
+- thankfulness practice
+- gratitude journaling practice
+summary: Regular, intentional recognition and recording of gratitude—via journaling
+  or reflection—associated with reduced stress, lower blood pressure, better sleep,
+  stronger immunity, and enhanced positive affect.
 common_symptoms:
 - low-mood
 - anxiety
 - poor-sleep
+- elevated-stress
+- poor-sleep-quality
+- social-disconnection
+- stress
+- social-isolation
 red_flags: []
 related_topics:
 - stress-management
 - self-care
 - mindfulness
+- mindful-breathing
+- stress-response
+- emotional-wellbeing
 key_mechanisms:
 - parasympathetic-activation
-coaching_scope_notes: Coaches can introduce gratitude journaling using the IFM template,
-  suggest 15-minute sessions 1–2×/week, and help clients deepen reflection beyond
-  simple lists.
+- hpa-axis-dysregulation
+- hpa-axis-regulation
+- positive-affect-upregulation
+coaching_scope_notes: Coaches can introduce and support gratitude journaling as a
+  daily or weekly practice. Use the IFM Gratitude Journal template as a client tool.
 evidence_tier: plausible_emerging
-clinician_scope_notes: ''
+clinician_scope_notes: No clinical referral required for gratitude journaling guidance.
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Practicing Gratitude with the IFM Gratitude Journal
   quote: In recent years, the act of recognizing and expressing gratitude has been
     linked to many improved physical, psychological, and social health benefits for
     both healthcare providers and patients.
-version: 1
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

@@ -1,0 +1,33 @@
+slug: thyroid-ovarian-axis
+display_name: Thyroid–Ovarian Axis
+aliases:
+- T3-ovary receptor signaling
+- thyroid-progesterone link
+category: endocrine
+summary: T3 (active thyroid hormone) receptors are present on ovarian cells and are
+  required for ovulation initiation. Suboptimal T3 levels impair ovarian function
+  and progesterone production, meaning hypothyroidism can present as or worsen perimenopausal
+  hormone imbalances.
+upstream_drivers:
+- hypothyroidism
+- poor-t4-to-t3-conversion
+downstream_effects:
+- low-progesterone
+- irregular-ovulation
+- amenorrhea
+related_mechanisms:
+- estrogen-progesterone-decline
+linked_to_topics:
+- menopause
+- perimenopause
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-sex-hormones
+  location: Clinical Assessment — Thyroid
+  quote: Thyroid function is related, you have receptors of T3 hormone at the level
+    of your ovaries for the initiation of ovulation. So if the T3 is not good, then
+    the value of progesterone may also be not that good.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,41 @@
+slug: acid-reflux-and-cardiac-sphincter-weakness
+display_name: Acid Reflux & Cardiac Sphincter Weakness
+aliases:
+- GERD
+- reflux
+- gastro-oesophageal reflux
+summary: Acid reflux is framed not as a problem of excess stomach acid but as a weakened
+  cardiac sphincter (lower oesophageal sphincter), caused primarily by eating large
+  evening meals, lying down after eating, and drinking large amounts of fluid with
+  meals. Long-term antacid use (e.g. Nexium/PPIs) is said to risk contributing to
+  colon cancer by preventing proper protein digestion.
+common_symptoms:
+- acid-reflux-heartburn
+- oesophageal-ulceration
+- incomplete-digestion
+red_flags:
+- oesophageal-ulceration-severe
+- suspected-colon-cancer
+related_topics:
+- gastrointestinal-tract-overview
+- meal-timing-and-digestive-rest
+key_mechanisms:
+- hcl-and-pepsin-protein-digestion
+- cardiac-sphincter-weakness
+coaching_scope_notes: Coaches can address meal timing (light evening meals, avoiding
+  lying down post-meal), fluid timing, and stress. PPI medication review is clinician
+  scope.
+evidence_tier: plausible_emerging
+clinician_scope_notes: ''
+sources:
+- id: barbara-oneil-gi-tract
+  location: Stomach & Acid Section
+  quote: There are some people who are suffering from something called reflux heartburn
+    where the acid is coming up into the esophagus... it's because it's weak, well
+    why is it weak because the person's eating breakfast like a pauper and lunch like
+    a pauper and tea is the king and the queen together and when they lie down to
+    sleep at night gravity hits that cardiac sphincter, weakening it.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

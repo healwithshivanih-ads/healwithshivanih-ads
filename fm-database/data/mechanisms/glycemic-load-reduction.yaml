@@ -1,0 +1,35 @@
+slug: glycemic-load-reduction
+display_name: Glycaemic Load Reduction
+aliases:
+- blood sugar stabilisation
+- GI lowering
+- postprandial glucose blunting
+category: metabolic
+summary: Replacing refined grains with high-fibre whole grains (millets, quinoa, jowar)
+  and legumes slows glucose absorption, reduces postprandial insulin spikes, and improves
+  long-term glycaemic control. Fibre forms a viscous gel in the gut that slows carbohydrate
+  digestion.
+upstream_drivers:
+- refined-carbohydrate-intake
+- low-dietary-fibre
+downstream_effects:
+- improved-insulin-sensitivity
+- reduced-postprandial-hyperglycaemia
+- lower-hba1c
+related_mechanisms:
+- dietary-fiber-modulation
+- insulin-resistance
+linked_to_topics:
+- cardiometabolic-diet
+- millet-and-ancient-grain-substitution
+- legume-based-eating-pattern
+evidence_tier: strong
+sources:
+- id: vitaone-cardiometabolic-recipes
+  location: Millet-Lobia Pulao
+  quote: ¼ cup millet (foxtail millet, little millet, or barnyard millet) … Add cooked
+    lobia (cowpea), turmeric, garam masala, and salt.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

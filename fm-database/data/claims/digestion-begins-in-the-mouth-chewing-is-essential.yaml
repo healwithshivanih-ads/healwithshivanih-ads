@@ -1,0 +1,31 @@
+slug: digestion-begins-in-the-mouth-chewing-is-essential
+statement: Digestion begins in the mouth via two enzymes — lingual lipase (saturated
+  fat breakdown) and salivary amylase/ptyalin (starch breakdown) — and thorough chewing
+  increases surface area for enzyme action, reducing the digestive burden on downstream
+  organs.
+evidence_tier: strong
+rationale: The existence and function of lingual lipase and salivary amylase (ptyalin)
+  are well-established in physiology. The relationship between particle size, surface
+  area, and enzymatic efficiency is a foundational principle of digestive biology.
+coaching_translation: Chew every mouthful thoroughly — aim for a liquid consistency
+  before swallowing. This kick-starts digestion and reduces bloating, gas, and burden
+  on your pancreas.
+caveats:
+- Source is an expert practitioner talk, not a primary research paper. Core enzyme
+  physiology is well-established; specific downstream clinical claims require further
+  evidence.
+linked_to_topics:
+- gastrointestinal-tract-overview
+- meal-timing-and-digestive-rest
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-gi-tract
+  location: Mouth & Chewing Section
+  quote: The more we chew, we've broken down, and the more it's broken down, the larger
+    surface area is exposed for the digestive enzymes to work on.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

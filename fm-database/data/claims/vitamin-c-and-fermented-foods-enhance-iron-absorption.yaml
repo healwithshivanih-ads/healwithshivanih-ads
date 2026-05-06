@@ -1,0 +1,31 @@
+slug: vitamin-c-and-fermented-foods-enhance-iron-absorption
+statement: Vitamin C, citrus, and lacto-fermented foods enhance iron absorption.
+evidence_tier: plausible_emerging
+rationale: Vitamin C reducing ferric iron to ferrous form for absorption is well-established;
+  fermented food enhancement is plausible.
+coaching_translation: Encourage pairing iron-rich foods with vitamin C sources (citrus,
+  capsicum) and including fermented foods to support iron absorption.
+caveats:
+- Source is a practitioner cheatsheet without primary citations.
+- Source is practitioner cheatsheet.
+linked_to_topics:
+- nutrition-deficiency
+- gut-dysbiosis
+linked_to_supplements:
+- iron
+- vitamin-c
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 11
+  quote: Vitamin C, citrus, and lacto-fermented foods are described as enhancing iron
+    absorption.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 11
+  quote: Vitamin C, citrus, and lacto-fermented foods are described as enhancing iron
+    absorption.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

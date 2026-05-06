@@ -1,0 +1,36 @@
+slug: impaired-gut-barrier
+display_name: Impaired Gut Barrier (Leaky Gut)
+aliases:
+- intestinal hyperpermeability
+- gut barrier dysfunction
+- leaky gut
+category: gut
+summary: Disruption of the intestinal epithelial lining allows translocation of antigens
+  and pathogens, driving systemic inflammation and immune activation. Repair requires
+  structural nutrients including L-glutamine (preferred protein substrate for enterocytes),
+  short-chain and omega-3 fatty acids, and micronutrients (zinc, vitamin A, vitamin
+  B).
+upstream_drivers:
+- gut-dysbiosis-microbiome-imbalance
+- candida-overgrowth
+- low-stomach-acid
+- gluten-exposure
+downstream_effects:
+- systemic-inflammation
+- food-sensitivities
+- autoimmune-activation
+related_mechanisms:
+- gut-dysbiosis-microbiome-imbalance
+linked_to_topics:
+- intestinal-permeability
+- gut-dysbiosis
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Repair Section
+  quote: We require short-chain fatty acids and we require omega-3 fatty acids. They
+    can help in rebuilding your epithelium.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

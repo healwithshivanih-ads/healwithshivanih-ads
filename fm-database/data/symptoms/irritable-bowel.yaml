@@ -1,0 +1,27 @@
+slug: irritable-bowel
+display_name: Irritable Bowel
+aliases:
+- IBS
+- irritable bowel syndrome
+- gut irritability
+- bowel cramping
+category: gi
+severity: common
+description: A pattern of recurring abdominal discomfort, altered bowel habits, and
+  gut irritability. Hybridised wheat is described as highly toxic to an inflamed colon
+  in the context of irritable bowel.
+when_to_refer: Refer if there is significant weight loss, rectal bleeding, nocturnal
+  symptoms, or age >50 with new onset.
+linked_to_topics:
+- gluten-intolerance
+linked_to_mechanisms:
+- gluten-digestive-burden
+sources:
+- id: barbara-oneil-ph-balance
+  location: Closing Section
+  quote: We'll be looking at irritable bowel and how if you irritable bowel this weed
+    is almost it's incredibly toxic to an inflamed cold.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

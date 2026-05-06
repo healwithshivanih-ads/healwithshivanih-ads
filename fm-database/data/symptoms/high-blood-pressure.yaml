@@ -1,27 +1,46 @@
 slug: high-blood-pressure
 display_name: High Blood Pressure
 aliases:
-- hypertension
 - elevated blood pressure
+- elevated BP
+- high BP
+- HTN
+- blood pressure too high
 category: cardiovascular
 severity: concerning
-description: Elevated systolic or diastolic blood pressure. Intermittent fasting protocols
-  (especially FMD) and dietary approaches may support blood pressure reduction.
-when_to_refer: Refer for readings consistently above 140/90 mmHg, symptomatic hypertension,
-  or if on antihypertensive medications.
+description: Persistently elevated blood pressure requiring antihypertensive medication.
+  A major modifiable cardiovascular risk factor improved with lifestyle and dietary
+  changes in this case.
+when_to_refer: Always co-managed with a clinician. Refer urgently if BP exceeds 180/120
+  mmHg or associated with symptoms of hypertensive crisis.
 linked_to_topics:
 - cardiometabolic-health
 - intermittent-fasting
+- cardiometabolic-diet
+- hypertension
+- cardiovascular-risk-assessment
+- insulin-resistance
 linked_to_mechanisms:
 - systemic-inflammation
 - oxidative-stress
+- chronic-systemic-inflammation
+- insulin-resistance
+- excess-catecholamines
+- excess-cortisol
 sources:
 - id: vitaone-cardiometabolic-toolkit
   location: Intermittent Fasting — Fasting Mimicking Diet
   quote: This 5-day, very low-calorie, low carbohydrate, structured food plan has
     been shown in a limited number of studies to improve body composition and lower
     blood pressure after three consecutive cycles (3 months).
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Intermittent Fasting — summary table
+  quote: 'Improves: Blood pressure'
+- id: vitaone-cvs-risk-assessment
+  location: Progress (Slide 25)
+  quote: 'Insulin Resistance improved : HbA1c Reduced, Hypertension controlled, Lipid
+    Profile Improved'
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

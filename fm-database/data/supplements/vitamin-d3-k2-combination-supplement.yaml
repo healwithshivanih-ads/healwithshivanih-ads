@@ -1,0 +1,43 @@
+slug: vitamin-d3-k2-combination-supplement
+display_name: Vitamin D3 + K2 Combination
+category: vitamin
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 5000
+    max: 5000
+    unit: IU
+  tablet:
+    min: 5000
+    max: 5000
+    unit: IU
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- vitamin-d3-k2-synergy
+- vitamin-d3
+- vitamin-k2
+linked_to_claims:
+- vitamin-d3-k2-preferred-combination
+notes_for_coach: The preferred ratio cited is 5,000 IU D3 with 200 mcg K2. This combination
+  is ideal for most supplementation protocols as it provides both calcium absorption
+  support (D3) and calcium direction to bone (K2). Always recommend with fat-containing
+  food. Clinician guidance needed for dose adjustment based on blood levels.
+notes_for_client: A combined D3+K2 supplement gives you both vitamins in one — helping
+  your body absorb calcium AND put it in the right place (your bones, not your arteries).
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-vitamin-d3-k2
+  location: Vitamin D + K2 Synergy Section
+  quote: ideally a supplementation of vitamin D of 5000 international units and K1200
+    MCG is preferred.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

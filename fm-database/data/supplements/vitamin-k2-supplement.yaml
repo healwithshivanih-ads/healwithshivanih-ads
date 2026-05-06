@@ -1,0 +1,45 @@
+slug: vitamin-k2-supplement
+display_name: Vitamin K2 (Menaquinone)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 100
+    max: 200
+    unit: mcg
+  tablet:
+    min: 100
+    max: 200
+    unit: mcg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- vitamin-k2
+- vitamin-d3-k2-synergy
+linked_to_claims:
+- vitamin-k2-activates-osteocalcin-for-bone-mineralisation
+- vitamin-k2-activates-mgp-to-prevent-vascular-calcification
+- vitamin-d3-k2-preferred-combination
+notes_for_coach: Vitamin K2 is fat-soluble and requires bile salts for absorption
+  — always recommend with food. Particularly important when supplementing vitamin
+  D3. Antibiotic use, malabsorptive GI conditions, and newborns are high-risk groups
+  for deficiency. Refer any bleeding symptoms to a clinician immediately.
+notes_for_client: Vitamin K2 works best alongside Vitamin D3. Take it with a meal.
+  It helps ensure calcium is deposited in your bones — not your blood vessels. If
+  you are on any blood-thinning medications, speak with your doctor before supplementing.
+evidence_tier: strong
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-vitamin-d3-k2
+  location: Vitamin D + K2 Synergy Section
+  quote: a synergy of both is required for the optimal functioning and ideally a supplementation
+    of vitamin D of 5000 international units and K1200 MCG is preferred.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

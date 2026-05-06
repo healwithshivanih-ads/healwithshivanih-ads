@@ -1,0 +1,27 @@
+slug: lipid-soluble-toxins-mobilized-with-weight-loss
+statement: Lipid-soluble toxins are stored in adipose (fat) tissue and are mobilized/released
+  during weight loss, increasing toxic load and detoxification demand.
+evidence_tier: plausible_emerging
+rationale: 'This mechanism is recognized in toxicology and FM literature: lipophilic
+  environmental chemicals (organochlorines, PCBs, etc.) accumulate in adipose tissue
+  and are released during caloric deficit. Human studies support this concept though
+  clinical implications are still being studied.'
+coaching_translation: When you lose body fat, stored toxins are released back into
+  circulation. This is why supporting your detox pathways with good nutrition is especially
+  important during any weight loss effort.
+linked_to_topics:
+- toxic-body-burden
+- metabolic-detoxification
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Nutrients for Phase 1 and Phase 2 Detoxification
+  quote: Lipid-soluble (nonpolar) toxins are stored in adipose (fat) tissue and contribute
+    to increased/mobilized toxin load with weight loss.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

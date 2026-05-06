@@ -1,5 +1,5 @@
 slug: nac
-display_name: N-Acetylcysteine (NAC)
+display_name: N-Acetyl Cysteine (NAC)
 category: amino_acid
 forms_available:
 - capsule
@@ -27,9 +27,9 @@ timing_options:
 - mid_afternoon
 - mid_morning
 take_with_food: optional
-notes_for_coach: NAC is a glutathione precursor. Taken twice daily. Has applications
-  beyond immune support (brain health, liver support). Confirm with clinician — some
-  safety considerations and drug interactions apply.
+notes_for_coach: NAC is a glutathione precursor used in antioxidant protocols for
+  male fertility and immune support. Part of antioxidant rotation strategy for sperm
+  DNA protection. Dosing requires clinician direction.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - thyroid
@@ -49,6 +49,8 @@ linked_to_topics:
 - chronic-inflammation
 - autoimmune-disease
 - immune-support
+- immune-nutrition
+- male-infertility-oxidative-stress
 linked_to_mechanisms: []
 linked_to_claims:
 - fluoride-bpa-block-thyroid-receptors
@@ -60,8 +62,11 @@ linked_to_claims:
 - nac-breaks-candida-biofilms
 - nac-glutathione-support-t-regs
 - nac-boosts-glutathione-supports-immunity
-notes_for_client: NAC helps your body produce glutathione, a powerful antioxidant.
-  It supports immune function and has been studied for respiratory illness.
+- antioxidant-rotation-improves-male-fertility
+- nac-rich-foods-build-glutathione
+notes_for_client: NAC is a supplement that helps your body make glutathione, one of
+  its most important antioxidants. It is found in smaller amounts in egg- and allium-rich
+  foods.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
@@ -95,7 +100,11 @@ sources:
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
   quote: N-acetylcysteine promotes the production of glutathione, a potent antioxidant
     that supports immune function. It also reduces the severity of the flu.
-version: 9
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXoqNqijE3d/
+  quote: Patients need a broader antioxidant shield (CoQ10, Lycopene, NAC, Astaxanthin,
+    etc.).
+version: 10
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

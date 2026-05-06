@@ -1,0 +1,44 @@
+slug: inulin-prebiotic
+display_name: Inulin (Prebiotic Fiber)
+category: other
+forms_available:
+- powder
+- capsule
+timing_options:
+- with_breakfast
+- with_lunch
+- morning
+take_with_food: optional
+linked_to_topics:
+- gut-dysbiosis
+- sibo
+- gut-microbiome
+linked_to_claims:
+- prebiotics-required-to-support-probiotic-fermentation
+- sibo-yogurt-protocol-reduces-fecal-overgrowth
+notes_for_coach: Dr. Davis adds 1 tablespoon of inulin per fermentation batch of SIBO
+  yogurt as a prebiotic to boost microbial counts during fermentation. This is a fermentation
+  aid, not a standalone supplement dose recommendation for end consumers.
+notes_for_client: Inulin is a natural fiber added to the probiotic yogurt fermentation
+  process to help the beneficial bacteria multiply to much higher numbers before you
+  consume them.
+evidence_tier: plausible_emerging
+typical_dose_range:
+  powder:
+    min: 1
+    max: 1
+    unit: teaspoons
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Prebiotic / Fiber Section
+  quote: basically if you want to ferment any bacteria then we have to provide them
+    fiber and inulin is a kind of fiber right.
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: SIBO yogurt formulation discussion
+  quote: We use long fermentation in the presence with the addition of a prebiotic
+    fiber like a tablespoon of inulin and we get hundreds of billions.
+version: 2
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

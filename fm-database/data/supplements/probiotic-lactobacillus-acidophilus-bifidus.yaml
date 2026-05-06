@@ -1,0 +1,46 @@
+slug: probiotic-lactobacillus-acidophilus-bifidus
+display_name: Probiotic (Lactobacillus acidophilus & Bifidobacterium)
+category: probiotic
+forms_available:
+- powder
+- capsule
+typical_dose_range:
+  powder:
+    min: 1
+    max: 1
+    unit: teaspoons
+  capsule:
+    min: 1
+    max: 2
+    unit: capsules
+timing_options:
+- morning
+- on_empty_stomach
+- on_waking
+take_with_food: avoid
+linked_to_topics:
+- gut-microbiome-and-gut-flora
+- leaky-gut
+- probiotic-and-prebiotic-support
+- inflammatory-bowel-conditions
+linked_to_claims:
+- probiotic-supplement-needed-for-2-months-post-antibiotics
+- gut-flora-disrupted-by-antibiotics-statins-painkillers
+notes_for_coach: Recommend after any antibiotic course for a minimum of 2 months.
+  Pair with prebiotic fibre diversity (7+ varieties per meal) to feed the organisms.
+  Source is an expert practitioner talk; verify specific strain and dose with a clinician.
+notes_for_client: A probiotic powder or capsule containing Lactobacillus acidophilus
+  and Bifidobacterium can help rebuild your gut's beneficial bacteria after antibiotics
+  or gut disruption. Take in the morning, ideally away from food.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-gi-tract
+  location: Probiotic Section
+  quote: If a person's been on antibiotics, they need to take a probiotic supplement
+    every morning for at least two months. Probiotic is a powder that contains lactobacillus
+    acidophilus, bifidus bacterium and quite possibly a few others.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

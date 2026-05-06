@@ -1,0 +1,55 @@
+slug: medication-nutrient-interactions
+display_name: Medication–Nutrient Interactions
+aliases:
+- drug-nutrient interactions
+- medication depletions
+- iatrogenic nutrient deficiency
+- drug-nutrient depletions
+- medication side effects on nutrition
+summary: Common drug classes including metformin, PPIs, statins, antibiotics, NSAIDs,
+  oral contraceptives, diuretics, warfarin, and chemotherapy agents are listed with
+  associated nutrient depletions, monitoring considerations, and supplement cautions.
+red_flags:
+- warfarin-fish oil-aspirin bleeding risk requiring INR monitoring
+- chemotherapy antioxidant timing requiring oncology coordination
+- prescription retinoic acid interactions
+- high-dose zinc depleting copper
+- warfarin-fish-oil-bleeding-risk
+- chemotherapy-antioxidant-timing
+- prescription-retinoic-acid
+- high-dose-supplement-toxicity
+related_topics:
+- nutrition-deficiency
+- methylation
+- chronic-inflammation
+- gut-dysbiosis
+- bone-health
+- cardiovascular-health
+key_mechanisms:
+- medication-related-nutrient-depletion
+coaching_scope_notes: Encourage clients to disclose all medications and supplements
+  to their prescribing clinician. Do not adjust medication-adjacent supplement protocols
+  without clinician approval.
+clinician_scope_notes: Metformin depletes B12 and folate; PPIs deplete magnesium,
+  calcium, iron, B12, and zinc; statins deplete CoQ10; warfarin interactions with
+  vitamin K and fish oil require INR monitoring.
+evidence_tier: confirm_with_clinician
+common_symptoms:
+- fatigue
+- muscle-pain
+- mood-changes-anxiety
+- bone-density-concerns
+- anemia
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Topics Covered
+  quote: Common drug classes are listed with nutrient depletions, monitoring considerations,
+    and supplement cautions.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Topics Covered
+  quote: Common drug classes are listed with nutrient depletions, monitoring considerations,
+    and supplement cautions.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

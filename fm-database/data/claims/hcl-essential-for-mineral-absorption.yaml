@@ -1,0 +1,30 @@
+slug: hcl-essential-for-mineral-absorption
+statement: Gastric acid is essential for the absorption of key minerals including
+  calcium, iron, zinc, magnesium, and copper; low HCl production leads to clinically
+  significant mineral deficiencies.
+evidence_tier: plausible_emerging
+rationale: The role of gastric acid in ionising minerals for absorption is physiologically
+  well-supported. Population-level evidence linking hypochlorhydria to multi-mineral
+  deficiency comes largely from PPI studies, which is strong indirect evidence. Source
+  is expert consensus lecture.
+coaching_translation: If your stomach isn't making enough acid, you may not absorb
+  important minerals like iron, zinc, magnesium, and calcium properly — even if you're
+  eating well or taking supplements.
+caveats:
+- Source is expert consensus; not all minerals have equally strong evidence in this
+  context.
+- Iron-HCl link is the best-studied; others are extrapolated.
+linked_to_topics:
+- hypochlorhydria
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-hypochlorhydria
+  location: Functions of Gastric Acid
+  quote: Whenever gastric acid is present, it increases absorption of certain nutritions
+    like calcium, iron and zinc, magnesium, copper.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,37 @@
+slug: oxidative-stress-vascular
+display_name: Vascular Oxidative Stress
+aliases:
+- arterial oxidative stress
+- endothelial oxidative damage
+- ROS-driven atherosclerosis
+category: immune
+summary: Excess reactive oxygen species — driven by high omega-6 polyunsaturated fats,
+  hyperglycaemia (AGEs), and excess catecholamines/cortisol — damage the vascular
+  endothelium, oxidise LDL particles, and promote atherosclerotic plaque formation.
+upstream_drivers:
+- excess-omega-6-vegetable-oils
+- hyperglycemia
+- advanced-glycation-end-products
+- excess-cortisol
+- excess-catecholamines
+downstream_effects:
+- endothelial-dysfunction
+- atherosclerosis
+- plaque-formation
+- cardiovascular-events
+related_mechanisms:
+- insulin-resistance
+- methylation-defect-homocysteine
+- systemic-inflammation-cv
+linked_to_topics:
+- cardiovascular-risk-assessment
+- dyslipidemia
+evidence_tier: strong
+sources:
+- id: vitaone-cvs-risk-assessment
+  location: Cholesterol is NOT the villain (Slide 13)
+  quote: Oxidative stress to the heart and arteries
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

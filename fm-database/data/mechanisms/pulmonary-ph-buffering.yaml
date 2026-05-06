@@ -1,0 +1,29 @@
+slug: pulmonary-ph-buffering
+display_name: Pulmonary pH Buffering
+aliases:
+- respiratory acid-base regulation
+- CO2 exhalation buffering
+category: metabolic
+summary: During exercise or metabolic activity, CO2 and lactic acid accumulate, lowering
+  blood pH. The brain signals the lungs to breathe more deeply, increasing oxygen
+  intake and CO2 exhalation, which alkalises the blood and restores pH balance.
+upstream_drivers:
+- exercise
+- increased-co2-production
+- lactic-acid-accumulation
+downstream_effects:
+- blood-ph-maintenance
+related_mechanisms:
+- renal-ph-buffering
+linked_to_topics:
+- ph-balance
+evidence_tier: strong
+sources:
+- id: barbara-oneil-ph-balance
+  location: Lungs and pH Section
+  quote: When we breathe deeply we take in more oxygen and oxygen alkalizes and as
+    we start breathing in more deeply we're releasing more of the carbon dioxide.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

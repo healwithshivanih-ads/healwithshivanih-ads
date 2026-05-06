@@ -1,0 +1,27 @@
+slug: dysmenorrhea
+display_name: Dysmenorrhea (Painful Periods)
+aliases:
+- painful periods
+- menstrual cramps
+- period pain
+category: hormonal
+severity: common
+description: Painful menstruation (dysmenorrhea) is associated with elevated prostaglandin
+  production from the arachidonic acid cascade. Omega-3 fatty acids may help by competing
+  with AA and reducing pro-inflammatory prostaglandins.
+when_to_refer: Refer to clinician if pain is severe, or secondary dysmenorrhea (endometriosis,
+  fibroids) is suspected.
+linked_to_topics:
+- omega-3-fatty-acids
+- arachidonic-acid-cascade
+linked_to_mechanisms:
+- arachidonic-acid-cascade
+sources:
+- id: coconote-fm-omega-3-fatty-acids
+  location: Clinical Conditions Amenable to EFA Treatment
+  quote: dysmenorrhea, cancer cachexia. So these are the conditions...a separate supplement
+    for omega-3 to see improvements.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

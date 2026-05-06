@@ -1,0 +1,45 @@
+slug: cardiovascular-disease-prevention
+display_name: Cardiovascular Disease Prevention
+aliases:
+- CVD prevention
+- heart disease prevention
+- coronary artery disease prevention
+summary: Cardiovascular disease is fundamentally a disease of inflammation and oxidative
+  stress, not cholesterol alone. Prevention requires a multi-modal approach including
+  advanced lipid testing (LDL-P, ApoB, Lp(a)), inflammatory biomarkers (hsCRP, oxidized
+  LDL), imaging (coronary calcium score, carotid IMT), lifestyle modification, nutraceuticals,
+  and targeted pharmaceuticals.
+common_symptoms:
+- chest-pain
+- fatigue
+- shortness-of-breath
+red_flags:
+- ldl-greater-than-190
+- coronary-calcium-score-above-100
+- lp-little-a-elevation
+- triglycerides-above-500
+related_topics:
+- dyslipidemia
+- metabolic-syndrome
+- sleep-apnea-cardiovascular-risk
+- inflammation-and-oxidative-stress
+key_mechanisms:
+- oxidized-ldl-inflammasome-activation
+- endothelial-dysfunction-nitric-oxide
+- small-dense-ldl-atherogenesis
+coaching_scope_notes: Coaches can support lifestyle change (diet, exercise, sleep,
+  stress), supplement awareness, and risk factor education. Lab interpretation and
+  treatment decisions are clinician scope.
+clinician_scope_notes: Advanced lipid testing (LDL-P, ApoB, Lp(a)), imaging (coronary
+  calcium score, carotid IMT, endoPAT), and pharmaceutical decisions (statins, niacin,
+  PCSK9 inhibitors) require clinician oversight.
+evidence_tier: strong
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Inflammation and Oxidative Stress Framework
+  quote: Cardiovascular disease is a disease not of cholesterol as it stands alone.
+    It's a disease of inflammation and oxidative stress.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

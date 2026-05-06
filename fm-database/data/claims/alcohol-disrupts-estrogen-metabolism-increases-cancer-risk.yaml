@@ -1,17 +1,18 @@
 slug: alcohol-disrupts-estrogen-metabolism-increases-cancer-risk
-statement: Higher alcohol consumption disrupts estrogen metabolism in the liver and
-  is associated with increased breast and overall cancer risk.
+statement: Higher alcohol consumption competes with hepatic estrogen metabolism, disrupting
+  estrogen clearance and increasing breast and overall cancer risk.
 evidence_tier: strong
-rationale: Document references National Cancer Institute (2018) fact sheet on alcohol
-  and cancer risk — a well-established epidemiological association supported by multiple
-  large studies.
-coaching_translation: Alcohol competes with estrogen for liver processing. Limiting
-  intake — especially for women — is one of the most impactful steps for long-term
-  hormone and cancer health.
+rationale: National Cancer Institute alcohol and cancer risk data is cited. The mechanism
+  of hepatic competition between alcohol and estrogen metabolism is well-established.
+coaching_translation: Alcohol is broken down in the same liver pathways as estrogen
+  — drinking regularly can back up estrogen processing and raise cancer risk. Limiting
+  alcohol is one of the most impactful lifestyle changes for hormone balance.
 caveats:
 - Individual risk varies; document advises 1-2 servings/day for men and max 1 serving
   up to 4 times/week for women. This is population guidance, not personalized medical
   advice.
+- Individual risk varies based on genetics, overall lifestyle, and other factors
+- Recommendations differ for men (1–2 servings/day) vs. women (max 1 serving, ≤4x/week)
 linked_to_topics:
 - estrogen-metabolism
 out_of_scope_notes: ''
@@ -23,7 +24,12 @@ sources:
   quote: Alcohol is metabolized in the liver, as is estrogen. Higher levels of alcohol
     consumption may disrupt estrogen metabolism, and increase breast and overall cancer
     risk.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Estrogen Metabolism — Disrupts Healthy Estrogen Metabolism
+  quote: Alcohol is metabolized in the liver, as is estrogen. Higher levels of alcohol
+    consumption may disrupt estrogen metabolism, and increase breast and overall cancer
+    risk.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

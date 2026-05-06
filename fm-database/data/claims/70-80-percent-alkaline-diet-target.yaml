@@ -1,0 +1,30 @@
+slug: 70-80-percent-alkaline-diet-target
+statement: To maintain a healthy internal pH of approximately 6.5, the diet should
+  consist of 70–80% alkaline-forming foods and 20–30% acid-forming foods.
+evidence_tier: fm_specific_thin
+rationale: This ratio is a widely cited guideline in functional medicine and naturopathic
+  nutrition but is not established by peer-reviewed RCT consensus. It is a reasonable
+  heuristic for encouraging whole-food, plant-rich eating but lacks strong clinical
+  trial support as a precise ratio.
+coaching_translation: Aim to fill most of your plate (around three-quarters) with
+  alkaline-forming foods like vegetables, fruits, lentils, almonds, and seeds, keeping
+  refined grains and animal proteins to a smaller portion.
+caveats:
+- Source is an expert lecture, not primary literature.
+- The 6.5 pH target likely refers to urine pH, not blood pH — blood pH is tightly
+  regulated regardless of diet.
+- Verify precise ratio guidance with a clinician or registered dietitian.
+linked_to_topics:
+- acid-alkaline-balance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-acid-alkaline-foods
+  location: Main lecture body
+  quote: To maintain this 6.5 environment, we should be consuming 70-80% alkaline
+    forming foods and 20-30% acid forming foods.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

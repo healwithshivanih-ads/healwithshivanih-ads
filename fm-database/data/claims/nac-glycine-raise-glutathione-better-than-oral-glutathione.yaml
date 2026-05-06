@@ -1,0 +1,37 @@
+slug: nac-glycine-raise-glutathione-better-than-oral-glutathione
+statement: Oral glutathione supplements have poor bioavailability; supplementing with
+  precursors NAC (N-acetylcysteine) and glycine is more effective at raising intracellular
+  glutathione levels. IV glutathione is the most clinically effective delivery route.
+evidence_tier: plausible_emerging
+rationale: Oral glutathione bioavailability is debated; most is hydrolyzed in the
+  GI tract. NAC as a cysteine donor is well-established as the rate-limiting step
+  in glutathione synthesis. Some newer forms (liposomal, acetylated) show improved
+  bioavailability. IV glutathione efficacy is clinically reported though RCT data
+  are limited.
+coaching_translation: Don't waste money on regular glutathione capsules — they mostly
+  get broken down before reaching your cells. NAC and glycine are much better at helping
+  your body make its own glutathione.
+caveats:
+- Newer glutathione forms (S-acetyl glutathione, liposomal) may have better bioavailability
+  than standard oral glutathione — the blanket dismissal of all oral forms may be
+  outdated.
+- IV glutathione administration is outside coaching scope.
+- Source is expert FM lecture.
+out_of_scope_notes: IV glutathione administration is a clinical procedure outside
+  coaching scope.
+linked_to_topics:
+- oxidative-stress
+- chronic-inflammation
+linked_to_supplements:
+- n-acetylcysteine
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-approach-inflammation
+  location: Oxidative Stress – Glutathione and Precursors
+  quote: whatever blood you find out in a shelf, they are actually not bioavailable...
+    you can increase the glycine and you can increase the NH-cysteine, you will really
+    have a benefit in your butadiene.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,32 @@
+slug: magnesium-glycinate-calms-nervous-system-improves-sleep
+statement: Magnesium glycinate and magnesium threonate calm the nervous system, improve
+  HRV, and support sleep, with clinical use in anxiety, insomnia, and palpitations.
+evidence_tier: plausible_emerging
+rationale: Magnesium's role in GABA-A receptor modulation, NMDA receptor inhibition,
+  and HPA axis dampening is well-supported mechanistically. Clinical RCTs show benefits
+  for anxiety and sleep, particularly in deficient populations. Glycinate and threonate
+  forms have better bioavailability/CNS penetration respectively.
+coaching_translation: Magnesium is one of the most important minerals for your nervous
+  system. Many people are deficient, and supplementing with the right form (glycinate
+  for sleep/anxiety, threonate for brain health) can make a noticeable difference.
+caveats:
+- Dosing should be confirmed with a clinician, especially in kidney disease.
+- Source is educational synthesis; dose not specified beyond general recommendation.
+linked_to_topics:
+- nervous-system-regulation
+- emotional-healing-chronic-disease
+- hpa-axis-dysregulation
+linked_to_supplements:
+- magnesium-glycinate
+- magnesium-threonate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Key Nutrients & Botanicals for Emotional Healing Support
+  quote: 'Magnesium Glycinate / Threonate: Calms nervous system, improves HRV & sleep.
+    Anxiety, insomnia, palpitations.'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

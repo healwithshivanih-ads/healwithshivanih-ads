@@ -1,0 +1,29 @@
+slug: jaundice
+display_name: Jaundice
+aliases:
+- yellow skin
+- yellow eyes
+- icterus
+- scleral icterus
+category: metabolic
+severity: red_flag
+description: Yellowing of the skin and eyes caused by markedly elevated bilirubin,
+  typically associated with hepatitis or severe hepatic dysfunction. Distinguished
+  from the mild unconjugated bilirubin elevations seen in Gilbert syndrome or Phase
+  2 detox impairment.
+when_to_refer: Immediate clinician referral required. Jaundice with high bilirubin
+  may indicate hepatitis, biliary obstruction, or acute liver failure.
+linked_to_topics:
+- liver-detox-phase-1-and-phase-2
+- gilbert-syndrome
+linked_to_mechanisms:
+- glucuronidation-impairment
+sources:
+- id: coconote-fm-liver-detox-part2
+  location: Bilirubin & Phase 2 Explanation
+  quote: they have a yellow eye, and yellow skin, the inspiration. And that is too
+    high, that is acubation.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

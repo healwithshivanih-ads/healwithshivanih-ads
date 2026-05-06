@@ -1,0 +1,26 @@
+slug: orthostatic-dizziness
+display_name: Dizziness on Standing
+aliases:
+- lightheadedness when standing
+- orthostatic hypotension
+- dizzy when bending
+category: cardiovascular
+severity: common
+description: Dizziness or lightheadedness when rising from sitting or bending, associated
+  with low cortisol states and low blood pressure or orthostatic blood pressure drops.
+linked_to_topics:
+- hpa-axis-dysfunction
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- cortisol-dhea-imbalance
+when_to_refer: Refer if accompanied by syncope, persistent low blood pressure, or
+  other cardiovascular signs.
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'HPA Axis Questionnaire — Section 1: Low cortisol state'
+  quote: Dizziness when you stand or bend, Low blood pressure and/or drop of blood
+    pressure on standing.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

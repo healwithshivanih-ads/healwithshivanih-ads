@@ -1,0 +1,25 @@
+slug: nighttime-urination
+display_name: Nighttime Urination / Nocturia
+aliases:
+- waking to urinate
+- getting up to pee at night
+category: urinary
+severity: common
+description: Nocturia can be a symptom of obstructive sleep apnea—changes in intrathoracic
+  pressure during apnea events activate atrial natriuretic factor, increasing urination.
+  Often misattributed to bladder issues alone.
+when_to_refer: If OSA is suspected based on symptom cluster, refer for sleep evaluation.
+linked_to_topics:
+- sleep-apnea-cardiovascular-risk
+linked_to_mechanisms:
+- sympathetic-activation-sleep-apnea
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Sleep Apnea Mechanism
+  quote: Frequently they say, I have to go to the bathroom. The reason they're going
+    to the bathroom is it changes in the intrathoracic pressure from the apnea turn
+    on atrial natriuretic factor.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

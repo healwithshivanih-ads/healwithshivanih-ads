@@ -3,29 +3,44 @@ display_name: Zonulin Upregulation
 aliases:
 - zonulin pathway
 - tight junction opening
+- elevated zonulin
+- zonulin signaling
 category: gut
-summary: Zonulin, a protein modulated by gluten and gut bacteria, opens tight junctions
-  in the intestinal epithelium, causing persistent intestinal permeability.
+summary: Zonulin is a peptide secreted by intestinal mucosa that modulates tight junction
+  opening. Elevated serum or stool zonulin correlates with increased intestinal permeability.
+  It is used as a biomarker of leaky gut in research and some clinical settings.
 upstream_drivers:
 - gluten-exposure
 - gut-dysbiosis-mechanism
 - stress
+- dysbiosis
+- infection
 downstream_effects:
 - leaky-gut
 - antigen-leakage
 - systemic-inflammation
+- tight-junction-dysregulation
+- antigen-translocation
 related_mechanisms:
 - leaky-gut
 - lps-signaling
+- tight-junction-dysregulation
 linked_to_topics:
 - leaky-gut
 - gerd
+- intestinal-permeability
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-gut-cheatsheet
   location: Leaky Gut & Inflammation — Why Leaky Gut Creates Chronic Inflammation
   quote: Zonulin upregulation — Opens tight junctions — Persistent permeability
-version: 1
+- id: coconote-fm-intestinal-permeability
+  location: Diagnostic Testing – Zonulin
+  quote: another test is zonulin and it is discovered in a 20 years back and that's
+    the enzyme or peptide secreted by the intestinal mucosa and they they regulate
+    the tight junctions. So if you have high zonulin that correlate with an interest
+    in permeability.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

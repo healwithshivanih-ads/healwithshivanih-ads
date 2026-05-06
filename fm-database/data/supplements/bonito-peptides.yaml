@@ -6,14 +6,15 @@ forms_available:
 - tablet
 - powder
 evidence_tier: plausible_emerging
-notes_for_coach: Listed as nutraceutical support during beta blocker tapering. Bonito
-  peptides (from fish) have some evidence for mild blood pressure reduction via ACE-inhibitory
-  activity. Specific dosing requires clinician guidance.
-notes_for_client: Bonito peptides are a natural fish-derived supplement that may support
-  healthy blood pressure. Use only as directed by your clinician.
+notes_for_coach: Bonito peptides (from dried bonito fish, Katsuobushi) are small peptides
+  with emerging evidence as natural ACE inhibitors, supporting modest blood pressure
+  reduction. Listed in beta blocker tapering protocol. Evidence base is early-stage.
+notes_for_client: Bonito peptides come from a type of fish and may help support healthy
+  blood pressure naturally. Use as directed by your healthcare provider.
 timing_options:
 - with_breakfast
 - with_dinner
+- morning
 take_with_food: optional
 linked_to_topics:
 - beta-blocker-deprescribing
@@ -25,7 +26,11 @@ sources:
 - id: vitaone-cv-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
   quote: Bonito peptides
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients
+    — Supplement Schedule'
+  quote: Bonito peptides
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

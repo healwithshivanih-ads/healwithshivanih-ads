@@ -1,0 +1,28 @@
+slug: epigenetics-lifestyle-gene-expression
+display_name: Epigenetics and Lifestyle-Driven Gene Expression
+aliases:
+- epigenetics
+- gene expression modulation
+summary: The concept that while genetic predispositions exist, approximately 80% of
+  disease expression is driven by lifestyle and diet, and that epigenetic changes
+  can turn disease-promoting genes on or off.
+related_topics:
+- chronic-pain-and-fatigue
+- fibromyalgia
+key_mechanisms:
+- epigenetic-modulation
+coaching_scope_notes: Coaches can use this framework to empower clients who feel their
+  diagnosis is 'in their genes' — framing lifestyle change as epigenetic influence.
+evidence_tier: plausible_emerging
+common_symptoms: []
+red_flags: []
+clinician_scope_notes: ''
+sources:
+- id: coconote-fm-chronic-pain-fatigue
+  location: Genes Section
+  quote: 80% is your lifestyle and food, and 20% is your genes. So we are responsible
+    for our own genes.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

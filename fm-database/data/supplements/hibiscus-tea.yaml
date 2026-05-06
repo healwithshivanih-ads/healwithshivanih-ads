@@ -4,14 +4,17 @@ category: herb
 forms_available:
 - liquid
 evidence_tier: plausible_emerging
-notes_for_coach: Listed as nutraceutical/dietary support during beta blocker tapering.
-  Some RCT evidence supports modest blood pressure-lowering effects of hibiscus tea.
-notes_for_client: Hibiscus tea may offer mild blood pressure support and is a tasty,
-  antioxidant-rich beverage choice.
+notes_for_coach: Hibiscus has modest RCT evidence for mild blood pressure reduction.
+  Listed as a supportive intervention during beta blocker tapering. Safe for most
+  clients as a daily beverage.
+notes_for_client: Hibiscus tea (sometimes called 'sour tea' or Agua de Jamaica) may
+  gently support healthy blood pressure. Enjoy 1–2 cups daily.
 timing_options:
 - morning
 - mid_morning
 - mid_afternoon
+- with_lunch
+- evening
 take_with_food: optional
 linked_to_topics:
 - beta-blocker-deprescribing
@@ -23,7 +26,11 @@ sources:
 - id: vitaone-cv-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
   quote: Hibiscus tea
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients
+    — Supplement Schedule'
+  quote: Hibiscus tea
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

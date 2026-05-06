@@ -1,25 +1,34 @@
 slug: tension
-display_name: Tension
+display_name: Physical Tension
 aliases:
 - muscle tension
 - physical tension
 - tightness
+- body tightness
+- stress-related tension
+- feeling tense
+- body tension
+- stress tension
 category: musculoskeletal
 severity: common
-description: Physical tightness or tension often associated with shallow breathing
-  and chronic stress.
-when_to_refer: If tension is severe, chronic, or accompanied by pain, refer to physiotherapist
-  or clinician.
+description: A sense of physical tightness or muscular tension, often associated with
+  shallow breathing, stress, and sympathetic nervous system activation.
+when_to_refer: Refer if tension is severe, persistent, or associated with pain, injury,
+  or neurological symptoms.
 linked_to_topics:
 - stress-management
 - mindfulness
+- mindful-breathing
+- self-care
 linked_to_mechanisms:
 - parasympathetic-activation
+- hpa-axis-dysregulation
+- hpa-axis-regulation
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Mindful Breathing
   quote: Shallow breathing may lead to tension and fatigue.
-version: 1
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

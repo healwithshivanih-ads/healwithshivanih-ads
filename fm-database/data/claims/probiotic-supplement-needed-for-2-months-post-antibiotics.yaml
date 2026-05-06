@@ -1,0 +1,31 @@
+slug: probiotic-supplement-needed-for-2-months-post-antibiotics
+statement: Following a course of antibiotics, a daily probiotic supplement containing
+  Lactobacillus acidophilus and Bifidobacterium should be taken every morning for
+  at least two months to restore gut flora.
+evidence_tier: plausible_emerging
+rationale: Research supports probiotic use following antibiotic courses for microbiome
+  restoration, though specific duration, strain, and dose recommendations vary. Two
+  months is a practitioner recommendation consistent with FM practice but not a consensus-established
+  duration.
+coaching_translation: After finishing a course of antibiotics, take a daily probiotic
+  (Lactobacillus acidophilus and Bifidobacterium) every morning for at least two months
+  to help rebuild your gut bacteria.
+caveats:
+- Specific strain selection, dose, and duration should be confirmed with a clinician.
+- Source is a practitioner talk; verify with clinician for individual needs.
+linked_to_topics:
+- gut-microbiome-and-gut-flora
+- probiotic-and-prebiotic-support
+linked_to_supplements:
+- probiotic-lactobacillus-acidophilus-bifidus
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-gi-tract
+  location: Probiotic Section
+  quote: If a person's been on antibiotics, they need to take a probiotic supplement
+    every morning for at least two months.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

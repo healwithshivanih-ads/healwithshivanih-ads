@@ -1,0 +1,27 @@
+slug: fiber-15-30-percent-cv-mortality-reduction
+statement: Dietary fiber is associated with a 15–30% reduction in cardiovascular mortality,
+  lowers cholesterol, lowers blood sugar, and supports bowel regularity. Target intake
+  is approximately 25g/day.
+evidence_tier: strong
+rationale: Fiber and cardiovascular mortality reduction is supported by multiple prospective
+  cohorts and meta-analyses. The 25g target aligns with major dietary guidelines.
+coaching_translation: Fiber is one of the simplest and most effective dietary tools
+  for heart health. It lowers cholesterol, improves blood sugar, and protects against
+  cardiovascular death.
+caveats:
+- Source is lecture transcript; specific studies not cited.
+linked_to_topics:
+- cardiovascular-disease-prevention
+- mediterranean-diet-cvd
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Dietary Fiber and CVD
+  quote: 15 to 30% reduction in cardiovascular mortality. The number should be somewhere
+    in the, you know, 25 gram range.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

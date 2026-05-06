@@ -1,0 +1,35 @@
+slug: starch-digestion-enzyme-not-mature-until-molars-erupt
+statement: Salivary amylase (ptyalin) for starch digestion is not released in meaningful
+  amounts until the molar teeth erupt, suggesting that starchy foods (cereals, grains)
+  are developmentally inappropriate for infants before this point.
+evidence_tier: plausible_emerging
+rationale: Some research supports the developmental timeline of amylase production
+  in infants and its relationship to molar eruption; however, current paediatric nutrition
+  guidelines recommend complementary feeding from ~6 months based on multiple nutritional
+  considerations including iron. The claim is biologically plausible but conflicts
+  with mainstream guidance.
+coaching_translation: Babies may not be enzymatically ready to digest starchy foods
+  until their molars come through. Discuss with a paediatric health professional before
+  delaying or introducing solids.
+out_of_scope_notes: Infant feeding timelines are a clinician and paediatric dietitian
+  scope. Coaches should not advise delaying solid foods without clinician guidance.
+caveats:
+- This claim conflicts with mainstream paediatric guidelines recommending complementary
+  feeding from ~6 months.
+- Source is a practitioner talk; this specific claim requires peer-reviewed paediatric
+  nutrition evidence for stronger tier.
+- Iron sufficiency of breast milk alone beyond 6 months is a contested area — clinician
+  guidance is essential.
+linked_to_topics:
+- gastrointestinal-tract-overview
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-gi-tract
+  location: Infant Feeding Section
+  quote: Tylen is not released in major amounts until the molars come through... No
+    baby should have start until all the mothers are through.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

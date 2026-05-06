@@ -10,25 +10,48 @@ timing_options:
 - with_breakfast
 - with_lunch
 - with_dinner
+- morning
 take_with_food: optional
 linked_to_topics:
 - gerd
 - gut-dysfunction
+- gerd-ppi-tapering
+- pancreatic-insufficiency
+- digestive-enzyme-supplementation
 linked_to_claims:
 - ginger-modulates-gi-transit
-notes_for_coach: Listed as a 'transit time modulator' in the PPI taper supplement
-  protocol. Also widely used for nausea and bloating.
-notes_for_client: Ginger can help with nausea and supports healthy gut motility. It
-  can be used fresh in cooking, as tea, or in supplement form.
+- ppi-tapering-supplement-support-repair-protect-antioxidant
+- ginger-curcumin-coriander-onion-stimulate-enzymatic-activity
+notes_for_coach: Ginger is cited as a food/herb that stimulates endogenous enzymatic
+  activity. Well-tolerated and broadly safe as a culinary and supplement addition.
+  Supports digestive function coaching conversations.
+notes_for_client: Ginger can help stimulate your body's own digestive enzyme production.
+  Adding it to meals or taking it as a tea or supplement may support digestion.
 evidence_tier: plausible_emerging
-typical_dose_range: {}
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 1000
+    unit: mg
+  powder:
+    min: 1
+    max: 2
+    unit: g
 linked_to_mechanisms: []
 sources:
 - id: vitaone-gut-toolkit
   location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
     — Supplement recommendations'
   quote: 'Transit time modulators: Iberogast, D-limonene, ginger, probiotics, triphala'
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
+  quote: 'Transit time modulators: Iberogast, D-limonene, ginger, probiotics, triphala.'
+- id: coconote-fm-pancreatic-insufficiency
+  location: Management / Support Strategies
+  quote: Certain food which helps in terms of stimulating the enzymatic activity is
+    ginger, curcumin, coriander, onion, all are these certain foods which help in
+    terms of stimulating the production of enzymatic activity.
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

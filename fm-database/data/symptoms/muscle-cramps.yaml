@@ -1,27 +1,59 @@
 slug: muscle-cramps
-display_name: Muscle Cramps / Restless Legs
+display_name: Muscle Cramps & Restless Legs
 aliases:
 - leg cramps
 - restless legs
 - muscle spasms
 - night cramps
 - charley horse
+- cramping
+- tetany
+- cramps
 category: musculoskeletal
 severity: common
-description: Involuntary muscle contractions and restless legs at night; classic signs
-  of magnesium and potassium deficiency. Also associated with loop diuretic use.
+description: Muscle cramps, restless legs, and palpitations linked to magnesium deficiency
+  and potassium or sodium imbalance.
 linked_to_topics:
 - vitamin-b-complex-deficiency
 - medicine-nutrient-interactions
+- calcium-deficiency
+- magnesium-deficiency
+- magnesium-musculoskeletal-health
+- medication-induced-nutrient-depletion
+- metabolic-health-lchf
+- nutrition-deficiency
+- insulin-resistance
 linked_to_mechanisms:
 - mitochondrial-energy-production
-when_to_refer: ''
+- pth-calcium-regulation
+- magnesium-calcium-intracellular-shift
+- calcium-magnesium-imbalance
+- muscle-relaxation-contraction-balance
+- b12-absorption-impairment
+- nutrient-dependent-energy-metabolism
+when_to_refer: If cramps are severe, persistent, or associated with arrhythmia or
+  neurological signs.
 sources:
 - id: vitaone-nutrition-cheatsheet
   location: Magnesium – The Calming Mineral
   quote: 'Deficiency clues: Muscle cramps, restless legs, insomnia, palpitations,
     migraines, PMS.'
-version: 1
+- id: coconote-fm-calcium-deficiency
+  location: Physiological Roles of Calcium
+  quote: Calcium also plays a role in muscle contraction, also the vascular integrity
+    and clotting.
+- id: coconote-fm-magnesium-deficiency
+  location: Musculoskeletal system
+  quote: Again muscle cramps restless leg syndrome a very common diagnosis.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXjjIqJjMSR/
+  quote: Many patients come to you with fatigue, muscle cramps, mood swings, or neuropathy…
+    and yet their labs look 'normal.'
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Symptoms Discussed
+  quote: Muscle cramps, restless legs, palpitations, migraines, PMS, constipation,
+    and asthma/hypertension smooth muscle context - Linked to magnesium.
+version: 5
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-06'
 updated_by: shivani

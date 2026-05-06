@@ -1,0 +1,37 @@
+slug: omega-3-epa-dha-gla
+display_name: 'Essential Fatty Acids: EPA, DHA & GLA'
+category: fatty_acid
+forms_available:
+- capsule
+- liquid
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- drug-induced-nutrient-depletion-cardiovascular
+- beta-blocker-deprescribing
+- cardiovascular-dysfunction
+- cooking-fats-and-cardiovascular-health
+linked_to_claims:
+- statins-deplete-multiple-nutrients
+- high-omega-6-processed-oils-promote-inflammation
+notes_for_coach: EFAs including EPA+DHA (omega-3) and GLA (omega-6 anti-inflammatory)
+  are depleted by statins. Listed in beta blocker tapering protocol. EPA+DHA have
+  strong evidence for triglyceride reduction and anti-inflammatory effects.
+notes_for_client: Fish oil or algae-based omega-3s (EPA and DHA) support heart health
+  and help counter inflammation. GLA (from evening primrose or borage oil) is an anti-inflammatory
+  omega-6. These fats are best taken with food.
+evidence_tier: strong
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients
+    — Supplement Schedule'
+  quote: EFA supplementation including EPA+DHA and GLA
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

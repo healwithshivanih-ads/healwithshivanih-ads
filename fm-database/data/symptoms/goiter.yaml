@@ -1,5 +1,5 @@
 slug: goiter
-display_name: Goiter (Enlarged Thyroid)
+display_name: Goiter (Enlarged Thyroid Gland)
 aliases:
 - enlarged thyroid
 - thyroid swelling
@@ -8,19 +8,23 @@ aliases:
 - swollen neck
 - thyroid nodule
 - throat fullness
-category: hormonal
+- thyroid enlargement
+- neck fullness
+category: constitutional
 severity: concerning
-description: Visible or palpable enlargement of the thyroid gland, often causing neck
-  fullness, pressure, or difficulty swallowing. Can result from autoimmune inflammation
-  or iodine deficiency.
-when_to_refer: Always refer for imaging (ultrasound) and clinician evaluation to rule
-  out nodules or malignancy.
+description: Enlargement of the thyroid gland visible or palpable at the base of the
+  neck, often with a feeling of fullness or pressure. Can be accompanied by difficulty
+  swallowing.
+when_to_refer: Always refer for clinician evaluation; may indicate significant thyroid
+  pathology, nodules, or cancer requiring imaging and/or biopsy.
 linked_to_topics:
 - hypothyroidism
 - hashimotos-thyroiditis
 - hashimotos-hypothyroidism
+- thyroid-dysfunction
 linked_to_mechanisms:
 - thyroid-autoimmunity
+- autoimmune-thyroid-attack
 sources:
 - id: vitaone-thyroid-ebook
   location: 'Chapter 5: Other Pathologies'
@@ -29,7 +33,10 @@ sources:
 - id: vitaone-thyroid-toolkit
   location: Symptoms of Hashimoto's Hypothyroidism
   quote: Goiter (enlarged thyroid gland)
-version: 2
+- id: vitaone-health-coaching-toolkit
+  location: Understanding Hashimoto's Hypothyroidism — Symptoms of Hashimoto's Hypothyroidism
+  quote: Goiter (enlarged thyroid gland)
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

@@ -1,0 +1,59 @@
+slug: depression-like-symptoms
+display_name: Depression-Like Symptoms from Nutrient Deficiency
+aliases:
+- nutritional mood disorder
+- depression mimic
+- biochemical depression
+- nutrient-related mood changes
+- nutritional depression
+- biochemical mood disorder
+summary: The source frames depression as potentially reflecting unmet nutritional
+  needs affecting neurotransmitter synthesis, mitochondrial function, and inflammation.
+  Low B12, folate, magnesium, and omega-3 are highlighted as common contributors.
+common_symptoms:
+- low-mood
+- apathy
+- fatigue
+- brain-fog
+- poor-motivation
+- irritability
+- cognitive-decline
+- low-motivation
+- sadness
+- mood-changes-anxiety
+red_flags:
+- clinical depression requiring psychiatric evaluation
+- suicidality
+- B12 deficiency with irreversible neurological damage
+- clinical-depression-diagnosis
+- suicidal-ideation
+- severe-cognitive-decline
+related_topics:
+- methylation
+- nutrition-deficiency
+- chronic-inflammation
+- adrenal-fatigue
+key_mechanisms:
+- methylation-support
+- oxidative-stress-and-inflammation
+- nutrient-dependent-energy-metabolism
+coaching_scope_notes: Nutrient-mood framing is useful for client education. Clinical
+  depression must be managed by a licensed mental health or medical professional.
+  Supplement recommendations in this area require clinician coordination.
+clinician_scope_notes: RBC omega-3 index, RBC folate, B12/MMA testing, SSRI interaction
+  with folate deficiency, and therapeutic supplementation for mood are clinical scope
+  items.
+evidence_tier: fm_specific_thin
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 23
+  quote: The source states that depression can be a biochemical signal of unmet nutritional
+    needs affecting neurotransmitter synthesis, mitochondrial function, and inflammation.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 23
+  quote: The source states that depression can be a biochemical signal of unmet nutritional
+    needs affecting neurotransmitter synthesis, mitochondrial function, and inflammation.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

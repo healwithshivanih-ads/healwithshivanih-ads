@@ -1,0 +1,25 @@
+slug: south-asian-ethnicity-elevates-cvd-risk
+statement: People of South Asian, African, or Caribbean descent have a statistically
+  greater risk of developing cardiovascular disease.
+evidence_tier: strong
+rationale: Higher CVD incidence and mortality in South Asian populations is well documented
+  in epidemiological literature, often attributed to higher rates of insulin resistance,
+  ectopic fat deposition, and metabolic syndrome at lower BMI thresholds.
+coaching_translation: People with South Asian heritage often have a higher risk of
+  heart disease — sometimes at younger ages and lower body weights than other populations.
+  This makes lifestyle and metabolic health especially important.
+linked_to_topics:
+- cardiovascular-risk-assessment
+linked_to_supplements: []
+caveats: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cvs-risk-assessment
+  location: CVS Risk Analysis (Slide 12)
+  quote: Statistics suggest that people of South Asian, African or Caribbean descent
+    have a greater risk of developing cardiovascular disease.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

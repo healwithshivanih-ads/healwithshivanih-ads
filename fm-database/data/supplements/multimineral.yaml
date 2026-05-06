@@ -11,11 +11,12 @@ take_with_food: required
 linked_to_topics:
 - intermittent-fasting
 - cardiometabolic-health
-notes_for_coach: Listed alongside multivitamin in fasting support protocol. Ensure
-  formula does not contain iron unless indicated. Clinician to prescribe.
-notes_for_client: A multimineral supplement during fasting can help support your body's
-  mineral balance, especially on lower-calorie days.
-evidence_tier: confirm_with_clinician
+notes_for_coach: Listed alongside multivitamin as a support supplement during fasting
+  protocols. Particularly relevant for clients on calorie-restricted fasting days
+  where mineral intake from food may be insufficient.
+notes_for_client: A multimineral supplement helps ensure your body gets the minerals
+  it needs, especially on fasting days.
+evidence_tier: plausible_emerging
 typical_dose_range: {}
 linked_to_mechanisms: []
 linked_to_claims: []
@@ -23,7 +24,10 @@ sources:
 - id: vitaone-cardiometabolic-toolkit
   location: Intermittent Fasting — Personalized Recommendations
   quote: Multimineral
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Intermittent Fasting — Personalized Recommendations
+  quote: Multimineral
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

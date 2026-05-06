@@ -1,0 +1,32 @@
+slug: reduced-gastric-acid-calcium-absorption
+display_name: Reduced Gastric Acid Impairs Calcium Absorption
+aliases:
+- hypochlorhydria calcium malabsorption
+- PPI-induced calcium malabsorption
+category: gut
+summary: Adequate stomach acid is required for calcium solubilization and intestinal
+  absorption. Hypochlorhydria, whether from PPI use, antacid overuse, or intrinsic
+  dysfunction, reduces calcium bioavailability, leading to lower serum calcium levels.
+upstream_drivers:
+- ppi-use
+- long-term-antacid-use
+- hypochlorhydria
+downstream_effects:
+- low-serum-calcium
+- protein-deficiency
+related_mechanisms:
+- albumin-calcium-binding
+linked_to_topics:
+- calcium-deficiency
+- hypochlorhydria
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-calcium-deficiency
+  location: Causes of Low Serum Calcium
+  quote: stomach acid is required for absorption of calcium. So if somebody on a proton
+    inhibitor or acid blocking drug that we have seen many patients who are long-term
+    anti-acids.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

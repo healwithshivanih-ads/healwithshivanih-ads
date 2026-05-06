@@ -1,0 +1,24 @@
+slug: plastic-cutting-boards-contain-bpa-phthalates
+statement: Plastic cutting boards often contain BPA and phthalates with hormone-disrupting
+  and carcinogenic properties; bamboo or wood alternatives are safer.
+evidence_tier: plausible_emerging
+rationale: BPA and phthalates are established endocrine disruptors. Food-contact plastic
+  leaching is documented, particularly with heat and abrasion. The recommendation
+  for bamboo/wood alternatives is precautionary but well-supported in toxicology literature.
+coaching_translation: Switching from plastic cutting boards to bamboo or wood is a
+  simple kitchen upgrade that reduces daily exposure to hormone-disrupting chemicals.
+linked_to_topics:
+- environmental-toxin-exposure
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Non-Toxic Choices for Food Preparation, Cookware, and Dishes
+  quote: 'Plastic Cutting Boards: Often contain toxins like bisphenol A (BPA) and
+    phthalates, known for their hormone-disrupting and carcinogenic properties.'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

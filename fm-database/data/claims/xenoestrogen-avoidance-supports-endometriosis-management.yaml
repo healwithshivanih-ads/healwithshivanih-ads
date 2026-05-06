@@ -1,0 +1,34 @@
+slug: xenoestrogen-avoidance-supports-endometriosis-management
+statement: Avoiding xenoestrogens from plastics and fragranced personal care products
+  is an important lifestyle strategy in estrogen-dominant conditions such as endometriosis.
+evidence_tier: plausible_emerging
+rationale: Xenoestrogens (endocrine-disrupting chemicals such as BPA from plastics
+  and phthalates from fragrances) can mimic or amplify estrogen signalling. Epidemiological
+  evidence links environmental estrogen exposure to endometriosis risk. Practical
+  avoidance is widely recommended in FM and integrative medicine.
+coaching_translation: Chemicals found in plastics and fragranced products can act
+  like estrogen in your body, potentially making endometriosis worse. Choosing fragrance-free,
+  chemical-free products and avoiding plastic food containers is a simple but meaningful
+  step.
+caveats:
+- Source is FM lecture. While the biological mechanism is plausible, direct clinical
+  evidence that personal care product avoidance reduces endometriosis severity is
+  limited.
+linked_to_topics:
+- endometriosis
+- estrogen-dominance
+- gut-skin-hormone-axis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Lifestyle Recommendations
+  quote: Fragrance and chemical-free personal care products are really important to
+    avoid xenoestrogens because endometriosis is an estrogen-dominant issue. Avoiding
+    use of plastic because again that releases xenoestrogens which are endocrine-disrupting
+    chemicals.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

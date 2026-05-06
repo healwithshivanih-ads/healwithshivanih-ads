@@ -7,13 +7,17 @@ forms_available:
 - liquid
 typical_dose_range:
   capsule:
-    min: 5000
-    max: 5000
-    unit: mcg
+    min: 2000
+    max: 10000
+    unit: IU
   liquid:
-    min: 1000
+    min: 2000
     max: 5000
     unit: IU
+  tablet:
+    min: 1000
+    max: 5000
+    unit: mcg
 timing_options:
 - morning
 - with_breakfast
@@ -32,6 +36,12 @@ linked_to_topics:
 - hypothyroidism
 - insulin-resistance
 - blood-sugar-dysfunction
+- estrogen-dominance
+- uterine-fibroids
+- chronic-pain-and-fatigue
+- menopause
+- steroidogenesis
+- vaginal-microbiome
 linked_to_claims:
 - low-carb-improves-pcos-hormonal-markers
 - vitamin-d-low-linked-recurrent-candida
@@ -42,12 +52,20 @@ linked_to_claims:
 - micronutrient-deficiency-impairs-insulin-receptor-signalling
 - low-vitamin-d-associated-with-insulin-resistance
 - vitamin-d3-supplementation-for-low-levels
-notes_for_coach: Fat-soluble — always take with a meal containing fat. Blood levels
-  should be monitored and dosing adjusted by a clinician. D3 is the preferred supplemental
-  form.
-notes_for_client: Vitamin D acts like a hormone and supports your pancreas's insulin-producing
-  cells. Get tested before supplementing so your provider can dial in the right dose
-  for you.
+- vitamin-d-deficiency-drives-fibroid-development
+- vitamin-d-is-a-pro-hormone-for-multiple-hormones
+- vitamin-d3-k2-magnesium-boron-calcium-absorption
+- vitamin-d-supports-reproductive-health-and-bone
+- vitamin-d-shifts-vaginal-microbiome-to-crispatus
+notes_for_coach: Dr. Davis targets serum 25(OH)D of 60–70 ng/mL. Vitamin D is identified
+  as a food/sun-exposure restoration (not exogenous), making it appropriate as a supplement
+  since sun exposure is limited in northern climates. Coaches can recommend testing
+  and supplementation to support vaginal microbiome health, but dosing to achieve
+  specific serum levels should involve clinician oversight.
+notes_for_client: Vitamin D, which we normally get from sunlight, helps support vaginal
+  health by favoring the growth of beneficial bacteria like L. crispatus. Most people
+  in northern climates don't get enough sun to make sufficient vitamin D and benefit
+  from supplementation. Ask your doctor to check your levels.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -74,7 +92,27 @@ sources:
   quote: Many studies show that lower vitamin D levels are associated with insulin
     resistance. Those with low blood levels should supplement with vitamin D3 and
     monitor their blood levels to adjust supplement dosages accordingly.
-version: 6
+- id: vitaone-health-coaching-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: Those with low blood levels should supplement with vitamin D3 and monitor
+    their blood levels to adjust supplement dosages accordingly.
+- id: coconote-fm-estrogen-dominance
+  location: Management of Estrogen Dominance
+  quote: Vitamin D as it plays a very significant role in the development of uterine
+    fibroids. Vitamin D optimization, reduce insulin resistance, reduce inflammation.
+- id: coconote-fm-chronic-pain-fatigue
+  location: Supplements Section
+  quote: it has to be the combination of vitamin b2 d3 magnesium and the boron here
+    we get there's a supplement conference passion
+- id: coconote-fm-sex-hormones
+  location: Management — Supplementation
+  quote: Vitamin D is very important when it comes to supporting in Vitamin K2 and
+    when it comes to supporting the reproductive health.
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Vitamin D and vaginal microbiome discussion
+  quote: Getting vitamin D to a healthy level. I aim for 60 to 70 nanograms per milliliter.
+    Also shifts the vaginal microbiome to favor crispatus.
+version: 11
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

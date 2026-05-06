@@ -3,34 +3,49 @@ display_name: Gut–Liver Axis
 aliases:
 - gut liver connection
 - enterohepatic circulation
+- hepato-intestinal axis
+- gut-liver connection
 category: gut
-summary: 'The gut and liver are functionally linked: toxins processed by the liver
-  are released via bile into the intestine for stool excretion; inadequate bowel motility
-  or dysbiosis can allow re-absorption (enterohepatic recirculation) of toxins, increasing
-  body burden. Adequate dietary fiber (>35g/day) and daily bowel movements are critical
-  for toxin elimination.'
+summary: The bidirectional relationship between gut function and liver detoxification.
+  Many toxins processed by the liver are excreted via bile into the gut and eliminated
+  in stool. Impaired bowel motility, leaky gut, and gut dysbiosis increase endotoxin
+  load, overburdening the liver. Adequate fiber (>35g/day) and hydration are essential
+  to this pathway.
 upstream_drivers:
 - constipation
 - dysbiosis
 - leaky-gut
+- gut-dysbiosis
+- low-fiber-diet
 downstream_effects:
 - increased-toxic-body-burden
 - hepatic-congestion
+- endotoxin-recirculation
+- increased-liver-burden
+- systemic-toxicity
 related_mechanisms:
 - leaky-gut
 - cytochrome-p450-phase1
 - phase2-conjugation
+- phase-ii-conjugation
 linked_to_topics:
 - liver-detoxification
 - toxic-body-burden
-evidence_tier: plausible_emerging
+- metabolic-detoxification
+- liver-detox-food-plan
+evidence_tier: strong
 sources:
 - id: vitaone-liver-detox-toolkit
   location: Sequencing a Detoxification Program
   quote: The goal of the Detox Food Plan is to create a gut–liver axis of support
     while lowering the burden on the immune system and providing adequate nourishment
     through foods and liquids.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Detox Food Plan — Sequencing a Detoxification Program
+  quote: The goal of the Detox Food Plan is to create a gut–liver axis of support
+    while lowering the burden on the immune system and providing adequate nourishment
+    through foods and liquids.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

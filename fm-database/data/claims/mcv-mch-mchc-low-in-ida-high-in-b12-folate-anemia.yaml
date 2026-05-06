@@ -1,0 +1,32 @@
+slug: mcv-mch-mchc-low-in-ida-high-in-b12-folate-anemia
+statement: MCV, MCH, and MCHC are low in iron deficiency anemia (microcytic, hypochromic)
+  and elevated in B12/folate deficiency anemia (macrocytic), enabling differential
+  diagnosis.
+evidence_tier: strong
+rationale: Iron deficiency produces small, pale RBCs (microcytic, hypochromic), reducing
+  MCV, MCH, and MCHC. B12/folate deficiency impairs DNA synthesis, producing large
+  RBCs (macrocytic), increasing these values. This differential is foundational in
+  haematology.
+coaching_translation: The size and colour concentration of red blood cells on a blood
+  test can tell a practitioner whether the anemia is from iron deficiency or a B12/folate
+  gap — they go in opposite directions.
+out_of_scope_notes: Diagnosis and classification of anemia from MCV/MCH/MCHC requires
+  a clinician.
+caveats:
+- Source is an expert lecture; consistent with standard haematology references.
+linked_to_topics:
+- iron-deficiency-anemia
+- b12-folate-anemia
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-iron-deficiency-anemia
+  location: Secondary Biomarkers / MCV-MCH-MCHC section
+  quote: If you see this blood report, very classical MCV, MCH, MCHC, all on the lower
+    side. This is very classical of diagnosing as an iron deficiency anemia. What
+    happens if the MCV, MCH, MCHC are on a higher side? So usually we call it as megaloblastic
+    anemia or B12 or folate anemias.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

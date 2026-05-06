@@ -1,0 +1,28 @@
+slug: ppi-h2-blocker-long-term-use-causes-hypochlorhydria
+statement: Long-term use of proton pump inhibitors (PPIs) or H2 blockers chronically
+  suppresses HCl production, inducing or worsening hypochlorhydria.
+evidence_tier: strong
+rationale: This is well-established pharmacology with robust evidence. PPI-induced
+  hypochlorhydria and its consequences (SIBO, mineral malabsorption) are documented
+  in peer-reviewed literature.
+coaching_translation: Long-term use of acid-suppressing medications like omeprazole
+  or ranitidine can itself cause low stomach acid over time — and may paradoxically
+  worsen the digestive symptoms they were prescribed for.
+caveats:
+- Coaches should not advise clients to stop prescription PPIs without clinician guidance.
+- PPI deprescribing requires medical supervision due to rebound hypersecretion.
+out_of_scope_notes: Medication management is a clinician task only.
+linked_to_topics:
+- hypochlorhydria
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-hypochlorhydria
+  location: Risk Factors for Low Stomach Acid
+  quote: PPIs which is proton inhibitors, H2 blockers which is histamine blockers,
+    again these all they inhibit the production of acid inside the stomach for the
+    longer term and that is why inhibit the long term production of hydrochloric acid.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

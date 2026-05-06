@@ -1,0 +1,28 @@
+slug: vitamin-k2-activates-osteocalcin-for-bone-mineralisation
+statement: Vitamin K2 activates osteocalcin, a protein that accumulates calcium in
+  bones and teeth, playing a critical role in bone and dental mineralisation.
+evidence_tier: strong
+rationale: The carboxylation of osteocalcin by vitamin K2-dependent gamma-glutamyl
+  carboxylase is a well-characterised biochemical mechanism supported by multiple
+  RCTs in the bone health literature.
+coaching_translation: Vitamin K2 acts like a guide for calcium — it activates a protein
+  that makes sure calcium goes into your bones and teeth, not elsewhere.
+caveats: []
+linked_to_topics:
+- vitamin-k2
+- vitamin-d3-k2-synergy
+linked_to_supplements:
+- vitamin-k2-supplement
+- vitamin-d3-k2-combination-supplement
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-vitamin-d3-k2
+  location: Vitamin K2 Functions
+  quote: Vitamin K2 is responsible for activating osteocalcin. What does osteocalcin
+    do is it accumulates the calcium inside the bones and the teeth thus play an important
+    role in the mineralization of the bones and teeth.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

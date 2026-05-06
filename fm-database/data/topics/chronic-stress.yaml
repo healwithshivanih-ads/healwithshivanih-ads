@@ -1,11 +1,14 @@
 slug: chronic-stress
-display_name: Chronic Stress
+display_name: Chronic Stress & Its Systemic Effects
 aliases:
 - prolonged stress
 - allostatic load
-summary: Prolonged mental or physical stress that has lasting systemic effects including
-  increased risk of heart disease, depression, diabetes, dementia, cancer, and digestive
-  symptoms. Activates the HPA axis and sympathetic nervous system chronically.
+- chronic psychological stress
+summary: Chronic stress describes prolonged periods of mental stress with lasting
+  effects on the entire body — including the brain, heart, digestive system, adrenal
+  glands, musculoskeletal system, and reproductive system. People with higher chronic
+  stress are more likely to develop heart disease, depression, diabetes, dementia,
+  and cancer.
 common_symptoms:
 - fatigue
 - insomnia
@@ -17,21 +20,31 @@ common_symptoms:
 - irregular-periods
 - shortness-of-breath
 - anxiety
+- headaches
+- menstrual-irregularities
 red_flags:
 - Persistent high blood pressure
 - Signs of heart disease
 - Severe depression requiring immediate care
+- persistent high blood pressure
+- heart disease risk
+- new onset diabetes
+- dementia risk
 related_topics:
 - hpa-axis-dysregulation
 - cortisol-dysregulation
+- hpa-axis-dysfunction
+- hypercortisolism
 key_mechanisms:
 - hpa-axis-dysregulation
 - sympathetic-nervous-system-activation
-coaching_scope_notes: Coaches can support MBSR, sleep hygiene, breathwork, movement,
-  nutrition, and social connection strategies. Refer out for clinical mental health
-  conditions.
-clinician_scope_notes: Chronic stress increases risk of cardiovascular, metabolic,
-  and neurodegenerative disease. Refer for counseling as needed.
+- sympathoadrenal-activation
+- cortisol-dhea-imbalance
+coaching_scope_notes: 'Coaches can deliver stress reduction strategies: sleep 7–9
+  hours, daily walks, deep breathing, gratitude journaling, MBSR, yoga/tai chi/qi
+  gong, social support, time in nature, digital detox, and reframing self-talk.'
+clinician_scope_notes: Refer for counseling or mental health assessment when chronic
+  stress is severe. Consider referral for adrenal and cardiovascular risk evaluation.
 evidence_tier: strong
 sources:
 - id: vitaone-adrenal-toolkit
@@ -39,7 +52,12 @@ sources:
   quote: People who report higher levels of chronic stress are more likely to develop
     heart disease, depression, diabetes, dementia, cancer, digestive symptoms, and
     more.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Effects of Chronic Stress
+  quote: People who report higher levels of chronic stress are more likely to develop
+    heart disease, depression, diabetes, dementia, cancer, digestive symptoms, and
+    more.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

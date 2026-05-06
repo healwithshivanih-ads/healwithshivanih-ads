@@ -1,0 +1,30 @@
+slug: 80-percent-lifestyle-20-percent-genes
+statement: Approximately 80% of chronic disease expression is determined by diet and
+  lifestyle factors, and only 20% by genetic predisposition.
+evidence_tier: plausible_emerging
+rationale: This is a commonly cited functional medicine heuristic grounded in epigenetics
+  research. While the precise 80/20 split is not validated by a single RCT, the broad
+  principle that lifestyle modulates gene expression is well-supported in the epigenetics
+  literature.
+coaching_translation: Your genes load the gun, but your lifestyle pulls the trigger
+  — which means you have enormous power to change your health outcomes regardless
+  of family history.
+caveats:
+- Source is an FM expert lecture (llm_synthesis equivalent quality). The 80/20 figure
+  is a heuristic, not a precise research finding.
+- Does not apply equally to all conditions (e.g., single-gene disorders).
+linked_to_topics:
+- epigenetics-lifestyle-gene-expression
+- chronic-pain-and-fatigue
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-chronic-pain-fatigue
+  location: Genes Section
+  quote: 80% is your lifestyle and food, and 20% is your genes. So we are responsible
+    for our own genes.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

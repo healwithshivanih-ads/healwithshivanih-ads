@@ -1,0 +1,31 @@
+slug: prebiotics-probiotics-synergy-for-gut-health
+statement: Prebiotics and probiotics work synergistically — probiotics introduce beneficial
+  bacteria while prebiotics ensure those bacteria are fed and able to thrive; without
+  sufficient prebiotics, probiotics may not be as effective.
+evidence_tier: plausible_emerging
+rationale: The synbiotic concept (combining pre- and probiotics) has a credible mechanistic
+  basis and growing clinical support, though evidence for specific combinations is
+  still emerging.
+coaching_translation: Think of probiotics as seeds and prebiotics as fertilizer —
+  you need both for your gut garden to thrive. Pair probiotic foods with prebiotic-rich
+  foods for maximum benefit.
+linked_to_topics:
+- gut-dysfunction
+- 5r-gut-restoration
+- gut-brain-axis
+linked_to_supplements:
+- probiotics
+- fos-prebiotic-supplement
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Prebiotics and Probiotics: Their Role in Gut Health'
+  quote: Without sufficient prebiotics, probiotics may not be as effective. This synergistic
+    relationship between prebiotics and probiotics is essential for maintaining a
+    balanced gut microbiome.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,27 @@
+slug: delayed-muscle-recovery
+display_name: Delayed Muscle Recovery / Post-Exercise Soreness
+aliases:
+- doms
+- post-workout soreness
+- slow recovery
+- muscle soreness after exercise
+category: musculoskeletal
+severity: common
+description: Prolonged muscle soreness and slow recovery after exercise due to insufficient
+  magnesium-mediated muscle relaxation and repair.
+linked_to_topics:
+- magnesium-deficiency
+- magnesium-musculoskeletal-health
+linked_to_mechanisms:
+- calcium-magnesium-imbalance
+when_to_refer: ''
+sources:
+- id: coconote-fm-magnesium-deficiency
+  location: Musculoskeletal system
+  quote: I do a workout I do not have problems that I'm working on but post-recovery
+    is what is your concern for me the soreness stays for a longer time then we should
+    be thinking about magnesium deficiency.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

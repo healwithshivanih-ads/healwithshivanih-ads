@@ -1,0 +1,38 @@
+slug: sleep-apnea-cardiovascular-risk
+display_name: Sleep Apnea and Cardiovascular Risk
+aliases:
+- OSA cardiovascular
+- obstructive sleep apnea heart risk
+summary: Obstructive sleep apnea causes recurrent hypoxia, sympathetic activation,
+  oxidative stress, and inflammation, driving atrial fibrillation, cardiomyopathy,
+  central obesity, and coronary disease. Commonly missed and highly treatable.
+common_symptoms:
+- nighttime-urination
+- morning-headaches
+- daytime-fatigue
+- snoring
+red_flags:
+- new-onset-atrial-fibrillation
+- cardiomyopathy
+- right-heart-failure
+related_topics:
+- cardiovascular-disease-prevention
+- metabolic-syndrome
+key_mechanisms:
+- sympathetic-activation-sleep-apnea
+- oxidative-stress
+- central-adiposity-inflammation
+coaching_scope_notes: Coaches can screen for sleep apnea symptoms and encourage evaluation.
+  Weight loss and sleep hygiene support are within coaching scope.
+clinician_scope_notes: Formal sleep study and CPAP/BIPAP prescription are clinician
+  scope.
+evidence_tier: strong
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Sleep Apnea and Cardiovascular Risk
+  quote: These recurrent arousals lead to atrial fibrillation, central obesity, coronary
+    disease, and big one, cardiomyopathy.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

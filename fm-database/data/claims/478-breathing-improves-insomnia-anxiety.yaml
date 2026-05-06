@@ -1,0 +1,27 @@
+slug: 478-breathing-improves-insomnia-anxiety
+statement: 4-7-8 breathing (inhale 4, hold 7, exhale 8) produces strong vagal activation
+  and is clinically useful for insomnia and anxiety.
+evidence_tier: plausible_emerging
+rationale: Extended exhale techniques are mechanistically sound for vagal activation.
+  4-7-8 specifically has anecdotal/clinical support but limited large RCT evidence.
+  The vagal activation mechanism is biologically plausible.
+coaching_translation: Try breathing in for 4 counts, holding for 7, and exhaling for
+  8 at bedtime. This activates your body's calm-down system and can help quiet a racing
+  mind.
+caveats:
+- Avoid in panic disorder or with history of breath-holding sensitivity.
+- Source is educational synthesis.
+linked_to_topics:
+- breathwork-for-health
+- nervous-system-regulation
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Breathwork Cheatsheet / Breathwork Techniques & Clinical Use
+  quote: Inhale 4 → hold 7 → exhale 8; Strong vagal activation; Insomnia, anxiety.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

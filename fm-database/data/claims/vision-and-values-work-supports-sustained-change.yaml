@@ -1,0 +1,28 @@
+slug: vision-and-values-work-supports-sustained-change
+statement: Deeply exploring a client's long-term vision of who they want to be — not
+  just what they want to achieve — and connecting it to their core values is a powerful
+  strategy for overcoming ambivalence and sustaining behavior change.
+evidence_tier: strong
+rationale: Values clarification and future-self visualization are well-supported components
+  of acceptance and commitment therapy (ACT) and motivational interviewing, with RCT
+  support for health behavior change.
+coaching_translation: 'Ask: ''Who do you want to be at your core?'' and ''Why do you
+  want to be that person?'' Help clients visualize their future self in sensory detail
+  — how they feel, move, and behave — to build intrinsic motivation.'
+caveats:
+- Described as a coaching strategy in group discussion; no specific study cited in
+  the document.
+linked_to_topics:
+- ambivalence-in-coaching
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-coaching-ambivalence
+  location: Group discussion — vision and identity coaching strategies
+  quote: It's not just where you want to be in the future but it's who you want to
+    be — it's that person at the core — who do you want to be in the future.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

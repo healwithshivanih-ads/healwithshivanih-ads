@@ -1,0 +1,28 @@
+slug: high-cortisol-impairs-ovulation
+statement: Chronically elevated cortisol can suppress the hypothalamic-pituitary-ovarian
+  axis, directly impairing ovulation and contributing to cycle irregularity and infertility.
+evidence_tier: plausible_emerging
+rationale: High cortisol suppresses GnRH pulsatility and LH surge, both required for
+  ovulation. Evidence from stress-induced anovulation studies supports this mechanism.
+  However, the cortisol threshold and clinical predictability are not precisely defined.
+coaching_translation: Chronic stress and elevated cortisol levels can interfere with
+  the hormonal signals needed for ovulation. Managing stress is an important part
+  of supporting regular cycles and fertility.
+caveats:
+- Mechanism is well-established in animal models and stress-induced amenorrhoea; clinical
+  data in PCOS-specific populations are more limited.
+- Source is Instagram educational content.
+linked_to_topics:
+- pcos-fertility
+- adrenal-cortisol-resilience
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXtzQLWjKjv/
+  quote: 'Forgetting stress biology: high cortisol alone can derail ovulation.'
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

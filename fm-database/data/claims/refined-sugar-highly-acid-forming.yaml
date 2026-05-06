@@ -1,0 +1,28 @@
+slug: refined-sugar-highly-acid-forming
+statement: Refined sugar is highly acid-forming because it is a pure acid, and Coca-Cola
+  (pH ~2.5) is one of the most acidic substances people commonly consume.
+evidence_tier: plausible_emerging
+rationale: Refined sugar has a high PRAL score and contributes to metabolic acid load.
+  Carbonated soft drinks like Coca-Cola are measured at ~pH 2.5–3.5. The framing of
+  sugar as 'pure acid' is imprecise but the acid-forming impact is directionally supported.
+coaching_translation: Refined sugar and sodas are among the most acid-forming things
+  you can put in your body. Minimising them is one of the most powerful things you
+  can do for cellular pH.
+caveats:
+- '''Refined sugar is a pure acid'' is a simplification — sugar is not technically
+  an acid, but it is highly acid-forming in metabolism.'
+- Source is a lecture transcript.
+linked_to_topics:
+- ph-balance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-ph-balance
+  location: Acid-Forming Foods Section
+  quote: Refined sugar sits way up high because it is a pure acid. What's not far
+    behind it is the hybridised wheat.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,37 @@
+slug: pantethine-vitamin-b5
+display_name: Pantethine (Vitamin B5)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 300
+    max: 900
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-disease-prevention
+linked_to_claims:
+- b5-300mg-tid-lowers-ldl
+notes_for_coach: Cited at 300mg three times a day for LDL lowering. Can be combined
+  with other lipid-modifying agents.
+notes_for_client: Pantethine (a form of Vitamin B5) at higher doses may help lower
+  LDL cholesterol. It can be used alongside other supplements or medications under
+  clinician guidance.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: LDL-Lowering Nutraceuticals
+  quote: B5, 300 milligrams, three times a day will lower LDL and can be mixed with
+    other medications.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

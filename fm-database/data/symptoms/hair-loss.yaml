@@ -1,28 +1,86 @@
 slug: hair-loss
-display_name: Hair Loss
+display_name: Hair Loss & Hair Thinning
 aliases:
 - androgenic alopecia
 - thinning hair
 - alopecia
+- hair thinning
+- hair breakage from roots
+- scalp hair loss
+- hair shedding
+- losing hair
+- shedding
+- hairfall
+- brittle hair
+- slow hair growth
+- telogen effluvium
 category: skin
 severity: common
-description: Hair thinning or loss in men and women, associated with excess DHT from
-  5-alpha reductase activity, or with low SHBG and elevated free androgens.
-when_to_refer: Refer if rapid or patchy hair loss, signs of autoimmune alopecia, or
-  concurrent hormonal disorder requiring lab evaluation.
+description: Hair loss, thinning, brittle hair, slow growth, and brittle nails linked
+  to biotin, zinc, iron, thyroid imbalance, PCOS, postpartum shifts, androgenic alopecia,
+  telogen effluvium, and nutrient deficiency.
+when_to_refer: If hair loss is sudden, patchy (alopecia areata), or associated with
+  autoimmune or thyroid symptoms; if postpartum or hormonal root cause suspected.
 linked_to_topics:
 - testosterone-health
 - sex-hormone-binding-globulin
+- testosterone-dht-conversion
+- iron-deficiency-anemia
+- menopause
+- perimenopause
+- estrogen-dominance
+- zinc-deficiency
+- iron-deficiency-dysregulation
+- pcos-fertility
+- hair-loss
+- nutrition-deficiency
+- thyroid
+- pcos
 linked_to_mechanisms:
 - five-alpha-reductase-conversion
 - shbg-hormone-binding
+- 5-alpha-reductase-activity
+- estrogen-progesterone-decline
+- hepcidin-mediated-iron-block
+- thyroid-nutrient-synergy
+- gut-barrier-and-nutrient-absorption
+- nutrient-dependent-energy-metabolism
+- oxidative-stress-and-inflammation
 sources:
 - id: vitaone-sex-hormones-toolkit
   location: Sex Hormone Binding Globulin (SHBG) — Page 01
   quote: When SHBG levels in the body are low... This can lead to increased free testosterone
     and estrogen in the body, which can lead to symptoms like hair loss, acne, and
     excess fluid retention.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Sex Hormone Binding Globulin (SHBG)
+  quote: This can lead to increased free testosterone and estrogen in the body, which
+    can lead to symptoms like hair loss, acne, and excess fluid retention.
+- id: coconote-fm-iron-deficiency-anemia
+  location: Symptoms of Iron Deficiency section
+  quote: Hair loss, especially breakage from the roots.
+- id: coconote-fm-sex-hormones
+  location: Symptoms of Menopause Transition
+  quote: loss of hair on the head, new hair on the chin, so facial hair also tends
+    to happen
+- id: coconote-fm-zinc-deficiency
+  location: Signs and Symptoms
+  quote: Hair loss, macular degeneration, loss of taste and smell, skin disorders
+    including acne.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXy9b_KjJT2/
+  quote: Normal Hb but fatigue, hair loss and brain fog persist
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Symptoms Discussed
+  quote: Hair loss, hair thinning, brittle hair, slow growth, and brittle nails -
+    Linked to biotin, zinc, iron, thyroid imbalance, PCOS, postpartum shifts, androgenic
+    alopecia, telogen effluvium, and nutrient deficiency.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Symptoms Discussed
+  quote: Hair loss, hair thinning, brittle hair, slow growth, and brittle nails -
+    Linked to biotin, zinc, iron, thyroid imbalance, PCOS, postpartum shifts, androgenic
+    alopecia, telogen effluvium, and nutrient deficiency.
+version: 8
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-06'
 updated_by: shivani

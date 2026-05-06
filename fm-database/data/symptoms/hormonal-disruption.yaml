@@ -1,0 +1,26 @@
+slug: hormonal-disruption
+display_name: Hormonal Disruption / Endocrine Disruption
+aliases:
+- endocrine disruptors
+- hormone imbalance from toxins
+- estrogen-like chemicals
+category: hormonal
+severity: concerning
+description: Many xenobiotics act as endocrine disruptors or immune modulators, binding
+  to receptors and mimicking or blocking hormonal signals. Estrogen-promoting chemicals
+  may accumulate if Phase 2 methylation and conjugation pathways are impaired.
+when_to_refer: Refer to clinician for hormonal testing and management.
+linked_to_topics:
+- xenobiotic-exposure
+- liver-detoxification-phases
+linked_to_mechanisms:
+- methylation-detox
+sources:
+- id: coconote-fm-liver-detox-part1
+  location: Xenobiotic Concept Introduction
+  quote: xenobiotics is metal, endocrine disruptor, immune disruptor, immune modulator,
+    and they also are receptor-binded protein.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

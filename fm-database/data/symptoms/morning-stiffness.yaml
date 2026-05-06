@@ -1,0 +1,28 @@
+slug: morning-stiffness
+display_name: Morning Joint Stiffness
+aliases:
+- stiff joints in morning
+- stiffness on waking
+- joint stiffness
+category: musculoskeletal
+severity: common
+description: Stiffness in joints upon waking that typically improves with movement;
+  may indicate underlying systemic inflammation even when other labs and lifestyle
+  factors appear normal.
+when_to_refer: If prolonged (>1 hour) or worsening, refer to rule out inflammatory
+  arthritis (RA, ankylosing spondylitis).
+linked_to_topics:
+- chronic-pain-and-fatigue
+- fibromyalgia
+linked_to_mechanisms:
+- systemic-inflammation
+- omega-3-deficiency-inflammation
+sources:
+- id: coconote-fm-chronic-pain-fatigue
+  location: Q&A Section
+  quote: every morning when he gets up, he says that he has stiffness in joints and
+    after he works out, the stiffness is gone.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

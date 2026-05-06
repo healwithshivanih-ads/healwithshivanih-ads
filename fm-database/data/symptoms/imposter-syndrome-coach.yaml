@@ -1,0 +1,26 @@
+slug: imposter-syndrome-coach
+display_name: Imposter Syndrome (New Coach)
+aliases:
+- not feeling qualified
+- doubting your coaching value
+- fear of not being good enough as a coach
+category: mood
+severity: common
+description: A psychological pattern in which new or early-career coaches doubt their
+  competence, credentials, or right to charge for their services, often rooted in
+  lack of client success stories, early conditioning, or cultural messaging around
+  money and worth.
+when_to_refer: If imposter syndrome is severe and persistent, contributing to anxiety
+  or inability to launch a practice, consider referral to a therapist or mentor coach.
+linked_to_topics:
+- health-coaching-career-paths
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-future-fm
+  location: Mindset & Sales Section
+  quote: Sometimes it's tied up into imposter syndrome if you're a new coach. You
+    might not have a lot of that patient or client success stories yet.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

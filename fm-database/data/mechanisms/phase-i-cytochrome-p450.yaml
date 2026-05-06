@@ -1,0 +1,38 @@
+slug: phase-i-cytochrome-p450
+display_name: Phase I Cytochrome P450 Detoxification
+aliases:
+- CYP450 enzymes
+- Phase I liver enzymes
+- oxidative biotransformation
+category: metabolic
+summary: Phase I detoxification uses cytochrome P450 enzymes to perform oxidation,
+  reduction, hydrolysis, hydration, and dehalogenation reactions on lipid-soluble
+  toxins, converting them into more polar intermediary metabolites. Key nutrients
+  include riboflavin (B2), niacin (B3), pyridoxine (B6), folic acid, vitamin B12,
+  glutathione, branched-chain amino acids, flavonoids, and phospholipids.
+upstream_drivers:
+- toxicant-exposure
+- nutrient-deficiency
+- genetic-enzyme-polymorphisms
+downstream_effects:
+- reactive-oxygen-intermediate-production
+- phase-ii-conjugation
+- free-radical-generation
+related_mechanisms:
+- phase-ii-conjugation
+- antioxidant-protection
+linked_to_topics:
+- metabolic-detoxification
+- liver-detox-food-plan
+evidence_tier: strong
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Nutrients for Phase 1 and Phase 2 Detoxification
+  quote: 'PHASE I (Cytochrome P450 Enzymes) — Reactions: Oxidation, Reduction, Hydrolysis,
+    Hydration, Dehalogenation; Nutrients Used: Riboflavin (Vit B2), Niacin (Vit B3),
+    Pyridoxine (Vit B6), Folic acid, Vitamin B12, Glutathione, Branched-chain amino
+    acids, Flavonoids, Phospholipids'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

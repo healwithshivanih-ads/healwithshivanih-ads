@@ -1,0 +1,28 @@
+slug: turmeric-lowers-blood-sugar-and-hba1c
+statement: Turmeric (curcumin) supplementation lowers fasting blood sugar and HbA1c,
+  with potential benefit in metabolic syndrome and insulin resistance.
+evidence_tier: plausible_emerging
+rationale: Several small RCTs support curcumin's blood sugar lowering effects, though
+  larger definitive trials are lacking. Mechanism via NF-κB/insulin signaling pathway
+  is plausible.
+coaching_translation: Turmeric may help keep blood sugar more stable — useful for
+  people working on metabolic health alongside diet and exercise changes.
+caveats:
+- Source is expert lecture — verify with current systematic review of curcumin and
+  glycemic control.
+- Evidence is emerging, not consensus-level.
+linked_to_topics:
+- metabolic-syndrome
+- cardiovascular-disease-prevention
+linked_to_supplements:
+- turmeric-curcumin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Nutraceuticals — Turmeric
+  quote: Turmeric actually lowers blood sugar. Turmeric lowers hemoglobin A1Cs.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

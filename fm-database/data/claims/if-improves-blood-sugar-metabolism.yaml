@@ -1,0 +1,32 @@
+slug: if-improves-blood-sugar-metabolism
+statement: Intermittent fasting improves blood sugar metabolism and may benefit insulin
+  resistance.
+evidence_tier: plausible_emerging
+rationale: Directly stated in document citing Patterson 2015 and Mattson 2017. Consistent
+  with improved insulin signalling during fasting windows. Wei et al. 2017 Sci Transl
+  Med (FMD) also cited.
+coaching_translation: IF can help your body use blood sugar more efficiently — especially
+  helpful if your blood sugar tends to run high.
+caveats:
+- Clients with T2DM or metabolic syndrome must work with a clinician before starting
+  IF.
+- Insulin-dependent diabetics should not fast without direct medical supervision.
+- Short-term studies predominate.
+out_of_scope_notes: Adjusting insulin or diabetes medications in response to fasting
+  is outside coaching scope — must involve prescribing clinician.
+linked_to_topics:
+- intermittent-fasting
+- cardiometabolic-diet
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Intermittent Fasting — Who Should not Fast or Fast with Caution?
+  quote: For those with type 2 diabetes, metabolic syndrome, or symptoms related to
+    unbalanced blood sugar, it is strongly advised to work with an experienced healthcare
+    practitioner that can guide a person towards improved blood sugar health and being
+    able to fast.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

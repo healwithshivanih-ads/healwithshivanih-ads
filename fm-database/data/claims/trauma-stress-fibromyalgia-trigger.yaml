@@ -1,0 +1,30 @@
+slug: trauma-stress-fibromyalgia-trigger
+statement: Adverse childhood experiences, trauma, anxiety, and chronic stress are
+  recognised triggers for fibromyalgia and chronic pain flares.
+evidence_tier: plausible_emerging
+rationale: The association between ACEs, HPA axis dysregulation, and chronic pain/fibromyalgia
+  is supported by epidemiological studies and neurobiological research on central
+  sensitisation.
+coaching_translation: When taking a client history, always explore childhood trauma
+  and current stress levels — these are not just 'soft factors' but physiological
+  drivers of chronic pain.
+out_of_scope_notes: Trauma processing is out of scope for coaching. Refer to a therapist
+  or psychologist for ACE-related work.
+caveats:
+- Source is expert FM lecture.
+- Coaching scope is limited to awareness, stress management tools, and referral.
+linked_to_topics:
+- fibromyalgia
+- chronic-pain-and-fatigue
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-chronic-pain-fatigue
+  location: Stress / Trauma Section
+  quote: It's very common in arthritis, people with arthritis or fibromyalgia, people
+    are having a lot of childhood trauma or the stress and anxiety, those are triggers
+    for them and after those triggers they experience that kind of a symptoms.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

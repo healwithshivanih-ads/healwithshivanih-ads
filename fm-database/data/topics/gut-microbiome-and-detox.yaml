@@ -1,0 +1,35 @@
+slug: gut-microbiome-and-detox
+display_name: Gut Microbiome & Detoxification
+aliases:
+- intestinal microbiome detox
+- gut bacteria toxin elimination
+summary: The gut microbiome plays a significant role in reducing xenobiotic load before
+  absorption. Up to 50–60% of ingested pesticides may be eliminated by gut bacteria,
+  with the bacteria acting as a first line of defense. Intestinal dysbiosis impairs
+  this protection and increases systemic toxic load. LPS (lipopolysaccharide) from
+  gram-negative bacteria is also an internal toxin source.
+common_symptoms:
+- intestinal-dysbiosis
+- increased-toxic-sensitivity
+red_flags: []
+related_topics:
+- total-toxic-load
+- liver-detoxification-phases
+- xenobiotic-exposure
+key_mechanisms:
+- gut-microbiome-toxin-elimination
+- lps-endotoxin-production
+coaching_scope_notes: Coaches should prioritize gut microbiome restoration (prebiotics,
+  probiotics, fiber, removing dysbiosis triggers) as a foundational step before focusing
+  on liver detox pathways.
+evidence_tier: plausible_emerging
+clinician_scope_notes: ''
+sources:
+- id: coconote-fm-liver-detox-part1
+  location: Intestinal Dysbiosis and Detox
+  quote: Let's say you eat any kind of any kind of food like a pesticide you know
+    50 to 60 percent of this pesticide is actually eliminated by that microbiome.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

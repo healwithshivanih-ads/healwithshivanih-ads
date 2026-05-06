@@ -1,0 +1,28 @@
+slug: myalgia
+display_name: Muscle Pain (Myalgia)
+aliases:
+- muscle aches
+- muscle soreness
+- statin myalgia
+- muscular pain
+category: musculoskeletal
+severity: concerning
+description: Pain, aching, or tenderness in muscles, commonly reported as a side effect
+  of statin therapy. May range from mild discomfort to significant functional impairment.
+  Mechanistically linked to CoQ10 depletion and mitochondrial dysfunction in muscle
+  tissue.
+when_to_refer: Refer to clinician if myalgia is severe, progressive, or accompanied
+  by dark urine (possible rhabdomyolysis).
+linked_to_topics:
+- statin-side-effects
+linked_to_mechanisms:
+- coq10-depletion
+- mevalonate-pathway-inhibition
+sources:
+- id: coconote-fm-reality-of-statins
+  location: Side Effects of Statins Section
+  quote: It may cause myalgia and atrophy and atrophy.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

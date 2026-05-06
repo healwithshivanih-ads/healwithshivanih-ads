@@ -1,0 +1,27 @@
+slug: exercise-increases-oxygen-and-nutrition-to-brain
+statement: Exercise increases blood supply to the brain, delivering more oxygen, nutrients,
+  and water to brain cells while removing waste products, supporting mood and cognitive
+  function.
+evidence_tier: strong
+rationale: Exercise-induced cerebral blood flow increase and its cognitive/mood benefits
+  are strongly supported in peer-reviewed literature including multiple RCTs.
+coaching_translation: Moving your body is one of the most evidence-backed ways to
+  improve your mood and mental sharpness. Even a daily walk increases blood flow to
+  the brain.
+caveats:
+- Source is expert lecture, but this claim has strong independent research support
+linked_to_topics:
+- depression-lifestyle
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-healing-mind
+  location: Exercise Section
+  quote: exercise increases the blood supply to the brain. And when you increase the
+    blood supply to the brain, you're getting more oxygen into the brain cells. More
+    oxygen means more energy.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,33 @@
+slug: p5p-deficiency-drives-estrogen-dominance
+statement: Insufficient P5P (active B6) is a contributing mechanism to estrogen dominance,
+  heavy periods, and fibrocystic breasts by allowing prolonged estrogen receptor signaling.
+evidence_tier: plausible_emerging
+rationale: B6's role in estrogen metabolism and symptoms of estrogen excess has some
+  clinical and observational support. The helix-12 mechanism proposed is biologically
+  plausible but not confirmed by RCTs.
+coaching_translation: If you experience heavy periods, painful or lumpy breasts, or
+  signs of estrogen excess, low active B6 may be part of the picture — it affects
+  how long estrogen's signals stay on in your cells.
+caveats:
+- Historically vitamin A, B6, and magnesium were used empirically for these conditions;
+  mechanistic explanation is proposed but not RCT-confirmed.
+- Source is expert consensus.
+linked_to_topics:
+- estrogen-signaling
+- hormonal-nutrition-foundations
+linked_to_supplements:
+- pyridoxal-5-phosphate
+- vitamin-a-retinol
+- magnesium-hormone-support
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: P5P and Hormone Signaling Duration
+  quote: if you've got heavy periods, or you've got fibrocystic breasts, a lot of
+    that is excessive estrogen signaling. And one of the issues is insufficient B6.
+    So we have way too long of a signal going on instead of the optimal amount.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

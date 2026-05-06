@@ -1,0 +1,28 @@
+slug: facial-hair
+display_name: Facial Hair (New Growth)
+aliases:
+- chin hair
+- new hair on chin
+- androgenic hair
+category: hormonal
+severity: common
+description: New or increased hair growth on the face (especially chin) in women,
+  associated with relative androgen excess from declining estrogen/progesterone or
+  elevated aromatase-driven androstenedione conversion.
+linked_to_topics:
+- menopause
+- perimenopause
+- estrogen-dominance
+linked_to_mechanisms:
+- aromatase-activity
+- estrogen-progesterone-decline
+when_to_refer: ''
+sources:
+- id: coconote-fm-sex-hormones
+  location: Symptoms of Menopause Transition
+  quote: new hair on the chin, so facial hair also tends to happen, muscle and joint
+    pains as well.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

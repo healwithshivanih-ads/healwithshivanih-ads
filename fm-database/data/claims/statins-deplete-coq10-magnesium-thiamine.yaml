@@ -1,0 +1,33 @@
+slug: statins-deplete-coq10-magnesium-thiamine
+statement: Statin medications deplete CoQ10, and loop diuretics deplete magnesium
+  and thiamine (B1) — nutrient depletion from medications should be systematically
+  addressed.
+evidence_tier: plausible_emerging
+rationale: Statin-induced CoQ10 depletion is biologically plausible (statins inhibit
+  mevalonate pathway which produces CoQ10) and clinically studied, though evidence
+  for clinical benefit of supplementation is mixed. Loop diuretic-induced magnesium/thiamine
+  loss is well-established.
+coaching_translation: Certain medications can drain important nutrients from your
+  body. If you're on a statin, CoQ10 is worth discussing with your doctor. If you're
+  on a water pill, magnesium and B1 may also need monitoring.
+out_of_scope_notes: Nutrient repletion dosing in the context of pharmaceutical use
+  should involve clinician oversight.
+caveats:
+- RCT evidence for clinical benefit of CoQ10 supplementation in statin users is inconsistent.
+- Source is expert consensus lecture — not a systematic review.
+linked_to_topics:
+- cardiovascular-disease-prevention
+linked_to_supplements:
+- coenzyme-q10
+- magnesium
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Nutrient Depletion from Medications
+  quote: Statins deplete. And this is one of the reasons I measure CoQ10... loop diuretics.
+    Everyone says, oh, take your potassium with your loop diuretic, but they forget
+    that you need magnesium and you need thiamine, B1.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

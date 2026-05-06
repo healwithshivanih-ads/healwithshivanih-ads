@@ -1,0 +1,34 @@
+slug: rauwolfia-serpentine
+display_name: Rauwolfia serpentina
+category: herb
+forms_available:
+- capsule
+- tablet
+timing_options:
+- morning
+- with_breakfast
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- beta-blocker-deprescribing
+- hypertension
+linked_to_claims: []
+notes_for_coach: Rauwolfia serpentina contains reserpine, a potent sympatholytic agent
+  used historically for hypertension. Listed in the beta blocker tapering protocol.
+  This herb has a narrow therapeutic window and significant drug-interaction potential.
+  Use ONLY under clinician supervision — NOT appropriate for coaching-level recommendation.
+notes_for_client: Rauwolfia is a powerful botanical that must only be used under the
+  supervision of a qualified healthcare provider. Do not use without direct clinician
+  guidance.
+evidence_tier: confirm_with_clinician
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients
+    — Supplement Schedule'
+  quote: Rauwolfia serpentine
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

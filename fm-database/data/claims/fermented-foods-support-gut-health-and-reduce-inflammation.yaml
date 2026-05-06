@@ -1,0 +1,29 @@
+slug: fermented-foods-support-gut-health-and-reduce-inflammation
+statement: Fermented foods (yogurt, kefir, sauerkraut, kimchi) support gut health,
+  which is critical for controlling inflammation.
+evidence_tier: plausible_emerging
+rationale: Emerging evidence from microbiome research supports a link between fermented
+  food consumption, gut microbiome diversity, and reduced inflammatory markers (e.g.,
+  Sonnenburg et al., 2021, Cell). Direct causality in chronic inflammation control
+  is plausible but not yet consensus-level.
+coaching_translation: Eating fermented foods regularly — like yogurt, kefir, sauerkraut,
+  and kimchi — feeds beneficial gut bacteria, which help keep your immune system calm
+  and your digestion smooth.
+caveats:
+- Evidence for specific fermented foods on systemic inflammation is emerging. Individual
+  tolerance varies, especially in IBD.
+linked_to_topics:
+- anti-inflammatory-diet
+- chronic-inflammation
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Anti Inflammatory Diet — Foods to Eat
+  quote: 'Fermented Foods: Support gut health. Examples: Yogurt, kefir, sauerkraut,
+    and kimchi.'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

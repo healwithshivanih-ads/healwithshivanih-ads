@@ -1,0 +1,27 @@
+slug: dash-diet-cardiometabolic-plan-cvd
+statement: The Cardiometabolic Food Plan or DASH diet with salt restriction is recommended
+  for cardiovascular risk reduction and during beta blocker tapering.
+evidence_tier: strong
+rationale: The DASH diet has extensive RCT evidence for blood pressure reduction.
+  Cardiometabolic dietary patterns (whole foods, reduced sodium, anti-inflammatory)
+  are supported by multiple CVD outcomes trials.
+coaching_translation: A heart-healthy diet doesn't have to be complicated — focus
+  on whole foods, reduce salt, minimize processed foods, and increase vegetables and
+  lean proteins.
+caveats: []
+linked_to_topics:
+- hypertension
+- cardiovascular-dysfunction
+- beta-blocker-deprescribing
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Practitioners
+    — Lifestyle Recommendations'
+  quote: 'Diet: Cardiometabolic Food Plan or DASH with salt restriction'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

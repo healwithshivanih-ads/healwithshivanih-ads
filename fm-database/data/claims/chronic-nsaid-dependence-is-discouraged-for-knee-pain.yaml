@@ -1,0 +1,34 @@
+slug: chronic-nsaid-dependence-is-discouraged-for-knee-pain
+statement: Chronic NSAID dependence should be avoided for knee pain, with focus instead
+  on reducing inflammation and improving joint function naturally.
+evidence_tier: confirm_with_clinician
+rationale: Long-term NSAID use has documented GI, renal, and cardiovascular risks;
+  however, changing medication management is outside coaching scope.
+out_of_scope_notes: NSAID management is prescribing clinician scope. Coaches should
+  not advise stopping or reducing prescribed medications.
+caveats:
+- Source is a practitioner cheatsheet without primary citations.
+- Do not advise clients to stop prescribed NSAIDs without clinician involvement.
+- Never advise clients to stop or reduce prescribed NSAIDs without clinician guidance.
+linked_to_topics:
+- joint-pain
+- medication-nutrient-interactions
+linked_to_supplements:
+- curcumin
+- boswellia
+- omega-3
+coaching_translation: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 32
+  quote: The source advises avoiding chronic NSAID dependence and focusing on reducing
+    inflammation and improving joint function naturally.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 32
+  quote: The source advises avoiding chronic NSAID dependence and focusing on reducing
+    inflammation and improving joint function naturally.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

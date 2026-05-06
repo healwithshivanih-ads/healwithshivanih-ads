@@ -1,0 +1,37 @@
+slug: gluten-intolerance
+display_name: Gluten Intolerance & Hybridised Wheat
+aliases:
+- gluten sensitivity
+- wheat intolerance
+- non-celiac gluten sensitivity
+summary: Modern hybridised wheat has a complex gluten structure that many people cannot
+  fully digest, contributing to widespread gluten intolerance. Symptoms include brain
+  fog and bloating. Sourdough fermentation and heritage grains like spelt may reduce
+  the burden. Celiac disease is a distinct, more severe condition.
+common_symptoms:
+- brain-fog
+- bloating
+- irritable-bowel
+red_flags:
+- celiac-disease-diagnosis
+related_topics:
+- ph-balance
+- lectin-sensitivity
+key_mechanisms:
+- lectin-gut-inflammation
+- gluten-digestive-burden
+coaching_scope_notes: Coaches can suggest a 2-month gluten elimination trial, recommend
+  heritage grains (spelt, millet, sorghum, quinoa) and sourdough preparation. Do not
+  diagnose celiac disease.
+clinician_scope_notes: Celiac disease diagnosis requires serology and biopsy. Refer
+  clients with severe GI symptoms or suspected autoimmune involvement.
+evidence_tier: plausible_emerging
+sources:
+- id: barbara-oneil-ph-balance
+  location: Gluten and Hybridised Wheat Section
+  quote: The two most common symptoms are brain fog and bloating. And how many people
+    have that and just live with that?
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

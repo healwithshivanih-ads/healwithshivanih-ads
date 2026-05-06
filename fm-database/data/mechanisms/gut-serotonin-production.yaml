@@ -1,0 +1,33 @@
+slug: gut-serotonin-production
+display_name: Gut Serotonin Production
+aliases:
+- enteric serotonin synthesis
+- gut-derived serotonin
+category: neurological
+summary: The gut produces approximately 90% of the body's serotonin via enterochromaffin
+  cells. Gut microbiome composition influences serotonin synthesis, which directly
+  impacts mood, cognition, and mental well-being via the gut-brain axis.
+upstream_drivers:
+- gut-microbiome-composition
+- diet
+- gut-dysbiosis
+downstream_effects:
+- mood-regulation
+- anxiety
+- depression
+- cognitive-function
+related_mechanisms:
+- gut-dysbiosis
+- neuroinflammation-gut-axis
+linked_to_topics:
+- gut-brain-axis
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Gut-Brain Axis: Nutrition''s Impact on Mental Health'
+  quote: In fact, the gut produces around 90% of the body's serotonin, the 'feel-good'
+    neurotransmitter, linking it directly to mental well-being.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

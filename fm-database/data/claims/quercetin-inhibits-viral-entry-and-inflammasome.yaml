@@ -1,0 +1,32 @@
+slug: quercetin-inhibits-viral-entry-and-inflammasome
+statement: Quercetin (1,000 mg regular or 500 mg phytosome form, twice daily) inhibits
+  viral entry, modulates inflammasome activity, and reduces upper respiratory infection
+  symptoms.
+evidence_tier: plausible_emerging
+rationale: Quercetin's antiviral effects (including inhibiting influenza A entry —
+  Wu et al. 2015, Viruses) and anti-inflammasome activity (Yi 2018, Mol Nutr Food
+  Res) are supported by in vitro and some clinical data. Phytosome form improves bioavailability.
+  COVID-19-specific claims are early-stage.
+coaching_translation: Quercetin, found naturally in apples, onions, and berries, may
+  help block viruses from entering cells and reduce inflammation. A phytosome form
+  absorbs better.
+out_of_scope_notes: Dosing should be confirmed with a clinician. Quercetin may interact
+  with certain medications.
+caveats:
+- COVID-19-specific evidence is preliminary.
+- Phytosome form has better bioavailability than standard quercetin.
+linked_to_topics:
+- immune-support-covid-19
+- chronic-inflammation
+linked_to_supplements:
+- quercetin
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Quercetin is found in fruits and vegetables and has a wide range of benefits,
+    including decreasing viral growth.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

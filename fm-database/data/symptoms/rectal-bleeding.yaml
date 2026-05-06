@@ -1,0 +1,27 @@
+slug: rectal-bleeding
+display_name: Rectal Bleeding
+aliases:
+- blood in stool
+- bleeding from bowel
+- bloody diarrhoea
+category: gi
+severity: red_flag
+description: Presence of blood in or around the stool. In the document's case study,
+  rectal bleeding resolved within 48 hours of removing dietary irritants and introducing
+  slippery elm and juicing. Any rectal bleeding warrants clinician evaluation to rule
+  out serious pathology.
+when_to_refer: Always refer for clinician evaluation to exclude colorectal cancer,
+  polyps, or severe IBD flare.
+linked_to_topics:
+- inflammatory-bowel-conditions
+- gut-microbiome-and-gut-flora
+linked_to_mechanisms:
+- gut-immune-barrier-function
+sources:
+- id: barbara-oneil-gi-tract
+  location: IBD Case Study Section
+  quote: I'm not bleeding from the colon anymore. The cramping has stopped.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

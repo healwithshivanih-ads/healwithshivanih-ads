@@ -1,0 +1,29 @@
+slug: elevated-blood-pressure
+display_name: Elevated Blood Pressure
+aliases:
+- high blood pressure
+- BP elevation
+category: cardiovascular
+severity: concerning
+description: Blood pressure above normal ranges, associated with increased risk of
+  stroke, heart disease, and organ damage. Modifiable through dietary interventions
+  (DASH diet, potassium, phytonutrients, L-arginine, anthocyanins), weight loss, and
+  exercise.
+when_to_refer: Refer when medication initiation is warranted based on risk stratification
+  and organ damage markers. Diet and lifestyle should always be co-initiated.
+linked_to_topics:
+- blood-pressure-management
+- visceral-adiposity
+- metabolic-syndrome
+linked_to_mechanisms:
+- nitric-oxide-production
+- insulin-resistance
+sources:
+- id: coconote-fm-body-composition-bmi
+  location: Blood Pressure Section
+  quote: With every 10 millimeter decrease in blood pressure, we get a 20% decrease
+    in stroke or heart disease.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

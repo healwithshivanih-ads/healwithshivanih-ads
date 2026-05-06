@@ -1,0 +1,30 @@
+slug: nose-breathing-activates-parasympathetic-nervous-system
+statement: Nasal breathing using the diaphragm activates the parasympathetic nervous
+  system (calming), while mouth breathing using the upper chest activates the sympathetic
+  nervous system (stress/fight-or-flight).
+evidence_tier: strong
+rationale: Diaphragmatic breathing and its parasympathetic effects are well-supported
+  in respiratory physiology and stress research. Nasal vs mouth breathing effects
+  on autonomic tone are documented.
+coaching_translation: You can shift your body from stress mode to calm mode simply
+  by breathing in and out through your nose using your belly, not your chest. Five
+  slow breaths can make a measurable difference.
+caveats:
+- Source is expert lecture
+- Extremes of breathing effects are well-supported but the 'simply tape your mouth
+  shut' recommendation warrants clinician review for clients with respiratory conditions
+linked_to_topics:
+- depression-lifestyle
+- sleep-hygiene
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-healing-mind
+  location: Breathing Section
+  quote: when you breathe in through your nose and out through your nose using your
+    abdominal muscles, you stimulate your parasympathetic nervous system.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

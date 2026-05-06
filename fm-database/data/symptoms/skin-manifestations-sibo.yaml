@@ -1,0 +1,31 @@
+slug: skin-manifestations-sibo
+display_name: Skin Manifestations (Acne, Eczema, Psoriasis)
+aliases:
+- eczema
+- psoriasis
+- skin rash
+- urticaria
+- hives
+category: skin
+severity: common
+description: Inflammatory skin conditions including acne, eczema, psoriasis, and urticaria
+  linked to systemic inflammation, LPS endotoxemia, and immune dysregulation originating
+  from gut dysbiosis.
+when_to_refer: Refer to dermatologist if severe, spreading, or not responding to gut-based
+  interventions.
+linked_to_topics:
+- sibo
+- sifo
+- leaky-gut-syndrome
+linked_to_mechanisms:
+- lps-endotoxemia
+- intestinal-barrier-dysfunction
+sources:
+- id: coconote-fm-sibo-sifo
+  location: Non-GI Symptoms of SIBO
+  quote: Non-gastrointestinal symptoms, acne, eczema, psoriasis, pains and aches,
+    brain fog, depression, fatigue, insomnia, autoimmune conditions.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

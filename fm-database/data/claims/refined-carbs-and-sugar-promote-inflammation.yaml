@@ -1,0 +1,26 @@
+slug: refined-carbs-and-sugar-promote-inflammation
+statement: Refined carbohydrates and sugary beverages promote inflammation by causing
+  blood sugar spikes and excess fructose intake.
+evidence_tier: strong
+rationale: Well-established mechanistic and clinical evidence links refined carbohydrate/sugar
+  consumption to elevated inflammatory markers, insulin resistance, and glycation-driven
+  inflammation.
+coaching_translation: White bread, pastries, sugary cereals, sodas, and energy drinks
+  spike your blood sugar and feed inflammation. Swapping these for whole grains and
+  water can make a meaningful difference.
+caveats: []
+linked_to_topics:
+- anti-inflammatory-diet
+- chronic-inflammation
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Anti Inflammatory Diet — Foods to Avoid
+  quote: 'Sugary Beverages: High in fructose, which can promote inflammation. Examples:
+    Soda, energy drinks, and sweetened coffee.'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

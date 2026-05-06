@@ -1,0 +1,44 @@
+slug: calcium-supplementation
+display_name: Calcium Supplementation
+category: mineral
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  tablet:
+    min: 500
+    max: 1200
+    unit: mg
+  capsule:
+    min: 500
+    max: 1200
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- calcium-deficiency
+- calcium-metabolism
+linked_to_claims:
+- calcium-supplementation-rarely-needed
+- correct-albumin-before-calcium-supplementation
+notes_for_coach: Calcium supplementation is rarely the correct first intervention
+  for low serum calcium. Coaches should encourage clients to work with their clinician
+  to rule out albumin deficiency, magnesium deficiency, low vitamin D, and hypochlorhydria
+  before assuming dietary calcium supplementation is needed.
+notes_for_client: Low calcium on a blood test does not automatically mean you need
+  a calcium supplement. Your doctor should check your protein levels, magnesium, and
+  vitamin D first, as these are often the real cause.
+evidence_tier: confirm_with_clinician
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-calcium-deficiency
+  location: Causes of Low Serum Calcium
+  quote: If you find out the low calcium in the serum, that doesn't mean that patient
+    is deficient in calcium and they require calcium supplementation.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

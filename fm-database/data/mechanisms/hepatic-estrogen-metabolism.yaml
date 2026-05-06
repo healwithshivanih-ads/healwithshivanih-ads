@@ -1,0 +1,42 @@
+slug: hepatic-estrogen-metabolism
+display_name: Hepatic Estrogen Metabolism (Phase I/II Detoxification)
+aliases:
+- liver estrogen clearance
+- estrogen hydroxylation
+- CYP enzyme estrogen metabolism
+- COMT methylation of estrogen
+category: metabolic
+summary: Estrogens are metabolized in the liver via CYP enzymes (CYP1A1, CYP1B1) to
+  hydroxylated intermediates (2-OHE1, 4-OHE1, 16-OHE1), then methylated by COMT to
+  less harmful methoxy forms. The 4-OH pathway generates more carcinogenic metabolites.
+  Genetic variants in COMT, CYP1A1, CYP1B1, and GST can impair clearance.
+upstream_drivers:
+- alcohol-consumption
+- insulin-resistance
+- obesity
+- xenoestrogen-exposure
+- genetic-variants-comt-cyp-gst
+- oral-contraceptive-use
+- hrt-use
+downstream_effects:
+- carcinogenic-estrogen-metabolite-accumulation
+- estrogen-dominance
+- dna-damage
+related_mechanisms:
+- gut-estrogen-reabsorption
+- comt-cyp-pathway-activity
+- nrf2-pathway-activation
+linked_to_topics:
+- estrogen-metabolism
+- estrogen-dominance
+evidence_tier: strong
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Estrogen Metabolism
+  quote: Disruptions in estrogen metabolism can damage DNA, and in some cases, predispose
+    individuals to cancer. Some estrogen metabolites have been associated with a higher
+    risk of cancers, including breast, ovarian, and prostate.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -18,16 +18,20 @@ linked_to_topics:
 - hairfall
 - testosterone-health
 - benign-prostatic-hyperplasia
-notes_for_coach: Most-studied herbal 5-alpha reductase inhibitor. RCT evidence is
-  mixed; clinician should determine appropriateness and dose. Listed as a prescription
-  item in the document's clinical table.
-notes_for_client: Saw palmetto is a traditional herb used to support prostate health
-  and reduce excess DHT — use only as prescribed by your clinician.
+- testosterone-dht-conversion
+notes_for_coach: Saw palmetto is one of the most commonly studied botanicals for BPH
+  and 5-α reductase inhibition. Evidence is mixed but substantial. Clinician should
+  determine dose and monitor for response.
+notes_for_client: Saw palmetto is a well-known herb for prostate health. It works
+  by slowing the enzyme that converts testosterone into DHT — the hormone that drives
+  prostate growth.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 linked_to_claims:
 - saw-palmetto-inhibits-5-alpha-reductase
 - 5ar-inhibition-reduces-bph-hair-loss-acne
+- saw-palmetto-inhibits-5ar-bph
+- 5ar-inhibitors-reduce-dht-prevent-bph-hair-loss-acne
 sources:
 - id: vitaone-nutrition-cheatsheet
   location: Hairfall Cheatsheet
@@ -35,7 +39,10 @@ sources:
 - id: vitaone-sex-hormones-toolkit
   location: Maintaining Healthy Testosterone Levels — Page 06
   quote: Saw Palmetto (Serenoa repens) [Herbs that Inhibit 5-a Reductase]
-version: 2
+- id: vitaone-health-coaching-toolkit
+  location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors'
+  quote: Saw Palmetto (Serenoa repens) [listed under Herbs that Inhibit 5-a Reductase]
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

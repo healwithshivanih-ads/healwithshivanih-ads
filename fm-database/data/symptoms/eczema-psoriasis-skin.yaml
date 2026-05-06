@@ -1,0 +1,29 @@
+slug: eczema-psoriasis-skin
+display_name: Eczema / Psoriasis / Skin Inflammation
+aliases:
+- eczema
+- psoriasis
+- atopic dermatitis
+- inflamed skin
+- itchy skin
+category: skin
+severity: common
+description: Skin inflammatory conditions such as eczema and psoriasis are linked
+  to excess arachidonic acid and omega-6 dominance. Omega-3 supplementation (EPA/DHA)
+  is cited as a supportive intervention.
+when_to_refer: Refer to dermatologist for severe or treatment-resistant skin conditions.
+linked_to_topics:
+- omega-3-fatty-acids
+- arachidonic-acid-cascade
+linked_to_mechanisms:
+- arachidonic-acid-cascade
+sources:
+- id: coconote-fm-omega-3-fatty-acids
+  location: Clinical Conditions Amenable to EFA Treatment
+  quote: allergies, asthma, eczema, certain autoimmune diseases like rheumatoid arthritis,
+    systemic lupus erythematosus, psoriasis...these conditions need treatment, a separate
+    supplement for omega-3 to see improvements.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

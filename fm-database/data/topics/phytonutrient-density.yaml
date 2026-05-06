@@ -1,0 +1,34 @@
+slug: phytonutrient-density
+display_name: Phytonutrient-Dense Eating
+aliases:
+- rainbow eating
+- polyphenol-rich diet
+- colourful produce diet
+summary: Dietary strategy emphasising a wide variety of deeply coloured fruits, vegetables,
+  herbs, and spices to maximise intake of polyphenols, flavonoids, carotenoids, and
+  other bioactive compounds that support antioxidant defence and reduce inflammation.
+common_symptoms:
+- systemic-inflammation
+- oxidative-stress-symptoms
+- brain-fog
+- fatigue
+red_flags: []
+related_topics:
+- cardiometabolic-diet
+- anti-inflammatory-diet
+key_mechanisms:
+- oxidative-stress
+- chronic-systemic-inflammation
+coaching_scope_notes: Coaches can guide clients to build 'rainbow' meals and smoothies
+  incorporating the food categories illustrated in the toolkit.
+evidence_tier: plausible_emerging
+clinician_scope_notes: ''
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Building a Better Smoothie — Vegetables
+  quote: Next, add a cup of any seasonal leafy greens or other whole vegetables of
+    your choice.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

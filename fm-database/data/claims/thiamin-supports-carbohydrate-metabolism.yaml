@@ -1,0 +1,35 @@
+slug: thiamin-supports-carbohydrate-metabolism
+statement: Thiamin is a carbohydrate-metabolizing vitamin, and difficulty with high-carbohydrate
+  diets may signal low thiamin.
+evidence_tier: fm_specific_thin
+rationale: Thiamin as a cofactor in carbohydrate metabolism is well-established biochemistry;
+  the clinical inference that dietary carbohydrate difficulty signals deficiency is
+  FM-specific extrapolation with thin direct RCT support.
+coaching_translation: If your client struggles with energy after carb-heavy meals,
+  consider whether thiamin-rich foods like nutritional yeast, legumes, and whole grains
+  feature in their diet.
+caveats:
+- Source is a practitioner cheatsheet without primary citations.
+- fm_specific_thin extrapolation from established biochemistry.
+- Source is expert consensus / practitioner cheatsheet without primary citations.
+- Clinical thiamin deficiency assessment requires clinician involvement.
+linked_to_topics:
+- nutrition-deficiency
+- insulin-resistance
+linked_to_supplements:
+- thiamin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 3
+  quote: Thiamin is described as a carbohydrate-metabolizing vitamin, and difficulty
+    with high-carbohydrate diets may signal low thiamin.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 3
+  quote: Thiamin is described as a carbohydrate-metabolizing vitamin, and difficulty
+    with high-carbohydrate diets may signal low thiamin.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

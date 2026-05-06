@@ -1,0 +1,31 @@
+slug: rebuilding-anti-stress-hormones-restores-resilience
+statement: Chronic stress depletes DHEA, progesterone, melatonin, serotonin, and growth
+  hormone; restoring these anti-stress hormones — alongside circadian rhythm and lifestyle
+  support — reduces cortisol's damaging effects.
+evidence_tier: plausible_emerging
+rationale: The concept of cortisol:DHEA ratio as a stress resilience biomarker is
+  supported by observational studies. Melatonin and serotonin restoration via circadian
+  and gut interventions has mechanistic backing. DHEA and progesterone supplementation
+  require clinician-directed prescribing.
+coaching_translation: Chronic stress doesn't just raise cortisol — it drains the hormones
+  that buffer stress. Supporting sleep, circadian rhythms, gut health, and key nutrients
+  helps rebuild your body's stress-buffering capacity.
+out_of_scope_notes: DHEA and progesterone supplementation are clinical prescribing
+  decisions, not coaching interventions.
+caveats:
+- DHEA supplementation without testing and clinical oversight is out of coaching scope.
+- Growth hormone mention is aspirational in this context.
+- Source is Instagram educational content.
+linked_to_topics:
+- adrenal-cortisol-resilience
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXg8Y9NjIwF/
+  quote: The true antidote to stress lies in rebuilding anti-stress hormones - DHEA,
+    progesterone, oxytocin, melatonin, serotonin, and growth hormone.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

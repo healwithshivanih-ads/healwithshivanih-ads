@@ -1,0 +1,28 @@
+slug: restless-leg-syndrome
+display_name: Restless Leg Syndrome
+aliases:
+- rls
+- leg restlessness
+- calf dragging sensation
+- willis-ekbom disease
+category: musculoskeletal
+severity: common
+description: Excessive calcium accumulation at the calf muscles increases contractility,
+  producing a dragging or crawling sensation, often worse at rest or at night.
+when_to_refer: If not responding to magnesium supplementation or if iron deficiency
+  or neurological causes suspected.
+linked_to_topics:
+- magnesium-deficiency
+- magnesium-musculoskeletal-health
+linked_to_mechanisms:
+- calcium-magnesium-imbalance
+sources:
+- id: coconote-fm-magnesium-deficiency
+  location: Musculoskeletal system
+  quote: There is excessive accumulation of calcium at the level of the calf muscles
+    which increase the contractility giving you a dragging sensation at the level
+    of the calf muscles.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

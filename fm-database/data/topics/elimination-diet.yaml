@@ -6,10 +6,13 @@ aliases:
 - food elimination trial
 - food elimination protocol
 - exclusion diet
-summary: A structured short-term dietary protocol that removes common food triggers
-  (gluten, dairy, soy, nightshades, oxalates, salicylates, histamines, high-FODMAP
-  foods) to identify individual food sensitivities and reduce GI and systemic symptoms,
-  followed by systematic reintroduction.
+- food elimination
+- dietary elimination
+- elimination phase
+- food sensitivity elimination protocol
+summary: A structured dietary intervention removing common trigger foods to identify
+  sensitivities and reduce baseline symptoms. RCT evidence cited for significant symptom
+  improvement in participants.
 common_symptoms:
 - unidentified food reactions
 - persistent bloating
@@ -22,6 +25,8 @@ common_symptoms:
 - brain-fog
 - headache
 - skin-rash
+- gas-flatulence
+- skin-rash-urticaria
 related_topics:
 - food-sensitivities
 - leaky-gut
@@ -32,6 +37,11 @@ related_topics:
 - low-fodmap-diet
 - gluten-sensitivity
 - histamine-intolerance
+- nightshade-sensitivity
+- oxalate-sensitivity
+- salicylate-sensitivity
+- chronic-disease-management
+- functional-medicine-coaching
 key_mechanisms:
 - trigger-food-removal
 - symptom-clearance
@@ -39,15 +49,22 @@ key_mechanisms:
 - gut-barrier-dysfunction
 - immune-food-reactivity
 - colonic-fermentation
-coaching_scope_notes: Coaches can support food swaps, meal planning, and symptom tracking.
-  Diagnosis of celiac disease, allergy, or IBD requires clinician referral.
-clinician_scope_notes: Celiac serology, allergy testing, and formal food challenge
-  protocols are outside coaching scope.
+- food-trigger-immune-activation
+- histamine-enzyme-inhibition
+- upstream-cause-identification
+coaching_scope_notes: Coaches can support patient adherence to elimination diets prescribed
+  by clinicians — including meal planning, family/household navigation, and accountability.
+clinician_scope_notes: Clinicians prescribe and interpret elimination diet protocols;
+  coaches support implementation.
 evidence_tier: strong
 red_flags:
 - severe weight loss during elimination
 - signs of nutritional deficiency
 - worsening symptoms beyond expected die-off
+- heart failure symptoms
+- paralysis
+- breathing difficulty
+- coma — refer immediately if severe nightshade toxicity suspected
 sources:
 - id: thurlow-microbiome-session-2
   location: Q&A section — practical recommendations
@@ -58,7 +75,15 @@ sources:
   location: Low FODMAP Vegetarian Diet Plan
   quote: Low FODMAP is a short-term, research-backed approach (not a forever-elimination)
     designed to calm IBS-type symptoms while you figure out your personal triggers.
-version: 2
+- id: vitaone-health-coaching-toolkit
+  location: Low FODMAP Vegetarian Diet Plan introduction
+  quote: Low FODMAP is a short-term, research-backed approach (not a forever-elimination)
+    designed to calm IBS-type symptoms while you figure out your personal triggers.
+- id: ask-expert-future-fm
+  location: Evidence Supporting Coaching Integration Section
+  quote: We have randomized controlled trials testing out elimination diets and participants
+    showing baseline symptoms improving significantly.
+version: 4
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

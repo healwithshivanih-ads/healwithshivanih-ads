@@ -1,0 +1,27 @@
+slug: probiotic-induced-symptom-flare
+display_name: Symptom Flare from Probiotic Use
+aliases:
+- worsening symptoms on probiotics
+- probiotic bloating
+- probiotic reaction
+category: gi
+severity: common
+description: Increase in gastrointestinal or systemic symptoms following probiotic
+  supplementation, occurring when probiotics are given inappropriately in states of
+  bacterial overgrowth. The additional bacteria exacerbate the existing overgrowth.
+when_to_refer: Refer if symptoms are severe or do not resolve after stopping probiotics.
+linked_to_topics:
+- gut-dysbiosis
+- sibo
+linked_to_mechanisms:
+- gut-dysbiosis-microbiome-imbalance
+sources:
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Probiotic Dosing by Pattern Section
+  quote: we have seen many patients when you give probiotic they came to back after
+    a week or 10 days with increase of symptoms because already they have a high number
+    of good bacteria in that in that pattern
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

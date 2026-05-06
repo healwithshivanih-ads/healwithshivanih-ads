@@ -17,10 +17,12 @@ aliases:
 - receding hairline
 - coarse hair
 - eyebrow thinning
-category: skin
+- male pattern baldness in women
+- loss of hair
+category: hormonal
 severity: common
-description: Hair thinning on scalp, face, and body including loss of outer third
-  of eyebrows, associated with hypothyroid states due to impaired hair follicle activity.
+description: Thinning of scalp hair, sometimes in a male-pattern distribution. Associated
+  with high DHT, elevated insulin, and estrogen dominance in PCOS.
 linked_to_topics:
 - thyroid
 - pcos
@@ -51,7 +53,11 @@ sources:
 - id: vitaone-thyroid-ebook
   location: 'Chapter 4: Functions of Thyroid Hormones'
   quote: Hairfall & Thinking of Hair, Coarse Hair on Scalp, face and Body
-version: 4
+- id: coconote-fm-estrogen-dominance
+  location: Q&A — Insulin Resistance and Estrogen
+  quote: Male pattern baldness, loss of hair, thinning of hair are all symptoms of
+    high estrogen and high insulin inside the body.
+version: 5
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

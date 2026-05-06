@@ -1,0 +1,28 @@
+slug: anti-inflammatory-diet-reduces-insulin-resistance
+statement: An anti-inflammatory diet reduces insulin resistance and improves glucose
+  metabolism.
+evidence_tier: strong
+rationale: The link between anti-inflammatory dietary patterns and improved insulin
+  sensitivity is strongly supported by RCTs and meta-analyses, particularly for Mediterranean
+  and low-glycemic diets.
+coaching_translation: Cutting back on processed foods, white bread, and sugary drinks
+  while adding more fiber, healthy fats, and vegetables helps your body use insulin
+  more effectively and keeps blood sugar stable.
+caveats:
+- Clients with type 2 diabetes or metabolic syndrome should have blood sugar management
+  supervised by their clinician.
+linked_to_topics:
+- anti-inflammatory-diet
+- chronic-inflammation
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Anti Inflammatory Diet — Benefits of Following an Anti-Inflammatory Diet
+  quote: 'Better Blood Sugar Control: Reduced insulin resistance and improved glucose
+    metabolism.'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

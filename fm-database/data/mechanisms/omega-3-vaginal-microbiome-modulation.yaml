@@ -1,0 +1,33 @@
+slug: omega-3-vaginal-microbiome-modulation
+display_name: Omega-3 Fatty Acids Modulating Vaginal Microbiome
+aliases:
+- fish oil vaginal health
+- EPA DHA vaginal microbiome
+category: immune
+summary: Omega-3 fatty acids (EPA and DHA) at higher gram-level doses shift the vaginal
+  microbiome to favor Lactobacillus crispatus and reduce the risk of premature labor
+  when taken during pregnancy. Both EPA and DHA are necessary; EPA-only pharmaceutical
+  preparations are considered suboptimal for this purpose.
+upstream_drivers:
+- omega-3-supplementation
+- dietary-oily-fish-intake
+downstream_effects:
+- increased-crispatus-colonization
+- reduced-premature-labor-risk
+- cardiovascular-protection
+related_mechanisms:
+- lactobacillus-crispatus-dominance
+linked_to_topics:
+- vaginal-microbiome
+- perimenopause-microbiome
+evidence_tier: plausible_emerging
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Omega-3 and vaginal microbiome discussion
+  quote: Fish oil plays a big role in the vaginal microbiome, so much so that if a
+    woman takes omega-3s during pregnancy, the likelihood of premature labor drops
+    precipitously.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,31 @@
+slug: niacin-deficiency-causes-pellagra-pattern
+statement: Niacin deficiency leads to pellagra with dermatitis, diarrhea, and dementia.
+evidence_tier: plausible_emerging
+rationale: The pellagra triad (dermatitis, diarrhea, dementia) from niacin deficiency
+  is a well-established clinical observation historically.
+coaching_translation: The 'three Ds' of pellagra (skin rash, digestive issues, cognitive
+  changes) are classic signs of severe niacin deficiency — flag for clinician if suspected.
+caveats:
+- Severe pellagra is rare in high-income countries; subclinical niacin insufficiency
+  is more commonly relevant.
+- Source is practitioner cheatsheet; clinical niacin deficiency diagnosis requires
+  clinician assessment.
+linked_to_topics:
+- nutrition-deficiency
+linked_to_supplements:
+- niacin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 4
+  quote: Niacin deficiency is described as leading to pellagra with dermatitis, diarrhea,
+    and dementia.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 4
+  quote: Niacin deficiency is described as leading to pellagra with dermatitis, diarrhea,
+    and dementia.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

@@ -1,0 +1,30 @@
+slug: chronic-stress-reduces-gastric-acid-via-sns
+statement: Chronic stress activates the sympathetic nervous system, which suppresses
+  gastric acid production; conversely, cultivating parasympathetic dominance through
+  stress management practices supports HCl restoration.
+evidence_tier: plausible_emerging
+rationale: The autonomic regulation of gastric secretion is well-established physiology
+  (vagal/parasympathetic stimulation promotes acid; SNS inhibits). The clinical application
+  to hypochlorhydria management via lifestyle is plausible but less studied in RCTs.
+  Source is expert consensus.
+coaching_translation: Chronic stress puts your body in 'fight or flight' mode, which
+  actually shuts down digestion including stomach acid production. Practices like
+  meditation, deep breathing, and regular rest activate your 'rest and digest' system,
+  which helps your stomach produce acid again.
+linked_to_topics:
+- hypochlorhydria
+- five-r-gut-protocol
+linked_to_supplements: []
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-hypochlorhydria
+  location: Risk Factors for Low Stomach Acid
+  quote: Stress, very important because stress it stimulates the sympathetic nervous
+    system inside your body. Sympathetic nervous system eventually decreases the production
+    of gastric acid.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

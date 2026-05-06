@@ -1,0 +1,27 @@
+slug: flaxseed-addition-to-rotis-for-omega-3s
+statement: Adding ground flaxseed powder to roti dough (jowar-flax and quinoa-flax
+  rotis) increases the ALA omega-3 fatty acid content of a staple carb, supporting
+  cardiovascular lipid profiles.
+evidence_tier: plausible_emerging
+rationale: Both Jowar-Flax Roti and Quinoa-Flax Roti incorporate ¼ cup flaxseed powder
+  as a key ingredient. Flaxseed is a well-recognised source of ALA and lignans with
+  evidence for modest LDL reduction. No specific study is cited.
+coaching_translation: Mixing ground flaxseeds into your roti dough is an easy way
+  to add heart-healthy omega-3 fats to an everyday food.
+caveats:
+- ALA from flaxseed has lower conversion to EPA/DHA than marine omega-3s. Clinical
+  cardiovascular benefit depends on overall dietary context.
+linked_to_topics:
+- cardiometabolic-diet
+linked_to_supplements:
+- flaxseed-ground
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cardiometabolic-recipes
+  location: Jowar-Flax Roti
+  quote: 1 cup Jowar flour, ¼ cup Flaxseed powder
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

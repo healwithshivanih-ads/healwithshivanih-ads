@@ -1,0 +1,31 @@
+slug: dhea-supplementation-contraindicated-in-perimenopausal-estrogen-dominance
+statement: DHEA supplementation should not be given to perimenopausal women with estrogen
+  dominance, as DHEA can convert downstream to estrogen and worsen the condition.
+evidence_tier: confirm_with_clinician
+rationale: DHEA is a precursor to both androgens and estrogens. In a perimenopausal
+  context with existing estrogen dominance, supplemental DHEA risks further elevating
+  estrogen. This is a prescribing caution that must be managed by a clinician with
+  lab monitoring.
+coaching_translation: DHEA supplements are sometimes marketed for energy and hormones,
+  but they're not safe for everyone — especially if your estrogen is already too high.
+  Only use DHEA under clinician supervision with proper hormone testing.
+out_of_scope_notes: DHEA and BHRT are both prescription-level interventions requiring
+  clinician oversight. Do not recommend in coaching context.
+caveats:
+- Prescribing and dosing DHEA is outside coaching scope.
+- Source is FM lecture; clinical judgment required for individual cases.
+linked_to_topics:
+- estrogen-dominance
+- perimenopause
+linked_to_supplements:
+- dhea-s
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-estrogen-dominance
+  location: Causes of Estrogen Dominance / DHEA Caution
+  quote: Do not give DHEA when the patient is having perimenopausal phase. We don't
+    want estrogen to be on the higher side.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

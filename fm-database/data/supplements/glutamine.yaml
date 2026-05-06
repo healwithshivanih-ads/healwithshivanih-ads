@@ -1,0 +1,47 @@
+slug: glutamine
+display_name: L-Glutamine
+category: amino_acid
+forms_available:
+- powder
+- capsule
+typical_dose_range:
+  powder:
+    min: 2000
+    max: 10000
+    unit: mg
+  capsule:
+    min: 500
+    max: 3000
+    unit: mg
+timing_options:
+- on_empty_stomach
+- morning
+- bedtime
+take_with_food: avoid
+linked_to_topics:
+- liver-detoxification-phases
+- gut-microbiome-and-detox
+- gut-health-fodmap-sibo
+linked_to_claims:
+- amino-acids-required-for-phase2-conjugation
+- gut-healing-requires-glutamine-zinc-omega3-bcomplex
+notes_for_coach: Glutamine is a primary fuel for enterocytes and is used to support
+  gut mucosal repair. Best taken away from food. Evidence is moderate; high doses
+  should be confirmed with a clinician, particularly in cancer patients.
+notes_for_client: Glutamine is an amino acid that your gut lining uses as fuel. It
+  supports gut repair and barrier integrity.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-liver-detox-part1
+  location: Phase 2 Conjugation Pathways
+  quote: So chlorine, glycine, and glutamine, and glutamine and glutamine, we can
+    say, they are the primary amino acid they use for conjugation.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXbyLyYjP__/
+  quote: 'Gut healing requires nutrients: glutamine, zinc carnosine, omega-3, B-complex,
+    bitters'
+version: 2
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

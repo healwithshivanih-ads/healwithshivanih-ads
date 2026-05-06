@@ -1,0 +1,23 @@
+aliases:
+- feeling of being unwell
+- general discomfort
+- non-specific unwellness
+category: constitutional
+description: General sense of feeling unwell, reported during beta blocker withdrawal.
+display_name: Malaise / Feeling Unwell
+linked_to_mechanisms:
+- autonomic-rebound
+linked_to_topics:
+- beta-blocker-deprescribing
+severity: common
+slug: malaise
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
+  quote: Feeling of being unwell
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani
+version: 1
+when_to_refer: Refer if accompanied by fever, chest pain, or significant vital sign
+  changes.

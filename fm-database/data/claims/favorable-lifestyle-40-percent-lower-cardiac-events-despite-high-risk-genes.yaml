@@ -1,0 +1,28 @@
+slug: favorable-lifestyle-40-percent-lower-cardiac-events-despite-high-risk-genes
+statement: Even in individuals with high-risk genetic variants (e.g., 9P21), three
+  to four healthy lifestyle factors (no smoking, healthy BMI, exercise, Mediterranean
+  diet) are associated with approximately 40% lower risk of cardiac events.
+evidence_tier: strong
+rationale: Kira's study referenced by name; genome-environment interaction studies
+  on 9P21 and lifestyle are published in peer-reviewed journals including NEJM.
+coaching_translation: Your genes are not your destiny. Even with a genetic predisposition
+  to heart disease, healthy habits can cut your risk by nearly half.
+caveats:
+- '''Kira''s study'' not fully identified by author/year/journal in lecture — verify
+  citation. Likely refers to Khera et al. or similar genetic lifestyle interaction
+  study.'
+linked_to_topics:
+- cardiovascular-disease-prevention
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Lifestyle vs Genetics
+  quote: Three or four healthy lifestyle factors, no cigarettes, good body mass index,
+    exercising. Basically Mediterranean diet, you are going to have, even if you have
+    a high risk, a favorable lifestyle, 40% lower risk of cardiac events.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

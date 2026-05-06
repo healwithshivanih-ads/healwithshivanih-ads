@@ -1,0 +1,36 @@
+slug: belly-fat-adipose-estrogen
+display_name: Adipose Tissue Estrone Secretion
+aliases:
+- belly fat estrogen
+- adipose aromatization
+- peripheral estrogen production
+category: endocrine
+summary: 'Adipose tissue — particularly abdominal and breast fat — contains aromatase
+  enzymes that convert androgens to estrone. Estrone is the predominant estrogen in
+  postmenopause and is also elevated in obesity. This creates a secondary estrogen
+  dominance loop: obesity drives estrogen, estrogen drives further fat storage and
+  inflammation.'
+upstream_drivers:
+- obesity
+- insulin-resistance
+- excess-caloric-intake
+downstream_effects:
+- elevated-estrone
+- estrogen-dominance
+- systemic-inflammation
+related_mechanisms:
+- aromatase-upregulation
+- insulin-resistance
+linked_to_topics:
+- estrogen-dominance
+- pcos
+evidence_tier: strong
+sources:
+- id: coconote-fm-estrogen-dominance
+  location: Three Main Forms of Estrogen
+  quote: Estrone is also produced from the belly fat. The adipose tissue is also releasing
+    estrogen. That is why these patients have the estrogen as excess relatively.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

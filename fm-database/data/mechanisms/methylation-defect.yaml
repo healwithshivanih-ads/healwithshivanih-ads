@@ -1,0 +1,36 @@
+slug: methylation-defect
+display_name: Methylation Defect
+aliases:
+- impaired methylation
+- methylation insufficiency
+- MTHFR-related methylation impairment
+category: metabolic
+summary: Methylation is a critical Phase 2 liver detox pathway that adds a methyl
+  group to toxins for excretion. Elevated homocysteine is a primary indirect biomarker
+  of methylation pathway impairment, alongside elevated MMA (methylmalonic acid).
+  Defects may be genetic (e.g., MTHFR) or nutritional (B12, folate, B6 deficiency).
+upstream_drivers:
+- mthfr-variant
+- b-vitamin-deficiency
+- nutrient-depletion
+downstream_effects:
+- elevated-homocysteine
+- reduced-toxin-elimination
+- increased-cardiovascular-risk
+related_mechanisms:
+- phase-1-phase-2-detox-imbalance
+- glucuronidation-impairment
+linked_to_topics:
+- chronic-toxicity-assessment
+- liver-detox-phase-1-and-phase-2
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-liver-detox-part2
+  location: Homocysteine & Methylation Section
+  quote: Same way if you look at the homosexual level, then you think about the difficulty
+    in phase 2 because the methylation pathway is not optimized. So I teach you that
+    homosexual is the primary indicator of the methylation defect apart from B2M.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

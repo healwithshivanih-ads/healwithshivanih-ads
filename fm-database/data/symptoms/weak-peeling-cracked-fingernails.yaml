@@ -1,0 +1,24 @@
+slug: weak-peeling-cracked-fingernails
+display_name: Weak, Peeling, or Cracked Fingernails
+aliases:
+- brittle nails
+- nail fragility
+- peeling nails
+category: skin
+severity: common
+description: Fragile nails that peel or crack easily, often reflecting mineral deficiencies
+  (zinc, iron, calcium) secondary to low stomach acid and impaired mineral absorption.
+linked_to_topics:
+- hypochlorhydria
+- gut-dysfunction
+linked_to_mechanisms:
+- hypochlorhydria-mechanism
+when_to_refer: ''
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Testing for Low Stomach Acidity
+  quote: Weak, peeling, and cracked fingernails [listed as a common symptom of hypochlorhydria].
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

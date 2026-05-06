@@ -1,0 +1,29 @@
+slug: leaky-gut-prevalent-chronic-disease
+statement: Leaky gut (intestinal hyperpermeability) is present in the vast majority
+  of people with chronic conditions, often without obvious GI symptoms.
+evidence_tier: fm_specific_thin
+rationale: Claimed prevalence of ~90% is a clinical observation from FM practice,
+  not an epidemiological figure. Intestinal permeability is measurable and associated
+  with multiple chronic conditions, but the precise prevalence claim is not peer-reviewed.
+coaching_translation: Even if your client doesn't complain about digestion, gut permeability
+  may be silently driving their pain, fatigue, or immune issues.
+caveats:
+- The '90% of people have leaky gut' figure is not from peer-reviewed literature.
+- Source is expert FM lecture — treat as fm_specific_thin.
+- Verify with clinician if intestinal permeability testing is warranted.
+linked_to_topics:
+- leaky-gut
+- chronic-pain-and-fatigue
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-chronic-pain-fatigue
+  location: Digestion Section
+  quote: i think people who walks through in what's in your load maybe 100 people
+    90 of the people they have the leaky gut whether they have the system or not whether
+    they have any system or whether they have any symptoms or not
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

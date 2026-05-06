@@ -4,20 +4,28 @@ aliases:
 - high TG
 - hypertriglyceridemia
 - high triglycerides
-category: cardiovascular
+- high blood fats
+category: metabolic
 severity: concerning
-description: Elevated blood triglyceride levels, a cardiometabolic risk marker that
-  may be improved by fasting and phytonutrient-rich dietary patterns.
-when_to_refer: Refer to clinician for lab interpretation and medication review if
-  triglycerides remain elevated despite dietary intervention.
+description: Elevated serum triglycerides (>175 mg/dL is a risk-enhancing factor;
+  >500 mg/dL is a medical emergency due to pancreatitis risk). Associated with small
+  dense LDL, low HDL, insulin resistance, and metabolic syndrome.
+when_to_refer: Triglycerides above 500 mg/dL require urgent clinician management to
+  prevent pancreatitis.
 linked_to_topics:
 - dyslipidemia
 - cardiometabolic-health
 - intermittent-fasting
+- omega-3-fatty-acids
+- metabolic-syndrome
+- cardiovascular-disease-prevention
 linked_to_mechanisms:
 - insulin-resistance
 - chronic-inflammation
 - systemic-inflammation
+- arachidonic-acid-cascade
+- vldl-to-ldl-cascade
+- small-dense-ldl-atherogenesis
 sources:
 - id: vitaone-cv-cheatsheet
   location: Dyslipidemia Cheatsheet — Section 6
@@ -25,7 +33,15 @@ sources:
 - id: vitaone-cardiometabolic-toolkit
   location: Intermittent Fasting — Improves/Decreases Table
   quote: 'Intermittent fasting Decreases: Triglycerides.'
-version: 2
+- id: coconote-fm-omega-3-fatty-acids
+  location: Cardiovascular Benefits of Omega-3 Studies Slide
+  quote: Reduce-It trial which shows that there was 30% relative risk reduction in
+    total cardiovascular events with 4g/day of EPA in patients with elevated triglycerides.
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Risk-Enhancing Factors
+  quote: Triglycerides greater than 175, LDL greater than 160, ApoB greater than 30,
+    high LP little a, metabolic syndrome.
+version: 4
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

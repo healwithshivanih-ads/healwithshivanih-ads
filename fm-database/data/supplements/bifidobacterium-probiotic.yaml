@@ -1,0 +1,34 @@
+slug: bifidobacterium-probiotic
+display_name: Bifidobacterium Species Probiotic
+category: probiotic
+forms_available:
+- capsule
+- powder
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- gut-dysbiosis
+- intestinal-permeability
+linked_to_claims:
+- lactobacillus-bifidobacterium-probiotics-have-transient-gut-effect
+- probiotics-contraindicated-in-bacterial-overgrowth
+notes_for_coach: Bifidobacterium is indicated especially when firmicutes are elevated
+  and Lactobacillus is already high — in that case, shift to Bifidobacterium and Saccharomyces
+  boulardii rather than broad-spectrum. Like Lactobacillus, transient effect only.
+  Not indicated in SIBO.
+notes_for_client: Bifidobacterium helps restore a healthy balance in your gut microbiome,
+  particularly when certain bacterial strains are already elevated.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Probiotic Dosing by Pattern Section
+  quote: We consider them giving them bifidobacterium and saccharomyces boulardum.
+    We don't consider giving them high dose of probiotics.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

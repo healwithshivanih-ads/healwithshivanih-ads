@@ -3,38 +3,60 @@ display_name: Anti-Inflammatory Diet
 aliases:
 - AID
 - functional medicine anti-inflammatory diet
-summary: A nutritional plan emphasizing whole, unprocessed foods rich in antioxidants,
-  omega-3 fatty acids, and fiber while avoiding processed foods, refined carbohydrates,
-  and sugary beverages to reduce chronic inflammation.
+- anti-inflammation diet
+- functional medicine diet for inflammation
+- inflammation control diet
+- low-inflammation eating
+summary: A food-as-medicine approach using specific anti-inflammatory ingredients
+  — including turmeric, ginger, pomegranate, dark leafy greens, and omega-rich foods
+  — to reduce systemic inflammation as a root driver of cardiometabolic disease.
 common_symptoms:
 - brain-fog
 - joint-pain
 - bloating
 - fatigue
 - mood-changes
-red_flags: []
+- elevated-crp
+- systemic-inflammation
+- high-triglycerides
+- elevated-cholesterol
+- blood-sugar-dysregulation
+red_flags:
+- Persistent symptoms despite dietary compliance — refer for lab workup
+- Unexplained weight loss with inflammation — refer to clinician
 related_topics:
 - chronic-inflammation
 - gut-health
 - metabolic-syndrome
 - immune-support
+- immune-support-covid-19
+- cardiometabolic-diet
+- phytonutrient-density
 key_mechanisms:
 - oxidative-stress
 - cytokine-dysregulation
 - gut-microbiome-modulation
-coaching_scope_notes: Core coaching topic. Coaches can guide food choices, meal planning,
-  and elimination of pro-inflammatory foods. Personalize for individual sensitivities
-  (e.g., dairy).
-clinician_scope_notes: Dairy elimination and individual food sensitivities may require
-  clinical assessment.
-evidence_tier: strong
+- nlrp3-inflammasome-activation
+- gut-dysbiosis
+- insulin-resistance
+- chronic-systemic-inflammation
+coaching_scope_notes: Coaches can recommend the Inflammation Control Smoothie and
+  recipes featuring turmeric, ginger, dark berries, and pomegranate as practical implementations.
+clinician_scope_notes: When underlying autoimmune, IBD, or metabolic disease is suspected,
+  dietary interventions should complement clinician-supervised treatment.
+evidence_tier: plausible_emerging
 sources:
 - id: vitaone-inflammation-toolkit
   location: Anti Inflammatory Diet — What is an Anti-Inflammatory Diet?
   quote: An anti-inflammatory diet is a nutritional plan that focuses on reducing
     chronic inflammation in the body through the consumption of specific foods and
     the avoidance of others.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Anti Inflammatory Diet — What is an Anti-Inflammatory Diet?
+  quote: An anti-inflammatory diet is a nutritional plan that focuses on reducing
+    chronic inflammation in the body through the consumption of specific foods and
+    the avoidance of others.
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

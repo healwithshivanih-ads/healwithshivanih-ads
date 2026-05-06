@@ -1,0 +1,34 @@
+slug: hippocampus-revolumizes-with-sex-hormone-therapy
+statement: Administering estrogen to aging women and testosterone to aging men can
+  re-volumize a shrinking hippocampus within weeks to four months, improving posture,
+  speech speed, memory, and cognitive function.
+evidence_tier: plausible_emerging
+rationale: Studies from McGill University and others using neuroimaging to show hippocampal
+  volume changes with sex hormone replacement are referenced. This is consistent with
+  published functional MRI research on sex steroids and brain structure, though not
+  yet mainstream clinical practice.
+coaching_translation: Your brain's memory center actually shrinks about 1% per year
+  as hormones decline. Research shows that estrogen (in women) or testosterone (in
+  men) can reverse that shrinkage within a few months — improving memory, mood, and
+  how you carry yourself.
+caveats:
+- The specific McGill study referenced is not fully cited by name.
+- Source is expert lecture; primary literature verification recommended.
+- Hippocampal volumetry studies are generally small and require replication.
+linked_to_topics:
+- hippocampal-volume-and-hormones
+- bioidentical-hormone-replacement-therapy
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Hippocampus, Hormones, and Anti-Aging
+  quote: gave women estrogen and men testosterone weeks to four months, their hippocampus
+    revolumized and they stood up taller, walked better, had quicker speech. They
+    operated better because we're very in sync with the size and functionality of
+    our hippocampus.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

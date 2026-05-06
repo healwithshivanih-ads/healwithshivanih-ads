@@ -1,0 +1,33 @@
+slug: high-carbohydrate-diet-acid-load
+display_name: High-Carbohydrate Diet & Acid Load
+aliases:
+- refined carb diet
+- acid-forming carbohydrates
+summary: Refined carbohydrates — including bread, cereals, pasta, rice, sugar, cakes
+  and pizza — are predominantly acid-forming, and an over-reliance on them skews the
+  diet heavily toward the acid side, which the speaker links to widespread chronic
+  disease.
+common_symptoms:
+- inflammation
+red_flags:
+- cancer risk association mentioned
+related_topics:
+- acid-alkaline-balance
+key_mechanisms:
+- dietary-acid-load
+coaching_scope_notes: Encourage clients to balance refined carbohydrate intake with
+  abundant alkaline-forming vegetables, legumes, and whole foods rather than eliminating
+  carbohydrates entirely.
+clinician_scope_notes: The claim that high-carbohydrate diets are 'almost 100% acid'
+  is a simplification; individual metabolic context matters. Cancer risk language
+  requires clinical framing.
+evidence_tier: fm_specific_thin
+sources:
+- id: barbara-oneil-acid-alkaline-foods
+  location: Main lecture body
+  quote: Another reason why that high carbohydrate diet is actually a dangerous diet
+    because it's almost 100% acid.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

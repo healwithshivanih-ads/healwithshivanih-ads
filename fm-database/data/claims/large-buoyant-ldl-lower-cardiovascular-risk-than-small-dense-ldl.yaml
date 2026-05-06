@@ -1,0 +1,28 @@
+slug: large-buoyant-ldl-lower-cardiovascular-risk-than-small-dense-ldl
+statement: Large, buoyant LDL particles carry lower cardiovascular risk than small,
+  dense LDL particles because they cannot readily penetrate the endothelium.
+evidence_tier: plausible_emerging
+rationale: The document explains the size-dependent endothelial penetration mechanism.
+  This is consistent with the Pattern A vs. Pattern B LDL distinction discussed in
+  lipidology research. Source is expert consensus, not a specific cited trial.
+coaching_translation: Big, fluffy cholesterol particles are less dangerous because
+  they're too big to get stuck inside artery walls. Small, dense ones are the real
+  concern.
+caveats:
+- Source is expert consensus lecture. Plausible mechanism supported by lipidology
+  literature but not the primary focus of standard cardiovascular guidelines.
+linked_to_topics:
+- ldl-particle-size-and-number
+- atherosclerosis-pathogenesis
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: LDL particle size section
+  quote: Large particle cannot enter endothelium, they bounce back. So they are not
+    getting that much risk of developing atherosclerosis.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

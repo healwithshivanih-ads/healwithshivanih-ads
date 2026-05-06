@@ -1,0 +1,29 @@
+slug: probiotics-reduce-anxiety-depression-via-gut-health
+statement: Specific strains of probiotics (Lactobacillus and Bifidobacterium) can
+  reduce symptoms of anxiety and depression by modulating gut health and mood/stress
+  pathways.
+evidence_tier: plausible_emerging
+rationale: Several RCTs and meta-analyses support the psychobiotic effect of specific
+  Lactobacillus and Bifidobacterium strains on anxiety and depression markers, though
+  evidence is still considered emerging and strain-specific.
+coaching_translation: Eating fermented foods with live cultures (yogurt, kefir, kimchi,
+  sauerkraut) may help improve mood over time by nourishing the gut-brain connection.
+caveats:
+- Effects are strain-specific; not all probiotics are equivalent for mental health
+  outcomes.
+- Clinical mental health conditions require professional management.
+linked_to_topics:
+- gut-brain-axis
+linked_to_supplements:
+- probiotics
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Gut-Brain Axis: Nutrition''s Impact on Mental Health'
+  quote: Specific strains of probiotics, such as Lactobacillus & Bifidobacterium,
+    are particularly effective at modulating mood and stress levels.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

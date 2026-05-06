@@ -1,0 +1,27 @@
+slug: 23-percent-population-deficient-one-or-more-nutrients
+statement: NHANES data indicates that 23% of the US population is deficient in at
+  least one nutrient, and nearly 2% are deficient in three to four nutrients.
+evidence_tier: strong
+rationale: NHANES is a large, nationally representative dataset; this statistic reflects
+  established nutritional epidemiology findings.
+coaching_translation: Nutritional deficiency is far more common than most people realize.
+  Nearly 1 in 4 adults are deficient in at least one essential nutrient — even in
+  a country with abundant food.
+caveats:
+- The lecture references NHANES data without a specific year or citation; verify exact
+  figures with current NHANES publications.
+linked_to_topics:
+- nutritional-deficiency-screening
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-body-composition-bmi
+  location: Nutritional Deficiency Section
+  quote: The NHANES data and how significant the amount of nutritional deficiencies
+    is — showing that 23% of people were deficient in at least one nutrient and almost
+    2% in three to four nutrients.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

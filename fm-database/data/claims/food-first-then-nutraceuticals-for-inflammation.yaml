@@ -1,0 +1,27 @@
+slug: food-first-then-nutraceuticals-for-inflammation
+statement: The primary approach to anti-inflammatory nutrition should prioritize food-based
+  interventions (colorful vegetables, amla, ginger tea, flaxseed oil) before nutraceuticals,
+  as food-based strategies are more sustainable long-term.
+evidence_tier: plausible_emerging
+rationale: Whole food polyphenols and phytonutrients have synergistic bioavailability
+  advantages over isolated supplements. Long-term dietary adherence is better when
+  interventions are food-based. This is a widely held principle in functional and
+  integrative medicine.
+coaching_translation: 'Before reaching for supplements, see what you can add through
+  food: more colorful vegetables, turmeric in cooking, ginger tea, amla powder, flaxseeds.
+  These are habits clients can sustain for years.'
+linked_to_topics:
+- chronic-inflammation
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-approach-inflammation
+  location: Nutrition – Food First Principle
+  quote: whenever you have a chance to prescribe the food, first use the food. Because
+    food patient can sustain for longer time.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

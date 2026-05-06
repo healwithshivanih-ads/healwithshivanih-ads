@@ -1,0 +1,32 @@
+slug: estrogen-dominance-three-subtypes
+statement: 'Estrogen dominance has three distinct subtypes: (1) absolute estrogen
+  overproduction, (2) relative dominance from low progesterone with normal estrogen,
+  and (3) normal estrogen and progesterone with impaired estrogen excretion.'
+evidence_tier: plausible_emerging
+rationale: The lecturer clearly distinguishes three mechanistic subtypes based on
+  clinical FM reasoning. This framework is used in FM practice but is not formally
+  codified in mainstream endocrinology guidelines. Source is an expert lecture (moderate
+  quality, FM consensus).
+coaching_translation: Estrogen dominance isn't always about too much estrogen — it
+  can happen when progesterone is too low, or when the body isn't clearing estrogen
+  properly through the gut and liver.
+caveats:
+- Source is an FM lecture, not primary peer-reviewed literature. Treat as plausible_emerging
+  FM framework.
+linked_to_topics:
+- estrogen-dominance
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-estrogen-dominance
+  location: What is Estrogen Dominance?
+  quote: Either number one, there is an overproduction of estrogen. Second is either
+    the estrogen is absolutely fine, but relatively the progesterone is very low.
+    And the third thing would be that the estrogen and progesterone is absolutely
+    fine, but the excretion of progesterone, the estrogen is not happening properly
+    from the body.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

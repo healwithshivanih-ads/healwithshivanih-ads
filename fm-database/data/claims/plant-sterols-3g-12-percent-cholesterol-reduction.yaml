@@ -1,0 +1,25 @@
+slug: plant-sterols-3g-12-percent-cholesterol-reduction
+statement: Plant sterols at 3g/day produce approximately 12% reduction in total cholesterol
+  by inhibiting intestinal cholesterol absorption.
+evidence_tier: strong
+rationale: Plant sterol cholesterol reduction is supported by multiple meta-analyses
+  and is endorsed by ACC/AHA guidelines as an adjunct LDL-lowering therapy.
+coaching_translation: Getting enough plant sterols (3 grams/day from food or supplements)
+  can meaningfully lower total cholesterol by about 12%.
+caveats:
+- Difficult to achieve 3g/day from food alone without fortified foods or supplements.
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-disease-prevention
+linked_to_supplements:
+- plant-sterols
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: LDL-Lowering Nutraceuticals
+  quote: Plant sterols, three grams a day, 12% reduction in cholesterol.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,32 @@
+slug: stress-depletes-magnesium-vicious-cycle
+statement: Chronic stress depletes magnesium via diuresis, and magnesium deficiency
+  in turn increases stress vulnerability by impairing GABA receptor function — creating
+  a self-reinforcing vicious cycle.
+evidence_tier: plausible_emerging
+rationale: Both stress-induced urinary magnesium loss and magnesium's role in GABAergic
+  signalling are mechanistically supported; the bidirectional vicious cycle model
+  is coherent but largely described in expert consensus and mechanistic literature
+  rather than prospective RCTs.
+caveats:
+- Source is expert consensus lecture; the specific cycle model should be presented
+  as a plausible working framework, not definitive proof.
+coaching_translation: Stress drains magnesium, and low magnesium makes you more reactive
+  to stress — it's a cycle that can be broken by addressing both.
+linked_to_topics:
+- magnesium-deficiency
+- magnesium-neurological-mental-health
+linked_to_supplements:
+- magnesium-glycinate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-magnesium-deficiency
+  location: Vicious cycle of magnesium deficiency
+  quote: Magnesium deficiency is making us more vulnerable to stress because magnesium
+    is responsible for the production of certain receptors which give a calming effect
+    like the GABA receptors. Stress again has a diuretic effect on the body which
+    further decreases the magnesium inside the body.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

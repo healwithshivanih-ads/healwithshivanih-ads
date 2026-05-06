@@ -1,0 +1,35 @@
+slug: cbd-anti-inflammatory-fibromyalgia-sleep-anxiety
+statement: CBD oil demonstrates anti-inflammatory, analgesic, anxiolytic, and neuroprotective
+  properties; it is referenced as supportive for fibromyalgia, chronic pain, sleep
+  disturbance, anxiety, and autoimmune inflammation, and is best used after foundational
+  nutrition is established.
+evidence_tier: plausible_emerging
+rationale: CBD's anti-inflammatory mechanisms (CB2 receptor modulation, endocannabinoid
+  system) are supported by preclinical and emerging clinical evidence. However, large-scale
+  human RCTs for most conditions listed are limited. FDA-approved for specific epilepsy
+  indications only.
+coaching_translation: CBD oil can be a helpful addition for clients with pain, sleep
+  issues, or anxiety as part of a broader anti-inflammatory plan — but build the dietary
+  foundation first. It works best when the basics are in place.
+caveats:
+- Regulatory status varies significantly by country (e.g., India). Verify legality
+  and availability before recommending.
+- CBD should not replace foundational interventions (diet, omega-3, vitamin C, gut
+  health).
+- Source is expert FM lecture (moderate quality).
+out_of_scope_notes: Dosing of CBD for specific medical conditions (autoimmune, cancer
+  pain) requires clinician oversight.
+linked_to_topics:
+- chronic-inflammation
+linked_to_supplements:
+- cbd-oil
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-approach-inflammation
+  location: Anti-Inflammatory Supplements – CBD Oil
+  quote: You can see the effect of CBD oil in neurodegeneration, sleep anxiety, muscular
+    pain, fibromyalgia, chronic fatigue and all sorts of anti-inflammatory.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

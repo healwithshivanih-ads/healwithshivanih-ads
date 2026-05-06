@@ -1,0 +1,32 @@
+slug: beta-glucans-enhance-immunity-and-reduce-respiratory-infections
+statement: Beta-glucans (250–500 mg daily) are anti-inflammatory, enhance immune function,
+  and specifically benefit those with upper respiratory tract infections caused by
+  viruses.
+evidence_tier: plausible_emerging
+rationale: Multiple RCTs support beta-glucan supplementation for reducing upper respiratory
+  infection frequency and duration in athletes and healthy adults (Nieman et al. 2008,
+  Auinger et al. 2013, Dharsono et al. 2019). Immune-modulating mechanisms are well-characterized.
+coaching_translation: Beta-glucans are natural fibers found in oats, mushrooms, and
+  yeast that train your immune system to respond more effectively to infections. They're
+  a solid daily preventive tool for respiratory health.
+caveats:
+- Most strong evidence is in healthy athletes or elderly; evidence in ill populations
+  is emerging.
+- Source is expert consensus toolkit.
+linked_to_topics:
+- immune-support-covid-19
+- chronic-inflammation
+linked_to_supplements:
+- beta-glucans
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Beta glucans are both anti-inflammatory and enhance immune function while
+    specifically benefitting those with upper respiratory tract infections caused
+    by viruses.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,36 @@
+slug: absolute-risk-reduction-statins-primary-prevention-often-under-2-percent
+statement: In many primary prevention patients, statin therapy offers less than 2%
+  absolute risk reduction in 10-year cardiovascular events, even when relative risk
+  reduction appears large.
+evidence_tier: plausible_emerging
+rationale: The document uses the ACC/AHA calculator (a guideline-endorsed tool) to
+  demonstrate cases where absolute risk reduction with statins is 0–2%, while the
+  same data can be presented as a 33–50% relative risk reduction. This concept (absolute
+  vs. relative risk) is well-established in evidence-based medicine and biostatistics
+  literature.
+coaching_translation: 'Drug company data often says a medication reduces risk by ''50%''
+  — but the actual reduction for you personally might be 1–2%. Always ask your doctor:
+  ''What is my actual absolute risk reduction?'''
+caveats:
+- Specific absolute risk figures are patient-dependent. Coaches should not calculate
+  or interpret risk for individual clients — direct clients to use the calculator
+  with their clinician.
+- Secondary prevention patients and FH patients are explicitly excluded from this
+  claim.
+out_of_scope_notes: The actual calculation of cardiovascular risk using the ACC/AHA
+  tool requires patient-specific clinical data and should be done by or with a clinician.
+linked_to_topics:
+- statin-therapy-risks-and-benefits
+- cardiovascular-risk-assessment
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Absolute vs. relative risk section
+  quote: 1% actual reduction versus 50% relative risk reduction. Are you getting my
+    point? So when you look at effectiveness of any therapy, always look at the absolute
+    risk reduction with that drug.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,36 @@
+slug: gut-microbiome-eliminates-50-60-percent-ingested-pesticides
+statement: The gut microbiome may eliminate approximately 50–60% of ingested pesticide
+  load before it is absorbed systemically, providing a critical first-line defense
+  against xenobiotic toxicity.
+evidence_tier: plausible_emerging
+rationale: Emerging evidence supports microbial metabolism of pesticides in the gut
+  (e.g., organophosphate degradation by gut bacteria). The specific '50–60%' figure
+  cited is a general estimate from the lecture without a specific citation. The principle
+  is biologically credible and supported by animal and in-vitro studies, but human
+  clinical evidence is still emerging.
+coaching_translation: A healthy gut microbiome acts as your first toxin filter — potentially
+  neutralizing over half of the pesticides you ingest before they even reach your
+  bloodstream. This is why gut health is foundational to detoxification.
+caveats:
+- The 50–60% estimate comes from an expert lecture without a specific cited study.
+  Treat as a plausible estimate from FM expert consensus, not a confirmed RCT-derived
+  figure.
+- Source is expert_consensus, moderate quality — verify specific statistics with primary
+  literature.
+linked_to_topics:
+- gut-microbiome-and-detox
+- total-toxic-load
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-liver-detox-part1
+  location: Intestinal Dysbiosis and Detox
+  quote: 50 to 60 percent of this pesticide is actually eliminated by that microbiome
+    So when you are exposed to any kind of chemical, this chemical primarily go in
+    a bacteria in the intestine and the bacteria die before this toxin can enter in
+    the cell.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

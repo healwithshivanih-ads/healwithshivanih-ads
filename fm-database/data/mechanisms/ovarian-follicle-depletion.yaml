@@ -1,0 +1,35 @@
+slug: ovarian-follicle-depletion
+display_name: Ovarian Follicle Depletion
+aliases:
+- follicular decline
+- granulosa cell loss
+- AMH decline
+category: endocrine
+summary: Age-related decline in ovarian follicle number and granulosa cell function
+  leads to falling AMH, declining estrogen production, and rising LH/FSH as the pituitary
+  attempts to compensate. This is the primary physiological driver of perimenopause
+  and menopause.
+upstream_drivers:
+- aging
+- nutritional-deficiencies
+- toxin-exposure
+- inflammation
+downstream_effects:
+- estrogen-progesterone-decline
+- irregular-ovulation
+- amenorrhea
+related_mechanisms:
+- estrogen-progesterone-decline
+- aromatase-activity
+linked_to_topics:
+- menopause
+- perimenopause
+evidence_tier: strong
+sources:
+- id: coconote-fm-sex-hormones
+  location: Pathophysiology of Menopausal Transition
+  quote: Phasology of the menopausal transition is the age-related follicle depletion.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

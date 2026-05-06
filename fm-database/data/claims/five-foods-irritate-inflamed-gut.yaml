@@ -1,0 +1,36 @@
+slug: five-foods-irritate-inflamed-gut
+statement: 'Five foods exacerbate inflammation in conditions such as Crohn''s disease,
+  colitis, IBS, and gastritis: dairy, wheat/gluten, peanuts (often contaminated with
+  mould/aflatoxin), oats (high in lectins), and refined sugar. Eliminating these foods
+  is necessary for gut healing.'
+evidence_tier: fm_specific_thin
+rationale: Dietary elimination for IBD-spectrum conditions is a recognised approach
+  with some clinical evidence for specific foods (gluten, dairy). The specific list
+  of five foods is a practitioner synthesis; peanut contamination and oat lectin claims
+  have thinner peer-reviewed support in this context.
+coaching_translation: 'If your gut is inflamed, try removing these five groups for
+  a period: cow''s dairy, wheat products, peanuts, oats, and refined sugar. Many people
+  notice significant improvement within days to weeks.'
+out_of_scope_notes: IBD diagnosis and management of steroid or anti-inflammatory medication
+  are clinician scope.
+caveats:
+- This is a practitioner-compiled list; individual food sensitivities vary.
+- Complete elimination diets should be time-limited and ideally supervised by a clinician
+  or registered dietitian.
+- Source is a practitioner talk (expert_consensus, moderate quality).
+linked_to_topics:
+- inflammatory-bowel-conditions
+- leaky-gut
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-gi-tract
+  location: Inflammatory Foods Section
+  quote: If a gut is inflamed, there are five foods that have an irritating effect.
+    One is dairy... Wheat was hybridised in the 1950s... Peanuts are commonly contaminated...
+    Oats are high in a plant called lectins... Refined sugar is just like pouring
+    kerosene onto a fire.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

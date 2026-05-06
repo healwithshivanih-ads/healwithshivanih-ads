@@ -1,0 +1,39 @@
+slug: igg-antigen-immune-complex-complement-activation
+display_name: IgG–Antigen Immune Complex & Complement Activation
+aliases:
+- type 3 hypersensitivity mechanism
+- immune complex mediated reaction
+category: immune
+summary: In food sensitivity, IgG antibodies bind to food-derived antigens in the
+  bloodstream, forming immune complexes. These complexes activate complement pathways,
+  leading to delayed inflammatory reactions (hours to days). The IgG antibody half-life
+  of 23 days means the immune response is prolonged, requiring elimination diets of
+  >4 weeks to see meaningful reduction in symptoms.
+upstream_drivers:
+- intestinal-permeability
+- food-antigen-exposure
+downstream_effects:
+- delayed-inflammation
+- fatigue
+- brain-fog
+- joint-pain
+- edema
+- water-retention
+- autoimmune-activation
+related_mechanisms:
+- intestinal-permeability
+- mast-cell-degranulation-histamine-release
+linked_to_topics:
+- food-sensitivity-igg-iga-mediated
+- autoimmune-conditions-igg-food-triggers
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-food-allergies-sensitivities
+  location: IgG Antibody Section
+  quote: IgG reaction is usually we see delayed hypersensitivity and that is tried
+    by the Ig antibody antigen complex and that will increase the complement activation
+    and that's used to the allergic reaction to that food
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

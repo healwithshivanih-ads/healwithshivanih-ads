@@ -1,0 +1,41 @@
+slug: prebiotic-fiber
+display_name: Prebiotic Fiber
+category: other
+forms_available:
+- powder
+- capsule
+typical_dose_range:
+  powder:
+    min: 3
+    max: 10
+    unit: g
+  capsule:
+    min: 1
+    max: 4
+    unit: capsules
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- intestinal-permeability
+- 5r-gut-healing-protocol
+linked_to_claims:
+- fiber-generates-scfa-for-gut-healing
+notes_for_coach: Prebiotics feed beneficial bacteria and support short-chain fatty
+  acid (SCFA) production, which nourishes colonocytes. Increase dose gradually to
+  minimize gas/bloating during introduction.
+notes_for_client: Prebiotic fiber feeds the good bacteria in your gut and helps them
+  produce compounds that repair the gut lining. Increase intake slowly to avoid gas.
+evidence_tier: strong
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-intestinal-permeability
+  location: 5R Protocol – Repair
+  quote: fiber is very important. They can create the short chain fatty acid and short
+    chain fatty acid is very important as a gut nutrient. They can heal your intestine.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,30 @@
+slug: tingling-numbness-neuropathy
+display_name: Tingling, Numbness & Neuropathy
+aliases:
+- paresthesia
+- pins and needles
+- burning hands or feet
+- peripheral neuropathy
+- burning sensations
+category: neurological
+severity: concerning
+description: Peripheral nerve symptoms including tingling, numbness, burning, and
+  paresthesia linked to B1, B5, B7, B12, and vitamin E deficiencies. Low B12 patterns
+  may be mistaken for depression.
+when_to_refer: Refer if progressive, bilateral, or associated with balance problems,
+  memory loss, or signs of irreversible neurological damage.
+linked_to_topics:
+- nutrition-deficiency
+- depression-like-symptoms
+linked_to_mechanisms:
+- methylation-support
+- nutrient-dependent-energy-metabolism
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Symptoms Discussed
+  quote: Tingling, numbness, burning, neuropathy, and paresthesia - Linked to B1,
+    B5, B7, B12, vitamin E, and low B12 patterns that can be mistaken for depression.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

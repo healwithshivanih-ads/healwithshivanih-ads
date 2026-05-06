@@ -1,10 +1,8 @@
 slug: fatigue
-display_name: Fatigue / Low Energy
+display_name: Fatigue
 aliases:
-- low-energy
 - tiredness
 - exhaustion
-- chronic-fatigue
 - persistent-fatigue
 - feeling-drained
 - low energy
@@ -16,18 +14,34 @@ aliases:
 - immune fatigue
 - always tired
 - no energy
-- lethargy
 - feeling wiped out
 - feeling drained
 - lack of energy
 - low vitality
 - energy crash
+- post-exertional-crashes
+- afternoon-fatigue
+- weakness
+- energy crashes
+- feeling run-down
+- sluggishness after meals
+- post-exertional crash
+- adrenal fatigue
+- mental fatigue
+- physical fatigue
+- feeling very busy
+- feeling run down
+- feeling fatigued
+- constant tiredness
+- yawning
+- cellular fatigue
 category: constitutional
 severity: common
-description: Persistent tiredness or low energy, common during elimination diets due
-  to electrolyte shifts, reduced caloric density, or nutrient deficiencies; may also
-  reflect underlying food reactivity.
-when_to_refer: Severe or unexplained fatigue, suspected anaemia, thyroid dysfunction.
+description: Persistent lack of energy linked to deficiencies of thiamin, B5, B7,
+  B12, iron, copper, iodine, selenium, potassium, sodium, vitamin C, and depression-mimicking
+  nutrient patterns.
+when_to_refer: If fatigue is severe, unexplained, or persistent despite dietary optimization;
+  if accompanied by neurological symptoms, arrhythmia, or anemia unresponsive to iron.
 linked_to_topics:
 - perimenopause
 - thyroid
@@ -72,6 +86,47 @@ linked_to_topics:
 - elimination-diet
 - low-fodmap-diet
 - gut-brain-axis
+- mindful-breathing
+- nervous-system-regulation
+- emotional-healing-chronic-disease
+- thyroid-dysfunction
+- subclinical-hypothyroidism
+- hpa-axis-dysfunction
+- chronic-stress
+- blood-sugar-dysfunction
+- insulin-resistance
+- drug-induced-nutrient-depletion-cardiovascular
+- metabolic-detoxification
+- iron-nutrition
+- magnesium-nutrition
+- vitamin-b12-nutrition
+- mitochondrial-health-nutrients
+- cardiometabolic-diet
+- cardiovascular-risk-assessment
+- methylation-defect-elevated-homocysteine
+- emotional-healing-in-chronic-disease
+- mitochondrial-support
+- estrogen-dominance
+- gut-skin-hormone-axis
+- hypochlorhydria
+- immune-dysregulation
+- iron-deficiency-anemia
+- magnesium-deficiency
+- pancreatic-insufficiency
+- sifo
+- gut-brain-axis-dysfunction
+- folate-vitamin-b9
+- vitamin-b12
+- mthfr-gene-variant
+- depression-lifestyle
+- hydration-and-brain-function
+- medication-induced-nutrient-depletion
+- iron-deficiency-dysregulation
+- adrenal-cortisol-resilience
+- modern-diet-systemic-dysfunction
+- nutrition-deficiency
+- methylation
+- depression-like-symptoms
 linked_to_mechanisms:
 - hpa-axis-dysregulation
 - chronic-inflammation
@@ -100,6 +155,35 @@ linked_to_mechanisms:
 - cytochrome-p450-phase1
 - gut-barrier-dysfunction
 - immune-food-reactivity
+- mitochondrial-dysfunction
+- vagal-tone-reduction
+- t4-to-t3-conversion-impairment
+- rt3-t3-competition
+- cortisol-dhea-imbalance
+- coq10-depletion-by-beta-blockers
+- nlrp3-inflammasome-activation
+- phase-i-cytochrome-p450
+- immune-activation-by-mycotoxins
+- oxygen-transport-impairment
+- hpa-axis-regulation
+- glycemic-load-reduction
+- methylation-defect-homocysteine
+- advanced-glycation-end-products
+- gut-brain-axis-disruption
+- gut-immune-dysregulation
+- ferritin-storage-depletion
+- atp-mitochondrial-production
+- malabsorption
+- lps-endotoxemia
+- gut-dysbiosis
+- methylmalonyl-coa-pathway
+- impaired-homocysteine-remethylation
+- cellular-hydration
+- b12-absorption-impairment
+- mitochondrial-coq10-depletion
+- nutrient-dependent-energy-metabolism
+- methylation-support
+- thyroid-nutrient-synergy
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Fatigue cluster
@@ -160,7 +244,59 @@ sources:
 - id: vitaone-elimination-diet-toolkit
   location: FODMAP Plan SOS Solutions — Low Energy/Fatigue
   quote: Fatigue often worsens from dehydration + low minerals.
-version: 17
+- id: vitaone-cardiometabolic-recipes
+  location: Power Punch Smoothie
+  quote: Unflavoured Protein powder of choice (Optional)
+- id: vitaone-cvs-risk-assessment
+  location: Functional Medicine Matrix (Slide 5)
+  quote: Fatigue and Mood
+- id: vitaone-health-coaching-cheatsheet
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: Fatigue, insomnia, anxiety, weight gain, hormonal imbalance.
+- id: coconote-fm-estrogen-dominance
+  location: Signs and Symptoms of Estrogen Dominance
+  quote: 'Signs and symptoms of estrogen dominance: mood swings, bare strenuous, acne,
+    anxiety, fatigue, disturbed sleep, hot flashes, low libido.'
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Case History / Symptoms
+  quote: She complained about fatigue and lack of energy and with weight loss.
+- id: coconote-fm-iron-deficiency-anemia
+  location: Symptoms of Iron Deficiency section
+  quote: Patients could have mental fatigue, feeling very busy, lack of concentration.
+- id: coconote-fm-magnesium-deficiency
+  location: Chronic fatigue syndrome section
+  quote: Magnesium is important for ATP production also and mitochondrial functions
+    as well. So that is why patients with chronic fatigue syndrome also benefit a
+    lot with magnesium.
+- id: coconote-fm-pancreatic-insufficiency
+  location: Signs and Symptoms
+  quote: Malnutrition, malabsorption, that is why feeling fatigued.
+- id: coconote-fm-sibo-sifo
+  location: Non-GI Symptoms of SIBO
+  quote: Non-gastrointestinal symptoms, acne, eczema, psoriasis, pains and aches,
+    brain fog, depression, fatigue, insomnia, autoimmune conditions.
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: Folate Deficiency Signs & Symptoms
+  quote: Fatigue, irritability and cognitive decline are also some other signs and
+    symptoms.
+- id: barbara-oneil-healing-mind
+  location: Oxygenation Section
+  quote: What's chronic fatigue syndrome? It's lack of oxygen at the cellular level.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXjjIqJjMSR/
+  quote: Many patients come to you with fatigue, muscle cramps, mood swings, or neuropathy…
+    and yet their labs look 'normal.'
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Symptoms Discussed
+  quote: Fatigue - Mentioned with deficiencies of thiamin, B5, B7, B12, iron, copper,
+    iodine, selenium, potassium, sodium, vitamin C, and depression-mimicking nutrient
+    patterns.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Symptoms Discussed
+  quote: Fatigue - Mentioned with deficiencies of thiamin, B5, B7, B12, iron, copper,
+    iodine, selenium, potassium, sodium, vitamin C, and depression-mimicking nutrient
+    patterns.
+version: 42
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-06'
 updated_by: shivani

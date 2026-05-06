@@ -1,0 +1,28 @@
+slug: identity-shift-acting-as-if-supports-behavior-change
+statement: Encouraging clients to identify with their future, healthier self — 'acting
+  as if' they are already that person — can reduce internal conflict and make desired
+  behaviors feel more natural.
+evidence_tier: plausible_emerging
+rationale: Identity-based habit formation is supported by emerging behavioral science
+  (e.g., James Clear's work, ACT research on self-as-context), though direct RCT evidence
+  in health coaching is limited.
+coaching_translation: 'Ask: ''What would that future version of you do in this situation?''
+  Help clients practice inhabiting their future identity rather than fighting their
+  current one.'
+caveats:
+- Described anecdotally in group discussion; no specific study cited.
+- Source is an expert consensus coaching call.
+linked_to_topics:
+- ambivalence-in-coaching
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-coaching-ambivalence
+  location: Group discussion — Amanda's contribution on identity shift
+  quote: When they keep identifying themselves as someone, 'oh yeah, I can do that,'
+    it just comes naturally. They're not fighting against themselves anymore.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

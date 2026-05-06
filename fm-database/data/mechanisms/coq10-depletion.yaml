@@ -1,0 +1,32 @@
+slug: coq10-depletion
+display_name: CoQ10 Depletion via Mevalonate Pathway Blockade
+aliases:
+- ubiquinone depletion
+- statin-induced CoQ10 deficiency
+category: metabolic
+summary: Statins block the mevalonate pathway upstream of CoQ10 (ubiquinone) synthesis.
+  CoQ10 is critical for mitochondrial electron transport and ATP production in muscle
+  and neural tissue. Depletion is the leading proposed mechanism for statin-induced
+  myalgia and myopathy.
+upstream_drivers:
+- mevalonate-pathway-inhibition
+downstream_effects:
+- myalgia
+- muscle-atrophy
+- fatigue
+- cognitive-impairment
+related_mechanisms:
+- mevalonate-pathway-inhibition
+- cholesterol-precursor-depletion
+linked_to_topics:
+- statin-side-effects
+- statin-therapy-primary-prevention
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-reality-of-statins
+  location: Side Effects of Statins Section
+  quote: It may cause myalgia and atrophy and atrophy.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

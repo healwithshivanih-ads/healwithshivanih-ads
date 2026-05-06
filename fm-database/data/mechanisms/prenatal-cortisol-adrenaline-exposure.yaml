@@ -1,0 +1,37 @@
+slug: prenatal-cortisol-adrenaline-exposure
+display_name: Prenatal Cortisol & Adrenaline Exposure
+aliases:
+- fetal HPA programming
+- maternal stress hormone transmission
+- in-utero cortisol exposure
+category: endocrine
+summary: During pregnancy, maternal stress activates the HPA axis, releasing cortisol
+  and adrenaline. These hormones cross the placenta and are proposed to alter fetal
+  nervous system development, increasing baseline autonomic arousal and affecting
+  the infant's capacity for relaxation and stress regulation throughout life.
+upstream_drivers:
+- maternal-psychological-stress
+- obstetric-complications
+- emotional-absence-or-trauma
+downstream_effects:
+- inability-to-relax
+- restlessness
+- teeth-grinding
+- nervous-system-imprinting
+related_mechanisms:
+- nervous-system-imprinting
+- hpa-axis-dysregulation
+linked_to_topics:
+- womb-imprinting-and-prenatal-experience
+- birth-trauma
+- maternal-mental-health-and-fetal-environment
+evidence_tier: plausible_emerging
+sources:
+- id: family-constellation-healing-womb
+  location: Birth trauma and nervous system section
+  quote: The nervous system was very challenged during the time of the other swarm
+    and the mother released so much cortisol and adrenaline.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

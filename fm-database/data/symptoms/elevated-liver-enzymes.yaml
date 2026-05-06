@@ -1,0 +1,25 @@
+slug: elevated-liver-enzymes
+display_name: Elevated Liver Enzymes
+aliases:
+- hepatotoxicity
+- liver damage on statins
+- raised AST/ALT
+- liver stress
+category: metabolic
+severity: concerning
+description: Statin therapy is associated with hepatotoxicity in a subset of patients.
+  The document cites an 11% incidence of liver damage at standard doses in the calculator-based
+  risk analysis.
+when_to_refer: Refer to clinician if liver enzymes are elevated on routine monitoring
+  or if patient has pre-existing liver disease.
+linked_to_topics:
+- statin-therapy-risks-and-benefits
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Statin side effects section
+  quote: We are inviting 2% of this for liver, 11% for liver damage.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

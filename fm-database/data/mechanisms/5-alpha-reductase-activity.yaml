@@ -1,0 +1,37 @@
+slug: 5-alpha-reductase-activity
+display_name: 5-α Reductase Enzyme Activity (Testosterone → DHT Conversion)
+aliases:
+- 5-alpha reductase
+- DHT conversion
+- androgen amplification
+category: endocrine
+summary: 5-α reductase converts testosterone to dihydrotestosterone (DHT), a more
+  potent androgen. Excess DHT relative to testosterone drives prostatic hyperplasia,
+  androgenic alopecia, and androgen excess symptoms in women. Inhibition of this enzyme
+  preserves testosterone and reduces DHT-mediated effects.
+upstream_drivers:
+- elevated-testosterone
+- insulin-resistance
+- genetic-predisposition
+downstream_effects:
+- benign-prostatic-hyperplasia
+- androgenic-alopecia
+- acne
+- hirsutism
+- reduced-free-testosterone
+related_mechanisms:
+- shbg-hormone-binding
+linked_to_topics:
+- testosterone-dht-conversion
+- benign-prostatic-hyperplasia
+evidence_tier: strong
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors'
+  quote: 5-a reductase is a key enzyme in the body which regulates the conversion
+    of testosterone to a hormone called dihydrotestosterone (DHT). When testosterone
+    is converted to DHT, testosterone is lowered and can no longer work effectively.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

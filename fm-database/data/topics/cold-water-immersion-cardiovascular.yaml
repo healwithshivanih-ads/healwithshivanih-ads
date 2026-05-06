@@ -1,0 +1,38 @@
+slug: cold-water-immersion-cardiovascular
+display_name: Cold Water Immersion & Cardiovascular Health
+aliases:
+- CWI cardiovascular effects
+- cold swimming heart health
+summary: Cold-adapted swimmers show reduced cardiovascular risk factors including
+  improved ApoB/ApoA1 ratio and oxidative stress markers. However, acute CWI elevates
+  heart workload, and elite swimmers show transient cardiac troponin elevation. Cardiovascular
+  effects depend heavily on acclimatization.
+common_symptoms:
+- elevated-apob-apoa1-ratio
+- oxidative-stress
+red_flags:
+- cardiac-troponin-elevation
+- acute-cardiac-stress
+- drowning-risk-cold-shock
+related_topics:
+- cold-water-immersion
+key_mechanisms:
+- cold-shock-response
+- sympathetic-nervous-system-activation
+coaching_scope_notes: Discuss cardiovascular risk reduction data only in context of
+  acclimatized, regular swimmers. Always recommend physician clearance for clients
+  with cardiovascular history before starting CWI.
+clinician_scope_notes: Cardiac troponin elevation post-CWI in elite swimmers raises
+  questions about subclinical cardiac stress. Acute hemodynamic effects including
+  tachycardia and reduced cerebral blood flow are safety concerns.
+evidence_tier: plausible_emerging
+sources:
+- id: espeland-2022-cold-water-immersion
+  location: Cardiovascular Impact
+  quote: Cold-adapted swimmers demonstrated reduced cardiovascular risk factors, including
+    a significant reduction in apolipoprotein B/apolipoprotein A1 ratio and improved
+    oxidative stress markers.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

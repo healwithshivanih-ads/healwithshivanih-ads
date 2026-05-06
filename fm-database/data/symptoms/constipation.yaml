@@ -17,13 +17,22 @@ aliases:
 - infrequent bowel movements
 - slow gut motility
 - poor elimination
+- less than one BM daily
+- difficulty with bowel movements
+- irregular bowel
+- not going to the bathroom
+- chronic constipation
+- difficulty passing stools
+- slow transit
+- rabbit pellets
+- difficulty pooping
 category: gi
 severity: common
-description: Infrequent or difficult bowel movements, often with hard stools; may
-  be related to low fiber intake, dehydration, or impaired gut motility during elimination
-  diets.
-when_to_refer: No bowel movement for >7 days, blood in stool, or new onset after age
-  50.
+description: Infrequent or difficult bowel movements associated with low-fibre diet,
+  dysbiosis, impaired motility, and insufficient water intake. May also occur with
+  iron supplementation.
+when_to_refer: Refer if chronic (>3 months), accompanied by blood, or significantly
+  worsening despite dietary changes.
 linked_to_topics:
 - perimenopause
 - estrobolome
@@ -43,6 +52,21 @@ linked_to_topics:
 - low-fodmap-diet
 - elimination-diet
 - ibs
+- thyroid-dysfunction
+- 5r-gut-restoration
+- chronic-pain-and-fatigue
+- low-stomach-acid
+- dysbiosis
+- gut-skin-hormone-axis
+- ibs-ibd-differentiation
+- 5r-gut-healing-protocol
+- magnesium-deficiency
+- gastrointestinal-tract-overview
+- inflammatory-bowel-conditions
+- estrogen-and-fiber-transit-time
+- hormonal-nutrition-foundations
+- gut-health-fodmap-sibo
+- modern-diet-systemic-dysfunction
 linked_to_mechanisms:
 - estrogen-enterohepatic-recirculation
 - microbial-diversity-decline
@@ -55,6 +79,20 @@ linked_to_mechanisms:
 - gut-liver-axis
 - gut-motility-dysregulation
 - colonic-fermentation
+- t4-to-t3-conversion-impairment
+- soluble-fiber-gel-formation
+- gut-butyrate-production
+- migrating-motor-complex
+- dysbiosis
+- nutrient-malabsorption
+- systemic-inflammation
+- gut-immune-axis-dysregulation
+- gut-barrier-dysfunction
+- gut-microbiome-dysbiosis
+- calcium-magnesium-imbalance
+- altered-gi-motility
+- colonic-peristalsis-and-fibre-motility
+- sibo-fermentation
 sources:
 - id: thurlow-microbiome-mondays
   location: Session 6 — Bowel Patterns
@@ -88,7 +126,43 @@ sources:
   location: FODMAP Plan SOS Solutions — Constipation
   quote: Use PHGG (partially hydrolyzed guar gum) if possible — BEST for IBS-C. Soluble
     fiber is better tolerated than insoluble for many with IBS.
-version: 9
+- id: vitaone-health-coaching-toolkit
+  location: Thyroid Screening Questionnaire — Signs and Symptoms
+  quote: I am constipated (less than 1 bowel movement daily)
+- id: coconote-fm-chronic-pain-fatigue
+  location: Digestion / Constipation Section
+  quote: If they are not eliminating, the toxins will be reabsorbed in our body and
+    that will create a havoc and that will cause inflammation.
+- id: coconote-fm-approach-inflammation
+  location: Gut Dysbiosis – Location and Type
+  quote: constipation, also the part of dysbiosis.
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Case History / Symptoms
+  quote: Occasional constipation — she felt constipated while travelling.
+- id: coconote-fm-intestinal-permeability
+  location: Diagnostic Markers – Calprotectin
+  quote: So if you want to differentiate IBD from IBS, then you should run the calc-reacting
+    test.
+- id: coconote-fm-magnesium-deficiency
+  location: Gastrointestinal section
+  quote: Magnesium is a very important mineral which also helps in the contractility
+    of the smooth musculature at the level of the gut. So even the peristaltic movement
+    that happens inside the gut requires magnesium in abundance.
+- id: coconote-fm-sibo-sifo
+  location: Types of SIBO – Methane Dominant
+  quote: Methane-dominant SIBO is, constipation is more common in them.
+- id: barbara-oneil-gi-tract
+  location: Colon Section
+  quote: If a person's dehydrated, more water gets taken out than should be taken
+    out. Then we're left with rabbit pellets and cement.
+- id: ask-expert-hormonal-health-bhrt
+  location: Fiber, Transit Time, and Estrogen Metabolism
+  quote: If they pooped once a day, 5% of them had abnormal cells. If they pooped
+    they missed a day, you should never miss a day... up to 50% abnormal breast cells.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXWoFj6jGCY/
+  quote: Low-fiber diets starve the microbiome → constipation + estrogen imbalance
+version: 22
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

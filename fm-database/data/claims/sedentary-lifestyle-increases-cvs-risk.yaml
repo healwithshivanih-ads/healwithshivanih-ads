@@ -1,0 +1,23 @@
+slug: sedentary-lifestyle-increases-cvs-risk
+statement: A sedentary lifestyle is a modifiable cardiovascular risk factor.
+evidence_tier: strong
+rationale: Physical inactivity as a major modifiable CVD risk factor is supported
+  by extensive epidemiological and RCT evidence and is included in all major cardiology
+  guidelines.
+coaching_translation: Not moving enough is one of the most significant heart risk
+  factors you can actually change. Regular movement is medicine for your heart.
+linked_to_topics:
+- cardiovascular-risk-assessment
+- insulin-resistance
+linked_to_supplements: []
+caveats: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cvs-risk-assessment
+  location: CVS Risk Analysis (Slide 12)
+  quote: Sedentary Lifestyle increase risk
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

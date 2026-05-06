@@ -1,0 +1,28 @@
+slug: luteal-phase-defect-most-common-in-perimenopause
+statement: Relative estrogen dominance secondary to progesterone deficiency (luteal
+  phase defect) is the most common hormonal dysfunction in perimenopausal women.
+evidence_tier: plausible_emerging
+rationale: Progesterone decline preceding estrogen decline in perimenopause is well-supported
+  in reproductive endocrinology. The specific framing as 'most common dysfunction'
+  is clinical FM expert opinion from this lecture.
+coaching_translation: In women approaching menopause (late 30s–40s in Indian women,
+  40s–50s in Western women), progesterone often falls first, leaving estrogen relatively
+  dominant — even if estrogen levels look 'normal' on tests.
+caveats:
+- Expert consensus from FM lecture; epidemiological prevalence data not cited.
+linked_to_topics:
+- luteal-phase-defect
+- perimenopause
+- estrogen-dominance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-estrogen-dominance
+  location: Types of Estrogen Dominance
+  quote: The most common dysfunction that happens in reproductive women of perimenopausal
+    phase. Somebody who is at the age of 45, their progesterone dips down.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

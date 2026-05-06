@@ -1,0 +1,33 @@
+slug: zinc-vitamin-a-b-support-gut-tissue-repair
+statement: Zinc, magnesium, vitamin A, and vitamin B are essential micronutrients
+  required for gut tissue repair in dysbiosis and intestinal permeability protocols.
+evidence_tier: plausible_emerging
+rationale: Zinc is critical for epithelial cell turnover and tight junction integrity.
+  Vitamin A is essential for mucosal immunity and enterocyte differentiation. B vitamins
+  support cellular repair mechanisms. These are well-established micronutrient roles
+  with evidence in gut health contexts.
+coaching_translation: Making sure your clients get enough zinc, magnesium, vitamin
+  A, and B vitamins is essential for healing the gut lining.
+caveats:
+- Source is expert lecture, moderate quality.
+- Specific doses and forms not provided — clinician should guide supplementation.
+- Vitamin A toxicity is possible at high doses — must be monitored.
+linked_to_topics:
+- intestinal-permeability
+- gut-dysbiosis
+linked_to_supplements:
+- zinc
+- magnesium
+- vitamin-a
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Repair Section
+  quote: Micronutrients means vitamins and minerals. Vitamin A and vitamin B we require.
+    And then you can see that the formula... that is zinc and then you can consider
+    that magnesium is required.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,30 @@
+slug: bmi-limitations-muscle-vs-fat
+statement: BMI is a useful but imperfect screening tool that cannot distinguish between
+  muscle mass and fat mass, and must be interpreted alongside waist-to-hip ratio and
+  body fat percentage.
+evidence_tier: strong
+rationale: BMI's failure to account for body composition is widely recognized; a muscular
+  athlete may have high BMI but low metabolic risk, while a 'normal-weight' individual
+  may have metabolically dangerous levels of visceral fat.
+coaching_translation: A number on the scale or a BMI calculation doesn't tell the
+  whole story. Two people with the same BMI can have very different health profiles
+  depending on how much of their weight is muscle versus fat.
+caveats:
+- Normal BMI does not rule out metabolic dysfunction; always assess alongside waist
+  circumference and body fat %.
+linked_to_topics:
+- bmi-interpretation
+- body-composition-assessment
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-body-composition-bmi
+  location: BMI Section
+  quote: It's not perfect, but it's a good starting point. And so, you know, what
+    do we know about the BMI? Less than 18.5 is considered underweight and greater
+    than 25 is overweight with greater than 30 obese.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,27 @@
+slug: prolonged-bleeding
+display_name: Prolonged Bleeding / Prolonged Clotting Time
+aliases:
+- slow clotting
+- prolonged clotting time
+- excessive bleeding
+category: cardiovascular
+severity: red_flag
+description: Extended bleeding following minor wounds or procedures, or a clinically
+  measured prolonged clotting time, indicating impaired coagulation — a key manifestation
+  of vitamin K2 deficiency.
+when_to_refer: Always refer. Prolonged bleeding or clotting abnormalities require
+  immediate clinical evaluation.
+linked_to_topics:
+- vitamin-k2
+linked_to_mechanisms:
+- coagulation-factor-activation
+sources:
+- id: coconote-fm-vitamin-d3-k2
+  location: Vitamin K2 Deficiency Symptoms
+  quote: if there is a deficiency in vitamin K2, it can manifest as glupus, anechymosis,
+    hematiduia, GI bleeding, intracranial bleeding, prolonged bleeding or clotting
+    time.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

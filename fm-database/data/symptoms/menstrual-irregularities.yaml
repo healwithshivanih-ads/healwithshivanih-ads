@@ -5,21 +5,31 @@ aliases:
 - heavy periods
 - missed periods
 - cycle disruption
+- stress-related amenorrhea
 category: hormonal
-severity: common
-description: Thyroid dysfunction commonly disrupts menstrual cycle regularity through
-  hormonal cross-talk with estrogen and progesterone axes.
+severity: concerning
+description: Irregular or absent menstrual periods (not menopausal), associated with
+  both chronic stress and adrenal hyperplasia. Elevated stress hormones can suppress
+  the HPG axis.
 linked_to_topics:
 - thyroid
+- chronic-stress
+- hpa-axis-dysfunction
+- adrenal-hormone-function
 linked_to_mechanisms:
 - hpa-axis-dysregulation
 - estrogen-dominance-thyroid-blunting
-when_to_refer: ''
+- cortisol-dhea-imbalance
+when_to_refer: Refer to clinician if periods are absent or significantly irregular
+  to rule out adrenal hyperplasia, PCOS, or other hormonal disorders.
 sources:
 - id: vitaone-thyroid-cheatsheet
   location: Biohacking Thyroid Function Cheatsheet — Thyroid Dysfunction Symptoms
   quote: Menstrual irregularities
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: 'HPA Axis Questionnaire — Section 3: Adrenal hyperplasia'
+  quote: Irregular or no periods (not menopausal).
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

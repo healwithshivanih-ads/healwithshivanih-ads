@@ -1,0 +1,26 @@
+slug: sibo-is-polymicrobial-condition
+statement: SIBO is a polymicrobial condition involving multiple bacterial species
+  (including E. coli, Streptococcus, Bacteroides, Clostridium) that overgrow in the
+  small intestine, producing hydrogen, methane, or hydrogen sulfide gas.
+evidence_tier: strong
+rationale: Well-established clinical and microbiological definition supported by breath
+  testing and PCR stool mapping findings described in the lecture.
+coaching_translation: SIBO is not one bacteria — it's a complex overgrowth of multiple
+  bacterial types, each producing different gases that cause different symptoms.
+caveats:
+- Source is expert consensus lecture, not primary literature citation. Core definition
+  is broadly accepted.
+linked_to_topics:
+- sibo
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-sibo-sifo
+  location: SIBO Definition
+  quote: Why polymicrobial? Because there are a lot of microbes involved in causing
+    one disease. Hence, this disease is also known as a polymicrobial disease.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

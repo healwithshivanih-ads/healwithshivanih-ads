@@ -1,0 +1,47 @@
+slug: nervous-system-regulation
+display_name: Nervous System Regulation
+aliases:
+- autonomic-balance
+- parasympathetic-restoration
+- nervous-system-reset
+summary: A functional medicine approach to restoring autonomic balance by addressing
+  root causes of sympathetic overdrive—including HPA axis dysregulation, vagal hypotonia,
+  neuroinflammation, mitochondrial stress, gut-brain disruption, and toxic load—through
+  phased lifestyle, nutritional, and mind-body interventions.
+common_symptoms:
+- fatigue
+- anxiety
+- insomnia
+- brain-fog
+- bloating
+- low-hrv
+- sugar-cravings
+- hypervigilance
+red_flags:
+- cardiac-arrhythmia
+- severe-ptsd
+- uncontrolled-hypertension
+related_topics:
+- emotional-healing-chronic-disease
+- breathwork-for-health
+- gut-brain-axis
+- hpa-axis-dysregulation
+key_mechanisms:
+- hpa-axis-dysregulation
+- vagal-tone-reduction
+- neuroinflammation
+coaching_scope_notes: Coaches can guide breathwork, morning sunlight, sleep hygiene,
+  grounding, gentle movement, journaling, and dietary rhythm. Refer for neurofeedback,
+  EMDR, or severe trauma.
+clinician_scope_notes: 'Assess AM/PM salivary cortisol, HRV, hs-CRP, omega-3 index,
+  homocysteine/B12. Phased protocol: HPA calming weeks 1-3, vagal activation weeks
+  3-5, neuroinflammation weeks 4-8, mitochondria weeks 6-10, gut-brain weeks 8-12.'
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: How to Reset the Nervous System / Functional Wisdom
+  quote: The nervous system doesn't need sedation - it needs safety + energy + rhythm.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,29 @@
+slug: zinc-supplementation-supports-immune-function
+statement: Zinc supplementation supports immune function by promoting the production,
+  maturation, and activity of immune cells including T cells, B cells, and neutrophils,
+  and by regulating cytokine production.
+evidence_tier: strong
+rationale: Zinc's role in immune cell development and cytokine regulation is well-established
+  in immunological literature. The document describes this as a primary function of
+  zinc.
+coaching_translation: Getting enough zinc helps your immune system stay strong — it
+  supports the cells that fight infections and helps regulate inflammation.
+caveats:
+- Source is an expert lecture, not primary literature. Specific immunological claims
+  are consistent with mainstream consensus.
+linked_to_topics:
+- zinc-deficiency
+linked_to_supplements:
+- zinc
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-zinc-deficiency
+  location: Functions of Zinc
+  quote: Zinc is responsible for basically the formation, the maturation and managing
+    a lot of immune cells, beta cells, T cells, neutrophils inside the body, cytokine
+    production which manages the inflammation inside the body.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

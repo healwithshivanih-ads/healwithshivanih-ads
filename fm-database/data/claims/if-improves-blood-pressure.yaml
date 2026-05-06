@@ -1,0 +1,31 @@
+slug: if-improves-blood-pressure
+statement: Intermittent fasting improves blood pressure in human and animal studies.
+evidence_tier: plausible_emerging
+rationale: Cited across multiple referenced peer-reviewed studies (Patterson 2015
+  JAND; Mattson 2017 Ageing Res Rev; de Cabo & Mattson 2019 NEJM). Mechanistically
+  plausible via reduced sympathetic tone, improved insulin sensitivity, and lower
+  inflammatory burden. Longer-term RCT evidence is still limited.
+coaching_translation: Following an intermittent fasting protocol, under clinician
+  guidance, may help support healthy blood pressure levels alongside dietary changes.
+caveats:
+- Short-duration studies predominate; long-term sustained effects not fully established.
+- Clients on antihypertensive medications must consult their clinician before starting
+  IF.
+- Source document references primary literature but this is a coaching toolkit, not
+  a systematic review.
+linked_to_topics:
+- intermittent-fasting
+- cardiometabolic-diet
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Intermittent Fasting — Who Benefits from Fasting?
+  quote: Shorter-duration human & animal studies show that fasting may be beneficial
+    for insulin resistance, blood sugar, blood pressure, inflammation, short-term
+    weight loss, and brain health.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,29 @@
+slug: excess-body-weight
+display_name: Excess Body Weight / Obesity
+aliases:
+- overweight
+- obesity
+- high BMI
+- weight gain
+category: metabolic
+severity: concerning
+description: Excess adiposity driving insulin resistance, inflammation, and cardiometabolic
+  risk; short-term weight loss is a documented benefit of intermittent fasting.
+when_to_refer: Refer for medical evaluation if BMI >40 or if co-morbidities present
+  (T2DM, CV disease).
+linked_to_topics:
+- cardiometabolic-diet
+- intermittent-fasting
+linked_to_mechanisms:
+- insulin-resistance
+- chronic-systemic-inflammation
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Intermittent Fasting — Who Benefits from Fasting?
+  quote: Shorter-duration human & animal studies show that fasting may be beneficial
+    for insulin resistance, blood sugar, blood pressure, inflammation, short-term
+    weight loss, and brain health.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,26 @@
+slug: daytime-fatigue
+display_name: Daytime Fatigue
+aliases:
+- excessive daytime sleepiness
+- daytime tiredness
+- always tired
+category: constitutional
+severity: common
+description: Persistent daytime fatigue may indicate undiagnosed obstructive sleep
+  apnea, which is a significant cardiovascular risk factor. Also associated with metabolic
+  dysfunction, anemia, thyroid dysfunction, and depression.
+when_to_refer: If sleep apnea is suspected, refer for formal sleep study. Fatigue
+  with cardiac symptoms warrants urgent evaluation.
+linked_to_topics:
+- sleep-apnea-cardiovascular-risk
+linked_to_mechanisms:
+- sympathetic-activation-sleep-apnea
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Sleep Apnea Screening
+  quote: Are they waking up with headaches? Are they fatigued during the day? This
+    is missed all the time.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

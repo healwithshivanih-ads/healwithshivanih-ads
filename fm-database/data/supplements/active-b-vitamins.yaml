@@ -1,0 +1,34 @@
+slug: active-b-vitamins
+display_name: Active B-Vitamins (B-Complex)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+timing_options:
+- with_breakfast
+- morning
+take_with_food: required
+linked_to_topics:
+- medication-induced-nutrient-depletion
+- gut-health-fodmap-sibo
+linked_to_claims:
+- metformin-depletes-b12-folate
+- ppis-deplete-b12-magnesium-iron
+- gut-healing-requires-glutamine-zinc-omega3-bcomplex
+notes_for_coach: Active (methylated) forms of B12 (methylcobalamin) and folate (5-MTHF)
+  bypass absorption and methylation issues. Particularly relevant for patients on
+  metformin or PPIs, and those with MTHFR variants. Dosing must be clinician-directed.
+notes_for_client: Active B-vitamins are easier for your body to use, especially if
+  you take certain medications or have difficulty absorbing nutrients from food.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXjjIqJjMSR/
+  quote: Functional repletion with active B-vitamins, magnesium glycinate, CoQ10,
+    selenium, zinc, and antioxidants helps restore metabolic resilience.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

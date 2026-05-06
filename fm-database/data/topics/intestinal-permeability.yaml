@@ -1,0 +1,73 @@
+slug: intestinal-permeability
+display_name: Intestinal Permeability (Leaky Gut)
+aliases:
+- leaky gut
+- gut barrier dysfunction
+- impaired gut lining
+- leaky small intestine
+- intestinal hyperpermeability
+- auto-intoxication
+summary: Intestinal permeability refers to the breakdown of the gut mucosal barrier
+  — including tight junctions, mucus layer, chemical defenses, and immune barrier
+  — allowing translocation of food particles, lipopolysaccharides (LPS), and pathogens
+  from the intestinal lumen into the bloodstream, triggering systemic inflammation
+  and driving chronic disease.
+common_symptoms:
+- food-sensitivities
+- systemic-inflammation
+- brain-fog
+- joint-pain
+- bloating
+- new-food-sensitivities
+- fatigue
+red_flags:
+- fecal-calprotectin-above-200
+- positive-anti-nuclear-antibody
+- confirmed-ibd-diagnosis
+- blood in stool
+- unintentional weight loss
+- high fecal calprotectin >200
+- confirmed IBD or autoimmune disease diagnosis
+related_topics:
+- gut-dysbiosis
+- candida-overgrowth
+- autoimmunity
+- dysbiosis
+- celiac-disease
+- ibs-ibd-differentiation
+- inflammatory-bowel-disease
+- ibs
+key_mechanisms:
+- impaired-gut-barrier
+- tight-junction-dysregulation
+- molecular-mimicry
+- lps-translocation
+- tight-junction-dysfunction
+coaching_scope_notes: Coaches can support gut barrier repair through nutrition, lifestyle,
+  and supplement protocols (5R framework). Lab interpretation (calprotectin, zonulin,
+  Cyrex Array 2) and diagnosis of IBD/autoimmunity must remain with clinician.
+clinician_scope_notes: Diagnosis confirmed via lactulose-mannitol test, serum zonulin,
+  anti-zonulin/anti-LPS antibodies (Cyrex Array 2), fecal calprotectin, and secretory
+  IgA. Fecal calprotectin >200 warrants further GI investigation to rule out IBD.
+evidence_tier: strong
+sources:
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Repair Section
+  quote: glutamine is an amino acid and apart from glutamine, You can consider other
+    nutrients like zinc, vitamin A, vitamin B, and essential fatty acids including
+    omega-3. They are important.
+- id: coconote-fm-intestinal-permeability
+  location: Autoimmunity & Leaky Gut Pathophysiology
+  quote: the leaky gut or your intestinal probability is increased. And that's why
+    the immune system creates inflammation, pain, and tissue damage.
+- id: coconote-fm-intestinal-permeability-anish
+  location: Introduction / Objectives
+  quote: Since last 30 years it is discussed in the literature and concept is established
+    in 2020 by Dr. Fasano from Italy who had discovered the basic and primary mechanism
+    for celiac disease and autoimmune condition and since then you can find out more
+    than 20,000 articles about the intestinal permeability and root cause of many
+    chronic condition is basically intestinal permeability.
+version: 3
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

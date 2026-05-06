@@ -1,0 +1,38 @@
+slug: cbd-oil
+display_name: CBD Oil (Cannabidiol)
+category: other
+forms_available:
+- liquid
+typical_dose_range:
+  liquid:
+    min: 4
+    max: 5
+    unit: drops
+timing_options:
+- morning
+- evening
+- bedtime
+take_with_food: optional
+linked_to_topics:
+- chronic-inflammation
+linked_to_claims:
+- cbd-anti-inflammatory-fibromyalgia-sleep-anxiety
+notes_for_coach: CBD oil referenced for fibromyalgia, chronic pain, sleep, anxiety,
+  neurodegeneration, and autoimmune conditions. Described as a secondary intervention
+  after foundational nutrition and antioxidants are in place. Not a replacement for
+  vitamin C, glutathione, or foundational diet work. Regulatory status varies by country
+  — verify local availability.
+notes_for_client: CBD oil can support pain, sleep, and anxiety as part of a broader
+  anti-inflammatory plan. It works best after you've built a strong dietary and nutritional
+  foundation.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-approach-inflammation
+  location: Anti-Inflammatory Supplements – CBD Oil
+  quote: You can see the effect of CBD oil in neurodegeneration, sleep anxiety, muscular
+    pain, fibromyalgia, chronic fatigue and all sorts of anti-inflammatory.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

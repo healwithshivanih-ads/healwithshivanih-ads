@@ -1,0 +1,32 @@
+slug: patient-care-plan-adherence-accelerates-with-coaching
+statement: In complex chronic illness populations, adding a health coach to the care
+  team accelerated lab value improvement at follow-up appointments by approximately
+  30% compared to care without a coach.
+evidence_tier: fm_specific_thin
+rationale: Speaker describes personal clinical observation from her own coaching practice
+  — not a controlled study. The 30% figure is anecdotal and practice-specific. However,
+  the direction of effect is consistent with emerging evidence on coaching and chronic
+  disease outcomes.
+coaching_translation: You can speak to the value of coaching by tracking your own
+  outcomes data — how quickly do your clients reach their health goals compared to
+  baseline? Start measuring now.
+caveats:
+- Anecdotal observation from a single coach's practice, not an RCT or controlled study.
+- 30% figure is illustrative, not statistically validated.
+- Source is expert testimony/synthesis.
+linked_to_topics:
+- chronic-disease-management
+- coach-clinician-collaboration
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-future-fm
+  location: Metrics & Outcomes Section
+  quote: I know when I got in and I started working with those complex chronic illness
+    providers that they're their progress probably accelerated about 30%, meaning
+    their labs came down faster in the second follow-up than they normally did.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

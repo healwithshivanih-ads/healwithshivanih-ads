@@ -1,27 +1,42 @@
 slug: metformin-depletes-b12-folate
-statement: Metformin depletes vitamin B12 and folate; B12 status (serum + MMA) should
-  be assessed in all patients on metformin and supplemented with methylcobalamin and
-  L-methylfolate as needed.
-evidence_tier: strong
-rationale: The metformin-B12 depletion association is well-established in multiple
-  RCTs and cohort studies; recognized in clinical guidelines (ADA). Neuropathy from
-  B12 depletion in metformin users is documented.
-coaching_translation: Clients on metformin should have their B12 status checked regularly.
-out_of_scope_notes: Prescribing and lab monitoring is clinician territory.
+statement: Long-term metformin use depletes vitamin B12 and folate, accelerating fatigue
+  and peripheral neuropathy — often years before deficiency is detectable on standard
+  blood panels.
+evidence_tier: plausible_emerging
+rationale: Metformin impairs ileal B12 absorption via a calcium-dependent mechanism;
+  multiple RCTs and observational studies confirm lower B12 with long-term use. Folate
+  depletion is less consistently documented. Clinical neuropathy from metformin-B12
+  deficiency is well-reported.
+coaching_translation: People taking metformin for diabetes may gradually become depleted
+  in vitamin B12, which can cause tiredness and nerve symptoms. Ask your doctor to
+  check B12 levels regularly.
+out_of_scope_notes: B12 supplementation form and dosing are clinician decisions. Do
+  not advise stopping metformin.
 caveats:
 - Clinician should order MMA and serum B12, not just serum B12 alone for functional
   status.
+- B12 depletion by metformin has strong observational support; RCT evidence for folate
+  depletion is weaker.
+- Subclinical deficiency preceding lab detection is plausible but hard to quantify
+  clinically.
+- Source is educational Instagram content.
 linked_to_topics:
 - medicine-nutrient-interactions
+- medication-induced-nutrient-depletion
 linked_to_supplements:
 - vitamin-b12-methylcobalamin
 - l-methylfolate
+- active-b-vitamins
 linked_to_mechanisms: []
 sources:
 - id: vitaone-nutrition-cheatsheet
   location: Medicine-Nutrient Interactions Cheatsheet
   quote: Assess B12 (serum + MMA), supplement methyl-B12 and L-methylfolate as needed.
-version: 1
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXjjIqJjMSR/
+  quote: Every diabetic on metformin is walking around B12 and folate deficient accelerating
+    fatigue and neuropathy long before labs show it.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

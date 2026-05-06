@@ -1,0 +1,26 @@
+slug: white-tongue-coating
+display_name: White Tongue Coating
+aliases:
+- coated tongue
+- oral thrush sign
+- tongue fur
+category: gi
+severity: common
+description: White or creamy coating on the tongue, indicative of oral or intestinal
+  fungal (Candida) overgrowth. A useful clinical sign to identify fungal dysbiosis
+  without advanced testing.
+linked_to_topics:
+- fungal-overgrowth
+- gut-dysbiosis
+linked_to_mechanisms:
+- gut-immune-axis-dysregulation
+when_to_refer: ''
+sources:
+- id: coconote-fm-approach-inflammation
+  location: Infection Triggers – Fungal Infection
+  quote: if you see the white coating in your tongue, the white coating is also the
+    sign of fungal infection.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

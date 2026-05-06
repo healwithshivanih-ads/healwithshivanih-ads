@@ -1,0 +1,32 @@
+slug: therapeutic-omega3-requires-cutting-omega6-first
+statement: Effective omega-3 therapy requires simultaneously eliminating omega-6 sources;
+  supplementing omega-3 alone without reducing omega-6 is insufficient for correcting
+  the ratio.
+evidence_tier: fm_specific_thin
+rationale: The document emphasizes that because patients have accumulated 30 years
+  of omega-6 excess, the first and essential step is removing omega-6 sources, then
+  adding therapeutic omega-3. This principle is mechanistically sound but lacks direct
+  RCT citation in the document.
+coaching_translation: Adding fish oil supplements is a great start, but if you're
+  still eating lots of vegetable oils, margarine, and processed foods high in omega-6,
+  the omega-3 won't work as well. Remove the omega-6 foods first.
+caveats:
+- Source is expert consensus lecture. This is a mechanistically plausible principle
+  in FM practice but thin on peer-reviewed trial evidence specifically for this sequencing
+  approach.
+linked_to_topics:
+- dyslipidemia-management
+linked_to_supplements:
+- omega-3-fatty-acids
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Omega-3 intervention section
+  quote: First thing is cut all the omega 6 because already they are taking omega
+    6 from last 30 years and their omega 6 is very high 20 or more than 20 with first
+    thing is cut all the omega 6 whatever omega 6 you can find more.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

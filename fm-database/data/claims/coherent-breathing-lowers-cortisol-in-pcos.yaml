@@ -1,0 +1,27 @@
+slug: coherent-breathing-lowers-cortisol-in-pcos
+statement: Coherent breathing (5–6 breaths per minute) improves HRV and lowers cortisol,
+  making it useful for PCOS and hormonal imbalances.
+evidence_tier: plausible_emerging
+rationale: Coherent/resonance breathing at ~5 breaths/min maximizing HRV is supported
+  by clinical research (Lehrer et al.). The application to PCOS via cortisol reduction
+  is mechanistically plausible but extrapolated from general HPA-axis evidence.
+coaching_translation: Slowing your breath to about 5–6 breaths per minute brings your
+  heart and nervous system into a coherent rhythm that lowers stress hormones. This
+  can support hormonal balance in conditions like PCOS.
+caveats:
+- Direct RCT evidence in PCOS populations is limited.
+- Source is educational synthesis.
+linked_to_topics:
+- breathwork-for-health
+- hpa-axis-dysregulation
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Breathwork Cheatsheet / Breathwork Techniques & Clinical Use
+  quote: 'Coherent Breathing: 5–6 breaths/minute; Improves HRV; Cardio-metabolic imbalance.'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

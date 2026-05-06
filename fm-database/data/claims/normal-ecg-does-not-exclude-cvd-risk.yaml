@@ -1,0 +1,29 @@
+slug: normal-ecg-does-not-exclude-cvd-risk
+statement: A normal ECG or stress test (TMT) does not exclude the presence of atherosclerosis
+  or cardiovascular risk; silent atherosclerosis can progress without symptoms.
+evidence_tier: plausible_emerging
+rationale: The document correctly notes that many patients have heart attacks with
+  previously normal ECGs, which aligns with well-recognized limitations of standard
+  cardiac testing for pre-event risk stratification.
+coaching_translation: A normal heart test doesn't mean you're in the clear. Many people
+  who have heart attacks had 'normal' tests beforehand. That's why looking at your
+  overall risk pattern—inflammation, blood sugar, cholesterol quality—matters so much.
+caveats:
+- This claim supports proactive biomarker screening but should not be used to create
+  undue alarm.
+- Source is expert lecture (moderate quality).
+linked_to_topics:
+- cardiometabolic-disease
+- atherosclerosis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-biomarkers-cvs
+  location: Cardiovascular Myths
+  quote: Even those patients who have heart attacks, if you look at the earlier report,
+    maybe one day before or two days before the ECG or TNT, maybe the TNT is normal.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

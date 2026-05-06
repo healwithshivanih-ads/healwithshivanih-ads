@@ -1,0 +1,31 @@
+slug: damaged-microvilli
+display_name: Damaged Intestinal Microvilli
+aliases:
+- brush border damage
+- villous atrophy
+category: structural
+summary: Structural damage to intestinal microvilli impairs nutrient absorption and
+  may reduce local availability of minerals and cofactors needed for enzyme synthesis
+  in the pancreas.
+upstream_drivers:
+- crohns-disease
+- inflammatory-foods
+- nutritional-deficiency-zinc-copper-vitamins
+downstream_effects:
+- malabsorption
+- exocrine-pancreatic-enzyme-deficiency
+related_mechanisms:
+- malabsorption
+- exocrine-pancreatic-enzyme-deficiency
+linked_to_topics:
+- pancreatic-insufficiency
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-pancreatic-insufficiency
+  location: Causes of Enzyme Deficiency
+  quote: Damaged microvilli, which basically are responsible for the absorption of
+    nutrition, which would help in terms of formation of these enzymes.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

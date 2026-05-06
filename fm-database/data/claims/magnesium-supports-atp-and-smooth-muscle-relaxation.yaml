@@ -1,0 +1,33 @@
+slug: magnesium-supports-atp-and-smooth-muscle-relaxation
+statement: Magnesium is a cofactor for more than 300 enzymes and is central to ATP
+  production, energy metabolism, and smooth muscle relaxation.
+evidence_tier: plausible_emerging
+rationale: Magnesium's enzymatic roles in ATP synthesis and muscle relaxation are
+  among the best-established functions of a mineral in human physiology.
+coaching_translation: Magnesium-rich foods (leafy greens, nuts, seeds, legumes) and
+  appropriate forms of supplementation support energy, muscle function, and stress
+  resilience.
+caveats:
+- Source is a practitioner cheatsheet without primary citations.
+- Source is practitioner cheatsheet.
+- Specific dosing and form selection should involve clinician for therapeutic use.
+linked_to_topics:
+- nutrition-deficiency
+- insulin-resistance
+linked_to_supplements:
+- magnesium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 10
+  quote: Magnesium is described as a cofactor for more than 300 enzymes and as central
+    to ATP production, energy metabolism, and smooth muscle relaxation.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 10
+  quote: Magnesium is described as a cofactor for more than 300 enzymes and as central
+    to ATP production, energy metabolism, and smooth muscle relaxation.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

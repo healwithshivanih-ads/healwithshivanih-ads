@@ -1,0 +1,40 @@
+slug: nutritional-deficiency-impairs-detox-pathways
+statement: Detoxification pathways are highly nutrient-dependent; nutritional deficiency
+  in the context of toxic exposure impairs the body's ability to maintain cellular
+  homeostasis and increases disease risk.
+evidence_tier: plausible_emerging
+rationale: Phase 1 CYP450 enzymes and Phase 2 conjugation enzymes require multiple
+  cofactors (B vitamins, magnesium, selenium, zinc, etc.) and substrates (amino acids,
+  glutathione precursors). Nutritional deficiency impairing these enzymes is biochemically
+  sound. Population-level evidence for specific nutrient thresholds in detox capacity
+  is limited.
+coaching_translation: Your liver's detox system runs on nutrients as its fuel and
+  raw materials. Poor nutrition means the detox machinery slows down — especially
+  when you're exposed to more toxins than usual. This is why high-quality nutrition
+  becomes even more critical in a toxic environment.
+caveats:
+- Expert lecture source (moderate quality). Mechanistic logic is strong; specific
+  clinical data on nutrient thresholds and detox outcomes in humans are limited.
+- RDA values may be insufficient for individuals with high toxic exposure — this is
+  FM consensus, not formally established RCT evidence.
+linked_to_topics:
+- liver-detoxification-phases
+- total-toxic-load
+linked_to_supplements:
+- glutathione
+- glycine
+- glutamine
+- sulfur-containing-amino-acids
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-liver-detox-part1
+  location: Nutrient Dependency of Detox Pathways
+  quote: all the pathways they are actually highly nutrient dependent so the basic
+    fundamental of disease when somebody is exposed to toxins when they are toxic
+    load and they have nutritional deficiency where your cell cannot maintain the
+    homeostasis and that's why that's how the cellular dysfunction started.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

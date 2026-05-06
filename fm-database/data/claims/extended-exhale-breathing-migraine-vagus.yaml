@@ -1,0 +1,28 @@
+slug: extended-exhale-breathing-migraine-vagus
+statement: Extended exhale breathing (inhale 4 seconds, exhale 6–8 seconds) stimulates
+  the vagus nerve, reduces sympathetic firing, normalizes cranial vasodilation, and
+  is effective for migraine and anxiety.
+evidence_tier: plausible_emerging
+rationale: 'Physiological mechanism is well-supported: longer exhalation activates
+  cardiac vagal tone. Application to migraine relief via this pathway has plausible
+  biological rationale but limited RCT evidence specifically for migraine.'
+coaching_translation: When a headache starts, try 4-second inhale, 6–8 second exhale
+  for 3 minutes. This activates your parasympathetic nervous system and can help relax
+  tense blood vessels causing your headache.
+caveats:
+- Source is a coaching toolkit, not a peer-reviewed clinical trial
+- Verify with clinician if migraines are frequent or severe
+linked_to_topics:
+- gut-brain-axis
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: MIGRAINE / HEADACHE — 9. Extended Exhale Breathing
+  quote: Longer exhale stimulates the vagus nerve. Reduces sympathetic firing → cranial
+    vasodilation normalizes.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

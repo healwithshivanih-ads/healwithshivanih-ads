@@ -1,12 +1,13 @@
 slug: sedentary-lifestyle-increases-cvd-risk
 statement: A sedentary lifestyle increases cardiovascular disease risk.
 evidence_tier: strong
-rationale: Well-established association between physical inactivity and CVD risk across
-  multiple epidemiological studies; listed as a modifiable risk factor.
-coaching_translation: Help clients build a movement habit — even 30 minutes of walking
-  per day at moderate intensity supports heart health.
+rationale: Robust epidemiological consensus links physical inactivity to increased
+  CVD incidence, obesity, insulin resistance, and hypertension.
+coaching_translation: Regular movement — even walking 30 minutes daily — is a cornerstone
+  of heart health.
 linked_to_topics:
 - cardiovascular-dysfunction
+- hypertension
 linked_to_mechanisms:
 - insulin-resistance
 - systemic-inflammation
@@ -17,7 +18,10 @@ sources:
 - id: vitaone-cv-toolkit
   location: CVD Risk Analysis — Modifiable Risk Factors
   quote: Sedentary Lifestyle increase risk
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: CVD Risk Analysis
+  quote: Sedentary Lifestyle increase risk
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

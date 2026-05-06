@@ -1,0 +1,36 @@
+slug: ldl-oxidation
+display_name: LDL Oxidation
+aliases:
+- oxidized LDL
+- ox-LDL
+- lipid peroxidation
+category: metabolic
+summary: When LDL particles enter the subendothelial space and encounter an imbalance
+  between antioxidants and oxidants, they become oxidized. Oxidized LDL is recognized
+  as foreign by the immune system, triggering macrophage engulfment, foam cell formation,
+  and the inflammatory cascade that drives plaque development.
+upstream_drivers:
+- endothelial-dysfunction
+- antioxidant-deficiency
+- oxidative-stress
+downstream_effects:
+- macrophage-infiltration
+- foam-cell-formation
+- inflammatory-cascade
+related_mechanisms:
+- endothelial-dysfunction
+- inflammatory-cascade
+linked_to_topics:
+- atherosclerosis-pathogenesis
+- ldl-particle-size-and-number
+evidence_tier: strong
+sources:
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Atherosclerosis mechanism section
+  quote: When you have an imbalance in your antioxidant and oxygen then LDL particles
+    become oxidized and when they become oxidized now it becomes a foreign particle
+    for the immune system.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

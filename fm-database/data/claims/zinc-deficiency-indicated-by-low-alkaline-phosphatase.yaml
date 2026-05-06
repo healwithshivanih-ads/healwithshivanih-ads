@@ -1,0 +1,31 @@
+slug: zinc-deficiency-indicated-by-low-alkaline-phosphatase
+statement: Low alkaline phosphatase on a blood panel is a functional indicator of
+  zinc deficiency.
+evidence_tier: plausible_emerging
+rationale: Alkaline phosphatase is a zinc-dependent enzyme; low serum ALP is recognised
+  as an indirect marker of zinc deficiency in functional and integrative medicine
+  practice. Standard lab ranges may not flag suboptimal zinc status.
+coaching_translation: If alkaline phosphatase shows up low on a blood test, it can
+  be a clue that zinc levels are suboptimal — zinc is needed to make this enzyme.
+caveats:
+- ALP can be low for other reasons including hypothyroidism and malnutrition. This
+  is an indirect indicator, not a definitive zinc test. Confirm with serum or RBC
+  zinc.
+- Source is FM lecture.
+linked_to_topics:
+- hypochlorhydria
+- gut-skin-hormone-axis
+linked_to_supplements:
+- zinc-carnosine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Blood Report Analysis
+  quote: When alkaline phosphatase is on a lower side, it again indicates that there
+    are some kind of nutrient deficiencies, especially zinc. This is an indicator
+    of zinc deficiency, low alkaline phosphatase levels.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

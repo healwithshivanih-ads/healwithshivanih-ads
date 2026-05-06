@@ -1,0 +1,52 @@
+slug: dim-diindolylmethane
+display_name: DIM (Diindolylmethane)
+category: other
+forms_available:
+- capsule
+- tablet
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- estrogen-metabolism
+- estrogen-dominance
+- endometriosis
+- gut-skin-hormone-axis
+linked_to_claims:
+- dim-i3c-support-estrogen-metabolism
+- cruciferous-vegetables-support-estrogen-metabolism-and-cancer-risk
+- dim-and-chasteberry-naturally-support-progesterone-and-lower-estrogen
+- dim-supports-phase-1-estrogen-metabolism
+notes_for_coach: DIM is a metabolite of indole-3-carbinol from cruciferous vegetables
+  that supports phase 1 estrogen metabolism toward less proliferative 2-OH estrogen
+  metabolites. Should be added only after gut stabilisation and ideally after hormone
+  testing confirms estrogen dominance.
+notes_for_client: DIM is a natural compound from cruciferous vegetables that helps
+  your body process and clear excess estrogen. Best taken with food.
+evidence_tier: plausible_emerging
+typical_dose_range:
+  capsule:
+    min: 100
+    max: 300
+    unit: mg
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Estrogen Metabolism — Promotes Healthy Estrogen Metabolism
+  quote: Two commonly recommended supplements, diindolylmethane (DIM), and Indole-3-carbinol
+    (I3C), are extracted from cruciferous vegetables.
+- id: coconote-fm-estrogen-dominance
+  location: Q&A
+  quote: What is your take on Chasteberry and DIM? That's also a natural form of increasing
+    the progesterone inside the body and lowering the estrogen. You can definitely
+    go for the same if it's working for the patients.
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Estrogen Detoxification Discussion
+  quote: Cruciferous vegetables when they are eaten, they release a compound called
+    Diindolyl Methane. That is the supplement DIM, which is usually given because
+    cruciferous vegetables, of course, with food changes tend to happen slow.
+version: 3
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

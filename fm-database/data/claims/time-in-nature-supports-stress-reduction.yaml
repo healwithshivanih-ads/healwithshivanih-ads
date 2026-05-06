@@ -1,0 +1,24 @@
+slug: time-in-nature-supports-stress-reduction
+statement: Spending time in nature is a stress-reducing self-care practice that supports
+  physical and psychological wellbeing.
+evidence_tier: plausible_emerging
+rationale: Growing body of evidence (e.g., shinrin-yoku/forest bathing research, attention
+  restoration theory) supports nature exposure for reducing cortisol, blood pressure,
+  and psychological stress. Consistent with FM lifestyle medicine approach.
+coaching_translation: Even short time outdoors in green spaces can calm your stress
+  response and lift your mood.
+caveats:
+- Document lists this as a self-care checklist item without citing specific studies.
+linked_to_topics:
+- self-care
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Self-Care Questionnaire – Physical Wellbeing
+  quote: Spend time in nature?
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

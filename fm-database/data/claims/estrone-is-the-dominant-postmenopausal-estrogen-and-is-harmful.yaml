@@ -1,0 +1,32 @@
+slug: estrone-is-the-dominant-postmenopausal-estrogen-and-is-harmful
+statement: Estrone is the only estrogen produced after menopause and is considered
+  a harmful form of estrogen; it is also produced by adipose tissue and is elevated
+  in obesity.
+evidence_tier: plausible_emerging
+rationale: It is established that estradiol declines sharply at menopause and estrone
+  (from peripheral aromatization) becomes dominant. The label 'harmful' reflects estrone's
+  role as a precursor to carcinogenic metabolites (4-OH and 16α-OH estrone) rather
+  than an intrinsic toxicity.
+coaching_translation: After menopause, the main type of estrogen your body makes shifts
+  to one called estrone — which can come from belly fat. This is one reason managing
+  weight and reducing inflammation remains important after menopause.
+caveats:
+- '''Harmful'' characterization refers to metabolite profile risk, not absolute toxicity.
+  Context-dependent.'
+- Source is FM lecture.
+linked_to_topics:
+- estrogen-dominance
+- estrogen-metabolism
+- perimenopause
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-estrogen-dominance
+  location: Three Main Forms of Estrogen
+  quote: Estrone is the only estrogen that the body makes after menopause. Estrone
+    is not a good kind of estrogen. Estrone is also produced from the belly fat.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

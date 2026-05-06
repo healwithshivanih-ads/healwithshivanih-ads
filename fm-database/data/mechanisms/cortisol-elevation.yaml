@@ -1,0 +1,27 @@
+slug: cortisol-elevation
+display_name: Stress-Induced Cortisol Elevation
+aliases:
+- HPA-axis activation
+- hypercortisolism
+category: endocrine
+summary: Chronic stress raises cortisol levels, which can dysregulate pancreatic secretory
+  function and contribute to downstream enzyme imbalances and digestive dysfunction.
+upstream_drivers:
+- chronic-stress
+downstream_effects:
+- exocrine-pancreatic-enzyme-deficiency
+related_mechanisms:
+- exocrine-pancreatic-enzyme-deficiency
+- oxidative-stress-pancreatic-damage
+linked_to_topics:
+- pancreatic-insufficiency
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-pancreatic-insufficiency
+  location: Causes of Enzyme Deficiency
+  quote: Stress increases the cortisol hormone, definitely, that is why it increases
+    the production of pancreatic enzymes.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

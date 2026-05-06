@@ -1,0 +1,37 @@
+slug: autoimmune-conditions-igg-food-triggers
+display_name: Autoimmune Conditions & IgG Food Triggers
+aliases:
+- autoimmune food sensitivity
+- IgG autoimmune food reaction
+summary: In autoimmune conditions, IgG reactions (not IgE) are the predominant immune
+  response to food. Common triggers include casein (cow's milk), wheat, dairy, egg
+  white, and rice. Elimination diets targeting these antigens are a core FM intervention
+  in autoimmune patients.
+common_symptoms:
+- fatigue
+- joint-pain
+- brain-fog
+- inflammation
+related_topics:
+- food-sensitivity-igg-iga-mediated
+- intestinal-permeability-leaky-gut
+key_mechanisms:
+- igg-antigen-immune-complex-complement-activation
+- intestinal-permeability
+coaching_scope_notes: Coaches can support elimination of common autoimmune food triggers
+  under clinician guidance. IgG testing for autoimmune conditions should be ordered
+  and interpreted by a clinician.
+clinician_scope_notes: IgG + complement testing panels are available for autoimmune
+  food trigger identification. Celiac disease (type 4 hypersensitivity / cell-mediated)
+  requires separate diagnostic workup.
+evidence_tier: plausible_emerging
+red_flags: []
+sources:
+- id: coconote-fm-food-allergies-sensitivities
+  location: IgG Food Reaction and Autoimmune Conditions Section
+  quote: Most common food reacting in autoimmune condition is casein found in milk,
+    cow milk itself, wheat, dairy, egg white and rice.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

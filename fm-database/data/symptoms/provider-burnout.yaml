@@ -1,0 +1,30 @@
+slug: provider-burnout
+display_name: Provider Burnout
+aliases:
+- clinician burnout
+- physician burnout
+- practitioner exhaustion
+category: constitutional
+severity: concerning
+description: A state of emotional, physical, and professional exhaustion experienced
+  by functional medicine clinicians who bear excessive touch-point burden with patients
+  — including habit change conversations and follow-up tasks that fall outside their
+  optimal clinical scope.
+when_to_refer: Provider burnout is a systemic and occupational health issue — refer
+  to employee assistance programs, physician health programs, or coaching/supervision
+  for the provider.
+linked_to_topics:
+- coach-clinician-collaboration
+- functional-medicine-coaching
+linked_to_mechanisms:
+- interdisciplinary-care-integration
+sources:
+- id: ask-expert-future-fm
+  location: Speaker Background & Origin Story
+  quote: Seeing providers get really burned out from all these touch points with patients
+    and just being frustrated that they weren't seeing the results when they know
+    they have a care plan down.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

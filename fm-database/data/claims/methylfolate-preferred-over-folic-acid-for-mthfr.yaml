@@ -1,0 +1,31 @@
+slug: methylfolate-preferred-over-folic-acid-for-mthfr
+statement: Methylfolate (5-MTHF) is the preferred supplemental form of folate for
+  individuals with MTHFR gene variants, as it bypasses the conversion step requiring
+  the MTHFR enzyme.
+evidence_tier: plausible_emerging
+rationale: The document explains that MTHFR converts dietary folate to its active
+  5-MTHF form, and that variants reduce this enzyme's activity. Supplementing with
+  5-MTHF bypasses this bottleneck.
+coaching_translation: If a client has an MTHFR variant or chronically elevated homocysteine
+  despite folate intake, suggest switching from folic acid to methylfolate form.
+caveats:
+- Source is expert lecture (moderate quality); not primary RCT evidence.
+- MTHFR testing and specific dosing should be guided by a clinician.
+- Methylfolate supplementation in high doses may trigger side effects in some sensitive
+  individuals (overmethylation).
+linked_to_topics:
+- mthfr-gene-variant
+- folate-vitamin-b9
+linked_to_supplements:
+- methylfolate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: Supplementation for MTHFR section
+  quote: The first most important supplement is as you have seen the folate supplement
+    but it should be in the form of methylfolate which is the active form.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

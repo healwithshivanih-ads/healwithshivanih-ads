@@ -1,0 +1,26 @@
+slug: methane-dominant-sibo-causes-constipation
+statement: Methane-dominant SIBO, where archaea feed on carbohydrates to produce methane
+  gas (CH4), is primarily associated with constipation and facilitates energy harvest
+  by slowing intestinal transit.
+evidence_tier: plausible_emerging
+rationale: Methane's effect on slowing gut motility is mechanistically supported and
+  cited in FM literature. Linked to obesity and constipation-predominant IBS.
+coaching_translation: If constipation is the main gut symptom, methane-dominant SIBO
+  should be considered — dietary approaches to reduce fermentable substrate are key.
+caveats:
+- Source is expert consensus lecture; recommend clinician confirmation and breath
+  testing before assuming SIBO type.
+linked_to_topics:
+- sibo
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-sibo-sifo
+  location: Types of SIBO – Methane Dominant
+  quote: Methane-dominant SIBO is, constipation is more common in them... methane
+    will be responsible for constipation, obesity.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

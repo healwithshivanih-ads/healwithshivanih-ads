@@ -1,0 +1,29 @@
+slug: millet-sorghum-lectin-free-grains
+statement: Millet and sorghum are lectin-free grains and are also gluten-free, making
+  them well-tolerated alternatives to wheat for people with gluten sensitivity or
+  lectin concerns.
+evidence_tier: fm_specific_thin
+rationale: Millet and sorghum are naturally gluten-free, which is well-established.
+  The claim that they are entirely lectin-free is common in FM literature but is a
+  simplification — they contain some anti-nutritional factors, though generally fewer
+  than wheat or legumes. The claim is directionally reasonable but overstated.
+coaching_translation: Millet and sorghum are excellent grain alternatives for clients
+  reducing gluten and lectins — especially when fermented.
+caveats:
+- '''Completely lectin-free'' is an overstatement; these grains have lower lectin
+  content but are not entirely free. Source is a lecture transcript.'
+- Verify with clinician for clients with multiple grain sensitivities.
+linked_to_topics:
+- gluten-intolerance
+- lectin-sensitivity
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-ph-balance
+  location: Grains Section
+  quote: Millet and sorghum are the two lectin-free grains.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

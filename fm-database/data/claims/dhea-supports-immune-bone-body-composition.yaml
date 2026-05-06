@@ -1,0 +1,32 @@
+slug: dhea-supports-immune-bone-body-composition
+statement: DHEA improves resistance to viruses, bacteria, parasites, allergies, and
+  cancer; prevents osteoporosis; lowers total and LDL cholesterol; and increases muscle
+  mass while decreasing body fat.
+evidence_tier: plausible_emerging
+rationale: Several DHEA functions are supported in the literature, particularly immune
+  modulation and bone density. Cholesterol and body composition effects have been
+  studied with mixed results. The breadth of claimed effects suggests moderate-strength
+  evidence overall. Source is expert consensus toolkit.
+coaching_translation: DHEA is a protective hormone with wide-ranging benefits — from
+  immune support and bone health to healthy cholesterol and muscle tone. Keeping stress
+  under control helps preserve your DHEA levels.
+caveats:
+- DHEA supplementation is out of coaching scope — refer to clinician
+- Evidence strength varies by individual DHEA function listed
+- Source is a coaching toolkit, not primary literature
+linked_to_topics:
+- adrenal-hormone-function
+- hpa-axis-dysfunction
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Hypercortisolism — Functions of DHEA
+  quote: Improves resistance to viruses, bacteria, parasites, allergies & cancer,
+    Prevents osteoporosis, Lowers total and LDL cholesterol, Increases muscle mass
+    and decreases body fat.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

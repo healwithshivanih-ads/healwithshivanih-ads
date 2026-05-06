@@ -1,0 +1,44 @@
+slug: apple-cider-vinegar
+display_name: Apple Cider Vinegar (Diluted)
+category: other
+forms_available:
+- liquid
+typical_dose_range:
+  liquid:
+    min: 5
+    max: 15
+    unit: ml
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- hypochlorhydria
+- dysbiosis
+linked_to_claims:
+- acv-supports-hcl-levels-as-betaine-hcl-alternative
+- acv-supports-gastric-acid-when-taken-with-food
+notes_for_coach: Used as an accessible alternative to Betaine HCL for mild hypochlorhydria
+  support. Must be diluted in water and taken with food — NOT on an empty stomach.
+  Evidence is anecdotal/observational; it is not a substitute for Betaine HCL in clinical
+  protocols.
+notes_for_client: If using apple cider vinegar to support digestion, always dilute
+  it in a glass of water and take it with your meal — not first thing in the morning
+  on an empty stomach.
+evidence_tier: fm_specific_thin
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-gut-skin-hormone-axis
+  location: 5R Protocol — Replace
+  quote: We advised her to take apple cider vinegar before her main meals along with
+    zinc that was of course recommended to her. ACV has helped in improving the HCL.
+- id: coconote-fm-hypochlorhydria
+  location: Treatment / Supports for Gastric Acid
+  quote: We try giving them apple cider vinegar, which has to be diluted in water.
+    Apple cider vinegar has to be taken along with the food or after your food for
+    better production of acid and eventually digestion of the food.
+version: 2
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

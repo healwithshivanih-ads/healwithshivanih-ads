@@ -1,0 +1,31 @@
+slug: gluten-digestive-burden
+display_name: Hybridised Wheat Gluten Digestive Burden
+aliases:
+- complex gluten structure
+- modern wheat gluten complexity
+category: gut
+summary: Modern hybridised wheat has a significantly more complex gluten protein structure
+  than ancestral varieties (Einkorn, Emmer, Spelt). This complexity makes it difficult
+  for most people to digest, contributing to widespread gluten sensitivity. Sourdough
+  fermentation partially breaks down this structure, reducing digestive burden.
+upstream_drivers:
+- wheat-hybridisation
+downstream_effects:
+- gluten-intolerance
+- gut-inflammation
+- bloating
+- brain-fog
+related_mechanisms:
+- lectin-gut-inflammation
+linked_to_topics:
+- gluten-intolerance
+evidence_tier: plausible_emerging
+sources:
+- id: barbara-oneil-ph-balance
+  location: Gluten and Hybridised Wheat Section
+  quote: It created an incredibly complex protein or gluten structure. But it's almost
+    only the cast iron gut that can break that down.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

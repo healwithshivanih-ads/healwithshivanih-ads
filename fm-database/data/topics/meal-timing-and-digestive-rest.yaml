@@ -1,0 +1,37 @@
+slug: meal-timing-and-digestive-rest
+display_name: Meal Timing & Digestive Rest
+aliases:
+- intermeal fasting
+- digestive spacing
+- meal frequency
+summary: Based on William Beaumont's 19th-century gastric observations, optimal digestion
+  takes 3.5–4 hours, followed by ~1 hour of rest, suggesting 5–6 hours between meals.
+  Snacking between meals interrupts the pyloric sphincter opening cycle and prolongs
+  stomach transit. Overeating, large fluid intake with meals, stress, and alcohol
+  further delay gastric emptying.
+common_symptoms:
+- bloating
+- incomplete-digestion
+- constipation
+related_topics:
+- gastrointestinal-tract-overview
+- acid-reflux-and-cardiac-sphincter-weakness
+key_mechanisms:
+- pyloric-sphincter-regulation
+- hcl-and-pepsin-protein-digestion
+coaching_scope_notes: Coaches can support clients with meal spacing strategies (5–6
+  hours between meals), elimination of snacking, and pre/post-meal hydration windows
+  (stop fluids 30 min before, resume 90 min after meals).
+evidence_tier: plausible_emerging
+red_flags: []
+clinician_scope_notes: ''
+sources:
+- id: barbara-oneil-gi-tract
+  location: Meal Timing Section
+  quote: There's been much research done over the last hundred years to show that
+    digestion takes three and a half to four hours. And then the stomach loves a rest
+    of about one hour. That equals five to six hours between meals.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,32 @@
+slug: vitamin-b6-folate-support-serotonin-gaba
+statement: Vitamin B6 and folate support serotonin and GABA synthesis and are clinically
+  useful for PMS, mood swings, and chronic anxiety.
+evidence_tier: plausible_emerging
+rationale: B6 is an essential cofactor for serotonin and GABA biosynthesis; folate
+  is required for methylation and neurotransmitter metabolism. Evidence for B6 in
+  PMS is strong. Broader mood/anxiety applications are plausible mechanistically but
+  require population-level RCT confirmation.
+coaching_translation: Vitamins B6 and folate are essential building blocks for the
+  brain chemicals that regulate mood (serotonin) and calm (GABA). Low levels can directly
+  contribute to anxiety, PMS, and mood instability.
+caveats:
+- High-dose B6 supplementation can cause peripheral neuropathy—dosing must be clinician-guided.
+- Folate form matters (methylfolate vs. folic acid) especially in MTHFR variants.
+- Source is educational synthesis.
+linked_to_topics:
+- emotional-healing-chronic-disease
+- hpa-axis-dysregulation
+linked_to_supplements:
+- vitamin-b6
+- folate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Key Nutrients & Botanicals for Emotional Healing Support
+  quote: 'Vitamin B6 & Folate: Support serotonin, GABA synthesis. PMS, mood swings,
+    chronic anxiety.'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

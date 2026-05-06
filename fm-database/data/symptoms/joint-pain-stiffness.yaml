@@ -1,0 +1,25 @@
+slug: joint-pain-stiffness
+display_name: Joint Pain & Stiffness
+aliases:
+- achy joints
+- joint inflammation
+- stiff joints
+- arthralgia
+category: musculoskeletal
+severity: common
+description: Delayed joint pain and stiffness occurring 1–2 days after exposure to
+  reactive foods, associated with IgG food sensitivity and systemic inflammation.
+linked_to_topics:
+- food-sensitivity-igg-iga-mediated
+- autoimmune-conditions-igg-food-triggers
+linked_to_mechanisms:
+- igg-antigen-immune-complex-complement-activation
+when_to_refer: ''
+sources:
+- id: coconote-fm-food-allergies-sensitivities
+  location: IgG Symptoms Section
+  quote: we have seen stiffness, itching after one or two days we see
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

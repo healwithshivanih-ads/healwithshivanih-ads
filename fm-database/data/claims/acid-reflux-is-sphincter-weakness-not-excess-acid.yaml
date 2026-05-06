@@ -1,0 +1,32 @@
+slug: acid-reflux-is-sphincter-weakness-not-excess-acid
+statement: Acid reflux (heartburn) is caused by a weakened cardiac sphincter, not
+  by excess stomach acid. The underlying driver is habitual large evening meals combined
+  with recumbency, which mechanically weakens the valve over time.
+evidence_tier: plausible_emerging
+rationale: Lower oesophageal sphincter (LOS) dysfunction is well-recognised as a primary
+  mechanism of GERD. The claim that excess acid is rarely the true cause is a credible
+  and increasingly supported perspective in functional medicine, though mainstream
+  gastroenterology still uses acid suppression as first-line therapy.
+coaching_translation: If you experience heartburn, consider shifting your largest
+  meal to midday, keeping your evening meal light, and avoiding lying down for at
+  least 2–3 hours after eating.
+out_of_scope_notes: PPI medication review, oesophageal ulceration assessment, and
+  Barrett's oesophagus screening are clinician scope.
+caveats:
+- This claim challenges mainstream first-line treatment (PPIs). Clients on medication
+  should not discontinue without clinician guidance.
+- Source is a practitioner talk (expert_consensus, moderate quality).
+linked_to_topics:
+- acid-reflux-and-cardiac-sphincter-weakness
+- meal-timing-and-digestive-rest
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-gi-tract
+  location: Stomach & Acid Section
+  quote: I have never met anyone with too much acid in their stomach, but I have met
+    many with not enough.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

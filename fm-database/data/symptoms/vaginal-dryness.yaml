@@ -1,0 +1,38 @@
+slug: vaginal-dryness
+display_name: Vaginal Dryness
+aliases:
+- genital atrophy
+- urogenital atrophy
+- vaginal atrophy
+- genital dryness
+- vaginal moisture loss
+- vaginal atrophy dryness
+- reduced vaginal lubrication
+category: hormonal
+severity: common
+description: Loss of vaginal moisture, sensation, and lubrication, commonly occurring
+  with aging and menopause. Associated with loss of Lactobacillus crispatus and reuteri.
+  Can cause discomfort, pain, irritation, and reduced sexual sensation.
+when_to_refer: If severe atrophy, prolapse, or hormone therapy is being considered.
+linked_to_topics:
+- menopause
+- vaginal-microbiome
+- perimenopause-microbiome
+linked_to_mechanisms:
+- estrogen-progesterone-decline
+- lactobacillus-crispatus-dominance
+- oxytocin-release-via-reuteri
+sources:
+- id: coconote-fm-sex-hormones
+  location: Stages of Menopause — Stage 2A
+  quote: you get atrophic changes, genital blindness, urinary tract infections, vasomotor
+    dysfunctions, weight gain and osteopenia starts.
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: L. reuteri and vaginal health discussion
+  quote: One of the things it does is restores vaginal moisture. As a woman ages,
+    it becomes a universal problem. Loss of moisture, sensation, irritation, pain,
+    discharge.
+version: 2
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

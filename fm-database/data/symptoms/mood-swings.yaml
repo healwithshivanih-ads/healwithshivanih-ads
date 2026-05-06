@@ -1,25 +1,61 @@
 slug: mood-swings
 display_name: Mood Swings
 aliases:
-- irritability
 - emotional instability
 - blood sugar mood changes
+- emotional-instability
+- mood-instability
+- mood fluctuations
+- emotional reactivity
+- emotional lability
+- mood instability
+- mood changes
 category: mood
 severity: common
-description: Rapid shifts in mood, irritability, or emotional reactivity associated
-  with blood glucose fluctuations affecting neurotransmitter balance.
+description: Rapid or unpredictable mood changes associated with blood sugar instability,
+  nutrient depletion (B12, magnesium), HPA axis dysregulation, and hormonal imbalances.
 linked_to_topics:
 - insulin-resistance
 - blood-sugar-dysfunction
+- emotional-healing-chronic-disease
+- hpa-axis-dysregulation
+- gut-brain-axis
+- emotional-healing-in-chronic-disease
+- estrogen-dominance
+- luteal-phase-defect
+- perimenopause
+- medication-induced-nutrient-depletion
+- adrenal-cortisol-resilience
+- modern-diet-systemic-dysfunction
 linked_to_mechanisms:
 - insulin-resistance
-when_to_refer: ''
+- hpa-axis-dysregulation
+- leaky-gut
+- gut-brain-axis-disruption
+- limbic-system-overactivation
+- progesterone-deficiency
+when_to_refer: If severe, lasting, or accompanied by suicidal ideation; refer to psychiatrist
+  or clinician.
 sources:
 - id: vitaone-blood-sugar-ebook
   location: Section 4.2.2 — Progressing Insulin Resistance
   quote: Energy 'crashes,' intensified cravings, increased thirst, mood swings, expanding
     waist circumference.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: Bloating, food sensitivities, mood swings, brain fog.
+- id: vitaone-health-coaching-cheatsheet
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: Bloating, food sensitivities, mood swings, brain fog.
+- id: coconote-fm-estrogen-dominance
+  location: Signs and Symptoms of Estrogen Dominance
+  quote: 'Signs and symptoms of estrogen dominance: mood swings, bare strenuous, acne,
+    anxiety, fatigue, disturbed sleep, hot flashes, low libido.'
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXjjIqJjMSR/
+  quote: Many patients come to you with fatigue, muscle cramps, mood swings, or neuropathy…
+    and yet their labs look 'normal.'
+version: 5
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

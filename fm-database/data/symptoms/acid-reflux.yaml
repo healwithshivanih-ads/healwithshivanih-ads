@@ -1,30 +1,43 @@
 slug: acid-reflux
-display_name: Acid Reflux / GERD
+display_name: Acid Reflux / Heartburn
 aliases:
 - reflux
 - GERD
 - acid indigestion
 - burning in chest after eating
+- acid regurgitation
+- burning in throat
+- acidity
 category: gi
 severity: common
-description: Retrograde flow of gastric acid into the oesophagus, aggravated by FODMAP-related
-  fermentation-driven intra-abdominal pressure increases and fructose malabsorption
-  in SIBO.
-when_to_refer: Refer if frequent (>2×/week), not responding to dietary change, or
-  associated with dysphagia or weight loss.
+description: Paradoxically often caused by LOW stomach acid rather than excess; undigested
+  food ferments, creating gas pressure that pushes stomach contents upward. Chronic
+  antacid use worsens the cycle.
+when_to_refer: Refer if symptoms severe, persistent, or accompanied by dysphagia,
+  weight loss, or anaemia.
 linked_to_topics:
 - low-fodmap-diet
 - ibs
 - sibo
+- low-stomach-acid
+- chronic-pain-and-fatigue
 linked_to_mechanisms:
 - gut-fermentation-dysbiosis
 - fructose-malabsorption
+- nutrient-malabsorption
+- low-stomach-acid
 sources:
 - id: vitaone-elimination-diet-cheatsheet
   location: LOW FODMAP FRUITS — Practitioner Insight
   quote: High-fructose fruits worsen fructose malabsorption with SIBO, causing bloating
     & acid reflux.
-version: 1
+- id: coconote-fm-chronic-pain-fatigue
+  location: Case Study
+  quote: she has a very severe acid reflux. So this is after creating the time line...
+    she's taking like six or seven or eight and acid every single day. So if she's
+    constipated, not assuming anything, she's taking acid, that's a clear sign of
+    low stomach acid.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

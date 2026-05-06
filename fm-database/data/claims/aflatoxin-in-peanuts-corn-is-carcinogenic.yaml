@@ -1,0 +1,26 @@
+slug: aflatoxin-in-peanuts-corn-is-carcinogenic
+statement: Aflatoxin, a mycotoxin produced by mold and most commonly found in peanuts
+  and corn, has been shown to cause cancer.
+evidence_tier: strong
+rationale: Aflatoxin B1 is classified as a Group 1 carcinogen by IARC, with robust
+  evidence for hepatocellular carcinoma risk. WHO fact sheets and extensive peer-reviewed
+  literature support this claim.
+coaching_translation: Peanuts and corn are the most common foods contaminated with
+  aflatoxin, a mold toxin that is a known carcinogen. Choosing fresh, properly stored
+  versions of these foods can help minimize your exposure.
+linked_to_topics:
+- mold-mycotoxin-exposure
+- environmental-toxin-exposure
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Foods Rich in Mold Protein Allergens
+  quote: One such toxin, aflatoxin, has been shown to cause cancer and is most commonly
+    found in peanuts and corn.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

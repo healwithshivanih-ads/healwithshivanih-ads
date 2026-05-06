@@ -1,0 +1,37 @@
+slug: sibo-fermentation
+display_name: SIBO & Gut Fermentation Dysregulation
+aliases:
+- small intestinal bacterial overgrowth
+- fermentation dysbiosis
+category: gut
+summary: Bacterial overgrowth in the small intestine causes excessive fermentation
+  of fermentable carbohydrates (FODMAPs), producing gas, distension, and altered motility.
+  Fructan-containing foods (onion, garlic) and fructose are particularly implicated.
+  Motility support and treatment of root cause are essential for resolution.
+upstream_drivers:
+- impaired-motility
+- low-stomach-acid
+- antibiotic-use
+- hpa-axis-dysregulation
+downstream_effects:
+- bloating
+- gas
+- altered-bowel-habit
+- gut-barrier-dysfunction
+- nutrient-malabsorption
+related_mechanisms:
+- gut-barrier-iron-absorption
+- vagal-tone-motility
+linked_to_topics:
+- gut-health-fodmap-sibo
+- iron-deficiency-dysregulation
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXbyLyYjP__/
+  quote: Onion & garlic sensitivity usually indicates fructan intolerance + SIBO,
+    not an allergy
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

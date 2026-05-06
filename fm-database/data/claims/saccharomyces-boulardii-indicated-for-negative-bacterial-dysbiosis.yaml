@@ -1,0 +1,33 @@
+slug: saccharomyces-boulardii-indicated-for-negative-bacterial-dysbiosis
+statement: Saccharomyces boulardii, a fungal probiotic, is indicated in dysbiosis
+  patterns characterized by deficiency of beneficial bacteria and can be used for
+  21 days to 1 month, twice daily.
+evidence_tier: plausible_emerging
+rationale: Saccharomyces boulardii is a well-documented fungal probiotic with evidence
+  for restoration of gut flora disruptions. The lecturer recommends it in deficiency-type
+  dysbiosis patterns and in combination with Bifidobacterium when firmicutes are high.
+coaching_translation: Saccharomyces boulardii is a short-course yeast supplement that
+  can help restore gut balance when beneficial bacteria are low.
+caveats:
+- Source is expert lecture, moderate quality.
+- Dose and duration guidance (21 days to 1 month, twice daily) should be verified
+  with clinician before recommending.
+- Caution in immunocompromised individuals — refer to clinician.
+linked_to_topics:
+- gut-dysbiosis
+- candida-overgrowth
+linked_to_supplements:
+- saccharomyces-boulardii
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Probiotics Section
+  quote: you can consider Saccharomyces boulari when you consider deficiency of negative
+    bacteria, bacteria, and then if you have a humble ogre, consider Saccharomyces
+    boulari. And Saccharomyces boulari you can consider for 21 days to one month.
+    You can do this two times a day.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

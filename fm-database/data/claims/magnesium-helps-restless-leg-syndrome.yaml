@@ -1,0 +1,29 @@
+slug: magnesium-helps-restless-leg-syndrome
+statement: Magnesium supplementation can help relieve restless leg syndrome by reducing
+  excessive calcium-driven contractility in calf muscles.
+evidence_tier: plausible_emerging
+rationale: Small clinical studies and case series support magnesium supplementation
+  for RLS; the mechanistic explanation (calcium-mediated hypercontractility) is plausible,
+  though large RCTs are lacking.
+caveats:
+- Evidence base for magnesium and RLS is from small studies; rule out iron deficiency
+  and neurological causes before attributing solely to magnesium.
+coaching_translation: If you experience the urge to move your legs at night, low magnesium
+  could be a contributing factor worth addressing.
+linked_to_topics:
+- magnesium-deficiency
+- magnesium-musculoskeletal-health
+linked_to_supplements:
+- magnesium-glycinate
+- magnesium-citrate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-magnesium-deficiency
+  location: Musculoskeletal system
+  quote: A simple magnesium supplementation can help in terms of restless leg syndrome
+    as well.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,34 @@
+slug: selenium-nutrition
+display_name: 'Selenium: Food Sources & Soil Variability'
+aliases:
+- dietary selenium
+- trace element selenium
+summary: Selenium is an essential trace element found in plant foods, seafood, meats,
+  and enriched grains. Plant selenium content is variable based on soil concentration.
+  It supports antioxidant defense, thyroid function, and immune health.
+common_symptoms:
+- fatigue
+- impaired-immune-function
+red_flags: []
+related_topics:
+- mitochondrial-health-nutrients
+key_mechanisms:
+- antioxidant-defense
+- thyroid-function-support
+coaching_scope_notes: Coach can educate on selenium-rich foods (Brazil nuts are notably
+  high) and note that soil variability affects plant food content. Brazil nuts should
+  be consumed in moderation to avoid excess selenium.
+clinician_scope_notes: Selenium toxicity (selenosis) is a concern at high doses. Supplementation
+  decisions are clinician scope.
+evidence_tier: strong
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Food Sources: Selenium'
+  quote: Selenium is an essential trace element present in plant foods, seafood, meats,
+    and enriched grains and dairy in many parts of the world. Plant sources of selenium
+    may have variable selenium content, as their assimilation of this important nutrient
+    depends on concentrations of the soil in which they are grown.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,30 @@
+slug: gluten-dairy-free-diet-improves-psychiatric-symptoms
+statement: Removing gluten and dairy from the diet of psychiatric patients (schizophrenia,
+  bipolar) has been reported to produce up to 50% improvement in symptoms.
+evidence_tier: plausible_emerging
+rationale: Cited from Dr David Perlmutter's 'Grain Brain', who references psychiatrists
+  observing improvements. Some RCT-level evidence exists for gluten sensitivity in
+  schizophrenia. Effect sizes and mechanisms are still debated.
+coaching_translation: Some people with mood disorders notice significant improvement
+  after removing gluten and dairy. This is a lifestyle change a coach can support,
+  ideally alongside clinical care.
+caveats:
+- 50% improvement figure is anecdotal/clinical observation, not from a controlled
+  trial
+- Individual genetics affect dairy tolerance
+- Source is expert lecture citing a popular science book
+linked_to_topics:
+- gut-brain-connection
+- depression-lifestyle
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-healing-mind
+  location: Gut-Brain Connection Section
+  quote: he quotes psychiatrists that are taking their schizophrenia, bipolar patients
+    off gluten, off dairy, and they're finding a 50% improvement.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

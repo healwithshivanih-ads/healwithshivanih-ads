@@ -1,0 +1,29 @@
+slug: tibc-uibc-increase-in-ida
+statement: In iron deficiency anemia, TIBC and UIBC are elevated (reflecting increased
+  iron-carrying capacity) while transferrin saturation is decreased.
+evidence_tier: strong
+rationale: As iron becomes scarce, the body upregulates transferrin production, increasing
+  binding capacity (TIBC, UIBC) while the proportion of transferrin actually bound
+  to iron (transferrin saturation) falls. This is a well-validated pattern in clinical
+  iron panel interpretation.
+coaching_translation: When iron is low, the body makes more 'delivery trucks' to grab
+  what little iron is available. The TIBC going up while transferrin saturation goes
+  down is a classic IDA fingerprint on blood tests.
+out_of_scope_notes: Specific reference ranges and clinical interpretation of iron
+  panel results require a clinician.
+caveats:
+- Source is an expert lecture; consistent with established clinical guidelines.
+linked_to_topics:
+- iron-deficiency-anemia
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-iron-deficiency-anemia
+  location: Iron Panel Biomarkers / TIBC-UIBC section
+  quote: Whenever we are talking about iron deficiency, the binding capacity increases.
+    Both TIBC and UIBC increases in terms of iron deficiency and transferrin saturation
+    is on the lower side.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

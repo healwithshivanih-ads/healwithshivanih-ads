@@ -1,0 +1,28 @@
+slug: vitamin-d-fat-soluble-sequestered-in-adipose-at-high-bmi
+statement: Because vitamin D is fat-soluble, individuals with a higher BMI (and therefore
+  more adipose tissue) have greater sequestration of vitamin D in fat, reducing its
+  bioavailability and requiring higher supplemental doses.
+evidence_tier: strong
+rationale: The fat-soluble nature of vitamin D and its sequestration in adipose tissue
+  is well-documented; epidemiological studies consistently show an inverse relationship
+  between BMI and serum 25-OH vitamin D levels at equivalent intakes.
+coaching_translation: Vitamin D can get 'trapped' in body fat. This means people with
+  more body fat may need more vitamin D to achieve the same blood levels as someone
+  with less body fat.
+caveats: []
+linked_to_topics:
+- vitamin-d3
+linked_to_supplements:
+- vitamin-d3-supplement
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-vitamin-d3-k2
+  location: Factors Affecting Vitamin D Production
+  quote: Anybody who is more than 30 on the ODIs category, they have more fat percentage
+    on their body. Whenever fat is increased, also remember that vitamin D is a fat
+    soluble vitamin. So again, the absorption of vitamin D is going to get more.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

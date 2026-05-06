@@ -1,0 +1,27 @@
+slug: fresh-cheeses-neutral-ph
+statement: Fresh cheeses (such as Indian paneer/fresh cheese) sit at approximately
+  pH 7, making them effectively neutral rather than acid-forming.
+evidence_tier: plausible_emerging
+rationale: Fresh, unaged cheeses (e.g., paneer, ricotta, cottage cheese) generally
+  have pH values close to neutral compared with aged cheeses which are more acidic.
+  This is consistent with known food chemistry, though PRAL classification of dairy
+  varies.
+coaching_translation: If you enjoy Indian-style fresh cheese in your cooking, it sits
+  closer to neutral on the pH scale compared with most other dairy or aged cheeses.
+caveats:
+- Source is an expert lecture.
+- PRAL values for dairy depend on protein and mineral content, not just pH — fresh
+  cheeses still carry a moderate protein-derived acid load metabolically.
+linked_to_topics:
+- acid-alkaline-balance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-acid-alkaline-foods
+  location: Main lecture body
+  quote: So your fresh cheeses will sit at the pH of 7.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

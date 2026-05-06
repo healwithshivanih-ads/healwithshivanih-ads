@@ -1,0 +1,46 @@
+slug: turmeric-curcumin
+display_name: Turmeric / Curcumin
+category: herb
+forms_available:
+- capsule
+- powder
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 1000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- chronic-inflammation
+- cardiovascular-disease-prevention
+- metabolic-syndrome
+linked_to_claims:
+- turmeric-is-nf-kb-inhibitor
+- turmeric-downregulates-nf-kappab-upregulates-nrf2
+- turmeric-lowers-blood-sugar-and-hba1c
+notes_for_coach: Clinician uses 500mg twice daily. Downregulates NF-κB and upregulates
+  NRF2. Bioavailability enhanced with piperine (black pepper extract). Anti-inflammatory,
+  blood sugar lowering, and HbA1c lowering properties noted.
+notes_for_client: Turmeric (curcumin) is a powerful anti-inflammatory spice that can
+  help reduce inflammation throughout the body and may support healthy blood sugar
+  levels. Take with food and black pepper for best absorption.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-approach-inflammation
+  location: Anti-Inflammatory Herbs – Turmeric
+  quote: Turmeric is basically one of those steroids. It is a master and a cup of
+    tea blocker or inhibitor. The ideal dose is 1000 ml. You can use a capsule two
+    times a day.
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Nutraceuticals — Turmeric
+  quote: Turmeric is a beauty. It downregulates NF-kappa B. Turmeric actually lowers
+    blood sugar. Turmeric lowers hemoglobin A1Cs, and it lowers inflammation. So if
+    I'm going to give turmeric, it's going to be about 500 milligrams twice a day.
+version: 2
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

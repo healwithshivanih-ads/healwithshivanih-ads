@@ -1,0 +1,32 @@
+slug: dhea-is-precursor-for-testosterone-and-sex-hormones
+statement: DHEA-S (dehydroepiandrosterone sulfate) is a key precursor for testosterone
+  and estrogens; low DHEA-S indicates upstream precursor deficiency and should be
+  corrected before attempting to replace downstream hormones like testosterone or
+  estrogen.
+evidence_tier: strong
+rationale: DHEA's role as a precursor in the steroidogenesis pathway is well-established
+  biochemistry. The clinical principle of correcting upstream deficiencies before
+  downstream replacement is standard functional medicine practice.
+coaching_translation: Think of DHEA like a raw ingredient in a recipe — if it's low,
+  no amount of adding the final product will fix the root problem. Lab testing DHEA-S
+  is an important first step.
+out_of_scope_notes: DHEA supplementation dosing and indication require clinician oversight.
+caveats:
+- Source is expert consensus lecture; verify specific clinical protocols with primary
+  literature.
+linked_to_topics:
+- steroidogenesis
+- menopause
+linked_to_supplements:
+- dhea
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-sex-hormones
+  location: Steroidogenesis Pathway
+  quote: If the value of DHEA sulfate is not only low, then there is no point of replacing
+    their testosterone or no point of replacing their estrogen and progesterone as
+    well because first we need to correct this as a first line of treatment.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

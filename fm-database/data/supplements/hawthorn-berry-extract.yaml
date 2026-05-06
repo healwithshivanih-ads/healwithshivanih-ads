@@ -6,11 +6,12 @@ forms_available:
 - tablet
 - liquid
 evidence_tier: plausible_emerging
-notes_for_coach: Listed as nutraceutical support during beta blocker tapering. Hawthorn
-  has traditional and some clinical evidence for cardiovascular support (vasodilation,
-  mild blood pressure support). Specific dosing requires clinician guidance.
+notes_for_coach: Hawthorn (Crataegus) has traditional and emerging FM use for cardiovascular
+  support, including mild blood pressure reduction and cardioprotection. Listed as
+  a support supplement during beta blocker tapering. Specific dosing requires clinician
+  guidance.
 notes_for_client: Hawthorn berry is an herbal supplement traditionally used to support
-  heart health. Only use under clinician guidance during medication tapering.
+  heart function and healthy blood pressure. Use as directed by your healthcare provider.
 timing_options:
 - with_breakfast
 - with_dinner
@@ -26,7 +27,11 @@ sources:
 - id: vitaone-cv-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
   quote: Hawthorne berry extract
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients
+    — Supplement Schedule'
+  quote: Hawthorne berry extract
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

@@ -1,0 +1,36 @@
+slug: iron-deficiency
+display_name: Iron Deficiency / Refractory Iron Deficiency
+aliases:
+- low iron
+- iron-deficiency anemia
+- irony deficiency
+- iron deficiency anaemia
+- iron not absorbing
+category: metabolic
+severity: concerning
+description: Low serum iron or ferritin levels. When iron deficiency persists despite
+  adequate supplementation, impaired gastric acid production should be investigated
+  as a contributing cause, since HCl is required to ionise iron for absorption.
+when_to_refer: Refer to clinician if iron deficiency is severe, persistent, or unexplained
+  despite dietary correction and supplementation. Rule out bleeding, malabsorption,
+  and hypochlorhydria.
+linked_to_topics:
+- hypochlorhydria
+- gut-dysfunction
+linked_to_mechanisms:
+- hypochlorhydria-mechanism
+- mineral-malabsorption-hcl-dependent
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Testing for Low Stomach Acidity
+  quote: Having enough HCI is needed to absorb vitamin B12 and several minerals (such
+    as iron, calcium, magnesium, zinc, and copper).
+- id: coconote-fm-hypochlorhydria
+  location: Risk Factors / Consequences of Low Stomach Acid
+  quote: Patient with severe iron deficiency, even if you're giving them iron medication
+    for a very long time, still their iron doesn't get better, definitely you should
+    check for stomach acid.
+version: 2
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

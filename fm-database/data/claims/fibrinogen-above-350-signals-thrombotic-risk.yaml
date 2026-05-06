@@ -1,0 +1,32 @@
+slug: fibrinogen-above-350-signals-thrombotic-risk
+statement: Fibrinogen above 350 mg/dL indicates a pro-thrombotic state and elevated
+  cardiovascular risk, particularly for thromboembolism.
+evidence_tier: plausible_emerging
+rationale: Fibrinogen is a recognized acute-phase reactant and clotting factor. Elevated
+  fibrinogen has been associated with CVD risk in epidemiological studies. The functional
+  medicine cut-off of 350 mg/dL is tighter than some conventional lab normals. Fibrinogen
+  should be monitored longitudinally.
+coaching_translation: Fibrinogen is a protein in your blood that helps form clots.
+  When it stays elevated, it means your blood is in a 'ready to clot' state, which
+  raises your risk of heart attack or stroke—even without classic risk factors.
+caveats:
+- Fibrinogen rises with acute inflammation, so serial measurements are needed for
+  CVD risk assessment.
+- Specific cut-off (350 mg/dL) is a functional medicine guideline; verify with clinician.
+- Source is expert lecture (moderate quality).
+linked_to_topics:
+- coagulation-imbalance
+- cardiometabolic-disease
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-biomarkers-cvs
+  location: Fibrinogen as Biomarker
+  quote: fibrinogen and it should be around less than 350 for optimal value of optimal
+    functions. So if this patient have an increase of fibrinogen for more than 460,
+    then they are actually used for developing clotting and thrombembolism.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

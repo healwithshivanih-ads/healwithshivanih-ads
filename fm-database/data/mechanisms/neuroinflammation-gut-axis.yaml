@@ -1,0 +1,36 @@
+slug: neuroinflammation-gut-axis
+display_name: Gut Inflammation & Neuroinflammation
+aliases:
+- gut-brain inflammation
+- neuroinflammation via gut
+category: immune
+summary: Inflammation originating in the gut (from dysbiosis, leaky gut, or poor diet)
+  can propagate to the brain via immune mediators, impairing brain function and contributing
+  to mood disorders, anxiety, and depression. Short-chain fatty acids (SCFAs) produced
+  by fiber fermentation help reduce this inflammation.
+upstream_drivers:
+- gut-dysbiosis
+- leaky-gut
+- low-dietary-fiber
+- processed-foods
+downstream_effects:
+- depression
+- anxiety
+- cognitive-decline
+- mood-dysregulation
+related_mechanisms:
+- gut-dysbiosis
+- leaky-gut
+- gut-serotonin-production
+linked_to_topics:
+- gut-brain-axis
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Gut-Brain Axis: Nutrition''s Impact on Mental Health'
+  quote: Inflammation in the gut can negatively impact brain function, & omega-3s
+    help to reduce this inflammation.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

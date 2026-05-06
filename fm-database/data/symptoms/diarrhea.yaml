@@ -5,22 +5,56 @@ aliases:
 - frequent bowel movements
 - watery stools
 - running stomach
+- watery stool
+- frequent loose motions
+- acute loose motions
+- runny stool
+- frequent stools
+- runs
+- frequent loose bowel movements
 category: gi
 severity: common
-description: Frequent, loose, or watery stools, often triggered by high-FODMAP foods,
-  food intolerances, or osmotic shifts in the gut.
-when_to_refer: Bloody diarrhea, fever, dehydration, or duration >2 weeks.
+description: Loose or watery stools, which may occur both as a symptom of SIBO/dysbiosis
+  and as a transient die-off reaction when introducing high-count probiotic yogurt.
+  Typically resolves within a few weeks with probiotic introduction.
+when_to_refer: Persistent diarrhea >2 weeks, blood in stool, or severe dehydration.
 linked_to_topics:
 - gut-dysfunction
 - hypochlorhydria
 - low-fodmap-diet
 - elimination-diet
 - ibs
+- histamine-intolerance
+- salicylate-sensitivity
+- gut-dysbiosis
+- food-allergy-ige-mediated
+- food-intolerance
+- ibs-ibd-differentiation
+- pancreatic-insufficiency
+- sibo
+- inflammatory-bowel-conditions
+- gut-microbiome-and-gut-flora
+- gut-microbiome
 linked_to_mechanisms:
 - gut-dysbiosis
 - hypochlorhydria-mechanism
 - colonic-fermentation
 - gut-motility-dysregulation
+- fodmap-fermentation-gas-production
+- osmotic-fluid-shifts-in-gut
+- lps-mediated-immune-activation
+- leaky-gut
+- mast-cell-degranulation-histamine-release
+- digestive-enzyme-deficiency
+- mucosal-immune-dysfunction
+- gut-microbiome-dysbiosis
+- exocrine-pancreatic-enzyme-deficiency
+- malabsorption
+- altered-gi-motility
+- gut-immune-barrier-function
+- gut-microbiome-colonisation
+- endotoxemia
+- bacteriocin-production
 sources:
 - id: vitaone-gut-toolkit
   location: Testing for Low Stomach Acidity
@@ -28,7 +62,38 @@ sources:
 - id: vitaone-elimination-diet-toolkit
   location: Low Fodmap Diet Symptom Tracker — Section 1
   quote: Diarrhea
-version: 2
+- id: vitaone-health-coaching-toolkit
+  location: Testing for Low Stomach Acidity
+  quote: Indigestion, diarrhea, or constipation [listed as common symptoms of hypochlorhydria].
+- id: coconote-fm-approach-inflammation
+  location: Gut Dysbiosis – Location and Type
+  quote: Large intestine we will find out diarrhea is a common symptom of large intestine.
+- id: coconote-fm-food-allergies-sensitivities
+  location: IgE Symptoms Section
+  quote: In the gastrointestinal system, you can see pain, cramping, vomiting, diarrhea.
+- id: coconote-fm-intestinal-permeability
+  location: Diagnostic Markers – Calprotectin
+  quote: So if you want to differentiate IBD from IBS, then you should run the calc-reacting
+    test.
+- id: coconote-fm-pancreatic-insufficiency
+  location: Signs and Symptoms
+  quote: The commonly distinguished fat molecules present inside the host tumors,
+    diarrhea, gas and bloating.
+- id: coconote-fm-sibo-sifo
+  location: Types of SIBO – Hydrogen Dominant
+  quote: In a healthy hydrogen-producing bacteria, they reside mainly in the large
+    bubble. However, in the context of SIBO, certain hydrogen-producing bacteria take
+    up their residence... diarrhea symptom is very common.
+- id: barbara-oneil-gi-tract
+  location: Slippery Elm & IBD Case Study
+  quote: If someone is so inflamed that they've got diarrhea ten times a day, they
+    can take the slippery elm every hour.
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Probiotic die-off reaction discussion
+  quote: When you introduce Lactobacillus reuteri or some other beneficial microbes,
+    it introduces a tidal wave of change in the composition of the GI tract. And one
+    of the consequences could be diarrhea.
+version: 11
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

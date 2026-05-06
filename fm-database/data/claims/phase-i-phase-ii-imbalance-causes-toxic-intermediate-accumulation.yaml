@@ -1,0 +1,35 @@
+slug: phase-i-phase-ii-imbalance-causes-toxic-intermediate-accumulation
+statement: Imbalances between Phase I and Phase II liver detoxification activity can
+  cause accumulation or overproduction of toxic intermediate metabolites, requiring
+  targeted antioxidant support.
+evidence_tier: plausible_emerging
+rationale: The concept of Phase I/II imbalance leading to intermediary metabolite
+  toxicity is well-recognized in FM and pharmacological literature (e.g., acetaminophen
+  toxicity model). Broader application to environmental toxin processing is plausible
+  but less directly studied.
+coaching_translation: Your liver's detox process has two stages. If the first stage
+  is overactive but the second can't keep up, harmful intermediate compounds can build
+  up. Targeted nutrients and antioxidants help keep both stages balanced.
+caveats:
+- The direct clinical measurement of Phase I/II imbalance for environmental toxins
+  requires specialty lab testing — clinician scope.
+linked_to_topics:
+- metabolic-detoxification
+- liver-detox-food-plan
+linked_to_supplements:
+- glutathione-liposomal
+- vitamin-c-ascorbic-acid
+- vitamin-e
+- selenium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Detox Food Plan — Features of the Detox Food Plan
+  quote: Imbalances between phase I & phase II detoxification can cause accumulation
+    or overproduction of toxic intermediate metabolites. Key antioxidants help protect
+    the body and support biotransformation of these metabolites.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

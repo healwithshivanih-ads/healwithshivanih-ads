@@ -1,0 +1,28 @@
+slug: ginger-anti-inflammatory-1g-per-day
+statement: Ginger extract at approximately 1g/day (or equivalent via 3–4 cups of ginger
+  tea) exerts anti-inflammatory effects; food-first delivery via ginger green tea
+  is preferred.
+evidence_tier: plausible_emerging
+rationale: Ginger's anti-inflammatory properties (gingerols, shogaols) are supported
+  by in vitro studies and several small RCTs, particularly in osteoarthritis and metabolic
+  syndrome. 1g/day is a commonly cited dose in clinical trials.
+coaching_translation: 3–4 cups of ginger tea per day is a simple, sustainable way
+  to get a therapeutic anti-inflammatory dose of ginger — and it's easy to maintain
+  long-term.
+linked_to_topics:
+- chronic-inflammation
+linked_to_supplements:
+- ginger-extract
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-approach-inflammation
+  location: Anti-Inflammatory Herbs – Ginger
+  quote: You should use one gram per day or you can use a ginger tea in your patient's
+    diet. So usually I prefer my ways to increase, because my first priority is whatever
+    things we can increase in the food.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

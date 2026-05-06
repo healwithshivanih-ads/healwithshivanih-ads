@@ -1,0 +1,27 @@
+slug: magnesium-enables-hormone-transcription
+statement: Magnesium is required for transcription of the hormonal signal at the receptor
+  binding pocket domain and is chronically depleted by stress, toxicity, and aging.
+evidence_tier: strong
+rationale: Magnesium's role as a cofactor in DNA transcription and RNA polymerase
+  function is well established. Its depletion by physiological stress (cortisol-mediated
+  renal excretion) is documented. The specific framing within receptor binding pocket
+  domains is a functional medicine extension of these established mechanisms.
+coaching_translation: Magnesium helps translate hormone signals into actual changes
+  in your cells. Stress, toxins, and aging all drain magnesium — making it one of
+  the most important minerals for hormonal health.
+linked_to_topics:
+- hormonal-nutrition-foundations
+linked_to_supplements:
+- magnesium-hormone-support
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Magnesium in Hormone Receptor Signaling
+  quote: magnesium, which allows transcription of the message to occur... magnesium
+    is constantly rinsed out of the body by any state of stress or toxicity
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

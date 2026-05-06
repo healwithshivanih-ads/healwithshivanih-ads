@@ -1,0 +1,32 @@
+slug: berberine-kills-beneficial-microbes
+statement: Berberine kills Lactobacillus crispatus and Lactobacillus reuteri, undermining
+  efforts to restore the vaginal and gut microbiome when taken concurrently.
+evidence_tier: plausible_emerging
+rationale: Dr. Davis explicitly confirms that berberine kills crispatus and reuteri,
+  consistent with its broad antimicrobial spectrum. This is an important drug-supplement
+  interaction for coaches to communicate to clients.
+coaching_translation: If you're taking a probiotic yogurt or supplement to restore
+  beneficial bacteria, taking berberine at the same time will cancel out your efforts.
+  Keep them well separated—or avoid long-term berberine entirely.
+caveats:
+- Source is expert_consensus interview.
+- Mechanism is plausible given berberine's known antimicrobial activity but specific
+  studies not cited.
+linked_to_topics:
+- vaginal-microbiome
+- gut-microbiome
+linked_to_supplements:
+- berberine
+- lactobacillus-crispatus-probiotic
+- lactobacillus-reuteri-fermented-yogurt
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Berberine and probiotic interaction discussion
+  quote: Berberine also kills off the beneficial microbes we're trying to restore,
+    like crispatus and reuteri, the berberine kills them.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

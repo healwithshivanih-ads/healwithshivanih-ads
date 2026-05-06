@@ -1,0 +1,32 @@
+slug: epa-dha-reduces-cardiovascular-risk
+statement: EPA and DHA supplementation significantly reduces the risk of heart attacks,
+  cardiovascular disease death, and coronary heart disease events.
+evidence_tier: strong
+rationale: 'Multiple large RCTs cited: VITAL trial (840mg/day EPA+DHA: 28% reduced
+  MI risk, 50% reduction in fatal MIs, 77% reduction in African Americans); ASCEND
+  trial (reduced CVD death); REDUCE-IT trial (4g/day EPA: 30% relative risk reduction
+  in CV events in hypertriglyceridemia). Meta-analysis of 11 RCTs confirmed significant
+  mortality reduction.'
+coaching_translation: Getting enough omega-3s — especially EPA and DHA — is one of
+  the most evidence-backed things you can do to protect your heart.
+out_of_scope_notes: High-dose EPA (4g/day as in REDUCE-IT) requires clinician supervision,
+  particularly in patients with elevated triglycerides or on anticoagulants.
+caveats:
+- High-dose supplementation (≥4g/day) should be medically supervised.
+- Anticoagulant users should have PTT/INR monitored.
+linked_to_topics:
+- omega-3-fatty-acids
+linked_to_supplements:
+- epa-dha-fish-oil
+- algae-oil-dha-epa
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-omega-3-fatty-acids
+  location: Cardiovascular Benefits of Omega-3 Studies Slide
+  quote: 840 mg per day of EPA and DHA resulted in 28% reduced risk of heart attacks,
+    77% reduction was found in African Americans, 50% reduction in rates of fatal
+    heart attacks.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

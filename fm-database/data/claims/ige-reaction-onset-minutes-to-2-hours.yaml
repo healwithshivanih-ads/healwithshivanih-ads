@@ -1,0 +1,26 @@
+slug: ige-reaction-onset-minutes-to-2-hours
+statement: IgE-mediated food allergy produces symptoms within minutes to 2 hours of
+  allergen exposure.
+evidence_tier: strong
+rationale: Well-established immunological consensus. IgE–allergen complex activates
+  mast cells within minutes, releasing histamine and producing immediate hypersensitivity
+  symptoms.
+coaching_translation: If a client reacts to a food within 1–2 hours, this may be a
+  true IgE allergy — they likely already know their trigger. Encourage them to discuss
+  with their allergist and avoid the allergen.
+caveats:
+- Source is an expert lecture (expert_consensus, moderate quality), not a primary
+  RCT citation.
+linked_to_topics:
+- food-allergy-ige-mediated
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-food-allergies-sensitivities
+  location: IgE Mechanism Section
+  quote: this IgE reaction that can happen within a minute to two hours
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

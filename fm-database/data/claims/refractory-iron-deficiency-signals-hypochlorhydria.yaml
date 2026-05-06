@@ -1,0 +1,30 @@
+slug: refractory-iron-deficiency-signals-hypochlorhydria
+statement: In patients with iron deficiency that persists despite prolonged supplementation,
+  impaired gastric acid production should be investigated as a possible cause of malabsorption.
+evidence_tier: plausible_emerging
+rationale: Iron requires an acidic environment for reduction to the ferrous (absorbable)
+  form. PPI-associated iron malabsorption is documented. Applying this to hypochlorhydria
+  generally is plausible. Source is expert consensus.
+coaching_translation: If you've been taking iron supplements for months and your levels
+  still aren't improving, it could be because your stomach isn't making enough acid
+  to absorb the iron properly — not just that you need more iron.
+out_of_scope_notes: Investigation of iron deficiency and HCl production is a clinician
+  task. Coaches can flag the connection and encourage follow-up.
+caveats:
+- Multiple causes of refractory iron deficiency exist (malabsorption syndromes, chronic
+  blood loss, infection).
+- Source is expert consensus.
+linked_to_topics:
+- hypochlorhydria
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-hypochlorhydria
+  location: Risk Factors / Consequences of Low Stomach Acid
+  quote: Patient with severe iron deficiency, even if you're giving them iron medication
+    for a very long time, still their iron doesn't get better, definitely you should
+    check for stomach acid.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

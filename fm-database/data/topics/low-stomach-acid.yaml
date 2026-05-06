@@ -1,0 +1,40 @@
+slug: low-stomach-acid
+display_name: Low Stomach Acid (Hypochlorhydria)
+aliases:
+- achlorhydria
+summary: Insufficient gastric acid production impairing digestion and absorption of
+  key nutrients (iron, B12, minerals), leading to chronic fatigue, joint pain, constipation,
+  and acid reflux paradoxically worsened by antacid use.
+common_symptoms:
+- acid-reflux
+- bloating
+- constipation
+- low-energy
+- iron-deficiency
+- b12-deficiency
+red_flags:
+- GI bleeding
+- unexplained anaemia not responding to supplementation
+related_topics:
+- chronic-pain-and-fatigue
+- dysbiosis
+- leaky-gut
+key_mechanisms:
+- low-stomach-acid
+- nutrient-malabsorption
+coaching_scope_notes: Baking soda assessment can be used as an informal screening
+  tool. Apple cider vinegar, lemon water, and bitter greens can support stomach acid.
+  Refer to clinician for formal evaluation and any supplemental HCl protocol.
+clinician_scope_notes: Consider Heidelberg test or clinical evaluation. Rule out H.
+  pylori. PPI/antacid overuse is a common iatrogen cause.
+evidence_tier: fm_specific_thin
+sources:
+- id: coconote-fm-chronic-pain-fatigue
+  location: Digestion Section
+  quote: Low Stomach Acid is a big one. A lot of people are getting low on it because
+    of the Low Stomach Acid. They are having an acid refueling and that's neutralizing
+    the effect of the Stomach Acid.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

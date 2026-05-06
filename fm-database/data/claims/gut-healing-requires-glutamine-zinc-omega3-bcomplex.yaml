@@ -1,0 +1,34 @@
+slug: gut-healing-requires-glutamine-zinc-omega3-bcomplex
+statement: Gut mucosal healing requires targeted nutritional support including L-glutamine,
+  zinc carnosine, omega-3 fatty acids, and B-complex vitamins alongside dietary modification.
+evidence_tier: plausible_emerging
+rationale: 'Each nutrient has mechanistic support: glutamine fuels enterocytes, zinc
+  carnosine protects gastric mucosa (RCT evidence), omega-3s reduce intestinal inflammation,
+  and B-complex supports mucosal cell turnover. Evidence for this specific combination
+  stack is extrapolated from individual studies.'
+coaching_translation: Healing a damaged gut lining takes more than just removing trigger
+  foods. Nutrients like glutamine, zinc carnosine, omega-3s, and B-vitamins provide
+  the building blocks your gut cells need to repair.
+out_of_scope_notes: Supplementation dosing and clinical decision-making require clinician
+  involvement.
+caveats:
+- Combination protocol evidence is largely clinical inference from individual nutrient
+  studies.
+- Source is Instagram educational content.
+linked_to_topics:
+- gut-health-fodmap-sibo
+linked_to_supplements:
+- glutamine
+- zinc-carnosine
+- omega-3-fatty-acids
+- active-b-vitamins
+linked_to_mechanisms: []
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXbyLyYjP__/
+  quote: 'Gut healing requires nutrients: glutamine, zinc carnosine, omega-3, B-complex,
+    bitters'
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

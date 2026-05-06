@@ -1,0 +1,30 @@
+slug: elevated-extracellular-water-signals-inflammation
+statement: Elevated extracellular water on BIA may indicate systemic inflammation,
+  food sensitivities, hypothyroidism, or impaired detoxification pathways.
+evidence_tier: fm_specific_thin
+rationale: BIA-derived fluid compartment analysis is used in clinical and FM settings;
+  the interpretation linking elevated ECW specifically to food sensitivity and detox
+  burden is common in FM but has limited peer-reviewed consensus support.
+coaching_translation: If your BIA shows more fluid on the outside of your cells than
+  the inside, that can be a signal of inflammation — sometimes related to foods you're
+  reacting to or your body's ability to clear toxins.
+caveats:
+- This interpretation is commonly applied in functional medicine practice but has
+  limited peer-reviewed support in this specific context. Source is expert consensus
+  lecture, not primary research.
+linked_to_topics:
+- bioelectrical-impedance-analysis
+- body-composition-assessment
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-body-composition-bmi
+  location: BIA / Extracellular Water Section
+  quote: If somebody has too much extracellular water, it can be a sign of inflammation
+    in their body, right? Maybe under your matrix, you're seeing signs of allergy
+    or hypersensitivity to foods or inflammation in the body.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

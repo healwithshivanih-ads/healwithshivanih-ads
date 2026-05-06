@@ -1,0 +1,48 @@
+slug: lps-translocation
+display_name: LPS Translocation (Endotoxemia)
+aliases:
+- lipopolysaccharide translocation
+- metabolic endotoxemia
+- LPS leakage
+- bacterial endotoxin leak
+- auto-intoxication
+category: immune
+summary: Lipopolysaccharides (LPS), byproducts of gram-negative bacteria, translocate
+  from the intestinal lumen into the bloodstream when tight junctions are compromised.
+  The immune system mounts a strong inflammatory response to circulating LPS, contributing
+  to systemic inflammation, metabolic dysfunction, and autoimmune triggers.
+upstream_drivers:
+- tight-junction-dysregulation
+- gram-negative-dysbiosis
+- tight-junction-dysfunction
+- dysbiosis
+- gram-negative-bacterial-overgrowth
+downstream_effects:
+- systemic-inflammation
+- immune-activation
+- autoimmunity
+related_mechanisms:
+- tight-junction-dysregulation
+- molecular-mimicry
+- tight-junction-dysfunction
+linked_to_topics:
+- intestinal-permeability
+- autoimmunity-leaky-gut-triad
+- autoimmunity-leaky-gut-connection
+evidence_tier: strong
+sources:
+- id: coconote-fm-intestinal-permeability
+  location: Diagnostic Testing – Cyrex Array 2
+  quote: LPS is lipopolysaccharide and what is LPS? They are the bioproducts of bacteria,
+    mostly the gram-negative bacteria. They secrete the LPS and LPS can pass locate
+    from the lumen and our immune system is highly reactive to LPS.
+- id: coconote-fm-intestinal-permeability-anish
+  location: Introduction / Barrier Function
+  quote: Endotoxemia means translocation of gram-negative or bacterial toxins from
+    the intestinal lumen to the body or bloodstream that is endotoxemia… if we have
+    a leaky gut then this translocation of these toxins from the lumen to the bloodstream
+    create immune response.
+version: 2
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

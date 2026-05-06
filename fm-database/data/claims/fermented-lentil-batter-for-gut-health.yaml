@@ -1,0 +1,29 @@
+slug: fermented-lentil-batter-for-gut-health
+statement: Naturally fermenting multi-lentil batter for 10–12 hours before making
+  idli or dosa increases B-vitamin content, improves protein digestibility, and supports
+  gut microbiome diversity.
+evidence_tier: plausible_emerging
+rationale: Lentil Idli and Vegetable-Lentil-Paneer Dosa both call for 10–12 hours
+  of natural fermentation at room temperature. Fermentation of legume batters is associated
+  with increased folate, reduced phytate, and prebiotic/probiotic effects, though
+  this document does not cite studies.
+coaching_translation: Letting your dal batter ferment overnight is not just traditional
+  — it actually makes the food easier to digest and adds beneficial compounds for
+  your gut.
+caveats:
+- Fermentation time and microbial activity vary with room temperature. This is a food-based
+  intervention, not a probiotic supplement.
+linked_to_topics:
+- legume-based-eating-pattern
+- cardiometabolic-diet
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-cardiometabolic-recipes
+  location: Lentil Idli
+  quote: Cover and allow to ferment in a warm place for about 10 – 12 hours.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

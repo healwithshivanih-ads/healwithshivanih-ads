@@ -1,0 +1,32 @@
+slug: d-mannose-modest-uti-benefit-exogenous
+statement: D-mannose has modest evidence for UTI prevention but represents an exogenous
+  compound with no human deficiency, making microbiome restoration with Lactobacillus
+  crispatus a more foundational approach.
+evidence_tier: plausible_emerging
+rationale: Dr. Davis acknowledges D-mannose's modest UTI benefit and cranberry polyphenols'
+  variable efficacy, but frames it as secondary to crispatus restoration since there
+  is no innate D-mannose deficiency. He notes variability in cranberry product polyphenol
+  content.
+coaching_translation: D-mannose can give some urinary tract support, but it's not
+  something your body was designed to need. Restoring L. crispatus addresses the root
+  cause more directly.
+caveats:
+- Source is expert_consensus interview.
+- D-mannose has published RCT evidence for UTI prevention that Dr. Davis does not
+  discount entirely.
+linked_to_topics:
+- vaginal-microbiome
+linked_to_supplements:
+- d-mannose
+- lactobacillus-crispatus-probiotic
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: D-mannose and UTI discussion
+  quote: When D-mannose does work, some of the flavonoids, et cetera, in cranberries
+    does have a modest effect. But is there a D-mannose deficiency? No.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

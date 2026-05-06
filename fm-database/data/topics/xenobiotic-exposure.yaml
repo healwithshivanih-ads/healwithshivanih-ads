@@ -1,0 +1,41 @@
+slug: xenobiotic-exposure
+display_name: Xenobiotic & Environmental Toxin Exposure
+aliases:
+- exposome
+- environmental toxin burden
+- toxic load
+summary: Xenobiotics are chemical compounds foreign to the cell — including pesticides,
+  plasticizers, industrial pollutants, dioxins, petrochemicals, heavy metals, endocrine
+  disruptors, and pharmaceuticals. The 'exposome' describes the combined cumulative
+  xenobiotic exposure of an individual. Internal toxins from inflammation, lipid oxidation,
+  and gut-derived LPS (endotoxins) add to total toxic load.
+common_symptoms:
+- fatigue
+- chemical-sensitivity
+- hormonal-disruption
+red_flags:
+- acute toxic exposure or poisoning
+related_topics:
+- liver-detoxification-phases
+- total-toxic-load
+- gut-microbiome-and-detox
+key_mechanisms:
+- cyp450-phase1-bioactivation
+- endocrine-disruption
+- lps-endotoxin-production
+coaching_scope_notes: Coaches can help clients reduce environmental exposures (clean
+  food, filtered water, reducing plastic use, non-toxic personal care products) and
+  support elimination pathways.
+evidence_tier: strong
+clinician_scope_notes: ''
+sources:
+- id: coconote-fm-liver-detox-part1
+  location: Xenobiotic Concept Introduction
+  quote: Xenobiotic means any chemical compound that is foreign to cell according
+    to life and that is detected in our body. So you can consider xenobiotic means
+    pesticide, plasticize, you can think about the pollution, dioxin, petrochemicals,
+    perfume, pigments, paints, dye, all, even pharmaceuticals.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

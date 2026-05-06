@@ -1,0 +1,36 @@
+slug: statin-induced-insulin-resistance
+display_name: Statin-Induced Insulin Resistance / Diabetes Progression
+aliases:
+- statin metabolic side effect
+- statin-associated diabetes
+- statin glycemic effect
+category: metabolic
+summary: Statin therapy has been associated with increased insulin resistance and
+  progression of diabetes in patients already diagnosed with the condition, including
+  greater likelihood of insulin treatment initiation and significant hyperglycaemia
+  — as shown in the Mansi et al. JAMA Internal Medicine retrospective matched-cohort
+  study.
+upstream_drivers:
+- statin-therapy
+downstream_effects:
+- increased-insulin-resistance
+- diabetes-progression
+- hyperglycemia
+- increased-glucose-lowering-medication-burden
+related_mechanisms:
+- insulin-resistance
+linked_to_topics:
+- insulin-resistance
+- cardiovascular-risk-assessment
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-cvs-risk-assessment
+  location: JAMA Internal Medicine reference (Slide 15)
+  quote: This retrospective matched-cohort study found that statin use was associated
+    with diabetes progression, including greater likelihood of insulin treatment initiation,
+    significant hyperglycemia, acute glycemic complications, and an increased number
+    of prescriptions for glucose-lowering medication classes.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

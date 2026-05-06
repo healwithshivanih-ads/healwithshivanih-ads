@@ -1,0 +1,28 @@
+slug: diaphragmatic-breathing-activates-parasympathetic
+statement: Diaphragmatic breathing (1:2 inhale-to-exhale ratio) activates the parasympathetic
+  nervous system and is clinically useful for IBS, anxiety, and acid reflux.
+evidence_tier: plausible_emerging
+rationale: Slow, deep diaphragmatic breathing with extended exhale is well-established
+  as a vagal activator and has RCT support in anxiety and IBS contexts, though the
+  specific 1:2 ratio as optimal lacks strong head-to-head evidence.
+coaching_translation: Breathing slowly from your belly—especially making the exhale
+  longer than the inhale—directly signals your nervous system to shift into 'rest
+  and digest' mode. Aim for 5–10 minutes, 3× daily.
+caveats:
+- Avoid in severe panic disorder without clinical supervision.
+- Avoid strong breath holds in pregnancy or cardiac disease.
+linked_to_topics:
+- breathwork-for-health
+- nervous-system-regulation
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Breathwork Cheatsheet / Breathwork Techniques & Clinical Use
+  quote: Inhale belly → exhale slowly (1:2 ratio); Activates parasympathetic; IBS,
+    anxiety, reflux.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

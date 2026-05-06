@@ -1,0 +1,25 @@
+slug: postnatal-depression
+display_name: Postnatal Depression
+aliases:
+- postpartum depression
+- post-birth depression
+- PPD
+category: hormonal
+severity: concerning
+description: Depression following childbirth, proposed to be linked to a sharp drop
+  in progesterone after delivery.
+when_to_refer: Any postnatal depression requires clinician involvement, especially
+  if there are safety concerns for mother or infant.
+linked_to_topics:
+- hormonal-depression-progesterone
+- depression-lifestyle
+linked_to_mechanisms:
+- progesterone-deficiency
+sources:
+- id: barbara-oneil-healing-mind
+  location: Hormonal Depression Section
+  quote: It's one of the main causes of postnatal depression.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

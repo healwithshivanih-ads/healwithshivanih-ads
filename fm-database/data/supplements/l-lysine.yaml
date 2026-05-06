@@ -1,0 +1,31 @@
+slug: l-lysine
+display_name: L-Lysine
+category: amino_acid
+forms_available:
+- capsule
+- tablet
+- powder
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- testosterone-dht-conversion
+linked_to_claims:
+- 5ar-inhibitors-reduce-dht-prevent-bph-hair-loss-acne
+notes_for_coach: L-lysine is listed as a 5-α reductase inhibiting nutrient in the
+  FMCN toolkit. Evidence is primarily in vitro; clinical data for this specific application
+  is thin. Clinician guidance needed.
+notes_for_client: L-lysine is an essential amino acid that may help support healthy
+  DHT levels. Often included in comprehensive hair and prostate health protocols.
+evidence_tier: fm_specific_thin
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors'
+  quote: L-lysine [listed under Nutrients/Phytonutrients that Inhibit 5-a Reductase]
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

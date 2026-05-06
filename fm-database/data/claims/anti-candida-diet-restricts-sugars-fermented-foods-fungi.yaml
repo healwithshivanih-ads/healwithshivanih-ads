@@ -1,0 +1,30 @@
+slug: anti-candida-diet-restricts-sugars-fermented-foods-fungi
+statement: The Anti-Candida Food Plan eliminates all sugars (including natural sweeteners
+  and artificial sweeteners), fermented foods, mushrooms, starchy vegetables, and
+  most fruits to reduce the substrate available for Candida yeast growth.
+evidence_tier: fm_specific_thin
+rationale: The anti-candida diet is a widely used FM protocol, but high-quality RCT
+  evidence directly demonstrating efficacy in reducing intestinal candida overgrowth
+  through dietary restriction alone is thin.
+coaching_translation: Candida thrives on sugar. The Anti-Candida diet removes all
+  sugars, starchy foods, and fermented items (which may contain yeast) to starve the
+  overgrowth and restore gut balance.
+caveats:
+- This food plan should be followed under the supervision of a qualified healthcare
+  professional.
+- Evidence for dietary restriction in gut candida overgrowth specifically is limited.
+linked_to_topics:
+- candida-overgrowth
+- gut-dysfunction
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Anti-Candida Food Plan
+  quote: NO SUGARS, NATURAL SWEETENERS, OR ARTIFICIAL SWEETENERS, INCLUDING (BUT NOT
+    LIMITED TO) ASPARTAME, SPLENDA, STEVIA, AND SUGAR ALCOHOLS.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

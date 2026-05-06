@@ -1,0 +1,31 @@
+slug: breathing-exercises-can-increase-anxiety-in-some-clients
+statement: For some individuals, breathing exercises and body-scan practices can increase
+  rather than decrease anxiety due to heightened interoceptive awareness.
+evidence_tier: plausible_emerging
+rationale: Research on interoceptive sensitivity (e.g., in anxiety disorders and trauma)
+  supports that increased bodily awareness via breath-focused techniques can exacerbate
+  anxiety in a subset of individuals. This is a well-recognized clinical observation
+  in mindfulness-based therapy literature.
+coaching_translation: Not everyone responds well to breathing exercises — for some
+  people, paying close attention to body sensations actually increases anxiety. If
+  a client resists or feels worse with breathing work, it's worth exploring other
+  entry points.
+caveats:
+- Source is expert practitioner discussion, not a cited study.
+- This is an important clinical consideration but is based on observation rather than
+  controlled evidence in this document.
+linked_to_topics:
+- stress-and-the-sympathetic-nervous-system
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-coaching-stress-kids
+  location: Stress Client Topic Discussion
+  quote: I know from experience, some people don't like to do breathing exercises
+    or things like that because it actually increases anxiety. And then when you have
+    this internal awareness, it's more anxiety provoking.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

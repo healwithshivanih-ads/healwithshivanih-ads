@@ -1,0 +1,29 @@
+slug: digestion-foundational-for-hormone-nutrient-delivery
+statement: Adequate digestion — including sufficient stomach acid, pancreatic enzymes,
+  and bowel transit — is the foundational prerequisite for delivering nutritional
+  cofactors to hormone receptors; hormone therapy or supplementation cannot succeed
+  without it.
+evidence_tier: plausible_emerging
+rationale: The principle that nutrient absorption depends on digestive sufficiency
+  is well-established. The specific link to hormone receptor cofactor delivery is
+  a logical extension consistent with the nutritional mechanisms described, though
+  not tested in a dedicated RCT.
+coaching_translation: You are what you digest, not just what you eat. Even the best
+  diet or supplement plan won't help your hormones if your gut isn't absorbing nutrients
+  properly. Supporting digestion is the first step.
+linked_to_topics:
+- digestion-and-nutrient-absorption
+- hormonal-nutrition-foundations
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Nutrition and Digestion as Hormonal Foundation
+  quote: hormones cannot do what they do without phenomenal nutrition, which of course
+    leans on digestion because you are what you digest, not just what you eat.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

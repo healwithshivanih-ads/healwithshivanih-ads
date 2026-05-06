@@ -1,0 +1,28 @@
+slug: mediterranean-diet-73-percent-mi-reduction
+statement: The Lyon Diet Heart Study demonstrated a 73% risk reduction in fatal and
+  non-fatal myocardial infarction with a Mediterranean diet compared to a Western
+  diet.
+evidence_tier: strong
+rationale: Lyon Diet Heart Study (de Lorgeril et al., 1999, Circulation) is a landmark
+  RCT directly referenced. Results are widely accepted in cardiovascular nutrition
+  literature.
+coaching_translation: The Mediterranean diet is one of the most powerful lifestyle
+  tools for preventing heart attacks — with evidence showing nearly three-quarters
+  reduction in fatal heart attacks.
+caveats:
+- Clinician recommends anti-inflammatory Mediterranean diet with dairy restriction
+  and no white pasta/bread.
+linked_to_topics:
+- cardiovascular-disease-prevention
+- mediterranean-diet-cvd
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Lyon Diet Heart Study Reference
+  quote: 73% risk reduction in fatal and non-fatal MI, Mediterranean diet.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

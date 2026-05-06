@@ -1,0 +1,33 @@
+slug: pre-2005-statin-trials-have-significant-bias-concerns
+statement: Statin trials conducted before 2005 are subject to significant methodological
+  concerns including pharmaceutical company oversight of their own trials, premature
+  terminations, high patient loss-to-follow-up, and publication bias.
+evidence_tier: plausible_emerging
+rationale: 'The document identifies these specific methodological limitations of pre-2005
+  statin trials: industry-sponsored oversight, premature termination when desired
+  outcomes were found, unpublished negative trials, and high loss-to-follow-up rates.'
+coaching_translation: Some of the early studies that made statins famous had design
+  problems — the drug companies were running their own trials, studies were stopped
+  early when results looked good, and some unfavorable results may never have been
+  published. Newer, more independent research tells a more nuanced story.
+caveats:
+- This critique is specific to pre-2005 trials; post-2005 trials have stronger regulatory
+  oversight.
+- This does not mean statins have no benefit — secondary prevention data remains robust.
+- Source is a lecture; independent verification with systematic reviews is recommended.
+linked_to_topics:
+- statin-therapy-primary-prevention
+- cardiovascular-risk-assessment
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-reality-of-statins
+  location: Pre-2005 Trial Concerns Section
+  quote: There were issues with oversight by the pharmaceutical companies. So you
+    have bias. The pharmaceutical company, they're the ones that will benefit. They
+    should not be the ones overseeing the study to see what benefit they find.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

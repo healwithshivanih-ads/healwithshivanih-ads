@@ -5,14 +5,17 @@ aliases:
 - aphthous ulcers
 - chronic oral lesions
 - cracking mouth corners
-category: gi
+- oral lesions
+- cracking corners of mouth
+category: skin
 severity: common
-description: Recurring painful oral ulcers or cracking at corners of the mouth, potentially
-  triggered by SLS in toothpastes and irritation of oral tissues.
-when_to_refer: Persistent non-healing oral lesions, rapidly enlarging, or associated
-  with systemic symptoms.
+description: Chronic oral lesions and inflammation that may be triggered or worsened
+  by sodium lauryl sulfate (SLS) in toothpaste and other oral care irritants.
+when_to_refer: Refer if oral lesions are persistent, enlarging, painless, or not resolving
+  with product changes — rule out oral pathology.
 linked_to_topics:
 - oral-toxin-exposure
+- oral-health-toxins
 linked_to_mechanisms:
 - oral-microbiome-disruption
 sources:
@@ -20,7 +23,11 @@ sources:
   location: Avoiding Toxins in Oral Health
   quote: It can cause chronic oral lesions (canker sores), & cracking at the corners
     of the mouth.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Avoiding Toxins in Oral Health
+  quote: It can cause chronic oral lesions (canker sores), & cracking at the corners
+    of the mouth. It is often very irritating to oral tissues, triggers inflammation.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

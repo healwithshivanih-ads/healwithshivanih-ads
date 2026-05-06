@@ -1,5 +1,5 @@
 slug: nigella-sativa
-display_name: Nigella sativa (Black Cumin Seed)
+display_name: Nigella sativa (Black Cumin)
 category: herb
 forms_available:
 - capsule
@@ -20,16 +20,21 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - hashimotos-hypothyroidism
+- thyroid-dysfunction
 linked_to_claims:
 - nigella-sativa-rct-reduces-tsh-tpo-antibodies
 - nigella-sativa-improves-oxidative-stress-hashimotos
-notes_for_coach: 'RCT used 1g BID (2g/day total). Attributed effects: antioxidant,
-  immunomodulatory, potential thyroid gland repair and resynthesis support. Also showed
-  improved lipids, BMI, and endothelial function in AITD. Limited studies; plausible_emerging
-  tier.'
-notes_for_client: Black cumin seed has been studied in a clinical trial for Hashimoto's
-  with promising results — it may help reduce the antibodies attacking your thyroid
-  and improve thyroid hormone levels.
+- nigella-sativa-reduces-tsh-and-tpo-antibodies
+- nigella-sativa-improves-oxidative-stress-aitd
+notes_for_coach: An 8-week RCT using 1g BID (2g/day) showed significant decreases
+  in TSH and anti-TPO antibodies and increase in T3 vs. placebo. A separate human
+  study showed improvement in oxidative stress markers, LDL-C, triglycerides, and
+  HDL in AITD patients. Source document references an RCT, supporting plausible_emerging
+  tier. Coaches can discuss food-form use; supplemental dosing should be verified
+  with clinician.
+notes_for_client: Black cumin seed has been studied in small trials for Hashimoto's
+  and showed promising results for lowering thyroid antibodies and improving oxidative
+  stress. It can be used as a spice in cooking or taken in capsule form.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -37,7 +42,12 @@ sources:
   location: Nigella sativa (Black Cumin)
   quote: Experimental group showed significant decrease in TSH, decrease in anti-TPO
     antibodies and increase in T3
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Key Nutrients to Consider in Thyroid Regulation — Nigella sativa (Black
+    Cumin)
+  quote: Experimental group showed significant decrease in TSH, decrease in anti-TPO
+    antibodies and increase in T3
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

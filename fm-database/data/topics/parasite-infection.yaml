@@ -1,0 +1,36 @@
+slug: parasite-infection
+display_name: Intestinal Parasite Infection
+aliases:
+- parasitic dysbiosis
+- worm infection
+- helminth infection
+summary: Parasitic infections may present without classical diagnosis. A blind protocol
+  using albendazole and/or ivermectin is described, with a repeat dose after 15 days
+  to address adult worms and larvae in different life cycle stages. Herbal broad-spectrum
+  antimicrobials are also noted as effective against parasites.
+common_symptoms:
+- systemic-inflammation
+- digestive-discomfort
+red_flags:
+- acute-gastroenteritis
+related_topics:
+- gut-dysbiosis
+key_mechanisms:
+- gut-dysbiosis-microbiome-imbalance
+coaching_scope_notes: Antiparasitic pharmaceutical protocols are outside coaching
+  scope. Coaches may support dietary hygiene and general gut health practices.
+clinician_scope_notes: Clinician may use albendazole plus ivermectin as single or
+  3-day dose, repeated after 15 days. Testing is preferred before treatment; blind
+  protocol used when testing is unavailable and clinical indication exists.
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Therapeutic Options — Parasite
+  quote: if you want to do a broad combined protocol and if you have some indication
+    for parasite infection then you can consider giving them either albinozole or
+    usually I prefer the combination of albinozole plus ivermectin and you can just
+    give a single dose and always repeat after 15 days.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

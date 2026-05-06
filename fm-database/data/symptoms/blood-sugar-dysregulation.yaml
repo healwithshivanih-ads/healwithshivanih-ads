@@ -1,0 +1,27 @@
+slug: blood-sugar-dysregulation
+display_name: Blood Sugar Dysregulation
+aliases:
+- unbalanced blood sugar
+- glucose fluctuation
+- blood sugar swings
+- pre-diabetes symptoms
+category: metabolic
+severity: concerning
+description: Unstable or impaired fasting glucose and post-meal glucose responses,
+  associated with insulin resistance and metabolic syndrome.
+when_to_refer: Refer clients with type 2 diabetes, metabolic syndrome, or insulin-dependent
+  diabetes to a clinician before any fasting protocol.
+linked_to_topics:
+- cardiometabolic-diet
+- intermittent-fasting
+linked_to_mechanisms:
+- insulin-resistance
+- hpa-axis-dysregulation
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Intermittent Fasting — summary table
+  quote: 'Improves: Blood sugar metabolism'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

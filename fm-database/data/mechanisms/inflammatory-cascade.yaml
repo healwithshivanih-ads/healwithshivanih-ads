@@ -1,0 +1,37 @@
+slug: inflammatory-cascade
+display_name: Inflammatory Cascade in Atherosclerosis
+aliases:
+- vascular inflammation
+- macrophage-driven inflammation
+- plaque inflammation
+category: immune
+summary: Once oxidized LDL is recognized as foreign, macrophages infiltrate the arterial
+  wall and initiate an inflammatory process. This leads to foam cell formation, calcium
+  deposition, and progressive plaque growth. Systemic markers such as hsCRP reflect
+  this ongoing inflammatory state.
+upstream_drivers:
+- ldl-oxidation
+- endothelial-dysfunction
+- high-hscrp
+downstream_effects:
+- foam-cell-formation
+- calcium-deposition-in-plaque
+- plaque-rupture
+- myocardial-infarction
+related_mechanisms:
+- endothelial-dysfunction
+- ldl-oxidation
+linked_to_topics:
+- atherosclerosis-pathogenesis
+- cardiovascular-risk-assessment
+evidence_tier: strong
+sources:
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Atherosclerosis mechanism section
+  quote: The macrophages go and they start creating an inflammatory process and now
+    you have an inflammatory process... because of inflammation start having an all
+    cascade and the calcium go in that plan.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

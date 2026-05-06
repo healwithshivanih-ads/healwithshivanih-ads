@@ -1,0 +1,37 @@
+slug: mood-changes-and-anxiety
+display_name: Mood Changes, Anxiety & Irritability
+aliases:
+- low mood
+- apathy
+- rumination
+- poor mood
+- OCD tendencies
+- low motivation
+category: mood
+severity: common
+description: Mood disturbances including anxiety, irritability, apathy, rumination,
+  OCD tendencies, and low motivation linked to methylation nutrients, B vitamins,
+  magnesium, omega-3, copper, choline, and depression-mimicking nutrient deficiency
+  patterns.
+when_to_refer: Refer for clinical assessment if mood symptoms are severe, persistent,
+  or meet criteria for a mood disorder. Do not use supplementation to replace psychiatric
+  care.
+linked_to_topics:
+- depression-like-symptoms
+- methylation
+- nutrition-deficiency
+- chronic-inflammation
+linked_to_mechanisms:
+- methylation-support
+- nutrient-dependent-energy-metabolism
+- oxidative-stress-and-inflammation
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Symptoms Discussed
+  quote: Mood changes, anxiety, irritability, poor mood, apathy, rumination, OCD tendencies,
+    and low motivation - Linked to methylation nutrients, B vitamins, magnesium, omega-3,
+    copper, choline, and depression-mimicking nutrient deficiency patterns.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

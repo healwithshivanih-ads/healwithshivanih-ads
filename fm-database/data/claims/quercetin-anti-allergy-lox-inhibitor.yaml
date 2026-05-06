@@ -1,0 +1,31 @@
+slug: quercetin-anti-allergy-lox-inhibitor
+statement: Quercetin at 100–500 mg/day acts as a natural LOX enzyme inhibitor and
+  anti-allergy agent, particularly useful in patients with elevated IgE antibodies,
+  allergic symptoms (sneezing, itching), or allergy-driven inflammation.
+evidence_tier: plausible_emerging
+rationale: Quercetin's mast cell-stabilizing and LOX-inhibiting properties are supported
+  by in vitro and some animal studies. Human RCT data are limited but emerging. It
+  is widely used in FM practice for allergic conditions.
+coaching_translation: If your client has allergy-type symptoms alongside inflammation
+  — sneezing, itchy eyes, skin reactions — quercetin is a natural plant compound that
+  can help calm that specific pathway.
+caveats:
+- Source is expert FM lecture (moderate quality). Doses cited (100–200mg) are on the
+  lower end; most clinical studies use 500–1000mg/day.
+linked_to_topics:
+- chronic-inflammation
+linked_to_supplements:
+- quercetin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-approach-inflammation
+  location: Anti-Inflammatory Supplements – Quercetin
+  quote: Corsetin in the blood, it was just 100-200 mg a day, so Corsetin is basically
+    considered as an anti-allergy. So somebody having a sneezing or somebody having
+    an IgE antibody or even a heart attack, that kind of patient, they will have,
+    Corsetin will help.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

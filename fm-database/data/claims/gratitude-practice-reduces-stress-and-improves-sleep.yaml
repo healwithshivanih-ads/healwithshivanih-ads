@@ -1,0 +1,30 @@
+slug: gratitude-practice-reduces-stress-and-improves-sleep
+statement: Regular gratitude practice is associated with decreased stress levels,
+  lowered blood pressure, and better sleep quality.
+evidence_tier: plausible_emerging
+rationale: Growing body of research (including Emmons & McCullough, 2003, JPSP) links
+  gratitude interventions to measurable reductions in stress biomarkers and subjective
+  sleep quality improvements, likely via HPA axis down-regulation and parasympathetic
+  enhancement.
+coaching_translation: Taking time each week to write about what you're grateful for
+  can help you feel less stressed, sleep better, and even lower your blood pressure
+  over time.
+caveats:
+- Document references Emmons Ph.D. but does not cite specific studies by name. Most
+  evidence is from self-report measures; mechanistic pathways inferred.
+linked_to_topics:
+- gratitude-practice
+- self-care
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Practicing Gratitude with the IFM Gratitude Journal
+  quote: These benefits include decreased stress levels, lowered blood pressure, better
+    sleep quality, stronger immune systems, and increased feelings of joy, happiness,
+    forgiveness, and compassion.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

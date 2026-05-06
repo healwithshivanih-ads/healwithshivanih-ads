@@ -1,0 +1,31 @@
+slug: sunlight-stimulates-serotonin-release
+statement: UV rays from sunlight enter through the eyes, travel neurochemical pathways
+  to the pineal gland, and trigger serotonin (mood hormone) release.
+evidence_tier: plausible_emerging
+rationale: Light-induced serotonin synthesis is well-supported in SAD research and
+  photoneuroendocrinology. The specific pathway described (UV→eye→pineal→serotonin)
+  is a simplification; the retino-hypothalamic pathway and serotonin synthesis in
+  the raphe nuclei are the established mechanisms. Core claim (sunlight improves mood
+  via serotonin) is plausible and widely supported.
+coaching_translation: Getting outside in natural light every day is one of the simplest
+  things you can do to support your mood. You don't need to look at the sun — just
+  being outdoors counts.
+caveats:
+- Precise pathway described is simplified
+- Source is expert lecture
+- Serotonin is primarily synthesised in the gut and raphe nuclei, not exclusively
+  via the pineal gland
+linked_to_topics:
+- depression-lifestyle
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-healing-mind
+  location: Sunshine Section
+  quote: the ultraviolet rays from the sun go through the neurochemical pathways in
+    the eye, hit the pineal gland and cause a release in serotonin.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,27 @@
+aliases:
+- shaking
+- involuntary movements
+- neurological signs
+category: neurological
+description: Neurological symptoms including tremors that may be associated with heavy
+  metal toxicity or high toxic burden. Associated with Parkinson's-like presentations
+  in toxic overload.
+display_name: Tremors / Neurological Symptoms
+linked_to_mechanisms:
+- heavy-metal-toxicity
+linked_to_topics:
+- toxic-body-burden
+- dental-amalgam-mercury
+severity: red_flag
+slug: tremors
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Detox Food Plan — page 05
+  quote: neurological conditions such as tremors, headaches, & cognitive difficulties,
+    along with several other diseases like Parkinson's & Alzheimer's
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani
+version: 1
+when_to_refer: Always refer. Tremors require neurological evaluation to rule out Parkinson's,
+  heavy metal toxicity, or other serious neurological conditions.

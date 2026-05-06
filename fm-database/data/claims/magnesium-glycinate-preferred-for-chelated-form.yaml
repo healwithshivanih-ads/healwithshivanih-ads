@@ -1,0 +1,28 @@
+slug: magnesium-glycinate-preferred-for-chelated-form
+statement: Magnesium glycinate is a chelated (amino acid-bound) form with approximately
+  10% elemental magnesium and high bioavailability; higher doses are required to meet
+  therapeutic targets.
+evidence_tier: plausible_emerging
+rationale: Chelated magnesium forms generally demonstrate higher bioavailability;
+  magnesium glycinate is one of the better-tolerated and absorbed forms based on comparative
+  studies and clinical use.
+caveats:
+- Higher doses by weight are needed due to lower elemental magnesium content per dose.
+coaching_translation: Magnesium glycinate is one of the best-absorbed forms available
+  and is gentle on the stomach — ideal for sleep, anxiety, and muscle support.
+linked_to_topics:
+- magnesium-deficiency
+linked_to_supplements:
+- magnesium-glycinate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-magnesium-deficiency
+  location: Supplementation — forms of magnesium
+  quote: The chelated form can include magnesium glycinate. Again, magnesium content
+    is around 10%... higher dosages of magnesium glycinate is given because bioavailability
+    that you have is quite high.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

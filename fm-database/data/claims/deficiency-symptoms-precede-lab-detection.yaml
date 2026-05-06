@@ -1,0 +1,30 @@
+slug: deficiency-symptoms-precede-lab-detection
+statement: Symptoms of nutritional deficiency often appear years before the deficiency
+  becomes detectable on standard blood panels.
+evidence_tier: plausible_emerging
+rationale: Functional tissue depletion can occur while serum/plasma markers remain
+  within reference ranges — particularly for B12 (serum B12 is an insensitive marker;
+  methylmalonic acid and homocysteine detect earlier depletion), iron (ferritin in
+  inflammation), and magnesium (serum magnesium reflects <1% of body stores).
+coaching_translation: Your symptoms may be real even when your blood tests look 'normal.'
+  Some nutrients can be low inside your cells long before a standard blood test picks
+  it up.
+caveats:
+- This is a general FM clinical principle; the specific timeline ('years') is not
+  consistently evidenced for all nutrients.
+- Source is Instagram educational content.
+linked_to_topics:
+- medication-induced-nutrient-depletion
+- iron-deficiency-dysregulation
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXjjIqJjMSR/
+  quote: Symptoms of deficiency often appear years before the deficiency is detected
+    on bloodwork.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,38 @@
+slug: galt-immune-activation
+display_name: Gut-Associated Lymphoid Tissue (GALT) Activation
+aliases:
+- GALT
+- gut immune activation
+- intestinal immune response
+category: immune
+summary: Approximately 80% of the body's immune system resides at the intestinal border
+  as gut-associated lymphoid tissue (GALT), including macrophages, dendritic cells,
+  T cells, B cells, and plasma cells. When the mucosal barrier is breached, GALT mounts
+  an immune response that can become dysregulated, driving systemic inflammation and
+  autoimmunity.
+upstream_drivers:
+- tight-junction-dysfunction
+- lps-translocation
+- food-antigen-exposure
+downstream_effects:
+- systemic-inflammation
+- autoimmunity
+- food-sensitivities
+related_mechanisms:
+- tight-junction-dysfunction
+- molecular-mimicry
+linked_to_topics:
+- intestinal-permeability
+- autoimmunity-leaky-gut-connection
+evidence_tier: strong
+sources:
+- id: coconote-fm-intestinal-permeability-anish
+  location: Barrier Function / GALT
+  quote: Our 80 percent of immune system is actually at the intestinal border or we
+    can say this immunological barrier in your system and commonly it's called a gut
+    associated lymph tissue GALT and then GALT is primarily responsible for all the
+    immune reaction that is happening in the body.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

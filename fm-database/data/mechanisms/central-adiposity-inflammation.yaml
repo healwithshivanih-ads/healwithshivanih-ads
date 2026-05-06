@@ -1,0 +1,35 @@
+slug: central-adiposity-inflammation
+display_name: Central Adiposity as Inflammatory Organ
+aliases:
+- visceral fat inflammation
+- central obesity pro-inflammatory
+category: metabolic
+summary: Central (visceral) adiposity is not metabolically inert—it functions as an
+  active inflammatory organ producing pro-inflammatory cytokines, driving insulin
+  resistance, elevated triglycerides, low HDL, and small dense LDL. Weight loss directly
+  reduces LDL particle number.
+upstream_drivers:
+- high-sugar-diet
+- physical-inactivity
+- sleep-apnea
+downstream_effects:
+- insulin-resistance
+- small-dense-ldl-atherogenesis
+- elevated-triglycerides
+- low-hdl
+related_mechanisms:
+- small-dense-ldl-atherogenesis
+- insulin-resistance
+linked_to_topics:
+- metabolic-syndrome
+- cardiovascular-disease-prevention
+evidence_tier: strong
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Causes of Inflammation
+  quote: Central obesity. That's the lowest hanging fruit. Central obesity is an inflammatory
+    producing organ.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

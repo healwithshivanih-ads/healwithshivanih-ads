@@ -1,0 +1,29 @@
+slug: legumes-soaking-improves-digestibility
+statement: Soaking and sprouting legumes overnight before cooking improves digestibility
+  and reduces anti-nutritional factors such as phytates.
+evidence_tier: plausible_emerging
+rationale: The recipe collection consistently instructs soaking legumes (moth beans,
+  black chana, chickpeas, multiple dals) overnight before cooking. This is consistent
+  with well-established food science on phytate reduction and improved mineral bioavailability,
+  though no primary study is cited in the document.
+coaching_translation: Always soak beans and lentils overnight (or at least 6–8 hours)
+  before cooking. This makes them easier to digest and helps your body absorb more
+  of their nutrients.
+caveats:
+- Source is a recipe document, not a primary research paper. Soaking-digestibility
+  evidence is plausible and consistent with food science consensus but not explicitly
+  cited here.
+linked_to_topics:
+- legume-based-eating-pattern
+- cardiometabolic-diet
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-cardiometabolic-recipes
+  location: Black Chana Power Bowl
+  quote: Soak 1 cup of Black chana overnight. Wash thoroughly and drain the sprouts.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

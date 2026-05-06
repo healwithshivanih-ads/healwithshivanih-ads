@@ -1,0 +1,33 @@
+slug: iron-not-absorbed-with-damaged-gut-lining
+statement: Iron supplementation is ineffective when the gut lining is damaged; it
+  should be deferred until gut healing is underway.
+evidence_tier: plausible_emerging
+rationale: Iron absorption occurs primarily in the duodenal enterocytes. A damaged
+  intestinal lining from dysbiosis and hypochlorhydria impairs iron uptake. Premature
+  supplementation wastes the supplement and can feed dysbiotic bacteria. This is a
+  logical application of known iron absorption physiology.
+coaching_translation: Starting iron supplements before your gut is healing is like
+  pouring water into a leaking bucket. We wait until the gut lining is repairing so
+  your body can actually absorb and use the iron.
+caveats:
+- Source is FM lecture synthesis. The exact timing threshold is clinical judgement,
+  not a fixed evidence-based parameter.
+- Iron deficiency anaemia diagnosis and dosing require clinician oversight.
+linked_to_topics:
+- hypochlorhydria
+- dysbiosis
+- gut-skin-hormone-axis
+linked_to_supplements:
+- iron-bisglycinate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Key Supplements Discussion
+  quote: Iron-based glycinate, not initially again. Since you are working on calming
+    the gut down, iron would not work immediately because the lining itself has gotten
+    impacted. Nutrients would not do any good here because they wouldn't get absorbed.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,31 @@
+slug: digestive-enzyme-supplementation-supports-macronutrient-breakdown
+statement: Supplementing with digestive enzymes supports the breakdown and absorption
+  of food macronutrients in patients with reduced pancreatic enzyme output.
+evidence_tier: plausible_emerging
+rationale: Prescription pancreatic enzyme replacement therapy (PERT) has strong RCT
+  evidence in confirmed EPI. OTC broad-spectrum digestive enzymes have plausible mechanistic
+  rationale and some supportive data in functional GI contexts, though evidence is
+  less robust than PERT.
+coaching_translation: Taking digestive enzyme supplements with meals can help compensate
+  when the pancreas isn't producing enough. They provide the lipase, protease, and
+  amylase your body needs to break down fats, proteins, and carbs.
+out_of_scope_notes: Prescription PERT dosing and management of confirmed EPI is clinician
+  scope. Coaches can recommend OTC broad-spectrum enzymes as general digestive support.
+linked_to_topics:
+- pancreatic-insufficiency
+- digestive-enzyme-supplementation
+linked_to_supplements:
+- digestive-enzymes-broad-spectrum
+caveats:
+- Source is an expert consensus lecture. OTC digestive enzyme evidence is plausible-emerging
+  rather than strong. Prescription PERT should be directed by clinician.
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-pancreatic-insufficiency
+  location: Management / Support Strategies
+  quote: Digestive enzymes as supplementation, which should be given to support the
+    production and breakdown of the food.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -2,7 +2,6 @@ slug: gut-dysbiosis
 display_name: Gut Dysbiosis
 aliases:
 - intestinal microbiome imbalance
-- dysbiosis
 - dysbiotic bacteria
 - microbiome imbalance
 - SIBO
@@ -11,11 +10,15 @@ aliases:
 - microbial imbalance
 - dysbacteriosis
 - abnormal gut flora
+- disrupted gut flora
+- altered microbiome
+- gut microbiome imbalance
+- microbiota disruption
+- polymicrobial dysbiosis
 category: gut
-summary: An imbalance in the composition of gut microbiota, with reduction of beneficial
-  bacteria (Lactobacillus, Bifidobacterium) and overgrowth of pathogenic organisms.
-  Driven by antibiotics, poor diet, stress, and medications. Downstream effects include
-  impaired immunity, leaky gut, and altered mood via the gut-brain axis.
+summary: An imbalance between commensal and pathogenic microorganisms in the gut,
+  characterized by overgrowth of harmful bacteria or fungi and reduction of beneficial
+  species. Drives gas production, immune activation, and downstream systemic effects.
 upstream_drivers:
 - poor-diet
 - antibiotic-use
@@ -26,6 +29,15 @@ upstream_drivers:
 - alcohol
 - nsaids
 - ppi-use
+- antibiotic use
+- poor diet
+- illness
+- low-dietary-fiber
+- processed-food-consumption
+- antibiotic-overuse
+- reduced-motility
+- achlorhydria
+- immune-dysfunction
 downstream_effects:
 - increased-intestinal-permeability
 - systemic-inflammation
@@ -38,6 +50,14 @@ downstream_effects:
 - immune-dysfunction
 - mood-disorders
 - candida-overgrowth
+- impaired-immune-function
+- altered-neurotransmitter-production
+- bloating
+- gas
+- constipation
+- intestinal-barrier-dysfunction
+- sifo
+- neurotransmitter-dysregulation
 related_mechanisms:
 - chronic-inflammation
 - insulin-resistance
@@ -47,6 +67,11 @@ related_mechanisms:
 - nf-kb-activation
 - hypochlorhydria-mechanism
 - gut-brain-signaling
+- gut-serotonin-production
+- nlrp3-inflammasome-activation
+- oxidative-stress
+- intestinal-barrier-dysfunction
+- vagal-nerve-dysregulation
 linked_to_topics:
 - dyslipidemia
 - low-carb-diet
@@ -58,6 +83,13 @@ linked_to_topics:
 - gut-microbiome
 - gut-brain-axis
 - candida-overgrowth
+- gut-microbiome-personalized-nutrition
+- 5r-gut-restoration
+- anti-inflammatory-diet
+- sibo
+- sifo
+- leaky-gut-syndrome
+- gut-brain-axis-dysfunction
 evidence_tier: strong
 sources:
 - id: vitaone-cv-cheatsheet
@@ -74,7 +106,17 @@ sources:
   location: The 5R Framework for Gut Restoration — Reinoculate
   quote: Use of antibiotics kills both good and bad bacteria. Probiotics in the form
     of supplements or food are often needed to help reestablish a balanced gut flora.
-version: 4
+- id: vitaone-health-coaching-toolkit
+  location: The 5R Framework for Gut Restoration
+  quote: Use of antibiotics kills both good and bad bacteria. Probiotics in the form
+    of supplements or food are often needed to help reestablish a balanced gut flora.
+- id: coconote-fm-sibo-sifo
+  location: Bacterial Count / Normal Gut Function
+  quote: This biosis happens when these bacteria either overgrow or there is a disproportion
+    between the good and the bad bacteria. So the good bacteria goes down and the
+    bad bacteria get a chance to have a rise and then they start producing the methane
+    gas and the hydrogen gas.
+version: 7
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

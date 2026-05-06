@@ -1,0 +1,29 @@
+slug: immunomodulation-via-vitamin-d
+display_name: Immunomodulation via Vitamin D
+aliases:
+- vitamin D anti-inflammatory action
+- vitamin D immune regulation
+category: immune
+summary: Vitamin D exerts immunomodulatory effects by regulating both innate and adaptive
+  immune responses, including anti-inflammatory actions. It influences production
+  of neurotransmitters and cytokines, and was highlighted for clinical relevance during
+  COVID-19 treatment protocols.
+upstream_drivers:
+- vitamin-d-hydroxylation
+- adequate-vitamin-d-status
+downstream_effects:
+- reduced-inflammatory-burden
+- improved-immune-response
+related_mechanisms:
+- vitamin-d-hydroxylation
+linked_to_topics:
+- vitamin-d3
+evidence_tier: strong
+sources:
+- id: coconote-fm-vitamin-d3-k2
+  location: Vitamin D Functions
+  quote: It has an anti-inflammatory action. It is also called an immunomodulator.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

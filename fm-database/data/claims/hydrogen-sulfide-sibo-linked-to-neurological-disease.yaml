@@ -1,0 +1,31 @@
+slug: hydrogen-sulfide-sibo-linked-to-neurological-disease
+statement: Hydrogen sulfide-dominant SIBO has been associated with Parkinson's disease,
+  Alzheimer's disease, autism, and dementia, and is often not detected by standard
+  SIBO breath tests.
+evidence_tier: fm_specific_thin
+rationale: The gut-brain connection in neurodegenerative disease is an active research
+  area, but the specific link to H2S SIBO is not yet established by consensus. Standard
+  breath tests do not measure H2S.
+coaching_translation: When neurological or neurodegenerative symptoms are present
+  alongside gut issues, a deeper investigation beyond standard breath testing may
+  be warranted.
+out_of_scope_notes: Neurological disease assessment and management is clinician scope.
+  Coaches should refer out.
+caveats:
+- Source is expert consensus lecture; thin peer-reviewed evidence for direct H2S SIBO-neurological
+  disease link.
+- Standard SIBO breath tests may not detect H2S SIBO.
+linked_to_topics:
+- sibo
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-sibo-sifo
+  location: Types of SIBO – Hydrogen Sulfide
+  quote: it may also be associated with Parkinson's disease and it's a very toxic
+    kind of... if this particular gas is secreted... we are considering any kind of
+    Alzheimer's, Parkinson's or autism, dementia.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

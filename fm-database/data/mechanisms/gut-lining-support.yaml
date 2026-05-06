@@ -1,0 +1,35 @@
+slug: gut-lining-support
+display_name: Gut Lining Support via Fermented Foods & Bone Broth
+aliases:
+- intestinal barrier support
+- leaky-gut mitigation
+- gut mucosal nutrition
+category: gut
+summary: Fermented lentil batters (idli, dosa) and long-simmered bone broth provide
+  glutamine-containing gelatin, short-chain fatty acid precursors, and beneficial
+  microbes/postbiotics that support the intestinal epithelial barrier and reduce gut
+  permeability — relevant to cardiometabolic inflammation.
+upstream_drivers:
+- dysbiosis
+- low-fibre-diet
+- chronic-stress
+downstream_effects:
+- reduced-systemic-inflammation
+- improved-nutrient-absorption
+- lower-endotoxin-translocation
+related_mechanisms:
+- dietary-fiber-modulation
+- anti-inflammatory-signaling
+linked_to_topics:
+- bone-broth-therapeutic-use
+- cardiometabolic-diet
+evidence_tier: fm_specific_thin
+sources:
+- id: vitaone-cardiometabolic-recipes
+  location: Lentil Idli / Bone Broth
+  quote: Cover and allow to ferment in a warm place for about 10 – 12 hours … Cover
+    and let it simmer gently for 2–3 hours.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

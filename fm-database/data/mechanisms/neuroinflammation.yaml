@@ -4,31 +4,52 @@ aliases:
 - brain inflammation
 - central nervous system inflammation
 - neuro-inflammatory pathway
+- glial-activation
+- central-nervous-system-inflammation
+- neuro-cytokine-load
 category: immune
-summary: Omega-3 fatty acids (EPA/DHA) exert anti-inflammatory effects via modulation
-  of serotonin/dopamine receptor expression and neuronal membrane fluidity. Low omega-3
-  index correlates with elevated CRP and depressive symptoms. Magnesium regulates
-  NMDA receptors and reduces excitotoxicity.
+summary: Glial cell activation triggered by toxins, leaky gut, viral load, and oxidative
+  stress increases inflammatory cytokine output (IL-6, TNF-α). Emotional suppression
+  independently raises inflammatory cytokines and reduces vagal tone. Manifests as
+  brain fog, depression, pain sensitivity, and poor focus.
 upstream_drivers:
 - omega-3-deficiency
 - magnesium-deficiency
 - elevated-crp
+- leaky-gut
+- toxic-load
+- emotional-suppression
+- oxidative-stress
 downstream_effects:
 - depressive-symptoms
 - cognitive-decline
 - anxiety
+- brain-fog
+- depression
+- pain-sensitivity
+- poor-focus
+- cytokine-elevation
 related_mechanisms:
 - methylation-cycle-dysfunction
 - neurotransmitter-synthesis-impairment
+- leaky-gut
+- hpa-axis-dysregulation
+- vagal-tone-reduction
+- mitochondrial-dysfunction
 linked_to_topics:
 - nutrient-deficiency-depression
 - knee-pain
+- nervous-system-regulation
+- emotional-healing-chronic-disease
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-nutrition-cheatsheet
   location: How Nutrient Deficiencies (B12, Folate, Omega-3, Magnesium) Mimic Depression
   quote: Anti-inflammatory, modulate serotonin/dopamine receptors, neuronal fluidity
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: Repressed emotions ↑ inflammatory cytokines (IL-6, TNF- α), ↓ vagal tone.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

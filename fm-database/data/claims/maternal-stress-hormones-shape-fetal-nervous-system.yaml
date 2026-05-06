@@ -1,0 +1,31 @@
+slug: maternal-stress-hormones-shape-fetal-nervous-system
+statement: Maternal cortisol and adrenaline released during pregnancy — due to stress,
+  grief, or emotional absence — are absorbed by the fetus and contribute to lasting
+  nervous system dysregulation in the child.
+evidence_tier: plausible_emerging
+rationale: There is credible mechanistic and early clinical evidence that maternal
+  HPA axis activation and elevated glucocorticoids during pregnancy affect fetal neurodevelopment
+  and HPA programming. This is among the more scientifically grounded claims in the
+  document.
+coaching_translation: Stress your mother experienced while pregnant with you may have
+  influenced how your nervous system was wired — affecting how easily you relax or
+  feel safe.
+caveats:
+- Source is a seminar transcript, not primary literature.
+- Specific causal claims about individual clients' outcomes require clinician assessment.
+- Effect sizes and reversibility are not specified.
+linked_to_topics:
+- womb-imprinting-and-prenatal-experience
+- maternal-mental-health-and-fetal-environment
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: family-constellation-healing-womb
+  location: Birth trauma and nervous system section
+  quote: The nervous system was very challenged during the time of the other swarm
+    and the mother released so much cortisol and adrenaline.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

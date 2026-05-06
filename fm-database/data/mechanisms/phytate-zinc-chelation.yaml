@@ -1,0 +1,28 @@
+slug: phytate-zinc-chelation
+display_name: Phytate-Mediated Zinc Chelation
+aliases:
+- phytic acid zinc binding
+- plant-based zinc inhibition
+category: gut
+summary: Phytates (phytic acid) present in plant-based foods bind to zinc in the gut,
+  reducing its bioavailability and predisposing individuals on vegan or high-plant
+  diets to zinc deficiency.
+upstream_drivers:
+- vegan-diet
+- high-phytate-diet
+downstream_effects:
+- zinc-deficiency
+related_mechanisms:
+- zinc-hcl-production-link
+linked_to_topics:
+- zinc-deficiency
+evidence_tier: strong
+sources:
+- id: coconote-fm-zinc-deficiency
+  location: Risk Factors
+  quote: Vegan diet because phytates which are present inside the plant, they also
+    bind to zinc thus causing its deficiency.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

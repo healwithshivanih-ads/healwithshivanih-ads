@@ -1,0 +1,33 @@
+slug: lipophilic-toxins-require-phase1-phase2-for-excretion
+statement: Lipophilic (fat-soluble) toxins cannot be excreted directly and must be
+  converted to water-soluble forms via Phase 1 and Phase 2 liver detoxification before
+  elimination through bile or urine.
+evidence_tier: strong
+rationale: 'Well-established biochemistry: lipophilic compounds bind to adipose tissue
+  and cannot be filtered renally. Hepatic biotransformation via CYP450 (Phase 1) and
+  conjugation (Phase 2) is required for water-soluble conjugate formation and excretion.
+  This is foundational pharmacology and toxicology.'
+coaching_translation: Fat-soluble toxins (like many pesticides and plasticizers) get
+  stored in body fat if the liver can't process them. Your liver has two steps — Phase
+  1 and Phase 2 — that together convert these toxins into a water-soluble form so
+  they can leave via urine or bile.
+caveats:
+- Source is expert lecture (expert_consensus, moderate quality). Core biochemistry
+  is well-established, though specific FM applications are extrapolated.
+linked_to_topics:
+- liver-detoxification-phases
+- xenobiotic-exposure
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-liver-detox-part1
+  location: Hydrophilic vs Lipophilic Toxins
+  quote: The real problem is lipophilic compounds... and most toxins or most you know
+    that you see in a list they are actually lycophyllic compound they are a fast
+    soluble compound so they cannot eliminate easily in the urine or in the body because
+    they bind to the fat.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

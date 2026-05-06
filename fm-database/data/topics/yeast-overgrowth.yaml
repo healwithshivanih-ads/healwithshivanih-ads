@@ -1,0 +1,38 @@
+slug: yeast-overgrowth
+display_name: Yeast Overgrowth & Cellular Acidosis
+aliases:
+- fungal overgrowth
+- candida
+- yeast presence
+summary: When yeast is present in the body and fed by dietary sugars (including fruit
+  sugars), it produces acidic byproducts (acetic acid, uric acid, lactic acid, and
+  alcohol), which lower cellular pH toward the disease-promoting range (~5.5). This
+  self-reinforcing cycle worsens the acidic environment that supports further fungal
+  growth.
+common_symptoms:
+- fatigue
+- brain-fog
+- bloating
+red_flags: []
+related_topics:
+- ph-balance
+- lectin-sensitivity
+key_mechanisms:
+- cellular-ph-dysregulation
+- yeast-acid-byproduct-cycle
+coaching_scope_notes: Coaches can discuss reducing dietary sugar and high-sugar fruit
+  intake in clients with known or suspected yeast issues. Avoid diagnosing candida
+  overgrowth.
+clinician_scope_notes: Systemic candidiasis is a clinical diagnosis. Refer clients
+  with persistent symptoms for evaluation.
+evidence_tier: fm_specific_thin
+sources:
+- id: barbara-oneil-ph-balance
+  location: Fruit and Yeast Section
+  quote: If someone has a yeast presence in their body, and they're eating a lot of
+    fruit. That sugar in the fruit can feed the yeast and as the yeast feeds on the
+    sugar it gives off acetic acid, it gives off uric acid, it gives off lactic acid.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

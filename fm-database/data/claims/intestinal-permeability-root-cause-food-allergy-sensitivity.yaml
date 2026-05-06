@@ -1,0 +1,36 @@
+slug: intestinal-permeability-root-cause-food-allergy-sensitivity
+statement: Increased intestinal permeability (leaky gut) is the primary root cause
+  of both food allergy and food sensitivity, as it allows undigested peptides to enter
+  the bloodstream and trigger immune reactions.
+evidence_tier: plausible_emerging
+rationale: The leaky gut–food sensitivity link is a central FM hypothesis with plausible
+  biological mechanisms (tight junction disruption, antigen translocation). Growing
+  preclinical and some clinical evidence supports the connection, but it is not yet
+  peer-reviewed consensus for all food allergy types.
+coaching_translation: Rather than just avoiding trigger foods, the deeper goal is
+  healing the gut lining. When the gut heals, food reactions often improve or resolve
+  over time.
+caveats:
+- Source is expert lecture, moderate quality.
+- Calling leaky gut the 'primary root cause' of all food allergy is an FM-specific
+  framing; conventional allergy medicine does not uniformly endorse this.
+- This claim should be framed as a working hypothesis for gut-healing plans, not stated
+  as established fact to clients.
+linked_to_topics:
+- intestinal-permeability-leaky-gut
+- food-sensitivity-igg-iga-mediated
+- food-allergy-ige-mediated
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-food-allergies-sensitivities
+  location: ATM and Intestinal Permeability Section
+  quote: If you have a leaky gut or you have intestinal pulmonary disease, that is
+    the cause for food allergy, food sensitivity... the food allergy and food sensitivity
+    is typically because of increased intestinal permeability and that's the root
+    cause of food allergy and food sensitivity.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

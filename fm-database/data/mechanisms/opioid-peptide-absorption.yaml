@@ -1,0 +1,36 @@
+slug: opioid-peptide-absorption
+display_name: Opioid Peptide Absorption (Glutomorphine / Caseomorphine)
+aliases:
+- glutomorphine
+- caseomorphine
+- exorphins
+- dietary opiate effect
+category: gut
+summary: Gluten and casein incompletely broken down in a dysbiotic gut produce opiate-like
+  peptides (glutomorphine from wheat, caseomorphine from dairy). Without healthy gut
+  flora, these peptides cross the gut lining, enter the bloodstream, reach brain opiate
+  receptor sites, and exert opiate-like effects on brain function, potentially contributing
+  to psychiatric symptoms.
+upstream_drivers:
+- gut-microbiome-dysbiosis
+- enzyme-deficiency
+downstream_effects:
+- brain-opiate-receptor-activation
+- psychiatric-symptoms
+- mood-instability
+related_mechanisms:
+- gut-microbiome-dysbiosis
+- leaky-gut
+linked_to_topics:
+- gut-brain-connection
+evidence_tier: plausible_emerging
+sources:
+- id: barbara-oneil-healing-mind
+  location: Gut-Brain Connection Section
+  quote: glutomorphine and caseomorphine get into the blood. They get into the blood,
+    they're taken to the opiate receptor sites in the brain, and they have an opiate
+    effect on brain function.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

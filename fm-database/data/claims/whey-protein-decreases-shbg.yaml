@@ -1,0 +1,24 @@
+slug: whey-protein-decreases-shbg
+statement: Whey protein supplementation is associated with decreased SHBG levels.
+evidence_tier: fm_specific_thin
+rationale: Listed in the FMCN toolkit. Protein intake generally influences SHBG (low
+  protein diets increase SHBG); whey's specific effect is plausible but sparsely documented.
+coaching_translation: Adequate protein, including whey protein, may help keep SHBG
+  at a healthy level by signaling sufficient nutritional status to the liver.
+caveats:
+- Thin peer-reviewed evidence specific to whey protein and SHBG
+- Source is expert-consensus toolkit
+linked_to_topics:
+- sex-hormone-binding-globulin
+linked_to_supplements:
+- whey-protein
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Sex Hormone Binding Globulin (SHBG)
+  quote: Whey protein [listed under factors that Decrease SHBG]
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,30 @@
+slug: sulfur-required-for-phase2-sulfation
+statement: Sulfur-containing amino acids are required for Phase 2 sulfation, a key
+  conjugation pathway for detoxifying xenobiotics and endogenous compounds including
+  hormones.
+evidence_tier: plausible_emerging
+rationale: Sulfation is a well-established Phase 2 conjugation pathway using 3'-phosphoadenosine-5'-phosphosulfate
+  (PAPS) as sulfate donor, derived from cysteine/methionine metabolism. This is biochemically
+  well-established; FM-specific claims about supplementation dosing are less robustly
+  evidenced.
+coaching_translation: Sulfur — found in eggs, garlic, onions, and cruciferous vegetables
+  — is the raw material for a specific detox pathway (sulfation) that your liver uses
+  to process hormones, drugs, and toxins.
+caveats:
+- Expert lecture source (moderate quality). Sulfation biochemistry is well-established;
+  optimal dietary sulfur intake for detox optimization is less clearly defined.
+linked_to_topics:
+- liver-detoxification-phases
+linked_to_supplements:
+- sulfur-containing-amino-acids
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-liver-detox-part1
+  location: Phase 2 Conjugation Pathways
+  quote: that's why we require sulfur-containing amino acid, because sulfur is required
+    for detoxification process.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

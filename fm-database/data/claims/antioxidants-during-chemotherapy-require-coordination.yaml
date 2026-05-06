@@ -1,0 +1,35 @@
+slug: antioxidants-during-chemotherapy-require-coordination
+statement: High-dose antioxidants such as vitamin C, vitamin E, and NAC should be
+  timed carefully and avoided during chemotherapy unless coordinated with the oncology
+  team.
+evidence_tier: confirm_with_clinician
+rationale: Antioxidant supplementation potentially interfering with reactive-oxygen-species-based
+  chemotherapy mechanisms is a recognized clinical concern.
+out_of_scope_notes: Oncology-context supplement management is entirely outside coaching
+  scope.
+caveats:
+- Source is a practitioner cheatsheet without citation to specific oncology guidelines.
+- Evidence is mixed; oncology team decision is paramount.
+- Never recommend antioxidant supplementation to clients undergoing chemotherapy without
+  explicit oncologist approval.
+linked_to_topics:
+- medication-nutrient-interactions
+linked_to_supplements:
+- vitamin-c
+- vitamin-e
+- nac
+coaching_translation: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 21
+  quote: High-dose antioxidants such as vitamin C, vitamin E, and NAC are advised
+    to be timed carefully and avoided during chemotherapy unless coordinated.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 21
+  quote: High-dose antioxidants such as vitamin C, vitamin E, and NAC are advised
+    to be timed carefully and avoided during chemotherapy unless coordinated.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

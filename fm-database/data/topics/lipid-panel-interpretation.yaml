@@ -1,0 +1,37 @@
+slug: lipid-panel-interpretation
+display_name: Advanced Lipid Panel Interpretation
+aliases:
+- cholesterol panel
+- lipid profile
+- LDL particle size
+summary: Standard cholesterol numbers (total cholesterol, LDL-C) are insufficient
+  for cardiovascular risk assessment. Key risk markers include low HDL, high triglycerides,
+  the TG:HDL ratio, and small-dense LDL particle size and number. Large, fluffy LDL
+  particles are considered less atherogenic.
+common_symptoms: []
+red_flags:
+- TG:HDL ratio above 3–4
+- very low HDL (<40)
+- extremely high LDL particle number
+related_topics:
+- cardiometabolic-disease
+- atherosclerosis
+- insulin-resistance
+key_mechanisms:
+- ldl-particle-size-atherogenicity
+- insulin-resistance
+coaching_scope_notes: Coaches can educate clients on the importance of TG:HDL ratio
+  and LDL particle quality over total cholesterol numbers. Statin decisions must remain
+  with the clinician.
+clinician_scope_notes: Advanced lipoprotein testing (NMR or ion mobility) for particle
+  size/number is a clinical tool. Statin risk-benefit analysis is clinician scope.
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-biomarkers-cvs
+  location: Lipid Burden and Cholesterol Myths
+  quote: the number of concentration of cholesterol or total cholesterol is not the
+    primary risk factor. We actually want to find out where is patient profile.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,33 @@
+slug: ai-cannot-replace-human-coaching-relationship
+statement: AI coaching tools cannot replicate motivational interviewing, emotional
+  attunement, or the human relational components of health coaching, and are best
+  understood as amplifiers of — not replacements for — human coaches.
+evidence_tier: plausible_emerging
+rationale: 'Speaker articulates a clear functional distinction: AI lacks the ability
+  to detect emotional nuance, conduct motivational interviewing, or respond dynamically
+  to a client''s non-verbal or emotional state. This is consistent with current limitations
+  of AI in affective and relational domains.'
+coaching_translation: Embrace AI as a tool for content creation, data synthesis, and
+  efficiency — but your irreplaceable value is in the human connection, the motivational
+  conversation, and the ability to read what your client actually needs.
+caveats:
+- Speaker's framing reflects current AI capabilities as of this talk — the landscape
+  is rapidly evolving.
+- Source is expert opinion, not peer-reviewed research.
+linked_to_topics:
+- digital-health-coaching
+- functional-medicine-coaching
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-future-fm
+  location: 'Q&A: AI as a Partner Section'
+  quote: It does not dial people down into the why. It doesn't do motivational interviewing.
+    It doesn't get that same emotional response. AI doesn't know if when somebody's
+    using it, if they're smiling or if they're cursing the AI out, right? You do when
+    you're with them.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

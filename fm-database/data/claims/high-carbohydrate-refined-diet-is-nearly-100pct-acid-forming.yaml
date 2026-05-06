@@ -1,0 +1,30 @@
+slug: high-carbohydrate-refined-diet-is-nearly-100pct-acid-forming
+statement: A diet dominated by refined carbohydrates (bread, pasta, rice, sugar, cakes,
+  pizza, cereal) is almost entirely acid-forming.
+evidence_tier: plausible_emerging
+rationale: Refined carbohydrate-heavy diets are associated with higher net acid excretion
+  and pro-inflammatory dietary patterns in several observational and mechanistic studies.
+  The characterization as 'almost 100% acid' is a rhetorical emphasis rather than
+  a precise metabolic measurement, but the directional claim is plausible.
+coaching_translation: When most of your carbohydrates come from refined sources like
+  white bread, pasta, and sugar, the vast majority of your diet is pushing your body
+  toward a more acidic state. Swapping in whole foods tips the balance back.
+caveats:
+- '''Almost 100% acid'' is rhetorical; actual acid load varies by food and individual.'
+- Source is expert consensus/lecture, not primary literature.
+linked_to_topics:
+- refined-carbohydrate-overconsumption
+- ph-balance-and-diet
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-fresh-cheeses-ph
+  location: Carbohydrates and Acid Load
+  quote: The cereal, the bread, the cakes, the pasta, the pizza, the rice, the sugar.
+    Another reason why that high carbohydrate diet is actually a dangerous diet because
+    it's almost 100% acid.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

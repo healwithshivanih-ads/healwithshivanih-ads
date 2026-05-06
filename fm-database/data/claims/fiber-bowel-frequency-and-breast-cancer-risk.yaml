@@ -1,0 +1,33 @@
+slug: fiber-bowel-frequency-and-breast-cancer-risk
+statement: Women who have two bowel movements per day have no abnormal breast cells
+  on nipple aspiration cytology; those who miss even one day show up to 50% abnormal
+  breast cell rates, correlating with higher long-term breast cancer incidence.
+evidence_tier: plausible_emerging
+rationale: The relationship between bowel transit time, estrogen enterohepatic recirculation,
+  and breast cancer risk has been studied. The specific nipple aspiration cytology
+  data and percentages cited align with older research (Petrakis & King, 1981 era)
+  on estrogen excretion and breast health.
+coaching_translation: Going to the bathroom regularly — ideally twice a day — is one
+  of the most powerful things you can do for your hormonal health. When stool stays
+  in the gut too long, estrogen gets reabsorbed into your body instead of being excreted.
+caveats:
+- The specific study cited is not named; figures should be verified against primary
+  literature.
+- Correlational data; not proof of direct causation for breast cancer.
+linked_to_topics:
+- estrogen-and-fiber-transit-time
+- hormonal-nutrition-foundations
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Fiber, Transit Time, and Estrogen Metabolism
+  quote: Women who have two poops a day never had any abnormal cells, and then they
+    didn't go on to get breast cancer. If they pooped once a day, 5% of them had abnormal
+    cells... they missed a day, you should never miss a day... found up to 50% abnormal
+    breast cells.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,27 @@
+slug: high-fiber-diet-promotes-scfa-and-mood
+statement: A high-fiber diet promotes diverse gut bacteria that produce short-chain
+  fatty acids (SCFAs), which reduce gut and brain inflammation and are associated
+  with improved mood and lower risk of depression.
+evidence_tier: plausible_emerging
+rationale: SCFA production from dietary fiber is well-established; the link to mood
+  improvement and lower depression risk is supported by epidemiological and some interventional
+  data but consensus-level RCTs are still limited.
+coaching_translation: Eating plenty of fruits, vegetables, legumes, and whole grains
+  feeds your gut bacteria, which in turn produce compounds that protect your brain
+  and improve your mood.
+linked_to_topics:
+- gut-brain-axis
+- gut-microbiome-personalized-nutrition
+linked_to_supplements:
+- fos-prebiotic-supplement
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Gut-Brain Axis: Nutrition''s Impact on Mental Health'
+  quote: Research links fiber-rich diets with improved mood and a lower risk of depression.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,5 +1,5 @@
 slug: food-sensitivities
-display_name: Food Sensitivities
+display_name: New or Worsening Food Sensitivities
 aliases:
 - new food sensitivities
 - food-intolerances
@@ -7,38 +7,76 @@ aliases:
 - foods-i-used-to-tolerate
 - delayed food reactions
 - food intolerances
+- food-reactions
+- new food reactions
+- reactive foods
+- reacting to foods
+- can't tolerate foods
+- new food allergies
+- food reactions
+- food intolerance
+- multiple food reactions
+- food allergies
+- dietary sensitivities
 category: gi
 severity: common
-description: 'New or worsening reactions to foods previously tolerated — typically
-
-  delayed (hours to days) GI, skin, joint, or cognitive symptoms after
-
-  exposure. In FM lens, often a downstream signal of leaky gut + immune
-
-  reactivity, especially in perimenopause as estrogen-supported barrier
-
-  integrity declines.
-
-  '
-when_to_refer: 'Acute IgE-mediated reactions (hives, anaphylaxis, swelling) — ER,
-  then
-
-  allergist. Severe weight loss / malabsorption — GI workup.
-
-  '
+description: Adverse reactions to previously tolerated foods, often linked to compromised
+  gut barrier function (leaky gut) and disrupted microbiome, allowing undigested food
+  particles to enter the bloodstream and trigger immune responses.
+when_to_refer: Refer if reactions are severe (anaphylaxis), rapidly expanding, or
+  associated with weight loss and GI bleeding.
 linked_to_topics:
 - perimenopause
 - microbiome
 - dysbiosis
 - autoimmune
+- gut-brain-axis
+- emotional-healing-in-chronic-disease
+- leaky-gut
+- gut-dysbiosis
+- intestinal-permeability
+- gut-microbiome-and-gut-flora
+- inflammatory-bowel-conditions
 linked_to_mechanisms:
 - leaky-gut
 - estrogen-decline
 - microbial-diversity-decline
+- intestinal-hyperpermeability
+- gut-brain-axis-disruption
+- leaky-gut-mechanism
+- systemic-inflammation
+- impaired-gut-barrier
+- gut-dysbiosis-microbiome-imbalance
+- tight-junction-dysfunction
+- molecular-mimicry
+- galt-immune-activation
+- gut-immune-barrier-function
+- gut-microbiome-colonisation
 sources:
 - id: thurlow-microbiome-session-2
   location: Session 2 — Food Sensitivities & Gut Permeability
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: Stress hormones alter microbiome diversity, ↑ intestinal permeability ('leaky
+    gut').
+- id: vitaone-health-coaching-cheatsheet
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: Bloating, food sensitivities, mood swings, brain fog.
+- id: coconote-fm-chronic-pain-fatigue
+  location: Digestion Section
+  quote: new food sensitivities
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Source and Reinfection Section
+  quote: if the patient having a low stomach acid or patient is eating all the time,
+    all the time, sugary diet then they have a source of the infection.
+- id: coconote-fm-intestinal-permeability-anish
+  location: Consequences of Intestinal Permeability
+  quote: You can see a lot of full sensitivity, intolerance, and that leads to systemic
+    inflammation and your toxic load will be increased.
+- id: barbara-oneil-gi-tract
+  location: Leaky Gut Section
+  quote: Things are coming in there that should never come in there.
+version: 7
 status: active
-updated_at: 2026-04-29
+updated_at: '2026-05-05'
 updated_by: shivani

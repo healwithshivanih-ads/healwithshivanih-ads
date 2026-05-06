@@ -1,0 +1,30 @@
+slug: epa-dha-reduces-rheumatoid-arthritis-inflammation
+statement: EPA and DHA supplementation produces higher rates of remission and measurable
+  inhibition of TNF-alpha and IL-1-beta in rheumatoid arthritis.
+evidence_tier: plausible_emerging
+rationale: Cited in the lecture as study evidence for rheumatoid arthritis. Consistent
+  with published meta-analyses on omega-3 in RA showing reduced disease activity and
+  inflammatory markers. Source is an FM lecture (expert consensus, moderate quality).
+coaching_translation: Omega-3 fats have anti-inflammatory effects that may help ease
+  joint pain and inflammation in conditions like rheumatoid arthritis.
+out_of_scope_notes: RA is an autoimmune condition requiring medical management; omega-3
+  is adjunctive, not a standalone treatment.
+caveats:
+- Source is an FM lecture synthesis, not a specific primary paper citation.
+- RA management must remain under clinician supervision.
+linked_to_topics:
+- omega-3-fatty-acids
+- arachidonic-acid-cascade
+linked_to_supplements:
+- epa-dha-fish-oil
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-omega-3-fatty-acids
+  location: Rheumatoid Arthritis Study Slide
+  quote: EPA and DHA have also found a role in rheumatoid arthritis. So higher rates
+    of remission were seen. And you know, the percent inhibition of inflammatory compounds
+    like TNF-alpha and interleukin-1-beta were seen with EPA and DHA consumption.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

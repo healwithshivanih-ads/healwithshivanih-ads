@@ -1,0 +1,32 @@
+slug: exercise-improves-insulin-sensitivity-and-glucose-disposal
+statement: Regular exercise — including anti-gravity and aerobic modalities — produces
+  sustained improvements in insulin sensitivity and glucose disposal via both insulin-dependent
+  and insulin-independent skeletal muscle mechanisms.
+evidence_tier: strong
+rationale: Well-established mechanism (GLUT4 translocation, AMPK activation) supported
+  by extensive RCT and meta-analysis literature. Consistent with guideline recommendations
+  for T2D management.
+coaching_translation: Moving your body regularly — especially exercises that challenge
+  gravity like stair climbing, squats, or yoga — helps your muscles soak up blood
+  sugar more efficiently, with or without insulin.
+caveats:
+- Clients on insulin or oral hypoglycemics should consult their prescriber before
+  significantly increasing intensity.
+- Source is a coaching toolkit; specific RCTs not individually cited for this claim.
+linked_to_topics:
+- blood-sugar-dysfunction
+- antigravity-exercise-for-blood-sugar
+- insulin-resistance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Antigravity Exercises
+  quote: Exercise enhances skeletal muscle glucose uptake using both insulin-dependent
+    & insulin-independent mechanisms, and regular exercise results in sustained improvements
+    in insulin sensitivity and glucose disposal.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

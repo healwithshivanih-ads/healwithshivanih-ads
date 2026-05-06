@@ -1,0 +1,32 @@
+slug: functional-medicine-shifts-from-disease-centered-to-patient-centered
+statement: Functional and integrative medicine models seek to identify upstream causes
+  — lifestyle, environment, gene interactions, stress, and the microbiome — representing
+  a paradigm shift from disease-centered to patient-centered care.
+evidence_tier: plausible_emerging
+rationale: Speaker describes the philosophical and structural distinction between
+  traditional (organ/symptom siloed) and functional/integrative (upstream, systems-based)
+  medicine. This framing is foundational to FM practice and well-described in FM literature,
+  though 'strong' tier requires specific RCT-level evidence for the model itself.
+coaching_translation: When clients ask why functional medicine is different, explain
+  that it looks for root causes — diet, stress, environment, gut health, hormones
+  — rather than just treating the symptom in front of them.
+caveats:
+- Source is expert talk/synthesis.
+- The paradigm shift is well-articulated in FM literature but the comparative outcomes
+  evidence is still accumulating.
+linked_to_topics:
+- functional-medicine-coaching
+- chronic-disease-management
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-future-fm
+  location: Disease-Centered to Patient-Centered Shift Section
+  quote: Functional and integrative models seeking to understand upstream causes,
+    lifestyle, environment, gene interactions, stress, the microbiome, that's more
+    patient centered.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

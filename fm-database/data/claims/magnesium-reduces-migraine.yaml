@@ -1,0 +1,31 @@
+slug: magnesium-reduces-migraine
+statement: Magnesium citrate or glycinate (200–300 mg) relaxes cerebral blood vessels,
+  supports neurotransmitter regulation, and helps prevent tension headaches.
+evidence_tier: plausible_emerging
+rationale: Magnesium deficiency is associated with migraine and multiple small trials
+  support magnesium supplementation for migraine prevention. The dose range cited
+  (200–300 mg) is within commonly studied ranges.
+coaching_translation: Taking 200–300 mg of magnesium glycinate or citrate can help
+  reduce the frequency of tension headaches and migraines. Glycinate is gentler on
+  the gut.
+out_of_scope_notes: Specific dosing recommendations and ruling out contraindications
+  (kidney disease) should be confirmed with a clinician.
+caveats:
+- Source document does not cite specific RCTs
+- Source is a coaching toolkit — dose should be verified with clinician
+- Prefer magnesium glycinate to avoid laxative effect of oxide forms
+linked_to_topics:
+- gut-brain-axis
+linked_to_supplements:
+- magnesium-glycinate
+- magnesium-citrate
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: MIGRAINE / HEADACHE — 3. Magnesium Citrate / Glycinate
+  quote: Magnesium Citrate / Glycinate (200–300 mg). Relaxes cerebral blood vessels.
+    Helps neurotransmitter regulation. Prevents tension headaches.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,38 @@
+slug: behavior-change-accountability
+display_name: Behavior Change & Accountability
+aliases:
+- habit change support
+- motivational accountability
+- behavioral scaffolding
+category: neurological
+summary: The process by which structured accountability, motivational interviewing,
+  goal clarification, and regular check-ins support patients in translating clinical
+  recommendations into consistent daily habits. Coaches serve as the primary delivery
+  vehicle for this mechanism in integrated care teams.
+upstream_drivers:
+- complex-care-plan-delivery
+- low-intrinsic-motivation
+- unclear-patient-goals
+- care-plan-overwhelm
+downstream_effects:
+- improved-care-plan-adherence
+- faster-lab-value-improvement
+- reduced-provider-burden
+- improved-patient-retention
+related_mechanisms:
+- interdisciplinary-care-integration
+- patient-centered-care-model
+linked_to_topics:
+- functional-medicine-coaching
+- chronic-disease-management
+- coach-clinician-collaboration
+evidence_tier: strong
+sources:
+- id: ask-expert-future-fm
+  location: Role of Coach as Strategic Collaborator Section
+  quote: Historically, a health coach has often been understood as somebody who supports
+    behavior change, provides accountability, and helps with goal setting.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

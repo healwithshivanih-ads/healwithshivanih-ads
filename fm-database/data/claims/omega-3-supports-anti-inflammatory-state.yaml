@@ -1,0 +1,28 @@
+slug: omega-3-supports-anti-inflammatory-state
+statement: Omega-3 fatty acids provide anti-inflammatory support relevant to both
+  autoimmune skin conditions (psoriasis) and hormonal balance.
+evidence_tier: strong
+rationale: EPA and DHA from omega-3 fatty acids are well-established precursors to
+  anti-inflammatory eicosanoids (resolvins, protectins). Meta-analyses support their
+  use in inflammatory skin conditions including psoriasis, and observational data
+  links omega-3 intake to improved menstrual pain.
+coaching_translation: Omega-3 fats are some of the most well-researched nutrients
+  for reducing inflammation — relevant whether you're dealing with skin flares, period
+  pain, or general immune overactivity.
+linked_to_topics:
+- psoriasis-gut-immune
+- immune-dysregulation
+- gut-skin-hormone-axis
+linked_to_supplements:
+- omega-3-fatty-acids
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Key Supplements Discussion
+  quote: Omega 3 for good fats.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

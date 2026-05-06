@@ -1,0 +1,46 @@
+slug: tight-junction-dysfunction
+display_name: Tight Junction Dysfunction
+aliases:
+- paracellular leak
+- epithelial barrier breakdown
+- zonulin-mediated permeability
+category: gut
+summary: Tight junctions between epithelial cells normally prevent paracellular transport
+  of large molecules. When disrupted — by stress, infection, dysbiosis, food antigens,
+  toxins, or nutrient deficiency — they allow peptides, LPS, and pathogens to translocate
+  from the intestinal lumen into the bloodstream, triggering immune activation and
+  systemic inflammation.
+upstream_drivers:
+- stress
+- dysbiosis
+- food-antigens
+- lps
+- toxin-exposure
+- nutrient-deficiency
+- low-stomach-acid
+- antibiotic-use
+- proton-pump-inhibitor-use
+downstream_effects:
+- lps-translocation
+- systemic-inflammation
+- molecular-mimicry
+- autoimmunity
+- food-sensitivities
+related_mechanisms:
+- lps-translocation
+- molecular-mimicry
+- gut-microbiome-dysbiosis
+linked_to_topics:
+- intestinal-permeability
+- autoimmunity-leaky-gut-connection
+evidence_tier: strong
+sources:
+- id: coconote-fm-intestinal-permeability-anish
+  location: Barrier Function Overview
+  quote: We have tight junctions at the epithelial border. From the epithelium to
+    epithelium, we have a very sophisticated structure that prevents any kind of pathologies
+    or any kind of food particle that is entering in our human body or bloodstream.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

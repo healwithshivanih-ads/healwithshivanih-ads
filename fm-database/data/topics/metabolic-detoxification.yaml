@@ -1,0 +1,48 @@
+slug: metabolic-detoxification
+display_name: Metabolic Detoxification
+aliases:
+- liver detox
+- biotransformation
+- toxin clearance
+- metabolic detox
+summary: The body's physiologic process of rendering chemicals, compounds, hormones,
+  and toxicants less harmful, primarily through Phase I and Phase II liver enzyme
+  pathways, with excretion via kidneys, intestines, and skin. The organs of detoxification
+  include the liver, kidneys, large intestine, lymphatic system, and sweat glands.
+common_symptoms:
+- fatigue
+- brain-fog
+- weight-gain
+- headaches
+- mood-disorders
+- cognitive-difficulties
+red_flags:
+- tremors
+- suspected Parkinson's or Alzheimer's symptoms
+- signs of acute toxin poisoning
+related_topics:
+- liver-detox-food-plan
+- elimination-diet
+- toxic-body-burden
+- mold-mycotoxin-exposure
+key_mechanisms:
+- phase-i-cytochrome-p450
+- phase-ii-conjugation
+- gut-liver-axis
+coaching_scope_notes: Coaches can support dietary choices, elimination of toxin sources,
+  hydration, fiber intake, and lifestyle practices. Supplement protocols and fasting
+  interventions require clinician oversight.
+clinician_scope_notes: Clinicians may prescribe specific phase I/II nutrient support,
+  medical food powders, fasting protocols, and lab testing (CBC, CMP, GFR, Vitamin
+  D). Genetic enzyme variability testing is clinician-directed.
+evidence_tier: strong
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Detox Food Plan — What is Detox?
+  quote: In other words, there are well-defined metabolic pathways in the body that
+    are responsible for converting toxins into chemical compounds, making it easy
+    for the body to eliminate them (primarily through the urine or stools).
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

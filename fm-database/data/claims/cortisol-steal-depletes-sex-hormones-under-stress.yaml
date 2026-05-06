@@ -1,0 +1,32 @@
+slug: cortisol-steal-depletes-sex-hormones-under-stress
+statement: During chronic inflammation or sustained stress, pregnenolone is preferentially
+  shunted to cortisol production (cortisol steal), leading to elevated serum cortisol
+  and simultaneously low DHEA-S, testosterone, progesterone, and estrogen.
+evidence_tier: plausible_emerging
+rationale: The biochemical pathway is established (pregnenolone → 17-OH-pregnenolone
+  → cortisol). Clinical evidence for 'cortisol steal' as a meaningful clinical entity
+  in humans is emerging but not consensus-level; mechanism is biologically plausible.
+coaching_translation: When a client has high stress/inflammation AND low hormones,
+  the cortisol steal pattern may be at play. Addressing inflammation and stress FIRST
+  — through diet, sleep, movement, and stress practices — is essential before jumping
+  to hormone support.
+caveats:
+- '''Cortisol steal'' as a discrete clinical diagnosis has limited dedicated RCT evidence;
+  it is biologically plausible but categorized as plausible_emerging.'
+- Source is expert consensus lecture.
+linked_to_topics:
+- cortisol-steal
+- steroidogenesis
+- menopause
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-sex-hormones
+  location: Cortisol Steal
+  quote: at the expense, see it's written here, expense of other hormones in the cellular
+    genetic pathway. So at the expense of other hormones, the cortisol is rising
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

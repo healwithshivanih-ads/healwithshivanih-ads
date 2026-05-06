@@ -1,5 +1,5 @@
 slug: chronic-inflammation
-display_name: Chronic Low-Grade Inflammation
+display_name: Chronic Systemic Inflammation
 aliases:
 - inflammatory-cytokine-release
 - inflammatory-cytokine-signaling
@@ -11,9 +11,13 @@ aliases:
 - cytokine load
 - low-grade systemic inflammation
 - meta-inflammation
+- inflammatory cytokine production
+- inflammatory burden
 category: immune
-summary: Persistent low-grade inflammation, reflected by elevated hs-CRP, promotes
-  endothelial dysfunction and atherogenesis, amplifying cardiovascular risk in dyslipidemia.
+summary: Persistent low-grade inflammation drives all six primary cardiometabolic
+  risk patterns. It is reflected by elevated hsCRP, ESR, ferritin, and IL-6. Sources
+  include gut dysbiosis, gum disease, food sensitivities, heavy metal toxicity, and
+  smoking.
 upstream_drivers:
 - visceral adiposity
 - leaky gut + LPS translocation
@@ -35,6 +39,15 @@ upstream_drivers:
 - mitochondrial-dysfunction
 - oxidative-stress
 - chronic-stress
+- elevated-hsCRP
+- elevated-fibrinogen
+- high-omega-6-dietary-intake
+- glycation-ages
+- oral-infection
+- smoking
+- periodontal-disease
+- heavy-metal-toxicity
+- obesity
 downstream_effects:
 - elevated hs-CRP, IL-6, TNF-α
 - insulin resistance amplification
@@ -57,6 +70,11 @@ downstream_effects:
 - accelerated-aging
 - elevated-hs-crp
 - oxidized-ldl
+- atheromatous-vascular-disease
+- endothelial-injury
+- ldl-oxidation-and-glycation
+- fibrinogen-elevation
+- atherosclerosis
 related_mechanisms:
 - leaky-gut
 - insulin-resistance
@@ -64,6 +82,11 @@ related_mechanisms:
 - microbial-diversity-decline
 - oxidative-stress
 - gut-dysbiosis
+- oxidative-stress-and-ages
+- omega-6-to-omega-3-imbalance
+- endothelial-injury
+- fibrinogen-elevation
+- macrophage-foam-cell-formation
 linked_to_topics:
 - inflammation
 - autoimmune
@@ -77,6 +100,11 @@ linked_to_topics:
 - insulin-resistance
 - dysbiosis
 - dyslipidemia
+- cardiovascular-dysfunction
+- cooking-fats-and-cardiovascular-health
+- cardiometabolic-disease
+- atherosclerosis
+- endothelial-dysfunction
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Inflammation section
@@ -99,8 +127,17 @@ sources:
   location: Dyslipidemia Cheatsheet — Section 2
   quote: Root cause = Metabolic dysfunction, chronic inflammation, oxidative stress,
     gut dysbiosis.
+- id: vitaone-health-coaching-toolkit
+  location: CVD Risk Analysis — Lab Results
+  quote: C-reactive protein is a marker associated with the production of inflammatory
+    cytokines, which represent a threat to cardiovascular health.
+- id: coconote-fm-biomarkers-cvs
+  location: Immune and Toxic Burden
+  quote: if your immune system is active, immune system has a chronic inflammation
+    in the body, then you can find out chronic inflammation by just taking an HSE
+    or ESR level.
 evidence_tier: strong
-version: 6
+version: 8
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

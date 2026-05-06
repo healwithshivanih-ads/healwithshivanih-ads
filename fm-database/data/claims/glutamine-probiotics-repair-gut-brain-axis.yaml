@@ -1,0 +1,33 @@
+slug: glutamine-probiotics-repair-gut-brain-axis
+statement: Glutamine, zinc carnosine, and probiotics (L. rhamnosus GG, B. longum)
+  repair gut lining integrity and support the gut-brain axis in IBS and anxiety.
+evidence_tier: plausible_emerging
+rationale: Glutamine's role in enterocyte integrity is mechanistically well-established.
+  Zinc carnosine has RCT evidence for gut mucosal healing. Specific probiotic strains
+  (L. rhamnosus GG, B. longum) have the strongest evidence base in IBS and gut-brain
+  axis research.
+coaching_translation: Healing the gut lining with targeted nutrients and the right
+  probiotic strains can reduce anxiety and improve mood—because a leaky gut sends
+  inflammatory signals to the brain.
+caveats:
+- Probiotic strain selection and dosing should be individualized.
+- Clinician diagnosis of IBS/IBD recommended before protocol.
+- Source is educational synthesis.
+linked_to_topics:
+- gut-brain-axis
+- nervous-system-regulation
+linked_to_supplements:
+- l-glutamine
+- zinc-carnosine
+- lactobacillus-rhamnosus-gg
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: How to Reset the Nervous System
+  quote: 'Repair gut lining: glutamine, zinc carnosine, probiotics (L. rhamnosus GG,
+    B. longum).'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

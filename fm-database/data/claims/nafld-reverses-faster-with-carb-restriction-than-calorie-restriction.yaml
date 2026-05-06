@@ -1,0 +1,27 @@
+slug: nafld-reverses-faster-with-carb-restriction-than-calorie-restriction
+statement: Carbohydrate restriction reduces hepatic fat more effectively than isocaloric
+  calorie restriction in non-alcoholic fatty liver disease (NAFLD).
+evidence_tier: plausible_emerging
+rationale: Several RCTs have compared low-carb vs. low-fat/calorie-restricted diets
+  in NAFLD and generally found greater reductions in intrahepatic triglycerides with
+  carbohydrate restriction, consistent with the role of de novo lipogenesis driven
+  by dietary fructose and carbohydrates.
+coaching_translation: For a fatty liver, cutting carbohydrates — especially sugars
+  — may be more effective than simply eating less overall.
+caveats:
+- Evidence from short-term trials; long-term superiority not established.
+- Source is Instagram educational content.
+linked_to_topics:
+- metabolic-health-lchf
+- insulin-resistance-metabolic-syndrome
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DX1jE67jI4m/
+  quote: NAFLD reverses faster with carb restriction than calorie restriction
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

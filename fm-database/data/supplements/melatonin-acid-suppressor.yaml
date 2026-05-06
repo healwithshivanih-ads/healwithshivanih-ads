@@ -1,0 +1,34 @@
+slug: melatonin-acid-suppressor
+display_name: Melatonin (for Acid Suppression / GERD Support)
+category: other
+forms_available:
+- tablet
+- capsule
+timing_options:
+- bedtime
+- evening
+take_with_food: optional
+linked_to_topics:
+- gerd-ppi-tapering
+linked_to_claims:
+- ppi-tapering-supplement-support-repair-protect-antioxidant
+- abrupt-ppi-discontinuation-causes-rebound-reflux
+notes_for_coach: Listed as an 'acid suppressing' agent in PPI tapering protocol and
+  as a potential H2 blocker substitute during taper. Melatonin receptors exist in
+  GI tract; emerging evidence for its role in GERD. Clinician direction required for
+  dosing.
+notes_for_client: Melatonin, typically known as a sleep hormone, also plays a role
+  in regulating stomach acid and protecting the esophagus — it may be used to help
+  transition off acid-blocking medications.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
+  quote: 'Switch to H2 blocker, melatonin, or another acid suppressor. Acid suppressing:
+    Melatonin.'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

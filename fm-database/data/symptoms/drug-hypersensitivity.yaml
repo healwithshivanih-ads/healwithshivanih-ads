@@ -1,0 +1,29 @@
+slug: drug-hypersensitivity
+display_name: Drug Hypersensitivity / Adverse Drug Reactions
+aliases:
+- medication sensitivity
+- drug intolerance
+- over-reaction to medications
+category: constitutional
+severity: concerning
+description: Exaggerated or unexpected reactions to standard pharmaceutical doses,
+  often due to upregulated Phase 1 CYP450 activity rapidly generating high reactive
+  intermediate levels, or downregulated Phase 2 failing to clear them.
+when_to_refer: Always refer to prescribing clinician. Severe drug reactions are a
+  medical emergency.
+linked_to_topics:
+- cyp450-genetic-polymorphisms
+- liver-detoxification-phases
+linked_to_mechanisms:
+- cyp450-phase1-bioactivation
+- reactive-intermediate-accumulation
+sources:
+- id: coconote-fm-liver-detox-part1
+  location: Codeine/Morphine Phase 1 Example
+  quote: Some patients overreact to the drug and drug hypersensitivity, or some patients
+    doesn't react to the drug... all the pharmaceuticals, 95% of pharmaceuticals,
+    they actually metabolize in the liver from phase 1 and phase 2 pathway.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

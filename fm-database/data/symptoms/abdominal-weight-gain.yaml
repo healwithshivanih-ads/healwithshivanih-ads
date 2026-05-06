@@ -1,30 +1,40 @@
 slug: abdominal-weight-gain
-display_name: Abdominal Weight Gain
+display_name: Abdominal / Facial Weight Gain
 aliases:
 - central obesity
 - belly fat
 - expanding waist
 - visceral fat accumulation
 - android obesity
+- weight gain around abdomen
+- moon face
+- buffalo hump
 category: metabolic
-severity: common
-description: Accumulation of fat around the abdomen (waist >35 in men, >31 in women),
-  driven by hyperinsulinaemia promoting visceral fat deposition.
-when_to_refer: Refer if waist circumference meets metabolic syndrome criteria alongside
-  other markers.
+severity: concerning
+description: Weight gain concentrated around the abdomen, back of neck, and face/cheeks
+  — a hallmark sign of elevated cortisol states, potentially indicating Cushing's
+  syndrome.
+when_to_refer: Refer to clinician if accompanied by stretch marks not from weight
+  loss, to rule out Cushing's syndrome.
 linked_to_topics:
 - insulin-resistance
 - metabolic-syndrome
+- hypercortisolism
+- hpa-axis-dysfunction
 linked_to_mechanisms:
 - insulin-resistance
 - visceral-adipose-inflammation
 - hpa-axis-dysregulation
+- cortisol-dhea-imbalance
 sources:
 - id: vitaone-blood-sugar-ebook
   location: Section 4.2.1 — Compensated Insulin Resistance (Early IR)
   quote: Post-meal fatigue, sugar cravings, brain fog, mild weight gain around the
     abdomen.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: 'HPA Axis Questionnaire — Section 2: Elevated cortisol state'
+  quote: Weight gain around your abdomen, back of neck, and in the face and cheeks.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

@@ -1,0 +1,32 @@
+slug: natural-aromatase-inhibitors-lower-estrogen-dominance
+statement: Natural aromatase inhibitors — including green tea, blueberries, grape
+  seed extract, and white button mushrooms — can help reduce estrogen dominance by
+  reducing aromatase enzyme activity.
+evidence_tier: plausible_emerging
+rationale: Several plant compounds (EGCG in green tea, resveratrol in grapes, polyphenols
+  in blueberries) have demonstrated aromatase-inhibiting properties in in vitro and
+  animal studies. Clinical human trials are limited. White button mushrooms contain
+  natural aromatase inhibitors but should be avoided in fungal overgrowth.
+coaching_translation: Certain foods act as natural brakes on the enzyme that converts
+  testosterone into estrogen. Adding green tea, blueberries, and grape seed extract
+  to your diet is a gentle, food-first approach to lowering estrogen dominance.
+caveats:
+- Most evidence is in vitro or animal models; clinical trial data in humans is limited.
+- White button mushrooms contraindicated in fungal overgrowth/candida.
+linked_to_topics:
+- estrogen-dominance
+- estrogen-metabolism
+linked_to_supplements:
+- green-tea-extract
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-estrogen-dominance
+  location: Management of Estrogen Dominance
+  quote: If you want to treat somebody naturally, if you're having a lot of estrogen
+    dominance, then we can give them natural aromatase inhibitors. Blueberries, grapes,
+    grape seed extract, passionflower tea, jasmine tea, white button mushrooms.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

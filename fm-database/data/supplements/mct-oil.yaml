@@ -1,14 +1,14 @@
 slug: mct-oil
-display_name: MCT Oil
+display_name: MCT Oil (Medium-Chain Triglyceride Oil)
 category: fatty_acid
 forms_available:
 - liquid
 - powder
 typical_dose_range:
   liquid:
-    min: 5
-    max: 30
-    unit: ml
+    min: 1
+    max: 2
+    unit: teaspoons
   powder:
     min: 5
     max: 20
@@ -21,20 +21,26 @@ take_with_food: optional
 linked_to_topics:
 - cognitive-decline
 - low-carb-diet
+- chronic-pain-and-fatigue
 linked_to_claims:
 - mct-oil-enhances-brain-ketone-supply-in-cognitive-decline
-notes_for_coach: Start at low dose (5ml) and titrate up to avoid GI distress. Best
-  used in the context of a low-carb dietary pattern to maximise ketone production.
-notes_for_client: MCT oil is a type of fat that your body quickly converts into ketones
-  — a clean brain fuel. Start with 1 teaspoon in coffee or a smoothie and build up
-  gradually to avoid stomach upset.
-evidence_tier: plausible_emerging
+- mct-oil-provides-rapid-energy-low-fatigue
+notes_for_coach: Added to smoothies or meals for rapid, clean energy. May also support
+  bowel motility. Start with a small amount (1 tsp) to assess GI tolerance; some people
+  experience loose stools at higher doses.
+notes_for_client: MCT oil is a type of fat that your body converts quickly into energy
+  — great for a mid-morning boost without the crash you get from caffeine or carbohydrates.
+evidence_tier: fm_specific_thin
 linked_to_mechanisms: []
 sources:
 - id: vitaone-cardiometabolic-diet-cheatsheet
   location: Functional Medicine Clinical Applications
   quote: Add MCT oil for cognitive energy in early Alzheimer's or Parkinson's cases.
-version: 1
+- id: coconote-fm-chronic-pain-fatigue
+  location: Personal Case Study / Diet Section
+  quote: Those who are going through a low energy, adding some of the MCT oil gives
+    a lot of energy immediately.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

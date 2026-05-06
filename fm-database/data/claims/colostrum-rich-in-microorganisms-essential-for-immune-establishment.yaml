@@ -1,0 +1,29 @@
+slug: colostrum-rich-in-microorganisms-essential-for-immune-establishment
+statement: Colostrum (the thick substance produced by the breast in the first three
+  days after birth) is rich in microorganisms and is essential for establishing gut
+  flora and the infant's immune system.
+evidence_tier: plausible_emerging
+rationale: Colostrum's role in seeding the neonatal microbiome and transferring immunoglobulins
+  is well-established. The specific claim about microorganism richness in colostrum
+  is broadly consistent with the literature.
+coaching_translation: The first milk (colostrum) produced after birth is packed with
+  beneficial organisms and immune factors that help establish your baby's gut and
+  immune system. Early breastfeeding is strongly supported by research.
+caveats:
+- Source is a practitioner talk.
+- The specific mechanism of microbial transfer via colostrum is an active area of
+  research.
+linked_to_topics:
+- gut-microbiome-and-gut-flora
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-gi-tract
+  location: Microbiome Colonisation Section
+  quote: For the first three days, the breasts have a thick, creamy substance called
+    colostrum. And that colostrum is also rich in microorganisms.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

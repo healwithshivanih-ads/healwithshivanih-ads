@@ -1,0 +1,29 @@
+slug: scfa-from-fiber-heals-intestinal-lining
+statement: Dietary fibre produces short-chain fatty acids (SCFAs) through bacterial
+  fermentation, and SCFAs are essential gut nutrients that support intestinal healing.
+evidence_tier: strong
+rationale: SCFA production from fibre fermentation (particularly butyrate) and its
+  role as the primary energy substrate for colonocytes is well-established in peer-reviewed
+  literature, with strong mechanistic and clinical evidence.
+coaching_translation: Eating fibre-rich foods feeds your gut bacteria, which produce
+  butyrate and other healing substances that nourish your gut lining directly.
+caveats:
+- Fibre intake should be increased gradually in patients with active gut inflammation
+  or IBS to avoid symptom exacerbation.
+linked_to_topics:
+- intestinal-permeability
+- 5r-gut-healing-protocol
+linked_to_supplements:
+- short-chain-fatty-acids-fiber
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-intestinal-permeability-anish
+  location: 5R Protocol — Repair
+  quote: Short chain fatty acid. So fiber is very important. They can create the short
+    chain fatty acid and short chain fatty acid is very important as a gut nutrient.
+    They can heal your intestine.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

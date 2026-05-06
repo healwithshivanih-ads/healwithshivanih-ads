@@ -702,8 +702,8 @@ tree:
       linked_kind: null
       linked_slug: null
       notes: ''
-    linked_kind: null
-    linked_slug: null
+    linked_kind: mechanism
+    linked_slug: heavy-metal-toxicity
     notes: ''
   linked_kind: null
   linked_slug: null
@@ -1504,8 +1504,8 @@ tree:
       notes: ''
     - label: Garlic
       children: []
-      linked_kind: null
-      linked_slug: null
+      linked_kind: supplement
+      linked_slug: garlic
       notes: ''
     - label: Gelatin
       children: []
@@ -1589,8 +1589,8 @@ tree:
       notes: ''
     - label: Garlic
       children: []
-      linked_kind: null
-      linked_slug: null
+      linked_kind: supplement
+      linked_slug: garlic
       notes: ''
     - label: Monounsaturated Fatty Acids (Olive Oil)
       children: []
@@ -1669,8 +1669,8 @@ tree:
     children:
     - label: Garlic
       children: []
-      linked_kind: null
-      linked_slug: null
+      linked_kind: supplement
+      linked_slug: garlic
       notes: ''
     - label: Hawthorne Berry
       children: []
@@ -1699,13 +1699,13 @@ tree:
     children:
     - label: EPA
       children: []
-      linked_kind: null
-      linked_slug: null
+      linked_kind: topic
+      linked_slug: essential-fatty-acids
       notes: ''
     - label: DHA
       children: []
-      linked_kind: null
-      linked_slug: null
+      linked_kind: topic
+      linked_slug: essential-fatty-acids
       notes: ''
     - label: Oleic Acid
       children: []
@@ -1940,8 +1940,8 @@ tree:
     linked_kind: null
     linked_slug: null
     notes: ''
-  linked_kind: null
-  linked_slug: null
+  linked_kind: symptom
+  linked_slug: orthostatic-dizziness
   notes: ''
 sources:
 - id: vitaone-mind-map-tool

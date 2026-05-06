@@ -1,0 +1,32 @@
+slug: most-grains-legumes-nuts-acid-forming
+statement: Most grains (other than alkaline-forming exceptions), most legumes (other
+  than lentils, lima beans, and soy), and most nuts (other than Brazil nuts and almonds)
+  have an acid-forming effect on the body.
+evidence_tier: fm_specific_thin
+rationale: The PRAL (Potential Renal Acid Load) framework supports that many grains
+  and some legumes have positive (acid-forming) PRAL values. The specific exceptions
+  listed (lentils, lima, soy, Brazil nuts, almonds) are consistent with common alkaline-diet
+  food lists but individual values vary and the evidence base is thin.
+coaching_translation: When choosing grains, legumes, and nuts, lean toward the more
+  alkaline options like lentils, almonds, and soy, and balance the rest with plenty
+  of vegetables.
+caveats:
+- Source is an expert lecture, not primary literature.
+- PRAL values vary by preparation and combination with other foods.
+- These categorisations are specific to alkaline-diet frameworks and not universally
+  accepted in mainstream dietetics.
+linked_to_topics:
+- acid-alkaline-balance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-acid-alkaline-foods
+  location: Main lecture body
+  quote: Your other grains, other than the list on the alkaline side, or your other
+    legumes, other than lentil, lima and soy, or your other nuts, other than Brazil
+    and almond, have an acid effect on the body.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

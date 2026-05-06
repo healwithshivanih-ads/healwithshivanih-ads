@@ -499,8 +499,8 @@ tree:
       notes: ''
     - label: Memory Problems
       children: []
-      linked_kind: null
-      linked_slug: null
+      linked_kind: symptom
+      linked_slug: cognitive-decline
       notes: ''
     linked_kind: null
     linked_slug: null
@@ -629,8 +629,8 @@ tree:
         linked_kind: null
         linked_slug: null
         notes: ''
-      linked_kind: null
-      linked_slug: null
+      linked_kind: topic
+      linked_slug: liver-detox-food-plan
       notes: ''
     - label: Avoid Raw Goitrogens
       children:

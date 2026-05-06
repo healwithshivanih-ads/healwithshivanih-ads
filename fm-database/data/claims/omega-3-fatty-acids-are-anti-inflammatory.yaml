@@ -1,0 +1,27 @@
+slug: omega-3-fatty-acids-are-anti-inflammatory
+statement: Omega-3 fatty acids from sources such as fatty fish, flaxseeds, chia seeds,
+  walnuts, and olive oil have anti-inflammatory properties.
+evidence_tier: strong
+rationale: Omega-3 fatty acids (EPA and DHA) are among the most well-documented anti-inflammatory
+  nutrients, with strong mechanistic and clinical evidence across numerous conditions.
+coaching_translation: Eating salmon, mackerel, walnuts, flaxseeds, and using olive
+  oil regularly gives your body building blocks that actively reduce inflammation.
+caveats:
+- Source is a coaching toolkit. Specific therapeutic doses of omega-3 supplements
+  require clinician guidance.
+linked_to_topics:
+- anti-inflammatory-diet
+- chronic-inflammation
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Anti Inflammatory Diet — Foods to Eat
+  quote: 'Omega-3 fatty acids are particularly important. Examples: Fatty fish (salmon,
+    mackerel), avocados, nuts (walnuts, almonds), seeds (flaxseeds, chia seeds), and
+    olive oil.'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

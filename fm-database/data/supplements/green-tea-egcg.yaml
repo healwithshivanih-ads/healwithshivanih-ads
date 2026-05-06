@@ -1,34 +1,56 @@
 slug: green-tea-egcg
-display_name: Green Tea Extract (EGCG)
+display_name: Green Tea (EGCG) — Aromatase Inhibitor
 category: herb
 forms_available:
 - capsule
 - tablet
+- liquid
 timing_options:
 - morning
 - mid_morning
 - with_breakfast
+- with_lunch
 take_with_food: optional
 linked_to_topics:
 - liver-detoxification
 - heavy-metal-toxicity
+- immune-support-covid-19
+- anti-inflammatory-diet
+- estrogen-dominance
+- gut-estrogen-axis
 linked_to_claims:
 - egcg-nrf2-antioxidant-detox
 - egcg-hemochromatosis-oxidative-stress
-notes_for_coach: EGCG upregulates Nrf2 antioxidant pathways. Avoid in iron-deficiency
-  anemia as it may impair iron absorption. Use 1-2 cups/day of green tea or consider
-  standardised extract. Avoid high-dose extracts on empty stomach — may cause nausea.
-notes_for_client: Green tea contains powerful antioxidants that activate your body's
-  natural defence enzymes. Use 1–2 cups daily. Avoid if you have iron-deficiency anaemia.
+- egcg-inhibits-covid19-replication-process
+- green-tea-has-anti-inflammatory-effects
+- green-tea-reduces-aromatase-activity
+notes_for_coach: Green tea (specifically EGCG) has aromatase-inhibiting activity and
+  may help reduce estrogen dominance. Can be recommended as a dietary/beverage strategy.
+  Caffeinated varieties should be moderated in anxious or perimenopausal women.
+notes_for_client: Drinking green tea or taking a green tea extract may help your body
+  keep estrogen levels balanced by naturally slowing excess estrogen production.
 evidence_tier: plausible_emerging
-typical_dose_range: {}
+typical_dose_range:
+  capsule:
+    min: 225
+    max: 225
+    unit: mg
 linked_to_mechanisms: []
 sources:
 - id: vitaone-liver-detox-cheatsheet
   location: Top Superfoods for Detoxification
   quote: Polyphenols upregulate Nrf2 pathway → enhances antioxidant enzymes (SOD,
     catalase, GSH).
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: In addition to reducing inflammation, green tea enhances the immune system
+    and targets one of the processes involved in COVID-19 replication.
+- id: coconote-fm-sex-hormones
+  location: Steroidogenesis Pathway — Aromatase Activity
+  quote: The one solution that we can do is give a green tea, right. Green tea is
+    an actual decrease of aromatase activity which will reduce the estrogen dominance
+    inside the body.
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

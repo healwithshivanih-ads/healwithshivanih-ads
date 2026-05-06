@@ -1,5 +1,5 @@
 slug: alginate
-display_name: Alginate
+display_name: Alginate (Sodium Alginate)
 category: other
 forms_available:
 - tablet
@@ -7,23 +7,33 @@ forms_available:
 timing_options:
 - with_dinner
 - bedtime
+- with_lunch
+- evening
 take_with_food: required
 linked_to_topics:
 - gerd
+- gerd-ppi-tapering
 linked_to_claims:
 - alginate-forms-protective-barrier-gerd
-notes_for_coach: Listed under 'Protect' in the PPI taper protocol. Forms a physical
-  barrier in the stomach/esophagus to reduce acid reflux. Clinician-directed use.
+- ppi-tapering-supplement-support-repair-protect-antioxidant
+- abrupt-ppi-discontinuation-causes-rebound-reflux
+notes_for_coach: Alginate forms a physical 'raft' on top of stomach contents to prevent
+  acid reflux. Listed under 'Protect' in PPI tapering. Some RCT evidence for GERD
+  symptom relief.
 evidence_tier: plausible_emerging
 typical_dose_range: {}
 linked_to_mechanisms: []
-notes_for_client: ''
+notes_for_client: Alginate (derived from seaweed) forms a protective layer on top
+  of stomach acid to prevent it from refluxing into the esophagus.
 sources:
 - id: vitaone-gut-toolkit
   location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
     — Supplement recommendations'
   quote: 'Protect: Alginate, pectin, DGL, slippery elm'
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
+  quote: 'Protect: Alginate, pectin, DGL, slippery elm.'
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

@@ -1,0 +1,34 @@
+slug: therapeutic-omega-3-dose-exceeds-2g
+statement: An anti-inflammatory therapeutic dose of omega-3 exceeds 2 grams per day;
+  standard supplement doses of 180–300 mg once daily are insufficient for meaningful
+  anti-inflammatory effect.
+evidence_tier: plausible_emerging
+rationale: Multiple clinical studies on omega-3 for inflammation use doses of 2–4g/day
+  of EPA+DHA. The point about standard low-dose capsules being insufficient is clinically
+  valid, though optimal dosing varies by indication and individual.
+coaching_translation: Most omega-3 capsules on the shelf won't make a dent in inflammation
+  at the standard 1-capsule dose. Work with your client to get to at least 2g/day
+  of combined EPA+DHA, plus flaxseed oil.
+caveats:
+- Doses >3g/day EPA+DHA should be discussed with a clinician, especially in patients
+  on blood thinners.
+- Source is expert FM lecture (moderate quality).
+out_of_scope_notes: Specific therapeutic dosing decisions for high-dose omega-3 should
+  involve clinician input, especially for patients with cardiovascular disease or
+  on anticoagulants.
+linked_to_topics:
+- omega-3-omega-6-balance
+- chronic-inflammation
+linked_to_supplements:
+- omega-3-fish-oil
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-approach-inflammation
+  location: Diet – Omega-3 Dosing
+  quote: our therapeutic dose is more than two grams. So don't just assume that you
+    prescribe the 180 or 300 milligram of capsule once a day, and the patient will
+    have an anti-inflammatory effect.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

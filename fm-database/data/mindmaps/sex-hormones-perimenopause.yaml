@@ -1,0 +1,497 @@
+slug: sex-hormones-perimenopause
+display_name: Sex Hormones & Perimenopause
+description: 'Functional medicine approach to oestrogen dominance, progesterone decline,
+  perimenopause, PCOS, and hormone balance. Covers clinical presentation, root mechanisms,
+  FM approach, interventions, coaching goals, and labs to track — structured for use
+  in client sessions and plan authoring.
+
+  '
+aliases: []
+related_topics:
+- perimenopause
+- estrogen-dominance
+- estrogen-metabolism
+- estrobolome
+- pcos
+related_mechanisms:
+- estrogen-decline
+- estrogen-dominance-thyroid-blunting
+- estrogen-enterohepatic-recirculation
+- estrogen-phase-ii-methylation-deficit
+- hepatic-estrogen-metabolism
+- gut-estrogen-reabsorption
+tree:
+- label: 🔴 Clinical Presentation
+  children:
+  - label: Perimenopause Symptoms
+    children:
+    - label: Hot Flashes / Night Sweats
+      children: []
+      linked_kind: symptom
+      linked_slug: hot-flashes
+      notes: ''
+    - label: Irregular Periods
+      children: []
+      linked_kind: symptom
+      linked_slug: irregular-periods
+      notes: ''
+    - label: Mood Changes / Irritability
+      children: []
+      linked_kind: symptom
+      linked_slug: mood-swings
+      notes: ''
+    - label: Brain Fog
+      children: []
+      linked_kind: symptom
+      linked_slug: brain-fog
+      notes: ''
+    - label: Sleep Disturbance
+      children: []
+      linked_kind: symptom
+      linked_slug: insomnia
+      notes: ''
+    - label: Vaginal Dryness
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Estrogen Dominance Symptoms
+    children:
+    - label: Breast Tenderness
+      children: []
+      linked_kind: symptom
+      linked_slug: breast-tenderness
+      notes: ''
+    - label: Heavy Periods
+      children: []
+      linked_kind: symptom
+      linked_slug: menstrual-irregularities
+      notes: ''
+    - label: Weight Gain Hips / Thighs
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Fibroids / Endometriosis
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: PMS / PMDD
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Low Progesterone Symptoms
+    children:
+    - label: Anxiety / Racing Mind
+      children: []
+      linked_kind: symptom
+      linked_slug: anxiety
+      notes: ''
+    - label: Poor Sleep
+      children: []
+      linked_kind: symptom
+      linked_slug: poor-sleep-quality
+      notes: ''
+    - label: Spotting Before Period
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Short Luteal Phase
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🟠 Root Mechanisms
+  children:
+  - label: Oestrogen Imbalance
+    children:
+    - label: Oestrogen Decline
+      children: []
+      linked_kind: mechanism
+      linked_slug: estrogen-decline
+      notes: ''
+    - label: Oestrogen Dominance
+      children: []
+      linked_kind: mechanism
+      linked_slug: estrogen-dominance-thyroid-blunting
+      notes: ''
+    - label: Impaired Phase II Methylation
+      children: []
+      linked_kind: mechanism
+      linked_slug: estrogen-phase-ii-methylation-deficit
+      notes: ''
+    - label: Gut Oestrogen Reabsorption
+      children: []
+      linked_kind: mechanism
+      linked_slug: gut-estrogen-reabsorption
+      notes: ''
+    - label: Hepatic Oestrogen Metabolism
+      children: []
+      linked_kind: mechanism
+      linked_slug: hepatic-estrogen-metabolism
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Progesterone Issues
+    children:
+    - label: Progesterone Decline with Age
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Luteal Phase Deficiency
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Supporting Dysfunction
+    children:
+    - label: Insulin Resistance
+      children: []
+      linked_kind: mechanism
+      linked_slug: insulin-resistance
+      notes: ''
+    - label: HPA Axis Dysregulation
+      children: []
+      linked_kind: mechanism
+      linked_slug: hpa-axis-dysregulation
+      notes: ''
+    - label: Thyroid Blunting by Oestrogen
+      children: []
+      linked_kind: mechanism
+      linked_slug: estrogen-dominance-thyroid-blunting
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🟡 FM Approach
+  children:
+  - label: Optimise Oestrogen Metabolism
+    children:
+    - label: Liver Detox Support
+      children: []
+      linked_kind: topic
+      linked_slug: liver-detoxification
+      notes: ''
+    - label: Methylation Support
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Cruciferous Vegetables
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Seed Cycling
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Support Progesterone
+    children:
+    - label: Vitex / Chaste Tree Berry
+      children: []
+      linked_kind: supplement
+      linked_slug: chaste-tree-berry
+      notes: ''
+    - label: Reduce Cortisol Load
+      children: []
+      linked_kind: topic
+      linked_slug: stress-management
+      notes: ''
+    - label: Zinc & B6 Support
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Gut & Oestrobolome Support
+    children:
+    - label: Probiotics
+      children: []
+      linked_kind: supplement
+      linked_slug: probiotics
+      notes: ''
+    - label: Fibre for Oestrogen Clearance
+      children: []
+      linked_kind: topic
+      linked_slug: fiber-gap
+      notes: ''
+    - label: Reduce Beta-Glucuronidase
+      children: []
+      linked_kind: supplement
+      linked_slug: calcium-d-glucarate
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🟢 Interventions
+  children:
+  - label: Key Supplements
+    children:
+    - label: DIM (Diindolylmethane)
+      children: []
+      linked_kind: supplement
+      linked_slug: dim
+      notes: ''
+    - label: Calcium D-Glucarate
+      children: []
+      linked_kind: supplement
+      linked_slug: calcium-d-glucarate
+      notes: ''
+    - label: Magnesium Glycinate
+      children: []
+      linked_kind: supplement
+      linked_slug: magnesium-glycinate
+      notes: ''
+    - label: Vitex / Chaste Tree Berry
+      children: []
+      linked_kind: supplement
+      linked_slug: chaste-tree-berry
+      notes: ''
+    - label: Black Cohosh
+      children: []
+      linked_kind: supplement
+      linked_slug: black-cohosh
+      notes: ''
+    - label: 5-MTHF Folate
+      children: []
+      linked_kind: supplement
+      linked_slug: 5-mthf
+      notes: ''
+    - label: Omega-3 Fatty Acids
+      children: []
+      linked_kind: supplement
+      linked_slug: omega-3-fatty-acids
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Dietary
+    children:
+    - label: Phytoestrogen Foods (Flaxseed, Soy)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Cruciferous Vegetables Daily
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Reduce Alcohol & Xenoestrogens
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Blood Sugar Stabilisation
+      children: []
+      linked_kind: topic
+      linked_slug: insulin-resistance
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Lifestyle
+    children:
+    - label: Weight Bearing Exercise
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Stress Reduction
+      children: []
+      linked_kind: topic
+      linked_slug: stress-management
+      notes: ''
+    - label: Reduce Plastic / BPA Exposure
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 💙 Coaching Goals
+  children:
+  - label: Education
+    children:
+    - label: Understanding Hormone Cycle
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Perimenopause as Transition
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Environmental Oestrogens
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Tracking
+    children:
+    - label: Basal Body Temperature
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Menstrual Cycle Charting
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Symptom Diary
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Self-Care
+    children:
+    - label: Body Image & Identity
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Sleep Prioritisation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Community & Support
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: topic
+    linked_slug: self-care
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🔵 Labs to Track
+  children:
+  - label: Hormone Panel
+    children:
+    - label: Oestradiol (E2), Estriol (E3), Oestrone (E1)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Progesterone (Day 21)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: DHEA-S
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Testosterone (Total & Free)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: SHBG
+      children: []
+      linked_kind: topic
+      linked_slug: sex-hormone-binding-globulin
+      notes: ''
+    - label: FSH & LH
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Metabolic
+    children:
+    - label: Fasting Insulin & Glucose
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Thyroid Panel
+      children: []
+      linked_kind: topic
+      linked_slug: hypothyroidism
+      notes: ''
+    - label: hsCRP
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Detox
+    children:
+    - label: DUTCH Complete Hormone Test
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Liver Function Panel
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+sources:
+- id: vitaone-health-coaching-toolkit
+  quote: null
+  location: Sex Hormones & Perimenopause
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

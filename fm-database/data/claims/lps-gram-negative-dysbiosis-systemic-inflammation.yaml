@@ -1,0 +1,29 @@
+slug: lps-gram-negative-dysbiosis-systemic-inflammation
+statement: Gram-negative bacterial overgrowth in the gut releases lipopolysaccharide
+  (LPS), which translocates into the bloodstream and acts as a potent systemic inflammatory
+  trigger via NF-κB, even without overt gut symptoms or elevated WBC count.
+evidence_tier: strong
+rationale: LPS-induced metabolic endotoxemia is well-established in peer-reviewed
+  literature (Cani et al., 2007, Diabetes). LPS can translocate via chylomicron-mediated
+  transport and through tight junction gaps. Systemic LPS activates TLR4, leading
+  to NF-κB activation and low-grade chronic inflammation.
+coaching_translation: Gut bacteria imbalance can silently drive inflammation throughout
+  your entire body — in your joints, brain, thyroid — even when you have no obvious
+  digestive symptoms.
+linked_to_topics:
+- gut-dysbiosis
+- chronic-inflammation
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-approach-inflammation
+  location: Gut Dysbiosis – Gram-Negative Bacteria and LPS
+  quote: this gram-negative bacteria, they ferment the fiber and they release the
+    lipopolysaccharide, LPS. And this LPS is actually a trigger for the immune system...
+    this LPS can travel from the intestine to the bloodstream.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,44 @@
+slug: immune-nutrition
+display_name: Immune Nutrition & Dietary Immunotherapy
+aliases:
+- immune-boosting foods
+- immunonutrition
+- functional immune support
+summary: Food-based compounds (NAC-precursor foods, cruciferous vegetables activating
+  Nrf2, omega-3s, turmeric, green tea) modulate NF-κB, cytokine expression, glutathione
+  synthesis, and gut-immune signalling. Immune protocols must start with dietary foundations
+  before supplementation.
+common_symptoms:
+- chronic-infections
+- autoimmune-flares
+- post-viral-fatigue
+- inflammation
+red_flags:
+- active autoimmune disease requiring immunosuppression
+- immunodeficiency
+related_topics:
+- gut-health-fodmap-sibo
+- adrenal-cortisol-resilience
+- modern-diet-systemic-dysfunction
+key_mechanisms:
+- nrf2-antioxidant-pathway
+- nf-kb-inflammatory-signalling
+- glutathione-synthesis
+- gut-immune-signalling
+coaching_scope_notes: Coaches can build dietary plans rich in cruciferous vegetables,
+  omega-3 sources, turmeric, and green tea. Supplement dosing for immune conditions
+  requires clinician oversight.
+clinician_scope_notes: Distinguish immune stimulation from immune modulation. Assess
+  gut integrity as primary immune organ. Use targeted lab panels (CRP, oxidative stress
+  markers) to guide protocols.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXZNALUjPBQ/
+  quote: NAC-rich foods (eggs, garlic, onions) build glutathione faster than supplements
+    alone. Crucifers activate Nrf2 - your internal antioxidant switch. Omega-3s, turmeric,
+    and green tea modulate NF-κB and cytokine expression at the cellular level.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,33 @@
+slug: new-home-car-or-work-environment-as-toxin-exposure-trigger
+statement: A change in living environment (new house, new car) or occupational setting
+  can be a significant trigger for new toxic exposures, including VOCs (volatile organic
+  compounds) and mycotoxins, contributing to chronic toxicity presentations.
+evidence_tier: plausible_emerging
+rationale: VOC off-gassing from new building materials, carpets, and car interiors
+  is well documented. Mycotoxin contamination in buildings is established. The clinical
+  approach of asking about environmental changes in a patient history to identify
+  toxic triggers is a well-supported functional medicine practice with biologically
+  plausible mechanisms.
+coaching_translation: Ask clients whether they have recently moved, changed jobs,
+  or got a new car — these environmental changes can introduce new toxin exposures
+  that may explain new or worsening symptoms.
+out_of_scope_notes: Environmental toxin testing (urine VOCs, mycotoxin panels) requires
+  clinician or specialist referral.
+caveats:
+- Source is expert lecture with anecdotal illustration.
+- Association between environmental change and symptoms requires clinical validation
+  in individual cases.
+linked_to_topics:
+- chronic-toxicity-assessment
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-liver-detox-part2
+  location: History & Environmental Exposure Section
+  quote: We can ask the patient, they can get new to a new house or their work environment
+    has changed, they put a new car. Ask the patient and find out some kind of environmental
+    cause. So this history is very important.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,34 @@
+slug: ppis-deplete-b12-magnesium-iron
+statement: Proton pump inhibitors (PPIs) reduce gastric acid secretion, impairing
+  the absorption of vitamin B12, magnesium, and iron — leading to clinically significant
+  deficiencies over time.
+evidence_tier: plausible_emerging
+rationale: Gastric acid is required for liberation of B12 from food proteins and conversion
+  of Fe3+ to Fe2+ for absorption. PPI-induced achlorhydria also impairs magnesium
+  absorption via TRPM6/7 channels. Meta-analyses support association with hypomagnesaemia
+  and B12 deficiency; iron data are less robust.
+coaching_translation: Some medications that reduce stomach acid — like omeprazole
+  — can reduce your ability to absorb important nutrients like B12, magnesium, and
+  iron. A clinician can assess your levels and advise on repletion.
+out_of_scope_notes: Repletion dosing and decision to supplement require clinician
+  assessment. Do not advise stopping PPIs.
+caveats:
+- Source is Instagram/educational content, not primary literature. Association evidence
+  is stronger than causation for all three nutrients.
+- Verify with clinician before supplementing.
+- Source type is website; treat as plausible_emerging.
+linked_to_topics:
+- medication-induced-nutrient-depletion
+linked_to_supplements:
+- magnesium-glycinate
+- active-b-vitamins
+- vitamin-c
+linked_to_mechanisms: []
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXjjIqJjMSR/
+  quote: Every PPI that lowers acid also blocks B12, magnesium, and iron absorption.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

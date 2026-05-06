@@ -1,0 +1,29 @@
+slug: infrared-sauna-contraindicated-in-pregnancy-and-young-children
+statement: Near-infrared lamps and saunas are contraindicated during pregnancy (risk
+  of harm to developing baby) and for children under 5 (risk of dehydration and heat
+  illness due to immature sweating mechanisms).
+evidence_tier: confirm_with_clinician
+rationale: These contraindications are based on physiological reasoning and precautionary
+  guidance. While specific RCT data is limited, the safety principle of avoiding hyperthermia
+  in pregnancy is well-established clinically.
+coaching_translation: If you are pregnant or have children under 5, infrared saunas
+  and lamps are not appropriate — always check with your doctor before starting any
+  new heat therapy.
+out_of_scope_notes: This is a red-flag contraindication that must be communicated
+  clearly. Coaches should screen for pregnancy before recommending sauna protocols.
+linked_to_topics:
+- infrared-sauna-therapy
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: How to Make an Infrared Sauna Lamp — Protocol
+  quote: If you are pregnant, you should avoid near infrared lamps as the infrared
+    energy can harm the developing baby. Children under five should also avoid near
+    infrared lamps and saunas, as their bodies do not yet sweat well, and they can
+    quickly become dehydrated and ill from heat exposure.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

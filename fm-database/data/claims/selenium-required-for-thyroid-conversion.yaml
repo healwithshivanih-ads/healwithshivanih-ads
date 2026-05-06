@@ -1,0 +1,34 @@
+slug: selenium-required-for-thyroid-conversion
+statement: The thyroid gland requires selenium to convert iodine into thyroxine; low
+  selenium impairs this conversion, and mercury from dental amalgam fillings may deplete
+  selenium by binding to it.
+evidence_tier: plausible_emerging
+rationale: Selenium-dependent deiodinase enzymes are well-established in thyroid hormone
+  conversion. The interaction between mercury and selenium (high binding affinity)
+  is documented in toxicology literature. The clinical significance of mercury amalgam
+  fillings on selenium depletion is plausible but not definitively proven in strong
+  RCTs.
+coaching_translation: If you have thyroid issues, selenium is a key nutrient to support.
+  Mercury exposure (including old amalgam fillings) may be worth discussing with a
+  clinician if thyroid function is compromised.
+out_of_scope_notes: Mercury toxicity assessment and amalgam removal decisions are
+  clinical/dental matters. Do not advise removal of fillings.
+caveats:
+- The claim about mercury amalgam specifically depleting selenium enough to impair
+  thyroid function is mechanistically plausible but not firmly established in clinical
+  trials.
+- Source is a lecture transcript.
+linked_to_topics: []
+linked_to_supplements:
+- brazil-nuts-selenium
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-ph-balance
+  location: Brazil Nuts and Selenium Section
+  quote: The thyroid uses selenium to convert iodine into thyroxine. So if selenium
+    levels are low, you're not going to be able to convert your iodine into thyroxine.
+    And mercury fillings have an affinity for selenium.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

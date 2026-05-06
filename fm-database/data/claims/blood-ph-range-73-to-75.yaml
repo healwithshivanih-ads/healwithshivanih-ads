@@ -1,0 +1,27 @@
+slug: blood-ph-range-73-to-75
+statement: Blood pH is maintained within the narrow range of 7.3 to 7.5; deviation
+  to 8 causes coma, and a drop to 7.22 causes coma and death from acidosis.
+evidence_tier: strong
+rationale: This is well-established physiology. Blood pH regulation within a narrow
+  range is a fundamental principle of acid-base physiology supported by decades of
+  medical literature.
+coaching_translation: The body tightly controls blood pH automatically — you can't
+  change blood pH through diet. What diet and lifestyle influence is cellular pH.
+out_of_scope_notes: Interpreting blood pH or managing acidosis/alkalosis is clinical
+  territory. Coaches should not advise on this.
+caveats:
+- Source is an expert lecture transcript; specific numerical values are physiologically
+  consistent with established medicine.
+linked_to_topics:
+- ph-balance
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-ph-balance
+  location: Blood pH Section
+  quote: If blood pH goes up to 8, the person will go into a coma, and if blood pH
+    drops down to 7.22, then that person will go into a coma and die of acidosis.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

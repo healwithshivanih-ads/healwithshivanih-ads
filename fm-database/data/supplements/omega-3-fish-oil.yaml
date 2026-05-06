@@ -1,21 +1,22 @@
 slug: omega-3-fish-oil
-display_name: Omega-3 Fish Oil (EPA/DHA)
+display_name: Omega-3 Fish Oil (EPA + DHA)
 category: fatty_acid
 forms_available:
 - capsule
 - liquid
 typical_dose_range:
   capsule:
-    min: 2000
-    max: 3000
+    min: 3000
+    max: 4000
     unit: mg
   liquid:
-    min: 2000
-    max: 3000
-    unit: mg
+    min: 3
+    max: 4
+    unit: g
 timing_options:
 - with_breakfast
 - with_dinner
+- with_lunch
 take_with_food: required
 linked_to_topics:
 - chronic-inflammation
@@ -23,17 +24,36 @@ linked_to_topics:
 - psoriasis
 - estrogen-metabolism
 - sex-hormone-binding-globulin
+- chronic-pain-and-fatigue
+- fibromyalgia
+- omega-3-omega-6-balance
+- vaginal-microbiome
+- perimenopause-microbiome
+- gut-microbiome
 linked_to_claims:
 - omega-3-reduces-cytokines
 - omega-3-index-8pct-reduces-inflammation
 - fish-oil-lowers-il6-tnf
 - omega-3-fats-reduce-inflammation-support-estrogen
 - whey-protein-epa-dha-decrease-shbg
-notes_for_coach: EPA/DHA reduces inflammation (well-established) and may indirectly
-  support estrogen metabolism. Also listed as SHBG-decreasing. Prefer marine-sourced;
-  avoid farm-raised fish due to PCB content.
-notes_for_client: Fish oil helps reduce inflammation throughout the body, which supports
-  hormone balance and healthy estrogen processing.
+- omega-3-reduces-crp-and-pain
+- plant-based-ala-insufficient-dha-epa
+- omega-3-resolves-acne-via-crp
+- therapeutic-omega-3-dose-exceeds-2g
+- omega-3-membrane-replacement-takes-3-months
+- omega-3-and-omega-6-compete-for-same-enzyme
+- omega-3-reduces-premature-labor-risk
+- omega-3-shifts-vaginal-microbiome-to-crispatus
+- omega-3-epa-and-dha-both-needed
+notes_for_coach: Dr. Davis emphasizes that BOTH EPA and DHA are needed for vaginal
+  microbiome and reproductive benefits—EPA-only pharmaceutical preparations are insufficient.
+  Therapeutic dose is 3,000–4,000+ mg combined EPA+DHA daily. This is a food-component
+  restoration, not a pharmacological intervention. Benefits include cardiovascular
+  protection, cognitive preservation (DHA), and vaginal microbiome modulation.
+notes_for_client: Fish oil (EPA + DHA combined) at higher doses (around 3–4 grams
+  per day) has been shown to support vaginal health, reduce the risk of premature
+  labor, protect the heart, and preserve brain function. Both EPA and DHA are needed—don't
+  use EPA-only products for these benefits. Take with food.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -44,7 +64,21 @@ sources:
   location: Estrogen Metabolism — Page 02
   quote: Omega 3 fats from fish, fish oil, and flax have been shown to reduce levels
     of inflammation in the body, which may indirectly support healthy estrogen metabolism.
-version: 2
+- id: coconote-fm-chronic-pain-fatigue
+  location: Supplements Section
+  quote: High-quality omega-3 are my biggest example. I'm taking at least four grams
+    that Dr. Musa recommended me.
+- id: coconote-fm-approach-inflammation
+  location: Diet – Omega-3 Supplementation Protocol
+  quote: our therapeutic dose is more than two grams. So don't just assume that you
+    prescribe the 180 or 300 milligram of capsule once a day, and the patient will
+    have an anti-inflammatory effect.
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Omega-3 and vaginal microbiome discussion
+  quote: Fish oil plays a big role in the vaginal microbiome, so much so that if a
+    woman takes omega-3s during pregnancy, the likelihood of premature labor drops
+    precipitously.
+version: 5
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

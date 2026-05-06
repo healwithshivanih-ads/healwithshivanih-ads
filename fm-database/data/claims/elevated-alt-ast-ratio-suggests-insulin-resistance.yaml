@@ -1,0 +1,32 @@
+slug: elevated-alt-ast-ratio-suggests-insulin-resistance
+statement: An ALT:AST ratio greater than 1, with ALT elevated and AST relatively lower,
+  suggests insulin resistance and hepatic metabolic dysfunction.
+evidence_tier: plausible_emerging
+rationale: The document states that ALT higher than AST (ratio >1) points toward insulin
+  resistance, and that GGT elevation in the upper-normal range (~47) also correlates
+  with metabolic dysfunction. This is consistent with functional medicine liver biomarker
+  interpretation.
+coaching_translation: Liver enzymes can be an early warning sign of insulin resistance—before
+  blood sugar even looks abnormal. A slightly elevated ALT compared to AST is one
+  such clue that the liver may be under metabolic stress.
+caveats:
+- ALT:AST ratio interpretation is a functional medicine lens; conventional medicine
+  uses different cut-offs for liver disease diagnosis.
+- Source is expert lecture (moderate quality).
+linked_to_topics:
+- insulin-resistance
+- cardiometabolic-disease
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-biomarkers-cvs
+  location: Metabolic Dysfunction
+  quote: So if your ALT is slightly on the higher side, and your ASD, that is on the
+    lower side, compared to the ASD, that is, you know, that is pointing toward the
+    insulin resistance. And if you look at the ratio of ALTSD, if it is more than
+    one, then it's just typically showing an issue in resistance.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

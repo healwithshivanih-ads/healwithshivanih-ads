@@ -1,0 +1,36 @@
+slug: biomarker-data-fluency
+display_name: Biomarker & Wearable Data Fluency
+aliases:
+- data-driven coaching
+- wearable integration
+- quantified self coaching
+- biometric coaching
+category: other
+summary: A coaching competency in which coaches integrate quantitative data from wearables,
+  digital health apps, and biomarker tracking with qualitative patient-reported experience
+  to personalize coaching interventions and demonstrate measurable outcomes.
+upstream_drivers:
+- wearable-device-adoption
+- digital-health-platform-growth
+- ai-health-tools
+downstream_effects:
+- more-personalized-coaching-interventions
+- stronger-outcome-metrics
+- competitive-differentiation
+related_mechanisms:
+- behavior-change-accountability
+- interdisciplinary-care-integration
+linked_to_topics:
+- digital-health-coaching
+- functional-medicine-coaching
+evidence_tier: plausible_emerging
+sources:
+- id: ask-expert-future-fm
+  location: Future-Proofing Your Coaching Career Section
+  quote: Coaches who can interpret biomarker data integrate wearable insights infuse
+    those qualitative and quantitative information will have a big edge in this because
+    the tech isn't going away.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

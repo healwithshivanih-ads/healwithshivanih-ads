@@ -1,0 +1,41 @@
+aliases:
+- arterial plaque formation
+- coronary atherosclerosis
+category: structural
+display_name: Atheromatous Vascular Disease
+downstream_effects:
+- coronary-artery-disease
+- stroke
+- peripheral-artery-disease
+- heart-failure
+- cardiac-arrhythmias
+evidence_tier: strong
+linked_to_topics:
+- cardiovascular-dysfunction
+- hypertension
+related_mechanisms:
+- chronic-inflammation
+- insulin-resistance
+- oxidative-stress-and-ages
+slug: atheromatous-vascular-disease
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: CVD Risk Analysis
+  quote: The underlying pathology is atheromatous vascular disease, resulting in coronary
+    artery disease (CAD), cerebrovascular disease, and peripheral vascular disease,
+    and the subsequent development of heart failure and cardiac arrhythmias.
+status: active
+summary: Progressive accumulation of lipid-laden plaques within arterial walls, leading
+  to narrowing, reduced blood flow, and downstream ischemic events. Triglycerides
+  implicated in progression of coronary atherosclerosis. Advanced disease manifests
+  as CAD, cerebrovascular disease, and peripheral vascular disease.
+updated_at: '2026-05-04'
+updated_by: shivani
+upstream_drivers:
+- chronic-inflammation
+- insulin-resistance
+- elevated-triglycerides
+- oxidative-stress
+- homocysteine-elevation
+- lpa-elevation
+version: 1

@@ -1,0 +1,31 @@
+slug: magnesium-deficiency-worsens-calcium-and-vitamin-d-metabolism
+statement: Magnesium deficiency worsens calcium and vitamin D metabolism.
+evidence_tier: plausible_emerging
+rationale: Magnesium is required for vitamin D activation and calcium homeostasis;
+  magnesium deficiency impairing these pathways is supported by mechanistic evidence
+  and some observational studies.
+coaching_translation: Ensure magnesium sufficiency before pushing calcium or vitamin
+  D supplementation.
+caveats:
+- Source is a practitioner cheatsheet without primary citations.
+- Source is practitioner cheatsheet.
+linked_to_topics:
+- nutrition-deficiency
+- bone-health
+linked_to_supplements:
+- magnesium
+- vitamin-d3
+- calcium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 10
+  quote: Magnesium deficiency is described as worsening calcium and vitamin D metabolism.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 10
+  quote: Magnesium deficiency is described as worsening calcium and vitamin D metabolism.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

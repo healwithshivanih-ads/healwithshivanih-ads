@@ -1,16 +1,18 @@
 slug: high-intensity-exercise-not-recommended-while-fasting
 statement: High-intensity exercise is not recommended while fasting; light-intensity
-  activities such as walking or yoga are preferred.
+  activity such as walking or yoga is preferred.
 evidence_tier: plausible_emerging
-rationale: Practical safety guideline consistent with known risk of hypoglycemia and
-  electrolyte depletion during combined fasting and vigorous exercise. Stated as a
-  general recommendation in the toolkit.
-coaching_translation: On fasting days, stick to gentle movement like walking or yoga
-  rather than intense workouts.
+rationale: Clinically conservative guidance consistent with the risk of hypoglycaemia,
+  electrolyte depletion, and HPA axis stress during combined caloric restriction and
+  high-intensity effort.
+coaching_translation: On fasting days, stick to gentle movement — a walk, yoga, or
+  stretching — rather than intense workouts.
 linked_to_topics:
 - intermittent-fasting
 out_of_scope_notes: ''
-caveats: []
+caveats:
+- Individual tolerance varies; athletes or advanced practitioners may differ.
+- Consult clinician before combining IF with any structured training programme.
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
@@ -18,7 +20,11 @@ sources:
   location: Intermittent Fasting — General Recommendations for Fasting
   quote: High-intensity exercise is not recommended while fasting. Walking, yoga,
     or other light-intensity activity is preferred.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Intermittent Fasting — General Recommendations for Fasting
+  quote: High-intensity exercise is not recommended while fasting. Walking, yoga,
+    or other light-intensity activity is preferred.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

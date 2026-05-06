@@ -1,0 +1,26 @@
+slug: ppis-and-metformin-impair-b12-absorption
+statement: Prolonged use of proton pump inhibitors (PPIs), H2 receptor antagonists,
+  and metformin can impair vitamin B12 absorption, increasing deficiency risk.
+evidence_tier: strong
+rationale: Drug-nutrient interactions between PPIs/H2 blockers (reducing gastric acid
+  needed for B12 release from food) and metformin (impairing calcium-dependent absorption)
+  are well-documented in clinical literature.
+coaching_translation: Clients on long-term PPIs, antacids, or metformin should be
+  flagged to their clinician for B12 status monitoring.
+out_of_scope_notes: Advising on medication changes is outside coaching scope — refer
+  to prescribing clinician.
+caveats: []
+linked_to_topics:
+- vitamin-b12
+linked_to_supplements:
+- methylcobalamin
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: B12 Deficiency / Medications section
+  quote: Protopump inhibitors or histamine receptor antagonist, all of these are actually
+    the inhibitors which reduce the acidity in the stomach... Next is metformin.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

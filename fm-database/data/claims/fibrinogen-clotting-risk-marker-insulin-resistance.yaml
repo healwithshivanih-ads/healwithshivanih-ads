@@ -1,0 +1,30 @@
+slug: fibrinogen-clotting-risk-marker-insulin-resistance
+statement: Elevated fibrinogen (>300) reflects increased clotting risk and is associated
+  with inflammation, insulin resistance, and diabetes, increasing risk of heart attacks
+  and strokes.
+evidence_tier: plausible_emerging
+rationale: Fibrinogen is an established acute-phase reactant and thrombotic risk marker.
+  Its association with insulin resistance and CVD events is supported by observational
+  literature.
+coaching_translation: Fibrinogen is a clotting protein that also signals inflammation
+  — clients with elevated levels benefit from anti-inflammatory dietary strategies
+  and blood sugar support.
+out_of_scope_notes: Fibrinogen lab interpretation and treatment decisions are clinician
+  scope.
+caveats:
+- Source does not cite specific studies; consistent with published FM and cardiology
+  literature.
+linked_to_topics:
+- cardiovascular-dysfunction
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: CVD Risk Analysis — Lab Results
+  quote: This measures your risk of clotting, which can cause heart attacks & strokes.
+    It is also a spin of inflammation and is associated with insulin resistance and
+    diabetes. It should be less than 300.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

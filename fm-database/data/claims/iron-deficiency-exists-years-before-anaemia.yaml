@@ -1,0 +1,30 @@
+slug: iron-deficiency-exists-years-before-anaemia
+statement: Functional iron deficiency — causing fatigue, cognitive impairment, hair
+  loss, and restless legs — can exist for years before haemoglobin falls to anaemic
+  levels.
+evidence_tier: strong
+rationale: 'Iron deficiency progresses through three stages: depletion of stores (↓ferritin),
+  iron-deficient erythropoiesis (↓transferrin saturation), and iron deficiency anaemia
+  (↓Hb). Symptoms including fatigue and cognitive symptoms are documented in pre-anaemic
+  stages, supported by RCTs of iron supplementation in non-anaemic iron-deficient
+  patients.'
+coaching_translation: You don't need to be anaemic to feel the effects of low iron.
+  Fatigue, brain fog, hair loss, and restless legs can all occur when iron stores
+  are low — even if your red blood cell count is still normal.
+caveats:
+- '''Years'' is a qualitative descriptor; timeline varies by individual iron loss
+  rate and dietary intake.'
+- Source is Instagram educational content.
+linked_to_topics:
+- iron-deficiency-dysregulation
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXy9b_KjJT2/
+  quote: Iron deficiency can exist years before anemia develops
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

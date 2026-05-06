@@ -1,13 +1,13 @@
 slug: resveratrol
 display_name: Resveratrol
-category: other
+category: herb
 forms_available:
 - capsule
 - tablet
 typical_dose_range:
   capsule:
     min: 100
-    max: 300
+    max: 150
     unit: mg
   tablet:
     min: 100
@@ -19,9 +19,10 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: optional
-notes_for_coach: 100–150 mg 2x daily per document. Most antiviral evidence is in vitro.
-  Adverse effects and drug interactions noted (Shaito et al. 2020). Caution in pregnancy
-  and certain cancers. Herb-drug interaction potential.
+notes_for_coach: Resveratrol has poor bioavailability; trans-resveratrol or liposomal
+  forms are preferred. Evidence for antiviral effects is largely preclinical. May
+  interact with anticoagulants (warfarin), antiplatelet drugs, and some chemotherapy
+  agents. Caution in pregnancy (Roberts et al. 2014 FASEB J adverse outcomes in primates).
 evidence_tier: plausible_emerging
 linked_to_topics:
 - inflammation
@@ -29,13 +30,16 @@ linked_to_topics:
 - chronic-inflammation
 - autoimmune-disease
 - immune-support
+- immune-support-covid-19
 linked_to_mechanisms: []
 linked_to_claims:
 - omega-3-reduces-cytokine-load-stress
 - quercetin-boswellia-resveratrol-anti-inflammatory
 - resveratrol-antiviral-anti-inflammatory
-notes_for_client: Resveratrol is a natural compound in red grapes and berries. At
-  supplement doses, it may offer anti-inflammatory benefits — discuss with your practitioner.
+- resveratrol-has-antiviral-and-anti-inflammatory-effects
+notes_for_client: Resveratrol is a natural compound found in red grapes and berries
+  with anti-inflammatory properties. Take it with food and let your doctor know if
+  you're on any blood-thinning medications.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 3 - Supplement Table
@@ -53,7 +57,12 @@ sources:
   quote: Resveratrol, a natural compound found in red grapes, has many beneficial
     health effects and has been shown in the lab to attack a relative of the COVID-19
     virus.
-version: 4
+- id: vitaone-health-coaching-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Resveratrol, a natural compound found in red grapes, has many beneficial
+    health effects and has been shown in the lab to attack a relative of the COVID-19
+    virus.
+version: 5
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

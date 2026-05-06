@@ -1,0 +1,33 @@
+slug: hawthorn-berry
+display_name: Hawthorn Berry (Dried)
+category: herb
+forms_available:
+- powder
+typical_dose_range:
+  powder:
+    min: 2
+    max: 2
+    unit: teaspoons
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- cardiometabolic-diet
+notes_for_coach: Included as a base liquid tea herb (2 tablespoons brewed). Hawthorn
+  has traditional and emerging evidence for cardiovascular support (blood pressure,
+  heart failure). At tea-base doses this is culinary level; higher therapeutic doses
+  require clinician oversight.
+notes_for_client: Hawthorn berry tea has been used traditionally to support heart
+  health. It can be brewed as a base for your smoothie.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+linked_to_claims: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Building a Better Smoothie — Base Liquids
+  quote: Hawthorne, dried – 2 T
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

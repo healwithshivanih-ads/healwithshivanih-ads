@@ -1,0 +1,28 @@
+slug: statin-causes-myalgia-and-atrophy
+statement: Statin therapy can cause myalgia (muscle pain) and muscle atrophy, with
+  elderly patients at particular risk of falls.
+evidence_tier: strong
+rationale: Statin-induced myopathy is well-documented in the literature and acknowledged
+  by regulatory agencies. The proposed mechanism involves CoQ10 depletion and mitochondrial
+  dysfunction in muscle tissue.
+coaching_translation: Muscle pain and weakness are among the most common side effects
+  of statins. For older adults, this can increase the risk of falls — an important
+  consideration when discussing statin use.
+caveats:
+- Severity ranges from mild discomfort to rare but serious rhabdomyolysis.
+- Concurrent CoQ10 supplementation is sometimes used clinically but evidence for prevention
+  is mixed.
+linked_to_topics:
+- statin-side-effects
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-reality-of-statins
+  location: Side Effects of Statins Section
+  quote: It may cause myalgia and atrophy and atrophy. Elderly can have higher risk
+    of falls.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

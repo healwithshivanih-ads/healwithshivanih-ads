@@ -1,0 +1,27 @@
+slug: nf-kb-master-inflammatory-pathway
+statement: NF-κB is the master upstream regulator of chronic inflammation, driving
+  gene expression of COX-1, COX-2, LOX enzymes, and pro-inflammatory cytokines in
+  response to any inflammatory trigger.
+evidence_tier: strong
+rationale: NF-κB as a central transcription factor in inflammation is well-established
+  in the peer-reviewed literature with thousands of studies confirming its role in
+  chronic disease pathogenesis.
+coaching_translation: Think of NF-κB as the 'master inflammation switch.' When it
+  gets turned on by triggers like poor food, stress, or infections, it starts a chain
+  reaction that produces inflammation throughout the body.
+linked_to_topics:
+- chronic-inflammation
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-approach-inflammation
+  location: NF-kB Pathway – Million Dollar Slide
+  quote: when your cells see like, you know, pattern, it may be a pathological pattern,
+    it may be an infective pattern, it may be just food. But whatever the inflammatory
+    trigger, when your NF-kappa-B activated, then you have downstream pathways.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

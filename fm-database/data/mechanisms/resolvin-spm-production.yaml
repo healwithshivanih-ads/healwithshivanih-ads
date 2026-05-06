@@ -1,0 +1,37 @@
+slug: resolvin-spm-production
+display_name: Resolvin & Specialized Pro-Resolving Mediator (SPM) Production
+aliases:
+- resolvins
+- SPMs
+- specialized pro-resolving mediators
+- D-series resolvins
+- E-series resolvins
+category: immune
+summary: EPA and DHA are precursors to resolvins (E-series from EPA, D-series from
+  DHA), a class of specialized pro-resolving mediators (SPMs). Resolvins actively
+  resolve inflammation by inhibiting neutrophil infiltration, promoting macrophage-mediated
+  clearance, reducing pain and tissue swelling, and restoring tissue homeostasis without
+  immunosuppression.
+upstream_drivers:
+- adequate-omega-3-intake
+- epa-dha-supplementation
+downstream_effects:
+- inflammation-resolution
+- tissue-homeostasis
+- pain-reduction
+related_mechanisms:
+- arachidonic-acid-cascade
+linked_to_topics:
+- omega-3-fatty-acids
+- arachidonic-acid-cascade
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-omega-3-fatty-acids
+  location: Resolvins and SPMs Slide
+  quote: Resolvents are bioactive lipid mediators derived from omega-3 fatty acids
+    that is EPA and DHA...they play a critical role in actively resolving inflammation
+    not just by reducing it.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

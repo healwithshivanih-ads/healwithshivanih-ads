@@ -4,10 +4,11 @@ category: herb
 forms_available:
 - capsule
 - tablet
+- powder
 typical_dose_range:
   capsule:
     min: 500
-    max: 1000
+    max: 1500
     unit: mg
   tablet:
     min: 500
@@ -31,6 +32,11 @@ linked_to_topics:
 - h-pylori-infection
 - type-2-diabetes
 - blood-sugar-dysfunction
+- parasite-infection
+- metabolic-syndrome
+- cardiovascular-disease-prevention
+- sifo
+- gut-microbiome
 linked_to_claims:
 - berberine-metformin-like-pcos-insulin
 - berberine-ampk-natural-metformin
@@ -39,13 +45,22 @@ linked_to_claims:
 - berberine-insulin-sensitivity-nafld
 - berberine-antimicrobial-blood-sugar
 - berberine-ampk-activation-comparable-to-metformin-mild-t2dm
-notes_for_coach: 500 mg twice daily with meals. AMPK activator — do not use alongside
-  metformin or other hypoglycaemic agents without clinician oversight. May cause GI
-  discomfort initially.
-notes_for_client: Berberine is a plant extract that helps your cells use glucose more
-  efficiently. Because it can lower blood sugar, it's important to use it with your
-  doctor's knowledge if you take any diabetes medication.
-evidence_tier: plausible_emerging
+- broad-spectrum-herbal-antimicrobials-effective-against-bacteria-fungi-parasites
+- berberine-pcsk9-inhibitor-lowers-ldl-and-blood-sugar
+- herbal-antimicrobials-effective-in-sibo
+- berberine-is-antimicrobial-not-metabolic-supplement
+- berberine-kills-beneficial-microbes
+notes_for_coach: Dr. Davis cautions strongly against long-term berberine use. It is
+  an antimicrobial/antifungal agent—not merely a metabolic supplement. Long-term use
+  disrupts the microbiome by killing beneficial species including L. crispatus and
+  L. reuteri. Use should be short-term (2 weeks max) for targeted fungal overgrowth
+  reduction only. Separate timing from probiotic intake. Coaches should NOT recommend
+  berberine as a blood sugar or blood pressure supplement.
+notes_for_client: Berberine is often marketed for blood sugar and blood pressure,
+  but it is actually an antibiotic/antifungal. Taking it long-term can harm the beneficial
+  bacteria you are trying to build. If used at all, it should only be for short periods
+  under guidance from your health team—and kept away from your probiotic yogurt.
+evidence_tier: confirm_with_clinician
 linked_to_mechanisms: []
 sources:
 - id: vitaone-practice-guide
@@ -76,7 +91,28 @@ sources:
   location: Section 7.2 — Targeted Supplementation
   quote: 'Berberine: AMPK activation; comparable to metformin in mild T2DM. 500 mg
     twice a day.'
-version: 8
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Removal / Antifungal Section
+  quote: in a fungus, in a dysbiotic pattern, you can consider the broad spectrum
+    anti-herbal. like as we discussed the berberine and teraphylic acid from MCT and
+    coconut oil, garlic oil, oregano oil, even olive oil extract that consider to
+    be.
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: LDL-Lowering Nutraceuticals
+  quote: Berberine, Shilpa talked about, we think it's a PCSK9 inhibitor. You'll hear
+    more about that later, but I do use berberine to lower blood sugar.
+- id: coconote-fm-sibo-sifo
+  location: Antimicrobial / Antifungal Herbal Section
+  quote: You take berberine you take a licorice you take a lotus cream all of these
+    medications actually oil of oregano, garlic oil, Indian barberry root extract,
+    right? All of these basically are responsible, even amla itself, they are all
+    responsible for healing down the gut.
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Berberine and fungal overgrowth discussion
+  quote: Berberine is one of those misused supplements around. People say, I take
+    berberine to reduce my blood glucose or my blood pressure. It's an antibiotic.
+    It's an antimicrobial, antifungal, antibiotic.
+version: 12
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

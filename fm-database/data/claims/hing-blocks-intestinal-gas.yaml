@@ -1,0 +1,29 @@
+slug: hing-blocks-intestinal-gas
+statement: Asafoetida (hing) blocks intestinal H2S gas formation, reduces colonic
+  spasm, and works effectively for post-meal bloating.
+evidence_tier: fm_specific_thin
+rationale: Traditional Ayurvedic use is well-established. Some in-vitro and animal
+  studies support anti-flatulent and antispasmodic effects, but large human RCTs are
+  lacking.
+coaching_translation: Adding a pinch of hing to your cooking is a traditional and
+  practical way to reduce post-meal gas and bloating, especially during the elimination
+  phase when onion and garlic are removed.
+caveats:
+- Limited peer-reviewed human trial data
+- Source is a coaching toolkit
+linked_to_topics:
+- ibs
+- low-fodmap-diet
+- elimination-diet
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: FODMAP Plan SOS Solutions — BLOATING AND GAS
+  quote: Hing (asafoetida) — Blocks intestinal H2S gas formation. Reduces colonic
+    spasm. Works extremely well for post-meal bloating.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,43 @@
+slug: genomic-hormone-signaling
+display_name: Genomic Hormone Signaling
+aliases:
+- nuclear receptor signaling
+- hormone gene expression
+- receptor-mediated gene transcription
+category: endocrine
+summary: Hormones bind to nuclear receptors (satellite dishes) in target tissues,
+  enabling them to dive into the cell nucleus and directly regulate gene expression.
+  This process requires zinc (to extract the hormone from its carrier protein), vitamin
+  A (to switch receptor from repressor to expressive mode), magnesium (for transcription),
+  iodine (to maintain receptor architecture), and P5P/B6 (to control signaling duration
+  via helix 12).
+upstream_drivers:
+- adequate-zinc-status
+- adequate-vitamin-a-status
+- adequate-magnesium-status
+- adequate-iodine-status
+- adequate-p5p-status
+downstream_effects:
+- gene-expression
+- tissue-regulation
+- hormone-signal-duration
+related_mechanisms:
+- non-genomic-hormone-signaling
+- hormone-receptor-binding
+- zinc-finger-receptor-activation
+linked_to_topics:
+- hormonal-nutrition-foundations
+- estrogen-signaling
+- bioidentical-hormone-replacement-therapy
+evidence_tier: strong
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Hormone Receptor Binding and Nutritional Cofactors
+  quote: So zinc pulls it in, inside the binding pocket, we gotta have vitamin A for
+    the genetic expression to occur. Then we need magnesium, which allows transcription
+    of the message to occur. Then we need iodine, which maintains the architecture
+    of the binding pocket domain.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

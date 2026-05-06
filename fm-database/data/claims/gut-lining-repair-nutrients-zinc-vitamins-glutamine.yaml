@@ -1,0 +1,35 @@
+slug: gut-lining-repair-nutrients-zinc-vitamins-glutamine
+statement: Key nutrients including zinc, antioxidants (vitamins A, C, and E), fish
+  oil, and the amino acid glutamine are required for gut lining repair and are often
+  in short supply in a compromised gut.
+evidence_tier: plausible_emerging
+rationale: Individual nutrients (zinc, glutamine, omega-3s) have research supporting
+  gut barrier function, though robust RCT evidence for the full combination as a gut
+  repair protocol is limited.
+coaching_translation: After clearing irritants and restoring good bacteria, your gut
+  lining needs building blocks to heal — think of zinc, vitamins A, C, and E, fish
+  oil, and glutamine as the repair crew.
+caveats:
+- Therapeutic dosing of these nutrients for gut repair should be directed by a clinician.
+linked_to_topics:
+- 5r-gut-restoration
+- gut-dysfunction
+linked_to_supplements:
+- zinc
+- vitamin-a
+- vitamin-c
+- vitamin-e
+- fish-oil
+- l-glutamine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: The 5R Framework for Gut Restoration
+  quote: Help the lining of the GI tract repair itself by supplying key nutrients
+    that can often be in short supply in a compromised gut, such as zinc, antioxidants
+    (e.g. vitamins A, C, and E), fish oil, and the amino acid glutamine.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

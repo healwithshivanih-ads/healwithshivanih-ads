@@ -1,0 +1,25 @@
+slug: if-boosts-antioxidant-activity
+statement: Intermittent fasting increases antioxidant activity and decreases free
+  radical burden.
+evidence_tier: plausible_emerging
+rationale: Listed in the document summary table and consistent with known upregulation
+  of Nrf2 antioxidant pathways during caloric restriction. Supported mechanistically
+  and by animal studies; human RCT evidence is emerging.
+coaching_translation: Fasting can help your body's natural clean-up systems work better,
+  reducing the oxidative damage linked to ageing and disease.
+caveats:
+- Primarily animal model data for antioxidant mechanism; human trials ongoing.
+linked_to_topics:
+- intermittent-fasting
+- phytonutrient-density
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Intermittent Fasting — summary table
+  quote: 'Improves: Antioxidant activity … Decreases: Free radicals'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

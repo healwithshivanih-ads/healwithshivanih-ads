@@ -1,0 +1,25 @@
+slug: eyebrow-thinning
+display_name: Eyebrow Thinning (Outer Third)
+aliases:
+- loss of outer eyebrow
+- lateral eyebrow loss
+- sparse eyebrows
+category: skin
+severity: common
+description: Thinning of the outer third of the eyebrows is a classic clinical sign
+  of hypothyroidism, reflecting hair follicle dysfunction due to insufficient thyroid
+  hormone.
+linked_to_topics:
+- hashimotos-hypothyroidism
+- thyroid-dysfunction
+linked_to_mechanisms:
+- t4-to-t3-conversion-impairment
+when_to_refer: ''
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Thyroid Screening Questionnaire — Signs and Symptoms
+  quote: My eyebrows appear to be thinning, particularly the outer portion
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

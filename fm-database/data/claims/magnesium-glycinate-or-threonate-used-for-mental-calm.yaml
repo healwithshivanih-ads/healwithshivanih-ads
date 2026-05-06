@@ -1,0 +1,34 @@
+slug: magnesium-glycinate-or-threonate-used-for-mental-calm
+statement: Magnesium glycinate and threonate are recommended for mental calm, while
+  magnesium oxide is discouraged due to poor absorption.
+evidence_tier: fm_specific_thin
+rationale: Magnesium glycinate and threonate form preferences for mental health are
+  FM-specific; comparative bioavailability evidence is limited.
+coaching_translation: If a client is using magnesium for sleep or anxiety support,
+  note that glycinate and threonate are generally better absorbed than oxide forms.
+caveats:
+- Source is a practitioner cheatsheet without comparative RCT citation by form.
+- Magnesium supplementation above food-first levels should be discussed with a clinician.
+- Source is practitioner cheatsheet.
+- Form preference is FM-specific without robust RCT form comparison.
+linked_to_topics:
+- depression-like-symptoms
+- nutrition-deficiency
+linked_to_supplements:
+- magnesium-glycinate
+- magnesium-threonate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 23
+  quote: Magnesium glycinate and threonate are recommended for mental calm, while
+    magnesium oxide is discouraged due to poor absorption.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 23
+  quote: Magnesium glycinate and threonate are recommended for mental calm, while
+    magnesium oxide is discouraged due to poor absorption.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

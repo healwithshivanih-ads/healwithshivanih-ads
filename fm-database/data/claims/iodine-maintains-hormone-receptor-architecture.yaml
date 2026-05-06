@@ -1,0 +1,32 @@
+slug: iodine-maintains-hormone-receptor-architecture
+statement: Iodine maintains the architectural integrity of hormone receptor binding
+  pocket domains throughout the body, not only in the thyroid gland.
+evidence_tier: fm_specific_thin
+rationale: Iodine's role in thyroid hormone production and thyroid architecture is
+  well established. Extension of this architectural role to all hormone receptor binding
+  domains is a functional medicine-specific claim with limited peer-reviewed support
+  beyond thyroid biology.
+coaching_translation: We know iodine is needed to keep the thyroid healthy and properly
+  shaped. The same principle applies to hormone receptor 'pockets' all over your body
+  — iodine helps them stay in the right shape to receive hormone signals.
+caveats:
+- Evidence for iodine's role in non-thyroid hormone receptor architecture is thin
+  in the peer-reviewed literature.
+- High-dose iodine supplementation requires clinician supervision, especially in thyroid
+  conditions.
+linked_to_topics:
+- hormonal-nutrition-foundations
+linked_to_supplements:
+- iodine-hormone-receptor
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Iodine in Hormone Receptor Architecture
+  quote: we need iodine, which maintains the architecture of the binding pocket domain...
+    Iodine is a growth controller, an architect controller, and it does the same thing
+    in the binding pocket domain.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

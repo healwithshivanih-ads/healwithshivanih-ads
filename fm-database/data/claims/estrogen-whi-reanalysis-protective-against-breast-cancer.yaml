@@ -1,0 +1,36 @@
+slug: estrogen-whi-reanalysis-protective-against-breast-cancer
+statement: Women on estrogen-only therapy in the Women's Health Initiative, followed
+  for up to 20 years across 15 reanalyses, showed a 23% decreased incidence of breast
+  cancer; those who developed breast cancer while on estrogen had a 40% decreased
+  fatality rate.
+evidence_tier: strong
+rationale: This is a direct reference to the Women's Health Initiative long-term reanalysis
+  data, which is peer-reviewed and published in major journals. The 2019 reanalysis
+  by the original WHI authors supports these figures.
+coaching_translation: Large, long-term research — not just one study — shows that
+  estrogen therapy reduces a woman's risk of getting breast cancer and dramatically
+  improves survival if cancer does occur. The fear around hormones and breast cancer
+  came from an early, flawed reading of the data.
+caveats:
+- Applies specifically to estrogen-only (not Prempro) and to the conjugated equine
+  estrogen used in WHI, not necessarily all estrogen formulations.
+- Individual risk-benefit assessment requires clinical evaluation.
+- Prempro (combined synthetic progestin + equine estrogen) did show increased breast
+  cancer signal in the early WHI data.
+linked_to_topics:
+- bioidentical-hormone-replacement-therapy
+- perimenopause-and-menopause
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Women's Health Initiative Reanalysis
+  quote: women who were on estrogen for an average of five years had a 23% decreased
+    incidence of getting breast cancer in the first place. It was productive against
+    breast cancer. And if you did get breast cancer and you happen to be lucky enough
+    to be on hormones, you have 40% decreased fatality rate.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

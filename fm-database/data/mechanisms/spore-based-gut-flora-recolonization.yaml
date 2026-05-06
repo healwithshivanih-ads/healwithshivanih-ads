@@ -1,0 +1,31 @@
+slug: spore-based-gut-flora-recolonization
+display_name: Spore-Based Probiotic Gut Flora Recolonization
+aliases:
+- spore probiotic colonization
+- spore-forming bacteria gut seeding
+category: gut
+summary: Spore-based probiotics (e.g., Bacillus species) are more resistant to stomach
+  acid and can survive to colonize the gut lining over 6–9 months, unlike standard
+  lactobacillus/bifidobacterium probiotics which have only transient effects. Spores
+  can lie dormant and reactivate in favorable gut conditions, promoting lasting changes
+  to gut flora.
+upstream_drivers:
+- gut-dysbiosis-microbiome-imbalance
+downstream_effects:
+- restored-gut-flora
+- improved-gut-lining
+related_mechanisms:
+- gut-dysbiosis-microbiome-imbalance
+linked_to_topics:
+- gut-dysbiosis
+- intestinal-permeability
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Probiotics Section
+  quote: Spore-based probiotic, if you give it 6 to 9 months, they can change the
+    flora. They can change the gut lining or gut lining flora.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

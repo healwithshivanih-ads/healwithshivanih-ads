@@ -1,0 +1,39 @@
+slug: upstream-cause-identification
+display_name: Upstream Cause Identification
+aliases:
+- root cause analysis
+- root cause medicine
+- upstream determinants of health
+category: other
+summary: The functional medicine approach of identifying and addressing the foundational
+  drivers of chronic illness — including lifestyle factors, environmental exposures,
+  gene-environment interactions, chronic stress, and microbiome dysregulation — rather
+  than managing downstream symptoms.
+upstream_drivers:
+- lifestyle-factors
+- environmental-exposures
+- chronic-stress
+- microbiome-dysregulation
+- gene-environment-interactions
+downstream_effects:
+- targeted-care-plan-design
+- symptom-resolution
+- improved-chronic-disease-outcomes
+related_mechanisms:
+- patient-centered-care-model
+- behavior-change-accountability
+linked_to_topics:
+- functional-medicine-coaching
+- chronic-disease-management
+- elimination-diet
+evidence_tier: plausible_emerging
+sources:
+- id: ask-expert-future-fm
+  location: Disease-Centered to Patient-Centered Shift Section
+  quote: Functional and integrative models seeking to understand upstream causes,
+    lifestyle, environment, gene interactions, stress, the microbiome, that's more
+    patient centered.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

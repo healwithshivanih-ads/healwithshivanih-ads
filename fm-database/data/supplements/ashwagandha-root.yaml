@@ -1,0 +1,32 @@
+slug: ashwagandha-root
+display_name: Ashwagandha Root (Powdered)
+category: herb
+forms_available:
+- powder
+typical_dose_range:
+  powder:
+    min: 1
+    max: 1
+    unit: teaspoons
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- cardiometabolic-diet
+notes_for_coach: Included as a base-liquid herb for smoothies (1 tablespoon brewed
+  in tea). Adaptogen with HPA-axis and cortisol-modulating properties. Dose in this
+  format is low-level culinary/tea; therapeutic dosing requires clinician oversight.
+notes_for_client: Ashwagandha root can be brewed into a tea base for your smoothie.
+  It is an adaptogenic herb traditionally used for stress and energy balance.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+linked_to_claims: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Building a Better Smoothie — Base Liquids
+  quote: Ashwaganda root, powdered – 1 T
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

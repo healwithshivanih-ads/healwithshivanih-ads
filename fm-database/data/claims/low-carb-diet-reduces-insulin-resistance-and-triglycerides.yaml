@@ -1,0 +1,30 @@
+slug: low-carb-diet-reduces-insulin-resistance-and-triglycerides
+statement: A low-carbohydrate diet that replaces refined carbs and sugars with healthy
+  fats and proteins can significantly reduce insulin resistance, lower triglycerides,
+  and aid weight loss.
+evidence_tier: strong
+rationale: Multiple RCTs and meta-analyses support low-carbohydrate diets reducing
+  fasting insulin, triglycerides, and body weight. The mechanism — reduced hepatic
+  VLDL synthesis — is well established.
+coaching_translation: Cutting out sugar and refined carbs and replacing them with
+  healthy fats and proteins can dramatically lower your blood fat (triglycerides)
+  and improve how your body handles blood sugar.
+linked_to_topics:
+- insulin-resistance
+- dyslipidemia
+- cardiovascular-risk-assessment
+linked_to_supplements: []
+caveats:
+- Degree of carbohydrate restriction and optimal macronutrient composition should
+  be personalised; clinician input recommended for patients on diabetes medications.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cvs-risk-assessment
+  location: Low Carbohydrate Diet (Slide 20)
+  quote: This dietary approach can significantly reduce insulin resistance as well
+    as Triglycerides and will also aid the weight loss process.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

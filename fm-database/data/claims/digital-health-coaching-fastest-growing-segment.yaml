@@ -1,0 +1,28 @@
+slug: digital-health-coaching-fastest-growing-segment
+statement: Digital health coaching is among the fastest-growing segments in the health
+  coaching industry, driven by rising adoption of apps and remote health coaching
+  tools.
+evidence_tier: plausible_emerging
+rationale: Speaker attributes this to Grandview Research. Consistent with published
+  market research trends in digital health, though no specific publication date or
+  methodology is cited.
+coaching_translation: Building fluency with digital health tools and remote coaching
+  platforms is a near-term competitive advantage, not an optional add-on.
+caveats:
+- Grandview Research cited by name but no report title, year, or URL provided.
+- Source is expert synthesis.
+linked_to_topics:
+- digital-health-coaching
+- functional-medicine-coaching
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-future-fm
+  location: Future-Proofing Your Coaching Career Section
+  quote: Digital health coaching is among the fastest growing segments in the industry
+    right now. And that comes from Grandview Research.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

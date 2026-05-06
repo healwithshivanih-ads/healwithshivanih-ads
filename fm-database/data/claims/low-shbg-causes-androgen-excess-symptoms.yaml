@@ -1,0 +1,28 @@
+slug: low-shbg-causes-androgen-excess-symptoms
+statement: Low SHBG increases free testosterone and estrogen, leading to symptoms
+  such as hair loss, acne, and excess fluid retention.
+evidence_tier: plausible_emerging
+rationale: Biologically plausible and described in FM literature; low SHBG is associated
+  with androgen excess conditions such as PCOS, though direction of causality is complex.
+coaching_translation: When SHBG is too low, hormones like testosterone and estrogen
+  run 'unbound' and high — this can show up as oily skin, breakouts, hair thinning,
+  or feeling puffy.
+caveats:
+- Source is an expert-consensus toolkit
+- Individual presentation varies widely; lab testing needed to confirm
+linked_to_topics:
+- sex-hormone-binding-globulin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Sex Hormone Binding Globulin (SHBG)
+  quote: When SHBG levels in the body are low, there is not enough binding power to
+    keep sex hormones within the optimal range. This can lead to increased free testosterone
+    and estrogen in the body, which can lead to symptoms like hair loss, acne, and
+    excess fluid retention.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

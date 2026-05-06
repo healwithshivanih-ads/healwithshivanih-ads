@@ -10,21 +10,27 @@ timing_options:
 take_with_food: required
 linked_to_topics:
 - gerd
+- gerd-ppi-tapering
 linked_to_claims:
 - d-limonene-modulates-gi-transit
-notes_for_coach: Listed as a transit time modulator in the PPI taper protocol. Derived
-  from citrus peel; has some evidence for GERD symptom relief. Dosing requires clinician
-  guidance.
-evidence_tier: plausible_emerging
+- ppi-tapering-supplement-support-repair-protect-antioxidant
+notes_for_coach: Listed as a 'transit time modulator' in PPI tapering. A citrus-derived
+  compound; some small trials suggest it may reduce GERD symptoms and support gastric
+  emptying.
+evidence_tier: fm_specific_thin
 typical_dose_range: {}
 linked_to_mechanisms: []
-notes_for_client: ''
+notes_for_client: D-Limonene is a natural compound from citrus peel that may help
+  improve stomach emptying and reduce reflux symptoms.
 sources:
 - id: vitaone-gut-toolkit
   location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
     — Supplement recommendations'
   quote: 'Transit time modulators: Iberogast, D-limonene, ginger, probiotics, triphala'
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
+  quote: 'Transit time modulators: Iberogast, D-limonene, ginger, probiotics, triphala.'
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

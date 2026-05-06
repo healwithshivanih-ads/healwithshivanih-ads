@@ -1,0 +1,43 @@
+slug: hormonal-nutrition-foundations
+display_name: Nutritional Foundations of Hormone Signaling
+aliases:
+- nutrition and hormones
+- hormone nutrition
+- micronutrients for hormones
+summary: Hormones depend on specific micronutrients — zinc, vitamin A, magnesium,
+  iodine, and pyridoxal-5-phosphate (P5P/B6) — at the receptor level to bind, signal,
+  and complete genomic expression. Without adequate nutritional status, even optimal
+  hormone levels may fail to produce physiologic effects.
+common_symptoms:
+- brain-fog
+- fibrocystic-breasts
+- heavy-periods
+- estrogen-dominance-symptoms
+- fatigue
+red_flags: []
+related_topics:
+- bioidentical-hormone-replacement-therapy
+- perimenopause-and-menopause
+- estrogen-signaling
+- digestion-and-nutrient-absorption
+key_mechanisms:
+- hormone-receptor-binding
+- zinc-finger-receptor-activation
+- p5p-helix-12-signaling-control
+coaching_scope_notes: Coaches can assess nutritional gaps and support diet and supplement
+  strategies to ensure hormone receptor cofactors are present. Testing (RBC magnesium,
+  B6, vitamin A) is appropriate to recommend via clinician.
+clinician_scope_notes: Nutritional cofactor status (zinc, vitamin A, magnesium, iodine,
+  P5P) should be assessed alongside hormone panels. Receptor functionality is not
+  captured by standard hormone blood tests.
+evidence_tier: plausible_emerging
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Hormone Receptor Binding and Nutritional Cofactors
+  quote: hormones depend on nutrients to deliver their signals, which are the most
+    important signals, because they're the only ones that can really affect genetic
+    expression.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

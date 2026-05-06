@@ -1,30 +1,47 @@
 slug: homocysteine-elevation
-display_name: Homocysteine Elevation
+display_name: Elevated Homocysteine
 aliases:
 - hyperhomocysteinemia
 - high homocysteine
+- homocysteine
+- folic acid deficiency marker
 category: metabolic
-summary: Elevated plasma homocysteine, a marker of impaired methylation, is associated
-  with vascular damage, thyroid dysfunction, and increased cardiovascular risk. Reduced
-  by methylated B vitamins (B12, B6, folate) and betaine (TMG).
+summary: Elevated homocysteine — a marker of folic acid deficiency — significantly
+  increases cardiovascular risk. Men with extremely high homocysteine levels are three
+  times more likely to have a heart attack. Homocysteine damages endothelial cells
+  and promotes thrombosis.
 upstream_drivers:
 - impaired-methylation
 - b-vitamin-deficiency
+- folic-acid-deficiency
+- vitamin-b12-deficiency
+- vitamin-b6-deficiency
 downstream_effects:
 - vascular-damage
 - thyroid-dysfunction
 - cardiovascular-risk
+- endothelial-damage
+- thrombosis
+- atheromatous-vascular-disease
 related_mechanisms:
 - impaired-methylation
 - glutathione-depletion
+- atheromatous-vascular-disease
+- chronic-inflammation
 linked_to_topics:
 - methylation-mthfr
+- cardiovascular-dysfunction
 evidence_tier: strong
 sources:
 - id: vitaone-liver-detox-cheatsheet
   location: Methylation & MTHFR Cheatsheet
   quote: Elevate homocysteine, damaging the thyroid and vascular tissues.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: CVD Risk Analysis — Lab Results
+  quote: Men with extremely high homocysteine levels were three times more likely
+    to have a heart attack than others. Homocysteine levels is a measure of folic
+    acid deficiency.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

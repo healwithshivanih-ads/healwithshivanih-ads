@@ -1,0 +1,33 @@
+slug: cooking-fats-and-cardiovascular-health
+display_name: Cooking Fats, Oils & Cardiovascular Health
+aliases:
+- dietary fats
+- cooking oils
+- omega-6 and inflammation
+summary: Choice of cooking fat significantly affects cardiovascular health. Highly
+  processed seed oils high in omega-6 fatty acids promote chronic inflammation. Preferred
+  oils with stable smoke points (avocado, ghee, coconut, olive) are favored. Proper
+  storage in dark glass, away from heat and light, preserves oil integrity.
+common_symptoms: []
+red_flags: []
+related_topics:
+- cardiovascular-dysfunction
+- chronic-inflammation-dietary
+key_mechanisms:
+- chronic-inflammation
+- omega-6-to-omega-3-imbalance
+coaching_scope_notes: Coaches can educate clients on selecting stable cooking fats,
+  avoiding heavily processed omega-6-rich oils, proper oil storage, and interpreting
+  oil labeling (refined, unrefined, extra-virgin, cold-pressed).
+clinician_scope_notes: ''
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: A Guide to Cooking with Fats and Oils
+  quote: These fats and oils are also high in omega-6 fatty acids, which can contribute
+    to chronic inflammation in the body. Because of this, regularly consuming fats
+    and oils from this list is not recommended.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

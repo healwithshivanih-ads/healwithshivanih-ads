@@ -1,5 +1,5 @@
 slug: low-mood
-display_name: Low Mood / Depressive Symptoms
+display_name: Low Mood
 aliases:
 - sadness
 - feeling down
@@ -11,13 +11,17 @@ aliases:
 - joylessness
 - depressed mood
 - melancholy
+- unhappiness
+- lack of joy
+- low spirits
+- feeling blue
 category: mood
 severity: common
-description: Persistent low mood, sadness, or depressive symptoms. Linked to B12/folate
-  deficiency (especially with MTHFR variants), magnesium insufficiency, CoQ10 depletion,
-  and vitamin C depletion.
-when_to_refer: Refer if meeting criteria for clinical depression, suicidal ideation,
-  or if symptoms do not improve with nutritional optimization.
+description: Persistent or recurrent feelings of sadness, diminished interest, or
+  reduced positive affect. Targeted by gratitude journaling, social connection, and
+  self-care practices.
+when_to_refer: Refer if low mood persists beyond two weeks, is severe, or is accompanied
+  by loss of function, hopelessness, or suicidal ideation.
 linked_to_topics:
 - nutrient-deficiency-depression
 - gratitude-practice
@@ -26,6 +30,7 @@ linked_to_topics:
 - folate-deficiency
 - magnesium-insufficiency
 - mitochondrial-health-nutrition
+- emotional-wellbeing
 linked_to_mechanisms:
 - neurotransmitter-synthesis-impairment
 - methylation-cycle-dysfunction
@@ -33,6 +38,9 @@ linked_to_mechanisms:
 - parasympathetic-activation
 - homocysteine-metabolism
 - methylation-cycle
+- hpa-axis-dysregulation
+- positive-affect-upregulation
+- hpa-axis-regulation
 sources:
 - id: vitaone-nutrition-cheatsheet
   location: How Nutrient Deficiencies (B12, Folate, Omega-3, Magnesium) Mimic Depression
@@ -50,7 +58,7 @@ sources:
   location: Nutrients for Mitochondrial Health
   quote: Restoring the body's magnesium can have a protective role in heart health,
     blood pressure, and is associated with improvements in depressive symptoms.
-version: 3
+version: 5
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

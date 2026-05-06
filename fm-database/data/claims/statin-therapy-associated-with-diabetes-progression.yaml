@@ -1,0 +1,39 @@
+slug: statin-therapy-associated-with-diabetes-progression
+statement: Statin therapy initiation is associated with diabetes progression, including
+  greater likelihood of insulin treatment initiation, significant hyperglycaemia,
+  and increased glucose-lowering medication requirements (Mansi et al., JAMA Internal
+  Medicine, retrospective matched-cohort study).
+evidence_tier: plausible_emerging
+rationale: 'The document cites a specific peer-reviewed study: Mansi et al., JAMA
+  Internal Medicine, retrospective matched-cohort of 83,022 pairs. This study found
+  statin use was associated with diabetes progression (OR 1.37; 95% CI 1.35–1.40;
+  P<0.001). Classified plausible_emerging rather than strong because it is a retrospective
+  observational study and causality is not proven; however, it is a substantial published
+  study.'
+coaching_translation: Research in over 83,000 patients showed that people who started
+  statins were more likely to see their blood sugar worsen and need more diabetes
+  medications. This is one reason your doctor weighed up the risks and benefits carefully.
+out_of_scope_notes: Decisions about continuing, stopping, or modifying statin therapy
+  are exclusively clinician scope. Coaches must never advise clients to alter statin
+  prescriptions based on this claim.
+caveats:
+- Retrospective observational design — cannot establish causality.
+- Statin benefits for high-risk CVD patients (e.g., post-MI) may outweigh this metabolic
+  risk.
+- Medication decisions must remain with the prescribing clinician.
+linked_to_topics:
+- insulin-resistance
+- cardiovascular-risk-assessment
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cvs-risk-assessment
+  location: JAMA Internal Medicine reference (Slide 15)
+  quote: This retrospective matched-cohort study found that statin use was associated
+    with diabetes progression, including greater likelihood of insulin treatment initiation,
+    significant hyperglycemia, acute glycemic complications, and an increased number
+    of prescriptions for glucose-lowering medication classes.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

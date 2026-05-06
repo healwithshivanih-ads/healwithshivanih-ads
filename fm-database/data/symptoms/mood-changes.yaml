@@ -1,17 +1,20 @@
 slug: mood-changes
-display_name: Mood Disorders / Behavioral Changes
+display_name: Mood Changes / Mood Swings
 aliases:
 - low mood
-- irritability
 - emotional changes
 - emotional dysregulation
 - behavior changes
+- mood disorder
+- emotional lability
+- mood swings
 category: mood
 severity: common
-description: Changes in mood, affect, or behavior associated with neurotoxic effects
-  of accumulated toxins.
-when_to_refer: Suicidal ideation, severe psychiatric symptoms, or sudden personality
-  change require urgent referral.
+description: Fluctuations in mood including anxiety, depression, and irritability
+  associated with declining progesterone and estrogen. Progesterone is neuroprotective
+  and its decline has direct CNS effects.
+when_to_refer: Refer if mood symptoms are severe, involve suicidal ideation, or meet
+  criteria for a psychiatric diagnosis requiring clinical management.
 linked_to_topics:
 - thyroid
 - anxiety
@@ -19,12 +22,17 @@ linked_to_topics:
 - anti-inflammatory-diet
 - toxic-body-burden
 - liver-detoxification
+- menopause
+- perimenopause
 linked_to_mechanisms:
 - t4-to-t3-conversion-block
 - hpa-axis-dysregulation
 - cytokine-dysregulation
 - oxidative-stress
 - endocrine-disruption
+- nlrp3-inflammasome-activation
+- estrogen-progesterone-decline
+- cortisol-steal
 sources:
 - id: vitaone-thyroid-cheatsheet
   location: Biohacking Thyroid Function Cheatsheet — Thyroid Dysfunction Symptoms
@@ -37,7 +45,15 @@ sources:
   location: Detox Food Plan — Body Burden
   quote: Medical researchers are recognizing more symptoms related to the buildup
     of toxins, including... behavior and mood disorders.
-version: 3
+- id: vitaone-health-coaching-toolkit
+  location: Anti Inflammatory Diet — Benefits of Following an Anti-Inflammatory Diet
+  quote: 'Enhanced Mental Clarity and Mood: Reduction in brain fog and improvement
+    in mood disorders like depression and anxiety.'
+- id: coconote-fm-sex-hormones
+  location: Stages of Menopause — Stage 2B
+  quote: late psychosomatic changes, anxiety, depression, Constantly host of hot flashes,
+    waking up in the night, sexual disorders, low sex drive
+version: 5
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

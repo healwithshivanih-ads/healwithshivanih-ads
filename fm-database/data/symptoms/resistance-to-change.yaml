@@ -1,0 +1,29 @@
+slug: resistance-to-change
+display_name: Resistance to Change
+aliases:
+- not ready to change
+- client resistance
+- unwillingness to try
+- sustain talk
+category: mood
+severity: common
+description: A client's expressed or behavioral reluctance to adopt recommended health
+  behaviors, often stemming from ambivalence, past failure, fear, or external (rather
+  than intrinsic) motivation.
+when_to_refer: If resistance is rooted in significant mental health issues (e.g.,
+  depression, trauma, clinical anxiety), refer to a mental health professional.
+linked_to_topics:
+- ambivalence-in-coaching
+linked_to_mechanisms:
+- change-talk-activation
+- pros-cons-weighting
+sources:
+- id: ask-expert-coaching-ambivalence
+  location: Group discussion — stages of change
+  quote: Sometimes you will get a client that comes and their doctor's telling them
+    they've got to do something, but they're not really wanting to do it. And so sometimes
+    that's where the ambivalence will come in.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

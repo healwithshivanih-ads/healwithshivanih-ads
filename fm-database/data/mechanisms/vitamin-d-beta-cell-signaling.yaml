@@ -1,0 +1,30 @@
+slug: vitamin-d-beta-cell-signaling
+display_name: Vitamin D – Beta Cell Signaling
+aliases:
+- VDR on pancreatic beta cells
+- vitamin D receptor signaling
+category: endocrine
+summary: Vitamin D receptors are present on insulin-secreting pancreatic beta cells.
+  Low vitamin D levels are associated with impaired beta-cell function and increased
+  insulin resistance.
+upstream_drivers:
+- vitamin-d-deficiency
+- low-sun-exposure
+downstream_effects:
+- impaired-insulin-secretion
+- increased-insulin-resistance
+related_mechanisms:
+- insulin-resistance
+linked_to_topics:
+- blood-sugar-dysfunction
+- insulin-resistance
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: There are vitamin D receptors on many cells throughout the body, including
+    insulin secreting pancreatic beta cells.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

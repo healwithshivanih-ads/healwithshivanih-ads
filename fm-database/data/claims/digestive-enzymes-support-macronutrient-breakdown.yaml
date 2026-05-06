@@ -1,0 +1,39 @@
+slug: digestive-enzymes-support-macronutrient-breakdown
+statement: Replacing deficient digestive enzymes (pancreatic or otherwise) is essential
+  for breaking down food into absorbable nutrients and reducing undigested antigenic
+  particles that can drive gut inflammation.
+evidence_tier: fm_specific_thin
+rationale: Pancreatic enzyme replacement therapy (PERT) is well-established for exocrine
+  pancreatic insufficiency. Broader use of OTC digestive enzymes for sub-clinical
+  insufficiency or general gut health is common in FM but has thin evidence outside
+  of diagnosed insufficiency.
+coaching_translation: If your digestive system isn't producing enough enzymes, food
+  can remain only partially digested, which can irritate the gut lining and trigger
+  immune reactions.
+caveats:
+- Source is expert consensus.
+- Specific enzyme formulations and doses should be guided by a clinician.
+- Broad use of digestive enzymes outside of confirmed insufficiency is FM-specific
+  with limited RCT support.
+linked_to_topics:
+- hypochlorhydria
+- digestive-enzyme-insufficiency
+- intestinal-permeability
+- 5r-gut-healing-protocol
+linked_to_supplements:
+- digestive-enzymes
+out_of_scope_notes: Diagnosing pancreatic enzyme insufficiency and prescribing PERT
+  is clinician-scope.
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-hypochlorhydria
+  location: Treatment / Supports for Gastric Acid
+  quote: So the digestive enzymes, stress management can be used.
+- id: coconote-fm-intestinal-permeability
+  location: 5R Protocol – Replace
+  quote: if patient having any kind of pancreatic enzyme insufficiency, then we have
+    to replace that pancreatic enzyme.
+version: 2
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

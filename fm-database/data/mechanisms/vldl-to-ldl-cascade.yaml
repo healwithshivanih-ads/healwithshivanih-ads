@@ -1,0 +1,33 @@
+slug: vldl-to-ldl-cascade
+display_name: VLDL → IDL → LDL Lipoprotein Cascade
+aliases:
+- lipoprotein lipase pathway
+- VLDL catabolism
+category: metabolic
+summary: VLDL (large triglyceride-rich particles) are broken down via lipoprotein
+  lipase to IDL, then to LDL. Very high triglycerides (>500) can overwhelm the lipoprotein
+  lipase receptor. Omega-3 fatty acids lower triglycerides/VLDL, which may transiently
+  raise LDL as the receptor becomes more efficient—a predictable physiological outcome.
+upstream_drivers:
+- high-triglycerides
+- high-sugar-diet
+- insulin-resistance
+downstream_effects:
+- ldl-particle-accumulation
+- small-dense-ldl-atherogenesis
+related_mechanisms:
+- small-dense-ldl-atherogenesis
+- apob-atherogenic-particle-burden
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-disease-prevention
+evidence_tier: strong
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Lipoprotein Cascade Overview
+  quote: VLDL is our large lipid particles, which are mainly triglycerides. They get
+    broken down to IDL and IDL goes to LDL.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

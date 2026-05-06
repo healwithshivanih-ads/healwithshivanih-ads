@@ -1,0 +1,35 @@
+slug: seed-cycling-supports-hormonal-balance-across-menstrual-phases
+statement: Seed cycling — using flaxseed and pumpkin seed in the follicular phase,
+  and sesame and sunflower seed in the luteal phase — is used to support hormonal
+  balance across the menstrual cycle.
+evidence_tier: fm_specific_thin
+rationale: Seed cycling is a widely used functional medicine and naturopathic practice.
+  Flaxseeds contain phytoestrogens (lignans) that may modulate estrogen activity,
+  and pumpkin seeds are zinc-rich (supporting progesterone). Sesame seeds provide
+  lignans and sunflower seeds are selenium-rich. Controlled trial evidence is very
+  limited; the practice is based on nutritional plausibility and clinical tradition.
+coaching_translation: Different seeds at different times of the month can gently support
+  your hormones — in the first half of your cycle to help estrogen balance, and in
+  the second half to support progesterone.
+caveats:
+- Seed cycling evidence is FM-specific clinical tradition with very thin peer-reviewed
+  RCT support. Source is FM lecture.
+- Phytoestrogen-containing seeds (flax) should be used cautiously in highly estrogen-sensitive
+  individuals — assess case by case.
+linked_to_topics:
+- endometriosis
+- estrogen-dominance
+- gut-skin-hormone-axis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Q&A — Seed Cycling
+  quote: Seed cycling is carried out to bring about hormonal balance. In the follicular
+    phase you give flax seeds and pumpkin seeds. In the luteal phase, you give sesame
+    seeds and sunflower seeds.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

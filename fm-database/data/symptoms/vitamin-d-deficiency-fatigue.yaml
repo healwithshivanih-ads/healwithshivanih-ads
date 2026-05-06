@@ -1,0 +1,27 @@
+slug: vitamin-d-deficiency-fatigue
+display_name: Fatigue / Low Energy (Vitamin D Deficiency)
+aliases:
+- tiredness
+- low energy
+- exhaustion
+category: constitutional
+severity: common
+description: Generalised fatigue and low energy commonly associated with suboptimal
+  vitamin D levels, potentially mediated by impaired neurotransmitter production and
+  metabolic compensation.
+when_to_refer: Refer if fatigue is severe, persistent, or unexplained despite optimising
+  lifestyle and nutrition.
+linked_to_topics:
+- vitamin-d3
+linked_to_mechanisms:
+- vitamin-d-hydroxylation
+- immunomodulation-via-vitamin-d
+sources:
+- id: coconote-fm-vitamin-d3-k2
+  location: Functional vs Conventional Lab Ranges
+  quote: the metabolism part of this patient all the vitamin d uh mediated metabolisms
+    all the functions are definitely compensated with this level of vitamin d
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

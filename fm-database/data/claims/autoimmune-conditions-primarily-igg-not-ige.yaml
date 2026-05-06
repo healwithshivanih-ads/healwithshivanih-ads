@@ -1,0 +1,34 @@
+slug: autoimmune-conditions-primarily-igg-not-ige
+statement: In autoimmune conditions, IgG reactions to food — not IgE — are the predominant
+  immune mechanism; the most common triggers are casein, wheat, dairy, egg white,
+  and rice.
+evidence_tier: plausible_emerging
+rationale: The association between IgG food reactions and autoimmune conditions is
+  a widely applied FM clinical framework. Some research supports immune complex involvement
+  in autoimmunity, but the specific food-autoimmune disease links vary in evidence
+  strength by condition.
+coaching_translation: Clients with autoimmune conditions often do better removing
+  casein, gluten/wheat, egg white, and rice — even if IgE allergy tests come back
+  negative.
+caveats:
+- Source is expert lecture, moderate quality.
+- Evidence strength varies significantly by autoimmune condition and food type.
+- This should be implemented as part of a supervised elimination diet, not self-directed
+  removal without clinical oversight.
+linked_to_topics:
+- autoimmune-conditions-igg-food-triggers
+- food-sensitivity-igg-iga-mediated
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-food-allergies-sensitivities
+  location: IgG Food Reaction and Autoimmune Conditions Section
+  quote: in autoimmune condition you rarely see IgE reactions and IgG reaction is
+    that is what is happening in autoimmune condition... Most common food reacting
+    in autoimmune condition is casein found in milk, cow milk itself, wheat, dairy,
+    egg white and rice.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

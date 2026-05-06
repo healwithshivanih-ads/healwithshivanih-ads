@@ -1,0 +1,25 @@
+slug: avocado-oil-highest-smoke-point-preferred
+statement: Avocado oil has a smoke point of 520°F and is suitable for high-heat cooking,
+  low-heat cooking, dressings, and finishing.
+evidence_tier: plausible_emerging
+rationale: Smoke point data for avocado oil is consistent with food science literature.
+  Its high monounsaturated fat content is associated with cardiovascular benefit in
+  observational studies.
+coaching_translation: Avocado oil is one of the most versatile and heat-stable cooking
+  oils — a great recommendation for clients cooking at high temperatures.
+caveats:
+- Smoke points can vary by refining status and batch quality.
+- Source cites Brown A. 2004 food science textbook.
+linked_to_topics:
+- cooking-fats-and-cardiovascular-health
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: A Guide to Cooking with Fats and Oils
+  quote: Avocado oil 520°F — High-heat cooking, low-heat cooking, dressing, finishing
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

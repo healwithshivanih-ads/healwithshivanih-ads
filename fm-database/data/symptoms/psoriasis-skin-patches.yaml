@@ -1,0 +1,29 @@
+slug: psoriasis-skin-patches
+display_name: Psoriatic Skin Patches
+aliases:
+- red patches
+- skin plaques
+- psoriatic flares
+- scaly skin patches
+category: skin
+severity: concerning
+description: Red, inflamed skin patches typically on elbows, along with cracks on
+  knuckles and feet. In this case linked to immune dysregulation, gut dysbiosis, zinc
+  deficiency, and vitamin D insufficiency.
+when_to_refer: Extensive plaques, joint involvement (psoriatic arthritis), or failure
+  to improve with gut and nutritional interventions — refer to dermatologist or rheumatologist.
+linked_to_topics:
+- psoriasis-gut-immune
+- gut-skin-hormone-axis
+- immune-dysregulation
+linked_to_mechanisms:
+- gut-immune-dysregulation
+sources:
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Case History / Symptoms
+  quote: Symptoms of psoriasis were cracks on knuckles and feet and red patches on
+    her elbow.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

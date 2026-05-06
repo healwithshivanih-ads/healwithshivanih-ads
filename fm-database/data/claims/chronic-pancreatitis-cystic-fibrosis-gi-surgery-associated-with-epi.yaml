@@ -1,0 +1,31 @@
+slug: chronic-pancreatitis-cystic-fibrosis-gi-surgery-associated-with-epi
+statement: Chronic pancreatitis, cystic fibrosis, GI bypass surgery, gastric ulcer,
+  Crohn's disease, and pancreatic duct obstruction are conditions clinically associated
+  with exocrine pancreatic insufficiency.
+evidence_tier: strong
+rationale: These are well-established clinical associations documented extensively
+  in gastroenterology and internal medicine literature. Chronic pancreatitis and cystic
+  fibrosis are the two most common causes of EPI.
+coaching_translation: Several medical conditions — including chronic pancreatitis,
+  cystic fibrosis, past gut surgery, and Crohn's disease — are known to reduce pancreatic
+  enzyme output. Clients with these diagnoses should be evaluated for EPI by their
+  clinician.
+out_of_scope_notes: Management of all listed associated conditions is clinician scope.
+  Coaches should refer clients with these diagnoses for clinical EPI assessment.
+linked_to_topics:
+- pancreatic-insufficiency
+caveats:
+- Source is an expert consensus lecture. Anemia and bone loss in this list appear
+  to be sequelae rather than causes — they are captured separately as downstream symptoms.
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-pancreatic-insufficiency
+  location: Associated Conditions
+  quote: Certain diseases which are typically associated with enzymatic deficiency
+    are chronic pancreatitis, cystic fibrosis, C.I. disease, GI surgery bypass, gastric
+    ulcer, obstruction to pancreatic duct, Crohn's disease, anemia, bone loss.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

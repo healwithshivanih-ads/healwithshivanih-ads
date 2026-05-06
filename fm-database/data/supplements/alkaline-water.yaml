@@ -1,0 +1,38 @@
+slug: alkaline-water
+display_name: Alkaline Water
+category: other
+forms_available:
+- liquid
+typical_dose_range:
+  liquid:
+    min: 250
+    max: 500
+    unit: ml
+timing_options:
+- on_waking
+- mid_morning
+- mid_afternoon
+- evening
+take_with_food: avoid
+linked_to_topics:
+- ph-balance
+linked_to_claims:
+- alkaline-water-helpful-for-tissues-not-digestion
+notes_for_coach: Alkaline water is described as beneficial for tissues but contraindicated
+  with meals as stomach acid is needed for digestion. Advise clients to drink between
+  meals only. Verify appropriateness with clinician for clients with GI conditions.
+notes_for_client: Alkaline water can support your body's tissue health, but drink
+  it between meals — not with them — so it doesn't interfere with your stomach acid
+  and digestion.
+evidence_tier: fm_specific_thin
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-ph-balance
+  location: Water and pH Section
+  quote: Alkaline water certainly is helpful for the tissues, but it's not good for
+    digestion because the only part of the body that should be acid is the stomach.
+    So if you have alkaline water, please drink it between meals, not with meals.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

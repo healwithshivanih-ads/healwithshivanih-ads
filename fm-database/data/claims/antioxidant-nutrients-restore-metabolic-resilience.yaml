@@ -1,0 +1,34 @@
+slug: antioxidant-nutrients-restore-metabolic-resilience
+statement: Functional repletion with active B-vitamins, magnesium glycinate, CoQ10,
+  selenium, zinc, and antioxidants helps restore metabolic resilience in patients
+  on nutrient-depleting medications.
+evidence_tier: plausible_emerging
+rationale: Each named nutrient has individual mechanistic rationale for supporting
+  mitochondrial function, redox balance, and neurological health. However, evidence
+  for combined 'metabolic resilience' as a clinical outcome from this specific stack
+  is extrapolated from individual nutrient data rather than combination RCTs.
+coaching_translation: Replenishing key nutrients that medications can deplete — like
+  B-vitamins, magnesium, CoQ10, selenium, and zinc — supports the body's overall energy
+  and repair capacity.
+out_of_scope_notes: Dosing of specific supplements must be clinician-directed.
+caveats:
+- Evidence is nutrient-specific; combination stack studies are lacking.
+- Source is Instagram/educational synthesis.
+linked_to_topics:
+- medication-induced-nutrient-depletion
+linked_to_supplements:
+- active-b-vitamins
+- magnesium-glycinate
+- coenzyme-q10
+- selenium
+- zinc
+linked_to_mechanisms: []
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXjjIqJjMSR/
+  quote: Functional repletion with active B-vitamins, magnesium glycinate, CoQ10,
+    selenium, zinc, and antioxidants helps restore metabolic resilience.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

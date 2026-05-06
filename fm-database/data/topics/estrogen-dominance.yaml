@@ -6,10 +6,16 @@ aliases:
 - high estrogen
 - oestrogen dominance
 - relative estrogen excess
-summary: 'A state of excess estrogen relative to progesterone, often linked to impaired
-  Phase II liver conjugation and insufficient dietary fiber. MTHFR mutations and sluggish
-  methylation can worsen estrogen clearance. Key dietary strategy: broccoli sprouts,
-  flaxseed, beets.'
+- excess estrogen
+- relative estrogen dominance
+- hyperestrogenism
+- estrogen-progesterone imbalance
+- relative hyperestrogenism
+summary: A state where estrogen is relatively elevated compared to progesterone, which
+  can arise from low progesterone (not necessarily high estrogen), increased aromatase
+  activity, or impaired estrogen detoxification/excretion (e.g., via beta-glucuronidase
+  activity in gut dysbiosis). Associated with fibroids, mood changes, heavy periods,
+  and increased cancer risk with prolonged synthetic estrogen use.
 common_symptoms:
 - pms
 - heavy-periods
@@ -19,12 +25,39 @@ common_symptoms:
 - acne
 - weight-gain
 - fibroids
+- pms-symptoms
+- pmdd-symptoms
+- fluid-retention
+- mood-changes
+- anxiety
+- fatigue
+- disturbed-sleep
+- hot-flashes
+- low-libido
+- spotting
+- painful-periods
+- irregular-periods
+- primary-infertility
+- recurrent-ovarian-cysts
+- heavy-bleeding
+- breast-sensitivity
+- hair-on-chin
 red_flags:
 - family history of hormone-dependent cancers
 - abnormal uterine bleeding
 - suspected fibroid or endometriosis requiring imaging
 - fibroids-rapid-growth
 - breast-mass
+- Increased risk of breast, ovarian, and prostate cancers with unaddressed estrogen
+  dominance
+- prolonged heavy bleeding lasting more than 7 days
+- fibroid size >7-9mm requiring myomectomy
+- breast lumps or confirmed breast cancer
+- suspected endometriosis with pelvic adhesions
+- endometriosis progression
+- reproductive failure
+- Long-term OCP use linked to estrogen dominance and breast cancer risk
+- Fibroids with gut dysbiosis pattern
 related_topics:
 - perimenopause
 - pcos
@@ -33,16 +66,41 @@ related_topics:
 - inflammation
 - liver-detoxification
 - methylation-mthfr
+- estrogen-metabolism
+- polycystic-ovarian-syndrome
+- endometriosis
+- luteal-phase-defect
+- uterine-fibroids
+- gut-dysbiosis-estrogen
+- insulin-resistance-estrogen
+- gut-skin-hormone-axis
+- dysbiosis
+- gut-estrogen-axis
+- bhrt
+- steroidogenesis
 key_mechanisms:
 - estrogen-enterohepatic-recirculation
 - estrogen-phase-ii-methylation-deficit
 - aromatase-overactivity
 - impaired-methylation
 - phase-ii-conjugation
-coaching_scope_notes: Coaches can support dietary estrogen detox (cruciferous vegetables,
-  flaxseed, fiber). Do not advise on hormone replacement or lab interpretation.
-clinician_scope_notes: Monitor E2, progesterone, SHBG, LFTs, stool beta-glucuronidase.
-  Use minimum 8–12 weeks before assessing supplement response.
+- hepatic-estrogen-metabolism
+- gut-estrogen-reabsorption
+- insulin-resistance
+- aromatase-upregulation
+- beta-glucuronidase-estrogen-reabsorption
+- progesterone-deficiency
+- estrogen-recirculation-via-beta-glucuronidase
+- aromatase-activity
+- beta-glucuronidase-reabsorption
+- estrogen-progesterone-decline
+coaching_scope_notes: Coaches can support dietary changes (reduce sugar, alcohol,
+  increase fiber, probiotics), gut health, and aromatase-reducing strategies like
+  green tea. Clinical evaluation required for diagnosis.
+clinician_scope_notes: BHRT (bioidentical hormone replacement therapy) is prescription-only
+  and requires individualized lab-guided dosing. Clinicians should assess estrogen
+  metabolites (2-OH vs 4-OH vs 16α-OH estrone via Dutch test), beta-glucuronidase
+  on GI-MAP, thyroid function (free T3), fasting insulin, DHEA-S, cortisol, and SHBG.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-sex-hormones-cheatsheet
@@ -53,7 +111,30 @@ sources:
   location: Methylation & MTHFR Cheatsheet
   quote: With MTHFR mutations, impaired methylation can lead to toxin build-up, estrogen
     dominance, and histamine intolerance.
-version: 2
+- id: vitaone-health-coaching-toolkit
+  location: Estrogen Metabolism
+  quote: When there is too much estrogen in the body, a condition called 'Estrogen
+    Dominance' may be present. Estrogen Dominance can exacerbate endometriosis, premenstrual
+    syndrome (PMS), polycystic ovarian syndrome (PCOS), premenstrual dysphoric disorder
+    (PMDD), and, as stated, put women and men at higher risk for certain cancers.
+- id: coconote-fm-estrogen-dominance
+  location: What is Estrogen Dominance?
+  quote: Estrogen dominance is increased estrogen levels relative to progesterone
+    levels inside the body. Either there is an overproduction of estrogen, or the
+    estrogen is absolutely fine but relatively the progesterone is very low, or the
+    estrogen and progesterone is absolutely fine but the excretion of estrogen is
+    not happening properly from the body.
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Estrogen Detoxification Discussion
+  quote: Beta glucuronidase actually unesterifies the estrogen and it leads to a lot
+    of estrogen circulation in the blood, it basically stops its excretion from the
+    body.
+- id: coconote-fm-sex-hormones
+  location: Hormone Metabolism and Detoxification
+  quote: Improper, a classical case of small intestinal bacterial overgrowth, dysbiosis.
+    will have constant reabsorption of estrogen in their body causing an estrogen
+    dominance because the detoxification is poor.
+version: 6
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

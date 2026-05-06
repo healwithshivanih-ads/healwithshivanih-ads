@@ -1,0 +1,32 @@
+slug: spore-based-probiotics-can-change-gut-lining-long-term
+statement: Spore-based probiotics, taken for 6–9 months, can promote lasting changes
+  to gut flora and the gut lining, unlike standard probiotic strains.
+evidence_tier: plausible_emerging
+rationale: Spore-based bacteria (e.g., Bacillus species) are more resistant to stomach
+  acid and can survive transit to colonize the gut, reactivating in favorable conditions.
+  Long-term use is proposed to produce more durable microbiome changes. Early research
+  is supportive but not yet consensus.
+coaching_translation: If a client needs long-term gut flora support, spore-based probiotics
+  are the preferred recommendation — but results take months, not days.
+caveats:
+- Source is expert lecture, moderate quality.
+- Specific studies not cited. Verify with clinician for individual cases.
+- Source document also notes spore-based probiotics are not suitable for home fermentation
+  due to low CFU counts.
+linked_to_topics:
+- gut-dysbiosis
+- intestinal-permeability
+linked_to_supplements:
+- spore-based-probiotic
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Probiotics Section
+  quote: Spore-based probiotic, if you give it 6 to 9 months, they can change the
+    flora. They can change the gut lining or gut lining flora. Because they're going
+    to promote the healthy bacteria over there.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

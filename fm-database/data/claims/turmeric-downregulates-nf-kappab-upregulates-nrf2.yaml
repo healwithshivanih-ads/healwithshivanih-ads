@@ -1,0 +1,32 @@
+slug: turmeric-downregulates-nf-kappab-upregulates-nrf2
+statement: Turmeric (curcumin) at 500mg twice daily downregulates NF-κB and upregulates
+  NRF2, reducing systemic inflammation and lowering blood sugar and HbA1c.
+evidence_tier: plausible_emerging
+rationale: NF-κB inhibition and NRF2 activation by curcumin are supported by in vitro
+  and some clinical studies, though large RCT evidence in CVD outcomes is limited.
+  Blood sugar lowering effects have some RCT support.
+coaching_translation: Turmeric has real anti-inflammatory power that works on key
+  molecular pathways. At the right dose, it may help reduce body-wide inflammation
+  and support blood sugar control.
+caveats:
+- Source is expert lecture — specific RCTs not cited for cardiovascular endpoints.
+- Bioavailability of standard curcumin is low — phospholipid complex or piperine formulations
+  may be needed.
+- Dose of 500mg BID from expert clinical practice, not a specific RCT.
+linked_to_topics:
+- cardiovascular-disease-prevention
+- metabolic-syndrome
+linked_to_supplements:
+- turmeric-curcumin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Nutraceuticals — Turmeric
+  quote: Turmeric is a beauty. It downregulates NF-kappa B. Turmeric actually lowers
+    blood sugar. Turmeric lowers hemoglobin A1Cs, and it lowers inflammation. So if
+    I'm going to give turmeric, it's going to be about 500 milligrams twice a day.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

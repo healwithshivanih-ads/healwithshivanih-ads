@@ -1,0 +1,29 @@
+slug: methylmalonic-acid-better-marker-for-b12-than-serum-b12
+statement: Methylmalonic acid (MMA) is a more functional biomarker for B12 status
+  than serum B12 alone, particularly in patients with borderline or elevated MCV.
+evidence_tier: plausible_emerging
+rationale: MMA as a functional marker of B12 status is supported in clinical literature;
+  serum B12 can be falsely normal. Expert consensus agrees on using MMA + serum B12
+  together for better sensitivity.
+coaching_translation: A standard B12 blood test doesn't always catch a real deficiency.
+  A test called methylmalonic acid gives a better picture of whether your body is
+  actually using B12 the way it should.
+out_of_scope_notes: Lab ordering, interpretation, and supplementation dosing for B12
+  deficiency are out of coaching scope. Refer to clinician.
+caveats:
+- Lab interpretation is out of coaching scope.
+- Source is expert consensus lecture.
+linked_to_topics:
+- nutritional-deficiency-screening
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-body-composition-bmi
+  location: Nutritional Deficiency / Biomarkers Section
+  quote: How methylmalonic acid is such a great biomarker in homocysteine to look
+    at somebody's B12 status, and many times can be a better biomarker than just serum
+    B12, because it's more of a functional biomarker.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

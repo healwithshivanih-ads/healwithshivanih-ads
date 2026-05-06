@@ -25,6 +25,11 @@ linked_to_topics:
 - gut-brain-axis
 - gerd
 - blood-sugar-dysfunction
+- 5r-gut-restoration
+- gerd-ppi-tapering
+- insulin-resistance
+- gut-estrogen-axis
+- estrogen-dominance
 linked_to_claims:
 - probiotics-gut-microbiome-detox-support
 - gut-microbiome-diversity-restores-tolerance
@@ -34,13 +39,18 @@ linked_to_claims:
 - probiotics-enhance-immune-response
 - lactobacillus-bifidobacterium-modulate-mood
 - probiotics-may-reduce-hba1c-in-t2d
-notes_for_coach: Emerging, not consensus. Meta-analysis (Wang et al. 2017, J Pediatr
-  Endocrinol Metab) shows effect primarily in T2D/gestational diabetes. Strain specificity
-  matters — coach can recommend fermented food sources; specific strain selection
-  is clinician territory.
-notes_for_client: Probiotics are beneficial bacteria that support your gut health
-  and may help reduce blood sugar and HbA1c levels, especially if you have type 2
-  or gestational diabetes.
+- probiotics-reestablish-balanced-gut-flora-after-antibiotics
+- prebiotics-probiotics-synergy-for-gut-health
+- probiotics-reduce-anxiety-depression-via-gut-health
+- abrupt-ppi-discontinuation-causes-rebound-reflux
+- probiotics-may-reduce-blood-sugar-and-hba1c
+- gut-dysbiosis-drives-estrogen-dominance-via-beta-glucuronidase
+notes_for_coach: Probiotic-rich foods and supplements help diversify gut microbiome,
+  potentially reducing beta-glucuronidase activity and improving estrogen excretion.
+  Diversity of strains matters more than single-strain supplementation.
+notes_for_client: Good gut bacteria help your body properly eliminate used estrogen.
+  Taking probiotics — or eating probiotic-rich foods like yogurt, kefir, or fermented
+  vegetables — may help keep estrogen levels balanced.
 evidence_tier: plausible_emerging
 typical_dose_range:
   capsule:
@@ -64,7 +74,15 @@ sources:
   quote: There is also emerging research which shows that probiotics may have beneficial
     effects on reducing blood sugar, insulin, and Hemoglobin A1c, especially for those
     who have type 2 or gestational diabetes.
-version: 4
+- id: vitaone-health-coaching-toolkit
+  location: The 5R Framework for Gut Restoration
+  quote: Help beneficial bacteria flourish by ingesting probiotic foods or supplements
+    that contain the 'good' GI bacteria such as bifidobacteria and lactobacillus species.
+- id: coconote-fm-sex-hormones
+  location: Gut Health and Estrogen Management
+  quote: Probiotics rich food, these can be included in the diet as well when it comes
+    to managing the microbial health of the gut.
+version: 7
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

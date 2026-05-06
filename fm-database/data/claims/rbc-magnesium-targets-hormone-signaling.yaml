@@ -1,0 +1,31 @@
+slug: rbc-magnesium-targets-hormone-signaling
+statement: Red blood cell (RBC) magnesium — targeted to the high 5s or low 6s mg/dL
+  — is the preferred way to assess magnesium status for hormonal health; serum magnesium
+  alone is insufficient.
+evidence_tier: plausible_emerging
+rationale: RBC magnesium as a superior marker to serum magnesium is supported by functional
+  medicine literature and some conventional research, though optimal ranges vary by
+  lab and are not universally standardized.
+coaching_translation: Standard blood tests for magnesium (serum) often miss deficiency.
+  Ask your doctor about a 'red blood cell magnesium' test, which gives a more accurate
+  picture of what's actually available in your cells.
+out_of_scope_notes: Lab target interpretation and result-based supplementation adjustments
+  are out of coaching scope — refer to clinician.
+caveats:
+- Exact target ranges (high 5s/low 6s) are clinician-specific and not universally
+  standardized.
+- Source is expert consensus, not primary literature.
+linked_to_topics:
+- hormonal-nutrition-foundations
+linked_to_supplements:
+- magnesium-hormone-support
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Magnesium Assessment for Hormonal Health
+  quote: you want to keep your red blood cell magnesium in the high fives or the low
+    sixes that's really the way to assess what's going on
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

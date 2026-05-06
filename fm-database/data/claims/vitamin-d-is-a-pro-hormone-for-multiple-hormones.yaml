@@ -1,0 +1,29 @@
+slug: vitamin-d-is-a-pro-hormone-for-multiple-hormones
+statement: Vitamin D functions as a pro-hormone and is a precursor for the formation
+  of multiple hormones inside the body; deficiency impairs overall hormonal production.
+evidence_tier: plausible_emerging
+rationale: Vitamin D's role as a steroid hormone precursor and its action via nuclear
+  receptors is well-established. Its influence on steroidogenesis beyond calcium metabolism
+  is supported but not yet confirmed as clinically impactful across all hormone axes
+  at the level of strong consensus.
+coaching_translation: Vitamin D is much more than a bone nutrient — it's actually
+  a hormone your body needs to make other hormones. Low vitamin D can quietly undermine
+  your entire hormonal system.
+caveats:
+- Source is FM lecture (moderate quality). While vitamin D's pro-hormone role is established,
+  broad impact on all reproductive hormones is plausible_emerging.
+linked_to_topics:
+- estrogen-dominance
+linked_to_supplements:
+- vitamin-d3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-estrogen-dominance
+  location: Case Study 1 — Lab Results
+  quote: Vitamin D. Very much on the lower side. Vitamin D is a precursor. It's a
+    pro-hormone for formation of many hormones inside the body. So it's very important.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,29 @@
+slug: zinc-required-for-sperm-production-and-fertility
+statement: Zinc is required for sperm production and maturation, hormone regulation,
+  and the fertilization process; deficiency can cause infertility in both males and
+  females.
+evidence_tier: strong
+rationale: Zinc's role in male reproductive health (spermatogenesis, testicular function)
+  is well-supported in the literature. The document notes zinc's high concentration
+  in testes and its role in egg-sperm fusion.
+coaching_translation: Zinc plays a key role in reproductive health for both men and
+  women — from sperm production to hormone balance and the fertilization process itself.
+caveats:
+- Source is expert lecture. Evidence for male fertility is stronger than for female;
+  clinician referral warranted for fertility concerns.
+linked_to_topics:
+- zinc-deficiency
+linked_to_supplements:
+- zinc
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-zinc-deficiency
+  location: Functions of Zinc
+  quote: Zinc also helps in terms of hormone regulation, both in males and females.
+    Also, zinc is an important mineral which is responsible for the fusion of egg
+    and the sperm, so thus the fertilization process to carry out reproduction.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,37 @@
+slug: high-dose-d3-improves-psoriasis-symptoms
+statement: High-dose vitamin D3 supplementation has been shown in research to improve
+  symptoms of psoriasis and other autoimmune conditions, even when standard serum
+  vitamin D levels appear normal.
+evidence_tier: plausible_emerging
+rationale: There is published evidence that vitamin D has immunomodulatory effects
+  relevant to autoimmune skin disease, and some clinical trials support higher-dose
+  D3 in psoriasis. However, the threshold for 'high dose' and optimal serum levels
+  in autoimmune conditions remain debated. Standard range normalcy does not preclude
+  therapeutic benefit at higher doses.
+coaching_translation: Vitamin D is much more than a bone supplement — it regulates
+  the immune system. Research suggests that higher levels of vitamin D may calm the
+  type of immune overactivity seen in psoriasis, even when levels look 'normal' on
+  a standard test.
+out_of_scope_notes: High-dose vitamin D3 (typically >4000–5000 IU/day) requires clinician
+  oversight including monitoring of serum 25(OH)D and calcium to avoid toxicity.
+caveats:
+- Evidence for high-dose D3 specifically in psoriasis is emerging, not consensus.
+  Source is FM lecture.
+- '''Normal'' lab levels may vary by reference range used.'
+- Dose and duration require clinician supervision.
+linked_to_topics:
+- psoriasis-gut-immune
+- immune-dysregulation
+linked_to_supplements:
+- vitamin-d3-k2
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Key Supplements Discussion
+  quote: High dose vitamin D3 does help with healing or improving the symptoms of
+    psoriasis. There have been researches which show that for the problem of psoriasis
+    — high dose vitamin D3 does help.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

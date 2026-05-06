@@ -6,29 +6,38 @@ forms_available:
 - tablet
 typical_dose_range:
   capsule:
-    min: 25
-    max: 50
+    min: 18
+    max: 36
     unit: mg
 timing_options:
 - on_empty_stomach
 - morning
-take_with_food: avoid
+take_with_food: optional
 linked_to_topics:
 - hairfall
-notes_for_coach: Bisglycinate form is gentlest on the gut vs ferrous sulfate. Enhance
-  absorption with vitamin C. Avoid taking with tea, coffee, calcium, or phytates.
-  Always check ferritin + iron studies + CRP before supplementing — iron overload
-  is harmful.
-notes_for_client: Iron bisglycinate is much easier on your stomach than standard iron
-  supplements. Take it away from tea, coffee, and dairy for best absorption.
-evidence_tier: plausible_emerging
+- hypochlorhydria
+- gut-skin-hormone-axis
+notes_for_coach: Bisglycinate form preferred for tolerability and absorption. Critically,
+  iron supplementation should be deferred until gut lining is healing and symptoms
+  are improving — absorption will be poor and potentially counterproductive if initiated
+  during active gut inflammation. Confirm iron deficiency anaemia with clinician before
+  prescribing.
+notes_for_client: Iron is best absorbed once your gut is healing. Your practitioner
+  will time this carefully so your body can actually take it in.
+evidence_tier: confirm_with_clinician
 linked_to_mechanisms: []
-linked_to_claims: []
+linked_to_claims:
+- iron-not-absorbed-with-damaged-gut-lining
 sources:
 - id: vitaone-nutrition-cheatsheet
   location: Vitamin & Mineral Inactive vs Bio-Available Form Cheatsheet
   quote: 'Iron Bisglycinate: Bisglycinate = gentle on gut'
-version: 1
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Key Supplements Discussion
+  quote: Iron-based glycinate, not initially again. Since you are working on calming
+    the gut down, iron would not work immediately because the lining itself has gotten
+    impacted.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

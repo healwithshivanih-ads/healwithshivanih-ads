@@ -1,0 +1,26 @@
+slug: ground-flax-adds-fiber-and-healthy-fats-to-smoothies
+statement: Adding 1–2 tablespoons of ground flax seeds to smoothies contributes fibre,
+  omega-3 fatty acids, and lignans supportive of cardiometabolic health.
+evidence_tier: plausible_emerging
+rationale: Flaxseed is well-supported for LDL reduction, blood pressure lowering,
+  and anti-inflammatory effects (ALA, lignans). Ground form improves bioavailability.
+  Daily dose of 1–2 tbsp is within the range studied.
+coaching_translation: Tossing ground flax in your daily smoothie is an easy way to
+  boost heart-healthy fibre and plant-based omega-3s.
+caveats:
+- Individual response to flaxseed varies; high doses may affect hormone metabolism
+  due to lignans (consult clinician for hormone-sensitive conditions).
+linked_to_topics:
+- cardiometabolic-diet
+linked_to_supplements:
+- ground-flaxseed
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Building a Better Smoothie — Flax Seeds
+  quote: Add 1 to 2 tablespoons of ground flax seeds (or flax meal) to the blender.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

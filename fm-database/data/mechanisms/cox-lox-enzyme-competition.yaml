@@ -1,0 +1,36 @@
+slug: cox-lox-enzyme-competition
+display_name: COX/LOX Enzyme Competition Between Omega-3 and Omega-6
+aliases:
+- delta-5 desaturase competition
+- fatty acid enzyme competition
+category: metabolic
+summary: The delta-5 desaturase enzyme (and COX/LOX enzymes) process both omega-3
+  and omega-6 fatty acids. When omega-6 is dominant, the enzyme preferentially produces
+  pro-inflammatory arachidonic acid metabolites (prostaglandins, leukotrienes). When
+  omega-3 is dominant, the enzyme produces anti-inflammatory resolvins and protectins.
+  This competitive dynamic explains why simultaneously increasing omega-3 AND eliminating
+  omega-6 sources is essential.
+upstream_drivers:
+- high-omega-6-diet
+- low-omega-3-intake
+downstream_effects:
+- prostaglandin-synthesis
+- leukotriene-reduction
+- anti-inflammatory-signaling
+related_mechanisms:
+- arachidonic-acid-cascade
+- nf-kappa-b-activation
+linked_to_topics:
+- omega-3-omega-6-balance
+- chronic-inflammation
+evidence_tier: strong
+sources:
+- id: coconote-fm-approach-inflammation
+  location: Diet – Omega-3/6 Enzyme Competition
+  quote: the enzyme that work for omega-3 pathway and omega-6 pathway is same. It's
+    basically delta-5 is H2S. So if you have high omega-3 and low omega-6, then this
+    enzyme will move for omega-3.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,31 @@
+slug: modern-omega6-to-omega3-ratio-exceeds-25-to-1
+statement: The modern Western dietary omega-6 to omega-3 ratio has shifted from the
+  evolutionary 1:1 to as high as 25:1, driving chronic inflammation, whereas the dietary
+  recommended intake is up to 11:1.
+evidence_tier: strong
+rationale: Well-documented dietary transition referenced in the lecture with specific
+  figures. Consistent with peer-reviewed literature on the modern dietary fatty acid
+  transition (Simopoulos, 2002 and others).
+coaching_translation: We evolved eating equal amounts of omega-6 and omega-3. Today,
+  most people eat 25 times more omega-6 than omega-3 — and that's a major driver of
+  inflammation and chronic disease.
+caveats:
+- Source is FM lecture; specific supporting references for the 25:1 figure are not
+  named.
+linked_to_topics:
+- omega-6-omega-3-ratio-imbalance
+- omega-3-fatty-acids
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-omega-3-fatty-acids
+  location: Omega-6 to Omega-3 Ratio Discussion
+  quote: what had happened was omega-3 fatty acids were found all foods meat, wild
+    plants, eggs, fish, nuts and berries. Now slowly the intake of processed food
+    has increased so much that the ratio has become 25:1 of omega 6 to omega 3. The
+    dietary recommendation is 11:1.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

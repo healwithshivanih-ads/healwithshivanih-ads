@@ -1,5 +1,5 @@
 slug: ashwagandha
-display_name: Ashwagandha Root
+display_name: Ashwagandha (Withania somnifera)
 category: herb
 forms_available:
 - capsule
@@ -7,7 +7,7 @@ forms_available:
 - tablet
 typical_dose_range:
   capsule:
-    min: 600
+    min: 300
     max: 600
     unit: mg
   tablet:
@@ -15,9 +15,9 @@ typical_dose_range:
     max: 600
     unit: mg
   powder:
-    min: 5
-    max: 15
-    unit: g
+    min: 300
+    max: 600
+    unit: mg
 timing_options:
 - with_breakfast
 - evening
@@ -33,15 +33,25 @@ linked_to_topics:
 - t3-conversion-disorder
 - hashimotos-hypothyroidism
 - cardiometabolic-health
+- hpa-axis-dysregulation
+- emotional-healing-chronic-disease
+- nervous-system-regulation
+- thyroid-dysfunction
+- emotional-healing-in-chronic-disease
 linked_to_claims:
 - ashwagandha-cortisol-hair-loss
 - high-cortisol-inhibits-t4-to-t3-conversion
 - ashwagandha-improves-tsh-t3-t4-in-hypothyroidism
-notes_for_coach: Listed as a base liquid herb option for cardiometabolic smoothies
-  (1 tablespoon powdered root). Adaptogenic herb; discuss with clinician for clients
-  on thyroid or immunosuppressant medications.
-notes_for_client: Ashwagandha root is an adaptogenic herb that may be brewed into
-  your smoothie base tea for added support.
+- adaptogens-regulate-hpa-axis-reduce-burnout
+- ashwagandha-600mg-improves-tsh-t3-t4
+- adaptogens-regulate-hpa-axis
+- ashwagandha-reduces-cortisol-fatigue
+notes_for_coach: Ashwagandha is a well-researched adaptogen for HPA axis regulation.
+  Appropriate for clients with fatigue, burnout, and adrenal imbalance. Avoid in pregnancy
+  and thyroid conditions without clinician clearance. Doses should be verified with
+  a clinician.
+notes_for_client: Ashwagandha is an adaptogenic herb that helps your body manage stress
+  more effectively, reducing feelings of fatigue and burnout over time.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -61,7 +71,15 @@ sources:
 - id: vitaone-cardiometabolic-toolkit
   location: Building a Better Smoothie — Base Liquids
   quote: Ashwaganda root, powdered – 1 T
-version: 5
+- id: vitaone-health-coaching-toolkit
+  location: Key Nutrients & Botanicals for Emotional Healing Support
+  quote: 'Adaptogens (Ashwagandha, Rhodiola): Regulate HPA axis response. Fatigue,
+    burnout, adrenal imbalance.'
+- id: vitaone-health-coaching-cheatsheet
+  location: Key Nutrients & Botanicals for Emotional Healing Support
+  quote: 'Adaptogens (Ashwagandha, Rhodiola) — Regulate HPA axis response. Clinical
+    use: Fatigue, burnout, adrenal imbalance.'
+version: 8
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

@@ -1,0 +1,27 @@
+slug: night-sweats
+display_name: Night Sweats
+aliases:
+- nocturnal sweating
+- waking up drenched
+- night-time hot flashes
+category: sleep
+severity: common
+description: Episodes of excessive sweating during sleep, often associated with vasomotor
+  instability from hormonal decline in perimenopause/menopause. Can severely disrupt
+  sleep quality.
+when_to_refer: Refer if persistent and severe, especially if accompanied by unexplained
+  weight loss or fever (rule out infection/malignancy).
+linked_to_topics:
+- menopause
+- perimenopause
+linked_to_mechanisms:
+- estrogen-progesterone-decline
+sources:
+- id: coconote-fm-sex-hormones
+  location: Stages of Menopause — Stage 2B
+  quote: Constantly host of hot flashes, waking up in the night, sexual disorders,
+    low sex drive
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

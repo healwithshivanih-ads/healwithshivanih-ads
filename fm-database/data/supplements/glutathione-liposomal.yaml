@@ -20,14 +20,19 @@ take_with_food: optional
 linked_to_topics:
 - liver-detoxification
 - mercury-amalgam-removal
+- metabolic-detoxification
+- dental-amalgam-mercury
 linked_to_claims:
 - glutathione-nac-support-mercury-detox
 - phase1-phase2-imbalance-causes-toxic-intermediates
-notes_for_coach: Liposomal form has better oral bioavailability than standard glutathione.
-  Used peri-amalgam removal and for ongoing liver detox support. Dosing is clinician
-  scope.
-notes_for_client: Glutathione is your body's master antioxidant and a key detox molecule.
-  The liposomal form is better absorbed than regular capsules.
+- glutathione-supports-phase-ii-mercury-clearance
+- glutathione-nac-pre-amalgam-removal-protocol
+notes_for_coach: Recommended both pre-procedure (7 days before) and post-procedure
+  (2 weeks after) dental amalgam removal. Also supports Phase II conjugation pathways
+  generally. Doses are adult only — verify with clinician.
+notes_for_client: Glutathione is your body's master antioxidant and helps neutralize
+  and clear toxins, including mercury. Liposomal forms are better absorbed. Dosing
+  should be confirmed with your provider.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -35,7 +40,11 @@ sources:
   location: Dental Amalgam Removal Protocol
   quote: 'Glutathione (liposomal, standard): 500 mg–1000 mg or N-Acetyl-Cysteine (NAC):
     600–1200 mg'
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Dental Amalgam Removal Protocol — Pre-Procedure Recommendations
+  quote: 'Glutathione (liposomal, standard): 500 mg–1000 mg or N-Acetyl-Cysteine (NAC):
+    600–1200 mg'
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

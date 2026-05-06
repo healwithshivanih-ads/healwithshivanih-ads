@@ -1,0 +1,30 @@
+slug: mthfr-homozygous-reduces-enzyme-activity-80-90-percent
+statement: Homozygous MTHFR gene variants reduce MTHFR enzyme activity to 10–20% of
+  normal, while heterozygous variants reduce activity to approximately 60% of normal.
+evidence_tier: plausible_emerging
+rationale: The document cites specific activity reductions (60% for heterozygous,
+  10–20% for homozygous), consistent with published literature on C677T polymorphism
+  activity effects.
+coaching_translation: Clients with two copies of the MTHFR variant have significantly
+  impaired methylation capacity and may benefit most from methylated B vitamin forms
+  and lifestyle support.
+caveats:
+- Source is expert lecture; specific percentages may vary by variant type (C677T vs
+  A1298C) and laboratory methodology.
+- Genotype alone does not predict clinical outcomes — clinical context is essential.
+linked_to_topics:
+- mthfr-gene-variant
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: MTHFR section
+  quote: If you are vitrozygous, it means that any one of the affected gene will be
+    there and the other one would be the normal gene. So this actually reduces the
+    enzyme activity to about 60% efficiency... if you are homozygous or you have two
+    abnormal copies, then the efficiency of this enzyme actually drops to 10 to 20%.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

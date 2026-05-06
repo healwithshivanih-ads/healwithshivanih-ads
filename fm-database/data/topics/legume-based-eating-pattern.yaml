@@ -1,0 +1,28 @@
+slug: legume-based-eating-pattern
+display_name: Legume-Based Eating Pattern
+aliases:
+- pulse-rich diet
+- dal-based diet
+- bean-forward diet
+summary: Frequent inclusion of lentils, chickpeas, black chana, moong dal, masoor
+  dal, and moth beans as primary protein and fibre sources. Soaking and sprouting
+  before cooking is emphasised to improve digestibility and nutrient bioavailability.
+key_mechanisms:
+- glycemic-load-reduction
+- dietary-fiber-modulation
+coaching_scope_notes: Encourage soaking legumes overnight. Sprouted legumes (moth
+  beans, black chana) are particularly encouraged as a snack or breakfast option.
+evidence_tier: strong
+common_symptoms: []
+red_flags: []
+related_topics: []
+clinician_scope_notes: ''
+sources:
+- id: vitaone-cardiometabolic-recipes
+  location: Steamed Moth Beans Delight
+  quote: Soak 1 cup of moth beans overnight. Wash thoroughly and drain the sprouts.
+    Pressure cook them with little salt for 2-3 whistles
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

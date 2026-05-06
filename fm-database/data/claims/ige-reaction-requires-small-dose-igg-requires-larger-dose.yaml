@@ -1,0 +1,30 @@
+slug: ige-reaction-requires-small-dose-igg-requires-larger-dose
+statement: IgE allergic reactions can be triggered by trace amounts of food (e.g.,
+  a single peanut), whereas IgG sensitivity reactions are dose-dependent and typically
+  require larger amounts of the reactive food.
+evidence_tier: plausible_emerging
+rationale: The dose-dependency difference between IgE and IgG reactions is a clinically
+  observed and immunologically plausible distinction, though formal dose-threshold
+  studies for IgG are limited.
+coaching_translation: Clients with IgG sensitivities may tolerate small amounts of
+  reactive foods without noticing — which is one reason their symptoms are so confusing.
+  Larger portions or frequent exposure over days is what typically triggers a reaction.
+caveats:
+- Source is expert lecture, moderate quality.
+- Dose thresholds for IgG reactions are highly individual.
+linked_to_topics:
+- food-allergy-ige-mediated
+- food-sensitivity-igg-iga-mediated
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-food-allergies-sensitivities
+  location: IgE vs IgG Differentiation Section
+  quote: You require very small amount of food for IgE antibody by allergies. Maybe
+    it's a single peanut you eat and then you have a reaction. But in case of IgG
+    reaction, you require a lot of food.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

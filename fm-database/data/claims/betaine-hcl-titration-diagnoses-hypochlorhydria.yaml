@@ -1,0 +1,33 @@
+slug: betaine-hcl-titration-diagnoses-hypochlorhydria
+statement: A progressive Betaine HCL titration challenge — incrementally increasing
+  capsule dose per meal until warmth or discomfort is felt — can be used as a functional
+  test to identify hypochlorhydria.
+evidence_tier: fm_specific_thin
+rationale: The Betaine HCL challenge is widely used in functional medicine practice
+  to assess gastric acid sufficiency. It lacks large-scale RCT validation but has
+  biological plausibility and is taught in FM curricula.
+coaching_translation: A practitioner may ask you to take one Betaine HCL capsule with
+  a meal and gradually increase the dose over days until you feel a slight warmth
+  — that sensation indicates you've reached your threshold, suggesting your stomach
+  acid was low.
+out_of_scope_notes: Prescribing or supervising Betaine HCL titration is a clinician
+  task. Coaches can educate on the rationale.
+caveats:
+- Contraindicated with active gastric ulcers, NSAIDs, or corticosteroids.
+- Not validated in large RCTs.
+- Source is expert consensus; verify dose ranges with prescribing clinician.
+linked_to_topics:
+- hypochlorhydria
+linked_to_supplements:
+- betaine-hcl
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-hypochlorhydria
+  location: Diagnosis — Betaine HCL Challenge
+  quote: There's a test with a betaine HCL. Betaine HCL are capsules which contain
+    hydrochloric acid. Each capsule contains somewhere around 350 to 750 mg of betaine
+    HCL.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

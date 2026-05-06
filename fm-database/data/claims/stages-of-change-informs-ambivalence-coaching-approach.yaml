@@ -1,0 +1,29 @@
+slug: stages-of-change-informs-ambivalence-coaching-approach
+statement: A client's stage of change (e.g., pre-contemplation, contemplation) determines
+  how a coach should approach ambivalence, as clients in early stages may not yet
+  be intrinsically motivated to change even when externally referred.
+evidence_tier: strong
+rationale: The transtheoretical model (Prochaska & DiClemente) is well-established
+  in health psychology with strong supporting evidence. Matching intervention to stage
+  of change is a core behavior change principle.
+coaching_translation: Before launching into decisional balance or action planning,
+  assess where the client actually is. A client referred by their doctor who doesn't
+  personally want to change is in pre-contemplation — explore their perspective with
+  curiosity, not persuasion.
+caveats:
+- Referenced as a coaching framework in group discussion; no specific study cited.
+linked_to_topics:
+- ambivalence-in-coaching
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-coaching-ambivalence
+  location: Group discussion — stages of change and externally motivated clients
+  quote: We have to keep in mind the stages of change too, though, right? Sometimes
+    you will get a client that comes and their doctor's telling them they've got to
+    do something, but they're not really wanting to do it.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

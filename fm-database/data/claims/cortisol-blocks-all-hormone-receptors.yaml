@@ -1,0 +1,31 @@
+slug: cortisol-blocks-all-hormone-receptors
+statement: Cortisol has the highest affinity for all hormone receptor binding pocket
+  domains of any hormone, meaning chronic stress can block access for all other hormones
+  — including sex steroids and thyroid — and undermine hormone therapy effectiveness.
+evidence_tier: plausible_emerging
+rationale: Cortisol's competitive binding at glucocorticoid receptors and cross-reactivity
+  with other steroid receptors is documented. The claim that cortisol has the highest
+  affinity across ALL hormone receptor types is a strong generalization that is directionally
+  plausible but not established as literal fact across all receptor classes.
+coaching_translation: Chronic stress is hormonal kryptonite — cortisol from stress
+  can crowd out all your other hormones from their receptors. This is why stress management
+  is not optional for hormonal health.
+caveats:
+- The claim that cortisol has 'the highest affinity for ALL binding pocket domains'
+  is likely a rhetorical generalization; receptor affinity is receptor-class-specific.
+- Source is expert lecture.
+linked_to_topics:
+- hormonal-nutrition-foundations
+- endocrine-disruption-and-detox
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Cortisol and Receptor Competition
+  quote: cortisol has the highest affinity for all binding pocket domains, all binding
+    pocket domains than any other hormone.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

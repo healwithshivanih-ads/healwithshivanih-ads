@@ -1,0 +1,41 @@
+slug: iodine-hormone-receptor
+display_name: Iodine (Hormone Receptor Architecture Support)
+category: mineral
+forms_available:
+- capsule
+- tablet
+- liquid
+typical_dose_range:
+  tablet:
+    min: 150
+    max: 1000
+    unit: mcg
+timing_options:
+- with_breakfast
+- morning
+take_with_food: optional
+linked_to_topics:
+- hormonal-nutrition-foundations
+linked_to_claims:
+- iodine-maintains-hormone-receptor-architecture
+- nutrient-cofactors-required-for-hormone-signaling
+notes_for_coach: Iodine maintains the architectural integrity of hormone receptor
+  binding pocket domains throughout the body — not just in the thyroid. Deficiency
+  affects all hormone receptors. High-dose iodine supplementation (Lugol's etc.) should
+  be clinician-supervised.
+notes_for_client: Iodine keeps your hormone receptor 'pockets' properly shaped so
+  hormones can fit in and do their job. We know iodine is needed for the thyroid,
+  but it's needed throughout your whole body for the same reason.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Iodine in Hormone Receptor Architecture
+  quote: we need iodine, which maintains the architecture of the binding pocket domain.
+    We know that in the thyroid. If you don't have enough iodine in your thyroid,
+    it grows out of control into a goiter. Iodine is a growth controller, an architect
+    controller, and it does the same thing in the binding pocket domain.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

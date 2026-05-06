@@ -4,11 +4,12 @@ aliases:
 - recurrent yeast infections
 - candida overgrowth symptoms
 - fungal overgrowth
-category: gi
+- persistent thrush
+category: other
 severity: common
-description: Recurring candida infections of the gut or mucous membranes, associated
-  with low stomach acid, dysbiosis, or high-sugar diet.
-when_to_refer: Systemic candidiasis requires medical management.
+description: Recurring candida infections (oral, vaginal, skin, or intestinal) associated
+  with gut dysbiosis, low stomach acid, and impaired immune surveillance.
+when_to_refer: Systemic or invasive candida requires medical evaluation.
 linked_to_topics:
 - candida-overgrowth
 - hypochlorhydria
@@ -20,7 +21,10 @@ sources:
 - id: vitaone-gut-toolkit
   location: Testing for Low Stomach Acidity — Common Symptoms of Hypochlorhydria
   quote: Chronic candida infections
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Testing for Low Stomach Acidity
+  quote: Chronic candida infections [listed as a common symptom of hypochlorhydria].
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

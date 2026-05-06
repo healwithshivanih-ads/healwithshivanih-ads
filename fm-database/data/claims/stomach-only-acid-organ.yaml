@@ -1,0 +1,31 @@
+slug: stomach-only-acid-organ
+statement: The stomach is the only part of the body that should be acidic; all other
+  tissues, including the blood and cellular environment, should be neutral to slightly
+  acidic (cellular) or slightly alkaline (blood).
+evidence_tier: plausible_emerging
+rationale: The stomach's role as the primary acid-producing organ is well established.
+  The framing that 'only the stomach should be acid' is broadly consistent with physiology,
+  though the body has multiple acidic microenvironments (e.g., lysosomes, skin surface).
+  The coaching implication about alkaline water and meal timing is reasonable.
+coaching_translation: Protect your stomach's natural acidity at mealtimes — avoid
+  alkaline water with meals, as it can dilute your digestive acid.
+caveats:
+- The absolute statement that 'only the stomach should be acid' is a simplification
+  — the body has other acidic compartments. Useful as a coaching heuristic but not
+  a complete physiological description.
+linked_to_topics:
+- ph-balance
+linked_to_supplements:
+- lemon-juice
+- alkaline-water
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-ph-balance
+  location: Alkaline-Forming Foods Section
+  quote: The stomach is the only part of the body that should be acid. The lemon is
+    broken down in the gut and the minerals are absorbed into the blood.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

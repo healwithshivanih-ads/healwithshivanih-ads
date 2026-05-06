@@ -1,0 +1,31 @@
+slug: b12-deficiency-causes-neurological-damage
+statement: Vitamin B12 deficiency causes accumulation of methylmalonic acid due to
+  MMCM enzyme failure, leading to axonal neuropathy presenting as fatigue, confusion,
+  and cognitive symptoms.
+evidence_tier: strong
+rationale: The methylmalonyl-CoA mutase pathway requiring B12 is well-established.
+  Methylmalonic acid accumulation as a marker of functional B12 deficiency and its
+  neurological consequences are documented in peer-reviewed literature.
+coaching_translation: Neurological symptoms like persistent brain fog, tingling, or
+  confusion in clients with low B12 (especially vegans, elderly, or those on PPIs/metformin)
+  warrant prompt referral.
+out_of_scope_notes: Diagnosing neuropathy or ordering methylmalonic acid labs is outside
+  coaching scope — refer to clinician.
+caveats:
+- Neurological damage from B12 deficiency can be irreversible if untreated; early
+  referral is critical.
+linked_to_topics:
+- vitamin-b12
+linked_to_supplements:
+- methylcobalamin
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: Methylcobalamin / MMCM section
+  quote: If methylmalonic acid will be accumulated in the body... it will cause symptoms
+    of axillary neuropathy. And these are showcased in the body in terms of fatigue,
+    in terms of confusion, mental issues.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

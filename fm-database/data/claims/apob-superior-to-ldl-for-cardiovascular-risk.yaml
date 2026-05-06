@@ -1,0 +1,29 @@
+slug: apob-superior-to-ldl-for-cardiovascular-risk
+statement: ApoB is a superior marker of atherogenic particle burden and cardiovascular
+  risk compared to LDL-cholesterol alone, particularly in patients with normal LDL
+  but elevated particle number.
+evidence_tier: plausible_emerging
+rationale: Large prospective studies and meta-analyses support ApoB's superior predictive
+  value for cardiovascular events versus LDL-C, especially in metabolic syndrome and
+  LCHF contexts where LDL-C/ApoB discordance is common. The claim is increasingly
+  accepted but not yet universally adopted in guidelines.
+coaching_translation: A standard cholesterol test only measures how much cholesterol
+  is in your blood, not how many dangerous particles are carrying it. ApoB counts
+  those particles and is a more accurate picture of your heart-disease risk.
+out_of_scope_notes: Lab test ordering, interpretation, and prescribing decisions are
+  clinician territory.
+caveats:
+- ApoB is not yet included in all standard lipid panel guidelines.
+- Source is Instagram educational content.
+linked_to_topics:
+- cardiovascular-lipid-pattern-recognition
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DX6sbxqDFJ5/
+  quote: ApoB reflects atherogenic particle number, not just cholesterol content
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

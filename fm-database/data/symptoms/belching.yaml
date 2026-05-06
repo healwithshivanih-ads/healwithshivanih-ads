@@ -1,0 +1,34 @@
+slug: belching
+display_name: Belching / Burping
+aliases:
+- burping
+- eructation
+- frequent burps
+- post-meal burping
+- excessive belching
+category: gi
+severity: common
+description: Expulsion of gas from the stomach through the oesophagus. In hypochlorhydria,
+  excessive belching results from microbial fermentation of undigested food producing
+  gas in the stomach.
+linked_to_topics:
+- dysbiosis
+- hypochlorhydria
+linked_to_mechanisms:
+- gut-barrier-dysfunction
+- food-fermentation-reflux
+- sibo-from-low-acid
+when_to_refer: ''
+sources:
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Case History / Symptoms
+  quote: Gut issues were progressive bloating, belching, flatulence, there was mild
+    acidity and occasional constipation.
+- id: coconote-fm-hypochlorhydria
+  location: Clinical Presentation of Low Stomach Acid
+  quote: Usually patients with low stomach acid feel a certain amount of belching
+    or fullness as soon as they eat.
+version: 2
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

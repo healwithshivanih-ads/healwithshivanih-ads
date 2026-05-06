@@ -1,0 +1,28 @@
+slug: bone-loss
+display_name: Bone Loss (Hormonal)
+aliases:
+- osteoporosis
+- osteopenia
+- thinning bones
+- low bone density
+category: musculoskeletal
+severity: concerning
+description: Decline in bone mineral density associated with low estrogen/testosterone
+  and elevated FSH, particularly accelerating in perimenopause and menopause.
+when_to_refer: Refer for DEXA scan and clinician evaluation if risk factors are present
+  (early menopause, history of fractures, long-term corticosteroid use).
+linked_to_topics:
+- perimenopause-and-menopause
+- fsh-as-aging-biomarker
+- bioidentical-hormone-replacement-therapy
+linked_to_mechanisms:
+- fsh-elevation-aging-cascade
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: FSH and Anti-Aging Hormone Targets
+  quote: High FSH, your bones can't get well no matter what you do. You have to bring
+    your FSH down.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

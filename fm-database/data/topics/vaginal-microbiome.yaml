@@ -1,0 +1,48 @@
+slug: vaginal-microbiome
+display_name: Vaginal Microbiome
+aliases:
+- vaginal flora
+- vaginal microbiota
+summary: The vaginal microbiome is a community of microorganisms, predominantly Lactobacillus
+  species, that protect vaginal health, regulate pH, prevent infection, and influence
+  reproductive outcomes. Lactobacillus crispatus is identified as the defining keystone
+  microbe. Disruption—commonly from antibiotic use—is linked to miscarriage, premature
+  labor, UTIs, incontinence, and vaginal infections.
+common_symptoms:
+- vaginal-dryness
+- urinary-tract-infections
+- incontinence
+- vaginal-discharge
+- vaginal-irritation
+- bacterial-vaginosis
+red_flags:
+- recurrent-miscarriage
+- premature-labor
+- necrotizing-enterocolitis-in-preterm-infant
+related_topics:
+- gut-microbiome
+- sibo
+- perimenopause-microbiome
+- omega-3-fatty-acids
+- vitamin-d-and-vaginal-health
+key_mechanisms:
+- lactobacillus-crispatus-dominance
+- gut-vaginal-microbiome-axis
+- endotoxemia
+coaching_scope_notes: Coaches can educate clients on restoring Lactobacillus crispatus
+  and reuteri through fermented yogurt and targeted probiotics, recommend vitamin
+  D and omega-3 optimization, and support dietary diversity. Do not interpret lab
+  results or manage pregnancy complications.
+clinician_scope_notes: Premature labor risk, recurrent miscarriage, and SIBO treatment
+  with rifaximin require clinician oversight. Vaginal microbiome testing interpretation
+  (e.g., Ombre, Tiny Health) should involve clinical guidance.
+evidence_tier: plausible_emerging
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Vaginal microbiome and Lactobacillus crispatus discussion
+  quote: Lactobacillus crispatus is the defining microbe in a woman's vaginal microbiome,
+    and many ladies have lost it.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

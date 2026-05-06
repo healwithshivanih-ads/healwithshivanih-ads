@@ -1,0 +1,31 @@
+slug: lps-endotoxemia-drives-non-gi-sibo-symptoms
+statement: When SIBO-associated gut dysbiosis leads to endotoxemia (LPS entering systemic
+  circulation via a disrupted barrier), non-GI symptoms including depression, fatigue,
+  anxiety, and autism-related presentations can emerge.
+evidence_tier: plausible_emerging
+rationale: LPS-driven systemic and neuroinflammation is a mechanistically supported
+  pathway. Emerging research links gut-derived LPS to neuropsychiatric conditions,
+  though causation remains under study.
+coaching_translation: SIBO is not just a gut problem — when bacteria and their toxins
+  leak into the bloodstream, it can affect your mood, energy, and brain function.
+caveats:
+- Source is expert consensus lecture; LPS-neuropsychiatric link is emerging, not consensus.
+- Autism is a heterogeneous condition; gut association is plausible but not established
+  as causal.
+linked_to_topics:
+- sibo
+- leaky-gut-syndrome
+- gut-brain-axis-dysfunction
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-sibo-sifo
+  location: Endotoxemia Section
+  quote: whenever there is LPS kind of or endotoxinia kind of for leaky gut, these
+    kind of patients have a lot of symptoms. They also have gastrointestinal symptoms
+    and they have non-gastrointestinal symptoms, depression, fatigue, autism, anxiety.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

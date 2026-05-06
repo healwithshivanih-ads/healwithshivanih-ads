@@ -1,0 +1,32 @@
+slug: insulin-receptor-resistance
+display_name: Insulin Receptor Resistance
+aliases:
+- cellular insulin insensitivity
+- impaired insulin signaling
+category: metabolic
+summary: Chronic exposure to elevated insulin or metabolic stress alters insulin receptor
+  sensitivity and downstream signaling, reducing the ability of cells to uptake glucose
+  in response to insulin. This forces the pancreas to release more insulin to achieve
+  the same glucose-lowering effect.
+upstream_drivers:
+- excess-dietary-glucose
+- chronic-inflammation
+- sedentary-lifestyle
+downstream_effects:
+- compensatory-hyperinsulinemia
+- elevated-postprandial-insulin
+- type-2-diabetes
+related_mechanisms:
+- compensatory-hyperinsulinemia
+linked_to_topics:
+- insulin-resistance-early-detection
+evidence_tier: strong
+sources:
+- id: coconote-fm-gtir
+  location: Glucose Tolerance Insulin Response Test Explanation
+  quote: when patients start having insulin resistance they alter the initial receptor
+    and insulin secretion pattern
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

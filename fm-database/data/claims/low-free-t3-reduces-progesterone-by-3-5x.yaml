@@ -1,0 +1,31 @@
+slug: low-free-t3-reduces-progesterone-by-3-5x
+statement: When TSH falls below 2 (indicating hypothyroidism or suboptimal thyroid
+  function), progesterone levels can increase by 3–5 times; conversely, low free T3
+  is associated with reduced progesterone production.
+evidence_tier: fm_specific_thin
+rationale: The specific claim that TSH <2 increases progesterone 3–5x is stated by
+  the lecturer as clinical FM observation but is not supported by a cited peer-reviewed
+  study. Thyroid-progesterone interaction is biologically plausible (T3 supports steroidogenesis)
+  but the quantitative claim is not verifiable from this source.
+coaching_translation: Your thyroid and hormones are deeply connected. When your thyroid
+  isn't working well, your progesterone can be affected too — one reason thyroid testing
+  is always part of a hormone workup.
+caveats:
+- Specific 3–5x quantitative claim is unsourced FM expert opinion; verify with clinician.
+- Source is FM lecture (expert_consensus, moderate quality).
+linked_to_topics:
+- estrogen-dominance
+- luteal-phase-defect
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-estrogen-dominance
+  location: HPA Axis Dysfunction
+  quote: If your free T3 is on the lower side — TSH — if the TSH of a person falls
+    down below 2 also, the value of progesterone increases by 3 to 5 times. Very important
+    in a case.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

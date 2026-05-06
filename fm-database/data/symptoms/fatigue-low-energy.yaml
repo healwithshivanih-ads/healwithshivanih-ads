@@ -1,0 +1,36 @@
+slug: fatigue-low-energy
+display_name: Fatigue & Low Energy
+aliases:
+- tiredness
+- low energy
+- exhaustion
+- weakness
+- can't get energy up
+- feeling drained
+category: constitutional
+severity: common
+description: Persistent low energy or fatigue may impair ATP-dependent detoxification
+  pathways, reducing the liver's capacity to biotransform and excrete toxins. Fatigue
+  can therefore be both a symptom of toxic load and a driver of further accumulation.
+linked_to_topics:
+- food-sensitivity-igg-iga-mediated
+- liver-detoxification-phases
+- total-toxic-load
+linked_to_mechanisms:
+- igg-antigen-immune-complex-complement-activation
+- mitochondrial-dysfunction-detox
+when_to_refer: Refer if fatigue is severe, progressive, or associated with other concerning
+  symptoms (weight loss, night sweats, etc.).
+sources:
+- id: coconote-fm-food-allergies-sensitivities
+  location: IgG Symptoms Section
+  quote: patients might be having fatigue and low energy, weakness
+- id: coconote-fm-liver-detox-part1
+  location: Biotransformation Energy Dependence
+  quote: it is atp dependent so we require energy for detoxification if somebody having
+    a fatigue or low energy or even their mitochondria is not working they cannot
+    be detoxified.
+version: 2
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

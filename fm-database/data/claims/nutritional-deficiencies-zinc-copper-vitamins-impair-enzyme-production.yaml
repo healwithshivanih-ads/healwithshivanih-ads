@@ -1,0 +1,32 @@
+slug: nutritional-deficiencies-zinc-copper-vitamins-impair-enzyme-production
+statement: Deficiencies in zinc, copper, and vitamins A, B, and E can impair pancreatic
+  enzyme production by reducing availability of key cofactors.
+evidence_tier: plausible_emerging
+rationale: Zinc is a known cofactor for numerous enzymes. Micronutrient deficiency
+  contributing to impaired exocrine pancreatic output is mechanistically plausible,
+  though direct RCT evidence for this specific pathway is limited.
+coaching_translation: Key nutrients like zinc, copper, and vitamins A, B, and E are
+  needed for your pancreas to make digestive enzymes. Poor diet or absorption can
+  create a cycle where enzyme deficiency worsens nutrient deficiency.
+linked_to_topics:
+- pancreatic-insufficiency
+linked_to_supplements:
+- zinc
+- copper
+- vitamin-a
+- vitamin-e
+caveats:
+- Source is an expert consensus lecture. Specific RCT evidence for each micronutrient's
+  role in pancreatic enzyme synthesis is variable.
+- Vitamin B is referenced broadly — the specific B vitamin(s) implicated are not identified
+  in the source.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-pancreatic-insufficiency
+  location: Causes of Enzyme Deficiency
+  quote: Nutritional deficiency like vitamin A, B, E, zinc, copper.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

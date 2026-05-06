@@ -7,7 +7,7 @@ forms_available:
 typical_dose_range:
   capsule:
     min: 200
-    max: 600
+    max: 400
     unit: mg
   tablet:
     min: 200
@@ -18,9 +18,9 @@ timing_options:
 - with_breakfast
 - mid_morning
 take_with_food: optional
-notes_for_coach: Adaptogen with stimulating properties — better taken in morning/midday.
-  May reduce cortisol and improve energy/resilience. Avoid late dosing to prevent
-  sleep disruption.
+notes_for_coach: Rhodiola is a stimulating adaptogen — better used in the morning.
+  Avoid in bipolar disorder or with stimulant medications. Doses and suitability should
+  be verified with a clinician.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - thyroid
@@ -29,14 +29,19 @@ linked_to_topics:
 - adrenal-dysfunction
 - hpa-axis-dysregulation
 - anxiety
+- emotional-healing-chronic-disease
+- nervous-system-regulation
+- emotional-healing-in-chronic-disease
 linked_to_mechanisms: []
 linked_to_claims:
 - chronic-stress-elevates-rt3-functional-hypothyroidism
 - pregnenolone-steal-cortisol-reduces-progesterone
 - adaptogens-rebalance-hpa-axis
 - low-dhea-high-cortisol-indicates-adrenal-burnout
-notes_for_client: Rhodiola is an energizing adaptogen that helps your body respond
-  better to stress without over-stimulation.
+- adaptogens-regulate-hpa-axis-reduce-burnout
+- adaptogens-regulate-hpa-axis
+notes_for_client: Rhodiola is an energizing adaptogen that supports resilience to
+  stress. Take in the morning to avoid disrupting sleep.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
@@ -52,7 +57,15 @@ sources:
   location: Functional Medicine Interventions — Loneliness section (p.19)
   quote: Adaptogens (Rhodiola, Ashwagandha), Liposoma/Buffered Vitamin C, Active B5,
     lifestyle circadian repair.
-version: 4
+- id: vitaone-health-coaching-toolkit
+  location: Key Nutrients & Botanicals for Emotional Healing Support
+  quote: 'Adaptogens (Ashwagandha, Rhodiola): Regulate HPA axis response. Fatigue,
+    burnout, adrenal imbalance.'
+- id: vitaone-health-coaching-cheatsheet
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: 'Adrenal support: adaptogens (ashwagandha, rhodiola), breathwork, morning
+    sunlight, magnesium, sleep hygiene.'
+version: 6
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

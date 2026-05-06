@@ -1,25 +1,42 @@
 slug: flatulence
-display_name: Gas / Flatulence
+display_name: Flatulence / Excessive Gas
 aliases:
 - wind
 - passing gas
 - farting
 - excessive gas
+- intestinal gas
 category: gi
 severity: common
-description: Excessive intestinal gas production from bacterial fermentation of undigested
-  carbohydrates, leading to frequent or uncomfortable passage of gas.
+description: Passage of excess intestinal gas. In hypochlorhydria, undigested food
+  reaching the lower GI tract undergoes microbial fermentation, generating excess
+  gas.
 linked_to_topics:
 - low-fodmap-diet
 - elimination-diet
+- dysbiosis
+- hypochlorhydria
+- digestive-enzyme-insufficiency
 linked_to_mechanisms:
 - colonic-fermentation
+- gut-barrier-dysfunction
+- sibo-from-low-acid
+- food-fermentation-reflux
 when_to_refer: ''
 sources:
 - id: vitaone-elimination-diet-toolkit
   location: Low Fodmap Diet Symptom Tracker — Section 1
   quote: Gas / flatulence
-version: 1
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Case History / Symptoms
+  quote: Gut issues were progressive bloating, belching, flatulence.
+- id: coconote-fm-hypochlorhydria
+  location: Clinical Presentation of Low Stomach Acid
+  quote: Because of the accumulation of food in the stomach, there could be a long-term
+    effect that there is a bacterial or microbial growth which is present, eventually
+    producing more gas and that is why the patient feels painful or having more of
+    flatulence also in that case.
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

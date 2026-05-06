@@ -1,0 +1,31 @@
+slug: low-fodmap-reduces-ibs-symptoms
+statement: A short-term low FODMAP diet reduces IBS-type symptoms (bloating, gas,
+  pain, diarrhea, constipation) by restricting fermentable carbohydrates that cause
+  colonic gas production and osmotic fluid shifts.
+evidence_tier: strong
+rationale: The document explicitly states 'Low FODMAP is a short-term, research-backed
+  approach designed to calm IBS-type symptoms.' This aligns with well-established
+  Monash University research and multiple RCTs showing ~70% symptom response rates.
+coaching_translation: Removing high-FODMAP foods in a structured 4–8 week phase can
+  significantly reduce bloating, pain, and bowel irregularities. This is a temporary
+  tool, not a forever diet.
+caveats:
+- Portion size matters — many foods are only low-FODMAP up to a threshold serving
+- Stacking multiple moderate-FODMAP foods in one meal can exceed tolerance
+- Hidden FODMAPs (inulin/chicory, garlic/onion powders, sugar alcohols) are common
+  failure points
+linked_to_topics:
+- low-fodmap-diet
+- ibs
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Low FODMAP Vegetarian Diet Plan introduction
+  quote: Low FODMAP is a short-term, research-backed approach (not a forever-elimination)
+    designed to calm IBS-type symptoms while you figure out your personal triggers.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,29 @@
+slug: high-omega-6-processed-oils-promote-inflammation
+statement: Heavily processed seed oils high in omega-6 fatty acids (canola, corn,
+  soybean, sunflower, safflower, cottonseed, grapeseed) contribute to chronic inflammation
+  despite high smoke points.
+evidence_tier: plausible_emerging
+rationale: The role of excess omega-6 (linoleic acid) in promoting inflammation via
+  arachidonic acid pathways is mechanistically plausible; population-level RCT evidence
+  on processed oil consumption and CVD outcomes is mixed.
+coaching_translation: Just because an oil can withstand high heat doesn't make it
+  healthy — many common cooking oils are pro-inflammatory and best avoided or minimized.
+caveats:
+- Evidence on processed seed oils and CVD risk is not fully settled in RCT literature.
+- Some omega-6 fatty acids (e.g., LA) may be cardioprotective in certain contexts.
+linked_to_topics:
+- cooking-fats-and-cardiovascular-health
+- cardiovascular-dysfunction
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: A Guide to Cooking with Fats and Oils
+  quote: These fats and oils are also high in omega-6 fatty acids, which can contribute
+    to chronic inflammation in the body. Because of this, regularly consuming fats
+    and oils from this list is not recommended.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

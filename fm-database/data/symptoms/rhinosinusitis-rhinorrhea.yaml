@@ -1,0 +1,25 @@
+slug: rhinosinusitis-rhinorrhea
+display_name: Rhinosinusitis & Rhinorrhea
+aliases:
+- runny nose
+- nasal congestion
+- sinus symptoms
+- nasal drip
+category: other
+severity: common
+description: Nasal inflammation, congestion, and runny nose as a manifestation of
+  IgE-mediated food allergy. Also associated with increased mucus secretion due to
+  chronic mast cell activation.
+linked_to_topics:
+- food-allergy-ige-mediated
+linked_to_mechanisms:
+- mast-cell-degranulation-histamine-release
+when_to_refer: ''
+sources:
+- id: coconote-fm-food-allergies-sensitivities
+  location: IgE Symptoms Section
+  quote: you can see rhinosinusitis or rhinorrhea in the nose
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

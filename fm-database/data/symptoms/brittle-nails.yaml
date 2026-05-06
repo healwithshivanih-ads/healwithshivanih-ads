@@ -1,0 +1,35 @@
+slug: brittle-nails
+display_name: Brittle Nails & White Nail Spots
+aliases:
+- weak nails
+- nail breakage
+- koilonychia
+- nail ridging
+- soft nails
+- white nail spots
+- nail brittleness
+category: skin
+severity: common
+description: Brittle nails linked to iron deficiency and selenium toxicity; white
+  nail spots linked to zinc deficiency.
+linked_to_topics:
+- iron-deficiency-anemia
+- nutrition-deficiency
+- hair-loss
+linked_to_mechanisms:
+- nutrient-dependent-energy-metabolism
+when_to_refer: Refer if nails show unusual pigmentation, severe ridging, or other
+  signs suggestive of systemic disease.
+sources:
+- id: coconote-fm-iron-deficiency-anemia
+  location: Symptoms of Iron Deficiency section
+  quote: Physical fatigue, brittle nails, restless leg, cold intolerance because of
+    lack of oxygen.
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Symptoms Discussed
+  quote: Pallor, dizziness, breathlessness, restless legs, and brittle nails - Linked
+    to iron deficiency.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

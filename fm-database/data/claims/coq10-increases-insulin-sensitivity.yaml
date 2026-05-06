@@ -1,0 +1,31 @@
+slug: coq10-increases-insulin-sensitivity
+statement: CoQ10 supplementation has been shown to increase insulin sensitivity in
+  individuals without diabetes and may modestly lower glucose in those with type 2
+  diabetes.
+evidence_tier: plausible_emerging
+rationale: Moradi et al. (2016, Arch Iran Med) systematic review and meta-analysis
+  supports CoQ10's effects on diabetes biomarkers. Effect sizes are modest. Mechanistically
+  plausible via mitochondrial energy production.
+coaching_translation: CoQ10 — found in grass-fed beef, fish, and pistachios — supports
+  your cells' energy production and may help improve how your body responds to insulin.
+caveats:
+- CoQ10 production declines with age and is depleted by statins — this context may
+  be important for some clients.
+- Modest effect sizes; not a standalone intervention.
+linked_to_topics:
+- blood-sugar-dysfunction
+- insulin-resistance
+linked_to_supplements:
+- coenzyme-q10
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Micronutrients for Insulin Sensitivity — INSULIN SENSITIZERS (cont.)
+  quote: CoQ10 has been shown to increase insulin sensitivity in individuals who do
+    not have diabetes & may modestly lower glucose in individuals who have type 2
+    diabetes.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

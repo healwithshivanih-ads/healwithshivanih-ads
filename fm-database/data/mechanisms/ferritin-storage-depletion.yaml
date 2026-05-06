@@ -1,0 +1,33 @@
+slug: ferritin-storage-depletion
+display_name: Ferritin Storage Depletion as Early IDA Signal
+aliases:
+- iron store depletion
+- low ferritin pre-anemia
+category: metabolic
+summary: Ferritin is the primary storage form of iron. As iron deficiency develops,
+  the body mobilises ferritin reserves to maintain serum iron levels. This means ferritin
+  falls before serum iron becomes abnormal, making it the most sensitive early biomarker
+  of iron deficiency. Conversely, elevated ferritin can indicate systemic inflammation
+  independent of iron status.
+upstream_drivers:
+- decreased-dietary-iron
+- chronic-blood-loss
+- malabsorption
+downstream_effects:
+- low-serum-iron
+- iron-deficiency-anemia
+related_mechanisms:
+- heme-vs-nonheme-iron-absorption
+- low-stomach-acid-iron-absorption
+linked_to_topics:
+- iron-deficiency-anemia
+evidence_tier: strong
+sources:
+- id: coconote-fm-iron-deficiency-anemia
+  location: Iron Panel Biomarkers / Ferritin section
+  quote: Ferritin goes down much more than, much earlier, I would say, than serum
+    iron. So again, iron deficiency in ferritin is going to be on a lower side.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

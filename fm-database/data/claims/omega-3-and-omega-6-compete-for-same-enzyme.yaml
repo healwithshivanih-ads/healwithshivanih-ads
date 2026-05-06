@@ -1,0 +1,31 @@
+slug: omega-3-and-omega-6-compete-for-same-enzyme
+statement: Omega-3 and omega-6 fatty acids compete for the same delta-5 desaturase
+  enzyme; increasing omega-3 while simultaneously eliminating omega-6 sources shifts
+  the enzyme toward anti-inflammatory metabolite production.
+evidence_tier: strong
+rationale: Enzyme competition between omega-3 and omega-6 fatty acids for delta-5
+  and delta-6 desaturases is well-established in nutritional biochemistry. The clinical
+  implication (increase omega-3 AND reduce omega-6 simultaneously) is supported by
+  intervention studies.
+coaching_translation: It's not enough to just add omega-3 supplements — you also need
+  to cut out refined vegetable oils (sunflower, safflower, peanut oil). Both steps
+  together are what shifts your body toward less inflammation.
+linked_to_topics:
+- omega-3-omega-6-balance
+- chronic-inflammation
+linked_to_supplements:
+- omega-3-fish-oil
+- flaxseed-oil
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-approach-inflammation
+  location: Diet – Omega-3/6 Enzyme Competition
+  quote: the enzyme that work for omega-3 pathway and omega-6 pathway is same. It's
+    basically delta-5 is H2S. So if you have high omega-3 and low omega-6, then this
+    enzyme will move for omega-3.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

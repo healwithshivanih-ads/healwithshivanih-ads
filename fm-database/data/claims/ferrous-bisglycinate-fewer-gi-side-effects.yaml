@@ -1,0 +1,34 @@
+slug: ferrous-bisglycinate-fewer-gi-side-effects
+statement: Ferrous bisglycinate causes significantly fewer gastrointestinal side effects
+  (constipation, diarrhoea) compared to ferrous sulfate and ferrous fumarate.
+evidence_tier: plausible_emerging
+rationale: Poor absorption of ferrous sulfate/fumarate means unabsorbed iron reaches
+  the lower GI tract, where it can cause irritation and altered bowel habits. Ferrous
+  bisglycinate's higher absorption reduces the iron load reaching the colon, reducing
+  GI effects.
+coaching_translation: If a client has tried iron tablets and stopped because of stomach
+  issues, a bisglycinate form is worth discussing with their doctor — it's much gentler.
+out_of_scope_notes: Recommending a switch between iron formulations should involve
+  a clinician.
+caveats:
+- Source is an expert lecture (moderate quality).
+- GI tolerability data is from emerging comparative studies; verify with clinician.
+linked_to_topics:
+- iron-deficiency-anemia
+linked_to_supplements:
+- ferrous-bisglycinate
+- ferrous-sulfate
+- ferrous-fumarate
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-iron-deficiency-anemia
+  location: Supplements / Management section
+  quote: It's better tolerated because ferrous fumarate and ferrous sulfate are not
+    very well absorbed inside the blood, it eventually causes some GI disturbances
+    like constipation, diarrhea, people have a lot of GI disturbances who consume
+    this. On the other side, ferrous bisglycinate has such low reported pure GI side
+    effects.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

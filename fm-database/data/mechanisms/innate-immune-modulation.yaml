@@ -1,0 +1,36 @@
+slug: innate-immune-modulation
+display_name: Innate Immune Modulation
+aliases:
+- innate immunity enhancement
+- immune system activation
+- natural killer cell activation
+category: immune
+summary: The innate immune system provides the first line of defense against pathogens.
+  Multiple nutraceuticals (zinc, vitamin D, beta-glucans, medicinal mushrooms, elderberry)
+  modulate innate immune responses including macrophage function, NK cell activity,
+  cytokine production, and interferon signaling, which are critical for viral defense
+  and resolution of inflammation.
+upstream_drivers:
+- nutrient-deficiency
+- chronic-stress
+- aging
+downstream_effects:
+- improved-viral-clearance
+- reduced-infection-severity
+- balanced-inflammatory-response
+related_mechanisms:
+- nlrp3-inflammasome-activation
+- oxidative-stress
+linked_to_topics:
+- immune-support-covid-19
+- chronic-inflammation
+evidence_tier: strong
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: A large body of research shows that zinc has strong anti-viral properties
+    against many viruses.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

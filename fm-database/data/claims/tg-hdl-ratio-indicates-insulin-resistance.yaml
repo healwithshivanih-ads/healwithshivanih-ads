@@ -1,0 +1,32 @@
+slug: tg-hdl-ratio-indicates-insulin-resistance
+statement: The triglyceride-to-HDL ratio is a reliable surrogate marker for insulin
+  resistance; a ratio above ~3.5–4.0 indicates metabolic dysfunction.
+evidence_tier: plausible_emerging
+rationale: The document cites a TG:HDL ratio of 4.87 as indicative of insulin resistance
+  and recommends using this ratio to identify the metabolic pattern. This is consistent
+  with published literature on TG:HDL as an IR proxy, though it is not universally
+  standardized as a primary diagnostic criterion.
+coaching_translation: If your TG:HDL ratio is elevated, it's a signal that your cells
+  may not be responding well to insulin—a key driver of heart disease risk. Diet and
+  lifestyle changes can directly improve this ratio.
+caveats:
+- Optimal cut-off varies by population and lab reference ranges; functional medicine
+  range used here may differ from conventional cut-offs.
+- Source is expert lecture (moderate quality); verify specific cut-offs with clinician.
+linked_to_topics:
+- insulin-resistance
+- lipid-panel-interpretation
+- cardiometabolic-disease
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-biomarkers-cvs
+  location: Metabolic Dysfunction
+  quote: So if we just look at the ratio of triglyceride versus STL, you can find
+    out the insulin resistance. So look at it in this picture, the triglyceride-STL
+    ratio is 4.87, that is too high.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

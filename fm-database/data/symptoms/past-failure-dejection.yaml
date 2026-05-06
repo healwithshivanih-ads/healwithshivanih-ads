@@ -1,0 +1,29 @@
+slug: past-failure-dejection
+display_name: Dejection from Past Failed Attempts
+aliases:
+- fear of failing again
+- lost confidence in change
+- tried before and failed
+- back to square one feeling
+category: mood
+severity: common
+description: A client's reduced confidence and hesitancy to attempt behavior change
+  again due to previous unsuccessful attempts, leading to anticipatory discouragement
+  and reluctance to re-engage.
+when_to_refer: If a pattern of repeated failure is associated with persistent hopelessness
+  or self-blame disproportionate to the situation, consider referral to a mental health
+  professional.
+linked_to_topics:
+- ambivalence-in-coaching
+linked_to_mechanisms:
+- pros-cons-weighting
+sources:
+- id: ask-expert-coaching-ambivalence
+  location: Group discussion — Ana's question on past failure
+  quote: There are a lot of people that we get, they've already done it, but they
+    were not able to continue and they're just back at the square one. And so they're
+    just hesitating to do this again because they're going to fail again.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

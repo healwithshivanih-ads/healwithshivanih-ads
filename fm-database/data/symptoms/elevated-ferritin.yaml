@@ -1,0 +1,26 @@
+slug: elevated-ferritin
+display_name: Elevated Ferritin (Inflammatory)
+aliases:
+- high ferritin
+- iron overload marker
+- ferritin as inflammatory marker
+category: metabolic
+severity: concerning
+description: Ferritin elevated beyond what iron stores alone explain may indicate
+  systemic inflammation and is associated with cardiovascular risk. Must be interpreted
+  in context of serum iron and TIBC.
+when_to_refer: Refer if ferritin is very high (>500 ng/mL) to rule out hemochromatosis,
+  malignancy, or severe inflammatory conditions.
+linked_to_topics:
+- cardiometabolic-disease
+linked_to_mechanisms:
+- chronic-inflammation
+sources:
+- id: coconote-fm-biomarkers-cvs
+  location: Ferritin as Cardiovascular Biomarker
+  quote: if somebody has increased ferritin level, that is also suggesting the inflammation.
+    And inflammation, again, is a risk for cardiovascular disease.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

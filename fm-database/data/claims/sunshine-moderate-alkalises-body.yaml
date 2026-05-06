@@ -1,0 +1,30 @@
+slug: sunshine-moderate-alkalises-body
+statement: Moderate sun exposure supports an alkaline cellular environment, while
+  both excessive sun exposure (burning) and complete sun avoidance can contribute
+  to an acid cellular condition.
+evidence_tier: fm_specific_thin
+rationale: The role of sunlight/vitamin D in cellular health is broadly supported,
+  but the specific claim that sunlight 'alkalises' the body is not clearly established
+  in peer-reviewed literature. This is a FM/naturopathic framing.
+coaching_translation: Moderate daily sun exposure — around 15 minutes front and back
+  — supports overall cellular health. Avoid burning and avoid complete sun avoidance.
+caveats:
+- The mechanism by which sun exposure influences cellular pH is not specified and
+  is not well-established in peer-reviewed literature.
+- Source is a lecture transcript.
+- Sunscreen avoidance advice in the source is not endorsed here; coach should not
+  advise against sunscreen.
+linked_to_topics:
+- ph-balance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-ph-balance
+  location: Lifestyle Factors and pH Section
+  quote: Burning the skin and also skin that never gets sun, both of those can create
+    an acid condition.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

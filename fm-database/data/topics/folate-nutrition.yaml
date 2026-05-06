@@ -1,0 +1,40 @@
+slug: folate-nutrition
+display_name: 'Folate: Food Sources, MTHFR & Homocysteine'
+aliases:
+- folic acid
+- vitamin B9
+- folate deficiency
+- MTHFR
+summary: Folate is a water-soluble B vitamin essential for DNA synthesis, cell division,
+  red blood cell production, and homocysteine metabolism. High homocysteine from folate
+  insufficiency is linked to heart disease, dementia, and depression. Individuals
+  with MTHFR variants may respond better to natural folate over folic acid.
+common_symptoms:
+- anemia
+- depression
+- fatigue
+- cognitive-decline
+red_flags:
+- neural-tube-defects-in-pregnancy
+related_topics:
+- vitamin-b12-nutrition
+- mitochondrial-health-nutrients
+key_mechanisms:
+- homocysteine-metabolism
+- dna-synthesis
+- methylation
+coaching_scope_notes: Coach can educate on folate-rich food sources (leafy greens,
+  legumes, liver). MTHFR considerations and supplement forms should be referred to
+  FM practitioner.
+clinician_scope_notes: MTHFR testing, homocysteine lab work, and supplement dosing
+  are clinician scope.
+evidence_tier: strong
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Food Sources: Folate'
+  quote: Folate is essential for the metabolism of homocysteine, an amino acid that
+    in high amounts may contribute to heart disease, dementia, and depression.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

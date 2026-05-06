@@ -1,0 +1,28 @@
+slug: tea-coffee-calcium-and-phytates-inhibit-iron-absorption
+statement: Tea, coffee, calcium, and phytates inhibit iron absorption.
+evidence_tier: plausible_emerging
+rationale: Inhibitory effects of tannins (tea, coffee), calcium, and phytates on non-haem
+  iron absorption are well-supported by absorption studies.
+coaching_translation: Advise clients to avoid tea, coffee, or calcium supplements
+  for at least one hour around iron-rich meals to maximise absorption.
+caveats:
+- Source is a practitioner cheatsheet without primary citations.
+- Source is practitioner cheatsheet.
+linked_to_topics:
+- nutrition-deficiency
+linked_to_supplements:
+- iron
+- calcium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 11
+  quote: Tea, coffee, calcium, and phytates are described as inhibiting iron absorption.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 11
+  quote: Tea, coffee, calcium, and phytates are described as inhibiting iron absorption.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

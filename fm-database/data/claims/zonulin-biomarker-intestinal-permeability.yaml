@@ -1,0 +1,32 @@
+slug: zonulin-biomarker-intestinal-permeability
+statement: Elevated serum zonulin correlates with increased intestinal permeability,
+  as zonulin is a peptide secreted by intestinal mucosa that regulates tight junction
+  opening.
+evidence_tier: plausible_emerging
+rationale: Zonulin as a regulator of tight junctions was discovered by Fasano's group
+  and is used in research as a permeability marker. Some clinical labs offer testing.
+  However, assay standardization and clinical utility are still under active investigation.
+coaching_translation: Zonulin is a protein your gut produces that can 'unlock' the
+  tight junctions between gut cells. When levels are high, it's a sign the gut barrier
+  may be more permeable than it should be.
+out_of_scope_notes: Zonulin test ordering and interpretation is clinician-scope.
+caveats:
+- Zonulin assays have variable standardization across labs; clinical utility in routine
+  practice is debated.
+- Source is expert consensus; primary literature should be reviewed for current clinical
+  guidance.
+linked_to_topics:
+- intestinal-permeability
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-intestinal-permeability
+  location: Diagnostic Testing – Zonulin
+  quote: another test is zonulin and it is discovered in a 20 years back and that's
+    the enzyme or peptide secreted by the intestinal mucosa and they they regulate
+    the tight junctions. So if you have high zonulin that correlate with an interest
+    in permeability.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

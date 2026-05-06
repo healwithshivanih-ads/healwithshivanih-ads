@@ -1,32 +1,50 @@
 slug: phase2-conjugation
-display_name: Phase II Conjugation (Liver Detox)
+display_name: Phase 2 Conjugation
 aliases:
 - phase 2 detox
 - conjugation pathways
 - biotransformation
+- biotransformation conjugation
+- hepatic conjugation
 category: metabolic
-summary: 'Phase II involves conjugation reactions (sulfation, glucuronidation, glutathione
-  conjugation, acetylation, amino acid conjugation, methylation) that attach polar
-  groups to Phase I intermediates, rendering them water-soluble for excretion via
-  bile/feces, kidneys/urine, or serum. Key nutrients: glycine, taurine, glutamine,
-  NAC, cysteine, methionine.'
+summary: Phase 2 reactions conjugate reactive intermediates produced by Phase 1 to
+  polar molecules — glutathione (glutathione-S-transferase), sulfate (sulfation),
+  glucuronic acid (glucuronidation), amino acids (taurine, glycine, glutamine), acetyl-CoA
+  (acetylation), or methyl groups (methylation) — rendering them water-soluble for
+  biliary or renal excretion. Phase 2 is protein-dependent and nutrient-intensive.
+  Deficiency in Phase 2 relative to Phase 1 causes reactive intermediate accumulation
+  and oxidative DNA damage.
 upstream_drivers:
 - cytochrome-p450-phase1
+- cyp450-phase1-bioactivation
+- nutritional-status
+- protein-intake
 downstream_effects:
 - toxin-excretion-via-stool
 - toxin-excretion-via-urine
+- reactive-intermediate-elimination
+- biliary-excretion
+- renal-excretion
 related_mechanisms:
 - cytochrome-p450-phase1
 - methylation
+- cyp450-phase1-bioactivation
+- reactive-intermediate-accumulation
+- glutathione-conjugation
 linked_to_topics:
 - liver-detoxification
+- liver-detoxification-phases
 evidence_tier: strong
 sources:
 - id: vitaone-liver-detox-toolkit
   location: Features of the Detox Food Plan
   quote: Imbalances between phase I & phase II detoxification can cause accumulation
     or overproduction of toxic intermediate metabolites.
-version: 1
+- id: coconote-fm-liver-detox-part1
+  location: Phase 2 Detoxification Explanation
+  quote: Phase 2 means once we create this active compound, we have to bind to something
+    and we have to make the water-soluble and we have to neutralize that activity.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

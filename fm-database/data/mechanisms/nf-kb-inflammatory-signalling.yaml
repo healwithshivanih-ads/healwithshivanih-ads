@@ -1,0 +1,36 @@
+slug: nf-kb-inflammatory-signalling
+display_name: NF-κB Inflammatory Signalling
+aliases:
+- nuclear factor kappa B
+- NF-kB pathway
+- cytokine signalling
+category: signaling
+summary: NF-κB is a master inflammatory transcription factor that drives cytokine
+  production. Omega-3 fatty acids, turmeric (curcumin), and green tea polyphenols
+  (EGCG) modulate NF-κB activity and cytokine expression, contributing to systemic
+  anti-inflammatory effects.
+upstream_drivers:
+- oxidative-stress
+- gut-dysbiosis
+- ultra-processed-food
+- chronic-infection
+downstream_effects:
+- chronic-inflammation
+- autoimmune-activation
+- vascular-damage
+related_mechanisms:
+- nrf2-antioxidant-pathway
+- gut-immune-signalling
+linked_to_topics:
+- immune-nutrition
+- modern-diet-systemic-dysfunction
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXZNALUjPBQ/
+  quote: Omega-3s, turmeric, and green tea modulate NF-κB and cytokine expression
+    at the cellular level.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,33 @@
+slug: oxytocin-release-via-reuteri
+display_name: Oxytocin Release via L. reuteri
+aliases:
+- reuteri oxytocin pathway
+- probiotic oxytocin stimulation
+category: endocrine
+summary: Lactobacillus reuteri, particularly at high counts achieved through fermentation,
+  appears to stimulate oxytocin release. Oxytocin supports skin health, emotional
+  wellbeing, vaginal moisture, and social bonding. However, high-dose reuteri fermentation
+  during pregnancy carries an unknown risk of stimulating uterine contractions, analogous
+  to pharmaceutical oxytocin (Pitocin) used to induce labor.
+upstream_drivers:
+- lactobacillus-reuteri-colonization
+downstream_effects:
+- improved-vaginal-moisture
+- skin-rejuvenation
+- emotional-wellbeing
+- potential-uterine-contraction-risk-in-pregnancy
+related_mechanisms:
+- lactobacillus-crispatus-dominance
+linked_to_topics:
+- vaginal-microbiome
+- gut-microbiome
+evidence_tier: plausible_emerging
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: L. reuteri and oxytocin discussion
+  quote: One of the effects of reuteri, if we believe the animal data, we've been
+    trying to corroborate this in humans... release oxytocin.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

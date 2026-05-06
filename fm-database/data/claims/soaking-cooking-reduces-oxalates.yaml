@@ -1,0 +1,23 @@
+slug: soaking-cooking-reduces-oxalates
+statement: Soaking followed by cooking high-oxalate plant foods can help decrease
+  their oxalate content and reduce risk of oxalate-related symptoms.
+evidence_tier: plausible_emerging
+rationale: Published nutrition science supports that boiling vegetables in water and
+  discarding cooking water reduces oxalate content by leaching water-soluble oxalates.
+  The magnitude varies by food.
+coaching_translation: If you need to limit oxalates, try soaking vegetables like spinach
+  in water first, then boiling and discarding the water before eating.
+linked_to_topics:
+- oxalate-sensitivity
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Oxalate Food Triggers
+  quote: Soaking followed by cooking may help decrease oxalate levels in foods.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

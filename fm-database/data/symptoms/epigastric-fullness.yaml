@@ -1,0 +1,27 @@
+slug: epigastric-fullness
+display_name: Epigastric Fullness / Early Satiety
+aliases:
+- feeling full quickly
+- stomach fullness
+- post-meal heaviness
+- epigastric tightness
+category: gi
+severity: common
+description: A sense of pressure or fullness in the upper abdomen, often occurring
+  soon after eating. In hypochlorhydria, accumulation of undigested food and fermentation
+  gas creates this sensation.
+linked_to_topics:
+- hypochlorhydria
+linked_to_mechanisms:
+- food-fermentation-reflux
+- reduced-hcl-production
+when_to_refer: ''
+sources:
+- id: coconote-fm-hypochlorhydria
+  location: Clinical Presentation of Low Stomach Acid
+  quote: Usually patients with low stomach acid feel a certain amount of belching
+    or fullness as soon as they eat.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

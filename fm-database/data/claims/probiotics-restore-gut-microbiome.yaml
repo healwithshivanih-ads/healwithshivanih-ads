@@ -1,0 +1,32 @@
+slug: probiotics-restore-gut-microbiome
+statement: Probiotics are used in the Re-inoculate phase of gut healing to restore
+  beneficial bacteria after dysbiosis or antibiotic-related disruption of the gut
+  microbiome.
+evidence_tier: plausible_emerging
+rationale: Probiotics have a substantial evidence base for specific conditions (e.g.,
+  antibiotic-associated diarrhea, IBS, pouchitis), and their use in gut microbiome
+  restoration post-dysbiosis is broadly supported, though strain- and condition-specific
+  responses vary.
+coaching_translation: After gut disruption — from antibiotics, stress, or infection
+  — probiotics help repopulate beneficial bacteria that are essential for a healthy
+  gut barrier.
+caveats:
+- Strain selection and dosing are not specified in this document.
+- Clients on immunosuppressants or with SIBO should consult clinician before probiotic
+  use.
+linked_to_topics:
+- intestinal-permeability
+- 5r-gut-healing-protocol
+linked_to_supplements:
+- probiotics-gut-repair
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-intestinal-permeability
+  location: 5R Protocol – Re-inoculate
+  quote: if you have an infection or dysbiosis or deficiency of any kind of good bacteria,
+    then you have to replace that bacteria with probiotics.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

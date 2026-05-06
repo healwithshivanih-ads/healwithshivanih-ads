@@ -1,0 +1,25 @@
+slug: smoking-significantly-increases-cvd-risk
+statement: Smoking tobacco significantly increases the chance of developing cardiovascular
+  disease.
+evidence_tier: strong
+rationale: Well-established dose-response relationship between tobacco smoking and
+  CVD risk, supported by extensive epidemiological and mechanistic literature.
+coaching_translation: Quitting smoking is one of the highest-impact lifestyle changes
+  a client can make to reduce heart disease risk.
+caveats:
+- Source is a clinical toolkit; statement consistent with established public health
+  consensus.
+linked_to_topics:
+- cardiovascular-dysfunction
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: CVD Risk Analysis
+  quote: Smoking tobacco significantly increases the chance of developing cardiovascular
+    disease.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

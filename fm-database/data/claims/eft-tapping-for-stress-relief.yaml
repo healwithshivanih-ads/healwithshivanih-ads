@@ -1,0 +1,31 @@
+slug: eft-tapping-for-stress-relief
+statement: EFT (Emotional Freedom Technique) tapping may help clients who prefer movement-based
+  coping strategies to shift from sympathetic to parasympathetic states.
+evidence_tier: plausible_emerging
+rationale: There is a growing body of small RCTs and meta-analyses supporting EFT
+  tapping for anxiety and stress reduction (e.g., Church et al., 2012, Journal of
+  Nervous and Mental Disease). It is a reasonable alternative for clients resistant
+  to traditional breath-focused mindfulness.
+coaching_translation: If sitting still and breathing isn't working for your client,
+  tapping (EFT) is a movement-friendly technique that some people find easier to engage
+  with for stress relief.
+caveats:
+- Source document calls this 'EMF tapping' — likely a transcription error for 'EFT
+  tapping'; extracted as EFT.
+- Evidence base is promising but trials are generally small; not yet mainstream consensus.
+- Coaches should be trained in EFT before using it with clients.
+linked_to_topics:
+- stress-and-the-sympathetic-nervous-system
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-coaching-stress-kids
+  location: Stress Client Topic Discussion
+  quote: another great tool because she doesn't like the breathing, so she likes movement
+    it seems like. I don't know if you've heard of tapping, EMF tapping. I give myself
+    permission to slow down.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

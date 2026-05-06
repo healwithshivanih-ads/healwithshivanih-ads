@@ -1,0 +1,28 @@
+slug: magnesium-natural-calcium-channel-blocker
+statement: Magnesium acts as a natural calcium channel blocker, promoting vascular
+  relaxation and reducing blood pressure similarly to pharmacological calcium channel
+  blockers.
+evidence_tier: strong
+rationale: The calcium channel blocking mechanism of magnesium is well-established
+  in physiology; clinical evidence supports magnesium's blood-pressure-lowering effects
+  in several meta-analyses of RCTs.
+coaching_translation: Magnesium naturally relaxes blood vessels, which is why ensuring
+  adequate levels can support healthy blood pressure.
+linked_to_topics:
+- magnesium-cardiovascular-health
+- magnesium-deficiency
+linked_to_supplements:
+- magnesium-glycinate
+- magnesium-citrate
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-magnesium-deficiency
+  location: Hypertension section
+  quote: Magnesium happens to be a natural calcium channel blocker... if you can give
+    magnesium which causes relaxations the hypertension can be taken care of.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

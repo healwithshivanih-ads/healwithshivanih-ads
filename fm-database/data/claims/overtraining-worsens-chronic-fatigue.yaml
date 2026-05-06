@@ -1,0 +1,31 @@
+slug: overtraining-worsens-chronic-fatigue
+statement: High-intensity overtraining exacerbates chronic fatigue by depleting energy
+  reserves; switching to low-impact exercise (yoga, tai chi) improves energy levels
+  in fatigued clients.
+evidence_tier: plausible_emerging
+rationale: Exercise-induced energy expenditure exceeding recovery capacity (overtraining
+  syndrome) worsening fatigue is well-documented in sports medicine. Application to
+  chronic disease populations (cancer, fibromyalgia) is supported by clinical observation
+  and some RCT data on graded exercise.
+coaching_translation: Some of your most motivated clients are actually training too
+  hard and making their fatigue worse. Help them see that rest, yoga, and tai chi
+  are not giving up — they are medicine.
+caveats:
+- Source is expert FM lecture.
+- Individualisation is essential — some clients need more movement, others less.
+linked_to_topics:
+- chronic-pain-and-fatigue
+- fibromyalgia
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-chronic-pain-fatigue
+  location: Movement Section
+  quote: There are people that they are coming to you and they say, 'Oh, I have chronic
+    renal fatigue, I have so much of pain,' but they are so passionate about exercising
+    and they are just overtraining themselves.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

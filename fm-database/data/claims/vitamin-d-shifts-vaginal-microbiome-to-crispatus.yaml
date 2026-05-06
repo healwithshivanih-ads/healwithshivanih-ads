@@ -1,0 +1,30 @@
+slug: vitamin-d-shifts-vaginal-microbiome-to-crispatus
+statement: Achieving optimal vitamin D levels (60–70 ng/mL) shifts the vaginal microbiome
+  to favor Lactobacillus crispatus through an indirect mechanism.
+evidence_tier: plausible_emerging
+rationale: Dr. Davis identifies vitamin D optimization as a foundational step for
+  vaginal microbiome health. The shift toward crispatus is described as occurring
+  via an indirect mechanism, consistent with vitamin D's known immunomodulatory effects
+  on mucosal surfaces.
+coaching_translation: Getting your vitamin D levels into the optimal range (60–70
+  ng/mL) supports the growth of beneficial vaginal bacteria, including L. crispatus.
+out_of_scope_notes: Target serum level (60–70 ng/mL) and dosing to achieve it require
+  clinician interpretation of labs.
+caveats:
+- No specific studies cited.
+- Source is expert_consensus interview.
+- Vitamin D level testing and dose titration require clinician oversight.
+linked_to_topics:
+- vaginal-microbiome
+linked_to_supplements:
+- vitamin-d3
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Vitamin D and vaginal microbiome discussion
+  quote: Getting vitamin D to a healthy level. I aim for 60 to 70 nanograms per milliliter.
+    Also shifts the vaginal microbiome to favor crispatus.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

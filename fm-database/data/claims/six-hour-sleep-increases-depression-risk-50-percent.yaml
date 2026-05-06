@@ -1,0 +1,28 @@
+slug: six-hour-sleep-increases-depression-risk-50-percent
+statement: Ten consecutive nights of only six hours of sleep increases the risk of
+  developing depression by 50%.
+evidence_tier: strong
+rationale: Attributed to Dr Matthew Walker's 'Why We Sleep', which cites peer-reviewed
+  sleep and mental health research. The sleep-depression bidirectional relationship
+  is well-established in epidemiological literature.
+coaching_translation: Consistently sleeping only six hours a night — even if it feels
+  'enough' — significantly raises your risk of depression. Prioritising eight hours
+  is one of the most powerful mental health tools available.
+caveats:
+- Exact 50% figure from Walker's synthesis; verify primary source for precision
+- Causality vs correlation in sleep-depression relationship
+linked_to_topics:
+- sleep-hygiene
+- depression-lifestyle
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-healing-mind
+  location: Sleep Section
+  quote: Dr. Matthew Walker, in his book, Why We Sleep, he shows that 10 nights of
+    six-hour sleep a night, 50% greater risk of developing depression.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

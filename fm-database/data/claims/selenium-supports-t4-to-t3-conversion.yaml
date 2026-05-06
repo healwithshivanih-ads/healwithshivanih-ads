@@ -1,0 +1,27 @@
+slug: selenium-supports-t4-to-t3-conversion
+statement: Selenium is essential for the deiodinase enzymes that convert inactive
+  T4 into active T3 thyroid hormone.
+evidence_tier: strong
+rationale: Selenium-dependent deiodinase enzymes (DIO1, DIO2, DIO3) are well-established
+  in peer-reviewed literature as the primary catalysts for peripheral T4-to-T3 conversion.
+  This is a well-established physiological mechanism.
+coaching_translation: Adequate selenium intake supports the body's ability to activate
+  thyroid hormone. Food sources include Brazil nuts, sunflower seeds, and fish.
+caveats:
+- Doses above 400 mcg/day carry selenotoxicity risk. Verify total intake (diet + supplements)
+  with clinician.
+linked_to_topics:
+- thyroid-dysfunction
+- hashimotos-hypothyroidism
+linked_to_supplements:
+- selenium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Management of Hashimoto's — Nutrient Optimization
+  quote: 'Selenium: Essential for thyroid hormone conversion and may reduce TPO antibodies.'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

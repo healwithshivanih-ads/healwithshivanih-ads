@@ -1,0 +1,26 @@
+slug: dizziness-on-standing
+display_name: Dizziness / Lightheadedness
+aliases:
+- lightheadedness
+- feeling dizzy
+- orthostatic dizziness
+- fasting dizziness
+category: neurological
+severity: common
+description: Dizziness or lightheadedness especially on standing, commonly experienced
+  when first initiating a fasting protocol, related to fluid and electrolyte shifts.
+when_to_refer: Refer if dizziness is severe, accompanied by syncope, or persists beyond
+  the first few fasting days.
+linked_to_topics:
+- intermittent-fasting
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Intermittent Fasting — General Recommendations for Fasting
+  quote: Be aware of your movement as you may feel dizzy or lightheaded, especially
+    when first starting a fast.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

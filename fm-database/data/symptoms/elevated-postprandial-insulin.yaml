@@ -1,0 +1,26 @@
+slug: elevated-postprandial-insulin
+display_name: Elevated Postprandial Insulin (1-hr or 2-hr)
+aliases:
+- high 1-hour insulin
+- high 2-hour insulin
+- elevated PP insulin
+category: metabolic
+severity: concerning
+description: A 1-hour post-glucose-load insulin level above 30 µIU/mL or a persistently
+  elevated 2-hour insulin level indicates insulin resistance even when blood glucose
+  readings appear normal.
+when_to_refer: Refer to clinician for full GTIR panel ordering and interpretation.
+linked_to_topics:
+- insulin-resistance-early-detection
+linked_to_mechanisms:
+- compensatory-hyperinsulinemia
+- insulin-receptor-resistance
+sources:
+- id: coconote-fm-gtir
+  location: GTIR Graph Interpretation
+  quote: if the 1-hour insulin level is more than 30, usually it's an insulin resistance.
+    And look at their second-hour insulin, it is 39.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

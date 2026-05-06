@@ -1,0 +1,25 @@
+slug: water-retention
+display_name: Water Retention / Edema
+aliases:
+- puffiness
+- fluid retention
+- edema from stress
+category: metabolic
+severity: common
+description: Fluid retention associated with elevated cortisol and mineral imbalance
+  (loss of cellular potassium) in chronic stress states.
+linked_to_topics:
+- hypercortisolism
+- hpa-axis-dysfunction
+linked_to_mechanisms:
+- cortisol-dhea-imbalance
+- hpa-axis-dysregulation
+when_to_refer: ''
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Hypercortisolism
+  quote: Water retention, Loss of cellular potassium, a very important mineral.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

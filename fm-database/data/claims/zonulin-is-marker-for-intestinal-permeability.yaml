@@ -1,0 +1,30 @@
+slug: zonulin-is-marker-for-intestinal-permeability
+statement: Zonulin, a protein secreted by intestinal tight junctions, rises in tissue
+  and blood when gut barrier integrity is compromised, and can be measured via stool
+  testing to assess the degree of intestinal permeability.
+evidence_tier: plausible_emerging
+rationale: Zonulin as a permeability marker has scientific support (Fasano et al.)
+  though its specificity as a standalone diagnostic marker is debated. GI map stool
+  testing can include zonulin.
+coaching_translation: Elevated zonulin on a stool test signals that the gut barrier
+  may be 'leaking' — this helps guide the repair phase of a gut healing protocol.
+out_of_scope_notes: Lab interpretation is clinician scope.
+caveats:
+- Zonulin specificity as a diagnostic tool is debated in peer-reviewed literature.
+- Source does not cite specific studies.
+linked_to_topics:
+- leaky-gut-syndrome
+- sibo
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-sibo-sifo
+  location: Zonulin and Leaky Gut
+  quote: Zonulin is basically a protein which is secreted by this particular tight
+    junction to maintain. So whenever this particular tight junction is going to break
+    up, this particular protein will come up in the tissue side also and it will also
+    be seen in the blood as well.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,29 @@
+slug: omega-3-deficiency-impairs-siga-production
+statement: Deficiency in omega-3 fatty acids can impair secretory IgA production,
+  weakening mucosal immune defense in the gut.
+evidence_tier: plausible_emerging
+rationale: Omega-3 fatty acids play anti-inflammatory roles and serve as structural
+  components for immune cell membranes. The mechanistic link to sIgA production is
+  biologically plausible; direct RCT evidence is limited.
+coaching_translation: Low omega-3 levels may reduce your gut's ability to produce
+  the protective antibodies that guard the intestinal lining against pathogens.
+caveats:
+- This claim is based on expert consensus — direct RCT evidence linking omega-3 deficiency
+  specifically to reduced sIgA is limited.
+- Source is expert consensus.
+linked_to_topics:
+- intestinal-permeability
+linked_to_supplements:
+- omega-3-fatty-acids
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-intestinal-permeability
+  location: Diagnostic Markers – Secretory IgA
+  quote: They are either deficient in omega-3 or protein because as you say, all the
+    immune cells, all the antibodies, they are actually a protein or peptides. If
+    you are protein deficient, you are not going to create a sufficient IgA antibody.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

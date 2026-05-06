@@ -1,0 +1,32 @@
+slug: vitamin-c-primary-antioxidant-anti-inflammatory
+statement: Vitamin C is a primary antioxidant and anti-inflammatory nutrient that
+  can be dosed therapeutically via capsule or amla powder (5g morning and evening);
+  it works as a long-term strategy, not an immediate intervention.
+evidence_tier: strong
+rationale: Vitamin C's role as an antioxidant (free radical scavenger) and its anti-inflammatory
+  effects are well-supported. Amla is one of the highest known whole-food sources
+  of vitamin C.
+coaching_translation: Vitamin C from amla powder or supplements is one of the best
+  foundational anti-inflammatory tools. Think of it as building a protective shield
+  for your cells — consistently, over months.
+caveats:
+- High-dose vitamin C (>5–10g) can cause loose stools (bowel tolerance effect). Start
+  low and build up.
+- Source is expert FM lecture.
+linked_to_topics:
+- chronic-inflammation
+- oxidative-stress
+linked_to_supplements:
+- vitamin-c
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-approach-inflammation
+  location: Nutrition – Vitamin C
+  quote: vitamin C is a primary anti-inflammatory or antioxidant. So increase the
+    vitamin C from the diet, you can prescribe the vitamin C in a capsule form or
+    paste way, you can prescribe it in a humla.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

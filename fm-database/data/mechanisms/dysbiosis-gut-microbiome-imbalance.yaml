@@ -1,0 +1,38 @@
+slug: dysbiosis-gut-microbiome-imbalance
+display_name: Dysbiosis (Gut Microbiome Imbalance)
+aliases:
+- gut dysbiosis
+- microbiome imbalance
+- chronic gut infection
+category: gut
+summary: Dysbiosis refers to an imbalance between beneficial and pathogenic microorganisms
+  in the gut. Unlike acute infection (e.g., gastroenteritis), dysbiosis represents
+  a chronic state of microbial imbalance — reduced beneficial bacteria and overgrowth
+  of pathogens or unwanted microbes. This damages the gut lining, contributing to
+  intestinal permeability and increasing susceptibility to food reactions.
+upstream_drivers:
+- poor-diet
+- antibiotic-use
+- stress
+- environmental-toxins
+downstream_effects:
+- intestinal-permeability
+- food-sensitivity-igg-iga-mediated
+- chronic-gut-inflammation
+related_mechanisms:
+- intestinal-permeability
+- low-stomach-acid-antigen-load
+linked_to_topics:
+- intestinal-permeability-leaky-gut
+- food-sensitivity-igg-iga-mediated
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-food-allergies-sensitivities
+  location: ATM and Intestinal Permeability Section
+  quote: Dysbiosis means your imbalance in your gut microbiome, good versus bad bacteria
+    or bad microbiome, so you have a deficiency of good or prebiotic and your increased
+    growth of either pathogens or increased growth of some kind of unwanted microbes
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

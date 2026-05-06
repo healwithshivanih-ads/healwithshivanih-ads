@@ -1,0 +1,26 @@
+slug: endothelial-injury-initiates-atherosclerosis
+statement: Endothelial injury is the primary initiating event in atherosclerosis,
+  triggered by inflammation, high homocysteine, hyperglycemia, toxins, and hypertension.
+evidence_tier: strong
+rationale: Well-established cardiovascular pathophysiology. The endothelial injury
+  hypothesis is foundational in atherosclerosis research (Ross, 1999). The document
+  accurately describes multiple upstream triggers.
+coaching_translation: The first step in plaque formation is damage to the lining of
+  your arteries. Reducing inflammation, blood sugar, and toxin exposure protects this
+  lining and lowers your heart disease risk.
+linked_to_topics:
+- atherosclerosis
+- endothelial-dysfunction
+- cardiometabolic-disease
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-biomarkers-cvs
+  location: Atherosclerosis Mechanism
+  quote: So, the primary cause for formation of plaque is actually endothelial injury.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

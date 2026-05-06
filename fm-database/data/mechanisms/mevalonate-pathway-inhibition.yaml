@@ -1,0 +1,35 @@
+slug: mevalonate-pathway-inhibition
+display_name: Mevalonate Pathway Inhibition
+aliases:
+- HMG-CoA reductase inhibition
+- statin mechanism of action
+category: metabolic
+summary: Statins inhibit HMG-CoA reductase, the rate-limiting enzyme in the mevalonate
+  pathway, reducing endogenous cholesterol synthesis. This pathway also produces other
+  bioactive molecules including CoQ10, dolichols, and isoprenoids, meaning broad blockade
+  has downstream consequences beyond LDL lowering.
+upstream_drivers:
+- hyperlipidemia
+- cardiovascular-risk-assessment
+downstream_effects:
+- reduced-ldl-cholesterol
+- coq10-depletion
+- cholesterol-precursor-depletion
+- hormone-synthesis-impairment
+related_mechanisms:
+- cholesterol-precursor-depletion
+- coq10-depletion
+linked_to_topics:
+- statin-therapy-primary-prevention
+- statin-side-effects
+- cholesterol-and-hormone-synthesis
+evidence_tier: strong
+sources:
+- id: coconote-fm-reality-of-statins
+  location: Side Effects of Statins Section
+  quote: Cholesterol is the precursor for hormones and vitamins. So if you are blocking
+    the production of cholesterol, what are you doing?
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

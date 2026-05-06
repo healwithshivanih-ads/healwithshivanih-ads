@@ -1,0 +1,47 @@
+slug: magnesium-hormone-support
+display_name: Magnesium (Hormone Signaling & Transcription Support)
+category: mineral
+forms_available:
+- capsule
+- powder
+- tablet
+typical_dose_range:
+  capsule:
+    min: 200
+    max: 400
+    unit: mg
+  powder:
+    min: 200
+    max: 400
+    unit: mg
+timing_options:
+- with_dinner
+- bedtime
+take_with_food: optional
+linked_to_topics:
+- hormonal-nutrition-foundations
+- hippocampal-volume-and-hormones
+linked_to_claims:
+- magnesium-enables-hormone-transcription
+- rbc-magnesium-targets-hormone-signaling
+- nutrient-cofactors-required-for-hormone-signaling
+notes_for_coach: Magnesium is required for transcription of the hormonal signal at
+  the receptor. Target RBC (red blood cell) magnesium in the high 5s to low 6s mg/dL
+  — standard serum magnesium is a poor proxy. Magnesium is chronically depleted by
+  stress, toxicity, and aging. Also linked to hippocampal volume maintenance.
+notes_for_client: Magnesium is used up by stress and hard to keep in normal range
+  as we age. It's needed for your hormones to actually send their messages in your
+  cells. A magnesium supplement — ideally glycinate or malate form — is well tolerated
+  and supports both hormonal and brain health.
+evidence_tier: strong
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Magnesium in Hormone Receptor Signaling
+  quote: magnesium, which allows transcription of the message to occur... magnesium
+    is constantly rinsed out of the body by any state of stress or toxicity... you
+    want to keep your red blood cell magnesium in the high fives or the low sixes.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

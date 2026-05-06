@@ -1,0 +1,47 @@
+slug: gut-health-fodmap-sibo
+display_name: Gut Health, FODMAP & SIBO
+aliases:
+- low-FODMAP
+- small intestinal bacterial overgrowth
+- IBS
+- gut dysbiosis
+summary: FODMAPs are clinical diagnostic tools revealing fermentation capacity, motility,
+  mucosal integrity, vagal tone, and SIBO patterns. Low-FODMAP is a short-term therapeutic
+  phase (2–6 weeks); long-term use collapses microbiome diversity. Root causes include
+  SIBO, dysbiosis, low stomach acid, and bile insufficiency.
+common_symptoms:
+- bloating
+- constipation
+- gas
+- new-food-sensitivities
+- diarrhoea
+red_flags:
+- GI bleed
+- unintentional weight loss with GI symptoms
+- suspected celiac disease
+related_topics:
+- iron-deficiency-dysregulation
+- immune-nutrition
+- pcos-fertility
+key_mechanisms:
+- sibo-fermentation
+- gut-barrier-iron-absorption
+- vagal-tone-motility
+- hpa-axis-dysregulation
+coaching_scope_notes: Coaches can support low-FODMAP food selection for the short
+  therapeutic phase and guide reintroduction journaling. SIBO testing, prokinetic
+  prescribing, and antibiotic decisions are clinician territory.
+clinician_scope_notes: Assess for SIBO, H. pylori, celiac, HCl deficiency, bile insufficiency.
+  Use prokinetics and vagus nerve support alongside dietary phase. Reintroduction
+  phase is diagnostic.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXbyLyYjP__/
+  quote: 'Low-FODMAP is a therapeutic phase, not a long-term diet (2–6 weeks only)
+    → Gut healing requires nutrients: glutamine, zinc carnosine, omega-3, B-complex,
+    bitters'
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

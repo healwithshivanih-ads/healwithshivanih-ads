@@ -1,0 +1,70 @@
+slug: nutrition-deficiency
+display_name: Nutrient Deficiency Patterns
+aliases:
+- vitamin deficiency
+- mineral deficiency
+- nutrient insufficiency
+- micronutrient deficiency
+summary: Patterns of vitamin, mineral, omega-3, and nutrient insufficiency with associated
+  symptoms, food sources, preferred supplement forms, and dosing considerations across
+  multiple body systems.
+common_symptoms:
+- fatigue
+- tingling-numbness-neuropathy
+- mood-changes
+- insomnia
+- hair-loss
+- brittle-nails
+- pallor
+- poor-wound-healing
+- cramps
+- restless-legs
+- tingling-numbness-paresthesia
+- mood-changes-anxiety
+- frequent-infections
+red_flags:
+- anemia unresponsive to iron
+- irreversible neurological damage from B12 deficiency
+- iron overload symptoms
+- seizures
+- arrhythmia
+- pregnancy-related deficiency risk
+- high-dose supplement toxicity
+- balance-problems-memory-loss
+- irreversible-neurological-damage
+- macrocytic-megaloblastic-anemia
+- severe-biotin-deficiency-rash
+- iron-overload-symptoms
+- high-dose-supplement-toxicity
+related_topics:
+- methylation
+- thyroid
+- insulin-resistance
+- chronic-inflammation
+- gut-dysbiosis
+- hair-loss
+- joint-pain
+- medication-nutrient-interactions
+key_mechanisms:
+- nutrient-dependent-energy-metabolism
+- methylation-support
+- gut-barrier-and-nutrient-absorption
+coaching_scope_notes: Focus on food-first strategies, symptom tracking, and referral
+  for labs. Avoid dosing guidance, lab interpretation, and pregnancy-specific supplementation
+  without clinician oversight.
+clinician_scope_notes: Multiple entries include therapeutic doses, lab ranges, pregnancy
+  guidance, and medication interactions — all require clinician oversight.
+evidence_tier: plausible_emerging
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Topics Covered
+  quote: Vitamin, mineral, omega-3, and nutrient insufficiency patterns with symptoms,
+    food sources, supplement forms, and dosing pearls.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Topics Covered
+  quote: Vitamin, mineral, omega-3, and nutrient insufficiency patterns with symptoms,
+    food sources, supplement forms, and dosing pearls.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

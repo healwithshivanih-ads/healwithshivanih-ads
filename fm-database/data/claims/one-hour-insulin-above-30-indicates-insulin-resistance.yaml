@@ -1,0 +1,30 @@
+slug: one-hour-insulin-above-30-indicates-insulin-resistance
+statement: A 1-hour post-glucose-load insulin level greater than 30 µIU/mL is indicative
+  of insulin resistance, even with a normal blood glucose reading.
+evidence_tier: confirm_with_clinician
+rationale: Stated explicitly in the lecture as a clinical threshold. Post-load insulin
+  measurement is a recognized FM approach to early IR detection, but the specific
+  cutoff of 30 µIU/mL is not universally standardized in conventional medicine. Clinician
+  review required for interpretation.
+coaching_translation: If your insulin spikes very high one hour after drinking a glucose
+  solution — even if your blood sugar looks fine — it can mean your body is working
+  overtime to keep blood sugar normal.
+out_of_scope_notes: Lab interpretation and diagnostic decisions are out of coaching
+  scope. Coaches should encourage clients to discuss postprandial insulin testing
+  with their clinician.
+caveats:
+- The 30 µIU/mL threshold is FM-specific and not universally standardized.
+- Source is an FM expert lecture of moderate quality.
+- Full clinical context and Craft pattern classification required for diagnosis.
+linked_to_topics:
+- insulin-resistance-early-detection
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-gtir
+  location: GTIR Graph Interpretation
+  quote: if the 1-hour insulin level is more than 30, usually it's an insulin resistance
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,18 +1,18 @@
 slug: selenium-may-reduce-tpo-antibodies
-statement: Selenium supplementation is essential for thyroid hormone conversion and
-  may reduce TPO antibodies in Hashimoto's.
+statement: Selenium supplementation may reduce anti-thyroid peroxidase (Anti-TPO)
+  antibody levels in Hashimoto's thyroiditis.
 evidence_tier: plausible_emerging
-rationale: Multiple small RCTs have found selenium supplementation (typically 200
-  mcg/day as selenomethionine) reduces anti-TPO antibody levels. Effect on clinical
-  outcomes is less clear. This is one of the better-supported nutrient interventions
-  in Hashimoto's.
-coaching_translation: Selenium is one of the most studied nutrients for Hashimoto's
-  — it may help lower the antibodies attacking your thyroid. Foods like Brazil nuts
-  are a good natural source.
+rationale: Several RCTs have investigated selenium supplementation and TPO antibody
+  reduction in Hashimoto's, with mixed but generally supportive results. Effect size
+  is moderate and not universally replicated.
+coaching_translation: Getting enough selenium from food and/or supplements may help
+  calm the immune attack on your thyroid over time.
 caveats:
 - 'Dose-dependent: excess selenium is toxic. Supplementation at doses above 400 mcg/day
   is not recommended without clinician oversight.'
 - Evidence is from small trials; not yet strong consensus for clinical outcomes.
+- Evidence is mixed across RCTs; not a substitute for medical management.
+- Optimal dose for antibody reduction may differ from general supplementation dose.
 linked_to_topics:
 - hashimotos-hypothyroidism
 linked_to_supplements:
@@ -23,7 +23,10 @@ sources:
 - id: vitaone-thyroid-toolkit
   location: Nutrient Optimization
   quote: 'Selenium: Essential for thyroid hormone conversion and may reduce TPO antibodies.'
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Management of Hashimoto's — Nutrient Optimization
+  quote: 'Selenium: Essential for thyroid hormone conversion and may reduce TPO antibodies.'
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

@@ -1,15 +1,18 @@
 slug: xenoestrogens-disrupt-estrogen-metabolism
 statement: Xenoestrogens — chemicals in personal care and home products that mimic
-  estrogen — disrupt healthy estrogen metabolism.
+  estrogen — can disrupt healthy estrogen metabolism.
 evidence_tier: plausible_emerging
-rationale: Document references Teitelbaum et al. (Reprod Toxicol, 2015) on endocrine
-  disrupting chemicals in breast cancer. Xenoestrogen disruption of hormone signaling
-  is well-documented in research, though human intervention data is limited.
-coaching_translation: Swapping conventional personal care and cleaning products for
-  cleaner alternatives (check ewg.org) reduces your daily xenoestrogen load.
+rationale: Teitelbaum et al. (Reprod Toxicol. 2015) is cited in the references regarding
+  endocrine-disrupting chemicals. The mechanism is plausible and supported by observational
+  and experimental data.
+coaching_translation: Everyday products like plastics, fragrances, and some cosmetics
+  can contain hormone-mimicking chemicals. Switching to cleaner options (check ewg.org)
+  reduces this hormonal burden on your body.
 caveats:
 - Epidemiological associations exist but establishing individual causality is difficult.
   Environmental burden is cumulative.
+- Individual exposure levels and susceptibility vary
+- Reformulating home products is a meaningful but not sole intervention
 linked_to_topics:
 - estrogen-metabolism
 out_of_scope_notes: ''
@@ -20,7 +23,11 @@ sources:
   location: Estrogen Metabolism — Disrupts Healthy Estrogen Metabolism — Page 03
   quote: Xenoestrogens are chemicals that mimic estrogen in the body. Many personal
     care and home products contain chemicals that can disrupt healthy estrogen metabolism.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Estrogen Metabolism — Disrupts Healthy Estrogen Metabolism
+  quote: Xenoestrogens are chemicals that mimic estrogen in the body. Many personal
+    care and home products contain chemicals that can disrupt healthy estrogen metabolism.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

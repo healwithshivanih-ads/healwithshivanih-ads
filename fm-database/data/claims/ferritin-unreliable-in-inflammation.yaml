@@ -1,0 +1,30 @@
+slug: ferritin-unreliable-in-inflammation
+statement: Serum ferritin is an unreliable iron status marker in the presence of systemic
+  inflammation, as it is an acute-phase reactant that rises independently of iron
+  stores, masking true deficiency.
+evidence_tier: strong
+rationale: Ferritin is well-established as an acute-phase protein upregulated by IL-6
+  and other cytokines during inflammation and infection, independent of iron stores.
+  This is taught in standard haematology and supported by multiple clinical guidelines
+  recommending CRP co-assessment.
+coaching_translation: A 'normal' ferritin result on a blood test doesn't necessarily
+  mean your iron levels are fine — if there's any inflammation in your body, ferritin
+  can look normal even when iron stores are actually low.
+out_of_scope_notes: Interpretation of ferritin with CRP and transferrin saturation
+  is a clinician task.
+caveats:
+- Widely accepted clinical principle. Ferritin threshold for deficiency in inflammation
+  remains debated.
+linked_to_topics:
+- iron-deficiency-dysregulation
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXy9b_KjJT2/
+  quote: Ferritin alone is unreliable in inflammation → Ferritin appears normal due
+    to inflammation masking deficiency
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

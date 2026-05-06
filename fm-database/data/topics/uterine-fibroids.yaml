@@ -1,0 +1,38 @@
+slug: uterine-fibroids
+display_name: Uterine Fibroids
+aliases:
+- leiomyoma
+- uterine leiomyomata
+- fibroids
+summary: Benign uterine growths strongly associated with estrogen dominance and relative
+  progesterone deficiency. Linked to insulin resistance, gut dysbiosis, low vitamin
+  D, and chronic inflammation. Vitamin D optimization, reducing insulin resistance,
+  and lowering estrogen dominance are key management pillars.
+common_symptoms:
+- heavy-periods
+- pelvic-pain
+- bloating
+- spotting
+red_flags:
+- fibroid >7-9mm may require myomectomy
+- bleeding not controlled by conservative measures
+related_topics:
+- estrogen-dominance
+- luteal-phase-defect
+key_mechanisms:
+- estrogen-driven-cell-proliferation
+- progesterone-deficiency
+coaching_scope_notes: Coaches can support fibroid management via vitamin D optimization,
+  anti-inflammatory diet, insulin resistance protocols, and gut health. Refer clients
+  with large fibroids or uncontrolled bleeding to a gynecologist.
+evidence_tier: plausible_emerging
+clinician_scope_notes: ''
+sources:
+- id: coconote-fm-estrogen-dominance
+  location: Management of Estrogen Dominance
+  quote: Vitamin D as it plays a very significant role in the development of uterine
+    fibroids. Vitamin D optimization, reduce insulin resistance, reduce inflammation.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

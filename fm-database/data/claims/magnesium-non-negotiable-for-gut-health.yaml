@@ -1,0 +1,30 @@
+slug: magnesium-non-negotiable-for-gut-health
+statement: Magnesium is a non-negotiable supplement for gut health due to its involvement
+  in numerous enzymatic reactions, and dietary intake is typically insufficient.
+evidence_tier: plausible_emerging
+rationale: Magnesium is a cofactor in over 300 enzymatic reactions including those
+  involved in gut motility, energy production, and neuromuscular function. Modern
+  diets and soil depletion are well-documented contributors to low magnesium intake.
+  Its role as a 'non-negotiable' in FM gut protocols reflects broad clinical consensus.
+coaching_translation: Most people don't get enough magnesium from food alone, and
+  it's involved in so many processes that support a healthy gut. It's usually a foundational
+  supplement.
+caveats:
+- The 'non-negotiable' framing is FM-specific clinical consensus, not a single RCT
+  finding. Source is FM lecture.
+linked_to_topics:
+- dysbiosis
+- gut-skin-hormone-axis
+linked_to_supplements:
+- magnesium-citrate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Q&A — Supplement Rationale
+  quote: Magnesium is not given to just regularize the bowel movements — it is a non-negotiable
+    when it comes to gut issues. It helps in improving your gut health.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

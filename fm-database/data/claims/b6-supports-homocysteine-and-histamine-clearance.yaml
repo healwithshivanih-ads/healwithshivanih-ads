@@ -1,0 +1,30 @@
+slug: b6-supports-homocysteine-and-histamine-clearance
+statement: Vitamin B6 helps prevent high homocysteine and high histamine.
+evidence_tier: plausible_emerging
+rationale: B6 participates in transsulfuration pathway reducing homocysteine and in
+  histamine catabolism via DAO; supported by credible mechanistic evidence.
+coaching_translation: Clients with elevated homocysteine or histamine intolerance
+  symptoms may benefit from ensuring adequate B6 from food and supplementation under
+  clinician guidance.
+caveats:
+- Source is a practitioner cheatsheet without primary citations.
+- Source is practitioner cheatsheet.
+linked_to_topics:
+- methylation
+- chronic-inflammation
+linked_to_supplements:
+- vitamin-b6
+- p5p
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 5
+  quote: Vitamin B6 is described as helping prevent high homocysteine and high histamine.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 5
+  quote: Vitamin B6 is described as helping prevent high homocysteine and high histamine.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

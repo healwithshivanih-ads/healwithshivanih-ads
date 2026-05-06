@@ -1,0 +1,25 @@
+slug: zinc-improves-cellular-thyroid-sensitivity
+statement: Zinc improves cellular sensitivity to thyroid hormones at the receptor
+  level.
+evidence_tier: plausible_emerging
+rationale: The document identifies zinc as a factor improving cellular sensitivity
+  to thyroid hormones alongside Vitamin A and exercise. Zinc finger proteins are involved
+  in nuclear receptor function including thyroid hormone receptors.
+coaching_translation: Zinc helps your cells 'hear' the thyroid hormone signal more
+  effectively.
+linked_to_topics:
+- thyroid-dysfunction
+linked_to_supplements:
+- zinc
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Factors that Affect Thyroid Function
+  quote: 'Factors that improve cellular sensitivity to thyroid hormones: Vitamin A,
+    Exercise, Zinc'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

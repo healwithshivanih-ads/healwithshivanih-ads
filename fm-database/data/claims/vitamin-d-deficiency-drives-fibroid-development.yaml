@@ -1,0 +1,31 @@
+slug: vitamin-d-deficiency-drives-fibroid-development
+statement: Vitamin D deficiency plays a significant role in the development of uterine
+  fibroids, and vitamin D optimization is a key intervention for fibroid management
+  alongside insulin resistance reduction.
+evidence_tier: plausible_emerging
+rationale: There is emerging research (observational and in vitro) linking vitamin
+  D deficiency to uterine fibroid growth. Vitamin D receptors are present in uterine
+  tissue and may modulate cell proliferation. This is cited in published research
+  papers and is consistent with FM practice.
+coaching_translation: Getting your vitamin D levels optimized may help slow fibroid
+  growth and support uterine health — and it's one of the simplest, safest interventions
+  available.
+caveats:
+- Clinical trial evidence is limited; most data is observational or mechanistic.
+- Dose optimization requires lab testing (25-OH-D level).
+linked_to_topics:
+- uterine-fibroids
+- estrogen-dominance
+linked_to_supplements:
+- vitamin-d3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-estrogen-dominance
+  location: Management of Estrogen Dominance
+  quote: Vitamin D as it plays a very significant role in the development of uterine
+    fibroids. Vitamin D optimization, reduce insulin resistance, reduce inflammation.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

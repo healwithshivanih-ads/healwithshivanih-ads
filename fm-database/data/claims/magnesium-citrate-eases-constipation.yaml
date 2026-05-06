@@ -1,0 +1,26 @@
+slug: magnesium-citrate-eases-constipation
+statement: Magnesium citrate supports bowel regularity and eases constipation through
+  an osmotic mechanism.
+evidence_tier: strong
+rationale: Magnesium citrate draws water into the intestinal lumen, softening stool
+  and stimulating peristalsis. This is a well-established mechanism supported by clinical
+  evidence and widely used in both conventional and functional medicine practice.
+coaching_translation: Magnesium citrate helps keep things moving in your gut by drawing
+  water into the bowel. It is a gentle, well-supported option for constipation.
+linked_to_topics:
+- dysbiosis
+- gut-skin-hormone-axis
+linked_to_supplements:
+- magnesium-citrate
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Q&A — Supplement Rationale
+  quote: We gave her magnesium citrate because magnesium citrate helps in easing your
+    bowel movements and easing basically symptoms of constipation.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

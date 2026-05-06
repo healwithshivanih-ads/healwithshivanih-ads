@@ -1,0 +1,30 @@
+slug: visceral-adiposity-raises-cardiometabolic-risk
+statement: Visceral adiposity (excess abdominal fat) is associated with significantly
+  increased risk of heart disease, stroke, cancer, type 2 diabetes, hypertension,
+  and metabolic syndrome.
+evidence_tier: strong
+rationale: Well-established in peer-reviewed literature; waist circumference and waist-to-hip
+  ratio are validated clinical surrogates for visceral fat and independently predict
+  cardiometabolic outcomes.
+coaching_translation: Where your client carries their weight matters as much as how
+  much they weigh. Fat around the belly is more metabolically dangerous than fat on
+  the hips or thighs.
+caveats:
+- Risk thresholds differ by ethnicity — Asian-descent populations face elevated risk
+  at lower waist circumference values.
+linked_to_topics:
+- visceral-adiposity
+- metabolic-syndrome
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-body-composition-bmi
+  location: Visceral Adiposity Section
+  quote: We know that visceral adiposity, that weight around their belly, which we
+    know is so detrimental in terms of risk of heart disease and stroke and cancer
+    and inflammation in the body and insulin resistance and metabolic syndrome.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

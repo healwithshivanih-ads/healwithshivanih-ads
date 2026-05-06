@@ -1,0 +1,34 @@
+slug: dietary-fiber-modulation
+display_name: Dietary Fibre Modulation
+aliases:
+- fibre-gut axis
+- prebiotic effect
+- soluble fibre effect
+category: metabolic
+summary: High-fibre foods (legumes, millets, vegetables) modulate the gut microbiome
+  by providing prebiotic substrates, reduce LDL cholesterol via bile acid sequestration,
+  slow gastric emptying, and improve satiety signalling through GLP-1 and PYY release.
+upstream_drivers:
+- low-fibre-diet
+- processed-food-intake
+downstream_effects:
+- improved-lipid-profile
+- improved-satiety
+- gut-microbiome-diversity
+- reduced-postprandial-glucose
+related_mechanisms:
+- glycemic-load-reduction
+- gut-lining-support
+linked_to_topics:
+- cardiometabolic-diet
+- legume-based-eating-pattern
+evidence_tier: strong
+sources:
+- id: vitaone-cardiometabolic-recipes
+  location: Lentil Idli
+  quote: In a bowl add all the lentils – toor dal, moong dal, masoor dal, chana dal,
+    urad dal with oats and fenugreek seeds.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

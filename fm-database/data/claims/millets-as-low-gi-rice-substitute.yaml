@@ -1,0 +1,28 @@
+slug: millets-as-low-gi-rice-substitute
+statement: Millets (foxtail, barnyard, kodo, little) serve as a lower glycaemic index
+  substitute for white rice and refined wheat, supporting blood sugar regulation in
+  cardiometabolic conditions.
+evidence_tier: plausible_emerging
+rationale: The document systematically replaces white rice with millets across biryani,
+  khichdi, pulao, and roti recipes. This aligns with published evidence on millet's
+  lower GI compared to polished rice. No specific RCT is cited in the document itself.
+coaching_translation: Swapping white rice for millets like foxtail or barnyard millet
+  in your meals is a simple way to keep blood sugar steadier after eating.
+caveats:
+- Source is an expert-curated recipe book, not a primary RCT. Millet GI evidence is
+  plausible_emerging to strong depending on variety and preparation method.
+linked_to_topics:
+- millet-and-ancient-grain-substitution
+- cardiometabolic-diet
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cardiometabolic-recipes
+  location: Millet-Tofu Khichdi
+  quote: ¼ cup millet (foxtail, barnyard, kodo, or little millet) … 2 cups water (adjust
+    based on millet type and desired consistency)
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

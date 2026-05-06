@@ -1,5 +1,5 @@
 slug: perimenopause
-display_name: Perimenopause & Menopause Hormone Transition
+display_name: Perimenopause
 aliases:
 - peri
 - menopause-transition
@@ -8,9 +8,14 @@ aliases:
 - menopause transition
 - climacteric
 - peri-menopause
-summary: The hormonal transition characterized by declining ovarian progesterone and
-  eventual estrogen fluctuation, associated with hot flashes, anxiety, insomnia, and
-  metabolic changes.
+- perimenopausal transition
+- premenopause
+- menopausal transition
+- perimenopausal phase
+summary: The transitional phase approximately 3–4 years before and one year after
+  menopause, characterized by irregular menstrual cycles, fluctuating hormones, vasomotor
+  symptoms, mood changes, and early psychosomatic symptoms. Progesterone typically
+  declines first, potentially creating relative estrogen dominance.
 common_symptoms:
 - night sweats / hot flashes
 - 3am wakeups
@@ -31,6 +36,14 @@ common_symptoms:
 - brain-fog
 - irregular-periods
 - breast-tenderness
+- mood-swings
+- low-libido
+- fatigue
+- disturbed-sleep
+- mood-changes
+- sleep-disturbances
+- heavy-bleeding
+- spotting
 red_flags:
 - heavy bleeding > 7 days or soaking through pads hourly (refer GYN)
 - bleeding after 12 months of amenorrhea
@@ -39,6 +52,12 @@ red_flags:
 - new bowel changes not resolving
 - unexplained heavy bleeding after menopause
 - new breast lumps
+- bleeding >15 days
+- new onset severe anxiety or depression
+- palpitations without cardiac cause
+- Irregular cycles in women under 35 should not be assumed to be perimenopause without
+  workup
+- Persistent amenorrhea in young women — rule out PCOS
 related_topics:
 - insomnia
 - anxiety
@@ -52,6 +71,11 @@ related_topics:
 - estrogen-dominance
 - low-progesterone
 - inflammation
+- luteal-phase-defect
+- uterine-fibroids
+- menopause
+- bhrt
+- cortisol-steal
 key_mechanisms:
 - low-progesterone
 - estrogen-fluctuation
@@ -60,8 +84,11 @@ key_mechanisms:
 - estrogen-decline
 - progesterone-decline
 - intestinal-permeability
-coaching_scope_notes: Coaches may support phytoestrogen foods, stress reduction, and
-  sleep hygiene. HRT decisions require clinician.
+- progesterone-deficiency
+- estrogen-progesterone-decline
+- ovarian-follicle-depletion
+coaching_scope_notes: Coaches can support lifestyle modifications, stress management,
+  and nutrition. Diagnosis and hormonal management are clinician scope.
 clinician_scope_notes: 'HRT decisions and prescribing require menopause-certified
   clinician.
 
@@ -78,8 +105,17 @@ sources:
 - id: vitaone-sex-hormones-cheatsheet
   location: Common Triggers for Low Progesterone
   quote: Perimenopause & menopause → Natural decline in ovarian progesterone.
-evidence_tier: plausible_emerging
-version: 3
+- id: coconote-fm-estrogen-dominance
+  location: Types of Estrogen Dominance
+  quote: Somebody who is at the age of 45, their progesterone dips down. Because the
+    progesterone has dipped down, the estrogen is relatively a bit on the higher side,
+    the chances of getting fibroids and phylloadenoma, cystic breast kind of increases.
+- id: coconote-fm-sex-hormones
+  location: Stages of Menopause
+  quote: Perimenopause is 3 to 4 years Before and one year after the menopause is
+    basically a period of perimenopause.
+evidence_tier: strong
+version: 5
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

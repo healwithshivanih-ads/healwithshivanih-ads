@@ -1,7 +1,6 @@
 slug: bloating
-display_name: Bloating / Abdominal Distension
+display_name: Bloating
 aliases:
-- abdominal-distension
 - belly-swelling
 - feeling-puffy
 - bloated
@@ -24,12 +23,26 @@ aliases:
 - abdominal discomfort
 - gassy and bloated
 - stomach bloating
+- belly-distension
+- gut-bloat
+- abdominal distension from stress
+- gassy stomach
+- stomach distension
+- feeling full and tight
+- distended abdomen
+- belly bloating
+- gassy abdomen
+- post-meal discomfort
+- gassy feeling
+- gas and bloat
+- feeling full
 category: gi
 severity: common
-description: Sensation of abdominal fullness, tightness, or visible distension, often
-  related to gas accumulation from fermentation of poorly absorbed carbohydrates.
-when_to_refer: Persistent bloating with weight loss, rectal bleeding, or change in
-  bowel habit lasting >6 weeks.
+description: Abdominal fullness, distension, or gassiness commonly triggered by FODMAP
+  fermentation in SIBO or dysbiosis. Fructan-containing foods (onion, garlic) are
+  frequent triggers.
+when_to_refer: Sudden onset, significant unintentional weight loss, or blood in stool—refer
+  to gastroenterology.
 linked_to_topics:
 - microbiome
 - dysbiosis
@@ -50,6 +63,27 @@ linked_to_topics:
 - anti-inflammatory-diet
 - chronic-stress
 - elimination-diet
+- gut-brain-axis
+- nervous-system-regulation
+- hpa-axis-dysfunction
+- 5r-gut-restoration
+- emotional-healing-in-chronic-disease
+- low-stomach-acid
+- digestive-enzyme-insufficiency
+- intestinal-permeability
+- 5r-gut-healing-protocol
+- ibs-ibd-differentiation
+- cardiovascular-disease-prevention
+- sifo
+- leaky-gut-syndrome
+- gut-estrogen-axis
+- gastrointestinal-tract-overview
+- gut-microbiome-and-gut-flora
+- gluten-intolerance
+- lectin-sensitivity
+- gut-microbiome
+- gut-health-fodmap-sibo
+- modern-diet-systemic-dysfunction
 linked_to_mechanisms:
 - microbial-diversity-decline
 - leaky-gut
@@ -69,6 +103,35 @@ linked_to_mechanisms:
 - sympathetic-nervous-system-activation
 - colonic-fermentation
 - gut-motility-dysregulation
+- vagal-tone-reduction
+- sympathoadrenal-activation
+- fodmap-fermentation-gas-production
+- migrating-motor-complex
+- gut-brain-axis-disruption
+- intestinal-hyperpermeability
+- dysbiosis
+- leaky-gut-mechanism
+- nutrient-malabsorption
+- lps-mediated-immune-activation
+- gut-dysbiosis-microbiome-imbalance
+- food-fermentation-reflux
+- sibo-from-low-acid
+- gut-microbiome-dysbiosis
+- tight-junction-dysregulation
+- tight-junction-dysfunction
+- nf-kappab-suppression
+- altered-gi-motility
+- sibo-dysbiosis
+- beta-glucuronidase-reabsorption
+- pyloric-sphincter-regulation
+- gut-microbiome-colonisation
+- mechanical-mastication-and-enzyme-mixing
+- gluten-digestive-burden
+- lectin-gut-inflammation
+- endotoxemia
+- bacteriocin-production
+- sibo-fermentation
+- gut-barrier-iron-absorption
 sources:
 - id: thurlow-microbiome-mondays
   location: Sessions 1, 6 — bloating discussion
@@ -102,7 +165,62 @@ sources:
 - id: vitaone-elimination-diet-toolkit
   location: 'Low Fodmap Diet Symptom Tracker — Section 1: Gastrointestinal Symptoms'
   quote: Abdominal bloating / distension
-version: 10
+- id: vitaone-health-coaching-toolkit
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: Bloating, food sensitivities, mood swings, brain fog.
+- id: vitaone-health-coaching-cheatsheet
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: Bloating, food sensitivities, mood swings, brain fog.
+- id: coconote-fm-chronic-pain-fatigue
+  location: Digestion Section
+  quote: Lot of people they just feel lot of bloating or gas because they are chewing
+    their food.
+- id: coconote-fm-approach-inflammation
+  location: Gut Dysbiosis – Location and Type
+  quote: SIBO means patient having a bloating after one and a half hours.
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Probiotic Dosing by Pattern Section
+  quote: if you see overgrowth of normal bacteria consider them also a dysbiotic pattern
+    and don't consider giving them probiotic
+- id: coconote-fm-hypochlorhydria
+  location: Case Presentation
+  quote: It leads to water brush, severe discomfort, bloating, nausea, epigastric
+    burning pain.
+- id: coconote-fm-intestinal-permeability
+  location: 5R Protocol – Remove
+  quote: So, remove fundamental means we have to remove either food or infections.
+- id: coconote-fm-intestinal-permeability-anish
+  location: Triggers and Mediators
+  quote: Infection and dysbiosis if somebody having a chronic infection or maybe it's
+    an imbalance in your gut microbiome… that dysbiosis can leads to increase intestinal
+    permeability.
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Gut Inflammation and CVD
+  quote: If someone tells me they have gas, bloating, diarrhea, heartburn, if I'm
+    suspicious about their gut, I'll do a food sensitivity test.
+- id: coconote-fm-sibo-sifo
+  location: Triggers for SIBO / Symptoms
+  quote: Increased susceptibility for SIBO and recurrence presenting as bloating after
+    meals and these are all the symptoms.
+- id: coconote-fm-sex-hormones
+  location: Case Study — Rekha
+  quote: she was anxious, lot of bloating and there was a lot of hair loss as well.
+- id: barbara-oneil-gi-tract
+  location: Meal Timing Section
+  quote: If they ate breakfast and had a morning tea, then just before lunch they
+    tested the contents of the stomach, there's still a bit of breakfast there.
+- id: barbara-oneil-ph-balance
+  location: Gluten and Hybridised Wheat Section
+  quote: The two most common symptoms are brain fog and bloating. And how many people
+    have that and just live with that?
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: SIBO symptoms and elimination diet discussion
+  quote: You've got SIBO, you've got bloating and diarrhea and joint pain and anxiety.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXbyLyYjP__/
+  quote: Fruit-triggered bloating often reflects fructose malabsorption or microbial
+    overgrowth
+version: 29
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

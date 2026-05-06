@@ -1,0 +1,30 @@
+slug: weight-loss-reduces-ldl-particle-number
+statement: Weight loss directly and significantly reduces LDL particle number (LDL-P),
+  independent of other interventions.
+evidence_tier: plausible_emerging
+rationale: Clinical observation strongly supported by the clinician; biologically
+  plausible through reduction in VLDL production and improved lipoprotein lipase activity
+  with weight loss. Supported by published lipid metabolic studies.
+coaching_translation: Losing weight — even moderate amounts — can significantly reduce
+  the number of harmful LDL particles in your blood. This is one of the most powerful
+  things you can do for your heart, before any medication.
+caveats:
+- Source is expert clinical observation in a lecture — specific trial citations not
+  provided.
+- Effect magnitude depends on degree of weight loss and baseline metabolic status.
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-disease-prevention
+- metabolic-syndrome
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: LDL Particle Number and Risk
+  quote: Before adding any supplements or drugs, if someone decreases their weight,
+    their LDL-P comes down.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

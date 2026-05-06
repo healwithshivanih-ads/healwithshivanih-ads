@@ -1,0 +1,41 @@
+slug: probiotics-gut-repair
+display_name: Probiotics (Gut Repair)
+category: probiotic
+forms_available:
+- capsule
+- powder
+typical_dose_range:
+  capsule:
+    min: 10
+    max: 50
+    unit: capsules
+  powder:
+    min: 1
+    max: 2
+    unit: scoops
+timing_options:
+- on_empty_stomach
+- morning
+- bedtime
+take_with_food: optional
+linked_to_topics:
+- intestinal-permeability
+- 5r-gut-healing-protocol
+linked_to_claims:
+- probiotics-restore-gut-microbiome
+notes_for_coach: Used in the Re-inoculate step of 5R. Strain selection matters; multi-strain
+  formulations are commonly recommended. Clients on immunosuppressants should consult
+  clinician before use.
+notes_for_client: Probiotics are beneficial bacteria that help restore balance in
+  your gut. They work best alongside prebiotic foods (fiber) that feed the good bacteria.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-intestinal-permeability
+  location: 5R Protocol – Re-inoculate
+  quote: if you have an infection or dysbiosis or deficiency of any kind of good bacteria,
+    then you have to replace that bacteria with probiotics.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

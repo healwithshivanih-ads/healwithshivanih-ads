@@ -1,0 +1,30 @@
+slug: sugar-drives-inflammation-via-glycation-and-insulin
+statement: 'Elevated blood sugar drives inflammation through two mechanisms: glycation
+  of proteins (altering protein structure to trigger immune response) and elevated
+  insulin (pro-inflammatory signaling). Restricting carbohydrates is a primary anti-inflammatory
+  dietary strategy.'
+evidence_tier: strong
+rationale: Protein glycation leading to AGEs and immune activation is well-established.
+  Hyperinsulinemia's role in pro-inflammatory signaling (NF-κB activation, cytokine
+  production) is supported by extensive literature. Carbohydrate restriction reducing
+  inflammatory markers has RCT support.
+coaching_translation: Sugar doesn't just cause weight gain — it sticks to your proteins,
+  changes their shape, and tricks your immune system into attacking them. Cutting
+  sugar and refined carbs is one of the most powerful anti-inflammatory moves your
+  client can make.
+linked_to_topics:
+- chronic-inflammation
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-approach-inflammation
+  location: Triggers – HbA1c, Glycation, and Sugar
+  quote: sugar is going to change the structure of the body proteins and that leads
+    to the inflammation in that way... sugar is always told as inflammatory because
+    it's going to change the structure of the body proteins.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

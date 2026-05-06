@@ -1,0 +1,39 @@
+slug: nervous-system-imprinting
+display_name: Nervous System Imprinting (Prenatal & Perinatal)
+aliases:
+- autonomic nervous system patterning
+- early neurological imprinting
+- perinatal nervous system shaping
+category: neurological
+summary: Experiences in the prenatal and perinatal period — including birth method,
+  separation from mother, and maternal emotional state — are proposed to establish
+  baseline autonomic nervous system patterns. These patterns govern relational behaviour,
+  emotional regulation, and physical responses (e.g., breathing, muscle tension) throughout
+  the lifespan.
+upstream_drivers:
+- prenatal-cortisol-adrenaline-exposure
+- birth-separation
+- c-section-delivery
+- premature-birth
+downstream_effects:
+- breathing-irregularity
+- inability-to-relax
+- relational-closeness-avoidance
+- somatic-symptom-expression
+related_mechanisms:
+- prenatal-cortisol-adrenaline-exposure
+- somatic-body-memory
+linked_to_topics:
+- womb-imprinting-and-prenatal-experience
+- birth-trauma
+- somatic-body-memory
+evidence_tier: plausible_emerging
+sources:
+- id: family-constellation-healing-womb
+  location: Core teaching section — nervous system and cellular imprinting
+  quote: Everything we decide based on our emotions is closely embedded in our nervous
+    system, in our cells, in the billions of our body cells.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

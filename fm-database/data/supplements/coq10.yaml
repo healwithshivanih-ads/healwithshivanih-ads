@@ -1,9 +1,10 @@
 slug: coq10
-display_name: CoQ10 (Coenzyme Q10)
+display_name: Coenzyme Q10 (CoQ10)
 category: other
 forms_available:
 - capsule
 - tablet
+- liquid
 typical_dose_range:
   capsule:
     min: 100
@@ -17,6 +18,7 @@ timing_options:
 - with_breakfast
 - with_lunch
 - with_dinner
+- morning
 take_with_food: required
 linked_to_topics:
 - dyslipidemia
@@ -26,19 +28,26 @@ linked_to_topics:
 - medicine-nutrient-interactions
 - knee-pain
 - blood-sugar-dysfunction
+- nervous-system-regulation
+- emotional-healing-chronic-disease
+- dental-amalgam-mercury
+- metabolic-detoxification
+- mitochondrial-support
 linked_to_claims:
 - coq10-supports-mitochondrial-function-on-statins
 - coq10-carnitine-support-mitochondrial-repair
 - statins-deplete-coq10
 - coq10-increases-insulin-sensitivity-non-diabetics
 - coq10-modestly-lowers-glucose-t2d
-notes_for_coach: Fat-soluble — take with a meal. Ubiquinol form preferred for absorption,
-  especially in those over 40. Body production declines with age and statin use. Moradi
-  et al. 2016 meta-analysis supports modest glycemic benefit in T2D. Defer dosing
-  to clinician.
-notes_for_client: CoQ10 is a natural antioxidant your body makes for energy production.
-  Levels drop with age and with statin medications. It may help improve insulin sensitivity
-  and modestly lower blood sugar.
+- coq10-nad-support-mitochondria-in-chronic-fatigue
+- coq10-antioxidant-protection-during-detox
+- coq10-supports-mitochondrial-atp-production
+notes_for_coach: CoQ10 is a key mitochondrial antioxidant and ATP co-factor. Ubiquinol
+  form may have better bioavailability, especially in older adults. Fat-soluble —
+  always take with food. Dose should be verified with clinician.
+notes_for_client: CoQ10 is like fuel for your cell's energy factories (mitochondria).
+  It can help reduce fatigue and mental sluggishness. Take it with a meal containing
+  some fat for best absorption.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -56,7 +65,15 @@ sources:
   quote: CoQ10 has been shown to increase insulin sensitivity in individuals who do
     not have diabetes & may modestly lower glucose in individuals who have type 2
     diabetes.
-version: 4
+- id: vitaone-health-coaching-toolkit
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: 'Support mitochondria: CoQ10, B-vitamins, carnitine, NAD+, rest–recovery
+    cycles.'
+- id: vitaone-health-coaching-cheatsheet
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: 'Support mitochondria: CoQ10, B-vitamins, carnitine, NAD+, rest–recovery
+    cycles.'
+version: 7
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

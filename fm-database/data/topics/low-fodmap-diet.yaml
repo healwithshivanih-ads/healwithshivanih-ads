@@ -5,9 +5,9 @@ aliases:
 - FODMAP diet
 - fermentable carbohydrate restriction
 - low fermentable carbohydrate diet
-summary: A 2–6 week dietary protocol restricting Fermentable Oligosaccharides, Disaccharides,
-  Monosaccharides and Polyols to reduce IBS-type symptoms, followed by systematic
-  reintroduction to identify personal triggers and widen diet variety.
+summary: A short-term, evidence-based elimination diet that restricts Fermentable
+  Oligosaccharides, Disaccharides, Monosaccharides, and Polyols to reduce IBS-type
+  symptoms, followed by systematic reintroduction to identify personal FODMAP thresholds.
 common_symptoms:
 - bloating
 - abdominal-gas
@@ -19,6 +19,9 @@ common_symptoms:
 - diarrhea
 - constipation
 - urgency-to-defecate
+- gas-flatulence
+- nausea
+- heartburn-reflux
 red_flags:
 - Symptoms persisting despite strict low-FODMAP compliance (consider SIBO testing
   or IBD workup)
@@ -27,6 +30,8 @@ red_flags:
 - failure to improve after 6 weeks
 - unintentional weight loss
 - rectal bleeding
+- blood in stool
+- nocturnal diarrhea — refer to gastroenterologist
 related_topics:
 - sibo
 - ibs
@@ -41,11 +46,14 @@ key_mechanisms:
 - colonic-fermentation
 - osmotic-fluid-shift
 - gut-motility-dysregulation
-coaching_scope_notes: Coaches can implement portion-based food charts, meal plans,
-  and symptom trackers. The reintroduction phase should be monitored; complex presentations
-  need dietitian or clinician supervision.
-clinician_scope_notes: Rule out celiac and IBD before starting Low FODMAP. Dietitian-supervised
-  reintroduction recommended for complex cases.
+- fodmap-fermentation-gas-production
+- osmotic-fluid-shifts-in-gut
+- gut-brain-axis-dysregulation
+coaching_scope_notes: Coaches can implement the structured elimination and reintroduction
+  phases using the Green/Yellow/Red food chart. Portion control and food stacking
+  rules are key. Refer if symptoms worsen or do not improve.
+clinician_scope_notes: Consider ruling out IBD, celiac disease, and SIBO before initiating
+  low FODMAP. Monitor nutritional adequacy.
 evidence_tier: strong
 sources:
 - id: vitaone-elimination-diet-cheatsheet
@@ -57,7 +65,12 @@ sources:
   location: Low Fodmap Detailed Chart (Indian Version)
   quote: This Low FODMAP chart is a practical, portion-based guide for clinicians
     and patients to reduce IBS-type symptoms during the short elimination phase.
-version: 2
+- id: vitaone-health-coaching-toolkit
+  location: Low Fodmap Detailed Chart — INDIAN VERSION
+  quote: Low FODMAP works best when it's implemented as a short, structured elimination
+    followed by systematic reintroduction to identify the patient's personal triggers
+    and expand variety.
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

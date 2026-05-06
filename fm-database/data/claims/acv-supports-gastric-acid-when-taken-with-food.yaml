@@ -1,0 +1,29 @@
+slug: acv-supports-gastric-acid-when-taken-with-food
+statement: Diluted apple cider vinegar taken with meals (not on an empty stomach)
+  may support gastric acid activity and digestion in individuals with mild hypochlorhydria.
+evidence_tier: fm_specific_thin
+rationale: Biologically plausible given apple cider vinegar's acetic acid content
+  contributing to gastric acidification. Widely used in FM practice. No controlled
+  trials in hypochlorhydria specifically. Source is expert consensus.
+coaching_translation: If Betaine HCL isn't accessible, diluting a small amount of
+  apple cider vinegar in water and taking it with meals — not first thing in the morning
+  — may help your stomach break down food more effectively.
+caveats:
+- Must be diluted to avoid oesophageal irritation.
+- Not equivalent to Betaine HCL in clinical protocols.
+- Evidence is largely anecdotal.
+linked_to_topics:
+- hypochlorhydria
+linked_to_supplements:
+- apple-cider-vinegar
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-hypochlorhydria
+  location: Treatment / Supports for Gastric Acid
+  quote: Apple cider vinegar has to be taken along with the food or after your food
+    for better production of acid and eventually digestion of the food.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

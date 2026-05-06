@@ -1,0 +1,30 @@
+slug: caffeine-alcohol-tobacco-acid-forming
+statement: Caffeine, alcohol, and tobacco all create an acid-forming environment in
+  the body.
+evidence_tier: plausible_emerging
+rationale: There is plausible mechanistic support for caffeine and alcohol contributing
+  to net acid load (PRAL research). Tobacco's contribution to an acidic internal environment
+  has some biological basis via oxidative stress. However, this is an expert-level
+  generalisation rather than direct RCT evidence for each substance.
+coaching_translation: Coffee, alcohol, and tobacco all push your body chemistry in
+  the acid direction, adding to the burden your body has to neutralise.
+caveats:
+- Source is an expert lecture.
+- Tobacco and alcohol are not foods; their acid-forming categorisation here is used
+  pedagogically.
+- Mechanistic plausibility is reasonable but direct clinical evidence in the acid-alkaline
+  framework is limited.
+linked_to_topics:
+- acid-alkaline-balance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-acid-alkaline-foods
+  location: Main lecture body
+  quote: Caffeine sits on the acid side. Also alcohol... Tobacco is not a food, but
+    it does create a very acid environment in it.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

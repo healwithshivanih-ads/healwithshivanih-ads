@@ -6,15 +6,17 @@ aliases:
 - protein glycation
 - glycated proteins
 - HbA1c-related glycation
+- glycation-driven inflammation
 category: metabolic
-summary: Sugars and proteins combine to form AGEs when blood glucose is chronically
-  elevated (reflected by HbA1c >5.5). AGEs create inflammation and oxidative stress,
-  promote heart disease and dementia, and accelerate aging.
+summary: Elevated blood glucose leads to non-enzymatic glycation of proteins, forming
+  AGEs. These promote systemic inflammation and oxidative stress, accelerating cardiovascular
+  disease, dementia, and ageing. HbA1c is a proxy marker.
 upstream_drivers:
 - chronic-hyperglycaemia
 - high-glycaemic-diet
 - hyperglycemia
 - insulin-resistance
+- excess-dietary-fructose
 downstream_effects:
 - microvascular-complications
 - endothelial-dysfunction
@@ -24,14 +26,19 @@ downstream_effects:
 - oxidative-stress
 - atherosclerosis
 - accelerated-aging
+- cardiovascular-disease-progression
 related_mechanisms:
 - insulin-resistance
 - chronic-inflammation
 - systemic-inflammation
+- oxidative-stress-vascular
+- systemic-inflammation-cv
 linked_to_topics:
 - type-2-diabetes
 - blood-sugar-dysfunction
 - cardiovascular-dysfunction
+- insulin-resistance
+- cardiovascular-risk-assessment
 evidence_tier: strong
 sources:
 - id: vitaone-blood-sugar-ebook
@@ -44,7 +51,12 @@ sources:
   quote: It measures sugars and proteins combining into glycated proteins called AGEs
     (advanced glycation end products)...These create inflammation & oxidative stress
     throughout the body, and promote heart disease and dementia and accelerating aging.
-version: 2
+- id: vitaone-cvs-risk-assessment
+  location: Lab Results (Slide 16)
+  quote: It measures sugars and proteins combining into glycated proteins called AGES
+    (advanced glycation end products)… These create inflammation and oxidative stress
+    throughout the body, and promote heart disease and dementia and accelerating aging.
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

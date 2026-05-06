@@ -1,0 +1,26 @@
+slug: irritability
+display_name: Irritability
+aliases:
+- mood changes
+- emotional instability
+- short temper
+category: mood
+severity: common
+description: Mood disturbances including irritability associated with folate or B12
+  deficiency and impaired neurotransmitter synthesis (dopamine, serotonin).
+when_to_refer: Refer if mood disturbances are severe or accompanied by depression
+  or psychosis.
+linked_to_topics:
+- folate-vitamin-b9
+- mthfr-gene-variant
+linked_to_mechanisms:
+- methylation
+sources:
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: Folate Deficiency Signs & Symptoms
+  quote: Fatigue, irritability and cognitive decline are also some other signs and
+    symptoms.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

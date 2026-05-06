@@ -1,0 +1,28 @@
+slug: depressive-symptoms
+display_name: Depressive Symptoms
+aliases:
+- low mood
+- feeling down
+- persistent sadness
+category: mood
+severity: concerning
+description: Persistent low mood, loss of interest, and reduced wellbeing. In the
+  CWI context, regular cold exposure is associated with potential relief of depressive
+  symptoms via noradrenaline and beta-endorphin pathways.
+when_to_refer: Any client presenting with clinical depression, suicidal ideation,
+  or significant functional impairment should be referred to a mental health professional
+  immediately.
+linked_to_topics:
+- cold-water-immersion-mental-health
+linked_to_mechanisms:
+- noradrenaline-signaling
+- beta-endorphin-release
+sources:
+- id: espeland-2022-cold-water-immersion
+  location: Mental Health
+  quote: Regular CWI increased plasma noradrenaline and beta-endorphin, potentially
+    relieving depressive symptoms.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

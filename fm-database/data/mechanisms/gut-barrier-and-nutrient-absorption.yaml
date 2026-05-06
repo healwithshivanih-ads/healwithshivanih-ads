@@ -1,0 +1,61 @@
+slug: gut-barrier-and-nutrient-absorption
+display_name: Gut Barrier & Nutrient Absorption
+aliases:
+- intestinal barrier function
+- gut permeability
+- leaky gut mechanism
+- intestinal hyperpermeability
+- gut barrier integrity
+category: gut
+summary: Gut health, probiotics, zinc, glutamine, and fermented foods support nutrient
+  absorption and barrier integrity. Dysbiosis, antibiotics, PPIs, and autoimmune patterns
+  disrupt absorption and contribute to systemic inflammation and nutrient deficiency.
+upstream_drivers:
+- gut dysbiosis
+- malabsorption
+- PPIs
+- antibiotics
+- autoimmune patterns
+- chronic diarrhea
+- processed diets
+- gut-dysbiosis
+- ppi-use
+- autoimmune-patterns
+- chronic-diarrhea
+- processed-diet
+downstream_effects:
+- nutrient deficiency
+- chronic diarrhea
+- autoimmune triggers
+- inflammation
+- poor hair growth
+- joint symptoms
+- nutrient-deficiency
+- chronic-diarrhea
+- autoimmune-triggers
+- poor-hair-growth
+- joint-symptoms
+related_mechanisms:
+- methylation-support
+- oxidative-stress-and-inflammation
+linked_to_topics:
+- gut-dysbiosis
+- leaky-gut
+- hair-loss
+- joint-pain
+- chronic-inflammation
+- nutrition-deficiency
+evidence_tier: plausible_emerging
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Key Mechanisms Explained – gut-barrier-and-nutrient-absorption
+  quote: The document links gut health, probiotics, zinc, glutamine, fermented foods,
+    and digestive function to better nutrient absorption and barrier integrity.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Key Mechanisms Explained — gut-barrier-and-nutrient-absorption
+  quote: The document links gut health, probiotics, zinc, glutamine, fermented foods,
+    and digestive function to better nutrient absorption and barrier integrity.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

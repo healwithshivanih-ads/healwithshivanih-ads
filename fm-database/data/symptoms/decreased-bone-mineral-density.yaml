@@ -1,0 +1,26 @@
+slug: decreased-bone-mineral-density
+display_name: Decreased Bone Mineral Density
+aliases:
+- osteopenia
+- bone loss
+- low bone density
+category: musculoskeletal
+severity: concerning
+description: Reduction in bone density linked to testosterone deficiency from elevated
+  SHBG.
+when_to_refer: Refer if suspected osteoporosis or fracture risk; requires DEXA scan
+  and clinical management.
+linked_to_topics:
+- sex-hormone-binding-globulin
+linked_to_mechanisms:
+- shbg-hormone-binding
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Sex Hormone Binding Globulin (SHBG)
+  quote: This can cause symptoms associated with testosterone deficiency, including
+    fatigue, decreased libido, weight gain, mood changes, decreased muscle mass, and
+    decreased bone mineral density.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,28 @@
+slug: whole-unrefined-carbs-not-inherently-harmful
+statement: Whole, unrefined carbohydrates (e.g., rice paired with dal and vegetables)
+  are not inherently harmful and can be part of a balanced, health-supporting diet.
+evidence_tier: strong
+rationale: There is strong consensus in nutrition science that whole, minimally processed
+  carbohydrates consumed in appropriate portions alongside fibre, protein, and vegetables
+  are associated with positive health outcomes. Traditional dietary patterns (e.g.,
+  rice + lentils + salad) are well-studied.
+coaching_translation: Carbs aren't the enemy — it's the type and quantity that matter.
+  A cup of rice with dal and a big vegetable salad is a balanced, nourishing meal.
+caveats:
+- The 'strong' tier here reflects broad nutrition science consensus, not the specific
+  source document, which is expert consensus/lecture quality.
+linked_to_topics:
+- refined-carbohydrate-overconsumption
+- ph-balance-and-diet
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-fresh-cheeses-ph
+  location: Carbohydrates and Acid Load
+  quote: Carbs aren't bad... Rice isn't bad. It's only when it's overdone and refined.
+    That's the problem.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,32 @@
+slug: inflammatory-diet-pattern
+display_name: Inflammatory Diet Pattern
+aliases:
+- pro-inflammatory diet
+- dietary inflammation
+category: immune
+summary: Diets high in refined carbohydrates, sugar, and acid-forming foods are proposed
+  to promote systemic inflammation. Even foods like potatoes, which are not inherently
+  acid-forming, can shift toward acid when consumed in the context of existing inflammation
+  or when deep-fried in degraded oils.
+upstream_drivers:
+- dietary-acid-load
+- refined-carbohydrate-overconsumption
+downstream_effects:
+- inflammation
+- chronic-disease-risk
+related_mechanisms:
+- dietary-acid-load
+linked_to_topics:
+- ph-balance-and-diet
+- refined-carbohydrate-overconsumption
+evidence_tier: plausible_emerging
+sources:
+- id: barbara-oneil-fresh-cheeses-ph
+  location: Carbohydrates and Acid Load
+  quote: Potatoes aren't acid, but if you have inflammation in your body, it can be.
+    And if you deep fry it in two-week-old oil, that can certainly become over to
+    the acid side.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

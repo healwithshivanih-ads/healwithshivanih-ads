@@ -4,23 +4,46 @@ aliases:
 - persistent pain
 - widespread pain
 - ongoing pain
+- widespread-pain
+- pain-sensitivity
+- musculoskeletal tender points
+- fibromyalgia
+- chronic body aches
+- pain sensitivity
+- fibromyalgia-type pain
 category: musculoskeletal
 severity: concerning
-description: Persistent pain lasting more than 3 months, often involving central sensitization.
-  Reported to decrease with LDN in conditions like fibromyalgia and CRPS.
-when_to_refer: Refer if pain is severe, neuropathic, or unresponsive to lifestyle/coaching
-  interventions.
+description: Ongoing pain lasting more than 3 months, encompassing fibromyalgia, headaches,
+  joint pain, and musculoskeletal discomfort. Functionally driven by neuroinflammation,
+  limbic overactivation, emotional suppression, and elevated inflammatory cytokines
+  (IL-6, TNF-α).
+when_to_refer: Refer if pain is severe, rapidly worsening, associated with neurological
+  deficits, or has a clear structural/oncological cause.
 linked_to_topics:
 - low-dose-naltrexone
+- nervous-system-regulation
+- emotional-healing-chronic-disease
+- hpa-axis-dysfunction
+- emotional-healing-in-chronic-disease
 linked_to_mechanisms:
 - tlr4-microglial-inhibition
 - opioid-rebound-upregulation
+- neuroinflammation
+- limbic-system-overactivation
+- hpa-axis-dysregulation
+- cortisol-dhea-imbalance
 sources:
 - id: vitaone-ldn-article
   location: So, how does LDN work?
   quote: many patients report an improved sense of well-being and a decrease in overall
     pain, as one might expect with higher levels of opioid production in the body.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: Fibromyalgia, headaches, chronic fatigue, digestive symptoms.
+- id: vitaone-health-coaching-cheatsheet
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: Fibromyalgia, headaches, chronic fatigue, digestive symptoms.
+version: 4
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

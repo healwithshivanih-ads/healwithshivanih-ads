@@ -1,0 +1,31 @@
+slug: b-vitamins-anti-inflammatory-b3-b6
+statement: Vitamins B3 (niacin) and B6 (pyridoxine) have anti-inflammatory properties
+  and should be included in the foundational anti-inflammatory nutritional protocol.
+evidence_tier: plausible_emerging
+rationale: B6 deficiency is associated with elevated CRP and inflammatory markers.
+  Niacin has been studied for its anti-inflammatory effects, particularly via NAD+
+  pathways. However, robust RCT evidence for anti-inflammatory supplementation in
+  the general population is limited.
+coaching_translation: B vitamins are often overlooked in inflammation — B3 and B6
+  in particular help regulate the immune response. A good B-complex or targeted supplementation
+  supports your client's anti-inflammatory foundation.
+caveats:
+- Source is expert FM lecture (moderate quality). High-dose B6 (>200mg/day) can cause
+  peripheral neuropathy. Flush-form niacin at high doses carries cardiovascular risk
+  — clinician oversight needed.
+linked_to_topics:
+- chronic-inflammation
+linked_to_supplements:
+- vitamin-b3-niacin
+- vitamin-b6-pyridoxine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-approach-inflammation
+  location: Nutrition – Anti-Inflammatory Vitamins
+  quote: Vitamin C is anti-inflammatory, vitamin B3 is anti-inflammatory, and vitamin
+    B6 is anti-inflammatory.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

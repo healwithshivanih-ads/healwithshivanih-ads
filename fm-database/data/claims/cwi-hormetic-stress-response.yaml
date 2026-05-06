@@ -1,0 +1,30 @@
+slug: cwi-hormetic-stress-response
+statement: Cold water immersion acts as a hormetic stressor, triggering adaptive physiological
+  responses including upregulation of cold shock proteins and heat shock proteins
+  and improved HPA axis regulation.
+evidence_tier: plausible_emerging
+rationale: The hormesis framework for CWI is biologically plausible and consistent
+  with stress adaptation physiology. Protein upregulation (HSPs, CSPs) is documented
+  in animal models and some human exercise studies, but direct evidence from CWI-specific
+  human trials is limited.
+coaching_translation: Cold exposure is a form of positive stress — like exercise —
+  that can train your body and nervous system to be more resilient over time.
+caveats:
+- Hormesis model is conceptual — specific dose-response for CWI in humans not well
+  characterized
+- HSP/CSP upregulation data from CWI specifically is limited
+- Individual variation in adaptation is high
+linked_to_topics:
+- cold-water-immersion
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: espeland-2022-cold-water-immersion
+  location: Hormesis and Adaptation
+  quote: Cold exposure appears to act as a hormetic stressor — a mild stress that
+    triggers adaptive responses.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,26 @@
+slug: fat-malabsorption
+display_name: Fat Malabsorption
+aliases:
+- fatty stool
+- poor fat digestion
+category: gi
+severity: concerning
+description: Impaired fat digestion and absorption due to microvilli damage, bile
+  acid disruption, and pancreatic enzyme insufficiency in SIBO. Measured by steatocrit
+  on GI map.
+when_to_refer: Refer if severe weight loss, fat-soluble vitamin deficiencies, or suspected
+  pancreatic insufficiency.
+linked_to_topics:
+- sibo
+linked_to_mechanisms:
+- gut-dysbiosis
+- achlorhydria-hypochlorhydria
+sources:
+- id: coconote-fm-sibo-sifo
+  location: Dysfunctions Caused by SIBO
+  quote: Fat malabsorption. intestinal mucosal damage, intestinal inflammation leading
+    to systemic inflammation.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

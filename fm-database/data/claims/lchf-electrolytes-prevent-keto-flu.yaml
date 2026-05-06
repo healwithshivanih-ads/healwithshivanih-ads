@@ -1,0 +1,33 @@
+slug: lchf-electrolytes-prevent-keto-flu
+statement: Optimising sodium, potassium, and magnesium intake during LCHF dietary
+  adaptation prevents the majority of 'keto flu' symptoms caused by electrolyte and
+  fluid shifts.
+evidence_tier: plausible_emerging
+rationale: Insulin reduction during LCHF triggers renal sodium excretion via suppressed
+  insulin-stimulated Na+ reabsorption, causing fluid and electrolyte losses. This
+  mechanism is well-established; specific RCT evidence for electrolyte supplementation
+  preventing all keto flu symptoms is limited.
+coaching_translation: When you start a low-carb diet, your kidneys release more sodium,
+  taking water and other electrolytes with it. Adding salt, potassium-rich foods,
+  and a magnesium supplement can prevent the headaches and fatigue that some people
+  experience.
+caveats:
+- Mechanism is physiologically sound but direct RCT evidence for keto-flu prevention
+  via supplementation is thin.
+- Source is Instagram educational content.
+linked_to_topics:
+- metabolic-health-lchf
+linked_to_supplements:
+- magnesium-electrolyte-blend
+- magnesium-glycinate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DX1jE67jI4m/
+  quote: Electrolyte imbalance causes most early 'keto flu' symptoms → Ensure sodium,
+    potassium and magnesium are optimized
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,31 @@
+slug: acv-supports-hcl-levels-as-betaine-hcl-alternative
+statement: Apple cider vinegar taken before main meals can support gastric acid levels
+  as a more acceptable alternative to betaine HCl supplementation in hypochlorhydric
+  patients.
+evidence_tier: fm_specific_thin
+rationale: ACV is acidic (acetic acid) and has been used empirically in FM practice
+  to support gastric acid secretion and digestive function. Controlled clinical trial
+  evidence specifically for hypochlorhydria management with ACV is very limited; this
+  is primarily FM clinical experience.
+coaching_translation: For people with low stomach acid who are not ready for supplements,
+  a small amount of diluted apple cider vinegar before meals can help stimulate digestion.
+caveats:
+- Evidence for ACV in hypochlorhydria is FM-specific clinical consensus with very
+  thin peer-reviewed support.
+- ACV should always be diluted to protect dental enamel and oesophageal lining.
+- If symptoms persist, betaine HCl under clinician supervision may be required.
+linked_to_topics:
+- hypochlorhydria
+linked_to_supplements:
+- apple-cider-vinegar
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-gut-skin-hormone-axis
+  location: 5R Protocol — Replace
+  quote: We advised her to take apple cider vinegar before her main meals. ACV has
+    helped in improving the HCL.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

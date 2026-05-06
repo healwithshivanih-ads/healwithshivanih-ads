@@ -1,0 +1,41 @@
+slug: homocysteine-elevation
+display_name: Elevated Homocysteine (Hyperhomocysteinemia)
+aliases:
+- hyperhomocysteinemia
+- high homocysteine
+summary: Homocysteine is an amino acid that accumulates when conversion to methionine
+  is impaired, typically due to deficiencies in B9, B12, B6, or MTHFR dysfunction.
+  Elevated homocysteine is associated with increased cardiovascular disease risk,
+  stroke, dementia, and neural tube defects in pregnancy.
+common_symptoms:
+- elevated-homocysteine
+- fatigue
+- cognitive-decline
+red_flags:
+- cardiovascular-event-history
+- homocysteine-above-15
+- stroke
+related_topics:
+- folate-vitamin-b9
+- vitamin-b12
+- mthfr-gene-variant
+- methylation
+key_mechanisms:
+- impaired-homocysteine-remethylation
+- oxidative-stress-from-homocysteine
+- methylation
+coaching_scope_notes: Coaches can support clients in optimising B vitamin intake,
+  dietary quality, and lifestyle factors known to influence homocysteine. Lab interpretation
+  is clinical.
+clinician_scope_notes: Clinicians should measure plasma homocysteine, assess MTHFR
+  status, and manage cardiovascular risk accordingly.
+evidence_tier: strong
+sources:
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: Homocysteine section
+  quote: Raised levels of homocysteine generally indicate a potential risk of getting
+    heart attacks as well as many neurological disorders like stroke and dementia.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

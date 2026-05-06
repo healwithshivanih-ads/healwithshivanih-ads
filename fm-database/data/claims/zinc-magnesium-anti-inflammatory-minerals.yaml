@@ -1,0 +1,27 @@
+slug: zinc-magnesium-anti-inflammatory-minerals
+statement: Zinc and magnesium are primary anti-inflammatory minerals that should be
+  included in the diet and as supplements for patients with chronic inflammation.
+evidence_tier: plausible_emerging
+rationale: Zinc's role in immune regulation and anti-inflammatory signaling is supported
+  by multiple studies. Magnesium deficiency is associated with elevated inflammatory
+  markers (CRP, IL-6). Both are frequently deficient in Western diets.
+coaching_translation: Most people don't get enough zinc and magnesium. These minerals
+  are key building blocks for a calm, well-regulated immune system.
+caveats:
+- Source is expert FM lecture (moderate quality). Specific therapeutic dosing should
+  involve clinician input, especially in patients with kidney disease.
+linked_to_topics:
+- chronic-inflammation
+linked_to_supplements:
+- zinc
+- magnesium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-approach-inflammation
+  location: Nutrition – Anti-Inflammatory Minerals
+  quote: the minerals, then zinc and magnesium. They are anti-inflammatory.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

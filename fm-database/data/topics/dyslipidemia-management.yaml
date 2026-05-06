@@ -1,0 +1,43 @@
+slug: dyslipidemia-management
+display_name: Dyslipidemia Management (Functional Medicine Approach)
+aliases:
+- high cholesterol natural treatment
+- lipid optimization
+- cholesterol management without statins
+summary: Functional medicine approach to dyslipidemia focuses on correcting underlying
+  insulin resistance, optimizing omega-3 to omega-6 ratio, reducing inflammation,
+  and using targeted nutrients (magnesium, vitamin D, omega-3) rather than defaulting
+  to statin therapy, particularly for primary prevention patients without significantly
+  elevated absolute cardiovascular risk.
+common_symptoms:
+- elevated-ldl
+- elevated-triglycerides
+- low-hdl
+- insulin-resistance-symptoms
+red_flags:
+- ldl-above-190-familial-hypercholesterolemia
+- history-of-cardiovascular-events
+related_topics:
+- cardiovascular-risk-assessment
+- statin-therapy-risks-and-benefits
+- insulin-resistance
+- ldl-particle-size-and-number
+key_mechanisms:
+- insulin-resistance
+- inflammatory-cascade
+- omega-3-omega-6-imbalance
+coaching_scope_notes: Coaches can support low-carbohydrate dietary changes, omega-3
+  supplementation guidance, and lifestyle modification. Avoid making specific dosing
+  recommendations for supplements without clinician involvement.
+evidence_tier: plausible_emerging
+clinician_scope_notes: ''
+sources:
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Lifestyle intervention for dyslipidemia section
+  quote: What you will do, you will start working on insulin resistance. You put down
+    the carb, you increase the good fat. Low carb diet, plus good protein, good fat,
+    increase the good fat.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

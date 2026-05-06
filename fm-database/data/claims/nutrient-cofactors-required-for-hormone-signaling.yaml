@@ -1,0 +1,38 @@
+slug: nutrient-cofactors-required-for-hormone-signaling
+statement: Hormone receptors require specific nutritional cofactors — zinc, vitamin
+  A, magnesium, iodine, and pyridoxal-5-phosphate (P5P) — to function. Without these,
+  even optimal hormone levels may fail to produce their intended physiologic effects.
+evidence_tier: plausible_emerging
+rationale: The roles of zinc fingers in nuclear receptor function, retinoid X receptors
+  requiring vitamin A, and magnesium in transcription are supported in molecular biology
+  literature. P5P's role in helix-12 of steroid receptors is less mainstream but biologically
+  plausible. This synthesis is credible but not widely taught in conventional medicine.
+coaching_translation: Just having the right hormone level in your blood isn't enough.
+  Your body needs zinc, vitamin A, magnesium, iodine, and active B6 to actually use
+  those hormones at the cellular level.
+caveats:
+- Source is expert consensus from a functional medicine educator; specific RCT citations
+  for the full nutrient cofactor model are not provided.
+- Individual nutrient mechanisms (zinc fingers, RXR/RAR) are well-established; the
+  integrated clinical model across all five cofactors is emerging.
+linked_to_topics:
+- hormonal-nutrition-foundations
+- estrogen-signaling
+- bioidentical-hormone-replacement-therapy
+linked_to_supplements:
+- zinc-hormone-support
+- vitamin-a-retinol
+- magnesium-hormone-support
+- iodine-hormone-receptor
+- pyridoxal-5-phosphate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Hormone Receptor Binding and Nutritional Cofactors
+  quote: the hormones your own body is making or the ones you're getting replaced
+    won't work unless all these nutrients are in place
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

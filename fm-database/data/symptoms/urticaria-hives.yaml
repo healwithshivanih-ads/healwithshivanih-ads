@@ -1,0 +1,25 @@
+slug: urticaria-hives
+display_name: Urticaria (Hives)
+aliases:
+- hives
+- skin welts
+- itchy skin bumps
+category: skin
+severity: common
+description: Raised, itchy welts on the skin occurring as an immediate reaction to
+  food allergens, mediated by IgE-triggered mast cell degranulation and histamine
+  release.
+when_to_refer: Refer if accompanied by throat swelling, difficulty breathing, or loss
+  of consciousness (anaphylaxis).
+linked_to_topics:
+- food-allergy-ige-mediated
+linked_to_mechanisms:
+- mast-cell-degranulation-histamine-release
+sources:
+- id: coconote-fm-food-allergies-sensitivities
+  location: IgE Symptoms Section
+  quote: In the skin, you can see articularia or hives.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

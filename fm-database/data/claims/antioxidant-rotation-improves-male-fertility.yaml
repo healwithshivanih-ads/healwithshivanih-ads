@@ -1,0 +1,38 @@
+slug: antioxidant-rotation-improves-male-fertility
+statement: Rotating multiple antioxidants (CoQ10, lycopene, NAC, astaxanthin, vitamin
+  C, zinc) provides broader sperm DNA protection than single-agent antioxidant supplementation
+  in male infertility.
+evidence_tier: plausible_emerging
+rationale: Individual antioxidants (CoQ10, vitamin C, zinc) have moderate evidence
+  for improving sperm parameters. The rationale for rotation is that different antioxidants
+  act in different cellular compartments; however, specific evidence for an antioxidant
+  rotation protocol as superior to fixed combinations is limited and largely extrapolated
+  from clinical reasoning.
+coaching_translation: Using a variety of antioxidants — rather than relying on just
+  one or two — may provide more complete protection for sperm cells. This is because
+  different antioxidants work in different parts of the cell.
+out_of_scope_notes: Antioxidant protocol design and dosing are clinician decisions.
+caveats:
+- The 'rotation' concept is FM clinical practice rather than directly RCT-tested.
+- Individual antioxidant RCT evidence quality varies.
+- Source is Instagram educational content.
+linked_to_topics:
+- male-infertility-oxidative-stress
+linked_to_supplements:
+- coenzyme-q10
+- lycopene
+- nac
+- astaxanthin
+- vitamin-c
+- zinc
+linked_to_mechanisms: []
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXoqNqijE3d/
+  quote: Antioxidants must be rotated. Relying only on Vitamin C or Zinc creates blind
+    spots. Patients need a broader antioxidant shield (CoQ10, Lycopene, NAC, Astaxanthin,
+    etc.).
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

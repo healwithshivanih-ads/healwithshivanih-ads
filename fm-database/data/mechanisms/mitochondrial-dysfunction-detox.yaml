@@ -1,0 +1,34 @@
+slug: mitochondrial-dysfunction-detox
+display_name: Mitochondrial Dysfunction Impairing Detoxification
+aliases:
+- low ATP detox impairment
+- energy-dependent detox failure
+category: metabolic
+summary: Detoxification is an ATP-dependent process. Mitochondrial dysfunction reduces
+  cellular energy output, limiting Phase 1 and Phase 2 enzyme activity. Individuals
+  with fatigue, chronic illness, or mitochondrial impairment have reduced detox capacity,
+  meaning higher toxic load accumulation at the same level of exposure.
+upstream_drivers:
+- oxidative-stress
+- mitochondrial-damage
+- chronic-illness
+downstream_effects:
+- impaired-phase1
+- impaired-phase2
+- increased-total-toxic-load
+related_mechanisms:
+- reactive-intermediate-accumulation
+linked_to_topics:
+- liver-detoxification-phases
+- total-toxic-load
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-liver-detox-part1
+  location: Biotransformation Energy Dependence
+  quote: it is atp dependent so we require energy for detoxification if somebody having
+    a fatigue or low energy or even their mitochondria is not working they cannot
+    be detoxified we require more energy for more toxic.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

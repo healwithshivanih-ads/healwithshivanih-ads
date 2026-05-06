@@ -1,0 +1,41 @@
+slug: reduced-hcl-production
+display_name: Reduced Hydrochloric Acid Production
+aliases:
+- hypochlorhydria mechanism
+- parietal cell dysfunction
+- gastric acid insufficiency
+category: gut
+summary: Parietal cells in the stomach lining produce hydrochloric acid (HCl), which
+  is essential for protein digestion (pepsinogen → pepsin conversion), mineral ionisation,
+  and bacteriostatic activity. Disruption of parietal cell function — via ageing,
+  autoimmune gastritis, H. pylori, medications, or stress — reduces HCl output, impairing
+  all downstream digestive processes.
+upstream_drivers:
+- aging
+- autoimmune-gastritis
+- h-pylori-infection
+- ppi-use
+- h2-blocker-use
+- chronic-stress
+- gastric-surgery
+downstream_effects:
+- impaired-protein-digestion
+- mineral-malabsorption
+- sibo-risk
+- gastric-reflux
+related_mechanisms:
+- sympathetic-suppression-of-gastric-acid
+- impaired-protein-digestion
+linked_to_topics:
+- hypochlorhydria
+evidence_tier: strong
+sources:
+- id: coconote-fm-hypochlorhydria
+  location: Functions of Gastric Acid
+  quote: Gastric acid helps in the conversion of pepsinogen to absinthe, which is
+    an important component for hydrolysis of protein. Third and a very important action
+    is bacterial sidelaction of this gastric acid.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

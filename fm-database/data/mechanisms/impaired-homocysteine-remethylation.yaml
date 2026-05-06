@@ -1,0 +1,38 @@
+slug: impaired-homocysteine-remethylation
+display_name: Impaired Homocysteine Remethylation
+aliases:
+- homocysteine accumulation
+- homocysteine-methionine conversion failure
+category: metabolic
+summary: Homocysteine is normally remethylated to methionine by methionine synthase,
+  requiring methylcobalamin (B12) and 5-methylTHF (active folate) as cofactors. Deficiency
+  of either cofactor, or MTHFR dysfunction reducing 5-methylTHF availability, leads
+  to homocysteine accumulation and downstream cardiovascular and neurological risk.
+upstream_drivers:
+- folate-deficiency
+- b12-deficiency
+- mthfr-enzyme-dysfunction
+downstream_effects:
+- elevated-homocysteine
+- cardiovascular-disease-risk
+- neurological-disorders
+related_mechanisms:
+- mthfr-enzyme-dysfunction
+- methylation
+- sam-cycle
+linked_to_topics:
+- homocysteine-elevation
+- folate-vitamin-b9
+- vitamin-b12
+- mthfr-gene-variant
+evidence_tier: strong
+sources:
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: Cofactors / Supplementation section
+  quote: For the conversion of homocysteine to methionine, we need methionine synthase
+    enzyme to be working. But with this enzyme, we need two important cofactors of
+    B vitamin. That is one is methylcobalamin B12 and next is vitamin B9 that is methylfolate.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

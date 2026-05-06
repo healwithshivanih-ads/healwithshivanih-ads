@@ -1,0 +1,37 @@
+slug: non-genomic-hormone-signaling
+display_name: Non-Genomic Hormone Signaling
+aliases:
+- membrane hormone signaling
+- rapid hormone signaling
+- cell membrane hormone action
+category: endocrine
+summary: Discovered approximately 10 years ago, all hormones can also signal directly
+  through cell membranes in a rapid, non-nuclear pathway. Hormones traverse the trilipid
+  cell membrane exactly seven times, triggering downstream effects. This pathway requires
+  healthy, fluid cell membranes (dependent on adequate omega-3:omega-6 balance and
+  avoidance of trans fats and ultra-processed foods).
+upstream_drivers:
+- healthy-cell-membrane-composition
+- adequate-omega-3-intake
+- avoidance-of-trans-fats
+downstream_effects:
+- rapid-cellular-signaling
+- indirect-gene-expression
+related_mechanisms:
+- genomic-hormone-signaling
+- hormone-receptor-binding
+linked_to_topics:
+- estrogen-signaling
+- hormonal-nutrition-foundations
+- bioidentical-hormone-replacement-therapy
+evidence_tier: plausible_emerging
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Non-Genomic Hormone Signaling Discovery
+  quote: all of these hormones don't totally need a receptor. At times, they can signal
+    cell membranes, all cell membranes... they go in and out, in and out, in and out
+    of the membrane, the cell lipid membrane, seven times.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

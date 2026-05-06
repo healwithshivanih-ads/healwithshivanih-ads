@@ -1,0 +1,68 @@
+slug: oxidative-stress-and-inflammation
+display_name: Oxidative Stress & Inflammation
+aliases:
+- free radical damage
+- ROS-driven inflammation
+- antioxidant defense
+- NF-kB activation
+category: immune
+summary: Vitamin C, vitamin E, selenium, copper, manganese, omega-3, CoQ10, NAC, curcumin,
+  boswellia, and green tea extract are described as supports against oxidative stress
+  and inflammation. Chronic inflammation, infection, stress, high-PUFA oils, and metabolic
+  dysfunction are upstream drivers.
+upstream_drivers:
+- chronic inflammation
+- infection
+- sunlight
+- stress
+- high-PUFA oils
+- processed foods
+- autoimmune activity
+- metabolic dysfunction
+- medication-related oxidative load
+- chronic-inflammation
+- high-pufa-oils
+- processed-foods
+- autoimmune-activity
+- metabolic-dysfunction
+downstream_effects:
+- joint pain
+- cognitive dullness
+- skin issues
+- poor wound healing
+- cardiovascular risk
+- hairfall
+- depression-like symptoms
+- joint-pain
+- cognitive-dullness
+- skin-issues
+- poor-wound-healing
+- cardiovascular-risk
+- depression-like-symptoms
+related_mechanisms:
+- methylation-support
+- gut-barrier-and-nutrient-absorption
+- nutrient-dependent-energy-metabolism
+- calcium-trafficking-and-bone-mineralization
+linked_to_topics:
+- chronic-inflammation
+- joint-pain
+- depression-like-symptoms
+- hair-loss
+- thyroid
+evidence_tier: plausible_emerging
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Key Mechanisms Explained – oxidative-stress-and-inflammation
+  quote: The source frames vitamin C, vitamin E, selenium, copper, manganese, omega-3,
+    CoQ10, NAC, curcumin, boswellia, green tea extract, and antioxidant foods as supports
+    against oxidative stress and inflammation.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Key Mechanisms Explained — oxidative-stress-and-inflammation
+  quote: The source frames vitamin C, vitamin E, selenium, copper, manganese, omega-3,
+    CoQ10, NAC, curcumin, boswellia, green tea extract, and antioxidant foods as supports
+    against oxidative stress and inflammation.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

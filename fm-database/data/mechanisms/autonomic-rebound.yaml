@@ -1,0 +1,31 @@
+slug: autonomic-rebound
+display_name: Autonomic Rebound (Beta Blocker Withdrawal)
+aliases:
+- sympathetic rebound
+- beta blocker rebound hypertension
+- adrenergic rebound
+category: neurological
+summary: Abrupt discontinuation of beta blockers can trigger sympathetic nervous system
+  rebound, causing tachycardia, palpitations, hypertension, headache, and malaise.
+  Gradual tapering with blood pressure monitoring mitigates this risk.
+upstream_drivers:
+- abrupt-beta-blocker-cessation
+downstream_effects:
+- palpitations
+- rebound-hypertension
+- headache
+- malaise
+related_mechanisms:
+- coq10-depletion-by-beta-blockers
+linked_to_topics:
+- beta-blocker-deprescribing
+- hypertension
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
+  quote: Headache, Joint pain, Palpitations, Feeling of being unwell
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

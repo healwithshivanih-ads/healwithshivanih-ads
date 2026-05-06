@@ -1,0 +1,28 @@
+slug: social-isolation-is-a-significant-stressor
+statement: Loneliness and social isolation constitute a significant and often underestimated
+  source of chronic stress.
+evidence_tier: strong
+rationale: Robust epidemiological and physiological research (e.g., Holt-Lunstad et
+  al.) links social isolation to elevated cortisol, HPA activation, and adverse health
+  outcomes. The document references this in the coaching context of a divorced, isolated
+  client.
+coaching_translation: Feeling disconnected or lonely isn't just an emotional experience
+  — it creates real physiological stress in the body, which can affect everything
+  from sleep to immune function.
+caveats:
+- Document does not cite specific studies; tier assigned based on established scientific
+  consensus external to this source.
+linked_to_topics:
+- stress-and-the-sympathetic-nervous-system
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-coaching-stress-kids
+  location: Stress Client Topic Discussion
+  quote: we just can't discount the loneliness and social isolation in terms of creating
+    a huge amount of stress.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

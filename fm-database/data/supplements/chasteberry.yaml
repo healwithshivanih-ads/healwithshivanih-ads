@@ -1,0 +1,40 @@
+slug: chasteberry
+display_name: Chasteberry (Vitex agnus-castus)
+category: herb
+forms_available:
+- capsule
+- tablet
+- liquid
+typical_dose_range:
+  capsule:
+    min: 200
+    max: 400
+    unit: mg
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- estrogen-dominance
+- luteal-phase-defect
+linked_to_claims:
+- dim-and-chasteberry-naturally-support-progesterone-and-lower-estrogen
+notes_for_coach: Chasteberry (Vitex) acts on the pituitary to support LH secretion
+  and may help normalize progesterone production in the luteal phase. Used in cycle
+  syncing protocols. Effects are gradual (may take 3+ cycles). Suitable for long-term
+  use.
+notes_for_client: Chasteberry is an herb traditionally used to support hormonal balance.
+  It may help boost your progesterone levels naturally over time, which can ease symptoms
+  like spotting, PMS, and mood swings.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-estrogen-dominance
+  location: Q&A
+  quote: What is your take on Chasteberry and DIM? That's also a natural form of increasing
+    the progesterone inside the body and lowering the estrogen. You can definitely
+    go for the same if it's working for the patients.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

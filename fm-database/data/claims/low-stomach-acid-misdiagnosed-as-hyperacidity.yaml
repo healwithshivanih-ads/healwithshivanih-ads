@@ -1,0 +1,31 @@
+slug: low-stomach-acid-misdiagnosed-as-hyperacidity
+statement: Hypochlorhydria (low stomach acid) is frequently misdiagnosed as hyperacidity
+  because the reflux, heartburn, and epigastric pain it produces are clinically indistinguishable
+  from those caused by excess acid.
+evidence_tier: plausible_emerging
+rationale: The document clearly describes the mechanism by which low acid leads to
+  fermentative reflux mimicking hyperacidity symptoms. This is a recognised concept
+  in FM practice. Peer-reviewed evidence on population prevalence of this misdiagnosis
+  is limited.
+coaching_translation: If a client has been diagnosed with 'too much acid' but their
+  antacids or PPIs aren't helping — or are making things worse — low stomach acid
+  may be the real issue. This is worth exploring with their doctor.
+caveats:
+- Source is expert consensus lecture, not primary RCT evidence.
+- Clinician assessment required before discontinuing PPIs or H2 blockers.
+linked_to_topics:
+- hypochlorhydria
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-hypochlorhydria
+  location: Clinical Presentation of Low Stomach Acid
+  quote: Most of the patients, when you see they have a history of heartburn, having
+    a gastric reflux, having a chest tightness, and they have a gastric pain, conventionally,
+    we diagnose them as hyperacidity, which is wrong. In these cases, it is usually
+    the low stomach acid which causes these symptoms out.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

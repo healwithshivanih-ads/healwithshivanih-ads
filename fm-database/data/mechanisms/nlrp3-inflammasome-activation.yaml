@@ -3,33 +3,43 @@ display_name: NLRP3 Inflammasome Activation
 aliases:
 - NLRP3 pathway
 - inflammasome-mediated IL-1B production
+- caspase-1 activation
 category: immune
-summary: The NLRP3 inflammasome is an intracellular signaling complex that drives
-  production of pro-inflammatory cytokines IL-1B and IL-18. Activated by danger signals,
-  it is a central driver of chronic and acute inflammation. Multiple agents in this
-  toolkit (curcumin, quercetin, EGCG, Vitamin D) suppress this pathway.
+summary: The NLRP3 inflammasome is a multiprotein intracellular complex that, when
+  activated by danger signals (pathogens, oxidative stress, metabolic disturbance),
+  drives caspase-1 activation and production of pro-inflammatory cytokines IL-1β and
+  IL-18. Chronic overactivation underpins many inflammatory diseases. Multiple nutraceuticals
+  in this toolkit (curcumin, quercetin, EGCG, vitamin D, melatonin) inhibit this pathway.
 upstream_drivers:
 - oxidative-stress
 - high-glucose
 - viral-infection
 - gut-dysbiosis
+- metabolic-dysfunction
 downstream_effects:
 - il-1b-production
 - systemic-inflammation
 - tissue-damage
+- elevated-il-1b
 related_mechanisms:
 - oxidative-stress
 - cytokine-dysregulation
+- innate-immune-modulation
 linked_to_topics:
 - chronic-inflammation
 - immune-support
+- immune-support-covid-19
 evidence_tier: strong
 sources:
 - id: vitaone-inflammation-toolkit
   location: References — Curcumin
   quote: Curcumin suppresses IL-1B secretion and prevents inflammation through inhibition
     of the NLRP3 inflammasome.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: References — Curcumin
+  quote: Curcumin suppresses IL-1B secretion and prevents inflammation through inhibition
+    of the NLRP3 inflammasome.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

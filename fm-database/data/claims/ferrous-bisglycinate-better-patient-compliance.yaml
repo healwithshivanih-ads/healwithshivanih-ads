@@ -1,0 +1,29 @@
+slug: ferrous-bisglycinate-better-patient-compliance
+statement: Better GI tolerability of ferrous bisglycinate leads to improved patient
+  compliance compared to ferrous sulfate and ferrous fumarate.
+evidence_tier: plausible_emerging
+rationale: GI side effects are a leading cause of iron supplement discontinuation.
+  By reducing these, ferrous bisglycinate supports better adherence to supplementation
+  protocols.
+coaching_translation: People are more likely to keep taking their iron if it doesn't
+  upset their stomach — which is why the form of iron supplement can make a real difference
+  to outcomes.
+caveats:
+- Source is an expert lecture (moderate quality).
+- Adherence data largely based on clinical observation and limited comparative studies;
+  verify with a clinician.
+linked_to_topics:
+- iron-deficiency-anemia
+linked_to_supplements:
+- ferrous-bisglycinate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-iron-deficiency-anemia
+  location: Supplements / Management section
+  quote: Because the side effects are not present, patient compliance is much better
+    with ferrous bisglycinate than ferrous fumarate and ferrous sulfate.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

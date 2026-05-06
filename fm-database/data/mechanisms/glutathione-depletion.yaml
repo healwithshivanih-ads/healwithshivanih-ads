@@ -4,33 +4,49 @@ aliases:
 - low glutathione
 - GSH deficiency
 - antioxidant depletion
+- master antioxidant deficiency
 category: metabolic
-summary: Reduced intracellular glutathione — the body's master antioxidant — results
-  in increased oxidative stress, impaired Phase II detoxification, and poor heavy
-  metal clearance. MTHFR mutations reduce glutathione synthesis by impairing methylation.
-  Supported by NAC, glycine, and liposomal glutathione.
+summary: Glutathione is the primary intracellular antioxidant, composed of cysteine,
+  glycine, and glutamic acid. Depletion is common in chronic disease and inflammation,
+  driving oxidative stress and NF-κB activation. Oral glutathione supplements have
+  poor bioavailability; precursors NAC and glycine are more effective at raising cellular
+  glutathione. IV glutathione is the most clinically effective route.
 upstream_drivers:
 - impaired-methylation
 - oxidative-stress
 - toxin-load
+- chronic-toxin-exposure
+- chronic-infection
+- poor-diet
+- aging
 downstream_effects:
 - oxidative-stress
 - impaired-phase-ii-detox
 - heavy-metal-accumulation
+- nf-kappa-b-activation
+- dna-damage
 related_mechanisms:
 - impaired-methylation
 - oxidative-stress
 - phase-ii-conjugation
+- nf-kappa-b-activation
 linked_to_topics:
 - methylation-mthfr
 - liver-detoxification
 - heavy-metal-toxicity
+- chronic-inflammation
+- oxidative-stress
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-liver-detox-cheatsheet
   location: Methylation & MTHFR Cheatsheet
   quote: Reduce glutathione, increasing oxidative stress.
-version: 1
+- id: coconote-fm-approach-inflammation
+  location: Oxidative Stress and Glutathione
+  quote: There is a master antioxidant in the cell we call is Glutathione. Most patients
+    with chronic disease and most patients with any kind of inflammation, they were
+    actually low Glutathione.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

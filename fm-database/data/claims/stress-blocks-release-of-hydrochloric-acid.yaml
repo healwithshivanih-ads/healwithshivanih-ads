@@ -1,0 +1,29 @@
+slug: stress-blocks-release-of-hydrochloric-acid
+statement: Psychological stress blocks the release of hydrochloric acid, impairing
+  protein digestion and overall gastric function.
+evidence_tier: plausible_emerging
+rationale: The HPA axis and sympathetic nervous system suppression of digestive secretions
+  is well-documented in psychoneuroimmunology. Eating under stress reducing gastric
+  acid secretion is physiologically plausible and consistent with the gut-brain axis
+  literature.
+coaching_translation: Try to eat in a calm, relaxed environment. Avoid eating when
+  stressed, rushing, or emotionally upset. Even a few deep breaths before a meal can
+  support your digestive system.
+caveats:
+- Source is a practitioner talk.
+- The specific mechanism of HPA stress on HCl secretion is referenced without citation.
+linked_to_topics:
+- gastrointestinal-tract-overview
+- meal-timing-and-digestive-rest
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-gi-tract
+  location: Stomach & Stress Section
+  quote: I was reading in my anatomy and physiology book that when we are stressed,
+    it blocks the release of hydrochloric acid.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

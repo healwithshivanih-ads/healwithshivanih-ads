@@ -1,0 +1,29 @@
+slug: modern-australian-diet-is-90pct-acid-forming
+statement: Many people in modern Western diets (e.g., Australia) consume a diet that
+  is approximately 90% acid-forming, which is associated with widespread illness.
+evidence_tier: fm_specific_thin
+rationale: This is an anecdotal/observational claim made by the speaker to illustrate
+  the point about dietary imbalance. While Western dietary patterns are well-documented
+  to be high in ultra-processed and refined foods, the specific '90% acid' figure
+  is rhetorical rather than empirically derived.
+coaching_translation: Most people today eat a diet that's overwhelmingly weighted
+  toward acid-forming foods — flipping that balance toward more whole, plant-rich
+  foods is one of the most impactful dietary changes someone can make.
+caveats:
+- '''90% acid'' is a rhetorical illustration, not a measured statistic.'
+- Source is expert consensus/lecture, not primary literature.
+linked_to_topics:
+- ph-balance-and-diet
+- refined-carbohydrate-overconsumption
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-fresh-cheeses-ph
+  location: Modern Diet Commentary
+  quote: I know in Australia, a lot of people, their diet's 90% acid, 10% alcohol.
+    No wonder people are sick.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

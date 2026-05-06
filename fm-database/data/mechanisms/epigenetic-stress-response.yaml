@@ -1,0 +1,32 @@
+slug: epigenetic-stress-response
+display_name: Epigenetic Stress Response
+aliases:
+- stress-epigenetics
+- emotion-gene-expression
+category: signaling
+summary: Unhealed emotions and chronic grief create ongoing stress chemistry that
+  drives epigenetic changes. Mind-body practices including prayer may influence gene
+  expression related to inflammation and stress response, offering a pathway for long-term
+  resilience.
+upstream_drivers:
+- unresolved-grief
+- chronic-anger
+- chronic-stress
+downstream_effects:
+- autoimmune-flares
+- thyroid-dysfunction
+- menstrual-irregularities
+related_mechanisms:
+- hpa-axis-dysregulation
+- neuroinflammation
+linked_to_topics:
+- emotional-healing-chronic-disease
+evidence_tier: fm_specific_thin
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: Unhealed emotions create ongoing stress chemistry → epigenetic changes.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

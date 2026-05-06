@@ -1,0 +1,32 @@
+slug: gut-flora-disruption-allows-opioid-peptides-into-blood
+statement: When gut flora is disrupted, gut-lining cells cannot neutralise opioid
+  peptides (glutomorphine from gluten, caseomorphine from dairy), allowing them to
+  enter the bloodstream and exert opiate-like effects on the brain.
+evidence_tier: plausible_emerging
+rationale: Exorphin research supports the existence of these peptides; gut barrier
+  involvement is biologically plausible. However, clinical evidence linking this mechanism
+  to psychiatric conditions is early-stage. Source is an expert lecture (moderate
+  quality).
+coaching_translation: For some people, gluten and dairy may break down into compounds
+  that affect brain chemistry, especially if gut health is compromised. A supervised
+  elimination trial may be worth discussing with your practitioner.
+caveats:
+- Source is expert lecture, not primary RCT
+- Individual variation in peptide metabolism is significant
+- MMR vaccine claims in the document are highly contested and not represented in this
+  claim
+linked_to_topics:
+- gut-brain-connection
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-healing-mind
+  location: Gut-Brain Connection Section
+  quote: glutomorphine and caseomorphine get into the blood. They get into the blood,
+    they're taken to the opiate receptor sites in the brain, and they have an opiate
+    effect on brain function.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

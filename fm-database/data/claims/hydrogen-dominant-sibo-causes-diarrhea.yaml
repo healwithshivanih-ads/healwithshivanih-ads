@@ -1,0 +1,26 @@
+slug: hydrogen-dominant-sibo-causes-diarrhea
+statement: Hydrogen-dominant SIBO, caused by hydrogen-producing bacteria migrating
+  from the large to small intestine, is primarily associated with diarrhea.
+evidence_tier: plausible_emerging
+rationale: Mechanistically plausible and consistent with clinical observations. Hydrogen
+  gas accelerates intestinal transit. Specific RCT evidence not cited in source.
+coaching_translation: If someone's SIBO test shows high hydrogen, diarrhea is likely
+  their main symptom pattern.
+caveats:
+- Source is expert consensus lecture; specific RCT evidence not provided.
+- Symptom patterns can overlap between SIBO types.
+linked_to_topics:
+- sibo
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-sibo-sifo
+  location: Types of SIBO – Hydrogen Dominant
+  quote: In a healthy hydrogen-producing bacteria, they reside mainly in the large
+    bubble. However, in the context of SIBO, certain hydrogen-producing bacteria take
+    up their residence... diarrhea symptom is very common.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

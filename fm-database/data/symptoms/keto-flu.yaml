@@ -4,22 +4,29 @@ aliases:
 - carb withdrawal symptoms
 - low-carb transition symptoms
 - electrolyte depletion symptoms
+- low-carb adaptation symptoms
+- carb withdrawal
+- induction flu
 category: constitutional
 severity: common
-description: Transient symptoms during the first 1–2 weeks of low-carb dietary transition
-  including headache, fatigue, muscle cramps, and irritability, largely driven by
-  electrolyte loss and adaptation.
+description: Transient symptoms (fatigue, headache, brain fog, muscle cramps) during
+  LCHF dietary adaptation, primarily caused by electrolyte and fluid shifts as insulin
+  and glycogen levels fall.
 when_to_refer: Refer if symptoms are severe or prolonged beyond 2 weeks.
 linked_to_topics:
 - low-carb-diet
 - metabolic-syndrome
+- metabolic-health-lchf
 linked_to_mechanisms:
 - metabolic-flexibility
 sources:
 - id: vitaone-cardiometabolic-diet-cheatsheet
   location: Functional Medicine Clinical Applications
   quote: Emphasize hydration + electrolytes to prevent "keto flu."
-version: 1
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DX1jE67jI4m/
+  quote: Electrolyte imbalance causes most early 'keto flu' symptoms
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

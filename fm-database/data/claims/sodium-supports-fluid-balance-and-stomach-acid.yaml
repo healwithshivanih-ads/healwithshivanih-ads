@@ -1,0 +1,32 @@
+slug: sodium-supports-fluid-balance-and-stomach-acid
+statement: Sodium supports fluid balance, nerve conduction, and stomach acid production.
+evidence_tier: plausible_emerging
+rationale: Sodium's role in extracellular fluid balance and gastric HCl production
+  is established physiology.
+coaching_translation: Balanced salt intake (not elimination) from whole food sources
+  supports hydration, nerve function, and digestion.
+caveats:
+- Source is a practitioner cheatsheet without primary citations.
+- Excess sodium is associated with hypertension, particularly with low potassium intake.
+- Excess sodium may contribute to hypertension and kidney strain, especially with
+  low potassium.
+linked_to_topics:
+- nutrition-deficiency
+- gut-dysbiosis
+linked_to_supplements:
+- sodium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 15
+  quote: Sodium is described as supporting fluid balance, nerve conduction, and stomach
+    acid production.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 15
+  quote: Sodium is described as supporting fluid balance, nerve conduction, and stomach
+    acid production.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

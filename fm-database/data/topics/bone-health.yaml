@@ -1,0 +1,40 @@
+slug: bone-health
+display_name: Bone Health & Mineralization
+aliases:
+- osteoporosis
+- osteopenia
+- bone density
+- rickets
+summary: Calcium, phosphorus, vitamin D, magnesium, boron, and K2 are described as
+  a bone team. Vitamin K directs calcium into bone and away from arteries, kidneys,
+  and cartilage. Excess phosphorus weakens bone and promotes calcification.
+common_symptoms:
+- weak-bones
+- dental-issues
+- tetany
+- rickets
+red_flags:
+- osteoporosis-diagnosis
+- kidney-stones
+- arterial-calcification
+related_topics:
+- nutrition-deficiency
+- cardiovascular-health
+- joint-pain
+key_mechanisms:
+- calcium-trafficking-and-bone-mineralization
+coaching_scope_notes: Encourage food-first calcium and vitamin D sources, weight-bearing
+  movement. High-dose vitamin D and calcium supplementation should be coordinated
+  with clinician and appropriate labs.
+evidence_tier: plausible_emerging
+clinician_scope_notes: ''
+sources:
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Key Mechanisms Explained — calcium-trafficking-and-bone-mineralization
+  quote: Vitamin K as directing calcium into bone and away from arteries, kidneys,
+    and cartilage while calcium, phosphorus, vitamin D, magnesium, boron, and K2 act
+    as a bone team.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

@@ -1,0 +1,31 @@
+slug: 5rs-repair-includes-l-glutamine
+statement: The Repair phase of the 5Rs SIBO protocol includes L-glutamine, zinc, and
+  vitamin A to restore intestinal mucosal integrity and tight junction function.
+evidence_tier: fm_specific_thin
+rationale: L-glutamine, zinc, and vitamin A each have evidence for supporting gut
+  epithelial health individually; their combination in the '5Rs Repair' phase is FM-specific
+  protocol consensus.
+coaching_translation: After clearing the bad bacteria and re-seeding with good ones,
+  specific nutrients are used to physically repair the gut lining.
+caveats:
+- Source is expert consensus lecture; combination Repair protocol has not been validated
+  in RCTs as a bundle.
+- Therapeutic doses of these nutrients should be supervised by a clinician.
+linked_to_topics:
+- sibo
+- leaky-gut-syndrome
+linked_to_supplements:
+- l-glutamine
+- zinc
+- vitamin-a
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-sibo-sifo
+  location: 5Rs Treatment Protocol – Repair
+  quote: When you go to complex cities, we also recommend zinc and the vitamin A and
+    the L-butamine, all of these things, repair is important.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

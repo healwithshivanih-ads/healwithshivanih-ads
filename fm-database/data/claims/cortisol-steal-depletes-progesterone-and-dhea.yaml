@@ -1,0 +1,32 @@
+slug: cortisol-steal-depletes-progesterone-and-dhea
+statement: Chronic stress causes pregnenolone to be preferentially shunted toward
+  cortisol synthesis (cortisol steal), depleting progesterone and DHEA and contributing
+  to relative estrogen dominance.
+evidence_tier: plausible_emerging
+rationale: The pregnenolone/cortisol steal concept is biologically plausible and used
+  widely in FM practice. It is supported by the shared steroidogenic pathway from
+  cholesterol. However, it is considered more FM-specific than mainstream endocrinology
+  consensus.
+coaching_translation: When you're chronically stressed, your body prioritizes making
+  cortisol — the stress hormone — and 'steals' the raw materials it would otherwise
+  use to make progesterone. This is a major reason why stress disrupts hormonal balance.
+caveats:
+- Cortisol steal is an FM-specific framework; mainstream endocrinology evidence for
+  this as a clinical mechanism is thin.
+- Source is FM lecture.
+linked_to_topics:
+- estrogen-dominance
+- perimenopause
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-estrogen-dominance
+  location: Causes of Estrogen Dominance
+  quote: If you are having a lot of stress, the entire progesterone is going to convert
+    into 17 OH and the cortisol will consume everything to actually maintain your
+    stressors or maintain the inflammations going on inside the body.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

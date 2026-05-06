@@ -1,0 +1,45 @@
+slug: bioavailable-vitamin-forms-are-preferred
+statement: Active or bioavailable nutrient forms such as P5P, methylfolate, methylcobalamin,
+  vitamin D3, mixed tocopherols, MK-7, magnesium glycinate, zinc bisglycinate, iron
+  bisglycinate, and selenomethionine are preferred over synthetic or oxide forms.
+evidence_tier: fm_specific_thin
+rationale: Preference for bioavailable supplement forms is widespread in FM practice
+  and biologically plausible; comparative RCT evidence is limited for most form comparisons.
+coaching_translation: When discussing supplementation, note that form matters — the
+  document favors methylated, chelated, or bioavailable forms over cheap synthetic
+  or oxide alternatives.
+caveats:
+- Source is a practitioner cheatsheet without comparative citation support for all
+  forms listed.
+- Form preference does not replace clinician guidance on dose or indication.
+- Source is practitioner cheatsheet without comparative citations for most form claims.
+linked_to_topics:
+- nutrition-deficiency
+linked_to_supplements:
+- p5p
+- methylfolate
+- vitamin-b12
+- vitamin-d3
+- vitamin-e
+- vitamin-k2
+- magnesium-glycinate
+- zinc
+- iron
+- selenium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Pages 16-17 and 19-20
+  quote: The source lists active or bioavailable nutrient forms such as P5P, methylfolate,
+    methylcobalamin, vitamin D3, mixed tocopherols, MK-7, magnesium glycinate, zinc
+    bisglycinate, iron bisglycinate, and selenomethionine as preferred forms.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Pages 16-17 and 19-20
+  quote: The source lists active or bioavailable nutrient forms such as P5P, methylfolate,
+    methylcobalamin, vitamin D3, mixed tocopherols, MK-7, magnesium glycinate, zinc
+    bisglycinate, iron bisglycinate, and selenomethionine as preferred forms.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

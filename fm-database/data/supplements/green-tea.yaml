@@ -1,0 +1,32 @@
+slug: green-tea
+display_name: Green Tea
+category: herb
+forms_available:
+- liquid
+timing_options:
+- morning
+- with_breakfast
+- mid_morning
+take_with_food: optional
+linked_to_topics:
+- cardiometabolic-diet
+- phytonutrient-density
+- anti-inflammatory-diet
+linked_to_claims:
+- phytonutrient-smoothies-support-cardiometabolic-health
+notes_for_coach: Used as a smoothie base liquid across multiple recipes (Cardio Smoothie,
+  Detox Smoothie, Rainbow Smoothie). Green tea catechins (EGCG) are well-studied for
+  antioxidant, metabolic, and cardiovascular benefits. 4–8 oz brewed per smoothie.
+notes_for_client: Using brewed green tea as your smoothie base adds antioxidants that
+  support heart and metabolic health — with less caffeine than coffee.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Building a Better Smoothie — Base Liquids
+  quote: Green tea, loose – 4 T
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

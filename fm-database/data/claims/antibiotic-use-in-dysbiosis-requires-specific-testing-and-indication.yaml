@@ -1,0 +1,33 @@
+slug: antibiotic-use-in-dysbiosis-requires-specific-testing-and-indication
+statement: Antibiotic use in gut dysbiosis should be reserved for specific indications
+  with appropriate testing, with rifaximin as the first-choice antibiotic for SIBO
+  due to its non-absorbable, gut-localized action.
+evidence_tier: confirm_with_clinician
+rationale: Rifaximin has published RCT evidence for SIBO and IBS-D treatment. The
+  lecturer's recommendation to reserve antibiotics for specific, tested indications
+  aligns with antibiotic stewardship principles. Antibiotic selection, dosing, and
+  prescribing are exclusively within clinician scope.
+out_of_scope_notes: Antibiotic prescribing, selection, and dosing are outside coaching
+  scope. Coaches should refer clients to their clinician for antibiotic decisions.
+coaching_translation: If a client asks about antibiotics for gut issues, explain that
+  antibiotics are a last resort for serious gut infections and should always be supervised
+  by their doctor.
+caveats:
+- Clinician scope only.
+- Antibiotic resistance is a key concern — incomplete or repeated courses should be
+  avoided.
+- Source is expert lecture, moderate quality.
+linked_to_topics:
+- gut-dysbiosis
+- sibo
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Antibiotic Section
+  quote: my first preference for antibiotic is rifaximin... rifaximin is non-absorbent
+    antibiotic and it's very safe in SIBO.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

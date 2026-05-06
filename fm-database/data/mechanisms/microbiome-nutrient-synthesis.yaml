@@ -1,0 +1,36 @@
+slug: microbiome-nutrient-synthesis
+display_name: Microbiome-Driven Nutrient Synthesis
+aliases:
+- gut flora nutrient production
+- endogenous glutathione synthesis
+- gut melatonin production
+category: gut
+summary: 'Gut microorganisms drive the synthesis of key endogenous compounds: B vitamins,
+  glutathione (described as the most potent antioxidant, not obtainable directly from
+  food), and melatonin (described as the ''fixinrejuvenate nighttime hormone''). Disruption
+  of gut flora therefore impairs these downstream nutrient and antioxidant pathways.'
+upstream_drivers:
+- gut-microbiome-colonisation
+- dietary-fibre-diversity
+downstream_effects:
+- b-vitamin-deficiency
+- glutathione-depletion
+- melatonin-deficiency
+- poor-antioxidant-status
+related_mechanisms:
+- gut-microbiome-colonisation
+- gut-immune-barrier-function
+linked_to_topics:
+- gut-microbiome-and-gut-flora
+- leaky-gut
+evidence_tier: plausible_emerging
+sources:
+- id: barbara-oneil-gi-tract
+  location: Microbiome Nutrient Synthesis Section
+  quote: One is the B vitamin. Another one is glutathione... hailed as the most potent
+    antioxidant. You can't actually get your glutathione in food. It's a result of
+    the reaction of these microorganisms on our food. Also, melatonin is released.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,29 @@
+slug: gut-microbiome-produces-serotonin-and-gaba
+statement: The gut microbiome is responsible for biosynthesis of key neurotransmitters
+  including serotonin, GABA, catecholamines, and neuropeptides, establishing a biochemical
+  basis for the gut-brain axis.
+evidence_tier: strong
+rationale: Approximately 90-95% of serotonin is produced in the gut. Gut microbial
+  contribution to neurotransmitter synthesis is well-established in the literature.
+coaching_translation: Your gut bacteria directly produce mood chemicals like serotonin
+  and GABA — this is why gut health and mental health are so closely connected.
+caveats:
+- Source is expert consensus lecture; the mechanism itself has strong basic science
+  support but clinical translation is still emerging.
+linked_to_topics:
+- gut-brain-axis-dysfunction
+- sibo
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-sibo-sifo
+  location: Miraculous Functions of the Gut Microbiota
+  quote: It is also responsible for biosynthesis of certain hormones like 5-UHD and
+    these hormones are responsible for maintaining your serotonin levels that is your
+    happy hormone inside the body, neurotransmitters like serotonin, GABA, catecholamines,
+    neuropeptides.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,29 @@
+slug: restlessness
+display_name: Restlessness / Inability to Sit Still
+aliases:
+- always in motion
+- can't sit still
+- physical restlessness
+- hyperkinetic tension
+category: neurological
+severity: common
+description: A physical and psychological state of being unable to remain calm or
+  still, proposed in this document to stem from a nervous system that was overactivated
+  during gestation or at birth.
+when_to_refer: If associated with ADHD criteria or significant functional impairment
+  — refer to clinician.
+linked_to_topics:
+- birth-trauma
+- womb-imprinting-and-prenatal-experience
+linked_to_mechanisms:
+- prenatal-cortisol-adrenaline-exposure
+- nervous-system-imprinting
+sources:
+- id: family-constellation-healing-womb
+  location: C-section and nervous system section
+  quote: These are then ones who are restless, always in movement, not able to stay
+    calm on the chair.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

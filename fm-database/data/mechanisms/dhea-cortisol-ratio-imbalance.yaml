@@ -1,0 +1,33 @@
+slug: dhea-cortisol-ratio-imbalance
+display_name: DHEA:Cortisol Ratio Imbalance
+aliases:
+- cortisol DHEA ratio
+- adrenal androgen depletion
+category: endocrine
+summary: Chronic HPA activation preferentially shunts adrenal steroidogenesis toward
+  cortisol, depleting DHEA and its downstream hormones. Low DHEA relative to cortisol
+  is associated with fatigue, mood disorders, immune dysregulation, and accelerated
+  ageing despite apparently normal cortisol on single-point testing.
+upstream_drivers:
+- chronic-stress
+- hpa-axis-dysregulation
+downstream_effects:
+- fatigue
+- anxiety
+- immune-dysregulation
+- hormonal-imbalance
+related_mechanisms:
+- hpa-axis-dysregulation
+- circadian-rhythm-disruption
+linked_to_topics:
+- adrenal-cortisol-resilience
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXg8Y9NjIwF/
+  quote: Patients with 'normal cortisol' but low DHEA, progesterone, or melatonin
+    — still anxious, fatigued, and inflamed.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

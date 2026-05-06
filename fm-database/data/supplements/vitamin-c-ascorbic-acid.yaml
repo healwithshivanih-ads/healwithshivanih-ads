@@ -1,0 +1,40 @@
+slug: vitamin-c-ascorbic-acid
+display_name: Vitamin C (Ascorbic Acid)
+category: vitamin
+forms_available:
+- capsule
+- powder
+- tablet
+typical_dose_range:
+  capsule:
+    min: 2000
+    max: 3000
+    unit: mg
+  powder:
+    min: 2000
+    max: 3000
+    unit: mg
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- dental-amalgam-mercury
+- metabolic-detoxification
+linked_to_claims:
+- vitamin-c-supports-antioxidant-protection-phase-i-detox
+notes_for_coach: Used in the 7-day pre-amalgam removal protocol and continued post-procedure.
+  Also a key Phase I antioxidant protective nutrient. Adult doses only; high-dose
+  IV Vitamin C on procedure day is a medical intervention.
+notes_for_client: Vitamin C is a powerful antioxidant that protects your cells during
+  the detox process, especially when mercury is being cleared from your body.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Dental Amalgam Removal Protocol — Pre-Procedure Recommendations
+  quote: 'Vitamin C: 2–3 grams'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

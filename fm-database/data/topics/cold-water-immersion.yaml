@@ -1,0 +1,46 @@
+slug: cold-water-immersion
+display_name: Cold Water Immersion (CWI) Therapy
+aliases:
+- cold water therapy
+- cold water swimming
+- winter swimming
+- CWI
+summary: Voluntary exposure to cold water as a health practice, examined across 104
+  peer-reviewed studies. CWI appears to confer benefits across metabolic, cardiovascular,
+  mental health, and immune domains, though definitive conclusions are limited by
+  small study sizes and methodological heterogeneity.
+common_symptoms:
+- insulin-resistance
+- depressive-symptoms
+- post-exercise-muscle-soreness
+- upper-respiratory-infections
+- low-mood-anxiety
+red_flags:
+- cardiac-troponin-elevation
+- drowning-risk-cold-shock
+- acute-cardiac-stress
+related_topics:
+- brown-adipose-tissue-activation
+- insulin-resistance-sensitivity
+- cold-water-immersion-mental-health
+- cold-water-immersion-cardiovascular
+key_mechanisms:
+- bat-activation
+- cold-shock-response
+- hpa-axis-hormesis
+coaching_scope_notes: Coaches can support lifestyle integration of CWI practices and
+  discuss evidence-based benefits. Do not recommend CWI to clients with known cardiovascular
+  conditions without clinician clearance.
+clinician_scope_notes: Cardiac troponin elevation has been observed in elite swimmers
+  post-CWI; cardiovascular risk stratification recommended before prescribing. Acute
+  hemodynamic stress from cold shock response warrants caution in at-risk populations.
+evidence_tier: plausible_emerging
+sources:
+- id: espeland-2022-cold-water-immersion
+  location: Abstract
+  quote: This review examined 104 peer-reviewed studies on cold-water immersion (CWI)
+    health effects.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

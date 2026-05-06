@@ -1,0 +1,27 @@
+slug: millet-and-ancient-grain-substitution
+display_name: Millet & Ancient Grain Substitution
+aliases:
+- gluten-free grain swap
+- millets for rice/wheat
+summary: Replacement of refined grains (white rice, wheat) with millets (foxtail,
+  barnyard, kodo, little, jowar) and quinoa across meals — biryanis, khichdis, rotis,
+  upma — to reduce glycaemic load and increase micronutrient density.
+key_mechanisms:
+- glycemic-load-reduction
+- dietary-fiber-modulation
+coaching_scope_notes: Millets should be rinsed 2–3 times and soaked 10–15 min before
+  cooking to remove phytic acid. Many recipes serve millet as a direct rice substitute.
+evidence_tier: plausible_emerging
+common_symptoms: []
+red_flags: []
+related_topics: []
+clinician_scope_notes: ''
+sources:
+- id: vitaone-cardiometabolic-recipes
+  location: Millet-Lobia Pulao / Chicken Curry
+  quote: ¼ cup millet (foxtail millet, little millet, or barnyard millet) … Serve
+    hot with cooked millet or millet paratha
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

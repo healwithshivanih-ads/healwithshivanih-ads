@@ -1,0 +1,31 @@
+slug: hscrp-below-1-optimal-for-cvd-prevention
+statement: High-sensitivity CRP (hsCRP) below 1 mg/L is considered optimal; levels
+  above 1 mg/L signal chronic inflammation and increased cardiovascular risk.
+evidence_tier: plausible_emerging
+rationale: The JUPITER trial and other studies support hsCRP as an independent cardiovascular
+  risk marker. The document specifies <1 mg/L as the functional medicine optimal,
+  with >3 mg/L considered high. hsCRP must be distinguished from standard CRP used
+  in acute illness.
+coaching_translation: A blood test called hsCRP tells you how much silent inflammation
+  is in your body—a key driver of heart disease. Keeping it below 1 through anti-inflammatory
+  diet, sleep, and stress management is a core prevention goal.
+caveats:
+- hsCRP can be transiently elevated by acute illness; should be measured in absence
+  of infection.
+- Source is expert lecture (moderate quality).
+linked_to_topics:
+- cardiometabolic-disease
+- atherosclerosis
+- endothelial-dysfunction
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-biomarkers-cvs
+  location: Immune and Toxic Burden
+  quote: HCRP, normal value should be around less than one. So if you find out less
+    than one, that may be considered optimal for patient.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

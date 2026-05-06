@@ -1,0 +1,28 @@
+slug: omega3-index-above-8-percent-associated-with-low-cardiac-risk
+statement: An omega-3 index below 4% is associated with a tenfold increased risk of
+  sudden cardiac death compared to an index above 8%.
+evidence_tier: plausible_emerging
+rationale: Omega-3 index (EPA+DHA as % of RBC fatty acids) risk stratification is
+  referenced in the lecture with specific risk zones (<4% high risk, 4–8% intermediate,
+  >8% low risk). The tenfold risk figure is referenced. This is consistent with published
+  research by Harris & Von Schacky.
+coaching_translation: The omega-3 index is a blood test that tells you how well your
+  cells are protected by omega-3s. Above 8% is the goal.
+out_of_scope_notes: Lab test ordering and interpretation is within clinician scope.
+caveats:
+- FM lecture source; clinician should order and interpret omega-3 index.
+- Association, not causation, established in observational data.
+linked_to_topics:
+- omega-3-fatty-acids
+linked_to_supplements:
+- epa-dha-fish-oil
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-omega-3-fatty-acids
+  location: Omega-3 Index Slide
+  quote: omega 3 index less than 4% is associated with a tenfold risk of sudden cardiac
+    death compared to an index of greater than 8%.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

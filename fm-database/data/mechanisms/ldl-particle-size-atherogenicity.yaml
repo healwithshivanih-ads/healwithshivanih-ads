@@ -1,0 +1,35 @@
+slug: ldl-particle-size-atherogenicity
+display_name: LDL Particle Size & Atherogenicity
+aliases:
+- small dense LDL
+- LDL particle number
+- pattern B LDL
+category: metabolic
+summary: Small-dense LDL particles penetrate endothelial cracks more readily than
+  large, buoyant LDL, making particle size and number more predictive of atherosclerotic
+  risk than total LDL-C concentration. High LDL-C from large fluffy particles is considered
+  less atherogenic.
+upstream_drivers:
+- insulin-resistance
+- high-triglycerides
+- low-hdl
+downstream_effects:
+- endothelial-infiltration
+- ldl-oxidation-and-glycation
+- atherosclerosis
+related_mechanisms:
+- endothelial-injury
+- ldl-oxidation-and-glycation
+- insulin-resistance
+linked_to_topics:
+- lipid-panel-interpretation
+- atherosclerosis
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-biomarkers-cvs
+  location: LDL Size and Atherogenicity
+  quote: So here, the LDL size is matter compared to the concentration of LDL.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,32 @@
+slug: waist-circumference-thresholds-predict-metabolic-risk
+statement: A waist circumference greater than 40 inches in men and 35 inches in women
+  (US standards) is associated with increased risk of diabetes, hypertension, and
+  cardiovascular disease; stricter cut-offs apply for individuals of Asian descent.
+evidence_tier: strong
+rationale: International standards for waist circumference cut-offs are supported
+  by large epidemiological studies; ethnic-specific thresholds for Asian populations
+  are well-documented.
+coaching_translation: There are clear waist size benchmarks that signal health risk.
+  For clients of Asian descent, the danger zone starts at a smaller waist size than
+  general population guidelines suggest.
+caveats:
+- Insufficient data currently exists for African and Middle Eastern populations to
+  establish precise cut-offs.
+linked_to_topics:
+- visceral-adiposity
+- body-composition-assessment
+- metabolic-syndrome
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-body-composition-bmi
+  location: Waist Circumference Section
+  quote: Data has really shown that in the U.S., a waist circumference greater than
+    40 inches for men and greater than 35 inches for women is concerning. And at that
+    point, we definitely see an increased risk in terms of diabetes, hypertension,
+    cardiovascular disease.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,26 @@
+slug: elevated-serum-calcium
+display_name: Elevated Serum Calcium
+aliases:
+- hypercalcemia
+- high calcium on labs
+category: metabolic
+severity: concerning
+description: Serum total calcium above the normal range (~10 mg/dL). Can be caused
+  by hypothyroidism, acute inflammation/tissue damage, high-dose vitamin D supplementation,
+  thiazide diuretics, or neoplasm.
+when_to_refer: Refer to clinician if hypercalcemia is persistent or associated with
+  neoplasm, unexplained inflammation, or medication use.
+linked_to_topics:
+- calcium-metabolism
+linked_to_mechanisms:
+- pth-calcium-regulation
+- calcium-cell-membrane-tight-junctions
+sources:
+- id: coconote-fm-calcium-deficiency
+  location: Causes of High Serum Calcium
+  quote: if you see high calcium level, then you're going to suspect the hypothyroidism
+    because thyroid is going to play to maintain a calcium level.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

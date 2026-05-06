@@ -1,0 +1,65 @@
+slug: cardiometabolic-diet
+display_name: Cardiometabolic Diet
+aliases:
+- cardiometabolic nutrition
+- heart-metabolic diet
+- cardiovascular-metabolic diet
+- cardio-metabolic nutrition
+summary: A therapeutic dietary pattern designed to support cardiovascular and metabolic
+  health through high-fibre legumes, ancient grains (millets, quinoa, jowar), healthy
+  fats, lean proteins, and anti-inflammatory spices. Emphasises whole, minimally processed
+  foods, adequate plant protein, and cooking methods that preserve nutrients (steaming,
+  low-heat cooking).
+common_symptoms:
+- high-blood-pressure
+- high-triglycerides
+- elevated-cholesterol
+- blood-sugar-dysregulation
+- systemic-inflammation
+- excess-body-weight
+- insulin-resistance-symptoms
+- elevated-blood-sugar
+- dyslipidemia-symptoms
+- fatigue
+- excess-weight
+red_flags:
+- heart-arrhythmia
+- low-blood-pressure
+- insulin-dependent-diabetes
+- chest pain
+- severe breathlessness
+- uncontrolled diabetes requiring medication adjustment
+related_topics:
+- intermittent-fasting
+- phytonutrient-density
+- anti-inflammatory-diet
+- blood-sugar-regulation
+- insulin-resistance
+- dyslipidemia
+- metabolic-syndrome
+- inflammation
+key_mechanisms:
+- oxidative-stress
+- chronic-systemic-inflammation
+- insulin-resistance
+- glycemic-load-reduction
+- dietary-fiber-modulation
+- anti-inflammatory-signaling
+coaching_scope_notes: Coaches can guide food selection, meal timing, and recipe implementation
+  from this plan. Medication adjustments and clinical lab interpretation are out of
+  scope.
+clinician_scope_notes: Lipid panel and HbA1c monitoring recommended alongside dietary
+  change. Physician input needed for patients on antidiabetic or lipid-lowering medications.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Building a Better Smoothie
+  quote: Smoothies can be a great complement to your food plan and can help to make
+    'food as medicine' delicious and nutritious.
+- id: vitaone-cardiometabolic-recipes
+  location: Cover page
+  quote: Recipes For Cardiometabolic Diet
+version: 2
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -5,24 +5,39 @@ forms_available:
 - capsule
 - liquid
 - tablet
-evidence_tier: confirm_with_clinician
+evidence_tier: plausible_emerging
 linked_to_topics:
 - thyroid
 - hypothyroidism
 - immune-support
+- thyroid-dysfunction
+- gut-dysfunction
+- 5r-gut-restoration
+- immune-support-covid-19
+- intestinal-permeability
+- gut-dysbiosis
+- pancreatic-insufficiency
+- sibo
+- leaky-gut-syndrome
 linked_to_claims:
 - vitamin-a-rxr-permission-slip-for-thyroid-and-vitamin-d-signaling
 - vitamin-a-zinc-exercise-improve-thyroid-cell-sensitivity
 - key-nutrients-required-for-thyroid-hormone-production
 - vitamin-a-anti-inflammatory-respiratory-support
-notes_for_coach: 'CAUTION: 10,000–25,000 IU/day is a HIGH dose with teratogenicity
-  and hepatotoxicity risk. This dosing range is strictly confirm_with_clinician. Do
-  NOT recommend without explicit clinician direction. Contraindicated in pregnancy.'
-notes_for_client: Vitamin A at high doses must only be taken under direct supervision
-  of your healthcare provider. It can be harmful if taken incorrectly.
+- vitamin-a-improves-cellular-thyroid-hormone-sensitivity
+- gut-lining-repair-nutrients-zinc-vitamins-glutamine
+- vitamin-a-is-anti-inflammatory-and-supports-respiratory-tract
+- zinc-vitamin-a-b-support-gut-tissue-repair
+- nutritional-deficiencies-zinc-copper-vitamins-impair-enzyme-production
+- 5rs-repair-includes-l-glutamine
+notes_for_coach: Vitamin A (retinol) is critical for mucosal integrity and secretory
+  IgA production. Therapeutic doses should be confirmed with clinician due to toxicity
+  risk at high doses.
+notes_for_client: Vitamin A helps maintain the protective lining of your gut and supports
+  local immune defenses.
 typical_dose_range:
   capsule:
-    min: 10000
+    min: 5000
     max: 25000
     unit: mcg
   tablet:
@@ -53,7 +68,21 @@ sources:
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
   quote: Vitamin A is anti-inflammatory, enhances immune function, and supports the
     lining of the respiratory tract.
-version: 4
+- id: vitaone-health-coaching-toolkit
+  location: Factors that Affect Thyroid Function
+  quote: 'Factors that improve cellular sensitivity to thyroid hormones: Vitamin A,
+    Exercise, Zinc'
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Repair Section
+  quote: Micronutrients means vitamins and minerals. Vitamin A and vitamin B we require.
+- id: coconote-fm-pancreatic-insufficiency
+  location: Causes of Enzyme Deficiency
+  quote: Nutritional deficiency like vitamin A, B, E, zinc, copper.
+- id: coconote-fm-sibo-sifo
+  location: 5Rs Treatment Protocol – Repair
+  quote: When you go to complex cities, we also recommend zinc and the vitamin A and
+    the L-butamine, all of these things, repair is important.
+version: 10
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

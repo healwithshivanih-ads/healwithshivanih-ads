@@ -1,0 +1,28 @@
+slug: nonstick-cookware-teflon-emits-harmful-fumes
+statement: Nonstick cookware coatings (e.g., Teflon/PTFE) may emit harmful fumes and
+  leach chemicals into food, potentially causing health issues including cancer; PTFE-
+  and PFOA-free cookware is recommended.
+evidence_tier: plausible_emerging
+rationale: PFOA (used in Teflon manufacturing) is classified as a possible carcinogen
+  and has been phased out. Overheated Teflon can release toxic fumes (polymer fume
+  fever). The precautionary recommendation to use PTFE/PFOA-free cookware is reasonable.
+coaching_translation: Consider swapping out old or scratched non-stick pans for cast
+  iron, stainless steel, or ceramic cookware to reduce your exposure to synthetic
+  chemicals that can leach into food.
+linked_to_topics:
+- environmental-toxin-exposure
+- toxic-body-burden
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Non-Toxic Choices for Food Preparation, Cookware, and Dishes
+  quote: 'Nonstick Cookware: Most commonly used nonstick coatings, like Teflon, may
+    emit harmful fumes and leach chemicals into food, potentially causing health issues
+    including cancer.'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

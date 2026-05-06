@@ -1,0 +1,32 @@
+slug: gtir-detects-insulin-resistance-earlier-than-glucose-only-testing
+statement: The Glucose Tolerance Insulin Response (GTIR) test — measuring fasting,
+  1-hour, and 2-hour insulin alongside glucose — detects insulin resistance earlier
+  than standard glucose tolerance testing alone.
+evidence_tier: plausible_emerging
+rationale: Conventional GTT measures only glucose; GTIR adds insulin measurements
+  at each time point, revealing compensatory hyperinsulinemia before glucose dysregulation
+  appears. Supported by Craft's pattern research referenced in the lecture.
+coaching_translation: The standard 'diabetes test' only checks your blood sugar, not
+  how hard your pancreas is working. A GTIR test also checks insulin levels and can
+  catch problems years earlier.
+out_of_scope_notes: Test ordering and result interpretation are clinician responsibilities.
+  Coaches can explain the concept and encourage clients to ask their doctor about
+  GTIR testing.
+caveats:
+- Source is an FM expert lecture (moderate quality).
+- GTIR is not standard of care in conventional medicine; availability varies by provider.
+- Craft's pattern classification has not been universally validated in large RCTs.
+linked_to_topics:
+- insulin-resistance-early-detection
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-gtir
+  location: GTIR vs. Conventional GTT
+  quote: just doing a glucose tolerance test, we only get the glucose information.
+    We don't ask the primary information to control the blood sugar, what pancreas
+    is doing, how much insulin pancreas is releasing
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

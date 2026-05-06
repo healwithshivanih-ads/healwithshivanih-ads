@@ -7,9 +7,12 @@ aliases:
 - insulin resistance
 - IR
 - type 2 diabetes risk
-summary: A spectrum of conditions from insulin resistance through prediabetes to type
-  2 diabetes, driven by impaired insulin secretion or tissue responsiveness. Managed
-  through diet, exercise, micronutrient support, sleep, and stress management.
+- dysglycemia
+- blood glucose imbalance
+summary: A spectrum of conditions ranging from insulin resistance and prediabetes
+  to type 2 diabetes, characterized by impaired insulin secretion or tissue responsiveness
+  to insulin. Managed through lifestyle, diet, exercise, and targeted micronutrient
+  support.
 common_symptoms:
 - post-meal-fatigue
 - sugar-cravings
@@ -23,6 +26,7 @@ common_symptoms:
 - fatigue
 - blood-sugar-spikes
 - weight-gain
+- glucose-spikes
 red_flags:
 - fasting glucose ≥126 mg/dL
 - HbA1c ≥6.5%
@@ -33,6 +37,8 @@ red_flags:
 - diagnosed type 2 diabetes requiring medication
 - gestational diabetes
 - kidney disease (contraindicates chromium)
+- persistent fasting glucose >126 mg/dL
+- symptoms of diabetic ketoacidosis
 related_topics:
 - insulin-resistance
 - metabolic-syndrome
@@ -45,12 +51,12 @@ key_mechanisms:
 - advanced-glycation-end-products
 - skeletal-muscle-glucose-uptake
 - hepatic-insulin-sensitivity
-coaching_scope_notes: Coaches can support lifestyle, dietary, and supplement education.
-  Supplement dosing and lab interpretation (HbA1c, HOMA-IR, vitamin D levels) must
-  be referred to a clinician.
-clinician_scope_notes: Monitor HbA1c, fasting glucose, HOMA-IR, vitamin D, zinc, and
-  magnesium levels. Chromium contraindicated in kidney disease. Adjust supplement
-  doses based on blood work.
+- hepatic-glucose-production
+coaching_scope_notes: Coaches can support lifestyle interventions (exercise, sleep,
+  stress, diet) and supplement education. Lab interpretation, medication management,
+  and diagnosis are out of scope.
+clinician_scope_notes: Clinicians should assess HbA1c, fasting glucose, HOMA-IR, and
+  micronutrient levels (Vitamin D, magnesium, zinc) to guide supplementation.
 evidence_tier: strong
 sources:
 - id: vitaone-blood-sugar-ebook
@@ -62,7 +68,11 @@ sources:
   location: Micronutrients for Insulin Sensitivity
   quote: Insulin resistance (IR) is a condition where muscles & other tissues in the
     body do not respond to insulin as expected.
-version: 2
+- id: vitaone-health-coaching-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: Insulin resistance (IR) is a condition where muscles & other tissues in the
+    body do not respond to insulin as expected.
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

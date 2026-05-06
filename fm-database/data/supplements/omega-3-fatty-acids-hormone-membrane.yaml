@@ -1,0 +1,44 @@
+slug: omega-3-fatty-acids-hormone-membrane
+display_name: Omega-3 Fatty Acids (Cell Membrane Fluidity for Non-Genomic Signaling)
+category: fatty_acid
+forms_available:
+- capsule
+- liquid
+typical_dose_range:
+  capsule:
+    min: 1000
+    max: 3000
+    unit: mg
+  liquid:
+    min: 1
+    max: 3
+    unit: teaspoons
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- hormonal-nutrition-foundations
+- estrogen-signaling
+linked_to_claims:
+- cell-membrane-fluidity-required-for-non-genomic-hormone-signaling
+notes_for_coach: Adequate omega-3 intake (and the omega-3:omega-6:omega-9 ratio) supports
+  fluid, healthy cell membranes required for non-genomic hormone signaling. Trans
+  fats and ultra-processed foods create rigid membranes that impair this rapid hormone
+  signaling pathway. Testing the omega-3 index or ratio can be useful.
+notes_for_client: Your hormones also talk to every cell through its outer membrane
+  — but only if the membrane is flexible and healthy. Omega-3 fats (from fish oil,
+  fatty fish) help keep those membranes fluid, so your hormones can communicate rapidly
+  throughout your whole body.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Non-Genomic Hormone Signaling and Cell Membranes
+  quote: only if the cell membrane is healthy... you can test the ratio of omega-3s
+    to omega-6 to omega-9... hormones not just signal in target tissue but all membranes
+    of the body and they're instantaneous and they call that non-genomic signaling
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

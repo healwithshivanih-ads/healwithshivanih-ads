@@ -1,0 +1,32 @@
+slug: pancreatic-insufficiency-causes-malnutrition-and-systemic-effects
+statement: Pancreatic enzyme deficiency can lead to malnutrition and systemic consequences
+  including fatigue, muscle wasting, bone loss, anaemia, and oedema.
+evidence_tier: strong
+rationale: The systemic sequelae of chronic malabsorption from EPI are well-established
+  in clinical literature, including fat-soluble vitamin deficiencies, protein depletion,
+  and bone mineral loss.
+coaching_translation: When the pancreas can't make enough enzymes over time, the body
+  becomes malnourished — leading to tiredness, muscle loss, weak bones, and fluid
+  retention. These warrant clinical referral.
+out_of_scope_notes: Assessment and management of systemic malnutrition consequences
+  (bone loss, anaemia, hypoalbuminemia) requires clinician oversight.
+linked_to_topics:
+- pancreatic-insufficiency
+linked_to_supplements:
+- vitamin-a
+- vitamin-e
+- zinc
+caveats:
+- Source is a lecture; verify with clinical references for precise prevalence and
+  severity data.
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-pancreatic-insufficiency
+  location: Signs and Symptoms
+  quote: Malnutrition, malabsorption, that is why feeling fatigued, muscle wasting,
+    weight loss, constantly absorbed abdominal pain, feeling excessive bloating, gas,
+    edema.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

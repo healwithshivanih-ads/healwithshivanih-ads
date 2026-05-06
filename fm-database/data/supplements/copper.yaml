@@ -1,0 +1,40 @@
+slug: copper
+display_name: Copper
+category: mineral
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 1
+    max: 2
+    unit: mg
+  tablet:
+    min: 1
+    max: 2
+    unit: mg
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- pancreatic-insufficiency
+linked_to_claims:
+- nutritional-deficiencies-zinc-copper-vitamins-impair-enzyme-production
+notes_for_coach: Copper is listed alongside zinc as a mineral cofactor relevant to
+  enzyme synthesis. Often balanced with zinc supplementation. Verify need via labs
+  with clinician.
+notes_for_client: Copper works alongside zinc as a mineral cofactor for enzyme production.
+  It is typically found in adequate amounts in a varied diet.
+evidence_tier: fm_specific_thin
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-pancreatic-insufficiency
+  location: Causes of Enzyme Deficiency
+  quote: Damaged microvilli, which basically are responsible for the absorption of
+    nutrition, which would help in terms of formation of these enzymes, minerals like
+    copper, zinc, vitamins like A, B, E, toxicity inside the body.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

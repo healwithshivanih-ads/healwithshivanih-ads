@@ -1,0 +1,48 @@
+slug: depression-lifestyle
+display_name: 'Depression: Lifestyle & Nutritional Interventions'
+aliases:
+- mental health lifestyle
+- nutritional psychiatry
+- healing the mind
+summary: 'Depression and related mental health conditions may be prevented and improved
+  through a combination of lifestyle factors: sunshine exposure, adequate hydration,
+  quality sleep, nose breathing, oxygenation, proper nutrition (fibre, protein, fat),
+  elimination of stimulants (sugar, caffeine, alcohol), exercise, emotional regulation,
+  and gratitude practices.'
+evidence_tier: plausible_emerging
+common_symptoms:
+- depression
+- anxiety
+- brain-fog
+- insomnia
+- fatigue
+- negative-thought-patterns
+red_flags:
+- suicidal ideation
+- severe psychiatric episodes
+- psychosis
+related_topics:
+- gut-brain-connection
+- sleep-hygiene
+- hydration-and-brain-function
+- neuroplasticity
+key_mechanisms:
+- serotonin-synthesis
+- prefrontal-cortex-function
+- hpa-axis-dysregulation
+- neuroplasticity
+coaching_scope_notes: Coaches can support all lifestyle interventions described. Medication
+  management, clinical diagnosis, and hormone therapy decisions require clinician
+  oversight.
+clinician_scope_notes: Dr Neil Nedley's protocol (lifestyle changes exceeding medication
+  for depression) is cited anecdotally. Clinical supervision required for patients
+  on antidepressants.
+sources:
+- id: barbara-oneil-healing-mind
+  location: Depression and Lifestyle Section
+  quote: He said lifestyle changes, dietary changes, far exceeded the effect of medication
+    on depression.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

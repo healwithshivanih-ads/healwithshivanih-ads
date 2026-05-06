@@ -1,0 +1,34 @@
+slug: b6-b2-support-folate-cycle-and-homocysteine
+statement: Vitamins B6 and B2 (riboflavin) are essential cofactors in the folate cycle
+  and homocysteine metabolism, with B6 supporting the transsulfuration pathway to
+  glutathione and B2 supporting MTHFR enzyme function.
+evidence_tier: plausible_emerging
+rationale: B6 as a cofactor for cystathionine beta-synthase (transsulfuration) and
+  B2 as a cofactor for MTHFR are established in biochemistry. The document clearly
+  states these roles.
+coaching_translation: A complete B-complex approach — including B2 and B6 alongside
+  methylfolate and B12 — provides more comprehensive support for methylation and homocysteine
+  management than B12/folate alone.
+caveats:
+- High-dose B6 (>200mg/day long-term) carries neuropathy risk — doses above standard
+  RDA should involve clinician oversight.
+- Source is expert lecture, not primary clinical trial evidence.
+linked_to_topics:
+- mthfr-gene-variant
+- homocysteine-elevation
+- methylation
+linked_to_supplements:
+- vitamin-b6-pyridoxine
+- vitamin-b2-riboflavin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: Supplementation for MTHFR section
+  quote: Vitamin B2 that is riboflavin as well as vitamin B6 that is pyridoxine. Now
+    both of these supplements are also given as they are utilized in the folate cycle
+    as well as in the synthesis of cysteine from homocysteine.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

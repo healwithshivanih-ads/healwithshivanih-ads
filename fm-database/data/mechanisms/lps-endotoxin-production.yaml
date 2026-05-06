@@ -1,0 +1,33 @@
+slug: lps-endotoxin-production
+display_name: LPS / Endotoxin Production from Gut Dysbiosis
+aliases:
+- lipopolysaccharide toxicity
+- gram-negative bacterial toxins
+category: immune
+summary: Gram-negative bacteria in the gut produce lipopolysaccharide (LPS) as a metabolic
+  byproduct when fermenting substrates. In the context of dysbiosis, excess LPS enters
+  systemic circulation ('endotoxemia'), acting as an internal toxin that drives inflammation,
+  immune activation, and increases total toxic load beyond environmental sources alone.
+upstream_drivers:
+- gut-dysbiosis
+- high-fiber-fermentation-by-pathogens
+downstream_effects:
+- systemic-inflammation
+- increased-total-toxic-load
+- immune-dysregulation
+related_mechanisms:
+- gut-microbiome-toxin-elimination
+linked_to_topics:
+- xenobiotic-exposure
+- total-toxic-load
+- gut-microbiome-and-detox
+evidence_tier: strong
+sources:
+- id: coconote-fm-liver-detox-part1
+  location: Internal Toxin Sources
+  quote: If your bad bacteria are not negative bacteria, they fertilize your fiber
+    and they create a lipopolysaccharide. So they're all becoming toxic from this.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,27 @@
+slug: muscle-pain
+display_name: Muscle Pain / Myalgia
+aliases:
+- muscle ache
+- muscular pain
+- body aches
+- sore muscles
+category: musculoskeletal
+severity: common
+description: Diffuse or localised muscle pain not attributable to acute injury; linked
+  to elevated CRP, omega-3 deficiency, and systemic inflammation.
+linked_to_topics:
+- chronic-pain-and-fatigue
+- fibromyalgia
+linked_to_mechanisms:
+- systemic-inflammation
+- omega-3-deficiency-inflammation
+when_to_refer: ''
+sources:
+- id: coconote-fm-chronic-pain-fatigue
+  location: Personal Case Study
+  quote: I felt like a muscle pain. So I thought maybe I did some exercise or something,
+    I pulled it... after starting a high omega-3, my dyspnea went away.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,5 +1,5 @@
 slug: anxiety
-display_name: Anxiety / Nervousness
+display_name: Anxiety
 aliases:
 - hormonal anxiety
 - premenstrual anxiety
@@ -13,20 +13,32 @@ aliases:
 - on edge
 - sympathetic dominance
 - wired
-- restlessness
 - hyperactivity
 - agitation
 - anxiousness
 - gut-related anxiety
-- stress
 - nervous energy
 - stress anxiety
+- chronic-anxiety
+- panic-episodes
+- hyperarousal
+- anxious and nervous
+- anxious feelings
+- chronic worry
+- stress symptoms
+- feeling on edge
+- racing thoughts
+- panic attacks
+- fear
+- heart palpitations related to anxiety
+- excessive worry
+- gut-brain anxiety
 category: mood
 severity: common
-description: Feelings of anxiety and nervousness driven by adrenaline oversecretion
-  during chronic stress.
-when_to_refer: Refer for clinical evaluation if anxiety is severe or interferes with
-  daily functioning.
+description: Persistent worry or nervous tension associated with iron deficiency (brain
+  dopamine), HPA dysregulation (high cortisol), low DHEA, and gut-brain axis imbalance.
+when_to_refer: Refer for psychiatric assessment if accompanied by panic attacks, severe
+  functional impairment, or suicidal ideation.
 linked_to_topics:
 - low-progesterone
 - perimenopause
@@ -41,6 +53,24 @@ linked_to_topics:
 - self-care
 - chronic-stress
 - hpa-axis-dysregulation
+- mindful-breathing
+- gratitude-practice
+- nervous-system-regulation
+- emotional-healing-chronic-disease
+- breathwork-for-health
+- hpa-axis-dysfunction
+- hypercortisolism
+- emotional-wellbeing
+- emotional-healing-in-chronic-disease
+- estrogen-dominance
+- luteal-phase-defect
+- magnesium-deficiency
+- magnesium-neurological-mental-health
+- depression-lifestyle
+- hydration-and-brain-function
+- sibo
+- iron-deficiency-dysregulation
+- adrenal-cortisol-resilience
 linked_to_mechanisms:
 - low-progesterone
 - hpa-axis-dysregulation
@@ -51,6 +81,23 @@ linked_to_mechanisms:
 - gut-dysbiosis
 - parasympathetic-activation
 - sympathetic-nervous-system-activation
+- limbic-system-overactivation
+- vagal-tone-reduction
+- sympathoadrenal-activation
+- gut-serotonin-production
+- neuroinflammation-gut-axis
+- hpa-axis-regulation
+- gut-brain-axis-disruption
+- sympathetic-overdrive
+- progesterone-deficiency
+- gaba-receptor-modulation
+- adrenal-catecholamine-dysregulation
+- prefrontal-cortex-function
+- cellular-hydration
+- parasympathetic-activation-via-nose-breathing
+- endotoxemia
+- hepcidin-mediated-iron-block
+- dhea-cortisol-ratio-imbalance
 sources:
 - id: vitaone-sex-hormones-cheatsheet
   location: Progesterone Is Anti-Inflammatory — Supplement Approach
@@ -77,7 +124,28 @@ sources:
 - id: vitaone-adrenal-toolkit
   location: Hypercortisolism
   quote: The oversecretion of adrenaline can cause you to feel anxious and nervous.
-version: 7
+- id: vitaone-health-coaching-cheatsheet
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: Amygdala dominance → constant sympathetic arousal & cortisol spikes.
+- id: coconote-fm-estrogen-dominance
+  location: Case Study 1
+  quote: Anxiety and depression in a perimenopausal woman is what I see very common.
+    Because there is a dip in her progesterone while she is feeling anxious, there
+    is an estrogen dominance.
+- id: coconote-fm-magnesium-deficiency
+  location: Vicious cycle / nervous system section
+  quote: Deficiency can cause a lot of excessive stress... adrenaline or non-adrenaline
+    gets released excessively, which eventually gives rise to palpitations and anxiety.
+- id: barbara-oneil-healing-mind
+  location: Hydration Section
+  quote: people with panic attacks eased
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: SIBO systemic consequences discussion
+  quote: Unaddressed SIBO... anxiety, depression, suicidal thoughts, Parkinson's disease.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXy9b_KjJT2/
+  quote: Restless legs and anxiety linked to brain iron deficiency
+version: 18
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

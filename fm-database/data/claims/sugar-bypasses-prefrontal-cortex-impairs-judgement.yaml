@@ -1,0 +1,29 @@
+slug: sugar-bypasses-prefrontal-cortex-impairs-judgement
+statement: Refined sugar causes rapid glucose spikes followed by crashes, temporarily
+  bypassing prefrontal cortex function and impairing reason, intellect, and judgment;
+  whereas fibre-rich foods provide steady glucose release supporting sustained brain
+  function.
+evidence_tier: plausible_emerging
+rationale: Glycaemic variability affecting cognitive performance and mood is supported
+  by research. The framing of sugar 'bypassing' the PFC is a simplified but directionally
+  accurate model. Fibre's role in attenuating glucose spikes is well-established.
+coaching_translation: Sugar gives your brain a quick rush, then leaves it crashing
+  — your thinking, judgement, and mood all suffer in the dip. High-fibre foods give
+  your brain a steady, reliable fuel supply instead.
+caveats:
+- Source is expert lecture
+- Mechanism is simplified
+linked_to_topics:
+- depression-lifestyle
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-healing-mind
+  location: Nutrition Section
+  quote: Sugar interferes. Because your brain can only hold a two minute supply of
+    glucose. Sugar gets a quick high... And then we get a corresponding low.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

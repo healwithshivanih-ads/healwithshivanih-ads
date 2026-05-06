@@ -1,0 +1,59 @@
+slug: thyroid-nutrient-synergy
+display_name: Thyroid–Nutrient Synergy
+aliases:
+- thyroid hormone synthesis
+- T4 to T3 conversion
+- thyroid cofactor dependency
+- thyroid cofactor support
+category: endocrine
+summary: Thyroid hormone production and conversion are dependent on iodine, selenium,
+  iron, riboflavin, vitamin A, vitamin D, magnesium, and antioxidant balance. Deficiency
+  or excess of any of these can impair thyroid function, trigger autoimmunity, or
+  worsen symptoms such as fatigue, hair loss, and cold intolerance.
+upstream_drivers:
+- iodine deficiency or excess
+- selenium insufficiency
+- autoimmune thyroid disease
+- poor carotenoid conversion
+- low thyroid function
+- goitrogens
+- pregnancy
+- iodine-deficiency-or-excess
+- selenium-insufficiency
+- autoimmune-thyroid-disease
+- poor-carotenoid-conversion
+downstream_effects:
+- fatigue
+- cold intolerance
+- weight gain
+- poor cognition
+- hypothyroidism
+- thyroid-related hair loss
+- fetal brain development concerns
+- cold-intolerance
+- weight-gain
+- poor-cognition
+- thyroid-related-hair-loss
+- fetal-brain-development-concerns
+related_mechanisms:
+- oxidative-stress-and-inflammation
+- nutrient-dependent-energy-metabolism
+linked_to_topics:
+- thyroid
+- hair-loss
+- chronic-inflammation
+- nutrition-deficiency
+evidence_tier: plausible_emerging
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Key Mechanisms Explained – thyroid-nutrient-synergy
+  quote: Thyroid hormone production and conversion are described as dependent on iodine,
+    selenium, iron, riboflavin, vitamin A, vitamin D, magnesium, and antioxidant balance.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Key Mechanisms Explained — thyroid-nutrient-synergy
+  quote: Thyroid hormone production and conversion are described as dependent on iodine,
+    selenium, iron, riboflavin, vitamin A, vitamin D, magnesium, and antioxidant balance.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

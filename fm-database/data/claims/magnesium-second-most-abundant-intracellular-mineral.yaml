@@ -1,0 +1,23 @@
+slug: magnesium-second-most-abundant-intracellular-mineral
+statement: Magnesium is the second most abundant intracellular mineral in the human
+  body, after potassium.
+evidence_tier: strong
+rationale: Well-established physiological fact; magnesium is predominantly intracellular
+  and is the second most abundant intracellular cation.
+coaching_translation: Magnesium is one of the most important minerals inside your
+  cells — and most people don't get nearly enough.
+linked_to_topics:
+- magnesium-deficiency
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-magnesium-deficiency
+  location: Introduction
+  quote: It is the second most abundant intercellular mineral which is found inside
+    the body after potassium.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

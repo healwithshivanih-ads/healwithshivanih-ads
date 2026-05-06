@@ -1,0 +1,25 @@
+slug: iodine-essential-for-thyroid-hormone-synthesis
+statement: Iodine is an essential raw material for thyroid hormone (T4 and T3) production.
+evidence_tier: strong
+rationale: Iodine is a structurally required component of T4 (4 iodine atoms) and
+  T3 (3 iodine atoms). Iodine deficiency as a cause of hypothyroidism and goiter is
+  one of the most well-established facts in endocrinology.
+coaching_translation: Your thyroid literally needs iodine as a building block to make
+  thyroid hormone. Include iodine-rich foods like seaweed, eggs, and dairy in your
+  diet.
+linked_to_topics:
+- thyroid-dysfunction
+linked_to_supplements:
+- iodine
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Factors that Affect Thyroid Function
+  quote: 'Nutrients: iron, iodine, tyrosine, zinc, selenium vitamin E, B2, B3, B6,
+    C, D'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

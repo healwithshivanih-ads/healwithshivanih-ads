@@ -1,0 +1,31 @@
+slug: dyslipidemia
+display_name: Dyslipidemia
+aliases:
+- high cholesterol
+- elevated LDL
+- high triglycerides
+- low HDL
+- abnormal lipid panel
+category: metabolic
+severity: common
+description: Abnormal lipid profile including elevated total cholesterol, LDL, VLDL,
+  or triglycerides, and/or reduced HDL. Often asymptomatic but a key cardiovascular
+  risk marker.
+when_to_refer: Refer if LDL >190 (possible familial hypercholesterolemia), or if patient
+  has a prior cardiovascular event.
+linked_to_topics:
+- dyslipidemia-management
+- cardiovascular-risk-assessment
+- ldl-particle-size-and-number
+linked_to_mechanisms:
+- insulin-resistance
+- small-dense-ldl-endothelial-penetration
+sources:
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Cholesterol profile overview
+  quote: You see many patients who either came to the pipe cholesterol or either they
+    come to you or they are already taking the statin drug.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

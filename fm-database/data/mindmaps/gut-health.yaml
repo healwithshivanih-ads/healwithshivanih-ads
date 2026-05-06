@@ -1,0 +1,443 @@
+slug: gut-health
+display_name: Gut Health & Microbiome
+description: 'Functional medicine approach to gut dysfunction, dysbiosis, leaky gut,
+  IBS, and microbiome restoration. Covers root mechanisms, clinical presentation,
+  coaching goals, interventions, and labs to track — structured for use in client
+  sessions and plan authoring.
+
+  '
+aliases: []
+related_topics:
+- gut-microbiome
+- leaky-gut
+- gut-dysbiosis
+- gut-dysfunction
+- 5r-gut-restoration
+- gut-brain-axis
+related_mechanisms:
+- leaky-gut
+- gut-dysbiosis
+- gut-barrier-dysfunction
+- gut-brain-axis-dysregulation
+- gut-motility-dysregulation
+- gut-serotonin-production
+tree:
+- label: 🔴 Clinical Presentation
+  children:
+  - label: GI Symptoms
+    children:
+    - label: Bloating & Gas
+      children: []
+      linked_kind: symptom
+      linked_slug: bloating
+      notes: ''
+    - label: Constipation
+      children: []
+      linked_kind: symptom
+      linked_slug: constipation
+      notes: ''
+    - label: Diarrhoea
+      children: []
+      linked_kind: symptom
+      linked_slug: diarrhea
+      notes: ''
+    - label: Abdominal Pain
+      children: []
+      linked_kind: symptom
+      linked_slug: abdominal-pain
+      notes: ''
+    - label: Acid Reflux / Heartburn
+      children: []
+      linked_kind: symptom
+      linked_slug: acid-reflux
+      notes: ''
+    - label: Nausea
+      children: []
+      linked_kind: symptom
+      linked_slug: nausea
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Systemic Symptoms
+    children:
+    - label: Brain Fog
+      children: []
+      linked_kind: symptom
+      linked_slug: brain-fog
+      notes: ''
+    - label: Fatigue
+      children: []
+      linked_kind: symptom
+      linked_slug: fatigue
+      notes: ''
+    - label: Joint Pain
+      children: []
+      linked_kind: symptom
+      linked_slug: joint-pain
+      notes: ''
+    - label: Food Sensitivities
+      children: []
+      linked_kind: symptom
+      linked_slug: food-sensitivities
+      notes: ''
+    - label: Skin Issues
+      children: []
+      linked_kind: symptom
+      linked_slug: skin-rash
+      notes: ''
+    - label: Anxiety / Mood Changes
+      children: []
+      linked_kind: symptom
+      linked_slug: anxiety-with-gut-issues
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🟠 Root Mechanisms
+  children:
+  - label: Leaky Gut / Intestinal Permeability
+    children: []
+    linked_kind: mechanism
+    linked_slug: leaky-gut
+    notes: ''
+  - label: Gut Dysbiosis
+    children: []
+    linked_kind: mechanism
+    linked_slug: gut-dysbiosis
+    notes: ''
+  - label: Impaired Gut Motility
+    children: []
+    linked_kind: mechanism
+    linked_slug: gut-motility-dysregulation
+    notes: ''
+  - label: Gut-Brain Axis Disruption
+    children: []
+    linked_kind: mechanism
+    linked_slug: gut-brain-axis-dysregulation
+    notes: ''
+  - label: Gut Barrier Dysfunction
+    children: []
+    linked_kind: mechanism
+    linked_slug: gut-barrier-dysfunction
+    notes: ''
+  - label: Reduced Butyrate Production
+    children: []
+    linked_kind: mechanism
+    linked_slug: gut-butyrate-production
+    notes: ''
+  - label: Gut-Serotonin Imbalance
+    children: []
+    linked_kind: mechanism
+    linked_slug: gut-serotonin-production
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🟡 FM Approach
+  children:
+  - label: Remove Triggers
+    children:
+    - label: Elimination Diet
+      children: []
+      linked_kind: topic
+      linked_slug: elimination-diet
+      notes: ''
+    - label: Identify Food Intolerances
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Remove Pathogens / Parasites
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Replace
+    children:
+    - label: Digestive Enzymes
+      children: []
+      linked_kind: supplement
+      linked_slug: digestive-enzymes
+      notes: ''
+    - label: Betaine HCl for Low Stomach Acid
+      children: []
+      linked_kind: supplement
+      linked_slug: betaine-hcl
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Reinoculate
+    children:
+    - label: Probiotic Therapy
+      children: []
+      linked_kind: supplement
+      linked_slug: probiotics
+      notes: ''
+    - label: Prebiotic / Fibre Support
+      children: []
+      linked_kind: topic
+      linked_slug: fiber-gap
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Repair
+    children:
+    - label: Leaky Gut Repair Protocol
+      children: []
+      linked_kind: topic
+      linked_slug: leaky-gut
+      notes: ''
+    - label: Anti-Inflammatory Diet
+      children: []
+      linked_kind: topic
+      linked_slug: anti-inflammatory-diet
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Rebalance
+    children:
+    - label: Stress Management
+      children: []
+      linked_kind: topic
+      linked_slug: stress-management
+      notes: ''
+    - label: Sleep Optimisation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🟢 Interventions
+  children:
+  - label: Supplements
+    children:
+    - label: L-Glutamine (gut lining repair)
+      children: []
+      linked_kind: supplement
+      linked_slug: l-glutamine
+      notes: ''
+    - label: Probiotics - Multi-Strain
+      children: []
+      linked_kind: supplement
+      linked_slug: broad-spectrum-probiotics
+      notes: ''
+    - label: Zinc Carnosine
+      children: []
+      linked_kind: supplement
+      linked_slug: zinc-carnosine
+      notes: ''
+    - label: Curcumin
+      children: []
+      linked_kind: supplement
+      linked_slug: curcumin
+      notes: ''
+    - label: Aloe Vera Extract
+      children: []
+      linked_kind: supplement
+      linked_slug: aloe-vera-extract
+      notes: ''
+    - label: Fish Oil / Omega-3
+      children: []
+      linked_kind: supplement
+      linked_slug: fish-oil-omega-3
+      notes: ''
+    - label: Berberine (for dysbiosis)
+      children: []
+      linked_kind: supplement
+      linked_slug: berberine
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Dietary Interventions
+    children:
+    - label: Low-FODMAP Trial
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Bone Broth
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Fermented Foods
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Reduce Processed Foods & Sugar
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Lifestyle
+    children:
+    - label: Stress Reduction
+      children: []
+      linked_kind: topic
+      linked_slug: stress-management
+      notes: ''
+    - label: Sleep 7-9hrs
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Mindful Eating
+      children: []
+      linked_kind: topic
+      linked_slug: mindful-intuitive-eating
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 💙 Coaching Goals
+  children:
+  - label: Client Education
+    children:
+    - label: Gut-Brain Connection
+      children: []
+      linked_kind: topic
+      linked_slug: gut-brain-axis
+      notes: ''
+    - label: Food Journaling
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Understanding Food Sensitivities
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Habit Building
+    children:
+    - label: Chewing Thoroughly
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Eating Without Stress
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Regular Meal Times
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Progress Tracking
+    children:
+    - label: Bristol Stool Chart
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Symptom Diary
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Energy & Mood Monitoring
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🔵 Labs to Track
+  children:
+  - label: Stool Analysis
+    children:
+    - label: GI-MAP / Comprehensive Stool Test
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Calprotectin (inflammation marker)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Zonulin (leaky gut marker)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Blood Markers
+    children:
+    - label: hsCRP (inflammation)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Food Sensitivity Panel (IgG)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Secretory IgA
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Organic Acids
+    children:
+    - label: Urinary Organic Acids (microbiome metabolites)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+sources:
+- id: vitaone-health-coaching-toolkit
+  quote: null
+  location: Gut Health & Microbiome Toolkit
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

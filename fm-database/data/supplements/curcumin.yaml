@@ -1,5 +1,5 @@
 slug: curcumin
-display_name: Curcumin
+display_name: Curcumin (Turmeric Extract)
 category: herb
 forms_available:
 - capsule
@@ -44,6 +44,12 @@ linked_to_topics:
 - gerd
 - gut-dysfunction
 - immune-support
+- gerd-ppi-tapering
+- immune-support-covid-19
+- emotional-healing-in-chronic-disease
+- nervous-system-regulation
+- pancreatic-insufficiency
+- digestive-enzyme-supplementation
 linked_to_claims:
 - omega-3-reduces-cytokine-load-stress
 - loneliness-activates-inflammatory-pathways
@@ -56,11 +62,16 @@ linked_to_claims:
 - curcumin-boswellia-joint-inflammation
 - curcumin-antioxidant-gi-protection
 - curcumin-inhibits-nlrp3-reduces-inflammation
-notes_for_coach: Bioavailability is poor with standard curcumin. Phytosome or black
-  pepper (piperine) enhanced forms are preferred. Taken twice daily with food. Pharmacokinetic
-  herb-drug interactions noted — flag for clinician review.
-notes_for_client: Curcumin (from turmeric) is best absorbed when taken with food and
-  in a bioavailable form. Always check with your practitioner before starting.
+- ppi-tapering-supplement-support-repair-protect-antioxidant
+- curcumin-reduces-inflammation-and-decreases-viral-activity
+- curcumin-reduces-neuroinflammation
+- ginger-curcumin-coriander-onion-stimulate-enzymatic-activity
+notes_for_coach: Curcumin has both anti-inflammatory properties and is cited as a
+  stimulant of enzymatic activity. Bioavailability is enhanced with black pepper (piperine)
+  or fat. Source is expert consensus lecture.
+notes_for_client: Curcumin, the active compound in turmeric, has anti-inflammatory
+  properties and may help stimulate digestive enzymes. Best absorbed when taken with
+  food and a source of fat.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -103,7 +114,18 @@ sources:
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
   quote: Curcumin has been shown to reduce inflammation and decrease viral activity
     for COVID-19.
-version: 11
+- id: vitaone-health-coaching-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
+  quote: 'Antioxidants: Artemisia asiatica, curcumin, quercetin, vitamin E.'
+- id: vitaone-health-coaching-cheatsheet
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: Encourage emotional expression, mindfulness, breath retraining, omega-3,
+    curcumin, HRV tracking.
+- id: coconote-fm-pancreatic-insufficiency
+  location: Management / Support Strategies
+  quote: Certain food which helps in terms of stimulating the enzymatic activity is
+    ginger, curcumin, coriander, onion.
+version: 15
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

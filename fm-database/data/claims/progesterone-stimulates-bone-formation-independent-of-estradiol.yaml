@@ -1,0 +1,31 @@
+slug: progesterone-stimulates-bone-formation-independent-of-estradiol
+statement: Progesterone independently stimulates osteoblast-mediated bone formation
+  and suppresses osteoclast activity, contributing to bone mineral density maintenance
+  separately from estradiol.
+evidence_tier: plausible_emerging
+rationale: Some studies support progesterone's direct role in bone formation, but
+  the evidence base is thinner than for estrogen. The claim of full independence from
+  estradiol is emerging and not consensus-level.
+coaching_translation: Progesterone isn't just for periods and mood — it also helps
+  build bone. This is another reason why addressing progesterone decline early in
+  perimenopause matters for long-term bone health.
+caveats:
+- Evidence for progesterone's independent bone-building effect in humans is plausible_emerging;
+  not as well-established as estrogen's effect.
+- Source is expert consensus lecture.
+linked_to_topics:
+- menopause
+- perimenopause
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-sex-hormones
+  location: Hormone Actions on Bone
+  quote: Progesterone stimulates, why progesterone is very important? Its action on
+    the bone is that it will stimulate the formation of the bone, in fact independent
+    from estradiol and suppress osteoblasts.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

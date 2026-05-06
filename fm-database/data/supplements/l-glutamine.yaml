@@ -7,11 +7,11 @@ forms_available:
 typical_dose_range:
   powder:
     min: 5
-    max: 10
+    max: 15
     unit: g
   capsule:
-    min: 1500
-    max: 3000
+    min: 1000
+    max: 5000
     unit: mg
 timing_options:
 - on_empty_stomach
@@ -19,6 +19,7 @@ timing_options:
 - bedtime
 - evening
 - with_breakfast
+- on_waking
 take_with_food: optional
 linked_to_topics:
 - thyroid
@@ -32,6 +33,17 @@ linked_to_topics:
 - low-fodmap-diet
 - ibs
 - gut-dysfunction
+- gut-brain-axis
+- nervous-system-regulation
+- 5r-gut-restoration
+- chronic-pain-and-fatigue
+- intestinal-permeability
+- gut-dysbiosis
+- dysbiosis
+- hypochlorhydria
+- gut-skin-hormone-axis
+- 5r-gut-healing-protocol
+- leaky-gut-syndrome
 linked_to_claims:
 - leaky-gut-triggers-hashimotos
 - gluten-free-reduces-hashimotos-triggers
@@ -41,10 +53,21 @@ linked_to_claims:
 - l-glutamine-supports-gut-repair
 - fodmap-4-phase-fm-protocol
 - glutamine-repairs-gut-lining
-notes_for_coach: Key amino acid for gut lining repair in the 5R framework. Often used
-  for intestinal permeability support. Dosing requires clinician guidance.
-notes_for_client: Glutamine is a building block that helps repair and maintain the
-  gut lining.
+- glutamine-probiotics-repair-gut-brain-axis
+- gut-lining-repair-nutrients-zinc-vitamins-glutamine
+- glutamine-supports-gut-lining-repair
+- l-glutamine-aloe-vera-gut-lining-repair
+- l-glutamine-supports-gut-epithelial-repair
+- l-glutamine-zinc-carnosine-repair-gut-lining
+- glutamine-repairs-gut-epithelium
+- glutamine-is-primary-gut-epithelial-fuel
+- gut-repair-nutrients-support-epithelial-regeneration
+- 5rs-repair-includes-l-glutamine
+notes_for_coach: L-glutamine is a key fuel for enterocytes and helps repair tight
+  junctions. Used in the 'Repair' phase of 5Rs. Dose should be verified with clinician
+  for therapeutic use.
+notes_for_client: L-glutamine is an amino acid that your gut cells use as fuel to
+  repair and restore the intestinal lining.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -72,7 +95,39 @@ sources:
   quote: Help the lining of the GI tract repair itself by supplying key nutrients
     that can often be in short supply in a compromised gut, such as zinc, antioxidants
     (e.g. vitamins A, C, and E), fish oil, and the amino acid glutamine.
-version: 7
+- id: vitaone-health-coaching-toolkit
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: Combine gut healing (glutamine, probiotics) + vagal activation (gargling,
+    chanting, yoga).
+- id: vitaone-health-coaching-cheatsheet
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: Combine gut healing (glutamine, probiotics) + vagal activation (gargling,
+    chanting, yoga).
+- id: coconote-fm-chronic-pain-fatigue
+  location: Q&A / Constipation Protocol
+  quote: when it comes to the constipation protocol and we normally move to giving
+    L-glutamine, aloe vera and magnesium citrate all generally done in the same sequence
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Repair Section
+  quote: glutamine is an amino acid and apart from glutamine, You can consider other
+    nutrients like zinc, vitamin A, vitamin B, and essential fatty acids including
+    omega-3.
+- id: coconote-fm-gut-skin-hormone-axis
+  location: 5R Protocol — Repair
+  quote: L-glutamine and zinc carnosine help here in repairing the stomach lining.
+- id: coconote-fm-intestinal-permeability
+  location: 5R Protocol – Repair
+  quote: if you look at the gut lining, then the primary amino acid is glutamine and
+    that can help in rebuilding your gut epithelial cell.
+- id: coconote-fm-intestinal-permeability-anish
+  location: 5R Protocol — Repair
+  quote: The primary amino acid is glutamine and that can help in rebuilding your
+    gut epithelial cell.
+- id: coconote-fm-sibo-sifo
+  location: 5Rs Treatment Protocol – Repair
+  quote: When you go to complex cities, we also recommend zinc and the vitamin A and
+    the L-butamine, all of these things, repair is important.
+version: 16
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

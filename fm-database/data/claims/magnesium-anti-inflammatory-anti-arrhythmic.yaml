@@ -1,0 +1,32 @@
+slug: magnesium-anti-inflammatory-anti-arrhythmic
+statement: Magnesium supplementation lowers blood sugar, exerts anti-inflammatory
+  effects, supports bowel regularity, and helps prevent cardiac arrhythmias.
+evidence_tier: plausible_emerging
+rationale: Magnesium's role in arrhythmia prevention has clinical evidence (IV magnesium
+  in torsades de pointes is standard care). Oral supplementation effects on blood
+  sugar and inflammation have some RCT support but less conclusive evidence for arrhythmia
+  prevention specifically.
+coaching_translation: Magnesium is a heart-friendly mineral that many people don't
+  get enough of. It helps with blood sugar, inflammation, digestion, and may help
+  prevent irregular heartbeats.
+caveats:
+- Specific RCTs for oral magnesium and arrhythmia prevention in non-deficient patients
+  are limited.
+- Source is expert clinical practice recommendation, not a systematic review.
+- Dose should be guided by magnesium status testing.
+linked_to_topics:
+- cardiovascular-disease-prevention
+- metabolic-syndrome
+linked_to_supplements:
+- magnesium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Micronutrients in Clinical Practice
+  quote: Magnesium lowers blood sugar. Magnesium is anti-inflammatory. Magnesium helps
+    people have a bowel movement. Magnesium prevents arrhythmia.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

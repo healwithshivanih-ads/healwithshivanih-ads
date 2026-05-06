@@ -9,24 +9,32 @@ timing_options:
 - morning
 - evening
 - bedtime
+- mid_afternoon
 take_with_food: optional
 linked_to_topics:
 - gerd
 - gut-brain-axis
+- gerd-ppi-tapering
 linked_to_claims:
 - lemon-balm-reduces-anxiety-gerd
-notes_for_coach: Listed under 'Anxiety' in the PPI taper protocol, recognizing the
-  stress-GERD connection. Traditionally used as a calming herb.
-evidence_tier: fm_specific_thin
+- ppi-tapering-supplement-support-repair-protect-antioxidant
+notes_for_coach: Listed for 'Anxiety' support in PPI tapering protocol. Anxiety can
+  exacerbate GERD; lemon balm (Melissa officinalis) has calming properties and may
+  reduce stress-related GI symptoms.
+evidence_tier: plausible_emerging
 typical_dose_range: {}
 linked_to_mechanisms: []
-notes_for_client: ''
+notes_for_client: Lemon balm is a calming herb that may help reduce anxiety and stress-related
+  digestive symptoms while tapering off acid-blocking medications.
 sources:
 - id: vitaone-gut-toolkit
   location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
     — Supplement recommendations'
   quote: 'Anxiety: Lemon balm'
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
+  quote: 'Anxiety: Lemon balm.'
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

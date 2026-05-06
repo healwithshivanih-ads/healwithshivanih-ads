@@ -1,0 +1,26 @@
+slug: hypothyroidism-raises-cholesterol
+statement: Hypothyroidism is causally associated with elevated cholesterol — thyroid
+  function should be routinely assessed in patients with dyslipidemia.
+evidence_tier: strong
+rationale: Hypothyroidism-induced hypercholesterolemia is a well-established, textbook
+  clinical association supported by strong mechanistic and clinical evidence. Thyroid
+  hormone regulates LDL receptor expression.
+coaching_translation: An underactive thyroid can directly raise cholesterol levels.
+  This is one reason why it's important to check thyroid function when investigating
+  high cholesterol.
+out_of_scope_notes: Thyroid testing and treatment are clinician scope.
+caveats: []
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-disease-prevention
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Metabolic and Endocrine Risk Factors
+  quote: Always want to know thyroid function. Everyone knows this. Hypothyroidism,
+    high cholesterol. Those two go hand in hand.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

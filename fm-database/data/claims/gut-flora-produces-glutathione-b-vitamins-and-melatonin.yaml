@@ -1,0 +1,36 @@
+slug: gut-flora-produces-glutathione-b-vitamins-and-melatonin
+statement: Gut microorganisms are responsible for producing key endogenous compounds
+  including B vitamins, glutathione (the body's most potent antioxidant, not obtainable
+  directly from food), and melatonin.
+evidence_tier: plausible_emerging
+rationale: Gut microbial synthesis of B vitamins (B12, folate, biotin, etc.) is well-established.
+  The claim that dietary glutathione is not bioavailable is debated (some studies
+  show oral glutathione raises plasma levels). Gut-derived melatonin production is
+  emerging and plausible. The overall claim is well-grounded but contains some contested
+  specifics.
+coaching_translation: A healthy gut microbiome doesn't just help digestion — it produces
+  essential nutrients including B vitamins and the body's master antioxidant, glutathione.
+  Supporting your gut flora directly supports your energy, immunity, and cellular
+  repair.
+caveats:
+- The claim that glutathione cannot be obtained from food is contested — some research
+  shows oral bioavailability.
+- Specific B vitamin synthesis quantities from gut flora vary with diet and gut health
+  status.
+- Source is a practitioner talk.
+linked_to_topics:
+- gut-microbiome-and-gut-flora
+linked_to_supplements:
+- probiotic-lactobacillus-acidophilus-bifidus
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-gi-tract
+  location: Microbiome Nutrient Synthesis Section
+  quote: One is the B vitamin. Another one is glutathione... hailed as the most potent
+    antioxidant. You can't actually get your glutathione in food. It's a result of
+    the reaction of these microorganisms on our food. Also, melatonin is released.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

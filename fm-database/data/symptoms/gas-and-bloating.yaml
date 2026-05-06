@@ -1,24 +1,39 @@
 slug: gas-and-bloating
-display_name: Gas & Bloating
+display_name: Gas and Bloating
 aliases:
 - abdominal bloating
 - gassy stomach
 - puffy belly
+- digestive discomfort
+- abdominal distension
+- feeling bloated
+- excessive bloating
 category: gi
 severity: common
-description: Digestive discomfort including gas production and abdominal distension.
-  A well-documented benefit of probiotic use is improvement in these symptoms.
+description: Excess intestinal gas and abdominal distension due to fermentation of
+  undigested carbohydrates and fats by gut bacteria when enzyme activity is insufficient.
 linked_to_topics:
 - blood-sugar-dysfunction
+- pancreatic-insufficiency
 linked_to_mechanisms:
 - gut-microbiome-glucose-regulation
-when_to_refer: ''
+- exocrine-pancreatic-enzyme-deficiency
+- malabsorption
+when_to_refer: If accompanied by blood in stool, unexplained weight loss, or severe
+  pain — refer immediately.
 sources:
 - id: vitaone-blood-sugar-toolkit
   location: Micronutrients for Insulin Sensitivity
   quote: Some of the well documented benefits associated with probiotics are improvement
     in digestive symptoms, like gas & bloating.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Micronutrients for Insulin Sensitivity — INSULIN SENSITIZERS (cont.)
+  quote: Some of the well documented benefits associated with probiotics are improvement
+    in digestive symptoms, like gas & bloating.
+- id: coconote-fm-pancreatic-insufficiency
+  location: Signs and Symptoms
+  quote: Feeling excessive bloating, gas, edema.
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

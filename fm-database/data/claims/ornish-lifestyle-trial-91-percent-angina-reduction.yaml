@@ -1,0 +1,29 @@
+slug: ornish-lifestyle-trial-91-percent-angina-reduction
+statement: The Ornish Lifestyle Heart Trial demonstrated a 91% reduction in angina
+  (chest pain syndrome) and 8% improvement in diameter stenosis at 1 year, and 7.9%
+  at 5 years, with intensive lifestyle intervention (vegetarian diet, exercise, smoking
+  cessation, support groups).
+evidence_tier: strong
+rationale: The Ornish Lifestyle Heart Trial is a published landmark study (JAMA 1998).
+  Results are directly cited by a clinician who conducted the trial.
+coaching_translation: Intensive lifestyle change — eating mostly plants, exercising,
+  quitting smoking, and stress management — produced dramatic reductions in chest
+  pain and actual reversal of artery narrowing.
+caveats:
+- This was a high-intensity comprehensive lifestyle program — benefit may not generalize
+  to less intensive interventions.
+linked_to_topics:
+- cardiovascular-disease-prevention
+- mediterranean-diet-cvd
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Ornish Lifestyle Heart Trial
+  quote: 91% reduction in chest pain syndrome in Angina. It was unbelievable. 4.5
+    relative improvement in diameter stenosis after a year, 7.9% after five years.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

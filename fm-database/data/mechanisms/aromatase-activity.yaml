@@ -1,0 +1,34 @@
+slug: aromatase-activity
+display_name: Aromatase Activity
+aliases:
+- aromatization
+- androgen-to-estrogen conversion
+category: endocrine
+summary: Aromatase enzyme converts androgens (androstenedione, testosterone) into
+  estrogens (estrone, estradiol). Elevated aromatase activity — particularly in adipose
+  tissue — increases estrogen production and can contribute to estrogen dominance.
+  Can be modulated by dietary factors such as green tea (EGCG).
+upstream_drivers:
+- adiposity
+- androstenedione-excess
+- inflammation
+downstream_effects:
+- estrogen-dominance
+- low-testosterone
+related_mechanisms:
+- estrogen-progesterone-decline
+- beta-glucuronidase-reabsorption
+linked_to_topics:
+- estrogen-dominance
+- steroidogenesis
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-sex-hormones
+  location: Steroidogenesis Pathway
+  quote: aromatase activity is very important, you always check and piece away the
+    endosteic deion because the endosteic deion is appropriately constantly converting
+    into estrogen or estrone which is causing the estrogen dominance.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,26 @@
+slug: beta-blockers-indicated-secondary-prevention-arrhythmias
+statement: Beta blocker therapy is indicated for secondary prevention of cardiac events
+  and arrhythmias such as atrial fibrillation.
+evidence_tier: strong
+rationale: Extensive RCT evidence supports beta blocker use for post-MI secondary
+  prevention and rate control in atrial fibrillation.
+coaching_translation: Not all clients on beta blockers are candidates for de-prescribing
+  — those with a history of heart attack or irregular heart rhythms may genuinely
+  need them.
+out_of_scope_notes: Determination of indication for continued beta blocker use is
+  clinician scope.
+caveats: []
+linked_to_topics:
+- beta-blocker-deprescribing
+- cardiovascular-dysfunction
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Practitioners'
+  quote: Beta blockers therapy is indicated for secondary prevention of cardiac events
+    and arrhythmias such as atrial fibrillation.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

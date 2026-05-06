@@ -1,0 +1,26 @@
+slug: coconut-yogurt-inulin-worsens-ibs
+statement: Coconut yogurt brands containing added inulin or chicory root can worsen
+  IBS symptoms because inulin is a high-FODMAP ingredient (fructan).
+evidence_tier: strong
+rationale: Inulin is a well-documented high-FODMAP fructan. This is consistent with
+  Monash University guidance. Many 'gut health' products add inulin as a prebiotic,
+  inadvertently making them unsuitable for IBS patients.
+coaching_translation: When buying coconut yogurt or dairy-free alternatives, always
+  check the label for inulin or chicory root — these are added prebiotics that can
+  trigger your IBS symptoms.
+linked_to_topics:
+- low-fodmap-diet
+- ibs
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Saffron Coconut Yogurt Chia Bowl — Clinical note
+  quote: Choose coconut yogurt without added inulin/chicory root (can worsen IBS symptoms
+    in many).
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,28 @@
+slug: smaller-meals-and-chewing-support-enzyme-function
+statement: Eating smaller, lighter meals and thoroughly chewing food reduces the digestive
+  burden and supports enzymatic function in patients with pancreatic insufficiency.
+evidence_tier: plausible_emerging
+rationale: Mechanical digestion via chewing reduces particle size and increases surface
+  area for enzyme action. Smaller meals reduce the quantity of enzyme substrate presented
+  at any one time, a practical strategy consistent with standard dietary advice for
+  GI dysfunction.
+coaching_translation: Chewing food thoroughly and eating smaller, lighter meals helps
+  take the pressure off your digestive system when enzyme production is low. This
+  is a simple and safe behaviour change that can make a meaningful difference.
+linked_to_topics:
+- pancreatic-insufficiency
+caveats:
+- Source is an expert consensus lecture. Evidence is largely mechanistic and based
+  on physiological reasoning rather than RCTs.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-pancreatic-insufficiency
+  location: Management / Support Strategies
+  quote: It's advice for the patient to take lighter food, less and adjust to the
+    food, masticate the food, chew it properly, roll down the food in a better way.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

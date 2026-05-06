@@ -1,0 +1,27 @@
+slug: low-motivation
+display_name: Low Motivation
+aliases:
+- lack of motivation
+- not feeling motivated
+- no drive to change
+- apathy toward health goals
+category: mood
+severity: common
+description: Client reports diminished desire or energy to pursue health behavior
+  changes, often co-occurring with ambivalence, past failure, or unclear personal
+  values around health.
+when_to_refer: Persistent low motivation with low mood, anhedonia, or functional impairment
+  should be referred to a mental health clinician to rule out depression.
+linked_to_topics:
+- ambivalence-in-coaching
+linked_to_mechanisms:
+- change-talk-activation
+sources:
+- id: ask-expert-coaching-ambivalence
+  location: Group discussion — ambivalence coaching strategies
+  quote: Working with motivation and exploring that a little bit more is important
+    to move your client forward.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,39 @@
+slug: gut-immune-barrier-function
+display_name: Gut Immune Barrier Function
+aliases:
+- gut barrier
+- intestinal immune defence
+- mucosa-associated lymphoid tissue
+category: immune
+summary: Gut flora microorganisms protect the blood against harmful pathogens in the
+  gut, nourish the intestinal epithelial cells, and form an integral part of the immune
+  system. Loss of this barrier (leaky gut) allows undigested particles and pathogens
+  into the bloodstream, triggering systemic inflammation and autoimmune-like presentations.
+upstream_drivers:
+- antibiotic-exposure
+- statin-use
+- dietary-irritants
+- gut-microbiome-disruption
+downstream_effects:
+- systemic-inflammation
+- food-sensitivities
+- autoimmune-presentations
+- nutrient-malabsorption
+related_mechanisms:
+- gut-microbiome-colonisation
+- microbiome-nutrient-synthesis
+linked_to_topics:
+- leaky-gut
+- gut-microbiome-and-gut-flora
+- inflammatory-bowel-conditions
+evidence_tier: plausible_emerging
+sources:
+- id: barbara-oneil-gi-tract
+  location: Microbiome Section
+  quote: These microorganisms play a protective role. They are actually an integral
+    part of our immune system. They're protecting our blood against any harmful pathogens
+    that might be in the gut.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

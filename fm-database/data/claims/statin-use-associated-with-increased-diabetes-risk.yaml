@@ -1,0 +1,33 @@
+slug: statin-use-associated-with-increased-diabetes-risk
+statement: Long-term statin use is associated with increased risk of developing type
+  2 diabetes.
+evidence_tier: plausible_emerging
+rationale: The document explicitly states patients who started statins developed diabetes
+  over 10–15 years, and notes that even for a younger patient with borderline diabetes
+  indicators, starting statins would 'increase the incidence and develop a more complicated
+  diabetes pathogen.' This is consistent with published pharmacovigilance data on
+  statin-associated new-onset diabetes (e.g., Sattar et al., Lancet 2010), though
+  the source document does not cite specific studies.
+coaching_translation: Statins have been linked to a higher chance of developing diabetes
+  over time. If you're on statins and your blood sugar is creeping up, ask your doctor
+  about this connection.
+caveats:
+- Source is expert consensus lecture. The pharmacovigilance evidence on statin-associated
+  diabetes does exist in the literature (Sattar et al., Lancet, 2010), but the document
+  does not cite it directly.
+- Risk-benefit must be assessed individually, especially in secondary prevention.
+linked_to_topics:
+- statin-therapy-risks-and-benefits
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: 'Case discussion: young diabetic patient'
+  quote: I guarantee that if you start a certain drug, he will already start developing
+    diabetes, but he will again increase the incidence and develop a more complicated
+    diabetes pathogen.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

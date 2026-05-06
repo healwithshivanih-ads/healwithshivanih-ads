@@ -1,0 +1,35 @@
+slug: craft-patterns-classify-insulin-resistance-severity
+statement: Dr. Craft's insulin pattern classification (Patterns 1–5) categorizes insulin
+  resistance from normal (Pattern 1) through mild/moderate/severe insulin resistance
+  (Patterns 2–4) to overt diabetes (Pattern 5), based on postprandial insulin and
+  glucose curves.
+evidence_tier: plausible_emerging
+rationale: The lecture references Dr. Craft's research and pattern classification
+  system. Craft's work on hyperinsulinemia is published (notably linked to Alzheimer's
+  research), but the 5-pattern classification for insulin resistance is more FM-specific
+  and not yet mainstream in conventional medicine.
+coaching_translation: There's a way to 'grade' how much your pancreas is struggling
+  — from early warning signs all the way to full diabetes — just by looking at how
+  insulin behaves over two hours after a glucose drink.
+out_of_scope_notes: Pattern classification is a clinician tool. Coaches should not
+  attempt to classify client patterns from lab results.
+caveats:
+- Craft's 5-pattern system is more widely used in FM than in conventional medicine.
+- Source is an FM lecture; primary literature citation for this specific classification
+  system was not provided.
+- Should be verified with clinician familiar with GTIR interpretation.
+linked_to_topics:
+- insulin-resistance-early-detection
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-gtir
+  location: Craft Pattern Classification
+  quote: dr craft many years back in the study and he find out insulin increase in
+    the initial resistance very early even before the blood sugar gets raised so here
+    observe the pattern and you classify the pattern as a graph pattern pattern one
+    two three four and five
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,35 @@
+slug: cold-water-immersion-mental-health
+display_name: Cold Water Immersion & Mental Health
+aliases:
+- CWI antidepressant effects
+- cold water mood benefits
+- cold water anxiety relief
+summary: Regular CWI is associated with increased plasma noradrenaline and beta-endorphin
+  levels, improved mood, reduced anxiety, and potential antidepressant effects. Most
+  evidence comes from questionnaire-based studies rather than clinical trials.
+common_symptoms:
+- depressive-symptoms
+- low-mood-anxiety
+- low-wellbeing
+related_topics:
+- cold-water-immersion
+key_mechanisms:
+- noradrenaline-signaling
+- beta-endorphin-release
+coaching_scope_notes: Mood and wellbeing improvements from CWI are commonly self-reported
+  and biologically plausible. Coaches can support integration as a wellbeing tool.
+  Do not position as a clinical treatment for depression.
+clinician_scope_notes: Antidepressant effects are not yet established in RCTs. Evidence
+  primarily from questionnaires. Refer clients with clinical depression to a mental
+  health professional.
+evidence_tier: plausible_emerging
+red_flags: []
+sources:
+- id: espeland-2022-cold-water-immersion
+  location: Mental Health
+  quote: Regular CWI increased plasma noradrenaline and beta-endorphin, potentially
+    relieving depressive symptoms.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

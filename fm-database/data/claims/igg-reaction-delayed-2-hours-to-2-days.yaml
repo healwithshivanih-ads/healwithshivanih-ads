@@ -1,0 +1,29 @@
+slug: igg-reaction-delayed-2-hours-to-2-days
+statement: IgG-mediated food sensitivity symptoms are delayed, occurring 2 hours to
+  2 days after food exposure.
+evidence_tier: plausible_emerging
+rationale: The delayed nature of IgG immune complex reactions is biologically plausible
+  and widely cited in FM, but the precise 2-hour to 2-day window is not uniformly
+  established in RCTs. Expert consensus from FM practice.
+coaching_translation: Help clients understand why they can't easily connect their
+  symptoms to a specific food — the reaction may not show up until the next day or
+  two days later. A food-symptom diary is essential.
+caveats:
+- Source is expert lecture; specific timing range is FM clinical observation, not
+  meta-analytic data.
+- Individual variation in timing is significant.
+linked_to_topics:
+- food-sensitivity-igg-iga-mediated
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-food-allergies-sensitivities
+  location: Definition of Food Reactions Section
+  quote: Delayed means when the exposure of food antigen happens, the reaction of
+    that or symptoms of that food sensitivity is delayed maybe after two hours to
+    two days.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

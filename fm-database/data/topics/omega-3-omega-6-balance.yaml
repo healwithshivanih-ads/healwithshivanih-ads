@@ -1,0 +1,37 @@
+slug: omega-3-omega-6-balance
+display_name: Omega-3 / Omega-6 Balance
+aliases:
+- fatty acid ratio
+- AA:EPA ratio
+- polyunsaturated fat balance
+summary: The ratio of omega-3 to omega-6 fatty acids in cell membranes determines
+  downstream inflammatory potential. High omega-6 (especially arachidonic acid from
+  animal protein) provides substrate for pro-inflammatory prostaglandins and cytokines
+  via COX and LOX enzymes. High omega-3 competes for the same enzymes, displacing
+  omega-6 and reducing downstream inflammation. Therapeutic goal is to shift the membrane
+  composition toward omega-3 dominance over 3–6 months.
+common_symptoms:
+- joint-pain
+- chronic-pain
+- systemic-inflammation
+related_topics:
+- chronic-inflammation
+- anti-inflammatory-diet
+key_mechanisms:
+- arachidonic-acid-cascade
+- cox-lox-enzyme-competition
+coaching_scope_notes: Coaches can guide clients on increasing omega-3 foods (flaxseeds,
+  walnuts, chia, fish) and eliminating refined omega-6 oils. Therapeutic dosing of
+  EPA/DHA should involve clinician guidance.
+evidence_tier: strong
+red_flags: []
+clinician_scope_notes: ''
+sources:
+- id: coconote-fm-approach-inflammation
+  location: Diet and Anti-Inflammatory Principles – Arachidonic Acid
+  quote: if your cell membrane is high in omega-3, even if you have a chronic trigger,
+    the chronic trigger will not lead to the degradation of that lacedonic acid.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

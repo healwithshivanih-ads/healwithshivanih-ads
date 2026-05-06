@@ -1,19 +1,27 @@
 slug: glycoalkaloid-toxicity
-display_name: Glycoalkaloid-Mediated Gut Toxicity
+display_name: Glycoalkaloid Toxicity from Nightshades
 aliases:
 - solanine toxicity
 - nightshade alkaloid effect
-category: gut
-summary: Glycoalkaloids (solanine, chaconine, tomatine) in nightshade plants can disrupt
-  cell membrane integrity in the intestinal epithelium and inhibit cholinesterase,
-  causing GI symptoms and, in high doses, neurological effects.
+category: immune
+summary: Nightshade plants contain glycoalkaloids (e.g., solanine in potato, tomatine
+  in tomato) that can cause GI, neurological, and cardiovascular symptoms in sensitive
+  individuals or at high doses.
 upstream_drivers:
 - high-nightshade-intake
 - genetic-sensitivity
+- nightshade-food-intake
+- high-dose-glycoalkaloid-exposure
 downstream_effects:
 - gi-inflammation
 - neurological-symptoms
 - gut-barrier-dysfunction
+- abdominal-pain
+- nausea
+- diarrhea
+- drowsiness
+- low-blood-pressure
+- weakness
 related_mechanisms:
 - gut-barrier-dysfunction
 - immune-food-reactivity
@@ -26,7 +34,11 @@ sources:
   location: Nightshade Food Triggers — References
   quote: Toxic Chemical Compounds of the Solanaceae... glycoalkaloids in feed and
     food, in particular in potatoes and potato-derived products.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Nightshade Food Triggers
+  quote: The edible plants can cause adverse food reactions, inflammation, and other
+    health concerns in a small number of individuals.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

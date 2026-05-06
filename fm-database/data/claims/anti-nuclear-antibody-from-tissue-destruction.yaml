@@ -1,0 +1,29 @@
+slug: anti-nuclear-antibody-from-tissue-destruction
+statement: Anti-nuclear antibodies (ANA) are produced when tissue destruction releases
+  nuclear fragments into the bloodstream, prompting the immune system to generate
+  antibodies against these self-antigens.
+evidence_tier: strong
+rationale: ANA production as a consequence of nuclear material release from destroyed
+  cells is well-established in immunology and rheumatology. The document explains
+  this mechanism clearly and it aligns with mainstream understanding.
+coaching_translation: A positive ANA test often reflects ongoing tissue destruction
+  and immune activation — it's a signal to refer the client to a clinician for full
+  autoimmune workup.
+out_of_scope_notes: ANA interpretation is exclusively clinician-scope. Coaches should
+  refer if a client mentions ANA results.
+caveats: []
+linked_to_topics:
+- autoimmunity-leaky-gut-triad
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-intestinal-permeability
+  location: Cross Reactivity and Molecular Mimicry
+  quote: So simple meaning of anti-nuclear antibody is your immune system is creating
+    antibody to this nuclear fragment. Because you have inflammation, because you
+    have tissue destruction, this nucleic acid and particle of a nucleus is actually
+    getting leaked from the tissue or from the cell to the bloodstream.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

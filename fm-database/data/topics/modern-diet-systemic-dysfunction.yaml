@@ -1,0 +1,45 @@
+slug: modern-diet-systemic-dysfunction
+display_name: Modern Diet & System-Wide Metabolic Dysfunction
+aliases:
+- ultra-processed food harms
+- dietary inflammation
+- nutritional biochemistry
+summary: Ultra-processed foods, refined carbohydrates, industrial seed oils, low-fibre
+  diets, and excess sugar drive oxidative stress, insulin resistance, gut dysbiosis,
+  hormonal disruption, and mitochondrial dysfunction simultaneously across multiple
+  organ systems.
+common_symptoms:
+- acne
+- pms
+- fatigue
+- bloating
+- constipation
+- migraines
+- mood-swings
+- belly-fat
+red_flags: []
+related_topics:
+- metabolic-health-lchf
+- gut-health-fodmap-sibo
+- immune-nutrition
+- insulin-resistance-metabolic-syndrome
+key_mechanisms:
+- oxidative-stress
+- insulin-resistance
+- gut-dysbiosis
+- estrogen-imbalance-gut-axis
+coaching_scope_notes: Coaches can guide removal of ultra-processed foods, refined
+  carbs, and industrial seed oils while supporting fibre, diversity, and anti-inflammatory
+  food choices.
+clinician_scope_notes: Consider liver function and NAFLD screening when insulin resistance
+  and dietary quality are poor. Assess microbiome and estrogen metabolism markers.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXWoFj6jGCY/
+  quote: 'Modern diet isn''t breaking one system: it''s breaking all core systems
+    at once: gut → liver → hormones → brain → mitochondria → immunity'
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

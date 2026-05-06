@@ -1,0 +1,28 @@
+slug: dysbiosis-neurological-chronic-pain-link
+statement: Gut dysbiosis is associated with neurological manifestations including
+  chronic pain.
+evidence_tier: plausible_emerging
+rationale: The gut-brain axis and gut microbiome influence on pain perception and
+  neuroinflammation is an active research area with growing evidence, including PubMed-indexed
+  studies cited in the lecture.
+coaching_translation: Chronic pain is not just a musculoskeletal problem — an unhealthy
+  gut microbiome can amplify pain signals through the gut-brain connection.
+caveats:
+- Source cites 'a PubMed article' without specific author/year/journal — cannot confirm
+  evidence tier as strong.
+- Treat as plausible_emerging pending specific citation.
+linked_to_topics:
+- dysbiosis
+- chronic-pain-and-fatigue
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-chronic-pain-fatigue
+  location: Digestion Section
+  quote: So association between dysbiosis and neurological conditions often manifest
+    with chronic pain.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

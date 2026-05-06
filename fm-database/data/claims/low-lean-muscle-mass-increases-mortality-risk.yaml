@@ -1,0 +1,27 @@
+slug: low-lean-muscle-mass-increases-mortality-risk
+statement: Low lean muscle mass is associated with increased risk of death and is
+  a clinically important finding in body composition assessment, particularly as patients
+  age.
+evidence_tier: strong
+rationale: Association between low lean muscle mass (sarcopenia) and all-cause mortality
+  is well-established in geriatric and general medicine literature.
+coaching_translation: Having enough muscle isn't just about looking fit — it's a powerful
+  predictor of long-term health and longevity. Building and preserving muscle becomes
+  increasingly important as we get older.
+caveats: []
+linked_to_topics:
+- body-composition-assessment
+- bioelectrical-impedance-analysis
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-body-composition-bmi
+  location: Lean Muscle Mass Section
+  quote: The risk of death is higher in patients with low lean muscle mass. And so
+    that's really important that we're identifying it. You know, it's a considerable
+    problem as patients get older and something we want to really work against.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

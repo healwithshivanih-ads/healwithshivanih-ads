@@ -1,0 +1,31 @@
+slug: lectins-disarmed-by-proper-preparation
+statement: Lectins in legumes, grains, and nightshade vegetables are significantly
+  reduced or eliminated by soaking, thorough rinsing, pressure cooking, or fermentation
+  (sourdough/dosa/idli methods).
+evidence_tier: plausible_emerging
+rationale: There is reasonable published evidence that lectin content in legumes is
+  reduced by soaking, boiling, and pressure cooking. Fermentation has demonstrated
+  effects on anti-nutritional factors including lectins. The claim is supported by
+  food science literature, though the extent of elimination varies by food and method.
+coaching_translation: 'You don''t need to fear lectins — just prepare your food traditionally:
+  soak beans overnight, rinse quinoa thoroughly, use sourdough bread, and de-seed
+  tomatoes and peppers.'
+caveats:
+- The degree of lectin reduction varies by food and preparation method. 'Total elimination'
+  by pressure cooking is supported for some legumes but may not apply universally.
+- Source is a lecture transcript.
+linked_to_topics:
+- lectin-sensitivity
+- gluten-intolerance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-ph-balance
+  location: Lectins Section
+  quote: If your legumes are well soaked, very well rinsed, in fact pressure cookery
+    totally kills off the lectin.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

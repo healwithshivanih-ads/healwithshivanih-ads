@@ -1,0 +1,45 @@
+slug: digestive-enzymes-broad-spectrum
+display_name: Digestive Enzymes (Broad Spectrum)
+category: enzyme
+forms_available:
+- capsule
+- tablet
+- powder
+typical_dose_range:
+  capsule:
+    min: 1
+    max: 2
+    unit: capsules
+  tablet:
+    min: 1
+    max: 2
+    unit: tablets
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- pancreatic-insufficiency
+- digestive-enzyme-supplementation
+linked_to_claims:
+- digestive-enzyme-supplementation-supports-macronutrient-breakdown
+- smaller-meals-and-chewing-support-enzyme-function
+notes_for_coach: Recommend broad-spectrum formulas containing lipase, protease, and
+  amylase taken with main meals. Prescription pancreatic enzyme replacement (e.g.,
+  Creon) is out of coaching scope — refer to clinician for confirmed EPI. Source is
+  expert consensus lecture; verify specific dosing with prescribing clinician.
+notes_for_client: Digestive enzyme capsules taken with meals help your body break
+  down fats, proteins, and carbohydrates when your pancreas isn't producing enough
+  on its own. Take them at the start of each meal for best effect.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-pancreatic-insufficiency
+  location: Management / Support Strategies
+  quote: Digestive enzymes as supplementation, which should be given to support the
+    production and breakdown of the food.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

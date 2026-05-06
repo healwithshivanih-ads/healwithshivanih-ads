@@ -1,0 +1,28 @@
+slug: care-plan-overwhelm
+display_name: Care Plan Overwhelm
+aliases:
+- information overload after provider visit
+- too many health recommendations at once
+- overwhelmed by health plan
+category: neurological
+severity: common
+description: A patient's experience of feeling overwhelmed after receiving a complex,
+  multi-step functional medicine care plan (diet, supplements, stress management,
+  lifestyle changes) in a single appointment, leading to poor implementation and adherence.
+when_to_refer: If overwhelm is accompanied by significant anxiety, depression, or
+  inability to function, refer to a mental health professional.
+linked_to_topics:
+- functional-medicine-coaching
+- chronic-disease-management
+- coach-clinician-collaboration
+linked_to_mechanisms:
+- behavior-change-accountability
+sources:
+- id: ask-expert-future-fm
+  location: Role of Coach as Strategic Collaborator Section
+  quote: They're getting these really comprehensive care plans, but they're not formulated
+    in step-by-step ways for people to implement realistically into their life.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

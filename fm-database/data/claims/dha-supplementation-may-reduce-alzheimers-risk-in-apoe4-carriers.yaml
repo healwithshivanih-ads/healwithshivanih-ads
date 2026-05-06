@@ -1,0 +1,34 @@
+slug: dha-supplementation-may-reduce-alzheimers-risk-in-apoe4-carriers
+statement: Early DHA supplementation in ApoE4 carriers may decrease the risk of Alzheimer's
+  disease, but must be initiated prior to symptom onset; doses greater than 1g/day
+  are required for improved brain bioavailability.
+evidence_tier: plausible_emerging
+rationale: Cited as a specific study association in the lecture. ApoE4 genotype is
+  the strongest genetic risk factor for late-onset Alzheimer's. DHA is the dominant
+  omega-3 in brain tissue. The requirement for >1g/day for brain bioavailability in
+  ApoE4 carriers is specifically mentioned. Source is FM lecture of moderate quality.
+coaching_translation: If you or a family member has the ApoE4 gene variant, starting
+  DHA supplementation early — before any symptoms appear — may help protect the brain.
+out_of_scope_notes: ApoE4 genotype testing and clinical interpretation is outside
+  coaching scope. Refer to clinician or genetic counselor.
+caveats:
+- Study shows association in ApoE4 carriers specifically — may not generalize.
+- Must be started before symptom onset to be effective.
+- Dosing >1g/day for brain benefit should be clinician-supervised.
+- Source is FM lecture, not primary paper.
+linked_to_topics:
+- omega-3-fatty-acids
+linked_to_supplements:
+- epa-dha-fish-oil
+- algae-oil-dha-epa
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-omega-3-fatty-acids
+  location: DHA and Alzheimer's Disease Study Slide
+  quote: early supplementation of DHA in ApoE4 carriers, those who have a genetic
+    defect may decrease the risk of Alzheimer's disease but must be started prior
+    to symptom onset.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

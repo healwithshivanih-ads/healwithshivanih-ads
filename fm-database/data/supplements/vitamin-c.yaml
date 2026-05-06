@@ -9,16 +9,16 @@ forms_available:
 - gummy
 typical_dose_range:
   capsule:
-    min: 2000
-    max: 3000
+    min: 500
+    max: 2000
     unit: mg
   tablet:
     min: 250
     max: 1000
     unit: mg
   powder:
-    min: 2000
-    max: 3000
+    min: 1000
+    max: 5000
     unit: mg
   liquid:
     min: 1000
@@ -32,11 +32,12 @@ timing_options:
 - with_lunch
 - with_dinner
 - on_empty_stomach
+- evening
 take_with_food: optional
-notes_for_coach: Used pre-amalgam removal (2–3g/day for 7 days) and continued post-procedure.
-  Listed as Phase I antioxidant protective nutrient. Higher IV doses on procedure
-  day are clinician scope.
-evidence_tier: plausible_emerging
+notes_for_coach: Vitamin C taken simultaneously with iron-rich foods or supplements
+  enhances non-haem iron absorption. Also an adrenal nutrient and antioxidant. High
+  doses (>2g) may cause GI upset.
+evidence_tier: strong
 linked_to_topics:
 - thyroid
 - estrogen-dominance
@@ -54,6 +55,16 @@ linked_to_topics:
 - mitochondrial-health-nutrition
 - liver-detoxification
 - mercury-amalgam-removal
+- hpa-axis-dysfunction
+- hypercortisolism
+- gut-dysfunction
+- 5r-gut-restoration
+- immune-support-covid-19
+- oxidative-stress
+- iron-deficiency-dysregulation
+- adrenal-cortisol-resilience
+- male-infertility-oxidative-stress
+- immune-nutrition
 linked_to_mechanisms: []
 linked_to_claims:
 - adaptogens-rebalance-hpa-axis
@@ -63,8 +74,16 @@ linked_to_claims:
 - vitamin-c-immune-cellular-support
 - vitamin-c-linked-to-cognitive-performance
 - selenium-vitamin-e-antioxidant-support-detox
-notes_for_client: Vitamin C is a powerful antioxidant that helps protect your cells
-  during detoxification. High-dose IV vitamin C on procedure day requires a clinician.
+- dietary-changes-support-adrenal-restoration
+- gut-lining-repair-nutrients-zinc-vitamins-glutamine
+- vitamin-c-supports-immune-cellular-functions
+- vitamin-c-primary-antioxidant-anti-inflammatory
+- vitamin-c-enhances-iron-absorption
+- antioxidant-rotation-improves-male-fertility
+- magnesium-b5-c-zinc-omega3-support-adrenal-resilience
+notes_for_client: Taking vitamin C with iron-rich meals or supplements helps your
+  body absorb iron more effectively. It also supports your immune system and stress
+  response.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
@@ -101,7 +120,18 @@ sources:
 - id: vitaone-liver-detox-toolkit
   location: Dental Amalgam Removal Protocol — Pre-Procedure
   quote: 'Vitamin C: 2–3 grams'
-version: 9
+- id: vitaone-health-coaching-toolkit
+  location: Hypercortisolism — Restoration
+  quote: Get adequate vitamin C.
+- id: coconote-fm-approach-inflammation
+  location: Nutrition – Antioxidant Vitamins
+  quote: vitamin C is a primary anti-inflammatory or antioxidant. So increase the
+    vitamin C from the diet, you can prescribe the vitamin C in a capsule form or
+    paste way, you can prescribe it in a humla.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXy9b_KjJT2/
+  quote: Pair iron with Vitamin C for better absorption
+version: 14
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

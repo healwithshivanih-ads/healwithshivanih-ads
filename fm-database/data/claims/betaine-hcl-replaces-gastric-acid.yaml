@@ -1,0 +1,30 @@
+slug: betaine-hcl-replaces-gastric-acid
+statement: Betaine HCL supplementation with meals can temporarily replace deficient
+  gastric acid, reducing fermentative reflux symptoms in patients with confirmed hypochlorhydria.
+evidence_tier: fm_specific_thin
+rationale: Biologically plausible — exogenous HCl can acidify the stomach and support
+  pepsinogen activation. FM-endorsed but supported by limited controlled trials. Source
+  is expert consensus.
+coaching_translation: Taking a Betaine HCL capsule with protein-containing meals provides
+  the stomach acid your stomach isn't making enough of, helping you digest food properly
+  and reducing bloating, reflux, and fullness after eating.
+out_of_scope_notes: Dosing decisions and duration of use are a clinician task.
+caveats:
+- Not a permanent fix — the goal is to restore natural HCl production.
+- Source is expert consensus lecture.
+- Verify with clinician before use.
+linked_to_topics:
+- hypochlorhydria
+linked_to_supplements:
+- betaine-hcl
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-hypochlorhydria
+  location: Diagnosis — Betaine HCL Challenge
+  quote: The betaine itself is helping them to digest the food and eventually not
+    causing any kind of gastric reflux but again it's not a long-term treatment you
+    have to monitor the patient.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

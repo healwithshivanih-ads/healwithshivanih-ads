@@ -1,0 +1,34 @@
+slug: low-energy
+display_name: Low Energy / Chronic Fatigue
+aliases:
+- chronic fatigue
+- tiredness
+- exhaustion
+- low energy
+- always tired
+- no energy
+category: constitutional
+severity: common
+description: Persistent low energy that does not resolve with rest; often linked to
+  nutrient deficiencies (B12, iron, vitamin D, omega-3), gut dysfunction, poor sleep,
+  blood sugar dysregulation, and systemic inflammation.
+when_to_refer: Refer if fatigue is severe and disabling, associated with night sweats,
+  weight loss, or neurological symptoms (rule out malignancy, autoimmune disease,
+  thyroid disease).
+linked_to_topics:
+- chronic-pain-and-fatigue
+- low-stomach-acid
+- dysbiosis
+linked_to_mechanisms:
+- nutrient-malabsorption
+- systemic-inflammation
+- hpa-axis-dysregulation
+- dysbiosis
+sources:
+- id: coconote-fm-chronic-pain-fatigue
+  location: Case Study
+  quote: The only thing that she wants from me is to improve her energy.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

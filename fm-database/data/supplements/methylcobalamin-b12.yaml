@@ -1,0 +1,42 @@
+slug: methylcobalamin-b12
+display_name: Methylcobalamin (Active Vitamin B12)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+- lozenge
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 2000
+    unit: mcg
+  lozenge:
+    min: 500
+    max: 2000
+    unit: mcg
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- homocysteine-and-methylation
+- cardiometabolic-disease
+linked_to_claims:
+- active-b-vitamins-lower-homocysteine
+- mthfr-variants-increase-cvd-risk-via-homocysteine
+notes_for_coach: Methylcobalamin is the active, methyl-donor form of B12. Used with
+  methylfolate and B6 to support the methylation cycle and lower homocysteine. Sublingual
+  or lozenge forms may improve absorption in those with gastric issues.
+notes_for_client: The active form of B12 that supports your body's methylation process
+  and helps keep homocysteine levels in a healthy range.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-biomarkers-cvs
+  location: Homocysteine and Clotting
+  quote: also vitamin B12. The active form of vitamin B12 is methylglycerol, I mean,
+    methyl donor.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

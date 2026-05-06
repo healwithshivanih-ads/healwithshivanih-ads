@@ -1,0 +1,28 @@
+slug: nitric-oxide-cranial-circulation
+display_name: Nitric Oxide Release via Humming Breath
+category: neurological
+summary: Humming during exhalation (Brahmari pranayama) increases nasal nitric oxide
+  production by 10–15x, improving sinus and cranial circulation, soothing the trigeminal
+  nerve, and relieving tension headaches and migraines behind the eyes.
+upstream_drivers:
+- brahmari-pranayama
+- humming-breath-practice
+downstream_effects:
+- improved-cranial-circulation
+- trigeminal-nerve-soothing
+- headache-relief
+related_mechanisms:
+- vagus-nerve-activation
+linked_to_topics:
+- gut-brain-axis
+evidence_tier: plausible_emerging
+aliases: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: MIGRAINE / HEADACHE — Humming Breath (Brahmari)
+  quote: Nitric oxide increases 10–15x → improves sinus/cranial circulation. Vibrations
+    soothe trigeminal nerve.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

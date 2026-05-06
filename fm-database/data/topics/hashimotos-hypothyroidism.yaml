@@ -4,9 +4,12 @@ aliases:
 - Hashimoto's disease
 - autoimmune thyroiditis
 - chronic lymphocytic thyroiditis
-summary: An autoimmune disorder where the immune system produces antibodies against
-  thyroid peroxidase (TPO) and thyroglobulin (Tg), causing chronic thyroid inflammation,
-  progressive tissue destruction, and eventual hypothyroidism. The most common cause
+- Hashimoto's thyroiditis
+- autoimmune hypothyroidism
+- AIT
+summary: An autoimmune disorder in which the immune system produces antibodies targeting
+  thyroid peroxidase (TPO) and thyroglobulin (Tg), leading to chronic thyroid inflammation,
+  progressive tissue destruction, and ultimately hypothyroidism. The most common cause
   of hypothyroidism in developed countries.
 common_symptoms:
 - fatigue
@@ -23,23 +26,36 @@ common_symptoms:
 - hoarse-voice
 - goiter
 - infertility
+- anxiety
+- muscle-aches
+- hoarseness
 red_flags:
 - Goiter with compressive symptoms (difficulty swallowing/breathing)
 - Elevated TPO antibodies with worsening symptoms
 - Pregnancy complications
+- infertility or recurrent miscarriage
+- cardiovascular complications (high cholesterol, hypertension)
+- goiter with difficulty swallowing
+- pregnancy complications
 related_topics:
 - hypothyroidism
 - subclinical-hypothyroidism
 - leaky-gut
+- thyroid-dysfunction
+- leaky-gut-autoimmune-connection
 key_mechanisms:
 - autoimmune-thyroid-attack
 - thyroid-hormone-conversion
 - leaky-gut
-coaching_scope_notes: Coaches can support AIP diet, gluten/dairy elimination trials,
-  stress management, sleep, and targeted nutrient optimization. Antibody testing and
-  medication management are clinician scope.
-clinician_scope_notes: Diagnose with TSH, free T4, anti-TPO, anti-Tg antibodies, and
-  thyroid ultrasound. Manage with levothyroxine or NDT. Monitor antibodies over time.
+- t4-to-t3-conversion-impairment
+coaching_scope_notes: Coaches can support Hashimoto's clients through anti-inflammatory
+  dietary strategies (gluten-free, AIP, dairy elimination), gut healing protocols
+  (5R), stress management, selenium/zinc/vitamin D optimization, and sleep hygiene.
+  Antibody testing, medication, and lab interpretation must be referred to a clinician.
+clinician_scope_notes: Diagnosis requires elevated Anti-TPO and/or Anti-Tg antibodies
+  plus TSH/free T4. Ultrasound may reveal structural changes. Levothyroxine or NDT
+  are standard pharmacological options. LDN use in AIT is an emerging area with no
+  published RCTs specific to AIT as of document date.
 evidence_tier: strong
 sources:
 - id: vitaone-thyroid-toolkit
@@ -47,7 +63,12 @@ sources:
   quote: In Hashimoto's disease, the immune system produces antibodies that attack
     the thyroid gland, specifically targeting thyroid peroxidase (TPO) and thyroglobulin
     (Tg), which are essential for thyroid hormone production.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Understanding Hashimoto's Hypothyroidism — What is Hashimoto's Hypothyroidism?
+  quote: Hashimoto's hypothyroidism, also known simply as Hashimoto's disease, is
+    an autoimmune disorder in which the immune system mistakenly attacks the thyroid
+    gland, leading to chronic inflammation & gradual destruction of thyroid tissue.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

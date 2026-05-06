@@ -1,0 +1,39 @@
+slug: mthfr-enzyme-dysfunction
+display_name: MTHFR Enzyme Dysfunction
+aliases:
+- MTHFR deficiency
+- methylenetetrahydrofolate reductase impairment
+category: endocrine
+summary: Genetic variants in the MTHFR gene reduce activity of the MTHFR enzyme, impairing
+  conversion of 5,10-methyleneTHF to 5-methylTHF (active folate). This downstream
+  impairs homocysteine remethylation to methionine, reduces SAM availability, and
+  disrupts DNA methylation, neurotransmitter synthesis, and glutathione production.
+upstream_drivers:
+- mthfr-c677t-polymorphism
+- mthfr-a1298c-polymorphism
+downstream_effects:
+- elevated-homocysteine
+- impaired-methylation
+- reduced-sam
+- reduced-glutathione
+- neurotransmitter-deficiency
+related_mechanisms:
+- impaired-homocysteine-remethylation
+- methylation
+- sam-cycle
+linked_to_topics:
+- mthfr-gene-variant
+- folate-vitamin-b9
+- homocysteine-elevation
+- methylation
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: Summary / MTHFR section
+  quote: MTHFR enzyme plays a key role in the metabolism of folate as we have seen
+    in the folate pathway where it converts the 5,10-methylene tetrahydrofolate to
+    5-methyl tetrahydrofolate, which is the active form.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

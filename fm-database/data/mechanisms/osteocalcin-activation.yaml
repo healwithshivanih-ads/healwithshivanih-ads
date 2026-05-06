@@ -1,0 +1,33 @@
+slug: osteocalcin-activation
+display_name: Osteocalcin Activation by Vitamin K2
+aliases:
+- vitamin K2 bone mineralisation
+- osteocalcin carboxylation
+category: endocrine
+summary: Vitamin K2 activates osteocalcin, a protein that binds and deposits calcium
+  into bone and dental matrix. Without adequate K2, osteocalcin remains undercarboxylated
+  and cannot effectively mineralise bone, leading to poor bone density despite adequate
+  calcium intake.
+upstream_drivers:
+- vitamin-k2-status
+- calcium-intestinal-absorption
+downstream_effects:
+- bone-mineralisation
+- improved-bone-density
+related_mechanisms:
+- calcium-intestinal-absorption
+- matrix-gla-protein-activation
+linked_to_topics:
+- vitamin-k2
+- vitamin-d3-k2-synergy
+evidence_tier: strong
+sources:
+- id: coconote-fm-vitamin-d3-k2
+  location: Vitamin K2 Functions
+  quote: Vitamin K2 is responsible for activating osteocalcin. What does osteocalcin
+    do is it accumulates the calcium inside the bones and the teeth thus play an important
+    role in the mineralization of the bones and teeth.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

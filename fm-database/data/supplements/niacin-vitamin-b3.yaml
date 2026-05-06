@@ -1,0 +1,40 @@
+slug: niacin-vitamin-b3
+display_name: Niacin (Vitamin B3)
+category: vitamin
+forms_available:
+- tablet
+- capsule
+typical_dose_range:
+  tablet:
+    min: 500
+    max: 2000
+    unit: mg
+timing_options:
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-disease-prevention
+linked_to_claims:
+- niacin-raises-hdl-up-to-35-percent
+- niacin-lowers-triglycerides-50-percent
+- niacin-11-trials-34-percent-cardiac-event-reduction
+notes_for_coach: Max 2g/day recommended by this clinician. Contraindicated in active
+  gout, active peptic ulcer disease, and liver disease. Give with baby aspirin if
+  patient is already taking it to reduce flushing. Avoid with alcohol. Start low and
+  go slow. Monitor blood sugar in diabetic patients.
+notes_for_client: Niacin (a B vitamin) can raise your HDL ('good cholesterol') and
+  lower triglycerides. Always take with food and do not exceed doses your doctor recommends.
+  Flushing (warmth/redness) is a common side effect that often reduces over time.
+evidence_tier: strong
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Niacin for HDL and Triglycerides
+  quote: Niacin 11 trials over 9,000 people 34 reduction in cardiac events cardiovascular
+    disease 25 reduction in major events. What does niacin do raises HDL lowest triglycerides
+    lowest LDL-P.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -4,16 +4,17 @@ aliases:
 - CVD
 - heart disease
 - cardiovascular disease
-summary: A broad category encompassing coronary artery disease, cerebrovascular disease,
-  peripheral vascular disease, heart failure, and cardiac arrhythmias. Underlying
-  pathology is atheromatous vascular disease driven by modifiable and non-modifiable
-  risk factors.
+summary: A broad clinical area encompassing atherosclerosis, coronary artery disease,
+  cerebrovascular disease, peripheral vascular disease, heart failure, and cardiac
+  arrhythmias. CVD is the major cause of morbidity and mortality driven by both modifiable
+  and non-modifiable risk factors.
 common_symptoms:
 - chest-pain
 - palpitations
 - fatigue
 - shortness-of-breath
 - hypertension
+- erectile-dysfunction
 red_flags:
 - acute chest pain
 - uncontrolled hypertension (>140/90)
@@ -21,21 +22,30 @@ red_flags:
 - congestive heart failure diagnosis
 - advanced retinopathy
 - peripheral artery disease
+- Uncontrolled hypertension
+- History of myocardial infarction or acute coronary syndrome
+- Congestive heart failure diagnosis
+- Peripheral artery disease
+- Advanced diabetic retinopathy
 related_topics:
 - hypertension
 - insulin-resistance
 - metabolic-syndrome
 - dyslipidemia
+- atherosclerosis
+- beta-blocker-deprescribing
 key_mechanisms:
 - atherosclerosis
 - systemic-inflammation
 - insulin-resistance
-coaching_scope_notes: 'Coaches can support modifiable risk factor reduction: diet,
-  exercise, weight management, smoking cessation, stress reduction. Lab interpretation
-  and medication decisions are out of scope.'
-clinician_scope_notes: Includes management of beta blockers, statins, diuretics, ACE
-  inhibitors, and monitoring of advanced biomarkers (Lp(a), ApoB, hs-CRP, HbA1c, homocysteine).
-  Beta blocker tapering requires clinician supervision.
+- atheromatous-vascular-disease
+- chronic-inflammation
+coaching_scope_notes: Coaches can support modifiable risk factor reduction (diet,
+  exercise, smoking cessation, stress management, weight management). Lab interpretation
+  and medication management are out of coaching scope.
+clinician_scope_notes: Clinician oversight required for lab interpretation (HS-CRP,
+  HbA1c, Lp(a), homocysteine, ApoB), medication de-prescribing, and any diagnosis
+  or treatment of CVD.
 evidence_tier: strong
 sources:
 - id: vitaone-cv-toolkit
@@ -43,7 +53,15 @@ sources:
   quote: The cardiovascular diseases (CVDs) considered been the major cause of morbidity
     and mortality in India over the last several decades, and are rapidly catching
     up with this epidemic.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: CVD Risk Analysis
+  quote: The cardiovascular diseases (CVDs) considered been the major cause of morbidity
+    and mortality in India over the last several decades, and are rapidly catching
+    up with this epidemic. The underlying pathology is atheromatous vascular disease,
+    resulting in coronary artery disease (CAD), cerebrovascular disease, and peripheral
+    vascular disease, and the subsequent development of heart failure and cardiac
+    arrhythmias.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

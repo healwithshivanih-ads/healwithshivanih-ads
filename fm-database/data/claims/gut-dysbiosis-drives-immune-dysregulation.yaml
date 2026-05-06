@@ -1,0 +1,34 @@
+slug: gut-dysbiosis-drives-immune-dysregulation
+statement: Gut dysbiosis is a primary upstream driver of chronic immune dysregulation,
+  which in turn drives skin, hormonal, and autoimmune pathology.
+evidence_tier: plausible_emerging
+rationale: The document presents a detailed case where childhood infection-related
+  gut dysbiosis is traced as the initiating event leading to chronic immune activation
+  (evidenced by low WBC, low neutrophils, high globulin, high ESR), which subsequently
+  drove psoriasis, endometriosis, and nutrient deficiencies. The gut-immune connection
+  is well-supported in the literature; however, the specific causal chain presented
+  here is a functional medicine synthesis.
+coaching_translation: When someone has long-standing gut symptoms alongside skin conditions
+  or hormonal problems, addressing gut health first is a foundational step — the gut
+  and immune system are deeply connected.
+caveats:
+- Source is an expert FM lecture (not a primary RCT). The causal chain is biologically
+  plausible but represents clinical pattern recognition, not confirmed by controlled
+  trials in this specific population.
+- Individual lab findings (low WBC, high globulin) should be interpreted by a clinician.
+linked_to_topics:
+- gut-skin-hormone-axis
+- immune-dysregulation
+- dysbiosis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Root Cause Discussion
+  quote: All the problems that have arisen in this case are because of chronic immune
+    activation and immune dysregulation.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

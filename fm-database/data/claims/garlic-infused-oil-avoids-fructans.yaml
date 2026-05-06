@@ -1,0 +1,24 @@
+slug: garlic-infused-oil-avoids-fructans
+statement: Garlic-infused oil delivers garlic flavour without the fructan content
+  because fructans (the FODMAP) are water-soluble and do not transfer into oil.
+evidence_tier: strong
+rationale: Fructans are water-soluble compounds that do not leach into oil. This is
+  a well-established principle endorsed by Monash University FODMAP guidelines.
+coaching_translation: You can use garlic-infused oil freely for flavour during the
+  low FODMAP phase without triggering symptoms — the problematic fructans stay behind
+  in the water phase.
+linked_to_topics:
+- low-fodmap-diet
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Low FODMAP Vegetarian Diet Plan — Flavor hack
+  quote: Onion/garlic fructans are water soluble (so soups/stock leach them), but
+    not oil soluble. Use garlic-infused oil (flavour without the fructans).
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

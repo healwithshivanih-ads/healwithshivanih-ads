@@ -1,0 +1,30 @@
+slug: mct-oil-provides-rapid-energy-low-fatigue
+statement: Adding MCT oil to meals or smoothies provides rapid, clean energy for clients
+  experiencing chronic fatigue.
+evidence_tier: fm_specific_thin
+rationale: MCTs are metabolised differently from long-chain fats, bypassing the lymphatic
+  system and going directly to the liver for rapid ketone production. Small studies
+  suggest cognitive and energy benefits, particularly in low-carb or fasting contexts.
+  Evidence specifically for chronic fatigue is thin.
+coaching_translation: MCT oil in a morning smoothie can give your fatigued clients
+  a noticeable energy boost without the crash from caffeine or refined carbs. Start
+  with 1 teaspoon to assess tolerance.
+caveats:
+- May cause GI discomfort (loose stools, nausea) if dose is too high — start low.
+- Source is expert FM lecture, not a primary trial.
+- Evidence specifically for chronic fatigue is fm_specific_thin.
+linked_to_topics:
+- chronic-pain-and-fatigue
+linked_to_supplements:
+- mct-oil
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-chronic-pain-fatigue
+  location: Diet / Case Study Section
+  quote: Those who are going through a low energy, adding some of the MCT oil gives
+    a lot of energy immediately.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,39 @@
+slug: bioelectrical-impedance-analysis
+display_name: Bioelectrical Impedance Analysis (BIA)
+aliases:
+- BIA
+- body composition testing
+summary: A clinical measurement tool assessing percentage body fat, lean muscle mass,
+  basal metabolic rate, and fluid distribution (extracellular vs. intracellular water).
+  Elevated extracellular water can signal inflammation, food sensitivities, hypothyroidism,
+  or detox pathway burden.
+common_symptoms:
+- fluid-retention
+- excess-body-fat
+- low-lean-muscle-mass
+red_flags: []
+related_topics:
+- body-composition-assessment
+- visceral-adiposity
+- hypothyroidism
+key_mechanisms:
+- chronic-systemic-inflammation
+- extracellular-water-retention
+coaching_scope_notes: Coaches may use BIA results provided by a clinician to support
+  goal tracking. Testing protocols (timing relative to menstrual cycle, exercise,
+  hydration) must be standardized for reproducibility.
+clinician_scope_notes: BIA provides BMR, body fat %, lean mass %, and intracellular/extracellular
+  fluid ratios. Standardize test conditions. Elevated extracellular water may indicate
+  inflammation, food sensitivity, hypothyroidism, or detox impairment.
+evidence_tier: strong
+sources:
+- id: coconote-fm-body-composition-bmi
+  location: BIA Section
+  quote: Bioelectrical impedance will really not only tell us about percentage of
+    body fat, but will also assess somebody's hydration and their fluid distribution.
+    Are they holding on to too much extracellular water? And it will also give you
+    the percentage of lean muscle mass and their BMR, their basal metabolic rate.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

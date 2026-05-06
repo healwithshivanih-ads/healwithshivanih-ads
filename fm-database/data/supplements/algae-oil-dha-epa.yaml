@@ -1,0 +1,44 @@
+slug: algae-oil-dha-epa
+display_name: Algae-Derived DHA/EPA Oil
+category: fatty_acid
+forms_available:
+- capsule
+- liquid
+typical_dose_range:
+  capsule:
+    min: 200
+    max: 1000
+    unit: mg
+  liquid:
+    min: 200
+    max: 1000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- omega-3-fatty-acids
+linked_to_claims:
+- algae-oil-is-vegan-alternative-to-fish-oil
+- dha-retro-converts-to-epa
+notes_for_coach: Ideal for vegan or vegetarian clients. Derived from Schizochytrium
+  species of marine microalgae — the same primary source that fish bioaccumulate.
+  Some brands contain low EPA as well as DHA. DHA can retro-convert to EPA in the
+  body. Verify EPA content on the supplement label.
+notes_for_client: If you avoid fish, algae-based omega-3 oil is a clean, sustainable,
+  and effective alternative to fish oil. It provides DHA (and sometimes EPA) directly
+  without the mercury concern.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-omega-3-fatty-acids
+  location: Omega-3 Sources for Vegans Slide
+  quote: there's a new dietary supplement with omega-3 oil derived straight from marine
+    alga called as schizocytrium species. Freshwater microalgae can completely replace
+    taking of fish oil if someone is a vegan.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

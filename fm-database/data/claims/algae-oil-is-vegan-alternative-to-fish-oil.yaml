@@ -1,0 +1,29 @@
+slug: algae-oil-is-vegan-alternative-to-fish-oil
+statement: Omega-3 oil derived from marine microalgae (Schizochytrium species) can
+  completely replace fish oil as an EPA/DHA source for vegans.
+evidence_tier: plausible_emerging
+rationale: Stated in the lecture as a dietary alternative. Microalgae are the primary
+  producers of omega-3 fatty acids in the marine food chain and are a biologically
+  sound source of DHA and EPA. Supporting evidence exists but is less extensive than
+  for fish oil.
+coaching_translation: If you don't eat fish, algae-based omega-3 supplements are a
+  clean, sustainable, and effective way to get your EPA and DHA.
+caveats:
+- EPA content in algae supplements varies by brand — check label.
+- Evidence base for algae oil is smaller than for fish oil.
+linked_to_topics:
+- omega-3-fatty-acids
+linked_to_supplements:
+- algae-oil-dha-epa
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-omega-3-fatty-acids
+  location: Omega-3 Sources for Vegans Slide
+  quote: there's a new dietary supplement with omega-3 oil derived straight from marine
+    alga called as schizocytrium species. Freshwater microalgae can completely replace
+    taking of fish oil if someone is a vegan.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,32 @@
+slug: cortisol-bone-suppression
+display_name: Cortisol-Mediated Bone Suppression
+aliases:
+- glucocorticoid-induced bone loss
+- cortisol osteoblast inhibition
+category: endocrine
+summary: Elevated cortisol inhibits osteoblast activity, reducing new bone formation.
+  It also suppresses estrogen, progesterone, and testosterone, compounding bone loss
+  risk in menopausal women with chronic stress or inflammation.
+upstream_drivers:
+- chronic-stress
+- inflammation
+- cortisol-steal
+downstream_effects:
+- osteoporosis
+- reduced-bone-density
+- low-sex-hormones
+related_mechanisms:
+- cortisol-steal
+- progesterone-bone-stimulation
+linked_to_topics:
+- menopause
+evidence_tier: strong
+sources:
+- id: coconote-fm-sex-hormones
+  location: Hormone Actions on Bone
+  quote: High cortisol inhibits the osteoblasts, they will not allow the formation
+    of bone. It also decreases the estrogen which causes the bone to go down.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

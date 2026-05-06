@@ -1,0 +1,29 @@
+slug: calcium-cell-membrane-tight-junctions
+display_name: Calcium in Cell Membrane Integrity and Tight Junctions
+aliases:
+- calcium tight junctions
+- calcium cell structure
+category: structural
+summary: Calcium is a vital component of the intracellular matrix, contributing to
+  cell-to-cell membrane structure and tight junctions. Cell damage, acute inflammation,
+  or trauma causes release of intracellular calcium, elevating serum levels.
+upstream_drivers:
+- tissue-damage
+- acute-inflammation
+downstream_effects:
+- elevated-serum-calcium
+- leukocyte-activation
+related_mechanisms:
+- pth-calcium-regulation
+linked_to_topics:
+- calcium-metabolism
+evidence_tier: strong
+sources:
+- id: coconote-fm-calcium-deficiency
+  location: Physiological Roles of Calcium
+  quote: Calcium is a vital component of our intracellular matrix and that gives structure
+    to a cell to cell membrane or we can say tight junctions.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

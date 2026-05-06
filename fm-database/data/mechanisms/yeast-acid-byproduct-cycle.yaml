@@ -1,0 +1,32 @@
+slug: yeast-acid-byproduct-cycle
+display_name: Yeast Acid Byproduct Cycle
+aliases:
+- fungal acidosis cycle
+- candida acidic metabolites
+category: gut
+summary: Yeast organisms metabolise sugars and produce acidic byproducts including
+  acetic acid, uric acid, lactic acid, and ethanol. These byproducts lower cellular
+  pH, creating an environment that further supports fungal growth—a self-reinforcing
+  acidic cycle.
+upstream_drivers:
+- high-sugar-diet
+- high-fruit-diet
+downstream_effects:
+- cellular-ph-dysregulation
+- neurotoxin-exposure-acetaldehyde
+related_mechanisms:
+- cellular-ph-dysregulation
+linked_to_topics:
+- yeast-overgrowth
+- ph-balance
+evidence_tier: plausible_emerging
+sources:
+- id: barbara-oneil-ph-balance
+  location: Fruit and Yeast Section
+  quote: As the yeast feeds on the sugar it gives off acetic acid, it gives off uric
+    acid, it gives off lactic acid. So when someone is eating a lot of fruit and they
+    have yeast in the body it can create a different environment.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

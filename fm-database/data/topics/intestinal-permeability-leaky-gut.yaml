@@ -1,0 +1,42 @@
+slug: intestinal-permeability-leaky-gut
+display_name: Intestinal Permeability (Leaky Gut)
+aliases:
+- leaky gut
+- gut barrier dysfunction
+- intestinal hyperpermeability
+summary: Increased intestinal permeability allows undigested peptides and antigens
+  (e.g., gliadin, casein) to cross the gut lining and enter the bloodstream, triggering
+  immune reactions. Considered the root cause of both food allergy and food sensitivity
+  in this FM framework. Upstream drivers include stress, infection, dysbiosis, inflammation,
+  low stomach acid, nutritional deficiency, and environmental toxins.
+common_symptoms:
+- food-sensitivity-symptoms
+- fatigue
+- brain-fog
+- abdominal-pain
+- multiple-food-reactions
+red_flags:
+- Progressive worsening of multiple food reactions — refer to gastroenterologist
+- Suspected celiac disease — refer for biopsy and serology
+related_topics:
+- food-sensitivity-igg-iga-mediated
+- food-allergy-ige-mediated
+- dysbiosis
+- autoimmune-conditions-igg-food-triggers
+key_mechanisms:
+- intestinal-permeability
+- low-stomach-acid-antigen-load
+- dysbiosis-gut-microbiome-imbalance
+coaching_scope_notes: 'Coaches can support gut-healing lifestyle protocols: stress
+  reduction, anti-inflammatory diet, microbiome support, elimination diets. Encourage
+  clients to work with clinician to address low stomach acid and PPI use.'
+evidence_tier: plausible_emerging
+clinician_scope_notes: ''
+sources:
+- id: coconote-fm-food-allergies-sensitivities
+  location: ATM and Intestinal Permeability Section
+  quote: leaky gut is responsible for increasing food sensitivity
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

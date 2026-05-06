@@ -1,0 +1,41 @@
+slug: celtic-salt
+display_name: Celtic Salt (Hand-Harvested Mineral Salt)
+category: mineral
+forms_available:
+- powder
+typical_dose_range:
+  powder:
+    min: 0.25
+    max: 1
+    unit: teaspoons
+timing_options:
+- bedtime
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- hydration-and-brain-function
+- depression-lifestyle
+linked_to_claims:
+- mineral-salt-improves-cellular-hydration
+- celtic-salt-supports-sleep
+notes_for_coach: Distinguished from refined table salt (2 minerals) by containing
+  up to 92 trace minerals. The free magnesium released on crunching is proposed to
+  draw water inside cells. A small crystal at bedtime is suggested for sleep. Not
+  appropriate for clients with hypertension, kidney disease, or cardiovascular conditions
+  without clinician approval.
+notes_for_client: A whole, unrefined sea salt that contains trace minerals your body
+  uses. A small pinch before bed may support sleep and hydration at the cellular level.
+  Not a substitute for medical care.
+evidence_tier: fm_specific_thin
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-healing-mind
+  location: Hydration / Sleep Section
+  quote: if you can't sleep, try having a crisp of Celtic salt with its free magnesium
+    with its muscle relaxant in the night before you go to sleep.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

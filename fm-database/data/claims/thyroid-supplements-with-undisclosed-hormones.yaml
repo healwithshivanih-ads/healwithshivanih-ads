@@ -1,0 +1,31 @@
+slug: thyroid-supplements-with-undisclosed-hormones
+statement: Many commercially available thyroid supplements sold online contain undisclosed
+  thyroid hormones (T3, T4, or both) at potentially significant doses.
+evidence_tier: strong
+rationale: The document cites researchers finding that 9 of 10 popular thyroid supplements
+  tested contained T4, T3, or both, with 5 delivering >10 mcg T3/day and 4 delivering
+  T4 ranging from 8.57–91.6 mcg/day. This is a documented regulatory and safety concern.
+coaching_translation: Be very careful with supplements labeled for 'thyroid support'
+  — many contain actual thyroid hormones (T3/T4) that are not listed on the label
+  and could interfere with your medication or cause hyperthyroid symptoms.
+out_of_scope_notes: Undisclosed hormonal supplementation is a medical safety issue.
+  Coaches should flag this to clients and encourage clinician review of any thyroid
+  supplements they are taking.
+caveats:
+- This is a consumer safety issue requiring clinician oversight.
+- Clients on thyroid medication should have all thyroid supplements reviewed by their
+  prescribing physician.
+linked_to_topics:
+- thyroid-dysfunction
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Key Nutrients to Consider in Thyroid Regulation — Watch out for supplements
+    with a kick
+  quote: Researchers tested 10 popular thyroid supplements sold online and found that
+    9 contained either T4, T3 or both
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

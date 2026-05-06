@@ -1,0 +1,34 @@
+slug: magnesium-deficiency-causes-intracellular-calcium-excess
+statement: Magnesium deficiency allows excess calcium to accumulate inside cardiac
+  cells, which is reflected by elevated coronary calcium scores and may contribute
+  to cardiac dysfunction.
+evidence_tier: plausible_emerging
+rationale: 'The document presents a mechanistically coherent argument: magnesium is
+  the predominant intracellular cation in cardiac tissue; deficiency disrupts the
+  calcium-magnesium balance; this is reflected by coronary calcium deposits. This
+  is consistent with known magnesium physiology, though the specific link to coronary
+  calcium score interpretation is an inference not supported by a cited trial.'
+coaching_translation: A high coronary calcium score may partly reflect that your heart
+  cells are low in magnesium and high in calcium. Magnesium helps keep calcium where
+  it belongs — outside your heart cells.
+caveats:
+- Source is expert consensus lecture. The mechanistic explanation is plausible but
+  the clinical inference from coronary calcium score to magnesium deficiency requires
+  clinician evaluation and is not established in guidelines.
+linked_to_topics:
+- atherosclerosis-pathogenesis
+- dyslipidemia-management
+linked_to_supplements:
+- magnesium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Coronary calcium score discussion
+  quote: What is the meaning of the simple information is the extracellular calcium
+    is now in the cell in the cell that's the question. Now you know why the calcium
+    is moving in the cell because you have magnesium deficiency.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

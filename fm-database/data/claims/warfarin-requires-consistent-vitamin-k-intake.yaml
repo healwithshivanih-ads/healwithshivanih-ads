@@ -1,0 +1,29 @@
+slug: warfarin-requires-consistent-vitamin-k-intake
+statement: Patients on warfarin should maintain consistent vitamin K intake.
+evidence_tier: confirm_with_clinician
+rationale: Warfarin anticoagulation is directly affected by vitamin K intake; consistency
+  is important for INR stability. This is standard clinical guidance.
+out_of_scope_notes: Warfarin management and vitamin K intake consistency is clinician
+  scope.
+caveats:
+- This is a clinician-managed interaction.
+- Always refer warfarin patients to their prescribing clinician for supplement and
+  dietary guidance.
+linked_to_topics:
+- medication-nutrient-interactions
+linked_to_supplements:
+- vitamin-k
+- vitamin-k2
+coaching_translation: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 9
+  quote: Patients on warfarin are advised to maintain consistent vitamin K intake.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 9
+  quote: Patients on warfarin are advised to maintain consistent vitamin K intake.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

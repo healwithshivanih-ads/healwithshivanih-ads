@@ -1,0 +1,33 @@
+slug: hybridised-wheat-caused-widespread-gluten-intolerance
+statement: The intensive crossbreeding of wheat in the 1950s created a complex gluten
+  structure that most digestive systems cannot fully break down, directly contributing
+  to the modern epidemic of gluten intolerance.
+evidence_tier: plausible_emerging
+rationale: There is scholarly debate and some published evidence linking changes in
+  wheat genetics and processing to rising rates of gluten-related disorders. The hypothesis
+  that hybridisation altered gluten structure is credible and debated in the literature,
+  though not universally accepted as the primary cause of increasing gluten intolerance.
+coaching_translation: The wheat we eat today is very different from what our ancestors
+  ate — its complex structure is much harder to digest, which is why so many people
+  feel better off modern wheat.
+caveats:
+- The causal attribution of hybridisation as the primary cause of gluten intolerance
+  is debated. Other factors (gut microbiome, food processing, glyphosate use) are
+  also implicated in the literature.
+- Source is a lecture transcript, not a systematic review.
+linked_to_topics:
+- gluten-intolerance
+- ph-balance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-ph-balance
+  location: Gluten and Hybridised Wheat Section
+  quote: It was that Emma strain of wheat that was put through intensive crossbreeding
+    in the 50s to come up with the hybridised wheat of today... It created an incredibly
+    complex protein or gluten structure.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

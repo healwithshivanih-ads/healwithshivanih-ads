@@ -1,0 +1,30 @@
+slug: chronic-stress-increases-disease-risk
+statement: People who report higher levels of chronic stress are more likely to develop
+  heart disease, depression, diabetes, dementia, and cancer.
+evidence_tier: strong
+rationale: Supported by multiple peer-reviewed studies cited in the document (Yaribeygi
+  et al. 2017 EXCLI J; Wirtz & von Känel 2017 Curr Cardiol Rep; Vyas et al. 2016 Neural
+  Plast; Mravec et al. 2018 Cell Mol Neurobiol) and consistent with established epidemiological
+  evidence.
+coaching_translation: Unchecked chronic stress isn't just 'feeling stressed' — over
+  time it raises your risk for serious conditions like heart disease, diabetes, and
+  even dementia. Managing your daily stress load is a powerful health investment.
+linked_to_topics:
+- chronic-stress
+- hpa-axis-dysfunction
+linked_to_supplements: []
+caveats:
+- Association studies — does not establish causation in every individual
+- Risk varies by individual genetics and resilience factors
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Effects of Chronic Stress
+  quote: People who report higher levels of chronic stress are more likely to develop
+    heart disease, depression, diabetes, dementia, cancer, digestive symptoms, and
+    more.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

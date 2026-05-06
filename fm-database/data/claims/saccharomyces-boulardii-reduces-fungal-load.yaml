@@ -1,0 +1,29 @@
+slug: saccharomyces-boulardii-reduces-fungal-load
+statement: The probiotic yeast Saccharomyces boulardii has been shown to reduce fungal
+  overgrowth in the gut and assist in removal of fungal toxins, making it useful in
+  SIFO management.
+evidence_tier: plausible_emerging
+rationale: S. boulardii has RCT evidence for various GI conditions and some evidence
+  for Candida reduction. Its use in SIFO is biologically plausible with emerging support.
+coaching_translation: Saccharomyces boulardii is a 'good yeast' supplement that helps
+  crowd out harmful yeast and clears their toxins from your gut.
+caveats:
+- Source is expert consensus lecture; specific SIFO RCT evidence limited.
+- 5 billion CFU for 6 weeks is the cited dose — verify with clinician.
+linked_to_topics:
+- sifo
+- sibo
+linked_to_supplements:
+- saccharomyces-boulardii
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-sibo-sifo
+  location: SIFO Treatment Section
+  quote: The probiotic strain, Saccharomyces boulari, which we say has been shown
+    to reduce the fungus inside the gut. It is also responsible for moving out the
+    fungus toxins from the body as well.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,25 @@
+slug: elevated-blood-glucose
+display_name: Elevated Blood Glucose / New-Onset Diabetes
+aliases:
+- statin-induced diabetes
+- hyperglycemia from statins
+- increased diabetes risk
+category: metabolic
+severity: concerning
+description: Statin use is associated with increased risk of new-onset type 2 diabetes,
+  potentially through effects on insulin secretion and insulin sensitivity.
+when_to_refer: Refer to clinician if fasting glucose or HbA1c is elevated or rising
+  in a patient on statin therapy.
+linked_to_topics:
+- statin-side-effects
+- statin-therapy-primary-prevention
+linked_to_mechanisms:
+- mevalonate-pathway-inhibition
+sources:
+- id: coconote-fm-reality-of-statins
+  location: Side Effects of Statins Section
+  quote: Statins may increase your risk of diabetes.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

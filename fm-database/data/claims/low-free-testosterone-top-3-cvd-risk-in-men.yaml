@@ -1,0 +1,35 @@
+slug: low-free-testosterone-top-3-cvd-risk-in-men
+statement: Low free testosterone in men is one of the top three independent risk factors
+  for cardiovascular disease, alongside age and low HDL.
+evidence_tier: plausible_emerging
+rationale: The document cites a 2004 study associating low testosterone with elevated
+  HbA1c and metabolic dysfunction. Observational data support an association between
+  low testosterone and CVD risk in men, but causality and therapeutic implications
+  remain under investigation.
+coaching_translation: In men, having low testosterone isn't just about energy or libido—it's
+  also linked to higher heart disease risk, blood sugar problems, and inflammation.
+  Getting a free testosterone level checked is a meaningful part of a complete heart
+  health picture.
+out_of_scope_notes: Testosterone therapy is clinician scope. Coaches can support lifestyle
+  factors (exercise, sleep, stress reduction, healthy weight) that naturally support
+  testosterone levels.
+caveats:
+- Association studies do not confirm causality; testosterone replacement therapy has
+  its own cardiovascular risks/benefits debate.
+- Source is expert lecture (moderate quality); specific study cited (2004) not fully
+  identified.
+- Source type is expert_consensus, not primary literature.
+linked_to_topics:
+- cardiometabolic-disease
+- insulin-resistance
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-biomarkers-cvs
+  location: Testosterone and Cardiovascular Risk
+  quote: if you look at the top three risk factors for cardiovascular disease, then
+    they are age, low STA level, and low free testosterone level.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

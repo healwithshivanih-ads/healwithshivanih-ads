@@ -1,0 +1,46 @@
+slug: endocrine-disruption-and-detox
+display_name: Endocrine Disruption & Detoxification
+aliases:
+- endocrine disruptors
+- EDCs
+- forever chemicals
+- BPA
+- xenoestrogens
+- hormone receptor blockade
+summary: Environmental endocrine-disrupting compounds (EDCs) including bisphenol A,
+  heavy metals (cadmium, lead), and PFAS occupy hormone receptor binding pocket domains,
+  blocking hormone access. Detoxification is presented as essential for restoring
+  receptor availability and hormone function.
+common_symptoms:
+- hormonal-imbalance
+- infertility
+- irregular-periods
+- premature-menopause
+red_flags:
+- in-utero-DES-exposure
+- heavy-metal-toxicity
+related_topics:
+- hormonal-nutrition-foundations
+- bioidentical-hormone-replacement-therapy
+- perimenopause-and-menopause
+key_mechanisms:
+- receptor-occupancy-by-edcs
+- hormone-receptor-binding
+coaching_scope_notes: Coaches can educate clients on reducing EDC exposure through
+  food, water, and personal care choices. Pre-pregnancy detox support is particularly
+  important. Heavy metal testing and advanced detox protocols require clinical oversight.
+clinician_scope_notes: Five-point salivary cortisol testing is recommended alongside
+  EDC screening. Cortisol has the highest affinity for all binding pocket domains
+  and can also occupy receptors competitively.
+evidence_tier: plausible_emerging
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Receptor Occupancy and Endocrine Disruption
+  quote: if the binding pocket domains are filled with endocrine-disrupting compounds,
+    forever chemicals, bisphenol A, heavy metals, cadmium, and lead... the hormones
+    can get in and interact with the nutrients, but they can't if the receptor is
+    already occupatoed.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

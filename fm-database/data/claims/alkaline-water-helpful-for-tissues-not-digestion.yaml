@@ -1,0 +1,28 @@
+slug: alkaline-water-helpful-for-tissues-not-digestion
+statement: Alkaline water is beneficial for body tissues but should not be consumed
+  with meals, as it can impair stomach acid and digestion.
+evidence_tier: fm_specific_thin
+rationale: This is a common recommendation in functional medicine and naturopathy.
+  There is limited peer-reviewed evidence specifically on alkaline water and meal-time
+  stomach acid interference. However, the reasoning is mechanistically plausible.
+coaching_translation: Drink alkaline water between meals for tissue support, not with
+  meals — you need your stomach acid at its strongest when eating.
+caveats:
+- Limited peer-reviewed evidence on alkaline water specifically. This is FM-specific
+  practice guidance.
+- Source is a lecture transcript.
+linked_to_topics:
+- ph-balance
+linked_to_supplements:
+- alkaline-water
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-ph-balance
+  location: Water and pH Section
+  quote: Alkaline water certainly is helpful for the tissues, but it's not good for
+    digestion because the only part of the body that should be acid is the stomach.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

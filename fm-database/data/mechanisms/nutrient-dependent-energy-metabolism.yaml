@@ -1,0 +1,64 @@
+slug: nutrient-dependent-energy-metabolism
+display_name: Nutrient-Dependent Energy Metabolism
+aliases:
+- B vitamin cofactor metabolism
+- mitochondrial nutrient cofactors
+- ATP production cofactors
+- mitochondrial cofactor support
+- ATP production
+- B-vitamin energy metabolism
+category: metabolic
+summary: B vitamins and minerals serve as cofactors for ATP production, carbohydrate
+  metabolism, fat metabolism, and mitochondrial protection. High dietary loads, stress,
+  medications, and malabsorption increase demand and can deplete cofactors.
+upstream_drivers:
+- high-carbohydrate diets
+- high-fat diets
+- high-protein diets
+- stress
+- intense exercise
+- weight loss
+- alcohol use
+- PPIs
+- diuretics
+- diabetes
+- malabsorption
+- high-carbohydrate-diet
+- high-fat-diet
+- intense-exercise
+- alcohol-use
+- ppi-use
+downstream_effects:
+- fatigue
+- low mood
+- poor glucose control
+- cramps
+- palpitations
+- insomnia
+- poor recovery
+- low-mood
+- poor-glucose-control
+- poor-recovery
+related_mechanisms:
+- methylation-support
+- gut-barrier-and-nutrient-absorption
+linked_to_topics:
+- nutrition-deficiency
+- insulin-resistance
+- depression-like-symptoms
+- hair-loss
+- joint-pain
+evidence_tier: plausible_emerging
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Key Mechanisms Explained – nutrient-dependent-energy-metabolism
+  quote: B vitamins and minerals are described as cofactors for ATP production, carbohydrate
+    metabolism, fat metabolism, and mitochondrial protection.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Key Mechanisms Explained — nutrient-dependent-energy-metabolism
+  quote: B vitamins and minerals are described as cofactors for ATP production, carbohydrate
+    metabolism, fat metabolism, and mitochondrial protection.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

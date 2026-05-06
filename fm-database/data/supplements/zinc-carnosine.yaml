@@ -19,7 +19,8 @@ timing_options:
 - with_lunch
 - on_empty_stomach
 - bedtime
-take_with_food: required
+- morning
+take_with_food: avoid
 linked_to_topics:
 - thyroid
 - leaky-gut
@@ -29,16 +30,26 @@ linked_to_topics:
 - low-fodmap-diet
 - ibs
 - sibo
+- dysbiosis
+- hypochlorhydria
+- gut-skin-hormone-axis
+- psoriasis-gut-immune
+- five-r-gut-protocol
+- gut-health-fodmap-sibo
 linked_to_claims:
 - leaky-gut-triggers-hashimotos
 - zinc-carnosine-tight-junction-healing
 - l-glutamine-supports-gut-repair
 - fodmap-4-phase-fm-protocol
-notes_for_coach: Used in the Gut-Healing Phase alongside L-glutamine to support mucosal
-  integrity and enzyme function. Dosing is clinician-scope. Distinct from elemental
-  zinc — the carnosine chelate has specific gastric mucosal properties.
-notes_for_client: Zinc carnosine is a special compound that helps strengthen and repair
-  your gut lining. It works best taken with meals.
+- l-glutamine-zinc-carnosine-repair-gut-lining
+- zinc-deficiency-indicated-by-low-alkaline-phosphatase
+- zinc-carnosine-supports-gastric-lining-repair
+- gut-healing-requires-glutamine-zinc-omega3-bcomplex
+notes_for_coach: Zinc carnosine is a chelated compound with documented gastric mucosal
+  protective effects. Typically dosed between meals for best mucosal contact. Dosing
+  range should be confirmed by clinician.
+notes_for_client: Zinc carnosine helps soothe and repair your gut lining. It is different
+  from regular zinc supplements.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -62,7 +73,19 @@ sources:
   location: Functional Medicine Approach to Using Low-FODMAP Clinically — Gut-Healing
     Phase
   quote: Add L-glutamine, zinc carnosine, digestive enzymes, bitters.
-version: 6
+- id: coconote-fm-gut-skin-hormone-axis
+  location: 5R Protocol — Repair
+  quote: L-glutamine and zinc carnosine help here in repairing the stomach lining.
+- id: coconote-fm-hypochlorhydria
+  location: Treatment / 5R Gut Protocol — Repair
+  quote: Zygcarnosine is a supplement which could be used in terms of repairing the
+    gastrointestinal liver and help you in terms of production of beta-hydrochloric
+    acid.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXbyLyYjP__/
+  quote: 'Gut healing requires nutrients: glutamine, zinc carnosine, omega-3, B-complex,
+    bitters'
+version: 9
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

@@ -1,0 +1,30 @@
+slug: cwi-increases-noradrenaline-beta-endorphin
+statement: Regular cold water immersion significantly increases plasma noradrenaline
+  and beta-endorphin levels.
+evidence_tier: plausible_emerging
+rationale: Noradrenaline elevation with CWI is well-documented physiologically via
+  sympathetic activation. Beta-endorphin elevation is less consistently measured but
+  plausible. Together these neurochemical shifts underpin proposed mood and analgesic
+  benefits.
+coaching_translation: Cold exposure triggers a natural release of feel-good and alertness
+  chemicals in your brain — this is the biology behind the mood boost many people
+  report after a cold swim or shower.
+caveats:
+- Studies vary in CWI protocol (temperature, duration, frequency)
+- Plasma noradrenaline does not directly equate to central nervous system effects
+- Source is a synthesis review
+linked_to_topics:
+- cold-water-immersion-mental-health
+- cold-water-immersion
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: espeland-2022-cold-water-immersion
+  location: Mental Health
+  quote: Regular CWI increased plasma noradrenaline and beta-endorphin, potentially
+    relieving depressive symptoms.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

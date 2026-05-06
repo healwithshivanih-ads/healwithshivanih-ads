@@ -1,0 +1,29 @@
+slug: lactoferrin-bypasses-hepcidin-in-inflammatory-iron-deficiency
+statement: Lactoferrin supplementation may improve iron utilisation in inflammatory
+  iron deficiency by a hepcidin-independent absorption pathway.
+evidence_tier: plausible_emerging
+rationale: Lactoferrin binds iron and is absorbed via lactoferrin-specific receptors
+  in the gut epithelium, bypassing the standard DMT1 pathway regulated by hepcidin.
+  Some RCTs in pregnancy and inflammatory bowel disease show benefit, but evidence
+  base is still developing.
+coaching_translation: Lactoferrin is a special form of iron-binding protein that may
+  help the body absorb iron when inflammation is high and standard iron supplements
+  aren't working well.
+out_of_scope_notes: Lactoferrin use in inflammatory cases is a clinician decision.
+caveats:
+- Evidence base is growing but not yet consensus-level.
+- Source is Instagram educational content.
+- Verify with clinician before recommending.
+linked_to_topics:
+- iron-deficiency-dysregulation
+linked_to_supplements:
+- lactoferrin
+linked_to_mechanisms: []
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXy9b_KjJT2/
+  quote: Consider lactoferrin in inflammatory cases
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

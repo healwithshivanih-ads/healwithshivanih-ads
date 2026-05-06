@@ -1,0 +1,29 @@
+slug: low-acid-predisposes-to-sibo-and-opportunistic-infection
+statement: Chronic hypochlorhydria removes the antimicrobial gastric barrier (pH 1–2),
+  predisposing to small intestinal bacterial overgrowth (SIBO), H. pylori persistence,
+  and other opportunistic gut infections.
+evidence_tier: plausible_emerging
+rationale: The gastric acid barrier's role in controlling microbial passage is established
+  physiology. SIBO association with PPI use (a model for hypochlorhydria) has peer-reviewed
+  support. Source is expert consensus lecture.
+coaching_translation: When stomach acid is consistently low, it loses its ability
+  to kill off harmful bacteria and other microbes. This can allow bacteria to overgrow
+  in your small intestine (SIBO) or make you more vulnerable to gut infections.
+caveats:
+- SIBO diagnosis requires clinician-ordered breath testing.
+- Source is expert consensus.
+linked_to_topics:
+- hypochlorhydria
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-hypochlorhydria
+  location: Consequences of Chronic Low Stomach Acid
+  quote: Whenever there is low stomach acid, it could use in urban growth. There could
+    be a small intestinal bacterial overgrowth which would be covered in the further
+    modules. There could be parasitic infections which normally are managed well.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

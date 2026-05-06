@@ -1,0 +1,30 @@
+slug: deep-fried-oxidised-oil-increases-acid-load
+statement: Deep-frying foods in old or oxidised oil (e.g., two-week-old oil) can shift
+  otherwise neutral or mildly acid-forming foods further toward the acid side.
+evidence_tier: plausible_emerging
+rationale: Oxidised lipids from repeatedly heated cooking oils generate pro-inflammatory
+  and pro-oxidant compounds. Within an acid-alkaline dietary framework, the additional
+  metabolic burden of oxidised fats is biologically plausible as an acid-load contributor.
+coaching_translation: How you cook matters as much as what you cook. Frying in old,
+  reused oil adds a chemical burden your body has to process, pushing things further
+  out of balance.
+caveats:
+- Source is an expert lecture.
+- Direct acid-load measurement of deep-fried vs. non-fried potatoes in PRAL studies
+  is not cited.
+- Main concern with oxidised cooking oils is lipid peroxidation and inflammation,
+  not solely acid load.
+linked_to_topics:
+- acid-alkaline-balance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-acid-alkaline-foods
+  location: Main lecture body
+  quote: And if you deep fry it in two-week-old oil, that can certainly become over
+    to the acid side.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

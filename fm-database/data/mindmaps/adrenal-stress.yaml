@@ -1,0 +1,434 @@
+slug: adrenal-stress
+display_name: Adrenal Dysfunction & Stress Response
+description: 'Functional medicine approach to HPA axis dysregulation, adrenal fatigue,
+  cortisol imbalance, and chronic stress. Covers root mechanisms, clinical presentation,
+  coaching goals, interventions, and labs to track — structured for use in client
+  sessions and plan authoring.
+
+  '
+aliases: []
+related_topics:
+- adrenal-dysfunction
+- adrenal-hormone-function
+- chronic-stress
+- stress-management
+related_mechanisms:
+- hpa-axis-dysregulation
+- cortisol-excess
+- cortisol-dhea-imbalance
+- dhea-depletion
+tree:
+- label: 🔴 Clinical Presentation
+  children:
+  - label: Fatigue Patterns
+    children:
+    - label: Morning Fatigue / Crashes
+      children: []
+      linked_kind: symptom
+      linked_slug: fatigue
+      notes: ''
+    - label: Afternoon Energy Slumps
+      children: []
+      linked_kind: symptom
+      linked_slug: fatigue-after-meals
+      notes: ''
+    - label: Wired but Tired at Night
+      children: []
+      linked_kind: symptom
+      linked_slug: wired-but-tired
+      notes: ''
+    - label: Burnout
+      children: []
+      linked_kind: symptom
+      linked_slug: burnout
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Stress & Mood Symptoms
+    children:
+    - label: Anxiety
+      children: []
+      linked_kind: symptom
+      linked_slug: anxiety
+      notes: ''
+    - label: Irritability / Mood Swings
+      children: []
+      linked_kind: symptom
+      linked_slug: mood-swings
+      notes: ''
+    - label: Depression / Low Mood
+      children: []
+      linked_kind: symptom
+      linked_slug: depression-low-mood
+      notes: ''
+    - label: Poor Stress Tolerance
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Physical Symptoms
+    children:
+    - label: Salt Cravings
+      children: []
+      linked_kind: symptom
+      linked_slug: craving-salt
+      notes: ''
+    - label: Sweet Cravings
+      children: []
+      linked_kind: symptom
+      linked_slug: craving-sweets
+      notes: ''
+    - label: Brain Fog
+      children: []
+      linked_kind: symptom
+      linked_slug: brain-fog
+      notes: ''
+    - label: Poor Sleep
+      children: []
+      linked_kind: symptom
+      linked_slug: poor-sleep-quality
+      notes: ''
+    - label: Weight Gain Around Abdomen
+      children: []
+      linked_kind: symptom
+      linked_slug: central-weight-gain
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🟠 Root Mechanisms
+  children:
+  - label: HPA Axis Dysregulation
+    children: []
+    linked_kind: mechanism
+    linked_slug: hpa-axis-dysregulation
+    notes: ''
+  - label: Cortisol Excess / Blunting
+    children: []
+    linked_kind: mechanism
+    linked_slug: cortisol-excess
+    notes: ''
+  - label: DHEA Depletion
+    children: []
+    linked_kind: mechanism
+    linked_slug: dhea-depletion
+    notes: ''
+  - label: Cortisol-DHEA Imbalance
+    children: []
+    linked_kind: mechanism
+    linked_slug: cortisol-dhea-imbalance
+    notes: ''
+  - label: Chronic Systemic Inflammation
+    children: []
+    linked_kind: mechanism
+    linked_slug: chronic-systemic-inflammation
+    notes: ''
+  - label: Mitochondrial Dysfunction
+    children: []
+    linked_kind: mechanism
+    linked_slug: mitochondrial-dysfunction
+    notes: ''
+  - label: Neurotransmitter Imbalance
+    children:
+    - label: Low Dopamine
+      children: []
+      linked_kind: mechanism
+      linked_slug: neurotransmitter-synthesis-impairment
+      notes: ''
+    - label: Low Serotonin
+      children: []
+      linked_kind: mechanism
+      linked_slug: neurotransmitter-synthesis-impairment
+      notes: ''
+    - label: GABA Deficiency
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🟡 FM Approach
+  children:
+  - label: Identify Root Causes
+    children:
+    - label: Lifestyle Stressors Assessment
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Emotional / Psychological Stressors
+      children: []
+      linked_kind: topic
+      linked_slug: emotional-healing-chronic-disease
+      notes: ''
+    - label: Blood Sugar Dysregulation
+      children: []
+      linked_kind: topic
+      linked_slug: blood-sugar-dysfunction
+      notes: ''
+    - label: Thyroid Connection
+      children: []
+      linked_kind: topic
+      linked_slug: hypothyroidism
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Nourish the Adrenals
+    children:
+    - label: Anti-Inflammatory Diet
+      children: []
+      linked_kind: topic
+      linked_slug: anti-inflammatory-diet
+      notes: ''
+    - label: Blood Sugar Stabilisation
+      children: []
+      linked_kind: topic
+      linked_slug: insulin-resistance
+      notes: ''
+    - label: Reduce Stimulants (Coffee / Alcohol)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Restore Circadian Rhythm
+    children:
+    - label: Sleep Hygiene
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Morning Sunlight
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Regular Meal Timing
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🟢 Interventions
+  children:
+  - label: Adaptogenic Herbs
+    children:
+    - label: Ashwagandha KSM-66
+      children: []
+      linked_kind: supplement
+      linked_slug: ashwagandha-ksm66
+      notes: ''
+    - label: Rhodiola Rosea
+      children: []
+      linked_kind: supplement
+      linked_slug: rhodiola-rosea
+      notes: ''
+    - label: Holy Basil / Tulsi
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Siberian Ginseng
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Nutritional Support
+    children:
+    - label: Vitamin C
+      children: []
+      linked_kind: supplement
+      linked_slug: vitamin-c
+      notes: ''
+    - label: B-Complex Vitamins
+      children: []
+      linked_kind: supplement
+      linked_slug: b-complex-vitamins
+      notes: ''
+    - label: Magnesium Glycinate
+      children: []
+      linked_kind: supplement
+      linked_slug: magnesium-glycinate
+      notes: ''
+    - label: Phosphatidylserine
+      children: []
+      linked_kind: supplement
+      linked_slug: phosphatidylserine
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Lifestyle Interventions
+    children:
+    - label: Stress Management Practices
+      children: []
+      linked_kind: topic
+      linked_slug: stress-management
+      notes: ''
+    - label: Breathwork
+      children: []
+      linked_kind: topic
+      linked_slug: breathwork-for-health
+      notes: ''
+    - label: Gentle Exercise (Yoga / Walking)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Nature Exposure
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 💙 Coaching Goals
+  children:
+  - label: Mindset & Awareness
+    children:
+    - label: Stress Identification
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Mind-Body Connection
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Boundary Setting
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Daily Practices
+    children:
+    - label: Morning Routine
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Evening Wind-Down Ritual
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Gratitude Practice
+      children: []
+      linked_kind: topic
+      linked_slug: gratitude-practice
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Energy Management
+    children:
+    - label: Pacing Activities
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Prioritisation Skills
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Rest as Medicine
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🔵 Labs to Track
+  children:
+  - label: Hormone Testing
+    children:
+    - label: 4-Point Salivary Cortisol
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: DHEA-S Blood Level
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: AM Cortisol (Serum)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Additional Markers
+    children:
+    - label: hsCRP (inflammation)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Fasting Glucose & Insulin
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Thyroid Panel (TSH, fT3, fT4)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Comprehensive Metabolic Panel
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+sources:
+- id: vitaone-health-coaching-toolkit
+  quote: null
+  location: Toolkit for Adrenal Dysfunction & Stress Response
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

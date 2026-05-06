@@ -1,0 +1,23 @@
+slug: abdominal-distension
+display_name: Abdominal Distension
+aliases:
+- belly distension
+- swollen abdomen
+- abdominal swelling
+category: gi
+severity: common
+description: Visible or palpable expansion of the abdomen due to gas accumulation
+  or fluid, commonly seen in SIBO due to fermentation of undigested carbohydrates.
+when_to_refer: Refer if accompanied by ascites, severe pain, or organ enlargement.
+linked_to_topics:
+- sibo
+linked_to_mechanisms:
+- gut-dysbiosis
+sources:
+- id: coconote-fm-sibo-sifo
+  location: Dysfunctions Caused by SIBO
+  quote: Definitely abdominal distension. You can have bloating constant, bloating.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

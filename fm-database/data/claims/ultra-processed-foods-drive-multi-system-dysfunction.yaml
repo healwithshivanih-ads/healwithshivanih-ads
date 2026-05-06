@@ -1,0 +1,33 @@
+slug: ultra-processed-foods-drive-multi-system-dysfunction
+statement: Ultra-processed foods, refined carbohydrates, industrial seed oils, low-fibre
+  diets, and excess sugar collectively drive oxidative stress, insulin resistance,
+  gut dysbiosis, hormonal disruption, and mitochondrial dysfunction simultaneously.
+evidence_tier: plausible_emerging
+rationale: Individual dietary components have established roles in promoting each
+  named dysfunction. Evidence for ultra-processed food harms specifically is growing
+  strongly (NOVA classification studies). The claim that all systems are impaired
+  simultaneously is biologically coherent but represents a synthesis, not a single
+  RCT.
+coaching_translation: Modern processed foods don't just cause weight gain — they create
+  widespread biological imbalances affecting your gut, hormones, energy production,
+  and immune system at the same time.
+caveats:
+- This is a synthetic cross-systems claim; individual components have stronger evidence
+  than the combined claim.
+- Source is Instagram educational content.
+linked_to_topics:
+- modern-diet-systemic-dysfunction
+- metabolic-health-lchf
+- gut-health-fodmap-sibo
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXWoFj6jGCY/
+  quote: 'Modern diet isn''t breaking one system: it''s breaking all core systems
+    at once: gut → liver → hormones → brain → mitochondria → immunity'
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

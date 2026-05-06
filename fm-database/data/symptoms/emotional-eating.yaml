@@ -1,0 +1,27 @@
+slug: emotional-eating
+display_name: Emotional Eating
+aliases:
+- stress eating
+- eating for comfort
+- binge eating tendencies
+- food as emotional coping
+category: mood
+severity: common
+description: Eating in response to emotional rather than physical hunger cues. Mindful
+  and intuitive eating practices can help identify and address emotional eating patterns
+  by reconnecting clients to internal hunger/fullness signals.
+when_to_refer: Refer to a mental health professional or registered dietitian if emotional
+  eating is severe, associated with purging, or meets criteria for an eating disorder.
+linked_to_topics:
+- mindful-intuitive-eating
+linked_to_mechanisms:
+- hunger-satiety-signaling
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Mindful and Intuitive Eating
+  quote: A mindful eating practice helps you become aware of the reasons behind your
+    hunger (emotions, lack of food, tradition, boredom, schedule, etc.).
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

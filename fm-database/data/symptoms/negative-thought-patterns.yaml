@@ -1,0 +1,33 @@
+slug: negative-thought-patterns
+display_name: Negative Thought Patterns
+aliases:
+- negative thinking
+- catastrophising
+- pessimism
+- rumination
+- can't sleep pathway
+category: mood
+severity: common
+description: Recurring negative thoughts that are reinforced through repeated firing
+  of neural pathways. Linked to dehydration, poor sleep, and limbic system overactivation
+  without adequate PFC filtering. Can be rewired through conscious repetition of positive
+  language and habits.
+when_to_refer: If thought patterns escalate to hopelessness, paranoia, or self-harm
+  ideation, refer to clinician.
+linked_to_topics:
+- depression-lifestyle
+- neuroplasticity
+- hydration-and-brain-function
+linked_to_mechanisms:
+- neuroplasticity
+- prefrontal-cortex-function
+- cellular-hydration
+sources:
+- id: barbara-oneil-healing-mind
+  location: Hydration Section
+  quote: Did you know that your brain can develop negative thought patterns when it
+    is dehydrated?
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,31 @@
+slug: chronic-inflammation-underlies-all-chronic-disease
+statement: Chronic inflammation is a common underlying mechanism in virtually all
+  chronic diseases, including diabetes, hypertension, thyroid disease, ulcerative
+  colitis, Alzheimer's, and atherosclerosis.
+evidence_tier: strong
+rationale: This is a well-established concept in biomedical science, with extensive
+  peer-reviewed literature linking chronic low-grade inflammation (via NF-κB, cytokines,
+  and oxidative stress) to the pathogenesis of metabolic, neurological, cardiovascular,
+  and autoimmune diseases.
+coaching_translation: 'Almost every chronic health condition your client has may share
+  one root driver: chronic inflammation. Addressing inflammation upstream is foundational
+  to all functional health work.'
+caveats:
+- Source is an expert FM lecture (expert_consensus, moderate quality). While the broad
+  claim is scientifically supported, the framing 'all diseases' is a teaching simplification.
+linked_to_topics:
+- chronic-inflammation
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-approach-inflammation
+  location: Introduction – Chronic Inflammation Overview
+  quote: chronic inflammation is responsible for all the disease, all the chronic
+    inflammation that the patient work in, complaining with diabetes or hypertension
+    or thyroid disease or ulcerative colitis or immune inflammation or Alzheimer or
+    axillocerosis.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

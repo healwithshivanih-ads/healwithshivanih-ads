@@ -1,0 +1,32 @@
+slug: progesterone-protective-against-severe-covid-lung-damage
+statement: In a Cedars-Sinai clinical study, men with severe COVID-19 who received
+  progesterone (100mg IM twice daily) alongside standard care had shorter hospitalizations,
+  less lung damage (ground-glass opacity), and none developed long COVID, compared
+  to standard care alone.
+evidence_tier: plausible_emerging
+rationale: The Cedars-Sinai COVID progesterone trial is a real published study (Ghandehari
+  et al., 2021). The results described are consistent with published findings. This
+  is early clinical trial data, not yet part of established treatment consensus.
+coaching_translation: A hospital study found that men with severe COVID who received
+  progesterone got out of the hospital faster, had less lung scarring, and none of
+  them developed long COVID — showing that hormones protect the lungs, not just the
+  reproductive system.
+caveats:
+- Single clinical trial; requires replication.
+- IM progesterone dosing is a clinical/medical intervention only.
+linked_to_topics:
+- progesterone-physiology
+- bioidentical-hormone-replacement-therapy
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Progesterone's Systemic Roles — COVID Study
+  quote: men who ended up taking progesterone along with standard of care got out
+    of the hospital statistically in a shorter period of time, had less ground blast
+    appearance on the lungs, less damage to the lungs. None of them got long COVID.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

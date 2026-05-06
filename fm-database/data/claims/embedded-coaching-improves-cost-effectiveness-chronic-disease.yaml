@@ -1,0 +1,29 @@
+slug: embedded-coaching-improves-cost-effectiveness-chronic-disease
+statement: In team-based care models, studies show that embedded coaching improves
+  cost-effectiveness and chronic disease management metrics.
+evidence_tier: plausible_emerging
+rationale: Speaker references 'studies' supporting this claim but does not cite specific
+  papers. Consistent with emerging literature on integrated care models and health
+  coaching ROI, but requires specific study verification.
+coaching_translation: When pitching your services to a clinic, you can reference that
+  embedded coaches have been shown to improve both patient outcomes and the cost-effectiveness
+  of care — bring data if you have it.
+caveats:
+- No specific study citation provided.
+- Source is expert talk/synthesis — verify with primary literature before citing in
+  clinical contexts.
+linked_to_topics:
+- coach-clinician-collaboration
+- chronic-disease-management
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-future-fm
+  location: Future-Proofing Your Coaching Career Section
+  quote: In team-based care models, studies are showing that embedded coaching improves
+    cost-effectiveness and chronic disease management metrics.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

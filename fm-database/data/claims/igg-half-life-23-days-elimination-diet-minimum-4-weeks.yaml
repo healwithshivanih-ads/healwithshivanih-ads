@@ -1,0 +1,32 @@
+slug: igg-half-life-23-days-elimination-diet-minimum-4-weeks
+statement: The IgG antibody half-life is 23 days; therefore, food elimination diets
+  for IgG sensitivity must exceed 4 weeks to allow antibody levels to fall and symptoms
+  to improve.
+evidence_tier: plausible_emerging
+rationale: IgG half-life of ~21–23 days is established immunological knowledge. The
+  clinical extrapolation that elimination diets must therefore exceed 4 weeks is biologically
+  coherent and widely used in FM practice, though RCT evidence for this specific threshold
+  is limited.
+coaching_translation: 'Tell clients: ''One or two weeks off gluten or dairy is not
+  enough to know if it''s a problem. You need at least 4 weeks — and ideally 6 — to
+  let the immune response settle down.'''
+caveats:
+- Source is expert lecture, moderate quality.
+- The 4-week minimum is clinical FM practice guidance, not a formally validated RCT
+  endpoint.
+linked_to_topics:
+- food-sensitivity-igg-iga-mediated
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-food-allergies-sensitivities
+  location: IgG Antibody Section
+  quote: the IgG antibody half-life is 23 days... the plan for elimination or eliminating
+    that food should be more than 20 T-day. Otherwise, you will not have any kind
+    of improvement or your antibody will not go down... elimination time should be
+    for more than 3 weeks and usually we do for more than 1 month.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

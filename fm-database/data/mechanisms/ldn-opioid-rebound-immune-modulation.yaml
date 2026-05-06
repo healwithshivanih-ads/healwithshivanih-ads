@@ -1,0 +1,38 @@
+slug: ldn-opioid-rebound-immune-modulation
+display_name: LDN Opioid Rebound Immune Modulation
+aliases:
+- naltrexone endorphin rebound
+- opioid receptor blockade rebound
+- LDN mechanism
+category: immune
+summary: At low doses (1.5–4.5 mg), naltrexone causes a brief (4–6 hour) blockade
+  of opioid receptors, creating a perceived opioid deficiency. The body responds with
+  a rebound elevation of endogenous endorphins and enkephalins sustained for 18–20
+  hours, which interact with Toll-like receptors, enhance receptor sensitivity, improve
+  immune regulation, reduce inflammatory cytokines, regulate GI tract function, and
+  modulate T-regulatory cells.
+upstream_drivers:
+- autoimmune-dysregulation
+- endorphin-deficiency
+downstream_effects:
+- reduced-inflammatory-cytokines
+- t-regulatory-cell-modulation
+- reduced-anti-thyroid-antibodies
+- improved-t4-to-t3-conversion
+related_mechanisms:
+- t-regulatory-cell-modulation
+- autoimmune-thyroid-attack
+linked_to_topics:
+- low-dose-naltrexone-autoimmune
+- hashimotos-hypothyroidism
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Low Dose Naltrexone (LDN) and Autoimmune Disease — LDN History
+  quote: Discovered that at lower doses, Naltrexone acted as a short-term antagonist
+    (4-6 hours) and then had a 'rebound' effect of increasing the production of endogenous
+    opioids such as endorphins and enkephalins.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

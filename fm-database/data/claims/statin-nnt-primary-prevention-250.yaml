@@ -1,0 +1,32 @@
+slug: statin-nnt-primary-prevention-250
+statement: For primary prevention in adults over 40 with no prior cardiovascular events,
+  the NNT for statins to prevent one death from all causes is approximately 250, based
+  on a post-2005 meta-analysis of 19 RCTs (n > 71,000).
+evidence_tier: strong
+rationale: The document cites a meta-analysis of 19 RCTs conducted between 2005 and
+  2016, with over 71,000 adults aged 40+ with no prior CVD events, finding an NNT
+  of 250 for all-cause mortality.
+coaching_translation: A large, well-conducted review found that for every 250 people
+  without heart disease who take a statin, only 1 will avoid death — while 249 receive
+  no mortality benefit and all are exposed to potential side effects.
+caveats:
+- This applies to primary prevention only — patients with existing heart disease,
+  diabetes, or very high LDL have different risk profiles and NNTs.
+- Source is a lecture summary; verify with primary meta-analysis citation for clinical
+  use.
+linked_to_topics:
+- statin-therapy-primary-prevention
+- cardiovascular-risk-assessment
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-reality-of-statins
+  location: Primary Prevention Meta-Analysis Section
+  quote: All cause mortality was a number needed to treat of 250, which means for
+    every 250 people that you put on a statin for primary prevention, according to
+    the study, you get one person that benefits.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

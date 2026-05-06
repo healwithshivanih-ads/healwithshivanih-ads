@@ -1,0 +1,30 @@
+slug: caffeine-sensitivity
+display_name: Caffeine Sensitivity / Poor Caffeine Tolerance
+aliases:
+- can't sleep after coffee
+- coffee keeps me awake
+- caffeine intolerance
+- wired after one coffee
+category: neurological
+severity: common
+description: Inability to sleep after even small amounts of caffeine, or conversely,
+  complete absence of caffeine effect. Driven by genetic variation in CYP1A2 (and
+  related CYP1B1) enzyme activity determining speed of caffeine clearance through
+  Phase 1.
+when_to_refer: Generally not a referral trigger unless associated with severe cardiovascular
+  symptoms.
+linked_to_topics:
+- cyp450-genetic-polymorphisms
+- liver-detoxification-phases
+linked_to_mechanisms:
+- cyp450-phase1-bioactivation
+sources:
+- id: coconote-fm-liver-detox-part1
+  location: CYP1B1 Caffeine Example
+  quote: The real problem with this caffeine can be induced because caffeine is primarily
+    metabolized by the 1B1 enzyme. And many people have a genetic variation in that
+    particular enzyme.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

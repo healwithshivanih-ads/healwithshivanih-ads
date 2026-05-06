@@ -1,0 +1,38 @@
+slug: noradrenaline-signaling
+display_name: Noradrenaline (Norepinephrine) Signaling
+aliases:
+- norepinephrine release
+- noradrenaline release
+- sympathoadrenal activation
+- catecholamine signaling
+category: neurological
+summary: Cold water immersion triggers robust sympathetic nervous system activation,
+  markedly elevating plasma noradrenaline. Noradrenaline acts on beta-adrenergic receptors
+  to drive BAT thermogenesis, and also exerts mood-elevating and analgesic effects
+  centrally.
+upstream_drivers:
+- cold-water-immersion
+- cold-shock-response
+downstream_effects:
+- bat-activation
+- antidepressant-effect
+- analgesia
+- improved-mood
+related_mechanisms:
+- bat-activation
+- beta-endorphin-release
+- cold-shock-response
+linked_to_topics:
+- cold-water-immersion-mental-health
+- cold-water-immersion
+- brown-adipose-tissue-activation
+evidence_tier: plausible_emerging
+sources:
+- id: espeland-2022-cold-water-immersion
+  location: Mental Health
+  quote: Regular CWI increased plasma noradrenaline and beta-endorphin, potentially
+    relieving depressive symptoms.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

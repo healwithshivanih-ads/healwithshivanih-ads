@@ -1,0 +1,35 @@
+slug: pancreatic-enzyme-function
+display_name: Pancreatic Enzyme Function in the Duodenum
+aliases:
+- pancreatic digestion
+- duodenal enzyme cascade
+category: gut
+summary: The pancreas is the primary digestive organ in the duodenum, releasing sodium
+  bicarbonate (to restore alkaline pH), pancreatic lipase (to further break down unsaturated
+  fats emulsified by bile), pancreatic amylase (to finalise starch digestion begun
+  by salivary amylase), and trypsin/chymotrypsin (the 'trypsin brothers', to finalise
+  protein digestion begun by pepsin). Poor chewing upstream increases pancreatic burden.
+upstream_drivers:
+- incomplete-oral-digestion
+- inadequate-chewing
+- bile-emulsification
+downstream_effects:
+- starch-malabsorption
+- fat-malabsorption
+- protein-malabsorption
+related_mechanisms:
+- mechanical-mastication-and-enzyme-mixing
+- hcl-and-pepsin-protein-digestion
+- liver-bile-emulsification
+linked_to_topics:
+- gastrointestinal-tract-overview
+evidence_tier: strong
+sources:
+- id: barbara-oneil-gi-tract
+  location: Duodenum & Pancreas Section
+  quote: The pancreas also releases pancreatic amylase... designed to finalise starch
+    digestion, not begin it, finalize it.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

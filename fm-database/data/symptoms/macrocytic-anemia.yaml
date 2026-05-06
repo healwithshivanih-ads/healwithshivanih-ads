@@ -1,0 +1,25 @@
+slug: macrocytic-anemia
+display_name: Macrocytic / Megaloblastic Anemia
+aliases:
+- B12 anemia
+- folate deficiency anemia
+category: constitutional
+severity: concerning
+description: Macrocytic or megaloblastic anemia linked to folate and B12 deficiency,
+  often presenting with fatigue, pallor, and elevated MCV.
+when_to_refer: Always refer for diagnosis and treatment; anemia unresponsive to iron
+  may reflect copper or B12/folate deficiency requiring clinician assessment.
+linked_to_topics:
+- nutrition-deficiency
+- methylation
+linked_to_mechanisms:
+- methylation-support
+- nutrient-dependent-energy-metabolism
+sources:
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Symptoms Discussed
+  quote: Macrocytic or megaloblastic anemia - Linked to folate and B12 deficiency.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

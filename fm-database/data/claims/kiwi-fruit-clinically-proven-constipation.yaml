@@ -1,0 +1,28 @@
+slug: kiwi-fruit-clinically-proven-constipation
+statement: One kiwi fruit per day is clinically proven to improve stool frequency
+  in constipation and is low FODMAP approved at one piece.
+evidence_tier: strong
+rationale: The document states 'This is clinically proven for constipation and Low
+  FODMAP approved in 1 piece.' This aligns with published RCTs showing kiwi fruit
+  improves bowel frequency, attributable to actinidin enzyme and soluble fiber.
+coaching_translation: One kiwi a day is an easy, evidence-backed way to improve bowel
+  regularity — and it's safe on the low FODMAP diet.
+caveats:
+- Source document does not cite specific trials — evidence classification based on
+  known literature (e.g., Eady et al., 2019)
+- Limit to 1 kiwi to stay within low FODMAP serving
+linked_to_topics:
+- low-fodmap-diet
+- ibs
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: FODMAP Plan SOS Solutions — CONSTIPATION
+  quote: Kiwi Fruit (1 kiwi/day) OR 1 cup Papaya. This is clinically proven for constipation
+    and Low FODMAP approved in 1 piece.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,22 @@
+slug: ige-half-life-2-to-3-days
+statement: The half-life of IgE antibody in the bloodstream is 2–3 days.
+evidence_tier: strong
+rationale: IgE serum half-life of approximately 2–3 days is well-established immunological
+  knowledge.
+coaching_translation: If a client avoids a trigger food, the IgE antibodies driving
+  their reaction clear relatively quickly — within a few days.
+caveats:
+- Source is expert lecture; confirm with immunology references for precision.
+linked_to_topics:
+- food-allergy-ige-mediated
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-food-allergies-sensitivities
+  location: IgE Antibody Half-Life Section
+  quote: The half-life of IgE antibody is just 2 to 3 days.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

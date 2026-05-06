@@ -1,0 +1,30 @@
+slug: reuteri-restores-vaginal-moisture
+statement: Lactobacillus reuteri indirectly restores vaginal moisture and health through
+  oxytocin-mediated pathways, complementing the direct effects of Lactobacillus crispatus.
+evidence_tier: plausible_emerging
+rationale: Dr. Davis explains that L. reuteri does not directly colonize the vagina
+  but acts indirectly via oxytocin release. Oxytocin influences reproductive tissue
+  health and moisture. Animal data supports the oxytocin mechanism; human corroboration
+  is ongoing.
+coaching_translation: L. reuteri yogurt supports vaginal moisture and overall reproductive
+  health indirectly through the body's oxytocin system—a hormone that also supports
+  wellbeing and skin health.
+caveats:
+- Oxytocin mechanism is based primarily on animal data at time of interview.
+- Human corroboration described as in progress.
+- Source is expert_consensus interview.
+linked_to_topics:
+- vaginal-microbiome
+linked_to_supplements:
+- lactobacillus-reuteri-fermented-yogurt
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: L. reuteri and vaginal health mechanism discussion
+  quote: Reuteri itself does not colonize the vagina. It may, some strains may. The
+    effect is indirect by way of oxytocin.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

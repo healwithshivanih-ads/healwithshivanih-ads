@@ -1,0 +1,32 @@
+slug: low-lean-muscle-mass
+display_name: Low Lean Muscle Mass
+aliases:
+- muscle loss
+- low muscle
+- sarcopenia
+- reduced lean mass
+category: musculoskeletal
+severity: concerning
+description: Insufficient lean (fat-free) muscle tissue as measured by BIA or DEXA.
+  Associated with increased all-cause mortality, reduced metabolic rate, and metabolic
+  dysfunction. Worsens with age. May coexist with high body fat percentage ('skinny
+  fat').
+when_to_refer: Refer if accompanied by significant functional decline, unexplained
+  weight loss, or in elderly patients.
+linked_to_topics:
+- body-composition-assessment
+- bioelectrical-impedance-analysis
+- nutritional-deficiency-screening
+linked_to_mechanisms:
+- sarcopenia
+- insulin-resistance
+sources:
+- id: coconote-fm-body-composition-bmi
+  location: Lean Muscle Mass Section
+  quote: The risk of death is higher in patients with low lean muscle mass. And so
+    that's really important that we're identifying it. You know, it's a considerable
+    problem as patients get older and something we want to really work against.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

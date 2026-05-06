@@ -1,0 +1,38 @@
+slug: cyp450-genetic-polymorphisms
+display_name: CYP450 Genetic Polymorphisms & Individual Detox Variation
+aliases:
+- phase 1 SNPs
+- P450 genetic variation
+- poor metabolizer
+- rapid metabolizer
+summary: Individual genetic variations (polymorphisms) in CYP450 enzyme genes cause
+  significant differences in Phase 1 detoxification speed. Poor metabolizers accumulate
+  parent compounds (e.g., caffeine, drugs); rapid metabolizers generate high reactive
+  intermediate loads. These variations explain drug hypersensitivity, drug non-response,
+  and differential toxic susceptibility. Testing is available in some labs.
+common_symptoms:
+- drug-hypersensitivity
+- caffeine-sensitivity
+- chemical-sensitivity
+red_flags:
+- severe adverse drug reactions
+related_topics:
+- liver-detoxification-phases
+key_mechanisms:
+- cyp450-phase1-bioactivation
+coaching_scope_notes: Coaches can note that genetic polymorphisms may explain why
+  clients respond differently to caffeine, medications, or environmental chemicals.
+  Genetic testing and interpretation is clinician scope.
+clinician_scope_notes: CYP enzyme polymorphism testing (e.g., CYP1A2 for caffeine,
+  CYP2D6 for codeine) can guide pharmaceutical prescribing and detox support strategy.
+evidence_tier: strong
+sources:
+- id: coconote-fm-liver-detox-part1
+  location: Genetic Polymorphisms and Detox
+  quote: We have a polymorphism polymorphism means genetic variation we have a different
+    genotype so depending upon that person's genotype there are some pathways they
+    are up regulated some pathway they are down regulated.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

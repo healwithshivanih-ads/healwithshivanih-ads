@@ -1,0 +1,29 @@
+slug: vitamin-d-cardiovascular-protection-via-vagal-activity
+statement: Vitamin D helps maintain heart health by controlling vagal activity, thereby
+  reducing the risk of cardiovascular dysfunction.
+evidence_tier: fm_specific_thin
+rationale: The relationship between vitamin D and autonomic nervous system regulation
+  (including vagal tone) has been proposed in some observational and mechanistic studies,
+  but the specific claim about vagal activity control is not yet supported by strong
+  RCT evidence.
+coaching_translation: Vitamin D may support heart health partly by influencing the
+  nervous system's regulation of the heart. Maintaining good vitamin D levels is one
+  aspect of a heart-healthy lifestyle.
+caveats:
+- The vagal activity mechanism is mentioned in this lecture but is not well-established
+  in the primary literature. Treat as hypothesis-generating.
+linked_to_topics:
+- vitamin-d3
+linked_to_supplements:
+- vitamin-d3-supplement
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-vitamin-d3-k2
+  location: Vitamin D Functions
+  quote: So what vitamin D does is it controls the vagal activity. That is why it
+    decreases the risk of cardiovascular dysfunctions.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

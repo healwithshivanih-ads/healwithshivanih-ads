@@ -1,0 +1,37 @@
+slug: estrogen-recirculation-via-beta-glucuronidase
+display_name: Estrogen Recirculation via Elevated Beta-Glucuronidase
+aliases:
+- beta-glucuronidase-driven estrogen reabsorption
+- estrogen enterohepatic recirculation
+- gut-driven estrogen dominance
+category: endocrine
+summary: Gut dysbiosis promotes overgrowth of beta-glucuronidase-producing bacteria.
+  This enzyme deconjugates estrogen metabolites in the gut, preventing their excretion
+  and allowing reabsorption into systemic circulation, thereby driving estrogen dominance.
+  Calcium D-glucarate inhibits beta-glucuronidase to support estrogen clearance.
+upstream_drivers:
+- gut-dysbiosis
+- impaired-phase-2-liver-detoxification
+downstream_effects:
+- estrogen-dominance
+- endometriosis
+- irregular-heavy-periods
+related_mechanisms:
+- gut-immune-dysregulation
+- gut-barrier-dysfunction
+linked_to_topics:
+- estrogen-dominance
+- endometriosis
+- gut-skin-hormone-axis
+- dysbiosis
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Estrogen Detoxification Discussion
+  quote: Beta glucuronidase actually unesterifies the estrogen and it leads to a lot
+    of estrogen circulation in the blood, it basically stops its excretion from the
+    body.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

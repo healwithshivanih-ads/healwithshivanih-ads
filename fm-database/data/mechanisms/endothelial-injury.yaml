@@ -1,0 +1,42 @@
+slug: endothelial-injury
+display_name: Endothelial Injury
+aliases:
+- leaky endothelium
+- endothelial damage
+- endothelial permeability
+category: structural
+summary: Injury to the endothelial lining (innermost vascular layer) creates permeability
+  ('cracks') through which small-dense LDL particles infiltrate the tunica media.
+  Triggers include systemic inflammation, high homocysteine, hyperglycemia, toxins,
+  hypertension, and viral infection.
+upstream_drivers:
+- chronic-inflammation
+- hyperglycemia
+- high-homocysteine
+- hypertension
+- toxin-exposure
+- nitric-oxide-deficiency
+downstream_effects:
+- ldl-infiltration-into-vessel-wall
+- macrophage-foam-cell-formation
+- plaque-formation
+- atherosclerosis
+related_mechanisms:
+- ldl-oxidation-and-glycation
+- macrophage-foam-cell-formation
+- chronic-inflammation
+linked_to_topics:
+- atherosclerosis
+- endothelial-dysfunction
+- cardiometabolic-disease
+evidence_tier: strong
+sources:
+- id: coconote-fm-biomarkers-cvs
+  location: Atherosclerosis Mechanism
+  quote: So, the primary cause for formation of plaque is actually endothelial injury.
+    So, the innermost layer of blood vessel that we call endothelium. And when you
+    have endothelial injury, that leads to formation of acrylocellulosis.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

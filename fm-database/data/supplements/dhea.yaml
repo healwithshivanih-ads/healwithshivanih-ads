@@ -1,0 +1,37 @@
+slug: dhea
+display_name: DHEA (Dehydroepiandrosterone)
+category: other
+forms_available:
+- capsule
+- tablet
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- steroidogenesis
+- menopause
+- bhrt
+linked_to_claims:
+- dhea-is-precursor-for-testosterone-and-sex-hormones
+- correct-dhea-before-replacing-testosterone
+notes_for_coach: DHEA-S should be tested before supplementation. If DHEA-S is low,
+  supplementing directly addresses the precursor deficiency. Dosing and form are clinician-prescribed
+  only.
+notes_for_client: DHEA is a natural precursor your body uses to make hormones like
+  testosterone and estrogen. Low DHEA-S on a blood test may explain why other hormones
+  are also low.
+evidence_tier: confirm_with_clinician
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-sex-hormones
+  location: Steroidogenesis Pathway
+  quote: DHEA is a precursor for testosterone. So, in all males and females, I always
+    check for the DHEA sulfate because that is where it's a precursor, it's a precursor
+    which means that it is formed prior to then. If the value of DHEA sulfate is not
+    only low, then there is no point of replacing their testosterone
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

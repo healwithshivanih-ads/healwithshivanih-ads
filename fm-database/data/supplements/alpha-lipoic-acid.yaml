@@ -1,5 +1,5 @@
 slug: alpha-lipoic-acid
-display_name: Alpha-Lipoic Acid (ALA)
+display_name: Alpha Lipoic Acid (ALA)
 category: other
 forms_available:
 - capsule
@@ -21,10 +21,10 @@ timing_options:
 - on_empty_stomach
 - morning
 - mid_morning
-take_with_food: optional
-notes_for_coach: 'Note: ALA here refers to alpha-lipoic acid (not alpha-linolenic
-  acid). Both antioxidant and cofactor roles in mitochondrial energy production. Evidence
-  strongest for diabetic neuropathy. Dosing requires clinician guidance.'
+take_with_food: avoid
+notes_for_coach: ALA is a universal antioxidant supporting phase 2 liver detoxification
+  and glutathione recycling. Used in phase 2 estrogen detox protocol alongside NAC
+  and CDG. Take on empty stomach for best absorption.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - pcos
@@ -32,15 +32,21 @@ linked_to_topics:
 - blood-sugar-dysfunction
 - type-2-diabetes
 - mitochondrial-health-nutrition
+- chronic-inflammation
+- oxidative-stress
+- estrogen-dominance
+- gut-skin-hormone-axis
 linked_to_mechanisms: []
 linked_to_claims:
 - berberine-ampk-natural-metformin
 - ala-reduces-diabetic-nerve-pain
 - ala-supports-healthy-weight-and-insulin-sensitivity
 - ala-improves-diabetic-neuropathy-insulin-sensitivity
-notes_for_client: Alpha-lipoic acid is a versatile antioxidant that both supports
-  energy production and helps protect your cells from damage. It's been studied for
-  nerve symptoms and blood sugar support.
+- alpha-lipoic-acid-supports-weight-and-nerve-pain
+- ala-nac-glutathione-advanced-antioxidants
+- nac-alpha-lipoic-support-phase-2-estrogen-detox
+notes_for_client: Alpha lipoic acid is a powerful antioxidant that helps your liver
+  process and remove hormones and toxins efficiently.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
@@ -67,7 +73,20 @@ sources:
   quote: Alpha-lipoic acid (ALA), is an essential nutrient for mitochondrial energy
     production. ALA also acts as a powerful antioxidant to reduce oxidative stress
     during cellular energy production.
-version: 6
+- id: vitaone-health-coaching-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: Alpha lipoic acid also called lipoic acid, is a substance made in the body
+    and found naturally in many fruits & vegetables. It is involved in cellular energy
+    production and is an antioxidant which protects nerves and other tissues.
+- id: coconote-fm-approach-inflammation
+  location: Oxidative Stress – Advanced Antioxidants
+  quote: there are three things if you want to add in an advanced category. Then it's
+    the alpha-lipoic acid, it's the N-acetylcysteine and butathione.
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Estrogen Detoxification Discussion
+  quote: The supplements that help in this phase would be your NAC, your alpha lipoic
+    acid.
+version: 9
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

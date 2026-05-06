@@ -1,0 +1,35 @@
+slug: achlorhydria-hypochlorhydria
+display_name: Achlorhydria / Hypochlorhydria
+aliases:
+- low stomach acid
+- reduced HCL production
+- hypochlorhydria
+category: gut
+summary: Insufficient hydrochloric acid production in the stomach impairs the first
+  line of microbial defense, allowing more organisms to survive passage into the small
+  intestine, contributing to SIBO and visceral hypersensitivity.
+upstream_drivers:
+- PPI-use
+- chronic-stress
+- aging
+- nutritional-deficiencies
+downstream_effects:
+- gut-dysbiosis
+- sibo
+- visceral-hypersensitivity
+- protein-maldigestion
+related_mechanisms:
+- gut-dysbiosis
+- altered-gi-motility
+linked_to_topics:
+- sibo
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-sibo-sifo
+  location: Triggers for SIBO
+  quote: achlorhydria, no acid production or hypoteroidia. That is a very less acid
+    production, we've been responsible for digestive insufficiencies.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,28 @@
+slug: gut-cramping
+display_name: Gut Cramping / Abdominal Cramping
+aliases:
+- abdominal cramps
+- intestinal spasms
+- stomach cramps
+- bowel cramps
+category: gi
+severity: concerning
+description: Painful spasms of the intestinal walls, commonly associated with inflammatory
+  bowel conditions, dietary irritants, and compromised gut flora. Resolved in the
+  document's case study alongside diarrhoea cessation.
+when_to_refer: Refer if severe, persistent, or accompanied by fever, rectal bleeding,
+  or weight loss.
+linked_to_topics:
+- inflammatory-bowel-conditions
+- gastrointestinal-tract-overview
+linked_to_mechanisms:
+- gut-immune-barrier-function
+- lectin-driven-gut-inflammation
+sources:
+- id: barbara-oneil-gi-tract
+  location: IBD Case Study Section
+  quote: The cramping has stopped.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

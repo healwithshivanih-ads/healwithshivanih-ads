@@ -1,0 +1,33 @@
+slug: ginger-curcumin-coriander-onion-stimulate-enzymatic-activity
+statement: Ginger, curcumin, coriander, and onion stimulate endogenous digestive enzyme
+  production and activity.
+evidence_tier: fm_specific_thin
+rationale: Some evidence exists for ginger (gingerols) and curcumin as digestive stimulants
+  and anti-inflammatory agents. Evidence for coriander and onion specifically stimulating
+  pancreatic enzyme output is limited and largely based on traditional or animal research.
+coaching_translation: Adding ginger, turmeric (curcumin), coriander, and onion to
+  your diet may naturally help stimulate your digestive enzymes. These are easy, practical
+  additions to meals.
+linked_to_topics:
+- pancreatic-insufficiency
+- digestive-enzyme-supplementation
+linked_to_supplements:
+- ginger
+- curcumin
+caveats:
+- Source is an expert consensus lecture. Evidence for specific foods stimulating human
+  pancreatic enzyme output is mostly animal or in-vitro. Human RCT evidence is limited.
+- Effect sizes in human studies are modest and not well-characterised for this specific
+  indication.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-pancreatic-insufficiency
+  location: Management / Support Strategies
+  quote: Certain food which helps in terms of stimulating the enzymatic activity is
+    ginger, curcumin, coriander, onion, all are these certain foods which help in
+    terms of stimulating the production of enzymatic activity.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

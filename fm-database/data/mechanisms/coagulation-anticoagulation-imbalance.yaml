@@ -1,0 +1,37 @@
+slug: coagulation-anticoagulation-imbalance
+display_name: Coagulation–Anticoagulation Imbalance
+aliases:
+- clotting dysregulation
+- hypercoagulable state
+- thromboembolic risk
+category: immune
+summary: A shift in the balance between pro-clotting factors (spike protein, homocysteine,
+  high hsCRP, inflammatory cytokines) and anticoagulant mechanisms can predispose
+  to thromboembolism, particularly in younger patients. Even microinjuries during
+  exercise can initiate clot formation that blocks end arteries of the heart or brain.
+upstream_drivers:
+- high-homocysteine
+- high-hscrp
+- spike-protein-exposure
+- inflammatory-cytokines
+downstream_effects:
+- microthrombi
+- coronary-artery-occlusion
+- stroke
+- sudden-cardiac-death
+related_mechanisms:
+- inflammatory-cascade
+linked_to_topics:
+- atherosclerosis-pathogenesis
+- cardiovascular-risk-assessment
+evidence_tier: fm_specific_thin
+sources:
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Young patient cardiac arrest mechanism section
+  quote: The mechanism is typically embolism... if you have an underlying hsCRP that
+    is pro-inflammatory, your spike protein, your high homocysteine, all the factors
+    they actually increase your clotting mechanism.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

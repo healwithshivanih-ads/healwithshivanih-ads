@@ -1,0 +1,36 @@
+slug: dysbiosis
+display_name: Gut Dysbiosis
+aliases:
+- microbiome imbalance
+- gut flora imbalance
+category: gut
+summary: Imbalance of commensal vs. pathogenic gut microbiota impairing local synthesis
+  of vitamins and short-chain fatty acids, disrupting immune regulation, and contributing
+  to intestinal permeability.
+upstream_drivers:
+- antibiotic-use
+- processed-diet
+- low-fibre-intake
+- stress
+downstream_effects:
+- leaky-gut-mechanism
+- systemic-inflammation
+- nutrient-deficiency
+- neurological-symptoms
+related_mechanisms:
+- leaky-gut-mechanism
+- systemic-inflammation
+- nutrient-malabsorption
+linked_to_topics:
+- dysbiosis
+- chronic-pain-and-fatigue
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-chronic-pain-fatigue
+  location: Digestion Section
+  quote: association between dysbiosis and neurological conditions often manifest
+    with chronic pain.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,29 @@
+slug: chronic-fatigue
+display_name: Chronic Fatigue
+aliases:
+- persistent tiredness
+- exhaustion
+- low energy
+category: constitutional
+severity: concerning
+description: Persistent, unrefreshing fatigue not resolved by rest. Associated with
+  chronic inflammation, oxidative stress, glutathione depletion, mitochondrial dysfunction,
+  and dysbiosis. CBD oil and foundational anti-inflammatory nutrition are referenced
+  as supportive interventions.
+when_to_refer: Refer if fatigue is severe/disabling, associated with post-exertional
+  malaise (ME/CFS pattern), or unexplained weight loss.
+linked_to_topics:
+- chronic-inflammation
+- oxidative-stress
+linked_to_mechanisms:
+- nf-kappa-b-activation
+- glutathione-depletion
+sources:
+- id: coconote-fm-approach-inflammation
+  location: Anti-Inflammatory Supplements – CBD Oil
+  quote: You can see the effect of CBD oil in neurodegeneration, sleep anxiety, muscular
+    pain, fibromyalgia, chronic fatigue and all sorts of anti-inflammatory.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

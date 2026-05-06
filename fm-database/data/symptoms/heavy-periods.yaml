@@ -5,24 +5,40 @@ aliases:
 - heavy menstrual bleeding
 - flooding periods
 - heavy flow
+- excessive menstrual flow
 category: hormonal
 severity: concerning
-description: Excessive menstrual blood loss, often associated with estrogen dominance,
-  fibroids, or endometriosis.
-when_to_refer: Refer if causing anemia, or if imaging needed to rule out fibroids/polyps/endometrial
-  hyperplasia.
+description: Excessive or prolonged menstrual bleeding, often associated with estrogen
+  dominance or insufficient P5P-mediated control of estrogen signaling duration.
+when_to_refer: Refer if causing anemia, passing large clots, or not improving — rule
+  out fibroids, endometriosis, or uterine pathology.
 linked_to_topics:
 - estrogen-dominance
 - low-progesterone
+- uterine-fibroids
+- luteal-phase-defect
+- estrogen-signaling
+- hormonal-nutrition-foundations
 linked_to_mechanisms:
 - estrogen-enterohepatic-recirculation
 - low-progesterone
 - chronic-inflammation
+- estrogen-driven-cell-proliferation
+- progesterone-deficiency
+- p5p-helix-12-signaling-control
 sources:
 - id: vitaone-sex-hormones-cheatsheet
   location: Estrogen Dominance Supplement Cheatsheet
   quote: Reduces heavy periods, bloating.
-version: 1
+- id: coconote-fm-estrogen-dominance
+  location: Q&A — Spotting and Heavy Periods
+  quote: Sometimes it's a very heavy period so it's a very classic symptom of estrogen
+    dominance.
+- id: ask-expert-hormonal-health-bhrt
+  location: P5P and Hormone Signaling Duration
+  quote: if you've got heavy periods... a lot of that is excessive estrogen signaling.
+    And one of the issues is insufficient B6.
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

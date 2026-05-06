@@ -1,0 +1,41 @@
+slug: coagulation-imbalance
+display_name: Coagulation / Thrombotic Imbalance
+aliases:
+- hypercoagulability
+- thromboembolism risk
+- clotting dysfunction
+summary: When clotting mechanisms outpace anti-clotting (fibrinolytic) mechanisms,
+  the risk of thromboembolism increases. Key biomarkers include fibrinogen (elevated
+  >350 mg/dL signals risk) and homocysteine. Risk factors include smoking, estrogen
+  therapy (OCP/HRT), polycythemia, malignancy, and recurrent miscarriage.
+common_symptoms:
+- dvt
+- pulmonary-embolism
+- stroke
+- myocardial-infarction
+red_flags:
+- DVT with pulmonary embolism
+- acute arterial occlusion
+- recurrent unexplained miscarriage with hypercoagulable state
+related_topics:
+- cardiometabolic-disease
+- homocysteine-and-methylation
+key_mechanisms:
+- thromboembolism
+- fibrinogen-elevation
+- methylation-impairment
+coaching_scope_notes: Coaches can support fibrinogen reduction through anti-inflammatory
+  lifestyle. Anticoagulant therapy and thrombophilia workup are clinician scope.
+clinician_scope_notes: Fibrinogen and clotting factor lab interpretation, anticoagulant
+  prescribing, and thrombophilia testing are clinician responsibilities.
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-biomarkers-cvs
+  location: Coagulation Mechanism
+  quote: Two biomarkers, there are certain risks that increase the coagulation as
+    you see the smoking. Also, the patient is having an hormone replacement treatment
+    or if the patient is taking an OC blitz.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,45 @@
+slug: vitamin-a-retinol
+display_name: Vitamin A (Retinol) — Hormone Receptor Activation
+category: vitamin
+forms_available:
+- capsule
+- liquid
+typical_dose_range:
+  capsule:
+    min: 2500
+    max: 5000
+    unit: mcg
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- hormonal-nutrition-foundations
+- estrogen-signaling
+linked_to_claims:
+- vitamin-a-required-in-every-hormone-receptor
+- nutrient-cofactors-required-for-hormone-signaling
+notes_for_coach: Vitamin A (retinol form, not beta-carotene) is present in every hormone
+  receptor binding domain and switches the receptor from repressor to expressive mode.
+  Document mentions ~3,000 IU/day for physiologic receptor function. High-dose vitamin
+  A (above ~10,000 IU/day long-term) has toxicity risks — verify with clinician, especially
+  in pregnancy. The document notes past fears around vitamin A toxicity from polar
+  bear liver consumption as historically overweighted.
+notes_for_client: Vitamin A helps your hormone receptors switch 'on' so your hormones
+  can actually send their messages. The body needs some every day. Best sources include
+  liver, egg yolks, and dairy. A supplement can help fill gaps — discuss dose with
+  your practitioner.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Vitamin A in Hormone Receptor Binding
+  quote: vitamin a is inside every single binding pocket domain and this includes
+    insulin vasopressin oxytocin um adrenal hormones epinephrine all the hormones
+    work this way... vitamin a allows this binding pocket that's been shut down from
+    genetic expression the repressor action of it to be turned on into an expressive
+    action
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

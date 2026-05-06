@@ -1,0 +1,33 @@
+slug: cholesterol-precursor-depletion
+display_name: Cholesterol Precursor Depletion
+aliases:
+- downstream cholesterol deficiency
+- steroid hormone substrate depletion
+category: endocrine
+summary: When statin therapy reduces circulating and cellular cholesterol, downstream
+  biosynthesis of steroid hormones (cortisol, sex hormones) and fat-soluble vitamins
+  (e.g., vitamin D) may be impaired, potentially contributing to hormonal, neurological,
+  and immune side effects.
+upstream_drivers:
+- mevalonate-pathway-inhibition
+downstream_effects:
+- hormonal-imbalance
+- cognitive-impairment
+- peripheral-neuropathy
+related_mechanisms:
+- mevalonate-pathway-inhibition
+- coq10-depletion
+linked_to_topics:
+- statin-side-effects
+- cholesterol-and-hormone-synthesis
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-reality-of-statins
+  location: Side Effects of Statins Section
+  quote: Cholesterol is the precursor for hormones and vitamins. So if you are blocking
+    the production of cholesterol, what are you doing? Why does the body think that
+    it needs more cholesterol?
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

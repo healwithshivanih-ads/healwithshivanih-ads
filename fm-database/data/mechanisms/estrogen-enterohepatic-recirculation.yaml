@@ -9,10 +9,14 @@ aliases:
 - estrogen reabsorption
 - beta-glucuronidase-driven estrogen recycling
 - gut estrogen reconversion
+- estrogen recycling
+- estrogen gut excretion
 category: gut
-summary: Conjugated estrogens excreted into the gut via bile are deconjugated by bacterial
-  beta-glucuronidase, allowing free estrogen to be reabsorbed into portal circulation,
-  elevating systemic estrogen load.
+summary: After use, estrogen is metabolized by the liver and excreted into the gut
+  via bile. With adequate fiber and transit time, it is eliminated in stool. When
+  transit time is slow (constipation), gut bacteria can deconjugate estrogen metabolites,
+  allowing reabsorption into circulation — contributing to estrogen excess and associated
+  conditions including breast cancer risk.
 upstream_drivers:
 - dysbiosis (overgrowth of beta-glucuronidase-producing species)
 - low fiber intake (slow transit, less binding)
@@ -21,6 +25,9 @@ upstream_drivers:
 - gut-dysbiosis
 - low-fiber-diet
 - antibiotic-use
+- low-dietary-fiber
+- slow-bowel-transit
+- gut-microbiome-dysbiosis
 downstream_effects:
 - excess estrogen reabsorption
 - estrogen-dominant symptoms (breast tenderness, weight retention)
@@ -30,11 +37,15 @@ downstream_effects:
 - pms
 - heavy-periods
 - breast-tenderness
+- elevated-circulating-estrogen
+- fibrocystic-breasts
+- increased-breast-cancer-risk
 related_mechanisms:
 - microbial-diversity-decline
 - leaky-gut
 - estrogen-decline
 - estrogen-phase-ii-methylation-deficit
+- hormone-receptor-binding
 linked_to_topics:
 - estrobolome
 - perimenopause
@@ -42,6 +53,8 @@ linked_to_topics:
 - dysbiosis
 - estrogen-dominance
 - pcos
+- estrogen-and-fiber-transit-time
+- hormonal-nutrition-foundations
 sources:
 - id: thurlow-microbiome-session-3
   location: Session 3 — Estrobolome & Estrogen Metabolism
@@ -49,8 +62,13 @@ sources:
   location: Top Nutrients to Balance Estrogen
   quote: Improve gut estrogen clearance by modulating the estrobolome and reducing
     β-glucuronidase activity.
+- id: ask-expert-hormonal-health-bhrt
+  location: Fiber, Transit Time, and Estrogen Metabolism
+  quote: fiber helps the body process estrogen. You make estrogen, use it and poop
+    it out. You make estrogen, use it and poop it out. A big part of estrogen homeostasis
+    is if we had more time, it's transit time.
 evidence_tier: plausible_emerging
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

@@ -1,0 +1,26 @@
+slug: l-arginine-increases-nitric-oxide-and-lowers-blood-pressure
+statement: L-arginine, as an amino acid supplement, can increase nitric oxide production
+  and thereby improve blood pressure.
+evidence_tier: plausible_emerging
+rationale: L-arginine → nitric oxide pathway is well-established mechanistically;
+  clinical evidence for BP reduction is moderate and context-dependent (more pronounced
+  in hypertensive or deficient individuals). Source is expert lecture.
+coaching_translation: L-arginine is an amino acid that helps your body make nitric
+  oxide, a natural compound that relaxes blood vessels and may help lower blood pressure.
+caveats:
+- Specific dose not provided in source. Supplementation should be discussed with a
+  clinician, especially for those on medications or with cardiovascular conditions.
+linked_to_topics:
+- blood-pressure-management
+linked_to_supplements:
+- l-arginine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-body-composition-bmi
+  location: Blood Pressure / Dietary Intervention Section
+  quote: L-arginine as an amino acid can increase nitric oxide and improve blood pressure.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

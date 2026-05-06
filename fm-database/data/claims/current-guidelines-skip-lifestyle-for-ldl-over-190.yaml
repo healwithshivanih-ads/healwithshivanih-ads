@@ -1,0 +1,35 @@
+slug: current-guidelines-skip-lifestyle-for-ldl-over-190
+statement: Current cardiovascular guidelines recommend immediate high-intensity statin
+  therapy for LDL >190 mg/dL without first trialing lifestyle or lower-intensity interventions,
+  which may not reflect individualized care.
+evidence_tier: fm_specific_thin
+rationale: The document argues that LDL >190 triggers automatic high-intensity statin
+  prescription without considering underlying pathophysiology, lifestyle interventions,
+  or individualized risk — contrary to the principles of individualized medicine.
+coaching_translation: If someone's LDL is over 190, current guidelines go straight
+  to high-dose statin medication — but some practitioners believe there's value in
+  first trying lifestyle changes and investigating why cholesterol is elevated, rather
+  than immediately escalating to maximum-dose medication.
+caveats:
+- For familial hypercholesterolemia (LDL >190), guideline-directed therapy is well-evidenced;
+  lifestyle alone may be insufficient.
+- This is a functional medicine perspective that may conflict with mainstream cardiology
+  guidelines.
+- Coaches should not advise clients to delay or refuse medication; encourage shared
+  decision-making with their clinician.
+linked_to_topics:
+- statin-therapy-primary-prevention
+- cardiovascular-risk-assessment
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-reality-of-statins
+  location: Weaknesses of Current Guidelines Section
+  quote: LDL grade of the current guidelines, LDL greater than 190, they go right
+    to high intensity statin... So they go and they don't even go to like a moderate
+    intensity or a low intensity.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

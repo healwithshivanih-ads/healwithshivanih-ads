@@ -4,29 +4,44 @@ aliases:
 - fuel switching
 - metabolic switching
 - glucose-fat switching
+- glucose-fat flexibility
 category: metabolic
-summary: The body's capacity to switch between glucose and fat oxidation as primary
-  fuel sources depending on availability and demand. Impaired in insulin resistance
-  and metabolic syndrome. Restored by low-carb diets combined with intermittent fasting.
+summary: The ability to efficiently switch between glucose and fat oxidation as primary
+  fuel sources. Impaired metabolic flexibility is a hallmark of insulin resistance.
+  LCHF diets and resistance training are used to restore this capacity, reducing glucose
+  variability and improving energy stability.
 upstream_drivers:
 - insulin-resistance
 - high-carbohydrate-diet
+- carbohydrate-restriction
+- resistance-training
+- insulin-sensitivity
 downstream_effects:
 - improved-energy-regulation
 - fat-oxidation
 - reduced-cravings
+- reduced-sugar-cravings
+- energy-stability
+- improved-insulin-sensitivity
 related_mechanisms:
 - insulin-resistance
 - mitochondrial-efficiency
+- hepatic-fat-accumulation
 linked_to_topics:
 - low-carb-diet
 - metabolic-syndrome
+- metabolic-health-lchf
+- insulin-resistance-metabolic-syndrome
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-cardiometabolic-diet-cheatsheet
   location: The Science of Low-Carb Diets
   quote: Restores body's ability to switch between glucose and fat for energy.
-version: 1
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DX1jE67jI4m/
+  quote: Sugar cravings reduce when metabolic flexibility improves → Energy stabilizes
+    when glucose swings are controlled
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

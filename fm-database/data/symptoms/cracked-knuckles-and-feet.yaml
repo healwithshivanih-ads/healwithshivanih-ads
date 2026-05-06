@@ -1,0 +1,25 @@
+slug: cracked-knuckles-and-feet
+display_name: Cracked Knuckles and Feet
+aliases:
+- skin cracking on hands
+- heel cracks
+- dry cracked skin
+- fissures on feet
+category: skin
+severity: common
+description: Cracking and fissuring of the skin on knuckles and feet, a common manifestation
+  of psoriasis, also associated with zinc and essential fatty acid deficiency.
+linked_to_topics:
+- psoriasis-gut-immune
+- gut-skin-hormone-axis
+linked_to_mechanisms:
+- gut-immune-dysregulation
+when_to_refer: ''
+sources:
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Patient Timeline
+  quote: In 2020 she saw flares of psoriasis like cracks on the knuckles and feet.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

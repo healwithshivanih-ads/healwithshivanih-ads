@@ -1,0 +1,29 @@
+slug: coaching-kids-means-coaching-parents
+statement: Effective health coaching for young children primarily operates through
+  coaching and educating the parents rather than directly coaching the child.
+evidence_tier: plausible_emerging
+rationale: 'This is consistent with paediatric behaviour change literature and FM
+  coaching practice: parents are the primary agents of behaviour change for young
+  children. Direct coaching approaches (goal-setting, motivational interviewing) are
+  developmentally inappropriate for young children.'
+coaching_translation: When working with young kids, your biggest lever is the parent.
+  Helping parents understand and model healthy habits is often more impactful than
+  working with the child directly.
+caveats:
+- Source is expert practitioner consensus, not a cited RCT.
+- Age threshold for more direct child coaching is not defined in this document — treat
+  as general guidance for younger school-age and below.
+linked_to_topics:
+- childrens-wellness-coaching
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-coaching-stress-kids
+  location: Kids Wellness Group Topic Discussion
+  quote: generally, when we're coaching younger kids, we're coaching their parents.
+    We're not coaching the kids themselves.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

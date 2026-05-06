@@ -1,0 +1,38 @@
+slug: sibo-yogurt-protocol-reduces-fecal-overgrowth
+statement: A fermented yogurt containing Lactobacillus reuteri, Lactobacillus gasseri,
+  and Bacillus subtilis (SIBO yogurt), taken for 4+ weeks, significantly reduces small
+  intestinal bacterial overgrowth through bacteriocin production.
+evidence_tier: plausible_emerging
+rationale: Dr. Davis describes development of a SIBO yogurt formulation using bacteriocin-producing
+  species that colonize the small intestine and produce natural antibiotics against
+  fecal microbes. He reports it has 'worked far better than I ever expected' in clinical
+  practice and describes a forthcoming human clinical trial. Bacteriocin production
+  by these species is established; efficacy for SIBO treatment via this method is
+  promising but not yet peer-reviewed.
+coaching_translation: A special homemade probiotic yogurt using three specific strains
+  can help clear out harmful bacteria from the small intestine—which may be driving
+  a wide range of health problems from bloating to brain fog.
+caveats:
+- Source is expert_consensus interview.
+- Human clinical trial described as planned, not yet completed.
+- No specific studies cited by author/year.
+- Die-off reactions (diarrhea) are expected and transient.
+linked_to_topics:
+- sibo
+- gut-microbiome
+linked_to_supplements:
+- lactobacillus-reuteri-fermented-yogurt
+- lactobacillus-gasseri-probiotic
+- bacillus-subtilis-probiotic
+- inulin-prebiotic
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: SIBO yogurt protocol discussion
+  quote: We take it for four weeks or longer, depending on how severe your SIBO is,
+    and then do it intermittently for the rest of your life.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

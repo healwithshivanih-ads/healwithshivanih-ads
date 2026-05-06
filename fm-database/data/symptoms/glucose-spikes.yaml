@@ -1,0 +1,29 @@
+slug: glucose-spikes
+display_name: Glucose Spikes (Postprandial)
+aliases:
+- blood sugar spikes
+- postprandial hyperglycemia
+- sugar crash
+- energy crash after meals
+category: metabolic
+severity: common
+description: Rapid rises in blood glucose following meals, often accompanied by energy
+  crashes, cravings, and fatigue — a hallmark of insulin resistance and blood sugar
+  dysfunction.
+when_to_refer: Persistent spikes or fasting glucose >100 mg/dL warrants clinician
+  evaluation.
+linked_to_topics:
+- blood-sugar-dysfunction
+- insulin-resistance
+linked_to_mechanisms:
+- insulin-resistance
+- skeletal-muscle-glucose-uptake
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Antigravity Exercises
+  quote: This exercise helps decrease glucose spikes by 30-50%, builds strong ankles,
+    strengthens feet, and improves blood circulation and lymph flow.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

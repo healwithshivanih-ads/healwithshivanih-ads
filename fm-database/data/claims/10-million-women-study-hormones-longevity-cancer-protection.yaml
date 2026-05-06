@@ -1,0 +1,37 @@
+slug: 10-million-women-study-hormones-longevity-cancer-protection
+statement: A U.S. government study of 10 million women 65 and older found that those
+  on hormone therapy lived an average of 4 years longer, had statistically less breast
+  cancer, lung cancer, and colorectal cancer, were protected against cognitive decline,
+  and had better cardiovascular outcomes — including in women with serious cardiac
+  history.
+evidence_tier: plausible_emerging
+rationale: The speaker references a large NIH observational study (not a named published
+  paper), consistent with the direction of emerging evidence from large observational
+  HRT studies. The specific 10 million figure and 4-year longevity benefit are cited
+  as from this study but were not fully peer-reviewed at time of description.
+coaching_translation: A huge government study following 10 million women found that
+  hormone therapy didn't just help with symptoms — it helped women live longer, get
+  less cancer, stay sharper mentally, and have healthier hearts.
+caveats:
+- The study is described as having had a non-peer-reviewed phase before completion;
+  the specific figures should be verified against published literature.
+- Source is expert lecture; primary citation not fully identified.
+- Observational data — not an RCT; cannot fully control for healthy user bias.
+linked_to_topics:
+- bioidentical-hormone-replacement-therapy
+- perimenopause-and-menopause
+- hippocampal-volume-and-hormones
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: 10 Million Women NIH Study
+  quote: they found that women on estrogen... Lived four years longer. They had statistically
+    less breast cancer, lung cancer, and colorectal cancer... hormones protected against
+    dementias and cognitive decline... women with serious adverse cardiovascular history...
+    these women did much better and died less if they too were on hormones.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

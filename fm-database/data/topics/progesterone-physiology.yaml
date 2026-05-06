@@ -1,0 +1,45 @@
+slug: progesterone-physiology
+display_name: Progesterone Physiology & Therapeutic Uses
+aliases:
+- natural progesterone
+- progesterone receptor
+- progesterone and lungs
+- progesterone and brain
+- progesterone and TBI
+summary: Progesterone is produced in six areas of the brain and is present in multiple
+  non-reproductive tissues including the lungs. Research shows progesterone's role
+  in lung protection, immune modulation (evidenced during COVID-19), sleep quality,
+  and traumatic brain injury recovery.
+common_symptoms:
+- sleep-disruption
+- anxiety
+- heavy-periods
+- fibrocystic-breasts
+red_flags: []
+related_topics:
+- bioidentical-hormone-replacement-therapy
+- hormonal-nutrition-foundations
+- estrogen-signaling
+key_mechanisms:
+- genomic-hormone-signaling
+- non-genomic-hormone-signaling
+- hormone-receptor-binding
+coaching_scope_notes: Coaches can educate clients that progesterone has wide-ranging
+  systemic benefits beyond reproduction. Therapeutic dosing and forms must be managed
+  by a clinician.
+clinician_scope_notes: The Cedars-Sinai COVID progesterone trial used 100mg IM BID.
+  Brain progesterone production declines with age, correlating with sleep quality
+  changes. TBI research includes thousands of patients.
+evidence_tier: plausible_emerging
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Progesterone's Systemic Roles
+  quote: we make progesterone in six different places in our brain. That's one of
+    the reasons we sleep better when we're young... men who ended up taking progesterone
+    along with standard of care got out of the hospital statistically in a shorter
+    period of time, had less ground blast appearance on the lungs, less damage to
+    the lungs. None of them got long COVID.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

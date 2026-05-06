@@ -1,0 +1,34 @@
+slug: cellular-hydration
+display_name: Cellular Hydration & Neurotransmitter Conduction
+aliases:
+- intracellular water
+- brain hydration
+- seawater internal ocean
+category: neurological
+summary: Brain cells (85% water) conduct chemical messengers at 2–200 km/h in an isotonic
+  mineral-rich fluid resembling seawater. Dehydration slows neurotransmitter speed
+  and impairs PFC function. Magnesium from mineral-rich salts draws water inside cells,
+  optimising the intracellular environment for nerve conduction.
+upstream_drivers:
+- adequate-water-intake
+- mineral-rich-salt-intake
+downstream_effects:
+- optimal-neurotransmitter-speed
+- improved-prefrontal-cortex-function
+- better-sleep
+related_mechanisms:
+- prefrontal-cortex-function
+- neurotransmitter-conduction
+linked_to_topics:
+- hydration-and-brain-function
+- depression-lifestyle
+evidence_tier: plausible_emerging
+sources:
+- id: barbara-oneil-healing-mind
+  location: Hydration Section
+  quote: our brain is 85% water, whereas the rest of our body is 75% water. That's
+    why the brain feels it so keenly when we're dehydrated.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

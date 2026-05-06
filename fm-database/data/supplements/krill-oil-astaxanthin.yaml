@@ -1,0 +1,30 @@
+slug: krill-oil-astaxanthin
+display_name: Krill Oil (Astaxanthin)
+category: fatty_acid
+forms_available:
+- capsule
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- testosterone-dht-conversion
+linked_to_claims:
+- 5ar-inhibitors-reduce-dht-prevent-bph-hair-loss-acne
+notes_for_coach: Krill oil contains astaxanthin, a carotenoid with antioxidant properties
+  and potential 5-AR inhibiting activity. Listed in the FMCN toolkit. Clinician should
+  guide dosing.
+notes_for_client: Krill oil contains a powerful antioxidant called astaxanthin that
+  may help regulate DHT levels. Take with meals for best absorption.
+evidence_tier: fm_specific_thin
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors'
+  quote: Krill (astaxanthin) [listed under Nutrients/Phytonutrients that Inhibit 5-a
+    Reductase]
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

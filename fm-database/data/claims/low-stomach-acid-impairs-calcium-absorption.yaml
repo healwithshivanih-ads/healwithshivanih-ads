@@ -1,0 +1,30 @@
+slug: low-stomach-acid-impairs-calcium-absorption
+statement: Hypochlorhydria and long-term use of proton pump inhibitors or antacids
+  impairs calcium absorption from the intestine, contributing to low serum calcium.
+evidence_tier: plausible_emerging
+rationale: Stomach acid is required to ionize and solubilize calcium salts for intestinal
+  absorption. Observational data link PPI use to reduced calcium absorption and increased
+  fracture risk, though causality is debated. Biologically plausible and clinically
+  recognized.
+coaching_translation: Long-term use of antacids or acid-blocking medications may reduce
+  how well your body absorbs calcium from food. If you've been on these medications,
+  it's worth discussing with your doctor.
+caveats:
+- Source is expert consensus, moderate quality.
+- Causal evidence from RCTs is limited; most data are observational.
+linked_to_topics:
+- calcium-deficiency
+- hypochlorhydria
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-calcium-deficiency
+  location: Causes of Low Serum Calcium
+  quote: stomach acid is required for absorption of calcium. So if somebody on a proton
+    inhibitor or acid blocking drug...in that case or in other case when there is
+    a hypochlorhydria means low stomach acid, they have a low serum calcium level.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

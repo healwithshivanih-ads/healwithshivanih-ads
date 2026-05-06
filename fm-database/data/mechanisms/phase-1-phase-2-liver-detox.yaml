@@ -1,0 +1,37 @@
+slug: phase-1-phase-2-liver-detox
+display_name: Hepatic Phase 1 & Phase 2 Estrogen Detoxification
+aliases:
+- liver estrogen conjugation
+- hepatic biotransformation
+- estrogen methylation
+category: metabolic
+summary: The liver processes estrogen through phase 1 (hydroxylation via CYP enzymes,
+  producing 2-OH, 4-OH, and 16α-OH estrone metabolites) and phase 2 (conjugation for
+  excretion via bile). The 2-OH pathway is protective. Impaired methylation (elevated
+  homocysteine, low folate) reduces phase 2 conjugation, increasing recirculation
+  of harmful metabolites.
+upstream_drivers:
+- low-folate
+- methylation-dysfunction
+- nutritional-deficiency
+- toxic-overload
+downstream_effects:
+- increased-4-oh-and-16a-oh-estrone
+- estrogen-dominance
+- increased-cancer-risk
+related_mechanisms:
+- beta-glucuronidase-estrogen-reabsorption
+linked_to_topics:
+- estrogen-metabolism
+- estrogen-dominance
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-estrogen-dominance
+  location: Dysbiosis and Estrogen
+  quote: The estrogen that it has to throw outside the body — the excretion that is
+    to happen after the functioning of estrogen — phase 1 phase 2 metabolism of estrogen
+    happens in the liver.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

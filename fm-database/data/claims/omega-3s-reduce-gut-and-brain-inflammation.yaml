@@ -1,0 +1,29 @@
+slug: omega-3s-reduce-gut-and-brain-inflammation
+statement: Omega-3 fatty acids have potent anti-inflammatory properties that help
+  reduce gut inflammation and may alleviate symptoms of depression and anxiety by
+  supporting both gut and brain health.
+evidence_tier: plausible_emerging
+rationale: Omega-3s' anti-inflammatory effects are well-established; evidence for
+  depression specifically is promising in meta-analyses but remains plausible_emerging
+  for the gut-brain pathway specifically.
+coaching_translation: Eating fatty fish like salmon, sardines, or mackerel — or plant
+  sources like flaxseeds and walnuts — provides omega-3s that can help calm gut and
+  brain inflammation.
+caveats:
+- High-dose omega-3 supplementation for clinical depression should be discussed with
+  a clinician.
+linked_to_topics:
+- gut-brain-axis
+linked_to_supplements:
+- fish-oil
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Gut-Brain Axis: Nutrition''s Impact on Mental Health'
+  quote: Studies suggest that omega-3 supplementation may alleviate symptoms of depression
+    and anxiety by supporting both gut and brain health.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

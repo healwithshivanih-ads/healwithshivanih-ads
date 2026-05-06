@@ -1,0 +1,29 @@
+slug: mayo-clinic-embeds-coaches-in-clinical-care-teams
+statement: At institutions like Mayo Clinic, health and wellness coaches are formally
+  embedded in clinical care teams, working with providers and patients to support
+  long-term goals.
+evidence_tier: plausible_emerging
+rationale: Speaker makes a specific institutional claim about Mayo Clinic embedding
+  coaches. This is consistent with publicly available information about Mayo Clinic's
+  integrative medicine programs, though no specific program citation or study is provided.
+coaching_translation: Major medical institutions are formally integrating coaches
+  — this legitimizes your role when speaking to skeptical clinicians or clients.
+caveats:
+- No source document or program name cited.
+- Source is expert testimony, not verified institutional documentation in this context.
+linked_to_topics:
+- coach-clinician-collaboration
+- functional-medicine-coaching
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-future-fm
+  location: Expanding Scope of Influence Section
+  quote: At institutions like Mayo Clinic, health and wellness coaches are formally
+    embedded in clinical care teams, working with providers and patients to support
+    those long-term goals.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

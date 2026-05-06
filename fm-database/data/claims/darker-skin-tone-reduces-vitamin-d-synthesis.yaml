@@ -1,0 +1,28 @@
+slug: darker-skin-tone-reduces-vitamin-d-synthesis
+statement: People with darker skin tones produce less vitamin D from sun exposure
+  because higher melanin content absorbs UV rays, reducing the conversion of 7-dehydrocholesterol
+  to vitamin D3 in the skin.
+evidence_tier: strong
+rationale: Melanin competes with 7-dehydrocholesterol for UV-B photons, reducing vitamin
+  D3 photosynthesis. This is well-documented in dermatology and nutritional epidemiology
+  literature.
+coaching_translation: If you have a darker skin tone, your skin naturally makes less
+  vitamin D from sunlight. This means you may need more sun exposure or supplementation
+  to maintain adequate levels.
+caveats: []
+linked_to_topics:
+- vitamin-d3
+linked_to_supplements:
+- vitamin-d3-supplement
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-vitamin-d3-k2
+  location: Factors Affecting Vitamin D Production
+  quote: People with a darker skin tone have more amount of melanin production. The
+    melanin, what it does is, it absorbs the UV light, eventually reducing the production
+    of vitamin D.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,30 @@
+slug: thiamin-retention-improves-with-meals
+statement: Thiamin absorption does not require fat or food, but retention improves
+  when taken with meals and spread through the day.
+evidence_tier: fm_specific_thin
+rationale: Thiamin is water-soluble and absorbed without food; the retention claim
+  is plausible but based on FM clinical convention rather than RCT evidence.
+coaching_translation: Encourage clients to take thiamin supplements with meals rather
+  than on an empty stomach to support better retention.
+caveats:
+- Source is a practitioner cheatsheet without primary citations.
+- Source is practitioner cheatsheet without citation.
+linked_to_topics:
+- nutrition-deficiency
+linked_to_supplements:
+- thiamin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 3
+  quote: Thiamin absorption is described as not requiring fat or food, while retention
+    is said to improve when taken with meals and spread through the day.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 3
+  quote: Thiamin absorption is described as not requiring fat or food, while retention
+    is said to improve when taken with meals and spread through the day.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

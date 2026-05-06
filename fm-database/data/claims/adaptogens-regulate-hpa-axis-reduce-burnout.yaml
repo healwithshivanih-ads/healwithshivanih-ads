@@ -1,0 +1,32 @@
+slug: adaptogens-regulate-hpa-axis-reduce-burnout
+statement: Adaptogenic herbs (ashwagandha, rhodiola) regulate HPA axis response and
+  are clinically useful for fatigue, burnout, and adrenal imbalance.
+evidence_tier: plausible_emerging
+rationale: Both ashwagandha and rhodiola have multiple RCTs demonstrating cortisol-lowering,
+  fatigue-reducing, and stress-resilience effects. HPA axis modulation is well-supported
+  mechanistically and clinically for these specific herbs.
+coaching_translation: Adaptogenic herbs like ashwagandha and rhodiola help your body
+  better manage the stress response—they work with your adrenal system rather than
+  overstimulating it. They are among the best-studied botanicals for burnout and fatigue.
+caveats:
+- Specific dosing and herb selection should be guided by a clinician.
+- Contraindications exist (e.g., ashwagandha in thyroid conditions, pregnancy).
+- Source is educational synthesis.
+linked_to_topics:
+- hpa-axis-dysregulation
+- emotional-healing-chronic-disease
+- nervous-system-regulation
+linked_to_supplements:
+- ashwagandha
+- rhodiola
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Key Nutrients & Botanicals for Emotional Healing Support
+  quote: 'Adaptogens (Ashwagandha, Rhodiola): Regulate HPA axis response. Fatigue,
+    burnout, adrenal imbalance.'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

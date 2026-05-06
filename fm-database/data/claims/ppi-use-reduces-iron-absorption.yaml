@@ -1,0 +1,30 @@
+slug: ppi-use-reduces-iron-absorption
+statement: Proton pump inhibitor (PPI) use reduces gastric acid production over time,
+  impairing the conversion of ferric to ferrous iron and decreasing iron absorption.
+evidence_tier: strong
+rationale: PPIs suppress parietal cell HCl secretion. Since gastric acid is required
+  to reduce Fe³⁺ to the absorbable Fe²⁺ form and initiate iron breakdown before duodenal
+  absorption, chronic PPI use is a recognised cause of iron malabsorption.
+coaching_translation: Long-term antacid/PPI use can quietly deplete iron levels by
+  reducing stomach acid — important context when reviewing a client's medication history.
+out_of_scope_notes: Advising clients to stop PPIs is out of coaching scope — this
+  requires clinician management.
+caveats:
+- Source is an expert lecture; consistent with established clinical literature.
+- Do not recommend discontinuing PPIs without medical supervision.
+linked_to_topics:
+- iron-deficiency-anemia
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-iron-deficiency-anemia
+  location: Causes of Iron Deficiency / Malabsorption section
+  quote: Certain medications like antibiotics, PPI. So PPI are basically called as
+    proton pump inhibitors, usually over the counter called as anti acids. So what
+    these anti acids do over a period of time is decreasing the natural production
+    of acid inside your stomach. Thus again involving and decreasing the malabsorption,
+    decreasing absorption of iron inside your stomach.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,30 @@
+slug: high-dose-statin-nnt-33
+statement: For an intermediate-risk patient (7.5% 10-year ASCVD risk), a high-dose
+  statin provides a 43% relative risk reduction in heart attacks, but the number needed
+  to treat is 33.
+evidence_tier: strong
+rationale: 'The document provides explicit numerical calculation: relative risk reduction
+  of 43% corresponds to an NNT of 33, meaning 32 of 33 patients receive no benefit
+  while all are exposed to potential side effects.'
+coaching_translation: Even on a high-dose statin, out of 33 people with similar risk
+  profiles, only 1 will actually avoid a heart attack. The other 32 get no benefit
+  but still face all the possible side effects.
+caveats:
+- Calculated for an intermediate-risk (7.5% 10-year ASCVD) patient specifically.
+- Higher-risk patients will have lower NNTs and greater absolute benefit.
+linked_to_topics:
+- statin-therapy-primary-prevention
+- cardiovascular-risk-assessment
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-reality-of-statins
+  location: High Dose Statin NNT Section
+  quote: A high dose statin would give them a 43% reduction in heart attack... number
+    needed to treat as 33. That means you treat 33 people out of those 33 people,
+    32 of them will get no benefit.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

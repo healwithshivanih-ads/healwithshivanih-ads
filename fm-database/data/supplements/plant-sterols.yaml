@@ -1,12 +1,12 @@
 slug: plant-sterols
-display_name: Plant Sterols / Stanols
+display_name: Plant Sterols / Phytosterols
 category: other
 forms_available:
 - capsule
 - tablet
 typical_dose_range:
   capsule:
-    min: 1600
+    min: 2000
     max: 3000
     unit: mg
   tablet:
@@ -20,21 +20,26 @@ timing_options:
 take_with_food: required
 linked_to_topics:
 - dyslipidemia
+- cardiovascular-disease-prevention
 linked_to_claims:
 - plant-sterols-block-cholesterol-absorption
-notes_for_coach: Effective dose is ~2g/day with meals. Well-supported by RCTs and
-  recognized in ACC/AHA guidelines. Most effective when taken with the highest-cholesterol
-  meals. May slightly reduce fat-soluble vitamin absorption.
-notes_for_client: Plant sterols work like cholesterol blockers in your gut — they
-  help prevent cholesterol from being absorbed, which lowers your LDL levels. Take
-  them with meals.
+- plant-sterols-3g-12-percent-cholesterol-reduction
+notes_for_coach: 3g/day associated with 12% reduction in total cholesterol. Hard to
+  achieve therapeutic dose from food alone without supplementation, though Mediterranean
+  diet foods contain meaningful amounts.
+notes_for_client: Plant sterols are natural compounds found in plant foods that help
+  block cholesterol absorption. At 3 grams per day, they can reduce total cholesterol
+  by about 12%. They are found in nuts, seeds, and vegetable oils.
 evidence_tier: strong
 linked_to_mechanisms: []
 sources:
 - id: vitaone-cv-cheatsheet
   location: Dyslipidemia Cheatsheet — Section 5
   quote: 'Plant sterols/stanols: Block cholesterol absorption.'
-version: 1
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: LDL-Lowering Nutraceuticals
+  quote: Plant sterols, three grams a day, 12% reduction in cholesterol.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

@@ -5,27 +5,39 @@ forms_available:
 - capsule
 - powder
 - tablet
+- lozenge
 timing_options:
 - with_breakfast
 - with_dinner
+- on_empty_stomach
+- morning
+- evening
+- bedtime
 take_with_food: optional
 linked_to_topics:
 - gerd
 - gut-dysfunction
+- gerd-ppi-tapering
 linked_to_claims:
 - slippery-elm-protects-gi-lining
-notes_for_coach: Listed under 'Protect' in the PPI taper protocol. Acts as a demulcent,
-  coating and soothing mucous membranes.
+- ppi-tapering-supplement-support-repair-protect-antioxidant
+- abrupt-ppi-discontinuation-causes-rebound-reflux
+notes_for_coach: Listed under 'Protect' in PPI tapering. A mucilaginous herb that
+  coats and soothes the GI tract. Often taken as a porridge or powder in water.
 evidence_tier: fm_specific_thin
 typical_dose_range: {}
 linked_to_mechanisms: []
-notes_for_client: ''
+notes_for_client: Slippery elm creates a soothing, mucus-like coating in your digestive
+  tract that can help ease heartburn and irritation during acid reflux recovery.
 sources:
 - id: vitaone-gut-toolkit
   location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
     — Supplement recommendations'
   quote: 'Protect: Alginate, pectin, DGL, slippery elm'
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
+  quote: 'Protect: Alginate, pectin, DGL, slippery elm.'
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

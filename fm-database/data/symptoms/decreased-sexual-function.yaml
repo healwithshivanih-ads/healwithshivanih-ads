@@ -1,0 +1,26 @@
+slug: decreased-sexual-function
+display_name: Decreased Sexual Function
+aliases:
+- low libido
+- sexual dysfunction
+- poor sperm production
+- BPH risk
+- reduced testosterone
+category: hormonal
+severity: concerning
+description: Reduced sexual function, particularly in males, linked to zinc's high
+  concentration in the testes and prostate and its role in sperm production, maturation,
+  and hormone regulation.
+when_to_refer: Persistent sexual dysfunction should be evaluated by a physician.
+linked_to_topics:
+- zinc-deficiency
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-zinc-deficiency
+  location: Signs and Symptoms
+  quote: Decreased production or sexual function especially in men, DPH because again
+    zinc has an abundance of concentration in the testes and the prostates.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

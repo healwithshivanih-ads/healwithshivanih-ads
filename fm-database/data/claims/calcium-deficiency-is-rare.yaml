@@ -1,0 +1,34 @@
+slug: calcium-deficiency-is-rare
+statement: True calcium deficiency (as opposed to low serum calcium) is a rare clinical
+  condition, as the skeleton provides a large reservoir that the body draws from to
+  maintain serum levels.
+evidence_tier: plausible_emerging
+rationale: The document argues from physiological reasoning that 99% of body calcium
+  is in bone, acting as a reservoir, making dietary deficiency uncommon. This is biologically
+  plausible and consistent with some FM perspectives, but consensus guidelines do
+  still recognize dietary calcium inadequacy as a population-level concern. Source
+  is expert consensus (moderate quality).
+coaching_translation: A low calcium number on a blood test doesn't usually mean you
+  need a calcium supplement — the body is good at pulling calcium from bones to keep
+  blood levels stable. The real question is why levels look low.
+caveats:
+- Source is expert consensus, moderate quality; not derived from RCTs.
+- Population-level epidemiology does identify groups at risk for dietary calcium insufficiency
+  (elderly, postmenopausal women, vegans).
+linked_to_topics:
+- calcium-deficiency
+- calcium-metabolism
+linked_to_supplements:
+- calcium-supplementation
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-calcium-deficiency
+  location: Calcium Physiology Introduction
+  quote: calcium deficiency is very rare condition. Even if you look at the low calcium
+    serum that doesn't mean that patient having a calcium deficiency and they require
+    calcium supplementation.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

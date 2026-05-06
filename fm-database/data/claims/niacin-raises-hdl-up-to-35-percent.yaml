@@ -1,0 +1,30 @@
+slug: niacin-raises-hdl-up-to-35-percent
+statement: Niacin can raise HDL cholesterol by up to 35% and lowers triglycerides
+  by up to 50%, while also reducing LDL-P and shifting particles from small dense
+  to large buoyant.
+evidence_tier: strong
+rationale: Supported by 11 referenced trials with 9,000+ subjects. Niacin's HDL-raising
+  and triglyceride-lowering effects are among the most well-documented in lipidology.
+coaching_translation: Niacin (a B vitamin) is one of the most effective options for
+  raising HDL and lowering triglycerides. Clinical use requires physician supervision
+  due to side effects and contraindications.
+out_of_scope_notes: Niacin prescribing, dose titration, and contraindication screening
+  are clinician scope. Coaches should not recommend therapeutic niacin doses independently.
+caveats:
+- Contraindicated in active gout, peptic ulcer disease, and liver disease.
+- May raise blood sugar — caution in diabetics.
+- Max 2g/day recommended in this lecture.
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-disease-prevention
+linked_to_supplements:
+- niacin-vitamin-b3
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Niacin for HDL and Triglycerides
+  quote: Niacin will lower triglycerides up to 50%, raise HDL up to 35%.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

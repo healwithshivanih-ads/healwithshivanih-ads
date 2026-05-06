@@ -13,14 +13,18 @@ linked_to_topics:
 - sex-hormone-binding-globulin
 - testosterone-health
 - benign-prostatic-hyperplasia
+- testosterone-dht-conversion
 linked_to_claims:
 - stinging-nettle-modulates-shbg-and-5ar
-notes_for_coach: Nettle root appears in both SHBG-decreasing and 5-alpha reductase
-  inhibiting categories. Dual action is plausible; clinician should determine dose
-  and indication.
-notes_for_client: Stinging nettle root may support hormone balance by reducing SHBG
-  and modulating DHT production — ask your clinician about appropriate use.
-evidence_tier: plausible_emerging
+- stinging-nettle-decreases-shbg
+- 5ar-inhibitors-reduce-dht-prevent-bph-hair-loss-acne
+notes_for_coach: Nettle root may lower SHBG and inhibit 5-α reductase. Dual mechanism
+  makes it relevant for both SHBG management and BPH/DHT concerns. Clinician should
+  determine dose.
+notes_for_client: Stinging nettle root is an herb traditionally used for prostate
+  health and hormone balance. It may help free up bound testosterone and reduce DHT
+  production.
+evidence_tier: fm_specific_thin
 typical_dose_range: {}
 linked_to_mechanisms: []
 sources:
@@ -28,7 +32,12 @@ sources:
   location: SHBG Table — Page 01 & 5-a Reductase — Page 06
   quote: Stinging nettle (Urtica dioica) [Decreases SHBG] ... Stinging Nettle Root
     (Urtica dioica) [Herbs that Inhibit 5-a Reductase]
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: 'Sex Hormone Binding Globulin (SHBG); Maintaining Healthy Testosterone
+    Levels: 5-a Reductase Inhibitors'
+  quote: Stinging nettle (Urtica dioica) [listed under factors that Decrease SHBG
+    and Herbs that Inhibit 5-a Reductase]
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

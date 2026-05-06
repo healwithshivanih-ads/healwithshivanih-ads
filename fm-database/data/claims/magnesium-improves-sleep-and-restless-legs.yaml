@@ -1,0 +1,29 @@
+slug: magnesium-improves-sleep-and-restless-legs
+statement: Magnesium supplementation improves sleep quality and reduces restless leg
+  syndrome symptoms in deficient individuals.
+evidence_tier: plausible_emerging
+rationale: Magnesium plays roles in GABA receptor activity and melatonin production;
+  small RCTs and observational studies support improvement in sleep and RLS with magnesium
+  supplementation, particularly in deficient populations.
+coaching_translation: If your client can't sleep or has restless legs at night, magnesium
+  is often the simplest and most effective first intervention to try.
+caveats:
+- Source is expert FM lecture.
+- Dose and form matter — glycinate for sleep/muscle, citrate for bowel motility.
+- Confirm with clinician if client has renal impairment.
+linked_to_topics:
+- chronic-pain-and-fatigue
+linked_to_supplements:
+- magnesium-glycinate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-chronic-pain-fatigue
+  location: Supplements Section
+  quote: If they start with the magnesium, people, they complain with the restless
+    leg syndrome or even if they are not having a proper sleep, then magnesium really
+    helps.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

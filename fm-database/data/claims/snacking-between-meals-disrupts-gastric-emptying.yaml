@@ -1,0 +1,30 @@
+slug: snacking-between-meals-disrupts-gastric-emptying
+statement: Eating between meals causes the pyloric sphincter to close and restart
+  the digestion cycle, significantly prolonging total gastric transit time and impairing
+  overall digestive efficiency.
+evidence_tier: plausible_emerging
+rationale: The pyloric sphincter regulation mechanism described is physiologically
+  plausible and supported by gastric motility research. The Loma Linda nursing study
+  referenced in the document provides some corroborating observational evidence.
+coaching_translation: Avoid snacking between meals. Once you eat, allow your stomach
+  5–6 hours to complete digestion before eating again. If you're hungry, it's a sign
+  your previous meal may not have contained enough fibre, protein, or fat.
+caveats:
+- The Loma Linda study is referenced without citation details.
+- Individual variation in gastric motility exists.
+- Source is a practitioner talk.
+linked_to_topics:
+- meal-timing-and-digestive-rest
+- gastrointestinal-tract-overview
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-gi-tract
+  location: Meal Timing Section
+  quote: As soon as it comes in, pyloric sphincter shuts and says, shut the gate,
+    something's just come in, it's not broken down.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

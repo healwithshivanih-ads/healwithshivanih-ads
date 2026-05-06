@@ -7,16 +7,18 @@ forms_available:
 timing_options:
 - with_breakfast
 - with_dinner
-take_with_food: required
+take_with_food: optional
 linked_to_topics:
 - benign-prostatic-hyperplasia
 - testosterone-health
+- testosterone-dht-conversion
 linked_to_claims:
 - 5ar-inhibition-reduces-bph-hair-loss-acne
-notes_for_coach: Pygeum has some clinical evidence for BPH symptom reduction. Listed
-  as a clinician-prescribed 5-alpha reductase inhibiting herb. Dose must be clinician-directed.
-notes_for_client: Pygeum is a tree bark extract traditionally used to support prostate
-  health — use only as directed by your clinician.
+- 5ar-inhibitors-reduce-dht-prevent-bph-hair-loss-acne
+notes_for_coach: Pygeum has clinical trial evidence for BPH symptom relief and inhibits
+  5-α reductase. Often combined with saw palmetto. Dosing requires clinician guidance.
+notes_for_client: Pygeum is an African tree bark extract traditionally used to support
+  prostate health and urinary flow.
 evidence_tier: plausible_emerging
 typical_dose_range: {}
 linked_to_mechanisms: []
@@ -24,7 +26,10 @@ sources:
 - id: vitaone-sex-hormones-toolkit
   location: Maintaining Healthy Testosterone Levels — Page 06
   quote: Pygeum (Pygeum africanum) [Herbs that Inhibit 5-a Reductase]
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors'
+  quote: Pygeum (Pygeum africanum) [listed under Herbs that Inhibit 5-a Reductase]
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

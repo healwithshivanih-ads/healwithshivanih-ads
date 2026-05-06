@@ -1,0 +1,48 @@
+slug: flaxseed-oil
+display_name: Flaxseed Oil (ALA)
+category: fatty_acid
+forms_available:
+- liquid
+- capsule
+typical_dose_range:
+  liquid:
+    min: 5
+    max: 10
+    unit: g
+timing_options:
+- morning
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- cardiometabolic-diet
+- chronic-inflammation
+- omega-3-omega-6-balance
+linked_to_claims:
+- avocado-flaxseed-oil-smoothie-for-healthy-fats
+- flaxseed-oil-provides-ala-not-epa-dha
+- omega-3-membrane-replacement-takes-3-months
+notes_for_coach: Prescribe flaxseed oil (10g/day) alongside fish oil or algae EPA/DHA
+  for a combined omega-3 strategy. ALA from flaxseed is not efficiently converted
+  to EPA/DHA in all patients due to genetic variation in delta-5 desaturase. Do not
+  rely on flaxseed oil alone for anti-inflammatory purposes in patients needing therapeutic
+  EPA/DHA levels.
+notes_for_client: Flaxseed oil is an affordable, plant-based omega-3 source. Two tablespoons
+  a day alongside your omega-3 capsule rapidly increases your omega-3 intake. Keep
+  refrigerated and use fresh.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cardiometabolic-recipes
+  location: Power Punch Smoothie
+  quote: 1 Tbsp Flax Seed oil
+- id: coconote-fm-approach-inflammation
+  location: Diet – Flaxseed Oil and ALA
+  quote: you prescribe flaxseed oil, it's available in Indian market, very fresh,
+    very cheap. So patient can incorporate that 10 grams... you prescribe two spoons
+    of flaxseed oil, that's 10 grams. You will increase omega-3 very fast.
+version: 2
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,37 @@
+slug: lectin-sensitivity
+display_name: Lectins & Gut Inflammation
+aliases:
+- lectin intolerance
+- plant lectins
+- dietary lectins
+summary: Lectins are plant compounds found in unripe fruit, legumes, and certain grains.
+  If lectins enter the bloodstream (due to poor gut flora or improper food preparation),
+  they can increase inflammation. Traditional preparation methods—soaking, rinsing,
+  pressure cooking, fermentation—significantly reduce lectin load. Individuals with
+  arthritis or gout may benefit from avoiding nightshade vegetables.
+common_symptoms:
+- inflammation
+- joint-pain
+- bloating
+red_flags: []
+related_topics:
+- ph-balance
+- gluten-intolerance
+- yeast-overgrowth
+key_mechanisms:
+- lectin-gut-inflammation
+coaching_scope_notes: Coaches can educate clients on lectin-reducing food preparation
+  techniques. Emphasise soaking legumes, rinsing quinoa, using sourdough, and de-seeding/de-skinning
+  nightshades.
+clinician_scope_notes: Lectin sensitivity is not a clinically recognised diagnosis.
+  Refer clients with persistent inflammatory conditions for proper workup.
+evidence_tier: fm_specific_thin
+sources:
+- id: barbara-oneil-ph-balance
+  location: Lectins Section
+  quote: Lectins are only a problem if they get into the blood. If lectins get into
+    the blood, they increase inflammation in it.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

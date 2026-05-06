@@ -1,0 +1,40 @@
+slug: ph-balance-and-diet
+display_name: pH Balance and Diet
+aliases:
+- acid-alkaline balance
+- alkaline diet
+- acid-forming foods
+- alkaline-forming foods
+summary: The concept that foods can be classified as acid-forming or alkaline-forming,
+  and that maintaining a ratio of 70-80% alkaline-forming to 20-30% acid-forming foods
+  supports a healthy internal pH environment (~6.5). Modern diets skewed heavily toward
+  acid-forming foods (refined carbohydrates, sugar, alcohol) are associated with poor
+  health outcomes.
+common_symptoms:
+- inflammation
+- fatigue
+- increased-cancer-risk
+red_flags: []
+related_topics:
+- fermented-foods-and-gut-health
+- fresh-cheeses-ph-neutrality
+- refined-carbohydrate-overconsumption
+key_mechanisms:
+- dietary-acid-load
+- inflammatory-diet-pattern
+coaching_scope_notes: Coaches can educate clients on shifting food ratios toward more
+  alkaline-forming whole foods (vegetables, legumes, certain nuts). Avoid making clinical
+  claims about treating disease with pH manipulation.
+clinician_scope_notes: Note that blood pH is tightly regulated; the 'dietary pH' framework
+  here refers to urinary pH or metabolic acid load, not blood pH. Clinicians should
+  contextualize for patients accordingly.
+evidence_tier: plausible_emerging
+sources:
+- id: barbara-oneil-fresh-cheeses-ph
+  location: pH Balance and Food Ratios
+  quote: To maintain this 6.5 environment, we should be consuming 70-80% alkaline
+    forming foods and 20-30% acid forming foods.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

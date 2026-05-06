@@ -1,0 +1,35 @@
+slug: steroidogenesis
+display_name: Steroidogenesis Pathway
+aliases:
+- steroid hormone synthesis
+- hormonal biosynthesis pathway
+summary: All steroid hormones — including pregnenolone, progesterone, DHEA, testosterone,
+  estradiol, and cortisol — are derived from cholesterol. Pregnenolone is the key
+  intermediate that branches into progesterone, cortisol (via 17-hydroxypregnenolone),
+  and DHEA (precursor to testosterone and estrogens). Optimal cholesterol levels are
+  prerequisite for adequate hormone production.
+common_symptoms: []
+red_flags: []
+related_topics:
+- menopause
+- cortisol-steal
+- estrogen-dominance
+- dhea-deficiency
+key_mechanisms:
+- cholesterol-to-pregnenolone
+- cortisol-steal
+- aromatase-activity
+coaching_scope_notes: Coaches can educate clients on the importance of cholesterol
+  as a hormone precursor and support dietary approaches. Supplement or BHRT recommendations
+  require clinician oversight.
+evidence_tier: strong
+clinician_scope_notes: ''
+sources:
+- id: coconote-fm-sex-hormones
+  location: Steroidogenesis Pathway
+  quote: You see the origin of these hormones. Now where it is happening? It is the
+    cholesterol.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,33 @@
+slug: coq10-depletion-by-beta-blockers
+display_name: CoQ10 Depletion by Cardiovascular Medications
+aliases:
+- statin-induced CoQ10 depletion
+- drug-induced CoQ10 deficiency
+category: metabolic
+summary: Beta blockers, statins (HMG-CoA reductase inhibitors), thiazide diuretics,
+  centrally-acting antihypertensives, and metformin deplete CoQ10, a critical cofactor
+  in mitochondrial energy production and antioxidant defense. This may worsen fatigue
+  and impair cardiac muscle function.
+upstream_drivers:
+- beta-blocker-use
+- statin-use
+- thiazide-diuretic-use
+- metformin-use
+downstream_effects:
+- fatigue
+- impaired-cardiac-energy-production
+- muscle-weakness
+related_mechanisms:
+- statin-mediated-nutrient-depletion
+linked_to_topics:
+- drug-induced-nutrient-depletion-cardiovascular
+- beta-blocker-deprescribing
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Cardiovascular Drugs and Potential Nutrient Deficiency
+  quote: 'Beta Blockers: CoQ10, Melatonin'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

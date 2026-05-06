@@ -1,0 +1,30 @@
+slug: fasting-insulin-above-10-diagnostic-for-insulin-resistance
+statement: A fasting insulin level greater than 10 µIU/mL is considered a classical
+  diagnostic indicator of insulin resistance.
+evidence_tier: confirm_with_clinician
+rationale: The lecture states this cutoff explicitly. However, reference ranges for
+  fasting insulin vary by lab and are not universally standardized. Coaches must not
+  use this as a standalone diagnostic statement with clients; clinician review is
+  required.
+coaching_translation: Your doctor can look at your fasting insulin number — if it's
+  over 10, that may be an early sign your cells aren't responding well to insulin.
+out_of_scope_notes: This is a diagnostic threshold. Coaches must not interpret labs
+  or tell clients they 'have' insulin resistance based on this number. Refer to clinician.
+caveats:
+- Lab reference ranges for fasting insulin are not universally standardized.
+- Source is an FM expert lecture; this cutoff is FM-conventional, not universally
+  adopted.
+- Clinical context and full pattern (Craft patterns) are needed for proper interpretation.
+linked_to_topics:
+- insulin-resistance-early-detection
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-gtir
+  location: GTIR Graph Interpretation
+  quote: if the fasting insulin level is more than 10, it is classical diagnostic
+    for insulin resistance
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

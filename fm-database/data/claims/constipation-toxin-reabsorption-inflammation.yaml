@@ -1,0 +1,28 @@
+slug: constipation-toxin-reabsorption-inflammation
+statement: Chronic constipation leads to reabsorption of toxins into systemic circulation,
+  driving inflammation and contributing to chronic pain and low energy.
+evidence_tier: plausible_emerging
+rationale: Enterohepatic recirculation of toxins and estrogen metabolites in constipated
+  individuals is biologically plausible and supported by animal and observational
+  human data. Direct RCT evidence for this specific causal chain is limited.
+coaching_translation: If your client isn't eliminating regularly, no supplement or
+  diet change will fully work — the body keeps recycling toxins that fuel inflammation.
+caveats:
+- Source is expert FM lecture, not primary literature.
+- Magnitude of clinical effect is not quantified.
+linked_to_topics:
+- chronic-pain-and-fatigue
+- dysbiosis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-chronic-pain-fatigue
+  location: Constipation Section
+  quote: If they are not eliminating, the toxins will be reabsorbed in our body and
+    that will create a havoc and that will cause inflammation. Inflammation is a big
+    factor for the low energy.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

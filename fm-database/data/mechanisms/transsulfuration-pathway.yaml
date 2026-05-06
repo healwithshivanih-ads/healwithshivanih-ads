@@ -1,0 +1,34 @@
+slug: transsulfuration-pathway
+display_name: Transsulfuration Pathway (Homocysteine to Glutathione)
+aliases:
+- sulfation pathway
+- cysteine synthesis pathway
+category: metabolic
+summary: An alternative route for homocysteine metabolism converts it to cysteine
+  via the transsulfuration pathway, requiring vitamin B6 (pyridoxine) as a cofactor.
+  Cysteine is then used to synthesise glutathione, the body's primary antioxidant.
+  Impaired B6 status or MTHFR dysfunction can reduce glutathione production.
+upstream_drivers:
+- homocysteine-accumulation
+- vitamin-b6-adequacy
+downstream_effects:
+- cysteine-synthesis
+- glutathione-production
+- antioxidant-defence
+related_mechanisms:
+- impaired-homocysteine-remethylation
+- methylation
+linked_to_topics:
+- homocysteine-elevation
+- mthfr-gene-variant
+evidence_tier: strong
+sources:
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: Domino Effect / Supplementation section
+  quote: Homocysteine is actually also converted to one of the other major antioxidants
+    in the body which is glutathione. For this process also vitamin B6 is an important
+    cofactor.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

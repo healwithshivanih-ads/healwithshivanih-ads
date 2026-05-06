@@ -1,0 +1,28 @@
+slug: sattu-high-protein-fibre-paratha
+statement: Sattu (roasted chickpea flour) is a high-protein, high-fibre ingredient
+  that supports satiety and blood sugar regulation when used as a roti or paratha
+  flour in cardiometabolic meal plans.
+evidence_tier: plausible_emerging
+rationale: Sattu Paratha uses 1 cup sattu flour as its base. Sattu is a traditional
+  Indian ingredient with recognised high protein and fibre content; limited but growing
+  evidence supports its role in glycaemic control.
+coaching_translation: Sattu parathas are made from roasted gram flour — a filling,
+  high-protein, high-fibre alternative to regular wheat roti that helps keep blood
+  sugar steady.
+caveats:
+- Source is an expert-curated recipe book. Sattu-specific RCT evidence in cardiometabolic
+  outcomes is limited.
+linked_to_topics:
+- legume-based-eating-pattern
+- cardiometabolic-diet
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-cardiometabolic-recipes
+  location: Sattu Paratha
+  quote: 1 cup Sattu flour … Serve hot with curd, dal or sabji
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

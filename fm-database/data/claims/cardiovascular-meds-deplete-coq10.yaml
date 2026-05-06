@@ -1,0 +1,30 @@
+slug: cardiovascular-meds-deplete-coq10
+statement: Beta blockers, thiazide diuretics, centrally-acting antihypertensives,
+  HMG-CoA reductase inhibitors (statins), and metformin all deplete CoQ10.
+evidence_tier: plausible_emerging
+rationale: Mechanistic plausibility is high (statins block the mevalonate pathway
+  used in CoQ10 synthesis); clinical trial evidence for meaningful CoQ10 depletion
+  and supplementation benefit is mixed.
+coaching_translation: Clients on multiple heart medications may have depleted CoQ10
+  — a nutrient important for energy and heart muscle function. This is worth discussing
+  with their doctor.
+out_of_scope_notes: Supplement dosing for CoQ10 repletion in medicated patients requires
+  clinician oversight.
+caveats:
+- Evidence for statin-CoQ10 depletion is mechanistically strongest; evidence for other
+  drug classes is less robust.
+- Source is a toolkit without primary citations for each drug-nutrient pair.
+linked_to_topics:
+- drug-induced-nutrient-depletion-cardiovascular
+- beta-blocker-deprescribing
+linked_to_supplements:
+- coenzyme-q10
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Cardiovascular Drugs and Potential Nutrient Deficiency
+  quote: 'Beta Blockers: CoQ10, Melatonin'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

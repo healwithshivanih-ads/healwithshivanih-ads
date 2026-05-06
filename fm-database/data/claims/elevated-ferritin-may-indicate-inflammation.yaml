@@ -1,0 +1,30 @@
+slug: elevated-ferritin-may-indicate-inflammation
+statement: Elevated ferritin does not necessarily indicate sufficient iron stores;
+  it may instead reflect systemic inflammation and is associated with cardiovascular
+  disease risk.
+evidence_tier: strong
+rationale: Ferritin is an acute phase reactant that rises with inflammation. High
+  ferritin in the context of inflammatory states can mask true iron status and independently
+  signals systemic inflammation.
+coaching_translation: A high ferritin on a blood test doesn't always mean good iron
+  levels — it can be a sign of inflammation in the body. This needs a clinician to
+  unpack.
+out_of_scope_notes: Assessment of inflammatory ferritin elevation requires clinician
+  evaluation with additional markers (e.g., CRP, ESR).
+caveats:
+- Source is an expert lecture; consistent with established clinical literature.
+linked_to_topics:
+- iron-deficiency-anemia
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-iron-deficiency-anemia
+  location: Iron Panel Biomarkers / Ferritin section
+  quote: Sometimes we see reports that have ferritin on a very high spectrum, on the
+    above standard. Does it mean that my patient has a lot amount of storage of iron?
+    It means that there is some kind of inflammation inside the body, which specifically
+    also has a risk of cardiovascular disease.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

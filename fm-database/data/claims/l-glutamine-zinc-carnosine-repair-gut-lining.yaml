@@ -1,0 +1,32 @@
+slug: l-glutamine-zinc-carnosine-repair-gut-lining
+statement: L-glutamine and zinc carnosine support repair of the intestinal lining
+  and are recommended in the Repair phase of the 5R gut protocol.
+evidence_tier: plausible_emerging
+rationale: L-glutamine is the primary fuel for intestinal enterocytes and has been
+  studied for gut barrier integrity. Zinc carnosine has evidence from Japanese clinical
+  trials for gastric mucosal protection. Both are widely used in functional medicine
+  gut repair protocols.
+coaching_translation: L-glutamine and zinc carnosine are two nutrients that specifically
+  help rebuild and protect the gut lining. They work best once the most inflammatory
+  foods and triggers have been removed.
+caveats:
+- Source is FM lecture. Evidence for these supplements in dysbiosis-related hypochlorhydria
+  specifically is largely from small trials and clinical practice.
+- Dosing should be guided by a clinician.
+linked_to_topics:
+- dysbiosis
+- hypochlorhydria
+- gut-skin-hormone-axis
+linked_to_supplements:
+- l-glutamine
+- zinc-carnosine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-gut-skin-hormone-axis
+  location: 5R Protocol — Repair
+  quote: L-glutamine and zinc carnosine help here in repairing the stomach lining.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

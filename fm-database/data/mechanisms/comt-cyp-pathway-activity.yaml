@@ -1,0 +1,32 @@
+slug: comt-cyp-pathway-activity
+display_name: COMT/CYP Genetic Variant Impact on Estrogen Metabolism
+aliases:
+- COMT polymorphism
+- CYP1A1 variant
+- CYP1B1 variant
+- GST variant
+- detox gene variants
+category: metabolic
+summary: Genetic variants in COMT, CYP1A1, CYP1B1, and GST can impair the methylation
+  and detoxification of estrogen metabolites, leading to accumulation of carcinogenic
+  4-OH estrogens. Diet and lifestyle modifications can partially compensate for these
+  variants.
+upstream_drivers:
+- genetic-polymorphisms
+downstream_effects:
+- impaired-estrogen-clearance
+- carcinogenic-metabolite-accumulation
+related_mechanisms:
+- hepatic-estrogen-metabolism
+linked_to_topics:
+- estrogen-metabolism
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Estrogen Metabolism — Disrupts Healthy Estrogen Metabolism
+  quote: Several genetic variants related to detoxification may impact estrogen metabolism,
+    including COMT, CYP1A1, CYP1B1, and GST.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

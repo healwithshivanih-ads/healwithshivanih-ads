@@ -1,0 +1,33 @@
+slug: vascular-smooth-muscle-relaxation
+display_name: Vascular Smooth Muscle Relaxation
+aliases:
+- vasodilation
+- magnesium-vasodilator
+- antispasmodic-magnesium
+category: structural
+summary: Magnesium acts as a natural calcium channel blocker, preventing calcium-driven
+  vasoconstriction and promoting vascular smooth muscle relaxation. This mechanism
+  underpins magnesium's role in managing hypertension, arterial spasm, asthma bronchospasm,
+  Raynaud's phenomenon, and restless leg syndrome.
+upstream_drivers:
+- adequate-magnesium-levels
+downstream_effects:
+- lower-blood-pressure
+- reduced-arterial-spasm
+- bronchodilation
+- improved-peripheral-circulation
+related_mechanisms:
+- calcium-magnesium-imbalance
+linked_to_topics:
+- magnesium-cardiovascular-health
+- magnesium-musculoskeletal-health
+evidence_tier: strong
+sources:
+- id: coconote-fm-magnesium-deficiency
+  location: Hypertension section
+  quote: Magnesium happens to be a natural calcium channel blocker... magnesium which
+    causes relaxations the hypertension can be taken care of.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

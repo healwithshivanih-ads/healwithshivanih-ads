@@ -1,0 +1,38 @@
+slug: nutrient-malabsorption
+display_name: Nutrient Malabsorption
+aliases:
+- poor nutrient absorption
+- nutrient deficiency cascade
+category: metabolic
+summary: Insufficient stomach acid, compromised digestive enzymes, or damaged gut
+  lining impairs absorption of iron, B12, magnesium, vitamin D, and omega-3 fatty
+  acids — all critical for energy production, nerve function, and pain modulation.
+upstream_drivers:
+- low-stomach-acid
+- leaky-gut-mechanism
+- dysbiosis
+- gallbladder-dysfunction
+downstream_effects:
+- iron-deficiency
+- b12-deficiency
+- vitamin-d-deficiency
+- fatigue
+- joint-pain
+- elevated-crp
+related_mechanisms:
+- low-stomach-acid
+- leaky-gut-mechanism
+linked_to_topics:
+- low-stomach-acid
+- chronic-pain-and-fatigue
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-chronic-pain-fatigue
+  location: Digestion Section
+  quote: We know we need Stomach Acid for the good production of the iron or the absorption
+    of the iron, B12, lot of vitamins and minerals need to be absorbed when we have
+    good quantity of the stomach acid.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,25 +1,42 @@
 slug: low-libido
-display_name: Low Libido / Reduced Fertility
+display_name: Low Libido / Loss of Interest in Sex
 aliases:
 - reduced sex drive
 - low sexual desire
 - decreased sex drive
 - low sex drive
 - reduced libido
+- reduced fertility
+- reproductive effects of stress
+- loss of sexual interest
+- low desire
+- reduced sexual desire
+- loss of interest in sex
+- sexual dysfunction
 category: hormonal
 severity: common
-description: Reduced sexual desire and potential fertility impairment caused by chronic
-  stress suppressing reproductive hormones downstream of DHEA depletion.
-when_to_refer: Refer if suspected hypogonadism or pituitary pathology.
+description: Decreased sexual desire associated with declining estrogen, progesterone,
+  and testosterone levels during perimenopause and menopause.
+when_to_refer: Refer if associated with significant hormonal pathology (hypogonadism,
+  hypothyroidism) or relationship distress requiring specialist support.
 linked_to_topics:
 - adrenal-dysfunction
 - hpa-axis-dysregulation
 - perimenopause
 - chronic-stress
+- adrenal-hormone-function
+- emotional-healing-in-chronic-disease
+- estrogen-dominance
+- pcos
+- menopause
 linked_to_mechanisms:
 - hpa-axis-dysregulation
 - pregnenolone-steal
 - dhea-depletion
+- cortisol-dhea-imbalance
+- mitochondrial-dysfunction
+- progesterone-deficiency
+- estrogen-progesterone-decline
 sources:
 - id: vitaone-adrenal-cheatsheet
   location: 50 Hormones Cheatsheet — Testosterone row (p.4)
@@ -28,7 +45,20 @@ sources:
 - id: vitaone-adrenal-toolkit
   location: Effects of Chronic Stress — Reproduction
   quote: ↓ Libido and fertility, Can cause menstrual irregularities
-version: 2
+- id: vitaone-health-coaching-toolkit
+  location: Effects of Chronic Stress — Reproduction
+  quote: Libido and fertility. Can cause menstrual irregularities. Severity of PMS.
+- id: vitaone-health-coaching-cheatsheet
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: Chronic fatigue, infections, apathy, low libido.
+- id: coconote-fm-estrogen-dominance
+  location: PCOS Symptoms
+  quote: Low sex drive — this is the same as the estrogen dominance symptoms as well.
+- id: coconote-fm-sex-hormones
+  location: Symptoms of Menopause Transition
+  quote: loss of interest in sex, mood changes, sleep disturbances, forgetfulness,
+    headache, backache
+version: 6
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

@@ -1,0 +1,40 @@
+slug: hippocampal-neuroplasticity
+display_name: Hippocampal Neuroplasticity & Volume Maintenance
+aliases:
+- hippocampus volume
+- brain volume aging
+- sex steroids and brain
+- hippocampal shrinkage
+category: neurological
+summary: The hippocampus, the seat of memory, sense of self, and motivation, shrinks
+  approximately 1% per year with aging. Sex hormones (estrogen in women, testosterone
+  in men) and adequate magnesium can halt and reverse this shrinkage. Meditation and
+  exercise alone (Yale MED-X studies) did not prevent hippocampal shrinkage.
+upstream_drivers:
+- declining-sex-steroids
+- low-magnesium
+- aging
+- high-fsh
+downstream_effects:
+- memory-loss
+- cognitive-decline
+- loss-of-sense-of-self
+- frailty
+related_mechanisms:
+- genomic-hormone-signaling
+- fsh-elevation-aging-cascade
+linked_to_topics:
+- hippocampal-volume-and-hormones
+- bioidentical-hormone-replacement-therapy
+evidence_tier: plausible_emerging
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Hippocampus, Hormones, and Anti-Aging
+  quote: You shrink about 1% a year unless you're on hormones. Then you stop the shrinkage,
+    and you start reversing the shrinkage. The only other thing that's ever been linked
+    to reversing the shrinkage of the hippocampus is some of the nutrients that help
+    hormone signal.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

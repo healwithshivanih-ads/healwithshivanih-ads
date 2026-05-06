@@ -1,0 +1,31 @@
+slug: magnesium-depletion-from-water-filtration
+statement: Water filtration removes magnesium from drinking water, creating a widespread
+  magnesium deficiency that requires supplementation.
+evidence_tier: plausible_emerging
+rationale: Dr. Davis identifies water filtration as removing magnesium, which humans
+  historically obtained from natural water sources. This is a widely recognized phenomenon
+  in functional medicine and supported by data showing that filtered and treated water
+  has lower mineral content than natural spring water.
+coaching_translation: Because we filter our tap water, we lose the magnesium that
+  used to be naturally present. Supplementing magnesium helps replace what water treatment
+  removes.
+caveats:
+- Source is expert_consensus interview.
+- Specific magnitude of magnesium depletion from water varies by filtration type and
+  source water.
+- Dietary magnesium from food is also relevant.
+linked_to_topics:
+- gut-microbiome
+linked_to_supplements:
+- magnesium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Supplement restoration philosophy
+  quote: There are supplements that you need, like magnesium, you need it because
+    we have to filter our drinking water. Water filtration removes all magnesium.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

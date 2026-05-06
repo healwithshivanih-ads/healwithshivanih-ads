@@ -1,0 +1,41 @@
+slug: arachidonic-acid-cascade
+display_name: Arachidonic Acid Cascade & Inflammation
+aliases:
+- AA cascade
+- eicosanoid pathway
+- COX-LOX pathway
+summary: Arachidonic acid (AA), the major omega-6 PUFA, is released from cell membranes
+  by phospholipase A2 in response to injury or immune stimuli and drives inflammation
+  via the COX (prostaglandins, thromboxanes) and LOX (leukotrienes) pathways, contributing
+  to asthma, atherosclerosis, arthritis, and other chronic diseases.
+common_symptoms:
+- joint-pain
+- airway-inflammation
+- chronic-inflammation
+- pain-swelling
+red_flags: []
+related_topics:
+- omega-3-fatty-acids
+- omega-6-omega-3-ratio-imbalance
+- estrogen-dominance
+key_mechanisms:
+- arachidonic-acid-cascade
+- cox-pathway
+- lox-pathway
+coaching_scope_notes: Coaches can explain to clients why reducing omega-6 intake and
+  increasing omega-3 intake helps modulate inflammatory signaling. Use of botanical
+  anti-inflammatories (turmeric, ginger, boswellia) can be discussed within lifestyle
+  scope.
+clinician_scope_notes: Arachidonic acid drives aromatase activity, potentially contributing
+  to estrogen dominance. Consider dietary AA reduction in hormone-sensitive conditions.
+evidence_tier: strong
+sources:
+- id: coconote-fm-omega-3-fatty-acids
+  location: Arachidonic Acid Cascade Slide
+  quote: arachidonic acid here is the central molecule and arachidonic acid as we
+    all know is the major PUFA omega 6 fatty acid...it serves as a precursor to many
+    potent bioactive lipid mediators.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

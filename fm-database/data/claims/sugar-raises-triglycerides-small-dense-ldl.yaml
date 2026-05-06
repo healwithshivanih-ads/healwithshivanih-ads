@@ -1,0 +1,29 @@
+slug: sugar-raises-triglycerides-small-dense-ldl
+statement: Added sugar is pro-inflammatory, raises triglycerides, raises fasting blood
+  sugar and HbA1c, and increases small dense LDL — all established cardiovascular
+  risk drivers.
+evidence_tier: strong
+rationale: Sugar's effects on triglycerides, insulin resistance, and LDL particle
+  size are well-established in metabolic and cardiovascular research.
+coaching_translation: Sugar isn't just a weight issue — it directly raises your 'bad'
+  blood fats and fuels inflammation in your arteries. Limiting added sugar to 20g/day
+  is a powerful heart-protective step.
+caveats:
+- Clinician's personal threshold of 20g/day added sugar is more restrictive than some
+  guidelines — verify with clinician for individual patients.
+linked_to_topics:
+- cardiovascular-disease-prevention
+- dyslipidemia
+- metabolic-syndrome
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Sugar and CVD Risk
+  quote: Sugar is pro-inflammatory, raises triglycerides, raises fasting blood sugar,
+    A1Cs, everyone knows this, increases small, dense LDL.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,23 +1,33 @@
 slug: hypochlorhydria-mechanism
-display_name: Reduced Gastric Acid Secretion
+display_name: Hypochlorhydria (Low Gastric Acid Secretion)
 aliases:
 - low HCl production
 - impaired gastric acid
 - hypochlorhydria pathway
+- reduced HCl production
+- low gastric acid
+- achlorhydria
 category: gut
-summary: Age-related or medication-induced reduction in HCl production impairs protein
-  digestion, mineral absorption (B12, iron, calcium, magnesium, zinc, copper), and
-  immune defense against pathogens (H. pylori, parasites). Creates conditions for
-  SIBO and candida overgrowth.
+summary: Age-related or drug-induced decline in stomach acid (HCl) production. HCl
+  is required for protein digestion, absorption of vitamin B12 and minerals (iron,
+  calcium, magnesium, zinc, copper), and protection against pathogens. Low HCl permits
+  small intestinal bacterial overgrowth and increases susceptibility to candida and
+  parasites.
 upstream_drivers:
 - aging
 - ppi-use
 - chronic-medications
+- PPI-use
+- H2-blocker-use
+- chronic-stress
 downstream_effects:
 - mineral-malabsorption
 - sibo
 - candida-overgrowth
 - chronic-infections
+- impaired-protein-digestion
+- SIBO-risk
+- pathogen-vulnerability
 related_mechanisms:
 - gut-dysbiosis
 - leaky-gut
@@ -25,14 +35,20 @@ linked_to_topics:
 - hypochlorhydria
 - gerd
 - gut-dysfunction
-evidence_tier: plausible_emerging
+- gerd-ppi-tapering
+evidence_tier: strong
 sources:
 - id: vitaone-gut-toolkit
   location: Testing for Low Stomach Acidity
   quote: Without enough stomach acid, we are more vulnerable to decreased immune resistance
     and a variety of other health problems such as overgrowth of bacteria in the small
     intestine.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Testing for Low Stomach Acidity
+  quote: Without enough stomach acid, we are more vulnerable to decreased immune resistance
+    and a variety of other health problems such as overgrowth of bacteria in the small
+    intestine.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

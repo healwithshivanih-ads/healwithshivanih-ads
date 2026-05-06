@@ -1,12 +1,17 @@
 slug: thyroid
-display_name: Thyroid Dysfunction
+display_name: Thyroid Nutrient Support
 aliases:
 - thyroid dysfunction
 - Hashimoto's thyroiditis
 - autoimmune thyroid disease
-summary: Thyroid dysfunction encompasses hypo-, hyper-, and autoimmune thyroid conditions.
-  Functional Medicine emphasises root-cause identification across production, conversion,
-  and utilisation pathways rather than relying solely on TSH.
+- thyroid function
+- hypothyroidism support
+- Hashimoto's nutrition
+- thyroid nutrient synergy
+- Hashimoto's
+summary: Thyroid hormone production and conversion are described as dependent on iodine,
+  selenium, iron, riboflavin, vitamin A, vitamin D, magnesium, and antioxidant balance.
+  Deficiency or excess of these nutrients can impair thyroid function and worsen symptoms.
 common_symptoms:
 - fatigue
 - hair loss
@@ -23,6 +28,9 @@ common_symptoms:
 - mood-changes
 - menstrual-irregularities
 - palpitations
+- poor-cognition
+- hair-loss
+- goiter
 red_flags:
 - goiter or thyroid nodules
 - rapid unexplained weight change
@@ -32,6 +40,12 @@ red_flags:
 - suspected autoimmune disease without formal workup
 - Palpitations and tremors suggesting hyperthyroid crisis
 - Positive TPO/Tg antibodies with rapidly worsening symptoms — refer to endocrinologist
+- thyroid autoimmunity
+- excess iodine triggering Hashimoto's or Graves'
+- fetal brain development risk in pregnancy
+- thyroid-autoimmunity
+- excess-iodine-triggering-autoimmunity
+- fetal-brain-development-concerns
 related_topics:
 - pcos
 - perimenopause
@@ -41,17 +55,25 @@ related_topics:
 - dysbiosis
 - gut-hormone-axis
 - food-sensitivities
+- nutrition-deficiency
+- hair-loss
+- chronic-inflammation
+- autoimmunity
+- methylation
 key_mechanisms:
 - t4-to-t3-conversion-impairment
 - hpa-axis-dysregulation
 - autoimmune-molecular-mimicry
 - t4-to-t3-conversion-block
 - leaky-gut
-coaching_scope_notes: Coaches can support lifestyle, nutrition, gut health, stress
-  reduction, and sleep hygiene. Lab interpretation, medication decisions, and specific
-  dosing are out of scope — refer to clinician.
-clinician_scope_notes: 'Full panel recommended: TSH, FT3, FT4, rT3, Anti-TPO, Anti-Tg.
-  Monitor every 8–12 weeks. Assess cortisol, gut health, and liver enzymes as co-factors.'
+- thyroid-nutrient-synergy
+- oxidative-stress-and-inflammation
+coaching_scope_notes: Encourage thyroid panel review by clinician. Avoid recommending
+  iodine or selenium supplementation without clinician guidance in autoimmune thyroid
+  contexts.
+clinician_scope_notes: Iodine excess can trigger Hashimoto's or Graves'. Selenium
+  and antioxidant optimization should precede iodine supplementation in autoimmune
+  thyroid patients.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-evidence-tiers
@@ -62,7 +84,15 @@ sources:
   location: Biohacking Thyroid Function Cheatsheet
   quote: Thyroid dysfunction, whether hypo, hyper, or autoimmune can persist even
     with 'normal' TSH if deeper imbalances are missed.
-version: 2
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Key Mechanisms Explained – thyroid-nutrient-synergy
+  quote: Thyroid hormone production and conversion are described as dependent on iodine,
+    selenium, iron, riboflavin, vitamin A, vitamin D, magnesium, and antioxidant balance.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Key Mechanisms Explained — thyroid-nutrient-synergy
+  quote: Thyroid hormone production and conversion are described as dependent on iodine,
+    selenium, iron, riboflavin, vitamin A, vitamin D, magnesium, and antioxidant balance.
+version: 4
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-06'
 updated_by: shivani

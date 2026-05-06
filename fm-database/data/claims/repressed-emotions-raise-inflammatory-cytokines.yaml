@@ -1,0 +1,27 @@
+slug: repressed-emotions-raise-inflammatory-cytokines
+statement: Repressed emotions increase inflammatory cytokines (IL-6, TNF-α) and decrease
+  vagal tone.
+evidence_tier: plausible_emerging
+rationale: Psychoneuroimmunology research supports the link between emotional suppression
+  and elevated inflammatory markers. The specific cytokines named (IL-6, TNF-α) are
+  consistent with the literature, though direct causal RCTs in FM populations are
+  limited.
+coaching_translation: Bottling up emotions isn't just a psychological problem—it creates
+  real inflammation in your body. Practices that help you express and process emotions
+  (journaling, therapy, movement) can measurably calm inflammatory pathways.
+caveats:
+- Cited as educational synthesis; no primary study referenced.
+- Cytokine modulation requires clinician assessment.
+linked_to_topics:
+- emotional-healing-chronic-disease
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: Repressed emotions ↑ inflammatory cytokines (IL-6, TNF- α), ↓ vagal tone.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

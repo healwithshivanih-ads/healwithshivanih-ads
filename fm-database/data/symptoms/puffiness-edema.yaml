@@ -1,27 +1,37 @@
 slug: puffiness-edema
-display_name: Puffiness & Swelling (Myxedema)
+display_name: Puffiness / Swelling (Face, Eyes, Hands, Feet)
 aliases:
 - facial puffiness
 - eyelid swelling
 - puffy face
 - hand swelling
 - foot swelling
+- myxedema
+- periorbital edema
+- swollen hands and feet
 category: constitutional
 severity: common
-description: Puffiness and non-pitting swelling around the eyes, eyelids, face, hands,
-  and feet due to accumulation of glycosaminoglycans in tissues in hypothyroidism
+description: Non-pitting swelling and puffiness around the eyes, eyelids, face, hands,
+  and feet associated with hypothyroidism, reflecting mucopolysaccharide accumulation
   (myxedema).
 linked_to_topics:
 - hypothyroidism
 - hashimotos-hypothyroidism
-linked_to_mechanisms: []
-when_to_refer: ''
+- thyroid-dysfunction
+linked_to_mechanisms:
+- t4-to-t3-conversion-impairment
+when_to_refer: Refer if severe or rapidly progressive — may indicate significant hypothyroidism
+  or other systemic condition.
 sources:
 - id: vitaone-thyroid-toolkit
   location: Thyroid Screening Questionnaire
   quote: I have puffiness and swelling around the eyes, eyelids, face, feet, hands
     and feet
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Thyroid Screening Questionnaire — Signs and Symptoms
+  quote: I have puffiness and swelling around the eyes, eyelids, face, feet, hands
+    and feet
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

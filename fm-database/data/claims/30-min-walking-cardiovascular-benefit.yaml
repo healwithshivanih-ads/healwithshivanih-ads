@@ -1,0 +1,27 @@
+slug: 30-min-walking-cardiovascular-benefit
+statement: Walking for at least 30 minutes per day at 60–80% of maximum aerobic capacity
+  supports cardiovascular health and is recommended during beta blocker tapering.
+evidence_tier: strong
+rationale: Aerobic exercise at moderate intensity (60–80% max aerobic capacity) for
+  ≥30 minutes daily is supported by strong RCT and epidemiological evidence for blood
+  pressure reduction and CVD risk reduction.
+coaching_translation: A daily 30-minute walk at a brisk pace — where you're breathing
+  harder but can still talk — is one of the most powerful prescriptions for heart
+  health.
+caveats: []
+linked_to_topics:
+- hypertension
+- cardiovascular-dysfunction
+- beta-blocker-deprescribing
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
+  quote: 'Movement: Walking for at least 30 minutes per day at 60-80% of maximum aerobic
+    capacity'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

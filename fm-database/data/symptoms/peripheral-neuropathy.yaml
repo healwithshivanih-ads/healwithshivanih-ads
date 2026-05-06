@@ -5,22 +5,41 @@ aliases:
 - tingling feet
 - diabetic neuropathy
 - pins and needles
+- nerve pain
+- numbness and tingling
+- statin neuropathy
+- tingling
+- numbness
 category: neurological
 severity: concerning
-description: Numbness, tingling, or burning in the extremities due to nerve damage
-  from chronic hyperglycaemia and AGE accumulation on peripheral nerves.
-when_to_refer: Refer for neurological evaluation and comprehensive diabetes workup.
+description: Nerve damage or dysfunction — tingling, numbness, or burning in extremities
+  — associated with B12/folate deficiency, commonly precipitated or accelerated by
+  metformin use.
+when_to_refer: Refer for neurological assessment if progressive, bilateral, or accompanied
+  by motor weakness.
 linked_to_topics:
 - type-2-diabetes
 - blood-sugar-dysfunction
+- statin-side-effects
+- medication-induced-nutrient-depletion
 linked_to_mechanisms:
 - advanced-glycation-end-products
+- cholesterol-precursor-depletion
+- coq10-depletion
+- b12-absorption-impairment
 sources:
 - id: vitaone-blood-sugar-ebook
   location: Section 4.2.4 — Type 2 Diabetes Mellitus
   quote: Persistent fatigue, peripheral neuropathic symptoms (numbness, tingling),
     visual changes, weight fluctuations, erectile dysfunction, frequent infections.
-version: 1
+- id: coconote-fm-reality-of-statins
+  location: Side Effects of Statins Section
+  quote: It may increase your risk of neuropathy.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXjjIqJjMSR/
+  quote: Every diabetic on metformin is walking around B12 and folate deficient accelerating
+    fatigue and neuropathy long before labs show it.
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

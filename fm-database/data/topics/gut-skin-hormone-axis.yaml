@@ -1,0 +1,56 @@
+slug: gut-skin-hormone-axis
+display_name: Gut-Skin-Hormone Axis
+aliases:
+- gut-skin connection
+- gut-hormone connection
+- gut-skin-immune axis
+summary: A clinical framework describing the bidirectional relationships between gut
+  health, skin conditions (notably psoriasis), and hormonal imbalances (notably endometriosis).
+  Immune dysregulation originating in gut dysfunction is proposed as the shared upstream
+  driver linking dysbiosis, skin autoimmunity, and estrogen-dominant reproductive
+  pathology.
+common_symptoms:
+- progressive-bloating
+- belching
+- flatulence
+- constipation
+- psoriasis-skin-patches
+- fatigue
+- painful-periods
+- irregular-periods
+- weight-loss
+red_flags:
+- primary infertility unresponsive to IVF
+- recurrent ovarian cysts requiring surgery
+- anaphylaxis-level allergic reactions
+- severe psoriatic flares with systemic involvement
+related_topics:
+- endometriosis
+- psoriasis
+- dysbiosis
+- hypochlorhydria
+- estrogen-dominance
+- immune-dysregulation
+key_mechanisms:
+- gut-immune-dysregulation
+- estrogen-recirculation-via-beta-glucuronidase
+- gut-barrier-dysfunction
+coaching_scope_notes: Coaches may support dietary changes (elimination diet, low-FODMAP,
+  anti-inflammatory foods), lifestyle optimisation (sleep, exercise, stress), and
+  basic supplementation guidance. Hormone testing interpretation, GnRH therapy, IVF
+  management, and prescription of betaine HCl or high-dose supplements require clinician
+  oversight.
+clinician_scope_notes: Estrogen and progesterone day-3/day-21 testing, transvaginal
+  ultrasound, GnRH analogue therapy, HRT decisions (especially post-oophorectomy),
+  and high-dose vitamin D3 protocols for autoimmune conditions should be managed by
+  a qualified clinician.
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Root Cause / Matrix Discussion
+  quote: If the gut microbiome goes bad, it can lead to estrogen dominance and that
+    can lead to the problem of endometriosis, which is true in this case.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

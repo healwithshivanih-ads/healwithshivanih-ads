@@ -1,0 +1,30 @@
+slug: magnesium-replacement-after-sauna-sweating
+statement: Significant amounts of magnesium are lost through sweat during infrared
+  sauna sessions and should be replenished, making magnesium the first mineral priority
+  for supplementation after sauna use.
+evidence_tier: plausible_emerging
+rationale: Sweat contains magnesium, and regular intense sweating can deplete magnesium
+  stores. The recommendation to start with magnesium for mineral replenishment is
+  FM-consensus guidance, with general support from studies on exercise-induced mineral
+  loss.
+coaching_translation: After a sauna session, your body has lost minerals through sweat
+  — magnesium is the top priority to replace. Consider a magnesium supplement or electrolyte
+  drink afterward.
+caveats:
+- Mineral replenishment specifics require guidance from a knowledgeable practitioner.
+- Source is FM toolkit; specific studies on sauna-induced magnesium loss not cited.
+linked_to_topics:
+- infrared-sauna-therapy
+linked_to_supplements:
+- magnesium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: How to Make an Infrared Sauna Lamp — Protocol
+  quote: I do advise Starting with Magnesium because you will loose lot of magnesium
+    through sweat.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

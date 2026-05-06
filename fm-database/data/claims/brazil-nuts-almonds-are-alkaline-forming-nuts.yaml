@@ -1,0 +1,27 @@
+slug: brazil-nuts-almonds-are-alkaline-forming-nuts
+statement: Among nuts, Brazil nuts and almonds are alkaline-forming, while most other
+  nuts are acid-forming.
+evidence_tier: fm_specific_thin
+rationale: This is a standard classification in alkaline diet literature, particularly
+  associated with naturopathic traditions. Peer-reviewed metabolic data specifically
+  comparing net acid excretion across nut varieties is sparse.
+coaching_translation: Brazil nuts and almonds are the go-to nuts in an alkaline-supporting
+  diet. Other nuts can still be healthy but are considered more acid-forming in this
+  framework.
+caveats:
+- Classification varies across alkaline diet sources.
+- Source is expert consensus/lecture, not primary literature.
+linked_to_topics:
+- ph-balance-and-diet
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-fresh-cheeses-ph
+  location: Acid-Forming Foods Section
+  quote: Your other nuts, other than Brazil and almond, have an acid effect on the
+    body.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

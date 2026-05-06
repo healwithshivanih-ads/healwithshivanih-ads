@@ -1,14 +1,14 @@
 slug: quercetin
 display_name: Quercetin
-category: herb
+category: other
 forms_available:
 - capsule
 - tablet
 - powder
 typical_dose_range:
   capsule:
-    min: 500
-    max: 1000
+    min: 100
+    max: 500
     unit: mg
   tablet:
     min: 500
@@ -20,9 +20,9 @@ timing_options:
 - with_dinner
 - morning
 take_with_food: optional
-notes_for_coach: Phytosome form has higher bioavailability (500 mg 2x daily vs 1000
-  mg 2x daily for standard). Antiviral and anti-inflammatory properties. Confirm with
-  clinician for dosing.
+notes_for_coach: Quercetin is indicated for allergic conditions involving IgE antibody
+  elevation and LOX enzyme activation. Acts as a natural antihistamine and LOX inhibitor.
+  Also referenced for cardiovascular protection.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - estrogen-dominance
@@ -37,6 +37,9 @@ linked_to_topics:
 - testosterone-health
 - benign-prostatic-hyperplasia
 - immune-support
+- gerd-ppi-tapering
+- testosterone-dht-conversion
+- immune-support-covid-19
 linked_to_mechanisms: []
 linked_to_claims:
 - omega-3-reduces-cytokine-load-stress
@@ -44,8 +47,14 @@ linked_to_claims:
 - quercetin-antioxidant-gi-protection
 - 5ar-inhibition-reduces-bph-hair-loss-acne
 - quercetin-antiviral-inhibits-influenza-entry
-notes_for_client: Quercetin is a plant compound found in apples, onions, and berries.
-  The supplement form is more concentrated and may support immune defense.
+- ppi-tapering-supplement-support-repair-protect-antioxidant
+- quercetin-inhibits-5ar
+- 5ar-inhibitors-reduce-dht-prevent-bph-hair-loss-acne
+- quercetin-inhibits-viral-entry-and-inflammasome
+- quercetin-anti-allergy-lox-inhibitor
+notes_for_client: Quercetin is a natural plant compound that helps calm allergy-related
+  inflammation. It's particularly useful if you experience sneezing, itching, or allergy-type
+  symptoms alongside inflammation.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 2 - Supplement Table
@@ -71,7 +80,16 @@ sources:
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
   quote: Quercetin is found in fruits and vegetables and has a wide range of benefits,
     including decreasing viral growth.
-version: 7
+- id: vitaone-health-coaching-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
+  quote: 'Antioxidants: Artemisia asiatica, curcumin, quercetin, vitamin E.'
+- id: coconote-fm-approach-inflammation
+  location: Anti-Inflammatory Supplements – Quercetin
+  quote: Corsetin is when somebody is having an allergy and LOX enzyme is activated,
+    somebody is already taking an, also you can see the IgE antibody. If somebody
+    is having an IgE antibody, Corsetin in the blood, it was just 100-200 mg a day,
+    so Corsetin is basically considered as an anti-allergy.
+version: 11
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

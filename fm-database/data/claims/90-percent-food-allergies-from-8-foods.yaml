@@ -1,0 +1,25 @@
+slug: 90-percent-food-allergies-from-8-foods
+statement: 'Approximately 90% of IgE-mediated food allergies are caused by 8 foods:
+  dairy, egg, peanut, wheat, soy, fish, shellfish, and tree nuts.'
+evidence_tier: strong
+rationale: The 'Big 8' (now 'Big 9' including sesame in the US) food allergens are
+  well-established in allergy literature and regulatory frameworks worldwide.
+coaching_translation: When a client suspects food allergies, these 8 foods are the
+  most likely suspects. An elimination protocol starting with these is well-supported.
+caveats:
+- US FDA now recognizes 9 major allergens (sesame added in 2023); the Big 8 list in
+  the lecture does not include sesame.
+linked_to_topics:
+- food-allergy-ige-mediated
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-food-allergies-sensitivities
+  location: IgE Common Food Allergens Section
+  quote: Typically 90% of food allergies are because of dairy, egg, peanut, wheat,
+    soy, fish, shellfish and some kind of nuts.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

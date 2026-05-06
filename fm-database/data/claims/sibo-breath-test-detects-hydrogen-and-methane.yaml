@@ -1,0 +1,30 @@
+slug: sibo-breath-test-detects-hydrogen-and-methane
+statement: The SIBO breath test detects hydrogen and methane gas produced by bacterial
+  fermentation of a glucose substrate in the small intestine; gases are absorbed into
+  the bloodstream and measured in exhaled breath. A hydrogen level >10 ppm is considered
+  positive.
+evidence_tier: strong
+rationale: Breath testing for SIBO is an established diagnostic procedure used in
+  both conventional and functional medicine, with validated methodology.
+coaching_translation: The SIBO breath test is a non-invasive way to check whether
+  bacteria are fermenting sugar in your small intestine by measuring the gases you
+  breathe out.
+out_of_scope_notes: Test ordering, interpretation, and clinical decision-making based
+  on results is clinician scope.
+caveats:
+- False negatives can occur; cannot detect bacterial spores, parasites, or H2S SIBO.
+- Requires careful prep (antibiotics, laxatives, and fasting restrictions).
+linked_to_topics:
+- sibo
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-sibo-sifo
+  location: SIBO Breath Test Procedure
+  quote: The bacterial fermentation of malabsorbed sugar produces hydrogen and methane
+    gas. These gases are absorbed into the bloodstream which is carried to the lungs
+    and concentration of exhaled breath, H2N, methane are measured in the test.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

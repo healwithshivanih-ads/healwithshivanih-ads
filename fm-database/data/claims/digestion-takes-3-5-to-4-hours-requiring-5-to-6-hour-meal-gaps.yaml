@@ -1,0 +1,33 @@
+slug: digestion-takes-3-5-to-4-hours-requiring-5-to-6-hour-meal-gaps
+statement: Normal gastric digestion of a high-fibre, protein and fat-containing meal
+  takes 3.5–4 hours, plus ~1 hour of gastric rest, supporting 5–6 hour gaps between
+  meals for optimal digestive function.
+evidence_tier: plausible_emerging
+rationale: Beaumont's 19th-century observations are cited as primary evidence. Gastric
+  emptying time is well-established in physiology and varies with macronutrient content;
+  the 3.5–4 hour figure for mixed meals is broadly consistent with modern gastroenterology
+  research.
+coaching_translation: Aim for 5–6 hours between meals, avoid snacking, and don't eat
+  again immediately after a meal. This allows your stomach to fully process each meal
+  before the next one arrives.
+caveats:
+- Beaumont's original experiments are from 1844 and used a single case (gastric fistula
+  patient).
+- Modern research confirms variability in gastric emptying based on meal composition.
+- Source is a practitioner talk.
+linked_to_topics:
+- meal-timing-and-digestive-rest
+- gastrointestinal-tract-overview
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-gi-tract
+  location: Meal Timing & Beaumont Section
+  quote: There's been much research done over the last hundred years to show that
+    digestion takes three and a half to four hours. And then the stomach loves a rest
+    of about one hour. That equals five to six hours between meals.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

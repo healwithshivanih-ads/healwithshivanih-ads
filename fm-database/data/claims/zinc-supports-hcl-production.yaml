@@ -1,0 +1,29 @@
+slug: zinc-supports-hcl-production
+statement: Zinc is required for the production of hydrochloric acid in the stomach;
+  deficiency can reduce gastric acid output and impair absorption of other nutrients
+  including iron.
+evidence_tier: plausible_emerging
+rationale: The mechanistic link between zinc and gastric acid production is described
+  in functional medicine contexts and supported by zinc's known enzymatic roles, though
+  large RCT evidence is limited.
+coaching_translation: If your zinc levels are low, your stomach may not make enough
+  acid, which can make it harder to absorb iron and other nutrients from your food.
+caveats:
+- Mechanism is biologically plausible; direct RCT evidence for zinc repletion improving
+  HCl output in humans is limited. Source is expert lecture (moderate quality).
+linked_to_topics:
+- zinc-deficiency
+linked_to_supplements:
+- zinc
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-zinc-deficiency
+  location: Functions of Zinc
+  quote: Zinc happens to be the baseline for developing a lot of other nutritional
+    deficiencies over a period of time because of a primary concern that if it is
+    absent, it could produce less amount of hydrochloric acid.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

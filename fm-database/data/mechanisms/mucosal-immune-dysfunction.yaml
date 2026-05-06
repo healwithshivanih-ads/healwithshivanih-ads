@@ -1,0 +1,38 @@
+slug: mucosal-immune-dysfunction
+display_name: Mucosal Immune Dysfunction
+aliases:
+- secretory IgA deficiency
+- low sIgA
+- mucosal immunity impairment
+category: immune
+summary: Secretory IgA (sIgA) is the primary mucosal antibody protecting all mucous
+  membranes, with the highest concentration in the intestine. Low sIgA is associated
+  with long-standing stress and protein/omega-3 malnutrition, impairing the first
+  line of defense against pathogens. Elevated sIgA indicates active pathological infection.
+  Both states are markers of gut immune disruption.
+upstream_drivers:
+- chronic-stress
+- protein-deficiency
+- omega-3-deficiency
+downstream_effects:
+- increased-infection-susceptibility
+- pathobiont-overgrowth
+- gut-inflammation
+related_mechanisms:
+- tight-junction-dysregulation
+- gut-microbiome-dysbiosis
+linked_to_topics:
+- intestinal-permeability
+- ibs-ibd-differentiation
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-intestinal-permeability
+  location: Diagnostic Markers – Secretory IgA
+  quote: IgA antibody is called mucosal antibody. So it protects our body from any
+    kind of infection before that infection enter in the body... if you run a fecal
+    calc-reacting test and IgA antibody is low, then it classically says that patient
+    having a long-standing mental or physical stress.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

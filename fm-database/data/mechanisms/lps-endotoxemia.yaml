@@ -5,31 +5,46 @@ aliases:
 - metabolic endotoxemia
 - endotoxin load
 category: immune
-summary: Lipopolysaccharide (LPS) from gram-negative bacterial cell walls enters systemic
-  circulation through a leaky gut, acting as a major immune disruptor that triggers
-  NF-κB and systemic inflammation.
+summary: When gram-negative bacteria cross a disrupted intestinal barrier, their lipopolysaccharide
+  (LPS) cell wall components enter systemic circulation, driving chronic inflammation,
+  immune activation, and contributing to depression, fatigue, and metabolic dysfunction.
 upstream_drivers:
 - leaky-gut
 - gut-dysbiosis
 - high-fat-high-sugar-diet
+- intestinal-barrier-dysfunction
+- beta-glucuronidase-activity
 downstream_effects:
 - nf-kb-activation
 - systemic-inflammation
 - insulin-resistance
+- neuroinflammation
+- depression
+- fatigue
+- autoimmunity
 related_mechanisms:
 - leaky-gut
 - gut-dysbiosis
 - nf-kb-activation
+- intestinal-barrier-dysfunction
 linked_to_topics:
 - chronic-inflammation
 - autoimmune-disease
 - leaky-gut
+- sibo
+- leaky-gut-syndrome
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-inflammation-cheatsheet
   location: Autoimmune Disease Cheatsheet — Page 25
   quote: LPS (endotoxin) = major immune disruptor.
-version: 1
+- id: coconote-fm-sibo-sifo
+  location: Leaky Gut / Endotoxemia Section
+  quote: which is known as LPS in the systemic circulation. So whenever there is LPS
+    kind of or endotoxinia kind of for leaky gut, these kind of patients have a lot
+    of symptoms. They also have gastrointestinal symptoms and they have non-gastrointestinal
+    symptoms, depression, fatigue, autism, anxiety.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

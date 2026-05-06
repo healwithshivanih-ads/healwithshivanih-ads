@@ -1,0 +1,33 @@
+slug: digestive-enzyme-deficiency
+display_name: Digestive Enzyme Deficiency
+aliases:
+- lactase deficiency
+- enzyme insufficiency
+category: gut
+summary: Deficiency of specific digestive enzymes (e.g., lactase) prevents proper
+  breakdown of dietary substrates (e.g., lactose), resulting in non-immunological
+  food intolerance. This is distinct from immune-mediated food allergy or sensitivity.
+upstream_drivers:
+- genetic-predisposition
+- gut-inflammation
+- aging
+downstream_effects:
+- food-intolerance
+- abdominal-pain
+- bloating
+- diarrhea
+related_mechanisms:
+- low-stomach-acid-antigen-load
+linked_to_topics:
+- food-intolerance
+evidence_tier: strong
+sources:
+- id: coconote-fm-food-allergies-sensitivities
+  location: Definition of Food Reactions Section
+  quote: lactose intolerance we consider as a non-immune mediated because the patient
+    have a deficiency of their lactose enzyme and that's why they cannot digest the
+    lactose that is found in the milk
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

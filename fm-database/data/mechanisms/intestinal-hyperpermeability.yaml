@@ -1,0 +1,38 @@
+slug: intestinal-hyperpermeability
+display_name: Intestinal Hyperpermeability
+aliases:
+- leaky gut
+- gut barrier dysfunction
+- increased intestinal permeability
+category: gut
+summary: Compromised integrity of the intestinal epithelial barrier allowing luminal
+  antigens, pathogens, and undigested food particles to enter systemic circulation,
+  triggering immune activation and systemic inflammation. A central component of the
+  autoimmune triad in functional medicine.
+upstream_drivers:
+- antibiotic-use
+- nsaid-use
+- food-sensitivities
+- dysbiosis
+- gluten-exposure
+downstream_effects:
+- chronic-systemic-inflammation
+- autoimmunity
+- food-sensitivities
+related_mechanisms:
+- chronic-systemic-inflammation
+- dysbiosis
+linked_to_topics:
+- autoimmunity-triad
+- nutritional-deficiency-screening
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-body-composition-bmi
+  location: Autoimmunity / Case Discussion Section
+  quote: When you see significant antibiotic use and pain medication use, they are
+    at risk for increased intestinal permeability, which is that second piece of that
+    triad of autoimmunity.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

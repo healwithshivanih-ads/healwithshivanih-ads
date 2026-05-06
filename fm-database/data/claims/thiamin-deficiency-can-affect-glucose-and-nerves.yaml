@@ -1,0 +1,34 @@
+slug: thiamin-deficiency-can-affect-glucose-and-nerves
+statement: Thiamin deficiency causes poor glucose control and tingling, numbness,
+  or burning in the hands or feet.
+evidence_tier: plausible_emerging
+rationale: Thiamin deficiency causing peripheral neuropathy and glucose dysregulation
+  is biologically plausible and supported by clinical observation, though large RCTs
+  in general populations are limited.
+coaching_translation: If a client reports tingling in hands or feet alongside blood
+  sugar irregularities, thiamin status is worth flagging for clinician assessment.
+caveats:
+- Source is a practitioner cheatsheet without primary citations.
+- Peripheral neuropathy has many causes; do not assume thiamin without clinical assessment.
+- Source is practitioner cheatsheet; no primary citations given.
+- Neurological symptoms require clinician evaluation.
+linked_to_topics:
+- nutrition-deficiency
+- insulin-resistance
+linked_to_supplements:
+- thiamin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 3
+  quote: Thiamin deficiency is described as causing poor glucose control and tingling,
+    numbness, or burning in the hands or feet.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 3
+  quote: Thiamin deficiency is described as causing poor glucose control and tingling,
+    numbness, or burning in the hands or feet.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

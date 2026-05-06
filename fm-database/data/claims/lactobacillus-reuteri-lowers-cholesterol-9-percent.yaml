@@ -1,0 +1,28 @@
+slug: lactobacillus-reuteri-lowers-cholesterol-9-percent
+statement: Lactobacillus reuteri supplementation has been associated with approximately
+  9% reduction in total cholesterol.
+evidence_tier: plausible_emerging
+rationale: A small number of RCTs (e.g., Jones et al., 2012, European Journal of Clinical
+  Nutrition) support modest cholesterol reduction with L. reuteri. Effect size and
+  mechanism (bile salt hydrolase activity) are biologically plausible.
+coaching_translation: A specific probiotic strain (Lactobacillus reuteri) may modestly
+  lower cholesterol — a nice bonus for gut health support in cardiovascular clients.
+caveats:
+- Effect size is modest (9%) and may not be clinically significant as standalone therapy.
+- Evidence limited to a small number of trials.
+- Source is expert lecture — 'lactobacillus rudi' in transcript is likely L. reuteri.
+linked_to_topics:
+- dyslipidemia
+linked_to_supplements:
+- lactobacillus-reuteri
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: LDL-Lowering Nutraceuticals
+  quote: There's at least some research on lactobacillus rudi, lowering cholesterol
+    about 9%.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

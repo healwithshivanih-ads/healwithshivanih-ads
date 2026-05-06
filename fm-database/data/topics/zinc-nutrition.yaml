@@ -1,0 +1,35 @@
+slug: zinc-nutrition
+display_name: 'Zinc: Food Sources & Bioavailability'
+aliases:
+- dietary zinc
+- zinc deficiency
+- zinc absorption
+summary: Zinc is an essential trace mineral required by over 100 enzymes for immune
+  function, neurological function, growth, taste and smell, and cell membrane integrity.
+  Bioavailability is reduced by phytates in plant foods.
+common_symptoms:
+- impaired-immune-function
+- loss-of-taste-or-smell
+- poor-wound-healing
+red_flags: []
+related_topics:
+- iron-nutrition
+- mitochondrial-health-nutrients
+key_mechanisms:
+- phytate-zinc-binding
+- immune-function-support
+coaching_scope_notes: Coach can educate on zinc-rich food sources and the impact of
+  phytates on absorption. Soaking/sprouting legumes can reduce phytate content.
+clinician_scope_notes: Supplementation dosing and lab testing are clinician scope.
+evidence_tier: strong
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Food Sources: Zinc'
+  quote: Zinc plays an important role in several body systems – over 100 enzymes in
+    the body require zinc to function. Zinc is necessary for normal growth and development,
+    immune and neurological function, proper sense of taste and smell, and maintaining
+    the structure of cell membranes, as well as protecting them from oxidative damage.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

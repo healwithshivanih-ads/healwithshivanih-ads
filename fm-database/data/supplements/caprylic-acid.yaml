@@ -4,10 +4,11 @@ category: fatty_acid
 forms_available:
 - capsule
 - liquid
+- powder
 typical_dose_range:
   capsule:
     min: 500
-    max: 1000
+    max: 2000
     unit: mg
 timing_options:
 - with_breakfast
@@ -17,13 +18,17 @@ take_with_food: required
 linked_to_topics:
 - candida-overgrowth
 - gut-dysbiosis
+- sifo
+- sibo
 linked_to_claims:
 - berberine-antimicrobial-blood-sugar
-notes_for_coach: Derived from coconut oil. Disrupts yeast cell walls — potent antifungal.
-  Rotate with oregano and berberine every 2-3 weeks to avoid resistance. Take with
-  meals.
-notes_for_client: Caprylic acid is a natural antifungal fat derived from coconut oil
-  that disrupts the cell walls of Candida and other yeast organisms.
+- broad-spectrum-herbal-antimicrobials-effective-against-bacteria-fungi-parasites
+- herbal-antimicrobials-effective-in-sibo
+notes_for_coach: Caprylic acid (C8 medium-chain fatty acid) has antifungal properties
+  particularly against Candida species. Used in SIFO and mixed SIBO/SIFO protocols.
+  Confirm dose with clinician.
+notes_for_client: Caprylic acid is a naturally occurring fatty acid that can help
+  control fungal overgrowth in the gut.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -31,7 +36,16 @@ sources:
   location: Candida Infection — Supplement Stack
   quote: Caprylic Acid (from Coconut oil) 500-1000 mg, 2–3x/day with meals — Potent
     antifungal; disrupts yeast cell walls
-version: 1
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Antifungal Section
+  quote: Antifungal, already we have discussed the capillic acid, garlic oil, and
+    oil of oregano, they are the antifungal.
+- id: coconote-fm-sibo-sifo
+  location: SIFO / SIBO Combination Treatment
+  quote: oil, oregano oil, uva, ursi, caprylic acid. Probiotics like lactobacillus
+    and if so, we have to maintain different strains of bacterial species as well,
+    daily for a period of 6 weeks.
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

@@ -1,0 +1,32 @@
+slug: low-patient-accountability
+display_name: Low Patient Accountability & Follow-Through
+aliases:
+- poor care plan adherence
+- not sticking to the plan
+- low motivation between appointments
+- drop-off between visits
+category: other
+severity: common
+description: A pattern in which patients begin a functional medicine care plan but
+  fail to maintain consistent adherence between provider appointments due to lack
+  of support, unclear next steps, or motivational gaps.
+when_to_refer: Persistent non-adherence despite coaching may indicate underlying depression,
+  anxiety, or executive function challenges — consider referral to mental health or
+  occupational therapy.
+linked_to_topics:
+- functional-medicine-coaching
+- chronic-disease-management
+- coach-clinician-collaboration
+linked_to_mechanisms:
+- behavior-change-accountability
+sources:
+- id: ask-expert-future-fm
+  location: Speaker Background & Origin Story
+  quote: I started to see this gap between patient accountability and support and
+    support between appointments, seeing providers get really burned out from all
+    these touch points with patients and just being frustrated that they weren't seeing
+    the results when they know they have a care plan down.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,33 @@
+slug: vitamin-d3-bmi-under-30-deficiency-dosing
+statement: Adults with a BMI under 30 who are deficient in vitamin D require at least
+  6,000 IU/day as a therapeutic dose, with a maintenance dose of 1,500–2,000 IU/day.
+evidence_tier: confirm_with_clinician
+rationale: The document specifies 6,000 IU/day for deficiency correction in BMI <30
+  individuals, with 1,500–2,000 IU/day maintenance. This exceeds standard RDA guidance
+  and is specific enough to require clinical oversight and blood-level monitoring.
+coaching_translation: If your vitamin D levels are low and your BMI is under 30, your
+  practitioner may recommend a higher dose short-term to restore levels, then drop
+  to a lower maintenance dose. Always confirm specific doses with your doctor.
+out_of_scope_notes: Specific therapeutic dosing is out of coaching scope. Coaches
+  can discuss general supplementation rationale but must direct clients to a clinician
+  for individual dose prescription.
+caveats:
+- Source is expert lecture/consensus, not a specific RCT. Verify dosing with prescribing
+  clinician.
+- Doses above 4,000 IU/day are above the tolerable upper intake level set by many
+  health authorities and require monitoring of blood calcium and 25-OH vitamin D levels.
+linked_to_topics:
+- vitamin-d3
+linked_to_supplements:
+- vitamin-d3-supplement
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-vitamin-d3-k2
+  location: Vitamin D Supplementation Dosing
+  quote: Anybody whose BMI is under the age of 30 requires in the times of deficiency
+    requires at least 6000 international units per day with the maintenance that can
+    be achieved at 15,000 to 2000 international units per day.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

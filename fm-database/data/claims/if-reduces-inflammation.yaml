@@ -1,0 +1,26 @@
+slug: if-reduces-inflammation
+statement: Intermittent fasting reduces systemic inflammation markers.
+evidence_tier: plausible_emerging
+rationale: Supported by Mattson et al. 2017 and de Cabo & Mattson 2019 NEJM (both
+  cited). Mechanistically plausible via reduced caloric load, ketone-mediated inhibition
+  of the NLRP3 inflammasome, and improved gut barrier function.
+coaching_translation: Following an IF protocol may help cool down chronic, low-grade
+  inflammation — one of the root drivers of heart and metabolic disease.
+caveats:
+- Most studies are short-duration; long-term data lacking.
+- Source is a coaching toolkit citing primary literature — tier represents current
+  evidence landscape.
+linked_to_topics:
+- intermittent-fasting
+- anti-inflammatory-diet
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Intermittent Fasting — summary table
+  quote: 'Decreases: Inflammation'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

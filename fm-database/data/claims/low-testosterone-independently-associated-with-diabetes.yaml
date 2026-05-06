@@ -1,0 +1,30 @@
+slug: low-testosterone-independently-associated-with-diabetes
+statement: Low testosterone is independently associated with insulin resistance, diabetes,
+  and metabolic dysfunction in men.
+evidence_tier: plausible_emerging
+rationale: The document references a 2004 study showing men with high HbA1c have low
+  testosterone, supporting a bidirectional relationship between testosterone and metabolic
+  health. This association is recognized in endocrinology literature.
+coaching_translation: Low testosterone and poor blood sugar control often go hand
+  in hand in men. Supporting both through lifestyle can create a positive cycle—better
+  metabolism supports hormone balance, and vice versa.
+caveats:
+- Bidirectionality of the testosterone-insulin resistance relationship means lifestyle
+  interventions may benefit both simultaneously.
+- Source is expert lecture (moderate quality).
+linked_to_topics:
+- insulin-resistance
+- cardiometabolic-disease
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-biomarkers-cvs
+  location: Testosterone and Cardiovascular Risk
+  quote: studies published in 2004 showing that men who have a high HDE1C, they actually
+    have a low testosterone. So it's an independent association between the testosterone
+    and the diabetes.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,34 @@
+slug: high-homocysteine-triples-heart-attack-risk-in-men
+statement: Men with extremely high homocysteine levels are three times more likely
+  to have a heart attack than those with normal levels; homocysteine is a measure
+  of folic acid deficiency.
+evidence_tier: plausible_emerging
+rationale: Elevated homocysteine as an independent CVD risk marker is supported by
+  epidemiological data. The 'three-fold' figure is a general reference from the functional
+  medicine literature. The causal directionality and benefit of lowering homocysteine
+  via B-vitamins on hard CVD endpoints remains debated (HOPE-2, SEARCH trials had
+  mixed results).
+coaching_translation: High homocysteine in your blood can triple your heart attack
+  risk. It's often driven by low B-vitamin levels, particularly folate, B6, and B12.
+caveats:
+- Homocysteine lowering with B-vitamins does not consistently reduce CVD events in
+  RCTs despite reducing homocysteine levels — the value may be as a risk marker rather
+  than causal driver.
+- Source is an educational case study, not a specific cited primary study.
+linked_to_topics:
+- methylation-defect-elevated-homocysteine
+- cardiovascular-risk-assessment
+linked_to_supplements:
+- homocysteine-defense-b-complex
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cvs-risk-assessment
+  location: Lab Results (Slide 16)
+  quote: Men with extremely high homocysteine levels were three times more likely
+    to have a heart attack than others. Homocysteine levels is a measure of folic
+    acid deficiency.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

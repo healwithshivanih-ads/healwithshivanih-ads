@@ -1,0 +1,32 @@
+slug: phytonutrient-smoothies-support-cardiometabolic-health
+statement: Phytonutrient-rich smoothies incorporating dark berries, leafy greens,
+  turmeric, and pomegranate provide concentrated antioxidant and anti-inflammatory
+  compounds relevant to cardiometabolic health.
+evidence_tier: plausible_emerging
+rationale: The specific ingredients selected (blueberries, pomegranate, green tea,
+  turmeric, dark leafy greens) each have individual evidence bases for antioxidant
+  and anti-inflammatory activity. The smoothie format is a delivery vehicle; the claim
+  is at the ingredient level.
+coaching_translation: Drinking a daily smoothie loaded with dark berries, greens,
+  and anti-inflammatory spices is a practical way to get a broad range of protective
+  plant compounds.
+caveats:
+- Smoothie-specific RCT evidence is thin; claims rest on individual ingredient evidence.
+- Source is a coaching toolkit; verify ingredient-level claims against primary literature
+  as needed.
+linked_to_topics:
+- cardiometabolic-diet
+- phytonutrient-density
+- anti-inflammatory-diet
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Building a Better Smoothie
+  quote: Smoothies can be a great complement to your food plan and can help to make
+    'food as medicine' delicious and nutritious.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

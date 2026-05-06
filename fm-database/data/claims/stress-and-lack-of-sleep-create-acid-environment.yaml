@@ -1,0 +1,31 @@
+slug: stress-and-lack-of-sleep-create-acid-environment
+statement: Stress, anxiety, and lack of sleep all contribute to a more acidic cellular
+  environment, potentially counteracting even an excellent diet.
+evidence_tier: plausible_emerging
+rationale: Psychological stress activates the HPA axis and sympathetic nervous system,
+  producing metabolic byproducts and cortisol that can influence acid-base balance.
+  Sleep deprivation is associated with elevated inflammatory markers and metabolic
+  disruption. While the specific cellular pH impact is not well-quantified, the general
+  direction is physiologically plausible.
+coaching_translation: Even the best diet can be undermined by chronic stress and poor
+  sleep — both push your body toward an acidic state. Stress management and sleep
+  are non-negotiable foundations.
+caveats:
+- The direct effect of stress and sleep deprivation on cellular pH specifically is
+  not well-quantified in peer-reviewed literature. This is a plausible extrapolation.
+- Source is a lecture transcript.
+linked_to_topics:
+- ph-balance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-ph-balance
+  location: Lifestyle Factors and pH Section
+  quote: Stress, anxiety. You can have the best organic food on the planet but if
+    you're terribly worried... you might as well just eat a normal tomato... a highly
+    anxious person is contributing to an acid environment in the body.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

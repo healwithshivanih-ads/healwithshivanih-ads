@@ -1,0 +1,25 @@
+slug: pth-activates-vitamin-d-to-d3
+statement: Parathyroid hormone activates vitamin D to its active form (vitamin D3
+  / 1,25-dihydroxyvitamin D), linking PTH status to calcium absorption capacity.
+evidence_tier: strong
+rationale: 'Standard physiology: PTH stimulates renal 1-alpha-hydroxylase to convert
+  25-OH vitamin D to 1,25(OH)2D3 (calcitriol). This is well-established biochemistry.'
+coaching_translation: Your body's calcium-regulating hormone (PTH) also switches on
+  vitamin D, so problems with PTH can reduce vitamin D activity and lower calcium
+  absorption at the same time.
+caveats: []
+linked_to_topics:
+- calcium-metabolism
+linked_to_supplements:
+- vitamin-d
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-calcium-deficiency
+  location: PTH and Calcium Regulation
+  quote: it also going to activate the vitamin D level into into active vitamin D
+    that's vitamin D3 form
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

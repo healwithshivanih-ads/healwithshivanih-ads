@@ -1,0 +1,33 @@
+slug: manganese-supports-cartilage-and-mitochondrial-antioxidant-defense
+statement: Manganese is a cofactor in bone and cartilage formation and is needed for
+  mitochondrial Mn-SOD antioxidant defense.
+evidence_tier: plausible_emerging
+rationale: Manganese's role in Mn-SOD and glycosyltransferases for cartilage proteoglycan
+  synthesis is supported by biochemical evidence.
+coaching_translation: Manganese-rich foods (nuts, seeds, whole grains, leafy greens)
+  support joint and connective tissue health.
+caveats:
+- Source is a practitioner cheatsheet without primary citations.
+- Source is practitioner cheatsheet.
+- Excess manganese is neurotoxic; supplementation above food amounts requires clinician
+  guidance.
+linked_to_topics:
+- joint-pain
+- nutrition-deficiency
+linked_to_supplements:
+- manganese
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 13
+  quote: Manganese is described as a cofactor in bone and cartilage formation and
+    as needed for mitochondrial Mn-SOD.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 13
+  quote: Manganese is described as a cofactor in bone and cartilage formation and
+    as needed for mitochondrial Mn-SOD.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

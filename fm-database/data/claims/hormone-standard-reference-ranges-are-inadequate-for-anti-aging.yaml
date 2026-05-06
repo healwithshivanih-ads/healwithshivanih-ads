@@ -1,0 +1,33 @@
+slug: hormone-standard-reference-ranges-are-inadequate-for-anti-aging
+statement: Standard laboratory reference ranges for hormones are derived from unhealthy
+  aging populations and are inadequate for anti-aging goals; optimal targets should
+  reflect hormone levels of a younger (25-30 year old) reference population.
+evidence_tier: fm_specific_thin
+rationale: Critique of population-derived reference ranges is common in functional
+  and anti-aging medicine. The proposal to use younger reference populations is a
+  clinical philosophy not yet supported by RCT evidence for outcomes.
+coaching_translation: Normal lab ranges for hormones are based on the average sick,
+  aging person — not on what's optimal for you. If you want to feel younger and healthier,
+  your levels should reflect what a healthy younger person would have.
+out_of_scope_notes: Recommending specific lab targets or interpreting labs is out
+  of coaching scope. Coaches can empower clients to ask their hormone clinician about
+  optimal vs. reference-range goals.
+caveats:
+- This is a functional/anti-aging medicine clinical philosophy, not yet validated
+  by prospective outcomes studies.
+- Source is expert consensus lecture.
+linked_to_topics:
+- bioidentical-hormone-replacement-therapy
+- fsh-as-aging-biomarker
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Lab Reference Ranges and Hormonal Optimization
+  quote: Most reference ranges are ridiculous because they're based on millions of
+    unhealthy Americans... you really want, if you're using hormones as anti-aging
+    hormones, I want my blood to reflect the blood of a 25, 30-year-old woman.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,34 @@
+slug: chia-seeds
+display_name: Chia Seeds
+category: other
+forms_available:
+- powder
+typical_dose_range:
+  powder:
+    min: 15
+    max: 30
+    unit: g
+timing_options:
+- with_breakfast
+- with_lunch
+take_with_food: optional
+linked_to_topics:
+- chronic-pain-and-fatigue
+linked_to_claims:
+- chia-flaxseed-first-line-constipation
+notes_for_coach: First-line fibre intervention for constipation before escalating
+  to magnesium citrate. Also provides ALA omega-3, protein, and minerals. Ensure adequate
+  hydration when using.
+notes_for_client: Two tablespoons of chia seeds daily is a simple, gentle way to get
+  your bowels moving regularly and feed the good bacteria in your gut.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-chronic-pain-fatigue
+  location: Constipation Protocol
+  quote: Most of my people, they get really better with just incorporating two tablespoons
+    of chia seeds and the flat seeds.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

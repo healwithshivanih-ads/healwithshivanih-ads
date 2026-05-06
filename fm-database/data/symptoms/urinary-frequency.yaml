@@ -1,0 +1,23 @@
+slug: urinary-frequency
+display_name: Urinary Frequency
+aliases:
+- frequent urination
+- having to urinate again soon after voiding
+category: urinary
+severity: common
+description: Need to urinate again within 2 hours of previous voiding; a core BPH
+  symptom.
+when_to_refer: Refer if accompanied by pain, blood in urine, or BPH score ≥8.
+linked_to_topics:
+- benign-prostatic-hyperplasia
+linked_to_mechanisms:
+- 5-alpha-reductase-activity
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: BPH Symptom Index
+  quote: During the last month or so, how often have you had to urinate again less
+    than 2 hours after you finished urinating?
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

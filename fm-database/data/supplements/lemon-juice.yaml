@@ -1,0 +1,40 @@
+slug: lemon-juice
+display_name: Lemon Juice (Alkalising)
+category: other
+forms_available:
+- liquid
+typical_dose_range:
+  liquid:
+    min: 30
+    max: 60
+    unit: ml
+timing_options:
+- morning
+- on_empty_stomach
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- ph-balance
+linked_to_claims:
+- lemon-is-most-alkaline-forming-food
+- stomach-only-acid-organ
+notes_for_coach: Despite being acidic in taste, lemon is high in alkaline minerals
+  (sodium, potassium, magnesium, calcium, iron) and has an alkalising effect once
+  metabolised. Use lemon juice in place of vinegar where appropriate. Best consumed
+  away from tooth enamel contact.
+notes_for_client: Lemon juice is acid where it needs to be (in the stomach) and alkaline
+  where it counts (in your tissues). Try squeezing fresh lemon in warm water each
+  morning.
+evidence_tier: fm_specific_thin
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-ph-balance
+  location: Alkaline-Forming Foods Section
+  quote: The most alkaline forming food that you can put in your body is the humble
+    lemon... The lemon is broken down in the gut and the minerals are absorbed into
+    the blood. Lemon is high in the alkaline minerals, which is sodium and potassium,
+    magnesium and calcium and iron.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

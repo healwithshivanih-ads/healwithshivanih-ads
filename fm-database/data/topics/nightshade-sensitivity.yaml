@@ -1,37 +1,54 @@
 slug: nightshade-sensitivity
-display_name: Nightshade Food Sensitivity
+display_name: Nightshade Sensitivity
 aliases:
 - solanaceae sensitivity
 - solanine intolerance
-summary: Adverse reactions to edible Solanaceae plants (tomato, potato, eggplant,
-  peppers, chillies) in sensitive individuals, potentially mediated by alkaloids such
-  as solanine and capsaicin, causing GI, skin, neurological, and cardiovascular symptoms.
+- alkaloid sensitivity
+- nightshade reaction
+summary: Adverse reactions to edible plants in the Solanaceae family (tomato, potato,
+  eggplant, peppers, chillies) believed to be related to glycoalkaloids and other
+  bioactive compounds. Affects a small subset of individuals; can cause GI, skin,
+  neurological, and cardiovascular symptoms.
 common_symptoms:
 - abdominal-pain
 - diarrhea
 - skin-itchiness
 - joint-pain
 - fatigue
+- skin-itching
+- nausea
+- difficulty-breathing
+- low-blood-pressure
+- drowsiness-confusion
+- weakness
 red_flags:
 - cardiac arrhythmia
 - difficulty breathing
 - neurological symptoms — refer immediately
+- paralysis
+- heart failure
+- coma — rare severe toxicity, refer immediately
 related_topics:
 - elimination-diet
 - autoimmune-protocol
 key_mechanisms:
 - glycoalkaloid-toxicity
 - immune-food-reactivity
-coaching_scope_notes: Coaches can support nightshade removal during elimination and
-  track symptom response. Severe reactions require clinician evaluation.
-evidence_tier: fm_specific_thin
+- food-trigger-immune-activation
+coaching_scope_notes: Coaches can guide nightshade removal during elimination and
+  support reintroduction tracking. Severe reactions require medical evaluation.
+evidence_tier: plausible_emerging
 clinician_scope_notes: ''
 sources:
 - id: vitaone-elimination-diet-toolkit
   location: Nightshade Food Triggers
   quote: The edible plants can cause adverse food reactions, inflammation, and other
     health concerns in a small number of individuals.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Nightshade Food Triggers
+  quote: The edible plants can cause adverse food reactions, inflammation, and other
+    health concerns in a small number of individuals.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

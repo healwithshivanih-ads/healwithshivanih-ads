@@ -1,0 +1,29 @@
+slug: low-fodmap-diet-reduces-sibo-bacterial-load
+statement: A low-FODMAP diet reduces the fermentable carbohydrate substrate available
+  to overgrown bacteria in the small intestine, thereby decreasing gas production,
+  bloating, and dysbiosis in SIBO.
+evidence_tier: plausible_emerging
+rationale: Low-FODMAP diet has strong evidence for IBS symptom reduction and is mechanistically
+  sound for reducing bacterial fermentation substrate in SIBO. Direct SIBO eradication
+  evidence is emerging.
+coaching_translation: Eating low-FODMAP foods 'starves' the overgrown bacteria by
+  removing the fermentable sugars they thrive on, which helps reduce bloating, gas,
+  and pain.
+caveats:
+- Long-term low-FODMAP can reduce beneficial bacteria; reintroduction phase is important.
+- Should be used as a therapeutic tool with planned reintroduction, not a permanent
+  diet.
+linked_to_topics:
+- sibo
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-sibo-sifo
+  location: FODMAP Rationale Section
+  quote: The FODMAP rational comes into picture... we avoid high FODMAP foods... so
+    that the bacterial colony at the level of small intestine can decrease.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,31 @@
+slug: elevated-ggt
+display_name: Elevated GGT
+aliases:
+- high gamma-glutamyl transferase
+- raised GGT
+- GGT above 70
+category: metabolic
+severity: concerning
+description: GGT (gamma-glutamyl transferase) elevation above the functional medicine
+  optimal threshold of 70 U/L is interpreted as a primary marker of increased toxic
+  load and impaired Phase 2 detoxification. May be asymptomatic or accompanied by
+  fatigue and chemical sensitivity.
+when_to_refer: Refer to clinician if GGT is significantly elevated, rising trend is
+  observed, or accompanied by other liver enzyme abnormalities suggesting hepatocellular
+  damage.
+linked_to_topics:
+- chronic-toxicity-assessment
+- liver-detox-phase-1-and-phase-2
+linked_to_mechanisms:
+- phase-1-phase-2-detox-imbalance
+sources:
+- id: coconote-fm-liver-detox-part2
+  location: Lab Interpretation Section
+  quote: The primary enzyme that is elevated in any kind of toxic load is your GTP.
+    And the patient on the digital level is 65. When you look at the digital level,
+    it should be less than 70 optimal. If you find out any way that increase from
+    70 means we have to work in this patient in a detoxification pathway.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

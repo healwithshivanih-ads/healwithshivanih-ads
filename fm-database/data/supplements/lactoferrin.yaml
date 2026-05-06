@@ -1,0 +1,30 @@
+slug: lactoferrin
+display_name: Lactoferrin
+category: other
+forms_available:
+- capsule
+- powder
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- iron-deficiency-dysregulation
+linked_to_claims:
+- lactoferrin-bypasses-hepcidin-in-inflammatory-iron-deficiency
+notes_for_coach: Lactoferrin is an iron-binding glycoprotein that may improve iron
+  utilisation in inflammatory states where hepcidin blocks standard iron absorption.
+  Considered a clinician-directed intervention.
+notes_for_client: Lactoferrin is a protein found naturally in colostrum and milk that
+  may help the body absorb iron, particularly when inflammation is present.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXy9b_KjJT2/
+  quote: Consider lactoferrin in inflammatory cases
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

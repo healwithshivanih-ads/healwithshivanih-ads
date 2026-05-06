@@ -1,0 +1,35 @@
+slug: lactobacillus-gasseri-probiotic
+display_name: Lactobacillus gasseri (Probiotic)
+category: probiotic
+forms_available:
+- capsule
+- powder
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- vaginal-microbiome
+- sibo
+- gut-microbiome
+linked_to_claims:
+- sibo-yogurt-protocol-reduces-fecal-overgrowth
+notes_for_coach: L. gasseri is identified as part of both vaginal microbiome restoration
+  (alongside L. crispatus) and the SIBO yogurt protocol (alongside L. reuteri and
+  B. subtilis). It colonizes the small intestine and produces bacteriocins. Used in
+  Dr. Davis's SIBO yogurt formulation.
+notes_for_client: This probiotic strain supports both vaginal health and gut health.
+  It is used in a special homemade yogurt that may help address small intestinal bacterial
+  overgrowth (SIBO).
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: SIBO yogurt formulation discussion
+  quote: I'd pick Lactobacillus reuteri, Lactobacillus gasseri, and my most recent
+    recipe, I replaced the Bacillus coagulans.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

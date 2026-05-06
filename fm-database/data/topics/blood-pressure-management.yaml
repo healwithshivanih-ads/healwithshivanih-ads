@@ -1,0 +1,38 @@
+slug: blood-pressure-management
+display_name: Blood Pressure Management
+aliases:
+- elevated blood pressure
+summary: Assessment and management of elevated blood pressure incorporating both pharmacological
+  and lifestyle-based interventions. Dietary strategies including potassium, phytonutrients,
+  L-arginine, anthocyanins, sodium reduction, and weight loss can produce clinically
+  significant reductions in systolic blood pressure.
+common_symptoms:
+- elevated-blood-pressure
+- tachycardia
+red_flags:
+- signs-of-end-organ-damage
+- severely-elevated-blood-pressure
+related_topics:
+- visceral-adiposity
+- metabolic-syndrome
+- body-composition-assessment
+key_mechanisms:
+- nitric-oxide-production
+- renin-angiotensin-system
+coaching_scope_notes: Coaches can support DASH diet adherence, potassium-rich food
+  intake, sodium reduction, weight management, and regular aerobic exercise. Medication
+  decisions are out of scope.
+clinician_scope_notes: Use risk-stratified approach integrating organ damage markers
+  and risk factors. Lifestyle is always co-initiated with medication at any stage.
+  See cardiometabolic module for full protocol.
+evidence_tier: strong
+sources:
+- id: coconote-fm-body-composition-bmi
+  location: Blood Pressure Section
+  quote: If you can engage in all of these lifestyle changes, if we added all of those
+    up here, you could lower their blood pressure by 13 to 18 millimeters of mercury
+    just with lifestyle, which is impressive.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

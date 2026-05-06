@@ -1,0 +1,30 @@
+slug: zinc-supplementation-lowers-homa-ir
+statement: Zinc supplementation has been shown in multiple studies to lower HOMA-IR,
+  a validated measure of insulin resistance.
+evidence_tier: plausible_emerging
+rationale: Wang et al. (2019, Am J Clin Nutr) systematic review and meta-analysis
+  of RCTs supports zinc's glycemic benefits. HOMA-IR reduction is a meaningful clinical
+  endpoint. Mineral competition risk noted.
+coaching_translation: Zinc — found in oysters, beef, legumes, and nuts — plays a role
+  in insulin production and storage. Research suggests supplementing when levels are
+  low may improve insulin sensitivity.
+out_of_scope_notes: Zinc dosage and duration should be supervised by a clinician due
+  to risk of copper and other mineral depletion.
+caveats:
+- High-dose zinc supplementation can deplete copper and other minerals.
+- Clinician oversight required for supplementation decisions.
+linked_to_topics:
+- blood-sugar-dysfunction
+- insulin-resistance
+linked_to_supplements:
+- zinc
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: Zinc supplementation has been shown in multiple studies to lower HOMA-IR,
+    a measure of insulin resistance.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

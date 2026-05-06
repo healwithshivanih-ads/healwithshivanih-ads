@@ -1,0 +1,34 @@
+slug: magnesium-ionic-powder
+display_name: Ionic Magnesium Powder
+category: mineral
+forms_available:
+- powder
+timing_options:
+- with_breakfast
+- evening
+- bedtime
+take_with_food: optional
+linked_to_topics:
+- cardiovascular-risk-assessment
+- hypertension
+linked_to_claims:
+- cholesterol-not-primary-driver-of-cvd
+- fm-intervention-improved-insulin-resistance-lipids-homocysteine
+notes_for_coach: Used as an ionic (highly bioavailable) magnesium formulation. Magnesium
+  is referenced in the document as an antagonist to excess vascular calcium; deficiency
+  contributes to vasoconstriction and CVD risk. Maintenance dosing continued at 10
+  months.
+notes_for_client: Magnesium is essential for healthy blood pressure, muscle relaxation,
+  and heart rhythm. Ionic powder form is highly absorbable — mix in water. This was
+  continued as a maintenance supplement after your other markers improved.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cvs-risk-assessment
+  location: After 10 months (Slide 26)
+  quote: Continue with maintenance dose of B vitamins and Magnesium
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

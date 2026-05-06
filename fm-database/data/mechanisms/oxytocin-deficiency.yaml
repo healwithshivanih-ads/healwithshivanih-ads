@@ -1,0 +1,33 @@
+slug: oxytocin-deficiency
+display_name: Oxytocin Deficiency (Social Isolation)
+aliases:
+- low-oxytocin
+- social-disconnection-biology
+category: endocrine
+summary: Emotional isolation and lack of social connection lead to oxytocin deficiency,
+  which increases inflammation, impairs immune regulation, and worsens depression.
+  Social bonding practices, touch therapy, and community connection restore oxytocin
+  and parasympathetic safety.
+upstream_drivers:
+- social-isolation
+- emotional-isolation
+- loneliness
+downstream_effects:
+- increased-inflammation
+- immune-dysregulation
+- depression
+- low-motivation
+related_mechanisms:
+- hpa-axis-dysregulation
+- neuroinflammation
+linked_to_topics:
+- emotional-healing-chronic-disease
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: Oxytocin deficiency → increased inflammation & immune dysregulation.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

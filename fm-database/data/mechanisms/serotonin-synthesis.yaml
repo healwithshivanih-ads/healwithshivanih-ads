@@ -1,0 +1,31 @@
+slug: serotonin-synthesis
+display_name: Serotonin Synthesis (Magnesium-Dependent)
+aliases:
+- serotonin-pathway
+- magnesium-serotonin
+category: neurological
+summary: Magnesium plays a cofactor role in the enzymatic production and regulation
+  of serotonin. Deficiency can impair serotonin availability, contributing to depression,
+  migraine, and sleep disruption.
+upstream_drivers:
+- magnesium-deficiency
+downstream_effects:
+- depression
+- migraine-headache
+- insomnia
+- mood-dysregulation
+related_mechanisms:
+- gaba-receptor-modulation
+- melatonin-pathway
+linked_to_topics:
+- magnesium-neurological-mental-health
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-magnesium-deficiency
+  location: Depression / nervous system section
+  quote: Magnesium plays an important role in its production and the formation of
+    serotonin as well.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

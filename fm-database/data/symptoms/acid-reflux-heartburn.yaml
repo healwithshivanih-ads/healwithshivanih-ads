@@ -1,0 +1,30 @@
+slug: acid-reflux-heartburn
+display_name: Acid Reflux / Heartburn
+aliases:
+- reflux
+- GERD symptoms
+- burning in chest
+- acid coming up
+category: gi
+severity: concerning
+description: Burning sensation in the chest or throat caused by stomach acid rising
+  into the oesophagus due to a weakened cardiac sphincter. Often worsened by large
+  evening meals, lying down after eating, and drinking large amounts of fluid with
+  meals.
+when_to_refer: Refer if oesophageal ulceration is suspected, if symptoms are unresponsive
+  to dietary/lifestyle change, or if long-term PPI use is in place.
+linked_to_topics:
+- acid-reflux-and-cardiac-sphincter-weakness
+- gastrointestinal-tract-overview
+linked_to_mechanisms:
+- cardiac-sphincter-weakness
+- hcl-and-pepsin-protein-digestion
+sources:
+- id: barbara-oneil-gi-tract
+  location: Stomach & Acid Section
+  quote: There are some people who are suffering from something called reflux heartburn
+    where the acid is coming up into the esophagus.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

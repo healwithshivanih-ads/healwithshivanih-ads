@@ -1,23 +1,29 @@
 slug: muscle-tension
-display_name: Muscle Tension
+display_name: Muscle Tension / Headaches
 aliases:
 - tight muscles
 - neck tension
 - stress-related muscle tightness
+- tension headaches
+- migraines from stress
 category: musculoskeletal
 severity: common
-description: Chronic muscle tightness and tension, particularly in the neck and shoulders,
-  driven by ongoing sympathetic activation.
+description: Chronic stress causes sustained muscle tension, particularly in the neck,
+  contributing to tension headaches and migraines.
 linked_to_topics:
 - chronic-stress
 linked_to_mechanisms:
 - sympathetic-nervous-system-activation
+- sympathoadrenal-activation
 when_to_refer: ''
 sources:
 - id: vitaone-adrenal-toolkit
   location: Effects of Chronic Stress — Musculoskeletal
   quote: Causes muscle tension, Tension in neck, Headaches/migraines
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Effects of Chronic Stress — Musculoskeletal
+  quote: Causes muscle tension, Tension in neck, Headaches/migraines.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

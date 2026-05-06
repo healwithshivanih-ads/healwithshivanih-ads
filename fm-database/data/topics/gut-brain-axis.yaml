@@ -7,9 +7,14 @@ aliases:
 - enteric nervous system connection
 - mind-gut connection
 - enteric nervous system communication
-summary: Bidirectional communication network between the gastrointestinal tract and
-  the central nervous system via neural, hormonal, and immune pathways; stress and
-  nervous system tone directly influence gut motility, secretion, and microbiome composition.
+- enteric-nervous-system-dysfunction
+- psychobiotics
+- vagus nerve gut connection
+- agni-mind-gut axis
+summary: The bidirectional communication network between the enteric nervous system
+  and the central nervous system, mediated by the vagus nerve, gut microbiome, and
+  neuroendocrine signals. Stress, breathing patterns, and meal behaviors significantly
+  influence gut function.
 common_symptoms:
 - anxiety
 - low mood
@@ -30,12 +35,20 @@ common_symptoms:
 - mood-changes
 - cognitive-decline
 - abdominal-pain
+- food-sensitivities
+- mood-swings
+- ibs-symptoms
+- mood-dysregulation
+- sleep-disturbances
 red_flags:
 - persistent mood disorders requiring pharmacological management
 - severe cognitive decline beyond typical brain fog
 - chronic unresolvable sleep disruption
 - Blood in stool
 - Unexplained weight loss — refer for GI workup
+- intestinal-bleeding
+- severe-ibd-flare
+- clinical depression or anxiety disorders require mental health referral
 related_topics:
 - microbiome
 - vagal-tone
@@ -51,6 +64,11 @@ related_topics:
 - ibs
 - low-fodmap-diet
 - vagus-nerve-activation
+- nervous-system-regulation
+- emotional-healing-chronic-disease
+- breathwork-for-health
+- gut-microbiome-personalized-nutrition
+- elimination-diet
 key_mechanisms:
 - vagal-nerve-signaling
 - gut-derived-neurotransmitter-production
@@ -63,12 +81,19 @@ key_mechanisms:
 - gut-dysbiosis
 - vagal-tone-dysregulation
 - gut-motility-dysregulation
-coaching_scope_notes: Coaches can incorporate vagus-nerve practices (breathwork, mindful
-  eating, post-meal walking) as part of gut-brain axis support.
-clinician_scope_notes: Antidepressants, anti-anxiety agents, mood stabilizers, HRT,
-  and GLP-1 prescribing are clinician territory. Persistent or severe mood/cognitive
-  symptoms warrant clinical referral.
-evidence_tier: strong
+- dysbiosis
+- vagal-tone-reduction
+- cytokine-signaling
+- gut-serotonin-production
+- neuroinflammation-gut-axis
+- vagus-nerve-activation
+- gut-brain-axis-dysregulation
+coaching_scope_notes: Coaches can teach vagal tone practices (extended exhale breathing,
+  Nadi Shodhana, Brahmari, legs-up-the-wall), mindful eating, and meal timing as evidence-informed
+  lifestyle tools.
+clinician_scope_notes: Mood disorders with gut-brain axis involvement should be co-managed
+  with a mental health clinician.
+evidence_tier: plausible_emerging
 sources:
 - id: thurlow-microbiome-session-5
   location: Gut-Brain Axis section
@@ -87,7 +112,11 @@ sources:
   location: Low FODMAP Vegetarian Diet Plan
   quote: Your gut listens to your nervous system, so we'll pair the food plan with
     vagus-calming lifestyle rituals.
-version: 4
+- id: vitaone-health-coaching-toolkit
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: Stress hormones alter microbiome diversity, ↑ intestinal permeability ('leaky
+    gut').
+version: 7
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

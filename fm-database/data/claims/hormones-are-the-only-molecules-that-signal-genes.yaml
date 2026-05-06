@@ -1,0 +1,31 @@
+slug: hormones-are-the-only-molecules-that-signal-genes
+statement: Hormones are the only endogenous molecules that can directly signal gene
+  expression, making them uniquely powerful regulators of all human physiology — with
+  vitamin D as the sole exception.
+evidence_tier: strong
+rationale: The primacy of hormones and vitamin D in nuclear receptor-mediated gene
+  regulation is well-established in endocrinology and molecular biology. Nuclear hormone
+  receptors are a validated mechanistic class.
+coaching_translation: Hormones aren't just about reproduction — they are the master
+  switches for all the genetic instructions that run your body. This is why hormonal
+  health matters at every age.
+caveats:
+- Source is expert consensus/lecture; specific citations to primary literature not
+  provided in the document.
+- Vitamin D is noted as the one non-hormone molecule with similar gene-signaling capacity.
+linked_to_topics:
+- estrogen-signaling
+- hormonal-nutrition-foundations
+- bioidentical-hormone-replacement-therapy
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: How Hormones Signal — Historical and Current Understanding
+  quote: hormones are the only molecules in the body that can signal genes. No other
+    molecules can signal genes.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

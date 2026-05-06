@@ -1,0 +1,31 @@
+slug: soluble-fiber-gel-formation
+display_name: Soluble Fiber Gel Formation for Stool Regulation
+category: gut
+summary: Soluble fiber (psyllium, PHGG, flaxseed mucilage) absorbs water and forms
+  a gel in the GI tract, softening stools and normalizing transit time. Better tolerated
+  than insoluble fiber in IBS-C.
+upstream_drivers:
+- psyllium-husk
+- flaxseeds
+- phgg-supplement
+- chia-seeds
+downstream_effects:
+- smooth-stool-movement
+- reduced-constipation
+- reduced-diarrhea
+related_mechanisms:
+- fodmap-fermentation-gas-production
+linked_to_topics:
+- ibs
+- elimination-diet
+evidence_tier: strong
+aliases: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: FODMAP Plan SOS Solutions — CONSTIPATION
+  quote: Soluble fiber → gel formation → smooth stool movement. Use PHGG (partially
+    hydrolyzed guar gum) if possible — BEST for IBS-C.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

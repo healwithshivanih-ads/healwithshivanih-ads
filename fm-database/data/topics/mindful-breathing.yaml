@@ -1,0 +1,42 @@
+slug: mindful-breathing
+display_name: Mindful Breathing
+aliases:
+- abdominal breathing
+- diaphragmatic breathing
+- 4-7-8 breathing
+- deep breathing
+summary: Conscious, diaphragmatic breathing practices that activate the parasympathetic
+  nervous system, reduce stress, improve venous return to the heart, and support concentration
+  and emotional regulation.
+common_symptoms:
+- tension
+- fatigue
+- anxiety
+- poor-concentration
+- stress
+red_flags: []
+related_topics:
+- stress-response
+- gratitude-practice
+- self-care
+- stress-management
+- parasympathetic-activation
+key_mechanisms:
+- parasympathetic-activation
+- vagal-tone-enhancement
+- venous-return-enhancement
+- hpa-axis-regulation
+coaching_scope_notes: Coaches can teach and guide diaphragmatic and 4-7-8 breathing
+  exercises as a lifestyle skill for stress reduction and focus.
+clinician_scope_notes: No clinical referral needed for breathing practice guidance;
+  refer if respiratory symptoms are present.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Mindful Breathing
+  quote: Abdominal breathing, or diaphragmatic breathing, is a powerful way to decrease
+    stress by activating relaxation centers in the brain.
+version: 2
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -7,24 +7,31 @@ forms_available:
 timing_options:
 - with_breakfast
 - with_dinner
+- with_lunch
 take_with_food: required
 linked_to_topics:
 - gerd
 - gut-dysfunction
+- gerd-ppi-tapering
 linked_to_claims:
 - pectin-protects-gi-lining
-notes_for_coach: Listed under 'Protect' in the PPI taper protocol. A soluble fiber
-  with gut-lining protective properties.
+- ppi-tapering-supplement-support-repair-protect-antioxidant
+notes_for_coach: Soluble fiber from fruit; listed under 'Protect' in PPI tapering.
+  May coat and protect the gut lining. Also a prebiotic fiber.
 evidence_tier: fm_specific_thin
 typical_dose_range: {}
 linked_to_mechanisms: []
-notes_for_client: ''
+notes_for_client: Pectin is a natural soluble fiber that can help protect the gut
+  lining and act as a prebiotic to feed beneficial bacteria.
 sources:
 - id: vitaone-gut-toolkit
   location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
     — Supplement recommendations'
   quote: 'Protect: Alginate, pectin, DGL, slippery elm'
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
+  quote: 'Protect: Alginate, pectin, DGL, slippery elm.'
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

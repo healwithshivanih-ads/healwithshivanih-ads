@@ -1,0 +1,426 @@
+slug: chronic-inflammation
+display_name: Chronic Inflammation
+description: 'Functional medicine approach to systemic inflammation, autoimmune patterns,
+  inflammatory drivers, and anti-inflammatory protocols.
+
+  '
+aliases: []
+related_topics:
+- chronic-inflammation
+- autoimmune
+- autoimmune-disease
+- anti-inflammatory-diet
+related_mechanisms:
+- chronic-inflammation
+- chronic-systemic-inflammation
+- cytokine-dysregulation
+tree:
+- label: 🔴 Clinical Presentation
+  children:
+  - label: Pain & Joint Issues
+    children:
+    - label: Joint Pain
+      children: []
+      linked_kind: symptom
+      linked_slug: joint-pain
+      notes: ''
+    - label: Muscle Aches
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Chronic Pain
+      children: []
+      linked_kind: symptom
+      linked_slug: chronic-pain
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Systemic Signs
+    children:
+    - label: Fatigue
+      children: []
+      linked_kind: symptom
+      linked_slug: fatigue
+      notes: ''
+    - label: Brain Fog
+      children: []
+      linked_kind: symptom
+      linked_slug: brain-fog
+      notes: ''
+    - label: Poor Sleep
+      children: []
+      linked_kind: symptom
+      linked_slug: insomnia
+      notes: ''
+    - label: Recurrent Infections
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Skin & Gut
+    children:
+    - label: Skin Rash / Eczema
+      children: []
+      linked_kind: symptom
+      linked_slug: skin-rash
+      notes: ''
+    - label: Bloating
+      children: []
+      linked_kind: symptom
+      linked_slug: bloating
+      notes: ''
+    - label: Food Sensitivities
+      children: []
+      linked_kind: symptom
+      linked_slug: food-sensitivities
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🟠 Root Mechanisms
+  children:
+  - label: Chronic Systemic Inflammation
+    children: []
+    linked_kind: mechanism
+    linked_slug: chronic-systemic-inflammation
+    notes: ''
+  - label: Cytokine Dysregulation
+    children: []
+    linked_kind: mechanism
+    linked_slug: cytokine-dysregulation
+    notes: ''
+  - label: Leaky Gut
+    children: []
+    linked_kind: mechanism
+    linked_slug: leaky-gut
+    notes: ''
+  - label: Oxidative Stress
+    children: []
+    linked_kind: mechanism
+    linked_slug: oxidative-stress
+    notes: ''
+  - label: HPA Axis Dysregulation
+    children: []
+    linked_kind: mechanism
+    linked_slug: hpa-axis-dysregulation
+    notes: ''
+  - label: Mitochondrial Dysfunction
+    children: []
+    linked_kind: mechanism
+    linked_slug: mitochondrial-dysfunction
+    notes: ''
+  - label: Epigenetic Stress Response
+    children: []
+    linked_kind: mechanism
+    linked_slug: epigenetic-stress-response
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🟡 FM Approach
+  children:
+  - label: Identify Triggers
+    children:
+    - label: Food Sensitivities
+      children: []
+      linked_kind: topic
+      linked_slug: elimination-diet
+      notes: ''
+    - label: Environmental Toxins
+      children: []
+      linked_kind: topic
+      linked_slug: environmental-toxin-exposure
+      notes: ''
+    - label: Infections / Dysbiosis
+      children: []
+      linked_kind: topic
+      linked_slug: gut-dysbiosis
+      notes: ''
+    - label: Chronic Stress
+      children: []
+      linked_kind: topic
+      linked_slug: chronic-stress
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Anti-Inflammatory Nutrition
+    children:
+    - label: Anti-Inflammatory Diet
+      children: []
+      linked_kind: topic
+      linked_slug: anti-inflammatory-diet
+      notes: ''
+    - label: Omega-3 Rich Foods
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Reduce Refined Sugars
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Turmeric / Curcumin Foods
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Lifestyle Medicine
+    children:
+    - label: Sleep Optimisation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Stress Reduction
+      children: []
+      linked_kind: topic
+      linked_slug: stress-management
+      notes: ''
+    - label: Gentle Movement
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🟢 Interventions
+  children:
+  - label: Anti-Inflammatory Supplements
+    children:
+    - label: Curcumin / Turmeric
+      children: []
+      linked_kind: supplement
+      linked_slug: curcumin
+      notes: ''
+    - label: Omega-3 EPA/DHA
+      children: []
+      linked_kind: supplement
+      linked_slug: omega-3-epa-dha
+      notes: ''
+    - label: Boswellia
+      children: []
+      linked_kind: supplement
+      linked_slug: boswellia
+      notes: ''
+    - label: Resveratrol
+      children: []
+      linked_kind: supplement
+      linked_slug: resveratrol
+      notes: ''
+    - label: Quercetin
+      children: []
+      linked_kind: supplement
+      linked_slug: quercetin
+      notes: ''
+    - label: Magnesium Glycinate
+      children: []
+      linked_kind: supplement
+      linked_slug: magnesium-glycinate
+      notes: ''
+    - label: Vitamin D3
+      children: []
+      linked_kind: supplement
+      linked_slug: vitamin-d3
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Gut Support
+    children:
+    - label: Probiotics
+      children: []
+      linked_kind: supplement
+      linked_slug: probiotics
+      notes: ''
+    - label: L-Glutamine
+      children: []
+      linked_kind: supplement
+      linked_slug: l-glutamine
+      notes: ''
+    - label: Aloe Vera Extract
+      children: []
+      linked_kind: supplement
+      linked_slug: aloe-vera-extract
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Dietary Changes
+    children:
+    - label: Mediterranean-Style Diet
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Reduce Nightshades (Autoimmune)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Alcohol Elimination Trial
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 💙 Coaching Goals
+  children:
+  - label: Education
+    children:
+    - label: Inflammation & Disease Connection
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Reading Inflammatory Markers
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Anti-Inflammatory Lifestyle
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Habit Building
+    children:
+    - label: Daily Anti-Inflammatory Foods
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Movement as Medicine
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Sleep as Priority
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Mindset
+    children:
+    - label: Stress Is Inflammatory
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Healing Takes Time
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🔵 Labs to Track
+  children:
+  - label: Inflammatory Markers
+    children:
+    - label: hsCRP (Highly Sensitive)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: ESR (Erythrocyte Sedimentation Rate)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Ferritin
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Homocysteine
+      children: []
+      linked_kind: mechanism
+      linked_slug: homocysteine-elevation
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Immune Markers
+    children:
+    - label: ANA (Antinuclear Antibodies)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Complement C3/C4
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: IgG Food Sensitivity Panel
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Gut Markers
+    children:
+    - label: Calprotectin
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Zonulin
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Secretory IgA
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+sources:
+- id: vitaone-health-coaching-toolkit
+  quote: null
+  location: Toolkit for Health Coaching PDF — Inflammation section
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

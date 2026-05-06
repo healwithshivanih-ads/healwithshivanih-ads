@@ -1,0 +1,30 @@
+slug: l-theanine-glycine-increase-alpha-waves-relaxation
+statement: L-theanine and glycine increase alpha brain waves and promote relaxation,
+  supporting mental tension and sleep.
+evidence_tier: plausible_emerging
+rationale: L-theanine's alpha wave-promoting and anxiolytic effects are supported
+  by multiple RCTs. Glycine's sleep-promoting effects via NMDA receptor modulation
+  and thermoregulation are also RCT-supported. Both are well-characterized.
+coaching_translation: L-theanine (found naturally in green tea) and glycine are two
+  calming amino acids that gently shift your brain toward a relaxed but alert state—useful
+  for both daytime mental tension and nighttime sleep.
+caveats:
+- Dosing guidance from clinician recommended, especially with medications.
+- Source is educational synthesis.
+linked_to_topics:
+- nervous-system-regulation
+- emotional-healing-chronic-disease
+linked_to_supplements:
+- l-theanine
+- glycine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Key Nutrients & Botanicals for Emotional Healing Support
+  quote: 'L-Theanine / Glycine: Increase alpha brain waves, relaxation. Mental tension,
+    sleep support.'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

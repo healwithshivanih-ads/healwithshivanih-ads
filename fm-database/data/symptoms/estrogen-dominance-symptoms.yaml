@@ -1,0 +1,32 @@
+slug: estrogen-dominance-symptoms
+display_name: Estrogen Dominance Symptoms
+aliases:
+- estrogen excess
+- estrogen dominance
+- high estrogen symptoms
+- estrogen overload
+category: hormonal
+severity: common
+description: A cluster of symptoms — including heavy periods, fibrocystic breasts,
+  mood changes, and bloating — associated with prolonged or excessive estrogen signaling,
+  often due to insufficient B6, poor fiber intake, or constipation impairing estrogen
+  excretion.
+when_to_refer: Refer if symptoms are severe or suspected pathology (fibroids, endometriosis,
+  PCOS) — clinical hormone and lab evaluation needed.
+linked_to_topics:
+- estrogen-signaling
+- hormonal-nutrition-foundations
+- estrogen-and-fiber-transit-time
+linked_to_mechanisms:
+- p5p-helix-12-signaling-control
+- estrogen-enterohepatic-recirculation
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: P5P and Hormone Signaling Duration
+  quote: I hate that term, estrogen dominance, or you've got heavy periods, or you've
+    got fibrocystic breasts, a lot of that is excessive estrogen signaling. And one
+    of the issues is insufficient B6.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

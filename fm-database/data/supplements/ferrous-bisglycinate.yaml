@@ -1,0 +1,47 @@
+slug: ferrous-bisglycinate
+display_name: Ferrous Bisglycinate
+category: mineral
+forms_available:
+- capsule
+- tablet
+- powder
+typical_dose_range:
+  tablet:
+    min: 25
+    max: 100
+    unit: mg
+  capsule:
+    min: 25
+    max: 100
+    unit: mg
+timing_options:
+- morning
+- on_empty_stomach
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- iron-deficiency-anemia
+linked_to_claims:
+- ferrous-bisglycinate-superior-absorption-to-ferrous-sulfate-fumarate
+- ferrous-bisglycinate-fewer-gi-side-effects
+- ferrous-bisglycinate-better-patient-compliance
+notes_for_coach: Preferred iron supplement form in functional medicine due to superior
+  bioavailability and minimal GI side effects vs. ferrous sulfate/fumarate. Recommend
+  clinician oversight for therapeutic dosing. Source is an expert lecture (moderate
+  quality); verify specific doses with a clinician.
+notes_for_client: This form of iron is gentler on the stomach than the standard pharmacy
+  versions. It's well absorbed and less likely to cause constipation or stomach upset.
+  Always confirm dosing with your doctor or practitioner.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-iron-deficiency-anemia
+  location: Supplements / Management section
+  quote: There is something that we use particularly is ferrous bisglycinate. The
+    advantage of ferrous bisglycinate over the rest is it has a better viability,
+    number one. So the absorption is much better inside the body than the ferrous
+    fumarate and sulphate.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

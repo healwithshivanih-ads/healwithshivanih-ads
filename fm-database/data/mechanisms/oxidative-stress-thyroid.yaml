@@ -1,0 +1,37 @@
+slug: oxidative-stress-thyroid
+display_name: Oxidative Stress in Thyroid Disease
+aliases:
+- thyroid oxidative damage
+- reactive oxygen species thyroid
+- antioxidant capacity thyroid
+category: immune
+summary: Elevated oxidative stress markers and reduced total antioxidant capacity
+  are observed in autoimmune thyroid disease (AITD). Oxidative damage contributes
+  to thyroid tissue injury and perpetuates inflammation. Interventions that improve
+  antioxidant status (e.g., Nigella sativa) may reduce thyroid antibody levels and
+  improve markers of vascular and metabolic health.
+upstream_drivers:
+- autoimmune-thyroid-attack
+- chronic-systemic-inflammation
+- nutrient-deficiencies
+downstream_effects:
+- thyroid-tissue-damage
+- elevated-anti-tpo-antibodies
+- vascular-endothelial-dysfunction
+related_mechanisms:
+- autoimmune-thyroid-attack
+- chronic-systemic-inflammation
+linked_to_topics:
+- hashimotos-hypothyroidism
+- thyroid-dysfunction
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Key Nutrients to Consider in Thyroid Regulation — Nigella sativa improves
+    oxidative stress
+  quote: Treatment with N. sativa for 8 weeks significantly improved serum total antioxidant
+    capacity and markers of oxidative stress
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

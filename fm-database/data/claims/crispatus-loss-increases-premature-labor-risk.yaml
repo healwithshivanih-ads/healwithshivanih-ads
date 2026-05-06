@@ -1,0 +1,31 @@
+slug: crispatus-loss-increases-premature-labor-risk
+statement: Loss of Lactobacillus crispatus from the vaginal microbiome increases the
+  risk of premature labor by allowing cervical inflammation and premature cervical
+  relaxation.
+evidence_tier: plausible_emerging
+rationale: 'Dr. Davis describes a mechanistic pathway: crispatus depletion → cervical
+  inflammation → cervical relaxation → premature labor. He references research context
+  but does not cite specific studies by author/year. Biologically plausible and consistent
+  with known vaginal microbiome literature.'
+coaching_translation: Keeping beneficial vaginal bacteria like L. crispatus healthy
+  during pregnancy may help reduce the risk of delivering too early.
+caveats:
+- Source is expert consensus interview, not primary literature.
+- Pregnancy intervention requires obstetric supervision.
+- Premature labor has multiple causes; microbiome is one potential factor.
+linked_to_topics:
+- vaginal-microbiome
+linked_to_supplements:
+- lactobacillus-crispatus-probiotic
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Crispatus and pregnancy outcomes discussion
+  quote: If a woman lacks Lactobacillus crispatus in her vagina, she's more susceptible
+    to miscarriage, to premature labor, because when she lacks crispatus, the cervix
+    can become inflamed.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

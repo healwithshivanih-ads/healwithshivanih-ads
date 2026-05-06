@@ -1,0 +1,36 @@
+slug: vldl-overproduction-from-excess-carbs
+display_name: VLDL Overproduction from Excess Dietary Carbohydrates
+aliases:
+- hepatic VLDL synthesis
+- carbohydrate-driven lipogenesis
+- de novo lipogenesis
+category: metabolic
+summary: Excess dietary carbohydrates — especially fructose — are converted in the
+  liver into VLDL particles. VLDL is subsequently remodelled into LDL. This pathway
+  explains why high-carb diets raise triglycerides and small dense LDL independently
+  of saturated fat intake.
+upstream_drivers:
+- excess-dietary-carbohydrates
+- fructose-intake
+- insulin-resistance
+downstream_effects:
+- elevated-triglycerides
+- elevated-vldl
+- elevated-ldl
+- low-hdl
+related_mechanisms:
+- insulin-resistance
+- oxidative-stress-vascular
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-risk-assessment
+- insulin-resistance
+evidence_tier: strong
+sources:
+- id: vitaone-cvs-risk-assessment
+  location: Understand Blood Lipid (Slide 6)
+  quote: VLDL is synthesized in the liver, from excess dietary carbohydrates.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

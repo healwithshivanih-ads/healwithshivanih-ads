@@ -1,0 +1,35 @@
+slug: carotenoid-conversion-depends-on-zinc-iron-protein-and-thyroid
+statement: Conversion from carotenoids to active vitamin A is inefficient and depends
+  on zinc, iron, protein, and thyroid health.
+evidence_tier: plausible_emerging
+rationale: Low conversion efficiency of beta-carotene to retinol and its dependence
+  on thyroid function and micronutrient status is supported by mechanistic research.
+coaching_translation: Clients relying on plant-based carotenoids for vitamin A may
+  need adequate zinc, iron, protein, and thyroid health for efficient conversion.
+caveats:
+- Source is a practitioner cheatsheet without primary citations.
+- Genetic variants in BCMO1 also affect conversion efficiency.
+- Source is practitioner cheatsheet.
+- Thyroid assessment required for clinician.
+linked_to_topics:
+- thyroid
+- nutrition-deficiency
+linked_to_supplements:
+- vitamin-a
+- zinc
+- iron
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 7
+  quote: Conversion from carotenoids to active vitamin A is described as inefficient
+    and dependent on zinc, iron, protein, and thyroid health.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 7
+  quote: Conversion from carotenoids to active vitamin A is described as inefficient
+    and dependent on zinc, iron, protein, and thyroid health.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

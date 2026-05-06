@@ -1,25 +1,39 @@
 slug: abdominal-pain
-display_name: Abdominal Pain / Cramping
+display_name: Abdominal Pain
 aliases:
 - stomach pain
 - belly pain
 - gut pain
 - stomach cramps
 - tummy ache
+- abdominal cramping
+- epigastric pain
+- visceral pain
 category: gi
 severity: common
-description: Pain or cramping in the abdomen, frequently triggered by food-related
-  distension or spasm of the intestinal smooth muscle.
+description: Pain or cramping in the abdominal region related to gas production, intestinal
+  inflammation, and visceral hypersensitivity common in SIBO/SIFO.
 linked_to_topics:
 - low-dose-naltrexone
 - low-fodmap-diet
 - elimination-diet
 - ibs
+- nightshade-sensitivity
+- oxalate-sensitivity
+- histamine-intolerance
+- pancreatic-insufficiency
+- sibo
+- leaky-gut-syndrome
 linked_to_mechanisms:
 - colonic-fermentation
 - gut-motility-dysregulation
-when_to_refer: Severe or acute pain, bloody stool, fever, or unintentional weight
-  loss.
+- fodmap-fermentation-gas-production
+- glycoalkaloid-toxicity
+- exocrine-pancreatic-enzyme-deficiency
+- oxidative-stress-pancreatic-damage
+- gut-dysbiosis
+- intestinal-barrier-dysfunction
+when_to_refer: Refer if severe, acute onset, radiating, or associated with fever/vomiting.
 sources:
 - id: vitaone-ldn-article
   location: LDN potential side effects
@@ -27,7 +41,18 @@ sources:
 - id: vitaone-elimination-diet-toolkit
   location: Low Fodmap Diet Symptom Tracker — Section 1
   quote: Abdominal pain / cramping
-version: 2
+- id: vitaone-health-coaching-toolkit
+  location: Low Fodmap Diet Symptom Tracker — Section 1
+  quote: Abdominal pain / cramping
+- id: coconote-fm-pancreatic-insufficiency
+  location: Signs and Symptoms
+  quote: Stomach pain, compounded conditions, which are also like Crohn's disease
+    because of inflammation, which is important.
+- id: coconote-fm-sibo-sifo
+  location: Symptoms Section
+  quote: You may have diarrhea, constipation, bloating, abdominal pain, reactive to
+    multiple foods.
+version: 5
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

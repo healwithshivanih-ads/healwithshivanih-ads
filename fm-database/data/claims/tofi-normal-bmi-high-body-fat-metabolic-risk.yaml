@@ -1,0 +1,29 @@
+slug: tofi-normal-bmi-high-body-fat-metabolic-risk
+statement: Individuals with normal BMI can have metabolically dangerous levels of
+  body fat ('skinny fat' or TOFI — Thin Outside Fat Inside), which is only detectable
+  through body fat percentage measurement.
+evidence_tier: strong
+rationale: The TOFI phenotype is well-described in peer-reviewed literature; metabolic
+  risk in normal-weight individuals with high visceral fat is established.
+coaching_translation: You can't always see metabolic dysfunction from the outside.
+  Some clients who look healthy or 'thin' may carry significant hidden fat around
+  their organs — which is why body composition testing matters.
+caveats: []
+linked_to_topics:
+- body-composition-assessment
+- bmi-interpretation
+- metabolic-syndrome
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-body-composition-bmi
+  location: Body Composition Scenarios Section
+  quote: This is the skinny fat. Toffee, for example, thin on the outside, fat on
+    the inside. And we can get fooled. They might have a completely normal BMI...
+    but when you do percentage of body fat, you see that their percentage of body
+    fat is too high and their lean muscle mass is too low.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

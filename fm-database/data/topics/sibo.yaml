@@ -6,10 +6,14 @@ aliases:
 - hydrogen SIBO
 - small bowel overgrowth
 - SIBO
-summary: Overgrowth of bacteria in the small intestine causing fermentation of carbohydrates,
-  gas, bloating, and nutrient malabsorption. Low-FODMAP diet is a key adjunct therapy.
-  Herbal antimicrobials and specific probiotics (S. boulardii, L. plantarum) are used
-  alongside dietary restriction.
+- overgrowth of normal bacteria
+- bacterial overgrowth
+- polymicrobial gut dysbiosis
+summary: SIBO occurs when colonic fecal microbes (e.g., E. coli, Klebsiella, Pseudomonas)
+  overpopulate the small intestine, leading to endotoxemia via lipopolysaccharide
+  release. This systemic endotoxemia is linked to diverse downstream conditions including
+  endometriosis, neurodegeneration, cardiovascular disease, and metabolic disorders.
+  Estimated to affect over 150 million Americans.
 common_symptoms:
 - constant-bloating
 - bloating-within-30-60-min-of-meals
@@ -22,27 +26,69 @@ common_symptoms:
 - abdominal-cramping
 - osmotic-diarrhea
 - acid-reflux
+- digestive-discomfort
+- food-sensitivities
+- abdominal-distension
+- diarrhea
+- constipation
+- abdominal-pain
+- fatigue
+- depression
+- acne
+- multiple-food-sensitivities
+- fat-malabsorption
+- vitamin-deficiency
+- joint-pain
+- anxiety
 red_flags:
 - significant B12 deficiency
 - severe malabsorption
 - weight loss
 - Severe malnutrition or malabsorption
 - Structural GI abnormality on imaging
+- unintentional weight loss
+- malabsorption syndrome
+- progressive multiple food sensitivities
+- autoimmune conditions co-occurring with chronic GI dysfunction
+- suicidal-ideation
+- parkinson-symptoms
+- als-symptoms
+- severe-weight-gain
 related_topics:
 - gut-dysbiosis
 - hypochlorhydria
 - leaky-gut
 - ibs
 - low-fodmap-diet
+- low-stomach-acid
+- sifo
+- leaky-gut-syndrome
+- gut-brain-axis-dysfunction
+- ibd
+- hashimoto-thyroiditis
+- vaginal-microbiome
+- endometriosis
+- gut-microbiome
+- endotoxemia
 key_mechanisms:
 - bacterial-fermentation-carbs
 - impaired-gut-motility
 - leaky-gut
 - gut-fermentation-dysbiosis
-coaching_scope_notes: Coach can support low-FODMAP food choices and lifestyle during
-  SIBO protocols. Antimicrobial selection and breath testing are clinician-scope.
-clinician_scope_notes: Diagnose via hydrogen/methane breath test. Prescribe herbal
-  or pharmaceutical antimicrobials. GI MAP useful for microbiome precision.
+- gut-dysbiosis-microbiome-imbalance
+- low-stomach-acid
+- gut-brain-axis-dysregulation
+- intestinal-barrier-dysfunction
+- gut-dysbiosis
+- endotoxemia
+- lipopolysaccharide-shedding
+- gut-barrier-disruption
+coaching_scope_notes: Coaches can support clients with SIBO-focused probiotic yogurt
+  protocols (L. reuteri, L. gasseri, B. subtilis), dietary fiber diversity, and elimination
+  of food additives. Coaches should not diagnose SIBO or prescribe rifaximin.
+clinician_scope_notes: Diagnosis via breath testing or stool DNA sequencing. Antibiotic
+  therapy (rifaximin) is a medical decision. Severe or persistent SIBO with neurological
+  or cardiac symptoms requires medical referral.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-gut-cheatsheet
@@ -53,7 +99,21 @@ sources:
 - id: vitaone-elimination-diet-cheatsheet
   location: Practitioner Tips
   quote: 'Combine with SIBO protocols: herbal antimicrobials + probiotics.'
-version: 2
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Inoculate / Prebiotic Section
+  quote: in cebo you will not describe any kind of probiotic or any kind of prebiotic
+    only you consider removing the cebo and then you can describe the prebiotic and
+    probiotic.
+- id: coconote-fm-sibo-sifo
+  location: SIBO Definition and Pathogenesis
+  quote: Small intestinal bacterial overgrowth. That's the definition. These are C4
+    bacteria. So the small intestinal bacteria, they have three dominant quality forms.
+    You see E. coli, you will see C. coli, you will see C. clostridium.
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: SIBO and endotoxemia discussion
+  quote: In excess of 150 million people have SIBO. That is, colonic fecal microbes
+    have been allowed to overproliferate.
+version: 5
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

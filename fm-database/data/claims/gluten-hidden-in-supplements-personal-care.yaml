@@ -1,0 +1,24 @@
+slug: gluten-hidden-in-supplements-personal-care
+statement: Many personal care products and nutritional supplements contain gluten;
+  individuals following a gluten-free diet should verify these products are certified
+  gluten-free.
+evidence_tier: strong
+rationale: This is clinically established and recognized by the Celiac Disease Foundation.
+  Topical and ingestible gluten can affect celiac patients.
+coaching_translation: Check your supplements, protein powders, and even skincare products
+  for gluten-containing ingredients. The risk is real, especially for celiac disease.
+linked_to_topics:
+- gluten-sensitivity
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Tips for Buying and Storing Gluten-Free Foods
+  quote: Many personal care products and nutritional supplements contain gluten. Be
+    sure to choose brands that are gluten-free.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

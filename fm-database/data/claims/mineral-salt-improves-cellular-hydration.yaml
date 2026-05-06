@@ -1,0 +1,34 @@
+slug: mineral-salt-improves-cellular-hydration
+statement: Hand-harvested mineral salts (e.g. Celtic salt) containing free magnesium
+  help draw water inside cells, improving intracellular hydration and supporting brain
+  function more effectively than refined table salt.
+evidence_tier: fm_specific_thin
+rationale: Magnesium's role in cellular water regulation is biologically plausible;
+  magnesium is an osmotically active mineral. However, the specific claim that crunching
+  Celtic salt crystals releases 'mineral gases' that then hydrate cells better than
+  other forms is not well-evidenced in peer-reviewed literature.
+coaching_translation: Swapping refined table salt for a whole, mineral-rich salt is
+  a simple dietary upgrade. The extra trace minerals — especially magnesium — may
+  help your cells actually hold onto the water you drink.
+caveats:
+- Specific mechanism of 'mineral gases released on crunching' is not peer-reviewed
+- Source is expert lecture
+- Sodium intake should be moderated for clients with hypertension or kidney conditions
+linked_to_topics:
+- hydration-and-brain-function
+linked_to_supplements:
+- celtic-salt
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-healing-mind
+  location: Hydration Section
+  quote: When you take a crystal of Celtic salt or Baja salt, any hand harvested salt,
+    and put it on your tongue, crunch it, and what happens when you crunch the crystals,
+    some mineral gases are released that are locked up in the crystals. Three magnesiums
+    are in there, and you drink that salt. That magnesium is a water hungry molecule
+    and what that magnesium will do, it will pull the water inside the cell.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

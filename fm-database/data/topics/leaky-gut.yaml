@@ -1,15 +1,15 @@
 slug: leaky-gut
-display_name: Leaky Gut (Intestinal Permeability)
+display_name: Leaky Gut / Intestinal Permeability
 aliases:
 - intestinal permeability
 - gut barrier dysfunction
 - increased intestinal permeability
 - intestinal hyperpermeability
 - increased gut permeability
-summary: Breakdown of the intestinal epithelial barrier allowing antigens, LPS, and
-  toxins to enter systemic circulation, triggering immune activation, systemic inflammation,
-  and autoimmunity. Zonulin is a key biomarker. Driven by dysbiosis, food sensitivities,
-  stress, alcohol, and NSAIDs.
+- leaky gut syndrome
+summary: Zinc and probiotics are connected to gut barrier integrity in autoimmune
+  and chronic diarrhea contexts. Impaired barrier is described as an upstream driver
+  of nutrient deficiency and systemic inflammation.
 common_symptoms:
 - bloating
 - joint pain
@@ -23,6 +23,11 @@ common_symptoms:
 - food-sensitivities
 - fatigue
 - food-reactivity
+- systemic-inflammation
+- chronic-diarrhea
+- autoimmune-joint-pain
+- nutrient-malabsorption
+- nutrient-deficiency
 red_flags:
 - bloating that worsens progressively and does not improve
 - bloating upon waking that worsens throughout the day
@@ -31,6 +36,13 @@ red_flags:
 - multiple food intolerances developing rapidly
 - elevated zonulin + autoimmune flare
 - active SIBO or parasites
+- blood in stool
+- significant unintentional weight loss
+- rectal-bleeding
+- chronic-uncontrolled-diarrhea
+- autoimmune conditions requiring medical diagnosis and management
+- autoimmune-disease-onset
+- persistent-diarrhea
 related_topics:
 - perimenopause
 - food-sensitivities
@@ -46,6 +58,13 @@ related_topics:
 - chronic-inflammation
 - autoimmune-disease
 - food-sensitivity
+- chronic-pain-and-fatigue
+- fibromyalgia
+- gut-microbiome-and-gut-flora
+- inflammatory-bowel-conditions
+- probiotic-and-prebiotic-support
+- joint-pain
+- nutrition-deficiency
 key_mechanisms:
 - tight-junction-disruption
 - estrogen-decline
@@ -57,13 +76,16 @@ key_mechanisms:
 - leaky-gut
 - gut-dysbiosis
 - lps-endotoxemia
-coaching_scope_notes: Coach can support gut-healing diet, probiotic foods, stress
-  reduction, and sleep. L-glutamine, zinc carnosine, and probiotics as supplements
-  require clinician input for dosing.
-clinician_scope_notes: Assess zonulin, calprotectin, GI-MAP. Address SIBO, Candida,
-  parasites. Support with L-glutamine, zinc carnosine, probiotics, enzymes or HCl
-  as needed.
-evidence_tier: plausible_emerging
+- systemic-inflammation
+- gut-immune-barrier-function
+- microbiome-nutrient-synthesis
+- gut-barrier-and-nutrient-absorption
+coaching_scope_notes: Zinc, L-glutamine, probiotics, and fermented foods are common
+  coaching tools; personalize to root cause. Autoimmune context requires clinician
+  oversight.
+clinician_scope_notes: Intestinal permeability testing and autoimmune gut protocols
+  are clinical scope items.
+evidence_tier: fm_specific_thin
 sources:
 - id: thurlow-microbiome-session-2
   location: Why midlife changes food tolerance
@@ -78,7 +100,25 @@ sources:
   location: Autoimmune Disease Cheatsheet — Page 23
   quote: Gut permeability (leaky gut) is a major trigger. Zonulin elevation = red
     flag for gut barrier breakdown.
-version: 3
+- id: coconote-fm-chronic-pain-fatigue
+  location: Digestion Section
+  quote: leaky gut is a big one we know that i think people who walks through in what's
+    in your load maybe 100 people 90 of the people they have the leaky gut whether
+    they have the system or not whether they have any system or whether they have
+    any symptoms or not
+- id: barbara-oneil-gi-tract
+  location: Gut Flora & Leaky Gut Section
+  quote: You've heard of leaky gut? How do we heal from leaky gut? Start building
+    up your gut flora.
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Topics Covered
+  quote: Zinc and probiotics are connected to gut barrier integrity and autoimmune
+    or chronic diarrhea contexts.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Topics Covered
+  quote: Zinc and probiotics are connected to gut barrier integrity and autoimmune
+    or chronic diarrhea contexts.
+version: 7
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-06'
 updated_by: shivani

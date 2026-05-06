@@ -1,0 +1,28 @@
+slug: pancreatic-insufficiency-presents-with-nonspecific-gi-symptoms
+statement: Pancreatic insufficiency presents with non-specific signs and symptoms
+  including steatorrhea, diarrhea, gas, bloating, abdominal pain, and weight loss.
+evidence_tier: strong
+rationale: The clinical presentation of exocrine pancreatic insufficiency is well-documented
+  in gastroenterology literature. These symptoms reflect inadequate enzymatic digestion
+  and are broadly consistent across clinical guidelines.
+coaching_translation: Pancreatic enzyme problems often show up as digestive symptoms
+  — greasy stools, diarrhoea, gas, bloating, stomach pain — alongside unexplained
+  weight loss. These are flags to discuss with a clinician.
+linked_to_topics:
+- pancreatic-insufficiency
+caveats:
+- Symptoms are non-specific and overlap with many GI conditions. Diagnosis requires
+  clinical evaluation and fecal elastase testing.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-pancreatic-insufficiency
+  location: Signs and Symptoms
+  quote: The commonly distinguished fat molecules present inside the host tumors,
+    diarrhea, gas and bloating. The patient also tends to lose weight obsessively
+    because of the non-absorption, stomach pain.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

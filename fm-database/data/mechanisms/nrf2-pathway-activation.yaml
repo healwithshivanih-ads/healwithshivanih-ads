@@ -1,32 +1,46 @@
 slug: nrf2-pathway-activation
-display_name: Nrf2 Pathway Activation
+display_name: Nrf2 Pathway Activation & Glutathione Production
 aliases:
 - Nrf2 upregulation
 - nuclear factor erythroid 2
 - antioxidant response element
+- Nrf2 detoxification
+- glutathione synthesis
+- sulforaphane pathway
 category: signaling
-summary: The Nrf2 transcription pathway upregulates endogenous antioxidant enzymes
-  (SOD, catalase, glutathione). Activated by polyphenols such as EGCG (green tea)
-  and sulforaphane (cruciferous vegetables). Key mechanism linking dietary polyphenols
-  to enhanced cellular detox capacity.
+summary: Nrf2 is a transcription factor activated by compounds like sulforaphane (from
+  cruciferous vegetables). Its activation upregulates antioxidant and detoxification
+  enzymes, including those involved in glutathione synthesis, supporting Phase II
+  liver detoxification of estrogen metabolites.
 upstream_drivers:
 - polyphenol-intake
 - oxidative-stress
+- sulforaphane-intake
+- cruciferous-vegetable-consumption
 downstream_effects:
 - increased-sod-catalase-gsh
 - reduced-oxidative-stress
+- increased-glutathione
+- enhanced-phase-ii-detox
+- cancer-risk-reduction
 related_mechanisms:
 - glutathione-depletion
 - cyp450-phase-i-activation
+- hepatic-estrogen-metabolism
 linked_to_topics:
 - liver-detoxification
+- estrogen-metabolism
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-liver-detox-cheatsheet
   location: Top Superfoods for Detoxification
   quote: Polyphenols upregulate Nrf2 pathway → enhances antioxidant enzymes (SOD,
     catalase, GSH).
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Estrogen Metabolism — Promotes Healthy Estrogen Metabolism
+  quote: Sulphoraphane supports the body in producing glutathione, a key antioxidant,
+    and also upregulates another important detoxification pathway called Nrf2.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

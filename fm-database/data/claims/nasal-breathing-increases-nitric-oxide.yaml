@@ -1,0 +1,28 @@
+slug: nasal-breathing-increases-nitric-oxide
+statement: Slow nasal breathing increases nitric oxide production, improving vascular
+  and immune function.
+evidence_tier: plausible_emerging
+rationale: Nasal breathing producing nitric oxide via paranasal sinuses is a well-documented
+  mechanism with published research (Lundberg et al.). The vascular and immune benefits
+  of NO are established. Clinical impact of habitual nasal vs. mouth breathing is
+  an active research area.
+coaching_translation: Breathing through your nose (especially slowly) releases nitric
+  oxide, a molecule that opens blood vessels and supports immune defense. Even during
+  exercise or sleep, nasal breathing offers measurable physiological advantages.
+caveats:
+- Source is educational synthesis; primary studies not directly cited.
+- Benefits vary by individual anatomy (e.g., deviated septum).
+linked_to_topics:
+- breathwork-for-health
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Breathwork Cheatsheet / Breathwork Techniques & Clinical Use
+  quote: 'Nasal Breathing: Slow nasal breathing during day; Improves NO production;
+    Mouth breathers, snoring.'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

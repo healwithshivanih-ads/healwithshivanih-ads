@@ -1,0 +1,31 @@
+slug: thyroid-t3-required-for-ovulation-and-progesterone
+statement: T3 (active thyroid hormone) receptors are present on ovarian cells, and
+  suboptimal T3 levels impair ovulation initiation and progesterone production, meaning
+  hypothyroidism can worsen perimenopausal hormonal imbalances.
+evidence_tier: plausible_emerging
+rationale: Evidence exists for thyroid hormone receptors on granulosa cells and their
+  role in folliculogenesis. Hypothyroidism is associated with menstrual irregularity
+  and reduced progesterone. The specific T3–progesterone link is plausible and clinically
+  observed but not as rigorously trialed as the thyroid–fertility association generally.
+coaching_translation: If a client has hormonal symptoms AND thyroid issues, the thyroid
+  must be addressed first — it's foundational to how hormones are made and regulated.
+out_of_scope_notes: Thyroid testing, interpretation, and medication management are
+  clinician scope.
+caveats:
+- Source is expert consensus lecture.
+- Free T3 interpretation and thyroid medication optimization require clinician involvement.
+linked_to_topics:
+- menopause
+- perimenopause
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-sex-hormones
+  location: Clinical Assessment — Thyroid
+  quote: Thyroid function is related, you have receptors of T3 hormone at the level
+    of your ovaries for the initiation of ovulation. So if the T3 is not good, then
+    the value of progesterone may also be not that good.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

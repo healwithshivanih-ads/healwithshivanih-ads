@@ -1,0 +1,30 @@
+slug: nac-precursor-glutathione-reduces-oxidative-stress
+statement: NAC (N-acetyl cysteine) at 600mg three times daily acts as a glutathione
+  precursor, increases plasma cysteine levels, and reduces oxidative stress with anti-inflammatory
+  properties.
+evidence_tier: plausible_emerging
+rationale: NAC as glutathione precursor is well-established biochemistry. Clinical
+  cardiovascular benefit at oral doses is plausible but less conclusive than IV use.
+coaching_translation: NAC is an antioxidant supplement that helps your body produce
+  its own natural protective glutathione, which may help reduce artery-damaging oxidative
+  stress.
+caveats:
+- Oral bioavailability of NAC is variable.
+- Source is expert lecture — specific RCTs for oral NAC in CVD not cited.
+- IV NAC + nitroglycerin infarct reduction is an acute care application, not a coaching
+  intervention.
+linked_to_topics:
+- cardiovascular-disease-prevention
+linked_to_supplements:
+- nac-n-acetyl-cysteine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Nutraceuticals — NAC
+  quote: NAC is capable of 600 milligrams three times a day is involved in reducing
+    oxidative stress.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

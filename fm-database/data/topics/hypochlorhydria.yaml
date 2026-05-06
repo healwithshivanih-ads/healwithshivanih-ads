@@ -4,9 +4,17 @@ aliases:
 - low stomach acid
 - low HCl
 - stomach acid deficiency
-summary: A condition of insufficient hydrochloric acid (HCl) production in the stomach,
-  impairing protein digestion, mineral absorption (B12, iron, calcium, magnesium,
-  zinc, copper), and gut immune defense. Symptoms often mimic high stomach acid.
+- insufficient gastric acid
+- low gastric acid
+- achlorhydria
+- low HCL
+- reduced gastric acid
+- stomach acid insufficiency
+- HCL deficiency
+summary: Hypochlorhydria is a condition of insufficient gastric acid (hydrochloric
+  acid) production by the stomach's parietal cells. It impairs protein digestion,
+  mineral absorption, and antimicrobial defence, and is frequently misdiagnosed as
+  hyperacidity due to overlapping reflux-like symptoms.
 common_symptoms:
 - bloating-after-protein-meals
 - early-satiety
@@ -23,12 +31,34 @@ common_symptoms:
 - weak-peeling-nails
 - acne
 - chronic-candida-infections
+- flatulence-after-meals
+- weak-peeling-cracked-fingernails
+- iron-deficiency
+- upper-digestive-tract-gassiness
+- low-serum-calcium
+- protein-deficiency
+- poor-nutrient-absorption
+- progressive-bloating
+- mild-acidity
+- protein-malabsorption
+- heartburn
+- gastric-reflux
+- epigastric-fullness
+- flatulence
+- nausea
+- post-prandial-pain
 red_flags:
 - significant B12 deficiency
 - recurrent infections
 - H. pylori confirmed
 - Peptic ulcer disease (contraindication to HCl supplementation)
 - Persistent iron deficiency anemia unresponsive to supplementation
+- peptic ulcer disease (contraindication to betaine HCl)
+- significant unintentional weight loss
+- severe anaemia from iron and B12 malabsorption
+- Persistent symptoms unresponsive to PPIs or H2 blockers
+- Severe or worsening iron-deficiency anaemia despite supplementation
+- Suspected H. pylori infection
 related_topics:
 - sibo
 - gerd
@@ -36,15 +66,29 @@ related_topics:
 - gut-dysbiosis
 - gut-dysfunction
 - candida-overgrowth
+- gerd-ppi-tapering
+- calcium-deficiency
+- calcium-metabolism
+- dysbiosis
+- gut-skin-hormone-axis
+- digestive-enzyme-insufficiency
+- mineral-deficiency
 key_mechanisms:
 - impaired-gastric-acid-production
 - hypochlorhydria-mechanism
 - gut-dysbiosis
-coaching_scope_notes: Coaches may educate on symptoms and dietary context. The self-test
-  and betaine HCl dosing protocol is clinician-supervised only.
-clinician_scope_notes: Betaine HCl challenge test (350–750 mg per meal titration up
-  to 5 capsules) should be clinician-supervised. Contraindicated with peptic ulcer
-  disease.
+- reduced-gastric-acid-calcium-absorption
+- gut-barrier-dysfunction
+- reduced-hcl-production
+- impaired-protein-digestion
+- sympathetic-suppression-of-gastric-acid
+coaching_scope_notes: Coaches can support lifestyle modifications (stress reduction,
+  parasympathetic activation, dietary triggers), educate on the reflux-mimicry of
+  low stomach acid, and support the 5R gut protocol. Betaine HCL titration and diagnosis
+  should be supervised by a clinician.
+clinician_scope_notes: Diagnosis via Betaine HCL challenge titration; rule out H.
+  pylori, autoimmune gastritis, and PPI-induced suppression. Monitor mineral status
+  (iron, zinc, magnesium, calcium).
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-gut-cheatsheet
@@ -57,7 +101,31 @@ sources:
     Certain medications can also lower stomach acid. This change in acidity affects
     the body's ability to digest protein, absorb minerals, and protect the body against
     food poisoning, H. pylori, parasites, and other infections.
-version: 2
+- id: vitaone-health-coaching-toolkit
+  location: Testing for Low Stomach Acidity
+  quote: As we age, stomach cells produce less acid, called Hydrochloric Acid (HCl).
+    Certain medications can also lower stomach acid. This change in acidity affects
+    the body's ability to digest protein, absorb minerals, and protect the body against
+    food poisoning, H. pylori, parasites, and other infections.
+- id: coconote-fm-calcium-deficiency
+  location: Causes of Low Serum Calcium
+  quote: stomach acid is required for absorption of calcium. So if somebody on a proton
+    inhibitor or acid blocking drug that we have seen many patients who are long-term
+    anti-acids. So in that case or in other case when there is a hypochlorhydria means
+    low stomach acid, they have a low serum calcium level.
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Blood Report Analysis
+  quote: Whenever there is not enough HCL that is present, malabsorption, maldigestion
+    starts taking place and then if the food is not digested properly, all the process
+    ahead gets impacted. Low albumin is an indicator of hypochlorhydria and protein
+    malabsorption.
+- id: coconote-fm-hypochlorhydria
+  location: Clinical Presentation of Low Stomach Acid
+  quote: Most of the patients, when you see they have a history of heartburn, having
+    a gastric reflux, having a chest tightness, and they have a gastric pain, conventionally,
+    we diagnose them as hyperacidity, which is wrong. In these cases, it is usually
+    the low stomach acid which causes these symptoms out.
+version: 6
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

@@ -1,0 +1,31 @@
+slug: statin-mediated-nutrient-depletion
+display_name: Statin-Mediated Nutrient Depletion
+aliases:
+- HMG-CoA reductase inhibitor nutrient depletion
+- statin side effects nutrient
+category: metabolic
+summary: HMG-CoA reductase inhibitors (statins) deplete multiple nutrients including
+  CoQ10, carnitine, copper, essential fatty acids, selenium, vitamin D, vitamin E,
+  and zinc — all critical for cardiovascular and mitochondrial function. This may
+  partially explain statin-associated myopathy and fatigue.
+upstream_drivers:
+- statin-use
+downstream_effects:
+- coq10-deficiency
+- carnitine-deficiency
+- vitamin-d-deficiency
+- essential-fatty-acid-deficiency
+related_mechanisms:
+- coq10-depletion-by-beta-blockers
+linked_to_topics:
+- drug-induced-nutrient-depletion-cardiovascular
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Cardiovascular Drugs and Potential Nutrient Deficiency
+  quote: 'HMG-CoA Reductase: Carnitine, Copper, CoQ10, Essential Fatty Acids (EFAs),
+    Selenium, Vitamin D, Vitamin E, Zinc'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

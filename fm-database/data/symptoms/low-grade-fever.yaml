@@ -1,0 +1,25 @@
+slug: low-grade-fever
+display_name: Low-Grade Fever
+aliases:
+- persistent low-grade temperature
+- chronic low-grade fever
+- mild fever
+category: constitutional
+severity: common
+description: Low-grade fever reported as part of the symptom cluster, likely reflecting
+  underlying chronic inflammation. Improved with the functional medicine intervention
+  in this case.
+when_to_refer: Persistent unexplained fever should be evaluated clinically to exclude
+  infection, malignancy, or autoimmune disease.
+linked_to_topics:
+- cardiovascular-risk-assessment
+linked_to_mechanisms:
+- systemic-inflammation-cv
+sources:
+- id: vitaone-cvs-risk-assessment
+  location: Progress (Slide 25)
+  quote: Fatigue, Body pain and low grade fever better
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

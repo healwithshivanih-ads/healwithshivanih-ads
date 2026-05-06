@@ -1,0 +1,33 @@
+slug: ala-nac-glutathione-advanced-antioxidants
+statement: Alpha-lipoic acid, N-acetylcysteine, and glutathione (preferably as precursors)
+  constitute an advanced antioxidant protocol for patients with chronic inflammation
+  beyond basic vitamins and minerals.
+evidence_tier: plausible_emerging
+rationale: ALA is a well-characterized antioxidant with both water- and fat-soluble
+  activity that recycles vitamin C and E. NAC is established as a glutathione precursor.
+  These are commonly used in FM practice with plausible mechanisms and emerging clinical
+  evidence.
+coaching_translation: For clients with persistent inflammation who've already optimized
+  diet and basic vitamins, adding ALA and NAC can provide deeper antioxidant protection
+  at the cellular level.
+caveats:
+- Source is expert FM lecture (moderate quality).
+- Dosing of these supplements warrants clinician review, especially ALA in diabetics
+  (affects blood sugar).
+linked_to_topics:
+- oxidative-stress
+- chronic-inflammation
+linked_to_supplements:
+- alpha-lipoic-acid
+- n-acetylcysteine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-approach-inflammation
+  location: Oxidative Stress – Advanced Antioxidants
+  quote: there are three things if you want to add in an advanced category. Then it's
+    the alpha-lipoic acid, it's the N-acetylcysteine and butathione.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

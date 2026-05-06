@@ -1,0 +1,34 @@
+slug: resveratrol-has-antiviral-and-anti-inflammatory-effects
+statement: Resveratrol (100–150 mg twice daily) has antiviral and anti-inflammatory
+  properties and has been shown in laboratory studies to attack a relative of the
+  COVID-19 virus.
+evidence_tier: plausible_emerging
+rationale: Resveratrol inhibits MERS-CoV in vitro (Lin et al. 2017, BMC Infect Dis)
+  and influenza A replication (Palamara et al. 2005, J Infect Dis). Human clinical
+  evidence is limited. Lab/in vitro findings do not directly translate to clinical
+  efficacy.
+coaching_translation: Resveratrol, a natural compound in red grapes and red wine,
+  has shown promise in lab studies for fighting viruses and reducing inflammation.
+  It's generally safe at the recommended dose.
+caveats:
+- Antiviral claims against COVID-19-related virus are based on in vitro/lab data only,
+  not human clinical trials.
+- Potential herb-drug interactions (blood thinners, anti-cancer drugs).
+- Possible adverse effects with high doses per referenced literature.
+linked_to_topics:
+- immune-support-covid-19
+- chronic-inflammation
+linked_to_supplements:
+- resveratrol
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Resveratrol, a natural compound found in red grapes, has many beneficial
+    health effects and has been shown in the lab to attack a relative of the COVID-19
+    virus.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

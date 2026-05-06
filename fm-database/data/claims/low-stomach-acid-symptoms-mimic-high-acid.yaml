@@ -1,0 +1,29 @@
+slug: low-stomach-acid-symptoms-mimic-high-acid
+statement: The symptoms of hypochlorhydria (too little stomach acid) often mimic those
+  of hyperchlorhydria (too much stomach acid), making clinical distinction important
+  before treating.
+evidence_tier: plausible_emerging
+rationale: This is a clinically observed phenomenon, particularly in FM practice,
+  though controlled studies directly comparing symptom overlap are limited.
+coaching_translation: Heartburn and reflux aren't always from too much acid — sometimes
+  they indicate too little. This is why it's important to work with a practitioner
+  before reaching for antacids.
+out_of_scope_notes: Self-diagnosis and self-treatment of low vs. high acid is out
+  of coaching scope. The betaine HCl challenge test must be supervised by a clinician.
+caveats:
+- Do not advise clients to self-diagnose or self-treat based on this claim.
+- Betaine HCl is contraindicated in peptic ulcer disease.
+linked_to_topics:
+- hypochlorhydria
+- gerd-ppi-tapering
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Testing for Low Stomach Acidity
+  quote: The symptoms of having too little stomach acid often mimic those of having
+    too much stomach acid.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

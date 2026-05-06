@@ -1,18 +1,27 @@
 slug: relaxation-response-reduces-cortisol-and-bp
-statement: Practicing the Relaxation Response technique reduces cortisol, noradrenaline,
-  heart rate, blood pressure, respiratory rate, and muscle tension.
-evidence_tier: strong
-rationale: Dr. Herbert Benson's Relaxation Response is one of the most studied mind-body
-  interventions (Harvard Medical School). Multiple RCTs support its effects on cardiovascular
-  and neuroendocrine markers.
-coaching_translation: A simple daily breathing and relaxation practice for 10–20 minutes
-  can measurably lower your stress hormones, heart rate, and blood pressure.
+statement: Regular practice of the Relaxation Response produces measurable physiological
+  effects including reduced cortisol, noradrenaline, heart rate, blood pressure, respiratory
+  rate, oxygen consumption, and muscle tension.
+evidence_tier: plausible_emerging
+rationale: The Relaxation Response was developed and studied at Harvard Medical School
+  by Dr. Herbert Benson. Multiple studies support its cardiovascular and neuroendocrine
+  effects. The document references scholarly research supporting use in anxiety, depression,
+  heart disease, high blood pressure, insomnia, and pain, though no specific studies
+  are cited in the text.
+coaching_translation: A simple daily breathing and relaxation practice — just 10–20
+  minutes — can measurably lower your stress hormones, heart rate, and blood pressure.
+  This is one of the most well-studied mind-body tools available.
 caveats:
 - No specific studies cited by author/year/journal in this document; attributed to
   Dr. Benson/Harvard.
+- No specific studies cited within the document for the full list of physiological
+  effects
+- Individual response may vary
 linked_to_topics:
 - chronic-stress
 - hpa-axis-dysregulation
+- relaxation-response
+- hpa-axis-dysfunction
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 linked_to_supplements: []
@@ -23,7 +32,13 @@ sources:
     Decreased blood pressure, Lower respiratory rate, Lower pulse rate, Reduction
     of noradrenaline, Decreased oxygen consumption, Decreased muscle tension, Reduction
     of cortisol.'
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: The Relaxation Response
+  quote: 'Some qualities of the Relaxation Response include: Decreased heart rate,
+    Decreased blood pressure, Lower respiratory rate, Lower pulse rate, Reduction
+    of noradrenaline, Decreased oxygen consumption, Decreased muscle tension, Reduction
+    of cortisol.'
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

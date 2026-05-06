@@ -1,0 +1,27 @@
+slug: new-onset-diabetes-statin
+display_name: New-Onset Diabetes (Statin-Related)
+aliases:
+- statin-induced diabetes
+- hyperglycemia on statins
+- elevated blood sugar from cholesterol meds
+category: metabolic
+severity: concerning
+description: Statin use is associated with an increased risk of developing type 2
+  diabetes, particularly with longer-term use. The document notes patients who started
+  statins and hypertensive medications together and later developed diabetes.
+when_to_refer: Refer to clinician for glucose monitoring and medication review if
+  fasting glucose or HbA1c rises while on statins.
+linked_to_topics:
+- statin-therapy-risks-and-benefits
+linked_to_mechanisms:
+- insulin-resistance
+sources:
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Statin side effects section
+  quote: Many patients I've seen, they started with hypertension for 10 to 15 years.
+    Same time, same time they started the cholesterol medications and after 10, they
+    end up with diabetes.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

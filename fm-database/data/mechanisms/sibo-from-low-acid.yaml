@@ -1,0 +1,33 @@
+slug: sibo-from-low-acid
+display_name: SIBO Secondary to Hypochlorhydria
+aliases:
+- bacterial overgrowth from low stomach acid
+- gastric acid antimicrobial failure
+category: gut
+summary: The low pH environment of normal gastric acid (pH 1–2) creates a bacteriostatic
+  barrier that prevents ingested and ascending microorganisms from colonising the
+  stomach and proximal small intestine. When HCl is chronically insufficient, this
+  barrier is lost, predisposing to small intestinal bacterial overgrowth (SIBO) and
+  opportunistic infections.
+upstream_drivers:
+- reduced-hcl-production
+downstream_effects:
+- sibo
+- h-pylori-infection
+- parasitic-infection
+- excess-gas-production
+related_mechanisms:
+- reduced-hcl-production
+linked_to_topics:
+- hypochlorhydria
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-hypochlorhydria
+  location: Consequences of Chronic Low Stomach Acid
+  quote: Whenever there is low stomach acid, it could use in urban growth. There could
+    be a small intestinal bacterial overgrowth which would be covered in the further
+    modules.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

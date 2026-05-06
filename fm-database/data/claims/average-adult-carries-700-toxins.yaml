@@ -1,0 +1,30 @@
+slug: average-adult-carries-700-toxins
+statement: Scientists estimate that the average adult carries at least 700 toxins
+  in their body, and a newborn's body can contain over 200 toxins.
+evidence_tier: plausible_emerging
+rationale: Cited as an estimate from scientific sources in the document, reflecting
+  the ubiquity of environmental chemical exposure. Widely referenced in FM literature
+  but based on biomonitoring study summaries rather than a single RCT.
+coaching_translation: Our bodies are constantly processing environmental chemicals
+  from food, water, air, and personal care products. Supporting your body's natural
+  detox systems is an important part of long-term wellness.
+caveats:
+- Source is an expert consensus/educational toolkit, not primary literature. Specific
+  citation not provided.
+- The '700 toxins' figure is an illustrative estimate; exact numbers vary by study
+  and population.
+linked_to_topics:
+- toxic-body-burden
+- metabolic-detoxification
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Detox Food Plan — What is Detox?
+  quote: Scientists estimate that the average adult carries within her or his body
+    at least 700 toxins and that a newborn's body can contain over 200 toxins.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,32 @@
+slug: probiotic-requires-prebiotic-fiber-to-work
+statement: Probiotics will not colonize or exert meaningful benefit without concurrent
+  prebiotic (soluble fiber) supplementation; prescribing probiotics without fiber
+  is largely ineffective.
+evidence_tier: plausible_emerging
+rationale: Prebiotics (soluble fibers) are fermented by probiotic bacteria as a substrate
+  for colonization and metabolic activity. This concept is supported by research on
+  synbiotics (probiotic + prebiotic combinations), though the degree of dependence
+  varies by strain.
+coaching_translation: Probiotics need food to survive and work in your gut. Always
+  pair them with prebiotic fiber — either from food (oats, apples, legumes) or a supplement.
+  Without fiber, your probiotics may not stay active.
+caveats:
+- Source is expert FM lecture (moderate quality).
+- Some spore-based probiotics have different fiber requirements than standard lactobacillus
+  strains.
+linked_to_topics:
+- gut-dysbiosis
+linked_to_supplements:
+- saccharomyces-boulardii
+- spore-based-probiotic
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-approach-inflammation
+  location: Probiotics – Prebiotic Requirement
+  quote: Probiotic only work when you work on a fiber. Make it clear in your mind.
+    Probiotic will not work when you don't provide the food.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

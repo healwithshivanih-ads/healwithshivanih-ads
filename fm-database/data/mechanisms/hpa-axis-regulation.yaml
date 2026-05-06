@@ -1,0 +1,40 @@
+slug: hpa-axis-regulation
+display_name: HPA Axis Regulation
+aliases:
+- hypothalamic-pituitary-adrenal axis regulation
+- cortisol regulation
+- stress axis modulation
+category: endocrine
+summary: Chronic stress activates the hypothalamic-pituitary-adrenal axis, elevating
+  cortisol. Practices such as mindful breathing, gratitude journaling, and self-care
+  behaviors help downregulate HPA axis hyperactivity, reducing cortisol load and its
+  downstream effects on immunity, sleep, and blood pressure.
+upstream_drivers:
+- chronic-stress
+- sympathetic-dominance
+downstream_effects:
+- reduced-cortisol
+- improved-sleep-quality
+- lower-blood-pressure
+- stronger-immunity
+- reduced-perceived-stress
+related_mechanisms:
+- parasympathetic-activation
+- positive-affect-upregulation
+linked_to_topics:
+- mindful-breathing
+- gratitude-practice
+- stress-management
+- self-care
+- emotional-wellbeing
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Practicing Gratitude with the IFM Gratitude Journal
+  quote: These benefits include decreased stress levels, lowered blood pressure, better
+    sleep quality, stronger immune systems, and increased feelings of joy, happiness,
+    forgiveness, and compassion.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

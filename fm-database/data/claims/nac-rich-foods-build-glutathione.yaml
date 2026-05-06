@@ -1,0 +1,30 @@
+slug: nac-rich-foods-build-glutathione
+statement: Foods rich in cysteine/NAC precursors (eggs, garlic, onions) support endogenous
+  glutathione synthesis effectively and contribute meaningfully to redox balance.
+evidence_tier: plausible_emerging
+rationale: Cysteine is the rate-limiting precursor for glutathione synthesis. Eggs,
+  garlic, and onions contain cysteine and organosulfur compounds that support GSH
+  synthesis. The claim that food sources build glutathione 'faster than supplements
+  alone' is biologically plausible but not directly confirmed by head-to-head comparative
+  clinical trials.
+coaching_translation: Eating eggs, garlic, and onions regularly gives your body the
+  raw materials to make its own glutathione — one of its most powerful antioxidants.
+  This dietary approach complements supplement strategies.
+caveats:
+- '''Faster than supplements alone'' claim is not directly RCT-supported.'
+- Source is Instagram educational content.
+linked_to_topics:
+- immune-nutrition
+linked_to_supplements:
+- nac
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXZNALUjPBQ/
+  quote: NAC-rich foods (eggs, garlic, onions) build glutathione faster than supplements
+    alone.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

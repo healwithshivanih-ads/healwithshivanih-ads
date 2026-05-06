@@ -1,0 +1,32 @@
+slug: total-igg-must-be-normal-before-igg-food-testing
+statement: Before ordering IgG food sensitivity testing, total IgG antibody levels
+  should be checked; if total IgG is low (e.g., due to immunodeficiency, steroid use,
+  or toxin exposure), IgG food testing results will be unreliable.
+evidence_tier: confirm_with_clinician
+rationale: 'This is a laboratory interpretation and ordering decision — outside coaching
+  scope. The clinical logic is sound: IgG deficiency means the immune system cannot
+  mount the reactions being measured.'
+out_of_scope_notes: Ordering and interpreting IgG levels and IgG food sensitivity
+  panels is strictly clinician scope. Coaches should not order or interpret these
+  tests.
+coaching_translation: If a client's IgG food test comes back with very few or no reactions,
+  it may be worth flagging to their clinician whether low total IgG could be affecting
+  the results.
+caveats:
+- Source is expert lecture, moderate quality.
+- This is clinician-level lab guidance.
+linked_to_topics:
+- food-sensitivity-igg-iga-mediated
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-food-allergies-sensitivities
+  location: IgG Testing Considerations Section
+  quote: before you can consider IgG food testing you can order total IgG antibody
+    and if the total IgG antibody is high or normal you consider doing IgG food testing
+    but if your IgG antibody is lower or low the food allergy testing or food sensitive
+    testing is not appropriate for that patient
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

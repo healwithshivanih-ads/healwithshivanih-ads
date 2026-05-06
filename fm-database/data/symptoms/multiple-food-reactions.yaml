@@ -1,0 +1,30 @@
+slug: multiple-food-reactions
+display_name: Multiple / Expanding Food Reactions
+aliases:
+- reacting to many foods
+- new food sensitivities
+- progressive food intolerances
+- worsening food reactions
+category: gi
+severity: concerning
+description: A pattern of reacting to an increasing number of foods over time, strongly
+  suggestive of underlying intestinal permeability (leaky gut). Patients often report
+  they had no food reactions for decades before suddenly developing multiple sensitivities.
+when_to_refer: Refer to clinician to investigate intestinal permeability, dysbiosis,
+  and possible autoimmune conditions if multiple food reactions are expanding rapidly.
+linked_to_topics:
+- intestinal-permeability-leaky-gut
+- food-sensitivity-igg-iga-mediated
+linked_to_mechanisms:
+- intestinal-permeability
+- low-stomach-acid-antigen-load
+sources:
+- id: coconote-fm-food-allergies-sensitivities
+  location: Low Stomach Acid Section
+  quote: patients start with one food allergy or one food sensitivity and because
+    they have chronic low stomach acid and because of that increased intestinal permeability
+    they start having second food reaction or third food reaction
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

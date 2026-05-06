@@ -1,0 +1,30 @@
+slug: cwi-reduces-apob-apoa1-ratio
+statement: Cold-adapted swimmers demonstrate a significant reduction in the apolipoprotein
+  B/apolipoprotein A1 (ApoB/ApoA1) ratio, a marker of cardiovascular risk.
+evidence_tier: plausible_emerging
+rationale: Observed in cold-adapted swimmer populations in the review. ApoB/ApoA1
+  is a validated cardiovascular risk marker; however, confounding by overall active
+  lifestyle is significant.
+coaching_translation: Long-term cold water swimming may be associated with healthier
+  cholesterol particle profiles, which matters for heart health.
+out_of_scope_notes: ApoB/ApoA1 interpretation and cardiovascular risk stratification
+  is clinician scope.
+caveats:
+- Observed in adapted swimmers — unclear if effect is from CWI alone or active lifestyle
+- Confounding factors not fully controlled
+- Small study populations
+linked_to_topics:
+- cold-water-immersion-cardiovascular
+- cold-water-immersion
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: espeland-2022-cold-water-immersion
+  location: Cardiovascular Impact
+  quote: Cold-adapted swimmers demonstrated reduced cardiovascular risk factors, including
+    a significant reduction in apolipoprotein B/apolipoprotein A1 ratio and improved
+    oxidative stress markers.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

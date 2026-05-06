@@ -1,0 +1,34 @@
+slug: relaxation-response
+display_name: The Relaxation Response
+aliases:
+- Benson relaxation response
+- mind-body stress relief
+summary: A structured mind-body technique discovered by Dr. Benson at Harvard Medical
+  School. Regular practice produces measurable physiological changes including decreased
+  heart rate, blood pressure, respiratory rate, cortisol, noradrenaline, oxygen consumption,
+  and muscle tension.
+related_topics:
+- chronic-stress
+- hpa-axis-dysfunction
+key_mechanisms:
+- hpa-axis-dysregulation
+- sympathoadrenal-activation
+coaching_scope_notes: 'Coaches can teach and guide clients through the Relaxation
+  Response protocol: 10–20 minutes daily of quiet, eyes-closed, slow nasal breathing
+  and progressive muscle relaxation. Practice once or twice daily, not within two
+  hours after a meal.'
+evidence_tier: plausible_emerging
+common_symptoms: []
+red_flags: []
+clinician_scope_notes: ''
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: The Relaxation Response
+  quote: The Relaxation Response is a simple, effective, mind/body approach to relieving
+    stress. Discovered by Dr. Benson at Harvard Medical School, it is routinely recommended
+    to treat patients suffering from heart conditions, high blood pressure, chronic
+    pain, insomnia, and many other physical ailments.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

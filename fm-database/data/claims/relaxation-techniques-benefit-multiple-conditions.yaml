@@ -1,17 +1,22 @@
 slug: relaxation-techniques-benefit-multiple-conditions
-statement: Scholarly research shows that practicing relaxation techniques benefits
-  individuals with anxiety, depression, heart disease, high blood pressure, insomnia,
-  and chronic pain.
-evidence_tier: strong
-rationale: Broad research base for relaxation/mind-body techniques across these conditions.
-  Document cites scholarly research generally; consistent with published systematic
-  reviews on mindfulness and relaxation.
-coaching_translation: Relaxation practices aren't just for stress — they have documented
-  benefits for anxiety, sleep, pain, blood pressure, and heart health.
+statement: In scholarly research, practicing relaxation techniques has benefited individuals
+  with anxiety, depression, heart disease, high blood pressure, insomnia, chemotherapy-induced
+  nausea, pain in children and adolescents, smoking cessation, and temporomandibular
+  joint dysfunction.
+evidence_tier: plausible_emerging
+rationale: Consistent with published literature on mind-body interventions. Evidence
+  quality varies by condition — strongest for anxiety, hypertension, and insomnia.
+  Document does not cite specific studies for this list.
+coaching_translation: Relaxation techniques aren't just for reducing stress — they
+  have been studied and shown to help with a wide range of conditions, from insomnia
+  and anxiety to high blood pressure and pain.
 caveats:
 - No specific studies cited by author in this section; general scholarly reference.
+- Evidence strength varies considerably by condition
+- No specific study citations provided in document for this list
 linked_to_topics:
 - chronic-stress
+- relaxation-response
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 linked_to_supplements: []
@@ -21,7 +26,13 @@ sources:
   quote: 'In scholarly research, practicing relaxation techniques benefited individuals
     with a variety of conditions including: Anxiety, Depression, Heart disease, High
     blood pressure, Insomnia.'
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Strategies for Transforming Stress
+  quote: 'In scholarly research, practicing relaxation techniques benefited individuals
+    with a variety of conditions including: Anxiety, Childbirth, Depression, Heart
+    disease, High blood pressure, Insomnia, Chemotherapy-induced nausea, Pain in children
+    and adolescents, Smoking cessation, Temporomandibular joint dysfunction.'
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

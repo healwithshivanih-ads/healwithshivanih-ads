@@ -1,0 +1,35 @@
+slug: elevated-unconjugated-bilirubin-signals-phase-2-glucuronidation-defect
+statement: Mildly elevated unconjugated (indirect) bilirubin with a borderline conjugated
+  fraction signals impaired Phase 2 glucuronidation, which may be due to a genetic
+  variant such as Gilbert syndrome.
+evidence_tier: plausible_emerging
+rationale: The physiological basis (UGT1A1 enzyme conjugating bilirubin with glucuronic
+  acid) is well established. Using fractionated bilirubin as an indirect clinical
+  surrogate for Phase 2 capacity is biologically plausible and applied in functional
+  medicine, though its routine use as a detox pathway screen lacks large-scale RCT
+  validation.
+coaching_translation: A slightly high 'indirect' bilirubin on a blood panel can be
+  a clue that one of the liver's detox processing steps isn't running at full capacity.
+  Worth flagging to a clinician.
+out_of_scope_notes: Fractionated bilirubin interpretation and genetic variant diagnosis
+  (Gilbert syndrome) must be performed by a clinician.
+caveats:
+- Source is expert lecture; not primary peer-reviewed literature.
+- Gilbert syndrome is benign but has implications for drug metabolism and detox capacity.
+linked_to_topics:
+- chronic-toxicity-assessment
+- liver-detox-phase-1-and-phase-2
+- gilbert-syndrome
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-liver-detox-part2
+  location: Bilirubin & Phase 2 Explanation
+  quote: So you can really see that this patient has some difficulty in phase 2 reaction
+    and because we know that beta-lupine is going to conjugate beta-glucone gases
+    so they have a problem in phase 2 retorch pathway and this phase 2 pathway is
+    A4-onidation
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -7,9 +7,12 @@ aliases:
 - MetSyn
 - syndrome X
 - cardiometabolic syndrome
-summary: A cluster of central adiposity, dyslipidaemia, hypertension, and hyperglycaemia
-  representing the initial clinical expression of insulin resistance, significantly
-  elevating cardiovascular and T2DM risk.
+- metabolic dysfunction
+- insulin resistance syndrome
+summary: Metabolic syndrome is characterized by central obesity, elevated triglycerides,
+  low HDL, elevated fasting blood sugar, and hypertension. It drives small dense LDL
+  formation, inflammation, and cardiovascular risk. Highly responsive to lifestyle
+  intervention.
 common_symptoms:
 - weight-gain
 - fatigue
@@ -20,29 +23,49 @@ common_symptoms:
 - low-hdl
 - hypertension
 - elevated-fasting-glucose
+- increased-waist-circumference
+- elevated-fasting-insulin
+- high-triglycerides
+- high-crp
+- high-blood-pressure
+- central-obesity
+- elevated-fasting-blood-sugar
 red_flags:
 - severe-obesity
 - uncontrolled-hypertension
 - TG > 250 mg/dL
 - blood pressure ≥ 140/90 mmHg
 - fasting glucose ≥ 100 mg/dL with high insulin
+- fasting-insulin-elevation
+- high-homa-ir
+- very-high-crp
+- triglycerides-above-500
+- hba1c-elevation
 related_topics:
 - low-carb-diet
 - insulin-resistance
 - type-2-diabetes
 - nafld
 - blood-sugar-dysfunction
+- visceral-adiposity
+- body-composition-assessment
+- bmi-interpretation
+- dyslipidemia
+- cardiovascular-disease-prevention
 key_mechanisms:
 - insulin-resistance
 - metabolic-flexibility
 - visceral-adipose-inflammation
-coaching_scope_notes: Lifestyle modification (diet, exercise, sleep, stress) is the
-  primary coaching lever. Reinforce waist circumference tracking and dietary glycaemic
-  load reduction.
+- chronic-systemic-inflammation
+- small-dense-ldl-atherogenesis
+- central-adiposity-inflammation
+coaching_scope_notes: Coaches can address diet quality, sugar reduction, exercise,
+  sleep, and weight management—all directly modifiable lifestyle drivers of metabolic
+  syndrome.
 evidence_tier: strong
-clinician_scope_notes: Diagnose per IDF/AHA criteria. Screen lipid panel, blood pressure,
-  fasting glucose and insulin. Manage hypertension and dyslipidaemia pharmacologically
-  as needed.
+clinician_scope_notes: Diagnosis requires clinical lab values and waist circumference
+  thresholds adjusted by ethnicity. Pharmaceutical management (metformin, statins)
+  is clinician scope.
 sources:
 - id: vitaone-cardiometabolic-diet-cheatsheet
   location: Functional Medicine Clinical Applications
@@ -51,7 +74,16 @@ sources:
   location: 'Section 4.1 — Effects of Insulin Resistance: Metabolic Syndrome'
   quote: Insulin resistance initially represents as Metabolic Syndrome, characterised
     by the following clinical and laboratory findings.
-version: 2
+- id: coconote-fm-body-composition-bmi
+  location: Metabolic Dysfunction / Biomarkers Section
+  quote: Their waist tape ratio is too high. Then you definitely want to do those
+    biomarkers in the carbohydrate section. You definitely want to be looking at their
+    fasting insulin and triglycerides and GGT.
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Metabolic Function and Risk Factors
+  quote: We frequently see elevated triglycerides, elevated fasting blood sugar, hemoglobin
+    A1C... high triglycerides in metabolic syndrome. It's part of metabolic syndrome.
+version: 4
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

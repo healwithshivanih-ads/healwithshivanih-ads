@@ -13,10 +13,12 @@ aliases:
 - butyrate production
 - microbial fermentation
 - microbial fermentation of fiber
+- SCFA
+- colonic fermentation
 category: metabolic
-summary: Beneficial gut bacteria ferment dietary fiber to produce SCFAs (butyrate,
-  propionate, acetate) in the colon. SCFAs reduce gut and systemic inflammation, support
-  brain health, maintain intestinal barrier integrity, and modulate immune function.
+summary: Beneficial gut bacteria ferment dietary fiber in the colon to produce short-chain
+  fatty acids (SCFAs) such as butyrate, propionate, and acetate. SCFAs fuel colonocytes,
+  reduce gut and systemic inflammation, and support the gut-brain connection.
 upstream_drivers:
 - dietary fiber intake (especially soluble + fermentable)
 - microbial diversity
@@ -25,6 +27,9 @@ upstream_drivers:
 - microbial-diversity
 - dietary-fiber-intake
 - gut-microbiome-diversity
+- high-dietary-fiber
+- diverse-gut-microbiome
+- prebiotic-intake
 downstream_effects:
 - gut barrier maintenance (colonocyte fuel)
 - reduced systemic inflammation
@@ -38,6 +43,9 @@ downstream_effects:
 - reduced-gut-inflammation
 - improved-brain-gut-connection
 - enhanced-immune-function
+- improved-gut-barrier
+- improved-mood
+- lower-depression-risk
 related_mechanisms:
 - microbial-diversity-decline
 - leaky-gut
@@ -45,6 +53,7 @@ related_mechanisms:
 - insulin-resistance
 - gut-dysbiosis
 - gut-brain-signaling
+- neuroinflammation-gut-axis
 linked_to_topics:
 - microbiome
 - dysbiosis
@@ -53,6 +62,7 @@ linked_to_topics:
 - insulin-resistance
 - gut-microbiome
 - gut-brain-axis
+- gut-microbiome-personalized-nutrition
 sources:
 - id: thurlow-microbiome-session-7
   location: Session 7 — Fiber Gap & Feeding the Microbiome
@@ -67,8 +77,13 @@ sources:
   quote: A high-fiber diet promotes the growth of diverse gut bacteria, which produce
     short-chain fatty acids (SCFAs) that support brain health by reducing inflammation
     and promoting a healthy brain-gut connection.
+- id: vitaone-health-coaching-toolkit
+  location: 'Gut-Brain Axis: Nutrition''s Impact on Mental Health'
+  quote: A high-fiber diet promotes the growth of diverse gut bacteria, which produce
+    short-chain fatty acids (SCFAs) that support brain health by reducing inflammation
+    and promoting a healthy brain-gut connection.
 evidence_tier: strong
-version: 3
+version: 4
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

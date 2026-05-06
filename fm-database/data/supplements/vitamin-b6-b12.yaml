@@ -1,0 +1,36 @@
+slug: vitamin-b6-b12
+display_name: Vitamin B6 & B12
+category: vitamin
+forms_available:
+- capsule
+- tablet
+timing_options:
+- with_breakfast
+- morning
+take_with_food: optional
+linked_to_topics:
+- drug-induced-nutrient-depletion-cardiovascular
+- beta-blocker-deprescribing
+- cardiovascular-dysfunction
+linked_to_claims:
+- elevated-homocysteine-triples-heart-attack-risk
+- metformin-depletes-b12-folate-coq10
+notes_for_coach: B6 (pyridoxine) is depleted by loop diuretics. B12 is depleted by
+  metformin. Both B6 and B12 are critical cofactors in homocysteine metabolism. Included
+  in the beta blocker tapering support protocol. B12 monitoring is especially important
+  in long-term metformin users.
+notes_for_client: Vitamins B6 and B12 help keep homocysteine levels healthy, which
+  is important for your heart. Metformin and some water pills can deplete these vitamins.
+  Best taken with breakfast.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients
+    — Supplement Schedule'
+  quote: Vitamin B6, B12
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

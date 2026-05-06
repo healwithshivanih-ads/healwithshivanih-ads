@@ -1,22 +1,30 @@
 slug: infertility
-display_name: Infertility / Reproductive Dysfunction
+display_name: Infertility
 aliases:
 - difficulty conceiving
 - recurrent miscarriage
 - reproductive issues
 - fertility issues
 - reproductive toxicity
+- reproductive dysfunction
+- reproductive problems
+- trouble getting pregnant
 category: hormonal
 severity: concerning
-description: Difficulty conceiving or reproductive irregularities potentially linked
-  to endocrine-disrupting chemicals (BPA, phthalates, pesticides, heavy metals).
-when_to_refer: All fertility concerns should involve a reproductive medicine clinician.
+description: Zinc is essential for sperm production and maturation, hormone regulation,
+  and the fertilization process. Deficiency can impair fertility in both males and
+  females.
+when_to_refer: Any suspected infertility should be evaluated by a reproductive specialist
+  or physician.
 linked_to_topics:
 - hypothyroidism
 - hashimotos-hypothyroidism
 - toxic-body-burden
+- environmental-toxin-exposure
+- zinc-deficiency
 linked_to_mechanisms:
 - endocrine-disruption
+- endocrine-disruption-by-toxicants
 sources:
 - id: vitaone-thyroid-toolkit
   location: Symptoms of Hashimoto's Hypothyroidism
@@ -25,7 +33,15 @@ sources:
   location: Detox Food Plan — Body Burden
   quote: Medical researchers are recognizing more symptoms related to the buildup
     of toxins, including... infertility.
-version: 2
+- id: vitaone-health-coaching-toolkit
+  location: Detox Food Plan — page 05
+  quote: Medical researchers are recognizing more symptoms related to the buildup
+    of toxins, including obesity, type 2 diabetes, metabolic syndrome, cancer, fatigue,
+    infertility, allergies
+- id: coconote-fm-zinc-deficiency
+  location: Signs and Symptoms
+  quote: Infertility, in males and females both. These are severe signs and symptoms.
+version: 4
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

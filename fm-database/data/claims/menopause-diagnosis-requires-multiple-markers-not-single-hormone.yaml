@@ -1,0 +1,31 @@
+slug: menopause-diagnosis-requires-multiple-markers-not-single-hormone
+statement: Diagnosis of menopause cannot be made on a single hormone value (e.g.,
+  serum estrogen alone); it requires a combination of clinical history, functional
+  timeline, ultrasound (ovarian follicle assessment), and multiple hormone markers
+  (DHEA, progesterone, estrogen, LH, FSH, cortisol, inflammation markers).
+evidence_tier: strong
+rationale: This is consensus-level clinical practice in reproductive endocrinology.
+  No single biomarker is independently diagnostic for menopause; the STRAW+10 staging
+  system and clinical guidelines support multimodal assessment.
+coaching_translation: Remind clients that a single low hormone result on a blood test
+  does NOT confirm menopause. Proper diagnosis needs the full picture — symptoms,
+  history, timeline, and multiple lab values.
+out_of_scope_notes: Diagnosis of menopause is clinician scope. Coaches support history-taking
+  and symptom tracking.
+caveats:
+- Source is expert consensus lecture; consistent with mainstream gynecological guidelines.
+linked_to_topics:
+- menopause
+- perimenopause
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-sex-hormones
+  location: Diagnosis of Menopause
+  quote: No independent biological marker, this is very important. If you only check
+    on the value of serum registered on a serum estrogen, that's not a diagnostic
+    tool when it comes to menopause.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

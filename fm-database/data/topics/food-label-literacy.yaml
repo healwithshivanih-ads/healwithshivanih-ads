@@ -1,0 +1,29 @@
+slug: food-label-literacy
+display_name: Understanding Food Labels
+aliases:
+- nutrition facts label
+- food label reading
+- ingredient list decoding
+summary: Food labels contain serving size, calorie, macronutrient, micronutrient,
+  and ingredient information. Understanding percent daily values, hidden sugars (multiple
+  sugar names), trans fat labeling loopholes, and allergen listings helps consumers
+  make informed choices and avoid hidden ingredients.
+common_symptoms: []
+red_flags: []
+related_topics: []
+key_mechanisms: []
+coaching_scope_notes: Teaching food label literacy is a core coaching skill. Coaches
+  can walk clients through serving sizes, added sugar limits (24g women, 35g men),
+  fiber goals (25g women, 38g men), and how to identify trans fats and allergens in
+  ingredient lists.
+evidence_tier: strong
+clinician_scope_notes: ''
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Understanding Food Labels
+  quote: Understanding food labels makes it easier to stay on track with your health
+    and nutrition goals, but the information found on food labels can be confusing.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -4,23 +4,31 @@ aliases:
 - high fasting insulin
 - hyperinsulinemia
 - high insulin levels
+- fasting hyperinsulinemia
 category: metabolic
 severity: concerning
-description: Fasting insulin above the functional range (>5 µIU/mL), indicating compensatory
-  hyperinsulinemia and early insulin resistance even when fasting glucose appears
-  normal.
-when_to_refer: Refer if fasting insulin >15 µIU/mL or if accompanied by HbA1c ≥5.7%;
-  evaluate for PCOS in females.
+description: A fasting insulin level above 10 µIU/mL is considered a classical diagnostic
+  marker for insulin resistance, even when fasting blood glucose remains in the normal
+  range.
+when_to_refer: Refer to clinician for GTIR testing and formal insulin resistance pattern
+  classification.
 linked_to_topics:
 - insulin-resistance
 - pcos
+- insulin-resistance-early-detection
 linked_to_mechanisms:
 - insulin-resistance
+- compensatory-hyperinsulinemia
+- insulin-receptor-resistance
 sources:
 - id: vitaone-blood-sugar-cheatsheet
   location: Insulin Resistance Cheatsheet — Clinical Symptoms
   quote: Elevated fasting insulin, HOMA-IR
-version: 1
+- id: coconote-fm-gtir
+  location: GTIR Graph Interpretation
+  quote: as a class adjuster, if the fasting insulin level is more than 10, it is
+    classical diagnostic for insulin resistance
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

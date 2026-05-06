@@ -1,0 +1,27 @@
+slug: teeth-grinding
+display_name: Teeth Grinding (Bruxism)
+aliases:
+- bruxism
+- grinding teeth
+- jaw clenching at night
+category: musculoskeletal
+severity: common
+description: Involuntary grinding or clenching of teeth, mentioned here as a somatic
+  expression of an overactivated nervous system linked to prenatal and perinatal stress.
+when_to_refer: Refer to dentist for protective intervention; refer to clinician if
+  associated with significant sleep disruption or TMJ pain.
+linked_to_topics:
+- birth-trauma
+- womb-imprinting-and-prenatal-experience
+linked_to_mechanisms:
+- prenatal-cortisol-adrenaline-exposure
+- nervous-system-imprinting
+sources:
+- id: family-constellation-healing-womb
+  location: C-section and nervous system section
+  quote: They're also, also grind their teeth. The nervous system was very challenged
+    during the time of the other swarm.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

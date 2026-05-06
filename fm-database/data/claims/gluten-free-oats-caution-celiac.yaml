@@ -1,0 +1,25 @@
+slug: gluten-free-oats-caution-celiac
+statement: Gluten-free oats share structural similarity with gluten-containing grains
+  and may be cross-contaminated during processing; individuals with celiac disease
+  or gluten intolerance should use caution.
+evidence_tier: strong
+rationale: This is clinically well-established. Avenin in oats can trigger reactions
+  in a subset of celiac patients; cross-contamination risk is documented.
+coaching_translation: Even certified gluten-free oats can cause problems for some
+  people with celiac disease. Introduce them cautiously and track symptoms.
+caveats:
+- Decision to include oats should involve clinician for celiac patients
+linked_to_topics:
+- gluten-sensitivity
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: A Guide to Eating Gluten-Free — Grains, Flours, and Starches
+  quote: Gluten-free oats have a similar structure to gluten-containing grains. Also,
+    they may be contaminated with gluten-containing grains during processing.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

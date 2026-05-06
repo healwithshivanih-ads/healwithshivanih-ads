@@ -1,0 +1,39 @@
+slug: testosterone-dht-conversion
+display_name: Testosterone to DHT Conversion & 5-α Reductase Inhibition
+aliases:
+- 5-alpha reductase activity
+- DHT excess
+- androgen conversion
+summary: 5-α reductase converts testosterone to dihydrotestosterone (DHT), a more
+  potent androgen. Excess DHT activity is linked to benign prostatic hyperplasia (BPH),
+  androgenic hair loss in both sexes, and acne/hirsutism in women. Foods, herbs, and
+  supplements can inhibit this enzyme to maintain healthier testosterone-to-DHT ratios.
+common_symptoms:
+- hair-loss
+- acne
+- prostate-enlargement-symptoms
+- hirsutism
+red_flags:
+- Moderate-to-severe BPH symptoms (score ≥8) should be evaluated by a urologist
+- Rapid prostate enlargement or urinary obstruction requires urgent referral
+related_topics:
+- benign-prostatic-hyperplasia
+- sex-hormone-binding-globulin
+key_mechanisms:
+- 5-alpha-reductase-activity
+- testosterone-to-dht-conversion
+coaching_scope_notes: Coaches can recommend 5-α reductase inhibiting foods and lifestyle
+  habits. Herbal and supplement dosing requires clinician oversight.
+clinician_scope_notes: Clinician should evaluate BPH severity, DHT levels, and prescribe
+  pharmaceutical or high-dose botanical 5-α reductase inhibitors as appropriate.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors'
+  quote: 5-a reductase is a key enzyme in the body which regulates the conversion
+    of testosterone to a hormone called dihydrotestosterone (DHT). When testosterone
+    is converted to DHT, testosterone is lowered and can no longer work effectively.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

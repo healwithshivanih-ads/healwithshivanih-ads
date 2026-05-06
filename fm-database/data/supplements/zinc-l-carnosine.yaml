@@ -7,24 +7,31 @@ forms_available:
 timing_options:
 - with_breakfast
 - with_dinner
-take_with_food: optional
+take_with_food: required
 linked_to_topics:
 - gerd
 - gut-dysfunction
+- gerd-ppi-tapering
 linked_to_claims:
 - zinc-l-carnosine-repairs-gut-lining
-notes_for_coach: Specifically listed under the 'Repair' category in the PPI taper
-  supplement protocol alongside aloe vera. Dosing requires clinician guidance.
+- ppi-tapering-supplement-support-repair-protect-antioxidant
+notes_for_coach: Listed specifically under 'Repair' category in the PPI tapering supplement
+  protocol. Has some RCT data for gastric mucosal protection. Clinician-directed dosing
+  required.
 evidence_tier: plausible_emerging
 typical_dose_range: {}
 linked_to_mechanisms: []
-notes_for_client: ''
+notes_for_client: Zinc L-carnosine is a special form of zinc that helps protect and
+  repair the stomach lining — often used when coming off acid-blocking medications.
 sources:
 - id: vitaone-gut-toolkit
   location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
     — Supplement recommendations'
   quote: 'Repair: Zinc l-carnosine, aloe vera'
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
+  quote: 'Repair: Zinc l-carnosine, aloe vera.'
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

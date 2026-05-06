@@ -1,0 +1,32 @@
+slug: lp-little-a-independent-cv-risk-factor
+statement: Lp(a) [lipoprotein little a] is an independent risk factor for cardiovascular
+  disease, is pro-thrombotic, and is genetically determined with multiple variants
+  — making it difficult to treat with conventional approaches.
+evidence_tier: strong
+rationale: Lp(a) as an independent CVD risk factor is well-established in peer-reviewed
+  literature and ACC/AHA guidelines. It is mentioned multiple times as a priority
+  marker in high-risk families.
+coaching_translation: Lp(a) is a type of cholesterol particle that is largely determined
+  by your genes and raises heart risk independently of other cholesterol numbers.
+  It's important to measure in family history of early heart disease.
+out_of_scope_notes: Lp(a) testing, interpretation, and treatment (PCSK9 inhibitors,
+  niacin, antisense oligonucleotides) are clinician scope.
+caveats:
+- Lp(a)-lowering options mentioned (niacin, red yeast rice, PCSK9 inhibitors, antisense
+  oligos) require clinician management.
+linked_to_topics:
+- cardiovascular-disease-prevention
+- dyslipidemia
+- familial-hypercholesterolemia
+linked_to_supplements:
+- niacin-vitamin-b3
+- red-yeast-rice
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Atherogenic Lipoproteins
+  quote: LP little a, which is an independent risk factor for cardiovascular disease.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

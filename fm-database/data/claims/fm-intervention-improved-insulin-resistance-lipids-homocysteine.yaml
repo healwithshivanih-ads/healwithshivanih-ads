@@ -1,0 +1,42 @@
+slug: fm-intervention-improved-insulin-resistance-lipids-homocysteine
+statement: A functional medicine intervention (low-carb diet, targeted supplementation
+  with B-vitamins, Vitamin D+K, magnesium, omega-3, niacin, and lifestyle changes)
+  resulted in improved insulin resistance (reduced HbA1c), controlled hypertension,
+  improved lipid profile, and reduced homocysteine after 10 months.
+evidence_tier: fm_specific_thin
+rationale: This is a single case report outcome — compelling anecdotally but not generalisable
+  evidence. Each individual intervention component has varying levels of support,
+  but the aggregate FM protocol outcome is case-study level evidence only.
+coaching_translation: By making real changes to diet, lifestyle, and taking targeted
+  supplements, this patient was able to normalise their blood sugar, cholesterol,
+  blood pressure, and inflammation markers — and come off their medications after
+  10 months.
+caveats:
+- Single case study — not generalisable population evidence.
+- No control group.
+- Multiple interventions applied simultaneously; individual contribution cannot be
+  isolated.
+- Source is an expert clinical case study, moderate quality.
+linked_to_topics:
+- cardiovascular-risk-assessment
+- insulin-resistance
+- dyslipidemia
+- methylation-defect-elevated-homocysteine
+linked_to_supplements:
+- homocysteine-defense-b-complex
+- vitamin-d3-k2
+- magnesium-ionic-powder
+- omega-3-fatty-acids
+- niacin-b3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cvs-risk-assessment
+  location: Progress (Slide 25)
+  quote: 'Insulin Resistance improved : HbA1c Reduced, Hypertension controlled, Lipid
+    Profile Improved. Detoxification Improved : Homocysteine reduced. Fatigue, Body
+    pain and low grade fever better'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

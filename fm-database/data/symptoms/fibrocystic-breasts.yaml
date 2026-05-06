@@ -1,0 +1,32 @@
+slug: fibrocystic-breasts
+display_name: Fibrocystic Breasts
+aliases:
+- lumpy breasts
+- cystic mastalgia
+- breast lumps
+- fibrocystic breast disease
+- bumpy breasts
+- painful breasts
+category: hormonal
+severity: concerning
+description: Benign breast lumps, cysts, or pain associated with estrogen dominance
+  and prolonged estrogen signaling. Historically treated with vitamin A, B6, and magnesium.
+when_to_refer: Any new breast lump should be evaluated by a clinician to rule out
+  malignancy before attributing to hormonal causes.
+linked_to_topics:
+- estrogen-signaling
+- hormonal-nutrition-foundations
+- estrogen-and-fiber-transit-time
+linked_to_mechanisms:
+- p5p-helix-12-signaling-control
+- estrogen-enterohepatic-recirculation
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Nutritional Treatment of Estrogen-Dominant Conditions
+  quote: In the olden days, we treated lumpy, bumpy breast cystic mastalgia... or
+    painful periods with vitamin A, high doses of vitamin A, and B6 and magnesium.
+    And a lot of women got well.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

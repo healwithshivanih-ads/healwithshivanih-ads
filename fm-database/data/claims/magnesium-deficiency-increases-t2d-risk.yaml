@@ -1,26 +1,36 @@
 slug: magnesium-deficiency-increases-t2d-risk
-statement: People who do not get enough magnesium are at higher risk for type 2 diabetes,
-  heart disease, metabolic syndrome, and osteoporosis.
+statement: Inadequate dietary magnesium intake is associated with higher risk for
+  type 2 diabetes, heart disease, metabolic syndrome, and osteoporosis.
 evidence_tier: plausible_emerging
-rationale: Supported by Gröber et al. 2015 (Nutrients) cited in document; epidemiological
-  data consistently links low dietary magnesium to metabolic disease risk.
-coaching_translation: Eating magnesium-rich foods (leafy greens, nuts, avocado, legumes)
-  is a simple way to support your blood sugar and heart health.
+rationale: Gröber et al. (2015, Nutrients) and multiple systematic reviews support
+  magnesium's role in insulin function and metabolic health. Risk association is well-documented,
+  though RCT evidence for supplementation outcomes is mixed.
+coaching_translation: Not getting enough magnesium — found in nuts, avocado, leafy
+  greens, and legumes — may increase your risk of blood sugar problems and other metabolic
+  issues.
 caveats:
 - Observational data; causality direction debated. Supplementation benefit clearest
   in deficient individuals.
+- Different magnesium forms have different absorption and side-effect profiles.
+- Supplementation decisions should involve a clinician.
 linked_to_topics:
 - blood-sugar-dysfunction
+- insulin-resistance
 linked_to_supplements:
 - magnesium
-out_of_scope_notes: ''
+out_of_scope_notes: Choosing the right form and dose of magnesium supplement is clinician
+  scope, especially given laxative effects of some forms.
 linked_to_mechanisms: []
 sources:
 - id: vitaone-blood-sugar-toolkit
   location: Micronutrients for Insulin Sensitivity
   quote: People who do not get enough magnesium in their diet are at higher risk for
     type 2 diabetes, heart disease, metabolic syndrome, and osteoporosis.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: People who do not get enough magnesium in their diet are at higher risk for
+    type 2 diabetes, heart disease, metabolic syndrome, and osteoporosis.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

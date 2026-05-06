@@ -1,0 +1,44 @@
+slug: autoimmunity-triad
+display_name: Triad of Autoimmunity
+aliases:
+- autoimmune triad
+- three-hit model of autoimmunity
+summary: 'Autoimmunity is understood in functional medicine to require three converging
+  factors: genetic predisposition, increased intestinal permeability (leaky gut),
+  and an environmental/infectious trigger. Addressing intestinal permeability and
+  reducing triggers (e.g., gluten, infections, dysbiosis) is a central therapeutic
+  target.'
+common_symptoms:
+- elevated-ana
+- elevated-crp
+- elevated-esr
+- intestinal-permeability-symptoms
+red_flags:
+- high-ana
+- high-p-anca
+- significantly-elevated-crp-and-esr
+related_topics:
+- intestinal-permeability
+- nutritional-deficiency-screening
+- metabolic-syndrome
+key_mechanisms:
+- intestinal-hyperpermeability
+- chronic-systemic-inflammation
+coaching_scope_notes: Coaches can support elimination diet adherence and anti-inflammatory
+  dietary patterns. Autoimmune diagnosis, lab interpretation, and medication are out
+  of scope.
+clinician_scope_notes: 'Assess ANA, P-ANCA, CRP, ESR. Address intestinal permeability
+  with elimination diet. Identify triggers: antibiotics, gluten, infections, trauma.
+  Refer to rheumatology if indicated.'
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-body-composition-bmi
+  location: Autoimmunity / Case Discussion Section
+  quote: When you see a family history of autoimmunity, they've got the genetics to
+    develop autoimmunity. When you see significant antibiotic use and pain medication
+    use, they are at risk for increased intestinal permeability, which is that second
+    piece of that triad of autoimmunity. And then you've got the trigger.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

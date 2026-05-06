@@ -1,0 +1,38 @@
+slug: low-cholesterol-associated-with-behavioral-and-hemorrhagic-risks
+statement: Low cholesterol levels are associated (in observational data) with increased
+  risk of violent/impulsive behavior, depression, suicide attempts, intracranial hemorrhage,
+  ischemic stroke, atrial fibrillation, and preterm delivery.
+evidence_tier: plausible_emerging
+rationale: The document lists these associations explicitly and notes that 'association
+  does not mean causation.' These findings come from observational literature and
+  some meta-analyses but are not mechanistically confirmed for statin-induced low
+  cholesterol specifically.
+coaching_translation: Some research has found that very low cholesterol levels — whether
+  from medication or other causes — are associated with certain health risks including
+  mood changes and bleeding strokes. This is one reason cholesterol management should
+  be individualized rather than purely 'lower is better.'
+out_of_scope_notes: Any concern about hemorrhagic risk, suicidality, or atrial fibrillation
+  requires clinician referral. Coaches should not interpret or act on these associations
+  directly.
+caveats:
+- These are associations, not proven causal relationships.
+- Some of these risks (e.g., hemorrhagic stroke) may reflect pre-existing conditions
+  rather than statin effects.
+- Source is a lecture summary; primary literature review is recommended.
+- Confounding by indication is a significant limitation in these observational datasets.
+linked_to_topics:
+- statin-side-effects
+- cholesterol-and-hormone-synthesis
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-reality-of-statins
+  location: Low Cholesterol Associations Section
+  quote: What they did find an association with is low cholesterol and preterm delivery,
+    microcephaly, ischemic strokes, intracranial hemorrhages, atrial fibrillation,
+    violent and impulsive behavior, depression, and a significant increase in suicide
+    attempts in men and women.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

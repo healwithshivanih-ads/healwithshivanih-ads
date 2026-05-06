@@ -1,0 +1,25 @@
+slug: loss-of-taste-and-smell
+display_name: Loss of Taste and Smell
+aliases:
+- anosmia
+- ageusia
+- can't taste food
+- reduced sense of smell
+- food tastes bland
+category: neurological
+severity: common
+description: Diminished or absent sense of taste (ageusia) and smell (anosmia) linked
+  to zinc's role in the maintenance of gustatory and olfactory sensory cells.
+when_to_refer: If sudden or associated with neurological symptoms, refer to a physician.
+linked_to_topics:
+- zinc-deficiency
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-zinc-deficiency
+  location: Signs and Symptoms
+  quote: Loss of taste and smell, skin disorders including acne, decreased production
+    or sexual function especially in men.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

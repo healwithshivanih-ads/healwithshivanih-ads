@@ -4,27 +4,40 @@ category: amino_acid
 forms_available:
 - capsule
 - powder
+- tablet
 evidence_tier: plausible_emerging
-notes_for_coach: Listed as nutraceutical support during beta blocker tapering. L-arginine
-  is a precursor to nitric oxide, which supports vascular tone. Specific dosing requires
-  clinician guidance.
-notes_for_client: L-arginine is an amino acid involved in blood vessel relaxation.
-  Use only as directed by your clinician.
+notes_for_coach: L-arginine supports nitric oxide production, which promotes vasodilation
+  and may help reduce blood pressure. Dosing must be confirmed with a clinician.
+notes_for_client: L-arginine is an amino acid found in protein-rich foods. As a supplement,
+  it may support healthy blood pressure through its role in producing nitric oxide,
+  a natural vessel-relaxing compound.
 timing_options:
 - morning
 - with_breakfast
+- with_dinner
+- with_lunch
 take_with_food: optional
 linked_to_topics:
 - beta-blocker-deprescribing
 - cardiovascular-dysfunction
+- hypertension
+- blood-pressure-management
 typical_dose_range: {}
 linked_to_mechanisms: []
-linked_to_claims: []
+linked_to_claims:
+- l-arginine-increases-nitric-oxide-and-lowers-blood-pressure
 sources:
 - id: vitaone-cv-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
   quote: Arginine
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients
+    — Supplement Schedule'
+  quote: Arginine
+- id: coconote-fm-body-composition-bmi
+  location: Blood Pressure / Dietary Intervention Section
+  quote: L-arginine as an amino acid can increase nitric oxide and improve blood pressure.
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

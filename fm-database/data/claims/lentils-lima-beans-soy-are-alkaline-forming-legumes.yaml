@@ -1,0 +1,28 @@
+slug: lentils-lima-beans-soy-are-alkaline-forming-legumes
+statement: Among legumes, lentils, lima beans, and soy are alkaline-forming, while
+  most other legumes are acid-forming.
+evidence_tier: fm_specific_thin
+rationale: This is a specific classification used within the alkaline diet framework.
+  It is commonly cited in naturopathic and functional medicine resources. Peer-reviewed
+  data on the net acid excretion of individual legume varieties is limited and inconsistent
+  across sources.
+coaching_translation: If you're looking for legumes that support a more alkaline diet,
+  prioritize lentils, lima beans, and soy over other beans.
+caveats:
+- Classification of individual legumes as alkaline vs. acid-forming varies across
+  sources.
+- Source is expert consensus/lecture, not primary literature.
+linked_to_topics:
+- ph-balance-and-diet
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-fresh-cheeses-ph
+  location: Acid-Forming Foods Section
+  quote: Your other legumes, other than lentil, lima and soy, or your other nuts,
+    other than Brazil and almond, have an acid effect on the body.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,34 @@
+slug: endotoxemia-drives-systemic-disease
+statement: Systemic endotoxemia from SIBO-derived lipopolysaccharide (LPS) is a central
+  driver of diverse conditions including depression, anxiety, cognitive decline, cardiovascular
+  disease, Parkinson's disease, endometriosis, type 2 diabetes, and fatty liver.
+evidence_tier: plausible_emerging
+rationale: Dr. Davis presents LPS translocation from fecal microbes in the small intestine
+  as a unifying mechanism for systemic inflammation. The individual disease associations
+  (e.g., LPS and cardiovascular disease, LPS and neurodegeneration) have emerging
+  peer-reviewed support, but the unified claim across all listed conditions from a
+  SIBO-specific source is speculative.
+coaching_translation: When harmful bacteria overgrow in the small intestine, they
+  release toxins that enter the bloodstream and can quietly drive inflammation throughout
+  the body—contributing to mood issues, brain problems, heart disease, and more.
+caveats:
+- Source is expert_consensus interview.
+- Individual LPS-disease links vary in evidence strength.
+- The scope of conditions claimed is very broad; treat as a working hypothesis.
+linked_to_topics:
+- sibo
+- gut-microbiome
+- endometriosis-microbiome
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Endotoxemia and systemic disease discussion
+  quote: That's the driver. That's how bowel flora can be responsible for effects
+    on the brain, like depression, anxiety, cognitive impairment, Parkinson's disease,
+    on skin, rosacea, psoriasis, on the heart, atrial fibrillation, coronary disease.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

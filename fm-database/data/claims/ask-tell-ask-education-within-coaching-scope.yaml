@@ -1,0 +1,30 @@
+slug: ask-tell-ask-education-within-coaching-scope
+statement: Coaches can provide education in up to approximately 5% of a session using
+  the ask-tell-ask format with client permission, allowing informational support without
+  crossing into directive prescribing.
+evidence_tier: fm_specific_thin
+rationale: The '5% education with permission' guideline and ask-tell-ask format are
+  described as FMCA coaching scope-of-practice standards. This is a professional training
+  norm rather than a peer-reviewed finding.
+coaching_translation: Always ask permission before sharing information ('Would it
+  be okay if I shared something about nutrition?'), offer the information briefly,
+  then ask what the client makes of it. This keeps agency with the client.
+out_of_scope_notes: Coaches must not provide specific dietary prescriptions, interpret
+  labs, or recommend supplements without clinician oversight.
+caveats:
+- This is a scope-of-practice guideline from FMCA coaching training, not a peer-reviewed
+  evidence claim.
+- Source is an expert consensus coaching call.
+linked_to_topics:
+- ambivalence-in-coaching
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-coaching-ambivalence
+  location: Group discussion — Emily's client scenario
+  quote: Coaches can educate up to 5% of a session with permission in the ask-tell-ask
+    format, right?
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

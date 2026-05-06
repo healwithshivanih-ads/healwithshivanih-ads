@@ -1,0 +1,27 @@
+slug: abdominal-obesity
+display_name: Abdominal Obesity / Increased Waist Circumference
+aliases:
+- belly fat
+- central adiposity
+- visceral fat
+- apple shape
+category: metabolic
+severity: concerning
+description: Excess fat concentrated around the abdomen, often indicating visceral
+  adiposity and underlying insulin resistance. A key clinical sign of metabolic syndrome.
+when_to_refer: Refer if associated with severely elevated fasting glucose, extreme
+  hypertriglyceridemia, or suspected NAFLD.
+linked_to_topics:
+- insulin-resistance
+- cardiometabolic-disease
+linked_to_mechanisms:
+- insulin-resistance
+sources:
+- id: coconote-fm-biomarkers-cvs
+  location: Metabolic Dysfunction
+  quote: Patient is patient is obese. What is their waist circumference? What What
+    is the base and tip ratio?
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

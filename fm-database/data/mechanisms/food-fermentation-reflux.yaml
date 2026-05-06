@@ -1,0 +1,37 @@
+slug: food-fermentation-reflux
+display_name: Undigested Food Fermentation Causing Reflux
+aliases:
+- fermentative reflux
+- gas-induced reflux
+- cardia incompetence from fermentation
+category: gut
+summary: When gastric HCl is insufficient, food remains poorly digested in the stomach.
+  Microbial fermentation of this undigested material produces gas, increasing intragastric
+  pressure. This pressure forces stomach contents upward through the lower oesophageal
+  sphincter, producing symptoms indistinguishable from acid-hypersecretion reflux
+  — including heartburn, belching, and epigastric burning.
+upstream_drivers:
+- reduced-hcl-production
+- sibo-from-low-acid
+downstream_effects:
+- heartburn
+- belching
+- bloating
+- flatulence
+related_mechanisms:
+- reduced-hcl-production
+- sibo-from-low-acid
+linked_to_topics:
+- hypochlorhydria
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-hypochlorhydria
+  location: Clinical Presentation of Low Stomach Acid
+  quote: Because it's not able to digest the food, the undigested food tends to regurgitate
+    out from the lower sphincter of your esophagus and it goes up into the esophagus
+    giving a feeling of reflux, giving a feeling of burning sensation, giving a feeling
+    of epigastric tightness, giving a feeling of fullness.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

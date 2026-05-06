@@ -1,0 +1,38 @@
+slug: cardiovascular-lipid-pattern-recognition
+display_name: Advanced Cardiovascular Risk & Lipid Pattern Recognition
+aliases:
+- lipid biomarkers
+- ApoB assessment
+- cardiometabolic risk
+summary: Standard lipid panels (total cholesterol + LDL) miss a large portion of cardiovascular
+  risk. ApoB reflects atherogenic particle number, TG:HDL ratio is an early insulin-resistance
+  proxy, hs-CRP reveals vascular inflammation, and Lp(a) captures genetic risk — all
+  requiring assessment together.
+common_symptoms: []
+red_flags:
+- Lp(a) elevation without awareness
+- high ApoB with normal LDL in untreated patient
+related_topics:
+- metabolic-health-lchf
+- insulin-resistance-metabolic-syndrome
+key_mechanisms:
+- apob-atherogenic-particle-burden
+- insulin-resistance
+- vascular-inflammation
+coaching_scope_notes: Coaches can educate clients on the limitations of standard lipid
+  panels and encourage requesting ApoB, TG:HDL, hs-CRP, and Lp(a) tests. Interpretation
+  and prescribing decisions are clinician territory.
+clinician_scope_notes: Assess ApoB, TG:HDL ratio, hs-CRP, and Lp(a). Treat insulin
+  resistance before targeting lipids pharmacologically. Personalise statin decisions
+  — not all elevated LDL requires medication.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DX6sbxqDFJ5/
+  quote: ApoB reflects atherogenic particle number, not just cholesterol content →
+    TG:HDL ratio is an early marker of insulin resistance → hs-CRP reveals hidden
+    inflammation driving vascular risk
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

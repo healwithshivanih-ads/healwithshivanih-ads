@@ -3,21 +3,25 @@ display_name: Weak Urinary Stream
 aliases:
 - poor urine flow
 - reduced urine stream
+- slow stream
 category: urinary
 severity: common
-description: Reduced force of urinary stream, commonly associated with prostate enlargement
-  compressing the urethra.
-when_to_refer: Refer if persistent or worsening; may indicate significant BPH or other
-  urological pathology.
+description: Reduced force of urine flow; a BPH symptom indicating possible urethral
+  obstruction from prostate enlargement.
+when_to_refer: Refer to urology if severe or combined with high BPH score.
 linked_to_topics:
 - benign-prostatic-hyperplasia
 linked_to_mechanisms:
 - five-alpha-reductase-conversion
+- 5-alpha-reductase-activity
 sources:
 - id: vitaone-sex-hormones-toolkit
   location: BPH Symptom Index — Page 05
   quote: During the last month or so, how often have you had a weak urinary stream?
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: BPH Symptom Index
+  quote: During the last month or so, how often have you had a weak urinary stream?
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

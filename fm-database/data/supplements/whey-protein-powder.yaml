@@ -1,0 +1,32 @@
+slug: whey-protein-powder
+display_name: Whey Protein Powder
+category: other
+forms_available:
+- powder
+typical_dose_range:
+  powder:
+    min: 14
+    max: 28
+    unit: g
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- cardiometabolic-diet
+notes_for_coach: Document recommends 2 tablespoons (approx. 14–20g) of whey powder
+  per smoothie serving. Used specifically in the Cardio Smoothie recipe. Suitable
+  for clients without dairy sensitivity.
+notes_for_client: Adding whey powder to your smoothie is a quick way to hit your protein
+  target in the morning.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+linked_to_claims: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Building a Better Smoothie — Protein
+  quote: Whey powder – 2 T
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

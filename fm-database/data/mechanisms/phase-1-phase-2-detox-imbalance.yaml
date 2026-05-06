@@ -1,0 +1,37 @@
+slug: phase-1-phase-2-detox-imbalance
+display_name: Phase 1 / Phase 2 Detox Imbalance
+aliases:
+- upregulated phase 1 with sluggish phase 2
+- toxic intermediate accumulation
+category: metabolic
+summary: When Phase 1 (CYP oxidation) is upregulated by toxin exposure but Phase 2
+  conjugation (methylation, glucuronidation, sulfation) is insufficient, reactive
+  intermediate metabolites accumulate, increasing oxidative stress and toxic burden.
+  GGT elevation is a key indirect marker of this imbalance.
+upstream_drivers:
+- xenobiotic-exposure
+- environmental-toxins
+- oxidative-stress
+- gut-dysbiosis
+downstream_effects:
+- elevated-ggt
+- elevated-unconjugated-bilirubin
+- oxidative-stress
+- chemical-sensitivity
+related_mechanisms:
+- glucuronidation-impairment
+- methylation-defect
+linked_to_topics:
+- liver-detox-phase-1-and-phase-2
+- chronic-toxicity-assessment
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-liver-detox-part2
+  location: Phase 1 & Phase 2 Explanation
+  quote: So when you have this kind of toxic load and your typical phase 1 is active
+    but phase 2 is not active. So when you see any kind of GTG level is increased,
+    work on a phase 2.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

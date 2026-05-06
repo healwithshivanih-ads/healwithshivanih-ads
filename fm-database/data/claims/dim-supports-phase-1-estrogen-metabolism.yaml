@@ -1,0 +1,35 @@
+slug: dim-supports-phase-1-estrogen-metabolism
+statement: DIM (diindolylmethane), a compound derived from cruciferous vegetables,
+  supports phase 1 estrogen metabolism by favouring production of less proliferative
+  2-OH estrogen metabolites.
+evidence_tier: plausible_emerging
+rationale: DIM has been studied for its role in shifting estrogen metabolism toward
+  the 2-hydroxy pathway, which is considered less estrogenically active than the 16-OH
+  or 4-OH pathways. In vitro and early clinical data support this mechanism; large-scale
+  RCT evidence in endometriosis is limited.
+coaching_translation: DIM from cruciferous vegetables helps your liver process estrogen
+  more safely by steering it down a less harmful pathway. The supplement form is used
+  when dietary changes alone are too slow.
+caveats:
+- Phase 1 estrogen metabolism shift by DIM is plausible emerging evidence; robust
+  clinical RCTs in endometriosis are lacking. Source is FM lecture.
+- Should be used after hormone testing confirms estrogen dominance.
+- Dosing should be supervised by a clinician.
+linked_to_topics:
+- estrogen-dominance
+- endometriosis
+- gut-skin-hormone-axis
+linked_to_supplements:
+- dim-diindolylmethane
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Estrogen Detoxification Discussion
+  quote: Cruciferous vegetables when they are eaten, they release a compound called
+    Diindolyl Methane. That is the supplement DIM, which is usually given because
+    it helps in the metabolism of estrogen.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

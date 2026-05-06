@@ -11,21 +11,27 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - testosterone-health
+- testosterone-dht-conversion
 linked_to_claims:
 - 5ar-inhibition-reduces-bph-hair-loss-acne
-notes_for_coach: Listed as a 5-alpha reductase inhibiting herb. Vitex is also known
-  for progesterone-supportive effects and use in PMS/PMDD — discuss full hormone picture
-  with clinician.
-notes_for_client: Chaste tree berry is an herb used to help balance hormones, including
-  modulating DHT. Use only as directed by your clinician.
-evidence_tier: plausible_emerging
+- 5ar-inhibitors-reduce-dht-prevent-bph-hair-loss-acne
+notes_for_coach: Vitex is listed as a 5-α reductase inhibitor. More commonly used
+  in FM for PMS/PMDD and luteal phase progesterone support. Complex mechanism — dopaminergic
+  and hormonal. Clinician should guide use.
+notes_for_client: Chaste tree berry may help balance hormones by influencing both
+  DHT and progesterone levels. It's often used for women's cycle-related hormone imbalances.
+evidence_tier: fm_specific_thin
 typical_dose_range: {}
 linked_to_mechanisms: []
 sources:
 - id: vitaone-sex-hormones-toolkit
   location: Maintaining Healthy Testosterone Levels — Page 06
   quote: Chaste Tree Berry (Vitex agnus-castus) [Herbs that Inhibit 5-a Reductase]
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors'
+  quote: Chaste Tree Berry (Vitex agnus-castus) [listed under Herbs that Inhibit 5-a
+    Reductase]
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

@@ -1,0 +1,31 @@
+slug: antibiotics-reduce-vitamin-k2-production
+statement: Prolonged antibiotic use can suppress gut microbiome commensal bacteria,
+  reducing endogenous vitamin K2 production and leading to deficiency.
+evidence_tier: plausible_emerging
+rationale: Vitamin K2 (menaquinone) is produced by gut bacteria including Bacteroides
+  and Bifidobacterium species. Broad-spectrum antibiotics disrupt this microbiome.
+  Evidence is mechanistically strong but clinical studies on the magnitude of K2 depletion
+  are limited.
+coaching_translation: If you've taken a lot of antibiotics, your gut bacteria — which
+  help make vitamin K2 — may be depleted. This is one reason why supporting gut health
+  matters.
+caveats:
+- Magnitude of K2 depletion from antibiotics varies by antibiotic type and duration
+  — specific RCTs are not cited in the document.
+linked_to_topics:
+- vitamin-k2
+linked_to_supplements:
+- vitamin-k2-supplement
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-vitamin-d3-k2
+  location: Factors Affecting Vitamin K2 Production
+  quote: Prolonged use of antibiotics. Anybody who's taken a long-term antibiotic,
+    these antibiotics can suppress the gut microbiome. Whenever the gut microbiome
+    is compensated, the commensal bacteria is also compensated, thus the production
+    of vitamin K happens to be on the lower side.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

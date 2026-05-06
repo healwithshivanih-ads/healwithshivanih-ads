@@ -1,0 +1,29 @@
+slug: correct-albumin-before-calcium-supplementation
+statement: Low serum calcium associated with low albumin should prompt protein correction
+  before calcium supplementation, because each 1 mg/dL drop in albumin corresponds
+  to approximately 0.8 mg/dL apparent decrease in serum calcium.
+evidence_tier: strong
+rationale: Albumin-corrected calcium is a well-accepted clinical practice. The correction
+  formula (add 0.8 mg/dL calcium for every 1 g/dL albumin below normal) is standard
+  biochemistry.
+coaching_translation: If your calcium looks low on labs but your protein (albumin)
+  is also low, fixing your nutrition and protein intake should come first — the low
+  calcium reading may be a protein issue, not a calcium issue.
+caveats: []
+linked_to_topics:
+- calcium-deficiency
+- calcium-metabolism
+linked_to_supplements:
+- calcium-supplementation
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-calcium-deficiency
+  location: Albumin and Calcium Correction
+  quote: before you correct the calcium, you have to correct the protein deficiency.
+    So 1mg/dl of low albumin that you're going to also consider 0.8mg/dl deficiency
+    in a calcium level.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

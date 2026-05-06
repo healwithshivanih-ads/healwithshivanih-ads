@@ -1,0 +1,26 @@
+slug: stinging-nettle-decreases-shbg
+statement: Stinging nettle (Urtica dioica) is associated with decreased SHBG levels.
+evidence_tier: fm_specific_thin
+rationale: Listed in the FMCN toolkit as a supplement that decreases SHBG. Plausible
+  mechanism via binding to SHBG directly, but clinical evidence is limited.
+coaching_translation: Stinging nettle root is sometimes used by functional medicine
+  practitioners to help free up bound testosterone by lowering SHBG — always use under
+  clinician guidance.
+caveats:
+- Thin peer-reviewed evidence for SHBG-specific effect
+- Source is an expert-consensus toolkit
+- Dosing should be determined by a clinician
+out_of_scope_notes: Supplement dosing is out of coaching scope; refer to clinician.
+linked_to_topics:
+- sex-hormone-binding-globulin
+linked_to_supplements:
+- stinging-nettle-root
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Sex Hormone Binding Globulin (SHBG)
+  quote: Stinging nettle (Urtica dioica) [listed under factors that Decrease SHBG]
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

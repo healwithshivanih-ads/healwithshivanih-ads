@@ -1,0 +1,34 @@
+slug: increased-waist-circumference
+display_name: Increased Waist Circumference
+aliases:
+- belly fat
+- abdominal obesity
+- big belly
+- pot belly
+- central weight gain
+category: metabolic
+severity: concerning
+description: Excess fat accumulation around the abdomen, measured at the midpoint
+  between the 10th rib and iliac crest. In the US, >40 inches in men and >35 inches
+  in women is clinically concerning. Stricter cut-offs apply for those of Asian descent
+  (>35.5 inches men, >31.5 inches women).
+when_to_refer: Refer when combined with elevated blood pressure, fasting insulin,
+  triglycerides, or blood glucose for full metabolic syndrome evaluation.
+linked_to_topics:
+- visceral-adiposity
+- metabolic-syndrome
+- body-composition-assessment
+linked_to_mechanisms:
+- insulin-resistance
+- chronic-systemic-inflammation
+sources:
+- id: coconote-fm-body-composition-bmi
+  location: Waist Circumference Section
+  quote: Data has really shown that in the U.S., a waist circumference greater than
+    40 inches for men and greater than 35 inches for women is concerning. And at that
+    point, we definitely see an increased risk in terms of diabetes, hypertension,
+    cardiovascular disease.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

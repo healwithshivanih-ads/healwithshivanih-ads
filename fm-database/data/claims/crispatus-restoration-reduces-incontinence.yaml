@@ -1,0 +1,31 @@
+slug: crispatus-restoration-reduces-incontinence
+statement: Oral restoration of Lactobacillus crispatus reduces urinary stress and
+  urge incontinence by approximately half in exploratory research.
+evidence_tier: plausible_emerging
+rationale: Dr. Davis references Loyola University Chicago work using anaerobic culture
+  that found oral crispatus restoration reduces incontinence by approximately 50%.
+  Described as exploratory and not a cure, but significant given poor conventional
+  options.
+coaching_translation: Restoring L. crispatus through a fermented yogurt or probiotic
+  may cut bladder leakage problems roughly in half, according to early research.
+caveats:
+- Referenced as 'exploratory studies'—not full RCTs.
+- Source is expert_consensus interview.
+- Conventional medical treatments for incontinence should not be discontinued without
+  clinician input.
+linked_to_topics:
+- vaginal-microbiome
+- perimenopause-microbiome
+linked_to_supplements:
+- lactobacillus-crispatus-probiotic
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Incontinence and Loyola research discussion
+  quote: Oral restoration of crispatus reduces incontinence. By about half. It's not
+    a cure.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

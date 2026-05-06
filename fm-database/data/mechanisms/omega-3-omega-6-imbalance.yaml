@@ -1,0 +1,36 @@
+slug: omega-3-omega-6-imbalance
+display_name: Omega-3 / Omega-6 Fatty Acid Imbalance
+aliases:
+- n-3/n-6 ratio
+- PUFAs imbalance
+- pro-inflammatory lipid environment
+category: metabolic
+summary: A modern dietary pattern with an estimated 20:1 omega-6 to omega-3 ratio
+  (vs. a target of approximately 3:1) creates a pro-inflammatory environment that
+  promotes endothelial dysfunction and atherosclerosis. Correcting this ratio through
+  therapeutic omega-3 supplementation and reduction of omega-6 sources is a key strategy
+  in cardiovascular risk reduction.
+upstream_drivers:
+- high-omega-6-dietary-intake
+- insufficient-omega-3-intake
+downstream_effects:
+- endothelial-dysfunction
+- inflammatory-cascade
+- elevated-triglycerides
+related_mechanisms:
+- inflammatory-cascade
+- endothelial-dysfunction
+linked_to_topics:
+- dyslipidemia-management
+- atherosclerosis-pathogenesis
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Omega-3 intervention section
+  quote: If the patient is not taking an omega 3 for the last 30 years, they are having
+    a ratio is 20:1. Now if we understand this ratio 20:1 omega 6 versus omega 3,
+    what is our goal? Our goal is to maintain this 3:1.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

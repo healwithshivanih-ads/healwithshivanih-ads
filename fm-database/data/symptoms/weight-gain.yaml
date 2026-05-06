@@ -1,5 +1,5 @@
 slug: weight-gain
-display_name: Weight Gain
+display_name: Weight Gain / Difficulty Losing Weight (Hormonal)
 aliases:
 - weight gain
 - midlife-weight-gain
@@ -15,15 +15,30 @@ aliases:
 - slow metabolism
 - difficulty losing weight
 - gaining weight for no reason
+- weight loss resistance
+- metabolic sluggishness
+- obesity
+- increased fat mass
+- belly fat
+- visceral fat
+- gaining weight
+- increasing BMI
+- visceral fat accumulation
+- stress weight
+- cortisol belly
+- belly fat accumulation
+- stubborn weight
+- menopausal weight gain
+- midlife weight gain
+- adiposity
+- love handles
 category: metabolic
 severity: common
-description: Unintended weight gain associated with testosterone deficiency (high
-  SHBG) or estrogen dominance/insulin resistance.
-when_to_refer: 'Rapid (>5% body weight in <6 months) without lifestyle change; with
-
-  edema, dyspnea, or facial fullness (rule out cardiac, renal, Cushing).
-
-  '
+description: Resistance to weight loss and accumulation of abdominal fat associated
+  with elevated FSH, declining sex steroids, and hormonal imbalance in perimenopause
+  and menopause.
+when_to_refer: Refer if unresponsive to lifestyle changes — may warrant hormonal evaluation
+  including FSH, thyroid panel, and metabolic workup.
 linked_to_topics:
 - perimenopause
 - pcos
@@ -34,6 +49,19 @@ linked_to_topics:
 - hashimotos-hypothyroidism
 - sex-hormone-binding-globulin
 - estrogen-metabolism
+- thyroid-dysfunction
+- blood-sugar-dysfunction
+- insulin-resistance
+- toxic-body-burden
+- metabolic-detoxification
+- environmental-toxin-exposure
+- cardiovascular-risk-assessment
+- emotional-healing-in-chronic-disease
+- estrogen-dominance
+- menopause
+- perimenopause-and-menopause
+- fsh-as-aging-biomarker
+- bioidentical-hormone-replacement-therapy
 linked_to_mechanisms:
 - insulin-resistance
 - estrogen-decline
@@ -44,6 +72,14 @@ linked_to_mechanisms:
 - hpt-axis-dysregulation
 - thyroid-hormone-conversion
 - shbg-hormone-binding
+- t4-to-t3-conversion-impairment
+- skeletal-muscle-glucose-uptake
+- endocrine-disruption-by-toxicants
+- vldl-overproduction-from-excess-carbs
+- belly-fat-adipose-estrogen
+- estrogen-progesterone-decline
+- aromatase-activity
+- fsh-elevation-aging-cascade
 sources:
 - id: thurlow-microbiome-session-4
   location: Session 4 — Midlife Weight Gain & Metabolic Shifts
@@ -62,7 +98,31 @@ sources:
   location: Sex Hormone Binding Globulin (SHBG) — Page 01
   quote: This can cause symptoms associated with testosterone deficiency, including
     fatigue, decreased libido, weight gain, mood changes.
-version: 5
+- id: vitaone-health-coaching-toolkit
+  location: Understanding Hashimoto's Hypothyroidism — Why is it Important to Address
+    Hashimoto's?
+  quote: Hypothyroidism slows down metabolism, often leading to unexplained weight
+    gain and difficulty losing weight, even with diet and exercise.
+- id: vitaone-cvs-risk-assessment
+  location: Functional Medicine Timeline (Slide 4)
+  quote: Weight gain,
+- id: vitaone-health-coaching-cheatsheet
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: Fatigue, insomnia, anxiety, weight gain, hormonal imbalance.
+- id: coconote-fm-estrogen-dominance
+  location: Inflammation and Estrogen Cycle
+  quote: I go to the gym, 2-3 months I am absolutely fine but then again I gain my
+    weight. Why? Because we are not treating the addressing process that is inflammation
+    and insulin resistant by fixing the diet.
+- id: coconote-fm-sex-hormones
+  location: Symptoms of Menopause Transition
+  quote: weight gain, problems with urinary bladder, vaginal dryness, loss of interest
+    in sex
+- id: ask-expert-hormonal-health-bhrt
+  location: FSH and Anti-Aging Hormone Targets
+  quote: I'm not really getting anywhere and I'm not losing my love handles and my
+    bones... You've got to bring that FSH down because it causes all those issues.
+version: 13
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

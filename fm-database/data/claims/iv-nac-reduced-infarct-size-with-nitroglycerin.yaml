@@ -1,0 +1,29 @@
+slug: iv-nac-reduced-infarct-size-with-nitroglycerin
+statement: Intravenous NAC administered with nitroglycerin reduced infarct size in
+  patients experiencing acute MI.
+evidence_tier: plausible_emerging
+rationale: IV NAC plus nitroglycerin in AMI has been studied in clinical trials (e.g.,
+  Arstall et al., 1995). The result is clinically interesting but not standard of
+  care.
+coaching_translation: This is a clinical/hospital-level use of NAC and is not relevant
+  to coaching practice — but illustrates the antioxidant importance of glutathione
+  in heart protection.
+out_of_scope_notes: IV NAC administration is strictly a clinical/hospital intervention
+  — out of coaching scope.
+caveats:
+- This is a hospital-based acute intervention — not applicable to supplement coaching.
+- Source is expert lecture — specific trial citation not provided.
+linked_to_topics:
+- cardiovascular-disease-prevention
+linked_to_supplements:
+- nac-n-acetyl-cysteine
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Nutraceuticals — NAC
+  quote: Intravenous NAC given with I love this, given with nitroglycerin, reduced
+    infarct size in people having an MI.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,26 @@
+slug: post-exercise-muscle-soreness
+display_name: Post-Exercise Muscle Soreness
+aliases:
+- DOMS
+- delayed onset muscle soreness
+- muscle aches after training
+- sore muscles
+category: musculoskeletal
+severity: common
+description: Muscle pain and stiffness experienced 24–72 hours after unaccustomed
+  or intense exercise. CWI is widely used as a recovery tool in sports medicine to
+  reduce DOMS.
+when_to_refer: Refer if pain is severe, involves joint swelling, or does not resolve
+  within 1 week.
+linked_to_topics:
+- cold-water-immersion
+linked_to_mechanisms:
+- sympathetic-nervous-system-activation
+sources:
+- id: espeland-2022-cold-water-immersion
+  location: Pain and Inflammation
+  quote: CWI is used as a recovery tool in sports medicine.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

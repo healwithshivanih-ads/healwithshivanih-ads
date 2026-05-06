@@ -1,0 +1,43 @@
+slug: inflammation
+display_name: Inflammation
+aliases:
+- systemic inflammation
+- inflammatory state
+- inflamed body
+- body inflammation
+- chronic inflammation
+category: metabolic
+severity: concerning
+description: A chronic low-grade inflammatory state proposed to arise from an overly
+  acid-forming diet high in refined carbohydrates and processed foods. In this context,
+  inflammation can also feed back to worsen the acid-forming effect of otherwise neutral
+  foods like potatoes.
+when_to_refer: Refer to clinician if client reports signs of acute or severe inflammation,
+  autoimmune flares, or if labs suggest elevated inflammatory markers.
+linked_to_topics:
+- ph-balance
+- lectin-sensitivity
+- yeast-overgrowth
+- acid-alkaline-balance
+- high-carbohydrate-diet-acid-load
+- ph-balance-and-diet
+- refined-carbohydrate-overconsumption
+linked_to_mechanisms:
+- lectin-gut-inflammation
+- cellular-ph-dysregulation
+- dietary-acid-load
+- inflammatory-diet-pattern
+sources:
+- id: barbara-oneil-ph-balance
+  location: Lectins Section
+  quote: If lectins get into the blood, they increase inflammation in it.
+- id: barbara-oneil-acid-alkaline-foods
+  location: Main lecture body
+  quote: Potatoes aren't acid, but if you have inflammation in your body, it can be.
+- id: barbara-oneil-fresh-cheeses-ph
+  location: Carbohydrates and Acid Load
+  quote: Potatoes aren't acid, but if you have inflammation in your body, it can be.
+version: 3
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

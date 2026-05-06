@@ -1,0 +1,25 @@
+slug: if-reduces-triglycerides
+statement: Intermittent fasting is associated with reduced serum triglyceride levels.
+evidence_tier: plausible_emerging
+rationale: Multiple referenced studies support triglyceride reduction with IF. Mechanistically
+  consistent with improved insulin sensitivity and reduced de novo lipogenesis. Trepanowski
+  2017 JAMA Intern Med (ADF RCT) is directly cited.
+coaching_translation: Intermittent fasting may help bring down blood fat (triglyceride)
+  levels, which is good for heart health.
+caveats:
+- Effect sizes and durability vary by IF subtype and individual.
+- Clinician oversight recommended, especially for those with very high triglycerides.
+linked_to_topics:
+- intermittent-fasting
+- cardiometabolic-diet
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Intermittent Fasting — summary table
+  quote: 'Decreases: Triglycerides'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

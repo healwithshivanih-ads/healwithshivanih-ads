@@ -1,0 +1,36 @@
+slug: vitamin-a-required-in-every-hormone-receptor
+statement: Vitamin A (retinol) is present in every hormone receptor binding pocket
+  domain — including those for insulin, vasopressin, oxytocin, adrenal hormones, and
+  sex steroids — and is required to switch the receptor from a repressor state to
+  an active gene-expression state.
+evidence_tier: plausible_emerging
+rationale: Retinoid X receptors (RXR) heterodimerize with many nuclear hormone receptors
+  including thyroid, vitamin D, and steroid receptors — this is established. The claim
+  that ALL hormone receptors require vitamin A at the binding pocket is a strong extension
+  that is biologically grounded but stated more broadly than current consensus.
+coaching_translation: Vitamin A is needed for virtually every hormone in your body
+  to turn its 'on switch' at the receptor — not just the obvious ones like thyroid.
+  Without it, hormones can't do their job even if levels are normal.
+caveats:
+- The claim as stated (all hormone receptors) is broader than current established
+  consensus on RXR heterodimerization.
+- Vitamin A toxicity is a real concern at high doses — do not supplement high-dose
+  retinol without clinician oversight.
+- Source is expert lecture, not primary literature.
+linked_to_topics:
+- hormonal-nutrition-foundations
+- estrogen-signaling
+linked_to_supplements:
+- vitamin-a-retinol
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Vitamin A in Hormone Receptor Binding
+  quote: vitamin a is inside every single binding pocket domain and this includes
+    insulin vasopressin oxytocin um adrenal hormones epinephrine all the hormones
+    work this way
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

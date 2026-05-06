@@ -1,0 +1,39 @@
+slug: interdisciplinary-care-integration
+display_name: Interdisciplinary Care Integration
+aliases:
+- integrated care team model
+- embedded care team
+- team-based care
+category: other
+summary: A systems-level care delivery mechanism in which coaches, clinicians, dietitians,
+  pharmacists, and other providers share patient data, goals, and communication pathways
+  within a unified care team — reducing siloed treatment and improving care continuity
+  and patient outcomes.
+upstream_drivers:
+- fragmented-healthcare-model
+- provider-burnout
+- complex-chronic-illness
+downstream_effects:
+- more-consistent-patient-messaging
+- fewer-patient-drop-offs
+- improved-care-plan-adherence
+- improved-cost-effectiveness
+related_mechanisms:
+- behavior-change-accountability
+- patient-centered-care-model
+linked_to_topics:
+- coach-clinician-collaboration
+- functional-medicine-coaching
+- chronic-disease-management
+evidence_tier: plausible_emerging
+sources:
+- id: ask-expert-future-fm
+  location: Expanding Scope of Influence Section
+  quote: As coaching matures, many organizations are embedding coaches within clinical
+    teams, not just as external vendors, but a core care staff member. And in these
+    models, coaches attend team meetings, they co-manage patient pathways, and they're
+    seen as an extension of the medical team.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

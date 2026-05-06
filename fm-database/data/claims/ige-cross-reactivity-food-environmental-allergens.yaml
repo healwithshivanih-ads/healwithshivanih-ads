@@ -1,0 +1,32 @@
+slug: ige-cross-reactivity-food-environmental-allergens
+statement: Up to 16% of IgE food reactions in blood testing are cross-reactive with
+  inhalant allergens (e.g., pollen, dust mites), meaning a positive food IgE result
+  may reflect environmental — not food — sensitization.
+evidence_tier: plausible_emerging
+rationale: Cross-reactivity between food and environmental allergens is well-documented
+  in allergy literature (e.g., oral allergy syndrome, latex-fruit syndrome). The 16%
+  figure cited in the lecture is plausible but its exact source is not specified.
+coaching_translation: A positive IgE test for banana, avocado, kiwi, or chestnut may
+  not mean the client is reacting to that food — they may actually be reacting to
+  pollen or dust mites. Don't blindly eliminate all positive IgE foods without clinician
+  review.
+out_of_scope_notes: Interpretation of IgE cross-reactivity patterns requires clinical
+  or allergy specialist input.
+caveats:
+- The 16% figure is cited in the lecture without a specific study reference.
+- Source is expert lecture, moderate quality.
+- Cross-reactive foods listed (banana, avocado, kiwi, chestnut, potato, tomato, apple,
+  carrot, melon) are consistent with known pollen-food allergy syndromes.
+linked_to_topics:
+- food-allergy-ige-mediated
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-food-allergies-sensitivities
+  location: IgE Testing Section
+  quote: it is research that 16% of IgE full reaction are cross reacting with an inhalation
+    IgE antibody
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

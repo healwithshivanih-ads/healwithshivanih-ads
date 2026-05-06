@@ -1,0 +1,32 @@
+slug: omega-3-epa-and-dha-both-needed
+statement: Both EPA and DHA are required to achieve the full cognitive and vaginal
+  microbiome benefits of omega-3 supplementation; EPA-only pharmaceutical preparations
+  are insufficient.
+evidence_tier: plausible_emerging
+rationale: Dr. Davis criticizes EPA-only pharmaceutical omega-3 drugs (e.g., icosapentaenoic
+  acid prescriptions) as failing to provide DHA-dependent cognitive protection and
+  the full vaginal microbiome benefit. DHA's role in cognitive health and EPA's cardiovascular
+  benefit are both established; the combined requirement for vaginal/reproductive
+  benefits is stated by Dr. Davis but not supported by specific citations.
+coaching_translation: When choosing a fish oil, make sure it contains both EPA and
+  DHA. EPA-only products miss important benefits for your brain and vaginal health.
+caveats:
+- Source is expert_consensus interview.
+- No specific studies cited for the vaginal microbiome EPA+DHA synergy claim.
+linked_to_topics:
+- vaginal-microbiome
+- gut-microbiome
+linked_to_supplements:
+- omega-3-fish-oil
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: EPA-only pharmaceutical omega-3 criticism
+  quote: They commercialized EPA alone... if you take that EPA drug... you want to
+    prevent cognitive impairment from dementia, you've got to take fish oil with the
+    DHA.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

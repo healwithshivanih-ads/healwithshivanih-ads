@@ -11,17 +11,21 @@ aliases:
 - intensified cravings
 category: metabolic
 severity: common
-description: Persistent desire for sweet or high-carbohydrate foods, often driven
-  by blood glucose instability and reactive hypoglycaemia.
+description: Intense desire for sweet or high-carbohydrate foods, driven by glucose
+  variability, insulin resistance, and impaired metabolic flexibility.
 linked_to_topics:
 - insulin-resistance
 - candida-overgrowth
 - gut-dysbiosis
 - medicine-nutrient-interactions
 - blood-sugar-dysfunction
+- metabolic-health-lchf
+- modern-diet-systemic-dysfunction
+- insulin-resistance-metabolic-syndrome
 linked_to_mechanisms:
 - insulin-resistance
 - gut-brain-axis-dysregulation
+- metabolic-flexibility
 when_to_refer: ''
 sources:
 - id: vitaone-blood-sugar-cheatsheet
@@ -37,7 +41,10 @@ sources:
   location: Section 4.2.1 — Compensated Insulin Resistance (Early IR)
   quote: Post-meal fatigue, sugar cravings, brain fog, mild weight gain around the
     abdomen, intermittent headaches, skin tags/acanthosis nigricans, increased hunger.
-version: 4
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DX1jE67jI4m/
+  quote: Sugar cravings reduce when metabolic flexibility improves
+version: 5
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

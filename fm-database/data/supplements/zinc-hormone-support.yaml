@@ -1,0 +1,44 @@
+slug: zinc-hormone-support
+display_name: Zinc (Hormone Receptor Support)
+category: mineral
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 15
+    max: 30
+    unit: mg
+  tablet:
+    min: 15
+    max: 30
+    unit: mg
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- hormonal-nutrition-foundations
+- estrogen-signaling
+linked_to_claims:
+- zinc-pulls-hormones-into-receptors
+- nutrient-cofactors-required-for-hormone-signaling
+notes_for_coach: Zinc is required for hormone extraction from carrier proteins and
+  entry into receptor binding pocket domains. Deficiency may undermine hormone therapy
+  effectiveness. Encourage food sources (oysters, pumpkin seeds, meat) and assess
+  through clinician if deficiency suspected.
+notes_for_client: Zinc helps your hormones actually get into the right spots in your
+  cells to do their job. It's found in oysters, red meat, pumpkin seeds, and many
+  supplements.
+evidence_tier: strong
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Zinc and Hormone Receptor Function
+  quote: zinc, and it's called a zinc finger... one of its big things is it pulls
+    the hormone, in essence, out of the uber and lets the hormone view the shape of
+    the binding pocket and feel like it can go inside to do its job.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

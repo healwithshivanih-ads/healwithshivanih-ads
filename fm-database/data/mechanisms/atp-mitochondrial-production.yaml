@@ -1,0 +1,30 @@
+slug: atp-mitochondrial-production
+display_name: ATP / Mitochondrial Energy Production
+aliases:
+- magnesium-atp
+- mitochondrial-function
+- cellular-energy-production
+category: metabolic
+summary: Magnesium is an essential cofactor for ATP synthesis and mitochondrial function.
+  Without adequate magnesium, cellular energy production is impaired, contributing
+  to fatigue and chronic fatigue syndrome.
+upstream_drivers:
+- magnesium-deficiency
+downstream_effects:
+- fatigue
+- chronic-fatigue-syndrome
+- reduced-exercise-tolerance
+related_mechanisms:
+- insulin-resistance-magnesium
+linked_to_topics:
+- magnesium-deficiency
+evidence_tier: strong
+sources:
+- id: coconote-fm-magnesium-deficiency
+  location: Chronic fatigue syndrome section
+  quote: Magnesium is important for ATP production also and mitochondrial functions
+    as well.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

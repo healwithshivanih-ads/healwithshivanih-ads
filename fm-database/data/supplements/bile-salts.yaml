@@ -1,0 +1,33 @@
+slug: bile-salts
+display_name: Bile Salts
+category: other
+forms_available:
+- capsule
+- tablet
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- gut-dysbiosis
+linked_to_claims:
+- bile-salts-indicated-for-fat-digestion-impairment
+notes_for_coach: Bile salts are indicated in patients who have had removal surgeries
+  or have difficulty digesting fats. Available as supplements. Typically taken with
+  fat-containing meals.
+notes_for_client: Bile salts help your body digest fats, especially if you've had
+  surgery or struggle with fat absorption.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Replace Section
+  quote: if your patient is having any kind of removal surgeries or you see that patient
+    having difficulty in digesting the fat consider giving them a bile salt it's also
+    available as supplements
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

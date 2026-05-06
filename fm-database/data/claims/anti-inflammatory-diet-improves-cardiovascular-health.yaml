@@ -1,0 +1,28 @@
+slug: anti-inflammatory-diet-improves-cardiovascular-health
+statement: An anti-inflammatory diet improves cardiovascular health by lowering blood
+  pressure, reducing cholesterol levels, and improving blood vessel function.
+evidence_tier: strong
+rationale: The cardiovascular benefits of anti-inflammatory dietary patterns (especially
+  Mediterranean-style) are supported by robust RCT and epidemiological evidence including
+  the PREDIMED trial.
+coaching_translation: Choosing anti-inflammatory foods like olive oil, nuts, fatty
+  fish, and vegetables can support a healthier heart, better blood pressure, and improved
+  cholesterol levels.
+caveats:
+- Source is a coaching toolkit. Clients with diagnosed cardiovascular disease should
+  work with their clinician alongside dietary changes.
+linked_to_topics:
+- chronic-inflammation
+- anti-inflammatory-diet
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Anti Inflammatory Diet — Benefits of Following an Anti-Inflammatory Diet
+  quote: 'Improved Cardiovascular Health: Lower blood pressure, reduced cholesterol
+    levels, and improved blood vessel function.'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

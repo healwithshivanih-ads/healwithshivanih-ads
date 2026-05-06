@@ -1,5 +1,5 @@
 slug: insomnia
-display_name: Insomnia / Sleep Disruption
+display_name: Insomnia & Restless Sleep
 aliases:
 - poor sleep
 - sleep disturbance
@@ -14,13 +14,23 @@ aliases:
 - trouble falling asleep
 - trouble staying asleep
 - wired at bedtime
+- night-waking
+- night-time-alertness
+- wired but tired
+- non-restorative sleep
+- night-time alertness
+- sleep problems
+- sleep difficulty
+- poor sleep quality
+- 3am wakeups
+- sleep issues
+- can't fall asleep
 category: sleep
 severity: common
-description: Difficulty initiating or maintaining sleep, associated with elevated
-  cortisol in the evening disrupting the natural cortisol decline needed for sleep
-  onset.
-when_to_refer: If persistent despite lifestyle interventions; rule out sleep apnea
-  or psychiatric conditions.
+description: Insomnia and restless sleep linked to B5, B6, vitamin D, magnesium, and
+  sodium/potassium imbalance.
+when_to_refer: If sleep disturbance is severe, chronic, or associated with psychiatric
+  symptoms.
 linked_to_topics:
 - low-progesterone
 - perimenopause
@@ -32,12 +42,41 @@ linked_to_topics:
 - hpa-axis-dysregulation
 - hypercortisolism
 - chronic-stress
+- nervous-system-regulation
+- breathwork-for-health
+- hpa-axis-dysfunction
+- emotional-healing-in-chronic-disease
+- magnesium-deficiency
+- magnesium-neurological-mental-health
+- sibo
+- gut-brain-axis-dysfunction
+- sleep-hygiene
+- depression-lifestyle
+- hydration-and-brain-function
+- adrenal-cortisol-resilience
+- gut-health-fodmap-sibo
+- nutrition-deficiency
+- depression-like-symptoms
 linked_to_mechanisms:
 - low-progesterone
 - hpa-axis-dysregulation
 - neurotransmitter-synthesis-impairment
 - hpt-axis-dysregulation
 - cortisol-excess
+- vagal-tone-reduction
+- sympathoadrenal-activation
+- cortisol-dhea-imbalance
+- sympathetic-overdrive
+- limbic-system-overactivation
+- gaba-receptor-modulation
+- melatonin-pathway
+- gut-dysbiosis
+- glymphatic-clearance
+- neuroplasticity
+- prefrontal-cortex-function
+- cellular-hydration
+- dhea-cortisol-ratio-imbalance
+- nutrient-dependent-energy-metabolism
 sources:
 - id: vitaone-sex-hormones-cheatsheet
   location: How to Balance Progesterone Hormone
@@ -56,7 +95,36 @@ sources:
 - id: vitaone-adrenal-toolkit
   location: 'HPA Axis Questionnaire — Section 2: Elevated cortisol state'
   quote: Trouble falling or staying asleep
-version: 5
+- id: vitaone-health-coaching-toolkit
+  location: How to Reset the Nervous System
+  quote: Poor circadian rhythm = sympathetic dominance + cortisol inversion.
+- id: vitaone-health-coaching-cheatsheet
+  location: How to Reset the Nervous System
+  quote: Poor circadian rhythm = sympathetic dominance + cortisol inversion.
+- id: coconote-fm-magnesium-deficiency
+  location: Insomnia section
+  quote: Magnesium is responsible to even maintain a melatonin pathway. So primarily
+    to fix the foundation, first, magnesium should be given.
+- id: coconote-fm-sibo-sifo
+  location: Non-GI Symptoms of SIBO
+  quote: Non-gastrointestinal symptoms, acne, eczema, psoriasis, pains and aches,
+    brain fog, depression, fatigue, insomnia, autoimmune conditions.
+- id: barbara-oneil-healing-mind
+  location: Sleep Section
+  quote: 10 nights of six-hour sleep a night, 50% greater risk of developing depression.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXg8Y9NjIwF/
+  quote: Sleep issues are treated with melatonin pills instead of repairing serotonin,
+    gut, and circadian rhythm.
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Symptoms Discussed
+  quote: Insomnia and restless sleep - Linked to B5, B6, vitamin D, magnesium, sodium/potassium
+    imbalance, and depression-mimicking magnesium patterns.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Symptoms Discussed
+  quote: Insomnia and restless sleep - Linked to B5, B6, vitamin D, magnesium, sodium/potassium
+    imbalance, and depression-mimicking magnesium patterns.
+version: 14
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-06'
 updated_by: shivani

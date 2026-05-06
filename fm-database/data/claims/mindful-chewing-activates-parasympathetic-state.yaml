@@ -1,0 +1,33 @@
+slug: mindful-chewing-activates-parasympathetic-state
+statement: Chewing thoroughly and slowly, particularly from both sides of the mouth,
+  can help activate a parasympathetic (rest-and-digest) state.
+evidence_tier: plausible_emerging
+rationale: Thorough chewing initiates the cephalic phase of digestion and activates
+  parasympathetic nerve signaling via the vagus nerve. While the specific claim about
+  'chewing from both sides' is practitioner-level guidance rather than RCT-confirmed,
+  the broader mechanism is biologically credible.
+coaching_translation: Slowing down at meals and chewing your food well isn't just
+  good for digestion — it actually sends a signal to your nervous system to shift
+  out of stress mode.
+caveats:
+- Source is practitioner discussion, not primary literature.
+- The 'chewing from both sides' specificity lacks direct RCT support; treat as plausible
+  coaching guidance.
+linked_to_topics:
+- mindful-eating
+- stress-and-the-sympathetic-nervous-system
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-coaching-stress-kids
+  location: Stress Client Topic Discussion
+  quote: chewing from both sides and just slowing down and like just appreciating
+    the meal and so just talk to her maybe since you're talking about the elimination
+    diet and eating that that's the time where she can just really just concentrate
+    on making sure it's really started in the mouth and it's liquid and just slowing
+    it down.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

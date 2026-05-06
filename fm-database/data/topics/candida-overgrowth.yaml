@@ -1,14 +1,20 @@
 slug: candida-overgrowth
-display_name: Candida Overgrowth
+display_name: Candida / Fungal Overgrowth
 aliases:
 - candidiasis
 - SIFO
 - small intestinal fungal overgrowth
 - yeast overgrowth
 - intestinal candida
-summary: Overgrowth of Candida yeast in the gut, associated with symptoms such as
-  chronic candida infections, bloating, and food sensitivities. Managed with an anti-candida
-  food plan eliminating sugars, refined grains, fermented foods, and certain fungi.
+- intestinal candidiasis
+- candida dysbiosis
+- chronic candida
+- fungal dysbiosis
+summary: Fungal overgrowth, particularly Candida, is identified as a dysbiotic pattern
+  in the gut microbiome. It is addressed through broad-spectrum herbal antifungals
+  (caprylic acid, garlic oil, oil of oregano) and, in severe cases, pharmaceutical
+  antifungals such as itraconazole, typically combined with herbal support due to
+  the chronic nature of fungal infection.
 common_symptoms:
 - bloating
 - sugar-cravings
@@ -22,9 +28,13 @@ common_symptoms:
 - chronic-candida-infections
 - multiple-food-allergies
 - upper-digestive-tract-gassiness
+- systemic-inflammation
+- food-sensitivities
 red_flags:
 - systemic candidiasis in immunocompromised patients — urgent referral
 - Systemic or invasive candidiasis — requires medical management
+- systemic or invasive candidiasis requires medical management
+- severe-systemic-fungal-infection
 related_topics:
 - gut-dysbiosis
 - leaky-gut
@@ -36,11 +46,15 @@ key_mechanisms:
 - biofilm-formation
 - leaky-gut
 - gut-dysbiosis
-coaching_scope_notes: Coaches can support the Anti-Candida Food Plan under practitioner
-  guidance. Dietary prescription is subject to healthcare professional discretion.
-clinician_scope_notes: Systemic candidiasis or persistent cases require medical evaluation
-  and antifungal therapy.
-evidence_tier: fm_specific_thin
+- gut-dysbiosis-microbiome-imbalance
+- impaired-gut-barrier
+coaching_scope_notes: Coaches may discuss dietary strategies (reducing sugar, refined
+  carbs) and general herbal antifungal support. Pharmaceutical antifungal prescribing
+  is outside coaching scope.
+clinician_scope_notes: Clinician may prescribe itraconazole or fluconazole. Itraconazole
+  preferred over fluconazole for broader coverage. Combination of pharmaceutical and
+  herbal antifungal is preferred for chronic cases.
+evidence_tier: plausible_emerging
 sources:
 - id: vitaone-gut-cheatsheet
   location: Gut Health Cheatsheet / Candida Infection Cheatsheet
@@ -48,7 +62,16 @@ sources:
 - id: vitaone-gut-toolkit
   location: Testing for Low Stomach Acidity — Common Symptoms of Hypochlorhydria
   quote: Chronic candida infections
-version: 2
+- id: vitaone-health-coaching-toolkit
+  location: Anti-Candida Food Plan
+  quote: Chronic candida infections [listed as a common symptom of hypochlorhydria].
+    This food plan should be followed under the supervision of a qualified healthcare
+    professional.
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Therapeutic Options Section
+  quote: Antifungal, already we have discussed the capillic acid, garlic oil, and
+    oil of oregano, they are the antifungal.
+version: 4
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

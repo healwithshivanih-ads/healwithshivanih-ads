@@ -4,44 +4,70 @@ aliases:
 - lipid imbalance
 - abnormal cholesterol
 - hyperlipidemia
-summary: Dyslipidemia is an imbalance in lipid fractions (↑LDL, ↑TG, ↓HDL, ↑ApoB,
-  ↑Lp(a)) driven by metabolic dysfunction, chronic inflammation, oxidative stress,
-  and gut dysbiosis. From a functional medicine lens, it is rarely primary and is
-  often secondary to insulin resistance, hypothyroidism, NAFLD, chronic stress, or
-  poor sleep.
+- high cholesterol
+- abnormal lipid profile
+- lipid abnormalities
+- hypercholesterolemia
+summary: Dyslipidemia encompasses elevated LDL (especially small dense LDL particles),
+  low HDL, elevated triglycerides, and elevated ApoB. Advanced lipid particle testing
+  (LDL-P, ApoB) outperforms calculated LDL-C for cardiovascular risk stratification.
 common_symptoms:
 - fatigue
 - chest-tightness
 - xanthomas
+- high-cholesterol
+- high-triglycerides
+- low-hdl
+- no-symptoms-at-rest
 red_flags:
 - tg-above-500
 - lpa-very-high-with-family-history-cvd
 - apob-above-120
+- very-high-triglycerides
+- low-hdl-below-40
+- ldl-greater-than-190
+- triglycerides-above-500
+- familial-hypercholesterolemia
 related_topics:
 - insulin-resistance
 - hypothyroidism
 - nafld
 - cardiovascular-disease
 - metabolic-syndrome
+- cardiovascular-risk-assessment
+- cardiovascular-disease-prevention
+- familial-hypercholesterolemia
 key_mechanisms:
 - insulin-resistance
 - chronic-inflammation
 - oxidative-stress
 - gut-dysbiosis
-coaching_scope_notes: Coaches can support dietary changes (Mediterranean/anti-inflammatory),
-  lifestyle optimization (sleep, stress, exercise), and supplement education. Biomarker
-  interpretation and supplement dosing require clinician oversight.
-clinician_scope_notes: Order advanced lipid panel (ApoB, LDL-P, TG:HDL, Lp(a), oxidized
-  LDL, hs-CRP, fasting insulin/HOMA-IR). Investigate secondary causes. Monitor liver
-  enzymes with niacin.
-evidence_tier: plausible_emerging
+- vldl-overproduction-from-excess-carbs
+- oxidative-stress-vascular
+- small-dense-ldl-atherogenesis
+- apob-atherogenic-particle-burden
+- vldl-to-ldl-cascade
+coaching_scope_notes: Coaches can support dietary changes (Mediterranean diet, sugar
+  reduction, omega-3 rich foods), exercise, and weight management to improve lipid
+  profiles.
+clinician_scope_notes: LDL-P, ApoB, Lp(a), and particle sizing require lab orders
+  and clinical interpretation. Statin and niacin prescribing is clinician scope.
+evidence_tier: strong
 sources:
 - id: vitaone-cv-cheatsheet
   location: Dyslipidemia Cheatsheet — Sections 1 & 2
   quote: Dyslipidemia = Imbalance in lipid fractions ↑LDL, ↑TG, ↓HDL, ↑ApoB, ↑Lp(a).
     Root cause = Metabolic dysfunction, chronic inflammation, oxidative stress, gut
     dysbiosis.
-version: 1
+- id: vitaone-cvs-risk-assessment
+  location: Understand Blood Lipid (Slide 6)
+  quote: VLDL is synthesized in the liver, from excess dietary carbohydrates.
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Lipid Panel and Risk Markers
+  quote: LDL particle number, even better as you'll see in a minute. ApoB, what is
+    the HDL particle number? And then you have to decide, based on the guidelines,
+    of course, what are my treatment goals?
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

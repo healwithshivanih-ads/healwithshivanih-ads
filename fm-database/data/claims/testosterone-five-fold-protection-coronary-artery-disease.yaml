@@ -1,0 +1,27 @@
+slug: testosterone-five-fold-protection-coronary-artery-disease
+statement: Adequate testosterone levels in men have been found to offer greater than
+  five-fold protection against coronary artery disease.
+evidence_tier: plausible_emerging
+rationale: Some observational studies associate low testosterone with increased cardiovascular
+  risk in men, but the magnitude of 'five-fold protection' is from observational data
+  and not established by RCT consensus.
+coaching_translation: Testosterone is a hormone worth discussing with your doctor,
+  especially for male clients with low levels and elevated heart disease risk.
+out_of_scope_notes: Testosterone testing and replacement therapy are clinician scope.
+caveats:
+- Five-fold claim is observational; causality not established.
+- Source does not cite specific study.
+- This source is classified as an expert consensus/FM toolkit — treat as plausible_emerging.
+linked_to_topics:
+- cardiovascular-dysfunction
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: CVD Risk Analysis — Lab Results
+  quote: levels of testosterone have been found to offer men greater than five-fold
+    protection against coronary artery disease.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

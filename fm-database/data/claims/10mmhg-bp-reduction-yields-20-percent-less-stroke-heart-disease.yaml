@@ -1,0 +1,24 @@
+slug: 10mmhg-bp-reduction-yields-20-percent-less-stroke-heart-disease
+statement: Every 10 mmHg reduction in blood pressure is associated with a 20% decrease
+  in risk of stroke or heart disease.
+evidence_tier: strong
+rationale: This relationship is robustly supported by large meta-analyses of blood
+  pressure treatment trials.
+coaching_translation: Getting blood pressure down — even a little — dramatically cuts
+  the risk of stroke and heart attack. Small gains compound into major protection.
+caveats: []
+linked_to_topics:
+- blood-pressure-management
+- visceral-adiposity
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-body-composition-bmi
+  location: Blood Pressure Section
+  quote: We know that with every 10 millimeter decrease in blood pressure, we get
+    a 20% decrease in stroke or heart disease.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

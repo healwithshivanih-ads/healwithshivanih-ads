@@ -1,0 +1,35 @@
+slug: anthocyanins
+display_name: Anthocyanins (e.g., from Blueberries)
+category: other
+forms_available:
+- capsule
+- powder
+timing_options:
+- with_breakfast
+- morning
+- with_lunch
+take_with_food: optional
+linked_to_topics:
+- blood-pressure-management
+linked_to_claims:
+- anthocyanins-lower-blood-pressure-by-5mmhg
+notes_for_coach: 100g of blueberries twice daily (or equivalent anthocyanin dose)
+  has been associated with ~5 mmHg reduction in blood pressure after 4 weeks. Whole
+  food sources are preferred but supplements can be used.
+notes_for_client: Blueberries are rich in anthocyanins — plant pigments with evidence
+  for reducing blood pressure. Aim for about one cup (100g) twice a day, or ask your
+  clinician about an equivalent supplement.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-body-composition-bmi
+  location: Blood Pressure / Anthocyanin Section
+  quote: Great studies showing that one cup twice a day — sorry, one cup twice a day
+    of blueberries or the equivalent amount of anthocyanin you would get from that,
+    which is about 100 grams twice a day, can lower blood pressure by five millimeters
+    mercury after four weeks.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

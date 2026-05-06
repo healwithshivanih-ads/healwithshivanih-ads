@@ -1,0 +1,37 @@
+slug: patient-centered-care-model
+display_name: Patient-Centered Care Model
+aliases:
+- person-centered care
+- whole-person medicine
+- integrative patient experience
+category: other
+summary: A care paradigm that places the patient's lived experience, environment,
+  habits, lifestyle, and story at the center of clinical decision-making, in contrast
+  to disease-centered models that treat organs or symptoms in isolation. Functional
+  medicine operationalizes this through upstream cause identification and personalized
+  care planning.
+upstream_drivers:
+- limitations-of-disease-centered-medicine
+- patient-data-and-technology-advances
+downstream_effects:
+- improved-patient-engagement
+- better-chronic-disease-outcomes
+- greater-care-plan-adherence
+related_mechanisms:
+- interdisciplinary-care-integration
+- behavior-change-accountability
+- upstream-cause-identification
+linked_to_topics:
+- functional-medicine-coaching
+- chronic-disease-management
+- elimination-diet
+evidence_tier: plausible_emerging
+sources:
+- id: ask-expert-future-fm
+  location: Disease-Centered to Patient-Centered Shift Section
+  quote: The shift we're seeing toward care that is preventative, integrative, and
+    patient-centered is really putting the human experience at the center of biology.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

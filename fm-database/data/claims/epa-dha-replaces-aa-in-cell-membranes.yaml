@@ -1,0 +1,31 @@
+slug: epa-dha-replaces-aa-in-cell-membranes
+statement: EPA and DHA supplementation progressively replaces arachidonic acid in
+  immune cell membranes, shifting from pro-inflammatory to pro-resolving signaling.
+evidence_tier: strong
+rationale: Well-established membrane phospholipid remodeling mechanism. Arachidonic
+  acid makes up 20–80% of membrane distribution depending on tissue type. EPA/DHA
+  displacement begins in days but membrane saturation requires 4 weeks; RBC membrane
+  incorporation requires 120 days of continuous supplementation.
+coaching_translation: Taking omega-3s consistently for at least 4 months is what it
+  takes to really shift your cells into an anti-inflammatory state — short-term use
+  won't cut it.
+caveats:
+- Requires continued supplementation; benefits reverse on discontinuation.
+- Immunosuppressed individuals should consult a clinician before lowering AA too aggressively.
+linked_to_topics:
+- omega-3-fatty-acids
+linked_to_supplements:
+- epa-dha-fish-oil
+- algae-oil-dha-epa
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-omega-3-fatty-acids
+  location: Fatty Acid Immune Cell Membrane Incorporation Slide
+  quote: EPA and DHA supplementation will replace arachidonic acid in immune cell
+    membranes...it starts beginning in days but it peaks at least around 4 weeks...the
+    RBC membrane incorporation happens only after 120 days.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

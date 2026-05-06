@@ -10,6 +10,7 @@ timing_options:
 - with_lunch
 - with_dinner
 - bedtime
+- evening
 take_with_food: optional
 linked_to_topics:
 - microbiome
@@ -21,21 +22,25 @@ linked_to_topics:
 - low-fodmap-diet
 - sibo
 - ibs
+- fungal-overgrowth
+- sifo
 linked_to_claims:
 - antibiotic-use-can-disrupt-microbiome-for-years
 - saccharomyces-boulardii-outcompetes-candida-restores-balance
 - fodmap-4-phase-fm-protocol
-notes_for_coach: Used during the Elimination Phase of the FODMAP protocol alongside
-  strict low-FODMAP diet. A yeast-based probiotic that is not affected by antibacterial
-  antimicrobials. Check with clinician for dosing.
-notes_for_client: This is a friendly yeast probiotic that helps calm your gut during
-  the early stages of your protocol. It works differently from bacterial probiotics
-  and is resilient during antibiotic-type treatments.
+- saccharomyces-boulardii-antifungal-probiotic-15-21-days
+- saccharomyces-boulardii-indicated-for-negative-bacterial-dysbiosis
+- saccharomyces-boulardii-reduces-fungal-load
+notes_for_coach: Saccharomyces boulardii is a beneficial yeast (not a bacteria) and
+  is resistant to antibiotics. Particularly useful in SIFO and mixed SIBO/SIFO presentations.
+  5 billion CFU for 6 weeks is cited.
+notes_for_client: This specific probiotic yeast has been shown to help reduce fungal
+  overgrowth and clear fungal toxins from your gut.
 evidence_tier: plausible_emerging
 typical_dose_range:
   capsule:
-    min: 5
-    max: 10
+    min: 5000000000
+    max: 5000000000
     unit: capsules
 linked_to_mechanisms: []
 sources:
@@ -55,7 +60,22 @@ sources:
   location: Functional Medicine Approach to Using Low-FODMAP Clinically — Elimination
     Phase
   quote: Strict low-FODMAP diet + probiotics (S. boulardii, L. plantarum).
-version: 4
+- id: coconote-fm-approach-inflammation
+  location: Probiotics – Types and Protocol
+  quote: The second kind of antibiotic we can say is antifungal probiotic. We can
+    prescribe this antifungal probiotic, Saccharomyces boulardii, just for 15 days.
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Probiotics Section
+  quote: you can consider Saccharomyces boulari when you consider deficiency of negative
+    bacteria, bacteria, and then if you have a humble ogre, consider Saccharomyces
+    boulari. And Saccharomyces boulari you can consider for 21 days to one month.
+    You can do this two times a day.
+- id: coconote-fm-sibo-sifo
+  location: SIFO Treatment Section
+  quote: The probiotic strain, Saccharomyces boulari, which we say has been shown
+    to reduce the fungus inside the gut. It is also responsible for moving out the
+    fungus toxins from the body as well.
+version: 7
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

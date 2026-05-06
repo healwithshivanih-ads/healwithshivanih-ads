@@ -1,0 +1,28 @@
+slug: muscle-pain-myalgia
+display_name: Muscle Pain (Myalgia)
+aliases:
+- statin-induced myopathy
+- muscle aches
+- muscle soreness on statins
+- musculoskeletal pain
+category: musculoskeletal
+severity: concerning
+description: Muscle pain or weakness that can be a side effect of statin therapy.
+  Ranges from mild myalgia to severe rhabdomyolysis in rare cases. The document describes
+  a pathologist with muscle pain while on statins who resolved symptoms with magnesium
+  supplementation.
+when_to_refer: If muscle pain is severe, accompanied by dark urine, or creatine kinase
+  is markedly elevated — refer to clinician immediately (possible rhabdomyolysis).
+linked_to_topics:
+- statin-therapy-risks-and-benefits
+linked_to_mechanisms:
+- calcium-magnesium-imbalance
+sources:
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Statin side effects / case discussion
+  quote: He has muscle pain and he's taking the medication over there. And he was
+    in pain and he called me and I got, I don't have pain now.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

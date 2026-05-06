@@ -1,0 +1,28 @@
+slug: oral-contraceptives-increase-zinc-deficiency-risk
+statement: Oral contraceptives containing estrogen may act as a zinc agonist and contribute
+  to zinc depletion, increasing the risk of zinc deficiency in women taking them.
+evidence_tier: plausible_emerging
+rationale: Nutrient-drug interactions between oral contraceptives and micronutrient
+  status (including zinc) are recognised in functional medicine and nutritional research,
+  though mechanistic details in the document are limited.
+coaching_translation: Women on the birth control pill may be at higher risk of low
+  zinc levels, so it's worth keeping an eye on zinc-rich foods or discussing testing
+  with your doctor.
+caveats:
+- Source is expert lecture (moderate quality). The mechanism described ('estrogen
+  as zinc agonist') is an unusual framing; verify with clinician or primary literature.
+linked_to_topics:
+- zinc-deficiency
+linked_to_supplements:
+- zinc
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-zinc-deficiency
+  location: Risk Factors
+  quote: Estrogen happens to be agonist in terms of zinc, so again one of the concerns
+    with people who take oily contraceptives.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

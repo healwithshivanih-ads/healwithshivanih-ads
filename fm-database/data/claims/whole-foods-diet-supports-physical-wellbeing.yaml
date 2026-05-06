@@ -1,0 +1,26 @@
+slug: whole-foods-diet-supports-physical-wellbeing
+statement: Eating a whole foods-based diet rich in colorful fruits and vegetables
+  is a key component of physical wellbeing and self-care.
+evidence_tier: plausible_emerging
+rationale: Presented as a self-care behavior in the Physical Wellbeing domain of the
+  questionnaire. Broad consensus supports whole foods dietary patterns for health;
+  the document frames this as a self-care assessment item rather than a clinical recommendation.
+coaching_translation: When assessing physical self-care, ask clients how often they
+  eat a whole foods diet rich in colorful produce — this is one of the foundational
+  physical wellbeing behaviors.
+caveats:
+- Presented as a questionnaire item, not as a clinical claim with cited evidence.
+- Source is an internal coaching toolkit.
+linked_to_topics:
+- self-care
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Self-Care Questionnaire – Physical Wellbeing
+  quote: Eat a whole foods-based diet rich in colorful fruits and vegetables?
+version: 2
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

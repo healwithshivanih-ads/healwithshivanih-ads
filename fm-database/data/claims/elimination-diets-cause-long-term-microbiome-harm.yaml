@@ -1,0 +1,37 @@
+slug: elimination-diets-cause-long-term-microbiome-harm
+statement: Elimination diets, carnivore diets, and low-FODMAP diets provide short-term
+  symptom relief but cause long-term microbiome damage through loss of microbial diversity
+  and pathological overgrowth of species like Akkermansia muciniphila.
+evidence_tier: plausible_emerging
+rationale: Dr. Davis argues that dietary restriction starves beneficial microbes and
+  leads to eventual Akkermansia muciniphila overgrowth beyond healthy levels (~3–5%),
+  causing it to erode the gut lining and increasing risk of colitis, diverticular
+  disease, colon cancer, and endotoxemia. This is a nuanced and somewhat contrarian
+  position—Akkermansia is generally considered beneficial at lower colonization levels.
+coaching_translation: Restrictive diets like carnivore, keto, or elimination protocols
+  may make you feel better quickly, but they can slowly deplete your gut microbiome
+  diversity—which can backfire months later with weight gain, worsening symptoms,
+  and long-term gut damage.
+caveats:
+- Source is expert_consensus interview.
+- The Akkermansia overgrowth-causes-harm argument is not consensus; Akkermansia is
+  widely considered beneficial.
+- Individual responses to elimination diets vary significantly.
+- Some patients may genuinely need elimination diets for autoimmune conditions.
+linked_to_topics:
+- gut-microbiome
+- sibo
+- endometriosis-microbiome
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Elimination diet and microbiome harm discussion
+  quote: These elimination diets, whether it's elimination or low FODMAPs diet or
+    carnivorous diet or ketogenic diet... they provide upfront relief... 18 months
+    later... you would see they lost hundreds of thousands of species.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

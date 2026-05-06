@@ -1,0 +1,51 @@
+slug: familial-hypercholesterolemia
+display_name: Familial Hypercholesterolemia
+aliases:
+- FH
+- hereditary hypercholesterolemia
+- genetic hypercholesterolemia
+- hereditary high LDL
+summary: A genetic condition characterized by LDL levels persistently above 190 mg/dL
+  and family history of elevated cholesterol (often total cholesterol >270–300 mg/dL).
+  These patients represent one of the clear indications for statin therapy due to
+  the genetic basis of their elevated cardiovascular risk.
+common_symptoms:
+- markedly-elevated-ldl
+- premature-coronary-disease
+- very-high-ldl-above-190
+- family-history-of-premature-heart-disease
+red_flags:
+- ldl-greater-than-190
+- premature-coronary-events-family-history
+- ldl-above-190
+- family-history-of-early-mi
+related_topics:
+- dyslipidemia
+- cardiovascular-disease-prevention
+- statin-therapy-risks-and-benefits
+- cardiovascular-risk-assessment
+key_mechanisms:
+- ldl-receptor-defect
+- apob-atherogenic-particle-burden
+- ldl-receptor-dysfunction
+coaching_scope_notes: If a client presents with LDL >190 and family history of high
+  cholesterol or early heart disease, refer to a clinician. This population falls
+  outside the scope of lifestyle-only intervention.
+clinician_scope_notes: Statin therapy is indicated. Screen first-degree relatives.
+  LDL >190 with positive family history strongly suggests FH.
+evidence_tier: strong
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Familial Hypercholesterolemia and Guidelines
+  quote: A calculated LDL, which we don't think is the best way to do it. But that's
+    frequently what we get sent to us, calculated LDL greater than 190. Every bell
+    should go off that you are dealing with familial hypercholesterolemia.
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Indications for statin therapy section
+  quote: There are some kind of genetic variation where the LDL level is more than
+    190. If you see any patient whose LDL level is more than 190, around 190, ask
+    the question, do your family or do your family have high cholesterol?
+version: 2
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

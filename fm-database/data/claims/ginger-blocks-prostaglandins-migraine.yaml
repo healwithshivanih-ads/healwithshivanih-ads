@@ -1,26 +1,33 @@
 slug: ginger-blocks-prostaglandins-migraine
 statement: Ginger blocks prostaglandins involved in migraine, improves gastric emptying,
-  and helps nausea and burping associated with gastritis- and reflux-triggered migraines.
+  and helps nausea and burping associated with gastritis or reflux-triggered migraines.
 evidence_tier: plausible_emerging
-rationale: Ginger's anti-prostaglandin activity (via COX inhibition) has RCT support
-  in dysmenorrhoea and some migraine studies; gastroprokinetic effects are documented
-  in small trials.
-coaching_translation: A small ginger shot or ginger tea is a safe, practical way to
-  address both nausea and headaches — especially those linked to delayed digestion.
+rationale: Ginger's anti-prostaglandin and prokinetic effects have biological plausibility
+  and some clinical trial support for nausea; application specifically to migraine
+  management is emerging.
+coaching_translation: A small ginger shot (½ inch fresh ginger in warm water) is a
+  low FODMAP-safe tool to ease migraine nausea and may help reduce headache intensity
+  by relaxing the gut-brain connection.
 linked_to_topics:
 - elimination-diet
 - low-fodmap-diet
+- gut-brain-axis
 linked_to_mechanisms:
 - gut-motility-dysregulation
 out_of_scope_notes: ''
-caveats: []
+caveats:
+- Source document is a coaching toolkit, not primary literature
 linked_to_supplements: []
 sources:
 - id: vitaone-elimination-diet-toolkit
   location: FODMAP Plan SOS Solutions — Migraine/Headache
   quote: Ginger blocks prostaglandins involved in migraine. Improves gastric emptying
     (many migraines come from delayed stomach emptying).
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: MIGRAINE / HEADACHE — 5. Ginger Shot
+  quote: Ginger blocks prostaglandins involved in migraine. Improves gastric emptying
+    (many migraines come from delayed stomach emptying).
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

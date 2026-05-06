@@ -1,0 +1,31 @@
+slug: thyroid-autoimmunity-silently-drives-infertility
+statement: Thyroid autoimmunity (Hashimoto's thyroiditis) can silently impair female
+  fertility by disrupting thyroid hormone conversion and ovarian function, even when
+  TSH appears normal.
+evidence_tier: plausible_emerging
+rationale: Thyroid peroxidase (TPO) antibodies are associated with increased miscarriage
+  risk and impaired implantation even in euthyroid women, supported by multiple meta-analyses.
+  The mechanism involves direct ovarian effects of thyroid antibodies and subtle hypothyroidism
+  not captured by TSH alone.
+coaching_translation: Thyroid antibodies — a sign of thyroid autoimmunity — can affect
+  fertility even when thyroid hormone levels appear normal on standard testing. It's
+  worth asking your doctor to test specifically for thyroid antibodies.
+out_of_scope_notes: Thyroid antibody testing and clinical management are clinician
+  territory.
+caveats:
+- Euthyroid thyroid autoimmunity and fertility is an active research area; clinical
+  management remains debated.
+- Source is Instagram educational content.
+linked_to_topics:
+- pcos-fertility
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXtzQLWjKjv/
+  quote: Ignoring thyroid autoimmunity, which silently drives infertility in many
+    women.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

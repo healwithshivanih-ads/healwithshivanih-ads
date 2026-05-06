@@ -1,0 +1,40 @@
+slug: fsh-elevation-aging-cascade
+display_name: FSH Elevation Aging Cascade
+aliases:
+- high FSH effects
+- FSH and bone loss
+- FSH and weight gain
+- FSH and cognition
+category: endocrine
+summary: Elevated follicle-stimulating hormone (FSH), which rises as sex steroids
+  decline in menopause, drives multiple aging effects including bone loss, abdominal
+  weight gain, cognitive decline, and difficulty losing weight. FSH was being studied
+  as a target for monoclonal antibody weight-loss therapies before GLP-1 medications
+  dominated the field.
+upstream_drivers:
+- declining-estrogen
+- menopause
+- premature-ovarian-insufficiency
+downstream_effects:
+- bone-loss
+- abdominal-weight-gain
+- cognitive-decline
+- difficulty-losing-weight
+related_mechanisms:
+- hormone-receptor-binding
+linked_to_topics:
+- fsh-as-aging-biomarker
+- perimenopause-and-menopause
+- bioidentical-hormone-replacement-therapy
+evidence_tier: plausible_emerging
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: FSH and Anti-Aging Hormone Targets
+  quote: High FSH, you can't lose weight. High FSH, your bones can't get well no matter
+    what you do... Before the GLP-1 medications were hit the market as these major
+    weight loss miracles, companies were looking at monoclonal antibodies against
+    FSH because if you blocked it, you could lose weight better.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

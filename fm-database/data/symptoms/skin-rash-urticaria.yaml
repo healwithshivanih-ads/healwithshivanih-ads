@@ -1,0 +1,30 @@
+slug: skin-rash-urticaria
+display_name: Skin Rash / Urticaria / Hives
+aliases:
+- hives
+- skin itching
+- rash
+- urticaria
+- skin flushing
+category: skin
+severity: common
+description: Itching, redness, flushing, or hive-like reactions on the skin, commonly
+  associated with histamine intolerance, nightshade sensitivity, or food allergies.
+when_to_refer: Refer if associated with throat swelling, breathing difficulty, or
+  anaphylaxis symptoms.
+linked_to_topics:
+- histamine-intolerance
+- nightshade-sensitivity
+- salicylate-sensitivity
+- elimination-diet
+linked_to_mechanisms:
+- histamine-enzyme-inhibition
+- glycoalkaloid-toxicity
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Histamine Food Triggers — Symptoms of Histamine Reactions
+  quote: 'Skin: itching, redness, flushing, hives'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,29 @@
+slug: cwi-reduces-transforms-adipose-tissue
+statement: Cold water immersion reduces and/or transforms body adipose tissue, including
+  promoting the conversion of white adipose tissue to brown/beige fat.
+evidence_tier: plausible_emerging
+rationale: Systematic review of 104 studies; mechanism (BAT activation, beiging) is
+  biologically plausible and supported by animal and some human data, but human studies
+  are small and heterogeneous.
+coaching_translation: Regular cold water exposure may help shift stored white fat
+  toward more metabolically active brown fat, supporting body composition and metabolic
+  health goals.
+caveats:
+- Small study sizes
+- Methodological variation across studies
+- Confounding from active lifestyle and diet
+- Source is a systematic review, not a single high-powered RCT
+linked_to_topics:
+- cold-water-immersion
+- brown-adipose-tissue-activation
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: espeland-2022-cold-water-immersion
+  location: Abstract
+  quote: CWI seems to reduce and/or transform body adipose tissue.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,34 @@
+slug: turmeric-is-nf-kb-inhibitor
+statement: Turmeric (curcumin) acts as a natural NF-κB inhibitor with a mechanism
+  similar to steroids, but without immunosuppressive side effects; therapeutic dose
+  is approximately 1000 mg of curcuminoids twice daily.
+evidence_tier: plausible_emerging
+rationale: Curcumin's inhibition of NF-κB is well-documented in vitro and in animal
+  studies. Clinical RCT evidence in humans is growing but inconsistent, partly due
+  to bioavailability challenges. Calling it equivalent to steroids is an oversimplification;
+  steroids have broader immunosuppressive effects.
+coaching_translation: Turmeric/curcumin works at the root of the inflammation process
+  — the same master switch that steroids target — but without suppressing your immune
+  system. It needs to be taken consistently at a meaningful dose to work.
+caveats:
+- Bioavailability of standard curcumin is low; enhanced forms (with piperine, liposomal,
+  or phospholipid complex) are preferred.
+- The comparison to steroids is mechanistically simplified; steroids have broader
+  immunosuppression.
+- Source is expert FM lecture (moderate quality).
+linked_to_topics:
+- chronic-inflammation
+linked_to_supplements:
+- turmeric-curcumin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-approach-inflammation
+  location: Anti-Inflammatory Herbs – Turmeric
+  quote: Turmeric is basically one of those steroids. It is a master and a cup of
+    tea blocker or inhibitor. The ideal dose is 1000 ml. You can use a capsule two
+    times a day.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

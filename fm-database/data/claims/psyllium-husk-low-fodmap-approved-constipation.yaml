@@ -1,0 +1,29 @@
+slug: psyllium-husk-low-fodmap-approved-constipation
+statement: Psyllium husk (isabgol) at 1 tsp in warm water is low FODMAP approved and
+  helps relieve constipation by forming a soluble fiber gel that normalizes stool
+  movement.
+evidence_tier: strong
+rationale: Psyllium is classified as low FODMAP at standard doses by Monash University.
+  Multiple RCTs support psyllium for IBS-C and constipation management.
+coaching_translation: Psyllium husk (isabgol) is a safe, IBS-friendly fiber supplement
+  to ease constipation. Start with 1 tsp in a large glass of warm water. PHGG is an
+  even gentler option for IBS-C.
+caveats:
+- Take with adequate water to prevent choking or worsening constipation
+- Start low and increase gradually
+linked_to_topics:
+- low-fodmap-diet
+- ibs
+linked_to_supplements:
+- psyllium-husk
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: FODMAP Plan SOS Solutions — CONSTIPATION
+  quote: Psyllium Husk (Isabgol) – 1 tsp in warm water. Low FODMAP approved. Soluble
+    fiber → gel formation → smooth stool movement.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

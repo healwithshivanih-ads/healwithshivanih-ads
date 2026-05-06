@@ -1,0 +1,29 @@
+slug: electrolyte-supplementation-supports-fasting-days
+statement: Maintaining electrolyte intake (calcium, magnesium, sodium, potassium,
+  chloride) on fasting days is recommended to support hydration and prevent adverse
+  symptoms.
+evidence_tier: plausible_emerging
+rationale: Consistent with known electrolyte losses during caloric restriction and
+  risk of hyponatraemia, hypokalaemia, and muscle cramps. Standard guidance in supervised
+  fasting programmes.
+coaching_translation: On fasting days, sipping an electrolyte drink can help prevent
+  headaches, dizziness, and fatigue.
+caveats:
+- Specific electrolyte doses are outside coaching scope — defer to clinician, especially
+  for clients on BP or cardiac medications.
+- Clinician should personalise electrolyte plan.
+out_of_scope_notes: Electrolyte dosing and selection for medically complex clients
+  requires clinician input.
+linked_to_topics:
+- intermittent-fasting
+linked_to_supplements:
+- electrolyte-blend
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Intermittent Fasting — Personalized Recommendations
+  quote: Electrolytes (calcium, magnesium, sodium, potassium, chloride)
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,30 @@
+slug: methylcobalamin-preferred-active-b12-form
+statement: Methylcobalamin is the active form of vitamin B12 used in key body processes,
+  including homocysteine remethylation, and is the preferred supplemental form.
+evidence_tier: plausible_emerging
+rationale: The document states methylcobalamin is the active form utilised in body
+  processes, whereas cyanocobalamin (the most common supplemental form) requires conversion.
+  Directly supplying the active form is biologically rational.
+coaching_translation: When recommending B12 supplements, look for methylcobalamin
+  on the label rather than cyanocobalamin, especially for clients with MTHFR variants
+  or absorption concerns.
+caveats:
+- Source is expert lecture; head-to-head RCT evidence comparing methylcobalamin vs.
+  cyanocobalamin outcomes is limited.
+- Higher doses are generally safe due to renal excretion.
+linked_to_topics:
+- vitamin-b12
+- mthfr-gene-variant
+linked_to_supplements:
+- methylcobalamin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: Supplementation for MTHFR section
+  quote: The B12 supplement and it should be in the form of methylcobalamin which
+    is the active form.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

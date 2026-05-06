@@ -1,0 +1,41 @@
+slug: nitric-oxide-production
+display_name: Nitric Oxide Production
+aliases:
+- NO release
+- vascular nitric oxide
+- NO pathway
+- endothelial nitric oxide
+category: signaling
+summary: L-arginine serves as the substrate for nitric oxide synthase, producing nitric
+  oxide which causes vasodilation and reduces blood pressure. Increasing L-arginine
+  intake supports endothelial function and is used as a dietary strategy for blood
+  pressure management.
+upstream_drivers:
+- high-intensity-exercise
+- dietary-nitrates
+- l-arginine-intake
+- endothelial-health
+downstream_effects:
+- improved-blood-flow
+- enhanced-tissue-glucose-delivery
+- vasodilation
+- blood-pressure-reduction
+related_mechanisms:
+- skeletal-muscle-glucose-uptake
+- renin-angiotensin-system
+linked_to_topics:
+- antigravity-exercise-for-blood-sugar
+- blood-pressure-management
+evidence_tier: strong
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Antigravity Exercises
+  quote: Nitric oxide dump is a short, intense workout that's designed to increase
+    the production of nitric oxide in the body.
+- id: coconote-fm-body-composition-bmi
+  location: Blood Pressure / Dietary Intervention Section
+  quote: L-arginine as an amino acid can increase nitric oxide and improve blood pressure.
+version: 2
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,36 @@
+slug: srebp1c-upregulation
+display_name: SREBP1c Upregulation of Desaturase/Elongase Enzymes
+aliases:
+- sterol-regulatory element binding protein 1C
+- FREBP1C
+- SREBP1
+category: signaling
+summary: SREBP1c (sterol-regulatory element binding protein 1C) is a transcription
+  factor that upregulates desaturase and elongase enzyme production. Insulin activates
+  SREBP1c, amplifying fatty acid conversion; glucagon inhibits it. Omega-3 fatty acids
+  themselves inhibit SREBP1c, reducing excess pro-inflammatory fatty acid synthesis.
+upstream_drivers:
+- insulin-elevation
+- high-carbohydrate-diet
+- insulin-resistance
+downstream_effects:
+- omega6-omega3-competitive-inhibition
+- arachidonic-acid-cascade
+related_mechanisms:
+- omega6-omega3-competitive-inhibition
+- insulin-resistance
+linked_to_topics:
+- omega-3-fatty-acids
+- omega-6-omega-3-ratio-imbalance
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-omega-3-fatty-acids
+  location: SREBP1C Discussion Slide
+  quote: what actually stimulates the SREBP1 activity is the insulin...omega-3, so
+    that is why there is always an emphasis on intake of good foods that are rich
+    in omega-3 or supplements, omega-3 supplements because they itself inhibit the
+    SREBP1 activity.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

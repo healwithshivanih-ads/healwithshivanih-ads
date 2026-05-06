@@ -1,0 +1,41 @@
+slug: insulin-resistance-early-detection
+display_name: Early Detection of Insulin Resistance
+aliases:
+- subclinical insulin resistance
+- pre-diabetic insulin dysregulation
+summary: Insulin resistance can be present and diagnosable even when fasting blood
+  glucose and fasting insulin are within normal ranges. The Glucose Tolerance Insulin
+  Response (GTIR) test captures postprandial insulin patterns (1-hour and 2-hour insulin
+  levels) that reveal early insulin resistance missed by conventional glucose-only
+  testing.
+common_symptoms:
+- fatigue
+- weight-gain
+- brain-fog
+red_flags:
+- fasting-blood-sugar-elevation
+- pattern-five-diabetes-diagnosis
+related_topics:
+- type-2-diabetes
+- metabolic-syndrome
+key_mechanisms:
+- insulin-receptor-resistance
+- compensatory-hyperinsulinemia
+coaching_scope_notes: Coaches can educate clients on lifestyle factors (diet, movement,
+  sleep) that reduce insulin resistance. Lab interpretation and diagnosis must be
+  deferred to a clinician.
+clinician_scope_notes: GTIR testing (fasting + 1-hr + 2-hr glucose AND insulin) is
+  required to catch early insulin resistance. Refer for ordering and pattern classification
+  (Craft patterns 1–5).
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-gtir
+  location: Glucose Tolerance Insulin Response Test Explanation
+  quote: with this all three reading we check insulin level so we check and fasting
+    insulin level with fasting blood sugar one hour insulin and one hour blood sugar
+    and two over that is called pp sugars and pp insulin level with this reading we
+    can find out whether patient is having an issue
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

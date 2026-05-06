@@ -1,0 +1,28 @@
+slug: vitamin-c-enhances-iron-absorption
+statement: Co-ingestion of vitamin C with iron supplements or iron-rich meals significantly
+  enhances non-haem iron absorption by reducing ferric iron (Fe3+) to the more soluble
+  ferrous form (Fe2+).
+evidence_tier: strong
+rationale: Well-established nutritional biochemistry supported by multiple RCTs and
+  systematic reviews. Vitamin C (ascorbic acid) is a recognised enhancer of non-haem
+  iron absorption and is recommended in clinical guidelines for iron deficiency.
+coaching_translation: Eating vitamin C-rich foods (like citrus, bell peppers, or kiwi)
+  alongside iron-rich meals or taking a vitamin C supplement with your iron pill can
+  significantly boost how much iron your body absorbs.
+caveats:
+- Effect size is greatest for non-haem iron; haem iron absorption is less affected.
+- May not overcome severe hepcidin-mediated blocks in inflammatory states.
+linked_to_topics:
+- iron-deficiency-dysregulation
+linked_to_supplements:
+- vitamin-c
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXy9b_KjJT2/
+  quote: Pair iron with Vitamin C for better absorption
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

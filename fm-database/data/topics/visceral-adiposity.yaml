@@ -5,34 +5,48 @@ aliases:
 - abdominal fat
 - organ fat
 - apple shape
-summary: Visceral fat — fat deposited around vital organs — is pathogenic fat that
-  releases inflammatory cytokines and tumor necrosis factor, reinforcing insulin resistance
-  and perpetuating a self-amplifying cycle of inflammation and further fat accumulation.
-  It is distinct from subcutaneous fat and is a key driver of metabolic disease in
-  midlife women.
+- android obesity
+- apple-shaped obesity
+- central obesity
+- belly fat
+- VAT
+summary: Excess fat stored around the abdominal organs, associated with significantly
+  elevated risk of cardiovascular disease, type 2 diabetes, metabolic syndrome, stroke,
+  cancer, and systemic inflammation. Assessed via waist circumference and waist-to-hip
+  ratio.
 common_symptoms:
 - abdominal 'spare tire'
 - apple-shaped body composition
 - elevated inflammatory markers
 - insulin resistance
+- increased-waist-circumference
+- elevated-fasting-insulin
+- high-triglycerides
+- high-crp
 red_flags:
 - rapidly expanding waistline
 - signs of metabolic syndrome
 - escalating inflammatory symptoms
+- waist-circumference-above-40-inches-men
+- waist-circumference-above-35-inches-women
+- waist-to-hip-ratio-above-0-9-men
 related_topics:
 - midlife-weight-gain
 - insulin-resistance
 - microbiome
 - perimenopause
+- metabolic-syndrome
+- body-composition-assessment
 key_mechanisms:
 - inflammatory-cytokine-release
 - insulin-resistance
 - dysbiosis-driven-inflammation
-coaching_scope_notes: Coaches can address dietary quality, fiber, sleep, and stress
-  — all of which impact visceral fat indirectly. Do not make diagnostic or body composition
-  assessment claims.
-clinician_scope_notes: Visceral adiposity is associated with elevated TNF-alpha and
-  other cytokines; assess via waist circumference, imaging, or metabolic markers.
+- chronic-systemic-inflammation
+coaching_scope_notes: Coaches can educate clients on waist-to-hip ratio self-measurement
+  and its significance, and support lifestyle changes to reduce visceral fat.
+clinician_scope_notes: Use stricter cut-offs for patients of Asian descent. Integrate
+  with biomarkers (fasting insulin, triglycerides, CRP, HOMA-IR) for full metabolic
+  risk picture.
 evidence_tier: strong
 sources:
 - id: thurlow-microbiome-session-4
@@ -42,7 +56,12 @@ sources:
     and all these very inflammatory signaling molecules that actually reinforce the
     inflammation, reinforce the insulin sensitivity loss and amplifies more inflammation
     and more accumulation of fat.
-version: 1
+- id: coconote-fm-body-composition-bmi
+  location: Visceral Adiposity Section
+  quote: We know that visceral adiposity, that weight around their belly, which we
+    know is so detrimental in terms of risk of heart disease and stroke and cancer
+    and inflammation in the body and insulin resistance and metabolic syndrome.
+version: 2
 status: active
-updated_at: '2026-04-29'
+updated_at: '2026-05-05'
 updated_by: shivani

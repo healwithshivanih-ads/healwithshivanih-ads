@@ -1,0 +1,34 @@
+slug: hpa-axis-hormesis
+display_name: HPA Axis Hormesis via Cold Stress
+aliases:
+- cold hormesis
+- stress hormesis
+- HPA axis adaptation
+- deliberate cold stress
+category: endocrine
+summary: Regular cold exposure acts as a hormetic stressor — a mild, repeated stress
+  that trains the hypothalamic-pituitary-adrenal (HPA) axis. Over time, this adaptive
+  conditioning may improve stress resilience, regulate cortisol responses, and upregulate
+  protective proteins such as cold shock proteins and heat shock proteins.
+upstream_drivers:
+- repeated-cold-water-immersion
+downstream_effects:
+- improved-stress-resilience
+- cold-shock-protein-upregulation
+- heat-shock-protein-upregulation
+- improved-hpa-regulation
+related_mechanisms:
+- cold-shock-response
+- noradrenaline-signaling
+linked_to_topics:
+- cold-water-immersion
+evidence_tier: plausible_emerging
+sources:
+- id: espeland-2022-cold-water-immersion
+  location: Hormesis and Adaptation
+  quote: Regular cold exposure trains the stress response system, potentially improving
+    HPA axis regulation.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

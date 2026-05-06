@@ -1,0 +1,32 @@
+slug: lifestyle-changes-exceed-medication-for-depression
+statement: Implementing comprehensive lifestyle changes (sleep, hydration, diet, exercise,
+  sunlight, reduced stimulants, nose breathing) produces greater improvement in depression
+  than medication alone.
+evidence_tier: plausible_emerging
+rationale: Cited from Dr Neil Nedley's clinical observations. Growing body of research
+  (lifestyle psychiatry) supports lifestyle interventions as effective for depression.
+  However, 'far exceeded' medication is a strong claim not yet supported by head-to-head
+  RCTs for all severity levels.
+coaching_translation: There's growing evidence that changing how you eat, sleep, move,
+  and breathe can do more for your mood than most people realise — sometimes even
+  more than medication for mild-to-moderate depression. This doesn't replace medical
+  care, but it adds a powerful layer to it.
+out_of_scope_notes: Coaches must not advise clients to stop or reduce antidepressants.
+  Any medication changes require clinician supervision.
+caveats:
+- Based on Dr Nedley's clinical observations, not a published RCT
+- Source is expert lecture
+- Severity of depression matters — severe depression requires clinical management
+linked_to_topics:
+- depression-lifestyle
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-healing-mind
+  location: Lifestyle Medicine Section
+  quote: He said lifestyle changes, dietary changes, far exceeded the effect of medication
+    on depression.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,33 @@
+slug: omega-3-index-target-for-mood-is-greater-than-eight-percent
+statement: A functional RBC omega-3 index above 8% is recommended for mood-related
+  contexts.
+evidence_tier: confirm_with_clinician
+rationale: The omega-3 index as a cardiovascular and mood-related biomarker has emerging
+  evidence; the 8% target is a functional medicine guideline, not universal clinical
+  consensus. Lab interpretation is clinician scope.
+out_of_scope_notes: Lab target interpretation is outside coaching scope.
+caveats:
+- Source is a practitioner cheatsheet without primary citations.
+- Lab availability and reference range interpretation vary.
+- Source is practitioner cheatsheet.
+- Omega-3 index testing and target interpretation requires clinician.
+linked_to_topics:
+- depression-like-symptoms
+- chronic-inflammation
+linked_to_supplements:
+- omega-3
+coaching_translation: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 23
+  quote: The source gives a functional RBC omega-3 index target above 8% for mood-related
+    contexts.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 23
+  quote: The source gives a functional RBC omega-3 index target above 8% for mood-related
+    contexts.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

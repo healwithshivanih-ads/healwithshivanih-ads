@@ -1,0 +1,26 @@
+slug: statin-increases-diabetes-risk
+statement: Statin therapy is associated with an increased risk of new-onset type 2
+  diabetes.
+evidence_tier: strong
+rationale: This is a well-established, FDA-acknowledged association. The document
+  notes it as a known side effect of statin therapy.
+coaching_translation: One recognized risk of statin medications is that they may increase
+  your chances of developing type 2 diabetes. This is worth discussing with your doctor,
+  especially if you already have blood sugar concerns.
+caveats:
+- Risk appears dose-dependent and is higher with high-intensity statins.
+- The cardiovascular benefit may still outweigh this risk in high-risk individuals
+  — clinical judgment required.
+linked_to_topics:
+- statin-side-effects
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-reality-of-statins
+  location: Side Effects of Statins Section
+  quote: Statins may increase your risk of diabetes.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

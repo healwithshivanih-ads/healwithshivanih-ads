@@ -1,0 +1,32 @@
+slug: h-pylori-progresses-from-hyperacidity-to-hypochlorhydria
+statement: 'H. pylori infection has a staged effect on gastric acid: initial infection
+  stimulates excess acid production, mid-stage causes variable acid output, and chronic
+  infection leads to low stomach acid (hypochlorhydria) through parietal cell destruction.'
+evidence_tier: plausible_emerging
+rationale: H. pylori's dual effect on gastric acid — hyperacidity in early antral
+  gastritis, hypochlorhydria in corpus gastritis — is described in gastroenterology
+  literature. Source is expert consensus lecture; well-accepted mechanism but nuanced
+  staging.
+coaching_translation: H. pylori gut infection can be sneaky — it initially causes
+  too much acid, then over time destroys the acid-producing cells in your stomach,
+  eventually leading to too little acid. Where someone is in this process affects
+  which symptoms they have.
+out_of_scope_notes: H. pylori diagnosis and treatment are clinician tasks (breath
+  test, stool antigen, or endoscopy; antibiotic eradication therapy).
+caveats:
+- H. pylori staging is a clinical determination, not a coaching assessment.
+- Source is expert consensus.
+linked_to_topics:
+- hypochlorhydria
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-hypochlorhydria
+  location: Risk Factors for Low Stomach Acid
+  quote: Usually, H5OE has three stages. In the initial stage, when it stimulates
+    the gastric cells to produce more gastric acid. The third stage is when we see
+    the patient usually has a low stomach acid.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

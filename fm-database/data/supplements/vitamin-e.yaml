@@ -1,5 +1,5 @@
 slug: vitamin-e
-display_name: Vitamin E (Tocopherols)
+display_name: Vitamin E
 category: vitamin
 forms_available:
 - capsule
@@ -9,6 +9,7 @@ timing_options:
 - with_breakfast
 - with_dinner
 - with_lunch
+- morning
 take_with_food: required
 linked_to_topics:
 - nafld
@@ -16,14 +17,24 @@ linked_to_topics:
 - gerd
 - gut-dysfunction
 - mercury-amalgam-removal
+- gerd-ppi-tapering
+- 5r-gut-restoration
+- dental-amalgam-mercury
+- metabolic-detoxification
+- pancreatic-insufficiency
 linked_to_claims:
 - vitamin-e-antioxidant-nafld
 - vitamin-e-antioxidant-gi-protection
 - selenium-vitamin-e-antioxidant-support-detox
-notes_for_coach: Fat-soluble antioxidant listed as Phase I protective nutrient. Mixed
-  tocopherol forms preferred. High doses may interact with anticoagulants.
-notes_for_client: Vitamin E protects cell membranes from oxidative damage — take it
-  with a meal containing fat for best absorption.
+- ppi-tapering-supplement-support-repair-protect-antioxidant
+- gut-lining-repair-nutrients-zinc-vitamins-glutamine
+- vitamin-e-antioxidant-protection-phase-i-detox
+- nutritional-deficiencies-zinc-copper-vitamins-impair-enzyme-production
+notes_for_coach: Fat-soluble antioxidant at risk of deficiency in fat malabsorption
+  states. Also supports reduction of oxidative stress that can damage pancreatic tissue.
+  Monitor levels with clinician.
+notes_for_client: Vitamin E is an antioxidant that helps protect pancreatic cells
+  from damage. Like vitamin A, it requires adequate fat digestion to be absorbed properly.
 evidence_tier: plausible_emerging
 typical_dose_range:
   capsule:
@@ -42,7 +53,13 @@ sources:
 - id: vitaone-liver-detox-toolkit
   location: Dental Amalgam Removal Protocol — Pre-Procedure
   quote: 'Vitamin E: 200–400 IU'
-version: 3
+- id: vitaone-health-coaching-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
+  quote: 'Antioxidants: Artemisia asiatica, curcumin, quercetin, vitamin E.'
+- id: coconote-fm-pancreatic-insufficiency
+  location: Causes of Enzyme Deficiency
+  quote: Nutritional deficiency like vitamin A, B, E, zinc, copper.
+version: 6
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

@@ -6,10 +6,11 @@ forms_available:
 - tablet
 - liquid
 evidence_tier: plausible_emerging
-notes_for_coach: Listed as Phase I antioxidant protective nutrient and used in pre-amalgam
-  removal protocol. Fat-soluble — best absorbed with fatty meal.
-notes_for_client: CoQ10 supports your cells' energy production and acts as an antioxidant.
-  Best absorbed with a meal that contains some fat.
+notes_for_coach: Empirically given to all statin-using patients due to statin-induced
+  CoQ10 depletion. Fat-soluble — must be taken with a meal for absorption.
+notes_for_client: If you are taking a statin medication for cholesterol, CoQ10 is
+  often recommended because statins can lower your body's natural CoQ10 levels. It
+  supports heart energy production.
 timing_options:
 - with_breakfast
 - with_lunch
@@ -22,20 +23,27 @@ linked_to_topics:
 - mitochondrial-health-nutrition
 - liver-detoxification
 - mercury-amalgam-removal
+- blood-sugar-dysfunction
+- insulin-resistance
+- drug-induced-nutrient-depletion-cardiovascular
+- cardiovascular-disease-prevention
 linked_to_claims:
 - beta-blockers-deplete-coq10-and-melatonin
 - statins-deplete-multiple-nutrients
 - metformin-depletes-b12-folate-coq10
 - coq10-improves-fatigue-ms-neuropathy-parkinson
 - selenium-vitamin-e-antioxidant-support-detox
+- coq10-increases-insulin-sensitivity
+- cardiovascular-meds-deplete-coq10
+- statins-deplete-coq10-magnesium-thiamine
 typical_dose_range:
   capsule:
     min: 100
-    max: 300
+    max: 400
     unit: mg
   tablet:
     min: 100
-    max: 400
+    max: 300
     unit: mg
 linked_to_mechanisms: []
 sources:
@@ -50,7 +58,16 @@ sources:
 - id: vitaone-liver-detox-toolkit
   location: Dental Amalgam Removal Protocol — Pre-Procedure
   quote: 'CoQ-10: 100–300 mg'
-version: 3
+- id: vitaone-health-coaching-toolkit
+  location: Micronutrients for Insulin Sensitivity — INSULIN SENSITIZERS (cont.)
+  quote: CoQ10 has been shown to increase insulin sensitivity in individuals who do
+    not have diabetes & may modestly lower glucose in individuals who have type 2
+    diabetes.
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Micronutrients in Clinical Practice
+  quote: Every one of my patients leaves the office with vitamin D, vitamin K, certainly
+    a statin, certainly CoQ10 if they come in on a statin.
+version: 6
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

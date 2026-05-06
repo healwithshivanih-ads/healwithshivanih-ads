@@ -1,0 +1,46 @@
+slug: vitamin-b12
+display_name: Vitamin B12 (Cobalamin)
+aliases:
+- cobalamin
+- methylcobalamin
+- cyanocobalamin
+- B12
+summary: Vitamin B12 is a water-soluble vitamin required for red blood cell synthesis,
+  DNA synthesis, neurological function, and homocysteine-to-methionine conversion.
+  Absorption is complex, requiring intrinsic factor and an intact terminal ileum.
+  Stored in the liver for 3–4 years. Deficiency leads to megaloblastic anemia and
+  neurological disorders.
+common_symptoms:
+- megaloblastic-anemia
+- fatigue
+- axonal-neuropathy
+- cognitive-decline
+- confusion
+- pernicious-anemia
+red_flags:
+- severe-neurological-symptoms
+- pernicious-anemia
+related_topics:
+- folate-vitamin-b9
+- mthfr-gene-variant
+- homocysteine-elevation
+- methylation
+key_mechanisms:
+- methylcobalamin-dependent-homocysteine-conversion
+- methylmalonyl-coa-pathway
+- dna-synthesis
+coaching_scope_notes: Coaches can educate on dietary sources, risk groups (vegans,
+  elderly, pregnant), and the importance of methylcobalamin form in supplements.
+clinician_scope_notes: Clinicians should assess for pernicious anemia, intrinsic factor
+  antibodies, and drug interactions (PPIs, metformin). Injection vs. oral dosing decisions
+  are clinical.
+evidence_tier: strong
+sources:
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: Vitamin B12 section
+  quote: Vitamin B12 has many forms in which it is available including cyanocobalamin,
+    methylcobalamin, deoxyadenosylcobalamin and hydroxycobalamin.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

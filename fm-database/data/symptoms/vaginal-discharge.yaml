@@ -1,0 +1,25 @@
+slug: vaginal-discharge
+display_name: Vaginal Discharge (Abnormal)
+aliases:
+- unusual discharge
+- vaginal infection discharge
+- bacterial vaginosis discharge
+category: hormonal
+severity: common
+description: Abnormal vaginal discharge associated with dysbiotic vaginal microbiome,
+  particularly overgrowth of organisms like Gardnerella vaginalis and Atopobium. May
+  indicate bacterial vaginosis.
+when_to_refer: Foul-smelling, colored, or profuse discharge, or suspected STI—refer
+  to gynecologist.
+linked_to_topics:
+- vaginal-microbiome
+linked_to_mechanisms:
+- lactobacillus-crispatus-dominance
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Vaginal health and L. reuteri discussion
+  quote: Loss of moisture, sensation, irritation, pain, discharge.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

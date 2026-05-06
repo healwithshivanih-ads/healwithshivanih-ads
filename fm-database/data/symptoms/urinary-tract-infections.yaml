@@ -1,0 +1,28 @@
+slug: urinary-tract-infections
+display_name: Urinary Tract Infections (UTIs)
+aliases:
+- UTIs
+- recurrent UTIs
+- bladder infections
+- cystitis
+category: urinary
+severity: common
+description: Bacterial infections of the urinary tract, more common in women with
+  depleted Lactobacillus crispatus in vaginal and bladder microbiomes. Recurrent UTIs
+  may indicate chronic vaginal/bladder dysbiosis.
+when_to_refer: Recurrent UTIs (3+ per year), upper tract infection signs (fever, flank
+  pain), or antibiotic-resistant infections.
+linked_to_topics:
+- vaginal-microbiome
+linked_to_mechanisms:
+- lactobacillus-crispatus-dominance
+- gut-vaginal-microbiome-axis
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Crispatus and reproductive health discussion
+  quote: A woman is also more prone to urinary tract infections, incontinence, vaginal
+    infections.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,30 @@
+slug: magnesium-rda-adults-300-400mg
+statement: The recommended dietary allowance (RDA) for magnesium in adults is 300–400
+  mg per day, and many individuals require more than this due to stress, medical conditions,
+  or increased physiological demand.
+evidence_tier: strong
+rationale: RDA figures are established by national health bodies. The point that RDA
+  represents a minimum and many individuals need more is well-supported in nutritional
+  research.
+caveats:
+- Therapeutic dosing above RDA should be guided by a clinician.
+out_of_scope_notes: Therapeutic dose recommendations (above standard RDA) should be
+  clinician-directed.
+coaching_translation: The official minimum for magnesium is 300–400 mg/day, but if
+  you're stressed, active, or have health conditions, your needs may be significantly
+  higher.
+linked_to_topics:
+- magnesium-deficiency
+linked_to_supplements:
+- magnesium-glycinate
+- magnesium-citrate
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-magnesium-deficiency
+  location: Requirement of magnesium
+  quote: The RDA which is recommended, dietary allowance for magnesium currently...
+    for adults we would suggest at least 300 to 400 mg per day.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

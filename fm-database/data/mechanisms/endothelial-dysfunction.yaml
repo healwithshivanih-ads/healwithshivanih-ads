@@ -1,0 +1,37 @@
+slug: endothelial-dysfunction
+display_name: Endothelial Dysfunction
+aliases:
+- endothelial injury
+- cracked endothelium
+- vascular endothelial damage
+category: structural
+summary: Damage or dysfunction of the arterial endothelial lining — triggered by oxidative
+  stress, hypertension, or systemic inflammation — creates gaps through which small
+  dense LDL particles can penetrate. This is the critical initiating step in atherosclerosis.
+upstream_drivers:
+- oxidative-stress
+- hypertension
+- systemic-inflammation
+- high-homocysteine
+downstream_effects:
+- ldl-oxidation
+- macrophage-infiltration
+- foam-cell-formation
+- calcium-deposition-in-plaque
+related_mechanisms:
+- ldl-oxidation
+- inflammatory-cascade
+linked_to_topics:
+- atherosclerosis-pathogenesis
+- cardiovascular-risk-assessment
+evidence_tier: strong
+sources:
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Atherosclerosis mechanism section
+  quote: First thing is there should be endothelial dysfunction. If your endothelium
+    is cracked, then nothing can go inside the endothelium. But because of so many
+    factors, you can say oxidative stress, hypertension, even any kind of inflammation.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

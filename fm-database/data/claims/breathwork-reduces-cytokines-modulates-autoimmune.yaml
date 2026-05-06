@@ -1,0 +1,29 @@
+slug: breathwork-reduces-cytokines-modulates-autoimmune
+statement: Proper breathwork reduces cytokine output and can modulate autoimmune inflammation.
+evidence_tier: plausible_emerging
+rationale: Vagal activation via breathwork has mechanistic plausibility for cytokine
+  reduction through the cholinergic anti-inflammatory pathway. Some clinical evidence
+  exists (Wim Hof breathing studies), but general applicability across autoimmune
+  conditions needs further RCTs.
+coaching_translation: Certain breathing techniques can dial down inflammatory signals
+  in the body—this is why breathwork is increasingly used as an adjunct in conditions
+  like rheumatoid arthritis, Hashimoto's, and IBD.
+caveats:
+- Adjunct only—should not replace medical treatment for autoimmune conditions.
+- Evidence base is emerging, not consensus.
+- Source is educational synthesis.
+linked_to_topics:
+- breathwork-for-health
+- nervous-system-regulation
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Breathwork Cheatsheet
+  quote: 'Inflammation: Reduces cytokine output; ↓ pain & auto-inflammation; Adjunct
+    in autoimmune diseases.'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

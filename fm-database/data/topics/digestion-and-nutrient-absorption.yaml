@@ -1,0 +1,40 @@
+slug: digestion-and-nutrient-absorption
+display_name: Digestion & Nutrient Absorption for Hormonal Health
+aliases:
+- digestive foundations
+- gut health and hormones
+- stomach acid and hormones
+summary: Adequate stomach acid, pancreatic enzymes, and gut transit time are prerequisites
+  for absorbing the nutritional cofactors that hormones require to signal at the receptor
+  level. Impaired digestion undermines hormonal health regardless of hormone levels
+  or supplementation.
+common_symptoms:
+- bloating
+- constipation
+- fatigue
+- brain-fog
+red_flags:
+- chronic-steatorrhea
+- severely-low-total-protein
+related_topics:
+- hormonal-nutrition-foundations
+- estrogen-and-fiber-transit-time
+key_mechanisms:
+- gastric-acid-insufficiency
+- impaired-nutrient-absorption
+coaching_scope_notes: Coaches can assess digestive symptoms and support lifestyle
+  habits that promote good digestion. Comprehensive stool testing and gastric acid
+  analysis require clinical oversight.
+clinician_scope_notes: Heidelberg gastric analysis or capsule-based stomach acid challenge
+  testing, pancreatic elastase, steatorrhea on comprehensive stool test, and total
+  protein are useful markers for digestive sufficiency.
+evidence_tier: plausible_emerging
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Nutrition and Digestion as Hormonal Foundation
+  quote: hormones cannot do what they do without phenomenal nutrition, which of course
+    leans on digestion because you are what you digest, not just what you eat.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

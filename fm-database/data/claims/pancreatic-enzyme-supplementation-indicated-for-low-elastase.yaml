@@ -1,0 +1,31 @@
+slug: pancreatic-enzyme-supplementation-indicated-for-low-elastase
+statement: Low fecal elastase on gut microbiome testing indicates impaired pancreatic
+  function, and broad-spectrum digestive enzyme supplementation (including lipase
+  and protease) is indicated.
+evidence_tier: plausible_emerging
+rationale: Fecal elastase is a validated marker of exocrine pancreatic function. Low
+  elastase correlates with pancreatic insufficiency and impaired macronutrient digestion.
+  Digestive enzyme supplementation is a logical and commonly practiced intervention.
+coaching_translation: If your client's gut test shows low digestive enzyme markers,
+  they may need digestive enzyme support with meals to help break down food properly.
+caveats:
+- Source is expert lecture, moderate quality.
+- Lab interpretation (elastase) is clinician scope.
+- Specific enzyme product selection and dosing should be clinician-guided.
+linked_to_topics:
+- gut-dysbiosis
+- sibo
+linked_to_supplements:
+- digestive-enzymes
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Replace Section
+  quote: And if the elastase is low, then consider giving them pancreatic enzymes.
+    when you give any kind of enzymes give your blood spectrum enzymes they should
+    be contained in the lipolysis for your fat and protein to consider them.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

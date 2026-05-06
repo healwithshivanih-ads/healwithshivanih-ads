@@ -3,12 +3,14 @@ display_name: Nausea After Taking Supplements
 aliases:
 - supplement nausea
 - sick after vitamins
+- nausea from vitamins
 category: gi
 severity: common
-description: Nausea occurring after taking supplements, a common symptom associated
-  with hypochlorhydria.
+description: Nausea occurring after ingesting nutritional supplements, often a sign
+  of low stomach acid or compromised digestive secretions.
 linked_to_topics:
 - hypochlorhydria
+- gut-dysfunction
 linked_to_mechanisms:
 - hypochlorhydria-mechanism
 when_to_refer: ''
@@ -16,7 +18,10 @@ sources:
 - id: vitaone-gut-toolkit
   location: Testing for Low Stomach Acidity — Common Symptoms of Hypochlorhydria
   quote: Nausea after taking supplements
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Testing for Low Stomach Acidity
+  quote: Nausea after taking supplements [listed as a common symptom of hypochlorhydria].
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

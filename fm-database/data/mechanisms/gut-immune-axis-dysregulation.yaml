@@ -1,0 +1,37 @@
+slug: gut-immune-axis-dysregulation
+display_name: Gut–Immune Axis Dysregulation
+aliases:
+- gut immunity imbalance
+- IgA suppression by fungal overgrowth
+category: immune
+summary: The gut mucosa is a primary site of immune regulation. IgA antibodies in
+  the gut provide first-line defense against pathogens. Fungal overgrowth suppresses
+  local IgA and systemic IgG antibody levels, weakening mucosal immunity and allowing
+  persistent colonization. Dysbiosis also shifts innate-to-adaptive immune balance,
+  promoting chronic immune activation.
+upstream_drivers:
+- fungal-overgrowth
+- gut-dysbiosis
+- antibiotic-overuse
+downstream_effects:
+- chronic-inflammation
+- autoimmune-activation
+- recurrent-infections
+related_mechanisms:
+- leaky-gut
+- lps-mediated-immune-activation
+linked_to_topics:
+- gut-dysbiosis
+- fungal-overgrowth
+- chronic-inflammation
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-approach-inflammation
+  location: Infection Triggers – Fungal Infection
+  quote: when you have a lot of fungal growth in your intestine... you find out the
+    lower side normal, very low side normal. IgG and IgA antibody, particularly IgA
+    antibody.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

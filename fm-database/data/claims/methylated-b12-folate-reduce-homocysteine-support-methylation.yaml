@@ -1,0 +1,30 @@
+slug: methylated-b12-folate-reduce-homocysteine-support-methylation
+statement: Methylated B12 (methylcobalamin) and folate (5-MTHF) reduce elevated homocysteine
+  and support methylation pathways including estrogen detoxification.
+evidence_tier: strong
+rationale: The role of B12 and folate in the methionine cycle and homocysteine metabolism
+  is well-established with strong biochemical and epidemiological evidence. Elevated
+  homocysteine is a recognised marker of methylation insufficiency, and supplementation
+  with methylated forms has demonstrated reduction in homocysteine in RCTs.
+coaching_translation: B12 and folate — especially in their 'active' methylated forms
+  — are essential for lowering homocysteine (an inflammation marker) and helping your
+  body process and clear estrogen and toxins.
+caveats:
+- High-dose B12 supplementation in CKD patients should be supervised by a clinician.
+- Methylated forms preferred in suspected MTHFR variants.
+linked_to_topics:
+- estrogen-dominance
+- gut-skin-hormone-axis
+linked_to_supplements:
+- homocysteine-support-b-complex
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Matrix Discussion / Estrogen Detoxification
+  quote: Homocysteine levels were also high — there's a poor methylation problem.
+    You need B12, you need folate, right? This basically helps in clearing of estrogen.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

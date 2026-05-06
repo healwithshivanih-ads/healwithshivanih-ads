@@ -1,0 +1,28 @@
+slug: pica
+display_name: Pica (Craving Non-Edible Substances)
+aliases:
+- ice craving
+- pagophagia
+- craving mud or sand
+- non-food cravings
+category: other
+severity: concerning
+description: Craving and consumption of non-edible substances such as ice, mud, or
+  sand. A specific and diagnostically significant sign of iron deficiency, especially
+  in children.
+when_to_refer: Always refer for lab workup when pica is identified; it is a strong
+  indicator of significant nutritional deficiency.
+linked_to_topics:
+- iron-deficiency-anemia
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-iron-deficiency-anemia
+  location: Symptoms of Iron Deficiency section
+  quote: Craving non-edible food which in medical term we call it a spika. So when
+    you see some patient or maybe majorly seen as kids when they are craving for any
+    kind of ice or non-edible foods like mud, sand, it's called a spica and again
+    very crucial symptoms for distinguishing iron deficiency anemia.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

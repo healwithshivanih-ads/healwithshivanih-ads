@@ -1,0 +1,29 @@
+slug: fresh-cheeses-sit-at-neutral-ph-7
+statement: Fresh cheeses (e.g., Indian paneer) sit at a near-neutral pH of approximately
+  7, making them more pH-neutral than most other dairy or acid-forming foods.
+evidence_tier: fm_specific_thin
+rationale: Stated by Barbara O'Neill as a specific pH value for fresh cheeses used
+  in Indian cuisine. The claim is biologically plausible — fresh cheeses do tend to
+  be less acidic than aged cheeses — but specific pH values for fresh cheeses vary
+  and peer-reviewed consensus on their metabolic acid load is thin.
+coaching_translation: Fresh cheeses like paneer are a more pH-neutral protein option
+  compared to many other foods, making them a reasonable inclusion in a balanced plate.
+caveats:
+- Source is expert consensus/lecture, not primary peer-reviewed literature. Specific
+  pH=7 figure should not be presented as established science.
+- Metabolic acid load of a food differs from the food's measured pH.
+linked_to_topics:
+- fresh-cheeses-ph-neutrality
+- ph-balance-and-diet
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-fresh-cheeses-ph
+  location: Fresh Cheeses Section
+  quote: A lot of Indian dishes have those little fresh cheeses in them and they are
+    basically a pH of 7 fetter. So your fresh cheeses will sit at the pH of 7.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

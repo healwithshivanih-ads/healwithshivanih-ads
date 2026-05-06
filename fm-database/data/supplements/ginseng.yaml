@@ -1,0 +1,33 @@
+slug: ginseng
+display_name: Ginseng
+category: herb
+forms_available:
+- capsule
+- tablet
+- liquid
+timing_options:
+- with_breakfast
+- morning
+- mid_morning
+take_with_food: optional
+linked_to_topics:
+- hpa-axis-dysfunction
+linked_to_claims:
+- ginseng-licorice-support-adrenal
+notes_for_coach: Document mentions 'ginseng tea for support' in adrenal restoration.
+  Ginseng is a classic adaptogen used in FM for HPA support. Dosing and species (Panax
+  vs. Siberian) not specified. Verify form and dose with clinician.
+notes_for_client: Ginseng is an herb that may help your body handle stress. It's available
+  as tea or supplements. Check with your health practitioner about the right type
+  and amount for you.
+evidence_tier: fm_specific_thin
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Hypercortisolism — Restoration
+  quote: Consume ginseng and/or licorice tea for support.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

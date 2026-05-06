@@ -1,0 +1,35 @@
+slug: cold-induced-thermogenesis
+display_name: Cold-Induced Thermogenesis
+aliases:
+- cold thermogenesis
+- non-shivering thermogenesis
+- shivering thermogenesis
+category: metabolic
+summary: Exposure to cold triggers thermogenic processes — both shivering (muscle-based)
+  and non-shivering (BAT-based) — that increase metabolic rate. This thermogenic response
+  is a primary driver of cold exposure's metabolic benefits including improved insulin
+  sensitivity.
+upstream_drivers:
+- cold-water-immersion
+- bat-activation
+downstream_effects:
+- increased-energy-expenditure
+- improved-insulin-sensitivity
+- fat-reduction
+related_mechanisms:
+- bat-activation
+- white-to-brown-fat-browning
+linked_to_topics:
+- brown-adipose-tissue-activation
+- insulin-resistance-sensitivity
+- cold-water-immersion
+evidence_tier: plausible_emerging
+sources:
+- id: espeland-2022-cold-water-immersion
+  location: Metabolic Changes
+  quote: The improved insulin sensitivity may be mediated through BAT activation and
+    cold-induced thermogenesis.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

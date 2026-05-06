@@ -1,0 +1,29 @@
+slug: ferritin-most-sensitive-early-marker-of-ida
+statement: Ferritin is the most sensitive biomarker for detecting iron deficiency
+  anemia in its early stages, declining before serum iron becomes abnormal.
+evidence_tier: strong
+rationale: Ferritin is the body's iron storage protein. As iron stores are mobilised
+  to maintain serum iron, ferritin drops first, making it a leading indicator of developing
+  IDA. This is well-established in clinical and functional medicine laboratory practice.
+coaching_translation: If a client's serum iron looks 'normal' but ferritin is low,
+  their iron stores are already being depleted. Ferritin is the early warning signal.
+out_of_scope_notes: Interpreting specific ferritin cut-offs and ordering the iron
+  panel is a clinician function.
+caveats:
+- Elevated ferritin may indicate inflammation rather than iron sufficiency — both
+  high and low ferritin require clinician evaluation.
+- Source is an expert lecture (moderate quality); consistent with established clinical
+  guidelines.
+linked_to_topics:
+- iron-deficiency-anemia
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-iron-deficiency-anemia
+  location: Iron Panel Biomarkers / Ferritin section
+  quote: This is the most sensitive to diagnose iron deficiency anemia. Ferritin is
+    what we call as the storage protein for iron.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

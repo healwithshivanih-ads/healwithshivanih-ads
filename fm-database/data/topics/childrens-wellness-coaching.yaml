@@ -1,0 +1,36 @@
+slug: childrens-wellness-coaching
+display_name: Children's Wellness & Health Promotion
+aliases:
+- kids health coaching
+- pediatric wellness
+- school-age wellness groups
+- children's preventive health
+summary: Health promotion for school-age children in group settings focuses on experiential,
+  child-led activities covering nutrition (eat the rainbow), healthy habits, sleep,
+  emotional awareness, movement, and community connection. This differs from clinical
+  coaching; the role is closer to facilitated wellness education.
+common_symptoms: []
+red_flags:
+- food-allergies-without-disclosure
+- developmental-concerns-beyond-scope
+related_topics:
+- stress-and-the-sympathetic-nervous-system
+- mindful-eating
+key_mechanisms: []
+coaching_scope_notes: With younger children, coaching parents is often more appropriate
+  than direct child coaching. Group activities should be experiential, child-led,
+  and age-appropriate (character strengths work better for ages 8+). Always confirm
+  food allergy waivers before food-based activities.
+clinician_scope_notes: Developmental, behavioral, or medical concerns in children
+  should be referred to appropriate pediatric specialists.
+evidence_tier: plausible_emerging
+sources:
+- id: ask-expert-coaching-stress-kids
+  location: Kids Wellness Group Topic Discussion
+  quote: generally, when we're coaching younger kids, we're coaching their parents.
+    We're not coaching the kids themselves... it sounds more like a healthy wellness
+    group for little kids.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

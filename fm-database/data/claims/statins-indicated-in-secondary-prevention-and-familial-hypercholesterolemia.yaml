@@ -1,0 +1,31 @@
+slug: statins-indicated-in-secondary-prevention-and-familial-hypercholesterolemia
+statement: Statins are clearly indicated for secondary prevention (prior MI, stroke,
+  stent) and for familial hypercholesterolemia (LDL >190 with family history).
+evidence_tier: strong
+rationale: The document explicitly states these two categories as the established
+  indications for anti-cholesterol medication, consistent with ACC/AHA guidelines.
+  This represents the standard of care.
+coaching_translation: 'There are two situations where cholesterol medication is genuinely
+  important: if you''ve already had a heart attack, stroke, or stent placed, OR if
+  you have a genetic condition causing very high cholesterol. Outside these situations,
+  the benefits are often much smaller.'
+caveats: []
+out_of_scope_notes: Coaches should refer clients with these histories directly to
+  a cardiologist. Do not advise reducing or stopping statins in secondary prevention
+  patients.
+linked_to_topics:
+- statin-therapy-risks-and-benefits
+- familial-hypercholesterolemia
+- cardiovascular-risk-assessment
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Indications for statin therapy section
+  quote: Secondary prevention. If anybody already having an art attack or stent in
+    them, okay, you can see, this category is only for primary prevention. Means,
+    it can be useful in secondary prevention... Another case is familial hyperlipidemia.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

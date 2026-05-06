@@ -1,0 +1,28 @@
+slug: phytates-reduce-zinc-bioavailability-in-vegan-diets
+statement: Phytates present in plant foods bind to zinc in the gut, reducing its bioavailability
+  and increasing the risk of zinc deficiency in individuals following vegan or predominantly
+  plant-based diets.
+evidence_tier: strong
+rationale: Phytate-mineral chelation is well-established in nutritional science and
+  widely recognised as a contributor to zinc deficiency risk in plant-based populations.
+coaching_translation: If you eat a plant-based diet, the phytates (natural compounds)
+  in grains and legumes can block zinc absorption, so you may need more zinc from
+  food or supplements.
+caveats:
+- Soaking, sprouting, and fermenting plant foods can reduce phytate content and improve
+  zinc bioavailability.
+linked_to_topics:
+- zinc-deficiency
+linked_to_supplements:
+- zinc
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-zinc-deficiency
+  location: Risk Factors
+  quote: Vegan diet because phytates which are present inside the plant, they also
+    bind to zinc thus causing its deficiency.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

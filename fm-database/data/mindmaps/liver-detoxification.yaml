@@ -1,0 +1,449 @@
+slug: liver-detoxification
+display_name: Liver Health & Detoxification
+description: 'Functional medicine approach to liver detoxification pathways, biotransformation,
+  hormone clearance, and toxic burden reduction
+
+  '
+aliases: []
+related_topics:
+- liver-detoxification
+- liver-detox-food-plan
+- metabolic-detoxification
+- environmental-toxin-exposure
+- estrogen-metabolism
+related_mechanisms:
+- cyp450-phase-i-activation
+- hepatic-estrogen-detoxification
+- hepatic-estrogen-metabolism
+- bile-flow-regulation
+- gut-liver-axis
+tree:
+- label: 🔴 Clinical Presentation
+  children:
+  - label: Detox Overload Symptoms
+    children:
+    - label: Fatigue
+      children: []
+      linked_kind: symptom
+      linked_slug: fatigue
+      notes: ''
+    - label: Brain Fog
+      children: []
+      linked_kind: symptom
+      linked_slug: brain-fog
+      notes: ''
+    - label: Chemical Sensitivities
+      children: []
+      linked_kind: symptom
+      linked_slug: chemical-sensitivities
+      notes: ''
+    - label: Headaches
+      children: []
+      linked_kind: symptom
+      linked_slug: headaches
+      notes: ''
+    - label: Skin Issues / Rashes
+      children: []
+      linked_kind: symptom
+      linked_slug: skin-rash
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Hormone Clearance Issues
+    children:
+    - label: Oestrogen Dominance Signs
+      children: []
+      linked_kind: symptom
+      linked_slug: breast-tenderness
+      notes: ''
+    - label: PMS / Heavy Periods
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Acne / Skin Breakouts
+      children: []
+      linked_kind: symptom
+      linked_slug: acne
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Digestive Signs
+    children:
+    - label: Bloating
+      children: []
+      linked_kind: symptom
+      linked_slug: bloating
+      notes: ''
+    - label: Constipation
+      children: []
+      linked_kind: symptom
+      linked_slug: constipation
+      notes: ''
+    - label: Intolerance to Fats
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Pale / Floating Stools
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🟠 Root Mechanisms
+  children:
+  - label: Phase I Detox (CYP450)
+    children: []
+    linked_kind: mechanism
+    linked_slug: cyp450-phase-i-activation
+    notes: ''
+  - label: Phase II Conjugation Pathways
+    children:
+    - label: Methylation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Glucuronidation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Sulphation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Glutathione Conjugation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Bile Flow Regulation
+    children: []
+    linked_kind: mechanism
+    linked_slug: bile-flow-regulation
+    notes: ''
+  - label: Gut-Liver Axis Dysfunction
+    children: []
+    linked_kind: mechanism
+    linked_slug: gut-liver-axis
+    notes: ''
+  - label: Hepatic Estrogen Metabolism
+    children: []
+    linked_kind: mechanism
+    linked_slug: hepatic-estrogen-metabolism
+    notes: ''
+  - label: Oxidative Stress Burden
+    children: []
+    linked_kind: mechanism
+    linked_slug: oxidative-stress
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🟡 FM Approach
+  children:
+  - label: Reduce Toxic Load
+    children:
+    - label: Organic Food Choices
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Filter Water
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Natural Personal Care Products
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Reduce Alcohol
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Support Liver Nutrition
+    children:
+    - label: Liver Detox Food Plan
+      children: []
+      linked_kind: topic
+      linked_slug: liver-detox-food-plan
+      notes: ''
+    - label: Cruciferous Vegetables
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Bitter Greens (Dandelion, Rocket)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Garlic & Onion (Sulphur Foods)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Optimise Elimination
+    children:
+    - label: Hydration 2-3L Daily
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Fibre for Toxin Binding
+      children: []
+      linked_kind: topic
+      linked_slug: fiber-gap
+      notes: ''
+    - label: Bowel Regularity
+      children: []
+      linked_kind: symptom
+      linked_slug: constipation
+      notes: ''
+    - label: Sweating (Sauna / Exercise)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🟢 Interventions
+  children:
+  - label: Key Supplements
+    children:
+    - label: Milk Thistle / Silymarin
+      children: []
+      linked_kind: supplement
+      linked_slug: milk-thistle
+      notes: ''
+    - label: N-Acetyl Cysteine (NAC)
+      children: []
+      linked_kind: supplement
+      linked_slug: n-acetyl-cysteine
+      notes: ''
+    - label: Calcium D-Glucarate
+      children: []
+      linked_kind: supplement
+      linked_slug: calcium-d-glucarate
+      notes: ''
+    - label: Alpha Lipoic Acid
+      children: []
+      linked_kind: supplement
+      linked_slug: alpha-lipoic-acid
+      notes: ''
+    - label: B-Complex / Methylated B Vitamins
+      children: []
+      linked_kind: supplement
+      linked_slug: methylated-b-vitamins
+      notes: ''
+    - label: Artichoke Extract
+      children: []
+      linked_kind: supplement
+      linked_slug: artichoke-extract
+      notes: ''
+    - label: Chlorella
+      children: []
+      linked_kind: supplement
+      linked_slug: chlorella
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Home Remedies
+    children:
+    - label: Warm Lemon Water Morning
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Castor Oil Pack
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Dandelion Root Tea
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Cooking Adjustments
+    children:
+    - label: Swap to Ghee / Coconut Oil
+      children: []
+      linked_kind: cooking_adjustment
+      linked_slug: swap-to-ghee-or-coconut-oil
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 💙 Coaching Goals
+  children:
+  - label: Education
+    children:
+    - label: Two-Phase Detox Explanation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Environmental Toxin Awareness
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Food as Detox Support
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Habit Building
+    children:
+    - label: Daily Cruciferous Vegetables
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Morning Lemon Water Ritual
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Sweat Daily
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Environment
+    children:
+    - label: Toxin Audit of Home
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Clean Cleaning Products
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Air Quality Improvement
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🔵 Labs to Track
+  children:
+  - label: Liver Function
+    children:
+    - label: ALT, AST, GGT
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Bilirubin
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Albumin
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Detox Capacity
+    children:
+    - label: Organic Acids Test
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: DUTCH Hormone Metabolites
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Glutathione (Intracellular)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Toxin Burden
+    children:
+    - label: Heavy Metals Panel
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Mycotoxin Testing
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Environmental Pollutants
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+sources:
+- id: vitaone-health-coaching-toolkit
+  quote: null
+  location: Toolkit for Health Coaching PDF — Detox section
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

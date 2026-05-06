@@ -1,0 +1,34 @@
+slug: epigenetic-modulation
+display_name: Epigenetic Modulation
+aliases:
+- epigenetics
+- gene expression modulation
+- nutrigenomics
+category: signaling
+summary: Dietary, environmental, and lifestyle factors modulate gene expression without
+  changing DNA sequence. Disease-promoting genes can be 'switched on' by processed
+  diets, toxins, and stress, and 'switched off' by nutrient-dense whole-food diets
+  and healthy lifestyle.
+upstream_drivers:
+- diet-quality
+- environmental-toxins
+- stress
+- movement
+downstream_effects:
+- chronic-disease-expression
+- inflammation-modulation
+related_mechanisms:
+- systemic-inflammation
+linked_to_topics:
+- epigenetics-lifestyle-gene-expression
+- chronic-pain-and-fatigue
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-chronic-pain-fatigue
+  location: Genes Section
+  quote: When we are talking about the genes, we are talking about genes in the expression
+    of Epigenetics.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

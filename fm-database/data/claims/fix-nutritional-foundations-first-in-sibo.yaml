@@ -1,0 +1,31 @@
+slug: fix-nutritional-foundations-first-in-sibo
+statement: Correcting foundational nutritional deficiencies — especially vitamin D
+  and folate — before advancing to complex SIBO interventions may resolve up to 40%
+  of patient symptoms by restoring immune competency.
+evidence_tier: fm_specific_thin
+rationale: Vitamin D and folate deficiency impair immune function. The '40%' claim
+  is anecdotal/experiential from the lecturer, not from a cited study. The principle
+  of nutritional foundationing is sound FM practice.
+coaching_translation: Before jumping to complex protocols, make sure the basics are
+  covered — low vitamin D and folate alone can keep the immune system too weak to
+  clear gut infections.
+caveats:
+- The '40% improvement' figure is from clinical observation, not a published trial.
+- Source is expert consensus lecture. Vitamin D dosing requires clinician guidance
+  and serum testing.
+linked_to_topics:
+- sibo
+linked_to_supplements:
+- vitamin-d
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-sibo-sifo
+  location: GI Map / Nutritional Analysis Section
+  quote: let us fix on the vitamin D, folate first, I guess 40% of this or her problem
+    will be solved or their problem are going to be solved at this particular stage
+    only because the nutrition is not upright.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

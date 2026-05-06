@@ -1,0 +1,49 @@
+slug: folate-vitamin-b9
+display_name: Folate (Vitamin B9)
+aliases:
+- vitamin B9
+- folic acid
+- methylfolate
+- 5-MTHF
+summary: Folate is an essential water-soluble vitamin critical for DNA synthesis,
+  cell division, amino acid metabolism, and homocysteine regulation. Deficiency leads
+  to megaloblastic anemia, neural tube defects, and neurological symptoms. Absorption
+  occurs in the proximal small intestine; active form is 5-methyltetrahydrofolate
+  (5-MTHF).
+common_symptoms:
+- megaloblastic-anemia
+- fatigue
+- mouth-ulcers
+- diarrhea
+- cognitive-decline
+- irritability
+- mild-jaundice
+- pale-skin
+- dyspnea
+red_flags:
+- neural-tube-defect-in-pregnancy
+- severe-megaloblastic-anemia
+related_topics:
+- vitamin-b12
+- mthfr-gene-variant
+- homocysteine-elevation
+- methylation
+key_mechanisms:
+- folate-cycle
+- methylation
+- dna-synthesis
+coaching_scope_notes: Coaches can educate on folate-rich foods, the importance of
+  methylfolate form in supplements, and lifestyle factors affecting absorption. RDA
+  guidance is within scope.
+clinician_scope_notes: Clinicians should assess for megaloblastic anemia, MTHFR variants,
+  and drug-nutrient interactions (methotrexate, valproate, phenytoin). Neural tube
+  defect prevention dosing requires clinical guidance.
+evidence_tier: strong
+sources:
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: Introduction / Folate section
+  quote: Folate which is also known as vitamin B9 is an essential water soluble vitamin.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,33 @@
+slug: probiotics-contraindicated-in-bacterial-overgrowth
+statement: Probiotics should not be given when both bacterial phyla are already elevated
+  (overgrowth state), as this will worsen symptoms rather than help.
+evidence_tier: plausible_emerging
+rationale: Adding more bacteria in a state of existing overgrowth exacerbates the
+  imbalance. The lecturer reports observing symptom flares in patients given probiotics
+  inappropriately in overgrowth states — a clinically logical and increasingly recognized
+  principle.
+coaching_translation: Always confirm with the clinician whether probiotics are appropriate
+  before recommending. In some gut patterns, probiotics can make symptoms worse.
+caveats:
+- Source is expert lecture, moderate quality.
+- Pattern-based probiotic prescribing requires lab confirmation (e.g., GI-MAP) — coaching
+  recommendation only with clinician oversight.
+linked_to_topics:
+- gut-dysbiosis
+- sibo
+linked_to_supplements:
+- lactobacillus-probiotic
+- bifidobacterium-probiotic
+- spore-based-probiotic
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Probiotic Dosing by Pattern Section
+  quote: if you see your patient having both the phyla, they are high, already they
+    have a dysbiosis with a good bacteria. So, in that case, don't consider giving
+    them probiotic.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

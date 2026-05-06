@@ -1,0 +1,27 @@
+slug: cwi-reduced-upper-respiratory-infections
+statement: Regular cold water immersion is associated with reduced upper respiratory
+  infections compared to non-swimmers, though findings remain inconclusive.
+evidence_tier: plausible_emerging
+rationale: Observed association in winter swimmer cohorts; plausible via immune modulation,
+  but confounded by lifestyle factors and study design limitations. The review explicitly
+  flags inconclusiveness.
+coaching_translation: Some evidence suggests cold water swimmers get sick less often
+  — though it is hard to say whether it is the cold water or the healthy lifestyle
+  overall.
+caveats:
+- Findings explicitly described as inconclusive by the review authors
+- Lifestyle confounding is significant
+- Immune mechanism not definitively established
+linked_to_topics:
+- cold-water-immersion
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: espeland-2022-cold-water-immersion
+  location: Immune Response
+  quote: However, findings regarding respiratory infections remained inconclusive.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

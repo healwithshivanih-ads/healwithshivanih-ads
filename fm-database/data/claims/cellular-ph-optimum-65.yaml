@@ -1,0 +1,33 @@
+slug: cellular-ph-optimum-65
+statement: Optimal cellular pH is approximately 6.5 (slightly acidic), enabling efficient
+  enzymatic and chemical reactions; disease, cancer, and fungal growth thrive at a
+  more acidic cellular pH of approximately 5.5.
+evidence_tier: plausible_emerging
+rationale: Cellular pH optimum for metabolic processes and the acid microenvironment
+  of tumours are active research areas. The tumour acidosis concept has emerging support.
+  The specific figure of 5.5 for disease promotion is a simplification but directionally
+  consistent with research on tumour microenvironments.
+coaching_translation: The goal is to keep your cells in a healthy, slightly acidic
+  sweet spot (~6.5) through good food, sleep, stress management, and movement — not
+  so acidic that disease thrives.
+caveats:
+- Source is an expert lecture, not primary literature. Specific pH values for disease
+  thresholds are simplified. Do not present these numbers as precisely established
+  clinical facts.
+- Source is a synthesis/lecture; evidence tier capped at plausible_emerging.
+linked_to_topics:
+- ph-balance
+- yeast-overgrowth
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-ph-balance
+  location: Cellular pH Section
+  quote: The pH at the cellular level, it should sit at approximately 6.5... Disease
+    thrives in a cellular pH of 5.5. This is where cancer thrives. This is where fungus
+    thrives.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,48 @@
+slug: apob-atherogenic-particle-burden
+display_name: ApoB Atherogenic Particle Burden
+aliases:
+- ApoB100
+- apolipoprotein B atherogenicity
+- LDL particle number
+- atherogenic particles
+- apolipoprotein B
+category: metabolic
+summary: ApoB quantifies total atherogenic lipoprotein particle number (VLDL, IDL,
+  LDL, Lp(a)), providing superior cardiovascular risk assessment compared to LDL-cholesterol
+  alone. High ApoB with normal LDL ('discordance') is associated with residual cardiovascular
+  risk.
+upstream_drivers:
+- vldl-to-ldl-cascade
+- high-carbohydrate-diet
+- insulin-resistance
+- atherogenic-diet
+- genetic-dyslipidaemia
+downstream_effects:
+- plaque-formation
+- increased-cardiovascular-events
+- atherosclerosis
+- cardiovascular-events
+related_mechanisms:
+- small-dense-ldl-atherogenesis
+- vldl-to-ldl-cascade
+- insulin-resistance
+- vascular-inflammation
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-disease-prevention
+- familial-hypercholesterolemia
+- cardiovascular-lipid-pattern-recognition
+- metabolic-health-lchf
+evidence_tier: strong
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Lipid Panel and Risk Markers
+  quote: ApoB best predictor because it surrounds all the atherogenic lipoprotein
+    particles.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DX6sbxqDFJ5/
+  quote: ApoB reflects atherogenic particle number, not just cholesterol content
+version: 2
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

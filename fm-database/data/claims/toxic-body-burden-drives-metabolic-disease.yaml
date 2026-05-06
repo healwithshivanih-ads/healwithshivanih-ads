@@ -1,0 +1,35 @@
+slug: toxic-body-burden-drives-metabolic-disease
+statement: High toxic body burden is associated with obesity, type 2 diabetes, metabolic
+  syndrome, cancer, fatigue, infertility, allergies, behavior and mood disorders,
+  and neurological conditions including Parkinson's and Alzheimer's.
+evidence_tier: plausible_emerging
+rationale: The document references medical researcher recognition of toxin-disease
+  associations. The epidemiological links between environmental chemicals and metabolic/neurological
+  disease are plausible and increasingly supported by observational research, though
+  causality is complex.
+coaching_translation: The buildup of toxins in the body may be an overlooked contributor
+  to a wide range of health challenges, from low energy and weight gain to mood and
+  brain function.
+caveats:
+- Source is an expert synthesis toolkit, not primary literature.
+- Association ≠ causation; individual toxin-disease links vary in evidence quality.
+- Parkinson's/Alzheimer's links are observational and complex.
+linked_to_topics:
+- toxic-body-burden
+- metabolic-detoxification
+- environmental-toxin-exposure
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Detox Food Plan — page 05
+  quote: Medical researchers are recognizing more symptoms related to the buildup
+    of toxins, including obesity, type 2 diabetes, metabolic syndrome, cancer, fatigue,
+    infertility, allergies, behavior and mood disorders, and neurological conditions
+    such as tremors, headaches, & cognitive difficulties, along with several other
+    diseases like Parkinson's & Alzheimer's.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

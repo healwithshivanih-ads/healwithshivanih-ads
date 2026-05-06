@@ -1,0 +1,32 @@
+slug: cdg-inhibits-beta-glucuronidase-supports-estrogen-excretion
+statement: Calcium D-glucarate inhibits gut beta-glucuronidase, reducing reabsorption
+  of conjugated estrogen metabolites and supporting their excretion.
+evidence_tier: plausible_emerging
+rationale: Calcium D-glucarate is a natural compound found in fruits and vegetables
+  that is metabolised to D-glucaric acid, which inhibits beta-glucuronidase. This
+  reduces enterohepatic recirculation of estrogen. Animal studies and limited human
+  data support this mechanism; large RCTs in endometriosis are lacking.
+coaching_translation: Calcium D-glucarate blocks the gut enzyme that reabsorbs used
+  estrogen, helping your body actually eliminate it rather than recycling it back
+  into your bloodstream.
+caveats:
+- Evidence is primarily from animal studies and mechanistic data. Human RCTs in endometriosis
+  are limited. Source is FM lecture synthesis.
+- Timing of use is phase-2 estrogen detox, after gut stabilisation.
+linked_to_topics:
+- estrogen-dominance
+- endometriosis
+- gut-skin-hormone-axis
+linked_to_supplements:
+- calcium-d-glucarate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Estrogen Detoxification Discussion
+  quote: Calcium D glucarate can be brought in here to support this phase. CDG basically
+    inhibits your beta glucuronidase and it supports the estrogen excretion.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,27 @@
+slug: omega-3s-important-in-hormone-abnormality-management
+statement: Omega-3 fatty acids should be assessed and optimized when managing any
+  type of hormone abnormality, particularly estrogen-related disorders.
+evidence_tier: plausible_emerging
+rationale: Omega-3s reduce systemic inflammation, which can reduce aromatase upregulation
+  and estrogen production. Their anti-inflammatory properties are well-established;
+  the specific connection to estrogen metabolism management is plausible but not definitively
+  proven in RCTs.
+coaching_translation: Omega-3 fats help cool the inflammation that drives estrogen
+  imbalance. Checking and optimizing omega-3 levels is a sensible step alongside any
+  hormone support plan.
+linked_to_topics:
+- estrogen-dominance
+linked_to_supplements:
+- omega-3-fatty-acids
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-estrogen-dominance
+  location: Estrogen Metabolite Pathways
+  quote: Checking on the omega-3s as well when you are managing any kind of hormone
+    abnormalities also is very important.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

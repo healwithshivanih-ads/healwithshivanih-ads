@@ -1,0 +1,35 @@
+slug: niacin-supports-dna-repair-and-neurotransmitters
+statement: Niacin is vital for DNA repair, neurotransmitter function, detoxification,
+  telomere protection, and cellular communication.
+evidence_tier: plausible_emerging
+rationale: NAD+-dependent DNA repair and neurotransmitter synthesis are credible biochemical
+  roles for niacin supported by mechanistic research; the telomere and detox claims
+  are emerging.
+coaching_translation: Encourage niacin-rich foods (poultry, fish, liver, nutritional
+  yeast) as part of a brain and cellular health approach.
+caveats:
+- Source is a practitioner cheatsheet without primary citations.
+- Supplement dosing for DNA repair or anti-aging is in the confirm_with_clinician
+  range.
+- Source is practitioner cheatsheet.
+- High-dose niacin for therapeutic purposes requires clinician oversight.
+linked_to_topics:
+- nutrition-deficiency
+- chronic-inflammation
+linked_to_supplements:
+- niacin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 4
+  quote: Niacin is described as vital for DNA repair, neurotransmitter function, detoxification,
+    telomere protection, and cellular communication.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 4
+  quote: Niacin is described as vital for DNA repair, neurotransmitter function, detoxification,
+    telomere protection, and cellular communication.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

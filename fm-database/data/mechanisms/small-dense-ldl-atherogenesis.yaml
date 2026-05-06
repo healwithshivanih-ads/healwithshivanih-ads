@@ -1,0 +1,37 @@
+slug: small-dense-ldl-atherogenesis
+display_name: Small Dense LDL Particle Atherogenesis
+aliases:
+- LDL pattern B
+- sdLDL
+- small particle LDL
+category: metabolic
+summary: Small, dense LDL particles are more atherogenic than large, buoyant LDL particles.
+  They penetrate arterial walls more readily and are more susceptible to oxidation.
+  High triglycerides and low HDL are clinical markers predictive of small dense LDL
+  predominance.
+upstream_drivers:
+- high-triglycerides
+- insulin-resistance
+- high-sugar-diet
+downstream_effects:
+- oxidized-ldl-inflammasome-activation
+- plaque-formation
+- increased-cardiovascular-events
+related_mechanisms:
+- vldl-to-ldl-cascade
+- apob-atherogenic-particle-burden
+- insulin-resistance
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-disease-prevention
+- metabolic-syndrome
+evidence_tier: strong
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: LDL Particle Number and Risk
+  quote: These small particles, what we called years ago, LDL pattern B are much more
+    aggressive, much more likely to get into the lining of the blood vessel.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

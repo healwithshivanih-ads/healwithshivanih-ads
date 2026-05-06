@@ -1,0 +1,31 @@
+slug: insulin-resistance-upregulates-aromatase-driving-estrogen-dominance
+statement: Insulin resistance and hyperinsulinemia upregulate aromatase enzyme activity,
+  increasing conversion of testosterone to estrogen and driving estrogen dominance.
+evidence_tier: plausible_emerging
+rationale: The mechanistic link between hyperinsulinemia, aromatase upregulation,
+  and elevated estrogen is supported in the endocrinology and PCOS literature. Fasting
+  insulin > 5 µIU/mL is cited as the threshold for insulin resistance in this FM context.
+coaching_translation: High insulin from eating too many refined carbs acts like a
+  signal that tells your body to convert testosterone into estrogen. This is a key
+  reason why blood sugar balance is so important for hormone health.
+caveats:
+- Specific fasting insulin thresholds cited (2–5 normal, >5 IR, >24 severe) are FM-practice
+  references; mainstream cut-offs vary by lab.
+- Source is FM lecture.
+linked_to_topics:
+- estrogen-dominance
+- pcos
+linked_to_supplements:
+- magnesium-glycinate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-estrogen-dominance
+  location: How Does Inflammation Relate to Estrogen?
+  quote: Insulin is responsible for forming estrogen. So insulin resistance can cause
+    estrogen dominance. The insulin buildup actually upregulates the aromatase activity.
+    So it forms more estrogen.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

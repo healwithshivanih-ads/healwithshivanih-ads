@@ -1,0 +1,41 @@
+slug: methylfolate-b9
+display_name: Methylfolate (Active Vitamin B9)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 400
+    max: 1000
+    unit: mcg
+  tablet:
+    min: 400
+    max: 1000
+    unit: mcg
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- homocysteine-and-methylation
+- cardiometabolic-disease
+linked_to_claims:
+- active-b-vitamins-lower-homocysteine
+- mthfr-variants-increase-cvd-risk-via-homocysteine
+notes_for_coach: Methylfolate (5-MTHF) is the active, bioavailable form of B9. Folic
+  acid (synthetic) is NOT the same. Clients with MTHFR variants may not convert folic
+  acid adequately. Used alongside B12 and B6 to support homocysteine clearance.
+notes_for_client: This is the active form of folate your body can use directly—different
+  from the synthetic folic acid in most multivitamins.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-biomarkers-cvs
+  location: Homocysteine and Clotting
+  quote: By the way, folic acid is not vitamin B9. Vitamin B9 is phytohydroxychloroquine.
+    That we call it active vitamin B9.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,769 @@
+slug: thyroid-dysfunction
+display_name: Thyroid Dysfunction (Hypothyroidism & Hashimoto's)
+description: 'Functional medicine approach to hypothyroidism and Hashimoto''s thyroiditis.
+  Covers root mechanisms, clinical presentation, coaching goals, interventions, and
+  labs to track — structured for use in client sessions and plan authoring.
+
+  '
+aliases: []
+related_topics:
+- hypothyroidism
+- hashimotos-thyroiditis
+- hashimotos-hypothyroidism
+- t3-conversion-disorder
+- subclinical-hypothyroidism
+- autoimmune-thyroiditis
+- thyroid-dysfunction
+related_mechanisms:
+- impaired-t4-to-t3-conversion
+- hashimotos-autoimmune-cascade
+- autoimmune-thyroid-attack
+- reverse-t3-dominance
+- hpa-axis-dysregulation
+- leaky-gut
+- estrogen-dominance-thyroid-blunting
+- halogen-iodine-competition
+- oxidative-stress-thyroid
+tree:
+- label: 🔴 Clinical Presentation
+  children:
+  - label: Classic Hypothyroid Symptoms
+    children:
+    - label: Fatigue / low energy
+      children: []
+      linked_kind: symptom
+      linked_slug: fatigue
+      notes: ''
+    - label: Weight gain / difficulty losing weight
+      children: []
+      linked_kind: symptom
+      linked_slug: weight-gain
+      notes: ''
+    - label: Brain fog / poor concentration
+      children: []
+      linked_kind: symptom
+      linked_slug: brain-fog
+      notes: ''
+    - label: Cold intolerance / cold hands & feet
+      children: []
+      linked_kind: symptom
+      linked_slug: cold-intolerance
+      notes: ''
+    - label: Constipation
+      children: []
+      linked_kind: symptom
+      linked_slug: constipation
+      notes: ''
+    - label: Depression / low mood
+      children: []
+      linked_kind: symptom
+      linked_slug: depression
+      notes: ''
+    linked_kind: symptom
+    linked_slug: fatigue
+    notes: ''
+  - label: Hair & Skin Changes
+    children:
+    - label: Hair thinning / hair loss
+      children: []
+      linked_kind: symptom
+      linked_slug: hair-thinning
+      notes: ''
+    - label: Dry & rough skin
+      children: []
+      linked_kind: symptom
+      linked_slug: dry-skin
+      notes: ''
+    - label: Outer eyebrow thinning
+      children: []
+      linked_kind: symptom
+      linked_slug: eyebrow-thinning
+      notes: ''
+    - label: Brittle nails
+      children: []
+      linked_kind: symptom
+      linked_slug: weak-peeling-nails
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Hormonal & Reproductive
+    children:
+    - label: Irregular or heavy periods
+      children: []
+      linked_kind: symptom
+      linked_slug: irregular-menstrual-cycles
+      notes: ''
+    - label: Infertility
+      children: []
+      linked_kind: symptom
+      linked_slug: infertility
+      notes: ''
+    - label: Palpitations (Hashimoto's flare)
+      children: []
+      linked_kind: symptom
+      linked_slug: palpitations
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Hashimoto's-Specific
+    children:
+    - label: Goiter (enlarged thyroid)
+      children: []
+      linked_kind: symptom
+      linked_slug: goiter
+      notes: ''
+    - label: Fluctuating hypo / hyper symptoms
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Elevated TPO / TgAb antibodies
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🟠 Root Mechanisms
+  children:
+  - label: Autoimmune Attack on Thyroid
+    children:
+    - label: Molecular mimicry (gluten / thyroid tissue)
+      children: []
+      linked_kind: mechanism
+      linked_slug: autoimmune-thyroid-attack
+      notes: ''
+    - label: Leaky gut → antigen exposure
+      children: []
+      linked_kind: mechanism
+      linked_slug: leaky-gut
+      notes: ''
+    - label: TH1 / TH2 immune imbalance
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: TPO & TgAb antibody production
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: mechanism
+    linked_slug: hashimotos-autoimmune-cascade
+    notes: ''
+  - label: T4 → T3 Conversion Block
+    children:
+    - label: Elevated cortisol (stress)
+      children: []
+      linked_kind: mechanism
+      linked_slug: hpa-axis-dysregulation
+      notes: ''
+    - label: Selenium / zinc / iron deficiency
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Liver / gut dysfunction
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Calorie restriction
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: mechanism
+    linked_slug: impaired-t4-to-t3-conversion
+    notes: ''
+  - label: Reverse T3 Dominance
+    children:
+    - label: rT3 competes with active T3
+      children: []
+      linked_kind: mechanism
+      linked_slug: rt3-t3-competition
+      notes: ''
+    - label: Chronic stress / trauma
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Inflammation
+      children: []
+      linked_kind: topic
+      linked_slug: inflammation
+      notes: ''
+    linked_kind: mechanism
+    linked_slug: reverse-t3-dominance
+    notes: ''
+  - label: Nutrient Deficiencies
+    children:
+    - label: Iodine (hormone synthesis)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Selenium (deiodinase enzymes)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Iron (TPO enzyme function)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Zinc (T4 → T3 conversion)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Vitamin D (immune modulation)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Environmental / Toxin Burden
+    children:
+    - label: Fluoride / bromide compete with iodine
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: BPA / phthalates block thyroid receptors
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Heavy metals (mercury, cadmium, lead)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Pesticide exposure
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: mechanism
+    linked_slug: halogen-iodine-competition
+    notes: ''
+  - label: Hormonal Cross-Talk
+    children:
+    - label: Estrogen raises TBG → less free T3/T4
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Progesterone deficiency worsens conversion
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: mechanism
+    linked_slug: estrogen-dominance-thyroid-blunting
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🟢 FM Approach
+  children:
+  - label: Reduce Autoimmune Triggers
+    children:
+    - label: Gluten elimination (molecular mimicry)
+      children: []
+      linked_kind: topic
+      linked_slug: hypothyroidism
+      notes: ''
+    - label: Heal leaky gut
+      children: []
+      linked_kind: topic
+      linked_slug: gut-brain-axis
+      notes: ''
+    - label: Identify food sensitivities
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Nightshade / dairy trial elimination
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: topic
+    linked_slug: hashimotos-thyroiditis
+    notes: ''
+  - label: Support T4 → T3 Conversion
+    children:
+    - label: Optimise selenium & zinc intake
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Support liver detox pathways
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Reduce stress / cortisol load
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Avoid severe calorie restriction
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: topic
+    linked_slug: t3-conversion-disorder
+    notes: ''
+  - label: Stress & HPA Axis Reset
+    children:
+    - label: Breathwork / vagal toning
+      children: []
+      linked_kind: topic
+      linked_slug: breathwork-for-health
+      notes: ''
+    - label: Sleep prioritisation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Adaptogen support
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: topic
+    linked_slug: adrenal-dysfunction
+    notes: ''
+  - label: Reduce Toxin Exposure
+    children:
+    - label: Filter drinking water (fluoride)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Choose organic produce
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Swap plastic cookware / storage
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🟢 Interventions
+  children:
+  - label: Core Thyroid Nutrients
+    children:
+    - label: Selenium 200 mcg/day
+      children: []
+      linked_kind: supplement
+      linked_slug: selenium
+      notes: ''
+    - label: Zinc 15–30 mg/day
+      children: []
+      linked_kind: supplement
+      linked_slug: zinc
+      notes: ''
+    - label: Iron (if ferritin low)
+      children: []
+      linked_kind: supplement
+      linked_slug: iron
+      notes: ''
+    - label: Iodine (test first — caution in Hashimoto's)
+      children: []
+      linked_kind: supplement
+      linked_slug: iodine
+      notes: ''
+    - label: L-Tyrosine (T3/T4 building block)
+      children: []
+      linked_kind: supplement
+      linked_slug: tyrosine
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Immune & Anti-Inflammatory
+    children:
+    - label: Vitamin D3 2000–5000 IU
+      children: []
+      linked_kind: supplement
+      linked_slug: vitamin-d3
+      notes: ''
+    - label: Omega-3 EPA/DHA
+      children: []
+      linked_kind: supplement
+      linked_slug: omega-3-fatty-acids
+      notes: ''
+    - label: NAC (antioxidant, thyroid protection)
+      children: []
+      linked_kind: supplement
+      linked_slug: nac
+      notes: ''
+    - label: Nigella sativa (antibody reduction)
+      children: []
+      linked_kind: supplement
+      linked_slug: nigella-sativa
+      notes: ''
+    - label: Vitamin A (immune modulation)
+      children: []
+      linked_kind: supplement
+      linked_slug: vitamin-a
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Gut Healing Protocol
+    children:
+    - label: L-Glutamine (gut lining repair)
+      children: []
+      linked_kind: supplement
+      linked_slug: l-glutamine
+      notes: ''
+    - label: Multi-strain probiotic
+      children: []
+      linked_kind: supplement
+      linked_slug: probiotic-multi-strain
+      notes: ''
+    - label: Zinc Carnosine
+      children: []
+      linked_kind: supplement
+      linked_slug: zinc-carnosine
+      notes: ''
+    - label: Gluten-free diet (first step)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: HPA / Stress Support
+    children:
+    - label: Ashwagandha KSM-66 (improves TSH/T3/T4)
+      children: []
+      linked_kind: supplement
+      linked_slug: ashwagandha
+      notes: ''
+    - label: Rhodiola Rosea (adaptogen, fatigue)
+      children: []
+      linked_kind: supplement
+      linked_slug: rhodiola-rosea
+      notes: ''
+    - label: Magnesium Glycinate (sleep, anxiety)
+      children: []
+      linked_kind: supplement
+      linked_slug: magnesium-glycinate
+      notes: ''
+    - label: B-Complex (methylation support)
+      children: []
+      linked_kind: supplement
+      linked_slug: b-complex
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Hormone Balance
+    children:
+    - label: Myo-Inositol (TSH signalling, PCOS overlap)
+      children: []
+      linked_kind: supplement
+      linked_slug: myo-inositol
+      notes: ''
+    - label: DIM (estrogen metabolism)
+      children: []
+      linked_kind: supplement
+      linked_slug: dim
+      notes: ''
+    - label: Calcium D-Glucarate (estrogen clearance)
+      children: []
+      linked_kind: supplement
+      linked_slug: calcium-d-glucarate
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Special Considerations
+    children:
+    - label: LDN — Low Dose Naltrexone (antibody reduction)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Red light therapy (LLLT) to thyroid
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Elimination diet trial (gluten, dairy, nightshades)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🩵 Coaching Goals
+  children:
+  - label: Reduce Antibody Burden
+    children:
+    - label: Target TPO Ab < 35 IU/mL
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Target TgAb < 20 IU/mL
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Track quarterly for 6 months
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Restore Cellular Energy
+    children:
+    - label: Alleviate fatigue within 6–12 weeks
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Support mitochondrial function
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Improve sleep quality first
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Optimise Conversion (Not Just TSH)
+    children:
+    - label: Aim for Free T3 in upper third of range
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Keep rT3 low (check rT3/T3 ratio)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Educate client on T3 vs TSH disconnect
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Address Root Triggers
+    children:
+    - label: Gut healing — 3–6 month commitment
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Stress reduction — daily practice
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Food sensitivity identification
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Weight & Metabolism
+    children:
+    - label: Avoid severe calorie restriction
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Prioritise protein & strength
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Expect slow progress — set realistic timeline
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🔵 Labs to Track
+  children:
+  - label: Full Thyroid Panel
+    children:
+    - label: TSH (target 1–2 mIU/L optimal)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Free T4
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Free T3 (most important clinically)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Reverse T3
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Free T3 / Reverse T3 ratio
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: TPO antibodies
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Thyroglobulin antibodies (TgAb)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Nutrient Status
+    children:
+    - label: Ferritin (target 70–100 ng/mL)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Selenium (plasma)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Zinc (serum)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Vitamin D (25-OH, target 60–80 ng/mL)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Vitamin B12 (methylmalonic acid preferred)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Iodine (spot urine if supplementing)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Metabolic & Inflammatory
+    children:
+    - label: hsCRP (inflammation marker)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Fasting glucose / insulin / HOMA-IR
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Liver enzymes (AST, ALT, GGT)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Full iron panel (serum iron, TIBC, transferrin sat)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Hormonal Cross-Check
+    children:
+    - label: Oestradiol / Progesterone (if cycle irregularity)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: DHEA-S / Cortisol AM (if adrenal overlap)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Sex hormone binding globulin (SHBG)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+sources:
+- id: vitaone-health-coaching-toolkit
+  quote: null
+  location: Toolkit for Thyroid Dysfunction
+- id: vitaone-mind-map-tool
+  quote: null
+  location: FM Approach to Hypothyroidism mindmap
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

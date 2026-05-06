@@ -1,0 +1,32 @@
+slug: migrating-motor-complex
+display_name: Migrating Motor Complex (MMC) Enhancement
+aliases:
+- MMC
+- inter-digestive motility
+category: gut
+summary: The migrating motor complex is a cyclic pattern of smooth muscle contractions
+  that sweeps the gut clean between meals. Post-meal movement (walking, Vajrasana)
+  enhances MMC activity, reducing fermentation time and gas accumulation.
+upstream_drivers:
+- post-meal-walking
+- vajrasana-practice
+- 3-4-hour-meal-gaps
+downstream_effects:
+- reduced-bloating
+- reduced-gas
+- improved-gut-transit
+related_mechanisms:
+- gut-brain-axis-dysregulation
+linked_to_topics:
+- ibs
+- gut-brain-axis
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: BLOATING AND GAS — 10-Min Post-Meal Vajrasana and walking
+  quote: Improves diaphragm movement → gas release. Enhances MMC (migrating motor
+    complex).
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

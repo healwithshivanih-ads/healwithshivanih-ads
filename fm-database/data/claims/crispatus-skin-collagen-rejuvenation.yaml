@@ -1,0 +1,31 @@
+slug: crispatus-skin-collagen-rejuvenation
+statement: Restoring Lactobacillus crispatus may stimulate dermal collagen production
+  and skin rejuvenation, based on preliminary evidence.
+evidence_tier: fm_specific_thin
+rationale: Dr. Davis cites 'preliminary evidence' of an explosion in dermal collagen
+  when crispatus is restored. He recommends using crispatus yogurt as a face mask.
+  The mechanism is unknown and evidence is very early stage.
+coaching_translation: Early evidence suggests that restoring L. crispatus—whether
+  eaten as yogurt or applied to the skin—may help boost collagen and improve skin
+  appearance.
+caveats:
+- Described explicitly as 'preliminary evidence' by Dr. Davis.
+- Source is expert_consensus interview.
+- No specific studies cited by author/year.
+- Skin mask application is an experimental suggestion, not an established protocol.
+linked_to_topics:
+- vaginal-microbiome
+- perimenopause-microbiome
+linked_to_supplements:
+- lactobacillus-crispatus-probiotic
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Crispatus and skin health discussion
+  quote: There's an explosion in dermal collagen. And so a lot of the things we do,
+    restore lactobacillus... Crispatus may be very important.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,27 @@
+slug: bone-broth-mineral-extraction-with-acv
+statement: Adding apple cider vinegar to bone broth during long simmering helps extract
+  calcium, magnesium, and collagen from bones, enhancing the mineral content of the
+  broth.
+evidence_tier: fm_specific_thin
+rationale: The Bone Broth recipe explicitly states 'A few drops of apple cider vinegar
+  (optional, helps extract minerals).' This is a widely cited functional medicine
+  practice; formal quantified evidence is limited.
+coaching_translation: Adding a few drops of apple cider vinegar when making bone broth
+  helps draw out minerals like calcium and magnesium from the bones into the liquid
+  you drink.
+caveats:
+- Peer-reviewed evidence specifically quantifying ACV-mediated mineral extraction
+  in home broth is limited. Considered fm_specific_thin.
+linked_to_topics:
+- bone-broth-therapeutic-use
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-cardiometabolic-recipes
+  location: Bone Broth
+  quote: A few drops of apple cider vinegar (optional, helps extract minerals)
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

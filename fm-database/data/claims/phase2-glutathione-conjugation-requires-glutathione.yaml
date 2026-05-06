@@ -1,0 +1,31 @@
+slug: phase2-glutathione-conjugation-requires-glutathione
+statement: Glutathione is a primary Phase 2 conjugation molecule used in glutathione-S-transferase
+  reactions to neutralize reactive intermediates; supporting glutathione levels is
+  essential for Phase 2 function.
+evidence_tier: strong
+rationale: Glutathione-S-transferase (GST) reactions are among the best-characterized
+  Phase 2 pathways, with extensive biochemical and clinical evidence. Glutathione
+  depletion impairs detoxification of reactive electrophiles including drug metabolites,
+  heavy metals, and oxidized lipids.
+coaching_translation: Glutathione is your liver's most important detox molecule. Think
+  of it as a sticky neutralizer that grabs onto activated toxins and renders them
+  harmless. Keeping glutathione levels healthy is central to effective detoxification.
+caveats:
+- Expert lecture source (moderate quality). Glutathione's role in Phase 2 detox is
+  well-established biochemistry. Supplementation bioavailability and optimal dosing
+  require clinician input.
+linked_to_topics:
+- liver-detoxification-phases
+linked_to_supplements:
+- glutathione
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-liver-detox-part1
+  location: Phase 2 Conjugation Pathways
+  quote: The other important pathway is glutathione, there's about 20 oxygens, so
+    we can bind glutathione with anything.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

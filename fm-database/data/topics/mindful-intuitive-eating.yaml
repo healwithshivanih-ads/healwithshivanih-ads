@@ -4,31 +4,43 @@ aliases:
 - mindful eating
 - intuitive eating
 - hunger-satiety awareness
-summary: Mindful eating involves paying non-judgmental attention to eating cues. Intuitive
-  eating is a broader framework emphasizing internal hunger/satiety signals, unconditional
-  permission to eat, and rejecting diet culture. Both practices support a healthier
-  relationship with food, especially for those with eating disorder history.
+- hunger-fullness cues
+- non-diet approach
+summary: Mindful eating involves paying attention to eating without judgment. Intuitive
+  eating is a broader framework emphasizing internal hunger/satiety cues, eating for
+  physical rather than emotional reasons, and unconditional permission to eat. Both
+  practices support a healthier relationship with food and body.
 common_symptoms:
 - disordered-eating
 - emotional-eating
 - overeating
+- loss-of-hunger-fullness-cues
 red_flags:
 - active eating disorders (anorexia, bulimia, ARFID) — refer to registered dietitian
   and/or mental health professional
+- active-eating-disorder-requiring-clinical-treatment
 related_topics: []
 key_mechanisms:
 - hunger-satiety-signaling
-coaching_scope_notes: Coaches can teach and reinforce mindful and intuitive eating
-  practices. Active clinical eating disorders are out of coaching scope.
-clinician_scope_notes: Mindfulness-based interventions have RCT support for problematic
-  eating behaviors (Yu et al., 2020, J Altern Complement Med).
+coaching_scope_notes: 'Mindful and intuitive eating are core coaching domains. Coaches
+  can guide clients through practical tips: cooking for yourself, removing electronics
+  at meals, eating slowly, tuning into hunger/fullness signals. Those with active
+  eating disorders should be referred to a specialist.'
+clinician_scope_notes: Active eating disorders (anorexia, bulimia, ARFID) require
+  clinical and psychological care.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-nutrition-toolkit
   location: Mindful and Intuitive Eating
   quote: Intuitive eating is a broader concept that includes mindful eating. It emphasizes
     the connection and strengthens the relationship between mind, body, and food.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Mindful and Intuitive Eating
+  quote: Mindful and intuitive eating can help improve your relationship with food
+    and your body. Mindful and intuitive eating practices are helpful for everyone,
+    but they are especially important for those who have suffered from eating disorders,
+    or who feel like food controls their life.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

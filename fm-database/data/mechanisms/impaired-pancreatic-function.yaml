@@ -1,0 +1,34 @@
+slug: impaired-pancreatic-function
+display_name: Impaired Pancreatic Exocrine Function
+aliases:
+- low pancreatic enzymes
+- low elastase
+- pancreatic insufficiency
+category: metabolic
+summary: Reduced pancreatic enzyme output (assessed via low elastase on stool or blood
+  microbiome testing) impairs digestion of fats, proteins, and carbohydrates, contributing
+  to gut dysbiosis and malabsorption. Broad-spectrum digestive enzyme supplementation
+  including lipase and protease is indicated.
+upstream_drivers:
+- chronic-gut-dysbiosis
+- chronic-inflammation
+- poor-diet
+downstream_effects:
+- gut-dysbiosis-microbiome-imbalance
+- fat-malabsorption
+- nutrient-deficiency
+related_mechanisms:
+- gut-dysbiosis-microbiome-imbalance
+- low-stomach-acid
+linked_to_topics:
+- gut-dysbiosis
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Replace Section
+  quote: if you do any kind of blood microbiome testing, then you can really see low
+    elastase. And if the elastase is low, then consider giving them pancreatic enzymes.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

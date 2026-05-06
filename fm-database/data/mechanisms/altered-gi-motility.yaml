@@ -1,0 +1,37 @@
+slug: altered-gi-motility
+display_name: Altered GI Motility
+aliases:
+- dysmotility
+- gut dysmotility
+- intestinal stasis
+- slow transit
+category: gut
+summary: Reduced or dysregulated movement of intestinal contents creates stasis that
+  allows bacterial and fungal overgrowth. Can be structural (anatomic abnormalities,
+  surgical) or functional (stress, thyroid dysfunction, hormonal changes).
+upstream_drivers:
+- vagal-nerve-dysregulation
+- thyroid-dysfunction
+- hormonal-imbalance
+- anatomic-abnormalities
+- medications
+downstream_effects:
+- gut-dysbiosis
+- sibo
+- constipation
+- fermentation-gas-production
+related_mechanisms:
+- gut-dysbiosis
+- vagal-nerve-dysregulation
+linked_to_topics:
+- sibo
+evidence_tier: strong
+sources:
+- id: coconote-fm-sibo-sifo
+  location: Pathogenesis of SIBO
+  quote: And altered GI motility, it could be structural one also or it could be a
+    functional one as well.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

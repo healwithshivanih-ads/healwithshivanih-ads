@@ -1,0 +1,29 @@
+slug: autoimmunity-requires-genetics-permeability-trigger
+statement: 'Autoimmunity requires a convergence of three factors: genetic predisposition,
+  increased intestinal permeability, and an environmental or infectious trigger.'
+evidence_tier: plausible_emerging
+rationale: The three-hit model of autoimmunity (Fasano and others) is well-cited in
+  functional and integrative medicine and has growing peer-reviewed support, particularly
+  regarding intestinal permeability, though not fully consensus-level.
+coaching_translation: Autoimmune conditions aren't just about genes. They typically
+  require a 'leaky gut' and a trigger — like a food, infection, or major stressor
+  — to actually develop. This means there are real lifestyle levers to pull.
+caveats:
+- The triad model has significant FM literature support but is not universally accepted
+  in conventional medicine. Source is expert consensus lecture.
+linked_to_topics:
+- autoimmunity-triad
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-body-composition-bmi
+  location: Autoimmunity / Case Discussion Section
+  quote: When you see a family history of autoimmunity, they've got the genetics to
+    develop autoimmunity. When you see significant antibiotic use and pain medication
+    use, they are at risk for increased intestinal permeability, which is that second
+    piece of that triad of autoimmunity. And then you've got the trigger.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

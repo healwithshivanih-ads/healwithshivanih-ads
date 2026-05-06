@@ -1,0 +1,37 @@
+slug: fish-toxins-safe-food
+display_name: 'Fish & Toxins: Safe Food Guidelines'
+aliases:
+- mercury in fish
+- PCBs in fish
+- safe seafood
+- fish consumption guidelines
+summary: Fatty fish are rich in omega-3s, vitamin D, and minerals, but some species
+  accumulate heavy metals (mercury) and environmental toxins (PCBs, dioxins). Safe
+  choices low in mercury and high in omega-3s include salmon, sardines, herring, and
+  mackerel. High-mercury fish (shark, swordfish, king mackerel, tilefish) should be
+  avoided, especially by vulnerable groups.
+common_symptoms: []
+red_flags:
+- mercury-toxicity-symptoms
+- neurological-symptoms-in-children-from-mercury-exposure
+related_topics:
+- essential-fatty-acids
+- vitamin-d-nutrition
+key_mechanisms:
+- heavy-metal-toxicity
+- omega-3-anti-inflammatory-pathway
+coaching_scope_notes: Coach can educate clients on the EPA's fish consumption guidelines,
+  safe species selection, and the AHA recommendation of ≥2 servings of fish per week.
+  Special attention for pregnant women, children, and elderly.
+clinician_scope_notes: Evaluation for mercury or heavy metal toxicity is clinician
+  scope.
+evidence_tier: strong
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Fish and Toxins: Safe Food Guidelines'
+  quote: Some fish also contain higher levels of heavy metals such as mercury, which
+    can be toxic to the nervous, digestive, and immune systems.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,26 @@
+slug: goiter-cold-intolerance
+display_name: Goiter, Cold Intolerance & Poor Cognition
+aliases:
+- weight gain thyroid
+- poor cognition thyroid
+category: hormonal
+severity: concerning
+description: Goiter, cold intolerance, weight gain, and poor cognition linked to iodine
+  deficiency and hypothyroidism.
+when_to_refer: Thyroid symptoms require clinician assessment including TSH, fT3, fT4,
+  and anti-TPO; iodine supplementation requires clinician guidance in autoimmune thyroid
+  contexts.
+linked_to_topics:
+- thyroid
+- nutrition-deficiency
+linked_to_mechanisms:
+- thyroid-nutrient-synergy
+sources:
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Symptoms Discussed
+  quote: Goiter, cold intolerance, weight gain, and poor cognition - Linked to iodine
+    deficiency.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

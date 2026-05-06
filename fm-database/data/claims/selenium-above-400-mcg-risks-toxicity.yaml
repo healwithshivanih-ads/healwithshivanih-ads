@@ -1,0 +1,32 @@
+slug: selenium-above-400-mcg-risks-toxicity
+statement: Selenium intake above 400 mcg/day long term risks toxicity with hair loss
+  and nail brittleness.
+evidence_tier: confirm_with_clinician
+rationale: Selenium toxicity (selenosis) at high doses causing hair loss and nail
+  changes is clinically documented.
+out_of_scope_notes: Selenium supplementation above food levels requires clinician
+  oversight.
+caveats:
+- Source is a practitioner cheatsheet without primary citations.
+- Keep selenium supplementation within 100–200 mcg/day without clinician guidance.
+linked_to_topics:
+- thyroid
+- hair-loss
+- medication-nutrient-interactions
+linked_to_supplements:
+- selenium
+coaching_translation: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 12
+  quote: Selenium intake above 400 mcg/day long term is described as risking toxicity
+    with hair loss and nail brittleness.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 12
+  quote: Selenium intake above 400 mcg/day long term is described as risking toxicity
+    with hair loss and nail brittleness.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

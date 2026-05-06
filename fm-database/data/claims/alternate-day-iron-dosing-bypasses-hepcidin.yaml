@@ -1,0 +1,28 @@
+slug: alternate-day-iron-dosing-bypasses-hepcidin
+statement: Alternate-day oral iron dosing increases iron absorption efficiency by
+  allowing hepcidin levels to fall between doses, compared to daily dosing which sustains
+  elevated hepcidin and reduces absorption.
+evidence_tier: strong
+rationale: A landmark RCT by Stoffel et al. (2017, Lancet Haematol) demonstrated that
+  alternate-day iron supplementation resulted in greater fractional iron absorption
+  than daily dosing in iron-deficient women, attributed to hepcidin dynamics.
+coaching_translation: Taking iron every other day, rather than every day, may actually
+  be more effective — because daily iron can raise a hormone (hepcidin) that blocks
+  further iron absorption.
+out_of_scope_notes: Iron dosing regimens must be clinician-directed. This is a clinical
+  prescribing decision.
+caveats:
+- Evidence strongest in non-anaemic iron-deficient women. Applicability in severe
+  anaemia or inflammatory disease requires clinician judgement.
+linked_to_topics:
+- iron-deficiency-dysregulation
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXy9b_KjJT2/
+  quote: Use alternate-day dosing to bypass hepcidin blocks
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,32 @@
+slug: albumin-calcium-binding
+display_name: Albumin-Calcium Binding
+aliases:
+- protein-bound calcium
+- albumin-corrected calcium
+category: metabolic
+summary: 40% of serum calcium is bound to albumin. Low albumin reduces total serum
+  calcium independent of true calcium deficiency, making albumin correction essential
+  before interpreting serum calcium levels. Each 1 mg/dL drop in albumin corresponds
+  to approximately 0.8 mg/dL apparent decrease in serum calcium.
+upstream_drivers:
+- hypoalbuminemia
+- protein-deficiency
+downstream_effects:
+- low-apparent-serum-calcium
+- misdiagnosis-of-calcium-deficiency
+related_mechanisms:
+- pth-calcium-regulation
+linked_to_topics:
+- calcium-deficiency
+- calcium-metabolism
+evidence_tier: strong
+sources:
+- id: coconote-fm-calcium-deficiency
+  location: Calcium Fractions in Blood
+  quote: 40% of this calcium is actually bind to protein and that is to albumin. So
+    if you have a low albumin level, that means you might be having a low calcium
+    level.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

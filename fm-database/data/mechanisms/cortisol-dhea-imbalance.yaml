@@ -1,0 +1,39 @@
+slug: cortisol-dhea-imbalance
+display_name: Cortisol–DHEA Imbalance
+aliases:
+- adrenal exhaustion
+- DHEA depletion
+- cortisol-DHEA ratio shift
+category: endocrine
+summary: Under chronic stress, sustained demand for cortisol output eventually depletes
+  DHEA, as adrenal capacity is overwhelmed. Low DHEA impairs immune defense, reduces
+  muscle mass, lowers bone density, and reduces sex hormone precursor availability.
+  Chronically elevated cortisol simultaneously drives insulin resistance, weight gain,
+  and immune suppression.
+upstream_drivers:
+- hpa-axis-dysregulation
+- chronic-psychological-stress
+downstream_effects:
+- immune-suppression
+- insulin-resistance
+- osteoporosis
+- low-libido
+- reduced-muscle-mass
+related_mechanisms:
+- hpa-axis-dysregulation
+- insulin-resistance
+- sympathoadrenal-activation
+linked_to_topics:
+- hypercortisolism
+- adrenal-hormone-function
+- hpa-axis-dysfunction
+evidence_tier: strong
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Hypercortisolism
+  quote: If this becomes chronic, the adrenals can no longer keep up with the demand,
+    and DHEA levels begin to fall, signifying adrenal exhaustion.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

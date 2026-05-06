@@ -1,0 +1,41 @@
+slug: hrt
+display_name: Hormone Replacement Therapy (HRT) for Women
+aliases:
+- hormone replacement therapy
+- hrt
+- menopausal hormone therapy
+- mht
+- estrogen therapy
+- bioidentical hormones
+summary: 'Hormone Replacement Therapy (HRT) — also called Menopausal Hormone Therapy
+  (MHT) — involves supplementing oestrogen (often with progesterone) to relieve menopause
+  symptoms and reduce long-term risks such as bone loss and cardiovascular disease.
+  Evidence from modern studies shows that for most women under 60, or within 10 years
+  of menopause, the benefits outweigh the risks. Guidance from NICE, NAMS, and the
+  British Menopause Society has shifted significantly in favour of HRT since the misinterpreted
+  2002 WHI study.
+
+  '
+key_mechanisms:
+- estrogen-decline
+- low-progesterone
+- hpa-axis-dysregulation
+common_symptoms:
+- hot flashes / night sweats
+- vaginal dryness / atrophy
+- mood changes / low mood
+- brain fog
+- sleep disturbance
+- joint pain
+- low libido
+- irregular or absent periods
+- osteoporosis risk
+- cardiovascular risk
+evidence_tier: strong
+status: active
+version: 1
+updated_at: '2026-05-05'
+updated_by: shivani
+sources:
+- id: vitaone-mind-map-tool
+  location: HRT / Hormone Replacement Therapy mind map

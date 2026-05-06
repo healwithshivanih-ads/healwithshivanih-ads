@@ -1,0 +1,35 @@
+slug: refined-carb-diet-predominantly-acid-forming
+statement: A diet high in refined carbohydrates (bread, cereals, pasta, rice, sugar,
+  cakes, pizza) is predominantly acid-forming and may be linked to chronic disease
+  risk.
+evidence_tier: fm_specific_thin
+rationale: Refined carbohydrates are consistently classified as acid-forming in PRAL-based
+  literature. The broader link to chronic disease (cancer, heart disease) is a significant
+  causal claim that goes beyond what the acid-alkaline framework alone can support
+  in the peer-reviewed literature.
+coaching_translation: Diets heavy in bread, pasta, sugar, and processed grains tip
+  the body toward an acid state. Replacing some of these with vegetables, salads,
+  and whole legumes can help restore balance.
+out_of_scope_notes: The cancer and heart disease associations mentioned by the speaker
+  are out of coaching scope — do not use these in client communications. Refer to
+  a clinician or oncologist for disease-risk discussions.
+caveats:
+- Source is an expert lecture.
+- Causal links between acid-forming diet and cancer/heart disease are not established
+  by RCT consensus.
+- Rice and potatoes are more nuanced — whole, unrefined forms have different metabolic
+  profiles.
+linked_to_topics:
+- acid-alkaline-balance
+- high-carbohydrate-diet-acid-load
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-acid-alkaline-foods
+  location: Main lecture body
+  quote: Another reason why that high carbohydrate diet is actually a dangerous diet
+    because it's almost 100% acid.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

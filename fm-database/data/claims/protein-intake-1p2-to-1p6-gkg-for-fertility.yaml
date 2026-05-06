@@ -1,0 +1,32 @@
+slug: protein-intake-1p2-to-1p6-gkg-for-fertility
+statement: Women with fertility challenges may benefit from protein intakes of 1.2–1.6
+  g/kg/day to support hormone synthesis and reproductive function, exceeding the standard
+  RDA of 0.8 g/kg/day.
+evidence_tier: plausible_emerging
+rationale: Higher protein intakes in the 1.2–1.6 g/kg range are supported for muscle
+  protein synthesis and are increasingly recommended in active and clinical populations.
+  Direct RCT evidence specifically linking this protein range to improved fertility
+  outcomes is limited; the claim is extrapolated from general endocrine and reproductive
+  physiology.
+coaching_translation: The standard protein recommendation of 0.8 g per kg of body
+  weight may not be enough for women trying to conceive. Aiming for 1.2–1.6 g per
+  kg can better support hormone production and overall reproductive health.
+caveats:
+- Direct RCT evidence for protein intake in fertility is limited.
+- Protein targets should be personalised to individual needs and confirmed by clinician
+  or dietitian.
+- Source is Instagram educational content.
+linked_to_topics:
+- pcos-fertility
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXtzQLWjKjv/
+  quote: Overlooking protein and healthy fat requirements - most women need 1.2–1.6
+    g/kg protein, not the standard 0.8 g/kg.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

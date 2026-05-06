@@ -1,0 +1,50 @@
+slug: gastrointestinal-tract-overview
+display_name: Gastrointestinal Tract & Digestive Health
+aliases:
+- GI tract
+- digestive system
+- gut health
+summary: The gastrointestinal tract is a ~10-metre hollow tube responsible for breaking
+  down food into absorbable nutrients. Digestion is a sequential chemical and mechanical
+  process beginning in the mouth and ending in the colon. The decisions made at the
+  point of intake (what, how much, how fast, how often, and in what environment food
+  is eaten) profoundly affect the health of the entire tract.
+common_symptoms:
+- bloating
+- constipation
+- diarrhea
+- acid-reflux-heartburn
+- gut-cramping
+- rectal-bleeding
+- incomplete-digestion
+red_flags:
+- rectal-bleeding
+- chronic-uncontrolled-diarrhea
+- colon-cancer-risk-from-long-term-antacids
+related_topics:
+- gut-microbiome-and-gut-flora
+- leaky-gut
+- inflammatory-bowel-conditions
+- digestive-enzyme-function
+- liver-and-bile-digestion
+key_mechanisms:
+- mechanical-mastication-and-enzyme-mixing
+- hcl-and-pepsin-protein-digestion
+- gut-microbiome-colonisation
+coaching_scope_notes: Coaches can support clients with meal timing, chewing habits,
+  food choices, hydration timing, stress reduction, and probiotic/prebiotic foods.
+  Diagnosis and medication management are out of scope.
+clinician_scope_notes: Rectal bleeding, uncontrolled diarrhea, suspected IBD or colon
+  cancer risk require clinician referral. Steroid and anti-inflammatory tapering must
+  be supervised by a clinician.
+evidence_tier: plausible_emerging
+sources:
+- id: barbara-oneil-gi-tract
+  location: Introduction
+  quote: It's a hollow tube and anything that goes into our hollow tube is not part
+    of you or me until it gets broken down to tiny substances, absorbed out of the
+    gut and into the blood, then it becomes part of you and me.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,28 @@
+slug: beta-blockers-third-line-jnc8-hypertension
+statement: Per JNC-8 guidelines, beta blockers are not recommended as first-line therapy
+  for hypertension and should typically be considered a third-line agent.
+evidence_tier: strong
+rationale: JNC-8 is the current major US hypertension guideline and explicitly demotes
+  beta blockers from first-line status for uncomplicated hypertension.
+coaching_translation: Many clients may still be on beta blockers prescribed under
+  older guidelines — this is worth raising with their prescriber.
+out_of_scope_notes: Prescribing and de-prescribing decisions are strictly clinician
+  scope.
+caveats:
+- Guidelines apply to uncomplicated hypertension; beta blockers remain indicated for
+  specific conditions (post-MI, heart failure, arrhythmias).
+linked_to_topics:
+- beta-blocker-deprescribing
+- hypertension
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Practitioners'
+  quote: Beta blocker therapy is not recommended as first-line therapy of hypertension.
+    According to JNC-8 guidelines, they should typically be considered as a third-line
+    agent.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

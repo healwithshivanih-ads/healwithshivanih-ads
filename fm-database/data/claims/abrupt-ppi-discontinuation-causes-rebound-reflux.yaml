@@ -1,0 +1,28 @@
+slug: abrupt-ppi-discontinuation-causes-rebound-reflux
+statement: Stopping PPIs abruptly is not recommended because it causes rebound acid
+  hypersecretion; gradual tapering minimizes this reversible short-term effect.
+evidence_tier: strong
+rationale: Rebound acid hypersecretion upon abrupt PPI cessation is well-documented
+  in clinical literature.
+coaching_translation: Stopping a PPI 'cold turkey' can actually make heartburn worse
+  temporarily — a slow, supervised taper is the safer approach.
+out_of_scope_notes: PPI tapering protocol design is a clinician responsibility.
+linked_to_topics:
+- gerd-ppi-tapering
+linked_to_supplements:
+- melatonin-acid-suppressor
+- dgl
+- alginate
+- slippery-elm
+- probiotics
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Patients'
+  quote: Stopping PPIs abruptly is not recommended. The best way to discontinue is
+    to taper down slowly.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

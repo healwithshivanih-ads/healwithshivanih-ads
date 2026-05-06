@@ -1,0 +1,29 @@
+slug: two-primary-mechanisms-chronic-inflammation
+statement: 'Chronic inflammation is maintained by two primary mechanisms: (1) persistence
+  of a trigger (infection, trauma, food allergy, toxin, stress), and (2) failure of
+  the immune system to shut down the inflammatory response.'
+evidence_tier: strong
+rationale: This two-mechanism model (persistent trigger + failed immune resolution)
+  is consistent with established immunology. Resolution of inflammation is an active
+  process involving resolvins and anti-inflammatory cytokines; failure of resolution
+  is well-documented in autoimmune and chronic inflammatory disease.
+coaching_translation: 'Help clients identify what might be keeping their inflammation
+  ''switched on'': Is there an ongoing food sensitivity, hidden infection, or toxic
+  exposure? And is their immune system getting the support it needs to calm down?'
+caveats:
+- Expert consensus source; mechanism framing is pedagogical simplification.
+linked_to_topics:
+- chronic-inflammation
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-approach-inflammation
+  location: Mechanisms of Chronic Inflammation
+  quote: There are two primary mechanisms for chronic inflammation. When there is
+    a persistence of a trigger and... the immune system is failing to shut down the
+    inflammation.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

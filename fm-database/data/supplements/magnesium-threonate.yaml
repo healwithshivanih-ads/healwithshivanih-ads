@@ -1,0 +1,44 @@
+slug: magnesium-threonate
+display_name: Magnesium L-Threonate
+category: mineral
+forms_available:
+- capsule
+- powder
+- tablet
+typical_dose_range:
+  capsule:
+    min: 1500
+    max: 2000
+    unit: mg
+timing_options:
+- morning
+- evening
+- bedtime
+take_with_food: optional
+linked_to_topics:
+- nervous-system-regulation
+- emotional-healing-chronic-disease
+- emotional-healing-in-chronic-disease
+linked_to_claims:
+- magnesium-glycinate-calms-nervous-system-improves-sleep
+- magnesium-threonate-crosses-blood-brain-barrier
+- magnesium-calms-nervous-system-improves-hrv
+notes_for_coach: Magnesium L-threonate is specifically noted for crossing the blood-brain
+  barrier and is used for chronic fear/hypervigilance and cognitive support. Specific
+  dosing should be confirmed with a clinician.
+notes_for_client: This form of magnesium is designed to support brain function and
+  reduce mental tension. Best taken in the evening.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Why Emotional Healing Is Important in Chronic Diseases / Chronic Fear/Hypervigilance
+    row
+  quote: Neurofeedback, magnesium threonate, glycine, deep exhalation practices.
+- id: vitaone-health-coaching-cheatsheet
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: Neurofeedback, magnesium threonate, glycine, deep exhalation practices.
+version: 2
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

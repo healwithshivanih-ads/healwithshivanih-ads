@@ -1,0 +1,33 @@
+slug: refined-carbohydrate-overconsumption
+display_name: Refined Carbohydrate Overconsumption
+aliases:
+- high-carb diet
+- refined grains
+- processed carbs
+summary: Diets dominated by refined carbohydrates (white bread, pasta, rice, sugar,
+  cakes, pizza) are considered nearly 100% acid-forming in the dietary pH framework,
+  contributing to inflammation and a metabolically unfavorable internal environment.
+  The issue is overreliance on refined forms, not carbohydrates per se.
+common_symptoms:
+- inflammation
+red_flags: []
+related_topics:
+- ph-balance-and-diet
+key_mechanisms:
+- dietary-acid-load
+- inflammatory-diet-pattern
+coaching_scope_notes: Reinforce that whole, unrefined carbohydrates (e.g., lentils,
+  vegetables) are preferable. Rice paired with dal and salad is presented as a balanced,
+  acceptable meal.
+evidence_tier: plausible_emerging
+clinician_scope_notes: ''
+sources:
+- id: barbara-oneil-fresh-cheeses-ph
+  location: Carbohydrates and Acid Load
+  quote: The cereal, the bread, the cakes, the pasta, the pizza, the rice, the sugar.
+    Another reason why that high carbohydrate diet is actually a dangerous diet because
+    it's almost 100% acid.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

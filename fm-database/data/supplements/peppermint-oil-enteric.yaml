@@ -1,0 +1,36 @@
+slug: peppermint-oil-enteric
+display_name: Peppermint Oil (Enteric-coated)
+category: herb
+forms_available:
+- capsule
+typical_dose_range:
+  capsule:
+    min: 180
+    max: 540
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- sibo
+linked_to_claims:
+- peppermint-saponins-reduce-methane-sibo
+notes_for_coach: Peppermint contains saponins that act as molecular sponges for excess
+  hydrogen and methane. Also promotes intestinal motility. Enteric coating prevents
+  reflux. Useful in methane-dominant and mixed SIBO.
+notes_for_client: Enteric-coated peppermint oil helps mop up excess gas in your gut
+  and supports healthy gut movement.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-sibo-sifo
+  location: Botanical Formulations for Methane-Dominant SIBO
+  quote: These are peppermint and coir-baked white extract. They contain stannins
+    and large decollized pleurite structures that acts as molecular sponges for access
+    hydrogen and methane.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

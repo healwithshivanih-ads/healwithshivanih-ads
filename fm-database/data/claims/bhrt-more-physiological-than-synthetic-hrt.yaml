@@ -1,0 +1,35 @@
+slug: bhrt-more-physiological-than-synthetic-hrt
+statement: Bioidentical hormones are molecularly identical to endogenous hormones,
+  allowing individualized dosing and potentially fewer side effects (bloating, nausea,
+  breast sensitivity, cancer risk) compared to synthetic HRT, which uses non-identical
+  metabolites and fixed dosing.
+evidence_tier: plausible_emerging
+rationale: The molecular identity argument for BHRT is biochemically sound. However,
+  head-to-head RCT comparisons of BHRT vs. synthetic HRT for safety and efficacy are
+  limited. The claim of reduced cancer risk with BHRT compared to synthetic HRT remains
+  debated in the literature.
+coaching_translation: BHRT aims to replicate the body's own hormones more closely
+  than conventional HRT, allowing for more personalized treatment. However, this still
+  requires a clinician to prescribe and monitor.
+out_of_scope_notes: BHRT prescribing and monitoring are strictly clinician scope.
+  Do not advise clients to switch from prescribed HRT to BHRT without clinical guidance.
+caveats:
+- Head-to-head RCT comparisons of BHRT vs. synthetic HRT are limited.
+- The long-term safety data for compounded BHRT is less robust than for FDA-approved
+  conventional HRT.
+- Source is expert consensus lecture.
+linked_to_topics:
+- bhrt
+- menopause
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-sex-hormones
+  location: BHRT vs HRT
+  quote: The body reacts to them similarly to your own produced hormones. Losage is
+    fixed, so I cannot give one dosage to the other person, right, because those can
+    be existed as per the body's requirement, the BASRT.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

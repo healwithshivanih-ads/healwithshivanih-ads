@@ -1,5 +1,5 @@
 slug: irregular-periods
-display_name: Irregular / Absent Menstrual Periods
+display_name: Irregular Periods
 aliases:
 - irregular cycles
 - oligomenorrhea
@@ -8,22 +8,47 @@ aliases:
 - menstrual irregularities
 - skipped periods
 - cycle disruption
+- irregular menstrual cycles
+- cycle irregularity
+- scanty menstruation
+- delayed menstruation
+- oligomenorrhoea
+- infrequent periods
+- cycle lengthening
+- irregular bleeding
+- menstrual irregularity
+- variable cycles
+- irregular menstrual cycle
+- erratic periods
 category: hormonal
-severity: concerning
-description: Disrupted or absent menstrual cycles caused by chronic stress affecting
-  the HPA-HPG axis interplay, or by adrenal hyperplasia in non-menopausal women.
-when_to_refer: Refer if persistent to rule out adrenal hyperplasia, PCOS, or thyroid
-  dysfunction.
+severity: common
+description: Disruption to regular menstrual cycling, increasingly common in younger
+  women and linked to endocrine disruption, environmental chemicals, and premature
+  hormonal decline.
+when_to_refer: Refer if periods are absent for >3 months, if accompanied by severe
+  pain, or if fertility is a concern.
 linked_to_topics:
 - pcos
 - low-progesterone
 - hpa-axis-dysregulation
 - chronic-stress
+- perimenopause
+- estrogen-dominance
+- endometriosis
+- gut-skin-hormone-axis
+- menopause
+- perimenopause-and-menopause
+- endocrine-disruption-and-detox
 linked_to_mechanisms:
 - insulin-resistance
 - hpa-axis-dysregulation
 - low-progesterone
 - dhea-depletion
+- progesterone-deficiency
+- estrogen-recirculation-via-beta-glucuronidase
+- ovarian-follicle-depletion
+- estrogen-progesterone-decline
+- receptor-occupancy-by-edcs
 sources:
 - id: vitaone-sex-hormones-cheatsheet
   location: Estrogen Dominance Supplement Cheatsheet
@@ -31,7 +56,24 @@ sources:
 - id: vitaone-adrenal-toolkit
   location: 'HPA Axis Questionnaire — Section 3: Adrenal hyperplasia'
   quote: Irregular or no periods (not menopausal)
-version: 2
+- id: coconote-fm-estrogen-dominance
+  location: Case Study 2
+  quote: You might have some kind of irregular menstruation or spotting. Or your cycles
+    might have cycles that are absolutely regular. But still she is having symptoms.
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Case History / Symptoms
+  quote: The cycles got delayed from 28 days to 31 days to 37 days and up to 40–45
+    days, the cycle just kept on getting delayed.
+- id: coconote-fm-sex-hormones
+  location: Staging of Menopause
+  quote: If the menstruation is variable, then this is a perimenopause phase. If the
+    menstruation is completely absent, then we say it is a menopause or a postmenopause
+    phase.
+- id: ask-expert-hormonal-health-bhrt
+  location: Premature Hormonal Decline and Endocrine Disruption
+  quote: We have more and more young women with irregular cycles and going into menstruating
+    earlier and going into perimenopause, even in their 20s.
+version: 6
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

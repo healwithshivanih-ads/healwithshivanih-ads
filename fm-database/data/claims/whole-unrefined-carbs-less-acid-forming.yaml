@@ -1,0 +1,31 @@
+slug: whole-unrefined-carbs-less-acid-forming
+statement: Whole, unrefined carbohydrates (e.g., a small portion of rice paired with
+  generous dal and vegetable salad) are less problematic than refined carbohydrates
+  when eaten in appropriate proportions.
+evidence_tier: plausible_emerging
+rationale: There is strong dietetic consensus that whole grains and legume-rich meals
+  have superior nutritional profiles. Within the acid-alkaline framework, balancing
+  a modest acid-forming grain with alkaline-forming vegetables and legumes is consistent
+  with the 70/30 ratio principle.
+coaching_translation: It's not about cutting rice or carbs completely — it's about
+  the ratio. A cup of rice alongside two cups of lentils and a big vegetable salad
+  is a well-balanced, mostly alkaline meal.
+caveats:
+- Source is an expert lecture.
+- The example given (rice, dal, salad) is culturally specific and may need adaptation.
+linked_to_topics:
+- acid-alkaline-balance
+- high-carbohydrate-diet-acid-load
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-acid-alkaline-foods
+  location: Main lecture body
+  quote: It's only when it's overdone and refined. That's the problem. So is there
+    a whole... plate of rice, you have a cup of rice with two cups of dal and then
+    a big salad with dal that's got vegetables in it.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,33 @@
+slug: gut-dysbiosis-drives-estrogen-dominance-via-beta-glucuronidase
+statement: Gut dysbiosis and SIBO increase beta-glucuronidase enzyme activity, which
+  deconjugates and reabsorbs excreted estrogen metabolites in the intestine, contributing
+  to estrogen dominance even in lean individuals.
+evidence_tier: plausible_emerging
+rationale: The estrobolome concept (gut microbiome regulation of estrogen via beta-glucuronidase)
+  is supported by emerging research. Multiple studies have demonstrated associations
+  between gut microbiome composition, beta-glucuronidase activity, and circulating
+  estrogen levels.
+coaching_translation: Supporting gut health — through dietary fiber, probiotics, and
+  addressing SIBO — is an important strategy for managing estrogen balance, especially
+  in women with unexplained estrogen dominance symptoms.
+caveats:
+- Clinical trial evidence for probiotic interventions specifically reducing estrogen
+  dominance via beta-glucuronidase is limited; mechanism is well-supported but clinical
+  protocols are emerging.
+- Source is expert consensus lecture.
+linked_to_topics:
+- gut-estrogen-axis
+- estrogen-dominance
+linked_to_supplements:
+- probiotics
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-sex-hormones
+  location: Hormone Metabolism and Detoxification
+  quote: high enzymatic production of beta glucolidase in their gut which causes the
+    detoxification and excretion of the hormone to be absolutely dysfunctional
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

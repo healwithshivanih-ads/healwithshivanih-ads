@@ -1,0 +1,31 @@
+slug: vitamin-d-status-target-given
+statement: The source lists an optimal vitamin D serum range of 30–40 ng/mL.
+evidence_tier: confirm_with_clinician
+rationale: Vitamin D optimal range is debated; 30–40 ng/mL is a common FM functional
+  target but lab interpretation is clinician scope.
+out_of_scope_notes: Lab range interpretation and vitamin D dosing to target is outside
+  coaching scope.
+caveats:
+- Source is a practitioner cheatsheet without primary citations.
+- Optimal range definitions vary across clinical guidelines.
+- This is a FM functional target, not a universal clinical consensus range.
+- Lab interpretation requires clinician oversight.
+linked_to_topics:
+- thyroid
+- chronic-inflammation
+- bone-health
+linked_to_supplements:
+- vitamin-d3
+coaching_translation: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 8
+  quote: The source lists an optimal vitamin D serum range of 30-40 ng/mL.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 8
+  quote: The source lists an optimal vitamin D serum range of 30-40 ng/mL.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

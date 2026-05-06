@@ -1,0 +1,41 @@
+slug: autoimmunity-leaky-gut-triad
+display_name: Autoimmunity – Three-Factor Model (Fasano)
+aliases:
+- Fasano triad
+- autoimmune triad
+summary: 'Dr. Fasano''s model states that three factors are necessary for autoimmune
+  disease: (1) genetic predisposition, (2) environmental trigger/antigen exposure,
+  and (3) increased intestinal permeability. All three must co-occur; leaky gut is
+  the essential permissive factor.'
+common_symptoms:
+- joint-pain
+- thyroid-dysfunction
+- gut-inflammation
+red_flags:
+- confirmed-autoimmune-diagnosis
+- positive-hla-dq2-dq8-with-symptoms
+related_topics:
+- intestinal-permeability
+- celiac-disease
+- molecular-mimicry
+key_mechanisms:
+- tight-junction-dysregulation
+- molecular-mimicry
+- genetic-predisposition-hla
+coaching_scope_notes: Coaches can educate clients on the role of gut barrier integrity
+  in autoimmune risk and support lifestyle modifications that reduce leaky gut triggers
+  (stress, antibiotics, antacids, dietary antigens).
+clinician_scope_notes: HLA-DQ2/DQ8 genetic testing and autoimmune antibody panels
+  (ANA, anti-nuclear antibody) are clinician-ordered. Coaches should refer out if
+  autoimmune disease is suspected.
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-intestinal-permeability
+  location: Three Factors for Autoimmunity
+  quote: Now if you look at the basic pathophysiology of autoimmunity, and Dr. Fasano
+    had mentioned, it's clear that there are three factors that are very important
+    for autoimmune conditions and autoimmunity.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

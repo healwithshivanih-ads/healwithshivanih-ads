@@ -1,0 +1,33 @@
+slug: lectin-gut-inflammation
+display_name: Lectin-Induced Gut Inflammation
+aliases:
+- lectin blood barrier breach
+- dietary lectin inflammation
+category: immune
+summary: Lectins from improperly prepared foods (unsoaked legumes, unfermented grains,
+  unripe fruit) can breach gut defences if gut flora is compromised, enter the bloodstream,
+  and trigger systemic inflammation. Proper food preparation (soaking, rinsing, fermentation,
+  pressure cooking) or adequate gut microbiome health disarms lectins.
+upstream_drivers:
+- poor-gut-flora
+- improper-food-preparation
+downstream_effects:
+- systemic-inflammation
+- arthritis-exacerbation
+- cellular-ph-drop
+related_mechanisms:
+- cellular-ph-dysregulation
+linked_to_topics:
+- lectin-sensitivity
+- gluten-intolerance
+evidence_tier: fm_specific_thin
+sources:
+- id: barbara-oneil-ph-balance
+  location: Lectins Section
+  quote: Lectins are only a problem if they get into the blood. If lectins get into
+    the blood, they increase inflammation in it. If you've got good gut flora, that
+    disarms the lectin.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

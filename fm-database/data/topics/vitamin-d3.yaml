@@ -1,0 +1,45 @@
+slug: vitamin-d3
+display_name: Vitamin D3
+aliases:
+- cholecalciferol
+- vitamin D
+- vitamin D3 supplementation
+summary: Vitamin D3 (cholecalciferol) is a fat-soluble vitamin primarily produced
+  in the skin via UV exposure and obtained from animal food sources. It undergoes
+  hepatic and renal conversion to its active form (calcitriol) and plays critical
+  roles in calcium absorption, bone mineralisation, immune modulation, cardiovascular
+  health, neurotransmitter production, and musculoskeletal function.
+common_symptoms:
+- bone-pain
+- muscle-weakness
+- fatigue
+- frequent-illness
+- cognitive-decline
+red_flags:
+- intracranial-bleeding
+- severe-osteoporosis
+related_topics:
+- vitamin-k2
+- vitamin-d3-k2-synergy
+- calcium-metabolism
+- bone-health
+key_mechanisms:
+- vitamin-d-hydroxylation
+- calcium-intestinal-absorption
+- immunomodulation-via-vitamin-d
+coaching_scope_notes: Coaches can discuss food sources, lifestyle factors (sun exposure,
+  BMI, age, skin tone) and general supplementation guidance. Specific dose titration,
+  especially for chronic disease states, requires clinician oversight.
+clinician_scope_notes: Functional range for 25-OH vitamin D is distinct from conventional
+  sufficiency (30–100 ng/mL). Clinicians should assess functional optimal range. Dosing
+  above 6,000 IU/day and management of chronic-disease dosing require clinician supervision.
+evidence_tier: strong
+sources:
+- id: coconote-fm-vitamin-d3-k2
+  location: Introduction / Vitamin D Overview
+  quote: Vitamin D is a very important fat soluble vitamin. Primarily, it is produced
+    when the sun's UV rays fall on our skin.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

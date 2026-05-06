@@ -4,10 +4,13 @@ aliases:
 - microbiome imbalance
 - intestinal dysbiosis
 - dysbiotic bacteria
-summary: An imbalance in the gut microbiome where pathogenic or dysbiotic bacteria
-  outcompete beneficial strains, driving fermentation of unabsorbed carbohydrates
-  and systemic inflammation. FODMAP restriction reduces fermentation load; reintroduction
-  of prebiotic fibres rebuilds diversity.
+- good vs bad bacteria imbalance
+- dysbiotic pattern
+- gut flora imbalance
+- gut health
+summary: Gut health is linked to nutrient absorption, autoimmune joint pain, and hair
+  loss support. Dysbiosis is described as an upstream driver of nutrient deficiency,
+  inflammation, and poor barrier integrity.
 common_symptoms:
 - bloating
 - irregular-stools
@@ -16,10 +19,31 @@ common_symptoms:
 - skin-rashes
 - abdominal-gas
 - new-food-sensitivities
+- diarrhea
+- constipation
+- skin-itching
+- sweet-cravings
+- white-tongue-coating
+- food-sensitivities
+- brain-fog
+- systemic-inflammation
+- digestive-discomfort
+- chronic-diarrhea
+- nutrient-deficiency-despite-supplementation
+- joint-pain
+- hair-loss
+- nutrient-deficiency
 red_flags:
 - autoimmune flares
 - severe unrelenting diarrhea
 - Persistent diarrhea with blood or mucus
+- Acute diarrhea with dehydration — refer to physician
+- Suspected parasitic infection requiring stool testing
+- severe-autoimmune-flare
+- acute-gastroenteritis
+- autoimmune triggers requiring clinical diagnosis
+- autoimmune-triggers
+- persistent-diarrhea-unresponsive-to-diet
 related_topics:
 - sibo
 - leaky-gut
@@ -27,15 +51,28 @@ related_topics:
 - candida-overgrowth
 - ibs
 - low-fodmap-diet
+- chronic-inflammation
+- fungal-overgrowth
+- intestinal-permeability
+- parasite-infection
+- nutrition-deficiency
+- hair-loss
+- joint-pain
 key_mechanisms:
 - gut-dysbiosis-mechanism
 - reduced-scfas
 - leaky-gut
 - gut-fermentation-dysbiosis
-coaching_scope_notes: Guide clients on prebiotic reintroduction once symptoms stabilize.
-  Stool testing interpretation is clinician-scope.
-clinician_scope_notes: 'Order gut microbiome test. Therapeutic focus: restore microbial
-  balance — always secondary to diet/lifestyle changes.'
+- lps-mediated-immune-activation
+- gut-immune-axis-dysregulation
+- gut-dysbiosis-microbiome-imbalance
+- low-stomach-acid
+- impaired-gut-barrier
+- gut-barrier-and-nutrient-absorption
+coaching_scope_notes: Encourage fermented foods, fiber diversity, and probiotic foods.
+  Refer for GI workup if symptoms persist or autoimmune concern arises.
+clinician_scope_notes: SIBO testing, autoimmune gut triggers, and antibiotic-related
+  dysbiosis management are clinical scope items.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-gut-cheatsheet
@@ -47,7 +84,23 @@ sources:
   location: FODMAP Diet Cheatsheet — Introduction
   quote: They're not 'bad foods' - they're poorly absorbed carbs that ferment and
     feed dysbiotic bacteria, driving IBS, SIBO, and bloating.
-version: 2
+- id: coconote-fm-approach-inflammation
+  location: Gut Dysbiosis and Infection Triggers
+  quote: dysbiosis means you have an imbalance of good vs bad bacteria and when you
+    have a lot of bad bacteria, that creates the chronic bacterial infections.
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Gut Dysbiosis and Pathogens Lecture
+  quote: So whenever you want to treat any kind of infection, consider doing them
+    once and all. Don't try and wait and don't try and wait.
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Topics Covered
+  quote: Gut health is linked to thiamin absorption, nutrient absorption, autoimmune
+    joint pain, and hair loss support.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Topics Covered
+  quote: Gut health is linked to thiamin absorption, nutrient absorption, autoimmune
+    joint pain, and hair loss support.
+version: 6
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-06'
 updated_by: shivani

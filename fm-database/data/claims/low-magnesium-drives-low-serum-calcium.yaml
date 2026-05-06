@@ -1,0 +1,32 @@
+slug: low-magnesium-drives-low-serum-calcium
+statement: Magnesium deficiency causes calcium to shift intracellularly, reducing
+  serum calcium; correcting intracellular magnesium can restore serum calcium levels
+  without direct calcium supplementation.
+evidence_tier: plausible_emerging
+rationale: 'Mechanistically plausible: magnesium regulates calcium channels and pumps
+  (e.g., PMCA, NCX). Low magnesium impairs PTH secretion and action, contributing
+  to hypocalcemia. Supported by clinical observations but RCT evidence specifically
+  for this mechanism is limited.'
+coaching_translation: Low magnesium can make your calcium look low on a test. Rather
+  than jumping to calcium supplements, addressing magnesium intake first may naturally
+  bring calcium back into balance.
+caveats:
+- Source is expert consensus, moderate quality.
+- Full RCT support for the intracellular shift mechanism specifically is limited.
+linked_to_topics:
+- calcium-deficiency
+- calcium-metabolism
+linked_to_supplements:
+- magnesium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-calcium-deficiency
+  location: Magnesium and Calcium Relationship
+  quote: if you have deficiency of magnesium then calcium is going to move in the
+    cell and that way you can see low serum calcium level. So if you correct the intracellular
+    magnesium level this calcium going to come out from the cell.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,49 @@
+slug: pyridoxal-5-phosphate
+display_name: Pyridoxal-5-Phosphate (P5P / Active Vitamin B6)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 25
+    max: 100
+    unit: mg
+  tablet:
+    min: 25
+    max: 100
+    unit: mg
+timing_options:
+- with_breakfast
+- morning
+- with_lunch
+take_with_food: optional
+linked_to_topics:
+- hormonal-nutrition-foundations
+- estrogen-signaling
+linked_to_claims:
+- p5p-controls-hormone-signaling-duration
+- p5p-deficiency-drives-estrogen-dominance
+- nutrient-cofactors-required-for-hormone-signaling
+notes_for_coach: 'P5P is the active, bioavailable form of B6 and controls signaling
+  duration at helix-12 of the receptor. Depleted by sugar, frequent flying (jet fuel
+  exposure), and the modern diet. IMPORTANT: doses over 100mg/day are linked to reversible
+  neurological symptoms — do not exceed without clinician guidance. Coaches should
+  not recommend doses above 100mg/day.'
+notes_for_client: Active vitamin B6 (P5P) acts like a volume dial on your hormone
+  signals — too little means signals run too long, which can contribute to heavy periods
+  or breast changes. Sugar and frequent air travel can deplete it. Discuss dose with
+  your practitioner.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: P5P and Hormone Signaling Duration
+  quote: B6 will close the hat on the binding pocket domain, which is helix 12, or
+    open it up. And the movement of B6 and enough B6 adequately in local tissues rules
+    the signaling duration of hormones... Over 100 milligrams a day is linked to reversible
+    neurologic issues.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

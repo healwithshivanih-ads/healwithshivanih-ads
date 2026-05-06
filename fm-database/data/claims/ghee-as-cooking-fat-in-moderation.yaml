@@ -1,0 +1,30 @@
+slug: ghee-as-cooking-fat-in-moderation
+statement: Small quantities of ghee (1 tsp per recipe) are used as the primary cooking
+  fat throughout this cardiometabolic diet, reflecting a traditional approach that
+  prioritises quality saturated fat in modest amounts over refined vegetable oils.
+evidence_tier: fm_specific_thin
+rationale: Ghee is consistently specified in small quantities (1 tsp) across all recipes
+  — rotis, curries, khichdis, tempering. This reflects functional medicine and Ayurvedic-aligned
+  nutritional thinking. The evidence for ghee in cardiometabolic contexts is mixed;
+  thin peer-reviewed support for benefit but not harm at these doses.
+coaching_translation: A small amount of ghee (about a teaspoon) in cooking is part
+  of this plan. It adds flavour and fat-soluble vitamin absorption, and is very different
+  from large amounts of saturated fat.
+caveats:
+- Clients with very high LDL or familial hypercholesterolaemia should discuss ghee
+  use with their clinician.
+- Source is recipe-based — no direct clinical evidence for ghee dose in cardiometabolic
+  disease cited.
+linked_to_topics:
+- cardiometabolic-diet
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-cardiometabolic-recipes
+  location: Jowar-Flax Roti / multiple recipes
+  quote: 1 tsp Ghee … Apply ghee on the top to keep it soft.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

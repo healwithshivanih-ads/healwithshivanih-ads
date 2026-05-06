@@ -1,0 +1,29 @@
+slug: bile-salts-indicated-for-fat-digestion-impairment
+statement: Bile salt supplementation is indicated in patients with impaired fat digestion,
+  particularly following gut removal surgeries or with identified fat malabsorption.
+evidence_tier: plausible_emerging
+rationale: Bile is required for fat emulsification and absorption. Post-surgical patients
+  or those with biliary insufficiency may benefit from exogenous bile salt supplementation.
+  This is an established clinical intervention in certain conditions.
+coaching_translation: Bile salt supplements can help clients who struggle to digest
+  fats, especially if they've had gut or gallbladder surgery.
+caveats:
+- Source is expert lecture, moderate quality.
+- Bile salt supplementation should be clinician-supervised, particularly post-surgery.
+- Contraindicated in bile duct obstruction.
+linked_to_topics:
+- gut-dysbiosis
+linked_to_supplements:
+- bile-salts
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Replace Section
+  quote: if your patient is having any kind of removal surgeries or you see that patient
+    having difficulty in digesting the fat consider giving them a bile salt it's also
+    available as supplements
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

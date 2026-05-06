@@ -1,0 +1,29 @@
+slug: cortisol-lowers-digestive-enzymes
+statement: During stress, adrenaline surges suppress digestive enzyme secretion while
+  simultaneously raising blood sugar levels.
+evidence_tier: plausible_emerging
+rationale: Mechanistically consistent with known physiology of the sympathoadrenal
+  response redirecting blood flow and energy away from digestion. Well-accepted in
+  functional medicine; peer-reviewed evidence for direct enzyme suppression via adrenaline
+  is moderate. Source is expert consensus toolkit.
+coaching_translation: When you're stressed, your body puts digestion on hold to deal
+  with the 'emergency.' That's why stress commonly causes digestive upset — your body
+  isn't prioritizing digestion right now.
+caveats:
+- Source is a coaching toolkit; specific enzyme suppression mechanism cited without
+  primary study reference
+linked_to_topics:
+- chronic-stress
+- hpa-axis-dysfunction
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Hypercortisolism
+  quote: As adrenaline surges during stress, digestive enzymes are simultaneously
+    lowered, and blood sugar levels initially rise.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,35 @@
+slug: zinc-finger-receptor-activation
+display_name: Zinc Finger Receptor Activation
+aliases:
+- zinc fingers
+- zinc and hormone receptor
+- zinc and estrogen receptor
+category: endocrine
+summary: Zinc atoms form 'zinc finger' structures throughout the body that are essential
+  for extracting hormones from their carrier proteins and facilitating entry into
+  receptor binding pocket domains. Without adequate zinc, hormones cannot effectively
+  enter and activate their receptors regardless of circulating hormone levels.
+upstream_drivers:
+- dietary-zinc-intake
+- zinc-absorption
+downstream_effects:
+- hormone-receptor-entry
+- genomic-hormone-signaling
+related_mechanisms:
+- hormone-receptor-binding
+- genomic-hormone-signaling
+linked_to_topics:
+- hormonal-nutrition-foundations
+evidence_tier: strong
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Zinc and Hormone Receptor Function
+  quote: zinc, and it's called a zinc finger. There's zinc fingers all over the body.
+    And there are two atoms of zinc that do all kinds of interesting actions... one
+    of its big things is it pulls the hormone, in essence, out of the uber and lets
+    the hormone view the shape of the binding pocket and feel like it can go inside
+    to do its job.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

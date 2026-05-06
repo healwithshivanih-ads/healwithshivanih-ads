@@ -1,26 +1,35 @@
 slug: heme-vs-nonheme-iron-absorption
-display_name: Heme vs. Nonheme Iron Absorption
+display_name: Heme vs. Non-Heme Iron Absorption Differential
 aliases:
 - iron bioavailability
 - heme iron
 - nonheme iron
+- dietary iron bioavailability
+- plant iron absorption
+- animal iron absorption
 category: metabolic
-summary: Heme iron (from animal sources) is absorbed efficiently (~25%) regardless
-  of dietary context. Nonheme iron (from plants and some animal foods) is absorbed
-  less readily and is inhibited by phytates, polyphenols, and calcium, but enhanced
-  by vitamin C. Heme iron accounts for ~10% of dietary iron despite being better absorbed.
+summary: Heme iron (from animal sources) is absorbed at 20–40%, while non-heme iron
+  (from plant sources) is absorbed at only 3–12%. Non-heme iron absorption is further
+  impaired by phytates and oxalates present in plant foods. This difference explains
+  higher IDA risk in long-term vegans.
 upstream_drivers:
 - dietary iron source
 - vitamin-c-intake
 - phytate-content
+- vegan-diet
+- plant-phytates-oxalates
 downstream_effects:
 - iron-status
 - hemoglobin-synthesis
 - oxygen-transport
+- iron-deficiency-anemia
+- low-ferritin
 related_mechanisms:
 - phytate-mineral-binding
+- low-stomach-acid-iron-absorption
 linked_to_topics:
 - iron-deficiency
+- iron-deficiency-anemia
 evidence_tier: strong
 sources:
 - id: vitaone-nutrition-toolkit
@@ -29,7 +38,13 @@ sources:
     but accounts for only about 10% of iron in the diet. Nonheme iron is found in
     both plant and animal foods. It is absorbed less readily, but accounts for the
     majority of dietary iron.
-version: 1
+- id: coconote-fm-iron-deficiency-anemia
+  location: Food Sources / Management section
+  quote: The absorption for any plant vegan supplement or plant-based, any kind of
+    food source is around 3-12%. On the other side, the animal source, they are very
+    high absorption rate inside the bag. So again, the absorption rate for animal
+    source supplements is somewhere around, I would say 20-40%.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

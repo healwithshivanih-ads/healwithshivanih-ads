@@ -1,0 +1,22 @@
+slug: magnesium-supports-300-enzymatic-reactions
+statement: Magnesium is a cofactor in more than 300 enzymatic reactions in the human
+  body.
+evidence_tier: strong
+rationale: Widely cited in biochemistry literature; magnesium participates in ATP
+  synthesis, protein synthesis, DNA replication, and many other enzymatic pathways.
+coaching_translation: Magnesium is involved in hundreds of processes in your body
+  — from making energy to balancing blood sugar to calming your nervous system.
+linked_to_topics:
+- magnesium-deficiency
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-magnesium-deficiency
+  location: Introduction
+  quote: Magnesium takes more than 300 enzymatic activity of the world.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,27 @@
+slug: low-stomach-acid-impairs-mineral-and-b12-absorption
+statement: Adequate stomach acid (HCl) is required to absorb vitamin B12 and key minerals
+  including iron, calcium, magnesium, zinc, and copper.
+evidence_tier: strong
+rationale: HCl-dependent absorption of B12 (via intrinsic factor and pepsin) and mineral
+  ionization is well-established mechanistically and clinically, particularly in patients
+  on long-term PPIs.
+coaching_translation: Low stomach acid doesn't just affect digestion — it can prevent
+  you from absorbing key nutrients like B12, iron, magnesium, and zinc, even if you're
+  eating well.
+linked_to_topics:
+- hypochlorhydria
+- gut-dysfunction
+linked_to_supplements:
+- betaine-hcl
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Testing for Low Stomach Acidity
+  quote: Having enough HCI is needed to absorb vitamin B12 and several minerals (such
+    as iron, calcium, magnesium, zinc, and copper).
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

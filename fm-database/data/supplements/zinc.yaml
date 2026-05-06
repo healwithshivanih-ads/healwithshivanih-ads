@@ -7,16 +7,16 @@ forms_available:
 - lozenge
 typical_dose_range:
   capsule:
-    min: 30
-    max: 60
+    min: 8
+    max: 40
     unit: mg
   tablet:
-    min: 30
-    max: 60
+    min: 8
+    max: 40
     unit: mg
   lozenge:
     min: 10
-    max: 25
+    max: 30
     unit: mg
 timing_options:
 - with_breakfast
@@ -42,6 +42,22 @@ linked_to_topics:
 - gerd
 - blood-sugar-dysfunction
 - immune-support
+- thyroid-dysfunction
+- 5r-gut-restoration
+- gerd-ppi-tapering
+- immune-support-covid-19
+- chronic-inflammation
+- intestinal-permeability
+- gut-dysbiosis
+- 5r-gut-healing-protocol
+- pancreatic-insufficiency
+- sibo
+- leaky-gut-syndrome
+- zinc-deficiency
+- medication-induced-nutrient-depletion
+- male-infertility-oxidative-stress
+- adrenal-cortisol-resilience
+- gut-health-fodmap-sibo
 linked_to_claims:
 - zinc-supports-thyroid-conversion
 - zinc-regulates-aromatase-balances-estrogen-testosterone
@@ -56,12 +72,32 @@ linked_to_claims:
 - zinc-lowers-homa-ir
 - low-zinc-impairs-insulin-secretion
 - zinc-antiviral-immune-support
-notes_for_coach: 'Multiple forms listed: acetate, citrate, picolinate, glycinate (oral
-  systemic); gluconate (lozenge for local throat effect). Divide doses throughout
-  day. High doses >30 mg/day should be clinician-supervised — copper depletion risk.'
-notes_for_client: Zinc is an essential mineral for immune function. Take with food
-  to avoid nausea. Don't exceed recommended dose without your practitioner's guidance.
-evidence_tier: strong
+- zinc-supports-t4-to-t3-conversion
+- zinc-improves-cellular-thyroid-sensitivity
+- gut-lining-repair-nutrients-zinc-vitamins-glutamine
+- zinc-supplementation-lowers-homa-ir
+- zinc-has-antiviral-properties
+- zinc-magnesium-anti-inflammatory-minerals
+- zinc-vitamin-a-b-support-gut-tissue-repair
+- zinc-supports-gastric-mucosa
+- zinc-supports-gastric-mucosal-integrity
+- gut-repair-nutrients-support-epithelial-regeneration
+- nutritional-deficiencies-zinc-copper-vitamins-impair-enzyme-production
+- 5rs-repair-includes-l-glutamine
+- zinc-supplementation-supports-immune-function
+- zinc-repletion-corrects-non-responsive-anemia
+- zinc-required-for-sperm-production-and-fertility
+- zinc-supports-hcl-production
+- antioxidant-nutrients-restore-metabolic-resilience
+- antioxidant-rotation-improves-male-fertility
+- magnesium-b5-c-zinc-omega3-support-adrenal-resilience
+- gut-healing-requires-glutamine-zinc-omega3-bcomplex
+notes_for_coach: Zinc is involved in testosterone synthesis, immune function, and
+  gut mucosal repair. Take with food to reduce GI irritation. Long-term high-dose
+  zinc should be monitored by a clinician due to copper depletion risk.
+notes_for_client: Zinc is an essential mineral for immune defence, hormonal balance,
+  and gut repair.
+evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
 - id: vitaone-practice-guide
@@ -105,7 +141,39 @@ sources:
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
   quote: A large body of research shows that zinc has strong anti-viral properties
     against many viruses.
-version: 11
+- id: vitaone-health-coaching-toolkit
+  location: Management of Hashimoto's — Nutrient Optimization
+  quote: 'Zinc: Important for immune function and thyroid hormone metabolism.'
+- id: coconote-fm-approach-inflammation
+  location: Nutrition – Anti-Inflammatory Minerals
+  quote: the minerals, then zinc and magnesium. They are anti-inflammatory.
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Repair Section
+  quote: the formula... that is zinc and then you can consider that magnesium is required.
+- id: coconote-fm-intestinal-permeability
+  location: 5R Protocol – Repair
+  quote: Zinc is very important for your gastric mucosa.
+- id: coconote-fm-intestinal-permeability-anish
+  location: 5R Protocol — Repair
+  quote: Zinc is very important for your gastric mucosa.
+- id: coconote-fm-pancreatic-insufficiency
+  location: Causes of Enzyme Deficiency
+  quote: Minerals like copper, zinc, vitamins like A, B, E, toxicity inside the body.
+- id: coconote-fm-sibo-sifo
+  location: 5Rs Treatment Protocol – Repair
+  quote: When you go to complex cities, we also recommend zinc and the vitamin A and
+    the L-butamine, all of these things, repair is important.
+- id: coconote-fm-zinc-deficiency
+  location: Management / Supplementation
+  quote: If a patient has a severe nutritional deficiency, their requirements could
+    be higher. Good sources of zinc usually include oyster, beef, poultry, vegetarian
+    sources, good sources in terms of legumes, lentils, certain nuts and seeds like
+    pumpkin seeds, cashew, baked beans.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXjjIqJjMSR/
+  quote: Functional repletion with active B-vitamins, magnesium glycinate, CoQ10,
+    selenium, zinc, and antioxidants helps restore metabolic resilience.
+version: 23
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

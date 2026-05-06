@@ -1,0 +1,29 @@
+slug: motivational-interviewing-amplifies-change-talk
+statement: In motivational interviewing, selectively reflecting and affirming a client's
+  statements that move toward change — change talk — while minimizing reflection of
+  sustain talk, increases the likelihood of behavior change.
+evidence_tier: strong
+rationale: The differential reinforcement of change talk vs. sustain talk is a well-established
+  mechanism in MI with strong RCT support across health behavior domains.
+coaching_translation: Listen carefully for any statement where the client moves toward
+  change ('I could try...', 'I want to...', 'I know I need to...'). Reflect and affirm
+  those moments. Don't equally balance reflections of not-changing.
+caveats:
+- Stated as a coaching principle in group discussion; no specific study cited in this
+  document.
+linked_to_topics:
+- ambivalence-in-coaching
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-coaching-ambivalence
+  location: Group discussion — Monica's contribution on MI and change talk
+  quote: Motivational interviewing is an increased change talk and reflections and
+    information towards change. So I think that'll be like listening very, very attentively
+    to what the client says towards change and reflect and make affirmations towards
+    that change.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

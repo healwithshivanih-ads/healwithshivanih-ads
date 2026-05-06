@@ -1,0 +1,27 @@
+slug: sibo-sifo-co-occurrence-common
+statement: 'SIBO and SIFO frequently co-occur: in one clinical analysis, 26% of patients
+  had SIBO alone, 40% had SIFO alone, and 34% had a mixed SIBO and SIFO presentation.'
+evidence_tier: plausible_emerging
+rationale: Co-occurrence of bacterial and fungal overgrowth is mechanistically plausible
+  given shared upstream drivers. The specific percentages cited appear to reference
+  a clinical or observational study but no specific citation is provided.
+coaching_translation: It's very common to have both bacterial AND fungal overgrowth
+  at the same time, which is why treatment often needs to address both.
+caveats:
+- Specific study citation not provided in source lecture.
+- Percentages should be treated as approximate clinical observations until verified.
+linked_to_topics:
+- sibo
+- sifo
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-sibo-sifo
+  location: SIFO Section
+  quote: 40% did have SIBO when they basically tested all over the patients. 26% had
+    SIBO but 34% also had a mixed SIBO and SIFO, right?
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

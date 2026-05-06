@@ -1,0 +1,35 @@
+slug: fos-prebiotic-supplement
+display_name: Fructo-Oligosaccharide (FOS) / Prebiotic Supplement
+category: other
+forms_available:
+- powder
+- capsule
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- gut-dysfunction
+- 5r-gut-restoration
+- gut-brain-axis
+linked_to_claims:
+- prebiotics-feed-probiotics-and-support-microbiome
+- prebiotics-probiotics-synergy-for-gut-health
+notes_for_coach: FOS is a supplemental prebiotic fiber. Food sources include artichokes,
+  garlic, leeks, onion, chicory, tofu, barley, flax, oats, and wheat. Use with probiotic
+  foods/supplements for synbiotic effect.
+notes_for_client: Prebiotic supplements (like FOS) feed the beneficial bacteria in
+  your gut. You can also get prebiotics naturally from garlic, onions, oats, and bananas.
+evidence_tier: strong
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: The 5R Framework for Gut Restoration
+  quote: Another good prebiotic source is a supplement called 'fructo-oligosaccharide'
+    or FOS.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

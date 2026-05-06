@@ -1,0 +1,32 @@
+slug: reuteri-stimulates-oxytocin-release
+statement: Lactobacillus reuteri, particularly at high fermented counts, stimulates
+  oxytocin release, which supports emotional wellbeing, skin health, and reproductive
+  tissue health.
+evidence_tier: plausible_emerging
+rationale: Dr. Davis references animal data supporting reuteri-stimulated oxytocin
+  release and describes ongoing human research. Oxytocin's role in uterine contraction
+  is well established (Pitocin), and its broader tissue health effects are biologically
+  plausible.
+coaching_translation: The L. reuteri yogurt works partly by helping your body release
+  oxytocin—a feel-good hormone that also supports skin, mood, and reproductive health.
+caveats:
+- Animal data; human corroboration ongoing.
+- Source is expert_consensus interview.
+- High-dose reuteri during pregnancy is not recommended due to theoretical oxytocin-induced
+  contraction risk.
+linked_to_topics:
+- vaginal-microbiome
+- gut-microbiome
+linked_to_supplements:
+- lactobacillus-reuteri-fermented-yogurt
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Reuteri and oxytocin mechanism discussion
+  quote: One of the effects of reuteri, if we believe the animal data, we've been
+    trying to corroborate this in humans... release oxytocin.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

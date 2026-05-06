@@ -1,0 +1,38 @@
+slug: insulin-resistance-sex-hormone
+display_name: Insulin Resistance & Sex Hormone Disruption
+aliases:
+- metabolic-hormonal crosslink
+- hyperinsulinemia-androgen link
+category: metabolic
+summary: Insulin resistance and obesity impair estrogen metabolism and lower SHBG.
+  Excess insulin drives ovarian androgen production (relevant in PCOS) and disrupts
+  hepatic estrogen clearance. Estrogen in turn can positively influence insulin sensitivity,
+  creating a bidirectional relationship.
+upstream_drivers:
+- excess-refined-carbohydrate
+- sedentary-lifestyle
+- obesity
+- stress
+downstream_effects:
+- low-shbg
+- impaired-estrogen-metabolism
+- estrogen-dominance
+- androgen-excess
+related_mechanisms:
+- hepatic-estrogen-metabolism
+- shbg-hormone-binding
+linked_to_topics:
+- estrogen-metabolism
+- sex-hormone-binding-globulin
+- estrogen-dominance
+evidence_tier: strong
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Estrogen Metabolism — Disrupts Healthy Estrogen Metabolism
+  quote: Insulin Resistance and obesity impair estrogen metabolism. Estrogen is believed
+    to positively influence insulin sensitivity and weight, but conversely, insulin
+    resistance and obesity are thought to negatively influence estrogen metabolism.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

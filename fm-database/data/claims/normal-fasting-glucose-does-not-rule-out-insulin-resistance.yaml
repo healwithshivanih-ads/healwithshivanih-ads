@@ -1,0 +1,35 @@
+slug: normal-fasting-glucose-does-not-rule-out-insulin-resistance
+statement: Normal fasting blood glucose — and even normal fasting insulin — does not
+  rule out insulin resistance; elevated 1-hour or 2-hour postprandial insulin levels
+  can confirm it.
+evidence_tier: plausible_emerging
+rationale: Dr. Craft's research demonstrated that insulin elevations precede blood
+  sugar elevations in insulin resistance. The document describes Craft's pattern classification
+  (patterns 2–4) where blood sugar remains normal but insulin is elevated. Source
+  is expert FM lecture (moderate quality); not yet peer-reviewed consensus.
+coaching_translation: A 'normal' blood sugar test at a routine physical doesn't tell
+  the whole story. Asking your doctor to also check your insulin levels after a glucose
+  drink can reveal hidden insulin resistance years before diabetes develops.
+out_of_scope_notes: Ordering GTIR panels, interpreting Craft patterns, and diagnosing
+  insulin resistance are clinician tasks. Coaches should not advise specific diagnostic
+  cutoffs as treatment decisions.
+caveats:
+- Source is an FM expert lecture (moderate quality), not a primary peer-reviewed study.
+- Craft pattern classification is not universally adopted in conventional medicine.
+- Specific cutoff values (fasting insulin >10, 1-hr insulin >30) should be verified
+  with the ordering clinician.
+linked_to_topics:
+- insulin-resistance-early-detection
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-gtir
+  location: GTIR Clinical Conclusion
+  quote: when you find out the normal blood sugar, even normal fasting sugar insulin
+    level, we should not rule out the insulin resistance, but if you check the 1-hour
+    or 2-hour insulin level, and if it is high, then we should consider that also
+    as an insulin resistance
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

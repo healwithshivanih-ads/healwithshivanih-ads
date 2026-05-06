@@ -1,0 +1,45 @@
+slug: poor-wound-healing
+display_name: Poor Wound Healing & Frequent Infections
+aliases:
+- slow healing cuts
+- easy bruising
+- impaired tissue repair
+- slow healing
+- wounds not healing
+- frequent infections
+- poor immunity
+- white nail spots
+- loss of taste
+- loss of smell
+category: constitutional
+severity: common
+description: Poor wound healing, frequent infections, white nail spots, and loss of
+  taste or smell linked to zinc deficiency; poor wound healing and bleeding gums linked
+  to vitamin C deficiency.
+linked_to_topics:
+- hpa-axis-dysfunction
+- nutrition-deficiency
+- chronic-inflammation
+linked_to_mechanisms:
+- stress-induced-immune-suppression
+- cortisol-dhea-imbalance
+- oxidative-stress-and-inflammation
+- gut-barrier-and-nutrient-absorption
+when_to_refer: If infections are severe, recurrent, or not improving with dietary
+  support.
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'HPA Axis Questionnaire — Section 1: Low cortisol state'
+  quote: Poor wound healing, Easy bruising, Slow healing of cuts.
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Symptoms Discussed
+  quote: Frequent infections, poor wound healing, white nail spots, and loss of taste
+    or smell - Linked to zinc deficiency.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Symptoms Discussed
+  quote: Frequent infections, poor wound healing, white nail spots, and loss of taste
+    or smell - Linked to zinc deficiency.
+version: 3
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

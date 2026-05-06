@@ -1,0 +1,32 @@
+slug: mediterranean-diet-cvd
+display_name: Mediterranean Diet for CVD Prevention
+aliases:
+- anti-inflammatory Mediterranean diet
+- Mediterranean eating pattern
+summary: The Mediterranean diet has Level A evidence for reducing cardiovascular mortality
+  (15–30%), fatal and non-fatal MI (73% risk reduction in Lyon Diet Heart Study),
+  and inflammatory markers including CRP, IL-6, and insulin resistance. Core elements
+  include vegetables, whole grains, fish high in omega-3, nuts, seeds, olive oil,
+  and minimal added sugar.
+common_symptoms: []
+red_flags: []
+related_topics:
+- cardiovascular-disease-prevention
+- dyslipidemia
+- metabolic-syndrome
+key_mechanisms:
+- nf-kappab-suppression
+- oxidative-stress-reduction
+- insulin-resistance
+coaching_scope_notes: Coaches can directly support Mediterranean dietary adoption,
+  meal planning, sugar reduction, and whole-food substitutions.
+evidence_tier: strong
+clinician_scope_notes: ''
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Nutrition and Mediterranean Diet
+  quote: 73% risk reduction in fatal and non-fatal MI, Mediterranean diet.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,11 +1,12 @@
 slug: abdominal-obesity-increases-cvd-risk
-statement: Abdominal circumference >102 cm in males and >88 cm in females, and waist-to-hip
-  ratio >0.90 in males and >0.85 in females, increase cardiovascular disease risk.
+statement: Elevated abdominal circumference (>102 cm in men, >88 cm in women) and
+  waist-to-hip ratio (>0.90 in men, >0.85 in women) increase cardiovascular disease
+  risk.
 evidence_tier: strong
-rationale: Abdominal adiposity as a CVD risk factor is well-established; specific
-  cutoffs are widely used in clinical practice.
-coaching_translation: Waist circumference and waist-to-hip ratio are practical measurements
-  to track progress in a cardiovascular wellness program.
+rationale: Central adiposity is an established independent CVD risk factor, predictive
+  of metabolic syndrome, insulin resistance, and atherogenesis.
+coaching_translation: Waist measurement and waist-to-hip ratio are practical tools
+  to assess cardiometabolic risk with clients.
 linked_to_topics:
 - cardiovascular-dysfunction
 - hypertension
@@ -13,13 +14,18 @@ linked_to_mechanisms:
 - insulin-resistance
 - systemic-inflammation
 out_of_scope_notes: ''
-caveats: []
+caveats:
+- Values are population-level thresholds; individual risk assessment requires clinical
+  context.
 linked_to_supplements: []
 sources:
 - id: vitaone-cv-toolkit
   location: CVD Risk Analysis — Modifiable Risk Factors
   quote: '>IO2cm for male and ?88cm for Female increases risk'
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: CVD Risk Analysis — Modifiable Risk Factors
+  quote: '>IO2cm for male and ?88cm for Female increases risk'
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

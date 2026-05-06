@@ -1,0 +1,29 @@
+slug: aged-garlic-slows-coronary-calcification-progression
+statement: Aged garlic extract at 600mg twice daily has been shown in Budoff's research
+  to slow the progression of coronary artery calcification.
+evidence_tier: plausible_emerging
+rationale: 'Dr. Budoff''s RCT on aged garlic extract and coronary calcium progression
+  is a published clinical trial (Budoff et al., JACC: Cardiovascular Imaging, 2009).
+  Evidence is promising but not yet consensus-level.'
+coaching_translation: Aged garlic extract may help slow the buildup of calcium in
+  heart arteries — a marker of cardiovascular risk. This is based on specific clinical
+  research, not just general garlic benefits.
+caveats:
+- Single research group — independent replication needed.
+- Source is expert lecture citing Budoff's work — refer to primary publication for
+  full context.
+linked_to_topics:
+- cardiovascular-disease-prevention
+linked_to_supplements:
+- aged-garlic-extract
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Nutraceuticals — Aged Garlic
+  quote: Aged garlic extract. Please look at Budoff's work showing slowed down progression
+    of coronary calcification. 600 milligrams twice a day.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -9,8 +9,8 @@ forms_available:
 - lozenge
 typical_dose_range:
   tablet:
-    min: 0.5
-    max: 10
+    min: 5
+    max: 20
     unit: mg
   capsule:
     min: 0.5
@@ -39,16 +39,22 @@ linked_to_topics:
 - estrogen-metabolism
 - immune-support
 - chronic-inflammation
+- immune-support-covid-19
 linked_to_claims:
 - magnesium-supports-cortisol-gaba-sleep
 - melatonin-as-acid-suppressor-gerd
 - melatonin-nac-methylated-b-vitamins-support-estrogen
 - melatonin-reduces-inflammation-sleep
-notes_for_coach: Document lists 5–20 mg; the upper end (>5 mg) requires clinician
-  oversight. Most sleep evidence supports lower doses (0.5–5 mg). Anti-inflammatory
-  mechanism via inflammasome modulation is emerging. Interactions with SSRIs and anticoagulants.
-notes_for_client: Melatonin is most commonly used to support sleep quality. It also
-  has anti-inflammatory properties. Start with the lowest effective dose.
+- melatonin-supports-estrogen-metabolism
+- melatonin-reduces-inflammation-and-promotes-sleep
+notes_for_coach: Doses above 5 mg are above typical consumer use and may cause morning
+  grogginess. The 5–20 mg range in this toolkit is therapeutic for COVID-19 adjuvant
+  context and requires clinician guidance. For general sleep/anti-inflammatory support,
+  0.5–3 mg is typical. Interactions with SSRIs and anticoagulants. Avoid in autoimmune
+  conditions without clinician input.
+notes_for_client: Melatonin helps signal your body when it's time to sleep and also
+  has anti-inflammatory properties. Start with the lowest effective dose and take
+  it 30–60 minutes before bed in a dark room.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -75,7 +81,11 @@ sources:
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
   quote: In addition to promoting restful sleep, melatonin has been shown to reduce
     inflammation.
-version: 6
+- id: vitaone-health-coaching-toolkit
+  location: Estrogen Metabolism — Promotes Healthy Estrogen Metabolism
+  quote: There is also some evidence that melatonin, N-acetyl-cystine, & methylated
+    B vitamins may support healthy estrogen metabolism as well.
+version: 8
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

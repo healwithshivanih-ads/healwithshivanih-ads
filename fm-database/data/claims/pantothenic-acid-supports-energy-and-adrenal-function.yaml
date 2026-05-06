@@ -1,0 +1,32 @@
+slug: pantothenic-acid-supports-energy-and-adrenal-function
+statement: Pantothenic acid is essential for energy production, adrenal function,
+  wound healing, and skin repair.
+evidence_tier: plausible_emerging
+rationale: B5 as a CoA precursor is well-established; adrenal support claims are biologically
+  plausible but not strongly evidenced in RCTs.
+coaching_translation: Foods rich in B5 (liver, eggs, mushrooms, avocado) support sustained
+  energy and stress resilience.
+caveats:
+- Source is a practitioner cheatsheet without primary citations.
+- Adrenal fatigue as a clinical entity is not universally accepted.
+- Source is practitioner cheatsheet.
+- High-dose B5 for acne or adrenal protocols requires clinician guidance.
+linked_to_topics:
+- nutrition-deficiency
+linked_to_supplements:
+- pantothenic-acid
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 4
+  quote: Pantothenic acid is described as essential for energy production, adrenal
+    function, wound healing, and skin repair.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 4
+  quote: Pantothenic acid is described as essential for energy production, adrenal
+    function, wound healing, and skin repair.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

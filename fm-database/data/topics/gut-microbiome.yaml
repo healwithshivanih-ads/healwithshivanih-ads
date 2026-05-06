@@ -1,36 +1,60 @@
 slug: gut-microbiome
-display_name: Gut Microbiome & Personalized Nutrition
+display_name: Gut Microbiome
 aliases:
 - gut flora
 - microbiota
 - gut bacteria
-summary: The collection of trillions of microorganisms in the digestive tract that
-  aid digestion, regulate immunity, influence metabolism, and communicate with the
-  brain. Microbiome composition is unique to each individual and shapes responses
-  to different foods, supporting the case for personalized nutrition.
+- gastrointestinal microbiome
+- GI microbiome
+- intestinal microbiota
+summary: The gut microbiome is a complex ecosystem communicating with the vaginal,
+  urinary, oral, and even brain microbiomes. Disruption by antibiotics, food additives,
+  emulsifiers, glyphosate, and dietary restriction leads to dysbiosis, SIBO, and systemic
+  endotoxemia. Restoration through fermented foods, targeted probiotics, and prebiotic
+  fiber diversity is central to Dr. Davis's protocol.
 common_symptoms:
 - bloating
 - diarrhea
 - constipation
 - brain-fog
 - mood-changes
+- anxiety
+- depression
+- weight-gain
+- joint-pain
 related_topics:
 - gut-dysfunction
 - gut-brain-axis
+- sibo
+- vaginal-microbiome
+- endometriosis-microbiome
 key_mechanisms:
 - gut-dysbiosis
 - gut-brain-signaling
-coaching_scope_notes: Coaches can educate on prebiotic/probiotic foods, fermented
-  food preparation, and fiber-rich diets to support microbiome diversity.
-evidence_tier: strong
-red_flags: []
-clinician_scope_notes: ''
+- endotoxemia
+- lipopolysaccharide-shedding
+- gut-vaginal-microbiome-axis
+coaching_scope_notes: Coaches can guide clients on fermented food intake, prebiotic
+  fiber diversity, and probiotic yogurt preparation. Avoid diagnosing dysbiosis from
+  symptoms alone.
+evidence_tier: plausible_emerging
+red_flags:
+- severe-colitis
+- colon-cancer-risk
+- neurodegenerative-disease-progression
+clinician_scope_notes: DNA sequencing stool tests (e.g., Ombre, Tiny Health) provide
+  more accurate microbiome data than traditional culture. Fungal overgrowth (SIFO)
+  may require antifungal intervention.
 sources:
 - id: vitaone-gut-toolkit
   location: 'Gut Microbiome and Personalized Nutrition: The Future of Diets'
   quote: The human gut contains trillions of microorganisms that not only aid digestion
     but also influence overall health—from immunity to mental well-being.
-version: 1
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Microbiome interconnection discussion
+  quote: The gastrointestinal microbiome talks to the vaginal microbiome, the urinary
+    microbiome, the prostate microbiome.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

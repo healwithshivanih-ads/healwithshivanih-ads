@@ -1,0 +1,30 @@
+slug: alpha-lipoic-acid-supports-weight-and-nerve-pain
+statement: Alpha lipoic acid (ALA) supports healthy weight management (thereby supporting
+  insulin sensitivity) and reduces symptoms of diabetic nerve pain.
+evidence_tier: plausible_emerging
+rationale: Kucukgoncu et al. (2017, Obes Rev) meta-analysis supports ALA for weight
+  loss. Porasuphatana et al. (2012) RCT supports glycemic and oxidative benefits.
+  Multiple studies on neuropathic pain reduction cited in document.
+coaching_translation: Alpha lipoic acid — found in spinach, broccoli, and organ meats
+  — is a powerful antioxidant that may help with weight management and nerve discomfort
+  related to blood sugar issues.
+caveats:
+- Effect sizes for weight loss are modest.
+- Diabetic neuropathy management requires clinician oversight.
+linked_to_topics:
+- blood-sugar-dysfunction
+- insulin-resistance
+linked_to_supplements:
+- alpha-lipoic-acid
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: Some research shows that alpha lipoic acid supports healthy weight, which
+    in turn supports insulin sensitivity. Multiple studies have shown that alpha lipoic
+    acid also reduces symptoms of diabetic nerve pain.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

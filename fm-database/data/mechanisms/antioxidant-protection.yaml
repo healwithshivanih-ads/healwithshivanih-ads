@@ -1,0 +1,36 @@
+slug: antioxidant-protection
+display_name: Antioxidant Protection of Detox Intermediates
+aliases:
+- reactive oxygen species neutralization
+- free radical scavenging
+category: metabolic
+summary: Phase I detoxification generates reactive oxygen intermediates and free radicals.
+  Antioxidant nutrients (Vitamins A, C, E, CoQ10, selenium, zinc, silymarin, bioflavonoids,
+  pycnogenol) protect cells from oxidative damage by these intermediates and support
+  Phase II enzyme activity.
+upstream_drivers:
+- phase-i-cytochrome-p450
+- toxin-overload
+- nutrient-deficiency
+downstream_effects:
+- reduced-oxidative-stress
+- supported-phase-ii-conjugation
+- cellular-protection
+related_mechanisms:
+- phase-i-cytochrome-p450
+- phase-ii-conjugation
+linked_to_topics:
+- metabolic-detoxification
+- liver-detox-food-plan
+evidence_tier: strong
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Nutrients for Phase 1 and Phase 2 Detoxification
+  quote: 'Antioxidant Protective Nutrients and Plant Derivatives: Carotenes (Vit A),
+    Ascorbic acid (Vit C), Tocopherols (Vit E), Selenium, Copper, Zinc, Manganese;
+    Coenzyme Q10, Thiols (found in garlic, onions, cruciferous vegetables), Bioflavonoids,
+    Silymarin, Pycnogenol'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

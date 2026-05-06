@@ -1,0 +1,32 @@
+slug: small-dense-ldl-more-atherogenic-than-large-ldl
+statement: Small-dense LDL particles are more atherogenic than large, buoyant LDL
+  particles because they penetrate endothelial cracks and undergo oxidation and glycation
+  more readily.
+evidence_tier: plausible_emerging
+rationale: 'The document explains the mechanistic basis for LDL particle size risk:
+  small particles infiltrate endothelial gaps, oxidize, attract macrophages, and initiate
+  plaque. This is consistent with lipidology research on LDL subfractions, though
+  not yet standard in all clinical guidelines.'
+coaching_translation: Not all LDL is equal. Small, dense LDL particles are the ones
+  that slip through damaged artery walls and cause plaques. Reducing inflammation,
+  blood sugar, and refined carbs helps shift your LDL to the larger, safer type.
+caveats:
+- Advanced LDL particle testing (NMR/ion mobility) required to assess this; not universally
+  available.
+- Source is expert lecture (moderate quality).
+linked_to_topics:
+- lipid-panel-interpretation
+- atherosclerosis
+- endothelial-dysfunction
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-biomarkers-cvs
+  location: LDL Size and Atherogenicity
+  quote: So here, the LDL size is matter compared to the concentration of LDL. and
+    that we're going to discuss in LDL.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

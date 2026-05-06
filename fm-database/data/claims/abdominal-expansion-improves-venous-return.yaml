@@ -1,0 +1,24 @@
+slug: abdominal-expansion-improves-venous-return
+statement: Diaphragmatic breathing creates negative thoracic pressure that pulls blood
+  into the chest, improving venous return to the heart.
+evidence_tier: strong
+rationale: 'Established cardiovascular physiology: diaphragmatic descent during deep
+  inhalation increases negative intrathoracic pressure, augmenting venous return (Starling
+  mechanism).'
+coaching_translation: Deep belly breathing acts like a gentle pump, helping your blood
+  circulate more efficiently back to your heart.
+caveats: []
+linked_to_topics:
+- mindful-breathing
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Mindful Breathing
+  quote: The abdominal expansion causes negative pressure to pull blood into the chest,
+    improving the venous flow of blood back to the heart.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

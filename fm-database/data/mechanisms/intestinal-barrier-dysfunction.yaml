@@ -1,0 +1,39 @@
+slug: intestinal-barrier-dysfunction
+display_name: Intestinal Barrier Dysfunction
+aliases:
+- tight junction disruption
+- leaky gut mechanism
+- gut permeability
+category: gut
+summary: Disruption of intestinal tight junctions allows paracellular or transcellular
+  passage of bacteria, toxins, and cellular contents into systemic circulation, triggering
+  immune activation and systemic inflammation.
+upstream_drivers:
+- gut-dysbiosis
+- lps-endotoxemia
+- stress
+- zonulin-release
+- celiac-disease
+downstream_effects:
+- lps-endotoxemia
+- systemic-inflammation
+- multiple-food-sensitivities
+- autoimmunity
+- neuroinflammation
+related_mechanisms:
+- gut-dysbiosis
+- lps-endotoxemia
+- zonulin-dysregulation
+linked_to_topics:
+- sibo
+- leaky-gut-syndrome
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-sibo-sifo
+  location: Pathogenesis of SIBO / Leaky Gut
+  quote: The second is the intestinal barrier dysfunction... these tight junctions
+    are responsible for keeping your cells and these are the microvilli.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

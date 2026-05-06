@@ -1,0 +1,31 @@
+slug: high-molybdenum-may-trigger-gout
+statement: Very high molybdenum intake may trigger gout by affecting uric acid metabolism.
+evidence_tier: confirm_with_clinician
+rationale: Molybdenum's role in xanthine oxidase affecting uric acid production is
+  mechanistically plausible; high-dose gout risk is a recognized caution.
+out_of_scope_notes: Gout management requires clinician oversight.
+caveats:
+- Source is a practitioner cheatsheet without primary citations.
+- Evidence for this specific effect in humans is limited.
+- Avoid high-dose molybdenum supplementation in clients with gout or hyperuricemia
+  without clinician guidance.
+linked_to_topics:
+- joint-pain
+- medication-nutrient-interactions
+linked_to_supplements:
+- molybdenum
+coaching_translation: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 14
+  quote: Very high molybdenum intake is described as potentially triggering gout by
+    affecting uric acid metabolism.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 14
+  quote: Very high molybdenum intake is described as potentially triggering gout by
+    affecting uric acid metabolism.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

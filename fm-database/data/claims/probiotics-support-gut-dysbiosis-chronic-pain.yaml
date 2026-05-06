@@ -1,0 +1,32 @@
+slug: probiotics-support-gut-dysbiosis-chronic-pain
+statement: High-quality multi-strain probiotics support correction of gut dysbiosis
+  and may improve chronic pain and fatigue outcomes in clients with GI involvement.
+evidence_tier: plausible_emerging
+rationale: Growing evidence supports probiotics improving gut barrier function, reducing
+  systemic inflammation, and influencing pain perception via the gut-brain axis. Quality
+  of product (viability, strain specificity) significantly affects outcomes.
+coaching_translation: When a client has a history of antibiotic use, processed food,
+  bloating, or brain fog alongside their pain/fatigue, a high-quality probiotic is
+  often a key foundational supplement.
+caveats:
+- Quality varies enormously — avoid low-cost supermarket products.
+- Source is expert FM lecture.
+- Strain selection for specific conditions requires clinician input.
+linked_to_topics:
+- dysbiosis
+- leaky-gut
+- chronic-pain-and-fatigue
+linked_to_supplements:
+- probiotic
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-chronic-pain-fatigue
+  location: Supplements Section
+  quote: incorporating a good quality probiotic and help to turn them into powder
+    I'm sure you have learned in your course and when you are talking about the supplement
+    it has to be the high quality not from the Amazon buying.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

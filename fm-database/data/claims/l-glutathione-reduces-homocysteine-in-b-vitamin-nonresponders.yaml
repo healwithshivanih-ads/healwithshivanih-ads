@@ -1,0 +1,33 @@
+slug: l-glutathione-reduces-homocysteine-in-b-vitamin-nonresponders
+statement: L-glutathione supplementation may be beneficial for reducing homocysteine
+  in patients who do not respond adequately to B vitamin supplementation.
+evidence_tier: fm_specific_thin
+rationale: The document recommends L-glutathione for patients where B vitamins are
+  insufficient to normalise homocysteine. This is plausible given glutathione's role
+  in the transsulfuration pathway, but direct clinical evidence is thin.
+coaching_translation: If a client's homocysteine remains elevated despite optimising
+  B vitamins, their practitioner may consider adding glutathione support.
+out_of_scope_notes: L-glutathione dosing and suitability assessment is clinical, not
+  coaching scope.
+caveats:
+- Evidence base is from expert opinion/FM context; limited RCT data for this specific
+  indication.
+- Source is expert lecture of moderate quality; treat as FM-specific guidance pending
+  further evidence.
+linked_to_topics:
+- mthfr-gene-variant
+- homocysteine-elevation
+linked_to_supplements:
+- l-glutathione
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: Supplementation for MTHFR section
+  quote: L-glutathione is also one of the recommended homocysteine reduction supplement.
+    Now this is actually useful in a certain number of patients in which the B vitamins
+    are actually not absorbed or maybe the supplementation of B vitamin is not providing
+    or not making any change to the homocysteine.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

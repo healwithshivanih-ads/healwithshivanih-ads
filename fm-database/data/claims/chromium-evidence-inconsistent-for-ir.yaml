@@ -1,0 +1,34 @@
+slug: chromium-evidence-inconsistent-for-ir
+statement: Chromium supplementation shows inconsistent evidence for improving insulin
+  resistance and glucose control, with positive effects mainly seen in individuals
+  who already have diabetes.
+evidence_tier: fm_specific_thin
+rationale: Martin et al. (2006, Diabetes Care) supports chromium picolinate in T2D,
+  but overall study results are inconsistent. Mechanism not fully understood. Common
+  in FM protocols despite weak overall evidence.
+coaching_translation: Chromium is found in broccoli, green beans, and whole grains,
+  and is sometimes used to support blood sugar balance — but the research is mixed,
+  so it's best to discuss with your provider before supplementing.
+out_of_scope_notes: Contraindicated in kidney disease — clinician screening required
+  before recommending.
+caveats:
+- Evidence is inconsistent across studies.
+- Contraindicated in kidney disease.
+- Chromium + biotin combination may be more effective than chromium alone per some
+  studies.
+linked_to_topics:
+- blood-sugar-dysfunction
+- insulin-resistance
+linked_to_supplements:
+- chromium
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Micronutrients for Insulin Sensitivity — INSULIN SENSITIZERS (cont.)
+  quote: Studies looking at the effect of chromium supplementation on insulin resistance
+    and glucose control are inconsistent, with a smaller number of studies showing
+    positive benefits, mainly in those who have diabetes.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

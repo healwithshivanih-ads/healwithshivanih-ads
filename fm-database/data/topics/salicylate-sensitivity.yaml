@@ -1,11 +1,13 @@
 slug: salicylate-sensitivity
-display_name: Salicylate Intolerance
+display_name: Salicylate Sensitivity
 aliases:
 - salicylate sensitivity
 - aspirin-sensitive enteropathy
-summary: Adverse reactions to naturally occurring salicylates in foods (fruits, vegetables,
-  spices) causing GI inflammation, respiratory symptoms, and skin reactions in sensitive
-  individuals.
+- salicylate intolerance
+- salicylic acid sensitivity
+summary: A condition in which dietary salicylates — naturally occurring plant compounds
+  — cause adverse reactions in susceptible individuals, particularly affecting the
+  skin, gut, and respiratory system.
 common_symptoms:
 - hives
 - bloating
@@ -13,17 +15,21 @@ common_symptoms:
 - nasal-polyps
 - asthma
 - sinusitis
+- gas-flatulence
+- stuffy-runny-nose
 red_flags:
 - aspirin-exacerbated respiratory disease
 - nasal polyps with asthma — ENT/allergy referral
+- severe asthma triggered by salicylates — refer to allergist
 related_topics:
 - elimination-diet
 - histamine-intolerance
 key_mechanisms:
 - arachidonic-acid-pathway-dysregulation
 - immune-food-reactivity
-coaching_scope_notes: Coaches can support low-salicylate food choices during elimination
-  phase. Aspirin-exacerbated disease requires physician management.
+- prostaglandin-pathway-modulation
+coaching_scope_notes: Coaches can guide low-salicylate food selection and symptom
+  tracking. Asthma and nasal polyps require clinician involvement.
 evidence_tier: plausible_emerging
 clinician_scope_notes: ''
 sources:
@@ -32,7 +38,12 @@ sources:
   quote: Salicylates in foods may cause a reaction in a small number of individuals.
     They may cause symptoms when consumed in large doses and should be avoided by
     those who are salicylate-intolerant.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Salicylate Food Triggers
+  quote: Salicylates in foods may cause a reaction in a small number of individuals.
+    They may cause symptoms when consumed in large doses and should be avoided by
+    those who are salicylate-intolerant.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

@@ -1,0 +1,30 @@
+slug: progesterone-bone-stimulation
+display_name: Progesterone-Mediated Bone Formation
+aliases:
+- progesterone osteoblast stimulation
+category: structural
+summary: Progesterone independently stimulates osteoblast activity (bone formation)
+  and suppresses osteoclast function, contributing to bone mineral density maintenance
+  independent of estradiol. Declining progesterone in perimenopause and menopause
+  contributes to early bone loss.
+upstream_drivers:
+- estrogen-progesterone-decline
+downstream_effects:
+- osteoporosis
+- reduced-bone-density
+related_mechanisms:
+- estrogen-progesterone-decline
+linked_to_topics:
+- menopause
+- perimenopause
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-sex-hormones
+  location: Hormone Actions on Bone
+  quote: Progesterone stimulates, why progesterone is very important? Its action on
+    the bone is that it will stimulate the formation of the bone, in fact independent
+    from estradiol and suppress osteoblasts.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

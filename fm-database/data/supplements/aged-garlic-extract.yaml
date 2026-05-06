@@ -1,0 +1,36 @@
+slug: aged-garlic-extract
+display_name: Aged Garlic Extract
+category: herb
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 600
+    max: 1200
+    unit: mg
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- cardiovascular-disease-prevention
+linked_to_claims:
+- aged-garlic-slows-coronary-calcification-progression
+notes_for_coach: Budoff's research cited showing 600mg twice daily slowed progression
+  of coronary calcification. Anti-inflammatory and anti-thrombotic properties also
+  described.
+notes_for_client: Aged garlic extract is different from raw garlic supplements. Research
+  by Dr. Budoff suggests it may help slow the buildup of calcium in the arteries.
+  Take with meals.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Nutraceuticals — Aged Garlic Extract
+  quote: Aged garlic extract. Please look at Budoff's work showing slowed down progression
+    of coronary calcification. 600 milligrams twice a day.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

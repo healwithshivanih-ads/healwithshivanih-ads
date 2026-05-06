@@ -1,0 +1,32 @@
+slug: statins-deplete-coq10-and-vitamin-d
+statement: Statin medications inhibit the mevalonate pathway, reducing endogenous
+  synthesis of CoQ10 and are associated with lower vitamin D levels.
+evidence_tier: plausible_emerging
+rationale: Statins block HMG-CoA reductase, which is upstream of both cholesterol
+  and CoQ10 (ubiquinone) synthesis. Reduced CoQ10 is biologically plausible and supported
+  by some studies; its clinical significance (e.g., in statin myopathy) remains debated.
+  The vitamin D association is less mechanistically clear.
+coaching_translation: Statin medications can reduce your body's natural production
+  of CoQ10, which your cells need for energy. A clinician can check your levels and
+  determine if supplementation is appropriate.
+out_of_scope_notes: CoQ10 supplementation dosing and vitamin D testing are clinician
+  decisions.
+caveats:
+- Evidence for CoQ10 depletion mechanism is strong; evidence that supplementing CoQ10
+  resolves statin myopathy is mixed.
+- Vitamin D association with statins is inconsistently supported.
+- Source type is website/Instagram educational content.
+linked_to_topics:
+- medication-induced-nutrient-depletion
+linked_to_supplements:
+- coenzyme-q10
+- vitamin-d
+linked_to_mechanisms: []
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXjjIqJjMSR/
+  quote: Every statin that lowers cholesterol also drains CoQ10 and vitamin D.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

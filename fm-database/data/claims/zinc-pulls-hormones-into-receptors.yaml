@@ -1,0 +1,28 @@
+slug: zinc-pulls-hormones-into-receptors
+statement: Zinc, through zinc finger protein structures, is required to extract hormones
+  from their carrier proteins in the bloodstream and facilitate entry into receptor
+  binding pocket domains.
+evidence_tier: strong
+rationale: Zinc finger domains in nuclear hormone receptors are a well-characterized
+  structural feature in molecular biology. The role of zinc in steroid hormone receptor
+  DNA-binding domains is established science.
+coaching_translation: Zinc acts like a key that helps your hormones get out of the
+  'taxi' (carrier protein) they're riding in your blood and into the receptor where
+  they can actually do their work.
+linked_to_topics:
+- hormonal-nutrition-foundations
+linked_to_supplements:
+- zinc-hormone-support
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Zinc and Hormone Receptor Function
+  quote: zinc, and it's called a zinc finger... one of its big things is it pulls
+    the hormone, in essence, out of the uber and lets the hormone view the shape of
+    the binding pocket and feel like it can go inside to do its job.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

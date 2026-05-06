@@ -1,0 +1,31 @@
+slug: cwi-elevates-cardiac-troponins
+statement: Cold water immersion elevates cardiac troponin levels in elite swimmers,
+  raising questions about potential subclinical cardiac stress.
+evidence_tier: plausible_emerging
+rationale: Troponin elevation is a recognized biomarker of cardiac myocyte stress/damage.
+  Observed post-CWI in elite swimmers in the review; clinical significance (transient
+  exercise effect vs. true injury) remains uncertain.
+coaching_translation: While cold water swimming has heart health benefits for many,
+  very intense or prolonged sessions may temporarily stress the heart — another reason
+  to ease in gradually and get medical clearance.
+out_of_scope_notes: Cardiac troponin interpretation is strictly clinician scope. Any
+  client reporting chest pain, palpitations, or syncope post-CWI must be referred
+  immediately.
+caveats:
+- Observed in elite athletes — may not generalize to recreational swimmers
+- Troponin elevation may be transient and exercise-related rather than pathological
+- Clinical significance uncertain
+linked_to_topics:
+- cold-water-immersion-cardiovascular
+- cold-water-immersion
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: espeland-2022-cold-water-immersion
+  location: Cardiovascular Impact
+  quote: CWI elevated cardiac troponins in elite swimmers, raising questions about
+    coronary syndrome risk.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

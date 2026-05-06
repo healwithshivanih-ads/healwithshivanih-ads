@@ -1,0 +1,31 @@
+slug: drinking-large-fluids-with-meals-dilutes-stomach-acid-and-impairs-digestion
+statement: Drinking large amounts of fluid (multiple glasses) with meals dilutes hydrochloric
+  acid, stops digestion, and prolongs gastric transit time; a few mouthfuls does not
+  significantly impair digestion.
+evidence_tier: plausible_emerging
+rationale: The dilution effect of large fluid volumes on gastric acid concentration
+  is mechanistically plausible. Beaumont's experiments are cited as direct evidence.
+  The practical recommendation to stop fluids 30 minutes before and resume 90 minutes
+  after meals is a common functional medicine protocol.
+coaching_translation: Stay well hydrated throughout the day, but stop drinking 30
+  minutes before meals and wait 90 minutes after eating before resuming large fluid
+  intake. A few sips with your meal is fine.
+caveats:
+- Source is a practitioner talk.
+- Specific 30-min/90-min timing recommendations lack direct RCT evidence.
+linked_to_topics:
+- meal-timing-and-digestive-rest
+- gastrointestinal-tract-overview
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-gi-tract
+  location: Meal Timing & Beaumont Section
+  quote: If large amounts of fluid with the meal, a few mouthfuls didn't really make
+    any difference. But if he had two, three glasses of water with the meal, then
+    that slowed digestion down.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

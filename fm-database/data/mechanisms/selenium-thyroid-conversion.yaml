@@ -1,0 +1,29 @@
+slug: selenium-thyroid-conversion
+display_name: Selenium-Dependent Thyroid Hormone Conversion
+aliases:
+- selenium iodine thyroxine conversion
+- T4 to T3 conversion
+category: endocrine
+summary: The thyroid gland uses selenium to convert iodine into thyroxine (T4). Insufficient
+  selenium impairs this conversion. Mercury (e.g., from dental amalgam fillings) has
+  an affinity for selenium, potentially depleting it and further reducing thyroid
+  hormone production.
+upstream_drivers:
+- selenium-deficiency
+- mercury-exposure
+downstream_effects:
+- impaired-thyroid-function
+- hypothyroidism-symptoms
+related_mechanisms: []
+linked_to_topics: []
+evidence_tier: plausible_emerging
+sources:
+- id: barbara-oneil-ph-balance
+  location: Brazil Nuts and Selenium Section
+  quote: The thyroid uses selenium to convert iodine into thyroxine. So if selenium
+    levels are low, you're not going to be able to convert your iodine into thyroxine.
+    And mercury fillings have an affinity for selenium.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

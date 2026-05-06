@@ -1,0 +1,45 @@
+slug: gut-immune-dysregulation
+display_name: Gut-Driven Immune Dysregulation
+aliases:
+- gut-immune axis dysfunction
+- chronic gut immune activation
+- gut-induced immune exhaustion
+category: immune
+summary: Chronic gut dysbiosis and intestinal barrier compromise lead to ongoing antigen
+  translocation into systemic circulation, perpetuating immune activation. Over time
+  this results in immune cell exhaustion (low WBCs, low neutrophils), elevated inflammatory
+  markers (high ESR, high globulin), and loss of immune tolerance — manifesting as
+  allergies, autoimmune skin disease (psoriasis), and immune-mediated reproductive
+  pathology (endometriosis).
+upstream_drivers:
+- childhood-infection-diarrhea
+- gut-dysbiosis
+- gut-barrier-dysfunction
+- malnourishment
+- gnrh-injections-ocp-use
+downstream_effects:
+- chronic-inflammation
+- psoriasis-gut-immune
+- endometriosis
+- nutrient-malabsorption
+- fatigue
+related_mechanisms:
+- gut-barrier-dysfunction
+- estrogen-recirculation-via-beta-glucuronidase
+linked_to_topics:
+- gut-skin-hormone-axis
+- immune-dysregulation
+- psoriasis-gut-immune
+- endometriosis
+- dysbiosis
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Blood Report Analysis
+  quote: Very low WBC along with low neutrophils tell us that there has been chronic
+    immune activation or chronic immune stimulation coupled with high globulin. This
+    is an immune dysregulation problem.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

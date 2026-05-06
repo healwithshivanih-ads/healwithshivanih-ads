@@ -1,0 +1,29 @@
+slug: bloating-diarrhea-food-sensitivities
+display_name: Bloating, Diarrhea & Food Sensitivities
+aliases:
+- chronic diarrhea
+- loose stools
+- new food sensitivities
+- gut symptoms
+- GI distress
+category: gi
+severity: common
+description: Chronic diarrhea, bloating, and new food sensitivities linked to gut
+  dysbiosis, leaky gut, malabsorption, and autoimmune gut triggers.
+when_to_refer: Refer if diarrhea is chronic, bloody, or associated with significant
+  weight loss, or if autoimmune bowel disease is suspected.
+linked_to_topics:
+- gut-dysbiosis
+- leaky-gut
+- nutrition-deficiency
+linked_to_mechanisms:
+- gut-barrier-and-nutrient-absorption
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Topics Covered
+  quote: Gut health is linked to thiamin absorption, nutrient absorption, autoimmune
+    joint pain, and hair loss support.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

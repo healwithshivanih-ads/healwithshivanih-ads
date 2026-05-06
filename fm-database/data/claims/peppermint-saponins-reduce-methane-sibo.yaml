@@ -1,0 +1,30 @@
+slug: peppermint-saponins-reduce-methane-sibo
+statement: Peppermint and certain botanical extracts contain saponins that act as
+  molecular sponges for excess hydrogen and methane gas, destroy bacterial lipid barriers,
+  reduce methane production, and promote intestinal motility in methane-dominant SIBO.
+evidence_tier: plausible_emerging
+rationale: Enteric-coated peppermint oil has RCT evidence for IBS, and saponins have
+  documented antimicrobial properties. The specific 'molecular sponge' mechanism for
+  gas absorption is a functional medicine framing.
+coaching_translation: Specific plant compounds in peppermint and other botanicals
+  can literally soak up the excess gas produced by overgrown bacteria and help get
+  your gut moving again.
+caveats:
+- Source is expert consensus lecture; 'molecular sponge' framing is FM-specific.
+- Enteric coating is important to prevent reflux; dose should be clinician-guided.
+linked_to_topics:
+- sibo
+linked_to_supplements:
+- peppermint-oil-enteric
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-sibo-sifo
+  location: Botanical Formulations for Methane-Dominant SIBO
+  quote: They contain stannins and large decollized pleurite structures that acts
+    as molecular sponges for access hydrogen and methane. So they will take up the
+    methane and the hydrogen and it will also then destroy the bacterial lipid barriers.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

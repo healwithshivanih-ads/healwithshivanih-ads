@@ -1,0 +1,29 @@
+slug: multiple-food-sensitivities
+display_name: Multiple Food Sensitivities
+aliases:
+- food intolerances
+- reactive to multiple foods
+- progressive food reactions
+category: gi
+severity: concerning
+description: Progressive inability to tolerate multiple foods, typically developing
+  as intestinal permeability worsens and undigested food antigens enter systemic circulation
+  triggering immune responses.
+when_to_refer: Refer if anaphylaxis risk, severe nutritional restriction, or suspected
+  celiac disease.
+linked_to_topics:
+- sibo
+- leaky-gut-syndrome
+linked_to_mechanisms:
+- intestinal-barrier-dysfunction
+- lps-endotoxemia
+sources:
+- id: coconote-fm-sibo-sifo
+  location: Leaky Gut / Transcellular Section
+  quote: At times patients come with a company, doctor first time sensitive to gluten.
+    Then after six months, I became sensitive to milk. After that, I had multiple
+    food sensitivities.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

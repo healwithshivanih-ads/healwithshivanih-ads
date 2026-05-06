@@ -9,6 +9,7 @@ timing_options:
 - with_dinner
 - bedtime
 - with_breakfast
+- evening
 take_with_food: optional
 linked_to_topics:
 - methylation-mthfr
@@ -17,6 +18,22 @@ linked_to_topics:
 - magnesium-insufficiency
 - mitochondrial-health-nutrition
 - mercury-amalgam-removal
+- insulin-resistance
+- dental-amalgam-mercury
+- infrared-sauna-therapy
+- metabolic-detoxification
+- calcium-deficiency
+- calcium-metabolism
+- chronic-inflammation
+- gut-dysbiosis
+- intestinal-permeability
+- cardiovascular-disease-prevention
+- metabolic-syndrome
+- menopause
+- statin-therapy-risks-and-benefits
+- dyslipidemia-management
+- atherosclerosis-pathogenesis
+- gut-microbiome
 linked_to_claims:
 - magnesium-phase-ii-cofactor
 - magnesium-deficiency-increases-t2d-risk
@@ -24,23 +41,36 @@ linked_to_claims:
 - magnesium-inadequacy-common-in-us-adults
 - magnesium-supports-energy-bp-mood-bone
 - infrared-sauna-supports-toxin-excretion-via-sweat
-notes_for_coach: Recommended as baseline pre-amalgam removal and as first mineral
-  to replenish after infrared sauna sessions (lost through sweat). Many forms available;
-  glycinate/malate are well-tolerated.
-notes_for_client: Magnesium is essential for hundreds of body processes and is lost
-  through sweat — especially important to replenish after sauna sessions.
+- magnesium-replacement-after-sauna-sweating
+- magnesium-supports-detox-protocol
+- low-magnesium-drives-low-serum-calcium
+- zinc-magnesium-anti-inflammatory-minerals
+- zinc-vitamin-a-b-support-gut-tissue-repair
+- magnesium-anti-inflammatory-anti-arrhythmic
+- statins-deplete-coq10-magnesium-thiamine
+- magnesium-is-natural-anti-statin
+- magnesium-deficiency-causes-intracellular-calcium-excess
+- magnesium-reduces-statin-side-effects
+- magnesium-depletion-from-water-filtration
+notes_for_coach: Dr. Davis identifies magnesium as a restoration supplement—water
+  filtration removes magnesium, making supplementation necessary. Specific form and
+  dose not discussed in this document; coaches should verify appropriate forms (glycinate,
+  malate, etc.) with clinician guidance.
+notes_for_client: Because we filter our drinking water, most of the magnesium that
+  used to come from natural water sources is removed. Supplementing magnesium helps
+  restore what modern water treatment takes away.
 evidence_tier: plausible_emerging
 typical_dose_range:
   capsule:
-    min: 400
-    max: 600
+    min: 200
+    max: 400
     unit: mg
   powder:
-    min: 100
+    min: 200
     max: 400
     unit: mg
   tablet:
-    min: 100
+    min: 200
     max: 400
     unit: mg
 linked_to_mechanisms: []
@@ -62,7 +92,40 @@ sources:
   location: How to Make an Infrared Sauna Lamp — Protocol
   quote: I do advise Starting with Magnesium because you will loose lot of magnesium
     through sweat.
-version: 4
+- id: vitaone-health-coaching-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: Magnesium is an essential mineral that supports bone health, blood pressure,
+    and insulin function. It also participates in hundreds of metabolic reactions
+    in the body.
+- id: coconote-fm-calcium-deficiency
+  location: Magnesium and Calcium Relationship
+  quote: if you correct the intracellular magnesium level this calcium going to come
+    out from the cell and it will maintain your serum magnesium level.
+- id: coconote-fm-approach-inflammation
+  location: Nutrition – Anti-Inflammatory Minerals
+  quote: the minerals, then zinc and magnesium. They are anti-inflammatory.
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Repair Section
+  quote: that is zinc and then you can consider that magnesium is required.
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Micronutrients in Clinical Practice
+  quote: Almost everyone leaves with magnesium, which is my favorite mineral for the
+    heart. Magnesium lowers blood sugar. Magnesium is anti-inflammatory. Magnesium
+    helps people have a bowel movement. Magnesium prevents arrhythmia.
+- id: coconote-fm-sex-hormones
+  location: Case Study — Rekha Lab Results
+  quote: Now the calcium may be low because the magnesium is also on the lower side
+    at times.
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Natural alternatives to statins section
+  quote: Like magnesium is also anti-steadiness. We can use the nutrition like vitamin
+    D and magnesium.
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Supplement restoration philosophy discussion
+  quote: There are supplements that you need, like magnesium, you need it because
+    we have to filter our drinking water. Water filtration removes all magnesium.
+    So we have to restore magnesium.
+version: 13
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

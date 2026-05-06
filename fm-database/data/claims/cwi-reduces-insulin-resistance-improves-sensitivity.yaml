@@ -1,0 +1,33 @@
+slug: cwi-reduces-insulin-resistance-improves-sensitivity
+statement: Repeated cold water immersion significantly increases insulin sensitivity
+  and decreases insulin concentrations, suggesting a protective effect against type
+  2 diabetes.
+evidence_tier: plausible_emerging
+rationale: Multiple small studies in the 104-study review report improved insulin
+  sensitivity with repeated CWI. Mechanism (BAT-mediated glucose uptake, thermogenesis)
+  is plausible but effect sizes and generalizability remain uncertain.
+coaching_translation: Making cold water exposure a regular habit may support healthy
+  blood sugar regulation — a promising add-on to diet and exercise for metabolic health.
+out_of_scope_notes: Do not advise clients to replace diabetes medications or monitoring
+  with CWI. Refer to clinician for interpretation of insulin/glucose labs.
+caveats:
+- Mostly small-group studies
+- Often single-gender populations
+- Confounded by active lifestyle
+- Mechanism not fully elucidated in humans
+linked_to_topics:
+- insulin-resistance-sensitivity
+- cold-water-immersion
+- brown-adipose-tissue-activation
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: espeland-2022-cold-water-immersion
+  location: Metabolic Changes
+  quote: Studies found that repeated CWI significantly increased insulin sensitivity
+    and decreased insulin concentrations, suggesting protective effects against type
+    2 diabetes and insulin resistance.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,27 @@
+slug: gum-inflammation
+display_name: Gum Inflammation
+aliases:
+- gingival inflammation
+- gum irritation
+- inflamed gums
+category: other
+severity: common
+description: Inflammation of gum tissue associated with irritating oral care ingredients
+  such as SLS, propylene glycol, and alcohol-based mouthwashes.
+when_to_refer: Refer to dentist if gum disease, periodontitis, or ongoing gingival
+  infection is suspected.
+linked_to_topics:
+- oral-health-toxins
+- dental-amalgam-mercury
+linked_to_mechanisms:
+- oral-microbiome-disruption
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Avoiding Toxins in Oral Health
+  quote: Propylene glycol, polyethylene, and similar plastic chemicals are added to
+    many toothpastes. These additives may disrupt hormonal balance, may cross the
+    blood-brain barrier, and irritate gums and other tissues.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

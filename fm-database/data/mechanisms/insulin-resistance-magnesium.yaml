@@ -1,0 +1,29 @@
+slug: insulin-resistance-magnesium
+display_name: Insulin Receptor Sensitivity (Magnesium-Dependent)
+aliases:
+- magnesium-insulin-resistance
+- glucose-metabolism-magnesium
+category: metabolic
+summary: Magnesium is required for normal insulin receptor sensitivity and beta-cell
+  insulin secretion. Deficiency reduces receptor sensitivity, impairing glucose uptake
+  into cells and contributing to insulin resistance, pre-diabetes, and type 2 diabetes.
+upstream_drivers:
+- magnesium-deficiency
+downstream_effects:
+- insulin-resistance
+- elevated-blood-glucose
+- type-2-diabetes
+related_mechanisms:
+- atp-mitochondrial-production
+linked_to_topics:
+- magnesium-deficiency
+evidence_tier: strong
+sources:
+- id: coconote-fm-magnesium-deficiency
+  location: Diabetes / insulin resistance section
+  quote: Whenever magnesium is on the lower side, it decreases the sensitivity of
+    the insulin receptors also.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

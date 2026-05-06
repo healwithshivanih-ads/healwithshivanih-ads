@@ -1,0 +1,32 @@
+slug: coaches-translate-care-plans-not-review-labs
+statement: Health coaches operating within functional medicine teams translate the
+  'why' behind lab results and supplement recommendations to patients, but do not
+  perform clinical lab reviews — that remains the clinician's role.
+evidence_tier: fm_specific_thin
+rationale: 'Speaker clearly delineates scope of practice: coaches layer in the rationale
+  and implementation context after the clinician has reviewed labs and established
+  a care plan. This is a scope-of-practice principle, not a clinical evidence claim.'
+coaching_translation: When a client asks about their labs, your role is to help them
+  understand WHY the clinician recommended a given intervention — not to interpret
+  the lab values yourself. Always refer clinical interpretation back to the provider.
+out_of_scope_notes: Lab interpretation, clinical diagnosis, and prescribing remain
+  outside coaching scope. Coaches support comprehension and implementation only.
+caveats:
+- This is a scope-of-practice principle articulated by a practitioner-coach, not a
+  peer-reviewed evidence claim.
+linked_to_topics:
+- functional-medicine-coaching
+- coach-clinician-collaboration
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-future-fm
+  location: Role of Coach as Strategic Collaborator Section
+  quote: In the integrated models, coaches are helping translate lab results. They're
+    not doing lab reviews, but when a provider goes through these labs and they are
+    presenting this care plan, the coaches on their follow-up get to layer in the
+    why behind the lab results and the supplement and things like that.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

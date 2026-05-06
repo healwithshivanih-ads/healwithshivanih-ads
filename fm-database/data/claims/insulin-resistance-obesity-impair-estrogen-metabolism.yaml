@@ -1,0 +1,30 @@
+slug: insulin-resistance-obesity-impair-estrogen-metabolism
+statement: Insulin resistance and obesity impair estrogen metabolism and may increase
+  estrogen-related cancer risk; lifestyle interventions addressing these factors can
+  improve estrogen clearance.
+evidence_tier: strong
+rationale: Well-supported by clinical literature including Chan et al. (Cancer Causes
+  Control. 2019) cited in the document. The bidirectional relationship between insulin
+  resistance and estrogen is established.
+coaching_translation: Keeping blood sugar balanced and maintaining a healthy weight
+  is one of the best things you can do for hormone health — it helps your body process
+  and eliminate estrogen properly.
+caveats:
+- Direction of causality in the estrogen-insulin relationship is bidirectional and
+  complex
+linked_to_topics:
+- estrogen-metabolism
+- estrogen-dominance
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Estrogen Metabolism — Disrupts Healthy Estrogen Metabolism
+  quote: Insulin Resistance and obesity impair estrogen metabolism. Estrogen is believed
+    to positively influence insulin sensitivity and weight, but conversely, insulin
+    resistance and obesity are thought to negatively influence estrogen metabolism.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

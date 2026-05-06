@@ -1,0 +1,38 @@
+slug: p5p-helix-12-signaling-control
+display_name: P5P (Pyridoxal-5-Phosphate) Helix-12 Signaling Duration Control
+aliases:
+- B6 and hormone signaling
+- pyridoxal-5-phosphate receptor
+- helix 12
+- P5P and estrogen dominance
+category: endocrine
+summary: Pyridoxal-5-phosphate (the active form of vitamin B6) controls the opening
+  and closing of helix 12 in the receptor binding pocket domain, thereby governing
+  the duration of hormone signaling. Insufficient P5P leads to prolonged, excessive
+  hormone signaling — a key mechanism in conditions like estrogen dominance, heavy
+  periods, and fibrocystic breasts.
+upstream_drivers:
+- dietary-b6-intake
+- b6-depletion-by-sugar
+- b6-depletion-by-jet-fuel-aviation
+downstream_effects:
+- hormone-signal-duration
+- estrogen-dominance
+- fibrocystic-breast-risk
+related_mechanisms:
+- hormone-receptor-binding
+- genomic-hormone-signaling
+linked_to_topics:
+- hormonal-nutrition-foundations
+- estrogen-signaling
+evidence_tier: plausible_emerging
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: P5P and Hormone Signaling Duration
+  quote: B6 will close the hat on the binding pocket domain, which is helix 12, or
+    open it up. And the movement of B6 and enough B6 adequately in local tissues rules
+    the signaling duration of hormones.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

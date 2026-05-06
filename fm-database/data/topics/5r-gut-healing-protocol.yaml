@@ -1,0 +1,47 @@
+slug: 5r-gut-healing-protocol
+display_name: 5R Gut Healing Protocol
+aliases:
+- 5R protocol
+- Remove Replace Re-inoculate Repair Rebalance
+- five R protocol
+- gut repair protocol
+summary: 'A five-step functional medicine framework for gut repair: Remove (triggers,
+  allergens, pathogens), Replace (digestive support), Re-inoculate (probiotics/prebiotics),
+  Repair (gut lining nutrients), and Rebalance (lifestyle, stress, sleep). Applied
+  to intestinal permeability and related gut disorders.'
+common_symptoms:
+- bloating
+- food-sensitivities
+- gut-inflammation
+- fatigue
+red_flags: []
+related_topics:
+- intestinal-permeability
+- dysbiosis
+- autoimmunity-leaky-gut-triad
+key_mechanisms:
+- tight-junction-dysregulation
+- gut-microbiome-dysbiosis
+- mucosal-immune-dysfunction
+- tight-junction-dysfunction
+coaching_scope_notes: Coaches can guide clients through all five Rs at the lifestyle
+  and nutrition level. Specific supplement dosing (especially repair nutrients) should
+  be confirmed with a clinician.
+clinician_scope_notes: Prescriptive antimicrobials, HCl/enzyme replacement dosing,
+  and immunomodulatory supplements require clinician oversight.
+evidence_tier: fm_specific_thin
+sources:
+- id: coconote-fm-intestinal-permeability
+  location: 5R Protocol
+  quote: So if you follow this five R then you can heal any kind of gastric dysfunction
+    or you can heal the leaky gut.
+- id: coconote-fm-intestinal-permeability-anish
+  location: 5R Protocol for Gut Healing
+  quote: Follow the basic five R protocol for any kind of gut disorder. First R is
+    rebalance. Remove, the second R is replace, re-inoculate, repair and then rebalance.
+    So if you follow this five R, then you can heal any kind of gastric dysfunction
+    or you can heal the leaky gut.
+version: 2
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

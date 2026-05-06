@@ -1,0 +1,29 @@
+slug: oxidative-stress-pancreatic-damage
+display_name: Oxidative Stress and Pancreatic Cell Damage
+aliases:
+- free-radical-induced pancreatic inflammation
+- ROS-mediated pancreatic damage
+category: immune
+summary: Excess free radicals drive inflammation and cellular damage within pancreatic
+  tissue, impairing its capacity to produce and secrete digestive enzymes.
+upstream_drivers:
+- nutritional-deficiency-zinc-copper-vitamins
+- alcohol-abuse
+- inflammatory-foods
+downstream_effects:
+- exocrine-pancreatic-enzyme-deficiency
+related_mechanisms:
+- exocrine-pancreatic-enzyme-deficiency
+- cortisol-elevation
+linked_to_topics:
+- pancreatic-insufficiency
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-pancreatic-insufficiency
+  location: Causes of Enzyme Deficiency
+  quote: Free radicals, basically excess amount of free radicals causes more and more
+    inflammation that is like damage to the pancreatic cells.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

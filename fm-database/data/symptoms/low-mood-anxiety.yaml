@@ -1,0 +1,29 @@
+slug: low-mood-anxiety
+display_name: Low Mood & Anxiety
+aliases:
+- anxious
+- feeling anxious
+- worried
+- nervous
+- stressed
+category: mood
+severity: common
+description: Everyday experiences of low mood, worry, or anxiety. CWI has been associated
+  with improved mood and reduced anxiety in questionnaire-based studies of regular
+  swimmers.
+when_to_refer: Refer to clinician or mental health professional if anxiety is severe,
+  persistent, or functionally impairing.
+linked_to_topics:
+- cold-water-immersion-mental-health
+linked_to_mechanisms:
+- noradrenaline-signaling
+- beta-endorphin-release
+sources:
+- id: espeland-2022-cold-water-immersion
+  location: Mental Health
+  quote: Cold water swimming has been associated with improved mood, reduced anxiety,
+    and general sense of wellbeing in participants.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

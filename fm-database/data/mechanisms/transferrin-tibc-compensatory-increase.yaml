@@ -1,0 +1,32 @@
+slug: transferrin-tibc-compensatory-increase
+display_name: Transferrin / TIBC Compensatory Increase in IDA
+aliases:
+- elevated TIBC
+- elevated UIBC
+- low transferrin saturation
+category: metabolic
+summary: Transferrin is the transport protein that carries iron in the bloodstream.
+  In iron deficiency, the body upregulates transferrin production, increasing Total
+  Iron Binding Capacity (TIBC) and Unsaturated Iron Binding Capacity (UIBC) while
+  transferrin saturation falls, reflecting the body's attempt to capture more available
+  iron.
+upstream_drivers:
+- low-serum-iron
+- ferritin-storage-depletion
+downstream_effects:
+- iron-deficiency-anemia
+related_mechanisms:
+- ferritin-storage-depletion
+linked_to_topics:
+- iron-deficiency-anemia
+evidence_tier: strong
+sources:
+- id: coconote-fm-iron-deficiency-anemia
+  location: Iron Panel Biomarkers / TIBC-UIBC section
+  quote: Whenever we are talking about iron deficiency, the binding capacity increases.
+    Both TIBC and UIBC increases in terms of iron deficiency and transferrin saturation
+    is on the lower side.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

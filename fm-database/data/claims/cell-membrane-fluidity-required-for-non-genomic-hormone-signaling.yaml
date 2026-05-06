@@ -1,0 +1,33 @@
+slug: cell-membrane-fluidity-required-for-non-genomic-hormone-signaling
+statement: Healthy, fluid cell membranes — dependent on adequate omega-3 intake and
+  avoidance of trans fats and ultra-processed foods — are required for the non-genomic
+  (membrane-level) rapid hormone signaling pathway to function in all cells of the
+  body.
+evidence_tier: plausible_emerging
+rationale: Non-genomic steroid signaling via membrane receptors (GPER and others)
+  is established science. Cell membrane fluidity affecting receptor function is well-supported.
+  The clinical implication that dietary fat quality directly modulates this pathway
+  is mechanistically sound but not RCT-confirmed in humans.
+coaching_translation: Your hormones have a fast communication system that works through
+  every cell's outer membrane — but it only works if your membranes are flexible.
+  Eating plenty of omega-3 fats and avoiding trans fats and processed foods keeps
+  your cell membranes in the right shape for hormones to communicate rapidly.
+linked_to_topics:
+- hormonal-nutrition-foundations
+- estrogen-signaling
+linked_to_supplements:
+- omega-3-fatty-acids-hormone-membrane
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Non-Genomic Hormone Signaling and Cell Membranes
+  quote: only if the cell membrane is healthy. And the patient doesn't eat a lot of
+    trans fatty acid foods and ultra processed foods that make for rigidity of cell
+    membranes... hormones not just signal in target tissue but all membranes of the
+    body and they're instantaneous
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

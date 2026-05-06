@@ -7,25 +7,32 @@ forms_available:
 timing_options:
 - morning
 - with_breakfast
+- on_empty_stomach
 take_with_food: optional
 linked_to_topics:
 - gerd
 - gut-dysfunction
+- gerd-ppi-tapering
 linked_to_claims:
 - aloe-vera-repairs-gut-lining
-notes_for_coach: Listed under 'Repair' in the PPI taper supplement protocol. Juice
-  form is typically used for GI soothing. Confirm with clinician for appropriate form
-  and dosing.
-evidence_tier: fm_specific_thin
+- ppi-tapering-supplement-support-repair-protect-antioxidant
+notes_for_coach: Listed under 'Repair' in PPI tapering protocol. Aloe vera juice/gel
+  may soothe the GI lining. Use decolorized (anthraquinone-free) form to avoid laxative
+  effects.
+evidence_tier: plausible_emerging
 typical_dose_range: {}
 linked_to_mechanisms: []
-notes_for_client: ''
+notes_for_client: Aloe vera can help soothe and repair the lining of the stomach and
+  esophagus during acid reflux recovery.
 sources:
 - id: vitaone-gut-toolkit
   location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
     — Supplement recommendations'
   quote: 'Repair: Zinc l-carnosine, aloe vera'
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
+  quote: 'Repair: Zinc l-carnosine, aloe vera.'
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

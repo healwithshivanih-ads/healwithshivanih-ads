@@ -1,0 +1,24 @@
+slug: quercetin-inhibits-5ar
+statement: Quercetin inhibits 5-α reductase and may help reduce DHT-related symptoms.
+evidence_tier: fm_specific_thin
+rationale: Listed in the FMCN toolkit as a phytonutrient inhibitor of 5-α reductase.
+  In vitro evidence is available but clinical human RCT data is limited.
+coaching_translation: Quercetin — found in apples, onions, and capers — is a plant
+  compound that may help block the enzyme responsible for DHT overproduction.
+caveats:
+- Primarily in vitro evidence for 5-AR inhibition
+- Supplement dosing requires clinician guidance
+linked_to_topics:
+- testosterone-dht-conversion
+linked_to_supplements:
+- quercetin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors'
+  quote: Quercetin [listed under Nutrients/Phytonutrients that Inhibit 5-a Reductase]
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

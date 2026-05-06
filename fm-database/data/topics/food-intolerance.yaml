@@ -1,0 +1,35 @@
+slug: food-intolerance
+display_name: Food Intolerance (Non-Immunological)
+aliases:
+- lactose intolerance
+- enzyme deficiency food reaction
+- non-immune food reaction
+summary: Food intolerance is a non-immunological reaction to food, most classically
+  lactose intolerance caused by lactase enzyme deficiency. Other causes include toxic
+  food reactions, food additives (e.g., MSG), and drug-like reactions. Not mediated
+  by IgE, IgG, or IgA.
+common_symptoms:
+- abdominal-pain
+- bloating
+- diarrhea
+- gas
+related_topics:
+- food-sensitivity-igg-iga-mediated
+- food-allergy-ige-mediated
+key_mechanisms:
+- digestive-enzyme-deficiency
+coaching_scope_notes: Coaches can support dietary modifications (e.g., lactose-free
+  diet) and digestive enzyme education. Underlying enzyme deficiency diagnosis is
+  clinician scope.
+evidence_tier: strong
+red_flags: []
+clinician_scope_notes: ''
+sources:
+- id: coconote-fm-food-allergies-sensitivities
+  location: Definition of Food Reactions Section
+  quote: Food intolerance means it's a non-immunological reaction. Let's say maybe
+    a toxic reaction or maybe a lactose intolerance.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

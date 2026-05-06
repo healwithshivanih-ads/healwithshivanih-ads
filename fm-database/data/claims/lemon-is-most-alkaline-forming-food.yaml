@@ -1,0 +1,32 @@
+slug: lemon-is-most-alkaline-forming-food
+statement: Despite being acidic in taste, lemon is the most alkaline-forming food
+  when metabolised, due to its high content of alkaline minerals (sodium, potassium,
+  magnesium, calcium, and iron).
+evidence_tier: fm_specific_thin
+rationale: The concept of 'ash pH' or metabolic alkalinity of lemon is common in functional
+  and naturopathic medicine. Lemons do contain alkaline minerals and have a low PRAL
+  (Potential Renal Acid Load) score, making them net alkaline-forming. However, ranking
+  lemon as 'the most' alkaline-forming food is not clearly established in peer-reviewed
+  literature.
+coaching_translation: Lemon juice in warm water is a great morning habit — it supports
+  your stomach acid (where acidity is needed) and delivers alkaline minerals to the
+  rest of your body.
+caveats:
+- The claim that lemon is definitively 'the most' alkaline-forming food is not confirmed
+  by peer-reviewed PRAL studies. This is FM-specific framing.
+- Source is a lecture transcript, not primary literature.
+linked_to_topics:
+- ph-balance
+linked_to_supplements:
+- lemon-juice
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-ph-balance
+  location: Alkaline-Forming Foods Section
+  quote: The most alkaline forming food that you can put in your body is the humble
+    lemon.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

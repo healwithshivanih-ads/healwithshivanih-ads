@@ -1,0 +1,29 @@
+slug: hba1c-ages-promote-heart-disease-and-dementia
+statement: Elevated HbA1c reflects glycated protein (AGE) formation that creates inflammation
+  and oxidative stress, promoting heart disease, dementia, and accelerated aging.
+  Optimal HbA1c is below 5.5.
+evidence_tier: plausible_emerging
+rationale: AGE-mediated oxidative stress and inflammation are plausible and well-described
+  mechanisms; the specific HbA1c target of <5.5 is more stringent than standard clinical
+  guidelines and lacks RCT support at this threshold.
+coaching_translation: Keeping blood sugar stable is one of the most powerful things
+  your clients can do to protect their heart and brain.
+out_of_scope_notes: HbA1c lab ordering and interpretation are clinician scope. The
+  threshold of <5.5 should not be used by coaches for clinical advice.
+caveats:
+- The <5.5 HbA1c target is more aggressive than ADA/ACC guidance; verify with clinician.
+- Source is an educational toolkit without primary citation for this specific threshold.
+linked_to_topics:
+- cardiovascular-dysfunction
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: CVD Risk Analysis — Lab Results
+  quote: These create inflammation & oxidative stress throughout the body, and promote
+    heart disease and dementia and accelerating aging. The Hemoglobin AIC should ideally
+    be less than 5.5.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

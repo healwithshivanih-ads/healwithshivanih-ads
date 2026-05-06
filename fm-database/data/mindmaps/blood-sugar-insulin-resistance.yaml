@@ -1,0 +1,452 @@
+slug: blood-sugar-insulin-resistance
+display_name: Blood Sugar Dysregulation & Insulin Resistance
+description: 'Functional medicine approach to insulin resistance, pre-diabetes, metabolic
+  syndrome, and blood sugar optimisation. Covers root mechanisms, clinical presentation,
+  coaching goals, interventions, and labs to track — structured for use in client
+  sessions and plan authoring.
+
+  '
+aliases: []
+related_topics:
+- insulin-resistance
+- blood-sugar-dysfunction
+- cardiometabolic-health
+related_mechanisms:
+- insulin-resistance
+- hepatic-insulin-sensitivity
+- gut-microbiome-glucose-regulation
+tree:
+- label: 🔴 Clinical Presentation
+  children:
+  - label: Early Signs
+    children:
+    - label: Sugar / Carb Cravings
+      children: []
+      linked_kind: symptom
+      linked_slug: craving-sweets
+      notes: ''
+    - label: Energy Crashes After Meals
+      children: []
+      linked_kind: symptom
+      linked_slug: fatigue-after-meals
+      notes: ''
+    - label: Brain Fog After Eating
+      children: []
+      linked_kind: symptom
+      linked_slug: brain-fog
+      notes: ''
+    - label: Difficulty Losing Weight
+      children: []
+      linked_kind: symptom
+      linked_slug: excess-body-weight
+      notes: ''
+    - label: Abdominal Weight Gain
+      children: []
+      linked_kind: symptom
+      linked_slug: abdominal-weight-gain
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Metabolic Symptoms
+    children:
+    - label: High Blood Pressure
+      children: []
+      linked_kind: topic
+      linked_slug: hypertension
+      notes: ''
+    - label: Acanthosis Nigricans
+      children: []
+      linked_kind: symptom
+      linked_slug: acanthosis-nigricans
+      notes: ''
+    - label: Skin Tags
+      children: []
+      linked_kind: symptom
+      linked_slug: acanthosis-nigricans
+      notes: ''
+    - label: PCOS Pattern
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Advanced Signs
+    children:
+    - label: Blurry Vision
+      children: []
+      linked_kind: symptom
+      linked_slug: blurry-vision
+      notes: ''
+    - label: Tingling / Numbness in Feet
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Frequent Urination
+      children: []
+      linked_kind: symptom
+      linked_slug: urinary-frequency
+      notes: ''
+    - label: Increased Thirst
+      children: []
+      linked_kind: symptom
+      linked_slug: increased-thirst
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🟠 Root Mechanisms
+  children:
+  - label: Insulin Resistance
+    children: []
+    linked_kind: mechanism
+    linked_slug: insulin-resistance
+    notes: ''
+  - label: Hepatic Insulin Resistance
+    children: []
+    linked_kind: mechanism
+    linked_slug: hepatic-insulin-sensitivity
+    notes: ''
+  - label: Mitochondrial Dysfunction
+    children: []
+    linked_kind: mechanism
+    linked_slug: mitochondrial-dysfunction
+    notes: ''
+  - label: Chronic Inflammation
+    children: []
+    linked_kind: mechanism
+    linked_slug: chronic-inflammation
+    notes: ''
+  - label: Gut Microbiome Dysregulation
+    children: []
+    linked_kind: mechanism
+    linked_slug: gut-microbiome-glucose-regulation
+    notes: ''
+  - label: Advanced Glycation End-Products
+    children: []
+    linked_kind: mechanism
+    linked_slug: advanced-glycation-end-products
+    notes: ''
+  - label: Oxidative Stress
+    children:
+    - label: Reactive Oxygen Species
+      children: []
+      linked_kind: mechanism
+      linked_slug: oxidative-stress
+      notes: ''
+    - label: Antioxidant Depletion
+      children: []
+      linked_kind: mechanism
+      linked_slug: glutathione-depletion
+      notes: ''
+    linked_kind: mechanism
+    linked_slug: oxidative-stress
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🟡 FM Approach
+  children:
+  - label: Dietary Strategies
+    children:
+    - label: Low Glycaemic Index Diet
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Carbohydrate Timing
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Protein at Each Meal
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Fibre First
+      children: []
+      linked_kind: topic
+      linked_slug: fiber-gap
+      notes: ''
+    - label: Anti-Inflammatory Diet
+      children: []
+      linked_kind: topic
+      linked_slug: anti-inflammatory-diet
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Exercise as Medicine
+    children:
+    - label: Post-Meal Walking
+      children: []
+      linked_kind: topic
+      linked_slug: antigravity-exercise-for-blood-sugar
+      notes: ''
+    - label: Resistance Training
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: HIIT for Insulin Sensitivity
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Stress & Sleep
+    children:
+    - label: Cortisol & Blood Sugar Link
+      children: []
+      linked_kind: mechanism
+      linked_slug: hpa-axis-dysregulation
+      notes: ''
+    - label: Sleep Optimisation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Stress Management
+      children: []
+      linked_kind: topic
+      linked_slug: stress-management
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🟢 Interventions
+  children:
+  - label: Key Supplements
+    children:
+    - label: Berberine
+      children: []
+      linked_kind: supplement
+      linked_slug: berberine
+      notes: ''
+    - label: Alpha Lipoic Acid
+      children: []
+      linked_kind: supplement
+      linked_slug: alpha-lipoic-acid
+      notes: ''
+    - label: Chromium Picolinate
+      children: []
+      linked_kind: supplement
+      linked_slug: chromium-picolinate
+      notes: ''
+    - label: Magnesium Glycinate
+      children: []
+      linked_kind: supplement
+      linked_slug: magnesium-glycinate
+      notes: ''
+    - label: Cinnamon Extract
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: CoQ10
+      children: []
+      linked_kind: supplement
+      linked_slug: coq10
+      notes: ''
+    - label: Inositol
+      children: []
+      linked_kind: supplement
+      linked_slug: inositol
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Dietary
+    children:
+    - label: Apple Cider Vinegar Before Meals
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Ceylon Cinnamon
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Bitter Melon
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Reduce Refined Carbohydrates
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Home Remedies
+    children:
+    - label: Cumin Coriander Fennel Tea
+      children: []
+      linked_kind: home_remedy
+      linked_slug: cumin-coriander-fennel-tea
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 💙 Coaching Goals
+  children:
+  - label: Education
+    children:
+    - label: Understanding Glycaemic Load
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Reading Food Labels
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Plate Method Teaching
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Behaviour Change
+    children:
+    - label: Meal Planning
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Batch Cooking
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Mindful Eating Practices
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Monitoring
+    children:
+    - label: CGM / Blood Glucose Monitoring
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Food & Energy Diary
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Weekly Weight & Waist Measurement
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🔵 Labs to Track
+  children:
+  - label: Blood Sugar Markers
+    children:
+    - label: Fasting Glucose
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: HbA1c
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Fasting Insulin
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: HOMA-IR (Insulin Resistance Index)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Lipid Panel
+    children:
+    - label: Triglycerides
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: TG/HDL Ratio
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: LDL Particle Size
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Inflammation
+    children:
+    - label: hsCRP
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Uric Acid
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Ferritin
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: topic
+    linked_slug: inflammation
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+sources:
+- id: vitaone-health-coaching-toolkit
+  quote: null
+  location: Toolkit for Blood Sugar Dysregulation & Insulin Resistance
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

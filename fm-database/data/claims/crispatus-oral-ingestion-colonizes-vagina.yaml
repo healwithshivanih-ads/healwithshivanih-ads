@@ -1,0 +1,32 @@
+slug: crispatus-oral-ingestion-colonizes-vagina
+statement: Orally ingested Lactobacillus crispatus translocates from the GI tract
+  to colonize the vagina and bladder, without requiring direct vaginal application.
+evidence_tier: plausible_emerging
+rationale: Dr. Davis cites Loyola University Chicago research using anaerobic culture
+  showing GI-to-vagina-to-bladder translocation of crispatus. The mechanism is proposed
+  as anatomical proximity/continuity. This is a biologically plausible finding from
+  exploratory studies but not yet consensus.
+coaching_translation: You don't need suppositories or vaginal applications. Simply
+  eating L. crispatus as a yogurt or capsule helps the bacteria find its way to your
+  vagina on its own.
+caveats:
+- Source is expert_consensus interview, not primary literature citation.
+- Translocation mechanism described as hypothetical ('must be some kind of translocation').
+  Loyola studies referenced but not cited by author/year.
+- Verify with clinician for pregnancy applications.
+linked_to_topics:
+- vaginal-microbiome
+linked_to_supplements:
+- lactobacillus-crispatus-probiotic
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Oral crispatus and vaginal colonization discussion
+  quote: One of the great things about many microbes, including crispatus, is a woman
+    can take it in orally, say as a probiotic or other source. It will populate the
+    vagina.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

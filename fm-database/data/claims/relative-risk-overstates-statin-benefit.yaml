@@ -1,0 +1,32 @@
+slug: relative-risk-overstates-statin-benefit
+statement: Presenting statin benefits as relative risk reduction (e.g., 29%) significantly
+  overstates clinical benefit compared to absolute risk reduction (e.g., 2%) and number
+  needed to treat (e.g., 50).
+evidence_tier: strong
+rationale: The document clearly demonstrates with numerical examples that a 29% relative
+  risk reduction for a standard statin corresponds to only a 2% absolute risk reduction
+  (7.5% to 5.5%), with an NNT of 50 — meaning 49 of 50 patients receive no benefit.
+coaching_translation: When your doctor says a statin reduces heart attack risk by
+  29%, that sounds huge — but it actually means your personal risk drops from about
+  7.5% to 5.5%. Out of 50 people taking this medication, only 1 will benefit, while
+  all 50 could experience side effects.
+caveats:
+- NNT varies by baseline risk level; higher-risk patients (e.g., secondary prevention)
+  will have lower NNTs and greater absolute benefit.
+- This framing applies specifically to intermediate-risk primary prevention patients.
+linked_to_topics:
+- statin-therapy-primary-prevention
+- cardiovascular-risk-assessment
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-reality-of-statins
+  location: Absolute vs. Relative Risk — Standard Dose Example
+  quote: That 2% difference equates to what's called a relative risk, looking at the
+    two things, comparing the two groups, statin versus non-statin of a 29%. But the
+    number needed to treat is 50.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

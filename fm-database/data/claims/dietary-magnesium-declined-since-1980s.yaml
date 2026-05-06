@@ -1,0 +1,27 @@
+slug: dietary-magnesium-declined-since-1980s
+statement: Dietary magnesium intake has declined significantly since the 1980s, from
+  approximately 500 mg/day to less than 180 mg/day or lower in the current generation.
+evidence_tier: plausible_emerging
+rationale: Soil depletion, food processing, and modern agricultural practices are
+  well-documented contributors to micronutrient decline in food. Specific figures
+  cited in the lecture are plausible but sourced from expert consensus, not a specific
+  RCT.
+caveats:
+- Source is expert consensus lecture, not primary literature; specific mg figures
+  should be verified with published dietary surveys.
+coaching_translation: The food we eat today has far less magnesium than it did a few
+  decades ago, meaning even a 'healthy' diet may leave you deficient.
+linked_to_topics:
+- magnesium-deficiency
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-magnesium-deficiency
+  location: Causes of magnesium deficiency
+  quote: We were consuming almost 500 mg. Eventually in the last decade... we were
+    consuming around 180. In today's world... maybe it's even lesser than that.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

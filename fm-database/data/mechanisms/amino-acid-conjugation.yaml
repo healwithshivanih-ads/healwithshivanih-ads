@@ -1,0 +1,35 @@
+slug: amino-acid-conjugation
+display_name: Amino Acid Conjugation (Phase 2)
+aliases:
+- glycine conjugation
+- taurine conjugation
+- glutamine conjugation
+category: metabolic
+summary: 'In Phase 2, reactive intermediates are conjugated with amino acids — primarily
+  glycine, taurine, and glutamine — rendering them water-soluble for excretion. This
+  pathway is directly protein-dependent: low dietary protein reduces the availability
+  of these amino acids and impairs Phase 2 conjugation capacity.'
+upstream_drivers:
+- phase2-conjugation
+- dietary-protein-intake
+downstream_effects:
+- water-soluble-conjugate-formation
+- biliary-renal-excretion
+related_mechanisms:
+- phase2-conjugation
+- glutathione-conjugation
+linked_to_topics:
+- liver-detoxification-phases
+evidence_tier: strong
+sources:
+- id: coconote-fm-liver-detox-part1
+  location: Phase 2 Conjugation Pathways
+  quote: Amino acid injection, so we can even bind these toxins to the amino acid,
+    that's the protein bomb, which is why the amino acid is required, because you
+    want to convert them into a water-soluble compound. So chlorine, glycine, and
+    glutamine, and glutamine and glutamine, we can say, they are the primary amino
+    acid they use for conjugation.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

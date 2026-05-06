@@ -1,0 +1,25 @@
+slug: weight-loss
+display_name: Unintentional Weight Loss
+aliases:
+- unexplained weight loss
+- losing weight without trying
+- wasting
+category: metabolic
+severity: concerning
+description: Progressive weight loss due to systemic caloric and macronutrient malabsorption
+  when pancreatic enzyme output is insufficient to support digestion.
+when_to_refer: Refer to clinician if rapid or severe — may indicate significant malnutrition
+  or underlying disease requiring medical management.
+linked_to_topics:
+- pancreatic-insufficiency
+linked_to_mechanisms:
+- malabsorption
+- exocrine-pancreatic-enzyme-deficiency
+sources:
+- id: coconote-fm-pancreatic-insufficiency
+  location: Signs and Symptoms
+  quote: The patient also tends to lose weight obsessively because of the non-absorption.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,35 @@
+slug: vitamin-d-functional-range-higher-than-conventional
+statement: A serum 25-OH vitamin D level within the conventional 'sufficiency' range
+  (e.g. 34.5 ng/mL) may still be suboptimal for full metabolic function; functional
+  medicine recommends targeting an optimal range rather than simply avoiding deficiency.
+evidence_tier: fm_specific_thin
+rationale: The document argues that conventional sufficiency (30–100 ng/mL) is too
+  broad and that levels toward the low end of this range may not support all vitamin
+  D-mediated metabolic functions. This is a common FM position but lacks specific
+  RCT support cited in the document.
+coaching_translation: Your vitamin D test might say 'normal' but actually be on the
+  low end of normal. In functional medicine, we look for optimal levels — not just
+  'not deficient.' This is worth discussing with your practitioner.
+out_of_scope_notes: Lab interpretation is clinician scope. Coaches can explain the
+  concept of functional vs. conventional ranges but must not interpret individual
+  lab values.
+caveats:
+- Functional optimal ranges for vitamin D are not universally standardised across
+  functional medicine practitioners.
+- Source is expert lecture/consensus — specific studies defining the optimal functional
+  range are not cited.
+linked_to_topics:
+- vitamin-d3
+linked_to_supplements:
+- vitamin-d3-supplement
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-vitamin-d3-k2
+  location: Functional vs Conventional Lab Ranges
+  quote: The sufficiency ranges from 30 to 100 nanograms per week. Again, 34.5 just
+    happens to daily cause this. This is not going to be enough to carry out all the
+    metabolic functions.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,31 @@
+slug: probiotic-diversity-essential-for-gut-healing
+statement: Single-strain probiotic supplementation is insufficient for resolving gut
+  dysbiosis; diversity of probiotic strains and appropriate timing of administration
+  are essential for meaningful gut microbiome restoration.
+evidence_tier: plausible_emerging
+rationale: Microbiome diversity is associated with gut health resilience. Multi-strain
+  probiotics outperform single-strain in several studies, though optimal strain combinations
+  remain under investigation.
+coaching_translation: One probiotic strain alone won't do the job — your gut needs
+  a diverse community of beneficial bacteria, introduced in the right sequence.
+caveats:
+- Source is expert consensus lecture; optimal strain combinations and timing protocols
+  are not yet standardized in the literature.
+linked_to_topics:
+- sibo
+- sifo
+linked_to_supplements:
+- probiotics-lactobacillus-bifidobacterium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-sibo-sifo
+  location: Healthy Intestinal Barrier Function
+  quote: first understand that your diversity inside the gut has to be maintained.
+    If you're not maintaining that and if you're giving only one strain of Baccaria
+    or one strain of another probiotic or any one strain of prebiotic, it's not going
+    to help the patient.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,36 @@
+slug: calcium-metabolism
+display_name: Calcium Metabolism
+aliases:
+- calcium physiology
+- calcium homeostasis
+- serum calcium regulation
+summary: Serum calcium is tightly regulated by parathyroid hormone and vitamin D.
+  99% of body calcium is stored in bone and teeth. Only 50% of serum calcium is ionized
+  (active), with 40% bound to albumin and 10% bound to other substances. Ionized calcium
+  is the functional form relevant to cellular processes.
+common_symptoms: []
+red_flags: []
+related_topics:
+- calcium-deficiency
+- vitamin-d-deficiency
+- magnesium-deficiency
+- hypochlorhydria
+key_mechanisms:
+- pth-calcium-regulation
+- albumin-calcium-binding
+- magnesium-calcium-intracellular-shift
+coaching_scope_notes: Coaches should understand the distinction between total and
+  ionized calcium, and why low serum calcium does not automatically mean dietary deficiency.
+clinician_scope_notes: Ionized calcium is the preferred functional marker. Albumin-corrected
+  calcium interpretation is essential. PTH, vitamin D, magnesium, and phosphorus should
+  all be evaluated alongside serum calcium.
+evidence_tier: strong
+sources:
+- id: coconote-fm-calcium-deficiency
+  location: Calcium Physiology Introduction
+  quote: serum calcium level is tightly regulated by parathyroid hormone and vitamin
+    D.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

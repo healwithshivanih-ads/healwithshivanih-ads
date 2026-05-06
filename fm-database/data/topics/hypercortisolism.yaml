@@ -1,12 +1,16 @@
 slug: hypercortisolism
-display_name: Hypercortisolism
+display_name: Hypercortisolism (Elevated Cortisol State)
 aliases:
 - elevated cortisol
 - high cortisol state
 - Cushing's-like pattern
-summary: Chronic elevation of cortisol from prolonged stress leads to diminished immune
-  function, lowered insulin sensitivity, poor sleep, elevated lipids, water retention,
-  cellular potassium loss, and DHEA depletion.
+- high cortisol
+- cortisol excess
+- chronic cortisol elevation
+summary: Prolonged stress causes chronically elevated cortisol and adrenaline levels,
+  resulting in diminished immune function, disrupted blood sugar regulation, poor
+  sleep, increased blood lipids, water retention, lowered insulin sensitivity, and
+  eventual depletion of DHEA.
 common_symptoms:
 - weight-gain-abdomen
 - insomnia
@@ -14,23 +18,34 @@ common_symptoms:
 - agitated-depression
 - stretch-marks
 - osteoporosis
+- water-retention
 red_flags:
 - Stretch marks not from weight loss
 - Central obesity with buffalo hump and moon face — possible Cushing's syndrome requiring
   referral
+- adult onset diabetes
+- osteoporosis
+- stretch marks not from weight loss
+- weight gain at back of neck and face
 related_topics:
 - hpa-axis-dysregulation
 - chronic-stress
 - insulin-resistance
+- hpa-axis-dysfunction
+- adrenal-hormone-function
 key_mechanisms:
 - cortisol-excess
 - hpa-axis-dysregulation
 - dhea-depletion
-coaching_scope_notes: Support dietary changes (avoid refined sugar, caffeine, alcohol),
-  sleep habits, and stress management. Do not diagnose Cushing's syndrome.
-clinician_scope_notes: Distinguish functional hypercortisolism from pathological Cushing's
-  syndrome via testing. Items with * require physical exam.
-evidence_tier: plausible_emerging
+- cortisol-dhea-imbalance
+- insulin-resistance
+coaching_scope_notes: Coaches can support blood sugar regulation through diet (small
+  frequent protein meals, avoiding refined sugar/caffeine/alcohol), sleep improvement
+  (bed by 10pm), and stress management.
+clinician_scope_notes: Clinician should rule out Cushing's syndrome in cases with
+  classic physical signs (buffalo hump, moon face, stretch marks, rapid weight gain).
+  Refer for cortisol testing.
+evidence_tier: strong
 sources:
 - id: vitaone-adrenal-toolkit
   location: Hypercortisolism
@@ -40,7 +55,14 @@ sources:
     Loss of cellular potassium, a very important mineral, Lowered insulin sensitivity,
     with a higher susceptibility to diabetes, Loss of the capacity to produce sufficient
     DHEA.'
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Hypercortisolism
+  quote: 'The results of high cortisol and adrenaline levels from prolonged stress
+    include: Diminished immune function, Depletion of cortisol, resulting in low blood
+    sugar, Less restful sleep, Increased lipid levels of blood fats, Water retention,
+    Loss of cellular potassium, Lowered insulin sensitivity, with a higher susceptibility
+    to diabetes, Loss of the capacity to produce sufficient DHEA.'
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

@@ -1,0 +1,28 @@
+slug: toxin-exposure-linked-to-weight-gain-in-animal-models
+statement: Experimental animal studies suggest that toxin exposure increases the likelihood
+  of weight gain regardless of diet, pointing to a toxin-metabolic dysfunction connection.
+evidence_tier: plausible_emerging
+rationale: The document cites animal studies showing toxin injection increases weight
+  gain. This is a plausible mechanism (endocrine disruption, adipogenesis) with supporting
+  animal data, though human RCT evidence is limited.
+coaching_translation: Difficulty losing weight isn't always just about diet and exercise.
+  Toxic load may play a role by disrupting metabolism — supporting detox pathways
+  can be an important piece of the puzzle.
+caveats:
+- Animal model data — human applicability not fully established.
+- Source is educational toolkit, not primary literature. No specific study cited.
+linked_to_topics:
+- toxic-body-burden
+- environmental-toxin-exposure
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Detox Food Plan — Why Detox?
+  quote: No matter what the diet may be, when toxins are injected into animals, they
+    have a greater chance of gaining weight.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

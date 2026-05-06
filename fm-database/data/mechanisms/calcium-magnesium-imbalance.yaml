@@ -1,0 +1,56 @@
+slug: calcium-magnesium-imbalance
+display_name: Calcium–Magnesium Imbalance in Cardiac Tissue
+aliases:
+- calcium-magnesium-dysregulation
+- intracellular-calcium-overload
+- calcium-channel-dysregulation
+- intracellular calcium overload
+- magnesium depletion
+- electrolyte imbalance cardiac
+category: metabolic
+summary: Magnesium is the predominant intracellular mineral in cardiac cells and is
+  essential for maintaining the calcium-magnesium balance required for normal electrical
+  action potentials. Magnesium deficiency allows excess intracellular calcium accumulation,
+  which is reflected clinically by elevated coronary calcium scores and may contribute
+  to arrhythmia and plaque calcification.
+upstream_drivers:
+- magnesium-deficiency
+- low-dietary-magnesium
+- calcium-oversupplementation
+- poor-dietary-mineral-intake
+downstream_effects:
+- muscle-cramps
+- hypertension
+- arterial-spasm
+- atherosclerosis
+- kidney-stones
+- vascular-calcification
+- cardiac-calcium-deposition
+- arrhythmia-risk
+- increased-coronary-calcium-score
+related_mechanisms:
+- vascular-smooth-muscle-relaxation
+- muscle-relaxation-contraction-balance
+- inflammatory-cascade
+linked_to_topics:
+- magnesium-deficiency
+- magnesium-cardiovascular-health
+- magnesium-musculoskeletal-health
+- calcium-overload
+- atherosclerosis-pathogenesis
+- dyslipidemia-management
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-magnesium-deficiency
+  location: Physiology of calcium and magnesium
+  quote: Whenever there is magnesium deficiency, the calcium tends to move inside,
+    it goes intracellularly causing contraction.
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Coronary calcium score discussion
+  quote: What is the meaning of the simple information is the extracellular calcium
+    is now in the cell in the cell that's the question. Now you know why the calcium
+    is moving in the cell because you have magnesium deficiency.
+version: 2
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

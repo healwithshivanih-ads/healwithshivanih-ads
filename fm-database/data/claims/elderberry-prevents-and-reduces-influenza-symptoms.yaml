@@ -1,0 +1,30 @@
+slug: elderberry-prevents-and-reduces-influenza-symptoms
+statement: Elderberry (Sambucus nigra, 500 mg daily) is rich in antioxidants and vitamin
+  C, and has been used extensively in the prevention of influenza and treatment of
+  upper respiratory symptoms.
+evidence_tier: plausible_emerging
+rationale: Hawkins et al. 2019 (Complement Ther Med) meta-analysis of RCTs supports
+  elderberry for reducing upper respiratory symptom duration and severity. Antiviral
+  mechanisms are plausible but COVID-19-specific evidence is very limited.
+coaching_translation: Elderberry is a well-known natural remedy for colds and flu.
+  Research supports it can reduce how long and how severely you feel sick. It's safe
+  and widely available.
+caveats:
+- COVID-19-specific evidence is limited.
+- Theoretically, elderberry's cytokine-stimulating effects could be concerning in
+  cytokine storm conditions — consult clinician for active severe COVID-19.
+linked_to_topics:
+- immune-support-covid-19
+linked_to_supplements:
+- elderberry
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Elderberry is packed with vitamin C, dietary fiber, and antioxidants. It
+    has been used extensively in the prevention of influenza.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,47 @@
+slug: liver-detox-food-plan
+display_name: Liver Detox Food Plan
+aliases:
+- detox food plan
+- metabolic detox diet
+- FM detox diet
+summary: A functional medicine dietary framework designed to support liver, gut, and
+  kidney detoxification pathways through high-quality protein, phytonutrient-dense
+  plant foods, organic/clean foods, adequate fiber (>35g/day), and targeted antioxidants.
+  Distinct from a short-term elimination diet in that it emphasizes long-term nutritional
+  support.
+common_symptoms:
+- fatigue
+- weight-gain
+- brain-fog
+- pain
+- poor-sleep
+- mood-disorders
+red_flags:
+- persistent jaundice
+- unexplained rapid weight loss
+- signs of liver disease
+related_topics:
+- metabolic-detoxification
+- elimination-diet
+- gut-liver-axis
+key_mechanisms:
+- phase-i-cytochrome-p450
+- phase-ii-conjugation
+- gut-liver-axis
+coaching_scope_notes: Coaches can guide food selection, organic purchasing, fiber
+  intake, hydration, and avoidance of common allergens and toxin-laden foods. Calorie
+  prescription and supplement dosing require clinician involvement.
+clinician_scope_notes: Clinician may individualize calorie targets for blood sugar,
+  weight loss, or body composition goals. Supplement and medical food powder protocols
+  require prescriber oversight.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Detox Food Plan — Sequencing a Detoxification Program
+  quote: The Detox Food Plan, more than any other food plan within the Functional
+    Medicine Food Suites, is designed to support not just the gut but the liver. The
+    liver is the hub of detoxification processes.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

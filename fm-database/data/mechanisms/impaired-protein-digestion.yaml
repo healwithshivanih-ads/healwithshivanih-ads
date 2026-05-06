@@ -1,0 +1,32 @@
+slug: impaired-protein-digestion
+display_name: Impaired Protein Digestion via Pepsinogen Activation Failure
+aliases:
+- pepsin deficiency
+- pepsinogen conversion failure
+category: gut
+summary: In the presence of adequate HCl, the proenzyme pepsinogen is converted to
+  the active protease pepsin, which hydrolyses dietary proteins. When HCl is insufficient,
+  this conversion is impaired, leading to incomplete protein breakdown, amino acid
+  malabsorption, and downstream nutritional deficiencies.
+upstream_drivers:
+- reduced-hcl-production
+downstream_effects:
+- mineral-malabsorption
+- nutrient-deficiency
+- food-sensitivities
+related_mechanisms:
+- reduced-hcl-production
+- bile-acid-insufficiency
+linked_to_topics:
+- hypochlorhydria
+- digestive-enzyme-insufficiency
+evidence_tier: strong
+sources:
+- id: coconote-fm-hypochlorhydria
+  location: Functions of Gastric Acid
+  quote: Gastric acid helps in the conversion of pepsinogen to absinthe, which is
+    an important component for hydrolysis of protein.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,29 @@
+slug: omega-3-deficiency-drives-mucosal-breakdown
+statement: Chronic deficiency in omega-3 fatty acids compromises the structural integrity
+  of the intestinal mucous membrane, contributing to increased intestinal permeability.
+evidence_tier: plausible_emerging
+rationale: Omega-3 fatty acids are structurally important for cell membrane integrity
+  and have anti-inflammatory effects relevant to gut barrier function. Evidence is
+  mechanistically plausible; specific RCTs in intestinal permeability are limited.
+coaching_translation: Not getting enough omega-3 fats can weaken your gut lining over
+  time. Including oily fish or a quality omega-3 supplement can help maintain gut
+  barrier integrity.
+caveats:
+- Source is expert lecture; specific omega-3 dose for gut permeability repair should
+  be confirmed with clinician.
+linked_to_topics:
+- intestinal-permeability
+linked_to_supplements:
+- omega-3-fatty-acids
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-intestinal-permeability-anish
+  location: Nutritional Drivers of Intestinal Permeability
+  quote: Just think about if somebody is having a chronic deficiency of protein or
+    omega-3 deficiency, vitamin deficiency, zinc deficiency because these are the
+    nutrients required to integrate this mucous membrane.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

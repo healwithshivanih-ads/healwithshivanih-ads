@@ -1,0 +1,36 @@
+slug: low-stomach-acid
+display_name: Low Stomach Acid (Hypochlorhydria)
+aliases:
+- hypochlorhydria
+- low gastric acid
+- reduced HCl
+category: gut
+summary: Low stomach acid is a source and driver of gut dysbiosis, as inadequate acid
+  fails to sterilize ingested pathogens and food, creating a favorable environment
+  for microbial overgrowth and reinfection. Betaine HCl or apple cider vinegar may
+  be used to restore gastric acid levels.
+upstream_drivers:
+- chronic-stress
+- proton-pump-inhibitor-use
+- aging
+downstream_effects:
+- gut-dysbiosis-microbiome-imbalance
+- impaired-protein-digestion
+- pathogen-overgrowth
+related_mechanisms:
+- gut-dysbiosis-microbiome-imbalance
+- impaired-pancreatic-function
+linked_to_topics:
+- gut-dysbiosis
+- sibo
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Replace / Reinfection Source Section
+  quote: it may be a patient having a low stomach acid, so you can consider giving
+    them betaine ester or episode of vinegar, or you can consider them giving some
+    betel, it can increase your stomach acid.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

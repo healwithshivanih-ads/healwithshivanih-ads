@@ -1,0 +1,40 @@
+slug: hcl-and-pepsin-protein-digestion
+display_name: Hydrochloric Acid & Pepsin Protein Digestion
+aliases:
+- gastric acid digestion
+- pepsinogen activation
+- stomach acid
+category: gut
+summary: The stomach is the only acid environment in the GI tract. Parietal cells
+  release hydrochloric acid, which activates pepsinogen to form pepsin — the enzyme
+  that breaks down protein. Adequate stomach acid is essential for protein breakdown;
+  insufficient acid (not excess) is proposed as the common clinical problem. Long-term
+  antacid use impairs protein digestion and may allow partially digested proteins
+  to reach the colon, fuelling pathogenic bacterial overgrowth.
+upstream_drivers:
+- meal-size
+- stress
+- fluid-intake-with-meals
+- meal-timing
+downstream_effects:
+- protein-malabsorption
+- colonic-bacterial-overgrowth
+- cardiac-sphincter-weakness
+related_mechanisms:
+- cardiac-sphincter-weakness
+- pyloric-sphincter-regulation
+- pancreatic-enzyme-function
+linked_to_topics:
+- gastrointestinal-tract-overview
+- acid-reflux-and-cardiac-sphincter-weakness
+- meal-timing-and-digestive-rest
+evidence_tier: strong
+sources:
+- id: barbara-oneil-gi-tract
+  location: Stomach & Acid Section
+  quote: Pepsin is the enzyme that breaks down protein... I have never met anyone
+    with too much acid in their stomach, but I have met many with not enough.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

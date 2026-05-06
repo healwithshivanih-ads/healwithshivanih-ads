@@ -1,0 +1,35 @@
+slug: immune-activation-by-mycotoxins
+display_name: Immune Activation by Mycotoxins
+aliases:
+- mold immune response
+- mycotoxin immune burden
+category: immune
+summary: Mycotoxins (e.g., aflatoxin, aspergillus-derived toxins) trigger immune activation
+  ranging from mild allergic responses (itching, watery eyes, fatigue) to severe systemic
+  reactions. Aflatoxin is carcinogenic. Molds in foods and environments add to the
+  endogenous toxin burden processed by the liver.
+upstream_drivers:
+- mold-contaminated-food-intake
+- indoor-mold-exposure
+downstream_effects:
+- allergic-symptoms
+- fatigue
+- increased-liver-toxin-burden
+- potential-carcinogenesis
+related_mechanisms:
+- phase-i-cytochrome-p450
+- phase-ii-conjugation
+linked_to_topics:
+- mold-mycotoxin-exposure
+- environmental-toxin-exposure
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Foods Rich in Mold Protein Allergens
+  quote: Molds and mycotoxins can cause adverse symptoms ranging from mild to severe,
+    depending on the person. Some common symptoms include itching, watery eyes, fatigue,
+    and breathing difficulty.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

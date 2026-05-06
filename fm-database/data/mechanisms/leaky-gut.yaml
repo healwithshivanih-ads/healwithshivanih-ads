@@ -1,25 +1,24 @@
 slug: leaky-gut
 display_name: Leaky Gut (Intestinal Hyperpermeability)
 aliases:
-- intestinal-permeability
 - leaky-gut-intestinal-hyperpermeability
 - gut-barrier-permeability
 - gut-barrier-integrity
 - tight-junction-disruption
 - estrogen-driven-gut-barrier-integrity
 - mucin-layer-support
-- intestinal-hyperpermeability
 - increased gut permeability
 - intestinal permeability
 - gut barrier dysfunction
 - LPS translocation
 - intestinal hyperpermeability
 - tight junction disruption
+- increased intestinal permeability
+- permeable gut lining
 category: gut
-summary: Increased permeability of the intestinal epithelial lining, allowing undigested
-  food particles, toxins, and pathogens to enter the bloodstream and trigger systemic
-  inflammation. Associated with autoimmune diseases, food sensitivities, and skin
-  conditions.
+summary: Disrupted gut flora leads to poorly nourished gut-lining cells that fail
+  to maintain barrier integrity, permitting large molecules (including opioid peptides)
+  to pass into the bloodstream rather than being neutralised at the gut wall.
 upstream_drivers:
 - dysbiosis (loss of beneficial species)
 - chronic stress / cortisol elevation
@@ -50,6 +49,12 @@ upstream_drivers:
 - infections
 - environmental-toxins
 - hypochlorhydria-mechanism
+- dietary-triggers-gluten-dairy
+- nutrient-deficiencies
+- food-antigens
+- gram-negative-dysbiosis
+- gut-microbiome-dysbiosis
+- antibiotic-use
 downstream_effects:
 - food sensitivities
 - autoimmune flare risk
@@ -74,6 +79,16 @@ downstream_effects:
 - thyroid-autoimmunity
 - nutrient-malabsorption
 - chronic-immune-activation
+- endotoxemia
+- cytokine-signaling
+- bloating
+- mood-dysregulation
+- systemic-immune-activation
+- autoimmune-thyroid-attack
+- lps-mediated-immune-activation
+- food-sensitivity-reactions
+- opioid-peptide-absorption
+- psychiatric-symptoms
 related_mechanisms:
 - hpa-axis-dysregulation
 - microbial-diversity-decline
@@ -92,6 +107,13 @@ related_mechanisms:
 - molecular-mimicry
 - autoimmune-thyroid-attack
 - hypochlorhydria-mechanism
+- neuroinflammation
+- vagal-tone-reduction
+- chronic-systemic-inflammation
+- lps-mediated-immune-activation
+- gut-immune-axis-dysregulation
+- gut-microbiome-dysbiosis
+- opioid-peptide-absorption
 linked_to_topics:
 - autoimmune
 - inflammation
@@ -116,6 +138,9 @@ linked_to_topics:
 - hashimotos-hypothyroidism
 - gut-dysfunction
 - gut-microbiome
+- nervous-system-regulation
+- 5r-gut-restoration
+- gut-brain-connection
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Gut & Inflammation sections
@@ -155,8 +180,20 @@ sources:
   quote: GI issues may underlie chronic health problems that seem unrelated to digestive
     health, including autoimmune diseases such as rheumatoid arthritis and type 1
     diabetes, skin problems such as eczema and acne rosacea.
+- id: vitaone-health-coaching-toolkit
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: Stress hormones alter microbiome diversity, ↑ intestinal permeability ('leaky
+    gut').
+- id: coconote-fm-approach-inflammation
+  location: Gut Dysbiosis – LPS and Gut Barrier
+  quote: even without destruction of your blood lining, you can see without liquid,
+    this LPS can travel from the intestine to the bloodstream.
+- id: barbara-oneil-healing-mind
+  location: Gut-Brain Connection Section
+  quote: this cell here, because it hasn't got the nourishment of gut flora, is unable
+    to knock off the morphine. So glutomorphine and caseomorphine get into the blood.
 evidence_tier: plausible_emerging
-version: 9
+version: 14
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

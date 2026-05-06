@@ -1,0 +1,33 @@
+slug: dysbiosis-protocol-must-be-individualized-by-microbiome-pattern
+statement: Gut dysbiosis protocols must be individualized for each patient based on
+  their specific microbiome pattern (deficiency, overgrowth, or imbalanced ratio),
+  as a single universal protocol is not appropriate.
+evidence_tier: plausible_emerging
+rationale: The lecturer describes four distinct microbiome patterns with different
+  therapeutic implications — demonstrating that a one-size-fits-all approach risks
+  worsening symptoms (e.g., giving probiotics in overgrowth). This reflects FM's core
+  individualized approach, supported by emerging microbiome science.
+coaching_translation: Every client's gut is different. The right protocol depends
+  on their test results and clinical pattern — always defer to the clinician for protocol
+  design.
+caveats:
+- Source is expert lecture, moderate quality.
+- Pattern identification requires GI-MAP or equivalent testing — clinician scope.
+- Coaches can support protocol adherence and lifestyle components.
+linked_to_topics:
+- gut-dysbiosis
+- sibo
+- candida-overgrowth
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: 5R Protocol / Removal Section
+  quote: we have to consider customizing the gut protocol for each and every patient...
+    depending upon patient condition depending on the microbiome results or depending
+    on the eligibility of treatment options you can customize your patient
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

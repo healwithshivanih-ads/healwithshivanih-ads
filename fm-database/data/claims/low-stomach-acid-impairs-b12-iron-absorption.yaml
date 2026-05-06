@@ -1,0 +1,31 @@
+slug: low-stomach-acid-impairs-b12-iron-absorption
+statement: Low stomach acid (hypochlorhydria) impairs absorption of iron and vitamin
+  B12, contributing to deficiency-driven fatigue even in people eating a healthy diet.
+evidence_tier: plausible_emerging
+rationale: Stomach acid is required for releasing B12 from food protein and for converting
+  iron to its absorbable ferrous form. This is biologically well-established, though
+  the prevalence of hypochlorhydria as a primary driver of deficiency is not fully
+  characterised in RCTs.
+coaching_translation: Your client may be eating well but still deficient — because
+  if stomach acid is low, nutrients can't be absorbed properly. This is often behind
+  persistent fatigue that doesn't respond to dietary changes alone.
+caveats:
+- Hypochlorhydria diagnosis requires clinical confirmation.
+- Baking soda test is an informal screening tool only, not a diagnostic standard.
+linked_to_topics:
+- low-stomach-acid
+- chronic-pain-and-fatigue
+linked_to_supplements:
+- vitamin-b12
+- iron-supplement
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-chronic-pain-fatigue
+  location: Low Stomach Acid Section
+  quote: If they don't have Asthma Cacid then they will be low in iron and they will
+    be really low in B12 even if they are eating a healthy diet.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

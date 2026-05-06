@@ -1,0 +1,31 @@
+slug: elimination-diet-reduces-extracellular-water
+statement: Rapid weight loss during a comprehensive elimination diet often reflects
+  reduction of inflammatory extracellular water caused by food-triggered inflammation.
+evidence_tier: fm_specific_thin
+rationale: The mechanism is biologically plausible (resolution of food-driven inflammation
+  → reduced ECW), and clinically observed in FM practice, but direct peer-reviewed
+  evidence specifically linking elimination diet to BIA-measured ECW reduction is
+  limited.
+coaching_translation: When clients drop weight fast on an elimination diet, it's often
+  not just fat — it's also water that their body was holding onto because of inflammation
+  caused by certain foods.
+caveats:
+- Source is expert consensus lecture. The specific mechanism linking food elimination
+  to BIA-measured ECW reduction lacks robust primary literature support.
+linked_to_topics:
+- bioelectrical-impedance-analysis
+- autoimmunity-triad
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-body-composition-bmi
+  location: BIA / Elimination Diet Section
+  quote: When you do put somebody on a comprehensive elimination diet, and if they
+    drop a lot of weight quickly, one of the reasons that's happening is because they're
+    dropping a lot of that extracellular water that they were holding onto because
+    of the inflammation from the foods that they were eating.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

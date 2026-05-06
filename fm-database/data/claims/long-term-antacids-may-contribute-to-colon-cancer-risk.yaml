@@ -1,0 +1,30 @@
+slug: long-term-antacids-may-contribute-to-colon-cancer-risk
+statement: Long-term antacid medication (e.g. proton pump inhibitors such as Nexium)
+  may contribute to colon cancer risk by preventing proper protein breakdown, leading
+  to partially digested proteins reaching the colon and driving pathogenic bacterial
+  overgrowth.
+evidence_tier: plausible_emerging
+rationale: There is emerging epidemiological research associating long-term PPI use
+  with increased colorectal cancer risk, and the mechanistic pathway via protein maldigestion
+  and colonic dysbiosis is biologically plausible. This is not established consensus.
+out_of_scope_notes: Assessment of cancer risk and PPI tapering are clinician scope.
+caveats:
+- This is a plausible mechanistic hypothesis, not established consensus.
+- Clients should not discontinue PPIs without clinician guidance.
+- Source is a practitioner talk, not a systematic review.
+linked_to_topics:
+- acid-reflux-and-cardiac-sphincter-weakness
+- gastrointestinal-tract-overview
+coaching_translation: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-gi-tract
+  location: Antacid & Colon Risk Section
+  quote: Research is now showing that long-term antacid medication, probably one of
+    the most common is Nexium, eventually can contribute to colon cancer because the
+    food is not getting broken down properly.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,28 @@
+slug: resistance-to-mindfulness-practices
+display_name: Resistance to Mindfulness Practices
+aliases:
+- won't meditate
+- breathing exercises don't work
+- can't sit still
+- mindfulness avoidance
+category: neurological
+severity: common
+description: Client actively avoids or is unable to engage with standard mindfulness
+  interventions (breath work, guided meditation, body scan). May be due to anxiety
+  amplification through interoception, identity mismatch, or simply never having been
+  still.
+when_to_refer: Consider referral if resistance is rooted in trauma or severe anxiety;
+  trauma-informed care may be needed before mindfulness techniques are appropriate.
+linked_to_topics:
+- stress-and-the-sympathetic-nervous-system
+linked_to_mechanisms:
+- sympathetic-nervous-system-activation
+sources:
+- id: ask-expert-coaching-stress-kids
+  location: Stress Client Topic Discussion
+  quote: I know from experience, some people don't like to do breathing exercises
+    or things like that because it actually increases anxiety.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

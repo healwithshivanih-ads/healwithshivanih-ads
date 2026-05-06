@@ -1,0 +1,40 @@
+slug: depression-can-reflect-nutrient-related-biochemistry
+statement: Depression can be a biochemical signal of unmet nutritional needs affecting
+  neurotransmitter synthesis, mitochondrial function, and inflammation.
+evidence_tier: fm_specific_thin
+rationale: The nutritional-depression framing is plausible and increasingly researched
+  but not yet consensus clinical guidance; source is a FM practitioner cheatsheet.
+coaching_translation: When clients report low mood, explore nutritional foundations
+  (B12, folate, omega-3, magnesium) alongside lifestyle factors, and encourage clinician
+  assessment for clinical depression.
+caveats:
+- Source is a practitioner cheatsheet without primary citations.
+- This framing must not replace or delay appropriate mental health care.
+- Depression is a clinical diagnosis requiring mental health professional involvement.
+- Source is practitioner cheatsheet.
+- Clinical depression must be managed by a licensed mental health or medical professional.
+- This framing complements, not replaces, conventional mental health care.
+linked_to_topics:
+- depression-like-symptoms
+- nutrition-deficiency
+- chronic-inflammation
+linked_to_supplements:
+- vitamin-b12
+- folate
+- omega-3
+- magnesium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 23
+  quote: The source states that depression can be a biochemical signal of unmet nutritional
+    needs affecting neurotransmitter synthesis, mitochondrial function, and inflammation.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 23
+  quote: The source states that depression can be a biochemical signal of unmet nutritional
+    needs affecting neurotransmitter synthesis, mitochondrial function, and inflammation.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

@@ -1,0 +1,31 @@
+slug: vaginal-birth-seeds-gut-with-colonic-microbiota
+statement: During vaginal birth, the proximity of the birth canal to the anus means
+  the baby's first breath takes in colonic microbiota, seeding the gut. Caesarean-section
+  babies receive skin flora instead, resulting in a less optimal initial gut microbiome.
+evidence_tier: plausible_emerging
+rationale: This is a recognised and increasingly researched area of microbiome science.
+  Studies (e.g. Dominguez-Bello et al.) have confirmed differences in microbiome composition
+  between vaginally and caesarean-born infants. The mechanism described is plausible
+  though simplified.
+coaching_translation: Babies born by caesarean section may benefit from additional
+  probiotic support in early life due to differences in initial gut flora seeding
+  at birth. Discuss with a paediatric clinician.
+out_of_scope_notes: Birth method decisions and neonatal probiotic prescribing are
+  clinician and midwife scope.
+caveats:
+- Mechanism is simplified; microbiome transfer in vaginal birth is multifactorial.
+- Coaching implications for caesarean-born infants should be discussed with a clinician.
+- Source is a practitioner talk.
+linked_to_topics:
+- gut-microbiome-and-gut-flora
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-gi-tract
+  location: Microbiome Colonisation Section
+  quote: Babies born via caesarean section have more skin flora in their gut than
+    gut flora because their first breaths, there's no colon next door.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

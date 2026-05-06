@@ -22,10 +22,21 @@ aliases:
 - IRS-1 pathway dysfunction
 - GLUT-4 translocation failure
 - tissue insulin unresponsiveness
+- lowered insulin sensitivity
+- tissue insulin resistance
+- metabolic insulin dysfunction
+- metabolic syndrome pathway
+- glucose intolerance
+- Syndrome X
+- cellular insulin resistance
+- carbohydrate metabolic dysfunction
+- pre-diabetes metabolic pattern
+- insulin dysregulation
 category: metabolic
-summary: Reduced cellular response to insulin leading to elevated blood glucose and
-  compensatory hyperinsulinemia. Intermittent fasting protocols and low-glycemic diets
-  may improve insulin sensitivity.
+summary: Reduced cellular sensitivity to insulin, driven by excess refined carbohydrate
+  intake, sedentary behaviour, visceral adiposity, and chronic inflammation. Central
+  driver of T2D, PCOS, NAFLD, and atherogenic dyslipidaemia. TG:HDL ratio and fasting
+  insulin are early detection markers.
 upstream_drivers:
 - chronic carbohydrate excess (especially refined)
 - sedentary lifestyle (reduced muscle glucose disposal)
@@ -70,6 +81,23 @@ upstream_drivers:
 - excess caloric intake
 - physical inactivity
 - chronic inflammation
+- cortisol-dhea-imbalance
+- chronic-psychological-stress
+- westernized-diet
+- elevated-fibrinogen
+- refined-carbohydrate-intake
+- excessive-sugar-consumption
+- chronic-systemic-inflammation
+- sedentary-behaviour
+- poor-dietary-quality
+- excess-dietary-carbohydrates
+- standard-american-diet
+- environmental-toxin-exposure
+- nutritional-deficiencies
+- toxic-overload
+- high-sugar-diet
+- central-adiposity-inflammation
+- refined-carbohydrate-excess
 downstream_effects:
 - elevated triglycerides, low HDL (TG:HDL > 2-3)
 - small dense LDL
@@ -123,6 +151,24 @@ downstream_effects:
 - elevated triglycerides
 - type 2 diabetes risk
 - metabolic syndrome
+- hyperglycemia
+- type-2-diabetes-risk
+- weight-gain-abdomen
+- atheromatous-vascular-disease
+- chronic-inflammation
+- elevated-blood-glucose
+- cardiovascular-disease-risk
+- elevated-vldl
+- elevated-hba1c
+- cardiovascular-disease
+- estrogen-dominance
+- obesity
+- aromatase-upregulation
+- small-dense-ldl-atherogenesis
+- elevated-fasting-glucose
+- small-dense-ldl-endothelial-penetration
+- atherogenic-dyslipidaemia
+- belly-fat
 related_mechanisms:
 - hpa-axis-dysregulation
 - chronic-inflammation
@@ -145,6 +191,23 @@ related_mechanisms:
 - hepatic-estrogen-detoxification
 - shbg-hormone-binding
 - atherosclerosis
+- cortisol-dhea-imbalance
+- hepatic-glucose-production
+- atheromatous-vascular-disease
+- oxidative-stress-and-ages
+- nlrp3-inflammasome-activation
+- chronic-systemic-inflammation
+- vldl-overproduction-from-excess-carbs
+- oxidative-stress-vascular
+- excess-cortisol
+- aromatase-upregulation
+- belly-fat-adipose-estrogen
+- central-adiposity-inflammation
+- small-dense-ldl-atherogenesis
+- small-dense-ldl-endothelial-penetration
+- inflammatory-cascade
+- apob-atherogenic-particle-burden
+- hepatic-fat-accumulation
 linked_to_topics:
 - pcos
 - perimenopause
@@ -170,6 +233,21 @@ linked_to_topics:
 - drug-induced-nutrient-depletion
 - cardiometabolic-health
 - intermittent-fasting
+- hypercortisolism
+- chronic-stress
+- hypertension
+- anti-inflammatory-diet
+- cardiometabolic-diet
+- cardiovascular-risk-assessment
+- visceral-adiposity
+- body-composition-assessment
+- cardiovascular-disease-prevention
+- dyslipidemia-management
+- metabolic-health-lchf
+- cardiovascular-lipid-pattern-recognition
+- pcos-fertility
+- insulin-resistance-metabolic-syndrome
+- modern-diet-systemic-dysfunction
 sources:
 - id: vitaone-evidence-tiers
   location: TOPIC 2 Insulin Resistance & Diabetes
@@ -228,8 +306,37 @@ sources:
   quote: Shorter-duration human & animal studies show that fasting may be beneficial
     for insulin resistance, blood sugar, blood pressure, inflammation, short-term
     weight loss, and brain health.
+- id: vitaone-health-coaching-toolkit
+  location: Hypercortisolism
+  quote: Lowered insulin sensitivity, with a higher susceptibility to diabetes.
+- id: vitaone-cvs-risk-assessment
+  location: Cholesterol is NOT the villain (Slide 13)
+  quote: Excess insulin (Syndrome X)
+- id: coconote-fm-body-composition-bmi
+  location: Metabolic Dysfunction Section
+  quote: Are there some persistent or organic pollutants or bisphenol A that may be
+    triggering this insulin resistance? Or is it really just that crummy standard
+    American diet that's low in nutrients and high in calories that's triggering their
+    insulin resistance.
+- id: coconote-fm-estrogen-dominance
+  location: How Does Inflammation Relate to Estrogen / Insulin Resistance Physiology
+  quote: Insulin is responsible for forming estrogen. So insulin resistance can cause
+    estrogen dominance. The insulin buildup actually upregulates the aromatase activity.
+    So it forms more estrogen.
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Mediterranean Diet Evidence
+  quote: Reduced markers of inflammation with the Mediterranean diet, CRP, interleukin-6,
+    interleukin-7, interleukin-18, decreased insulin resistance.
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: 'Case discussion: insulin resistance and dyslipidemia'
+  quote: Classically you can see, his glycemic level is high and his STL level is
+    high... This patient is having insulin resistance. So, what you will do, you will
+    start working on insulin resistance.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DX1jE67jI4m/
+  quote: Insulin resistance is the primary driver in most metabolic diseases
 evidence_tier: strong
-version: 14
+version: 25
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

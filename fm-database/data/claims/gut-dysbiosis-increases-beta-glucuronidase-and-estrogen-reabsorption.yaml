@@ -1,0 +1,32 @@
+slug: gut-dysbiosis-increases-beta-glucuronidase-and-estrogen-reabsorption
+statement: Gut dysbiosis elevates beta-glucuronidase activity, which deconjugates
+  excreted estrogen in the gut, causing it to be reabsorbed into the bloodstream and
+  raising circulating estrogen levels.
+evidence_tier: plausible_emerging
+rationale: The estrobolome and beta-glucuronidase role in estrogen recirculation is
+  a growing area of evidence with mechanistic plausibility and early supporting research.
+  80–90% of estrogen excretion via the gut is a cited statistic in FM and endocrinology
+  literature.
+coaching_translation: If your gut bacteria are out of balance, an enzyme called beta-glucuronidase
+  can 'unlock' estrogen that your liver already packaged for excretion — sending it
+  back into your bloodstream. This is why gut health is central to hormone balance.
+caveats:
+- RCT-level evidence for clinical interventions targeting estrobolome is still emerging.
+- Source is FM lecture; beta-glucuronidase testing via GI-MAP is clinician-ordered.
+linked_to_topics:
+- gut-dysbiosis-estrogen
+- estrogen-dominance
+linked_to_supplements:
+- probiotics
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-estrogen-dominance
+  location: Causes of Estrogen Dominance
+  quote: Beta-glucuronidase is responsible for the reabsorption of estrogen again
+    into the bloodstream. So patients having gut dysfunctions can also have hormone
+    dysfunctions.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -17,16 +17,21 @@ typical_dose_range:
 timing_options:
 - morning
 - with_breakfast
+- with_dinner
 take_with_food: optional
 linked_to_topics:
 - immune-support
+- immune-support-covid-19
 linked_to_claims:
 - elderberry-reduces-upper-respiratory-symptoms
-notes_for_coach: Best evidence for reducing duration of upper respiratory infections.
-  Meta-analysis cited (Hawkins et al. 2019). Generally well-tolerated. COVID-19 specific
-  evidence was not established at time of publication.
-notes_for_client: Elderberry has the best evidence among herbs for reducing cold and
-  flu duration. It's generally safe at standard doses.
+- elderberry-prevents-and-reduces-influenza-symptoms
+notes_for_coach: Elderberry has the best evidence base of the botanicals in this toolkit
+  for upper respiratory symptoms (Hawkins 2019 meta-analysis). Safe for most adults
+  and children. Caution in severe COVID-19 due to theoretical cytokine-stimulating
+  effects. Standardized extracts preferred.
+notes_for_client: Elderberry is a safe and well-researched natural remedy for cold
+  and flu symptoms. It works best when taken at the start of illness. Available as
+  syrup, capsules, or gummies.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -34,7 +39,11 @@ sources:
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
   quote: Elderberry is packed with vitamin C, dietary fiber, and antioxidants. It
     has been used extensively in the prevention of influenza.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Elderberry is packed with vitamin C, dietary fiber, and antioxidants. It
+    has been used extensively in the prevention of influenza.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

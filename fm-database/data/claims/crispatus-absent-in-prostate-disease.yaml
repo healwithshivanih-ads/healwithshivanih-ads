@@ -1,0 +1,33 @@
+slug: crispatus-absent-in-prostate-disease
+statement: Men with prostate disease (prostatitis, BPH, or prostate cancer) consistently
+  lack Lactobacillus crispatus, while men with healthy prostates have it—suggesting
+  a potential microbiome link.
+evidence_tier: fm_specific_thin
+rationale: Dr. Davis observes a consistent association between crispatus absence and
+  prostate disease, and notes that ~90% of men with prostate disease have SIBO. He
+  acknowledges this is correlational, not proven causal. This is a novel observation
+  outside mainstream urology.
+coaching_translation: Early findings suggest that men with prostate problems are missing
+  the same beneficial bacteria (L. crispatus) that supports women's vaginal health—pointing
+  to a potential gut-prostate microbiome connection.
+caveats:
+- Explicitly described as correlational by Dr. Davis.
+- Source is expert_consensus interview.
+- No specific studies cited.
+- Prostate disease management requires urological supervision.
+linked_to_topics:
+- gut-microbiome
+linked_to_supplements:
+- lactobacillus-crispatus-probiotic
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Crispatus and prostate health discussion
+  quote: A guy with prostate disease in any form doesn't have crispatus. Men who have
+    healthy prostates have crispatus. Now, that doesn't tell us it's cause and effect,
+    but it sure sounds like it.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

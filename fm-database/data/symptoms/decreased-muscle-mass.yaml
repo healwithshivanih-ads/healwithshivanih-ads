@@ -4,23 +4,30 @@ aliases:
 - muscle wasting
 - sarcopenia
 - loss of muscle
+- loss of muscle tone
 category: musculoskeletal
 severity: common
-description: Reduction in skeletal muscle mass, associated with low free testosterone
-  secondary to high SHBG.
+description: Loss of muscle mass associated with low free testosterone from elevated
+  SHBG binding.
 linked_to_topics:
 - sex-hormone-binding-globulin
 - testosterone-health
 linked_to_mechanisms:
 - shbg-hormone-binding
-when_to_refer: ''
+when_to_refer: If accompanied by significant weight loss or weakness; refer for lab
+  evaluation.
 sources:
 - id: vitaone-sex-hormones-toolkit
   location: Sex Hormone Binding Globulin (SHBG) — Page 01
   quote: This can cause symptoms associated with testosterone deficiency, including
     fatigue, decreased libido, weight gain, mood changes, decreased muscle mass, and
     decreased bone mineral density.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Sex Hormone Binding Globulin (SHBG)
+  quote: This can cause symptoms associated with testosterone deficiency, including
+    fatigue, decreased libido, weight gain, mood changes, decreased muscle mass, and
+    decreased bone mineral density.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

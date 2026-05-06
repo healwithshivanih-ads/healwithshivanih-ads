@@ -1,0 +1,35 @@
+slug: histamine-enzyme-inhibition
+display_name: Histamine Enzyme Inhibition (DAO / HNMT)
+aliases:
+- DAO deficiency
+- diamine oxidase inhibition
+- histamine degradation impairment
+category: immune
+summary: Certain foods inhibit diamine oxidase (DAO) or histamine N-methyltransferase
+  (HNMT), the enzymes responsible for breaking down histamine. This raises histamine
+  load, triggering allergy-like symptoms even without IgE-mediated allergy.
+upstream_drivers:
+- alcohol
+- aged-fermented-foods
+- leftover-protein-rich-foods
+downstream_effects:
+- skin-flushing-hives
+- headache
+- diarrhea
+- palpitations
+- menstrual-pain
+related_mechanisms:
+- mast-cell-activation
+linked_to_topics:
+- histamine-intolerance
+- elimination-diet
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Histamine Food Triggers
+  quote: A food may contribute to an individual's histamine load by containing histamine,
+    releasing histamine, or inhibiting enzymes that break down histamine in the body.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,26 @@
+slug: fecal-elastase-test-diagnoses-pancreatic-insufficiency
+statement: The fecal elastase-1 test is used to diagnose exocrine pancreatic insufficiency.
+evidence_tier: strong
+rationale: The fecal elastase-1 test is a well-validated, non-invasive diagnostic
+  test for EPI recognised in clinical gastroenterology guidelines.
+coaching_translation: If pancreatic insufficiency is suspected, a clinician may order
+  a fecal elastase test — a stool test that measures how well the pancreas is producing
+  enzymes. This is a clinical test, not something coaches order.
+out_of_scope_notes: Ordering, interpreting, and acting on fecal elastase test results
+  is strictly clinician scope. Coaches should refer clients with suspected EPI.
+linked_to_topics:
+- pancreatic-insufficiency
+caveats:
+- The lecture refers to this as 'E. coli Elasticity Test' — this appears to be a transcription/pronunciation
+  artefact for 'fecal elastase-1 test'. Source is expert consensus lecture.
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-pancreatic-insufficiency
+  location: Diagnosis
+  quote: For diagnosis of pancreatic insufficiency, we carry out a test called E.
+    coli Elasticity Test.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

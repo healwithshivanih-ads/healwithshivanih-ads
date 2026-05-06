@@ -1,0 +1,37 @@
+slug: maternal-mental-health-and-fetal-environment
+display_name: Maternal Mental Health & Fetal Environment
+aliases:
+- prenatal maternal stress
+- in-utero psychological exposure
+- intergenerational mental health transmission
+summary: Maternal psychological states — including anxiety, depression, unresolved
+  grief, and psychiatric illness — during pregnancy are proposed to influence fetal
+  development and the infant's predisposition to emotional and psychological patterns,
+  including intergenerational transmission of conditions such as schizophrenia.
+common_symptoms: []
+red_flags:
+- schizophrenia-or-psychosis-symptoms
+- postpartum-psychosis
+related_topics:
+- womb-imprinting-and-prenatal-experience
+- birth-trauma
+key_mechanisms:
+- prenatal-cortisol-adrenaline-exposure
+- nervous-system-imprinting
+coaching_scope_notes: Coaches should not engage with psychiatric diagnosis or transmission
+  of schizophrenia. Emotional health support and referral pathways are appropriate.
+clinician_scope_notes: Prenatal maternal stress has documented effects on fetal HPA
+  programming. Claims about schizophrenia transmission via in-utero 'subconscious
+  sharing' are not supported by peer-reviewed evidence and should not be communicated
+  to clients.
+evidence_tier: fm_specific_thin
+sources:
+- id: family-constellation-healing-womb
+  location: Schizophrenia discussion section
+  quote: When the mother already had schizophrenia, maybe it was but diagnosed yet,
+    maybe it was laying in the subconscious. Because we are laying in the subconscious
+    of our mother, then we are carrying it as well.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,29 @@
+slug: pernicious-anemia-causes-b12-deficiency-via-intrinsic-factor-loss
+statement: Pernicious anemia is an autoimmune condition in which immune cells attack
+  gastric parietal cells, abolishing intrinsic factor and HCl production and thereby
+  blocking vitamin B12 absorption.
+evidence_tier: strong
+rationale: Pernicious anemia as an autoimmune gastritis causing intrinsic factor deficiency
+  and B12 malabsorption is well-established medical knowledge, accurately described
+  in the document.
+coaching_translation: Clients with pernicious anemia cannot absorb B12 through the
+  normal GI route — they require medical management (e.g. B12 injections). This is
+  outside coaching scope.
+out_of_scope_notes: Diagnosis and treatment of pernicious anemia (including B12 injection
+  protocols) is clinical.
+caveats: []
+linked_to_topics:
+- vitamin-b12
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: B12 Deficiency Causes section
+  quote: Pernicious anemia is actually an autoimmune condition in which your immune
+    cells would attack your own vital sense. So what happens is that when it attacks
+    the old parietal cells, it becomes non-functional and the production of HCL and
+    intrinsic factor is actually stopped.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

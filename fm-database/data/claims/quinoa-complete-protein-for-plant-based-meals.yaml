@@ -1,0 +1,27 @@
+slug: quinoa-complete-protein-for-plant-based-meals
+statement: Quinoa is a complete protein source (containing all essential amino acids)
+  suitable for replacing refined carbohydrates in cardiometabolic meal plans, particularly
+  for vegetarians.
+evidence_tier: strong
+rationale: Quinoa appears in Quinoa Upma, Quinoa-Flax Roti, Quinoa-Masoor Dal Khichdi,
+  and as a serving base for fish. Quinoa's complete amino acid profile and lower glycaemic
+  index compared to white rice are well established in the literature.
+coaching_translation: Quinoa is one of the few plant foods that contains all the essential
+  amino acids your body needs — it's a great grain swap that also provides protein.
+caveats:
+- Evidence for quinoa as a complete protein is strong; specific cardiometabolic outcome
+  data from RCTs are more limited.
+linked_to_topics:
+- millet-and-ancient-grain-substitution
+- cardiometabolic-diet
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-cardiometabolic-recipes
+  location: Quinoa Upma
+  quote: 1 cup Quinoa … Soak 1 cup of Quinoa overnight or at least for 2 hours.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

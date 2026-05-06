@@ -1,0 +1,29 @@
+slug: morning-sunlight-regulates-cortisol-circadian
+statement: Morning sunlight exposure regulates cortisol rhythm and circadian stability,
+  and is a foundational nervous system reset tool.
+evidence_tier: plausible_emerging
+rationale: Morning light exposure suppressing melatonin, entaining the SCN, and supporting
+  a healthy AM cortisol awakening response is well-supported in chronobiology literature.
+  The downstream effects on mood and circadian health are robustly evidenced.
+coaching_translation: Getting outside in natural sunlight within the first hour of
+  waking is one of the most powerful free tools to anchor your body's internal clock
+  and stabilize stress hormone rhythms throughout the day.
+caveats:
+- Benefits are dependent on consistent timing and adequate duration (ideally 10–20
+  minutes).
+- Source is educational synthesis.
+linked_to_topics:
+- nervous-system-regulation
+- hpa-axis-dysregulation
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 100 Functional Medicine Tools for Emotional Healing / Stress Recovery
+    & Resilience
+  quote: 'Morning Sunlight Exposure: Regulates cortisol rhythm & circadian stability.'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

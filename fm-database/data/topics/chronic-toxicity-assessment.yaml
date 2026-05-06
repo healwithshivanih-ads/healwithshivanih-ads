@@ -1,0 +1,46 @@
+slug: chronic-toxicity-assessment
+display_name: Chronic Toxicity Assessment
+aliases:
+- toxic load assessment
+- environmental toxin exposure evaluation
+summary: A systematic clinical approach to evaluating a patient's cumulative toxic
+  burden through history-taking, environmental exposure questionnaires, targeted lab
+  markers (GGT, bilirubin fractions, homocysteine), and indirect interpretation of
+  detox pathway function in the absence of direct toxin testing.
+common_symptoms:
+- fatigue
+- chemical-sensitivity
+- elevated-ggt
+- elevated-unconjugated-bilirubin
+- elevated-homocysteine
+red_flags:
+- jaundice
+- markedly-elevated-bilirubin
+- hepatitis-pattern-liver-enzymes
+related_topics:
+- liver-detox-phase-1-and-phase-2
+- gilbert-syndrome
+- methylation-defects
+- heavy-metal-toxicity
+key_mechanisms:
+- phase-1-phase-2-detox-imbalance
+- glucuronidation-impairment
+- methylation-defect
+coaching_scope_notes: Coaches can support environmental exposure history-taking and
+  use validated toxic exposure questionnaires. Lab interpretation and diagnosis of
+  genetic variants (e.g., Gilbert syndrome) must be referred to a clinician.
+clinician_scope_notes: GGT, fractionated bilirubin, and homocysteine are indirect
+  markers of detox pathway competency. Direct serum/urine toxin testing (VOCs, heavy
+  metals, organic acids) should be ordered when clinically indicated. Genetic workup
+  for phase 2 enzyme variants (UGT1A1) may be warranted.
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-liver-detox-part2
+  location: Lab Interpretation Section
+  quote: what are the labs that you should look and they give you some ink about detoxification
+    pathway issue the best way to accept the process is we can just look at the level
+    of toxins in the body
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

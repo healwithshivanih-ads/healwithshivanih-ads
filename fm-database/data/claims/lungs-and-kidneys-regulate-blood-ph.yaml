@@ -1,0 +1,26 @@
+slug: lungs-and-kidneys-regulate-blood-ph
+statement: The lungs and kidneys are the two primary organs that continuously regulate
+  blood pH, with lungs adjusting CO2 exhalation and kidneys modulating acid excretion
+  in urine.
+evidence_tier: strong
+rationale: Pulmonary and renal pH regulation is established physiology taught in all
+  medical and health science curricula and supported by extensive research.
+coaching_translation: Your body already manages blood pH beautifully through your
+  lungs and kidneys — deep breathing during exercise and staying well-hydrated both
+  support these systems.
+caveats:
+- Source is a lecture transcript; the mechanism described is consistent with established
+  physiology.
+linked_to_topics:
+- ph-balance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-ph-balance
+  location: Kidney and pH Section
+  quote: Our kidneys and our lungs are constantly balancing the pH of our blood.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

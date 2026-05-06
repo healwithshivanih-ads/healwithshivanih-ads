@@ -1,0 +1,36 @@
+slug: nac-alpha-lipoic-support-phase-2-estrogen-detox
+statement: NAC and alpha-lipoic acid support phase 2 liver detoxification pathways
+  (sulfation and glutathione conjugation) relevant to estrogen clearance.
+evidence_tier: plausible_emerging
+rationale: NAC is a precursor to glutathione and supports the sulfation detoxification
+  pathway. Alpha-lipoic acid is a cofactor in mitochondrial enzyme complexes and recycles
+  antioxidants including glutathione. Both support phase 2 liver detoxification, which
+  includes estrogen conjugation for excretion. Evidence is primarily mechanistic and
+  from small trials.
+coaching_translation: NAC and alpha-lipoic acid give your liver what it needs to package
+  up and eliminate estrogen and other hormones. They are antioxidants that support
+  your body's detox pathways.
+caveats:
+- Source is FM lecture synthesis. Clinical RCT evidence specifically for estrogen
+  detoxification with these supplements is limited.
+- NAC may cause reactions in sulfur-sensitive individuals (skin rashes, itching) —
+  monitor carefully.
+- Dosing requires clinician guidance.
+linked_to_topics:
+- estrogen-dominance
+- gut-skin-hormone-axis
+linked_to_supplements:
+- nac-n-acetyl-cysteine
+- alpha-lipoic-acid
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Estrogen Detoxification Discussion
+  quote: The supplements that help in this phase would be your NAC, your alpha lipoic
+    acid. This would be phase two where all your high beta glucuronidase levels would
+    be taken care of.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

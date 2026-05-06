@@ -1,0 +1,26 @@
+slug: magnesium-supports-insulin-sensitivity
+statement: Magnesium is important for insulin receptor function and treating insulin
+  resistance, and deficiency contributes to impaired glucose metabolism.
+evidence_tier: plausible_emerging
+rationale: Multiple studies have associated magnesium deficiency with insulin resistance,
+  and magnesium is a cofactor for glucose metabolism enzymes. Some RCTs show magnesium
+  supplementation improves insulin sensitivity in deficient individuals.
+coaching_translation: Magnesium is like the oil for your insulin 'lock' — it helps
+  the receptor work properly so insulin can do its job of moving glucose into your
+  cells. Low magnesium makes insulin resistance worse.
+linked_to_topics:
+- estrogen-dominance
+- pcos
+linked_to_supplements:
+- magnesium-glycinate
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-estrogen-dominance
+  location: Causes of Estrogen Dominance / Nutrition
+  quote: Magnesium is important because it treats insulin resistance.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

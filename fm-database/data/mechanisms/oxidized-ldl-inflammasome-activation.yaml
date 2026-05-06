@@ -1,0 +1,34 @@
+slug: oxidized-ldl-inflammasome-activation
+display_name: Oxidized LDL → Inflammasome / NF-κB Activation
+aliases:
+- ox-LDL NF-kB pathway
+- damaged LDL pro-inflammatory cascade
+category: immune
+summary: Oxidized LDL is damaged LDL that activates the inflammasome and turns on
+  NF-κB, triggering a cascade of pro-inflammatory cytokines. This positions CVD as
+  fundamentally an inflammatory disease, not purely a cholesterol-burden disease.
+upstream_drivers:
+- oxidative-stress
+- high-inflammatory-diet
+- small-dense-ldl-atherogenesis
+downstream_effects:
+- pro-inflammatory-cytokine-release
+- endothelial-damage
+- plaque-formation
+related_mechanisms:
+- nf-kappab-suppression
+- small-dense-ldl-atherogenesis
+- endothelial-dysfunction-nitric-oxide
+linked_to_topics:
+- cardiovascular-disease-prevention
+- dyslipidemia
+evidence_tier: strong
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Inflammatory Biomarkers
+  quote: Oxidized LDL is damaged LDL and it turns on the inflammasome. It turns on
+    NF-kappa-B. It is pro-inflammatory.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

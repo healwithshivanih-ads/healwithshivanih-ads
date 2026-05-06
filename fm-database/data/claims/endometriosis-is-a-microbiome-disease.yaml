@@ -1,0 +1,33 @@
+slug: endometriosis-is-a-microbiome-disease
+statement: Endometriosis is likely a disease of microbiome dysbiosis—specifically
+  SIBO-driven endotoxemia—rather than primarily a surgical or hormonal condition.
+evidence_tier: plausible_emerging
+rationale: Dr. Davis states this 'almost certainly' and notes that patients with endometriosis
+  almost always have SIBO. He argues that addressing SIBO and gut microbiome first
+  is more appropriate than repeated laparotomy. This is an emerging hypothesis with
+  some supporting research but not yet clinical consensus.
+coaching_translation: Endometriosis may have its roots in gut microbiome problems—especially
+  bacterial overgrowth in the small intestine. Addressing gut health through probiotics
+  and diet may offer more sustainable relief than repeated surgery.
+caveats:
+- Source is expert_consensus interview.
+- Not yet clinical consensus.
+- Endometriosis diagnosis and management require clinician oversight.
+- Surgical intervention may still be necessary in severe cases.
+linked_to_topics:
+- endometriosis-microbiome
+- sibo
+- gut-microbiome
+linked_to_supplements:
+- lactobacillus-reuteri-fermented-yogurt
+- lactobacillus-gasseri-probiotic
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Endometriosis and microbiome discussion
+  quote: Endometriosis is almost certain to be a disease of the microbiome, period.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

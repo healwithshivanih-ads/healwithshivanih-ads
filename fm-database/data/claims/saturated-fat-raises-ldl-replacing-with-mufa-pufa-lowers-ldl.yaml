@@ -1,0 +1,33 @@
+slug: saturated-fat-raises-ldl-replacing-with-mufa-pufa-lowers-ldl
+statement: Saturated fat raises LDL cholesterol; replacing saturated fat with monounsaturated
+  and polyunsaturated fatty acids (especially from fish) lowers cholesterol and LDL
+  — supported by Level A evidence.
+evidence_tier: strong
+rationale: Level A evidence cited explicitly by clinician. Supported by AHA dietary
+  guidelines and multiple meta-analyses of fat replacement trials.
+coaching_translation: Swapping saturated fats (butter, red meat, coconut oil) for
+  healthy fats (olive oil, nuts, fish) is one of the most evidence-backed ways to
+  lower LDL cholesterol.
+caveats:
+- Coconut oil specifically flagged as raising LDL in some patients — individual response
+  varies.
+- Source is expert lecture citing Level A evidence — consistent with AHA/ACC dietary
+  guidance.
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-disease-prevention
+- mediterranean-diet-cvd
+linked_to_supplements:
+- omega-3-fatty-acids
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Dietary Fats and LDL
+  quote: There is level A evidence for Mediterranean diet and there's evidence that
+    replacing saturated fat with monounsaturated fats and polyunsaturated fats, which
+    are mainly fish, lower cholesterol and LDL.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

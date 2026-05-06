@@ -1,0 +1,31 @@
+slug: lycopene
+display_name: Lycopene
+category: other
+forms_available:
+- capsule
+- tablet
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- male-infertility-oxidative-stress
+linked_to_claims:
+- antioxidant-rotation-improves-male-fertility
+notes_for_coach: Lycopene is a carotenoid antioxidant found in tomatoes, associated
+  with sperm quality improvement in preliminary research. Part of antioxidant rotation
+  protocol for male fertility.
+notes_for_client: Lycopene is an antioxidant found in tomatoes and other red fruits
+  that may help protect sperm from damage.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXoqNqijE3d/
+  quote: Patients need a broader antioxidant shield (CoQ10, Lycopene, NAC, Astaxanthin,
+    etc.).
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

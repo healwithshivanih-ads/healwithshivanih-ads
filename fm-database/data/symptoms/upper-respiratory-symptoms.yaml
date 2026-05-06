@@ -5,23 +5,35 @@ aliases:
 - cold symptoms
 - flu symptoms
 - respiratory infection symptoms
+- respiratory infection
+- runny nose
+- sore throat
+- cough
 category: constitutional
 severity: common
-description: Nasal congestion, sore throat, cough, and related symptoms associated
-  with viral upper respiratory infections including influenza and COVID-19.
-when_to_refer: Severe dyspnea, high fever, or oxygen desaturation — refer to emergency
-  care immediately.
+description: Symptoms of upper respiratory tract infection including nasal congestion,
+  sore throat, cough, and malaise, potentially worsened by inadequate immune function.
+  Targeted nutraceuticals may reduce duration and severity.
+when_to_refer: Refer if symptoms include severe dyspnea, persistent high fever, oxygen
+  desaturation, or signs of lower respiratory tract infection.
 linked_to_topics:
 - immune-support
+- immune-support-covid-19
+- chronic-inflammation
 linked_to_mechanisms:
 - cytokine-dysregulation
 - oxidative-stress
+- innate-immune-modulation
 sources:
 - id: vitaone-inflammation-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
   quote: Vitamin D enhances immune system function, reduces viral growth, and can
     reduce upper respiratory infections.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Vitamin D enhances immune system function, reduces viral growth, and can
+    reduce upper respiratory infections.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

@@ -1,0 +1,31 @@
+slug: statins-do-not-fully-prevent-heart-attacks
+statement: Statin therapy for cholesterol lowering does not fully protect against
+  myocardial infarction, as many patients on statins still experience cardiac events.
+evidence_tier: plausible_emerging
+rationale: The document states that many patients on atorvastatin still have heart
+  attacks, and that other risk factors must be addressed. This reflects the residual
+  cardiovascular risk concept, recognized in cardiology literature, though statins
+  do reduce relative risk in high-risk populations.
+coaching_translation: Taking a cholesterol-lowering medication is not a complete solution.
+  Other factors—like inflammation, blood sugar, and stress—also need to be addressed
+  for true heart health.
+out_of_scope_notes: Coaches must NOT advise clients to stop statin therapy. Statin
+  risk-benefit decisions are clinician scope.
+caveats:
+- Statins do have demonstrated mortality benefit in high-risk populations; this claim
+  should not be used to discourage statin use without clinician guidance.
+- Source is expert lecture (moderate quality).
+linked_to_topics:
+- cardiometabolic-disease
+- lipid-panel-interpretation
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-biomarkers-cvs
+  location: Lipid Burden and Cholesterol Myths
+  quote: There are many patients who take a cholesterol medicine or an anti-cholesterol
+    medicine that are atrovastine, even they have heart attacks.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

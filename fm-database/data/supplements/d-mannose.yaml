@@ -1,0 +1,35 @@
+slug: d-mannose
+display_name: D-Mannose
+category: other
+forms_available:
+- capsule
+- powder
+timing_options:
+- morning
+- with_breakfast
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- vaginal-microbiome
+linked_to_claims:
+- d-mannose-modest-uti-benefit-exogenous
+notes_for_coach: Dr. Davis acknowledges modest evidence for D-mannose for UTI support
+  but notes it is an exogenous compound (no human deficiency). He favors restoring
+  L. crispatus as the primary intervention. D-mannose may be used as complementary
+  support but is not preferred over microbiome restoration.
+notes_for_client: D-mannose (from cranberries) has some evidence for supporting urinary
+  tract health, but it is not something your body was designed to need. Restoring
+  good bacteria like L. crispatus is a more foundational approach. D-mannose may offer
+  additional short-term support.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: D-mannose and UTI discussion
+  quote: When D-mannose does work, some of the flavonoids, et cetera, in cranberries
+    does have a modest effect. But is there a D-mannose deficiency? No.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

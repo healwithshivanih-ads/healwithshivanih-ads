@@ -1,32 +1,48 @@
 slug: mitochondrial-dysfunction
-display_name: Mitochondrial Dysfunction
+display_name: Mitochondrial Dysfunction (Stress-Induced)
 aliases:
 - low ATP production
 - oxidative phosphorylation impairment
 - mitochondrial impairment
+- cellular-energy-depletion
+- mitochondrial-stress
+- ros-mitochondrial-suppression
 category: metabolic
-summary: Impaired mitochondrial function reduces ATP production and increases oxidative
-  stress, degrading insulin receptor signalling and contributing to metabolic disease.
-  CoQ10 and magnesium are key cofactors.
+summary: Chronic stress and unprocessed emotions suppress mitochondrial function via
+  reactive oxygen species (ROS) and excess cortisol, causing neuronal mitochondria
+  to underproduce ATP. Presents as fatigue, post-exertional crashes, slow thinking,
+  and light/noise sensitivity.
 upstream_drivers:
 - oxidative-stress
 - nutrient-deficiencies
 - chronic-inflammation
+- chronic-stress
+- hpa-axis-dysregulation
 downstream_effects:
 - insulin-resistance
 - fatigue
 - elevated-reactive-oxygen-species
+- post-exertional-crashes
+- low-resilience
+- slow-thinking
 related_mechanisms:
 - insulin-resistance
 - chronic-inflammation
+- hpa-axis-dysregulation
+- neuroinflammation
 linked_to_topics:
 - insulin-resistance
+- nervous-system-regulation
+- emotional-healing-chronic-disease
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-blood-sugar-cheatsheet
   location: Insulin Resistance Cheatsheet — Root Cause Framework
   quote: Low ATP production, oxidative stress, poor nutrient status, Inflammation
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: Stress & emotion suppress mitochondrial function (via ROS & cortisol).
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

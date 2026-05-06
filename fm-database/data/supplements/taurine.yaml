@@ -21,9 +21,9 @@ timing_options:
 - with_breakfast
 - with_dinner
 take_with_food: optional
-notes_for_coach: Listed as nutraceutical support during beta blocker tapering. Taurine
-  has emerging evidence for blood pressure support and cardiovascular protection.
-  Specific dosing requires clinician guidance.
+notes_for_coach: Taurine is an amino acid with emerging evidence for blood pressure
+  support and cardiac antioxidant protection. Listed in the beta blocker tapering
+  supplement protocol. Doses and duration require clinician guidance.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - insulin-resistance
@@ -34,8 +34,9 @@ linked_to_mechanisms: []
 linked_to_claims:
 - fatty-liver-drives-insulin-resistance
 - taurine-bile-flow-gallstone-prevention
-notes_for_client: Taurine is an amino acid with potential cardiovascular benefits.
-  Use only as directed by your clinician.
+notes_for_client: Taurine is an amino acid found naturally in the heart and brain.
+  It may support heart function and healthy blood pressure. Use as directed by your
+  healthcare provider.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
@@ -50,7 +51,11 @@ sources:
 - id: vitaone-cv-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
   quote: Taurine
-version: 4
+- id: vitaone-health-coaching-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients
+    — Supplement Schedule'
+  quote: Taurine
+version: 5
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

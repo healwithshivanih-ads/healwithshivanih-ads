@@ -1,0 +1,26 @@
+slug: magnesium-oxide-poor-bioavailability
+statement: Magnesium oxide has high elemental magnesium content (~60%) but is insoluble
+  and poorly bioavailable, making it an ineffective therapeutic supplement.
+evidence_tier: plausible_emerging
+rationale: Magnesium oxide's low bioavailability (~4%) compared to other forms (glycinate,
+  citrate) is supported by comparative absorption studies.
+coaching_translation: The cheapest magnesium supplement — magnesium oxide — is also
+  the least effective. Always check the form before buying.
+linked_to_topics:
+- magnesium-deficiency
+linked_to_supplements:
+- magnesium-oxide
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-magnesium-deficiency
+  location: Supplementation — forms of magnesium
+  quote: Very cheap conditionally available source is magnesium oxide the magnesium
+    content also definitely is very good 60 percentage but the concern is it is insoluble
+    so... not going to be used not going to cause any functional changes inside the
+    body.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

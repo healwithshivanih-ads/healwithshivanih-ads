@@ -1,0 +1,40 @@
+slug: hormonal-depression-progesterone
+display_name: Hormonal Depression & Progesterone Deficiency
+aliases:
+- postnatal depression
+- premenstrual depression
+- menopausal depression
+- progesterone and mood
+summary: Deficiency in progesterone ('the happy hormone') is described as a common
+  contributor to depression in adolescent girls, postnatal women, and menopausal women.
+  Wild yam cream (containing diosgenin) is proposed to stimulate the body's own progesterone-producing
+  biochemical pathway when applied topically.
+evidence_tier: fm_specific_thin
+common_symptoms:
+- depression
+- premenstrual-tension
+- postnatal-depression
+- menopausal-mood-changes
+red_flags:
+- depression with suicidal ideation
+- severe postnatal depression
+related_topics:
+- depression-lifestyle
+key_mechanisms:
+- progesterone-deficiency
+- hpa-axis-dysregulation
+coaching_scope_notes: Wild yam cream is a commonly discussed FM lifestyle supplement.
+  Coaches should not diagnose hormone imbalances or recommend specific hormone therapies;
+  refer to clinician for hormone testing.
+clinician_scope_notes: Progesterone-depression link is plausible but evidence for
+  wild yam cream converting to bioactive progesterone in humans is thin. Clinician
+  should evaluate and may consider bioidentical progesterone testing.
+sources:
+- id: barbara-oneil-healing-mind
+  location: Hormonal Depression Section
+  quote: Progesterone's nickname is 'happy hormone.' So if you're lacking happy hormone,
+    you're not going to be happy. It's one of the main causes of postnatal depression.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

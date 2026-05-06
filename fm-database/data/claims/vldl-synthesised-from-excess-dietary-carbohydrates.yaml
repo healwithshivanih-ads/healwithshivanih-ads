@@ -1,0 +1,27 @@
+slug: vldl-synthesised-from-excess-dietary-carbohydrates
+statement: VLDL is synthesised in the liver from excess dietary carbohydrates, and
+  is subsequently remodelled into LDL.
+evidence_tier: strong
+rationale: 'Well-established hepatic lipid metabolism: excess glucose/fructose drives
+  de novo lipogenesis with VLDL secretion; VLDL is then converted to LDL via lipolysis.
+  Consistent with mainstream biochemistry and nutrition science.'
+coaching_translation: Too many carbs — especially sugar and refined carbs — directly
+  raise your blood fat (triglycerides) because the liver converts them into fat particles.
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-risk-assessment
+- insulin-resistance
+linked_to_supplements: []
+caveats:
+- Source is an educational case study presentation, not primary research. Mechanism
+  itself is well-established.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cvs-risk-assessment
+  location: Understand Blood Lipid (Slide 6)
+  quote: VLDL is synthesized in the liver, from excess dietary carbohydrates.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

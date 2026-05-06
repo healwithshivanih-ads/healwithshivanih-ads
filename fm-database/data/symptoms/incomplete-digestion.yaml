@@ -1,0 +1,30 @@
+slug: incomplete-digestion
+display_name: Incomplete Digestion / Undigested Food in Stool
+aliases:
+- maldigestion
+- food not fully broken down
+- poorly digested food
+category: gi
+severity: common
+description: Failure to fully break down food, resulting in partially digested proteins,
+  fats, or starches reaching the colon. Linked to insufficient stomach acid, inadequate
+  chewing, snacking, overeating, or compromised pancreatic enzyme output.
+linked_to_topics:
+- gastrointestinal-tract-overview
+- meal-timing-and-digestive-rest
+linked_to_mechanisms:
+- hcl-and-pepsin-protein-digestion
+- pyloric-sphincter-regulation
+- pancreatic-enzyme-function
+when_to_refer: ''
+sources:
+- id: barbara-oneil-gi-tract
+  location: Stomach Acid & Antacids Section
+  quote: Research is now showing that long-term antacid medication, probably one of
+    the most common is Nexium, eventually can contribute to colon cancer because the
+    food is not getting broken down properly. And so partially digested proteins are
+    getting into the colon.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

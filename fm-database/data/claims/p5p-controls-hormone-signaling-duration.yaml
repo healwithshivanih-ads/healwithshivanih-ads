@@ -1,0 +1,34 @@
+slug: p5p-controls-hormone-signaling-duration
+statement: Pyridoxal-5-phosphate (P5P), the active form of vitamin B6, controls the
+  opening and closing of helix-12 in hormone receptors, thereby regulating the duration
+  of hormone signaling throughout the body.
+evidence_tier: plausible_emerging
+rationale: P5P as a cofactor in steroid receptor signaling and helix-12 conformation
+  change is a mechanistically plausible model consistent with known B6 biochemistry.
+  This specific helix-12 gating mechanism is not mainstream consensus but is within
+  the framework of nuclear receptor pharmacology.
+coaching_translation: Active vitamin B6 (P5P) acts like a timer on your hormone signals
+  — it determines how long those signals stay on. Without enough B6, hormonal messages
+  run too long, which can cause symptoms like heavy periods and breast changes.
+caveats:
+- Source is expert consensus; the specific P5P/helix-12 signaling duration mechanism
+  is not well-cited in primary literature.
+- B6 over 100mg/day is associated with reversible peripheral neuropathy — always flag
+  dose limits.
+linked_to_topics:
+- hormonal-nutrition-foundations
+- estrogen-signaling
+linked_to_supplements:
+- pyridoxal-5-phosphate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: P5P and Hormone Signaling Duration
+  quote: B6 will close the hat on the binding pocket domain, which is helix 12, or
+    open it up. And the movement of B6 and enough B6 adequately in local tissues rules
+    the signaling duration of hormones.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

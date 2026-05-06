@@ -1,0 +1,26 @@
+slug: elevated-fibrinogen
+display_name: Elevated Fibrinogen
+aliases:
+- high fibrinogen
+- pro-thrombotic fibrinogen
+category: cardiovascular
+severity: concerning
+description: Fibrinogen above 350 mg/dL signals increased clotting readiness and cardiovascular
+  risk, particularly in the context of inflammation.
+when_to_refer: Refer for full thrombophilia workup if combined with other clotting
+  risk factors or unexplained cardiovascular events.
+linked_to_topics:
+- coagulation-imbalance
+- cardiometabolic-disease
+linked_to_mechanisms:
+- fibrinogen-elevation
+- thromboembolism
+sources:
+- id: coconote-fm-biomarkers-cvs
+  location: Fibrinogen as Biomarker
+  quote: So if you have high fibrogen in your bloodstream, that means your blood is
+    ready for creating a clot.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

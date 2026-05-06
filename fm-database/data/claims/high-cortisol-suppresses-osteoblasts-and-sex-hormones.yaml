@@ -1,0 +1,29 @@
+slug: high-cortisol-suppresses-osteoblasts-and-sex-hormones
+statement: Elevated cortisol inhibits osteoblast activity (reducing bone formation)
+  and suppresses estrogen, progesterone, and testosterone, compounding bone loss and
+  hormonal decline in menopausal women with chronic stress or inflammation.
+evidence_tier: strong
+rationale: Glucocorticoid-induced osteoporosis is well-established in the literature.
+  High cortisol's suppressive effect on sex hormones via the HPA-gonadal axis is also
+  well-documented.
+coaching_translation: Chronic stress and inflammation don't just affect mood — they
+  actively suppress the very hormones that protect your bones and heart. Managing
+  stress is foundational, not optional.
+caveats:
+- Source is expert consensus lecture; mechanism is well-supported.
+linked_to_topics:
+- menopause
+- cortisol-steal
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-sex-hormones
+  location: Hormone Actions on Bone
+  quote: High cortisol inhibits the osteoblasts, they will not allow the formation
+    of bone. It also decreases the estrogen which causes the bone to go down and it
+    decreases the estrogen, progesterone and testosterone.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

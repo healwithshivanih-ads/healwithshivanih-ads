@@ -1,0 +1,43 @@
+slug: estrogen-signaling
+display_name: Estrogen Signaling & Receptor Biology
+aliases:
+- estrogen receptors
+- ER-alpha
+- ER-beta
+- estrogen genomic signaling
+- non-genomic estrogen signaling
+summary: Estrogen is the evolutionarily oldest hormone with at least six known receptors
+  (ER-alpha, ER-beta, and others). It signals both genomically (via nuclear receptors
+  affecting gene expression) and non-genomically (via cell membrane interactions).
+  The majority of estrogen receptors control and balance growth; only one promotes
+  growth, and only 50% of the time.
+common_symptoms:
+- fibrocystic-breasts
+- heavy-periods
+- estrogen-dominance-symptoms
+red_flags: []
+related_topics:
+- bioidentical-hormone-replacement-therapy
+- hormonal-nutrition-foundations
+- perimenopause-and-menopause
+key_mechanisms:
+- genomic-hormone-signaling
+- non-genomic-hormone-signaling
+- hormone-receptor-binding
+coaching_scope_notes: Coaches can help clients understand that estrogen is not inherently
+  dangerous and that nutrition supports balanced receptor signaling.
+clinician_scope_notes: Estrogen receptor subtype expression is influenced by inflammation
+  and nutritional status. Therapeutic decisions should consider receptor biology,
+  not just circulating estrogen levels.
+evidence_tier: strong
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Estrogen Receptor Biology
+  quote: there's six known receptors we think there's gonna end up being about 12
+    or 14 they all have diverse actions but the majority of those receptors when signal
+    control growth don't promote growth only one receptor promotes growth 50 of the
+    time
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

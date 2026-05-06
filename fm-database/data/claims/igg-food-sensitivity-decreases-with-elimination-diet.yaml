@@ -1,0 +1,28 @@
+slug: igg-food-sensitivity-decreases-with-elimination-diet
+statement: IgG food sensitivity can decrease over months with a sustained elimination
+  diet, unlike IgE allergy which tends to be lifelong.
+evidence_tier: plausible_emerging
+rationale: The reversibility of IgG sensitization following antigen avoidance is biologically
+  consistent with IgG dynamics and is clinically observed in FM practice. Robust RCT
+  data specifically on IgG-guided elimination diets is limited but growing.
+coaching_translation: The good news about food sensitivities (vs. true allergies)
+  is they can often improve or resolve. Sticking to elimination for months — and healing
+  the gut — gives the immune system a chance to reset.
+caveats:
+- Source is expert lecture, moderate quality.
+- Clinical RCT evidence for IgG-guided elimination diets is limited.
+- Improvement depends on co-addressing gut healing, not elimination alone.
+linked_to_topics:
+- food-sensitivity-igg-iga-mediated
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-food-allergies-sensitivities
+  location: IgE vs IgG Differentiation Section
+  quote: sensitivity decrease after month. Let's say if you alleviate that food, then
+    patient will not have the same reaction after 6 months or 1 year.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,42 @@
+slug: ambivalence-in-coaching
+display_name: Ambivalence in Coaching
+aliases:
+- client ambivalence
+- being of two minds
+- motivational ambivalence
+summary: Ambivalence — holding conflicting motives or being 'of two minds' about change
+  — is a central challenge in health coaching. Rather than a negative trait, it is
+  framed as a natural human condition that coaching tools like motivational interviewing,
+  decisional balance, and vision work can help clients navigate toward sustainable
+  behavior change.
+common_symptoms:
+- resistance-to-change
+- low-motivation
+- past-failure-dejection
+red_flags: []
+related_topics:
+- motivational-interviewing
+- stages-of-change
+- behavior-change-coaching
+- decisional-balance
+key_mechanisms:
+- change-talk-activation
+- pros-cons-weighting
+coaching_scope_notes: Coaches can use motivational interviewing, decisional balance,
+  vision and values exploration, character strengths, and ask-tell-ask education (up
+  to ~5% of session with permission) to work with ambivalent clients. Cultural expectations
+  around directive advice-giving should be acknowledged.
+clinician_scope_notes: Not a clinical diagnosis. Persistent ambivalence in clients
+  with underlying mental health issues (e.g., depression, anxiety) may warrant referral
+  to a mental health professional.
+evidence_tier: strong
+sources:
+- id: ask-expert-coaching-ambivalence
+  location: Group discussion — reading from 'On Second Thought' by Dr. William Miller
+  quote: Ambivalence is not something to be avoided, nor can it be. It is the human
+    condition that daily experience involves conflicting motives, individually and
+    collectively, and that what you choose to do matters.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

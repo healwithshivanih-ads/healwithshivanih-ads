@@ -1,0 +1,34 @@
+slug: magnesium-electrolyte-blend
+display_name: Magnesium / Sodium / Potassium Electrolyte Blend
+category: mineral
+forms_available:
+- powder
+- capsule
+- tablet
+timing_options:
+- morning
+- mid_morning
+- mid_afternoon
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- metabolic-health-lchf
+linked_to_claims:
+- lchf-electrolytes-prevent-keto-flu
+notes_for_coach: Sodium, potassium, and magnesium are lost rapidly during LCHF dietary
+  adaptation due to reduced insulin-driven renal reabsorption. Electrolyte blending
+  is a practical strategy to prevent keto flu symptoms. Individual needs vary.
+notes_for_client: When following a low-carb diet, your body loses electrolytes quickly.
+  A balanced electrolyte supplement helps prevent the fatigue, headaches, and cramps
+  sometimes called 'keto flu'.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DX1jE67jI4m/
+  quote: Ensure sodium, potassium and magnesium are optimized
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

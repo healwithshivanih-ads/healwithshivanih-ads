@@ -8,34 +8,49 @@ forms_available:
 - gummy
 typical_dose_range:
   capsule:
-    min: 1000
-    max: 5000
+    min: 2000
+    max: 10000
     unit: mcg
 timing_options:
 - with_breakfast
 - with_lunch
+- morning
 take_with_food: required
 linked_to_topics:
 - chronic-inflammation
 - autoimmune-disease
 - psoriasis
+- cardiovascular-risk-assessment
+- psoriasis-gut-immune
+- immune-dysregulation
+- gut-skin-hormone-axis
 linked_to_claims:
 - vitamin-d-critical-for-treg-function
 - vitamin-d-k2-immune-tolerance
-notes_for_coach: Always combine D3 with K2 (MK-7 form, 100–200mcg) to prevent vascular
-  calcification. Take with the largest fat-containing meal. Standard coaching doses
-  1000–5000 IU; HIGH doses (30,000+ IU) in psoriasis/autoimmunity are clinician-only
-  (Coimbra Protocol).
-notes_for_client: Vitamin D3 and K2 work together — D3 for immune function, K2 to
-  direct calcium to bones and away from arteries. Take with your largest meal of the
-  day.
-evidence_tier: strong
+- fm-intervention-improved-insulin-resistance-lipids-homocysteine
+- high-dose-d3-improves-psoriasis-symptoms
+notes_for_coach: Even when vitamin D levels appear 'normal' on standard ranges, higher-dose
+  D3 has been researched for autoimmune/psoriatic conditions. K2 is co-administered
+  to direct calcium appropriately. High-dose D3 (above 4000 IU) should be supervised
+  by a clinician with monitoring of serum 25(OH)D.
+notes_for_client: Vitamin D3 supports your immune system and skin health. K2 works
+  with D3 to direct calcium where it belongs. Take with a fat-containing meal.
+evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
 - id: vitaone-inflammation-cheatsheet
   location: Inflammation Cheatsheet — Page 02
   quote: Vitamin D3 + K2
-version: 1
+- id: vitaone-cvs-risk-assessment
+  location: Nutrition supplements (Slide 21)
+  quote: 'The Nutritional parameters of the patient were corrected with the following
+    supplements: 2. VitD+K'
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Key Supplements Discussion
+  quote: High dose vitamin D3 does help with healing or improving the symptoms of
+    psoriasis. There have been researches which show that for the problem of psoriasis
+    — any autoimmune issue — high dose vitamin D3 does help.
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

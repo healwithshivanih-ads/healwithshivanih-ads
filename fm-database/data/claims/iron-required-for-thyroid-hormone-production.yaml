@@ -1,0 +1,27 @@
+slug: iron-required-for-thyroid-hormone-production
+statement: Iron is required for proper thyroid hormone production and is especially
+  important for menstruating women.
+evidence_tier: strong
+rationale: Iron is a cofactor for thyroid peroxidase (TPO), the enzyme that incorporates
+  iodine into thyroglobulin during thyroid hormone synthesis. Iron deficiency anemia
+  impairs thyroid function — this is well-established.
+coaching_translation: Iron helps your thyroid make hormones. Menstruating women are
+  at higher risk of low iron, which can worsen thyroid function.
+caveats:
+- Check ferritin and CBC before supplementing iron. Iron can interfere with levothyroxine
+  — take 4 hours apart.
+- This dose is specifically for menstruating women per the document.
+linked_to_topics:
+- thyroid-dysfunction
+linked_to_supplements:
+- iron
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Key Nutrients to Consider in Thyroid Regulation — Routine daily supplementation
+  quote: 'Iron: 15-20 mg (in a menstruating woman)'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

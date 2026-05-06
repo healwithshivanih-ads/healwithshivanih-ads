@@ -1,0 +1,41 @@
+slug: medication-induced-nutrient-depletion
+display_name: Medication-Induced Nutrient Depletion
+aliases:
+- drug-nutrient depletion
+- iatrogenic nutrient deficiency
+summary: Common medications including PPIs, statins, and metformin deplete key nutrients
+  (B12, magnesium, iron, CoQ10, vitamin D, folate), causing symptoms that often precede
+  detectable lab abnormalities. Functional repletion with active B-vitamins, magnesium
+  glycinate, CoQ10, selenium, zinc, and antioxidants is advocated.
+common_symptoms:
+- fatigue
+- muscle-cramps
+- mood-swings
+- peripheral-neuropathy
+- brain-fog
+red_flags:
+- severe neuropathy
+- macrocytic anaemia unresponsive to B12
+related_topics:
+- iron-deficiency-dysregulation
+- metabolic-health-lchf
+- adrenal-cortisol-resilience
+key_mechanisms:
+- hepcidin-mediated-iron-block
+- mitochondrial-coq10-depletion
+- b12-absorption-impairment
+coaching_scope_notes: Coaches can educate on the concept of drug-nutrient interactions
+  and support dietary repletion. Specific supplement dosing must be confirmed with
+  the prescribing clinician.
+clinician_scope_notes: Clinicians should assess relevant nutrient levels in patients
+  on long-term PPIs, statins, or metformin and consider targeted repletion protocols.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXjjIqJjMSR/
+  quote: Every PPI that lowers acid also blocks B12, magnesium, and iron absorption.
+    Every statin that lowers cholesterol also drains CoQ10 and vitamin D.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

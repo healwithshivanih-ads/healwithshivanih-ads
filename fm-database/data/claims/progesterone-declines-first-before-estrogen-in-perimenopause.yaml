@@ -1,0 +1,30 @@
+slug: progesterone-declines-first-before-estrogen-in-perimenopause
+statement: In the perimenopausal transition, progesterone typically declines before
+  estrogen, creating a state of relative estrogen dominance even before absolute estrogen
+  levels fall.
+evidence_tier: strong
+rationale: Well-supported in reproductive endocrinology literature. Anovulatory cycles
+  — which increase in perimenopause — produce little to no progesterone while estrogen
+  production may remain adequate or fluctuate. This is the primary driver of early
+  perimenopausal estrogen dominance symptoms.
+coaching_translation: This is why perimenopausal women may feel 'estrogenic' symptoms
+  (bloating, mood swings, heavy periods) even before their estrogen starts dropping
+  — their progesterone has already quietly declined.
+caveats:
+- Source is expert consensus lecture; mechanism is strongly supported by reproductive
+  endocrinology consensus.
+linked_to_topics:
+- perimenopause
+- estrogen-dominance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-sex-hormones
+  location: Risk Factors and Hormone Actions
+  quote: Initially the progesterone goes down or secondary to any kind of a progesterone
+    going down, then it happens in estrogen dominance.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

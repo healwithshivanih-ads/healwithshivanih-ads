@@ -1,0 +1,28 @@
+slug: meat-sulphur-acid-forming
+statement: Meat is highly acid-forming because only 58% is burned as fuel; the remaining
+  42% leaves a sulphur waste that creates an acidic environment in the body.
+evidence_tier: plausible_emerging
+rationale: Animal protein has a high PRAL score and produces sulphuric acid as a metabolic
+  byproduct. The specific figures (58%/42%) are not clearly sourced in peer-reviewed
+  literature and should be treated as illustrative. The general principle that meat
+  is acid-forming is well-supported by PRAL research.
+coaching_translation: If you eat meat, choose organic and balance it with plenty of
+  vegetables to offset the acid load.
+caveats:
+- The 58%/42% figures are not referenced to a specific study and should be treated
+  as illustrative, not precise.
+- Source is a lecture transcript, not primary literature.
+linked_to_topics:
+- ph-balance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-ph-balance
+  location: Acid-Forming Foods Section
+  quote: When meat breaks down in the body, only 58% is burnt as fuel. It leaves a
+    42% sulphur waste, which creates a very acid environment.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,32 @@
+slug: ginseng-licorice-support-adrenal
+statement: Consuming ginseng and/or licorice tea may provide support during adrenal
+  restoration.
+evidence_tier: fm_specific_thin
+rationale: Adaptogens like ginseng have emerging evidence for HPA axis modulation.
+  Licorice root (glycyrrhizin) has known cortisol-sparing effects via 11β-HSD inhibition.
+  However, the document does not specify forms, doses, or contraindications. Evidence
+  base is thin for adrenal restoration specifically.
+coaching_translation: Some herbal teas like ginseng and licorice may help your body
+  better handle stress. These are common supports in functional medicine for adrenal
+  recovery — ask your practitioner about the right form and amount for you.
+caveats:
+- Licorice can raise blood pressure — contraindicated in hypertension; requires clinician
+  oversight
+- Dosing and form guidance absent from document — verify with clinician
+- Source is expert consensus toolkit, not primary literature
+out_of_scope_notes: Specific dosing and use of medicinal licorice is out of coaching
+  scope — refer to clinician, especially for clients with hypertension.
+linked_to_topics:
+- hpa-axis-dysfunction
+linked_to_supplements:
+- ginseng
+- licorice-root
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Hypercortisolism — Restoration
+  quote: Consume ginseng and/or licorice tea for support.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

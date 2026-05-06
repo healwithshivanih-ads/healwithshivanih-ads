@@ -1,30 +1,34 @@
 slug: whey-protein
-display_name: Whey Protein Powder
+display_name: Whey Protein
 category: other
 forms_available:
 - powder
 evidence_tier: plausible_emerging
-notes_for_coach: Used as a protein source in the Cardio Smoothie (2 tablespoons).
-  Suitable for most adults; dairy-sensitive clients should use plant-based alternatives
-  (soy, pea).
-notes_for_client: Adding a scoop of protein powder to your smoothie helps keep you
-  full and supports muscle health.
+notes_for_coach: Whey protein is included in the beta blocker tapering protocol, likely
+  for its role in supporting muscle mass, blood pressure reduction (via bioactive
+  peptides), and glutathione synthesis. Appropriate for most clients unless dairy-sensitive.
+notes_for_client: Whey protein is an easy way to get high-quality protein that supports
+  muscle, immune function, and antioxidant production. Blend into a smoothie or mix
+  with water.
 timing_options:
 - with_breakfast
 - morning
 - with_lunch
+- mid_morning
 take_with_food: optional
 linked_to_topics:
 - beta-blocker-deprescribing
 - cardiovascular-dysfunction
 - cardiometabolic-health
+- sex-hormone-binding-globulin
 typical_dose_range:
   powder:
     min: 14
     max: 28
     unit: g
 linked_to_mechanisms: []
-linked_to_claims: []
+linked_to_claims:
+- whey-protein-decreases-shbg
 sources:
 - id: vitaone-cv-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
@@ -32,7 +36,10 @@ sources:
 - id: vitaone-cardiometabolic-toolkit
   location: Building a Better Smoothie — Protein
   quote: Whey powder – 2 T
-version: 2
+- id: vitaone-health-coaching-toolkit
+  location: Sex Hormone Binding Globulin (SHBG)
+  quote: Whey protein [listed under factors that Decrease SHBG]
+version: 4
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

@@ -1,0 +1,44 @@
+slug: three-factors-required-for-autoimmunity
+statement: 'Autoimmune disease requires three co-factors: genetic predisposition,
+  environmental antigen exposure, and increased intestinal permeability — all three
+  must be present simultaneously.'
+evidence_tier: plausible_emerging
+rationale: Directly attributed to Dr. Fasano's published model. Well-supported for
+  celiac disease (HLA-DQ2/DQ8, gluten, leaky gut); extrapolation to all autoimmune
+  conditions is biologically plausible and widely cited in functional medicine but
+  not uniformly validated by RCTs.
+coaching_translation: Having the genes for an autoimmune condition is not enough on
+  its own. Your gut barrier is a crucial third factor — and it's one you can work
+  on.
+out_of_scope_notes: Genetic testing (HLA-DQ2/DQ8) and autoimmune antibody interpretation
+  are clinician-scope.
+caveats:
+- Source is expert consensus / lecture, not primary literature. The three-factor model
+  originates from Fasano's research but this document does not cite a specific study.
+- Applicable to celiac disease with strong evidence; extrapolation to all autoimmune
+  diseases is plausible but less established.
+- Evidence is strongest for celiac disease; application to all autoimmune conditions
+  is plausible but not universally peer-reviewed.
+- Genetic testing (HLA-DQ2/DQ8) and autoimmune diagnosis are outside coaching scope.
+linked_to_topics:
+- autoimmunity-leaky-gut-triad
+- intestinal-permeability
+- autoimmunity-leaky-gut-connection
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-intestinal-permeability
+  location: Three Factors for Autoimmunity
+  quote: Now if you look at the basic pathophysiology of autoimmunity, and Dr. Fasano
+    had mentioned, it's clear that there are three factors that are very important
+    for autoimmune conditions and autoimmunity.
+- id: coconote-fm-intestinal-permeability-anish
+  location: Pathophysiology of Autoimmunity
+  quote: Dr. Fasano had mentioned, it's clearly that there are three factors that
+    are very important for autoimmune conditions and autoimmunity. The one factor
+    that is called genetic predisposition… leaky small intestine or leaky gut, that
+    is the third important step.
+version: 2
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,35 @@
+slug: somatic-body-memory
+display_name: Somatic Body Memory
+aliases:
+- cellular memory
+- embodied emotional memory
+- body-held trauma
+category: neurological
+summary: Pre-verbal and pre-cognitive experiences from the womb and early postnatal
+  period are proposed to be stored somatically — in the body's tissues, cells, and
+  nervous system — rather than declaratively. These stored patterns may later manifest
+  as physical symptoms, chronic tension, or illness when associated emotional content
+  is unresolved.
+upstream_drivers:
+- prenatal-cortisol-adrenaline-exposure
+- nervous-system-imprinting
+- unresolved-emotional-pain
+downstream_effects:
+- pelvic-inflammation
+- breathing-irregularity
+- chronic-physical-symptoms
+related_mechanisms:
+- nervous-system-imprinting
+linked_to_topics:
+- somatic-body-memory
+- womb-imprinting-and-prenatal-experience
+evidence_tier: fm_specific_thin
+sources:
+- id: family-constellation-healing-womb
+  location: Elizabeth case discussion
+  quote: After time we perceive our inner pain via our body. So our pain can express
+    itself via our body.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

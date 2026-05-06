@@ -1,0 +1,26 @@
+slug: pelvic-pain
+display_name: Pelvic Pain
+aliases:
+- lower abdominal pain
+- endometriosis pain
+- cramping
+category: musculoskeletal
+severity: concerning
+description: Pain in the lower abdominal or pelvic region. In the context of estrogen
+  dominance may indicate endometriosis, fibroids, or adhesions. Pelvic adhesions are
+  a feature of endometriosis.
+when_to_refer: Refer to gynecologist for pelvic ultrasound; laparoscopy may be needed
+  for endometriosis diagnosis.
+linked_to_topics:
+- estrogen-dominance
+- uterine-fibroids
+linked_to_mechanisms:
+- estrogen-driven-cell-proliferation
+sources:
+- id: coconote-fm-estrogen-dominance
+  location: Endometriosis
+  quote: Patients with edema, there are adhesions in their pelvic cavity, endometriosis.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

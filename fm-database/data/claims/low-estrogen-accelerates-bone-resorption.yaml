@@ -1,0 +1,31 @@
+slug: low-estrogen-accelerates-bone-resorption
+statement: Low estrogen accelerates bone resorption, increasing risk of osteopenia
+  and osteoporosis, particularly after age 50 when estrogen levels fall significantly
+  in postmenopausal women.
+evidence_tier: strong
+rationale: Extensively documented in the medical literature; estrogen's role in inhibiting
+  osteoclast activity and preserving bone mineral density is established via multiple
+  large RCTs and meta-analyses.
+coaching_translation: Bone health is a major reason why menopause-related hormone
+  decline matters long-term. Supporting bone through nutrition (calcium, magnesium,
+  Vitamin D3/K2), weight-bearing exercise, and managing estrogen decline is critical.
+caveats:
+- Source is expert consensus lecture; mechanism itself is well-established in the
+  literature.
+linked_to_topics:
+- menopause
+linked_to_supplements:
+- vitamin-d3
+- vitamin-k2
+- magnesium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-sex-hormones
+  location: Hormone Actions on Bone
+  quote: Low estrogen causes bone early absorption. So it will actually eat up the
+    bone if the estrogen is very low.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

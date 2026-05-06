@@ -1,0 +1,27 @@
+slug: dark-green-leafy-vegetables-alkaline-forming
+statement: Dark green leafy vegetables are highly alkaline-forming because they are
+  rich in alkaline minerals, and their mineral content is not significantly reduced
+  by cooking.
+evidence_tier: plausible_emerging
+rationale: Green leafy vegetables have low PRAL scores (alkaline-forming) and are
+  high in calcium, magnesium, and potassium. The statement that minerals are retained
+  through cooking (unlike heat-sensitive vitamins) is nutritionally accurate.
+coaching_translation: Eat dark leafy greens daily — cooked or raw, they still deliver
+  the minerals that support an alkaline cellular environment.
+caveats:
+- Source is a lecture; PRAL rankings of specific vegetables vs. lemon are not explicitly
+  compared in the transcript.
+linked_to_topics:
+- ph-balance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-ph-balance
+  location: Alkaline-Forming Foods Section
+  quote: The second most alkali forming foods is dark green, dark green leafy vegetables.
+    You see dark green leafy vegetables are very high in the alkali minerals.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

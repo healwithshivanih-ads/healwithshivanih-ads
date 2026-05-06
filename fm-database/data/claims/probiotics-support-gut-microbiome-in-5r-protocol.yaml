@@ -1,0 +1,30 @@
+slug: probiotics-support-gut-microbiome-in-5r-protocol
+statement: Probiotic and prebiotic supplementation during the Re-inoculate phase of
+  the 5R gut protocol can help restore a disrupted gut microbiome in patients with
+  hypochlorhydria-related dysbiosis.
+evidence_tier: plausible_emerging
+rationale: Probiotics for gut microbiome restoration have plausible mechanisms and
+  some RCT support in general GI conditions. Their specific role in hypochlorhydria-related
+  dysbiosis is less studied. Source is expert consensus.
+coaching_translation: After removing gut irritants and supporting stomach acid, adding
+  a probiotic can help rebuild the healthy bacteria in your gut that may have been
+  disrupted by low acid levels.
+caveats:
+- Strain and dose selection should be clinician-guided, especially if SIBO is present.
+- Source is expert consensus.
+linked_to_topics:
+- hypochlorhydria
+- five-r-gut-protocol
+linked_to_supplements:
+- probiotics-gut-reinoculation
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-hypochlorhydria
+  location: Treatment / 5R Gut Protocol — Re-inoculate
+  quote: If the gut microbiome is also on the lower side, maybe a prebiotic or a probiotic
+    can be used in terms of repairing.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

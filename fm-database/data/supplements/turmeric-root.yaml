@@ -1,0 +1,36 @@
+slug: turmeric-root
+display_name: Turmeric (Ground or Fresh Root)
+category: herb
+forms_available:
+- powder
+typical_dose_range:
+  powder:
+    min: 0.5
+    max: 2
+    unit: teaspoons
+timing_options:
+- morning
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- cardiometabolic-diet
+- anti-inflammatory-diet
+linked_to_claims:
+- phytonutrient-smoothies-support-cardiometabolic-health
+notes_for_coach: Used across multiple smoothie and recipe formulas in the toolkit
+  (Brain Smoothie, Inflammation Control Smoothie, Carrot-Ginger Soup). Curcumin bioavailability
+  is enhanced by black pepper (piperine) — mention this to clients where relevant.
+notes_for_client: Turmeric is one of the most studied anti-inflammatory spices. Adding
+  ½–1 tsp to smoothies, soups, or stews is an easy daily habit.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Phytonutrient Smoothie Recipes — Brain Smoothie
+  quote: ½ to 1 teaspoon turmeric, ground
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

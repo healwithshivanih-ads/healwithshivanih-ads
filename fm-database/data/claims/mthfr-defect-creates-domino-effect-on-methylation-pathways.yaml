@@ -1,0 +1,38 @@
+slug: mthfr-defect-creates-domino-effect-on-methylation-pathways
+statement: MTHFR enzyme dysfunction creates a cascading 'domino effect', impairing
+  homocysteine remethylation, SAM production, neurotransmitter synthesis (dopamine,
+  serotonin), DNA methylation, and glutathione production.
+evidence_tier: plausible_emerging
+rationale: The interconnected nature of methylation pathways is biochemically well-described.
+  The document systematically explains how MTHFR dysfunction impairs downstream processes
+  including neurotransmitter synthesis, DNA/RNA methylation, and glutathione production.
+coaching_translation: MTHFR is not just about homocysteine — it affects mood, energy,
+  detoxification, and gene expression. Supporting methylation comprehensively (with
+  all relevant B vitamins) addresses multiple systems at once.
+caveats:
+- Clinical significance of MTHFR variants varies widely; not all carriers have clinically
+  meaningful impairment.
+- Source is expert lecture of moderate quality.
+linked_to_topics:
+- mthfr-gene-variant
+- methylation
+- homocysteine-elevation
+linked_to_supplements:
+- methylfolate
+- methylcobalamin
+- vitamin-b6-pyridoxine
+- vitamin-b2-riboflavin
+- betaine-trimethylglycine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: Domino Effect / MTHFR section
+  quote: MTHFR enzyme whenever it is not functioning properly it actually creates
+    a domino effect. So the domino effect means that when one function is not actually
+    happening properly it would also impair the other processes that is happening
+    simultaneously with it.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

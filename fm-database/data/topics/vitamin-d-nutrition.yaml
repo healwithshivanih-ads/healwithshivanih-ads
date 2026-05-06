@@ -1,0 +1,38 @@
+slug: vitamin-d-nutrition
+display_name: 'Vitamin D: Food Sources, Sun Exposure & Deficiency'
+aliases:
+- dietary vitamin D
+- vitamin D deficiency
+- cholecalciferol
+summary: Vitamin D is a fat-soluble vitamin found in few foods (fatty fish, liver,
+  egg yolk) and fortified products. It is also synthesized via sun exposure. It regulates
+  calcium and phosphorus, supports bone health, cell growth, and immune function.
+  Current RDAs may be too low for optimal non-skeletal health.
+common_symptoms:
+- fatigue
+- bone-pain
+- impaired-immune-function
+red_flags:
+- severe-vitamin-d-deficiency-with-osteomalacia
+related_topics:
+- fish-toxins-safe-food
+- mitochondrial-health-nutrients
+key_mechanisms:
+- calcium-phosphorus-regulation
+- immune-function-support
+coaching_scope_notes: Coach can educate on food sources and the importance of sun
+  exposure. Note that SPF >15 blocks vitamin D synthesis. Supplementation above RDA
+  requires clinician guidance.
+clinician_scope_notes: Lab testing (25-OH vitamin D) and therapeutic supplementation
+  dosing are clinician scope.
+evidence_tier: strong
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Food Sources: Vitamin D'
+  quote: Vitamin D helps the body absorb calcium and regulates both calcium and phosphorous
+    levels in the blood. It plays an important role in bone growth and maintenance,
+    influences cell growth and development, and is required for proper immune function.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

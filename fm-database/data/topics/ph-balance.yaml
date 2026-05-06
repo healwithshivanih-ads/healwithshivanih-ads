@@ -1,0 +1,44 @@
+slug: ph-balance
+display_name: pH Balance & Acid-Alkaline Health
+aliases:
+- acid-alkaline balance
+- body pH
+- cellular pH
+summary: The human body maintains blood pH within a very narrow range (7.3–7.5) via
+  the lungs and kidneys. Cellular pH (~6.5) can shift based on diet, lifestyle, sleep,
+  stress, and other factors. A more acidic cellular environment is associated with
+  disease, including cancer and fungal overgrowth. Diet, water intake, sunshine, exercise,
+  and stress management all influence cellular pH.
+common_symptoms:
+- brain-fog
+- bloating
+- fatigue
+- inflammation
+red_flags:
+- blood-ph-coma-acidosis
+related_topics:
+- gluten-intolerance
+- lectin-sensitivity
+- yeast-overgrowth
+- kidney-function
+key_mechanisms:
+- cellular-ph-dysregulation
+- renal-ph-buffering
+- pulmonary-ph-buffering
+coaching_scope_notes: Coaches can discuss alkaline-forming vs acid-forming foods,
+  lifestyle habits (sleep, stress, hydration, moderate exercise, sunshine), and general
+  dietary principles. Do not advise on blood pH interpretation or clinical lab values.
+clinician_scope_notes: Blood pH regulation is a medical topic. Acidosis and alkalosis
+  require clinical diagnosis and management. Refer out for any client reporting extreme
+  fatigue, confusion, or respiratory distress.
+evidence_tier: plausible_emerging
+sources:
+- id: barbara-oneil-ph-balance
+  location: Introduction
+  quote: Precision balance is vital for the proper functioning of the human body.
+    And that balance, when it gets thrown out, it can have ramifications that affect
+    the health of the body. And it's the same with the pH balance on the body.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

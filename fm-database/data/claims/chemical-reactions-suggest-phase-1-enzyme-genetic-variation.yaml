@@ -1,0 +1,30 @@
+slug: chemical-reactions-suggest-phase-1-enzyme-genetic-variation
+statement: A patient history of adverse reactions to medications or chemicals suggests
+  genetic variation in Phase 1 CYP enzymes, affecting xenobiotic metabolism.
+evidence_tier: plausible_emerging
+rationale: Pharmacogenomics of CYP enzyme variants is well established in the literature.
+  Using a clinical history of drug/chemical reactions as a proxy screen for Phase
+  1 enzyme variation is a reasonable clinical heuristic applied in functional medicine.
+coaching_translation: If your client mentions they often react badly to medications,
+  supplements, or certain chemicals, it may indicate their liver's first-pass processing
+  enzymes work differently — worth noting and discussing with their doctor.
+out_of_scope_notes: Genetic testing for CYP variants and pharmacogenomic interpretation
+  require clinician referral.
+caveats:
+- Source is expert lecture consensus.
+- History alone is insufficient for diagnosis; pharmacogenomic testing is needed for
+  confirmation.
+linked_to_topics:
+- chronic-toxicity-assessment
+- liver-detox-phase-1-and-phase-2
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-liver-detox-part2
+  location: History & Environmental Exposure Section
+  quote: If the patient is having any kind of blood reaction or chemical reaction,
+    that means there is some kind of genetic variation in their phase 1 enzymes.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

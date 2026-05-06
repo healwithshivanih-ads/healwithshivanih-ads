@@ -1,0 +1,32 @@
+slug: low-stomach-acid-drives-dysbiosis-reinfection
+statement: Low stomach acid (hypochlorhydria) is a key source of gut dysbiosis and
+  reinfection, and should be corrected with betaine HCl or apple cider vinegar as
+  part of the dysbiosis protocol.
+evidence_tier: plausible_emerging
+rationale: Adequate gastric acid is a first-line defense against ingested pathogens.
+  Hypochlorhydria allows pathogenic microbes to survive transit into the small intestine.
+  Betaine HCl is a common functional medicine intervention to restore acid levels.
+coaching_translation: Low stomach acid can be a hidden reason why gut infections keep
+  coming back. Supporting stomach acid levels is an important part of gut healing.
+caveats:
+- Source is expert lecture, moderate quality.
+- Betaine HCl dosing must be supervised by a clinician — incorrect dosing can cause
+  mucosal irritation.
+- Contraindicated in active peptic ulcer or gastritis.
+linked_to_topics:
+- gut-dysbiosis
+- sibo
+linked_to_supplements:
+- betaine-hcl
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Replace / Reinfection Source Section
+  quote: it may be a patient having a low stomach acid, so you can consider giving
+    them betaine ester or episode of vinegar, or you can consider them giving some
+    betel, it can increase your stomach acid.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

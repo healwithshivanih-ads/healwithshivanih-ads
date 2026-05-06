@@ -1,0 +1,31 @@
+slug: metformin-interferes-with-b12-and-folate
+statement: Metformin depletes or interferes with vitamin B12 and folate.
+evidence_tier: confirm_with_clinician
+rationale: Metformin reducing B12 absorption via ileal calcium-dependent transport
+  inhibition is well-documented in RCTs and guidelines.
+out_of_scope_notes: B12 and folate monitoring in metformin users requires clinician
+  management.
+caveats:
+- Source is a practitioner cheatsheet; this specific interaction is also supported
+  in primary literature.
+- Always encourage metformin users to discuss B12 monitoring with their prescribing
+  clinician.
+linked_to_topics:
+- medication-nutrient-interactions
+- nutrition-deficiency
+linked_to_supplements:
+- vitamin-b12
+- folate
+coaching_translation: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 21
+  quote: Metformin is listed as depleting or interfering with vitamin B12 and folate.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 21
+  quote: Metformin is listed as depleting or interfering with vitamin B12 and folate.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

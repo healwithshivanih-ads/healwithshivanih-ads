@@ -1,0 +1,38 @@
+slug: iron-nutrition
+display_name: 'Iron: Food Sources & Deficiency'
+aliases:
+- dietary iron
+- iron deficiency
+- anaemia prevention
+summary: Iron is a mineral essential for oxygen transport and energy production. It
+  exists as heme (animal, well-absorbed) and nonheme (plant/animal, less absorbed)
+  forms. Iron deficiency is the world's most common nutritional deficiency and can
+  cause anemia.
+common_symptoms:
+- fatigue
+- anemia
+red_flags:
+- iron-deficiency-anemia
+related_topics:
+- magnesium-nutrition
+- mitochondrial-health-nutrients
+key_mechanisms:
+- oxygen-transport-impairment
+- energy-production-impairment
+coaching_scope_notes: Coach can educate on heme vs. nonheme iron food sources, pairing
+  with vitamin C to enhance absorption, and meeting RDA through diet. Supplementation
+  dosing is clinician scope.
+clinician_scope_notes: Lab evaluation for iron status (ferritin, serum iron, TIBC)
+  and supplementation decisions are clinician scope.
+evidence_tier: strong
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Food Sources: Iron'
+  quote: Iron plays an important role in hundreds of processes in the body, particularly
+    oxygen transport and energy production. Iron deficiency is the most common nutritional
+    deficiency in the world and can cause anemia, a condition that affects the transport
+    of oxygen throughout the body.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,26 @@
+slug: mediterranean-diet-reduces-inflammatory-markers
+statement: Mediterranean diet reduces markers of systemic inflammation including CRP,
+  IL-6, IL-7, IL-18, and decreases insulin resistance.
+evidence_tier: strong
+rationale: Multiple RCTs and prospective cohort studies support the anti-inflammatory
+  effects of Mediterranean diet. Specific cytokines cited (IL-6, IL-18) are well-documented
+  in the literature.
+coaching_translation: Eating a Mediterranean diet doesn't just lower cholesterol —
+  it turns down the inflammation throughout your body that drives heart disease.
+caveats: []
+linked_to_topics:
+- cardiovascular-disease-prevention
+- mediterranean-diet-cvd
+- metabolic-syndrome
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Mediterranean Diet Evidence
+  quote: Reduced markers of inflammation with the Mediterranean diet, CRP, interleukin-6,
+    interleukin-7, interleukin-18, decreased insulin resistance.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

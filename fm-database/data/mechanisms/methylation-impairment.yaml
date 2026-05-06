@@ -1,0 +1,40 @@
+slug: methylation-impairment
+display_name: Methylation Impairment
+aliases:
+- MTHFR dysfunction
+- methylation defect
+- impaired one-carbon metabolism
+category: metabolic
+summary: Impaired methylation—due to MTHFR variants or deficiencies of B6, methylfolate
+  (B9), or methylcobalamin (B12)—causes homocysteine to accumulate. Elevated homocysteine
+  promotes LDL oxidation, endothelial injury, and thrombosis, making methylation a
+  key upstream driver of cardiovascular risk.
+upstream_drivers:
+- mthfr-gene-variant
+- b6-deficiency
+- b9-deficiency
+- b12-deficiency
+downstream_effects:
+- high-homocysteine
+- ldl-oxidation-and-glycation
+- endothelial-injury
+- thromboembolism
+related_mechanisms:
+- ldl-oxidation-and-glycation
+- endothelial-injury
+- thromboembolism
+linked_to_topics:
+- homocysteine-and-methylation
+- cardiometabolic-disease
+- coagulation-imbalance
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-biomarkers-cvs
+  location: Homocysteine and Clotting
+  quote: this whole reaction is is covered by the mthfr gene and you can say methyl
+    tetrahydrofolic enzyme and this enzyme requires four factors vitamin b vitamin
+    b9 and vitamin b12 so typically this is called methylation process
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

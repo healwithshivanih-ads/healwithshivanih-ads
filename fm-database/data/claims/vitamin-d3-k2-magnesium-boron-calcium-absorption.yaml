@@ -1,0 +1,34 @@
+slug: vitamin-d3-k2-magnesium-boron-calcium-absorption
+statement: Effective calcium metabolism requires a combination of vitamin D3, K2,
+  magnesium, and boron; taking calcium alone risks arterial calcification.
+evidence_tier: plausible_emerging
+rationale: Vitamin K2 (MK-7) directs calcium to bone rather than soft tissue. Magnesium
+  is required for D3 activation. Boron supports bone mineral density. The synergistic
+  requirement is biologically well-supported, though large RCTs on the full combination
+  are limited.
+coaching_translation: Tell your clients not to just buy calcium off the shelf. Without
+  K2, D3, magnesium, and boron, calcium may end up in arteries instead of bones. Always
+  recommend the full combination.
+out_of_scope_notes: Specific doses of D3 and K2 require clinician guidance based on
+  lab results.
+caveats:
+- Source is expert FM lecture.
+- Vitamin D dosing must be guided by serum 25-OH D levels.
+- Confirm with clinician before advising doses above 2000 IU D3.
+linked_to_topics:
+- chronic-pain-and-fatigue
+linked_to_supplements:
+- vitamin-d3
+- vitamin-k2
+- magnesium-glycinate
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-chronic-pain-fatigue
+  location: Supplements Section
+  quote: they need to, to be the combination of vitamin b2 d3 magnesium and the boron
+    here we get there's a supplement conference passion... so that calcium absorption
+    can happen
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

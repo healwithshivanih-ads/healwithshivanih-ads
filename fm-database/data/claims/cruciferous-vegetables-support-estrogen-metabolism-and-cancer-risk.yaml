@@ -1,0 +1,33 @@
+slug: cruciferous-vegetables-support-estrogen-metabolism-and-cancer-risk
+statement: Cruciferous vegetables (brassicas) positively influence estrogen metabolism
+  and reduce overall cancer risk, partly via sulforaphane-driven Nrf2 activation and
+  glutathione production.
+evidence_tier: strong
+rationale: The document references multiple studies supporting this, and Thomson et
+  al. (Nutr Rev. 2016) on DIM/I3C from crucifers is cited. Sulforaphane-Nrf2 mechanism
+  is well-documented in peer-reviewed literature.
+coaching_translation: Eating broccoli, cauliflower, cabbage, Brussels sprouts, and
+  kale regularly helps your liver process estrogen into safer forms and supports your
+  body's natural cancer defenses.
+caveats:
+- Studies vary on effect size; cooking methods can reduce sulforaphane content (light
+  steaming preferred)
+- Thyroid conditions — large raw amounts may suppress thyroid in iodine-deficient
+  individuals
+linked_to_topics:
+- estrogen-metabolism
+linked_to_supplements:
+- dim-diindolylmethane
+- i3c-indole-3-carbinol
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Estrogen Metabolism — Promotes Healthy Estrogen Metabolism
+  quote: This family of vegetables has been shown in many studies to positively influence
+    estrogen metabolism and reduce overall cancer risk. Cruciferous vegetables contain
+    an important phytonutrient called sulforaphane.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,30 @@
+slug: myo-inositol-tsh-signaling
+display_name: Myo-Inositol TSH Signal Transduction
+aliases:
+- inositol second messenger TSH
+- TSH receptor signaling
+- inositol phosphate signaling
+category: signaling
+summary: Myo-inositol is a key second messenger involved in signal transduction for
+  TSH, FSH, and insulin receptors. It supports biogenesis, vesicle trafficking, chromatin
+  remodeling, and lipid synthesis. Its role in TSH signal transduction suggests it
+  may help regulate thyroid hormone production at the cellular signaling level.
+upstream_drivers:
+- dietary-inositol-deficiency
+downstream_effects:
+- improved-tsh-signaling
+- thyroid-hormone-regulation
+related_mechanisms:
+- t4-to-t3-conversion-impairment
+linked_to_topics:
+- thyroid-dysfunction
+- hashimotos-hypothyroidism
+evidence_tier: fm_specific_thin
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Key Nutrients to Consider in Thyroid Regulation — Myo-Inositol
+  quote: Cell signaling and hormone regulation of TSH, FSH and insulin
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

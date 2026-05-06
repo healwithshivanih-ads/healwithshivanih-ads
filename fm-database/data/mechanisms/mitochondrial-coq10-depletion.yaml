@@ -1,0 +1,29 @@
+slug: mitochondrial-coq10-depletion
+display_name: Mitochondrial CoQ10 Depletion by Statins
+aliases:
+- statin-CoQ10 depletion
+- ubiquinone deficiency
+category: metabolic
+summary: Statins inhibit the mevalonate pathway used for both cholesterol and CoQ10
+  synthesis, reducing mitochondrial CoQ10 levels and impairing electron transport
+  chain function. This is proposed to contribute to statin-associated muscle symptoms
+  (myopathy, fatigue).
+upstream_drivers:
+- statin-therapy
+downstream_effects:
+- mitochondrial-energy-deficit
+- muscle-fatigue
+- myopathy
+related_mechanisms:
+- b12-absorption-impairment
+linked_to_topics:
+- medication-induced-nutrient-depletion
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXjjIqJjMSR/
+  quote: Every statin that lowers cholesterol also drains CoQ10 and vitamin D.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,5 +1,5 @@
 slug: oxidative-stress
-display_name: Oxidative Stress
+display_name: Oxidative Stress / Free Radical Burden
 aliases:
 - reactive oxygen species excess
 - antioxidant deficiency
@@ -10,12 +10,13 @@ aliases:
 - free radical damage
 - ROS accumulation
 - ROS overload
+- ROS imbalance
+- ROS burden
+- antioxidant insufficiency
 category: metabolic
-summary: Phase I processing generates reactive oxygen intermediates (superoxide, free
-  radicals) that can cause secondary tissue damage if not quenched by antioxidant
-  nutrients. Antioxidant protective nutrients include carotenoids (Vit A), ascorbic
-  acid (Vit C), tocopherols (Vit E), selenium, CoQ10, zinc, manganese, bioflavonoids,
-  silymarin, pycnogenol.
+summary: Imbalance between free radical production and antioxidant defence, driving
+  cellular damage. Fasting and polyphenol-rich foods (berries, pomegranate, turmeric,
+  green tea) are proposed to upregulate antioxidant activity and reduce free radicals.
 upstream_drivers:
 - poor-diet
 - toxin-exposure
@@ -29,6 +30,8 @@ upstream_drivers:
 - mitochondrial-atp-production
 - cytochrome-p450-phase1
 - toxic-body-burden
+- metabolic-dysfunction
+- poor-dietary-quality
 downstream_effects:
 - oxidized-ldl
 - endothelial-damage
@@ -45,6 +48,10 @@ downstream_effects:
 - mitochondrial-dysfunction
 - secondary-tissue-damage
 - increased-inflammatory-signaling
+- tissue-fibrosis
+- chronic-systemic-inflammation
+- cardiovascular-disease-risk
+- cellular-aging
 related_mechanisms:
 - chronic-inflammation
 - insulin-resistance
@@ -55,6 +62,8 @@ related_mechanisms:
 - glutathione-peroxidase-activity
 - cytochrome-p450-phase1
 - phase2-conjugation
+- innate-immune-modulation
+- chronic-systemic-inflammation
 linked_to_topics:
 - dyslipidemia
 - chronic-inflammation
@@ -65,6 +74,10 @@ linked_to_topics:
 - liver-detoxification
 - toxic-body-burden
 - mercury-amalgam-removal
+- immune-support-covid-19
+- cardiometabolic-diet
+- intermittent-fasting
+- phytonutrient-density
 evidence_tier: strong
 sources:
 - id: vitaone-cv-cheatsheet
@@ -86,7 +99,11 @@ sources:
   location: Features of the Detox Food Plan
   quote: Key antioxidants help protect the body and support biotransformation of these
     metabolites.
-version: 5
+- id: vitaone-health-coaching-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: N-acetylcysteine promotes the production of glutathione, a potent antioxidant
+    that supports immune function.
+version: 7
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

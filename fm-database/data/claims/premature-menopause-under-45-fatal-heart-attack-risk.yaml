@@ -1,0 +1,31 @@
+slug: premature-menopause-under-45-fatal-heart-attack-risk
+statement: Women who lose estrogen from gynecological causes (hysterectomy, oophorectomy)
+  at age 45 or younger and do not go on hormone replacement have a significantly increased
+  risk of a first fatal heart attack — a risk that is well-established and replicated.
+evidence_tier: strong
+rationale: The Mayo Clinic data on premature surgical menopause and cardiovascular
+  mortality is referenced. This is consistent with well-replicated findings in the
+  literature on premature ovarian insufficiency and cardiovascular risk.
+coaching_translation: For women who lose their hormones before age 45 — whether from
+  surgery, chemo, or another cause — not starting hormone replacement is a serious
+  heart risk. This is one of the most important conversations to have with a hormone-trained
+  clinician.
+out_of_scope_notes: Initiating hormone therapy after premature menopause requires
+  clinical management. Coaches should facilitate referral urgently in this scenario.
+linked_to_topics:
+- bioidentical-hormone-replacement-therapy
+- perimenopause-and-menopause
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: Hysterectomy, Early Menopause, and Cardiovascular Risk
+  quote: a woman who loses all her estrogen from her gynecologic equipment from 45
+    years or younger and doesn't go on hormones has an increased risk of a first fatal
+    heart attack... it's a pretty famous study from the Mayo Clinic... this is well-established
+    and it's been replicated.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

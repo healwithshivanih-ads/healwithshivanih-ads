@@ -1,0 +1,63 @@
+slug: calcium-trafficking-and-bone-mineralization
+display_name: Calcium Trafficking & Bone Mineralization
+aliases:
+- calcium regulation
+- bone mineral density support
+- vitamin K calcium routing
+- bone mineral density regulation
+- calcium homeostasis
+- vitamin K2 calcium routing
+category: structural
+summary: Vitamin K2 directs calcium into bone and away from arteries, kidneys, and
+  cartilage. Calcium, phosphorus, vitamin D, magnesium, boron, and K2 act synergistically
+  as a bone team. Excess phosphorus from processed foods, vitamin K deficiency, and
+  imbalanced supplementation disrupt this system.
+upstream_drivers:
+- vitamin K deficiency
+- vitamin D deficiency
+- magnesium deficiency
+- excess phosphorus from processed foods
+- low calcium intake
+- imbalanced supplementation
+- vitamin-k-deficiency
+- vitamin-d-deficiency
+- magnesium-deficiency
+- excess-phosphorus
+- low-calcium-intake
+- imbalanced-supplementation
+downstream_effects:
+- weak bones
+- kidney stones
+- arterial calcification
+- osteopenia
+- rickets
+- tetany
+- dental issues
+- weak-bones
+- kidney-stones
+- arterial-calcification
+- dental-issues
+related_mechanisms:
+- nutrient-dependent-energy-metabolism
+- oxidative-stress-and-inflammation
+linked_to_topics:
+- nutrition-deficiency
+- joint-pain
+- chronic-inflammation
+- bone-health
+evidence_tier: plausible_emerging
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Key Mechanisms Explained – calcium-trafficking-and-bone-mineralization
+  quote: The document describes vitamin K as directing calcium into bone and away
+    from arteries, kidneys, and cartilage while calcium, phosphorus, vitamin D, magnesium,
+    boron, and K2 act as a bone team.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Key Mechanisms Explained — calcium-trafficking-and-bone-mineralization
+  quote: The document describes vitamin K as directing calcium into bone and away
+    from arteries, kidneys, and cartilage while calcium, phosphorus, vitamin D, magnesium,
+    boron, and K2 act as a bone team.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

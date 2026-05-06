@@ -1,0 +1,31 @@
+slug: low-serum-calcium
+display_name: Low Serum Calcium
+aliases:
+- hypocalcemia
+- calcium low on labs
+category: metabolic
+severity: concerning
+description: A serum total calcium reading below 9.2 mg/dL. Often reflects low albumin,
+  low stomach acid, low magnesium, or low vitamin D rather than true dietary calcium
+  deficiency.
+when_to_refer: Refer to clinician for ionized calcium, albumin-corrected calcium,
+  PTH, vitamin D, and magnesium testing before attributing to dietary deficiency or
+  recommending supplementation.
+linked_to_topics:
+- calcium-deficiency
+- calcium-metabolism
+- hypochlorhydria
+linked_to_mechanisms:
+- pth-calcium-regulation
+- albumin-calcium-binding
+- magnesium-calcium-intracellular-shift
+- reduced-gastric-acid-calcium-absorption
+sources:
+- id: coconote-fm-calcium-deficiency
+  location: Calcium Physiology Introduction
+  quote: if you look at the low calcium serum that doesn't mean that patient having
+    a calcium deficiency and they require calcium supplementation
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

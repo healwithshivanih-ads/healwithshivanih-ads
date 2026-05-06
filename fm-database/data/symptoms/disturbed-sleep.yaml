@@ -1,0 +1,26 @@
+slug: disturbed-sleep
+display_name: Disturbed Sleep
+aliases:
+- sleep disruption
+- poor sleep
+- night waking
+category: sleep
+severity: common
+description: Difficulty falling or staying asleep, often linked to hormonal fluctuations
+  in estrogen and progesterone, particularly during perimenopause.
+linked_to_topics:
+- estrogen-dominance
+- perimenopause
+linked_to_mechanisms:
+- progesterone-deficiency
+- hpa-axis-dysregulation
+when_to_refer: ''
+sources:
+- id: coconote-fm-estrogen-dominance
+  location: Signs and Symptoms of Estrogen Dominance
+  quote: 'Signs and symptoms of estrogen dominance: mood swings, bare strenuous, acne,
+    anxiety, fatigue, disturbed sleep, hot flashes, low libido.'
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -5,21 +5,29 @@ aliases:
 - dysgeusia
 - poor taste
 - reduced smell
+- hypogeusia
+- reduced sense of taste
+- taste changes
 category: neurological
 severity: common
-description: Reduced or absent sense of taste or smell, which is a classic sign of
-  zinc deficiency.
-when_to_refer: Refer if sudden onset (possible viral etiology) or if associated with
-  neurological symptoms.
+description: Zinc is required for proper sense of taste and smell. Deficiency can
+  diminish these senses. Loss may also be triggered by viral illness or other causes.
+when_to_refer: Refer if sudden and severe, or accompanied by other neurological symptoms.
 linked_to_topics:
 - zinc-sufficiency
+- zinc-nutrition
 linked_to_mechanisms: []
 sources:
 - id: vitaone-nutrition-toolkit
   location: 'Food Sources: Zinc'
   quote: Zinc is necessary for normal growth and development, immune and neurological
     function, proper sense of taste and smell.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: 'Food Sources: Zinc'
+  quote: Zinc is necessary for normal growth and development, immune and neurological
+    function, proper sense of taste and smell, and maintaining the structure of cell
+    membranes.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

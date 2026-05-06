@@ -8,24 +8,29 @@ forms_available:
 timing_options:
 - with_breakfast
 - with_dinner
-take_with_food: optional
+take_with_food: required
 linked_to_topics:
 - testosterone-health
+- testosterone-dht-conversion
 linked_to_claims:
 - 5ar-inhibition-reduces-bph-hair-loss-acne
-notes_for_coach: Listed as a 5-alpha reductase inhibiting herb. Also commonly used
-  for menopause symptoms. Clinician should assess full hormonal context and determine
-  appropriateness and dose.
-notes_for_client: Black cohosh is an herb used to support hormone balance. It may
-  also help modulate DHT levels — use only as prescribed by your clinician.
-evidence_tier: plausible_emerging
+- 5ar-inhibitors-reduce-dht-prevent-bph-hair-loss-acne
+notes_for_coach: Listed as a 5-α reductase inhibitor. More commonly used in FM for
+  menopausal symptom relief. Clinician should supervise use especially in women with
+  hormone-sensitive conditions.
+notes_for_client: Black cohosh is an herb used in hormone support, particularly for
+  menopausal symptoms. It may also help regulate DHT levels.
+evidence_tier: fm_specific_thin
 typical_dose_range: {}
 linked_to_mechanisms: []
 sources:
 - id: vitaone-sex-hormones-toolkit
   location: Maintaining Healthy Testosterone Levels — Page 06
   quote: Black Cohosh (Actaea racemosa) [Herbs that Inhibit 5-a Reductase]
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors'
+  quote: Black Cohosh (Actaea racemosa) [listed under Herbs that Inhibit 5-a Reductase]
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

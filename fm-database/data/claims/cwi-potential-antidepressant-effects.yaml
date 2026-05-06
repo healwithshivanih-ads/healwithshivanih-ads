@@ -1,0 +1,31 @@
+slug: cwi-potential-antidepressant-effects
+statement: Cold water immersion has potential antidepressant effects, associated with
+  improved mood, reduced anxiety, and general sense of wellbeing.
+evidence_tier: plausible_emerging
+rationale: Observed across questionnaire studies in the review. Noradrenaline and
+  endorphin mechanisms are plausible; however, no rigorous RCTs in clinical depression
+  populations exist yet. Active lifestyle and social factors may confound.
+coaching_translation: Many regular cold water swimmers report feeling less anxious,
+  less depressed, and generally happier — and there is credible biology behind why
+  that might happen.
+out_of_scope_notes: Do not advise clients to use CWI as a replacement for clinical
+  treatment of depression or anxiety disorders. Refer to mental health clinicians
+  as appropriate.
+caveats:
+- Most evidence from questionnaires, not clinical trials
+- Confounding from social interaction and active lifestyle
+- No RCTs in clinically depressed populations confirmed in this review
+linked_to_topics:
+- cold-water-immersion-mental-health
+- cold-water-immersion
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: espeland-2022-cold-water-immersion
+  location: Mental Health
+  quote: Evidence indicates potential antidepressant effects through increased noradrenaline
+    signaling.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

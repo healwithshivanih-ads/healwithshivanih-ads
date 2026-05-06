@@ -1,0 +1,33 @@
+slug: zinc-has-antiviral-properties
+statement: Zinc (30–60 mg daily in divided doses) has strong antiviral properties
+  against many viruses and supports immune function.
+evidence_tier: strong
+rationale: A large body of peer-reviewed research supports zinc's role in immune function
+  and antiviral activity, including inhibiting coronavirus RNA polymerase (te Velthuis
+  et al. 2010, PLoS Pathog). Multiple referenced RCTs and reviews support this claim.
+coaching_translation: Zinc is one of the most well-researched minerals for immune
+  health and fighting viruses. It's found in meat, shellfish, and seeds, and is commonly
+  supplemented during illness.
+out_of_scope_notes: Doses above the UL (40 mg/day for adults) should be supervised
+  by a clinician due to risk of copper depletion. Long-term high-dose zinc requires
+  clinician monitoring.
+caveats:
+- Chronic high-dose zinc can deplete copper — supplement copper if using zinc long-term
+  above 40 mg/day.
+- 'Zinc form matters: acetate, citrate, picolinate, glycinate, or gluconate (lozenge)
+  are preferred bioavailable forms.'
+linked_to_topics:
+- immune-support-covid-19
+- chronic-inflammation
+linked_to_supplements:
+- zinc
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: A large body of research shows that zinc has strong anti-viral properties
+    against many viruses.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

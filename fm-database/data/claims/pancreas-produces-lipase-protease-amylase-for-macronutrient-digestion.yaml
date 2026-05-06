@@ -1,0 +1,29 @@
+slug: pancreas-produces-lipase-protease-amylase-for-macronutrient-digestion
+statement: The exocrine pancreas produces lipase, proteases, and amylases to digest
+  dietary fats, proteins, and carbohydrates respectively in the duodenum.
+evidence_tier: strong
+rationale: This is well-established gastrointestinal physiology supported by extensive
+  peer-reviewed literature. Lipase, proteases, and amylases are the canonical pancreatic
+  digestive enzymes with defined substrates.
+coaching_translation: 'Your pancreas makes three main digestive enzymes: one for fats
+  (lipase), one for proteins (protease), and one for carbohydrates (amylase). When
+  the pancreas is under-functioning, all three can be affected.'
+linked_to_topics:
+- pancreatic-insufficiency
+- digestive-enzyme-supplementation
+linked_to_supplements:
+- digestive-enzymes-broad-spectrum
+caveats:
+- Source is an expert consensus lecture, not a primary research paper.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-pancreatic-insufficiency
+  location: Exocrine Pancreatic Function Overview
+  quote: Certain digestive enzymes that pancreas produce for the digestion of certain
+    foods are, number one, lipase, specifically helps in the breakdown of fats. Proteases
+    helps in the breakdown of proteins and amylases helps in the breakdown of carbohydrates.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

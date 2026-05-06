@@ -1,0 +1,27 @@
+slug: melatonin-supports-estrogen-metabolism
+statement: Melatonin may support healthy estrogen metabolism.
+evidence_tier: fm_specific_thin
+rationale: Listed in the FMCN toolkit with qualifying language ('some evidence').
+  Mechanistic rationale includes antioxidant properties and potential modulation of
+  CYP enzyme activity, but RCT evidence is limited.
+coaching_translation: Melatonin, best known for sleep, may also have a role in supporting
+  hormone balance — another reason good sleep hygiene matters for hormonal health.
+caveats:
+- Evidence is preliminary; listed as 'some evidence' in source
+- Melatonin dosing is out of coaching scope
+- Source is expert-consensus FM toolkit
+out_of_scope_notes: Melatonin supplementation dosing requires clinician guidance.
+linked_to_topics:
+- estrogen-metabolism
+linked_to_supplements:
+- melatonin
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Estrogen Metabolism — Promotes Healthy Estrogen Metabolism
+  quote: There is also some evidence that melatonin, N-acetyl-cystine, & methylated
+    B vitamins may support healthy estrogen metabolism as well.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,38 @@
+slug: probiotic-and-prebiotic-support
+display_name: Probiotic & Prebiotic Support for Gut Restoration
+aliases:
+- gut flora restoration
+- fermented foods
+- microbiome support
+summary: After antibiotic use or gut flora disruption, a daily probiotic supplement
+  (Lactobacillus acidophilus, Bifidobacterium) for at least two months is recommended
+  alongside a diverse prebiotic fibre intake (7+ varieties per meal). Fermented foods
+  — yoghurt, sauerkraut, kimchi, miso, idli, dosa — are highlighted as practical daily
+  sources.
+common_symptoms:
+- bloating
+- diarrhea
+- constipation
+- immune-dysregulation
+related_topics:
+- gut-microbiome-and-gut-flora
+- leaky-gut
+- inflammatory-bowel-conditions
+key_mechanisms:
+- gut-microbiome-colonisation
+- microbiome-nutrient-synthesis
+coaching_scope_notes: Coaches can recommend probiotic supplements post-antibiotics,
+  diverse fibre intake, and fermented foods as part of a gut restoration plan.
+evidence_tier: plausible_emerging
+red_flags: []
+clinician_scope_notes: ''
+sources:
+- id: barbara-oneil-gi-tract
+  location: Probiotic Section
+  quote: If a person's been on antibiotics, they need to take a probiotic supplement
+    every morning for at least two months. Probiotic is a powder that contains lactobacillus
+    acidophilus, bifidus bacterium and quite possibly a few others.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

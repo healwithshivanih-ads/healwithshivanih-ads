@@ -1,0 +1,25 @@
+slug: 5-percent-weight-loss-reduces-systolic-bp-3mmhg
+statement: Every 5% loss of excess body weight is associated with an average reduction
+  of approximately 3 mmHg in systolic blood pressure.
+evidence_tier: strong
+rationale: The relationship between weight loss and blood pressure reduction is well-established
+  in clinical trials and guidelines.
+coaching_translation: Even small amounts of weight loss make a meaningful difference
+  to blood pressure. Just 2–3 pounds lost for someone 50 pounds overweight can move
+  the needle.
+caveats: []
+linked_to_topics:
+- blood-pressure-management
+- visceral-adiposity
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-body-composition-bmi
+  location: Blood Pressure / Weight Loss Section
+  quote: For every 5% loss of excessive weight, you can lower systolic blood pressure
+    by three points.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

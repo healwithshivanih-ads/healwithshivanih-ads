@@ -1,0 +1,23 @@
+slug: loss-of-appetite
+display_name: Loss of Appetite
+aliases:
+- poor appetite
+- not feeling hungry
+- decreased appetite
+- anorexia
+category: gi
+severity: common
+description: Reduced desire to eat, which can be an early sign of zinc deficiency,
+  potentially related to zinc's role in taste perception and digestive function.
+linked_to_topics:
+- zinc-deficiency
+linked_to_mechanisms: []
+when_to_refer: ''
+sources:
+- id: coconote-fm-zinc-deficiency
+  location: Signs and Symptoms
+  quote: Lethargy, loss of appetite, slow wound healing, non-responsive anemia.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

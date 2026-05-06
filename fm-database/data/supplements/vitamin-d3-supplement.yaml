@@ -1,0 +1,53 @@
+slug: vitamin-d3-supplement
+display_name: Vitamin D3 (Cholecalciferol)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+- liquid
+typical_dose_range:
+  capsule:
+    min: 2000
+    max: 10000
+    unit: IU
+  tablet:
+    min: 2000
+    max: 10000
+    unit: IU
+  liquid:
+    min: 2000
+    max: 10000
+    unit: IU
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- vitamin-d3
+- vitamin-d3-k2-synergy
+linked_to_claims:
+- vitamin-d3-bmi-under-30-deficiency-dosing
+- vitamin-d3-bmi-over-30-deficiency-dosing
+- vitamin-d3-chronic-disease-dosing
+- vitamin-d3-k2-preferred-combination
+notes_for_coach: Vitamin D3 is fat-soluble — always advise client to take with a fat-containing
+  meal. BMI >30 clients require approximately double the standard dose. Clients with
+  chronic inflammatory conditions may also need higher doses. Always pair with K2
+  to direct calcium appropriately. Specific dose titration requires clinician guidance.
+notes_for_client: Take your Vitamin D3 with a meal containing some healthy fat (e.g.,
+  eggs, avocado, olive oil) for best absorption. It works best when paired with Vitamin
+  K2, which helps make sure the calcium absorbed goes into your bones rather than
+  your arteries.
+evidence_tier: strong
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-vitamin-d3-k2
+  location: Vitamin D Supplementation Dosing
+  quote: Anybody whose BMI is under the age of 30 requires in the times of deficiency
+    requires at least 6000 international units per day with the maintenance that can
+    be achieved at 15,000 to 2000 international units per day.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

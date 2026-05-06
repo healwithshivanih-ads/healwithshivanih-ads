@@ -1,0 +1,29 @@
+slug: lactulose-mannitol-test-measures-gut-permeability
+statement: The lactulose-mannitol test measures intestinal permeability by comparing
+  the absorption ratios of a large molecule (lactulose) and a small molecule (mannitol);
+  a high ratio indicates increased permeability.
+evidence_tier: plausible_emerging
+rationale: The lactulose-mannitol (or lactulose-rhamnose) test is a validated research
+  tool for measuring intestinal permeability. Its clinical utility and standardization
+  for routine practice are still limited.
+coaching_translation: Researchers can test for leaky gut by having someone drink two
+  types of sugar molecules — one large, one small — and checking which ones get through
+  the gut into the bloodstream.
+out_of_scope_notes: Test ordering and interpretation is clinician/researcher scope.
+caveats:
+- This test is primarily used in research, not routine clinical practice.
+- Test availability outside specialized labs is limited.
+linked_to_topics:
+- intestinal-permeability
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-intestinal-permeability
+  location: Diagnostic Testing – Lactulose-Mannitol
+  quote: The common test that is done in research now in clinical setting nobody is
+    doing this testing but in clinical research this test is documented that is called
+    Lactulose-Manitoul test.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

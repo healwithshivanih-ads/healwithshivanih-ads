@@ -1,0 +1,28 @@
+slug: gratitude-practice-strengthens-immune-system
+statement: Regular gratitude practice is associated with stronger immune system function.
+evidence_tier: plausible_emerging
+rationale: 'Plausible via HPA axis: chronic stress suppresses immune function through
+  cortisol; gratitude practices that reduce stress and activate parasympathetic tone
+  may reduce cortisol-mediated immune suppression. Direct RCT evidence is thin.'
+coaching_translation: Regularly appreciating what's good in your life may help keep
+  your immune system stronger by reducing the wear-and-tear that chronic stress causes.
+caveats:
+- Source does not cite primary immunology studies. Mechanism is inferential; direct
+  immune outcome RCTs for gratitude journaling are limited.
+- Source is an educational toolkit (fm_specific context).
+linked_to_topics:
+- gratitude-practice
+- self-care
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Practicing Gratitude with the IFM Gratitude Journal
+  quote: These benefits include decreased stress levels, lowered blood pressure, better
+    sleep quality, stronger immune systems, and increased feelings of joy, happiness,
+    forgiveness, and compassion.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

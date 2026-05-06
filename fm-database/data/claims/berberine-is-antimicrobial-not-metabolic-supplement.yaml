@@ -1,0 +1,32 @@
+slug: berberine-is-antimicrobial-not-metabolic-supplement
+statement: Berberine is an antimicrobial and antifungal agent, not simply a metabolic
+  supplement; long-term use carries risk of disrupting the beneficial gut and vaginal
+  microbiome.
+evidence_tier: plausible_emerging
+rationale: Dr. Davis explicitly states berberine functions as an antibiotic/antifungal,
+  not merely a blood sugar or blood pressure supplement. He cautions against chronic
+  use because it kills beneficial species including crispatus and reuteri. The antimicrobial
+  properties of berberine are well-documented in the literature.
+coaching_translation: Berberine is often sold for blood sugar support, but it works
+  by killing bacteria—including good bacteria. Long-term use may undo your microbiome
+  restoration efforts.
+caveats:
+- Source is expert_consensus interview.
+- Short-term use for fungal overgrowth may be appropriate under clinician guidance.
+- Do not take simultaneously with probiotic supplements.
+linked_to_topics:
+- gut-microbiome
+- sibo
+linked_to_supplements:
+- berberine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Berberine and microbiome discussion
+  quote: Berberine is one of those misused supplements around. People say, I take
+    berberine to reduce my blood glucose or my blood pressure. It's an antibiotic.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

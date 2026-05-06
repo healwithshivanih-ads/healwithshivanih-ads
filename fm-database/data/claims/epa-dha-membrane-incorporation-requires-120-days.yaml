@@ -1,0 +1,29 @@
+slug: epa-dha-membrane-incorporation-requires-120-days
+statement: Full red blood cell (RBC) membrane incorporation of EPA and DHA requires
+  at least 120 days of continuous supplementation.
+evidence_tier: plausible_emerging
+rationale: Stated clearly in the lecture as the basis for the recommended supplementation
+  duration. Aligns with the known RBC lifespan (~120 days) used in omega-3 index testing.
+  Source is an FM lecture of moderate quality.
+coaching_translation: Think of omega-3 supplementation like a 4-month commitment —
+  your red blood cells turn over slowly, and that's how long it takes to fully benefit.
+caveats:
+- Specific 120-day figure from FM lecture source; verify with primary literature.
+- Dose must be adequate (2–4g/day) for meaningful incorporation.
+linked_to_topics:
+- omega-3-fatty-acids
+linked_to_supplements:
+- epa-dha-fish-oil
+- algae-oil-dha-epa
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-omega-3-fatty-acids
+  location: Fatty Acid Immune Cell Membrane Incorporation Slide
+  quote: the RBC membrane incorporation happens only after 120 days. The uptake only
+    happens after 120 days. So this has to be the time period for omega-3 supplements
+    to incorporate in the cell membrane.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

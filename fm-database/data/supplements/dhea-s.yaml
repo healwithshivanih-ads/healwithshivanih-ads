@@ -1,0 +1,39 @@
+slug: dhea-s
+display_name: DHEA-S Supplement
+category: other
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 25
+    max: 50
+    unit: mg
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- estrogen-dominance
+- perimenopause
+linked_to_claims:
+- dhea-supplementation-contraindicated-in-perimenopausal-estrogen-dominance
+notes_for_coach: DHEA is a precursor hormone — it can convert downstream to both testosterone
+  and estrogen. Do NOT recommend in perimenopausal women with existing estrogen dominance
+  or elevated estrogen, as it will worsen the condition. Requires clinician guidance
+  and lab monitoring. Normal DHEA-S reference range cited as 150-390 µg/dL in the
+  document.
+notes_for_client: DHEA is a building-block hormone your body uses to make other hormones.
+  However, it's not appropriate for everyone — especially if your estrogen is already
+  high. Always check with your doctor before taking DHEA.
+evidence_tier: confirm_with_clinician
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-estrogen-dominance
+  location: Causes of Estrogen Dominance / DHEA Caution
+  quote: Do not give DHEA when the patient is having perimenopausal phase. We don't
+    want estrogen to be on the higher side.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

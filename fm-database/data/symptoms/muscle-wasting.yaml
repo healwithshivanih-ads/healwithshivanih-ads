@@ -1,0 +1,25 @@
+slug: muscle-wasting
+display_name: Muscle Wasting
+aliases:
+- sarcopenia
+- muscle loss
+- muscle atrophy
+category: musculoskeletal
+severity: concerning
+description: Loss of muscle mass resulting from inadequate protein digestion and absorption
+  due to insufficient protease activity.
+when_to_refer: Refer if significant muscle loss is observed — may indicate severe
+  protein malabsorption requiring medical nutritional support.
+linked_to_topics:
+- pancreatic-insufficiency
+linked_to_mechanisms:
+- malabsorption
+- exocrine-pancreatic-enzyme-deficiency
+sources:
+- id: coconote-fm-pancreatic-insufficiency
+  location: Signs and Symptoms
+  quote: Muscle wasting, weight loss, constantly absorbed abdominal pain.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,43 @@
+slug: atherosclerosis
+display_name: Atherosclerosis
+aliases:
+- arterial plaque
+- hardening of the arteries
+- arterial stenosis
+summary: A chronic, progressive condition in which fat (primarily small-dense LDL
+  particles) infiltrates the endothelium, undergoes oxidation and glycation, triggers
+  immune-mediated inflammation, and leads to plaque formation, arterial narrowing,
+  and ultimately vessel occlusion.
+common_symptoms:
+- chest-pain
+- dyspnea
+- stroke
+- myocardial-infarction
+red_flags:
+- plaque rupture leading to MI
+- complete arterial occlusion
+- embolic stroke
+related_topics:
+- cardiometabolic-disease
+- endothelial-dysfunction
+- insulin-resistance
+- lipid-panel-interpretation
+key_mechanisms:
+- endothelial-injury
+- ldl-oxidation-and-glycation
+- macrophage-foam-cell-formation
+coaching_scope_notes: Coaches can support anti-inflammatory dietary patterns, blood
+  sugar regulation, and stress reduction as upstream prevention strategies.
+clinician_scope_notes: Plaque progression, imaging (coronary calcium score), and pharmacological
+  management are clinician responsibilities.
+evidence_tier: strong
+sources:
+- id: coconote-fm-biomarkers-cvs
+  location: Pathophysiology of Cardiovascular Disease
+  quote: Another mechanism for blockage of artery is actually a deposition of fat
+    in the wall and that leads to a slowly hardening of the vessel and blockage of
+    that artery and that is called atherosclerosis.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

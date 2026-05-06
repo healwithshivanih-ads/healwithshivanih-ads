@@ -1,0 +1,30 @@
+slug: vitamin-d-supports-reproductive-health-and-bone
+statement: Vitamin D, in combination with Vitamin K2, plays an important role in supporting
+  reproductive health and bone mineral density in perimenopausal and menopausal women.
+evidence_tier: strong
+rationale: Vitamin D's role in bone health (calcium absorption, bone mineralization)
+  is well-established. Evidence for Vitamin D in reproductive health is growing. Vitamin
+  K2 (MK-7) alongside D3 for bone and cardiovascular health has plausible_emerging
+  evidence.
+coaching_translation: Vitamin D and K2 are a key duo for bone health during menopause.
+  Testing Vitamin D levels first is recommended since deficiency is very common, especially
+  in India.
+caveats:
+- Vitamin D dosing is clinician-guided and requires baseline testing.
+- K2 combination evidence is plausible_emerging; D3 alone for bone health is strong.
+linked_to_topics:
+- menopause
+linked_to_supplements:
+- vitamin-d3
+- vitamin-k2
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-sex-hormones
+  location: Management — Supplementation
+  quote: Vitamin D is very important when it comes to supporting in Vitamin K2 and
+    when it comes to supporting the reproductive health.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

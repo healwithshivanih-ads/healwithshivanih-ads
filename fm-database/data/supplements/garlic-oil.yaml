@@ -1,0 +1,34 @@
+slug: garlic-oil
+display_name: Garlic Oil
+category: herb
+forms_available:
+- capsule
+- liquid
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- candida-overgrowth
+- gut-dysbiosis
+- parasite-infection
+linked_to_claims:
+- broad-spectrum-herbal-antimicrobials-effective-against-bacteria-fungi-parasites
+notes_for_coach: Garlic oil is a broad-spectrum antimicrobial with antifungal and
+  antiparasitic properties. Part of the herbal removal protocol for gut dysbiosis.
+  Often combined with oil of oregano, berberine, and caprylic acid.
+notes_for_client: Garlic oil is a natural antimicrobial that supports your gut by
+  targeting harmful bacteria, yeast, and parasites.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Removal Section
+  quote: garlic oil, berberine, OOC, oil of oregano, and oleoleflexic, they are the
+    blood spectrum.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

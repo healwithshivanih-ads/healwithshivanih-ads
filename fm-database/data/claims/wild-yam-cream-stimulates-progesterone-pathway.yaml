@@ -1,0 +1,34 @@
+slug: wild-yam-cream-stimulates-progesterone-pathway
+statement: Topical application of wild yam cream (containing diosgenin) stimulates
+  the biochemical pathway the body uses to produce progesterone, potentially relieving
+  hormonally-driven depression in women.
+evidence_tier: fm_specific_thin
+rationale: Diosgenin is a steroidal saponin precursor used industrially to synthesise
+  progesterone, but human studies on topical wild yam cream converting to progesterone
+  in vivo show inconsistent results. This is a common FM recommendation with limited
+  peer-reviewed support.
+coaching_translation: Some women find that a plant-based wild yam cream supports their
+  hormone balance and mood, particularly around their cycle or menopause. It's worth
+  discussing with your healthcare provider.
+out_of_scope_notes: Hormone therapy decisions, including recommendation of wild yam
+  cream for diagnosed hormonal conditions, require clinician oversight.
+caveats:
+- Human conversion of diosgenin to progesterone via topical application is not robustly
+  demonstrated in clinical trials
+- Source is expert lecture
+- Should not replace clinician-monitored hormone assessment
+linked_to_topics:
+- hormonal-depression-progesterone
+linked_to_supplements:
+- wild-yam-cream
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-healing-mind
+  location: Hormonal Depression Section
+  quote: The wild yam cream contains a plant chemical extracted from the wild yam
+    called diostin. And when this is applied to the skin, it stimulates the pathway
+    in the body that the body uses to make progesterone.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

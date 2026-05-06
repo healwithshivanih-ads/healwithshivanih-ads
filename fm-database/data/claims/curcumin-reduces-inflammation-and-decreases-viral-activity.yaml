@@ -1,0 +1,33 @@
+slug: curcumin-reduces-inflammation-and-decreases-viral-activity
+statement: Curcumin (500–1,000 mg twice daily) reduces inflammation via NLRP3 inflammasome
+  inhibition and decreases viral activity including for COVID-19.
+evidence_tier: plausible_emerging
+rationale: Curcumin's anti-inflammatory effects via NLRP3 inhibition and IL-1β suppression
+  are supported by multiple peer-reviewed studies (Yin et al. 2018, J Immunol; Gong
+  et al. 2018, Mol Immunol). Antiviral effects for COVID-19 specifically are early-phase
+  and not yet consensus. Bioavailability is a key limitation without enhanced formulations.
+coaching_translation: Curcumin, the active compound in turmeric, can help quiet the
+  body's inflammatory signaling. Look for enhanced-absorption formulas (with piperine
+  or as a phytosome).
+out_of_scope_notes: Specific dosing (500–1,000 mg 2x daily) should be confirmed with
+  a clinician. Curcumin has known drug interactions (see references — pharmacokinetic
+  interactions).
+caveats:
+- Bioavailability is low in standard forms — enhanced formulations recommended.
+- Drug interactions possible with blood thinners, chemotherapy drugs.
+- COVID-19 antiviral claim is based on early-phase evidence only.
+linked_to_topics:
+- chronic-inflammation
+- immune-support-covid-19
+linked_to_supplements:
+- curcumin
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Curcumin has been shown to reduce inflammation and decrease viral activity
+    for COVID-19.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,41 @@
+slug: functional-medicine-coaching
+display_name: Functional Medicine Coaching
+aliases:
+- FM coaching
+- integrative health coaching
+- functional health coaching
+summary: An emerging and rapidly expanding field in which certified health coaches
+  serve as strategic clinical partners within functional and integrative medicine
+  care teams, bridging the gap between complex care plans and patient implementation
+  through accountability, behavior change, and data translation.
+common_symptoms:
+- care-plan-overwhelm
+- low-patient-accountability
+- provider-burnout
+red_flags:
+- coach-operating-outside-scope-of-practice
+related_topics:
+- integrative-medicine
+- chronic-disease-management
+- health-coaching-career-paths
+- coach-clinician-collaboration
+key_mechanisms:
+- patient-centered-care-model
+- behavior-change-accountability
+- interdisciplinary-care-integration
+coaching_scope_notes: Coaches translate care plans, support behavior change, provide
+  accountability, and help patients implement provider recommendations. Coaches do
+  NOT perform lab reviews, diagnose, or prescribe.
+clinician_scope_notes: Clinicians retain responsibility for lab interpretation, diagnosis,
+  prescribing, and clinical decision-making. Coaches are a complementary, not replacement,
+  layer of care.
+evidence_tier: plausible_emerging
+sources:
+- id: ask-expert-future-fm
+  location: Healthcare Shift & Coaching Role Section
+  quote: Health coaching is increasingly recognized as a scalable evidence-based strategy
+    to address gaps in chronic care.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

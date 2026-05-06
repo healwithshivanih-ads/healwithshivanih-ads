@@ -1,0 +1,42 @@
+slug: prefrontal-cortex-function
+display_name: Prefrontal Cortex Function & Emotional Regulation
+aliases:
+- PFC function
+- executive function
+- reason intellect judgement
+- board of critiques
+category: neurological
+summary: The prefrontal cortex (PFC) hosts reason, intellect, judgement, and willpower.
+  It filters emotional impulses from the limbic system. Its function is degraded by
+  dehydration, poor sleep, sugar spikes, caffeine, and alcohol. It is strengthened
+  by sunlight, hydration, sleep, exercise, nose breathing, and good nutrition.
+upstream_drivers:
+- adequate-hydration
+- quality-sleep
+- sunlight-exposure
+- physical-exercise
+- good-nutrition
+downstream_effects:
+- emotional-regulation
+- impulse-control
+- positive-decision-making
+- reduced-depression-risk
+related_mechanisms:
+- neuroplasticity
+- glymphatic-clearance
+- serotonin-synthesis-via-sunlight
+linked_to_topics:
+- depression-lifestyle
+- neuroplasticity
+- sleep-hygiene
+evidence_tier: strong
+sources:
+- id: barbara-oneil-healing-mind
+  location: Prefrontal Cortex Section
+  quote: If we haven't had a good sleep, that interferes. That compromises the strength
+    of our prefrontal cortex. If we're dehydrated, it compromises the strength of
+    our prefrontal cortex.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

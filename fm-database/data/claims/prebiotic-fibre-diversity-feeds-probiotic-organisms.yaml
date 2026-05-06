@@ -1,0 +1,32 @@
+slug: prebiotic-fibre-diversity-feeds-probiotic-organisms
+statement: Dietary prebiotic fibre feeds gut microorganisms; consuming at least 7
+  different fibre varieties per meal maximises the diversity of probiotic organisms
+  supported, as different fibres feed different microorganism species.
+evidence_tier: plausible_emerging
+rationale: The principle that dietary fibre diversity supports microbiome diversity
+  is supported by emerging research (e.g. American Gut Project, Sonnenburg lab studies).
+  The specific '7 varieties per meal' figure is a practitioner heuristic rather than
+  an evidence-based threshold.
+coaching_translation: Aim for at least 7 different types of fruit, vegetable, legume,
+  nut, or seed fibre at each meal. Variety is more important than quantity — each
+  different fibre feeds a different group of beneficial gut bacteria.
+caveats:
+- The '7 varieties per meal' threshold is a practitioner heuristic, not a peer-reviewed
+  guideline.
+- Source is a practitioner talk.
+linked_to_topics:
+- gut-microbiome-and-gut-flora
+- probiotic-and-prebiotic-support
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-gi-tract
+  location: Prebiotic Section
+  quote: You can have ten different types of mangoes and every single mango will feed
+    a different probiotic, a different microorganism. So try and have at least seven
+    different varieties of fibre in every meal.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

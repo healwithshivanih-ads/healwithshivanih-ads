@@ -1,0 +1,30 @@
+slug: ideal-diet-ratio-70-80-alkaline-20-30-acid
+statement: To maintain a healthy internal pH environment (~6.5), a person should consume
+  70–80% alkaline-forming foods and 20–30% acid-forming foods.
+evidence_tier: fm_specific_thin
+rationale: This ratio is a commonly cited guideline within functional and naturopathic
+  medicine's acid-alkaline framework. It is plausible from a whole-food dietary quality
+  standpoint but the specific 70/80-20/30 ratio lacks strong RCT support as a clinical
+  target.
+coaching_translation: Aim to fill most of your plate (roughly three-quarters) with
+  alkaline-forming whole foods like vegetables, lentils, and certain nuts, keeping
+  refined grains, sugars, and animal proteins to a smaller portion.
+caveats:
+- Source is expert consensus/lecture. Blood pH is tightly regulated and not directly
+  altered by diet; this framework is better understood as relating to urinary pH or
+  overall dietary quality.
+- The precise 70/80% figure is not validated by RCT evidence.
+linked_to_topics:
+- ph-balance-and-diet
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-fresh-cheeses-ph
+  location: pH Balance and Food Ratios
+  quote: To maintain this 6.5 environment, we should be consuming 70-80% alkaline
+    forming foods and 20-30% acid forming foods.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

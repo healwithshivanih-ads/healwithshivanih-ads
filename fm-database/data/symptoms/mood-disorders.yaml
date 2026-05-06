@@ -1,0 +1,27 @@
+aliases:
+- mood swings
+- behavioral changes
+- depression symptoms
+category: mood
+description: Behavioral and mood disturbances potentially linked to toxic burden,
+  neurotoxic exposures, and impaired detoxification pathways.
+display_name: Mood Disorders / Behavioral Changes
+linked_to_mechanisms:
+- heavy-metal-toxicity
+- endocrine-disruption-by-toxicants
+linked_to_topics:
+- toxic-body-burden
+- metabolic-detoxification
+severity: common
+slug: mood-disorders
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Detox Food Plan — page 05
+  quote: behavior and mood disorders, and neurological conditions such as tremors,
+    headaches, & cognitive difficulties
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani
+version: 1
+when_to_refer: Refer if mood symptoms are severe, involve safety concerns, or meet
+  criteria for clinical depression/anxiety.

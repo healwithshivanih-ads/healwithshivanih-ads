@@ -5,10 +5,13 @@ aliases:
 - intestinal hyperpermeability
 - increased gut permeability
 - increased intestinal permeability
+- damaged gut lining
+- impaired intestinal barrier
+- impaired gut barrier
 category: gut
-summary: Compromise of tight junction proteins in intestinal epithelium allowing luminal
-  antigens, bacteria, and toxins to translocate into the bloodstream, triggering systemic
-  immune activation and inflammation.
+summary: Disruption of the intestinal epithelial barrier, which can be driven by chronic
+  stress, dysbiosis, and SNS dominance. Results in impaired nutrient absorption, altered
+  microbiome composition, and increased systemic inflammation.
 upstream_drivers:
 - zinc-deficiency
 - dysbiosis
@@ -16,6 +19,10 @@ upstream_drivers:
 - gluten-exposure-in-sensitive-individuals
 - chronic-stress
 - high-fodmap-load
+- hypochlorhydria
+- early-life-infection
+- malnourishment
+- sympathetic-nervous-system-activation
 downstream_effects:
 - nutrient-malabsorption
 - immune-activation
@@ -24,16 +31,28 @@ downstream_effects:
 - food-reactivity
 - brain-fog
 - fatigue
+- chronic-inflammation
+- gut-immune-dysregulation
+- poor-nutrient-absorption
+- microbiome-alteration
 related_mechanisms:
 - systemic-inflammation
 - immune-food-reactivity
 - colonic-fermentation
+- gut-immune-dysregulation
+- estrogen-recirculation-via-beta-glucuronidase
+- sympathetic-nervous-system-activation
+- parasympathetic-inhibition
 linked_to_topics:
 - hairfall
 - knee-pain
 - elimination-diet
 - gluten-sensitivity
 - ibs
+- dysbiosis
+- hypochlorhydria
+- gut-skin-hormone-axis
+- stress-nutrition-connection
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-nutrition-cheatsheet
@@ -43,7 +62,15 @@ sources:
   location: Food Swaps/Replacements
   quote: Gluten may be present as malt in some of these products. The risk of cross-contamination
     also persists for nuts and oats.
-version: 2
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Blood Report Analysis
+  quote: The stomach lining also got impacted because of gut dysbiosis and which resulted
+    in hypochlorhydria.
+- id: ask-expert-coaching-stress-kids
+  location: Stress Client Topic Discussion
+  quote: your biome will change in a way that you're not making the vitamins and everything
+    because it's affected by stress.
+version: 4
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

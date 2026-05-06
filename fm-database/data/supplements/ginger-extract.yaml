@@ -1,0 +1,42 @@
+slug: ginger-extract
+display_name: Ginger Extract
+category: herb
+forms_available:
+- capsule
+- powder
+- liquid
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 1000
+    unit: mg
+  powder:
+    min: 1
+    max: 2
+    unit: g
+timing_options:
+- morning
+- mid_morning
+- mid_afternoon
+- evening
+take_with_food: optional
+linked_to_topics:
+- chronic-inflammation
+linked_to_claims:
+- ginger-anti-inflammatory-1g-per-day
+notes_for_coach: Ginger extract at 1g/day or 3–4 cups of ginger green tea daily is
+  recommended. Food-first approach preferred. Ginger green tea is a practical and
+  sustainable way for clients to incorporate this daily.
+notes_for_client: Try 3–4 cups of ginger green tea daily as a simple anti-inflammatory
+  habit. This is a sustainable way to get a therapeutic amount of ginger each day.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-approach-inflammation
+  location: Anti-Inflammatory Herbs – Ginger
+  quote: Ginger, you can use ginger extract and those is really important. You should
+    use one gram per day or you can use a ginger tea in your patient's diet.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

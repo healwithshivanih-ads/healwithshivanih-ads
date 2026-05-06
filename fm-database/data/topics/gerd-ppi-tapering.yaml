@@ -1,0 +1,41 @@
+slug: gerd-ppi-tapering
+display_name: GERD & PPI Tapering
+aliases:
+- gastroesophageal reflux disease
+- acid reflux
+- proton pump inhibitor weaning
+summary: GERD is a major contributor to healthcare costs, with ~20% of US adults experiencing
+  weekly heartburn. Long-term PPI use is associated with serious risks (intestinal
+  infections, hip fracture, kidney failure, pneumonia). Functional medicine supports
+  gradual PPI tapering with supplement and lifestyle support under clinician supervision.
+common_symptoms:
+- heartburn
+- acid-reflux
+- rebound-acid-reflux
+red_flags:
+- Barrett's Esophagus
+- reflux disease LA Grade B or higher
+- gastroparesis
+- hiatal hernia > 3 cm
+- gastrin > 300 pg/mL
+related_topics:
+- gut-dysfunction
+- hypochlorhydria
+key_mechanisms:
+- rebound-acid-hypersecretion
+coaching_scope_notes: Coaches can support diet and lifestyle modifications (smaller
+  meals, elevation of head during sleep, dietary trigger avoidance). PPI tapering
+  schedule and supplement dosing must be supervised by a clinician.
+clinician_scope_notes: PPI tapering protocol, H2 blocker substitution, and screening
+  for Barrett's Esophagus and gastroparesis are clinician responsibilities.
+evidence_tier: strong
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Patients'
+  quote: Long-term use of PPIs has been associated with a number of health concerns,
+    including increased risk of intestinal infections, hip fracture, kidney failure,
+    and pneumonia.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

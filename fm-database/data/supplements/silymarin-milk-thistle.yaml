@@ -1,0 +1,31 @@
+slug: silymarin-milk-thistle
+display_name: Silymarin (Milk Thistle)
+category: herb
+forms_available:
+- capsule
+- tablet
+typical_dose_range: {}
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- metabolic-detoxification
+- liver-detox-food-plan
+linked_to_claims:
+- silymarin-antioxidant-phase-i-hepatic-protection
+notes_for_coach: Listed as a Phase I antioxidant protective nutrient in the document's
+  detox diagram. Specific doses not provided — verify with clinician. Well-known hepatoprotective
+  herb in functional medicine.
+notes_for_client: Silymarin, from milk thistle, helps protect your liver cells from
+  damage during the detoxification process.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Nutrients for Phase 1 and Phase 2 Detoxification
+  quote: Silymarin
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

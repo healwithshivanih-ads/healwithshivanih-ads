@@ -1,0 +1,38 @@
+slug: rheumatoid-knee-pain-linked-to-gut-permeability
+statement: Rheumatoid arthritis knee pain involves autoimmunity, gut permeability,
+  and dysbiosis.
+evidence_tier: fm_specific_thin
+rationale: Gut microbiome involvement in rheumatoid arthritis is an emerging research
+  area; the gut-RA link is plausible but not yet clinical consensus.
+coaching_translation: For clients with diagnosed RA, gut health support (probiotics,
+  anti-inflammatory diet, leaky gut protocols) may complement their medical treatment.
+caveats:
+- Source is a practitioner cheatsheet without primary citations.
+- RA management requires rheumatological care; gut support is complementary only.
+- Source is practitioner cheatsheet.
+- RA management requires rheumatologist oversight; coaching supplements alone are
+  insufficient.
+linked_to_topics:
+- joint-pain
+- leaky-gut
+- gut-dysbiosis
+linked_to_supplements:
+- omega-3
+- curcumin
+- probiotics
+- vitamin-d3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 29
+  quote: Rheumatoid arthritis knee pain is described as involving autoimmunity, gut
+    permeability, and dysbiosis.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 29
+  quote: Rheumatoid arthritis knee pain is described as involving autoimmunity, gut
+    permeability, and dysbiosis.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

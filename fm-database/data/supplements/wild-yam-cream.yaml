@@ -1,0 +1,34 @@
+slug: wild-yam-cream
+display_name: Wild Yam Cream (Diosgenin)
+category: herb
+forms_available:
+- liquid
+typical_dose_range: {}
+timing_options:
+- morning
+- bedtime
+take_with_food: avoid
+linked_to_topics:
+- hormonal-depression-progesterone
+- depression-lifestyle
+linked_to_claims:
+- wild-yam-cream-stimulates-progesterone-pathway
+notes_for_coach: Applied topically morning and night. Contains diosgenin, a plant
+  chemical claimed to stimulate the body's progesterone-producing biochemical pathway.
+  Evidence for skin conversion to bioactive progesterone in humans is thin — verify
+  with clinician before recommending.
+notes_for_client: A plant-based cream applied to the skin, traditionally used to support
+  the body's natural hormone balance. Always check with your healthcare provider before
+  starting.
+evidence_tier: fm_specific_thin
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-healing-mind
+  location: Hormonal Depression Section
+  quote: It's called the wild yam cream. The wild yam cream contains a plant chemical
+    extracted from the wild yam called diostin. And when this is applied to the skin,
+    it stimulates the pathway in the body that the body uses to make progesterone.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

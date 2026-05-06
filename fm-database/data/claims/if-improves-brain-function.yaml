@@ -1,0 +1,25 @@
+slug: if-improves-brain-function
+statement: Intermittent fasting may improve brain function and support brain health.
+evidence_tier: plausible_emerging
+rationale: Cited in document referencing Mattson 2017 and de Cabo 2019 NEJM. Proposed
+  mechanisms include BDNF upregulation, reduced neuroinflammation, and ketone utilisation
+  as alternative fuel.
+coaching_translation: IF may support mental clarity and long-term brain health by
+  reducing brain inflammation and providing ketones as a clean energy source.
+caveats:
+- Most brain-health data are from animal models or short human trials.
+- Individual response varies widely.
+linked_to_topics:
+- intermittent-fasting
+- phytonutrient-density
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Intermittent Fasting — summary table
+  quote: 'Improves: Brain function'
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

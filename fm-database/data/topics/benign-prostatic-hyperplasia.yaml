@@ -4,10 +4,10 @@ aliases:
 - BPH
 - enlarged prostate
 - prostate enlargement
-summary: BPH is a condition involving prostate gland enlargement, commonly associated
-  with excess DHT conversion via 5-alpha reductase. Symptoms include incomplete bladder
-  emptying, urinary urgency, frequency, weak stream, and nocturia. Severity is assessed
-  via the American Urological Association Symptom Index.
+summary: 'A non-cancerous enlargement of the prostate gland commonly associated with
+  excess DHT conversion via 5-α reductase. Assessed via the AUA BPH Symptom Index
+  (scores 0–35: mild, moderate, severe). Functional medicine approaches focus on inhibiting
+  5-α reductase through diet, herbs, and targeted nutrients.'
 common_symptoms:
 - incomplete-bladder-emptying
 - urinary-urgency
@@ -15,22 +15,30 @@ common_symptoms:
 - weak-urinary-stream
 - straining-to-urinate
 - nocturia
+- urinary-intermittency
+- urinary-straining
 red_flags:
 - severe BPH score (20-35)
 - urinary retention
 - hematuria
+- BPH score ≥20 (severe) requires urological referral
+- Acute urinary retention is a medical emergency
 related_topics:
 - testosterone-health
 - five-alpha-reductase-activity
+- testosterone-dht-conversion
+- sex-hormone-binding-globulin
 key_mechanisms:
 - five-alpha-reductase-conversion
 - dht-excess
-coaching_scope_notes: Coaches can support dietary and lifestyle interventions (fatty
-  fish, green tea, flaxseed, stress management). BPH diagnosis and scoring require
-  clinician evaluation.
-clinician_scope_notes: AUA Symptom Index scores 0-7 mild, 8-19 moderate, 20-35 severe.
-  Refer for urological evaluation at moderate-severe scores or if red flags present.
-evidence_tier: plausible_emerging
+- 5-alpha-reductase-activity
+- testosterone-to-dht-conversion
+coaching_scope_notes: Coaches can administer the BPH Symptom Index as a tracking tool
+  and support dietary interventions. Scores ≥8 should trigger clinician referral.
+clinician_scope_notes: Clinician should rule out prostate cancer, prescribe pharmaceutical
+  5-α reductase inhibitors (e.g., finasteride) if indicated, and coordinate urological
+  care.
+evidence_tier: strong
 sources:
 - id: vitaone-sex-hormones-toolkit
   location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors — Page
@@ -39,7 +47,11 @@ sources:
     of testosterone to a hormone called dihydrotestosterone (DHT). When testosterone
     is converted to DHT, testosterone is lowered and can no longer work effectively.
     This can result in conditions such as enlargement of the prostate in men.
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors'
+  quote: This can result in conditions such as enlargement of the prostate in men,
+    hair loss in both men and women, and extra facial hair and acne in women.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

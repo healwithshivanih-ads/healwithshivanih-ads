@@ -24,13 +24,14 @@ linked_to_topics:
 - blood-sugar-dysfunction
 linked_to_claims:
 - chromium-biotin-combo-may-lower-hba1c
-notes_for_coach: Evidence inconsistent. Contraindicated in kidney disease. Chromium
-  picolinate studied most (Martin et al. 2006, Diabetes Care). Chromium + biotin combination
-  studied for lipids and HbA1c (Albarracin et al. 2007). Always refer dosing to a
-  clinician.
-notes_for_client: Chromium is a trace mineral that may help support blood sugar control,
-  especially when combined with biotin. Not suitable if you have kidney problems —
-  check with your doctor first.
+- chromium-evidence-inconsistent-for-ir
+notes_for_coach: 'Evidence is inconsistent. Chromium picolinate is the most studied
+  form. Contraindicated in kidney disease — screen before recommending. Chromium +
+  biotin combination may enhance effects. Food sources: broccoli, turkey breast, green
+  beans, grapes, apples.'
+notes_for_client: Chromium is a trace mineral that may play a role in blood sugar
+  management. Talk to your provider before supplementing, especially if you have any
+  kidney concerns.
 evidence_tier: fm_specific_thin
 linked_to_mechanisms: []
 sources:
@@ -53,7 +54,12 @@ sources:
   quote: Studies looking at the effect of chromium supplementation on insulin resistance
     and glucose control are inconsistent, with a smaller number of studies showing
     positive benefits, mainly in those who have diabetes.
-version: 5
+- id: vitaone-health-coaching-toolkit
+  location: Micronutrients for Insulin Sensitivity — INSULIN SENSITIZERS (cont.)
+  quote: Chromium is trace mineral required in very small amounts by the body. It
+    is thought to play a role in insulin function, but it's exact mechanism is not
+    fully understood.
+version: 6
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

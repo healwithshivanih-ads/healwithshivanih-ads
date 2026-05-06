@@ -1,0 +1,25 @@
+slug: muscle-weakness
+display_name: Muscle Weakness
+aliases:
+- weak muscles
+- muscle fatigue
+- musculoskeletal weakness
+category: musculoskeletal
+severity: common
+description: Reduced muscle strength or endurance associated with inadequate vitamin
+  D, which plays a role in calcium and magnesium management critical for muscle contraction
+  and relaxation.
+when_to_refer: Refer if progressive or affecting daily function significantly.
+linked_to_topics:
+- vitamin-d3
+linked_to_mechanisms:
+- calcium-intestinal-absorption
+sources:
+- id: coconote-fm-vitamin-d3-k2
+  location: Vitamin D Functions
+  quote: Vitamin D also plays a very important role in management of calcium and magnesium,
+    which is responsible for the contraction and the relaxation of the muscles.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,32 @@
+slug: caffeine-disrupts-neurotransmitters-causing-chemical-imbalance
+statement: Caffeine disrupts neurotransmitters and creates a chemical imbalance in
+  the brain, contributing to depression — the same state it is consumed to temporarily
+  relieve.
+evidence_tier: plausible_emerging
+rationale: Caffeine's adenosine-blocking mechanism and subsequent crash are well-understood.
+  Its role in anxiety and mood disorders has moderate research support. The framing
+  that caffeine 'causes' depression is a stronger claim than the literature supports;
+  it worsens anxiety and creates dependency cycles.
+coaching_translation: Reaching for coffee when you're feeling low creates a cycle
+  — it temporarily lifts you, then drops you lower. Gradually reducing caffeine intake
+  often leads to steadier mood and energy.
+caveats:
+- Causation claim is stronger than the evidence; caffeine exacerbates rather than
+  necessarily causes depression
+- Source is expert lecture
+- Withdrawal must be gradual to avoid rebound symptoms
+linked_to_topics:
+- depression-lifestyle
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-healing-mind
+  location: Nutrition Section
+  quote: Caffeine disrupts these neurotransmitters. Caffeine causes a chemical imbalance
+    in the brain. What's the definition of depression? A chemical imbalance in the
+    brain.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

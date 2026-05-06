@@ -1,0 +1,32 @@
+slug: brazil-nuts-meet-daily-selenium-needs
+statement: Five Brazil nuts per day provides sufficient selenium to meet daily requirements,
+  and selenium is essential for the thyroid to convert iodine into thyroxine.
+evidence_tier: plausible_emerging
+rationale: Brazil nuts are one of the richest dietary sources of selenium. Studies
+  have shown that consuming a small number (1–6) of Brazil nuts can raise serum selenium.
+  The thyroid-selenium-iodine connection is well-established in endocrinology. The
+  specific claim of '5 nuts = daily requirement' is an approximation as selenium content
+  varies by soil.
+coaching_translation: Add 5 Brazil nuts to your daily routine for natural selenium
+  support — especially important for thyroid health.
+out_of_scope_notes: Thyroid supplementation and selenium dosing should be discussed
+  with a clinician, particularly for clients with diagnosed thyroid conditions.
+caveats:
+- Selenium content in Brazil nuts varies significantly by region of origin. 5 nuts
+  may exceed or fall short of RDA depending on the source. Verify with clinician for
+  thyroid patients.
+- Source is a lecture transcript, not primary literature.
+linked_to_topics:
+- ph-balance
+linked_to_supplements:
+- brazil-nuts-selenium
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-ph-balance
+  location: Brazil Nuts and Selenium Section
+  quote: Brazil nuts are phenomenally high in selenium... you only need five Brazil
+    nuts a day to get all your selenium or amounts.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

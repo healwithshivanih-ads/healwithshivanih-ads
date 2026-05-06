@@ -1,0 +1,26 @@
+slug: elevated-mcv
+display_name: Elevated MCV
+aliases:
+- high mean corpuscular volume
+- macrocytosis
+- large red blood cells
+category: metabolic
+severity: concerning
+description: Mean corpuscular volume above normal range, potentially indicating B12
+  or folate deficiency. Should prompt investigation with functional markers including
+  methylmalonic acid and serum B12.
+when_to_refer: Refer if MCV is significantly elevated or rising over time, or if B12
+  deficiency is confirmed.
+linked_to_topics:
+- nutritional-deficiency-screening
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-body-composition-bmi
+  location: Case Discussion / Blood Report Section
+  quote: One of the things that Michael noted was that her MCV was starting to increase.
+    And you know, prior MCV was like, I think around 88, and now it was like 92. So
+    it makes you wonder about her B12 status.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

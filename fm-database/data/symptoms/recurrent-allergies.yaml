@@ -1,0 +1,28 @@
+slug: recurrent-allergies
+display_name: Recurrent Allergic Reactions
+aliases:
+- allergic rashes
+- swollen eyes
+- allergic episodes
+- immune hypersensitivity
+category: skin
+severity: concerning
+description: Recurrent allergic manifestations including skin rashes and periorbital
+  oedema, first appearing after childhood diarrhoea episode and recurring in adulthood.
+  Linked to early-life gut immune dysregulation.
+when_to_refer: Any episode of anaphylaxis, airway compromise, or severe allergic reaction
+  requires immediate emergency care and allergist referral.
+linked_to_topics:
+- immune-dysregulation
+- gut-skin-hormone-axis
+linked_to_mechanisms:
+- gut-immune-dysregulation
+sources:
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Patient Timeline
+  quote: She developed allergic episodes. She developed allergies which showed up
+    as rashes on her elbow and swollen eyes.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

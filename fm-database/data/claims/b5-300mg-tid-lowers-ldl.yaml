@@ -1,0 +1,27 @@
+slug: b5-300mg-tid-lowers-ldl
+statement: Pantethine (Vitamin B5) at 300mg three times daily lowers LDL cholesterol
+  and can be combined with other lipid-modifying medications.
+evidence_tier: plausible_emerging
+rationale: Pantethine's LDL-lowering effect has some RCT support (e.g., Rumberger
+  et al., 2011), though evidence base is limited.
+coaching_translation: Pantethine (a form of B5) at higher therapeutic doses may help
+  lower LDL. It's often used alongside other cholesterol-lowering strategies.
+caveats:
+- Evidence base is small — limited large RCTs.
+- Source is expert lecture — specific citations not provided.
+- Therapeutic dose far exceeds standard dietary B5 intake.
+linked_to_topics:
+- dyslipidemia
+linked_to_supplements:
+- pantethine-vitamin-b5
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: LDL-Lowering Nutraceuticals
+  quote: B5, 300 milligrams, three times a day will lower LDL and can be mixed with
+    with other medications.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

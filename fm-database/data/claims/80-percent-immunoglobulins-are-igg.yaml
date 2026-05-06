@@ -1,0 +1,23 @@
+slug: 80-percent-immunoglobulins-are-igg
+statement: Approximately 75–80% of total serum immunoglobulins are IgG, making IgG
+  the predominant antibody class.
+evidence_tier: strong
+rationale: Well-established immunological fact — IgG constitutes the majority of circulating
+  immunoglobulins.
+coaching_translation: IgG reactions are the most common type of food sensitivity because
+  IgG is the most abundant antibody in the body.
+caveats:
+- Source is expert lecture; exact percentage ranges vary slightly by source.
+linked_to_topics:
+- food-sensitivity-igg-iga-mediated
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-food-allergies-sensitivities
+  location: IgG Antibody Section
+  quote: 80% of immune system has a IgG antibody and only 1 or 2% create IgE antibody
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

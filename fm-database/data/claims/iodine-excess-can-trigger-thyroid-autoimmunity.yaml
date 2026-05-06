@@ -1,0 +1,31 @@
+slug: iodine-excess-can-trigger-thyroid-autoimmunity
+statement: Excess iodine can trigger thyroid autoimmunity including Hashimoto's and
+  Graves' disease.
+evidence_tier: confirm_with_clinician
+rationale: Iodine excess triggering autoimmune thyroid disease is supported by observational
+  and epidemiological data.
+out_of_scope_notes: Iodine supplementation in thyroid disease is clinician scope.
+caveats:
+- Source is a practitioner cheatsheet without primary citations.
+- Risk appears highest in iodine-replete populations supplementing above RDA.
+- Do not recommend iodine supplementation in known autoimmune thyroid patients without
+  clinician guidance.
+linked_to_topics:
+- thyroid
+linked_to_supplements:
+- iodine
+coaching_translation: ''
+linked_to_mechanisms: []
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 12
+  quote: Excess iodine is described as potentially triggering thyroid autoimmunity
+    including Hashimoto's and Graves' disease.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 12
+  quote: Excess iodine is described as potentially triggering thyroid autoimmunity
+    including Hashimoto's and Graves' disease.
+version: 2
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

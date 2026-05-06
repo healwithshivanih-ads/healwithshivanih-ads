@@ -1,0 +1,34 @@
+slug: bacillus-subtilis-probiotic
+display_name: Bacillus subtilis (Probiotic)
+category: probiotic
+forms_available:
+- capsule
+- powder
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- sibo
+- gut-microbiome
+linked_to_claims:
+- sibo-yogurt-protocol-reduces-fecal-overgrowth
+notes_for_coach: B. subtilis is a spore-forming, bacteriocin-producing microbe used
+  in Dr. Davis's SIBO yogurt to kill fecal microbes in the small intestine. Dr. Davis
+  considers it underappreciated. It may take up permanent residence in the GI tract.
+  Added to SIBO yogurt as a replacement for B. coagulans in the latest formulation.
+notes_for_client: This spore-forming probiotic helps fight off harmful bacteria in
+  your small intestine and supports gut microbiome balance. It is included in the
+  SIBO yogurt protocol.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Spore-based probiotics and B. subtilis discussion
+  quote: Bacillus subtilis is really a very much underappreciated microbe. It's a
+    really cool microbe.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

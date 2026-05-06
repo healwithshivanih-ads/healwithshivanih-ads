@@ -1,0 +1,27 @@
+slug: cold-intolerance-and-weight-gain
+display_name: Cold Intolerance & Weight Gain
+aliases:
+- feeling cold
+- unexplained weight gain
+- sluggish metabolism
+- hypothyroid-like symptoms
+category: metabolic
+severity: common
+description: Cold intolerance and weight gain linked to iodine deficiency, goiter,
+  and hypothyroid-pattern nutrient insufficiencies including selenium and riboflavin.
+when_to_refer: Refer for thyroid panel (TSH, free T3, free T4, anti-TPO) if these
+  symptoms persist.
+linked_to_topics:
+- thyroid
+- nutrition-deficiency
+linked_to_mechanisms:
+- thyroid-nutrient-synergy
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Symptoms Discussed
+  quote: Goiter, cold intolerance, weight gain, and poor cognition - Linked to iodine
+    deficiency.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

@@ -1,0 +1,29 @@
+slug: magnesium-supports-melatonin-and-sleep
+statement: Magnesium is required to maintain the melatonin synthesis pathway, making
+  it a more foundational sleep intervention than melatonin supplementation alone.
+evidence_tier: plausible_emerging
+rationale: Magnesium's role in serotonin-to-melatonin conversion and GABAergic calming
+  is mechanistically supported; clinical evidence for magnesium improving sleep quality
+  is emerging but not yet fully established by large RCTs.
+caveats:
+- Clinical evidence is emerging; some RCTs support magnesium's sleep benefits but
+  study quality varies.
+coaching_translation: Before reaching for melatonin, consider whether low magnesium
+  might be the root cause of your sleep troubles — magnesium helps your body make
+  its own melatonin.
+linked_to_topics:
+- magnesium-deficiency
+- magnesium-neurological-mental-health
+linked_to_supplements:
+- magnesium-glycinate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-magnesium-deficiency
+  location: Insomnia section
+  quote: Magnesium is responsible to even maintain a melatonin pathway. So primarily
+    to fix the foundation, first, magnesium should be given.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,28 @@
+slug: unresolved-grief-causes-epigenetic-changes
+statement: Unhealed emotions such as grief and unresolved anger create ongoing stress
+  chemistry that drives epigenetic changes, potentially causing autoimmune flares,
+  thyroid dysfunction, and menstrual irregularities.
+evidence_tier: fm_specific_thin
+rationale: Epigenetic effects of chronic stress are established in research. The specific
+  linkage to grief/anger → autoimmune flares → thyroid/menstrual changes is a plausible
+  FM framework extension but lacks direct clinical trial support.
+coaching_translation: How we process major life losses and emotional wounds may affect
+  how our genes express themselves, influencing conditions like thyroid disease and
+  hormonal cycles.
+caveats:
+- Highly synthesis-level claim; no specific RCT referenced.
+- Epigenetic testing and interpretation is outside coaching scope.
+- Autoimmune and thyroid conditions require clinician management.
+linked_to_topics:
+- emotional-healing-chronic-disease
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: Unhealed emotions create ongoing stress chemistry → epigenetic changes.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

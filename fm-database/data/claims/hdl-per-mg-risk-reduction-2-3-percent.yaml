@@ -1,0 +1,29 @@
+slug: hdl-per-mg-risk-reduction-2-3-percent
+statement: For every 1 mg/dL increase in HDL cholesterol, cardiovascular risk decreases
+  by 2% in men and 3% in women.
+evidence_tier: strong
+rationale: Well-established epidemiological finding from Framingham Heart Study and
+  multiple large prospective cohorts. Widely cited in cardiovascular risk literature.
+coaching_translation: Raising HDL — through exercise, quitting smoking, reducing refined
+  carbs, and omega-3s — has measurable cardiovascular benefit. Even small increases
+  matter.
+caveats:
+- HDL functionality (quality) matters as much as quantity — dysfunctional HDL does
+  not confer the same benefit.
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-disease-prevention
+linked_to_supplements:
+- niacin-vitamin-b3
+- omega-3-fatty-acids
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: HDL and Cardiovascular Risk
+  quote: For every milligram you increase HDL, you decrease risk in men 2% and in
+    women 3%.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

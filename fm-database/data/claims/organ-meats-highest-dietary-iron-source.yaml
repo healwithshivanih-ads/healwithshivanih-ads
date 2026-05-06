@@ -1,0 +1,31 @@
+slug: organ-meats-highest-dietary-iron-source
+statement: Organ meats (e.g., liver, kidney) represent the highest bioavailable dietary
+  sources of heme iron and are recommended as a primary food-first strategy for managing
+  iron deficiency.
+evidence_tier: strong
+rationale: Organ meats are dense in heme iron with the highest absorption rates (20–40%).
+  This is consistent with established nutritional science for iron repletion through
+  diet.
+coaching_translation: If a client eats meat, liver and other organ meats are by far
+  the most effective whole-food iron sources — much more efficient than plant sources.
+caveats:
+- Source is an expert lecture; consistent with established nutritional science.
+- Dietary change alone may be insufficient for established deficiency — refer to clinician
+  for assessment.
+linked_to_topics:
+- iron-deficiency-anemia
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-iron-deficiency-anemia
+  location: Food Sources / Management section
+  quote: Organ meats have the highest amount of iron content in them. Any kind of
+    meat, you can take it as, I would say, beef, chunk roast, again on a higher side
+    somewhere. I would definitely recommend anybody who is thinking in terms of food
+    sources, always an animal source in terms of organ meat is a very good source
+    of managing iron.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

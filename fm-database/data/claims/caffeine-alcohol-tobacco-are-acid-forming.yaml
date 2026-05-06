@@ -1,0 +1,30 @@
+slug: caffeine-alcohol-tobacco-are-acid-forming
+statement: Caffeine, alcohol, and tobacco all produce an acid-forming effect in the
+  body.
+evidence_tier: plausible_emerging
+rationale: There is reasonable evidence that alcohol and tobacco increase metabolic
+  acid load and promote systemic inflammation. Caffeine's net effect on urinary pH
+  is acknowledged in some literature. The claim is directionally plausible though
+  the clinical magnitude for caffeine is debated.
+coaching_translation: Alcohol, caffeine, and tobacco all tip the body toward a more
+  acid environment — reducing or eliminating these supports a more balanced internal
+  state.
+caveats:
+- Source is expert consensus/lecture, not primary literature.
+- Caffeine's acid-forming effect is less consistently supported than that of alcohol
+  and tobacco.
+linked_to_topics:
+- ph-balance-and-diet
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-fresh-cheeses-ph
+  location: Acid-Forming Substances Section
+  quote: Caffeine sits on the acid side. Also alcohol. Alcohol is not a food, but
+    it certainly sits on the acid side. Tobacco is not a food, but it does create
+    a very acid environment in it.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

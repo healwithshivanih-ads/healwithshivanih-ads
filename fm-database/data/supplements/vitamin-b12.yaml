@@ -1,5 +1,5 @@
 slug: vitamin-b12
-display_name: Vitamin B12 (Cobalamin)
+display_name: Vitamin B12
 category: vitamin
 forms_available:
 - capsule
@@ -7,15 +7,17 @@ forms_available:
 - liquid
 - lozenge
 evidence_tier: strong
-notes_for_coach: Methylcobalamin form preferred for those with MTHFR variants or high
-  homocysteine. Cyanocobalamin is more stable/cost-effective for general use. Sublingual/lozenge
-  may improve absorption in those with low stomach acid or intrinsic factor deficiency.
-notes_for_client: B12 is mainly found in animal foods. If you're plant-based, older,
-  or on certain medications, your levels may be low. A sublingual (under-the-tongue)
-  form can help with absorption.
+notes_for_coach: B12 was identified as a common deficiency in the lecture's clinical
+  context. B12 is important for neurological function, methylation (which affects
+  estrogen metabolism), and energy. Supplementation or injection may be needed based
+  on levels.
+notes_for_client: Vitamin B12 is important for energy, brain health, and how your
+  body processes hormones. Deficiency is very common and can worsen fatigue and brain
+  fog.
 timing_options:
 - with_breakfast
 - morning
+- on_waking
 take_with_food: optional
 linked_to_topics:
 - drug-induced-nutrient-depletion
@@ -23,11 +25,15 @@ linked_to_topics:
 - cardiovascular-dysfunction
 - vitamin-b12-deficiency
 - mitochondrial-health-nutrition
+- chronic-pain-and-fatigue
+- low-stomach-acid
+- menopause
 linked_to_claims:
 - metformin-depletes-b12-folate-coq10
 - b12-vegans-higher-deficiency-risk
 - mthfr-variants-respond-better-to-methylcobalamin
 - b-vitamins-improve-cognitive-function-mild-ci
+- low-stomach-acid-impairs-b12-iron-absorption
 linked_to_mechanisms:
 - elevated-homocysteine
 typical_dose_range:
@@ -52,7 +58,15 @@ sources:
   quote: Vitamin B12 is a water-soluble nutrient required to make healthy red blood
     cells, support brain health, make DNA, metabolize homocysteine, and prevent pernicious
     anemia.
-version: 2
+- id: coconote-fm-chronic-pain-fatigue
+  location: Personal Case Study
+  quote: till today I have to keep taking vitamin D, iron, B12, magnesium, all these
+    supplements on a regular basis.
+- id: coconote-fm-sex-hormones
+  location: Management — Clinical Assessment
+  quote: If you have any kind of other nutritional deficiencies, vitamin D, vitamin
+    B12, please go to a physician, get this vitamin D, vitamin B12 injection
+version: 4
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

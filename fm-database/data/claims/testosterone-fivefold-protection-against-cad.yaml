@@ -1,0 +1,31 @@
+slug: testosterone-fivefold-protection-against-cad
+statement: Adequate testosterone levels in men have been found to offer greater than
+  fivefold protection against coronary artery disease.
+evidence_tier: fm_specific_thin
+rationale: Some observational studies support an association between low testosterone
+  and increased CVD risk in men. A 'fivefold protection' figure is a strong specific
+  claim without a cited primary study in the document. This should be treated as FM-specific
+  with thin peer-reviewed support for the magnitude stated.
+coaching_translation: For men, maintaining healthy testosterone levels may offer significant
+  protection against heart disease — another reason why hormonal health matters for
+  your heart.
+out_of_scope_notes: Testosterone testing and hormone replacement therapy are clinician
+  scope.
+caveats:
+- The 'fivefold' magnitude is not sourced to a specific peer-reviewed study in this
+  document.
+- Source is an educational case study (expert consensus, moderate quality).
+- Testosterone replacement therapy has mixed evidence for CVD outcomes.
+linked_to_topics:
+- cardiovascular-risk-assessment
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cvs-risk-assessment
+  location: Lab Results extended (Slide 17)
+  quote: Levels of testosterone have been found to offer men greater than fivefold
+    protection against coronary artery disease.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,31 @@
+slug: zinc-hcl-production-link
+display_name: Zinc-Dependent Hydrochloric Acid Production
+aliases:
+- zinc gastric acid synthesis
+- zinc HCl link
+category: gut
+summary: Zinc is required for the production of hydrochloric acid in the stomach.
+  Deficiency can reduce gastric acid output, impairing downstream absorption of other
+  minerals such as iron, potentially causing or perpetuating secondary nutritional
+  deficiencies.
+upstream_drivers:
+- zinc-deficiency
+downstream_effects:
+- iron-malabsorption
+- non-responsive-anemia
+- cascading-nutritional-deficiencies
+related_mechanisms:
+- zinc-immune-cell-maturation
+linked_to_topics:
+- zinc-deficiency
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-zinc-deficiency
+  location: Functions of Zinc
+  quote: Zinc happens to be the baseline for developing a lot of other nutritional
+    deficiencies over a period of time because of a primary concern that if it is
+    absent, it could produce less amount of hydrochloric acid.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

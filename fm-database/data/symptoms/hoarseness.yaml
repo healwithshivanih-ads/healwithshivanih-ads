@@ -1,0 +1,25 @@
+slug: hoarseness
+display_name: Hoarseness of Voice
+aliases:
+- gravelly voice
+- voice changes
+- raspy voice
+category: constitutional
+severity: common
+description: Voice changes including hoarseness or a gravelly quality, which can result
+  from thyroid enlargement or reduced thyroid hormone affecting tissues of the larynx.
+when_to_refer: Refer if persistent and accompanied by neck swelling or difficulty
+  swallowing.
+linked_to_topics:
+- hashimotos-hypothyroidism
+- thyroid-dysfunction
+linked_to_mechanisms:
+- autoimmune-thyroid-attack
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Understanding Hashimoto's Hypothyroidism — Symptoms of Hashimoto's Hypothyroidism
+  quote: Hoarseness of Voice
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

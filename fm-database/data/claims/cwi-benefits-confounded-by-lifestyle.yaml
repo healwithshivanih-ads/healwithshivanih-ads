@@ -1,0 +1,29 @@
+slug: cwi-benefits-confounded-by-lifestyle
+statement: Many observed health benefits of cold water immersion may not be causally
+  linked to CWI itself but may result from an active lifestyle, trained stress handling,
+  social interactions, and positive mindset among participants.
+evidence_tier: plausible_emerging
+rationale: Explicitly stated as a major limitation by the review authors. Winter swimmers
+  as a group are typically active, health-conscious individuals — confounding is a
+  fundamental challenge in this literature.
+coaching_translation: It is worth knowing that people who do cold water swimming tend
+  to be active and health-focused in other ways too — which makes it hard to know
+  how much of the benefit is from the cold water specifically.
+caveats:
+- Causal inference is limited across the reviewed literature
+- No adequately controlled RCTs isolating CWI as the sole variable
+linked_to_topics:
+- cold-water-immersion
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: espeland-2022-cold-water-immersion
+  location: Abstract
+  quote: Many observed benefits may not be causally linked to CWI but instead result
+    from an active lifestyle, trained stress handling, social interactions, and positive
+    mindset.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

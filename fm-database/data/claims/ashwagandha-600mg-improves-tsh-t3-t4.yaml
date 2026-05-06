@@ -1,0 +1,34 @@
+slug: ashwagandha-600mg-improves-tsh-t3-t4
+statement: In a 2018 double-blind placebo-controlled RCT, ashwagandha 600 mg/day for
+  8 weeks significantly improved TSH, T3, and T4 levels in adults with subclinical
+  hypothyroidism.
+evidence_tier: plausible_emerging
+rationale: 'The document describes a prospective, randomized, double-blind, placebo-controlled
+  study (n=50) with specific outcome data: T3 increased 18.6% at 4 weeks and 41.5%
+  at 8 weeks; T4 increased 9.3% at 4 weeks and 19.6% at 8 weeks. A single RCT — promising
+  but requires replication.'
+coaching_translation: Ashwagandha may help support thyroid hormone levels, particularly
+  T3 and T4, in people with sluggish thyroid function. Look for products standardized
+  to 5% withanolides.
+caveats:
+- Single RCT in subjects with elevated TSH — may not generalize to all thyroid conditions.
+- Product standardization (5% withanolides) is important for reproducibility.
+- Ashwagandha may have immune-stimulating properties — use with caution in autoimmune
+  conditions without clinician guidance.
+- Verify dose with clinician before recommending.
+linked_to_topics:
+- thyroid-dysfunction
+linked_to_supplements:
+- ashwagandha
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Key Nutrients to Consider in Thyroid Regulation — Ashwagandha (Withania
+    somnifera)
+  quote: Eight weeks of treatment with ashwagandha 600 mg/day significantly improved
+    serum TSH, T3, and T4 levels when compared to placebo.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

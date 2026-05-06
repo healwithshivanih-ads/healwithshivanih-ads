@@ -1,0 +1,28 @@
+slug: exercise-moderation-for-ph-balance
+statement: Both too much and too little exercise can contribute to an acidic cellular
+  environment; moderate exercise supports healthy cellular pH.
+evidence_tier: plausible_emerging
+rationale: Intense exercise produces lactic acid and CO2, temporarily lowering pH
+  (managed by pulmonary buffering). Sedentary behaviour is associated with metabolic
+  acidosis risk factors. The claim that both extremes are acid-forming is physiologically
+  plausible and consistent with the broader pH balance framework.
+coaching_translation: Regular, moderate exercise is the sweet spot for pH balance
+  — overtraining and being too sedentary can both push your body toward acidity.
+caveats:
+- The specific claim that under-exercise creates an acid environment is less directly
+  established than the over-exercise/lactic acid mechanism.
+- Source is a lecture transcript.
+linked_to_topics:
+- ph-balance
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: barbara-oneil-ph-balance
+  location: Lifestyle Factors and pH Section
+  quote: Too much exercise, not enough exercise can both create an acid environment
+    in the body.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

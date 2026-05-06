@@ -1,0 +1,32 @@
+slug: anti-inflammatory-signaling
+display_name: Anti-Inflammatory Signalling via Dietary Polyphenols & Spices
+aliases:
+- curcumin pathway
+- dietary anti-inflammation
+- NF-kB inhibition
+category: immune
+summary: Regular consumption of anti-inflammatory spices (turmeric/curcumin, ginger,
+  garlic, coriander) and polyphenol-rich vegetables modulates inflammatory cytokines
+  (TNF-α, IL-6), reduces oxidative stress markers, and may lower CRP — key pathological
+  drivers of cardiometabolic disease.
+upstream_drivers:
+- chronic-low-grade-inflammation
+- visceral-adiposity
+- refined-diet
+downstream_effects:
+- reduced-crp
+- improved-endothelial-function
+- reduced-insulin-resistance
+related_mechanisms:
+- glycemic-load-reduction
+linked_to_topics:
+- cardiometabolic-diet
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-cardiometabolic-recipes
+  location: Multiple recipes
+  quote: ½ tsp grated Ginger, 1 tsp chopped Coriander leaves … ½ tsp Turmeric powder
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

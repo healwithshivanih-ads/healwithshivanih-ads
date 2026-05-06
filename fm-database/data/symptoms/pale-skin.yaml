@@ -1,0 +1,31 @@
+slug: pale-skin
+display_name: Pale Skin
+aliases:
+- pallor
+- paleness
+- skin pallor
+- looking pale
+category: constitutional
+severity: common
+description: Pallor resulting from reduced haemoglobin and dysfunctional red blood
+  cells in anemia caused by folate or B12 deficiency.
+linked_to_topics:
+- iron-deficiency-anemia
+- folate-vitamin-b9
+- vitamin-b12
+linked_to_mechanisms:
+- ferritin-storage-depletion
+when_to_refer: Refer if accompanied by severe fatigue, dyspnea, or other signs of
+  significant anemia.
+sources:
+- id: coconote-fm-iron-deficiency-anemia
+  location: Symptoms of Iron Deficiency section
+  quote: Paleness in the skin. So instead of the red looking skin the patient looks
+    very pale. So again that's a very important sign.
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: Folate Deficiency Signs & Symptoms
+  quote: Pale skin, fatigue, dyspnea, you feel lethargic.
+version: 2
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

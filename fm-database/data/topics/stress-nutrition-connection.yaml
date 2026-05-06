@@ -1,0 +1,38 @@
+slug: stress-nutrition-connection
+display_name: Stress–Nutrition Connection
+aliases:
+- stress and digestion
+- stress and absorption
+- gut-stress axis
+summary: Chronic stress impairs nutrient absorption and alters the gut microbiome,
+  meaning that dietary changes alone may have limited effect if stress is not addressed.
+  This concept can serve as a bridge to help nutrition-focused clients understand
+  the value of stress management.
+common_symptoms:
+- poor-nutrient-absorption
+- gi-symptoms-under-stress
+- dysbiosis
+related_topics:
+- stress-and-the-sympathetic-nervous-system
+- childrens-wellness-coaching
+key_mechanisms:
+- sympathetic-nervous-system-activation
+- gut-barrier-dysfunction
+coaching_scope_notes: Use the stress-nutrition link as a motivational bridge for clients
+  focused on nutrition who are resistant to stress work. Educate on how stress affects
+  absorption without diagnosing.
+clinician_scope_notes: GI symptoms under chronic stress may warrant evaluation for
+  dysbiosis, leaky gut, or IBS.
+evidence_tier: plausible_emerging
+red_flags: []
+sources:
+- id: ask-expert-coaching-stress-kids
+  location: Stress Client Topic Discussion
+  quote: you can go after all the nutrition you want, but if you can't absorb it,
+    okay, that, you know, it'll just go right through you or your biome will change
+    in a way that you're not making the vitamins and everything because it's affected
+    by stress.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

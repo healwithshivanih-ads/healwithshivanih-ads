@@ -1,0 +1,28 @@
+slug: dha-retro-converts-to-epa
+statement: DHA supplementation can retro-convert back to EPA in the body, providing
+  dual benefit from a single omega-3 source.
+evidence_tier: plausible_emerging
+rationale: Stated in the lecture as a known metabolic property of DHA. Retro-conversion
+  of DHA to EPA is a documented but quantitatively limited process (~10–12%). Relevant
+  for vegan clients using DHA-only algae supplements.
+coaching_translation: Even if an algae supplement only lists DHA, your body can convert
+  some of it into EPA — so you're still getting both types of omega-3.
+caveats:
+- Retro-conversion rate is limited (~10–12%); DHA-only supplements may not fully substitute
+  for EPA-specific effects.
+- Source is FM lecture synthesis.
+linked_to_topics:
+- omega-3-fatty-acids
+linked_to_supplements:
+- algae-oil-dha-epa
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-omega-3-fatty-acids
+  location: Omega-3 Sources for Vegans Slide
+  quote: DHA supplementation will retro convert to EPA. This means in some cases DHA
+    supplementation or DHA can be retro converted back to EPA also.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

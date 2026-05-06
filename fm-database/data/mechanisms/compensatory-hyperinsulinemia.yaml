@@ -1,0 +1,33 @@
+slug: compensatory-hyperinsulinemia
+display_name: Compensatory Hyperinsulinemia
+aliases:
+- postprandial hyperinsulinemia
+- reactive hyperinsulinemia
+category: metabolic
+summary: When cells develop resistance to insulin signaling, the pancreas compensates
+  by secreting progressively larger amounts of insulin to maintain normal blood glucose
+  levels. This results in elevated postprandial insulin (1-hour and 2-hour) even when
+  fasting glucose and fasting insulin appear normal, making it an early biomarker
+  of insulin resistance.
+upstream_drivers:
+- insulin-receptor-resistance
+- poor-diet
+- sedentary-lifestyle
+downstream_effects:
+- hyperinsulinemia
+- eventual-beta-cell-exhaustion
+- type-2-diabetes
+related_mechanisms:
+- insulin-receptor-resistance
+linked_to_topics:
+- insulin-resistance-early-detection
+evidence_tier: strong
+sources:
+- id: coconote-fm-gtir
+  location: Glucose Tolerance Insulin Response Test Explanation
+  quote: dr craft many years back in the study and he find out insulin increase in
+    the initial resistance very early even before the blood sugar gets raised
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

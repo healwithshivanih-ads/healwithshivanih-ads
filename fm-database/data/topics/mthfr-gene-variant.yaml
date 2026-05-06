@@ -1,0 +1,44 @@
+slug: mthfr-gene-variant
+display_name: MTHFR Gene Variant
+aliases:
+- MTHFR polymorphism
+- MTHFR mutation
+- methylenetetrahydrofolate reductase deficiency
+summary: MTHFR (methylenetetrahydrofolate reductase) is an enzyme essential for converting
+  5,10-methyleneTHF to 5-methylTHF (active folate). Genetic variants reduce enzyme
+  efficiency — heterozygous variants reduce activity ~40%, homozygous variants reduce
+  it to 10–20%. This impairs methylation, raises homocysteine, and may increase cardiovascular
+  and neurological risk.
+common_symptoms:
+- elevated-homocysteine
+- fatigue
+- cognitive-decline
+- depression
+- anxiety
+red_flags:
+- homocysteine-above-15
+- cardiovascular-event-history
+related_topics:
+- folate-vitamin-b9
+- vitamin-b12
+- homocysteine-elevation
+- methylation
+key_mechanisms:
+- mthfr-enzyme-dysfunction
+- impaired-methylation
+- methylation
+coaching_scope_notes: Coaches can discuss the importance of methylated B vitamin forms
+  (methylfolate, methylcobalamin) and lifestyle factors supporting methylation. MTHFR
+  genetic testing interpretation is clinical.
+clinician_scope_notes: Clinicians should interpret MTHFR genotyping, assess homocysteine
+  levels, and guide targeted supplementation protocols.
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: MTHFR section
+  quote: MTHFR is actually a very common genetic variant that causes this key enzyme
+    in the body to function at a lower than normal rate.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

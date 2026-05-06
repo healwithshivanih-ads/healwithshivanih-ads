@@ -1,0 +1,34 @@
+slug: cardiac-sphincter-weakness
+display_name: Cardiac Sphincter (LOS) Weakness
+aliases:
+- lower oesophageal sphincter weakness
+- LOS dysfunction
+- reflux mechanism
+category: structural
+summary: The cardiac sphincter (lower oesophageal sphincter) is a double-layer valve
+  preventing stomach acid from entering the oesophagus. Habitual large evening meals
+  combined with recumbency are proposed to weaken it over time via gravitational pressure.
+  Drinking large volumes of fluid with meals and chronic stress are secondary contributors.
+upstream_drivers:
+- large-evening-meals
+- lying-down-after-eating
+- stress
+- large-fluid-intake-with-meals
+downstream_effects:
+- acid-reflux-heartburn
+- oesophageal-ulceration
+related_mechanisms:
+- hcl-and-pepsin-protein-digestion
+linked_to_topics:
+- acid-reflux-and-cardiac-sphincter-weakness
+- meal-timing-and-digestive-rest
+evidence_tier: plausible_emerging
+sources:
+- id: barbara-oneil-gi-tract
+  location: Stomach & Acid Section
+  quote: When they lie down to sleep at night gravity hits that cardiac sphincter,
+    weakening it.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

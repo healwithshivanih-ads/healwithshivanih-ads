@@ -1,0 +1,34 @@
+slug: fsh-below-25-women-anti-aging-target
+statement: Guiding estrogen therapy to bring FSH below 25 in women (and below 12-13
+  in men) is a more meaningful clinical target for anti-aging and bone/metabolic protection
+  than targeting absolute estrogen or testosterone numbers alone.
+evidence_tier: plausible_emerging
+rationale: FSH suppression as a proxy for adequate sex steroid replacement is a clinically
+  used heuristic among hormone specialists. Research on FSH's independent role in
+  aging (bone, weight, cognition) supports this framing, though specific targets are
+  not universally standardized.
+coaching_translation: Your doctor should look at your FSH level — not just your estrogen
+  — to know if your hormone therapy is doing its job. When FSH is too high, it drives
+  aging in your bones, weight, and brain even if other hormone numbers look okay.
+out_of_scope_notes: Interpreting FSH levels and adjusting hormone dosing are strictly
+  clinical activities. Coaches should encourage clients to ask their clinician about
+  FSH targets.
+caveats:
+- Specific numeric targets are clinician-specific and not universally standardized
+  in published guidelines.
+- FSH fluctuates in perimenopause and is more reliable in established menopause.
+linked_to_topics:
+- fsh-as-aging-biomarker
+- bioidentical-hormone-replacement-therapy
+- perimenopause-and-menopause
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-hormonal-health-bhrt
+  location: FSH and Anti-Aging Hormone Targets
+  quote: we guide our estrogen to the point where we bring the FSH to a level that
+    is 25 or less in women and 12 to 13 or less in men. And this is a game changer.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,38 @@
+slug: cellular-ph-dysregulation
+display_name: Cellular pH Dysregulation
+aliases:
+- intracellular acidosis
+- low cellular pH
+- acid cellular environment
+category: metabolic
+summary: Cellular pH normally sits around 6.5. When it drops significantly (toward
+  5.5), enzymatic reactions slow or malfunction, creating an environment that promotes
+  cancer growth and fungal proliferation. Diet, stress, sleep deprivation, lack of
+  oxygen, and excess acid-forming foods all contribute to lowering cellular pH.
+upstream_drivers:
+- high-sugar-diet
+- stress
+- sleep-deprivation
+- sedentary-lifestyle
+- yeast-acid-byproduct-cycle
+downstream_effects:
+- cancer-risk
+- fungal-overgrowth
+- impaired-enzymatic-reactions
+related_mechanisms:
+- renal-ph-buffering
+- pulmonary-ph-buffering
+- yeast-acid-byproduct-cycle
+linked_to_topics:
+- ph-balance
+- yeast-overgrowth
+evidence_tier: plausible_emerging
+sources:
+- id: barbara-oneil-ph-balance
+  location: Cellular pH Section
+  quote: Disease thrives in a cellular pH of 5.5. This is where cancer thrives. This
+    is where fungus thrives.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

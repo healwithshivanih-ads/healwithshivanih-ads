@@ -1,0 +1,29 @@
+slug: microbiome-composition-determines-food-response
+statement: Individual gut microbiome composition significantly determines how people
+  respond to different foods, explaining why the same diet produces different health
+  outcomes in different people.
+evidence_tier: plausible_emerging
+rationale: Landmark studies (e.g., Zeevi et al. 2015 in Cell) demonstrate that glycemic
+  response to identical foods varies by microbiome composition. The concept is strongly
+  emerging but personalized nutrition based on microbiome testing is not yet standard
+  of care.
+coaching_translation: There's no single 'perfect diet' for everyone. Your unique gut
+  bacteria determine how your body responds to different foods — which is why personalized
+  nutrition is the future.
+caveats:
+- Microbiome-based personalized nutrition is an emerging field; clinical implementation
+  is not yet standardized.
+linked_to_topics:
+- gut-microbiome-personalized-nutrition
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Gut Microbiome and Personalized Nutrition: The Future of Diets'
+  quote: Recent research has shown that the composition of our gut microbiota can
+    determine how we respond to different foods.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

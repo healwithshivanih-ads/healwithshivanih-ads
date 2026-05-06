@@ -1,0 +1,27 @@
+slug: green-tea-flaxseed-soy-inhibit-5ar
+statement: Green tea, flaxseed (lignans), and soy (isoflavones) contain compounds
+  that inhibit 5-α reductase and may reduce DHT levels.
+evidence_tier: plausible_emerging
+rationale: These foods are listed in the FMCN toolkit and have plausible mechanisms
+  (EGCG in green tea, phytoestrogens in flax and soy) with some human and animal study
+  support.
+coaching_translation: Adding green tea, ground flaxseed, and fermented soy to your
+  diet may naturally slow DHT production — these are easy food-first strategies for
+  prostate and hormone health.
+caveats:
+- Evidence strength varies; soy phytoestrogen effects are complex and context-dependent
+- Large amounts of soy may affect thyroid function in some individuals
+linked_to_topics:
+- testosterone-dht-conversion
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors'
+  quote: Green Tea, Flax seed (lignans), Soy (isoflavones), Fatty fish (Omega-3 fats)
+    [listed under Foods that Inhibit 5-a Reductase]
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,29 @@
+slug: vitamin-d-vaginal-microbiome-modulation
+display_name: Vitamin D Modulating Vaginal Microbiome
+aliases:
+- vitamin D crispatus
+- vitamin D vaginal health
+category: endocrine
+summary: Achieving optimal vitamin D levels (target 60–70 ng/mL per Dr. Davis) indirectly
+  shifts the vaginal microbiome to favor Lactobacillus crispatus. Vitamin D is identified
+  as a foundational component of vaginal microbiome health, alongside targeted probiotics.
+upstream_drivers:
+- sun-exposure
+- vitamin-d-supplementation
+downstream_effects:
+- increased-crispatus-colonization
+- improved-vaginal-immunity
+related_mechanisms:
+- lactobacillus-crispatus-dominance
+linked_to_topics:
+- vaginal-microbiome
+evidence_tier: plausible_emerging
+sources:
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Vitamin D and vaginal microbiome discussion
+  quote: Getting vitamin D to a healthy level. I aim for 60 to 70 nanograms per milliliter.
+    Also shifts the vaginal microbiome to favor crispatus.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

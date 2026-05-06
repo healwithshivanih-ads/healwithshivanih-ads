@@ -1,0 +1,43 @@
+slug: gut-dysbiosis-microbiome-imbalance
+display_name: Gut Microbiome Imbalance (Dysbiosis)
+aliases:
+- dysbiotic pattern
+- microbiome imbalance
+- gut flora disruption
+category: gut
+summary: Dysbiosis encompasses deficiency of beneficial bacteria (Lactobacillus, Bifidobacterium
+  phyla), overgrowth of normal or pathogenic bacteria, fungal overgrowth, and parasitic
+  infection. Each pattern requires a customized protocol — probiotic supplementation
+  is contraindicated in overgrowth states and in SIBO.
+upstream_drivers:
+- low-stomach-acid
+- high-sugar-diet
+- antibiotic-overuse
+- gluten-sensitivity
+- stress
+- poor-sleep
+downstream_effects:
+- systemic-inflammation
+- intestinal-permeability
+- autoimmune-activation
+- impaired-digestion
+related_mechanisms:
+- impaired-gut-barrier
+- low-stomach-acid
+- hpa-axis-dysregulation
+linked_to_topics:
+- gut-dysbiosis
+- candida-overgrowth
+- sibo
+- parasite-infection
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Gut Dysbiosis and Pathogens Lecture
+  quote: whenever you use any kind of antimicrobial protocol make sure you understand
+    that patient or these microbes are very intelligent they know how to it is they
+    can change their genetics and they become resistance
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

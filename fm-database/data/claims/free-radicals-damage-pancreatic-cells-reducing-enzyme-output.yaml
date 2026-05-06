@@ -1,0 +1,30 @@
+slug: free-radicals-damage-pancreatic-cells-reducing-enzyme-output
+statement: Excess free radicals cause inflammatory damage to pancreatic cells, reducing
+  their capacity to produce digestive enzymes.
+evidence_tier: plausible_emerging
+rationale: Oxidative stress is a recognised driver of pancreatic tissue damage, particularly
+  in chronic pancreatitis. The mechanistic link between ROS, pancreatic cell injury,
+  and reduced enzyme secretion is biologically plausible and supported by animal and
+  observational studies.
+coaching_translation: High levels of inflammation and oxidative stress in the body
+  can damage pancreatic cells. Supporting antioxidant intake (e.g., vitamin E, curcumin)
+  may help protect these cells.
+linked_to_topics:
+- pancreatic-insufficiency
+linked_to_supplements:
+- vitamin-e
+- curcumin
+caveats:
+- Source is an expert consensus lecture. Mechanistic plausibility is high but direct
+  human RCT evidence in this precise context is limited.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-pancreatic-insufficiency
+  location: Causes of Enzyme Deficiency
+  quote: Free radicals, basically excess amount of free radicals causes more and more
+    inflammation that is like damage to the pancreatic cells.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

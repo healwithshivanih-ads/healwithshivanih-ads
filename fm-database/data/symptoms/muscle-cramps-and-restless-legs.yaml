@@ -1,0 +1,27 @@
+slug: muscle-cramps-and-restless-legs
+display_name: Muscle Cramps & Restless Legs
+aliases:
+- leg cramps
+- muscle spasms
+- restless leg syndrome
+- nocturnal cramps
+category: musculoskeletal
+severity: common
+description: Muscle cramps and restless legs linked to magnesium, potassium, and sodium
+  imbalance. Magnesium is a cofactor for smooth muscle relaxation.
+when_to_refer: Refer if restless legs are severe, disruptive to sleep, or accompanied
+  by other neurological symptoms.
+linked_to_topics:
+- nutrition-deficiency
+- insulin-resistance
+linked_to_mechanisms:
+- nutrient-dependent-energy-metabolism
+sources:
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Symptoms Discussed
+  quote: Muscle cramps, restless legs, palpitations, migraines, PMS, constipation,
+    and asthma/hypertension smooth muscle context - Linked to magnesium.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

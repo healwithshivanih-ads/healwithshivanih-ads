@@ -1,0 +1,40 @@
+slug: nutritional-deficiency-screening
+display_name: Nutritional Deficiency Screening
+aliases:
+- micronutrient deficiency
+- nutrient insufficiency assessment
+summary: Systematic assessment of macro- and micronutrient status using functional
+  biomarkers. NHANES data indicates 23% of people are deficient in at least one nutrient.
+  Functional markers (e.g., methylmalonic acid for B12, homocysteine) often more informative
+  than serum levels alone.
+common_symptoms:
+- fatigue
+- elevated-mcv
+- poor-wound-healing
+- pale-conjunctiva
+red_flags:
+- signs-of-severe-malnutrition
+- 85-percent-malnutrition-rate-in-ibd-inpatients
+related_topics:
+- metabolic-syndrome
+- body-composition-assessment
+- inflammatory-bowel-disease
+key_mechanisms:
+- mitochondrial-dysfunction
+- chronic-systemic-inflammation
+coaching_scope_notes: Coaches can support dietary diversity and nutrient-dense food
+  intake. Specific lab ordering and supplementation dosing require clinician oversight.
+clinician_scope_notes: Use tiered biomarker approach (PFC MVP framework). Use functional
+  markers like methylmalonic acid + serum B12 for B12 status. High MCV warrants B12/folate
+  investigation. 85% of IBD inpatients have malnutrition.
+evidence_tier: plausible_emerging
+sources:
+- id: coconote-fm-body-composition-bmi
+  location: Nutritional Deficiency Section
+  quote: The NHANES data and how significant the amount of nutritional deficiencies
+    is — showing that 23% of people were deficient in at least one nutrient and almost
+    2% in three to four nutrients.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

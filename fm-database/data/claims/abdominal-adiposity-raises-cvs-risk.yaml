@@ -1,0 +1,24 @@
+slug: abdominal-adiposity-raises-cvs-risk
+statement: Abdominal circumference ≥102 cm (male) / ≥88 cm (female) and waist/hip
+  ratio ≥0.90 (male) / ≥0.85 (female) are modifiable cardiovascular risk factors.
+evidence_tier: strong
+rationale: These anthropometric thresholds are established criteria for central obesity
+  used in the IDF and NCEP ATP III metabolic syndrome definitions, with strong epidemiological
+  support for CVD risk.
+coaching_translation: Where you carry your weight matters — excess fat around your
+  waist is a direct heart risk factor, even more so than overall weight.
+linked_to_topics:
+- cardiovascular-risk-assessment
+- insulin-resistance
+linked_to_supplements: []
+caveats: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cvs-risk-assessment
+  location: CVS Risk Analysis (Slide 12)
+  quote: ≥102 cm for male and ≥88 cm for Female increases risk
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

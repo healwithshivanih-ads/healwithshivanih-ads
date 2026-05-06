@@ -1,0 +1,26 @@
+slug: statin-increases-neuropathy-risk
+statement: Statin therapy may increase the risk of peripheral neuropathy.
+evidence_tier: plausible_emerging
+rationale: The document asserts this association. Some observational studies and case
+  reports support this, and cholesterol's role in myelin maintenance provides a plausible
+  mechanism. However, large-scale evidence is less consistent than for myalgia or
+  diabetes.
+coaching_translation: Some people on statins report numbness or tingling in their
+  hands and feet. While not common, it's worth tracking and reporting to a doctor.
+caveats:
+- Evidence is primarily from observational studies and case series.
+- Association does not equal causation.
+- Source is a lecture synthesis; verify with primary literature.
+linked_to_topics:
+- statin-side-effects
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-reality-of-statins
+  location: Side Effects of Statins Section
+  quote: It may increase your risk of neuropathy.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

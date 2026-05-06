@@ -1,0 +1,31 @@
+slug: gratitude-practice-shifts-neural-firing-toward-positive
+statement: Actively practising gratitude — listing things to be thankful for — redirects
+  neural firing from negative memory clusters to positive ones, supporting emotional
+  resilience and sleep onset, based on the principle that 'nerves that fire together,
+  wire together'.
+evidence_tier: plausible_emerging
+rationale: Gratitude interventions for mood and wellbeing have multiple small-to-medium
+  RCTs. The Hebbian 'nerves that fire together, wire together' principle is well-established.
+  Application to sleep onset and mood is consistent with positive psychology research.
+coaching_translation: When you're lying awake or feeling low, listing things you're
+  grateful for isn't just feel-good advice — it actively steers your brain's filing
+  system toward positive memories, making it easier to feel calm and fall asleep.
+caveats:
+- Source is expert lecture
+- Effect sizes for gratitude vary across populations
+linked_to_topics:
+- depression-lifestyle
+- neuroplasticity
+- sleep-hygiene
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-healing-mind
+  location: Sleep / Gratitude Section
+  quote: she suggested lying there and thanking God for everything that you've got
+    in your life... nerves that lie together fire together.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

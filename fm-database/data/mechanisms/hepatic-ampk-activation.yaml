@@ -1,0 +1,31 @@
+slug: hepatic-ampk-activation
+display_name: Hepatic AMPK Activation
+aliases:
+- liver AMPK
+- hepatic glucose production suppression
+category: metabolic
+summary: During exercise, AMP-activated protein kinase (AMPK) is stimulated in the
+  liver, facilitating suppression of hepatic glucose production (HGP). Aerobic training
+  improves hepatic insulin sensitivity.
+upstream_drivers:
+- aerobic-exercise
+- caloric-deficit
+downstream_effects:
+- reduced-hepatic-glucose-output
+- improved-hepatic-insulin-sensitivity
+related_mechanisms:
+- skeletal-muscle-glucose-uptake
+- insulin-resistance
+linked_to_topics:
+- blood-sugar-dysfunction
+- antigravity-exercise-for-blood-sugar
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Antigravity Exercises
+  quote: It has also been understood that hepatic AMPK is stimulated during exercise
+    and may facilitate improved suppression of HGP.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,24 @@
+slug: wheat-free-not-same-as-gluten-free
+statement: '''Wheat-free'' is not the same as ''gluten-free'': products labelled wheat-free
+  may still contain gluten from rye, barley, or oats and can cause reactions in celiac
+  or gluten-sensitive individuals.'
+evidence_tier: strong
+rationale: This is a well-established regulatory and clinical fact. Celiac Disease
+  Foundation and Gluten Intolerance Group guidelines explicitly make this distinction.
+coaching_translation: When shopping, always look for the certified gluten-free label
+  — not just 'wheat-free.' Rye and barley also contain gluten.
+linked_to_topics:
+- gluten-sensitivity
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Tips for Buying and Storing Gluten-Free Foods
+  quote: Read labels. Remember that 'wheat-free' is not the same thing as 'gluten-free'.
+    When in doubt, only purchase products with the certified gluten-free label.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

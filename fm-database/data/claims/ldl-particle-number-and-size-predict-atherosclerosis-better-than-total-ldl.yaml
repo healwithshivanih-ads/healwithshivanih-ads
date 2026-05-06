@@ -1,0 +1,30 @@
+slug: ldl-particle-number-and-size-predict-atherosclerosis-better-than-total-ldl
+statement: LDL particle number and size are better predictors of atherosclerosis risk
+  than total LDL cholesterol concentration.
+evidence_tier: plausible_emerging
+rationale: The document states that it is not total LDL concentration but the number
+  and size of LDL particles that determine risk. This is consistent with emerging
+  lipidology research on LDL-P (NMR lipoprofile) but is not yet the standard of care
+  in most guidelines. Source is expert consensus lecture, not primary literature.
+coaching_translation: Your standard cholesterol number (LDL) doesn't tell the whole
+  story. The size and number of cholesterol particles matter more — smaller particles
+  are more dangerous because they can get inside artery walls.
+caveats:
+- Source is expert consensus lecture, not a cited primary RCT. Tier reflects plausible
+  but not fully consensus-endorsed position.
+- LDL-P testing is not universally available (not available in India per the document).
+linked_to_topics:
+- ldl-particle-size-and-number
+- atherosclerosis-pathogenesis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: LDL particle overview section
+  quote: It is not the total concentration of LDL that carries the risk factor. It's
+    basically the number of LDL and the size.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

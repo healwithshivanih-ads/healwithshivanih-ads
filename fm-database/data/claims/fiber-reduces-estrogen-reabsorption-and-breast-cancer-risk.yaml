@@ -1,0 +1,29 @@
+slug: fiber-reduces-estrogen-reabsorption-and-breast-cancer-risk
+statement: Higher dietary fiber intake binds estrogen metabolites in the gut, reduces
+  enterohepatic recirculation, and is associated with decreased risk of breast cancer.
+evidence_tier: strong
+rationale: Multiple peer-reviewed studies cited in the document (e.g., Sangaramoorthy
+  et al., Cancer Med. 2018) support the association between dietary fiber and reduced
+  hormone receptor-negative breast cancer risk.
+coaching_translation: Eating at least 25 grams of fiber a day helps your body eliminate
+  used estrogens and may lower breast cancer risk by preventing them from being reabsorbed.
+caveats:
+- Association data; causality in humans requires clinical context
+- Adequate hydration needed alongside fiber
+linked_to_topics:
+- estrogen-metabolism
+- estrogen-dominance
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Estrogen Metabolism — Promotes Healthy Estrogen Metabolism
+  quote: Fiber binds harmful estrogen metabolites and other toxins in the digestive
+    tract, which can be eliminated by the body. Multiple studies have shown a decreased
+    risk of breast cancer with higher amounts of fiber in the diet. Most individuals
+    should aim for a minimum of 25 grams of fiber per day.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

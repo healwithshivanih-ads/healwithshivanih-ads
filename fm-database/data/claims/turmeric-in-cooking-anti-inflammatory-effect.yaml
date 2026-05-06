@@ -1,0 +1,29 @@
+slug: turmeric-in-cooking-anti-inflammatory-effect
+statement: Regular inclusion of turmeric in cooking (across multiple daily meals)
+  delivers curcumin, which has anti-inflammatory and antioxidant properties relevant
+  to cardiometabolic risk reduction.
+evidence_tier: plausible_emerging
+rationale: Turmeric powder appears as an ingredient in nearly every savoury recipe
+  in this collection (cheela, steamed beans, curries, khichdis, soups). This pattern
+  suggests therapeutic intent. Curcumin evidence for inflammation and lipid modulation
+  is plausible_emerging.
+coaching_translation: A pinch of turmeric in almost every savoury dish adds up over
+  the day — it's a gentle anti-inflammatory spice that supports heart and metabolic
+  health.
+caveats:
+- Culinary doses of turmeric provide much lower curcumin than supplement doses used
+  in trials. Bioavailability improves with black pepper (piperine).
+linked_to_topics:
+- cardiometabolic-diet
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-cardiometabolic-recipes
+  location: Paneer Masala / multiple recipes
+  quote: ¼ teaspoon turmeric powder … Stir in the turmeric powder, red chili powder,
+    coriander powder, and salt.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

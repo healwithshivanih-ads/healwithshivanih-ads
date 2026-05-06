@@ -1,0 +1,36 @@
+slug: social-isolation
+display_name: Social Isolation & Loneliness
+aliases:
+- loneliness
+- lack of social support
+- feeling disconnected
+- feeling alone
+- disconnected
+- no close friends
+- isolated
+category: mood
+severity: concerning
+description: A chronic state of insufficient meaningful social connection, which itself
+  acts as a physiological stressor with downstream effects on cortisol, immune function,
+  and mental health.
+when_to_refer: Refer to mental health professional if social isolation is accompanied
+  by depression, grief, or significant life disruption (e.g., divorce, bereavement).
+linked_to_topics:
+- emotional-wellbeing
+- self-care
+- stress-and-the-sympathetic-nervous-system
+linked_to_mechanisms:
+- positive-affect-upregulation
+- sympathetic-nervous-system-activation
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Self-Care Questionnaire — Social Life/Family/Relationships
+  quote: Have supportive family and friends close by?
+- id: ask-expert-coaching-stress-kids
+  location: Stress Client Topic Discussion
+  quote: we just can't discount the loneliness and social isolation in terms of creating
+    a huge amount of stress.
+version: 2
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

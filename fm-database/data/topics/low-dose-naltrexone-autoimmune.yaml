@@ -1,0 +1,43 @@
+slug: low-dose-naltrexone-autoimmune
+display_name: Low Dose Naltrexone (LDN) for Autoimmune Disease
+aliases:
+- LDN
+- low-dose naltrexone
+- LDN therapy
+summary: At doses of 1.5–4.5 mg/day, naltrexone temporarily blocks opioid receptors,
+  triggering a rebound increase in endogenous endorphins and enkephalins that appears
+  to improve immune regulation and reduce inflammation. Has been studied in multiple
+  sclerosis, Crohn's disease, fibromyalgia, and other autoimmune conditions. Application
+  to autoimmune thyroiditis (AIT) is theoretically plausible but lacks published RCT
+  evidence.
+red_flags:
+- LDN is a prescription medication — all dosing and prescribing is out of coaching
+  scope
+- thyroid hormone levels may shift with LDN requiring medication dose adjustment
+related_topics:
+- hashimotos-hypothyroidism
+- thyroid-dysfunction
+key_mechanisms:
+- ldn-opioid-rebound-immune-modulation
+- t-regulatory-cell-modulation
+coaching_scope_notes: LDN is a prescription medication. Coaches should not recommend,
+  dose, or manage LDN. Education about its existence and mechanism is appropriate;
+  referral to a prescribing clinician is required.
+clinician_scope_notes: Start 0.5–1.5 mg/day, titrate to 3–4.5 mg/day over 2–4 weeks.
+  Monitor thyroid hormone levels as dose requirements may change. No published RCTs
+  specific to AIT exist as of this document.
+evidence_tier: plausible_emerging
+common_symptoms: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Low Dose Naltrexone (LDN) and Autoimmune Disease — LDN and Autoimmune
+    Thyroiditis (AIT)
+  quote: LDN studied in small human studies in multiple sclerosis, Crohn's disease,
+    fibromyalgia, cancer, inflammatory bowel disease, chronic fatigue syndrome, and
+    various pain syndromes at dosages of 1.5-4.5 mg/day. The theory is that there
+    is a similar mechanism of action over many autoimmune conditions. However, there
+    are no published studies about the impact of LDN on AIT
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

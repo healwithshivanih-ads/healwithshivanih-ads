@@ -1,0 +1,41 @@
+slug: coach-clinician-collaboration
+display_name: Coach–Clinician Collaboration
+aliases:
+- integrated care team coaching
+- embedded coaching model
+- collaborative care coaching
+summary: A care model in which health coaches are embedded in or formally partnered
+  with clinical teams, co-managing patient pathways, attending case reviews, updating
+  shared EMR records, and providing the human accountability layer that complements
+  clinical prescribing and lab management.
+common_symptoms:
+- care-plan-overwhelm
+- low-patient-accountability
+- provider-burnout
+red_flags:
+- unclear-role-boundaries-between-coach-and-clinician
+- absence-of-shared-documentation
+related_topics:
+- functional-medicine-coaching
+- health-coaching-career-paths
+- chronic-disease-management
+key_mechanisms:
+- behavior-change-accountability
+- interdisciplinary-care-integration
+coaching_scope_notes: Coaches attend team meetings, review care plans, create coaching
+  implementation plans, and track patient progress in shared EMR systems. Communication
+  cadence with clinicians must be clearly defined.
+clinician_scope_notes: Clinicians benefit from reduced touch-point burden; coaches
+  handle habit change and follow-up conversations while clinicians focus on clinical
+  decision-making.
+evidence_tier: plausible_emerging
+sources:
+- id: ask-expert-future-fm
+  location: Collaboration & Outcomes Section
+  quote: When coaches and clinicians align, patients receive more consistent messaging,
+    fewer drop-offs, more continuity of care, providers benefit from reduced burden
+    because coaches are really handling that habit change conversation.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

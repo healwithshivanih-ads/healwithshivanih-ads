@@ -1,0 +1,34 @@
+slug: bone-broth-functional-medicine-use-limited-evidence
+statement: Bone broth is widely used in functional medicine to support digestive health,
+  immune function, and hair/skin/nails, but research on its health benefits is limited
+  and there is a risk of lead and heavy metal contamination.
+evidence_tier: fm_specific_thin
+rationale: Bone broth use in FM is common (collagen, gelatin, minerals) but robust
+  clinical trial evidence is lacking. Heavy metal contamination risk is documented
+  (Monro et al. 2013; Hsu et al. 2017).
+coaching_translation: Bone broth is a traditional, nourishing food used in gut healing
+  protocols. It may support digestion and provide collagen precursors, but always
+  source from high-quality, organic bones and discuss with your practitioner.
+out_of_scope_notes: Benefits vs. risks of bone broth, especially heavy metal exposure,
+  should be discussed with the client's functional medicine provider.
+caveats:
+- Research on bone broth health benefits is limited.
+- Risk of lead and heavy metal contamination exists — use organic, grass-fed bones
+  and discuss with provider.
+- 'Source references: Hsu et al. Food Nutr Res 2017; Monro et al. Med Hypotheses 2013.'
+linked_to_topics:
+- gut-dysfunction
+- 5r-gut-restoration
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Bone Broth
+  quote: Bone broth has been used extensively in functional medicine to support patients
+    with digestive concerns, immune system dysfunction, brittle hair, skin, and nails,
+    and poor nutritional intake. Although bone broth has been widely used for these
+    purposes and others, research is limited about the health benefits of bone broth.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,0 +1,34 @@
+slug: iron-supplement
+display_name: Iron (Gentle/Food-Based Iron)
+category: mineral
+forms_available:
+- capsule
+- tablet
+- liquid
+timing_options:
+- on_empty_stomach
+- morning
+take_with_food: avoid
+linked_to_topics:
+- chronic-pain-and-fatigue
+- low-stomach-acid
+linked_to_claims:
+- low-stomach-acid-impairs-b12-iron-absorption
+notes_for_coach: Iron supplementation must be guided by lab results (serum iron, ferritin,
+  TIBC). Low stomach acid impairs iron absorption. Constipating forms (ferrous sulfate)
+  should be avoided; consider bisglycinate forms. Confirm with clinician before recommending.
+notes_for_client: Iron is critical for energy and oxygen delivery. If you have low
+  stomach acid, you may not absorb iron even from a healthy diet. Testing is important
+  before supplementing.
+evidence_tier: confirm_with_clinician
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-chronic-pain-fatigue
+  location: Low Stomach Acid Section
+  quote: If they don't have Asthma Cacid then they will be low in iron and they will
+    be really low in B12 even if they are eating a healthy diet.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

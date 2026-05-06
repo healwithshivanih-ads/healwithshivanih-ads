@@ -1,0 +1,34 @@
+slug: gluten-dairy-sugar-elimination-reduces-pain
+statement: Eliminating gluten, dairy, and refined sugar is a foundational first step
+  that reduces inflammatory pain and improves energy in clients with chronic pain
+  and fatigue.
+evidence_tier: fm_specific_thin
+rationale: Elimination diets removing common inflammatory triggers are widely used
+  in FM practice. RCT evidence for gluten/dairy elimination in non-coeliac, non-dairy-intolerant
+  populations is limited, but clinical observation and mechanistic plausibility are
+  strong.
+coaching_translation: 'This is the starting point for almost every chronic pain client:
+  remove the three biggest inflammatory food triggers — gluten, dairy, and refined
+  sugar — and watch how quickly pain and energy improve.'
+caveats:
+- Evidence is stronger for coeliac disease and dairy intolerance than for the general
+  population.
+- Source is expert FM lecture.
+- Elimination should be done systematically with a reintroduction plan to identify
+  true triggers.
+linked_to_topics:
+- chronic-pain-and-fatigue
+- leaky-gut
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-chronic-pain-fatigue
+  location: Clear / Eliminate Section
+  quote: after removing the gluten, dairy and the refined sugar, I have seen people,
+    they feel like less pain, and when they have less pain, then they're sleeping
+    better, and then their energy pops up.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

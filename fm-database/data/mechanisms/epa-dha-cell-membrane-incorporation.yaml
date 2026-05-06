@@ -1,0 +1,34 @@
+slug: epa-dha-cell-membrane-incorporation
+display_name: EPA/DHA Incorporation into Cell Membrane Phospholipids
+aliases:
+- membrane omega-3 incorporation
+- phospholipid membrane remodeling
+- RBC membrane EPA/DHA
+category: structural
+summary: EPA and DHA are incorporated into cell membrane phospholipids, displacing
+  arachidonic acid and shifting inflammatory signaling. Membrane incorporation begins
+  within days of supplementation but peaks at approximately 4 weeks; full RBC membrane
+  incorporation requires up to 120 days of continuous supplementation.
+upstream_drivers:
+- epa-dha-supplementation
+- reduced-omega-6-intake
+downstream_effects:
+- reduced-arachidonic-acid-in-membranes
+- reduced-inflammatory-eicosanoid-production
+- resolvin-spm-production
+related_mechanisms:
+- arachidonic-acid-cascade
+- resolvin-spm-production
+linked_to_topics:
+- omega-3-fatty-acids
+evidence_tier: strong
+sources:
+- id: coconote-fm-omega-3-fatty-acids
+  location: Fatty Acid Immune Cell Membrane Incorporation Slide
+  quote: EPA and DHA supplementation will replace arachidonic acid in immune cell
+    membranes...it starts beginning in days but it peaks at least around 4 weeks...the
+    RBC membrane incorporation happens only after 120 days.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

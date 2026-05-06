@@ -1,0 +1,28 @@
+slug: magnesium-improves-insulin-receptor-sensitivity
+statement: Magnesium deficiency reduces insulin receptor sensitivity and impairs beta-cell
+  insulin secretion, contributing to insulin resistance and progression toward diabetes.
+evidence_tier: strong
+rationale: Multiple epidemiological studies and meta-analyses have shown inverse associations
+  between dietary magnesium intake and type 2 diabetes risk; mechanistic studies support
+  magnesium's role in insulin receptor signalling.
+coaching_translation: Low magnesium makes it harder for insulin to do its job, contributing
+  to blood sugar imbalances — so correcting magnesium is an important part of metabolic
+  health.
+linked_to_topics:
+- magnesium-deficiency
+linked_to_supplements:
+- magnesium-glycinate
+- magnesium-citrate
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-magnesium-deficiency
+  location: Diabetes / insulin resistance section
+  quote: Whenever magnesium is on the lower side, it decreases the sensitivity of
+    the insulin receptors also. So that is why the glucose also doesn't convert into
+    energy and stays outside into the blood.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

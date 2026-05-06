@@ -1,0 +1,29 @@
+slug: fodmap-reintroduction-identifies-personal-triggers
+statement: Systematic FODMAP reintroduction — one group at a time with at least 3
+  symptom-free days between challenges — identifies individual FODMAP tolerances and
+  expands long-term dietary variety.
+evidence_tier: strong
+rationale: The reintroduction protocol described (one FODMAP group at a time, standardized
+  portions, symptom tracking) matches the validated Monash University three-phase
+  FODMAP protocol.
+coaching_translation: After the elimination phase, reintroduce FODMAPs one group at
+  a time (fructose, lactose, fructans, GOS, polyols) to find your personal triggers
+  and build back a varied, nutritious diet.
+caveats:
+- Only increase portions or add a new FODMAP after at least 3 symptom-free days
+- Track both gut and systemic symptoms during reintroduction
+linked_to_topics:
+- low-fodmap-diet
+- ibs
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Low Fodmap Diet Symptom Tracker — Instructions for Use
+  quote: Only increase portions or add a new FODMAP after at least 3 symptom-free
+    days. Review total symptom score and patterns to identify tolerance levels.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

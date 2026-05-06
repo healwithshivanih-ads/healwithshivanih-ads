@@ -1,0 +1,31 @@
+slug: airway-inflammation-asthma
+display_name: Airway Inflammation / Asthma
+aliases:
+- asthma
+- bronchospasm
+- wheezing
+- allergic airway disease
+category: other
+severity: concerning
+description: Asthma is driven by leukotriene-mediated bronchospasm and elevated arachidonic
+  acid content in eosinophils. An omega-6:omega-3 ratio of 5:1 has shown benefit.
+  EPA and DHA supplementation has reduced cysteinyl leukotrienes and cytokines in
+  children with asthma.
+when_to_refer: Refer to clinician for active asthma management; EPA/DHA is adjunctive,
+  not a replacement for prescribed medications.
+linked_to_topics:
+- omega-3-fatty-acids
+- arachidonic-acid-cascade
+linked_to_mechanisms:
+- arachidonic-acid-cascade
+- lox-pathway
+sources:
+- id: coconote-fm-omega-3-fatty-acids
+  location: Asthma and Omega-3 Study Slide
+  quote: Cysteinyl LTs which are derived from Arachidonic acid were the most important
+    class of molecules in Asthma pathogenesis and Eosinophils from inflamed airways
+    of asthmatics have increased Arachidonic acid content.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

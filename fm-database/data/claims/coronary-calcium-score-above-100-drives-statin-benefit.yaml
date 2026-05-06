@@ -1,0 +1,31 @@
+slug: coronary-calcium-score-above-100-drives-statin-benefit
+statement: A coronary artery calcium (CAC) score above 100 is associated with meaningfully
+  increased cardiovascular risk and statin benefit, while CAC of 0–100 shows overlapping
+  statin vs. no-statin outcomes — supporting use of CAC for individualized treatment
+  decisions.
+evidence_tier: strong
+rationale: Published in the Journal of the American College of Cardiology. CAC as
+  a treatment decision tool is endorsed by ACC/AHA guidelines for intermediate-risk
+  patients.
+coaching_translation: A coronary calcium scan can show how much plaque is building
+  up in heart arteries. Scores above 100 are a strong signal that more aggressive
+  treatment is needed.
+out_of_scope_notes: Coronary calcium scanning requires physician referral and radiation
+  exposure considerations. Interpretation and treatment decisions are clinician scope.
+caveats:
+- Radiation exposure should be considered, especially in younger patients.
+- Published in JACC — peer-reviewed support for this claim.
+linked_to_topics:
+- cardiovascular-disease-prevention
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Coronary Calcium Score and Treatment
+  quote: As the score gets above 100, we start seeing increased risk and we start
+    seeing benefit with statin. And this was in the Journal of the American College
+    of Cardiology.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,36 @@
+slug: change-talk-activation
+display_name: Change Talk Activation
+aliases:
+- eliciting change talk
+- DARN-CAT
+- change talk amplification
+category: neurological
+summary: In motivational interviewing, selectively evoking and reinforcing client
+  statements that express desire, ability, reasons, need, commitment, activation,
+  or taking steps toward change (DARN-CAT). Preferentially reflecting change talk
+  over sustain talk shifts the client's internal narrative toward motivation for behavior
+  change.
+upstream_drivers:
+- ambivalence
+- external-motivation
+- low-intrinsic-motivation
+downstream_effects:
+- increased-commitment-to-change
+- reduced-sustain-talk
+- behavior-change-initiation
+related_mechanisms:
+- pros-cons-weighting
+linked_to_topics:
+- ambivalence-in-coaching
+evidence_tier: strong
+sources:
+- id: ask-expert-coaching-ambivalence
+  location: Group discussion — Monica's contribution on MI and change talk
+  quote: Motivational interviewing is an increased change talk and reflections and
+    information towards change. So I think that'll be like listening very, very attentively
+    to what the client says towards change and reflect and make affirmations towards
+    that change.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

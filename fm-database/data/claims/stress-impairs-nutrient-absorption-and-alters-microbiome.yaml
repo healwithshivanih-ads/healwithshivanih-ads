@@ -1,0 +1,33 @@
+slug: stress-impairs-nutrient-absorption-and-alters-microbiome
+statement: Chronic stress impairs nutrient absorption and can alter the gut microbiome,
+  reducing the body's ability to synthesize vitamins.
+evidence_tier: plausible_emerging
+rationale: Sympathetic dominance reduces digestive enzyme output, slows intestinal
+  motility, and alters gut microbial composition, consistent with known neuroenteric
+  physiology. This is biologically plausible and supported by emerging literature,
+  though the specific vitamin synthesis claim is a simplification.
+coaching_translation: Even the best diet can fall short if your body is in chronic
+  stress mode — stress changes how well you absorb nutrients and affects the beneficial
+  bacteria that help make certain vitamins.
+caveats:
+- Source is expert consensus / practitioner discussion, not a cited RCT.
+- The claim that stress prevents vitamin synthesis is a simplification of a more complex
+  gut-microbiome relationship.
+- Verify specific mechanisms with clinician for client education.
+linked_to_topics:
+- stress-nutrition-connection
+- stress-and-the-sympathetic-nervous-system
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-coaching-stress-kids
+  location: Stress Client Topic Discussion
+  quote: you can go after all the nutrition you want, but if you can't absorb it,
+    okay, that, you know, it'll just go right through you or your biome will change
+    in a way that you're not making the vitamins and everything because it's affected
+    by stress.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

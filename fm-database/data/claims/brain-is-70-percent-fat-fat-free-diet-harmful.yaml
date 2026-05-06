@@ -1,0 +1,29 @@
+slug: brain-is-70-percent-fat-fat-free-diet-harmful
+statement: The brain is approximately 70% fat (cell membranes are 50% fat, myelin
+  sheath adds another 20%), making a fat-free diet dangerous for brain function and
+  making fat an essential macronutrient for mental health.
+evidence_tier: strong
+rationale: Brain lipid composition is well-established in neuroscience. Fat-free diets
+  impairing brain health, particularly myelin integrity and membrane fluidity, is
+  supported by nutritional neuroscience.
+coaching_translation: Your brain is mostly fat — so cutting fat from your diet can
+  actually harm your mental performance and mood. Healthy fats (avocado, nuts, olive
+  oil, oily fish) are brain food.
+caveats:
+- The specific percentage figures are approximations
+- Source is expert lecture
+linked_to_topics:
+- depression-lifestyle
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: barbara-oneil-healing-mind
+  location: Nutrition Section
+  quote: Every cell in the body, the membrane around it is 50% fat. So this is 50%
+    fat. In the brain, we've got this little fatty myelin sheath. It's another 20%
+    fat. Do you know what that means? Our brain is 70% fat.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

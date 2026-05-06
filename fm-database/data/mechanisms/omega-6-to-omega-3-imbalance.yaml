@@ -1,0 +1,30 @@
+slug: omega-6-to-omega-3-imbalance
+display_name: Omega-6 to Omega-3 Imbalance
+aliases:
+- pro-inflammatory fatty acid ratio
+- excess dietary omega-6
+category: immune
+summary: Excessive consumption of omega-6 fatty acids from heavily processed seed
+  oils (canola, corn, soybean, sunflower, safflower) relative to omega-3s drives a
+  pro-inflammatory state, contributing to chronic cardiovascular inflammation.
+upstream_drivers:
+- high-processed-seed-oil-intake
+- low-omega-3-intake
+downstream_effects:
+- chronic-inflammation
+- atheromatous-vascular-disease
+related_mechanisms:
+- chronic-inflammation
+linked_to_topics:
+- cooking-fats-and-cardiovascular-health
+- cardiovascular-dysfunction
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: A Guide to Cooking with Fats and Oils
+  quote: These fats and oils are also high in omega-6 fatty acids, which can contribute
+    to chronic inflammation in the body.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

@@ -1,26 +1,35 @@
 slug: agitated-depression
-display_name: Agitated Depression / Anxiety-Depression
+display_name: Agitated Depression
 aliases:
 - anxious depression
 - wired and tired
 - stressed depression
+- restless depression
+- high-cortisol depression
 category: mood
-severity: concerning
-description: Depression with an anxious, agitated quality associated with elevated
-  cortisol and adrenaline states.
-when_to_refer: Refer for mental health evaluation; may need psychiatric assessment.
+severity: common
+description: A depressive state characterized by agitation and anxiety, associated
+  with elevated cortisol states.
+when_to_refer: Refer to mental health professional if depression is severe, persistent,
+  or accompanied by suicidal ideation.
 linked_to_topics:
 - hypercortisolism
 - hpa-axis-dysregulation
 - chronic-stress
+- hpa-axis-dysfunction
 linked_to_mechanisms:
 - cortisol-excess
 - sympathetic-nervous-system-activation
+- hpa-axis-dysregulation
+- sympathoadrenal-activation
 sources:
 - id: vitaone-adrenal-toolkit
   location: 'HPA Axis Questionnaire — Section 2: Elevated cortisol state'
   quote: Agitated depression
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: 'HPA Axis Questionnaire — Section 2: Elevated cortisol state'
+  quote: Agitated depression.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani

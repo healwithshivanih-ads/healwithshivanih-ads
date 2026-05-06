@@ -1,0 +1,27 @@
+slug: unintentional-weight-loss
+display_name: Unintentional Weight Loss
+aliases:
+- unexplained weight loss
+- wasting
+- losing weight without trying
+category: metabolic
+severity: concerning
+description: Unintended weight loss occurring in context of nutrient malabsorption
+  from gut dysbiosis and hypochlorhydria. A strict elimination diet would worsen this
+  if not modified appropriately.
+when_to_refer: Significant unintentional weight loss always warrants clinician evaluation
+  to rule out malignancy, inflammatory bowel disease, or other serious pathology.
+linked_to_topics:
+- hypochlorhydria
+- dysbiosis
+- gut-skin-hormone-axis
+linked_to_mechanisms:
+- gut-barrier-dysfunction
+sources:
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Root Cause Discussion
+  quote: Weight loss is a result of this malabsorption problem that has taken place.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,35 @@
+slug: lectin-driven-gut-inflammation
+display_name: Lectin-Driven Gut Inflammation
+aliases:
+- lectin sensitivity
+- oat lectins
+- dietary lectins
+category: immune
+summary: Oats are described as high in lectins. When the gut is inflamed and microbiome
+  is compromised, lectins pass into the bloodstream and increase systemic inflammation.
+  This mechanism is proposed as one of five dietary irritants exacerbating IBD-spectrum
+  conditions.
+upstream_drivers:
+- oat-consumption
+- gut-inflammation
+- compromised-microbiome
+downstream_effects:
+- increased-systemic-inflammation
+- gut-irritation
+related_mechanisms:
+- gut-immune-barrier-function
+- gut-microbiome-colonisation
+linked_to_topics:
+- inflammatory-bowel-conditions
+- leaky-gut
+evidence_tier: fm_specific_thin
+sources:
+- id: barbara-oneil-gi-tract
+  location: Inflammatory Foods Section
+  quote: Oats are high in a plant called lectins. And if the gut is inflamed and if
+    the microorganisms are compromised, then the lectins get into the blood and they
+    increase inflammation.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

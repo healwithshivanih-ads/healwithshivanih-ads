@@ -1,0 +1,32 @@
+slug: gut-dysfunction-precedes-and-drives-hashimoto-thyroiditis
+statement: Long-standing untreated gut dysbiosis and SIBO can drive autoimmune thyroid
+  disease (Hashimoto's thyroiditis) through chronic systemic inflammation, immune
+  dysregulation, and HPA axis disruption, as illustrated by the case study presented.
+evidence_tier: fm_specific_thin
+rationale: A gut-autoimmunity-thyroid connection is biologically plausible and supported
+  by emerging research on intestinal permeability and molecular mimicry. The case
+  study presented supports this clinically but is anecdotal.
+coaching_translation: For some people with thyroid problems, the root cause traces
+  back to long-term gut issues that were never addressed — treating the gut can support
+  thyroid health.
+out_of_scope_notes: Thyroid diagnosis and management is clinician scope. Coaches should
+  not imply gut work alone will resolve Hashimoto's.
+caveats:
+- Based on a single case study from the lecture; not generalizable without broader
+  study.
+- Source is expert consensus lecture; gut-autoimmune thyroid causation is plausible
+  but not established as consensus.
+linked_to_topics:
+- sibo
+- gut-brain-axis-dysfunction
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-sibo-sifo
+  location: Case Study / Comorbidities Section
+  quote: it is because the SIBO is there, I get the diabetes and the hypothyroid because
+    that's the reason that the hormone is getting involved.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

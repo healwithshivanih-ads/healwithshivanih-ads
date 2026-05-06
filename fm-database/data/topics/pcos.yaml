@@ -1,5 +1,5 @@
 slug: pcos
-display_name: Polycystic Ovary Syndrome (PCOS)
+display_name: PCOS & Hormonal Dysregulation
 aliases:
 - pcod
 - polycystic-ovary-syndrome
@@ -11,10 +11,11 @@ aliases:
 - hyperandrogenism
 - PCOS
 - polycystic ovaries
-summary: A hormonal condition characterised by insulin resistance, androgen excess,
-  and ovulatory dysfunction. Low-carb diets improve ovulation, insulin sensitivity,
-  and androgen balance. Adjunct support includes magnesium, inositol, and Vitamin
-  D3.
+- androgen excess
+- hormonal hair loss
+summary: PCOS and androgen-driven hair loss are linked to insulin resistance, high
+  androgens, inositol, omega-3, magnesium, and dietary changes emphasizing low refined
+  carbohydrates.
 common_symptoms:
 - irregular or absent cycles
 - hormonal acne (jawline, chin)
@@ -34,6 +35,11 @@ common_symptoms:
 - belly-fat
 - sugar-cravings
 - elevated-fasting-insulin
+- hirsutism
+- low-libido
+- low-mood
+- hormonal-hair-loss
+- mood-changes
 red_flags:
 - severely irregular bleeding requiring GYN evaluation
 - suspected endometrial hyperplasia (long anovulatory periods)
@@ -42,6 +48,12 @@ red_flags:
 - severe hyperandrogenism
 - metabolic syndrome
 - Severe virilization — refer to endocrinology
+- infertility unresponsive to lifestyle intervention
+- very high free testosterone
+- fertility concerns requiring reproductive endocrinology
+- uncontrolled insulin resistance
+- fertility-concerns-require-clinician
+- labs-required-lh-fsh-testosterone
 related_topics:
 - perimenopause
 - estrogen-dominance
@@ -52,16 +64,25 @@ related_topics:
 - hpa-axis-dysregulation
 - low-carb-diet
 - metabolic-syndrome
+- insulin-resistance-estrogen
+- hair-loss
+- nutrition-deficiency
+- chronic-inflammation
 key_mechanisms:
 - insulin-resistance
 - androgen-excess
 - chronic-inflammation
 - hpa-axis-dysregulation
 - aromatase-overactivity
-coaching_scope_notes: Support with low-carb food choices; inositol and Vitamin D3
-  recommendations require clinician oversight on dosing.
-clinician_scope_notes: Run fasting glucose AND GTIR — normal fasting insulin does
-  not rule out IR. Always evaluate thyroid. Avoid Vitex with high LH.
+- aromatase-upregulation
+- nutrient-dependent-energy-metabolism
+- oxidative-stress-and-inflammation
+coaching_scope_notes: Support with dietary pattern, stress, and movement. Inositol
+  and hormonal supplementation should be personalized with clinician and relevant
+  labs (LH:FSH, testosterone, DHEA-S, fasting insulin).
+clinician_scope_notes: LH:FSH, testosterone, DHEA-S, and fasting insulin interpretation;
+  Vitex and adaptogen use in PCOS; and fertility-related protocols are clinical scope
+  items.
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, PCOS section
@@ -80,8 +101,22 @@ sources:
 - id: vitaone-cardiometabolic-diet-cheatsheet
   location: Functional Medicine Clinical Applications
   quote: Improves ovulation, insulin sensitivity, androgen balance
+- id: coconote-fm-estrogen-dominance
+  location: Disorders Associated with Estrogen Dominance
+  quote: What is PCOS? The main cause is insulin resistance. Insulin resistance can
+    cause estrogen dominance. It also decreases your capability of binding to the
+    sex hormone binding nodule, which actually results in greater amounts of free
+    circulating estrogen.
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Topics Covered
+  quote: PCOS and androgen-driven hair loss are linked to insulin resistance, high
+    androgens, inositol, omega-3, magnesium, and dietary changes.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Topics Covered
+  quote: PCOS and androgen-driven hair loss are linked to insulin resistance, high
+    androgens, inositol, omega-3, magnesium, and dietary changes.
 evidence_tier: plausible_emerging
-version: 5
+version: 8
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-06'
 updated_by: shivani

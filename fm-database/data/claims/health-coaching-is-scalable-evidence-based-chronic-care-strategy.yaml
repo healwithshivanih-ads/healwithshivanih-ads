@@ -1,0 +1,30 @@
+slug: health-coaching-is-scalable-evidence-based-chronic-care-strategy
+statement: Health coaching is increasingly recognized as a scalable, evidence-based
+  strategy to address gaps in chronic care.
+evidence_tier: plausible_emerging
+rationale: The speaker cites a general body of evidence and references RCTs and patient-reported
+  outcome data, but no specific studies are named with author/year/journal. The claim
+  is biologically and clinically plausible and consistent with emerging peer-reviewed
+  literature on health coaching in chronic disease.
+coaching_translation: Your role as a coach is not just supportive — it is clinically
+  meaningful. Evidence is accumulating that coaching improves patient outcomes in
+  chronic disease settings.
+caveats:
+- Source is an expert talk/synthesis, not primary literature citation. Specific studies
+  not named.
+- Evidence tier would be upgraded to 'strong' if specific RCTs were cited.
+linked_to_topics:
+- functional-medicine-coaching
+- chronic-disease-management
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-future-fm
+  location: Healthcare Shift & Coaching Role Section
+  quote: Health coaching is increasingly recognized as a scalable evidence-based strategy
+    to address gaps in chronic care.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

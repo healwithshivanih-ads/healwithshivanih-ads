@@ -1,0 +1,27 @@
+slug: vitamin-d-tested-as-25-oh-vitamin-d
+statement: Blood vitamin D status is assessed by measuring 25-hydroxyvitamin D (calcidiol),
+  not the active form 1,25-dihydroxyvitamin D (calcitriol), because calcidiol is more
+  stable and better reflects total body vitamin D stores.
+evidence_tier: strong
+rationale: This is well-established clinical laboratory practice. 25-OH vitamin D
+  has a longer half-life, is more abundant, and is not subject to acute parathyroid
+  hormone-driven regulation that can normalise calcitriol even during deficiency.
+coaching_translation: When you get a vitamin D blood test, the lab measures the storage
+  form of vitamin D, not the active form. This gives a more reliable picture of your
+  vitamin D status.
+caveats: []
+linked_to_topics:
+- vitamin-d3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coconote-fm-vitamin-d3-k2
+  location: Vitamin D Lab Testing
+  quote: What we are actually testing is Calcidiol. Why? Even though it is an intermediate
+    part, why are we testing this? Because number one, it is more in the saturated
+    form.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

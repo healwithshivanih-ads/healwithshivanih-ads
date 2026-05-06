@@ -1,0 +1,46 @@
+slug: high-triglycerides
+display_name: High Triglycerides
+aliases:
+- hypertriglyceridaemia
+- high triglycerides
+- elevated blood fats
+- elevated TG
+- high blood fats
+- hypertriglyceridemia
+- raised blood fats
+category: metabolic
+severity: concerning
+description: Elevated triglycerides in combination with low HDL create an atherogenic
+  lipid pattern and are a surrogate marker for insulin resistance. The TG:HDL ratio
+  is particularly informative.
+when_to_refer: Refer if triglycerides exceed 500 mg/dL (pancreatitis risk) or in the
+  context of cardiovascular events.
+linked_to_topics:
+- cardiometabolic-diet
+- intermittent-fasting
+- dyslipidemia
+- cardiovascular-risk-assessment
+- insulin-resistance
+- lipid-panel-interpretation
+- cardiometabolic-disease
+linked_to_mechanisms:
+- insulin-resistance
+- chronic-systemic-inflammation
+- vldl-overproduction-from-excess-carbs
+- ldl-particle-size-atherogenicity
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Intermittent Fasting — summary table
+  quote: 'Decreases: Triglycerides'
+- id: vitaone-cvs-risk-assessment
+  location: Lab Results (Slide 16)
+  quote: Studies have implicated triglycerides in the progression of coronary atherosclerosis
+- id: coconote-fm-biomarkers-cvs
+  location: Metabolic Dysfunction
+  quote: the liquid abnormal lipid-decafnanol metabolism function is actually high
+    triglyceride and low STL. So if we just look at the ratio of triglyceride versus
+    STL, you can find out the insulin resistance.
+version: 3
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

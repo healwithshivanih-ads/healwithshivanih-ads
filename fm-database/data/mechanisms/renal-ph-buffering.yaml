@@ -1,0 +1,28 @@
+slug: renal-ph-buffering
+display_name: Renal pH Buffering
+aliases:
+- kidney acid-base regulation
+- tubular pH balance
+category: metabolic
+summary: The kidneys continuously monitor blood pH through tubular reabsorption. Every
+  two minutes, 1.2 litres of blood is filtered; the tubules selectively excrete or
+  retain acid/base ions to maintain blood pH between 7.3 and 7.5.
+upstream_drivers:
+- blood-ph-shift
+downstream_effects:
+- blood-ph-maintenance
+related_mechanisms:
+- pulmonary-ph-buffering
+linked_to_topics:
+- ph-balance
+evidence_tier: strong
+sources:
+- id: barbara-oneil-ph-balance
+  location: Kidney Filtering Section
+  quote: It is here that extra acid is dropped into the tubules to be urinated out.
+    If the pH of the blood is getting to alkaline, then extra acid is pulled out of
+    the tubules into the blood.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

@@ -1,0 +1,32 @@
+slug: saccharomyces-boulardii-antifungal-probiotic-15-21-days
+statement: Saccharomyces boulardii is an antifungal probiotic that should be prescribed
+  for 15–21 days in cases of fungal overgrowth; it is safe to use in SIBO as it does
+  not ferment in the small intestine.
+evidence_tier: plausible_emerging
+rationale: Saccharomyces boulardii is a non-pathogenic yeast with evidence for reducing
+  gut fungal overgrowth and antibiotic-associated dysbiosis. Its use as a short-course
+  antifungal probiotic is common in integrative medicine. Evidence base is moderate.
+coaching_translation: If your client is on antibiotics or has signs of fungal overgrowth,
+  S. boulardii is a targeted probiotic you can safely add for 2–3 weeks to protect
+  their gut.
+caveats:
+- Source is expert FM lecture (moderate quality).
+- Saccharomyces boulardii is itself a yeast; use with caution in immunocompromised
+  individuals (rare risk of fungemia).
+linked_to_topics:
+- gut-dysbiosis
+- fungal-overgrowth
+linked_to_supplements:
+- saccharomyces-boulardii
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-approach-inflammation
+  location: Probiotics – Types and Protocol
+  quote: We can prescribe this antifungal probiotic, Saccharomyces boulardii, just
+    for 15 days. It doesn't have any effect for more. Like you can prescribe for 21
+    days.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

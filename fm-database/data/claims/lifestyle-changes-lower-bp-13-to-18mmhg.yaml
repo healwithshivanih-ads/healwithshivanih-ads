@@ -1,0 +1,25 @@
+slug: lifestyle-changes-lower-bp-13-to-18mmhg
+statement: A comprehensive lifestyle intervention combining dietary changes, weight
+  loss, and regular exercise can lower systolic blood pressure by 13–18 mmHg.
+evidence_tier: strong
+rationale: Supported by DASH trial and related studies demonstrating substantial blood
+  pressure reduction from combined lifestyle interventions.
+coaching_translation: Lifestyle changes are powerful medicine for blood pressure.
+  When you stack diet improvements, weight loss, and regular exercise together, the
+  results can match what many medications achieve.
+caveats: []
+linked_to_topics:
+- blood-pressure-management
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-body-composition-bmi
+  location: Blood Pressure Section
+  quote: If you can engage in all of these lifestyle changes, if we added all of those
+    up here, you could lower their blood pressure by 13 to 18 millimeters of mercury
+    just with lifestyle, which is impressive.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

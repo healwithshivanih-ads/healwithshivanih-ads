@@ -1,0 +1,38 @@
+slug: positive-affect-upregulation
+display_name: Positive Affect Upregulation
+aliases:
+- hedonic wellbeing enhancement
+- positive emotion cultivation
+- psychological positivity
+category: neurological
+summary: Practices such as gratitude journaling, self-compassion, and social connection
+  shift cognitive and affective appraisal patterns, increasing the frequency and intensity
+  of positive emotions such as joy, hope, and compassion. This upregulation is associated
+  with resilience, improved immune function, and reduced HPA axis reactivity.
+upstream_drivers:
+- gratitude-journaling
+- social-connection
+- meaning-making
+- creative-expression
+downstream_effects:
+- increased-joy
+- reduced-stress-perception
+- improved-immune-function
+- greater-resilience
+related_mechanisms:
+- hpa-axis-regulation
+linked_to_topics:
+- gratitude-practice
+- emotional-wellbeing
+- self-care
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Practicing Gratitude with the IFM Gratitude Journal
+  quote: In recent years, the act of recognizing and expressing gratitude has been
+    linked to many improved physical, psychological, and social health benefits for
+    both healthcare providers and patients.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

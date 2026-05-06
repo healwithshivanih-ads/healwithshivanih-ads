@@ -4,19 +4,36 @@ aliases:
 - feeling sick
 - queasy
 - upset stomach
+- queasiness
+- queasy stomach
+- post-meal nausea
 category: gi
 severity: common
-description: Sensation of stomach upset and urge to vomit. A listed gastrointestinal
-  side effect of LDN.
+description: Unpleasant stomach sensation with urge to vomit. Reported in patients
+  with hypochlorhydria, particularly post-prandially.
 linked_to_topics:
 - low-dose-naltrexone
-linked_to_mechanisms: []
+- ibs
+- histamine-intolerance
+- nightshade-sensitivity
+- hypochlorhydria
+linked_to_mechanisms:
+- fodmap-fermentation-gas-production
+- histamine-enzyme-inhibition
+- food-fermentation-reflux
 when_to_refer: ''
 sources:
 - id: vitaone-ldn-article
   location: LDN potential side effects
   quote: 'Gastrointestinal: Nausea, Abdominal Pain, Diarrhea, Anorexia'
-version: 1
+- id: vitaone-health-coaching-toolkit
+  location: Histamine Food Triggers — Symptoms of Histamine Reactions
+  quote: 'Digestive: gas, pain, diarrhea, nausea, vomiting'
+- id: coconote-fm-hypochlorhydria
+  location: Case Presentation
+  quote: It leads to water brush, severe discomfort, bloating, nausea, epigastric
+    burning pain.
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-05'
 updated_by: shivani

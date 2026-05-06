@@ -1,0 +1,27 @@
+slug: sodium-should-be-balanced-with-potassium-magnesium-and-hydration
+statement: Sodium should be balanced with potassium, magnesium, and adequate hydration.
+evidence_tier: fm_specific_thin
+rationale: The sodium-potassium-magnesium balance framing is FM-specific but biologically
+  plausible given their interacting roles in fluid and electrolyte homeostasis.
+coaching_translation: Rather than simply reducing salt, focus on increasing potassium
+  and magnesium from whole foods to support electrolyte balance.
+caveats:
+- Source is practitioner cheatsheet without citation.
+linked_to_topics:
+- cardiovascular-health
+- nutrition-deficiency
+linked_to_supplements:
+- sodium
+- potassium
+- magnesium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 15
+  quote: The source advises balancing sodium with potassium, magnesium, and adequate
+    hydration.
+version: 1
+status: active
+updated_at: '2026-05-06'
+updated_by: shivani

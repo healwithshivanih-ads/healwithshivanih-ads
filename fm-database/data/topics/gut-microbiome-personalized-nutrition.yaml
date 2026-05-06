@@ -1,0 +1,32 @@
+slug: gut-microbiome-personalized-nutrition
+display_name: Gut Microbiome & Personalized Nutrition
+aliases:
+- microbiome-based nutrition
+- personalized diet
+- individualized nutrition
+summary: Each person's gut microbiome is unique, shaped by diet, genetics, environment,
+  and lifestyle. Microbiome composition determines how individuals respond to foods,
+  affecting weight, blood sugar, and digestion. Personalized nutrition guided by microbiome
+  analysis is an emerging approach to optimize health outcomes beyond generic dietary
+  guidelines.
+common_symptoms: []
+red_flags: []
+related_topics:
+- gut-brain-axis
+- gut-dysfunction
+key_mechanisms:
+- gut-dysbiosis
+coaching_scope_notes: Coaches can introduce the concept of microbiome diversity and
+  individualized dietary strategies. Microbiome testing interpretation should involve
+  a qualified clinician.
+evidence_tier: plausible_emerging
+clinician_scope_notes: ''
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: 'Gut Microbiome and Personalized Nutrition: The Future of Diets'
+  quote: Recent research has shown that the composition of our gut microbiota can
+    determine how we respond to different foods.
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

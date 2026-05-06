@@ -1,0 +1,28 @@
+slug: omega3-supplementation-requires-blood-thinner-monitoring
+statement: Patients on anticoagulant therapy (blood thinners) should have PTT or INR
+  monitored when supplementing with omega-3 fatty acids.
+evidence_tier: confirm_with_clinician
+rationale: Safety consideration explicitly stated in the lecture. While current research
+  suggests omega-3 supplementation does not significantly increase bleeding risk,
+  prudent monitoring is recommended in anticoagulated patients.
+coaching_translation: If your client is on blood thinners, always flag omega-3 supplementation
+  for their doctor to review before starting.
+out_of_scope_notes: Monitoring PTT/INR is fully outside coaching scope. Do not advise
+  anticoagulated clients to start omega-3 supplementation without clinician clearance.
+caveats:
+- 'Coaching scope: flag and refer; do not manage anticoagulation.'
+linked_to_topics:
+- omega-3-fatty-acids
+linked_to_supplements:
+- epa-dha-fish-oil
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-omega-3-fatty-acids
+  location: Additional Considerations for Omega-3 Supplementation Slide
+  quote: you need to monitor PTT or INR if your patient is on blood thinners. There
+    is a research on safety that it does not lead to any bleeding episode. Still some
+    safety might be prudent.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

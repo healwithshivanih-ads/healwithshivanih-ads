@@ -1,0 +1,26 @@
+slug: easy-bruising
+display_name: Easy Bruising
+aliases:
+- ecchymosis
+- bruising easily
+- skin bruising
+category: cardiovascular
+severity: concerning
+description: Spontaneous or disproportionate bruising, often presenting as ecchymosis,
+  associated with vitamin K2 deficiency and impaired coagulation factor activation.
+when_to_refer: Refer if bruising is unexplained, widespread, or accompanied by other
+  bleeding symptoms such as GI bleeding or haematuria.
+linked_to_topics:
+- vitamin-k2
+linked_to_mechanisms:
+- coagulation-factor-activation
+sources:
+- id: coconote-fm-vitamin-d3-k2
+  location: Vitamin K2 Deficiency Symptoms
+  quote: if there is a deficiency in vitamin K2, it can manifest as glupus, anechymosis,
+    hematiduia, GI bleeding, intracranial bleeding, prolonged bleeding or clotting
+    time.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

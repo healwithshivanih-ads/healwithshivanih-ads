@@ -1,0 +1,31 @@
+slug: tg-hdl-ratio-implicates-coronary-atherosclerosis
+statement: The triglyceride/HDL ratio is implicated in the progression of coronary
+  atherosclerosis and serves as a functional cardiovascular risk marker.
+evidence_tier: plausible_emerging
+rationale: The TG/HDL ratio is widely used in functional and preventive medicine as
+  a proxy for insulin resistance and small dense LDL particle burden. Observational
+  studies support its association with CVD risk. However, it is not a standard guideline
+  biomarker.
+coaching_translation: The ratio of your triglycerides to your HDL (good cholesterol)
+  is a powerful signal of your heart health — more so than total cholesterol alone.
+  A low TG/HDL ratio is the goal.
+caveats:
+- TG/HDL ratio is a functional medicine marker, not a standard AHA/ACC guideline biomarker.
+  Source is an educational case study, not primary literature.
+linked_to_topics:
+- dyslipidemia
+- cardiovascular-risk-assessment
+- insulin-resistance
+linked_to_supplements:
+- omega-3-fatty-acids
+- niacin-b3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: vitaone-cvs-risk-assessment
+  location: Lab Results (Slide 16)
+  quote: Studies have implicated triglycerides in the progression of coronary atherosclerosis
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

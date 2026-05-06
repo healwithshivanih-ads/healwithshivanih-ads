@@ -1,0 +1,25 @@
+slug: soaking-dal-reduces-gos
+statement: Soaking moong dal for 30 minutes and discarding the soaking water reduces
+  GOS (galacto-oligosaccharides) content, making the dal more tolerable during the
+  low FODMAP elimination phase.
+evidence_tier: plausible_emerging
+rationale: Soaking and discarding water leaches water-soluble oligosaccharides from
+  legumes. This is consistent with Monash University guidance and general food science
+  principles, though exact GOS reduction percentages vary.
+coaching_translation: Always soak your moong dal for at least 30 minutes and throw
+  away the soaking water before cooking — this removes most of the gas-causing sugars.
+linked_to_topics:
+- low-fodmap-diet
+- ibs
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: vitaone-health-coaching-toolkit
+  location: Low Fodmap Indian Sabzis — MOONG DAL + LAUKI / TURAI / ASH GOURD
+  quote: Soak moong dal for 30 minutes - discard soaking water (reduces GOS).
+version: 1
+status: active
+updated_at: '2026-05-04'
+updated_by: shivani

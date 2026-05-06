@@ -1,0 +1,31 @@
+slug: relative-risk-inflation
+display_name: Relative Risk Inflation in Reporting
+aliases:
+- misleading relative risk
+- relative vs absolute risk framing
+category: other
+summary: Presenting risk reduction in relative terms (e.g., '29% reduction in heart
+  attacks') rather than absolute terms (e.g., '2% absolute risk reduction') systematically
+  overstates the perceived benefit of an intervention, influencing prescribing and
+  patient decisions.
+upstream_drivers:
+- pharmaceutical-industry-bias
+- trial-design-limitations
+downstream_effects:
+- overestimation-of-statin-benefit
+- underappreciation-of-nnt
+related_mechanisms: []
+linked_to_topics:
+- statin-therapy-primary-prevention
+- cardiovascular-risk-assessment
+evidence_tier: strong
+sources:
+- id: coconote-fm-reality-of-statins
+  location: Absolute vs. Relative Risk Introduction
+  quote: That 2% difference equates to what's called a relative risk, looking at the
+    two things, comparing the two groups, statin versus non-statin of a 29%. But the
+    number needed to treat is 50.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

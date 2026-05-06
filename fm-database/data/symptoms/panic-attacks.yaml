@@ -1,0 +1,27 @@
+slug: panic-attacks
+display_name: Panic Attacks
+aliases:
+- sudden-onset anxiety
+- acute panic episodes
+- panic disorder
+category: mood
+severity: concerning
+description: Sudden episodes of intense fear with physical symptoms including palpitations,
+  breathlessness, and dizziness; associated with uncontrolled adrenal catecholamine
+  surges in magnesium-deficient states.
+when_to_refer: Refer if recurrent, disabling, or associated with cardiac symptoms.
+linked_to_topics:
+- magnesium-deficiency
+- magnesium-neurological-mental-health
+linked_to_mechanisms:
+- adrenal-catecholamine-dysregulation
+- gaba-receptor-modulation
+sources:
+- id: coconote-fm-magnesium-deficiency
+  location: Anxiety and panic attacks section
+  quote: Giving magnesium, eventually healing the adrenaline fatigue can help you
+    in terms of managing the anxiety and panic attack as well.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

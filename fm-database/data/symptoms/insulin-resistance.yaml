@@ -1,0 +1,30 @@
+slug: insulin-resistance
+display_name: Insulin Resistance
+aliases:
+- high fasting insulin
+- poor blood sugar control
+- glucose dysregulation
+- pre-diabetes metabolic pattern
+category: metabolic
+severity: concerning
+description: A state in which cells fail to respond efficiently to insulin, requiring
+  higher insulin concentrations to maintain normal blood glucose. Associated with
+  increased type 2 diabetes risk, weight gain, and metabolic dysfunction.
+when_to_refer: Refer to clinician for fasting insulin, HOMA-IR, or HbA1c assessment
+  and medical management if indicated.
+linked_to_topics:
+- insulin-resistance-sensitivity
+- cold-water-immersion
+linked_to_mechanisms:
+- bat-activation
+- cold-induced-thermogenesis
+sources:
+- id: espeland-2022-cold-water-immersion
+  location: Metabolic Changes
+  quote: Studies found that repeated CWI significantly increased insulin sensitivity
+    and decreased insulin concentrations, suggesting protective effects against type
+    2 diabetes and insulin resistance.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

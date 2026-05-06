@@ -1,0 +1,32 @@
+slug: elevated-homocysteine-associated-with-cardiovascular-and-neurological-risk
+statement: Chronically elevated homocysteine is associated with increased risk of
+  heart attacks, stroke, dementia, and neural tube defects in pregnancy.
+evidence_tier: strong
+rationale: The cardiovascular and neurological risks of hyperhomocysteinaemia are
+  supported by extensive epidemiological literature, consistent with what the document
+  states.
+coaching_translation: Homocysteine is a useful functional marker — keeping it in the
+  optimal range (5–6 µmol/L) through diet, B vitamin status, and lifestyle supports
+  heart and brain health.
+out_of_scope_notes: Homocysteine lab ordering, interpretation, and clinical management
+  are outside coaching scope.
+caveats:
+- Lowering homocysteine with B vitamins does not consistently translate to reduced
+  cardiovascular events in RCTs — this is an association, not proven causation for
+  outcomes.
+linked_to_topics:
+- homocysteine-elevation
+- mthfr-gene-variant
+linked_to_supplements:
+- methylfolate
+- methylcobalamin
+linked_to_mechanisms: []
+sources:
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: Homocysteine section
+  quote: Raised levels of homocysteine generally indicate a potential risk of getting
+    heart attacks as well as many neurological disorders like stroke and dementia.
+version: 1
+status: active
+updated_at: '2026-05-05'
+updated_by: shivani

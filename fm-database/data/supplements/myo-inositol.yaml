@@ -6,9 +6,9 @@ forms_available:
 - capsule
 typical_dose_range:
   powder:
-    min: 2000
-    max: 4000
-    unit: mg
+    min: 2
+    max: 4
+    unit: g
   capsule:
     min: 2000
     max: 4000
@@ -27,20 +27,23 @@ linked_to_topics:
 - low-carb-diet
 - hypothyroidism
 - hashimotos-hypothyroidism
+- thyroid-dysfunction
 linked_to_claims:
 - myo-inositol-d-chiro-inositol-40-1-restores-ovulation-pcos
 - stress-disrupts-hpo-axis-pcos
 - inositol-glucose-uptake-pcos
 - low-carb-improves-pcos-hormonal-markers
 - myo-inositol-regulates-tsh-fsh-insulin-signaling
-notes_for_coach: Acts as a second messenger in TSH receptor signaling. Found naturally
-  in fruits, vegetables, legumes, cereals, and nuts. Often combined with selenium
-  in thyroid protocols. No specific dose cited in document — typically 2–4 g/day in
-  studies. Emerging evidence, not yet consensus.
-notes_for_client: Myo-inositol is a natural compound found in many foods that helps
-  your thyroid cells respond to the hormone signals telling them to produce thyroid
+- myo-inositol-supports-tsh-signal-transduction
+notes_for_coach: Myo-inositol is involved in TSH, FSH, and insulin signal transduction.
+  Found naturally in fruits, vegetables, cereals, legumes, and nuts. The document
+  does not specify a dose — dose range above reflects commonly used research doses
+  and should be verified with clinician. Thin evidence base for thyroid specifically.
+notes_for_client: Myo-inositol is a naturally occurring nutrient found in fruits,
+  vegetables, and legumes that helps your thyroid cells respond to TSH signals. It
+  supports hormone regulation more broadly including blood sugar and reproductive
   hormones.
-evidence_tier: plausible_emerging
+evidence_tier: fm_specific_thin
 linked_to_mechanisms: []
 sources:
 - id: vitaone-practice-guide
@@ -68,7 +71,10 @@ sources:
 - id: vitaone-thyroid-toolkit
   location: Myo-Inositol
   quote: Cell signaling and hormone regulation of TSH, FSH and insulin
-version: 7
+- id: vitaone-health-coaching-toolkit
+  location: Key Nutrients to Consider in Thyroid Regulation — Myo-Inositol
+  quote: Cell signaling and hormone regulation of TSH, FSH and insulin
+version: 8
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-04'
 updated_by: shivani
