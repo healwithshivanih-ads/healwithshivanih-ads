@@ -104,6 +104,68 @@ export interface ClientSession {
   [key: string]: unknown;
 }
 
+// ── AiSensy inbound message count ─────────────────────────────────────────────
+
+export interface AisensyMessage {
+  client_id: string;
+  display_name?: string;
+  date: string;
+  text: string;
+}
+
+/**
+ * Scans all client session dirs for quick_note sessions tagged [source: aisensy_webhook]
+ * within the last `daysBack` days. Cheap: only reads files whose names contain a recent date.
+ */
+export async function getRecentAisensyMessages(
+  clientIds: string[],
+  clientNames: Map<string, string>,
+  daysBack = 7
+): Promise<AisensyMessage[]> {
+  const root = getPlansRoot();
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - daysBack);
+  const cutoffStr = cutoff.toISOString().slice(0, 10); // YYYY-MM-DD
+
+  const results: AisensyMessage[] = [];
+
+  await Promise.all(
+    clientIds.map(async (id) => {
+      const dir = path.join(root, "clients", id, "sessions");
+      let names: string[];
+      try {
+        names = await fs.readdir(dir);
+      } catch {
+        return;
+      }
+
+      // Session filenames encode date: e.g. "cl-001-2026-05-07-001.yaml"
+      // Only read files whose name contains a date >= cutoffStr
+      const recentFiles = names.filter((n) => {
+        const m = n.match(/(\d{4}-\d{2}-\d{2})/);
+        return m && m[1] >= cutoffStr && (n.endsWith(".yaml") || n.endsWith(".yml"));
+      });
+
+      for (const name of recentFiles) {
+        const data = await readYaml<Record<string, unknown>>(path.join(dir, name));
+        if (!data) continue;
+        const complaints = String(data.presenting_complaints ?? "");
+        if (!complaints.includes("[source: aisensy_webhook]")) continue;
+        // It's an inbound AiSensy message
+        const text = complaints.replace(/^\[source:[^\]]+\]\s*/i, "").trim().slice(0, 120);
+        results.push({
+          client_id: id,
+          display_name: clientNames.get(id),
+          date: String(data.date ?? "").slice(0, 10),
+          text,
+        });
+      }
+    })
+  );
+
+  return results.sort((a, b) => b.date.localeCompare(a.date));
+}
+
 export async function loadClientSessions(id: string): Promise<ClientSession[]> {
   const root = getPlansRoot();
   const dir = path.join(root, "clients", id, "sessions");

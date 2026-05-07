@@ -38,6 +38,7 @@ import { MessageCapturePanel } from "./message-capture-panel";
 import { ProtocolCheckinPanel } from "./protocol-checkin-panel";
 import { PreSessionBrief } from "./pre-session-brief";
 import { FollowUpDraftPanel } from "./follow-up-draft-panel";
+import { ProtocolAdherenceChart } from "./protocol-adherence-chart";
 import type { Client, MeasurementEntry } from "@/lib/fmdb/types";
 import type { SessionSummary } from "@/app/assess/actions";
 
@@ -1090,6 +1091,9 @@ export function ClientPageTabs({
           {sessions.length >= 2 && (
             <OutcomeProgressCard sessions={sessions} />
           )}
+
+          {/* ── Protocol adherence trend ── */}
+          <ProtocolAdherenceChart sessions={sessions} />
 
           {/* ── Session history — vertical timeline ── */}
           {sessions.length > 0 && (

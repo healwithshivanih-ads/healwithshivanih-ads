@@ -123,6 +123,7 @@ def main() -> int:
     attachments = payload.get("attachments") or []
     dry_run = bool(payload.get("dry_run"))
     session_date_str = payload.get("session_date") or None  # ISO YYYY-MM-DD or None (defaults to today)
+    five_pillars_raw: dict | None = payload.get("five_pillars") or None
 
     if not client_id:
         json.dump({"ok": False, "error": "client_id is required"}, sys.stdout)
@@ -134,7 +135,22 @@ def main() -> int:
     from fmdb.validator import load_all
     from fmdb.assess.subgraph import build_subgraph
     from fmdb.plan import storage as plan_storage
-    from fmdb.plan.models import Session, UploadedFileRef
+    from fmdb.plan.models import Session, UploadedFileRef, FivePillarsAssessment
+
+    # Build FivePillarsAssessment from raw dict (if provided)
+    five_pillars_obj: "FivePillarsAssessment | None" = None
+    if five_pillars_raw and any(v is not None for v in five_pillars_raw.values()):
+        try:
+            five_pillars_obj = FivePillarsAssessment(
+                sleep_hours=five_pillars_raw.get("sleep_hours"),
+                sleep_quality=five_pillars_raw.get("sleep_quality"),
+                stress_level=five_pillars_raw.get("stress_level"),
+                movement_days_per_week=five_pillars_raw.get("movement_days_per_week"),
+                nutrition_quality=five_pillars_raw.get("nutrition_quality"),
+                connection_quality=five_pillars_raw.get("connection_quality"),
+            )
+        except Exception:
+            five_pillars_obj = None
 
     data_dir = FMDB_ROOT / "data"
     cat = load_all(data_dir)
@@ -380,6 +396,7 @@ def main() -> int:
                 generated_plan_slug=sess.generated_plan_slug,
                 coach_notes=sess.coach_notes,
                 next_session_planned=sess.next_session_planned,
+                five_pillars=five_pillars_obj or sess.five_pillars,
             )
             plan_storage.update_session(root, updated)
             sid = existing_sid
@@ -398,6 +415,7 @@ def main() -> int:
                 measurements_snapshot=client.measurements,
                 ai_analysis=suggestions.model_dump(),
                 api_usage=usage,
+                five_pillars=five_pillars_obj,
             )
             try:
                 plan_storage.write_session(root, sess)
@@ -417,6 +435,7 @@ def main() -> int:
             measurements_snapshot=client.measurements,
             ai_analysis=suggestions.model_dump(),
             api_usage=usage,
+            five_pillars=five_pillars_obj,
         )
         plan_storage.write_session(root, sess)
 

@@ -38,6 +38,7 @@ import type {
   ExtractedLabValue,
   ExtractedMeasurements,
 } from "@/lib/fmdb/anthropic";
+import { FivePillarsCapture, type FivePillarsData } from "@/app/clients/[id]/five-pillars-capture";
 
 type Opt = { slug: string; label: string; aliases?: string[]; category?: string };
 
@@ -1801,6 +1802,9 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
   const [draftPending, startDraft] = useTransition();
   const [uploadPending, startUpload] = useTransition();
 
+  // Five Pillars snapshot (only used when embedded in a client page via fixedClientId)
+  const [sessionFivePillars, setSessionFivePillars] = useState<FivePillarsData>({});
+
   // Transcript extraction state
   const [transcriptExtractPending, startTranscriptExtract] = useTransition();
   const [transcriptSlugs, setTranscriptSlugs] = useState<Set<string>>(new Set());
@@ -2017,6 +2021,7 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
     }
     startTransition(async () => {
       try {
+        const hasFivePillars = Object.values(sessionFivePillars).some((v) => v != null);
         const res = await runAssessAction({
           client_id: clientId,
           symptoms: selectedSymptoms,
@@ -2029,6 +2034,7 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
           })),
           dry_run: dryRun,
           session_date: sessionDate,
+          five_pillars: hasFivePillars ? sessionFivePillars : undefined,
         });
         if (!res.ok) {
           const msg = res.error || "Analyze failed";
@@ -2590,6 +2596,18 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
           />
         </CardContent>
       </Card>
+
+      {/* Five Pillars snapshot — only in embedded/client-page mode */}
+      {fixedClientId && (
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-base">{stepNum(6)} Five Pillars snapshot <span className="text-sm font-normal text-muted-foreground">(optional)</span></CardTitle>
+          </CardHeader>
+          <CardContent>
+            <FivePillarsCapture value={sessionFivePillars} onChange={setSessionFivePillars} />
+          </CardContent>
+        </Card>
+      )}
 
       {/* Analyze button */}
       <Card>

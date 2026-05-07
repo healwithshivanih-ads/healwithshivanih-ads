@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { loadAllClients, loadAllPlans } from "@/lib/fmdb/loader";
-import { loadClientSessions } from "@/lib/fmdb/loader-extras";
+import { loadClientSessions, getRecentAisensyMessages } from "@/lib/fmdb/loader-extras";
 import { parseSessionType, parseRequestedLabs } from "@/lib/fmdb/session-utils";
 import { getCatalogueStatus } from "./catalogue-commit-action";
 import { CatalogueCommitButton } from "./catalogue-commit-button";
@@ -201,6 +201,16 @@ export default async function Dashboard() {
     getCatalogueStatus(),
   ]);
 
+  // AiSensy inbound messages (last 7 days)
+  const clientNameMap = new Map(
+    (clients as ClientRow[]).map((c) => [c.client_id, c.display_name ?? c.client_id])
+  );
+  const aisensyMessages = await getRecentAisensyMessages(
+    (clients as ClientRow[]).map((c) => c.client_id),
+    clientNameMap,
+    7
+  );
+
   // Build per-client plan lookup
   const plansByClient = new Map<string, PlanRow[]>();
   for (const p of plans) {
@@ -271,6 +281,36 @@ export default async function Dashboard() {
 
       {/* Catalogue commit widget — shows only when uncommitted changes exist */}
       <CatalogueCommitButton initialStatus={catalogueStatus} />
+
+      {/* AiSensy inbound WhatsApp messages (last 7 days) */}
+      {aisensyMessages.length > 0 && (
+        <div className="rounded-xl border border-emerald-300 bg-emerald-50 px-4 py-3">
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <div className="text-xs font-semibold uppercase tracking-wide text-emerald-800 flex items-center gap-1.5 mb-1">
+                <span>💬</span>
+                <span>{aisensyMessages.length} new WhatsApp message{aisensyMessages.length !== 1 ? "s" : ""} (last 7 days)</span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {aisensyMessages.slice(0, 5).map((msg, i) => (
+                  <Link
+                    key={i}
+                    href={`/clients/${msg.client_id}?tab=sessions`}
+                    className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white border border-emerald-200 text-xs hover:bg-emerald-50 transition-colors max-w-[240px]"
+                  >
+                    <span className="font-medium text-emerald-800 shrink-0">{msg.display_name ?? msg.client_id}</span>
+                    <span className="text-emerald-400">·</span>
+                    <span className="text-emerald-700 truncate">{msg.text || "—"}</span>
+                  </Link>
+                ))}
+                {aisensyMessages.length > 5 && (
+                  <span className="text-xs text-emerald-700 self-center">+{aisensyMessages.length - 5} more</span>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Upcoming follow-ups strip (next 7 days, not yet overdue) */}
       {upcomingFollowUps.length > 0 && (

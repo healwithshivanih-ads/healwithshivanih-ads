@@ -15,6 +15,15 @@ export interface AssessInput {
   dry_run?: boolean;
   /** ISO date string (YYYY-MM-DD) to record as the session date. Defaults to today. */
   session_date?: string;
+  /** Optional Five Pillars snapshot captured alongside the full session. */
+  five_pillars?: {
+    sleep_hours?: number;
+    sleep_quality?: number;
+    stress_level?: number;
+    movement_days_per_week?: number;
+    nutrition_quality?: number;
+    connection_quality?: number;
+  };
 }
 
 export interface AssessUsage {
