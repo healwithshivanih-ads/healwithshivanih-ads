@@ -1278,7 +1278,7 @@ npm run build && npm run type-check          # before committing
 # Email sending: add GMAIL_USER + GMAIL_APP_PASSWORD to .env.local
 # (see .env.local.example — needs a Google App Password, not your normal password)
 ```
-**22 routes:** `/`, `/search`, `/catalogue` (+ all 8 detail kinds), `/plans` (+ 3-tab editor: Protocol/Documents/Lifecycle + plan-check sidebar + Markdown/HTML export + 📧 Send to client), `/assess` (Analyze + chat with auto-rehydrated history), `/clients` (+ detail with `?tab=overview|timeline|documents` deep-linking + add-client form + contact widget + check-in form + 📤 SendPackageButton + ClientLetterButton + preferences editor), `/resources` (+ detail + `/resources/generate` PubMed evidence brief), `/mindmap` (+ Mermaid detail), `/backlog` (with bulk reject + mark-added + Attach action + per-row 💡 suggestion chips + 🔗 Supplement Links tab), `/ingest` (📁 file upload: PDF/MD/images + 🔗 URL tab + ⚡ Approve all pending button + per-batch Review/Approve/Reject), `/sources` (Add Source — form writes directly to fm-database/data/sources/).
+**22 routes:** `/`, `/search`, `/catalogue` (+ all 8 detail kinds), `/plans` (+ 3-tab editor: Protocol/Documents/Lifecycle + plan-check sidebar + Markdown/HTML export + 📧 Send to client), `/assess` (Analyze + chat with auto-rehydrated history), `/clients` (+ detail with `?tab=overview|sessions|plan` deep-linking + add-client form + contact widget + check-in form + 📤 SendPackageButton + preferences editor), `/resources` (+ detail + `/resources/generate` PubMed evidence brief), `/mindmap` (+ Mermaid detail), `/backlog` (with bulk reject + mark-added + Attach action + per-row 💡 suggestion chips + 🔗 Supplement Links tab), `/ingest` (📁 file upload: PDF/MD/images + 🔗 URL tab + ⚡ Approve all pending button + per-batch Review/Approve/Reject), `/sources` (Add Source — form writes directly to fm-database/data/sources/).
 
 **Key invariants:**
 - `ingest-action.py` calls `python -m fmdb.cli` (NOT `python fmdb/cli.py` — causes ImportError).
@@ -1309,6 +1309,13 @@ npm run build && npm run type-check          # before committing
 - `save-session.py` now extracts `five_pillars` from payload and builds `FivePillarsAssessment` before calling `Session(...)`. Guards: only build if any value is non-None; silently ignores exceptions (session still saves without five_pillars if malformed).
 - `FollowUpDraftPanel` only shown for `sessionType !== "full_assessment"` (full assessments have their own AI flow). Triggered by `savedSessionId` state in `client-tabs.tsx`.
 - `draftFollowUpMessageAction` in `clients/actions.ts`: 30s timeout, 1MB buffer. `draft-followup-message.py` reads `.env` from `FMDB_ROOT` for `ANTHROPIC_API_KEY` via `_load_env()`.
+- `AISENSY_API_KEY` env var (`.env.local`) gates `BroadcastPanel` on dashboard and enables 📤 Send in `MessageTemplatesPanel`. Without it, broadcast panel is hidden and send button is disabled. (v0.62)
+- `broadcastAction` normalises phone to E.164: 10-digit numbers get `91` prefix. Sends to `backend.aisensy.com/direct-apis/t1/create-message`. Campaign name must match a registered AiSensy template exactly.
+- `message_templates.yaml` at `~/fm-plans/message_templates.yaml`. Written with 5 defaults on first `loadMessageTemplatesAction` call. Fields: `{id, name, category, body, variables[]}`. (v0.62)
+- `custom_templates/` at `~/fm-plans/custom_templates/{slug}.yaml`. Created by `saveAsTemplateAction`. Loaded by `loadCustomTemplatesAction` in assess. Selection prefix: `custom:{slug}`. (v0.62)
+- `lab_reference_ranges` stored in `client.yaml` as `{marker: {optimal_low, optimal_high, unit}}`. Saved by `saveLabReferenceRangesAction`, loaded by `loadLabReferenceRangesAction`. `rangeStatus(value, range)` in `health-trends.tsx` returns `"optimal" | "outside" | null`. (v0.62)
+- `checkSupplementInteractionsAction(planSlug)` in `plans/[slug]/actions.ts`: reads plan YAML → client YAML → each supplement's `fm-database/data/supplements/{slug}.yaml`. Checks `contraindications` field (array of strings) case-insensitively against `client.medications` + `client.current_medications`. Called on mount in `plan-editor.tsx`. (v0.61)
+- `SessionDriver` and `SessionSupplement` interfaces in `assess/actions.ts`. `SessionSummary` now includes `likely_drivers?` and `supplement_suggestions?` extracted from `session.ai_analysis`. Used in `session-brief-modal.tsx`. (v0.61)
 
 ### Path A — Streamlit UI (fallback, still maintained)
 ```bash
