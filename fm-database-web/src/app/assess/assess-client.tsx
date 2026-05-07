@@ -22,6 +22,7 @@ import {
   type SessionSummary,
 } from "./actions";
 import { getMindMapPathways } from "./mindmap-actions";
+import { IFMMatrixCard } from "./ifm-matrix-card";
 import type { MindMapPathwayResult } from "@/lib/fmdb/loader-extras";
 import type {
   AssessResult,
@@ -2595,6 +2596,9 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
             selectedTopics={selectedTopics}
             computedRatios={result.computed_ratios}
           />
+
+          {/* IFM Matrix — 7-node body-systems map + lab pattern recognition */}
+          <IFMMatrixCard result={result} selectedSymptoms={selectedSymptoms} />
 
           {/* Plan Brief — optional coaching context before generating the draft */}
           <PlanBriefCard

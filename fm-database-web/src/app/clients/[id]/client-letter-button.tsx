@@ -28,7 +28,7 @@ type Stage = "loading" | "idle" | "asking" | "generating" | "ready";
 const LETTER_TYPES: { type: LetterType; label: string; emoji: string; desc: string; needsWeightLoss: boolean }[] = [
   { type: "meal_plan",       label: "Meal Plan",       emoji: "🥗", desc: "14-day tables, recipes, seasonal foods", needsWeightLoss: true  },
   { type: "supplement_plan", label: "Supplement Plan", emoji: "💊", desc: "Timings, doses, rationale & buy links",  needsWeightLoss: false },
-  { type: "coaching_plan",   label: "Coaching Plan",   emoji: "🎯", desc: "Lifestyle, labs, education & tracking",  needsWeightLoss: false },
+  { type: "lifestyle_guide", label: "Lifestyle Guide",  emoji: "🌿", desc: "Habits, labs, education & tracking",      needsWeightLoss: false },
   { type: "consolidated",    label: "Full Wellness",   emoji: "📋", desc: "Everything in one document",             needsWeightLoss: true  },
 ];
 

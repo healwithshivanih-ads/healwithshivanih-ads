@@ -115,7 +115,7 @@ def main() -> int:
         "You are a medical data extractor. The coach has typed free-form notes "
         "about a patient. Extract ALL structured health data from the text.\n\n"
         "TEXT FROM COACH:\n"
-        f"{text[:6000]}\n\n"
+        f"{text[:20000]}\n\n"
         "Return ONLY a JSON object (no markdown, no preamble):\n"
         "{\n"
         '  "lab_values": [\n'
@@ -153,7 +153,7 @@ def main() -> int:
     try:
         resp = client.messages.create(
             model="claude-haiku-4-5",
-            max_tokens=1024,
+            max_tokens=4096,
             messages=[{"role": "user", "content": prompt}],
         )
     except Exception as e:

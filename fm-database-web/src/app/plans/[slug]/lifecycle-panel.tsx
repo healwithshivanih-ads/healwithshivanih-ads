@@ -114,11 +114,24 @@ export function LifecyclePanel({
     router.refresh();
   }
 
-  function handleSubmit() {
+  // "Activate" = submit + publish in one click (removes confusing 2-step flow)
+  function handleActivate() {
     startTransition(async () => {
-      const r = await submitPlan(slug, reason);
-      notify(r.ok, r.ok ? "Plan submitted." : r.error ?? "Submit failed.");
-      if (r.ok) refreshAfterMutate();
+      // Submit first (runs plan-check), then publish immediately
+      const sub = await submitPlan(slug, reason);
+      if (!sub.ok) {
+        notify(false, sub.error ?? "Plan check failed — fix issues before activating.");
+        return;
+      }
+      const pub = await publishPlan(slug, reason);
+      const v = (pub.plan?.version as number | undefined) ?? version;
+      notify(
+        pub.ok,
+        pub.ok
+          ? `✅ Plan activated (v${v ?? "?"}) — ready to send to client.`
+          : pub.error ?? "Activation failed."
+      );
+      if (pub.ok) refreshAfterMutate();
     });
   }
 
@@ -129,7 +142,7 @@ export function LifecyclePanel({
       notify(
         r.ok,
         r.ok
-          ? `Plan published v${v ?? "?"}. Catalogue SHA frozen at ${r.git_sha ?? "—"}.`
+          ? `Plan activated v${v ?? "?"}. Catalogue SHA frozen at ${r.git_sha ?? "—"}.`
           : r.error ?? "Publish failed."
       );
       if (r.ok) refreshAfterMutate();
@@ -139,7 +152,7 @@ export function LifecyclePanel({
   function handleRevoke() {
     startTransition(async () => {
       const r = await revokePlan(slug, reason);
-      notify(r.ok, r.ok ? "Plan revoked." : r.error ?? "Revoke failed.");
+      notify(r.ok, r.ok ? "Plan archived." : r.error ?? "Archive failed.");
       if (r.ok) refreshAfterMutate();
     });
   }
@@ -309,81 +322,41 @@ export function LifecyclePanel({
               </div>
             )}
 
-            {/* Draft → Submit */}
-            {status === "draft" && (
-              <div className="space-y-2 rounded-md border p-3">
-                <div className="text-xs font-medium">📤 Submit for publishing</div>
-                <p className="text-xs text-muted-foreground">
-                  Runs plan-check. Blocked if any CRITICAL findings.
-                </p>
+            {/* ── Draft: single Activate button ── */}
+            {(status === "draft" || status === "ready_to_publish") && (
+              <div className="space-y-3 rounded-md border border-emerald-200 bg-emerald-50/40 p-4">
+                <div>
+                  <div className="text-sm font-semibold text-emerald-900">🚀 Activate plan</div>
+                  <p className="text-xs text-muted-foreground mt-0.5">
+                    Runs plan-check, then marks the plan active so you can send it to the client.
+                    You can still edit afterwards.
+                  </p>
+                </div>
                 <Input
-                  placeholder="Submit note (optional)"
+                  placeholder="Activation note (optional)"
                   value={reason}
                   onChange={(e) => setReason(e.target.value)}
+                  className="text-xs"
                 />
-                <Button size="sm" onClick={handleSubmit} disabled={isPending}>
-                  {isPending ? "Submitting…" : "Submit for publishing"}
+                <Button
+                  size="sm"
+                  className="bg-emerald-700 hover:bg-emerald-800 text-white w-full"
+                  onClick={handleActivate}
+                  disabled={isPending}
+                >
+                  {isPending ? "Activating…" : "🚀 Activate plan"}
                 </Button>
               </div>
             )}
 
-            {/* Ready → Publish */}
-            {status === "ready_to_publish" && (
-              <div className="space-y-2 rounded-md border border-amber-300 bg-amber-50/60 p-3">
-                <div className="text-xs font-medium">🚀 Publish</div>
-                <p className="text-xs text-muted-foreground">
-                  Irreversible. Bumps version, freezes catalogue git SHA.
-                </p>
-                <Input
-                  placeholder="Publish note (optional)"
-                  value={reason}
-                  onChange={(e) => setReason(e.target.value)}
-                />
-                <label className="flex items-center gap-2 text-xs">
-                  <input
-                    type="checkbox"
-                    checked={confirmChecked}
-                    onChange={(e) => setConfirmChecked(e.target.checked)}
-                  />
-                  I understand this is irreversible.
-                </label>
-                <Button size="sm" onClick={handlePublish} disabled={isPending || !confirmChecked}>
-                  {isPending ? "Publishing…" : "Publish now"}
-                </Button>
-              </div>
-            )}
-
-            {/* Published → Revoke / Supersede */}
+            {/* ── Active (published): follow-up + v2 + archived danger zone ── */}
             {status === "published" && (
               <div className="space-y-3">
-                <div className="space-y-2 rounded-md border border-red-300 bg-red-50/60 p-3">
-                  <div className="text-xs font-medium">🛑 Revoke</div>
-                  <p className="text-xs text-muted-foreground">Reason required.</p>
-                  <Input
-                    placeholder="Reason for revoking (required)"
-                    value={reason}
-                    onChange={(e) => setReason(e.target.value)}
-                  />
-                  <label className="flex items-center gap-2 text-xs">
-                    <input
-                      type="checkbox"
-                      checked={confirmChecked}
-                      onChange={(e) => setConfirmChecked(e.target.checked)}
-                    />
-                    I understand this is irreversible.
-                  </label>
-                  <Button size="sm" variant="destructive" onClick={handleRevoke}
-                    disabled={isPending || !confirmChecked || !reason.trim()}>
-                    {isPending ? "Revoking…" : "Revoke"}
-                  </Button>
-                </div>
-
-                {/* ✨ AI Follow-up plan */}
+                {/* ✨ AI Follow-up plan — most common next step */}
                 <div className="space-y-2 rounded-md border border-violet-200 bg-violet-50/40 p-3">
-                  <div className="text-xs font-medium text-violet-900">✨ Generate follow-up plan (next phase)</div>
+                  <div className="text-xs font-semibold text-violet-900">✨ Generate next-phase plan</div>
                   <p className="text-xs text-muted-foreground">
-                    AI reads the current plan + check-in notes and generates an adjusted plan for the next phase —
-                    progressing doses, updating labs, and refining lifestyle based on how the client responded.
+                    AI adjusts doses, labs, and lifestyle based on check-in notes — ready to review as a new draft.
                   </p>
                   <div className="grid grid-cols-2 gap-2">
                     <div>
@@ -407,7 +380,7 @@ export function LifecyclePanel({
                   </div>
                   <Button size="sm" className="bg-violet-700 hover:bg-violet-800 text-white"
                     onClick={handleFollowUp} disabled={followUpPending || !followUpSlug.trim()}>
-                    {followUpPending ? "✨ Generating…" : "✨ Generate AI follow-up plan →"}
+                    {followUpPending ? "✨ Generating…" : "✨ Generate next-phase plan →"}
                   </Button>
                   {followUpSummary && (
                     <div className="rounded-md bg-violet-50 border border-violet-200 px-3 py-2 text-xs text-violet-800">
@@ -417,31 +390,61 @@ export function LifecyclePanel({
                   )}
                 </div>
 
+                {/* Create v2 manually */}
                 <div className="space-y-2 rounded-md border p-3">
-                  <div className="text-xs font-medium">🆕 Manual successor / Supersede</div>
+                  <div className="text-xs font-semibold">📝 Create v2 manually</div>
                   <p className="text-xs text-muted-foreground">
-                    Clone this plan into a blank new draft, or publish a ready successor and flip this to superseded.
+                    Clone this plan into a new blank draft and edit from scratch.
                   </p>
                   <Input
-                    placeholder="Successor slug"
+                    placeholder={`${slug}-v2`}
                     value={successorSlug}
                     onChange={(e) => setSuccessorSlug(e.target.value)}
+                    className="text-xs font-mono"
                   />
-                  <div className="flex gap-2 flex-wrap">
-                    <Button size="sm" variant="outline" onClick={handleCreateSuccessor} disabled={isPending}>
-                      Clone to draft
-                    </Button>
-                    <Button size="sm" onClick={handleSupersede} disabled={isPending}>
-                      Publish + supersede
+                  <Button size="sm" variant="outline" onClick={handleCreateSuccessor} disabled={isPending || !successorSlug.trim()}>
+                    📝 Create v2 draft
+                  </Button>
+                </div>
+
+                {/* Archive — buried in a danger zone */}
+                <details className="group">
+                  <summary className="cursor-pointer text-xs text-muted-foreground select-none hover:text-foreground list-none flex items-center gap-1">
+                    <span className="transition-transform group-open:rotate-90 text-xs">▶</span>
+                    Archive this plan
+                  </summary>
+                  <div className="mt-2 space-y-2 rounded-md border border-red-200 bg-red-50/40 p-3">
+                    <p className="text-xs text-muted-foreground">
+                      Archives the plan — use when you&apos;re replacing it with a new version or the client has finished.
+                    </p>
+                    <Input
+                      placeholder="Reason (required)"
+                      value={reason}
+                      onChange={(e) => setReason(e.target.value)}
+                      className="text-xs"
+                    />
+                    <label className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <input
+                        type="checkbox"
+                        checked={confirmChecked}
+                        onChange={(e) => setConfirmChecked(e.target.checked)}
+                      />
+                      Archive this plan (cannot be undone)
+                    </label>
+                    <Button size="sm" variant="outline" className="border-red-300 text-red-700 hover:bg-red-50"
+                      onClick={handleRevoke}
+                      disabled={isPending || !confirmChecked || !reason.trim()}>
+                      {isPending ? "Archiving…" : "Archive plan"}
                     </Button>
                   </div>
-                </div>
+                </details>
               </div>
             )}
 
             {(status === "superseded" || status === "revoked") && (
               <div className="rounded-md border border-muted bg-muted/40 p-3 text-xs text-muted-foreground">
-                This plan is <span className="font-medium">{status}</span> — terminal state.
+                This plan is <span className="font-medium">{status === "revoked" ? "archived" : status}</span>.
+                It&apos;s read-only. Create a new draft from the client page if needed.
               </div>
             )}
 

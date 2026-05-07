@@ -16,7 +16,6 @@ import type {
 } from "@/lib/fmdb/types";
 import { PlanEditor } from "./plan-editor";
 import { PlanCheckPanel } from "./plan-check-panel";
-import { LifecyclePanel } from "./lifecycle-panel";
 import { DeletePlanButton } from "./delete-plan-button";
 import { SendToClientButton } from "./send-to-client-modal";
 import { loadSupplementSources } from "./actions";
@@ -121,26 +120,6 @@ export default async function PlanDetailPage({
         </div>
       </div>
 
-      <LifecyclePanel
-        slug={plan.slug}
-        clientId={plan.client_id as string | undefined}
-        status={status as typeof plan.status}
-        version={plan.version}
-        catalogueSnapshot={
-          (plan.catalogue_snapshot as { git_sha?: string; snapshot_date?: string } | undefined) ?? null
-        }
-        statusHistory={
-          (plan.status_history as Array<{
-            state?: string;
-            by?: string;
-            at?: string;
-            reason?: string;
-          }>) ?? []
-        }
-        supersedes={plan.supersedes as string | undefined}
-        allPlanSlugs={allPlanSlugs}
-      />
-
       <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_320px] gap-6 items-start">
         <div className="min-w-0 max-w-5xl">
           <PlanEditor
@@ -155,6 +134,21 @@ export default async function PlanDetailPage({
             supplementSources={supplementSources}
             locked={locked}
             clientId={plan.client_id as string | undefined}
+            lifecycleProps={{
+              status: status as typeof plan.status,
+              version: plan.version,
+              catalogueSnapshot:
+                (plan.catalogue_snapshot as { git_sha?: string; snapshot_date?: string } | undefined) ?? null,
+              statusHistory:
+                (plan.status_history as Array<{
+                  state?: string;
+                  by?: string;
+                  at?: string;
+                  reason?: string;
+                }>) ?? [],
+              supersedes: plan.supersedes as string | undefined,
+              allPlanSlugs,
+            }}
           />
         </div>
         <aside>

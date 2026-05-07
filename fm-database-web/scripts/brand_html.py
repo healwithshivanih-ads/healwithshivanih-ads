@@ -413,19 +413,22 @@ _CSS = f"""
   /* ── No-print utility (referral / supplement / recipe sections) ── */
   .no-print {{ /* visible on screen */ }}
 
-  /* ── Recipe links (✦ symbol in meal plan cells) ── */
+  /* ── Print-only client name above week headings ── */
+  .print-client-name {{ display: none; }}
+
+  /* ── Recipe links (dish name + ✦ in meal plan cells) ── */
   a.recipe-link {{
-    color: var(--rose);
-    font-weight: 600;
-    text-decoration: none;
+    color: inherit;
+    font-weight: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--rose);
+    text-underline-offset: 2px;
     cursor: pointer;
     transition: color 0.15s;
-    font-size: 1em;
   }}
   a.recipe-link:hover {{
-    color: var(--indigo);
-    text-decoration: underline;
-    text-underline-offset: 2px;
+    color: var(--rose);
+    text-decoration-color: var(--rose);
   }}
 
   /* ── Recipe note banner ── */
@@ -748,6 +751,35 @@ _CSS = f"""
 
     /* Hide main footer when printing a specific week (page footer still shows) */
     body[data-print-week] .brand-footer {{ display: none !important; }}
+
+    /* ── Client name above each week — print only ── */
+    .print-client-name {{
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--lavender);
+      margin-bottom: 2px;
+      font-family: 'Inter', Arial, sans-serif;
+    }}
+
+    /* ── Supplement schedule print isolation ──
+       When body[data-print-supplement] is set, hide all page content except
+       the brand header (for context) and the supplement schedule itself.
+    */
+    body[data-print-supplement] .page > .doc-title-block,
+    body[data-print-supplement] .page > .content,
+    body[data-print-supplement] .page > .brand-footer {{ display: none !important; }}
+    body[data-print-supplement] #supplement-schedule {{
+      page-break-before: avoid !important;
+      margin-top: 0 !important;
+      padding-top: 24px !important;
+      border-top: none !important;
+    }}
+    /* Reveal the schedule's buy column when printing in isolation mode
+       (coach prints for reference; client gets the file-link-free version) */
+    body[data-print-supplement] .buy-cell {{ display: table-cell !important; }}
+    body[data-print-supplement] .schedule-table th:last-child {{ display: table-cell !important; }}
   }}
 
   @page {{
@@ -764,6 +796,7 @@ def wrap_in_brand_html(
     title: str,
     subtitle: str = "",
     doc_type: str = "Personalised Health Plan",
+    client_name: str = "",
 ) -> str:
     logo_uri = _logo_data_uri()
     logo_tag = (
@@ -771,6 +804,9 @@ def wrap_in_brand_html(
         if logo_uri else
         '<span style="font-family:\'Libre Baskerville\',serif;font-size:20px;color:#2B2D42;font-style:italic;">Shivani Hari</span>'
     )
+    # Escape client name for safe use in HTML attribute and JS
+    import html as _html_mod
+    safe_client_name = _html_mod.escape(client_name or "", quote=True)
 
     body_html = _add_target_blank(
         _wrap_no_print_sections(
@@ -789,7 +825,7 @@ def wrap_in_brand_html(
   <title>{title} — Shivani Hari</title>
   <style>{_CSS}</style>
 </head>
-<body>
+<body data-client-name="{safe_client_name}">
   <div class="page">
 
     <!-- Header -->
@@ -814,8 +850,7 @@ def wrap_in_brand_html(
         <strong>Recipes included</strong> &nbsp;·&nbsp;
         Dishes marked with <span class="recipe-note-symbol">✦</span> have a full recipe
         in the <em>Recipe Appendix</em> at the end of this document.
-        Tap or click the <span class="recipe-note-symbol">✦</span> next to any dish
-        to jump straight to the recipe while you&rsquo;re cooking.
+        Click any underlined dish name to jump straight to its recipe while you&rsquo;re cooking.
       </div>
       {body_html}
     </div>
@@ -841,10 +876,21 @@ def wrap_in_brand_html(
     The Ochre Tree &nbsp;·&nbsp; www.theochretree.com &nbsp;·&nbsp; WhatsApp: +91 88501 76753 &nbsp;·&nbsp; reachochretree@gmail.com
   </div>
 
-  <!-- Per-week print functionality -->
+  <!-- Per-week print functionality + client name injection -->
   <script>
   (function () {{
-    // Find all week sections and build a print-bar above the content
+    // ── Inject print-only client name above each week section ────────────────
+    var clientName = document.body.dataset.clientName || '';
+    if (clientName) {{
+      document.querySelectorAll('.week-section').forEach(function (sec) {{
+        var nameEl = document.createElement('div');
+        nameEl.className = 'print-client-name';
+        nameEl.textContent = clientName;
+        sec.insertBefore(nameEl, sec.firstChild);
+      }});
+    }}
+
+    // ── Build per-week print bar ─────────────────────────────────────────────
     var sections = document.querySelectorAll('.week-section');
     if (sections.length === 0) return;
 
@@ -886,9 +932,10 @@ def wrap_in_brand_html(
       }}
     }}
 
-    // Clear the attribute after print so full-document print works next time
+    // Clear attributes after print so full-document print works next time
     window.addEventListener('afterprint', function () {{
       document.body.removeAttribute('data-print-week');
+      document.body.removeAttribute('data-print-supplement');
     }});
   }})();
   </script>
@@ -937,7 +984,7 @@ def wrap_in_brand_html(
     var bar = document.querySelector('.week-print-bar');
     if (bar && note) note.after(bar);
 
-    // ── Step 3: Link ✦ in every table cell to its recipe ────────────────────
+    // ── Step 3: Link dish name + ✦ in every table cell to its recipe ────────
     document.querySelectorAll('td').forEach(function (td) {{
       if (td.textContent.indexOf(SYMBOL) === -1) return;
 
@@ -954,11 +1001,18 @@ def wrap_in_brand_html(
         if (score > bestScore) {{ bestScore = score; best = r; }}
       }});
 
-      // Replace the ✦ character with a clickable anchor
+      // Replace "dish name ✦" with a link wrapping BOTH the name and symbol.
+      // Pattern: any text (not containing an HTML tag) followed by optional
+      // whitespace then ✦ — this makes the full dish name clickable.
       if (best) {{
+        var anchorId = best.id;
         td.innerHTML = td.innerHTML.replace(
-          new RegExp(SYMBOL, 'g'),
-          '<a href="#' + best.id + '" class="recipe-link" title="Jump to recipe">' + SYMBOL + '</a>'
+          /([^<>]*?)[ \t]*✦/g,
+          function (match, dishText) {{
+            var dish = dishText.trim();
+            var inner = dish ? dish + ' ✦' : '✦';
+            return '<a href="#' + anchorId + '" class="recipe-link" title="Jump to recipe">' + inner + '</a>';
+          }}
         );
       }}
     }});

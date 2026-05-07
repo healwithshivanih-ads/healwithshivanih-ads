@@ -10,6 +10,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { saveSessionAction, appendCheckInToPlanAction } from "@/app/assess/actions";
+import { updateClientPreferences } from "@/app/clients/actions";
 
 // ── Progress rating options ──────────────────────────────────────────────────
 
@@ -54,10 +55,11 @@ const QUICK_LABS = [
 interface CheckInFormProps {
   clientId: string;
   currentPlanSlug?: string;
+  currentReportedTriggers?: string;
   onSaved?: (sessionId: string) => void;
 }
 
-export function CheckInForm({ clientId, currentPlanSlug, onSaved }: CheckInFormProps) {
+export function CheckInForm({ clientId, currentPlanSlug, currentReportedTriggers, onSaved }: CheckInFormProps) {
   const [progress, setProgress] = useState<string>("");
   const [sessionDate, setSessionDate] = useState<string>(
     new Date().toISOString().slice(0, 10)
@@ -74,6 +76,8 @@ export function CheckInForm({ clientId, currentPlanSlug, onSaved }: CheckInFormP
   const [adherence, setAdherence] = useState<string>("");
   const [clientFeedback, setClientFeedback] = useState("");
   const [coachNotes, setCoachNotes] = useState("");
+  const [sessionTriggers, setSessionTriggers] = useState("");
+  const [triggersSaved, setTriggersSaved] = useState(false);
   const [requestedLabs, setRequestedLabs] = useState<string[]>([]);
   const [customLab, setCustomLab] = useState("");
   const [saving, setSaving] = useState(false);
@@ -152,6 +156,25 @@ export function CheckInForm({ clientId, currentPlanSlug, onSaved }: CheckInFormP
         toast.success(`Check-in saved — ${result.session_id}`);
         onSaved?.(result.session_id);
 
+        // Save reported triggers to client profile if any were entered this session
+        if (sessionTriggers.trim()) {
+          const existingTriggers = currentReportedTriggers?.trim() ?? "";
+          const newEntry = sessionTriggers.trim();
+          const merged = existingTriggers
+            ? `${existingTriggers}, ${newEntry}`
+            : newEntry;
+          const trigRes = await updateClientPreferences({
+            client_id: clientId,
+            reported_triggers: merged,
+          });
+          if (trigRes.ok) {
+            setTriggersSaved(true);
+            toast.success(`Trigger saved to profile: "${newEntry}"`);
+          } else {
+            toast.error(`Check-in saved, but couldn't update triggers: ${trigRes.error}`);
+          }
+        }
+
         // If there's an active plan, append a structured note to its notes_for_coach
         if (currentPlanSlug) {
           const noteSections: string[] = [];
@@ -171,6 +194,9 @@ export function CheckInForm({ clientId, currentPlanSlug, onSaved }: CheckInFormP
           }
           if (requestedLabs.length > 0) {
             noteSections.push(`**Labs ordered:** ${requestedLabs.join(", ")}`);
+          }
+          if (sessionTriggers.trim()) {
+            noteSections.push(`**⚠ Food reaction reported:** ${sessionTriggers.trim()} — added to client trigger profile`);
           }
           if (clientFeedback.trim()) {
             noteSections.push(`**Client feedback:** ${clientFeedback.trim()}`);
@@ -429,6 +455,30 @@ export function CheckInForm({ clientId, currentPlanSlug, onSaved }: CheckInFormP
           placeholder="Protocol adjustments to consider, follow-up actions, flags…"
           className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm resize-none placeholder:text-muted-foreground/60 focus:outline-none"
         />
+      </div>
+
+      {/* ── Reported food triggers ───────────────────────────────────────────── */}
+      <div className="rounded-xl border-2 border-amber-300 bg-amber-50/40 p-4 space-y-2">
+        <label className="text-sm font-semibold block text-amber-900">
+          ⚠ Food reactions / triggers this session
+        </label>
+        {currentReportedTriggers && (
+          <p className="text-xs text-amber-700">
+            Already on profile: <span className="font-medium">{currentReportedTriggers}</span>
+          </p>
+        )}
+        <textarea
+          value={sessionTriggers}
+          onChange={(e) => { setSessionTriggers(e.target.value); setTriggersSaved(false); }}
+          rows={2}
+          placeholder="e.g. wheat causes bloating, dairy made skin worse, coffee triggered palpitations"
+          className="w-full rounded-lg border border-amber-300 bg-white px-3 py-2 text-sm resize-none placeholder:text-amber-400/70 focus:outline-none focus:ring-1 focus:ring-amber-400"
+        />
+        <p className="text-[11px] text-amber-700">
+          {triggersSaved
+            ? "✅ Saved to client profile — will be excluded from all future meal plans."
+            : "If filled in, this will be appended to the client's trigger profile and excluded from all future meal plans automatically."}
+        </p>
       </div>
 
       {/* Labs to order */}

@@ -5,7 +5,7 @@
  * Coach picks what kind of session this is before any inputs appear.
  */
 
-export type SessionType = "pre_intake" | "full_assessment" | "check_in";
+export type SessionType = "pre_intake" | "full_assessment" | "check_in" | "quick_note";
 
 interface SessionOption {
   key: SessionType;
@@ -63,6 +63,20 @@ const OPTIONS: SessionOption[] = [
     accentBg: "bg-[#8D99AE]/5",
     selectedBg: "bg-[#8D99AE]/10",
     selectedBorder: "border-[#8D99AE]",
+  },
+  {
+    key: "quick_note",
+    icon: "📌",
+    label: "Quick Note",
+    subtitle: "Between sessions",
+    description:
+      "Log a brief between-session update — e.g. a client message, ingredient swap, or small plan tweak. No AI analysis.",
+    tag: "Ad-hoc",
+    tagColor: "bg-[#E8A87C]/20 text-[#7A4A2A]",
+    accentBorder: "border-[#E8A87C]",
+    accentBg: "bg-[#E8A87C]/5",
+    selectedBg: "bg-[#E8A87C]/10",
+    selectedBorder: "border-[#E8A87C]",
   },
 ];
 

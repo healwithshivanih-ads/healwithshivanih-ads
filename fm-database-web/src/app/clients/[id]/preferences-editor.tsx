@@ -11,6 +11,7 @@ interface Props {
   initial: {
     dietary_preference?: string;
     foods_to_avoid?: string;
+    reported_triggers?: string;
     non_negotiables?: string;
     city?: string;
     country?: string;
@@ -27,6 +28,9 @@ export function PreferencesEditor({ clientId, initial }: Props) {
   const [foodsToAvoid, setFoodsToAvoid] = useState(
     initial.foods_to_avoid ?? ""
   );
+  const [reportedTriggers, setReportedTriggers] = useState(
+    initial.reported_triggers ?? ""
+  );
   const [nonNegotiables, setNonNegotiables] = useState(
     initial.non_negotiables ?? ""
   );
@@ -36,6 +40,7 @@ export function PreferencesEditor({ clientId, initial }: Props) {
   const hasData =
     initial.dietary_preference ||
     initial.foods_to_avoid ||
+    initial.reported_triggers ||
     initial.non_negotiables ||
     initial.city ||
     initial.country;
@@ -46,6 +51,7 @@ export function PreferencesEditor({ clientId, initial }: Props) {
         client_id: clientId,
         dietary_preference: dietaryPreference,
         foods_to_avoid: foodsToAvoid,
+        reported_triggers: reportedTriggers,
         non_negotiables: nonNegotiables,
         city,
         country,
@@ -93,6 +99,12 @@ export function PreferencesEditor({ clientId, initial }: Props) {
               <div>
                 <span className="text-xs uppercase text-muted-foreground">Won&apos;t eat: </span>
                 <span className="text-muted-foreground">{initial.foods_to_avoid}</span>
+              </div>
+            ) : null}
+            {initial.reported_triggers ? (
+              <div>
+                <span className="text-xs uppercase text-muted-foreground">⚠ Reported triggers: </span>
+                <span className="text-amber-700 font-medium">{initial.reported_triggers}</span>
               </div>
             ) : null}
             {initial.non_negotiables ? (
@@ -164,6 +176,22 @@ export function PreferencesEditor({ clientId, initial }: Props) {
                 placeholder="e.g. brinjal, bitter gourd, raw onion, mushrooms"
                 className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm resize-none"
               />
+            </div>
+
+            <div>
+              <label className="text-xs font-medium block mb-1">
+                ⚠ Reported triggers / intolerances
+              </label>
+              <textarea
+                value={reportedTriggers}
+                onChange={(e) => setReportedTriggers(e.target.value)}
+                rows={2}
+                placeholder="e.g. wheat causes bloating, dairy causes acne, coffee causes palpitations"
+                className="w-full rounded-md border border-amber-300 bg-amber-50/50 px-3 py-2 text-sm resize-none focus:outline-none focus:ring-1 focus:ring-amber-400"
+              />
+              <p className="text-[11px] text-muted-foreground mt-0.5">
+                Foods / substances client has personally experienced reactions to. These are EXCLUDED from all future meal plans.
+              </p>
             </div>
 
             <div>

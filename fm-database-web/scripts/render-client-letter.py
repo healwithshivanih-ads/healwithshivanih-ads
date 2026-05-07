@@ -589,12 +589,11 @@ def _build_supplement_schedule_html(supplements: list[dict]) -> str:
 
 <script>
 function printSchedule() {{
-  var el = document.getElementById('supplement-schedule');
-  var orig = document.body.innerHTML;
-  document.body.innerHTML = el.outerHTML;
+  // Use data-attribute approach so the page is not destroyed:
+  // CSS body[data-print-supplement] hides everything except #supplement-schedule.
+  document.body.setAttribute('data-print-supplement', '1');
   window.print();
-  document.body.innerHTML = orig;
-  window.location.reload();
+  // afterprint listener in the main page script clears the attribute.
 }}
 </script>
 <!-- ════════════════════════════════════════════════════ -->
@@ -720,7 +719,12 @@ def _build_prompt_meal_plan(plan: dict, client: dict, weight_loss: dict | None, 
     client_name = client.get("display_name") or "the client"
     first_name = client_name.split()[0] if client_name else "there"
     diet_pref = client.get("dietary_preference") or "Not specified"
-    foods_to_avoid = client.get("foods_to_avoid") or "None mentioned"
+    _foods_to_avoid_raw = client.get("foods_to_avoid") or ""
+    _reported_triggers_raw = client.get("reported_triggers") or ""
+    # Merge preferences + reported triggers into a single exclusion string
+    _exclusion_parts = [p.strip() for p in [_foods_to_avoid_raw, _reported_triggers_raw] if p.strip()]
+    foods_to_avoid = ", ".join(_exclusion_parts) if _exclusion_parts else "None mentioned"
+    reported_triggers = _reported_triggers_raw or "None reported"
     non_negotiables = client.get("non_negotiables") or "None mentioned"
     city = client.get("city") or ""
     country = client.get("country") or "India"
@@ -821,6 +825,7 @@ CLIENT PROFILE:
 - Current season: {season}
 - Dietary preference: {diet_pref}
 - Foods they will NOT eat: {foods_to_avoid}
+- ⚠ REPORTED TRIGGERS (client experienced reactions — EXCLUDE from ALL meals): {reported_triggers}
 - Non-negotiables (won't give up): {non_negotiables}
 - Allergies: {', '.join(allergies) if allergies else 'none known'}
 - Active conditions: {', '.join(conditions) if conditions else 'none listed'}
@@ -876,6 +881,7 @@ RULES:
 - NO supplement tables or lists (see separate supplement document)
 - SEASONAL produce for {location_str}, current season: {season}
 - Respect dietary preference ({diet_pref}), avoid ({foods_to_avoid})
+- CRITICAL: NEVER suggest foods listed as reported triggers: {reported_triggers}
 - No clinical jargon — write like a knowledgeable friend
 - If Vegetarian Jain: NO root vegetables (onion, garlic, potato, carrot, beetroot, radish, turnip)
 
@@ -952,8 +958,8 @@ RULES:
     return prompt
 
 
-def _build_prompt_coaching_plan(plan: dict, client: dict, coach_notes: str) -> str:
-    """Coaching plan — lifestyle, education, labs, tracking. No meal plan."""
+def _build_prompt_lifestyle_guide(plan: dict, client: dict, coach_notes: str) -> str:
+    """Lifestyle guide — habits, education, labs, tracking. No meal plan."""
     client_name = client.get("display_name") or "the client"
     first_name = client_name.split()[0] if client_name else "there"
     diet_pref = client.get("dietary_preference") or "Not specified"
@@ -1089,14 +1095,18 @@ def _build_prompt(plan: dict, client: dict, weight_loss: dict | None = None,
         return _build_prompt_meal_plan(plan, client, weight_loss, coach_notes)
     if letter_type == "supplement_plan":
         return _build_prompt_supplement_plan(plan, client, coach_notes)
-    if letter_type == "coaching_plan":
-        return _build_prompt_coaching_plan(plan, client, coach_notes)
+    if letter_type == "lifestyle_guide":
+        return _build_prompt_lifestyle_guide(plan, client, coach_notes)
     # else: consolidated — fall through to existing code
 
     client_name = client.get("display_name") or "the client"
     first_name = client_name.split()[0] if client_name else "there"
     diet_pref = client.get("dietary_preference") or "Not specified"
-    foods_to_avoid = client.get("foods_to_avoid") or "None mentioned"
+    _foods_to_avoid_raw = client.get("foods_to_avoid") or ""
+    _reported_triggers_raw = client.get("reported_triggers") or ""
+    _exclusion_parts = [p.strip() for p in [_foods_to_avoid_raw, _reported_triggers_raw] if p.strip()]
+    foods_to_avoid = ", ".join(_exclusion_parts) if _exclusion_parts else "None mentioned"
+    reported_triggers = _reported_triggers_raw or "None reported"
     non_negotiables = client.get("non_negotiables") or "None mentioned"
     city = client.get("city") or ""
     country = client.get("country") or "India"
@@ -1277,6 +1287,7 @@ CLIENT PROFILE:
 - Current season: {season}
 - Dietary preference: {diet_pref}
 - Foods they will NOT eat: {foods_to_avoid}
+- ⚠ REPORTED TRIGGERS (client experienced reactions — EXCLUDE from ALL meals): {reported_triggers}
 - Non-negotiables (won't give up): {non_negotiables}
 - Allergies: {', '.join(allergies) if allergies else 'none known'}
 - Active conditions: {', '.join(conditions) if conditions else 'none listed'}
@@ -1362,6 +1373,7 @@ The plan must have a logical therapeutic progression — each phase builds on th
    - Each cell: dish name only, short (e.g. "Ragi dosa + chutney ✦"). Flag recipes with ✦.
    - Every day total in the *~kcal* row must be within ±50 kcal of the phase target.
    - Meals MUST respect dietary preference ({diet_pref}) and avoid ({foods_to_avoid}).
+   - CRITICAL: NEVER use reported triggers in any meal: {reported_triggers}
    - INCORPORATE non-negotiables ({non_negotiables}) with a workaround if needed.
    - Use specific Indian dish names. Week 2 should vary from Week 1.
 
@@ -1424,6 +1436,7 @@ WRITING RULES (very important):
 - Use ✅ / ☀️ / 🌙 / 💊 / 🥗 emojis sparingly to make sections scannable
 - The client should feel EXCITED and CAPABLE after reading this, not overwhelmed
 - If a non-negotiable conflicts with a recommendation, ACKNOWLEDGE it and give a workaround. Example: "We know you love your morning chai — try having it after breakfast instead of on an empty stomach, and swap to jaggery instead of sugar if you can."
+- CRITICAL: If reported_triggers exist ({reported_triggers}), NEVER include those foods in any meal, snack, recipe, or suggestion anywhere in this document.
 - DO NOT write a supplement protocol table or list — that section is auto-generated from the plan data and injected separately. Just add the one-line placeholder note at 3c.
 - Never omit or re-order any supplement — if you mention supplements in passing, use the exact names from SUPPLEMENT PROTOCOL above.
 {coach_notes_block}
@@ -1509,7 +1522,7 @@ def main() -> int:
         type_meta = {
             "meal_plan":       ("Your Personalised Meal Plan",    "Meal Plan"),
             "supplement_plan": ("Your Supplement Protocol",        "Supplement Plan"),
-            "coaching_plan":   ("Your Coaching Plan",              "Coaching Plan"),
+            "lifestyle_guide":  ("Your Lifestyle Guide",             "Lifestyle Guide"),
             "consolidated":    ("Your Personalised Wellness Plan", "Personalised Wellness Plan"),
         }
         doc_title, doc_type = type_meta.get(letter_type, type_meta["consolidated"])
@@ -1518,14 +1531,23 @@ def main() -> int:
             title=doc_title,
             subtitle=display_name,
             doc_type=doc_type,
+            client_name=display_name,
         )
         # Inject the Python-generated supplement schedule (guaranteed complete)
         # so that no supplement is ever omitted regardless of what the AI wrote.
+        # Only inject for types that include supplements (not meal_plan/lifestyle_guide).
         supplements = plan.get("supplement_protocol") or []
-        if supplements and html:
+        inject_schedule = letter_type in ("consolidated", "supplement_plan")
+        if supplements and html and inject_schedule:
             schedule_html = _build_supplement_schedule_html(supplements)
-            # Insert before </body>
-            if "</body>" in html:
+            # Insert INSIDE the .page container, right before the brand footer.
+            # This keeps the schedule within the brand-styled max-width box and
+            # ensures @media print rules for #supplement-schedule apply correctly.
+            footer_marker = '<footer class="brand-footer">'
+            if footer_marker in html:
+                html = html.replace(footer_marker, schedule_html + "\n    " + footer_marker, 1)
+            elif "</body>" in html:
+                # fallback — shouldn't happen with current template
                 html = html.replace("</body>", schedule_html + "\n</body>", 1)
     except Exception as e:
         html = None  # HTML is a nice-to-have; don't fail if brand module errors
