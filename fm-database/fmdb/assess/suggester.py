@@ -405,6 +405,12 @@ HARD RULES (violating these breaks the downstream system):
       practical intervention for clients who skip meals or are rebuilding after
       illness — include pea/rice/hemp for vegetarians or yeast protein;
       whey only for non-veg / eggetarians without dairy issues.
+    - For NON-VEGETARIAN clients: if the food journal or diet history shows
+      adequate animal protein at multiple meals (e.g. eggs + chicken + dal),
+      do NOT suggest protein powders at all. Whole food protein is superior
+      and powders add unnecessary cost and processing. Only suggest if protein
+      intake is clearly inadequate or the client needs a quick post-workout
+      option.
     - NEVER suggest protein powders as a matter of course. Only add when
       client is genuinely protein-deficient or has a specific therapeutic need.
 
