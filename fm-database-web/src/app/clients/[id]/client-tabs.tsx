@@ -33,6 +33,8 @@ import { generateFollowUpPlan, submitPlan, publishPlan } from "@/app/plans/[slug
 import { addMeasurementAction } from "@/app/clients/actions";
 import { TranscriptUpdatePanel } from "./transcript-update-panel";
 import { OutcomeProgressCard } from "./outcome-progress-card";
+import { LabUploadPanel } from "./lab-upload-panel";
+import { MessageCapturePanel } from "./message-capture-panel";
 import type { Client, MeasurementEntry } from "@/lib/fmdb/types";
 import type { SessionSummary } from "@/app/assess/actions";
 
@@ -671,8 +673,12 @@ export function ClientPageTabs({
             </div>
           </div>
 
-          {/* Transcript update panel */}
-          <TranscriptUpdatePanel clientId={clientId} />
+          {/* Quick-capture panels — transcript / labs / message */}
+          <div className="flex flex-wrap gap-2">
+            <TranscriptUpdatePanel clientId={clientId} />
+            <LabUploadPanel clientId={clientId} />
+            <MessageCapturePanel clientId={clientId} />
+          </div>
 
           <ClientProfileEditor
             clientId={clientId}

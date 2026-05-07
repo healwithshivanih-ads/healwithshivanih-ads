@@ -934,3 +934,41 @@ export async function deleteReportAction(clientId: string, reportId: string): Pr
     return { ok: false, error: String(err) };
   }
 }
+
+// ── Parse client message (WhatsApp / AiSensy) ────────────────────────────────
+
+export interface ParsedClientMessage {
+  symptoms_improved: string[];
+  symptoms_persisting: string[];
+  symptoms_new: string[];
+  adherence_notes: string | null;
+  questions: string[];
+  mood_note: string | null;
+  protocol_flag: string | null;
+  quick_note_text: string;
+}
+
+export interface ParseClientMessageResult {
+  ok: boolean;
+  data?: ParsedClientMessage;
+  error?: string | null;
+}
+
+export async function parseClientMessageAction(
+  messageText: string,
+  clientId: string,
+  dryRun = false
+): Promise<ParseClientMessageResult> {
+  try {
+    const raw = await runScript("parse-client-message.py", {
+      client_id: clientId,
+      message_text: messageText,
+      dry_run: dryRun,
+    }, 30_000);
+    const result = raw as ParsedClientMessage & { ok: boolean; error?: string };
+    if (!result.ok) return { ok: false, error: result.error ?? "Parse failed" };
+    return { ok: true, data: result };
+  } catch (err) {
+    return { ok: false, error: String(err).slice(0, 400) };
+  }
+}
