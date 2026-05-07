@@ -32,8 +32,8 @@ from ..enums import EntityStatus, PlanStatus, ReferralUrgency
 
 
 class Measurements(BaseModel):
-    """Bio measurements at intake. Add a Session record for ongoing tracking
-    (next turn) — for now, this is the baseline snapshot."""
+    """Bio measurements at intake (legacy flat snapshot — kept for backward compat).
+    New code should write to Client.measurements_log instead."""
     model_config = ConfigDict(extra="forbid")
 
     height_cm: Optional[float] = None
@@ -78,6 +78,65 @@ class Measurements(BaseModel):
         return round(base - 78, 0)  # midpoint for "other"
 
 
+class MeasurementEntry(BaseModel):
+    """A dated measurement snapshot for time-series tracking.
+    Stored in Client.measurements_log — one entry per measurement event."""
+    model_config = ConfigDict(extra="forbid")
+
+    date: str                                       # YYYY-MM-DD
+    weight_kg: Optional[float] = None
+    waist_cm: Optional[float] = None
+    hip_cm: Optional[float] = None
+    height_cm: Optional[float] = None
+    blood_pressure_systolic: Optional[int] = None
+    blood_pressure_diastolic: Optional[int] = None
+    resting_heart_rate: Optional[int] = None
+    notes: str = ""
+
+
+class TimelineEvent(BaseModel):
+    """A key event in the client's personal health timeline.
+    Used by the AI to understand when things started and what triggered them."""
+    model_config = ConfigDict(extra="forbid")
+
+    year: Optional[int] = None                     # approximate year if exact date unknown
+    date: Optional[str] = None                     # YYYY-MM or YYYY-MM-DD if known
+    event: str                                      # description of the event
+    category: str = "life_event"
+    # category values: symptom_onset | life_event | treatment | diagnosis
+    #                  stress | recovery | surgery | medication_change
+
+
+class FivePillarsAssessment(BaseModel):
+    """Quick baseline assessment of the five foundational health pillars.
+    These are assessed at intake and updated at each session.
+    Ratings: 1=very poor, 5=excellent."""
+    model_config = ConfigDict(extra="forbid")
+
+    # Pillar 1: Sleep
+    sleep_hours: Optional[float] = None            # average hours per night
+    sleep_quality: Optional[int] = None            # 1-5
+    sleep_issues: str = ""                         # night waking, insomnia, snoring, etc.
+
+    # Pillar 2: Stress / nervous system
+    stress_level: Optional[int] = None             # 1-5 (1=low, 5=very high)
+    stress_type: str = ""                          # fight/flight (anxious) | freeze (exhausted/numb) | mixed
+
+    # Pillar 3: Movement
+    movement_days_per_week: Optional[int] = None
+    movement_type: str = ""                        # walking, gym, yoga, sedentary, etc.
+    movement_intensity: str = ""                   # light | moderate | intense
+
+    # Pillar 4: Nutrition quality (overall, not specific diet)
+    nutrition_quality: Optional[int] = None        # 1-5
+
+    # Pillar 5: Connection / relationships / purpose
+    connection_quality: Optional[int] = None       # 1-5
+    connection_notes: str = ""                     # isolation, strong support, work-life balance, etc.
+
+    notes: str = ""
+
+
 class Client(BaseModel):
     """Minimal client record. Lives at ~/fm-plans/clients/<client_id>.yaml.
 
@@ -111,6 +170,38 @@ class Client(BaseModel):
     email: Optional[str] = None           # client email — used by "Send to client" feature
     next_contact_date: Optional[str] = None  # YYYY-MM-DD follow-up reminder date
     family_history: Optional[str] = None  # hereditary diseases / family health history
+
+    # ── Location / CRM ────────────────────────────────────────────────────────
+    address_line1: str = ""              # street address
+    address_line2: str = ""              # apartment, suite, landmark
+    state: str = ""                      # state / province / region
+    pincode: str = ""                    # postal / ZIP code
+
+    # ── FM Intake — deeper clinical picture ───────────────────────────────────
+    # These go beyond the basic conditions list to capture the clinical context
+    # the AI needs to reason accurately about root causes.
+    digestion_notes: str = ""            # bowel frequency/consistency, bloating timing, reflux, burping
+    sleep_notes: str = ""                # timing, quality, night waking (3am = cortisol/blood sugar), dreams
+    energy_pattern: str = ""             # morning vs afternoon vs evening energy; crashes; second wind
+    menstrual_notes: str = ""            # cycle length, PMS symptoms/timing, pain, flow, mood shifts (women)
+    stress_response: str = ""            # fight/flight (anxious, wired) vs freeze (exhausted, numb) vs mixed
+    childhood_history: str = ""          # antibiotic use, gut infections, trauma, ACEs, chronic childhood illness
+    toxic_exposures: str = ""            # mold, heavy metals, chemical exposures, long-term medication history
+    what_has_worked: str = ""            # past interventions (diet, supplements, lifestyle) that helped
+    what_hasnt_worked: str = ""          # things tried that made no difference or worsened symptoms
+
+    # ── Five pillars baseline ─────────────────────────────────────────────────
+    five_pillars: Optional[FivePillarsAssessment] = None
+
+    # ── Health timeline ───────────────────────────────────────────────────────
+    # Structured timeline of key events — when did things start, what triggered them.
+    # This is often the single most diagnostic piece of information in an FM intake.
+    timeline_events: list[TimelineEvent] = Field(default_factory=list)
+
+    # ── Measurements ──────────────────────────────────────────────────────────
+    # measurements_log: time-series (one entry per measurement event)
+    # measurements: legacy flat snapshot (kept for backward compat — do not remove)
+    measurements_log: list[MeasurementEntry] = Field(default_factory=list)
     measurements: Measurements = Field(default_factory=Measurements)
     photo_filename: Optional[str] = None    # filename relative to client dir; populated after dir restructure (next turn)
     lab_markers: list[dict] = Field(default_factory=list)  # computed FM ratios from most recent lab analysis

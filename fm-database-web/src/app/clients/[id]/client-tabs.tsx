@@ -30,7 +30,8 @@ import { SessionTypePicker, type SessionType } from "./session-type-picker";
 import { PreIntakeForm } from "./pre-intake-form";
 import { CheckInForm } from "./check-in-form";
 import { generateFollowUpPlan, submitPlan, publishPlan } from "@/app/plans/[slug]/lifecycle-actions";
-import type { Client } from "@/lib/fmdb/types";
+import { addMeasurementAction } from "@/app/clients/actions";
+import type { Client, MeasurementEntry } from "@/lib/fmdb/types";
 import type { SessionSummary } from "@/app/assess/actions";
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -71,9 +72,9 @@ interface ClientTabsProps {
 type Tab = "overview" | "sessions" | "plan";
 
 const TABS: { key: Tab; label: string }[] = [
-  { key: "overview",  label: "Overview"    },
-  { key: "sessions",  label: "🗓 Sessions" },
-  { key: "plan",      label: "📋 Plan"     },
+  { key: "overview",  label: "Overview"     },
+  { key: "sessions",  label: "🔬 Analyse"  },
+  { key: "plan",      label: "📋 Plan"      },
 ];
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -90,9 +91,175 @@ const SESSION_TYPE_META: Record<
   quick_note:      { icon: "📌", label: "Quick Note",    pill: "bg-[#E8A87C]/20 text-[#7A4A2A]" },
 };
 
-// ── QuickNoteForm ─────────────────────────────────────────────────────────────
+// ── MeasurementsWidget ────────────────────────────────────────────────────────
 
 import { saveSessionAction } from "@/app/assess/actions";
+
+function MeasurementsWidget({
+  clientId,
+  log,
+  todayStr,
+}: {
+  clientId: string;
+  log: MeasurementEntry[];
+  todayStr: string;
+}) {
+  const [open, setOpen] = useState(false);
+  const [date, setDate] = useState(todayStr);
+  const [weight, setWeight] = useState("");
+  const [waist, setWaist] = useState("");
+  const [hip, setHip] = useState("");
+  const [height, setHeight] = useState("");
+  const [bpSys, setBpSys] = useState("");
+  const [bpDia, setBpDia] = useState("");
+  const [hr, setHr] = useState("");
+  const [notes, setNotes] = useState("");
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState(false);
+  const router = useRouter();
+
+  const handleSave = async () => {
+    if (!date) return;
+    setSaving(true); setError(null); setSuccess(false);
+    const input = {
+      client_id: clientId,
+      date,
+      weight_kg: weight ? parseFloat(weight) : undefined,
+      waist_cm: waist ? parseFloat(waist) : undefined,
+      hip_cm: hip ? parseFloat(hip) : undefined,
+      height_cm: height ? parseFloat(height) : undefined,
+      blood_pressure_systolic: bpSys ? parseInt(bpSys, 10) : undefined,
+      blood_pressure_diastolic: bpDia ? parseInt(bpDia, 10) : undefined,
+      resting_heart_rate: hr ? parseInt(hr, 10) : undefined,
+      notes: notes.trim() || undefined,
+    };
+    const res = await addMeasurementAction(input);
+    setSaving(false);
+    if (!res.ok) { setError((res as { error?: string }).error ?? "Failed"); return; }
+    setSuccess(true);
+    setTimeout(() => { setOpen(false); setSuccess(false); router.refresh(); }, 800);
+  };
+
+  const latest = log[0];
+
+  return (
+    <div className="space-y-2">
+      {/* Latest entry summary */}
+      {latest && (
+        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-sm">
+          {latest.weight_kg && <span className="font-medium">{latest.weight_kg} kg</span>}
+          {latest.waist_cm && <span className="text-muted-foreground text-xs">Waist {latest.waist_cm}cm</span>}
+          {latest.hip_cm && <span className="text-muted-foreground text-xs">Hip {latest.hip_cm}cm</span>}
+          {latest.blood_pressure_systolic && latest.blood_pressure_diastolic && (
+            <span className="text-muted-foreground text-xs">BP {latest.blood_pressure_systolic}/{latest.blood_pressure_diastolic}</span>
+          )}
+          {latest.resting_heart_rate && <span className="text-muted-foreground text-xs">HR {latest.resting_heart_rate}</span>}
+          <span className="text-[10px] text-muted-foreground">({latest.date})</span>
+        </div>
+      )}
+      {!latest && <p className="text-xs text-muted-foreground italic">No measurements recorded yet.</p>}
+
+      {/* Historical log (compact, collapsed) */}
+      {log.length > 1 && (
+        <details className="group">
+          <summary className="cursor-pointer text-[11px] text-muted-foreground hover:text-foreground select-none list-none flex items-center gap-1">
+            <span className="group-open:hidden">▶</span><span className="hidden group-open:inline">▼</span>
+            <span>{log.length - 1} earlier entr{log.length - 1 !== 1 ? "ies" : "y"}</span>
+          </summary>
+          <div className="mt-1 pl-3 space-y-1 border-l-2" style={{ borderColor: "var(--brand-lavender, #8D99AE)" }}>
+            {log.slice(1).map((e, i) => (
+              <div key={i} className="text-[11px] text-muted-foreground flex flex-wrap gap-x-2">
+                <span className="font-medium">{e.date}</span>
+                {e.weight_kg && <span>{e.weight_kg}kg</span>}
+                {e.waist_cm && <span>W:{e.waist_cm}</span>}
+                {e.hip_cm && <span>H:{e.hip_cm}</span>}
+                {e.blood_pressure_systolic && <span>BP:{e.blood_pressure_systolic}/{e.blood_pressure_diastolic}</span>}
+                {e.resting_heart_rate && <span>HR:{e.resting_heart_rate}</span>}
+              </div>
+            ))}
+          </div>
+        </details>
+      )}
+
+      {/* Add / Update button */}
+      {!open ? (
+        <button
+          onClick={() => setOpen(true)}
+          className="text-[11px] font-medium text-blue-700 hover:text-blue-900 underline"
+        >
+          ＋ {latest ? "Update measurements" : "Add measurements"}
+        </button>
+      ) : (
+        <div className="rounded-lg border p-3 space-y-3 bg-muted/20">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-semibold">Update measurements</span>
+            <button onClick={() => setOpen(false)} className="text-[11px] text-muted-foreground hover:text-foreground">Cancel</button>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+            <label className="space-y-0.5">
+              <span className="text-muted-foreground">Date</span>
+              <input type="date" value={date} onChange={(e) => setDate(e.target.value)}
+                className="w-full rounded border border-input bg-background px-2 py-1 text-xs focus:outline-none" />
+            </label>
+            <label className="space-y-0.5">
+              <span className="text-muted-foreground">Weight (kg)</span>
+              <input type="number" step="0.1" value={weight} onChange={(e) => setWeight(e.target.value)} placeholder="e.g. 68.5"
+                className="w-full rounded border border-input bg-background px-2 py-1 text-xs focus:outline-none" />
+            </label>
+            <label className="space-y-0.5">
+              <span className="text-muted-foreground">Waist (cm)</span>
+              <input type="number" step="0.5" value={waist} onChange={(e) => setWaist(e.target.value)} placeholder="e.g. 82"
+                className="w-full rounded border border-input bg-background px-2 py-1 text-xs focus:outline-none" />
+            </label>
+            <label className="space-y-0.5">
+              <span className="text-muted-foreground">Hip (cm)</span>
+              <input type="number" step="0.5" value={hip} onChange={(e) => setHip(e.target.value)} placeholder="e.g. 96"
+                className="w-full rounded border border-input bg-background px-2 py-1 text-xs focus:outline-none" />
+            </label>
+            <label className="space-y-0.5">
+              <span className="text-muted-foreground">Height (cm)</span>
+              <input type="number" step="0.5" value={height} onChange={(e) => setHeight(e.target.value)} placeholder="e.g. 162"
+                className="w-full rounded border border-input bg-background px-2 py-1 text-xs focus:outline-none" />
+            </label>
+            <label className="space-y-0.5">
+              <span className="text-muted-foreground">BP Systolic</span>
+              <input type="number" value={bpSys} onChange={(e) => setBpSys(e.target.value)} placeholder="e.g. 118"
+                className="w-full rounded border border-input bg-background px-2 py-1 text-xs focus:outline-none" />
+            </label>
+            <label className="space-y-0.5">
+              <span className="text-muted-foreground">BP Diastolic</span>
+              <input type="number" value={bpDia} onChange={(e) => setBpDia(e.target.value)} placeholder="e.g. 76"
+                className="w-full rounded border border-input bg-background px-2 py-1 text-xs focus:outline-none" />
+            </label>
+            <label className="space-y-0.5">
+              <span className="text-muted-foreground">Heart Rate</span>
+              <input type="number" value={hr} onChange={(e) => setHr(e.target.value)} placeholder="e.g. 72"
+                className="w-full rounded border border-input bg-background px-2 py-1 text-xs focus:outline-none" />
+            </label>
+          </div>
+          <label className="block space-y-0.5 text-xs">
+            <span className="text-muted-foreground">Notes (optional)</span>
+            <input type="text" value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="e.g. Post menstruation, hydrated"
+              className="w-full rounded border border-input bg-background px-2 py-1 text-xs focus:outline-none" />
+          </label>
+          {error && <p className="text-xs text-red-600">{error}</p>}
+          {success && <p className="text-xs text-emerald-700 font-medium">✅ Saved!</p>}
+          <button
+            onClick={handleSave}
+            disabled={saving || !date}
+            className="w-full text-xs font-semibold py-1.5 rounded-lg text-white disabled:opacity-50 transition-all"
+            style={{ background: "var(--brand-indigo, #2B2D42)" }}
+          >
+            {saving ? "Saving…" : "💾 Save measurement"}
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── QuickNoteForm ─────────────────────────────────────────────────────────────
 
 function QuickNoteForm({ clientId, onSaved }: { clientId: string; onSaved: (id: string) => void }) {
   const [note, setNote] = useState("");
@@ -200,6 +367,7 @@ export function ClientPageTabs({
   const [followUpResult, setFollowUpResult] = useState<{ ok: boolean; newSlug?: string; summary?: string; error?: string } | null>(null);
   const [isActivating, setIsActivating] = useState(false);
   const m = client.measurements as Record<string, unknown> | undefined;
+  const measurementsLog = (client.measurements_log ?? []) as MeasurementEntry[];
   const todayStr = new Date().toISOString().slice(0, 10);
 
   // ── Workflow stage ─────────────────────────────────────────────────────────
@@ -242,64 +410,68 @@ export function ClientPageTabs({
     return sessions[labIdx];
   })();
 
+  // ── Next Step computation ─────────────────────────────────────────────────
+  const nextStep = (() => {
+    if (workflowStage === "recheck") return {
+      icon: "🔄", color: "#6C5CE7", bg: "#F4F0FF", borderColor: "#6C5CE7",
+      title: `Recheck was due ${activePlan?.plan_period_recheck_date ?? "—"}`,
+      detail: "Review what changed, assess progress, and build a follow-up phase plan.",
+      action: "🔬 Run new analysis →",
+      onAction: () => { setActiveTab("sessions"); setSessionType("full_assessment"); setSavedSessionId(null); },
+    };
+    if (workflowStage === "active") return {
+      icon: "✅", color: "#059669", bg: "#F0FAF5", borderColor: "#7BBF9A",
+      title: "Plan is live",
+      detail: activePlan?.plan_period_recheck_date
+        ? `Recheck ${activePlan.plan_period_recheck_date} · Generate client letters while the plan runs.`
+        : "Generate and send the meal plan, supplement guide, and lifestyle letter.",
+      action: "📤 Generate letters →",
+      onAction: () => setActiveTab("plan"),
+    };
+    if (workflowStage === "draft") return {
+      icon: "✏️", color: "#B45309", bg: "#FFFBEB", borderColor: "#D97706",
+      title: "Draft plan ready — complete the protocol",
+      detail: "Fill in supplements, lifestyle practices, and nutrition. Then activate to make it live.",
+      action: "📋 Go to Plan →",
+      onAction: () => setActiveTab("plan"),
+    };
+    // no_plan — differentiate by whether an analysis exists
+    if (sessions.length > 0) return {
+      icon: "🧬", color: "#2563EB", bg: "#EFF6FF", borderColor: "#93C5FD",
+      title: "Analysis done — generate a draft plan",
+      detail: `${sessions.length} session${sessions.length !== 1 ? "s" : ""} recorded. Use the analysis to create a personalised plan.`,
+      action: "📋 Go to Plan →",
+      onAction: () => setActiveTab("plan"),
+    };
+    return {
+      icon: "📋", color: "var(--brand-indigo)", bg: "#FEF9F5", borderColor: "#E8A87C",
+      title: "Start with a full analysis session",
+      detail: "Upload transcripts, lab reports, or food journals. AI analyses root causes and generates a personalised protocol.",
+      action: "🔬 Start analysis →",
+      onAction: () => { setActiveTab("sessions"); setSessionType("full_assessment"); setSavedSessionId(null); },
+    };
+  })();
+
   return (
     <div className="space-y-4">
-      {/* ── Workflow stage banner ── */}
-      {workflowStage === "no_plan" && (
-        <div className="rounded-xl border-2 px-4 py-3 flex items-center gap-3 flex-wrap" style={{ borderColor: "#E8A87C", background: "#FEF9F5" }}>
-          <span className="text-lg">📋</span>
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold" style={{ color: "var(--brand-indigo)" }}>No plan yet</p>
-            <p className="text-xs text-muted-foreground mt-0.5">Record a session → AI analyses root causes → generates a draft plan → activate.</p>
-          </div>
-          <button onClick={() => { setActiveTab("sessions"); setSessionType("full_assessment"); setSavedSessionId(null); }}
-            className="shrink-0 text-sm font-semibold px-4 py-2 rounded-lg text-white" style={{ background: "var(--brand-indigo)" }}>
-            📋 Start session →
-          </button>
+      {/* ── Next Step command bar ── */}
+      <div
+        className="rounded-xl border-2 px-4 py-3 flex items-center gap-3 flex-wrap"
+        style={{ borderColor: nextStep.borderColor, background: nextStep.bg }}
+      >
+        <span className="text-xl shrink-0">{nextStep.icon}</span>
+        <div className="flex-1 min-w-0">
+          <p className="text-sm font-semibold" style={{ color: nextStep.color }}>{nextStep.title}</p>
+          <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{nextStep.detail}</p>
         </div>
-      )}
-      {workflowStage === "draft" && activePlan && (
-        <div className="rounded-xl border-2 px-4 py-3 flex items-center gap-3 flex-wrap" style={{ borderColor: "#8D99AE", background: "var(--brand-bone, #FAF8F5)" }}>
-          <span className="text-lg">🟡</span>
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold" style={{ color: "var(--brand-indigo)" }}>Draft plan ready — fill the protocol and activate</p>
-            <p className="text-xs text-muted-foreground mt-0.5">Edit supplements, lifestyle, and nutrition in the plan editor, then activate.</p>
-          </div>
-          <button onClick={() => setActiveTab("plan")}
-            className="shrink-0 text-sm font-semibold px-4 py-2 rounded-lg border" style={{ borderColor: "var(--brand-indigo)", color: "var(--brand-indigo)" }}>
-            📋 Go to Plan →
-          </button>
-        </div>
-      )}
-      {workflowStage === "active" && activePlan && (
-        <div className="rounded-xl border-2 px-4 py-3 flex items-center gap-3 flex-wrap" style={{ borderColor: "#7BBF9A", background: "#F0FAF5" }}>
-          <span className="text-lg">🟢</span>
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-emerald-800">Plan is active — generate and send client letters</p>
-            <p className="text-xs text-emerald-700 mt-0.5">
-              {activePlan.plan_period_recheck_date ? `Recheck due ${activePlan.plan_period_recheck_date}` : "Plan is running."}
-              {" "}Generate meal plan, supplement guide, and lifestyle letter.
-            </p>
-          </div>
-          <button onClick={() => setActiveTab("plan")}
-            className="shrink-0 text-sm font-semibold px-4 py-2 rounded-lg text-white bg-emerald-700 hover:bg-emerald-800 transition-colors">
-            📤 Generate letters →
-          </button>
-        </div>
-      )}
-      {workflowStage === "recheck" && activePlan && (
-        <div className="rounded-xl border-2 px-4 py-3 flex items-center gap-3 flex-wrap" style={{ borderColor: "var(--brand-indigo)", background: "var(--brand-bone, #FAF8F5)" }}>
-          <span className="text-lg">✅</span>
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold" style={{ color: "var(--brand-indigo)" }}>Protocol complete · Recheck was {activePlan.plan_period_recheck_date}</p>
-            <p className="text-xs text-muted-foreground mt-0.5">Time for a new session — review progress and plan the next phase.</p>
-          </div>
-          <button onClick={() => { setActiveTab("sessions"); setSessionType("full_assessment"); setSavedSessionId(null); }}
-            className="shrink-0 text-sm font-semibold px-4 py-2 rounded-lg text-white" style={{ background: "var(--brand-indigo)" }}>
-            📋 New session →
-          </button>
-        </div>
-      )}
+        <button
+          onClick={nextStep.onAction}
+          className="shrink-0 text-sm font-semibold px-4 py-2 rounded-lg text-white transition-colors hover:opacity-90"
+          style={{ background: nextStep.color }}
+        >
+          {nextStep.action}
+        </button>
+      </div>
 
       {/* ── Tab bar ── */}
       <div className="flex gap-0 border-b">
@@ -460,7 +632,7 @@ export function ClientPageTabs({
             <div className="flex-1 min-w-0">
               <p className="text-sm font-medium">Quick actions</p>
               <p className="text-xs text-muted-foreground mt-0.5">
-                <strong>Sessions</strong> — record interactions and run AI analysis.{" "}
+                <strong>Analyse</strong> — record interactions, upload labs, and run AI analysis.{" "}
                 <strong>Plan</strong> — view, edit, activate the protocol and generate client letters.
               </p>
             </div>
@@ -513,12 +685,15 @@ export function ClientPageTabs({
             <Card>
               <CardHeader><CardTitle>Bio</CardTitle></CardHeader>
               <CardContent className="space-y-3 text-sm">
-                {measurements && (
-                  <div>
-                    <div className="text-xs uppercase text-muted-foreground">Measurements</div>
-                    <div>{measurements}</div>
-                  </div>
-                )}
+                {/* Measurements time-series widget */}
+                <div>
+                  <div className="text-xs uppercase text-muted-foreground mb-1.5">Measurements</div>
+                  <MeasurementsWidget
+                    clientId={clientId}
+                    log={measurementsLog}
+                    todayStr={todayStr}
+                  />
+                </div>
                 {(bmiStr || bmrCalc) && (
                   <div className="flex flex-wrap gap-3">
                     {bmiStr && (
@@ -670,7 +845,7 @@ export function ClientPageTabs({
                     onClick={() => setActiveTab("sessions")}
                     className="underline hover:text-foreground"
                   >
-                    Sessions tab
+                    Analyse tab
                   </button>
                   .
                 </p>
@@ -722,15 +897,15 @@ export function ClientPageTabs({
               onClick={() => setActiveTab("sessions")}
               className="w-full text-left rounded-lg border px-4 py-3 bg-muted/20 hover:bg-muted/40 transition-colors"
             >
-              <span className="text-sm font-medium">{sessions.length} session{sessions.length !== 1 ? "s" : ""} recorded</span>
-              <span className="ml-2 text-xs text-muted-foreground">→ view full history</span>
+              <span className="text-sm font-medium">{sessions.length} analysis session{sessions.length !== 1 ? "s" : ""} recorded</span>
+              <span className="ml-2 text-xs text-muted-foreground">→ view full history in Analyse tab</span>
             </button>
           )}
         </div>
       )}
 
       {/* ══════════════════════════════════════════════════════════════════════
-           SESSIONS TAB — record new sessions + full session history
+           ANALYSE TAB — record sessions, run AI analysis, view history
          ══════════════════════════════════════════════════════════════════════ */}
       {activeTab === "sessions" && (
         <div className="space-y-6">
@@ -790,10 +965,10 @@ export function ClientPageTabs({
           <div className="rounded-xl border p-5 space-y-4" style={{ background: "var(--brand-bone)" }}>
             <div>
               <h3 className="font-brand text-lg font-bold" style={{ color: "var(--brand-indigo)" }}>
-                Record a session
+                Record &amp; Analyse
               </h3>
               <p className="text-xs mt-0.5" style={{ color: "var(--brand-lavender)" }}>
-                What kind of interaction is this?
+                Select the interaction type. Full sessions run AI root-cause analysis.
               </p>
             </div>
 
@@ -873,7 +1048,7 @@ export function ClientPageTabs({
           {sessions.length > 0 && (
             <div className="space-y-3">
               <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
-                Session history ({sessions.length})
+                Analysis history ({sessions.length})
               </h3>
 
               <div className="relative">

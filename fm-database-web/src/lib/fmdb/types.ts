@@ -208,6 +208,40 @@ export interface Plan extends PlanFields {
  */
 export type PlanPatch = Partial<PlanFields>;
 
+export interface MeasurementEntry {
+  date: string;                       // YYYY-MM-DD
+  weight_kg?: number;
+  waist_cm?: number;
+  hip_cm?: number;
+  height_cm?: number;
+  blood_pressure_systolic?: number;
+  blood_pressure_diastolic?: number;
+  resting_heart_rate?: number;
+  notes?: string;
+}
+
+export interface TimelineEvent {
+  year?: number;
+  date?: string;
+  event: string;
+  category?: string;                  // life_event | symptom_onset | diagnosis | surgery | medication_change | other
+}
+
+export interface FivePillarsAssessment {
+  sleep_hours?: number;
+  sleep_quality?: number;             // 1-5
+  sleep_issues?: string;
+  stress_level?: number;              // 1-5
+  stress_type?: string;
+  movement_days_per_week?: number;
+  movement_type?: string;
+  movement_intensity?: string;
+  nutrition_quality?: number;         // 1-5
+  connection_quality?: number;        // 1-5
+  connection_notes?: string;
+  notes?: string;
+}
+
 export interface Client {
   client_id: string;
   intake_date?: string;
@@ -224,12 +258,46 @@ export interface Client {
   goals?: string[];
   notes?: string;
   mobile_number?: string;
+  display_name?: string;
+  family_history?: string;
+
+  // Location / CRM
+  address_line1?: string;
+  address_line2?: string;
+  city?: string;
+  state?: string;
+  pincode?: string;
+  country?: string;
+
+  // Diet & lifestyle
   dietary_preference?: string;   // Vegetarian | Non-vegetarian | Vegan | Eggetarian | Pescatarian | Other
   foods_to_avoid?: string;       // free form
   non_negotiables?: string;      // things they won't give up
+  reported_triggers?: string;
+
+  // Clinical
   medical_history?: string[];
+
+  // FM Intake
+  digestion_notes?: string;
+  sleep_notes?: string;
+  energy_pattern?: string;
+  menstrual_notes?: string;
+  stress_response?: string;
+  childhood_history?: string;
+  toxic_exposures?: string;
+  what_has_worked?: string;
+  what_hasnt_worked?: string;
+
+  // Five Pillars
+  five_pillars?: FivePillarsAssessment;
+
+  // Health timeline
+  timeline_events?: TimelineEvent[];
+
+  // Measurements — time-series log (new) + legacy flat object (old)
+  measurements_log?: MeasurementEntry[];
   measurements?: Record<string, unknown>;
-  display_name?: string;
   lab_markers?: Array<{
     marker_name: string;
     value: number;

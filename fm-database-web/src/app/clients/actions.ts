@@ -62,9 +62,54 @@ export type CreateClientInput = {
   goals?: string[];
   notes?: string;
   family_history?: string;   // hereditary diseases / family health history
+
+  // Location / CRM
+  address_line1?: string;
+  address_line2?: string;
+  city?: string;
+  state?: string;
+  pincode?: string;
+  country?: string;
+
+  // Diet & lifestyle
   dietary_preference?: string;
   foods_to_avoid?: string;
   non_negotiables?: string;
+
+  // FM Intake — deep clinical questions
+  digestion_notes?: string;
+  sleep_notes?: string;
+  energy_pattern?: string;
+  menstrual_notes?: string;   // only sent for female clients
+  stress_response?: string;
+  childhood_history?: string;
+  toxic_exposures?: string;
+  what_has_worked?: string;
+  what_hasnt_worked?: string;
+
+  // Five Pillars baseline
+  five_pillars?: {
+    sleep_hours?: number;
+    sleep_quality?: number;      // 1-5
+    sleep_issues?: string;
+    stress_level?: number;       // 1-5
+    stress_type?: string;
+    movement_days_per_week?: number;
+    movement_type?: string;
+    movement_intensity?: string;
+    nutrition_quality?: number;  // 1-5
+    connection_quality?: number; // 1-5
+    connection_notes?: string;
+    notes?: string;
+  };
+
+  // Health timeline events
+  timeline_events?: Array<{
+    year?: number;
+    date?: string;
+    event: string;
+    category?: string;
+  }>;
 };
 
 export type CreateClientResult =
@@ -162,33 +207,60 @@ export async function createClient(
     return { ok: false, error: stderr.trim() || e.message || "client-new failed" };
   }
 
-  // Patch extra fields directly into the YAML if provided.
-  // Uses replace-or-append so we never create duplicate YAML keys (the Python
-  // client-new CLI doesn't accept these flags yet).
-  if (input.dietary_preference || input.foods_to_avoid || input.non_negotiables || input.email || input.family_history) {
-    try {
-      const clientYaml = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
-      const raw = await fs.readFile(clientYaml, "utf8");
+  // Patch extra fields directly into the YAML using yaml.load/dump.
+  // The Python client-new CLI doesn't accept these flags, so we write them
+  // directly after creation. Handles scalars, objects (five_pillars), and
+  // arrays (timeline_events) correctly.
+  {
+    const extraFields: Record<string, unknown> = {};
+    const str = (v?: string) => v?.trim() || undefined;
 
-      /** Replace an existing `key: ...` line in place, or append if absent. */
-      function patchYamlField(yaml: string, key: string, value: string): string {
-        const v = JSON.stringify(value);
-        const lineRe = new RegExp(`^${key}:.*$`, "m");
-        return lineRe.test(yaml)
-          ? yaml.replace(lineRe, `${key}: ${v}`)
-          : yaml.trimEnd() + `\n${key}: ${v}\n`;
+    if (str(input.email))              extraFields.email              = input.email!.trim();
+    if (str(input.family_history))     extraFields.family_history     = input.family_history!.trim();
+    if (str(input.dietary_preference)) extraFields.dietary_preference = input.dietary_preference!.trim();
+    if (str(input.foods_to_avoid))     extraFields.foods_to_avoid     = input.foods_to_avoid!.trim();
+    if (str(input.non_negotiables))    extraFields.non_negotiables    = input.non_negotiables!.trim();
+
+    // Location / CRM
+    if (str(input.address_line1))      extraFields.address_line1      = input.address_line1!.trim();
+    if (str(input.address_line2))      extraFields.address_line2      = input.address_line2!.trim();
+    if (str(input.city))               extraFields.city               = input.city!.trim();
+    if (str(input.state))              extraFields.state              = input.state!.trim();
+    if (str(input.pincode))            extraFields.pincode            = input.pincode!.trim();
+    if (str(input.country))            extraFields.country            = input.country!.trim();
+
+    // FM Intake
+    if (str(input.digestion_notes))    extraFields.digestion_notes    = input.digestion_notes!.trim();
+    if (str(input.sleep_notes))        extraFields.sleep_notes        = input.sleep_notes!.trim();
+    if (str(input.energy_pattern))     extraFields.energy_pattern     = input.energy_pattern!.trim();
+    if (str(input.menstrual_notes))    extraFields.menstrual_notes    = input.menstrual_notes!.trim();
+    if (str(input.stress_response))    extraFields.stress_response    = input.stress_response!.trim();
+    if (str(input.childhood_history))  extraFields.childhood_history  = input.childhood_history!.trim();
+    if (str(input.toxic_exposures))    extraFields.toxic_exposures    = input.toxic_exposures!.trim();
+    if (str(input.what_has_worked))    extraFields.what_has_worked    = input.what_has_worked!.trim();
+    if (str(input.what_hasnt_worked))  extraFields.what_hasnt_worked  = input.what_hasnt_worked!.trim();
+
+    // Five Pillars (object — only write if any value is set)
+    if (input.five_pillars && Object.values(input.five_pillars).some((v) => v !== undefined && v !== null && v !== "" && v !== 0)) {
+      extraFields.five_pillars = input.five_pillars;
+    }
+
+    // Health timeline events (array)
+    if (input.timeline_events && input.timeline_events.length > 0) {
+      extraFields.timeline_events = input.timeline_events;
+    }
+
+    if (Object.keys(extraFields).length > 0) {
+      try {
+        const clientYaml = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
+        const yaml = await import("js-yaml");
+        const raw = await fs.readFile(clientYaml, "utf8");
+        const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
+        Object.assign(data, extraFields);
+        await fs.writeFile(clientYaml, yaml.dump(data, { noRefs: true, sortKeys: false }), "utf8");
+      } catch {
+        // non-fatal — fields missing is OK
       }
-
-      let patched = raw;
-      if (input.email)              patched = patchYamlField(patched, "email",              input.email);
-      if (input.family_history)     patched = patchYamlField(patched, "family_history",     input.family_history);
-      if (input.dietary_preference) patched = patchYamlField(patched, "dietary_preference", input.dietary_preference);
-      if (input.foods_to_avoid)     patched = patchYamlField(patched, "foods_to_avoid",     input.foods_to_avoid);
-      if (input.non_negotiables)    patched = patchYamlField(patched, "non_negotiables",     input.non_negotiables);
-
-      await fs.writeFile(clientYaml, patched, "utf8");
-    } catch {
-      // non-fatal — dietary prefs missing is OK, just won't be in the letter
     }
   }
 
@@ -613,6 +685,75 @@ export async function getClientReportsAction(clientId: string): Promise<External
     return (data.external_reports as ExternalReport[]) ?? [];
   } catch {
     return [];
+  }
+}
+
+// ── Add a measurement entry to measurements_log ────────────────────────────
+
+export interface AddMeasurementInput {
+  client_id: string;
+  date: string;                     // YYYY-MM-DD
+  weight_kg?: number;
+  waist_cm?: number;
+  hip_cm?: number;
+  height_cm?: number;
+  blood_pressure_systolic?: number;
+  blood_pressure_diastolic?: number;
+  resting_heart_rate?: number;
+  notes?: string;
+}
+
+export type AddMeasurementResult =
+  | { ok: true }
+  | { ok: false; error: string };
+
+/**
+ * Appends (or updates same-date entry) to the client's measurements_log
+ * time-series array. Sorts descending by date.
+ */
+export async function addMeasurementAction(
+  input: AddMeasurementInput
+): Promise<AddMeasurementResult> {
+  const clientYaml = path.join(
+    getPlansRoot(),
+    "clients",
+    input.client_id,
+    "client.yaml"
+  );
+  try {
+    const yaml = await import("js-yaml");
+    const raw = await fs.readFile(clientYaml, "utf8");
+    const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
+
+    // Build entry with only the non-undefined fields
+    const entry: Record<string, unknown> = { date: input.date };
+    if (input.weight_kg !== undefined)              entry.weight_kg              = input.weight_kg;
+    if (input.waist_cm !== undefined)               entry.waist_cm               = input.waist_cm;
+    if (input.hip_cm !== undefined)                 entry.hip_cm                 = input.hip_cm;
+    if (input.height_cm !== undefined)              entry.height_cm              = input.height_cm;
+    if (input.blood_pressure_systolic !== undefined) entry.blood_pressure_systolic = input.blood_pressure_systolic;
+    if (input.blood_pressure_diastolic !== undefined) entry.blood_pressure_diastolic = input.blood_pressure_diastolic;
+    if (input.resting_heart_rate !== undefined)     entry.resting_heart_rate     = input.resting_heart_rate;
+    if (input.notes?.trim())                        entry.notes                  = input.notes.trim();
+
+    const log = (data.measurements_log as Record<string, unknown>[]) ?? [];
+    const idx = log.findIndex((e) => e.date === input.date);
+    if (idx >= 0) {
+      log[idx] = { ...log[idx], ...entry };   // merge into existing same-date row
+    } else {
+      log.push(entry);
+    }
+    // Sort newest first
+    log.sort((a, b) => String(b.date).localeCompare(String(a.date)));
+    data.measurements_log = log;
+    data.updated_at = new Date().toISOString();
+
+    await fs.writeFile(clientYaml, yaml.dump(data, { noRefs: true, sortKeys: false }), "utf8");
+    revalidatePath(`/clients/${input.client_id}`);
+    return { ok: true };
+  } catch (err) {
+    const e = err as { message?: string };
+    return { ok: false, error: e.message ?? "Failed to add measurement" };
   }
 }
 
