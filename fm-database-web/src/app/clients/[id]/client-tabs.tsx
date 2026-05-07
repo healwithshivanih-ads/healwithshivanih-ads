@@ -40,6 +40,9 @@ import { PreSessionBrief } from "./pre-session-brief";
 import { FollowUpDraftPanel } from "./follow-up-draft-panel";
 import { ProtocolAdherenceChart } from "./protocol-adherence-chart";
 import { DiscoveryForm } from "./discovery-form";
+import { IFMTrend } from "./ifm-trend";
+import { LabComparison } from "./lab-comparison";
+import { ClientAvatar } from "./client-avatar";
 import type { Client, MeasurementEntry } from "@/lib/fmdb/types";
 import type { SessionSummary } from "@/app/assess/actions";
 
@@ -525,6 +528,18 @@ export function ClientPageTabs({
           {/* Quick snapshot card */}
           <Card>
             <CardContent className="pt-4 pb-3">
+              <div className="flex items-start gap-3 mb-3">
+                <ClientAvatar
+                  clientId={clientId}
+                  displayName={client.display_name ?? undefined}
+                  size={52}
+                  className="mt-0.5 shrink-0"
+                />
+                <div className="min-w-0">
+                  <p className="font-semibold text-base leading-tight">{client.display_name ?? clientId}</p>
+                  <p className="text-xs text-muted-foreground">{clientId}</p>
+                </div>
+              </div>
               <div className="text-sm space-y-2">
                 <div className="text-muted-foreground text-xs">
                   {[
@@ -1101,8 +1116,25 @@ export function ClientPageTabs({
             <OutcomeProgressCard sessions={sessions} />
           )}
 
+          {/* ── IFM Matrix trend (last 2 full sessions) ── */}
+          {sessions.filter(s => s.session_type === "full_assessment").length >= 2 && (
+            <Card>
+              <CardHeader className="pb-2">
+                <CardTitle>🧬 IFM Matrix trend</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <IFMTrend clientId={clientId} sessions={sessions} />
+              </CardContent>
+            </Card>
+          )}
+
           {/* ── Protocol adherence trend ── */}
           <ProtocolAdherenceChart sessions={sessions} />
+
+          {/* ── Lab comparison ── */}
+          {(client.health_snapshots ?? []).length >= 2 && (
+            <LabComparison client={client} />
+          )}
 
           {/* ── Session history — vertical timeline ── */}
           {sessions.length > 0 && (

@@ -461,6 +461,73 @@ export async function saveSessionAction(input: SaveSessionInput): Promise<SaveSe
   }
 }
 
+// ── Load raw AI analysis for IFM trend scoring ──────────────────────────────
+
+export interface SessionAnalysisData {
+  session_id: string;
+  date?: string;
+  likely_drivers: Array<{ mechanism_slug: string; rank?: number; reasoning?: string }>;
+  topics_in_play: Array<{ topic_slug: string; role: string }>;
+  selected_symptoms: string[];
+}
+
+/**
+ * Read raw session YAMLs and return just the ai_analysis fields needed for
+ * IFM node scoring. Filters to full_assessment sessions only.
+ * Used by the IFM trend component — only called when ≥2 full sessions exist.
+ */
+export async function loadFullSessionAnalysisAction(
+  clientId: string
+): Promise<SessionAnalysisData[]> {
+  if (!clientId) return [];
+  const sessionsDir = path.join(getPlansRoot(), "clients", clientId, "sessions");
+  let files: string[];
+  try {
+    const names = await fs.readdir(sessionsDir);
+    files = names.filter((n) => n.endsWith(".yaml") || n.endsWith(".yml")).map((n) => path.join(sessionsDir, n));
+  } catch {
+    return [];
+  }
+
+  const results: SessionAnalysisData[] = [];
+  for (const f of files) {
+    try {
+      const raw = await fs.readFile(f, "utf-8");
+      const s = yaml.load(raw) as Record<string, unknown>;
+      const presenting = s.presenting_complaints as string | undefined;
+      const sessionType = parseSessionType(presenting);
+      if (sessionType !== "full_assessment") continue;
+
+      const ai = (s.ai_analysis as Record<string, unknown> | undefined) ?? {};
+      // Drivers can be at ai.likely_drivers or ai.suggestions.likely_drivers
+      const sugg = (ai.suggestions as Record<string, unknown> | undefined) ?? {};
+      const rawDrivers = (ai.likely_drivers ?? sugg.likely_drivers ?? []) as Array<Record<string, unknown>>;
+      const rawTopics = (ai.topics_in_play ?? sugg.topics_in_play ?? []) as Array<Record<string, unknown>>;
+
+      results.push({
+        session_id: (s.session_id as string | undefined) ?? path.basename(f, ".yaml"),
+        date: s.date as string | undefined,
+        likely_drivers: rawDrivers.map((d) => ({
+          mechanism_slug: String(d.mechanism_slug ?? ""),
+          rank: typeof d.rank === "number" ? d.rank : undefined,
+          reasoning: typeof d.reasoning === "string" ? d.reasoning : undefined,
+        })),
+        topics_in_play: rawTopics.map((t) => ({
+          topic_slug: String(t.topic_slug ?? ""),
+          role: String(t.role ?? "contributing"),
+        })),
+        selected_symptoms: (s.selected_symptoms as string[] | undefined) ?? [],
+      });
+    } catch {
+      // skip corrupt files
+    }
+  }
+
+  // Sort by date ascending (oldest first for trend display)
+  results.sort((a, b) => (a.date ?? "").localeCompare(b.date ?? ""));
+  return results;
+}
+
 // ── Append check-in note to an active plan ───────────────────────────────────
 
 export interface AppendCheckInResult {

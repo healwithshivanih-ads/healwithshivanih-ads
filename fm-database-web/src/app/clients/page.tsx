@@ -13,6 +13,7 @@ import { loadClientSessions } from "@/lib/fmdb/loader-extras";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { parseSessionType, parseRequestedLabs } from "@/lib/fmdb/session-utils";
 import { NewClientForm } from "./new-client-form";
+import { ClientAvatar } from "./[id]/client-avatar";
 
 export const dynamic = "force-dynamic";
 
@@ -172,7 +173,12 @@ export default async function ClientsPage() {
                       </Link>
                     </TableCell>
                     <TableCell className="text-sm">
-                      <Link href={href} className="hover:underline">
+                      <Link href={href} className="flex items-center gap-2 hover:underline">
+                        <ClientAvatar
+                          clientId={c.client_id}
+                          displayName={(c as { display_name?: string }).display_name ?? undefined}
+                          size={32}
+                        />
                         {(c as { display_name?: string }).display_name ?? "—"}
                       </Link>
                     </TableCell>

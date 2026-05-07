@@ -1038,6 +1038,56 @@ export async function findClientByPhoneAction(phone: string): Promise<WebhookCli
   }
 }
 
+// ── Upload client photo ───────────────────────────────────────────────────────
+
+export interface UploadPhotoResult {
+  ok: boolean;
+  ext?: string;
+  error?: string;
+}
+
+/**
+ * Save a photo to ~/fm-plans/clients/{id}/photo.{ext}.
+ * Overwrites any existing photo for this client.
+ */
+export async function uploadClientPhotoAction(
+  clientId: string,
+  bytes: Uint8Array,
+  mimeType: string
+): Promise<UploadPhotoResult> {
+  if (!clientId || !/^[\w-]+$/.test(clientId)) {
+    return { ok: false, error: "Invalid client ID" };
+  }
+  if (!bytes.length) return { ok: false, error: "No file data" };
+
+  const extMap: Record<string, string> = {
+    "image/jpeg": "jpg",
+    "image/jpg":  "jpg",
+    "image/png":  "png",
+    "image/webp": "webp",
+    "image/gif":  "gif",
+  };
+  const ext = extMap[mimeType.toLowerCase()] ?? "jpg";
+
+  const dir = path.join(getPlansRoot(), "clients", clientId);
+  const dest = path.join(dir, `photo.${ext}`);
+
+  // Remove any existing photo files with other extensions
+  const otherExts = ["jpg", "jpeg", "png", "webp"].filter((e) => e !== ext);
+  for (const e of otherExts) {
+    try { await fs.unlink(path.join(dir, `photo.${e}`)); } catch { /* ignore */ }
+  }
+
+  try {
+    await fs.mkdir(dir, { recursive: true });
+    await fs.writeFile(dest, Buffer.from(bytes));
+    revalidatePath(`/clients/${clientId}`);
+    return { ok: true, ext };
+  } catch (err) {
+    return { ok: false, error: String(err).slice(0, 200) };
+  }
+}
+
 // ── Draft WhatsApp follow-up message after a session ─────────────────────────
 
 export interface DraftFollowUpResult {
