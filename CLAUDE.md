@@ -14,7 +14,32 @@ published plans as JSON artifacts.
 
 ## Status
 
-**v0.59 (current)** — Discovery consultation session type + plan-period meal plan + email on dashboard + AiSensy unmatched log:
+**v0.62 (current)** — Lab reference ranges + custom protocol templates + AiSensy broadcast + message templates + session brief quick note:
+
+- **🔬 Lab reference ranges** (`lab-reference-ranges.tsx`): `LabReferenceRangesEditor` collapsible card in client Overview. 14 FM optimal defaults (TSH 1–2, Vit D 60–80, Ferritin 70–150, hsCRP 0–0.5, HOMA-IR 0–1.5, etc.). Table with Marker/Low/High/Unit/Remove columns. "📋 Load FM defaults" button. Saves via `saveLabReferenceRangesAction` → `client.yaml`. `health-trends.tsx` shows 🟢/🔴 dot + "optimal: X–Y unit" next to each metric using `rangeStatus()`.
+- **💾 Custom protocol template saving** (`lifecycle-panel.tsx`): "💾 Save as template" section in Lifecycle tab (published plans only). Name/description/tags inputs → `saveAsTemplateAction` copies topics/symptoms/supplement_protocol/lifestyle_practices/nutrition to `~/fm-plans/custom_templates/{slug}.yaml`. `loadCustomTemplatesAction` in assess actions. Assess page shows "⭐ Your templates" section above built-in grid (purple/indigo accent, `custom:{slug}` prefix).
+- **📢 AiSensy broadcast panel** (`broadcast-panel.tsx`): new "📢 Broadcast" collapsible panel on dashboard (visible when `AISENSY_API_KEY` set). Recipient modes: follow-up due / recheck due / all active / custom checkboxes. Campaign name + 3 `{{param}}` inputs. Live preview. `broadcastAction` in `api/aisensy-webhook/actions.ts` normalises phone to E.164, POSTs to AiSensy direct API (`backend.aisensy.com/direct-apis/t1/create-message`). Returns `{sent, failed, errors[]}`.
+- **💬 Message templates library** (`message-templates-panel.tsx`): "💬 Send message" collapsible card in client Overview. 2-col grid by category. `{{variable}}` auto-detection. `{{name}}` auto-fills from client. 📋 Copy + 📤 Send (via AiSensy direct API) buttons. + Add template form + delete per template. Backed by `~/fm-plans/message_templates.yaml` (5 defaults written on first load: `fm_checkin_nudge`, `fm_lab_reminder`, `fm_session_confirm`, `fm_supplement_instructions`, `fm_encouragement`).
+- **📝 Quick note from session brief** (`pre-session-brief.tsx`): `QuickNoteWidget` at bottom of pre-session brief modal. Source chips (Coach observation / Pre-session thought). 3-row textarea + Save. Calls `saveSessionAction` with `[source: pre_session_brief]` tag. Auto-fades "✓ Saved". Modal stays open.
+- **New files**: `src/app/clients/[id]/lab-reference-ranges.tsx`, `src/app/api/aisensy-webhook/actions.ts`, `src/app/broadcast-panel.tsx`, `src/app/clients/[id]/message-templates-panel.tsx`
+- **Modified**: `src/app/clients/actions.ts` (saveLabReferenceRangesAction, loadLabReferenceRangesAction, LabReferenceRange types), `src/app/clients/[id]/health-trends.tsx` (rangeStatus, refRange prop), `src/app/plans/[slug]/actions.ts` (saveAsTemplateAction), `src/app/assess/actions.ts` (loadCustomTemplatesAction, CustomTemplate interface), `src/app/assess/assess-client.tsx` (custom templates section), `src/app/plans/[slug]/lifecycle-panel.tsx` (save as template section), `src/app/clients/[id]/pre-session-brief.tsx` (QuickNoteWidget), `src/app/page.tsx` (BroadcastPanel, followUpDueIds/recheckDueIds/activeIds), `src/app/clients/[id]/client-tabs.tsx` (MessageTemplatesPanel)
+
+**v0.61** — Supplement interaction checker + recheck reminder + protocol diff + session brief modal:
+
+- **⚠️ Supplement interaction checker** (`plan-editor.tsx` + `actions.ts`): on mount, `checkSupplementInteractionsAction(planSlug)` loads plan + client YAML, reads each supplement's catalogue YAML, does case-insensitive substring match of medications vs contraindications. Amber warning banner with `⚠ N interactions` badge in Supplements section header. Returns `{ok, interactions: [{supplement_slug, supplement_name, contraindication_text, matched_medications[]}]}`.
+- **🔔 Recheck reminder on dashboard** (`page.tsx`): `computeSignal` now derives recheck date from `plan.created_at + plan_period_weeks × 7 days` when no explicit `plan_period_recheck_date`. Surfaces in dashboard triage sections as overdue/upcoming recheck signals.
+- **📋 Protocol diff view** (`lifecycle-panel.tsx`): "📋 Compare versions" `<details>` section. Two plan-slug dropdowns, colored diff (green `+`, red `-`, purple `@@`). Auto-selects `supersedes` as Plan A. "Comparing…" spinner.
+- **📄 Session brief modal** (`session-brief-modal.tsx`): fixed overlay modal, max-w-2xl. Sections: header (client + date + session type), presenting complaints (tag-stripped), AI drivers (numbered, confidence %), supplements (bullets), labs ordered (chips), five pillars (colored score boxes), branded footer. `@media print` isolates `#session-brief-content`. "📄 Brief" button in expanded session cards in Sessions tab.
+- **New files**: `src/app/plans/[slug]/actions.ts` (checkSupplementInteractionsAction), `src/app/clients/[id]/session-brief-modal.tsx`
+- **Modified**: `src/app/plans/[slug]/plan-editor.tsx` (interaction warning banner), `src/app/page.tsx` (recheck date derivation), `src/app/plans/[slug]/lifecycle-panel.tsx` (diff viewer), `src/app/clients/[id]/client-tabs.tsx` (📄 Brief button + briefSessionId state), `src/app/assess/actions.ts` (SessionDriver, SessionSupplement interfaces, likely_drivers/supplement_suggestions in SessionSummary)
+
+**v0.60** — Lab comparison view + IFM trends + client photo:
+
+- **🔬 Lab comparison view**: side-by-side two health snapshots. "Before protocol" vs "3 months in" comparison cards in Sessions tab.
+- **📈 IFM Matrix trends**: IFM node scores tracked across full sessions, trend indicators next to each node.
+- **🖼 Client photo**: upload/update profile photo in Overview. Shown as avatar in client list + header.
+
+**v0.59** — Discovery consultation session type + plan-period meal plan + email on dashboard + AiSensy unmatched log:
 
 - **🔍 Discovery consultation session type** (`discovery-form.tsx`): new session type for first-contact / paid discovery appointments. Curated FM lab panel selector (9 groups: Thyroid, Blood Sugar, Inflammation, Lipids, CBC, Metabolic, Nutrients, Hormones, Gut/Routine) with toggle-per-lab and toggle-all-group. Food journal duration picker (3/5/7 days). Chief complaints textarea + coach notes. After save: shows shareable lab request text + food journal text with Copy/Print buttons. Saves as `[session_type: discovery_consultation]` tag in presenting_complaints.
 - **📋 Intake session rename**: "Pre-intake" card in SessionTypePicker renamed to "Intake session" (key stays `pre_intake`). Description updated: "Client returns with labs + food journal".
@@ -1132,6 +1157,20 @@ fm-database-web/                  # Path B — Next.js + shadcn rebuild of the c
                                   #   pre-filled with Haiku draft + "📋 Copy" (clipboard)
                                   #   + "Regenerate" link. Shown in client-tabs.tsx below
                                   #   "Session saved" banner for non-full-assessment types.
+    session-brief-modal.tsx       # "use client" — fixed overlay modal (max-w-2xl). (v0.61)
+                                  #   Sections: header, presenting complaints (tags stripped),
+                                  #   AI drivers (numbered + confidence %), supplements,
+                                  #   labs ordered, five pillars score boxes. @media print
+                                  #   isolates #session-brief-content. 🖨 Print button.
+                                  #   Opened via "📄 Brief" button in expanded session cards.
+    lab-reference-ranges.tsx      # "use client" — LabReferenceRangesEditor collapsible (v0.62)
+                                  #   card. 14 FM optimal defaults. Table with Marker/Low/
+                                  #   High/Unit/Remove. "📋 Load FM defaults" button.
+                                  #   Saves via saveLabReferenceRangesAction → client.yaml.
+    message-templates-panel.tsx   # "use client" — "💬 Send message" collapsible. (v0.62)
+                                  #   2-col grid by category. {{variable}} auto-detection.
+                                  #   {{name}} auto-fills. 📋 Copy + 📤 Send buttons.
+                                  #   Backed by ~/fm-plans/message_templates.yaml (5 defaults).
   src/app/plans/[slug]/
     lifecycle-actions.ts          # Server Actions: generateClientLetter(),
                                   #   refineLetter(), saveMealPlan(), loadMealPlan(),
@@ -1146,11 +1185,18 @@ fm-database-web/                  # Path B — Next.js + shadcn rebuild of the c
                                   #   Saves to ~/fm-plans/clients/<id>/meal-plans/.
     lifecycle-panel.tsx           # lifecycle transitions UI. Now rendered inside
                                   #   the 🚀 Lifecycle tab of PlanEditor (not
-                                  #   standalone on page.tsx).
+                                  #   standalone on page.tsx). v0.61: colored diff viewer
+                                  #   (Plan A/B slug dropdowns, green+/red-/purple@@).
+                                  #   v0.62: "💾 Save as template" section (published only).
     plan-editor.tsx               # 10-tab editor → 3 tabs: 📋 Protocol (9 collapsible
                                   #   <details> sections + PlanChatPanel), 📄 Documents
                                   #   (link to client page), 🚀 Lifecycle (LifecyclePanel).
                                   #   Accepts lifecycleProps from page.tsx.
+                                  #   v0.61: supplement interaction warning banner.
+    actions.ts                    # NEW v0.61: checkSupplementInteractionsAction(planSlug)
+                                  #   loads plan + client YAML, reads each supplement's
+                                  #   catalogue YAML, case-insensitive medication match vs
+                                  #   contraindications. Returns {ok, interactions[]}.
     send-to-client-modal.tsx      # Compose → Preview → Send email flow
   src/app/search/
     page.tsx                      # RSC — full-text search across all entity types
@@ -1161,6 +1207,19 @@ fm-database-web/                  # Path B — Next.js + shadcn rebuild of the c
                                   #   BatchPanel + ApproveAllPanel
     actions.ts                    # runIngestAction, approveAllPendingAction,
                                   #   countPendingBatchesAction, etc.
+  src/app/api/aisensy-webhook/
+    route.ts                      # POST webhook: waId→client→quick_note session.
+                                  #   Unmatched phones → _aisensy_unmatched.yaml.
+    actions.ts                    # NEW v0.62: sendWhatsAppAction (E.164 normalisation,
+                                  #   AiSensy direct API POST). broadcastAction (per
+                                  #   clientId list, returns {sent, failed, errors[]}).
+                                  #   checkAisensyConfigAction. loadMessageTemplatesAction,
+                                  #   saveMessageTemplateAction, deleteMessageTemplateAction
+                                  #   (backed by ~/fm-plans/message_templates.yaml).
+  src/app/broadcast-panel.tsx     # NEW v0.62: "use client". "📢 Broadcast" collapsible
+                                  #   panel on dashboard (gated by aisensyApiKeySet).
+                                  #   Modes: follow-up due / recheck due / all active /
+                                  #   custom. Campaign name + 3 param inputs. Live preview.
   src/app/api/email/actions.ts    # renderPlanHtmlAction, sendClientEmailAction,
                                   #   updateClientFieldsAction
   src/app/resources/generate/
@@ -1379,6 +1438,9 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 - ✅ **v0.57** — Five Pillars capture at check-in (`five-pillars-capture.tsx`, `FivePillarsAssessment` written to session YAML, feeds `OutcomeProgressCard`) + post-session WhatsApp draft (`follow-up-draft-panel.tsx`, Haiku, Shivani voice, editable textarea + 📋 Copy button, shown after any non-full-assessment session save)
 - ✅ **v0.58** — Protocol adherence trend chart (`protocol-adherence-chart.tsx`, colour-coded grid per check-in date) + AiSensy dashboard inbox badge (green banner, `getRecentAisensyMessages`, 7-day window) + Five Pillars in full-session form (embedded AssessClient) + Lab trends accessible from Sessions tab
 - ✅ **v0.59** — Discovery consultation session type (`discovery-form.tsx`, curated FM lab panels, food journal request, shareable output) + Intake session rename + plan-period meal plan (render-client-letter.py reads `plan_period_weeks`) + ✉ Email link on dashboard client cards + AiSensy unmatched message log (`_aisensy_unmatched.yaml`)
+- ✅ **v0.60** — Lab comparison view (side-by-side health snapshots) + IFM Matrix trends over time + client photo upload in Overview
+- ✅ **v0.61** — Supplement interaction checker (plan editor amber banner vs client meds) + recheck reminder derivation from plan_period_weeks + protocol diff viewer (colored +/-/@@ in Lifecycle tab) + session brief modal (📄 Brief button in Sessions tab, print-ready)
+- ✅ **v0.62** — Lab reference ranges (14 FM optimal defaults, 🟢/🔴 in health trends) + custom protocol template saving (lifecycle panel → ~/fm-plans/custom_templates/) + AiSensy broadcast panel (dashboard, direct API) + message templates library (client Overview, ~/fm-plans/message_templates.yaml) + quick note from pre-session brief modal
 
 **Features Backlog** (organised by area — keep this updated every session)
 
@@ -1390,27 +1452,27 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 ### 🟡 Client management (next few sessions)
 4. ✅ **Five Pillars capture at each session** — done in v0.57 (check-in) + v0.58 (full session). Compact 5-column widget, saved to session YAML, feeds OutcomeProgressCard.
 5. ✅ **Protocol adherence trends** — done in v0.58. `protocol-adherence-chart.tsx` colour-coded grid per supplement/practice across check-in dates, shown in Sessions tab.
-6. **Client photo** — upload/update profile photo in Overview. Shown as avatar in client list + header.
+6. ✅ **Client photo** — done in v0.60. Upload/update profile photo in Overview. Shown as avatar in client list + header.
 7. **Session notes PDF export** — generate a clean PDF of session notes to share with a referring doctor or specialist.
-8. **IFM Matrix over time** — track which of the 7 IFM nodes are improving/worsening across full sessions. Small trend indicator next to each node score.
-9. **Inline quick notes from session brief** — ability to type a note directly from the pre-session brief modal and save it as a quick_note without closing the brief.
+8. ✅ **IFM Matrix over time** — done in v0.60. Node scores tracked across full sessions with trend indicators.
+9. ✅ **Inline quick notes from session brief** — done in v0.62. `QuickNoteWidget` at bottom of pre-session brief modal. Source chips + textarea + save. Auto-fades "✓ Saved". Modal stays open.
 
 ### 🟡 Communication / WhatsApp
 10. ✅ **Auto-follow-up drafts** — done in v0.57. After any check-in/pre-intake/quick note, Haiku drafts a warm 3–5 sentence WhatsApp message in Shivani's voice. Coach edits and copies.
 11. ✅ **AiSensy inbox badge** — done in v0.58. Green dashboard banner counts inbound WhatsApp messages (last 7 days), with client chips linking to Sessions tab.
-12. **WhatsApp broadcast via AiSensy API** — send check-in reminder to all active clients due for follow-up (uses AiSensy outbound API, not just webhook). Requires templates + campaigns built in AiSensy first.
-13. **Message templates** — pre-written WhatsApp templates for common situations (lab reminder, supplement instructions, check-in nudge). One-click send via AiSensy API.
+12. ✅ **WhatsApp broadcast via AiSensy API** — done in v0.62. `BroadcastPanel` on dashboard (gated by AISENSY_API_KEY). Modes: follow-up due / recheck due / all active / custom. Needs `AISENSY_API_KEY` in `.env.local` and AiSensy campaign templates registered in dashboard.
+13. ✅ **Message templates** — done in v0.62. `MessageTemplatesPanel` in client Overview. 5 default templates. {{variable}} auto-detection. 📋 Copy + 📤 Send via AiSensy direct API. Backed by `~/fm-plans/message_templates.yaml`.
 
 ### 🟡 Lab & health data
-14. **Lab reference ranges** — store personalised optimal ranges per client per marker. Flag out-of-optimal even when within "normal" lab range.
+14. ✅ **Lab reference ranges** — done in v0.62. `LabReferenceRangesEditor` in client Overview. 14 FM optimal defaults. 🟢/🔴 dot in health trends next to each metric.
 15. ✅ **Lab trend chart** — done in v0.58 (HealthTrends in Sessions tab alongside protocol adherence).
-16. **Lab comparison view** — side-by-side two snapshots ("Before protocol" vs "3 months in").
+16. ✅ **Lab comparison view** — done in v0.60. Side-by-side two health snapshots in Sessions tab.
 
 ### 🟢 Plan & protocol
-17. **Custom protocol template saving** — save a successful real plan as a new template for future similar clients. Currently only the 20 built-in templates exist.
-18. **Supplement interaction checker** — when adding a supplement in the plan editor, check against client's current medications and flag conflicts from the catalogue's `contraindications` field.
-19. **Recheck reminder email/WhatsApp** — auto-trigger a "your recheck is due" message when `plan_period_recheck_date` passes.
-20. **Protocol diff view** — side-by-side what changed between plan v1 and v2 (supplement additions, lifestyle changes). Currently only raw YAML diff.
+17. ✅ **Custom protocol template saving** — done in v0.62. "💾 Save as template" in Lifecycle tab (published plans). Saves to `~/fm-plans/custom_templates/`. Assess page shows "⭐ Your templates" above built-in grid.
+18. ✅ **Supplement interaction checker** — done in v0.61. `checkSupplementInteractionsAction` on plan editor mount. Amber banner with `⚠ N interactions` in Supplements section.
+19. ✅ **Recheck reminder** — done in v0.61. Dashboard derives recheck date from `created_at + plan_period_weeks × 7` when no explicit recheck date set.
+20. ✅ **Protocol diff view** — done in v0.61. Colored diff (green +, red -, purple @@) in Lifecycle tab. Auto-selects `supersedes` as Plan A.
 
 ### 🟢 Content & catalogue
 21. **More curated mindmaps** — Cardiovascular, PCOS, Autoimmune, Sleep/Circadian, Energy/Mitochondrial, Bone Health. Use 6-branch template (Clinical Presentation / Root Mechanisms / FM Approach / Interventions / Coaching Goals / Labs to Track).
@@ -1428,6 +1490,7 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 
 **Outstanding (in rough priority order):**
 1. **Coach uses it daily.** Real bugs from real use are more valuable than speculative code.
-2. **AiSensy + Cloudflare Tunnel setup** (see #2 above — one-time, 15 min).
-3. **Lab comparison view** (#16) — side-by-side "before protocol" vs "3 months in".
-4. **WhatsApp broadcast** (#12) — outbound check-in reminders via AiSensy API.
+2. **AiSensy setup** (one-time): add `AISENSY_API_KEY` to `.env.local` for broadcast/send to work. Also `AISENSY_WEBHOOK_SECRET` + Cloudflare Tunnel for inbound webhook.
+3. **Register AiSensy templates in dashboard** — 5 templates to create manually: `fm_checkin_nudge`, `fm_lab_reminder`, `fm_session_confirm`, `fm_supplement_instructions`, `fm_encouragement`. All UTILITY / English / `{{1}}` `{{2}}` params.
+4. **Client letter design finalisation** — review `hariharan-plan-3-2026-05-06-cl-005.html` and decide on layout/branding changes. Server at `python3 -m http.server 9099` in `~/fm-plans/clients/cl-005/meal-plans/`.
+5. **Session notes PDF export** (#7) — clean PDF of session notes for doctors/specialists.
