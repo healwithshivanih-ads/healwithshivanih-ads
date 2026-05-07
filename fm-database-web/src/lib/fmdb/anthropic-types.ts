@@ -150,10 +150,23 @@ export interface AssessResult {
   error?: string | null;
 }
 
+export interface PlanBrief {
+  /** ID from PROTOCOL_TEMPLATES — e.g. "leaky-gut", "thyroid-hashimotos" */
+  protocol_template_id?: string;
+  /** Coach's working hypothesis for the root cause(s) */
+  root_cause_hypothesis?: string;
+  /** Override plan period (weeks). Default: 8 */
+  plan_period_weeks?: number;
+  /** Additional coaching context to weave into the draft */
+  coaching_notes?: string;
+}
+
 export interface GenerateDraftInput {
   client_id: string;
   session_id: string;
   picks: Record<string, boolean>;
+  /** Optional coach brief — applied on top of AI suggestions */
+  plan_brief?: PlanBrief;
 }
 
 export interface GenerateDraftResult {

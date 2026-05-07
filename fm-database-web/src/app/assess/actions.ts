@@ -32,6 +32,7 @@ import {
   type ParseHealthTextInput,
   type ParseHealthTextResult,
 } from "@/lib/fmdb/anthropic";
+import { PROTOCOL_TEMPLATES } from "@/lib/fmdb/protocol-templates";
 
 /** Slim shape sent across the Server Action boundary — excludes heavy AI analysis payload */
 export interface SessionSummary {
@@ -120,7 +121,23 @@ export async function runAssessAction(
 export async function generateDraftAction(
   input: GenerateDraftInput
 ): Promise<GenerateDraftResult> {
-  return generateDraftFromSuggestions(input);
+  // Resolve the protocol template (if any) from TypeScript data and embed it
+  // so the Python shim doesn't need to know about the TS templates file.
+  let resolved: GenerateDraftInput = input;
+  if (input.plan_brief?.protocol_template_id) {
+    const tpl = PROTOCOL_TEMPLATES.find((t) => t.id === input.plan_brief!.protocol_template_id);
+    if (tpl) {
+      resolved = {
+        ...input,
+        plan_brief: {
+          ...input.plan_brief,
+          // @ts-expect-error — extra field for Python; not part of the TS type
+          resolved_template: tpl,
+        },
+      };
+    }
+  }
+  return generateDraftFromSuggestions(resolved);
 }
 
 /**

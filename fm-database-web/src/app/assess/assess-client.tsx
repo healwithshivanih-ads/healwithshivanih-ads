@@ -29,7 +29,9 @@ import type {
   AssessSuggestions,
   ChatTurn,
   ComputedRatio,
+  PlanBrief,
 } from "@/lib/fmdb/anthropic-types";
+import { PROTOCOL_TEMPLATES } from "@/lib/fmdb/protocol-templates";
 import type {
   ExtractedHealthData,
   ExtractedLabValue,
@@ -1565,6 +1567,161 @@ function RegeneratePlanButton({
   );
 }
 
+// ─── Plan Brief Card ──────────────────────────────────────────────────────────
+// Shown after AI analysis, before the Generate Draft button. Coach can optionally
+// pick a protocol template, edit the root cause hypothesis, set plan period and add
+// coaching notes. All fields are optional — skip to use AI suggestions as-is.
+
+function PlanBriefCard({
+  brief,
+  onChange,
+  synthesisNotes,
+}: {
+  brief: PlanBrief;
+  onChange: (b: PlanBrief) => void;
+  synthesisNotes?: string;
+}) {
+  const [open, setOpen] = useState(false);
+  const selectedTemplate = PROTOCOL_TEMPLATES.find((t) => t.id === brief.protocol_template_id);
+
+  return (
+    <Card className="border-indigo-200 bg-indigo-50/40">
+      <CardHeader className="pb-2">
+        <button
+          type="button"
+          className="flex w-full items-center justify-between text-left"
+          onClick={() => setOpen((v) => !v)}
+        >
+          <CardTitle className="text-base flex items-center gap-2">
+            🗒️ Plan Brief
+            {selectedTemplate && (
+              <span className="text-xs font-normal text-indigo-700 bg-indigo-100 rounded px-2 py-0.5">
+                {selectedTemplate.icon} {selectedTemplate.display_name}
+              </span>
+            )}
+            {brief.plan_period_weeks && (
+              <span className="text-xs font-normal text-muted-foreground">
+                · {brief.plan_period_weeks}w
+              </span>
+            )}
+          </CardTitle>
+          <span className="text-xs text-muted-foreground">{open ? "▲ collapse" : "▼ expand"}</span>
+        </button>
+        {!open && (
+          <p className="text-xs text-muted-foreground pt-1">
+            {selectedTemplate
+              ? `Protocol: ${selectedTemplate.display_name} — click to edit`
+              : "Optional: pick a protocol template + add coaching brief before generating the draft"}
+          </p>
+        )}
+      </CardHeader>
+
+      {open && (
+        <CardContent className="space-y-4 pt-0">
+          {/* Protocol template picker */}
+          <div className="space-y-1">
+            <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+              Protocol template
+            </label>
+            <select
+              value={brief.protocol_template_id ?? ""}
+              onChange={(e) =>
+                onChange({ ...brief, protocol_template_id: e.target.value || undefined })
+              }
+              className="w-full rounded-md border bg-background px-3 py-2 text-sm"
+            >
+              <option value="">— none (use AI suggestions only) —</option>
+              {PROTOCOL_TEMPLATES.map((t) => (
+                <option key={t.id} value={t.id}>
+                  {t.icon} {t.display_name}
+                </option>
+              ))}
+            </select>
+            {selectedTemplate && (
+              <p className="text-xs text-muted-foreground rounded bg-muted/50 px-3 py-2">
+                <strong>Merges in:</strong> {selectedTemplate.supplements.length} supplements
+                {selectedTemplate.nutrition_pattern ? `, ${selectedTemplate.nutrition_pattern} nutrition pattern` : ""}
+                {selectedTemplate.lab_orders?.length ? `, ${selectedTemplate.lab_orders.length} lab orders` : ""}
+                {" — "}
+                {selectedTemplate.description}
+              </p>
+            )}
+          </div>
+
+          {/* Plan period */}
+          <div className="space-y-1">
+            <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+              Plan period
+            </label>
+            <div className="flex gap-2">
+              {[6, 8, 12, 16].map((w) => (
+                <button
+                  key={w}
+                  type="button"
+                  onClick={() => onChange({ ...brief, plan_period_weeks: w })}
+                  className={`rounded-md border px-3 py-1.5 text-sm transition-colors ${
+                    brief.plan_period_weeks === w
+                      ? "border-indigo-500 bg-indigo-100 text-indigo-800 font-medium"
+                      : "border-input bg-background hover:bg-muted/50"
+                  }`}
+                >
+                  {w} weeks
+                </button>
+              ))}
+              <button
+                type="button"
+                onClick={() => onChange({ ...brief, plan_period_weeks: undefined })}
+                className={`rounded-md border px-3 py-1.5 text-sm transition-colors ${
+                  !brief.plan_period_weeks
+                    ? "border-indigo-500 bg-indigo-100 text-indigo-800 font-medium"
+                    : "border-input bg-background hover:bg-muted/50"
+                }`}
+              >
+                Default (8w)
+              </button>
+            </div>
+          </div>
+
+          {/* Root cause hypothesis — pre-filled from synthesis_notes */}
+          <div className="space-y-1">
+            <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+              Root cause hypothesis
+              <span className="ml-1 font-normal normal-case">
+                (pre-filled from AI analysis — edit or clear)
+              </span>
+            </label>
+            <textarea
+              value={brief.root_cause_hypothesis ?? ""}
+              onChange={(e) =>
+                onChange({ ...brief, root_cause_hypothesis: e.target.value || undefined })
+              }
+              placeholder={synthesisNotes?.slice(0, 200) ?? "e.g. Primary driver is HPA axis dysregulation secondary to gut permeability…"}
+              rows={4}
+              className="w-full rounded-md border bg-background px-3 py-2 text-sm resize-y"
+            />
+          </div>
+
+          {/* Coaching notes */}
+          <div className="space-y-1">
+            <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+              Coaching notes for this plan
+            </label>
+            <textarea
+              value={brief.coaching_notes ?? ""}
+              onChange={(e) =>
+                onChange({ ...brief, coaching_notes: e.target.value || undefined })
+              }
+              placeholder="e.g. Client is vegetarian Jain — avoid root veg. Very stressed — keep supplement count low to start. Soak methi seeds overnight."
+              rows={3}
+              className="w-full rounded-md border bg-background px-3 py-2 text-sm resize-y"
+            />
+          </div>
+        </CardContent>
+      )}
+    </Card>
+  );
+}
+
 export function AssessClient({ clients = [], symptoms, topics, initialClientId, initialSessions = [], fixedClientId }: Props) {
   const router = useRouter();
   const [clientId, setClientId] = useState<string>(
@@ -1578,6 +1735,7 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
   const [dryRun, setDryRun] = useState(false);
   const [result, setResult] = useState<AssessResult | null>(null);
   const [picks, setPicks] = useState<Record<string, boolean>>({});
+  const [planBrief, setPlanBrief] = useState<PlanBrief>({});
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
   const [draftPending, startDraft] = useTransition();
@@ -1820,6 +1978,13 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
         } else {
           setResult(res);
           setPicks({});
+          // Pre-fill root cause hypothesis from AI synthesis notes
+          if (res.suggestions?.synthesis_notes) {
+            setPlanBrief((prev) => ({
+              ...prev,
+              root_cause_hypothesis: prev.root_cause_hypothesis || res.suggestions!.synthesis_notes.slice(0, 500),
+            }));
+          }
         }
       } catch (e) {
         setError((e as Error).message);
@@ -1836,6 +2001,9 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
           client_id: clientId,
           session_id: result.session_id!,
           picks,
+          plan_brief: Object.keys(planBrief).some((k) => !!(planBrief as Record<string, unknown>)[k])
+            ? planBrief
+            : undefined,
         });
         if (!res.ok) {
           const msg = res.error || "Draft generation failed";
@@ -2427,8 +2595,16 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
             selectedTopics={selectedTopics}
             computedRatios={result.computed_ratios}
           />
+
+          {/* Plan Brief — optional coaching context before generating the draft */}
+          <PlanBriefCard
+            brief={planBrief}
+            onChange={setPlanBrief}
+            synthesisNotes={result.suggestions?.synthesis_notes}
+          />
+
           <Card>
-            <CardContent className="pt-6">
+            <CardContent className="pt-6 space-y-2">
               <Button
                 onClick={onGenerateDraft}
                 disabled={draftPending}
@@ -2436,6 +2612,11 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
               >
                 {draftPending ? "Generating draft plan…" : "📝 Generate draft plan"}
               </Button>
+              {planBrief.protocol_template_id && (
+                <p className="text-xs text-center text-indigo-700">
+                  Template <strong>{PROTOCOL_TEMPLATES.find(t => t.id === planBrief.protocol_template_id)?.display_name}</strong> will be merged into the draft
+                </p>
+              )}
             </CardContent>
           </Card>
           {result.session_id && (
