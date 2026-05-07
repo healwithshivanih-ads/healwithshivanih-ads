@@ -24,6 +24,7 @@ interface PlanRow {
   _bucket?: string;
   plan_period_recheck_date?: string;
   plan_period_start?: string;
+  plan_period_weeks?: number;
 }
 
 type TriageSignal =
@@ -61,17 +62,37 @@ async function computeSignal(
   }
 
   // Published plan past recheck → highest priority (still active but needs reassessment)
-  const overduePlan = clientPlans.find(
-    (p) =>
-      (p._bucket ?? p.status) === "published" &&
-      p.plan_period_recheck_date &&
-      p.plan_period_recheck_date < todayStr
-  );
+  // Also compute recheck date from plan_period_start + plan_period_weeks when explicit date not set.
+  const overduePlan = clientPlans.find((p) => {
+    if ((p._bucket ?? p.status) !== "published") return false;
+    // Explicit recheck date
+    if (p.plan_period_recheck_date) return p.plan_period_recheck_date < todayStr;
+    // Compute from start + weeks
+    const start = p.plan_period_start;
+    const weeks = p.plan_period_weeks;
+    if (start && weeks && weeks > 0) {
+      const recheckDate = new Date(start + "T00:00:00");
+      recheckDate.setDate(recheckDate.getDate() + weeks * 7);
+      return recheckDate.toISOString().slice(0, 10) < todayStr;
+    }
+    return false;
+  });
   if (overduePlan) {
+    // Resolve a display recheck date
+    let recheckDate = overduePlan.plan_period_recheck_date;
+    if (!recheckDate) {
+      const start = overduePlan.plan_period_start;
+      const weeks = overduePlan.plan_period_weeks;
+      if (start && weeks) {
+        const d = new Date(start + "T00:00:00");
+        d.setDate(d.getDate() + weeks * 7);
+        recheckDate = d.toISOString().slice(0, 10);
+      }
+    }
     return {
       kind: "protocol_complete",
       planSlug: overduePlan.slug,
-      recheckDate: overduePlan.plan_period_recheck_date!,
+      recheckDate: recheckDate ?? todayStr,
     };
   }
 

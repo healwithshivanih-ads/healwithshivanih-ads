@@ -35,6 +35,21 @@ import {
 import { PROTOCOL_TEMPLATES } from "@/lib/fmdb/protocol-templates";
 
 /** Slim shape sent across the Server Action boundary — excludes heavy AI analysis payload */
+export interface SessionDriver {
+  mechanism?: string;
+  mechanism_slug?: string;
+  confidence?: string | number;
+  reasoning?: string;
+}
+
+export interface SessionSupplement {
+  name?: string;
+  supplement_slug?: string;
+  rationale?: string;
+  dose?: string;
+  timing?: string;
+}
+
 export interface SessionSummary {
   session_id?: string;
   date?: string;
@@ -59,6 +74,10 @@ export interface SessionSummary {
     nutrition_quality?: number;
     connection_quality?: number;
   };
+  /** Key drivers for the session brief export */
+  likely_drivers?: SessionDriver[];
+  /** Supplement suggestions for the session brief export */
+  supplement_suggestions?: SessionSupplement[];
 }
 
 // ── Session field parsers (internal — import from @/lib/fmdb/session-utils externally) ──
@@ -101,6 +120,8 @@ export async function loadClientSessionsAction(clientId: string): Promise<Sessio
     const slug = s.generated_plan_slug ?? null;
     const coach_notes = (s as Record<string, unknown>).coach_notes as string | undefined;
     const rawFp = (s as Record<string, unknown>).five_pillars as Record<string, unknown> | undefined;
+    const driversArr = Array.isArray(drivers) ? (drivers as Array<Record<string, unknown>>) : [];
+    const suppsArr = Array.isArray(supps) ? (supps as Array<Record<string, unknown>>) : [];
     return {
       session_id: s.session_id,
       date: s.date,
@@ -109,8 +130,8 @@ export async function loadClientSessionsAction(clientId: string): Promise<Sessio
       selected_topics: s.selected_topics,
       generated_plan_slug: slug,
       plan_exists: slug ? await planExists(slug) : false,
-      driver_count: Array.isArray(drivers) ? drivers.length : 0,
-      supplement_count: Array.isArray(supps) ? supps.length : 0,
+      driver_count: driversArr.length,
+      supplement_count: suppsArr.length,
       synthesis_notes: notes ? String(notes).slice(0, 400) : undefined,
       session_type: parseSessionType(s.presenting_complaints),
       requested_labs: parseRequestedLabs(coach_notes),
@@ -123,6 +144,23 @@ export async function loadClientSessionsAction(clientId: string): Promise<Sessio
             nutrition_quality: rawFp.nutrition_quality as number | undefined,
             connection_quality: rawFp.connection_quality as number | undefined,
           }
+        : undefined,
+      likely_drivers: driversArr.length > 0
+        ? driversArr.map((d) => ({
+            mechanism: typeof d.mechanism === "string" ? d.mechanism : (typeof d.mechanism_slug === "string" ? d.mechanism_slug : undefined),
+            mechanism_slug: typeof d.mechanism_slug === "string" ? d.mechanism_slug : undefined,
+            confidence: (d.confidence as string | number | undefined),
+            reasoning: typeof d.reasoning === "string" ? d.reasoning.slice(0, 200) : undefined,
+          }))
+        : undefined,
+      supplement_suggestions: suppsArr.length > 0
+        ? suppsArr.map((s) => ({
+            name: typeof s.name === "string" ? s.name : (typeof s.supplement_slug === "string" ? s.supplement_slug : undefined),
+            supplement_slug: typeof s.supplement_slug === "string" ? s.supplement_slug : undefined,
+            rationale: typeof s.rationale === "string" ? s.rationale.slice(0, 200) : undefined,
+            dose: typeof s.dose === "string" ? s.dose : undefined,
+            timing: typeof s.timing === "string" ? s.timing : undefined,
+          }))
         : undefined,
     };
   }));

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useState, useTransition, useEffect } from "react";
 import { toast } from "sonner";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,8 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { MultiSelect, type MultiSelectOption } from "@/components/multi-select";
-import { updatePlan, saveSupplementSources } from "./actions";
-import type { SupplementSourcesMap } from "./actions";
+import { updatePlan, saveSupplementSources, checkSupplementInteractionsAction } from "./actions";
+import type { SupplementSourcesMap, SupplementInteraction } from "./actions";
 import type { Plan, PlanStatus } from "@/lib/fmdb/types";
 import { ProtocolTemplatePicker } from "./protocol-template-picker";
 import { PlanChatPanel } from "./plan-chat-panel";
@@ -890,6 +890,17 @@ export function PlanEditor(props: PlanEditorProps) {
   const [editAnyway, setEditAnyway] = useState(false);
   const effectiveLocked = locked && !editAnyway;
 
+  // Supplement interaction checker state
+  const [supplementInteractions, setSupplementInteractions] = useState<SupplementInteraction[]>([]);
+  useEffect(() => {
+    let cancelled = false;
+    checkSupplementInteractionsAction(initial.slug).then((res) => {
+      if (!cancelled && res.ok) setSupplementInteractions(res.interactions);
+    });
+    return () => { cancelled = true; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initial.slug]);
+
   // ── Timeline state (mirrors plan_period_* fields) ──────────────────────────
   const [timelineStart, setTimelineStart] = useState<string>(
     () => (initial.plan_period_start as string | undefined) ?? todayISO()
@@ -1257,8 +1268,37 @@ export function PlanEditor(props: PlanEditorProps) {
                     {supplements.length}
                   </Badge>
                 )}
+                {supplementInteractions.length > 0 && (
+                  <span className="text-amber-600 text-xs font-semibold">⚠ {supplementInteractions.length} interaction{supplementInteractions.length !== 1 ? "s" : ""}</span>
+                )}
               </summary>
               <div className="pt-3 space-y-3 px-1">
+                {/* ── Medication interaction warnings ── */}
+                {supplementInteractions.length > 0 && (
+                  <details className="group/warn">
+                    <summary className="flex items-center gap-2 cursor-pointer select-none list-none rounded-md border border-amber-300 bg-amber-50 px-3 py-2 text-xs font-semibold text-amber-900 hover:bg-amber-100">
+                      <span className="transition-transform group-open/warn:rotate-90 text-amber-600 text-xs">▶</span>
+                      ⚠ Potential medication interactions detected ({supplementInteractions.length})
+                    </summary>
+                    <div className="mt-2 space-y-2 rounded-md border border-amber-200 bg-amber-50/60 px-3 py-2">
+                      <p className="text-[11px] text-amber-800">
+                        The following supplements may interact with the client&apos;s current medications. Review with the client before proceeding.
+                      </p>
+                      {supplementInteractions.map((interaction) => (
+                        <div key={interaction.supplement_slug} className="text-[11px] border border-amber-200 rounded bg-white px-2.5 py-2 space-y-1">
+                          <div className="font-semibold text-amber-900">
+                            {interaction.supplement_name}{" "}
+                            <span className="text-amber-500">may interact with</span>{" "}
+                            {interaction.matched_medications.join(", ")}
+                          </div>
+                          <div className="text-muted-foreground text-[10px]">
+                            Contraindication note: {interaction.contraindication_text}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </details>
+                )}
                 {supplements.map((s, i) => (
                   <div key={i} className="border rounded-md p-3 space-y-2 bg-muted/20">
                     <div className="flex gap-2 items-center">

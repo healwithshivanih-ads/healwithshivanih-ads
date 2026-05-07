@@ -43,6 +43,7 @@ import { DiscoveryForm } from "./discovery-form";
 import { IFMTrend } from "./ifm-trend";
 import { LabComparison } from "./lab-comparison";
 import { ClientAvatar } from "./client-avatar";
+import { SessionBriefModal } from "./session-brief-modal";
 import type { Client, MeasurementEntry } from "@/lib/fmdb/types";
 import type { SessionSummary } from "@/app/assess/actions";
 
@@ -373,6 +374,7 @@ export function ClientPageTabs({
   const [sessionType, setSessionType] = useState<SessionType>(defaultSessionType ?? "full_assessment");
   const [savedSessionId, setSavedSessionId] = useState<string | null>(null);
   const [expandedSessionId, setExpandedSessionId] = useState<string | null>(null);
+  const [briefSessionId, setBriefSessionId] = useState<string | null>(null);
   const [followUpOpenFor, setFollowUpOpenFor] = useState<string | null>(null);
   const [followUpSlug, setFollowUpSlug] = useState("");
   const [followUpWeeks, setFollowUpWeeks] = useState("");
@@ -1275,6 +1277,19 @@ export function ClientPageTabs({
                                   </div>
                                 </div>
                               )}
+                              {/* Export brief button */}
+                              <div className="pt-1 flex justify-end">
+                                <button
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    setBriefSessionId(sid);
+                                  }}
+                                  className="inline-flex items-center gap-1 text-[11px] font-medium px-2.5 py-1 rounded-md border border-gray-200 hover:bg-gray-50 transition-all"
+                                  style={{ color: "#2B2D42" }}
+                                >
+                                  📄 Brief
+                                </button>
+                              </div>
                             </div>
                           )}
                         </button>
@@ -1524,6 +1539,19 @@ export function ClientPageTabs({
           </div>
         </div>
       )}
+
+      {/* ── Session brief modal ── */}
+      {briefSessionId && (() => {
+        const briefSession = sessions.find((s, i) => (s.session_id ?? `idx-${i}`) === briefSessionId);
+        if (!briefSession) return null;
+        return (
+          <SessionBriefModal
+            session={briefSession}
+            clientName={client.display_name ?? clientId}
+            onClose={() => setBriefSessionId(null)}
+          />
+        );
+      })()}
     </div>
   );
 }
