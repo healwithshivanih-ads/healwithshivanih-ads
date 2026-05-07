@@ -1619,33 +1619,92 @@ function PlanBriefCard({
 
       {open && (
         <CardContent className="space-y-4 pt-0">
-          {/* Protocol template picker */}
-          <div className="space-y-1">
+          {/* Protocol template picker — visual cards */}
+          <div className="space-y-2">
             <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-              Protocol template
+              Protocol template <span className="normal-case font-normal">(optional — merges with AI suggestions)</span>
             </label>
-            <select
-              value={brief.protocol_template_id ?? ""}
-              onChange={(e) =>
-                onChange({ ...brief, protocol_template_id: e.target.value || undefined })
-              }
-              className="w-full rounded-md border bg-background px-3 py-2 text-sm"
-            >
-              <option value="">— none (use AI suggestions only) —</option>
-              {PROTOCOL_TEMPLATES.map((t) => (
-                <option key={t.id} value={t.id}>
-                  {t.icon} {t.display_name}
-                </option>
-              ))}
-            </select>
+            {/* "None" pill + selected template detail */}
+            <div className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() => onChange({ ...brief, protocol_template_id: undefined })}
+                className={`rounded-full border px-3 py-1 text-xs transition-colors ${
+                  !brief.protocol_template_id
+                    ? "border-indigo-400 bg-indigo-100 text-indigo-800 font-medium"
+                    : "border-input bg-background text-muted-foreground hover:bg-muted/50"
+                }`}
+              >
+                ✦ AI only
+              </button>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 max-h-64 overflow-y-auto pr-1">
+              {PROTOCOL_TEMPLATES.map((t) => {
+                const isSelected = brief.protocol_template_id === t.id;
+                return (
+                  <button
+                    key={t.id}
+                    type="button"
+                    onClick={() =>
+                      onChange({
+                        ...brief,
+                        protocol_template_id: isSelected ? undefined : t.id,
+                      })
+                    }
+                    className={`rounded-lg border p-2.5 text-left text-xs transition-all ${
+                      isSelected
+                        ? "border-indigo-400 bg-indigo-50 shadow-sm ring-1 ring-indigo-300"
+                        : "border-input bg-background hover:bg-muted/40 hover:border-muted-foreground/30"
+                    }`}
+                  >
+                    <div className="flex items-start gap-1.5">
+                      <span className="text-base leading-none shrink-0 mt-0.5">{t.icon}</span>
+                      <div className="min-w-0">
+                        <p className={`font-medium leading-tight truncate ${isSelected ? "text-indigo-800" : ""}`}>
+                          {t.display_name}
+                        </p>
+                        <p className="text-[10px] text-muted-foreground mt-0.5 leading-tight line-clamp-2">
+                          {t.description}
+                        </p>
+                        <div className="flex flex-wrap gap-1 mt-1.5">
+                          <span className="text-[9px] bg-muted/60 rounded px-1 py-0.5">
+                            💊 {t.supplements.length} supps
+                          </span>
+                          {(t.lab_orders?.length ?? 0) > 0 && (
+                            <span className="text-[9px] bg-muted/60 rounded px-1 py-0.5">
+                              🧪 {t.lab_orders!.length} labs
+                            </span>
+                          )}
+                          {t.nutrition_pattern && (
+                            <span className="text-[9px] bg-muted/60 rounded px-1 py-0.5 truncate max-w-[80px]">
+                              🥗 {t.nutrition_pattern}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+            {/* Selected template detail */}
             {selectedTemplate && (
-              <p className="text-xs text-muted-foreground rounded bg-muted/50 px-3 py-2">
-                <strong>Merges in:</strong> {selectedTemplate.supplements.length} supplements
-                {selectedTemplate.nutrition_pattern ? `, ${selectedTemplate.nutrition_pattern} nutrition pattern` : ""}
-                {selectedTemplate.lab_orders?.length ? `, ${selectedTemplate.lab_orders.length} lab orders` : ""}
-                {" — "}
-                {selectedTemplate.description}
-              </p>
+              <div className="rounded-lg bg-indigo-50 border border-indigo-200 px-3 py-2.5 space-y-1.5">
+                <p className="text-xs font-medium text-indigo-800">
+                  {selectedTemplate.icon} {selectedTemplate.display_name} — will be merged into draft
+                </p>
+                <p className="text-[11px] text-indigo-700">{selectedTemplate.description}</p>
+                <div className="flex flex-wrap gap-1">
+                  {selectedTemplate.supplements.slice(0, 6).map((s) => (
+                    <span key={s.supplement_slug} className="text-[10px] bg-white/70 border border-indigo-200 rounded px-1.5 py-0.5">
+                      {s.display_name}
+                    </span>
+                  ))}
+                  {selectedTemplate.supplements.length > 6 && (
+                    <span className="text-[10px] text-indigo-600">+{selectedTemplate.supplements.length - 6} more</span>
+                  )}
+                </div>
+              </div>
             )}
           </div>
 

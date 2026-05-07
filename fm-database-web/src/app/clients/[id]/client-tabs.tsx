@@ -32,6 +32,7 @@ import { CheckInForm } from "./check-in-form";
 import { generateFollowUpPlan, submitPlan, publishPlan } from "@/app/plans/[slug]/lifecycle-actions";
 import { addMeasurementAction } from "@/app/clients/actions";
 import { TranscriptUpdatePanel } from "./transcript-update-panel";
+import { OutcomeProgressCard } from "./outcome-progress-card";
 import type { Client, MeasurementEntry } from "@/lib/fmdb/types";
 import type { SessionSummary } from "@/app/assess/actions";
 
@@ -1047,6 +1048,11 @@ export function ClientPageTabs({
               />
             )}
           </div>
+
+          {/* ── Outcome progress ── */}
+          {sessions.length >= 2 && (
+            <OutcomeProgressCard sessions={sessions} />
+          )}
 
           {/* ── Session history — vertical timeline ── */}
           {sessions.length > 0 && (

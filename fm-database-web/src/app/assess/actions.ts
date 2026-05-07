@@ -50,6 +50,15 @@ export interface SessionSummary {
   session_type: "pre_intake" | "full_assessment" | "check_in" | "quick_note";
   /** Parsed from the [Requested labs: ...] marker in coach_notes */
   requested_labs: string[];
+  /** Five pillars snapshot captured during this session (if any) */
+  five_pillars?: {
+    sleep_hours?: number;
+    sleep_quality?: number;
+    stress_level?: number;
+    movement_days_per_week?: number;
+    nutrition_quality?: number;
+    connection_quality?: number;
+  };
 }
 
 // ── Session field parsers (internal — import from @/lib/fmdb/session-utils externally) ──
@@ -91,6 +100,7 @@ export async function loadClientSessionsAction(clientId: string): Promise<Sessio
     const notes = analysis.synthesis_notes ?? analysis.suggestions?.synthesis_notes ?? "";
     const slug = s.generated_plan_slug ?? null;
     const coach_notes = (s as Record<string, unknown>).coach_notes as string | undefined;
+    const rawFp = (s as Record<string, unknown>).five_pillars as Record<string, unknown> | undefined;
     return {
       session_id: s.session_id,
       date: s.date,
@@ -104,6 +114,16 @@ export async function loadClientSessionsAction(clientId: string): Promise<Sessio
       synthesis_notes: notes ? String(notes).slice(0, 400) : undefined,
       session_type: parseSessionType(s.presenting_complaints),
       requested_labs: parseRequestedLabs(coach_notes),
+      five_pillars: rawFp && Object.values(rawFp).some((v) => v != null)
+        ? {
+            sleep_hours: rawFp.sleep_hours as number | undefined,
+            sleep_quality: rawFp.sleep_quality as number | undefined,
+            stress_level: rawFp.stress_level as number | undefined,
+            movement_days_per_week: rawFp.movement_days_per_week as number | undefined,
+            nutrition_quality: rawFp.nutrition_quality as number | undefined,
+            connection_quality: rawFp.connection_quality as number | undefined,
+          }
+        : undefined,
     };
   }));
 }
