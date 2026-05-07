@@ -14,7 +14,39 @@ published plans as JSON artifacts.
 
 ## Status
 
-**v0.48 (current)** — Client page 3-tab redesign + lab extraction fix + intake form fields:
+**v0.57 (current)** — Five Pillars at check-in + post-session WhatsApp draft:
+
+- **🌿 Five Pillars capture** (`five-pillars-capture.tsx`): compact 5-column widget (😴🧘🏃🥗🤝) embedded in the check-in form. Sleep quality (1–5) + hours, Stress (1–5 inverted), Movement days (0–7), Nutrition quality (1–5), Connection quality (1–5). Color-tiered chips (red/amber/emerald). Saved as `FivePillarsAssessment` in session YAML via `five_pillars` field added to both Python `Session` model (`models.py`) and TypeScript `SaveSessionInput`. `save-session.py` extracts + builds `FivePillarsAssessment` before saving. `OutcomeProgressCard` already reads this data for trend display.
+- **💬 Post-session WhatsApp draft** (`follow-up-draft-panel.tsx`): after any check-in, pre-intake, or quick note is saved, a green "💬 Draft message" panel appears below the "Session saved" banner in `client-tabs.tsx`. Clicking "Draft message" calls `draftFollowUpMessageAction` → `draft-followup-message.py` (Haiku, `claude-haiku-4-5`, 300 tokens, Shivani voice, warm/personal, 3–5 sentences, no bullets/emoji). Shows editable `<textarea>` pre-filled with AI draft + "📋 Copy" button (`navigator.clipboard.writeText`) + "Regenerate" link. Footer: "Edit freely before copying — AI draft, you send it." Full-assessment sessions excluded (they have their own AI flow).
+- **New files**: `scripts/draft-followup-message.py`, `src/app/clients/[id]/five-pillars-capture.tsx`, `src/app/clients/[id]/follow-up-draft-panel.tsx`
+- **Modified**: `fmdb/plan/models.py` (added `five_pillars` field to `Session`), `scripts/save-session.py` (builds `FivePillarsAssessment`), `src/app/assess/actions.ts` (`FivePillarsData` interface + `SaveSessionInput` extended), `src/app/clients/[id]/check-in-form.tsx` (widget + save logic), `src/app/clients/actions.ts` (`draftFollowUpMessageAction` server action)
+
+**v0.56** — Protocol check-in + pre-session brief + AiSensy webhook:
+
+- **💊 Protocol check-in panel** (`protocol-checkin-panel.tsx`): collapsible button in Overview quick-capture row. Loads active plan supplements + lifestyle practices via `loadActivePlanItemsAction`. Per-supplement: Still taking / Sometimes / Side effects / Stopped chips + note field. Per-practice: Consistent / Mostly / Struggling / Not doing. Saves as `check_in` session + appends to plan `notes_for_coach`.
+- **📋 Pre-session coach brief** (`pre-session-brief.tsx`): "📋 Session brief" button in Analyse tab header. Print-optimised modal: client snapshot, last session summary, active plan supplements/practices, recent quick notes, pending labs, suggested question list. 🖨 Print/Save PDF → `window.print()`.
+- **🔗 AiSensy webhook** (`/api/aisensy-webhook`): POST endpoint matches `waId` (phone) → client by `mobile_number` (last-10-digit normalisation), saves as `quick_note` session tagged `[source: aisensy_webhook]`. Auth via `AISENSY_WEBHOOK_SECRET` env var + `X-AiSensy-Secret` header. GET returns setup instructions. `findClientByPhoneAction` in `clients/actions.ts`. Requires Cloudflare Tunnel for production.
+- **🏗 New server actions** in `clients/actions.ts`: `loadActivePlanItemsAction` (loads `supplement_protocol` + `lifestyle_practices` from plan slug), `findClientByPhoneAction` (phone-to-client lookup).
+
+**v0.55** — Lab report upload panel + WhatsApp/AiSensy message capture:
+
+- **🧪 Lab upload panel** (`lab-upload-panel.tsx`): collapsible "🧪 Upload labs" button in Overview. Uploads file → `extractTranscriptAction` (empty catalogue, extracts `health_data.lab_values`) → shows extracted labs table + FM pattern banners → `applyTranscriptDataAction` saves snapshot. Uses `detectLabPatterns` + `IFM_NODES` from `ifm-matrix.ts`.
+- **💬 Message capture panel** (`message-capture-panel.tsx`): collapsible "💬 Capture message" button. Paste WhatsApp/AiSensy message → Haiku parses into structured clinical sections (improving/persisting/new symptoms, adherence, questions, mood, protocol flag) → editable quick note text → saves as `quick_note` session.
+- **`parse-client-message.py`**: Haiku script, `claude-haiku-4-5`, structured JSON output, dry-run mode.
+- `parseClientMessageAction` in `clients/actions.ts` using `runScript`.
+
+**v0.54** — Outcome progress dashboard + visual protocol template picker:
+
+- **📈 Outcome progress card** (`outcome-progress-card.tsx`): symptom burden bar chart (SVG, last 10 sessions, indigo=full/green=check-in, delta arrow) + five pillars horizontal bars with delta arrows. Shows when `sessions.length >= 2`.
+- **`SessionSummary.five_pillars`** field added; `loadClientSessionsAction` extracts it from raw session YAML.
+- **Visual protocol template picker** in `assess-client.tsx` `PlanBriefCard`: replaced `<select>` with 2-3 col card grid (icon + name + description + chips). Toggle selection. 20 templates in `protocol-templates.ts`.
+
+**v0.53** — IFM Matrix card + FM lab pattern recognition:
+
+- **`src/lib/fmdb/ifm-matrix.ts`**: 7 IFM nodes (Assimilation, Defence/Repair, Energy, Biotransformation, Transport, Communication, Structural) with emoji/color/keywords. `computeIFMMatrix(drivers, topics, symptoms)` → scored nodes. `detectLabPatterns(labs, ratios)` → LabPattern[] (subclinical hypothyroid, insulin resistance, low Vit D, iron deficiency anaemia, anaemia of chronic disease, elevated hsCRP).
+- **`src/app/assess/ifm-matrix-card.tsx`**: colored score bars, "Primary" badge, 🚩/⚠️/ℹ️ lab pattern banners. Injected between SuggestionsView and PlanBriefCard in assess-client.tsx.
+
+**v0.48 (prior)** — Client page 3-tab redesign + lab extraction fix + intake form fields:
 
 - **🗂 Client page tab redesign: Overview | 🗓 Sessions | 📋 Plan** (3 tabs, was 4)
   - Removed "Protocol" and "Send" as separate tabs. Merged into single **Plan** tab.
@@ -931,7 +963,19 @@ fm-database-web/                  # Path B — Next.js + shadcn rebuild of the c
     parse-health-text.py          # Haiku: free-form text → ExtractedHealthData JSON
     update-client-data.py         # merge health data into client.yaml + append snapshot
     compute-ratios.py             # compute FM lab ratios (HOMA-IR, TG/HDL, etc.)
-    save-session.py               # persist assess session to YAML
+    save-session.py               # persist assess session to YAML.
+                                  #   Builds FivePillarsAssessment from five_pillars payload
+                                  #   and writes to session.five_pillars (added v0.57).
+    draft-followup-message.py     # Haiku: draft WhatsApp follow-up after session.
+                                  #   Input: {client_id, session_id, session_type, dry_run}.
+                                  #   Loads client.yaml + session YAML from ~/fm-plans.
+                                  #   _build_context(): name/conditions/goals + session type/
+                                  #     date + presenting complaints (tags stripped) +
+                                  #     five_pillars + coach notes.
+                                  #   _draft_message(): claude-haiku-4-5, 300 tokens, system
+                                  #     prompt = Shivani voice, warm, 3-5 sentences, no emoji.
+                                  #   dry_run=True returns mock message without API call.
+                                  #   Output: {ok, message, error}.
     render-topic-brief.py         # Sonnet: generate evidence brief for a topic
     generate-info-pack.py         # PubMed search + Sonnet synthesis → Resource YAML
     generate-draft.py             # generate draft plan YAML from assess suggestions.
@@ -1057,7 +1101,17 @@ fm-database-web/                  # Path B — Next.js + shadcn rebuild of the c
                                   #   Backward compat: timeline→sessions, protocol→plan,
                                   #   send→plan, documents→plan.
     check-in-form.tsx             # Check-in workflow (adherence rating, lab orders,
-                                  #   appends to plan.notes_for_coach)
+                                  #   Five Pillars capture, appends to plan.notes_for_coach)
+    five-pillars-capture.tsx      # "use client" — compact 5-col widget (😴🧘🏃🥗🤝).
+                                  #   RatingChips (1–5, color-tiered, invert=true for stress)
+                                  #   + DayChips (0–7). FivePillarsData type exported.
+                                  #   Shows info message when non-empty. Clear button.
+    follow-up-draft-panel.tsx     # "use client" — post-session WhatsApp draft panel.
+                                  #   States: idle→loading→done|error. idle: green banner
+                                  #   + "Draft message" button. done: editable <textarea>
+                                  #   pre-filled with Haiku draft + "📋 Copy" (clipboard)
+                                  #   + "Regenerate" link. Shown in client-tabs.tsx below
+                                  #   "Session saved" banner for non-full-assessment types.
   src/app/plans/[slug]/
     lifecycle-actions.ts          # Server Actions: generateClientLetter(),
                                   #   refineLetter(), saveMealPlan(), loadMealPlan(),
@@ -1168,6 +1222,10 @@ npm run build && npm run type-check          # before committing
 - `brand_html.py` is the shared brand wrapper for ALL letter/plan HTML output. Edit CSS there, not inline.
 - Per-week print: `body[data-print-week="N"]` attr set by JS → CSS shows only that week-section. Works without any server round-trip.
 - Supplement print: `#supplement-schedule` isolated by JS before `window.print()`. Buy links hidden via `.no-print` CSS class on print.
+- `five_pillars: Optional[FivePillarsAssessment] = None` on Python `Session` model (`fmdb/plan/models.py`). Required — model uses `extra="forbid"`. Added v0.57.
+- `save-session.py` now extracts `five_pillars` from payload and builds `FivePillarsAssessment` before calling `Session(...)`. Guards: only build if any value is non-None; silently ignores exceptions (session still saves without five_pillars if malformed).
+- `FollowUpDraftPanel` only shown for `sessionType !== "full_assessment"` (full assessments have their own AI flow). Triggered by `savedSessionId` state in `client-tabs.tsx`.
+- `draftFollowUpMessageAction` in `clients/actions.ts`: 30s timeout, 1MB buffer. `draft-followup-message.py` reads `.env` from `FMDB_ROOT` for `ANTHROPIC_API_KEY` via `_load_env()`.
 
 ### Path A — Streamlit UI (fallback, still maintained)
 ```bash
@@ -1293,14 +1351,58 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 - ✅ **✅ BatchPanel status check** — already-approved/rejected batches show read-only banner; no more phantom "approve" buttons on completed batches.
 - ✅ **📚 Add Source tab on /ingest** — consolidated from separate `/sources` sidebar page. 4th tab in Ingest. Sidebar "📚 Add Source" link removed.
 
+- ✅ **v0.53–v0.56** — IFM Matrix card + FM lab patterns, outcome progress dashboard, visual template picker, lab upload panel, message capture panel, protocol check-in, pre-session brief, AiSensy webhook
+- ✅ **v0.57** — Five Pillars capture at check-in (`five-pillars-capture.tsx`, `FivePillarsAssessment` written to session YAML, feeds `OutcomeProgressCard`) + post-session WhatsApp draft (`follow-up-draft-panel.tsx`, Haiku, Shivani voice, editable textarea + 📋 Copy button, shown after any non-full-assessment session save)
+
+**Features Backlog** (organised by area — keep this updated every session)
+
+### 🔴 Setup (one-time, coach does these)
+1. **Configure email** — add `GMAIL_USER` + `GMAIL_APP_PASSWORD` to `.env.local`. Needs Google App Password: https://myaccount.google.com/apppasswords
+2. **AiSensy webhook live** — add `AISENSY_WEBHOOK_SECRET=<secret>` to `.env.local`. Run `cloudflared tunnel --url http://localhost:3002`. Paste tunnel URL into AiSensy → Settings → Webhook URL. Set header `X-AiSensy-Secret`. Test: `GET /api/aisensy-webhook` shows setup status.
+3. **Triage 444 open backlog items** via `/backlog` — suggestion chips make it fast. Coach work, no code.
+
+### 🟡 Client management (next few sessions)
+4. ✅ **Five Pillars capture at each session** — done in v0.57. Compact 5-column widget in check-in form, saved to session YAML, feeds OutcomeProgressCard.
+5. **Protocol adherence trends** — chart showing per-supplement adherence across multiple protocol check-ins over time. Shows which supplements clients keep dropping.
+6. **Supplement refill reminder** — estimate run-out date from dose × quantity purchased × start date. Shows "🔔 Magnesium running low ~15 May" in Overview.
+7. **Client photo** — upload/update profile photo in Overview. Shown as avatar in client list + header.
+8. **Session notes PDF export** — generate a clean PDF of session notes to share with a referring doctor or specialist.
+9. **IFM Matrix over time** — track which of the 7 IFM nodes are improving/worsening across full sessions. Small trend indicator next to each node score.
+10. **Inline quick notes from session brief** — ability to type a note directly from the pre-session brief modal and save it as a quick_note without closing the brief.
+
+### 🟡 Communication / WhatsApp
+11. ✅ **Auto-follow-up drafts** — done in v0.57. After any check-in/pre-intake/quick note, Haiku drafts a warm 3–5 sentence WhatsApp message in Shivani's voice. Coach edits and copies.
+12. **WhatsApp broadcast via AiSensy API** — send check-in reminder to all active clients due for follow-up (uses AiSensy outbound API, not just webhook).
+13. **AiSensy message routing** — when a webhook message comes in, show a notification badge in the dashboard and route to the client's page. Currently saves silently to session history.
+14. **Message templates** — pre-written WhatsApp templates for common situations (lab reminder, supplement instructions, check-in nudge). One-click send via AiSensy API.
+
+### 🟡 Lab & health data
+15. **Lab reference ranges** — store personalised optimal ranges per client per marker. Flag out-of-optimal even when within "normal" lab range.
+16. **Lab trend chart** — show a specific lab marker over time across all snapshots (e.g. TSH across 4 visits → sparkline).
+17. **Lab comparison view** — side-by-side two snapshots ("Before protocol" vs "3 months in").
+
+### 🟢 Plan & protocol
+18. **Custom protocol template saving** — save a successful real plan as a new template for future similar clients. Currently only the 20 built-in templates exist.
+19. **Supplement interaction checker** — when adding a supplement in the plan editor, check against client's current medications and flag conflicts from the catalogue's `contraindications` field.
+20. **Recheck reminder email/WhatsApp** — auto-trigger a "your recheck is due" message when `plan_period_recheck_date` passes.
+21. **Protocol diff view** — side-by-side what changed between plan v1 and v2 (supplement additions, lifestyle changes). Currently only raw YAML diff.
+
+### 🟢 Content & catalogue
+22. **More curated mindmaps** — Cardiovascular, PCOS, Autoimmune, Sleep/Circadian, Energy/Mitochondrial, Bone Health. Use 6-branch template (Clinical Presentation / Root Mechanisms / FM Approach / Interventions / Coaching Goals / Labs to Track).
+23. **Backlog triage** — 444 open items remain. `/backlog` UI with suggestion chips. Coach work.
+24. **Promote freeform → catalogue entities** — Practice, TrackingHabit, Food, LabTest, Recipe, EducationalModule. Watch for duplication in real plans first.
+
+### 🟢 Infrastructure / polish
+25. **Persistent public URL** — `cloudflared tunnel --url http://localhost:3002` (needed for AiSensy) or `ngrok http 3002` / `ssh -R 80:localhost:3002 nokey@localhost.run`.
+26. **Dashboard notification badge** — count of unprocessed AiSensy webhook messages (quick_notes tagged `aisensy_webhook` added since last login).
+27. **Path B UI polish (deferred):** click-to-recenter on linked MindMap nodes; colored split-diff for plan diff; backlog pagination; health trends chart axis labels.
+28. **JSON export contract for Project 2 (mobile app)** — deferred indefinitely; desktop-first build.
+29. **Commit pending catalogue changes** — `git add data/ && git commit` from `fm-database/` if YAML edits made without committing.
+
 **Outstanding (in rough priority order):**
 1. **Coach uses it daily.** Real bugs from real use are more valuable than speculative code.
-2. **Configure email** — add `GMAIL_USER` + `GMAIL_APP_PASSWORD` to `.env.local`. Needs Google App Password: https://myaccount.google.com/apppasswords
-3. **Triage the 444 open backlog items** via `/backlog` UI — suggestion chips make it fast. Coach work, no code needed.
-5. **Health trends — more appointment data needed** to make charts meaningful. Populates naturally with use.
-6. **More mindmaps** (when ready): Cardiovascular, PCOS, Autoimmune, Sleep/Circadian, Energy/Mitochondrial, Bone Health. Use 6-branch template.
-7. **Promote freeform → entities when sprawl emerges:** Practice, TrackingHabit, Food, LabTest, Recipe, Protocol, EducationalModule. Watch for duplication in real plans first.
-8. **Path B polish (deferred):** click-to-recenter on linked MindMap nodes; photo upload + edit/delete on Clients; colored split-diff for plan diff viewer; backlog page pagination.
-9. **Persistent public URL** — `ngrok http 3002` or `ssh -R 80:localhost:3002 nokey@localhost.run`.
-10. **JSON export contract for Project 2 (mobile app)** — deferred indefinitely; desktop-first.
-11. **Commit pending catalogue changes** — run `git add data/ && git commit` from fm-database/ if any YAML edits have been made without committing.
+2. **AiSensy + Cloudflare Tunnel setup** (see #2 above — one-time, 15 min).
+3. **Five Pillars at each session** (#4) — feeds the outcome progress chart meaningfully.
+4. **Supplement refill reminders** (#6) — high practical value, low complexity.
+5. **Lab trend chart** (#16) — single marker over time, easy SVG sparkline extension.
+6. **Auto WhatsApp follow-up drafts** (#11) — high coach time-save.
