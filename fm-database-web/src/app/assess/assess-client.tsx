@@ -19,7 +19,9 @@ import {
   parseHealthTextAction,
   computeRatiosAction,
   loadClientSessionsAction,
+  loadCustomTemplatesAction,
   type SessionSummary,
+  type CustomTemplate,
 } from "./actions";
 import { getMindMapPathways } from "./mindmap-actions";
 import { IFMMatrixCard } from "./ifm-matrix-card";
@@ -1585,6 +1587,14 @@ function PlanBriefCard({
 }) {
   const [open, setOpen] = useState(false);
   const selectedTemplate = PROTOCOL_TEMPLATES.find((t) => t.id === brief.protocol_template_id);
+  const [customTemplates, setCustomTemplates] = useState<CustomTemplate[]>([]);
+
+  useEffect(() => {
+    if (open && customTemplates.length === 0) {
+      loadCustomTemplatesAction().then(setCustomTemplates).catch(() => {});
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
 
   return (
     <Card className="border-indigo-200 bg-indigo-50/40">
@@ -1639,6 +1649,80 @@ function PlanBriefCard({
                 ✦ AI only
               </button>
             </div>
+            {/* ⭐ Your templates — custom coach templates saved from published plans */}
+            {customTemplates.length > 0 && (
+              <div className="space-y-1.5">
+                <p className="text-[10px] font-semibold text-purple-700 uppercase tracking-wide">⭐ Your templates</p>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                  {customTemplates.map((t) => {
+                    const isSelected = brief.protocol_template_id === `custom:${t.slug}`;
+                    return (
+                      <button
+                        key={t.slug}
+                        type="button"
+                        onClick={() =>
+                          onChange({
+                            ...brief,
+                            protocol_template_id: isSelected ? undefined : (`custom:${t.slug}` as string),
+                          })
+                        }
+                        className={`rounded-lg border p-2.5 text-left text-xs transition-all ${
+                          isSelected
+                            ? "border-purple-400 bg-purple-50 shadow-sm ring-1 ring-purple-300"
+                            : "border-purple-200 bg-purple-50/30 hover:bg-purple-50/60 hover:border-purple-300"
+                        }`}
+                      >
+                        <div className="flex items-start gap-1.5">
+                          <span className="text-base leading-none shrink-0 mt-0.5">{t.icon}</span>
+                          <div className="min-w-0">
+                            <p className={`font-medium leading-tight truncate ${isSelected ? "text-purple-800" : "text-purple-900"}`}>
+                              {t.display_name}
+                            </p>
+                            {t.description && (
+                              <p className="text-[10px] text-purple-600/80 mt-0.5 leading-tight line-clamp-2">
+                                {t.description}
+                              </p>
+                            )}
+                            <div className="flex flex-wrap gap-1 mt-1.5">
+                              {(t.supplement_protocol as Array<unknown> | undefined)?.length ? (
+                                <span className="text-[9px] bg-purple-100 rounded px-1 py-0.5">
+                                  💊 {(t.supplement_protocol as Array<unknown>).length} supps
+                                </span>
+                              ) : null}
+                              {t.source_plan && (
+                                <span className="text-[9px] bg-purple-100/60 rounded px-1 py-0.5 truncate max-w-[90px] text-purple-700">
+                                  from {t.source_plan}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+                {brief.protocol_template_id?.startsWith("custom:") && (() => {
+                  const ct = customTemplates.find((t) => `custom:${t.slug}` === brief.protocol_template_id);
+                  if (!ct) return null;
+                  return (
+                    <div className="rounded-lg bg-purple-50 border border-purple-200 px-3 py-2.5 space-y-1">
+                      <p className="text-xs font-medium text-purple-800">{ct.icon} {ct.display_name} — will be merged into draft</p>
+                      {ct.description && <p className="text-[11px] text-purple-700">{ct.description}</p>}
+                      {ct.tags.length > 0 && (
+                        <div className="flex flex-wrap gap-1 mt-0.5">
+                          {ct.tags.map((tag) => (
+                            <span key={tag} className="text-[9px] bg-purple-100 border border-purple-200 rounded px-1.5 py-0.5 text-purple-700">{tag}</span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })()}
+                <hr className="border-muted my-2" />
+                <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wide">Built-in templates</p>
+              </div>
+            )}
+
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 max-h-64 overflow-y-auto pr-1">
               {PROTOCOL_TEMPLATES.map((t) => {
                 const isSelected = brief.protocol_template_id === t.id;

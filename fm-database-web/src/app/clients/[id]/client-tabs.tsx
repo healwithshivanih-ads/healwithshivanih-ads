@@ -37,11 +37,13 @@ import { LabUploadPanel } from "./lab-upload-panel";
 import { MessageCapturePanel } from "./message-capture-panel";
 import { ProtocolCheckinPanel } from "./protocol-checkin-panel";
 import { PreSessionBrief } from "./pre-session-brief";
+import { MessageTemplatesPanel } from "./message-templates-panel";
 import { FollowUpDraftPanel } from "./follow-up-draft-panel";
 import { ProtocolAdherenceChart } from "./protocol-adherence-chart";
 import { DiscoveryForm } from "./discovery-form";
 import { IFMTrend } from "./ifm-trend";
 import { LabComparison } from "./lab-comparison";
+import { LabReferenceRangesEditor } from "./lab-reference-ranges";
 import { ClientAvatar } from "./client-avatar";
 import { SessionBriefModal } from "./session-brief-modal";
 import type { Client, MeasurementEntry } from "@/lib/fmdb/types";
@@ -696,7 +698,7 @@ export function ClientPageTabs({
             </div>
           </div>
 
-          {/* Quick-capture panels — transcript / labs / message / protocol check-in */}
+          {/* Quick-capture panels — transcript / labs / message / protocol check-in / send message */}
           <div className="flex flex-wrap gap-2">
             <TranscriptUpdatePanel clientId={clientId} />
             <LabUploadPanel clientId={clientId} />
@@ -707,6 +709,13 @@ export function ClientPageTabs({
               onSaved={(id) => setSavedSessionId(id)}
             />
           </div>
+
+          {/* Message templates — WhatsApp pre-written templates */}
+          <MessageTemplatesPanel
+            clientId={clientId}
+            clientName={(client as Record<string, unknown>).display_name as string ?? clientId}
+            clientPhone={(client as Record<string, unknown>).mobile_number as string | undefined}
+          />
 
           <ClientProfileEditor
             clientId={clientId}
@@ -843,6 +852,9 @@ export function ClientPageTabs({
               </CardContent>
             </Card>
           </div>
+
+          {/* FM Reference Ranges */}
+          <LabReferenceRangesEditor clientId={clientId} />
 
           {/* Dietary & lifestyle preferences */}
           <PreferencesEditor

@@ -4,6 +4,7 @@ import { loadClientSessions, getRecentAisensyMessages } from "@/lib/fmdb/loader-
 import { parseSessionType, parseRequestedLabs } from "@/lib/fmdb/session-utils";
 import { getCatalogueStatus } from "./catalogue-commit-action";
 import { CatalogueCommitButton } from "./catalogue-commit-button";
+import { BroadcastPanel } from "./broadcast-panel";
 
 export const dynamic = "force-dynamic";
 
@@ -262,6 +263,21 @@ export default async function Dashboard() {
     + (sections.get("labs_pending")?.length ?? 0)
     + (sections.get("returning")?.length ?? 0);
 
+  // Broadcast panel — only shown when AISENSY_API_KEY is configured
+  const aisensyApiKeySet = !!(process.env.AISENSY_API_KEY);
+  const broadcastClientRows = (clients as ClientRow[]).map((c) => ({
+    client_id: c.client_id,
+    display_name: c.display_name,
+    mobile_number: (c as unknown as Record<string, unknown>).mobile_number as string | undefined,
+    next_contact_date: c.next_contact_date,
+  }));
+  const followUpDueIds = (sections.get("follow_up_due") ?? []).map((r) => r.client.client_id);
+  const recheckDueIds = (sections.get("protocol_complete") ?? []).map((r) => r.client.client_id);
+  const activeIds = [
+    ...(sections.get("active") ?? []).map((r) => r.client.client_id),
+    ...(sections.get("protocol_complete") ?? []).map((r) => r.client.client_id),
+  ];
+
   // Upcoming follow-ups (next 7 days, not yet due)
   const in7 = new Date(todayStr);
   in7.setDate(in7.getDate() + 7);
@@ -501,6 +517,16 @@ export default async function Dashboard() {
             Add your first client →
           </Link>
         </div>
+      )}
+
+      {/* Broadcast panel — WhatsApp outbound to groups of clients */}
+      {aisensyApiKeySet && (
+        <BroadcastPanel
+          clients={broadcastClientRows}
+          followUpDueIds={followUpDueIds}
+          recheckDueIds={recheckDueIds}
+          activeIds={activeIds}
+        />
       )}
     </div>
   );

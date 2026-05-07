@@ -1,0 +1,221 @@
+"use server";
+
+import fs from "node:fs/promises";
+import path from "node:path";
+import os from "node:os";
+import yaml from "js-yaml";
+import { loadAllClients } from "@/lib/fmdb/loader";
+
+const PLANS_ROOT = process.env.FMDB_PLANS_DIR ?? path.join(os.homedir(), "fm-plans");
+const AISENSY_API_URL = "https://backend.aisensy.com/direct-apis/t1/create-message";
+
+// ── Phone normalisation ───────────────────────────────────────────────────────
+
+/**
+ * Normalise a phone number to E.164 format without the leading +.
+ * - Strips spaces, dashes, parens, dots
+ * - Strips leading + if present
+ * - Prepends "91" if exactly 10 digits (Indian mobile)
+ */
+function normaliseToE164(phone: string): string {
+  let n = phone.replace(/[\s\-().+]/g, "");
+  if (n.length === 10 && /^[6-9]/.test(n)) {
+    n = "91" + n;
+  }
+  return n;
+}
+
+// ── Single send ───────────────────────────────────────────────────────────────
+
+export async function sendWhatsAppAction(
+  phone: string,
+  campaignName: string,
+  templateParams: string[]
+): Promise<{ ok: boolean; error?: string }> {
+  const apiKey = process.env.AISENSY_API_KEY;
+  if (!apiKey) {
+    return { ok: false, error: "AISENSY_API_KEY not set in environment" };
+  }
+
+  const destination = normaliseToE164(phone);
+  if (!destination || destination.length < 10) {
+    return { ok: false, error: `Invalid phone number: ${phone}` };
+  }
+
+  const body = {
+    apiKey,
+    campaignName,
+    destination,
+    userName: "Shivani Hari",
+    source: "fm-coach",
+    media: {},
+    templateParams,
+    tags: [],
+    attributes: {},
+  };
+
+  try {
+    const res = await fetch(AISENSY_API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+
+    if (!res.ok) {
+      const text = await res.text();
+      return { ok: false, error: `AiSensy API error ${res.status}: ${text.slice(0, 200)}` };
+    }
+
+    return { ok: true };
+  } catch (err) {
+    const e = err as { message?: string };
+    return { ok: false, error: e.message ?? "Network error calling AiSensy API" };
+  }
+}
+
+// ── Broadcast ─────────────────────────────────────────────────────────────────
+
+export async function broadcastAction(
+  clientIds: string[],
+  campaignName: string,
+  templateParams: string[]
+): Promise<{ sent: number; failed: number; errors: string[] }> {
+  const errors: string[] = [];
+  let sent = 0;
+  let failed = 0;
+
+  // Load all clients to get phone numbers
+  const allClients = await loadAllClients();
+  const clientMap = new Map(
+    (allClients as Array<Record<string, unknown>>).map((c) => [
+      c.client_id as string,
+      c.mobile_number as string | undefined,
+    ])
+  );
+
+  for (const clientId of clientIds) {
+    const phone = clientMap.get(clientId);
+    if (!phone?.trim()) {
+      errors.push(`${clientId}: no mobile number on file`);
+      failed++;
+      continue;
+    }
+
+    const result = await sendWhatsAppAction(phone, campaignName, templateParams);
+    if (result.ok) {
+      sent++;
+    } else {
+      errors.push(`${clientId}: ${result.error}`);
+      failed++;
+    }
+  }
+
+  return { sent, failed, errors };
+}
+
+// ── Config check ──────────────────────────────────────────────────────────────
+
+export async function checkAisensyConfigAction(): Promise<{ configured: boolean }> {
+  return { configured: !!(process.env.AISENSY_API_KEY) };
+}
+
+// ── Message templates ─────────────────────────────────────────────────────────
+
+export interface MessageTemplate {
+  slug: string;
+  name: string;
+  category: string;
+  body: string;
+  variables: string[];
+}
+
+const TEMPLATES_FILE = path.join(PLANS_ROOT, "message_templates.yaml");
+
+const DEFAULT_TEMPLATES: MessageTemplate[] = [
+  {
+    slug: "lab-reminder",
+    name: "Lab Reminder",
+    category: "labs",
+    body: "Hi {{name}}, a gentle reminder to get your labs done before our next session. Here are the tests we discussed: {{labs}}. Please share the report at least 2 days before our appointment. 🙏",
+    variables: ["name", "labs"],
+  },
+  {
+    slug: "supplement-instructions",
+    name: "Supplement Instructions",
+    category: "protocol",
+    body: "Hi {{name}}, here are your supplement instructions for this week: {{instructions}}. Take them as discussed and note any changes. Feel free to message if you have questions! 💊",
+    variables: ["name", "instructions"],
+  },
+  {
+    slug: "check-in-nudge",
+    name: "Check-in Nudge",
+    category: "follow-up",
+    body: "Hi {{name}}, just checking in! How are you feeling on the protocol? Any changes in {{symptom}}? Would love to hear how things are going. 🌿",
+    variables: ["name", "symptom"],
+  },
+  {
+    slug: "session-confirmation",
+    name: "Session Confirmation",
+    category: "appointment",
+    body: "Hi {{name}}, confirming our session on {{date}} at {{time}}. Please come prepared with your food journal and any new lab reports. See you then! 📋",
+    variables: ["name", "date", "time"],
+  },
+  {
+    slug: "encouragement",
+    name: "Encouragement",
+    category: "support",
+    body: "Hi {{name}}, you're doing great! Healing takes time and consistency — be patient with yourself. Keep going with {{protocol_highlight}}. Rooting for you! 💚",
+    variables: ["name", "protocol_highlight"],
+  },
+];
+
+export async function loadMessageTemplatesAction(): Promise<MessageTemplate[]> {
+  try {
+    const raw = await fs.readFile(TEMPLATES_FILE, "utf-8");
+    const parsed = yaml.load(raw);
+    if (Array.isArray(parsed) && parsed.length > 0) {
+      return parsed as MessageTemplate[];
+    }
+  } catch {
+    // File doesn't exist — write defaults and return them
+  }
+  // Write defaults
+  try {
+    await fs.mkdir(PLANS_ROOT, { recursive: true });
+    await fs.writeFile(TEMPLATES_FILE, yaml.dump(DEFAULT_TEMPLATES, { lineWidth: 120 }), "utf-8");
+  } catch { /* ignore write errors */ }
+  return DEFAULT_TEMPLATES;
+}
+
+export async function saveMessageTemplateAction(
+  template: MessageTemplate
+): Promise<{ ok: boolean; error?: string }> {
+  try {
+    const templates = await loadMessageTemplatesAction();
+    const idx = templates.findIndex((t) => t.slug === template.slug);
+    if (idx >= 0) {
+      templates[idx] = template;
+    } else {
+      templates.push(template);
+    }
+    await fs.writeFile(TEMPLATES_FILE, yaml.dump(templates, { lineWidth: 120 }), "utf-8");
+    return { ok: true };
+  } catch (err) {
+    const e = err as { message?: string };
+    return { ok: false, error: e.message ?? "Failed to save template" };
+  }
+}
+
+export async function deleteMessageTemplateAction(
+  slug: string
+): Promise<{ ok: boolean; error?: string }> {
+  try {
+    const templates = await loadMessageTemplatesAction();
+    const filtered = templates.filter((t) => t.slug !== slug);
+    await fs.writeFile(TEMPLATES_FILE, yaml.dump(filtered, { lineWidth: 120 }), "utf-8");
+    return { ok: true };
+  } catch (err) {
+    const e = err as { message?: string };
+    return { ok: false, error: e.message ?? "Failed to delete template" };
+  }
+}

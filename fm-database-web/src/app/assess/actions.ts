@@ -606,3 +606,60 @@ export async function appendCheckInToPlanAction(
     return { ok: false, error: msg.slice(0, 300) };
   }
 }
+
+// ─── Custom protocol templates ─────────────────────────────────────────────────
+
+export interface CustomTemplate {
+  slug: string;
+  display_name: string;
+  description: string;
+  icon: string;
+  tags: string[];
+  source_plan?: string;
+  created_at?: string;
+  topics?: unknown[];
+  symptoms?: unknown[];
+  supplement_protocol?: unknown[];
+  lifestyle_practices?: unknown[];
+  nutrition?: unknown;
+}
+
+/**
+ * Load all custom templates saved by the coach in ~/fm-plans/custom_templates/.
+ */
+export async function loadCustomTemplatesAction(): Promise<CustomTemplate[]> {
+  const templatesDir = path.join(getPlansRoot(), "custom_templates");
+  try {
+    const entries = await fs.readdir(templatesDir);
+    const templates: CustomTemplate[] = [];
+    for (const entry of entries) {
+      if (!entry.endsWith(".yaml") && !entry.endsWith(".yml")) continue;
+      try {
+        const raw = await fs.readFile(path.join(templatesDir, entry), "utf8");
+        const data = yaml.load(raw) as Record<string, unknown>;
+        if (!data?.slug) continue;
+        templates.push({
+          slug: data.slug as string,
+          display_name: (data.display_name as string | undefined) ?? (data.slug as string),
+          description: (data.description as string | undefined) ?? "",
+          icon: (data.icon as string | undefined) ?? "📋",
+          tags: (data.tags as string[] | undefined) ?? [],
+          source_plan: data.source_plan as string | undefined,
+          created_at: data.created_at as string | undefined,
+          topics: data.topics as unknown[] | undefined,
+          symptoms: data.symptoms as unknown[] | undefined,
+          supplement_protocol: data.supplement_protocol as unknown[] | undefined,
+          lifestyle_practices: data.lifestyle_practices as unknown[] | undefined,
+          nutrition: data.nutrition,
+        });
+      } catch {
+        // skip malformed files
+      }
+    }
+    // Sort newest first
+    templates.sort((a, b) => (b.created_at ?? "").localeCompare(a.created_at ?? ""));
+    return templates;
+  } catch {
+    return [];
+  }
+}

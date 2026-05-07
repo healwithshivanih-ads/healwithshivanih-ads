@@ -1133,3 +1133,58 @@ export async function draftFollowUpMessageAction(
     return { ok: false, error: `Invalid JSON from draft-followup-message.py: ${stdout.slice(0, 200)}` };
   }
 }
+
+// ── Lab Reference Ranges ──────────────────────────────────────────────────────
+
+export interface LabReferenceRange {
+  optimal_low?: number;
+  optimal_high?: number;
+  unit?: string;
+}
+
+export type LabReferenceRanges = Record<string, LabReferenceRange>;
+
+export type SaveLabReferenceRangesResult =
+  | { ok: true }
+  | { ok: false; error: string };
+
+/**
+ * Save FM-optimal reference ranges for a client's lab markers.
+ * Writes `lab_reference_ranges` into client.yaml.
+ */
+export async function saveLabReferenceRangesAction(
+  clientId: string,
+  ranges: LabReferenceRanges
+): Promise<SaveLabReferenceRangesResult> {
+  const clientYaml = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
+  try {
+    const yaml = await import("js-yaml");
+    const raw = await fs.readFile(clientYaml, "utf8");
+    const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
+    data.lab_reference_ranges = ranges;
+    data.updated_at = new Date().toISOString();
+    await fs.writeFile(clientYaml, yaml.dump(data, { noRefs: true, sortKeys: false }), "utf8");
+    revalidatePath(`/clients/${clientId}`);
+    return { ok: true };
+  } catch (err) {
+    const e = err as { message?: string };
+    return { ok: false, error: e.message ?? "Failed to save reference ranges" };
+  }
+}
+
+/**
+ * Load FM-optimal reference ranges for a client.
+ */
+export async function loadLabReferenceRangesAction(
+  clientId: string
+): Promise<LabReferenceRanges> {
+  const clientYaml = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
+  try {
+    const yaml = await import("js-yaml");
+    const raw = await fs.readFile(clientYaml, "utf8");
+    const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
+    return (data.lab_reference_ranges as LabReferenceRanges) ?? {};
+  } catch {
+    return {};
+  }
+}

@@ -1,7 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Client } from "@/lib/fmdb/types";
+import {
+  loadLabReferenceRangesAction,
+  type LabReferenceRanges,
+} from "@/app/clients/actions";
 
 type Snapshot = NonNullable<Client["health_snapshots"]>[number];
 
@@ -53,6 +57,20 @@ function Sparkline({
   );
 }
 
+// ─── Reference range status ───────────────────────────────────────────────────
+
+function rangeStatus(
+  value: number,
+  range?: { optimal_low?: number; optimal_high?: number }
+): "optimal" | "outside" | null {
+  if (!range) return null;
+  const { optimal_low, optimal_high } = range;
+  if (optimal_low == null && optimal_high == null) return null;
+  const tooLow = optimal_low != null && value < optimal_low;
+  const tooHigh = optimal_high != null && value > optimal_high;
+  return tooLow || tooHigh ? "outside" : "optimal";
+}
+
 // ─── Metric row ───────────────────────────────────────────────────────────────
 
 function MetricRow({
@@ -60,11 +78,13 @@ function MetricRow({
   unit,
   data,
   color,
+  refRange,
 }: {
   label: string;
   unit: string;
   data: Array<{ date: string; value: number }>;
   color?: string;
+  refRange?: { optimal_low?: number; optimal_high?: number; unit?: string };
 }) {
   if (data.length === 0) return null;
   const sorted = [...data].sort((a, b) => a.date.localeCompare(b.date));
@@ -72,18 +92,35 @@ function MetricRow({
   const latest = values[values.length - 1];
   const prev = values.length > 1 ? values[values.length - 2] : null;
   const delta = prev != null ? latest - prev : null;
+  const status = rangeStatus(latest, refRange);
+
+  const statusDot = status === "optimal"
+    ? <span title="Within FM optimal range" className="ml-1 text-emerald-600 text-[10px]">🟢</span>
+    : status === "outside"
+    ? <span title="Outside FM optimal range" className="ml-1 text-red-500 text-[10px]">🔴</span>
+    : null;
+
+  const optimalLabel = refRange && (refRange.optimal_low != null || refRange.optimal_high != null) ? (
+    <div className="text-[9px] text-muted-foreground mt-0.5">
+      optimal: {refRange.optimal_low ?? "—"}–{refRange.optimal_high ?? "—"}{refRange.unit ? ` ${refRange.unit}` : ""}
+    </div>
+  ) : null;
 
   return (
     <tr className="border-t border-muted/50">
       <td className="py-2 pr-3 text-xs font-medium whitespace-nowrap">{label}</td>
       <td className="py-2 pr-3 text-xs">
-        <span className="font-semibold">{latest}</span>
-        <span className="text-muted-foreground ml-1">{unit}</span>
-        {delta != null && (
-          <span className={`ml-1.5 text-[10px] ${delta < 0 ? "text-emerald-600" : delta > 0 ? "text-red-500" : "text-muted-foreground"}`}>
-            {delta > 0 ? `+${delta.toFixed(1)}` : delta < 0 ? delta.toFixed(1) : "±0"}
-          </span>
-        )}
+        <div className="flex items-center gap-0.5">
+          <span className="font-semibold">{latest}</span>
+          <span className="text-muted-foreground ml-1">{unit}</span>
+          {statusDot}
+          {delta != null && (
+            <span className={`ml-1.5 text-[10px] ${delta < 0 ? "text-emerald-600" : delta > 0 ? "text-red-500" : "text-muted-foreground"}`}>
+              {delta > 0 ? `+${delta.toFixed(1)}` : delta < 0 ? delta.toFixed(1) : "±0"}
+            </span>
+          )}
+        </div>
+        {optimalLabel}
       </td>
       <td className="py-2 pr-3">
         <Sparkline values={values} color={color} />
@@ -97,6 +134,15 @@ function MetricRow({
 
 export function HealthTrends({ client }: { client: Client }) {
   const [tab, setTab] = useState<"charts" | "timeline">("charts");
+  const [refRanges, setRefRanges] = useState<LabReferenceRanges>({});
+
+  useEffect(() => {
+    const clientId = (client as { client_id?: string }).client_id;
+    if (clientId) {
+      loadLabReferenceRangesAction(clientId).then(setRefRanges).catch(() => {});
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [(client as { client_id?: string }).client_id]);
   const snapshots: Snapshot[] = (client.health_snapshots ?? []).sort((a, b) =>
     a.date.localeCompare(b.date)
   );
@@ -197,7 +243,7 @@ export function HealthTrends({ client }: { client: Client }) {
                 <tbody>
                   {measConfig.map(([key, label, unit, color]) =>
                     series[key] ? (
-                      <MetricRow key={key} label={label} unit={unit} data={series[key]} color={color} />
+                      <MetricRow key={key} label={label} unit={unit} data={series[key]} color={color} refRange={refRanges[label]} />
                     ) : null
                   )}
                 </tbody>
@@ -227,7 +273,7 @@ export function HealthTrends({ client }: { client: Client }) {
                       const lv = (snap.lab_values ?? []).find(l => l.test_name === testName);
                       if (lv?.unit) { unit = lv.unit; break; }
                     }
-                    return <MetricRow key={key} label={testName} unit={unit} data={series[key]} color="#0284c7" />;
+                    return <MetricRow key={key} label={testName} unit={unit} data={series[key]} color="#0284c7" refRange={refRanges[testName]} />;
                   })}
                 </tbody>
               </table>

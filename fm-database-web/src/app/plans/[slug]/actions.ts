@@ -318,6 +318,77 @@ export async function checkSupplementInteractionsAction(
   }
 }
 
+// ─── Custom protocol template saving ──────────────────────────────────────────
+
+export interface SaveAsTemplateInput {
+  planSlug: string;
+  templateName: string;
+  description?: string;
+  icon?: string;
+  tags?: string[];
+}
+
+export type SaveAsTemplateResult =
+  | { ok: true; slug: string }
+  | { ok: false; error: string };
+
+/**
+ * Save a published plan as a reusable coach template.
+ * Copies topics, symptoms, supplement_protocol, lifestyle_practices, nutrition.
+ * Saves to ~/fm-plans/custom_templates/{slug}.yaml.
+ */
+export async function saveAsTemplateAction(
+  input: SaveAsTemplateInput
+): Promise<SaveAsTemplateResult> {
+  try {
+    const plan = await loadPlanBySlug(input.planSlug);
+    if (!plan) return { ok: false, error: `Plan ${input.planSlug} not found` };
+
+    const status = plan.status ?? plan._bucket;
+    if (status !== "published") {
+      return { ok: false, error: "Only published plans can be saved as templates." };
+    }
+
+    // Slugify the template name
+    const templateSlug = input.templateName
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "")
+      .slice(0, 60);
+
+    if (!templateSlug) return { ok: false, error: "Template name is required" };
+
+    const templatesDir = path.join(getPlansRoot(), "custom_templates");
+    await fs.mkdir(templatesDir, { recursive: true });
+
+    const today = new Date().toISOString().slice(0, 10);
+
+    const template: Record<string, unknown> = {
+      slug: templateSlug,
+      display_name: input.templateName,
+      description: input.description?.trim() || "",
+      icon: input.icon?.trim() || "📋",
+      tags: input.tags ?? [],
+      source_plan: input.planSlug,
+      created_at: today,
+    };
+
+    // Copy protocol fields (strip client-specific notes where possible)
+    if (plan.topics)                template.topics                = plan.topics;
+    if (plan.symptoms)              template.symptoms              = plan.symptoms;
+    if (plan.supplement_protocol)   template.supplement_protocol   = plan.supplement_protocol;
+    if (plan.lifestyle_practices)   template.lifestyle_practices   = plan.lifestyle_practices;
+    if (plan.nutrition)             template.nutrition             = plan.nutrition;
+
+    const outPath = path.join(templatesDir, `${templateSlug}.yaml`);
+    await fs.writeFile(outPath, yaml.dump(template, { noRefs: true, sortKeys: false }), "utf8");
+
+    return { ok: true, slug: templateSlug };
+  } catch (err) {
+    return { ok: false, error: String(err).slice(0, 300) };
+  }
+}
+
 /**
  * Permanently delete a plan file from disk.
  * Published plans cannot be deleted — use Revoke instead.

@@ -28,6 +28,7 @@ import {
 } from "./lifecycle-actions";
 import { ClientLetterButton } from "@/app/clients/[id]/client-letter-button";
 import { PlanChatPanel } from "./plan-chat-panel";
+import { saveAsTemplateAction } from "./actions";
 import type { PlanStatus } from "@/lib/fmdb/types";
 
 interface StatusEvent {
@@ -102,6 +103,12 @@ export function LifecyclePanel({
   const [diffA, setDiffA] = useState(supersedes ?? slug);
   const [diffB, setDiffB] = useState(supersedes ? slug : "");
   const [diffText, setDiffText] = useState<string | null>(null);
+
+  // Save as template state
+  const [templateName, setTemplateName] = useState(slug);
+  const [templateDesc, setTemplateDesc] = useState("");
+  const [templateTags, setTemplateTags] = useState("");
+  const [templateSaving, startTemplateSaveTransition] = useTransition();
 
   function notify(ok: boolean, text: string) {
     setMessage({ kind: ok ? "ok" : "err", text });
@@ -447,6 +454,76 @@ export function LifecyclePanel({
                 This plan is <span className="font-medium">{status === "revoked" ? "archived" : status}</span>.
                 It&apos;s read-only. Create a new draft from the client page if needed.
               </div>
+            )}
+
+            {/* Save as Template — published plans only */}
+            {status === "published" && (
+              <details className="group/tmpl">
+                <summary className="flex items-center gap-2 cursor-pointer select-none list-none rounded-md border bg-muted/30 px-3 py-2.5 text-xs font-semibold text-foreground hover:bg-muted/50">
+                  <span className="transition-transform group-open/tmpl:rotate-90 text-muted-foreground text-xs">▶</span>
+                  💾 Save as template
+                </summary>
+                <div className="mt-2 space-y-3 p-3 rounded-md border bg-card">
+                  <p className="text-[11px] text-muted-foreground">
+                    Save this published plan as a reusable coach template for future similar clients.
+                    The template will appear in the template picker when creating a new plan.
+                  </p>
+                  <div className="space-y-2">
+                    <div>
+                      <label className="text-[10px] text-muted-foreground uppercase tracking-wide block mb-0.5">Template name</label>
+                      <Input
+                        className="text-xs"
+                        value={templateName}
+                        onChange={(e) => setTemplateName(e.target.value)}
+                        placeholder="e.g. Hashimoto Protocol v1"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-[10px] text-muted-foreground uppercase tracking-wide block mb-0.5">Description</label>
+                      <textarea
+                        className="w-full rounded-md border bg-background px-3 py-2 text-xs min-h-[60px] resize-none focus:outline-none focus:ring-1 focus:ring-ring"
+                        value={templateDesc}
+                        onChange={(e) => setTemplateDesc(e.target.value)}
+                        placeholder="Describe when to use this template…"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-[10px] text-muted-foreground uppercase tracking-wide block mb-0.5">Tags (comma-separated)</label>
+                      <Input
+                        className="text-xs"
+                        value={templateTags}
+                        onChange={(e) => setTemplateTags(e.target.value)}
+                        placeholder="thyroid, autoimmune, hashimoto"
+                      />
+                    </div>
+                  </div>
+                  <Button
+                    size="sm"
+                    disabled={templateSaving || !templateName.trim()}
+                    onClick={() => {
+                      startTemplateSaveTransition(async () => {
+                        const tags = templateTags
+                          .split(",")
+                          .map((t) => t.trim())
+                          .filter(Boolean);
+                        const res = await saveAsTemplateAction({
+                          planSlug: slug,
+                          templateName: templateName.trim(),
+                          description: templateDesc.trim(),
+                          tags,
+                        });
+                        if (res.ok) {
+                          toast.success(`Template "${templateName.trim()}" saved!`);
+                        } else {
+                          toast.error(res.error ?? "Failed to save template");
+                        }
+                      });
+                    }}
+                  >
+                    {templateSaving ? "Saving…" : "💾 Save template"}
+                  </Button>
+                </div>
+              </details>
             )}
 
             {/* Diff viewer */}

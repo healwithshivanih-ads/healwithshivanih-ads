@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { loadActivePlanItemsAction, type PlanSupplementItem, type PlanPracticeItem } from "@/app/clients/actions";
+import { saveSessionAction } from "@/app/assess/actions";
 import type { SessionSummary } from "@/app/assess/actions";
 import type { Client } from "@/lib/fmdb/types";
 
@@ -228,6 +229,98 @@ function BriefContent({
   );
 }
 
+// ── Quick note widget (inside brief modal) ────────────────────────────────────
+
+type NoteSource = "coach_observation" | "pre_session_thought";
+
+function QuickNoteWidget({ clientId }: { clientId: string }) {
+  const [noteText, setNoteText] = useState("");
+  const [source, setSource] = useState<NoteSource>("coach_observation");
+  const [noteSaving, setNoteSaving] = useState(false);
+  const [noteSaved, setNoteSaved] = useState(false);
+  const [noteError, setNoteError] = useState<string | null>(null);
+  const savedTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Clean up timer on unmount
+  useEffect(() => {
+    return () => {
+      if (savedTimerRef.current) clearTimeout(savedTimerRef.current);
+    };
+  }, []);
+
+  const handleSave = async () => {
+    if (!noteText.trim()) return;
+    setNoteSaving(true); setNoteError(null); setNoteSaved(false);
+    const today = new Date().toISOString().slice(0, 10);
+    const result = await saveSessionAction({
+      client_id: clientId,
+      session_type: "quick_note",
+      presenting_complaints: `[source: pre_session_brief]\n\n${noteText.trim()}`,
+      session_date: today,
+    });
+    setNoteSaving(false);
+    if (!result.ok) {
+      setNoteError(result.error ?? "Failed to save note");
+      return;
+    }
+    setNoteText("");
+    setNoteSaved(true);
+    savedTimerRef.current = setTimeout(() => setNoteSaved(false), 3000);
+  };
+
+  const sourceOptions: { value: NoteSource; label: string }[] = [
+    { value: "coach_observation",  label: "Coach observation" },
+    { value: "pre_session_thought", label: "Pre-session thought" },
+  ];
+
+  return (
+    <div className="border-t pt-4 space-y-2">
+      <h3 className="text-[11px] uppercase tracking-widest font-semibold text-muted-foreground border-b pb-0.5">
+        📝 Quick note
+      </h3>
+      {/* Source selector */}
+      <div className="flex items-center gap-3">
+        {sourceOptions.map(({ value, label }) => (
+          <label key={value} className="flex items-center gap-1.5 cursor-pointer text-xs">
+            <input
+              type="radio"
+              name="quick-note-source"
+              value={value}
+              checked={source === value}
+              onChange={() => setSource(value)}
+              className="accent-indigo-600"
+            />
+            {label}
+          </label>
+        ))}
+      </div>
+      <textarea
+        rows={3}
+        value={noteText}
+        onChange={(e) => { setNoteText(e.target.value); setNoteSaved(false); setNoteError(null); }}
+        placeholder="Jot a note — saved as quick note on this client..."
+        className="w-full rounded-md border border-input bg-background px-3 py-2 text-xs resize-none focus:outline-none focus:ring-2 focus:ring-ring"
+      />
+      <div className="flex items-center gap-3">
+        <button
+          onClick={handleSave}
+          disabled={noteSaving || !noteText.trim()}
+          className="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-semibold text-white disabled:opacity-40 transition-opacity"
+          style={{ background: "var(--brand-indigo, #2B2D42)" }}
+        >
+          {noteSaving ? "Saving…" : "Save note"}
+        </button>
+        {noteSaved && (
+          <span className="text-xs text-emerald-700 font-medium animate-in fade-in">✓ Saved</span>
+        )}
+        {noteError && (
+          <span className="text-xs text-red-600">{noteError}</span>
+        )}
+      </div>
+    </div>
+  );
+}
+
 // ── Main component ─────────────────────────────────────────────────────────────
 
 export function PreSessionBrief({
@@ -318,6 +411,9 @@ export function PreSessionBrief({
             practices={practices}
             loading={loading}
           />
+
+          {/* Quick note — jot observations without closing the brief */}
+          <QuickNoteWidget clientId={clientId} />
         </div>
       </div>
     </>
