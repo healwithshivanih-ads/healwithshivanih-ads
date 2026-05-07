@@ -182,18 +182,60 @@ export function NewClientForm() {
 
   const applyParsed = (data: ParsedClientData) => {
     const filled = new Set<string>();
+    // ── Basic info ──
     if (data.display_name) { setDisplayName(data.display_name); filled.add("displayName"); }
     if (data.date_of_birth) { setDateOfBirth(data.date_of_birth); filled.add("dateOfBirth"); }
     if (data.sex) { setSex(data.sex); filled.add("sex"); }
     if (data.mobile_number) { setMobileNumber(data.mobile_number); filled.add("mobileNumber"); }
-    if ((data as { email?: string }).email) { setEmail((data as { email?: string }).email!); filled.add("email"); }
+    if (data.email) { setEmail(data.email); filled.add("email"); }
     if (data.intake_date) { setIntakeDate(data.intake_date); filled.add("intakeDate"); }
+    // ── Location ──
+    if (data.city) { setCity(data.city); filled.add("city"); }
+    if (data.state) { setState(data.state); filled.add("state"); }
+    if (data.country) { setCountry(data.country); filled.add("country"); }
+    // ── Clinical ──
     if (data.active_conditions.length > 0) { setConditions(data.active_conditions.join("\n")); filled.add("conditions"); }
     if (data.current_medications.length > 0) { setMedications(data.current_medications.join("\n")); filled.add("medications"); }
     if (data.known_allergies.length > 0) { setAllergies(data.known_allergies.join("\n")); filled.add("allergies"); }
     if (data.goals.length > 0) { setGoals(data.goals.join("\n")); filled.add("goals"); }
+    if (data.family_history) { setFamilyHistory(data.family_history); filled.add("familyHistory"); }
     if (data.notes) { setNotes(data.notes); filled.add("notes"); }
     if (data.key_symptoms.length > 0) { setParsedSymptoms(data.key_symptoms); }
+    // ── Diet & lifestyle ──
+    if (data.dietary_preference) { setDietaryPreference(data.dietary_preference); filled.add("dietaryPreference"); }
+    if (data.foods_to_avoid) { setFoodsToAvoid(data.foods_to_avoid); filled.add("foodsToAvoid"); }
+    if (data.non_negotiables) { setNonNegotiables(data.non_negotiables); filled.add("nonNegotiables"); }
+    // ── FM Intake ──
+    if (data.digestion_notes) { setDigestionNotes(data.digestion_notes); filled.add("digestionNotes"); }
+    if (data.sleep_notes) { setSleepNotes(data.sleep_notes); filled.add("sleepNotes"); }
+    if (data.energy_pattern) { setEnergyPattern(data.energy_pattern); filled.add("energyPattern"); }
+    if (data.menstrual_notes) { setMenstrualNotes(data.menstrual_notes); filled.add("menstrualNotes"); }
+    if (data.stress_response) { setStressResponse(data.stress_response); filled.add("stressResponse"); }
+    if (data.childhood_history) { setChildhoodHistory(data.childhood_history); filled.add("childhoodHistory"); }
+    if (data.toxic_exposures) { setToxicExposures(data.toxic_exposures); filled.add("toxicExposures"); }
+    if (data.what_has_worked) { setWhatHasWorked(data.what_has_worked); filled.add("whatHasWorked"); }
+    if (data.what_hasnt_worked) { setWhatHasntWorked(data.what_hasnt_worked); filled.add("whatHasntWorked"); }
+    // ── Five pillars ──
+    if (data.five_pillars) {
+      const fp = data.five_pillars;
+      if (fp.sleep_quality) { setSleepQuality(fp.sleep_quality); filled.add("sleepQuality"); }
+      if (fp.sleep_hours) { setSleepHours(String(fp.sleep_hours)); filled.add("sleepHours"); }
+      if (fp.stress_level) { setStressLevel(fp.stress_level); filled.add("stressLevel"); }
+      if (fp.movement_days_per_week) { setMovementDays(String(fp.movement_days_per_week)); filled.add("movementDays"); }
+      if (fp.movement_type) { setMovementType(fp.movement_type); filled.add("movementType"); }
+      if (fp.nutrition_quality) { setNutritionQuality(fp.nutrition_quality); filled.add("nutritionQuality"); }
+      if (fp.connection_quality) { setConnectionQuality(fp.connection_quality); filled.add("connectionQuality"); }
+    }
+    // ── Timeline events ──
+    if (data.timeline_events && data.timeline_events.length > 0) {
+      setTimelineEvents(data.timeline_events.map((ev) => ({
+        year: ev.year ? String(ev.year) : "",
+        event: ev.event,
+        category: ev.category ?? "life_event",
+      })));
+      filled.add("timelineEvents");
+    }
+    // ── Fallback for missing DOB ──
     if (!data.date_of_birth && data.estimated_age) {
       const hint = `Approximate age mentioned: ${data.estimated_age} years`;
       setNotes((prev) => prev ? `${prev}\n${hint}` : hint);

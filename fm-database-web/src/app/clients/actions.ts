@@ -269,6 +269,114 @@ export async function createClient(
   return { ok: true, client_id: clientId };
 }
 
+// ── Apply transcript-extracted data to an existing client ─────────────────
+
+export interface UpdateClientFromTranscriptResult {
+  ok: boolean;
+  updated_fields?: string[];
+  error?: string;
+}
+
+/**
+ * Merge parsed transcript data into an existing client's YAML.
+ * Only writes fields that are non-null/non-empty in the parsed data.
+ * Arrays are replaced (not merged) so the coach sees what the transcript said.
+ */
+export async function updateClientFromTranscriptAction(
+  clientId: string,
+  data: ParsedClientData
+): Promise<UpdateClientFromTranscriptResult> {
+  const clientYaml = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
+  try {
+    const yaml = await import("js-yaml");
+    const raw = await fs.readFile(clientYaml, "utf8");
+    const rec = (yaml.load(raw) as Record<string, unknown>) ?? {};
+
+    const updated: string[] = [];
+    const set = (key: string, value: unknown) => {
+      if (value !== null && value !== undefined && value !== "") {
+        rec[key] = value;
+        updated.push(key);
+      }
+    };
+
+    // Basic
+    if (data.display_name) set("display_name", data.display_name);
+    if (data.email) set("email", data.email);
+    if (data.date_of_birth) set("date_of_birth", data.date_of_birth);
+    if (data.mobile_number) set("mobile_number", data.mobile_number);
+    if (data.city) set("city", data.city);
+    if (data.state) set("state", data.state);
+    if (data.country) set("country", data.country);
+
+    // Clinical lists — only update if non-empty
+    if (data.active_conditions.length > 0) set("active_conditions", data.active_conditions);
+    if (data.current_medications.length > 0) {
+      // Respect existing key name
+      const key = "current_medications" in rec ? "current_medications" : "medications";
+      set(key, data.current_medications);
+    }
+    if (data.known_allergies.length > 0) {
+      const key = "known_allergies" in rec ? "known_allergies" : "allergies";
+      set(key, data.known_allergies);
+    }
+    if (data.goals.length > 0) set("goals", data.goals);
+
+    // Diet & lifestyle
+    if (data.dietary_preference) set("dietary_preference", data.dietary_preference);
+    if (data.foods_to_avoid) set("foods_to_avoid", data.foods_to_avoid);
+    if (data.non_negotiables) set("non_negotiables", data.non_negotiables);
+    if (data.reported_triggers) set("reported_triggers", data.reported_triggers);
+    if (data.family_history) set("family_history", data.family_history);
+
+    // FM intake
+    if (data.digestion_notes) set("digestion_notes", data.digestion_notes);
+    if (data.sleep_notes) set("sleep_notes", data.sleep_notes);
+    if (data.energy_pattern) set("energy_pattern", data.energy_pattern);
+    if (data.menstrual_notes) set("menstrual_notes", data.menstrual_notes);
+    if (data.stress_response) set("stress_response", data.stress_response);
+    if (data.childhood_history) set("childhood_history", data.childhood_history);
+    if (data.toxic_exposures) set("toxic_exposures", data.toxic_exposures);
+    if (data.what_has_worked) set("what_has_worked", data.what_has_worked);
+    if (data.what_hasnt_worked) set("what_hasnt_worked", data.what_hasnt_worked);
+
+    // Five pillars (merge with existing)
+    if (data.five_pillars && Object.values(data.five_pillars).some((v) => v !== null && v !== undefined)) {
+      const existing = (rec.five_pillars as Record<string, unknown>) ?? {};
+      rec.five_pillars = { ...existing, ...data.five_pillars };
+      updated.push("five_pillars");
+    }
+
+    // Timeline events (append new ones, dedup by event text)
+    if (data.timeline_events && data.timeline_events.length > 0) {
+      const existing = (rec.timeline_events as Array<{ event: string }>) ?? [];
+      const existingTexts = new Set(existing.map((e) => e.event.toLowerCase()));
+      const toAdd = data.timeline_events.filter((e) => !existingTexts.has(e.event.toLowerCase()));
+      if (toAdd.length > 0) {
+        rec.timeline_events = [...existing, ...toAdd];
+        updated.push("timeline_events");
+      }
+    }
+
+    // Notes — append rather than overwrite
+    if (data.notes) {
+      const existing = (rec.notes as string | undefined) ?? "";
+      const tag = `\n\n[From transcript] ${data.notes}`;
+      rec.notes = existing ? existing + tag : data.notes;
+      updated.push("notes");
+    }
+
+    rec.updated_at = new Date().toISOString();
+
+    await fs.writeFile(clientYaml, yaml.dump(rec, { noRefs: true, sortKeys: false }), "utf8");
+    revalidatePath(`/clients/${clientId}`);
+    return { ok: true, updated_fields: updated };
+  } catch (err) {
+    const e = err as { message?: string };
+    return { ok: false, error: e.message ?? "Failed to update client" };
+  }
+}
+
 // ── Delete client ──────────────────────────────────────────────────────────
 
 export type DeleteClientResult =
@@ -303,16 +411,60 @@ export async function deleteClient(
 // ── Transcript parsing for client intake ──────────────────────────────────
 
 export type ParsedClientData = {
+  // Basic
   display_name?: string;
-  date_of_birth?: string;    // YYYY-MM-DD
-  estimated_age?: number;    // if DOB not found
+  email?: string;
+  date_of_birth?: string;         // YYYY-MM-DD
+  estimated_age?: number;         // if DOB not found
   sex?: "F" | "M" | "other";
   mobile_number?: string;
+  city?: string;
+  state?: string;
+  country?: string;
+  // Clinical
   active_conditions: string[];
   current_medications: string[];
   known_allergies: string[];
   goals: string[];
   key_symptoms: string[];
+  // Diet & lifestyle
+  dietary_preference?: string;
+  foods_to_avoid?: string;
+  non_negotiables?: string;
+  reported_triggers?: string;
+  family_history?: string;
+  // FM intake
+  digestion_notes?: string;
+  sleep_notes?: string;
+  energy_pattern?: string;
+  menstrual_notes?: string;
+  stress_response?: string;
+  childhood_history?: string;
+  toxic_exposures?: string;
+  what_has_worked?: string;
+  what_hasnt_worked?: string;
+  // Five pillars
+  five_pillars?: {
+    sleep_hours?: number;
+    sleep_quality?: number;        // 1-5
+    sleep_issues?: string;
+    stress_level?: number;         // 1-5
+    stress_type?: string;
+    movement_days_per_week?: number;
+    movement_type?: string;
+    movement_intensity?: string;
+    nutrition_quality?: number;    // 1-5
+    connection_quality?: number;   // 1-5
+    connection_notes?: string;
+  };
+  // Timeline
+  timeline_events?: Array<{
+    year?: number;
+    date?: string;
+    event: string;
+    category?: string;
+  }>;
+  // Meta
   notes: string;
   intake_date?: string;
   fields_found: number;

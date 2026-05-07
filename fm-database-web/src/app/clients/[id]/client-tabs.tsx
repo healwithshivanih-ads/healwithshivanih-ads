@@ -31,6 +31,7 @@ import { PreIntakeForm } from "./pre-intake-form";
 import { CheckInForm } from "./check-in-form";
 import { generateFollowUpPlan, submitPlan, publishPlan } from "@/app/plans/[slug]/lifecycle-actions";
 import { addMeasurementAction } from "@/app/clients/actions";
+import { TranscriptUpdatePanel } from "./transcript-update-panel";
 import type { Client, MeasurementEntry } from "@/lib/fmdb/types";
 import type { SessionSummary } from "@/app/assess/actions";
 
@@ -668,6 +669,9 @@ export function ClientPageTabs({
               <DeleteClientButton clientId={clientId} />
             </div>
           </div>
+
+          {/* Transcript update panel */}
+          <TranscriptUpdatePanel clientId={clientId} />
 
           <ClientProfileEditor
             clientId={clientId}
