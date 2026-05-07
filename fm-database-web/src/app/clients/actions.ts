@@ -5,7 +5,7 @@ import { promisify } from "util";
 import path from "path";
 import fs from "node:fs/promises";
 import { revalidatePath } from "next/cache";
-import { loadAllClients } from "@/lib/fmdb/loader";
+import { loadAllClients, loadPlanBySlug } from "@/lib/fmdb/loader";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 
 const execFileP = promisify(execFile);
@@ -970,5 +970,70 @@ export async function parseClientMessageAction(
     return { ok: true, data: result };
   } catch (err) {
     return { ok: false, error: String(err).slice(0, 400) };
+  }
+}
+
+// ── Plan items for structured protocol check-in ───────────────────────────────
+
+export interface PlanSupplementItem {
+  supplement_slug: string;
+  form?: string;
+  dose?: string;
+  timing?: string;
+  take_with_food?: string;
+  coach_rationale?: string;
+}
+
+export interface PlanPracticeItem {
+  name: string;
+  cadence: string;
+  details?: string;
+}
+
+export interface LoadPlanItemsResult {
+  ok: boolean;
+  supplements?: PlanSupplementItem[];
+  practices?: PlanPracticeItem[];
+  error?: string;
+}
+
+export async function loadActivePlanItemsAction(planSlug: string): Promise<LoadPlanItemsResult> {
+  try {
+    const plan = await loadPlanBySlug(planSlug);
+    if (!plan) return { ok: false, error: "Plan not found" };
+    return {
+      ok: true,
+      supplements: (plan.supplement_protocol ?? []) as PlanSupplementItem[],
+      practices: (plan.lifestyle_practices ?? []) as PlanPracticeItem[],
+    };
+  } catch (err) {
+    return { ok: false, error: String(err).slice(0, 200) };
+  }
+}
+
+// ── AiSensy webhook — match phone to client ───────────────────────────────────
+
+export interface WebhookClientMatch {
+  ok: boolean;
+  client_id?: string;
+  display_name?: string;
+  error?: string;
+}
+
+export async function findClientByPhoneAction(phone: string): Promise<WebhookClientMatch> {
+  try {
+    const clients = await loadAllClients();
+    const normalise = (p: string) => p.replace(/\D/g, "").slice(-10);
+    const needle = normalise(phone);
+    const match = clients.find((c) => {
+      const raw = (c as Record<string, unknown>).mobile_number as string | undefined;
+      return raw && normalise(raw) === needle;
+    });
+    if (!match) return { ok: false, error: `No client with phone ${phone}` };
+    const id = (match as Record<string, unknown>).client_id as string ?? "";
+    const name = (match as Record<string, unknown>).display_name as string | undefined;
+    return { ok: true, client_id: id, display_name: name };
+  } catch (err) {
+    return { ok: false, error: String(err).slice(0, 200) };
   }
 }

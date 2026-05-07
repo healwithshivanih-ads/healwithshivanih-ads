@@ -35,6 +35,8 @@ import { TranscriptUpdatePanel } from "./transcript-update-panel";
 import { OutcomeProgressCard } from "./outcome-progress-card";
 import { LabUploadPanel } from "./lab-upload-panel";
 import { MessageCapturePanel } from "./message-capture-panel";
+import { ProtocolCheckinPanel } from "./protocol-checkin-panel";
+import { PreSessionBrief } from "./pre-session-brief";
 import type { Client, MeasurementEntry } from "@/lib/fmdb/types";
 import type { SessionSummary } from "@/app/assess/actions";
 
@@ -673,11 +675,16 @@ export function ClientPageTabs({
             </div>
           </div>
 
-          {/* Quick-capture panels — transcript / labs / message */}
+          {/* Quick-capture panels — transcript / labs / message / protocol check-in */}
           <div className="flex flex-wrap gap-2">
             <TranscriptUpdatePanel clientId={clientId} />
             <LabUploadPanel clientId={clientId} />
             <MessageCapturePanel clientId={clientId} />
+            <ProtocolCheckinPanel
+              clientId={clientId}
+              planSlug={plans.find((p) => (p.status ?? p._bucket) === "published")?.slug}
+              onSaved={(id) => setSavedSessionId(id)}
+            />
           </div>
 
           <ClientProfileEditor
@@ -972,12 +979,25 @@ export function ClientPageTabs({
             </div>
           )}
 
+          {/* ── Pre-session coach brief ── */}
+          <div className="flex items-center justify-between gap-2">
+            <h3 className="font-brand text-base font-bold" style={{ color: "var(--brand-indigo)" }}>
+              Record &amp; Analyse
+            </h3>
+            <PreSessionBrief
+              client={client}
+              clientId={clientId}
+              sessions={sessions}
+              activePlanSlug={plans.find((p) => (p.status ?? p._bucket) === "published")?.slug}
+              activePlanStart={plans.find((p) => (p.status ?? p._bucket) === "published")?.plan_period_start}
+              activePlanRecheck={plans.find((p) => (p.status ?? p._bucket) === "published")?.plan_period_recheck_date}
+              pendingLabs={pendingLabsInfo?.requested_labs}
+            />
+          </div>
+
           {/* ── Record a new session ── */}
           <div className="rounded-xl border p-5 space-y-4" style={{ background: "var(--brand-bone)" }}>
             <div>
-              <h3 className="font-brand text-lg font-bold" style={{ color: "var(--brand-indigo)" }}>
-                Record &amp; Analyse
-              </h3>
               <p className="text-xs mt-0.5" style={{ color: "var(--brand-lavender)" }}>
                 Select the interaction type. Full sessions run AI root-cause analysis.
               </p>
