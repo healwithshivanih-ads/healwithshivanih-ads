@@ -14,7 +14,18 @@ published plans as JSON artifacts.
 
 ## Status
 
-**v0.58 (current)** — Protocol adherence trend chart + AiSensy dashboard badge + Five Pillars in full session + Lab trends in Sessions tab:
+**v0.59 (current)** — Discovery consultation session type + plan-period meal plan + email on dashboard + AiSensy unmatched log:
+
+- **🔍 Discovery consultation session type** (`discovery-form.tsx`): new session type for first-contact / paid discovery appointments. Curated FM lab panel selector (9 groups: Thyroid, Blood Sugar, Inflammation, Lipids, CBC, Metabolic, Nutrients, Hormones, Gut/Routine) with toggle-per-lab and toggle-all-group. Food journal duration picker (3/5/7 days). Chief complaints textarea + coach notes. After save: shows shareable lab request text + food journal text with Copy/Print buttons. Saves as `[session_type: discovery_consultation]` tag in presenting_complaints.
+- **📋 Intake session rename**: "Pre-intake" card in SessionTypePicker renamed to "Intake session" (key stays `pre_intake`). Description updated: "Client returns with labs + food journal".
+- **Session type changes**: `SessionType` union in `session-utils.ts`, `actions.ts` (`SessionSummary` + `SaveSessionInput`), `session-type-picker.tsx`, `client-tabs.tsx` (SESSION_TYPE_META, import, render block, summaryLine, dotColor) all updated for `discovery_consultation`. `FollowUpDraftPanel` sessionType prop updated. Cast hack in `discovery-form.tsx` removed.
+- **📅 Plan-period meal plan** (`render-client-letter.py`): all 4 prompt builders (`meal_plan`, `supplement_plan`, `lifestyle_guide`, `consolidated`) now read `plan.get("plan_period_weeks", 12)` as `plan_weeks` and use `{plan_weeks}` throughout prompt text. No more hardcoded "12 weeks" in client-facing letter prompts.
+- **✉ Email from dashboard** (`page.tsx`): adds `✉ Email` mailto link to each client card in the dashboard triage sections when `client.email` is set.
+- **📥 AiSensy unmatched log** (`aisensy-webhook/route.ts`): when no client is found for an incoming phone number, saves the message to `~/fm-plans/_aisensy_unmatched.yaml` (date, phone, name, text) for coach to review. Returns HTTP 200 so AiSensy doesn't retry. No client auto-creation.
+- **Modified**: `src/app/clients/[id]/client-tabs.tsx`, `src/app/clients/[id]/session-type-picker.tsx`, `src/app/clients/[id]/follow-up-draft-panel.tsx`, `src/app/assess/actions.ts`, `src/lib/fmdb/session-utils.ts`, `src/app/page.tsx`, `src/app/api/aisensy-webhook/route.ts`, `scripts/render-client-letter.py`
+- **New files**: `src/app/clients/[id]/discovery-form.tsx`
+
+**v0.58** — Protocol adherence trend chart + AiSensy dashboard badge + Five Pillars in full session + Lab trends in Sessions tab:
 
 - **💊 Protocol adherence chart** (`protocol-adherence-chart.tsx`): new component in Sessions tab. Parses `check_in` sessions tagged `[session_type: protocol_checkin]`, renders a colour-coded grid: rows = supplement/practice names, columns = session dates. Status chips: ✅ emerald (still_taking), 🔄 blue (sometimes), ⚠️ amber (side_effects), ❌ red (stopped), — gray (unknown/not recorded). Returns `null` if no protocol check-ins. `parseAdherenceText()` walks the formatted text: detects `## 💊 Supplements` / `## 🌿 Lifestyle practices` headers, matches emoji-prefixed entries.
 - **💬 AiSensy inbox badge** (`page.tsx` + `loader-extras.ts`): green banner on dashboard counting `quick_note` sessions tagged `[source: aisensy_webhook]` in the last 7 days across all clients. `getRecentAisensyMessages()` in `loader-extras.ts` scans session dirs cheaply (filename date filter → only reads recent files, checks `presenting_complaints` tag). Each message shown as a chip linking to `?tab=sessions`. Banner hidden when no recent messages.
@@ -1219,7 +1230,11 @@ npm run build && npm run type-check          # before committing
 - `activePlan`, `activePlanStatus`, `workflowStage` defined at component top of `ClientPageTabs` — NOT inside JSX IIFEs. `todayStr` defined immediately after measurements state.
 - `handleActivate(slug)` calls `submitPlan` + `publishPlan` from `lifecycle-actions` inline. On error: toast. On success: `router.refresh()`.
 - `ClientLetterButton` is no longer imported in `client-tabs.tsx`. `send-package-button.tsx` is the sole letter-generation entry point (in Plan tab, published plans only).
-- `SESSION_TYPE_META.full_assessment.label` = `"Full session"` (NOT "Assessment"). Icon = `"🔍"`. Changed in v0.48 to reduce "assessment" overuse.
+- `SESSION_TYPE_META.full_assessment.label` = `"Full session"` (NOT "Assessment"). Icon = `"🔬"`. Changed in v0.48. `discovery_consultation` icon = `"🔍"`, label = "Discovery". `pre_intake` label = "Intake session" (v0.59).
+- `SessionType` union (v0.59): `"discovery_consultation" | "pre_intake" | "full_assessment" | "check_in" | "quick_note"`. Same union in `session-utils.ts`, `actions.ts` (SessionSummary + SaveSessionInput), `session-type-picker.tsx`. `parseSessionType()` returns all 5 values; unknown tags default to `"full_assessment"`.
+- `discovery-form.tsx` saves `[session_type: discovery_consultation]` prefix in presenting_complaints (not a Python model field — stored as tag). Lab panel selection and food journal request shown as shareable text after save.
+- `render-client-letter.py` all 4 prompt builders extract `plan_weeks = int(plan.get("plan_period_weeks") or 12)` and use `{plan_weeks}` throughout. No hardcoded "12 weeks" in prompt text.
+- AiSensy webhook: unmatched phones → `~/fm-plans/_aisensy_unmatched.yaml` (append-only YAML list). Always returns 200. No client auto-creation.
 - Dashboard CTAs and `client/[id]/page.tsx` returning-client link all use `?tab=sessions` (was `?tab=timeline`).
 - `plan-editor.tsx` Documents tab links use `?tab=plan` (was `?tab=documents`).
 - `extract-symptoms.py` uses `max_tokens=8192` (Haiku's max). DO NOT lower this — full symptom catalogue + large lab PDFs need the full limit or JSON is truncated.
@@ -1363,6 +1378,7 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 - ✅ **v0.53–v0.56** — IFM Matrix card + FM lab patterns, outcome progress dashboard, visual template picker, lab upload panel, message capture panel, protocol check-in, pre-session brief, AiSensy webhook
 - ✅ **v0.57** — Five Pillars capture at check-in (`five-pillars-capture.tsx`, `FivePillarsAssessment` written to session YAML, feeds `OutcomeProgressCard`) + post-session WhatsApp draft (`follow-up-draft-panel.tsx`, Haiku, Shivani voice, editable textarea + 📋 Copy button, shown after any non-full-assessment session save)
 - ✅ **v0.58** — Protocol adherence trend chart (`protocol-adherence-chart.tsx`, colour-coded grid per check-in date) + AiSensy dashboard inbox badge (green banner, `getRecentAisensyMessages`, 7-day window) + Five Pillars in full-session form (embedded AssessClient) + Lab trends accessible from Sessions tab
+- ✅ **v0.59** — Discovery consultation session type (`discovery-form.tsx`, curated FM lab panels, food journal request, shareable output) + Intake session rename + plan-period meal plan (render-client-letter.py reads `plan_period_weeks`) + ✉ Email link on dashboard client cards + AiSensy unmatched message log (`_aisensy_unmatched.yaml`)
 
 **Features Backlog** (organised by area — keep this updated every session)
 
