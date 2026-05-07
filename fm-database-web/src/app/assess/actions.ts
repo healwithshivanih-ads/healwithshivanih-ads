@@ -400,6 +400,15 @@ export async function applyTranscriptDataAction(
 
 // ── Lightweight session save (pre-intake / check-in) ────────────────────────
 
+export interface FivePillarsData {
+  sleep_hours?: number;
+  sleep_quality?: number;            // 1-5
+  stress_level?: number;             // 1-5 (1=calm, 5=high stress)
+  movement_days_per_week?: number;   // 0-7
+  nutrition_quality?: number;        // 1-5
+  connection_quality?: number;       // 1-5
+}
+
 export interface SaveSessionInput {
   client_id: string;
   session_type: "pre_intake" | "check_in" | "quick_note";
@@ -408,6 +417,7 @@ export interface SaveSessionInput {
   presenting_complaints?: string;
   coach_notes?: string;
   requested_labs?: string[];
+  five_pillars?: FivePillarsData;
 }
 
 export interface SaveSessionResult {

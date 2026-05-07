@@ -1037,3 +1037,49 @@ export async function findClientByPhoneAction(phone: string): Promise<WebhookCli
     return { ok: false, error: String(err).slice(0, 200) };
   }
 }
+
+// ── Draft WhatsApp follow-up message after a session ─────────────────────────
+
+export interface DraftFollowUpResult {
+  ok: boolean;
+  message?: string;
+  error?: string;
+}
+
+export async function draftFollowUpMessageAction(
+  clientId: string,
+  sessionId: string,
+  sessionType: string,
+  dryRun = false,
+): Promise<DraftFollowUpResult> {
+  const scriptPath = path.join(SCRIPTS_DIR, "draft-followup-message.py");
+  const payload = { client_id: clientId, session_id: sessionId, session_type: sessionType, dry_run: dryRun };
+
+  const child = execFile(PYTHON, [scriptPath], {
+    timeout: 30_000,
+    maxBuffer: 1 * 1024 * 1024,
+    cwd: FMDB_REPO,
+  });
+
+  child.stdin?.end(JSON.stringify(payload));
+
+  let stdout = "";
+  let stderr = "";
+  child.stdout?.on("data", (chunk: Buffer | string) => (stdout += chunk));
+  child.stderr?.on("data", (chunk: Buffer | string) => (stderr += chunk));
+
+  await new Promise<void>((resolve, reject) => {
+    child.on("error", reject);
+    child.on("close", () => resolve());
+  });
+
+  if (!stdout.trim()) {
+    return { ok: false, error: `draft-followup-message.py produced no output. stderr: ${stderr.slice(0, 300)}` };
+  }
+
+  try {
+    return JSON.parse(stdout) as DraftFollowUpResult;
+  } catch {
+    return { ok: false, error: `Invalid JSON from draft-followup-message.py: ${stdout.slice(0, 200)}` };
+  }
+}

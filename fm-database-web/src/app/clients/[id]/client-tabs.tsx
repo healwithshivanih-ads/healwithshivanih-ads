@@ -37,6 +37,7 @@ import { LabUploadPanel } from "./lab-upload-panel";
 import { MessageCapturePanel } from "./message-capture-panel";
 import { ProtocolCheckinPanel } from "./protocol-checkin-panel";
 import { PreSessionBrief } from "./pre-session-brief";
+import { FollowUpDraftPanel } from "./follow-up-draft-panel";
 import type { Client, MeasurementEntry } from "@/lib/fmdb/types";
 import type { SessionSummary } from "@/app/assess/actions";
 
@@ -1011,15 +1012,25 @@ export function ClientPageTabs({
             <div className="border-t" />
 
             {savedSessionId && (
-              <div
-                className="rounded-lg px-4 py-3 text-sm flex items-center gap-2"
-                style={{ background: "var(--brand-bone)", color: "var(--brand-indigo)" }}
-              >
-                <span className="text-base">✅</span>
-                <div>
-                  <span className="font-semibold">Session saved</span>
-                  <span className="ml-2 font-mono text-xs opacity-70">{savedSessionId}</span>
+              <div className="space-y-2">
+                <div
+                  className="rounded-lg px-4 py-3 text-sm flex items-center gap-2"
+                  style={{ background: "var(--brand-bone)", color: "var(--brand-indigo)" }}
+                >
+                  <span className="text-base">✅</span>
+                  <div>
+                    <span className="font-semibold">Session saved</span>
+                    <span className="ml-2 font-mono text-xs opacity-70">{savedSessionId}</span>
+                  </div>
                 </div>
+                {/* WhatsApp follow-up draft — skip for full assessment (AI session handles its own flow) */}
+                {sessionType !== "full_assessment" && (
+                  <FollowUpDraftPanel
+                    clientId={clientId}
+                    sessionId={savedSessionId}
+                    sessionType={sessionType as "pre_intake" | "check_in" | "quick_note"}
+                  />
+                )}
               </div>
             )}
 

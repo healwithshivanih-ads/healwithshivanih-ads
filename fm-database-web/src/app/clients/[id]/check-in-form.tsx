@@ -11,6 +11,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { saveSessionAction, appendCheckInToPlanAction } from "@/app/assess/actions";
 import { updateClientPreferences } from "@/app/clients/actions";
+import { FivePillarsCapture, type FivePillarsData } from "./five-pillars-capture";
 
 // ── Progress rating options ──────────────────────────────────────────────────
 
@@ -80,6 +81,7 @@ export function CheckInForm({ clientId, currentPlanSlug, currentReportedTriggers
   const [triggersSaved, setTriggersSaved] = useState(false);
   const [requestedLabs, setRequestedLabs] = useState<string[]>([]);
   const [customLab, setCustomLab] = useState("");
+  const [fivePillars, setFivePillars] = useState<FivePillarsData>({});
   const [saving, setSaving] = useState(false);
 
   function toggleSymptom(s: string) {
@@ -139,6 +141,9 @@ export function CheckInForm({ clientId, currentPlanSlug, currentReportedTriggers
     if (coachNotes.trim()) noteParts.push(coachNotes);
 
     try {
+      // Build five_pillars payload if any values set
+      const hasFivePillars = Object.values(fivePillars).some((v) => v != null && v !== undefined);
+
       const result = await saveSessionAction({
         client_id: clientId,
         session_type: "check_in",
@@ -150,6 +155,7 @@ export function CheckInForm({ clientId, currentPlanSlug, currentReportedTriggers
         presenting_complaints: fullComplaints,
         coach_notes: noteParts.join("\n"),
         requested_labs: requestedLabs.length > 0 ? requestedLabs : undefined,
+        five_pillars: hasFivePillars ? fivePillars : undefined,
       });
 
       if (result.ok && result.session_id) {
@@ -200,6 +206,18 @@ export function CheckInForm({ clientId, currentPlanSlug, currentReportedTriggers
           }
           if (clientFeedback.trim()) {
             noteSections.push(`**Client feedback:** ${clientFeedback.trim()}`);
+          }
+          if (hasFivePillars) {
+            const pillarsLine: string[] = [];
+            if (fivePillars.sleep_quality) pillarsLine.push(`Sleep quality ${fivePillars.sleep_quality}/5`);
+            if (fivePillars.sleep_hours)   pillarsLine.push(`${fivePillars.sleep_hours}h sleep`);
+            if (fivePillars.stress_level)  pillarsLine.push(`Stress ${fivePillars.stress_level}/5`);
+            if (fivePillars.movement_days_per_week != null) pillarsLine.push(`Movement ${fivePillars.movement_days_per_week}d/wk`);
+            if (fivePillars.nutrition_quality) pillarsLine.push(`Nutrition ${fivePillars.nutrition_quality}/5`);
+            if (fivePillars.connection_quality) pillarsLine.push(`Connection ${fivePillars.connection_quality}/5`);
+            if (pillarsLine.length > 0) {
+              noteSections.push(`**🌿 Five Pillars:** ${pillarsLine.join(" · ")}`);
+            }
           }
           if (coachNotes.trim()) {
             noteSections.push(`**Coach notes:** ${coachNotes.trim()}`);
@@ -456,6 +474,9 @@ export function CheckInForm({ clientId, currentPlanSlug, currentReportedTriggers
           className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm resize-none placeholder:text-muted-foreground/60 focus:outline-none"
         />
       </div>
+
+      {/* ── Five Pillars snapshot ────────────────────────────────────────────── */}
+      <FivePillarsCapture value={fivePillars} onChange={setFivePillars} />
 
       {/* ── Reported food triggers ───────────────────────────────────────────── */}
       <div className="rounded-xl border-2 border-amber-300 bg-amber-50/40 p-4 space-y-2">

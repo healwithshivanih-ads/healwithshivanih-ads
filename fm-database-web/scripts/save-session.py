@@ -62,10 +62,11 @@ def main() -> int:
     presenting_complaints: str = payload.get("presenting_complaints") or ""
     coach_notes: str = payload.get("coach_notes") or ""
     requested_labs: list[str] = payload.get("requested_labs") or []
+    five_pillars_raw: dict | None = payload.get("five_pillars") or None
 
     try:
         from fmdb.plan.storage import next_session_id, write_session, plans_root as fmdb_plans_root  # type: ignore
-        from fmdb.plan.models import Session  # type: ignore
+        from fmdb.plan.models import Session, FivePillarsAssessment  # type: ignore
     except ImportError as e:
         json.dump({"ok": False, "session_id": None, "error": f"fmdb import error: {e}"}, sys.stdout)
         return 1
@@ -92,6 +93,21 @@ def main() -> int:
     meta_prefix = f"[session_type: {session_type}] "
     full_complaints = f"{meta_prefix}{presenting_complaints}" if presenting_complaints else meta_prefix.strip()
 
+    # Build FivePillarsAssessment if provided
+    five_pillars_obj = None
+    if five_pillars_raw and any(v is not None for v in five_pillars_raw.values()):
+        try:
+            five_pillars_obj = FivePillarsAssessment(
+                sleep_hours=five_pillars_raw.get("sleep_hours"),
+                sleep_quality=five_pillars_raw.get("sleep_quality"),
+                stress_level=five_pillars_raw.get("stress_level"),
+                movement_days_per_week=five_pillars_raw.get("movement_days_per_week"),
+                nutrition_quality=five_pillars_raw.get("nutrition_quality"),
+                connection_quality=five_pillars_raw.get("connection_quality"),
+            )
+        except Exception:
+            five_pillars_obj = None
+
     try:
         session = Session(
             session_id=session_id,
@@ -102,6 +118,7 @@ def main() -> int:
             selected_topics=[],
             presenting_complaints=full_complaints,
             coach_notes=full_notes,
+            five_pillars=five_pillars_obj,
         )
         write_session(root, session)
     except Exception as e:
