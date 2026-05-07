@@ -24,12 +24,17 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import path from "path";
+import fs from "node:fs/promises";
+import os from "node:os";
 import { execFile } from "child_process";
 import { promisify } from "util";
+import yaml from "js-yaml";
 import { findClientByPhoneAction } from "@/app/clients/actions";
 
-const execFileP = promisify(execFile);
+const _execFileP = promisify(execFile);
 const FMDB_REPO = path.resolve(process.cwd(), "../fm-database");
+const PLANS_ROOT = process.env.FMDB_PLANS_DIR ?? path.join(os.homedir(), "fm-plans");
+const UNMATCHED_FILE = path.join(PLANS_ROOT, "_aisensy_unmatched.yaml");
 const PYTHON = path.join(FMDB_REPO, ".venv/bin/python");
 const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
 
@@ -66,6 +71,31 @@ async function saveQuickNote(clientId: string, text: string): Promise<{ ok: bool
     return r;
   } catch (e) {
     return { ok: false, error: `Invalid JSON from save-session.py: ${stdout.slice(0, 200)}` };
+  }
+}
+
+// ── Save unmatched message ─────────────────────────────────────────────────────
+
+async function saveUnmatchedMessage(rawPhone: string, senderName: string, messageText: string, ts: string): Promise<void> {
+  try {
+    let existing: unknown[] = [];
+    try {
+      const raw = await fs.readFile(UNMATCHED_FILE, "utf-8");
+      const parsed = yaml.load(raw);
+      if (Array.isArray(parsed)) existing = parsed;
+    } catch { /* file doesn't exist yet */ }
+
+    existing.push({
+      phone: rawPhone,
+      name: senderName || null,
+      date: new Date().toISOString().slice(0, 10),
+      received_at: ts,
+      text: messageText.slice(0, 500),
+    });
+
+    await fs.writeFile(UNMATCHED_FILE, yaml.dump(existing, { lineWidth: 120 }), "utf-8");
+  } catch (err) {
+    console.error("[aisensy-webhook] Failed to write unmatched message:", err);
   }
 }
 
@@ -111,22 +141,23 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: "Empty message" }, { status: 400 });
   }
 
-  // ── Match phone to client ────────────────────────────────────────────────────
-  const match = await findClientByPhoneAction(rawPhone);
-  if (!match.ok || !match.client_id) {
-    // Return 200 so AiSensy doesn't retry — just log
-    console.warn(`[aisensy-webhook] No client found for phone ${rawPhone}: ${match.error}`);
-    return NextResponse.json({
-      ok: false,
-      error: match.error,
-      note: "Message received but no matching client — no note saved",
-    });
-  }
-
-  // ── Build note text ───────────────────────────────────────────────────────────
+  // ── Build timestamp ───────────────────────────────────────────────────────────
   const ts = body.timestamp
     ? new Date((body.timestamp as number) * 1000).toLocaleString("en-IN")
     : new Date().toLocaleString("en-IN");
+
+  // ── Match phone to client ────────────────────────────────────────────────────
+  const match = await findClientByPhoneAction(rawPhone);
+  if (!match.ok || !match.client_id) {
+    // Save to unmatched log and return 200 so AiSensy doesn't retry
+    console.warn(`[aisensy-webhook] No client found for phone ${rawPhone}: ${match.error}`);
+    await saveUnmatchedMessage(rawPhone, senderName, messageText, ts);
+    return NextResponse.json({
+      ok: true,
+      matched: false,
+      note: "Message received but no matching client — saved to _aisensy_unmatched.yaml for coach review",
+    });
+  }
 
   const noteLines = [
     `WhatsApp message from ${senderName || match.display_name || match.client_id} (${rawPhone})`,

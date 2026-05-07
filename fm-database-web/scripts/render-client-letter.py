@@ -715,7 +715,8 @@ def _calc_calorie_targets(client: dict, wl: dict) -> dict | None:
 
 
 def _build_prompt_meal_plan(plan: dict, client: dict, weight_loss: dict | None, coach_notes: str) -> str:
-    """Meal plan only — 12-week nutrition journey, no supplements, no lifestyle."""
+    """Meal plan only — nutrition journey, no supplements, no lifestyle."""
+    plan_weeks = int(plan.get("plan_period_weeks") or 12)
     client_name = client.get("display_name") or "the client"
     first_name = client_name.split()[0] if client_name else "there"
     diet_pref = client.get("dietary_preference") or "Not specified"
@@ -815,7 +816,7 @@ COACH'S CUSTOM KNOWLEDGE (weave these naturally into the nutrition plan):
 Use these tips in relevant meal sections — don't dump them all in one place. Make them feel like natural advice.
 """
 
-    prompt = f"""You are writing a warm, friendly 12-week MEAL PLAN document for a client.
+    prompt = f"""You are writing a warm, friendly {plan_weeks}-week MEAL PLAN document for a client.
 The coach (Shivani Hariharan) has prepared a structured plan. Turn the nutrition data into a beautiful, practical meal plan the client can actually USE.
 
 CLIENT PROFILE:
@@ -844,9 +845,9 @@ Home remedies: {', '.join(remedies) if remedies else 'none'}
 
 DOCUMENT STRUCTURE:
 
-1. **Warm greeting** — 2–3 sentences welcoming {first_name}, naming this as a 12-week nutrition journey.
+1. **Warm greeting** — 2–3 sentences welcoming {first_name}, naming this as a {plan_weeks}-week nutrition journey.
 
-2. **Your 12-Week Nutrition Overview** — brief half-page map of the 6 phases, nutrition lens only.
+2. **Your {plan_weeks}-Week Nutrition Overview** — brief half-page map of the phases, nutrition lens only.
 
 3. **WEEKS 1 & 2 — Full Detail**
    3a. Theme & goals for weeks 1–2 (1 short paragraph)
@@ -869,7 +870,7 @@ DOCUMENT STRUCTURE:
 
 4. **Coming Up: Weeks 3 & 4** — SHORT PARAGRAPH ONLY (3–5 sentences, teaser only, no meal tables)
 
-5. **Your 12-Week Roadmap** — one short paragraph per phase, nutrition focus only, no meal tables
+5. **Your {plan_weeks}-Week Roadmap** — one short paragraph per phase, nutrition focus only, no meal tables
 
 6. **Home Remedies & Daily Teas** — `## 🌿 Home Remedies & Daily Teas`
 
@@ -960,6 +961,7 @@ RULES:
 
 def _build_prompt_lifestyle_guide(plan: dict, client: dict, coach_notes: str) -> str:
     """Lifestyle guide — habits, education, labs, tracking. No meal plan."""
+    plan_weeks = int(plan.get("plan_period_weeks") or 12)
     client_name = client.get("display_name") or "the client"
     first_name = client_name.split()[0] if client_name else "there"
     diet_pref = client.get("dietary_preference") or "Not specified"
@@ -1020,7 +1022,7 @@ COACH'S CUSTOM KNOWLEDGE (weave naturally into relevant sections):
 {coach_notes}
 """
 
-    prompt = f"""You are writing a warm, practical 12-week COACHING PLAN for a client — covering lifestyle, learning, labs, and tracking.
+    prompt = f"""You are writing a warm, practical {plan_weeks}-week COACHING PLAN for a client — covering lifestyle, learning, labs, and tracking.
 This document is the companion to the meal plan and supplement plan. It covers everything EXCEPT food and supplements.
 The coach (Shivani Hariharan) has prepared the structured data below.
 
@@ -1053,12 +1055,12 @@ Recheck questions: {', '.join(recheck_questions) if recheck_questions else 'none
 
 DOCUMENT STRUCTURE:
 
-1. **Warm greeting** — 2–3 sentences: you are {first_name}'s guide for the next 12 weeks, this plan covers your lifestyle, learning, and health monitoring.
+1. **Warm greeting** — 2–3 sentences: you are {first_name}'s guide for the next {plan_weeks} weeks, this plan covers your lifestyle, learning, and health monitoring.
 
-2. **Your Healing Framework** — brief 12-week arc from a lifestyle and wellness lens. What each phase focuses on (not food-focused — mindset, stress, sleep, habits, learning).
+2. **Your Healing Framework** — brief {plan_weeks}-week arc from a lifestyle and wellness lens. What each phase focuses on (not food-focused — mindset, stress, sleep, habits, learning).
 
 3. **Movement & Exercise** — `## 🏃 Movement & Exercise`
-   Phased movement plan across 12 weeks. Adapt to any conditions noted. Include frequency, type, duration, and a specific example per phase. Frame as energy-building, not calorie-burning.
+   Phased movement plan across {plan_weeks} weeks. Adapt to any conditions noted. Include frequency, type, duration, and a specific example per phase. Frame as energy-building, not calorie-burning.
 
 4. **Daily Lifestyle Practices** — `## 🌙 Daily Lifestyle Practices`
    Expand the lifestyle practices into actionable daily routines. Group by theme (morning routine, sleep practices, stress techniques, breathwork). Use bullet lists.
@@ -1067,7 +1069,7 @@ DOCUMENT STRUCTURE:
    Present the education modules as a phased reading/learning plan. Group by phase. For each module explain WHY it matters in plain language (no jargon).
 
 6. **Labs to Order** — `## 🔬 Labs to Order`
-   Present the lab orders in plain English ("Ask your doctor for..."). Explain what each test reveals in simple terms. Group by when to order (baseline / 6-week / 12-week).
+   Present the lab orders in plain English ("Ask your doctor for..."). Explain what each test reveals in simple terms. Group by when to order (baseline / mid-plan / end-of-plan).
 
 7. **What to Track** — `## 📊 What to Track`
    Present tracking habits and symptoms as a simple daily/weekly check-in framework. Use bullet lists. Frame as curiosity, not pressure.
@@ -1098,6 +1100,7 @@ def _build_prompt(plan: dict, client: dict, weight_loss: dict | None = None,
     if letter_type == "lifestyle_guide":
         return _build_prompt_lifestyle_guide(plan, client, coach_notes)
     # else: consolidated — fall through to existing code
+    plan_weeks = int(plan.get("plan_period_weeks") or 12)
 
     client_name = client.get("display_name") or "the client"
     first_name = client_name.split()[0] if client_name else "there"
@@ -1276,7 +1279,7 @@ MOVEMENT & WELLNESS:
 - Keep it brief (3–5 bullet points) unless the plan's lifestyle_practices already covers this.
 """
 
-    prompt = f"""You are writing a warm, friendly, practical wellness plan letter for a client.
+    prompt = f"""You are writing a warm, friendly, practical {plan_weeks}-week wellness plan letter for a client.
 The coach (Shivani Hariharan, a functional medicine health coach) has prepared this structured plan.
 Your job is to turn the coach's structured data into a beautiful, easy-to-read document the client can actually USE.
 
@@ -1321,11 +1324,11 @@ EDUCATION MODULES:
 
 INSTRUCTIONS FOR THE LETTER:
 
-Write a complete, warmly-toned 12-WEEK HEALING PLAN document in Markdown.
-This is NOT a one-week meal plan. It is a structured healing journey across 12 weeks, shared with the client 2 weeks at a time.
+Write a complete, warmly-toned {plan_weeks}-WEEK HEALING PLAN document in Markdown.
+This is NOT a one-week meal plan. It is a structured healing journey across {plan_weeks} weeks, shared with the client 2 weeks at a time.
 The plan must have a logical therapeutic progression — each phase builds on the last.
 
-## Healing phases (the 12-week arc):
+## Healing phases (the {plan_weeks}-week arc):
 - **Weeks 1–2 (Foundation):** Remove biggest inflammatory triggers, establish daily rhythm, introduce 2–3 key supplements. Gentle start — build trust and consistency.
 - **Weeks 3–4 (Repair):** Gut lining support, introduce fermented foods, add healing broths/teas. Deepen supplement protocol.
 - **Weeks 5–6 (Rebalance):** Hormone and blood sugar focus. Specific foods for hormonal balance. Stress reduction becomes intentional practice.
@@ -1335,11 +1338,11 @@ The plan must have a logical therapeutic progression — each phase builds on th
 
 ## Document structure:
 
-1. **Warm greeting** — 2–3 sentences welcoming {first_name}, naming this as a 12-week journey, setting an excited but calm tone. No clinical words.
+1. **Warm greeting** — 2–3 sentences welcoming {first_name}, naming this as a {plan_weeks}-week journey, setting an excited but calm tone. No clinical words.
 
-2. **Your Healing Journey — The 12-Week Overview**
-   A brief (half-page) map of the 6 phases above — what each phase focuses on and why in this order.
-   Written in plain language. E.g. "In weeks 1–2 we focus on foundations — clearing the path so your body can start healing. By weeks 5–6 we'll be working on your hormones and energy. By week 12 you'll have a way of eating and living that feels completely yours."
+2. **Your Healing Journey — The {plan_weeks}-Week Overview**
+   A brief (half-page) map of the phases above — what each phase focuses on and why in this order.
+   Written in plain language. E.g. "In weeks 1–2 we focus on foundations — clearing the path so your body can start healing. By weeks 5–6 we'll be working on your hormones and energy. By week {plan_weeks} you'll have a way of eating and living that feels completely yours."
 
 3. **YOUR PLAN — WEEKS 1 & 2: Foundation**
    (This section is fully detailed. Weeks 3–12 have an outline only — full detail is sent before each new phase begins.)
@@ -1414,7 +1417,7 @@ The plan must have a logical therapeutic progression — each phase builds on th
 8. **Product guide** — use heading `## 🛒 Recommended Products`
    Only the specific brands from the approved list below that are relevant to THIS plan.
 
-9. **A note from your coach** — warm closing. Remind {first_name} this is a 12-week journey, not a sprint. Shivani's name.
+9. **A note from your coach** — warm closing. Remind {first_name} this is a {plan_weeks}-week journey, not a sprint. Shivani's name.
 
 ---
 

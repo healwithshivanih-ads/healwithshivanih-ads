@@ -5,7 +5,7 @@
  * Coach picks what kind of session this is before any inputs appear.
  */
 
-export type SessionType = "pre_intake" | "full_assessment" | "check_in" | "quick_note";
+export type SessionType = "discovery_consultation" | "pre_intake" | "full_assessment" | "check_in" | "quick_note";
 
 interface SessionOption {
   key: SessionType;
@@ -23,13 +23,27 @@ interface SessionOption {
 
 const OPTIONS: SessionOption[] = [
   {
+    key: "discovery_consultation",
+    icon: "🔍",
+    label: "Discovery Consultation",
+    subtitle: "First contact / paid discovery",
+    description:
+      "Record chief complaints, recommend targeted labs, and request a food journal. Client may stop here or proceed to an intake package.",
+    tag: "Discovery",
+    tagColor: "bg-[#A8C5A0]/20 text-[#3D6B35]",
+    accentBorder: "border-[#A8C5A0]",
+    accentBg: "bg-[#A8C5A0]/5",
+    selectedBg: "bg-[#A8C5A0]/10",
+    selectedBorder: "border-[#A8C5A0]",
+  },
+  {
     key: "pre_intake",
     icon: "📋",
-    label: "Pre-Intake",
-    subtitle: "First contact",
+    label: "Intake Session",
+    subtitle: "Client returns with labs + food journal",
     description:
-      "Collect basic information, presenting symptoms, and generate a targeted lab order for this client.",
-    tag: "Lightweight",
+      "Upload and review lab reports and food journal. Record full intake history and generate a targeted assessment.",
+    tag: "Intake",
     tagColor: "bg-[#D6A2A2]/20 text-[#8B4A4A]",
     accentBorder: "border-[#D6A2A2]",
     accentBg: "bg-[#D6A2A2]/5",
@@ -97,7 +111,7 @@ export function SessionTypePicker({ value, onChange }: SessionTypePickerProps) {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
         {OPTIONS.map((opt) => {
           const isSelected = value === opt.key;
           return (

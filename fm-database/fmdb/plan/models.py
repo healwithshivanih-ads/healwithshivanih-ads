@@ -408,6 +408,7 @@ class Session(BaseModel):
     # Outcome
     generated_plan_slug: Optional[str] = None
     coach_notes: str = ""
+    five_pillars: Optional[FivePillarsAssessment] = None
     next_session_planned: Optional[date] = None
 
     @field_validator("session_id")

@@ -47,7 +47,7 @@ export interface SessionSummary {
   supplement_count: number;
   synthesis_notes?: string;
   /** Parsed from the [session_type: ...] prefix in presenting_complaints */
-  session_type: "pre_intake" | "full_assessment" | "check_in" | "quick_note";
+  session_type: "discovery_consultation" | "pre_intake" | "full_assessment" | "check_in" | "quick_note";
   /** Parsed from the [Requested labs: ...] marker in coach_notes */
   requested_labs: string[];
   /** Five pillars snapshot captured during this session (if any) */
@@ -411,7 +411,7 @@ export interface FivePillarsData {
 
 export interface SaveSessionInput {
   client_id: string;
-  session_type: "pre_intake" | "check_in" | "quick_note";
+  session_type: "discovery_consultation" | "pre_intake" | "check_in" | "quick_note";
   session_date?: string;               // ISO YYYY-MM-DD; defaults to today
   selected_symptoms?: string[];
   presenting_complaints?: string;

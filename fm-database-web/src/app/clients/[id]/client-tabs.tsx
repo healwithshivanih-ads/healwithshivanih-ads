@@ -39,6 +39,7 @@ import { ProtocolCheckinPanel } from "./protocol-checkin-panel";
 import { PreSessionBrief } from "./pre-session-brief";
 import { FollowUpDraftPanel } from "./follow-up-draft-panel";
 import { ProtocolAdherenceChart } from "./protocol-adherence-chart";
+import { DiscoveryForm } from "./discovery-form";
 import type { Client, MeasurementEntry } from "@/lib/fmdb/types";
 import type { SessionSummary } from "@/app/assess/actions";
 
@@ -70,7 +71,7 @@ interface ClientTabsProps {
   allergies: string[];
   keyMarkers: Array<{ label: string; value: number; unit?: string; flag: string; computed?: boolean }>;
   defaultTab?: "overview" | "sessions" | "plan";
-  defaultSessionType?: "check_in" | "full_assessment" | "pre_intake" | "quick_note";
+  defaultSessionType?: "discovery_consultation" | "check_in" | "full_assessment" | "pre_intake" | "quick_note";
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -90,13 +91,14 @@ const TABS: { key: Tab; label: string }[] = [
 // ──────────────────────────────────────────────────────────────────────────────
 
 const SESSION_TYPE_META: Record<
-  "pre_intake" | "full_assessment" | "check_in" | "quick_note",
+  "discovery_consultation" | "pre_intake" | "full_assessment" | "check_in" | "quick_note",
   { icon: string; label: string; pill: string }
 > = {
-  pre_intake:      { icon: "📋", label: "Pre-intake",    pill: "bg-[#D6A2A2]/20 text-[#7A3D3D]" },
-  full_assessment: { icon: "🔍", label: "Full session",  pill: "bg-[#2B2D42]/10 text-[#2B2D42]" },
-  check_in:        { icon: "💬", label: "Check-in",      pill: "bg-[#8D99AE]/20 text-[#3D4A5C]" },
-  quick_note:      { icon: "📌", label: "Quick Note",    pill: "bg-[#E8A87C]/20 text-[#7A4A2A]" },
+  discovery_consultation: { icon: "🔍", label: "Discovery",     pill: "bg-[#A8C5A0]/20 text-[#3D6B35]" },
+  pre_intake:             { icon: "📋", label: "Intake session", pill: "bg-[#D6A2A2]/20 text-[#7A3D3D]" },
+  full_assessment:        { icon: "🔬", label: "Full session",   pill: "bg-[#2B2D42]/10 text-[#2B2D42]" },
+  check_in:               { icon: "💬", label: "Check-in",       pill: "bg-[#8D99AE]/20 text-[#3D4A5C]" },
+  quick_note:             { icon: "📌", label: "Quick Note",     pill: "bg-[#E8A87C]/20 text-[#7A4A2A]" },
 };
 
 // ── MeasurementsWidget ────────────────────────────────────────────────────────
@@ -1029,10 +1031,17 @@ export function ClientPageTabs({
                   <FollowUpDraftPanel
                     clientId={clientId}
                     sessionId={savedSessionId}
-                    sessionType={sessionType as "pre_intake" | "check_in" | "quick_note"}
+                    sessionType={sessionType as "discovery_consultation" | "pre_intake" | "check_in" | "quick_note"}
                   />
                 )}
               </div>
+            )}
+
+            {sessionType === "discovery_consultation" && (
+              <DiscoveryForm
+                clientId={clientId}
+                onSaved={(id) => setSavedSessionId(id)}
+              />
             )}
 
             {sessionType === "pre_intake" && (
@@ -1121,13 +1130,19 @@ export function ClientPageTabs({
                           })()
                         : s.session_type === "quick_note"
                         ? (s.presenting_complaints ?? "").replace(/^\[source:[^\]]+\]\s*/i, "").trim().slice(0, 100) || null
+                        : s.session_type === "discovery_consultation"
+                        ? (() => {
+                            const cm = (s.presenting_complaints ?? "").match(/Chief complaints:\s*([^\n]+)/);
+                            return cm ? cm[1].slice(0, 80) : "Discovery consultation";
+                          })()
                         : (s.selected_symptoms ?? []).slice(0, 3).join(", ") || null;
 
                     const dotColor =
-                      s.session_type === "full_assessment" ? "#2B2D42"
-                      : s.session_type === "pre_intake"    ? "#D6A2A2"
-                      : s.session_type === "check_in"      ? "#8D99AE"
-                      :                                       "#E8A87C";
+                      s.session_type === "full_assessment"       ? "#2B2D42"
+                      : s.session_type === "discovery_consultation" ? "#A8C5A0"
+                      : s.session_type === "pre_intake"          ? "#D6A2A2"
+                      : s.session_type === "check_in"            ? "#8D99AE"
+                      :                                             "#E8A87C";
 
                     return (
                       <div key={sid} className="relative flex gap-4 pl-10">

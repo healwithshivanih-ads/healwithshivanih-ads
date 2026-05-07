@@ -442,7 +442,7 @@ export default async function Dashboard() {
                   )}
 
                   {/* CTA */}
-                  <div className="flex items-center gap-2 mt-auto pt-1">
+                  <div className="flex items-center gap-2 mt-auto pt-1 flex-wrap">
                     <Link
                       href={meta.ctaHref({ client, signal })}
                       className="text-xs font-semibold px-3 py-1.5 rounded-lg transition-all hover:opacity-90"
@@ -454,8 +454,17 @@ export default async function Dashboard() {
                       href={`/clients/${client.client_id}`}
                       className="text-xs text-muted-foreground hover:underline"
                     >
-                      View client →
+                      View →
                     </Link>
+                    {client.email && (
+                      <a
+                        href={`mailto:${client.email}`}
+                        className="text-xs text-muted-foreground hover:text-blue-600 hover:underline"
+                        title={`Email ${client.display_name ?? client.client_id}`}
+                      >
+                        ✉ Email
+                      </a>
+                    )}
                   </div>
                 </div>
               ))}
