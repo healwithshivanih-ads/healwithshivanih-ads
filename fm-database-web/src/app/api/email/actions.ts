@@ -8,7 +8,7 @@ import { revalidatePath } from "next/cache";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 
-const PYTHON = "/Users/shivani/code/healwithshivanih-ads/fm-database/.venv/bin/python";
+const PYTHON = path.resolve(process.cwd(), "..", "fm-database", ".venv/bin/python");
 const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
 
 function runShim(scriptName: string, payload: unknown, timeoutMs = 60_000): Promise<unknown> {

@@ -46,7 +46,7 @@ import re
 import sys
 from pathlib import Path
 
-FMDB_ROOT = Path("/Users/shivani/code/healwithshivanih-ads/fm-database")
+FMDB_ROOT = Path(__file__).resolve().parent.parent.parent / "fm-database"
 sys.path.insert(0, str(FMDB_ROOT))
 HAIKU = "claude-haiku-4-5"
 MAX_FILE_BYTES = 30 * 1024 * 1024   # 30 MB hard limit

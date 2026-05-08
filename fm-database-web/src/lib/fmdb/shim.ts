@@ -3,7 +3,7 @@ import { execFile } from "node:child_process";
 import path from "node:path";
 
 export const PYTHON =
-  "/Users/shivani/code/healwithshivanih-ads/fm-database/.venv/bin/python";
+  path.resolve(process.cwd(), "..", "fm-database", ".venv/bin/python");
 export const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
 
 export async function runShim(
