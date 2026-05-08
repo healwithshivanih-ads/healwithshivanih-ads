@@ -1069,6 +1069,8 @@ export function ClientPageTabs({
             {sessionType === "discovery_consultation" && (
               <DiscoveryForm
                 clientId={clientId}
+                clientName={client.display_name ?? undefined}
+                clientSex={(client.sex as string | undefined) ?? null}
                 onSaved={(id) => setSavedSessionId(id)}
               />
             )}
