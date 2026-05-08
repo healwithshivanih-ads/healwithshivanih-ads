@@ -6,7 +6,7 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import { revalidatePath } from "next/cache";
 
-const PYTHON = "/Users/shivani/code/healwithshivanih-ads/fm-database/.venv/bin/python";
+const PYTHON = path.resolve(process.cwd(), "..", "fm-database", ".venv/bin/python");
 const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
 
 function runShim(scriptName: string, payload: unknown, timeoutMs = 300_000): Promise<Record<string, unknown>> {

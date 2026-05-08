@@ -72,8 +72,8 @@ export interface PlanCheckResult {
   error?: string | null;
 }
 
-const FMDB_ROOT = "/Users/shivani/code/healwithshivanih-ads/fm-database";
-const WEB_ROOT = "/Users/shivani/code/healwithshivanih-ads/fm-database-web";
+const FMDB_ROOT = path.resolve(process.cwd(), "..", "fm-database");
+const WEB_ROOT = process.cwd();
 
 /**
  * Shell out to `scripts/plan-check.py` (which imports fmdb.plan.checker
@@ -248,7 +248,7 @@ export async function checkSupplementInteractionsAction(
     interface SupplementItem { supplement_slug: string }
     const supplements = (plan.supplement_protocol as SupplementItem[] | undefined) ?? [];
     const catalogueDir = path.join(
-      "/Users/shivani/code/healwithshivanih-ads/fm-database/data",
+      path.resolve(process.cwd(), "..", "fm-database", "data"),
       "supplements"
     );
 

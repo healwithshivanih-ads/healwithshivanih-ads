@@ -38,7 +38,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 
 # Wire imports to the Python engine.
-FMDB_ROOT = Path("/Users/shivani/code/healwithshivanih-ads/fm-database")
+FMDB_ROOT = Path(__file__).resolve().parent.parent.parent / "fm-database"
 sys.path.insert(0, str(FMDB_ROOT))
 
 

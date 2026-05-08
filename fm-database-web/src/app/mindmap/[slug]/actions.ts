@@ -3,8 +3,8 @@
 import { spawn } from "node:child_process";
 import path from "node:path";
 
-const FMDB_ROOT = "/Users/shivani/code/healwithshivanih-ads/fm-database";
-const WEB_ROOT = "/Users/shivani/code/healwithshivanih-ads/fm-database-web";
+const FMDB_ROOT = path.resolve(process.cwd(), "..", "fm-database");
+const WEB_ROOT = process.cwd();
 const TIMEOUT_MS = 30_000;
 
 export interface RenderMindmapResult {

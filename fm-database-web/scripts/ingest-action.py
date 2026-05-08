@@ -39,7 +39,7 @@ import tempfile
 from pathlib import Path
 from urllib.parse import urlparse
 
-FMDB_ROOT = Path("/Users/shivani/code/healwithshivanih-ads/fm-database")
+FMDB_ROOT = Path(__file__).resolve().parent.parent.parent / "fm-database"
 sys.path.insert(0, str(FMDB_ROOT))
 PYTHON = str(FMDB_ROOT / ".venv" / "bin" / "python")
 

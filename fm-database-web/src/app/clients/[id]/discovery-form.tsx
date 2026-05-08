@@ -14,72 +14,239 @@ import { saveSessionAction } from "@/app/assess/actions";
 
 // ── Curated FM lab panel list ─────────────────────────────────────────────────
 
-const LAB_PANELS: { group: string; icon: string; labs: string[] }[] = [
+type Cost = "₹" | "₹₹" | "₹₹₹";
+type Sex = "M" | "F";
+
+interface Lab {
+  name: string;
+  cost: Cost;
+  specialty?: boolean;
+  sex?: Sex;
+}
+
+interface LabPanel {
+  group: string;
+  icon: string;
+  sex?: Sex;
+  labs: Lab[];
+}
+
+const LAB_PANELS: LabPanel[] = [
   {
     group: "Thyroid Function",
     icon: "🦋",
-    labs: ["TSH", "Free T3", "Free T4", "Reverse T3", "TPO Antibodies", "Thyroglobulin Antibodies"],
+    labs: [
+      { name: "TSH", cost: "₹" },
+      { name: "Free T3", cost: "₹" },
+      { name: "Free T4", cost: "₹" },
+      { name: "Reverse T3", cost: "₹₹", specialty: true },
+      { name: "TPO Antibodies", cost: "₹₹" },
+      { name: "Thyroglobulin Antibodies", cost: "₹₹" },
+      { name: "TSI (Thyroid Stimulating Immunoglobulin)", cost: "₹₹₹", specialty: true },
+    ],
   },
   {
     group: "Blood Sugar & Insulin",
     icon: "🍬",
-    labs: ["Fasting Glucose", "Fasting Insulin", "HbA1c"],
+    labs: [
+      { name: "Fasting Glucose", cost: "₹" },
+      { name: "Fasting Insulin", cost: "₹₹" },
+      { name: "HbA1c", cost: "₹" },
+      { name: "C-Peptide", cost: "₹₹" },
+      { name: "Post-prandial Glucose + Insulin (2-hr)", cost: "₹₹" },
+      { name: "Glucose Tolerance Test with Insulin Response (GTT-IR)", cost: "₹₹₹", specialty: true },
+    ],
   },
   {
     group: "Inflammation",
     icon: "🔥",
-    labs: ["hsCRP (high-sensitivity CRP)", "Homocysteine", "ESR"],
+    labs: [
+      { name: "hsCRP (high-sensitivity CRP)", cost: "₹" },
+      { name: "Homocysteine", cost: "₹₹" },
+      { name: "ESR", cost: "₹" },
+      { name: "Fibrinogen", cost: "₹₹" },
+      { name: "GGT", cost: "₹" },
+      { name: "Uric Acid", cost: "₹" },
+      { name: "Mycotoxin Panel", cost: "₹₹₹", specialty: true },
+    ],
   },
   {
     group: "Lipid Panel",
     icon: "💧",
-    labs: ["Total Cholesterol", "LDL Cholesterol", "HDL Cholesterol", "Triglycerides"],
+    labs: [
+      { name: "Total Cholesterol", cost: "₹" },
+      { name: "LDL Cholesterol", cost: "₹" },
+      { name: "HDL Cholesterol", cost: "₹" },
+      { name: "Triglycerides", cost: "₹" },
+      { name: "VLDL", cost: "₹" },
+    ],
   },
   {
     group: "Complete Blood Count",
     icon: "🩸",
-    labs: ["CBC with Differential"],
+    labs: [
+      { name: "CBC with Differential", cost: "₹" },
+      { name: "Reticulocyte Count", cost: "₹" },
+    ],
   },
   {
     group: "Metabolic Panel",
     icon: "⚗️",
-    labs: ["Comprehensive Metabolic Panel (CMP)", "Liver Function Tests (LFT)"],
+    labs: [
+      { name: "Comprehensive Metabolic Panel (CMP)", cost: "₹" },
+      { name: "Liver Function Tests (LFT)", cost: "₹" },
+      { name: "Cystatin C", cost: "₹₹" },
+    ],
   },
   {
     group: "Nutrients",
     icon: "🌱",
-    labs: ["Vitamin D (25-OH)", "Vitamin B12", "Ferritin", "Serum Iron", "TIBC / Transferrin Saturation"],
-  },
-  {
-    group: "Hormones",
-    icon: "⚡",
     labs: [
-      "Morning Cortisol (8am, fasting)",
-      "DHEA-S",
-      "Estradiol (E2)",
-      "Progesterone",
-      "FSH",
-      "LH",
-      "Total Testosterone",
-      "Prolactin",
+      { name: "Vitamin D (25-OH)", cost: "₹₹" },
+      { name: "Vitamin B12", cost: "₹" },
+      { name: "MMA (Methylmalonic Acid)", cost: "₹₹₹", specialty: true },
+      { name: "Active B12 (Holotranscobalamin)", cost: "₹₹₹", specialty: true },
+      { name: "RBC Folate", cost: "₹₹" },
+      { name: "Ferritin", cost: "₹" },
+      { name: "Serum Iron", cost: "₹" },
+      { name: "TIBC / Transferrin Saturation", cost: "₹" },
+      { name: "RBC Magnesium", cost: "₹₹", specialty: true },
+      { name: "Zinc (Plasma)", cost: "₹₹" },
+      { name: "Copper / Cu:Zn Ratio", cost: "₹₹", specialty: true },
+      { name: "Selenium", cost: "₹₹", specialty: true },
+      { name: "Iodine (Urinary)", cost: "₹₹", specialty: true },
+      { name: "Omega-3 Index", cost: "₹₹₹", specialty: true },
+      { name: "Heavy Metals Panel", cost: "₹₹₹", specialty: true },
     ],
   },
   {
-    group: "Gut & Routine",
+    group: "Sex Hormones — Female",
+    icon: "🌸",
+    sex: "F",
+    labs: [
+      { name: "Estradiol (E2)", cost: "₹₹" },
+      { name: "Progesterone", cost: "₹₹" },
+      { name: "FSH", cost: "₹₹" },
+      { name: "LH", cost: "₹₹" },
+      { name: "AMH (Anti-Müllerian Hormone)", cost: "₹₹" },
+      { name: "17-OH Progesterone", cost: "₹₹" },
+    ],
+  },
+  {
+    group: "Sex Hormones — Common",
+    icon: "⚥",
+    labs: [
+      { name: "Total Testosterone", cost: "₹₹" },
+      { name: "Free Testosterone", cost: "₹₹" },
+      { name: "SHBG", cost: "₹₹" },
+      { name: "DHEA-S", cost: "₹₹" },
+      { name: "Prolactin", cost: "₹₹" },
+      { name: "Estradiol (E2) — for men", cost: "₹₹", sex: "M" },
+    ],
+  },
+  {
+    group: "Adrenal & Stress",
+    icon: "⚡",
+    labs: [
+      { name: "Morning Cortisol (8am, fasting)", cost: "₹" },
+      { name: "PM Cortisol (4–6pm)", cost: "₹" },
+      { name: "DUTCH Test (Dried Urine)", cost: "₹₹₹", specialty: true },
+      { name: "Salivary Cortisol 4-point", cost: "₹₹₹", specialty: true },
+      { name: "Aldosterone + Renin", cost: "₹₹₹", specialty: true },
+      { name: "Pregnenolone", cost: "₹₹₹", specialty: true },
+    ],
+  },
+  {
+    group: "Cardiovascular Risk",
+    icon: "❤️",
+    labs: [
+      { name: "ApoB", cost: "₹₹" },
+      { name: "ApoA1", cost: "₹₹" },
+      { name: "Lp(a) — Lipoprotein(a)", cost: "₹₹" },
+      { name: "NMR LipoProfile", cost: "₹₹₹", specialty: true },
+    ],
+  },
+  {
+    group: "Methylation & Genetics",
+    icon: "🧬",
+    labs: [
+      { name: "MTHFR Gene Variants", cost: "₹₹₹", specialty: true },
+      { name: "COMT Gene Variants", cost: "₹₹₹", specialty: true },
+      { name: "MTR / MTRR Gene Variants", cost: "₹₹₹", specialty: true },
+      { name: "Organic Acid Test (OAT)", cost: "₹₹₹", specialty: true },
+    ],
+  },
+  {
+    group: "Autoimmune Screening",
+    icon: "🛡️",
+    labs: [
+      { name: "ANA (Anti-Nuclear Antibodies)", cost: "₹₹" },
+      { name: "ENA Panel", cost: "₹₹" },
+      { name: "Anti-CCP", cost: "₹₹" },
+      { name: "tTG-IgA (Tissue Transglutaminase)", cost: "₹₹" },
+      { name: "Total IgA", cost: "₹" },
+      { name: "Anti-Gliadin Antibodies", cost: "₹₹" },
+    ],
+  },
+  {
+    group: "Cancer Screening",
+    icon: "🎗️",
+    labs: [
+      { name: "CEA", cost: "₹₹" },
+      { name: "AFP", cost: "₹₹" },
+      { name: "CA 19-9", cost: "₹₹" },
+      { name: "LDH", cost: "₹" },
+      { name: "β2-Microglobulin", cost: "₹₹" },
+      { name: "CA-125", cost: "₹₹", sex: "F" },
+      { name: "CA 15-3", cost: "₹₹", sex: "F" },
+      { name: "HE4", cost: "₹₹₹", specialty: true, sex: "F" },
+      { name: "PSA — Total", cost: "₹₹", sex: "M" },
+      { name: "PSA — Free", cost: "₹₹", sex: "M" },
+      { name: "β-hCG", cost: "₹₹", sex: "M" },
+    ],
+  },
+  {
+    group: "Gut Health",
     icon: "🦠",
-    labs: ["H. pylori (Stool Antigen)", "Stool Routine & Culture", "Urine Routine"],
+    labs: [
+      { name: "H. pylori (Stool Antigen)", cost: "₹₹" },
+      { name: "Calprotectin (Stool)", cost: "₹₹" },
+      { name: "Zonulin", cost: "₹₹₹", specialty: true },
+      { name: "Pancreatic Elastase", cost: "₹₹₹", specialty: true },
+      { name: "Secretory IgA (sIgA)", cost: "₹₹₹", specialty: true },
+      { name: "SIBO Breath Test", cost: "₹₹₹", specialty: true },
+      { name: "GI-MAP / GI-Effects", cost: "₹₹₹", specialty: true },
+      { name: "Food Sensitivity IgG Panel", cost: "₹₹₹", specialty: true },
+    ],
+  },
+  {
+    group: "Routine",
+    icon: "🧪",
+    labs: [
+      { name: "Stool Routine & Culture", cost: "₹" },
+      { name: "Urine Routine", cost: "₹" },
+    ],
   },
 ];
+
+const normalizeSex = (s: string | null | undefined): Sex | null => {
+  if (!s) return null;
+  const ch = s.trim().charAt(0).toUpperCase();
+  if (ch === "F") return "F";
+  if (ch === "M") return "M";
+  return null;
+};
 
 // ── Component ─────────────────────────────────────────────────────────────────
 
 interface Props {
   clientId: string;
   clientName?: string;
+  clientSex?: string | null;
   onSaved?: (sessionId: string) => void;
 }
 
-export function DiscoveryForm({ clientId, clientName, onSaved }: Props) {
+export function DiscoveryForm({ clientId, clientName, clientSex, onSaved }: Props) {
   const router = useRouter();
   const outputRef = useRef<HTMLDivElement>(null);
 
@@ -94,22 +261,33 @@ export function DiscoveryForm({ clientId, clientName, onSaved }: Props) {
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
 
-  const toggleLab = (lab: string) => {
+  const sex = normalizeSex(clientSex);
+
+  const visiblePanels: LabPanel[] = LAB_PANELS
+    .filter((p) => !p.sex || !sex || p.sex === sex)
+    .map((p) => ({
+      ...p,
+      labs: p.labs.filter((l) => !l.sex || !sex || l.sex === sex),
+    }))
+    .filter((p) => p.labs.length > 0);
+
+  const toggleLab = (name: string) => {
     setSelectedLabs((prev) => {
       const next = new Set(prev);
-      if (next.has(lab)) next.delete(lab);
-      else next.add(lab);
+      if (next.has(name)) next.delete(name);
+      else next.add(name);
       return next;
     });
   };
 
-  const toggleGroup = (labs: string[]) => {
-    const allSelected = labs.every((l) => selectedLabs.has(l));
+  const toggleGroup = (labs: Lab[]) => {
+    const names = labs.map((l) => l.name);
+    const allSelected = names.every((n) => selectedLabs.has(n));
     setSelectedLabs((prev) => {
       const next = new Set(prev);
-      for (const l of labs) {
-        if (allSelected) next.delete(l);
-        else next.add(l);
+      for (const n of names) {
+        if (allSelected) next.delete(n);
+        else next.add(n);
       }
       return next;
     });
@@ -126,11 +304,11 @@ export function DiscoveryForm({ clientId, clientName, onSaved }: Props) {
 
     if (selectedLabs.size > 0 || customLabs.trim()) {
       lines.push("Recommended lab panel:");
-      for (const panel of LAB_PANELS) {
-        const panelLabs = panel.labs.filter((l) => selectedLabs.has(l));
+      for (const panel of visiblePanels) {
+        const panelLabs = panel.labs.filter((l) => selectedLabs.has(l.name));
         if (panelLabs.length > 0) {
           lines.push(`[${panel.group.toUpperCase()}]`);
-          for (const l of panelLabs) lines.push(`• ${l}`);
+          for (const l of panelLabs) lines.push(`• ${l.name}`);
           lines.push("");
         }
       }
@@ -155,18 +333,17 @@ export function DiscoveryForm({ clientId, clientName, onSaved }: Props) {
   };
 
   const buildLabText = () => {
-    const firstName = clientName?.split(" ")[0] ?? "you";
     const lines: string[] = [
       `📋 Recommended Labs for ${clientName ?? "client"}`,
       `Please get the following tests done at a pathology lab near you.`,
       `Bring the reports to your next session or share a photo via WhatsApp.`,
       "",
     ];
-    for (const panel of LAB_PANELS) {
-      const panelLabs = panel.labs.filter((l) => selectedLabs.has(l));
+    for (const panel of visiblePanels) {
+      const panelLabs = panel.labs.filter((l) => selectedLabs.has(l.name));
       if (panelLabs.length > 0) {
         lines.push(`${panel.icon} ${panel.group}`);
-        for (const l of panelLabs) lines.push(`  • ${l}`);
+        for (const l of panelLabs) lines.push(`  • ${l.name}`);
         lines.push("");
       }
     }
@@ -344,10 +521,15 @@ export function DiscoveryForm({ clientId, clientName, onSaved }: Props) {
           )}
         </div>
 
+        <p className="text-[11px] text-muted-foreground leading-relaxed">
+          Legend: <span className="font-mono">₹</span> &lt;₹500 · <span className="font-mono">₹₹</span> ₹500–2k ·{" "}
+          <span className="font-mono">₹₹₹</span> ₹2k+ · 🏷 specialty lab (may need a partner pathology)
+        </p>
+
         <div className="space-y-3">
-          {LAB_PANELS.map((panel) => {
-            const allSelected = panel.labs.every((l) => selectedLabs.has(l));
-            const someSelected = panel.labs.some((l) => selectedLabs.has(l));
+          {visiblePanels.map((panel) => {
+            const allSelected = panel.labs.every((l) => selectedLabs.has(l.name));
+            const someSelected = panel.labs.some((l) => selectedLabs.has(l.name));
             return (
               <div key={panel.group} className="rounded-lg border bg-card p-3 space-y-2">
                 <div className="flex items-center justify-between">
@@ -372,19 +554,26 @@ export function DiscoveryForm({ clientId, clientName, onSaved }: Props) {
                   </button>
                 </div>
                 <div className="flex flex-wrap gap-1.5">
-                  {panel.labs.map((lab) => (
-                    <button
-                      key={lab}
-                      onClick={() => toggleLab(lab)}
-                      className={`text-[11px] px-2 py-0.5 rounded-full border transition-colors ${
-                        selectedLabs.has(lab)
-                          ? "bg-violet-100 border-violet-400 text-violet-800"
-                          : "bg-muted/30 border-border text-muted-foreground hover:border-violet-300"
-                      }`}
-                    >
-                      {selectedLabs.has(lab) ? "✓ " : ""}{lab}
-                    </button>
-                  ))}
+                  {panel.labs.map((lab) => {
+                    const isSelected = selectedLabs.has(lab.name);
+                    return (
+                      <button
+                        key={lab.name}
+                        onClick={() => toggleLab(lab.name)}
+                        title={lab.specialty ? "Specialty lab — may need a partner pathology" : undefined}
+                        className={`text-[11px] px-2 py-0.5 rounded-full border transition-colors inline-flex items-center gap-1 ${
+                          isSelected
+                            ? "bg-violet-100 border-violet-400 text-violet-800"
+                            : "bg-muted/30 border-border text-muted-foreground hover:border-violet-300"
+                        }`}
+                      >
+                        {isSelected && <span>✓</span>}
+                        <span>{lab.name}</span>
+                        <span className="font-mono opacity-70">{lab.cost}</span>
+                        {lab.specialty && <span title="Specialty lab">🏷</span>}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             );

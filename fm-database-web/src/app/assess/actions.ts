@@ -167,7 +167,7 @@ export async function loadClientSessionsAction(clientId: string): Promise<Sessio
 }
 
 const PYTHON =
-  "/Users/shivani/code/healwithshivanih-ads/fm-database/.venv/bin/python";
+  path.resolve(process.cwd(), "..", "fm-database", ".venv/bin/python");
 const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
 
 export async function runAssessAction(

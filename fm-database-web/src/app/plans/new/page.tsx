@@ -10,7 +10,7 @@ import { NewPlanWizard } from "./new-plan-wizard";
 
 export const dynamic = "force-dynamic";
 
-const FMDB_ROOT = "/Users/shivani/code/healwithshivanih-ads/fm-database";
+const FMDB_ROOT = path.resolve(process.cwd(), "..", "fm-database");
 
 // ── Server actions ────────────────────────────────────────────────────────────
 
