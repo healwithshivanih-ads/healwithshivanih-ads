@@ -423,10 +423,18 @@ export async function generateFollowUpPlan(
 // Generate AI client letter (friendly, personalised, meal-plan + recipes)
 // ---------------------------------------------------------------------------
 
+export interface LetterValidationChange {
+  original_tip: string;
+  score: number;
+  reason: string;
+  rewrite?: string;
+}
+
 export interface ClientLetterResult {
   ok: boolean;
   markdown?: string | null;
   html?: string | null;
+  validation_report?: LetterValidationChange[] | null;
   error?: string | null;
 }
 

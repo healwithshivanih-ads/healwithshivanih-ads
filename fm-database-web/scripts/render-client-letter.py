@@ -2218,6 +2218,165 @@ extraction is clean (no extraneous trailing whitespace).
     return prompt
 
 
+def _validate_letter_specificity(
+    markdown: str,
+    client: dict,
+    plan: dict,
+    *,
+    api_key: str | None = None,
+    skip: bool = False,
+) -> tuple[str, list[dict]]:
+    """Post-validation pass: a Haiku call that scores each coaching tip in the
+    generated letter for client-specificity (1–5) and rewrites tips < 3 to
+    reference the client's TOP-OF-MIND facts.
+
+    Cost: ~$0.02 per letter (Haiku, ~6K input + ~5K output).
+
+    Returns:
+        (rewritten_markdown, change_report)
+        change_report is a list of {original_tip, score, reason, rewrite}.
+        Empty list means no changes were applied.
+
+    On any failure (no API key, network, parse error, schema error) the
+    original markdown is returned unchanged with an empty report — never
+    blocks the main flow.
+    """
+    if skip or not markdown.strip():
+        return markdown, []
+
+    try:
+        from anthropic import Anthropic
+    except ImportError:
+        return markdown, []
+
+    api_key = api_key or os.environ.get("ANTHROPIC_API_KEY")
+    if not api_key:
+        return markdown, []
+
+    # Build the TOP-OF-MIND context the validator will check tips against.
+    top_of_mind = _top_of_mind_block(client, plan).strip()
+    if not top_of_mind:
+        # No client specifics to anchor against — validator can't help here.
+        return markdown, []
+
+    cycle = _cycle_block(client).strip()
+
+    SYSTEM = """You are a client-specificity QA assistant for a Functional Medicine coach.
+Your only job: catch GENERIC coaching tips in a client letter and rewrite them
+so they reference at least one specific item the client told us about themselves.
+
+A "tip" is any actionable line of coaching advice — a sentence or short bullet
+telling the client to DO something. Recipe lists, meal-plan tables, plan
+overviews, supplement schedules, calorie targets, and warm narrative are NOT
+tips and should be left alone.
+
+SCORING (1–5):
+  5 = explicitly references this client's chief complaint, lab, trigger,
+      non-negotiable, life event, food they eat, or named driver
+  4 = clearly tailored to a category they mentioned (e.g. "your perimenopausal
+      hormone shifts")
+  3 = somewhat tailored — references their goal or a general feature
+  2 = generic but contextually placed
+  1 = pure FM boilerplate ("eat whole foods", "manage stress", "stay hydrated",
+      "exercise regularly", "get 7-9 hours of sleep")
+
+REWRITE RULES (only for tips scored < 3):
+  - Replace the generic tip with a specific version that references the
+    TOP-OF-MIND context provided.
+  - Keep the same intent. Don't introduce new clinical claims, doses, or
+    foods that weren't in the original.
+  - Keep the same line / bullet structure. Don't add new sections.
+  - Match the original tone (warm, plain English, India-context).
+  - If a tip really can't be made specific from the available context,
+    DELETE it rather than ship a generic version.
+
+CRITICAL: Don't touch:
+  - Section headings
+  - Meal plan tables
+  - Supplement tables / schedules
+  - Recipe instructions
+  - Plan overviews / week roadmaps
+  - Calorie targets / numerical guidance
+  - Warm narrative paragraphs introducing sections
+  - Coach signature / closing notes
+"""
+
+    user_payload = {
+        "top_of_mind_context": top_of_mind,
+        "cycle_context": cycle,
+        "letter_markdown": markdown,
+    }
+
+    tool = {
+        "name": "report_specificity",
+        "description": "Return a rewritten version of the letter with generic tips replaced + a report of every change made.",
+        "input_schema": {
+            "type": "object",
+            "required": ["rewritten_markdown", "changes"],
+            "properties": {
+                "rewritten_markdown": {
+                    "type": "string",
+                    "description": (
+                        "The full letter markdown with all generic coaching tips "
+                        "(score < 3) rewritten to reference the client's specifics, "
+                        "or deleted if they cannot be made specific. Everything else "
+                        "(headings, tables, recipes, schedules, narrative, signature) "
+                        "must be preserved EXACTLY."
+                    ),
+                },
+                "changes": {
+                    "type": "array",
+                    "description": "One entry per tip that was rewritten or deleted.",
+                    "items": {
+                        "type": "object",
+                        "required": ["original_tip", "score", "reason"],
+                        "properties": {
+                            "original_tip": {"type": "string"},
+                            "score": {"type": "integer", "description": "1–5"},
+                            "reason": {"type": "string", "description": "Why this scored low — what was generic about it."},
+                            "rewrite": {"type": "string", "description": "The replacement text. Empty string if the tip was deleted entirely."},
+                        },
+                    },
+                },
+            },
+        },
+    }
+
+    try:
+        client_anthropic = Anthropic(api_key=api_key)
+        with client_anthropic.messages.stream(
+            model=os.environ.get("FMDB_VALIDATOR_MODEL", "claude-haiku-4-5"),
+            max_tokens=12000,
+            system=SYSTEM,
+            tools=[tool],
+            tool_choice={"type": "tool", "name": "report_specificity"},
+            messages=[{"role": "user", "content": json.dumps(user_payload)}],
+        ) as stream:
+            resp = stream.get_final_message()
+    except Exception as e:
+        print(f"[validate] {type(e).__name__}: {e}", file=sys.stderr)
+        return markdown, []
+
+    tool_use = next((b for b in resp.content if getattr(b, "type", None) == "tool_use"), None)
+    if not tool_use:
+        return markdown, []
+
+    payload = tool_use.input or {}
+    rewritten = payload.get("rewritten_markdown") or ""
+    changes = payload.get("changes") or []
+
+    # Sanity: don't accept a rewrite that's drastically shorter (looks like
+    # the model summarised instead of rewriting in place).
+    if not rewritten.strip() or len(rewritten) < 0.5 * len(markdown):
+        print(
+            f"[validate] suspicious rewrite ({len(rewritten)} vs {len(markdown)} chars) — skipping",
+            file=sys.stderr,
+        )
+        return markdown, []
+
+    return rewritten, changes
+
+
 def main() -> int:
     _load_dotenv()
 
@@ -2296,6 +2455,14 @@ def main() -> int:
         json.dump({"ok": False, "markdown": "", "error": f"API call failed: {e}"}, sys.stdout)
         return 1
 
+    # Post-validation pass: Haiku scores each coaching tip 1–5 for client-
+    # specificity and rewrites tips < 3 to reference the client's TOP-OF-MIND
+    # facts. Returns original markdown unchanged on any failure.
+    skip_validation = bool(payload.get("skip_validation"))
+    markdown, validation_report = _validate_letter_specificity(
+        markdown, client, plan, skip=skip_validation
+    )
+
     # Generate branded HTML
     try:
         from brand_html import wrap_in_brand_html
@@ -2304,6 +2471,7 @@ def main() -> int:
             "meal_plan":       ("Your Personalised Meal Plan",    "Meal Plan"),
             "supplement_plan": ("Your Supplement Protocol",        "Supplement Plan"),
             "lifestyle_guide":  ("Your Lifestyle Guide",             "Lifestyle Guide"),
+            "exercise_plan":   ("Your Personalised Exercise Plan", "Exercise Plan"),
             "consolidated":    ("Your Personalised Wellness Plan", "Personalised Wellness Plan"),
         }
         doc_title, doc_type = type_meta.get(letter_type, type_meta["consolidated"])
@@ -2333,7 +2501,16 @@ def main() -> int:
     except Exception as e:
         html = None  # HTML is a nice-to-have; don't fail if brand module errors
 
-    json.dump({"ok": True, "markdown": markdown, "html": html, "error": None}, sys.stdout)
+    json.dump(
+        {
+            "ok": True,
+            "markdown": markdown,
+            "html": html,
+            "validation_report": validation_report,
+            "error": None,
+        },
+        sys.stdout,
+    )
     return 0
 
 
