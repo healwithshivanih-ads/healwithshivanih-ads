@@ -1188,3 +1188,44 @@ export async function loadLabReferenceRangesAction(
     return {};
   }
 }
+
+/**
+ * Resolve an existing file already in `~/fm-plans/clients/<id>/files/<name>`
+ * to its absolute path + mime type, so the assess flow can attach a
+ * previously-uploaded lab report or food journal without re-uploading.
+ *
+ * Returns ok:false if the file doesn't exist (or escapes the files dir).
+ */
+export async function resolveClientFileAction(
+  clientId: string,
+  filename: string
+): Promise<{ ok: true; filePath: string; mimeType: string } | { ok: false; error: string }> {
+  if (!clientId || !filename) {
+    return { ok: false, error: "clientId and filename are required" };
+  }
+  // Path-traversal guard: filename must not contain slashes or .. segments
+  if (filename.includes("/") || filename.includes("\\") || filename.includes("..")) {
+    return { ok: false, error: "invalid filename" };
+  }
+  const filesDir = path.join(getPlansRoot(), "clients", clientId, "files");
+  const filePath = path.join(filesDir, filename);
+  // Ensure the resolved path stays inside filesDir (defence-in-depth)
+  if (!path.resolve(filePath).startsWith(path.resolve(filesDir) + path.sep)) {
+    return { ok: false, error: "invalid path" };
+  }
+  try {
+    const stat = await fs.stat(filePath);
+    if (!stat.isFile()) return { ok: false, error: "not a file" };
+  } catch {
+    return { ok: false, error: "file not found" };
+  }
+  const lower = filename.toLowerCase();
+  const mimeType =
+    lower.endsWith(".pdf")  ? "application/pdf"
+    : lower.endsWith(".png")  ? "image/png"
+    : lower.endsWith(".jpg") || lower.endsWith(".jpeg") ? "image/jpeg"
+    : lower.endsWith(".webp") ? "image/webp"
+    : lower.endsWith(".md")   ? "text/markdown"
+    : "text/plain";
+  return { ok: true, filePath, mimeType };
+}
