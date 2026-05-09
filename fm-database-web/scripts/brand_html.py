@@ -909,9 +909,16 @@ def wrap_in_brand_html(
       }});
     }}
 
-    // ── Build per-week print bar ─────────────────────────────────────────────
+    // ── Build top-of-page print bar ──────────────────────────────────────────
+    // Each `.week-section` gets its own "Week N" button. When a supplement
+    // schedule is present (#supplement-schedule injected by render-client-letter
+    // post-wrap), we also add a "Supplements" button — printable separately
+    // from the meal weeks. The supplement section also has its own in-place
+    // 🖨 Print Schedule button further down the page; this one is the
+    // top-level twin for symmetry with the week buttons.
     var sections = document.querySelectorAll('.week-section');
-    if (sections.length === 0) return;
+    var supplementSection = document.getElementById('supplement-schedule');
+    if (sections.length === 0 && !supplementSection) return;
 
     var bar = document.createElement('div');
     bar.className = 'week-print-bar';
@@ -923,10 +930,8 @@ def wrap_in_brand_html(
 
     sections.forEach(function (sec) {{
       var weekNum = sec.id.replace('print-week-', '');
-      // Extract a short label from the H2 inside (e.g. "Week 1 Meal Plan")
       var h2 = sec.querySelector('h2');
       var rawText = h2 ? h2.textContent : 'Week ' + weekNum;
-      // Strip emoji prefix and anything after "—"
       var label = rawText.replace(/^[^A-Z]*/, '').replace(/ *[—–-].*$/, '').trim();
       if (!label) label = 'Week ' + weekNum;
 
@@ -939,6 +944,17 @@ def wrap_in_brand_html(
       }});
       bar.appendChild(btn);
     }});
+
+    if (supplementSection) {{
+      var suppBtn = document.createElement('button');
+      suppBtn.className = 'week-print-btn';
+      suppBtn.textContent = '💊 Supplements';
+      suppBtn.addEventListener('click', function () {{
+        document.body.setAttribute('data-print-supplement', '1');
+        window.print();
+      }});
+      bar.appendChild(suppBtn);
+    }}
 
     // Insert the bar below the recipe note (or at top of .content if no note)
     var content = document.querySelector('.content');
