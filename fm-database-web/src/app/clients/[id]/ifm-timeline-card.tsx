@@ -1,21 +1,22 @@
 "use client";
 
 /**
- * IFMTimelineCard — renders client.timeline_events in the IFM functional
- * medicine timeline format (Antecedents / Triggers / Mediators).
+ * IFMTimelineCard — renders the client's IFM functional-medicine timeline in
+ * the Antecedents / Triggers / Mediators / Resolution format.
  *
- * Reads existing TimelineEvent[] (captured by the intake form, new-client form,
- * or the transcript-update parser) and classifies each event heuristically:
+ * Two data paths:
+ *   1. AI-generated (preferred) — if `aiTimeline` is supplied (typically the
+ *      `ifm_timeline` field on the most recent intake's ai_analysis), each
+ *      event already has `atm`, `rationale`, and `linked_driver_slugs`.
+ *      The card surfaces driver links as chips per event.
+ *   2. Heuristic fallback — when only raw `timeline_events` are available,
+ *      classify each event using the original `category` field plus age
+ *      derived from `dateOfBirth`.
  *
- *   Antecedents — predisposing factors. Childhood / pre-symptom-onset events;
- *                 family history; early life stressors. Foundation of dysfunction.
- *   Triggers    — discrete events that initiated symptoms. Acute illness,
- *                 surgery, medication start, major stressor, exposure.
- *   Mediators   — perpetuating factors. Ongoing diet / lifestyle / treatment
- *                 / relationships / chronic stress that keep dysfunction going.
- *
- * Coach can override classification by editing the event's category in the
- * intake or transcript-update flows. This view is read-only.
+ * Coach refines classification upstream by:
+ *   - Editing event categories in the intake form / transcript-update panel,
+ *     OR
+ *   - Re-running the intake AI (which produces the structured aiTimeline).
  */
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -24,10 +25,17 @@ import type { TimelineEvent } from "@/lib/fmdb/types";
 
 type ATM = "antecedent" | "trigger" | "mediator" | "resolution";
 
-interface ClassifiedEvent extends TimelineEvent {
+interface ClassifiedEvent {
+  year?: number;
+  date?: string;
+  event: string;
+  category?: string;
   atm: ATM;
   ageAtEvent: number | null;
   yearNum: number | null;
+  rationale?: string;
+  linkedDrivers?: string[];
+  source: "ai" | "heuristic";
 }
 
 const ATM_META: Record<ATM, { label: string; pill: string; dotColor: string; description: string }> = {
@@ -121,20 +129,61 @@ function eventYear(ev: TimelineEvent): number | null {
   return null;
 }
 
+interface AITimelineEvent {
+  year?: number;
+  date?: string;
+  age_at_event?: number;
+  event: string;
+  category?: string;
+  atm: string;
+  rationale?: string;
+  linked_driver_slugs?: string[];
+}
+
 interface Props {
   events?: TimelineEvent[];
   dateOfBirth?: string;
+  /** AI-classified timeline from the latest intake's ai_analysis.ifm_timeline.
+   *  When present, this takes precedence over the heuristic classification. */
+  aiTimeline?: AITimelineEvent[];
 }
 
-export function IFMTimelineCard({ events, dateOfBirth }: Props) {
-  if (!events || events.length === 0) return null;
+function normalizeAtm(s: string): ATM {
+  const t = s.toLowerCase();
+  if (t === "antecedent" || t === "trigger" || t === "mediator" || t === "resolution") return t;
+  return "mediator";
+}
 
-  const classified: ClassifiedEvent[] = events.map((ev) => ({
-    ...ev,
-    atm: classifyEvent(ev, dateOfBirth),
-    ageAtEvent: ageAt(ev, dateOfBirth),
-    yearNum: eventYear(ev),
-  }));
+export function IFMTimelineCard({ events, dateOfBirth, aiTimeline }: Props) {
+  // Prefer AI-generated timeline when available — it includes driver links
+  // and rationale that the heuristic version can't produce.
+  const useAi = Array.isArray(aiTimeline) && aiTimeline.length > 0;
+  const rawEvents = useAi ? aiTimeline! : (events ?? []);
+  if (rawEvents.length === 0) return null;
+
+  const classified: ClassifiedEvent[] = useAi
+    ? aiTimeline!.map((ev) => ({
+        year: ev.year,
+        date: ev.date,
+        event: ev.event,
+        category: ev.category,
+        atm: normalizeAtm(ev.atm),
+        ageAtEvent: ev.age_at_event ?? ageAt({ year: ev.year, date: ev.date, event: ev.event }, dateOfBirth),
+        yearNum: ev.year ?? eventYear({ event: ev.event, year: ev.year, date: ev.date }),
+        rationale: ev.rationale,
+        linkedDrivers: ev.linked_driver_slugs,
+        source: "ai" as const,
+      }))
+    : (events ?? []).map((ev) => ({
+        year: ev.year,
+        date: ev.date,
+        event: ev.event,
+        category: ev.category,
+        atm: classifyEvent(ev, dateOfBirth),
+        ageAtEvent: ageAt(ev, dateOfBirth),
+        yearNum: eventYear(ev),
+        source: "heuristic" as const,
+      }));
 
   // Sort chronologically (events with no year sink to the bottom)
   classified.sort((a, b) => {
@@ -156,9 +205,18 @@ export function IFMTimelineCard({ events, dateOfBirth }: Props) {
       <CardHeader className="pb-2">
         <div className="flex items-start justify-between gap-3 flex-wrap">
           <div>
-            <CardTitle className="text-base">📅 IFM Timeline</CardTitle>
+            <CardTitle className="text-base flex items-center gap-2">
+              📅 IFM Timeline
+              {useAi && (
+                <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-violet-50 text-violet-800 border border-violet-200">
+                  ✨ AI-classified
+                </span>
+              )}
+            </CardTitle>
             <p className="text-[11px] text-muted-foreground mt-0.5">
-              Antecedents / Triggers / Mediators classification of {classified.length} captured event{classified.length !== 1 ? "s" : ""}.
+              {useAi
+                ? `${classified.length} events classified by the assessment, with mechanism links.`
+                : `Heuristic classification of ${classified.length} captured event${classified.length !== 1 ? "s" : ""}. Run an intake assessment for AI-classified driver links.`}
             </p>
           </div>
           <div className="flex flex-wrap gap-1">
@@ -218,8 +276,33 @@ export function IFMTimelineCard({ events, dateOfBirth }: Props) {
                         {ev.category.replace(/_/g, " ")}
                       </Badge>
                     )}
+                    {ev.source === "ai" && ev.category === "extracted_from_narrative" && (
+                      <Badge variant="outline" className="text-[10px] bg-violet-50 text-violet-700 border-violet-200">
+                        ✨ extracted by AI
+                      </Badge>
+                    )}
                   </div>
                   <p className="text-sm leading-snug">{ev.event}</p>
+                  {ev.rationale && (
+                    <p className="text-[11px] italic text-muted-foreground leading-snug">
+                      {ev.rationale}
+                    </p>
+                  )}
+                  {ev.linkedDrivers && ev.linkedDrivers.length > 0 && (
+                    <div className="flex flex-wrap items-center gap-1 mt-1">
+                      <span className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold">
+                        Drives:
+                      </span>
+                      {ev.linkedDrivers.map((slug) => (
+                        <span
+                          key={slug}
+                          className="text-[10px] font-mono px-1.5 py-0.5 rounded border border-indigo-200 bg-indigo-50 text-indigo-800"
+                        >
+                          {slug}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             );
@@ -227,8 +310,9 @@ export function IFMTimelineCard({ events, dateOfBirth }: Props) {
         </div>
 
         <p className="text-[10px] text-muted-foreground mt-3 italic">
-          Classification is heuristic, based on event category and age. Edit categories
-          in the client&apos;s intake form / transcript-update panel to refine.
+          {useAi
+            ? "Classification produced by the intake AI assessment. Re-running the intake will refresh it."
+            : "Classification is heuristic, based on event category and age. Run an intake assessment to get AI-classified driver links."}
         </p>
       </CardContent>
     </Card>

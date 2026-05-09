@@ -199,6 +199,7 @@ def main() -> int:
         "client_id": client.client_id,
         "age_band": client.age_band,
         "estimated_age": age,
+        "date_of_birth": client.date_of_birth.isoformat() if client.date_of_birth else None,
         "sex": client.sex,
         "dietary_preference": client.dietary_preference or "Vegetarian",
         "active_conditions": client.active_conditions,
@@ -207,6 +208,10 @@ def main() -> int:
         "known_allergies": client.known_allergies,
         "goals": client.goals,
         "notes": client.notes,
+        "timeline_events": [
+            {"year": e.year, "date": e.date, "event": e.event, "category": e.category}
+            for e in (client.timeline_events or [])
+        ],
         "measurements": {
             "height_cm": m.height_cm,
             "weight_kg": m.weight_kg,

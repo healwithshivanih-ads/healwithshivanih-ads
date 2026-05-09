@@ -178,6 +178,24 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
                 },
             },
         },
+        "ifm_timeline": {
+            "type": "array",
+            "description": "IFM-format chronological timeline. Reorganise client_context.timeline_events into Antecedent/Trigger/Mediator/Resolution buckets, link each event to the mechanism slugs it drives, and add new events you extract from the narrative.",
+            "items": {
+                "type": "object",
+                "required": ["event", "atm"],
+                "properties": {
+                    "year": {"type": "integer", "description": "Approximate year if exact date unknown."},
+                    "date": {"type": "string", "description": "YYYY-MM-DD or YYYY-MM if known."},
+                    "age_at_event": {"type": "integer", "description": "Computed from client_context.date_of_birth when set."},
+                    "event": {"type": "string", "description": "Short description (e.g., 'Started long-term PPI for reflux', 'Cesarean delivery')."},
+                    "category": {"type": "string", "description": "Original intake category (life_event | symptom_onset | diagnosis | surgery | medication_change | stress | treatment | recovery), or 'extracted_from_narrative' if you added this event yourself."},
+                    "atm": {"type": "string", "description": "antecedent (predisposing — childhood, family, prenatal) | trigger (initiated dysfunction — illness, surgery, acute stressor, medication start) | mediator (perpetuating — ongoing diet/lifestyle/chronic stress) | resolution (improvement / what helped)"},
+                    "rationale": {"type": "string", "description": "One sentence: why this ATM classification."},
+                    "linked_driver_slugs": {"type": "array", "items": {"type": "string"}, "description": "mechanism slugs from likely_drivers that this event most likely contributes to. Empty list if no clear link."},
+                },
+            },
+        },
     },
 }
 
@@ -465,6 +483,45 @@ HARD RULES (violating these breaks the downstream system):
     - If no food journal: default to client's location and dietary preference
       to build practical culturally-appropriate suggestions. Ask the coach
       to request a 3-day food diary for the next session.
+
+25. IFM TIMELINE — produce a structured `ifm_timeline` array organised by the
+    IFM Antecedent/Trigger/Mediator framework:
+
+    - Include EVERY event from `client_context.timeline_events` (don't drop
+      any — coach captured these for a reason).
+    - For each event, classify into ATM:
+      * ANTECEDENT — predisposing. Childhood (age ≤ 12), adolescent illness,
+        family history events surfaced as personal history (e.g., "mother had
+        Hashimoto's"), prenatal/birth events (cesarean, prematurity), early-
+        life trauma. These set the foundation; they don't initiate symptoms
+        directly but make the body susceptible.
+      * TRIGGER — initiated dysfunction. Discrete events that started or
+        coincided with symptom onset: acute illness (covid, EBV, sepsis),
+        surgery, medication start (PPI, antibiotics, OCP), acute stressor
+        (bereavement, divorce, job loss, accident), exposure (mold, toxin).
+      * MEDIATOR — perpetuating. Ongoing patterns that keep dysfunction going:
+        chronic stress (years of overwork), ongoing medication, chronic poor
+        sleep, sedentary lifestyle, processed-food diet, chronic relationship
+        strain, beliefs that block change.
+      * RESOLUTION — improvement / what helped. Treatments that worked, life
+        changes that reduced symptoms, antibodies normalising on medication.
+    - Compute `age_at_event` when `client_context.date_of_birth` is set
+      (subtract DOB year from event year).
+    - LINK each timeline event to mechanism slugs from your `likely_drivers`.
+      Set `linked_driver_slugs` to those slugs the event drives. Example:
+      "Long-term PPI use 2012-2018" links to ["leaky-gut",
+      "low-stomach-acid", "b12-malabsorption"]. An event with no clear
+      mechanism link gets an empty list.
+    - One-sentence `rationale` for each: why ATM, why these driver links.
+    - EXTRACTION FROM NARRATIVE: read `additional_notes`, transcript text,
+      `medical_history`, and `current_medications` for events the coach
+      didn't enter explicitly. Common ones to look for:
+      - "Got covid in 2022, never felt the same since" → trigger
+      - "Bottle-fed" / "Cesarean" / "Antibiotics as a child" → antecedent
+      - "Started PPI 2015" / "OCP since 22" → mediator (chronic medication)
+      - "Mother had Hashimoto's" → antecedent (genetic predisposition)
+      Add these as new entries with `category: "extracted_from_narrative"`.
+    - Sort the result chronologically (oldest → newest, undated last).
 
 Call `synthesize_assessment` exactly once with your structured result."""
 
