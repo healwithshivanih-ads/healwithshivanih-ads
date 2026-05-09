@@ -1029,6 +1029,10 @@ This client is postmenopausal. Use a STABLE protocol — no phase-syncing.
     sunflower daily.
   Even without an active cycle, the seed rotation provides rhythmic
   micronutrient + lignan support (zinc, selenium, vitamin E, omega-3 ALA).
+  CALORIE BUDGET: ~85–100 kcal/day from the 2 tbsp must fit INTO the
+  daily target — pick one meal to host them and trim an equivalent
+  amount from another component of that same meal (e.g. less ghee /
+  one less chapati / smaller portion of nuts). Never add as free food.
 - Strength training MINIMUM 3×/week — bone density is now the main risk.
 - Blood-sugar stability is paramount (oestrogen no longer cushions glucose
   swings): protein at every meal, no fasting after dinner, walks after
@@ -1140,6 +1144,34 @@ This client is postmenopausal. Use a STABLE protocol — no phase-syncing.
 Today this client is on day {day} of {length} (~{days_until} days until next period).
 The meal plan and movement recommendations MUST reflect this phase.
 {note}
+
+SEED CYCLING — CALORIE BUDGET RULES (very important):
+The 2 tbsp of cycling seeds (~85–100 kcal total) MUST fit INTO the daily
+calorie target — not on top of it.
+  - 1 tbsp ground flaxseed ≈ 37 kcal
+  - 1 tbsp pumpkin seeds   ≈ 47 kcal
+  - 1 tbsp ground sesame   ≈ 51 kcal
+  - 1 tbsp sunflower seeds ≈ 51 kcal
+
+Integration rules:
+  1. Pick ONE meal or snack where the seeds belong (e.g. breakfast
+     porridge, the morning smoothie, mid-afternoon snack, or lunch
+     dal/salad). Don't sprinkle 1 tbsp across two different meals.
+  2. ADD the seed kcal to that meal's calorie line in the meal plan
+     table, then REDUCE another component of the same meal by the
+     equivalent kcal (e.g. swap 2 tsp ghee for 2 tsp ghee + 2 tbsp
+     seeds → trim ghee to 1 tsp; or replace 1 chapati with seeds-on-
+     dal-bowl).
+  3. The total daily calories MUST still hit the target the calorie
+     planner set. Do NOT add the seeds as 'free' food.
+  4. State the swap explicitly in the meal plan table: e.g.
+     'Breakfast (380 kcal) — porridge 1 cup oats + 2 tbsp seeds
+     (replaces yesterday's almonds). Adjusted from 380 kcal target.'
+  5. If the daily calorie target is NOT set (no weight-loss flag),
+     just integrate seeds into a meal naturally without budget edits.
+
+This applies whether the client is in a weight-loss phase or
+maintenance. Calorie discipline matters either way.
 """
 
 
