@@ -1090,8 +1090,16 @@ RULES:
 
 
 def _build_prompt(plan: dict, client: dict, weight_loss: dict | None = None,
-                  letter_type: str = "consolidated", coach_notes: str = "") -> str:
-    """Build the full prompt for Claude. Dispatches to type-specific builders for non-consolidated types."""
+                  letter_type: str = "consolidated", coach_notes: str = "",
+                  existing_partials: dict | None = None) -> str:
+    """Build the full prompt for Claude. Dispatches to type-specific builders for non-consolidated types.
+
+    `existing_partials` is a dict like {"meal_plan": "...md content...",
+    "supplement_plan": "...", "lifestyle_guide": "..."} — when present and the
+    letter_type is consolidated, those sections are injected as
+    "use verbatim" instructions so the AI doesn't regenerate already-finalised
+    content. Ignored for partial letter types (they generate fresh).
+    """
 
     if letter_type == "meal_plan":
         return _build_prompt_meal_plan(plan, client, weight_loss, coach_notes)
@@ -1442,9 +1450,73 @@ WRITING RULES (very important):
 - CRITICAL: If reported_triggers exist ({reported_triggers}), NEVER include those foods in any meal, snack, recipe, or suggestion anywhere in this document.
 - DO NOT write a supplement protocol table or list — that section is auto-generated from the plan data and injected separately. Just add the one-line placeholder note at 3c.
 - Never omit or re-order any supplement — if you mention supplements in passing, use the exact names from SUPPLEMENT PROTOCOL above.
+
+SECTION MARKERS (REQUIRED — do not skip):
+Wrap each of the three major reusable sections with HTML comment markers
+exactly as shown below. The markers don't render in HTML or PDF, but they
+let the system extract sections later when the coach asks for a
+standalone meal-plan / supplement-plan / lifestyle-guide document.
+
+Use these three sections and these exact marker lines:
+
+  <!-- SECTION_BEGIN: meal_plan -->
+  ...everything that belongs to the nutrition / meal plan side
+     (the 7-day tables for weeks 1–2, the recipes appendix, plus
+     the per-week roadmap text for weeks 3–{plan_weeks})...
+  <!-- SECTION_END: meal_plan -->
+
+  <!-- SECTION_BEGIN: supplement_plan -->
+  ...the short supplement-section intro paragraph + the
+     placeholder line for the auto-injected schedule...
+  <!-- SECTION_END: supplement_plan -->
+
+  <!-- SECTION_BEGIN: lifestyle_guide -->
+  ...lifestyle practices + education modules + lab-tracking +
+     habits to track + recheck questions...
+  <!-- SECTION_END: lifestyle_guide -->
+
+The greeting, healing-journey overview, root-cause hypothesis, and the
+coach's closing note do NOT need section markers — they belong to the
+consolidated letter only. Place markers tight around the content so
+extraction is clean (no extraneous trailing whitespace).
+
 {coach_notes_block}
 {INDIAN_BRANDS}
 """
+    # ── Existing partials injection ──────────────────────────────────────
+    # If the coach has already generated meal_plan / supplement_plan /
+    # lifestyle_guide as standalone documents, inject them as "use verbatim"
+    # blocks so the AI doesn't regenerate already-finalised content.
+    partials_block = ""
+    if existing_partials:
+        partials_lines = []
+        for section_key, label in [
+            ("meal_plan", "MEAL PLAN"),
+            ("supplement_plan", "SUPPLEMENT PLAN"),
+            ("lifestyle_guide", "LIFESTYLE GUIDE"),
+        ]:
+            content = (existing_partials.get(section_key) or "").strip()
+            if not content:
+                continue
+            partials_lines.append(
+                f"\n=== EXISTING {label} (use verbatim — DO NOT regenerate) ===\n"
+                f"The coach has already approved this {label.lower()} as a standalone document.\n"
+                f"For the {section_key} section of the consolidated letter, use the content below\n"
+                f"EXACTLY AS WRITTEN. Wrap it in the SECTION_BEGIN/SECTION_END markers like normal.\n"
+                f"Do not edit, summarise, paraphrase, reorder, or shorten it. Reproduce verbatim.\n\n"
+                f"{content}\n"
+                f"=== END EXISTING {label} ===\n"
+            )
+        if partials_lines:
+            partials_block = (
+                "\n\nEXISTING PARTIAL DOCUMENTS — IMPORTANT:\n"
+                "Some sections have already been generated separately and approved by the\n"
+                "coach. For those sections, use the content below VERBATIM rather than\n"
+                "regenerating from the plan data. Only generate NEW content for sections\n"
+                "where no existing version is provided.\n"
+                + "\n".join(partials_lines)
+            )
+            prompt = prompt.rstrip() + partials_block + "\n"
     return prompt
 
 
@@ -1463,6 +1535,7 @@ def main() -> int:
     weight_loss = payload.get("weight_loss") or {}
     letter_type = payload.get("letter_type") or "consolidated"
     coach_notes = (payload.get("coach_notes") or "").strip()
+    existing_partials = payload.get("existing_partials") or {}
 
     if not plan_slug:
         json.dump({"ok": False, "markdown": "", "error": "plan_slug is required"}, sys.stdout)
@@ -1497,7 +1570,14 @@ def main() -> int:
         json.dump({"ok": False, "markdown": "", "error": f"anthropic not installed: {e}"}, sys.stdout)
         return 1
 
-    prompt = _build_prompt(plan, client, weight_loss=weight_loss, letter_type=letter_type, coach_notes=coach_notes)
+    prompt = _build_prompt(
+        plan,
+        client,
+        weight_loss=weight_loss,
+        letter_type=letter_type,
+        coach_notes=coach_notes,
+        existing_partials=existing_partials if isinstance(existing_partials, dict) else {},
+    )
 
     client_api = Anthropic(api_key=api_key)
 
