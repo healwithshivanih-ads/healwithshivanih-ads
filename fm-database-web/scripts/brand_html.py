@@ -749,8 +749,27 @@ _CSS = f"""
     body[data-print-week="4"] .week-section:not(#print-week-4) {{ display: none !important; }}
     body[data-print-week="5"] .week-section:not(#print-week-5) {{ display: none !important; }}
 
-    /* Hide main footer when printing a specific week (page footer still shows) */
+    /* Hide supplement schedule + main footer when printing a single week.
+       The schedule is injected at .page level (sibling of .content), so it
+       isn't covered by the `.content > *:not(.week-section)` rule above.
+       Without this, the schedule prints as overflow after every week. */
+    body[data-print-week] #supplement-schedule {{ display: none !important; }}
     body[data-print-week] .brand-footer {{ display: none !important; }}
+
+    /* ── Single-week density — fit one A4 page ──
+       Week 1 / 2 are 7×7 tables with multi-line "✦ Start with: … Then: …"
+       lunch & dinner cells. At default 10px font + 1.4 line-height the table
+       overflows onto a second page. Tighten font, line-height, and padding
+       in week-print mode so a 7-row × 7-day table fits within ~180×270mm. */
+    body[data-print-week] .content table {{
+      font-size: 9px;
+      line-height: 1.25;
+      page-break-inside: avoid;
+    }}
+    body[data-print-week] .content th {{ font-size: 8.5px; padding: 4px 3px; }}
+    body[data-print-week] .content td {{ font-size: 9px;   padding: 3px 4px; line-height: 1.25; }}
+    body[data-print-week] .week-section {{ page-break-inside: avoid; }}
+    body[data-print-week] .week-section h2 {{ font-size: 14px; margin: 4px 0 8px; }}
 
     /* ── Client name above each week — print only ── */
     .print-client-name {{
