@@ -76,7 +76,9 @@ class SymptomCategory(str, Enum):
     mood = "mood"                        # anxiety, irritability, low mood
     sleep = "sleep"                      # insomnia, 3am wakeups
     skin = "skin"                        # rashes, acne, dryness
-    hormonal = "hormonal"                # hot flashes, irregular cycles
+    hormonal = "hormonal"                # hot flashes, irregular cycles (gender-neutral)
+    womens_health = "womens_health"      # menopause, perimenopause, vaginal symptoms, female-specific
+    mens_health = "mens_health"          # prostate, erectile, andropause, male-specific
     metabolic = "metabolic"              # weight changes, sugar cravings
     constitutional = "constitutional"    # fatigue, malaise
     cardiovascular = "cardiovascular"    # palpitations

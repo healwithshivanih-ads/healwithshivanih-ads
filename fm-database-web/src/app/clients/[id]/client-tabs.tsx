@@ -1112,6 +1112,7 @@ export function ClientPageTabs({
                   topics={topics}
                   initialSessions={sessions}
                   existingFiles={uploadedFiles}
+                  clientSex={(client as { sex?: string }).sex ?? null}
                 />
               </div>
             )}
