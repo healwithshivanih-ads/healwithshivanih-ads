@@ -8,3 +8,10 @@ streamlit>=1.30
 # the 3.9 stdlib typing module which doesn't understand the syntax → import
 # error at model definition time.
 eval_type_backport>=0.2.0; python_version < "3.10"
+# brand_html.py wraps generated client letters in branded HTML (visual
+# supplement schedule, per-week print buttons, recipe links, print CSS).
+# Without `markdown`, wrap_in_brand_html silently raises ModuleNotFoundError
+# inside render-client-letter.py's broad try/except → html=None is returned
+# → saveMealPlan skips writing the .html file → UI only offers .md download
+# and the supplement schedule never reaches the client.
+markdown>=3.5

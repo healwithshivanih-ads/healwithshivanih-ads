@@ -749,8 +749,27 @@ _CSS = f"""
     body[data-print-week="4"] .week-section:not(#print-week-4) {{ display: none !important; }}
     body[data-print-week="5"] .week-section:not(#print-week-5) {{ display: none !important; }}
 
-    /* Hide main footer when printing a specific week (page footer still shows) */
+    /* Hide supplement schedule + main footer when printing a single week.
+       The schedule is injected at .page level (sibling of .content), so it
+       isn't covered by the `.content > *:not(.week-section)` rule above.
+       Without this, the schedule prints as overflow after every week. */
+    body[data-print-week] #supplement-schedule {{ display: none !important; }}
     body[data-print-week] .brand-footer {{ display: none !important; }}
+
+    /* ── Single-week density — fit one A4 page ──
+       Week 1 / 2 are 7×7 tables with multi-line "✦ Start with: … Then: …"
+       lunch & dinner cells. At default 10px font + 1.4 line-height the table
+       overflows onto a second page. Tighten font, line-height, and padding
+       in week-print mode so a 7-row × 7-day table fits within ~180×270mm. */
+    body[data-print-week] .content table {{
+      font-size: 9px;
+      line-height: 1.25;
+      page-break-inside: avoid;
+    }}
+    body[data-print-week] .content th {{ font-size: 8.5px; padding: 4px 3px; }}
+    body[data-print-week] .content td {{ font-size: 9px;   padding: 3px 4px; line-height: 1.25; }}
+    body[data-print-week] .week-section {{ page-break-inside: avoid; }}
+    body[data-print-week] .week-section h2 {{ font-size: 14px; margin: 4px 0 8px; }}
 
     /* ── Client name above each week — print only ── */
     .print-client-name {{
@@ -765,7 +784,11 @@ _CSS = f"""
 
     /* ── Supplement schedule print isolation ──
        When body[data-print-supplement] is set, hide all page content except
-       the brand header (for context) and the supplement schedule itself.
+       the supplement schedule itself, and within the schedule strip away
+       everything that isn't a daily-checklist essential (no subtitle, no
+       visual bubble timeline, no "Why" rationale column, no "Where to buy"
+       links) — the client gets a single A4 sheet with When | Supplement |
+       Dose, chronologically ordered, ready to stick on the fridge.
     */
     body[data-print-supplement] .page > .doc-title-block,
     body[data-print-supplement] .page > .content,
@@ -773,13 +796,25 @@ _CSS = f"""
     body[data-print-supplement] #supplement-schedule {{
       page-break-before: avoid !important;
       margin-top: 0 !important;
-      padding-top: 24px !important;
+      padding-top: 16px !important;
       border-top: none !important;
     }}
-    /* Reveal the schedule's buy column when printing in isolation mode
-       (coach prints for reference; client gets the file-link-free version) */
-    body[data-print-supplement] .buy-cell {{ display: table-cell !important; }}
-    body[data-print-supplement] .schedule-table th:last-child {{ display: table-cell !important; }}
+    /* Strip non-essential pieces inside the schedule */
+    body[data-print-supplement] .schedule-subtitle,
+    body[data-print-supplement] .timeline-track,
+    body[data-print-supplement] .print-btn {{ display: none !important; }}
+    /* Drop the "Why" rationale column too — daily-use sheets don't need it.
+       The "Where to buy" column stays hidden via the existing .no-print rule. */
+    body[data-print-supplement] .schedule-table thead th:nth-child(4),
+    body[data-print-supplement] .schedule-table tbody td:nth-child(4) {{
+      display: none !important;
+    }}
+    /* Tighter density so the daily checklist fits one A4 page */
+    body[data-print-supplement] .schedule-title {{ font-size: 18px; margin-bottom: 4px; }}
+    body[data-print-supplement] .schedule-table {{ font-size: 11px; }}
+    body[data-print-supplement] .schedule-table th {{ font-size: 10px; padding: 6px 8px; }}
+    body[data-print-supplement] .schedule-table td {{ padding: 5px 8px; line-height: 1.35; }}
+    body[data-print-supplement] .schedule-table {{ page-break-inside: avoid; }}
   }}
 
   @page {{
@@ -890,9 +925,16 @@ def wrap_in_brand_html(
       }});
     }}
 
-    // ── Build per-week print bar ─────────────────────────────────────────────
+    // ── Build top-of-page print bar ──────────────────────────────────────────
+    // Each `.week-section` gets its own "Week N" button. When a supplement
+    // schedule is present (#supplement-schedule injected by render-client-letter
+    // post-wrap), we also add a "Supplements" button — printable separately
+    // from the meal weeks. The supplement section also has its own in-place
+    // 🖨 Print Schedule button further down the page; this one is the
+    // top-level twin for symmetry with the week buttons.
     var sections = document.querySelectorAll('.week-section');
-    if (sections.length === 0) return;
+    var supplementSection = document.getElementById('supplement-schedule');
+    if (sections.length === 0 && !supplementSection) return;
 
     var bar = document.createElement('div');
     bar.className = 'week-print-bar';
@@ -904,10 +946,8 @@ def wrap_in_brand_html(
 
     sections.forEach(function (sec) {{
       var weekNum = sec.id.replace('print-week-', '');
-      // Extract a short label from the H2 inside (e.g. "Week 1 Meal Plan")
       var h2 = sec.querySelector('h2');
       var rawText = h2 ? h2.textContent : 'Week ' + weekNum;
-      // Strip emoji prefix and anything after "—"
       var label = rawText.replace(/^[^A-Z]*/, '').replace(/ *[—–-].*$/, '').trim();
       if (!label) label = 'Week ' + weekNum;
 
@@ -920,6 +960,17 @@ def wrap_in_brand_html(
       }});
       bar.appendChild(btn);
     }});
+
+    if (supplementSection) {{
+      var suppBtn = document.createElement('button');
+      suppBtn.className = 'week-print-btn';
+      suppBtn.textContent = '💊 Supplements';
+      suppBtn.addEventListener('click', function () {{
+        document.body.setAttribute('data-print-supplement', '1');
+        window.print();
+      }});
+      bar.appendChild(suppBtn);
+    }}
 
     // Insert the bar below the recipe note (or at top of .content if no note)
     var content = document.querySelector('.content');
@@ -940,12 +991,14 @@ def wrap_in_brand_html(
   }})();
   </script>
 
-  <!-- Recipe linking: index ✦ headings, link ✦ symbols in meal plan tables -->
+  <!-- Recipe linking: index recipe-style h3 headings (✦ dishes + teas/home
+       remedies whose h3 starts with a letter), then turn each meal-plan table
+       LINE (each <br>-separated segment) into a clickable jump-to-recipe
+       anchor — making the whole line clickable, not just the ✦ symbol. -->
   <script>
   (function () {{
-    var SYMBOL = '✦'; // ✦
+    var SYMBOL = '✦';
 
-    // ── Helper: build a slug from heading text ───────────────────────────────
     function slugify(text) {{
       return 'recipe-' + text
         .replace(new RegExp(SYMBOL, 'g'), '')
@@ -955,66 +1008,104 @@ def wrap_in_brand_html(
         .slice(0, 60);
     }}
 
-    // ── Helper: extract meaningful words from a string ───────────────────────
-    function keyWords(text) {{
+    // Strip ✦ + parentheticals so "Methi (Fenugreek) Water" matches cell
+    // text that just says "methi water". Lowercases + collapses whitespace.
+    function searchKey(text) {{
       return text
-        .replace(new RegExp(SYMBOL, 'g'), ' ')
+        .replace(new RegExp(SYMBOL, 'g'), '')
+        .replace(/\([^)]*\)/g, ' ')
         .toLowerCase()
         .replace(/[^a-z0-9 ]/g, ' ')
-        .split(' ')
-        .filter(function (w) {{ return w.length > 2; }});
+        .replace(/\s+/g, ' ')
+        .trim();
     }}
 
-    // ── Step 1: Index every h3 that contains ✦ ──────────────────────────────
+    function keyWords(text) {{
+      return searchKey(text).split(' ').filter(function (w) {{ return w.length > 2; }});
+    }}
+
+    // ── Step 1: Index recipe-style h3 headings ──────────────────────────────
+    // A recipe-style heading (a) starts with ✦, OR (b) starts with a letter or
+    // digit (i.e. NOT an emoji-prefixed section divider like "🌙 Night Hunger"),
+    // AND has ≥ 2 words after stripping ✦/parentheticals (so single-word names
+    // like "Salad" can't false-match common cells). This is what lets teas /
+    // home remedies (Methi Water, Golden Milk, Jeera Water) get indexed even
+    // though their h3 has no ✦.
     var recipes = [];
     document.querySelectorAll('h3').forEach(function (h3) {{
-      if (h3.textContent.indexOf(SYMBOL) === -1) return;
-      var id = slugify(h3.textContent);
+      var raw = h3.textContent.trim();
+      if (!raw) return;
+      var startsWithSymbol = raw.charAt(0) === SYMBOL;
+      var startsWithAlnum = /^[A-Za-z0-9]/.test(raw);
+      if (!startsWithSymbol && !startsWithAlnum) return;
+      var key = searchKey(raw);
+      var words = keyWords(raw);
+      if (!key || words.length < 2) return;
+      var id = slugify(raw);
       h3.id = id;
-      recipes.push({{ id: id, words: keyWords(h3.textContent) }});
+      recipes.push({{ id: id, key: key, words: words, name: raw }});
     }});
 
-    if (recipes.length === 0) return; // no recipes — nothing to do
+    if (recipes.length === 0) return;
+
+    // Sort longest key first so substring matching prefers more specific names.
+    recipes.sort(function (a, b) {{ return b.key.length - a.key.length; }});
 
     // ── Step 2: Show the recipe note banner ──────────────────────────────────
     var note = document.getElementById('recipe-note');
     if (note) note.style.display = 'block';
-
-    // Move the print bar AFTER the note now that it's visible
     var bar = document.querySelector('.week-print-bar');
     if (bar && note) note.after(bar);
 
-    // ── Step 3: Link dish name + ✦ in every table cell to its recipe ────────
-    document.querySelectorAll('td').forEach(function (td) {{
-      if (td.textContent.indexOf(SYMBOL) === -1) return;
+    // ── Step 3: Per-line link wrapping in every meal-plan table cell ────────
+    // Split each cell on <br>; for each segment, score every indexed recipe
+    // (substring-match bonus + word overlap), pick the best, and wrap the
+    // ENTIRE segment in a single anchor — clicking anywhere on the line jumps
+    // to the recipe. Standalone ✦ markers in the segment are stripped (the
+    // link styling is the visual cue now).
+    var BR_SPLIT = /(<br\s*\/?\s*>)/gi;
 
-      // Score each recipe by word overlap with the cell text
-      var cellWords = keyWords(td.textContent);
+    function bestRecipeFor(plainText) {{
+      var t = plainText.toLowerCase();
       var best = null;
       var bestScore = 0;
-
       recipes.forEach(function (r) {{
         var score = 0;
-        r.words.forEach(function (rw) {{
-          if (cellWords.indexOf(rw) !== -1) score++;
+        if (t.indexOf(r.key) !== -1) score += 5;          // strong: full name verbatim
+        r.words.forEach(function (w) {{
+          if (t.indexOf(w) !== -1) score += 1;            // fallback: word overlap
         }});
         if (score > bestScore) {{ bestScore = score; best = r; }}
       }});
+      // Require either a substring hit (≥ 5) or ≥ 2 word matches to avoid
+      // false positives on cells that share a single common ingredient word.
+      return bestScore >= 5 || bestScore >= 2 ? best : null;
+    }}
 
-      // Replace "dish name ✦" with a link wrapping BOTH the name and symbol.
-      // Pattern: any text (not containing an HTML tag) followed by optional
-      // whitespace then ✦ — this makes the full dish name clickable.
-      if (best) {{
-        var anchorId = best.id;
-        td.innerHTML = td.innerHTML.replace(
-          /([^<>]*?)[ \t]*✦/g,
-          function (match, dishText) {{
-            var dish = dishText.trim();
-            var inner = dish ? dish + ' ✦' : '✦';
-            return '<a href="#' + anchorId + '" class="recipe-link" title="Jump to recipe">' + inner + '</a>';
-          }}
-        );
-      }}
+    document.querySelectorAll('td').forEach(function (td) {{
+      if (!/[A-Za-z]/.test(td.textContent)) return; // skip "—" / placeholder cells
+
+      var html = td.innerHTML;
+      var parts = html.split(BR_SPLIT); // alternating: text, <br>, text, …
+      var changed = false;
+      var rebuilt = parts.map(function (part) {{
+        if (BR_SPLIT.test(part)) {{ BR_SPLIT.lastIndex = 0; return part; }}
+        var plain = part
+          .replace(/<[^>]+>/g, '')
+          .replace(new RegExp(SYMBOL, 'g'), '')
+          .trim();
+        if (plain.length < 3) return part;
+        var r = bestRecipeFor(plain);
+        if (!r) return part;
+        var inner = part
+          .replace(new RegExp('\\s*' + SYMBOL + '\\s*', 'g'), ' ')
+          .replace(/^\s+|\s+$/g, '');
+        if (!inner) return part;
+        changed = true;
+        return '<a href="#' + r.id + '" class="recipe-link" title="Jump to recipe: ' +
+               r.name.replace(/"/g, '&quot;') + '">' + inner + '</a>';
+      }});
+      if (changed) td.innerHTML = rebuilt.join('');
     }});
   }})();
   </script>
