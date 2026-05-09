@@ -2008,6 +2008,18 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
   const [draftPending, startDraft] = useTransition();
   const [uploadPending, startUpload] = useTransition();
 
+  // Elapsed-time tracker for the long-running Analyze call (1–5 min). Drives a
+  // progress bar + phase label so the coach knows the request is still alive.
+  const [analyzeStartedAt, setAnalyzeStartedAt] = useState<number | null>(null);
+  const [analyzeElapsedMs, setAnalyzeElapsedMs] = useState(0);
+  useEffect(() => {
+    if (!pending || analyzeStartedAt === null) return;
+    const id = window.setInterval(() => {
+      setAnalyzeElapsedMs(Date.now() - analyzeStartedAt);
+    }, 500);
+    return () => window.clearInterval(id);
+  }, [pending, analyzeStartedAt]);
+
   // Five Pillars snapshot (only used when embedded in a client page via fixedClientId)
   const [sessionFivePillars, setSessionFivePillars] = useState<FivePillarsData>({});
 
@@ -2340,6 +2352,8 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
       setError("Pick at least one symptom or topic, upload a file, or enter complaints");
       return;
     }
+    setAnalyzeStartedAt(Date.now());
+    setAnalyzeElapsedMs(0);
     startTransition(async () => {
       try {
         const hasFivePillars = Object.values(sessionFivePillars).some((v) => v != null);
@@ -3007,12 +3021,47 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
               </span>
             </div>
           )}
+          {pending && (() => {
+            // Estimate ~120s typical, ~300s p95 — show progress as a fraction
+            // of the typical estimate, capped at 95% so it doesn't pretend to
+            // be done. Phase label changes as time elapses so the coach knows
+            // the request is still alive even when the API call hasn't returned.
+            const elapsedSec = Math.floor(analyzeElapsedMs / 1000);
+            const mins = Math.floor(elapsedSec / 60);
+            const secs = elapsedSec % 60;
+            const elapsedStr = `${mins}:${secs.toString().padStart(2, "0")}`;
+            const pct = Math.min(95, Math.round((analyzeElapsedMs / 120_000) * 100));
+            const phase =
+              elapsedSec < 8  ? "Uploading inputs"
+              : elapsedSec < 20 ? "Building catalogue subgraph"
+              : elapsedSec < 60 ? "Calling AI — Sonnet, 16K-token output"
+              : elapsedSec < 180 ? "Still working — long synthesis, please wait"
+              : "Taking unusually long — check PM2 logs if it doesn't return soon";
+            return (
+              <div className="rounded-md border border-indigo-200 bg-indigo-50 px-3 py-2.5 space-y-2">
+                <div className="flex items-center gap-2 text-xs">
+                  <span className="inline-block w-3 h-3 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin shrink-0" />
+                  <span className="font-medium text-indigo-900">{phase}…</span>
+                  <span className="ml-auto font-mono tabular-nums text-indigo-800">{elapsedStr}</span>
+                </div>
+                <div className="h-1.5 rounded-full bg-indigo-100 overflow-hidden">
+                  <div
+                    className="h-full bg-indigo-600 transition-[width] duration-500 ease-out"
+                    style={{ width: `${pct}%` }}
+                  />
+                </div>
+                <p className="text-[10px] text-indigo-700/80">
+                  Typical: 60–120s · p95: 5min · Don&apos;t reload the page.
+                </p>
+              </div>
+            );
+          })()}
           <Button
             onClick={onAnalyze}
             disabled={pending || uploadPending || !clientId}
             className="w-full"
           >
-            {pending ? "Synthesizing… (1–5 min)" : uploadPending ? "Waiting for lab extraction…" : "🔮 Analyze with AI"}
+            {pending ? "Synthesizing…" : uploadPending ? "Waiting for lab extraction…" : "🔮 Analyze with AI"}
           </Button>
           {error && (
             <p className="text-sm text-red-700 bg-red-50 border border-red-200 rounded p-2">
