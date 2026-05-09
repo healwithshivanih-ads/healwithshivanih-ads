@@ -165,6 +165,7 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
               savedAt: r.value.savedAt,
               htmlBlob: r.value.html ?? null,
               mdBlob: r.value.markdown ?? null,
+              validationReport: r.value.validationReport ?? null,
             };
           }
         });

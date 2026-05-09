@@ -497,6 +497,7 @@ export interface MealPlanData {
   markdown?: string;
   html?: string;
   savedAt?: string;   // ISO timestamp of last save
+  validationReport?: LetterValidationChange[];
   error?: string;
 }
 
@@ -519,7 +520,8 @@ export async function saveMealPlan(
   clientId: string,
   markdown: string,
   html: string | null,
-  letterType: LetterType = "consolidated"
+  letterType: LetterType = "consolidated",
+  validationReport?: LetterValidationChange[] | null,
 ): Promise<{ ok: boolean; error?: string }> {
   try {
     const dir = await getMealPlanDir(clientId);
@@ -527,6 +529,14 @@ export async function saveMealPlan(
     await fs.writeFile(path.join(dir, `${stem}.md`), markdown, "utf-8");
     if (html) {
       await fs.writeFile(path.join(dir, `${stem}.html`), html, "utf-8");
+    }
+    // Persist the Haiku QA report alongside the letter so the rewrites
+    // survive a page reload. Empty/null report → delete any stale file.
+    const reportPath = path.join(dir, `${stem}.validation.json`);
+    if (validationReport && validationReport.length > 0) {
+      await fs.writeFile(reportPath, JSON.stringify(validationReport, null, 2), "utf-8");
+    } else {
+      try { await fs.unlink(reportPath); } catch { /* not present is fine */ }
     }
     return { ok: true };
   } catch (e) {
@@ -544,13 +554,21 @@ export async function loadMealPlan(
     const stem = letterFileStem(planSlug, letterType);
     const mdPath = path.join(root, "clients", clientId, "meal-plans", `${stem}.md`);
     const htmlPath = path.join(root, "clients", clientId, "meal-plans", `${stem}.html`);
+    const reportPath = path.join(root, "clients", clientId, "meal-plans", `${stem}.validation.json`);
 
     const markdown = await fs.readFile(mdPath, "utf-8");
     const stat = await fs.stat(mdPath);
     let html: string | undefined;
     try { html = await fs.readFile(htmlPath, "utf-8"); } catch { /* html optional */ }
 
-    return { ok: true, markdown, html, savedAt: stat.mtime.toISOString() };
+    let validationReport: LetterValidationChange[] | undefined;
+    try {
+      const raw = await fs.readFile(reportPath, "utf-8");
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed)) validationReport = parsed as LetterValidationChange[];
+    } catch { /* report optional — older letters won't have one */ }
+
+    return { ok: true, markdown, html, savedAt: stat.mtime.toISOString(), validationReport };
   } catch {
     return { ok: false };
   }
@@ -677,8 +695,15 @@ export async function generateClientLetter(
 
   if (!result.ok || !result.markdown) return result;
 
-  // 5. Persist the requested file.
-  await saveMealPlan(planSlug, clientId, result.markdown, result.html ?? null, letterType);
+  // 5. Persist the requested file (with validation report sidecar).
+  await saveMealPlan(
+    planSlug,
+    clientId,
+    result.markdown,
+    result.html ?? null,
+    letterType,
+    result.validation_report ?? null,
+  );
 
   // 6. After a successful consolidated generation, extract each section and
   // save as a sidecar partial — keeps the four docs in sync.
