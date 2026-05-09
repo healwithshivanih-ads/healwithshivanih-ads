@@ -641,6 +641,7 @@ export async function generateClientLetter(
   // Always done (even when forceRegenerate=true) — consolidated still
   // benefits from finalised partial content.
   let existingPartials: Record<string, string> = {};
+  let hasExercisePlan = false;
   if (letterType === "consolidated") {
     for (const partial of PARTIAL_TYPES) {
       const partialPath = path.join(dir, `${planSlug}-${partial}.md`);
@@ -649,6 +650,14 @@ export async function generateClientLetter(
         if (md.trim().length > 0) existingPartials[partial] = md;
       } catch { /* missing partial is fine */ }
     }
+    // exercise_plan is NOT a partial (different content from consolidated's
+    // simple inline schedule) — but we tell the AI whether one exists so it
+    // can add the "See your detailed exercise plan" cross-reference.
+    try {
+      const exPath = path.join(dir, `${planSlug}-exercise_plan.md`);
+      const exMd = await fs.readFile(exPath, "utf-8");
+      hasExercisePlan = exMd.trim().length > 0;
+    } catch { /* no exercise plan */ }
   }
 
   // 4. Fresh AI generation.
@@ -661,6 +670,7 @@ export async function generateClientLetter(
       letter_type: letterType,
       coach_notes: coachNotes ?? "",
       existing_partials: existingPartials,
+      has_exercise_plan: hasExercisePlan,
     },
     240_000, // 12-week plan is larger — 4 min ceiling
   );

@@ -1769,7 +1769,8 @@ Output ONLY the Markdown document — no preamble, no postamble.
 
 def _build_prompt(plan: dict, client: dict, weight_loss: dict | None = None,
                   letter_type: str = "consolidated", coach_notes: str = "",
-                  existing_partials: dict | None = None) -> str:
+                  existing_partials: dict | None = None,
+                  has_exercise_plan: bool = False) -> str:
     """Build the full prompt for Claude. Dispatches to type-specific builders for non-consolidated types.
 
     `existing_partials` is a dict like {"meal_plan": "...md content...",
@@ -2087,9 +2088,7 @@ The plan must have a logical therapeutic progression — each phase builds on th
    perimenopausal phases: add 2-line cycle-aware modification (no HIIT
    during menstrual phase or PMS week — restorative only). For
    postmenopausal women: prioritise strength 3×/week. Keep it scannable
-   (8-10 lines). If a separate detailed exercise_plan letter has been
-   generated for this client, add a one-liner: 'See your detailed
-   exercise plan for the full weekly progression.'
+   (8-10 lines). {"A separate detailed exercise_plan letter HAS been generated for this client — add this one-liner at the end of the section: 'See your detailed exercise plan for the full weekly progression and exercise specifics.'" if has_exercise_plan else "No separate exercise_plan letter exists for this client — DO NOT reference one. This simple schedule IS the entire movement plan."}
    This is the SIMPLE version — the optional exercise_plan letter has the
    detailed phased programme for clients who want depth.
 
@@ -2393,6 +2392,7 @@ def main() -> int:
     letter_type = payload.get("letter_type") or "consolidated"
     coach_notes = (payload.get("coach_notes") or "").strip()
     existing_partials = payload.get("existing_partials") or {}
+    has_exercise_plan = bool(payload.get("has_exercise_plan"))
 
     if not plan_slug:
         json.dump({"ok": False, "markdown": "", "error": "plan_slug is required"}, sys.stdout)
@@ -2434,6 +2434,7 @@ def main() -> int:
         letter_type=letter_type,
         coach_notes=coach_notes,
         existing_partials=existing_partials if isinstance(existing_partials, dict) else {},
+        has_exercise_plan=has_exercise_plan,
     )
 
     client_api = Anthropic(api_key=api_key)

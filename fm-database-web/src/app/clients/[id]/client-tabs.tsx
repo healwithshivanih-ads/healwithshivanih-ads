@@ -1570,6 +1570,10 @@ export function ClientPageTabs({
           <SessionBriefModal
             session={briefSession}
             clientName={client.display_name ?? clientId}
+            clientAgeBand={client.age_band ?? null}
+            clientSex={client.sex ?? null}
+            clientConditions={client.active_conditions ?? []}
+            clientMedications={client.current_medications ?? client.medications ?? []}
             onClose={() => setBriefSessionId(null)}
           />
         );
