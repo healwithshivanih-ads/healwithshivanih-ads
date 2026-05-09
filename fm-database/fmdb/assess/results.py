@@ -128,6 +128,7 @@ class SupplementSuggestion(BaseModel):
     rationale: str = ""
     evidence_tier_caveat: str = ""
     contraindication_check: str = ""
+    vitaone_url: str = ""  # Set when this suggestion maps to a product in vitaone_inventory.
 
 
 class LabFollowup(BaseModel):

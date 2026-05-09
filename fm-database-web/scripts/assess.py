@@ -41,6 +41,52 @@ from pathlib import Path
 FMDB_ROOT = Path(__file__).resolve().parent.parent.parent / "fm-database"
 sys.path.insert(0, str(FMDB_ROOT))
 
+# VitaOne inventory JSON (refreshed by scripts/vitaone-scrape.py). Loaded
+# once and passed into the suggester so the model has visibility into
+# which products the coach has affiliate access to.
+_VITAONE_JSON_PATH = Path(__file__).resolve().parent / "vitaone-catalog.json"
+
+
+def _load_vitaone_inventory() -> list[dict]:
+    """Read the scraped catalog and filter out non-supplement entries (categories,
+    lab tests, panels, memberships). Returns `[{slug, name, url}]` for the AI
+    to map supplement suggestions onto stocked products."""
+    if not _VITAONE_JSON_PATH.exists():
+        return []
+    try:
+        data = json.loads(_VITAONE_JSON_PATH.read_text())
+    except (OSError, json.JSONDecodeError):
+        return []
+    import html as _html
+    NON_PRODUCT_SLUGS = {
+        "education-23", "functional-food-1", "lab-tests-26", "pharmacy-24",
+        "199-per-order-on-event-registration-291", "50-on-specific-products-32",
+        "functional-medicine-foundation-2",
+        "functional-medicine-foundation-global-497",
+        "functional-medicine-in-clinical-nutrition-29",
+        "standard-practitioner-membership-334",
+    }
+    out: list[dict] = []
+    for p in data.get("products", []):
+        slug = p.get("slug") or ""
+        name = _html.unescape(p.get("name", "")).strip()
+        if not slug or not name:
+            continue
+        nl = name.lower()
+        if nl.endswith("| vitaone") or " | vitaone" in nl:
+            continue
+        if slug.startswith("supplements-"):
+            continue
+        if slug in NON_PRODUCT_SLUGS:
+            continue
+        # Lab tests, genetic tests, and diagnostic panels: surfaced separately
+        # via `lab_followups`, not as supplement matches.
+        if "lab test" in nl or "genetic test" in nl or "panel" in nl or "health test" in nl:
+            continue
+        out.append({"slug": slug, "name": name, "url": p.get("url", "")})
+    out.sort(key=lambda x: x["name"].lower())
+    return out
+
 
 def _load_dotenv() -> None:
     """Load fm-database/.env if python-dotenv is available."""
@@ -286,6 +332,7 @@ def main() -> int:
                 additional_notes=complaints,
                 session_history=history_bundle,
                 days_since_last_prescription=days_since_last_prescription,
+                vitaone_inventory=_load_vitaone_inventory(),
             )
         except Exception as e:
             json.dump({"ok": False, "error": f"synthesize() failed: {type(e).__name__}: {e}"}, sys.stdout)

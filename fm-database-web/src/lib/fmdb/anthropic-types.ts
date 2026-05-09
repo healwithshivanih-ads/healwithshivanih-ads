@@ -105,6 +105,7 @@ export interface SupplementSuggestion {
   rationale?: string;
   evidence_tier_caveat?: string;
   contraindication_check?: string;
+  vitaone_url?: string;
 }
 
 export interface LabFollowup {
