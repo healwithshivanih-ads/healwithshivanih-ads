@@ -121,6 +121,7 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
                     "rationale": {"type": "string"},
                     "evidence_tier_caveat": {"type": "string", "description": "If catalogue tier is fm_specific_thin or confirm_with_clinician, surface that."},
                     "contraindication_check": {"type": "string", "description": "Any flagged conflicts with client meds/conditions."},
+                    "vitaone_url": {"type": "string", "description": "If this supplement maps to a product in `vitaone_inventory`, set this to that product's `url` verbatim. Empty string when no VitaOne match exists. The coach uses this to point clients at the affiliate-stocked product."},
                 },
             },
         },
@@ -484,7 +485,25 @@ HARD RULES (violating these breaks the downstream system):
       to build practical culturally-appropriate suggestions. Ask the coach
       to request a 3-day food diary for the next session.
 
-25. IFM TIMELINE — produce a structured `ifm_timeline` array organised by the
+25. VITAONE INVENTORY. The `vitaone_inventory` field in the user payload lists
+    products the coach has affiliate access to (URL includes the referral
+    code). Use it as follows:
+    - For every supplement suggestion, check whether the catalogue supplement
+      maps to an inventory item. Match on display name, slug, or active
+      ingredient (e.g., catalogue `magnesium-glycinate` maps to inventory
+      product "Ionic Magnesium Bisglycinate"). When you find a match, copy
+      the inventory item's `url` verbatim into `supplement_suggestions[i].vitaone_url`.
+    - When two catalogue supplements would equally well address a need, prefer
+      the one with a vitaone_inventory match — affiliate-stocked products keep
+      the coach's referral pipeline whole. But never sacrifice clinical fit:
+      if the inventory doesn't carry the right form (e.g., methylated B12 for
+      MTHFR client) or the only match has a contraindication, use the
+      catalogue supplement and leave `vitaone_url` empty.
+    - Do NOT invent VitaOne URLs. Empty string is correct when no match exists.
+    - The inventory is the ONLY source for `vitaone_url`. Don't synthesise
+      URLs from slugs.
+
+26. IFM TIMELINE — produce a structured `ifm_timeline` array organised by the
     IFM Antecedent/Trigger/Mediator framework:
 
     - Include EVERY event from `client_context.timeline_events` (don't drop
@@ -536,6 +555,7 @@ def synthesize(
     additional_notes: str = "",
     session_history: list[dict[str, Any]] | None = None,
     days_since_last_prescription: int | None = None,
+    vitaone_inventory: list[dict[str, Any]] | None = None,
     model: str | None = None,
     max_tokens: int = 16000,
 ) -> AssessResult:
@@ -625,6 +645,7 @@ def synthesize(
         "additional_notes": additional_notes,
         "session_history": session_history or [],
         "days_since_last_prescription": days_since_last_prescription,
+        "vitaone_inventory": vitaone_inventory or [],
         "catalogue_subgraph": subgraph,
     }
     content.append({

@@ -36,16 +36,97 @@ sys.path.insert(0, str(FMDB_ROOT))
 
 
 # ---------------------------------------------------------------------------
-# VitaOne supplement catalog — verified live URLs (scraped 2026-05-04)
-# Referral code format: ?pr=vita13720sh appended to each product URL
+# VitaOne supplement catalog
+#
+# Source of truth for product URLs: scripts/vitaone-catalog.json, refreshed by
+# scripts/vitaone-scrape.py against vitaone.in/shop. The hand-curated keyword
+# aliases below (158 entries) map client-facing names to product slugs; URLs
+# resolve through the JSON when available.
+#
+# Coverage note: the scraper's sitemap walk currently misses ~40% of the
+# slugs the keyword map references (long tail / affiliate-only products
+# behind a different fetch path). For those, _v() synthesises a URL from
+# the slug — re-running the scraper after coverage improves picks them up
+# without code changes.
 # ---------------------------------------------------------------------------
 _V = "https://vitaone.in/shop/"
 _R = "?pr=vita13720sh"
 IHERB_AFFILIATE = "https://in.iherb.com/?rcode=LWG566"
 
+_VITAONE_JSON_PATH = Path(__file__).resolve().parent / "vitaone-catalog.json"
+
+
+def _load_vitaone_json() -> dict[str, dict]:
+    """Load scraped catalog as `{slug: {name, url, image, odoo_id}}`. Empty on miss."""
+    if not _VITAONE_JSON_PATH.exists():
+        return {}
+    try:
+        data = json.loads(_VITAONE_JSON_PATH.read_text())
+    except (OSError, json.JSONDecodeError):
+        return {}
+    out: dict[str, dict] = {}
+    for p in data.get("products", []):
+        slug = p.get("slug")
+        if not slug:
+            continue
+        out[slug] = {
+            "name": p.get("name", ""),
+            "url": p.get("url") or f"{_V}{slug}{_R}",
+            "image": p.get("image", ""),
+            "odoo_id": p.get("odoo_id"),
+        }
+    return out
+
+
+_VITAONE_BY_SLUG: dict[str, dict] = _load_vitaone_json()
+
+
+def _is_non_product(name: str, slug: str) -> bool:
+    """True if a scraped 'product' is a category page or non-supplement entry."""
+    n = (name or "").strip().lower()
+    if n.endswith("| vitaone") or " | vitaone" in n:
+        return True
+    if slug.startswith("supplements-"):
+        return True
+    if slug in {
+        "education-23", "functional-food-1", "lab-tests-26", "pharmacy-24",
+        "199-per-order-on-event-registration-291", "50-on-specific-products-32",
+        "functional-medicine-foundation-2",
+        "functional-medicine-foundation-global-497",
+        "functional-medicine-in-clinical-nutrition-29",
+        "standard-practitioner-membership-334",
+    }:
+        return True
+    return False
+
+
 def _v(slug: str, name: str) -> tuple[str, str]:
-    """Build a (display_name, url_with_referral) tuple for a VitaOne product."""
-    return (name, f"{_V}{slug}{_R}")
+    """Build (display_name, url) for a VitaOne product.
+
+    Curated `name` wins (scraped names carry SEO suffixes / HTML entities).
+    URL resolves against the JSON when present, else synthesises from slug.
+    """
+    p = _VITAONE_BY_SLUG.get(slug)
+    url = p["url"] if p else f"{_V}{slug}{_R}"
+    return (name, url)
+
+
+def vitaone_inventory() -> list[dict]:
+    """Clean product list for AI prompt injection: `[{slug, name, url}]`.
+
+    Filters out category pages, lab-test bundles, memberships, and event
+    registrations — leaves only purchasable supplements / functional foods.
+    Sorted alphabetically by name for deterministic prompt caching.
+    """
+    import html as _html
+    out: list[dict] = []
+    for slug, p in _VITAONE_BY_SLUG.items():
+        name = _html.unescape(p["name"]).strip()
+        if _is_non_product(name, slug):
+            continue
+        out.append({"slug": slug, "name": name, "url": p["url"]})
+    out.sort(key=lambda x: x["name"].lower())
+    return out
 
 VITAONE_CATALOG = {
     # keyword (lowercase) → (display name, full URL with referral)
@@ -409,37 +490,112 @@ def _load_catalogue_notes(plan: dict) -> str:
     return "\n".join(collected)
 
 
-def _vitaone_link(supplement_name: str) -> str | None:
+_KW_BOUNDARY_CACHE: dict[str, "re.Pattern"] = {}
+
+
+def _kw_matches(kw: str, name_lower: str) -> bool:
+    """Word-boundary match — `dha` does not match `ashwagandha`.
+
+    Substring matching (the previous behaviour) caused short keywords like
+    `dha` / `ala` / `b12` to incorrectly resolve longer supplement names
+    (`vitaone ashwagandha` → omega-3). Compiled regexes are cached on first
+    use; the keyword set is small + stable, so cache growth is bounded.
+    """
+    import re
+    pat = _KW_BOUNDARY_CACHE.get(kw)
+    if pat is None:
+        pat = re.compile(r"(?<![\w-])" + re.escape(kw) + r"(?![\w-])", re.IGNORECASE)
+        _KW_BOUNDARY_CACHE[kw] = pat
+    return pat.search(name_lower) is not None
+
+
+def _vitaone_link(supplement_name: str, slug: str | None = None) -> str | None:
     """Try to find a match for a supplement name across custom, VitaOne, Amazon catalogs.
-    Returns a markdown link string, or None if not found anywhere."""
+    Returns a markdown link string, or None if not found anywhere.
+
+    `slug` (optional) lets callers resolve catalogue stub slugs whose derived
+    display name (`Vitaone D3`) doesn't share a keyword with the catalog.
+    """
+    info = _vitaone_url_only(supplement_name, slug=slug)
+    if not info:
+        return None
+    product, url = info
+    if "vitaone.in" in url:
+        return f"[{product}]({url}) *(VitaOne — referral link)*"
+    if "iherb" in url or "amzn" in url:
+        return f"[{product}]({url}) *(Amazon affiliate link)*"
+    return f"[{product}]({url}) *(affiliate link)*"
+
+
+def _vitaone_url_only(supplement_name: str, slug: str | None = None) -> tuple[str, str] | None:
+    """Returns (product_name, url) for a supplement, or None.
+
+    Resolution order: stub-slug override (when `slug` provided and recognised)
+    → custom links by name → VitaOne keyword match → Amazon keyword match.
+    Stub overrides handle catalogue slugs like `vitaone-d3` / `opti-liver`
+    whose derived display name (`Vitaone D3`, `Opti Liver`) doesn't share a
+    keyword with any product entry.
+    """
+    if slug:
+        sl = slug.strip().lower()
+        if sl in _STUB_SLUG_TO_VITAONE_SLUG:
+            target = _STUB_SLUG_TO_VITAONE_SLUG[sl]
+            p = _VITAONE_BY_SLUG.get(target)
+            url = p["url"] if p else f"{_V}{target}{_R}"
+            # Use the curated catalogue display name for this product.
+            for _kw, (canonical_name, kw_url) in VITAONE_CATALOG.items():
+                if kw_url == url or kw_url.endswith(f"{target}{_R}"):
+                    return (canonical_name, url)
+            # Fallback: use the scraped name if no keyword maps to it.
+            import html as _html
+            name = _html.unescape(p["name"]).strip() if p else target.replace("-", " ").title()
+            return (name, url)
     nl = supplement_name.lower()
-    # Custom coach-managed links take top priority
     for kw, (product, url) in _load_custom_links().items():
-        if kw in nl or nl in kw:
-            return f"[{product}]({url}) *(affiliate link)*"
-    # VitaOne catalog
+        if _kw_matches(kw, nl) or _kw_matches(nl, kw):
+            return (product, url)
     for kw, (product, url) in VITAONE_CATALOG.items():
-        if kw in nl:
-            return f"[{product}]({url}) *(VitaOne — referral link)*"
-    # Amazon fallback
+        if _kw_matches(kw, nl):
+            return (product, url)
     for kw, (product, url) in AMAZON_CATALOG.items():
-        if kw in nl:
-            return f"[{product}]({url}) *(Amazon affiliate link)*"
+        if _kw_matches(kw, nl):
+            return (product, url)
     return None
 
 
-def _vitaone_url_only(supplement_name: str) -> tuple[str, str] | None:
-    """Returns (product_name, url) for a supplement, or None."""
-    nl = supplement_name.lower()
-    for kw, (product, url) in _load_custom_links().items():
-        if kw in nl or nl in kw:
-            return (product, url)
-    for kw, (product, url) in VITAONE_CATALOG.items():
-        if kw in nl:
-            return (product, url)
-    for kw, (product, url) in AMAZON_CATALOG.items():
-        if kw in nl:
-            return (product, url)
+# Catalogue stub supplements (PR #15) → VitaOne product slug. Without these
+# the slug-to-URL resolver can't map e.g. `vitaone-d3` (stub) to the real
+# `vitamin-d3-k2-7-12` product page, because `vitaone-d3` doesn't share a
+# keyword with the catalog's "vitamin d3" entry.
+_STUB_SLUG_TO_VITAONE_SLUG: dict[str, str] = {
+    "vitaone-d3": "vitamin-d3-k2-7-12",
+    "vitaone-omega-3": "triple-strength-omega-3-triple-strength-omega-3-20",
+    "vitaone-b12": "active-folate-b12-30",
+    "vitaone-magnesium-glycinate": "ionic-140-ionic-magnesium-bisglycinate-115",
+    "vitaone-ashwagandha": "ashwagandha-ksm-66-600mg-strength-517",
+    "opti-liver": "fm-nutrition-opti-liver-76",
+    # dialor-plus: intentionally not on VitaOne.
+}
+
+
+def vitaone_url_for_supplement(supplement_name_or_slug: str) -> str | None:
+    """Public lookup: resolves a supplement display name OR slug to a VitaOne URL.
+
+    Returns None when no VitaOne match exists (Amazon / custom fallbacks are
+    intentionally NOT considered — only VitaOne URLs go in `vitaone_url`).
+
+    Resolution order: stub-slug override → keyword match on lowercased,
+    hyphen-normalised input.
+    """
+    s = supplement_name_or_slug.strip().lower()
+    if s in _STUB_SLUG_TO_VITAONE_SLUG:
+        target_slug = _STUB_SLUG_TO_VITAONE_SLUG[s]
+        p = _VITAONE_BY_SLUG.get(target_slug)
+        return p["url"] if p else f"{_V}{target_slug}{_R}"
+    nl = s.replace("-", " ").replace("_", " ")
+    for kw, (_product, url) in VITAONE_CATALOG.items():
+        if _kw_matches(kw, nl):
+            return url
     return None
 
 
@@ -477,7 +633,8 @@ def _build_supplement_schedule_html(supplements: list[dict]) -> str:
     # Enrich each supplement with slot info and buy link
     rows: list[dict] = []
     for s in supplements:
-        name = s.get("display_name") or s.get("supplement_slug", "").replace("-", " ").title()
+        slug = s.get("supplement_slug", "")
+        name = s.get("display_name") or slug.replace("-", " ").title()
         dose = s.get("dose") or s.get("dose_display") or ""
         timing_raw = s.get("timing") or ""
         rationale = (s.get("coach_rationale") or "").split("\n")[0].strip()
@@ -486,7 +643,7 @@ def _build_supplement_schedule_html(supplements: list[dict]) -> str:
             rationale = rationale.split("[evidence-tier note]")[0].strip()
         # Buy link: prefer explicit buy_link on item, then catalog lookup
         buy_link_override = s.get("buy_link") or ""
-        link_info = _vitaone_url_only(name) if not buy_link_override else None
+        link_info = _vitaone_url_only(name, slug=slug) if not buy_link_override else None
         if buy_link_override:
             buy_html = f'<a href="{buy_link_override}" target="_blank" rel="noopener noreferrer">Buy ↗</a>'
             buy_badge = "Custom link"
@@ -1171,13 +1328,14 @@ def _build_prompt(plan: dict, client: dict, weight_loss: dict | None = None,
     # Build supplement guide — sorted by time of day, ALL items included
     supp_enriched = []
     for s in supplements:
-        name = s.get("display_name") or s.get("supplement_slug", "").replace("-", " ").title()
+        slug = s.get("supplement_slug", "")
+        name = s.get("display_name") or slug.replace("-", " ").title()
         dose = s.get("dose") or s.get("dose_display") or ""
         timing = s.get("timing") or ""
         rationale = (s.get("coach_rationale") or "").split("[evidence-tier note]")[0].strip()
         slot_idx, slot_label, slot_emoji = _timing_slot(timing)
         buy_link_override = s.get("buy_link") or ""
-        vitaone = _vitaone_link(name)
+        vitaone = _vitaone_link(name, slug=slug)
         if buy_link_override:
             link_text = f"[Buy here]({buy_link_override})"
         else:

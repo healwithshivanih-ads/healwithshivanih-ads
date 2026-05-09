@@ -967,10 +967,24 @@ function SuggestionsView({
             {supplements.map((sp) => {
               const slug = String(sp.supplement_slug ?? "?");
               const k = `supp_${slug}`;
+              const vitaoneUrl = sp.vitaone_url ?? "";
               return (
                 <div key={k} className="flex items-start justify-between gap-3 border rounded-md p-2">
                   <div className="flex-1">
-                    <div className="font-medium">{slug}</div>
+                    <div className="font-medium flex items-center gap-2 flex-wrap">
+                      <span>{slug}</span>
+                      {vitaoneUrl ? (
+                        <a
+                          href={vitaoneUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center text-[10px] bg-emerald-50 text-emerald-700 border border-emerald-200 rounded px-1.5 py-0.5 hover:bg-emerald-100"
+                          title="Stocked on VitaOne — click to view product"
+                        >
+                          🛒 VitaOne
+                        </a>
+                      ) : null}
+                    </div>
                     <div className="text-xs">
                       {sp.form ? `${String(sp.form)} · ` : ""}
                       {sp.dose ? `${String(sp.dose)} · ` : ""}
