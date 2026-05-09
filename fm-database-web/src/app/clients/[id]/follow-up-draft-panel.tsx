@@ -13,7 +13,7 @@ import { draftFollowUpMessageAction } from "@/app/clients/actions";
 interface Props {
   clientId: string;
   sessionId: string;
-  sessionType: "discovery_consultation" | "pre_intake" | "full_assessment" | "check_in" | "quick_note";
+  sessionType: "discovery" | "intake" | "check_in" | "quick_note";
 }
 
 export function FollowUpDraftPanel({ clientId, sessionId, sessionType }: Props) {

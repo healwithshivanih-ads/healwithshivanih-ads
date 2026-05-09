@@ -57,9 +57,9 @@ function DeltaArrow({ delta }: { delta: number }) {
 // ── Main ───────────────────────────────────────────────────────────────────────
 
 export function IFMTrend({ clientId, sessions }: IFMTrendProps) {
-  const fullSessions = sessions.filter((s) => s.session_type === "full_assessment");
+  const fullSessions = sessions.filter((s) => s.session_type === "intake");
 
-  // Don't render unless there are ≥2 full-assessment sessions
+  // Don't render unless there are ≥2 intake sessions
   if (fullSessions.length < 2) return null;
 
   return <IFMTrendInner clientId={clientId} />;

@@ -4,25 +4,28 @@
  */
 
 export type SessionType =
-  | "discovery_consultation"
-  | "pre_intake"
-  | "full_assessment"
+  | "discovery"
+  | "intake"
   | "check_in"
   | "quick_note";
 
 /**
  * Parses [session_type: xxx] prefix from presenting_complaints.
- * Falls back to "full_assessment" for old sessions without the marker.
+ * Falls back to "intake" for old sessions without the marker.
+ *
+ * Backward-compat aliasing for sessions saved before the v0.63 rename:
+ *   pre_intake, discovery_consultation → discovery (same first-call concept)
+ *   full_assessment                   → intake     (renamed)
  */
 export function parseSessionType(presenting_complaints?: string): SessionType {
   const m = (presenting_complaints ?? "").match(/^\[session_type:\s*(\w+)\]/);
-  if (!m) return "full_assessment";
+  if (!m) return "intake";
   const t = m[1];
-  if (t === "discovery_consultation") return "discovery_consultation";
-  if (t === "pre_intake") return "pre_intake";
+  if (t === "discovery" || t === "pre_intake" || t === "discovery_consultation") return "discovery";
+  if (t === "intake" || t === "full_assessment") return "intake";
   if (t === "check_in") return "check_in";
   if (t === "quick_note") return "quick_note";
-  return "full_assessment";
+  return "intake";
 }
 
 /**

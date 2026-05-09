@@ -133,8 +133,16 @@ export default async function ClientDetailPage({
     : tab === "send"     ? "plan"              // old → new
     : tab === "documents" ? "plan"             // old → new
     : "overview";
-  const defaultSessionType = (session_type === "check_in" || session_type === "full_assessment" || session_type === "pre_intake" || session_type === "quick_note")
-    ? session_type as "check_in" | "full_assessment" | "pre_intake" | "quick_note"
+  // session_type URL param: accept new names + legacy aliases
+  const defaultSessionType: "discovery" | "intake" | "check_in" | "quick_note" | undefined =
+    session_type === "discovery"     ? "discovery"
+    : session_type === "intake"      ? "intake"
+    : session_type === "check_in"    ? "check_in"
+    : session_type === "quick_note"  ? "quick_note"
+    // legacy aliases from older deep-links
+    : session_type === "pre_intake"  ? "discovery"
+    : session_type === "discovery_consultation" ? "discovery"
+    : session_type === "full_assessment" ? "intake"
     : undefined;
 
   // Parallel data fetch — client info + sessions + plans + symptom/topic catalogue
@@ -192,10 +200,10 @@ export default async function ClientDetailPage({
   // Plans for this client
   const plans = allPlans.filter((p) => p.client_id === id);
 
-  // Derive unique topics from full_assessment sessions — pre-select in education pack
+  // Derive unique topics from intake sessions — pre-select in education pack
   const assessmentTopicSlugs = new Set<string>();
   for (const s of sessions) {
-    if (s.session_type === "full_assessment") {
+    if (s.session_type === "intake") {
       for (const slug of (s.selected_topics ?? [])) {
         assessmentTopicSlugs.add(slug);
       }
@@ -275,12 +283,12 @@ export default async function ClientDetailPage({
   const labMarkers = (client.lab_markers ?? []) as LabMarker[];
 
   // ── Returning client detection ────────────────────────────────────────────
-  // A returning client: had ≥1 full assessment, ≥28 days since any session,
+  // A returning client: had ≥1 intake, ≥28 days since any session,
   // and no currently active plan.
   const returningSignal = (() => {
     if (sessions.length === 0) return null;
-    const hadFullAssessment = sessions.some((s) => s.session_type === "full_assessment");
-    if (!hadFullAssessment) return null; // brand new or pre-intake only
+    const hadIntake = sessions.some((s) => s.session_type === "intake");
+    if (!hadIntake) return null; // brand new or discovery only
     const mostRecent = sessions[0];
     if (!mostRecent.date) return null;
     const daysSince = Math.round(
@@ -385,8 +393,8 @@ export default async function ClientDetailPage({
               Last seen {returningSignal.lastSession.date}
               {returningSignal.lastSession.session_type === "check_in"
                 ? " (check-in)"
-                : returningSignal.lastSession.session_type === "full_assessment"
-                ? " (full assessment)"
+                : returningSignal.lastSession.session_type === "intake"
+                ? " (intake)"
                 : ""}
               {returningSignal.lastSession.driver_count > 0
                 ? ` · ${returningSignal.lastSession.driver_count} driver${returningSignal.lastSession.driver_count !== 1 ? "s" : ""} identified`

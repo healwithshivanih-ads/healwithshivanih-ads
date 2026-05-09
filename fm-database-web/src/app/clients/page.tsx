@@ -43,24 +43,24 @@ async function getClientSignals(clientId: string, activePlanCount: number): Prom
     }
 
     // ── Pending labs ──────────────────────────────────────────────────────────
-    // Find the most-recent pre-intake that requested labs and hasn't been
-    // superseded by a subsequent full assessment.
+    // Find the most-recent discovery that requested labs and hasn't been
+    // superseded by a subsequent intake session.
     const preIdx = sessions.findIndex((s) => {
       const st = parseSessionType((s as Record<string, unknown>).presenting_complaints as string | undefined);
       const labs = parseRequestedLabs((s as Record<string, unknown>).coach_notes as string | undefined);
-      return st === "pre_intake" && labs.length > 0;
+      return st === "discovery" && labs.length > 0;
     });
     const pendingLabs = (() => {
       if (preIdx === -1) return [];
-      const hasAssessmentAfter = sessions.slice(0, preIdx).some((s) =>
-        parseSessionType((s as Record<string, unknown>).presenting_complaints as string | undefined) === "full_assessment"
+      const hasIntakeAfter = sessions.slice(0, preIdx).some((s) =>
+        parseSessionType((s as Record<string, unknown>).presenting_complaints as string | undefined) === "intake"
       );
-      if (hasAssessmentAfter) return [];
+      if (hasIntakeAfter) return [];
       return parseRequestedLabs((sessions[preIdx] as Record<string, unknown>).coach_notes as string | undefined);
     })();
 
     // ── Returning client ──────────────────────────────────────────────────────
-    // A returning client had at least one full assessment AND hasn't been seen
+    // A returning client had at least one intake session AND hasn't been seen
     // in 28+ days. Check-ins also count as "recent contact".
     const mostRecent = sessions[0];
     const mostRecentDate = (mostRecent as Record<string, unknown>).date as string | undefined;
@@ -70,10 +70,10 @@ async function getClientSignals(clientId: string, activePlanCount: number): Prom
       daysSince = Math.round(
         (Date.now() - new Date(mostRecentDate).getTime()) / (1000 * 60 * 60 * 24)
       );
-      const hadFullAssessment = sessions.some((s) =>
-        parseSessionType((s as Record<string, unknown>).presenting_complaints as string | undefined) === "full_assessment"
+      const hadIntake = sessions.some((s) =>
+        parseSessionType((s as Record<string, unknown>).presenting_complaints as string | undefined) === "intake"
       );
-      isReturning = daysSince >= 28 && hadFullAssessment;
+      isReturning = daysSince >= 28 && hadIntake;
     }
 
     return { pendingLabs, isReturning, daysSinceLastSession: daysSince };

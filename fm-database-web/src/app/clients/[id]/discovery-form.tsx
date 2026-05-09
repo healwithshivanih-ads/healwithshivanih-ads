@@ -4,7 +4,8 @@
  * DiscoveryForm — first-contact session.
  *
  * Records chief complaints, selects recommended labs, requests food journal.
- * Saves as [session_type: discovery_consultation] quick_note.
+ * Saves as [session_type: discovery]. Same first-call workflow that used to
+ * be split between "discovery_consultation" and "pre_intake".
  * Shows a shareable lab request + food journal note after saving.
  */
 
@@ -296,7 +297,7 @@ export function DiscoveryForm({ clientId, clientName, clientSex, onSaved }: Prop
   const selectedCount = selectedLabs.size + (customLabs.trim() ? customLabs.split(",").filter(Boolean).length : 0);
 
   const buildComplaintsText = () => {
-    const lines: string[] = ["[session_type: discovery_consultation]", "📋 Discovery consultation", ""];
+    const lines: string[] = ["[session_type: discovery]", "🔍 Discovery session", ""];
 
     if (complaints.trim()) {
       lines.push("Chief complaints:", complaints.trim(), "");
@@ -391,7 +392,7 @@ export function DiscoveryForm({ clientId, clientName, clientSex, onSaved }: Prop
 
     const res = await saveSessionAction({
       client_id: clientId,
-      session_type: "discovery_consultation",
+      session_type: "discovery",
       presenting_complaints: complaintsText,
       session_date: new Date().toISOString().slice(0, 10),
     });

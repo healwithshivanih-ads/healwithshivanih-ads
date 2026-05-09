@@ -117,16 +117,16 @@ async function computeSignal(
 
   if (sessions.length === 0) return { kind: "new_client" };
 
-  // Pending labs: most recent session with requested_labs, no full_assessment after
+  // Pending labs: most recent session with requested_labs, no intake after
   const labIdx = sessions.findIndex((s) => {
     const labs = parseRequestedLabs(s.coach_notes as string | undefined);
     return labs.length > 0;
   });
   if (labIdx !== -1) {
-    const hasAssessmentAfter = sessions
+    const hasIntakeAfter = sessions
       .slice(0, labIdx)
-      .some((s) => parseSessionType(s.presenting_complaints as string | undefined) === "full_assessment");
-    if (!hasAssessmentAfter) {
+      .some((s) => parseSessionType(s.presenting_complaints as string | undefined) === "intake");
+    if (!hasIntakeAfter) {
       return {
         kind: "labs_pending",
         labs: parseRequestedLabs(sessions[labIdx].coach_notes as string | undefined),
@@ -135,12 +135,12 @@ async function computeSignal(
     }
   }
 
-  // Returning: had full assessment, 28+ days since any session
-  const hadFullAssessment = sessions.some(
-    (s) => parseSessionType(s.presenting_complaints as string | undefined) === "full_assessment"
+  // Returning: had intake session, 28+ days since any session
+  const hadIntake = sessions.some(
+    (s) => parseSessionType(s.presenting_complaints as string | undefined) === "intake"
   );
   const mostRecentDate = sessions[0]?.date as string | undefined;
-  if (hadFullAssessment && mostRecentDate) {
+  if (hadIntake && mostRecentDate) {
     const daysSince = Math.round(
       (Date.now() - new Date(mostRecentDate).getTime()) / (1000 * 60 * 60 * 24)
     );
@@ -149,11 +149,11 @@ async function computeSignal(
     }
   }
 
-  // Pre-intake done but no full assessment
-  const hadPreIntake = sessions.some(
-    (s) => parseSessionType(s.presenting_complaints as string | undefined) === "pre_intake"
+  // Discovery done but no intake yet
+  const hadDiscovery = sessions.some(
+    (s) => parseSessionType(s.presenting_complaints as string | undefined) === "discovery"
   );
-  if (hadPreIntake && !hadFullAssessment) {
+  if (hadDiscovery && !hadIntake) {
     return { kind: "new_client", sessionDate: sessions[0]?.date as string | undefined };
   }
 
