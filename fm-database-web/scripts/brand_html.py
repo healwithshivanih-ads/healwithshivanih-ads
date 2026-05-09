@@ -784,7 +784,11 @@ _CSS = f"""
 
     /* ── Supplement schedule print isolation ──
        When body[data-print-supplement] is set, hide all page content except
-       the brand header (for context) and the supplement schedule itself.
+       the supplement schedule itself, and within the schedule strip away
+       everything that isn't a daily-checklist essential (no subtitle, no
+       visual bubble timeline, no "Why" rationale column, no "Where to buy"
+       links) — the client gets a single A4 sheet with When | Supplement |
+       Dose, chronologically ordered, ready to stick on the fridge.
     */
     body[data-print-supplement] .page > .doc-title-block,
     body[data-print-supplement] .page > .content,
@@ -792,13 +796,25 @@ _CSS = f"""
     body[data-print-supplement] #supplement-schedule {{
       page-break-before: avoid !important;
       margin-top: 0 !important;
-      padding-top: 24px !important;
+      padding-top: 16px !important;
       border-top: none !important;
     }}
-    /* Reveal the schedule's buy column when printing in isolation mode
-       (coach prints for reference; client gets the file-link-free version) */
-    body[data-print-supplement] .buy-cell {{ display: table-cell !important; }}
-    body[data-print-supplement] .schedule-table th:last-child {{ display: table-cell !important; }}
+    /* Strip non-essential pieces inside the schedule */
+    body[data-print-supplement] .schedule-subtitle,
+    body[data-print-supplement] .timeline-track,
+    body[data-print-supplement] .print-btn {{ display: none !important; }}
+    /* Drop the "Why" rationale column too — daily-use sheets don't need it.
+       The "Where to buy" column stays hidden via the existing .no-print rule. */
+    body[data-print-supplement] .schedule-table thead th:nth-child(4),
+    body[data-print-supplement] .schedule-table tbody td:nth-child(4) {{
+      display: none !important;
+    }}
+    /* Tighter density so the daily checklist fits one A4 page */
+    body[data-print-supplement] .schedule-title {{ font-size: 18px; margin-bottom: 4px; }}
+    body[data-print-supplement] .schedule-table {{ font-size: 11px; }}
+    body[data-print-supplement] .schedule-table th {{ font-size: 10px; padding: 6px 8px; }}
+    body[data-print-supplement] .schedule-table td {{ padding: 5px 8px; line-height: 1.35; }}
+    body[data-print-supplement] .schedule-table {{ page-break-inside: avoid; }}
   }}
 
   @page {{
