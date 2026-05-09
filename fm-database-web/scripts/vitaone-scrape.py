@@ -326,8 +326,10 @@ def main() -> int:
     print("→ authenticating…", file=sys.stderr)
     mode = authenticate()
     print(f"  mode: {mode}", file=sys.stderr)
+    auth_verified = False
     if not mode.startswith("anonymous") and not mode.startswith("FAILED"):
-        if verify_auth():
+        auth_verified = verify_auth()
+        if auth_verified:
             print("  ✓ session shows logged-in markers", file=sys.stderr)
         else:
             print("  ⚠ logged-in markers not detected — auth may have silently failed.", file=sys.stderr)
@@ -371,6 +373,8 @@ def main() -> int:
         "scraped_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "referral_code": REFERRAL_CODE.lstrip("?"),
         "base_url": BASE,
+        "auth_mode": mode,
+        "auth_verified": auth_verified,
         "count": len(products),
         "products": products,
     }
