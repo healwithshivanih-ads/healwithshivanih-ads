@@ -3,3 +3,8 @@ pyyaml>=6.0
 anthropic>=0.40.0
 python-dotenv>=1.0
 streamlit>=1.30
+# Required for Pydantic 2 to evaluate `int | None` pipe-union annotations on
+# Python 3.9. Without this, Pydantic's _eval_type_backport falls through to
+# the 3.9 stdlib typing module which doesn't understand the syntax → import
+# error at model definition time.
+eval_type_backport>=0.2.0; python_version < "3.10"
