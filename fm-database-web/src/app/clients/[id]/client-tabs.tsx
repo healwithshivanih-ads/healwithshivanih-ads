@@ -43,6 +43,7 @@ import { DiscoveryForm } from "./discovery-form";
 import { IFMTrend } from "./ifm-trend";
 import { LabComparison } from "./lab-comparison";
 import { LabReferenceRangesEditor } from "./lab-reference-ranges";
+import { IFMTimelineCard } from "./ifm-timeline-card";
 import { ClientAvatar } from "./client-avatar";
 import { SessionBriefModal } from "./session-brief-modal";
 import type { Client, MeasurementEntry } from "@/lib/fmdb/types";
@@ -850,6 +851,12 @@ export function ClientPageTabs({
               </CardContent>
             </Card>
           </div>
+
+          {/* IFM Timeline (Antecedents / Triggers / Mediators) */}
+          <IFMTimelineCard
+            events={client.timeline_events}
+            dateOfBirth={(client as { date_of_birth?: string }).date_of_birth}
+          />
 
           {/* FM Reference Ranges */}
           <LabReferenceRangesEditor clientId={clientId} />
