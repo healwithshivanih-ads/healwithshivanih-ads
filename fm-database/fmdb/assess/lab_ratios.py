@@ -164,10 +164,20 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
 
     if tsh is not None:
         flag = "high" if tsh > 2.5 else ("low" if tsh < 0.5 else "optimal")
+        # Pre-3.12 Python doesn't allow backslashes inside f-string expressions
+        # (PEP 701) — extract the conditional so apostrophes can sit in plain
+        # double-quoted string literals.
+        tsh_msg = (
+            "Elevated — thyroid underfunction or Hashimoto's; target <2.5"
+            if tsh > 2.5
+            else "Suppressed — assess for hyperthyroid pattern"
+            if tsh < 0.5
+            else "FM optimal"
+        )
         add("TSH", tsh, "mIU/L",
             "0.5–2.5 FM optimal (lab: 0.4–4.0)",
             flag,
-            f"TSH {tsh}: {'Elevated — thyroid underfunction or Hashimoto\'s; target <2.5' if tsh>2.5 else 'Suppressed — assess for hyperthyroid pattern' if tsh<0.5 else 'FM optimal'}",
+            f"TSH {tsh}: {tsh_msg}",
             PANEL_THYROID)
 
     if t4_free is not None:
@@ -196,18 +206,28 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
 
     if tpo_ab is not None:
         flag = "high" if tpo_ab > 35 else "optimal"
+        tpo_msg = (
+            "Elevated — confirms Hashimoto's; address gut, immune, stress, gluten"
+            if tpo_ab > 35
+            else "Negative"
+        )
         add("TPO antibodies", tpo_ab, "IU/mL",
             "<35 negative; any elevation = Hashimoto's",
             flag,
-            f"TPO Ab {tpo_ab}: {'Elevated — confirms Hashimoto\'s; address gut, immune, stress, gluten' if tpo_ab>35 else 'Negative'}",
+            f"TPO Ab {tpo_ab}: {tpo_msg}",
             PANEL_THYROID)
 
     if tgab is not None:
         flag = "high" if tgab > 1 else "optimal"
+        tgab_msg = (
+            "Positive — autoimmune thyroid; assess for Hashimoto's or Graves'"
+            if tgab > 1
+            else "Negative"
+        )
         add("Thyroglobulin Ab (TgAb)", tgab, "IU/mL",
             "<1 IU/mL negative",
             flag,
-            f"TgAb {tgab}: {'Positive — autoimmune thyroid; assess for Hashimoto\'s or Graves\'' if tgab>1 else 'Negative'}",
+            f"TgAb {tgab}: {tgab_msg}",
             PANEL_THYROID)
 
     t4 = t4_free or t4_total
@@ -303,10 +323,17 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
 
     if bilirubin_total is not None:
         flag = "high" if bilirubin_total > 1.2 else ("low" if bilirubin_total < 0.3 else "optimal")
+        bili_msg = (
+            "Elevated — assess haemolysis, liver disease, or bile obstruction"
+            if bilirubin_total > 1.2
+            else "Very low"
+            if bilirubin_total < 0.3
+            else "Normal; mild elevation may reflect Gilbert's syndrome (protective)"
+        )
         add("Total bilirubin", bilirubin_total, "mg/dL",
-            "0.3–1.2 mg/dL; mild elevation (Gilbert\'s) can be protective",
+            "0.3–1.2 mg/dL; mild elevation (Gilbert's) can be protective",
             flag,
-            f"Bilirubin {bilirubin_total}: {'Elevated — assess haemolysis, liver disease, or bile obstruction' if bilirubin_total>1.2 else 'Very low' if bilirubin_total<0.3 else 'Normal; mild elevation may reflect Gilbert\'s syndrome (protective)'}",
+            f"Bilirubin {bilirubin_total}: {bili_msg}",
             PANEL_LIVER)
 
     if albumin is not None:
@@ -404,10 +431,17 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
 
     if ldl is not None:
         flag = "high" if ldl > 130 else ("suboptimal" if ldl > 100 else "optimal")
+        ldl_msg = (
+            "Elevated — especially if hsCRP also high (oxidised LDL risk)"
+            if ldl > 130
+            else "Borderline — optimise lipid quality, not just quantity"
+            if ldl > 100
+            else "FM optimal; ensure it's not artificially low from low cholesterol synthesis"
+        )
         add("LDL cholesterol", ldl, "mg/dL",
             "<100 FM optimal; context matters — assess alongside particle size and inflammation",
             flag,
-            f"LDL {ldl}: {'Elevated — especially if hsCRP also high (oxidised LDL risk)' if ldl>130 else 'Borderline — optimise lipid quality, not just quantity' if ldl>100 else 'FM optimal; ensure it\'s not artificially low from low cholesterol synthesis'}",
+            f"LDL {ldl}: {ldl_msg}",
             PANEL_CARDIO)
 
     if hdl is not None:
