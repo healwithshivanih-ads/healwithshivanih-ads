@@ -10,10 +10,11 @@ modes — pick whichever is convenient:
       export VITAONE_PASSWORD="<your password>"
       python3 scripts/vitaone-scrape.py
 
-  Mode B — session cookie value only (faster, no creds at rest)
+  Mode B — Odoo session cookie value only (faster, no creds at rest)
       # In Chrome: F12 → Application → Cookies → vitaone.in
-      #            → copy the value of the `session_id` cookie
-      export VITAONE_SESSION_ID="<paste>"
+      #            → copy the value of the `_ei_sid` cookie (Odoo's session
+      #            name; NOT 'session_id' — vitaone uses _ei_sid)
+      export VITAONE_SESSION_ID="<paste _ei_sid value>"
       python3 scripts/vitaone-scrape.py
 
   Mode C — full Cookie string (for sites behind Cloudflare cf_clearance)
@@ -93,11 +94,14 @@ def authenticate() -> str:
         session.headers["Cookie"] = cookie_full
         return f"Cookie header ({len(cookie_full)} chars)"
 
-    # Mode B — session_id cookie alone
+    # Mode B — Odoo session cookie alone. Vitaone uses `_ei_sid` (Odoo's
+    # default session cookie name), NOT `session_id`. Set both for safety
+    # in case a future Odoo upgrade ever switches.
     sid = os.environ.get("VITAONE_SESSION_ID")
     if sid:
+        session.cookies.set("_ei_sid", sid, domain="vitaone.in")
         session.cookies.set("session_id", sid, domain="vitaone.in")
-        return f"session_id cookie ({sid[:6]}…)"
+        return f"_ei_sid cookie ({sid[:6]}…)"
 
     # Mode A — email + password POST to /web/login (Odoo standard)
     email = os.environ.get("VITAONE_EMAIL")
@@ -135,11 +139,16 @@ def authenticate() -> str:
 
 
 def verify_auth() -> bool:
-    """Hit a known logged-in-only-ish page and confirm cookies stuck.
-    Returns True if any logged-in indicator is found.
+    """Probe /my/account — Odoo redirects anonymous users to /web/login.
+    If we land on /my/account (not /web/login) and the HTML has logged-in
+    markers, we're authenticated.
     """
-    r = session.get(f"{BASE}/", timeout=30)
-    return r.status_code == 200 and _authed_marker_present(r.text)
+    r = session.get(f"{BASE}/my/account", timeout=30, allow_redirects=True)
+    if r.status_code != 200:
+        return False
+    if "/web/login" in r.url:
+        return False
+    return _authed_marker_present(r.text) or "/my/" in r.url
 
 
 def fetch(url: str, *, retries: int = 3, sleep: float = 1.5) -> str | None:
