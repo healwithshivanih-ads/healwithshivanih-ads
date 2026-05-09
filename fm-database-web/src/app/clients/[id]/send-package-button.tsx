@@ -59,10 +59,17 @@ const PACKAGE_TYPES: PackageType[] = [
     defaultChecked: false,
   },
   {
+    type: "exercise_plan",
+    label: "Exercise Plan (detailed)",
+    emoji: "🏃",
+    desc: "Optional 12-week phased movement plan with weekly schedules + cycle-aware modifications. Send only to clients who want depth.",
+    defaultChecked: false,
+  },
+  {
     type: "consolidated",
     label: "Full Wellness Letter",
     emoji: "📄",
-    desc: "All sections combined — complete 12-week programme",
+    desc: "All sections combined — includes a simple cycle-aware exercise schedule for clients who don't want the detailed plan",
     defaultChecked: false,
   },
 ];
