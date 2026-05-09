@@ -464,6 +464,8 @@ export type ParsedClientData = {
     event: string;
     category?: string;
   }>;
+  // Presenting concern
+  presenting_complaints?: string;        // chief complaints in 2-4 sentences
   // Meta
   notes: string;
   intake_date?: string;
@@ -531,6 +533,41 @@ export async function parseTranscriptForClient(
     return { ok: true, data: data as ParsedClientData };
   } catch (err) {
     if (tmp_path) await fs.unlink(tmp_path).catch(() => {});
+    const e = err as { message?: string };
+    return { ok: false, error: e.message || "Script failed" };
+  }
+}
+
+/**
+ * Same extraction as parseTranscriptForClient, but accepts an already-uploaded
+ * file path so the assess flow can run the symptoms extractor + the full
+ * client-profile extractor in parallel without re-uploading the file.
+ *
+ * Caller is responsible for the file lifetime (we don't delete it here — it
+ * typically lives in ~/fm-plans/clients/<id>/files/).
+ */
+export async function parseTranscriptForClientByPath(
+  filePath: string,
+  mimeType: string
+): Promise<ParseTranscriptResult> {
+  if (!filePath) return { ok: false, error: "filePath required" };
+  try {
+    const result = await runScript(
+      "extract-client-from-transcript.py",
+      {
+        transcript_path: filePath,
+        mime_type: mimeType,
+        dry_run: false,
+      },
+      90_000
+    ) as { ok: boolean; error?: string; [key: string]: unknown };
+
+    if (!result.ok) {
+      return { ok: false, error: result.error ?? "Script failed" };
+    }
+    const { ok: _ok, error: _err, ...data } = result;
+    return { ok: true, data: data as ParsedClientData };
+  } catch (err) {
     const e = err as { message?: string };
     return { ok: false, error: e.message || "Script failed" };
   }

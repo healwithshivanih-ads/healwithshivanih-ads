@@ -54,6 +54,7 @@ Writes JSON to stdout:
     "connection_notes": str | null
   } | null,
   "timeline_events": [{"year": int | null, "date": str | null, "event": str, "category": str | null}],
+  "presenting_complaints": str | null,   # 2-4 sentence summary of why client came in
   "notes": str,
   "intake_date": str | null,         # YYYY-MM-DD if date of consultation clear
   "fields_found": int,
@@ -152,6 +153,7 @@ REQUIRED JSON SHAPE:
     {"year": 2020, "date": "2020-03-01", "event": "Started levothyroxine", "category": "medication_change"},
     {"year": null, "date": null, "event": "Hysterectomy in early 30s", "category": "surgery"}
   ],
+  "presenting_complaints": "2-4 sentence summary of why the client came in: chief complaints in client's voice, current top concerns, what brought them now. Example: 'Persistent bloating and fatigue for ~2 years, worsened post-covid. Sugar cravings and brain fog by mid-afternoon. Sleep is broken — wakes at 3am most nights. Wants energy back, especially in afternoons with kids.' Null if no clear chief complaint expressed.",
   "notes": "Any clinically relevant detail not captured above — brief",
   "intake_date": "YYYY-MM-DD if date of this consultation is clear"
 }
@@ -494,6 +496,7 @@ def main() -> int:
         "what_hasnt_worked": clean_str(extracted.get("what_hasnt_worked")),
         "five_pillars": five_pillars if has_fp else None,
         "timeline_events": timeline_events,
+        "presenting_complaints": clean_str(extracted.get("presenting_complaints")),
         "notes": clean_str(extracted.get("notes")) or "",
         "intake_date": clean_str(extracted.get("intake_date")),
         "error": None,
