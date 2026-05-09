@@ -7,6 +7,7 @@ import nodemailer from "nodemailer";
 import { revalidatePath } from "next/cache";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
+import { buildEmailSafeBody } from "@/lib/email-html";
 
 const PYTHON = path.resolve(process.cwd(), "..", "fm-database", ".venv/bin/python");
 const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
@@ -75,7 +76,7 @@ export async function sendClientEmailAction(
       auth: { user, pass },
     });
     await transporter.sendMail({
-      from: `FM Coach <${user}>`,
+      from: `Shivani Hari <${user}>`,
       to: input.to,
       subject: input.subject,
       html: input.htmlBody,
@@ -85,6 +86,124 @@ export async function sendClientEmailAction(
   } catch (err) {
     return { ok: false, error: String(err) };
   }
+}
+
+// ── Send a client-letter package as inline-rendered email ─────────────────
+// Each entry in `letters` is the FULL standalone HTML produced by
+// scripts/render-client-letter.py + brand_html.py. We can't drop those
+// straight into an email body — the wrappers nest invalidly, fonts via
+// @import are blocked by Gmail, scripts are stripped, and the universal
+// reset CSS explodes via juice past the ~102KB clip threshold.
+// `buildEmailSafeBody` (src/lib/email-html.ts) does all of that cleanup
+// per letter; we then wrap the cleaned fragments in a single envelope.
+//
+// Keeping `sendClientEmailAction` around for callers that already build
+// their own htmlBody (sendEducationPackAction etc.).
+export interface SendClientLettersInput {
+  to: string;
+  subject: string;
+  intro: string;                        // freeform coach intro (plain text, newline-separated)
+  letters: { label: string; html: string }[]; // each `html` is a full standalone letter document
+  // Optional rich-HTML attachments — same letters, full standalone version,
+  // for the recipient to download and use the per-section print buttons that
+  // can't work inside the email body itself (no JS in email clients).
+  attachments?: { filename: string; html: string }[];
+  cc?: string;
+  bcc?: string;
+}
+
+export async function sendClientLettersAction(
+  input: SendClientLettersInput
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  const user = process.env.GMAIL_USER;
+  const pass = process.env.GMAIL_APP_PASSWORD;
+
+  if (!user || !pass) {
+    return {
+      ok: false,
+      error: "Email not configured. Add GMAIL_USER and GMAIL_APP_PASSWORD to .env.local",
+    };
+  }
+
+  if (input.letters.length === 0) {
+    return { ok: false, error: "No letters selected to send." };
+  }
+
+  const introHtml = input.intro
+    .split("\n")
+    .map((line) =>
+      line.trim()
+        ? `<p style="margin:6px 0;line-height:1.7;font-family:Georgia,serif;color:#444;">${escapeHtml(line)}</p>`
+        : "<br/>",
+    )
+    .join("\n");
+
+  // Transform each letter into an email-safe fragment, then concatenate.
+  const sections = input.letters.map((l) => {
+    const safe = buildEmailSafeBody(l.html);
+    return `<section style="margin:32px 0;">${safe}</section>`;
+  });
+  const divider =
+    '<hr style="border:none;border-top:2px solid #e5e7eb;margin:40px 0;" />';
+
+  // Per-section print note — only shown when we have attachments (the
+  // rich HTML files where the in-page print buttons actually work). The
+  // inline view here is for reading; the attachment is for printing.
+  const attachmentNote =
+    input.attachments && input.attachments.length > 0
+      ? `<div style="margin:24px 0;padding:14px 18px;border-left:3px solid #2B2D42;background:#f7f4f3;font-family:Georgia,serif;font-size:14px;line-height:1.6;color:#444;">
+  <strong style="color:#2B2D42;">📎 Want to print individual sections?</strong><br/>
+  Open the attached file (<em>${escapeHtml(input.attachments.map((a) => a.filename).join(", "))}</em>) — it has 🖨 buttons at the top for each week and the supplement schedule, and prints each on its own page.
+</div>`
+      : "";
+
+  const htmlBody = `<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
+<body style="font-family:Georgia,serif;max-width:720px;margin:0 auto;padding:32px 24px;color:#333;background:#fff;">
+  <div style="margin-bottom:24px;">${introHtml}</div>
+  ${attachmentNote}
+  <hr style="border:none;border-top:2px solid #2B2D42;margin-bottom:32px;" />
+  ${sections.join(`\n${divider}\n`)}
+</body>
+</html>`;
+
+  // Map our attachment shape onto nodemailer's. Each one rides as a
+  // separate downloadable file; the recipient opens whichever section
+  // they want to print.
+  const mailAttachments = (input.attachments ?? []).map((a) => ({
+    filename: a.filename,
+    content: a.html,
+    contentType: "text/html; charset=utf-8",
+  }));
+
+  try {
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: { user, pass },
+    });
+    await transporter.sendMail({
+      from: `Shivani Hari <${user}>`,
+      to: input.to,
+      cc: input.cc || undefined,
+      bcc: input.bcc || undefined,
+      subject: input.subject,
+      html: htmlBody,
+      attachments: mailAttachments.length > 0 ? mailAttachments : undefined,
+    });
+    return { ok: true };
+  } catch (err) {
+    return { ok: false, error: String(err) };
+  }
+}
+
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
 // ── Generate + send education pack ────────────────────────────────────────
@@ -223,7 +342,7 @@ export async function sendEducationPackAction(
       auth: { user, pass },
     });
     await transporter.sendMail({
-      from: `Shivani Hariharan, FM Health Coach <${user}>`,
+      from: `Shivani Hari <${user}>`,
       to: input.clientEmail,
       subject,
       html: htmlBody,
