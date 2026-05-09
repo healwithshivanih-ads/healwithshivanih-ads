@@ -1022,6 +1022,13 @@ def _cycle_block(client: dict) -> str:
 This client is postmenopausal. Use a STABLE protocol — no phase-syncing.
 - Phytoestrogen support DAILY: 1–2 tbsp ground flaxseed; phytoestrogenic
   greens; soy if tolerated; red clover.
+- Optional lunar seed cycling (offer if client is open to ritual):
+  - Days 1–14 of the calendar month (or new moon → full moon): 1 tbsp
+    ground flaxseed + 1 tbsp pumpkin seeds daily.
+  - Days 15–end (or full moon → new moon): 1 tbsp ground sesame + 1 tbsp
+    sunflower daily.
+  Even without an active cycle, the seed rotation provides rhythmic
+  micronutrient + lignan support (zinc, selenium, vitamin E, omega-3 ALA).
 - Strength training MINIMUM 3×/week — bone density is now the main risk.
 - Blood-sugar stability is paramount (oestrogen no longer cushions glucose
   swings): protein at every meal, no fasting after dinner, walks after
@@ -1041,6 +1048,10 @@ This client is postmenopausal. Use a STABLE protocol — no phase-syncing.
             "- Iron-rich foods FRONT-AND-CENTRE: red meat or lentils + dates + "
             "blackstrap molasses + spinach. Pair with vitamin C (lemon, amla) "
             "for absorption.\n"
+            "- Seed cycling — FOLLICULAR seeds: 1 tbsp ground flaxseed + "
+            "1 tbsp pumpkin seeds daily (supports oestrogen production via "
+            "lignans + zinc). Add to porridge, smoothie, dal, or sprinkle on "
+            "salad. Grind flax fresh — pre-ground oxidises.\n"
             "- Movement: walks, restorative yoga, gentle stretching ONLY. "
             "No HIIT, no heavy strength training this week.\n"
             "- Sleep priority: magnesium glycinate 400mg at night, earlier "
@@ -1052,6 +1063,10 @@ This client is postmenopausal. Use a STABLE protocol — no phase-syncing.
             "FOLLICULAR PHASE (day 6–13, rising oestrogen):\n"
             "- Lighter, fresher meals — sprouts, salads, fermented foods "
             "(if tolerated). Energy is rising; capitalise.\n"
+            "- Seed cycling — FOLLICULAR seeds CONTINUE: 1 tbsp ground "
+            "flaxseed + 1 tbsp pumpkin seeds daily. Lignans in flax help "
+            "modulate oestrogen; zinc in pumpkin supports follicle "
+            "development.\n"
             "- Movement: HIIT, strength training, longer cardio all welcome. "
             "Body recovers fastest in this phase.\n"
             "- Protein for steady energy + muscle-building: eggs, fish, "
@@ -1062,18 +1077,27 @@ This client is postmenopausal. Use a STABLE protocol — no phase-syncing.
             "OVULATORY PHASE (day ~14, oestrogen peak):\n"
             "- Anti-inflammatory bias: leafy greens, berries (in season), "
             "turmeric, omega-3s. Skin tends to look the best this phase.\n"
+            "- Seed cycling — TRANSITION DAY: switch from flax+pumpkin to "
+            "sesame+sunflower today (or tomorrow if cycle is short). Body "
+            "shifts from oestrogen-dominant to progesterone-supportive.\n"
             "- Movement: high-intensity is fine; group classes / social "
             "movement leverages the energy + mood high.\n"
             "- Light + bright meals; minimise heavy oils + fried foods this "
             "week.\n"
-            "- Cruciferous veg + flaxseed continue for E2 clearance."
+            "- Cruciferous veg continue for E2 clearance."
         ),
         "early_luteal": (
             "EARLY LUTEAL (day 15–~21, rising progesterone):\n"
+            "- Seed cycling — LUTEAL seeds: 1 tbsp ground sesame + 1 tbsp "
+            "sunflower seeds daily (vitamin E + selenium support "
+            "progesterone; lignans in sesame help oestrogen clearance). "
+            "Tahini-based dressing, til chikki without sugar, or sprinkled "
+            "on roasted veg all work.\n"
             "- Complex carbs return — sweet potato, ragi, quinoa, dal+rice. "
             "Progesterone increases insulin needs.\n"
-            "- B6 (chickpeas, sunflower seeds, banana) + magnesium "
-            "(pumpkin seeds, dark chocolate) for PMS prevention.\n"
+            "- B6 (chickpeas, sunflower seeds — already added via seed "
+            "cycling, banana) + magnesium (pumpkin seeds in moderation, "
+            "dark chocolate) for PMS prevention.\n"
             "- Movement: moderate intensity — yoga flow, brisk walks, "
             "moderate strength. Avoid pushing PRs.\n"
             "- Protein still high; introduce evening snack if blood sugar "
@@ -1081,6 +1105,9 @@ This client is postmenopausal. Use a STABLE protocol — no phase-syncing.
         ),
         "late_luteal": (
             "LATE LUTEAL / PMS WINDOW (day ~22–28, progesterone falling):\n"
+            "- Seed cycling — LUTEAL seeds CONTINUE: 1 tbsp ground sesame + "
+            "1 tbsp sunflower daily until day 1 of next cycle. Vitamin E "
+            "in sunflower may reduce PMS symptom severity (research-supported).\n"
             "- BLOOD SUGAR STABILITY IS PARAMOUNT: protein at EVERY meal, "
             "no fasting, no skipping breakfast. PMS symptoms 90% blood-sugar "
             "driven.\n"
