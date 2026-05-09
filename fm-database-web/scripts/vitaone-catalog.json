@@ -1,7 +1,9 @@
 {
-  "scraped_at": "2026-05-09T05:39:06Z",
+  "scraped_at": "2026-05-09T07:29:56Z",
   "referral_code": "pr=vita13720sh",
   "base_url": "https://vitaone.in",
+  "auth_mode": "session_id cookie (2xokSp…, 84 chars)",
+  "auth_verified": true,
   "count": 76,
   "products": [
     {
