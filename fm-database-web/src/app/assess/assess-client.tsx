@@ -25,7 +25,11 @@ import {
 } from "./actions";
 import { getMindMapPathways } from "./mindmap-actions";
 import { IFMMatrixCard } from "./ifm-matrix-card";
-import { resolveClientFileAction } from "@/app/clients/actions";
+import {
+  resolveClientFileAction,
+  parseTranscriptForClientByPath,
+  updateClientFromTranscriptAction,
+} from "@/app/clients/actions";
 import type { MindMapPathwayResult } from "@/lib/fmdb/loader-extras";
 import type {
   AssessResult,
@@ -2085,20 +2089,79 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
     if (!files || files.length === 0 || !clientId) return;
     const file = files[0];
     const mime = file.type || (file.name.endsWith(".pdf") ? "application/pdf" : "text/plain");
+    const cid = clientId;
     setTranscriptError(null);
     setTranscriptFilename(file.name);
     setTranscriptUrl("");
     startTranscriptExtract(async () => {
       try {
         // Upload via fetch/FormData (no binary through Server Action)
-        const savedPath = await uploadViaApi(file, clientId);
+        const savedPath = await uploadViaApi(file, cid);
         const catalogue = symptoms.map((s) => ({
           slug: s.slug,
           label: s.label,
           aliases: s.aliases,
         }));
-        const res = await extractTranscriptAction(savedPath, mime, catalogue, dryRun);
-        applyTranscriptResult(res, `transcript-${file.name}`);
+
+        // Run BOTH extractions in parallel against the same uploaded file:
+        //   1. extractTranscriptAction → symptoms + lab values + meds + conditions
+        //   2. parseTranscriptForClientByPath → 30+ FM intake fields, five pillars,
+        //      timeline events, presenting complaints
+        const [symRes, profileRes] = await Promise.all([
+          extractTranscriptAction(savedPath, mime, catalogue, dryRun),
+          dryRun
+            ? Promise.resolve({ ok: false as const, error: "skipped (dry run)" })
+            : parseTranscriptForClientByPath(savedPath, mime),
+        ]);
+
+        // Apply symptoms + structured health data (existing flow)
+        applyTranscriptResult(symRes, `transcript-${file.name}`);
+
+        // Apply intake-form pre-fills + persist client profile updates
+        if (profileRes.ok && profileRes.data) {
+          const d = profileRes.data;
+
+          // Pre-fill the chief complaints textarea (don't clobber existing typed text)
+          if (d.presenting_complaints) {
+            setComplaints((prev) => prev.trim() ? prev : d.presenting_complaints!);
+          }
+
+          // Pre-fill Five Pillars where the AI found values; preserve any
+          // values the coach already entered.
+          if (d.five_pillars) {
+            const fp = d.five_pillars;
+            setSessionFivePillars((prev) => ({
+              sleep_hours: prev.sleep_hours ?? fp.sleep_hours,
+              sleep_quality: prev.sleep_quality ?? fp.sleep_quality,
+              stress_level: prev.stress_level ?? fp.stress_level,
+              movement_days_per_week: prev.movement_days_per_week ?? fp.movement_days_per_week,
+              nutrition_quality: prev.nutrition_quality ?? fp.nutrition_quality,
+              connection_quality: prev.connection_quality ?? fp.connection_quality,
+            }));
+          }
+
+          // Persist the wider profile fields (timeline events, family history,
+          // sleep/digestion notes, dietary preference, what worked/didn't, etc.)
+          // back to client.yaml. Fire-and-forget — coach doesn't block on this.
+          updateClientFromTranscriptAction(cid, d).then((upd) => {
+            const summary: string[] = [];
+            if (d.presenting_complaints) summary.push("complaints");
+            if (d.five_pillars) summary.push("five pillars");
+            if (d.timeline_events?.length) summary.push(`${d.timeline_events.length} timeline events`);
+            if (upd.ok && upd.updated_fields?.length) {
+              summary.push(`${upd.updated_fields.length} profile fields`);
+            }
+            if (summary.length) {
+              toast.success(`📝 Auto-filled from transcript: ${summary.join(", ")}`);
+            }
+          }).catch(() => {
+            // Profile update is non-blocking; symptoms + complaints already applied
+          });
+        } else if (profileRes.ok === false && profileRes.error && !dryRun) {
+          // Don't toast — symptom extraction may still have succeeded; this is
+          // a secondary enrichment and silent failure here is fine.
+          console.warn("[transcript] profile extraction failed:", profileRes.error);
+        }
       } catch (e) {
         const msg = (e as Error).message;
         setTranscriptError(msg);
