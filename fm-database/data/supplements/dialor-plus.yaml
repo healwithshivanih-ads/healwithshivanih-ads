@@ -1,0 +1,39 @@
+slug: dialor-plus
+display_name: VitaOne Dialor Plus
+category: other
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 1
+    max: 3
+    unit: capsules
+  tablet:
+    min: 1
+    max: 3
+    unit: tablets
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+notes_for_coach: VitaOne-branded blood-sugar support formulation. Typical components
+  per the VitaOne range include berberine, chromium, cinnamon, gymnema, alpha-
+  lipoic acid. Stub entry — verify exact ingredients on the VitaOne product page
+  and refine dose / contraindication notes. Useful for insulin-resistance and
+  pre-diabetic pictures alongside dietary intervention. CONFIRM WITH CLINICIAN
+  if client is on hypoglycaemic medication (additive blood-sugar lowering risk).
+evidence_tier: fm_specific_thin
+linked_to_topics:
+- insulin-resistance
+- blood-sugar-regulation
+sources:
+- id: vitaone-product-catalog
+  location: vitaone.in/shop product page
+  quote: Stub catalogue entry — VitaOne-branded product. Refine when full
+    product details are parsed via scripts/vitaone-scrape.py.
+status: active
+version: 1
+updated_at: '2026-05-09'
+updated_by: shivani

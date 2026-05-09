@@ -1,0 +1,36 @@
+slug: vitaone-d3
+display_name: VitaOne Vitamin D3
+category: vitamin
+forms_available:
+- capsule
+- liquid
+typical_dose_range:
+  capsule:
+    min: 1000
+    max: 5000
+    unit: IU
+  liquid:
+    min: 1000
+    max: 5000
+    unit: IU
+timing_options:
+- with_breakfast
+- with_lunch
+- morning
+take_with_food: required
+notes_for_coach: VitaOne-branded vitamin D3. Stub entry — refine forms / typical
+  dose ranges when full product details are confirmed. Standard FM target serum
+  60–80 ng/mL, typically 2000–5000 IU daily with fat-containing meal. Vegan
+  clients need lichen-derived D3 (not lanolin).
+evidence_tier: strong
+linked_to_topics:
+- vitamin-d-deficiency
+sources:
+- id: vitaone-product-catalog
+  location: vitaone.in/shop product page
+  quote: Stub catalogue entry — VitaOne-branded product. Refine when full
+    product details are parsed via scripts/vitaone-scrape.py.
+status: active
+version: 1
+updated_at: '2026-05-09'
+updated_by: shivani

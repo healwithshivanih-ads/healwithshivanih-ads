@@ -1,0 +1,32 @@
+slug: opti-liver
+display_name: VitaOne Opti-Liver
+category: other
+forms_available:
+- capsule
+typical_dose_range:
+  capsule:
+    min: 1
+    max: 3
+    unit: capsules
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+notes_for_coach: VitaOne-branded liver support formulation. Typical components
+  include milk thistle, NAC, alpha-lipoic acid, B vitamins for Phase 1/2
+  detoxification support. Stub entry — verify ingredients on the VitaOne product
+  page and refine dose / contraindication notes. Useful for liver/detox phase
+  protocols and chemical-sensitivity pictures.
+evidence_tier: fm_specific_thin
+linked_to_topics:
+- liver-detoxification
+sources:
+- id: vitaone-product-catalog
+  location: vitaone.in/shop product page
+  quote: Stub catalogue entry — VitaOne-branded product. Refine when full
+    product details are parsed via scripts/vitaone-scrape.py.
+status: active
+version: 1
+updated_at: '2026-05-09'
+updated_by: shivani
