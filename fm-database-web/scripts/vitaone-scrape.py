@@ -1,26 +1,44 @@
 #!/usr/bin/env python3
-"""Scrape vitaone.in (Odoo eCommerce) → JSON catalog.
+"""Scrape vitaone.in (Odoo eCommerce) → JSON catalog, with affiliate auth.
 
-Run from a network that can reach vitaone.in (your laptop — the Claude
-Code sandbox is firewalled and can't fetch the site directly). Output
-goes to scripts/vitaone-catalog.json.
+The affiliate-visible product list differs from the public catalog (more
+products visible to logged-in affiliates). This script supports three auth
+modes — pick whichever is convenient:
 
-Usage:
-  cd ~/code/healwithshivanih-ads/fm-database-web
-  python3 scripts/vitaone-scrape.py
-  # writes scripts/vitaone-catalog.json with every public product
+  Mode A (recommended) — Odoo email + password
+      export VITAONE_EMAIL="shivanihari@gmail.com"
+      export VITAONE_PASSWORD="<your password>"
+      python3 scripts/vitaone-scrape.py
 
-Re-run periodically to refresh — overwrites the JSON file in-place.
+  Mode B — session cookie value only (faster, no creds at rest)
+      # In Chrome: F12 → Application → Cookies → vitaone.in
+      #            → copy the value of the `session_id` cookie
+      export VITAONE_SESSION_ID="<paste>"
+      python3 scripts/vitaone-scrape.py
+
+  Mode C — full Cookie string (for sites behind Cloudflare cf_clearance)
+      # In DevTools → Network → click the /shop request → Headers
+      #            → copy entire `cookie` request header value
+      export VITAONE_COOKIE="session_id=...; cf_clearance=...; ..."
+      python3 scripts/vitaone-scrape.py
+
+  Mode D — anonymous (public catalog only, no auth)
+      python3 scripts/vitaone-scrape.py
+      # WARNING: misses affiliate-only products
+
+Output: scripts/vitaone-catalog.json
+Re-run periodically to refresh — overwrites in-place.
 
 Politeness:
   - 300ms delay between requests
-  - Standard browser User-Agent (Odoo Cloudflare layer can be picky)
-  - Respects 404 / 410 (skips silently)
-  - Retries up to 3 times on transient 5xx
+  - Standard browser User-Agent
+  - 3-retry exponential backoff on 429 / 5xx
+  - Silent on 404 / 410
 """
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 import time
@@ -48,6 +66,80 @@ session.headers.update({
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "Accept-Language": "en-US,en;q=0.5",
 })
+
+
+# --- authentication --------------------------------------------------------
+
+def _authed_marker_present(html: str) -> bool:
+    """Heuristic: does this HTML look like the response sent to a logged-in
+    user? Odoo storefronts typically render '/web/session/logout' or 'My
+    Account' links once authenticated; the homepage shows 'Sign in' otherwise.
+    """
+    indicators = (
+        "/web/session/logout",
+        "/my/account",
+        '"is_user_logged_in":true',
+        "o_logged_in",
+    )
+    return any(s in html for s in indicators)
+
+
+def authenticate() -> str:
+    """Authenticate the requests.Session against vitaone. Returns a
+    short string describing which mode was used (for logging)."""
+    # Mode C — paste full Cookie header (highest priority — bypasses CF)
+    cookie_full = os.environ.get("VITAONE_COOKIE")
+    if cookie_full:
+        session.headers["Cookie"] = cookie_full
+        return f"Cookie header ({len(cookie_full)} chars)"
+
+    # Mode B — session_id cookie alone
+    sid = os.environ.get("VITAONE_SESSION_ID")
+    if sid:
+        session.cookies.set("session_id", sid, domain="vitaone.in")
+        return f"session_id cookie ({sid[:6]}…)"
+
+    # Mode A — email + password POST to /web/login (Odoo standard)
+    email = os.environ.get("VITAONE_EMAIL")
+    password = os.environ.get("VITAONE_PASSWORD")
+    if email and password:
+        # Step 1: GET the login page to seed CSRF token + initial cookies
+        r = session.get(f"{BASE}/web/login", timeout=30)
+        if r.status_code != 200:
+            print(f"  ! /web/login GET → {r.status_code}; auth aborted", file=sys.stderr)
+            return f"FAILED at GET (status {r.status_code})"
+        m = re.search(r'name="csrf_token"\s+value="([^"]+)"', r.text)
+        csrf = m.group(1) if m else None
+        # Step 2: POST credentials
+        payload = {"login": email, "password": password, "redirect": ""}
+        if csrf:
+            payload["csrf_token"] = csrf
+        r2 = session.post(
+            f"{BASE}/web/login",
+            data=payload,
+            timeout=30,
+            allow_redirects=True,
+        )
+        # Odoo redirects to /web after successful login; failure stays on /web/login
+        ok_url = "/web/login" not in r2.url
+        ok_html = _authed_marker_present(r2.text)
+        if ok_url or ok_html:
+            return f"email+password (final URL: {r2.url})"
+        # Look for an inline error message
+        err_m = re.search(r'<p class="alert alert-danger[^"]*">(.*?)</p>', r2.text, re.DOTALL)
+        err = re.sub(r"\s+", " ", err_m.group(1)).strip() if err_m else "no error message in HTML"
+        print(f"  ! login POST appears to have failed: {err}", file=sys.stderr)
+        return f"FAILED at POST ({err[:80]})"
+
+    return "anonymous (no env vars set — public catalog only)"
+
+
+def verify_auth() -> bool:
+    """Hit a known logged-in-only-ish page and confirm cookies stuck.
+    Returns True if any logged-in indicator is found.
+    """
+    r = session.get(f"{BASE}/", timeout=30)
+    return r.status_code == 200 and _authed_marker_present(r.text)
 
 
 def fetch(url: str, *, retries: int = 3, sleep: float = 1.5) -> str | None:
@@ -221,7 +313,27 @@ def parse_product(url: str) -> dict | None:
 # --- main ------------------------------------------------------------------
 
 def main() -> int:
-    print("→ trying sitemap.xml…", file=sys.stderr)
+    # Authenticate (optional but strongly recommended for full catalog)
+    print("→ authenticating…", file=sys.stderr)
+    mode = authenticate()
+    print(f"  mode: {mode}", file=sys.stderr)
+    if not mode.startswith("anonymous") and not mode.startswith("FAILED"):
+        if verify_auth():
+            print("  ✓ session shows logged-in markers", file=sys.stderr)
+        else:
+            print("  ⚠ logged-in markers not detected — auth may have silently failed.", file=sys.stderr)
+            print("    Continuing anyway. If product count is the same as the public catalog,", file=sys.stderr)
+            print("    your auth env vars probably didn't take. Re-check VITAONE_EMAIL/PASSWORD", file=sys.stderr)
+            print("    or VITAONE_SESSION_ID, or use Mode C (VITAONE_COOKIE='full cookie header').", file=sys.stderr)
+    elif mode.startswith("FAILED"):
+        print("  ✗ authentication FAILED — proceeding as anonymous.", file=sys.stderr)
+        print("    The output will be the public catalog only.", file=sys.stderr)
+    else:
+        print("  ⓘ no auth env vars set. Output will be the public catalog only.", file=sys.stderr)
+        print("    Set VITAONE_EMAIL + VITAONE_PASSWORD (or VITAONE_SESSION_ID) and re-run", file=sys.stderr)
+        print("    to capture affiliate-only products.", file=sys.stderr)
+
+    print("\n→ trying sitemap.xml…", file=sys.stderr)
     urls = discover_via_sitemap()
     if urls:
         print(f"  ✓ sitemap yielded {len(urls)} product URLs", file=sys.stderr)
