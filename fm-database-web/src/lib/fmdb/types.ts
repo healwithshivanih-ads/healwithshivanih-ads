@@ -283,6 +283,15 @@ export interface Client {
   sleep_notes?: string;
   energy_pattern?: string;
   menstrual_notes?: string;
+
+  // Cycle sync (women clients) — drives phase-synced nutrition + movement
+  // in the plan generator. cycle_status is the master switch.
+  cycle_status?: "menstruating" | "perimenopausal" | "postmenopausal" | "not_applicable";
+  last_menstrual_period?: string;     // ISO YYYY-MM-DD
+  cycle_length_days?: number;          // default 28
+  cycle_regularity?: "regular" | "irregular" | "very_irregular";
+  menopause_started?: string;          // ISO YYYY-MM-DD
+
   stress_response?: string;
   childhood_history?: string;
   toxic_exposures?: string;

@@ -184,6 +184,19 @@ class Client(BaseModel):
     sleep_notes: str = ""                # timing, quality, night waking (3am = cortisol/blood sugar), dreams
     energy_pattern: str = ""             # morning vs afternoon vs evening energy; crashes; second wind
     menstrual_notes: str = ""            # cycle length, PMS symptoms/timing, pain, flow, mood shifts (women)
+
+    # ── Cycle sync (women clients) ─────────────────────────────────────
+    # Used by the plan generator to phase-sync nutrition + movement.
+    # cycle_status drives behaviour: 'menstruating' → use LMP + length to
+    # compute current phase; 'perimenopausal' → flag as irregular,
+    # phase-compute with low confidence; 'postmenopausal' → skip phase,
+    # use stable post-meno protocols; 'not_applicable' → ignore entirely.
+    cycle_status: Optional[str] = None      # menstruating | perimenopausal | postmenopausal | not_applicable
+    last_menstrual_period: Optional[date] = None  # ISO date of LMP — start of most recent cycle
+    cycle_length_days: Optional[int] = None       # typical cycle length, default 28 if unset
+    cycle_regularity: Optional[str] = None        # regular | irregular | very_irregular
+    menopause_started: Optional[date] = None      # date menopause was reached (12+ months no period)
+
     stress_response: str = ""            # fight/flight (anxious, wired) vs freeze (exhausted, numb) vs mixed
     childhood_history: str = ""          # antibiotic use, gut infections, trauma, ACEs, chronic childhood illness
     toxic_exposures: str = ""            # mold, heavy metals, chemical exposures, long-term medication history
@@ -227,6 +240,102 @@ class Client(BaseModel):
         if (today.month, today.day) < (dob.month, dob.day):
             age -= 1
         return age
+
+    def cycle_context(self) -> Optional[dict]:
+        """Compute today's cycle context for the plan generator.
+
+        Returns a dict like:
+          {
+            'status': 'menstruating' | 'perimenopausal' | 'postmenopausal',
+            'phase': 'menstrual' | 'follicular' | 'ovulatory'
+                     | 'early_luteal' | 'late_luteal'
+                     | 'postmenopausal' | None,
+            'cycle_day': int | None,         # 1-based day of current cycle
+            'cycle_length': int,              # 28 default
+            'days_until_next_period': int | None,
+            'regularity': str | None,
+            'confidence': 'high' | 'low',     # low for perimenopausal / no-LMP
+            'note': str,                      # human-readable summary
+          }
+        Returns None when status is None / 'not_applicable' or sex isn't F.
+        """
+        if (self.sex or "").upper() not in ("F", "FEMALE"):
+            return None
+        status = (self.cycle_status or "").strip().lower()
+        if not status or status == "not_applicable":
+            return None
+
+        cycle_len = int(self.cycle_length_days or 28)
+        regularity = self.cycle_regularity or "regular"
+
+        if status == "postmenopausal":
+            return {
+                "status": "postmenopausal",
+                "phase": "postmenopausal",
+                "cycle_day": None,
+                "cycle_length": cycle_len,
+                "days_until_next_period": None,
+                "regularity": None,
+                "confidence": "high",
+                "note": "Post-menopause — stable protocol (phytoestrogens, blood sugar, strength training, gut for oestrogen recycling).",
+            }
+
+        if not self.last_menstrual_period:
+            # Status set but LMP missing — flag as low-confidence.
+            return {
+                "status": status,
+                "phase": None,
+                "cycle_day": None,
+                "cycle_length": cycle_len,
+                "days_until_next_period": None,
+                "regularity": regularity,
+                "confidence": "low",
+                "note": "Cycle status known but no LMP date captured — ask coach to update.",
+            }
+
+        from datetime import date as _date
+        today = _date.today()
+        days_since_lmp = (today - self.last_menstrual_period).days
+        if days_since_lmp < 0:
+            return None  # LMP is in the future (data error)
+
+        cycle_day = (days_since_lmp % cycle_len) + 1   # 1-based
+        days_until_next = cycle_len - cycle_day + 1
+
+        # Phase windows (28-day cycle by default; scale linearly for other lengths)
+        # using fractional thresholds so a 32-day cycle still maps cleanly.
+        f = cycle_day / cycle_len
+        if cycle_day <= 5:
+            phase = "menstrual"
+        elif f <= 0.45:
+            phase = "follicular"
+        elif f <= 0.55:
+            phase = "ovulatory"
+        elif f <= 0.78:
+            phase = "early_luteal"
+        else:
+            phase = "late_luteal"
+
+        confidence = "low" if status == "perimenopausal" or regularity != "regular" else "high"
+
+        phase_notes = {
+            "menstrual": "Iron-rich foods (red meat / lentils / dates / blackstrap molasses), gentle movement, magnesium glycinate at night, more rest.",
+            "follicular": "Lighter fresher meals, protein for steady energy, HIIT and strength training fine, fermented foods welcome.",
+            "ovulatory": "Anti-inflammatory bias (curcumin, leafy greens), high-intensity training fine, light + bright meals, cruciferous veg for E2 clearance.",
+            "early_luteal": "Complex carbs return (sweet potato, ragi), B6 + magnesium for PMS prevention, moderate movement.",
+            "late_luteal": "Blood-sugar stability paramount — protein every meal, no fasting, restorative movement only (yoga, walks), reduce refined carbs.",
+        }
+
+        return {
+            "status": status,
+            "phase": phase,
+            "cycle_day": cycle_day,
+            "cycle_length": cycle_len,
+            "days_until_next_period": days_until_next,
+            "regularity": regularity,
+            "confidence": confidence,
+            "note": phase_notes.get(phase, ""),
+        }
 
     def estimated_age(self) -> Optional[int]:
         """Best-effort age: exact from DOB if available, midpoint of age_band otherwise."""

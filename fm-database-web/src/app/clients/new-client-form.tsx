@@ -124,6 +124,13 @@ export function NewClientForm() {
   const [sleepNotes, setSleepNotes] = useState("");
   const [energyPattern, setEnergyPattern] = useState("");
   const [menstrualNotes, setMenstrualNotes] = useState("");
+
+  // Cycle sync (women only — gated by sex === 'F')
+  const [cycleStatus, setCycleStatus] = useState<"menstruating" | "perimenopausal" | "postmenopausal" | "not_applicable" | "">("");
+  const [lastMenstrualPeriod, setLastMenstrualPeriod] = useState("");
+  const [cycleLengthDays, setCycleLengthDays] = useState("");
+  const [cycleRegularity, setCycleRegularity] = useState<"regular" | "irregular" | "very_irregular" | "">("");
+  const [menopauseStarted, setMenopauseStarted] = useState("");
   const [stressResponse, setStressResponse] = useState("");
   const [childhoodHistory, setChildhoodHistory] = useState("");
   const [toxicExposures, setToxicExposures] = useState("");
@@ -305,6 +312,15 @@ export function NewClientForm() {
         sleep_notes: sleepNotes.trim() || undefined,
         energy_pattern: energyPattern.trim() || undefined,
         menstrual_notes: sex === "F" ? (menstrualNotes.trim() || undefined) : undefined,
+
+        // Cycle sync (women only — backend ignores when sex !== F)
+        cycle_status: sex === "F" ? (cycleStatus || undefined) : undefined,
+        last_menstrual_period: sex === "F" && lastMenstrualPeriod ? lastMenstrualPeriod : undefined,
+        cycle_length_days: sex === "F" && cycleLengthDays
+          ? parseInt(cycleLengthDays, 10) || undefined
+          : undefined,
+        cycle_regularity: sex === "F" ? (cycleRegularity || undefined) : undefined,
+        menopause_started: sex === "F" && menopauseStarted ? menopauseStarted : undefined,
         stress_response: stressResponse.trim() || undefined,
         childhood_history: childhoodHistory.trim() || undefined,
         toxic_exposures: toxicExposures.trim() || undefined,
@@ -576,6 +592,55 @@ export function NewClientForm() {
                   <Textarea value={menstrualNotes} onChange={setMenstrualNotes} rows={3}
                     placeholder={"28-day cycle. PMS week before: irritable, bloated, crave sugar. Day 1-2 heavy with cramps."} />
                 </Field>
+              )}
+              {sex === "F" && (
+                <div className="rounded-lg border border-rose-200 bg-rose-50/40 p-3 space-y-3">
+                  <div className="text-[11px] font-semibold uppercase tracking-wider text-rose-800">
+                    🌙 Cycle sync — drives phase-synced meal & exercise plans
+                  </div>
+                  <Field label="Cycle status" hint="determines whether the plan generator phase-syncs nutrition + movement">
+                    <select
+                      value={cycleStatus}
+                      onChange={(e) => setCycleStatus(e.target.value as typeof cycleStatus)}
+                      className="w-full h-9 rounded-md border border-input bg-background px-2 text-sm"
+                    >
+                      <option value="">(not specified)</option>
+                      <option value="menstruating">Menstruating — regular or irregular cycles</option>
+                      <option value="perimenopausal">Perimenopausal — cycles getting irregular / hot flashes / etc.</option>
+                      <option value="postmenopausal">Postmenopausal — 12+ months without a period</option>
+                      <option value="not_applicable">Not applicable / prefer not to say</option>
+                    </select>
+                  </Field>
+                  {(cycleStatus === "menstruating" || cycleStatus === "perimenopausal") && (
+                    <>
+                      <div className="grid gap-2 sm:grid-cols-2">
+                        <Field label="Last menstrual period (LMP)" hint="day 1 of most recent cycle">
+                          <Input type="date" value={lastMenstrualPeriod} onChange={(e) => setLastMenstrualPeriod(e.target.value)} className="text-sm" />
+                        </Field>
+                        <Field label="Cycle length (days)" hint="default 28 — count from day 1 to next day 1">
+                          <Input type="number" min="20" max="60" value={cycleLengthDays} onChange={(e) => setCycleLengthDays(e.target.value)} placeholder="28" className="text-sm" />
+                        </Field>
+                      </div>
+                      <Field label="Cycle regularity">
+                        <select
+                          value={cycleRegularity}
+                          onChange={(e) => setCycleRegularity(e.target.value as typeof cycleRegularity)}
+                          className="w-full h-9 rounded-md border border-input bg-background px-2 text-sm"
+                        >
+                          <option value="">(not specified)</option>
+                          <option value="regular">Regular (within 2 days each cycle)</option>
+                          <option value="irregular">Irregular (varies by 3-7 days)</option>
+                          <option value="very_irregular">Very irregular (varies by &gt;7 days, sometimes skipped)</option>
+                        </select>
+                      </Field>
+                    </>
+                  )}
+                  {cycleStatus === "postmenopausal" && (
+                    <Field label="Menopause started" hint="approximate date of last period — used to track years post-meno">
+                      <Input type="date" value={menopauseStarted} onChange={(e) => setMenopauseStarted(e.target.value)} className="text-sm" />
+                    </Field>
+                  )}
+                </div>
               )}
               <Field label="Stress response" hint="fight/flight (anxious, wired, can't sleep) vs freeze (exhausted, numb, can't function)">
                 <Textarea value={stressResponse} onChange={setStressResponse} rows={2}
