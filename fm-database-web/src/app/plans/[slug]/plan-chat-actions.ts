@@ -3,6 +3,7 @@
 import { runShim } from "@/lib/fmdb/shim";
 import { loadPlanBySlug } from "@/lib/fmdb/loader";
 import { updatePlanForChat } from "./actions";
+import { computePlanChanges, type PlanChange } from "./plan-diff";
 import type { Plan } from "@/lib/fmdb/types";
 import path from "node:path";
 import fs from "node:fs/promises";
@@ -18,6 +19,7 @@ export interface PlanChatResult {
   ok: boolean;
   reply?: string;
   updated?: boolean; // true if a patch was applied
+  changes?: PlanChange[]; // structured "what changed" list, computed from old plan vs patch
   revertedToDraft?: boolean; // true if plan was moved from ready back to draft
   error?: string;
 }
@@ -85,7 +87,11 @@ export async function planChatAction(
   // Apply patch if non-empty
   let updated = false;
   let revertedToDraft = false;
+  let changes: PlanChange[] = [];
   if (Object.keys(patch).length > 0) {
+    // Compute the structured change list against the OLD plan before we
+    // apply the patch — gives us a "what changed" list for the UI.
+    changes = computePlanChanges(plan as Plan, patch);
     const applyResult = await updatePlanForChat(slug, patch as Partial<Plan>);
     if (!applyResult.ok) {
       return { ok: false, error: (applyResult as { ok: false; error: string }).error };
@@ -94,5 +100,5 @@ export async function planChatAction(
     revertedToDraft = (applyResult as { ok: true; revertedToDraft?: boolean }).revertedToDraft ?? false;
   }
 
-  return { ok: true, reply, updated, revertedToDraft };
+  return { ok: true, reply, updated, changes, revertedToDraft };
 }
