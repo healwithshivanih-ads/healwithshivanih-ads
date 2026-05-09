@@ -18,6 +18,7 @@
 import { useState, useRef, useEffect, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { planChatAction, type ChatTurn } from "./plan-chat-actions";
+import type { PlanChange } from "./plan-diff";
 
 interface Props {
   slug: string;
@@ -25,7 +26,25 @@ interface Props {
   isLocked?: boolean;
 }
 
-function ChatBubble({ turn }: { turn: ChatTurn & { updated?: boolean } }) {
+type Turn = ChatTurn & {
+  updated?: boolean;
+  changes?: PlanChange[];
+  revertedToDraft?: boolean;
+};
+
+function changeKindGlyph(kind: PlanChange["kind"]): string {
+  if (kind === "added") return "➕";
+  if (kind === "removed") return "➖";
+  return "🔄";
+}
+
+function changeKindColour(kind: PlanChange["kind"]): string {
+  if (kind === "added") return "text-emerald-700";
+  if (kind === "removed") return "text-rose-700";
+  return "text-indigo-700";
+}
+
+function ChatBubble({ turn }: { turn: Turn }) {
   const isUser = turn.role === "user";
   return (
     <div className={`flex ${isUser ? "justify-end" : "justify-start"}`}>
@@ -37,13 +56,30 @@ function ChatBubble({ turn }: { turn: ChatTurn & { updated?: boolean } }) {
         }`}
       >
         {turn.content}
-        {!isUser && (turn as ChatTurn & { updated?: boolean; revertedToDraft?: boolean }).updated && (
-          <p className="mt-1 text-[11px] font-medium text-emerald-600">
-            ✓ Plan updated
-            {(turn as ChatTurn & { updated?: boolean; revertedToDraft?: boolean }).revertedToDraft && (
-              <span className="ml-1 text-amber-600">· moved back to Draft</span>
+        {!isUser && turn.updated && (
+          <div className="mt-2 space-y-1">
+            <p className="text-[11px] font-semibold text-emerald-700">
+              ✓ Plan updated
+              {turn.revertedToDraft && (
+                <span className="ml-1 font-medium text-amber-600">· moved back to Draft</span>
+              )}
+            </p>
+            {turn.changes && turn.changes.length > 0 && (
+              <ul className="mt-1 space-y-0.5 border-l-2 border-emerald-200 pl-2">
+                {turn.changes.map((c, i) => (
+                  <li key={i} className={`text-[11px] leading-snug ${changeKindColour(c.kind)}`}>
+                    <span className="mr-1">{changeKindGlyph(c.kind)}</span>
+                    {c.summary}
+                  </li>
+                ))}
+              </ul>
             )}
-          </p>
+            {turn.updated && (!turn.changes || turn.changes.length === 0) && (
+              <p className="text-[10px] italic text-muted-foreground">
+                Patch applied — no field-level diff produced (likely a small text edit).
+              </p>
+            )}
+          </div>
         )}
       </div>
     </div>
@@ -51,7 +87,7 @@ function ChatBubble({ turn }: { turn: ChatTurn & { updated?: boolean } }) {
 }
 
 export function PlanChatPanel({ slug, clientId, isLocked }: Props) {
-  const [history, setHistory] = useState<(ChatTurn & { updated?: boolean })[]>([]);
+  const [history, setHistory] = useState<Turn[]>([]);
   const [input, setInput] = useState("");
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
@@ -69,7 +105,7 @@ export function PlanChatPanel({ slug, clientId, isLocked }: Props) {
     const msg = input.trim();
     if (!msg || pending) return;
 
-    const userTurn: ChatTurn & { updated?: boolean } = { role: "user", content: msg };
+    const userTurn: Turn = { role: "user", content: msg };
     setHistory((h) => [...h, userTurn]);
     setInput("");
     setError(null);
@@ -85,10 +121,11 @@ export function PlanChatPanel({ slug, clientId, isLocked }: Props) {
         return;
       }
 
-      const assistantTurn: ChatTurn & { updated?: boolean; revertedToDraft?: boolean } = {
+      const assistantTurn: Turn = {
         role: "assistant",
         content: result.reply ?? "Done.",
         updated: result.updated,
+        changes: result.changes,
         revertedToDraft: result.revertedToDraft,
       };
       setHistory((h) => [...h, assistantTurn]);
