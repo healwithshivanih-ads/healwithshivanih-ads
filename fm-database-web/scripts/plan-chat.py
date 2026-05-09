@@ -277,7 +277,7 @@ CLIENT PROFILE:
                 }
             ],
             tools=[tool_schema],
-            tool_choice={"type": "required", "name": "update_plan"},
+            tool_choice={"type": "tool", "name": "update_plan"},
             messages=messages,
         )
 

@@ -256,7 +256,7 @@ Generate the plan_patch with adjustments appropriate for {phase_label}. Keep wha
             max_tokens=8192,
             system=[{"type": "text", "text": SYSTEM_PROMPT, "cache_control": {"type": "ephemeral"}}],
             tools=[tool_schema],
-            tool_choice={"type": "required", "name": "generate_follow_up_plan"},
+            tool_choice={"type": "tool", "name": "generate_follow_up_plan"},
             messages=[{"role": "user", "content": user_message}],
         )
 
