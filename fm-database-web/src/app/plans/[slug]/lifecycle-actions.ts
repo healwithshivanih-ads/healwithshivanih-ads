@@ -548,13 +548,100 @@ export async function loadMealPlan(
   }
 }
 
+/**
+ * Pull the content of one section out of a consolidated markdown letter.
+ * Section markers look like:
+ *   <!-- SECTION_BEGIN: meal_plan -->
+ *   ...content...
+ *   <!-- SECTION_END: meal_plan -->
+ * Returns the inner content trimmed, or null if the markers aren't present.
+ */
+function extractSectionFromConsolidated(md: string, section: string): string | null {
+  // [\s\S] = "any char including newline" (no /s flag in this TS target)
+  const re = new RegExp(
+    `<!--\\s*SECTION_BEGIN:\\s*${section}\\s*-->([\\s\\S]*?)<!--\\s*SECTION_END:\\s*${section}\\s*-->`,
+    "i",
+  );
+  const m = md.match(re);
+  if (!m) return null;
+  const inner = m[1].trim();
+  return inner.length > 20 ? inner : null;
+}
+
+const PARTIAL_TYPES: Exclude<LetterType, "consolidated">[] = [
+  "meal_plan",
+  "supplement_plan",
+  "lifestyle_guide",
+];
+
+/**
+ * Generate (or return cached) a letter for one of the four types.
+ *
+ * Cross-reference rules:
+ *   - If the requested file already exists on disk → return it (cache hit, no AI call).
+ *   - Requested partial AND consolidated exists with section markers → extract
+ *     the relevant section, save as the partial, return without AI call.
+ *   - Requested consolidated AND any partials exist → load them and pass into
+ *     the AI prompt as "use verbatim" instructions for those sections.
+ *   - Otherwise → fresh AI generation.
+ *
+ * After a fresh consolidated generation, the rendered markdown is also scanned
+ * for section markers and any extractable section is saved as a sidecar
+ * partial file — keeping the four documents in sync automatically.
+ */
 export async function generateClientLetter(
   planSlug: string,
   clientId: string,
   weightLoss?: WeightLossParams,
   letterType: LetterType = "consolidated",
-  coachNotes?: string
-): Promise<ClientLetterResult> {
+  coachNotes?: string,
+): Promise<ClientLetterResult & { fromCache?: boolean; extractedFromConsolidated?: boolean }> {
+  const dir = await getMealPlanDir(clientId);
+  const stem = letterFileStem(planSlug, letterType);
+  const targetMdPath = path.join(dir, `${stem}.md`);
+
+  // 1. Cache hit — file already on disk.
+  try {
+    const cached = await fs.readFile(targetMdPath, "utf-8");
+    let cachedHtml: string | null = null;
+    try { cachedHtml = await fs.readFile(path.join(dir, `${stem}.html`), "utf-8"); } catch { /* missing html is ok */ }
+    return { ok: true, markdown: cached, html: cachedHtml ?? undefined, fromCache: true };
+  } catch { /* not in cache, continue */ }
+
+  // 2. Cross-reference: requested partial, consolidated already exists with markers.
+  if (letterType !== "consolidated") {
+    const consolidatedPath = path.join(dir, `${planSlug}.md`);
+    try {
+      const consolidatedMd = await fs.readFile(consolidatedPath, "utf-8");
+      const extracted = extractSectionFromConsolidated(consolidatedMd, letterType);
+      if (extracted) {
+        // Save the extracted section as a standalone partial doc.
+        // We re-wrap in brand HTML by calling brand_html.py via runShim,
+        // but keeping it simple: HTML can be regenerated next time the
+        // coach opens the doc; .md is the source of truth.
+        await saveMealPlan(planSlug, clientId, extracted, null, letterType);
+        return {
+          ok: true,
+          markdown: extracted,
+          extractedFromConsolidated: true,
+        };
+      }
+    } catch { /* consolidated doesn't exist or unreadable — fall through */ }
+  }
+
+  // 3. Cross-reference: generating consolidated, partials exist. Load them.
+  let existingPartials: Record<string, string> = {};
+  if (letterType === "consolidated") {
+    for (const partial of PARTIAL_TYPES) {
+      const partialPath = path.join(dir, `${planSlug}-${partial}.md`);
+      try {
+        const md = await fs.readFile(partialPath, "utf-8");
+        if (md.trim().length > 0) existingPartials[partial] = md;
+      } catch { /* missing partial is fine */ }
+    }
+  }
+
+  // 4. Fresh AI generation.
   const result = await runShim<ClientLetterResult>(
     "render-client-letter.py",
     {
@@ -563,12 +650,26 @@ export async function generateClientLetter(
       weight_loss: weightLoss ?? null,
       letter_type: letterType,
       coach_notes: coachNotes ?? "",
+      existing_partials: existingPartials,
     },
-    240_000   // 12-week plan is larger — 4 min ceiling
+    240_000, // 12-week plan is larger — 4 min ceiling
   );
-  // Auto-save to disk so the coach can navigate away and come back
-  if (result.ok && result.markdown) {
-    await saveMealPlan(planSlug, clientId, result.markdown, result.html ?? null, letterType);
+
+  if (!result.ok || !result.markdown) return result;
+
+  // 5. Persist the requested file.
+  await saveMealPlan(planSlug, clientId, result.markdown, result.html ?? null, letterType);
+
+  // 6. After a successful consolidated generation, extract each section and
+  // save as a sidecar partial — keeps the four docs in sync.
+  if (letterType === "consolidated") {
+    for (const partial of PARTIAL_TYPES) {
+      const extracted = extractSectionFromConsolidated(result.markdown, partial);
+      if (extracted) {
+        try { await saveMealPlan(planSlug, clientId, extracted, null, partial); } catch { /* best-effort */ }
+      }
+    }
   }
+
   return result;
 }
