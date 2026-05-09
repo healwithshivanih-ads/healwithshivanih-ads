@@ -25,6 +25,7 @@ import {
 } from "./actions";
 import { getMindMapPathways } from "./mindmap-actions";
 import { IFMMatrixCard } from "./ifm-matrix-card";
+import { resolveClientFileAction } from "@/app/clients/actions";
 import type { MindMapPathwayResult } from "@/lib/fmdb/loader-extras";
 import type {
   AssessResult,
@@ -53,6 +54,10 @@ interface Props {
   /** When set, the component runs in embedded mode: client picker is hidden
    *  and this ID is used directly. Intended for the /clients/[id] Assess tab. */
   fixedClientId?: string;
+  /** Filenames already in the client's files/ dir. When non-empty, the assess
+   *  page renders an "Existing files" panel so the coach can re-attach a
+   *  previously-uploaded lab report instead of uploading again. */
+  existingFiles?: string[];
 }
 
 interface UploadedRef {
@@ -1867,7 +1872,7 @@ function PlanBriefCard({
   );
 }
 
-export function AssessClient({ clients = [], symptoms, topics, initialClientId, initialSessions = [], fixedClientId }: Props) {
+export function AssessClient({ clients = [], symptoms, topics, initialClientId, initialSessions = [], fixedClientId, existingFiles = [] }: Props) {
   const router = useRouter();
   const [clientId, setClientId] = useState<string>(
     fixedClientId ?? initialClientId ?? clients[0]?.client_id ?? ""
@@ -2025,6 +2030,62 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
     if (!json.ok || !json.filePath) throw new Error(json.error ?? "Upload failed");
     return json.filePath;
   }
+
+  /**
+   * Attach a file that already lives in the client's files/ dir without
+   * re-uploading it. Resolves the absolute path on the server, adds it to
+   * `uploads`, and runs lab extraction (same flow as a fresh upload).
+   */
+  const attachExistingFile = (filename: string, kind: "lab_report" | "food_journal") => {
+    if (!clientId) return;
+    if (uploads.some((u) => u.filename === filename && u.kind === kind)) {
+      toast.info(`${filename}: already attached`);
+      return;
+    }
+    const cid = clientId;
+    startUpload(async () => {
+      const res = await resolveClientFileAction(cid, filename);
+      if (!res.ok) {
+        toast.error(`${filename}: ${res.error}`);
+        return;
+      }
+      setUploads((u) => {
+        if (u.some((x) => x.filename === filename && x.kind === kind)) return u;
+        return [...u, { filePath: res.filePath, filename, mime_type: res.mimeType, kind }];
+      });
+      if (kind === "lab_report") {
+        setExtractingLabFiles((prev) => new Set([...prev, filename]));
+        try {
+          const catalogue = symptoms.map((s) => ({ slug: s.slug, label: s.label, aliases: s.aliases }));
+          const ex = await extractTranscriptAction(res.filePath, res.mimeType, catalogue, dryRun);
+          if (ex.ok) {
+            const hd = ex.extracted_data ?? null;
+            if (hd) {
+              setEditableHealthData((prev) => mergeHealthData(prev, hd));
+              setHealthDataSource(`lab-${filename}`);
+            }
+            if (ex.matched_slugs?.length) {
+              setSelectedSymptoms((prev) => Array.from(new Set([...prev, ...ex.matched_slugs])));
+            }
+            const parts: string[] = [];
+            if (hd?.lab_values?.length) parts.push(`${hd.lab_values.length} lab values`);
+            if (hd?.medications?.length) parts.push(`${hd.medications.length} meds`);
+            if (hd?.conditions?.length) parts.push(`${hd.conditions.length} conditions`);
+            if (ex.matched_slugs?.length) parts.push(`${ex.matched_slugs.length} symptoms`);
+            toast.success(parts.length ? `${filename}: extracted ${parts.join(", ")}` : `${filename}: attached`);
+          } else {
+            toast.error(`${filename}: ${ex.error ?? "Extraction failed"}`);
+          }
+        } catch (e) {
+          toast.error(`${filename}: extraction failed — ${(e as Error).message}`);
+        } finally {
+          setExtractingLabFiles((prev) => { const n = new Set(prev); n.delete(filename); return n; });
+        }
+      } else {
+        toast.success(`${filename}: attached`);
+      }
+    });
+  };
 
   const handleUpload = (
     files: FileList | null,
@@ -2502,6 +2563,53 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
                 {pendingLabFiles.length} file{pendingLabFiles.length !== 1 ? "s" : ""} selected — click Extract to upload &amp; extract
               </p>
             )}
+
+            {/* ── Existing files for this client ── */}
+            {fixedClientId && existingFiles.length > 0 && (() => {
+              const fileExts = /\.(pdf|png|jpe?g|webp|txt|md)$/i;
+              const labLike = existingFiles.filter((f) => fileExts.test(f)).sort();
+              if (labLike.length === 0) return null;
+              return (
+                <details className="mt-2 rounded-md border bg-background/50">
+                  <summary className="cursor-pointer text-xs px-2 py-1.5 font-medium text-muted-foreground hover:text-foreground select-none">
+                    📁 Use a file already on this client ({labLike.length} available)
+                  </summary>
+                  <div className="px-2 pb-2 pt-1 space-y-1">
+                    <p className="text-[11px] text-muted-foreground">
+                      Skip re-upload — pick a file from a previous discovery / intake / lab upload. Lab extraction will run on it.
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {labLike.map((f) => {
+                        const isAttached = uploads.some((u) => u.filename === f);
+                        const isExtractingThis = extractingLabFiles.has(f);
+                        return (
+                          <button
+                            key={f}
+                            type="button"
+                            onClick={() => attachExistingFile(f, "lab_report")}
+                            disabled={uploadPending || isAttached}
+                            className={[
+                              "text-[11px] px-2 py-1 rounded border transition-colors",
+                              isAttached
+                                ? "bg-emerald-50 border-emerald-300 text-emerald-700 cursor-default"
+                                : "bg-background border-input hover:bg-muted hover:border-foreground/30",
+                              "disabled:opacity-60",
+                            ].join(" ")}
+                            title={isAttached ? "Already attached" : `Attach ${f} as lab report`}
+                          >
+                            {isAttached ? "✓ " : "📎 "}
+                            {f}
+                            {isExtractingThis && (
+                              <span className="ml-1 inline-block w-2 h-2 border border-amber-500 border-t-transparent rounded-full animate-spin align-middle" />
+                            )}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </details>
+              );
+            })()}
           </div>
 
           {/* ── Food journals ── */}

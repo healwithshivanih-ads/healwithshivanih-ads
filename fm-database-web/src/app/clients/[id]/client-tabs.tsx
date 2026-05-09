@@ -1096,6 +1096,7 @@ export function ClientPageTabs({
                   symptoms={symptoms}
                   topics={topics}
                   initialSessions={sessions}
+                  existingFiles={uploadedFiles}
                 />
               </div>
             )}
