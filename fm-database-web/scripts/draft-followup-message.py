@@ -5,7 +5,7 @@ Reads JSON from stdin:
 {
   "client_id": str,
   "session_id": str,
-  "session_type": "check_in" | "full_assessment" | "quick_note" | "pre_intake",
+  "session_type": "discovery" | "intake" | "check_in" | "quick_note",
   "dry_run": bool  (optional — returns mock message without API call)
 }
 

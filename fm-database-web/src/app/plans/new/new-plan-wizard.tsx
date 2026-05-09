@@ -4,7 +4,7 @@
  * NewPlanWizard — interactive new-plan page.
  *
  * Phase A (session picker):
- *   If the client has full_assessment sessions with AI data, show them as
+ *   If the client has intake sessions with AI data, show them as
  *   cards. Coach picks one → "Generate pre-filled draft" calls
  *   generateDraftAction → redirects to /plans/<slug>.
  *

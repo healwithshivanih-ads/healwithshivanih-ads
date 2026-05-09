@@ -44,12 +44,12 @@ export default async function AssessPage({
     ? await loadClientSessionsAction(initialClientId)
     : [];
 
-  // Returning client context — shown when a client with prior full assessment
+  // Returning client context — shown when a client with prior intake
   // is arriving after 28+ days (typically via "Start return assessment" CTA).
   const returningContext = (() => {
     if (!clientParam || initialSessions.length === 0) return null;
-    const hadFullAssessment = initialSessions.some((s) => s.session_type === "full_assessment");
-    if (!hadFullAssessment) return null;
+    const hadIntake = initialSessions.some((s) => s.session_type === "intake");
+    if (!hadIntake) return null;
     const mostRecent = initialSessions[0];
     if (!mostRecent.date) return null;
     const daysSince = Math.round(

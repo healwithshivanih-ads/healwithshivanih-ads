@@ -31,11 +31,14 @@ function formatDate(dateStr?: string): string {
 }
 
 const SESSION_TYPE_LABELS: Record<string, string> = {
-  full_assessment: "Full session",
-  pre_intake: "Intake session",
+  discovery: "Discovery",
+  intake: "Intake",
   check_in: "Check-in",
   quick_note: "Quick Note",
-  discovery_consultation: "Discovery consultation",
+  // Legacy values for sessions saved before the v0.63 rename
+  discovery_consultation: "Discovery",
+  pre_intake: "Discovery",
+  full_assessment: "Intake",
 };
 
 const PILLARS = [

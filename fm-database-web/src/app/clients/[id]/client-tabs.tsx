@@ -5,7 +5,7 @@
  *
  * Tabs:
  *   Overview  — bio, clinical snapshot, lab panels, preferences, files, education pack
- *   Sessions  — record a session (full session / pre-intake / check-in / quick note) + session history
+ *   Sessions  — record a session (discovery / intake / check-in / quick note) + session history
  *   Plan      — plan status, edit, activate, and client letter generation (merged Protocol + Send)
  */
 
@@ -27,7 +27,6 @@ import { TopicBriefButton } from "./topic-brief-button";
 import { SendEducationPackButton } from "./send-education-pack-button";
 import { LabPanels } from "./lab-panels";
 import { SessionTypePicker, type SessionType } from "./session-type-picker";
-import { PreIntakeForm } from "./pre-intake-form";
 import { CheckInForm } from "./check-in-form";
 import { generateFollowUpPlan, submitPlan, publishPlan } from "@/app/plans/[slug]/lifecycle-actions";
 import { addMeasurementAction } from "@/app/clients/actions";
@@ -77,7 +76,7 @@ interface ClientTabsProps {
   allergies: string[];
   keyMarkers: Array<{ label: string; value: number; unit?: string; flag: string; computed?: boolean }>;
   defaultTab?: "overview" | "sessions" | "plan";
-  defaultSessionType?: "discovery_consultation" | "check_in" | "full_assessment" | "pre_intake" | "quick_note";
+  defaultSessionType?: SessionType;
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -97,14 +96,13 @@ const TABS: { key: Tab; label: string }[] = [
 // ──────────────────────────────────────────────────────────────────────────────
 
 const SESSION_TYPE_META: Record<
-  "discovery_consultation" | "pre_intake" | "full_assessment" | "check_in" | "quick_note",
+  SessionType,
   { icon: string; label: string; pill: string }
 > = {
-  discovery_consultation: { icon: "🔍", label: "Discovery",     pill: "bg-[#A8C5A0]/20 text-[#3D6B35]" },
-  pre_intake:             { icon: "📋", label: "Intake session", pill: "bg-[#D6A2A2]/20 text-[#7A3D3D]" },
-  full_assessment:        { icon: "🔬", label: "Full session",   pill: "bg-[#2B2D42]/10 text-[#2B2D42]" },
-  check_in:               { icon: "💬", label: "Check-in",       pill: "bg-[#8D99AE]/20 text-[#3D4A5C]" },
-  quick_note:             { icon: "📌", label: "Quick Note",     pill: "bg-[#E8A87C]/20 text-[#7A4A2A]" },
+  discovery: { icon: "🔍", label: "Discovery", pill: "bg-[#A8C5A0]/20 text-[#3D6B35]" },
+  intake:    { icon: "📋", label: "Intake",    pill: "bg-[#2B2D42]/10 text-[#2B2D42]" },
+  check_in:  { icon: "💬", label: "Check-in",  pill: "bg-[#8D99AE]/20 text-[#3D4A5C]" },
+  quick_note: { icon: "📌", label: "Quick Note", pill: "bg-[#E8A87C]/20 text-[#7A4A2A]" },
 };
 
 // ── MeasurementsWidget ────────────────────────────────────────────────────────
@@ -373,7 +371,7 @@ export function ClientPageTabs({
 }: ClientTabsProps) {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<Tab>(defaultTab ?? "overview");
-  const [sessionType, setSessionType] = useState<SessionType>(defaultSessionType ?? "full_assessment");
+  const [sessionType, setSessionType] = useState<SessionType>(defaultSessionType ?? "intake");
   const [savedSessionId, setSavedSessionId] = useState<string | null>(null);
   const [expandedSessionId, setExpandedSessionId] = useState<string | null>(null);
   const [briefSessionId, setBriefSessionId] = useState<string | null>(null);
@@ -422,7 +420,7 @@ export function ClientPageTabs({
   const pendingLabsInfo = (() => {
     const labIdx = sessions.findIndex((s) => s.requested_labs.length > 0);
     if (labIdx === -1) return null;
-    const hasSessionAfter = sessions.slice(0, labIdx).some((s) => s.session_type === "full_assessment");
+    const hasSessionAfter = sessions.slice(0, labIdx).some((s) => s.session_type === "intake");
     if (hasSessionAfter) return null;
     return sessions[labIdx];
   })();
@@ -434,7 +432,7 @@ export function ClientPageTabs({
       title: `Recheck was due ${activePlan?.plan_period_recheck_date ?? "—"}`,
       detail: "Review what changed, assess progress, and build a follow-up phase plan.",
       action: "🔬 Run new analysis →",
-      onAction: () => { setActiveTab("sessions"); setSessionType("full_assessment"); setSavedSessionId(null); },
+      onAction: () => { setActiveTab("sessions"); setSessionType("intake"); setSavedSessionId(null); },
     };
     if (workflowStage === "active") return {
       icon: "✅", color: "#059669", bg: "#F0FAF5", borderColor: "#7BBF9A",
@@ -465,7 +463,7 @@ export function ClientPageTabs({
       title: "Start with a full analysis session",
       detail: "Upload transcripts, lab reports, or food journals. AI analyses root causes and generates a personalised protocol.",
       action: "🔬 Start analysis →",
-      onAction: () => { setActiveTab("sessions"); setSessionType("full_assessment"); setSavedSessionId(null); },
+      onAction: () => { setActiveTab("sessions"); setSessionType("intake"); setSavedSessionId(null); },
     };
   })();
 
@@ -667,7 +665,7 @@ export function ClientPageTabs({
             </div>
             <div className="flex flex-wrap gap-2 items-center shrink-0">
               <button
-                onClick={() => { setActiveTab("sessions"); setSessionType("full_assessment"); setSavedSessionId(null); }}
+                onClick={() => { setActiveTab("sessions"); setSessionType("intake"); setSavedSessionId(null); }}
                 className="inline-flex items-center gap-1 rounded-md bg-primary px-3 py-2 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
               >
                 📋 New session
@@ -961,7 +959,7 @@ export function ClientPageTabs({
       {activeTab === "sessions" && (
         <div className="space-y-6">
           {/* ── Pending labs banner ── */}
-          {pendingLabsInfo && sessionType !== "pre_intake" && (
+          {pendingLabsInfo && sessionType !== "discovery" && (
             <div
               className="rounded-xl border-2 p-4 space-y-3"
               style={{ borderColor: "var(--brand-rose)", background: "var(--brand-bone)" }}
@@ -985,7 +983,7 @@ export function ClientPageTabs({
                 </div>
                 <button
                   onClick={() => {
-                    setSessionType("full_assessment");
+                    setSessionType("intake");
                     setSavedSessionId(null);
                   }}
                   className="shrink-0 text-sm font-semibold px-4 py-2 rounded-lg transition-all hover:opacity-90"
@@ -1055,18 +1053,18 @@ export function ClientPageTabs({
                     <span className="ml-2 font-mono text-xs opacity-70">{savedSessionId}</span>
                   </div>
                 </div>
-                {/* WhatsApp follow-up draft — skip for full assessment (AI session handles its own flow) */}
-                {sessionType !== "full_assessment" && (
+                {/* WhatsApp follow-up draft — skip for intake (AI assessment handles its own flow) */}
+                {sessionType !== "intake" && (
                   <FollowUpDraftPanel
                     clientId={clientId}
                     sessionId={savedSessionId}
-                    sessionType={sessionType as "discovery_consultation" | "pre_intake" | "check_in" | "quick_note"}
+                    sessionType={sessionType}
                   />
                 )}
               </div>
             )}
 
-            {sessionType === "discovery_consultation" && (
+            {sessionType === "discovery" && (
               <DiscoveryForm
                 clientId={clientId}
                 clientName={client.display_name ?? undefined}
@@ -1075,14 +1073,7 @@ export function ClientPageTabs({
               />
             )}
 
-            {sessionType === "pre_intake" && (
-              <PreIntakeForm
-                clientId={clientId}
-                onSaved={(id) => setSavedSessionId(id)}
-              />
-            )}
-
-            {sessionType === "full_assessment" && (
+            {sessionType === "intake" && (
               <div className="space-y-2">
                 <div
                   className="rounded-xl px-5 py-4"
@@ -1092,11 +1083,12 @@ export function ClientPageTabs({
                     className="font-brand text-base font-bold mb-0.5"
                     style={{ color: "var(--brand-indigo)" }}
                   >
-                    🔍 Full session — AI analysis
+                    📋 Intake session
                   </h3>
                   <p className="text-xs" style={{ color: "var(--brand-lavender)" }}>
-                    Upload transcripts, lab reports, and food journals. AI analyses
-                    root causes and generates supplement + lifestyle suggestions.
+                    Detailed second visit: upload labs and food journal, capture the
+                    full FM timeline, symptoms, and Five Pillars. The AI assessment
+                    runs on this data and stores results on the same session.
                   </p>
                 </div>
                 <AssessClient
@@ -1132,8 +1124,8 @@ export function ClientPageTabs({
             <OutcomeProgressCard sessions={sessions} />
           )}
 
-          {/* ── IFM Matrix trend (last 2 full sessions) ── */}
-          {sessions.filter(s => s.session_type === "full_assessment").length >= 2 && (
+          {/* ── IFM Matrix trend (last 2 intake sessions) ── */}
+          {sessions.filter(s => s.session_type === "intake").length >= 2 && (
             <Card>
               <CardHeader className="pb-2">
                 <CardTitle>🧬 IFM Matrix trend</CardTitle>
@@ -1169,7 +1161,7 @@ export function ClientPageTabs({
                     const isExpanded = expandedSessionId === sid;
 
                     const summaryLine =
-                      s.session_type === "full_assessment"
+                      s.session_type === "intake"
                         ? (s.selected_topics ?? []).slice(0, 3).join(", ") || null
                         : s.session_type === "check_in"
                         ? (() => {
@@ -1178,19 +1170,18 @@ export function ClientPageTabs({
                           })()
                         : s.session_type === "quick_note"
                         ? (s.presenting_complaints ?? "").replace(/^\[source:[^\]]+\]\s*/i, "").trim().slice(0, 100) || null
-                        : s.session_type === "discovery_consultation"
+                        : s.session_type === "discovery"
                         ? (() => {
                             const cm = (s.presenting_complaints ?? "").match(/Chief complaints:\s*([^\n]+)/);
-                            return cm ? cm[1].slice(0, 80) : "Discovery consultation";
+                            return cm ? cm[1].slice(0, 80) : "Discovery session";
                           })()
                         : (s.selected_symptoms ?? []).slice(0, 3).join(", ") || null;
 
                     const dotColor =
-                      s.session_type === "full_assessment"       ? "#2B2D42"
-                      : s.session_type === "discovery_consultation" ? "#A8C5A0"
-                      : s.session_type === "pre_intake"          ? "#D6A2A2"
-                      : s.session_type === "check_in"            ? "#8D99AE"
-                      :                                             "#E8A87C";
+                      s.session_type === "intake"    ? "#2B2D42"
+                      : s.session_type === "discovery" ? "#A8C5A0"
+                      : s.session_type === "check_in"  ? "#8D99AE"
+                      :                                  "#E8A87C";
 
                     return (
                       <div key={sid} className="relative flex gap-4 pl-10">
@@ -1249,8 +1240,8 @@ export function ClientPageTabs({
                           {summaryLine && !isExpanded && (
                             <p className="text-xs text-muted-foreground mt-1.5 line-clamp-2 leading-relaxed">
                               {summaryLine}
-                              {(s.session_type === "full_assessment" && (s.selected_topics ?? []).length > 3) ||
-                               (s.session_type === "pre_intake" && (s.selected_symptoms ?? []).length > 3)
+                              {(s.session_type === "intake" && (s.selected_topics ?? []).length > 3) ||
+                               (s.session_type === "discovery" && (s.selected_symptoms ?? []).length > 3)
                                 ? " …" : ""}
                             </p>
                           )}
@@ -1350,7 +1341,7 @@ export function ClientPageTabs({
                 </div>
                 <div className="flex flex-wrap gap-3 justify-center">
                   <button
-                    onClick={() => { setActiveTab("sessions"); setSessionType("full_assessment"); setSavedSessionId(null); }}
+                    onClick={() => { setActiveTab("sessions"); setSessionType("intake"); setSavedSessionId(null); }}
                     className="px-5 py-2.5 rounded-lg text-sm font-semibold text-white"
                     style={{ background: "var(--brand-indigo)" }}
                   >

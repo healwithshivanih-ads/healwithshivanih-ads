@@ -5,7 +5,7 @@
  * Coach picks what kind of session this is before any inputs appear.
  */
 
-export type SessionType = "discovery_consultation" | "pre_intake" | "full_assessment" | "check_in" | "quick_note";
+export type SessionType = "discovery" | "intake" | "check_in" | "quick_note";
 
 interface SessionOption {
   key: SessionType;
@@ -23,13 +23,13 @@ interface SessionOption {
 
 const OPTIONS: SessionOption[] = [
   {
-    key: "discovery_consultation",
+    key: "discovery",
     icon: "🔍",
-    label: "Discovery Consultation",
-    subtitle: "First contact / paid discovery",
+    label: "Discovery",
+    subtitle: "First contact, before labs",
     description:
-      "Record chief complaints, recommend targeted labs, and request a food journal. Client may stop here or proceed to an intake package.",
-    tag: "Discovery",
+      "Short call to record chief complaints, recommend targeted labs, and request a food journal. Client comes back for an intake once labs are done.",
+    tag: "First call",
     tagColor: "bg-[#A8C5A0]/20 text-[#3D6B35]",
     accentBorder: "border-[#A8C5A0]",
     accentBg: "bg-[#A8C5A0]/5",
@@ -37,27 +37,13 @@ const OPTIONS: SessionOption[] = [
     selectedBorder: "border-[#A8C5A0]",
   },
   {
-    key: "pre_intake",
+    key: "intake",
     icon: "📋",
-    label: "Intake Session",
-    subtitle: "Client returns with labs + food journal",
+    label: "Intake",
+    subtitle: "Detailed session with labs",
     description:
-      "Upload and review lab reports and food journal. Record full intake history and generate a targeted assessment.",
-    tag: "Intake",
-    tagColor: "bg-[#D6A2A2]/20 text-[#8B4A4A]",
-    accentBorder: "border-[#D6A2A2]",
-    accentBg: "bg-[#D6A2A2]/5",
-    selectedBg: "bg-[#D6A2A2]/10",
-    selectedBorder: "border-[#D6A2A2]",
-  },
-  {
-    key: "full_assessment",
-    icon: "🧠",
-    label: "Full Assessment",
-    subtitle: "Deep-dive session",
-    description:
-      "AI-powered root cause analysis using lab reports, food journals, transcript, and presenting complaints.",
-    tag: "AI Analysis",
+      "Client returns with labs and food journal. Capture the full FM timeline, lab data, symptoms, and Five Pillars. Run AI assessment afterwards.",
+    tag: "Full intake",
     tagColor: "bg-[#2B2D42]/10 text-[#2B2D42]",
     accentBorder: "border-[#2B2D42]",
     accentBg: "bg-[#2B2D42]/5",
@@ -111,7 +97,7 @@ export function SessionTypePicker({ value, onChange }: SessionTypePickerProps) {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         {OPTIONS.map((opt) => {
           const isSelected = value === opt.key;
           return (

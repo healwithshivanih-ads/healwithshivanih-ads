@@ -100,7 +100,7 @@ export default async function NewPlanPage({
       assessSessions = rawSessions
         .filter((s) => {
           const type = parseSessionType(s.presenting_complaints);
-          if (type !== "full_assessment") return false;
+          if (type !== "intake") return false;
           const analysis = s.ai_analysis ?? {};
           const driverCount = Array.isArray(analysis.likely_drivers) ? analysis.likely_drivers.length : 0;
           const suppCount = Array.isArray(analysis.supplement_suggestions) ? analysis.supplement_suggestions.length : 0;
@@ -123,7 +123,7 @@ export default async function NewPlanPage({
             synthesis_notes: analysis.synthesis_notes
               ? String(analysis.synthesis_notes).slice(0, 300)
               : undefined,
-            session_type: "full_assessment" as const,
+            session_type: "intake" as const,
             requested_labs: [],
           };
         });

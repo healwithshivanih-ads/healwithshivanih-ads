@@ -71,13 +71,13 @@ function BriefContent({
   const goals = (c.goals as string[] | undefined) ?? [];
   const ageBand = (c.age_band as string | undefined);
 
-  // Most recent assessment session
+  // Most recent intake or check-in session
   const lastSession = sessions.find(
-    (s) => s.session_type === "full_assessment" || s.session_type === "check_in"
+    (s) => s.session_type === "intake" || s.session_type === "check_in"
   );
 
-  // All quick notes since last full session
-  const lastFullIdx = sessions.findIndex((s) => s.session_type === "full_assessment");
+  // All quick notes since last intake session
+  const lastFullIdx = sessions.findIndex((s) => s.session_type === "intake");
   const recentNotes = lastFullIdx > 0
     ? sessions.slice(0, lastFullIdx).filter((s) => s.session_type === "quick_note")
     : sessions.filter((s) => s.session_type === "quick_note").slice(0, 5);

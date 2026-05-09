@@ -62,7 +62,7 @@ export interface SessionSummary {
   supplement_count: number;
   synthesis_notes?: string;
   /** Parsed from the [session_type: ...] prefix in presenting_complaints */
-  session_type: "discovery_consultation" | "pre_intake" | "full_assessment" | "check_in" | "quick_note";
+  session_type: "discovery" | "intake" | "check_in" | "quick_note";
   /** Parsed from the [Requested labs: ...] marker in coach_notes */
   requested_labs: string[];
   /** Five pillars snapshot captured during this session (if any) */
@@ -449,7 +449,7 @@ export interface FivePillarsData {
 
 export interface SaveSessionInput {
   client_id: string;
-  session_type: "discovery_consultation" | "pre_intake" | "check_in" | "quick_note";
+  session_type: "discovery" | "intake" | "check_in" | "quick_note";
   session_date?: string;               // ISO YYYY-MM-DD; defaults to today
   selected_symptoms?: string[];
   presenting_complaints?: string;
@@ -511,8 +511,8 @@ export interface SessionAnalysisData {
 
 /**
  * Read raw session YAMLs and return just the ai_analysis fields needed for
- * IFM node scoring. Filters to full_assessment sessions only.
- * Used by the IFM trend component — only called when ≥2 full sessions exist.
+ * IFM node scoring. Filters to intake sessions only (these carry AI analysis).
+ * Used by the IFM trend component — only called when ≥2 intake sessions exist.
  */
 export async function loadFullSessionAnalysisAction(
   clientId: string
@@ -534,7 +534,7 @@ export async function loadFullSessionAnalysisAction(
       const s = yaml.load(raw) as Record<string, unknown>;
       const presenting = s.presenting_complaints as string | undefined;
       const sessionType = parseSessionType(presenting);
-      if (sessionType !== "full_assessment") continue;
+      if (sessionType !== "intake") continue;
 
       const ai = (s.ai_analysis as Record<string, unknown> | undefined) ?? {};
       // Drivers can be at ai.likely_drivers or ai.suggestions.likely_drivers

@@ -44,7 +44,7 @@ function SymptomBurdenChart({
         const isLast = i === sessions.length - 1;
         const delta = i > 0 ? s.count - sessions[i - 1].count : 0;
         const barColor =
-          s.type === "full_assessment" ? "#6366f1"
+          s.type === "intake" ? "#6366f1"
           : s.type === "check_in" ? "#10b981"
           : "#94a3b8";
 
@@ -158,9 +158,9 @@ export function OutcomeProgressCard({ sessions }: { sessions: SessionSummary[] }
     [sessions]
   );
 
-  // Only full_assessment + check_in sessions carry symptom data worth trending
+  // Only intake + check_in sessions carry symptom data worth trending
   const assessmentSessions = sorted.filter(
-    (s) => s.session_type === "full_assessment" || s.session_type === "check_in"
+    (s) => s.session_type === "intake" || s.session_type === "check_in"
   );
 
   // Symptom burden points — last 10 sessions

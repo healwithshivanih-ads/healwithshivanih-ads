@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
-"""Save a lightweight session (pre-intake or check-in) without running AI.
+"""Save a lightweight session (discovery / check-in / quick note) without running AI.
+
+Intake sessions go through the assess flow (assess.py), not this shim.
 
 Reads JSON from stdin:
 {
   "client_id": str,
-  "session_type": "pre_intake" | "check_in",
+  "session_type": "discovery" | "check_in" | "quick_note" | "intake",
   "session_date": str | null,          # ISO YYYY-MM-DD; defaults to today
   "selected_symptoms": [str],
   "presenting_complaints": str,
   "coach_notes": str,
-  "requested_labs": [str]              # suggested lab slugs for pre-intake
+  "requested_labs": [str]              # suggested lab slugs for discovery
 }
 
 Writes JSON to stdout:
@@ -51,7 +53,7 @@ def main() -> int:
         json.dump({"ok": False, "session_id": None, "error": "client_id required"}, sys.stdout)
         return 2
 
-    session_type: str = payload.get("session_type") or "pre_intake"
+    session_type: str = payload.get("session_type") or "discovery"
     session_date_str: str = payload.get("session_date") or ""
     try:
         session_date = date.fromisoformat(session_date_str) if session_date_str else date.today()
