@@ -1,0 +1,16 @@
+id: vitaone-product-catalog
+title: VitaOne — Live Affiliate Product Catalogue
+source_type: other
+quality: moderate
+url: https://vitaone.in/shop
+authors:
+- VitaOne
+notes: Live affiliate product catalogue at vitaone.in/shop. Used as the source
+  citation for stub Supplement entries that map to specific VitaOne-branded
+  products, pending detailed ingredient / dose data extraction via
+  scripts/vitaone-scrape.py. Each stub cites this source until refined with
+  the actual product-page citation.
+version: 1
+status: active
+updated_at: '2026-05-09'
+updated_by: shivani

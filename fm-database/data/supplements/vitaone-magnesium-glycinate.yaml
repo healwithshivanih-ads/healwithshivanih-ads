@@ -1,0 +1,35 @@
+slug: vitaone-magnesium-glycinate
+display_name: VitaOne Magnesium Glycinate
+category: mineral
+forms_available:
+- capsule
+- powder
+typical_dose_range:
+  capsule:
+    min: 200
+    max: 600
+    unit: mg
+  powder:
+    min: 200
+    max: 600
+    unit: mg
+timing_options:
+- evening
+- bedtime
+- with_dinner
+take_with_food: optional
+notes_for_coach: VitaOne-branded magnesium bisglycinate — gentle on the gut, well
+  absorbed, calming. First-line for sleep, muscle tension, anxiety, constipation.
+  Stub entry — refine dose ranges. Typical 200–600 mg elemental magnesium daily,
+  evening preferred for sleep benefit. Space 2 hours from zinc, calcium, and
+  thyroid medication.
+evidence_tier: strong
+sources:
+- id: vitaone-product-catalog
+  location: vitaone.in/shop product page
+  quote: Stub catalogue entry — VitaOne-branded product. Refine when full
+    product details are parsed via scripts/vitaone-scrape.py.
+status: active
+version: 1
+updated_at: '2026-05-09'
+updated_by: shivani

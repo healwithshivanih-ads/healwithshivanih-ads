@@ -1,0 +1,36 @@
+slug: vitaone-ashwagandha
+display_name: VitaOne Ashwagandha
+category: herb
+forms_available:
+- capsule
+- powder
+typical_dose_range:
+  capsule:
+    min: 300
+    max: 600
+    unit: mg
+  powder:
+    min: 1
+    max: 5
+    unit: g
+timing_options:
+- evening
+- bedtime
+- with_dinner
+take_with_food: optional
+notes_for_coach: VitaOne-branded ashwagandha (KSM-66 standardised extract is the
+  evidence-supported form). Adaptogen for HPA-axis support, cortisol modulation,
+  sleep, anxiety. Typical dose 300–600 mg standardised extract daily.
+  CONTRAINDICATED in pregnancy, hyperthyroidism, autoimmune thyroid (can flare
+  antibodies in some Hashimoto's clients — verify before use). Stub entry —
+  refine evidence-tier when full citation set is available.
+evidence_tier: plausible_emerging
+sources:
+- id: vitaone-product-catalog
+  location: vitaone.in/shop product page
+  quote: Stub catalogue entry — VitaOne-branded product. Refine when full
+    product details are parsed via scripts/vitaone-scrape.py.
+status: active
+version: 1
+updated_at: '2026-05-09'
+updated_by: shivani
