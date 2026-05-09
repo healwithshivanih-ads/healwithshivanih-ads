@@ -959,12 +959,14 @@ def wrap_in_brand_html(
   }})();
   </script>
 
-  <!-- Recipe linking: index ✦ headings, link ✦ symbols in meal plan tables -->
+  <!-- Recipe linking: index recipe-style h3 headings (✦ dishes + teas/home
+       remedies whose h3 starts with a letter), then turn each meal-plan table
+       LINE (each <br>-separated segment) into a clickable jump-to-recipe
+       anchor — making the whole line clickable, not just the ✦ symbol. -->
   <script>
   (function () {{
-    var SYMBOL = '✦'; // ✦
+    var SYMBOL = '✦';
 
-    // ── Helper: build a slug from heading text ───────────────────────────────
     function slugify(text) {{
       return 'recipe-' + text
         .replace(new RegExp(SYMBOL, 'g'), '')
@@ -974,66 +976,104 @@ def wrap_in_brand_html(
         .slice(0, 60);
     }}
 
-    // ── Helper: extract meaningful words from a string ───────────────────────
-    function keyWords(text) {{
+    // Strip ✦ + parentheticals so "Methi (Fenugreek) Water" matches cell
+    // text that just says "methi water". Lowercases + collapses whitespace.
+    function searchKey(text) {{
       return text
-        .replace(new RegExp(SYMBOL, 'g'), ' ')
+        .replace(new RegExp(SYMBOL, 'g'), '')
+        .replace(/\([^)]*\)/g, ' ')
         .toLowerCase()
         .replace(/[^a-z0-9 ]/g, ' ')
-        .split(' ')
-        .filter(function (w) {{ return w.length > 2; }});
+        .replace(/\s+/g, ' ')
+        .trim();
     }}
 
-    // ── Step 1: Index every h3 that contains ✦ ──────────────────────────────
+    function keyWords(text) {{
+      return searchKey(text).split(' ').filter(function (w) {{ return w.length > 2; }});
+    }}
+
+    // ── Step 1: Index recipe-style h3 headings ──────────────────────────────
+    // A recipe-style heading (a) starts with ✦, OR (b) starts with a letter or
+    // digit (i.e. NOT an emoji-prefixed section divider like "🌙 Night Hunger"),
+    // AND has ≥ 2 words after stripping ✦/parentheticals (so single-word names
+    // like "Salad" can't false-match common cells). This is what lets teas /
+    // home remedies (Methi Water, Golden Milk, Jeera Water) get indexed even
+    // though their h3 has no ✦.
     var recipes = [];
     document.querySelectorAll('h3').forEach(function (h3) {{
-      if (h3.textContent.indexOf(SYMBOL) === -1) return;
-      var id = slugify(h3.textContent);
+      var raw = h3.textContent.trim();
+      if (!raw) return;
+      var startsWithSymbol = raw.charAt(0) === SYMBOL;
+      var startsWithAlnum = /^[A-Za-z0-9]/.test(raw);
+      if (!startsWithSymbol && !startsWithAlnum) return;
+      var key = searchKey(raw);
+      var words = keyWords(raw);
+      if (!key || words.length < 2) return;
+      var id = slugify(raw);
       h3.id = id;
-      recipes.push({{ id: id, words: keyWords(h3.textContent) }});
+      recipes.push({{ id: id, key: key, words: words, name: raw }});
     }});
 
-    if (recipes.length === 0) return; // no recipes — nothing to do
+    if (recipes.length === 0) return;
+
+    // Sort longest key first so substring matching prefers more specific names.
+    recipes.sort(function (a, b) {{ return b.key.length - a.key.length; }});
 
     // ── Step 2: Show the recipe note banner ──────────────────────────────────
     var note = document.getElementById('recipe-note');
     if (note) note.style.display = 'block';
-
-    // Move the print bar AFTER the note now that it's visible
     var bar = document.querySelector('.week-print-bar');
     if (bar && note) note.after(bar);
 
-    // ── Step 3: Link dish name + ✦ in every table cell to its recipe ────────
-    document.querySelectorAll('td').forEach(function (td) {{
-      if (td.textContent.indexOf(SYMBOL) === -1) return;
+    // ── Step 3: Per-line link wrapping in every meal-plan table cell ────────
+    // Split each cell on <br>; for each segment, score every indexed recipe
+    // (substring-match bonus + word overlap), pick the best, and wrap the
+    // ENTIRE segment in a single anchor — clicking anywhere on the line jumps
+    // to the recipe. Standalone ✦ markers in the segment are stripped (the
+    // link styling is the visual cue now).
+    var BR_SPLIT = /(<br\s*\/?\s*>)/gi;
 
-      // Score each recipe by word overlap with the cell text
-      var cellWords = keyWords(td.textContent);
+    function bestRecipeFor(plainText) {{
+      var t = plainText.toLowerCase();
       var best = null;
       var bestScore = 0;
-
       recipes.forEach(function (r) {{
         var score = 0;
-        r.words.forEach(function (rw) {{
-          if (cellWords.indexOf(rw) !== -1) score++;
+        if (t.indexOf(r.key) !== -1) score += 5;          // strong: full name verbatim
+        r.words.forEach(function (w) {{
+          if (t.indexOf(w) !== -1) score += 1;            // fallback: word overlap
         }});
         if (score > bestScore) {{ bestScore = score; best = r; }}
       }});
+      // Require either a substring hit (≥ 5) or ≥ 2 word matches to avoid
+      // false positives on cells that share a single common ingredient word.
+      return bestScore >= 5 || bestScore >= 2 ? best : null;
+    }}
 
-      // Replace "dish name ✦" with a link wrapping BOTH the name and symbol.
-      // Pattern: any text (not containing an HTML tag) followed by optional
-      // whitespace then ✦ — this makes the full dish name clickable.
-      if (best) {{
-        var anchorId = best.id;
-        td.innerHTML = td.innerHTML.replace(
-          /([^<>]*?)[ \t]*✦/g,
-          function (match, dishText) {{
-            var dish = dishText.trim();
-            var inner = dish ? dish + ' ✦' : '✦';
-            return '<a href="#' + anchorId + '" class="recipe-link" title="Jump to recipe">' + inner + '</a>';
-          }}
-        );
-      }}
+    document.querySelectorAll('td').forEach(function (td) {{
+      if (!/[A-Za-z]/.test(td.textContent)) return; // skip "—" / placeholder cells
+
+      var html = td.innerHTML;
+      var parts = html.split(BR_SPLIT); // alternating: text, <br>, text, …
+      var changed = false;
+      var rebuilt = parts.map(function (part) {{
+        if (BR_SPLIT.test(part)) {{ BR_SPLIT.lastIndex = 0; return part; }}
+        var plain = part
+          .replace(/<[^>]+>/g, '')
+          .replace(new RegExp(SYMBOL, 'g'), '')
+          .trim();
+        if (plain.length < 3) return part;
+        var r = bestRecipeFor(plain);
+        if (!r) return part;
+        var inner = part
+          .replace(new RegExp('\\s*' + SYMBOL + '\\s*', 'g'), ' ')
+          .replace(/^\s+|\s+$/g, '');
+        if (!inner) return part;
+        changed = true;
+        return '<a href="#' + r.id + '" class="recipe-link" title="Jump to recipe: ' +
+               r.name.replace(/"/g, '&quot;') + '">' + inner + '</a>';
+      }});
+      if (changed) td.innerHTML = rebuilt.join('');
     }});
   }})();
   </script>
