@@ -1494,6 +1494,13 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 
 ### 🔵 Planned later (not relevant now)
 - **Supplement refill reminder** — not relevant currently (clients source supplements independently). Estimate run-out date from dose × quantity purchased × start date. Revisit if coach manages supplement purchases directly.
+- **Order-through-coach for VitaOne supplements** — *awaiting reply from VitaOne partner support (email sent 2026-05-09)*. Goal: client requests an order via the coach's app → coach places the order on vitaone using affiliate code vita13720sh → vitaone ships direct to client. Eliminates affiliate-link drop-off and keeps the brand consistent. Phased plan:
+  - **Phase 1 (lightest, ~0.5 day)**: WhatsApp handoff button on the client letter — pre-fills a message to coach with the protocol + client address.
+  - **Phase 2 (~2-3 days)**: in-app order form + coach dashboard tab + per-client `~/fm-plans/clients/<id>/orders/<order-id>.yaml` records with status (pending → placed → shipped → delivered).
+  - **Phase 3 (~1-2 weeks)**: Razorpay/Stripe payment integration, GST invoicing.
+  - **Phase 4 (much later, requires partnership)**: vitaone XML-RPC / GraphQL automation to place orders directly from the coach dashboard.
+  - **Decisions still to make** (waiting on VitaOne reply): does VitaOne offer a practitioner dispensary à la Fullscript / Wellevate? Can affiliates place orders with client shipping addresses and still get attributed? Are there affiliate-only products vs the public catalogue? Do they expose any partner API? Any volume/loyalty programmes?
+  - **Risk/compliance**: liability for prescription-style dispensing in Indian states, stock-outs, refunds, data-minimisation for client home addresses.
 
 **Outstanding (in rough priority order):**
 1. **Coach uses it daily.** Real bugs from real use are more valuable than speculative code.
