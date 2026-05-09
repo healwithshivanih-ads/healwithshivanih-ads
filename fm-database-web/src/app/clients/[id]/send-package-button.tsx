@@ -174,26 +174,44 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
 
   const handleGenerate = () => {
     if (!anyChecked || isGenerating) return;
+    runGenerate(checkedTypes, false);
+  };
+
+  /**
+   * Force-regenerate a single letter type. Bypasses both the disk cache
+   * and the cross-reference (extract-from-consolidated) logic — sends the
+   * full plan back to the AI so the generated content reflects any plan
+   * changes since the cached letter was produced.
+   */
+  const handleRegenerateOne = (pkgType: LetterType) => {
+    if (isGenerating) return;
+    const pkg = PACKAGE_TYPES.find((p) => p.type === pkgType);
+    if (!pkg) return;
+    runGenerate([pkg], true);
+  };
+
+  const runGenerate = (pkgs: typeof PACKAGE_TYPES, force: boolean) => {
     setIsGenerating(true);
 
-    // Reset errors/pending for checked types
+    // Reset errors/pending for the targeted types
     setTypes((prev) => {
       const next = { ...prev };
-      for (const p of checkedTypes) {
+      for (const p of pkgs) {
         next[p.type] = { ...next[p.type], status: "pending", errorMsg: undefined };
       }
       return next;
     });
 
     startTransition(async () => {
-      for (const pkg of checkedTypes) {
+      for (const pkg of pkgs) {
         try {
           const result = await generateClientLetter(
             planSlug,
             clientId,
             undefined,        // weightLossParams — not used in quick package flow
             pkg.type,
-            coachNotes.trim() || undefined
+            coachNotes.trim() || undefined,
+            force,
           );
           setTypes((prev) => ({
             ...prev,
@@ -374,6 +392,17 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
                           <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
                             ✓ Saved {new Date(state.savedAt).toLocaleString("en-IN", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}
                           </span>
+                        )}
+                        {state.status === "done" && (
+                          <button
+                            type="button"
+                            onClick={(e) => { e.stopPropagation(); handleRegenerateOne(pkg.type); }}
+                            disabled={isGenerating}
+                            title="Force fresh AI regeneration (ignores cache + cross-references)"
+                            className="text-[10px] font-medium px-1.5 py-0.5 rounded-full border border-amber-300 text-amber-800 hover:bg-amber-50 disabled:opacity-50"
+                          >
+                            🔄 Regenerate
+                          </button>
                         )}
                       </div>
                       <p className="text-xs text-muted-foreground mt-0.5">{pkg.desc}</p>

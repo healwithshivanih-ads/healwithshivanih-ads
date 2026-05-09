@@ -595,30 +595,30 @@ export async function generateClientLetter(
   weightLoss?: WeightLossParams,
   letterType: LetterType = "consolidated",
   coachNotes?: string,
+  forceRegenerate = false,
 ): Promise<ClientLetterResult & { fromCache?: boolean; extractedFromConsolidated?: boolean }> {
   const dir = await getMealPlanDir(clientId);
   const stem = letterFileStem(planSlug, letterType);
   const targetMdPath = path.join(dir, `${stem}.md`);
 
-  // 1. Cache hit — file already on disk.
-  try {
-    const cached = await fs.readFile(targetMdPath, "utf-8");
-    let cachedHtml: string | null = null;
-    try { cachedHtml = await fs.readFile(path.join(dir, `${stem}.html`), "utf-8"); } catch { /* missing html is ok */ }
-    return { ok: true, markdown: cached, html: cachedHtml ?? undefined, fromCache: true };
-  } catch { /* not in cache, continue */ }
+  // 1. Cache hit — file already on disk. (Skipped when forceRegenerate=true.)
+  if (!forceRegenerate) {
+    try {
+      const cached = await fs.readFile(targetMdPath, "utf-8");
+      let cachedHtml: string | null = null;
+      try { cachedHtml = await fs.readFile(path.join(dir, `${stem}.html`), "utf-8"); } catch { /* missing html is ok */ }
+      return { ok: true, markdown: cached, html: cachedHtml ?? undefined, fromCache: true };
+    } catch { /* not in cache, continue */ }
+  }
 
   // 2. Cross-reference: requested partial, consolidated already exists with markers.
-  if (letterType !== "consolidated") {
+  // Skipped when forceRegenerate=true so the AI rebuilds the partial from scratch.
+  if (!forceRegenerate && letterType !== "consolidated") {
     const consolidatedPath = path.join(dir, `${planSlug}.md`);
     try {
       const consolidatedMd = await fs.readFile(consolidatedPath, "utf-8");
       const extracted = extractSectionFromConsolidated(consolidatedMd, letterType);
       if (extracted) {
-        // Save the extracted section as a standalone partial doc.
-        // We re-wrap in brand HTML by calling brand_html.py via runShim,
-        // but keeping it simple: HTML can be regenerated next time the
-        // coach opens the doc; .md is the source of truth.
         await saveMealPlan(planSlug, clientId, extracted, null, letterType);
         return {
           ok: true,
@@ -630,6 +630,8 @@ export async function generateClientLetter(
   }
 
   // 3. Cross-reference: generating consolidated, partials exist. Load them.
+  // Always done (even when forceRegenerate=true) — consolidated still
+  // benefits from finalised partial content.
   let existingPartials: Record<string, string> = {};
   if (letterType === "consolidated") {
     for (const partial of PARTIAL_TYPES) {
