@@ -1,0 +1,448 @@
+FM COACH — DESIGN PUNCH LIST
+What functionality is missing in the FM Coach App design that needs to be drawn before implementation can complete.
+
+Each item below is a real coach-facing workflow that the design currently doesn't spec. Organised by where it sits in the design's existing structure (sidebar nav item or client-detail tab).
+
+================================================================
+CLIENT DETAIL → PLAN TAB
+================================================================
+The design draws the LETTER editor (section outline → editor pane). The PLAN-AUTHORING side is not drawn. These are the screens where the protocol gets built before any letter is generated.
+
+1. "Create plan" entry point.
+   Where does a plan come from? Auto-generated from an intake assessment? Coach clicks "+ New plan"? Both? Show the moment when a plan first exists.
+
+2. Plan editor — protocol authoring.
+   9 sections of clinical content:
+   - Primary topics + contributing topics (multi-select chips)
+   - Symptoms addressed (multi-select chips)
+   - Hypothesised drivers (mechanism + reasoning text)
+   - Supplement protocol (slug picker + dose + timing + duration_weeks per row)
+   - Lifestyle practices (name + cadence + details per row)
+   - Education modules (target_kind picker + slug + client-facing summary)
+   - Lab orders (test name + reason + urgency)
+   - Referrals (to + reason + urgency: routine / soon / urgent / emergency)
+   - Tracking habits + monitor symptoms + recheck questions
+   - Notes for coach + raw YAML view
+
+3. Lifecycle controls.
+   Status badge: draft / ready_to_publish / published / revoked / superseded.
+   Buttons: Submit (with check findings preview) → Publish (irreversible confirm checkbox) → Revoke (require reason text) → Supersede (creates successor draft).
+   Status history timeline below — each event is state + by + timestamp + reason.
+
+4. Live plan-check sidebar.
+   As the coach edits, deterministic findings appear — CRITICAL (block submit), WARNING (acknowledge), INFO. Should be a fixed-right sticky panel.
+
+5. AI chat panel alongside the editor.
+   Multi-turn conversation about the plan with edit suggestions. Coach can ask "make the supplement section gentler for someone with reflux" and the AI proposes specific edits.
+
+6. Supplement interaction warning.
+   When a planned supplement clashes with a client medication, an amber banner appears at the top of the supplements section listing the conflict.
+
+7. Save-as-template flow.
+   Published plan → "Save as template" → coach names it + adds tags → becomes reusable for future clients via a custom-templates picker.
+
+8. Generate follow-up plan.
+   When a published plan's recheck date passes → "Generate follow-up plan (next phase)" → AI drafts a phase-2 successor plan based on outcomes from current plan.
+
+9. Plan diff viewer.
+   Pick two plans by slug → unified diff (green +, red −, purple @@). Useful for "what changed between v1 and v2".
+
+10. Edit-vs-share toggle.
+    Same plan, two views — clinical (slugs visible, evidence-tier badges, drug-style format) for coach editing, vs warm narrative for the client letter. Coach toggles between them.
+
+
+================================================================
+CLIENT DETAIL → ANALYSE TAB
+================================================================
+The design has a great post-assessment workspace (functional matrix + hypothesis tree + draft plan emerging). Missing: everything BEFORE the assessment runs and everything ACROSS time.
+
+11. Inputs side of full assessment.
+    File upload for transcript / lab reports / food journal, drag-drop area, plus a "use a file already on this client" picker for previously uploaded labs. Show what happens during extraction (loading, progress, what the AI is reading).
+
+12. Lab values editor + lab pattern banners.
+    Once labs are extracted from a PDF, coach reviews the table: marker / value / unit / reference range / FM-flag. Pattern banners auto-detect (e.g. "🚩 Likely subclinical hypothyroid: TSH 3.8, fT3 low-optimal").
+
+13. FM ratio cards.
+    Computed ratios with status colour coding:
+    - HOMA-IR (insulin resistance)
+    - TG/HDL ratio (metabolic health)
+    - T3/T4 ratio (thyroid conversion)
+    - fT3/rT3 ratio
+    - Transferrin saturation
+    - LDL/HDL ratio
+    Each card: ratio name, computed value, FM-optimal range, 🟢/🟡/🔴 status. Inline above or beside the lab values table.
+
+14. Lab reference ranges editor.
+    Per-client editable FM optimal ranges (e.g. TSH 1–2 for this client). Default 14 markers shown, all editable. Saved to client profile.
+
+15. Five Pillars capture widget.
+    Compact 5-column rating UI inline in the intake / check-in form:
+    - 😴 Sleep (1–5 quality + hours number)
+    - 🧘 Stress (1–5, inverted — low is good)
+    - 🏃 Movement (0–7 days/week + intensity)
+    - 🥗 Nutrition (1–5)
+    - 🤝 Connection (1–5)
+    Each rating with red/amber/emerald colour tier. Coach fills during a session.
+
+16. IFM Trend (longitudinal).
+    Same 7 IFM nodes as the Functional Matrix but plotted over time so coach can see Defense improving and Energy worsening across visits. Shown when ≥2 intake sessions exist.
+
+17. Outcome progress card.
+    Symptom burden bar chart over the last 10 sessions (lower bar = fewer symptoms reported). Below it: Five Pillars horizontal bars with delta arrows vs prior session. Colour-coded improvements/regressions.
+
+18. Protocol adherence grid.
+    Rows = each supplement / practice in the active plan. Columns = each check-in date.
+    Cell status:
+    - ✅ emerald: still taking
+    - 🔄 blue: sometimes
+    - ⚠️ amber: side effects
+    - ❌ red: stopped
+    - — gray: not recorded
+    A coloured grid the coach scans in 3 seconds.
+
+19. Lab comparison view.
+    Side-by-side two health snapshots: "baseline" + "3-month follow-up" → see deltas per marker. Different from longitudinal — this is just two columns picked by the coach.
+
+
+================================================================
+CLIENT DETAIL → OVERVIEW TAB
+================================================================
+
+20. Workflow stage banner.
+    Different banner per stage of client lifecycle:
+    - no_plan (amber): "Step 1 of 3 · Run an assessment →"
+    - draft (slate): "Step 2 of 3 · Edit and activate"
+    - active (green): "Step 3 of 3 · Generate letters →"
+    - recheck (indigo): "Protocol complete · Reassess →"
+    - returning (violet): "Welcome back — N days since last session"
+
+21. Lab reference ranges card.
+    Same 14-marker editor as #14, but as a collapsible card on Overview too.
+
+22. IFM Timeline card.
+    Antecedents / Triggers / Mediators / Resolution view of life events with mechanism-link chips. Vertical chronological timeline. Each event has:
+    - Year + age-at-event
+    - ATM tag (Antecedent / Trigger / Mediator / Resolution)
+    - Category badge (or "✨ extracted by AI" for AI-inferred events)
+    - Event description
+    - Italic rationale (one line, why this ATM call)
+    - Linked mechanism slugs as indigo chips ("Drives:" prefix)
+
+
+================================================================
+CROSS-TAB MODALS
+================================================================
+
+23. Pre-session brief modal.
+    Coach opens before joining a Zoom call. Print-ready one-pager:
+    - Client snapshot (age, conditions, current plan stage)
+    - Last session summary
+    - Active plan supplements + practices
+    - Recent quick notes (since last full session)
+    - Pending labs
+    - Suggested questions list
+    Has 🖨 Print / Save PDF button.
+
+24. Per-session brief modal.
+    Triggered from any session in the timeline. Print-ready one-pager of THAT session: presenting complaints, AI drivers, supplements discussed, labs ordered, Five Pillars snapshot. Different scope to #23.
+
+25. Edit-before-download letter.
+    In Plan → Send package, before downloading, coach can flip a section to monospace markdown editor and tweak last-minute. (The design's section editor may already cover this — confirm.)
+
+
+================================================================
+CLIENT DETAIL → COMMUNICATE TAB
+================================================================
+
+26. Message templates library — management.
+    Add / edit / delete reusable templates. {{variable}} auto-detected from body (e.g. {{name}}, {{date}}, {{lab_test}}). Per-template default channel. List view with category grouping.
+
+27. Inbound message thread.
+    When client replies via WhatsApp / SMS / email, where does the message land?
+    Right now the design's Communicate tab shows SEND only. Design the inbound side too — a chat-like thread with timestamps + channel icons. Coach can reply inline.
+
+28. Channel-aware send preview.
+    Live preview that changes formatting per channel — WhatsApp markdown vs plain SMS vs HTML email.
+
+
+================================================================
+TOP-LEVEL — DASHBOARD
+================================================================
+
+29. AiSensy unmatched-inbox badge.
+    When inbound WhatsApp messages arrive from phone numbers NOT yet on any client, where does the coach review and either match-to-existing-client or create-new-client? Badge somewhere on dashboard with a count + link to a triage list.
+
+30. Broadcast panel.
+    Send a campaign to a recipient cohort:
+    - follow-up due
+    - recheck due
+    - all active
+    - custom (checkbox per client)
+    Plus 3-param input + recipient count + "Send via WhatsApp / SMS / email" button. Live preview of one rendered message.
+
+31. Catalogue uncommitted-changes banner.
+    "📚 N uncommitted YAML changes — commit?" amber banner. Opens a one-click commit modal with optional message field. Operational; appears only when there are pending changes.
+
+
+================================================================
+TOP-LEVEL — CALENDAR
+================================================================
+
+32. Design has Calendar as a nav item but the page itself isn't drawn. Show:
+    - Month / week view
+    - Sessions plotted at their times
+    - Click a session → opens that client's session detail
+    - Overdue follow-ups (next_contact_date passed) marked red
+    - Upcoming follow-ups (next 7 days) marked amber
+
+
+================================================================
+TOP-LEVEL — MESSAGES (INBOX)
+================================================================
+
+33. Design has Messages as a nav item but the page isn't drawn. Show:
+    - List of clients ordered by most-recent message
+    - Unread count per row
+    - Channel icon (WhatsApp / SMS / email) per row
+    - Click → opens that client's Communicate tab thread
+
+
+================================================================
+TOP-LEVEL — BACKLOG
+================================================================
+
+34. Design has the index but per-row triage actions aren't drawn. Each row needs:
+    - 💡 suggestion chip showing target entity + mode (claim / alias / notes)
+    - Promote button (kind picker + slug + display_name pre-filled from item name)
+    - Reject button (optional reason text)
+    - Attach button (target kind picker + entity search + mode: claim / alias / notes)
+    Plus bulk-select toolbar at top with: select all visible, bulk reject with shared reason, mark X as Added (for catalogue items already authored manually).
+
+35. Supplement Links tab inside Backlog.
+    CRUD for custom affiliate URLs (Amazon / iHerb / brand sites) for supplements not on the default catalogue. Keyword-based search + edit + delete per row.
+
+
+================================================================
+TOP-LEVEL — INGEST
+================================================================
+
+36. Design has the index but per-batch lifecycle isn't drawn. After a doc is ingested:
+    Batch panel shows:
+    - "📦 N entities staged"
+    - Review YAML (read-only YAML preview in collapsible)
+    - Approve (with smart-merge toggle, optional --update flag)
+    - Reject (entire batch)
+    Below that: per-entity Enrich panel — add linked_to_topics / linked_to_mechanisms / linked_to_claims / notes_for_coach cross-links before approving. Each staged entity collapsible row.
+
+37. Coach Knowledge ingest tab.
+    Coach types a clinical observation into a textarea →
+    🔍 "Check catalogue first" button → catalogue search shows related entities as colour-coded cards:
+    - green: supports this observation
+    - blue: overlaps
+    - red: conflicts
+    Each card shows: entity name, summary excerpt, relation note. Below: "🧠 Stage observation" button (red "⚠ Stage anyway" if conflicts exist).
+
+38. Add Source tab.
+    Form to register a new Source entity:
+    - ID, title, type (peer_reviewed_paper / textbook / book / website / etc.)
+    - Quality (high / moderate / low)
+    - Authors, year, publisher
+    - URL, DOI, notes
+
+39. Approve all pending button.
+    Amber panel listing N pending batches at the bottom of /ingest. One click approves all that pass validation. Shows approved / skipped / failed counts after.
+
+40. URL ingest input.
+    Alongside file upload — paste any web URL (Google Doc, PDF link, web page). Auto-fetch + html2text → ingest. Source ID + title auto-fill from URL on blur.
+
+
+================================================================
+TOP-LEVEL — RESOURCES
+================================================================
+
+41. Per-resource detail page.
+    Title, kind, audience (client / coach / both), description, content (file path / URL / inline text), related-topics / related-mechanisms / related-supplements as chips, share toggle, license notes.
+
+42. Generate evidence brief wizard (/resources/generate).
+    Topic search → PubMed query (auto-built from topic) → preview top 8 papers → coach selects relevance → Sonnet synthesises → save as Resource YAML with citations.
+
+43. Attach resource to plan flow.
+    From a Resource detail page, "Attach to active plan" → client picker → adds the resource slug to plan.attached_resources. Resources then appear in the client letter render.
+
+44. Filter UI on /resources.
+    - Kind dropdown (cheatsheet / protocol / article / recipe / slide_deck / form)
+    - Audience dropdown (client / coach / both)
+    - Text search
+    - Shareable toggle
+
+
+================================================================
+TOP-LEVEL — MIND MAPS
+================================================================
+
+45. Index shows nav cards. Detail page interactive Mermaid render isn't drawn. Show:
+    Two view tabs:
+    - 📘 Curated — hand-authored MindMap entities
+    - 🌐 Auto from catalogue — live cross-link traversal from any entity
+    Click any node to recenter the map on that node.
+    Below the map: a side panel with the rooted entity's details (summary, evidence tier, scope notes) + clickable nav buttons to walk to children.
+    Linked nodes get kind-prefixed coloured badges (topic / mech / sx / supp / claim / cook / remedy).
+
+
+================================================================
+TOP-LEVEL — CATALOGUE
+================================================================
+
+46. Index shows entity counts. Per-kind detail pages aren't drawn. 8 different shapes, each with its own field layout:
+
+    Topic:
+    - display_name, summary, scope notes (coaching / clinician)
+    - Key mechanisms chips, common_symptoms chips, related_topics chips
+    - Sources, evidence_tier badge
+
+    Mechanism:
+    - Categories, summary
+    - Upstream_drivers, downstream_effects, related_mechanisms
+    - Linked_to_topics
+
+    Symptom:
+    - Categories, severity (common / concerning / red_flag)
+    - Description, when_to_refer
+    - Linked_to_topics, linked_to_mechanisms
+
+    Claim:
+    - Statement, evidence_tier
+    - Source citation card
+    - Linked-to chips (topics, mechanisms, supplements)
+
+    Source:
+    - Citation card (style varies by source_type)
+    - Authors, year, publisher, URL, DOI, quality badge
+
+    Supplement:
+    - forms_available + typical_dose_range per form
+    - Contraindications, interactions
+    - Evidence tier, references
+    - Buy links (custom + VitaOne + Amazon + iHerb)
+
+    CookingAdjustment:
+    - swap_from, benefits, how_to_use, cautions
+
+    HomeRemedy:
+    - Indications, contraindications, preparation, typical_dose, duration, timing_notes
+
+47. Cross-link chips between catalogue items.
+    Every reference in a detail page becomes a clickable navigation chip. The catalogue is a graph, not just leaves. Coach can click from a topic to one of its mechanisms to that mechanism's related-mechanism, etc.
+
+
+================================================================
+TOP-LEVEL — NEW CLIENT (ONBOARDING WIZARD)
+================================================================
+
+48. Design has 4-step wizard. Add Step 1 = "Drop a transcript".
+    On step 1, coach drops a Zoom transcript / consultation recording. AI auto-fills subsequent steps from extracted data:
+    - Bio (name, email, age, sex, mobile)
+    - Conditions, medications, allergies, goals
+    - Family history
+    - Dietary preference, foods to avoid
+    - Lifestyle baseline (Five Pillars)
+    - Health timeline events
+    - Presenting complaints
+    Coach reviews / edits in steps 2–4 instead of typing from scratch.
+    Show what "✨ AI-filled" indicators look like vs "manually entered" so coach can see what to verify.
+
+
+================================================================
+TOP-LEVEL — SETTINGS
+================================================================
+
+49. Design has Settings as a nav item but the page isn't drawn. Sections:
+    - API keys (Anthropic, AiSensy)
+    - Gmail SMTP credentials (user + app password)
+    - Coach profile (name, photo, signature for letter footer)
+    - Default plan period weeks
+    - Default lab reference ranges (the 14 FM defaults — editable globally)
+    - PM2 / app version info
+    - Branding (logo upload? — probably not needed for v1)
+    - Backup / export client data button
+
+
+================================================================
+TOP-LEVEL — HELP
+================================================================
+
+50. Design has Help as a nav item but the page isn't drawn. Keep minimal:
+    - Common-tasks how-to (record a session, generate a plan, send a letter)
+    - Keyboard shortcuts (⌘K search, etc.)
+    - Contact / support
+
+
+================================================================
+UNIVERSAL
+================================================================
+
+51. Search ⌘K modal.
+    Full-text across clients / plans / topics / supplements / mechanisms / symptoms / claims / sources / mindmaps. Results grouped by entity type with coloured chips. Bookmarkable via ?q= URL param. Triggered by ⌘K from anywhere.
+
+52. Empty states + error states.
+    Each tab/page needs:
+    - "No clients yet" empty state
+    - "No sessions for this client" empty state
+    - "AI extraction failed (retry)" error state
+    - "API key missing → go to Settings" error state
+    - "File upload failed" error state
+    - "Network error / try again" generic error
+    Drawn with brand voice — friendly, actionable, never just "Error".
+
+
+================================================================
+RECOMMENDED DESIGN ORDER (if rationing)
+================================================================
+
+If you ration the design work, the highest-leverage items first:
+
+PRIORITY 1 (most-used screens):
+  - Plan editor + lifecycle + plan-check sidebar (#2–#10)
+  - Pre-session brief + per-session brief modals (#23–#24)
+
+PRIORITY 2 (the "what's working over time" surface):
+  - Five Pillars widget (#15)
+  - Lab pattern banners (#12)
+  - FM ratio cards (#13)
+  - Lab reference ranges editor (#14)
+  - Outcome progress (#17)
+  - Protocol adherence grid (#18)
+  - Lab comparison (#19)
+  - IFM Trend longitudinal (#16)
+  - IFM Timeline ATM card (#22)
+
+PRIORITY 3 (catalogue authoring loop):
+  - Backlog row interactions + Supplement Links (#34, #35)
+  - Ingest batch lifecycle + Coach Knowledge + Add Source + Approve all + URL ingest (#36–#40)
+
+PRIORITY 4 (daily reference):
+  - Catalogue 8-kind detail pages + cross-link chips (#46, #47)
+  - Mindmap interactive Mermaid view (#45)
+  - Resources detail + filter + generate brief + attach to plan (#41–#44)
+
+PRIORITY 5 (communication):
+  - Messages inbox top-level (#33)
+  - Inbound message thread per client (#27)
+  - Templates management (#26)
+  - Channel-aware preview (#28)
+  - Broadcast panel (#30)
+  - AiSensy unmatched-inbox (#29)
+
+PRIORITY 6 (operational, polish):
+  - Calendar (#32)
+  - Settings (#49)
+  - Help (#50)
+  - Onboarding transcript-first step (#48)
+  - Workflow stage banner colours (#20)
+  - Catalogue uncommitted-changes banner (#31)
+  - Search ⌘K modal (#51)
+  - Empty states + error states (#52)
+
+================================================================
+END
+================================================================
