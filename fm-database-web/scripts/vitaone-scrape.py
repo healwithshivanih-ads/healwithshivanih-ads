@@ -12,9 +12,12 @@ modes — pick whichever is convenient:
 
   Mode B — Odoo session cookie value only (faster, no creds at rest)
       # In Chrome: F12 → Application → Cookies → vitaone.in
-      #            → copy the value of the `_ei_sid` cookie (Odoo's session
-      #            name; NOT 'session_id' — vitaone uses _ei_sid)
-      export VITAONE_SESSION_ID="<paste _ei_sid value>"
+      #            → copy the value of the `session_id` cookie (long token,
+      #            ~80 chars, alpha-numeric — this is the real Odoo auth
+      #            cookie). The short `_ei_sid` cookie alongside it is an
+      #            analytics ID and does NOT authenticate; using it returns
+      #            an anonymous catalog (the v0.42 PR #14 mistake).
+      export VITAONE_SESSION_ID="<paste session_id value>"
       python3 scripts/vitaone-scrape.py
 
   Mode C — full Cookie string (for sites behind Cloudflare cf_clearance)
@@ -94,14 +97,24 @@ def authenticate() -> str:
         session.headers["Cookie"] = cookie_full
         return f"Cookie header ({len(cookie_full)} chars)"
 
-    # Mode B — Odoo session cookie alone. Vitaone uses `_ei_sid` (Odoo's
-    # default session cookie name), NOT `session_id`. Set both for safety
-    # in case a future Odoo upgrade ever switches.
+    # Mode B — Odoo session cookie alone. The real auth cookie is
+    # `session_id` (long token). `_ei_sid` is an analytics cookie that does
+    # not authenticate; PR #14 set it by mistake and returned the anonymous
+    # catalog. Heuristic: if the value looks short and timestamp-flavoured
+    # (≤ 30 chars or contains a `.`), warn the user — they probably copied
+    # the wrong cookie.
     sid = os.environ.get("VITAONE_SESSION_ID")
     if sid:
-        session.cookies.set("_ei_sid", sid, domain="vitaone.in")
+        if len(sid) <= 30 or "." in sid:
+            print(
+                "  ! VITAONE_SESSION_ID looks like the short `_ei_sid` analytics "
+                "cookie, not the long `session_id` auth cookie.\n"
+                "    Re-grab the value of the `session_id` cookie from DevTools "
+                "(should be ~80 alphanumeric chars).",
+                file=sys.stderr,
+            )
         session.cookies.set("session_id", sid, domain="vitaone.in")
-        return f"_ei_sid cookie ({sid[:6]}…)"
+        return f"session_id cookie ({sid[:6]}…, {len(sid)} chars)"
 
     # Mode A — email + password POST to /web/login (Odoo standard)
     email = os.environ.get("VITAONE_EMAIL")
