@@ -430,9 +430,31 @@ def _load_client(client_id: str) -> dict | None:
     if not p.exists():
         return None
     try:
-        return yaml.safe_load(p.read_text())
+        client_dict = yaml.safe_load(p.read_text()) or {}
     except Exception:
         return None
+
+    # Compute today's cycle phase from cycle_status + LMP + cycle length.
+    # Sidecar field `_computed_cycle_phase` is read by `_top_of_mind_block`
+    # and any prompt that includes cycle-aware nutrition / movement rules.
+    try:
+        from fmdb.plan.models import Client as _ClientModel
+        cm = _ClientModel.model_validate(client_dict)
+        cyc = cm.cycle_context()
+        if cyc:
+            phase = cyc.get("phase") or cyc.get("status")
+            day = cyc.get("cycle_day")
+            length = cyc.get("cycle_length")
+            human = phase or ""
+            if day and length:
+                human = f"{phase} (day {day} of {length})"
+            client_dict["_computed_cycle_phase"] = human
+            client_dict["_cycle_context"] = cyc
+    except Exception:
+        # Best-effort; if the model load fails (e.g. older YAML), skip.
+        pass
+
+    return client_dict
 
 
 def _load_catalogue_notes(plan: dict) -> str:
@@ -977,6 +999,123 @@ BANNED-GENERIC rule below.
 """
 
 
+def _cycle_block(client: dict) -> str:
+    """Return cycle-aware nutrition + movement rules for the prompt, or empty
+    string if cycle context isn't applicable (men, not_applicable, missing LMP).
+
+    Reads `client['_cycle_context']` set by `_load_client()`.
+    """
+    cyc = client.get("_cycle_context") or {}
+    if not cyc:
+        return ""
+    phase = cyc.get("phase")
+    status = cyc.get("status")
+    day = cyc.get("cycle_day")
+    length = cyc.get("cycle_length") or 28
+    days_until = cyc.get("days_until_next_period")
+    confidence = cyc.get("confidence", "high")
+    note = cyc.get("note", "")
+
+    if status == "postmenopausal":
+        return f"""
+🌙 CYCLE STATUS — POSTMENOPAUSAL:
+This client is postmenopausal. Use a STABLE protocol — no phase-syncing.
+- Phytoestrogen support DAILY: 1–2 tbsp ground flaxseed; phytoestrogenic
+  greens; soy if tolerated; red clover.
+- Strength training MINIMUM 3×/week — bone density is now the main risk.
+- Blood-sugar stability is paramount (oestrogen no longer cushions glucose
+  swings): protein at every meal, no fasting after dinner, walks after
+  meals.
+- Gut health for oestrogen recycling: cruciferous vegetables, fibre 25–35g.
+- Reference '{first_name}'s postmenopausal status' explicitly when giving
+  food / movement advice — this is the lens the whole plan uses.
+""".replace("{first_name}", client.get("display_name", "the client").split()[0])
+
+    if not phase or status == "perimenopausal" and not day:
+        return ""
+
+    # Build the phase-specific rules text.
+    phase_rules = {
+        "menstrual": (
+            "MENSTRUAL PHASE (day 1–5):\n"
+            "- Iron-rich foods FRONT-AND-CENTRE: red meat or lentils + dates + "
+            "blackstrap molasses + spinach. Pair with vitamin C (lemon, amla) "
+            "for absorption.\n"
+            "- Movement: walks, restorative yoga, gentle stretching ONLY. "
+            "No HIIT, no heavy strength training this week.\n"
+            "- Sleep priority: magnesium glycinate 400mg at night, earlier "
+            "bedtime (9-10pm).\n"
+            "- Warming foods: bone broth, cooked roots, ghee. Avoid raw "
+            "salads + cold smoothies this week."
+        ),
+        "follicular": (
+            "FOLLICULAR PHASE (day 6–13, rising oestrogen):\n"
+            "- Lighter, fresher meals — sprouts, salads, fermented foods "
+            "(if tolerated). Energy is rising; capitalise.\n"
+            "- Movement: HIIT, strength training, longer cardio all welcome. "
+            "Body recovers fastest in this phase.\n"
+            "- Protein for steady energy + muscle-building: eggs, fish, "
+            "paneer, dal at lunch.\n"
+            "- Cruciferous veg daily for healthy oestrogen metabolism."
+        ),
+        "ovulatory": (
+            "OVULATORY PHASE (day ~14, oestrogen peak):\n"
+            "- Anti-inflammatory bias: leafy greens, berries (in season), "
+            "turmeric, omega-3s. Skin tends to look the best this phase.\n"
+            "- Movement: high-intensity is fine; group classes / social "
+            "movement leverages the energy + mood high.\n"
+            "- Light + bright meals; minimise heavy oils + fried foods this "
+            "week.\n"
+            "- Cruciferous veg + flaxseed continue for E2 clearance."
+        ),
+        "early_luteal": (
+            "EARLY LUTEAL (day 15–~21, rising progesterone):\n"
+            "- Complex carbs return — sweet potato, ragi, quinoa, dal+rice. "
+            "Progesterone increases insulin needs.\n"
+            "- B6 (chickpeas, sunflower seeds, banana) + magnesium "
+            "(pumpkin seeds, dark chocolate) for PMS prevention.\n"
+            "- Movement: moderate intensity — yoga flow, brisk walks, "
+            "moderate strength. Avoid pushing PRs.\n"
+            "- Protein still high; introduce evening snack if blood sugar "
+            "drops."
+        ),
+        "late_luteal": (
+            "LATE LUTEAL / PMS WINDOW (day ~22–28, progesterone falling):\n"
+            "- BLOOD SUGAR STABILITY IS PARAMOUNT: protein at EVERY meal, "
+            "no fasting, no skipping breakfast. PMS symptoms 90% blood-sugar "
+            "driven.\n"
+            "- Reduce refined carbs aggressively this week — they amplify "
+            "PMS mood/cravings.\n"
+            "- Movement: restorative ONLY — yoga, walks, swimming. No HIIT.\n"
+            "- Magnesium 400mg + B6 100mg evenings. Dark chocolate (>70%) "
+            "as a PMS-friendly treat.\n"
+            "- Sleep priority — pre-bed routine non-negotiable; cortisol "
+            "is high this week."
+        ),
+    }
+
+    rule = phase_rules.get(phase, "")
+    if not rule:
+        return ""
+
+    confidence_note = ""
+    if confidence == "low":
+        confidence_note = (
+            "\nNote: this client's cycle is irregular (perimenopause / "
+            "stress / PCOS), so phase is best-effort. Apply rules loosely "
+            "and note the variability in the plan."
+        )
+
+    return f"""
+🌙 CYCLE-SYNCED NUTRITION & MOVEMENT (phase-specific rules — must be applied):
+{rule}{confidence_note}
+
+Today this client is on day {day} of {length} (~{days_until} days until next period).
+The meal plan and movement recommendations MUST reflect this phase.
+{note}
+"""
+
+
 # Generic-tip banlist — same wording across all 4 builders so behaviour is
 # consistent. Insert near the writing rules in each prompt.
 _BANNED_GENERIC_RULE = """
@@ -1117,11 +1256,13 @@ Use these tips in relevant meal sections — don't dump them all in one place. M
 """
 
     top_of_mind = _top_of_mind_block(client, plan)
+    cycle = _cycle_block(client)
 
     prompt = f"""You are writing a warm, friendly {plan_weeks}-week MEAL PLAN document for a client.
 The coach (Shivani Hariharan) has prepared a structured plan. Turn the nutrition data into a beautiful, practical meal plan the client can actually USE.
 
 {top_of_mind}
+{cycle}
 {_BANNED_GENERIC_RULE}
 
 CLIENT PROFILE:
@@ -1229,10 +1370,12 @@ COACH'S CUSTOM KNOWLEDGE (weave naturally into the intro and tips):
 """
 
     top_of_mind = _top_of_mind_block(client, plan)
+    cycle = _cycle_block(client)
 
     prompt = f"""You are writing a short supplement protocol introduction letter for a client.
 
 {top_of_mind}
+{cycle}
 {_BANNED_GENERIC_RULE}
 
 
@@ -1334,12 +1477,14 @@ COACH'S CUSTOM KNOWLEDGE (weave naturally into relevant sections):
 """
 
     top_of_mind = _top_of_mind_block(client, plan)
+    cycle = _cycle_block(client)
 
     prompt = f"""You are writing a warm, practical {plan_weeks}-week COACHING PLAN for a client — covering lifestyle, learning, labs, and tracking.
 This document is the companion to the meal plan and supplement plan. It covers everything EXCEPT food and supplements.
 The coach (Shivani Hariharan) has prepared the structured data below.
 
 {top_of_mind}
+{cycle}
 {_BANNED_GENERIC_RULE}
 
 CLIENT PROFILE:
@@ -1605,12 +1750,14 @@ MOVEMENT & WELLNESS:
 """
 
     top_of_mind = _top_of_mind_block(client, plan)
+    cycle = _cycle_block(client)
 
     prompt = f"""You are writing a warm, friendly, practical {plan_weeks}-week wellness plan letter for a client.
 The coach (Shivani Hariharan, a functional medicine health coach) has prepared this structured plan.
 Your job is to turn the coach's structured data into a beautiful, easy-to-read document the client can actually USE.
 
 {top_of_mind}
+{cycle}
 {_BANNED_GENERIC_RULE}
 
 CLIENT PROFILE:

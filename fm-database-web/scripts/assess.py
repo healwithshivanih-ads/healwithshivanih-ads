@@ -272,6 +272,16 @@ def main() -> int:
         },
     }
 
+    # Cycle context (women clients) — drives phase-synced nutrition + movement
+    # in the AI assessment + plan letter generation. None for men, not_applicable,
+    # or unset.
+    try:
+        cyc = client.cycle_context()
+        if cyc:
+            client_ctx["cycle_context"] = cyc
+    except Exception:
+        pass
+
     # Session-history bundle: compact prior-session summaries.
     prior = plan_storage.list_sessions(root, client.client_id)
     history_bundle = []

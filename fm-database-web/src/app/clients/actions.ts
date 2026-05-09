@@ -81,6 +81,14 @@ export type CreateClientInput = {
   sleep_notes?: string;
   energy_pattern?: string;
   menstrual_notes?: string;   // only sent for female clients
+
+  // Cycle sync (women clients) — drives phase-synced nutrition/movement.
+  cycle_status?: "menstruating" | "perimenopausal" | "postmenopausal" | "not_applicable";
+  last_menstrual_period?: string;     // ISO YYYY-MM-DD
+  cycle_length_days?: number;          // default 28 if unset
+  cycle_regularity?: "regular" | "irregular" | "very_irregular";
+  menopause_started?: string;          // ISO YYYY-MM-DD
+
   stress_response?: string;
   childhood_history?: string;
   toxic_exposures?: string;
@@ -234,6 +242,12 @@ export async function createClient(
     if (str(input.sleep_notes))        extraFields.sleep_notes        = input.sleep_notes!.trim();
     if (str(input.energy_pattern))     extraFields.energy_pattern     = input.energy_pattern!.trim();
     if (str(input.menstrual_notes))    extraFields.menstrual_notes    = input.menstrual_notes!.trim();
+    // Cycle sync — write only when something is set, gated on female sex upstream
+    if (input.cycle_status)              extraFields.cycle_status            = input.cycle_status;
+    if (input.last_menstrual_period)     extraFields.last_menstrual_period   = input.last_menstrual_period;
+    if (input.cycle_length_days != null) extraFields.cycle_length_days       = input.cycle_length_days;
+    if (input.cycle_regularity)          extraFields.cycle_regularity        = input.cycle_regularity;
+    if (input.menopause_started)         extraFields.menopause_started       = input.menopause_started;
     if (str(input.stress_response))    extraFields.stress_response    = input.stress_response!.trim();
     if (str(input.childhood_history))  extraFields.childhood_history  = input.childhood_history!.trim();
     if (str(input.toxic_exposures))    extraFields.toxic_exposures    = input.toxic_exposures!.trim();
