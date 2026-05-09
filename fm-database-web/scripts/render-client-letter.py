@@ -242,6 +242,8 @@ VITAONE_CATALOG = {
     "alpha lipoic acid":         _v("alpha-r-lipoic-acid-alpha-r-lipoic-acid-25",         "Alpha R Lipoic Acid"),
     "r-lipoic acid":             _v("alpha-r-lipoic-acid-alpha-r-lipoic-acid-25",         "Alpha R Lipoic Acid"),
     "ala":                       _v("alpha-r-lipoic-acid-alpha-r-lipoic-acid-25",         "Alpha R Lipoic Acid"),
+    "dialor plus":               _v("liv-bios-dialor-plus-124",                            "Dialor Plus"),
+    "dialor":                    _v("liv-bios-dialor-plus-124",                            "Dialor Plus"),
 
     # ── MCT / ketogenic ──
     "mct oil":                   _v("3z-inby-uz48-mct-oil-8",                            "MCT Oil"),
@@ -596,7 +598,7 @@ _STUB_SLUG_TO_VITAONE_SLUG: dict[str, str] = {
     "vitaone-magnesium-glycinate": "ionic-140-ionic-magnesium-bisglycinate-115",
     "vitaone-ashwagandha": "ashwagandha-ksm-66-600mg-strength-517",
     "opti-liver": "fm-nutrition-opti-liver-76",
-    # dialor-plus: intentionally not on VitaOne.
+    "dialor-plus": "liv-bios-dialor-plus-124",  # VitaOne / Liv Bio's Dialor Plus
 }
 
 
