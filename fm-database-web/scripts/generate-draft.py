@@ -272,6 +272,43 @@ def main() -> int:
     if suggestions.get("synthesis_notes"):
         notes_parts.append(f"AI synthesis notes: {suggestions['synthesis_notes']}")
 
+    # IFM Timeline insights — group AI-classified events by ATM bucket
+    ifm_timeline = suggestions.get("ifm_timeline", []) or []
+    if ifm_timeline:
+        atm_buckets: dict[str, list[str]] = {
+            "antecedent": [], "trigger": [], "mediator": [], "resolution": [],
+        }
+        for ev in ifm_timeline:
+            atm = (ev.get("atm") or "").lower()
+            if atm not in atm_buckets:
+                continue
+            year = ev.get("year")
+            age = ev.get("age_at_event")
+            label_parts = []
+            if year is not None:
+                label_parts.append(str(year))
+            if age is not None:
+                label_parts.append(f"age {age}")
+            prefix = f"[{' · '.join(label_parts)}] " if label_parts else ""
+            line = f"- {prefix}{ev.get('event', '')}"
+            drivers = ev.get("linked_driver_slugs") or []
+            if drivers:
+                line += f"  → {', '.join(drivers)}"
+            atm_buckets[atm].append(line)
+
+        timeline_section = ["📅 IFM Timeline (AI-classified):"]
+        for label, key in [
+            ("Antecedents (predisposing)", "antecedent"),
+            ("Triggers (initiated)", "trigger"),
+            ("Mediators (perpetuating)", "mediator"),
+            ("Resolution / what helped", "resolution"),
+        ]:
+            if atm_buckets[key]:
+                timeline_section.append(f"\n{label}:")
+                timeline_section.extend(atm_buckets[key])
+        if len(timeline_section) > 1:
+            notes_parts.append("\n".join(timeline_section))
+
     if notes_parts:
         plan.notes_for_coach = "\n\n".join(notes_parts)
 

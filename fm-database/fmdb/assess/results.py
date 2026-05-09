@@ -161,6 +161,25 @@ class CatalogueAdditionSuggested(BaseModel):
     why: str
 
 
+class IFMTimelineEvent(BaseModel):
+    """A timeline event classified into the IFM Antecedent/Trigger/Mediator model.
+
+    Combines events captured at intake (client.timeline_events) with any new
+    events the AI extracts from the narrative (transcript / additional_notes).
+    Each event is linked back to the mechanism slugs it most likely drives.
+    """
+    model_config = ConfigDict(extra="ignore")
+    _coerce = model_validator(mode="before")(_coerce_none_strings)
+    year: int | None = None
+    date: str | None = None              # YYYY-MM-DD or YYYY-MM if known
+    age_at_event: int | None = None      # computed when DOB available
+    event: str
+    category: str = ""                    # original intake category, or 'extracted_from_narrative'
+    atm: str                              # antecedent | trigger | mediator | resolution
+    rationale: str = ""                   # one-line explanation of the ATM call
+    linked_driver_slugs: list[str] = Field(default_factory=list)  # mechanism slugs from likely_drivers
+
+
 class AssessSuggestions(BaseModel):
     """Parsed tool_use payload from synthesize_assessment."""
 
@@ -178,6 +197,7 @@ class AssessSuggestions(BaseModel):
     education_framings: list[EducationFraming] = Field(default_factory=list)
     synthesis_notes: str = ""
     catalogue_additions_suggested: list[CatalogueAdditionSuggested] = Field(default_factory=list)
+    ifm_timeline: list[IFMTimelineEvent] = Field(default_factory=list)
 
 
 # ---------------------------------------------------------------------------

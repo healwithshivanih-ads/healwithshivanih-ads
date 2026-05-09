@@ -130,6 +130,22 @@ export interface CatalogueAdditionSuggested {
   why: string;
 }
 
+/**
+ * AI-classified IFM timeline event. Persisted on session.ai_analysis.ifm_timeline
+ * after a successful assessment run; produced from client.timeline_events plus
+ * any events the AI extracts from intake narrative / transcript.
+ */
+export interface IFMTimelineEvent {
+  year?: number;
+  date?: string;             // YYYY-MM-DD or YYYY-MM
+  age_at_event?: number;
+  event: string;
+  category?: string;          // intake category, or "extracted_from_narrative"
+  atm: "antecedent" | "trigger" | "mediator" | "resolution" | string;
+  rationale?: string;
+  linked_driver_slugs?: string[];   // mechanism slugs from likely_drivers
+}
+
 export interface AssessSuggestions {
   extracted_labs: ExtractedLab[];
   likely_drivers: LikelyDriver[];
@@ -143,6 +159,7 @@ export interface AssessSuggestions {
   education_framings: EducationFraming[];
   synthesis_notes: string;
   catalogue_additions_suggested: CatalogueAdditionSuggested[];
+  ifm_timeline?: IFMTimelineEvent[];
 }
 
 // ---------------------------------------------------------------------------

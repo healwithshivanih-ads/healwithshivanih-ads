@@ -78,6 +78,17 @@ export interface SessionSummary {
   likely_drivers?: SessionDriver[];
   /** Supplement suggestions for the session brief export */
   supplement_suggestions?: SessionSupplement[];
+  /** AI-classified IFM timeline (Antecedents/Triggers/Mediators) */
+  ifm_timeline?: Array<{
+    year?: number;
+    date?: string;
+    age_at_event?: number;
+    event: string;
+    category?: string;
+    atm: string;
+    rationale?: string;
+    linked_driver_slugs?: string[];
+  }>;
 }
 
 // ── Session field parsers (internal — import from @/lib/fmdb/session-utils externally) ──
@@ -105,10 +116,12 @@ export async function loadClientSessionsAction(clientId: string): Promise<Sessio
     likely_drivers?: unknown[];
     supplement_suggestions?: unknown[];
     synthesis_notes?: string;
+    ifm_timeline?: unknown[];
     suggestions?: {
       likely_drivers?: unknown[];
       supplement_suggestions?: unknown[];
       synthesis_notes?: string;
+      ifm_timeline?: unknown[];
     };
   };
 
@@ -162,6 +175,22 @@ export async function loadClientSessionsAction(clientId: string): Promise<Sessio
             timing: typeof s.timing === "string" ? s.timing : undefined,
           }))
         : undefined,
+      ifm_timeline: (() => {
+        const raw = analysis.ifm_timeline ?? analysis.suggestions?.ifm_timeline ?? [];
+        if (!Array.isArray(raw) || raw.length === 0) return undefined;
+        return (raw as Array<Record<string, unknown>>).map((ev) => ({
+          year: typeof ev.year === "number" ? ev.year : undefined,
+          date: typeof ev.date === "string" ? ev.date : undefined,
+          age_at_event: typeof ev.age_at_event === "number" ? ev.age_at_event : undefined,
+          event: typeof ev.event === "string" ? ev.event : "",
+          category: typeof ev.category === "string" ? ev.category : undefined,
+          atm: typeof ev.atm === "string" ? ev.atm : "mediator",
+          rationale: typeof ev.rationale === "string" ? ev.rationale : undefined,
+          linked_driver_slugs: Array.isArray(ev.linked_driver_slugs)
+            ? (ev.linked_driver_slugs as unknown[]).filter((x): x is string => typeof x === "string")
+            : undefined,
+        })).filter((ev) => ev.event);
+      })(),
     };
   }));
 }

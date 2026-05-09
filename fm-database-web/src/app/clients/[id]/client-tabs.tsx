@@ -852,10 +852,18 @@ export function ClientPageTabs({
             </Card>
           </div>
 
-          {/* IFM Timeline (Antecedents / Triggers / Mediators) */}
+          {/* IFM Timeline (Antecedents / Triggers / Mediators).
+              Prefers ai_timeline from the most recent intake session if available;
+              falls back to heuristic classification of raw client.timeline_events. */}
           <IFMTimelineCard
             events={client.timeline_events}
             dateOfBirth={(client as { date_of_birth?: string }).date_of_birth}
+            aiTimeline={(() => {
+              const latestIntakeWithTimeline = sessions.find(
+                (s) => s.session_type === "intake" && s.ifm_timeline && s.ifm_timeline.length > 0
+              );
+              return latestIntakeWithTimeline?.ifm_timeline;
+            })()}
           />
 
           {/* FM Reference Ranges */}
