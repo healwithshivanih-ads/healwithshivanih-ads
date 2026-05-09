@@ -22,6 +22,7 @@ import {
   generateClientLetter,
   loadMealPlan,
   type LetterType,
+  type LetterValidationChange,
 } from "@/app/plans/[slug]/lifecycle-actions";
 import {
   sendClientLettersAction,
@@ -87,6 +88,7 @@ interface TypeState {
   mdBlob?: string | null;     // for download
   editOpen?: boolean;         // is the edit pane open?
   editText?: string | null;   // editable copy of mdBlob (null = not yet opened)
+  validationReport?: LetterValidationChange[] | null;  // tips rewritten by Haiku QA pass
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -172,6 +174,7 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
               savedAt: r.value.savedAt,
               htmlBlob: r.value.html ?? null,
               mdBlob: r.value.markdown ?? null,
+              validationReport: r.value.validationReport ?? null,
             };
           }
         });
@@ -238,6 +241,7 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
               htmlBlob: result.ok ? (result.html ?? null) : prev[pkg.type].htmlBlob,
               mdBlob: result.ok ? (result.markdown ?? null) : prev[pkg.type].mdBlob,
               savedAt: result.ok ? new Date().toISOString() : prev[pkg.type].savedAt,
+              validationReport: result.ok ? (result.validation_report ?? null) : prev[pkg.type].validationReport,
             },
           }));
           if (!result.ok) {
@@ -444,6 +448,36 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
                         <p className="text-xs text-red-600 mt-1 rounded bg-red-50 border border-red-200 px-2 py-1">
                           {state.errorMsg}
                         </p>
+                      )}
+
+                      {/* Validation report — Haiku QA pass rewrites */}
+                      {state.status === "done" && state.validationReport && state.validationReport.length > 0 && (
+                        <details className="mt-2 text-xs rounded border border-amber-200 bg-amber-50">
+                          <summary className="px-2 py-1.5 cursor-pointer font-medium text-amber-900 hover:bg-amber-100/60 rounded">
+                            🔍 {state.validationReport.length} generic {state.validationReport.length === 1 ? "tip" : "tips"} rewritten
+                          </summary>
+                          <ul className="px-3 py-2 space-y-2 max-h-64 overflow-y-auto">
+                            {state.validationReport.map((change, i) => (
+                              <li key={i} className="border-l-2 border-amber-300 pl-2">
+                                <div className="text-[10px] uppercase tracking-wide text-amber-700">
+                                  Score {change.score}/5 · {change.reason}
+                                </div>
+                                <div className="text-red-700 line-through text-[11px] mt-0.5">
+                                  {change.original_tip}
+                                </div>
+                                {change.rewrite ? (
+                                  <div className="text-emerald-800 text-[11px] mt-0.5">
+                                    → {change.rewrite}
+                                  </div>
+                                ) : (
+                                  <div className="text-muted-foreground italic text-[11px] mt-0.5">
+                                    (deleted — couldn't be made specific)
+                                  </div>
+                                )}
+                              </li>
+                            ))}
+                          </ul>
+                        </details>
                       )}
 
                       {/* Download + Preview buttons once done */}

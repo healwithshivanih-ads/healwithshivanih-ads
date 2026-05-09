@@ -423,10 +423,18 @@ export async function generateFollowUpPlan(
 // Generate AI client letter (friendly, personalised, meal-plan + recipes)
 // ---------------------------------------------------------------------------
 
+export interface LetterValidationChange {
+  original_tip: string;
+  score: number;
+  reason: string;
+  rewrite?: string;
+}
+
 export interface ClientLetterResult {
   ok: boolean;
   markdown?: string | null;
   html?: string | null;
+  validation_report?: LetterValidationChange[] | null;
   error?: string | null;
 }
 
@@ -489,6 +497,7 @@ export interface MealPlanData {
   markdown?: string;
   html?: string;
   savedAt?: string;   // ISO timestamp of last save
+  validationReport?: LetterValidationChange[];
   error?: string;
 }
 
@@ -511,7 +520,8 @@ export async function saveMealPlan(
   clientId: string,
   markdown: string,
   html: string | null,
-  letterType: LetterType = "consolidated"
+  letterType: LetterType = "consolidated",
+  validationReport?: LetterValidationChange[] | null,
 ): Promise<{ ok: boolean; error?: string }> {
   try {
     const dir = await getMealPlanDir(clientId);
@@ -519,6 +529,14 @@ export async function saveMealPlan(
     await fs.writeFile(path.join(dir, `${stem}.md`), markdown, "utf-8");
     if (html) {
       await fs.writeFile(path.join(dir, `${stem}.html`), html, "utf-8");
+    }
+    // Persist the Haiku QA report alongside the letter so the rewrites
+    // survive a page reload. Empty/null report → delete any stale file.
+    const reportPath = path.join(dir, `${stem}.validation.json`);
+    if (validationReport && validationReport.length > 0) {
+      await fs.writeFile(reportPath, JSON.stringify(validationReport, null, 2), "utf-8");
+    } else {
+      try { await fs.unlink(reportPath); } catch { /* not present is fine */ }
     }
     return { ok: true };
   } catch (e) {
@@ -536,13 +554,21 @@ export async function loadMealPlan(
     const stem = letterFileStem(planSlug, letterType);
     const mdPath = path.join(root, "clients", clientId, "meal-plans", `${stem}.md`);
     const htmlPath = path.join(root, "clients", clientId, "meal-plans", `${stem}.html`);
+    const reportPath = path.join(root, "clients", clientId, "meal-plans", `${stem}.validation.json`);
 
     const markdown = await fs.readFile(mdPath, "utf-8");
     const stat = await fs.stat(mdPath);
     let html: string | undefined;
     try { html = await fs.readFile(htmlPath, "utf-8"); } catch { /* html optional */ }
 
-    return { ok: true, markdown, html, savedAt: stat.mtime.toISOString() };
+    let validationReport: LetterValidationChange[] | undefined;
+    try {
+      const raw = await fs.readFile(reportPath, "utf-8");
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed)) validationReport = parsed as LetterValidationChange[];
+    } catch { /* report optional — older letters won't have one */ }
+
+    return { ok: true, markdown, html, savedAt: stat.mtime.toISOString(), validationReport };
   } catch {
     return { ok: false };
   }
@@ -633,6 +659,7 @@ export async function generateClientLetter(
   // Always done (even when forceRegenerate=true) — consolidated still
   // benefits from finalised partial content.
   let existingPartials: Record<string, string> = {};
+  let hasExercisePlan = false;
   if (letterType === "consolidated") {
     for (const partial of PARTIAL_TYPES) {
       const partialPath = path.join(dir, `${planSlug}-${partial}.md`);
@@ -641,6 +668,14 @@ export async function generateClientLetter(
         if (md.trim().length > 0) existingPartials[partial] = md;
       } catch { /* missing partial is fine */ }
     }
+    // exercise_plan is NOT a partial (different content from consolidated's
+    // simple inline schedule) — but we tell the AI whether one exists so it
+    // can add the "See your detailed exercise plan" cross-reference.
+    try {
+      const exPath = path.join(dir, `${planSlug}-exercise_plan.md`);
+      const exMd = await fs.readFile(exPath, "utf-8");
+      hasExercisePlan = exMd.trim().length > 0;
+    } catch { /* no exercise plan */ }
   }
 
   // 4. Fresh AI generation.
@@ -653,14 +688,22 @@ export async function generateClientLetter(
       letter_type: letterType,
       coach_notes: coachNotes ?? "",
       existing_partials: existingPartials,
+      has_exercise_plan: hasExercisePlan,
     },
     240_000, // 12-week plan is larger — 4 min ceiling
   );
 
   if (!result.ok || !result.markdown) return result;
 
-  // 5. Persist the requested file.
-  await saveMealPlan(planSlug, clientId, result.markdown, result.html ?? null, letterType);
+  // 5. Persist the requested file (with validation report sidecar).
+  await saveMealPlan(
+    planSlug,
+    clientId,
+    result.markdown,
+    result.html ?? null,
+    letterType,
+    result.validation_report ?? null,
+  );
 
   // 6. After a successful consolidated generation, extract each section and
   // save as a sidecar partial — keeps the four docs in sync.

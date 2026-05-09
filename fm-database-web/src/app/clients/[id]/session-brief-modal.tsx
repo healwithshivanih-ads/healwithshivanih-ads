@@ -4,10 +4,16 @@
  * SessionBriefModal — print-optimised one-pager for a single session.
  *
  * Triggered from each expanded session card in the Sessions tab history.
- * Clicking "🖨 Print" calls window.print(); the injected <style> hides
- * everything except #session-brief-content on print.
+ * Clicking "🖨 Print / Save as PDF" calls window.print(); the injected
+ * <style> hides everything except #session-brief-content on print.
+ *
+ * Designed to be coach-readable (in-app) AND doctor-shareable (printed /
+ * saved as PDF) — surfaces client demographics, current conditions and
+ * medications, plus an optional handover note the coach can type before
+ * printing.
  */
 
+import { useState } from "react";
 import type { SessionSummary } from "@/app/assess/actions";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -61,11 +67,13 @@ function pillarColor(score: number, max: number, invert: boolean): string {
 // ── Print CSS (injected once via <style>) ─────────────────────────────────────
 
 const PRINT_CSS = `
+.brief-print-only { display: none; }
 @media print {
   body > * { display: none !important; }
   body > #session-brief-print-root { display: block !important; }
   #session-brief-print-root > * { display: block !important; }
   .brief-no-print { display: none !important; }
+  .brief-print-only { display: block !important; }
   .brief-modal-overlay { position: static !important; background: transparent !important; }
   .brief-modal-card {
     position: static !important;
@@ -102,13 +110,30 @@ const PRINT_CSS = `
 interface SessionBriefModalProps {
   session: SessionSummary;
   clientName: string;
+  clientAgeBand?: string | null;
+  clientSex?: string | null;
+  clientConditions?: string[];
+  clientMedications?: string[];
   onClose: () => void;
 }
 
-export function SessionBriefModal({ session, clientName, onClose }: SessionBriefModalProps) {
+export function SessionBriefModal({
+  session,
+  clientName,
+  clientAgeBand,
+  clientSex,
+  clientConditions,
+  clientMedications,
+  onClose,
+}: SessionBriefModalProps) {
   const typeLabel = SESSION_TYPE_LABELS[session.session_type] ?? session.session_type;
   const formattedDate = formatDate(session.date);
   const headingDate = session.date ? `${typeLabel} — ${formattedDate}` : typeLabel;
+  const [handoverNote, setHandoverNote] = useState("");
+
+  const demographicsLine = [clientAgeBand, clientSex].filter(Boolean).join(" · ");
+  const hasConditions = (clientConditions?.length ?? 0) > 0;
+  const hasMeds = (clientMedications?.length ?? 0) > 0;
 
   const cleanComplaints = session.presenting_complaints
     ? stripSessionTypeTag(session.presenting_complaints)
@@ -152,8 +177,9 @@ export function SessionBriefModal({ session, clientName, onClose }: SessionBrief
                 onClick={handlePrint}
                 className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-semibold text-white transition-all hover:opacity-90"
                 style={{ background: "#2B2D42" }}
+                title="Cmd/Ctrl+P → Save as PDF in the print dialog to share"
               >
-                🖨 Print
+                🖨 Print / Save as PDF
               </button>
               <button
                 onClick={onClose}
@@ -172,7 +198,60 @@ export function SessionBriefModal({ session, clientName, onClose }: SessionBrief
               <h1 className="text-lg font-bold" style={{ color: "#2B2D42", fontFamily: "Georgia, serif" }}>
                 {clientName}
               </h1>
-              <p className="text-sm" style={{ color: "#555" }}>{headingDate}</p>
+              <p className="text-sm" style={{ color: "#555" }}>
+                {headingDate}
+                {demographicsLine && <span> · {demographicsLine}</span>}
+              </p>
+            </div>
+
+            {/* ── Active conditions + medications (clinical hand-off context) ── */}
+            {(hasConditions || hasMeds) && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {hasConditions && (
+                  <div className="space-y-1">
+                    <div className="brief-section-header text-[10px] font-semibold uppercase tracking-widest text-gray-500">
+                      Active conditions
+                    </div>
+                    <p className="text-sm text-gray-800 leading-relaxed">
+                      {clientConditions!.join(", ")}
+                    </p>
+                  </div>
+                )}
+                {hasMeds && (
+                  <div className="space-y-1">
+                    <div className="brief-section-header text-[10px] font-semibold uppercase tracking-widest text-gray-500">
+                      Current medications
+                    </div>
+                    <p className="text-sm text-gray-800 leading-relaxed">
+                      {clientMedications!.join(", ")}
+                    </p>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* ── Handover note (coach-typed, optional, shown only if filled) ── */}
+            <div className="space-y-1.5">
+              <div className="brief-section-header brief-no-print text-[10px] font-semibold uppercase tracking-widest text-gray-500">
+                Hand-off note (optional — for the receiving clinician)
+              </div>
+              <textarea
+                value={handoverNote}
+                onChange={(e) => setHandoverNote(e.target.value)}
+                rows={2}
+                placeholder="e.g. Referring for thyroid follow-up. Persistent fatigue despite TSH 1.4 on levothyroxine 50mcg…"
+                className="brief-no-print w-full rounded-md border border-gray-200 px-3 py-2 text-sm leading-relaxed focus:outline-none focus:border-gray-400"
+              />
+              {handoverNote.trim() && (
+                <div className="brief-print-only space-y-1.5">
+                  <div className="brief-section-header text-[10px] font-semibold uppercase tracking-widest text-gray-500">
+                    Hand-off note from coach
+                  </div>
+                  <p className="text-sm text-gray-800 whitespace-pre-wrap leading-relaxed">
+                    {handoverNote.trim()}
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* ── Presenting complaints ── */}
