@@ -871,6 +871,149 @@ def _calc_calorie_targets(client: dict, wl: dict) -> dict | None:
     }
 
 
+def _top_of_mind_block(client: dict, plan: dict) -> str:
+    """Return a TOP-OF-MIND context block for prompts — the client's specific
+    intake context rendered prominently so the AI references it in EVERY tip.
+
+    This is the antidote to generic FM advice. The AI is told later (via the
+    BANNED-GENERIC rule) that every tip must reference at least one fact
+    from this block — chief complaint, trigger, non-negotiable, life event,
+    specific lab, or named driver.
+    """
+    first_name = (client.get("display_name") or "the client").split()[0]
+
+    bullets: list[str] = []
+
+    # Chief complaint — coach's intake notes are the best source we have here.
+    notes = (client.get("notes") or "").strip()
+    if notes:
+        # Take the first 280 chars of the intake notes — usually contains the
+        # client's "in their own words" chief concern.
+        chief = notes[:280] + ("…" if len(notes) > 280 else "")
+        bullets.append(f"- Chief complaint (intake notes): \"{chief}\"")
+
+    goals = client.get("goals") or []
+    if goals:
+        bullets.append(f"- Stated goals: {', '.join(goals)}")
+
+    triggers = (client.get("reported_triggers") or "").strip()
+    if triggers and triggers.lower() != "none reported":
+        bullets.append(f"- ⚠ Reported triggers (NEVER suggest these): {triggers}")
+
+    non_neg = (client.get("non_negotiables") or "").strip()
+    if non_neg and non_neg.lower() != "none mentioned":
+        bullets.append(f"- 💎 Non-negotiables (work AROUND these, don't fight them): {non_neg}")
+
+    worked = (client.get("what_has_worked") or "").strip()
+    if worked:
+        bullets.append(f"- ✅ What has worked for them before: {worked}")
+
+    not_worked = (client.get("what_hasnt_worked") or "").strip()
+    if not_worked:
+        bullets.append(f"- ❌ What has NOT worked (don't re-prescribe): {not_worked}")
+
+    foods_avoid = (client.get("foods_to_avoid") or "").strip()
+    if foods_avoid:
+        bullets.append(f"- Foods to avoid (preferences / intolerances): {foods_avoid}")
+
+    conditions = client.get("active_conditions") or []
+    if conditions:
+        bullets.append(f"- Active conditions: {', '.join(conditions)}")
+
+    meds = client.get("current_medications") or []
+    if meds:
+        bullets.append(f"- Medications (check interactions): {', '.join(meds)}")
+
+    # IFM Timeline highlights — last 3 events of any kind, with year.
+    timeline = client.get("timeline_events") or []
+    if timeline:
+        # Sort by year descending, fall back to original order for items with no year
+        sorted_t = sorted(
+            [t for t in timeline if isinstance(t, dict) and t.get("event")],
+            key=lambda t: -(t.get("year") or 0),
+        )[:3]
+        if sorted_t:
+            tl_lines = []
+            for t in sorted_t:
+                yr = t.get("year") or "—"
+                ev = (t.get("event") or "").strip()
+                cat = (t.get("category") or "").replace("_", " ")
+                tl_lines.append(f"  · [{yr}] {ev}{f' ({cat})' if cat and cat != 'life event' else ''}")
+            bullets.append("- Recent timeline events (refer to these by name when relevant):\n" + "\n".join(tl_lines))
+
+    # Top driver from the AI-derived plan.hypothesized_drivers.
+    drivers = plan.get("hypothesized_drivers") or []
+    if drivers:
+        top = drivers[0] if isinstance(drivers, list) else None
+        if isinstance(top, dict):
+            mech = (top.get("mechanism") or top.get("mechanism_slug") or "").strip()
+            reasoning = (top.get("reasoning") or "").strip()
+            if mech:
+                line = f"- 🎯 Primary driver from the assessment: {mech}"
+                if reasoning:
+                    line += f" — {reasoning[:200]}"
+                bullets.append(line)
+
+    # Cycle context placeholder (filled by future PR — kept here so prompts
+    # already reference it when present).
+    cycle_phase = client.get("_computed_cycle_phase")
+    if cycle_phase:
+        bullets.append(f"- 🌙 Cycle phase today: {cycle_phase}")
+
+    if not bullets:
+        return ""
+
+    body = "\n".join(bullets)
+    return f"""
+═══════════════════════════════════════════════════════════
+THIS CLIENT — TOP-OF-MIND ({first_name}'s specifics):
+═══════════════════════════════════════════════════════════
+{body}
+═══════════════════════════════════════════════════════════
+
+Every recommendation, tip, and meal suggestion you write MUST reference
+at least one specific item from the block above. See the
+BANNED-GENERIC rule below.
+"""
+
+
+# Generic-tip banlist — same wording across all 4 builders so behaviour is
+# consistent. Insert near the writing rules in each prompt.
+_BANNED_GENERIC_RULE = """
+BANNED-GENERIC RULE — READ TWICE:
+Every coaching tip and meal suggestion in this document MUST reference at
+least one specific thing this client told us about themselves — their
+chief complaint in their words, a lab value, a food they actually eat or
+avoid, a stress pattern, a life event from their timeline, a non-negotiable,
+or a named driver from the assessment.
+
+Generic FM advice is BANNED unless tied to this specific client. Examples
+of BANNED phrasing (do not use as standalone tips):
+  - "Eat more whole foods"
+  - "Manage your stress"
+  - "Sleep 7–9 hours"
+  - "Stay hydrated"
+  - "Exercise regularly"
+  - "Reduce processed sugar"
+
+GOOD phrasing (specific to this client):
+  - Instead of "Manage stress" → "Your evening conflicts with your mum
+    have been keeping you up — try a 5-min breath reset BEFORE the call,
+    not after, so the cortisol spike doesn't carry into bedtime."
+  - Instead of "Eat whole foods" → "Your morning chai + biscuits is the
+    usual blood-sugar trigger. Swap to chai + 1 boiled egg + 1 banana for
+    the next two weeks and notice the 11am energy."
+  - Instead of "Sleep 8 hours" → "You wake at 3am — that's a cortisol
+    pattern, not a sleep-hygiene problem. Magnesium glycinate at bedtime
+    + your bedroom under 22°C is what we're targeting."
+
+If a tip would apply equally to ANY client, REWRITE it to apply uniquely
+to this client OR REMOVE it entirely. We'd rather a shorter document
+that reads like it was written FOR this person than a long one of FM
+boilerplate.
+"""
+
+
 def _build_prompt_meal_plan(plan: dict, client: dict, weight_loss: dict | None, coach_notes: str) -> str:
     """Meal plan only — nutrition journey, no supplements, no lifestyle."""
     plan_weeks = int(plan.get("plan_period_weeks") or 12)
@@ -973,8 +1116,13 @@ COACH'S CUSTOM KNOWLEDGE (weave these naturally into the nutrition plan):
 Use these tips in relevant meal sections — don't dump them all in one place. Make them feel like natural advice.
 """
 
+    top_of_mind = _top_of_mind_block(client, plan)
+
     prompt = f"""You are writing a warm, friendly {plan_weeks}-week MEAL PLAN document for a client.
 The coach (Shivani Hariharan) has prepared a structured plan. Turn the nutrition data into a beautiful, practical meal plan the client can actually USE.
+
+{top_of_mind}
+{_BANNED_GENERIC_RULE}
 
 CLIENT PROFILE:
 - Name: {client_name} (address them as {first_name})
@@ -1080,7 +1228,13 @@ COACH'S CUSTOM KNOWLEDGE (weave naturally into the intro and tips):
 {coach_notes}
 """
 
+    top_of_mind = _top_of_mind_block(client, plan)
+
     prompt = f"""You are writing a short supplement protocol introduction letter for a client.
+
+{top_of_mind}
+{_BANNED_GENERIC_RULE}
+
 
 CLIENT: {client_name} (address as {first_name})
 Conditions: {', '.join(conditions) if conditions else 'not specified'}
@@ -1179,9 +1333,14 @@ COACH'S CUSTOM KNOWLEDGE (weave naturally into relevant sections):
 {coach_notes}
 """
 
+    top_of_mind = _top_of_mind_block(client, plan)
+
     prompt = f"""You are writing a warm, practical {plan_weeks}-week COACHING PLAN for a client — covering lifestyle, learning, labs, and tracking.
 This document is the companion to the meal plan and supplement plan. It covers everything EXCEPT food and supplements.
 The coach (Shivani Hariharan) has prepared the structured data below.
+
+{top_of_mind}
+{_BANNED_GENERIC_RULE}
 
 CLIENT PROFILE:
 - Name: {client_name} (address as {first_name})
@@ -1445,9 +1604,14 @@ MOVEMENT & WELLNESS:
 - Keep it brief (3–5 bullet points) unless the plan's lifestyle_practices already covers this.
 """
 
+    top_of_mind = _top_of_mind_block(client, plan)
+
     prompt = f"""You are writing a warm, friendly, practical {plan_weeks}-week wellness plan letter for a client.
 The coach (Shivani Hariharan, a functional medicine health coach) has prepared this structured plan.
 Your job is to turn the coach's structured data into a beautiful, easy-to-read document the client can actually USE.
+
+{top_of_mind}
+{_BANNED_GENERIC_RULE}
 
 CLIENT PROFILE:
 - Name: {client_name} (address them as {first_name})
