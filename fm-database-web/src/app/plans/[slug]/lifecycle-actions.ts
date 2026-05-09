@@ -499,7 +499,7 @@ async function getMealPlanDir(clientId: string): Promise<string> {
   return dir;
 }
 
-export type LetterType = "consolidated" | "meal_plan" | "supplement_plan" | "lifestyle_guide";
+export type LetterType = "consolidated" | "meal_plan" | "supplement_plan" | "lifestyle_guide" | "exercise_plan";
 
 /** File stem for a given letter type — consolidated keeps the bare planSlug for backwards compat. */
 function letterFileStem(planSlug: string, letterType: LetterType): string {

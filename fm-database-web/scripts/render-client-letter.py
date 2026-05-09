@@ -1580,7 +1580,23 @@ DOCUMENT STRUCTURE:
 2. **Your Healing Framework** — brief {plan_weeks}-week arc from a lifestyle and wellness lens. What each phase focuses on (not food-focused — mindset, stress, sleep, habits, learning).
 
 3. **Movement & Exercise** — `## 🏃 Movement & Exercise`
-   Phased movement plan across {plan_weeks} weeks. Adapt to any conditions noted. Include frequency, type, duration, and a specific example per phase. Frame as energy-building, not calorie-burning.
+   A SIMPLE weekly schedule (not a detailed phased programme — that's the
+   optional exercise_plan letter for clients who want depth).
+   Produce:
+     a. A 7-day table for a typical week (Mon-Sun), with Day | Type | Duration |
+        Notes columns. Mark at least 1 explicit REST day. Match each day to
+        {first_name}'s baseline movement_days_per_week and movement_type.
+     b. For women in menstruating/perimenopausal phases: add a 2-line
+        cycle-aware modification block — what to swap during menstrual phase
+        (gentle walks, yoga, no HIIT) and during late-luteal/PMS week
+        (restorative only). Refer to the cycle block above; do NOT repeat
+        all the phase rules — just the swap guidance for movement.
+     c. For postmenopausal women: emphasise strength training 3×/week
+        (bone density priority).
+   Frame as energy-building, not calorie-burning. 8-10 lines total — keep
+   it scannable. If the coach has generated a separate detailed
+   exercise_plan, tell {first_name}: 'See your detailed exercise plan for
+   the full weekly progression and exercises.'
 
 4. **Daily Lifestyle Practices** — `## 🌙 Daily Lifestyle Practices`
    Expand the lifestyle practices into actionable daily routines. Group by theme (morning routine, sleep practices, stress techniques, breathwork). Use bullet lists.
@@ -1609,6 +1625,146 @@ RULES:
     return prompt
 
 
+def _build_prompt_exercise_plan(plan: dict, client: dict, coach_notes: str) -> str:
+    """Standalone detailed 12-week exercise plan. Phase-by-phase, day-by-day,
+    cycle-aware for women. Sent ONLY to clients who have asked for movement
+    depth — coach decides per-client.
+
+    Design parity with the meal_plan letter:
+      - Weeks 1–2 get full Mon-Sun schedules with specific exercises
+      - Weeks 3–{plan_weeks} get phase roadmaps (paragraphs, not full schedules)
+      - Cycle-sync block flows in via _cycle_block() when applicable
+    """
+    plan_weeks = int(plan.get("plan_period_weeks") or 12)
+    client_name = client.get("display_name") or "the client"
+    first_name = client_name.split()[0] if client_name else "there"
+    age = client.get("estimated_age") or client.get("age_band") or ""
+    sex = (client.get("sex") or "").upper()
+    conditions = client.get("active_conditions") or []
+    medications = client.get("current_medications") or []
+    goals = client.get("goals") or []
+    five_pillars = client.get("five_pillars") or {}
+    movement_days = five_pillars.get("movement_days_per_week")
+    movement_type = five_pillars.get("movement_type") or ""
+    movement_intensity = five_pillars.get("movement_intensity") or ""
+    notes = client.get("notes") or ""
+
+    coach_notes_block = ""
+    if coach_notes:
+        coach_notes_block = f"""
+COACH'S CUSTOM KNOWLEDGE (weave naturally into the plan):
+{coach_notes}
+"""
+
+    top_of_mind = _top_of_mind_block(client, plan)
+    cycle = _cycle_block(client)
+
+    prompt = f"""You are writing a warm, practical {plan_weeks}-week DETAILED EXERCISE PLAN
+for a client who has explicitly asked for the depth. Most clients get a simple
+weekly schedule inside their wellness letter; this document is for those who
+want a real, progressive movement programme.
+
+{top_of_mind}
+{cycle}
+{_BANNED_GENERIC_RULE}
+
+CLIENT PROFILE:
+- Name: {client_name} (address as {first_name})
+- Age: {age or 'not specified'}, Sex: {sex}
+- Active conditions: {", ".join(conditions) if conditions else "none flagged"}
+- Medications: {", ".join(medications) if medications else "none flagged"}
+- Goals: {", ".join(goals) if goals else "(not stated)"}
+- Current activity level (Five Pillars baseline):
+  - {movement_days if movement_days is not None else 'unknown'} days/week
+  - Type: {movement_type or 'unspecified'}
+  - Intensity (self-reported): {movement_intensity or 'unspecified'}
+- Free-text intake notes (read for limitations / preferences):
+  {notes[:400] if notes else "(none)"}
+
+WHAT TO PRODUCE — markdown document with these sections (in order):
+
+1. **Warm greeting** (2–3 sentences) — name {first_name}, tie movement to
+   their goals in their words. NO generic 'movement is good' platitudes.
+
+2. **Your {plan_weeks}-week movement journey** — short prose paragraph
+   explaining the arc. Phase 1 (weeks 1-4): build foundation. Phase 2
+   (weeks 5-8): add load + intensity. Phase 3 (weeks 9-{plan_weeks}):
+   sustainability + autonomy.
+
+3. **Weeks 1–2 schedule** — full Mon-Sun for both weeks as Markdown tables.
+   Per day include: workout type, duration, RPE (1-10), 3-5 specific
+   exercises with sets × reps, equipment needed, optional cool-down.
+   Mark REST days clearly. Examples:
+
+   | Day | Type | Duration | RPE | Workout |
+   |---|---|---|---|---|
+   | Mon | Lower-body strength | 30 min | 6 | Goblet squat 3×10 (10kg DB), Glute bridge 3×12 (BW), Step-up 2×10/leg, Deadbug 3×8 |
+   | Tue | Walk + mobility | 25 min | 3 | 20-min brisk walk + 5-min hip openers |
+   | Wed | REST | — | — | Active recovery: 10-min stretch only |
+   ...
+
+   - At least 2 strength sessions/week
+   - At least 1 dedicated mobility / yoga session
+   - At least 1 full REST day per week
+   - Cardio (zone 2) at least 2 sessions
+   - For women: respect the cycle phase block above. If the cycle phase
+     is menstrual or late luteal, replace HIIT with restorative options.
+
+4. **Weeks 3–4 — building consistency** (paragraph, ~5 lines) — the focus
+   for those weeks, not a full schedule. Reference 1-2 specific exercises
+   they'll graduate to.
+
+5. **Weeks 5–8 — phase 2: add load** (paragraph) — what changes.
+   Progressive overload markers (e.g. add 10% volume per week, longer
+   intervals, harder regressions).
+
+6. **Weeks 9–{plan_weeks} — phase 3: making it yours** (paragraph) —
+   shift from prescribed to self-directed. The client should be able to
+   build their own week by week 12.
+
+7. **Cycle-aware modifications** (only for women clients) — bullet list
+   of how to swap days during menstrual / late-luteal weeks. Refer to the
+   cycle block above. If client is postmenopausal, replace with a
+   post-meno bone-and-strength priority box.
+
+8. **Recovery + injury prevention** — 4-6 bullets covering: sleep as
+   training (specific to {first_name}'s sleep pattern), warning signs
+   to back off, mobility work cadence, hydration during sessions,
+   condition-specific cautions if any.
+
+9. **What to track** — 4-6 simple metrics: strength PRs (e.g. squat
+   weight), session RPE drift over weeks, resting HR, sleep impact,
+   mood/energy on training vs rest days. Frame as 'notice', not 'log'.
+
+10. **A note from your coach** — warm closing. Short. Shivani's name.
+
+WRITING RULES:
+- Indian-context exercise vocabulary where it fits: surya namaskar,
+  pranayama, walking after meals as 'shatpavali'. Don't force these —
+  use only when natural.
+- Equipment: assume bodyweight + a pair of dumbbells (or 1L water bottles
+  as substitute) UNLESS the client explicitly mentions gym access in the
+  intake notes. Default to home-friendly options.
+- Time budget: assume 30 minutes per session unless coach notes say
+  otherwise. Some sessions can be 20 min (active recovery), some 45
+  (strength + mobility combined).
+- Active conditions filter: respect every condition listed. E.g. if
+  hypothyroid + low energy → reduce HIIT, lean into walking + yoga.
+  If postpartum < 1 year → no jumping, no heavy core, focus pelvic floor.
+  If known knee/back issue → no deep squats / heavy deadlifts; use
+  regressions.
+- BANNED-GENERIC applies to every tip: every exercise + duration + RPE
+  must reference something specific about {first_name}. 'Walk daily' is
+  banned. 'A 25-min walk after lunch — your usual blood-sugar dip time —
+  with podcast or call to make it social' is what we want.
+
+{coach_notes_block}
+
+Output ONLY the Markdown document — no preamble, no postamble.
+"""
+    return prompt
+
+
 def _build_prompt(plan: dict, client: dict, weight_loss: dict | None = None,
                   letter_type: str = "consolidated", coach_notes: str = "",
                   existing_partials: dict | None = None) -> str:
@@ -1627,6 +1783,8 @@ def _build_prompt(plan: dict, client: dict, weight_loss: dict | None = None,
         return _build_prompt_supplement_plan(plan, client, coach_notes)
     if letter_type == "lifestyle_guide":
         return _build_prompt_lifestyle_guide(plan, client, coach_notes)
+    if letter_type == "exercise_plan":
+        return _build_prompt_exercise_plan(plan, client, coach_notes)
     # else: consolidated — fall through to existing code
     plan_weeks = int(plan.get("plan_period_weeks") or 12)
 
@@ -1921,7 +2079,17 @@ The plan must have a logical therapeutic progression — each phase builds on th
    DO NOT write a supplement table or list here. The supplement schedule is generated separately and injected automatically.
 
    **3d. Movement & Exercise** — heading `## 🏃 Movement & Exercise`
-   Bullet list. Specific, doable. Adapted to her available days and any limitations.
+   Produce a SIMPLE 7-day table (Mon-Sun) with Day | Type | Duration |
+   Notes columns. At least 1 REST day. Match {first_name}'s baseline
+   movement_days_per_week and movement_type. For women in menstruating /
+   perimenopausal phases: add 2-line cycle-aware modification (no HIIT
+   during menstrual phase or PMS week — restorative only). For
+   postmenopausal women: prioritise strength 3×/week. Keep it scannable
+   (8-10 lines). If a separate detailed exercise_plan letter has been
+   generated for this client, add a one-liner: 'See your detailed
+   exercise plan for the full weekly progression.'
+   This is the SIMPLE version — the optional exercise_plan letter has the
+   detailed phased programme for clients who want depth.
 
    **3e. Daily Lifestyle Practices** — bullet list. Sleep, stress, breathwork.
 
