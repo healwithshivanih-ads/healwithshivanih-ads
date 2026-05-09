@@ -16,6 +16,7 @@
  */
 
 import { useState, useEffect, useTransition } from "react";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import {
   generateClientLetter,
@@ -24,7 +25,8 @@ import {
   type LetterValidationChange,
 } from "@/app/plans/[slug]/lifecycle-actions";
 import {
-  sendClientEmailAction,
+  sendClientLettersAction,
+  updateClientFieldsAction,
 } from "@/app/api/email/actions";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -137,10 +139,17 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
 
   // Feature 2: email compose state
   const [emailPanelOpen, setEmailPanelOpen] = useState(false);
-  const [emailTo, setEmailTo] = useState(clientEmail ?? "");
+  const router = useRouter();
+  // Local mirror of the client's email — initialised from the prop, then
+  // updated immediately after a successful send so reopening the panel
+  // pre-fills with the freshly-saved address. Without this, `clientEmail`
+  // stayed stale (the prop is fixed at parent-render time) and the To
+  // field flashed empty after every save → reopen.
+  const [currentClientEmail, setCurrentClientEmail] = useState<string>(clientEmail ?? "");
+  const [emailTo, setEmailTo] = useState(currentClientEmail);
   const [emailSubject, setEmailSubject] = useState("");
   const [emailIntro, setEmailIntro] = useState(
-    `Hi ${clientName?.split(" ")[0] ?? "there"},\n\nPlease find your personalised letters attached below.\n\nWith care,\nShivani`
+    `Hi ${clientName?.split(" ")[0] ?? "there"},\n\nPlease find your personalised plan attached below. Let me know if you have any questions.\n\nWith care,\nShivani`
   );
   const [emailInclude, setEmailInclude] = useState<Record<LetterType, boolean>>(
     Object.fromEntries(PACKAGE_TYPES.map((p) => [p.type, true])) as Record<LetterType, boolean>
@@ -255,17 +264,16 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
     });
   };
 
-  // Open email panel — pre-fill subject from first done type
+  // Open email panel — fixed default subject (the inline body covers the
+  // letter type already; keeping the subject simple looks cleaner in the
+  // recipient's inbox than "… — Full Wellness Letter").
   const handleOpenEmailPanel = () => {
-    const firstDone = doneTypes[0];
-    if (firstDone) {
-      setEmailSubject(`Your personalised wellness plan — ${firstDone.label}`);
-    }
+    setEmailSubject("Your Personalised Wellness Plan");
     // Reset include to all done types
     const next = Object.fromEntries(PACKAGE_TYPES.map((p) => [p.type, false])) as Record<LetterType, boolean>;
     for (const p of doneTypes) next[p.type] = true;
     setEmailInclude(next);
-    setEmailTo(clientEmail ?? "");
+    setEmailTo(currentClientEmail);
     setEmailPanelOpen(true);
     setEmailError(null);
   };
@@ -278,35 +286,52 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
     setIsSendingEmail(true);
     setEmailError(null);
 
-    // Build HTML body: intro + each selected letter html separated by <hr>
-    const selectedLetters = doneTypes.filter((p) => emailInclude[p.type] && types[p.type].htmlBlob);
+    // Hand the raw letter HTMLs to the server action — it runs each one
+    // through buildEmailSafeBody (strips <script>, @import fonts, @media
+    // print, universal CSS resets; inlines remaining styles via juice;
+    // returns just <body> contents) before wrapping them in a single
+    // outer envelope. The pre-flatten body we used to build here had
+    // nested <html> tags + un-inlined <style> rules that Gmail mangled.
+    const selectedLetters = doneTypes
+      .filter((p) => emailInclude[p.type] && types[p.type].htmlBlob)
+      .map((p) => ({ label: p.label, html: types[p.type].htmlBlob! }));
 
-    const introParagraph = emailIntro
-      .split("\n")
-      .map((line) => line.trim() ? `<p style="margin:6px 0;line-height:1.7;font-family:Georgia,serif;color:#444;">${line}</p>` : "<br/>")
-      .join("\n");
-
-    const letterSections = selectedLetters
-      .map((p) => types[p.type].htmlBlob!)
-      .join('\n<hr style="border:none;border-top:2px solid #e5e7eb;margin:40px 0;" />\n');
-
-    const htmlBody = `
-<!DOCTYPE html>
-<html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
-<body style="font-family:Georgia,serif;max-width:700px;margin:0 auto;padding:32px 24px;color:#333;background:#fff;">
-  <div style="margin-bottom:32px;">
-    ${introParagraph}
-  </div>
-  <hr style="border:none;border-top:2px solid #2B2D42;margin-bottom:32px;" />
-  ${letterSections}
-</body>
-</html>`;
+    // Attach the same letters as full standalone HTML files. The inline
+    // body is for reading; the attachments are for the recipient to
+    // open in a browser when they want the per-week / per-supplement
+    // 🖨 print buttons (which can't run inside email — no JS).
+    const safeName = (clientName ?? "client").replace(/[^A-Za-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "client";
+    const attachments = doneTypes
+      .filter((p) => emailInclude[p.type] && types[p.type].htmlBlob)
+      .map((p) => ({
+        filename: `${safeName}-${p.type}.html`,
+        html: types[p.type].htmlBlob!,
+      }));
 
     try {
-      const result = await sendClientEmailAction({ to: emailTo.trim(), subject: emailSubject, htmlBody });
+      const result = await sendClientLettersAction({
+        to: emailTo.trim(),
+        subject: emailSubject,
+        intro: emailIntro,
+        letters: selectedLetters,
+        attachments,
+      });
       if (result.ok) {
         toast.success(`Email sent to ${emailTo.trim()}`);
+        // If the coach typed an email that wasn't already on the client's
+        // profile, persist it so the next send auto-fills. Update the
+        // local mirror IMMEDIATELY (so reopening the panel before the
+        // server round-trip completes still pre-fills correctly) and
+        // call router.refresh() so the rest of the page (contact widget
+        // etc.) picks up the new value via fresh server-component data.
+        const typed = emailTo.trim();
+        if (typed && typed !== currentClientEmail) {
+          setCurrentClientEmail(typed);
+          try {
+            await updateClientFieldsAction(clientId, { email: typed });
+            router.refresh();
+          } catch { /* non-fatal */ }
+        }
         setEmailPanelOpen(false);
       } else {
         setEmailError(result.error ?? "Failed to send email.");
@@ -645,8 +670,14 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
             </p>
           </div>
 
-          {/* Feature 2: Email button + compose panel */}
-          {allDone && clientEmail && (
+          {/* Feature 2: Email button + compose panel.
+              Shown when at least one letter is generated. The recipient
+              field is editable inside the panel — clientEmail (from
+              client.yaml) just pre-fills it; if absent, the coach types
+              one in manually. The earlier `allDone && clientEmail` gate
+              was too strict — it hid the button whenever any checked
+              type wasn't yet generated, or when no email was on file. */}
+          {doneTypes.length > 0 && (
             <div
               className="rounded-lg border p-3 space-y-3"
               style={{ borderColor: "var(--brand-lavender, #8D99AE)", background: "white" }}
