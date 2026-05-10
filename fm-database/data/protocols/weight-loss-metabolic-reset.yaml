@@ -1,0 +1,137 @@
+slug: weight-loss-metabolic-reset
+display_name: Metabolic Reset for Weight Loss
+aliases:
+  - metabolic-reset
+  - weight-loss-protocol
+  - insulin-sensitivity-reset
+  - fat-loss-protocol
+category: metabolic_reset
+summary: |
+  A 12-week protocol to restore insulin sensitivity, mobilise stubborn fat,
+  and rebuild metabolic flexibility. Combines strategic time-restricted
+  eating (14–16h fast), low-glycemic + adequate-protein meals, strength
+  training, and sleep + stress optimisation. NOT a crash diet — designed to
+  preserve muscle, support hormones, and deliver 4–8 kg of fat loss with
+  metabolic adaptation rather than slowdown.
+indications:
+  - central adiposity (waist > 80cm F / 90cm M)
+  - elevated fasting insulin / HOMA-IR > 1.5
+  - prediabetes (HbA1c 5.7–6.4)
+  - PCOS with insulin resistance
+  - weight gain post-menopause / post-pregnancy
+  - "I eat well and exercise but can't lose weight"
+contraindications:
+  - eating disorder history
+  - underweight or borderline (BMI < 22)
+  - active pregnancy / lactation
+  - type 1 diabetes (refer)
+  - on insulin or sulfonylureas (clinician supervision required)
+typical_duration_weeks: 12
+phases:
+  - name: "Foundation (weeks 1–2)"
+    weeks: 2
+    summary: |
+      Stabilise blood sugar, build the new meal architecture, and establish
+      baseline. No fasting yet.
+    key_actions:
+      - 3 meals/day with 25–30g protein each
+      - cut all liquid sugars + sweeteners + alcohol
+      - cut refined carbs (white rice, bread, pasta — limit to 1× / week)
+      - daily 20-min walk after dinner
+      - sleep 7–9 hrs consistently
+      - daily food + measurement log
+  - name: "Insulin reset (weeks 3–6)"
+    weeks: 4
+    summary: |
+      Introduce time-restricted eating + lower-carb meals + strength
+      training to restore insulin sensitivity.
+    key_actions:
+      - 14h overnight fast (e.g. 7pm–9am) — eat in 10h window
+      - meals — 30g protein + 1–2 cups vegetables + 1 fist-sized carb
+      - 2× / week strength training (compound lifts, 30–45 min)
+      - 4–5× / week walking 30–45 min
+      - hydrate aggressively — 2–3L water + electrolytes
+  - name: "Mobilisation (weeks 7–10)"
+    weeks: 4
+    summary: |
+      Push fat oxidation with extended fast windows + targeted carb cycling.
+      Re-test labs at week 8.
+    key_actions:
+      - 16h fast 3× / week (e.g. 7pm–11am)
+      - lower carb (50–80g/day) on rest days; higher (100–130g) on training days
+      - 3× / week strength + 1× / week HIIT (15-min)
+      - re-test at week 8 — fasting insulin, HOMA-IR, lipid panel, body comp
+  - name: "Metabolic flexibility (weeks 11–12 + ongoing)"
+    weeks: 2
+    summary: |
+      Build sustainable rhythms. Drop fasting frequency; emphasise eating
+      windows + exercise consistency.
+    key_actions:
+      - 14h overnight fast as default
+      - eat to satiety with protein + fibre priority
+      - exercise 4–5× / week — mix strength + zone-2 cardio
+      - re-test labs every 6 months
+key_steps: []
+foods_to_emphasise:
+  - 30g protein per meal — eggs, fish, chicken, paneer, dal (post-2 weeks)
+  - 2 fist-sized servings vegetables / meal
+  - 1 fist-sized complex carb / meal — quinoa, millet, sweet potato, oats
+  - healthy fats — avocado, olive oil, ghee (1–2 tbsp/meal)
+  - berries + stone fruits + 1 apple/day
+  - water + green tea + black coffee (during fast — no sugar / milk)
+foods_to_remove:
+  - all liquid calories — juice, milk in tea, sugary drinks
+  - refined grains — white bread, white rice (limit), pasta
+  - all processed snacks — chips, biscuits, namkeen
+  - all sweeteners — sugar, jaggery, honey, agave, stevia, sucralose
+  - alcohol (during 12 weeks)
+  - vegetable oils — canola, sunflower, soybean
+supplements_typically_used:
+  - magnesium-glycinate
+  - berberine
+  - chromium
+  - omega-3
+  - vitamin-d
+  - inositol
+expected_outcomes:
+  - 4–8 kg fat loss over 12 weeks
+  - 30–50% reduction in fasting insulin
+  - HbA1c reduction 0.3–0.5
+  - waist reduction 5–10 cm
+  - improved energy + reduced sugar cravings
+  - better sleep + clearer skin
+cautions:
+  - Slower starters (perimenopause, hypothyroid) may need 16–20 weeks for full effect
+  - "Don't combine with elimination diet (5R / AIP / Whole30) in same window — too much restriction"
+  - Strength training is non-negotiable — without it, weight loss = muscle loss
+  - "If client has cortisol issues (adrenal fatigue, high stress), do adrenal recovery FIRST — fasting + restriction worsens HPA dysfunction"
+linked_to_topics:
+  - insulin-resistance
+  - weight-management
+  - perimenopause
+  - pcos
+  - blood-sugar-dysregulation
+linked_to_mechanisms:
+  - insulin-resistance
+  - chronic-inflammation
+linked_to_symptoms:
+  - weight-gain
+  - fatigue
+sources:
+  - id: vitaone-skill-practice-guide
+    location: weight-management section
+  - id: vitaone-cardiometabolic-toolkit
+    location: insulin sensitization
+  - id: vitaone-blood-sugar-toolkit
+    location: weight loss + metabolic reset
+evidence_tier: plausible_emerging
+notes_for_coach: |
+  Don't skip baseline labs — fasting insulin + HOMA-IR + fasting glucose +
+  HbA1c + lipid panel + DEXA or InBody if available. Re-test at week 8 +
+  end of 12. The story you tell from the lab data is the most motivating
+  thing for clients in this protocol. NEVER prescribe extended fasts (24h+)
+  to women — disrupts cycle + cortisol.
+version: 1
+status: active
+updated_at: 2026-05-09
+updated_by: shivani

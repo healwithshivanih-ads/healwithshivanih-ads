@@ -26,7 +26,7 @@ import yaml
 from pydantic import ValidationError as PydanticValidationError
 
 from .enums import InteractionType, SourceType
-from .models import Claim, CookingAdjustment, HomeRemedy, Mechanism, MindMap, Source, Supplement, Symptom, Topic
+from .models import Claim, CookingAdjustment, DrugDepletion, HomeRemedy, Mechanism, MindMap, Protocol, Source, Supplement, Symptom, Topic
 
 
 @dataclass
@@ -66,6 +66,8 @@ class Loaded:
     symptoms: list[Symptom] = field(default_factory=list)
     cooking_adjustments: list[CookingAdjustment] = field(default_factory=list)
     home_remedies: list[HomeRemedy] = field(default_factory=list)
+    protocols: list[Protocol] = field(default_factory=list)
+    drug_depletions: list[DrugDepletion] = field(default_factory=list)
     mindmaps: list[MindMap] = field(default_factory=list)
     parse_errors: list[str] = field(default_factory=list)
 
@@ -122,6 +124,8 @@ def load_all(data_dir: Path) -> Loaded:
         symptoms=_load_dir(data_dir, "symptoms", Symptom, parse_errors),
         cooking_adjustments=_load_dir(data_dir, "cooking_adjustments", CookingAdjustment, parse_errors),
         home_remedies=_load_dir(data_dir, "home_remedies", HomeRemedy, parse_errors),
+        protocols=_load_dir(data_dir, "protocols", Protocol, parse_errors),
+        drug_depletions=_load_dir(data_dir, "drug_depletions", DrugDepletion, parse_errors),
         mindmaps=_load_dir(data_dir, "mindmaps", MindMap, parse_errors),
         parse_errors=parse_errors,
     )
@@ -132,6 +136,7 @@ def overlay(
     *,
     sources=(), topics=(), claims=(), supplements=(),
     mechanisms=(), symptoms=(), cooking_adjustments=(), home_remedies=(),
+    protocols=(), drug_depletions=(),
 ) -> Loaded:
     """Return a new Loaded where given entities replace any same-slug entries.
 
@@ -152,6 +157,8 @@ def overlay(
         symptoms=_merge(loaded.symptoms, symptoms, "slug"),
         cooking_adjustments=_merge(loaded.cooking_adjustments, cooking_adjustments, "slug"),
         home_remedies=_merge(loaded.home_remedies, home_remedies, "slug"),
+        protocols=_merge(loaded.protocols, protocols, "slug"),
+        drug_depletions=_merge(loaded.drug_depletions, drug_depletions, "slug"),
         parse_errors=list(loaded.parse_errors),
     )
 
@@ -178,6 +185,8 @@ def validate_loaded(loaded: Loaded) -> tuple[list[str], list[Warning_]]:
     _check_dupes(loaded.symptoms, "slug", "symptom slug")
     _check_dupes(loaded.cooking_adjustments, "slug", "cooking_adjustment slug")
     _check_dupes(loaded.home_remedies, "slug", "home_remedy slug")
+    _check_dupes(loaded.protocols, "slug", "protocol slug")
+    _check_dupes(loaded.drug_depletions, "slug", "drug_depletion slug")
 
     # ---- alias collisions (ERROR) ----
     # An alias must not collide with a different entity's canonical slug.
@@ -187,6 +196,7 @@ def validate_loaded(loaded: Loaded) -> tuple[list[str], list[Warning_]]:
         (loaded.symptoms, "symptom"),
         (loaded.cooking_adjustments, "cooking_adjustment"),
         (loaded.home_remedies, "home_remedy"),
+        (loaded.protocols, "protocol"),
     ):
         canonical = {it.slug for it in items}
         for it in items:
@@ -368,6 +378,39 @@ def validate_loaded(loaded: Loaded) -> tuple[list[str], list[Warning_]]:
             if mech_slug not in valid_mechanism_slugs:
                 warnings.append(Warning_("home_remedy", hr.slug, "linked_to_mechanisms", "mechanism", mech_slug))
 
+    # ---- protocols ----
+    for pr in loaded.protocols:
+        for cite in pr.sources:
+            if cite.id not in valid_source_ids:
+                warnings.append(Warning_("protocol", pr.slug, "sources", "source", cite.id))
+        for topic_slug in pr.linked_to_topics:
+            if topic_slug not in valid_topic_slugs:
+                warnings.append(Warning_("protocol", pr.slug, "linked_to_topics", "topic", topic_slug))
+        for mech_slug in pr.linked_to_mechanisms:
+            if mech_slug not in valid_mechanism_slugs:
+                warnings.append(Warning_("protocol", pr.slug, "linked_to_mechanisms", "mechanism", mech_slug))
+        for sx_slug in pr.linked_to_symptoms:
+            if sx_slug not in valid_symptom_slugs:
+                warnings.append(Warning_("protocol", pr.slug, "linked_to_symptoms", "symptom", sx_slug))
+        for supp_slug in pr.supplements_typically_used:
+            if supp_slug not in valid_supplement_slugs:
+                warnings.append(Warning_("protocol", pr.slug, "supplements_typically_used", "supplement", supp_slug))
+
+    # ---- drug_depletions ----
+    for dd in loaded.drug_depletions:
+        for cite in dd.sources:
+            if cite.id not in valid_source_ids:
+                warnings.append(Warning_("drug_depletion", dd.slug, "sources", "source", cite.id))
+        for topic_slug in dd.linked_to_topics:
+            if topic_slug not in valid_topic_slugs:
+                warnings.append(Warning_("drug_depletion", dd.slug, "linked_to_topics", "topic", topic_slug))
+        for mech_slug in dd.linked_to_mechanisms:
+            if mech_slug not in valid_mechanism_slugs:
+                warnings.append(Warning_("drug_depletion", dd.slug, "linked_to_mechanisms", "mechanism", mech_slug))
+        for supp_slug in dd.contraindicated_supplements:
+            if supp_slug not in valid_supplement_slugs:
+                warnings.append(Warning_("drug_depletion", dd.slug, "contraindicated_supplements", "supplement", supp_slug))
+
     # ---- mindmaps ----
     valid_supplement_slugs_set = valid_supplement_slugs   # alias for inner walk
     valid_claim_slugs_set = valid_claim_slugs
@@ -385,6 +428,7 @@ def validate_loaded(loaded: Loaded) -> tuple[list[str], list[Warning_]]:
                 "claim": valid_claim_slugs_set,
                 "cooking_adjustment": {ca.slug for ca in loaded.cooking_adjustments},
                 "home_remedy": {hr.slug for hr in loaded.home_remedies},
+                "protocol": {pr.slug for pr in loaded.protocols},
             }.get(kind)
             if valid_set is None:
                 errors.append(

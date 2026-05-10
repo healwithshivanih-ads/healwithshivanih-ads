@@ -43,6 +43,8 @@ import { DiscoveryForm } from "./discovery-form";
 import { IFMTrend } from "./ifm-trend";
 import { LabComparison } from "./lab-comparison";
 import { LabReferenceRangesEditor } from "./lab-reference-ranges";
+import { MedicationImpactPanel } from "./medication-impact-panel";
+import { FunctionalTestPanel } from "./functional-test-panel";
 import { IFMTimelineCard } from "./ifm-timeline-card";
 import { ClientAvatar } from "./client-avatar";
 import { SessionBriefModal } from "./session-brief-modal";
@@ -708,6 +710,12 @@ export function ClientPageTabs({
               onSaved={(id) => setSavedSessionId(id)}
             />
           </div>
+
+          {/* 💊 Drug-nutrient depletion auto-flag (renders only when meds match catalogue) */}
+          <MedicationImpactPanel clientId={clientId} />
+
+          {/* 🧪 Functional test PDFs — DUTCH / GI-MAP / OAT */}
+          <FunctionalTestPanel clientId={clientId} />
 
           {/* Message templates — WhatsApp pre-written templates */}
           <MessageTemplatesPanel

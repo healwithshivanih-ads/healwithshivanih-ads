@@ -17,6 +17,7 @@ import type {
   Source,
   CookingAdjustment,
   HomeRemedy,
+  Protocol,
 } from "@/lib/fmdb/types";
 
 const SUPPORTED: ReadonlySet<string> = new Set([
@@ -28,6 +29,7 @@ const SUPPORTED: ReadonlySet<string> = new Set([
   "sources",
   "cooking_adjustments",
   "home_remedies",
+  "protocols",
 ]);
 
 // Map a slug-like reference to its canonical detail URL.
@@ -714,6 +716,133 @@ function HomeRemedyDetail({ hr }: { hr: HomeRemedy }) {
   );
 }
 
+function ProtocolDetail({ pr }: { pr: Protocol }) {
+  return (
+    <div className="space-y-6">
+      <Header
+        title={pr.display_name ?? pr.slug}
+        slug={pr.slug}
+        tier={pr.evidence_tier}
+        category={pr.category}
+      />
+
+      {pr.summary && (
+        <Card>
+          <CardContent className="pt-6 text-sm leading-relaxed whitespace-pre-wrap">
+            {pr.summary}
+          </CardContent>
+        </Card>
+      )}
+
+      <div className="grid gap-4 sm:grid-cols-3">
+        {pr.typical_duration_weeks != null && (
+          <div className="rounded-lg border bg-card p-3">
+            <div className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold">Typical duration</div>
+            <div className="text-base font-semibold mt-1">{pr.typical_duration_weeks} weeks</div>
+          </div>
+        )}
+        {pr.category && (
+          <div className="rounded-lg border bg-card p-3">
+            <div className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold">Category</div>
+            <div className="text-base font-medium mt-1">{pr.category.replace(/_/g, " ")}</div>
+          </div>
+        )}
+      </div>
+
+      <div className="grid gap-6 md:grid-cols-2">
+        <Section title="Indications (when to use)">
+          <PlainList items={pr.indications} />
+        </Section>
+        <Section title="Contraindications (when NOT to use)">
+          <PlainList items={pr.contraindications} />
+        </Section>
+      </div>
+
+      {pr.phases && pr.phases.length > 0 && (
+        <Section title="Phases">
+          <ol className="space-y-3">
+            {pr.phases.map((ph, i) => (
+              <li key={i} className="rounded-lg border bg-muted/30 p-3">
+                <div className="flex items-baseline justify-between gap-3 mb-1">
+                  <span className="font-semibold text-sm">{ph.name}</span>
+                  {ph.weeks != null && (
+                    <span className="text-xs text-muted-foreground tabular-nums">{ph.weeks}w</span>
+                  )}
+                </div>
+                {ph.summary && (
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-2">{ph.summary}</p>
+                )}
+                {ph.key_actions && ph.key_actions.length > 0 && (
+                  <ul className="list-disc list-inside text-sm space-y-0.5">
+                    {ph.key_actions.map((a, j) => <li key={j}>{a}</li>)}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ol>
+        </Section>
+      )}
+
+      {pr.key_steps && pr.key_steps.length > 0 && (
+        <Section title="Key steps">
+          <PlainList items={pr.key_steps} />
+        </Section>
+      )}
+
+      <div className="grid gap-6 md:grid-cols-2">
+        <Section title="Foods to emphasise">
+          <PlainList items={pr.foods_to_emphasise} />
+        </Section>
+        <Section title="Foods to remove">
+          <PlainList items={pr.foods_to_remove} />
+        </Section>
+      </div>
+
+      {pr.supplements_typically_used && pr.supplements_typically_used.length > 0 && (
+        <Section title="Supplements typically used">
+          <LinkedChipList items={pr.supplements_typically_used} kind="supplements" />
+        </Section>
+      )}
+
+      {pr.expected_outcomes && pr.expected_outcomes.length > 0 && (
+        <Section title="Expected outcomes">
+          <PlainList items={pr.expected_outcomes} />
+        </Section>
+      )}
+
+      {pr.cautions && pr.cautions.length > 0 && (
+        <Section title="Cautions">
+          <PlainList items={pr.cautions} />
+        </Section>
+      )}
+
+      <div className="grid gap-6 md:grid-cols-3">
+        <Section title="Linked topics">
+          <LinkedChipList items={pr.linked_to_topics} kind="topics" />
+        </Section>
+        <Section title="Linked mechanisms">
+          <LinkedChipList items={pr.linked_to_mechanisms} kind="mechanisms" />
+        </Section>
+        <Section title="Linked symptoms">
+          <LinkedChipList items={pr.linked_to_symptoms} kind="symptoms" />
+        </Section>
+      </div>
+
+      {pr.notes_for_coach && (
+        <Section title="Notes for coach">
+          <p className="text-sm leading-relaxed whitespace-pre-wrap">{pr.notes_for_coach}</p>
+        </Section>
+      )}
+
+      {pr.sources && pr.sources.length > 0 && (
+        <Section title="Sources">
+          <SourceCitations sources={pr.sources} />
+        </Section>
+      )}
+    </div>
+  );
+}
+
 // ---- Page entry -----------------------------------------------------------
 
 export default async function CatalogueDetailPage({
@@ -773,6 +902,12 @@ export default async function CatalogueDetailPage({
       const hr = await loadOne<HomeRemedy>("home_remedies", slug);
       if (!hr) notFound();
       body = <HomeRemedyDetail hr={hr} />;
+      break;
+    }
+    case "protocols": {
+      const pr = await loadOne<Protocol>("protocols", slug);
+      if (!pr) notFound();
+      body = <ProtocolDetail pr={pr} />;
       break;
     }
     default:

@@ -1,0 +1,106 @@
+slug: whole30
+display_name: Whole30
+aliases:
+  - whole-30
+  - whole30-elimination
+  - whole-thirty
+category: elimination_diet
+summary: |
+  A 30-day elimination of grains, legumes, dairy, sugar, alcohol, and food
+  additives — designed as a "psychological reset" plus diagnostic tool.
+  Less restrictive than AIP (eggs + nuts + nightshades + most spices stay
+  in). Followed by 10–14 days of structured reintroduction. Good first
+  elimination for clients with mild-moderate gut symptoms or who suspect
+  food sensitivities but don't have autoimmune disease.
+indications:
+  - suspected food sensitivities (mild–moderate)
+  - bloating + brain fog with no clear trigger
+  - sugar / processed-food dependence
+  - "I just don't feel right but tests are normal"
+  - new clients who need a structured starting point
+  - weight gain with poor nutrient density
+contraindications:
+  - eating disorder history
+  - underweight (BMI < 18.5)
+  - active medical conditions requiring stable diet (consult clinician)
+typical_duration_weeks: 6
+phases:
+  - name: "Elimination (30 days)"
+    weeks: 4
+    summary: Remove all Whole30 categories. No exceptions, no slip-ups.
+    key_actions:
+      - cut grains, legumes, dairy, sugar (incl. honey/stevia), alcohol
+      - cut additives (carrageenan, MSG, sulfites, gums)
+      - read every label
+      - log symptoms daily on top 3 markers
+      - no scale-weighing (Whole30 rule)
+  - name: "Structured reintroduction (10–14 days)"
+    weeks: 2
+    summary: |
+      Reintroduce one food group at a time over 10 days, with 2 days
+      back to Whole30 between each test.
+    key_actions:
+      - day 1 — legumes (peanuts, dal, lentils)
+      - day 4 — gluten-free grains (rice, quinoa)
+      - day 7 — dairy (yogurt, paneer, ghee already allowed)
+      - day 10 — gluten (wheat-based breads, roti)
+      - track reactions (digestion, energy, sleep, skin, mood) for 2 days after each
+key_steps: []
+foods_to_emphasise:
+  - meat + fish + eggs
+  - all vegetables (incl. nightshades)
+  - all fruits (in moderation)
+  - nuts + seeds + nut butters (no peanuts)
+  - ghee + coconut oil + olive oil + avocado
+  - bone broth + herbs + spices
+  - fermented vegetables
+foods_to_remove:
+  - all grains (wheat, rice, oats, corn, quinoa)
+  - all legumes (dal, beans, peanuts, soy)
+  - all dairy except ghee
+  - sugar + ALL sweeteners (incl. honey, maple, stevia)
+  - alcohol
+  - processed additives + carrageenan + MSG + sulfites
+supplements_typically_used:
+  - magnesium-glycinate
+  - omega-3
+  - vitamin-d
+  - probiotics
+expected_outcomes:
+  - reduced bloating + steadier energy
+  - clearer skin
+  - better sleep
+  - reduced sugar cravings
+  - 1–3 kg weight reduction (mostly water + inflammation)
+  - clearer sense of which foods personally trigger reactions
+cautions:
+  - "Stricter than AIP for sweeteners (no honey/stevia)"
+  - "Less strict than AIP — keeps eggs + nightshades + nuts"
+  - "Indian challenge: rice + dal both eliminated; meal planning needs effort"
+  - Don't extend past 30 days — the diagnostic value comes from reintroduction
+linked_to_topics:
+  - food-sensitivities
+  - inflammation
+  - blood-sugar-dysregulation
+linked_to_mechanisms:
+  - leaky-gut
+  - chronic-inflammation
+linked_to_symptoms:
+  - bloating
+  - brain-fog
+  - fatigue
+  - food-sensitivities
+sources:
+  - id: vitaone-skill-practice-guide
+    location: elimination diet variants
+  - id: vitaone-elimination-diet-toolkit
+    location: Whole30 variant
+evidence_tier: plausible_emerging
+notes_for_coach: |
+  Best "first elimination diet" for clients new to FM. Less polarising than
+  AIP, more diagnostic than just "cut sugar". Get the official Whole30 book
+  recommendation in the welcome pack — clients do better with the framework.
+version: 1
+status: active
+updated_at: 2026-05-09
+updated_by: shivani

@@ -181,6 +181,16 @@ def main() -> int:
                 client_facing_summary=ed.get("client_facing_summary", ""),
             ))
 
+    # ── Attach AI-suggested protocols (radio-selected by coach) ──────────────
+    # Picks key format: `protocol_<slug>` is True when the coach selected
+    # that protocol via the radio in the SuggestionsView. Drives meal/
+    # supplement/exercise/lifestyle letter generation downstream.
+    for ps in suggestions.get("suggested_protocols", []) or []:
+        slug = ps.get("protocol_slug", "")
+        if slug and picks.get(f"protocol_{slug}"):
+            if slug not in plan.attached_protocols:
+                plan.attached_protocols.append(slug)
+
     # ── Apply protocol template (merged on top of AI suggestions) ─────────────
     # resolved_template is the full ProtocolTemplate object serialized from TS.
     if resolved_template:

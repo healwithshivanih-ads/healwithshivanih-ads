@@ -1,0 +1,62 @@
+slug: ace-inhibitors-arbs
+drug_name: ACE Inhibitors / ARBs
+drug_aliases:
+  - enalapril
+  - lisinopril
+  - ramipril
+  - cardace
+  - perindopril
+  - perinorm
+  - losartan
+  - cozaar
+  - losanorm
+  - telmisartan
+  - telma
+  - olmesartan
+  - olmecip
+  - candesartan
+  - valsartan
+  - ace-inhibitor
+  - arb
+drug_class: ace_inhibitor
+summary: |
+  Renin-angiotensin system blockers — first-line for hypertension,
+  diabetic kidney disease, heart failure, post-MI. Mild zinc depletion
+  reported. Most important coach concerns are around POTASSIUM
+  (hyperkalemia risk) — never stack with high-dose K+ supplements
+  without clinician.
+depletes:
+  - nutrient: Zinc
+    severity: mild
+    mechanism: Increased urinary zinc excretion reported.
+    monitoring_recommendation: Serum zinc annually
+    typical_supplement_dose: 15-30 mg zinc picolinate (with food, not at the same time as ACE-I)
+timing_separations: []
+contraindicated_supplements:
+  - high-dose-potassium
+monitoring_labs:
+  - Renal function (creatinine, eGFR, urine ACR) every 3-6 months
+  - Serum potassium every 3-6 months (hyperkalemia risk)
+  - BP (sitting + standing — hypotension risk)
+coach_notes: |
+  ⚠ POTASSIUM CAUTION — ACE-I / ARBs reduce renal potassium excretion.
+  NEVER recommend high-dose potassium supplements (> 99 mg). Even
+  potassium-rich foods (banana, coconut water, dates, dried fruits) need
+  moderation if serum K is trending high.
+  ⚠ NSAIDs + ACE-I = AKI risk. Counsel clients to limit chronic NSAID use.
+  ⚠ Pregnancy contraindication — NEVER continue ACE/ARBs in pregnancy
+  (teratogenic). If client of childbearing age, ensure birth-control or
+  pregnancy-planning conversation has happened with prescriber.
+  Most clients on ACE-I tolerate well. Dry cough is the classic ACE-I
+  side effect (~10%); switching to ARB usually resolves.
+linked_to_topics:
+  - cardiovascular-disease
+linked_to_mechanisms: []
+sources:
+  - id: vitaone-skill-practice-guide
+    location: Cardiovascular drug interactions
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-09
+updated_by: shivani

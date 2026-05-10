@@ -39,8 +39,12 @@ from .loader import (
     load_claims,
     load_cooking_adjustment,
     load_cooking_adjustments,
+    load_drug_depletion,
+    load_drug_depletions,
     load_home_remedies,
     load_home_remedy,
+    load_protocol,
+    load_protocols,
     load_mechanism,
     load_mechanisms,
     load_source,
@@ -748,6 +752,140 @@ def cmd_show_home_remedy(args: argparse.Namespace) -> None:
             loc = f" [{s.location}]" if s.location else ""
             print(f"    - {s.id}{loc}{quote}")
     print(f"  Updated: {hr.updated_at} by {hr.updated_by}")
+
+
+def cmd_protocols(args: argparse.Namespace) -> None:
+    items = load_protocols(DATA_DIR)
+    if not items:
+        print("(no protocols)")
+        return
+    for pr in items:
+        wks = f"{pr.typical_duration_weeks}w" if pr.typical_duration_weeks else "—"
+        print(f"  {pr.slug:35s}  {pr.category.value:24s}  {wks:>4s}  [{pr.evidence_tier.value}]  {pr.display_name}")
+
+
+def cmd_show_protocol(args: argparse.Namespace) -> None:
+    pr = load_protocol(DATA_DIR, args.slug)
+    print(f"{pr.display_name}  ({pr.slug})  v{pr.version}  [{pr.status.value}]")
+    print(f"  Category:        {pr.category.value}")
+    print(f"  Evidence tier:   {pr.evidence_tier.value}")
+    if pr.typical_duration_weeks:
+        print(f"  Duration:        {pr.typical_duration_weeks} weeks")
+    if pr.aliases:
+        print(f"  Aliases:         {', '.join(pr.aliases)}")
+    print(f"  Summary:         {pr.summary.strip()}")
+    if pr.indications:
+        print("  Indications:")
+        for i in pr.indications:
+            print(f"    - {i}")
+    if pr.contraindications:
+        print("  Contraindications:")
+        for c in pr.contraindications:
+            print(f"    - {c}")
+    if pr.phases:
+        print("  Phases:")
+        for ph in pr.phases:
+            wks = f" ({ph.weeks}w)" if ph.weeks else ""
+            print(f"    {ph.name}{wks}")
+            if ph.summary:
+                print(f"      {ph.summary.strip()}")
+            for a in ph.key_actions:
+                print(f"        - {a}")
+    if pr.key_steps:
+        print("  Key steps:")
+        for k in pr.key_steps:
+            print(f"    - {k}")
+    if pr.foods_to_emphasise:
+        print("  Foods to emphasise:")
+        for f in pr.foods_to_emphasise:
+            print(f"    - {f}")
+    if pr.foods_to_remove:
+        print("  Foods to remove:")
+        for f in pr.foods_to_remove:
+            print(f"    - {f}")
+    if pr.supplements_typically_used:
+        print(f"  Supplements:     {', '.join(pr.supplements_typically_used)}")
+    if pr.expected_outcomes:
+        print("  Expected outcomes:")
+        for e in pr.expected_outcomes:
+            print(f"    - {e}")
+    if pr.cautions:
+        print("  Cautions:")
+        for c in pr.cautions:
+            print(f"    - {c}")
+    if pr.linked_to_topics:
+        print(f"  Topics:          {', '.join(pr.linked_to_topics)}")
+    if pr.linked_to_mechanisms:
+        print(f"  Mechanisms:      {', '.join(pr.linked_to_mechanisms)}")
+    if pr.linked_to_symptoms:
+        print(f"  Symptoms:        {', '.join(pr.linked_to_symptoms)}")
+    if pr.sources:
+        print("  Sources:")
+        for s in pr.sources:
+            quote = f' — "{s.quote}"' if s.quote else ""
+            loc = f" [{s.location}]" if s.location else ""
+            print(f"    - {s.id}{loc}{quote}")
+    if pr.notes_for_coach:
+        print(f"  Notes for coach: {pr.notes_for_coach.strip()}")
+    print(f"  Updated: {pr.updated_at} by {pr.updated_by}")
+
+
+def cmd_drug_depletions(args: argparse.Namespace) -> None:
+    items = load_drug_depletions(DATA_DIR)
+    if not items:
+        print("(no drug depletions)")
+        return
+    for dd in items:
+        n = len(dd.depletes)
+        print(f"  {dd.slug:32s}  {dd.drug_class.value:22s}  depletes={n:>2}  [{dd.evidence_tier.value}]  {dd.drug_name}")
+
+
+def cmd_show_drug_depletion(args: argparse.Namespace) -> None:
+    dd = load_drug_depletion(DATA_DIR, args.slug)
+    print(f"{dd.drug_name}  ({dd.slug})  v{dd.version}  [{dd.status.value}]")
+    print(f"  Drug class:      {dd.drug_class.value}")
+    print(f"  Evidence tier:   {dd.evidence_tier.value}")
+    if dd.drug_aliases:
+        print(f"  Aliases:         {', '.join(dd.drug_aliases)}")
+    if dd.summary:
+        print(f"  Summary:         {dd.summary.strip()}")
+    if dd.depletes:
+        print("  Depletes:")
+        for nd in dd.depletes:
+            extras = []
+            if nd.severity:
+                extras.append(nd.severity.value)
+            if nd.mechanism:
+                extras.append(nd.mechanism)
+            tail = f" ({' · '.join(extras)})" if extras else ""
+            print(f"    - {nd.nutrient}{tail}")
+            if nd.monitoring_recommendation:
+                print(f"        monitor: {nd.monitoring_recommendation}")
+            if nd.typical_supplement_dose:
+                print(f"        suggest: {nd.typical_supplement_dose}")
+    if dd.timing_separations:
+        print("  Timing separations:")
+        for t in dd.timing_separations:
+            print(f"    - {t}")
+    if dd.contraindicated_supplements:
+        print(f"  Avoid supps:     {', '.join(dd.contraindicated_supplements)}")
+    if dd.monitoring_labs:
+        print("  Monitoring labs:")
+        for m in dd.monitoring_labs:
+            print(f"    - {m}")
+    if dd.coach_notes:
+        print(f"  Coach notes:     {dd.coach_notes.strip()}")
+    if dd.linked_to_topics:
+        print(f"  Topics:          {', '.join(dd.linked_to_topics)}")
+    if dd.linked_to_mechanisms:
+        print(f"  Mechanisms:      {', '.join(dd.linked_to_mechanisms)}")
+    if dd.sources:
+        print("  Sources:")
+        for s in dd.sources:
+            quote = f' — "{s.quote}"' if s.quote else ""
+            loc = f" [{s.location}]" if s.location else ""
+            print(f"    - {s.id}{loc}{quote}")
+    print(f"  Updated: {dd.updated_at} by {dd.updated_by}")
 
 
 def cmd_ingest(args: argparse.Namespace) -> None:
@@ -1641,6 +1779,16 @@ def main() -> None:
     show_hr = sub.add_parser("show-home-remedy", help="show one home remedy")
     show_hr.add_argument("slug")
     show_hr.set_defaults(func=cmd_show_home_remedy)
+
+    sub.add_parser("protocols", help="list all FM protocols").set_defaults(func=cmd_protocols)
+    show_pr = sub.add_parser("show-protocol", help="show one protocol")
+    show_pr.add_argument("slug")
+    show_pr.set_defaults(func=cmd_show_protocol)
+
+    sub.add_parser("drug-depletions", help="list all drug-nutrient depletion records").set_defaults(func=cmd_drug_depletions)
+    show_dd = sub.add_parser("show-drug-depletion", help="show one drug-depletion record")
+    show_dd.add_argument("slug")
+    show_dd.set_defaults(func=cmd_show_drug_depletion)
 
     ing = sub.add_parser("ingest", help="extract candidates from a document")
     ing.add_argument("path", help="path to document (.md, .txt, ...)")

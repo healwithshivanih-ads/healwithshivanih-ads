@@ -1,0 +1,59 @@
+slug: metformin
+drug_name: Metformin
+drug_aliases:
+  - glucophage
+  - glycomet
+  - obimet
+  - glumet
+  - metformin-hcl
+  - metformin-er
+  - metformin-xr
+drug_class: metformin
+summary: |
+  First-line for type 2 diabetes / PCOS / insulin resistance / prediabetes.
+  Long-term use depletes vitamin B12 in 10-30% of users — can present as
+  fatigue, neuropathy, brain fog, pernicious-anemia-like picture. Often
+  misdiagnosed.
+depletes:
+  - nutrient: Vitamin B12 (cobalamin)
+    severity: severe
+    mechanism: Metformin interferes with calcium-dependent ileal absorption of intrinsic-factor-bound B12.
+    monitoring_recommendation: Serum B12 + MMA (methylmalonic acid) annually; FM optimal B12 > 500 pg/mL
+    typical_supplement_dose: 1000 mcg methylcobalamin sublingual daily OR 5000 mcg/week
+  - nutrient: Folate
+    severity: mild
+    mechanism: Mild reduction; usually only clinically meaningful when paired with low dietary intake.
+    monitoring_recommendation: Serum folate annually
+    typical_supplement_dose: 400 mcg methyl folate (5-MTHF) daily
+  - nutrient: CoQ10
+    severity: mild
+    mechanism: Possible mild depletion; mechanism not fully established.
+    monitoring_recommendation: Consider supplementation prophylactically — testing not standard
+    typical_supplement_dose: 100 mg ubiquinol/day
+timing_separations:
+  - "Take WITH meals to reduce GI side effects (nausea, diarrhea)."
+  - "Calcium 1200 mg/day may reduce B12 absorption interference (clinical relevance debated)."
+contraindicated_supplements: []
+monitoring_labs:
+  - B12 + MMA annually (MMA is more sensitive than B12 alone)
+  - Homocysteine annually (rises with B12 deficiency)
+  - HbA1c every 3-6 months
+  - Lactic acid if elevated AKI / renal dysfunction risk
+coach_notes: |
+  ANY client on metformin > 1 year should be on a B12 supplement OR have
+  documented normal B12 + MMA. Don't wait for fatigue / neuropathy to
+  emerge — by then nerve damage may be partial. Methyl B12 sublingual
+  bypasses the absorption defect entirely.
+linked_to_topics:
+  - insulin-resistance
+  - blood-sugar-dysregulation
+  - pcos
+linked_to_mechanisms: []
+sources:
+  - id: vitaone-skill-practice-guide
+    location: Drug-nutrient depletions
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-09
+updated_by: shivani

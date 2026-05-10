@@ -1,0 +1,143 @@
+slug: 5r-gut-protocol
+display_name: 5R Gut Healing Protocol
+aliases:
+  - 5r-protocol
+  - 5r
+  - five-r
+  - five-r-protocol
+  - gut-restoration-5r
+category: gut_healing
+summary: |
+  The cornerstone FM gut-healing protocol — a phased 8–12 week sequence to
+  Remove triggers, Replace digestive support, Reinoculate beneficial flora,
+  Repair the intestinal barrier, and Rebalance lifestyle. First-line for any
+  client with leaky gut, food sensitivities, IBS, dysbiosis, autoimmune
+  flares, or systemic inflammation rooted in GI dysfunction.
+indications:
+  - leaky gut / intestinal permeability
+  - food sensitivities (multiple)
+  - IBS / IBD-like symptoms (bloating, gas, alternating stools)
+  - SIBO / dysbiosis suspected
+  - autoimmune diagnosis or rising antibodies
+  - chronic systemic inflammation with no clear infectious cause
+  - skin issues (eczema, rosacea) that mirror gut symptoms
+contraindications:
+  - active acute GI bleeding (refer)
+  - inflammatory bowel disease in flare (gastroenterologist first)
+  - eating disorder history (food restriction risks)
+typical_duration_weeks: 12
+phases:
+  - name: "Remove (weeks 1–2)"
+    weeks: 2
+    summary: |
+      Eliminate inflammatory + offending foods, NSAIDs where possible,
+      and known infections (with clinician input).
+    key_actions:
+      - remove gluten, dairy, processed sugar, alcohol, processed seed oils
+      - remove personal trigger foods if known (food log helps)
+      - identify + treat infections (H. pylori, parasites, candida) with clinician
+      - reduce NSAIDs / PPIs / antibiotics where appropriate
+  - name: "Replace (weeks 1–4)"
+    weeks: 4
+    summary: |
+      Restore digestive factors that may be deficient — stomach acid,
+      enzymes, bile salts.
+    key_actions:
+      - betaine HCl with pepsin if hypochlorhydria suspected
+      - digestive enzyme blend with meals
+      - ox bile if gallbladder removed or fat malabsorption signs
+      - bitters before meals (gentian, dandelion)
+  - name: "Reinoculate (weeks 3–8)"
+    weeks: 6
+    summary: |
+      Build beneficial flora with probiotics + prebiotics + fermented foods.
+    key_actions:
+      - multi-strain probiotic 25–50 billion CFU
+      - introduce fermented foods slowly (sauerkraut, kefir, kimchi)
+      - prebiotic fibres if tolerated (no SIBO active) — chicory, jerusalem artichoke
+  - name: "Repair (weeks 5–10)"
+    weeks: 6
+    summary: |
+      Rebuild the intestinal lining with targeted nutrients.
+    key_actions:
+      - L-glutamine 5g 2× daily (powder in water away from food)
+      - zinc carnosine 75mg/day for 6 weeks
+      - aloe vera juice (inner leaf only) before meals
+      - bone broth 1 cup/day
+      - quercetin / DGL for histamine and lining support
+  - name: "Rebalance (weeks 9–12 + ongoing)"
+    weeks: 4
+    summary: |
+      Lifestyle pillars to keep the gut healed long-term.
+    key_actions:
+      - sleep 7–9 hrs, consistent timing
+      - daily stress practice (10 min minimum — breathwork / walk / yoga)
+      - movement 4–5×/week
+      - chew thoroughly, eat without screens, longer between meals
+key_steps: []
+foods_to_emphasise:
+  - bone broth
+  - cooked vegetables (low-FODMAP if SIBO suspected)
+  - fermented foods (introduce slowly)
+  - wild fish, pasture-raised meats
+  - L-glutamine-rich foods (cabbage, parsley, beef)
+  - well-cooked dal / khichdi
+foods_to_remove:
+  - gluten (all sources)
+  - dairy (all sources, except ghee)
+  - processed sugar + refined carbs
+  - alcohol
+  - processed seed oils (canola, sunflower, soybean)
+  - food additives (gums, emulsifiers, artificial sweeteners)
+supplements_typically_used:
+  - l-glutamine
+  - zinc-carnosine
+  - probiotics
+  - digestive-enzymes
+  - betaine-hcl
+  - dgl-licorice
+  - quercetin
+expected_outcomes:
+  - reduced bloating + gas within 2–4 weeks
+  - improved stool form + frequency
+  - clearer skin + reduced rashes by week 6–8
+  - reduced food sensitivity reactions
+  - improved energy + mental clarity
+  - lower inflammatory markers (hsCRP) by week 8–12
+cautions:
+  - Some clients flare in week 1–2 (die-off / detox reactions); slow tapering helps.
+  - Do NOT do 5R without a coach + clinician partnership for autoimmune clients.
+  - Reintroduction of removed foods AFTER week 12 is part of the protocol — don't leave out forever without testing tolerance.
+linked_to_topics:
+  - 5r-gut-restoration
+  - leaky-gut
+  - sibo
+  - autoimmune
+  - food-sensitivities
+linked_to_mechanisms:
+  - leaky-gut
+  - intestinal-permeability
+  - chronic-inflammation
+linked_to_symptoms:
+  - bloating
+  - food-sensitivities
+  - gas
+  - loose-stools
+  - constipation
+  - skin-rash
+sources:
+  - id: vitaone-skill-practice-guide
+    location: 5R Protocol section
+  - id: vitaone-gut-toolkit
+    location: gut-healing-protocol
+evidence_tier: fm_specific_thin
+notes_for_coach: |
+  This is the most-used FM protocol in coaching practice. Most clients see
+  meaningful change between weeks 6–10. If no improvement by week 8, suspect
+  unaddressed infection (H. pylori, parasites, SIBO) or a missed trigger
+  food — refer to functional-medicine-trained physician for stool + breath
+  testing.
+version: 1
+status: active
+updated_at: 2026-05-09
+updated_by: shivani

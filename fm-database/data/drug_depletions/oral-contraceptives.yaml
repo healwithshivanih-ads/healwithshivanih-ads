@@ -1,0 +1,101 @@
+slug: oral-contraceptives
+drug_name: Oral Contraceptives
+drug_aliases:
+  - ocp
+  - birth-control-pill
+  - combined-oral-contraceptive
+  - progestin-only-pill
+  - mini-pill
+  - novelon
+  - yasmin
+  - krimson
+  - mala-d
+  - femilon
+  - microgynon
+  - diane-35
+  - depo-provera
+drug_class: oral_contraceptive
+summary: |
+  Combined / progestin-only contraceptives suppress ovulation. Long-term
+  use depletes a wide range of micronutrients — most clinically meaningful
+  are folate, B6, B12, magnesium, zinc, CoQ10, vitamin C and E. Also alters
+  thyroid binding globulin (raises TSH artificially) and can mask the
+  hormonal picture for years. Often clients come off OCP and crash with
+  significant deficiency-driven symptoms.
+depletes:
+  - nutrient: Folate (B9)
+    severity: severe
+    mechanism: Reduced absorption + increased excretion. Critical preconception for clients planning pregnancy after OCP.
+    monitoring_recommendation: Serum folate + RBC folate at baseline + after stopping OCP; if planning pregnancy, supplement 400-800 mcg starting 3 months before conception
+    typical_supplement_dose: 400 mcg methyl folate (5-MTHF) daily
+  - nutrient: Vitamin B6 (P5P)
+    severity: moderate
+    mechanism: Increased breakdown via the kynurenine pathway. Affects neurotransmitter synthesis (serotonin, GABA) — possible mood changes.
+    monitoring_recommendation: B6 status correlates with mood symptoms; supplement empirically if low mood emerges
+    typical_supplement_dose: 25-50 mg P5P (active form) daily
+  - nutrient: Vitamin B12
+    severity: moderate
+    mechanism: Reduced via interference with B12 transport proteins.
+    monitoring_recommendation: Serum B12 + MMA annually
+    typical_supplement_dose: 500-1000 mcg methylcobalamin sublingual
+  - nutrient: Zinc
+    severity: moderate
+    mechanism: Increased copper:zinc ratio (estrogen raises copper, depletes zinc). Affects immune function + skin health.
+    monitoring_recommendation: Serum zinc + plasma copper:zinc ratio
+    typical_supplement_dose: 15-30 mg zinc picolinate / glycinate
+  - nutrient: Magnesium
+    severity: moderate
+    mechanism: Estrogen increases magnesium excretion + alters calcium-magnesium balance.
+    monitoring_recommendation: RBC magnesium annually
+    typical_supplement_dose: 400 mg magnesium glycinate at bedtime
+  - nutrient: CoQ10
+    severity: moderate
+    mechanism: Reduced via reduced mitochondrial biogenesis pathways.
+    monitoring_recommendation: Empirical supplementation
+    typical_supplement_dose: 100 mg ubiquinol/day
+  - nutrient: Vitamin C
+    severity: mild
+    mechanism: Mild depletion via increased oxidative stress.
+    monitoring_recommendation: Not routinely tested
+    typical_supplement_dose: 500-1000 mg/day (whole-food source if possible — amla, citrus)
+  - nutrient: Vitamin E
+    severity: mild
+    mechanism: Mild depletion.
+    monitoring_recommendation: Not routinely tested
+    typical_supplement_dose: 200 IU mixed tocopherols
+  - nutrient: Selenium
+    severity: mild
+    mechanism: Mildly reduced; relevant for thyroid context.
+    monitoring_recommendation: Selenium serum if thyroid changes
+    typical_supplement_dose: 200 mcg selenomethionine
+timing_separations: []
+contraindicated_supplements:
+  - st-johns-wort
+monitoring_labs:
+  - TSH + Free T4 + Free T3 (OCP raises TBG, distorts TSH)
+  - Cervical screening as per protocol
+  - Liver enzymes annually
+  - Lipid panel annually
+  - Vitamin D + B12 + folate at baseline + annually
+coach_notes: |
+  Most under-recognised drug-nutrient depletion in young women. Clients on
+  OCP for 5+ years often have multi-nutrient deficiency masking as fatigue,
+  brain fog, mood changes, hair loss, thinning skin. If a client is
+  considering coming off OCP, pre-load with these nutrients for 3-6 months
+  beforehand to prevent post-pill PCOS / amenorrhea / acne flare.
+  ⚠ St John's Wort REDUCES OCP efficacy (CYP3A4 induction) — never
+  recommend together. Pregnancy planning — folate 800 mcg + 5-MTHF for
+  3 months before conception is mandatory after long-term OCP.
+linked_to_topics:
+  - perimenopause
+  - pcos
+  - estrogen-dominance
+linked_to_mechanisms: []
+sources:
+  - id: vitaone-skill-practice-guide
+    location: OCP nutrient depletions
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-09
+updated_by: shivani

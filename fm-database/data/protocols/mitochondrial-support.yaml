@@ -1,0 +1,125 @@
+slug: mitochondrial-support
+display_name: Mitochondrial Support Protocol
+aliases:
+  - mito-support
+  - energy-recovery-protocol
+  - mitochondrial-recovery
+  - cellular-energy-protocol
+category: mitochondrial_support
+summary: |
+  A 10–12 week protocol to restore cellular energy production for clients
+  with chronic fatigue, post-viral syndromes, fibromyalgia, or long COVID.
+  Focuses on mitochondrial nutrient cofactors (CoQ10, B-vitamins, magnesium,
+  carnitine), reducing oxidative stress, optimising sleep + circadian rhythm,
+  and gentle progressive movement (NEVER push through fatigue).
+indications:
+  - chronic fatigue / chronic fatigue syndrome (CFS / ME)
+  - long COVID with energy + cognitive symptoms
+  - post-viral fatigue (EBV, mono, dengue recovery)
+  - fibromyalgia
+  - exercise intolerance — exhaustion from low effort
+  - persistent fatigue without clear cause
+  - elevated lactate post-exercise
+contraindications:
+  - undiagnosed cardiac disease — rule out first
+  - active infection — treat first
+  - severe ME/CFS — may need specialist; coach as adjunct only
+typical_duration_weeks: 12
+phases:
+  - name: "Pacing + foundation (weeks 1–3)"
+    weeks: 3
+    summary: |
+      STOP pushing through fatigue. Establish baseline energy + sleep.
+    key_actions:
+      - "PACING — operate at 70% of perceived energy capacity, not 100%"
+      - "NO HIIT, NO heavy lifting, NO 'pushing through'"
+      - sleep 9pm–6am minimum (circadian alignment)
+      - 3 meals + 1 snack — never skip + never go > 3h without protein
+      - cut alcohol + minimise caffeine to 1 cup before noon
+      - 10 min daily restorative practice (yoga nidra / breathwork)
+      - daily symptom + energy log (1–10 scale on 3 markers)
+  - name: "Mitochondrial cofactors (weeks 4–8)"
+    weeks: 5
+    summary: |
+      Support the electron transport chain + reduce oxidative stress.
+    key_actions:
+      - CoQ10 (ubiquinol) 100–200mg / day with fat
+      - magnesium glycinate 400mg / day
+      - B-complex with active forms (methyl B12, methyl folate)
+      - acetyl-L-carnitine 500mg 2× / day
+      - alpha-lipoic acid 300mg / day
+      - vitamin C 1000mg / day
+      - omega-3 2g EPA/DHA / day
+      - introduce gentle movement — 10 min walk daily, building 1 min/week
+  - name: "Progressive load (weeks 9–12)"
+    weeks: 4
+    summary: |
+      Gradually increase movement + complexity. Re-test if available.
+    key_actions:
+      - increase walking duration if tolerated (NO push-back days)
+      - introduce gentle yoga or strength bands 2× / week
+      - reduce supplements to maintenance — CoQ10 100mg + magnesium + omega-3
+      - re-test if available — fasting lactate, ferritin, vit D, B12, CoQ10 levels
+      - identify ongoing energy drains to manage long-term
+key_steps: []
+foods_to_emphasise:
+  - 25–30g protein per meal (mitochondrial repair)
+  - fatty fish 3× / week (omega-3 + CoQ10)
+  - dark leafy greens (magnesium + B-vitamins)
+  - liver (organ meat) once / week (CoQ10 + B12 + iron)
+  - eggs (B12 + choline + sulphur)
+  - berries + colourful vegetables (antioxidants)
+  - sea salt + electrolytes (mitochondria need minerals)
+  - bone broth daily
+foods_to_remove:
+  - alcohol (mitochondrial toxin)
+  - refined sugar (causes oxidative stress)
+  - processed seed oils (lipid peroxidation = mitochondrial damage)
+  - excess caffeine (depletes adrenals + B-vitamins)
+  - food sensitivities if known (energy cost of inflammation)
+supplements_typically_used:
+  - coq10
+  - magnesium-glycinate
+  - b-complex
+  - acetyl-l-carnitine
+  - alpha-lipoic-acid
+  - vitamin-c
+  - omega-3
+  - d-ribose
+  - nadh
+expected_outcomes:
+  - 30–50% improvement in fatigue scores by week 8
+  - improved exercise tolerance
+  - better cognitive function (less brain fog)
+  - more refreshing sleep
+  - stable energy across the day (no afternoon crash)
+  - return to gentle exercise without crash
+cautions:
+  - "Pacing is the most important rule — clients want to push, but it backfires"
+  - "Post-exertional malaise (PEM) means they pushed too hard — back off 30%"
+  - "CoQ10 + statins — clinician check; statins deplete CoQ10, supplementation may be necessary"
+  - This is a slow protocol; coaches must hold clients back, not push forward
+linked_to_topics:
+  - chronic-fatigue
+  - long-covid
+  - fibromyalgia
+  - mitochondrial-dysfunction
+linked_to_mechanisms:
+  - hpa-axis-dysregulation
+linked_to_symptoms:
+  - fatigue
+  - brain-fog
+sources:
+  - id: vitaone-skill-practice-guide
+    location: mitochondrial support section
+evidence_tier: fm_specific_thin
+notes_for_coach: |
+  Hardest protocol to coach because clients want to push and feel "normal".
+  The most important thing you can do is set expectations: 8–12 weeks
+  minimum, slow progress, no pushing through. Watch for post-exertional
+  malaise (PEM) — that's the signal to back off 30% on activity. Pair with
+  adrenal recovery if HPA dysfunction is also present.
+version: 1
+status: active
+updated_at: 2026-05-09
+updated_by: shivani
