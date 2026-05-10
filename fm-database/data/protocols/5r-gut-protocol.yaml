@@ -108,6 +108,15 @@ cautions:
   - Some clients flare in week 1–2 (die-off / detox reactions); slow tapering helps.
   - Do NOT do 5R without a coach + clinician partnership for autoimmune clients.
   - Reintroduction of removed foods AFTER week 12 is part of the protocol — don't leave out forever without testing tolerance.
+prerequisites: []
+recommended_followup:
+  - autoimmune-paleo-aip
+  - cycle-sync-protocol
+  - liver-detox-support
+incompatible_with:
+  - whole30
+  - low-fodmap-protocol
+  - weight-loss-metabolic-reset
 linked_to_topics:
   - 5r-gut-restoration
   - leaky-gut

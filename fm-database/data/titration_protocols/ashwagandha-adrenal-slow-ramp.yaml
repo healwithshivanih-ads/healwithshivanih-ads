@@ -1,0 +1,82 @@
+slug: ashwagandha-adrenal-slow-ramp
+display_name: Ashwagandha — Adrenal Recovery Slow Ramp
+supplement_slug: ashwagandha
+purpose: |
+  Slow 4-week ramp to therapeutic 600mg/day for HPA-axis recovery. Many
+  clients (especially those with anxiety / sleep sensitivity / hyperthyroid
+  picture) feel agitated or stimulated at 600mg from day 1; the slow
+  introduction lets the nervous system adapt. Common Indian-pharmacy
+  product is 300mg/cap (KSM-66 standardised extract) or 500mg/cap
+  generic — schedule below assumes 300mg/cap.
+indications:
+  - adrenal-fatigue
+  - chronic-stress
+  - "tired-but-wired pattern"
+  - hpa-axis-dysregulation
+contraindications:
+  - hyperthyroidism / Graves' disease (ashwagandha may worsen)
+  - autoimmune thyroid + actively flaring
+  - pregnancy (insufficient safety data)
+  - breastfeeding (insufficient safety data)
+  - currently on benzodiazepines (additive sedation)
+  - currently on thyroid hormone — start low, monitor TSH (ashwagandha can boost T4 → T3)
+product_strength: "300mg per capsule (KSM-66 standardised root extract)"
+available_at:
+  - vitaone
+  - amazon-india
+  - iherb
+target_dose_label: "600mg/day"
+target_total_per_day: "600mg"
+schedule:
+  - week: 1
+    morning: 1
+    midday: 0
+    evening: 0
+    bedtime: 0
+    notes: "1 cap (300mg) AM with breakfast. Watch for any agitation / racing heart / sleep changes."
+  - week: 2
+    morning: 1
+    midday: 0
+    evening: 1
+    bedtime: 0
+    notes: "Add 1 cap PM with dinner if AM dose tolerated well. Now 600mg/day total."
+  - week: 3
+    morning: 1
+    midday: 0
+    evening: 1
+    bedtime: 0
+    notes: "Maintain 600mg/day. Reassess at week 4 — saliva cortisol or symptom score."
+  - week: 4
+    morning: 1
+    midday: 0
+    evening: 1
+    bedtime: 0
+    notes: "Continue 600mg/day. If well-tolerated + improvement plateaued, can increase to 900mg/day at start of week 5 (1 AM + 1 midday + 1 PM)."
+splittable: true
+cautions:
+  - "If sedation / drowsiness emerges, move both caps to evening/bedtime."
+  - "Discontinue if agitation, palpitations, or worsening sleep."
+  - "Take WITH food to reduce GI upset."
+monitoring:
+  - "Symptom score (1-10) on energy + sleep + anxiety, weekly"
+  - "TSH at 6 weeks if on thyroid medication"
+  - "Saliva 4-point cortisol or DUTCH at week 8 to confirm HPA recovery"
+notes_for_coach: |
+  KSM-66 is the most-studied form (60+ RCTs). Sensoril is the alternative
+  but more sedating — better for anxiety-dominant pictures, less ideal for
+  fatigue-dominant. If client buys generic ashwagandha churan from an
+  Ayurvedic shop, the dose is harder to pin down — recommend KSM-66 cap
+  format for predictability.
+linked_to_topics:
+  - adrenal-fatigue
+  - chronic-stress
+linked_to_mechanisms:
+  - hpa-axis-dysregulation
+sources:
+  - id: vitaone-skill-practice-guide
+    location: Adaptogens — ashwagandha titration
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-10
+updated_by: shivani

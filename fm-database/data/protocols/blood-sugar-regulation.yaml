@@ -104,6 +104,11 @@ cautions:
   - "Chromium can lower blood sugar — monitor if on diabetes meds"
   - "Don't combine with metabolic-reset protocol — too much restriction"
   - "Track with continuous glucose monitor (CGM) if available — most actionable feedback"
+prerequisites: []
+recommended_followup:
+  - weight-loss-metabolic-reset
+  - cycle-sync-protocol
+incompatible_with: []
 linked_to_topics:
   - blood-sugar-dysregulation
   - insulin-resistance

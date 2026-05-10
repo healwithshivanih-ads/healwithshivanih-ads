@@ -26,7 +26,7 @@ import yaml
 from pydantic import ValidationError as PydanticValidationError
 
 from .enums import InteractionType, SourceType
-from .models import Claim, CookingAdjustment, DrugDepletion, HomeRemedy, Mechanism, MindMap, Protocol, Source, Supplement, Symptom, Topic
+from .models import Claim, CookingAdjustment, DrugDepletion, HomeRemedy, Mechanism, MindMap, Protocol, Source, Supplement, Symptom, TitrationProtocol, Topic
 
 
 @dataclass
@@ -68,6 +68,7 @@ class Loaded:
     home_remedies: list[HomeRemedy] = field(default_factory=list)
     protocols: list[Protocol] = field(default_factory=list)
     drug_depletions: list[DrugDepletion] = field(default_factory=list)
+    titration_protocols: list[TitrationProtocol] = field(default_factory=list)
     mindmaps: list[MindMap] = field(default_factory=list)
     parse_errors: list[str] = field(default_factory=list)
 
@@ -126,6 +127,7 @@ def load_all(data_dir: Path) -> Loaded:
         home_remedies=_load_dir(data_dir, "home_remedies", HomeRemedy, parse_errors),
         protocols=_load_dir(data_dir, "protocols", Protocol, parse_errors),
         drug_depletions=_load_dir(data_dir, "drug_depletions", DrugDepletion, parse_errors),
+        titration_protocols=_load_dir(data_dir, "titration_protocols", TitrationProtocol, parse_errors),
         mindmaps=_load_dir(data_dir, "mindmaps", MindMap, parse_errors),
         parse_errors=parse_errors,
     )
@@ -136,7 +138,7 @@ def overlay(
     *,
     sources=(), topics=(), claims=(), supplements=(),
     mechanisms=(), symptoms=(), cooking_adjustments=(), home_remedies=(),
-    protocols=(), drug_depletions=(),
+    protocols=(), drug_depletions=(), titration_protocols=(),
 ) -> Loaded:
     """Return a new Loaded where given entities replace any same-slug entries.
 
@@ -159,6 +161,7 @@ def overlay(
         home_remedies=_merge(loaded.home_remedies, home_remedies, "slug"),
         protocols=_merge(loaded.protocols, protocols, "slug"),
         drug_depletions=_merge(loaded.drug_depletions, drug_depletions, "slug"),
+        titration_protocols=_merge(loaded.titration_protocols, titration_protocols, "slug"),
         parse_errors=list(loaded.parse_errors),
     )
 
@@ -187,6 +190,7 @@ def validate_loaded(loaded: Loaded) -> tuple[list[str], list[Warning_]]:
     _check_dupes(loaded.home_remedies, "slug", "home_remedy slug")
     _check_dupes(loaded.protocols, "slug", "protocol slug")
     _check_dupes(loaded.drug_depletions, "slug", "drug_depletion slug")
+    _check_dupes(loaded.titration_protocols, "slug", "titration_protocol slug")
 
     # ---- alias collisions (ERROR) ----
     # An alias must not collide with a different entity's canonical slug.
@@ -395,6 +399,17 @@ def validate_loaded(loaded: Loaded) -> tuple[list[str], list[Warning_]]:
         for supp_slug in pr.supplements_typically_used:
             if supp_slug not in valid_supplement_slugs:
                 warnings.append(Warning_("protocol", pr.slug, "supplements_typically_used", "supplement", supp_slug))
+        # Protocol-to-protocol references must resolve to known protocol slugs
+        valid_protocol_slugs = {p.slug for p in loaded.protocols}
+        for ref in pr.prerequisites:
+            if ref == pr.slug or ref not in valid_protocol_slugs:
+                warnings.append(Warning_("protocol", pr.slug, "prerequisites", "protocol", ref))
+        for ref in pr.recommended_followup:
+            if ref == pr.slug or ref not in valid_protocol_slugs:
+                warnings.append(Warning_("protocol", pr.slug, "recommended_followup", "protocol", ref))
+        for ref in pr.incompatible_with:
+            if ref == pr.slug or ref not in valid_protocol_slugs:
+                warnings.append(Warning_("protocol", pr.slug, "incompatible_with", "protocol", ref))
 
     # ---- drug_depletions ----
     for dd in loaded.drug_depletions:
@@ -410,6 +425,20 @@ def validate_loaded(loaded: Loaded) -> tuple[list[str], list[Warning_]]:
         for supp_slug in dd.contraindicated_supplements:
             if supp_slug not in valid_supplement_slugs:
                 warnings.append(Warning_("drug_depletion", dd.slug, "contraindicated_supplements", "supplement", supp_slug))
+
+    # ---- titration_protocols ----
+    for tp in loaded.titration_protocols:
+        if tp.supplement_slug not in valid_supplement_slugs:
+            warnings.append(Warning_("titration_protocol", tp.slug, "supplement_slug", "supplement", tp.supplement_slug))
+        for cite in tp.sources:
+            if cite.id not in valid_source_ids:
+                warnings.append(Warning_("titration_protocol", tp.slug, "sources", "source", cite.id))
+        for topic_slug in tp.linked_to_topics:
+            if topic_slug not in valid_topic_slugs:
+                warnings.append(Warning_("titration_protocol", tp.slug, "linked_to_topics", "topic", topic_slug))
+        for mech_slug in tp.linked_to_mechanisms:
+            if mech_slug not in valid_mechanism_slugs:
+                warnings.append(Warning_("titration_protocol", tp.slug, "linked_to_mechanisms", "mechanism", mech_slug))
 
     # ---- mindmaps ----
     valid_supplement_slugs_set = valid_supplement_slugs   # alias for inner walk

@@ -1,0 +1,80 @@
+slug: nac-detox-glutathione-ramp
+display_name: NAC — Detox / Glutathione Ramp
+supplement_slug: nac
+purpose: |
+  2-week ramp to therapeutic 1200mg/day for liver detox / glutathione
+  precursor / mucolytic / mood support. NAC has a sulphur smell + can cause
+  mild GI upset at full dose from day 1. The ramp is gentle. Indian-pharmacy
+  product is typically 600mg/cap.
+indications:
+  - liver-detoxification
+  - chronic-inflammation
+  - estrogen-dominance
+  - chronic respiratory / sinus issues (NAC is mucolytic)
+  - PCOS (improves insulin sensitivity + ovulation)
+  - acetaminophen / paracetamol overuse / hepatotoxicity prevention
+contraindications:
+  - active asthma flare (NAC bronchospasm risk in some)
+  - recent surgery (mucolytic effect)
+  - currently on nitroglycerin (additive hypotension)
+  - currently on activated charcoal (binds NAC)
+product_strength: "600mg per capsule (N-acetyl cysteine)"
+available_at:
+  - vitaone
+  - amazon-india
+  - iherb
+target_dose_label: "1200mg/day (split 600mg AM + 600mg PM)"
+target_total_per_day: "1200mg"
+schedule:
+  - week: 1
+    morning: 1
+    midday: 0
+    evening: 0
+    bedtime: 0
+    notes: "1 cap (600mg) AM with food. Take with vitamin C 500mg for synergy + smell mitigation."
+  - week: 2
+    morning: 1
+    midday: 0
+    evening: 1
+    bedtime: 0
+    notes: "Add 1 cap PM with dinner. Now 1200mg/day."
+  - week: 8
+    morning: 1
+    midday: 0
+    evening: 1
+    bedtime: 0
+    notes: "Re-test ALT / AST / GGT. If liver enzymes normalised, continue maintenance OR reduce to 600mg/day."
+  - week: 12
+    morning: 1
+    midday: 0
+    evening: 0
+    bedtime: 0
+    notes: "Maintenance dose 600mg/day. Long-term safety OK but reduce when goal achieved."
+splittable: true
+cautions:
+  - "Sulphur smell is normal — capsule masks most of it. Open capsule = strong smell."
+  - "If GI cramping / nausea, take with larger meal or split each dose into morning + lunch."
+  - "Reduces zinc + copper over very long use (12+ months) — monitor mineral status if extending."
+monitoring:
+  - "Liver enzymes (ALT / AST / GGT) at baseline + week 8"
+  - "Symptoms — skin clarity, energy, brain fog (track weekly)"
+  - "Glutathione status if available (rare in routine labs)"
+notes_for_coach: |
+  NAC is one of the most flexible FM supplements — works for liver,
+  mood, hormonal estrogen clearance, lung/sinus, fertility. Pair with
+  alpha-lipoic acid 300mg + vitamin C 1000mg for full antioxidant stack.
+  For acetaminophen-heavy users (chronic pain, paracetamol-using clients),
+  prophylactic NAC is well-justified.
+linked_to_topics:
+  - liver-detoxification
+  - estrogen-dominance
+linked_to_mechanisms:
+  - chronic-inflammation
+sources:
+  - id: vitaone-skill-practice-guide
+    location: NAC dose + indications
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-10
+updated_by: shivani

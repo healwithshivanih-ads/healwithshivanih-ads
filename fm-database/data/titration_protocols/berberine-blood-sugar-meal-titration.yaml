@@ -1,0 +1,85 @@
+slug: berberine-blood-sugar-meal-titration
+display_name: Berberine — Blood Sugar Meal Titration
+supplement_slug: berberine
+purpose: |
+  3-week ramp to therapeutic 1500mg/day (split before each main meal) for
+  insulin resistance / prediabetes / PCOS. Berberine causes GI upset
+  (nausea, loose stools, abdominal cramping) in 30%+ of clients when
+  started at full dose. Slow ramp + always-with-food prevents most of it.
+  Indian-pharmacy product is typically 500mg/cap.
+indications:
+  - insulin-resistance
+  - prediabetes
+  - pcos
+  - blood-sugar-dysfunction
+contraindications:
+  - pregnancy (uterine stimulant)
+  - breastfeeding
+  - currently on metformin without clinician oversight (additive — can drive hypoglycemia)
+  - currently on cyclosporine (CYP3A4 interaction)
+  - severe hepatic impairment
+  - active GI inflammation (worsens irritation)
+product_strength: "500mg per capsule (berberine HCl)"
+available_at:
+  - vitaone
+  - amazon-india
+  - iherb
+target_dose_label: "1500mg/day (500mg × 3 with meals)"
+target_total_per_day: "1500mg"
+schedule:
+  - week: 1
+    morning: 1
+    midday: 0
+    evening: 0
+    bedtime: 0
+    notes: "1 cap (500mg) WITH breakfast. Watch for GI symptoms — nausea, loose stools."
+  - week: 2
+    morning: 1
+    midday: 1
+    evening: 0
+    bedtime: 0
+    notes: "Add 1 cap WITH lunch if week 1 tolerated. Now 1000mg/day."
+  - week: 3
+    morning: 1
+    midday: 1
+    evening: 1
+    bedtime: 0
+    notes: "Add 1 cap WITH dinner. Therapeutic dose 1500mg/day reached."
+  - week: 4
+    morning: 1
+    midday: 1
+    evening: 1
+    bedtime: 0
+    notes: "Maintain. Re-test fasting glucose + HbA1c + HOMA-IR at week 8."
+splittable: false
+cautions:
+  - "ALWAYS take with food — prevents 80% of GI side effects."
+  - "If diarrhea persists past week 1 even with food, drop to 1000mg/day or every-other-day dosing."
+  - "Stop temporarily if pregnancy possible."
+  - "Do NOT combine with metformin without clinician — additive hypoglycemia risk."
+monitoring:
+  - "Fasting glucose + HbA1c at baseline + week 8"
+  - "Liver enzymes (ALT, AST) at week 12 (long-term safety)"
+  - "Symptoms — energy after meals, sugar cravings, weight (track weekly)"
+notes_for_coach: |
+  Berberine is one of the few supplements with metformin-comparable RCT
+  evidence for HbA1c reduction (0.3-0.5 over 12 weeks). Often more
+  tolerable than metformin BUT GI side effects derail many clients. The
+  with-food rule is non-negotiable — coach this loudly. Expect lab
+  improvements at 8 weeks; if no movement by 12, reassess for protocol
+  fit (sometimes inositol works better for PCOS clients).
+linked_to_topics:
+  - insulin-resistance
+  - prediabetes
+  - pcos
+  - blood-sugar-dysfunction
+linked_to_mechanisms:
+  - insulin-resistance
+sources:
+  - id: vitaone-skill-practice-guide
+    location: Berberine for insulin sensitisation
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-10
+updated_by: shivani

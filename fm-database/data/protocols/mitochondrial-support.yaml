@@ -99,6 +99,13 @@ cautions:
   - "Post-exertional malaise (PEM) means they pushed too hard — back off 30%"
   - "CoQ10 + statins — clinician check; statins deplete CoQ10, supplementation may be necessary"
   - This is a slow protocol; coaches must hold clients back, not push forward
+prerequisites:
+  - adrenal-recovery-protocol
+recommended_followup:
+  - blood-sugar-regulation
+incompatible_with:
+  - weight-loss-metabolic-reset
+  - autoimmune-paleo-aip
 linked_to_topics:
   - chronic-fatigue
   - long-covid

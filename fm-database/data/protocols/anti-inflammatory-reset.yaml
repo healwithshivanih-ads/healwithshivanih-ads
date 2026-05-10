@@ -102,6 +102,11 @@ cautions:
   - "Don't skip omega-3 dose — 2g+ EPA/DHA/day needed for anti-inflammatory effect"
   - "Re-testing inflammation markers shows clients tangible progress"
   - "Pair with stress + sleep work — diet alone won't fix inflammation"
+prerequisites: []
+recommended_followup:
+  - 5r-gut-protocol
+  - autoimmune-paleo-aip
+incompatible_with: []
 linked_to_topics:
   - inflammation
   - chronic-inflammation

@@ -103,6 +103,11 @@ cautions:
   - "Perimenopausal: cycles may be 21–45 days; adjust phase windows accordingly"
   - "Postmenopausal — use lunar cycle as proxy: new moon = menstrual phase, full moon = ovulatory"
   - Seed cycling is FOOD — safe in pregnancy + lactation
+prerequisites:
+  - liver-detox-support
+recommended_followup:
+  - blood-sugar-regulation
+incompatible_with: []
 linked_to_topics:
   - perimenopause
   - menopause

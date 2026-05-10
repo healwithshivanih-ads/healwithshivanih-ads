@@ -1,0 +1,98 @@
+slug: betaine-hcl-challenge
+display_name: Betaine HCl — Stomach Acid Challenge Test
+supplement_slug: betaine-hcl
+purpose: |
+  Functional dose-finding for hypochlorhydria (low stomach acid). Unlike
+  other supplements, betaine HCl dose is determined per-client by the "warming
+  sensation" — increase by 1 capsule per meal each day until you feel mild
+  warming in the stomach, then drop back 1. That dose IS your therapeutic
+  level. Indian product is 650mg/cap with pepsin. Critical: STOP if heartburn
+  or burning emerges; this means you've overshot OR have an undiagnosed
+  ulcer / H. pylori.
+indications:
+  - hypochlorhydria suspected (bloating + gas + indigestion + protein meals worst)
+  - low B12 / iron despite supplementation
+  - food sensitivities (incomplete digestion)
+  - thinning hair / brittle nails
+  - chronic candida (low acid = candida thrives)
+  - GERD/reflux symptoms (counter-intuitive — many GERD cases are LOW acid, not high)
+contraindications:
+  - active gastric / duodenal ulcer
+  - H. pylori positive (eradicate first)
+  - active gastritis on endoscopy
+  - currently on PPI / H2 blocker / NSAIDs
+  - hiatal hernia with reflux
+  - children
+  - pregnancy
+product_strength: "650mg betaine HCl + pepsin per capsule"
+available_at:
+  - vitaone
+  - amazon-india
+  - iherb
+target_dose_label: "Variable — typically 1-5 caps with each protein-containing meal (find via warming-sensation test below)"
+target_total_per_day: "Variable"
+schedule:
+  - week: 1
+    morning: 1
+    midday: 1
+    evening: 1
+    bedtime: 0
+    notes: "DAY 1-2 — 1 cap WITH the first bite of each protein-containing meal. NO warming sensation = hypochlorhydria likely. If warming → STOP, this is your dose, drop to 1/2 cap or skip."
+  - week: 1
+    morning: 2
+    midday: 2
+    evening: 2
+    bedtime: 0
+    notes: "DAY 3-4 — increase to 2 caps per meal. If warming → that meal's dose is 2 caps, drop back to 1 going forward. If no warming, continue increasing next 2 days."
+  - week: 2
+    morning: 3
+    midday: 3
+    evening: 3
+    bedtime: 0
+    notes: "DAY 5-6 — 3 caps per meal if still no warming. (Higher = more severe hypochlorhydria.) Stop at warming + drop back 1 cap."
+  - week: 2
+    morning: 4
+    midday: 4
+    evening: 4
+    bedtime: 0
+    notes: "DAY 7-9 — 4 caps if needed. Most clients find their dose between 1 and 5 caps per meal."
+  - week: 3
+    morning: 5
+    midday: 5
+    evening: 5
+    bedtime: 0
+    notes: "DAY 10+ — max 5 caps per meal. If still no warming + no benefit, betaine HCl isn't the answer; reassess (consider H. pylori workup, gastric emptying, autoimmune gastritis)."
+splittable: false
+cautions:
+  - "STOP IMMEDIATELY if burning / heartburn / chest discomfort — drop to 1/2 cap or off entirely."
+  - "ONLY take with PROTEIN-containing meals (small snack alone doesn't need acid)."
+  - "Take WITH first bite, not before — empty stomach + acid burns mucosa."
+  - "Reduce dose if meal is small (1 cap) vs large (3 caps)."
+  - "If finding > 5 caps/meal still no warming, stop the trial — likely autoimmune gastritis or gastrin issue, refer."
+  - "Off the supplement when meal is mostly carbs / fat (no protein needed)."
+monitoring:
+  - "Symptoms — bloating after meals, food sensitivities, energy after eating (track week-by-week)"
+  - "B12 + iron studies at baseline + week 8"
+  - "Endoscopy if persistent burning or chronic GERD pattern"
+notes_for_coach: |
+  Betaine HCl is unique — no fixed dose. Coach the client to do the
+  challenge test themselves. The warming-then-drop-back pattern lands
+  the right per-client dose in 1-2 weeks. As gut heals + acid recovers,
+  the dose typically REDUCES over months — coach to keep titrating
+  downward as warming threshold lowers. Most clients are off betaine
+  HCl entirely by month 4-6. Pair with bitters (gentian, dandelion)
+  before meals to retrain endogenous acid production.
+  ⚠ NEVER recommend if client is on PPI / H2 blocker — coordinate with
+  physician on PPI tapering protocol first.
+linked_to_topics:
+  - leaky-gut
+  - sibo
+linked_to_mechanisms: []
+sources:
+  - id: vitaone-skill-practice-guide
+    location: Betaine HCl challenge protocol
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-05-10
+updated_by: shivani

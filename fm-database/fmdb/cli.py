@@ -45,6 +45,8 @@ from .loader import (
     load_home_remedy,
     load_protocol,
     load_protocols,
+    load_titration_protocol,
+    load_titration_protocols,
     load_mechanism,
     load_mechanisms,
     load_source,
@@ -886,6 +888,56 @@ def cmd_show_drug_depletion(args: argparse.Namespace) -> None:
             loc = f" [{s.location}]" if s.location else ""
             print(f"    - {s.id}{loc}{quote}")
     print(f"  Updated: {dd.updated_at} by {dd.updated_by}")
+
+
+def cmd_titration_protocols(args: argparse.Namespace) -> None:
+    items = load_titration_protocols(DATA_DIR)
+    if not items:
+        print("(no titration protocols)")
+        return
+    for tp in items:
+        weeks = max([s.week for s in tp.schedule], default=0)
+        print(f"  {tp.slug:42s}  →  {tp.supplement_slug:24s}  {tp.target_dose_label:14s}  {weeks}w  [{tp.evidence_tier.value}]")
+
+
+def cmd_show_titration_protocol(args: argparse.Namespace) -> None:
+    tp = load_titration_protocol(DATA_DIR, args.slug)
+    print(f"{tp.display_name}  ({tp.slug})  v{tp.version}  [{tp.status.value}]")
+    print(f"  Supplement:      {tp.supplement_slug}")
+    print(f"  Product:         {tp.product_strength}")
+    if tp.available_at:
+        print(f"  Available at:    {', '.join(tp.available_at)}")
+    print(f"  Target dose:     {tp.target_dose_label}")
+    if tp.purpose:
+        print(f"  Purpose:         {tp.purpose.strip()}")
+    if tp.indications:
+        print(f"  Indications:     {', '.join(tp.indications)}")
+    if tp.contraindications:
+        print(f"  Contraindications: {', '.join(tp.contraindications)}")
+    if tp.schedule:
+        print("  Schedule:")
+        print(f"    {'Week':<6}{'AM':>4}{'Mid':>5}{'PM':>4}{'Bed':>5}  Notes")
+        for s in tp.schedule:
+            print(f"    {s.week:<6}{s.morning:>4}{s.midday:>5}{s.evening:>4}{s.bedtime:>5}  {s.notes}")
+    if tp.cautions:
+        print("  Cautions:")
+        for c in tp.cautions:
+            print(f"    - {c}")
+    if tp.monitoring:
+        print("  Monitoring:")
+        for m in tp.monitoring:
+            print(f"    - {m}")
+    if tp.notes_for_coach:
+        print(f"  Coach notes:     {tp.notes_for_coach.strip()}")
+    if tp.sources:
+        print("  Sources:")
+        for s in tp.sources:
+            quote = f' — "{s.quote}"' if s.quote else ""
+            loc = f" [{s.location}]" if s.location else ""
+            print(f"    - {s.id}{loc}{quote}")
+    print(f"  Splittable:      {tp.splittable}")
+    print(f"  Evidence tier:   {tp.evidence_tier.value}")
+    print(f"  Updated: {tp.updated_at} by {tp.updated_by}")
 
 
 def cmd_ingest(args: argparse.Namespace) -> None:
@@ -1789,6 +1841,11 @@ def main() -> None:
     show_dd = sub.add_parser("show-drug-depletion", help="show one drug-depletion record")
     show_dd.add_argument("slug")
     show_dd.set_defaults(func=cmd_show_drug_depletion)
+
+    sub.add_parser("titration-protocols", help="list all supplement titration schedules").set_defaults(func=cmd_titration_protocols)
+    show_tp = sub.add_parser("show-titration-protocol", help="show one titration schedule")
+    show_tp.add_argument("slug")
+    show_tp.set_defaults(func=cmd_show_titration_protocol)
 
     ing = sub.add_parser("ingest", help="extract candidates from a document")
     ing.add_argument("path", help="path to document (.md, .txt, ...)")

@@ -1,0 +1,86 @@
+slug: vitamin-d-loading-then-maintenance
+display_name: Vitamin D — Loading + Maintenance Protocol
+supplement_slug: vitamin-d
+purpose: |
+  Two-phase protocol — loading dose for the (very common) 25-OH D < 30
+  ng/mL clients, then long-term maintenance. Indian D deficiency rate is
+  ~80% even with sun exposure (skin pigmentation + indoor lifestyle). Most
+  clients need 8-12 weeks of high-dose loading to get above 60 ng/mL FM
+  optimal. Standard Indian pharmacy products: 60K IU sachets (Becosules-D,
+  Calcirol) for loading; 5000 IU caps for daily maintenance.
+indications:
+  - vitamin D deficiency (25-OH < 30 ng/mL)
+  - vitamin D insufficiency (25-OH 30-50 ng/mL)
+  - autoimmune disease (Hashimoto's / RA / lupus / MS)
+  - osteoporosis / osteopenia
+  - frequent infections
+  - chronic-inflammation
+contraindications:
+  - hypercalcemia
+  - active sarcoidosis (granulomatous disease — D activated extra-renally)
+  - hyperparathyroidism
+  - kidney stones (active calcium oxalate)
+  - currently on thiazide diuretic with elevated calcium
+product_strength: "5000 IU per capsule (D3 cholecalciferol) for daily; 60,000 IU per sachet for weekly loading"
+available_at:
+  - vitaone
+  - amazon-india
+  - iherb
+  - any indian pharmacy (Calcirol / Becosules-D for sachets)
+target_dose_label: "5000 IU/day maintenance (after loading)"
+target_total_per_day: "5000 IU"
+schedule:
+  - week: 1
+    morning: 0
+    midday: 0
+    evening: 1
+    bedtime: 0
+    notes: "LOADING — 1 sachet (60,000 IU) once weekly with fatty meal (D is fat-soluble). Plus K2 100mcg daily separately. Continue 8 weeks if 25-OH D < 20 ng/mL; 4 weeks if 20-30."
+  - week: 9
+    morning: 0
+    midday: 0
+    evening: 1
+    bedtime: 0
+    notes: "Re-test 25-OH D. If reached 60-80 ng/mL: STOP weekly sachet, switch to 1 cap (5000 IU) daily with breakfast (fatty meal). Continue K2 100mcg daily."
+  - week: 13
+    morning: 1
+    midday: 0
+    evening: 0
+    bedtime: 0
+    notes: "Maintenance 5000 IU/day with breakfast. Re-test every 6-12 months."
+  - week: 26
+    morning: 1
+    midday: 0
+    evening: 0
+    bedtime: 0
+    notes: "Continue maintenance. If 25-OH > 100 ng/mL drop to 2000 IU/day; if < 50 ng/mL continue 5000 IU."
+splittable: false
+cautions:
+  - "ALWAYS pair with K2 (MK-7) — vitamin D mobilises calcium; K2 directs it to bone, away from arteries."
+  - "Take with FATTY meal — D is fat-soluble, absorption requires fat."
+  - "Re-test 25-OH D before continuing past 8 weeks of loading — risk of hypercalcemia at 200,000+ IU/week."
+  - "DO NOT exceed 60,000 IU/week without monitoring."
+  - "If on thiazide diuretic, monitor serum calcium during loading."
+monitoring:
+  - "25-OH D (vitamin D) at baseline + week 8 + week 24"
+  - "Serum calcium + PTH at week 8 if loading > 8 weeks or eGFR < 60"
+  - "DEXA at baseline + annually if osteoporosis context"
+notes_for_coach: |
+  Indian clients respond more slowly than expected to vitamin D — pigment +
+  reduced UVB skin synthesis + indoor lifestyle. 8-12 weeks of loading
+  is standard, not 4. K2 pairing is non-negotiable for cardiovascular
+  safety in long-term high-dose D. Don't recommend D2 (ergocalciferol)
+  — D3 is 3x more effective. Brand watch — many "5000 IU" Indian products
+  are under-dosed; verify with re-test.
+linked_to_topics:
+  - autoimmune
+  - inflammation
+linked_to_mechanisms: []
+sources:
+  - id: vitaone-skill-practice-guide
+    location: Vitamin D loading protocol
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-10
+updated_by: shivani
