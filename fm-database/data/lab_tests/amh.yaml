@@ -1,0 +1,43 @@
+slug: amh
+display_name: AMH
+full_name: Anti-Müllerian Hormone
+aliases:
+- anti-mullerian hormone
+- anti mullerian hormone
+- mullerian inhibiting substance
+- mis
+- ovarian reserve marker
+units: ng/mL
+sample_type: blood
+conventional_low: 1.0
+conventional_high: 4.0
+fm_optimal_low: 1.5
+fm_optimal_high: 4.0
+interpretation_low: Low ovarian reserve, perimenopause, premature ovarian insufficiency
+interpretation_high: PCOS (multiple antral follicles), ovarian granulosa cell tumour
+  (rare)
+when_to_order: Ovarian reserve assessment for fertility planning; PCOS workup; perimenopause
+  staging; can be drawn any cycle day
+fasting_required: false
+typical_cost_inr: 2000
+linked_to_topics:
+- pcos
+- pcos-fertility
+- perimenopause
+- menopause
+- perimenopause-and-menopause
+linked_to_mechanisms:
+- ovarian-follicle-depletion
+- estrogen-decline
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Anti-Müllerian Hormone
+evidence_tier: strong
+notes_for_coach: AMH > 4 in a woman with irregular cycles is almost diagnostic of
+  PCOS. AMH < 1 in a woman under 38 is concerning for diminished ovarian reserve.
+  Stable across the cycle (unlike FSH/LH/E2) so it can be drawn any day. Drops naturally
+  with age — interpret against age-specific norms.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

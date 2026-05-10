@@ -1,0 +1,44 @@
+slug: oxidized-ldl
+display_name: Oxidized LDL
+full_name: Oxidized Low-Density Lipoprotein
+aliases:
+- ox-ldl
+- oxldl
+- oxidised ldl
+- oxidized low-density lipoprotein
+- ox ldl
+units: U/L
+sample_type: blood
+conventional_low: 26
+conventional_high: 117
+fm_optimal_low: 26
+fm_optimal_high: 60
+interpretation_low: Low oxidative damage to LDL particles
+interpretation_high: Oxidative stress is converting LDL into atherogenic, foam-cell-forming
+  particles — precursor of plaque
+when_to_order: Cardiovascular risk workup when ApoB / Lp(a) / hsCRP elevated, or after
+  any cardiovascular event, to assess oxidative pressure on lipids
+fasting_required: true
+typical_cost_inr: 2000
+linked_to_topics:
+- cardiovascular-disease-prevention
+- atherosclerosis
+- dyslipidemia
+- inflammation
+linked_to_mechanisms:
+- oxidative-stress
+- endothelial-dysfunction
+- chronic-inflammation
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Oxidized LDL atherogenic particles
+evidence_tier: plausible_emerging
+notes_for_coach: Not the LDL number itself — it's the damaged, sticky form. Ox-LDL
+  is what actually lodges in artery walls. High value reframes for client why antioxidants,
+  smoking cessation, and reducing oxidative drivers (PUFA-rich seed oils, fried food,
+  high-glycaemic spikes) matter more than just lowering LDL-C. Less commonly available
+  in India — Metropolis / Thyrocare may need referral.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

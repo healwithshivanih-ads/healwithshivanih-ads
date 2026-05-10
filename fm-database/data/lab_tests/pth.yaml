@@ -1,0 +1,41 @@
+slug: pth
+display_name: PTH
+full_name: Parathyroid Hormone (intact)
+aliases:
+- parathyroid hormone
+- intact pth
+- ipth
+- parathormone
+units: pg/mL
+sample_type: blood
+conventional_low: 15
+conventional_high: 65
+fm_optimal_low: 15
+fm_optimal_high: 35
+interpretation_low: Hypoparathyroidism (rare), hypercalcaemia (suppressing PTH appropriately),
+  magnesium severe deficiency
+interpretation_high: Vitamin D deficiency driving secondary hyperparathyroidism (most
+  common), primary hyperparathyroidism (parathyroid adenoma — rare), CKD, magnesium
+  deficiency
+when_to_order: Always with 25-OH vitamin D + serum calcium; bone health workup, suspected
+  vitamin D deficiency, unexplained hypercalcaemia / hypocalcaemia, CKD
+fasting_required: false
+typical_cost_inr: 700
+linked_to_topics:
+- bone-health
+- liver-detoxification
+linked_to_mechanisms:
+- cortisol-bone-suppression
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Intact Parathyroid Hormone
+evidence_tier: strong
+notes_for_coach: PTH > 35 with low-normal vitamin D = secondary hyperparathyroidism
+  — common, reversible with vitamin D + magnesium repletion. Always interpret PTH
+  with calcium + vitamin D + magnesium together. Persistently high PTH with high-normal
+  calcium warrants endocrinology referral for primary hyperparathyroidism workup
+  (parathyroid adenoma).
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

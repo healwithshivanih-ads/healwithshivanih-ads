@@ -1,0 +1,43 @@
+slug: apob-ldl-particle
+display_name: LDL-P
+full_name: LDL Particle Number (NMR)
+aliases:
+- ldl-p
+- ldl particle number
+- nmr ldl-p
+- ldl particle count
+- nmr lipoprofile
+units: nmol/L
+sample_type: blood
+conventional_low: 600
+conventional_high: 1600
+fm_optimal_low: 600
+fm_optimal_high: 1000
+interpretation_low: Low atherogenic particle burden
+interpretation_high: High particle count drives atherosclerosis even if LDL-C looks
+  normal — discordance pattern
+when_to_order: When LDL-C looks normal but ApoB or TG/HDL ratio looks bad, or to confirm
+  atherogenic particle pattern in metabolic syndrome / insulin resistance
+fasting_required: true
+typical_cost_inr: 3500
+linked_to_topics:
+- cardiovascular-disease-prevention
+- cardiovascular-risk-assessment
+- atherosclerosis
+- dyslipidemia
+- insulin-resistance
+linked_to_mechanisms:
+- insulin-resistance
+- endothelial-dysfunction
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — NMR LDL Particle Number
+evidence_tier: plausible_emerging
+notes_for_coach: ApoB and LDL-P measure essentially the same thing — atherogenic particle
+  burden — but LDL-P uses NMR technology. Use ApoB first (cheaper, more available
+  in India). Order LDL-P only when discordance with LDL-C needs to be confirmed for
+  client buy-in. Available at LabCorp / select Metropolis branches.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

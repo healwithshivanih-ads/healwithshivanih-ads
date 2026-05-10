@@ -1,0 +1,39 @@
+slug: alkaline-phosphatase
+display_name: ALP
+full_name: Alkaline Phosphatase
+aliases:
+- alp
+- alkaline phosphatase total
+- serum alkaline phosphatase
+- alk phos
+units: U/L
+sample_type: blood
+conventional_low: 40
+conventional_high: 130
+fm_optimal_low: 60
+fm_optimal_high: 110
+interpretation_low: Zinc deficiency, B6 deficiency, hypothyroidism, malnutrition,
+  rare genetic hypophosphatasia
+interpretation_high: Bone (Paget disease, osteomalacia, healing fracture, growing
+  child / adolescent), liver (cholestasis, biliary obstruction), pregnancy (placental),
+  intestinal disease
+when_to_order: Routine LFT panel; bone health workup; suspected zinc deficiency in
+  vegetarians; cholestatic liver pattern workup
+fasting_required: false
+typical_cost_inr: 200
+linked_to_topics:
+- bone-health
+- liver-detoxification
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Alkaline Phosphatase
+evidence_tier: strong
+notes_for_coach: Multi-tissue enzyme — needs context. Low ALP (< 50) is a sneaky
+  zinc deficiency marker that gets missed; coach can recommend zinc-rich foods (pumpkin
+  seeds, cashews, lentils) or short-term zinc picolinate 15-30 mg/day before retesting.
+  High ALP needs liver / bone / GI workup.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

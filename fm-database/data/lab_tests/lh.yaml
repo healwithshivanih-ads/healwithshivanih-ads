@@ -1,0 +1,42 @@
+slug: lh
+display_name: LH
+full_name: Luteinizing Hormone
+aliases:
+- luteinizing hormone
+- luteinising hormone
+- lutropin
+units: mIU/mL
+sample_type: blood
+conventional_low: 1.7
+conventional_high: 8.6
+fm_optimal_low: 2.0
+fm_optimal_high: 8.0
+interpretation_low: Hypothalamic / pituitary suppression — stress, low body weight,
+  excess exercise, hyperprolactinaemia
+interpretation_high: Premature ovarian insufficiency, perimenopause, menopause; mid-cycle
+  surge if timed with ovulation
+when_to_order: Day 2-3 of cycle for cycle assessment, menopause staging, PCOS workup
+  (paired with FSH)
+fasting_required: false
+typical_cost_inr: 400
+linked_to_topics:
+- pcos
+- pcos-fertility
+- perimenopause
+- menopause
+- perimenopause-and-menopause
+linked_to_mechanisms:
+- estrogen-decline
+- ovarian-follicle-depletion
+- estrogen-progesterone-decline
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Luteinizing Hormone cycle and PCOS
+evidence_tier: strong
+notes_for_coach: LH:FSH ratio > 2 is a classic PCOS signal. Always interpret with
+  cycle day — day 2-3 baseline tells the story; mid-cycle peak (12-14) is normal physiology.
+  Elevated LH + FSH in tandem (both > 25) confirms post-menopausal pattern.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

@@ -1,0 +1,43 @@
+slug: lactate
+display_name: Lactate
+full_name: Plasma / Serum Lactate
+aliases:
+- lactic acid
+- l-lactate
+- plasma lactate
+- serum lactate
+- blood lactate
+units: mmol/L
+sample_type: blood
+conventional_low: 0.5
+conventional_high: 2.2
+fm_optimal_low: 0.5
+fm_optimal_high: 1.5
+interpretation_low: Healthy mitochondrial oxidative metabolism
+interpretation_high: Mitochondrial dysfunction (cells defaulting to anaerobic glycolysis),
+  exercise overload, B-vitamin deficiency (thiamine, B2, B3), metformin / propofol
+  use, sepsis (acute setting)
+when_to_order: Suspected mitochondrial dysfunction, exercise intolerance, post-exertional
+  malaise (PEM), chronic fatigue / long COVID workup; draw resting, post-rest, no
+  recent exercise
+fasting_required: false
+typical_cost_inr: 400
+linked_to_topics:
+- mitochondrial-health-nutrition
+- chronic-pain-and-fatigue
+linked_to_mechanisms:
+- mitochondrial-dysfunction
+- oxidative-stress
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Plasma Lactate
+evidence_tier: plausible_emerging
+notes_for_coach: Resting lactate > 2 mmol/L in a non-exercising client suggests cells
+  defaulting to glycolysis — classic mitochondrial dysfunction marker. Pair with
+  pyruvate, B-vitamin status, OAT for full picture. Coaching levers thiamine / B-complex,
+  CoQ10, alpha-lipoic acid, gentle aerobic conditioning, gradually rebuilding mitochondrial
+  capacity.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

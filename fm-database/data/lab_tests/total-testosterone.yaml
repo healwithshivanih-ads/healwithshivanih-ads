@@ -1,0 +1,43 @@
+slug: total-testosterone
+display_name: Total Testosterone
+full_name: Total Testosterone
+aliases:
+- total t
+- testosterone total
+- serum testosterone
+- t total
+units: ng/dL
+sample_type: blood
+conventional_low: 15
+conventional_high: 70
+fm_optimal_low: 25
+fm_optimal_high: 60
+interpretation_low: Adrenal insufficiency, perimenopausal decline, hypothalamic suppression,
+  oral OCP suppression
+interpretation_high: PCOS, ovarian / adrenal hyperandrogenism, exogenous androgens
+when_to_order: First-line androgen marker; PCOS workup, low libido, fatigue, hirsutism,
+  hair thinning
+fasting_required: false
+typical_cost_inr: 600
+linked_to_topics:
+- pcos
+- pcos-fertility
+- perimenopause
+- menopause
+- adrenal-fatigue
+linked_to_mechanisms:
+- aromatase-overactivity
+- shbg-hormone-binding
+- insulin-resistance
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Total Testosterone
+evidence_tier: strong
+notes_for_coach: Total T can mislead — it includes both free + SHBG-bound. Always
+  pair with SHBG. Female reference ranges differ from male significantly. Decline
+  with age + perimenopause is normal but symptomatic women may benefit from coaching
+  on adrenal support before considering HRT.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

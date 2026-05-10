@@ -1,0 +1,43 @@
+slug: fsh
+display_name: FSH
+full_name: Follicle Stimulating Hormone
+aliases:
+- follicle stimulating hormone
+- follicle-stimulating hormone
+- follitropin
+units: mIU/mL
+sample_type: blood
+conventional_low: 1.5
+conventional_high: 12.4
+fm_optimal_low: 3.0
+fm_optimal_high: 10.0
+interpretation_low: Hypothalamic suppression, hypopituitarism, very low body weight,
+  PCOS (relative)
+interpretation_high: Diminishing ovarian reserve; > 25 with low E2 = menopause; 10-25
+  = perimenopause
+when_to_order: Day 2-3 of cycle; menopause staging; ovarian reserve workup; paired
+  with LH
+fasting_required: false
+typical_cost_inr: 400
+linked_to_topics:
+- perimenopause
+- menopause
+- perimenopause-and-menopause
+- pcos
+- pcos-fertility
+linked_to_mechanisms:
+- estrogen-decline
+- ovarian-follicle-depletion
+- estrogen-progesterone-decline
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Follicle Stimulating Hormone
+evidence_tier: strong
+notes_for_coach: Single FSH > 25 isn't menopause — needs to be repeated after 4-6
+  weeks since perimenopausal FSH oscillates wildly. Use AMH alongside for ovarian
+  reserve picture (AMH is more stable across the cycle). Day 2-3 baseline only —
+  off-cycle values not interpretable.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

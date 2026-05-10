@@ -1,0 +1,48 @@
+slug: dutch-4-oh-estrogen
+display_name: 4-OH Estrogen
+full_name: 4-Hydroxyestrogen (DUTCH metabolite)
+aliases:
+- 4-oh-e
+- 4-oh estrone
+- 4-hydroxyestrogen
+- 4-hydroxyestrone
+- 4-oh-e1
+- dna-damaging estrogen metabolite
+units: ng/mg Cr
+sample_type: urine
+conventional_low: null
+conventional_high: null
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: Healthy, low DNA-damage potential pathway
+interpretation_high: 4-OH metabolites form quinones that damage DNA — strongly associated
+  with breast cancer risk; methylation insufficiency, COMT polymorphism, or oxidative
+  stress amplify the risk
+when_to_order: Estrogen dominance workup with strong family history of breast / oestrogen-driven
+  cancer; full DUTCH panel for hormone metabolism mapping
+fasting_required: false
+typical_cost_inr: 17000
+linked_to_topics:
+- estrogen-dominance
+- estrogen-metabolism
+- perimenopause
+- menopause
+- liver-detoxification
+- endocrine-disruption-and-detox
+linked_to_mechanisms:
+- hepatic-estrogen-metabolism
+- estrogen-decline
+- oxidative-stress
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — DUTCH 4-OH Estrogen metabolite
+evidence_tier: plausible_emerging
+notes_for_coach: The 'bad' oestrogen metabolite. Gets methylated to safe 4-methoxyestrogen
+  via COMT; methylation insufficiency or unmethylated 4-OH → quinone → DNA damage.
+  Coaching levers methylation support (B12, methylfolate, betaine, riboflavin), N-acetylcysteine,
+  resveratrol, reducing oxidative stress, removing endocrine disruptors. Always interpreted
+  alongside 2-OH and methylation markers.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

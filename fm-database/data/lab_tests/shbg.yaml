@@ -1,0 +1,45 @@
+slug: shbg
+display_name: SHBG
+full_name: Sex Hormone Binding Globulin
+aliases:
+- sex hormone binding globulin
+- sex hormone-binding globulin
+- testosterone-binding globulin
+- tebg
+units: nmol/L
+sample_type: blood
+conventional_low: 18
+conventional_high: 144
+fm_optimal_low: 40
+fm_optimal_high: 90
+interpretation_low: Insulin resistance / PCOS / NAFLD / hypothyroidism — low SHBG
+  unmasks free testosterone, drives androgenic symptoms
+interpretation_high: Oral oestrogen (OCP / HRT), liver dysfunction, hyperthyroidism,
+  anorexia
+when_to_order: Always alongside total + free testosterone, and oestradiol; PCOS workup,
+  hirsutism, low libido, perimenopause assessment
+fasting_required: false
+typical_cost_inr: 700
+linked_to_topics:
+- pcos
+- pcos-fertility
+- perimenopause
+- menopause
+- insulin-resistance
+- estrogen-dominance
+linked_to_mechanisms:
+- shbg-hormone-binding
+- insulin-resistance
+- hepatic-estrogen-metabolism
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Sex Hormone Binding Globulin
+evidence_tier: strong
+notes_for_coach: SHBG is the single best window into liver-driven hormone bioavailability
+  and an early signal of insulin resistance — often suppressed before fasting glucose
+  budges. Coaching levers protein adequacy, lower refined carb intake, fibre, magnesium,
+  and reducing alcohol all raise SHBG.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

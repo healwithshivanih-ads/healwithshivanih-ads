@@ -1,0 +1,48 @@
+slug: dutch-2-oh-estrogen
+display_name: 2-OH Estrogen
+full_name: 2-Hydroxyestrogen (DUTCH metabolite)
+aliases:
+- 2-oh-e
+- 2-oh estrone
+- 2-hydroxyestrogen
+- 2-hydroxyestrone
+- 2-oh-e1
+- protective estrogen metabolite
+units: ng/mg Cr
+sample_type: urine
+conventional_low: null
+conventional_high: null
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: Lower protective oestrogen metabolism; favouring 4-OH or 16-OH
+  pathways instead — increased breast / hormonal cancer risk
+interpretation_high: Strong protective pathway dominance; 2-OH preferred metabolite
+  over 4-OH and 16-OH
+when_to_order: Estrogen dominance workup, breast cancer risk assessment, perimenopausal
+  symptom workup, full DUTCH panel for hormone metabolism mapping
+fasting_required: false
+typical_cost_inr: 17000
+linked_to_topics:
+- estrogen-dominance
+- estrogen-metabolism
+- perimenopause
+- menopause
+- liver-detoxification
+- endocrine-disruption-and-detox
+linked_to_mechanisms:
+- hepatic-estrogen-metabolism
+- estrogen-decline
+- estrogen-progesterone-decline
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — DUTCH 2-OH Estrogen metabolite
+evidence_tier: plausible_emerging
+notes_for_coach: 2-OH:16-OH ratio matters more than absolute — > 2 is protective,
+  < 1 raises concern. DIM, broccoli sprouts, cruciferous vegetables, B vitamins (especially
+  B6, B12, folate), and methylation support shift metabolism toward 2-OH. Always
+  paired with 4-OH and 16-OH to interpret pattern. Available only as part of full
+  DUTCH panel.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

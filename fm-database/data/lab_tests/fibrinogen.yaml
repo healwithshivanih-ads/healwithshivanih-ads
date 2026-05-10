@@ -1,0 +1,44 @@
+slug: fibrinogen
+display_name: Fibrinogen
+full_name: Fibrinogen (Clauss method)
+aliases:
+- fibrinogen activity
+- clauss fibrinogen
+- plasma fibrinogen
+- factor i
+units: mg/dL
+sample_type: blood
+conventional_low: 200
+conventional_high: 400
+fm_optimal_low: 200
+fm_optimal_high: 300
+interpretation_low: Low clotting capacity; bleeding risk if very low (rare — usually
+  liver failure)
+interpretation_high: Acute-phase inflammation + prothrombotic state; > 350 mg/dL associated
+  with elevated CV event risk
+when_to_order: Cardiovascular risk workup, especially with hsCRP elevation, family
+  history of clots, or unexplained inflammation
+fasting_required: false
+typical_cost_inr: 400
+linked_to_topics:
+- cardiovascular-disease-prevention
+- cardiovascular-risk-assessment
+- chronic-inflammation
+- inflammation
+- atherosclerosis
+linked_to_mechanisms:
+- chronic-inflammation
+- chronic-systemic-inflammation
+- endothelial-dysfunction
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Fibrinogen inflammation and clotting
+evidence_tier: strong
+notes_for_coach: Fibrinogen sits at the intersection of inflammation and clotting
+  — both CV risk pathways. Rises in chronic inflammatory states (autoimmune, chronic
+  infection, smoking, oestrogen excess from oral OCPs/HRT). Coaching levers omega-3,
+  curcumin, vitamin E, regular movement, smoking cessation.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

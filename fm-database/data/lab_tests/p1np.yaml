@@ -1,0 +1,45 @@
+slug: p1np
+display_name: P1NP
+full_name: Procollagen Type I N-terminal Propeptide
+aliases:
+- procollagen type i n-terminal propeptide
+- type 1 procollagen
+- p-1np
+- p1 np
+- bone formation marker
+units: ng/mL
+sample_type: blood
+conventional_low: 15
+conventional_high: 80
+fm_optimal_low: 30
+fm_optimal_high: 80
+interpretation_low: Low bone formation — chronic glucocorticoid use, anorexia, low
+  protein intake, advanced osteoporosis with exhausted osteoblasts
+interpretation_high: Healthy bone formation; can rise with anabolic therapy (teriparatide,
+  weight-bearing exercise + adequate nutrition)
+when_to_order: Bone health workup with CTX (turnover ratio), tracking response to
+  bone-building intervention, evaluating osteoblast capacity in postmenopause / chronic
+  steroid users
+fasting_required: true
+typical_cost_inr: 1800
+linked_to_topics:
+- bone-health
+- perimenopause
+- menopause
+- perimenopause-and-menopause
+linked_to_mechanisms:
+- cortisol-bone-suppression
+- estrogen-decline
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — P1NP bone formation marker
+evidence_tier: strong
+notes_for_coach: Healthy bone is a constant balance of breakdown (CTX) and formation
+  (P1NP). High CTX with low P1NP = losing ground; high CTX with high P1NP = active
+  remodelling, can be restored. Coaching levers protein intake (~1.2 g/kg in over-50s),
+  weight-bearing + resistance exercise, vitamin D3, K2-MK7, calcium, boron. Pair
+  with DEXA every 2 years.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

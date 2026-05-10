@@ -1,0 +1,44 @@
+slug: carnitine-profile
+display_name: Carnitine
+full_name: Plasma Carnitine Profile (Free + Total)
+aliases:
+- carnitine
+- l-carnitine
+- free carnitine
+- total carnitine
+- carnitine esters
+- acylcarnitine profile
+units: µmol/L
+sample_type: blood
+conventional_low: 35
+conventional_high: 60
+fm_optimal_low: 45
+fm_optimal_high: 60
+interpretation_low: Carnitine deficiency — impaired fat oxidation, exercise intolerance,
+  fatigue, muscle weakness; common in vegetarians, valproate / OAT-positive clients
+interpretation_high: Recent supplementation
+when_to_order: Vegetarian / vegan client with chronic fatigue, exercise intolerance,
+  unexplained myalgia, suspected mitochondrial dysfunction, fertility workup (sperm
+  motility)
+fasting_required: true
+typical_cost_inr: 2000
+linked_to_topics:
+- mitochondrial-health-nutrition
+- mitochondrial-health-nutrients
+- chronic-pain-and-fatigue
+- vegetarian-nutrition
+linked_to_mechanisms:
+- mitochondrial-dysfunction
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Plasma Carnitine
+evidence_tier: plausible_emerging
+notes_for_coach: Carnitine shuttles long-chain fatty acids into the mitochondria for
+  beta-oxidation. Vegetarian / vegan clients often run low (carnitine is in red meat,
+  with biosynthesis from lysine + methionine being insufficient under stress). Acetyl-L-carnitine
+  (1-2 g/day) is the supplement form preferred for cognition; L-carnitine tartrate
+  for muscle. Check before recommending — supplementing without need is wasteful.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

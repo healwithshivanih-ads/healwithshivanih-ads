@@ -1,0 +1,49 @@
+slug: salivary-cortisol-curve
+display_name: Salivary Cortisol (4-point)
+full_name: 4-Point Diurnal Salivary Cortisol Curve
+aliases:
+- diurnal cortisol
+- cortisol rhythm
+- four-point cortisol
+- 4-pt salivary cortisol
+- adrenal stress profile
+- cortisol curve
+units: nmol/L
+sample_type: saliva
+conventional_low: null
+conventional_high: null
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: Flat / blunted curve = HPA axis exhaustion / stage 3 adrenal dysfunction;
+  low evening cortisol with normal morning = healthy rhythm
+interpretation_high: Elevated curve = chronic stress / hypercortisolism; high evening
+  cortisol = HPA dysregulation, disrupts sleep
+when_to_order: Suspected HPA dysfunction, fatigue with stress component, insomnia
+  / poor sleep quality, burnout, anxiety with cortisol pattern, before / after stress-management
+  intervention to track change
+fasting_required: false
+typical_cost_inr: 3500
+linked_to_topics:
+- adrenal-fatigue
+- adrenal-dysfunction
+- chronic-stress
+- hpa-axis-dysfunction
+- hypercortisolism
+- sleep
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- cortisol-elevation
+- cortisol-excess
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Diurnal Salivary Cortisol Curve
+evidence_tier: strong
+notes_for_coach: Single morning serum cortisol misses the rhythm — saliva at waking
+  + 30 min + noon + evening + bedtime gives the whole HPA picture. Available via
+  ZRT, BioHealth, DUTCH (the dried-urine version captures the same plus metabolites).
+  Pattern matters more than absolute values. Coaching levers (sleep hygiene, breath-work,
+  ashwagandha, vitamin C) rebuild the rhythm over 8-12 weeks.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

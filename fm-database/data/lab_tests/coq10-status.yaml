@@ -1,0 +1,47 @@
+slug: coq10-status
+display_name: CoQ10
+full_name: Coenzyme Q10 (Ubiquinone) Status
+aliases:
+- coenzyme q10
+- ubiquinone
+- ubiquinol
+- coq-10
+- coq 10
+- coenzyme q-10
+units: µg/mL
+sample_type: blood
+conventional_low: 0.5
+conventional_high: 1.5
+fm_optimal_low: 1.0
+fm_optimal_high: 2.0
+interpretation_low: Statin depletion, mitochondrial dysfunction, ageing — drives fatigue,
+  myalgia, exercise intolerance, possible cardiovascular risk
+interpretation_high: Recent supplementation (rarely a clinical concern)
+when_to_order: Anyone on statin therapy, beta-blocker therapy, fatigue / exercise
+  intolerance with mitochondrial pattern, congestive heart failure workup, fertility
+  workup (egg / sperm quality)
+fasting_required: false
+typical_cost_inr: 2500
+linked_to_topics:
+- mitochondrial-health-nutrition
+- mitochondrial-health-nutrients
+- cardiovascular-health
+- chronic-pain-and-fatigue
+- drug-induced-nutrient-depletion-cardiovascular
+linked_to_mechanisms:
+- mitochondrial-dysfunction
+- mitochondrial-coq10-depletion
+- oxidative-stress
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Coenzyme Q10 status
+evidence_tier: plausible_emerging
+notes_for_coach: Statin-depleted in nearly 100% of patients — coach should always
+  recommend CoQ10 (100-200 mg/day, ubiquinol form preferred over ubiquinone in over-50s)
+  alongside statin therapy. Beta-blockers also deplete CoQ10. Test before / after
+  to demonstrate effect to skeptical clients. Available in India via select Metropolis
+  / Quest branches.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

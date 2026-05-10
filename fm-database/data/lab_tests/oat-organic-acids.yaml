@@ -1,0 +1,50 @@
+slug: oat-organic-acids
+display_name: OAT
+full_name: Organic Acids Test (urine)
+aliases:
+- organic acids test
+- urine organic acids
+- oat panel
+- great plains oat
+- mosaic diagnostics oat
+- metabolomics organic acids
+units: mixed
+sample_type: urine
+conventional_low: null
+conventional_high: null
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: Each marker has its own range — broadly low values can indicate
+  deficient pathway substrates (B-vitamin deficiencies, low neurotransmitter synthesis)
+interpretation_high: Each marker has its own range — broadly elevated values flag
+  pathway block (impaired methylation, mitochondrial dysfunction, neurotransmitter
+  excess, gut dysbiosis metabolites)
+when_to_order: Comprehensive workup for chronic fatigue, mitochondrial dysfunction,
+  neurotransmitter imbalance, suspected gut dysbiosis (yeast / clostridia metabolites),
+  methylation issues, broad metabolic functioning concerns
+fasting_required: false
+typical_cost_inr: 17000
+linked_to_topics:
+- mitochondrial-health-nutrition
+- chronic-pain-and-fatigue
+- gut-dysbiosis
+- liver-detoxification
+- mitochondrial-health-nutrients
+linked_to_mechanisms:
+- mitochondrial-dysfunction
+- gut-dysbiosis
+- oxidative-stress
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Organic Acids Test
+evidence_tier: plausible_emerging
+notes_for_coach: 70+ markers in one panel — B-vitamin status (FIGLU, MMA, xanthurenate),
+  mitochondrial function (Krebs cycle intermediates), neurotransmitter status (HVA,
+  VMA, 5-HIAA), oxidative stress (8-OHdG), gut microbiome metabolites (D-arabinitol
+  for yeast, HPHPA for clostridia). Available via Mosaic Diagnostics / Great Plains
+  / Genova. Best ordered when stuck on a complex client — gives a metabolic snapshot
+  to guide protocol.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

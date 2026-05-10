@@ -1,0 +1,42 @@
+slug: 17-oh-progesterone
+display_name: 17-OHP
+full_name: 17-Hydroxyprogesterone
+aliases:
+- 17-ohp
+- 17 hydroxyprogesterone
+- 17-hydroxyprogesterone
+- 17 oh progesterone
+- 17ohp
+units: ng/dL
+sample_type: blood
+conventional_low: 15
+conventional_high: 200
+fm_optimal_low: 15
+fm_optimal_high: 100
+interpretation_low: Adrenal suppression (chronic steroid use), pituitary insufficiency
+interpretation_high: Non-classic congenital adrenal hyperplasia (NCAH), late-onset
+  21-hydroxylase deficiency — can mimic PCOS phenotype
+when_to_order: PCOS workup with strong androgen signs (severe hirsutism, virilising
+  features, family history of CAH) to rule out NCAH masquerading as PCOS; draw morning,
+  follicular phase
+fasting_required: false
+typical_cost_inr: 800
+linked_to_topics:
+- pcos
+- pcos-fertility
+- adrenal-fatigue
+- adrenal-dysfunction
+linked_to_mechanisms:
+- aromatase-overactivity
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — 17-Hydroxyprogesterone
+evidence_tier: strong
+notes_for_coach: Often missed — every PCOS workup should rule out NCAH at least once.
+  Morning, day 2-7 of cycle. Value > 200 ng/dL warrants ACTH stimulation test for
+  confirmation. Important because NCAH coaching is different (cortisol replacement
+  if confirmed) — refer to endocrinologist.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

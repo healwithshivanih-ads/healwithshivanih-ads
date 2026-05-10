@@ -1,0 +1,41 @@
+slug: lp-a
+display_name: Lp(a)
+full_name: Lipoprotein(a)
+aliases:
+- lipoprotein a
+- lp little a
+- lipoprotein-a
+- lpa
+- apo(a)
+units: mg/dL
+sample_type: blood
+conventional_low: 0
+conventional_high: 50
+fm_optimal_low: 0
+fm_optimal_high: 30
+interpretation_low: Low cardiovascular and thrombotic risk
+interpretation_high: Genetic atherogenic + prothrombotic risk; > 50 mg/dL roughly 2-3x
+  CV event risk
+when_to_order: Once-in-a-lifetime test for any client with CV disease, family history
+  of early MI / stroke, or unexplained atherosclerosis on imaging
+fasting_required: false
+typical_cost_inr: 700
+linked_to_topics:
+- cardiovascular-disease-prevention
+- cardiovascular-risk-assessment
+- atherosclerosis
+- dyslipidemia
+linked_to_mechanisms:
+- endothelial-dysfunction
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Lipoprotein(a) cardiovascular risk
+evidence_tier: strong
+notes_for_coach: Largely genetic — value rarely changes with diet/exercise, so test
+  once and act on it. High Lp(a) means more aggressive control of every other modifiable
+  CV risk factor (ApoB, BP, insulin resistance, inflammation). Niacin is the only
+  food-based lever; PCSK9 inhibitors lower it pharmacologically.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

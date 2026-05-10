@@ -1,0 +1,42 @@
+slug: prolactin
+display_name: Prolactin
+full_name: Prolactin
+aliases:
+- prl
+- lactotropic hormone
+- luteotropic hormone
+- mammotropin
+units: ng/mL
+sample_type: blood
+conventional_low: 4.8
+conventional_high: 23.3
+fm_optimal_low: 4.8
+fm_optimal_high: 18.0
+interpretation_low: Pituitary insufficiency (rare); usually clinically irrelevant
+interpretation_high: Hyperprolactinaemia — pituitary adenoma, hypothyroidism, stress,
+  certain medications (SSRIs, antipsychotics, OCPs); disrupts cycle, suppresses LH
+  surge, causes galactorrhoea
+when_to_order: Irregular periods, anovulation, infertility, galactorrhoea, low libido,
+  visual changes; rule out pituitary cause when LH/FSH suppressed
+fasting_required: false
+typical_cost_inr: 400
+linked_to_topics:
+- pcos-fertility
+- perimenopause
+- menopause
+- chronic-stress
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Prolactin
+evidence_tier: strong
+notes_for_coach: Always draw in the morning, 1-2 hours after waking, no breast exam
+  / nipple stimulation in the prior 24 hours (any of those can falsely elevate). Mildly
+  elevated prolactin (25-50) is often stress-related and reversible. Persistent >
+  100 ng/mL warrants pituitary MRI. Hypothyroidism is a common reversible cause —
+  always check TSH alongside.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

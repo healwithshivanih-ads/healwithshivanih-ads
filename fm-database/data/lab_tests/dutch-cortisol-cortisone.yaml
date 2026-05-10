@@ -1,0 +1,47 @@
+slug: dutch-cortisol-cortisone
+display_name: Cortisol/Cortisone Ratio
+full_name: DUTCH Cortisol/Cortisone Metabolism Ratio
+aliases:
+- cortisol cortisone ratio
+- 11-beta-hsd ratio
+- dutch cortisol metabolism
+- free cortisol vs free cortisone
+- cortisol clearance ratio
+units: ratio
+sample_type: urine
+conventional_low: null
+conventional_high: null
+fm_optimal_low: 0.7
+fm_optimal_high: 1.3
+interpretation_low: Cortisol being inactivated to cortisone too quickly — slow clearance
+  /  lower active cortisol; can present as fatigue with normal serum cortisol
+interpretation_high: Cortisol activation (inactive cortisone → active cortisol) excessive;
+  often in obesity, metabolic syndrome — drives insulin resistance, visceral adiposity
+when_to_order: HPA workup beyond simple cortisol curve; fatigue / weight gain with
+  normal-looking serum cortisol; suspected metabolic clearance issue
+fasting_required: false
+typical_cost_inr: 17000
+linked_to_topics:
+- adrenal-fatigue
+- adrenal-dysfunction
+- chronic-stress
+- hpa-axis-dysfunction
+- hypercortisolism
+- liver-detoxification
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- cortisol-elevation
+- cortisol-excess
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — DUTCH Cortisol/Cortisone metabolism
+evidence_tier: plausible_emerging
+notes_for_coach: Comes as part of full DUTCH panel (~17,000 INR via Precision Analytical
+  / Indian distributors). Single most useful FM lab for nuanced HPA picture — explains
+  the 'normal cortisol but feels exhausted' client. 11-beta-HSD enzyme balances active
+  cortisol vs inactive cortisone. Liquorice root inhibits cortisone-to-cortisol breakdown
+  and can shift this ratio.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

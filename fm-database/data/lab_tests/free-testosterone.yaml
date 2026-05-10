@@ -1,0 +1,43 @@
+slug: free-testosterone
+display_name: Free Testosterone
+full_name: Free Testosterone (bioavailable)
+aliases:
+- free t
+- bioavailable testosterone
+- unbound testosterone
+- ft
+units: pg/mL
+sample_type: blood
+conventional_low: 0.3
+conventional_high: 3.18
+fm_optimal_low: 0.5
+fm_optimal_high: 2.5
+interpretation_low: Adrenal insufficiency, low libido, perimenopausal androgen decline,
+  pituitary issue
+interpretation_high: PCOS, ovarian or adrenal hyperandrogenism — signals like acne,
+  hirsutism, scalp hair loss
+when_to_order: PCOS workup, low libido / energy / mood in women, hirsutism, acne in
+  adult women, perimenopausal androgen decline
+fasting_required: false
+typical_cost_inr: 700
+linked_to_topics:
+- pcos
+- pcos-fertility
+- perimenopause
+- menopause
+- adrenal-fatigue
+linked_to_mechanisms:
+- aromatase-overactivity
+- shbg-hormone-binding
+- insulin-resistance
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Free Testosterone
+evidence_tier: strong
+notes_for_coach: Free T is what the cell actually sees. Total T can look 'normal'
+  while free T is sky-high if SHBG is suppressed (typical PCOS / insulin resistance
+  pattern). Always order with SHBG to interpret. Reference ranges are sex- and age-specific.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

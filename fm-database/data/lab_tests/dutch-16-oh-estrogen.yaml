@@ -1,0 +1,47 @@
+slug: dutch-16-oh-estrogen
+display_name: 16-OH Estrogen
+full_name: 16-Hydroxyestrogen (DUTCH metabolite)
+aliases:
+- 16-oh-e
+- 16-oh estrone
+- 16-hydroxyestrogen
+- 16-hydroxyestrone
+- 16-oh-e1
+- proliferative estrogen metabolite
+units: ng/mg Cr
+sample_type: urine
+conventional_low: null
+conventional_high: null
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: Lower proliferative oestrogen activity
+interpretation_high: Strong proliferative oestrogen signalling — drives oestrogen
+  dominance symptoms (heavy / painful periods, fibroids, endometriosis, breast tenderness),
+  associated with obesity and inflammation
+when_to_order: Estrogen dominance workup, fibroid / endometriosis / heavy menses pattern,
+  full DUTCH panel for hormone metabolism mapping
+fasting_required: false
+typical_cost_inr: 17000
+linked_to_topics:
+- estrogen-dominance
+- estrogen-metabolism
+- perimenopause
+- menopause
+- liver-detoxification
+- endocrine-disruption-and-detox
+linked_to_mechanisms:
+- hepatic-estrogen-metabolism
+- estrogen-decline
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — DUTCH 16-OH Estrogen metabolite
+evidence_tier: plausible_emerging
+notes_for_coach: 16-OH binds oestrogen receptor strongly and 'sticks around' —drives
+  proliferative symptoms (fibroids, endometriosis, breast tenderness). Body fat /
+  inflammation / poor liver detox push metabolism toward 16-OH. Coaching levers cruciferous
+  vegetables, DIM, fibre (oestrogen excretion), reducing alcohol, weight loss, calcium-D-glucarate
+  to inhibit beta-glucuronidase recirculation.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

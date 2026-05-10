@@ -1,0 +1,45 @@
+slug: ctx-c-telopeptide
+display_name: CTX
+full_name: C-terminal Telopeptide of Type I Collagen
+aliases:
+- c-telopeptide
+- ctx-1
+- beta-ctx
+- crosslaps
+- bone resorption marker
+units: ng/L
+sample_type: blood
+conventional_low: 100
+conventional_high: 600
+fm_optimal_low: 100
+fm_optimal_high: 350
+interpretation_low: Low bone breakdown — often from bisphosphonate therapy (oversuppressed
+  in some), low bone turnover state
+interpretation_high: Active bone resorption — postmenopausal osteoporosis, hyperparathyroidism,
+  chronic glucocorticoid use, untreated hyperthyroidism
+when_to_order: Bone health workup (especially perimenopause/post), to track effectiveness
+  of intervention (vitamin D, K2, weight-bearing exercise, HRT) over 3-6 months;
+  morning fasting sample for stability
+fasting_required: true
+typical_cost_inr: 1800
+linked_to_topics:
+- bone-health
+- perimenopause
+- menopause
+- perimenopause-and-menopause
+linked_to_mechanisms:
+- cortisol-bone-suppression
+- estrogen-decline
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — C-terminal Telopeptide CTX
+evidence_tier: strong
+notes_for_coach: CTX measures bone breakdown rate; pair with P1NP (formation marker)
+  for full turnover picture. Useful between DEXA scans (bone density imaging only
+  every 2-3 years) to track trajectory in 3-6 month windows. Diurnal variation —
+  always draw fasting morning. Coaching levers vitamin D3 + K2 + magnesium, weight-bearing
+  exercise, protein adequacy, reduce caffeine / cola, address oestrogen decline.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

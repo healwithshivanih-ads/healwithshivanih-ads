@@ -1,0 +1,43 @@
+slug: lp-pla2
+display_name: Lp-PLA2
+full_name: Lipoprotein-Associated Phospholipase A2
+aliases:
+- lipoprotein-associated phospholipase a2
+- lp pla2
+- pla2
+- platelet-activating factor acetylhydrolase
+- vascular inflammation marker
+units: ng/mL
+sample_type: blood
+conventional_low: 0
+conventional_high: 200
+fm_optimal_low: 0
+fm_optimal_high: 150
+interpretation_low: Low vascular-specific inflammation
+interpretation_high: Active vascular inflammation; enzyme bound to ox-LDL inside artery
+  wall — strongly predictive of plaque rupture and stroke
+when_to_order: Cardiovascular risk workup when hsCRP / fibrinogen elevated or to differentiate
+  vascular from systemic inflammation
+fasting_required: true
+typical_cost_inr: 3500
+linked_to_topics:
+- cardiovascular-disease-prevention
+- cardiovascular-risk-assessment
+- atherosclerosis
+- chronic-inflammation
+linked_to_mechanisms:
+- endothelial-dysfunction
+- chronic-inflammation
+- oxidative-stress
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Lp-PLA2 vascular inflammation marker
+evidence_tier: plausible_emerging
+notes_for_coach: Vascular-specific inflammation marker (vs hsCRP which is systemic).
+  Available in India only at large urban labs (Metropolis / Quest). Skip if budget-constrained
+  — hsCRP + fibrinogen + ApoB is enough for most clients. Reserve for clients with
+  imaging-confirmed atherosclerosis or strong family history of stroke.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani
