@@ -1,0 +1,29 @@
+slug: fasting-glucose
+display_name: Fasting Glucose
+full_name: Fasting Plasma Glucose
+aliases: []
+units: mg/dL
+sample_type: blood
+conventional_low: 70
+conventional_high: 99
+fm_optimal_low: 75
+fm_optimal_high: 85
+interpretation_low: Hypoglycemia — adrenal / liver / insulin issue
+interpretation_high: Prediabetes (100-125) or diabetes (≥126); FM flags > 85
+when_to_order: Any metabolic / weight / energy / PCOS workup; annually for adults
+fasting_required: true
+typical_cost_inr: 80
+linked_to_topics:
+- blood-sugar-dysfunction
+- insulin-resistance
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Fasting Plasma Glucose
+evidence_tier: strong
+notes_for_coach: Conventional 'normal' goes to 99 — FM optimal is 75-85. Above 85
+  already insulin-resistance signal.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

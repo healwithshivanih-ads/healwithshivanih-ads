@@ -1,0 +1,47 @@
+slug: perimenopause-workup
+display_name: Perimenopause / Sex Hormone Workup
+category: hormone
+summary: Sex hormone snapshot for perimenopausal women with PMS, hot flushes, sleep
+  changes, irregular cycles, mood swings, weight gain. Best paired with DUTCH urine
+  for full Phase I + II estrogen metabolism picture.
+indications:
+- irregular cycles (35+ years old)
+- hot flushes / night sweats
+- PMS worsening
+- sleep disruption (especially mid-cycle and pre-menstrual)
+- mood changes, brain fog
+- weight gain around middle (40+)
+- hair thinning, dry skin
+tests:
+- estradiol-e2
+- progesterone
+- dhea-s
+- tsh
+- free-t4
+- free-t3
+- fasting-insulin
+- hba1c
+- vitamin-d-25-oh
+- ferritin
+optional_tests:
+- am-cortisol
+- tpo-antibodies
+- hscrp
+- homocysteine
+fasting_required: true
+estimated_cost_inr: 6000
+typical_turnaround_days: 3
+notes_for_coach: 'Order on DAY 21 of cycle (mid-luteal) for menstruating women. Postmenopausal:
+  any day. Estradiol + progesterone serum is OK as screen but DUTCH urine is the FM
+  gold standard — order if budget allows. Thyroid + insulin overlap with perimenopause
+  symptoms.'
+sources:
+- id: vitaone-skill-practice-guide
+  location: FM lab panels — perimenopause-workup
+evidence_tier: strong
+linked_to_topics: []
+linked_to_mechanisms: []
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

@@ -1,0 +1,27 @@
+slug: hemoglobin
+display_name: Hemoglobin
+full_name: Hemoglobin — CBC
+aliases: []
+units: g/dL
+sample_type: blood
+conventional_low: 11.5
+conventional_high: 16.5
+fm_optimal_low: 13.5
+fm_optimal_high: 14.5
+interpretation_low: Anemia — investigate iron / B12 / folate / chronic disease
+interpretation_high: Polycythemia / dehydration
+when_to_order: Every intake; annually
+fasting_required: false
+typical_cost_inr: 100
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Hemoglobin — CBC
+evidence_tier: strong
+notes_for_coach: Reference ranges differ by sex. FM optimal women 13.5-14.5, men 14-15.
+  Below 12 (women) or 13 (men) = investigate.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

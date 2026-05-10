@@ -2,7 +2,7 @@ from pathlib import Path
 
 import yaml
 
-from .models import Claim, CookingAdjustment, DrugDepletion, HomeRemedy, Mechanism, MindMap, Protocol, Source, Supplement, Symptom, TitrationProtocol, Topic
+from .models import Claim, CookingAdjustment, DrugDepletion, HomeRemedy, LabPanel, LabTest, Mechanism, MindMap, Protocol, Source, Supplement, Symptom, TitrationProtocol, Topic
 
 
 def load_supplements(data_dir: Path) -> list[Supplement]:
@@ -155,6 +155,52 @@ def load_titration_protocol(data_dir: Path, slug: str) -> TitrationProtocol:
     with path.open() as f:
         raw = yaml.safe_load(f)
     return TitrationProtocol(**raw)
+
+
+def load_lab_tests(data_dir: Path) -> list[LabTest]:
+    d = data_dir / "lab_tests"
+    if not d.exists():
+        return []
+    out = []
+    for path in sorted(d.glob("*.yaml")):
+        if path.name.startswith("_"):
+            continue
+        with path.open() as f:
+            raw = yaml.safe_load(f)
+        out.append(LabTest(**raw))
+    return out
+
+
+def load_lab_test(data_dir: Path, slug: str) -> LabTest:
+    path = data_dir / "lab_tests" / f"{slug}.yaml"
+    if not path.exists():
+        raise FileNotFoundError(f"lab_test not found: {slug}")
+    with path.open() as f:
+        raw = yaml.safe_load(f)
+    return LabTest(**raw)
+
+
+def load_lab_panels(data_dir: Path) -> list[LabPanel]:
+    d = data_dir / "lab_panels"
+    if not d.exists():
+        return []
+    out = []
+    for path in sorted(d.glob("*.yaml")):
+        if path.name.startswith("_"):
+            continue
+        with path.open() as f:
+            raw = yaml.safe_load(f)
+        out.append(LabPanel(**raw))
+    return out
+
+
+def load_lab_panel(data_dir: Path, slug: str) -> LabPanel:
+    path = data_dir / "lab_panels" / f"{slug}.yaml"
+    if not path.exists():
+        raise FileNotFoundError(f"lab_panel not found: {slug}")
+    with path.open() as f:
+        raw = yaml.safe_load(f)
+    return LabPanel(**raw)
 
 
 def load_symptoms(data_dir: Path) -> list[Symptom]:

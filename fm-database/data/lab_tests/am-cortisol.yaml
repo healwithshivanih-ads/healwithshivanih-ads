@@ -1,0 +1,29 @@
+slug: am-cortisol
+display_name: AM Cortisol
+full_name: Morning Serum Cortisol (8 AM)
+aliases: []
+units: µg/dL
+sample_type: blood
+conventional_low: 6
+conventional_high: 25
+fm_optimal_low: 12
+fm_optimal_high: 18
+interpretation_low: Adrenal insufficiency (< 5 = critical, refer)
+interpretation_high: Cushing's / acute stress / depression
+when_to_order: Fatigue / adrenal / autoimmune / on chronic steroid workup
+fasting_required: true
+typical_cost_inr: 400
+linked_to_topics:
+- adrenal-fatigue
+- hpa-axis-dysregulation
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Morning Serum Cortisol (8 AM)
+evidence_tier: strong
+notes_for_coach: Single timepoint blood cortisol is less informative than 4-point
+  saliva or DUTCH. FM uses AM serum as screen; refers to DUTCH if abnormal.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

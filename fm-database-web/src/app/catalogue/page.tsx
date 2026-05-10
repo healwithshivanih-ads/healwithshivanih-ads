@@ -11,12 +11,14 @@ import type {
   Source,
   Protocol,
   TitrationProtocol,
+  LabPanel,
+  LabTest,
 } from "@/lib/fmdb/types";
 
 export const dynamic = "force-dynamic";
 
 export default async function CataloguePage() {
-  const [topics, mechanisms, symptoms, supplements, claims, sources, protocols, titrations] =
+  const [topics, mechanisms, symptoms, supplements, claims, sources, protocols, titrations, labPanels, labTests] =
     await Promise.all([
       loadAllOfKind<Topic>("topics"),
       loadAllOfKind<Mechanism>("mechanisms"),
@@ -26,6 +28,8 @@ export default async function CataloguePage() {
       loadAllOfKind<Source>("sources"),
       loadAllOfKind<Protocol>("protocols"),
       loadAllOfKind<TitrationProtocol>("titration_protocols"),
+      loadAllOfKind<LabPanel>("lab_panels"),
+      loadAllOfKind<LabTest>("lab_tests"),
     ]);
 
   // Source records use `id` (not `slug`) and `title` (not `display_name`) on disk.
@@ -59,6 +63,8 @@ export default async function CataloguePage() {
           </TabsTrigger>
           <TabsTrigger value="protocols">Protocols ({protocols.length})</TabsTrigger>
           <TabsTrigger value="titration_protocols">Titrations ({titrations.length})</TabsTrigger>
+          <TabsTrigger value="lab_panels">Lab panels ({labPanels.length})</TabsTrigger>
+          <TabsTrigger value="lab_tests">Lab tests ({labTests.length})</TabsTrigger>
           <TabsTrigger value="claims">Claims ({claims.length})</TabsTrigger>
           <TabsTrigger value="sources">Sources ({sources.length})</TabsTrigger>
         </TabsList>
@@ -80,6 +86,12 @@ export default async function CataloguePage() {
         </TabsContent>
         <TabsContent value="titration_protocols">
           <CatalogueTable kind="titration_protocols" rows={titrations} />
+        </TabsContent>
+        <TabsContent value="lab_panels">
+          <CatalogueTable kind="lab_panels" rows={labPanels} />
+        </TabsContent>
+        <TabsContent value="lab_tests">
+          <CatalogueTable kind="lab_tests" rows={labTests} />
         </TabsContent>
         <TabsContent value="claims">
           <CatalogueTable kind="claims" rows={claims} />

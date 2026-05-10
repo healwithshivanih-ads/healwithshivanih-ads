@@ -1,0 +1,29 @@
+slug: hscrp
+display_name: hsCRP
+full_name: high-sensitivity C-Reactive Protein
+aliases: []
+units: mg/L
+sample_type: blood
+conventional_low: 0
+conventional_high: 3.0
+fm_optimal_low: 0
+fm_optimal_high: 1.0
+interpretation_low: No active inflammation
+interpretation_high: Systemic inflammation — infection / cardiovascular / autoimmune
+when_to_order: Any inflammation / autoimmune / CV workup; track protocol response
+fasting_required: false
+typical_cost_inr: 350
+linked_to_topics:
+- chronic-inflammation
+- cardiovascular-disease
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — high-sensitivity C-Reactive Protein
+evidence_tier: strong
+notes_for_coach: Best single inflammation marker. FM target < 1.0; conventional flags
+  > 3. Track every 3 months on anti-inflammatory protocols.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

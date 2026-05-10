@@ -86,3 +86,7 @@ version: 7
 status: active
 updated_at: '2026-05-05'
 updated_by: shivani
+pregnancy_safety: likely_safe
+lactation_safety: likely_safe
+pregnancy_safety_note: Most strains well-tolerated. Lactobacillus + Bifidobacterium
+  standard. Some evidence reduces postpartum eczema in baby.

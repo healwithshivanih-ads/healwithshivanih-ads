@@ -1414,6 +1414,121 @@ export async function checkMedicationImpactsAction(
 }
 
 // ────────────────────────────────────────────────────────────────────────────
+// Pregnancy / lactation safety overlay — flags supplements in active plans
+// that conflict with the client's PregnancyStatus.
+// ────────────────────────────────────────────────────────────────────────────
+
+export interface PregnancySafetyFlag {
+  supplement_slug: string;
+  supplement_name: string;
+  pregnancy_safety: string;            // contraindicated / caution / unknown / safe / likely_safe
+  lactation_safety: string;
+  note: string;
+  source_plan_slug: string;            // which plan brought this supp into the picture
+}
+
+export interface PregnancySafetyResult {
+  ok: boolean;
+  status?: string;                     // client's pregnancy_status
+  isActiveStatus: boolean;             // true if status warrants overlay (pregnant / TTC / lactating)
+  flags: PregnancySafetyFlag[];        // supplements with relevant safety notes
+  unknownSupplements: PregnancySafetyFlag[];  // supps with `unknown` safety — coach should investigate
+  error?: string;
+}
+
+const ACTIVE_PREGNANCY_STATUSES = new Set([
+  "trying_to_conceive",
+  "pregnant_first_trimester",
+  "pregnant_second_trimester",
+  "pregnant_third_trimester",
+  "lactating",
+]);
+
+export async function checkPregnancySafetyAction(
+  clientId: string,
+): Promise<PregnancySafetyResult> {
+  try {
+    const yaml = await import("js-yaml");
+    const { getCataloguePath } = await import("@/lib/fmdb/paths");
+    const root = getPlansRoot();
+    const clientPath = path.join(root, "clients", clientId, "client.yaml");
+
+    const rawC = await fs.readFile(clientPath, "utf-8").catch(() => null);
+    if (!rawC) return { ok: false, isActiveStatus: false, flags: [], unknownSupplements: [], error: "Client not found" };
+    const client = yaml.load(rawC) as Record<string, unknown> | null;
+    if (!client) return { ok: false, isActiveStatus: false, flags: [], unknownSupplements: [], error: "Client YAML invalid" };
+
+    const status = String((client.pregnancy_status as string | undefined) ?? "");
+    const isActive = ACTIVE_PREGNANCY_STATUSES.has(status);
+    if (!isActive) {
+      return { ok: true, status, isActiveStatus: false, flags: [], unknownSupplements: [] };
+    }
+
+    // Gather supplement slugs from active (published or draft) plans
+    const planSlugs = new Set<string>();
+    for (const bucket of ["published", "drafts", "ready"]) {
+      const dir = path.join(root, bucket);
+      try {
+        const files = await fs.readdir(dir);
+        for (const f of files) {
+          if (!f.endsWith(".yaml")) continue;
+          const planPath = path.join(dir, f);
+          const planRaw = await fs.readFile(planPath, "utf-8").catch(() => null);
+          if (!planRaw) continue;
+          const plan = yaml.load(planRaw) as Record<string, unknown> | null;
+          if (!plan || plan.client_id !== clientId) continue;
+          const supps = (plan.supplement_protocol ?? []) as Array<Record<string, unknown>>;
+          for (const s of supps) {
+            const slug = s.supplement_slug as string | undefined;
+            if (slug) planSlugs.add(`${slug}|${plan.slug}`);
+          }
+        }
+      } catch { /* bucket missing */ }
+    }
+
+    const flags: PregnancySafetyFlag[] = [];
+    const unknownSupps: PregnancySafetyFlag[] = [];
+
+    const cataloguePath = getCataloguePath();
+    for (const key of planSlugs) {
+      const [slug, sourcePlan] = key.split("|");
+      const fp = path.join(cataloguePath, "supplements", `${slug}.yaml`);
+      const sRaw = await fs.readFile(fp, "utf-8").catch(() => null);
+      if (!sRaw) continue;
+      const supp = yaml.load(sRaw) as Record<string, unknown> | null;
+      if (!supp) continue;
+      const preg = String((supp.pregnancy_safety as string | undefined) ?? "unknown");
+      const lact = String((supp.lactation_safety as string | undefined) ?? "unknown");
+      const note = String((supp.pregnancy_safety_note as string | undefined) ?? "");
+      const flag: PregnancySafetyFlag = {
+        supplement_slug: slug,
+        supplement_name: String((supp.display_name as string | undefined) ?? slug),
+        pregnancy_safety: preg,
+        lactation_safety: lact,
+        note,
+        source_plan_slug: sourcePlan,
+      };
+      // Show in flags if non-trivial (anything except `safe`)
+      if (preg === "contraindicated" || preg === "caution" || lact === "contraindicated" || lact === "caution") {
+        flags.push(flag);
+      } else if (preg === "unknown" || lact === "unknown") {
+        unknownSupps.push(flag);
+      }
+    }
+
+    // Sort by severity — contraindicated first
+    flags.sort((a, b) => {
+      const order = { contraindicated: 0, caution: 1, unknown: 2 } as Record<string, number>;
+      return (order[a.pregnancy_safety] ?? 3) - (order[b.pregnancy_safety] ?? 3);
+    });
+
+    return { ok: true, status, isActiveStatus: true, flags, unknownSupplements: unknownSupps };
+  } catch (e) {
+    return { ok: false, isActiveStatus: false, flags: [], unknownSupplements: [], error: String(e) };
+  }
+}
+
+// ────────────────────────────────────────────────────────────────────────────
 // Functional test PDF parsing — DUTCH / GI-MAP / OAT
 // ────────────────────────────────────────────────────────────────────────────
 

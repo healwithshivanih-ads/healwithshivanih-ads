@@ -116,3 +116,7 @@ version: 12
 status: active
 updated_at: '2026-05-05'
 updated_by: shivani
+pregnancy_safety: contraindicated
+lactation_safety: contraindicated
+pregnancy_safety_note: Uterine stimulant; crosses placenta; can cause kernicterus
+  in newborn (displaces bilirubin from albumin). Strict avoidance.

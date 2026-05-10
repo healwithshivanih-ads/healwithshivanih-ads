@@ -1,0 +1,30 @@
+slug: triglycerides
+display_name: Triglycerides
+full_name: Fasting Triglycerides
+aliases: []
+units: mg/dL
+sample_type: blood
+conventional_low: 0
+conventional_high: 150
+fm_optimal_low: 0
+fm_optimal_high: 80
+interpretation_low: Generally fine; very low can indicate malnutrition
+interpretation_high: Metabolic syndrome / insulin resistance / fatty liver / high
+  carb intake
+when_to_order: Fasting required; on every metabolic + CV workup
+fasting_required: true
+typical_cost_inr: 200
+linked_to_topics:
+- cardiovascular-disease
+- insulin-resistance
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Fasting Triglycerides
+evidence_tier: strong
+notes_for_coach: FM optimal < 80. > 150 = insulin resistance + fatty liver risk. TG/HDL
+  < 1.5 is best metabolic ratio.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

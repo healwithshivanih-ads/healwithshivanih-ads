@@ -46,6 +46,7 @@ import { LabReferenceRangesEditor } from "./lab-reference-ranges";
 import { MedicationImpactPanel } from "./medication-impact-panel";
 import { FunctionalTestPanel } from "./functional-test-panel";
 import { SOAPNotePanel } from "./soap-note-panel";
+import { PregnancySafetyPanel } from "./pregnancy-safety-panel";
 import { IFMTimelineCard } from "./ifm-timeline-card";
 import { ClientAvatar } from "./client-avatar";
 import { SessionBriefModal } from "./session-brief-modal";
@@ -719,6 +720,9 @@ export function ClientPageTabs({
             clientId={clientId}
             sessions={sessions}
           />
+
+          {/* 🤰 Pregnancy / lactation safety overlay (renders only when status active) */}
+          <PregnancySafetyPanel clientId={clientId} />
 
           {/* 💊 Drug-nutrient depletion auto-flag (renders only when meds match catalogue) */}
           <MedicationImpactPanel clientId={clientId} />

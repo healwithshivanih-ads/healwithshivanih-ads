@@ -1,0 +1,30 @@
+slug: ferritin
+display_name: Ferritin
+full_name: Serum Ferritin
+aliases: []
+units: ng/mL
+sample_type: blood
+conventional_low: 30
+conventional_high: 300
+fm_optimal_low: 70
+fm_optimal_high: 150
+interpretation_low: Iron-deficiency anemia; thyroid conversion impaired
+interpretation_high: Inflammation (acute phase reactant), iron overload, hemochromatosis
+when_to_order: Any fatigue / hair loss / thyroid / heavy menses workup
+fasting_required: false
+typical_cost_inr: 350
+linked_to_topics:
+- thyroid
+- perimenopause
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Serum Ferritin
+evidence_tier: strong
+notes_for_coach: FM optimal 70-150. Conventional 'normal' starts at 30 — but values
+  30-70 still cause fatigue, hair loss, thyroid dysfunction. Order at every intake
+  for women.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

@@ -1,0 +1,27 @@
+slug: vitamin-b12
+display_name: Vitamin B12
+full_name: Serum B12 (cobalamin)
+aliases: []
+units: pg/mL
+sample_type: blood
+conventional_low: 200
+conventional_high: 1000
+fm_optimal_low: 500
+fm_optimal_high: 900
+interpretation_low: Pernicious anemia, vegan, metformin, PPI, gastric surgery
+interpretation_high: Generally fine; may indicate liver issue or supplement
+when_to_order: Every intake (especially vegetarian + on metformin/PPI); annually
+fasting_required: false
+typical_cost_inr: 500
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Serum B12 (cobalamin)
+evidence_tier: strong
+notes_for_coach: FM optimal > 500. Conventional 'normal' starts 200 — but 200-500
+  is functional deficiency. Pair with MMA + homocysteine for full picture.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

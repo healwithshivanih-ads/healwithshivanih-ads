@@ -1,0 +1,46 @@
+slug: cardiovascular-risk-workup
+display_name: Cardiovascular Risk Workup (FM-tier)
+category: cardiovascular
+summary: FM cardiovascular workup goes BEYOND standard lipid panel. ApoB > LDL-C as
+  best risk marker. Adds inflammation (hsCRP), homocysteine (B-vitamin / methylation),
+  insulin resistance, and metabolic context. Catches atherogenic risk that 'normal
+  cholesterol' misses.
+indications:
+- family history of early CV disease (men < 55, women < 65)
+- calcium score > 0
+- high BP / pre-hypertension
+- metabolic syndrome
+- post-MI / post-stent (FM secondary prevention)
+- lipid panel borderline 'normal' but you want a deeper read
+tests:
+- apob
+- hdl-cholesterol
+- triglycerides
+- hscrp
+- homocysteine
+- fasting-glucose
+- fasting-insulin
+- homa-ir
+- hba1c
+- vitamin-d-25-oh
+- magnesium-rbc
+optional_tests:
+- tsh
+- ferritin
+fasting_required: true
+estimated_cost_inr: 4500
+typical_turnaround_days: 3
+notes_for_coach: ApoB is the single best CV risk marker — ALWAYS order over LDL-C
+  alone. TG/HDL ratio < 1.5 = best metabolic-CV marker. hsCRP > 1 = inflammatory CV
+  risk. Homocysteine > 7 = methylation issue feeding endothelial dysfunction. Ask
+  doctor to consider Lp(a) — genetic risk marker not on this list.
+sources:
+- id: vitaone-skill-practice-guide
+  location: FM lab panels — cardiovascular-risk-workup
+evidence_tier: strong
+linked_to_topics: []
+linked_to_mechanisms: []
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

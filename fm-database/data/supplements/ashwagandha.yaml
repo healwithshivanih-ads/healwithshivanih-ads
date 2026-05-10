@@ -83,3 +83,7 @@ version: 8
 status: active
 updated_at: '2026-05-04'
 updated_by: shivani
+pregnancy_safety: contraindicated
+lactation_safety: caution
+pregnancy_safety_note: 'Insufficient safety data; uterine stimulant; avoid throughout
+  pregnancy. Lactation: limited data, prefer to avoid.'

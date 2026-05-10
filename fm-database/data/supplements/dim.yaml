@@ -61,3 +61,7 @@ version: 5
 status: active
 updated_at: '2026-05-02'
 updated_by: shivani
+pregnancy_safety: contraindicated
+lactation_safety: caution
+pregnancy_safety_note: Insufficient data; potent estrogen modulator; avoid in pregnancy.
+  Caution lactating.

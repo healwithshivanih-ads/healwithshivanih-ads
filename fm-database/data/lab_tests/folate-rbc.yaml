@@ -1,0 +1,27 @@
+slug: folate-rbc
+display_name: RBC Folate
+full_name: Red Blood Cell Folate
+aliases: []
+units: ng/mL
+sample_type: blood
+conventional_low: 280
+conventional_high: 800
+fm_optimal_low: 500
+fm_optimal_high: 800
+interpretation_low: Deficiency — methylation impairment, anemia, CVD risk
+interpretation_high: Generally fine
+when_to_order: MTHFR / methylation / pre-conception / mood / CVD workups
+fasting_required: false
+typical_cost_inr: 600
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Red Blood Cell Folate
+evidence_tier: strong
+notes_for_coach: RBC folate is more reliable than serum folate (reflects 3-month status).
+  FM target > 500.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani
