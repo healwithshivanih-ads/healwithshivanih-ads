@@ -229,6 +229,18 @@ class Protocol(BaseModel):
     supplements_typically_used: list[str] = Field(default_factory=list)  # supplement slugs
     expected_outcomes: list[str] = Field(default_factory=list)
     cautions: list[str] = Field(default_factory=list)
+    # ---- Sequencing (FM-physician thinking) ----
+    # prerequisites: complete these protocols FIRST. e.g. weight-loss-metabolic-reset
+    # has prerequisite [adrenal-recovery-protocol] when client has HPA dysregulation —
+    # fasting + restriction worsen cortisol if adrenal isn't reset first.
+    prerequisites: list[str] = Field(default_factory=list)
+    # recommended_followup: protocols to consider AFTER this one is complete.
+    # e.g. 5R → cycle-sync-protocol (gut healing first, then hormone optimisation).
+    recommended_followup: list[str] = Field(default_factory=list)
+    # incompatible_with: NEVER combine with these protocols simultaneously.
+    # Restrictive elimination diets shouldn't stack (AIP + weight-loss = both
+    # caloric deficit + nutrient deficit). Coach picks one.
+    incompatible_with: list[str] = Field(default_factory=list)
     linked_to_topics: list[str] = Field(default_factory=list)
     linked_to_mechanisms: list[str] = Field(default_factory=list)
     linked_to_symptoms: list[str] = Field(default_factory=list)
@@ -286,6 +298,70 @@ class DrugDepletion(BaseModel):
     contraindicated_supplements: list[str] = Field(default_factory=list)  # supplement slugs to AVOID with this drug
     monitoring_labs: list[str] = Field(default_factory=list)     # e.g. "B12 every 6 months", "homocysteine annually"
     coach_notes: str = ""
+    linked_to_topics: list[str] = Field(default_factory=list)
+    linked_to_mechanisms: list[str] = Field(default_factory=list)
+    sources: list[SourceCitation] = Field(default_factory=list)
+    evidence_tier: EvidenceTier
+    version: int = 1
+    status: EntityStatus = EntityStatus.active
+    updated_at: date
+    updated_by: str
+
+    @field_validator("slug")
+    @classmethod
+    def _slug_format(cls, v: str) -> str:
+        if not v or not all(c.isalnum() or c == "-" for c in v) or not v.islower():
+            raise ValueError(f"slug must be lowercase ascii alphanumeric with hyphens, got {v!r}")
+        if v.startswith("-") or v.endswith("-") or "--" in v:
+            raise ValueError(f"slug has malformed hyphens: {v!r}")
+        return v
+
+
+class TitrationStep(BaseModel):
+    """One row of the supplement titration schedule. Doses are INTEGER counts of
+    the product unit (capsule / tablet / scoop) — India coaches can't compound
+    custom mg amounts; titration must work within whole-product increments.
+    """
+    model_config = ConfigDict(extra="forbid")
+
+    week: int                                                    # 1-indexed, week from start
+    morning: int = 0                                             # # of units
+    midday: int = 0
+    evening: int = 0
+    bedtime: int = 0
+    notes: str = ""                                              # e.g. "with food", "if no GI symptoms"
+
+
+class TitrationProtocol(BaseModel):
+    """A multi-week ramp schedule for a supplement, expressed as integer counts
+    of commercially-available product units (vitaone / amazon / iherb).
+
+    Why this matters: in India, FM coaches don't have access to compounding
+    pharmacies. Titration has to use whole capsules / tablets / scoops at known
+    strengths. Ashwagandha comes in 300mg or 600mg caps; can't titrate from 0
+    to 600mg in 50mg steps. The schedule respects this constraint.
+
+    Multiple titration protocols may exist for the same Supplement when the
+    indication / target dose / pacing differs (e.g. ashwagandha for adrenal
+    recovery vs ashwagandha for thyroid support — different ramps).
+    """
+    model_config = ConfigDict(extra="forbid")
+
+    slug: str
+    display_name: str
+    supplement_slug: str                                         # Supplement entity reference
+    purpose: str                                                 # 1-2 sentences — why titrate / when to use
+    indications: list[str] = Field(default_factory=list)         # symptom slugs / topic slugs / free-text triggers
+    contraindications: list[str] = Field(default_factory=list)
+    product_strength: str                                        # e.g. "300mg per capsule", "400mg per tablet", "5g per scoop"
+    available_at: list[str] = Field(default_factory=list)        # e.g. ["vitaone", "amazon-india", "iherb"]
+    target_dose_label: str                                       # human-readable target — "600mg/day"
+    target_total_per_day: str = ""                               # parseable total — "600mg" / "1500mg" / "10g"
+    schedule: list[TitrationStep] = Field(default_factory=list)
+    splittable: bool = False                                     # capsule can be opened + halved (powder inside)
+    cautions: list[str] = Field(default_factory=list)
+    monitoring: list[str] = Field(default_factory=list)          # what coach should watch for / labs
+    notes_for_coach: str = ""
     linked_to_topics: list[str] = Field(default_factory=list)
     linked_to_mechanisms: list[str] = Field(default_factory=list)
     sources: list[SourceCitation] = Field(default_factory=list)

@@ -165,10 +165,40 @@ export interface Protocol extends BaseEntity {
   supplements_typically_used?: string[];
   expected_outcomes?: string[];
   cautions?: string[];
+  prerequisites?: string[];
+  recommended_followup?: string[];
+  incompatible_with?: string[];
   linked_to_topics?: string[];
   linked_to_mechanisms?: string[];
   linked_to_symptoms?: string[];
   notes_for_coach?: string;
+}
+
+export interface TitrationStep {
+  week: number;
+  morning?: number;
+  midday?: number;
+  evening?: number;
+  bedtime?: number;
+  notes?: string;
+}
+
+export interface TitrationProtocol extends BaseEntity {
+  supplement_slug: string;
+  purpose?: string;
+  indications?: string[];
+  contraindications?: string[];
+  product_strength?: string;
+  available_at?: string[];
+  target_dose_label?: string;
+  target_total_per_day?: string;
+  schedule?: TitrationStep[];
+  splittable?: boolean;
+  cautions?: string[];
+  monitoring?: string[];
+  notes_for_coach?: string;
+  linked_to_topics?: string[];
+  linked_to_mechanisms?: string[];
 }
 
 export interface NutrientDepletion {
@@ -409,4 +439,5 @@ export type CatalogueKind =
   | "cooking_adjustments"
   | "home_remedies"
   | "protocols"
-  | "drug_depletions";
+  | "drug_depletions"
+  | "titration_protocols";

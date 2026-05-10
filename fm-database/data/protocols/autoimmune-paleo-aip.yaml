@@ -93,6 +93,14 @@ cautions:
   - Indian context — most dals + spices excluded; recipe planning critical
   - Reintroduction MUST be structured — random reintroduction loses the diagnostic value
   - If client doesn't improve by week 6, AIP isn't the right protocol — reassess with clinician
+prerequisites:
+  - 5r-gut-protocol
+recommended_followup:
+  - anti-inflammatory-reset
+incompatible_with:
+  - whole30
+  - low-fodmap-protocol
+  - weight-loss-metabolic-reset
 linked_to_topics:
   - autoimmune
   - hashimoto-thyroid
