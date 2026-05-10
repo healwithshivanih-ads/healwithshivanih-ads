@@ -133,9 +133,12 @@ export function LabUploadPanel({ clientId }: Props) {
 
     startExtract(async () => {
       try {
-        // 1. Upload file to client's files directory
-        const bytes = new Uint8Array(await file.arrayBuffer());
-        const savedPath = await uploadFileAction(clientId, file.name, bytes);
+        // 1. Upload file to client's files directory via FormData
+        // (Next 16 RSC can't serialize multi-MB Uint8Array — FormData streams.)
+        const fd = new FormData();
+        fd.append("client_id", clientId);
+        fd.append("file", file);
+        const savedPath = await uploadFileAction(fd);
         setFilePath(savedPath);
 
         // 2. Extract lab values using existing transcript extractor

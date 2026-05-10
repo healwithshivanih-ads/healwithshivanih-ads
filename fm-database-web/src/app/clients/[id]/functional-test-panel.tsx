@@ -60,8 +60,10 @@ export function FunctionalTestPanel({ clientId }: Props) {
     setIsParsing(true);
     setParseError(null);
     try {
-      const buf = await file.arrayBuffer();
-      const filePath = await uploadFileAction(clientId, file.name, new Uint8Array(buf));
+      const fd = new FormData();
+      fd.append("client_id", clientId);
+      fd.append("file", file);
+      const filePath = await uploadFileAction(fd);
       startTransition(async () => {
         const result = await parseFunctionalTestAction(clientId, filePath);
         if (!result.ok) {

@@ -257,22 +257,32 @@ export async function loadSessionChatAction(
   return loadSessionChatHistory(input);
 }
 
-export async function uploadFileAction(
-  clientId: string,
-  filename: string,
-  bytes: Uint8Array
-): Promise<string> {
+/**
+ * Upload a file to a client's files/ directory.
+ *
+ * Accepts FormData (NOT Uint8Array) because Next 16 RSC serializes
+ * Uint8Array byte-by-byte as a nested numeric array, which trips the
+ * "Maximum array nesting exceeded" guard for any file > a few MB.
+ * FormData streams the binary body and avoids that path entirely.
+ *
+ * Form fields:
+ *   client_id: string
+ *   file:      File
+ */
+export async function uploadFileAction(formData: FormData): Promise<string> {
+  const clientId = formData.get("client_id");
+  const file = formData.get("file");
+  if (typeof clientId !== "string" || !clientId) {
+    throw new Error("uploadFileAction: client_id missing");
+  }
+  if (!(file instanceof File)) {
+    throw new Error("uploadFileAction: file missing or not a File");
+  }
   // Date-prefix to mirror the Streamlit version's collision handling.
   const today = new Date().toISOString().slice(0, 10);
-  const stored = `${today}-${filename}`;
-  return saveClientUpload(
-    clientId,
-    stored,
-    bytes.buffer.slice(
-      bytes.byteOffset,
-      bytes.byteOffset + bytes.byteLength
-    ) as ArrayBuffer
-  );
+  const stored = `${today}-${file.name}`;
+  const buf = await file.arrayBuffer();
+  return saveClientUpload(clientId, stored, buf);
 }
 
 /**

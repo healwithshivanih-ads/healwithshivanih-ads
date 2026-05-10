@@ -65,10 +65,11 @@ export function ClientAvatar({
       const blobUrl = URL.createObjectURL(file);
       setPhotoUrl(blobUrl);
 
-      const buf = await file.arrayBuffer();
-      const bytes = new Uint8Array(buf);
+      const fd = new FormData();
+      fd.append("client_id", clientId);
+      fd.append("file", file);
 
-      const res = await uploadClientPhotoAction(clientId, bytes, file.type);
+      const res = await uploadClientPhotoAction(fd);
       setUploading(false);
 
       if (!res.ok) {

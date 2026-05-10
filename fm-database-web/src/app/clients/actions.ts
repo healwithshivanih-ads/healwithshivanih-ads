@@ -1102,14 +1102,19 @@ export interface UploadPhotoResult {
  * Overwrites any existing photo for this client.
  */
 export async function uploadClientPhotoAction(
-  clientId: string,
-  bytes: Uint8Array,
-  mimeType: string
+  formData: FormData
 ): Promise<UploadPhotoResult> {
-  if (!clientId || !/^[\w-]+$/.test(clientId)) {
+  // Accepts FormData (NOT Uint8Array) — Next 16 RSC can't serialize multi-MB
+  // Uint8Array (hits "Maximum array nesting exceeded"). FormData streams.
+  // Fields: client_id (string), file (File)
+  const clientId = formData.get("client_id");
+  const file = formData.get("file");
+  if (typeof clientId !== "string" || !/^[\w-]+$/.test(clientId)) {
     return { ok: false, error: "Invalid client ID" };
   }
-  if (!bytes.length) return { ok: false, error: "No file data" };
+  if (!(file instanceof File) || !file.size) {
+    return { ok: false, error: "No file data" };
+  }
 
   const extMap: Record<string, string> = {
     "image/jpeg": "jpg",
@@ -1118,7 +1123,7 @@ export async function uploadClientPhotoAction(
     "image/webp": "webp",
     "image/gif":  "gif",
   };
-  const ext = extMap[mimeType.toLowerCase()] ?? "jpg";
+  const ext = extMap[file.type.toLowerCase()] ?? "jpg";
 
   const dir = path.join(getPlansRoot(), "clients", clientId);
   const dest = path.join(dir, `photo.${ext}`);
@@ -1131,7 +1136,8 @@ export async function uploadClientPhotoAction(
 
   try {
     await fs.mkdir(dir, { recursive: true });
-    await fs.writeFile(dest, Buffer.from(bytes));
+    const buf = Buffer.from(await file.arrayBuffer());
+    await fs.writeFile(dest, buf);
     revalidatePath(`/clients/${clientId}`);
     return { ok: true, ext };
   } catch (err) {

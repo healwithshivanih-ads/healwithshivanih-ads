@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
       // limit makes them fail at the framework boundary with statusCode
       // 413 ("Body exceeded 1 MB limit"), which the browser surfaces as
       // a generic "unexpected response from the server" error.
-      bodySizeLimit: "20mb",
+      bodySizeLimit: "50mb",
     },
   },
 };
