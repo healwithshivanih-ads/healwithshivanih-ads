@@ -1488,7 +1488,7 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 
 ### 🔴 Setup (one-time, coach does these)
 1. **Configure email** — add `GMAIL_USER` + `GMAIL_APP_PASSWORD` to `.env.local`. Needs Google App Password: https://myaccount.google.com/apppasswords
-2. **AiSensy webhook live** — add `AISENSY_WEBHOOK_SECRET=<secret>` to `.env.local`. Run `cloudflared tunnel --url http://localhost:3002`. Paste tunnel URL into AiSensy → Settings → Webhook URL. Set header `X-AiSensy-Secret`. Test: `GET /api/aisensy-webhook` shows setup status.
+2. **AiSensy outbound** — add `AISENSY_API_KEY` to `.env.local` + register the 5 templates in AiSensy dashboard. Enables Broadcast Panel + per-client send. **Webhook skipped** (requires higher AiSensy plan) — for inbound, use the Message Capture Panel on each client page (manual paste of WhatsApp message → Haiku parses it → saves as quick_note).
 3. **Triage 444 open backlog items** via `/backlog` — suggestion chips make it fast. Coach work, no code.
 
 ### 🟡 Client management (next few sessions)
@@ -1540,7 +1540,7 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 **Outstanding (in rough priority order):**
 1. **Coach uses it daily.** Real bugs from real use are more valuable than speculative code.
 2. **Deploy v0.63 to laptop** — pull `claude/setup-fm-coach-laptop-7GFhK` (or merge to main), then: `cd ~/code/healwithshivanih-ads/fm-database-web && npm install && npm run build && ./node_modules/.bin/pm2 delete fm-coach && ./node_modules/.bin/pm2 start ecosystem.config.js`. The PM2 env fix means `.env.local` is now read automatically.
-3. **AiSensy setup** (one-time): add `AISENSY_API_KEY` to `.env.local` for broadcast/send to work. Also `AISENSY_WEBHOOK_SECRET` + Cloudflare Tunnel for inbound webhook.
+3. **AiSensy setup** (one-time): add `AISENSY_API_KEY` to `.env.local` for broadcast/send to work. Webhook skipped — Message Capture Panel handles inbound manually.
 4. **Register AiSensy templates in dashboard** — 5 templates: `fm_checkin_nudge`, `fm_lab_reminder`, `fm_session_confirm`, `fm_supplement_instructions`, `fm_encouragement`. All UTILITY / English / `{{1}}` `{{2}}` params.
 5. **Client letter design finalisation** — review `hariharan-plan-3-2026-05-06-cl-005.html` and decide on layout/branding changes.
 6. **Session notes PDF export** — clean PDF of session notes for doctors/specialists.
