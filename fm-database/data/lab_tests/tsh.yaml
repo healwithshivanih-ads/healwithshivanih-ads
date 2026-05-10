@@ -1,0 +1,29 @@
+slug: tsh
+display_name: TSH
+full_name: Thyroid Stimulating Hormone
+aliases: []
+units: mIU/L
+sample_type: blood
+conventional_low: 0.4
+conventional_high: 4.5
+fm_optimal_low: 1.0
+fm_optimal_high: 2.0
+interpretation_low: Hyperthyroid suppression; pituitary issue if also low T4
+interpretation_high: Hypothyroid pattern; FM flags > 2.0 even within 'normal' range
+when_to_order: Annually for women > 35; sooner if fatigue / weight / mood / hair issues
+fasting_required: true
+typical_cost_inr: 250
+linked_to_topics:
+- thyroid
+- hashimoto-thyroid
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Thyroid Stimulating Hormone
+evidence_tier: strong
+notes_for_coach: Most labs flag > 4.5 only — FM optimal is 1-2. TSH 2.5-4.5 = subclinical
+  hypothyroid in functional medicine.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

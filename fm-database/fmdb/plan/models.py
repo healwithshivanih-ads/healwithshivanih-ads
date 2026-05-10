@@ -197,6 +197,13 @@ class Client(BaseModel):
     cycle_regularity: Optional[str] = None        # regular | irregular | very_irregular
     menopause_started: Optional[date] = None      # date menopause was reached (12+ months no period)
 
+    # Pregnancy / lactation status — drives supplement safety overlay.
+    # Coach updates as the client's status changes. Values mirror
+    # fmdb.enums.PregnancyStatus.
+    pregnancy_status: Optional[str] = None
+    pregnancy_due_date: Optional[date] = None     # if pregnant — for trimester transitions
+    lactation_started: Optional[date] = None      # if lactating — for tapering plans
+
     stress_response: str = ""            # fight/flight (anxious, wired) vs freeze (exhausted, numb) vs mixed
     childhood_history: str = ""          # antibiotic use, gut infections, trauma, ACEs, chronic childhood illness
     toxic_exposures: str = ""            # mold, heavy metals, chemical exposures, long-term medication history

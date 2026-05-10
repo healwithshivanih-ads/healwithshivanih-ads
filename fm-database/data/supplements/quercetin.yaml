@@ -93,3 +93,7 @@ version: 11
 status: active
 updated_at: '2026-05-05'
 updated_by: shivani
+pregnancy_safety: caution
+lactation_safety: caution
+pregnancy_safety_note: Limited safety data in pregnancy; food amounts (apples, onions,
+  tea) are fine; avoid supplemental high doses.

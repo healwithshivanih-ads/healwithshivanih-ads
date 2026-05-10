@@ -1,0 +1,29 @@
+slug: reverse-t3
+display_name: Reverse T3
+full_name: Reverse Triiodothyronine
+aliases: []
+units: ng/dL
+sample_type: blood
+conventional_low: 8.0
+conventional_high: 25.0
+fm_optimal_low: 8.0
+fm_optimal_high: 18.0
+interpretation_low: Rare — generally not concerning
+interpretation_high: Stress / chronic illness / cortisol — body shunts T4 to inactive
+  form
+when_to_order: When fT3 low + TSH normal — RT3 elevated explains 'tissue hypothyroidism'
+fasting_required: true
+typical_cost_inr: 600
+linked_to_topics:
+- thyroid
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Reverse Triiodothyronine
+evidence_tier: strong
+notes_for_coach: fT3:RT3 ratio > 20 is FM optimal. Low ratio = stressed thyroid even
+  with normal TSH.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

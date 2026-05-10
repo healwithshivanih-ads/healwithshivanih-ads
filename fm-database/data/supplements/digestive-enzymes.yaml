@@ -81,3 +81,7 @@ version: 8
 status: active
 updated_at: '2026-05-05'
 updated_by: shivani
+pregnancy_safety: likely_safe
+lactation_safety: likely_safe
+pregnancy_safety_note: Generally well-tolerated. Avoid plant-based proteases in first
+  trimester out of caution.

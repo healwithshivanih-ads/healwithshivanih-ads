@@ -41,3 +41,7 @@ version: 2
 status: active
 updated_at: '2026-05-05'
 updated_by: shivani
+pregnancy_safety: safe
+lactation_safety: safe
+pregnancy_safety_note: Better tolerated than ferrous sulfate; less constipation. Standard
+  30 mg/day if ferritin < 50.

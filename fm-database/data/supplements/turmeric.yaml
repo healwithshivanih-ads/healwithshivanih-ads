@@ -35,3 +35,8 @@ version: 1
 status: active
 updated_at: '2026-05-02'
 updated_by: shivani
+pregnancy_safety: caution
+lactation_safety: likely_safe
+pregnancy_safety_note: 'Food amounts safe; supplemental high-dose curcumin may stimulate
+  uterine contractions — caution especially first trimester. Lactation: food amounts
+  well-tolerated.'

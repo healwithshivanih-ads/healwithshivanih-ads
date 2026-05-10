@@ -1,0 +1,29 @@
+slug: homa-ir
+display_name: HOMA-IR
+full_name: Homeostatic Model Assessment of Insulin Resistance
+aliases: []
+units: ratio
+sample_type: calculated
+conventional_low: 0.5
+conventional_high: 2.5
+fm_optimal_low: 0.5
+fm_optimal_high: 1.5
+interpretation_low: Hypoglycemia
+interpretation_high: Insulin resistance (>1.5 FM, >2.5 conventional)
+when_to_order: Calculated from fasting glucose + insulin — order both then compute
+fasting_required: true
+typical_cost_inr: 0
+linked_to_topics:
+- insulin-resistance
+- pcos
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Homeostatic Model Assessment of Insulin Resistance
+evidence_tier: strong
+notes_for_coach: = (glucose × insulin) / 405. FM flags > 1.5; conventional > 2.5.
+  Single best metabolic risk marker.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

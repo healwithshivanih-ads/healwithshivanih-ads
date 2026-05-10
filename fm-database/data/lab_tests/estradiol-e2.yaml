@@ -1,0 +1,29 @@
+slug: estradiol-e2
+display_name: Estradiol (E2)
+full_name: Estradiol — Serum
+aliases: []
+units: pg/mL
+sample_type: blood
+conventional_low: 30
+conventional_high: 400
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: Postmenopause expected; perimenopausal swings
+interpretation_high: Estrogen dominance; ovarian / pregnancy
+when_to_order: Cycle phase-dependent — measure on day 3 (follicular) AND day 21 (luteal)
+fasting_required: false
+typical_cost_inr: 600
+linked_to_topics:
+- perimenopause
+- estrogen-dominance
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Estradiol — Serum
+evidence_tier: strong
+notes_for_coach: Reference range varies wildly by cycle phase. FM interprets in context
+  of progesterone + cycle day. DUTCH urine is generally more useful for FM workup.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

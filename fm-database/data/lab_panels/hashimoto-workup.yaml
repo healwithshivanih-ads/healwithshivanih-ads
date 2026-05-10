@@ -1,0 +1,42 @@
+slug: hashimoto-workup
+display_name: Hashimoto / Hypothyroid Workup
+category: thyroid
+summary: Full thyroid investigation when Hashimoto's is suspected or hypothyroid symptoms
+  persist despite normal TSH. Includes antibodies (the FM gold standard for diagnosing
+  Hashimoto's years before TSH changes) and conversion markers (T3 / RT3) for tissue-level
+  thyroid status.
+indications:
+- fatigue + cold intolerance + weight gain + hair loss + brain fog
+- TSH > 2.5 with normal-range fT4
+- family history of thyroid autoimmune
+- post-pregnancy thyroid changes
+- any 'I feel hypothyroid but my TSH is normal'
+- autoimmune diagnosis elsewhere (RA, lupus, T1D — Hashimoto's risk)
+tests:
+- tsh
+- free-t4
+- free-t3
+- reverse-t3
+- tpo-antibodies
+- tg-antibodies
+- ferritin
+- vitamin-d-25-oh
+optional_tests:
+- vitamin-b12
+- homocysteine
+fasting_required: true
+estimated_cost_inr: 4500
+typical_turnaround_days: 3
+notes_for_coach: TPO + Tg antibodies are CRITICAL — they catch Hashimoto's 5-10 years
+  before TSH rises. Coach should order ferritin alongside (T4 → T3 conversion needs
+  ferritin > 70 ng/mL). Vitamin D matters because deficiency drives autoimmune flare.
+sources:
+- id: vitaone-skill-practice-guide
+  location: FM lab panels — hashimoto-workup
+evidence_tier: strong
+linked_to_topics: []
+linked_to_mechanisms: []
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

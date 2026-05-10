@@ -1,0 +1,49 @@
+slug: fatigue-workup
+display_name: Chronic Fatigue Workup
+category: fatigue
+summary: Comprehensive fatigue investigation — rules out the common explanations (anemia,
+  thyroid, B12, vitamin D, blood sugar, adrenal) before invoking 'mitochondrial dysfunction'
+  or 'chronic fatigue syndrome'. Most fatigue cases ARE one of the common causes if
+  you look thoroughly.
+indications:
+- persistent fatigue > 6 weeks
+- exhaustion despite adequate sleep
+- afternoon energy crash
+- 'post-exertional malaise (bigger workups: long-COVID, ME/CFS)'
+- post-viral / post-COVID recovery
+tests:
+- hemoglobin
+- ferritin
+- tsh
+- free-t4
+- free-t3
+- reverse-t3
+- vitamin-b12
+- folate-rbc
+- vitamin-d-25-oh
+- fasting-glucose
+- fasting-insulin
+- am-cortisol
+- dhea-s
+- magnesium-rbc
+optional_tests:
+- hscrp
+- homocysteine
+- tpo-antibodies
+fasting_required: true
+estimated_cost_inr: 7000
+typical_turnaround_days: 3
+notes_for_coach: Don't skip ferritin — most-missed cause of fatigue in women. Reverse
+  T3 catches 'tissue hypothyroidism' that TSH/T4 misses. Cortisol + DHEA-S patterns
+  the HPA axis. If all this is normal AND symptoms persist, consider ME/CFS workup
+  or long-COVID protocols.
+sources:
+- id: vitaone-skill-practice-guide
+  location: FM lab panels — fatigue-workup
+evidence_tier: strong
+linked_to_topics: []
+linked_to_mechanisms: []
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

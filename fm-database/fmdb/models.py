@@ -12,8 +12,10 @@ from .enums import (
     EvidenceTier,
     HomeRemedyCategory,
     InteractionType,
+    LabPanelCategory,
     MechanismCategory,
     ProtocolCategory,
+    SafetyStatus,
     SourceQuality,
     SourceType,
     SupplementCategory,
@@ -381,6 +383,95 @@ class TitrationProtocol(BaseModel):
         return v
 
 
+class LabTest(BaseModel):
+    """A single lab biomarker with both conventional + FM-optimal ranges.
+    Reusable across many LabPanels. Surfaced in the client UI when
+    interpreting uploaded lab values — coach can show 'TSH 4.2 — within
+    lab's 0.4–4.5 normal but FM-optimal is 1.0–2.0' side-by-side.
+    """
+    model_config = ConfigDict(extra="forbid")
+
+    slug: str
+    display_name: str                                            # short — "TSH"
+    full_name: str                                               # full — "Thyroid Stimulating Hormone"
+    aliases: list[str] = Field(default_factory=list)             # alt names + abbreviations
+    units: str                                                   # "mIU/L", "ng/mL", "%"
+    sample_type: str = ""                                        # "blood", "urine", "saliva", "stool"
+    # Conventional reference range (lab's printed range)
+    conventional_low: Optional[float] = None
+    conventional_high: Optional[float] = None
+    # FM-optimal range (functional medicine target)
+    fm_optimal_low: Optional[float] = None
+    fm_optimal_high: Optional[float] = None
+    # When values fall outside optimal but within conventional, FM still flags
+    interpretation_low: str = ""                                 # what low values mean clinically
+    interpretation_high: str = ""                                # what high values mean clinically
+    when_to_order: str = ""                                      # FM indications
+    fasting_required: bool = False
+    typical_cost_inr: Optional[int] = None                       # rough cost for India context
+    linked_to_topics: list[str] = Field(default_factory=list)
+    linked_to_mechanisms: list[str] = Field(default_factory=list)
+    sources: list[SourceCitation] = Field(default_factory=list)
+    evidence_tier: EvidenceTier
+    notes_for_coach: str = ""
+    version: int = 1
+    status: EntityStatus = EntityStatus.active
+    updated_at: date
+    updated_by: str
+
+    @field_validator("slug")
+    @classmethod
+    def _slug_format(cls, v: str) -> str:
+        if not v or not all(c.isalnum() or c == "-" for c in v) or not v.islower():
+            raise ValueError(f"slug must be lowercase ascii alphanumeric with hyphens, got {v!r}")
+        if v.startswith("-") or v.endswith("-") or "--" in v:
+            raise ValueError(f"slug has malformed hyphens: {v!r}")
+        return v
+
+
+class LabPanel(BaseModel):
+    """A pre-curated FM lab panel — collection of LabTests for a clinical
+    scenario (Hashimoto workup, perimenopause workup, general FM baseline,
+    etc.). Coach picks one in /assess or client intake to scaffold lab
+    orders without manually picking each test.
+
+    A `general_wellness` panel is the baseline FM 'first appointment'
+    workup for clients with vague goals (weight loss, energy, prevention)
+    and no specific complaint — gives the coach a comprehensive
+    starting picture.
+    """
+    model_config = ConfigDict(extra="forbid")
+
+    slug: str
+    display_name: str
+    category: LabPanelCategory
+    summary: str                                                 # 1-3 sentences — what this panel reveals
+    indications: list[str] = Field(default_factory=list)         # when to order
+    tests: list[str] = Field(default_factory=list)               # LabTest slugs (core panel)
+    optional_tests: list[str] = Field(default_factory=list)      # LabTest slugs (add-on / context-dependent)
+    fasting_required: bool = False
+    estimated_cost_inr: Optional[int] = None                     # rough panel cost in INR
+    typical_turnaround_days: Optional[int] = None
+    linked_to_topics: list[str] = Field(default_factory=list)
+    linked_to_mechanisms: list[str] = Field(default_factory=list)
+    notes_for_coach: str = ""
+    sources: list[SourceCitation] = Field(default_factory=list)
+    evidence_tier: EvidenceTier
+    version: int = 1
+    status: EntityStatus = EntityStatus.active
+    updated_at: date
+    updated_by: str
+
+    @field_validator("slug")
+    @classmethod
+    def _slug_format(cls, v: str) -> str:
+        if not v or not all(c.isalnum() or c == "-" for c in v) or not v.islower():
+            raise ValueError(f"slug must be lowercase ascii alphanumeric with hyphens, got {v!r}")
+        if v.startswith("-") or v.endswith("-") or "--" in v:
+            raise ValueError(f"slug has malformed hyphens: {v!r}")
+        return v
+
+
 class Symptom(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
@@ -541,6 +632,13 @@ class Supplement(BaseModel):
     take_with_food: TakeWithFood = TakeWithFood.optional
     contraindications: Contraindications = Field(default_factory=Contraindications)
     interactions: Interactions = Field(default_factory=Interactions)
+    # Pregnancy / lactation safety overlay — drives auto-flag in the plan
+    # editor + client overview when the client's PregnancyStatus indicates
+    # any contraindication / caution. Default `unknown` is conservative —
+    # coach treats unknown supplements as caution until catalogue is updated.
+    pregnancy_safety: SafetyStatus = SafetyStatus.unknown
+    lactation_safety: SafetyStatus = SafetyStatus.unknown
+    pregnancy_safety_note: str = ""                              # 1-2 sentence rationale
     linked_to_topics: list[str] = Field(default_factory=list)
     linked_to_mechanisms: list[str] = Field(default_factory=list)
     linked_to_claims: list[str] = Field(default_factory=list)

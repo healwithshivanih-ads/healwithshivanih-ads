@@ -1,0 +1,29 @@
+slug: hba1c
+display_name: HbA1c
+full_name: Glycated Hemoglobin
+aliases: []
+units: '%'
+sample_type: blood
+conventional_low: 4.0
+conventional_high: 5.6
+fm_optimal_low: 4.6
+fm_optimal_high: 5.4
+interpretation_low: Anemia / iron deficiency falsely lowers — interpret with caution
+interpretation_high: Prediabetes (5.7-6.4) or diabetes (≥6.5); FM flags > 5.4
+when_to_order: All metabolic workups; annually for prevention
+fasting_required: false
+typical_cost_inr: 350
+linked_to_topics:
+- blood-sugar-dysfunction
+- prediabetes
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Glycated Hemoglobin
+evidence_tier: strong
+notes_for_coach: 3-month average glucose. FM optimal 4.6-5.4. Conventional 'normal'
+  goes to 5.6 = FM prediabetes.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

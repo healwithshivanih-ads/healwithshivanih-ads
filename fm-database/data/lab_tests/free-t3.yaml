@@ -1,0 +1,28 @@
+slug: free-t3
+display_name: Free T3
+full_name: Free Triiodothyronine
+aliases: []
+units: pg/mL
+sample_type: blood
+conventional_low: 2.0
+conventional_high: 4.4
+fm_optimal_low: 3.0
+fm_optimal_high: 4.0
+interpretation_low: Conversion failure (T4 → T3) — selenium / iron / cortisol issue
+interpretation_high: Hyperthyroid; T3 supplementation
+when_to_order: When TSH normal but client still has hypothyroid symptoms
+fasting_required: true
+typical_cost_inr: 400
+linked_to_topics:
+- thyroid
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Free Triiodothyronine
+evidence_tier: strong
+notes_for_coach: T3 is the active hormone. Suboptimal T3 with normal T4 = conversion
+  problem (selenium, ferritin, cortisol).
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani
