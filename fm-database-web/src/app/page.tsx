@@ -5,6 +5,8 @@ import { parseSessionType, parseRequestedLabs } from "@/lib/fmdb/session-utils";
 import { getCatalogueStatus } from "./catalogue-commit-action";
 import { CatalogueCommitButton } from "./catalogue-commit-button";
 import { BroadcastPanel } from "./broadcast-panel";
+import { CoachingNudgesPanel } from "./coaching-nudges-panel";
+import { computeCoachingQueueAction } from "./coaching/actions";
 
 export const dynamic = "force-dynamic";
 
@@ -278,6 +280,9 @@ export default async function Dashboard() {
     ...(sections.get("protocol_complete") ?? []).map((r) => r.client.client_id),
   ];
 
+  // Coaching nudges queue (next 7 days)
+  const coachingQueue = await computeCoachingQueueAction(7);
+
   // Upcoming follow-ups (next 7 days, not yet due)
   const in7 = new Date(todayStr);
   in7.setDate(in7.getDate() + 7);
@@ -518,6 +523,9 @@ export default async function Dashboard() {
           </Link>
         </div>
       )}
+
+      {/* Coaching nudges — coach-approved weekly WhatsApp messages from sequences */}
+      <CoachingNudgesPanel initialQueue={coachingQueue} aisensyConfigured={aisensyApiKeySet} />
 
       {/* Broadcast panel — WhatsApp outbound to groups of clients */}
       {aisensyApiKeySet && (

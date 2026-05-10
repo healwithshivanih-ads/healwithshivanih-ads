@@ -37,6 +37,7 @@ import { MessageCapturePanel } from "./message-capture-panel";
 import { ProtocolCheckinPanel } from "./protocol-checkin-panel";
 import { PreSessionBrief } from "./pre-session-brief";
 import { MessageTemplatesPanel } from "./message-templates-panel";
+import { CoachingConfigEditor } from "./coaching-config-editor";
 import { FollowUpDraftPanel } from "./follow-up-draft-panel";
 import { ProtocolAdherenceChart } from "./protocol-adherence-chart";
 import { DiscoveryForm } from "./discovery-form";
@@ -729,6 +730,16 @@ export function ClientPageTabs({
 
           {/* 🧪 Functional test PDFs — DUTCH / GI-MAP / OAT */}
           <FunctionalTestPanel clientId={clientId} />
+
+          {/* Coaching nudges config — weekly WhatsApp coaching messages */}
+          <CoachingConfigEditor
+            clientId={clientId}
+            initial={{
+              coaching_cadence: (client as Record<string, unknown>).coaching_cadence as ("weekly" | "biweekly" | "off" | undefined),
+              coaching_sequence_slug: (client as Record<string, unknown>).coaching_sequence_slug as string | undefined,
+              coaching_started_at: (client as Record<string, unknown>).coaching_started_at as string | undefined,
+            }}
+          />
 
           {/* Message templates — WhatsApp pre-written templates */}
           <MessageTemplatesPanel
