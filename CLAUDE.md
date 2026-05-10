@@ -836,7 +836,7 @@ Open follow-ups: seed `calcium` supplement (last warning); enrich `vitamin-a` an
 6. **Supplement** — abstract compound (279 entries)
 7. **CookingAdjustment** — cookware/oil/water/food-prep swaps (3 entries)
 8. **HomeRemedy** — churans, infused waters, kashayams, kitchen remedies (3 entries)
-9. **MindMap** — hand-curated clinical mind maps (11 entries: 3 vitaone-scraped + 8 new curated; 1,612 nodes, 355 linked)
+9. **MindMap** — hand-curated clinical mind maps (17 entries: 3 vitaone-scraped + 14 new curated; ~5,800 nodes)
 
 **Deferred (not yet modeled):**
 - Food, LabTest, LifestylePractice, DietaryPattern, Practice (currently freeform strings on Plan), Recipe, Protocol, EducationalModule, MiscIntervention. Promote to entities only after observing duplication in real plans.
@@ -1454,7 +1454,7 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 - ✅ Health trends section on Client detail page: SVG sparklines per metric + timeline tab
 - ✅ Typed inner `suggestions` payload: 11 Pydantic sub-models, TypeScript interfaces, typed `SuggestionsView`
 - ✅ Improved backlog mining heuristic: 60-entry `_GUESS_RULES`, `suggestTarget` 3-tier matching, 4-level `computeSuggestion` cascade
-- ✅ 11 curated mindmaps (3 VitaOne-scraped + 8 new), 1,612 nodes, 355 linked. MindMapContextPanel in Assess.
+- ✅ 17 curated mindmaps (3 VitaOne-scraped + 14 new): adrenal-stress, autoimmune, blood-sugar-insulin-resistance, bone-health, cardiovascular-lipid, chronic-inflammation, emotional-wellbeing, gut-health, liver-detoxification, mitochondrial-energy, pcos, sex-hormones-perimenopause, sleep-circadian, thyroid-dysfunction. MindMapContextPanel in Assess. Validator + model now allow `lab_test` and `lab_panel` as `linked_kind` (v0.63+).
 - ✅ **💌 12-week client letter generator** — `ClientLetterButton` on client detail page. Weight loss questionnaire (goal kg/weeks, activity, pace, exercise detail). `_calc_calorie_targets()` computes TDEE + phase targets. `render-client-letter.py` generates warm 12-week healing journey letter with two 7-day meal plan tables for weeks 1-2. Supplement section injected by Python post-generation. Saves to disk. Refinement chat (multi-turn). Download branded HTML / Markdown.
 - ✅ **🗓 Per-week print buttons** — `brand_html.py` wraps AI-generated markdown in `<div id="print-week-N" class="week-section">` divs. Per-week print bar shows "🖨 Print Week N". JS sets `body[data-print-week="N"]`, CSS isolates that week, `window.print()`. No server round-trip. Works in browser.
 - ✅ **💊 Python-generated supplement schedule** — visual bubble timeline + table. 7 timing slots. `_build_supplement_schedule_html()`. "🖨 Print Schedule" button isolates `#supplement-schedule`. Buy links hidden on print.
@@ -1489,7 +1489,7 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 ### 🔴 Setup (one-time, coach does these)
 1. ✅ **Email configured** (2026-05-10) — `GMAIL_USER` + `GMAIL_APP_PASSWORD` in `.env.local`. App Password from https://myaccount.google.com/apppasswords.
 2. ✅ **AiSensy outbound configured** (2026-05-10) — `AISENSY_API_KEY` in `.env.local`. 4 of 5 templates approved: `fm_lab_reminder`, `fm_session_confirm`, `fm_supplement_instructions`, `fm_encouragement`. `fm_checkin_nudge` still pending AiSensy review. **Webhook skipped** (paid plan only) — Message Capture Panel handles inbound via manual paste.
-3. **Triage 444 open backlog items** via `/backlog` — suggestion chips make it fast. Coach work, no code.
+3. ✅ **Backlog cleared** (2026-05-10) — `data/_backlog.yaml` is empty/missing on the laptop; nothing left to triage. New items will accumulate as the AI mines new sessions / mindmaps.
 
 ### 🟡 Client management (next few sessions)
 4. ✅ **Five Pillars capture at each session** — done in v0.57 (check-in) + v0.58 (full session). Compact 5-column widget, saved to session YAML, feeds OutcomeProgressCard.
@@ -1518,7 +1518,7 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 
 ### 🟢 Content & catalogue
 21. **More curated mindmaps** — Cardiovascular, PCOS, Autoimmune, Sleep/Circadian, Energy/Mitochondrial, Bone Health. Use 6-branch template (Clinical Presentation / Root Mechanisms / FM Approach / Interventions / Coaching Goals / Labs to Track).
-22. **Backlog triage** — 444 open items remain. `/backlog` UI with suggestion chips. Coach work.
+22. ✅ **Backlog triage** — done as of 2026-05-10 (file empty). New items will appear as catalogue grows.
 23. **Promote freeform → catalogue entities** — Practice, TrackingHabit, Food, LabTest, Recipe, EducationalModule. Watch for duplication in real plans first.
 
 ### 🟢 Infrastructure / polish
