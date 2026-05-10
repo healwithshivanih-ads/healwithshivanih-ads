@@ -1517,7 +1517,9 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 20. ✅ **Protocol diff view** — done in v0.61. Colored diff (green +, red -, purple @@) in Lifecycle tab. Auto-selects `supersedes` as Plan A.
 
 ### 🟢 Content & catalogue
-21. **More curated mindmaps** — Cardiovascular, PCOS, Autoimmune, Sleep/Circadian, Energy/Mitochondrial, Bone Health. Use 6-branch template (Clinical Presentation / Root Mechanisms / FM Approach / Interventions / Coaching Goals / Labs to Track).
+21. ✅ **More curated mindmaps** — done 2026-05-10. PCOS, Sleep/Circadian, Cardiovascular-Lipid, Autoimmune, Bone Health, Mitochondrial-Energy added.
+21a. **Expand lab_tests catalogue** — currently 25 entries; the new mindmaps surfaced ~30 missing common-FM labs as backlog: ApoB, Lp(a), oxidized LDL, fibrinogen, Lp-PLA2, MPO, LH/FSH ratio, free testosterone, total testosterone, SHBG, AMH, prolactin, 17-OH progesterone, salivary cortisol curve, DUTCH metabolites (oestrone/oestriol/2-OH/4-OH/16-OH/cortisol/cortisone), organic acids (OAT) markers, CoQ10 status, carnitine profile, lactate, ESR, PTH, CTX, P1NP, alkaline phosphatase, urinary calcium, mycotoxin urine, EBV/viral panel, heavy metals panel, food sensitivity IgG, GI-MAP. Each gets a YAML in `data/lab_tests/` with `conventional_low/high` + `fm_optimal_low/high` ranges + India typical_cost_inr.
+21b. **Add missing FM mechanisms** — `hla-genetics-immune-tolerance`, `ebv-reactivation`, `sympathetic-overdrive`, `late-light-melatonin-suppression`, `cortisol-awakening-response`, `post-viral-fatigue`, `pacing-energy-envelope`. All referenced in the new mindmaps as free-text but should be canonicalised.
 22. ✅ **Backlog triage** — done as of 2026-05-10 (file empty). New items will appear as catalogue grows.
 23. **Promote freeform → catalogue entities** — Practice, TrackingHabit, Food, LabTest, Recipe, EducationalModule. Watch for duplication in real plans first.
 
