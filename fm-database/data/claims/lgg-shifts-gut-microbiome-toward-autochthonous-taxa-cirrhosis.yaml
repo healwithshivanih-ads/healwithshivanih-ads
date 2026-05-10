@@ -1,0 +1,38 @@
+slug: lgg-shifts-gut-microbiome-toward-autochthonous-taxa-cirrhosis
+statement: In cirrhotic patients with minimal hepatic encephalopathy, 8 weeks of
+  Lactobacillus rhamnosus GG significantly reduced gut dysbiosis, increasing autochthonous
+  beneficial taxa (Clostridiales Incertae Sedis XIV) and reducing pathobionts, with
+  corresponding shifts in bile acid and amino acid metabolomics consistent with
+  reduced ammoniagenesis.
+evidence_tier: plausible_emerging
+rationale: Microbiome and metabolome changes were corrected for false-discovery rate
+  and corroborated across serum and urine metabolomes via independent PCA and OPLS
+  analyses. Mechanistic finding rather than a clinical-outcome finding.
+coaching_translation: The probiotic shifted the gut bacteria toward more "good"
+  resident species and away from species linked to worse disease, and changed how
+  the gut handled amino acids and bile acids in directions that should reduce
+  ammonia load.
+caveats:
+  - Single-strain study (LGG only); not generalisable to multi-strain commercial
+    probiotics.
+  - Mechanistic endpoints; clinical translation requires larger Phase II/III trials.
+  - Diet was tightly controlled (1.2 g/kg protein, 35 kcal/kg, no probiotic foods);
+    free-living results may differ.
+linked_to_topics:
+  - liver-detoxification
+linked_to_mechanisms:
+  - dysbiosis-gut-microbiome-imbalance
+linked_to_supplements:
+  - lactobacillus-rhamnosus-gg
+out_of_scope_notes: ''
+sources:
+  - id: pmc-bajaj-2014-lgg-cirrhosis
+    location: Results — Microbiome and Metabolomics; Discussion
+    quote: 'There was a significant reduction in dysbiosis suggested by the reduction
+      in relative abundance ... and a relative increase in beneficial autochthonous
+      taxa ... and Clostridiales Incertae Sedis XIV ... only in the LGG-randomized
+      group.'
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

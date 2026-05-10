@@ -1,0 +1,47 @@
+slug: seed-cycling-with-myo-inositol-pcos-fertility-case
+statement: A 2025 case report describes a 29-year-old woman with PCOS and 2 years
+  of primary infertility who, after 6 months of myo-inositol (2000 mg BID) + folic
+  acid + metformin (250 mg) + seed cycling, achieved reduction in BMI from 29 to
+  24 kg/m², LH from 15 to 8.5 mIU/mL, LH:FSH ratio from 2.3 to 1.8, total
+  testosterone from 80 to 50 ng/dL, and conceived via ICSI with a confirmed
+  clinical pregnancy.
+evidence_tier: fm_specific_thin
+rationale: N=1 case report; cannot disaggregate the contribution of seed cycling
+  from concurrent myo-inositol, metformin, and ICSI. Useful as illustrative
+  hypothesis-generating evidence, not as a basis for clinical recommendation.
+coaching_translation: A published case report follows a 29-year-old with PCOS
+  who'd been trying to conceive for 2 years. Over 6 months on myo-inositol +
+  metformin + seed cycling, her weight, hormones, and cycle all moved in the
+  right direction, and she went on to a successful ICSI pregnancy. It's one
+  story — not proof — but the direction of every measured marker is consistent
+  with the larger trial evidence.
+caveats:
+  - Single-patient case; multiple co-interventions (myo-inositol, metformin,
+    folic acid, lifestyle, ICSI).
+  - Cannot attribute hormone or BMI changes to seed cycling specifically.
+  - Pregnancy was achieved via ICSI, not natural conception.
+linked_to_topics:
+  - pcos
+  - pcos-fertility
+linked_to_mechanisms: []
+linked_to_supplements:
+  - myo-inositol
+  - flax-seed
+  - pumpkin-seed
+  - sesame-seed
+  - sunflower-seed
+out_of_scope_notes: 'Fertility treatment including ICSI is delivered by reproductive
+  endocrinologists; coaching role is lifestyle and dietary support alongside the
+  clinical team, not orchestration of fertility care.'
+sources:
+  - id: pmc-dhamija-2025-seed-cycling-pcos-case
+    location: Patient details; Treatment; Follow-up
+    quote: 'After 6 months, the patient experienced notable improvements such as
+      regular menstrual cycles, a reduction in body mass index ranges from 29 to
+      24 kg/m², normalized hormone levels ... The couple moved forward with
+      intracytoplasmic sperm injection, which led to ... a confirmed clinical
+      pregnancy outcome.'
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

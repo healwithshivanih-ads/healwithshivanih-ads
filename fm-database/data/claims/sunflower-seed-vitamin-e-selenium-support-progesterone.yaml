@@ -1,0 +1,36 @@
+slug: sunflower-seed-vitamin-e-selenium-support-progesterone
+statement: Sunflower seeds provide vitamin E (alpha-tocopherol) and selenium that
+  may support corpus luteum function and progesterone synthesis and reduce oxidative
+  stress on ovarian and thyroid tissue, providing a mechanistic rationale for their
+  use in the luteal phase of seed cycling.
+evidence_tier: plausible_emerging
+rationale: Mechanistic claim grounded in vitamin E pharmacology (corpus luteum
+  protection, progesterone biosynthesis support) and selenium pharmacology (thyroid
+  conversion, glutathione peroxidase). Clinical-outcome evidence specific to
+  sunflower-seed dosing in women with PCOS or PMS is limited.
+coaching_translation: In the second half of the cycle (days 15–28), sunflower
+  seeds offer vitamin E and selenium — vitamin E supports the corpus luteum
+  (the structure that makes progesterone after ovulation), and selenium protects
+  the ovary and thyroid from oxidative wear and tear.
+caveats:
+  - Mechanistic, not direct clinical-outcome evidence for sunflower-seed dosing.
+  - Excess selenium intake (>400 μg/day) is harmful — keep portions modest.
+linked_to_topics:
+  - pcos
+  - pcos-fertility
+  - hormonal-nutrition-foundations
+linked_to_mechanisms: []
+linked_to_supplements:
+  - sunflower-seed
+out_of_scope_notes: ''
+sources:
+  - id: pmc-thakur-2025-seed-cycling-systematic-review
+    location: Discussion — Vitamin E, selenium, and progesterone
+    quote: 'sunflower seeds are rich in vitamin E and selenium, two nutrients that
+      support progesterone and have an antioxidant effect ... Vitamin E has been
+      associated with increased progesterone production, and selenium protects
+      against oxidative stress and supports thyroid function.'
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

@@ -1,0 +1,43 @@
+slug: lgg-reduces-endotoxemia-and-tnf-alpha-in-cirrhosis-mhe
+statement: In a Phase I randomized double-blind placebo-controlled trial of 30 cirrhotic
+  patients with minimal hepatic encephalopathy, 8 weeks of Lactobacillus rhamnosus
+  GG (LGG) under an FDA Investigational New Drug protocol significantly reduced serum
+  endotoxin and TNF-α compared to placebo, with no change in cognitive scores.
+evidence_tier: plausible_emerging
+rationale: Small (N=30) but methodologically rigorous IND-quality RCT with strict
+  diet control, batch-verified probiotic dose (>50 billion CFU/g), and stool-based
+  confirmation of LGG colonisation in 71% of treated patients. Effect sizes on endotoxin
+  and TNF-α were significant but the trial was underpowered for clinical cognition
+  endpoints.
+coaching_translation: A well-designed small trial showed that a specific probiotic
+  strain — Lactobacillus rhamnosus GG — lowers gut-leak markers (endotoxin) and
+  inflammation (TNF-α) in people with advanced liver disease. It didn't improve
+  thinking on tests, but the gut-barrier and inflammation findings are consistent
+  with what we'd expect from a strain that supports the gut lining.
+caveats:
+  - Phase I safety/mechanism trial — not powered for clinical outcomes.
+  - Population was cirrhotic with minimal hepatic encephalopathy; do not extrapolate
+    dose or effect size to healthy adults without clinician input.
+  - Self-limited diarrhoea was more common in the LGG arm than placebo.
+  - Excluded patients on antibiotics, with central venous catheters, or with acute
+    pancreatitis — these remain contraindications.
+linked_to_topics:
+  - liver-detoxification
+linked_to_mechanisms:
+  - endotoxemia
+  - dysbiosis-gut-microbiome-imbalance
+linked_to_supplements:
+  - lactobacillus-rhamnosus-gg
+out_of_scope_notes: 'Cirrhosis and hepatic encephalopathy are clinical diagnoses
+  managed by hepatologists; coaching role is education and lifestyle support, not
+  prescription of probiotics for liver disease.'
+sources:
+  - id: pmc-bajaj-2014-lgg-cirrhosis
+    location: Results — Safety and tolerability; Detection of LGG from stool DNA
+    quote: 'The only other notable change was a significant decrease in serum endotoxin
+      and TNF-α only in the LGG group, not placebo. No change in other inflammatory
+      cytokines was observed.'
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

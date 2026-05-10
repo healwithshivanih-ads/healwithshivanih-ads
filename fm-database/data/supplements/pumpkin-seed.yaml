@@ -1,0 +1,54 @@
+slug: pumpkin-seed
+display_name: Pumpkin Seeds (Cucurbita pepo)
+category: other
+forms_available:
+- whole_food
+- powder
+typical_dose_range:
+  whole_food:
+    min: 1
+    max: 2
+    unit: tablespoons
+  powder:
+    min: 10
+    max: 30
+    unit: g
+timing_options:
+- with_breakfast
+- mid_morning
+- mid_afternoon
+take_with_food: optional
+contraindications:
+  conditions: []
+  medications: []
+  life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications: []
+linked_to_topics:
+- pcos
+- pcos-fertility
+- hormonal-nutrition-foundations
+linked_to_mechanisms: []
+linked_to_claims:
+- pumpkin-seed-zinc-supports-fsh-lh-ovulation
+notes_for_coach: "Rich in zinc (cofactor for FSH/LH synthesis), magnesium, beta-sitosterol\n\
+  (anti-androgenic), and omega-6/omega-3 essential fatty acids. Used in\nthe follicular\
+  \ phase of seed cycling (days 1\u201314) alongside flaxseed.\nBest ground fresh\
+  \ \u2014 store in fridge to prevent rancidity of unsaturated fats.\n"
+notes_for_client: "1 tablespoon of ground pumpkin seeds daily during days 1\u2013\
+  14 of your cycle\n(counting day 1 as the first day of bleeding). Can be sprinkled\
+  \ on\nbreakfast, salads, or curd.\n"
+sources:
+- id: pmc-rasheed-2023-seed-cycling-pcos
+  location: Introduction & Discussion
+- id: pmc-thakur-2025-seed-cycling-systematic-review
+  location: "Discussion \u2014 Zinc and gonadotropin synthesis"
+- id: pmc-dhamija-2025-seed-cycling-pcos-case
+  location: Seed cycling intervention
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

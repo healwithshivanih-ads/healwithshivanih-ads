@@ -1,0 +1,53 @@
+slug: sunflower-seed
+display_name: Sunflower Seeds (Helianthus annuus)
+category: other
+forms_available:
+- whole_food
+- powder
+typical_dose_range:
+  whole_food:
+    min: 1
+    max: 2
+    unit: tablespoons
+  powder:
+    min: 10
+    max: 30
+    unit: g
+timing_options:
+- with_breakfast
+- mid_morning
+- mid_afternoon
+take_with_food: optional
+contraindications:
+  conditions: []
+  medications: []
+  life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications: []
+linked_to_topics:
+- pcos
+- pcos-fertility
+- hormonal-nutrition-foundations
+linked_to_mechanisms: []
+linked_to_claims:
+- sunflower-seed-vitamin-e-selenium-support-progesterone
+notes_for_coach: "Source of vitamin E (alpha-tocopherol), selenium, and linoleic acid.\n\
+  Vitamin E supports corpus luteum function and progesterone synthesis;\nselenium\
+  \ supports thyroid conversion and antioxidant defence. Used in\nthe luteal phase\
+  \ of seed cycling (days 15\u201328) alongside sesame seeds.\n"
+notes_for_client: "1 tablespoon of ground sunflower seeds daily during days 15\u2013\
+  28 of your\ncycle. Sprinkle on salads, breakfast bowls, or stir into chutneys.\n"
+sources:
+- id: pmc-rasheed-2023-seed-cycling-pcos
+  location: Introduction
+- id: pmc-thakur-2025-seed-cycling-systematic-review
+  location: "Discussion \u2014 Vitamin E, selenium, and progesterone"
+- id: pmc-dhamija-2025-seed-cycling-pcos-case
+  location: Seed cycling intervention
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

@@ -1,0 +1,38 @@
+slug: sesame-seed-lignans-support-luteal-phase-estrogen-progesterone-balance
+statement: Sesame seed lignans (sesamin, sesamolin) act as selective estrogen receptor
+  modulators (SERMs) and, via gut-microbial conversion to enterolignans, may modulate
+  estrogen-progesterone balance in the luteal phase; small clinical studies report
+  reduced dysmenorrhoea and improved menstrual regularity.
+evidence_tier: plausible_emerging
+rationale: Mechanism is supported by in-vitro and pharmacology literature on
+  enterolignan binding to ERα/ERβ. Clinical evidence in women is limited to small
+  studies (e.g. Yavari et al. 2016 reporting 50% on-time menstruation, p=0.016)
+  synthesised in the 2025 systematic review.
+coaching_translation: Sesame seeds carry plant compounds (lignans) that gut
+  bacteria convert into enterolignans — molecules that gently fit estrogen
+  receptors and may help even out the estrogen–progesterone seesaw in the second
+  half of the cycle. Small studies show fewer painful periods and more regular
+  cycles with sesame.
+caveats:
+  - Most clinical evidence is small, single-centre, and short-duration.
+  - Effect depends on gut microbiota that convert lignans to enterolignans.
+  - Sesame allergy is a meaningful contraindication.
+linked_to_topics:
+  - pcos
+  - pcos-fertility
+  - hormonal-nutrition-foundations
+linked_to_mechanisms:
+  - estrogen-enterohepatic-recirculation
+linked_to_supplements:
+  - sesame-seed
+out_of_scope_notes: ''
+sources:
+  - id: pmc-thakur-2025-seed-cycling-systematic-review
+    location: Discussion — Phytoestrogens and luteal-phase support
+    quote: 'sesame seeds offer lignans and phytoestrogens to balance the level of
+      estrogen ... Recent mechanistic studies demonstrate that lignans act as
+      selective estrogen receptor modulators (SERMs).'
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

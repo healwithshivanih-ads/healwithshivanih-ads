@@ -1,0 +1,43 @@
+slug: flaxseed-30g-daily-improves-insulin-sensitivity-and-testosterone-pcos
+statement: In a 12-week randomised open-label controlled trial of 41 women with
+  PCOS (Haidari et al. 2020), 30 g/day of ground flaxseed significantly improved
+  insulin sensitivity, total testosterone, and hirsutism scores, reduced BMI, waist
+  circumference, HOMA-IR, triglycerides, and leptin, and increased HDL-C and
+  adiponectin compared to controls.
+evidence_tier: plausible_emerging
+rationale: The 12-week RCT cited within the 2025 systematic review reports
+  consistent metabolic and hormonal improvements at a defined dose (30 g/day ground
+  flaxseed). Multiple effect domains (anthropometric, metabolic, androgen) move in
+  the same direction, strengthening the claim. Open-label design is the main
+  limitation.
+coaching_translation: A 12-week study in women with PCOS found that 30 g a day of
+  ground flaxseed (about two heaped tablespoons) lowered weight, waist size,
+  insulin resistance, triglycerides, and testosterone, and lifted HDL ("good"
+  cholesterol). Hirsutism scores improved too.
+caveats:
+  - Open-label, not double-blind.
+  - 30 g/day is a meaningful fibre load — ramp slowly and pair with adequate water.
+  - Flaxseed is a whole food but contains lignans active on estrogen receptors;
+    avoid in first trimester of pregnancy and discuss with clinician if on
+    tamoxifen or aromatase inhibitors.
+linked_to_topics:
+  - pcos
+  - pcos-fertility
+  - hormonal-nutrition-foundations
+linked_to_mechanisms:
+  - compensatory-hyperinsulinemia
+linked_to_supplements:
+  - flax-seed
+  - flaxseed-ground
+  - ground-flaxseed
+out_of_scope_notes: ''
+sources:
+  - id: pmc-thakur-2025-seed-cycling-systematic-review
+    location: Results — Metabolic and Anthropometric Improvements; Discussion
+    quote: 'Haidari et al. (2020) found flaxseed reduced BMI (p = 0.001), waist
+      circumference, insulin, HOMA-IR, triglycerides, and leptin, while increasing
+      HDL-C (p < 0.001) and adiponectin.'
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

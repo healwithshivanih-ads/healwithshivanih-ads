@@ -1,0 +1,39 @@
+slug: pumpkin-seed-zinc-supports-fsh-lh-ovulation
+statement: Pumpkin seeds are a concentrated whole-food source of zinc, which is a
+  cofactor for hypothalamic-pituitary-gonadal axis function and gonadotropin (FSH,
+  LH) synthesis, and contain beta-sitosterol that may modulate excess androgens
+  relevant to PCOS.
+evidence_tier: plausible_emerging
+rationale: Mechanistic reasoning supported by the 2025 systematic review's
+  discussion section, which synthesises mechanistic literature. Direct human-trial
+  evidence in PCOS is limited and confounded by other dietary co-factors.
+coaching_translation: Pumpkin seeds are a tasty whole-food source of zinc and
+  beta-sitosterol. Zinc helps the brain–pituitary–ovary axis make the hormones
+  (FSH and LH) that drive ovulation, and beta-sitosterol may help dial down excess
+  androgens — both useful in PCOS.
+caveats:
+  - Mechanistic claim; isolated nutrient studies don't capture whole-seed effects.
+  - Most PCOS trials test seed cycling combinations rather than pumpkin alone.
+  - Don't replace clinically-indicated zinc supplementation in deficiency states
+    with seeds alone.
+linked_to_topics:
+  - pcos
+  - pcos-fertility
+  - hormonal-nutrition-foundations
+linked_to_mechanisms: []
+linked_to_supplements:
+  - pumpkin-seed
+out_of_scope_notes: ''
+sources:
+  - id: pmc-thakur-2025-seed-cycling-systematic-review
+    location: Discussion — Zinc and gonadotropin synthesis
+    quote: 'Zinc, abundant in pumpkin seeds, is a crucial cofactor for numerous
+      enzymes and transcription factors involved in the synthesis of reproductive
+      hormones. It plays a role in the pituitary release of gonadotropins (FSH and
+      LH), which are essential for follicular maturation and ovulation.'
+  - id: pmc-rasheed-2023-seed-cycling-pcos
+    location: Introduction
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

@@ -1,0 +1,56 @@
+slug: sesame-seed
+display_name: Sesame Seeds (Sesamum indicum)
+category: other
+forms_available:
+- whole_food
+- powder
+typical_dose_range:
+  whole_food:
+    min: 1
+    max: 2
+    unit: tablespoons
+  powder:
+    min: 10
+    max: 30
+    unit: g
+timing_options:
+- with_breakfast
+- mid_morning
+- mid_afternoon
+take_with_food: optional
+contraindications:
+  conditions:
+  - sesame_allergy
+  medications: []
+  life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications: []
+linked_to_topics:
+- pcos
+- pcos-fertility
+- hormonal-nutrition-foundations
+linked_to_mechanisms:
+- estrogen-enterohepatic-recirculation
+linked_to_claims:
+- sesame-seed-lignans-support-luteal-phase-estrogen-progesterone-balance
+notes_for_coach: "Source of lignans (sesamin, sesamolin) and phytoestrogens that may\
+  \ act\nas selective estrogen receptor modulators (SERMs), plus zinc and copper.\n\
+  Used in the luteal phase of seed cycling (days 15\u201328) alongside sunflower\n\
+  seeds. Lightly toast and grind for best absorption.\n"
+notes_for_client: "1 tablespoon of ground sesame seeds daily during days 15\u2013\
+  28 of your cycle.\nCan be added to chutneys, sprinkled on rotis, or stirred into\
+  \ curd.\n"
+sources:
+- id: pmc-rasheed-2023-seed-cycling-pcos
+  location: Introduction & Discussion
+- id: pmc-thakur-2025-seed-cycling-systematic-review
+  location: "Discussion \u2014 Phytoestrogens and luteal-phase support"
+- id: pmc-dhamija-2025-seed-cycling-pcos-case
+  location: Seed cycling intervention
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

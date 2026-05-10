@@ -1,0 +1,41 @@
+slug: seed-cycling-improves-fsh-lh-ratio-pcos
+statement: In a 12-week three-arm trial of 90 women with PCOS (aged 15–40), a portion-controlled
+  diet plus seed cycling (30 g flax+pumpkin in days 1–14, 30 g sunflower+sesame in
+  days 15–28) reduced FSH by 1.2–2.5% and LH by 1.5–2% and produced changes broadly
+  comparable in direction to the metformin 500 mg/day arm.
+evidence_tier: fm_specific_thin
+rationale: Direct interventional data from a controlled trial. Limitations include
+  small per-arm sample (n=20 seed cycling), absence of placebo, single-centre design
+  in Pakistan, and short follow-up. Direction of effect is consistent with the
+  systematic review by Thakur et al. 2025.
+coaching_translation: A 12-week trial in women with PCOS found that adding seed
+  cycling to a portion-controlled diet nudged FSH and LH in helpful directions —
+  by a few percent — and was comparable in direction (not magnitude) to a 500 mg
+  daily metformin dose.
+caveats:
+  - Small sample size (n=20 per arm).
+  - Single-centre study; geographic and dietary context (Pakistan) may not generalise.
+  - Effect sizes are modest (1–2.5%); clinical significance for any individual woman
+    is uncertain.
+  - Not a head-to-head comparison versus metformin powered for non-inferiority.
+linked_to_topics:
+  - pcos
+  - pcos-fertility
+  - hormonal-nutrition-foundations
+linked_to_mechanisms: []
+linked_to_supplements:
+  - flax-seed
+  - pumpkin-seed
+  - sesame-seed
+  - sunflower-seed
+out_of_scope_notes: ''
+sources:
+  - id: pmc-rasheed-2023-seed-cycling-pcos
+    location: Abstract; Results
+    quote: 'Overall, a portion-controlled diet and seed cycling reduced FSH levels
+      by 1.2% to 2.5%. ... It was determined that the LH levels were reduced by
+      1.5%–2%.'
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

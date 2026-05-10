@@ -1,0 +1,44 @@
+slug: seed-cycling-systematic-review-pms-pcos-2025
+statement: A 2025 PRISMA-compliant systematic review of 10 studies (n=635, women
+  aged 15–49) on seed cycling and individual seeds in PMS and PCOS reported
+  improved menstrual regularity, reduced PMS symptom severity, favourable
+  modulation of FSH/LH/testosterone, and improvements in BMI, lipids, and insulin
+  resistance, with no adverse effects across studies.
+evidence_tier: plausible_emerging
+rationale: Systematic review with quality appraisal (QuADS tool); 6 high-quality
+  and 4 good-quality studies, geographic clustering in South Asia and Middle East.
+  The review explicitly cautions that small sample sizes, heterogeneous outcome
+  metrics, and short durations preclude meta-analysis or strong clinical
+  recommendation.
+coaching_translation: A 2025 review pulling together the best 10 studies on seed
+  cycling concluded it's a low-cost, safe, and likely helpful add-on for women
+  with PMS or PCOS — improving period regularity, hormone balance, and metabolic
+  markers like BMI and insulin resistance — but the evidence base is small and
+  needs bigger trials before we can call it a standalone treatment.
+caveats:
+  - Total pooled sample is small (n=635 across 10 studies).
+  - Most studies from South Asia and Middle East; generalisability limited.
+  - Heterogeneous outcomes; no meta-analysis was feasible.
+  - Adherence not objectively verified in any included study.
+linked_to_topics:
+  - pcos
+  - pcos-fertility
+  - hormonal-nutrition-foundations
+linked_to_mechanisms: []
+linked_to_supplements:
+  - flax-seed
+  - pumpkin-seed
+  - sesame-seed
+  - sunflower-seed
+out_of_scope_notes: ''
+sources:
+  - id: pmc-thakur-2025-seed-cycling-systematic-review
+    location: Abstract; Results
+    quote: 'Ten studies (n = 635) with low to medium risk of bias reported that
+      seed cycling, particularly flax and sesame seeds, was associated with
+      improved menstrual regularity, reduced PMS symptom severity, favorable
+      modulation of sex hormone levels, and improvements in metabolic profiles.'
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

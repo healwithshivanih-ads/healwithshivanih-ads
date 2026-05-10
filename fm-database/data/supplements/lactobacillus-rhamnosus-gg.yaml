@@ -1,0 +1,56 @@
+slug: lactobacillus-rhamnosus-gg
+display_name: Lactobacillus rhamnosus GG (LGG)
+category: probiotic
+forms_available:
+- capsule
+- powder
+typical_dose_range:
+  capsule:
+    min: 10
+    max: 50
+    unit: billion_CFU
+timing_options:
+- with_breakfast
+- bedtime
+take_with_food: optional
+contraindications:
+  conditions:
+  - severe_immunocompromise
+  - central_venous_catheter
+  - acute_pancreatitis
+  medications: []
+  life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: systemic_antibiotics
+    type: space_by_hours
+    reason: 'Take probiotic at least 2 hours apart from oral antibiotics to
+
+      avoid the antibiotic killing the probiotic strain.
+
+      '
+linked_to_topics:
+- liver-detoxification
+linked_to_mechanisms:
+- dysbiosis-gut-microbiome-imbalance
+- endotoxemia
+linked_to_claims:
+- lgg-reduces-endotoxemia-and-tnf-alpha-in-cirrhosis-mhe
+- lgg-shifts-gut-microbiome-toward-autochthonous-taxa-cirrhosis
+notes_for_coach: "Single, well-characterised probiotic strain (Lactobacillus rhamnosus\
+  \ GG,\nATCC 53103). One of the most-studied probiotics in human trials. Has\npili\
+  \ that allow attachment to intestinal mucosa; soluble factors (e.g.\np40 protein)\
+  \ support gut barrier and reduce TNF-\u03B1. Contraindicated in\nsevere immunocompromise,\
+  \ central venous catheters, or acute pancreatitis\nper Bajaj 2014 IND protocol exclusions.\
+  \ Self-limited diarrhoea is the\nmost common AE.\n"
+notes_for_client: ''
+sources:
+- id: pmc-bajaj-2014-lgg-cirrhosis
+  location: Methods & Results
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani
