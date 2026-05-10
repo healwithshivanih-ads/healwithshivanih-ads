@@ -9,12 +9,36 @@ Internal functional medicine catalogue used by coaches to author structured
 client plans. A future client-facing mobile app (Project 2) will consume
 published plans as JSON artifacts.
 
-**Active branch:** `claude/functional-medicine-database-hQxA8`
+**Active branch:** `claude/setup-fm-coach-laptop-7GFhK`
 **Licensing:** Proprietary (all rights reserved, internal-only)
 
 ## Status
 
-**v0.62 (current)** — Lab reference ranges + custom protocol templates + AiSensy broadcast + message templates + session brief quick note:
+**v0.63 (current)** — FM physician-tier upgrade: protocols, ATM triad, drug depletions, DUTCH/GI-MAP, titration schedules, lab tests/panels, inline ranges, letter QA, PM2 env fix:
+
+Covers PRs #33–#37 (merged to main) + current branch work:
+
+- **🏥 Protocol catalogue entity** (`fmdb/models.py`): 11 seed protocols (5r-gut, autoimmune-paleo-aip, whole30, low-fodmap, weight-loss-metabolic-reset, adrenal-recovery, liver-detox-support, cycle-sync, anti-inflammatory-reset, mitochondrial-support, blood-sugar-regulation). Fields: `phases`, `indications`, `foods_to_emphasise/remove`, `supplements_typically_used`, `prerequisites`, `recommended_followup`, `incompatible_with`, `expected_outcomes`, `cautions`. `attached_protocols: list[str]` on Plan — flows into all 5 letter generators as spine constraint.
+- **🔢 11-factor weighted protocol scoring** (`fmdb/assess/results.py`): `FactorScores` Pydantic model (11 fields × weight). `compute_fit_percent()` computes Python-side weighted %. AI returns per-factor 1–5 scores; server computes `fit_percent`. UI shows top-2 protocols with color-tiered % (≥80 emerald, 65–79 amber, <65 red) + 11-factor breakdown disclosure.
+- **🧠 ATM Triad cascade** (`suggester.py` + `assess-client.tsx`): drivers classified as antecedent / trigger / mediator / expression with `parents` (upstream mechanism slug refs) + `chain_evidence`. UI groups into 4 color-coded buckets (🧬 purple / ⚡ amber / 🔁 blue / 🩺 rose).
+- **💊 Drug-nutrient depletion catalogue**: 13 `DrugDepletion` entities (levothyroxine, metformin, PPIs, statins, OCPs, SSRIs/SNRIs, beta-blockers, thiazides, methotrexate, corticosteroids, aspirin, ACE/ARBs, antibiotics). Fields: `drug_aliases`, `drug_class`, `depletes` (list of `NutrientDepletion` with severity + timing separations + monitoring labs), `contraindicated_supplements`. `MedicationImpactPanel` (`medication-impact-panel.tsx`) in client Overview.
+- **🧪 DUTCH + GI-MAP PDF parser** (`scripts/parse-functional-test.py`): Sonnet with document attachment + structured tool-use. Test-type detection via keyword scan. `FunctionalTestPanel` (`functional-test-panel.tsx`) in client Overview — upload PDF → findings persisted to `~/fm-plans/clients/<id>/functional_tests/<type>-<date>.yaml`.
+- **💊 7 titration protocols** (`TitrationProtocol` entity): ashwagandha-adrenal-slow-ramp, berberine-blood-sugar-meal-titration, magnesium-glycinate-bedtime, nac-detox-glutathione-ramp, vitamin-d-loading-then-maintenance, l-glutamine-gut-repair-ramp, betaine-hcl-challenge. Integer whole-unit steps (India = no compounding pharmacies). `available_at` field (vitaone / amazon-india / iherb).
+- **🔬 LabTest entity** (25 seeded): both `conventional_low/high` + `fm_optimal_low/high` ranges, `aliases` list, interpretation, `typical_cost_inr`. **7 LabPanel** entities: fm-general-baseline, hashimoto-workup, perimenopause-workup, insulin-resistance-pcos-workup, fatigue-workup, cardiovascular-risk-workup, inflammation-workup.
+- **🎯 Inline FM-vs-conventional ranges on health-trends**: `findCatalogueLabTest()` bidirectional substring matcher. 4-state dot: 🟢 FM optimal, 🟡 in conventional but outside FM optimal (the FM gap signal), 🔴 outside both, null. `rangeBlock` shows "FM: X–Y · conv: A–B". Per-client override FIRST, catalogue fallback SECOND.
+- **🤰 Pregnancy/lactation safety**: `PregnancySafetyPanel` (`pregnancy-safety-panel.tsx`) loads supplements from active plans, matches `pregnancy_safety`/`lactation_safety` from catalogue. `pregnancy_status` + `pregnancy_due_date` + `lactation_started` on Client model. `SafetyStatus` + `PregnancyStatus` enums.
+- **📈 IFM Matrix all-sessions sparklines** (`ifm-trend.tsx`): 2 sessions → side-by-side bars+delta; 3+ sessions → per-node SVG sparklines with first→last endpoints color-coded.
+- **📝 SOAP note panel** (`soap-note-panel.tsx`): S/O/A/P format on client Overview. Collapsible + Print/Save PDF. `@media print` isolates `#soap-print-root`.
+- **✅ Haiku letter QA pass** (`render-client-letter.py`): after Sonnet generation, `_validate_letter_specificity()` scores each tip 1–5 for client-specificity, rewrites any < 3. `validation_report` persisted as `{stem}.validation.json` sidecar alongside `.md`/`.html`. Surfaced in the UI via `loadMealPlan`.
+- **🖨 Doctor-shareable session brief** (`session-brief-modal.tsx`): `clientConditions` + `clientMedications` shown in 2-col block; hand-off note textarea (no-print in screen view, print-only via `.brief-print-only`). Print button labelled "🖨 Print / Save as PDF".
+- **🔧 PM2 env fix** (`ecosystem.config.js`): loads `.env.local` via `require("dotenv").config(...)` before exporting app config; spreads `process.env` into app env. AISENSY_API_KEY, GMAIL_USER, GMAIL_APP_PASSWORD now available to the Next.js process under PM2. `.env.local.example` documents all required vars (gitignore carve-out via `!.env.local.example`).
+- **New Python models**: `Protocol`, `ProtocolPhase`, `NutrientDepletion`, `DrugDepletion`, `TitrationStep`, `TitrationProtocol`, `LabTest`, `LabPanel`. New enums: `ProtocolCategory`, `DrugClass`, `DepletionSeverity`, `LabPanelCategory`, `SafetyStatus`, `PregnancyStatus`. `attached_protocols` on Plan, `pregnancy_status/due_date/lactation_started` on Client.
+- **New TS types**: `Protocol`, `ProtocolPhase`, `TitrationStep`, `TitrationProtocol`, `LabTest`, `LabPanel`, `NutrientDepletion`, `DrugDepletion`, `SafetyStatus`, `PregnancyStatus`, `FactorScores`, `FACTOR_WEIGHTS`, `FACTOR_LABELS`. `ProtocolSuggestion` now has `factor_scores + fit_percent` (not `fit_score`). `LikelyDriver` has `atm_role`, `parents`, `chain_evidence`.
+- **New scripts**: `scripts/parse-functional-test.py`
+- **New UI files**: `src/app/clients/[id]/soap-note-panel.tsx`, `src/app/clients/[id]/pregnancy-safety-panel.tsx`, `src/app/clients/[id]/medication-impact-panel.tsx`, `src/app/clients/[id]/functional-test-panel.tsx`
+- **New actions** in `clients/actions.ts`: `checkMedicationImpactsAction`, `parseFunctionalTestAction`, `loadFunctionalTestsAction`, `checkPregnancySafetyAction`, `loadLabTestsCatalogueAction`
+
+**v0.62** — Lab reference ranges + custom protocol templates + AiSensy broadcast + message templates + session brief quick note:
 
 - **🔬 Lab reference ranges** (`lab-reference-ranges.tsx`): `LabReferenceRangesEditor` collapsible card in client Overview. 14 FM optimal defaults (TSH 1–2, Vit D 60–80, Ferritin 70–150, hsCRP 0–0.5, HOMA-IR 0–1.5, etc.). Table with Marker/Low/High/Unit/Remove columns. "📋 Load FM defaults" button. Saves via `saveLabReferenceRangesAction` → `client.yaml`. `health-trends.tsx` shows 🟢/🔴 dot + "optimal: X–Y unit" next to each metric using `rangeStatus()`.
 - **💾 Custom protocol template saving** (`lifecycle-panel.tsx`): "💾 Save as template" section in Lifecycle tab (published plans only). Name/description/tags inputs → `saveAsTemplateAction` copies topics/symptoms/supplement_protocol/lifestyle_practices/nutrition to `~/fm-plans/custom_templates/{slug}.yaml`. `loadCustomTemplatesAction` in assess actions. Assess page shows "⭐ Your templates" section above built-in grid (purple/indigo accent, `custom:{slug}` prefix).
@@ -1316,6 +1340,16 @@ npm run build && npm run type-check          # before committing
 - `lab_reference_ranges` stored in `client.yaml` as `{marker: {optimal_low, optimal_high, unit}}`. Saved by `saveLabReferenceRangesAction`, loaded by `loadLabReferenceRangesAction`. `rangeStatus(value, range)` in `health-trends.tsx` returns `"optimal" | "outside" | null`. (v0.62)
 - `checkSupplementInteractionsAction(planSlug)` in `plans/[slug]/actions.ts`: reads plan YAML → client YAML → each supplement's `fm-database/data/supplements/{slug}.yaml`. Checks `contraindications` field (array of strings) case-insensitively against `client.medications` + `client.current_medications`. Called on mount in `plan-editor.tsx`. (v0.61)
 - `SessionDriver` and `SessionSupplement` interfaces in `assess/actions.ts`. `SessionSummary` now includes `likely_drivers?` and `supplement_suggestions?` extracted from `session.ai_analysis`. Used in `session-brief-modal.tsx`. (v0.61)
+- **PM2 env loading** (v0.63): `ecosystem.config.js` calls `require("dotenv").config({ path: ".env.local" })` before exporting. Spreads `process.env` into app `env` block. After editing `.env.local`, do `pm2 delete fm-coach && pm2 start ecosystem.config.js` (NOT `pm2 restart` — restart doesn't re-read config file).
+- **Protocol scoring** (v0.63): `ProtocolSuggestion.fit_score` is gone — replaced by `factor_scores: FactorScores` + `fit_percent: float`. `FACTOR_WEIGHTS` in `anthropic-types.ts` is the source of truth for weights. Python `compute_fit_percent()` in `results.py` computes the weighted %. AI only outputs per-factor 1–5 scores.
+- **ATM Triad** (v0.63): `LikelyDriver.atm_role` is `"antecedent" | "trigger" | "mediator" | "expression" | null`. `parents` is a list of mechanism slugs that are upstream in the causal chain. `chain_evidence` is a one-sentence explanation.
+- **Drug depletions matching** (v0.63): `checkMedicationImpactsAction` does bidirectional substring matching — medication name is checked against `drug_name` AND each `drug_aliases` entry (both directions). Returns list of `{drug_slug, drug_name, depletes[], timing_separations, contraindicated_supplements, monitoring_labs, coach_notes}`.
+- **Lab test matching** (v0.63): `findCatalogueLabTest(testName, catalogue)` in `health-trends.tsx` — exact match first, then bidirectional substring against `match_keys[]` (slug + display_name + aliases). Returns `CatalogueLabRange | null`. Per-client `lab_reference_ranges` override takes precedence; catalogue is fallback.
+- **Titration protocol data** (v0.63): `TitrationStep` uses integer counts (morning/midday/evening/bedtime as number). No fractional doses — India has no compounding pharmacies. Steps reference product names in `notes` field for the coach.
+- **DUTCH/GI-MAP storage** (v0.63): `~/fm-plans/clients/<id>/functional_tests/<type>-<date>.yaml`. Loaded by `loadFunctionalTestsAction`. `parseFunctionalTestAction` timeout is 5 min (Sonnet with large PDF).
+- **Validation report** (v0.63): `{stem}.validation.json` sidecar written alongside `{stem}.md` and `{stem}.html` by `saveMealPlan`. Read by `loadMealPlan` and returned as `result.validationReport`. `LetterValidationChange` interface in `lifecycle-actions.ts`.
+- **Letter types** (v0.63): `LetterType` = `"consolidated" | "meal_plan" | "supplement_plan" | "lifestyle_guide" | "exercise_plan"`. 5th type `exercise_plan` added. `has_exercise_plan` signal in lifecycle-actions checks for `{planSlug}-exercise_plan.md` to cross-reference in other letter types.
+- **`protocol_category` field** on Protocol YAML. `ProtocolCategory` enum: gut_healing, elimination_diet, hormone_balance, metabolic_reset, adrenal_recovery, detox_liver_support, anti_inflammatory, mitochondrial_support, thyroid_optimization, blood_sugar_regulation.
 
 ### Path A — Streamlit UI (fallback, still maintained)
 ```bash
@@ -1448,6 +1482,7 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 - ✅ **v0.60** — Lab comparison view (side-by-side health snapshots) + IFM Matrix trends over time + client photo upload in Overview
 - ✅ **v0.61** — Supplement interaction checker (plan editor amber banner vs client meds) + recheck reminder derivation from plan_period_weeks + protocol diff viewer (colored +/-/@@ in Lifecycle tab) + session brief modal (📄 Brief button in Sessions tab, print-ready)
 - ✅ **v0.62** — Lab reference ranges (14 FM optimal defaults, 🟢/🔴 in health trends) + custom protocol template saving (lifecycle panel → ~/fm-plans/custom_templates/) + AiSensy broadcast panel (dashboard, direct API) + message templates library (client Overview, ~/fm-plans/message_templates.yaml) + quick note from pre-session brief modal
+- ✅ **v0.63** — FM physician-tier upgrade: 11 Protocol entities (5R gut/AIP/Whole30/low-FODMAP/weight-loss/adrenal/liver/cycle-sync/anti-inflammatory/mitochondrial/blood-sugar) + 11-factor weighted protocol scoring + ATM Triad driver cascade + 13 drug-nutrient depletion entities + DUTCH/GI-MAP PDF parser + 7 India-aware titration protocols (integer whole-unit steps) + 25 LabTest entities with FM+conventional ranges + 7 LabPanel bundles + pregnancy/lactation safety overlay + inline FM-vs-conventional range dots on every lab value in health-trends + Haiku letter QA pass (validation_report sidecar) + doctor-shareable session brief (conditions + meds + hand-off note) + PM2 env fix (ecosystem.config.js loads .env.local) + .env.local.example
 
 **Features Backlog** (organised by area — keep this updated every session)
 
@@ -1504,7 +1539,8 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 
 **Outstanding (in rough priority order):**
 1. **Coach uses it daily.** Real bugs from real use are more valuable than speculative code.
-2. **AiSensy setup** (one-time): add `AISENSY_API_KEY` to `.env.local` for broadcast/send to work. Also `AISENSY_WEBHOOK_SECRET` + Cloudflare Tunnel for inbound webhook.
-3. **Register AiSensy templates in dashboard** — 5 templates to create manually: `fm_checkin_nudge`, `fm_lab_reminder`, `fm_session_confirm`, `fm_supplement_instructions`, `fm_encouragement`. All UTILITY / English / `{{1}}` `{{2}}` params.
-4. **Client letter design finalisation** — review `hariharan-plan-3-2026-05-06-cl-005.html` and decide on layout/branding changes. Server at `python3 -m http.server 9099` in `~/fm-plans/clients/cl-005/meal-plans/`.
-5. **Session notes PDF export** (#7) — clean PDF of session notes for doctors/specialists.
+2. **Deploy v0.63 to laptop** — pull `claude/setup-fm-coach-laptop-7GFhK` (or merge to main), then: `cd ~/code/healwithshivanih-ads/fm-database-web && npm install && npm run build && ./node_modules/.bin/pm2 delete fm-coach && ./node_modules/.bin/pm2 start ecosystem.config.js`. The PM2 env fix means `.env.local` is now read automatically.
+3. **AiSensy setup** (one-time): add `AISENSY_API_KEY` to `.env.local` for broadcast/send to work. Also `AISENSY_WEBHOOK_SECRET` + Cloudflare Tunnel for inbound webhook.
+4. **Register AiSensy templates in dashboard** — 5 templates: `fm_checkin_nudge`, `fm_lab_reminder`, `fm_session_confirm`, `fm_supplement_instructions`, `fm_encouragement`. All UTILITY / English / `{{1}}` `{{2}}` params.
+5. **Client letter design finalisation** — review `hariharan-plan-3-2026-05-06-cl-005.html` and decide on layout/branding changes.
+6. **Session notes PDF export** — clean PDF of session notes for doctors/specialists.
