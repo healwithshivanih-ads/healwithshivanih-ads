@@ -366,26 +366,44 @@ export function HealthTrends({ client }: { client: Client }) {
             </div>
           )}
 
-          {/* Computed FM ratios (from last assess run) */}
-          {ratioKeys.length > 0 && (
-            <div>
-              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">FM computed ratios (latest assess)</p>
-              <div className="flex flex-wrap gap-3">
-                {(client.lab_markers ?? []).map((lm, i) => (
-                  <div key={i} className="rounded border px-3 py-2 text-xs space-y-0.5 min-w-[120px]">
-                    <p className="font-medium">{lm.marker_name}</p>
-                    <p>
-                      <span className={`font-semibold ${lm.flag === "optimal" ? "text-emerald-700" : lm.flag === "suboptimal" ? "text-amber-600" : "text-red-600"}`}>
-                        {lm.value}
-                      </span>
-                      {lm.unit && <span className="text-muted-foreground ml-1">{lm.unit}</span>}
-                    </p>
-                    <p className="text-[10px] text-muted-foreground">{lm.flag}</p>
-                  </div>
-                ))}
+          {/* FM lab markers from last assess run, split into computed ratios vs raw values */}
+          {ratioKeys.length > 0 && (() => {
+            const isComputed = (name: string) => {
+              const n = name.toLowerCase();
+              return n.includes("ratio") || n.includes("homa") || n.startsWith("non-hdl") || n.startsWith("non hdl");
+            };
+            const markers = client.lab_markers ?? [];
+            const computed = markers.filter((lm) => isComputed(lm.marker_name));
+            const values = markers.filter((lm) => !isComputed(lm.marker_name));
+            const renderCard = (lm: typeof markers[number], i: number) => (
+              <div key={i} className="rounded border px-3 py-2 text-xs space-y-0.5 min-w-[120px]">
+                <p className="font-medium">{lm.marker_name}</p>
+                <p>
+                  <span className={`font-semibold ${lm.flag === "optimal" ? "text-emerald-700" : lm.flag === "suboptimal" ? "text-amber-600" : "text-red-600"}`}>
+                    {lm.value}
+                  </span>
+                  {lm.unit && <span className="text-muted-foreground ml-1">{lm.unit}</span>}
+                </p>
+                <p className="text-[10px] text-muted-foreground">{lm.flag}</p>
               </div>
-            </div>
-          )}
+            );
+            return (
+              <div className="space-y-5">
+                {computed.length > 0 && (
+                  <div>
+                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">FM computed ratios (latest assess)</p>
+                    <div className="flex flex-wrap gap-3">{computed.map(renderCard)}</div>
+                  </div>
+                )}
+                {values.length > 0 && (
+                  <div>
+                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">FM lab markers (latest assess)</p>
+                    <div className="flex flex-wrap gap-3">{values.map(renderCard)}</div>
+                  </div>
+                )}
+              </div>
+            );
+          })()}
 
           {!measConfig.some(([key]) => series[key]?.length) && labKeys.length === 0 && ratioKeys.length === 0 && (
             <p className="text-xs text-muted-foreground italic">No numeric data to chart yet. Snapshots with lab values or measurements will appear here.</p>
