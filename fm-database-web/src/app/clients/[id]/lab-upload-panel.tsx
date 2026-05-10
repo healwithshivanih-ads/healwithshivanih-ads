@@ -9,6 +9,7 @@ import {
   extractTranscriptAction,
   applyTranscriptDataAction,
 } from "@/app/assess/actions";
+import { findExpectingSessionAction } from "@/app/clients/actions";
 import type { ExtractedLabValue, ExtractedMeasurements } from "@/lib/fmdb/anthropic";
 import type { ComputedRatio, ExtractedLab } from "@/lib/fmdb/anthropic-types";
 
@@ -175,6 +176,10 @@ export function LabUploadPanel({ clientId }: Props) {
 
   const onSave = () => {
     startSave(async () => {
+      // Try to link this snapshot to the session that ordered it.
+      const linkRes = await findExpectingSessionAction(clientId, "blood_panel_basic");
+      const linkedSessionId = linkRes.ok ? linkRes.session_id ?? null : null;
+
       const res = await applyTranscriptDataAction({
         client_id: clientId,
         lab_values: extractedLabs.map((l) => ({
@@ -185,6 +190,7 @@ export function LabUploadPanel({ clientId }: Props) {
         })),
         measurements: extractedMeasurements ?? undefined,
         source: "lab_report",
+        linked_session_id: linkedSessionId,
       });
       if (!res.ok) {
         toast.error(`Save failed: ${res.error}`);

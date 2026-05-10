@@ -12,6 +12,7 @@
 import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { saveSessionAction } from "@/app/assess/actions";
+import { ExpectedReportsCheckboxes } from "./expected-reports-checkboxes";
 
 // ── Curated FM lab panel list ─────────────────────────────────────────────────
 
@@ -257,6 +258,7 @@ export function DiscoveryForm({ clientId, clientName, clientSex, onSaved }: Prop
   const [foodJournalDays, setFoodJournalDays] = useState<3 | 5 | 7>(5);
   const [foodJournalEnabled, setFoodJournalEnabled] = useState(true);
   const [coachNotes, setCoachNotes] = useState("");
+  const [expectedReports, setExpectedReports] = useState<string[]>([]);
   const [saving, setSaving] = useState(false);
   const [savedSession, setSavedSession] = useState<{ id: string; labText: string; journalText: string } | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -390,11 +392,21 @@ export function DiscoveryForm({ clientId, clientName, clientSex, onSaved }: Prop
     const labText = buildLabText();
     const journalText = buildJournalText();
 
+    // Auto-derive expected_reports from form state if coach didn't override.
+    // Any selected lab → blood panel expected. Food journal toggle → food_journal.
+    const derived: string[] = [];
+    if (selectedLabs.size > 0 || customLabs.trim()) derived.push("blood_panel_basic");
+    if (foodJournalEnabled) derived.push("food_journal");
+    const finalExpected = expectedReports.length > 0
+      ? Array.from(new Set([...derived, ...expectedReports]))
+      : derived;
+
     const res = await saveSessionAction({
       client_id: clientId,
       session_type: "discovery",
       presenting_complaints: complaintsText,
       session_date: new Date().toISOString().slice(0, 10),
+      expected_reports: finalExpected,
     });
 
     setSaving(false);
@@ -637,6 +649,15 @@ export function DiscoveryForm({ clientId, clientName, clientSex, onSaved }: Prop
           placeholder="e.g. Client mentioned family history of thyroid issues. Seemed anxious about costs — suggest starting with core panel."
           className="w-full rounded-lg border px-3 py-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-violet-300"
         />
+      </div>
+
+      <div className="space-y-2">
+        <h3 className="text-sm font-semibold">📥 Reports the client will bring back</h3>
+        <p className="text-[11px] text-muted-foreground">
+          Blood panels and food journals are auto-tracked from your selections above.
+          Add anything else the client is being asked to bring (genetics, GI-MAP, DUTCH, etc.) — late-arriving uploads will link back to this session.
+        </p>
+        <ExpectedReportsCheckboxes value={expectedReports} onChange={setExpectedReports} />
       </div>
 
       {error && (

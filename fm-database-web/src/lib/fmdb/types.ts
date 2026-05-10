@@ -464,6 +464,7 @@ export interface Client {
   health_snapshots?: Array<{
     date: string;           // YYYY-MM-DD
     source: string;         // e.g. "transcript-call.pdf", "manual-2026-05-04"
+    linked_session_id?: string;   // session that ordered this report
     measurements?: {
       height_cm?: number | null;
       weight_kg?: number | null;
@@ -477,7 +478,26 @@ export interface Client {
     medications?: string[];
     conditions?: string[];
   }>;
+  rework_suggestion?: ReworkSuggestion | null;
   [key: string]: unknown;
+}
+
+/** AI plan-rework suggestion stored on Client. Overwritten on each fire. */
+export interface ReworkSuggestion {
+  generated_at: string;        // ISO datetime
+  triggered_by: string;        // "check_in" | "quick_note" | "functional_test" | "lab_snapshot" | "genetic_report"
+  benefit_pct: number;         // 0-100 estimated improvement vs current plan
+  confidence: "low" | "medium" | "high";
+  rationale: string;           // 2-3 sentences
+  suggested_changes: Array<{
+    op: "add" | "remove" | "escalate" | "deescalate" | "swap";
+    target_kind: "supplement" | "topic" | "practice" | "lab_order" | "education";
+    target_slug?: string;
+    description: string;       // human-readable
+    reason: string;
+  }>;
+  dismissed_at?: string;       // ISO datetime — coach dismissed
+  snoozed_until?: string;      // ISO date — coach snoozed
 }
 
 export type CatalogueKind =

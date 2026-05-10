@@ -1633,6 +1633,33 @@ export async function parseFunctionalTestAction(
       },
       300_000, // 5 min — Sonnet on PDF can take a minute+
     )) as FunctionalTestResult;
+
+    // Link the saved test record back to the session that ordered it. Maps
+    // dutch → dutch_complete report type, gi_map → gi_map. Falls back to most
+    // recent session within 60 days if no session explicitly expected it.
+    if (result.ok && result.test_type && result.test_type !== "unknown" && result.file_path) {
+      const reportType =
+        result.test_type === "dutch" ? "dutch_complete" :
+        result.test_type === "gi_map" ? "gi_map" :
+        null;
+      if (reportType) {
+        try {
+          const link = await findExpectingSessionAction(clientId, reportType);
+          if (link.ok && link.session_id) {
+            // Append linked_session_id to the saved test YAML in-place.
+            const yaml = await import("js-yaml");
+            const fs = await import("node:fs/promises");
+            const raw = await fs.readFile(result.file_path, "utf-8");
+            const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
+            data.linked_session_id = link.session_id;
+            await fs.writeFile(result.file_path, yaml.dump(data, { sortKeys: false }));
+          }
+        } catch {
+          // Linking is best-effort — don't fail the parse if it errors.
+        }
+      }
+    }
+
     revalidatePath(`/clients/${clientId}`);
     return result;
   } catch (e) {
@@ -1701,5 +1728,44 @@ export async function loadFunctionalTestsAction(
     return { ok: true, tests };
   } catch (e) {
     return { ok: false, tests: [], error: String(e) };
+  }
+}
+
+// ---------------------------------------------------------------------------
+// findExpectingSessionAction — given a clientId + reportType (e.g. "gi_map"),
+// returns the session_id of the most recent session whose expected_reports
+// includes that type. Falls back to the most recent session within 60 days.
+// Used by upload panels to auto-link a late-arriving report to the session
+// that ordered it.
+// ---------------------------------------------------------------------------
+
+export async function findExpectingSessionAction(
+  clientId: string,
+  reportType: string
+): Promise<{ ok: boolean; session_id?: string | null; error?: string }> {
+  try {
+    const { loadClientSessions } = await import("@/lib/fmdb/loader-extras");
+    const sessions = await loadClientSessions(clientId);
+    // First pass — most recent session that explicitly expected this type
+    for (const s of sessions) {
+      const rec = s as Record<string, unknown>;
+      const exp = rec.expected_reports;
+      if (Array.isArray(exp) && exp.includes(reportType) && typeof rec.session_id === "string") {
+        return { ok: true, session_id: rec.session_id };
+      }
+    }
+    // Fallback — most recent session within last 60 days
+    const cutoff = new Date();
+    cutoff.setDate(cutoff.getDate() - 60);
+    for (const s of sessions) {
+      const rec = s as Record<string, unknown>;
+      const date = rec.date;
+      if (typeof date === "string" && new Date(date) >= cutoff && typeof rec.session_id === "string") {
+        return { ok: true, session_id: rec.session_id };
+      }
+    }
+    return { ok: true, session_id: null };
+  } catch (err) {
+    return { ok: false, error: err instanceof Error ? err.message : String(err) };
   }
 }

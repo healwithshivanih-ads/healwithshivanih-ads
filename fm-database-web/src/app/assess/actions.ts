@@ -89,6 +89,10 @@ export interface SessionSummary {
     rationale?: string;
     linked_driver_slugs?: string[];
   }>;
+  /** External reports the coach asked the client to bring back. Late-arriving
+   *  reports (genetics, GI-MAP, DUTCH, blood panels) link to this session via
+   *  HealthSnapshot.linked_session_id and FunctionalTestRecord.linked_session_id. */
+  expected_reports?: string[];
 }
 
 // ── Session field parsers (internal — import from @/lib/fmdb/session-utils externally) ──
@@ -191,6 +195,9 @@ export async function loadClientSessionsAction(clientId: string): Promise<Sessio
             : undefined,
         })).filter((ev) => ev.event);
       })(),
+      expected_reports: Array.isArray((s as Record<string, unknown>).expected_reports)
+        ? ((s as Record<string, unknown>).expected_reports as unknown[]).filter((x): x is string => typeof x === "string")
+        : undefined,
     };
   }));
 }
@@ -364,6 +371,10 @@ export interface ApplyClientDataInput {
   medications?: string[];
   conditions?: string[];
   source?: string;
+  /** Session this report belongs to. When the report is uploaded weeks after
+   *  the session that ordered it, this links the snapshot back to that session
+   *  so the session detail view shows everything ordered together. */
+  linked_session_id?: string | null;
 }
 
 export interface ApplyClientDataResult {
@@ -495,6 +506,10 @@ export interface SaveSessionInput {
   coach_notes?: string;
   requested_labs?: string[];
   five_pillars?: FivePillarsData;
+  // External reports the coach has asked the client to bring back. Late-
+  // arriving reports (genetics, GI-MAP, DUTCH, blood panels) link to this
+  // session so the session view shows everything ordered together.
+  expected_reports?: string[];
 }
 
 export interface SaveSessionResult {

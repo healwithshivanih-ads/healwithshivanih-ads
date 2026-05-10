@@ -110,6 +110,11 @@ def main() -> int:
         except Exception:
             five_pillars_obj = None
 
+    expected_reports_raw = payload.get("expected_reports") or []
+    expected_reports = [
+        str(r).strip() for r in expected_reports_raw if isinstance(r, (str, bytes))
+    ] if isinstance(expected_reports_raw, list) else []
+
     try:
         session = Session(
             session_id=session_id,
@@ -121,6 +126,7 @@ def main() -> int:
             presenting_complaints=full_complaints,
             coach_notes=full_notes,
             five_pillars=five_pillars_obj,
+            expected_reports=expected_reports,
         )
         write_session(root, session)
     except Exception as e:

@@ -149,6 +149,10 @@ def main() -> int:
         "date": datetime.date.today().isoformat(),
         "source": source,
     }
+    # Optional: link this snapshot to the session that ordered the report.
+    linked_session_id = payload.get("linked_session_id")
+    if linked_session_id and isinstance(linked_session_id, str):
+        snap["linked_session_id"] = linked_session_id
     # Include whatever we received (even if not new vs profile, the snapshot is the record)
     snap_meas = {k: measurements.get(k) for k in meas_field_map if measurements.get(k) is not None}
     if snap_meas:

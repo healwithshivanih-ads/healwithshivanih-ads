@@ -230,6 +230,10 @@ class Client(BaseModel):
     # Each dict: {date, source, measurements:{...}, lab_values:[{test_name,value,unit}],
     #             medications:[str], conditions:[str]}
     health_snapshots: list[dict] = Field(default_factory=list)
+    # Most recent AI plan-rework suggestion (overwritten on each new event).
+    # Shape: {generated_at, triggered_by, benefit_pct (0-100), confidence,
+    #         rationale, suggested_changes: [...], dismissed_at?, snoozed_until?}
+    rework_suggestion: Optional[dict] = None
     version: int = 1
     status: EntityStatus = EntityStatus.active
     created_at: datetime
@@ -526,6 +530,15 @@ class Session(BaseModel):
     coach_notes: str = ""
     five_pillars: Optional[FivePillarsAssessment] = None
     next_session_planned: Optional[date] = None
+
+    # External reports the coach asked the client to bring back. Late-arriving
+    # reports (genetics, GI-MAP, DUTCH, blood panels) get linked back to this
+    # session via FunctionalTestRecord.linked_session_id and
+    # HealthSnapshot.linked_session_id so the session view shows everything
+    # ordered together.
+    # Common values: blood_panel_basic | blood_panel_advanced | thyroid_full |
+    #                gi_map | dutch_complete | genetics | food_sensitivity | other
+    expected_reports: list[str] = Field(default_factory=list)
 
     @field_validator("session_id")
     @classmethod
