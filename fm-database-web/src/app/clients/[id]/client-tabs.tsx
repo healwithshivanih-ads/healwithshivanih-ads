@@ -45,6 +45,7 @@ import { LabComparison } from "./lab-comparison";
 import { LabReferenceRangesEditor } from "./lab-reference-ranges";
 import { MedicationImpactPanel } from "./medication-impact-panel";
 import { FunctionalTestPanel } from "./functional-test-panel";
+import { SOAPNotePanel } from "./soap-note-panel";
 import { IFMTimelineCard } from "./ifm-timeline-card";
 import { ClientAvatar } from "./client-avatar";
 import { SessionBriefModal } from "./session-brief-modal";
@@ -710,6 +711,14 @@ export function ClientPageTabs({
               onSaved={(id) => setSavedSessionId(id)}
             />
           </div>
+
+          {/* 📋 SOAP note — most recent intake in standard medical format (printable) */}
+          <SOAPNotePanel
+            client={client as Record<string, unknown>}
+            clientName={client.display_name ?? clientId}
+            clientId={clientId}
+            sessions={sessions}
+          />
 
           {/* 💊 Drug-nutrient depletion auto-flag (renders only when meds match catalogue) */}
           <MedicationImpactPanel clientId={clientId} />
