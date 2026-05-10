@@ -1870,3 +1870,110 @@ export async function snoozeReworkSuggestionAction(
     return { ok: false, error: String(e) };
   }
 }
+
+// ---------------------------------------------------------------------------
+// Genetic report parser (MTHFR, COMT, APOE, etc.)
+// ---------------------------------------------------------------------------
+
+export interface GeneticSnp {
+  gene: string;
+  rsid?: string;
+  variant?: string;
+  genotype: string;
+  zygosity: "homozygous_risk" | "heterozygous" | "homozygous_wild" | "unknown";
+  implication: string;
+  fm_relevance: string;
+}
+
+export interface GeneticReportResult {
+  ok: boolean;
+  test_type?: "genetic";
+  test_date?: string;
+  summary?: string;
+  snps?: GeneticSnp[];
+  clinical_implications?: string[];
+  fm_recommendations?: string[];
+  flagged_drivers?: string[];
+  file_path?: string;
+  error?: string;
+}
+
+export async function parseGeneticReportAction(
+  clientId: string,
+  filePath: string,
+  options?: { dryRun?: boolean }
+): Promise<GeneticReportResult> {
+  try {
+    const result = (await runScript(
+      "parse-genetic-report.py",
+      {
+        client_id: clientId,
+        file_path: filePath,
+        dry_run: !!options?.dryRun,
+      },
+      300_000, // 5 min — Sonnet on PDF
+    )) as GeneticReportResult;
+
+    // Link the saved record back to the session that ordered it.
+    if (result.ok && result.file_path) {
+      try {
+        const link = await findExpectingSessionAction(clientId, "genetics");
+        if (link.ok && link.session_id) {
+          const yaml = await import("js-yaml");
+          const raw = await fs.readFile(result.file_path, "utf-8");
+          const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
+          data.linked_session_id = link.session_id;
+          await fs.writeFile(result.file_path, yaml.dump(data, { sortKeys: false }));
+        }
+      } catch {
+        // Linking is best-effort
+      }
+    }
+
+    revalidatePath(`/clients/${clientId}`);
+    return result;
+  } catch (e) {
+    return { ok: false, error: String(e) };
+  }
+}
+
+/** Load all saved genetic reports for a client. */
+export async function loadGeneticReportsAction(
+  clientId: string
+): Promise<{ ok: boolean; reports: GeneticReportResult[]; error?: string }> {
+  try {
+    const yaml = await import("js-yaml");
+    const dir = path.join(getPlansRoot(), "clients", clientId, "functional_tests");
+    const reports: GeneticReportResult[] = [];
+    try {
+      const entries = await fs.readdir(dir);
+      for (const entry of entries) {
+        if (!entry.startsWith("genetic-") || !entry.endsWith(".yaml")) continue;
+        const fp = path.join(dir, entry);
+        try {
+          const raw = await fs.readFile(fp, "utf-8");
+          const parsed = (yaml.load(raw) as Record<string, unknown>) ?? {};
+          reports.push({
+            ok: true,
+            test_type: "genetic",
+            test_date: parsed.test_date as string | undefined,
+            summary: parsed.summary as string | undefined,
+            snps: (parsed.snps as GeneticSnp[] | undefined) ?? [],
+            clinical_implications: (parsed.clinical_implications as string[] | undefined) ?? [],
+            fm_recommendations: (parsed.fm_recommendations as string[] | undefined) ?? [],
+            flagged_drivers: (parsed.flagged_drivers as string[] | undefined) ?? [],
+            file_path: fp,
+          });
+        } catch {
+          // skip malformed
+        }
+      }
+    } catch {
+      // directory doesn't exist yet
+    }
+    reports.sort((a, b) => (b.test_date ?? "").localeCompare(a.test_date ?? ""));
+    return { ok: true, reports };
+  } catch (e) {
+    return { ok: false, reports: [], error: String(e) };
+  }
+}

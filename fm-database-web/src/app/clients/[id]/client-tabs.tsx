@@ -45,6 +45,7 @@ import { LabComparison } from "./lab-comparison";
 import { LabReferenceRangesEditor } from "./lab-reference-ranges";
 import { MedicationImpactPanel } from "./medication-impact-panel";
 import { FunctionalTestPanel } from "./functional-test-panel";
+import { GeneticReportPanel } from "./genetic-report-panel";
 import { SOAPNotePanel } from "./soap-note-panel";
 import { PregnancySafetyPanel } from "./pregnancy-safety-panel";
 import { ReworkBanner } from "./rework-banner";
@@ -740,6 +741,9 @@ export function ClientPageTabs({
 
           {/* 🧪 Functional test PDFs — DUTCH / GI-MAP / OAT */}
           <FunctionalTestPanel clientId={clientId} />
+
+          {/* 🧬 Genetic / SNP reports — MTHFR / COMT / APOE etc. */}
+          <GeneticReportPanel clientId={clientId} />
 
           {/* Message templates — WhatsApp pre-written templates */}
           <MessageTemplatesPanel
