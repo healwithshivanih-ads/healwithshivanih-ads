@@ -1487,8 +1487,8 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 **Features Backlog** (organised by area — keep this updated every session)
 
 ### 🔴 Setup (one-time, coach does these)
-1. **Configure email** — add `GMAIL_USER` + `GMAIL_APP_PASSWORD` to `.env.local`. Needs Google App Password: https://myaccount.google.com/apppasswords
-2. **AiSensy outbound** — add `AISENSY_API_KEY` to `.env.local` + register the 5 templates in AiSensy dashboard. Enables Broadcast Panel + per-client send. **Webhook skipped** (requires higher AiSensy plan) — for inbound, use the Message Capture Panel on each client page (manual paste of WhatsApp message → Haiku parses it → saves as quick_note).
+1. ✅ **Email configured** (2026-05-10) — `GMAIL_USER` + `GMAIL_APP_PASSWORD` in `.env.local`. App Password from https://myaccount.google.com/apppasswords.
+2. ✅ **AiSensy outbound configured** (2026-05-10) — `AISENSY_API_KEY` in `.env.local`. 4 of 5 templates approved: `fm_lab_reminder`, `fm_session_confirm`, `fm_supplement_instructions`, `fm_encouragement`. `fm_checkin_nudge` still pending AiSensy review. **Webhook skipped** (paid plan only) — Message Capture Panel handles inbound via manual paste.
 3. **Triage 444 open backlog items** via `/backlog` — suggestion chips make it fast. Coach work, no code.
 
 ### 🟡 Client management (next few sessions)
@@ -1539,8 +1539,7 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 
 **Outstanding (in rough priority order):**
 1. **Coach uses it daily.** Real bugs from real use are more valuable than speculative code.
-2. **Deploy v0.63 to laptop** — pull `claude/setup-fm-coach-laptop-7GFhK` (or merge to main), then: `cd ~/code/healwithshivanih-ads/fm-database-web && npm install && npm run build && ./node_modules/.bin/pm2 delete fm-coach && ./node_modules/.bin/pm2 start ecosystem.config.js`. The PM2 env fix means `.env.local` is now read automatically.
-3. **AiSensy setup** (one-time): add `AISENSY_API_KEY` to `.env.local` for broadcast/send to work. Webhook skipped — Message Capture Panel handles inbound manually.
-4. **Register AiSensy templates in dashboard** — 5 templates: `fm_checkin_nudge`, `fm_lab_reminder`, `fm_session_confirm`, `fm_supplement_instructions`, `fm_encouragement`. All UTILITY / English / `{{1}}` `{{2}}` params.
-5. **Client letter design finalisation** — review `hariharan-plan-3-2026-05-06-cl-005.html` and decide on layout/branding changes.
-6. **Session notes PDF export** — clean PDF of session notes for doctors/specialists.
+2. ✅ **v0.63 deployed to laptop** (2026-05-10). PM2 picks up `.env.local` automatically; `GMAIL_USER`, `GMAIL_APP_PASSWORD`, `AISENSY_API_KEY` all set. Re-run via `bash fm-database-web/scripts/setup-laptop.sh` (idempotent — only prompts for missing keys).
+3. ✅ **AiSensy outbound live** — 4 of 5 campaigns approved and live: `fm_lab_reminder`, `fm_session_confirm`, `fm_supplement_instructions`, `fm_encouragement`. `fm_checkin_nudge` still pending AiSensy review (will auto-work once approved — code looks up campaigns by name at send time, no code change needed). **Webhook skipped** (paid plan only) — Message Capture Panel on each client page handles inbound via manual paste.
+4. **Client letter design finalisation** — review `hariharan-plan-3-2026-05-06-cl-005.html` and decide on layout/branding changes.
+5. **Session notes PDF export** — clean PDF of session notes for doctors/specialists.
