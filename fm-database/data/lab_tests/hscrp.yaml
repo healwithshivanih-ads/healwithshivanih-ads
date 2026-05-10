@@ -1,7 +1,12 @@
 slug: hscrp
 display_name: hsCRP
 full_name: high-sensitivity C-Reactive Protein
-aliases: []
+aliases:
+- crp hs
+- high sensitivity crp
+- high-sensitivity c-reactive protein
+- hs crp
+- hs-crp
 units: mg/L
 sample_type: blood
 conventional_low: 0

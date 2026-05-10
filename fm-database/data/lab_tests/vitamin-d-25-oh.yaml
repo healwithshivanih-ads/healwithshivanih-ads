@@ -1,7 +1,15 @@
 slug: vitamin-d-25-oh
 display_name: Vitamin D (25-OH)
 full_name: 25-Hydroxy Vitamin D
-aliases: []
+aliases:
+- 25 hydroxy vitamin d
+- 25(oh)d
+- 25-hydroxy vitamin d
+- 25-oh d
+- 25-oh-d
+- vit d
+- vitamin d
+- vitamin d3
 units: ng/mL
 sample_type: blood
 conventional_low: 30

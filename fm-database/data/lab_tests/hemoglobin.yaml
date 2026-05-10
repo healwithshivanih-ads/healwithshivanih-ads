@@ -1,7 +1,10 @@
 slug: hemoglobin
 display_name: Hemoglobin
 full_name: Hemoglobin — CBC
-aliases: []
+aliases:
+- haemoglobin
+- hb
+- hgb
 units: g/dL
 sample_type: blood
 conventional_low: 11.5

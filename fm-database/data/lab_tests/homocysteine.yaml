@@ -1,7 +1,9 @@
 slug: homocysteine
 display_name: Homocysteine
 full_name: Total Plasma Homocysteine
-aliases: []
+aliases:
+- hcy
+- hocys
 units: µmol/L
 sample_type: blood
 conventional_low: 5

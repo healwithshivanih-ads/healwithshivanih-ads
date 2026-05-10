@@ -1,7 +1,11 @@
 slug: fasting-glucose
 display_name: Fasting Glucose
 full_name: Fasting Plasma Glucose
-aliases: []
+aliases:
+- fasting blood sugar
+- fasting plasma glucose
+- fbs
+- glucose fasting
 units: mg/dL
 sample_type: blood
 conventional_low: 70

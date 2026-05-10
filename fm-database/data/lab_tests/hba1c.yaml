@@ -1,7 +1,11 @@
 slug: hba1c
 display_name: HbA1c
 full_name: Glycated Hemoglobin
-aliases: []
+aliases:
+- a1c
+- glycated hemoglobin
+- glycohemoglobin
+- hb a1c
 units: '%'
 sample_type: blood
 conventional_low: 4.0

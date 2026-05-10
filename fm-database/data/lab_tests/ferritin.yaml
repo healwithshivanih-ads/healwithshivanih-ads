@@ -1,7 +1,8 @@
 slug: ferritin
 display_name: Ferritin
 full_name: Serum Ferritin
-aliases: []
+aliases:
+- serum ferritin
 units: ng/mL
 sample_type: blood
 conventional_low: 30
