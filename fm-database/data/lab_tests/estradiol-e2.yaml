@@ -1,7 +1,10 @@
 slug: estradiol-e2
 display_name: Estradiol (E2)
 full_name: Estradiol — Serum
-aliases: []
+aliases:
+- e2
+- estradiol
+- oestradiol
 units: pg/mL
 sample_type: blood
 conventional_low: 30

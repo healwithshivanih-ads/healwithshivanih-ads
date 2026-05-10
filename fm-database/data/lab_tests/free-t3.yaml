@@ -1,7 +1,10 @@
 slug: free-t3
 display_name: Free T3
 full_name: Free Triiodothyronine
-aliases: []
+aliases:
+- free t-3
+- free triiodothyronine
+- ft3
 units: pg/mL
 sample_type: blood
 conventional_low: 2.0

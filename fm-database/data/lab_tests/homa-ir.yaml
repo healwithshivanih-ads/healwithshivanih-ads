@@ -1,7 +1,9 @@
 slug: homa-ir
 display_name: HOMA-IR
 full_name: Homeostatic Model Assessment of Insulin Resistance
-aliases: []
+aliases:
+- homa
+- insulin resistance index
 units: ratio
 sample_type: calculated
 conventional_low: 0.5

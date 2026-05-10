@@ -1,7 +1,10 @@
 slug: triglycerides
 display_name: Triglycerides
 full_name: Fasting Triglycerides
-aliases: []
+aliases:
+- tg
+- trig
+- trigs
 units: mg/dL
 sample_type: blood
 conventional_low: 0

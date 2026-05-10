@@ -4,7 +4,9 @@ import { useEffect, useState } from "react";
 import type { Client } from "@/lib/fmdb/types";
 import {
   loadLabReferenceRangesAction,
+  loadLabTestsCatalogueAction,
   type LabReferenceRanges,
+  type CatalogueLabRange,
 } from "@/app/clients/actions";
 
 type Snapshot = NonNullable<Client["health_snapshots"]>[number];
@@ -71,6 +73,30 @@ function rangeStatus(
   return tooLow || tooHigh ? "outside" : "optimal";
 }
 
+// ─── Catalogue match: find LabTest record matching a free-form test name ──────
+// Used to surface FM-optimal AND conventional ranges side-by-side. Match is
+// case-insensitive substring across slug + display_name + full_name + aliases.
+// Bidirectional — handles "TSH" matching alias "tsh" AND "Vitamin D 25-OH"
+// matching alias "vitamin d".
+function findCatalogueLabTest(
+  testName: string,
+  catalogue: CatalogueLabRange[],
+): CatalogueLabRange | null {
+  const needle = testName.trim().toLowerCase();
+  if (!needle) return null;
+  // First pass — exact key match (fastest path)
+  for (const t of catalogue) {
+    if (t.match_keys.includes(needle)) return t;
+  }
+  // Second pass — bidirectional substring (handles "TSH (mIU/L)" matching "tsh")
+  for (const t of catalogue) {
+    for (const key of t.match_keys) {
+      if (needle.includes(key) || key.includes(needle)) return t;
+    }
+  }
+  return null;
+}
+
 // ─── Metric row ───────────────────────────────────────────────────────────────
 
 function MetricRow({
@@ -79,12 +105,16 @@ function MetricRow({
   data,
   color,
   refRange,
+  catalogueMatch,
 }: {
   label: string;
   unit: string;
   data: Array<{ date: string; value: number }>;
   color?: string;
+  /** Per-client override (from client.lab_reference_ranges). Takes precedence over catalogue. */
   refRange?: { optimal_low?: number; optimal_high?: number; unit?: string };
+  /** Catalogue LabTest record (FM optimal + conventional ranges). Fallback when no per-client override. */
+  catalogueMatch?: CatalogueLabRange | null;
 }) {
   if (data.length === 0) return null;
   const sorted = [...data].sort((a, b) => a.date.localeCompare(b.date));
@@ -92,17 +122,53 @@ function MetricRow({
   const latest = values[values.length - 1];
   const prev = values.length > 1 ? values[values.length - 2] : null;
   const delta = prev != null ? latest - prev : null;
-  const status = rangeStatus(latest, refRange);
+
+  // Effective FM-optimal range — per-client override first, else catalogue.
+  const effectiveOptimal = refRange && (refRange.optimal_low != null || refRange.optimal_high != null)
+    ? { low: refRange.optimal_low, high: refRange.optimal_high, unit: refRange.unit, source: "client" as const }
+    : catalogueMatch && (catalogueMatch.fm_optimal_low != null || catalogueMatch.fm_optimal_high != null)
+    ? { low: catalogueMatch.fm_optimal_low ?? undefined, high: catalogueMatch.fm_optimal_high ?? undefined, unit: catalogueMatch.units, source: "catalogue" as const }
+    : null;
+
+  // Conventional range — only from catalogue.
+  const conventional = catalogueMatch && (catalogueMatch.conventional_low != null || catalogueMatch.conventional_high != null)
+    ? { low: catalogueMatch.conventional_low ?? undefined, high: catalogueMatch.conventional_high ?? undefined, unit: catalogueMatch.units }
+    : null;
+
+  const status = rangeStatus(latest, effectiveOptimal ? { optimal_low: effectiveOptimal.low, optimal_high: effectiveOptimal.high } : undefined);
+
+  // Cross-reference: is value within conventional but outside FM-optimal?
+  const inConventional = conventional && (
+    (conventional.low == null || latest >= conventional.low) &&
+    (conventional.high == null || latest <= conventional.high)
+  );
+  const subOptimalGap = status === "outside" && inConventional;  // the "your lab calls this fine but FM flags it" case
 
   const statusDot = status === "optimal"
     ? <span title="Within FM optimal range" className="ml-1 text-emerald-600 text-[10px]">🟢</span>
+    : subOptimalGap
+    ? <span title="Within conventional 'normal' but outside FM optimal" className="ml-1 text-amber-500 text-[10px]">🟡</span>
     : status === "outside"
-    ? <span title="Outside FM optimal range" className="ml-1 text-red-500 text-[10px]">🔴</span>
+    ? <span title="Outside FM + conventional ranges" className="ml-1 text-red-500 text-[10px]">🔴</span>
     : null;
 
-  const optimalLabel = refRange && (refRange.optimal_low != null || refRange.optimal_high != null) ? (
-    <div className="text-[9px] text-muted-foreground mt-0.5">
-      optimal: {refRange.optimal_low ?? "—"}–{refRange.optimal_high ?? "—"}{refRange.unit ? ` ${refRange.unit}` : ""}
+  const rangeBlock = (effectiveOptimal || conventional) ? (
+    <div className="text-[9px] text-muted-foreground mt-0.5 space-x-2">
+      {effectiveOptimal && (
+        <span title={effectiveOptimal.source === "client" ? "Per-client override" : "FM catalogue default"}>
+          <span className="text-emerald-700 font-medium">FM: </span>
+          {effectiveOptimal.low ?? "—"}–{effectiveOptimal.high ?? "—"}
+          {effectiveOptimal.unit ? ` ${effectiveOptimal.unit}` : ""}
+          {effectiveOptimal.source === "client" && <span className="ml-0.5 opacity-60">(custom)</span>}
+        </span>
+      )}
+      {conventional && (
+        <span>
+          <span className="text-slate-500 font-medium">conv: </span>
+          {conventional.low ?? "—"}–{conventional.high ?? "—"}
+          {conventional.unit ? ` ${conventional.unit}` : ""}
+        </span>
+      )}
     </div>
   ) : null;
 
@@ -120,7 +186,7 @@ function MetricRow({
             </span>
           )}
         </div>
-        {optimalLabel}
+        {rangeBlock}
       </td>
       <td className="py-2 pr-3">
         <Sparkline values={values} color={color} />
@@ -135,12 +201,14 @@ function MetricRow({
 export function HealthTrends({ client }: { client: Client }) {
   const [tab, setTab] = useState<"charts" | "timeline">("charts");
   const [refRanges, setRefRanges] = useState<LabReferenceRanges>({});
+  const [labCatalogue, setLabCatalogue] = useState<CatalogueLabRange[]>([]);
 
   useEffect(() => {
     const clientId = (client as { client_id?: string }).client_id;
     if (clientId) {
       loadLabReferenceRangesAction(clientId).then(setRefRanges).catch(() => {});
     }
+    loadLabTestsCatalogueAction().then(setLabCatalogue).catch(() => {});
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [(client as { client_id?: string }).client_id]);
   const snapshots: Snapshot[] = (client.health_snapshots ?? []).sort((a, b) =>
@@ -243,7 +311,15 @@ export function HealthTrends({ client }: { client: Client }) {
                 <tbody>
                   {measConfig.map(([key, label, unit, color]) =>
                     series[key] ? (
-                      <MetricRow key={key} label={label} unit={unit} data={series[key]} color={color} refRange={refRanges[label]} />
+                      <MetricRow
+                        key={key}
+                        label={label}
+                        unit={unit}
+                        data={series[key]}
+                        color={color}
+                        refRange={refRanges[label]}
+                        catalogueMatch={findCatalogueLabTest(label, labCatalogue)}
+                      />
                     ) : null
                   )}
                 </tbody>
@@ -273,7 +349,17 @@ export function HealthTrends({ client }: { client: Client }) {
                       const lv = (snap.lab_values ?? []).find(l => l.test_name === testName);
                       if (lv?.unit) { unit = lv.unit; break; }
                     }
-                    return <MetricRow key={key} label={testName} unit={unit} data={series[key]} color="#0284c7" refRange={refRanges[testName]} />;
+                    return (
+                      <MetricRow
+                        key={key}
+                        label={testName}
+                        unit={unit}
+                        data={series[key]}
+                        color="#0284c7"
+                        refRange={refRanges[testName]}
+                        catalogueMatch={findCatalogueLabTest(testName, labCatalogue)}
+                      />
+                    );
                   })}
                 </tbody>
               </table>

@@ -1,7 +1,10 @@
 slug: dhea-s
 display_name: DHEA-S
 full_name: Dehydroepiandrosterone Sulfate
-aliases: []
+aliases:
+- dehydroepiandrosterone sulfate
+- dhea sulfate
+- dheas
 units: µg/dL
 sample_type: blood
 conventional_low: 50

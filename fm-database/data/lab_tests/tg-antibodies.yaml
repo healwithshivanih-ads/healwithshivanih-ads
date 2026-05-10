@@ -1,7 +1,13 @@
 slug: tg-antibodies
 display_name: Tg Ab
 full_name: Thyroglobulin Antibodies
-aliases: []
+aliases:
+- anti tg
+- anti-tg
+- tg
+- tg ab
+- thyroglobulin ab
+- thyroglobulin antibody
 units: IU/mL
 sample_type: blood
 conventional_low: 0
