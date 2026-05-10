@@ -59,11 +59,19 @@ export interface ExtractedLab {
   date_drawn?: string | null;
 }
 
+export type ATMRole = "antecedent" | "trigger" | "mediator" | "expression";
+
 export interface LikelyDriver {
   mechanism_slug: string;
   rank: number;
   reasoning: string;
   supporting_evidence?: string[];
+  /** ATM cognitive model classification — antecedent / trigger / mediator / expression. */
+  atm_role?: ATMRole | null;
+  /** Mechanism slugs of OTHER drivers that PRECEDE this one in the cascade. Empty for antecedents/triggers. */
+  parents?: string[];
+  /** 1-2 sentences explaining why this driver sits at this position in the chain. */
+  chain_evidence?: string;
 }
 
 export interface TopicInPlay {
@@ -107,6 +115,62 @@ export interface SupplementSuggestion {
   contraindication_check?: string;
   vitaone_url?: string;
 }
+
+/** Per-factor 1–5 fit scores. Server-side computes the weighted overall %. */
+export interface FactorScores {
+  symptoms: number;          // weight 20%
+  medical_safety: number;    // weight 18%
+  labs: number;              // weight 15%
+  goals: number;             // weight 10%
+  gut_function: number;      // weight 10%
+  metabolic_health: number;  // weight  8%
+  nutrient_status: number;   // weight  7%
+  lifestyle: number;         // weight  5%
+  culture: number;           // weight  3%
+  real_world_fit: number;    // weight  2%
+  sustainability: number;    // weight  2%
+}
+
+export interface ProtocolSuggestion {
+  protocol_slug: string;
+  why_indicated: string;
+  factor_scores?: FactorScores;
+  fit_percent?: number | null;        // 20–100, computed from factor_scores
+  when_to_start?: string;
+  expected_weeks?: number | null;
+  client_specific_modifications?: string;
+  contraindication_check?: string;
+}
+
+/** Weights for the 11 factors (sum = 100). Mirrors fmdb/assess/results.py::_FACTOR_WEIGHTS. */
+export const FACTOR_WEIGHTS: Record<keyof FactorScores, number> = {
+  symptoms: 20,
+  medical_safety: 18,
+  labs: 15,
+  goals: 10,
+  gut_function: 10,
+  metabolic_health: 8,
+  nutrient_status: 7,
+  lifestyle: 5,
+  culture: 3,
+  real_world_fit: 2,
+  sustainability: 2,
+};
+
+/** Human-readable labels for factor breakdown UI. */
+export const FACTOR_LABELS: Record<keyof FactorScores, string> = {
+  symptoms: "Symptoms + chief complaints",
+  medical_safety: "Medical safety (Dx, meds, history)",
+  labs: "Labs + biomarkers",
+  goals: "Health goals alignment",
+  gut_function: "Gut function + food reactions",
+  metabolic_health: "Metabolic health",
+  nutrient_status: "Nutrient status / deficiencies",
+  lifestyle: "Lifestyle (sleep, stress, movement)",
+  culture: "Culture / ethics / preferences",
+  real_world_fit: "Real-world fit (budget, access, family)",
+  sustainability: "Long-term sustainability",
+};
 
 export interface LabFollowup {
   test: string;
@@ -155,6 +219,7 @@ export interface AssessSuggestions {
   lifestyle_suggestions: LifestyleSuggestion[];
   nutrition_suggestions: NutritionSuggestions;
   supplement_suggestions: SupplementSuggestion[];
+  suggested_protocols?: ProtocolSuggestion[];
   lab_followups: LabFollowup[];
   referral_triggers: ReferralTrigger[];
   education_framings: EducationFraming[];

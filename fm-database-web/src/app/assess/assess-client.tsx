@@ -38,7 +38,9 @@ import type {
   ChatTurn,
   ComputedRatio,
   PlanBrief,
+  FactorScores,
 } from "@/lib/fmdb/anthropic-types";
+import { FACTOR_LABELS, FACTOR_WEIGHTS } from "@/lib/fmdb/anthropic-types";
 import { PROTOCOL_TEMPLATES } from "@/lib/fmdb/protocol-templates";
 import type {
   ExtractedHealthData,
@@ -781,6 +783,7 @@ function SuggestionsView({
   const lifestyles = suggestions.lifestyle_suggestions;
   const nutrition = suggestions.nutrition_suggestions;
   const supplements = suggestions.supplement_suggestions;
+  const protocols = suggestions.suggested_protocols ?? [];
   const labs = suggestions.lab_followups;
   const refs = suggestions.referral_triggers;
   const edu = suggestions.education_framings;
@@ -830,26 +833,116 @@ function SuggestionsView({
       {drivers.length > 0 && (
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm">🎯 Likely root-cause mechanisms</CardTitle>
+            <CardTitle className="text-sm">🎯 Likely drivers (ATM cascade)</CardTitle>
+            <p className="text-[11px] text-muted-foreground mt-0.5">
+              Antecedent (predisposition) → Trigger (precipitating event) → Mediator (ongoing perpetuator) → Expression (presenting symptom).
+              Treat upstream for durable change.
+            </p>
           </CardHeader>
-          <CardContent className="space-y-2 text-sm">
-            {drivers.map((d) => {
-              const slug = String(d.mechanism_slug ?? "?");
-              const k = `driver_${slug}`;
-              return (
-                <div key={k} className="flex items-start justify-between gap-3 border rounded-md p-2">
-                  <div className="flex-1">
-                    <div className="font-medium">
-                      #{String(d.rank ?? "?")} — {slug}
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      {String(d.reasoning ?? "")}
+          <CardContent className="space-y-4 text-sm">
+            {(() => {
+              type Bucket = { key: "antecedent" | "trigger" | "mediator" | "expression"; label: string; emoji: string; color: string };
+              const BUCKETS: Bucket[] = [
+                { key: "antecedent",  label: "Antecedents",  emoji: "🧬", color: "border-purple-200 bg-purple-50/60" },
+                { key: "trigger",     label: "Triggers",     emoji: "⚡", color: "border-amber-200 bg-amber-50/60" },
+                { key: "mediator",    label: "Mediators",    emoji: "🔁", color: "border-blue-200 bg-blue-50/60" },
+                { key: "expression",  label: "Expressions",  emoji: "🩺", color: "border-rose-200 bg-rose-50/50" },
+              ];
+
+              const grouped = new Map<string, typeof drivers>();
+              const unclassified: typeof drivers = [];
+              for (const d of drivers) {
+                const role = (d.atm_role ?? "").toLowerCase();
+                if (role === "antecedent" || role === "trigger" || role === "mediator" || role === "expression") {
+                  const arr = grouped.get(role) ?? [];
+                  arr.push(d);
+                  grouped.set(role, arr);
+                } else {
+                  unclassified.push(d);
+                }
+              }
+
+              const renderDriver = (d: typeof drivers[number]) => {
+                const slug = String(d.mechanism_slug ?? "?");
+                const k = `driver_${slug}`;
+                const parents = (d.parents ?? []).filter(Boolean);
+                return (
+                  <div key={k} className="rounded-md border bg-background p-2 space-y-1">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="text-[10px] font-bold tabular-nums px-1.5 py-0.5 rounded-full bg-muted text-muted-foreground">
+                            #{String(d.rank ?? "?")}
+                          </span>
+                          <a
+                            href={`/catalogue/mechanisms/${slug}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="font-medium text-sm hover:underline break-all"
+                          >
+                            {slug}
+                          </a>
+                        </div>
+                        {d.reasoning && (
+                          <p className="text-xs text-muted-foreground leading-snug mt-1">
+                            {String(d.reasoning)}
+                          </p>
+                        )}
+                        {d.chain_evidence && (
+                          <p className="text-[11px] italic text-foreground/70 leading-snug mt-1 border-l-2 border-muted pl-2">
+                            {String(d.chain_evidence)}
+                          </p>
+                        )}
+                        {parents.length > 0 && (
+                          <p className="text-[10px] text-muted-foreground mt-1">
+                            <span className="font-medium">↑ from: </span>
+                            {parents.join(" · ")}
+                          </p>
+                        )}
+                      </div>
+                      <Pick k={k} />
                     </div>
                   </div>
-                  <Pick k={k} />
+                );
+              };
+
+              return (
+                <div className="space-y-3">
+                  {BUCKETS.map((b) => {
+                    const items = grouped.get(b.key) ?? [];
+                    if (items.length === 0) return null;
+                    return (
+                      <div key={b.key} className={`rounded-lg border-2 p-2.5 space-y-2 ${b.color}`}>
+                        <div className="flex items-center gap-2">
+                          <span className="text-base">{b.emoji}</span>
+                          <span className="text-xs font-semibold uppercase tracking-wide">
+                            {b.label}
+                          </span>
+                          <span className="text-[10px] text-muted-foreground">({items.length})</span>
+                        </div>
+                        <div className="space-y-1.5">
+                          {items.map(renderDriver)}
+                        </div>
+                      </div>
+                    );
+                  })}
+                  {unclassified.length > 0 && (
+                    <div className="rounded-lg border-2 border-gray-200 bg-gray-50/60 p-2.5 space-y-2">
+                      <div className="flex items-center gap-2">
+                        <span className="text-base">❓</span>
+                        <span className="text-xs font-semibold uppercase tracking-wide">
+                          Unclassified
+                        </span>
+                        <span className="text-[10px] text-muted-foreground">({unclassified.length})</span>
+                      </div>
+                      <div className="space-y-1.5">
+                        {unclassified.map(renderDriver)}
+                      </div>
+                    </div>
+                  )}
                 </div>
               );
-            })}
+            })()}
           </CardContent>
         </Card>
       )}
@@ -954,6 +1047,127 @@ function SuggestionsView({
               <div><strong>Home remedies:</strong> {nutrition.home_remedy_slugs.join(", ")}</div>
             ) : null}
             {nutrition.rationale ? <div className="text-xs italic">{nutrition.rationale}</div> : null}
+          </CardContent>
+        </Card>
+      )}
+
+      {protocols.length > 0 && (
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm">🧭 Recommended protocols (top 2)</CardTitle>
+            <p className="text-[11px] text-muted-foreground mt-0.5">
+              Each protocol is scored across 11 weighted factors → an overall fit %.
+              Pick ONE — it becomes the spine of the plan and shapes meal, supplement, exercise, and lifestyle letters.
+            </p>
+          </CardHeader>
+          <CardContent className="space-y-3 text-sm">
+            {protocols.map((p, i) => {
+              const slug = String(p.protocol_slug ?? `?_${i}`);
+              const pickKey = `protocol_${slug}`;
+              const isPicked = picks[pickKey] === true;
+              const fitPercent = p.fit_percent ?? null;
+              const pctColor =
+                fitPercent == null ? "bg-gray-100 text-gray-700" :
+                fitPercent >= 80 ? "bg-emerald-100 text-emerald-900 ring-2 ring-emerald-300" :
+                fitPercent >= 65 ? "bg-amber-50 text-amber-900 ring-1 ring-amber-200" :
+                "bg-red-50 text-red-800 ring-1 ring-red-200";
+              const cardBorder = isPicked
+                ? "border-emerald-400 bg-emerald-50/40"
+                : "border-[rgba(43,45,66,0.18)] bg-[rgba(250,248,245,0.4)]";
+              return (
+                <div key={pickKey} className={`rounded-lg border-2 p-3 space-y-2 transition-colors ${cardBorder}`}>
+                  <div className="flex items-start justify-between gap-3 flex-wrap">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <a
+                        href={`/catalogue/protocols/${slug}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="font-semibold text-sm hover:underline"
+                        style={{ color: "var(--brand-indigo, #2B2D42)" }}
+                      >
+                        {slug}
+                      </a>
+                      {fitPercent != null && (
+                        <span className={`inline-flex items-center text-[11px] font-bold px-2 py-0.5 rounded-full ${pctColor}`}>
+                          {Math.round(fitPercent)}% fit
+                        </span>
+                      )}
+                      {p.expected_weeks != null && (
+                        <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-blue-50 text-blue-700">
+                          {p.expected_weeks}w
+                        </span>
+                      )}
+                    </div>
+                    <label className="flex items-center gap-1.5 text-xs font-medium cursor-pointer shrink-0">
+                      <input
+                        type="radio"
+                        name="selected_protocol"
+                        checked={isPicked}
+                        onChange={() => {
+                          // Mutual-exclusion radio — clear other protocol_* keys
+                          const next = { ...picks };
+                          for (const k of Object.keys(next)) {
+                            if (k.startsWith("protocol_")) next[k] = false;
+                          }
+                          next[pickKey] = true;
+                          setPicks(next);
+                        }}
+                        className="accent-emerald-600"
+                      />
+                      <span>Use this protocol</span>
+                    </label>
+                  </div>
+                  {p.why_indicated && (
+                    <p className="text-sm leading-relaxed text-foreground/80">
+                      {p.why_indicated}
+                    </p>
+                  )}
+                  {p.factor_scores && (
+                    <details className="text-xs">
+                      <summary className="cursor-pointer text-muted-foreground hover:text-foreground font-medium select-none">
+                        📊 Score breakdown
+                      </summary>
+                      <ul className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1 pl-1">
+                        {(Object.keys(FACTOR_LABELS) as (keyof FactorScores)[]).map((f) => {
+                          const s = p.factor_scores?.[f];
+                          if (s == null) return null;
+                          const w = FACTOR_WEIGHTS[f];
+                          const dotColor = s >= 4 ? "#059669" : s >= 3 ? "#D97706" : "#DC2626";
+                          return (
+                            <li key={f} className="flex items-center justify-between gap-2 text-[11px]">
+                              <span className="flex items-center gap-1.5 text-muted-foreground">
+                                <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ background: dotColor }} />
+                                {FACTOR_LABELS[f]}
+                                <span className="text-[9px] text-muted-foreground/70">({w}%)</span>
+                              </span>
+                              <span className="tabular-nums font-medium">{s}/5</span>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </details>
+                  )}
+                  {p.when_to_start && (
+                    <p className="text-xs">
+                      <span className="text-muted-foreground font-medium">When to start: </span>
+                      {p.when_to_start}
+                    </p>
+                  )}
+                  {p.client_specific_modifications && (
+                    <p className="text-xs">
+                      <span className="text-muted-foreground font-medium">Modifications: </span>
+                      {p.client_specific_modifications}
+                    </p>
+                  )}
+                  {p.contraindication_check && (
+                    <p className="text-xs rounded-md bg-amber-50 border border-amber-200 px-2 py-1">
+                      <span className="font-medium">⚠ Contraindication check: </span>
+                      {p.contraindication_check}
+                    </p>
+                  )}
+                </div>
+              );
+            })}
           </CardContent>
         </Card>
       )}

@@ -5,12 +5,15 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from .enums import (
     CookingAdjustmentCategory,
+    DepletionSeverity,
     DoseUnit,
+    DrugClass,
     EntityStatus,
     EvidenceTier,
     HomeRemedyCategory,
     InteractionType,
     MechanismCategory,
+    ProtocolCategory,
     SourceQuality,
     SourceType,
     SupplementCategory,
@@ -174,6 +177,115 @@ class HomeRemedy(BaseModel):
     typical_dose: str = ""                                       # free-text (varies wildly)
     duration: str = ""                                            # free-text suggested duration
     timing_notes: str = ""
+    linked_to_topics: list[str] = Field(default_factory=list)
+    linked_to_mechanisms: list[str] = Field(default_factory=list)
+    sources: list[SourceCitation] = Field(default_factory=list)
+    evidence_tier: EvidenceTier
+    version: int = 1
+    status: EntityStatus = EntityStatus.active
+    updated_at: date
+    updated_by: str
+
+    @field_validator("slug")
+    @classmethod
+    def _slug_format(cls, v: str) -> str:
+        if not v or not all(c.isalnum() or c == "-" for c in v) or not v.islower():
+            raise ValueError(f"slug must be lowercase ascii alphanumeric with hyphens, got {v!r}")
+        if v.startswith("-") or v.endswith("-") or "--" in v:
+            raise ValueError(f"slug has malformed hyphens: {v!r}")
+        return v
+
+
+class ProtocolPhase(BaseModel):
+    """One phase of a multi-phase protocol (e.g. 5R: Remove → Replace → Reinoculate → Repair → Rebalance)."""
+    model_config = ConfigDict(extra="forbid")
+
+    name: str                                            # e.g. "Remove" / "Phase 1: Foundation"
+    weeks: Optional[int] = None                          # weeks this phase typically runs
+    summary: str = ""                                    # 1-2 sentence overview
+    key_actions: list[str] = Field(default_factory=list) # bullet points of what to do
+
+
+class Protocol(BaseModel):
+    """A structured FM protocol — 5R, AIP, Whole30, weight-loss reset, adrenal recovery, etc.
+    A coach picks ONE protocol when their pattern matches the indications and uses it as the
+    spine of a 4–12 week plan. Protocols are catalogue-level (curated by Shivani); a Plan
+    references a Protocol via Plan.attached_protocols (slug list).
+    """
+    model_config = ConfigDict(extra="forbid")
+
+    slug: str
+    display_name: str
+    aliases: list[str] = Field(default_factory=list)
+    category: ProtocolCategory
+    summary: str                                                  # 1-3 sentences — what this protocol DOES
+    indications: list[str] = Field(default_factory=list)          # when to use (free text or symptom/topic slugs)
+    contraindications: list[str] = Field(default_factory=list)    # when NOT to use
+    typical_duration_weeks: Optional[int] = None                  # total length end-to-end
+    phases: list[ProtocolPhase] = Field(default_factory=list)     # multi-phase protocols
+    key_steps: list[str] = Field(default_factory=list)            # for simple/single-phase protocols
+    foods_to_emphasise: list[str] = Field(default_factory=list)
+    foods_to_remove: list[str] = Field(default_factory=list)
+    supplements_typically_used: list[str] = Field(default_factory=list)  # supplement slugs
+    expected_outcomes: list[str] = Field(default_factory=list)
+    cautions: list[str] = Field(default_factory=list)
+    linked_to_topics: list[str] = Field(default_factory=list)
+    linked_to_mechanisms: list[str] = Field(default_factory=list)
+    linked_to_symptoms: list[str] = Field(default_factory=list)
+    sources: list[SourceCitation] = Field(default_factory=list)
+    evidence_tier: EvidenceTier
+    notes_for_coach: str = ""
+    version: int = 1
+    status: EntityStatus = EntityStatus.active
+    updated_at: date
+    updated_by: str
+
+    @field_validator("slug")
+    @classmethod
+    def _slug_format(cls, v: str) -> str:
+        if not v or not all(c.isalnum() or c == "-" for c in v) or not v.islower():
+            raise ValueError(f"slug must be lowercase ascii alphanumeric with hyphens, got {v!r}")
+        if v.startswith("-") or v.endswith("-") or "--" in v:
+            raise ValueError(f"slug has malformed hyphens: {v!r}")
+        return v
+
+
+class NutrientDepletion(BaseModel):
+    """One nutrient a drug depletes / impairs absorption of."""
+    model_config = ConfigDict(extra="forbid")
+
+    nutrient: str                                                # e.g. "B12", "magnesium", "CoQ10"
+    severity: DepletionSeverity = DepletionSeverity.moderate
+    mechanism: str = ""                                          # 1-line mechanism (gastric acid suppression, etc.)
+    monitoring_recommendation: str = ""                          # what lab + how often
+    typical_supplement_dose: str = ""                            # if standard-of-care to supplement
+
+
+class DrugDepletion(BaseModel):
+    """A medication and the nutrients it depletes / interferes with.
+
+    Surfaced in the client Overview as auto-flags when a client lists a
+    matching medication. Coach sees: which nutrients to monitor, what to
+    supplement, what timing-separations matter (e.g. levothyroxine 4h
+    apart from calcium / iron).
+
+    Lookup: when client.current_medications contains an entry, we match
+    case-insensitively against drug_name + drug_aliases. A single drug-
+    class entry (e.g. "ppi") can declare aliases for ALL members of that
+    class so coaches don't need a record per brand.
+    """
+    model_config = ConfigDict(extra="forbid")
+
+    slug: str
+    drug_name: str                                               # canonical e.g. "Levothyroxine"
+    drug_aliases: list[str] = Field(default_factory=list)        # brand names + abbreviations
+    drug_class: DrugClass
+    summary: str = ""                                            # 1-2 sentences for context
+    depletes: list[NutrientDepletion] = Field(default_factory=list)
+    timing_separations: list[str] = Field(default_factory=list)  # "Take 4h apart from calcium / iron / coffee"
+    contraindicated_supplements: list[str] = Field(default_factory=list)  # supplement slugs to AVOID with this drug
+    monitoring_labs: list[str] = Field(default_factory=list)     # e.g. "B12 every 6 months", "homocysteine annually"
+    coach_notes: str = ""
     linked_to_topics: list[str] = Field(default_factory=list)
     linked_to_mechanisms: list[str] = Field(default_factory=list)
     sources: list[SourceCitation] = Field(default_factory=list)

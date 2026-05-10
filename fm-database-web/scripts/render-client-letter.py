@@ -459,6 +459,114 @@ def _load_client(client_id: str) -> dict | None:
     return client_dict
 
 
+def _load_protocol_yaml(slug: str) -> dict | None:
+    """Load a Protocol YAML from fm-database/data/protocols/<slug>.yaml.
+    Returns the raw dict (NOT a Pydantic instance) — letter prompts only need
+    a few fields and benefit from forward compatibility if the schema evolves.
+    """
+    import yaml as _yaml
+    p = FMDB_ROOT / "data" / "protocols" / f"{slug}.yaml"
+    if not p.exists():
+        return None
+    try:
+        return _yaml.safe_load(p.read_text()) or None
+    except Exception:
+        return None
+
+
+def _attached_protocol_block(plan: dict) -> str:
+    """Format `plan.attached_protocols` as a binding-protocol prompt block.
+
+    The coach picked these protocols in /assess via radio. They become the
+    SPINE of every letter:
+      - meal plan: foods_to_emphasise are scaffolded daily; foods_to_remove
+        are HARD exclusions
+      - supplement plan: supplements_typically_used are the protocol's
+        standard set (AI may adjust dose / timing per client)
+      - exercise plan: protocol cautions are obeyed (e.g. mito → no HIIT)
+      - lifestyle / consolidated: phases + key_steps + cautions shape the
+        weekly arc
+
+    Returns empty string if no attached protocols (so prompts that don't
+    use protocols don't get a stray "ATTACHED PROTOCOL" header).
+    """
+    slugs = plan.get("attached_protocols") or []
+    if not slugs:
+        return ""
+
+    protocols = []
+    for slug in slugs:
+        pr = _load_protocol_yaml(slug)
+        if pr:
+            protocols.append(pr)
+    if not protocols:
+        return ""
+
+    lines = ["", "🧭 ATTACHED PROTOCOL — THIS IS THE SPINE OF THE PLAN."]
+    lines.append(
+        "The coach has committed to the following FM protocol(s) as the structured "
+        "playbook for this client. Use the protocol's PHASES as the weekly arc, "
+        "obey its FOODS_TO_REMOVE as binding exclusions, scaffold meals around "
+        "FOODS_TO_EMPHASISE, and surface SUPPLEMENTS_TYPICALLY_USED as the "
+        "default supplement set."
+    )
+    lines.append("")
+    lines.append("⚠ FINAL FILTERS — client-specific rules ALWAYS WIN over the protocol:")
+    lines.append("  1. DIETARY PREFERENCE (vegetarian / Jain / vegan / pescatarian, "
+                 "etc.) is non-negotiable. If the protocol's foods_to_emphasise "
+                 "include meat / fish / eggs for a vegetarian client, SUBSTITUTE "
+                 "with plant-based equivalents (paneer, tofu, dal, hemp, sprouted "
+                 "legumes). For a Jain client, ALSO exclude onion / garlic / "
+                 "potato / carrot / beetroot from the protocol foods.")
+    lines.append("  2. CLIENT LOCATION + SEASON drives produce availability — "
+                 "use the season + city rules already established in the prompt.")
+    lines.append("  3. CYCLE PHASE (women) — cycle-aware modifications (menstrual "
+                 "iron focus, follicular fresh+light, ovulatory peak intensity, "
+                 "luteal warming+grounding) ALWAYS apply on top of the protocol "
+                 "schedule. Seed cycling continues.")
+    lines.append("  4. WILL-NOT-EAT list (foods_to_avoid + reported_triggers + "
+                 "non_negotiables) — these are HARD rules. Drop any protocol "
+                 "food that's on the client's no-go list and substitute.")
+    lines.append("  5. NEVER ship a meal plan that conflicts with these filters "
+                 "even if the protocol's textbook version would. The protocol "
+                 "is the SPINE; the filters are the SHAPE.")
+    lines.append("")
+    for pr in protocols:
+        lines.append(f"\n--- {pr.get('display_name', pr.get('slug'))} ({pr.get('slug')}) ---")
+        if pr.get("summary"):
+            lines.append(f"Summary: {pr['summary'].strip()}")
+        if pr.get("typical_duration_weeks"):
+            lines.append(f"Duration: {pr['typical_duration_weeks']} weeks")
+        if pr.get("foods_to_emphasise"):
+            foods = ", ".join(pr["foods_to_emphasise"][:20])
+            lines.append(f"Foods to emphasise (scaffold meals around these): {foods}")
+        if pr.get("foods_to_remove"):
+            foods = ", ".join(pr["foods_to_remove"][:20])
+            lines.append(f"Foods to REMOVE (binding exclusion — never include in meal plans): {foods}")
+        if pr.get("supplements_typically_used"):
+            supps = ", ".join(pr["supplements_typically_used"])
+            lines.append(f"Standard supplements for this protocol: {supps}")
+        if pr.get("phases"):
+            lines.append("Phases (use as the weekly arc):")
+            for ph in pr["phases"]:
+                wk = f" ({ph.get('weeks', '?')}w)" if ph.get("weeks") else ""
+                lines.append(f"  • {ph.get('name', '?')}{wk}: {ph.get('summary', '').strip()[:200]}")
+                for a in (ph.get("key_actions") or [])[:5]:
+                    lines.append(f"      - {a}")
+        if pr.get("key_steps"):
+            lines.append("Key steps:")
+            for k in pr["key_steps"][:8]:
+                lines.append(f"  - {k}")
+        if pr.get("cautions"):
+            lines.append("Cautions:")
+            for c in pr["cautions"][:6]:
+                lines.append(f"  ⚠ {c}")
+        if pr.get("notes_for_coach"):
+            lines.append(f"Coach notes on this protocol: {pr['notes_for_coach'].strip()[:400]}")
+    lines.append("")
+    return "\n".join(lines)
+
+
 def _load_catalogue_notes(plan: dict) -> str:
     """Collect notes_for_coach from catalogue YAMLs for all entities referenced in the plan.
 
@@ -1318,12 +1426,14 @@ Use these tips in relevant meal sections — don't dump them all in one place. M
 
     top_of_mind = _top_of_mind_block(client, plan)
     cycle = _cycle_block(client)
+    attached_protocol = _attached_protocol_block(plan)
 
     prompt = f"""You are writing a warm, friendly {plan_weeks}-week MEAL PLAN document for a client.
 The coach (Shivani Hariharan) has prepared a structured plan. Turn the nutrition data into a beautiful, practical meal plan the client can actually USE.
 
 {top_of_mind}
 {cycle}
+{attached_protocol}
 {_BANNED_GENERIC_RULE}
 
 CLIENT PROFILE:
@@ -1432,11 +1542,13 @@ COACH'S CUSTOM KNOWLEDGE (weave naturally into the intro and tips):
 
     top_of_mind = _top_of_mind_block(client, plan)
     cycle = _cycle_block(client)
+    attached_protocol = _attached_protocol_block(plan)
 
     prompt = f"""You are writing a short supplement protocol introduction letter for a client.
 
 {top_of_mind}
 {cycle}
+{attached_protocol}
 {_BANNED_GENERIC_RULE}
 
 
@@ -1539,6 +1651,7 @@ COACH'S CUSTOM KNOWLEDGE (weave naturally into relevant sections):
 
     top_of_mind = _top_of_mind_block(client, plan)
     cycle = _cycle_block(client)
+    attached_protocol = _attached_protocol_block(plan)
 
     prompt = f"""You are writing a warm, practical {plan_weeks}-week COACHING PLAN for a client — covering lifestyle, learning, labs, and tracking.
 This document is the companion to the meal plan and supplement plan. It covers everything EXCEPT food and supplements.
@@ -1546,6 +1659,7 @@ The coach (Shivani Hariharan) has prepared the structured data below.
 
 {top_of_mind}
 {cycle}
+{attached_protocol}
 {_BANNED_GENERIC_RULE}
 
 CLIENT PROFILE:
@@ -1660,6 +1774,7 @@ COACH'S CUSTOM KNOWLEDGE (weave naturally into the plan):
 
     top_of_mind = _top_of_mind_block(client, plan)
     cycle = _cycle_block(client)
+    attached_protocol = _attached_protocol_block(plan)
 
     prompt = f"""You are writing a warm, practical {plan_weeks}-week DETAILED EXERCISE PLAN
 for a client who has explicitly asked for the depth. Most clients get a simple
@@ -1668,6 +1783,7 @@ want a real, progressive movement programme.
 
 {top_of_mind}
 {cycle}
+{attached_protocol}
 {_BANNED_GENERIC_RULE}
 
 CLIENT PROFILE:
@@ -1971,6 +2087,7 @@ MOVEMENT & WELLNESS:
 
     top_of_mind = _top_of_mind_block(client, plan)
     cycle = _cycle_block(client)
+    attached_protocol = _attached_protocol_block(plan)
 
     prompt = f"""You are writing a warm, friendly, practical {plan_weeks}-week wellness plan letter for a client.
 The coach (Shivani Hariharan, a functional medicine health coach) has prepared this structured plan.
@@ -1978,6 +2095,7 @@ Your job is to turn the coach's structured data into a beautiful, easy-to-read d
 
 {top_of_mind}
 {cycle}
+{attached_protocol}
 {_BANNED_GENERIC_RULE}
 
 CLIENT PROFILE:
@@ -2259,6 +2377,7 @@ def _validate_letter_specificity(
         return markdown, []
 
     cycle = _cycle_block(client).strip()
+    attached_protocol_ctx = _attached_protocol_block(plan).strip()
 
     SYSTEM = """You are a client-specificity QA assistant for a Functional Medicine coach.
 Your only job: catch GENERIC coaching tips in a client letter and rewrite them
@@ -2271,9 +2390,10 @@ tips and should be left alone.
 
 SCORING (1–5):
   5 = explicitly references this client's chief complaint, lab, trigger,
-      non-negotiable, life event, food they eat, or named driver
+      non-negotiable, life event, food they eat, named driver, OR the
+      attached FM protocol's specific phase / step / food rule
   4 = clearly tailored to a category they mentioned (e.g. "your perimenopausal
-      hormone shifts")
+      hormone shifts") or to the attached protocol's general approach
   3 = somewhat tailored — references their goal or a general feature
   2 = generic but contextually placed
   1 = pure FM boilerplate ("eat whole foods", "manage stress", "stay hydrated",
@@ -2281,9 +2401,11 @@ SCORING (1–5):
 
 REWRITE RULES (only for tips scored < 3):
   - Replace the generic tip with a specific version that references the
-    TOP-OF-MIND context provided.
+    TOP-OF-MIND context AND/OR the ATTACHED PROTOCOL CONTEXT provided.
+  - If an attached protocol exists, prefer rewrites that reference the
+    protocol's named phase, key step, food rule, or supplement.
   - Keep the same intent. Don't introduce new clinical claims, doses, or
-    foods that weren't in the original.
+    foods that weren't in the original or the attached protocol.
   - Keep the same line / bullet structure. Don't add new sections.
   - Match the original tone (warm, plain English, India-context).
   - If a tip really can't be made specific from the available context,
@@ -2303,6 +2425,7 @@ CRITICAL: Don't touch:
     user_payload = {
         "top_of_mind_context": top_of_mind,
         "cycle_context": cycle,
+        "attached_protocol_context": attached_protocol_ctx,
         "letter_markdown": markdown,
     }
 

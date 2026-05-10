@@ -1,0 +1,96 @@
+slug: ssri-snri
+drug_name: SSRIs / SNRIs (Antidepressants)
+drug_aliases:
+  - fluoxetine
+  - prozac
+  - flunil
+  - sertraline
+  - zoloft
+  - serlift
+  - escitalopram
+  - cipralex
+  - lexapro
+  - nexito
+  - paroxetine
+  - paxil
+  - paxidep
+  - fluvoxamine
+  - venlafaxine
+  - effexor
+  - venlor
+  - duloxetine
+  - cymbalta
+  - duzela
+  - ssri
+  - snri
+drug_class: ssri
+summary: |
+  Selective serotonin / norepinephrine reuptake inhibitors. Affect
+  micronutrient status indirectly through changes to GI function,
+  appetite, and mitochondrial activity. Folate / B12 / B6 are critical
+  for serotonin synthesis — deficiency can blunt antidepressant response.
+  CoQ10 may be reduced; melatonin secretion can be disrupted.
+depletes:
+  - nutrient: Folate (5-MTHF)
+    severity: moderate
+    mechanism: Folate is required for BH4 synthesis, the cofactor for tryptophan hydroxylase (serotonin precursor). MTHFR variants amplify this.
+    monitoring_recommendation: RBC folate + homocysteine; consider MTHFR genotype if response is poor
+    typical_supplement_dose: 1-15 mg L-methylfolate daily — adjunct shown to augment SSRI response
+  - nutrient: Vitamin B12
+    severity: moderate
+    mechanism: B12 cofactor for methionine synthase + methylation cycle. Deficiency mimics + worsens depression.
+    monitoring_recommendation: Serum B12 + MMA annually; FM optimal > 500 pg/mL
+    typical_supplement_dose: 1000 mcg methylcobalamin sublingual
+  - nutrient: Vitamin B6 (P5P)
+    severity: moderate
+    mechanism: B6 cofactor for tryptophan → serotonin and 5-HTP → serotonin conversion.
+    monitoring_recommendation: Plasma PLP if symptoms suggest
+    typical_supplement_dose: 25-50 mg P5P (active form)
+  - nutrient: CoQ10
+    severity: mild
+    mechanism: Mitochondrial impact suspected; data mixed.
+    monitoring_recommendation: Empirical supplementation if fatigue prominent
+    typical_supplement_dose: 100 mg ubiquinol
+  - nutrient: Magnesium
+    severity: mild
+    mechanism: Magnesium supports GABA + neurotransmitter balance.
+    monitoring_recommendation: RBC magnesium
+    typical_supplement_dose: 400 mg magnesium glycinate at bedtime
+  - nutrient: Omega-3 (EPA / DHA)
+    severity: mild
+    mechanism: Omega-3 affects serotonin receptor function + neuroplasticity. Low intake correlates with poor SSRI response.
+    monitoring_recommendation: Omega-3 index test (target > 8%)
+    typical_supplement_dose: 2-3 g EPA + DHA combined daily (EPA-dominant for mood)
+timing_separations:
+  - "Take same time daily — consistent levels matter."
+  - "Avoid grapefruit juice (CYP3A4 inhibition for some SSRIs)."
+contraindicated_supplements:
+  - st-johns-wort
+  - 5-htp
+  - sam-e
+  - tryptophan
+monitoring_labs:
+  - Symptom rating scales (PHQ-9, GAD-7) at 4-6 week intervals
+  - B12 + MMA + folate + homocysteine annually
+  - TSH (OCP / thyroid often co-exist with depression)
+  - Vitamin D (low D = depression risk + reduced SSRI response)
+coach_notes: |
+  ⚠ SEROTONIN SYNDROME risk — NEVER recommend St John's Wort, 5-HTP,
+  SAM-e, or L-tryptophan to a client on SSRI/SNRI without explicit
+  psychiatrist sign-off. Even high-dose tryptophan-rich food (turkey,
+  cottage cheese) is fine, but supplemental forms are not.
+  Methylfolate (5-MTHF) augmentation — strong data shows 7.5-15 mg
+  L-methylfolate added to SSRI improves response in 30-50% of partial
+  responders. Coach can suggest discussing this with the prescriber.
+  Discontinuation is best done gradually over 4-12 weeks with clinician —
+  abrupt withdrawal causes brain-zaps, dizziness, mood crashes.
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+  - id: vitaone-skill-practice-guide
+    location: Antidepressant nutrient interactions
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-09
+updated_by: shivani

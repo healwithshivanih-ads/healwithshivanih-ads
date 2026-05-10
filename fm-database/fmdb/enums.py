@@ -127,6 +127,65 @@ class HomeRemedyCategory(str, Enum):
     other = "other"
 
 
+class ProtocolCategory(str, Enum):
+    """High-level FM protocol categories. A coach picks a Protocol for a
+    client when their pattern matches the indications — protocols give a
+    structured 4–12 week path versus ad-hoc supplement + lifestyle picks.
+    """
+    gut_healing = "gut_healing"                  # 5R, GAPS, candida cleanse
+    elimination_diet = "elimination_diet"        # AIP, Whole30, low-FODMAP
+    hormone_balance = "hormone_balance"          # cycle sync, perimenopause support
+    metabolic_reset = "metabolic_reset"          # weight loss, insulin sensitization
+    adrenal_recovery = "adrenal_recovery"        # HPA-axis support
+    detox_liver_support = "detox_liver_support"  # phase I/II liver support
+    anti_inflammatory = "anti_inflammatory"      # systemic inflammation reset
+    mitochondrial_support = "mitochondrial_support"
+    thyroid_optimization = "thyroid_optimization"
+    blood_sugar_regulation = "blood_sugar_regulation"
+    other = "other"
+
+
+class DrugClass(str, Enum):
+    """High-level drug classes used to group medication-nutrient depletion
+    entries. Helps a coach see "all PPIs deplete B12 + magnesium" without
+    needing to list every brand name.
+    """
+    thyroid_hormone = "thyroid_hormone"           # levothyroxine, liothyronine
+    metformin = "metformin"
+    ppi = "ppi"                                   # omeprazole, pantoprazole, esomeprazole
+    h2_blocker = "h2_blocker"                     # ranitidine, famotidine
+    statin = "statin"                             # atorvastatin, rosuvastatin, simvastatin
+    oral_contraceptive = "oral_contraceptive"     # combined OCP, progestin-only
+    hrt = "hrt"                                   # estradiol, conjugated estrogens
+    beta_blocker = "beta_blocker"                 # metoprolol, propranolol, atenolol
+    ace_inhibitor = "ace_inhibitor"               # enalapril, lisinopril, ramipril
+    arb = "arb"                                   # losartan, telmisartan
+    thiazide_diuretic = "thiazide_diuretic"       # HCTZ, indapamide
+    loop_diuretic = "loop_diuretic"               # furosemide, torsemide
+    ssri = "ssri"                                 # fluoxetine, sertraline, escitalopram
+    snri = "snri"                                 # venlafaxine, duloxetine
+    benzodiazepine = "benzodiazepine"             # alprazolam, lorazepam, clonazepam
+    nsaid = "nsaid"                               # ibuprofen, diclofenac, naproxen
+    aspirin = "aspirin"
+    corticosteroid = "corticosteroid"             # prednisone, hydrocortisone
+    antibiotic = "antibiotic"
+    methotrexate = "methotrexate"
+    insulin = "insulin"
+    sulfonylurea = "sulfonylurea"                 # glimepiride, gliclazide
+    levodopa = "levodopa"
+    phenytoin = "phenytoin"
+    valproate = "valproate"
+    antipsychotic = "antipsychotic"
+    other = "other"
+
+
+class DepletionSeverity(str, Enum):
+    """How significantly a drug depletes / interferes with a nutrient."""
+    mild = "mild"            # subclinical; routine monitoring usually enough
+    moderate = "moderate"    # clinically meaningful; consider supplementation
+    severe = "severe"        # well-documented depletion; supplement is standard of care
+
+
 class MechanismCategory(str, Enum):
     endocrine = "endocrine"          # HPA axis, sex hormones, thyroid signaling
     neurological = "neurological"    # vagal tone, neurotransmitter receptors

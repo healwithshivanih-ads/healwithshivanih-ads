@@ -17,7 +17,7 @@ import json
 import os
 from typing import Any
 
-from .results import AssessResult, AssessUsage, AssessSuggestions, ChatContext, ChatResult
+from .results import AssessResult, AssessUsage, AssessSuggestions, ChatContext, ChatResult, compute_fit_percent
 
 
 # JSON schema for the structured response. Intentionally narrow — every
@@ -44,15 +44,47 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
         },
         "likely_drivers": {
             "type": "array",
-            "description": "Mechanisms most likely driving the picture, ranked.",
+            "description": "Mechanisms most likely driving the picture, ranked. CLASSIFY EACH using the ATM cognitive model (Antecedent / Trigger / Mediator / Expression) and link them into a cascade graph via `parents`. This separates root causes from downstream effects — the FM way of thinking.",
             "items": {
                 "type": "object",
-                "required": ["mechanism_slug", "rank", "reasoning"],
+                "required": ["mechanism_slug", "rank", "reasoning", "atm_role"],
                 "properties": {
                     "mechanism_slug": {"type": "string", "description": "MUST be a slug from the catalogue subgraph."},
-                    "rank": {"type": "integer", "description": "1 = most likely."},
-                    "reasoning": {"type": "string"},
+                    "rank": {"type": "integer", "description": "1 = most clinically actionable / most upstream / highest leverage. Antecedents and triggers usually rank higher than mediators; mediators higher than expressions."},
+                    "reasoning": {"type": "string", "description": "Why this is a driver — reference specific client data."},
                     "supporting_evidence": {"type": "array", "items": {"type": "string"}, "description": "Quote symptoms or labs that support this hypothesis."},
+                    "atm_role": {
+                        "type": "string",
+                        "enum": ["antecedent", "trigger", "mediator", "expression"],
+                        "description": (
+                            "ATM role:\n"
+                            "  • antecedent — predisposing factor, often constitutional / genetic / "
+                            "in-utero / early-childhood. Doesn't go away (e.g. MTHFR variant, "
+                            "family history of autoimmunity, low birth weight, early gut "
+                            "colonisation deficit).\n"
+                            "  • trigger — precipitating event that started the cascade (e.g. "
+                            "infection like EBV / dengue / COVID, food poisoning, antibiotic "
+                            "course, head injury, divorce, chemo, gluten exposure, head injury, "
+                            "first pregnancy, menarche, menopause).\n"
+                            "  • mediator — ongoing perpetuator (e.g. chronic stress, current "
+                            "food sensitivity, sleep deprivation, ongoing toxin exposure, "
+                            "untreated dysbiosis, leaky gut, chronic inflammation, hpa-axis "
+                            "dysregulation). MOST 'drivers' in a real client are mediators.\n"
+                            "  • expression — symptom or syndrome the client presents with, "
+                            "downstream of triggers + mediators (e.g. Hashimoto's antibodies, "
+                            "IBS-D, eczema flare, perimenopause symptoms). The 'tip of the "
+                            "iceberg'."
+                        ),
+                    },
+                    "parents": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "description": "Mechanism slugs of OTHER drivers in this list that PRECEDE this one in the cascade. Empty for antecedents and triggers (they're root). Populated for mediators (point to triggers / antecedents that drove them) and expressions (point to mediators). E.g. expression `hashimoto-antibodies` might have parents `[gluten-exposure, leaky-gut, chronic-inflammation]`. Use ONLY mechanism slugs that appear in this same likely_drivers array.",
+                    },
+                    "chain_evidence": {
+                        "type": "string",
+                        "description": "1-2 sentences explaining why this driver sits at this position in the chain. E.g. 'Trigger — client's symptoms started after 3-week course of doxycycline in 2023, prior history was unremarkable.' Or 'Mediator — chronic work stress 4+ years documented in intake, drives cortisol patterns visible on saliva test.'",
+                    },
                 },
             },
         },
@@ -122,6 +154,40 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
                     "evidence_tier_caveat": {"type": "string", "description": "If catalogue tier is fm_specific_thin or confirm_with_clinician, surface that."},
                     "contraindication_check": {"type": "string", "description": "Any flagged conflicts with client meds/conditions."},
                     "vitaone_url": {"type": "string", "description": "If this supplement maps to a product in `vitaone_inventory`, set this to that product's `url` verbatim. Empty string when no VitaOne match exists. The coach uses this to point clients at the affiliate-stocked product."},
+                },
+            },
+        },
+        "suggested_protocols": {
+            "type": "array",
+            "description": "FM protocols (5R, AIP, Whole30, weight-loss reset, adrenal recovery, etc.) that match this client's pattern. Score each candidate across 11 weighted factors — server-side computes the weighted overall fit_percent and shows only top 2 to the coach. Skip a protocol entirely if its indications don't fit OR any contraindication applies. Don't combine restrictive protocols (e.g. AIP + weight-loss reset).",
+            "items": {
+                "type": "object",
+                "required": ["protocol_slug", "why_indicated", "factor_scores"],
+                "properties": {
+                    "protocol_slug": {"type": "string", "description": "MUST be a slug from the `protocols` array in the catalogue subgraph."},
+                    "why_indicated": {"type": "string", "description": "2–4 sentences. Reference SPECIFIC client facts: chief complaint, named drivers, lab values, conditions, current medications, life events. NOT generic FM rationale."},
+                    "factor_scores": {
+                        "type": "object",
+                        "description": "Score this protocol's fit for THIS client across 11 factors. Each is 1–5: 5 = textbook fit, 4 = strong, 3 = reasonable with caveats, 2 = weak, 1 = poor / mismatch. Be honest — don't inflate. The server computes the weighted overall fit % from these.",
+                        "required": ["symptoms", "medical_safety", "labs", "goals", "gut_function", "metabolic_health", "nutrient_status", "lifestyle", "culture", "real_world_fit", "sustainability"],
+                        "properties": {
+                            "symptoms": {"type": "integer", "description": "Symptoms + chief complaints match. (weight 20%)"},
+                            "medical_safety": {"type": "integer", "description": "Diagnoses, medical history, current medications, risk-level compatibility. Score LOW if any contraindication, drug interaction, or active disease conflict. (weight 18%)"},
+                            "labs": {"type": "integer", "description": "Lab values + biomarkers support this protocol. (weight 15%)"},
+                            "goals": {"type": "integer", "description": "Alignment with the client's stated health goals. (weight 10%)"},
+                            "gut_function": {"type": "integer", "description": "Gut symptoms, food reactions, digestive readiness. (weight 10%)"},
+                            "metabolic_health": {"type": "integer", "description": "Insulin / glucose / lipid / weight context fit. (weight 8%)"},
+                            "nutrient_status": {"type": "integer", "description": "Known deficiencies addressed by this protocol. (weight 7%)"},
+                            "lifestyle": {"type": "integer", "description": "Sleep / stress / movement / schedule realism. (weight 5%)"},
+                            "culture": {"type": "integer", "description": "Religion / ethics / dietary preference compatibility. Vegetarian Jain client + meat-heavy AIP would score 1–2 here. (weight 3%)"},
+                            "real_world_fit": {"type": "integer", "description": "Budget, ingredient access (India), cooking ability, family / household constraints. (weight 2%)"},
+                            "sustainability": {"type": "integer", "description": "Long-term adherence likelihood — can this client realistically sustain this for the protocol's duration? (weight 2%)"},
+                        },
+                    },
+                    "when_to_start": {"type": "string", "description": "e.g. 'immediately', 'after 2 weeks of foundation work', 'after lab results return'. Optional — empty string if no specific sequencing needed."},
+                    "expected_weeks": {"type": "integer", "description": "Expected duration in weeks for THIS client (may differ from protocol default if client needs slower pacing)."},
+                    "client_specific_modifications": {"type": "string", "description": "Modifications to the standard protocol for this client — e.g. 'vegetarian — substitute legumes phase with paneer', 'avoid ashwagandha (currently on levothyroxine)', 'extend Phase 1 to 4 weeks given low energy baseline'. Empty string if standard protocol applies."},
+                    "contraindication_check": {"type": "string", "description": "Explicit check against the protocol's contraindication list — any flagged conflicts with client conditions / meds / history."},
                 },
             },
         },
@@ -247,6 +313,31 @@ HARD RULES (violating these breaks the downstream system):
 8. Honest uncertainty: if symptoms or labs are too sparse to make confident
    suggestions, return SHORTER lists and say so in `synthesis_notes`.
 
+8a. ATM CASCADE CLASSIFICATION (`likely_drivers[*].atm_role` + `.parents`).
+    For EVERY driver, classify the role in the FM cognitive model:
+      - antecedent → genetic / constitutional / early-life predisposition
+      - trigger    → precipitating event that started the cascade
+      - mediator   → ongoing perpetuator (this is most drivers)
+      - expression → presenting symptom / syndrome (downstream)
+    Then link them via `parents`: each mediator/expression points back to
+    the slugs of OTHER drivers in this same list that PRECEDE it in the
+    cascade. The graph reads root → leaf. Antecedents + triggers have
+    empty `parents`; mediators point to antecedents/triggers; expressions
+    point to mediators.
+    Example for a Hashimoto's client:
+      - antecedent: `genetic-autoimmune-predisposition`, parents=[]
+      - trigger:    `gluten-exposure`, parents=[]
+      - mediator:   `leaky-gut`, parents=[gluten-exposure]
+      - mediator:   `chronic-inflammation`, parents=[leaky-gut]
+      - mediator:   `molecular-mimicry`, parents=[leaky-gut, genetic-autoimmune-predisposition]
+      - expression: `hashimoto-antibodies`, parents=[molecular-mimicry, chronic-inflammation]
+    DON'T flatten everything to "mediator". DO surface antecedents from
+    medical_history + family_history. DO surface triggers from intake
+    notes (illness / event / life change that preceded symptoms). The
+    coach uses this graph to find the LEVERAGE POINT — protocols
+    targeting upstream drivers (triggers + early mediators) yield more
+    durable change than treating the expression alone.
+
 9. CLIENT BIO: `client_context.measurements` may include height, weight, BMI,
    waist:hip ratio, BMR (kcal/day), resting HR, blood pressure. Use these:
    - BMI > 25 + central adiposity (waist:hip > 0.85 women / 0.9 men) → flag
@@ -340,7 +431,40 @@ HARD RULES (violating these breaks the downstream system):
       history items explicitly in `synthesis_notes` when they shape the
       hypothesis.
 
-18. DIETARY PROTOCOL SELECTION — match the clinical picture to the correct
+18. PROTOCOL RECOMMENDATIONS (`suggested_protocols`). The catalogue subgraph
+    includes a `protocols` array — these are structured FM protocols
+    (5R, AIP, Whole30, low-FODMAP, weight-loss reset, adrenal recovery,
+    liver detox, cycle sync, anti-inflammatory, mitochondrial,
+    blood-sugar regulation). For each protocol you'd consider, return the
+    slug, a SPECIFIC client-referenced rationale, and 11 per-factor scores
+    (1–5) covering symptoms, medical safety, labs, goals, gut function,
+    metabolic health, nutrient status, lifestyle, culture, real-world fit,
+    and sustainability. The server computes a weighted overall fit % and
+    shows ONLY THE TOP 2 to the coach.
+
+    Critical rules:
+    - SCORE HONESTLY across all 11 factors. Don't inflate. A vegetarian
+      Jain client + AIP should score `culture: 1` (eggs, animal protein,
+      onion/garlic all banned for them). The math will weed out poor fits.
+    - `medical_safety` (weight 18%) is your safety lever — if any
+      contraindication / drug interaction / active disease conflicts with
+      the protocol, score this 1–2. The weighted % will fall below 60% and
+      the protocol will (correctly) appear as a poor fit.
+    - `why_indicated` (2–4 sentences) MUST reference specific client facts
+      — chief complaint, named drivers, lab values, named conditions,
+      current meds, life events. NOT generic FM rationale.
+    - `contraindication_check` must EXPLICITLY check the protocol's listed
+      contraindications against this client's data.
+    - Score 4–5 protocols if the picture supports them — server picks top 2.
+    - If client has HPA dysregulation / adrenal fatigue, score
+      `adrenal-recovery-protocol` highest (it should be done FIRST before
+      weight-loss / elimination — fasting + restriction worsen HPA).
+    - DO NOT combine restrictive protocols in the same plan (the coach
+      picks one) but you MAY suggest two so the coach sees the runner-up.
+    - Skip `suggested_protocols` entirely (return empty list) if no
+      protocol scores above 50% weighted.
+
+19. DIETARY PROTOCOL SELECTION — match the clinical picture to the correct
     protocol. DO NOT default to a generic "anti-inflammatory" or HPA-axis
     framing for every client. Read the symptoms and choose the right tool:
 
@@ -696,6 +820,16 @@ def synthesize(
     for block in resp.content:
         if getattr(block, "type", None) == "tool_use" and block.name == "synthesize_assessment":
             suggestions = AssessSuggestions.model_validate(block.input or {})
+            # Server-side: compute weighted fit_percent from factor_scores
+            # for each protocol suggestion + sort top-2 by fit. The AI returns
+            # the per-factor scores; we own the math so the weighting stays
+            # consistent regardless of what the model thinks the % is.
+            for ps in suggestions.suggested_protocols:
+                ps.fit_percent = compute_fit_percent(ps.factor_scores)
+            suggestions.suggested_protocols.sort(
+                key=lambda p: (p.fit_percent or 0.0), reverse=True
+            )
+            suggestions.suggested_protocols = suggestions.suggested_protocols[:2]
             return AssessResult(suggestions=suggestions, usage=usage_obj)
 
     return AssessResult(suggestions=AssessSuggestions(), usage=usage_obj)

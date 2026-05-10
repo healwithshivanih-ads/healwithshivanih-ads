@@ -13,6 +13,7 @@ import type { BaseEntity, CatalogueKind } from "@/lib/fmdb/types";
 const KINDS_WITH_DETAIL: ReadonlySet<CatalogueKind> = new Set([
   "topics",
   "supplements",
+  "protocols",
 ]);
 
 export function CatalogueTable({

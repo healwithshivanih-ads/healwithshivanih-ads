@@ -1,0 +1,124 @@
+slug: autoimmune-paleo-aip
+display_name: Autoimmune Protocol (AIP)
+aliases:
+  - aip
+  - aip-diet
+  - autoimmune-paleo
+  - autoimmune-protocol
+  - paleo-aip
+category: elimination_diet
+summary: |
+  A 6–8 week strict elimination diet designed to reduce autoimmune flares
+  by removing every common food trigger (grains, legumes, dairy, eggs,
+  nightshades, nuts, seeds, alcohol, sugar, NSAIDs). Followed by a
+  structured 6–10 week reintroduction phase to identify personal triggers.
+  Most rigorous of the elimination diets; reserve for diagnosed autoimmune
+  conditions or severe food-mediated symptoms.
+indications:
+  - diagnosed autoimmune disease (Hashimoto's, RA, psoriasis, lupus, MS)
+  - rising autoantibodies despite other interventions
+  - multiple food sensitivities limiting other elimination diets
+  - severe eczema / psoriasis / chronic urticaria
+  - IBD in remission (with gastroenterologist sign-off)
+contraindications:
+  - eating disorder history
+  - underweight (BMI < 18.5)
+  - children / adolescents (refer to FM-trained pediatrician)
+  - pregnancy / lactation (modified version only, with clinician)
+typical_duration_weeks: 14
+phases:
+  - name: "Strict elimination (weeks 1–6)"
+    weeks: 6
+    summary: Remove all AIP trigger categories. Eat only AIP-approved foods.
+    key_actions:
+      - cut grains, legumes, dairy, eggs, nightshades, nuts, seeds, alcohol, coffee, sugar, processed oils
+      - eat freely — meat, fish, organ meats, vegetables (non-nightshade), fruits (limited), AIP-friendly fats (coconut, avocado, ghee, olive oil)
+      - track symptoms daily — 1-10 severity score on top 3 markers
+      - prioritise sleep, stress reduction, gentle movement
+  - name: "Maintenance (week 6–8)"
+    weeks: 2
+    summary: |
+      Continue strict AIP for 2 more weeks if symptoms still improving.
+      Once symptoms plateau or significantly resolve, begin reintroduction.
+    key_actions:
+      - continue daily symptom log
+      - confirm clear baseline before reintroducing
+  - name: "Structured reintroduction (weeks 9–14+)"
+    weeks: 6
+    summary: |
+      Reintroduce one food at a time, every 3–5 days. Track reactions.
+      Order: lower-risk foods first.
+    key_actions:
+      - week 9 — egg yolks (cooked), then ghee
+      - week 10 — seeds + nuts (one type at a time)
+      - week 11 — coffee + cocoa
+      - week 12 — nightshades (one at a time, cooked first)
+      - week 13 — gluten-free grains (white rice, then quinoa)
+      - week 14+ — legumes, dairy (with clinician guidance)
+key_steps: []
+foods_to_emphasise:
+  - meat (grass-fed if possible) + fish + bone broth
+  - organ meats once / week (liver, heart)
+  - non-nightshade vegetables (leafy greens, cruciferous, root veg except potato)
+  - fruits — berries, apples, citrus (limit to 2 servings/day for sugar control)
+  - coconut products (oil, milk, flesh)
+  - olives + avocado
+  - fermented vegetables (sauerkraut, kimchi without nightshades)
+foods_to_remove:
+  - all grains (including rice + oats during elimination)
+  - all legumes (chickpeas, lentils, dal — even sprouted)
+  - all dairy
+  - eggs (yolks + whites)
+  - nightshades — tomato, potato, peppers, eggplant, paprika, cayenne
+  - all nuts + seeds (and seed-based spices like cumin, coriander, mustard)
+  - alcohol + caffeine + chocolate
+  - sugar + sweeteners (including honey + maple)
+  - processed seed oils + emulsifiers
+  - NSAIDs (where possible)
+supplements_typically_used:
+  - l-glutamine
+  - omega-3
+  - vitamin-d
+  - magnesium-glycinate
+  - probiotics
+  - turmeric
+expected_outcomes:
+  - reduction in joint pain / swelling by week 4–6
+  - skin improvement (psoriasis, eczema) by week 6–8
+  - lower antibody titres on retest at week 12
+  - clearer identification of personal trigger foods
+  - lasting tolerance of safer foods after structured reintroduction
+cautions:
+  - VERY restrictive — high social cost, requires strong support system
+  - Indian context — most dals + spices excluded; recipe planning critical
+  - Reintroduction MUST be structured — random reintroduction loses the diagnostic value
+  - If client doesn't improve by week 6, AIP isn't the right protocol — reassess with clinician
+linked_to_topics:
+  - autoimmune
+  - hashimoto-thyroid
+  - rheumatoid-arthritis
+  - psoriasis
+  - food-sensitivities
+linked_to_mechanisms:
+  - leaky-gut
+  - chronic-inflammation
+linked_to_symptoms:
+  - joint-pain
+  - skin-rash
+  - food-sensitivities
+sources:
+  - id: vitaone-skill-practice-guide
+    location: AIP elimination diet section
+  - id: vitaone-elimination-diet-toolkit
+    location: AIP variant
+evidence_tier: fm_specific_thin
+notes_for_coach: |
+  Most demanding protocol in the catalogue — only suggest when client has
+  diagnosed autoimmune + has expressed willingness to commit. Indian
+  vegetarian clients struggle most (no eggs, dal, paneer, most dals + spices)
+  — for them consider the modified AIP with rice + dal-free legumes.
+  Recommend a Wahls Protocol variant if neurological autoimmune (MS).
+version: 1
+status: active
+updated_at: 2026-05-09
+updated_by: shivani

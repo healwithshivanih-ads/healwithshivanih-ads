@@ -1,0 +1,134 @@
+slug: blood-sugar-regulation
+display_name: Blood Sugar Regulation Protocol
+aliases:
+  - blood-sugar-protocol
+  - glucose-stabilisation
+  - insulin-sensitivity
+  - prediabetes-protocol
+category: blood_sugar_regulation
+summary: |
+  An 8–10 week protocol to stabilise blood sugar, restore insulin
+  sensitivity, and prevent / reverse prediabetes. Combines food sequencing
+  (vegetables → protein → carbs), low-glycemic eating, post-meal walking,
+  strength training, and supportive supplements. Less aggressive than the
+  metabolic-reset protocol — designed for clients who don't have major
+  weight loss as a goal but need glucose stability.
+indications:
+  - prediabetes (HbA1c 5.7–6.4)
+  - fasting glucose > 100 mg/dL
+  - HOMA-IR > 1.5
+  - reactive hypoglycemia (shaky, irritable, hungry 2–3h after meals)
+  - PCOS with insulin resistance
+  - family history of T2DM
+  - post-meal energy crash
+  - gestational diabetes history
+contraindications:
+  - type 1 diabetes (clinician supervision required)
+  - on insulin or sulfonylureas (clinician check before reducing carbs)
+  - eating disorder history
+typical_duration_weeks: 10
+phases:
+  - name: "Foundation (weeks 1–2)"
+    weeks: 2
+    summary: |
+      Stop major glucose spikes. Build the new meal architecture.
+    key_actions:
+      - 3 meals + 1 snack — protein at every meal (25–30g)
+      - cut all liquid sugars + sweetened drinks
+      - cut refined grains (white bread, white rice, pasta) — limit to 1× / week
+      - eat in this order — vegetables FIRST, then protein, then carbs (cuts post-meal glucose 30–50%)
+      - 10-min walk after every meal (drops post-meal glucose 20–30%)
+      - daily food + symptom log
+  - name: "Insulin sensitivity build (weeks 3–6)"
+    weeks: 4
+    summary: |
+      Push the metabolic adaptations through structured eating + exercise.
+    key_actions:
+      - 12h overnight fast (e.g. 8pm–8am) — NOT extended fasting
+      - keep carb intake to 100–130g/day from whole-food sources
+      - 2× / week strength training (compound lifts, 30 min)
+      - 4× / week walking 30 min minimum
+      - vinegar (1 tbsp apple cider vinegar in water) before highest-carb meal
+      - cinnamon 1/2 tsp/day in food or tea
+  - name: "Maintenance + retest (weeks 7–10)"
+    weeks: 4
+    summary: |
+      Build sustainable habits + re-test markers.
+    key_actions:
+      - re-test fasting glucose, HbA1c, HOMA-IR, lipid panel at week 8
+      - maintain 12h overnight fast as default
+      - continue food sequencing at every meal
+      - reduce supplement load to maintenance
+      - reintroduce small amounts of refined carbs if tolerated (only if HbA1c normalised)
+key_steps:
+  - eat vegetables FIRST at every meal
+  - 25–30g protein at every meal
+  - 10-min post-meal walk
+  - 12h overnight fast
+  - strength training 2× / week minimum
+foods_to_emphasise:
+  - 30g protein per meal — eggs, fish, chicken, paneer, dal
+  - 2 fist-sized vegetables per meal — leafy greens + cruciferous + colourful
+  - 1 fist-sized complex carb — quinoa, millet, sweet potato, oats, brown rice
+  - healthy fats — avocado, olive oil, ghee, nuts (1–2 tbsp/meal)
+  - berries + apple + citrus (low-glycemic fruits)
+  - fermented foods 1× / day
+  - vinegar before high-carb meals
+  - cinnamon + turmeric daily
+foods_to_remove:
+  - liquid sugars — juice, sweetened tea, soda
+  - refined grains — white bread, white rice, biscuits, pasta
+  - all sweets + desserts (during 10 weeks)
+  - sweetened yogurt + flavoured milks
+  - dried fruit (concentrated sugar)
+  - processed snacks — chips, namkeen
+  - alcohol (worsens insulin sensitivity)
+supplements_typically_used:
+  - berberine
+  - chromium
+  - magnesium-glycinate
+  - inositol
+  - alpha-lipoic-acid
+  - cinnamon
+  - omega-3
+expected_outcomes:
+  - HbA1c reduction 0.3–0.5 by week 10
+  - fasting glucose reduction 10–20 mg/dL
+  - HOMA-IR normalisation
+  - reduced post-meal energy crash
+  - reduced sugar cravings
+  - 2–4 kg fat loss (if applicable)
+  - improved sleep + mood
+cautions:
+  - "Berberine can interact with metformin — clinician check"
+  - "Chromium can lower blood sugar — monitor if on diabetes meds"
+  - "Don't combine with metabolic-reset protocol — too much restriction"
+  - "Track with continuous glucose monitor (CGM) if available — most actionable feedback"
+linked_to_topics:
+  - blood-sugar-dysregulation
+  - insulin-resistance
+  - prediabetes
+  - pcos
+linked_to_mechanisms:
+  - insulin-resistance
+linked_to_symptoms:
+  - fatigue
+  - weight-gain
+sources:
+  - id: vitaone-skill-practice-guide
+    location: blood sugar section
+  - id: vitaone-blood-sugar-toolkit
+    location: insulin sensitivity protocol
+  - id: vitaone-cardiometabolic-toolkit
+    location: glucose regulation
+evidence_tier: strong
+notes_for_coach: |
+  The food-sequencing (veg-first) habit alone delivers significant glucose
+  improvements — emphasise this single behaviour as the highest-leverage
+  change. CGMs are extremely motivating — recommend if client can afford
+  one for 1 month. Don't stack with weight-loss-metabolic-reset — pick one;
+  this one is gentler.
+version: 1
+status: active
+updated_at: 2026-05-09
+updated_by: shivani

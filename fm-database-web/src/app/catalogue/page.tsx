@@ -9,12 +9,13 @@ import type {
   Supplement,
   Claim,
   Source,
+  Protocol,
 } from "@/lib/fmdb/types";
 
 export const dynamic = "force-dynamic";
 
 export default async function CataloguePage() {
-  const [topics, mechanisms, symptoms, supplements, claims, sources] =
+  const [topics, mechanisms, symptoms, supplements, claims, sources, protocols] =
     await Promise.all([
       loadAllOfKind<Topic>("topics"),
       loadAllOfKind<Mechanism>("mechanisms"),
@@ -22,6 +23,7 @@ export default async function CataloguePage() {
       loadAllOfKind<Supplement>("supplements"),
       loadAllOfKind<Claim>("claims"),
       loadAllOfKind<Source>("sources"),
+      loadAllOfKind<Protocol>("protocols"),
     ]);
 
   // Source records use `id` (not `slug`) and `title` (not `display_name`) on disk.
@@ -53,6 +55,7 @@ export default async function CataloguePage() {
           <TabsTrigger value="supplements">
             Supplements ({supplements.length})
           </TabsTrigger>
+          <TabsTrigger value="protocols">Protocols ({protocols.length})</TabsTrigger>
           <TabsTrigger value="claims">Claims ({claims.length})</TabsTrigger>
           <TabsTrigger value="sources">Sources ({sources.length})</TabsTrigger>
         </TabsList>
@@ -68,6 +71,9 @@ export default async function CataloguePage() {
         </TabsContent>
         <TabsContent value="supplements">
           <CatalogueTable kind="supplements" rows={supplements} />
+        </TabsContent>
+        <TabsContent value="protocols">
+          <CatalogueTable kind="protocols" rows={protocols} />
         </TabsContent>
         <TabsContent value="claims">
           <CatalogueTable kind="claims" rows={claims} />

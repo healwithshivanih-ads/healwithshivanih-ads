@@ -1280,3 +1280,237 @@ export async function resolveClientFileAction(
     : "text/plain";
   return { ok: true, filePath, mimeType };
 }
+
+// ────────────────────────────────────────────────────────────────────────────
+// Drug-nutrient depletion auto-flag — matches client.current_medications
+// (or client.medications) against the drug-depletion catalogue and returns
+// the matched records. Used by the Client Overview '💊 Medication impact'
+// panel. Match is case-insensitive substring on drug_name + drug_aliases.
+// ────────────────────────────────────────────────────────────────────────────
+
+export interface MedicationImpactMatch {
+  client_med_text: string;            // raw entry from client.current_medications
+  drug_slug: string;
+  drug_name: string;
+  drug_class?: string;
+  matched_alias: string;              // which alias / name caused the match
+  summary?: string;
+  depletes: Array<{
+    nutrient: string;
+    severity?: string;
+    mechanism?: string;
+    monitoring_recommendation?: string;
+    typical_supplement_dose?: string;
+  }>;
+  timing_separations?: string[];
+  contraindicated_supplements?: string[];
+  monitoring_labs?: string[];
+  coach_notes?: string;
+  evidence_tier?: string;
+}
+
+export interface MedicationImpactResult {
+  ok: boolean;
+  matches: MedicationImpactMatch[];
+  unmatched: string[];                // client meds with no catalogue record
+  error?: string;
+}
+
+export async function checkMedicationImpactsAction(
+  clientId: string,
+): Promise<MedicationImpactResult> {
+  try {
+    const { loadAllOfKind } = await import("@/lib/fmdb/loader");
+    const { getPlansRoot } = await import("@/lib/fmdb/paths");
+    const yaml = await import("js-yaml");
+
+    // Load client YAML directly (small file; no need to shell out)
+    const root = getPlansRoot();
+    const clientPath = path.join(root, "clients", clientId, "client.yaml");
+    const raw = await fs.readFile(clientPath, "utf-8").catch(() => null);
+    if (!raw) return { ok: false, matches: [], unmatched: [], error: "Client not found" };
+
+    const client = yaml.load(raw) as Record<string, unknown> | null;
+    if (!client || typeof client !== "object") {
+      return { ok: false, matches: [], unmatched: [], error: "Client YAML invalid" };
+    }
+    const meds: string[] = [
+      ...((client.current_medications as string[] | undefined) ?? []),
+      ...((client.medications as string[] | undefined) ?? []),
+    ].map((m) => (m ?? "").trim()).filter(Boolean);
+
+    if (meds.length === 0) {
+      return { ok: true, matches: [], unmatched: [] };
+    }
+
+    // Dedup case-insensitively
+    const seen = new Set<string>();
+    const dedupedMeds = meds.filter((m) => {
+      const k = m.toLowerCase();
+      if (seen.has(k)) return false;
+      seen.add(k);
+      return true;
+    });
+
+    const records = await loadAllOfKind<{
+      slug: string;
+      drug_name: string;
+      drug_aliases?: string[];
+      drug_class?: string;
+      summary?: string;
+      depletes?: Array<{ nutrient: string; severity?: string; mechanism?: string; monitoring_recommendation?: string; typical_supplement_dose?: string }>;
+      timing_separations?: string[];
+      contraindicated_supplements?: string[];
+      monitoring_labs?: string[];
+      coach_notes?: string;
+      evidence_tier?: string;
+    }>("drug_depletions");
+
+    const matches: MedicationImpactMatch[] = [];
+    const unmatched: string[] = [];
+
+    for (const med of dedupedMeds) {
+      const medLower = med.toLowerCase();
+      let hit: typeof records[number] | null = null;
+      let matchedAlias = "";
+
+      outer: for (const rec of records) {
+        const candidates = [rec.drug_name, ...(rec.drug_aliases ?? [])].filter(Boolean);
+        for (const c of candidates) {
+          const cLower = c.toLowerCase();
+          // Match if EITHER side is contained in the other (handles "Eltroxin 50mcg" vs alias "eltroxin")
+          if (medLower.includes(cLower) || cLower.includes(medLower)) {
+            hit = rec;
+            matchedAlias = c;
+            break outer;
+          }
+        }
+      }
+
+      if (hit) {
+        matches.push({
+          client_med_text: med,
+          drug_slug: hit.slug,
+          drug_name: hit.drug_name,
+          drug_class: hit.drug_class,
+          matched_alias: matchedAlias,
+          summary: hit.summary,
+          depletes: (hit.depletes ?? []).map((d) => ({ ...d })),
+          timing_separations: hit.timing_separations,
+          contraindicated_supplements: hit.contraindicated_supplements,
+          monitoring_labs: hit.monitoring_labs,
+          coach_notes: hit.coach_notes,
+          evidence_tier: hit.evidence_tier,
+        });
+      } else {
+        unmatched.push(med);
+      }
+    }
+
+    return { ok: true, matches, unmatched };
+  } catch (e) {
+    return { ok: false, matches: [], unmatched: [], error: String(e) };
+  }
+}
+
+// ────────────────────────────────────────────────────────────────────────────
+// Functional test PDF parsing — DUTCH / GI-MAP / OAT
+// ────────────────────────────────────────────────────────────────────────────
+
+export interface FunctionalTestResult {
+  ok: boolean;
+  test_type?: "dutch" | "gi_map" | "unknown";
+  summary?: string;
+  findings?: Record<string, unknown>;
+  flagged_drivers?: string[];
+  clinical_recommendations?: string[];
+  file_path?: string;
+  error?: string;
+}
+
+export async function parseFunctionalTestAction(
+  clientId: string,
+  filePath: string,
+  options?: { dryRun?: boolean; testType?: "dutch" | "gi_map" },
+): Promise<FunctionalTestResult> {
+  try {
+    const result = (await runScript(
+      "parse-functional-test.py",
+      {
+        client_id: clientId,
+        file_path: filePath,
+        dry_run: !!options?.dryRun,
+        test_type: options?.testType ?? "",
+      },
+      300_000, // 5 min — Sonnet on PDF can take a minute+
+    )) as FunctionalTestResult;
+    revalidatePath(`/clients/${clientId}`);
+    return result;
+  } catch (e) {
+    return { ok: false, error: String(e) };
+  }
+}
+
+export interface FunctionalTestSummary {
+  test_type: string;
+  test_date?: string;
+  extracted_at?: string;
+  summary?: string;
+  flagged_drivers?: string[];
+  clinical_recommendations?: string[];
+  findings?: Record<string, unknown>;
+  file_path: string;        // .yaml location on disk
+  source_file?: string;     // original PDF filename
+}
+
+export async function loadFunctionalTestsAction(
+  clientId: string,
+): Promise<{ ok: boolean; tests: FunctionalTestSummary[]; error?: string }> {
+  try {
+    const root = getPlansRoot();
+    const dir = path.join(root, "clients", clientId, "functional_tests");
+    const yaml = await import("js-yaml");
+
+    let entries: string[];
+    try {
+      entries = await fs.readdir(dir);
+    } catch {
+      return { ok: true, tests: [] };
+    }
+
+    const tests: FunctionalTestSummary[] = [];
+    for (const name of entries) {
+      if (!name.endsWith(".yaml")) continue;
+      const fp = path.join(dir, name);
+      try {
+        const raw = await fs.readFile(fp, "utf-8");
+        const parsed = yaml.load(raw) as Record<string, unknown> | null;
+        if (!parsed || typeof parsed !== "object") continue;
+        tests.push({
+          test_type: String(parsed.test_type ?? "unknown"),
+          test_date: parsed.test_date as string | undefined,
+          extracted_at: parsed.extracted_at as string | undefined,
+          summary: parsed.summary as string | undefined,
+          flagged_drivers: parsed.flagged_drivers as string[] | undefined,
+          clinical_recommendations: parsed.clinical_recommendations as string[] | undefined,
+          findings: parsed,
+          file_path: fp,
+          source_file: parsed.source_file as string | undefined,
+        });
+      } catch {
+        // skip malformed file
+      }
+    }
+
+    // Sort newest first by test_date or extracted_at
+    tests.sort((a, b) => {
+      const da = (a.test_date || a.extracted_at || "");
+      const db = (b.test_date || b.extracted_at || "");
+      return db.localeCompare(da);
+    });
+
+    return { ok: true, tests };
+  } catch (e) {
+    return { ok: false, tests: [], error: String(e) };
+  }
+}

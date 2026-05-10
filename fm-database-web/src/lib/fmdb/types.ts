@@ -145,6 +145,54 @@ export interface HomeRemedy extends BaseEntity {
   linked_to_mechanisms?: string[];
 }
 
+export interface ProtocolPhase {
+  name: string;
+  weeks?: number | null;
+  summary?: string;
+  key_actions?: string[];
+}
+
+export interface Protocol extends BaseEntity {
+  category?: string;
+  summary?: string;
+  indications?: string[];
+  contraindications?: string[];
+  typical_duration_weeks?: number | null;
+  phases?: ProtocolPhase[];
+  key_steps?: string[];
+  foods_to_emphasise?: string[];
+  foods_to_remove?: string[];
+  supplements_typically_used?: string[];
+  expected_outcomes?: string[];
+  cautions?: string[];
+  linked_to_topics?: string[];
+  linked_to_mechanisms?: string[];
+  linked_to_symptoms?: string[];
+  notes_for_coach?: string;
+}
+
+export interface NutrientDepletion {
+  nutrient: string;
+  severity?: "mild" | "moderate" | "severe";
+  mechanism?: string;
+  monitoring_recommendation?: string;
+  typical_supplement_dose?: string;
+}
+
+export interface DrugDepletion extends BaseEntity {
+  drug_name: string;
+  drug_aliases?: string[];
+  drug_class?: string;
+  summary?: string;
+  depletes?: NutrientDepletion[];
+  timing_separations?: string[];
+  contraindicated_supplements?: string[];
+  monitoring_labs?: string[];
+  coach_notes?: string;
+  linked_to_topics?: string[];
+  linked_to_mechanisms?: string[];
+}
+
 // ---- Plan + Client (PHI) ----
 
 export type PlanStatus =
@@ -177,6 +225,7 @@ export interface PlanFields {
   referrals?: unknown[];
   tracking?: Record<string, unknown>;
   attached_resources?: string[];
+  attached_protocols?: string[];
   notes_for_coach?: string;
   status?: PlanStatus;
   version?: number;
@@ -358,4 +407,6 @@ export type CatalogueKind =
   | "sources"
   | "mindmaps"
   | "cooking_adjustments"
-  | "home_remedies";
+  | "home_remedies"
+  | "protocols"
+  | "drug_depletions";

@@ -1,0 +1,98 @@
+slug: corticosteroids
+drug_name: Corticosteroids (oral)
+drug_aliases:
+  - prednisone
+  - prednisolone
+  - omnacortil
+  - wysolone
+  - methylprednisolone
+  - medrol
+  - dexamethasone
+  - decadron
+  - dexona
+  - hydrocortisone
+  - betamethasone
+  - steroid
+drug_class: corticosteroid
+summary: |
+  Systemic glucocorticoids used for autoimmune flares, severe inflammation,
+  asthma exacerbations, transplant maintenance. Even short courses cause
+  multi-nutrient depletion; long courses cause significant bone loss,
+  muscle wasting, electrolyte derangement. FM-tier monitoring is essential
+  for any client on > 6 weeks of oral steroids.
+depletes:
+  - nutrient: Calcium
+    severity: severe
+    mechanism: Reduced intestinal calcium absorption + increased renal excretion; major contributor to steroid-induced osteoporosis.
+    monitoring_recommendation: DEXA at baseline + annually on long-term steroids; serum calcium + ionised calcium quarterly
+    typical_supplement_dose: 1200 mg calcium citrate (split AM/PM) WITH vit D3 + K2
+  - nutrient: Vitamin D
+    severity: severe
+    mechanism: Reduced 25-OH vit D activation + increased catabolism.
+    monitoring_recommendation: 25-OH vit D every 3-6 months; FM optimal 60-80 ng/mL
+    typical_supplement_dose: 5000 IU D3 daily (adjust to lab)
+  - nutrient: Vitamin K2 (MK-7)
+    severity: moderate
+    mechanism: Steroids alter vit K-dependent bone protein (osteocalcin) activity.
+    monitoring_recommendation: Empirical supplementation alongside calcium + vit D
+    typical_supplement_dose: 100-200 mcg MK-7
+  - nutrient: Magnesium
+    severity: moderate
+    mechanism: Increased renal excretion + reduced absorption.
+    monitoring_recommendation: RBC magnesium quarterly
+    typical_supplement_dose: 400 mg magnesium glycinate at bedtime
+  - nutrient: Potassium
+    severity: moderate
+    mechanism: Increased renal potassium excretion (mineralocorticoid effect).
+    monitoring_recommendation: Serum potassium quarterly
+    typical_supplement_dose: Food sources (banana, coconut water, dark leafy greens) — supplemental potassium only if clinician-directed
+  - nutrient: Zinc
+    severity: moderate
+    mechanism: Increased excretion + reduced absorption; affects immune + wound healing.
+    monitoring_recommendation: Serum zinc annually
+    typical_supplement_dose: 15-30 mg zinc picolinate
+  - nutrient: Selenium
+    severity: mild
+    mechanism: Reduced glutathione peroxidase activity reported.
+    monitoring_recommendation: If thyroid context relevant
+    typical_supplement_dose: 200 mcg selenomethionine
+  - nutrient: Vitamin C
+    severity: moderate
+    mechanism: Increased catabolism via oxidative stress.
+    monitoring_recommendation: Empirical
+    typical_supplement_dose: "500-1000 mg/day (whole-food sources — amla, citrus, berries)"
+timing_separations:
+  - "Take morning dose to mimic natural cortisol rhythm + reduce HPA suppression."
+contraindicated_supplements:
+  - licorice-deglycyrrhizinated-only
+monitoring_labs:
+  - DEXA at baseline + annually
+  - Vit D + calcium + magnesium quarterly
+  - Fasting glucose + HbA1c (steroid-induced hyperglycemia)
+  - BP (steroid-induced hypertension)
+  - Lipid panel
+  - HPA axis (saliva cortisol or DUTCH) when tapering
+coach_notes: |
+  Long-term oral steroids cause measurable bone loss within 3 months.
+  Bone-protective stack (calcium 1200 mg + vit D3 5000 IU + K2 100-200 mcg
+  + magnesium 400 mg) is the standard FM addition. Recommend strength
+  training 2-3×/week for bone density.
+  ⚠ NEVER recommend full glycyrrhizin licorice (raises cortisol +
+  worsens steroid effects). DGL (deglycyrrhizinated) is fine.
+  ⚠ NEVER stop steroids abruptly after > 2 weeks — adrenal crisis risk.
+  Always taper with prescribing physician.
+  HPA-axis recovery on tapering — adaptogens + adrenal-recovery-protocol
+  often help reduce withdrawal symptoms.
+linked_to_topics:
+  - autoimmune
+  - adrenal-fatigue
+linked_to_mechanisms:
+  - hpa-axis-dysregulation
+sources:
+  - id: vitaone-skill-practice-guide
+    location: Steroid-induced bone loss prevention
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-09
+updated_by: shivani
