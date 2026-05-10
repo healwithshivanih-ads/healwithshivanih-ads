@@ -1412,3 +1412,105 @@ export async function checkMedicationImpactsAction(
     return { ok: false, matches: [], unmatched: [], error: String(e) };
   }
 }
+
+// ────────────────────────────────────────────────────────────────────────────
+// Functional test PDF parsing — DUTCH / GI-MAP / OAT
+// ────────────────────────────────────────────────────────────────────────────
+
+export interface FunctionalTestResult {
+  ok: boolean;
+  test_type?: "dutch" | "gi_map" | "unknown";
+  summary?: string;
+  findings?: Record<string, unknown>;
+  flagged_drivers?: string[];
+  clinical_recommendations?: string[];
+  file_path?: string;
+  error?: string;
+}
+
+export async function parseFunctionalTestAction(
+  clientId: string,
+  filePath: string,
+  options?: { dryRun?: boolean; testType?: "dutch" | "gi_map" },
+): Promise<FunctionalTestResult> {
+  try {
+    const result = (await runScript(
+      "parse-functional-test.py",
+      {
+        client_id: clientId,
+        file_path: filePath,
+        dry_run: !!options?.dryRun,
+        test_type: options?.testType ?? "",
+      },
+      300_000, // 5 min — Sonnet on PDF can take a minute+
+    )) as FunctionalTestResult;
+    revalidatePath(`/clients/${clientId}`);
+    return result;
+  } catch (e) {
+    return { ok: false, error: String(e) };
+  }
+}
+
+export interface FunctionalTestSummary {
+  test_type: string;
+  test_date?: string;
+  extracted_at?: string;
+  summary?: string;
+  flagged_drivers?: string[];
+  clinical_recommendations?: string[];
+  findings?: Record<string, unknown>;
+  file_path: string;        // .yaml location on disk
+  source_file?: string;     // original PDF filename
+}
+
+export async function loadFunctionalTestsAction(
+  clientId: string,
+): Promise<{ ok: boolean; tests: FunctionalTestSummary[]; error?: string }> {
+  try {
+    const root = getPlansRoot();
+    const dir = path.join(root, "clients", clientId, "functional_tests");
+    const yaml = await import("js-yaml");
+
+    let entries: string[];
+    try {
+      entries = await fs.readdir(dir);
+    } catch {
+      return { ok: true, tests: [] };
+    }
+
+    const tests: FunctionalTestSummary[] = [];
+    for (const name of entries) {
+      if (!name.endsWith(".yaml")) continue;
+      const fp = path.join(dir, name);
+      try {
+        const raw = await fs.readFile(fp, "utf-8");
+        const parsed = yaml.load(raw) as Record<string, unknown> | null;
+        if (!parsed || typeof parsed !== "object") continue;
+        tests.push({
+          test_type: String(parsed.test_type ?? "unknown"),
+          test_date: parsed.test_date as string | undefined,
+          extracted_at: parsed.extracted_at as string | undefined,
+          summary: parsed.summary as string | undefined,
+          flagged_drivers: parsed.flagged_drivers as string[] | undefined,
+          clinical_recommendations: parsed.clinical_recommendations as string[] | undefined,
+          findings: parsed,
+          file_path: fp,
+          source_file: parsed.source_file as string | undefined,
+        });
+      } catch {
+        // skip malformed file
+      }
+    }
+
+    // Sort newest first by test_date or extracted_at
+    tests.sort((a, b) => {
+      const da = (a.test_date || a.extracted_at || "");
+      const db = (b.test_date || b.extracted_at || "");
+      return db.localeCompare(da);
+    });
+
+    return { ok: true, tests };
+  } catch (e) {
+    return { ok: false, tests: [], error: String(e) };
+  }
+}
