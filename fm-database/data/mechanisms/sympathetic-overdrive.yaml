@@ -1,0 +1,91 @@
+slug: sympathetic-overdrive
+display_name: Sympathetic Nervous System Overdrive
+aliases:
+- sympathetic dominance
+- chronic stress response
+- fight-or-flight activation
+- autonomic dysregulation
+- vagal underactivity
+- low vagal tone
+- sympathetic hyperactivation
+- chronic sns activation
+- autonomic imbalance
+- low hrv
+- reduced heart rate variability
+- sustained stress arousal
+- anxiety physiology
+category: neurological
+summary: Persistent activation of the sympathetic 'fight-or-flight' branch of the
+  autonomic nervous system, with reciprocally suppressed parasympathetic (vagal)
+  tone. The body never enters its restorative 'rest-and-digest' state. Drives elevated
+  resting heart rate, lowered heart-rate variability, shallow breathing, blood pressure
+  reactivity, gut dysmotility, anxiety, fragmented sleep. Common in modern life;
+  amplified by chronic psychological stress, trauma, screen time, lack of breath-work
+  / movement, poor sleep, and inflammation. The end-organ effect of chronic HPA-axis
+  dysregulation.
+upstream_drivers:
+- chronic psychological stress
+- unprocessed trauma / PTSD
+- HPA axis dysregulation
+- chronic inflammation
+- poor sleep / sleep deprivation
+- circadian misalignment
+- excessive caffeine / stimulants
+- chronic blue-light exposure
+- sedentary behaviour
+- shallow / mouth breathing
+- chronic pain
+- low vagal tone (genetic + environmental)
+- anxiety / panic
+- food insecurity / financial stress
+- relational stress / loneliness
+- alcohol use
+- nicotine use
+downstream_effects:
+- elevated resting heart rate
+- low heart-rate variability (HRV)
+- blood pressure reactivity / hypertension
+- shallow chest breathing
+- gut dysmotility (constipation or loose stools)
+- impaired digestion / low stomach acid
+- fragmented sleep / insomnia
+- early waking / cortisol-driven 3 AM wake
+- anxiety, irritability, panic
+- chronic muscle tension (jaw, neck, shoulders)
+- reduced parasympathetic recovery
+- impaired immune function
+- accelerated ageing / inflammation
+- HPA axis exhaustion over time
+- post-exertional fatigue
+related_mechanisms:
+- hpa-axis-dysregulation
+- chronic-inflammation
+- cortisol-elevation
+- cortisol-excess
+- mitochondrial-dysfunction
+- autonomic-nervous-system-modulation
+- melatonin-pathway
+linked_to_topics:
+- chronic-stress
+- adrenal-fatigue
+- adrenal-dysfunction
+- hpa-axis-dysfunction
+- stress-management
+- sleep
+- sleep-hygiene
+- autonomic-nervous-system-dysregulation
+- cardiovascular-dysfunction
+sources:
+- id: vitaone-skill-practice-guide
+  location: practice_guide.md, Stress + Autonomic Balance section
+evidence_tier: strong
+notes_for_coach: Coaching focus is daily nervous-system regulation, not motivation.
+  Levers slow breathwork (4-7-8 breathing, box breathing, physiological sigh), vagal
+  toning (gargling, humming, cold-face dunk, chanting), gentle yoga, walking in nature,
+  digital sunset, magnesium glycinate, ashwagandha, theanine, restorative sleep practices.
+  HRV (via Oura / Whoop / Apple Watch) is a great client-facing biofeedback signal
+  — coach can show a measurable trend within 4-8 weeks.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

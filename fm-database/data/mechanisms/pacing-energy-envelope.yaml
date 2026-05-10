@@ -1,0 +1,79 @@
+slug: pacing-energy-envelope
+display_name: Pacing & Energy Envelope (Coaching Concept)
+aliases:
+- energy envelope theory
+- pacing strategy
+- activity pacing
+- energy management for fatigue
+- crash avoidance pacing
+- 50% rule
+- pacing within capacity
+- adaptive pacing therapy
+- energy budgeting
+- cognitive pacing
+- post-exertional malaise prevention
+- pem-avoidant pacing
+category: other
+summary: A coaching framework — not a biological mechanism in the traditional sense
+  — used in chronic fatigue, long COVID, fibromyalgia, autoimmune flare, and post-viral
+  fatigue. The client's daily energy capacity is treated as a finite envelope; sustained
+  activity above the envelope triggers post-exertional malaise (PEM) and prolongs
+  recovery, while staying within ~50-70% of perceived capacity allows the body to
+  rebuild over weeks to months. Pacing combines physical, cognitive, and emotional
+  exertion as a single shared budget; rest is treated as active recovery rather than
+  laziness. The opposite of 'push through' culture and a critical reframe for high-functioning
+  achievers struggling with chronic fatigue.
+upstream_drivers:
+- chronic fatigue diagnosis
+- post-viral fatigue / long COVID
+- fibromyalgia
+- post-exertional malaise pattern
+- autoimmune flare
+- post-surgical recovery
+- mitochondrial dysfunction
+- HPA dysregulation
+- prior 'boom-bust' cycle (overdo, crash, repeat)
+- coach / clinician guidance
+- self-tracking via wearables (HRV, steps, energy logs)
+- client buy-in to recovery framework
+downstream_effects:
+- prevention of post-exertional malaise
+- gradual rebuilding of energy capacity
+- protection of mitochondrial / autonomic recovery
+- reduced symptom flares
+- improved sleep quality
+- reduced anxiety about symptom unpredictability
+- restored sense of agency
+- slower but sustainable progress
+- shift in client's relationship with productivity / rest
+- preserved cognitive function (vs cognitive overdoing leading to brain fog crash)
+related_mechanisms:
+- post-viral-fatigue
+- mitochondrial-dysfunction
+- hpa-axis-dysregulation
+- sympathetic-overdrive
+- chronic-systemic-inflammation
+linked_to_topics:
+- chronic-pain-and-fatigue
+- adrenal-fatigue
+- chronic-stress
+- stress-management
+- mitochondrial-health-nutrition
+- immune-support-covid-19
+sources:
+- id: vitaone-skill-practice-guide
+  location: practice_guide.md, Chronic Fatigue + Long COVID — pacing + energy envelope
+    framework
+evidence_tier: strong
+notes_for_coach: This is foundational coaching content for any client with chronic
+  fatigue / long COVID / fibromyalgia / autoimmune flare. Practical tools 'four-quarter
+  day' (alternating activity / rest blocks), HRV monitoring (Oura, Whoop, Apple Watch),
+  energy diary (1-10 scale rating before / after activities), 50% rule (do 50% of
+  what feels possible — often counterintuitive), pre-emptive rest before known stressors,
+  reframing rest as active recovery. The client's biggest psychological hurdle is
+  letting go of productivity identity; this is real coaching work. Progress is non-linear
+  — set expectations.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

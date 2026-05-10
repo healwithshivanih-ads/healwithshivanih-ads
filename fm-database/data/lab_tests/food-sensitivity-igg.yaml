@@ -1,0 +1,46 @@
+slug: food-sensitivity-igg
+display_name: IgG Food Panel
+full_name: Food Sensitivity IgG Antibody Panel
+aliases:
+- igg food panel
+- food sensitivity test
+- food intolerance panel
+- igg food antibodies
+- delayed food sensitivity test
+units: U/mL
+sample_type: blood
+conventional_low: null
+conventional_high: null
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: Tolerance to tested foods at the time of measurement (within IgG
+  exposure assumptions)
+interpretation_high: IgG exposure / immune memory to tested foods — does NOT prove
+  symptomatic food sensitivity but flags candidates for an elimination-reintroduction
+  trial; high values often correlate with leaky gut and frequent food consumption
+when_to_order: Persistent gut / skin / mood / fatigue symptoms with suspected food
+  triggers, after stool / coeliac / IgE workup is normal, as elimination-diet design
+  aid (NOT as standalone diagnosis)
+fasting_required: false
+typical_cost_inr: 6000
+linked_to_topics:
+- autoimmune-conditions-igg-food-triggers
+- gut-dysbiosis
+- chronic-inflammation
+linked_to_mechanisms:
+- leaky-gut
+- chronic-inflammation
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — IgG Food Sensitivity Panel
+evidence_tier: confirm_with_clinician
+notes_for_coach: Controversial — IgG can reflect normal exposure rather than pathological
+  reactivity. FM uses it as a screening tool to design 4-6 week elimination-reintroduction;
+  symptoms during reintroduction confirm or rule out, NOT the IgG number itself.
+  Always pair with leaky-gut workup (zonulin, stool calprotectin) since high IgG
+  to many foods often signals barrier failure rather than food problem. Avoid in
+  active eating disorder.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

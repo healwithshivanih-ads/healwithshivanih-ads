@@ -1,0 +1,54 @@
+slug: gi-map
+display_name: GI-MAP
+full_name: GI-MAP Comprehensive Stool PCR Panel
+aliases:
+- gi map
+- gi-map stool test
+- diagnostic solutions gi-map
+- stool pcr panel
+- comprehensive stool analysis
+- gi-map dna stool
+units: PCR copies / qualitative
+sample_type: stool
+conventional_low: null
+conventional_high: null
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: Reduced beneficial flora — low Bifidobacterium / Lactobacillus
+  / Akkermansia signals dysbiosis; low elastase signals pancreatic insufficiency;
+  low secretory IgA signals immune exhaustion
+interpretation_high: Pathogenic / opportunistic overgrowth (H. pylori, Klebsiella,
+  Pseudomonas, candida, parasites), high beta-glucuronidase (oestrogen recirculation),
+  elevated calprotectin (gut inflammation), high zonulin (leaky gut)
+when_to_order: Persistent GI symptoms (bloating, constipation, diarrhoea, reflux),
+  food sensitivities, autoimmune workup, IBS / SIBO suspicion, oestrogen dominance,
+  skin issues with gut connection, mood / mental health with gut-brain axis suspicion
+fasting_required: false
+typical_cost_inr: 22000
+linked_to_topics:
+- gut-dysbiosis
+- gut-microbiome
+- gut-brain-axis
+- 5r-gut-restoration
+- 5r-gut-healing-protocol
+- autoimmune-disease
+- estrogen-dominance
+- chronic-inflammation
+linked_to_mechanisms:
+- gut-dysbiosis
+- leaky-gut
+- lps-endotoxemia
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — GI-MAP Stool PCR Panel
+evidence_tier: plausible_emerging
+notes_for_coach: Most useful single FM lab for clients with persistent gut / autoimmune
+  / hormonal / skin issues. Quantitative PCR — bacteria, yeasts, parasites, viruses,
+  digestive function (elastase, steatocrit), gut barrier (zonulin, calprotectin,
+  secretory IgA), beta-glucuronidase (oestrogen recirculation). Available in India
+  via Diagnostic Solutions partnership channels. Pricey — reserve for clients where
+  symptomatic guidance + diet trial hasn't moved the needle.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani
