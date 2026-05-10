@@ -44,3 +44,6 @@ version: 1
 status: active
 updated_at: '2026-05-05'
 updated_by: shivani
+pregnancy_safety: safe
+lactation_safety: safe
+pregnancy_safety_note: See folate-methylated.

@@ -1,0 +1,28 @@
+slug: apob
+display_name: ApoB
+full_name: Apolipoprotein B
+aliases: []
+units: mg/dL
+sample_type: blood
+conventional_low: 50
+conventional_high: 130
+fm_optimal_low: 50
+fm_optimal_high: 90
+interpretation_low: Low cardiovascular risk
+interpretation_high: Atherogenic — every ApoB particle is a potential plaque
+when_to_order: Cardiovascular risk workup (FM uses ApoB over LDL-C — better predictor)
+fasting_required: true
+typical_cost_inr: 700
+linked_to_topics:
+- cardiovascular-disease
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Apolipoprotein B
+evidence_tier: strong
+notes_for_coach: Best single CV risk marker. > 90 = elevated CV risk regardless of
+  LDL-C. FM strongly prefers over LDL-C alone.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

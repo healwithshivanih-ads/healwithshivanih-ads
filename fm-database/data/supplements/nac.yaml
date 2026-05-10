@@ -108,3 +108,8 @@ version: 10
 status: active
 updated_at: '2026-05-05'
 updated_by: shivani
+pregnancy_safety: caution
+lactation_safety: caution
+pregnancy_safety_note: Generally well-tolerated but very high doses (> 1800 mg) reduce
+  in pregnancy unless clinician-directed for specific indication (e.g., acetaminophen
+  toxicity).

@@ -1,0 +1,57 @@
+slug: fm-general-baseline
+display_name: FM General Baseline (first appointment)
+category: general_wellness
+summary: The cornerstone FM workup — comprehensive panel for new clients with no specific
+  complaint, vague goals (weight loss / energy / prevention), or anyone wanting a
+  full functional snapshot. Catches root-cause issues (thyroid, insulin resistance,
+  inflammation, nutrient deficits) before they become symptomatic.
+indications:
+- first FM appointment with no specific complaint
+- general wellness / preventive workup
+- pre-protocol baseline (weight loss, hormone, gut)
+- annual health snapshot
+- perimenopausal women (40+) without acute issue
+tests:
+- tsh
+- free-t4
+- free-t3
+- tpo-antibodies
+- fasting-glucose
+- fasting-insulin
+- hba1c
+- homa-ir
+- apob
+- hdl-cholesterol
+- triglycerides
+- hscrp
+- homocysteine
+- ferritin
+- vitamin-d-25-oh
+- vitamin-b12
+- folate-rbc
+- hemoglobin
+optional_tests:
+- magnesium-rbc
+- reverse-t3
+- tg-antibodies
+- estradiol-e2
+- progesterone
+- dhea-s
+- am-cortisol
+fasting_required: true
+estimated_cost_inr: 8000
+typical_turnaround_days: 3
+notes_for_coach: Best baseline. 18 core tests cover thyroid, metabolic, lipids, inflammation,
+  nutrient status. Add the optional sex hormones for perimenopausal / fertility /
+  PCOS clients. Strongly recommend at intake — most clients underestimate how much
+  can be 'sub-clinical' wrong without symptoms.
+sources:
+- id: vitaone-skill-practice-guide
+  location: FM lab panels — fm-general-baseline
+evidence_tier: strong
+linked_to_topics: []
+linked_to_mechanisms: []
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

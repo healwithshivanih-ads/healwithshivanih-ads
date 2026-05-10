@@ -62,3 +62,7 @@ version: 4
 status: active
 updated_at: '2026-05-02'
 updated_by: shivani
+pregnancy_safety: contraindicated
+lactation_safety: caution
+pregnancy_safety_note: Same as ashwagandha — KSM-66 has no special safety data for
+  pregnancy.

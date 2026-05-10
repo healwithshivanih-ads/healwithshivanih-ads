@@ -1,0 +1,29 @@
+slug: progesterone
+display_name: Progesterone
+full_name: Progesterone — Serum
+aliases: []
+units: ng/mL
+sample_type: blood
+conventional_low: 0.5
+conventional_high: 25
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: Anovulation; luteal phase deficiency; PCOS
+interpretation_high: Late luteal / pregnancy / ovarian cyst
+when_to_order: Day 21 of cycle (mid-luteal). Compare with estradiol same day.
+fasting_required: false
+typical_cost_inr: 500
+linked_to_topics:
+- perimenopause
+- pms
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Progesterone — Serum
+evidence_tier: strong
+notes_for_coach: 'Day 21 progesterone > 10 ng/mL = ovulation occurred. Low = luteal
+  phase deficiency. FM-eye: serial blood draws are inferior to DUTCH metabolites.'
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

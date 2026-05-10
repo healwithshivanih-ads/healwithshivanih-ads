@@ -1,0 +1,48 @@
+slug: insulin-resistance-pcos-workup
+display_name: Insulin Resistance / PCOS Workup
+category: metabolic
+summary: Metabolic panel for clients with central weight gain, sugar cravings, PCOS,
+  family history of diabetes, or 'I can't lose weight even when eating clean'. Catches
+  insulin resistance YEARS before fasting glucose rises (HbA1c is too late).
+indications:
+- central adiposity (waist > 80cm F / 90cm M)
+- PCOS diagnosis or suspected (irregular cycles + acne + facial hair)
+- family history T2DM
+- post-meal energy crash + sugar cravings
+- weight gain despite clean eating
+- skin tags / acanthosis nigricans / dark neck creases
+tests:
+- fasting-glucose
+- fasting-insulin
+- homa-ir
+- hba1c
+- triglycerides
+- hdl-cholesterol
+- apob
+- tsh
+- free-t4
+- vitamin-d-25-oh
+- ferritin
+- magnesium-rbc
+optional_tests:
+- dhea-s
+- estradiol-e2
+- progesterone
+- hscrp
+fasting_required: true
+estimated_cost_inr: 5500
+typical_turnaround_days: 3
+notes_for_coach: Fasting insulin is the early-warning test — rises 5-10 years BEFORE
+  fasting glucose. HOMA-IR > 1.5 = treat (FM); > 2.5 = treat (conventional). TG/HDL
+  > 1.5 corroborates. PCOS adds DHEA-S + estradiol + progesterone. Recheck at 8-12
+  weeks of metabolic-reset protocol.
+sources:
+- id: vitaone-skill-practice-guide
+  location: FM lab panels — insulin-resistance-pcos-workup
+evidence_tier: strong
+linked_to_topics: []
+linked_to_mechanisms: []
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

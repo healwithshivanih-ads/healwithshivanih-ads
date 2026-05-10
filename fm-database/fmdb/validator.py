@@ -26,7 +26,7 @@ import yaml
 from pydantic import ValidationError as PydanticValidationError
 
 from .enums import InteractionType, SourceType
-from .models import Claim, CookingAdjustment, DrugDepletion, HomeRemedy, Mechanism, MindMap, Protocol, Source, Supplement, Symptom, TitrationProtocol, Topic
+from .models import Claim, CookingAdjustment, DrugDepletion, HomeRemedy, LabPanel, LabTest, Mechanism, MindMap, Protocol, Source, Supplement, Symptom, TitrationProtocol, Topic
 
 
 @dataclass
@@ -69,6 +69,8 @@ class Loaded:
     protocols: list[Protocol] = field(default_factory=list)
     drug_depletions: list[DrugDepletion] = field(default_factory=list)
     titration_protocols: list[TitrationProtocol] = field(default_factory=list)
+    lab_tests: list[LabTest] = field(default_factory=list)
+    lab_panels: list[LabPanel] = field(default_factory=list)
     mindmaps: list[MindMap] = field(default_factory=list)
     parse_errors: list[str] = field(default_factory=list)
 
@@ -128,6 +130,8 @@ def load_all(data_dir: Path) -> Loaded:
         protocols=_load_dir(data_dir, "protocols", Protocol, parse_errors),
         drug_depletions=_load_dir(data_dir, "drug_depletions", DrugDepletion, parse_errors),
         titration_protocols=_load_dir(data_dir, "titration_protocols", TitrationProtocol, parse_errors),
+        lab_tests=_load_dir(data_dir, "lab_tests", LabTest, parse_errors),
+        lab_panels=_load_dir(data_dir, "lab_panels", LabPanel, parse_errors),
         mindmaps=_load_dir(data_dir, "mindmaps", MindMap, parse_errors),
         parse_errors=parse_errors,
     )
@@ -139,6 +143,7 @@ def overlay(
     sources=(), topics=(), claims=(), supplements=(),
     mechanisms=(), symptoms=(), cooking_adjustments=(), home_remedies=(),
     protocols=(), drug_depletions=(), titration_protocols=(),
+    lab_tests=(), lab_panels=(),
 ) -> Loaded:
     """Return a new Loaded where given entities replace any same-slug entries.
 
@@ -162,6 +167,8 @@ def overlay(
         protocols=_merge(loaded.protocols, protocols, "slug"),
         drug_depletions=_merge(loaded.drug_depletions, drug_depletions, "slug"),
         titration_protocols=_merge(loaded.titration_protocols, titration_protocols, "slug"),
+        lab_tests=_merge(loaded.lab_tests, lab_tests, "slug"),
+        lab_panels=_merge(loaded.lab_panels, lab_panels, "slug"),
         parse_errors=list(loaded.parse_errors),
     )
 
@@ -191,6 +198,8 @@ def validate_loaded(loaded: Loaded) -> tuple[list[str], list[Warning_]]:
     _check_dupes(loaded.protocols, "slug", "protocol slug")
     _check_dupes(loaded.drug_depletions, "slug", "drug_depletion slug")
     _check_dupes(loaded.titration_protocols, "slug", "titration_protocol slug")
+    _check_dupes(loaded.lab_tests, "slug", "lab_test slug")
+    _check_dupes(loaded.lab_panels, "slug", "lab_panel slug")
 
     # ---- alias collisions (ERROR) ----
     # An alias must not collide with a different entity's canonical slug.
@@ -425,6 +434,37 @@ def validate_loaded(loaded: Loaded) -> tuple[list[str], list[Warning_]]:
         for supp_slug in dd.contraindicated_supplements:
             if supp_slug not in valid_supplement_slugs:
                 warnings.append(Warning_("drug_depletion", dd.slug, "contraindicated_supplements", "supplement", supp_slug))
+
+    # ---- lab_tests ----
+    for lt in loaded.lab_tests:
+        for cite in lt.sources:
+            if cite.id not in valid_source_ids:
+                warnings.append(Warning_("lab_test", lt.slug, "sources", "source", cite.id))
+        for topic_slug in lt.linked_to_topics:
+            if topic_slug not in valid_topic_slugs:
+                warnings.append(Warning_("lab_test", lt.slug, "linked_to_topics", "topic", topic_slug))
+        for mech_slug in lt.linked_to_mechanisms:
+            if mech_slug not in valid_mechanism_slugs:
+                warnings.append(Warning_("lab_test", lt.slug, "linked_to_mechanisms", "mechanism", mech_slug))
+
+    # ---- lab_panels ----
+    valid_lab_test_slugs = {lt.slug for lt in loaded.lab_tests}
+    for lp in loaded.lab_panels:
+        for test_slug in lp.tests:
+            if test_slug not in valid_lab_test_slugs:
+                warnings.append(Warning_("lab_panel", lp.slug, "tests", "lab_test", test_slug))
+        for test_slug in lp.optional_tests:
+            if test_slug not in valid_lab_test_slugs:
+                warnings.append(Warning_("lab_panel", lp.slug, "optional_tests", "lab_test", test_slug))
+        for cite in lp.sources:
+            if cite.id not in valid_source_ids:
+                warnings.append(Warning_("lab_panel", lp.slug, "sources", "source", cite.id))
+        for topic_slug in lp.linked_to_topics:
+            if topic_slug not in valid_topic_slugs:
+                warnings.append(Warning_("lab_panel", lp.slug, "linked_to_topics", "topic", topic_slug))
+        for mech_slug in lp.linked_to_mechanisms:
+            if mech_slug not in valid_mechanism_slugs:
+                warnings.append(Warning_("lab_panel", lp.slug, "linked_to_mechanisms", "mechanism", mech_slug))
 
     # ---- titration_protocols ----
     for tp in loaded.titration_protocols:

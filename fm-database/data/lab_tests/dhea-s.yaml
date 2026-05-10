@@ -1,0 +1,29 @@
+slug: dhea-s
+display_name: DHEA-S
+full_name: Dehydroepiandrosterone Sulfate
+aliases: []
+units: µg/dL
+sample_type: blood
+conventional_low: 50
+conventional_high: 350
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: Adrenal exhaustion; androgen insufficiency
+interpretation_high: Adrenal hyperactivity / PCOS / tumor
+when_to_order: Adrenal / fatigue / PCOS / androgen workups
+fasting_required: false
+typical_cost_inr: 500
+linked_to_topics:
+- adrenal-fatigue
+- pcos
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Dehydroepiandrosterone Sulfate
+evidence_tier: strong
+notes_for_coach: Age + sex specific reference ranges. FM looks for trajectory across
+  years more than absolute. Suppressed DHEA-S = HPA exhaustion sign.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

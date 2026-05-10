@@ -1,0 +1,29 @@
+slug: vitamin-d-25-oh
+display_name: Vitamin D (25-OH)
+full_name: 25-Hydroxy Vitamin D
+aliases: []
+units: ng/mL
+sample_type: blood
+conventional_low: 30
+conventional_high: 100
+fm_optimal_low: 60
+fm_optimal_high: 80
+interpretation_low: Deficiency (< 30) — bone, mood, immune, autoimmune risk
+interpretation_high: Toxicity rare unless > 150 + symptoms
+when_to_order: Every intake; recheck every 6 months until optimised
+fasting_required: false
+typical_cost_inr: 600
+linked_to_topics:
+- autoimmune
+- inflammation
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — 25-Hydroxy Vitamin D
+evidence_tier: strong
+notes_for_coach: FM optimal 60-80. Indian deficiency rate ~80% even in sunny climate
+  (skin pigment + indoor lifestyle). Loading needed for most clients.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

@@ -1,0 +1,44 @@
+slug: inflammation-workup
+display_name: Systemic Inflammation Workup
+category: inflammation
+summary: When client presents with multiple vague symptoms (joint pain, fatigue, brain
+  fog, skin issues) without clear diagnosis. Quantifies systemic inflammation + identifies
+  common drivers (B-vitamin deficiency, thyroid autoimmune, insulin resistance, low
+  D).
+indications:
+- joint pain / stiffness without arthritis diagnosis
+- fatigue + brain fog + skin issues
+- autoimmune disease in family
+- rising hsCRP without clear infection
+- tracking response to anti-inflammatory protocol
+tests:
+- hscrp
+- homocysteine
+- tpo-antibodies
+- tg-antibodies
+- vitamin-d-25-oh
+- vitamin-b12
+- folate-rbc
+- ferritin
+- fasting-insulin
+- hba1c
+optional_tests:
+- tsh
+- magnesium-rbc
+fasting_required: true
+estimated_cost_inr: 5000
+typical_turnaround_days: 3
+notes_for_coach: hsCRP is the workhorse inflammation marker — track every 3 months
+  on anti-inflammatory protocols. Homocysteine catches B-vitamin / methylation drivers
+  of inflammation. Antibodies (TPO/Tg) reveal autoimmune background even without thyroid
+  symptoms. Pair with food sensitivity (IgG) testing if clinical picture warrants.
+sources:
+- id: vitaone-skill-practice-guide
+  location: FM lab panels — inflammation-workup
+evidence_tier: strong
+linked_to_topics: []
+linked_to_mechanisms: []
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

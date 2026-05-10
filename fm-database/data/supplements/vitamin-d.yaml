@@ -184,3 +184,7 @@ version: 22
 status: active
 updated_at: '2026-05-05'
 updated_by: shivani
+pregnancy_safety: safe
+lactation_safety: safe
+pregnancy_safety_note: Recommended in pregnancy + lactation (1000-4000 IU/day standard).
+  Re-test 25-OH at 12-24 weeks.

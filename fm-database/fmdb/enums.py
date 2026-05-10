@@ -186,6 +186,45 @@ class DepletionSeverity(str, Enum):
     severe = "severe"        # well-documented depletion; supplement is standard of care
 
 
+class LabPanelCategory(str, Enum):
+    """High-level categories for grouping pre-curated FM lab panels."""
+    general_wellness = "general_wellness"  # baseline FM workup for new clients
+    thyroid = "thyroid"                    # Hashimoto / hypothyroid workup
+    metabolic = "metabolic"                # insulin resistance / prediabetes / PCOS
+    hormone = "hormone"                    # perimenopause / sex hormones
+    adrenal = "adrenal"                    # HPA / cortisol pattern
+    cardiovascular = "cardiovascular"      # ApoB, particle size, inflammation
+    gut = "gut"                            # GI workup
+    autoimmune = "autoimmune"
+    nutrient = "nutrient"                  # micronutrient panel
+    inflammation = "inflammation"
+    fatigue = "fatigue"                    # mitochondrial / chronic fatigue
+    other = "other"
+
+
+class SafetyStatus(str, Enum):
+    """Safety classification for use during pregnancy / lactation / specific
+    clinical contexts. Used on Supplement entity for auto-flagging.
+    """
+    safe = "safe"                          # well-studied, no concern
+    likely_safe = "likely_safe"            # food-form / traditional use, limited modern data
+    caution = "caution"                    # use only with clinician oversight + dose limits
+    contraindicated = "contraindicated"    # do NOT use
+    unknown = "unknown"                    # insufficient data — coach assumes caution
+
+
+class PregnancyStatus(str, Enum):
+    """Client pregnancy / fertility status — drives supplement safety overlay."""
+    not_applicable = "not_applicable"      # male client / postmenopausal / sex omitted
+    not_pregnant = "not_pregnant"
+    trying_to_conceive = "trying_to_conceive"
+    pregnant_first_trimester = "pregnant_first_trimester"
+    pregnant_second_trimester = "pregnant_second_trimester"
+    pregnant_third_trimester = "pregnant_third_trimester"
+    lactating = "lactating"
+    postpartum_not_lactating = "postpartum_not_lactating"
+
+
 class MechanismCategory(str, Enum):
     endocrine = "endocrine"          # HPA axis, sex hormones, thyroid signaling
     neurological = "neurological"    # vagal tone, neurotransmitter receptors

@@ -131,3 +131,7 @@ version: 16
 status: active
 updated_at: '2026-05-05'
 updated_by: shivani
+pregnancy_safety: caution
+lactation_safety: likely_safe
+pregnancy_safety_note: Limited pregnancy data; food amounts (lentils, cabbage, beef)
+  are fine. Supplemental 5-10 g/day caution unless clinician-directed.

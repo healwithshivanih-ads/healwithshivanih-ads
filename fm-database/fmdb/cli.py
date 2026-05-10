@@ -45,6 +45,10 @@ from .loader import (
     load_home_remedy,
     load_protocol,
     load_protocols,
+    load_lab_panel,
+    load_lab_panels,
+    load_lab_test,
+    load_lab_tests,
     load_titration_protocol,
     load_titration_protocols,
     load_mechanism,
@@ -938,6 +942,93 @@ def cmd_show_titration_protocol(args: argparse.Namespace) -> None:
     print(f"  Splittable:      {tp.splittable}")
     print(f"  Evidence tier:   {tp.evidence_tier.value}")
     print(f"  Updated: {tp.updated_at} by {tp.updated_by}")
+
+
+def cmd_lab_tests(args: argparse.Namespace) -> None:
+    items = load_lab_tests(DATA_DIR)
+    if not items:
+        print("(no lab tests)")
+        return
+    for lt in items:
+        conv = f"{lt.conventional_low or ''}-{lt.conventional_high or ''}".strip("-") or "—"
+        opt = f"{lt.fm_optimal_low or ''}-{lt.fm_optimal_high or ''}".strip("-") or "—"
+        print(f"  {lt.slug:30s}  {lt.units:8s}  conv: {conv:14s}  fm-opt: {opt:14s}  {lt.display_name}")
+
+
+def cmd_show_lab_test(args: argparse.Namespace) -> None:
+    lt = load_lab_test(DATA_DIR, args.slug)
+    print(f"{lt.full_name}  ({lt.slug})  v{lt.version}  [{lt.status.value}]")
+    print(f"  Display name:    {lt.display_name}")
+    if lt.aliases:
+        print(f"  Aliases:         {', '.join(lt.aliases)}")
+    print(f"  Units:           {lt.units}")
+    if lt.sample_type:
+        print(f"  Sample type:     {lt.sample_type}")
+    if lt.conventional_low is not None or lt.conventional_high is not None:
+        print(f"  Conventional:    {lt.conventional_low or '—'} – {lt.conventional_high or '—'} {lt.units}")
+    if lt.fm_optimal_low is not None or lt.fm_optimal_high is not None:
+        print(f"  FM-optimal:      {lt.fm_optimal_low or '—'} – {lt.fm_optimal_high or '—'} {lt.units}")
+    if lt.interpretation_low:
+        print(f"  Low means:       {lt.interpretation_low}")
+    if lt.interpretation_high:
+        print(f"  High means:      {lt.interpretation_high}")
+    if lt.when_to_order:
+        print(f"  When to order:   {lt.when_to_order}")
+    print(f"  Fasting:         {lt.fasting_required}")
+    if lt.typical_cost_inr:
+        print(f"  Typical cost:    ₹{lt.typical_cost_inr}")
+    if lt.notes_for_coach:
+        print(f"  Notes:           {lt.notes_for_coach.strip()}")
+    if lt.sources:
+        print("  Sources:")
+        for s in lt.sources:
+            quote = f' — "{s.quote}"' if s.quote else ""
+            print(f"    - {s.id}{quote}")
+    print(f"  Updated: {lt.updated_at} by {lt.updated_by}")
+
+
+def cmd_lab_panels(args: argparse.Namespace) -> None:
+    items = load_lab_panels(DATA_DIR)
+    if not items:
+        print("(no lab panels)")
+        return
+    for lp in items:
+        n = len(lp.tests)
+        cost = f"₹{lp.estimated_cost_inr}" if lp.estimated_cost_inr else "—"
+        print(f"  {lp.slug:32s}  {lp.category.value:18s}  {n:>2} tests  {cost:>8s}  [{lp.evidence_tier.value}]  {lp.display_name}")
+
+
+def cmd_show_lab_panel(args: argparse.Namespace) -> None:
+    lp = load_lab_panel(DATA_DIR, args.slug)
+    print(f"{lp.display_name}  ({lp.slug})  v{lp.version}  [{lp.status.value}]")
+    print(f"  Category:        {lp.category.value}")
+    print(f"  Evidence tier:   {lp.evidence_tier.value}")
+    print(f"  Summary:         {lp.summary.strip()}")
+    if lp.indications:
+        print("  Indications:")
+        for i in lp.indications:
+            print(f"    - {i}")
+    print(f"  Fasting:         {lp.fasting_required}")
+    if lp.estimated_cost_inr:
+        print(f"  Cost (rough):    ₹{lp.estimated_cost_inr}")
+    if lp.typical_turnaround_days:
+        print(f"  Turnaround:      {lp.typical_turnaround_days} days")
+    if lp.tests:
+        print(f"  Core tests ({len(lp.tests)}):")
+        for t in lp.tests:
+            print(f"    - {t}")
+    if lp.optional_tests:
+        print(f"  Optional add-ons ({len(lp.optional_tests)}):")
+        for t in lp.optional_tests:
+            print(f"    - {t}")
+    if lp.notes_for_coach:
+        print(f"  Notes:           {lp.notes_for_coach.strip()}")
+    if lp.sources:
+        print("  Sources:")
+        for s in lp.sources:
+            quote = f' — "{s.quote}"' if s.quote else ""
+            print(f"    - {s.id}{quote}")
+    print(f"  Updated: {lp.updated_at} by {lp.updated_by}")
 
 
 def cmd_ingest(args: argparse.Namespace) -> None:
@@ -1846,6 +1937,16 @@ def main() -> None:
     show_tp = sub.add_parser("show-titration-protocol", help="show one titration schedule")
     show_tp.add_argument("slug")
     show_tp.set_defaults(func=cmd_show_titration_protocol)
+
+    sub.add_parser("lab-tests", help="list all lab tests with FM-optimal + conventional ranges").set_defaults(func=cmd_lab_tests)
+    show_lt = sub.add_parser("show-lab-test", help="show one lab test")
+    show_lt.add_argument("slug")
+    show_lt.set_defaults(func=cmd_show_lab_test)
+
+    sub.add_parser("lab-panels", help="list all curated FM lab panels").set_defaults(func=cmd_lab_panels)
+    show_lp = sub.add_parser("show-lab-panel", help="show one lab panel")
+    show_lp.add_argument("slug")
+    show_lp.set_defaults(func=cmd_show_lab_panel)
 
     ing = sub.add_parser("ingest", help="extract candidates from a document")
     ing.add_argument("path", help="path to document (.md, .txt, ...)")

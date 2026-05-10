@@ -19,6 +19,8 @@ import type {
   HomeRemedy,
   Protocol,
   TitrationProtocol,
+  LabTest,
+  LabPanel,
 } from "@/lib/fmdb/types";
 
 const SUPPORTED: ReadonlySet<string> = new Set([
@@ -32,6 +34,8 @@ const SUPPORTED: ReadonlySet<string> = new Set([
   "home_remedies",
   "protocols",
   "titration_protocols",
+  "lab_tests",
+  "lab_panels",
 ]);
 
 // Map a slug-like reference to its canonical detail URL.
@@ -1023,6 +1027,188 @@ function TitrationDetail({ tp }: { tp: TitrationProtocol }) {
   );
 }
 
+function LabTestDetail({ lt }: { lt: LabTest }) {
+  const conv = (lt.conventional_low != null || lt.conventional_high != null)
+    ? `${lt.conventional_low ?? "—"} – ${lt.conventional_high ?? "—"} ${lt.units ?? ""}`
+    : null;
+  const opt = (lt.fm_optimal_low != null || lt.fm_optimal_high != null)
+    ? `${lt.fm_optimal_low ?? "—"} – ${lt.fm_optimal_high ?? "—"} ${lt.units ?? ""}`
+    : null;
+  return (
+    <div className="space-y-6">
+      <Header
+        title={lt.full_name ?? lt.display_name ?? lt.slug}
+        slug={lt.slug}
+        tier={lt.evidence_tier}
+      />
+
+      <div className="grid gap-3 sm:grid-cols-3">
+        {lt.units && (
+          <div className="rounded-lg border bg-card p-3">
+            <div className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold">Units</div>
+            <div className="text-sm font-semibold mt-1">{lt.units}</div>
+          </div>
+        )}
+        {lt.sample_type && (
+          <div className="rounded-lg border bg-card p-3">
+            <div className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold">Sample</div>
+            <div className="text-sm font-medium mt-1 capitalize">{lt.sample_type}</div>
+          </div>
+        )}
+        {lt.typical_cost_inr != null && (
+          <div className="rounded-lg border bg-card p-3">
+            <div className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold">Typical cost</div>
+            <div className="text-sm font-medium mt-1">₹{lt.typical_cost_inr}</div>
+          </div>
+        )}
+      </div>
+
+      {(conv || opt) && (
+        <Section title="Reference ranges">
+          <div className="grid gap-3 sm:grid-cols-2">
+            <div className="rounded-lg border-2 border-slate-200 bg-slate-50/60 p-3">
+              <div className="text-[10px] uppercase tracking-wide text-slate-700 font-semibold">Conventional (lab range)</div>
+              <div className="text-base font-semibold tabular-nums mt-1">{conv ?? "—"}</div>
+              <div className="text-[10px] text-slate-600 mt-1">What the printed lab report flags as &lsquo;normal&rsquo;</div>
+            </div>
+            <div className="rounded-lg border-2 border-emerald-300 bg-emerald-50/60 p-3">
+              <div className="text-[10px] uppercase tracking-wide text-emerald-800 font-semibold">FM-optimal target</div>
+              <div className="text-base font-semibold tabular-nums mt-1 text-emerald-900">{opt ?? "—"}</div>
+              <div className="text-[10px] text-emerald-700 mt-1">What functional medicine treats as optimal</div>
+            </div>
+          </div>
+        </Section>
+      )}
+
+      {(lt.interpretation_low || lt.interpretation_high) && (
+        <div className="grid gap-6 md:grid-cols-2">
+          {lt.interpretation_low && (
+            <Section title="Low values mean">
+              <p className="text-sm leading-relaxed">{lt.interpretation_low}</p>
+            </Section>
+          )}
+          {lt.interpretation_high && (
+            <Section title="High values mean">
+              <p className="text-sm leading-relaxed">{lt.interpretation_high}</p>
+            </Section>
+          )}
+        </div>
+      )}
+
+      {lt.when_to_order && (
+        <Section title="When to order">
+          <p className="text-sm leading-relaxed">{lt.when_to_order}</p>
+        </Section>
+      )}
+
+      {lt.fasting_required && (
+        <p className="text-xs rounded-md bg-amber-50 border border-amber-200 px-2 py-1 text-amber-900">
+          ⚠ Fasting required
+        </p>
+      )}
+
+      <div className="grid gap-6 md:grid-cols-2">
+        <Section title="Linked topics">
+          <LinkedChipList items={lt.linked_to_topics} kind="topics" />
+        </Section>
+        <Section title="Linked mechanisms">
+          <LinkedChipList items={lt.linked_to_mechanisms} kind="mechanisms" />
+        </Section>
+      </div>
+
+      {lt.notes_for_coach && (
+        <Section title="Notes for coach">
+          <p className="text-sm leading-relaxed whitespace-pre-wrap">{lt.notes_for_coach}</p>
+        </Section>
+      )}
+
+      {lt.sources && lt.sources.length > 0 && (
+        <Section title="Sources">
+          <SourceCitations sources={lt.sources} />
+        </Section>
+      )}
+    </div>
+  );
+}
+
+function LabPanelDetail({ lp }: { lp: LabPanel }) {
+  return (
+    <div className="space-y-6">
+      <Header
+        title={lp.display_name ?? lp.slug}
+        slug={lp.slug}
+        tier={lp.evidence_tier}
+        category={lp.category}
+      />
+
+      {lp.summary && (
+        <Card>
+          <CardContent className="pt-6 text-sm leading-relaxed whitespace-pre-wrap">
+            {lp.summary}
+          </CardContent>
+        </Card>
+      )}
+
+      <div className="grid gap-3 sm:grid-cols-3">
+        {lp.tests && (
+          <div className="rounded-lg border bg-card p-3">
+            <div className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold">Core tests</div>
+            <div className="text-base font-semibold mt-1">{lp.tests.length}</div>
+          </div>
+        )}
+        {lp.estimated_cost_inr != null && (
+          <div className="rounded-lg border bg-card p-3">
+            <div className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold">Estimated cost</div>
+            <div className="text-base font-semibold mt-1">~₹{lp.estimated_cost_inr}</div>
+          </div>
+        )}
+        {lp.typical_turnaround_days != null && (
+          <div className="rounded-lg border bg-card p-3">
+            <div className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold">Turnaround</div>
+            <div className="text-base font-semibold mt-1">{lp.typical_turnaround_days} day{lp.typical_turnaround_days === 1 ? "" : "s"}</div>
+          </div>
+        )}
+      </div>
+
+      {lp.fasting_required && (
+        <p className="text-xs rounded-md bg-amber-50 border border-amber-200 px-2 py-1 text-amber-900">
+          ⚠ Fasting required for this panel
+        </p>
+      )}
+
+      {lp.indications && lp.indications.length > 0 && (
+        <Section title="Indications (when to order)">
+          <PlainList items={lp.indications} />
+        </Section>
+      )}
+
+      {lp.tests && lp.tests.length > 0 && (
+        <Section title={`Core tests (${lp.tests.length})`}>
+          <LinkedChipList items={lp.tests} kind="lab_tests" />
+        </Section>
+      )}
+
+      {lp.optional_tests && lp.optional_tests.length > 0 && (
+        <Section title={`Optional add-ons (${lp.optional_tests.length})`}>
+          <LinkedChipList items={lp.optional_tests} kind="lab_tests" />
+        </Section>
+      )}
+
+      {lp.notes_for_coach && (
+        <Section title="Notes for coach">
+          <p className="text-sm leading-relaxed whitespace-pre-wrap">{lp.notes_for_coach}</p>
+        </Section>
+      )}
+
+      {lp.sources && lp.sources.length > 0 && (
+        <Section title="Sources">
+          <SourceCitations sources={lp.sources} />
+        </Section>
+      )}
+    </div>
+  );
+}
+
 // ---- Page entry -----------------------------------------------------------
 
 export default async function CatalogueDetailPage({
@@ -1094,6 +1280,18 @@ export default async function CatalogueDetailPage({
       const tp = await loadOne<TitrationProtocol>("titration_protocols", slug);
       if (!tp) notFound();
       body = <TitrationDetail tp={tp} />;
+      break;
+    }
+    case "lab_tests": {
+      const lt = await loadOne<LabTest>("lab_tests", slug);
+      if (!lt) notFound();
+      body = <LabTestDetail lt={lt} />;
+      break;
+    }
+    case "lab_panels": {
+      const lp = await loadOne<LabPanel>("lab_panels", slug);
+      if (!lp) notFound();
+      body = <LabPanelDetail lp={lp} />;
       break;
     }
     default:

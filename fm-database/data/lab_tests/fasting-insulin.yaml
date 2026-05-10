@@ -1,0 +1,30 @@
+slug: fasting-insulin
+display_name: Fasting Insulin
+full_name: Fasting Insulin
+aliases: []
+units: µIU/mL
+sample_type: blood
+conventional_low: 2
+conventional_high: 25
+fm_optimal_low: 2
+fm_optimal_high: 6
+interpretation_low: Type 1 / pancreatic insufficiency
+interpretation_high: Insulin resistance — well before glucose rises (early diabetes
+  signal)
+when_to_order: PCOS / weight gain / metabolic concerns / family history T2DM
+fasting_required: true
+typical_cost_inr: 600
+linked_to_topics:
+- insulin-resistance
+- pcos
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Fasting Insulin
+evidence_tier: strong
+notes_for_coach: Most insulin resistance shows on fasting insulin YEARS before fasting
+  glucose rises. FM target 2-6, conventional 'normal' goes to 25.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

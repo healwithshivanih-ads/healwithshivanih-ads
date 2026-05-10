@@ -32,3 +32,7 @@ version: 1
 status: active
 updated_at: '2026-05-02'
 updated_by: shivani
+pregnancy_safety: caution
+lactation_safety: caution
+pregnancy_safety_note: Insufficient pregnancy safety data; use only with clinician
+  oversight.

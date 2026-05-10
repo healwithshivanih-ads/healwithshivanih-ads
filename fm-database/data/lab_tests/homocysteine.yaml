@@ -1,0 +1,29 @@
+slug: homocysteine
+display_name: Homocysteine
+full_name: Total Plasma Homocysteine
+aliases: []
+units: µmol/L
+sample_type: blood
+conventional_low: 5
+conventional_high: 15
+fm_optimal_low: 5
+fm_optimal_high: 7
+interpretation_low: Generally fine
+interpretation_high: B-vitamin (B12 / B6 / folate) deficiency; methylation defect;
+  CV risk
+when_to_order: Methylation / cardiovascular / cognitive / B-vitamin workup
+fasting_required: true
+typical_cost_inr: 600
+linked_to_topics:
+- cardiovascular-disease
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Total Plasma Homocysteine
+evidence_tier: strong
+notes_for_coach: FM optimal 5-7. Conventional flags > 15. Elevated = methylation issue
+  (MTHFR, B12, folate, B6) — single best marker for B-vitamin functional status.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

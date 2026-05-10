@@ -91,6 +91,9 @@ export interface Supplement extends BaseEntity {
     life_stages?: string[];
   };
   interactions?: Record<string, unknown>;
+  pregnancy_safety?: SafetyStatus;
+  lactation_safety?: SafetyStatus;
+  pregnancy_safety_note?: string;
   linked_to_topics?: string[];
   linked_to_mechanisms?: string[];
   linked_to_claims?: string[];
@@ -200,6 +203,50 @@ export interface TitrationProtocol extends BaseEntity {
   linked_to_topics?: string[];
   linked_to_mechanisms?: string[];
 }
+
+export interface LabTest extends BaseEntity {
+  full_name?: string;
+  units?: string;
+  sample_type?: string;
+  conventional_low?: number | null;
+  conventional_high?: number | null;
+  fm_optimal_low?: number | null;
+  fm_optimal_high?: number | null;
+  interpretation_low?: string;
+  interpretation_high?: string;
+  when_to_order?: string;
+  fasting_required?: boolean;
+  typical_cost_inr?: number | null;
+  linked_to_topics?: string[];
+  linked_to_mechanisms?: string[];
+  notes_for_coach?: string;
+}
+
+export interface LabPanel extends BaseEntity {
+  category?: string;
+  summary?: string;
+  indications?: string[];
+  tests?: string[];                  // LabTest slugs (core)
+  optional_tests?: string[];         // LabTest slugs (add-on)
+  fasting_required?: boolean;
+  estimated_cost_inr?: number | null;
+  typical_turnaround_days?: number | null;
+  linked_to_topics?: string[];
+  linked_to_mechanisms?: string[];
+  notes_for_coach?: string;
+}
+
+export type SafetyStatus = "safe" | "likely_safe" | "caution" | "contraindicated" | "unknown";
+
+export type PregnancyStatus =
+  | "not_applicable"
+  | "not_pregnant"
+  | "trying_to_conceive"
+  | "pregnant_first_trimester"
+  | "pregnant_second_trimester"
+  | "pregnant_third_trimester"
+  | "lactating"
+  | "postpartum_not_lactating";
 
 export interface NutrientDepletion {
   nutrient: string;
@@ -371,6 +418,11 @@ export interface Client {
   cycle_regularity?: "regular" | "irregular" | "very_irregular";
   menopause_started?: string;          // ISO YYYY-MM-DD
 
+  // Pregnancy / lactation — drives supplement safety overlay
+  pregnancy_status?: PregnancyStatus;
+  pregnancy_due_date?: string;         // ISO YYYY-MM-DD
+  lactation_started?: string;          // ISO YYYY-MM-DD
+
   stress_response?: string;
   childhood_history?: string;
   toxic_exposures?: string;
@@ -440,4 +492,6 @@ export type CatalogueKind =
   | "home_remedies"
   | "protocols"
   | "drug_depletions"
-  | "titration_protocols";
+  | "titration_protocols"
+  | "lab_tests"
+  | "lab_panels";

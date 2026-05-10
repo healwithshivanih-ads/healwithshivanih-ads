@@ -15,6 +15,8 @@ const KINDS_WITH_DETAIL: ReadonlySet<CatalogueKind> = new Set([
   "supplements",
   "protocols",
   "titration_protocols",
+  "lab_tests",
+  "lab_panels",
 ]);
 
 export function CatalogueTable({

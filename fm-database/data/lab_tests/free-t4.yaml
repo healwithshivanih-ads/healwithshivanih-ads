@@ -1,0 +1,28 @@
+slug: free-t4
+display_name: Free T4
+full_name: Free Thyroxine
+aliases: []
+units: ng/dL
+sample_type: blood
+conventional_low: 0.8
+conventional_high: 1.8
+fm_optimal_low: 1.1
+fm_optimal_high: 1.5
+interpretation_low: Hypothyroid (untreated or under-treated)
+interpretation_high: Hyperthyroid; over-replacement on LT4
+when_to_order: With every TSH (TSH alone is insufficient FM workup)
+fasting_required: true
+typical_cost_inr: 350
+linked_to_topics:
+- thyroid
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — Free Thyroxine
+evidence_tier: strong
+notes_for_coach: Always order alongside TSH. Free T4 < 1.1 with TSH > 2 = strong sub-clinical
+  hypo.
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

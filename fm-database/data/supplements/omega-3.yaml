@@ -71,3 +71,7 @@ version: 6
 status: active
 updated_at: '2026-05-02'
 updated_by: shivani
+pregnancy_safety: safe
+lactation_safety: safe
+pregnancy_safety_note: Recommended — DHA critical for fetal brain development. 1-2g
+  EPA+DHA. Choose fish oil or algae (vegetarian).
