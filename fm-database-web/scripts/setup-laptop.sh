@@ -5,10 +5,8 @@
 #   cd ~/code/healwithshivanih-ads/fm-database-web
 #   bash scripts/setup-laptop.sh
 #
-# It will:
-#   1. Walk you through filling in .env.local (email + AiSensy API key)
-#   2. npm install + npm run build
-#   3. Restart PM2 with the new env vars
+# Idempotent — re-runnable. Reads existing .env.local, only prompts for
+# missing keys, then npm install + build + pm2 restart.
 
 set -euo pipefail
 
@@ -21,39 +19,69 @@ echo "======================="
 echo "Repo: $ROOT"
 echo
 
-# ── Step 1: .env.local ────────────────────────────────────────────────────────
+# ── Step 1: read existing .env.local (if any) ─────────────────────────────────
 
-if [[ -f "$ENV_FILE" ]]; then
-  echo "✓ .env.local already exists — skipping env setup."
-  echo "  (edit it manually if you need to change keys)"
-else
-  echo "→ Creating .env.local"
-  echo
-  echo "Gmail (for 'Send to client' email)"
-  echo "Get an App Password at https://myaccount.google.com/apppasswords"
-  read -rp "  GMAIL_USER (your gmail address): " gmail_user
-  read -rsp "  GMAIL_APP_PASSWORD (16-char app password): " gmail_pw
-  echo
-  echo
-  echo "AiSensy (WhatsApp outbound — broadcast + per-client send)"
-  echo "Find your API key in AiSensy → Settings → API"
-  read -rp "  AISENSY_API_KEY (paste, or blank to skip): " aisensy_key
-  echo
+touch "$ENV_FILE"
+chmod 600 "$ENV_FILE" 2>/dev/null || true
 
-  {
-    echo "GMAIL_USER=$gmail_user"
-    echo "GMAIL_APP_PASSWORD=$gmail_pw"
-    if [[ -n "$aisensy_key" ]]; then
-      echo "AISENSY_API_KEY=$aisensy_key"
-    fi
-  } > "$ENV_FILE"
+read_key() {
+  # Read the value of a key from .env.local (empty if missing or blank).
+  local key="$1"
+  grep -E "^${key}=" "$ENV_FILE" 2>/dev/null | tail -n1 | cut -d'=' -f2- || true
+}
+
+set_key() {
+  # Write or overwrite a key=value line in .env.local.
+  local key="$1" value="$2" tmp
+  tmp="$(mktemp)"
+  grep -v -E "^${key}=" "$ENV_FILE" > "$tmp" 2>/dev/null || true
+  echo "${key}=${value}" >> "$tmp"
+  mv "$tmp" "$ENV_FILE"
   chmod 600 "$ENV_FILE"
-  echo "✓ Wrote $ENV_FILE (chmod 600)"
-fi
+}
+
+prompt_if_missing() {
+  # Args: KEY  prompt_label  [secret]  [hint]
+  local key="$1" label="$2" secret="${3:-}" hint="${4:-}"
+  local current
+  current="$(read_key "$key")"
+  if [[ -n "$current" ]]; then
+    local masked
+    if [[ "$secret" == "secret" ]]; then
+      masked="$(printf '%s' "$current" | sed 's/./*/g' | head -c 8)…"
+    else
+      masked="$current"
+    fi
+    echo "  ✓ $key already set ($masked) — keeping"
+    return
+  fi
+  if [[ -n "$hint" ]]; then echo "  $hint"; fi
+  local value
+  if [[ "$secret" == "secret" ]]; then
+    read -rsp "  $label: " value; echo
+  else
+    read -rp "  $label: " value
+  fi
+  if [[ -n "$value" ]]; then
+    set_key "$key" "$value"
+    echo "  ✓ $key written"
+  else
+    echo "  · $key skipped (left unset)"
+  fi
+}
+
+echo "→ Checking .env.local"
+echo
+echo "Gmail (for 'Send to client' email):"
+prompt_if_missing GMAIL_USER          "GMAIL_USER (your gmail address)"        ""       "  Get an App Password at https://myaccount.google.com/apppasswords"
+prompt_if_missing GMAIL_APP_PASSWORD  "GMAIL_APP_PASSWORD (16-char app pw)"    secret
+echo
+echo "AiSensy (WhatsApp outbound — broadcast + per-client send):"
+prompt_if_missing AISENSY_API_KEY     "AISENSY_API_KEY (paste, or blank to skip)" ""    "  Find your API key in AiSensy → Settings → API"
+echo
 
 # ── Step 2: install + build ───────────────────────────────────────────────────
 
-echo
 echo "→ npm install"
 npm install
 echo
