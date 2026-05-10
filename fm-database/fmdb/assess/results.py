@@ -131,6 +131,25 @@ class SupplementSuggestion(BaseModel):
     vitaone_url: str = ""  # Set when this suggestion maps to a product in vitaone_inventory.
 
 
+class ProtocolSuggestion(BaseModel):
+    """One FM protocol the AI recommends for this client.
+
+    Surfaced in the Assess UI as a card that the coach can use to anchor
+    the plan (e.g. "this is a 5R candidate" or "this is a metabolic-reset
+    candidate"). Each suggestion explains the why-indicated against this
+    SPECIFIC client + checks contraindications.
+    """
+    model_config = ConfigDict(extra="ignore")
+    _coerce = model_validator(mode="before")(_coerce_none_strings)
+    protocol_slug: str
+    why_indicated: str
+    fit_score: int | None = None  # 1–5
+    when_to_start: str = ""
+    expected_weeks: int | None = None
+    client_specific_modifications: str = ""
+    contraindication_check: str = ""
+
+
 class LabFollowup(BaseModel):
     model_config = ConfigDict(extra="ignore")
     _coerce = model_validator(mode="before")(_coerce_none_strings)
@@ -193,6 +212,7 @@ class AssessSuggestions(BaseModel):
     lifestyle_suggestions: list[LifestyleSuggestion] = Field(default_factory=list)
     nutrition_suggestions: NutritionSuggestions = Field(default_factory=NutritionSuggestions)
     supplement_suggestions: list[SupplementSuggestion] = Field(default_factory=list)
+    suggested_protocols: list[ProtocolSuggestion] = Field(default_factory=list)
     lab_followups: list[LabFollowup] = Field(default_factory=list)
     referral_triggers: list[ReferralTrigger] = Field(default_factory=list)
     education_framings: list[EducationFraming] = Field(default_factory=list)

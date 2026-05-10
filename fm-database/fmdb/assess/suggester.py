@@ -125,6 +125,23 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
                 },
             },
         },
+        "suggested_protocols": {
+            "type": "array",
+            "description": "FM protocols (5R, AIP, Whole30, weight-loss reset, adrenal recovery, etc.) that match this client's pattern. Pick at most 2 — list the BEST FIT first. Only suggest a protocol if its indications clearly match what we know about this client AND none of its contraindications apply. Skip if no protocol is a clean fit. Don't combine restrictive protocols (e.g. AIP + weight-loss reset) — pick one.",
+            "items": {
+                "type": "object",
+                "required": ["protocol_slug", "why_indicated", "fit_score"],
+                "properties": {
+                    "protocol_slug": {"type": "string", "description": "MUST be a slug from the `protocols` array in the catalogue subgraph."},
+                    "why_indicated": {"type": "string", "description": "2–4 sentences. Reference SPECIFIC client facts: chief complaint, named drivers, lab values, conditions, current medications, life events. NOT generic FM rationale."},
+                    "fit_score": {"type": "integer", "description": "1–5 — how well this protocol matches this specific client. 5 = textbook indication match. 3 = reasonable fit, some caveats. 1 = stretch fit, only if no better option."},
+                    "when_to_start": {"type": "string", "description": "e.g. 'immediately', 'after 2 weeks of foundation work', 'after lab results return'. Optional — empty string if no specific sequencing needed."},
+                    "expected_weeks": {"type": "integer", "description": "Expected duration in weeks for THIS client (may differ from protocol default if client needs slower pacing)."},
+                    "client_specific_modifications": {"type": "string", "description": "Modifications to the standard protocol for this client — e.g. 'vegetarian — substitute legumes phase with paneer', 'avoid ashwagandha (currently on levothyroxine)', 'extend Phase 1 to 4 weeks given low energy baseline'. Empty string if standard protocol applies."},
+                    "contraindication_check": {"type": "string", "description": "Explicit check against the protocol's contraindication list — any flagged conflicts with client conditions / meds / history."},
+                },
+            },
+        },
         "lab_followups": {
             "type": "array",
             "description": "Labs the coach should ask the clinician to order.",
@@ -340,7 +357,30 @@ HARD RULES (violating these breaks the downstream system):
       history items explicitly in `synthesis_notes` when they shape the
       hypothesis.
 
-18. DIETARY PROTOCOL SELECTION — match the clinical picture to the correct
+18. PROTOCOL RECOMMENDATIONS (`suggested_protocols`). The catalogue subgraph
+    includes a `protocols` array — these are structured FM protocols
+    (5R, AIP, Whole30, low-FODMAP, weight-loss reset, adrenal recovery,
+    liver detox, cycle sync, anti-inflammatory, mitochondrial,
+    blood-sugar regulation). When the client's pattern matches a protocol's
+    `indications` AND none of its `contraindications` apply, populate
+    `suggested_protocols` with the slug + a SPECIFIC, client-referenced
+    rationale. Rules:
+    - Pick at MOST 2 protocols. List BEST FIT first.
+    - `fit_score` 5 = textbook indication match. 3 = reasonable fit, some
+      caveats. 1 = stretch. Don't suggest fit_score < 3.
+    - `why_indicated` MUST reference specific client facts (chief complaint,
+      named drivers, lab values, named conditions, current meds, life
+      events). NOT generic FM rationale.
+    - `contraindication_check` must EXPLICITLY check the protocol's listed
+      contraindications against this client's data. If any apply, either
+      skip the protocol or flag the conflict.
+    - Don't combine restrictive protocols (e.g. AIP + weight-loss reset).
+    - If client has HPA dysregulation / adrenal fatigue, DO `adrenal-recovery-protocol`
+      FIRST before suggesting weight-loss / elimination — fasting + restriction
+      worsen HPA dysfunction.
+    - Skip `suggested_protocols` entirely if no protocol is a clean fit.
+
+19. DIETARY PROTOCOL SELECTION — match the clinical picture to the correct
     protocol. DO NOT default to a generic "anti-inflammatory" or HPA-axis
     framing for every client. Read the symptoms and choose the right tool:
 

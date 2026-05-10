@@ -108,6 +108,16 @@ export interface SupplementSuggestion {
   vitaone_url?: string;
 }
 
+export interface ProtocolSuggestion {
+  protocol_slug: string;
+  why_indicated: string;
+  fit_score?: number | null;        // 1–5
+  when_to_start?: string;
+  expected_weeks?: number | null;
+  client_specific_modifications?: string;
+  contraindication_check?: string;
+}
+
 export interface LabFollowup {
   test: string;
   reason: string;
@@ -155,6 +165,7 @@ export interface AssessSuggestions {
   lifestyle_suggestions: LifestyleSuggestion[];
   nutrition_suggestions: NutritionSuggestions;
   supplement_suggestions: SupplementSuggestion[];
+  suggested_protocols?: ProtocolSuggestion[];
   lab_followups: LabFollowup[];
   referral_triggers: ReferralTrigger[];
   education_framings: EducationFraming[];

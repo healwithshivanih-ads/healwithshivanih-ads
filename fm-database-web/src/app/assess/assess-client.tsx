@@ -781,6 +781,7 @@ function SuggestionsView({
   const lifestyles = suggestions.lifestyle_suggestions;
   const nutrition = suggestions.nutrition_suggestions;
   const supplements = suggestions.supplement_suggestions;
+  const protocols = suggestions.suggested_protocols ?? [];
   const labs = suggestions.lab_followups;
   const refs = suggestions.referral_triggers;
   const edu = suggestions.education_framings;
@@ -954,6 +955,81 @@ function SuggestionsView({
               <div><strong>Home remedies:</strong> {nutrition.home_remedy_slugs.join(", ")}</div>
             ) : null}
             {nutrition.rationale ? <div className="text-xs italic">{nutrition.rationale}</div> : null}
+          </CardContent>
+        </Card>
+      )}
+
+      {protocols.length > 0 && (
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm">🧭 Recommended protocols</CardTitle>
+            <p className="text-[11px] text-muted-foreground mt-0.5">
+              Structured FM playbooks that match this client&apos;s pattern. Pick one as the spine of your plan.
+            </p>
+          </CardHeader>
+          <CardContent className="space-y-3 text-sm">
+            {protocols.map((p, i) => {
+              const slug = String(p.protocol_slug ?? `?_${i}`);
+              const k = `proto_${slug}`;
+              const score = p.fit_score ?? null;
+              const scoreColor =
+                score == null ? "bg-gray-100 text-gray-700" :
+                score >= 5 ? "bg-emerald-100 text-emerald-800" :
+                score >= 4 ? "bg-emerald-50 text-emerald-700" :
+                score >= 3 ? "bg-amber-50 text-amber-800" :
+                "bg-red-50 text-red-700";
+              return (
+                <div key={k} className="rounded-lg border-2 p-3 space-y-2" style={{ borderColor: "rgba(43,45,66,0.18)", background: "rgba(250,248,245,0.4)" }}>
+                  <div className="flex items-start justify-between gap-3 flex-wrap">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <a
+                        href={`/catalogue/protocols/${slug}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="font-semibold text-sm hover:underline"
+                        style={{ color: "var(--brand-indigo, #2B2D42)" }}
+                      >
+                        {slug}
+                      </a>
+                      {score != null && (
+                        <span className={`inline-flex items-center text-[10px] font-semibold px-1.5 py-0.5 rounded-full ${scoreColor}`}>
+                          fit {score}/5
+                        </span>
+                      )}
+                      {p.expected_weeks != null && (
+                        <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-blue-50 text-blue-700">
+                          {p.expected_weeks}w
+                        </span>
+                      )}
+                    </div>
+                    <Pick k={k} />
+                  </div>
+                  {p.why_indicated && (
+                    <p className="text-sm leading-relaxed text-foreground/80">
+                      {p.why_indicated}
+                    </p>
+                  )}
+                  {p.when_to_start && (
+                    <p className="text-xs">
+                      <span className="text-muted-foreground font-medium">When to start: </span>
+                      {p.when_to_start}
+                    </p>
+                  )}
+                  {p.client_specific_modifications && (
+                    <p className="text-xs">
+                      <span className="text-muted-foreground font-medium">Modifications: </span>
+                      {p.client_specific_modifications}
+                    </p>
+                  )}
+                  {p.contraindication_check && (
+                    <p className="text-xs rounded-md bg-amber-50 border border-amber-200 px-2 py-1">
+                      <span className="font-medium">⚠ Contraindication check: </span>
+                      {p.contraindication_check}
+                    </p>
+                  )}
+                </div>
+              );
+            })}
           </CardContent>
         </Card>
       )}

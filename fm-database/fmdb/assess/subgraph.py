@@ -116,6 +116,17 @@ def build_subgraph(
         hr for hr in cat.home_remedies
         if set(hr.linked_to_topics) & topic_set or set(hr.linked_to_mechanisms) & mech_set
     ]
+    # Protocols linked to selected topics, mechanisms, or symptoms — these
+    # are the structured FM playbooks (5R, AIP, weight-loss reset, etc.)
+    # that the AI may recommend as a spine for the plan.
+    relevant_protocols = [
+        pr for pr in cat.protocols
+        if (
+            set(pr.linked_to_topics) & topic_set
+            or set(pr.linked_to_mechanisms) & mech_set
+            or set(pr.linked_to_symptoms) & sym_set
+        )
+    ]
 
     # All symptoms whose linked_to_topics intersect our topics — the model
     # may want to surface symptoms the coach didn't pick that fit the picture
@@ -221,6 +232,28 @@ def build_subgraph(
             "evidence_tier": hr.evidence_tier.value,
         }
 
+    def _pr(pr):
+        return {
+            "slug": pr.slug,
+            "display_name": pr.display_name,
+            "category": pr.category.value,
+            "summary": pr.summary[:400],
+            "indications": pr.indications[:10],
+            "contraindications": pr.contraindications[:6],
+            "typical_duration_weeks": pr.typical_duration_weeks,
+            "phases": [
+                {"name": ph.name, "weeks": ph.weeks, "summary": ph.summary[:200]}
+                for ph in pr.phases[:6]
+            ],
+            "supplements_typically_used": pr.supplements_typically_used,
+            "expected_outcomes": pr.expected_outcomes[:6],
+            "cautions": pr.cautions[:5],
+            "linked_to_topics": pr.linked_to_topics,
+            "linked_to_symptoms": pr.linked_to_symptoms,
+            "evidence_tier": pr.evidence_tier.value,
+            "notes_for_coach": pr.notes_for_coach[:300],
+        }
+
     return {
         "selected_symptoms": [_s(s) for s in selected_symptoms],
         "candidate_symptoms": [_s(s) for s in candidate_symptoms],
@@ -230,4 +263,5 @@ def build_subgraph(
         "supplements": [_supp(s) for s in relevant_supplements],
         "cooking_adjustments": [_ca(ca) for ca in relevant_cooking],
         "home_remedies": [_hr(hr) for hr in relevant_remedies],
+        "protocols": [_pr(pr) for pr in relevant_protocols],
     }

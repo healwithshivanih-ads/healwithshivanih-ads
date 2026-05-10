@@ -145,6 +145,32 @@ export interface HomeRemedy extends BaseEntity {
   linked_to_mechanisms?: string[];
 }
 
+export interface ProtocolPhase {
+  name: string;
+  weeks?: number | null;
+  summary?: string;
+  key_actions?: string[];
+}
+
+export interface Protocol extends BaseEntity {
+  category?: string;
+  summary?: string;
+  indications?: string[];
+  contraindications?: string[];
+  typical_duration_weeks?: number | null;
+  phases?: ProtocolPhase[];
+  key_steps?: string[];
+  foods_to_emphasise?: string[];
+  foods_to_remove?: string[];
+  supplements_typically_used?: string[];
+  expected_outcomes?: string[];
+  cautions?: string[];
+  linked_to_topics?: string[];
+  linked_to_mechanisms?: string[];
+  linked_to_symptoms?: string[];
+  notes_for_coach?: string;
+}
+
 // ---- Plan + Client (PHI) ----
 
 export type PlanStatus =
@@ -358,4 +384,5 @@ export type CatalogueKind =
   | "sources"
   | "mindmaps"
   | "cooking_adjustments"
-  | "home_remedies";
+  | "home_remedies"
+  | "protocols";
