@@ -10,6 +10,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { saveSessionAction, appendCheckInToPlanAction } from "@/app/assess/actions";
+import { assessReworkBenefitAction } from "@/app/clients/actions";
 import { updateClientPreferences } from "@/app/clients/actions";
 import { FivePillarsCapture, type FivePillarsData } from "./five-pillars-capture";
 
@@ -161,6 +162,22 @@ export function CheckInForm({ clientId, currentPlanSlug, currentReportedTriggers
       if (result.ok && result.session_id) {
         toast.success(`Check-in saved — ${result.session_id}`);
         onSaved?.(result.session_id);
+
+        // Fire-and-forget AI rework assessment. Banner appears on next refresh.
+        const ratingOpt = PROGRESS_OPTIONS.find((o) => o.value === progress);
+        const eventSummary = [
+          ratingOpt ? `Progress: ${ratingOpt.label}` : null,
+          newSymptoms.length > 0 ? `New symptoms: ${newSymptoms.slice(0, 3).join(", ")}` : null,
+          sessionTriggers.trim() ? `Reported triggers: ${sessionTriggers.trim()}` : null,
+          clientFeedback.trim() ? `Feedback: ${clientFeedback.trim().slice(0, 240)}` : null,
+        ].filter(Boolean).join(" | ");
+        if (eventSummary) {
+          void assessReworkBenefitAction({
+            clientId,
+            triggeredBy: "check_in",
+            eventSummary,
+          });
+        }
 
         // Save reported triggers to client profile if any were entered this session
         if (sessionTriggers.trim()) {

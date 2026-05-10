@@ -14,6 +14,7 @@ import { toast } from "sonner";
 import {
   parseFunctionalTestAction,
   loadFunctionalTestsAction,
+  assessReworkBenefitAction,
   type FunctionalTestSummary,
 } from "@/app/clients/actions";
 import { uploadFileAction } from "@/app/assess/actions";
@@ -77,6 +78,15 @@ export function FunctionalTestPanel({ clientId }: Props) {
             const label = TEST_LABEL[result.test_type ?? "unknown"];
             toast.success(`✅ ${label} parsed — ${result.flagged_drivers?.length ?? 0} drivers flagged`);
             await refresh();
+
+            // Fire-and-forget AI rework assessment.
+            const drivers = (result.flagged_drivers ?? []).slice(0, 8).join(", ");
+            const summary = result.summary ? `${result.summary}` : `${label} parsed`;
+            void assessReworkBenefitAction({
+              clientId,
+              triggeredBy: "functional_test",
+              eventSummary: `${label} findings: ${summary}${drivers ? ` | Drivers: ${drivers}` : ""}`,
+            });
           }
         }
         setIsParsing(false);

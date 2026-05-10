@@ -29,7 +29,7 @@ import { LabPanels } from "./lab-panels";
 import { SessionTypePicker, type SessionType } from "./session-type-picker";
 import { CheckInForm } from "./check-in-form";
 import { generateFollowUpPlan, submitPlan, publishPlan } from "@/app/plans/[slug]/lifecycle-actions";
-import { addMeasurementAction } from "@/app/clients/actions";
+import { addMeasurementAction, assessReworkBenefitAction } from "@/app/clients/actions";
 import { TranscriptUpdatePanel } from "./transcript-update-panel";
 import { OutcomeProgressCard } from "./outcome-progress-card";
 import { LabUploadPanel } from "./lab-upload-panel";
@@ -47,6 +47,7 @@ import { MedicationImpactPanel } from "./medication-impact-panel";
 import { FunctionalTestPanel } from "./functional-test-panel";
 import { SOAPNotePanel } from "./soap-note-panel";
 import { PregnancySafetyPanel } from "./pregnancy-safety-panel";
+import { ReworkBanner } from "./rework-banner";
 import { IFMTimelineCard } from "./ifm-timeline-card";
 import { ClientAvatar } from "./client-avatar";
 import { SessionBriefModal } from "./session-brief-modal";
@@ -298,6 +299,13 @@ function QuickNoteForm({ clientId, onSaved }: { clientId: string; onSaved: (id: 
       if (res.ok && res.session_id) {
         setNote("");
         onSaved(res.session_id);
+
+        // Fire-and-forget AI rework assessment based on note content.
+        void assessReworkBenefitAction({
+          clientId,
+          triggeredBy: "quick_note",
+          eventSummary: `Quick note (${source}): ${note.trim().slice(0, 400)}`,
+        });
       } else {
         setError(res.error ?? "Failed to save note");
       }
@@ -532,6 +540,9 @@ export function ClientPageTabs({
          ══════════════════════════════════════════════════════════════════════ */}
       {activeTab === "overview" && (
         <div className="space-y-6">
+          {/* AI plan rework suggestion (only shows when benefit_pct >= 30 and not dismissed/snoozed) */}
+          <ReworkBanner clientId={clientId} suggestion={client.rework_suggestion ?? null} />
+
           {/* Quick snapshot card */}
           <Card>
             <CardContent className="pt-4 pb-3">

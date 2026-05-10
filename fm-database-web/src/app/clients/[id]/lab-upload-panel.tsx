@@ -9,7 +9,7 @@ import {
   extractTranscriptAction,
   applyTranscriptDataAction,
 } from "@/app/assess/actions";
-import { findExpectingSessionAction } from "@/app/clients/actions";
+import { findExpectingSessionAction, assessReworkBenefitAction } from "@/app/clients/actions";
 import type { ExtractedLabValue, ExtractedMeasurements } from "@/lib/fmdb/anthropic";
 import type { ComputedRatio, ExtractedLab } from "@/lib/fmdb/anthropic-types";
 
@@ -198,6 +198,16 @@ export function LabUploadPanel({ clientId }: Props) {
       }
       setSaved(true);
       toast.success(`✓ Saved ${extractedLabs.length} lab values as health snapshot`);
+
+      // Fire-and-forget AI rework assessment using flagged labs as the trigger.
+      const flaggedLabs = extractedLabs.slice(0, 8).map((l) => `${l.test_name} ${l.value} ${l.unit}`.trim()).join("; ");
+      if (flaggedLabs) {
+        void assessReworkBenefitAction({
+          clientId,
+          triggeredBy: "lab_snapshot",
+          eventSummary: `New lab snapshot: ${flaggedLabs}`,
+        });
+      }
     });
   };
 

@@ -1769,3 +1769,104 @@ export async function findExpectingSessionAction(
     return { ok: false, error: err instanceof Error ? err.message : String(err) };
   }
 }
+
+// ---------------------------------------------------------------------------
+// AI plan-rework suggester
+// ---------------------------------------------------------------------------
+//
+// Fires after a check-in / quick note / functional test / lab snapshot is
+// saved. Compares the new event against the client's active plan and outputs
+// {benefit_pct, rationale, suggested_changes}. Banner on client overview
+// surfaces high-benefit suggestions.
+
+export interface ReworkSuggestionResult {
+  ok: boolean;
+  suggestion?: {
+    generated_at: string;
+    triggered_by: string;
+    benefit_pct: number;
+    confidence: "low" | "medium" | "high";
+    rationale: string;
+    suggested_changes: Array<{
+      op: "add" | "remove" | "escalate" | "deescalate" | "swap";
+      target_kind: "supplement" | "topic" | "practice" | "lab_order" | "education";
+      target_slug?: string | null;
+      description: string;
+      reason: string;
+    }>;
+    dismissed_at?: string;
+    snoozed_until?: string;
+  } | null;
+  error?: string;
+}
+
+export async function assessReworkBenefitAction(input: {
+  clientId: string;
+  triggeredBy: "check_in" | "quick_note" | "functional_test" | "lab_snapshot" | "genetic_report";
+  eventSummary: string;
+  dryRun?: boolean;
+}): Promise<ReworkSuggestionResult> {
+  try {
+    const result = (await runScript(
+      "assess-rework.py",
+      {
+        client_id: input.clientId,
+        triggered_by: input.triggeredBy,
+        event_summary: input.eventSummary,
+        dry_run: !!input.dryRun,
+      },
+      90_000,
+    )) as ReworkSuggestionResult;
+    if (result.ok) {
+      revalidatePath(`/clients/${input.clientId}`);
+    }
+    return result;
+  } catch (e) {
+    return { ok: false, error: String(e) };
+  }
+}
+
+/** Mark the current rework_suggestion as dismissed (coach reviewed and rejected). */
+export async function dismissReworkSuggestionAction(
+  clientId: string
+): Promise<{ ok: boolean; error?: string }> {
+  try {
+    const yaml = await import("js-yaml");
+    const clientYaml = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
+    const raw = await fs.readFile(clientYaml, "utf-8");
+    const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
+    const sug = (data.rework_suggestion ?? null) as Record<string, unknown> | null;
+    if (!sug) return { ok: true };
+    sug.dismissed_at = new Date().toISOString();
+    data.rework_suggestion = sug;
+    await fs.writeFile(clientYaml, yaml.dump(data, { sortKeys: false }));
+    revalidatePath(`/clients/${clientId}`);
+    return { ok: true };
+  } catch (e) {
+    return { ok: false, error: String(e) };
+  }
+}
+
+/** Snooze the current rework_suggestion for N days (default 7). */
+export async function snoozeReworkSuggestionAction(
+  clientId: string,
+  days: number = 7
+): Promise<{ ok: boolean; error?: string }> {
+  try {
+    const yaml = await import("js-yaml");
+    const clientYaml = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
+    const raw = await fs.readFile(clientYaml, "utf-8");
+    const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
+    const sug = (data.rework_suggestion ?? null) as Record<string, unknown> | null;
+    if (!sug) return { ok: true };
+    const until = new Date();
+    until.setDate(until.getDate() + days);
+    sug.snoozed_until = until.toISOString().slice(0, 10);
+    data.rework_suggestion = sug;
+    await fs.writeFile(clientYaml, yaml.dump(data, { sortKeys: false }));
+    revalidatePath(`/clients/${clientId}`);
+    return { ok: true };
+  } catch (e) {
+    return { ok: false, error: String(e) };
+  }
+}
