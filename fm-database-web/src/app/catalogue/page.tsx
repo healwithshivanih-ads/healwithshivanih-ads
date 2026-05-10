@@ -10,12 +10,13 @@ import type {
   Claim,
   Source,
   Protocol,
+  TitrationProtocol,
 } from "@/lib/fmdb/types";
 
 export const dynamic = "force-dynamic";
 
 export default async function CataloguePage() {
-  const [topics, mechanisms, symptoms, supplements, claims, sources, protocols] =
+  const [topics, mechanisms, symptoms, supplements, claims, sources, protocols, titrations] =
     await Promise.all([
       loadAllOfKind<Topic>("topics"),
       loadAllOfKind<Mechanism>("mechanisms"),
@@ -24,6 +25,7 @@ export default async function CataloguePage() {
       loadAllOfKind<Claim>("claims"),
       loadAllOfKind<Source>("sources"),
       loadAllOfKind<Protocol>("protocols"),
+      loadAllOfKind<TitrationProtocol>("titration_protocols"),
     ]);
 
   // Source records use `id` (not `slug`) and `title` (not `display_name`) on disk.
@@ -56,6 +58,7 @@ export default async function CataloguePage() {
             Supplements ({supplements.length})
           </TabsTrigger>
           <TabsTrigger value="protocols">Protocols ({protocols.length})</TabsTrigger>
+          <TabsTrigger value="titration_protocols">Titrations ({titrations.length})</TabsTrigger>
           <TabsTrigger value="claims">Claims ({claims.length})</TabsTrigger>
           <TabsTrigger value="sources">Sources ({sources.length})</TabsTrigger>
         </TabsList>
@@ -74,6 +77,9 @@ export default async function CataloguePage() {
         </TabsContent>
         <TabsContent value="protocols">
           <CatalogueTable kind="protocols" rows={protocols} />
+        </TabsContent>
+        <TabsContent value="titration_protocols">
+          <CatalogueTable kind="titration_protocols" rows={titrations} />
         </TabsContent>
         <TabsContent value="claims">
           <CatalogueTable kind="claims" rows={claims} />

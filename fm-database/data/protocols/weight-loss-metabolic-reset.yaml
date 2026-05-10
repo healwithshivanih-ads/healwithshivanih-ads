@@ -105,6 +105,15 @@ cautions:
   - "Don't combine with elimination diet (5R / AIP / Whole30) in same window — too much restriction"
   - Strength training is non-negotiable — without it, weight loss = muscle loss
   - "If client has cortisol issues (adrenal fatigue, high stress), do adrenal recovery FIRST — fasting + restriction worsens HPA dysfunction"
+prerequisites:
+  - adrenal-recovery-protocol
+recommended_followup:
+  - blood-sugar-regulation
+incompatible_with:
+  - autoimmune-paleo-aip
+  - whole30
+  - low-fodmap-protocol
+  - 5r-gut-protocol
 linked_to_topics:
   - insulin-resistance
   - weight-management

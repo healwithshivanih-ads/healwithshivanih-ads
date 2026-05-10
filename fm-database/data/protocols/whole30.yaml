@@ -78,6 +78,15 @@ cautions:
   - "Less strict than AIP — keeps eggs + nightshades + nuts"
   - "Indian challenge: rice + dal both eliminated; meal planning needs effort"
   - Don't extend past 30 days — the diagnostic value comes from reintroduction
+prerequisites: []
+recommended_followup:
+  - low-fodmap-protocol
+  - 5r-gut-protocol
+  - autoimmune-paleo-aip
+incompatible_with:
+  - autoimmune-paleo-aip
+  - low-fodmap-protocol
+  - weight-loss-metabolic-reset
 linked_to_topics:
   - food-sensitivities
   - inflammation

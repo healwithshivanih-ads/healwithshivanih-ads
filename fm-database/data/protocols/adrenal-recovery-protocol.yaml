@@ -94,6 +94,16 @@ cautions:
   - "DO NOT add HIIT or heavy strength training in weeks 1–8 — pushes cortisol higher"
   - "Ashwagandha + rhodiola can be too stimulating for HPA hyper-arousal — start low, build slowly"
   - Some clients feel WORSE in week 1–2 (caffeine withdrawal, cortisol resetting); pre-warn them
+prerequisites: []
+recommended_followup:
+  - blood-sugar-regulation
+  - mitochondrial-support
+  - cycle-sync-protocol
+incompatible_with:
+  - weight-loss-metabolic-reset
+  - autoimmune-paleo-aip
+  - whole30
+  - low-fodmap-protocol
 linked_to_topics:
   - adrenal-fatigue
   - hpa-axis-dysfunction

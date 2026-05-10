@@ -1,0 +1,74 @@
+slug: magnesium-glycinate-bedtime
+display_name: Magnesium Glycinate — Sleep + HPA Recovery
+supplement_slug: magnesium-glycinate
+purpose: |
+  No real titration needed — magnesium glycinate is well-tolerated at
+  therapeutic dose from day 1. The "ramp" here is more about timing +
+  pairing with vitamin D3/K2. Low dose for sleep-only support; full
+  dose for muscle / HPA / anxiety. Standard Indian product is 400mg
+  elemental Mg per tab.
+indications:
+  - poor sleep
+  - chronic-stress
+  - muscle-cramps
+  - constipation (mild — citrate works better for this)
+  - PMS
+  - migraines
+  - hpa-axis-dysregulation
+contraindications:
+  - severe renal impairment (eGFR < 30)
+  - on K-sparing diuretics + ACE/ARB without clinician (hyperkalemia stack risk)
+product_strength: "400mg elemental magnesium per tablet (magnesium bisglycinate)"
+available_at:
+  - vitaone
+  - amazon-india
+  - iherb
+target_dose_label: "400mg elemental at bedtime"
+target_total_per_day: "400mg"
+schedule:
+  - week: 1
+    morning: 0
+    midday: 0
+    evening: 0
+    bedtime: 1
+    notes: "1 tablet (400mg) 30-60 min before bed. Most clients feel sleep improvement within 3-5 days."
+  - week: 2
+    morning: 0
+    midday: 0
+    evening: 0
+    bedtime: 1
+    notes: "Maintain. If muscle cramps still present OR PMS / migraine context, can split: 1/2 AM + 1/2 PM (allowed if tablet is splittable)."
+  - week: 4
+    morning: 0
+    midday: 0
+    evening: 0
+    bedtime: 1
+    notes: "Long-term maintenance dose. Re-test RBC magnesium at 12 weeks if originally low."
+splittable: false
+cautions:
+  - "Avoid magnesium oxide — only 4% absorbed, causes diarrhea."
+  - "Citrate form is BETTER for constipation; glycinate is BETTER for sleep + anxiety."
+  - "If loose stools at 400mg, drop to 1/2 tab — may indicate dose tolerance threshold."
+  - "Pair with vitamin D3 5000 IU + K2 100mcg for bone-protective stack."
+monitoring:
+  - "Sleep quality (PSQI or sleep diary) — improvement by week 2-3 expected"
+  - "RBC magnesium at week 12 if baseline low"
+notes_for_coach: |
+  No real titration concerns — magnesium glycinate is one of the safest +
+  most tolerated supplements in the FM stack. Full dose from day 1 is
+  fine. The schedule above is more a timing guide than a ramp. Bedtime
+  dosing matters because magnesium has GABAergic activity (sleep promotion).
+  AM dose only relevant when high stress / anxiety.
+linked_to_topics:
+  - chronic-stress
+  - perimenopause
+linked_to_mechanisms:
+  - hpa-axis-dysregulation
+sources:
+  - id: vitaone-skill-practice-guide
+    location: Magnesium glycinate timing + dose
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-10
+updated_by: shivani

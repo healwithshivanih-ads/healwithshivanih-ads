@@ -1,0 +1,84 @@
+slug: l-glutamine-gut-repair-ramp
+display_name: L-Glutamine — Gut Repair Ramp (powder)
+supplement_slug: l-glutamine
+purpose: |
+  2-week ramp to therapeutic 10g/day for leaky gut / 5R Repair phase.
+  L-glutamine at 10g/day causes mild bloating in some during the first
+  week (not a side effect — actually evidence of activity at the gut
+  lining). Slow ramp prevents discomfort.
+  Powder form is preferred over capsules — much cheaper, easier to dose.
+  Standard product is unflavoured powder, 5g per scoop.
+indications:
+  - leaky-gut
+  - food-sensitivities
+  - IBS-D (loose stools)
+  - post-antibiotic gut recovery
+  - 5R Repair phase
+  - sugar / alcohol cravings (glutamine helps via brain pathway)
+contraindications:
+  - active GI bleeding
+  - hepatic encephalopathy (ammonia-elevation risk)
+  - severe renal impairment
+  - active cancer treatment without oncologist clearance
+  - bipolar disorder (potential mood activation)
+product_strength: "5g (1 rounded teaspoon / 1 scoop) per dose; powder form unflavoured"
+available_at:
+  - vitaone
+  - amazon-india
+  - iherb
+target_dose_label: "10g/day (5g AM + 5g PM)"
+target_total_per_day: "10g"
+schedule:
+  - week: 1
+    morning: 1
+    midday: 0
+    evening: 0
+    bedtime: 0
+    notes: "1 scoop (5g) AM mixed in 200ml water, 30 min BEFORE breakfast. Empty stomach = better absorption. Watch for bloating — usually transient."
+  - week: 2
+    morning: 1
+    midday: 0
+    evening: 1
+    bedtime: 0
+    notes: "Add 1 scoop PM, 30 min before dinner. Now 10g/day."
+  - week: 6
+    morning: 1
+    midday: 0
+    evening: 1
+    bedtime: 0
+    notes: "Maintenance during 5R Repair. Re-evaluate at week 8 with symptom log."
+  - week: 9
+    morning: 1
+    midday: 0
+    evening: 0
+    bedtime: 0
+    notes: "If symptoms resolved, taper to 5g/day for 4 weeks then discontinue."
+splittable: false
+cautions:
+  - "Empty stomach (30 min before food) — much better absorption than with food."
+  - "Mix in WATER only — milk / juice / smoothie reduces absorption."
+  - "If bloating persists past week 1, drop to 1 scoop/day OR consider SIBO workup."
+  - "L-glutamine is contraindicated in active cancer — supports cell proliferation."
+monitoring:
+  - "GI symptoms (bloating, gas, stool form) — daily log first 2 weeks"
+  - "Calprotectin or zonulin at baseline + week 8 if available"
+notes_for_coach: |
+  L-glutamine is the workhorse of 5R Repair. 90%+ of clients tolerate
+  10g/day fine. The empty-stomach rule matters — clients who take it
+  with breakfast see much less benefit. Pair with zinc carnosine 75mg
+  + DGL 400mg for full mucosal repair stack. Cheaper than capsules
+  (5g powder ~₹2 vs 1g capsule ~₹15) — recommend powder unless client
+  has texture aversion.
+linked_to_topics:
+  - leaky-gut
+  - 5r-gut-restoration
+linked_to_mechanisms:
+  - leaky-gut
+sources:
+  - id: vitaone-skill-practice-guide
+    location: L-glutamine gut repair dose
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-10
+updated_by: shivani

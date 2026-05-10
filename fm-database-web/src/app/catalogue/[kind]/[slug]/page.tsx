@@ -18,6 +18,7 @@ import type {
   CookingAdjustment,
   HomeRemedy,
   Protocol,
+  TitrationProtocol,
 } from "@/lib/fmdb/types";
 
 const SUPPORTED: ReadonlySet<string> = new Set([
@@ -30,6 +31,7 @@ const SUPPORTED: ReadonlySet<string> = new Set([
   "cooking_adjustments",
   "home_remedies",
   "protocols",
+  "titration_protocols",
 ]);
 
 // Map a slug-like reference to its canonical detail URL.
@@ -828,6 +830,34 @@ function ProtocolDetail({ pr }: { pr: Protocol }) {
         </Section>
       </div>
 
+      {((pr.prerequisites && pr.prerequisites.length > 0) ||
+        (pr.recommended_followup && pr.recommended_followup.length > 0) ||
+        (pr.incompatible_with && pr.incompatible_with.length > 0)) && (
+        <div className="grid gap-6 md:grid-cols-3">
+          <Section title="Prerequisites (do these first)">
+            {pr.prerequisites && pr.prerequisites.length > 0 ? (
+              <LinkedChipList items={pr.prerequisites} kind="protocols" />
+            ) : (
+              <p className="text-xs italic text-muted-foreground">None — can start as a foundation protocol.</p>
+            )}
+          </Section>
+          <Section title="Recommended follow-up">
+            {pr.recommended_followup && pr.recommended_followup.length > 0 ? (
+              <LinkedChipList items={pr.recommended_followup} kind="protocols" />
+            ) : (
+              <p className="text-xs italic text-muted-foreground">None.</p>
+            )}
+          </Section>
+          <Section title="Do NOT combine with">
+            {pr.incompatible_with && pr.incompatible_with.length > 0 ? (
+              <LinkedChipList items={pr.incompatible_with} kind="protocols" />
+            ) : (
+              <p className="text-xs italic text-muted-foreground">None — compatible with all other protocols.</p>
+            )}
+          </Section>
+        </div>
+      )}
+
       {pr.notes_for_coach && (
         <Section title="Notes for coach">
           <p className="text-sm leading-relaxed whitespace-pre-wrap">{pr.notes_for_coach}</p>
@@ -837,6 +867,156 @@ function ProtocolDetail({ pr }: { pr: Protocol }) {
       {pr.sources && pr.sources.length > 0 && (
         <Section title="Sources">
           <SourceCitations sources={pr.sources} />
+        </Section>
+      )}
+    </div>
+  );
+}
+
+function TitrationDetail({ tp }: { tp: TitrationProtocol }) {
+  const schedule = tp.schedule ?? [];
+  const totalUnitsByStep = schedule.map(
+    (s) => (s.morning ?? 0) + (s.midday ?? 0) + (s.evening ?? 0) + (s.bedtime ?? 0),
+  );
+  return (
+    <div className="space-y-6">
+      <Header
+        title={tp.display_name ?? tp.slug}
+        slug={tp.slug}
+        tier={tp.evidence_tier}
+      />
+
+      {tp.purpose && (
+        <Card>
+          <CardContent className="pt-6 text-sm leading-relaxed whitespace-pre-wrap">
+            {tp.purpose}
+          </CardContent>
+        </Card>
+      )}
+
+      <div className="grid gap-3 sm:grid-cols-3">
+        <div className="rounded-lg border bg-card p-3">
+          <div className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold">
+            Supplement
+          </div>
+          <div className="mt-1">
+            <a
+              href={`/catalogue/supplements/${tp.supplement_slug}`}
+              className="text-base font-semibold hover:underline"
+            >
+              {tp.supplement_slug}
+            </a>
+          </div>
+        </div>
+        {tp.product_strength && (
+          <div className="rounded-lg border bg-card p-3">
+            <div className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold">
+              Product
+            </div>
+            <div className="text-sm font-medium mt-1">{tp.product_strength}</div>
+          </div>
+        )}
+        {tp.target_dose_label && (
+          <div className="rounded-lg border bg-card p-3">
+            <div className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold">
+              Target dose
+            </div>
+            <div className="text-sm font-medium mt-1">{tp.target_dose_label}</div>
+          </div>
+        )}
+      </div>
+
+      {tp.available_at && tp.available_at.length > 0 && (
+        <Section title="Available at">
+          <div className="flex flex-wrap gap-1.5">
+            {tp.available_at.map((src) => (
+              <span
+                key={src}
+                className="text-xs font-medium px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200"
+              >
+                {src}
+              </span>
+            ))}
+          </div>
+        </Section>
+      )}
+
+      <div className="grid gap-6 md:grid-cols-2">
+        <Section title="Indications">
+          <PlainList items={tp.indications} />
+        </Section>
+        <Section title="Contraindications">
+          <PlainList items={tp.contraindications} />
+        </Section>
+      </div>
+
+      {schedule.length > 0 && (
+        <Section title="Titration schedule">
+          <div className="overflow-x-auto rounded-lg border">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/40 text-xs uppercase tracking-wide text-muted-foreground">
+                <tr>
+                  <th className="px-3 py-2 text-left">Week</th>
+                  <th className="px-3 py-2 text-center">AM</th>
+                  <th className="px-3 py-2 text-center">Midday</th>
+                  <th className="px-3 py-2 text-center">PM</th>
+                  <th className="px-3 py-2 text-center">Bedtime</th>
+                  <th className="px-3 py-2 text-center">Total/day</th>
+                  <th className="px-3 py-2 text-left">Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                {schedule.map((s, i) => (
+                  <tr key={i} className="border-t">
+                    <td className="px-3 py-2 font-semibold tabular-nums">{s.week}</td>
+                    <td className="px-3 py-2 text-center tabular-nums">{(s.morning ?? 0) || "—"}</td>
+                    <td className="px-3 py-2 text-center tabular-nums">{(s.midday ?? 0) || "—"}</td>
+                    <td className="px-3 py-2 text-center tabular-nums">{(s.evening ?? 0) || "—"}</td>
+                    <td className="px-3 py-2 text-center tabular-nums">{(s.bedtime ?? 0) || "—"}</td>
+                    <td className="px-3 py-2 text-center tabular-nums font-semibold">{totalUnitsByStep[i]}</td>
+                    <td className="px-3 py-2 text-xs leading-snug">{s.notes ?? ""}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-[11px] text-muted-foreground mt-2">
+            Doses are integer counts of the product unit ({tp.product_strength ?? "—"}).
+            {tp.splittable ? " Capsule is splittable — half-doses possible." : " Capsule is NOT splittable — whole units only."}
+          </p>
+        </Section>
+      )}
+
+      {tp.cautions && tp.cautions.length > 0 && (
+        <Section title="Cautions">
+          <PlainList items={tp.cautions} />
+        </Section>
+      )}
+
+      {tp.monitoring && tp.monitoring.length > 0 && (
+        <Section title="Monitoring">
+          <PlainList items={tp.monitoring} />
+        </Section>
+      )}
+
+      <div className="grid gap-6 md:grid-cols-2">
+        <Section title="Linked topics">
+          <LinkedChipList items={tp.linked_to_topics} kind="topics" />
+        </Section>
+        <Section title="Linked mechanisms">
+          <LinkedChipList items={tp.linked_to_mechanisms} kind="mechanisms" />
+        </Section>
+      </div>
+
+      {tp.notes_for_coach && (
+        <Section title="Notes for coach">
+          <p className="text-sm leading-relaxed whitespace-pre-wrap">{tp.notes_for_coach}</p>
+        </Section>
+      )}
+
+      {tp.sources && tp.sources.length > 0 && (
+        <Section title="Sources">
+          <SourceCitations sources={tp.sources} />
         </Section>
       )}
     </div>
@@ -908,6 +1088,12 @@ export default async function CatalogueDetailPage({
       const pr = await loadOne<Protocol>("protocols", slug);
       if (!pr) notFound();
       body = <ProtocolDetail pr={pr} />;
+      break;
+    }
+    case "titration_protocols": {
+      const tp = await loadOne<TitrationProtocol>("titration_protocols", slug);
+      if (!tp) notFound();
+      body = <TitrationDetail tp={tp} />;
       break;
     }
     default:

@@ -101,6 +101,13 @@ cautions:
   - "Combine with stool support (chia + flax + magnesium) — mobilised toxins MUST be excreted, not reabsorbed"
   - "Glutathione + NAC can lower copper — supplement with copper-rich foods if extending past 8 weeks"
   - "Milk thistle can interact with chemo / immunosuppressants — clinician check first"
+prerequisites:
+  - 5r-gut-protocol
+recommended_followup:
+  - cycle-sync-protocol
+  - anti-inflammatory-reset
+incompatible_with:
+  - autoimmune-paleo-aip
 linked_to_topics:
   - liver-detoxification
   - estrogen-dominance
