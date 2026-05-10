@@ -203,6 +203,7 @@ export interface PlanFields {
   referrals?: unknown[];
   tracking?: Record<string, unknown>;
   attached_resources?: string[];
+  attached_protocols?: string[];
   notes_for_coach?: string;
   status?: PlanStatus;
   version?: number;

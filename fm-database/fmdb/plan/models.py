@@ -565,6 +565,14 @@ class Plan(BaseModel):
     # plan as a handout bundle. Coach attaches via the 📎 Resources tab.
     attached_resources: list[str] = Field(default_factory=list)
 
+    # ---- attached protocols (Protocol slugs from fm-database/data/protocols/) ----
+    # The structured FM playbooks the coach committed to (5R / AIP / etc.)
+    # picked from AI suggestions in /assess. Drives meal plan / supplement /
+    # exercise / lifestyle letter generation — protocol's foods_to_emphasise,
+    # foods_to_remove, supplements_typically_used, phases, and cautions are
+    # injected into the letter prompts as binding constraints.
+    attached_protocols: list[str] = Field(default_factory=list)
+
     # ---- provenance ----
     status: PlanStatus = PlanStatus.draft
     status_history: list[StatusEvent] = Field(default_factory=list)

@@ -38,7 +38,9 @@ import type {
   ChatTurn,
   ComputedRatio,
   PlanBrief,
+  FactorScores,
 } from "@/lib/fmdb/anthropic-types";
+import { FACTOR_LABELS, FACTOR_WEIGHTS } from "@/lib/fmdb/anthropic-types";
 import { PROTOCOL_TEMPLATES } from "@/lib/fmdb/protocol-templates";
 import type {
   ExtractedHealthData,
@@ -962,24 +964,28 @@ function SuggestionsView({
       {protocols.length > 0 && (
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm">🧭 Recommended protocols</CardTitle>
+            <CardTitle className="text-sm">🧭 Recommended protocols (top 2)</CardTitle>
             <p className="text-[11px] text-muted-foreground mt-0.5">
-              Structured FM playbooks that match this client&apos;s pattern. Pick one as the spine of your plan.
+              Each protocol is scored across 11 weighted factors → an overall fit %.
+              Pick ONE — it becomes the spine of the plan and shapes meal, supplement, exercise, and lifestyle letters.
             </p>
           </CardHeader>
           <CardContent className="space-y-3 text-sm">
             {protocols.map((p, i) => {
               const slug = String(p.protocol_slug ?? `?_${i}`);
-              const k = `proto_${slug}`;
-              const score = p.fit_score ?? null;
-              const scoreColor =
-                score == null ? "bg-gray-100 text-gray-700" :
-                score >= 5 ? "bg-emerald-100 text-emerald-800" :
-                score >= 4 ? "bg-emerald-50 text-emerald-700" :
-                score >= 3 ? "bg-amber-50 text-amber-800" :
-                "bg-red-50 text-red-700";
+              const pickKey = `protocol_${slug}`;
+              const isPicked = picks[pickKey] === true;
+              const fitPercent = p.fit_percent ?? null;
+              const pctColor =
+                fitPercent == null ? "bg-gray-100 text-gray-700" :
+                fitPercent >= 80 ? "bg-emerald-100 text-emerald-900 ring-2 ring-emerald-300" :
+                fitPercent >= 65 ? "bg-amber-50 text-amber-900 ring-1 ring-amber-200" :
+                "bg-red-50 text-red-800 ring-1 ring-red-200";
+              const cardBorder = isPicked
+                ? "border-emerald-400 bg-emerald-50/40"
+                : "border-[rgba(43,45,66,0.18)] bg-[rgba(250,248,245,0.4)]";
               return (
-                <div key={k} className="rounded-lg border-2 p-3 space-y-2" style={{ borderColor: "rgba(43,45,66,0.18)", background: "rgba(250,248,245,0.4)" }}>
+                <div key={pickKey} className={`rounded-lg border-2 p-3 space-y-2 transition-colors ${cardBorder}`}>
                   <div className="flex items-start justify-between gap-3 flex-wrap">
                     <div className="flex items-center gap-2 flex-wrap">
                       <a
@@ -991,9 +997,9 @@ function SuggestionsView({
                       >
                         {slug}
                       </a>
-                      {score != null && (
-                        <span className={`inline-flex items-center text-[10px] font-semibold px-1.5 py-0.5 rounded-full ${scoreColor}`}>
-                          fit {score}/5
+                      {fitPercent != null && (
+                        <span className={`inline-flex items-center text-[11px] font-bold px-2 py-0.5 rounded-full ${pctColor}`}>
+                          {Math.round(fitPercent)}% fit
                         </span>
                       )}
                       {p.expected_weeks != null && (
@@ -1002,12 +1008,54 @@ function SuggestionsView({
                         </span>
                       )}
                     </div>
-                    <Pick k={k} />
+                    <label className="flex items-center gap-1.5 text-xs font-medium cursor-pointer shrink-0">
+                      <input
+                        type="radio"
+                        name="selected_protocol"
+                        checked={isPicked}
+                        onChange={() => {
+                          // Mutual-exclusion radio — clear other protocol_* keys
+                          const next = { ...picks };
+                          for (const k of Object.keys(next)) {
+                            if (k.startsWith("protocol_")) next[k] = false;
+                          }
+                          next[pickKey] = true;
+                          setPicks(next);
+                        }}
+                        className="accent-emerald-600"
+                      />
+                      <span>Use this protocol</span>
+                    </label>
                   </div>
                   {p.why_indicated && (
                     <p className="text-sm leading-relaxed text-foreground/80">
                       {p.why_indicated}
                     </p>
+                  )}
+                  {p.factor_scores && (
+                    <details className="text-xs">
+                      <summary className="cursor-pointer text-muted-foreground hover:text-foreground font-medium select-none">
+                        📊 Score breakdown
+                      </summary>
+                      <ul className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1 pl-1">
+                        {(Object.keys(FACTOR_LABELS) as (keyof FactorScores)[]).map((f) => {
+                          const s = p.factor_scores?.[f];
+                          if (s == null) return null;
+                          const w = FACTOR_WEIGHTS[f];
+                          const dotColor = s >= 4 ? "#059669" : s >= 3 ? "#D97706" : "#DC2626";
+                          return (
+                            <li key={f} className="flex items-center justify-between gap-2 text-[11px]">
+                              <span className="flex items-center gap-1.5 text-muted-foreground">
+                                <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ background: dotColor }} />
+                                {FACTOR_LABELS[f]}
+                                <span className="text-[9px] text-muted-foreground/70">({w}%)</span>
+                              </span>
+                              <span className="tabular-nums font-medium">{s}/5</span>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </details>
                   )}
                   {p.when_to_start && (
                     <p className="text-xs">

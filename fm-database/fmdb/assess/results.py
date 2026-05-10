@@ -131,6 +131,73 @@ class SupplementSuggestion(BaseModel):
     vitaone_url: str = ""  # Set when this suggestion maps to a product in vitaone_inventory.
 
 
+class FactorScores(BaseModel):
+    """Per-factor 1–5 fit scores, used to compute the weighted overall %.
+
+    Weights (must sum to 100):
+      - symptoms              (20%) — chief complaints + presenting symptoms match
+      - medical_safety        (18%) — diagnoses + meds + history + risk-level compatibility
+      - labs                  (15%) — biomarkers + lab values support this protocol
+      - goals                 (10%) — alignment with stated client goals
+      - gut_function          (10%) — gut symptoms / food reactions fit
+      - metabolic_health       (8%) — insulin / glucose / lipid / weight context
+      - nutrient_status        (7%) — known deficiencies addressed
+      - lifestyle              (5%) — sleep / stress / movement / schedule realism
+      - culture                (3%) — religion / ethics / dietary preference
+      - real_world_fit         (2%) — budget / access / cooking ability / family
+      - sustainability         (2%) — long-term adherence likelihood
+
+    Score scale (1–5):
+      5 = perfect / textbook fit
+      4 = strong fit
+      3 = reasonable fit, some caveats
+      2 = weak fit
+      1 = poor fit / mismatch
+    """
+    model_config = ConfigDict(extra="ignore")
+    _coerce = model_validator(mode="before")(_coerce_none_strings)
+    symptoms: int = 3
+    medical_safety: int = 3
+    labs: int = 3
+    goals: int = 3
+    gut_function: int = 3
+    metabolic_health: int = 3
+    nutrient_status: int = 3
+    lifestyle: int = 3
+    culture: int = 3
+    real_world_fit: int = 3
+    sustainability: int = 3
+
+
+# Weights (must sum to 100).
+_FACTOR_WEIGHTS: dict[str, float] = {
+    "symptoms": 20.0,
+    "medical_safety": 18.0,
+    "labs": 15.0,
+    "goals": 10.0,
+    "gut_function": 10.0,
+    "metabolic_health": 8.0,
+    "nutrient_status": 7.0,
+    "lifestyle": 5.0,
+    "culture": 3.0,
+    "real_world_fit": 2.0,
+    "sustainability": 2.0,
+}
+
+
+def compute_fit_percent(scores: FactorScores) -> float:
+    """Weighted-average fit %. Each factor is 1–5; weights sum to 100.
+
+    Result range: 20% (all 1s) to 100% (all 5s).
+    """
+    total = 0.0
+    for k, w in _FACTOR_WEIGHTS.items():
+        s = max(1, min(5, int(getattr(scores, k, 3))))
+        total += s * w
+    # total ranges 100 (all 1s) to 500 (all 5s) → divide by 5 → 20–100
+    return round(total / 5.0, 1)
+
+
 class ProtocolSuggestion(BaseModel):
     """One FM protocol the AI recommends for this client.
 
@@ -138,12 +205,17 @@ class ProtocolSuggestion(BaseModel):
     the plan (e.g. "this is a 5R candidate" or "this is a metabolic-reset
     candidate"). Each suggestion explains the why-indicated against this
     SPECIFIC client + checks contraindications.
+
+    Scoring: AI returns 11 per-factor scores (1–5). Server-side computes
+    the weighted overall fit_percent. UI shows only the top 2 by
+    fit_percent, with a breakdown disclosure showing each factor.
     """
     model_config = ConfigDict(extra="ignore")
     _coerce = model_validator(mode="before")(_coerce_none_strings)
     protocol_slug: str
     why_indicated: str
-    fit_score: int | None = None  # 1–5
+    factor_scores: FactorScores = Field(default_factory=FactorScores)
+    fit_percent: float | None = None  # computed server-side from factor_scores
     when_to_start: str = ""
     expected_weeks: int | None = None
     client_specific_modifications: str = ""

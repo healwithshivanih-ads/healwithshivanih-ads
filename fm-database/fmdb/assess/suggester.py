@@ -17,7 +17,7 @@ import json
 import os
 from typing import Any
 
-from .results import AssessResult, AssessUsage, AssessSuggestions, ChatContext, ChatResult
+from .results import AssessResult, AssessUsage, AssessSuggestions, ChatContext, ChatResult, compute_fit_percent
 
 
 # JSON schema for the structured response. Intentionally narrow — every
@@ -127,14 +127,31 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
         },
         "suggested_protocols": {
             "type": "array",
-            "description": "FM protocols (5R, AIP, Whole30, weight-loss reset, adrenal recovery, etc.) that match this client's pattern. Pick at most 2 — list the BEST FIT first. Only suggest a protocol if its indications clearly match what we know about this client AND none of its contraindications apply. Skip if no protocol is a clean fit. Don't combine restrictive protocols (e.g. AIP + weight-loss reset) — pick one.",
+            "description": "FM protocols (5R, AIP, Whole30, weight-loss reset, adrenal recovery, etc.) that match this client's pattern. Score each candidate across 11 weighted factors — server-side computes the weighted overall fit_percent and shows only top 2 to the coach. Skip a protocol entirely if its indications don't fit OR any contraindication applies. Don't combine restrictive protocols (e.g. AIP + weight-loss reset).",
             "items": {
                 "type": "object",
-                "required": ["protocol_slug", "why_indicated", "fit_score"],
+                "required": ["protocol_slug", "why_indicated", "factor_scores"],
                 "properties": {
                     "protocol_slug": {"type": "string", "description": "MUST be a slug from the `protocols` array in the catalogue subgraph."},
                     "why_indicated": {"type": "string", "description": "2–4 sentences. Reference SPECIFIC client facts: chief complaint, named drivers, lab values, conditions, current medications, life events. NOT generic FM rationale."},
-                    "fit_score": {"type": "integer", "description": "1–5 — how well this protocol matches this specific client. 5 = textbook indication match. 3 = reasonable fit, some caveats. 1 = stretch fit, only if no better option."},
+                    "factor_scores": {
+                        "type": "object",
+                        "description": "Score this protocol's fit for THIS client across 11 factors. Each is 1–5: 5 = textbook fit, 4 = strong, 3 = reasonable with caveats, 2 = weak, 1 = poor / mismatch. Be honest — don't inflate. The server computes the weighted overall fit % from these.",
+                        "required": ["symptoms", "medical_safety", "labs", "goals", "gut_function", "metabolic_health", "nutrient_status", "lifestyle", "culture", "real_world_fit", "sustainability"],
+                        "properties": {
+                            "symptoms": {"type": "integer", "description": "Symptoms + chief complaints match. (weight 20%)"},
+                            "medical_safety": {"type": "integer", "description": "Diagnoses, medical history, current medications, risk-level compatibility. Score LOW if any contraindication, drug interaction, or active disease conflict. (weight 18%)"},
+                            "labs": {"type": "integer", "description": "Lab values + biomarkers support this protocol. (weight 15%)"},
+                            "goals": {"type": "integer", "description": "Alignment with the client's stated health goals. (weight 10%)"},
+                            "gut_function": {"type": "integer", "description": "Gut symptoms, food reactions, digestive readiness. (weight 10%)"},
+                            "metabolic_health": {"type": "integer", "description": "Insulin / glucose / lipid / weight context fit. (weight 8%)"},
+                            "nutrient_status": {"type": "integer", "description": "Known deficiencies addressed by this protocol. (weight 7%)"},
+                            "lifestyle": {"type": "integer", "description": "Sleep / stress / movement / schedule realism. (weight 5%)"},
+                            "culture": {"type": "integer", "description": "Religion / ethics / dietary preference compatibility. Vegetarian Jain client + meat-heavy AIP would score 1–2 here. (weight 3%)"},
+                            "real_world_fit": {"type": "integer", "description": "Budget, ingredient access (India), cooking ability, family / household constraints. (weight 2%)"},
+                            "sustainability": {"type": "integer", "description": "Long-term adherence likelihood — can this client realistically sustain this for the protocol's duration? (weight 2%)"},
+                        },
+                    },
                     "when_to_start": {"type": "string", "description": "e.g. 'immediately', 'after 2 weeks of foundation work', 'after lab results return'. Optional — empty string if no specific sequencing needed."},
                     "expected_weeks": {"type": "integer", "description": "Expected duration in weeks for THIS client (may differ from protocol default if client needs slower pacing)."},
                     "client_specific_modifications": {"type": "string", "description": "Modifications to the standard protocol for this client — e.g. 'vegetarian — substitute legumes phase with paneer', 'avoid ashwagandha (currently on levothyroxine)', 'extend Phase 1 to 4 weeks given low energy baseline'. Empty string if standard protocol applies."},
@@ -361,24 +378,34 @@ HARD RULES (violating these breaks the downstream system):
     includes a `protocols` array — these are structured FM protocols
     (5R, AIP, Whole30, low-FODMAP, weight-loss reset, adrenal recovery,
     liver detox, cycle sync, anti-inflammatory, mitochondrial,
-    blood-sugar regulation). When the client's pattern matches a protocol's
-    `indications` AND none of its `contraindications` apply, populate
-    `suggested_protocols` with the slug + a SPECIFIC, client-referenced
-    rationale. Rules:
-    - Pick at MOST 2 protocols. List BEST FIT first.
-    - `fit_score` 5 = textbook indication match. 3 = reasonable fit, some
-      caveats. 1 = stretch. Don't suggest fit_score < 3.
-    - `why_indicated` MUST reference specific client facts (chief complaint,
-      named drivers, lab values, named conditions, current meds, life
-      events). NOT generic FM rationale.
+    blood-sugar regulation). For each protocol you'd consider, return the
+    slug, a SPECIFIC client-referenced rationale, and 11 per-factor scores
+    (1–5) covering symptoms, medical safety, labs, goals, gut function,
+    metabolic health, nutrient status, lifestyle, culture, real-world fit,
+    and sustainability. The server computes a weighted overall fit % and
+    shows ONLY THE TOP 2 to the coach.
+
+    Critical rules:
+    - SCORE HONESTLY across all 11 factors. Don't inflate. A vegetarian
+      Jain client + AIP should score `culture: 1` (eggs, animal protein,
+      onion/garlic all banned for them). The math will weed out poor fits.
+    - `medical_safety` (weight 18%) is your safety lever — if any
+      contraindication / drug interaction / active disease conflicts with
+      the protocol, score this 1–2. The weighted % will fall below 60% and
+      the protocol will (correctly) appear as a poor fit.
+    - `why_indicated` (2–4 sentences) MUST reference specific client facts
+      — chief complaint, named drivers, lab values, named conditions,
+      current meds, life events. NOT generic FM rationale.
     - `contraindication_check` must EXPLICITLY check the protocol's listed
-      contraindications against this client's data. If any apply, either
-      skip the protocol or flag the conflict.
-    - Don't combine restrictive protocols (e.g. AIP + weight-loss reset).
-    - If client has HPA dysregulation / adrenal fatigue, DO `adrenal-recovery-protocol`
-      FIRST before suggesting weight-loss / elimination — fasting + restriction
-      worsen HPA dysfunction.
-    - Skip `suggested_protocols` entirely if no protocol is a clean fit.
+      contraindications against this client's data.
+    - Score 4–5 protocols if the picture supports them — server picks top 2.
+    - If client has HPA dysregulation / adrenal fatigue, score
+      `adrenal-recovery-protocol` highest (it should be done FIRST before
+      weight-loss / elimination — fasting + restriction worsen HPA).
+    - DO NOT combine restrictive protocols in the same plan (the coach
+      picks one) but you MAY suggest two so the coach sees the runner-up.
+    - Skip `suggested_protocols` entirely (return empty list) if no
+      protocol scores above 50% weighted.
 
 19. DIETARY PROTOCOL SELECTION — match the clinical picture to the correct
     protocol. DO NOT default to a generic "anti-inflammatory" or HPA-axis
@@ -736,6 +763,16 @@ def synthesize(
     for block in resp.content:
         if getattr(block, "type", None) == "tool_use" and block.name == "synthesize_assessment":
             suggestions = AssessSuggestions.model_validate(block.input or {})
+            # Server-side: compute weighted fit_percent from factor_scores
+            # for each protocol suggestion + sort top-2 by fit. The AI returns
+            # the per-factor scores; we own the math so the weighting stays
+            # consistent regardless of what the model thinks the % is.
+            for ps in suggestions.suggested_protocols:
+                ps.fit_percent = compute_fit_percent(ps.factor_scores)
+            suggestions.suggested_protocols.sort(
+                key=lambda p: (p.fit_percent or 0.0), reverse=True
+            )
+            suggestions.suggested_protocols = suggestions.suggested_protocols[:2]
             return AssessResult(suggestions=suggestions, usage=usage_obj)
 
     return AssessResult(suggestions=AssessSuggestions(), usage=usage_obj)
