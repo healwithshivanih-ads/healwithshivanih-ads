@@ -1,7 +1,11 @@
 slug: am-cortisol
 display_name: AM Cortisol
 full_name: Morning Serum Cortisol (8 AM)
-aliases: []
+aliases:
+- 8 am cortisol
+- cortisol
+- cortisol am
+- morning cortisol
 units: µg/dL
 sample_type: blood
 conventional_low: 6

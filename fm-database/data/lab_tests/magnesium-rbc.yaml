@@ -1,7 +1,10 @@
 slug: magnesium-rbc
 display_name: RBC Magnesium
 full_name: Red Blood Cell Magnesium
-aliases: []
+aliases:
+- magnesium red blood cell
+- rbc magnesium
+- rbc mg
 units: mg/dL
 sample_type: blood
 conventional_low: 4.0

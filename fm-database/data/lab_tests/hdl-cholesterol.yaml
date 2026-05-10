@@ -1,7 +1,11 @@
 slug: hdl-cholesterol
 display_name: HDL
 full_name: High-Density Lipoprotein
-aliases: []
+aliases:
+- hdl
+- hdl cholesterol
+- hdl-c
+- high density lipoprotein
 units: mg/dL
 sample_type: blood
 conventional_low: 40

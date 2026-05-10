@@ -1,7 +1,10 @@
 slug: reverse-t3
 display_name: Reverse T3
 full_name: Reverse Triiodothyronine
-aliases: []
+aliases:
+- rev t3
+- reverse triiodothyronine
+- rt3
 units: ng/dL
 sample_type: blood
 conventional_low: 8.0

@@ -1,7 +1,13 @@
 slug: tpo-antibodies
 display_name: TPO Ab
 full_name: Thyroid Peroxidase Antibodies
-aliases: []
+aliases:
+- anti tpo
+- anti-tpo
+- thyroid peroxidase ab
+- thyroid peroxidase antibody
+- tpo
+- tpo ab
 units: IU/mL
 sample_type: blood
 conventional_low: 0

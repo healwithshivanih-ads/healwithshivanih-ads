@@ -1,7 +1,10 @@
 slug: folate-rbc
 display_name: RBC Folate
 full_name: Red Blood Cell Folate
-aliases: []
+aliases:
+- folic acid rbc
+- rbc folate
+- red cell folate
 units: ng/mL
 sample_type: blood
 conventional_low: 280

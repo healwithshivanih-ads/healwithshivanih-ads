@@ -1,7 +1,10 @@
 slug: apob
 display_name: ApoB
 full_name: Apolipoprotein B
-aliases: []
+aliases:
+- apo b
+- apo-b
+- apolipoprotein b
 units: mg/dL
 sample_type: blood
 conventional_low: 50

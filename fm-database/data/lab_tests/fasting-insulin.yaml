@@ -1,7 +1,9 @@
 slug: fasting-insulin
 display_name: Fasting Insulin
 full_name: Fasting Insulin
-aliases: []
+aliases:
+- insulin (fasting)
+- insulin fasting
 units: µIU/mL
 sample_type: blood
 conventional_low: 2

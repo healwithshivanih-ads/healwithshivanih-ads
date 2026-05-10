@@ -1,7 +1,9 @@
 slug: tsh
 display_name: TSH
 full_name: Thyroid Stimulating Hormone
-aliases: []
+aliases:
+- thyroid stimulating hormone
+- thyrotropin
 units: mIU/L
 sample_type: blood
 conventional_low: 0.4

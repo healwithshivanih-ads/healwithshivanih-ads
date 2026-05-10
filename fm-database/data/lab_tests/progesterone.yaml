@@ -1,7 +1,9 @@
 slug: progesterone
 display_name: Progesterone
 full_name: Progesterone — Serum
-aliases: []
+aliases:
+- p4
+- progest
 units: ng/mL
 sample_type: blood
 conventional_low: 0.5

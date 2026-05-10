@@ -1223,6 +1223,74 @@ export async function saveLabReferenceRangesAction(
   }
 }
 
+// ────────────────────────────────────────────────────────────────────────────
+// Lab test catalogue — surfaces FM-optimal AND conventional ranges next to
+// every lab value the coach views. Loaded once on health-trends mount.
+// ────────────────────────────────────────────────────────────────────────────
+
+export interface CatalogueLabRange {
+  slug: string;
+  display_name: string;
+  full_name?: string;
+  units?: string;
+  conventional_low?: number | null;
+  conventional_high?: number | null;
+  fm_optimal_low?: number | null;
+  fm_optimal_high?: number | null;
+  interpretation_low?: string;
+  interpretation_high?: string;
+  /** Lowercased: slug + display_name + full_name + aliases. Used by matchLabTest(). */
+  match_keys: string[];
+}
+
+let _labCatalogueCache: CatalogueLabRange[] | null = null;
+
+export async function loadLabTestsCatalogueAction(): Promise<CatalogueLabRange[]> {
+  if (_labCatalogueCache) return _labCatalogueCache;
+  try {
+    const { loadAllOfKind } = await import("@/lib/fmdb/loader");
+    type LT = {
+      slug: string;
+      display_name: string;
+      full_name?: string;
+      aliases?: string[];
+      units?: string;
+      conventional_low?: number | null;
+      conventional_high?: number | null;
+      fm_optimal_low?: number | null;
+      fm_optimal_high?: number | null;
+      interpretation_low?: string;
+      interpretation_high?: string;
+    };
+    const tests = await loadAllOfKind<LT>("lab_tests");
+    _labCatalogueCache = tests.map((t) => {
+      const keys = new Set<string>();
+      const add = (s?: string) => { if (s) keys.add(s.trim().toLowerCase()); };
+      add(t.slug);
+      add(t.display_name);
+      add(t.full_name);
+      for (const a of t.aliases ?? []) add(a);
+      return {
+        slug: t.slug,
+        display_name: t.display_name,
+        full_name: t.full_name,
+        units: t.units,
+        conventional_low: t.conventional_low ?? null,
+        conventional_high: t.conventional_high ?? null,
+        fm_optimal_low: t.fm_optimal_low ?? null,
+        fm_optimal_high: t.fm_optimal_high ?? null,
+        interpretation_low: t.interpretation_low,
+        interpretation_high: t.interpretation_high,
+        match_keys: Array.from(keys).filter(Boolean),
+      } satisfies CatalogueLabRange;
+    });
+    return _labCatalogueCache;
+  } catch (e) {
+    console.error("[loadLabTestsCatalogueAction] failed:", e);
+    return [];
+  }
+}
+
 /**
  * Load FM-optimal reference ranges for a client.
  */

@@ -1,7 +1,11 @@
 slug: vitamin-b12
 display_name: Vitamin B12
 full_name: Serum B12 (cobalamin)
-aliases: []
+aliases:
+- b12
+- cobalamin
+- vit b12
+- vitamin b-12
 units: pg/mL
 sample_type: blood
 conventional_low: 200

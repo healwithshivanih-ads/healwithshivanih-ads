@@ -1,7 +1,10 @@
 slug: free-t4
 display_name: Free T4
 full_name: Free Thyroxine
-aliases: []
+aliases:
+- free t-4
+- free thyroxine
+- ft4
 units: ng/dL
 sample_type: blood
 conventional_low: 0.8
