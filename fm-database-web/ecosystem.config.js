@@ -1,3 +1,7 @@
+// Load .env.local so PM2 sees AISENSY_API_KEY, GMAIL_USER, etc.
+// dotenv is a Next.js dependency — always present in node_modules.
+require("dotenv").config({ path: require("path").join(__dirname, ".env.local") });
+
 module.exports = {
   apps: [
     {
@@ -6,6 +10,7 @@ module.exports = {
       args: "start --port 3002",
       cwd: __dirname,
       env: {
+        ...process.env,
         NODE_ENV: "production",
         PORT: 3002,
       },
