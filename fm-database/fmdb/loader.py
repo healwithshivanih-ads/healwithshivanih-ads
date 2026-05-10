@@ -2,7 +2,7 @@ from pathlib import Path
 
 import yaml
 
-from .models import Claim, CookingAdjustment, HomeRemedy, Mechanism, MindMap, Protocol, Source, Supplement, Symptom, Topic
+from .models import Claim, CookingAdjustment, DrugDepletion, HomeRemedy, Mechanism, MindMap, Protocol, Source, Supplement, Symptom, Topic
 
 
 def load_supplements(data_dir: Path) -> list[Supplement]:
@@ -109,6 +109,29 @@ def load_protocol(data_dir: Path, slug: str) -> Protocol:
     with path.open() as f:
         raw = yaml.safe_load(f)
     return Protocol(**raw)
+
+
+def load_drug_depletions(data_dir: Path) -> list[DrugDepletion]:
+    d = data_dir / "drug_depletions"
+    if not d.exists():
+        return []
+    out = []
+    for path in sorted(d.glob("*.yaml")):
+        if path.name.startswith("_"):
+            continue
+        with path.open() as f:
+            raw = yaml.safe_load(f)
+        out.append(DrugDepletion(**raw))
+    return out
+
+
+def load_drug_depletion(data_dir: Path, slug: str) -> DrugDepletion:
+    path = data_dir / "drug_depletions" / f"{slug}.yaml"
+    if not path.exists():
+        raise FileNotFoundError(f"drug_depletion not found: {slug}")
+    with path.open() as f:
+        raw = yaml.safe_load(f)
+    return DrugDepletion(**raw)
 
 
 def load_symptoms(data_dir: Path) -> list[Symptom]:

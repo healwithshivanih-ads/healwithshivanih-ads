@@ -171,6 +171,28 @@ export interface Protocol extends BaseEntity {
   notes_for_coach?: string;
 }
 
+export interface NutrientDepletion {
+  nutrient: string;
+  severity?: "mild" | "moderate" | "severe";
+  mechanism?: string;
+  monitoring_recommendation?: string;
+  typical_supplement_dose?: string;
+}
+
+export interface DrugDepletion extends BaseEntity {
+  drug_name: string;
+  drug_aliases?: string[];
+  drug_class?: string;
+  summary?: string;
+  depletes?: NutrientDepletion[];
+  timing_separations?: string[];
+  contraindicated_supplements?: string[];
+  monitoring_labs?: string[];
+  coach_notes?: string;
+  linked_to_topics?: string[];
+  linked_to_mechanisms?: string[];
+}
+
 // ---- Plan + Client (PHI) ----
 
 export type PlanStatus =
@@ -386,4 +408,5 @@ export type CatalogueKind =
   | "mindmaps"
   | "cooking_adjustments"
   | "home_remedies"
-  | "protocols";
+  | "protocols"
+  | "drug_depletions";

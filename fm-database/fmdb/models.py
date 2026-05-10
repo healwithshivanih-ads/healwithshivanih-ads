@@ -5,7 +5,9 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from .enums import (
     CookingAdjustmentCategory,
+    DepletionSeverity,
     DoseUnit,
+    DrugClass,
     EntityStatus,
     EvidenceTier,
     HomeRemedyCategory,
@@ -233,6 +235,61 @@ class Protocol(BaseModel):
     sources: list[SourceCitation] = Field(default_factory=list)
     evidence_tier: EvidenceTier
     notes_for_coach: str = ""
+    version: int = 1
+    status: EntityStatus = EntityStatus.active
+    updated_at: date
+    updated_by: str
+
+    @field_validator("slug")
+    @classmethod
+    def _slug_format(cls, v: str) -> str:
+        if not v or not all(c.isalnum() or c == "-" for c in v) or not v.islower():
+            raise ValueError(f"slug must be lowercase ascii alphanumeric with hyphens, got {v!r}")
+        if v.startswith("-") or v.endswith("-") or "--" in v:
+            raise ValueError(f"slug has malformed hyphens: {v!r}")
+        return v
+
+
+class NutrientDepletion(BaseModel):
+    """One nutrient a drug depletes / impairs absorption of."""
+    model_config = ConfigDict(extra="forbid")
+
+    nutrient: str                                                # e.g. "B12", "magnesium", "CoQ10"
+    severity: DepletionSeverity = DepletionSeverity.moderate
+    mechanism: str = ""                                          # 1-line mechanism (gastric acid suppression, etc.)
+    monitoring_recommendation: str = ""                          # what lab + how often
+    typical_supplement_dose: str = ""                            # if standard-of-care to supplement
+
+
+class DrugDepletion(BaseModel):
+    """A medication and the nutrients it depletes / interferes with.
+
+    Surfaced in the client Overview as auto-flags when a client lists a
+    matching medication. Coach sees: which nutrients to monitor, what to
+    supplement, what timing-separations matter (e.g. levothyroxine 4h
+    apart from calcium / iron).
+
+    Lookup: when client.current_medications contains an entry, we match
+    case-insensitively against drug_name + drug_aliases. A single drug-
+    class entry (e.g. "ppi") can declare aliases for ALL members of that
+    class so coaches don't need a record per brand.
+    """
+    model_config = ConfigDict(extra="forbid")
+
+    slug: str
+    drug_name: str                                               # canonical e.g. "Levothyroxine"
+    drug_aliases: list[str] = Field(default_factory=list)        # brand names + abbreviations
+    drug_class: DrugClass
+    summary: str = ""                                            # 1-2 sentences for context
+    depletes: list[NutrientDepletion] = Field(default_factory=list)
+    timing_separations: list[str] = Field(default_factory=list)  # "Take 4h apart from calcium / iron / coffee"
+    contraindicated_supplements: list[str] = Field(default_factory=list)  # supplement slugs to AVOID with this drug
+    monitoring_labs: list[str] = Field(default_factory=list)     # e.g. "B12 every 6 months", "homocysteine annually"
+    coach_notes: str = ""
+    linked_to_topics: list[str] = Field(default_factory=list)
+    linked_to_mechanisms: list[str] = Field(default_factory=list)
+    sources: list[SourceCitation] = Field(default_factory=list)
+    evidence_tier: EvidenceTier
     version: int = 1
     status: EntityStatus = EntityStatus.active
     updated_at: date
