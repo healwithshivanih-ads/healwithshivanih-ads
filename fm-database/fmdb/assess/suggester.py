@@ -44,15 +44,47 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
         },
         "likely_drivers": {
             "type": "array",
-            "description": "Mechanisms most likely driving the picture, ranked.",
+            "description": "Mechanisms most likely driving the picture, ranked. CLASSIFY EACH using the ATM cognitive model (Antecedent / Trigger / Mediator / Expression) and link them into a cascade graph via `parents`. This separates root causes from downstream effects — the FM way of thinking.",
             "items": {
                 "type": "object",
-                "required": ["mechanism_slug", "rank", "reasoning"],
+                "required": ["mechanism_slug", "rank", "reasoning", "atm_role"],
                 "properties": {
                     "mechanism_slug": {"type": "string", "description": "MUST be a slug from the catalogue subgraph."},
-                    "rank": {"type": "integer", "description": "1 = most likely."},
-                    "reasoning": {"type": "string"},
+                    "rank": {"type": "integer", "description": "1 = most clinically actionable / most upstream / highest leverage. Antecedents and triggers usually rank higher than mediators; mediators higher than expressions."},
+                    "reasoning": {"type": "string", "description": "Why this is a driver — reference specific client data."},
                     "supporting_evidence": {"type": "array", "items": {"type": "string"}, "description": "Quote symptoms or labs that support this hypothesis."},
+                    "atm_role": {
+                        "type": "string",
+                        "enum": ["antecedent", "trigger", "mediator", "expression"],
+                        "description": (
+                            "ATM role:\n"
+                            "  • antecedent — predisposing factor, often constitutional / genetic / "
+                            "in-utero / early-childhood. Doesn't go away (e.g. MTHFR variant, "
+                            "family history of autoimmunity, low birth weight, early gut "
+                            "colonisation deficit).\n"
+                            "  • trigger — precipitating event that started the cascade (e.g. "
+                            "infection like EBV / dengue / COVID, food poisoning, antibiotic "
+                            "course, head injury, divorce, chemo, gluten exposure, head injury, "
+                            "first pregnancy, menarche, menopause).\n"
+                            "  • mediator — ongoing perpetuator (e.g. chronic stress, current "
+                            "food sensitivity, sleep deprivation, ongoing toxin exposure, "
+                            "untreated dysbiosis, leaky gut, chronic inflammation, hpa-axis "
+                            "dysregulation). MOST 'drivers' in a real client are mediators.\n"
+                            "  • expression — symptom or syndrome the client presents with, "
+                            "downstream of triggers + mediators (e.g. Hashimoto's antibodies, "
+                            "IBS-D, eczema flare, perimenopause symptoms). The 'tip of the "
+                            "iceberg'."
+                        ),
+                    },
+                    "parents": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "description": "Mechanism slugs of OTHER drivers in this list that PRECEDE this one in the cascade. Empty for antecedents and triggers (they're root). Populated for mediators (point to triggers / antecedents that drove them) and expressions (point to mediators). E.g. expression `hashimoto-antibodies` might have parents `[gluten-exposure, leaky-gut, chronic-inflammation]`. Use ONLY mechanism slugs that appear in this same likely_drivers array.",
+                    },
+                    "chain_evidence": {
+                        "type": "string",
+                        "description": "1-2 sentences explaining why this driver sits at this position in the chain. E.g. 'Trigger — client's symptoms started after 3-week course of doxycycline in 2023, prior history was unremarkable.' Or 'Mediator — chronic work stress 4+ years documented in intake, drives cortisol patterns visible on saliva test.'",
+                    },
                 },
             },
         },
@@ -280,6 +312,31 @@ HARD RULES (violating these breaks the downstream system):
 
 8. Honest uncertainty: if symptoms or labs are too sparse to make confident
    suggestions, return SHORTER lists and say so in `synthesis_notes`.
+
+8a. ATM CASCADE CLASSIFICATION (`likely_drivers[*].atm_role` + `.parents`).
+    For EVERY driver, classify the role in the FM cognitive model:
+      - antecedent → genetic / constitutional / early-life predisposition
+      - trigger    → precipitating event that started the cascade
+      - mediator   → ongoing perpetuator (this is most drivers)
+      - expression → presenting symptom / syndrome (downstream)
+    Then link them via `parents`: each mediator/expression points back to
+    the slugs of OTHER drivers in this same list that PRECEDE it in the
+    cascade. The graph reads root → leaf. Antecedents + triggers have
+    empty `parents`; mediators point to antecedents/triggers; expressions
+    point to mediators.
+    Example for a Hashimoto's client:
+      - antecedent: `genetic-autoimmune-predisposition`, parents=[]
+      - trigger:    `gluten-exposure`, parents=[]
+      - mediator:   `leaky-gut`, parents=[gluten-exposure]
+      - mediator:   `chronic-inflammation`, parents=[leaky-gut]
+      - mediator:   `molecular-mimicry`, parents=[leaky-gut, genetic-autoimmune-predisposition]
+      - expression: `hashimoto-antibodies`, parents=[molecular-mimicry, chronic-inflammation]
+    DON'T flatten everything to "mediator". DO surface antecedents from
+    medical_history + family_history. DO surface triggers from intake
+    notes (illness / event / life change that preceded symptoms). The
+    coach uses this graph to find the LEVERAGE POINT — protocols
+    targeting upstream drivers (triggers + early mediators) yield more
+    durable change than treating the expression alone.
 
 9. CLIENT BIO: `client_context.measurements` may include height, weight, BMI,
    waist:hip ratio, BMR (kcal/day), resting HR, blood pressure. Use these:

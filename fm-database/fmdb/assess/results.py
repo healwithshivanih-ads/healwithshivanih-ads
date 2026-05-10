@@ -71,12 +71,23 @@ class ExtractedLab(BaseModel):
 
 
 class LikelyDriver(BaseModel):
+    """One contributing mechanism with ATM (Antecedent / Trigger / Mediator)
+    classification — the FM cognitive model. ATM separates what predisposed
+    the client (antecedent), what precipitated the cascade (trigger), and
+    what is perpetuating it (mediator). `parents` connects drivers into a
+    cascade graph so the UI can render trigger → mediator → expression.
+    """
     model_config = ConfigDict(extra="ignore")
     _coerce = model_validator(mode="before")(_coerce_none_strings)
     mechanism_slug: str
     rank: int
     reasoning: str
     supporting_evidence: list[str] = Field(default_factory=list)
+    # ATM classification (FM cognitive model). Optional for backward compat
+    # but the AI is instructed to populate it for every driver.
+    atm_role: str | None = None  # "antecedent" | "trigger" | "mediator" | "expression"
+    parents: list[str] = Field(default_factory=list)  # mechanism slugs that PRECEDED this in the cascade
+    chain_evidence: str = ""  # 1-2 sentences: why this position, what makes it root vs downstream
 
 
 class TopicInPlay(BaseModel):

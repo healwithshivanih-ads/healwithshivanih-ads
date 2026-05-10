@@ -59,11 +59,19 @@ export interface ExtractedLab {
   date_drawn?: string | null;
 }
 
+export type ATMRole = "antecedent" | "trigger" | "mediator" | "expression";
+
 export interface LikelyDriver {
   mechanism_slug: string;
   rank: number;
   reasoning: string;
   supporting_evidence?: string[];
+  /** ATM cognitive model classification — antecedent / trigger / mediator / expression. */
+  atm_role?: ATMRole | null;
+  /** Mechanism slugs of OTHER drivers that PRECEDE this one in the cascade. Empty for antecedents/triggers. */
+  parents?: string[];
+  /** 1-2 sentences explaining why this driver sits at this position in the chain. */
+  chain_evidence?: string;
 }
 
 export interface TopicInPlay {

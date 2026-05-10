@@ -833,26 +833,116 @@ function SuggestionsView({
       {drivers.length > 0 && (
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm">🎯 Likely root-cause mechanisms</CardTitle>
+            <CardTitle className="text-sm">🎯 Likely drivers (ATM cascade)</CardTitle>
+            <p className="text-[11px] text-muted-foreground mt-0.5">
+              Antecedent (predisposition) → Trigger (precipitating event) → Mediator (ongoing perpetuator) → Expression (presenting symptom).
+              Treat upstream for durable change.
+            </p>
           </CardHeader>
-          <CardContent className="space-y-2 text-sm">
-            {drivers.map((d) => {
-              const slug = String(d.mechanism_slug ?? "?");
-              const k = `driver_${slug}`;
-              return (
-                <div key={k} className="flex items-start justify-between gap-3 border rounded-md p-2">
-                  <div className="flex-1">
-                    <div className="font-medium">
-                      #{String(d.rank ?? "?")} — {slug}
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      {String(d.reasoning ?? "")}
+          <CardContent className="space-y-4 text-sm">
+            {(() => {
+              type Bucket = { key: "antecedent" | "trigger" | "mediator" | "expression"; label: string; emoji: string; color: string };
+              const BUCKETS: Bucket[] = [
+                { key: "antecedent",  label: "Antecedents",  emoji: "🧬", color: "border-purple-200 bg-purple-50/60" },
+                { key: "trigger",     label: "Triggers",     emoji: "⚡", color: "border-amber-200 bg-amber-50/60" },
+                { key: "mediator",    label: "Mediators",    emoji: "🔁", color: "border-blue-200 bg-blue-50/60" },
+                { key: "expression",  label: "Expressions",  emoji: "🩺", color: "border-rose-200 bg-rose-50/50" },
+              ];
+
+              const grouped = new Map<string, typeof drivers>();
+              const unclassified: typeof drivers = [];
+              for (const d of drivers) {
+                const role = (d.atm_role ?? "").toLowerCase();
+                if (role === "antecedent" || role === "trigger" || role === "mediator" || role === "expression") {
+                  const arr = grouped.get(role) ?? [];
+                  arr.push(d);
+                  grouped.set(role, arr);
+                } else {
+                  unclassified.push(d);
+                }
+              }
+
+              const renderDriver = (d: typeof drivers[number]) => {
+                const slug = String(d.mechanism_slug ?? "?");
+                const k = `driver_${slug}`;
+                const parents = (d.parents ?? []).filter(Boolean);
+                return (
+                  <div key={k} className="rounded-md border bg-background p-2 space-y-1">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="text-[10px] font-bold tabular-nums px-1.5 py-0.5 rounded-full bg-muted text-muted-foreground">
+                            #{String(d.rank ?? "?")}
+                          </span>
+                          <a
+                            href={`/catalogue/mechanisms/${slug}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="font-medium text-sm hover:underline break-all"
+                          >
+                            {slug}
+                          </a>
+                        </div>
+                        {d.reasoning && (
+                          <p className="text-xs text-muted-foreground leading-snug mt-1">
+                            {String(d.reasoning)}
+                          </p>
+                        )}
+                        {d.chain_evidence && (
+                          <p className="text-[11px] italic text-foreground/70 leading-snug mt-1 border-l-2 border-muted pl-2">
+                            {String(d.chain_evidence)}
+                          </p>
+                        )}
+                        {parents.length > 0 && (
+                          <p className="text-[10px] text-muted-foreground mt-1">
+                            <span className="font-medium">↑ from: </span>
+                            {parents.join(" · ")}
+                          </p>
+                        )}
+                      </div>
+                      <Pick k={k} />
                     </div>
                   </div>
-                  <Pick k={k} />
+                );
+              };
+
+              return (
+                <div className="space-y-3">
+                  {BUCKETS.map((b) => {
+                    const items = grouped.get(b.key) ?? [];
+                    if (items.length === 0) return null;
+                    return (
+                      <div key={b.key} className={`rounded-lg border-2 p-2.5 space-y-2 ${b.color}`}>
+                        <div className="flex items-center gap-2">
+                          <span className="text-base">{b.emoji}</span>
+                          <span className="text-xs font-semibold uppercase tracking-wide">
+                            {b.label}
+                          </span>
+                          <span className="text-[10px] text-muted-foreground">({items.length})</span>
+                        </div>
+                        <div className="space-y-1.5">
+                          {items.map(renderDriver)}
+                        </div>
+                      </div>
+                    );
+                  })}
+                  {unclassified.length > 0 && (
+                    <div className="rounded-lg border-2 border-gray-200 bg-gray-50/60 p-2.5 space-y-2">
+                      <div className="flex items-center gap-2">
+                        <span className="text-base">❓</span>
+                        <span className="text-xs font-semibold uppercase tracking-wide">
+                          Unclassified
+                        </span>
+                        <span className="text-[10px] text-muted-foreground">({unclassified.length})</span>
+                      </div>
+                      <div className="space-y-1.5">
+                        {unclassified.map(renderDriver)}
+                      </div>
+                    </div>
+                  )}
                 </div>
               );
-            })}
+            })()}
           </CardContent>
         </Card>
       )}
