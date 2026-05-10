@@ -1,0 +1,693 @@
+slug: mitochondrial-energy
+display_name: Mitochondrial Function & Energy
+description: 'Functional medicine approach to mitochondrial dysfunction and persistent
+  fatigue that doesn''t resolve with sleep alone. Maps the upstream causes (toxic
+  load, infection, nutrient depletion, chronic HPA stress) and the downstream collapse
+  in ATP production, oxidative damage, and energy crashes. Niche but recurring driver
+  in Hashimoto''s, perimenopause, post-viral / long COVID, and unexplained chronic
+  fatigue.
+
+  '
+aliases: []
+related_topics:
+- mitochondrial-health-nutrients
+- mitochondrial-health-nutrition
+- oxidative-stress
+- chronic-pain-and-fatigue
+- adrenal-fatigue
+- hpa-axis-dysregulation
+related_mechanisms:
+- mitochondrial-dysfunction
+- mitochondrial-atp-production
+- mitochondrial-energy-production
+- mitochondrial-efficiency
+- mitochondrial-coq10-depletion
+- oxidative-stress-and-inflammation
+- glutathione-depletion
+- nrf2-antioxidant-pathway
+- nutrient-dependent-energy-metabolism
+tree:
+- label: 🔴 Clinical Presentation
+  children:
+  - label: Energy Symptoms
+    children:
+    - label: Chronic Fatigue
+      children: []
+      linked_kind: symptom
+      linked_slug: chronic-fatigue
+      notes: ''
+    - label: Low Energy
+      children: []
+      linked_kind: symptom
+      linked_slug: low-energy
+      notes: ''
+    - label: Post-Viral Fatigue (long-COVID, post-EBV)
+      children: []
+      linked_kind: symptom
+      linked_slug: post-viral-fatigue
+      notes: ''
+    - label: Energy Crashes (mid-afternoon)
+      children: []
+      linked_kind: symptom
+      linked_slug: energy-crashes
+      notes: ''
+    - label: Daytime Fatigue Despite Adequate Sleep
+      children: []
+      linked_kind: symptom
+      linked_slug: daytime-fatigue
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Exercise Response
+    children:
+    - label: Exercise Intolerance
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Post-Exercise Muscle Soreness (excessive, prolonged)
+      children: []
+      linked_kind: symptom
+      linked_slug: post-exercise-muscle-soreness
+      notes: ''
+    - label: Delayed Muscle Recovery
+      children: []
+      linked_kind: symptom
+      linked_slug: delayed-muscle-recovery
+      notes: ''
+    - label: Muscle Aches / Myalgia
+      children: []
+      linked_kind: symptom
+      linked_slug: muscle-pain-myalgia
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Cognitive & Systemic
+    children:
+    - label: Brain Fog
+      children: []
+      linked_kind: symptom
+      linked_slug: brain-fog
+      notes: ''
+    - label: Poor Focus / Concentration
+      children: []
+      linked_kind: symptom
+      linked_slug: brain-fog-poor-focus
+      notes: ''
+    - label: Wired but Tired
+      children: []
+      linked_kind: symptom
+      linked_slug: wired-but-tired
+      notes: ''
+    - label: Slow Wound Healing
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Cold Intolerance
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Common Co-occurring Conditions
+    children:
+    - label: Hashimoto's / Hypothyroid Fatigue
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Perimenopause Fatigue
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Fibromyalgia / ME-CFS
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Mould / Heavy-Metal Exposure
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: ⚙️ Root Mechanisms
+  children:
+  - label: Mitochondrial Function Failure
+    children:
+    - label: Mitochondrial Dysfunction
+      children: []
+      linked_kind: mechanism
+      linked_slug: mitochondrial-dysfunction
+      notes: ''
+    - label: Reduced ATP Production
+      children: []
+      linked_kind: mechanism
+      linked_slug: mitochondrial-atp-production
+      notes: ''
+    - label: Reduced Energy Production
+      children: []
+      linked_kind: mechanism
+      linked_slug: mitochondrial-energy-production
+      notes: ''
+    - label: Reduced Mitochondrial Efficiency
+      children: []
+      linked_kind: mechanism
+      linked_slug: mitochondrial-efficiency
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Oxidative Stress
+    children:
+    - label: Oxidative Stress & Inflammation
+      children: []
+      linked_kind: mechanism
+      linked_slug: oxidative-stress-and-inflammation
+      notes: ''
+    - label: Glutathione Depletion
+      children: []
+      linked_kind: mechanism
+      linked_slug: glutathione-depletion
+      notes: ''
+    - label: Reduced Nrf2 Antioxidant Activation
+      children: []
+      linked_kind: mechanism
+      linked_slug: nrf2-antioxidant-pathway
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Nutrient Depletion
+    children:
+    - label: Nutrient-Dependent Energy Metabolism Loss
+      children: []
+      linked_kind: mechanism
+      linked_slug: nutrient-dependent-energy-metabolism
+      notes: ''
+    - label: Mitochondrial CoQ10 Depletion
+      children: []
+      linked_kind: mechanism
+      linked_slug: mitochondrial-coq10-depletion
+      notes: ''
+    - label: B-Vitamin Depletion (B1, B2, B3, B5, B6, B12)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Magnesium Depletion (cofactor for ATP)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Carnitine Depletion (fat → mitochondria)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Upstream Drivers
+    children:
+    - label: Toxic Load (heavy metals, mould, pesticides)
+      children: []
+      linked_kind: topic
+      linked_slug: heavy-metal-toxicity
+      notes: ''
+    - label: Chronic Infection (EBV, Lyme, mould)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: HPA-Axis Dysregulation
+      children: []
+      linked_kind: mechanism
+      linked_slug: hpa-axis-dysregulation
+      notes: ''
+    - label: Chronic Inflammation
+      children: []
+      linked_kind: mechanism
+      linked_slug: chronic-systemic-inflammation
+      notes: ''
+    - label: Statin / Beta-Blocker CoQ10 Depletion
+      children: []
+      linked_kind: mechanism
+      linked_slug: coq10-depletion
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🧬 FM Approach
+  children:
+  - label: Reframe Fatigue
+    children:
+    - label: Fatigue Is a Cellular Signal, Not a Mood
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: ATP Is the Currency of Function
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Sleep Alone Won't Fix It If Cells Can't Make Energy
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: 3-Step Strategy
+    children:
+    - label: 1. Remove the Drag (toxin, infection, deficiency)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 2. Repair Mitochondria (cofactors, antioxidants)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 3. Reactivate Gently (graded movement, not push-through)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Pace, Don't Crash
+    children:
+    - label: Avoid Boom-Bust Cycles
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Pulsed Activity > Heroic Workouts
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Heart Rate–Based Pacing
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Energy-Envelope Awareness
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🛠 Interventions
+  children:
+  - label: Nutrition
+    children:
+    - label: Steady Protein at Each Meal
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Healthy Fats (avocado, ghee, olive)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Coloured Vegetables (polyphenols, antioxidants)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Reduce Refined Carbs / Sugar
+      children: []
+      linked_kind: topic
+      linked_slug: refined-carbohydrate-overconsumption
+      notes: ''
+    - label: Anti-Inflammatory Pattern
+      children: []
+      linked_kind: topic
+      linked_slug: anti-inflammatory-diet
+      notes: ''
+    - label: Avoid Long Fasts Initially (mitochondria struggle)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Lifestyle
+    children:
+    - label: Pulsed Movement (10–15 min walks vs 1 hr workout)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Strength Training Light → Progressive
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Sleep 8–9 Hrs Priority
+      children: []
+      linked_kind: topic
+      linked_slug: sleep-hygiene
+      notes: ''
+    - label: Stress Reduction (yoga, breathwork)
+      children: []
+      linked_kind: topic
+      linked_slug: stress-management
+      notes: ''
+    - label: Sunlight (mitochondrial light signalling)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Cold Exposure (gentle, builds mito)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Supplements (foundational)
+    children:
+    - label: CoQ10 / Ubiquinol (electron transport)
+      children: []
+      linked_kind: supplement
+      linked_slug: coq10-ubiquinone
+      notes: ''
+    - label: L-Carnitine (fat → mito)
+      children: []
+      linked_kind: supplement
+      linked_slug: l-carnitine
+      notes: ''
+    - label: Methylated B-Complex (Krebs cofactors)
+      children: []
+      linked_kind: supplement
+      linked_slug: methylated-b-complex
+      notes: ''
+    - label: Magnesium Glycinate (ATP cofactor)
+      children: []
+      linked_kind: supplement
+      linked_slug: magnesium-glycinate
+      notes: ''
+    - label: Alpha-Lipoic Acid (antioxidant + glucose)
+      children: []
+      linked_kind: supplement
+      linked_slug: alpha-lipoic-acid
+      notes: ''
+    - label: NAC (glutathione precursor)
+      children: []
+      linked_kind: supplement
+      linked_slug: nac
+      notes: ''
+    - label: Liposomal Glutathione
+      children: []
+      linked_kind: supplement
+      linked_slug: glutathione-liposomal
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Supplements (targeted)
+    children:
+    - label: Niacin / NR / NMN (NAD+ precursors)
+      children: []
+      linked_kind: supplement
+      linked_slug: niacin
+      notes: ''
+    - label: Creatine Monohydrate (cellular energy)
+      children: []
+      linked_kind: supplement
+      linked_slug: creatine-monohydrate
+      notes: ''
+    - label: Omega-3 EPA/DHA (membrane fluidity)
+      children: []
+      linked_kind: supplement
+      linked_slug: omega-3
+      notes: ''
+    - label: Vitamin D3 (if low)
+      children: []
+      linked_kind: supplement
+      linked_slug: vitamin-d3
+      notes: ''
+    - label: Iron (if ferritin low + breathlessness)
+      children: []
+      linked_kind: supplement
+      linked_slug: iron-bisglycinate
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🎯 Coaching Goals
+  children:
+  - label: Energy Restoration
+    children:
+    - label: Stable Energy 9 AM – 9 PM
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: No Mid-Afternoon Crash
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Wake Refreshed
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Functional Capacity
+    children:
+    - label: Tolerate 30-Min Walk Without Crash
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Recover From Workout Within 24 Hr
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Build Tolerance to Strength Training
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Habits
+    children:
+    - label: Pacing Plan in Place (energy envelope)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Daily Sun Exposure
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Consistent Bedtime
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Steady Meals With Protein
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Empowerment
+    children:
+    - label: Recognise Crash Triggers
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Trust Slow Healing Process
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Build Energy Reserves Before Pushing
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 📊 Labs to Track
+  children:
+  - label: Energy Cofactors
+    children:
+    - label: Vitamin B12
+      children: []
+      linked_kind: lab_test
+      linked_slug: vitamin-b12
+      notes: ''
+    - label: Folate RBC
+      children: []
+      linked_kind: lab_test
+      linked_slug: folate-rbc
+      notes: ''
+    - label: Magnesium RBC
+      children: []
+      linked_kind: lab_test
+      linked_slug: magnesium-rbc
+      notes: ''
+    - label: Ferritin (low = low iron)
+      children: []
+      linked_kind: lab_test
+      linked_slug: ferritin
+      notes: ''
+    - label: Vitamin D 25-OH
+      children: []
+      linked_kind: lab_test
+      linked_slug: vitamin-d-25-oh
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Mitochondrial / Functional
+    children:
+    - label: Organic Acids Test (urinary OAT — comprehensive)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: CoQ10 Status (blood, if available)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Carnitine Profile
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Lactate (if exercise-intolerant)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Inflammation & Glycation
+    children:
+    - label: hsCRP
+      children: []
+      linked_kind: lab_test
+      linked_slug: hscrp
+      notes: ''
+    - label: Homocysteine
+      children: []
+      linked_kind: lab_test
+      linked_slug: homocysteine
+      notes: ''
+    - label: Fasting Insulin (drives mito strain)
+      children: []
+      linked_kind: lab_test
+      linked_slug: fasting-insulin
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Hormonal Drivers
+    children:
+    - label: TSH / Free T3 / Free T4 (thyroid)
+      children: []
+      linked_kind: lab_test
+      linked_slug: tsh
+      notes: ''
+    - label: AM Cortisol
+      children: []
+      linked_kind: lab_test
+      linked_slug: am-cortisol
+      notes: ''
+    - label: 4-Point Salivary Cortisol Curve
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: DHEA-S
+      children: []
+      linked_kind: lab_test
+      linked_slug: dhea-s
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: If Toxic / Infection Suspected
+    children:
+    - label: Heavy Metals Panel (urine / blood)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Mycotoxin Urine Panel
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: EBV / Viral Reactivation Panel
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+sources:
+- id: vitaone-health-coaching-toolkit
+  quote: null
+  location: Mitochondrial Function & Energy
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

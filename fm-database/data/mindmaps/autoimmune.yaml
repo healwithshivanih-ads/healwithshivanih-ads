@@ -1,0 +1,619 @@
+slug: autoimmune
+display_name: Autoimmune Cascade
+description: 'Functional medicine root-cause framework for autoimmunity (parent map).
+  Identifies the triad of triggers — genetic susceptibility + intestinal permeability
+  + environmental trigger — and the downstream cascade of molecular mimicry, immune
+  dysregulation, and chronic inflammation. Specific conditions (Hashimoto''s, RA,
+  lupus, MS, T1D, IBD) live in their own focused maps; this map is the conceptual
+  spine.
+
+  '
+aliases: []
+related_topics:
+- autoimmune
+- autoimmune-disease
+- autoimmunity-leaky-gut-connection
+- autoimmunity-leaky-gut-triad
+- autoimmunity-triad
+- elimination-diet
+- chronic-inflammation
+- environmental-toxin-exposure
+- low-dose-naltrexone-autoimmune
+related_mechanisms:
+- molecular-mimicry
+- leaky-gut
+- gut-dysbiosis
+- chronic-systemic-inflammation
+- hpa-axis-dysregulation
+- th17-dominance
+- gut-immune-barrier-function
+tree:
+- label: 🔴 Clinical Presentation
+  children:
+  - label: Constitutional / Generic
+    children:
+    - label: Chronic Fatigue
+      children: []
+      linked_kind: symptom
+      linked_slug: chronic-fatigue
+      notes: ''
+    - label: Brain Fog
+      children: []
+      linked_kind: symptom
+      linked_slug: brain-fog
+      notes: ''
+    - label: Unexplained Weight Changes
+      children: []
+      linked_kind: symptom
+      linked_slug: unexplained-weight-gain
+      notes: ''
+    - label: Mood Changes / Depression
+      children: []
+      linked_kind: symptom
+      linked_slug: depression-low-mood
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Joint & Muscle
+    children:
+    - label: Joint Pain
+      children: []
+      linked_kind: symptom
+      linked_slug: joint-pain
+      notes: ''
+    - label: Joint Stiffness & Swelling
+      children: []
+      linked_kind: symptom
+      linked_slug: joint-stiffness-swelling
+      notes: ''
+    - label: Morning Stiffness
+      children: []
+      linked_kind: symptom
+      linked_slug: morning-stiffness
+      notes: ''
+    - label: Muscle Aches
+      children: []
+      linked_kind: symptom
+      linked_slug: muscle-pain-myalgia
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Gut & Skin
+    children:
+    - label: Bloating & GI Issues
+      children: []
+      linked_kind: symptom
+      linked_slug: bloating
+      notes: ''
+    - label: Food Sensitivities
+      children: []
+      linked_kind: symptom
+      linked_slug: food-sensitivities
+      notes: ''
+    - label: Skin Rashes / Eczema / Psoriasis
+      children: []
+      linked_kind: symptom
+      linked_slug: eczema-psoriasis-skin
+      notes: ''
+    - label: Hair Loss / Alopecia
+      children: []
+      linked_kind: symptom
+      linked_slug: hair-loss
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Flare Pattern
+    children:
+    - label: Cyclical Flares & Remissions
+      children: []
+      linked_kind: symptom
+      linked_slug: autoimmune-flares-low-immunity
+      notes: ''
+    - label: Stress-Triggered Flares
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Skin Flares
+      children: []
+      linked_kind: symptom
+      linked_slug: skin-flares
+      notes: ''
+    - label: Post-Infection Onset
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: ⚙️ Root Mechanisms
+  children:
+  - label: The Autoimmune Triad
+    children:
+    - label: 1. Genetic Susceptibility (HLA, family history)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 2. Intestinal Permeability / Leaky Gut
+      children: []
+      linked_kind: mechanism
+      linked_slug: leaky-gut
+      notes: ''
+    - label: 3. Environmental Trigger (food, infection, toxin, stress)
+      children: []
+      linked_kind: topic
+      linked_slug: environmental-toxin-exposure
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Immune Dysregulation
+    children:
+    - label: Molecular Mimicry
+      children: []
+      linked_kind: mechanism
+      linked_slug: molecular-mimicry
+      notes: ''
+    - label: Th17 Dominance
+      children: []
+      linked_kind: mechanism
+      linked_slug: th17-dominance
+      notes: ''
+    - label: Loss of Immune Tolerance
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Gut-Immune Barrier Dysfunction
+      children: []
+      linked_kind: mechanism
+      linked_slug: gut-immune-barrier-function
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Inflammation & Stress
+    children:
+    - label: Chronic Systemic Inflammation
+      children: []
+      linked_kind: mechanism
+      linked_slug: chronic-systemic-inflammation
+      notes: ''
+    - label: HPA-Axis Dysregulation
+      children: []
+      linked_kind: mechanism
+      linked_slug: hpa-axis-dysregulation
+      notes: ''
+    - label: Gut Dysbiosis
+      children: []
+      linked_kind: mechanism
+      linked_slug: gut-dysbiosis
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Common Triggers
+    children:
+    - label: Gluten / Casein
+      children: []
+      linked_kind: topic
+      linked_slug: gluten-sensitivity
+      notes: ''
+    - label: EBV / Other Viral Infections
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Heavy Metals / Mould
+      children: []
+      linked_kind: topic
+      linked_slug: heavy-metal-toxicity
+      notes: ''
+    - label: Chronic Psychological Stress
+      children: []
+      linked_kind: topic
+      linked_slug: chronic-stress
+      notes: ''
+    - label: Pregnancy / Postpartum Trigger
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🧬 FM Approach
+  children:
+  - label: 5R for the Gut First
+    children:
+    - label: 5R Gut Restoration Protocol
+      children: []
+      linked_kind: topic
+      linked_slug: 5r-gut-restoration
+      notes: ''
+    - label: Heal Leaky Gut Before Suppressing Immune
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: AIP Elimination
+    children:
+    - label: Strict AIP for 30–60 days
+      children: []
+      linked_kind: topic
+      linked_slug: elimination-diet
+      notes: ''
+    - label: Reintroduce Methodically
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Identify Personal Trigger Foods
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Identify & Remove Triggers
+    children:
+    - label: Test for Hidden Infections (EBV, H.pylori, parasites)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Reduce Toxic Burden
+      children: []
+      linked_kind: topic
+      linked_slug: environmental-toxin-exposure
+      notes: ''
+    - label: Address Chronic Stress
+      children: []
+      linked_kind: topic
+      linked_slug: stress-management
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Calm the Immune System
+    children:
+    - label: Stress / Sleep Foundation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Anti-Inflammatory Pattern
+      children: []
+      linked_kind: topic
+      linked_slug: anti-inflammatory-diet
+      notes: ''
+    - label: Consider LDN with Doctor
+      children: []
+      linked_kind: topic
+      linked_slug: low-dose-naltrexone-autoimmune
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🛠 Interventions
+  children:
+  - label: Nutrition (AIP)
+    children:
+    - label: Remove Gluten, Dairy, Eggs, Nightshades, Legumes, Nuts/Seeds
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Add Bone Broth / Slow-Cooked Meats
+      children: []
+      linked_kind: topic
+      linked_slug: bone-broth-therapeutic-use
+      notes: ''
+    - label: Anti-Inflammatory Spices (turmeric, ginger)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Cold-Water Fish (omega-3)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Diverse Veg + Fermented Foods
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Lifestyle
+    children:
+    - label: Gentle Movement (walks, yoga — not HIIT during flare)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Sleep 8–9 Hrs Priority
+      children: []
+      linked_kind: topic
+      linked_slug: sleep-hygiene
+      notes: ''
+    - label: Stress Management Daily
+      children: []
+      linked_kind: topic
+      linked_slug: stress-management
+      notes: ''
+    - label: Reduce Toxic Exposure (HBC, pesticides)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Supplements
+    children:
+    - label: Vitamin D3 (immune modulator)
+      children: []
+      linked_kind: supplement
+      linked_slug: vitamin-d3
+      notes: ''
+    - label: Omega-3 EPA/DHA
+      children: []
+      linked_kind: supplement
+      linked_slug: omega-3
+      notes: ''
+    - label: L-Glutamine (gut lining)
+      children: []
+      linked_kind: supplement
+      linked_slug: l-glutamine
+      notes: ''
+    - label: Curcumin (inflammation)
+      children: []
+      linked_kind: supplement
+      linked_slug: curcumin
+      notes: ''
+    - label: Probiotics (multi-strain)
+      children: []
+      linked_kind: supplement
+      linked_slug: broad-spectrum-probiotics
+      notes: ''
+    - label: Zinc (immune, gut barrier)
+      children: []
+      linked_kind: supplement
+      linked_slug: zinc
+      notes: ''
+    - label: Quercetin (mast cell stabiliser)
+      children: []
+      linked_kind: supplement
+      linked_slug: quercetin
+      notes: ''
+    - label: Glutathione / NAC (oxidative stress)
+      children: []
+      linked_kind: supplement
+      linked_slug: nac
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🎯 Coaching Goals
+  children:
+  - label: Reduce Flare Frequency
+    children:
+    - label: Track Flare Triggers in Journal
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Identify Personal Sensitivities
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Restore Energy & Function
+    children:
+    - label: Symptom Burden Reduction
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Reduce Inflammation Markers
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Stable Daily Energy
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Habit Building
+    children:
+    - label: AIP-Aligned Eating
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Daily Stress Management
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Sleep & Sun Discipline
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Empowerment
+    children:
+    - label: Understand This Is Modifiable, Not Permanent
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Trigger Awareness
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Partnership With Specialist + Coach
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 📊 Labs to Track
+  children:
+  - label: Autoimmune Antibodies
+    children:
+    - label: ANA (broad screen)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Condition-Specific (TPO, Tg-Ab, RF, anti-CCP, anti-tTG, etc.)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: TPO Antibodies
+      children: []
+      linked_kind: lab_test
+      linked_slug: tpo-antibodies
+      notes: ''
+    - label: Tg Antibodies
+      children: []
+      linked_kind: lab_test
+      linked_slug: tg-antibodies
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Inflammation Markers
+    children:
+    - label: hsCRP
+      children: []
+      linked_kind: lab_test
+      linked_slug: hscrp
+      notes: ''
+    - label: ESR (erythrocyte sedimentation rate)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Ferritin (acute phase reactant)
+      children: []
+      linked_kind: lab_test
+      linked_slug: ferritin
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Nutrient Status
+    children:
+    - label: Vitamin D 25-OH (target 60–80)
+      children: []
+      linked_kind: lab_test
+      linked_slug: vitamin-d-25-oh
+      notes: ''
+    - label: Vitamin B12
+      children: []
+      linked_kind: lab_test
+      linked_slug: vitamin-b12
+      notes: ''
+    - label: Folate RBC
+      children: []
+      linked_kind: lab_test
+      linked_slug: folate-rbc
+      notes: ''
+    - label: Homocysteine
+      children: []
+      linked_kind: lab_test
+      linked_slug: homocysteine
+      notes: ''
+    - label: Magnesium RBC
+      children: []
+      linked_kind: lab_test
+      linked_slug: magnesium-rbc
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Functional / Specialty
+    children:
+    - label: Food Sensitivity Panel (IgG)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Comprehensive Stool / GI-MAP
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: EBV / Viral Reactivation Panel
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Heavy Metals / Toxicity Screen
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Cortisol Curve / DUTCH
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+sources:
+- id: vitaone-health-coaching-toolkit
+  quote: null
+  location: Autoimmune Cascade
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

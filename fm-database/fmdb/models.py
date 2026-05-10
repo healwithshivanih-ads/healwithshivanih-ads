@@ -87,7 +87,7 @@ class MindMapNode(BaseModel):
     children: list["MindMapNode"] = Field(default_factory=list)
     # Optional bridge to another catalogue entity — when set, the renderer
     # makes this node clickable / re-centerable.
-    linked_kind: Optional[str] = None    # topic | mechanism | symptom | supplement | claim | cooking_adjustment | home_remedy
+    linked_kind: Optional[str] = None    # topic | mechanism | symptom | supplement | claim | cooking_adjustment | home_remedy | protocol | lab_test | lab_panel
     linked_slug: Optional[str] = None
     notes: str = ""                       # coach-facing detail surfaced on hover/click
 

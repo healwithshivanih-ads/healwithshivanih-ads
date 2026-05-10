@@ -498,6 +498,8 @@ def validate_loaded(loaded: Loaded) -> tuple[list[str], list[Warning_]]:
                 "cooking_adjustment": {ca.slug for ca in loaded.cooking_adjustments},
                 "home_remedy": {hr.slug for hr in loaded.home_remedies},
                 "protocol": {pr.slug for pr in loaded.protocols},
+                "lab_test": {lt.slug for lt in loaded.lab_tests},
+                "lab_panel": {lp.slug for lp in loaded.lab_panels},
             }.get(kind)
             if valid_set is None:
                 errors.append(

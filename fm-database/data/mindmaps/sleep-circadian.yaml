@@ -1,0 +1,725 @@
+slug: sleep-circadian
+display_name: Sleep & Circadian Rhythm
+description: 'Functional medicine approach to sleep dysfunction and circadian rhythm
+  disruption. Maps the HPA-axis cortisol–melatonin inversion, blood sugar dysregulation
+  at night, light-exposure mismatches, gut–brain effects, and nutrient deficiencies
+  driving common sleep complaints (insomnia, 3 am wakeups, unrefreshed sleep). Includes
+  India context: late dinners, screen exposure, hot summer nights, family sleep timing.
+
+  '
+aliases: []
+related_topics:
+- sleep
+- sleep-hygiene
+- hpa-axis-dysregulation
+- adrenal-cortisol-resilience
+- blood-sugar-dysfunction
+- stress-management
+- gut-brain-axis
+related_mechanisms:
+- melatonin-pathway
+- hpa-axis-dysregulation
+- cortisol-elevation
+- gaba-receptor-modulation
+- gut-serotonin-production
+- compensatory-hyperinsulinemia
+tree:
+- label: 🔴 Clinical Presentation
+  children:
+  - label: Insomnia Patterns
+    children:
+    - label: Trouble Falling Asleep
+      children: []
+      linked_kind: symptom
+      linked_slug: insomnia
+      notes: ''
+    - label: 3 AM Wakeups (cortisol spike)
+      children: []
+      linked_kind: symptom
+      linked_slug: sleep-disturbance
+      notes: ''
+    - label: Fragmented / Disturbed Sleep
+      children: []
+      linked_kind: symptom
+      linked_slug: disturbed-sleep
+      notes: ''
+    - label: Unrefreshed / Poor Quality Sleep
+      children: []
+      linked_kind: symptom
+      linked_slug: poor-sleep-quality
+      notes: ''
+    - label: Sleep Medication Dependence
+      children: []
+      linked_kind: symptom
+      linked_slug: sleep-medication-dependence
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Daytime Consequences
+    children:
+    - label: Fatigue
+      children: []
+      linked_kind: symptom
+      linked_slug: fatigue
+      notes: ''
+    - label: Daytime Fatigue / Sleepiness
+      children: []
+      linked_kind: symptom
+      linked_slug: daytime-fatigue
+      notes: ''
+    - label: Brain Fog
+      children: []
+      linked_kind: symptom
+      linked_slug: brain-fog
+      notes: ''
+    - label: Wired but Tired
+      children: []
+      linked_kind: symptom
+      linked_slug: wired-but-tired
+      notes: ''
+    - label: Energy Crashes (afternoon)
+      children: []
+      linked_kind: symptom
+      linked_slug: energy-crashes
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Night-time Symptoms
+    children:
+    - label: Night Sweats
+      children: []
+      linked_kind: symptom
+      linked_slug: night-sweats
+      notes: ''
+    - label: Nighttime Urination / Nocturia
+      children: []
+      linked_kind: symptom
+      linked_slug: nighttime-urination
+      notes: ''
+    - label: Restless Legs
+      children: []
+      linked_kind: symptom
+      linked_slug: restless-legs
+      notes: ''
+    - label: Teeth Grinding / Bruxism
+      children: []
+      linked_kind: symptom
+      linked_slug: teeth-grinding
+      notes: ''
+    - label: Muscle Cramps at Night
+      children: []
+      linked_kind: symptom
+      linked_slug: muscle-cramps
+      notes: ''
+    - label: Morning Headaches
+      children: []
+      linked_kind: symptom
+      linked_slug: morning-headaches
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Mood & Cognition
+    children:
+    - label: Anxiety
+      children: []
+      linked_kind: symptom
+      linked_slug: anxiety
+      notes: ''
+    - label: Depression / Low Mood
+      children: []
+      linked_kind: symptom
+      linked_slug: depression-low-mood
+      notes: ''
+    - label: Irritability / Mood Swings
+      children: []
+      linked_kind: symptom
+      linked_slug: mood-swings
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: ⚙️ Root Mechanisms
+  children:
+  - label: HPA-Axis Disruption
+    children:
+    - label: HPA-Axis Dysregulation
+      children: []
+      linked_kind: mechanism
+      linked_slug: hpa-axis-dysregulation
+      notes: ''
+    - label: Cortisol-Melatonin Inversion
+      children: []
+      linked_kind: mechanism
+      linked_slug: cortisol-elevation
+      notes: ''
+    - label: Cortisol Awakening Response Blunted
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Cortisol-DHEA Imbalance
+      children: []
+      linked_kind: mechanism
+      linked_slug: cortisol-dhea-imbalance
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Melatonin & Light Pathway
+    children:
+    - label: Melatonin Pathway Dysfunction
+      children: []
+      linked_kind: mechanism
+      linked_slug: melatonin-pathway
+      notes: ''
+    - label: Late Light Exposure Suppresses Melatonin
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Insufficient Morning Light Anchor
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Blood Sugar at Night
+    children:
+    - label: Reactive Hypoglycaemia → Cortisol Wake
+      children: []
+      linked_kind: mechanism
+      linked_slug: compensatory-hyperinsulinemia
+      notes: ''
+    - label: Late / Heavy Dinner Drives Insulin Surge
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Blood Sugar Dysfunction
+      children: []
+      linked_kind: topic
+      linked_slug: blood-sugar-dysfunction
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Neurotransmitter Imbalance
+    children:
+    - label: GABA Receptor Modulation Failure
+      children: []
+      linked_kind: mechanism
+      linked_slug: gaba-receptor-modulation
+      notes: ''
+    - label: Gut-Serotonin Production Imbalance
+      children: []
+      linked_kind: mechanism
+      linked_slug: gut-serotonin-production
+      notes: ''
+    - label: Sympathetic Overdrive (fight-or-flight)
+      children: []
+      linked_kind: mechanism
+      linked_slug: sympathetic-activation-sleep-apnea
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Nutrient Deficiencies
+    children:
+    - label: Magnesium Deficiency
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: B-Vitamin Depletion
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Low Iron / Ferritin (restless legs)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Vitamin D Insufficiency
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🧬 FM Approach
+  children:
+  - label: Anchor the Circadian Clock
+    children:
+    - label: Bright AM Light (within 30 min of waking)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Dim PM Light (warm, low, no overhead)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Consistent Wake Time (even weekends)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Same Sleep Time Window (±30 min)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Stabilise Night Blood Sugar
+    children:
+    - label: Finish Eating 3 Hrs Before Bed
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Protein + Healthy Fat at Dinner
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Skip Late Sugar / Refined Carbs
+      children: []
+      linked_kind: topic
+      linked_slug: refined-carbohydrate-overconsumption
+      notes: ''
+    - label: Optional Bedtime Snack if Hypoglycaemic Wakes
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Calm the Nervous System
+    children:
+    - label: Stress Management
+      children: []
+      linked_kind: topic
+      linked_slug: stress-management
+      notes: ''
+    - label: Breathwork (4-7-8, box, slow nasal)
+      children: []
+      linked_kind: topic
+      linked_slug: breathwork-for-health
+      notes: ''
+    - label: Vagal / Parasympathetic Activation
+      children: []
+      linked_kind: topic
+      linked_slug: nervous-system-regulation
+      notes: ''
+    - label: Mindful Breathing Pre-Bed
+      children: []
+      linked_kind: topic
+      linked_slug: mindful-breathing
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Sleep Hygiene Foundations
+    children:
+    - label: Cool Dark Quiet Bedroom
+      children: []
+      linked_kind: topic
+      linked_slug: sleep-hygiene
+      notes: ''
+    - label: No Screens 1 Hr Before Bed
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Bed for Sleep & Sex Only
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Avoid Caffeine After Noon
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Limit Alcohol (fragments REM)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🛠 Interventions
+  children:
+  - label: Light & Environment
+    children:
+    - label: 10–20 min Outdoor Morning Light
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Blue-Light Filter / Blockers After Sunset
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Bedroom 18–20°C (cool)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Blackout Curtains / Eye Mask
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: White / Brown Noise (mask traffic)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Pre-Sleep Routine
+    children:
+    - label: Wind-Down 30–60 min (no screens, dim lights)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Warm Shower / Bath 90 min Before Bed
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Light Stretching / Yoga Nidra
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Journal Brain-Dump (rumination)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Supplements (foundational)
+    children:
+    - label: Magnesium Glycinate (400 mg before bed)
+      children: []
+      linked_kind: supplement
+      linked_slug: magnesium-glycinate
+      notes: ''
+    - label: L-Theanine (200 mg)
+      children: []
+      linked_kind: supplement
+      linked_slug: l-theanine
+      notes: ''
+    - label: Glycine (3 g pre-bed)
+      children: []
+      linked_kind: supplement
+      linked_slug: glycine
+      notes: ''
+    - label: Ashwagandha (KSM-66, evening)
+      children: []
+      linked_kind: supplement
+      linked_slug: ashwagandha-ksm66
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Supplements (targeted, sparing)
+    children:
+    - label: Melatonin (0.3–1 mg, short-term only)
+      children: []
+      linked_kind: supplement
+      linked_slug: melatonin
+      notes: ''
+    - label: Iron Bisglycinate (if ferritin <50 + RLS)
+      children: []
+      linked_kind: supplement
+      linked_slug: iron-bisglycinate
+      notes: ''
+    - label: Vitamin D3 (if low on labs)
+      children: []
+      linked_kind: supplement
+      linked_slug: vitamin-d3
+      notes: ''
+    - label: B-Complex (methylated)
+      children: []
+      linked_kind: supplement
+      linked_slug: methylated-b-complex
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: India-Specific Considerations
+    children:
+    - label: Negotiate Earlier Family Dinner Time
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Cool Bedroom in Hot Climate (AC, fan, cotton)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Reduce Late Tea / Chai
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Address Street-Light / Mosquito Disturbance
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🎯 Coaching Goals
+  children:
+  - label: Sleep Quality
+    children:
+    - label: Fall Asleep Within 20 Min
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Sleep Through to 5–6 AM Without Wakeup
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Wake Refreshed (no alarm dread)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 7–9 Hours Total Sleep Time
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Daytime Energy
+    children:
+    - label: No Afternoon Crash
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Even Energy 9 AM – 9 PM
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Reduce Caffeine Reliance
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Habits to Build
+    children:
+    - label: Consistent Wake / Bed Times
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 10 Min AM Outdoor Light
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Last Meal 3 Hrs Before Bed
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Evening Wind-Down Ritual
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Reduce Sleep-Med Dependence
+    children:
+    - label: Taper Under Doctor Supervision
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Replace with Foundational Habits
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 📊 Labs to Track
+  children:
+  - label: Adrenal / Cortisol
+    children:
+    - label: AM Cortisol (8 AM)
+      children: []
+      linked_kind: lab_test
+      linked_slug: am-cortisol
+      notes: ''
+    - label: 4-Point Salivary Cortisol Curve
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: DUTCH Test (cortisol + metabolites)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: DHEA-S
+      children: []
+      linked_kind: lab_test
+      linked_slug: dhea-s
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Blood Sugar
+    children:
+    - label: Fasting Glucose
+      children: []
+      linked_kind: lab_test
+      linked_slug: fasting-glucose
+      notes: ''
+    - label: Fasting Insulin
+      children: []
+      linked_kind: lab_test
+      linked_slug: fasting-insulin
+      notes: ''
+    - label: HbA1c
+      children: []
+      linked_kind: lab_test
+      linked_slug: hba1c
+      notes: ''
+    - label: HOMA-IR
+      children: []
+      linked_kind: lab_test
+      linked_slug: homa-ir
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Nutrient Status
+    children:
+    - label: Magnesium RBC
+      children: []
+      linked_kind: lab_test
+      linked_slug: magnesium-rbc
+      notes: ''
+    - label: Ferritin (target ≥50 for RLS)
+      children: []
+      linked_kind: lab_test
+      linked_slug: ferritin
+      notes: ''
+    - label: Vitamin D 25-OH
+      children: []
+      linked_kind: lab_test
+      linked_slug: vitamin-d-25-oh
+      notes: ''
+    - label: Vitamin B12
+      children: []
+      linked_kind: lab_test
+      linked_slug: vitamin-b12
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Thyroid (always rule out)
+    children:
+    - label: TSH
+      children: []
+      linked_kind: lab_test
+      linked_slug: tsh
+      notes: ''
+    - label: Free T3
+      children: []
+      linked_kind: lab_test
+      linked_slug: free-t3
+      notes: ''
+    - label: Reverse T3 (if HPA stress)
+      children: []
+      linked_kind: lab_test
+      linked_slug: reverse-t3
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: If Sleep Apnoea Suspected
+    children:
+    - label: At-Home Sleep Study (HSAT)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Polysomnography (PSG, if loud snoring + hypertension)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Epworth Sleepiness Scale
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+sources:
+- id: vitaone-health-coaching-toolkit
+  quote: null
+  location: Sleep & Circadian Rhythm
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

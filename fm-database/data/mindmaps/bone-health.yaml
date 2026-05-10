@@ -1,0 +1,669 @@
+slug: bone-health
+display_name: Bone Health & Osteoporosis
+description: 'Functional medicine approach to bone fragility, low bone mineral density,
+  and osteoporosis. Bones are silent until they fracture — FM approach is preventive
+  and uses hormone optimisation, weight-bearing exercise, and gut absorption support
+  alongside the usual nutrient cofactors. India context: vegetarian diet often low
+  in calcium, B12, and vitamin D; women 35+ and post-menopause especially vulnerable.
+
+  '
+aliases: []
+related_topics:
+- bone-health
+- calcium-metabolism
+- calcium-deficiency
+- vitamin-d-deficiency
+- vitamin-d3-k2-synergy
+- vitamin-k2
+- perimenopause-and-menopause
+- menopause
+- hpa-axis-dysregulation
+- thyroid-dysfunction
+related_mechanisms:
+- calcium-trafficking-and-bone-mineralization
+- calcium-intestinal-absorption
+- estrogen-decline
+- cortisol-bone-suppression
+- mineral-malabsorption-hcl-dependent
+- reduced-gastric-acid-calcium-absorption
+- gut-barrier-and-nutrient-absorption
+tree:
+- label: 🔴 Clinical Presentation
+  children:
+  - label: Often Silent
+    children:
+    - label: No Symptoms Until Fracture
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Family History of Hip / Spine Fracture
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Female 35+ / Post-Menopausal
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Late / Visible Signs
+    children:
+    - label: Loss of Height
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Bone Loss (DEXA T-score <-1)
+      children: []
+      linked_kind: symptom
+      linked_slug: bone-loss
+      notes: ''
+    - label: Decreased Bone Mineral Density
+      children: []
+      linked_kind: symptom
+      linked_slug: decreased-bone-mineral-density
+      notes: ''
+    - label: Poor Bone Density (clinical)
+      children: []
+      linked_kind: symptom
+      linked_slug: poor-bone-density
+      notes: ''
+    - label: Low-Trauma Fracture (wrist, vertebra, hip)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Stooped Posture / Kyphosis
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Receding Gums / Tooth Loss
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Co-Existing Signals
+    children:
+    - label: Joint Stiffness
+      children: []
+      linked_kind: symptom
+      linked_slug: joint-stiffness-swelling
+      notes: ''
+    - label: Muscle Weakness (sarcopenia link)
+      children: []
+      linked_kind: symptom
+      linked_slug: muscle-weakness
+      notes: ''
+    - label: Decreased Muscle Mass
+      children: []
+      linked_kind: symptom
+      linked_slug: decreased-muscle-mass
+      notes: ''
+    - label: Brittle Hair / Nails
+      children: []
+      linked_kind: symptom
+      linked_slug: brittle-hair
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: ⚙️ Root Mechanisms
+  children:
+  - label: Hormonal Drivers
+    children:
+    - label: Estrogen Decline (peri/postmenopause)
+      children: []
+      linked_kind: mechanism
+      linked_slug: estrogen-decline
+      notes: ''
+    - label: Cortisol-Driven Bone Suppression
+      children: []
+      linked_kind: mechanism
+      linked_slug: cortisol-bone-suppression
+      notes: ''
+    - label: HPA-Axis Dysregulation
+      children: []
+      linked_kind: mechanism
+      linked_slug: hpa-axis-dysregulation
+      notes: ''
+    - label: Subclinical Hyper- or Hypothyroidism
+      children: []
+      linked_kind: topic
+      linked_slug: thyroid-dysfunction
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Nutrient Trafficking & Absorption
+    children:
+    - label: Calcium Trafficking → Bone Mineralisation
+      children: []
+      linked_kind: mechanism
+      linked_slug: calcium-trafficking-and-bone-mineralization
+      notes: ''
+    - label: Calcium Intestinal Absorption
+      children: []
+      linked_kind: mechanism
+      linked_slug: calcium-intestinal-absorption
+      notes: ''
+    - label: Low Stomach Acid → Mineral Malabsorption
+      children: []
+      linked_kind: mechanism
+      linked_slug: mineral-malabsorption-hcl-dependent
+      notes: ''
+    - label: Reduced Gastric Acid → Calcium Loss (PPIs)
+      children: []
+      linked_kind: mechanism
+      linked_slug: reduced-gastric-acid-calcium-absorption
+      notes: ''
+    - label: Gut Barrier & Nutrient Absorption
+      children: []
+      linked_kind: mechanism
+      linked_slug: gut-barrier-and-nutrient-absorption
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Nutrient Deficiencies
+    children:
+    - label: Vitamin D Deficiency
+      children: []
+      linked_kind: topic
+      linked_slug: vitamin-d-deficiency
+      notes: ''
+    - label: Vitamin K2 Deficiency (calcium misrouting)
+      children: []
+      linked_kind: topic
+      linked_slug: vitamin-k2
+      notes: ''
+    - label: Magnesium Deficiency
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Calcium Deficiency
+      children: []
+      linked_kind: topic
+      linked_slug: calcium-deficiency
+      notes: ''
+    - label: Boron / Trace-Mineral Deficiency
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: B12 / Folate Deficiency (vegetarian risk)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Lifestyle Drivers of Bone Loss
+    children:
+    - label: Sedentary Lifestyle (no load on bone)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Low-Protein Vegetarian Diet
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Chronic Cortisol / Stress
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Smoking / Alcohol
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Long-Term PPI / Steroid Use
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🧬 FM Approach
+  children:
+  - label: Reframe Bone Health
+    children:
+    - label: Bone Is Living, Remodelling Tissue
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Calcium Pills Aren't the Answer Alone
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Hormones + Load > Calcium
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Prevent in 30s/40s, Don't Wait for DEXA Drop
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Pillars of Bone Strategy
+    children:
+    - label: 1. Hormonal Optimisation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 2. Mechanical Load (weight-bearing exercise)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 3. Nutrient Cofactors (D, K2, Mg, B-vits, boron)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 4. Gut Absorption (HCl, microbiome)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 5. Stress / Cortisol Reduction
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Calcium — Food First
+    children:
+    - label: Sesame, Curry Leaves, Ragi, Greens, Almonds
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Bone Broth & Slow-Cooked Stocks
+      children: []
+      linked_kind: topic
+      linked_slug: bone-broth-therapeutic-use
+      notes: ''
+    - label: Supplement Only If Dietary Intake Truly Low
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🛠 Interventions
+  children:
+  - label: Mechanical Load
+    children:
+    - label: Weight-Bearing Exercise (walking, stairs, jumping)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Resistance Training 2–3×/Week
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Balance Training (fall prevention)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Yoga / Pilates (postural strength)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Nutrition
+    children:
+    - label: 0.8–1.2 g/kg Protein Daily
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Calcium-Rich Foods Daily (sesame, ragi, greens)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: K2-Rich Foods (natto, ghee, fermented dairy if tolerated)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Anti-Inflammatory Pattern
+      children: []
+      linked_kind: topic
+      linked_slug: anti-inflammatory-diet
+      notes: ''
+    - label: Reduce Caffeine, Alcohol, Soda (calcium loss)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Supplements (foundational)
+    children:
+    - label: Vitamin D3 (target 60–80 ng/mL)
+      children: []
+      linked_kind: supplement
+      linked_slug: vitamin-d3
+      notes: ''
+    - label: Vitamin K2-MK7 (calcium routing)
+      children: []
+      linked_kind: supplement
+      linked_slug: vitamin-k2-mk7
+      notes: ''
+    - label: Magnesium Glycinate (cofactor)
+      children: []
+      linked_kind: supplement
+      linked_slug: magnesium-glycinate
+      notes: ''
+    - label: Boron (3 mg, bone trace mineral)
+      children: []
+      linked_kind: supplement
+      linked_slug: boron
+      notes: ''
+    - label: Methylated B-Complex (homocysteine + bone)
+      children: []
+      linked_kind: supplement
+      linked_slug: methylated-b-complex
+      notes: ''
+    - label: Collagen Peptides (matrix support)
+      children: []
+      linked_kind: supplement
+      linked_slug: collagen-peptides
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Supplements (targeted)
+    children:
+    - label: Calcium Citrate (only if dietary low)
+      children: []
+      linked_kind: supplement
+      linked_slug: calcium-citrate
+      notes: ''
+    - label: Vitamin D3 + K2 Combo
+      children: []
+      linked_kind: supplement
+      linked_slug: vitamin-d3-k2
+      notes: ''
+    - label: Whey / Plant Protein Top-Up
+      children: []
+      linked_kind: supplement
+      linked_slug: whey-protein
+      notes: ''
+    - label: Betaine HCl if Low Stomach Acid
+      children: []
+      linked_kind: supplement
+      linked_slug: betaine-hcl
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Address Drivers
+    children:
+    - label: Stress Reduction (cortisol)
+      children: []
+      linked_kind: topic
+      linked_slug: stress-management
+      notes: ''
+    - label: Sleep 7–9 Hrs (rebuild)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Reassess Long-Term PPI / Steroid Use
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Stop Smoking
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🎯 Coaching Goals
+  children:
+  - label: Bone Density
+    children:
+    - label: Halt or Reverse Density Loss on DEXA
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Move Out of Osteopaenia Zone
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Stable T-Score Year-Over-Year
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Functional
+    children:
+    - label: Strong, Stable Posture
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: No Falls / No Low-Trauma Fractures
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Maintain Lean Muscle Mass
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Habits
+    children:
+    - label: 2–3 Strength Sessions / Week
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Daily Sun Exposure
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Calcium-Rich Foods Every Meal
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Adequate Daily Protein
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 📊 Labs to Track
+  children:
+  - label: Imaging
+    children:
+    - label: DEXA Scan (lumbar + hip)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: TBS (Trabecular Bone Score, if available)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Vertebral Fracture Assessment (VFA)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Mineral Status
+    children:
+    - label: Serum Calcium (with albumin correction)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Magnesium RBC (cellular)
+      children: []
+      linked_kind: lab_test
+      linked_slug: magnesium-rbc
+      notes: ''
+    - label: 24-Hr Urinary Calcium
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Vitamins / Cofactors
+    children:
+    - label: Vitamin D 25-OH
+      children: []
+      linked_kind: lab_test
+      linked_slug: vitamin-d-25-oh
+      notes: ''
+    - label: Vitamin B12
+      children: []
+      linked_kind: lab_test
+      linked_slug: vitamin-b12
+      notes: ''
+    - label: Folate RBC
+      children: []
+      linked_kind: lab_test
+      linked_slug: folate-rbc
+      notes: ''
+    - label: Homocysteine
+      children: []
+      linked_kind: lab_test
+      linked_slug: homocysteine
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Hormones
+    children:
+    - label: PTH (parathyroid hormone)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: TSH / Free T3 / Free T4
+      children: []
+      linked_kind: lab_test
+      linked_slug: tsh
+      notes: ''
+    - label: Estradiol (peri/postmenopause)
+      children: []
+      linked_kind: lab_test
+      linked_slug: estradiol-e2
+      notes: ''
+    - label: AM Cortisol
+      children: []
+      linked_kind: lab_test
+      linked_slug: am-cortisol
+      notes: ''
+    - label: DHEA-S
+      children: []
+      linked_kind: lab_test
+      linked_slug: dhea-s
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Bone Turnover (if needed)
+    children:
+    - label: C-Telopeptide (CTX, resorption)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: P1NP (formation)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Alkaline Phosphatase (bone-specific isoform)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+sources:
+- id: vitaone-health-coaching-toolkit
+  quote: null
+  location: Bone Health & Osteoporosis
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

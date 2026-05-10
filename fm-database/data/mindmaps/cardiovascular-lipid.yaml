@@ -1,0 +1,740 @@
+slug: cardiovascular-lipid
+display_name: Cardiovascular Risk (Lipid-focused)
+description: 'Functional medicine approach to cardiovascular risk through a lipid-quality
+  lens — beyond standard cholesterol panels. Focuses on ApoB / particle number, LDL
+  particle size, oxidised LDL, hsCRP, insulin resistance, and endothelial function.
+  India context: South Asians have small-dense LDL pattern, high triglycerides, low
+  HDL, and elevated CV risk at younger ages and lower BMIs than Western reference
+  populations — ApoB and TG/HDL ratio are far more meaningful than total cholesterol.
+
+  '
+aliases: []
+related_topics:
+- cardiovascular-health
+- cardiovascular-disease-prevention
+- cardiovascular-lipid-pattern-recognition
+- cardiovascular-risk-assessment
+- atherosclerosis
+- atherosclerosis-pathogenesis
+- dyslipidemia
+- dyslipidemia-management
+- lipid-panel-interpretation
+- insulin-resistance
+- chronic-inflammation
+- mediterranean-diet-cvd
+related_mechanisms:
+- apob-atherogenic-particle-burden
+- small-dense-ldl-endothelial-penetration
+- ldl-oxidation-and-glycation
+- oxidized-ldl-inflammasome-activation
+- endothelial-dysfunction-nitric-oxide
+- endothelial-dysfunction
+- insulin-resistance
+- chronic-systemic-inflammation
+- oxidative-stress-vascular
+- atherosclerosis
+tree:
+- label: 🔴 Clinical Presentation
+  children:
+  - label: Often Silent (until event)
+    children:
+    - label: No Symptoms in Early Disease
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Family History of Early CAD / Stroke
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: South Asian Ethnicity (higher baseline risk)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Cardiac Symptoms
+    children:
+    - label: Chest Pain / Angina
+      children: []
+      linked_kind: symptom
+      linked_slug: chest-pain-angina
+      notes: ''
+    - label: Shortness of Breath
+      children: []
+      linked_kind: symptom
+      linked_slug: shortness-of-breath
+      notes: ''
+    - label: Palpitations
+      children: []
+      linked_kind: symptom
+      linked_slug: palpitations
+      notes: ''
+    - label: Fatigue on Exertion
+      children: []
+      linked_kind: symptom
+      linked_slug: fatigue
+      notes: ''
+    - label: Edema / Swelling
+      children: []
+      linked_kind: symptom
+      linked_slug: edema
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Insulin-Resistance Co-Markers
+    children:
+    - label: Central / Abdominal Adiposity
+      children: []
+      linked_kind: symptom
+      linked_slug: central-weight-gain
+      notes: ''
+    - label: Skin Tags / Acanthosis Nigricans
+      children: []
+      linked_kind: symptom
+      linked_slug: skin-tags
+      notes: ''
+    - label: Post-Meal Fatigue
+      children: []
+      linked_kind: symptom
+      linked_slug: post-meal-fatigue
+      notes: ''
+    - label: Hypertension
+      children: []
+      linked_kind: symptom
+      linked_slug: high-blood-pressure
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Vascular Stress Signs
+    children:
+    - label: Elevated Resting Blood Pressure
+      children: []
+      linked_kind: symptom
+      linked_slug: elevated-blood-pressure
+      notes: ''
+    - label: Cold Extremities (poor circulation)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Erectile Dysfunction (early CV signal in men)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: ⚙️ Root Mechanisms
+  children:
+  - label: Atherogenic Particle Burden
+    children:
+    - label: ApoB / Particle Number Elevation
+      children: []
+      linked_kind: mechanism
+      linked_slug: apob-atherogenic-particle-burden
+      notes: ''
+    - label: Small Dense LDL → Endothelial Penetration
+      children: []
+      linked_kind: mechanism
+      linked_slug: small-dense-ldl-endothelial-penetration
+      notes: ''
+    - label: VLDL Overproduction (excess carbs)
+      children: []
+      linked_kind: mechanism
+      linked_slug: vldl-overproduction-from-excess-carbs
+      notes: ''
+    - label: VLDL → LDL Cascade
+      children: []
+      linked_kind: mechanism
+      linked_slug: vldl-to-ldl-cascade
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Oxidation & Inflammation
+    children:
+    - label: LDL Oxidation & Glycation
+      children: []
+      linked_kind: mechanism
+      linked_slug: ldl-oxidation-and-glycation
+      notes: ''
+    - label: Oxidised LDL → Inflammasome Activation
+      children: []
+      linked_kind: mechanism
+      linked_slug: oxidized-ldl-inflammasome-activation
+      notes: ''
+    - label: Vascular Oxidative Stress
+      children: []
+      linked_kind: mechanism
+      linked_slug: oxidative-stress-vascular
+      notes: ''
+    - label: Chronic Systemic Inflammation
+      children: []
+      linked_kind: mechanism
+      linked_slug: chronic-systemic-inflammation
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Endothelial Dysfunction
+    children:
+    - label: Endothelial Dysfunction
+      children: []
+      linked_kind: mechanism
+      linked_slug: endothelial-dysfunction
+      notes: ''
+    - label: Reduced Nitric Oxide Bioavailability
+      children: []
+      linked_kind: mechanism
+      linked_slug: endothelial-dysfunction-nitric-oxide
+      notes: ''
+    - label: Endothelial Injury
+      children: []
+      linked_kind: mechanism
+      linked_slug: endothelial-injury
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Metabolic Drivers
+    children:
+    - label: Insulin Resistance
+      children: []
+      linked_kind: mechanism
+      linked_slug: insulin-resistance
+      notes: ''
+    - label: Compensatory Hyperinsulinaemia
+      children: []
+      linked_kind: mechanism
+      linked_slug: compensatory-hyperinsulinemia
+      notes: ''
+    - label: Visceral Adipose Inflammation
+      children: []
+      linked_kind: mechanism
+      linked_slug: visceral-adipose-inflammation
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Methylation / Homocysteine
+    children:
+    - label: Methylation Defect → Elevated Homocysteine
+      children: []
+      linked_kind: mechanism
+      linked_slug: methylation-defect-homocysteine
+      notes: ''
+    - label: Impaired Homocysteine Remethylation
+      children: []
+      linked_kind: mechanism
+      linked_slug: impaired-homocysteine-remethylation
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🧬 FM Approach
+  children:
+  - label: Reframe the Risk Picture
+    children:
+    - label: ApoB Beats Total Cholesterol
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Particle Number > LDL-C Concentration
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: TG/HDL Ratio = Insulin Resistance Proxy
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: hsCRP = Inflammation Layer
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Lipoprotein(a) = Genetic Risk Layer
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: South-Asian Specific Insights
+    children:
+    - label: Small Dense LDL Pattern Common
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: High TG / Low HDL Often Default
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: CV Events Younger / Lower BMI Cutoffs
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Genetic Lp(a) Elevation More Common
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Address All 3 Layers
+    children:
+    - label: Reduce ApoB / Particle Burden
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Quench Oxidation & Inflammation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Restore Endothelial Function
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Reverse Insulin Resistance
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🛠 Interventions
+  children:
+  - label: Nutrition (lipid-focused)
+    children:
+    - label: Mediterranean Diet
+      children: []
+      linked_kind: topic
+      linked_slug: mediterranean-diet-cvd
+      notes: ''
+    - label: Low-Glycaemic / Low Refined Carb
+      children: []
+      linked_kind: topic
+      linked_slug: refined-carbohydrate-overconsumption
+      notes: ''
+    - label: 25–35 g Soluble Fibre Daily
+      children: []
+      linked_kind: topic
+      linked_slug: fiber-gap
+      notes: ''
+    - label: Cooking Fats — Olive, Avocado, Ghee (sparingly)
+      children: []
+      linked_kind: topic
+      linked_slug: cooking-fats-and-cardiovascular-health
+      notes: ''
+    - label: Cold-Water Fish 2–3×/Week
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Reduce Trans Fats / Refined Oils
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Limit Alcohol (raises TG)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Lifestyle
+    children:
+    - label: 150 min Moderate Aerobic / Week
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 2× Resistance Training / Week
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Walk After Meals (glucose disposal)
+      children: []
+      linked_kind: topic
+      linked_slug: antigravity-exercise-for-blood-sugar
+      notes: ''
+    - label: Stress Management
+      children: []
+      linked_kind: topic
+      linked_slug: stress-management
+      notes: ''
+    - label: Sleep 7–9 Hrs (rule out apnoea)
+      children: []
+      linked_kind: topic
+      linked_slug: sleep-hygiene
+      notes: ''
+    - label: Stop Smoking / Reduce Pollution Exposure
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Supplements (foundational)
+    children:
+    - label: Omega-3 EPA/DHA (lower TG, anti-inflammatory)
+      children: []
+      linked_kind: supplement
+      linked_slug: omega-3-epa-dha
+      notes: ''
+    - label: CoQ10 (mitochondria, esp. on statins)
+      children: []
+      linked_kind: supplement
+      linked_slug: coq10
+      notes: ''
+    - label: Magnesium (BP, endothelial)
+      children: []
+      linked_kind: supplement
+      linked_slug: magnesium-glycinate
+      notes: ''
+    - label: Vitamin D3 (deficiency adds CV risk)
+      children: []
+      linked_kind: supplement
+      linked_slug: vitamin-d3
+      notes: ''
+    - label: Vitamin K2-MK7 (calcium routing)
+      children: []
+      linked_kind: supplement
+      linked_slug: vitamin-k2-mk7
+      notes: ''
+    - label: Methylated B-Complex (lower homocysteine)
+      children: []
+      linked_kind: supplement
+      linked_slug: methylated-b-complex
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Supplements (targeted)
+    children:
+    - label: Berberine (insulin sensitivity, lipids)
+      children: []
+      linked_kind: supplement
+      linked_slug: berberine
+      notes: ''
+    - label: Plant Sterols / Stanols (LDL lowering)
+      children: []
+      linked_kind: supplement
+      linked_slug: plant-sterols
+      notes: ''
+    - label: Aged Garlic Extract (BP, plaque)
+      children: []
+      linked_kind: supplement
+      linked_slug: aged-garlic-extract
+      notes: ''
+    - label: Psyllium Husk (LDL, soluble fibre)
+      children: []
+      linked_kind: supplement
+      linked_slug: psyllium-husk
+      notes: ''
+    - label: NAC (oxidative stress)
+      children: []
+      linked_kind: supplement
+      linked_slug: nac
+      notes: ''
+    - label: Curcumin (inflammation)
+      children: []
+      linked_kind: supplement
+      linked_slug: curcumin
+      notes: ''
+    - label: Taurine (endothelial, BP)
+      children: []
+      linked_kind: supplement
+      linked_slug: taurine
+      notes: ''
+    - label: Hawthorn Berry (cardiac support)
+      children: []
+      linked_kind: supplement
+      linked_slug: hawthorn-berry
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🎯 Coaching Goals
+  children:
+  - label: Lipid Particle Targets
+    children:
+    - label: ApoB <80 mg/dL (lower if higher risk)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: TG/HDL Ratio <2 (ideally <1.5)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: HDL >50 (women) / >40 (men)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: TG <100 mg/dL Fasting
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Inflammation & Insulin Targets
+    children:
+    - label: hsCRP <1 mg/L
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Fasting Insulin <8 µIU/mL
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: HbA1c <5.5%
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Homocysteine <8 µmol/L
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Lifestyle Habits
+    children:
+    - label: Daily Movement (10k+ steps)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Mediterranean Pattern Most Days
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 12-Hr Overnight Fast
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Stress Buffer Practice Daily
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Empowerment
+    children:
+    - label: Understand "Cholesterol Isn't the Enemy"
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Track Right Markers, Not Just LDL
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Prevention >> Reaction
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 📊 Labs to Track
+  children:
+  - label: Advanced Lipid Panel
+    children:
+    - label: ApoB
+      children: []
+      linked_kind: lab_test
+      linked_slug: apob
+      notes: ''
+    - label: LDL Particle Number (LDL-P, NMR)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: LDL Particle Size / Pattern A vs B
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Lipoprotein(a) — once in lifetime
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Oxidised LDL
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Standard Lipids
+    children:
+    - label: Triglycerides
+      children: []
+      linked_kind: lab_test
+      linked_slug: triglycerides
+      notes: ''
+    - label: HDL Cholesterol
+      children: []
+      linked_kind: lab_test
+      linked_slug: hdl-cholesterol
+      notes: ''
+    - label: TG/HDL Ratio (calculated)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: LDL-C (less important than ApoB)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Non-HDL Cholesterol
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Inflammation & Glycation
+    children:
+    - label: hsCRP
+      children: []
+      linked_kind: lab_test
+      linked_slug: hscrp
+      notes: ''
+    - label: Homocysteine
+      children: []
+      linked_kind: lab_test
+      linked_slug: homocysteine
+      notes: ''
+    - label: Fibrinogen
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Lp-PLA2 (vascular inflammation)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Myeloperoxidase (MPO, optional)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Insulin & Metabolic
+    children:
+    - label: Fasting Insulin
+      children: []
+      linked_kind: lab_test
+      linked_slug: fasting-insulin
+      notes: ''
+    - label: Fasting Glucose
+      children: []
+      linked_kind: lab_test
+      linked_slug: fasting-glucose
+      notes: ''
+    - label: HbA1c
+      children: []
+      linked_kind: lab_test
+      linked_slug: hba1c
+      notes: ''
+    - label: HOMA-IR
+      children: []
+      linked_kind: lab_test
+      linked_slug: homa-ir
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Imaging & Functional
+    children:
+    - label: Coronary Calcium Score (CAC) — once after 40
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Carotid Intima-Media Thickness (CIMT)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Resting BP — Home Series
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+sources:
+- id: vitaone-health-coaching-toolkit
+  quote: null
+  location: Cardiovascular Risk (Lipid-focused)
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani

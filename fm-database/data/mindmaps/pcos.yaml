@@ -1,0 +1,751 @@
+slug: pcos
+display_name: PCOS (Polycystic Ovary Syndrome)
+description: 'Functional medicine approach to Polycystic Ovary Syndrome — root-cause
+  framework focused on insulin resistance, androgen excess, and chronic anovulation.
+  Covers clinical presentation, root mechanisms, FM coaching strategy, interventions
+  (food, lifestyle, supplements), goals, and labs. India context: very high prevalence,
+  often missed in lean phenotypes; strong family history clustering with type 2 diabetes
+  and metabolic disease.
+
+  '
+aliases: []
+related_topics:
+- pcos
+- pcos-fertility
+- insulin-resistance
+- insulin-resistance-metabolic-syndrome
+- blood-sugar-dysfunction
+- chronic-inflammation
+- hpa-axis-dysregulation
+- estrobolome
+- 5r-gut-restoration
+related_mechanisms:
+- insulin-resistance
+- compensatory-hyperinsulinemia
+- aromatase-upregulation
+- 5-alpha-reductase-activity
+- shbg-hormone-binding
+- chronic-inflammation
+- hpa-axis-dysregulation
+- gut-dysbiosis
+- leaky-gut
+tree:
+- label: 🔴 Clinical Presentation
+  children:
+  - label: Menstrual & Reproductive
+    children:
+    - label: Irregular Cycles
+      children: []
+      linked_kind: symptom
+      linked_slug: irregular-cycles
+      notes: ''
+    - label: Skipped or Missing Periods
+      children: []
+      linked_kind: symptom
+      linked_slug: irregular-periods
+      notes: ''
+    - label: Heavy or Painful Periods
+      children: []
+      linked_kind: symptom
+      linked_slug: heavy-periods
+      notes: ''
+    - label: Infertility / Anovulation
+      children: []
+      linked_kind: symptom
+      linked_slug: infertility-female
+      notes: ''
+    - label: PMS & Low Libido
+      children: []
+      linked_kind: symptom
+      linked_slug: pms-irregular-cycles-low-libido
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Androgen Excess Signs
+    children:
+    - label: Hormonal Acne (jawline, chin, back)
+      children: []
+      linked_kind: symptom
+      linked_slug: acne-hormonal
+      notes: ''
+    - label: Hirsutism (facial & body hair)
+      children: []
+      linked_kind: symptom
+      linked_slug: hirsutism
+      notes: ''
+    - label: Facial Hair Growth
+      children: []
+      linked_kind: symptom
+      linked_slug: facial-hair
+      notes: ''
+    - label: Scalp Hair Thinning / Loss
+      children: []
+      linked_kind: symptom
+      linked_slug: hair-thinning
+      notes: ''
+    - label: Skin Tags / Acanthosis Nigricans
+      children: []
+      linked_kind: symptom
+      linked_slug: skin-tags
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Metabolic Signs
+    children:
+    - label: Central / Abdominal Weight Gain
+      children: []
+      linked_kind: symptom
+      linked_slug: central-weight-gain
+      notes: ''
+    - label: Resistant Weight Gain
+      children: []
+      linked_kind: symptom
+      linked_slug: resistant-weight-gain
+      notes: ''
+    - label: Post-Meal Fatigue / Crashes
+      children: []
+      linked_kind: symptom
+      linked_slug: post-meal-fatigue
+      notes: ''
+    - label: Sugar / Carb Cravings
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Energy Crashes
+      children: []
+      linked_kind: symptom
+      linked_slug: energy-crashes
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Mood & Systemic
+    children:
+    - label: Anxiety
+      children: []
+      linked_kind: symptom
+      linked_slug: anxiety
+      notes: ''
+    - label: Depression / Low Mood
+      children: []
+      linked_kind: symptom
+      linked_slug: depression-low-mood
+      notes: ''
+    - label: Brain Fog
+      children: []
+      linked_kind: symptom
+      linked_slug: brain-fog
+      notes: ''
+    - label: Fatigue
+      children: []
+      linked_kind: symptom
+      linked_slug: fatigue
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: ⚙️ Root Mechanisms
+  children:
+  - label: Insulin Resistance & Hyperinsulinaemia
+    children:
+    - label: Insulin Receptor Resistance
+      children: []
+      linked_kind: mechanism
+      linked_slug: insulin-receptor-resistance
+      notes: ''
+    - label: Compensatory Hyperinsulinaemia
+      children: []
+      linked_kind: mechanism
+      linked_slug: compensatory-hyperinsulinemia
+      notes: ''
+    - label: Insulin Drives Ovarian Androgens
+      children: []
+      linked_kind: mechanism
+      linked_slug: insulin-resistance-sex-hormone
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Androgen Excess Pathway
+    children:
+    - label: Increased 5-Alpha-Reductase Activity
+      children: []
+      linked_kind: mechanism
+      linked_slug: 5-alpha-reductase-activity
+      notes: ''
+    - label: Low SHBG (more free testosterone)
+      children: []
+      linked_kind: mechanism
+      linked_slug: shbg-hormone-binding
+      notes: ''
+    - label: Aromatase Imbalance
+      children: []
+      linked_kind: mechanism
+      linked_slug: aromatase-upregulation
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: HPA-Axis & Stress
+    children:
+    - label: HPA-Axis Dysregulation
+      children: []
+      linked_kind: mechanism
+      linked_slug: hpa-axis-dysregulation
+      notes: ''
+    - label: Cortisol-DHEA Imbalance
+      children: []
+      linked_kind: mechanism
+      linked_slug: cortisol-dhea-imbalance
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Inflammation & Adiposity
+    children:
+    - label: Chronic Systemic Inflammation
+      children: []
+      linked_kind: mechanism
+      linked_slug: chronic-systemic-inflammation
+      notes: ''
+    - label: Visceral Adipose Inflammation
+      children: []
+      linked_kind: mechanism
+      linked_slug: visceral-adipose-inflammation
+      notes: ''
+    - label: Belly Fat → Estrogen Conversion
+      children: []
+      linked_kind: mechanism
+      linked_slug: belly-fat-adipose-estrogen
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Gut Drivers
+    children:
+    - label: Gut Dysbiosis
+      children: []
+      linked_kind: mechanism
+      linked_slug: gut-dysbiosis
+      notes: ''
+    - label: Leaky Gut / Intestinal Permeability
+      children: []
+      linked_kind: mechanism
+      linked_slug: leaky-gut
+      notes: ''
+    - label: Estrobolome Imbalance
+      children: []
+      linked_kind: mechanism
+      linked_slug: gut-estrogen-reabsorption
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🧬 FM Approach
+  children:
+  - label: Reframe PCOS
+    children:
+    - label: Not a Cyst Problem — a Metabolic Problem
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Lean PCOS Exists (often missed)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Insulin Drives Androgens, Not the Other Way Around
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Treat the Root, Not the Cycle
+    children:
+    - label: Step 1 — Stabilise Blood Sugar
+      children: []
+      linked_kind: topic
+      linked_slug: blood-sugar-dysfunction
+      notes: ''
+    - label: Step 2 — Heal the Gut
+      children: []
+      linked_kind: topic
+      linked_slug: 5r-gut-restoration
+      notes: ''
+    - label: Step 3 — Calm Stress / Sleep
+      children: []
+      linked_kind: topic
+      linked_slug: stress-management
+      notes: ''
+    - label: Step 4 — Cycle Sync Nutrition
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Phenotypes Matter
+    children:
+    - label: Insulin-Resistant PCOS (most common)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Inflammatory PCOS
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Adrenal PCOS (high DHEA-S)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Post-Pill PCOS
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🛠 Interventions
+  children:
+  - label: Nutrition
+    children:
+    - label: Low-Glycaemic / Low-Refined-Carb
+      children: []
+      linked_kind: topic
+      linked_slug: refined-carbohydrate-overconsumption
+      notes: ''
+    - label: Mediterranean / Anti-Inflammatory Pattern
+      children: []
+      linked_kind: topic
+      linked_slug: anti-inflammatory-diet
+      notes: ''
+    - label: Protein at Every Meal (~25–30 g)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Healthy Fats (avocado, ghee, nuts, olive oil)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 25–30 g Fibre / Day
+      children: []
+      linked_kind: topic
+      linked_slug: fiber-gap
+      notes: ''
+    - label: Limit Dairy & Sugar (often reduce androgen load)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Lifestyle
+    children:
+    - label: Resistance Training 3×/Week
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Walk After Meals (glucose disposal)
+      children: []
+      linked_kind: topic
+      linked_slug: antigravity-exercise-for-blood-sugar
+      notes: ''
+    - label: Sleep 7–9 hrs, Same Time Daily
+      children: []
+      linked_kind: topic
+      linked_slug: sleep-hygiene
+      notes: ''
+    - label: Stress Reduction (yoga, breathwork, meditation)
+      children: []
+      linked_kind: topic
+      linked_slug: stress-management
+      notes: ''
+    - label: Avoid Endocrine Disruptors (BPA, phthalates)
+      children: []
+      linked_kind: topic
+      linked_slug: endocrine-disruption-and-detox
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Supplements (foundational)
+    children:
+    - label: Myo-Inositol + D-Chiro Inositol (40:1)
+      children: []
+      linked_kind: supplement
+      linked_slug: myo-inositol
+      notes: ''
+    - label: NAC (insulin sensitivity, antioxidant)
+      children: []
+      linked_kind: supplement
+      linked_slug: nac
+      notes: ''
+    - label: Berberine (insulin sensitiser)
+      children: []
+      linked_kind: supplement
+      linked_slug: berberine
+      notes: ''
+    - label: Omega-3 EPA/DHA (inflammation)
+      children: []
+      linked_kind: supplement
+      linked_slug: omega-3
+      notes: ''
+    - label: Magnesium Glycinate (insulin signalling, sleep)
+      children: []
+      linked_kind: supplement
+      linked_slug: magnesium-glycinate
+      notes: ''
+    - label: Vitamin D3 (commonly low)
+      children: []
+      linked_kind: supplement
+      linked_slug: vitamin-d3
+      notes: ''
+    - label: Chromium Picolinate (glucose tolerance)
+      children: []
+      linked_kind: supplement
+      linked_slug: chromium-picolinate
+      notes: ''
+    - label: Zinc (skin, androgens)
+      children: []
+      linked_kind: supplement
+      linked_slug: zinc
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Supplements (targeted)
+    children:
+    - label: Spearmint Tea (anti-androgen)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Saw Palmetto (5-alpha-reductase blocker)
+      children: []
+      linked_kind: supplement
+      linked_slug: saw-palmetto
+      notes: ''
+    - label: Ashwagandha (HPA support — adrenal PCOS)
+      children: []
+      linked_kind: supplement
+      linked_slug: ashwagandha
+      notes: ''
+    - label: B-Complex (methylation, ovulation)
+      children: []
+      linked_kind: supplement
+      linked_slug: methylated-b-complex
+      notes: ''
+    - label: Probiotics (estrobolome)
+      children: []
+      linked_kind: supplement
+      linked_slug: broad-spectrum-probiotics
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🎯 Coaching Goals
+  children:
+  - label: Metabolic
+    children:
+    - label: Restore Insulin Sensitivity
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Reduce Visceral Fat
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Stable Energy Across the Day
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Hormonal
+    children:
+    - label: Predictable, Cycle Length 25–35 Days
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Resume / Confirm Ovulation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Reduce Androgen Symptoms (acne, hair)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Lifestyle Habits
+    children:
+    - label: Walk After Each Meal
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Protein-Forward Breakfast
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Consistent Sleep & Wake Times
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Strength-Train 2–3×/Week
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Empowerment & Self-Knowledge
+    children:
+    - label: Track Cycles (period app, BBT, OPK)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Recognise Personal Insulin Triggers
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Understand "Lean PCOS" Doesn't Equal No Risk
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 📊 Labs to Track
+  children:
+  - label: Insulin & Blood Sugar
+    children:
+    - label: Fasting Insulin
+      children: []
+      linked_kind: lab_test
+      linked_slug: fasting-insulin
+      notes: ''
+    - label: Fasting Glucose
+      children: []
+      linked_kind: lab_test
+      linked_slug: fasting-glucose
+      notes: ''
+    - label: HbA1c
+      children: []
+      linked_kind: lab_test
+      linked_slug: hba1c
+      notes: ''
+    - label: HOMA-IR (calculated)
+      children: []
+      linked_kind: lab_test
+      linked_slug: homa-ir
+      notes: ''
+    - label: 2-Hour OGTT with Insulin (ideal)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Hormones
+    children:
+    - label: LH / FSH Ratio (often >2:1 in PCOS)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Free Testosterone
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Total Testosterone
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: DHEA-S
+      children: []
+      linked_kind: lab_test
+      linked_slug: dhea-s
+      notes: ''
+    - label: SHBG (often low)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: AMH (ovarian reserve)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Estradiol
+      children: []
+      linked_kind: lab_test
+      linked_slug: estradiol-e2
+      notes: ''
+    - label: Progesterone (day 21 of 28-day cycle)
+      children: []
+      linked_kind: lab_test
+      linked_slug: progesterone
+      notes: ''
+    - label: Prolactin (rule out elevation)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 17-OH Progesterone (rule out CAH)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Inflammation & Nutrients
+    children:
+    - label: hsCRP
+      children: []
+      linked_kind: lab_test
+      linked_slug: hscrp
+      notes: ''
+    - label: Vitamin D 25-OH
+      children: []
+      linked_kind: lab_test
+      linked_slug: vitamin-d-25-oh
+      notes: ''
+    - label: Ferritin
+      children: []
+      linked_kind: lab_test
+      linked_slug: ferritin
+      notes: ''
+    - label: Vitamin B12
+      children: []
+      linked_kind: lab_test
+      linked_slug: vitamin-b12
+      notes: ''
+    - label: Magnesium RBC
+      children: []
+      linked_kind: lab_test
+      linked_slug: magnesium-rbc
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Thyroid (always rule out)
+    children:
+    - label: TSH
+      children: []
+      linked_kind: lab_test
+      linked_slug: tsh
+      notes: ''
+    - label: Free T3
+      children: []
+      linked_kind: lab_test
+      linked_slug: free-t3
+      notes: ''
+    - label: Free T4
+      children: []
+      linked_kind: lab_test
+      linked_slug: free-t4
+      notes: ''
+    - label: TPO Antibodies
+      children: []
+      linked_kind: lab_test
+      linked_slug: tpo-antibodies
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Lipids (insulin resistance picture)
+    children:
+    - label: Triglycerides
+      children: []
+      linked_kind: lab_test
+      linked_slug: triglycerides
+      notes: ''
+    - label: HDL
+      children: []
+      linked_kind: lab_test
+      linked_slug: hdl-cholesterol
+      notes: ''
+    - label: TG/HDL Ratio (insulin resistance proxy)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: ApoB
+      children: []
+      linked_kind: lab_test
+      linked_slug: apob
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Imaging
+    children:
+    - label: Pelvic / Transvaginal Ultrasound (cysts on ovary)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+sources:
+- id: vitaone-health-coaching-toolkit
+  quote: null
+  location: PCOS (Polycystic Ovary Syndrome)
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-10'
+updated_by: shivani
