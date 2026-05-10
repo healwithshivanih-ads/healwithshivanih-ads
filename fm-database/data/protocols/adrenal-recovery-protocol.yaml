@@ -1,0 +1,122 @@
+slug: adrenal-recovery-protocol
+display_name: Adrenal Recovery Protocol
+aliases:
+  - adrenal-fatigue-recovery
+  - hpa-axis-reset
+  - adrenal-reset
+  - cortisol-recovery
+category: adrenal_recovery
+summary: |
+  An 8–12 week protocol to restore HPA-axis function in clients with
+  chronic stress, "tired but wired", or cortisol dysregulation. Combines
+  blood sugar stabilisation, sleep priority, gentle movement (NO HIIT),
+  adaptogens, and aggressive stress-buffering practices. First-line BEFORE
+  weight loss / elimination diets in clients with elevated stress markers.
+indications:
+  - tired-but-wired pattern (afternoon energy crash, second wind at night)
+  - difficulty falling asleep despite exhaustion
+  - low morning cortisol on saliva or DUTCH test
+  - high evening cortisol on testing
+  - chronic stress 6+ months with no recovery
+  - frequent infections / slow recovery from illness
+  - salt cravings / dizziness when standing
+  - reduced libido + brain fog + emotional reactivity
+contraindications:
+  - acute mental health crisis (refer to therapist / psychiatrist first)
+  - active eating disorder
+  - undiagnosed thyroid disease — rule out first
+typical_duration_weeks: 12
+phases:
+  - name: "Foundation (weeks 1–4)"
+    weeks: 4
+    summary: |
+      Stabilise blood sugar, prioritise sleep, remove all stimulants.
+    key_actions:
+      - 3 balanced meals + 1 snack — never skip + never go > 4h without food
+      - cut caffeine to ≤ 1 cup before noon (taper gradually if 3+ cups/day)
+      - eliminate alcohol
+      - sleep 9pm–6am minimum 8 hrs
+      - daily 10-min restorative practice (yoga nidra / box breathing / walking meditation)
+      - morning sunlight 10 min within 30 min of waking
+  - name: "Adaptogens + repair (weeks 5–8)"
+    weeks: 4
+    summary: |
+      Add adaptogenic herbs + restore mineral status.
+    key_actions:
+      - ashwagandha 600mg/day OR rhodiola 200–400mg/day (NOT both)
+      - magnesium glycinate 400mg before bed
+      - vitamin C 1000mg/day (adrenals are highest C concentration in body)
+      - sea salt 1–2g/day in water on waking (electrolyte support)
+      - gentle exercise — yoga, walking, swimming (NO HIIT, NO heavy weights)
+      - daily journaling — 5 min PM brain dump
+  - name: "Re-engagement (weeks 9–12)"
+    weeks: 4
+    summary: |
+      Slowly add back load + complexity. Reassess by re-testing.
+    key_actions:
+      - introduce strength training 2× / week (light → moderate)
+      - re-test cortisol (saliva 4-point or DUTCH) at week 10
+      - reduce adaptogen if cortisol pattern normalised
+      - taper caffeine reintroduction if desired (start with 1/2 cup)
+      - identify ongoing stress sources to manage long-term
+key_steps: []
+foods_to_emphasise:
+  - 25–30g protein per meal — eggs, fish, chicken, paneer
+  - complex carbs at every meal — sweet potato, rice, oats, millet (NO low-carb during recovery)
+  - sea salt + electrolytes — in water on waking
+  - bone broth daily
+  - vit-C-rich fruits — amla, citrus, guava, kiwi
+  - magnesium-rich foods — pumpkin seeds, dark chocolate (1 square), spinach
+  - healthy fats — avocado, ghee, olive oil
+foods_to_remove:
+  - excess caffeine (> 1 cup/day in early weeks)
+  - alcohol
+  - sugar + refined carbs (causes blood sugar swings → cortisol spikes)
+  - intermittent fasting (worsens HPA in this phase)
+  - heavy / spicy / hot foods late at night
+supplements_typically_used:
+  - ashwagandha
+  - rhodiola
+  - magnesium-glycinate
+  - vitamin-c
+  - b-complex
+  - phosphatidylserine
+  - holy-basil
+expected_outcomes:
+  - improved sleep quality (deeper, less wakefulness)
+  - steadier afternoon energy (no 3pm crash)
+  - reduced anxiety + emotional reactivity
+  - improved cortisol curve on retest
+  - better tolerance of stress (life events feel less overwhelming)
+  - return of libido + cycle regularity in women
+cautions:
+  - "DO NOT combine with weight loss / elimination diet — too much restriction worsens cortisol"
+  - "DO NOT add HIIT or heavy strength training in weeks 1–8 — pushes cortisol higher"
+  - "Ashwagandha + rhodiola can be too stimulating for HPA hyper-arousal — start low, build slowly"
+  - Some clients feel WORSE in week 1–2 (caffeine withdrawal, cortisol resetting); pre-warn them
+linked_to_topics:
+  - adrenal-fatigue
+  - hpa-axis-dysfunction
+  - chronic-stress
+  - burnout
+linked_to_mechanisms:
+  - hpa-axis-dysregulation
+linked_to_symptoms:
+  - fatigue
+  - brain-fog
+sources:
+  - id: vitaone-skill-practice-guide
+    location: adrenal recovery section
+  - id: vitaone-adrenal-toolkit
+    location: HPA-axis recovery
+evidence_tier: fm_specific_thin
+notes_for_coach: |
+  Most under-prescribed protocol — many clients with weight-loss goals
+  actually need this FIRST. Look for the trio: tired-but-wired, evening
+  second wind, and morning fatigue. Once the HPA is reset, weight loss
+  and other goals work much better. Saliva 4-point cortisol or DUTCH is
+  the gold standard test — share with referring physician.
+version: 1
+status: active
+updated_at: 2026-05-09
+updated_by: shivani

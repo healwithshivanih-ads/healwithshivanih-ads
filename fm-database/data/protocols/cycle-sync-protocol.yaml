@@ -1,0 +1,131 @@
+slug: cycle-sync-protocol
+display_name: Cycle Sync Protocol (Hormone Balance)
+aliases:
+  - cycle-sync
+  - cycle-syncing
+  - phase-based-living
+  - hormonal-rhythm-protocol
+category: hormone_balance
+summary: |
+  A 3-cycle (12-week) protocol that aligns nutrition, movement, work, and
+  lifestyle with the four phases of the menstrual cycle (menstrual,
+  follicular, ovulatory, luteal). Designed to reduce PMS, improve cycle
+  regularity, and ease perimenopause symptoms. Includes seed cycling
+  (flax/pumpkin in follicular, sesame/sunflower in luteal). Adapts for
+  perimenopause (longer / irregular cycles) and lunar-cycle proxy in
+  postmenopausal women.
+indications:
+  - PMS — mood swings, breast tenderness, bloating, food cravings
+  - irregular cycles
+  - perimenopausal symptoms — hot flashes, sleep disruption, mood changes
+  - estrogen dominance pattern (heavy / painful / clotty periods)
+  - low progesterone pattern (PMS, anxiety, short luteal phase)
+  - PCOS with cycle irregularity
+  - postmenopausal fatigue / sleep / mood issues (lunar cycle proxy)
+contraindications:
+  - active hormonal cancer treatment (clinician-led only)
+  - on hormonal birth control (cycle is suppressed — protocol can't apply)
+  - severe eating disorder
+typical_duration_weeks: 12
+phases:
+  - name: "Menstrual phase (days 1–5 — bleeding)"
+    weeks: 1
+    summary: |
+      Iron + warmth + rest. Lowest hormone levels — natural retreat phase.
+    key_actions:
+      - iron-rich foods — beetroot, dates, dark leafy greens, red meat (if non-veg)
+      - warming foods — dal, soups, stews, ginger tea
+      - REST + restorative yoga — NO HIIT, NO heavy lifting
+      - avoid social over-commitment — reflect + journal
+      - hot water bottle / warmth on lower belly + back
+  - name: "Follicular phase (days 6–13 — pre-ovulation)"
+    weeks: 1
+    summary: |
+      Estrogen rising. Fresh + light. Build energy for ovulation.
+    key_actions:
+      - seed cycling — 1 tbsp ground flaxseed + 1 tbsp pumpkin seed daily
+      - fresh + raw vegetables, sprouts, herbs
+      - fermented foods — sauerkraut, kefir, kimchi (estrogen metabolism)
+      - cardio + new exercise — try a new class, push intensity moderately
+      - creative work + new projects (best mental energy)
+  - name: "Ovulatory phase (days 14–16)"
+    weeks: 1
+    summary: |
+      Peak estrogen. Energy peaks. Communication + connection.
+    key_actions:
+      - antioxidant foods — berries, citrus, peppers
+      - light + cooling foods — salads with avocado + olive oil
+      - HIIT + heavy strength training (peak performance window)
+      - schedule social events, important meetings, presentations
+      - limit alcohol — affects ovulation + estrogen clearance
+  - name: "Luteal phase (days 17–28)"
+    weeks: 2
+    summary: |
+      Progesterone phase. Slower + warmer + more grounding.
+    key_actions:
+      - seed cycling — 1 tbsp ground sesame + 1 tbsp sunflower seed daily
+      - magnesium-rich foods — pumpkin seeds, dark chocolate (1 square), spinach
+      - complex carbs — sweet potato, rice, oats (progesterone needs more carbs)
+      - moderate exercise — strength + walking; avoid HIIT in late luteal (PMS week)
+      - earlier bedtime in days 22–28 (progesterone sensitivity)
+      - reduce caffeine in luteal (worsens PMS)
+key_steps: []
+foods_to_emphasise:
+  - phase-specific seeds (flax + pumpkin / sesame + sunflower)
+  - cruciferous vegetables daily (estrogen metabolism)
+  - magnesium-rich foods especially in luteal
+  - iron-rich foods especially in menstrual
+  - 25–30g protein per meal (hormone building blocks)
+  - omega-3 fatty fish 2× / week (anti-inflammatory)
+foods_to_remove:
+  - alcohol (especially ovulation + luteal — disrupts estrogen clearance)
+  - excess caffeine in luteal phase
+  - sugar + refined carbs (worsens PMS + mood swings)
+  - non-organic dairy (added hormones)
+  - conventional meats (added hormones — choose pasture-raised when possible)
+supplements_typically_used:
+  - vitex
+  - magnesium-glycinate
+  - omega-3
+  - vitamin-b6
+  - dim
+  - calcium-d-glucarate
+expected_outcomes:
+  - reduced PMS by cycle 2
+  - more regular cycle length by cycle 3
+  - improved sleep across cycle
+  - less intense breast tenderness + bloating
+  - more even mood (less luteal-phase anxiety)
+  - better energy + workout performance
+cautions:
+  - "Track first cycle without changing anything — establish baseline"
+  - "Use a cycle-tracking app (Clue / Flo / Garmin)"
+  - "Perimenopausal: cycles may be 21–45 days; adjust phase windows accordingly"
+  - "Postmenopausal — use lunar cycle as proxy: new moon = menstrual phase, full moon = ovulatory"
+  - Seed cycling is FOOD — safe in pregnancy + lactation
+linked_to_topics:
+  - perimenopause
+  - menopause
+  - menstrual-cycle
+  - estrogen-dominance
+  - pms
+  - pcos
+linked_to_mechanisms:
+  - estrogen-dominance
+linked_to_symptoms:
+  - food-sensitivities
+  - fatigue
+sources:
+  - id: vitaone-skill-practice-guide
+    location: cycle sync section
+evidence_tier: fm_specific_thin
+notes_for_coach: |
+  Best taught with a paper cycle-tracking sheet for the first 3 months.
+  Coaches see most dramatic results in PMS-heavy clients + perimenopausal
+  women. For lunar-cycle proxy in post-menopause, use day 1 = new moon.
+  Seed cycling is the most-asked-about + most-Googled element — explain
+  the rationale clearly (lignans + phytoestrogens) so clients commit.
+version: 1
+status: active
+updated_at: 2026-05-09
+updated_by: shivani

@@ -127,6 +127,24 @@ class HomeRemedyCategory(str, Enum):
     other = "other"
 
 
+class ProtocolCategory(str, Enum):
+    """High-level FM protocol categories. A coach picks a Protocol for a
+    client when their pattern matches the indications — protocols give a
+    structured 4–12 week path versus ad-hoc supplement + lifestyle picks.
+    """
+    gut_healing = "gut_healing"                  # 5R, GAPS, candida cleanse
+    elimination_diet = "elimination_diet"        # AIP, Whole30, low-FODMAP
+    hormone_balance = "hormone_balance"          # cycle sync, perimenopause support
+    metabolic_reset = "metabolic_reset"          # weight loss, insulin sensitization
+    adrenal_recovery = "adrenal_recovery"        # HPA-axis support
+    detox_liver_support = "detox_liver_support"  # phase I/II liver support
+    anti_inflammatory = "anti_inflammatory"      # systemic inflammation reset
+    mitochondrial_support = "mitochondrial_support"
+    thyroid_optimization = "thyroid_optimization"
+    blood_sugar_regulation = "blood_sugar_regulation"
+    other = "other"
+
+
 class MechanismCategory(str, Enum):
     endocrine = "endocrine"          # HPA axis, sex hormones, thyroid signaling
     neurological = "neurological"    # vagal tone, neurotransmitter receptors

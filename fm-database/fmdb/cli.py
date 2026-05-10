@@ -41,6 +41,8 @@ from .loader import (
     load_cooking_adjustments,
     load_home_remedies,
     load_home_remedy,
+    load_protocol,
+    load_protocols,
     load_mechanism,
     load_mechanisms,
     load_source,
@@ -748,6 +750,82 @@ def cmd_show_home_remedy(args: argparse.Namespace) -> None:
             loc = f" [{s.location}]" if s.location else ""
             print(f"    - {s.id}{loc}{quote}")
     print(f"  Updated: {hr.updated_at} by {hr.updated_by}")
+
+
+def cmd_protocols(args: argparse.Namespace) -> None:
+    items = load_protocols(DATA_DIR)
+    if not items:
+        print("(no protocols)")
+        return
+    for pr in items:
+        wks = f"{pr.typical_duration_weeks}w" if pr.typical_duration_weeks else "—"
+        print(f"  {pr.slug:35s}  {pr.category.value:24s}  {wks:>4s}  [{pr.evidence_tier.value}]  {pr.display_name}")
+
+
+def cmd_show_protocol(args: argparse.Namespace) -> None:
+    pr = load_protocol(DATA_DIR, args.slug)
+    print(f"{pr.display_name}  ({pr.slug})  v{pr.version}  [{pr.status.value}]")
+    print(f"  Category:        {pr.category.value}")
+    print(f"  Evidence tier:   {pr.evidence_tier.value}")
+    if pr.typical_duration_weeks:
+        print(f"  Duration:        {pr.typical_duration_weeks} weeks")
+    if pr.aliases:
+        print(f"  Aliases:         {', '.join(pr.aliases)}")
+    print(f"  Summary:         {pr.summary.strip()}")
+    if pr.indications:
+        print("  Indications:")
+        for i in pr.indications:
+            print(f"    - {i}")
+    if pr.contraindications:
+        print("  Contraindications:")
+        for c in pr.contraindications:
+            print(f"    - {c}")
+    if pr.phases:
+        print("  Phases:")
+        for ph in pr.phases:
+            wks = f" ({ph.weeks}w)" if ph.weeks else ""
+            print(f"    {ph.name}{wks}")
+            if ph.summary:
+                print(f"      {ph.summary.strip()}")
+            for a in ph.key_actions:
+                print(f"        - {a}")
+    if pr.key_steps:
+        print("  Key steps:")
+        for k in pr.key_steps:
+            print(f"    - {k}")
+    if pr.foods_to_emphasise:
+        print("  Foods to emphasise:")
+        for f in pr.foods_to_emphasise:
+            print(f"    - {f}")
+    if pr.foods_to_remove:
+        print("  Foods to remove:")
+        for f in pr.foods_to_remove:
+            print(f"    - {f}")
+    if pr.supplements_typically_used:
+        print(f"  Supplements:     {', '.join(pr.supplements_typically_used)}")
+    if pr.expected_outcomes:
+        print("  Expected outcomes:")
+        for e in pr.expected_outcomes:
+            print(f"    - {e}")
+    if pr.cautions:
+        print("  Cautions:")
+        for c in pr.cautions:
+            print(f"    - {c}")
+    if pr.linked_to_topics:
+        print(f"  Topics:          {', '.join(pr.linked_to_topics)}")
+    if pr.linked_to_mechanisms:
+        print(f"  Mechanisms:      {', '.join(pr.linked_to_mechanisms)}")
+    if pr.linked_to_symptoms:
+        print(f"  Symptoms:        {', '.join(pr.linked_to_symptoms)}")
+    if pr.sources:
+        print("  Sources:")
+        for s in pr.sources:
+            quote = f' — "{s.quote}"' if s.quote else ""
+            loc = f" [{s.location}]" if s.location else ""
+            print(f"    - {s.id}{loc}{quote}")
+    if pr.notes_for_coach:
+        print(f"  Notes for coach: {pr.notes_for_coach.strip()}")
+    print(f"  Updated: {pr.updated_at} by {pr.updated_by}")
 
 
 def cmd_ingest(args: argparse.Namespace) -> None:
@@ -1641,6 +1719,11 @@ def main() -> None:
     show_hr = sub.add_parser("show-home-remedy", help="show one home remedy")
     show_hr.add_argument("slug")
     show_hr.set_defaults(func=cmd_show_home_remedy)
+
+    sub.add_parser("protocols", help="list all FM protocols").set_defaults(func=cmd_protocols)
+    show_pr = sub.add_parser("show-protocol", help="show one protocol")
+    show_pr.add_argument("slug")
+    show_pr.set_defaults(func=cmd_show_protocol)
 
     ing = sub.add_parser("ingest", help="extract candidates from a document")
     ing.add_argument("path", help="path to document (.md, .txt, ...)")

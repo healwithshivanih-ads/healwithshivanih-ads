@@ -1,0 +1,130 @@
+slug: anti-inflammatory-reset
+display_name: Anti-Inflammatory Reset
+aliases:
+  - anti-inflammatory-protocol
+  - inflammation-reset
+  - low-inflammation-diet
+category: anti_inflammatory
+summary: |
+  An 8–10 week protocol to lower systemic inflammation through diet,
+  sleep, stress reduction, and targeted nutrient support. Less restrictive
+  than AIP but more structured than general "clean eating". Best for
+  clients with elevated hsCRP, joint pain, fatigue, brain fog, or chronic
+  pain conditions where infection / autoimmunity has been ruled out.
+indications:
+  - hsCRP > 1.0 mg/L without infection
+  - joint stiffness / pain (no autoimmune diagnosis)
+  - chronic fatigue + brain fog
+  - chronic skin issues (mild — not autoimmune)
+  - ESR / fibrinogen elevated on testing
+  - cardiovascular risk reduction (post-event or family history)
+  - "everything just feels achy and slow"
+contraindications:
+  - undiagnosed autoimmune disease — needs full workup first
+  - active infection — treat before pursuing
+  - acute injury — different inflammatory pathway
+typical_duration_weeks: 10
+phases:
+  - name: "Remove (weeks 1–2)"
+    weeks: 2
+    summary: |
+      Eliminate the major dietary inflammation drivers.
+    key_actions:
+      - cut all processed seed oils — canola, sunflower, soybean, corn, safflower
+      - cut sugar + sweeteners (incl. jaggery, honey for these 2 weeks)
+      - cut refined grains (white bread, white rice, pasta)
+      - cut alcohol
+      - cut processed meats — sausage, bacon, lunch meat
+      - cut trans fats — most baked goods + biscuits
+  - name: "Add (weeks 3–6)"
+    weeks: 4
+    summary: |
+      Maximise anti-inflammatory foods + nutrients.
+    key_actions:
+      - omega-3 fatty fish 3× / week — sardines, mackerel, salmon
+      - 1–2 cups colourful vegetables every meal
+      - berries + cherries 1 cup / day (anti-inflammatory polyphenols)
+      - extra virgin olive oil 2 tbsp / day
+      - turmeric + ginger daily
+      - fermented foods 1 serving / day
+      - green tea 2–3 cups / day
+      - dark chocolate (>70%) 1 square / day
+  - name: "Reinforce + retest (weeks 7–10)"
+    weeks: 4
+    summary: |
+      Lock in habits + re-test inflammation markers.
+    key_actions:
+      - re-test hsCRP at week 8 (should drop 30–50%)
+      - retest ESR + fibrinogen if elevated at baseline
+      - reintroduce small amounts of unrefined sweeteners (raw honey, jaggery in moderation)
+      - identify which removed foods can return without flaring inflammation
+      - maintain core habits long-term
+key_steps:
+  - 8–9 hours sleep nightly (sleep deprivation = inflammation)
+  - daily stress practice 10+ min (chronic stress = inflammation)
+  - movement 30+ min / day, mostly zone-2 (excess HIIT can be pro-inflammatory)
+  - sun exposure 15 min / day (vitamin D synthesis + circadian)
+foods_to_emphasise:
+  - fatty fish — sardines, mackerel, salmon (3× / week)
+  - olive oil + avocado + nuts (cold-extracted)
+  - leafy greens + cruciferous (2 servings each / day)
+  - colourful vegetables — beets, carrots, peppers, cabbage
+  - berries — blueberries, blackberries, strawberries
+  - turmeric + ginger + garlic + onion
+  - green tea + black tea
+  - whole grains in moderation — quinoa, millet, oats, buckwheat
+  - dark leafy greens (kale, spinach, methi, palak)
+  - fermented foods — kimchi, sauerkraut, kanji, fermented vegetables
+foods_to_remove:
+  - all processed seed oils (canola, sunflower, soybean, corn, cottonseed)
+  - sugar + HFCS + most sweeteners (during weeks 1–2)
+  - refined grains — white flour products
+  - processed + cured meats
+  - trans fats (industrial baked goods)
+  - excess alcohol
+  - charred / heavily fried foods
+supplements_typically_used:
+  - omega-3
+  - turmeric
+  - vitamin-d
+  - magnesium-glycinate
+  - quercetin
+  - resveratrol
+expected_outcomes:
+  - hsCRP reduction 30–50% by week 8
+  - reduced joint stiffness + pain
+  - improved sleep quality
+  - clearer skin
+  - better energy + reduced brain fog
+  - easier weight management
+  - reduced cardiovascular risk markers (LDL particle count, ApoB)
+cautions:
+  - "Don't skip omega-3 dose — 2g+ EPA/DHA/day needed for anti-inflammatory effect"
+  - "Re-testing inflammation markers shows clients tangible progress"
+  - "Pair with stress + sleep work — diet alone won't fix inflammation"
+linked_to_topics:
+  - inflammation
+  - chronic-inflammation
+  - cardiovascular-disease
+  - joint-pain
+linked_to_mechanisms:
+  - chronic-inflammation
+linked_to_symptoms:
+  - joint-pain
+  - fatigue
+  - brain-fog
+sources:
+  - id: vitaone-skill-practice-guide
+    location: anti-inflammatory section
+  - id: vitaone-inflammation-toolkit
+    location: anti-inflammatory protocol
+evidence_tier: strong
+notes_for_coach: |
+  Most generalisable protocol — almost every client benefits from some
+  version of this. Often used as a "starting protocol" for clients not
+  ready for elimination diets. Test hsCRP at baseline; the data tells the
+  best story.
+version: 1
+status: active
+updated_at: 2026-05-09
+updated_by: shivani
