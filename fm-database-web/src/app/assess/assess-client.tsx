@@ -729,13 +729,57 @@ function FlagBadge({ flag }: { flag: string }) {
   return <Badge className="bg-red-100 text-red-800 border-red-300 text-[10px]">{flag}</Badge>;
 }
 
-function ComputedRatiosCard({ ratios }: { ratios: ComputedRatio[] }) {
-  if (!ratios || ratios.length === 0) return null;
+/** A Card whose body collapses on header-click. Open/closed state persists
+ *  per coach in localStorage under `fmcoach_collapse_<storageKey>`. */
+function CollapsibleCard({
+  title,
+  storageKey,
+  defaultOpen = true,
+  children,
+}: {
+  title: React.ReactNode;
+  storageKey: string;
+  defaultOpen?: boolean;
+  children: React.ReactNode;
+}) {
+  const lsKey = `fmcoach_collapse_${storageKey}`;
+  const [open, setOpen] = useState<boolean>(() => {
+    if (typeof window === "undefined") return defaultOpen;
+    const v = window.localStorage?.getItem(lsKey);
+    if (v == null) return defaultOpen;
+    return v === "1";
+  });
+  const toggle = () => {
+    const next = !open;
+    setOpen(next);
+    if (typeof window !== "undefined") {
+      window.localStorage?.setItem(lsKey, next ? "1" : "0");
+    }
+  };
   return (
     <Card>
       <CardHeader className="pb-2">
-        <CardTitle className="text-sm">📊 Key FM markers</CardTitle>
+        <button
+          type="button"
+          onClick={toggle}
+          className="w-full flex items-center justify-between gap-2 text-left hover:text-foreground/80"
+          aria-expanded={open}
+        >
+          <CardTitle className="text-sm">{title}</CardTitle>
+          <span className="text-xs text-muted-foreground select-none">
+            {open ? "▾" : "▸"}
+          </span>
+        </button>
       </CardHeader>
+      {open && children}
+    </Card>
+  );
+}
+
+function ComputedRatiosCard({ ratios }: { ratios: ComputedRatio[] }) {
+  if (!ratios || ratios.length === 0) return null;
+  return (
+    <CollapsibleCard title="📊 Key FM markers" storageKey="fm_markers">
       <CardContent className="space-y-2 text-sm">
         {ratios.map((r, i) => (
           <div key={i} className="flex items-start gap-3 border rounded-md p-2">
@@ -754,7 +798,7 @@ function ComputedRatiosCard({ ratios }: { ratios: ComputedRatio[] }) {
           </div>
         ))}
       </CardContent>
-    </Card>
+    </CollapsibleCard>
   );
 }
 
@@ -816,14 +860,11 @@ function SuggestionsView({
   return (
     <div className="space-y-4">
       {synthesisNotes && (
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm">🧐 Synthesis notes</CardTitle>
-          </CardHeader>
+        <CollapsibleCard title="🧐 Synthesis notes" storageKey="synthesis_notes">
           <CardContent>
             <SynthesisNotes text={synthesisNotes} />
           </CardContent>
-        </Card>
+        </CollapsibleCard>
       )}
 
       {/* Computed FM ratios — shown BEFORE raw extracted labs */}
@@ -832,10 +873,7 @@ function SuggestionsView({
       )}
 
       {extracted.length > 0 && (
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm">🧪 Extracted lab values</CardTitle>
-          </CardHeader>
+        <CollapsibleCard title="🧪 Extracted lab values" storageKey="extracted_labs">
           <CardContent className="text-sm space-y-1">
             {extracted.map((lab, i) => (
               <div key={i} className="flex gap-2 border-b pb-1">
@@ -850,18 +888,14 @@ function SuggestionsView({
               </div>
             ))}
           </CardContent>
-        </Card>
+        </CollapsibleCard>
       )}
 
       {drivers.length > 0 && (
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm">🎯 Likely drivers (ATM cascade)</CardTitle>
-            <p className="text-[11px] text-muted-foreground mt-0.5">
-              Antecedent (predisposition) → Trigger (precipitating event) → Mediator (ongoing perpetuator) → Expression (presenting symptom).
-              Treat upstream for durable change.
-            </p>
-          </CardHeader>
+        <CollapsibleCard
+          title={<span>🎯 Likely drivers (ATM cascade) <span className="text-[11px] font-normal text-muted-foreground">— antecedent → trigger → mediator → expression</span></span>}
+          storageKey="likely_drivers"
+        >
           <CardContent className="space-y-4 text-sm">
             {(() => {
               type Bucket = { key: "antecedent" | "trigger" | "mediator" | "expression"; label: string; emoji: string; color: string };
@@ -967,14 +1001,11 @@ function SuggestionsView({
               );
             })()}
           </CardContent>
-        </Card>
+        </CollapsibleCard>
       )}
 
       {topics.length > 0 && (
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm">🩺 Conditions in play</CardTitle>
-          </CardHeader>
+        <CollapsibleCard title="🩺 Conditions in play" storageKey="conditions_in_play">
           <CardContent className="space-y-2 text-sm">
             {topics.map((t) => {
               const slug = String(t.topic_slug ?? "?");
@@ -1015,14 +1046,11 @@ function SuggestionsView({
               );
             })}
           </CardContent>
-        </Card>
+        </CollapsibleCard>
       )}
 
       {lifestyles.length > 0 && (
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm">🌿 Lifestyle suggestions</CardTitle>
-          </CardHeader>
+        <CollapsibleCard title="🌿 Lifestyle suggestions" storageKey="lifestyle">
           <CardContent className="space-y-2 text-sm">
             {lifestyles.map((ls, i) => {
               const name = String(ls.name ?? "?");
@@ -1043,17 +1071,14 @@ function SuggestionsView({
               );
             })}
           </CardContent>
-        </Card>
+        </CollapsibleCard>
       )}
 
       {nutrition && (
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm flex items-center justify-between">
-              🥗 Nutrition
-              <Pick k="nutrition_block" />
-            </CardTitle>
-          </CardHeader>
+        <CollapsibleCard
+          title={<span className="flex items-center gap-2">🥗 Nutrition <Pick k="nutrition_block" /></span>}
+          storageKey="nutrition"
+        >
           <CardContent className="text-sm space-y-1">
             {nutrition.pattern ? <div><strong>Pattern:</strong> {nutrition.pattern}</div> : null}
             {nutrition.add && nutrition.add.length > 0 ? (
@@ -1071,18 +1096,14 @@ function SuggestionsView({
             ) : null}
             {nutrition.rationale ? <div className="text-xs italic">{nutrition.rationale}</div> : null}
           </CardContent>
-        </Card>
+        </CollapsibleCard>
       )}
 
       {protocols.length > 0 && (
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm">🧭 Recommended protocols (top 2)</CardTitle>
-            <p className="text-[11px] text-muted-foreground mt-0.5">
-              Each protocol is scored across 11 weighted factors → an overall fit %.
-              Pick ONE — it becomes the spine of the plan and shapes meal, supplement, exercise, and lifestyle letters.
-            </p>
-          </CardHeader>
+        <CollapsibleCard
+          title={<span>🧭 Recommended protocols (top 2) <span className="text-[11px] font-normal text-muted-foreground">— pick ONE; it shapes all letters</span></span>}
+          storageKey="protocols"
+        >
           <CardContent className="space-y-3 text-sm">
             {protocols.map((p, i) => {
               const slug = String(p.protocol_slug ?? `?_${i}`);
@@ -1192,14 +1213,11 @@ function SuggestionsView({
               );
             })}
           </CardContent>
-        </Card>
+        </CollapsibleCard>
       )}
 
       {supplements.length > 0 && (
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm">💊 Supplements</CardTitle>
-          </CardHeader>
+        <CollapsibleCard title="💊 Supplements" storageKey="supplements">
           <CardContent className="space-y-2 text-sm">
             {supplements.map((sp) => {
               const slug = String(sp.supplement_slug ?? "?");
@@ -1244,14 +1262,11 @@ function SuggestionsView({
               );
             })}
           </CardContent>
-        </Card>
+        </CollapsibleCard>
       )}
 
       {labs.length > 0 && (
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm">🔬 Lab follow-ups</CardTitle>
-          </CardHeader>
+        <CollapsibleCard title="🔬 Lab follow-ups" storageKey="lab_followups">
           <CardContent className="space-y-1 text-sm">
             {labs.map((lf, i) => {
               const k = `lab_${i}_${String(lf.test ?? "")}`;
@@ -1266,14 +1281,11 @@ function SuggestionsView({
               );
             })}
           </CardContent>
-        </Card>
+        </CollapsibleCard>
       )}
 
       {refs.length > 0 && (
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm">↗️ Referrals</CardTitle>
-          </CardHeader>
+        <CollapsibleCard title="↗️ Referrals" storageKey="referrals">
           <CardContent className="space-y-1 text-sm">
             {refs.map((r, i) => {
               const k = `ref_${i}`;
@@ -1290,14 +1302,11 @@ function SuggestionsView({
               );
             })}
           </CardContent>
-        </Card>
+        </CollapsibleCard>
       )}
 
       {edu.length > 0 && (
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm">🎓 Education framings</CardTitle>
-          </CardHeader>
+        <CollapsibleCard title="🎓 Education framings" storageKey="education">
           <CardContent className="space-y-1 text-sm">
             {edu.map((ed, i) => {
               const k = `edu_${i}_${String(ed.target_slug ?? "")}`;
@@ -1314,7 +1323,7 @@ function SuggestionsView({
               );
             })}
           </CardContent>
-        </Card>
+        </CollapsibleCard>
       )}
     </div>
   );

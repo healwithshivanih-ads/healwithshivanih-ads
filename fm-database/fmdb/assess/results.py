@@ -17,7 +17,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from pydantic import BaseModel, ConfigDict, Field, model_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 
 def _coerce_none_strings(data: Any) -> Any:
@@ -35,6 +35,20 @@ def _coerce_none_strings(data: Any) -> Any:
         ) else v)
         for k, v in data.items()
     }
+
+
+def _empty_int_to_none(data: Any, fields: tuple[str, ...]) -> Any:
+    """Pre-process: replace '' (empty string) with None for given numeric fields.
+    The AI sometimes emits "" instead of null for unknown integers (e.g. unknown
+    year of an event). Pydantic int|None then rejects the empty string."""
+    if not isinstance(data, dict):
+        return data
+    out = dict(data)
+    for f in fields:
+        v = out.get(f)
+        if isinstance(v, str) and v.strip() == "":
+            out[f] = None
+    return out
 
 
 class AssessUsage(BaseModel):
@@ -273,6 +287,14 @@ class IFMTimelineEvent(BaseModel):
     """
     model_config = ConfigDict(extra="ignore")
     _coerce = model_validator(mode="before")(_coerce_none_strings)
+
+    @field_validator("year", "age_at_event", mode="before")
+    @classmethod
+    def _empty_str_to_none(cls, v: Any) -> Any:
+        if isinstance(v, str) and v.strip() == "":
+            return None
+        return v
+
     year: int | None = None
     date: str | None = None              # YYYY-MM-DD or YYYY-MM if known
     age_at_event: int | None = None      # computed when DOB available
