@@ -715,8 +715,20 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
         r"vitamin b12|b-12\b|b12\b|cobalamin|cyanocobalamin")
     folate = _find(extracted_labs,
         r"\bfolate\b|folic acid|serum folate|rbc folate")
-    magnesium = _find(extracted_labs,
-        r"\bmagnesium\b|serum magnesium|rbc magnesium|mg\b")
+    # Magnesium — two distinct biomarkers with different ranges:
+    #   Serum Mg: lab default, but a poor marker (only ~1% extracellular).
+    #             Optimal 2.0–2.5 mg/dL; "normal" lab range starts at 1.7.
+    #   RBC Mg:   intracellular pool, far more sensitive to functional
+    #             deficiency. Optimal 5.4–6.8 mg/dL (or 2.2–2.7 mmol/L).
+    # We surface both when present and tag them clearly so the coach
+    # never confuses one for the other.
+    magnesium_rbc = _find(extracted_labs,
+        r"rbc magnesium|red.cell.magnesium|magnesium.rbc|rbc.mg|red cell magnesium")
+    # Serum Mg pattern: must NOT contain "rbc" or "red cell" anywhere in the
+    # test_name; otherwise it would match "RBC magnesium" too. ^(?!.*rbc) is
+    # a Python-supported zero-width assertion on the whole string.
+    magnesium_serum = _find(extracted_labs,
+        r"^(?!.*rbc)(?!.*red.cell).*\bmagnesium\b", r"^\s*serum magnesium\b")
     zinc = _find(extracted_labs,
         r"\bzinc\b|serum zinc|plasma zinc")
 
@@ -744,13 +756,22 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
             f"Folate {folate}: {'Low — methylation burden, neural tube risk, elevated homocysteine; increase leafy greens and consider methylfolate' if folate<15 else 'FM optimal' if folate>=20 else 'Sub-optimal — optimise with food and/or methylfolate'}",
             PANEL_NUTRIENTS)
 
-    if magnesium is not None:
-        # Serum magnesium is a poor marker (only 1% extracellular) but is what most labs report
-        flag = "low" if magnesium < 2.0 else ("optimal" if magnesium >= 2.2 else "suboptimal")
-        add("Magnesium (serum)", magnesium, "mg/dL",
-            "2.0–2.5 FM optimal; note: serum is poor marker — RBC Mg preferred",
+    # RBC Magnesium (preferred — reflects intracellular status)
+    if magnesium_rbc is not None:
+        flag = "low" if magnesium_rbc < 5.4 else ("optimal" if magnesium_rbc <= 6.8 else "suboptimal")
+        add("Magnesium (RBC)", magnesium_rbc, "mg/dL",
+            "5.4–6.8 FM optimal (gold-standard cellular Mg status)",
             flag,
-            f"Mg {magnesium}: {'Low serum — likely significant intracellular deficiency; impacts 300+ enzyme systems, sleep, stress, glucose' if magnesium<2.0 else 'FM optimal (serum); consider RBC Mg for true cellular status' if magnesium>=2.2 else 'Low-normal — supplementation often beneficial'}",
+            f"RBC Mg {magnesium_rbc}: {'Low — true intracellular Mg deficiency; supplement (glycinate / malate) + address losses (PPI, diuretic, stress)' if magnesium_rbc<5.4 else 'FM optimal — intracellular Mg replete' if magnesium_rbc<=6.8 else 'High — verify; rarely seen unless supplementing aggressively'}",
+            PANEL_NUTRIENTS)
+
+    # Serum Magnesium (less sensitive; flag low-normal as functional deficiency)
+    if magnesium_serum is not None:
+        flag = "low" if magnesium_serum < 2.0 else ("optimal" if magnesium_serum >= 2.2 else "suboptimal")
+        add("Magnesium (serum)", magnesium_serum, "mg/dL",
+            "2.0–2.5 FM optimal; serum is a poor marker — RBC Mg preferred",
+            flag,
+            f"Serum Mg {magnesium_serum}: {'Low — likely significant intracellular deficiency; impacts 300+ enzyme systems, sleep, stress, glucose' if magnesium_serum<2.0 else 'FM optimal (serum); consider RBC Mg for true cellular status' if magnesium_serum>=2.2 else 'Low-normal — functional deficiency likely; supplementation often beneficial. Confirm with RBC Mg if symptoms persist'}",
             PANEL_NUTRIENTS)
 
     if zinc is not None:
@@ -760,5 +781,78 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
             flag,
             f"Zinc {zinc}: {'Low — immune suppression, poor wound healing, thyroid conversion impaired; supplement + assess phytate load in diet' if zinc<80 else 'FM optimal' if zinc<=130 else 'High — very unusual; assess supplementation dose'}",
             PANEL_NUTRIENTS)
+
+    # Omega-3 Index — % EPA+DHA in RBC membranes. Independent CV mortality
+    # predictor; FM optimal ≥8% (Indian diets typically 2–4%).
+    omega3 = _find(extracted_labs,
+        r"omega.3.index|o3i\b|epa.dha.index|omega 3 index|epa\+dha")
+    if omega3 is not None:
+        flag = "low" if omega3 < 4 else ("optimal" if omega3 >= 8 else "suboptimal")
+        add("Omega-3 Index", omega3, "%",
+            "≥8% FM optimal; 4–8% intermediate; <4% high CV risk",
+            flag,
+            f"O3I {omega3}%: {'Critically low — typical Indian diet pattern; supplement 2–3g EPA+DHA/day or daily fatty fish' if omega3<4 else 'Suboptimal — increase fatty fish, flax, walnuts; reassess in 4 months' if omega3<8 else 'FM optimal — protective against arrhythmia, depression, all-cause mortality'}",
+            PANEL_NUTRIENTS)
+
+    # C-peptide — endogenous insulin secretion marker. Distinguishes T1 from
+    # T2 diabetes and tracks beta-cell reserve in chronic IR.
+    c_peptide = _find(extracted_labs,
+        r"c.peptide|c peptide|cpeptide")
+    if c_peptide is not None:
+        flag = "high" if c_peptide > 3.0 else ("low" if c_peptide < 0.5 else "optimal")
+        add("C-peptide", c_peptide, "ng/mL",
+            "0.5–2.0 FM optimal; <0.5 = low beta-cell reserve; >3.0 = hyperinsulinaemia",
+            flag,
+            f"C-peptide {c_peptide}: {'Elevated — sustained hyperinsulinaemia from chronic IR; address insulin sensitivity aggressively' if c_peptide>3 else 'Low — declining beta-cell function (advanced T2D) or T1D pattern; refer endocrinologist' if c_peptide<0.5 else 'FM optimal — healthy beta-cell function'}",
+            PANEL_META)
+
+    # Vitamin K2 (MK-7) — bone-vascular axis; complements vit D.
+    vitk2 = _find(extracted_labs,
+        r"vitamin k2|mk.7|mk7|menaquinone.7|vitamin k.2")
+    if vitk2 is not None:
+        flag = "low" if vitk2 < 0.5 else "optimal"
+        add("Vitamin K2 (MK-7)", vitk2, "ng/mL",
+            "≥0.5 FM acceptable; testing is rare — clinical inference more useful",
+            flag,
+            f"K2 {vitk2}: {'Low — calcium may deposit in arteries rather than bone; supplement MK-7 (100–200 μg) alongside vit D' if vitk2<0.5 else 'Sufficient — calcium routing to bone supported'}",
+            PANEL_NUTRIENTS)
+
+    # MMA (Methylmalonic Acid) — functional B12 deficiency. Rises before
+    # serum B12 drops; gold-standard confirmation of B12 status.
+    mma = _find(extracted_labs,
+        r"\bmma\b|methylmalonic acid|methylmalonate")
+    if mma is not None:
+        flag = "high" if mma > 0.4 else "optimal"
+        add("MMA (functional B12)", mma, "μmol/L",
+            "<0.27 FM optimal; >0.4 = functional B12 deficiency even if serum B12 'normal'",
+            flag,
+            f"MMA {mma}: {'Elevated — functional B12 deficiency confirmed regardless of serum B12. Supplement methylcobalamin + check intrinsic factor / pernicious anaemia in elders' if mma>0.4 else 'Normal — B12 status adequate at cellular level'}",
+            PANEL_NUTRIENTS)
+
+    # 1-hour glucose (OGTT) — flags early IR years before HbA1c rises.
+    # Joslin / Endocrine Society now consider ≥155 mg/dL = prediabetes.
+    one_hr_glucose = _find(extracted_labs,
+        r"1.hour.glucose|1.hr.glucose|one.hour.glucose|1h.glucose|ogtt.1.h")
+    if one_hr_glucose is not None:
+        flag = "high" if one_hr_glucose > 155 else ("suboptimal" if one_hr_glucose > 130 else "optimal")
+        add("1-hour glucose (OGTT)", one_hr_glucose, "mg/dL",
+            "<130 FM optimal; 130–155 IGT pattern; ≥155 prediabetes signal years before HbA1c",
+            flag,
+            f"1h glucose {one_hr_glucose}: {'≥155 — strong prediabetes signal even with normal fasting + HbA1c; address IR now' if one_hr_glucose>155 else 'Above FM optimal — early glucose dysregulation' if one_hr_glucose>130 else 'FM optimal — good early glucose handling'}",
+            PANEL_META)
+
+    # LH/FSH ratio — PCOS workup. Elevated ratio classic feature.
+    lh = _find(extracted_labs,
+        r"\blh\b|luteinising hormone|luteinizing hormone")
+    fsh = _find(extracted_labs,
+        r"\bfsh\b|follicle.stimulating|follicle stimulating")
+    if lh is not None and fsh is not None and fsh > 0:
+        lh_fsh = lh / fsh
+        flag = "high" if lh_fsh > 2.5 else ("suboptimal" if lh_fsh > 2.0 else "optimal")
+        add("LH/FSH ratio", lh_fsh, "",
+            "<2.0 FM optimal; >2.5 classic PCOS pattern (assess with AMH, free T, fasting insulin)",
+            flag,
+            f"LH/FSH {round(lh_fsh,2)}: {'Elevated — classic PCOS pattern; pair with AMH, free testosterone, fasting insulin, pelvic US' if lh_fsh>2.5 else 'Borderline — watch trend; ovulatory dysfunction possible' if lh_fsh>2.0 else 'Balanced HPO axis'}",
+            "Hormones — Female", computed=True)
 
     return results

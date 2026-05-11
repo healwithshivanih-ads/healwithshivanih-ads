@@ -12,7 +12,6 @@ Last updated: 2026-05-15
 ## /assess (Analyse panel)
 
 ### UI polish
-- **Sticky header with client snapshot** — name · sex/age · BMI · last BP · last visit · active plan slug + status · readiness chip. Always-visible above the 2-column grid so coach never loses context while scrolling.
 - **Auto-collapsing input steps** — collapse each step to a 1-line summary chip once filled ("4 symptoms picked", "3 lab values entered"). Reduces left-column scroll length.
 - **"AI's one-sentence read"** — single-line synthesis at the very top of the right column, before all the detailed cards (e.g. *"Primary picture is HPA-axis-dysregulation + insulin resistance driving the fatigue + central adiposity."*).
 - **"What changed since last session"** chip at top of synthesis column — delta of BP / weight / new symptoms vs previous session.
@@ -34,17 +33,10 @@ Last updated: 2026-05-15
 
 ## Catalogue
 
-- **Additional lab markers** (next batch — coach can prioritise):
-  - **GGT** — liver oxidative stress; pairs with ALT/AST
-  - **Omega-3 index** — RBC EPA+DHA; CV mortality predictor
-  - **C-peptide** — endogenous insulin production marker (distinguishes T1/T2)
-  - **Vitamin K2 (MK-7)** — bone-vascular axis; complements vitamin D
-  - **MMA** (methylmalonic acid) — functional B12 deficiency confirmation
-  - **Insulin AUC / 1-hour glucose** — earlier IR signal than HbA1c
+- **Additional lab markers** — still pending (not yet shipped):
   - **Mycotoxin urine panel** — water-damaged-building / mould exposure
   - **Heavy metals panel** — Hg / Pb / As / Cd
   - **EBV reactivation panel** — post-viral fatigue clients
-  - **17-OH progesterone (already present)** + **LH/FSH ratio** computed for PCOS workup
   - **Salivary cortisol curve full panel** — already a single lab; expand to AM/midday/PM/night with FM optimal curves
 
 - **Additional curated mindmaps** — coach can flag conditions where she wants the AI to have explicit pathway context:

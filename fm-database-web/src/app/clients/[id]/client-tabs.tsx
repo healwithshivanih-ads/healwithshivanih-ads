@@ -1170,6 +1170,11 @@ export function ClientPageTabs({
                   existingFiles={uploadedFiles}
                   clientSex={(client as { sex?: string }).sex ?? null}
                   priorSnapshots={client.health_snapshots ?? []}
+                  activePlan={activePlan ? {
+                    slug: activePlan.slug,
+                    status: activePlanStatus ?? undefined,
+                    plan_period_recheck_date: activePlan.plan_period_recheck_date ?? null,
+                  } : null}
                 />
               </div>
             )}

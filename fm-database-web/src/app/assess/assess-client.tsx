@@ -84,6 +84,15 @@ interface Props {
    *  the picker. When unset, both Women's Health and Men's Health sections
    *  are shown so coach never loses access to a relevant symptom. */
   clientSex?: string | null;
+  /** Optional snapshot info for the sticky header. When set, the header
+   *  strip shows the active plan slug + status + recheck date next to the
+   *  client's name. Embedded (client-page) mode passes this; standalone
+   *  /assess page leaves it undefined. */
+  activePlan?: {
+    slug: string;
+    status?: string;
+    plan_period_recheck_date?: string | null;
+  } | null;
   /** Health snapshots already extracted from prior reports. Used to:
    *  (1) pre-populate the editable health-data card so the coach starts
    *      from the latest known labs/meds/conditions instead of a blank
@@ -2383,7 +2392,7 @@ function PlanBriefCard({
   );
 }
 
-export function AssessClient({ clients = [], symptoms, topics, initialClientId, initialSessions = [], fixedClientId, existingFiles = [], clientSex, priorSnapshots = [] }: Props) {
+export function AssessClient({ clients = [], symptoms, topics, initialClientId, initialSessions = [], fixedClientId, existingFiles = [], clientSex, priorSnapshots = [], activePlan = null }: Props) {
   const router = useRouter();
   const [clientId, setClientId] = useState<string>(
     fixedClientId ?? initialClientId ?? clients[0]?.client_id ?? ""
@@ -2886,6 +2895,78 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
   // Step numbering: shifts down by 1 in embedded mode (no client picker card)
   const stepNum = (n: number) => fixedClientId ? `${n - 1}.` : `${n}.`;
 
+  // ── Sticky-header snapshot ───────────────────────────────────────
+  // Compute BMI / latest BP / last visit from already-available props.
+  // Embedded mode (client-page) has rich snapshot data; standalone /assess
+  // shows a leaner version with just session date + readiness.
+  const snapshotData = useMemo(() => {
+    // Latest measurements: walk snapshots newest-first
+    const sorted = [...(priorSnapshots ?? [])].sort((a, b) =>
+      (b.date ?? "").localeCompare(a.date ?? ""),
+    );
+    let height_cm: number | null = null;
+    let weight_kg: number | null = null;
+    let bp_sys: number | null = null;
+    let bp_dia: number | null = null;
+    for (const s of sorted) {
+      const m = s.measurements ?? {};
+      if (height_cm == null && m.height_cm != null) height_cm = m.height_cm;
+      if (weight_kg == null && m.weight_kg != null) weight_kg = m.weight_kg;
+      if (bp_sys == null && m.bp_systolic != null) bp_sys = m.bp_systolic;
+      if (bp_dia == null && m.bp_diastolic != null) bp_dia = m.bp_diastolic;
+      if (height_cm != null && weight_kg != null && bp_sys != null && bp_dia != null) break;
+    }
+    const bmi = (height_cm && weight_kg)
+      ? Math.round((weight_kg / ((height_cm / 100) ** 2)) * 10) / 10
+      : null;
+    const lastVisit = priorSessions[0]?.date ?? null;
+    return { bmi, bp_sys, bp_dia, lastVisit, weight_kg };
+  }, [priorSnapshots, priorSessions]);
+
+  /** Days between today and an ISO date — for "12 days ago" rendering. */
+  const daysAgo = (iso: string | null): string | null => {
+    if (!iso) return null;
+    const d = new Date(iso);
+    if (isNaN(d.getTime())) return null;
+    const diff = Math.floor((Date.now() - d.getTime()) / 86_400_000);
+    if (diff < 0) return iso;
+    if (diff === 0) return "today";
+    if (diff === 1) return "yesterday";
+    if (diff < 31) return `${diff} days ago`;
+    if (diff < 365) return `${Math.floor(diff / 30)}mo ago`;
+    return `${Math.floor(diff / 365)}y ago`;
+  };
+
+  // Asian-Pacific BMI thresholds: 23 = overweight, 25 = obese
+  const bmiTag = snapshotData.bmi == null
+    ? null
+    : snapshotData.bmi >= 30 ? { label: "obese", color: "text-red-700" }
+    : snapshotData.bmi >= 25 ? { label: "obese (Asian)", color: "text-red-700" }
+    : snapshotData.bmi >= 23 ? { label: "overweight (Asian)", color: "text-amber-700" }
+    : snapshotData.bmi >= 18.5 ? { label: "healthy", color: "text-emerald-700" }
+    : { label: "underweight", color: "text-amber-700" };
+
+  const bpTag = (snapshotData.bp_sys && snapshotData.bp_dia)
+    ? (snapshotData.bp_sys >= 140 || snapshotData.bp_dia >= 90 ? { label: "high", color: "text-red-700" }
+       : snapshotData.bp_sys >= 130 || snapshotData.bp_dia >= 85 ? { label: "elevated", color: "text-amber-700" }
+       : { label: "ok", color: "text-emerald-700" })
+    : null;
+
+  // Active-plan status colors (mirror client-tabs Plan tab)
+  const planTag = activePlan
+    ? activePlan.status === "published" ? { label: "active", color: "bg-emerald-100 text-emerald-800" }
+    : activePlan.status === "ready_to_publish" ? { label: "ready", color: "bg-blue-100 text-blue-800" }
+    : { label: "draft", color: "bg-amber-100 text-amber-800" }
+    : null;
+
+  // Readiness chip mapping (matches the existing inline banner)
+  const readinessTag = readiness?.ok ? (
+    readiness.verdict === "empty" ? { label: "🛑 empty", color: "bg-red-50 text-red-700 border-red-200" }
+    : readiness.verdict === "thin" ? { label: "⚠️ thin", color: "bg-amber-50 text-amber-700 border-amber-200" }
+    : readiness.verdict === "moderate" ? { label: "🔎 moderate", color: "bg-blue-50 text-blue-700 border-blue-200" }
+    : { label: "✅ rich", color: "bg-emerald-50 text-emerald-700 border-emerald-200" }
+  ) : null;
+
   // ───────────────────────────────────────────────────────────────
   // Right-column blocks — extracted so the grid layout below stays
   // clean. They reference all the same closure state as the left
@@ -3049,6 +3130,85 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
 
   return (
     <div className="space-y-4">
+      {/* ── Sticky header — always-visible client snapshot ────────────
+          Only renders in embedded mode (client-page Assess tab) where
+          we have a selected client + measurements. On standalone /assess
+          the client picker below already shows the same info. */}
+      {fixedClientId && selectedClient && (
+        <div
+          className="sticky top-0 z-30 -mx-2 px-2 py-2 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b shadow-sm"
+        >
+          <div className="flex items-center gap-x-3 gap-y-1 text-xs flex-wrap">
+            {/* Client identity */}
+            <span className="font-semibold text-sm">
+              👤 {(selectedClient.display_name ?? selectedClient.client_id)}
+            </span>
+            {(clientSex || selectedClient.age_band) && (
+              <span className="text-muted-foreground">
+                {clientSex ?? ""}{clientSex && selectedClient.age_band ? " · " : ""}
+                {selectedClient.age_band ?? ""}
+              </span>
+            )}
+
+            {/* BMI */}
+            {snapshotData.bmi != null && bmiTag && (
+              <span className="border-l pl-3">
+                BMI <strong className="font-semibold">{snapshotData.bmi}</strong>
+                <span className={`ml-1 ${bmiTag.color}`}>{bmiTag.label}</span>
+              </span>
+            )}
+
+            {/* BP */}
+            {bpTag && snapshotData.bp_sys && snapshotData.bp_dia && (
+              <span>
+                BP <strong className="font-semibold">{snapshotData.bp_sys}/{snapshotData.bp_dia}</strong>
+                <span className={`ml-1 ${bpTag.color}`}>{bpTag.label}</span>
+              </span>
+            )}
+
+            {/* Weight */}
+            {snapshotData.weight_kg != null && (
+              <span className="text-muted-foreground">
+                {snapshotData.weight_kg} kg
+              </span>
+            )}
+
+            {/* Last visit */}
+            {snapshotData.lastVisit && (
+              <span className="text-muted-foreground">
+                Last visit <span className="text-foreground">{daysAgo(snapshotData.lastVisit) ?? snapshotData.lastVisit}</span>
+              </span>
+            )}
+
+            {/* Active plan */}
+            {activePlan && planTag && (
+              <a
+                href={`/plans/${activePlan.slug}`}
+                className="border-l pl-3 hover:underline"
+                title={activePlan.slug}
+              >
+                Plan <code className="font-mono text-[10px]">{activePlan.slug.split("-").slice(0, 3).join("-")}…</code>
+                <span className={`ml-1.5 px-1.5 py-0.5 rounded text-[10px] font-semibold ${planTag.color}`}>
+                  {planTag.label}
+                </span>
+                {activePlan.plan_period_recheck_date && (
+                  <span className="ml-1.5 text-muted-foreground">
+                    recheck {activePlan.plan_period_recheck_date}
+                  </span>
+                )}
+              </a>
+            )}
+
+            {/* Readiness — pushed right */}
+            {readinessTag && (
+              <span className={`ml-auto px-2 py-0.5 rounded border text-[10px] font-semibold ${readinessTag.color}`}>
+                {readinessTag.label}
+              </span>
+            )}
+          </div>
+        </div>
+      )}
+
       {/* Top strip — session date (full width, above the grid) */}
       <div className="flex items-center gap-3 rounded-lg border bg-muted/20 px-4 py-3">
         <span className="text-sm font-medium shrink-0">📅 Session date</span>
