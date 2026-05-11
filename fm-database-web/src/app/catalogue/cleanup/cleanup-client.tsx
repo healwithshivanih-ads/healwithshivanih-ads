@@ -65,7 +65,7 @@ export function CleanupClient({ initialPlan }: Props) {
     });
   };
 
-  const applyGroup = (g: CleanupGroup) => {
+  const applyGroup = (g: CleanupGroup, createStub: boolean = false) => {
     const canonical = canonicalOverride[g.id] ?? g.canonical;
     const kind = kindOverride[g.id] ?? g.kind;
     if (!canonical && kind !== "duplicate_topics") {
@@ -73,7 +73,7 @@ export function CleanupClient({ initialPlan }: Props) {
       return;
     }
     startApply(async () => {
-      const res = await applyCleanupGroupAction({ ...g, kind, canonical }, false);
+      const res = await applyCleanupGroupAction({ ...g, kind, canonical }, false, createStub);
       if (res.ok) {
         const summary = res.summary;
         toast.success(
@@ -82,6 +82,25 @@ export function CleanupClient({ initialPlan }: Props) {
         // Remove from local state
         setPlan((p) => p ? { ...p, groups: p.groups.filter((x) => x.id !== g.id) } : p);
         router.refresh();
+      } else if (res.needs_stub && res.target_kind && res.target_slug) {
+        const proceed = window.confirm(
+          `No ${res.target_kind} exists at "${res.target_slug}".\n\n` +
+            `Create a minimal stub from the first topic's data and merge?\n\n` +
+            `(You can flesh out the stub later in the catalogue editor.)`,
+        );
+        if (proceed) {
+          const res2 = await applyCleanupGroupAction({ ...g, kind, canonical }, false, true);
+          if (res2.ok) {
+            const summary = res2.summary;
+            toast.success(
+              `✅ Stub created + merged — ${summary?.aliases_added.length ?? 0} aliases · ${summary?.files_deleted.length ?? 0} files removed`,
+            );
+            setPlan((p) => p ? { ...p, groups: p.groups.filter((x) => x.id !== g.id) } : p);
+            router.refresh();
+          } else {
+            toast.error(res2.error ?? "Apply failed");
+          }
+        }
       } else {
         toast.error(res.error ?? "Apply failed");
       }

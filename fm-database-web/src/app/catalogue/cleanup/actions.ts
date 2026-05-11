@@ -37,6 +37,9 @@ export interface ApplyResult {
     files_deleted: string[];
     warnings: string[];
   };
+  needs_stub?: boolean;
+  target_kind?: "protocol" | "mechanism" | "symptom";
+  target_slug?: string;
   error?: string;
 }
 
@@ -83,6 +86,7 @@ export async function loadCleanupPlanAction(): Promise<CleanupPlan | null> {
 export async function applyCleanupGroupAction(
   group: CleanupGroup,
   dryRun: boolean = false,
+  createStub: boolean = false,
 ): Promise<ApplyResult> {
   try {
     const scriptPath = path.join(SCRIPTS_DIR, "apply-cleanup.py");
@@ -90,7 +94,7 @@ export async function applyCleanupGroupAction(
       timeout: 30_000,
       maxBuffer: 4 * 1024 * 1024,
     });
-    child.stdin?.end(JSON.stringify({ group, dry_run: dryRun }));
+    child.stdin?.end(JSON.stringify({ group, dry_run: dryRun, create_stub: createStub }));
     let stdout = "";
     let stderr = "";
     child.stdout?.on("data", (c: Buffer) => (stdout += c));

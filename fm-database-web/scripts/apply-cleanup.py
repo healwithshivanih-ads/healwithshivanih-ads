@@ -220,11 +220,79 @@ def main() -> int:
         canonical_path = root / target_dir / f"{canonical}.yaml"
         canonical_data = _load_yaml(canonical_path)
         if canonical_data is None:
-            json.dump({
-                "ok": False,
-                "error": f"target {target_kind} not found: {canonical}",
-            }, sys.stdout)
-            return 1
+            if not bool(payload.get("create_stub", False)):
+                json.dump({
+                    "ok": False,
+                    "needs_stub": True,
+                    "target_kind": target_kind,
+                    "target_slug": canonical,
+                    "error": (
+                        f"target {target_kind} not found: {canonical}. "
+                        f"Re-apply with create_stub=true to create a minimal {target_kind} "
+                        f"stub from the first topic's data, then merge."
+                    ),
+                }, sys.stdout)
+                return 1
+            # Build a stub from the first available member topic
+            from datetime import date as _date
+            first_data = None
+            for m in members:
+                d = _load_yaml(root / "topics" / f"{m}.yaml")
+                if d is not None:
+                    first_data = d
+                    break
+            if first_data is None:
+                json.dump({
+                    "ok": False,
+                    "error": f"cannot create stub — no member topics readable",
+                }, sys.stdout)
+                return 1
+            stub_display = first_data.get("display_name") or canonical.replace("-", " ").title()
+            stub_summary = (first_data.get("summary") or "").strip() or f"Auto-created from cleanup merge of {len(members)} topic(s)."
+            today = _date.today().isoformat()
+            updated_by = os.environ.get("FMDB_USER") or "shivani"
+            if target_kind == "protocol":
+                canonical_data = {
+                    "slug": canonical,
+                    "display_name": stub_display,
+                    "category": "other",
+                    "summary": stub_summary,
+                    "evidence_tier": "fm_specific_thin",
+                    "updated_at": today,
+                    "updated_by": updated_by,
+                    "version": 1,
+                    "status": "active",
+                    "notes_for_coach": "Stub created via /catalogue/cleanup — flesh out phases, indications, foods, supplements before using in a plan.",
+                }
+            elif target_kind == "mechanism":
+                canonical_data = {
+                    "slug": canonical,
+                    "display_name": stub_display,
+                    "category": "other",
+                    "summary": stub_summary,
+                    "evidence_tier": "fm_specific_thin",
+                    "updated_at": today,
+                    "updated_by": updated_by,
+                    "version": 1,
+                    "status": "active",
+                    "notes_for_coach": "Stub created via /catalogue/cleanup — confirm category + add upstream/downstream links.",
+                }
+            else:  # symptom
+                canonical_data = {
+                    "slug": canonical,
+                    "display_name": stub_display,
+                    "category": "other",
+                    "severity": "common",
+                    "description": stub_summary,
+                    "updated_at": today,
+                    "updated_by": updated_by,
+                    "version": 1,
+                    "status": "active",
+                    "notes_for_coach": "Stub created via /catalogue/cleanup — confirm category + severity.",
+                }
+            canonical_path.parent.mkdir(parents=True, exist_ok=True)
+            if not dry_run:
+                _save_yaml(canonical_path, canonical_data)
         # Members are topic slugs to remove. Add their slugs + aliases to the
         # target entity (if the target supports aliases — protocols + mechanisms
         # + symptoms all do).
