@@ -592,5 +592,173 @@ export function detectLabPatterns(
     });
   }
 
+  // ── CBC pattern recognition ──────────────────────────────────────────────
+  // Read CBC components once; many patterns combine multiple markers.
+  const hgb = find(["hemoglobin", "hgb", "hb "]);
+  const hgbVal = parseNum(hgb?.value);
+  const mcv = find(["mcv", "mean corpuscular volume", "mean cell volume"]);
+  const mcvVal = parseNum(mcv?.value);
+  const rdw = find(["rdw"]);
+  const rdwVal = parseNum(rdw?.value);
+  const wbc = find(["wbc", "white blood cell", "total leucocyte", "tlc"]);
+  const wbcVal = parseNum(wbc?.value);
+  const neut = find(["neutrophil", "absolute neutrophil", "anc"]);
+  const neutVal = parseNum(neut?.value);
+  const lymph = find(["lymphocyte", "absolute lymphocyte"]);
+  const lymphVal = parseNum(lymph?.value);
+  const eos = find(["eosinophil"]);
+  const eosVal = parseNum(eos?.value);
+  const platelets = find(["platelet"]);
+  const plateletVal = parseNum(platelets?.value);
+  const tibc = find(["tibc", "total iron binding"]);
+  const tibcVal = parseNum(tibc?.value);
+  const tsat = find(["tsat", "transferrin saturation", "% saturation"]);
+  const tsatVal = parseNum(tsat?.value);
+  const ironSerum = find(["serum iron", "iron level"]);
+  const ironVal = parseNum(ironSerum?.value);
+
+  // CBC #1 — Iron deficiency by MCV+RDW (catches it BEFORE ferritin drops)
+  if (mcvVal !== null && rdwVal !== null && mcvVal < 80 && rdwVal > 14.5) {
+    const established = hgbVal !== null && hgbVal < 12;
+    patterns.push({
+      id: "cbc_iron_deficiency_pattern",
+      title: established
+        ? "Iron-deficiency anaemia (CBC pattern)"
+        : "Early iron deficiency (CBC pattern)",
+      detail: `MCV ${mcvVal} fL (low, < 80) + RDW ${rdwVal}% (high, > 14.5)${established ? ` + Hgb ${hgbVal} g/dL (low)` : ""} — classic iron-deficiency CBC signature${established ? ", anaemia present" : "; anaemia hasn't yet developed"}. Confirm with full iron studies (ferritin + TIBC + TSAT).`,
+      severity: established ? "flag" : "warning",
+      node: "transport",
+      value: `MCV ${mcvVal}, RDW ${rdwVal}`,
+    });
+  }
+
+  // CBC #2 — B12 / folate deficiency by MCV (macrocytic) + Hgb
+  if (mcvVal !== null && mcvVal > 100) {
+    const anaemic = hgbVal !== null && hgbVal < 12;
+    patterns.push({
+      id: "cbc_macrocytic_pattern",
+      title: anaemic ? "Macrocytic anaemia (B12 / folate)" : "Macrocytic CBC (B12 / folate)",
+      detail: `MCV ${mcvVal} fL (high, > 100)${anaemic ? ` + Hgb ${hgbVal} g/dL (low)` : ""} — suggests B12 / folate deficiency (most common FM cause). Other causes: hypothyroidism, alcohol use, MDS. Order B12, MMA (functional B12), folate, TSH.`,
+      severity: anaemic ? "flag" : "warning",
+      node: "energy",
+      value: `MCV ${mcvVal}`,
+    });
+  }
+
+  // CBC #3 — Mixed deficiency (normal MCV but elevated RDW — earliest signal)
+  if (mcvVal !== null && rdwVal !== null && mcvVal >= 80 && mcvVal <= 100 && rdwVal > 14.5) {
+    patterns.push({
+      id: "cbc_mixed_deficiency",
+      title: "Mixed nutritional deficiency (early)",
+      detail: `MCV ${mcvVal} (normal) but RDW ${rdwVal}% (high, > 14.5) — RBC population is mixed. Classic early-mixed-deficiency signature: simultaneous iron + B12/folate dropout, before either deficiency dominates. Order ferritin, B12, folate.`,
+      severity: "warning",
+      node: "transport",
+      value: `MCV ${mcvVal}, RDW ${rdwVal}`,
+    });
+  }
+
+  // CBC #4 — Acute bacterial / inflammatory pattern (high WBC + high neutrophils)
+  if (wbcVal !== null && wbcVal > 11 && neutVal !== null && neutVal > 7.5) {
+    patterns.push({
+      id: "cbc_bacterial_pattern",
+      title: "Acute bacterial / inflammatory pattern",
+      detail: `WBC ${wbcVal} × 10³/µL (high) + absolute neutrophils ${neutVal} × 10³/µL (high) — neutrophil-predominant leucocytosis. Suggests bacterial infection or acute inflammatory stress. If no infection symptoms, consider stress demargination, recent steroid, or significant tissue injury.`,
+      severity: "flag",
+      node: "defense_repair",
+      value: `WBC ${wbcVal}, neut ${neutVal}`,
+    });
+  }
+
+  // CBC #5 — Viral / immune-suppression pattern (low WBC + low neutrophils OR low lymphocytes)
+  if (wbcVal !== null && wbcVal < 4) {
+    const lowNeut = neutVal !== null && neutVal < 1.8;
+    const lowLymph = lymphVal !== null && lymphVal < 1.0;
+    if (lowNeut || lowLymph) {
+      patterns.push({
+        id: "cbc_viral_or_suppression_pattern",
+        title: "Viral / immune-suppression CBC pattern",
+        detail: `WBC ${wbcVal} (low)${lowNeut ? ` + absolute neutrophils ${neutVal} (low)` : ""}${lowLymph ? ` + lymphocytes ${lymphVal} (low)` : ""}. Pattern fits viral infection (acute/chronic), nutrient deficiency (B12, copper, folate), autoimmune (e.g. lupus), or marrow suppression. Repeat in 2 weeks if asymptomatic; if persistent, escalate.`,
+        severity: "warning",
+        node: "defense_repair",
+        value: `WBC ${wbcVal}`,
+      });
+    }
+  }
+
+  // CBC #6 — Lymphocytosis pattern (viral / autoimmune)
+  if (lymphVal !== null && wbcVal !== null && lymphVal > 4) {
+    patterns.push({
+      id: "cbc_lymphocytosis",
+      title: "Lymphocyte-predominant CBC",
+      detail: `Absolute lymphocytes ${lymphVal} × 10³/µL (high) — viral infection (acute or recovering), chronic viral (EBV reactivation, CMV, HIV), pertussis, or chronic lymphocytic process. Pair with EBV panel if persistent + fatigue / sore throat history.`,
+      severity: "info",
+      node: "defense_repair",
+      value: `Lymph ${lymphVal}`,
+    });
+  }
+
+  // CBC #7 — Eosinophilia (allergy / parasitic / atopic)
+  if (eosVal !== null && eosVal > 0.5) {
+    patterns.push({
+      id: "cbc_eosinophilia",
+      title: "Eosinophilia",
+      detail: `Absolute eosinophils ${eosVal} × 10³/µL (high, > 0.5) — atopic / allergic inflammation, parasitic infection (consider stool O&P), or drug reaction. > 1.5 needs workup. Common in chronic urticaria, asthma, food sensitivities.`,
+      severity: eosVal > 1.5 ? "warning" : "info",
+      node: "defense_repair",
+      value: `Eos ${eosVal}`,
+    });
+  }
+
+  // CBC #8 — Reactive thrombocytosis (high platelets + inflammation/iron deficiency)
+  if (plateletVal !== null && plateletVal > 450) {
+    const reactive = (crpVal !== null && crpVal > 1) || (ferritinVal !== null && ferritinVal < 30);
+    patterns.push({
+      id: "cbc_thrombocytosis",
+      title: reactive ? "Reactive thrombocytosis" : "Thrombocytosis",
+      detail: `Platelets ${plateletVal} × 10³/µL (high)${reactive ? " + inflammation or iron-deficiency markers present" : ""} — most commonly reactive (inflammation, iron deficiency, post-bleed, post-splenectomy). Persistent > 450 with no obvious cause needs haematology referral to exclude essential thrombocythaemia.`,
+      severity: plateletVal > 600 ? "warning" : "info",
+      node: "transport",
+      value: `Plt ${plateletVal}`,
+    });
+  }
+
+  // ── Iron studies pattern (Fe + TIBC + TSAT + ferritin) ──────────────────
+  if (ferritinVal !== null && tibcVal !== null && tsatVal !== null && ferritinVal < 30 && tibcVal > 380 && tsatVal < 20) {
+    patterns.push({
+      id: "iron_deficiency_full_pattern",
+      title: "Iron deficiency (full iron-studies pattern)",
+      detail: `Ferritin ${ferritinVal} (low) + TIBC ${tibcVal} (high, compensatory rise) + TSAT ${tsatVal}% (low) ${ironVal !== null ? `+ serum iron ${ironVal} ` : ""}— textbook iron-deficiency signature. Identify source (menstrual loss, GI loss, malabsorption, low intake) before supplementing.`,
+      severity: "flag",
+      node: "transport",
+      value: `Ferritin ${ferritinVal}, TSAT ${tsatVal}%`,
+    });
+  } else if (tsatVal !== null && tsatVal > 50 && ferritinVal !== null && ferritinVal > 200) {
+    patterns.push({
+      id: "iron_overload_pattern",
+      title: "Iron overload pattern",
+      detail: `TSAT ${tsatVal}% (high, > 50) + ferritin ${ferritinVal} ng/mL (high) — possible hemochromatosis or iron overload. Confirm with HFE genetic testing; assess liver enzymes, glucose, joint symptoms.`,
+      severity: "flag",
+      node: "transport",
+      value: `Ferritin ${ferritinVal}, TSAT ${tsatVal}%`,
+    });
+  }
+
+  // ── NLR (computed from neutrophils ÷ lymphocytes) — chronic inflammation ──
+  if (neutVal !== null && lymphVal !== null && lymphVal > 0) {
+    const nlr = neutVal / lymphVal;
+    // Only flag if not already caught by acute bacterial pattern above
+    const acuteBacterialDetected = patterns.some((p) => p.id === "cbc_bacterial_pattern");
+    if (nlr > 3 && !acuteBacterialDetected) {
+      patterns.push({
+        id: "elevated_nlr",
+        title: "Elevated NLR — chronic inflammation / stress",
+        detail: `Neutrophil/Lymphocyte ratio ${nlr.toFixed(1)} (FM optimal < 2, > 3 abnormal). Persistently high NLR with no acute infection signals chronic low-grade inflammation, sympathetic / cortisol overdrive, or post-viral state. Independent predictor of CV mortality.`,
+        severity: nlr > 5 ? "warning" : "info",
+        node: "defense_repair",
+        value: `NLR ${nlr.toFixed(1)}`,
+      });
+    }
+  }
+
   return patterns;
 }

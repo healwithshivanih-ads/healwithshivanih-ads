@@ -1571,10 +1571,49 @@ function HealthDataEditor({
   onApplied?: () => void;
 }) {
   const [applyPending, startApply] = useTransition();
+  const [useImperial, setUseImperial] = useState<boolean>(() => {
+    if (typeof window === "undefined") return false;
+    return window.localStorage?.getItem("fmcoach_units") === "imperial";
+  });
+
+  const toggleUnits = (next: boolean) => {
+    setUseImperial(next);
+    if (typeof window !== "undefined") {
+      window.localStorage?.setItem("fmcoach_units", next ? "imperial" : "metric");
+    }
+  };
 
   const setMeas = (key: keyof ExtractedMeasurements, val: string) => {
     const num = val === "" ? null : Number(val);
     onChange({ ...data, measurements: { ...data.measurements, [key]: isNaN(num as number) ? null : num } });
+  };
+
+  /** Set a length measurement (cm storage) from a possibly-imperial input string. */
+  const setLengthFromInput = (key: "height_cm" | "waist_cm" | "hip_cm", val: string) => {
+    if (val === "") return setMeas(key, "");
+    const n = Number(val);
+    if (isNaN(n)) return;
+    const cm = useImperial ? n * 2.54 : n;
+    onChange({ ...data, measurements: { ...data.measurements, [key]: Math.round(cm * 10) / 10 } });
+  };
+
+  const setWeightFromInput = (val: string) => {
+    if (val === "") return setMeas("weight_kg", "");
+    const n = Number(val);
+    if (isNaN(n)) return;
+    const kg = useImperial ? n * 0.453592 : n;
+    onChange({ ...data, measurements: { ...data.measurements, weight_kg: Math.round(kg * 10) / 10 } });
+  };
+
+  /** Display value for a length stored in cm — converted to inches if needed. */
+  const lengthDisplay = (cm: number | null | undefined): string => {
+    if (cm == null) return "";
+    return useImperial ? String(Math.round((cm / 2.54) * 10) / 10) : String(cm);
+  };
+
+  const weightDisplay = (kg: number | null | undefined): string => {
+    if (kg == null) return "";
+    return useImperial ? String(Math.round((kg * 2.20462) * 10) / 10) : String(kg);
   };
 
   const setLabValue = (i: number, field: keyof ExtractedLabValue, val: string) => {
@@ -1674,12 +1713,76 @@ function HealthDataEditor({
 
       {/* Measurements */}
       <div>
-        <p className={sectionLabel}>Measurements</p>
+        <div className="flex items-center justify-between mb-1">
+          <p className={sectionLabel}>Measurements</p>
+          <div className="flex items-center gap-0.5 rounded-md border border-input bg-background p-0.5">
+            <button
+              type="button"
+              onClick={() => toggleUnits(false)}
+              className={`text-[10px] px-1.5 py-0.5 rounded ${!useImperial ? "bg-emerald-600 text-white" : "text-muted-foreground hover:bg-muted"}`}
+              title="cm / kg"
+            >cm/kg</button>
+            <button
+              type="button"
+              onClick={() => toggleUnits(true)}
+              className={`text-[10px] px-1.5 py-0.5 rounded ${useImperial ? "bg-emerald-600 text-white" : "text-muted-foreground hover:bg-muted"}`}
+              title="inches / lbs"
+            >in/lbs</button>
+          </div>
+        </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-1.5">
+          {/* Height — convertible */}
+          <label className="block">
+            <span className="text-[10px] text-muted-foreground">Height ({useImperial ? "in" : "cm"})</span>
+            <input
+              type="number"
+              step="0.1"
+              value={lengthDisplay(data.measurements.height_cm)}
+              onChange={(e) => setLengthFromInput("height_cm", e.target.value)}
+              className={inputCls}
+              placeholder={useImperial ? "e.g. 68" : "e.g. 173"}
+            />
+          </label>
+          {/* Weight — convertible */}
+          <label className="block">
+            <span className="text-[10px] text-muted-foreground">Weight ({useImperial ? "lbs" : "kg"})</span>
+            <input
+              type="number"
+              step="0.1"
+              value={weightDisplay(data.measurements.weight_kg)}
+              onChange={(e) => setWeightFromInput(e.target.value)}
+              className={inputCls}
+              placeholder={useImperial ? "e.g. 154" : "e.g. 70"}
+            />
+          </label>
+          {/* Waist — convertible */}
+          <label className="block">
+            <span className="text-[10px] text-muted-foreground">Waist ({useImperial ? "in" : "cm"})</span>
+            <input
+              type="number"
+              step="0.1"
+              value={lengthDisplay(data.measurements.waist_cm)}
+              onChange={(e) => setLengthFromInput("waist_cm", e.target.value)}
+              className={inputCls}
+              placeholder={useImperial ? "e.g. 34" : "e.g. 86"}
+            />
+          </label>
+          {/* Hip — convertible */}
+          <label className="block">
+            <span className="text-[10px] text-muted-foreground">Hip ({useImperial ? "in" : "cm"})</span>
+            <input
+              type="number"
+              step="0.1"
+              value={lengthDisplay(data.measurements.hip_cm)}
+              onChange={(e) => setLengthFromInput("hip_cm", e.target.value)}
+              className={inputCls}
+              placeholder={useImperial ? "e.g. 38" : "e.g. 97"}
+            />
+          </label>
+          {/* HR + BP — no unit conversion needed */}
           {([
-            ["height_cm", "Height (cm)"], ["weight_kg", "Weight (kg)"],
-            ["waist_cm", "Waist (cm)"], ["hip_cm", "Hip (cm)"],
-            ["hr_bpm", "Heart rate (bpm)"], ["bp_systolic", "BP systolic"],
+            ["hr_bpm", "Heart rate (bpm)"],
+            ["bp_systolic", "BP systolic"],
             ["bp_diastolic", "BP diastolic"],
           ] as [keyof ExtractedMeasurements, string][]).map(([key, label]) => (
             <label key={key} className="block">
@@ -1694,23 +1797,52 @@ function HealthDataEditor({
             </label>
           ))}
         </div>
-        {/* Computed: waist-to-hip ratio */}
-        {data.measurements.waist_cm && data.measurements.hip_cm ? (
-          <p className="text-[10px] text-muted-foreground mt-1">
-            Waist-to-hip ratio:{" "}
-            <span className="font-semibold text-foreground">
-              {(data.measurements.waist_cm / data.measurements.hip_cm).toFixed(2)}
-            </span>
-            {" "}
-            <span className="text-[10px]">
-              {(() => {
-                const ratio = data.measurements.waist_cm! / data.measurements.hip_cm!;
-                // WHO thresholds (female ≥0.85, male ≥0.90 = high risk; use 0.85 as conservative default)
-                return ratio >= 0.9 ? "⚠️ high risk" : ratio >= 0.80 ? "⚠️ moderate risk" : "✅ healthy range";
-              })()}
-            </span>
-          </p>
-        ) : null}
+        {/* Computed: waist-to-hip + waist-to-height ratios */}
+        <div className="flex flex-wrap gap-x-4 gap-y-0.5 mt-1">
+          {data.measurements.waist_cm && data.measurements.hip_cm ? (
+            <p className="text-[10px] text-muted-foreground">
+              W:H ratio:{" "}
+              <span className="font-semibold text-foreground">
+                {(data.measurements.waist_cm / data.measurements.hip_cm).toFixed(2)}
+              </span>
+              {" "}
+              <span className="text-[10px]">
+                {(() => {
+                  const ratio = data.measurements.waist_cm! / data.measurements.hip_cm!;
+                  return ratio >= 0.9 ? "⚠️ high risk" : ratio >= 0.80 ? "⚠️ moderate risk" : "✅ healthy";
+                })()}
+              </span>
+            </p>
+          ) : null}
+          {data.measurements.waist_cm && data.measurements.height_cm ? (
+            <p className="text-[10px] text-muted-foreground">
+              W:Ht ratio:{" "}
+              <span className="font-semibold text-foreground">
+                {(data.measurements.waist_cm / data.measurements.height_cm).toFixed(2)}
+              </span>
+              {" "}
+              <span className="text-[10px]">
+                {(() => {
+                  const r = data.measurements.waist_cm! / data.measurements.height_cm!;
+                  return r >= 0.6 ? "⚠️ high risk" : r >= 0.5 ? "⚠️ central adiposity" : "✅ < ½ height";
+                })()}
+              </span>
+            </p>
+          ) : null}
+          {data.measurements.height_cm && data.measurements.weight_kg ? (() => {
+            const h_m = data.measurements.height_cm! / 100;
+            const bmi = data.measurements.weight_kg! / (h_m * h_m);
+            // South-Asian-aware BMI thresholds (WHO Asian Pacific): 23 = overweight, 25 = obese
+            const tag = bmi >= 30 ? "⚠️ obese" : bmi >= 25 ? "⚠️ obese (Asian)" : bmi >= 23 ? "⚠️ overweight (Asian)" : bmi >= 18.5 ? "✅ healthy" : "⚠️ underweight";
+            return (
+              <p className="text-[10px] text-muted-foreground">
+                BMI:{" "}
+                <span className="font-semibold text-foreground">{bmi.toFixed(1)}</span>{" "}
+                <span className="text-[10px]">{tag}</span>
+              </p>
+            );
+          })() : null}
+        </div>
       </div>
 
       {/* Medications */}
