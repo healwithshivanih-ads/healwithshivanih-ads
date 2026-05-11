@@ -746,6 +746,19 @@ export function ClientPageTabs({
           {/* 🧬 Genetic / SNP reports — MTHFR / COMT / APOE etc. */}
           <GeneticReportPanel clientId={clientId} />
 
+          {/* 📁 Other / specialist reports — endoscopy, imaging, anything else.
+              All client document uploads live on the Overview tab. */}
+          <details className="rounded-lg border bg-card open:shadow-sm" open={false}>
+            <summary className="cursor-pointer select-none list-none px-4 py-3 text-sm font-semibold flex items-center gap-2 hover:bg-muted/30">
+              <span className="transition-transform group-open:rotate-90 text-xs">▶</span>
+              📁 Other reports & specialist uploads
+              <span className="ml-auto text-[10px] text-muted-foreground font-normal">endoscopy · imaging · anything else</span>
+            </summary>
+            <div className="border-t p-3">
+              <ReportsTab clientId={clientId} />
+            </div>
+          </details>
+
           {/* Message templates — WhatsApp pre-written templates */}
           <MessageTemplatesPanel
             clientId={clientId}
@@ -1389,6 +1402,10 @@ export function ClientPageTabs({
          ══════════════════════════════════════════════════════════════════════ */}
       {activeTab === "plan" && (
         <div className="space-y-4">
+          {/* Plan tab purpose — clarified for new coaches at a glance */}
+          <p className="text-xs text-muted-foreground border-l-2 border-muted pl-2.5 py-0.5">
+            Active plan status · edit the protocol · activate when ready · generate &amp; share client letters · review older plans.
+          </p>
           {workflowStage === "no_plan" ? (
             /* ── No plan ── */
             <Card>
@@ -1487,23 +1504,30 @@ export function ClientPageTabs({
                 )}
               </div>
 
-              {/* ── Letter generation — shown for active plans ── */}
-              {activePlanStatus === "published" && (
-                <div className="space-y-3">
-                  <div>
-                    <h3 className="text-sm font-semibold">📤 Client letters</h3>
-                    <p className="text-xs text-muted-foreground mt-0.5">
-                      Generate meal plan, supplement guide, and lifestyle guide — edit if needed, then download and share.
+              {/* ── Letter generation — visible for ALL plan states.
+                  Draft + ready: preview letters before activating; once activated,
+                  the same letters re-render against the locked catalogue snapshot.
+                  Published: ready to send. ── */}
+              <div className="space-y-3">
+                <div>
+                  <h3 className="text-sm font-semibold">📤 Client letters</h3>
+                  <p className="text-xs text-muted-foreground mt-0.5">
+                    Generate meal plan, supplement guide, lifestyle guide, and exercise plan — review, edit if needed, then download or send.
+                  </p>
+                  {activePlanStatus !== "published" && (
+                    <p className="mt-1.5 text-xs rounded-md border border-amber-200 bg-amber-50 px-2.5 py-1.5 text-amber-900">
+                      💡 Plan is still <strong>{(activePlanStatus ?? "draft").replace(/_/g, " ")}</strong>.
+                      You can preview letters here, but activate first to lock the version + catalogue snapshot.
                     </p>
-                  </div>
-                  <SendPackageButton
-                    planSlug={activePlan.slug}
-                    clientId={clientId}
-                    clientEmail={client.email as string | undefined}
-                    clientName={(client.display_name ?? client.client_id) as string | undefined}
-                  />
+                  )}
                 </div>
-              )}
+                <SendPackageButton
+                  planSlug={activePlan.slug}
+                  clientId={clientId}
+                  clientEmail={client.email as string | undefined}
+                  clientName={(client.display_name ?? client.client_id) as string | undefined}
+                />
+              </div>
 
               {/* Follow-up plan generator — published plans only */}
               {activePlanStatus === "published" && (
@@ -1597,12 +1621,8 @@ export function ClientPageTabs({
               )}
             </div>
           ) : null}
-
-          {/* External reports — always at bottom of Plan tab */}
-          <div className="pt-2">
-            <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-2">External reports</h3>
-            <ReportsTab clientId={clientId} />
-          </div>
+          {/* External reports moved to Overview tab — they're about client
+              uploads, not about the active plan. */}
         </div>
       )}
 

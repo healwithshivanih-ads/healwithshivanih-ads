@@ -100,6 +100,8 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
         r"hba1c|hemoglobin a1c|glycated haemoglobin|glycosylated haemoglobin|a1c\b")
     uric_acid = _find(extracted_labs,
         r"uric acid|serum urate|urate\b")
+    pp_glucose = _find(extracted_labs,
+        r"post.?prandial.glucose|pp.?glucose|pp.?bs\b|2.h.*glucose|2.hour.glucose|post.meal.glucose")
 
     if glucose is not None:
         flag = "high" if glucose > 95 else ("low" if glucose < 70 else "optimal")
@@ -108,6 +110,24 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
             flag,
             f"Glucose {glucose}: {'Elevated — early IR or diet-driven glucose load; target <90' if glucose>95 else 'Low — hypoglycaemic tendency; check meal timing' if glucose<70 else 'FM optimal range'}",
             PANEL_META)
+
+    if pp_glucose is not None:
+        flag = "high" if pp_glucose > 140 else ("suboptimal" if pp_glucose > 110 else "optimal")
+        add("Postprandial glucose (2h)", pp_glucose, "mg/dL",
+            "70–110 FM optimal; 110–140 IGT; ≥140 prediabetes",
+            flag,
+            f"PP glucose {pp_glucose}: {'≥140 — impaired glucose tolerance / diabetes pattern; even normal fasting can hide post-meal spikes' if pp_glucose>=140 else 'Above FM optimal — early IR; check fasting insulin + HOMA-IR' if pp_glucose>110 else 'FM optimal — good post-meal handling'}",
+            PANEL_META)
+
+    # Glucose excursion (PP - fasting) — both must be present
+    if glucose is not None and pp_glucose is not None:
+        excursion = pp_glucose - glucose
+        flag = "high" if excursion > 50 else ("suboptimal" if excursion > 30 else "optimal")
+        add("Glucose excursion (PP − fasting)", excursion, "mg/dL",
+            "<30 healthy response; 30–50 borderline; >50 dysglycaemia",
+            flag,
+            f"Excursion +{excursion}: {'Large post-meal spike — early IR or carb-heavy meal; check meal composition + insulin' if excursion>50 else 'Moderate post-meal rise — watch carb quality + timing' if excursion>30 else 'Healthy glucose handling'}",
+            PANEL_META, computed=True)
 
     if insulin is not None:
         flag = "high" if insulin > 8 else ("suboptimal" if insulin > 5 else "optimal")
@@ -364,6 +384,8 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
     # ══════════════════════════════════════════════════════════════════════════
     # 4. KIDNEY FUNCTION
     # ══════════════════════════════════════════════════════════════════════════
+    uacr = _find(extracted_labs,
+        r"\buacr\b|urine.albumin.creatinine|albumin.creatinine.ratio|microalbumin.creatinine|albumin/creatinine|ua.cr")
     bun = _find(extracted_labs,
         r"\bbun\b|blood urea nitrogen|urea nitrogen|serum urea")
     creatinine = _find(extracted_labs,
@@ -405,6 +427,17 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
             f"eGFR {egfr}: {'Moderate kidney decline — refer; avoid nephrotoxic supplements' if egfr<60 else 'Mild reduction — monitor trend, optimise hydration and blood pressure' if egfr<90 else 'Good filtration capacity'}",
             PANEL_KIDNEY)
 
+    # UACR — Urine Albumin/Creatinine Ratio. Earliest detectable signal of
+    # kidney + vascular endothelial damage in HTN / metabolic syndrome /
+    # diabetes. Often missed on routine India panels.
+    if uacr is not None:
+        flag = "high" if uacr > 30 else ("suboptimal" if uacr > 10 else "optimal")
+        add("UACR (kidney + vascular)", uacr, "mg/g",
+            "<10 FM optimal; 10–30 early endothelial stress; 30–300 microalbuminuria; >300 overt",
+            flag,
+            f"UACR {uacr}: {'Microalbuminuria — early kidney injury + endothelial dysfunction; common in HTN, IR, T2D. Repeat in 4–6 weeks; aggressively control BP, glucose, inflammation' if uacr>30 else 'Above FM optimal — early vascular / glycation stress; modifiable with lifestyle + supplements' if uacr>10 else 'Healthy endothelial + kidney signal'}",
+            PANEL_KIDNEY)
+
     # ══════════════════════════════════════════════════════════════════════════
     # 5. CARDIOVASCULAR & LIPIDS
     # ══════════════════════════════════════════════════════════════════════════
@@ -420,6 +453,12 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
         r"homocysteine|hcy\b|plasma homocysteine")
     hscrp = _find(extracted_labs,
         r"hs.crp|high.sensitivity.crp|hscrp|high sensitivity c.reactive|hs-crp")
+    apob = _find(extracted_labs,
+        r"\bapo[ -]?b\b|apolipoprotein.b\b|apob\b")
+    apoa1 = _find(extracted_labs,
+        r"\bapo[ -]?a[ -]?1\b|apolipoprotein.a1?\b|apoa1?\b")
+    lpa = _find(extracted_labs,
+        r"\blp\(?a\)?\b|lipoprotein.a\b|lipoprotein.little.a")
 
     if tc is not None:
         flag = "low" if tc < 160 else ("high" if tc > 240 else "optimal")
@@ -498,6 +537,48 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
                 f"Non-HDL {non_hdl_val}: {'Elevated — better reflects atherogenic lipoprotein burden' if non_hdl_val>160 else 'Borderline' if non_hdl_val>130 else 'FM optimal'}",
                 PANEL_CARDIO, computed=True)
 
+    # ApoB — single best atherogenic-particle marker for South Asians (better than LDL-C alone)
+    if apob is not None:
+        flag = "high" if apob > 100 else ("suboptimal" if apob > 80 else "optimal")
+        add("ApoB (atherogenic particles)", apob, "mg/dL",
+            "<80 FM optimal; 80–100 borderline; >100 high CV risk",
+            flag,
+            f"ApoB {apob}: {'High — atherogenic particle load elevated. Better than LDL-C for South Asian risk; address insulin, inflammation, diet' if apob>100 else 'Borderline — track quarterly; treat if other risks (hsCRP, TG/HDL, family hx)' if apob>80 else 'FM optimal — low atherogenic particle burden'}",
+            PANEL_CARDIO)
+
+    # ApoB / ApoA1 ratio — single most powerful lipoprotein risk metric (INTERHEART)
+    if apob is not None and apoa1 is not None and apoa1 > 0:
+        apob_a1 = apob / apoa1
+        flag = "high" if apob_a1 > 0.9 else ("suboptimal" if apob_a1 > 0.7 else "optimal")
+        add("ApoB / ApoA1 ratio", apob_a1, "",
+            "<0.7 optimal (M); <0.6 optimal (F); >0.9 high risk",
+            flag,
+            f"ApoB/A1 {round(apob_a1,2)}: {'High — strongest single CV risk predictor in INTERHEART; address LDL particle burden + reverse transport' if apob_a1>0.9 else 'Borderline — reduce small dense LDL via TG control, raise HDL functionality' if apob_a1>0.7 else 'Favourable lipoprotein balance'}",
+            PANEL_CARDIO, computed=True)
+
+    # Lipoprotein(a) — genetic atherogenic marker, independent of LDL
+    if lpa is not None:
+        flag = "high" if lpa > 50 else ("suboptimal" if lpa > 30 else "optimal")
+        add("Lp(a)", lpa, "mg/dL",
+            "<30 optimal; 30–50 borderline; >50 high (genetic)",
+            flag,
+            f"Lp(a) {lpa}: {'High genetic CV risk — independent of LDL. Aggressive control of all other CV risks; family screening' if lpa>50 else 'Borderline — tighten all modifiable CV risks' if lpa>30 else 'Low genetic atherogenic burden'}",
+            PANEL_CARDIO)
+
+    # Atherogenic Index of Plasma (AIP) — log10(TG/HDL) — strongly correlates with small dense LDL
+    if tg is not None and hdl is not None and hdl > 0:
+        import math as _math
+        try:
+            aip = _math.log10(tg / hdl)
+            flag = "high" if aip > 0.24 else ("suboptimal" if aip > 0.1 else "optimal")
+            add("Atherogenic Index of Plasma (AIP)", aip, "",
+                "<0.10 low risk; 0.10–0.24 medium; >0.24 high (small dense LDL)",
+                flag,
+                f"AIP {round(aip,2)}: {'High — small dense LDL pattern likely; address IR + TG aggressively' if aip>0.24 else 'Medium — improve TG / HDL balance' if aip>0.1 else 'Low atherogenic plasma profile'}",
+                PANEL_CARDIO, computed=True)
+        except Exception:
+            pass
+
     if hscrp is not None:
         flag = "high" if hscrp > 3.0 else ("suboptimal" if hscrp > 1.0 else "optimal")
         add("hsCRP (inflammation)", hscrp, "mg/L",
@@ -527,6 +608,18 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
         r"\btibc\b|total iron binding|iron binding capacity")
     mcv = _find(extracted_labs,
         r"\bmcv\b|mean corpuscular volume|mean cell volume")
+    rdw = _find(extracted_labs,
+        r"\brdw\b|red.cell.distribution|red.cell.width|rdw[ -]?cv|rdw[ -]?sd")
+    mch = _find(extracted_labs,
+        r"\bmch\b|mean corpuscular hemoglobin|mean cell hemoglobin")
+    wbc = _find(extracted_labs,
+        r"\bwbc\b|white blood cell|total leucocyte|\btlc\b|leukocyte count")
+    neutrophils = _find(extracted_labs,
+        r"\bneutrophil|absolute neutrophil|\banc\b")
+    lymphocytes = _find(extracted_labs,
+        r"\blymphocyte|absolute lymphocyte")
+    platelets = _find(extracted_labs,
+        r"\bplatelet|\bplt\b|platelet count")
 
     if hemoglobin is not None:
         # Use women's optimal range (most common FM patient base); could be sex-aware
@@ -569,6 +662,49 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
             flag,
             f"MCV {mcv}: {'Microcytic — iron deficiency anaemia most likely; assess ferritin, serum iron' if mcv<80 else 'Macrocytic — B12 or folate deficiency; assess methylation, absorption' if mcv>95 else 'Normal red cell size'}",
             PANEL_IRON)
+
+    # RDW — earliest CBC signal of nutritional deficiency, independent CV mortality predictor
+    if rdw is not None:
+        flag = "high" if rdw > 14.5 else ("suboptimal" if rdw > 13.0 else "optimal")
+        add("RDW (cell variability)", rdw, "%",
+            "11.5–13.0 FM optimal; >14.5 = nutritional deficiency or chronic inflammation",
+            flag,
+            f"RDW {rdw}: {'Elevated — earliest signal of iron/B12/folate deficiency or chronic inflammation. Read with MCV: low MCV + high RDW = iron def; normal MCV + high RDW = mixed deficiency. Independent CV mortality predictor' if rdw>14.5 else 'Mildly elevated — early mixed nutritional dropout; order ferritin + B12 + folate' if rdw>13 else 'Healthy RBC population'}",
+            PANEL_IRON)
+
+    if mch is not None:
+        flag = "low" if mch < 27 else ("high" if mch > 33 else "optimal")
+        add("MCH (hemoglobin content)", mch, "pg",
+            "27–33 pg normal; <27 hypochromic (iron def); >33 macrocytic",
+            flag,
+            f"MCH {mch}: {'Low — hypochromic; iron deficiency or thalassemia trait' if mch<27 else 'High — macrocytic; B12/folate/hypothyroid' if mch>33 else 'Normal'}",
+            PANEL_IRON)
+
+    if wbc is not None:
+        flag = "low" if wbc < 4 else ("high" if wbc > 11 else ("suboptimal" if wbc > 7.5 else "optimal"))
+        add("WBC", wbc, "10³/μL",
+            "5.0–7.5 FM optimal; <4 leucopenia; >11 leucocytosis",
+            flag,
+            f"WBC {wbc}: {'Low — viral infection, autoimmune (e.g. lupus), B12/copper/folate deficiency, marrow suppression' if wbc<4 else 'High — infection/inflammation; persistently high-normal with no infection = chronic inflammatory pattern' if wbc>7.5 else 'FM optimal'}",
+            PANEL_IRON)
+
+    if platelets is not None:
+        flag = "low" if platelets < 150 else ("high" if platelets > 450 else "optimal")
+        add("Platelets", platelets, "10³/μL",
+            "150–450 normal; >450 often reactive (inflammation/iron def)",
+            flag,
+            f"Platelets {platelets}: {'Low — viral, autoimmune, B12/folate, or splenic sequestration' if platelets<150 else 'High — often reactive: chronic inflammation or iron deficiency (most common); persistent >450 needs haematology' if platelets>450 else 'Normal'}",
+            PANEL_IRON)
+
+    # NLR — neutrophil/lymphocyte ratio: chronic inflammation + stress + CV mortality marker
+    if neutrophils is not None and lymphocytes is not None and lymphocytes > 0:
+        nlr = neutrophils / lymphocytes
+        flag = "high" if nlr > 3.0 else ("suboptimal" if nlr > 2.0 else "optimal")
+        add("Neutrophil/Lymphocyte ratio (NLR)", nlr, "",
+            "<2.0 FM optimal; >3.0 abnormal; >5.0 significant inflammation/stress",
+            flag,
+            f"NLR {round(nlr,1)}: {'Elevated — chronic low-grade inflammation, sympathetic / cortisol overdrive, or acute bacterial infection. Independent CV mortality predictor; address root drivers' if nlr>3 else 'Borderline — watch trend; could be early inflammatory shift or stress' if nlr>2 else 'Balanced — low chronic inflammation signal'}",
+            PANEL_IRON, computed=True)
 
     # ══════════════════════════════════════════════════════════════════════════
     # 7. KEY NUTRIENTS

@@ -2982,6 +2982,20 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
     />
   );
 
+  // FM markers — render at the TOP of the right column so the coach
+  // sees computed ratios + flagged values BEFORE having to scroll
+  // through inputs. Hides itself when there's nothing to show.
+  const fmMarkersBlock = (ratiosPending || previewRatios.length > 0) ? (
+    <div>
+      {ratiosPending && (
+        <p className="text-xs text-muted-foreground animate-pulse">📊 Computing FM markers…</p>
+      )}
+      {!ratiosPending && previewRatios.length > 0 && (
+        <ComputedRatiosCard ratios={previewRatios} />
+      )}
+    </div>
+  ) : null;
+
   const resultsBlock = result?.ok && result.suggestions ? (
     <div className="space-y-4">
       <div className="border-t pt-4">
@@ -3060,8 +3074,13 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
           stacks to a single column. */}
       <div className="grid gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] items-start">
 
-      {/* ─── Left column: session inputs ──────────────────────────── */}
-      <main className="space-y-4 min-w-0">
+      {/* ─── Left column: session inputs ────────────────────────────
+          Uses flex-column so we can visually push the Uploads card to
+          the bottom via CSS `order` without moving its source position.
+          Source order stays workflow-natural (uploads feed symptom +
+          health-data state that the picker reads); visual order is
+          coach-preferred (uploads at the bottom of the column).        */}
+      <main className="flex flex-col gap-4 min-w-0">
 
       {/* Step 1: client — hidden in embedded mode (fixedClientId is set by the parent) */}
       {!fixedClientId && (
@@ -3123,7 +3142,8 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
         </Card>
       )}
 
-      {/* Step 2: all uploads */}
+      {/* Uploads — visually pushed to bottom of left column via `order` */}
+      <div style={{ order: 99 }}>
       <Card>
         <CardHeader className="pb-2">
           <CardTitle className="text-base">{stepNum(2)} Uploads</CardTitle>
@@ -3490,6 +3510,7 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
 
         </CardContent>
       </Card>
+      </div>
 
       {/* Step 3: symptoms */}
       <Card>
@@ -3556,14 +3577,7 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
       {/* Analyze button */}
       <Card>
         <CardContent className="pt-6 space-y-3">
-
-          {/* FM ratio preview above the Analyse button */}
-          {ratiosPending && (
-            <p className="text-xs text-muted-foreground animate-pulse">📊 Computing FM ratios…</p>
-          )}
-          {!ratiosPending && previewRatios.length > 0 && (
-            <ComputedRatiosCard ratios={previewRatios} />
-          )}
+          {/* FM ratio preview moved to top of right column (fmMarkersBlock). */}
 
           {readiness && readiness.ok && (() => {
             const v = readiness.verdict;
@@ -3682,8 +3696,13 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
 
       </main>
 
-      {/* ─── Right column: context + AI synthesis ─────────────────── */}
+      {/* ─── Right column: context + AI synthesis ───────────────────
+          Order is doctor-readable: FM markers first (the "vitals"),
+          then prior sessions (chart context), then mind-map pathways
+          (clinical thinking aid), then AI synthesis (recommendations).
+          Each section is a CollapsibleCard with persisted open/closed. */}
       <aside className="space-y-4 min-w-0">
+        {fmMarkersBlock}
         {priorSessionsBlock}
         {mindMapBlock}
         {resultsBlock}
