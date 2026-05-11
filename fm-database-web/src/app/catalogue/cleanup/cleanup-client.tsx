@@ -50,6 +50,7 @@ export function CleanupClient({ initialPlan }: Props) {
   const [pending, startApply] = useTransition();
   const [editingGroup, setEditingGroup] = useState<string | null>(null);
   const [canonicalOverride, setCanonicalOverride] = useState<Record<string, string>>({});
+  const [kindOverride, setKindOverride] = useState<Record<string, CleanupGroup["kind"]>>({});
 
   const runAnalyzer = () => {
     startRun(async () => {
@@ -66,12 +67,13 @@ export function CleanupClient({ initialPlan }: Props) {
 
   const applyGroup = (g: CleanupGroup) => {
     const canonical = canonicalOverride[g.id] ?? g.canonical;
-    if (!canonical && g.kind !== "duplicate_topics") {
-      toast.error(`Set a target ${g.kind.replace("topic_is_", "")} slug first`);
+    const kind = kindOverride[g.id] ?? g.kind;
+    if (!canonical && kind !== "duplicate_topics") {
+      toast.error(`Set a target ${kind.replace("topic_is_", "")} slug first`);
       return;
     }
     startApply(async () => {
-      const res = await applyCleanupGroupAction({ ...g, canonical }, false);
+      const res = await applyCleanupGroupAction({ ...g, kind, canonical }, false);
       if (res.ok) {
         const summary = res.summary;
         toast.success(
@@ -159,13 +161,34 @@ export function CleanupClient({ initialPlan }: Props) {
               {groups.map((g) => {
                 const isEditing = editingGroup === g.id;
                 const effCanonical = canonicalOverride[g.id] ?? g.canonical;
+                const effKind = kindOverride[g.id] ?? g.kind;
                 const memberSlugs = g.members.filter((m) => m !== effCanonical);
                 return (
                   <li key={g.id} className={`rounded-lg border-2 p-3 space-y-2 ${meta.color}`}>
                     <p className="text-xs italic text-muted-foreground">{g.reason}</p>
 
+                    {isEditing && (
+                      <div className="flex flex-wrap items-center gap-2 text-xs">
+                        <span className="font-semibold">Group kind:</span>
+                        <select
+                          value={effKind}
+                          onChange={(e) =>
+                            setKindOverride((o) => ({ ...o, [g.id]: e.target.value as CleanupGroup["kind"] }))
+                          }
+                          className="px-2 py-0.5 rounded border text-xs bg-white"
+                        >
+                          <option value="duplicate_topics">Duplicate topics</option>
+                          <option value="topic_is_protocol">Should be a Protocol</option>
+                          <option value="topic_is_mechanism">Should be a Mechanism</option>
+                          <option value="topic_is_symptom">Should be a Symptom</option>
+                        </select>
+                      </div>
+                    )}
+
                     <div className="flex flex-wrap items-center gap-2 text-xs">
-                      <span className="font-semibold">Canonical:</span>
+                      <span className="font-semibold">
+                        {effKind === "duplicate_topics" ? "Canonical:" : "Target slug:"}
+                      </span>
                       {isEditing ? (
                         <input
                           value={effCanonical}

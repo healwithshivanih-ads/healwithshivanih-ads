@@ -158,6 +158,28 @@ def main() -> int:
         if not canonical:
             json.dump({"ok": False, "error": "duplicate_topics requires a canonical slug"}, sys.stdout)
             return 1
+        # Auto-route: if the canonical isn't a Topic but IS a Protocol/Mechanism/
+        # Symptom, treat this as a topic_is_X move instead. Common case: Haiku
+        # picks protocols/5r-gut-protocol as the canonical for three duplicate
+        # 5R *topics*.
+        if not (root / "topics" / f"{canonical}.yaml").exists():
+            for alt_kind, alt_dir in (("protocol", "protocols"), ("mechanism", "mechanisms"), ("symptom", "symptoms")):
+                if (root / alt_dir / f"{canonical}.yaml").exists():
+                    kind = f"topic_is_{alt_kind}"
+                    # Drop the canonical from members (it's not a topic slug to remove)
+                    members = [m for m in members if m != canonical]
+                    break
+            else:
+                json.dump({
+                    "ok": False,
+                    "error": (
+                        f"canonical slug not found in any catalogue: {canonical}. "
+                        f"Either pick a slug that exists, or change the group kind."
+                    ),
+                }, sys.stdout)
+                return 1
+
+    if kind == "duplicate_topics":
         if canonical not in members:
             # Coach may have edited; include it
             members = [canonical] + members
