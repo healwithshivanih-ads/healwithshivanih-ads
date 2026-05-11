@@ -155,21 +155,21 @@ export default async function SearchPage({
         ))}
       </Section>
 
-      {/* Topics */}
-      <Section title="🧠 Topics" count={matchedTopics.length}>
+      {/* Conditions */}
+      <Section title="🩺 Conditions" count={matchedTopics.length}>
         {matchedTopics.map((t) => (
           <Row
             key={t.slug}
             href={`/catalogue/topics/${t.slug}`}
             label={t.display_name ?? t.slug}
             sub={t.slug}
-            tag={<Chip color="violet">topic</Chip>}
+            tag={<Chip color="violet">condition</Chip>}
           />
         ))}
       </Section>
 
       {/* Symptoms */}
-      <Section title="🩺 Symptoms" count={matchedSymptoms.length}>
+      <Section title="🤒 Symptoms" count={matchedSymptoms.length}>
         {matchedSymptoms.map((s) => (
           <Row
             key={s.slug}
@@ -194,15 +194,15 @@ export default async function SearchPage({
         ))}
       </Section>
 
-      {/* Mechanisms */}
-      <Section title="⚙️ Mechanisms" count={matchedMechanisms.length}>
+      {/* Root causes */}
+      <Section title="🧬 Root causes" count={matchedMechanisms.length}>
         {matchedMechanisms.map((m) => (
           <Row
             key={m.slug}
             href={`/catalogue/mechanisms/${m.slug}`}
             label={m.display_name ?? m.slug}
             sub={m.slug}
-            tag={<Chip color="default">mechanism</Chip>}
+            tag={<Chip color="default">root cause</Chip>}
           />
         ))}
       </Section>

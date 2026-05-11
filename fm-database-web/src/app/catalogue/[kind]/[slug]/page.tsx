@@ -7,6 +7,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { EvidenceTierBadge } from "@/components/evidence-tier-badge";
 import { loadOne } from "@/lib/fmdb/loader";
+import { KIND_LABELS } from "@/lib/fmdb/kinds";
 import type {
   CatalogueKind,
   Topic,
@@ -1298,6 +1299,8 @@ export default async function CatalogueDetailPage({
       notFound();
   }
 
+  const kindMeta = KIND_LABELS[kind as keyof typeof KIND_LABELS];
+
   return (
     <div>
       <Link
@@ -1306,7 +1309,13 @@ export default async function CatalogueDetailPage({
       >
         ← Back to catalogue
       </Link>
-      <div className="mt-4">{body}</div>
+      {kindMeta && (
+        <p className="mt-3 text-xs uppercase tracking-wide text-muted-foreground font-semibold">
+          <span className="mr-1">{kindMeta.emoji}</span>
+          {kindMeta.singular}
+        </p>
+      )}
+      <div className="mt-2">{body}</div>
     </div>
   );
 }

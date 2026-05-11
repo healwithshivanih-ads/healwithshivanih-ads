@@ -14,28 +14,28 @@ import {
 
 const KIND_META: Record<CleanupGroup["kind"], { label: string; emoji: string; color: string; explainer: string }> = {
   duplicate_topics: {
-    label: "Duplicate topics",
+    label: "Duplicate conditions",
     emoji: "👯",
     color: "border-amber-300 bg-amber-50",
-    explainer: "Multiple topic slugs for the same clinical concept. Merge into the canonical — the others become aliases on it so existing references still resolve.",
+    explainer: "Multiple condition slugs for the same clinical concept. Merge into the canonical — the others become aliases on it so existing references still resolve.",
   },
   topic_is_protocol: {
-    label: "Should be a Protocol",
+    label: "Should be a Healing program",
     emoji: "🏥",
     color: "border-violet-300 bg-violet-50",
-    explainer: "This topic describes a structured 4-12 week healing path (5R, AIP, Whole30, etc.) — it belongs in protocols/, not topics/.",
+    explainer: "This is a structured 4–12 week healing path (5R, AIP, Whole30, etc.) — belongs under Healing programs, not Conditions.",
   },
   topic_is_mechanism: {
-    label: "Should be a Mechanism",
-    emoji: "⚙️",
+    label: "Should be a Root cause",
+    emoji: "🧬",
     color: "border-blue-300 bg-blue-50",
-    explainer: "This is a physiology / driver, not a clinical area. Belongs in mechanisms/.",
+    explainer: "This is a physiology pattern / driver of dysfunction (e.g. HPA axis dysregulation, leaky gut) — belongs under Root causes, not Conditions.",
   },
   topic_is_symptom: {
     label: "Should be a Symptom",
     emoji: "🤒",
     color: "border-rose-300 bg-rose-50",
-    explainer: "This is a client-experienced complaint, not a clinical area. Belongs in symptoms/.",
+    explainer: "This is a client-experienced complaint (bloating, fatigue) — belongs under Symptoms, not Conditions.",
   },
 };
 
@@ -129,7 +129,7 @@ export function CleanupClient({ initialPlan }: Props) {
       <div className="space-y-2">
         <h1 className="text-2xl font-bold">🧹 Catalogue cleanup</h1>
         <p className="text-sm text-muted-foreground max-w-3xl">
-          Haiku scans all topics and flags <strong>duplicates</strong> (same concept, different slugs) and <strong>miscategorisations</strong> (topics that are really protocols, mechanisms, or symptoms). You review each group and apply with one click — non-canonical slugs become aliases on the canonical, so existing references still resolve.
+          Haiku scans all <strong>Conditions</strong> and flags <strong>duplicates</strong> (same concept, different slugs) and <strong>miscategorisations</strong> (entries that are really Healing programs, Root causes, or Symptoms). You review each group and apply with one click — non-canonical slugs become aliases on the canonical, so existing references still resolve.
         </p>
       </div>
 
@@ -143,7 +143,7 @@ export function CleanupClient({ initialPlan }: Props) {
         </button>
         {plan && (
           <span className="text-xs text-muted-foreground">
-            Plan generated {new Date(plan.generated_at).toLocaleString()} · {plan.topic_count} topics scanned · {plan.groups.length} group{plan.groups.length === 1 ? "" : "s"} remaining
+            Plan generated {new Date(plan.generated_at).toLocaleString()} · {plan.topic_count} conditions scanned · {plan.groups.length} group{plan.groups.length === 1 ? "" : "s"} remaining
           </span>
         )}
       </div>
@@ -151,7 +151,7 @@ export function CleanupClient({ initialPlan }: Props) {
       {!plan && (
         <div className="rounded-lg border-2 border-dashed bg-muted/30 p-8 text-center space-y-2">
           <p className="text-sm font-medium">No cleanup plan yet</p>
-          <p className="text-xs text-muted-foreground">Click <strong>Run analysis</strong> above to scan all topics.</p>
+          <p className="text-xs text-muted-foreground">Click <strong>Run analysis</strong> above to scan all Conditions.</p>
         </div>
       )}
 
@@ -196,9 +196,9 @@ export function CleanupClient({ initialPlan }: Props) {
                           }
                           className="px-2 py-0.5 rounded border text-xs bg-white"
                         >
-                          <option value="duplicate_topics">Duplicate topics</option>
-                          <option value="topic_is_protocol">Should be a Protocol</option>
-                          <option value="topic_is_mechanism">Should be a Mechanism</option>
+                          <option value="duplicate_topics">Duplicate conditions</option>
+                          <option value="topic_is_protocol">Should be a Healing program</option>
+                          <option value="topic_is_mechanism">Should be a Root cause</option>
                           <option value="topic_is_symptom">Should be a Symptom</option>
                         </select>
                       </div>

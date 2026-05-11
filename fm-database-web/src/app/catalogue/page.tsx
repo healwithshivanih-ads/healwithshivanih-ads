@@ -1,6 +1,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CatalogueTable } from "@/components/catalogue-table";
 import { loadAllOfKind } from "@/lib/fmdb/loader";
+import { KIND_LABELS, type CatalogueKind } from "@/lib/fmdb/kinds";
 import type {
   BaseEntity,
   Topic,
@@ -40,65 +41,80 @@ export default async function CataloguePage() {
     display_name: s.display_name ?? s.title,
   }));
 
+  const counts: Record<CatalogueKind, number> = {
+    topics: topics.length,
+    mechanisms: mechanisms.length,
+    symptoms: symptoms.length,
+    supplements: supplements.length,
+    protocols: protocols.length,
+    titration_protocols: titrations.length,
+    lab_panels: labPanels.length,
+    lab_tests: labTests.length,
+    claims: claims.length,
+    sources: sources.length,
+    cooking_adjustments: 0,
+    home_remedies: 0,
+    mindmaps: 0,
+    drug_depletions: 0,
+  };
+
+  const tabOrder: CatalogueKind[] = [
+    "topics",
+    "mechanisms",
+    "symptoms",
+    "supplements",
+    "protocols",
+    "titration_protocols",
+    "lab_panels",
+    "lab_tests",
+    "claims",
+    "sources",
+  ];
+
+  const tabContent: Record<string, BaseEntity[]> = {
+    topics,
+    mechanisms,
+    symptoms,
+    supplements,
+    protocols: protocols as unknown as BaseEntity[],
+    titration_protocols: titrations as unknown as BaseEntity[],
+    lab_panels: labPanels as unknown as BaseEntity[],
+    lab_tests: labTests as unknown as BaseEntity[],
+    claims,
+    sources: sourcesNormalized,
+  };
+
   return (
     <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-bold">Catalogue</h1>
         <p className="text-muted-foreground mt-1">
-          Read-only browser. Click a topic or supplement row for detail.
+          Browse the knowledge base. Click any row for full detail.
         </p>
       </div>
 
       <Tabs defaultValue="topics" className="w-full">
         <TabsList>
-          <TabsTrigger value="topics">Topics ({topics.length})</TabsTrigger>
-          <TabsTrigger value="mechanisms">
-            Mechanisms ({mechanisms.length})
-          </TabsTrigger>
-          <TabsTrigger value="symptoms">
-            Symptoms ({symptoms.length})
-          </TabsTrigger>
-          <TabsTrigger value="supplements">
-            Supplements ({supplements.length})
-          </TabsTrigger>
-          <TabsTrigger value="protocols">Protocols ({protocols.length})</TabsTrigger>
-          <TabsTrigger value="titration_protocols">Titrations ({titrations.length})</TabsTrigger>
-          <TabsTrigger value="lab_panels">Lab panels ({labPanels.length})</TabsTrigger>
-          <TabsTrigger value="lab_tests">Lab tests ({labTests.length})</TabsTrigger>
-          <TabsTrigger value="claims">Claims ({claims.length})</TabsTrigger>
-          <TabsTrigger value="sources">Sources ({sources.length})</TabsTrigger>
+          {tabOrder.map((kind) => {
+            const meta = KIND_LABELS[kind];
+            return (
+              <TabsTrigger key={kind} value={kind} title={meta.description}>
+                <span className="mr-1">{meta.emoji}</span>
+                {meta.plural} ({counts[kind]})
+              </TabsTrigger>
+            );
+          })}
         </TabsList>
 
-        <TabsContent value="topics">
-          <CatalogueTable kind="topics" rows={topics} />
-        </TabsContent>
-        <TabsContent value="mechanisms">
-          <CatalogueTable kind="mechanisms" rows={mechanisms} />
-        </TabsContent>
-        <TabsContent value="symptoms">
-          <CatalogueTable kind="symptoms" rows={symptoms} />
-        </TabsContent>
-        <TabsContent value="supplements">
-          <CatalogueTable kind="supplements" rows={supplements} />
-        </TabsContent>
-        <TabsContent value="protocols">
-          <CatalogueTable kind="protocols" rows={protocols} />
-        </TabsContent>
-        <TabsContent value="titration_protocols">
-          <CatalogueTable kind="titration_protocols" rows={titrations} />
-        </TabsContent>
-        <TabsContent value="lab_panels">
-          <CatalogueTable kind="lab_panels" rows={labPanels} />
-        </TabsContent>
-        <TabsContent value="lab_tests">
-          <CatalogueTable kind="lab_tests" rows={labTests} />
-        </TabsContent>
-        <TabsContent value="claims">
-          <CatalogueTable kind="claims" rows={claims} />
-        </TabsContent>
-        <TabsContent value="sources">
-          <CatalogueTable kind="sources" rows={sourcesNormalized} />
-        </TabsContent>
+        {tabOrder.map((kind) => {
+          const meta = KIND_LABELS[kind];
+          return (
+            <TabsContent key={kind} value={kind} className="space-y-3">
+              <p className="text-xs text-muted-foreground italic">{meta.description}</p>
+              <CatalogueTable kind={kind} rows={tabContent[kind]} />
+            </TabsContent>
+          );
+        })}
       </Tabs>
     </div>
   );

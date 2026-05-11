@@ -36,15 +36,17 @@ export function CatalogueTable({
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Slug</TableHead>
-            <TableHead>Display name</TableHead>
+            <TableHead>Name</TableHead>
             <TableHead>Evidence</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {sorted.map((row) => {
-            const cell = (
-              <span className="font-mono text-xs">{row.slug}</span>
+            const nameCell = (
+              <div className="flex flex-col">
+                <span>{row.display_name ?? row.slug}</span>
+                <span className="font-mono text-[10px] text-muted-foreground">{row.slug}</span>
+              </div>
             );
             return (
               <TableRow key={row.slug}>
@@ -54,13 +56,12 @@ export function CatalogueTable({
                       href={`/catalogue/${kind}/${row.slug}`}
                       className="hover:underline"
                     >
-                      {cell}
+                      {nameCell}
                     </Link>
                   ) : (
-                    cell
+                    nameCell
                   )}
                 </TableCell>
-                <TableCell>{row.display_name ?? "—"}</TableCell>
                 <TableCell>
                   <EvidenceTierBadge tier={row.evidence_tier} />
                 </TableCell>
@@ -69,7 +70,7 @@ export function CatalogueTable({
           })}
           {sorted.length === 0 && (
             <TableRow>
-              <TableCell colSpan={3} className="text-muted-foreground italic">
+              <TableCell colSpan={2} className="text-muted-foreground italic">
                 No entries.
               </TableCell>
             </TableRow>
