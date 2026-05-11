@@ -281,35 +281,81 @@ function walkForMatches(
   return results;
 }
 
+/** Mind-map slugs that are clinically meaningful only for one sex.
+ *  Filtered out when the client's sex is the opposite. */
+const SEX_SCOPED_MINDMAPS: Record<string, "F" | "M"> = {
+  "pcos": "F",
+  "sex-hormones-perimenopause": "F",
+  "perimenopause": "F",
+  "menopause": "F",
+  "endometriosis": "F",
+  // Future: "andropause": "M", "prostate": "M", "erectile-dysfunction": "M"
+};
+
+function countAllNodes(nodes: MindMapNode[]): number {
+  let n = 0;
+  for (const node of nodes) {
+    n += 1;
+    if (node.children?.length) n += countAllNodes(node.children);
+  }
+  return n;
+}
+
 export async function findMindMapPathways(
   symptomSlugs: string[],
-  topicSlugs: string[]
+  topicSlugs: string[],
+  clientSex?: string | null,
 ): Promise<MindMapPathwayResult[]> {
   if (!symptomSlugs.length && !topicSlugs.length) return [];
 
+  const symptomSet = new Set(symptomSlugs);
+  const topicSet = new Set(topicSlugs);
   const matchSlugs = new Set([...symptomSlugs, ...topicSlugs]);
   const matchKinds = new Set<string>();
   if (symptomSlugs.length) matchKinds.add("symptom");
   if (topicSlugs.length) matchKinds.add("topic");
 
+  const sexNorm = (clientSex ?? "").trim().toUpperCase();
+  const sexCompatible = (slug: string): boolean => {
+    const scopedTo = SEX_SCOPED_MINDMAPS[slug];
+    if (!scopedTo) return true;
+    if (!sexNorm || sexNorm === "U" || sexNorm === "OTHER") return true;
+    return sexNorm.startsWith(scopedTo);  // "F"/"FEMALE" matches "F", "M"/"MALE" matches "M"
+  };
+
   const maps = await loadAllMindMaps();
-  const results: MindMapPathwayResult[] = [];
+  const results: (MindMapPathwayResult & { _score: number })[] = [];
 
   for (const m of maps) {
     if (!m.tree?.length) continue;
+    if (!sexCompatible(m.slug)) continue;
+
     const matches = walkForMatches(m.tree, matchSlugs, matchKinds, []);
     if (!matches.length) continue;
+
+    // Weighted score: symptoms count double (more direct client signal than
+    // a coach-picked condition). Density boost for smaller focused maps:
+    // a 4-node match in a 60-node map is more relevant than 5 in a 600-node map.
+    const symptomMatches = matches.filter((mt) =>
+      mt.linkedKind === "symptom" && symptomSet.has(mt.linkedSlug)
+    ).length;
+    const topicMatches = matches.filter((mt) =>
+      mt.linkedKind === "topic" && topicSet.has(mt.linkedSlug)
+    ).length;
+    const totalNodes = countAllNodes(m.tree);
+    const score = (symptomMatches * 2 + topicMatches) * (1 + 1 / Math.log10(totalNodes + 10));
+
     results.push({
       mindmapSlug: m.slug,
       mindmapName: m.display_name ?? m.slug,
       matches,
       topLevelBranches: m.tree.map((n) => n.label),
+      _score: score,
     });
   }
 
-  // Most matches first
-  results.sort((a, b) => b.matches.length - a.matches.length);
-  return results;
+  results.sort((a, b) => b._score - a._score);
+  return results.map(({ _score: _, ...rest }) => rest);
 }
 
 // ---- Backlog ----

@@ -7,7 +7,8 @@ import {
 
 export async function getMindMapPathways(
   symptomSlugs: string[],
-  topicSlugs: string[]
+  topicSlugs: string[],
+  clientSex?: string | null,
 ): Promise<MindMapPathwayResult[]> {
-  return findMindMapPathways(symptomSlugs, topicSlugs);
+  return findMindMapPathways(symptomSlugs, topicSlugs, clientSex);
 }

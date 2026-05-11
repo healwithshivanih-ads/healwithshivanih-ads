@@ -1,0 +1,36 @@
+slug: iron-serum
+display_name: Serum iron
+full_name: Serum Iron
+aliases:
+- iron
+- fe
+- serum fe
+units: ug/dL
+sample_type: blood
+conventional_low: 60
+conventional_high: 170
+fm_optimal_low: 80
+fm_optimal_high: 130
+interpretation_low: Iron deficiency or chronic blood loss. Always pair with ferritin
+  + TIBC + TSAT for full iron studies.
+interpretation_high: Iron overload / hemochromatosis (rare), recent supplementation,
+  acute hepatocellular injury, blood transfusion. Confirm with TSAT > 45%.
+when_to_order: Order with ferritin + TIBC + TSAT as a full iron panel for fatigue,
+  hair loss, restless legs, anemia workup. Single iron value alone is misleading.
+fasting_required: true
+typical_cost_inr: 250
+linked_to_topics:
+- iron-deficiency-anemia
+- chronic-fatigue
+linked_to_mechanisms:
+- impaired-erythropoiesis
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — serum iron
+evidence_tier: strong
+notes_for_coach: Order as part of "iron studies" not in isolation. Diurnal variation
+  + heavily affected by recent intake — fast 8h before draw.
+version: 1
+status: active
+updated_at: '2026-05-11'
+updated_by: shivani

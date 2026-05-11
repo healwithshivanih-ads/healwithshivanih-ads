@@ -1,0 +1,32 @@
+slug: tibc
+display_name: TIBC
+full_name: Total Iron Binding Capacity
+aliases:
+- total iron binding capacity
+- transferrin capacity
+units: ug/dL
+sample_type: blood
+conventional_low: 250
+conventional_high: 450
+fm_optimal_low: 250
+fm_optimal_high: 380
+interpretation_low: Inflammation, malnutrition, liver disease, iron overload.
+interpretation_high: Iron deficiency (compensatory rise) — body upregulates transport
+  proteins to capture every available iron molecule.
+when_to_order: Order with serum iron + ferritin to compute TSAT (transferrin saturation).
+fasting_required: true
+typical_cost_inr: 300
+linked_to_topics:
+- iron-deficiency-anemia
+linked_to_mechanisms:
+- impaired-erythropoiesis
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — TIBC
+evidence_tier: strong
+notes_for_coach: High TIBC + low ferritin = classic iron deficiency, even when serum
+  iron looks borderline. Always interpret as part of full iron studies.
+version: 1
+status: active
+updated_at: '2026-05-11'
+updated_by: shivani

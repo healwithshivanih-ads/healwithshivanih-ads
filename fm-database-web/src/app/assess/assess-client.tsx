@@ -1768,9 +1768,11 @@ const KIND_URL: Record<string, string> = {
 function MindMapContextPanel({
   symptomSlugs,
   topicSlugs,
+  clientSex,
 }: {
   symptomSlugs: string[];
   topicSlugs: string[];
+  clientSex?: string | null;
 }) {
   const [pathways, setPathways] = useState<MindMapPathwayResult[]>([]);
   const [loading, setLoading] = useState(false);
@@ -1783,11 +1785,11 @@ function MindMapContextPanel({
     }
     let cancelled = false;
     setLoading(true);
-    getMindMapPathways(symptomSlugs, topicSlugs).then((res) => {
+    getMindMapPathways(symptomSlugs, topicSlugs, clientSex ?? null).then((res) => {
       if (!cancelled) { setPathways(res); setLoading(false); }
     });
     return () => { cancelled = true; };
-  }, [symptomSlugs.join(","), topicSlugs.join(",")]);  // eslint-disable-line
+  }, [symptomSlugs.join(","), topicSlugs.join(","), clientSex]);  // eslint-disable-line
 
   if (!symptomSlugs.length && !topicSlugs.length) return null;
   if (!loading && !pathways.length) return null;
@@ -3291,6 +3293,7 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
       <MindMapContextPanel
         symptomSlugs={selectedSymptoms}
         topicSlugs={selectedTopics}
+        clientSex={clientSex}
       />
 
       {/* Step 5: complaints */}

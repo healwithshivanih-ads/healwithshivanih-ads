@@ -1,0 +1,31 @@
+slug: mch
+display_name: MCH
+full_name: Mean Corpuscular Hemoglobin
+aliases:
+- mean cell hemoglobin
+units: pg
+sample_type: blood
+conventional_low: 27
+conventional_high: 33
+fm_optimal_low: 27
+fm_optimal_high: 32
+interpretation_low: Hypochromic — iron deficiency (most common), thalassemia trait.
+interpretation_high: Macrocytic — B12 / folate deficiency, hypothyroidism.
+when_to_order: Always part of CBC. Confirms picture seen on MCV.
+fasting_required: false
+typical_cost_inr: 0
+linked_to_topics:
+- iron-deficiency-anemia
+- b12-deficiency
+linked_to_mechanisms:
+- impaired-erythropoiesis
+sources:
+- id: vitaone-skill-practice-guide
+  location: CBC interpretation — MCH
+evidence_tier: strong
+notes_for_coach: Tracks MCV closely. Use as confirmatory — primary read goes to MCV
+  + RDW + ferritin pattern.
+version: 1
+status: active
+updated_at: '2026-05-11'
+updated_by: shivani

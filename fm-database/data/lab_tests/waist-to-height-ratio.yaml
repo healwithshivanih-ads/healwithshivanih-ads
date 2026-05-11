@@ -1,0 +1,42 @@
+slug: waist-to-height-ratio
+display_name: Waist-to-height ratio
+full_name: Waist Circumference / Height Ratio
+aliases:
+- whtr
+- waist height ratio
+- whr
+units: ratio
+sample_type: anthropometric
+conventional_low: 0
+conventional_high: 0.5
+fm_optimal_low: 0
+fm_optimal_high: 0.5
+interpretation_low: ''
+interpretation_high: '> 0.5 (any sex, any age) = central adiposity → cardiometabolic
+  risk. > 0.6 = high risk. Better than BMI as a screen, especially in South Asians
+  (normal-BMI obesity is common — visceral adiposity present at lower body weights).'
+when_to_order: Measure at every intake + recheck. Tape at navel, parallel to floor,
+  end of normal exhale. Costs nothing, predicts CV + diabetes + NAFLD risk independent
+  of BMI.
+fasting_required: false
+typical_cost_inr: 0
+linked_to_topics:
+- metabolic-syndrome
+- insulin-resistance
+- cardiovascular-disease
+- visceral-adiposity
+- non-alcoholic-fatty-liver-disease
+linked_to_mechanisms:
+- visceral-adiposity
+- insulin-resistance
+sources:
+- id: vitaone-skill-practice-guide
+  location: Anthropometric screens — waist-to-height
+evidence_tier: strong
+notes_for_coach: Single best body-composition screen for South-Asian clients.
+  Catches metabolically obese normal-weight (TOFI) clients that BMI misses.
+  "Keep your waist less than half your height" — universal client-friendly rule.
+version: 1
+status: active
+updated_at: '2026-05-11'
+updated_by: shivani

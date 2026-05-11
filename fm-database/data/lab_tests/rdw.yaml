@@ -1,0 +1,39 @@
+slug: rdw
+display_name: RDW
+full_name: Red Cell Distribution Width
+aliases:
+- rdw cv
+- red cell distribution
+units: '%'
+sample_type: blood
+conventional_low: 11.5
+conventional_high: 14.5
+fm_optimal_low: 11.5
+fm_optimal_high: 13.0
+interpretation_low: Rarely clinically significant.
+interpretation_high: Mixed-population RBCs — early iron / B12 / folate deficiency
+  (rises BEFORE MCV changes). Independent predictor of cardiovascular events,
+  inflammation, mortality. > 14.5 = mixed deficiency or chronic inflammation.
+when_to_order: Always part of CBC. Most under-used CBC marker — read first to flag
+  early nutritional + inflammatory states even when MCV/Hb still look normal.
+fasting_required: false
+typical_cost_inr: 0
+linked_to_topics:
+- iron-deficiency-anemia
+- b12-deficiency
+- chronic-inflammation
+- cardiovascular-disease
+linked_to_mechanisms:
+- impaired-erythropoiesis
+- chronic-inflammation
+sources:
+- id: vitaone-skill-practice-guide
+  location: CBC interpretation — RDW
+evidence_tier: strong
+notes_for_coach: Most useful + most ignored CBC marker. Elevated RDW + normal MCV
+  = early mixed deficiency. Independent CV risk predictor — flag elevated RDW even
+  when other CBC markers look fine.
+version: 1
+status: active
+updated_at: '2026-05-11'
+updated_by: shivani

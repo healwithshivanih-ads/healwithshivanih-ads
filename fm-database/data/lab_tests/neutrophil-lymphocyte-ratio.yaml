@@ -1,0 +1,40 @@
+slug: neutrophil-lymphocyte-ratio
+display_name: NLR
+full_name: Neutrophil-to-Lymphocyte Ratio
+aliases:
+- nlr
+- neut/lymph ratio
+- neutrophil lymphocyte ratio
+units: ratio
+sample_type: blood
+conventional_low: 1.0
+conventional_high: 3.0
+fm_optimal_low: 1.0
+fm_optimal_high: 2.0
+interpretation_low: Lymphocyte-dominant pattern — recovering viral, allergic / atopic,
+  some autoimmune patterns.
+interpretation_high: '> 3 = systemic inflammation, stress, infection. Independent
+  predictor of CV mortality, cancer outcomes, post-COVID recovery. > 5 = significant.
+  FM uses persistently elevated NLR as a stress + chronic inflammation marker.'
+when_to_order: Computed from any CBC with differential — no extra cost. Read on every
+  CBC.
+fasting_required: false
+typical_cost_inr: 0
+linked_to_topics:
+- chronic-inflammation
+- chronic-stress
+- cardiovascular-disease
+linked_to_mechanisms:
+- chronic-inflammation
+- hpa-axis-dysregulation
+sources:
+- id: vitaone-skill-practice-guide
+  location: CBC interpretation — NLR
+evidence_tier: plausible_emerging
+notes_for_coach: Free derived ratio. Persistently elevated NLR in an otherwise-asymptomatic
+  client is a flag for low-grade chronic inflammation / stress that other markers
+  miss. Strong predictor in cardiovascular and oncology research.
+version: 1
+status: active
+updated_at: '2026-05-11'
+updated_by: shivani

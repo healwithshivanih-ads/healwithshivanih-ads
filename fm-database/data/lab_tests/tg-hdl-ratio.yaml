@@ -1,0 +1,43 @@
+slug: tg-hdl-ratio
+display_name: TG/HDL ratio
+full_name: Triglyceride-to-HDL Cholesterol Ratio
+aliases:
+- triglyceride hdl ratio
+- tgl/hdl
+- tg:hdl
+- tg hdl ratio
+- atherogenic index
+units: ratio
+sample_type: blood
+conventional_low: 0
+conventional_high: 3.5
+fm_optimal_low: 0
+fm_optimal_high: 2.0
+interpretation_low: ''
+interpretation_high: '> 2.0 = insulin resistance pattern + small dense LDL predominance
+  (atherogenic). > 3.5 = metabolic syndrome strongly suggested. Best non-insulin
+  surrogate for IR in routine panels.'
+when_to_order: Computed from any standard lipid panel — no separate order needed.
+  Always interpret on FM workups (cardiovascular, metabolic, perimenopause). South-Asian
+  cut-off ≈ 1.5 (more sensitive to IR at lower ratios than Western reference).
+fasting_required: true
+typical_cost_inr: 0
+linked_to_topics:
+- insulin-resistance
+- cardiovascular-disease
+- metabolic-syndrome
+- atherosclerosis
+linked_to_mechanisms:
+- insulin-resistance
+- dyslipidemia
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — TG/HDL ratio
+evidence_tier: strong
+notes_for_coach: Free derived ratio from any lipid panel — most useful single
+  number for IR + atherogenic risk in clients who can't get fasting insulin /
+  apoB. South-Asian threshold is lower (~1.5).
+version: 1
+status: active
+updated_at: '2026-05-11'
+updated_by: shivani

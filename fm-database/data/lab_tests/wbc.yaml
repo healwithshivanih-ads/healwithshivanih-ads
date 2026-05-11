@@ -1,0 +1,39 @@
+slug: wbc
+display_name: WBC
+full_name: White Blood Cell Count (Total Leucocytes)
+aliases:
+- white cell count
+- total leucocyte count
+- tlc
+- leukocyte count
+units: 10^3/uL
+sample_type: blood
+conventional_low: 4.0
+conventional_high: 11.0
+fm_optimal_low: 5.0
+fm_optimal_high: 7.5
+interpretation_low: Leucopenia — viral infection (acute), autoimmune (lupus), B12
+  / folate / copper deficiency, marrow suppression, drug effect. < 4.0 warrants workup.
+interpretation_high: Leucocytosis — infection / inflammation (bacterial typically),
+  stress demargination, steroid effect. Persistently > 7.5 with no infection = chronic
+  inflammatory / metabolic-syndrome pattern.
+when_to_order: Standard CBC. Read with differential (neutrophils, lymphocytes) for
+  pattern.
+fasting_required: false
+typical_cost_inr: 0
+linked_to_topics:
+- chronic-inflammation
+- immune-dysfunction
+linked_to_mechanisms:
+- chronic-inflammation
+sources:
+- id: vitaone-skill-practice-guide
+  location: CBC interpretation — WBC
+evidence_tier: strong
+notes_for_coach: 'Persistently high-normal WBC (8-10) with no infection = chronic
+  inflammation; low-normal WBC (4-5) with low neutrophils + lymphocytes = consider
+  viral exposure, autoimmune, or nutrient deficiency. Always read the differential.'
+version: 1
+status: active
+updated_at: '2026-05-11'
+updated_by: shivani

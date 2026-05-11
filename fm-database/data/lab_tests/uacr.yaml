@@ -1,0 +1,42 @@
+slug: uacr
+display_name: UACR
+full_name: Urine Albumin-to-Creatinine Ratio
+aliases:
+- urine albumin creatinine ratio
+- urine acr
+- microalbuminuria
+- microalbumin urine
+- albumin/creatinine ratio
+units: mg/g
+sample_type: urine
+conventional_low: 0
+conventional_high: 30
+fm_optimal_low: 0
+fm_optimal_high: 10
+interpretation_low: ''
+interpretation_high: 30-300 mg/g = microalbuminuria (early kidney injury, endothelial
+  dysfunction marker — common in HTN, diabetes, metabolic syndrome). > 300 mg/g =
+  overt albuminuria. FM flags > 10 as early signal of vascular / glycation stress.
+when_to_order: All HTN, diabetes, metabolic syndrome, CKD risk, perimenopausal cardiovascular
+  workup. Repeat if elevated. Avoid if recent UTI / vigorous exercise / menses.
+fasting_required: false
+typical_cost_inr: 450
+linked_to_topics:
+- hypertension
+- diabetes
+- metabolic-syndrome
+- chronic-kidney-disease
+linked_to_mechanisms:
+- endothelial-dysfunction
+- glycation
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — UACR microalbuminuria
+evidence_tier: strong
+notes_for_coach: Earliest detectable sign of kidney + vascular endothelial damage
+  in metabolic / HTN clients. Often missed on routine panels in India — coach
+  should specifically request when ordering kidney workup.
+version: 1
+status: active
+updated_at: '2026-05-11'
+updated_by: shivani

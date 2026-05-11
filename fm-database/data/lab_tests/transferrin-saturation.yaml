@@ -1,0 +1,38 @@
+slug: transferrin-saturation
+display_name: TSAT
+full_name: Transferrin Saturation
+aliases:
+- tsat
+- transferrin sat
+- iron saturation
+- '% saturation'
+units: '%'
+sample_type: blood
+conventional_low: 20
+conventional_high: 50
+fm_optimal_low: 25
+fm_optimal_high: 45
+interpretation_low: '< 20% = iron deficiency. < 16% = absolute iron deficiency. Best
+  early marker before ferritin drops.'
+interpretation_high: '> 50% = iron overload, hemochromatosis screen. Confirm with
+  HFE genetics if persistent.'
+when_to_order: Always part of full iron studies (serum iron + TIBC + ferritin + TSAT).
+  TSAT = (serum iron / TIBC) × 100.
+fasting_required: true
+typical_cost_inr: 0
+linked_to_topics:
+- iron-deficiency-anemia
+- hemochromatosis
+linked_to_mechanisms:
+- impaired-erythropoiesis
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — transferrin saturation
+evidence_tier: strong
+notes_for_coach: Best single number for iron status. Drops before ferritin in early
+  deficiency, rises before iron in overload. Always read alongside ferritin (storage)
+  + serum iron (transport) + TIBC (capacity).
+version: 1
+status: active
+updated_at: '2026-05-11'
+updated_by: shivani

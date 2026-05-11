@@ -1,0 +1,42 @@
+slug: magnesium-serum
+display_name: Serum magnesium
+full_name: Serum Magnesium
+aliases:
+- mg
+- magnesium
+- s. mg
+units: mg/dL
+sample_type: blood
+conventional_low: 1.7
+conventional_high: 2.4
+fm_optimal_low: 2.0
+fm_optimal_high: 2.4
+interpretation_low: '< 1.7 = clinical hypomagnesemia. FM flags < 2.0 (intracellular
+  deficiency present long before serum drops). Common with PPI / diuretic use,
+  diabetes, alcohol, GI disease, refeeding, hypothyroid.'
+interpretation_high: Renal failure or excess Mg supplementation.
+when_to_order: Most metabolic + neuromuscular + cardiovascular workups. Cheap and
+  available — order routinely. Pair with RBC magnesium when symptoms suggest deficiency
+  but serum is normal-low.
+fasting_required: false
+typical_cost_inr: 250
+linked_to_topics:
+- magnesium-deficiency
+- insulin-resistance
+- migraine
+- muscle-cramps
+- chronic-stress
+linked_to_mechanisms:
+- magnesium-deficiency
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — serum magnesium
+evidence_tier: strong
+notes_for_coach: Serum magnesium catches only ~1% of body's magnesium. Anything
+  in the bottom half of conventional range warrants assuming deficiency,
+  especially in stressed / IR / PPI clients. RBC magnesium is more sensitive
+  but more expensive.
+version: 1
+status: active
+updated_at: '2026-05-11'
+updated_by: shivani

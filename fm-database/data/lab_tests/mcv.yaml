@@ -1,0 +1,38 @@
+slug: mcv
+display_name: MCV
+full_name: Mean Corpuscular Volume
+aliases:
+- mean cell volume
+- mean rbc volume
+units: fL
+sample_type: blood
+conventional_low: 80
+conventional_high: 100
+fm_optimal_low: 85
+fm_optimal_high: 92
+interpretation_low: Microcytic — iron deficiency, thalassemia trait, chronic disease,
+  lead toxicity. Pair with ferritin + iron studies.
+interpretation_high: Macrocytic — B12 / folate deficiency (most common FM cause),
+  hypothyroidism, alcohol use, MDS (rare). Pair with B12, MMA, homocysteine.
+when_to_order: Always part of CBC. Read alongside hemoglobin + RDW for the CBC pattern
+  story.
+fasting_required: false
+typical_cost_inr: 0
+linked_to_topics:
+- iron-deficiency-anemia
+- b12-deficiency
+- folate-deficiency
+- hypothyroidism
+linked_to_mechanisms:
+- impaired-erythropoiesis
+sources:
+- id: vitaone-skill-practice-guide
+  location: CBC interpretation — MCV
+evidence_tier: strong
+notes_for_coach: Low MCV + low ferritin = iron deficiency. High MCV + low/normal B12
+  = functional B12 deficiency (confirm with MMA). Always pair MCV with RDW + ferritin
+  + B12 to get the pattern.
+version: 1
+status: active
+updated_at: '2026-05-11'
+updated_by: shivani
