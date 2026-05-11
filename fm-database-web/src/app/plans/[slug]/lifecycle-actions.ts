@@ -690,7 +690,7 @@ export async function generateClientLetter(
       existing_partials: existingPartials,
       has_exercise_plan: hasExercisePlan,
     },
-    240_000, // 12-week plan is larger — 4 min ceiling
+    600_000, // 10-min ceiling — Sonnet streaming on a 12-week plan can run 3–5 min
   );
 
   if (!result.ok || !result.markdown) return result;

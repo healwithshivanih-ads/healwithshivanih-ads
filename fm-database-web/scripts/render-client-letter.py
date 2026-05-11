@@ -2552,6 +2552,15 @@ def main() -> int:
         json.dump({"ok": False, "markdown": "", "error": f"invalid JSON: {e}"}, sys.stdout)
         return 2
 
+    # Stderr progress markers — surface what step is running so coach
+    # (and Node parent) can tell whether the script is alive, what's
+    # taking long, and where it died if it crashes. `flush=True` is
+    # critical: without it Python buffers stderr and the parent reads
+    # nothing until the script ends.
+    def _step(msg: str) -> None:
+        print(f"[render-letter] {msg}", file=sys.stderr, flush=True)
+
+    _step("start")
     plan_slug = payload.get("plan_slug", "")
     client_id = payload.get("client_id", "")
     # Coach can send None / undefined / {} when weight loss isn't a goal.
@@ -2570,6 +2579,7 @@ def main() -> int:
         json.dump({"ok": False, "markdown": "", "error": "plan_slug is required"}, sys.stdout)
         return 2
 
+    _step(f"loading plan {plan_slug}")
     plan = _load_plan(plan_slug)
     if plan is None:
         json.dump({"ok": False, "markdown": "", "error": f"Plan not found: {plan_slug}"}, sys.stdout)
@@ -2577,6 +2587,7 @@ def main() -> int:
 
     if not client_id:
         client_id = plan.get("client_id", "")
+    _step(f"loading client {client_id}")
     client = _load_client(client_id) if client_id else {}
     if client is None:
         client = {}
@@ -2593,12 +2604,14 @@ def main() -> int:
         json.dump({"ok": False, "markdown": "", "error": "ANTHROPIC_API_KEY not set"}, sys.stdout)
         return 2
 
+    _step("importing anthropic")
     try:
         from anthropic import Anthropic
     except ImportError as e:
         json.dump({"ok": False, "markdown": "", "error": f"anthropic not installed: {e}"}, sys.stdout)
         return 1
 
+    _step(f"building {letter_type} prompt")
     try:
         prompt = _build_prompt(
             plan,
@@ -2621,10 +2634,13 @@ def main() -> int:
             ),
         }, sys.stdout)
         return 1
+    _step(f"prompt built ({len(prompt)} chars)")
 
     client_api = Anthropic(api_key=api_key)
 
+    _step("calling Sonnet (streaming, max 16K output tokens — typical 60–180s)")
     try:
+        token_count = 0
         with client_api.messages.stream(
             model="claude-sonnet-4-6",
             max_tokens=16000,
@@ -2636,7 +2652,15 @@ def main() -> int:
             ),
             messages=[{"role": "user", "content": prompt}],
         ) as stream:
-            markdown = stream.get_final_message().content[0].text
+            # Stream text chunks so we get heartbeat output; otherwise the
+            # script is silent for 1–3 min while the API generates.
+            for _ in stream.text_stream:
+                token_count += 1
+                if token_count % 200 == 0:
+                    _step(f"streaming… ~{token_count} chunks received")
+            final_message = stream.get_final_message()
+            markdown = final_message.content[0].text
+            _step(f"API call done ({len(markdown)} chars markdown)")
     except Exception as e:
         json.dump({"ok": False, "markdown": "", "error": f"API call failed: {e}"}, sys.stdout)
         return 1
@@ -2645,9 +2669,11 @@ def main() -> int:
     # specificity and rewrites tips < 3 to reference the client's TOP-OF-MIND
     # facts. Returns original markdown unchanged on any failure.
     skip_validation = bool(payload.get("skip_validation"))
+    _step("validating letter specificity (Haiku)")
     markdown, validation_report = _validate_letter_specificity(
         markdown, client, plan, skip=skip_validation
     )
+    _step(f"validation done ({len(validation_report) if validation_report else 0} tips rewritten)")
 
     # Generate branded HTML
     try:

@@ -134,6 +134,19 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
   const [isGenerating, setIsGenerating] = useState(false);
   const [, startTransition] = useTransition();
 
+  // Per-type generation-start timestamps + a live "now" tick so the UI can
+  // render an elapsed-time progress bar for each pending letter type.
+  // Cleared when generation finishes or errors out.
+  const [genStartMs, setGenStartMs] = useState<Record<LetterType, number | null>>(
+    () => Object.fromEntries(PACKAGE_TYPES.map((p) => [p.type, null])) as Record<LetterType, number | null>,
+  );
+  const [nowMs, setNowMs] = useState<number>(() => Date.now());
+  useEffect(() => {
+    if (!isGenerating) return;
+    const id = window.setInterval(() => setNowMs(Date.now()), 500);
+    return () => window.clearInterval(id);
+  }, [isGenerating]);
+
   // Feature 1: preview state — which type has preview open (one at a time)
   const [previewOpenFor, setPreviewOpenFor] = useState<LetterType | null>(null);
 
@@ -223,6 +236,8 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
 
     startTransition(async () => {
       for (const pkg of pkgs) {
+        const startedAt = Date.now();
+        setGenStartMs((prev) => ({ ...prev, [pkg.type]: startedAt }));
         try {
           const result = await generateClientLetter(
             planSlug,
@@ -258,10 +273,28 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
             },
           }));
           toast.error(`${pkg.label}: ${msg.slice(0, 80)}`);
+        } finally {
+          setGenStartMs((prev) => ({ ...prev, [pkg.type]: null }));
         }
       }
       setIsGenerating(false);
     });
+  };
+
+  /** Phase + percentage for a pending letter generation, based on elapsed time.
+   *  Typical p50: ~90s; p95: ~5 min. Cap progress at 95% so it doesn't pretend
+   *  to be done. Phase label changes as time elapses so coach knows the
+   *  request is still alive even when there's no incremental output. */
+  const phaseFor = (elapsedMs: number): { pct: number; label: string } => {
+    const sec = Math.floor(elapsedMs / 1000);
+    const pct = Math.min(95, Math.round((elapsedMs / 120_000) * 100));
+    const label = sec < 5  ? "Loading plan + client + catalogue"
+                : sec < 15 ? "Building prompt"
+                : sec < 60 ? "Calling Sonnet — streaming letter content"
+                : sec < 180 ? "Still streaming — long letter, please wait"
+                : sec < 480 ? "Taking longer than usual — Haiku validation may add ~30s"
+                : "Unusually slow — if it doesn't return in 30s, retry";
+    return { pct, label };
   };
 
   // Open email panel — fixed default subject (the inline body covers the
@@ -442,6 +475,35 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
                         )}
                       </div>
                       <p className="text-xs text-muted-foreground mt-0.5">{pkg.desc}</p>
+
+                      {/* Live progress bar — only while pending */}
+                      {state.status === "pending" && genStartMs[pkg.type] != null && (() => {
+                        const elapsedMs = Math.max(0, nowMs - (genStartMs[pkg.type] as number));
+                        const { pct, label } = phaseFor(elapsedMs);
+                        const elapsedSec = Math.floor(elapsedMs / 1000);
+                        const mins = Math.floor(elapsedSec / 60);
+                        const secs = elapsedSec % 60;
+                        return (
+                          <div className="mt-2 rounded-md border border-indigo-200 bg-indigo-50 px-2.5 py-2 space-y-1.5">
+                            <div className="flex items-center gap-2 text-xs">
+                              <span className="inline-block w-2.5 h-2.5 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin shrink-0" />
+                              <span className="font-medium text-indigo-900 truncate">{label}…</span>
+                              <span className="ml-auto font-mono tabular-nums text-indigo-800">
+                                {mins}:{secs.toString().padStart(2, "0")}
+                              </span>
+                            </div>
+                            <div className="h-1 rounded-full bg-indigo-100 overflow-hidden">
+                              <div
+                                className="h-full bg-indigo-600 transition-[width] duration-500 ease-out"
+                                style={{ width: `${pct}%` }}
+                              />
+                            </div>
+                            <p className="text-[10px] text-indigo-700/80">
+                              Typical: 60–120s · p95: ~5min · Don&apos;t reload.
+                            </p>
+                          </div>
+                        );
+                      })()}
 
                       {/* Error message */}
                       {state.status === "error" && state.errorMsg && (
