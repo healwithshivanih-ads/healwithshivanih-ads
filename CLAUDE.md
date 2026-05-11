@@ -14,7 +14,38 @@ published plans as JSON artifacts.
 
 ## Status
 
-**v0.63 (current)** — FM physician-tier upgrade: protocols, ATM triad, drug depletions, DUTCH/GI-MAP, titration schedules, lab tests/panels, inline ranges, letter QA, PM2 env fix:
+**v0.64 (current)** — Catalogue cleanup tool + coach-friendly entity labels + .md uploads on every report panel:
+
+- **🧹 Catalogue cleanup tool** (`/catalogue/cleanup`) — Haiku scans all 318 Conditions in a single call (~$0.05, ~1–2 min) and returns a structured cleanup plan with 4 group kinds: `duplicate_topics` (same concept, different slugs), `topic_is_protocol` (5R/AIP/Whole30/elimination-diet stuck under topics), `topic_is_mechanism` (HPA-axis-style drivers), `topic_is_symptom`. Each group has a canonical slug + members + reason. Plan persisted to `fm-database/data/_cleanup/latest_plan.yaml` so it re-loads on page refresh without re-running the API call.
+  - **`scripts/analyze-catalogue-duplicates.py`**: streaming Haiku call with structured tool-use. Loads all topics + protocols/mechanisms/symptoms slug+display lists as reference context (~15K input tokens). Conservative system prompt — only flags clear cases; tells the model to leave true conditions alone.
+  - **`scripts/apply-cleanup.py`**: applies one group atomically.
+    - Duplicate merge: unions aliases into canonical, **adds each member slug as an alias on canonical** (so existing plan/session references still resolve via the alias-aware validator), unions sources, deletes other YAMLs.
+    - Cross-kind merge (`topic_is_X`): same alias-preserving merge into the target Protocol/Mechanism/Symptom.
+    - **Auto-routing**: if `kind=duplicate_topics` but the canonical doesn't exist in `topics/`, checks `protocols/` / `mechanisms/` / `symptoms/`. If found, auto-promotes to `topic_is_<kind>` and drops the canonical from the members-to-remove list. (Handles the common case where Haiku picks `5r-gut-protocol` as canonical for three duplicate 5R topics.)
+    - **Opt-in stub creation**: if the target Protocol/Mechanism/Symptom doesn't exist, returns `{needs_stub: true, target_kind, target_slug}`. UI prompts coach to confirm; on confirm, builds a minimal valid stub from the first member topic's `display_name` + `summary` (category=`other`, evidence_tier=`fm_specific_thin`, `notes_for_coach` reminder to flesh out fields), then proceeds with the merge.
+  - **`/catalogue/cleanup` page**: groups colored by kind (amber/violet/blue/rose). Each group: italic reason, canonical slug (editable inline), kind selector (editable inline so coach can switch `duplicate_topics` ↔ `topic_is_protocol` ↔ etc. without re-running analysis), member chips linking to `/catalogue/topics/<slug>`. Apply / Dismiss buttons. Re-run analysis any time.
+  - **New files**: `fm-database-web/scripts/{analyze-catalogue-duplicates,apply-cleanup}.py`, `fm-database-web/src/app/catalogue/cleanup/{page,cleanup-client,actions}.tsx`. Sidebar: 🧹 Cleanup link added under Catalogue.
+
+- **🏷️ Coach-friendly entity labels (UI only)** — internal taxonomy stays Topic/Mechanism/Symptom/Claim/Source/etc. but the UI now reads:
+  - Topics → **Conditions** 🩺 (Hashimoto's, PCOS, perimenopause)
+  - Mechanisms → **Root causes** 🧬 (HPA axis dysregulation, leaky gut)
+  - Symptoms → **Symptoms** 🤒 (unchanged)
+  - Supplements → **Supplements** 💊 (unchanged)
+  - Protocols → **Healing programs** 🏥 (5R gut, AIP, Whole30)
+  - Titrations → **Dose schedules** 📈
+  - Lab panels → **Lab panels** 🧪 (unchanged)
+  - Lab tests → **Lab markers** 🔬 (TSH, ferritin)
+  - Claims → **Evidence notes** 📚
+  - Sources → **References** 📖
+  - **Single source of truth**: `src/lib/fmdb/kinds.ts` with `KIND_LABELS` (plural/singular/description/emoji per kind). Helpers `kindLabel()` + `kindEmoji()`.
+  - **Surfaces updated**: `/catalogue` tabs (now show emoji + plural + per-tab one-line description), `/catalogue/[kind]/[slug]` (kind singular breadcrumb above heading), `/catalogue/cleanup` KIND_META + dropdown, `/search` result section headings + chip labels.
+  - **Catalogue table polish**: name-first layout (slug demoted to small mono subscript). Drops the redundant Slug column.
+
+- **📄 .md/.txt uploads on every report panel** — coach can use any external AI to convert specialised reports (PDFs, scanned forms, screenshots) into clean markdown, then drop the .md straight into the dashboard. Bypasses lossy PDF extraction + plays nicely with reports already summarised externally.
+  - Frontend: `accept` attribute extended on `lab-upload-panel`, `functional-test-panel`, `transcript-update-panel`, `genetic-report-panel`, `new-client-form` (intake transcript). Helper labels updated.
+  - Backend: `parse-functional-test.py` + `parse-genetic-report.py` detect `.md`/`.txt` by suffix, read as text, and send as a single text content block instead of a base64 PDF document attachment. PDF path unchanged. `extract-symptoms.py` and `extract-client-from-transcript.py` already handled non-PDF as text.
+
+**v0.63** — FM physician-tier upgrade: protocols, ATM triad, drug depletions, DUTCH/GI-MAP, titration schedules, lab tests/panels, inline ranges, letter QA, PM2 env fix:
 
 Covers PRs #33–#37 (merged to main) + current branch work:
 
@@ -993,15 +1024,16 @@ fm-database-web/                  # Path B — Next.js + shadcn rebuild of the c
                                   #   mutations — server components read YAML
                                   #   directly; Server Actions write back to YAML.
   src/
-    app/                          # 22 routes: /, /catalogue, /catalogue/[kind]/[slug]
-                                  #   (all 8 kinds), /plans, /plans/[slug] (10-tab
-                                  #   editor + plan-check sidebar + lifecycle panel +
-                                  #   client-facing export), /assess (Analyze + chat),
-                                  #   /clients (+ detail), /resources (+ detail +
-                                  #   /resources/generate), /mindmap (+ detail with
-                                  #   Mermaid), /backlog (with bulk actions +
-                                  #   Supplement Links tab), /sources (Add Source),
-                                  #   /search, /ingest.
+    app/                          # 23 routes: /, /catalogue, /catalogue/[kind]/[slug]
+                                  #   (all 8 kinds), /catalogue/cleanup (v0.64 — Haiku
+                                  #   duplicate / miscategorisation finder), /plans,
+                                  #   /plans/[slug] (10-tab editor + plan-check sidebar
+                                  #   + lifecycle panel + client-facing export),
+                                  #   /assess (Analyze + chat), /clients (+ detail),
+                                  #   /resources (+ detail + /resources/generate),
+                                  #   /mindmap (+ detail with Mermaid), /backlog (with
+                                  #   bulk actions + Supplement Links tab), /sources
+                                  #   (Add Source), /search, /ingest.
     components/                   # sidebar-nav, evidence-tier-badge,
                                   #   plan-status-badge, catalogue-table,
                                   #   multi-select (shared), + 7 shadcn ui/.
@@ -1013,9 +1045,27 @@ fm-database-web/                  # Path B — Next.js + shadcn rebuild of the c
                                   #   wrappers around Python suggester),
                                   #   shim.ts (runShim + PYTHON + SCRIPTS_DIR —
                                   #   extracted from anthropic.ts; used by any
-                                  #   Server Action that shells out to Python).
+                                  #   Server Action that shells out to Python),
+                                  #   kinds.ts (v0.64 — KIND_LABELS + kindLabel/Emoji;
+                                  #   single source of truth for coach-facing entity
+                                  #   names: Conditions / Root causes / Healing programs
+                                  #   / Dose schedules / Lab markers / Evidence notes /
+                                  #   References. Slugs in YAML stay unchanged).
   scripts/                        # Python shims — all use fm-database/.venv,
                                   #   all stdin/stdout JSON.
+    analyze-catalogue-duplicates.py  # v0.64 — Haiku scans all topics + reference
+                                  #   lists of protocols/mechanisms/symptoms; structured
+                                  #   tool-use returns groups: duplicate_topics,
+                                  #   topic_is_protocol/mechanism/symptom. Plan persisted
+                                  #   to data/_cleanup/latest_plan.yaml.
+    apply-cleanup.py              # v0.64 — applies one cleanup group atomically.
+                                  #   Adds member slugs as aliases on canonical so
+                                  #   existing references still resolve. Auto-routes
+                                  #   when canonical lives in another bucket. Opt-in
+                                  #   stub creation when target Protocol/Mechanism/
+                                  #   Symptom doesn't yet exist (returns
+                                  #   {needs_stub: true, target_kind, target_slug};
+                                  #   UI confirms then re-calls with create_stub=true).
     source-save.py                # Write new Source entity to fm-database/data/sources/.
                                   #   Validates SourceType + SourceQuality enums.
                                   #   Returns {ok, id, already_existed, error}.
@@ -1302,7 +1352,7 @@ npm run build && npm run type-check          # before committing
 # Email sending: add GMAIL_USER + GMAIL_APP_PASSWORD to .env.local
 # (see .env.local.example — needs a Google App Password, not your normal password)
 ```
-**22 routes:** `/`, `/search`, `/catalogue` (+ all 8 detail kinds), `/plans` (+ 3-tab editor: Protocol/Documents/Lifecycle + plan-check sidebar + Markdown/HTML export + 📧 Send to client), `/assess` (Analyze + chat with auto-rehydrated history), `/clients` (+ detail with `?tab=overview|sessions|plan` deep-linking + add-client form + contact widget + check-in form + 📤 SendPackageButton + preferences editor), `/resources` (+ detail + `/resources/generate` PubMed evidence brief), `/mindmap` (+ Mermaid detail), `/backlog` (with bulk reject + mark-added + Attach action + per-row 💡 suggestion chips + 🔗 Supplement Links tab), `/ingest` (📁 file upload: PDF/MD/images + 🔗 URL tab + ⚡ Approve all pending button + per-batch Review/Approve/Reject), `/sources` (Add Source — form writes directly to fm-database/data/sources/).
+**23 routes:** `/`, `/search`, `/catalogue` (+ all 8 detail kinds), `/catalogue/cleanup` (Haiku duplicate / miscategorisation finder — see v0.64), `/plans` (+ 3-tab editor: Protocol/Documents/Lifecycle + plan-check sidebar + Markdown/HTML export + 📧 Send to client), `/assess` (Analyze + chat with auto-rehydrated history), `/clients` (+ detail with `?tab=overview|sessions|plan` deep-linking + add-client form + contact widget + check-in form + 📤 SendPackageButton + preferences editor), `/resources` (+ detail + `/resources/generate` PubMed evidence brief), `/mindmap` (+ Mermaid detail), `/backlog` (with bulk reject + mark-added + Attach action + per-row 💡 suggestion chips + 🔗 Supplement Links tab), `/ingest` (📁 file upload: PDF/MD/images + 🔗 URL tab + ⚡ Approve all pending button + per-batch Review/Approve/Reject), `/sources` (Add Source — form writes directly to fm-database/data/sources/).
 
 **Key invariants:**
 - `ingest-action.py` calls `python -m fmdb.cli` (NOT `python fmdb/cli.py` — causes ImportError).
@@ -1350,6 +1400,9 @@ npm run build && npm run type-check          # before committing
 - **Validation report** (v0.63): `{stem}.validation.json` sidecar written alongside `{stem}.md` and `{stem}.html` by `saveMealPlan`. Read by `loadMealPlan` and returned as `result.validationReport`. `LetterValidationChange` interface in `lifecycle-actions.ts`.
 - **Letter types** (v0.63): `LetterType` = `"consolidated" | "meal_plan" | "supplement_plan" | "lifestyle_guide" | "exercise_plan"`. 5th type `exercise_plan` added. `has_exercise_plan` signal in lifecycle-actions checks for `{planSlug}-exercise_plan.md` to cross-reference in other letter types.
 - **`protocol_category` field** on Protocol YAML. `ProtocolCategory` enum: gut_healing, elimination_diet, hormone_balance, metabolic_reset, adrenal_recovery, detox_liver_support, anti_inflammatory, mitochondrial_support, thyroid_optimization, blood_sugar_regulation.
+- **Catalogue cleanup** (v0.64): plan persisted at `fm-database/data/_cleanup/latest_plan.yaml`. `loadCleanupPlanAction` reads from disk on page load (no API call); `analyzeCleanupAction` runs Haiku and overwrites. `applyCleanupGroupAction(group, dryRun, createStub)` — `createStub: true` is the second-call retry path after the first call returns `{needs_stub: true, target_kind, target_slug}`. Successful apply removes the group from the plan and revalidates `/catalogue` + `/catalogue/cleanup`. Cleanup never deletes a slug without first adding it as an alias on the canonical — old plan/session refs always stay resolvable via the alias-aware validator.
+- **Coach-friendly entity labels** (v0.64): UI labels live in `src/lib/fmdb/kinds.ts` (`KIND_LABELS`, `kindLabel`, `kindEmoji`). YAML field names + Pydantic models + Python CLI commands + the URL path segment (`/catalogue/topics/...`) all keep the original taxonomy. Internal slug → display mapping: topics=Conditions, mechanisms=Root causes, protocols=Healing programs, titration_protocols=Dose schedules, lab_tests=Lab markers, claims=Evidence notes, sources=References. Symptoms / supplements / lab_panels unchanged.
+- **`.md`/`.txt` uploads** (v0.64): five frontend `accept` attrs include `.md,.txt,text/markdown,text/plain` alongside PDF. `parse-functional-test.py` and `parse-genetic-report.py` detect `.md/.txt/.markdown` by `path.suffix.lower()` and skip the PDF document attachment — sending a single text content block instead. PDF path unchanged. Test-type detection in functional-test still runs against the text content.
 
 ### Path A — Streamlit UI (fallback, still maintained)
 ```bash
@@ -1446,7 +1499,7 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 - ✅ Backlog triage CLI (clean/show/promote/reject/attach) — 167 noise auto-rejected
 - ✅ Curated MindMap node linking + mining (60 nodes linked, 645 candidates queued)
 - ✅ Streamlit UI (Path A) with all 7 sidebar pages — fallback
-- ✅ Path B (Next.js + shadcn) — 22 routes, full feature parity + client letter
+- ✅ Path B (Next.js + shadcn) — 23 routes, full feature parity + client letter + catalogue cleanup tool
 - ✅ Assess page: hierarchical CategoryPicker, topics confidence %, session deduplication, FM ratio calculations, client quick snapshot, formatted synthesis notes
 - ✅ Transcript upload in Assess: extracts symptoms + lab values + measurements + medications + conditions via Haiku
 - ✅ Manual health data entry in Assess: free-text → Haiku parse, OR blank editable form. Merge from both sources.
@@ -1483,6 +1536,7 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 - ✅ **v0.61** — Supplement interaction checker (plan editor amber banner vs client meds) + recheck reminder derivation from plan_period_weeks + protocol diff viewer (colored +/-/@@ in Lifecycle tab) + session brief modal (📄 Brief button in Sessions tab, print-ready)
 - ✅ **v0.62** — Lab reference ranges (14 FM optimal defaults, 🟢/🔴 in health trends) + custom protocol template saving (lifecycle panel → ~/fm-plans/custom_templates/) + AiSensy broadcast panel (dashboard, direct API) + message templates library (client Overview, ~/fm-plans/message_templates.yaml) + quick note from pre-session brief modal
 - ✅ **v0.63** — FM physician-tier upgrade: 11 Protocol entities (5R gut/AIP/Whole30/low-FODMAP/weight-loss/adrenal/liver/cycle-sync/anti-inflammatory/mitochondrial/blood-sugar) + 11-factor weighted protocol scoring + ATM Triad driver cascade + 13 drug-nutrient depletion entities + DUTCH/GI-MAP PDF parser + 7 India-aware titration protocols (integer whole-unit steps) + 25 LabTest entities with FM+conventional ranges + 7 LabPanel bundles + pregnancy/lactation safety overlay + inline FM-vs-conventional range dots on every lab value in health-trends + Haiku letter QA pass (validation_report sidecar) + doctor-shareable session brief (conditions + meds + hand-off note) + PM2 env fix (ecosystem.config.js loads .env.local) + .env.local.example
+- ✅ **v0.64** — Catalogue cleanup tool (`/catalogue/cleanup`): Haiku scans all 318 Conditions in one call, returns groups (duplicates, miscategorisations); merge into canonical with deleted slugs preserved as aliases; opt-in stub creation when target Healing program / Root cause / Symptom doesn't yet exist; in-UI kind switcher. Coach-friendly entity labels (UI-only): Topics → Conditions, Mechanisms → Root causes, Protocols → Healing programs, Titrations → Dose schedules, Lab tests → Lab markers, Claims → Evidence notes, Sources → References — all routed through `src/lib/fmdb/kinds.ts`. Catalogue table: name-first layout. `.md`/`.txt` accepted on all five report-upload panels (lab, functional test, genetic, transcript update, intake) — `parse-functional-test.py` + `parse-genetic-report.py` patched to send text content blocks instead of PDF attachments when given markdown.
 
 **Features Backlog** (organised by area — keep this updated every session)
 
