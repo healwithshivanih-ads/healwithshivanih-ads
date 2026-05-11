@@ -116,7 +116,7 @@ def main():
         api = anthropic.Anthropic()
         full_text = ""
         with api.messages.stream(
-            model="claude-sonnet-4-5",
+            model="claude-sonnet-4-6",
             max_tokens=8000,
             system=SYSTEM,
             messages=messages,

@@ -2511,7 +2511,13 @@ def main() -> int:
 
     plan_slug = payload.get("plan_slug", "")
     client_id = payload.get("client_id", "")
-    weight_loss = payload.get("weight_loss") or {}
+    # Coach can send None / undefined / {} when weight loss isn't a goal.
+    # Defensively coerce to an empty dict so downstream `.get()` calls
+    # never blow up — `_calc_calorie_targets` already returns None for
+    # a dict without `enabled: true`, so the AI prompt skips the
+    # calorie/exercise block correctly.
+    weight_loss_raw = payload.get("weight_loss")
+    weight_loss = weight_loss_raw if isinstance(weight_loss_raw, dict) else {}
     letter_type = payload.get("letter_type") or "consolidated"
     coach_notes = (payload.get("coach_notes") or "").strip()
     existing_partials = payload.get("existing_partials") or {}
@@ -2550,21 +2556,34 @@ def main() -> int:
         json.dump({"ok": False, "markdown": "", "error": f"anthropic not installed: {e}"}, sys.stdout)
         return 1
 
-    prompt = _build_prompt(
-        plan,
-        client,
-        weight_loss=weight_loss,
-        letter_type=letter_type,
-        coach_notes=coach_notes,
-        existing_partials=existing_partials if isinstance(existing_partials, dict) else {},
-        has_exercise_plan=has_exercise_plan,
-    )
+    try:
+        prompt = _build_prompt(
+            plan,
+            client,
+            weight_loss=weight_loss,
+            letter_type=letter_type,
+            coach_notes=coach_notes,
+            existing_partials=existing_partials if isinstance(existing_partials, dict) else {},
+            has_exercise_plan=has_exercise_plan,
+        )
+    except Exception as e:
+        import traceback
+        tb = traceback.format_exc().splitlines()
+        last_lines = "\n".join(tb[-6:])  # innermost frames are usually informative
+        json.dump({
+            "ok": False, "markdown": "",
+            "error": (
+                f"Failed to build {letter_type} prompt (weight_loss="
+                f"{'set' if weight_loss else 'none'}): {type(e).__name__}: {e}\n{last_lines}"
+            ),
+        }, sys.stdout)
+        return 1
 
     client_api = Anthropic(api_key=api_key)
 
     try:
         with client_api.messages.stream(
-            model="claude-sonnet-4-5",
+            model="claude-sonnet-4-6",
             max_tokens=16000,
             system=(
                 "You are a skilled health coach writer. You produce warm, practical, "

@@ -203,7 +203,7 @@ def main():
         api = anthropic.Anthropic()
         full_text = ""
         with api.messages.stream(
-            model="claude-sonnet-4-5",
+            model="claude-sonnet-4-6",
             max_tokens=4000,
             system=(
                 "You are a health educator producing evidence-based client educational materials. "
