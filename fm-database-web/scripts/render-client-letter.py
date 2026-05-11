@@ -889,6 +889,41 @@ function printSchedule() {{
 """
 
 
+def _stringify_habit(h) -> str:
+    """Tracking habits / education modules / etc. may be stored as dicts
+    ({name, cadence} for habits; {module_title, ...} for education) or as
+    plain strings on older plan YAMLs. Coerce to a presentable string so
+    `', '.join(...)` doesn't choke."""
+    if h is None:
+        return ""
+    if isinstance(h, str):
+        return h.strip()
+    if isinstance(h, dict):
+        # Try common name keys in priority order
+        for k in ("name", "habit", "title", "module_title", "label", "description"):
+            v = h.get(k)
+            if isinstance(v, str) and v.strip():
+                cad = h.get("cadence") or h.get("frequency")
+                if isinstance(cad, str) and cad.strip():
+                    return f"{v.strip()} ({cad.strip()})"
+                return v.strip()
+        # Fallback: serialise the dict
+        return ", ".join(f"{k}={v}" for k, v in h.items() if v)
+    return str(h)
+
+
+def _stringify_list(items) -> list[str]:
+    """Normalise an arbitrary list-of-mixed-shapes into clean strings."""
+    if not items:
+        return []
+    out: list[str] = []
+    for it in items:
+        s = _stringify_habit(it)
+        if s:
+            out.append(s)
+    return out
+
+
 def _calc_calorie_targets(client: dict, wl: dict) -> dict | None:
     """
     Given client profile + weight_loss params, return phase-by-phase calorie targets.
@@ -1608,13 +1643,17 @@ def _build_prompt_lifestyle_guide(plan: dict, client: dict, coach_notes: str) ->
 
     topics = plan.get("assessment", {}).get("focus_topics", [])
     symptoms = plan.get("assessment", {}).get("presenting_symptoms", [])
-    lifestyle = plan.get("lifestyle_practices") or []
+    lifestyle = _stringify_list(plan.get("lifestyle_practices"))
     education = plan.get("education") or []
     labs = plan.get("lab_orders") or []
     tracking = plan.get("tracking") or {}
-    tracking_habits = (tracking.get("habits") or [])
-    tracking_symptoms = (tracking.get("monitor_symptoms") or [])
-    recheck_questions = (tracking.get("recheck_questions") or [])
+    tracking_habits = _stringify_list(tracking.get("habits"))
+    # Pydantic field is `symptoms_to_monitor`; older code read `monitor_symptoms`
+    # which silently returned []. Read both for compat.
+    tracking_symptoms = _stringify_list(
+        tracking.get("symptoms_to_monitor") or tracking.get("monitor_symptoms")
+    )
+    recheck_questions = _stringify_list(tracking.get("recheck_questions"))
 
     lifestyle_block = "\n".join(f"- {p}" for p in lifestyle) if lifestyle else "None specified."
 
@@ -1967,7 +2006,7 @@ def _build_prompt(plan: dict, client: dict, weight_loss: dict | None = None,
     topics = plan.get("assessment", {}).get("focus_topics", [])
     symptoms = plan.get("assessment", {}).get("presenting_symptoms", [])
     supplements = plan.get("supplement_protocol") or []
-    lifestyle = plan.get("lifestyle_practices") or []
+    lifestyle = _stringify_list(plan.get("lifestyle_practices"))
     nutrition = plan.get("nutrition") or {}
     education = plan.get("education") or []
     labs = plan.get("lab_orders") or []
@@ -2019,8 +2058,12 @@ Use these tips in relevant sections — don't dump them all in one place. Make t
     meal_timing = nutrition.get("meal_timing") or ""
 
     lifestyle_block = "\n".join(f"- {p}" for p in lifestyle) if lifestyle else ""
-    tracking_habits = (tracking.get("habits") or [])
-    tracking_symptoms = (tracking.get("monitor_symptoms") or [])
+    tracking_habits = _stringify_list(tracking.get("habits"))
+    # Pydantic field is `symptoms_to_monitor`; older code read `monitor_symptoms`
+    # which silently returned []. Read both for compat.
+    tracking_symptoms = _stringify_list(
+        tracking.get("symptoms_to_monitor") or tracking.get("monitor_symptoms")
+    )
 
     # ── Calorie targets (weight loss only) ───────────────────────────────────
     cal = _calc_calorie_targets(client, weight_loss or {})
