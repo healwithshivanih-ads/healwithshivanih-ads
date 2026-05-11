@@ -12,6 +12,7 @@ const CLIENT_NAV = [
 
 const KB_NAV = [
   { href: "/catalogue", label: "Catalogue" },
+  { href: "/catalogue/cleanup", label: "🧹 Cleanup" },
   { href: "/resources", label: "🧰 Resources" },
   { href: "/mindmap",   label: "🧭 Mind Map" },
   { href: "/backlog",   label: "📝 Backlog" },
