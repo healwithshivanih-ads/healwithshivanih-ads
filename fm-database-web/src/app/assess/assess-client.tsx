@@ -23,7 +23,7 @@ import {
   type SessionSummary,
   type CustomTemplate,
 } from "./actions";
-import { getMindMapPathways } from "./mindmap-actions";
+import { getMindMapPathways, peekSubgraphAction, type SubgraphReadiness } from "./mindmap-actions";
 import { IFMMatrixCard } from "./ifm-matrix-card";
 import { kindLabel } from "@/lib/fmdb/kinds";
 
@@ -2391,6 +2391,8 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
   const [sessionDate, setSessionDate] = useState<string>(new Date().toISOString().slice(0, 10));
   const [selectedSymptoms, setSelectedSymptoms] = useState<string[]>([]);
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
+  const [readiness, setReadiness] = useState<SubgraphReadiness | null>(null);
+  const [readinessPending, setReadinessPending] = useState(false);
   const [complaints, setComplaints] = useState("");
   const [uploads, setUploads] = useState<UploadedRef[]>([]);
   const [dryRun, setDryRun] = useState(false);
@@ -2482,6 +2484,22 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
       .then(setPriorSessions)
       .catch(() => setPriorSessions([]));
   }, [clientId]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Debounced subgraph readiness peek — refreshes as coach picks symptoms /
+  // conditions, so they see what the AI will have to work with BEFORE
+  // clicking Analyze. No API cost.
+  useEffect(() => {
+    const both = selectedSymptoms.length + selectedTopics.length;
+    if (both === 0) { setReadiness(null); return; }
+    let cancelled = false;
+    setReadinessPending(true);
+    const t = setTimeout(() => {
+      peekSubgraphAction(selectedSymptoms, selectedTopics).then((r) => {
+        if (!cancelled) { setReadiness(r); setReadinessPending(false); }
+      });
+    }, 350);
+    return () => { cancelled = true; clearTimeout(t); setReadinessPending(false); };
+  }, [selectedSymptoms.join(","), selectedTopics.join(",")]);  // eslint-disable-line
 
   // Auto-compute FM ratios whenever lab values change
   const labValuesKey = editableHealthData?.lab_values?.map(l => `${l.test_name}:${l.value}`).join("|") ?? "";
@@ -3475,6 +3493,54 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
           )}
           {!ratiosPending && previewRatios.length > 0 && (
             <ComputedRatiosCard ratios={previewRatios} />
+          )}
+
+          {readiness && readiness.ok && (() => {
+            const v = readiness.verdict;
+            const palette = v === "empty"
+              ? "bg-red-50 border-red-300 text-red-900"
+              : v === "thin"
+              ? "bg-amber-50 border-amber-300 text-amber-900"
+              : v === "moderate"
+              ? "bg-blue-50 border-blue-300 text-blue-900"
+              : "bg-emerald-50 border-emerald-300 text-emerald-900";
+            const emoji = v === "empty" ? "🛑" : v === "thin" ? "⚠️" : v === "moderate" ? "🔎" : "✅";
+            const headline = v === "empty"
+              ? "Catalogue subgraph empty — AI will have nothing to work with"
+              : v === "thin"
+              ? "Thin catalogue subgraph — AI may struggle to recommend"
+              : v === "moderate"
+              ? "Moderate subgraph — should be enough for synthesis"
+              : "Rich catalogue context — AI has plenty to work with";
+            const c = readiness.counts!;
+            return (
+              <div className={`rounded-md border-2 px-3 py-2.5 space-y-1.5 text-xs ${palette}`}>
+                <div className="font-semibold flex items-center gap-1.5">
+                  <span>{emoji}</span>
+                  <span>{headline}</span>
+                </div>
+                <div className="flex flex-wrap gap-x-3 gap-y-0.5 font-mono text-[11px] opacity-90">
+                  <span>conditions: <strong>{c.topics}</strong></span>
+                  <span>root causes: <strong>{c.mechanisms}</strong></span>
+                  <span>supplements: <strong>{c.supplements}</strong></span>
+                  <span>protocols: <strong>{c.protocols}</strong></span>
+                  <span>evidence notes: <strong>{c.claims}</strong></span>
+                </div>
+                {(readiness.unmatched_symptoms?.length ?? 0) + (readiness.unmatched_topics?.length ?? 0) > 0 && (
+                  <div className="text-[10px] opacity-80">
+                    Not in catalogue: {[...(readiness.unmatched_symptoms ?? []), ...(readiness.unmatched_topics ?? [])].join(", ")}
+                  </div>
+                )}
+                {(v === "empty" || v === "thin") && (
+                  <p className="text-[10px] opacity-90 mt-0.5">
+                    Tip: pick a more general condition (e.g. <em>hypothyroidism</em>) or related symptoms (<em>fatigue</em>, <em>brain-fog</em>) to broaden the subgraph. You can also analyse anyway — the AI will work with whatever's there.
+                  </p>
+                )}
+              </div>
+            );
+          })()}
+          {readinessPending && (
+            <p className="text-[10px] text-muted-foreground">Checking catalogue coverage…</p>
           )}
 
           <label className="flex items-center gap-2 text-xs text-muted-foreground">

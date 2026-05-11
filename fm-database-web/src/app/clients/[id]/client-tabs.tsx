@@ -43,6 +43,7 @@ import { DiscoveryForm } from "./discovery-form";
 import { IFMTrend } from "./ifm-trend";
 import { LabComparison } from "./lab-comparison";
 import { LabReferenceRangesEditor } from "./lab-reference-ranges";
+import { TimelineEditor } from "./timeline-editor";
 import { MedicationImpactPanel } from "./medication-impact-panel";
 import { FunctionalTestPanel } from "./functional-test-panel";
 import { GeneticReportPanel } from "./genetic-report-panel";
@@ -900,6 +901,12 @@ export function ClientPageTabs({
               );
               return latestIntakeWithTimeline?.ifm_timeline;
             })()}
+          />
+
+          {/* Timeline — add events post-intake */}
+          <TimelineEditor
+            clientId={clientId}
+            initialEvents={(client.timeline_events ?? []) as Array<{ year?: number; date?: string; event: string; category?: string }>}
           />
 
           {/* FM Reference Ranges */}

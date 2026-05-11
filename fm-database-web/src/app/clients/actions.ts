@@ -691,6 +691,64 @@ export async function updateClientProfile(
 
 // ---------------------------------------------------------------------------
 
+export interface ClientTimelineEvent {
+  year?: number | null;
+  date?: string | null;
+  event: string;
+  category?: string | null;
+}
+
+export interface UpdateClientTimelineInput {
+  client_id: string;
+  timeline_events: ClientTimelineEvent[];
+}
+
+export type UpdateClientTimelineResult =
+  | { ok: true }
+  | { ok: false; error: string };
+
+/** Overwrites client.timeline_events with the given list. Caller is
+ *  responsible for merging with the existing list if doing an append. */
+export async function updateClientTimeline(
+  input: UpdateClientTimelineInput,
+): Promise<UpdateClientTimelineResult> {
+  const clientYaml = path.join(
+    getPlansRoot(),
+    "clients",
+    input.client_id,
+    "client.yaml",
+  );
+  try {
+    const yaml = await import("js-yaml");
+    const raw = await fs.readFile(clientYaml, "utf8");
+    const data = yaml.load(raw) as Record<string, unknown>;
+    // Clean: drop empty/whitespace events, normalise undefined → omit.
+    const cleaned = (input.timeline_events ?? [])
+      .filter((e) => e && typeof e.event === "string" && e.event.trim() !== "")
+      .map((e) => {
+        const out: Record<string, unknown> = { event: e.event.trim() };
+        if (e.year != null) out.year = e.year;
+        if (e.date) out.date = e.date;
+        if (e.category) out.category = e.category;
+        return out;
+      });
+    data.timeline_events = cleaned;
+    data.updated_at = new Date().toISOString();
+    await fs.writeFile(
+      clientYaml,
+      yaml.dump(data, { noRefs: true, sortKeys: false }),
+      "utf8",
+    );
+    revalidatePath(`/clients/${input.client_id}`);
+    return { ok: true };
+  } catch (err) {
+    const e = err as { message?: string };
+    return { ok: false, error: e.message ?? "Failed to update timeline" };
+  }
+}
+
+// ---------------------------------------------------------------------------
+
 export interface UpdatePreferencesInput {
   client_id: string;
   dietary_preference?: string;

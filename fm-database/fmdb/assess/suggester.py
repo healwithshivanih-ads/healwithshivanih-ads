@@ -230,7 +230,7 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
         },
         "synthesis_notes": {
             "type": "string",
-            "description": "Coach-facing meta commentary: what's confident, what's a stretch, what to watch out for.",
+            "description": "Coach-facing meta commentary for THIS client: what's confident, what's a stretch, what to watch out for, key cross-system pattern you noticed. Keep to 2–6 sentences max. Do NOT write meta-process commentary about prior sessions or catalogue completeness — put any catalogue gap notes in `catalogue_additions_suggested` only. Do NOT lecture the coach.",
         },
         "catalogue_additions_suggested": {
             "type": "array",
@@ -278,8 +278,10 @@ HARD RULES (violating these breaks the downstream system):
 1. Every `mechanism_slug`, `topic_slug`, `symptom_slug`, `cooking_adjustment_slug`,
    `home_remedy_slug`, and `supplement_slug` you reference MUST appear in the
    catalogue subgraph in the user message. Do NOT invent slugs. If something
-   you'd want to suggest isn't in the catalogue, leave it out and mention it
-   in `synthesis_notes` so it can be added later.
+   you'd want to suggest isn't in the catalogue, leave it out and add it as
+   an entry in `catalogue_additions_suggested` so the coach can author it
+   later. Do NOT write coach-facing lectures about catalogue gaps in
+   `synthesis_notes` — that field is for clinical synthesis of THIS client.
 
 2. Respect `evidence_tier`:
    - `strong`: teach confidently
