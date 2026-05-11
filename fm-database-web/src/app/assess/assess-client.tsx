@@ -25,6 +25,22 @@ import {
 } from "./actions";
 import { getMindMapPathways } from "./mindmap-actions";
 import { IFMMatrixCard } from "./ifm-matrix-card";
+import { kindLabel } from "@/lib/fmdb/kinds";
+
+/** Map a singular internal kind name (topic/mechanism/symptom/...) to a
+ *  coach-friendly singular label. Falls back to the raw kind. */
+function prettyKindSingular(kind: unknown): string {
+  if (typeof kind !== "string" || !kind) return "Item";
+  // Internal kind names are singular; KIND_LABELS keys are plural directory names.
+  const pluralMap: Record<string, string> = {
+    topic: "topics", mechanism: "mechanisms", symptom: "symptoms",
+    supplement: "supplements", protocol: "protocols", claim: "claims",
+    source: "sources", lab_test: "lab_tests", lab_panel: "lab_panels",
+    home_remedy: "home_remedies", cooking_adjustment: "cooking_adjustments",
+    titration_protocol: "titration_protocols",
+  };
+  return kindLabel(pluralMap[kind] ?? kind, "singular");
+}
 import {
   resolveClientFileAction,
   parseTranscriptForClientByPath,
@@ -68,6 +84,13 @@ interface Props {
    *  the picker. When unset, both Women's Health and Men's Health sections
    *  are shown so coach never loses access to a relevant symptom. */
   clientSex?: string | null;
+  /** Health snapshots already extracted from prior reports. Used to:
+   *  (1) pre-populate the editable health-data card so the coach starts
+   *      from the latest known labs/meds/conditions instead of a blank
+   *      form, and
+   *  (2) skip re-extraction when the coach attaches a file whose
+   *      `source` is already represented in a snapshot. */
+  priorSnapshots?: NonNullable<Client["health_snapshots"]>;
 }
 
 interface UploadedRef {
@@ -950,7 +973,7 @@ function SuggestionsView({
       {topics.length > 0 && (
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm">🗂️ Topics in play</CardTitle>
+            <CardTitle className="text-sm">🩺 Conditions in play</CardTitle>
           </CardHeader>
           <CardContent className="space-y-2 text-sm">
             {topics.map((t) => {
@@ -1282,7 +1305,7 @@ function SuggestionsView({
                 <div key={k} className="flex items-start justify-between gap-3 border rounded-md p-2">
                   <div className="flex-1">
                     <div className="font-medium">
-                      {String(ed.target_kind ?? "topic")}: {String(ed.target_slug ?? "?")}
+                      {prettyKindSingular(ed.target_kind)}: {String(ed.target_slug ?? "?")}
                     </div>
                     <div className="text-xs">{String(ed.client_facing_summary ?? "")}</div>
                   </div>
@@ -2217,7 +2240,7 @@ function PlanBriefCard({
   );
 }
 
-export function AssessClient({ clients = [], symptoms, topics, initialClientId, initialSessions = [], fixedClientId, existingFiles = [], clientSex }: Props) {
+export function AssessClient({ clients = [], symptoms, topics, initialClientId, initialSessions = [], fixedClientId, existingFiles = [], clientSex, priorSnapshots = [] }: Props) {
   const router = useRouter();
   const [clientId, setClientId] = useState<string>(
     fixedClientId ?? initialClientId ?? clients[0]?.client_id ?? ""
@@ -2265,8 +2288,44 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
   const [manualText, setManualText] = useState("");
   const [manualParsePending, startManualParse] = useTransition();
   const [showManualEntry, setShowManualEntry] = useState(false);
-  // Editable health data (merged from transcript + manual entry)
-  const [editableHealthData, setEditableHealthData] = useState<ExtractedHealthData | null>(null);
+  // Editable health data (merged from transcript + manual entry).
+  // Seeded from prior snapshots so the coach starts with the latest known
+  // labs / measurements / meds / conditions instead of a blank form.
+  const initialHealthDataFromSnapshots = useMemo(() => {
+    if (!priorSnapshots.length) return null;
+    // Merge oldest → newest so most-recent values win on conflicts.
+    const sorted = [...priorSnapshots].sort((a, b) =>
+      (a.date ?? "").localeCompare(b.date ?? "")
+    );
+    let merged: ExtractedHealthData | null = null;
+    for (const snap of sorted) {
+      const m: ExtractedMeasurements = {
+        height_cm: snap.measurements?.height_cm ?? null,
+        weight_kg: snap.measurements?.weight_kg ?? null,
+        bp_systolic: snap.measurements?.bp_systolic ?? null,
+        bp_diastolic: snap.measurements?.bp_diastolic ?? null,
+        hr_bpm: snap.measurements?.hr_bpm ?? null,
+        waist_cm: snap.measurements?.waist_cm ?? null,
+        hip_cm: snap.measurements?.hip_cm ?? null,
+      };
+      const next: ExtractedHealthData = {
+        lab_values: snap.lab_values ?? [],
+        measurements: m,
+        medications: snap.medications ?? [],
+        conditions: snap.conditions ?? [],
+      };
+      merged = mergeHealthData(merged, next);
+    }
+    return merged;
+  }, [priorSnapshots]);
+  const [editableHealthData, setEditableHealthData] = useState<ExtractedHealthData | null>(initialHealthDataFromSnapshots);
+  /** Source filenames whose data is already represented in a prior snapshot.
+   *  Used to skip the (slow + paid) re-extraction step when the coach
+   *  re-attaches a previously-uploaded file. */
+  const alreadyExtracted = useMemo(
+    () => new Set(priorSnapshots.map((s) => s.source).filter(Boolean) as string[]),
+    [priorSnapshots],
+  );
   // Pre-analyse FM ratios computed from editableHealthData.lab_values
   const [previewRatios, setPreviewRatios] = useState<ComputedRatio[]>([]);
   const [ratiosPending, startRatiosCompute] = useTransition();
@@ -2451,14 +2510,23 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
    * Attach a file that already lives in the client's files/ dir without
    * re-uploading it. Resolves the absolute path on the server, adds it to
    * `uploads`, and runs lab extraction (same flow as a fresh upload).
+   *
+   * If the filename is already represented in a prior health snapshot AND
+   * the caller didn't pass `force: true`, the extraction is skipped — the
+   * snapshot data is already loaded into editableHealthData on mount.
    */
-  const attachExistingFile = (filename: string, kind: "lab_report" | "food_journal") => {
+  const attachExistingFile = (
+    filename: string,
+    kind: "lab_report" | "food_journal",
+    opts: { force?: boolean } = {},
+  ) => {
     if (!clientId) return;
     if (uploads.some((u) => u.filename === filename && u.kind === kind)) {
       toast.info(`${filename}: already attached`);
       return;
     }
     const cid = clientId;
+    const skipExtract = !opts.force && kind === "lab_report" && alreadyExtracted.has(filename);
     startUpload(async () => {
       const res = await resolveClientFileAction(cid, filename);
       if (!res.ok) {
@@ -2469,6 +2537,10 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
         if (u.some((x) => x.filename === filename && x.kind === kind)) return u;
         return [...u, { filePath: res.filePath, filename, mime_type: res.mimeType, kind }];
       });
+      if (skipExtract) {
+        toast.success(`${filename}: attached (using prior extraction — click Re-extract to refresh)`);
+        return;
+      }
       if (kind === "lab_report") {
         setExtractingLabFiles((prev) => new Set([...prev, filename]));
         try {
@@ -2577,7 +2649,7 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
       uploads.length === 0 &&
       !complaints.trim()
     ) {
-      setError("Pick at least one symptom or topic, upload a file, or enter complaints");
+      setError("Pick at least one symptom or condition, upload a file, or enter complaints");
       return;
     }
     setAnalyzeStartedAt(Date.now());
@@ -2745,7 +2817,7 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
                     <span className="font-mono text-xs text-muted-foreground w-24 shrink-0">{s.date ?? "—"}</span>
                     <span className="flex-1 text-xs truncate text-muted-foreground">
                       {(s.selected_symptoms?.length ?? 0) > 0 ? `${s.selected_symptoms!.length} symptoms` : "—"}
-                      {(s.selected_topics?.length ?? 0) > 0 ? ` · ${s.selected_topics!.length} topics` : ""}
+                      {(s.selected_topics?.length ?? 0) > 0 ? ` · ${s.selected_topics!.length} conditions` : ""}
                       {s.driver_count > 0 ? ` · ${s.driver_count} drivers` : ""}
                       {s.supplement_count > 0 ? ` · ${s.supplement_count} supplements` : ""}
                     </span>
@@ -2994,33 +3066,62 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
                   </summary>
                   <div className="px-2 pb-2 pt-1 space-y-1">
                     <p className="text-[11px] text-muted-foreground">
-                      Skip re-upload — pick a file from a previous discovery / intake / lab upload. Lab extraction will run on it.
+                      Skip re-upload — attach a file from a previous discovery / intake / lab upload.
+                      {alreadyExtracted.size > 0 && (
+                        <>
+                          {" "}Files marked <span className="font-semibold text-emerald-700">✓ prior</span> already
+                          have their values loaded; click <span className="font-semibold">♻️ Re-extract</span> only if you
+                          want to refresh from the original PDF.
+                        </>
+                      )}
                     </p>
                     <div className="flex flex-wrap gap-1.5">
                       {labLike.map((f) => {
                         const isAttached = uploads.some((u) => u.filename === f);
                         const isExtractingThis = extractingLabFiles.has(f);
+                        const isPriorExtracted = alreadyExtracted.has(f);
                         return (
-                          <button
-                            key={f}
-                            type="button"
-                            onClick={() => attachExistingFile(f, "lab_report")}
-                            disabled={uploadPending || isAttached}
-                            className={[
-                              "text-[11px] px-2 py-1 rounded border transition-colors",
-                              isAttached
-                                ? "bg-emerald-50 border-emerald-300 text-emerald-700 cursor-default"
-                                : "bg-background border-input hover:bg-muted hover:border-foreground/30",
-                              "disabled:opacity-60",
-                            ].join(" ")}
-                            title={isAttached ? "Already attached" : `Attach ${f} as lab report`}
-                          >
-                            {isAttached ? "✓ " : "📎 "}
-                            {f}
-                            {isExtractingThis && (
-                              <span className="ml-1 inline-block w-2 h-2 border border-amber-500 border-t-transparent rounded-full animate-spin align-middle" />
+                          <span key={f} className="inline-flex">
+                            <button
+                              type="button"
+                              onClick={() => attachExistingFile(f, "lab_report")}
+                              disabled={uploadPending || isAttached}
+                              className={[
+                                "text-[11px] px-2 py-1 border transition-colors",
+                                isPriorExtracted ? "rounded-l" : "rounded",
+                                isAttached
+                                  ? "bg-emerald-50 border-emerald-300 text-emerald-700 cursor-default"
+                                  : isPriorExtracted
+                                    ? "bg-emerald-50/60 border-emerald-200 text-emerald-800 hover:bg-emerald-50"
+                                    : "bg-background border-input hover:bg-muted hover:border-foreground/30",
+                                "disabled:opacity-60",
+                              ].join(" ")}
+                              title={
+                                isAttached
+                                  ? "Already attached"
+                                  : isPriorExtracted
+                                    ? `Attach ${f} (using prior extracted values — no API call)`
+                                    : `Attach ${f} and extract lab values`
+                              }
+                            >
+                              {isAttached ? "✓ " : isPriorExtracted ? "✓ prior · " : "📎 "}
+                              {f}
+                              {isExtractingThis && (
+                                <span className="ml-1 inline-block w-2 h-2 border border-amber-500 border-t-transparent rounded-full animate-spin align-middle" />
+                              )}
+                            </button>
+                            {isPriorExtracted && !isAttached && (
+                              <button
+                                type="button"
+                                onClick={() => attachExistingFile(f, "lab_report", { force: true })}
+                                disabled={uploadPending}
+                                className="text-[11px] px-1.5 py-1 rounded-r border border-l-0 border-emerald-200 bg-white hover:bg-amber-50 hover:border-amber-300 disabled:opacity-60"
+                                title={`Re-run extraction on ${f} (slow + uses API credit)`}
+                              >
+                                ♻️
+                              </button>
                             )}
-                          </button>
+                          </span>
                         );
                       })}
                     </div>
@@ -3170,17 +3271,17 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
         </CardContent>
       </Card>
 
-      {/* Step 4: topics */}
+      {/* Step 4: conditions (formerly "topics") */}
       <Card>
         <CardHeader className="pb-2">
-          <CardTitle className="text-base">{stepNum(4)} Topics <span className="text-sm font-normal text-muted-foreground">(optional)</span></CardTitle>
+          <CardTitle className="text-base">{stepNum(4)} 🩺 Conditions <span className="text-sm font-normal text-muted-foreground">(optional)</span></CardTitle>
         </CardHeader>
         <CardContent>
           <InlinePicker
             options={topics}
             value={selectedTopics}
             onChange={setSelectedTopics}
-            placeholder="Type to filter clinical areas…"
+            placeholder="Type to filter clinical conditions…"
             maxHeight="14rem"
           />
         </CardContent>

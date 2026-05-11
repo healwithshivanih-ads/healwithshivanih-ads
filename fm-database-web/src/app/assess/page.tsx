@@ -64,7 +64,7 @@ export default async function AssessPage({
       <div>
         <h1 className="text-3xl font-bold">🧠 Assess &amp; Suggest</h1>
         <p className="text-muted-foreground mt-1 text-sm">
-          Pick a client, drop in symptoms / topics / lab reports / food log, and the
+          Pick a client, drop in symptoms / conditions / lab reports / food log, and the
           tool synthesizes possible drivers + interventions drawn from the catalogue.
           Each Analyze run is saved as a session for the client.
         </p>

@@ -1149,6 +1149,7 @@ export function ClientPageTabs({
                   initialSessions={sessions}
                   existingFiles={uploadedFiles}
                   clientSex={(client as { sex?: string }).sex ?? null}
+                  priorSnapshots={client.health_snapshots ?? []}
                 />
               </div>
             )}
