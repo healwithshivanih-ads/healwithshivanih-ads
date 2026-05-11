@@ -216,8 +216,29 @@ def main() -> int:
         return 1
 
     import base64
-    pdf_bytes = pdf_path.read_bytes()
-    pdf_b64 = base64.standard_b64encode(pdf_bytes).decode("utf-8")
+    is_text = pdf_path.suffix.lower() in (".md", ".txt", ".markdown")
+    if is_text:
+        report_text = pdf_path.read_text(errors="replace")
+        user_content: list[dict] = [
+            {"type": "text", "text": (
+                "Extract every clinically relevant SNP with genotype + FM implications.\n\n"
+                "--- REPORT CONTENT ---\n" + report_text
+            )},
+        ]
+    else:
+        pdf_bytes = pdf_path.read_bytes()
+        pdf_b64 = base64.standard_b64encode(pdf_bytes).decode("utf-8")
+        user_content = [
+            {
+                "type": "document",
+                "source": {
+                    "type": "base64",
+                    "media_type": "application/pdf",
+                    "data": pdf_b64,
+                },
+            },
+            {"type": "text", "text": "Extract every clinically relevant SNP with genotype + FM implications."},
+        ]
 
     aclient = Anthropic(api_key=api_key)
     try:
@@ -227,20 +248,7 @@ def main() -> int:
             system=_SYSTEM,
             tools=[_TOOL_SCHEMA],
             tool_choice={"type": "tool", "name": "extract_genetic_findings"},
-            messages=[{
-                "role": "user",
-                "content": [
-                    {
-                        "type": "document",
-                        "source": {
-                            "type": "base64",
-                            "media_type": "application/pdf",
-                            "data": pdf_b64,
-                        },
-                    },
-                    {"type": "text", "text": "Extract every clinically relevant SNP with genotype + FM implications."},
-                ],
-            }],
+            messages=[{"role": "user", "content": user_content}],
         ) as stream:
             resp = stream.get_final_message()
     except Exception as e:

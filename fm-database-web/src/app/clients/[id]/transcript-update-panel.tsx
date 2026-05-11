@@ -130,7 +130,7 @@ export function TranscriptUpdatePanel({ clientId }: Props) {
               <input
                 ref={fileRef}
                 type="file"
-                accept=".txt,.pdf,text/plain,application/pdf"
+                accept=".txt,.pdf,.md,text/plain,application/pdf,text/markdown"
                 onChange={(e) => { setFileName(e.target.files?.[0]?.name ?? ""); setTranscriptUrl(""); }}
                 className="block w-full text-sm text-muted-foreground file:mr-3 file:py-1.5 file:px-3 file:rounded file:border-0 file:text-xs file:font-medium file:bg-violet-100 file:text-violet-700 hover:file:bg-violet-200 cursor-pointer"
               />

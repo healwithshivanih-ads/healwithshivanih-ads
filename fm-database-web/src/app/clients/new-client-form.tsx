@@ -379,8 +379,8 @@ export function NewClientForm() {
           </div>
           <div className="grid gap-3 sm:grid-cols-[1fr_auto_1fr]">
             <div className="space-y-1">
-              <label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Upload file (.txt or .pdf)</label>
-              <input ref={fileRef} type="file" accept=".txt,.pdf,text/plain,application/pdf"
+              <label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Upload file (.txt, .md or .pdf)</label>
+              <input ref={fileRef} type="file" accept=".txt,.pdf,.md,text/plain,application/pdf,text/markdown"
                 onChange={(e) => { setTranscriptFileName(e.target.files?.[0]?.name ?? ""); setTranscriptUrl(""); }}
                 className="block w-full text-sm text-muted-foreground file:mr-3 file:py-1.5 file:px-3 file:rounded file:border-0 file:text-xs file:font-medium file:bg-violet-100 file:text-violet-700 hover:file:bg-violet-200 cursor-pointer" />
               {transcriptFileName && <p className="text-xs text-violet-700">📄 {transcriptFileName}</p>}

@@ -343,6 +343,10 @@ def _read_pdf(path: Path) -> tuple[bytes, str]:
     return raw, text
 
 
+def _is_text_input(path: Path) -> bool:
+    return path.suffix.lower() in (".md", ".txt", ".markdown")
+
+
 def _save_findings(client_id: str, test_type: str, payload: dict) -> Path:
     out_dir = PLANS_ROOT / "clients" / client_id / "functional_tests"
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -384,11 +388,21 @@ def main() -> int:
         json.dump({"ok": False, "error": "ANTHROPIC_API_KEY not set"}, sys.stdout)
         return 1
 
-    try:
-        raw_pdf, text = _read_pdf(file_path)
-    except Exception as e:
-        json.dump({"ok": False, "error": f"could not read PDF: {e}"}, sys.stdout)
-        return 1
+    text_input = _is_text_input(file_path)
+    raw_pdf: bytes = b""
+    text: str = ""
+    if text_input:
+        try:
+            text = file_path.read_text(errors="replace")
+        except Exception as e:
+            json.dump({"ok": False, "error": f"could not read text file: {e}"}, sys.stdout)
+            return 1
+    else:
+        try:
+            raw_pdf, text = _read_pdf(file_path)
+        except Exception as e:
+            json.dump({"ok": False, "error": f"could not read PDF: {e}"}, sys.stdout)
+            return 1
 
     test_type = forced_type if forced_type in ("dutch", "gi_map") else _detect_test_type(text)
     if test_type == "unknown":
@@ -426,17 +440,27 @@ def main() -> int:
         system = GIMAP_SYSTEM
         tool_name = "report_gimap"
 
-    user_content = [
-        {
-            "type": "document",
-            "source": {
-                "type": "base64",
-                "media_type": "application/pdf",
-                "data": base64.standard_b64encode(raw_pdf).decode("ascii"),
+    extraction_instruction = (
+        f"Extract structured findings from this {test_type.upper()} report. "
+        f"Use the {tool_name} tool. Be honest — leave fields empty rather than fabricate."
+    )
+    if text_input:
+        # Plain text / markdown: send as text content block (no PDF attachment).
+        user_content = [
+            {"type": "text", "text": f"{extraction_instruction}\n\n--- REPORT CONTENT ---\n{text}"},
+        ]
+    else:
+        user_content = [
+            {
+                "type": "document",
+                "source": {
+                    "type": "base64",
+                    "media_type": "application/pdf",
+                    "data": base64.standard_b64encode(raw_pdf).decode("ascii"),
+                },
             },
-        },
-        {"type": "text", "text": f"Extract structured findings from this {test_type.upper()} report. Use the {tool_name} tool. Be honest — leave fields empty rather than fabricate."},
-    ]
+            {"type": "text", "text": extraction_instruction},
+        ]
 
     client_api = Anthropic(api_key=api_key)
     try:

@@ -116,7 +116,7 @@ export function FunctionalTestPanel({ clientId }: Props) {
             </span>
           )}
           {!hasAny && (
-            <span className="text-[11px] text-indigo-700/80">Upload a DUTCH or GI-MAP PDF to extract structured findings</span>
+            <span className="text-[11px] text-indigo-700/80">Upload a DUTCH or GI-MAP report (PDF or .md/.txt) to extract structured findings</span>
           )}
         </div>
         <span className="text-xs text-indigo-800">{open ? "▲" : "▼"}</span>
@@ -128,7 +128,7 @@ export function FunctionalTestPanel({ clientId }: Props) {
           <label className="block rounded-lg border-2 border-dashed border-indigo-300 bg-white p-3 cursor-pointer hover:bg-indigo-50/40 transition-colors">
             <div className="flex items-center justify-between gap-3 flex-wrap">
               <div className="text-xs">
-                <div className="font-semibold text-indigo-900">📎 Upload PDF</div>
+                <div className="font-semibold text-indigo-900">📎 Upload report</div>
                 <div className="text-[11px] text-muted-foreground mt-0.5">
                   Auto-detects: DUTCH (Precision Analytical) · GI-MAP (Diagnostic Solutions). Sonnet parse, ~30-60s, ~$0.30-0.60 per test.
                 </div>
@@ -141,7 +141,7 @@ export function FunctionalTestPanel({ clientId }: Props) {
             </div>
             <input
               type="file"
-              accept="application/pdf"
+              accept="application/pdf,.md,.txt,text/markdown,text/plain"
               disabled={isParsing}
               className="sr-only"
               onChange={(e) => {

@@ -115,12 +115,12 @@ export function GeneticReportPanel({ clientId }: Props) {
       {open && (
         <div className="space-y-2 rounded border-2 border-dashed border-violet-200 bg-violet-50/30 p-3">
           <p className="text-xs text-muted-foreground">
-            Upload PDF from mapmygenome, genomepatri, MedGenome, dnalabsindia, or any genetic / SNP panel.
+            Upload PDF (or .md/.txt) from mapmygenome, genomepatri, MedGenome, dnalabsindia, or any genetic / SNP panel.
             Sonnet extracts gene · variant · genotype · clinical implication · FM recommendation.
           </p>
           <input
             type="file"
-            accept="application/pdf"
+            accept="application/pdf,.md,.txt,text/markdown,text/plain"
             disabled={isParsing}
             onChange={(e) => {
               const f = e.target.files?.[0];

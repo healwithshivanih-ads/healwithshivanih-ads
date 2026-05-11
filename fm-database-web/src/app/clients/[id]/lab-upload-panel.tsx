@@ -230,7 +230,7 @@ export function LabUploadPanel({ clientId }: Props) {
         <div>
           <div className="font-medium text-sm flex items-center gap-1.5">🧪 Upload lab report</div>
           <p className="text-xs text-muted-foreground mt-0.5">
-            PDF or image → extracts lab values → saves as health snapshot + flags FM patterns.
+            PDF, image, or markdown/text → extracts lab values → saves as health snapshot + flags FM patterns.
           </p>
         </div>
         <button
@@ -246,7 +246,7 @@ export function LabUploadPanel({ clientId }: Props) {
           <input
             ref={fileRef}
             type="file"
-            accept=".pdf,.png,.jpg,.jpeg,.webp,application/pdf,image/*"
+            accept=".pdf,.png,.jpg,.jpeg,.webp,.md,.txt,application/pdf,image/*,text/markdown,text/plain"
             onChange={(e) => setFileName(e.target.files?.[0]?.name ?? "")}
             className="block w-full text-sm text-muted-foreground file:mr-3 file:py-1.5 file:px-3 file:rounded file:border-0 file:text-xs file:font-medium file:bg-teal-100 file:text-teal-700 hover:file:bg-teal-200 cursor-pointer"
           />
