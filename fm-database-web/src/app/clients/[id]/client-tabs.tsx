@@ -44,6 +44,7 @@ import { IFMTrend } from "./ifm-trend";
 import { LabComparison } from "./lab-comparison";
 import { LabReferenceRangesEditor } from "./lab-reference-ranges";
 import { TimelineEditor } from "./timeline-editor";
+import { ApiUsagePanel } from "./api-usage-panel";
 import { MedicationImpactPanel } from "./medication-impact-panel";
 import { FunctionalTestPanel } from "./functional-test-panel";
 import { GeneticReportPanel } from "./genetic-report-panel";
@@ -924,6 +925,9 @@ export function ClientPageTabs({
 
           {/* FM Reference Ranges */}
           <LabReferenceRangesEditor clientId={clientId} />
+
+          {/* AI API spend tracker — hidden until at least 1 call recorded */}
+          <ApiUsagePanel clientId={clientId} />
 
           {/* Dietary & lifestyle preferences */}
           <PreferencesEditor

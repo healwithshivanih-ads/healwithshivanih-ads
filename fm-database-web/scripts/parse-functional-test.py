@@ -463,9 +463,10 @@ def main() -> int:
         ]
 
     client_api = Anthropic(api_key=api_key)
+    _fn_model = os.environ.get("FMDB_FUNCTIONAL_TEST_MODEL", "claude-sonnet-4-6")
     try:
         with client_api.messages.stream(
-            model=os.environ.get("FMDB_FUNCTIONAL_TEST_MODEL", "claude-sonnet-4-6"),
+            model=_fn_model,
             max_tokens=8000,
             system=system,
             tools=[tool],
@@ -473,6 +474,17 @@ def main() -> int:
             messages=[{"role": "user", "content": user_content}],
         ) as stream:
             resp = stream.get_final_message()
+        try:
+            from fmdb.usage import log_usage as _log_usage
+            _log_usage(
+                client_id=client_id,
+                script="parse-functional-test.py",
+                model=_fn_model,
+                usage=resp.usage,
+                notes=f"test_type={test_type}",
+            )
+        except Exception:
+            pass
     except Exception as e:
         json.dump({"ok": False, "test_type": test_type, "error": f"API call failed: {e}"}, sys.stdout)
         return 1

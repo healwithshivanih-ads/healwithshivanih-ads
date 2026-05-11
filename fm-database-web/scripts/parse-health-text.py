@@ -77,6 +77,7 @@ def main() -> int:
 
     text: str = (payload.get("text") or "").strip()
     dry_run: bool = bool(payload.get("dry_run"))
+    client_id: str = (payload.get("client_id") or "").strip()  # optional, for usage tracking
 
     if not text:
         json.dump({"ok": False, "error": "text is required"}, sys.stdout)
@@ -159,6 +160,18 @@ def main() -> int:
     except Exception as e:
         json.dump({"ok": False, "error": f"API call failed: {e}"}, sys.stdout)
         return 1
+
+    try:
+        from fmdb.usage import log_usage as _log_usage
+        _log_usage(
+            client_id=client_id or None,
+            script="parse-health-text.py",
+            model="claude-haiku-4-5",
+            usage=resp.usage,
+            notes=f"text_chars={len(text)}",
+        )
+    except Exception:
+        pass
 
     raw_text = resp.content[0].text.strip() if resp.content else ""
     if raw_text.startswith("```"):

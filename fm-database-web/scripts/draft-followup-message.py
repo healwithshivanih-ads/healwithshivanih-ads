@@ -129,7 +129,7 @@ def _build_context(client: dict, session: dict, session_type: str) -> str:
     return "\n".join(parts)
 
 
-def _draft_message(context: str, session_type: str, client_name: str) -> str:
+def _draft_message(context: str, session_type: str, client_name: str, client_id: str = "") -> str:
     """Call Claude Haiku to draft the WhatsApp message."""
     _load_env()
 
@@ -168,6 +168,18 @@ def _draft_message(context: str, session_type: str, client_name: str) -> str:
         system=system,
         messages=[{"role": "user", "content": prompt}],
     )
+
+    try:
+        from fmdb.usage import log_usage as _log_usage
+        _log_usage(
+            client_id=client_id or None,
+            script="draft-followup-message.py",
+            model="claude-haiku-4-5",
+            usage=msg.usage,
+            notes=f"session_type={session_type}",
+        )
+    except Exception:
+        pass
 
     return msg.content[0].text.strip()
 
@@ -212,7 +224,7 @@ def main() -> int:
 
     try:
         context = _build_context(client, session, session_type)
-        message = _draft_message(context, session_type, client_name)
+        message = _draft_message(context, session_type, client_name, client_id=client_id)
         json.dump({"ok": True, "message": message, "error": None}, sys.stdout)
         return 0
     except Exception as e:

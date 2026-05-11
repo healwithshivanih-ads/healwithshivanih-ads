@@ -377,6 +377,17 @@ def main() -> int:
             system=SYSTEM_PROMPT,
             messages=[{"role": "user", "content": user_content}],
         )
+        try:
+            from fmdb.usage import log_usage as _log_usage
+            _log_usage(
+                client_id=None,  # intake — client doesn't exist yet
+                script="extract-client-from-transcript.py",
+                model="claude-haiku-4-5",
+                usage=resp.usage,
+                notes="intake transcript parse",
+            )
+        except Exception:
+            pass
     except Exception as e:
         json.dump({"ok": False, "error": f"API call failed: {e}"}, sys.stdout)
         return 1

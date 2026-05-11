@@ -2509,8 +2509,9 @@ CRITICAL: Don't touch:
 
     try:
         client_anthropic = Anthropic(api_key=api_key)
+        validator_model = os.environ.get("FMDB_VALIDATOR_MODEL", "claude-haiku-4-5")
         with client_anthropic.messages.stream(
-            model=os.environ.get("FMDB_VALIDATOR_MODEL", "claude-haiku-4-5"),
+            model=validator_model,
             max_tokens=12000,
             system=SYSTEM,
             tools=[tool],
@@ -2518,6 +2519,17 @@ CRITICAL: Don't touch:
             messages=[{"role": "user", "content": json.dumps(user_payload)}],
         ) as stream:
             resp = stream.get_final_message()
+        try:
+            from fmdb.usage import log_usage as _log_usage
+            _log_usage(
+                client_id=(client or {}).get("client_id"),
+                script="render-client-letter.py:validator",
+                model=validator_model,
+                usage=resp.usage,
+                notes="haiku letter QA pass",
+            )
+        except Exception:
+            pass
     except Exception as e:
         print(f"[validate] {type(e).__name__}: {e}", file=sys.stderr)
         return markdown, []
@@ -2661,6 +2673,18 @@ def main() -> int:
             final_message = stream.get_final_message()
             markdown = final_message.content[0].text
             _step(f"API call done ({len(markdown)} chars markdown)")
+        # Log API spend to ~/fm-plans/clients/<id>/_api_usage.jsonl for MIS
+        try:
+            from fmdb.usage import log_usage as _log_usage
+            _log_usage(
+                client_id=client_id,
+                script="render-client-letter.py",
+                model="claude-sonnet-4-6",
+                usage=final_message.usage,
+                notes=f"letter_type={letter_type} chars={len(markdown)}",
+            )
+        except Exception:
+            pass  # never let usage logging break the user flow
     except Exception as e:
         json.dump({"ok": False, "markdown": "", "error": f"API call failed: {e}"}, sys.stdout)
         return 1

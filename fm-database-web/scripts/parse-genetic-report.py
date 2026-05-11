@@ -251,6 +251,17 @@ def main() -> int:
             messages=[{"role": "user", "content": user_content}],
         ) as stream:
             resp = stream.get_final_message()
+        try:
+            from fmdb.usage import log_usage as _log_usage
+            _log_usage(
+                client_id=client_id,
+                script="parse-genetic-report.py",
+                model="claude-sonnet-4-6",
+                usage=resp.usage,
+                notes=f"file={pdf_path.name}",
+            )
+        except Exception:
+            pass
     except Exception as e:
         json.dump({"ok": False, "error": f"API call failed: {e}"}, sys.stdout)
         return 1

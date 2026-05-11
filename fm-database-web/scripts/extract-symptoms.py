@@ -279,6 +279,31 @@ def main() -> int:
         json.dump({"ok": False, "error": f"API call failed: {e}"}, sys.stdout)
         return 1
 
+    # Best-effort: pull client_id from the file path. Lab/transcript uploads
+    # live at ~/fm-plans/clients/<id>/files/... so the segment after "clients/"
+    # is the client. Calls from /assess unattributed (URL upload) fall through.
+    inferred_client_id = None
+    if transcript_path:
+        try:
+            parts = Path(transcript_path).parts
+            if "clients" in parts:
+                idx = parts.index("clients")
+                if idx + 1 < len(parts):
+                    inferred_client_id = parts[idx + 1]
+        except Exception:
+            pass
+    try:
+        from fmdb.usage import log_usage as _log_usage
+        _log_usage(
+            client_id=inferred_client_id,
+            script="extract-symptoms.py",
+            model="claude-haiku-4-5",
+            usage=resp.usage,
+            notes=f"file={Path(transcript_path).name if transcript_path else 'inline'}",
+        )
+    except Exception:
+        pass
+
     raw_text = resp.content[0].text.strip() if resp.content else ""
 
     # Strip markdown fences if the model wrapped in ```json ... ```

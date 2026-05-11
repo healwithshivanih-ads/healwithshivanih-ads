@@ -350,6 +350,17 @@ def main() -> int:
         # `result` is an AssessResult Pydantic model with typed .suggestions.
         suggestions = result.suggestions
         usage = result.usage.model_dump()
+        try:
+            from fmdb.usage import log_usage as _log_usage
+            _log_usage(
+                client_id=client_id,
+                script="assess.py",
+                model=usage.get("model"),
+                usage=usage,
+                notes=f"{len(symptoms)} symptoms, {len(topics)} conditions",
+            )
+        except Exception:
+            pass
 
     # ----- compute FM lab ratios -----
     from fmdb.assess.lab_ratios import compute_ratios

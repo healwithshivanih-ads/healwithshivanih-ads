@@ -203,6 +203,17 @@ def main() -> int:
         # so the JSON over stdout matches TypeScript ChatResult.
         assistant_text = result.reply
         usage = result.usage.model_dump()
+        try:
+            from fmdb.usage import log_usage as _log_usage
+            _log_usage(
+                client_id=client_id,
+                script="chat.py",
+                model=usage.get("model"),
+                usage=usage,
+                notes=f"session={session_id} turn={len(messages) // 2 + 1}",
+            )
+        except Exception:
+            pass
 
     # Persist both turns to session.chat_log (in-place update).
     try:

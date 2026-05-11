@@ -75,6 +75,7 @@ def main():
     current_md = inp.get("markdown", "").strip()
     message    = inp.get("message", "").strip()
     history    = inp.get("history", [])   # list of {role, content}
+    client_id  = (inp.get("client_id") or "").strip()  # for usage logging
 
     if not current_md:
         print(json.dumps({"ok": False, "error": "markdown is required"}))
@@ -123,6 +124,19 @@ def main():
         ) as stream:
             for chunk in stream.text_stream:
                 full_text += chunk
+            final_message = stream.get_final_message()
+
+        try:
+            from fmdb.usage import log_usage as _log_usage
+            _log_usage(
+                client_id=client_id or None,
+                script="refine-letter.py",
+                model="claude-sonnet-4-6",
+                usage=final_message.usage,
+                notes=f"history_turns={len(history)}",
+            )
+        except Exception:
+            pass
 
         updated_md, reply = extract(full_text)
 
