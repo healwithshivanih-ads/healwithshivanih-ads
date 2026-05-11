@@ -2886,9 +2886,156 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
   // Step numbering: shifts down by 1 in embedded mode (no client picker card)
   const stepNum = (n: number) => fixedClientId ? `${n - 1}.` : `${n}.`;
 
+  // ───────────────────────────────────────────────────────────────
+  // Right-column blocks — extracted so the grid layout below stays
+  // clean. They reference all the same closure state as the left
+  // column, just rendered in a different visual region.
+  // ───────────────────────────────────────────────────────────────
+
+  const priorSessionsBlock = priorSessions.length > 0 ? (
+    <Card className="border-amber-200/60 bg-amber-50/30 dark:bg-amber-950/10">
+      <CardHeader className="pb-2">
+        <CardTitle className="text-base">🕰 Prior sessions ({priorSessions.length})</CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-2">
+        {priorSessions.map((s, i) => {
+          const planDeleted = !!s.generated_plan_slug && !s.plan_exists;
+          return (
+            <details key={i} className="rounded border bg-background/70">
+              <summary className="cursor-pointer flex items-center gap-3 px-3 py-2 text-sm select-none">
+                <span className="font-mono text-xs text-muted-foreground w-24 shrink-0">{s.date ?? "—"}</span>
+                <span className="flex-1 text-xs truncate text-muted-foreground">
+                  {(s.selected_symptoms?.length ?? 0) > 0 ? `${s.selected_symptoms!.length} symptoms` : "—"}
+                  {(s.selected_topics?.length ?? 0) > 0 ? ` · ${s.selected_topics!.length} conditions` : ""}
+                  {s.driver_count > 0 ? ` · ${s.driver_count} drivers` : ""}
+                  {s.supplement_count > 0 ? ` · ${s.supplement_count} supplements` : ""}
+                </span>
+                {planDeleted ? (
+                  <span className="text-[10px] text-amber-600 font-medium shrink-0">⚠️ Plan deleted</span>
+                ) : s.generated_plan_slug ? (
+                  <a
+                    href={`/plans/${s.generated_plan_slug}`}
+                    onClick={(e) => e.stopPropagation()}
+                    className="text-[10px] text-blue-600 underline shrink-0"
+                  >
+                    → plan
+                  </a>
+                ) : null}
+              </summary>
+              <div className="px-3 pb-3 pt-1 space-y-2 text-xs border-t">
+                {s.presenting_complaints && (
+                  <p className="text-muted-foreground italic">{s.presenting_complaints}</p>
+                )}
+                {(s.selected_symptoms?.length ?? 0) > 0 && (
+                  <div className="flex flex-wrap gap-1">
+                    {s.selected_symptoms!.map((slug) => (
+                      <span key={slug} className="rounded-full bg-muted px-2 py-0.5 text-[10px]">{slug}</span>
+                    ))}
+                  </div>
+                )}
+                {(s.selected_topics?.length ?? 0) > 0 && (
+                  <div className="flex flex-wrap gap-1">
+                    {s.selected_topics!.map((slug) => (
+                      <span key={slug} className="rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 px-2 py-0.5 text-[10px]">{slug}</span>
+                    ))}
+                  </div>
+                )}
+                {s.synthesis_notes && (
+                  <p className="text-muted-foreground border-l-2 border-muted pl-2">{s.synthesis_notes}{s.synthesis_notes.length >= 400 ? "…" : ""}</p>
+                )}
+                {planDeleted && s.session_id ? (
+                  <div className="rounded bg-amber-50 dark:bg-amber-950/20 border border-amber-200 p-2 space-y-1.5">
+                    <p className="text-amber-700 dark:text-amber-400 font-medium">
+                      The plan generated from this session was deleted.
+                    </p>
+                    <p className="text-amber-600 dark:text-amber-500">
+                      You can regenerate a new draft plan using the AI analysis already stored for this session — no new AI call needed.
+                    </p>
+                    <RegeneratePlanButton
+                      clientId={clientId}
+                      sessionId={s.session_id}
+                      onDone={(slug) => {
+                        toast.success(`Draft plan created: ${slug}`);
+                        router.push(`/plans/${slug}`);
+                      }}
+                      onError={(err) => toast.error(`Failed to regenerate plan: ${err}`)}
+                    />
+                  </div>
+                ) : s.generated_plan_slug ? (
+                  <a href={`/plans/${s.generated_plan_slug}`} className="text-blue-600 underline">
+                    Open plan → {s.generated_plan_slug}
+                  </a>
+                ) : null}
+              </div>
+            </details>
+          );
+        })}
+      </CardContent>
+    </Card>
+  ) : null;
+
+  const mindMapBlock = (
+    <MindMapContextPanel
+      symptomSlugs={selectedSymptoms}
+      topicSlugs={selectedTopics}
+      clientSex={clientSex}
+    />
+  );
+
+  const resultsBlock = result?.ok && result.suggestions ? (
+    <div className="space-y-4">
+      <div className="border-t pt-4">
+        <h2 className="text-xl font-semibold">✨ Suggestions</h2>
+        <UsageStats
+          usage={result.usage}
+          subgraphBytes={result.subgraph_size_bytes}
+        />
+        <p className="text-xs text-muted-foreground">
+          session: <code>{result.session_id}</code>
+        </p>
+      </div>
+      <SuggestionsView
+        suggestions={result.suggestions}
+        picks={picks}
+        setPicks={setPicks}
+        selectedTopics={selectedTopics}
+        computedRatios={result.computed_ratios}
+      />
+      <IFMMatrixCard result={result} selectedSymptoms={selectedSymptoms} />
+      <PlanBriefCard
+        brief={planBrief}
+        onChange={setPlanBrief}
+        synthesisNotes={result.suggestions?.synthesis_notes}
+      />
+      <Card>
+        <CardContent className="pt-6 space-y-2">
+          <Button
+            onClick={onGenerateDraft}
+            disabled={draftPending}
+            className="w-full"
+          >
+            {draftPending ? "Generating draft plan…" : "📝 Generate draft plan"}
+          </Button>
+          {planBrief.protocol_template_id && (
+            <p className="text-xs text-center text-indigo-700">
+              Template <strong>{PROTOCOL_TEMPLATES.find(t => t.id === planBrief.protocol_template_id)?.display_name}</strong> will be merged into the draft
+            </p>
+          )}
+        </CardContent>
+      </Card>
+      {result.session_id && (
+        <ChatPanel
+          clientId={clientId}
+          sessionId={result.session_id}
+          dryRun={dryRun}
+        />
+      )}
+    </div>
+  ) : null;
+
   return (
-    <div className="space-y-6">
-      {/* Session date — always visible; defaults to today */}
+    <div className="space-y-4">
+      {/* Top strip — session date (full width, above the grid) */}
       <div className="flex items-center gap-3 rounded-lg border bg-muted/20 px-4 py-3">
         <span className="text-sm font-medium shrink-0">📅 Session date</span>
         <input
@@ -2901,7 +3048,20 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
         <span className="text-xs text-muted-foreground">
           {sessionDate === new Date().toISOString().slice(0, 10) ? "Today" : "Past session"}
         </span>
+        {clientId && (
+          <span className="ml-auto text-[11px] text-muted-foreground">
+            Client: <code className="font-mono">{clientId}</code>
+          </span>
+        )}
       </div>
+
+      {/* 2-column doctor layout — inputs left, context + AI synthesis right.
+          On laptops + wide screens: 40/60 split. On iPad portrait + phones:
+          stacks to a single column. */}
+      <div className="grid gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] items-start">
+
+      {/* ─── Left column: session inputs ──────────────────────────── */}
+      <main className="space-y-4 min-w-0">
 
       {/* Step 1: client — hidden in embedded mode (fixedClientId is set by the parent) */}
       {!fixedClientId && (
@@ -2959,89 +3119,6 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
                 </div>
               </div>
             )}
-          </CardContent>
-        </Card>
-      )}
-
-      {/* Prior sessions for this client */}
-      {priorSessions.length > 0 && (
-        <Card className="border-amber-200/60 bg-amber-50/30 dark:bg-amber-950/10">
-          <CardHeader className="pb-2">
-            <CardTitle className="text-base">🕰 Prior sessions ({priorSessions.length})</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-2">
-            {priorSessions.map((s, i) => {
-              const planDeleted = !!s.generated_plan_slug && !s.plan_exists;
-              return (
-                <details key={i} className="rounded border bg-background/70">
-                  <summary className="cursor-pointer flex items-center gap-3 px-3 py-2 text-sm select-none">
-                    <span className="font-mono text-xs text-muted-foreground w-24 shrink-0">{s.date ?? "—"}</span>
-                    <span className="flex-1 text-xs truncate text-muted-foreground">
-                      {(s.selected_symptoms?.length ?? 0) > 0 ? `${s.selected_symptoms!.length} symptoms` : "—"}
-                      {(s.selected_topics?.length ?? 0) > 0 ? ` · ${s.selected_topics!.length} conditions` : ""}
-                      {s.driver_count > 0 ? ` · ${s.driver_count} drivers` : ""}
-                      {s.supplement_count > 0 ? ` · ${s.supplement_count} supplements` : ""}
-                    </span>
-                    {planDeleted ? (
-                      <span className="text-[10px] text-amber-600 font-medium shrink-0">⚠️ Plan deleted</span>
-                    ) : s.generated_plan_slug ? (
-                      <a
-                        href={`/plans/${s.generated_plan_slug}`}
-                        onClick={(e) => e.stopPropagation()}
-                        className="text-[10px] text-blue-600 underline shrink-0"
-                      >
-                        → plan
-                      </a>
-                    ) : null}
-                  </summary>
-                  <div className="px-3 pb-3 pt-1 space-y-2 text-xs border-t">
-                    {s.presenting_complaints && (
-                      <p className="text-muted-foreground italic">{s.presenting_complaints}</p>
-                    )}
-                    {(s.selected_symptoms?.length ?? 0) > 0 && (
-                      <div className="flex flex-wrap gap-1">
-                        {s.selected_symptoms!.map((slug) => (
-                          <span key={slug} className="rounded-full bg-muted px-2 py-0.5 text-[10px]">{slug}</span>
-                        ))}
-                      </div>
-                    )}
-                    {(s.selected_topics?.length ?? 0) > 0 && (
-                      <div className="flex flex-wrap gap-1">
-                        {s.selected_topics!.map((slug) => (
-                          <span key={slug} className="rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 px-2 py-0.5 text-[10px]">{slug}</span>
-                        ))}
-                      </div>
-                    )}
-                    {s.synthesis_notes && (
-                      <p className="text-muted-foreground border-l-2 border-muted pl-2">{s.synthesis_notes}{s.synthesis_notes.length >= 400 ? "…" : ""}</p>
-                    )}
-                    {planDeleted && s.session_id ? (
-                      <div className="rounded bg-amber-50 dark:bg-amber-950/20 border border-amber-200 p-2 space-y-1.5">
-                        <p className="text-amber-700 dark:text-amber-400 font-medium">
-                          The plan generated from this session was deleted.
-                        </p>
-                        <p className="text-amber-600 dark:text-amber-500">
-                          You can regenerate a new draft plan using the AI analysis already stored for this session — no new AI call needed.
-                        </p>
-                        <RegeneratePlanButton
-                          clientId={clientId}
-                          sessionId={s.session_id}
-                          onDone={(slug) => {
-                            toast.success(`Draft plan created: ${slug}`);
-                            router.push(`/plans/${slug}`);
-                          }}
-                          onError={(err) => toast.error(`Failed to regenerate plan: ${err}`)}
-                        />
-                      </div>
-                    ) : s.generated_plan_slug ? (
-                      <a href={`/plans/${s.generated_plan_slug}`} className="text-blue-600 underline">
-                        Open plan → {s.generated_plan_slug}
-                      </a>
-                    ) : null}
-                  </div>
-                </details>
-              );
-            })}
           </CardContent>
         </Card>
       )}
@@ -3448,13 +3525,6 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
         </CardContent>
       </Card>
 
-      {/* Root cause pathways from mind maps */}
-      <MindMapContextPanel
-        symptomSlugs={selectedSymptoms}
-        topicSlugs={selectedTopics}
-        clientSex={clientSex}
-      />
-
       {/* Step 5: complaints */}
       <Card>
         <CardHeader className="pb-2">
@@ -3610,62 +3680,16 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
         </CardContent>
       </Card>
 
-      {/* Results */}
-      {result?.ok && result.suggestions && (
-        <div className="space-y-4">
-          <div className="border-t pt-4">
-            <h2 className="text-xl font-semibold">✨ Suggestions</h2>
-            <UsageStats
-              usage={result.usage}
-              subgraphBytes={result.subgraph_size_bytes}
-            />
-            <p className="text-xs text-muted-foreground">
-              session: <code>{result.session_id}</code>
-            </p>
-          </div>
-          <SuggestionsView
-            suggestions={result.suggestions}
-            picks={picks}
-            setPicks={setPicks}
-            selectedTopics={selectedTopics}
-            computedRatios={result.computed_ratios}
-          />
+      </main>
 
-          {/* IFM Matrix — 7-node body-systems map + lab pattern recognition */}
-          <IFMMatrixCard result={result} selectedSymptoms={selectedSymptoms} />
+      {/* ─── Right column: context + AI synthesis ─────────────────── */}
+      <aside className="space-y-4 min-w-0">
+        {priorSessionsBlock}
+        {mindMapBlock}
+        {resultsBlock}
+      </aside>
 
-          {/* Plan Brief — optional coaching context before generating the draft */}
-          <PlanBriefCard
-            brief={planBrief}
-            onChange={setPlanBrief}
-            synthesisNotes={result.suggestions?.synthesis_notes}
-          />
-
-          <Card>
-            <CardContent className="pt-6 space-y-2">
-              <Button
-                onClick={onGenerateDraft}
-                disabled={draftPending}
-                className="w-full"
-              >
-                {draftPending ? "Generating draft plan…" : "📝 Generate draft plan"}
-              </Button>
-              {planBrief.protocol_template_id && (
-                <p className="text-xs text-center text-indigo-700">
-                  Template <strong>{PROTOCOL_TEMPLATES.find(t => t.id === planBrief.protocol_template_id)?.display_name}</strong> will be merged into the draft
-                </p>
-              )}
-            </CardContent>
-          </Card>
-          {result.session_id && (
-            <ChatPanel
-              clientId={clientId}
-              sessionId={result.session_id}
-              dryRun={dryRun}
-            />
-          )}
-        </div>
-      )}
+      </div>
     </div>
   );
 }
