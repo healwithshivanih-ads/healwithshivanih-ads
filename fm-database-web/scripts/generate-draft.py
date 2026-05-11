@@ -63,6 +63,30 @@ def main() -> int:
     suggestions = sess.ai_analysis or {}
     free_text_notes = sess.presenting_complaints or ""
 
+    # Catalogue load (alias-aware indices) — used below to validate that
+    # slugs the AI dropped into topic-shaped fields actually exist as topics.
+    # If the AI emitted a mechanism slug as a "topic_in_play" (e.g.
+    # `leaky-gut`, which lives in mechanisms/), drop it from topics and
+    # surface it as a hypothesized driver instead. This avoids
+    # `plan-check` CRITICAL: references unknown topic 'leaky-gut'.
+    try:
+        from fmdb.validator import load_all, overlay, _resolve_index
+        _cat = overlay(load_all(FMDB_ROOT / "data"))
+        _topic_idx = _resolve_index(_cat.topics)
+        _mech_idx = _resolve_index(_cat.mechanisms)
+        _sym_idx = _resolve_index(_cat.symptoms)
+        _supp_slugs = {s.slug for s in _cat.supplements}
+    except Exception:
+        _topic_idx = {}
+        _mech_idx = {}
+        _sym_idx = {}
+        _supp_slugs = set()
+
+    def _is_topic(slug: str) -> bool:
+        return bool(slug) and slug in _topic_idx
+    def _is_mechanism(slug: str) -> bool:
+        return bool(slug) and slug in _mech_idx
+
     now = datetime.now(timezone.utc)
     today = date.today()
 
@@ -104,23 +128,46 @@ def main() -> int:
         updated_by="shivani",
     )
 
+    # Track drivers so we don't double-add when a "topic" slug is really a mechanism.
+    _driver_slugs_seen: set[str] = set()
+
     for d in suggestions.get("likely_drivers", []) or []:
-        if picks.get(f"driver_{d.get('mechanism_slug')}", True):
+        slug_d = d.get("mechanism_slug") or ""
+        if picks.get(f"driver_{slug_d}", True):
             plan.hypothesized_drivers.append(HypothesizedDriver(
-                mechanism=d.get("mechanism_slug", ""),
+                mechanism=slug_d,
                 reasoning=d.get("reasoning", ""),
             ))
+            if slug_d:
+                _driver_slugs_seen.add(slug_d)
 
     for t in suggestions.get("topics_in_play", []) or []:
         role = t.get("role", "primary")
         slug_t = t.get("topic_slug", "")
         if not slug_t:
             continue
-        if picks.get(f"topic_{slug_t}_{role}", True):
+        if not picks.get(f"topic_{slug_t}_{role}", True):
+            continue
+        # Guard against the AI emitting a mechanism slug in topic position
+        # (e.g. `leaky-gut`). plan-check rejects unknown topics as CRITICAL,
+        # blocking the draft from leaving the editor.
+        if _is_topic(slug_t):
             if role == "contributing":
                 plan.contributing_topics.append(slug_t)
             else:
                 plan.primary_topics.append(slug_t)
+        elif _is_mechanism(slug_t):
+            # Slug is a mechanism — route to hypothesized_drivers if not already there.
+            if slug_t not in _driver_slugs_seen:
+                plan.hypothesized_drivers.append(HypothesizedDriver(
+                    mechanism=slug_t,
+                    reasoning=(t.get("rationale") or t.get("reasoning") or
+                               f"Surfaced by AI as a {role} clinical area; routed to drivers because "
+                               f"'{slug_t}' lives in the mechanisms catalogue, not topics."),
+                ))
+                _driver_slugs_seen.add(slug_t)
+        # else: slug doesn't resolve anywhere — silently drop (catalogue-additions-suggested
+        # already captures these for backlog triage).
 
     for i, ls in enumerate(suggestions.get("lifestyle_suggestions", []) or []):
         if picks.get(f"lifestyle_{i}_{ls.get('name', '')}", True):
@@ -194,12 +241,12 @@ def main() -> int:
     # ── Apply protocol template (merged on top of AI suggestions) ─────────────
     # resolved_template is the full ProtocolTemplate object serialized from TS.
     if resolved_template:
-        # Merge primary/contributing topics from template (dedup)
+        # Merge primary/contributing topics from template (dedup + catalogue guard)
         for t in resolved_template.get("primary_topics", []) or []:
-            if t and t not in plan.primary_topics:
+            if t and _is_topic(t) and t not in plan.primary_topics:
                 plan.primary_topics.append(t)
         for t in resolved_template.get("contributing_topics", []) or []:
-            if t and t not in plan.contributing_topics and t not in plan.primary_topics:
+            if t and _is_topic(t) and t not in plan.contributing_topics and t not in plan.primary_topics:
                 plan.contributing_topics.append(t)
 
         # Merge template supplements (add those not already in plan by slug)

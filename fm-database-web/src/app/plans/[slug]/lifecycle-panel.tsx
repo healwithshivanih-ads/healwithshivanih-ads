@@ -332,14 +332,11 @@ export function LifecyclePanel({
 
             {/* ── Draft: single Activate button ── */}
             {(status === "draft" || status === "ready_to_publish") && (
-              <div className="space-y-3 rounded-md border border-emerald-200 bg-emerald-50/40 p-4">
-                <div>
-                  <div className="text-sm font-semibold text-emerald-900">🚀 Activate plan</div>
-                  <p className="text-xs text-muted-foreground mt-0.5">
-                    Runs plan-check, then marks the plan active so you can send it to the client.
-                    You can still edit afterwards.
-                  </p>
-                </div>
+              <div className="space-y-2.5 rounded-md border border-emerald-200 bg-emerald-50/40 p-4">
+                <p className="text-xs text-muted-foreground">
+                  Runs plan-check, then marks the plan active so you can send it to the client.
+                  You can still edit afterwards.
+                </p>
                 <Input
                   placeholder="Activation note (optional)"
                   value={reason}
