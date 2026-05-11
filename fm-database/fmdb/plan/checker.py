@@ -23,7 +23,7 @@ from dataclasses import dataclass
 from typing import Literal
 
 from ..validator import Loaded, _resolve_index
-from .models import Client, Plan
+from .models import Client, Plan, HypothesizedDriver
 
 
 Severity = Literal["CRITICAL", "WARNING", "INFO"]
@@ -44,6 +44,57 @@ class Finding:
     def ack_id(self) -> str:
         """Stable identifier for `plan ack --finding-id ...`."""
         return f"{self.section}:{self.field}:{self.target}"
+
+
+def auto_fix_plan_routing(plan: Plan, catalogue: Loaded) -> list[dict]:
+    """Mutates `plan` in place to correct common slug-routing errors that
+    would otherwise be flagged CRITICAL by check_plan. Returns a list of
+    fix descriptions for the caller to log / persist.
+
+    Fixes applied:
+      - Mechanism slugs found in primary_topics / contributing_topics →
+        moved to hypothesized_drivers (where they belong). Both legacy
+        plans (created before generate-draft.py's catalogue-aware
+        routing) and plans hand-edited by the coach can land in this
+        state; auto-fixing here removes the manual cleanup step.
+
+    Slugs that don't resolve as topics AND don't resolve as mechanisms
+    are left in place — plan-check will still flag them as CRITICAL
+    (unknown topic) and the coach needs to address them.
+    """
+    topic_idx = _resolve_index(catalogue.topics)
+    mech_idx = _resolve_index(catalogue.mechanisms)
+    fixes: list[dict] = []
+
+    for field_name in ("primary_topics", "contributing_topics"):
+        original = list(getattr(plan, field_name))
+        kept: list[str] = []
+        for slug in original:
+            if slug in topic_idx:
+                kept.append(slug)
+                continue
+            if slug in mech_idx:
+                # Route to hypothesized_drivers (dedup by mechanism slug)
+                if not any(hd.mechanism == slug for hd in plan.hypothesized_drivers):
+                    plan.hypothesized_drivers.append(HypothesizedDriver(
+                        mechanism=slug,
+                        reasoning=(
+                            f"Auto-routed from {field_name} on "
+                            f"{plan.slug}: '{slug}' is a mechanism in the "
+                            "catalogue, not a topic."
+                        ),
+                    ))
+                fixes.append({
+                    "field": field_name,
+                    "slug": slug,
+                    "action": "moved_to_hypothesized_drivers",
+                })
+                continue
+            # Unknown — leave for plan-check to flag
+            kept.append(slug)
+        setattr(plan, field_name, kept)
+
+    return fixes
 
 
 def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Finding]:

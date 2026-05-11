@@ -37,7 +37,7 @@ import yaml
 
 from ..enums import PlanStatus
 from ..validator import load_all
-from .checker import check_plan
+from .checker import check_plan, auto_fix_plan_routing
 from .models import Plan, StatusEvent, CatalogueSnapshot
 from . import storage as plan_storage
 
@@ -108,6 +108,15 @@ def submit_plan(
     except FileNotFoundError:
         client = None
     catalogue = load_all(catalogue_dir)
+
+    # Auto-fix routing errors (e.g. mechanism slugs accidentally placed in
+    # contributing_topics) BEFORE running plan-check. The fix mutates the
+    # plan in place; persist the corrected plan so subsequent loads see the
+    # cleaned-up data.
+    fixes = auto_fix_plan_routing(plan, catalogue)
+    if fixes:
+        plan_storage.write_plan(root, plan)
+
     findings = check_plan(plan, client, catalogue)
     critical = [f for f in findings if f.severity == "CRITICAL"]
     if critical:
@@ -162,6 +171,12 @@ def publish_plan(
     except FileNotFoundError:
         client = None
     catalogue = load_all(catalogue_dir)
+
+    # Re-run auto-fix in case the plan was edited after submit_plan
+    fixes = auto_fix_plan_routing(plan, catalogue)
+    if fixes:
+        plan_storage.write_plan(root, plan)
+
     findings = check_plan(plan, client, catalogue)
     critical = [f for f in findings if f.severity == "CRITICAL"]
     if critical:
