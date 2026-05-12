@@ -160,3 +160,9 @@
   border-radius: 5px;
 }
 .fm-v2 ::-webkit-scrollbar-thumb:hover { background: var(--fm-border-strong); }
+
+/* ─── Floating action button — chip pop-in animation ─── */
+@keyframes fmFabIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
