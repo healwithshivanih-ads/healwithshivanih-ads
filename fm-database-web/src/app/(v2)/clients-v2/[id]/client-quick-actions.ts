@@ -35,5 +35,12 @@ export function clientQuickActions(clientId: string): FmFloatingActionItem[] {
       hint: "Letters, templates, WhatsApp",
       href: `/clients-v2/${clientId}/communicate`,
     },
+    {
+      id: "handoff",
+      icon: "🏥",
+      label: "Doctor handoff PDF",
+      hint: "Print-ready summary for a referring clinician",
+      href: `/clients-v2/${clientId}/handoff`,
+    },
   ];
 }
