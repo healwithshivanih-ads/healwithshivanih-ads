@@ -49,7 +49,7 @@ import {
 import type { FmWorkflowStage } from "@/components/fm";
 import { PlanPageShell } from "./plan-page-shell";
 // Letters live on Communicate now — single source of truth.
-import { PlanChatAndPreview } from "./plan-chat-and-preview";
+// PlanChatAndPreview moved to draft editor only (per coach feedback).
 import { ReworkBanner } from "@/app/clients/[id]/rework-banner";
 import { AttachedProtocolsPanel } from "./attached-protocols-panel";
 import { FollowUpPanel } from "./follow-up-panel";
@@ -697,45 +697,10 @@ export default async function PlanTabPage({
         >
           {/* LEFT — active plan details */}
           <div style={{ minWidth: 0, display: "grid", gap: 16 }}>
-            {/* AI assistant + client-letter preview (both collapsible).
-                Coach asked for an in-tab chat + plan preview; both pull
-                from the same legacy plumbing (PlanChatPanel, renderPlan)
-                so behaviour matches the classic editor exactly. */}
-            <PlanChatAndPreview
-              clientId={id}
-              // When there's a pending draft sitting next to a published
-              // plan, target the DRAFT — that's the editable surface.
-              // The published plan stays untouched. Without this, the
-              // chat would aim at the published plan, the server action
-              // would refuse the write ("only draft + ready_to_publish
-              // can be edited"), and the coach would just see a toast.
-              planSlug={pendingDraft ? (pendingDraft.slug as string) : activePlan.slug}
-              isLocked={
-                // Lock when there's NO editable plan in scope:
-                //   - active plan is published AND no pending draft exists
-                //   - active plan is archived (superseded / revoked)
-                (status === "published" && !pendingDraft) ||
-                status === "superseded" ||
-                status === "revoked"
-              }
-              lockReason={
-                status === "published" && !pendingDraft
-                  ? "published"
-                  : status === "superseded" || status === "revoked"
-                    ? "archived"
-                    : undefined
-              }
-              createDraftHref={
-                status === "published" && !pendingDraft
-                  ? "#follow-up-panel"
-                  : undefined
-              }
-              draftTargetNote={
-                pendingDraft && status === "published"
-                  ? `Editing pending draft ${pendingDraft.slug} — the published plan stays untouched until you publish this one in its place.`
-                  : undefined
-              }
-            />
+            {/* AI assistant lives ONLY on the draft editor page now
+                (/clients-v2/[id]/plan/edit/[slug]) as a floating bubble.
+                Coach asked: the chat shouldn't clutter the plan overview
+                — only show up where editing actually happens. */}
 
             {/* Plan header card */}
             <FmPanel
@@ -832,7 +797,7 @@ export default async function PlanTabPage({
                 }}
               >
                 <div>
-                  <MiniLabel>Primary topics</MiniLabel>
+                  <MiniLabel>Primary conditions</MiniLabel>
                   <ChipList items={primaryTopics} tone="primary" />
                 </div>
                 <div>
@@ -841,7 +806,7 @@ export default async function PlanTabPage({
                 </div>
                 {contributingTopics.length > 0 && (
                   <div style={{ gridColumn: "1 / -1" }}>
-                    <MiniLabel>Contributing topics</MiniLabel>
+                    <MiniLabel>Contributing conditions</MiniLabel>
                     <ChipList items={contributingTopics} />
                   </div>
                 )}
@@ -976,7 +941,7 @@ export default async function PlanTabPage({
             {education.length > 0 && (
               <FmPanel
                 title={`🎓 Education (${education.length})`}
-                subtitle="Topic / mechanism explainers attached to the client letter."
+                subtitle="Condition / root-cause explainers attached to the client letter."
               >
                 <div style={{ display: "grid", gap: 6 }}>
                   {education.map((e, i) => (
@@ -989,7 +954,7 @@ export default async function PlanTabPage({
             {/* Drivers */}
             {drivers.length > 0 && (
               <FmPanel
-                title={`🧬 Hypothesised drivers (${drivers.length})`}
+                title={`🧬 Root causes (${drivers.length})`}
                 subtitle="The mechanisms the AI synthesis identified as upstream root causes."
               >
                 <div style={{ display: "grid", gap: 6 }}>

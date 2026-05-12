@@ -37,6 +37,7 @@ import type {
 import type { MultiSelectOption } from "@/components/multi-select";
 import { PlanEditor } from "@/app/plans/[slug]/plan-editor";
 import { PlanCheckPanel } from "@/app/plans/[slug]/plan-check-panel";
+import { FloatingChatBubble } from "./floating-chat-bubble";
 import { DeletePlanButton } from "@/app/plans/[slug]/delete-plan-button";
 import { SendToClientButton } from "@/app/plans/[slug]/send-to-client-modal";
 import { loadSupplementSources } from "@/app/plans/[slug]/actions";
@@ -236,6 +237,17 @@ export default async function V2PlanEditorPage({
           <PlanCheckPanel slug={plan.slug} />
         </aside>
       </div>
+
+      {/* Floating AI chat — bottom-right bubble. Hidden on
+          published / superseded / revoked plans (those are
+          read-only; the chat would just error). On drafts it
+          stays available while the coach scrolls anywhere in
+          the editor. */}
+      <FloatingChatBubble
+        slug={plan.slug}
+        clientId={id}
+        isLocked={locked}
+      />
     </PlanPageShell>
   );
 }
