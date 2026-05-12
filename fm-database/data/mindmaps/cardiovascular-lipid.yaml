@@ -385,8 +385,8 @@ tree:
       notes: ''
     - label: Walk After Meals (glucose disposal)
       children: []
-      linked_kind: topic
-      linked_slug: antigravity-exercise-for-blood-sugar
+      linked_kind: null
+      linked_slug: null
       notes: ''
     - label: Stress Management
       children: []

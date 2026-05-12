@@ -2858,7 +2858,18 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
           }
         }
       } catch (e) {
-        setError((e as Error).message);
+        const msg = (e as Error).message ?? "";
+        if (msg.includes("Failed to fetch") || msg.includes("NetworkError")) {
+          setError(
+            "Network error reaching the AI analyzer — the assessment may have run too long for " +
+              "the browser to wait. Try again; if it keeps happening, drop large prior reports / " +
+              "transcripts and re-run, or open the dev server logs (pm2 logs fm-coach) to see if " +
+              "assess.py crashed."
+          );
+        } else {
+          setError(msg);
+        }
+        toast.error(msg.slice(0, 120) || "Analyze failed");
       }
     });
   };

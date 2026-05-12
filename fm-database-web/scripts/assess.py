@@ -283,10 +283,22 @@ def main() -> int:
         pass
 
     # Session-history bundle: compact prior-session summaries.
+    #
+    # synthesis_notes is trimmed to ~1500 chars per prior session. Coaches
+    # were hitting "Failed to fetch" on clients with thorough prior assessments
+    # (e.g. cl-007 had a 33 KB recent session) — the full ai_analysis bundle
+    # made both the Anthropic input and the Server Action response large enough
+    # to push beyond browser fetch timeouts. The first ~1500 chars carry enough
+    # context for the model to "remember" the prior take without re-sending the
+    # whole prior assessment.
+    _SYNTH_TRIM = 1500
     prior = plan_storage.list_sessions(root, client.client_id)
     history_bundle = []
     for s in prior:
         ai = s.ai_analysis or {}
+        notes = ai.get("synthesis_notes", "") or ""
+        if len(notes) > _SYNTH_TRIM:
+            notes = notes[:_SYNTH_TRIM].rstrip() + " …[truncated]"
         history_bundle.append({
             "session_id": s.session_id,
             "date": s.date.isoformat(),
@@ -298,7 +310,7 @@ def main() -> int:
                 {"slug": sp.get("supplement_slug"), "dose": sp.get("dose")}
                 for sp in (ai.get("supplement_suggestions") or [])
             ],
-            "synthesis_notes": ai.get("synthesis_notes", ""),
+            "synthesis_notes": notes,
         })
 
     # Calculate days_since_last_prescription from history_bundle

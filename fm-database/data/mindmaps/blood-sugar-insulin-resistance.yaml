@@ -187,8 +187,8 @@ tree:
     children:
     - label: Post-Meal Walking
       children: []
-      linked_kind: topic
-      linked_slug: antigravity-exercise-for-blood-sugar
+      linked_kind: null
+      linked_slug: null
       notes: ''
     - label: Resistance Training
       children: []

@@ -1,0 +1,336 @@
+#!/usr/bin/env python3
+"""Apply a stored `rework_suggestion` (from client.yaml) to a new draft plan.
+
+Two modes:
+  * If the client has an active plan (published > ready_to_publish > draft, most
+    recent first), the new plan is a SUCCESSOR draft cloning the old one then
+    layering in the suggested changes.
+  * Otherwise, a minimal first-time draft is created seeded only from the
+    rework_suggestion + client context (conditions, goals).
+
+In both cases:
+  * `suggested_changes` are applied:
+      - add/escalate supplement     → append/update `supplement_protocol[]`
+      - remove/deescalate supplement→ filter `supplement_protocol[]`
+      - add topic                   → append to `contributing_topics[]`
+      - add lab_order               → append to `lab_orders[]`
+      - add education               → append to `education[]`
+      - add practice                → append to `lifestyle_practices[]`
+  * Original AI rework rationale + estimated benefit are prepended to
+    `notes_for_coach` so the coach can audit the basis.
+  * `status` = draft, `version` = 0 (so publishing bumps to 1).
+
+Reads JSON from stdin:
+{
+  "client_id":   str,
+  "new_slug":    str | null,        # optional override; auto-derived if null
+  "phase_weeks": int | null,        # plan period for a fresh first-time draft
+}
+
+Writes JSON to stdout:
+{
+  "ok":             bool,
+  "slug":           str | null,
+  "successor":      bool,           # true = cloned an existing plan
+  "applied_count":  int,            # how many suggested_changes were applied
+  "error":          str | null
+}
+"""
+from __future__ import annotations
+
+import json
+import re
+import sys
+from datetime import date, datetime, timedelta, timezone
+from pathlib import Path
+
+FMDB_ROOT = Path(__file__).resolve().parent.parent.parent / "fm-database"
+sys.path.insert(0, str(FMDB_ROOT))
+
+
+def _emit(payload: dict) -> int:
+    json.dump(payload, sys.stdout, default=str)
+    return 0 if payload.get("ok") else 1
+
+
+def _slug_from_name(name: str) -> str:
+    s = re.sub(r"[^a-z0-9]+", "-", (name or "").lower()).strip("-")
+    return s or "client"
+
+
+def _active_plan(plans, client_id: str):
+    """Return the most recent active plan for `client_id`, by status preference."""
+    rank = {"published": 3, "ready_to_publish": 2, "draft": 1}
+    candidates = [p for p in plans if (p.client_id == client_id) and (p.status.value in rank)]
+    if not candidates:
+        return None
+    candidates.sort(
+        key=lambda p: (rank.get(p.status.value, 0), p.created_at),
+        reverse=True,
+    )
+    return candidates[0]
+
+
+def main() -> int:
+    try:
+        payload = json.loads(sys.stdin.read())
+    except json.JSONDecodeError as e:
+        return _emit({"ok": False, "error": f"invalid JSON on stdin: {e}"})
+
+    client_id = (payload.get("client_id") or "").strip()
+    new_slug_override = (payload.get("new_slug") or "").strip()
+    phase_weeks = int(payload.get("phase_weeks") or 12)
+
+    if not client_id:
+        return _emit({"ok": False, "error": "client_id is required"})
+
+    from fmdb.plan import storage as plan_storage
+    from fmdb.plan.models import (
+        Plan, PlanStatus, HypothesizedDriver, PracticeItem, NutritionPlan,
+        EducationModule, SupplementItem, LabOrderItem, CatalogueSnapshot,
+    )
+
+    root = plan_storage.plans_root()
+    try:
+        client = plan_storage.load_client(root, client_id)
+    except FileNotFoundError as e:
+        return _emit({"ok": False, "error": f"client not found: {e}"})
+
+    # Pull the rework suggestion off the raw YAML — it's stored on the client
+    # but not in the strict Pydantic Client model.
+    import yaml
+    client_yaml = plan_storage.client_path(root, client_id)
+    raw = yaml.safe_load(client_yaml.read_text()) or {}
+    rework = raw.get("rework_suggestion") or {}
+    if not rework or not rework.get("suggested_changes"):
+        return _emit({
+            "ok": False,
+            "error": "no rework_suggestion on this client — generate one first via the rework assessor",
+        })
+
+    changes = rework.get("suggested_changes") or []
+    rationale = rework.get("rationale") or ""
+    benefit_pct = rework.get("benefit_pct") or 0
+    confidence = rework.get("confidence") or "medium"
+    triggered_by = rework.get("triggered_by") or "report"
+
+    now = datetime.now(timezone.utc)
+    today = date.today()
+
+    # ---- decide successor vs fresh ----
+    try:
+        all_plans = plan_storage.list_plans(root)
+    except Exception:
+        all_plans = []
+    parent = _active_plan(all_plans, client_id)
+
+    # Build the new slug
+    first_name = (client.display_name or client.client_id or "client").split()[0]
+    fns = _slug_from_name(first_name)
+    plan_num = sum(1 for p in all_plans if p.client_id == client_id) + 1
+    default_slug = f"{fns}-rework-{plan_num}-{today.isoformat()}-{client.client_id}"
+    new_slug = new_slug_override or default_slug
+    # Dedup
+    n = 1
+    base_slug = new_slug
+    while True:
+        try:
+            plan_storage.find_plan_path(root, new_slug)
+            n += 1
+            new_slug = f"{base_slug}-{n}"
+        except FileNotFoundError:
+            break
+
+    # ---- start from parent (successor) or build minimal ----
+    if parent is not None:
+        # Clone parent fields
+        plan = Plan(
+            slug=new_slug,
+            client_id=client_id,
+            plan_period_start=today,
+            plan_period_weeks=parent.plan_period_weeks,
+            plan_period_recheck_date=today + timedelta(weeks=parent.plan_period_weeks),
+            primary_topics=list(parent.primary_topics),
+            contributing_topics=list(parent.contributing_topics),
+            presenting_symptoms=list(parent.presenting_symptoms),
+            hypothesized_drivers=[HypothesizedDriver(**d.model_dump()) for d in parent.hypothesized_drivers],
+            lifestyle_practices=[PracticeItem(**p.model_dump()) for p in parent.lifestyle_practices],
+            nutrition=NutritionPlan(**parent.nutrition.model_dump()),
+            education=[EducationModule(**e.model_dump()) for e in parent.education],
+            supplement_protocol=[SupplementItem(**s.model_dump()) for s in parent.supplement_protocol],
+            lab_orders=[LabOrderItem(**l.model_dump()) for l in parent.lab_orders],
+            referrals=list(parent.referrals),
+            tracking=parent.tracking.model_copy(deep=True),
+            attached_resources=list(parent.attached_resources),
+            attached_protocols=list(parent.attached_protocols),
+            status=PlanStatus.draft,
+            status_history=[],
+            catalogue_snapshot=CatalogueSnapshot(snapshot_date=today),
+            notes_for_coach=parent.notes_for_coach or "",
+            version=0,
+            created_at=now,
+            updated_at=now,
+            updated_by=raw.get("display_name") or "shivani",
+            supersedes=parent.slug,
+        )
+        is_successor = True
+    else:
+        # Build a minimal first-time draft scaffolded from the client's
+        # active conditions + the rework supplements/topics/labs.
+        plan = Plan(
+            slug=new_slug,
+            client_id=client_id,
+            plan_period_start=today,
+            plan_period_weeks=phase_weeks,
+            plan_period_recheck_date=today + timedelta(weeks=phase_weeks),
+            primary_topics=[],
+            contributing_topics=[],
+            presenting_symptoms=[],
+            hypothesized_drivers=[],
+            lifestyle_practices=[],
+            nutrition=NutritionPlan(),
+            education=[],
+            supplement_protocol=[],
+            lab_orders=[],
+            referrals=[],
+            tracking={"habits": [], "symptoms_to_monitor": [], "recheck_questions": []},
+            attached_resources=[],
+            attached_protocols=[],
+            status=PlanStatus.draft,
+            status_history=[],
+            catalogue_snapshot=CatalogueSnapshot(snapshot_date=today),
+            notes_for_coach="",
+            version=0,
+            created_at=now,
+            updated_at=now,
+            updated_by=raw.get("display_name") or "shivani",
+            supersedes=None,
+        )
+        is_successor = False
+
+    # ---- apply suggested_changes ----
+    applied = 0
+    for c in changes:
+        op = (c.get("op") or "").strip()
+        kind = (c.get("target_kind") or "").strip()
+        slug = (c.get("target_slug") or "").strip() or None
+        description = (c.get("description") or "").strip()
+        reason = (c.get("reason") or "").strip()
+        if not op or not kind:
+            continue
+
+        if kind == "supplement":
+            if op in ("add",):
+                if not slug:
+                    # No slug — still capture as a coach-facing note inside the supplement protocol
+                    plan.supplement_protocol.append(SupplementItem(
+                        supplement_slug=_slug_from_name(description[:60] or "supplement-tbd"),
+                        coach_rationale=f"[rework] {description}\n{reason}".strip(),
+                    ))
+                    applied += 1
+                    continue
+                existing = next((s for s in plan.supplement_protocol if s.supplement_slug == slug), None)
+                if existing is None:
+                    plan.supplement_protocol.append(SupplementItem(
+                        supplement_slug=slug,
+                        coach_rationale=f"[rework] {description}\n{reason}".strip(),
+                    ))
+                    applied += 1
+                else:
+                    existing.coach_rationale = (
+                        existing.coach_rationale + f"\n[rework] {description}\n{reason}"
+                    ).strip()
+                    applied += 1
+            elif op == "escalate":
+                # If already present, append rework note; else add
+                existing = next((s for s in plan.supplement_protocol if s.supplement_slug == slug), None) if slug else None
+                if existing is not None:
+                    existing.coach_rationale = (
+                        existing.coach_rationale + f"\n[rework — escalate] {description}\n{reason}"
+                    ).strip()
+                    applied += 1
+                elif slug:
+                    plan.supplement_protocol.append(SupplementItem(
+                        supplement_slug=slug,
+                        coach_rationale=f"[rework — escalate] {description}\n{reason}".strip(),
+                    ))
+                    applied += 1
+            elif op in ("remove", "deescalate"):
+                if slug:
+                    before = len(plan.supplement_protocol)
+                    plan.supplement_protocol = [
+                        s for s in plan.supplement_protocol if s.supplement_slug != slug
+                    ]
+                    if len(plan.supplement_protocol) < before:
+                        applied += 1
+            elif op == "swap":
+                if slug:
+                    existing = next((s for s in plan.supplement_protocol if s.supplement_slug == slug), None)
+                    if existing is not None:
+                        existing.coach_rationale = (
+                            existing.coach_rationale + f"\n[rework — swap] {description}\n{reason}"
+                        ).strip()
+                        applied += 1
+
+        elif kind == "topic":
+            if op == "add" and slug:
+                if slug not in plan.primary_topics and slug not in plan.contributing_topics:
+                    plan.contributing_topics.append(slug)
+                    applied += 1
+            elif op == "add" and not slug:
+                # Topic without slug → push into education as a teach-this item
+                plan.education.append(EducationModule(
+                    target_kind="topic",
+                    target_slug="(coach-to-fill)",
+                    client_facing_summary=f"{description}\n{reason}".strip(),
+                ))
+                applied += 1
+
+        elif kind == "lab_order":
+            test = description or slug or "(lab order — coach to specify)"
+            plan.lab_orders.append(LabOrderItem(test=test, reason=reason or rationale[:200]))
+            applied += 1
+
+        elif kind == "education":
+            plan.education.append(EducationModule(
+                target_kind="topic",
+                target_slug=slug or "(coach-to-fill)",
+                client_facing_summary=f"{description}\n{reason}".strip(),
+            ))
+            applied += 1
+
+        elif kind == "practice":
+            plan.lifestyle_practices.append(PracticeItem(
+                name=description[:80] or (slug or "practice"),
+                cadence="daily",
+                details=reason,
+            ))
+            applied += 1
+
+    # ---- prepend rework rationale to coach notes ----
+    rework_block = (
+        f"[AI Rework — {benefit_pct}% benefit · {confidence} confidence · "
+        f"triggered by {triggered_by} · {today.isoformat()}]\n"
+        f"{rationale}\n"
+    )
+    plan.notes_for_coach = (
+        rework_block + ("\n---\n\n" + plan.notes_for_coach if plan.notes_for_coach else "")
+    )
+
+    try:
+        plan_storage.write_plan(root, plan)
+    except Exception as e:
+        return _emit({"ok": False, "error": f"failed to write plan: {type(e).__name__}: {e}"})
+
+    return _emit({
+        "ok": True,
+        "slug": new_slug,
+        "successor": is_successor,
+        "applied_count": applied,
+        "parent_slug": parent.slug if parent else None,
+        "error": None,
+    })
+
+
+if __name__ == "__main__":
+    sys.exit(main())

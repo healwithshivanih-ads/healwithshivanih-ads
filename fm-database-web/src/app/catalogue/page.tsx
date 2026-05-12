@@ -2,6 +2,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CatalogueTable } from "@/components/catalogue-table";
 import { loadAllOfKind } from "@/lib/fmdb/loader";
 import { KIND_LABELS, type CatalogueKind } from "@/lib/fmdb/kinds";
+import { CatalogueChatPanel } from "./catalogue-chat-panel";
 import type {
   BaseEntity,
   Topic,
@@ -116,6 +117,8 @@ export default async function CataloguePage() {
           );
         })}
       </Tabs>
+
+      <CatalogueChatPanel />
     </div>
   );
 }
