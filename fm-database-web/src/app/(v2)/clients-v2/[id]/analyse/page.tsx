@@ -245,14 +245,13 @@ export default async function AnalysePage({
           ) : (
             <FmSessionTypePicker
               hrefMap={{
-                discovery: `/clients/${id}?tab=sessions&type=discovery_consultation`,
+                // v2 native forms — Discovery, Check-in, Quick note
+                discovery: `/clients-v2/${id}/analyse/discovery`,
+                checkin: `/clients-v2/${id}/analyse/checkin`,
+                quick: `/clients-v2/${id}/analyse/quick`,
+                // Legacy fallback — Intake + Full Assessment land in commit 3
                 intake: `/clients/${id}?tab=sessions&type=intake`,
                 full: `/clients/${id}?tab=sessions&type=full_assessment`,
-                checkin: `/clients/${id}?tab=sessions&type=check_in`,
-                // Quick note has a v2 native form — others still fall through
-                // to the legacy /clients/[id] flow until Phase 3 part 2 ports
-                // them.
-                quick: `/clients-v2/${id}/analyse/quick`,
               }}
             />
           )}

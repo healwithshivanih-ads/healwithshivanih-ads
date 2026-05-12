@@ -1,12 +1,12 @@
 import { notFound } from "next/navigation";
 import { loadClientById } from "@/lib/fmdb/loader-extras";
-import { FmPanel, FmPageHeader } from "@/components/fm";
+import { FmPageHeader } from "@/components/fm";
 import { AnalysePageShell } from "../analyse-page-shell";
-import { QuickNoteForm } from "./quick-note-form";
+import { DiscoveryForm } from "./discovery-form";
 
 export const dynamic = "force-dynamic";
 
-export default async function QuickNotePage({
+export default async function DiscoveryPage({
   params,
 }: {
   params: Promise<{ id: string }>;
@@ -19,18 +19,16 @@ export default async function QuickNotePage({
   return (
     <AnalysePageShell
       clientId={id}
-      formLabel="Quick note"
-      formHint="📌 Quick note — async log entry, single source on record"
+      formLabel="Discovery"
+      formHint="🔍 Discovery · 15-min fit conversation · sets the lab order in motion"
     >
       <FmPageHeader
         as="h2"
         size="md"
-        title="📌 Quick note"
-        subtitle="Capture an observation between sessions — saves immediately. No plan generated."
+        title={<span style={{ color: "#B8770A" }}>🔍 Discovery</span>}
+        subtitle="Free 15-minute fit call. Capture the presenting concern, pick the FM lab panel, and decide on a food journal."
       />
-      <FmPanel style={{ maxWidth: 760 }}>
-        <QuickNoteForm clientId={id} displayName={displayName} />
-      </FmPanel>
+      <DiscoveryForm clientId={id} displayName={displayName} />
     </AnalysePageShell>
   );
 }
