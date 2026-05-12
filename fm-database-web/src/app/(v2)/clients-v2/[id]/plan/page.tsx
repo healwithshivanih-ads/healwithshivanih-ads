@@ -177,6 +177,7 @@ function MiniLabel({ children }: { children: React.ReactNode }) {
 function deriveStage(
   activePlan: Plan | undefined,
   todayStr: string,
+  clientId: string,
 ): {
   stage: FmWorkflowStage;
   title: React.ReactNode;
@@ -200,8 +201,8 @@ function deriveStage(
       title: `Plan in ${status.replace(/_/g, " ")}`,
       detail:
         "Activate below to publish + send letters. Open the editor first if you want to tweak any sections.",
-      cta: "Edit in classic",
-      ctaHref: `/plans/${activePlan.slug}`,
+      cta: "Open editor",
+      ctaHref: `/clients-v2/${clientId}/plan/edit/${activePlan.slug}`,
     };
   }
   if (status === "published") {
@@ -321,7 +322,7 @@ export default async function PlanTabPage({
       ),
     );
 
-  const stage = deriveStage(activePlan, todayStr);
+  const stage = deriveStage(activePlan, todayStr, id);
   const status = activePlan ? planStatusOf(activePlan) : undefined;
   const isPublished = status === "published";
 
@@ -656,7 +657,7 @@ export default async function PlanTabPage({
             </div>
           </div>
           <Link
-            href={`/plans/${pendingDraft.slug}`}
+            href={`/clients-v2/${id}/plan/edit/${pendingDraft.slug}`}
             style={{
               padding: "7px 14px",
               fontSize: 11.5,
@@ -785,7 +786,7 @@ export default async function PlanTabPage({
                 >
                   ↩ Supersedes{" "}
                   <Link
-                    href={`/plans/${supersedes}`}
+                    href={`/clients-v2/${id}/plan/edit/${supersedes}`}
                     style={{
                       fontFamily: "var(--fm-font-mono)",
                       color: "var(--fm-text-primary)",
@@ -795,7 +796,7 @@ export default async function PlanTabPage({
                   </Link>{" "}
                   ·{" "}
                   <Link
-                    href={`/plans/${activePlan.slug}?tab=lifecycle`}
+                    href={`/clients-v2/${id}/plan/edit/${activePlan.slug}`}
                     style={{
                       color: "var(--fm-primary)",
                       fontWeight: 600,
@@ -1023,12 +1024,12 @@ export default async function PlanTabPage({
                   }
                 />
                 <ActionLink
-                  href={`/plans/${activePlan.slug}`}
+                  href={`/clients-v2/${id}/plan/edit/${activePlan.slug}`}
                   icon="✏️"
-                  label="Edit plan in classic"
+                  label="Edit plan"
                 />
                 <ActionLink
-                  href={`/plans/${activePlan.slug}?tab=lifecycle`}
+                  href={`/clients-v2/${id}/plan/edit/${activePlan.slug}`}
                   icon="🚀"
                   label="Lifecycle (submit / publish)"
                 />
@@ -1192,7 +1193,7 @@ export default async function PlanTabPage({
                   {archivedPlans.map((p) => (
                     <Link
                       key={p.slug}
-                      href={`/plans/${p.slug}`}
+                      href={`/clients-v2/${id}/plan/edit/${p.slug}`}
                       style={{
                         display: "flex",
                         alignItems: "center",

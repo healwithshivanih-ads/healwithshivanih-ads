@@ -548,9 +548,9 @@ export default async function ClientV2Page({
           stageInfo.stage === "no_plan"
             ? `/clients/${id}?tab=sessions`
             : stageInfo.stage === "draft"
-              ? `/plans/${plansForClient.find((p) => (p._bucket ?? p.status) !== "published")?.slug ?? ""}`
+              ? `/clients-v2/${id}/plan/edit/${plansForClient.find((p) => (p._bucket ?? p.status) !== "published")?.slug ?? ""}`
               : stageInfo.stage === "active"
-                ? `/plans/${plansForClient.find((p) => (p._bucket ?? p.status) === "published")?.slug ?? ""}`
+                ? `/clients-v2/${id}/plan/edit/${plansForClient.find((p) => (p._bucket ?? p.status) === "published")?.slug ?? ""}`
                 : stageInfo.stage === "recheck"
                   ? `/clients-v2/${id}/plan#follow-up-panel`
                   : `/clients-v2/${id}/sessions`

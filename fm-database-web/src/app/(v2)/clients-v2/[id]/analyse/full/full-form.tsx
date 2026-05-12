@@ -499,7 +499,7 @@ export function FullAssessmentForm({
           toast.error(res.error || "Draft generation failed");
         } else if (res.slug) {
           toast.success(`Draft plan created at ${res.slug}`);
-          router.push(`/plans/${res.slug}`);
+          router.push(`/clients-v2/${clientId}/plan/edit/${res.slug}`);
         }
       } catch (e) {
         toast.error((e as Error).message.slice(0, 120));

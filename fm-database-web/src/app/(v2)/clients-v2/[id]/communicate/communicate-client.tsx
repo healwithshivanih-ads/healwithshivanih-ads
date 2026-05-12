@@ -138,7 +138,7 @@ export function CommunicateClient({
               </a>
               {activePlan && isPublished && (
                 <Link
-                  href={`/plans/${activePlan.slug}`}
+                  href={`/clients-v2/${clientId}/plan/edit/${activePlan.slug}`}
                   style={{
                     padding: "8px 14px",
                     background: "var(--fm-primary)",

@@ -240,7 +240,7 @@ export function PlanChatAndPreview({
                     Markdown render. For full HTML / brand template +
                     print →{" "}
                     <a
-                      href={`/plans/${planSlug}?tab=lifecycle`}
+                      href={`/clients-v2/${clientId}/plan/edit/${planSlug}`}
                       style={{
                         color: "var(--fm-primary)",
                         fontWeight: 700,

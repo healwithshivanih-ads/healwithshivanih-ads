@@ -73,7 +73,7 @@ export function FollowUpPanel({
       );
       if (r.ok && r.newSlug) {
         toast.success(`Follow-up plan created: ${r.newSlug}`);
-        router.push(`/plans/${r.newSlug}`);
+        router.push(`/clients-v2/${clientId}/plan/edit/${r.newSlug}`);
       } else {
         toast.error(r.error ?? "Generation failed");
       }

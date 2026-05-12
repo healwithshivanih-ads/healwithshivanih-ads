@@ -469,7 +469,7 @@ function SessionInspector({
             )}
             {session.generated_plan_slug && (
               <Link
-                href={`/plans/${session.generated_plan_slug}`}
+                href={`/clients-v2/${clientId}/plan/edit/${session.generated_plan_slug}`}
                 style={{
                   padding: "7px 14px",
                   fontSize: 11.5,

@@ -309,7 +309,7 @@ export function LetterEditor({
           </div>
           <div style={{ display: "flex", gap: 6 }}>
             <Link
-              href={`/plans/${planSlug}?tab=lifecycle`}
+              href={`/clients-v2/${clientId}/plan/edit/${planSlug}`}
               style={{
                 padding: "6px 12px",
                 fontSize: 11.5,

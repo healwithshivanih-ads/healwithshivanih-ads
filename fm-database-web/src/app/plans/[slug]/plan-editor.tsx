@@ -1075,7 +1075,7 @@ export function PlanEditor(props: PlanEditorProps) {
                 </p>
               </div>
               <a
-                href={`/clients/${clientId}?tab=plan`}
+                href={`/clients-v2/${clientId}/plan`}
                 className="shrink-0 text-sm font-semibold px-4 py-2 rounded-lg bg-violet-700 text-white hover:bg-violet-800 transition-colors"
               >
                 📤 Go to client → Documents →
@@ -2001,7 +2001,7 @@ export function PlanEditor(props: PlanEditorProps) {
                 </p>
                 {clientId ? (
                   <a
-                    href={`/clients/${clientId}?tab=plan`}
+                    href={`/clients-v2/${clientId}/plan`}
                     className="inline-flex items-center gap-1.5 rounded-md border border-border bg-muted/40 px-4 py-2 text-sm font-medium hover:bg-muted transition-colors"
                   >
                     Go to client page → Documents tab ↗
