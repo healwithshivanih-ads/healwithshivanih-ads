@@ -337,6 +337,15 @@ def main() -> int:
             if proto_slug not in plan.attached_protocols:
                 plan.attached_protocols.append(proto_slug)
 
+    # Coach-forced attachments from the assess-page protocol picker
+    # ("🏥 FM healing programs" → catalogue: prefix). actions.ts pushes
+    # the bare slug list into plan_brief.force_attach_protocols. Add
+    # them whether or not the AI's suggested_protocols mentioned them,
+    # so the coach's manual pick always wins.
+    for proto_slug in plan_brief.get("force_attach_protocols", []) or []:
+        if isinstance(proto_slug, str) and proto_slug and proto_slug not in plan.attached_protocols:
+            plan.attached_protocols.append(proto_slug)
+
     # ── Merge attached Protocol catalogue content into the plan ────────────────
     # When a coach attaches a Protocol (e.g. 5R Gut, AIP, Whole30), the
     # catalogue entry contains supplements_typically_used, foods_to_emphasise,

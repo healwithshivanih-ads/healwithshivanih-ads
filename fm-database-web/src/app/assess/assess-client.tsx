@@ -20,6 +20,8 @@ import {
   computeRatiosAction,
   loadClientSessionsAction,
   loadCustomTemplatesAction,
+  loadCatalogueProtocolsAction,
+  type CataloguePickerEntry,
   type SessionSummary,
   type CustomTemplate,
 } from "./actions";
@@ -2113,13 +2115,26 @@ export function PlanBriefCard({
   const [open, setOpen] = useState(false);
   const selectedTemplate = PROTOCOL_TEMPLATES.find((t) => t.id === brief.protocol_template_id);
   const [customTemplates, setCustomTemplates] = useState<CustomTemplate[]>([]);
+  const [catalogueProtocols, setCatalogueProtocols] = useState<CataloguePickerEntry[]>([]);
 
   useEffect(() => {
     if (open && customTemplates.length === 0) {
       loadCustomTemplatesAction().then(setCustomTemplates).catch(() => {});
     }
+    if (open && catalogueProtocols.length === 0) {
+      loadCatalogueProtocolsAction().then(setCatalogueProtocols).catch(() => {});
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
+
+  // Lookup helper: when the picker selection is `catalogue:<slug>`,
+  // surface the catalogue display_name on the collapsed-card badge.
+  const selectedCatalogue =
+    brief.protocol_template_id?.startsWith("catalogue:")
+      ? catalogueProtocols.find(
+          (p) => `catalogue:${p.slug}` === brief.protocol_template_id,
+        )
+      : undefined;
 
   return (
     <Card className="border-indigo-200 bg-indigo-50/40">
@@ -2134,6 +2149,11 @@ export function PlanBriefCard({
             {selectedTemplate && (
               <span className="text-xs font-normal text-indigo-700 bg-indigo-100 rounded px-2 py-0.5">
                 {selectedTemplate.icon} {selectedTemplate.display_name}
+              </span>
+            )}
+            {selectedCatalogue && (
+              <span className="text-xs font-normal text-emerald-700 bg-emerald-100 rounded px-2 py-0.5">
+                {selectedCatalogue.icon} {selectedCatalogue.display_name}
               </span>
             )}
             {brief.plan_period_weeks && (
@@ -2245,6 +2265,106 @@ export function PlanBriefCard({
                 })()}
                 <hr className="border-muted my-2" />
                 <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wide">Built-in templates</p>
+              </div>
+            )}
+
+            {/* 🏥 FM Healing Programs — catalogue Protocol entities
+                (5R Gut, AIP, Whole30, Low-FODMAP, Cycle Sync, Adrenal
+                Recovery, Liver Detox, Mitochondrial, Anti-Inflammatory,
+                Weight-Loss Metabolic, Blood Sugar). Each tile maps
+                directly to a structured Protocol YAML — selecting one
+                here auto-attaches that protocol to the draft and the
+                catalogue-merge pass in generate-draft.py copies the
+                protocol's supplements / foods / phases / cautions into
+                the plan body. */}
+            {catalogueProtocols.length > 0 && (
+              <div className="space-y-1.5">
+                <p className="text-[10px] font-semibold text-emerald-700 uppercase tracking-wide">
+                  🏥 FM healing programs (catalogue)
+                </p>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                  {catalogueProtocols.map((p) => {
+                    const isSelected =
+                      brief.protocol_template_id === `catalogue:${p.slug}`;
+                    return (
+                      <button
+                        key={p.slug}
+                        type="button"
+                        onClick={() =>
+                          onChange({
+                            ...brief,
+                            protocol_template_id: isSelected
+                              ? undefined
+                              : (`catalogue:${p.slug}` as string),
+                          })
+                        }
+                        className={`rounded-lg border p-2.5 text-left text-xs transition-all ${
+                          isSelected
+                            ? "border-emerald-400 bg-emerald-50 shadow-sm ring-1 ring-emerald-300"
+                            : "border-emerald-200 bg-emerald-50/30 hover:bg-emerald-50/60 hover:border-emerald-300"
+                        }`}
+                      >
+                        <div className="flex items-start gap-1.5">
+                          <span className="text-base leading-none shrink-0 mt-0.5">
+                            {p.icon}
+                          </span>
+                          <div className="min-w-0">
+                            <p
+                              className={`font-medium leading-tight ${isSelected ? "text-emerald-800" : "text-emerald-900"}`}
+                            >
+                              {p.display_name}
+                            </p>
+                            {p.description && (
+                              <p className="text-[10px] text-emerald-700/80 mt-0.5 leading-tight line-clamp-2">
+                                {p.description}
+                              </p>
+                            )}
+                            <div className="flex flex-wrap gap-1 mt-1.5">
+                              {p.typical_duration_weeks && (
+                                <span className="text-[9px] bg-emerald-100 rounded px-1 py-0.5 text-emerald-800">
+                                  {p.typical_duration_weeks}w
+                                </span>
+                              )}
+                              {p.category && (
+                                <span className="text-[9px] bg-emerald-100/60 rounded px-1 py-0.5 text-emerald-700">
+                                  {p.category.replace(/_/g, " ")}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+                {selectedCatalogue && (
+                  <div className="rounded-lg bg-emerald-50 border border-emerald-200 px-3 py-2.5 space-y-1">
+                    <p className="text-xs font-medium text-emerald-800">
+                      {selectedCatalogue.icon} {selectedCatalogue.display_name} — will attach to draft + merge catalogue content
+                    </p>
+                    {selectedCatalogue.description && (
+                      <p className="text-[11px] text-emerald-700">
+                        {selectedCatalogue.description}
+                      </p>
+                    )}
+                    {selectedCatalogue.indications && selectedCatalogue.indications.length > 0 && (
+                      <div className="flex flex-wrap gap-1 mt-0.5">
+                        {selectedCatalogue.indications.slice(0, 4).map((ind) => (
+                          <span
+                            key={ind}
+                            className="text-[9px] bg-emerald-100 border border-emerald-200 rounded px-1.5 py-0.5 text-emerald-700"
+                          >
+                            {ind}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
+                <hr className="border-muted my-2" />
+                <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wide">
+                  Built-in starter packs
+                </p>
               </div>
             )}
 

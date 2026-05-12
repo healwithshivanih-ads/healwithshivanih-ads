@@ -6,7 +6,7 @@ import path from "node:path";
 import { execFile } from "node:child_process";
 import { revalidatePath } from "next/cache";
 import yaml from "js-yaml";
-import { getPlansRoot } from "@/lib/fmdb/paths";
+import { getPlansRoot, getCataloguePath } from "@/lib/fmdb/paths";
 import { loadPlanBySlug } from "@/lib/fmdb/loader";
 import { writePlan } from "@/lib/fmdb/writer";
 import { loadClientSessions, type ClientSession } from "@/lib/fmdb/loader-extras";
@@ -217,18 +217,47 @@ export async function generateDraftAction(
 ): Promise<GenerateDraftResult> {
   // Resolve the protocol template (if any) from TypeScript data and embed it
   // so the Python shim doesn't need to know about the TS templates file.
+  //
+  // Three template-id shapes the coach can pick:
+  //   - "<id>"            — hardcoded ProtocolTemplate (leaky-gut, …)
+  //   - "custom:<slug>"   — coach-saved template from a past plan
+  //   - "catalogue:<slug>" — catalogue Protocol entity (5R, AIP, …)
+  //
+  // Hardcoded + custom go through the existing resolved_template merge in
+  // generate-draft.py. Catalogue picks instead pre-tick the right picks
+  // key (`protocol_<slug>`) so the existing attached_protocols flow
+  // catches it — that already pulls supplements_typically_used,
+  // foods_to_emphasise/remove, phases, cautions from the YAML.
   let resolved: GenerateDraftInput = input;
-  if (input.plan_brief?.protocol_template_id) {
-    const tpl = PROTOCOL_TEMPLATES.find((t) => t.id === input.plan_brief!.protocol_template_id);
-    if (tpl) {
+  const tplId = input.plan_brief?.protocol_template_id;
+  if (tplId) {
+    if (tplId.startsWith("catalogue:")) {
+      const protoSlug = tplId.slice("catalogue:".length);
+      // Force-attach the protocol slug regardless of whether the AI's
+      // suggested_protocols list contains it. The existing attached_protocols
+      // catalogue-merge loop in generate-draft.py then copies the YAML's
+      // supplements / foods / phases / cautions into the draft body.
       resolved = {
         ...input,
+        picks: { ...input.picks, [`protocol_${protoSlug}`]: true },
         plan_brief: {
           ...input.plan_brief,
-          // @ts-expect-error — extra field for Python; not part of the TS type
-          resolved_template: tpl,
+          // @ts-expect-error — extra field for Python; bare list of slugs to attach
+          force_attach_protocols: [protoSlug],
         },
       };
+    } else {
+      const tpl = PROTOCOL_TEMPLATES.find((t) => t.id === tplId);
+      if (tpl) {
+        resolved = {
+          ...input,
+          plan_brief: {
+            ...input.plan_brief,
+            // @ts-expect-error — extra field for Python; not part of the TS type
+            resolved_template: tpl,
+          },
+        };
+      }
     }
   }
   return generateDraftFromSuggestions(resolved);
@@ -716,4 +745,112 @@ export async function loadCustomTemplatesAction(): Promise<CustomTemplate[]> {
   } catch {
     return [];
   }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Catalogue Protocols as picker entries
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Lightweight shape for picker entries derived from catalogue Protocol
+ * entities (fm-database/data/protocols/*.yaml). Distinct from the
+ * hardcoded PROTOCOL_TEMPLATES (UI starter packs) and from
+ * CustomTemplate (coach-saved presets from past published plans).
+ *
+ * When selected, the assess flow sets `protocol_template_id` to
+ * `catalogue:<slug>` and generate-draft.py adds the slug to
+ * plan.attached_protocols. The catalogue-merge pass that runs after
+ * (added in the prior turn) then pulls supplements_typically_used,
+ * foods_to_emphasise/remove, phases, cautions from the YAML into the
+ * draft. So picker selection here is functionally equivalent to
+ * post-synthesis radio-picking in SuggestionsView — just lets the
+ * coach bias the AI synthesis from the start.
+ */
+export interface CataloguePickerEntry {
+  /** Catalogue slug — also used as `catalogue:<slug>` id when selecting. */
+  slug: string;
+  display_name: string;
+  /** Plain-English one-liner pulled from `summary` (first sentence). */
+  description: string;
+  /** Maps category → emoji for the picker tile. */
+  icon: string;
+  /** Catalogue category (gut_healing / elimination_diet / etc.) so picker
+   *  can group by category if it wants. */
+  category?: string;
+  /** Coach scan info — surfaced as small caption under the tile name. */
+  typical_duration_weeks?: number;
+  /** Picker pre-bias signals: when the AI is suggesting which protocol
+   *  applies to a given symptom/condition cluster, having these visible
+   *  on the tile helps coach pick when she opens the picker manually. */
+  indications?: string[];
+}
+
+const CATEGORY_ICONS: Record<string, string> = {
+  gut_healing: "🌿",
+  elimination_diet: "🥗",
+  hormone_balance: "🌸",
+  metabolic_reset: "🔥",
+  adrenal_recovery: "🌙",
+  detox_liver_support: "🧬",
+  anti_inflammatory: "❄️",
+  mitochondrial_support: "⚡",
+  thyroid_optimization: "🦋",
+  blood_sugar_regulation: "📊",
+};
+
+/**
+ * Load every catalogue Protocol entity, shaped for the assess-page
+ * template picker. Synchronous from disk — protocols dir is small
+ * (≤20 entities) and cached at the YAML layer by Next dev server.
+ */
+export async function loadCatalogueProtocolsAction(): Promise<CataloguePickerEntry[]> {
+  const protoDir = path.join(getCataloguePath(), "protocols");
+  let entries: string[] = [];
+  try {
+    entries = await fs.readdir(protoDir);
+  } catch {
+    return [];
+  }
+  const out: CataloguePickerEntry[] = [];
+  for (const name of entries) {
+    if (!name.endsWith(".yaml") && !name.endsWith(".yml")) continue;
+    try {
+      const raw = await fs.readFile(path.join(protoDir, name), "utf8");
+      const data = yaml.load(raw) as Record<string, unknown> | null;
+      if (!data?.slug || !data?.display_name) continue;
+      const summaryStr =
+        typeof data.summary === "string" ? data.summary.trim() : "";
+      // First sentence — clean tile caption. Multi-line summaries in
+      // 5R / AIP YAMLs use "|" so they end up as one trimmed string.
+      const firstSentence = summaryStr
+        .split(/\.[\s\n]/)[0]
+        .replace(/\s+/g, " ")
+        .trim();
+      const category =
+        typeof data.category === "string" ? data.category : undefined;
+      out.push({
+        slug: data.slug as string,
+        display_name: data.display_name as string,
+        description:
+          firstSentence.length > 220
+            ? firstSentence.slice(0, 218) + "…"
+            : firstSentence || (data.display_name as string),
+        icon: (category && CATEGORY_ICONS[category]) ?? "🏥",
+        category,
+        typical_duration_weeks:
+          typeof data.typical_duration_weeks === "number"
+            ? data.typical_duration_weeks
+            : undefined,
+        indications: Array.isArray(data.indications)
+          ? (data.indications as unknown[])
+              .filter((x): x is string => typeof x === "string")
+              .slice(0, 6)
+          : undefined,
+      });
+    } catch {
+      // skip malformed YAMLs
+    }
+  }
+  out.sort((a, b) => a.display_name.localeCompare(b.display_name));
+  return out;
 }
