@@ -25,6 +25,7 @@ import {
   loadLetterSendLogAction,
   type LetterSendEntry,
 } from "@/app/api/email/actions";
+import { getLetterStalenessAction } from "@/app/plans/[slug]/lifecycle-actions";
 import type { Plan, PlanStatus } from "@/lib/fmdb/types";
 
 const PLAN_STATUSES = new Set<PlanStatus>([
@@ -291,6 +292,11 @@ export default async function PlanTabPage({
       );
     });
   const activePlan = activeSorted[0];
+  // Letter staleness — compares each saved letter mtime to plan.updated_at.
+  // Only runs when we have a plan; cheap (per-letter fs.stat).
+  const staleness = activePlan
+    ? await getLetterStalenessAction(activePlan.slug as string, id)
+    : null;
   // If a separate draft exists alongside a published plan, call it out
   // so the coach knows there's an in-progress next version.
   const pendingDraft = activePlan && planStatusOf(activePlan) === "published"
@@ -487,6 +493,77 @@ export default async function PlanTabPage({
             : undefined)
         }
       />
+
+      {/* Letter-staleness banner — plan was edited after letters were saved. */}
+      {staleness?.anyStale && activePlan && (
+        <div
+          style={{
+            marginTop: 12,
+            padding: "10px 14px",
+            background: "rgba(245, 158, 11, 0.08)",
+            border: "1.5px solid rgba(245, 158, 11, 0.55)",
+            borderRadius: "var(--fm-radius-md)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 12,
+            flexWrap: "wrap",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 0 }}>
+            <span style={{ fontSize: 16 }}>📄</span>
+            <div style={{ minWidth: 0 }}>
+              <div style={{ fontSize: 12.5, fontWeight: 700, color: "#92400e" }}>
+                Letters are stale — plan edited after{" "}
+                {staleness.staleCount === 1
+                  ? "1 saved letter was generated"
+                  : `${staleness.staleCount} saved letters were generated`}
+              </div>
+              <div
+                style={{
+                  fontSize: 11,
+                  color: "#78350f",
+                  marginTop: 2,
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: 6,
+                }}
+              >
+                {staleness.entries
+                  .filter((e) => e.stale)
+                  .map((e) => (
+                    <span
+                      key={e.type}
+                      style={{
+                        padding: "1px 6px",
+                        background: "rgba(245, 158, 11, 0.15)",
+                        borderRadius: 4,
+                        fontFamily: "var(--fm-font-mono)",
+                      }}
+                    >
+                      {e.type.replace(/_/g, " ")}
+                    </span>
+                  ))}
+              </div>
+            </div>
+          </div>
+          <Link
+            href={`/clients-v2/${id}/communicate`}
+            style={{
+              fontSize: 11.5,
+              fontWeight: 700,
+              padding: "6px 12px",
+              background: "#92400e",
+              color: "#fff",
+              borderRadius: "var(--fm-radius-sm)",
+              textDecoration: "none",
+              whiteSpace: "nowrap",
+            }}
+          >
+            🔄 Regenerate letters →
+          </Link>
+        </div>
+      )}
 
       {/* Pending-draft callout — only when there's a draft sitting next
           to the published plan. Without this surface the coach has no

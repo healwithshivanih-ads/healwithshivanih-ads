@@ -17,7 +17,7 @@
 
 import { useState, useRef, useEffect, useTransition } from "react";
 import { Button } from "@/components/ui/button";
-import { planChatAction, type ChatTurn } from "./plan-chat-actions";
+import { planChatAction, type ChatTurn, type ClientFieldChange } from "./plan-chat-actions";
 import type { PlanChange } from "./plan-diff";
 
 interface Props {
@@ -30,6 +30,15 @@ type Turn = ChatTurn & {
   updated?: boolean;
   changes?: PlanChange[];
   revertedToDraft?: boolean;
+  clientUpdated?: boolean;
+  clientChanges?: ClientFieldChange[];
+};
+
+const CLIENT_FIELD_LABEL: Record<string, string> = {
+  dietary_preference: "Dietary preference",
+  foods_to_avoid: "Foods to avoid",
+  non_negotiables: "Non-negotiables",
+  reported_triggers: "Reported triggers",
 };
 
 function changeKindGlyph(kind: PlanChange["kind"]): string {
@@ -81,6 +90,29 @@ function ChatBubble({ turn }: { turn: Turn }) {
             )}
           </div>
         )}
+        {!isUser && turn.clientUpdated && turn.clientChanges && turn.clientChanges.length > 0 && (
+          <div className="mt-2 space-y-1">
+            <p className="text-[11px] font-semibold text-violet-700">
+              👤 Client profile updated · will apply to future plans
+            </p>
+            <ul className="mt-1 space-y-0.5 border-l-2 border-violet-200 pl-2">
+              {turn.clientChanges.map((c, i) => (
+                <li key={i} className="text-[11px] leading-snug text-violet-700">
+                  <span className="mr-1">📝</span>
+                  <span className="font-medium">{CLIENT_FIELD_LABEL[c.field] ?? c.field}:</span>{" "}
+                  {c.before ? (
+                    <>
+                      <span className="line-through text-violet-400">{c.before}</span> →{" "}
+                      <span>{c.after}</span>
+                    </>
+                  ) : (
+                    <span>{c.after}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -127,6 +159,8 @@ export function PlanChatPanel({ slug, clientId, isLocked }: Props) {
         updated: result.updated,
         changes: result.changes,
         revertedToDraft: result.revertedToDraft,
+        clientUpdated: result.clientUpdated,
+        clientChanges: result.clientChanges,
       };
       setHistory((h) => [...h, assistantTurn]);
     });
