@@ -87,20 +87,13 @@ async function computeSignal(
     };
   }
 
-  // Sessions-based signals: labs_pending, returning, new_client.
-  const sessions = await loadClientSessions(client.client_id);
-  if (sessions.length === 0) return { kind: "new_client" };
-
-  // Labs requested but not yet uploaded — same heuristic as the legacy
-  // dashboard: scan session coach_notes for "[requested labs: …]" tags.
-  for (const s of sessions) {
-    const labs = parseRequestedLabs(s.coach_notes as string | undefined);
-    if (labs.length > 0) {
-      return { kind: "labs_pending", labs, labCount: labs.length };
-    }
-  }
-
-  // Active plan?
+  // Active plan trumps labs-pending. Once a plan is live, the requested
+  // labs were either already factored in or the coach will revise the
+  // plan when new labs land — surfacing labs-pending for an active
+  // client is just dashboard noise. (This ordering matches the classic
+  // dashboard at src/app/page.tsx; dashboard-v2 had the checks reversed,
+  // so Geetika kept appearing in Labs pending despite plan-1 being
+  // active.)
   const activePlan = clientPlans.find((p) => ACTIVE_BUCKETS.has(p._bucket ?? p.status ?? ""));
   if (activePlan) {
     return {
@@ -108,6 +101,20 @@ async function computeSignal(
       planSlug: activePlan.slug,
       recheckDate: activePlan.plan_period_recheck_date,
     };
+  }
+
+  // Sessions-based signals: labs_pending, returning, new_client.
+  const sessions = await loadClientSessions(client.client_id);
+  if (sessions.length === 0) return { kind: "new_client" };
+
+  // Labs requested but not yet uploaded — same heuristic as the legacy
+  // dashboard: scan session coach_notes for "[requested labs: …]" tags.
+  // Skipped above when an active plan exists.
+  for (const s of sessions) {
+    const labs = parseRequestedLabs(s.coach_notes as string | undefined);
+    if (labs.length > 0) {
+      return { kind: "labs_pending", labs, labCount: labs.length };
+    }
   }
 
   // Returning if last session was > 30 days ago, otherwise still onboarding.
