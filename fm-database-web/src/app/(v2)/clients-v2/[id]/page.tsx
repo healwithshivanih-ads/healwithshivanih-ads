@@ -45,6 +45,7 @@ import {
 } from "@/components/fm";
 import { FmFivePillarsWithSendCheckIn } from "./five-pillars-bridge";
 import { SOAPNotePanel } from "@/app/clients/[id]/soap-note-panel";
+import { ReworkBanner } from "@/app/clients/[id]/rework-banner";
 import { loadClientSessionsAction } from "@/app/assess/actions";
 import { clientQuickActions } from "./client-quick-actions";
 import { clientSubnavTabs } from "./client-subnav";
@@ -561,6 +562,15 @@ export default async function ClientV2Page({
       />
 
       <SubNav id={id} active="overview" />
+
+      {client.rework_suggestion && (
+        <div style={{ marginBottom: 16 }}>
+          <ReworkBanner
+            clientId={id}
+            suggestion={client.rework_suggestion}
+          />
+        </div>
+      )}
 
       <div
         style={{
