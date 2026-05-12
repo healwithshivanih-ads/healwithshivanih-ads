@@ -106,3 +106,6 @@ export type {
 
 export { FmRecheckPanel } from "./FmRecheckPanel";
 export type { FmRecheckPanelProps } from "./FmRecheckPanel";
+
+export { FmNutritionPanel } from "./FmNutritionPanel";
+export type { FmNutritionPanelProps } from "./FmNutritionPanel";
