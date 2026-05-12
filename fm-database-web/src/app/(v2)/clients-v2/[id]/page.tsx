@@ -44,6 +44,8 @@ import {
   type FivePillarsValue,
 } from "@/components/fm";
 import { FmFivePillarsWithSendCheckIn } from "./five-pillars-bridge";
+import { SOAPNotePanel } from "@/app/clients/[id]/soap-note-panel";
+import { loadClientSessionsAction } from "@/app/assess/actions";
 
 export const dynamic = "force-dynamic";
 
@@ -381,10 +383,11 @@ export default async function ClientV2Page({
   const { id } = await params;
   const todayStr = new Date().toISOString().slice(0, 10);
 
-  const [client, sessions, allPlans] = await Promise.all([
+  const [client, sessions, allPlans, sessionSummaries] = await Promise.all([
     loadClientById(id),
     loadClientSessions(id),
     loadAllPlans(),
+    loadClientSessionsAction(id),
   ]);
 
   if (!client) notFound();
@@ -751,6 +754,17 @@ export default async function ClientV2Page({
             clientId={id}
           />
         </div>
+      </div>
+
+      {/* SOAP notes — full-width below the two columns. Auto-generated
+          from the latest session's data; coach can edit + persist. */}
+      <div style={{ marginTop: 24 }}>
+        <SOAPNotePanel
+          client={client as unknown as Record<string, unknown>}
+          clientName={client.display_name ?? client.client_id}
+          clientId={id}
+          sessions={sessionSummaries}
+        />
       </div>
     </FmAppShell>
   );
