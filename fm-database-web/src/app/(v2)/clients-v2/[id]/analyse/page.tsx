@@ -250,9 +250,7 @@ export default async function AnalysePage({
                 intake: `/clients-v2/${id}/analyse/intake`,
                 checkin: `/clients-v2/${id}/analyse/checkin`,
                 quick: `/clients-v2/${id}/analyse/quick`,
-                // Full Assessment falls through to legacy until Phase 3.5
-                // (which wraps the assess.py + AI progress modal in v2).
-                full: `/clients/${id}?tab=sessions&type=full_assessment`,
+                full: `/clients-v2/${id}/analyse/full`,
               }}
             />
           )}
