@@ -25,6 +25,84 @@ FMDB_ROOT = Path(__file__).resolve().parent.parent.parent / "fm-database"
 sys.path.insert(0, str(FMDB_ROOT))
 
 
+def _plans_root() -> Path:
+    """Mirror plan_storage.plans_root() so the brand-map loader (which
+    runs before we touch plan_storage) can find ~/fm-plans without
+    requiring an early import."""
+    env = os.environ.get("FMDB_PLANS_DIR")
+    if env:
+        return Path(env).expanduser().resolve()
+    return Path.home() / "fm-plans"
+
+
+def _load_brand_map(supplements_dir: Path) -> dict[str, str]:
+    """Build the AI-slug → preferred-brand-slug remap.
+
+    Two layers:
+      1. Coach-editable override at ~/fm-plans/supplement_brand_map.yaml
+         (highest precedence). Format: { generic_slug: vitaone_slug }.
+      2. Auto-detect from the catalogue: any supplement whose slug starts
+         with `vitaone-` is treated as a brand variant; we try to find the
+         generic counterpart by stripping the prefix and also by adding
+         common qualifier prefixes the AI uses (`vitamin-`, `mineral-`).
+
+    Coach uses VitaOne products with referral code vita13720sh, so
+    surfacing the brand-prefixed slug on the plan keeps the live
+    supplement protocol aligned with what gets ordered. Without this,
+    every fresh AI synthesis emits generic slugs like `magnesium-glycinate`
+    and the plan loses its brand pinning.
+    """
+    try:
+        import yaml  # type: ignore
+    except ImportError:
+        return {}
+
+    out: dict[str, str] = {}
+
+    # ── Layer 1 · coach override ──────────────────────────────────────
+    override_path = _plans_root() / "supplement_brand_map.yaml"
+    if override_path.exists():
+        try:
+            raw = yaml.safe_load(override_path.read_text(encoding="utf-8")) or {}
+            if isinstance(raw, dict):
+                for k, v in raw.items():
+                    if isinstance(k, str) and isinstance(v, str):
+                        out[k.strip()] = v.strip()
+        except Exception:
+            # Bad YAML — ignore the override rather than failing draft gen.
+            pass
+
+    # ── Layer 2 · catalogue auto-detect ───────────────────────────────
+    # Walk fm-database/data/supplements/ for vitaone-* slugs, build pairs.
+    if supplements_dir.exists():
+        try:
+            catalog_slugs = {p.stem for p in supplements_dir.glob("*.yaml")}
+        except Exception:
+            catalog_slugs = set()
+        BRAND_PREFIX = "vitaone-"
+        # Common AI qualifier prefixes the catalog might NOT have on the
+        # generic side. E.g. AI emits `vitamin-d3` but catalog has
+        # `vitamin-d3` AND `vitaone-d3` — we want the map.
+        QUALIFIER_PREFIXES = ["", "vitamin-", "vit-"]
+        for slug in catalog_slugs:
+            if not slug.startswith(BRAND_PREFIX):
+                continue
+            core = slug[len(BRAND_PREFIX):]
+            for qp in QUALIFIER_PREFIXES:
+                candidate = f"{qp}{core}"
+                if candidate in catalog_slugs and candidate not in out:
+                    out[candidate] = slug
+    return out
+
+
+def _apply_brand_map(slug: str, brand_map: dict[str, str]) -> str:
+    """Map AI-emitted supplement slug to the preferred brand variant
+    when one exists. Falls through unchanged otherwise."""
+    if not slug or not brand_map:
+        return slug
+    return brand_map.get(slug, slug)
+
+
 def main() -> int:
     raw = sys.stdin.read()
     try:
@@ -62,6 +140,11 @@ def main() -> int:
 
     suggestions = sess.ai_analysis or {}
     free_text_notes = sess.presenting_complaints or ""
+
+    # Brand-map: AI emits generic slugs (`magnesium-glycinate`); coach uses
+    # VitaOne products on plans (vita13720sh referral). Build the map once
+    # per draft and apply in every supplement append below.
+    brand_map = _load_brand_map(FMDB_ROOT / "data" / "supplements")
 
     # Catalogue load (alias-aware indices) — used below to validate that
     # slugs the AI dropped into topic-shaped fields actually exist as topics.
@@ -193,8 +276,10 @@ def main() -> int:
         if not slug_s:
             continue
         if picks.get(f"supp_{slug_s}", True):
+            # Remap generic → VitaOne brand variant when one exists.
+            mapped_slug = _apply_brand_map(slug_s, brand_map)
             plan.supplement_protocol.append(SupplementItem(
-                supplement_slug=slug_s,
+                supplement_slug=mapped_slug,
                 form=sp.get("form", "") or "",
                 dose=sp.get("dose", "") or "",
                 timing=sp.get("timing", "") or "",
@@ -253,10 +338,12 @@ def main() -> int:
             if t and _is_topic(t) and t not in plan.contributing_topics and t not in plan.primary_topics:
                 plan.contributing_topics.append(t)
 
-        # Merge template supplements (add those not already in plan by slug)
+        # Merge template supplements (add those not already in plan by slug).
+        # Brand-map applies here too — template can carry generic slugs.
         existing_supp_slugs = {s.supplement_slug for s in plan.supplement_protocol}
         for sp in resolved_template.get("supplements", []) or []:
             sl = sp.get("supplement_slug", "")
+            sl = _apply_brand_map(sl, brand_map)
             if sl and sl not in existing_supp_slugs:
                 plan.supplement_protocol.append(SupplementItem(
                     supplement_slug=sl,
