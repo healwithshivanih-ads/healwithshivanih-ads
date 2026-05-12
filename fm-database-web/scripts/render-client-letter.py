@@ -27,6 +27,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 from pathlib import Path
 
@@ -751,6 +752,162 @@ def _timing_slot(timing_str: str) -> tuple[int, str, str]:
             return (idx, label, emoji)
     # Default: with breakfast
     return (1, "With Breakfast", "☀️")
+
+
+_PHASE_RE = re.compile(r"(?:week|wk)\s*(\d+)|after\s*(?:the\s*)?(\d+)\s*weeks?|from\s*week\s*(\d+)|introduced?\s*(?:in|at)\s*week\s*(\d+)", re.IGNORECASE)
+
+
+def _detect_start_week(titration: str, coach_rationale: str) -> int:
+    """Infer when a supplement starts based on free-text titration / rationale.
+
+    Looks for "week N", "after N weeks", "from week N", "introduced in
+    week N" patterns. Returns the smallest integer found, or 1 (start
+    immediately) if no phase wording is present.
+    """
+    candidates: list[int] = []
+    for blob in (titration or "", coach_rationale or ""):
+        if not blob:
+            continue
+        for m in _PHASE_RE.finditer(blob):
+            for g in m.groups():
+                if g:
+                    try:
+                        n = int(g)
+                        if 1 <= n <= 52:
+                            candidates.append(n)
+                    except ValueError:
+                        continue
+    if not candidates:
+        return 1
+    return min(candidates)
+
+
+def _build_complete_shopping_list_html(supplements: list[dict], plan_weeks: int) -> str:
+    """Render the upfront shopping list — the "buy everything now" section
+    that goes ABOVE the detailed dose schedule.
+
+    Many supplements in a 12-week FM protocol are phased in (e.g. adrenal
+    support first, gut healing weeks 4-8, mitochondrial support weeks
+    8-12). In India the shipping friction makes per-phase ordering
+    impractical — coach asks the client to order everything upfront so
+    they don't have to deal with multiple deliveries.
+
+    This list shows every supplement in the plan with: number, name,
+    dose, "X-week course" duration, when it starts (now / week N), and
+    a buy link. Sorted by start_week then name so the upcoming-order
+    is clear.
+    """
+    if not supplements:
+        return ""
+
+    items: list[dict] = []
+    for s in supplements:
+        slug = s.get("supplement_slug", "")
+        name = s.get("display_name") or slug.replace("-", " ").title()
+        dose = s.get("dose") or s.get("dose_display") or ""
+        titration = s.get("titration") or ""
+        rationale = (s.get("coach_rationale") or "").strip()
+        dur = s.get("duration_weeks")
+        try:
+            dur = int(dur) if dur else plan_weeks
+        except (ValueError, TypeError):
+            dur = plan_weeks
+        start_week = _detect_start_week(titration, rationale)
+
+        # Reuse the same buy-link logic as the detailed schedule.
+        buy_link_override = s.get("buy_link") or ""
+        link_info = _vitaone_url_only(name, slug=slug) if not buy_link_override else None
+        if buy_link_override:
+            buy_html = f'<a href="{buy_link_override}" target="_blank" rel="noopener noreferrer">Buy ↗</a>'
+            badge = "Custom"
+        elif link_info:
+            _, url = link_info
+            is_vitaone = "vitaone.in" in url
+            badge = "VitaOne" if is_vitaone else "Amazon"
+            cls = "vitaone" if is_vitaone else "amazon"
+            buy_html = f'<a href="{url}" target="_blank" rel="noopener noreferrer">Buy ↗</a> <span class="buy-badge buy-badge-{cls}">{badge}</span>'
+        else:
+            buy_html = f'<a href="{IHERB_AFFILIATE}" target="_blank" rel="noopener noreferrer">Search iHerb ↗</a> <span class="buy-badge buy-badge-iherb">iHerb</span>'
+            badge = "iHerb"
+
+        # Phase label: "Start now" if start_week == 1, else "Starts week N".
+        phase_label = "Start now" if start_week == 1 else f"Starts week {start_week}"
+        phase_class = "phase-now" if start_week == 1 else "phase-later"
+
+        items.append({
+            "name": name,
+            "dose": dose,
+            "duration_label": f"{dur}-week course" if dur != plan_weeks else f"Full {plan_weeks} weeks",
+            "phase_label": phase_label,
+            "phase_class": phase_class,
+            "start_week": start_week,
+            "buy_html": buy_html,
+        })
+
+    items.sort(key=lambda it: (it["start_week"], it["name"]))
+
+    later_count = sum(1 for it in items if it["start_week"] > 1)
+
+    rows_html = ""
+    for i, it in enumerate(items, start=1):
+        rows_html += (
+            f"<tr>"
+            f"<td class='shop-num'>{i}</td>"
+            f"<td><strong>{it['name']}</strong></td>"
+            f"<td>{it['dose']}</td>"
+            f"<td>{it['duration_label']}</td>"
+            f"<td><span class='phase-chip {it['phase_class']}'>{it['phase_label']}</span></td>"
+            f"<td class='buy-cell'>{it['buy_html']}</td>"
+            f"</tr>"
+        )
+
+    later_note = ""
+    if later_count > 0:
+        plural = later_count != 1
+        noun = "supplements" if plural else "supplement"
+        verb = "are" if plural else "is"
+        pronoun = "them" if plural else "it"
+        later_note = (
+            f"<p class='shop-note-later'>"
+            f"⏰ <strong>{later_count} {noun}</strong> in this list {verb} introduced "
+            f"in a later phase of your protocol — check the <em>Starts week</em> column. "
+            f"For convenience, order {pronoun} upfront so you don't have to wait for shipping when the time comes."
+            f"</p>"
+        )
+
+    return f"""
+<!-- ════════════════ COMPLETE SHOPPING LIST ════════════════ -->
+<section id="supplement-shopping-list">
+  <div class="shop-header">
+    <h2 class="shop-title">📦 Your Complete Supplement Shopping List</h2>
+    <p class="shop-subtitle">
+      Everything you'll need for your full {plan_weeks}-week journey, listed upfront so you can order in one go.
+      Each link below is hand-picked — VitaOne (where Shivani's affiliate is set up so quality + prices are vouched for),
+      Amazon, or iHerb depending on what's available in India.
+    </p>
+    {later_note}
+  </div>
+  <div class="shop-table-wrap">
+    <table class="shop-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Supplement</th>
+          <th>Dose</th>
+          <th>Duration</th>
+          <th>When to start</th>
+          <th>Where to buy</th>
+        </tr>
+      </thead>
+      <tbody>{rows_html}</tbody>
+    </table>
+  </div>
+  <p class="shop-disclaimer">
+    💬 <em>Please check with your doctor before starting any new supplement, especially if you're on medication.
+    Your detailed dose schedule (further down this letter) shows exactly when each one comes into your daily routine.</em>
+  </p>
+</section>
+"""
 
 
 def _build_supplement_schedule_html(supplements: list[dict]) -> str:
@@ -2718,22 +2875,29 @@ def main() -> int:
             doc_type=doc_type,
             client_name=display_name,
         )
-        # Inject the Python-generated supplement schedule (guaranteed complete)
-        # so that no supplement is ever omitted regardless of what the AI wrote.
+        # Inject Python-generated supplement sections (guaranteed complete +
+        # buy-link-correct regardless of what the AI wrote). Two pieces:
+        #   1. Shopping list — upfront "buy everything now" table with
+        #      start-week annotations. Goes FIRST so the client can place
+        #      one order before reading the rest of the letter.
+        #   2. Detailed dose schedule — timing slots + daily routine.
         # Only inject for types that include supplements (not meal_plan/lifestyle_guide).
         supplements = plan.get("supplement_protocol") or []
         inject_schedule = letter_type in ("consolidated", "supplement_plan")
         if supplements and html and inject_schedule:
+            plan_weeks_int = int(plan.get("plan_period_weeks") or 12)
+            shopping_list_html = _build_complete_shopping_list_html(supplements, plan_weeks_int)
             schedule_html = _build_supplement_schedule_html(supplements)
+            combined = shopping_list_html + "\n" + schedule_html
             # Insert INSIDE the .page container, right before the brand footer.
-            # This keeps the schedule within the brand-styled max-width box and
-            # ensures @media print rules for #supplement-schedule apply correctly.
+            # This keeps the sections within the brand-styled max-width box and
+            # ensures @media print rules apply correctly.
             footer_marker = '<footer class="brand-footer">'
             if footer_marker in html:
-                html = html.replace(footer_marker, schedule_html + "\n    " + footer_marker, 1)
+                html = html.replace(footer_marker, combined + "\n    " + footer_marker, 1)
             elif "</body>" in html:
                 # fallback — shouldn't happen with current template
-                html = html.replace("</body>", schedule_html + "\n</body>", 1)
+                html = html.replace("</body>", combined + "\n</body>", 1)
     except Exception as e:
         html = None  # HTML is a nice-to-have; don't fail if brand module errors
 

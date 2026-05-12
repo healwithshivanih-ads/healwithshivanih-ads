@@ -496,6 +496,84 @@ _CSS = f"""
     background: #3d3f5a;
   }}
 
+  /* ── Complete Shopping List (sits above the detailed schedule) ── */
+  #supplement-shopping-list {{
+    margin: 48px 0 0;
+    padding: 24px 28px;
+    background: linear-gradient(180deg, #faf6f1 0%, #f5efe6 100%);
+    border: 2px solid #d6a86c;
+    border-radius: 12px;
+  }}
+  .shop-header {{ margin-bottom: 16px; }}
+  .shop-title {{
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 21px;
+    font-weight: 400;
+    color: var(--indigo);
+    margin: 0 0 6px;
+  }}
+  .shop-subtitle {{
+    font-size: 13px;
+    color: var(--ink-muted);
+    line-height: 1.55;
+    margin: 0;
+  }}
+  .shop-note-later {{
+    margin: 12px 0 0;
+    padding: 8px 12px;
+    background: rgba(214, 168, 108, 0.18);
+    border-left: 3px solid #b8862e;
+    border-radius: 4px;
+    font-size: 12.5px;
+    color: #6f4f1a;
+    line-height: 1.55;
+  }}
+  .shop-table-wrap {{ overflow-x: auto; margin-top: 8px; }}
+  .shop-table {{
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+  }}
+  .shop-table th {{
+    text-align: left;
+    padding: 8px 10px;
+    background: rgba(43, 45, 66, 0.06);
+    color: var(--indigo);
+    font-weight: 700;
+    border-bottom: 1.5px solid rgba(43, 45, 66, 0.15);
+    text-transform: uppercase;
+    font-size: 10.5px;
+    letter-spacing: 0.5px;
+  }}
+  .shop-table td {{
+    padding: 9px 10px;
+    border-bottom: 1px solid rgba(43, 45, 66, 0.08);
+    vertical-align: top;
+  }}
+  .shop-table tr:last-child td {{ border-bottom: 0; }}
+  .shop-num {{
+    font-family: monospace;
+    color: var(--ink-muted);
+    width: 28px;
+    text-align: center;
+  }}
+  .phase-chip {{
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 10.5px;
+    font-weight: 700;
+    white-space: nowrap;
+  }}
+  .phase-now {{ background: #d4edda; color: #155724; }}
+  .phase-later {{ background: #fde2d0; color: #8a4a14; }}
+  .shop-disclaimer {{
+    margin: 14px 0 0;
+    font-size: 11.5px;
+    color: var(--ink-muted);
+    line-height: 1.55;
+  }}
+
   /* ── Supplement Schedule ── */
   #supplement-schedule {{
     margin: 56px 0 0;
@@ -754,6 +832,7 @@ _CSS = f"""
        isn't covered by the `.content > *:not(.week-section)` rule above.
        Without this, the schedule prints as overflow after every week. */
     body[data-print-week] #supplement-schedule {{ display: none !important; }}
+    body[data-print-week] #supplement-shopping-list {{ display: none !important; }}
     body[data-print-week] .brand-footer {{ display: none !important; }}
 
     /* ── Single-week density — fit one A4 page ──
@@ -792,6 +871,7 @@ _CSS = f"""
     */
     body[data-print-supplement] .page > .doc-title-block,
     body[data-print-supplement] .page > .content,
+    body[data-print-supplement] #supplement-shopping-list,
     body[data-print-supplement] .page > .brand-footer {{ display: none !important; }}
     body[data-print-supplement] #supplement-schedule {{
       page-break-before: avoid !important;
