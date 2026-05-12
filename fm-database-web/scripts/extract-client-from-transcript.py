@@ -199,6 +199,26 @@ EXTRACTION RULES:
     "last March"               → date = "{LAST_MARCH_YEAR}-03-01"
     "a few months ago"         → year = {TODAY_YEAR}, date null
     "as a child"               → category = "childhood", year null
+
+  AGE-N RESOLUTION. When the patient says "Age 22 X happened" / "at 18 I
+  was diagnosed" / "when I was 30" — compute year using the patient's
+  own age data:
+    birth_year = {TODAY_YEAR} - <estimated_age>   (use estimated_age you
+                                                    just extracted, or
+                                                    derive from
+                                                    date_of_birth.year)
+    year = birth_year + <age_mentioned>
+  Examples (if patient is 38 today in {TODAY_YEAR}, so birth_year=1987):
+    "Age 12: menarche"            → year = 1999
+    "Age 22: moved from Dubai"    → year = 2009
+    "Age 18: PCOD diagnosed"      → year = 2005
+    "Ages 0-10: frequent illness" → year = 1987 (start of range)
+                                  → category = "childhood"
+    "Age 35: first root canal"    → year = 2022
+  If estimated_age is null AND date_of_birth is null, fall back to
+  year=null with the Age in the event text so the coach can resolve
+  manually.
+
   If both date and year can be derived, prefer date (YYYY-MM-DD). If only the
   year is derivable, set year (int) and leave date null. If nothing is
   derivable, leave both null but STILL emit the event so the coach can
@@ -272,6 +292,13 @@ def main() -> int:
     transcript_url: str = payload.get("transcript_url") or ""
     mime_type: str = payload.get("mime_type") or "text/plain"
     dry_run: bool = bool(payload.get("dry_run"))
+    # Optional known-client context — pass these from the caller when
+    # re-parsing an existing client's transcript so the AI uses real
+    # DOB / age values to resolve "Age N" references instead of
+    # guessing.
+    known_dob: str | None = payload.get("known_dob") or None
+    known_age: int | None = payload.get("known_age") or None
+    known_intake_date: str | None = payload.get("known_intake_date") or None
 
     if dry_run:
         mock = {
@@ -374,6 +401,35 @@ def main() -> int:
         .replace("{LAST_MARCH_YEAR}", str(last_march_year))
     )
 
+    # Inject known-client context for "Age N → year" resolution. We add this
+    # ABOVE the transcript so it's the first thing the model reads in the
+    # user prompt.
+    if known_dob or known_age or known_intake_date:
+        ctx_lines = ["KNOWN CLIENT CONTEXT (use this to resolve Age N references):"]
+        birth_year: int | None = None
+        if known_dob:
+            ctx_lines.append(f"  - Date of birth: {known_dob}")
+            try:
+                birth_year = int(known_dob.split("-")[0])
+            except Exception:
+                birth_year = None
+        if known_age and not birth_year:
+            birth_year = today.year - known_age
+            ctx_lines.append(
+                f"  - Estimated age: {known_age} (so birth_year ≈ {birth_year})"
+            )
+        elif known_age:
+            ctx_lines.append(f"  - Estimated age: {known_age}")
+        if birth_year:
+            ctx_lines.append(
+                f"  - DERIVED birth_year = {birth_year}. "
+                f"For any 'Age N' phrase, year = {birth_year} + N."
+            )
+        if known_intake_date:
+            ctx_lines.append(f"  - Most recent intake date: {known_intake_date}")
+        ctx_block = "\n".join(ctx_lines) + "\n\n"
+        prompt = ctx_block + prompt
+
     user_content: list[dict] = []
     if pdf_bytes:
         data_b64 = base64.b64encode(pdf_bytes).decode()
@@ -397,7 +453,12 @@ def main() -> int:
     try:
         resp = client_ai.messages.create(
             model="claude-haiku-4-5",
-            max_tokens=3000,
+            # Bumped from 3000 — rich IFM-style transcripts with a long
+            # timeline + body-systems narratives + family hx routinely
+            # hit the cap mid-JSON and the result fails to parse.
+            # Haiku-4-5 supports up to 64K output tokens; 8000 is a safe
+            # ceiling for the largest realistic intake.
+            max_tokens=8000,
             system=SYSTEM_PROMPT,
             messages=[{"role": "user", "content": user_content}],
         )
