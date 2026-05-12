@@ -94,7 +94,61 @@ interface SectionPattern {
   tone?: SectionTone;
 }
 
+// Section patterns. First match wins on a given paragraph. Patterns are
+// authored in two flavours:
+//   - emoji-prefixed (e.g. "🧬 Root cause hypothesis:") — these are the
+//     headers `generate-draft.py` emits when assembling notes_for_coach
+//     from the AI synthesis + plan_brief + IFM timeline.
+//   - plain-prefixed (e.g. "Synthesis:") — these are the headers the AI
+//     emits INSIDE `synthesis_notes` (per suggester.py system prompt
+//     rule "notes_for_coach must be sectioned"). FmCoachNotes parses
+//     them so a single synthesis paragraph still renders as sections.
+//
+// Order matters — emoji headers go first because the regex stripper
+// trims everything up to and including ":". A bare "Synthesis:" would
+// otherwise eat into "🧬 Root cause hypothesis: ..." if matched first.
 const SECTION_PATTERNS: SectionPattern[] = [
+  // ── Top-level headers emitted by generate-draft.py ────────────────
+  {
+    id: "root-cause",
+    match: /^🧬\s*root cause hypothesis:/i,
+    icon: "🧬",
+    label: "Root cause hypothesis",
+  },
+  {
+    id: "coaching-notes",
+    match: /^📝\s*coaching notes:/i,
+    icon: "📝",
+    label: "Coaching notes",
+  },
+  {
+    id: "protocol-template",
+    match: /^📋\s*protocol template applied:?/i,
+    icon: "📋",
+    label: "Protocol template applied",
+    tone: "meta",
+  },
+  {
+    id: "intake",
+    match: /^free-?text intake:/i,
+    icon: "✎",
+    label: "Free-text intake",
+    tone: "meta",
+  },
+  {
+    id: "ai-synthesis",
+    match: /^ai synthesis notes?:/i,
+    icon: "◐",
+    label: "AI synthesis notes",
+  },
+  {
+    id: "ifm-timeline",
+    match: /^📅\s*ifm timeline.*?:/i,
+    icon: "📅",
+    label: "IFM Timeline",
+    tone: "meta",
+  },
+  // ── Sub-headers emitted INSIDE synthesis_notes by the AI ──────────
   { id: "synthesis", match: /^synthesis:/i, icon: "◐", label: "Synthesis" },
   { id: "drivers", match: /^key drivers?:/i, icon: "↟", label: "Key drivers" },
   {
@@ -108,6 +162,12 @@ const SECTION_PATTERNS: SectionPattern[] = [
     match: /^lifestyle priorities:/i,
     icon: "✱",
     label: "Lifestyle priorities",
+  },
+  {
+    id: "nutrition",
+    match: /^nutrition priorities:/i,
+    icon: "🥗",
+    label: "Nutrition priorities",
   },
   {
     id: "watch",
@@ -402,20 +462,52 @@ function renderInline(text: string, catalogue: CatalogueChip[]) {
   });
 }
 
-// List detection — lines starting "- ", "* ", "• ", "1. "
-function asList(p: string): { ordered: boolean; items: string[] } | null {
+// List detection — lines starting "- ", "* ", "• ", "1. ".
+// Also detects a "labeled list" pattern: first line is a non-list
+// heading ending in ":", followed by ≥1 list items. Common in the
+// IFM Timeline section generate-draft.py emits.
+function asList(p: string): {
+  ordered: boolean;
+  items: string[];
+  heading?: string;
+} | null {
   const lines = p
     .split("\n")
     .map((l) => l.trim())
     .filter(Boolean);
   const bulletRe = /^[-*•]\s+/;
   const numRe = /^\d+\.\s+/;
+  if (lines.length === 0) return null;
+
+  // Pure list — every line is a bullet/numbered item.
   if (lines.length >= 2 && lines.every((l) => bulletRe.test(l) || numRe.test(l))) {
     return {
       ordered: lines.every((l) => numRe.test(l)),
       items: lines.map((l) => l.replace(bulletRe, "").replace(numRe, "")),
     };
   }
+
+  // Labeled list — heading line followed by ≥1 list items, none of
+  // the body lines are non-list. Pulls "Antecedents (predisposing):"
+  // out of the IFM Timeline blob so it renders as a styled sub-heading
+  // above the bullet list instead of getting mashed into one wrapped
+  // paragraph.
+  if (
+    lines.length >= 2 &&
+    /:\s*$/.test(lines[0]) &&
+    !bulletRe.test(lines[0]) &&
+    !numRe.test(lines[0]) &&
+    lines.slice(1).every((l) => bulletRe.test(l) || numRe.test(l))
+  ) {
+    return {
+      ordered: lines.slice(1).every((l) => numRe.test(l)),
+      heading: lines[0].replace(/:\s*$/, ""),
+      items: lines
+        .slice(1)
+        .map((l) => l.replace(bulletRe, "").replace(numRe, "")),
+    };
+  }
+
   return null;
 }
 
@@ -520,9 +612,8 @@ function SectionBlock({
           const list = asList(para);
           if (list) {
             const Tag = list.ordered ? "ol" : "ul";
-            return (
+            const listEl = (
               <Tag
-                key={i}
                 style={{
                   margin: "0 0 10px 0",
                   paddingLeft: 18,
@@ -551,6 +642,26 @@ function SectionBlock({
                 })}
               </Tag>
             );
+            if (list.heading) {
+              return (
+                <div key={i} style={{ marginBottom: 14 }}>
+                  <div
+                    style={{
+                      fontSize: 11,
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      letterSpacing: 0.7,
+                      color: tone.ink,
+                      marginBottom: 6,
+                    }}
+                  >
+                    {list.heading}
+                  </div>
+                  {listEl}
+                </div>
+              );
+            }
+            return <div key={i}>{listEl}</div>;
           }
           if (isHazardLine(para)) {
             return (

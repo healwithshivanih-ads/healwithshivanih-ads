@@ -246,7 +246,40 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
         },
         "synthesis_notes": {
             "type": "string",
-            "description": "Coach-facing meta commentary for THIS client: what's confident, what's a stretch, what to watch out for, key cross-system pattern you noticed. Keep to 2–6 sentences max. Do NOT write meta-process commentary about prior sessions or catalogue completeness — put any catalogue gap notes in `catalogue_additions_suggested` only. Do NOT lecture the coach.",
+            "description": (
+                "Coach-facing meta commentary for THIS client. STRUCTURE the "
+                "output as labelled sections separated by blank lines — the "
+                "v2 renderer (FmCoachNotes) parses these headers and gives "
+                "each its own typographic block:\n\n"
+                "Synthesis:\n"
+                "1–2 sentences. Primary picture in plain English. Reference "
+                "specific labs / symptoms / measurements.\n\n"
+                "Key drivers:\n"
+                "- driver 1 (with the lab or symptom that proves it)\n"
+                "- driver 2\n"
+                "- driver 3\n\n"
+                "Supplement rationale:\n"
+                "1–2 sentences on why these supplements together. "
+                "Mention any titration or pairing.\n\n"
+                "Lifestyle priorities:\n"
+                "- specific practice 1 (tied to a client signal)\n"
+                "- specific practice 2\n\n"
+                "Watch for:\n"
+                "- symptom or value to monitor; what to do if it worsens\n\n"
+                "Follow-up timing:\n"
+                "When to recheck what. Concrete weeks, e.g. 'Recheck TSH + "
+                "fT3 + TPO at week 8, hsCRP at week 4.'\n\n"
+                "Do not:\n"
+                "- contraindications / drug interactions / red flags\n"
+                "(omit this block if nothing applies — don't pad)\n\n"
+                "Each section heading MUST end with a colon and be on its "
+                "own line so the parser can pick it up. Omit any section "
+                "that has nothing meaningful — don't pad. The whole blob "
+                "should stay under 350 words; the coach is scanning, not "
+                "reading prose. Do NOT write meta-process commentary about "
+                "prior sessions or catalogue completeness — put any "
+                "catalogue gap notes in `catalogue_additions_suggested` only."
+            ),
         },
         "catalogue_additions_suggested": {
             "type": "array",

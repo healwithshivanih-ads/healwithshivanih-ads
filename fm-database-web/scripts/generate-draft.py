@@ -419,7 +419,13 @@ def main() -> int:
     if free_text_notes:
         notes_parts.append(f"Free-text intake: {free_text_notes}")
     if suggestions.get("synthesis_notes"):
-        notes_parts.append(f"AI synthesis notes: {suggestions['synthesis_notes']}")
+        # The AI synthesis_notes is already structured into labelled
+        # sub-sections per suggester.py system prompt (Synthesis:,
+        # Key drivers:, Supplement rationale:, Lifestyle priorities:,
+        # Watch for:, Follow-up timing:, Do not:). The v2 renderer
+        # (FmCoachNotes) recognises those headers. No "AI synthesis
+        # notes:" wrapper needed — the sub-headers do the labelling.
+        notes_parts.append(suggestions["synthesis_notes"])
 
     # IFM Timeline insights — group AI-classified events by ATM bucket
     ifm_timeline = suggestions.get("ifm_timeline", []) or []
