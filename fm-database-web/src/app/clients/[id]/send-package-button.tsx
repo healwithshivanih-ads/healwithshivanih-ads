@@ -27,6 +27,7 @@ import {
 import {
   sendClientLettersAction,
   updateClientFieldsAction,
+  recordLetterSendAction,
 } from "@/app/api/email/actions";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -364,6 +365,19 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
       if (result.ok) {
         const ccNote = ccTrimmed ? ` (cc ${ccTrimmed})` : "";
         toast.success(`Email sent to ${emailTo.trim()}${ccNote}`);
+        // Persist send to ~/fm-plans/clients/<id>/meal-plans/_send_log.yaml.
+        // Fire-and-forget; failures shouldn't block the success flow.
+        try {
+          void recordLetterSendAction({
+            clientId,
+            planSlug,
+            letterTypes: doneTypes
+              .filter((p) => emailInclude[p.type])
+              .map((p) => p.type),
+            to: emailTo.trim(),
+            cc: ccTrimmed || undefined,
+          });
+        } catch { /* non-fatal */ }
         // Save the To value to the client's profile ONLY when the coach
         // explicitly ticked the checkbox AND it differs from what's on
         // file. Previously this fired silently after every send — a
