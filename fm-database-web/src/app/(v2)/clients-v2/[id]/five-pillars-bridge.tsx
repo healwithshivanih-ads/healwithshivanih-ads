@@ -27,7 +27,11 @@ export function FmFivePillarsWithSendCheckIn({
       latest={latest}
       daysSinceLastEntry={daysSinceLastEntry}
       onSendCheckIn={() =>
-        router.push(`/clients/${clientId}?tab=overview&templates=check_in`)
+        // For now both "Ask client via WhatsApp" and "Capture from check-in"
+        // route to the v2 Analyse tab — coach picks Check-in card to record.
+        // Phase 3.5 splits these into a templates-panel modal vs the direct
+        // check-in form.
+        router.push(`/clients-v2/${clientId}/analyse`)
       }
     />
   );

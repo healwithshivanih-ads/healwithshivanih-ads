@@ -57,3 +57,16 @@ export type { FmAisensyBannerProps } from "./FmAisensyBanner";
 
 export { FmWhatsAppDraftPanel } from "./FmWhatsAppDraftPanel";
 export type { FmWhatsAppDraftPanelProps } from "./FmWhatsAppDraftPanel";
+
+export { FmSessionTypePicker, FM_SESSION_TYPES } from "./FmSessionTypePicker";
+export type { FmSessionTypePickerProps, FmSessionTypeId } from "./FmSessionTypePicker";
+
+export { FmSessionTimeline } from "./FmSessionTimeline";
+export type { FmSessionTimelineProps, FmSessionTimelineEntry } from "./FmSessionTimeline";
+
+export { FmAnalysisProgress } from "./FmAnalysisProgress";
+export type {
+  FmAnalysisProgressProps,
+  FmProgressStep,
+  FmProgressStepStatus,
+} from "./FmAnalysisProgress";
