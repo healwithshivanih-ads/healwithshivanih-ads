@@ -55,6 +55,7 @@ import { PlanChatAndPreview } from "./plan-chat-and-preview";
 import { ReworkBanner } from "@/app/clients/[id]/rework-banner";
 import { AttachedProtocolsPanel } from "./attached-protocols-panel";
 import { FollowUpPanel } from "./follow-up-panel";
+import { ActivateDraftButton } from "./activate-draft-button";
 import { loadAllOfKind } from "@/lib/fmdb/loader";
 
 export const dynamic = "force-dynamic";
@@ -197,7 +198,8 @@ function deriveStage(
     return {
       stage: "draft",
       title: `Plan in ${status.replace(/_/g, " ")}`,
-      detail: "Edit in the classic editor, then submit + publish to send letters.",
+      detail:
+        "Activate below to publish + send letters. Open the editor first if you want to tweak any sections.",
       cta: "Edit in classic",
       ctaHref: `/plans/${activePlan.slug}`,
     };
@@ -518,6 +520,35 @@ export default async function PlanTabPage({
             : undefined)
         }
       />
+
+      {/* Inline Activate row — one-click submit + publish for draft /
+          ready_to_publish plans. Stays on the v2 surface; no detour to
+          /plans/<slug> Lifecycle tab. */}
+      {stage.stage === "draft" && activePlan && (
+        <div
+          style={{
+            marginTop: 12,
+            padding: "10px 14px",
+            background: "rgba(20, 83, 45, 0.05)",
+            border: "1.5px solid rgba(20, 83, 45, 0.3)",
+            borderRadius: "var(--fm-radius-md)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 12,
+            flexWrap: "wrap",
+          }}
+        >
+          <div style={{ fontSize: 12, color: "var(--fm-text-secondary)" }}>
+            Plan-check runs automatically — if anything blocks publish,
+            you&rsquo;ll get a clear toast.
+          </div>
+          <ActivateDraftButton
+            planSlug={activePlan.slug as string}
+            status={planStatusOf(activePlan)}
+          />
+        </div>
+      )}
 
       {/* Letter-staleness banner — plan was edited after letters were saved. */}
       {staleness?.anyStale && activePlan && (
