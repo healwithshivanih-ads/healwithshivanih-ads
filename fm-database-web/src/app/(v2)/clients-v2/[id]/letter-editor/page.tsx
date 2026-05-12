@@ -54,6 +54,7 @@ const TYPE_META: Record<
 > = {
   consolidated: { label: "Full wellness letter", icon: "💌" },
   meal_plan: { label: "Meal plan", icon: "🍽" },
+  meal_plan_phase: { label: "Meal plan — continuation", icon: "🍽" },
   supplement_plan: { label: "Supplement guide", icon: "💊" },
   lifestyle_guide: { label: "Lifestyle guide", icon: "🌿" },
   exercise_plan: { label: "Exercise plan", icon: "🏃" },

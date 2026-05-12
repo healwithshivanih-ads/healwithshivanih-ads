@@ -22,6 +22,7 @@ import { CommunicateClient } from "./communicate-client";
 import { ReworkBanner } from "@/app/clients/[id]/rework-banner";
 import { getLetterStalenessAction } from "@/app/plans/[slug]/lifecycle-actions";
 import { RegenerateStaleButton } from "./regenerate-stale-button";
+import { PhaseLetterPanel } from "./phase-letter-panel";
 import {
   loadLetterSendLogAction,
   type LetterSendEntry,
@@ -195,6 +196,24 @@ export default async function CommunicateTabPage({
           text: m.text,
         }))}
       />
+
+      {/* Phase / continuation meal-plan letters — generate a fresh
+          meal plan for any week range mid-cycle without superseding
+          the plan. Only when published. */}
+      {activePlan && activePlanInfo?.status === "published" && (
+        <div style={{ marginTop: 20 }}>
+          <PhaseLetterPanel
+            clientId={id}
+            planSlug={activePlan.slug as string}
+            planPeriodWeeks={
+              (activePlan.plan_period_weeks as number | undefined) ?? 12
+            }
+            planPeriodStart={
+              activePlan.plan_period_start as string | undefined
+            }
+          />
+        </div>
+      )}
 
       {/* Letter send history — single source of truth for "what went
           out + when". Click any row to open the actual letter that

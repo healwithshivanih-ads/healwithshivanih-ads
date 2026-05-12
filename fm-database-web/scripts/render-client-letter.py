@@ -2079,10 +2079,243 @@ Output ONLY the Markdown document — no preamble, no postamble.
     return prompt
 
 
+def _build_prompt_meal_plan_phase(
+    plan: dict,
+    client: dict,
+    weight_loss: dict | None,
+    coach_notes: str,
+    phase_start: int,
+    phase_end: int,
+) -> str:
+    """Phase / continuation meal plan — used mid-cycle for weeks 3–4, 5–6,
+    7–8, etc. when the coach wants to send a fresh meal plan letter
+    WITHOUT creating a new plan (supplements + protocol stay locked).
+
+    Different shape from the full meal plan:
+      - Only the requested week range (max 2 weeks) renders with full
+        7-day tables. No 12-week overview, no roadmap, no teaser sections.
+      - Acknowledges the client is mid-cycle ("Building on weeks 1–2…").
+      - Pulls calorie phase from the existing weight-loss config IF SET
+        and selects the right phase target for the requested week range.
+      - References ATTACHED supplements + protocol as "your current
+        routine continues" — does NOT re-list them.
+    """
+    plan_weeks = int(plan.get("plan_period_weeks") or 12)
+    client_name = client.get("display_name") or "the client"
+    first_name = client_name.split()[0] if client_name else "there"
+    diet_pref = client.get("dietary_preference") or "Not specified"
+    _foods_to_avoid_raw = client.get("foods_to_avoid") or ""
+    _reported_triggers_raw = client.get("reported_triggers") or ""
+    _exclusion_parts = [
+        p.strip() for p in [_foods_to_avoid_raw, _reported_triggers_raw] if p.strip()
+    ]
+    foods_to_avoid = ", ".join(_exclusion_parts) if _exclusion_parts else "None mentioned"
+    reported_triggers = _reported_triggers_raw or "None reported"
+    non_negotiables = client.get("non_negotiables") or "None mentioned"
+    city = client.get("city") or ""
+    country = client.get("country") or "India"
+    location_str = ", ".join(filter(None, [city, country])) or "India"
+
+    import datetime as _dt
+    _month = _dt.date.today().month
+    if country.lower() in ("india", ""):
+        if _month in (3, 4, 5):
+            season = "Summer (Grishma) — hot, dry; prioritise cooling foods"
+        elif _month in (6, 7, 8, 9):
+            season = "Monsoon (Varsha) — humid; lighter meals, easy-to-digest foods"
+        elif _month in (10, 11):
+            season = "Autumn/Post-monsoon (Sharad) — transitional; moderate foods"
+        else:
+            season = "Winter (Hemanta/Shishira) — cold; warming, nourishing foods"
+    else:
+        if _month in (3, 4, 5):
+            season = "Spring"
+        elif _month in (6, 7, 8):
+            season = "Summer"
+        elif _month in (9, 10, 11):
+            season = "Autumn/Fall"
+        else:
+            season = "Winter"
+
+    age = None
+    if client.get("date_of_birth"):
+        from datetime import date as _date
+        try:
+            dob = _date.fromisoformat(client["date_of_birth"])
+            age = (_date.today() - dob).days // 365
+        except Exception:
+            pass
+    sex = client.get("sex", "")
+    conditions = client.get("active_conditions") or []
+    allergies = client.get("known_allergies") or client.get("allergies") or []
+    nutrition = plan.get("nutrition") or {}
+    nutrition_pattern = nutrition.get("pattern") or ""
+    nutrition_add = nutrition.get("add") or []
+    nutrition_reduce = nutrition.get("reduce") or []
+
+    # Active supplements — referenced as "your routine continues", NOT re-listed in detail.
+    supplements = plan.get("supplement_protocol") or []
+    supp_names = []
+    for s in supplements:
+        if isinstance(s, dict):
+            name = s.get("display_name") or (s.get("supplement_slug") or "").replace("-", " ").title()
+            if name:
+                supp_names.append(name)
+    supp_summary = ", ".join(supp_names) if supp_names else "your current supplement routine"
+
+    # Phase calorie target (if weight loss config). Select the bucket
+    # that maps to the requested week range — phases are weeks 1–2,
+    # 3–4, 5–8, 9–10, 11–12.
+    cal = _calc_calorie_targets(client, weight_loss or {})
+    calorie_block = ""
+    if cal:
+        if phase_start <= 2:
+            kcal = cal["phases"]["wk1_2"]
+            phase_label = "Foundation (wks 1–2)"
+        elif phase_start <= 4:
+            kcal = cal["phases"]["wk3_4"]
+            phase_label = "Repair (wks 3–4)"
+        elif phase_start <= 8:
+            kcal = cal["phases"]["wk5_8"]
+            phase_label = "Full deficit (wks 5–8)"
+        elif phase_start <= 10:
+            kcal = cal["phases"]["wk9_10"]
+            phase_label = "Ease back (wks 9–10)"
+        else:
+            kcal = cal["phases"]["wk11_12"]
+            phase_label = "Sustain (wks 11–12)"
+
+        bk = round(kcal * 0.25)
+        sn1 = round(kcal * 0.10)
+        lu = round(kcal * 0.35)
+        sn2 = round(kcal * 0.10)
+        di = round(kcal * 0.30)
+        calorie_block = f"""
+WEIGHT-LOSS CALORIE TARGET — {phase_label}: {kcal} kcal/day
+Per meal split (MUST roughly match):
+  Breakfast ~{bk} · Mid-morning ~{sn1} · Lunch ~{lu} · Evening snack ~{sn2} · Dinner ~{di}
+"""
+
+    coach_notes_block = ""
+    if coach_notes:
+        coach_notes_block = f"""
+COACH'S CUSTOM KNOWLEDGE (weave naturally into the meals):
+{coach_notes}
+"""
+
+    top_of_mind = _top_of_mind_block(client, plan)
+    cycle = _cycle_block(client)
+    attached_protocol = _attached_protocol_block(plan)
+
+    phase_label_short = (
+        f"Week {phase_start}"
+        if phase_start == phase_end
+        else f"Weeks {phase_start}–{phase_end}"
+    )
+    span_weeks = phase_end - phase_start + 1
+
+    prompt = f"""You are writing a CONTINUATION meal plan letter for {first_name}.
+This is a MID-CYCLE update — {first_name} is currently in week {phase_start} of her
+{plan_weeks}-week protocol. She already has her supplements + lifestyle plan from
+the initial letter. This letter ONLY covers meals for {phase_label_short}.
+
+Tone: warm, encouraging, acknowledges momentum. Reference what she's been doing
+the past weeks. Don't re-prescribe — continue + evolve.
+
+{top_of_mind}
+{cycle}
+{attached_protocol}
+{_BANNED_GENERIC_RULE}
+
+CLIENT PROFILE:
+- Name: {client_name} (address as {first_name})
+- Age: {age or 'not specified'}, Sex: {sex}
+- Location: {location_str}
+- Current season: {season}
+- Dietary preference: {diet_pref}
+- Foods they will NOT eat: {foods_to_avoid}
+- ⚠ REPORTED TRIGGERS (EXCLUDE from ALL meals): {reported_triggers}
+- Non-negotiables: {non_negotiables}
+- Allergies: {', '.join(allergies) if allergies else 'none known'}
+- Active conditions: {', '.join(conditions) if conditions else 'none listed'}
+{calorie_block}
+
+CURRENT ROUTINE (already prescribed — DO NOT re-list, just reference):
+- Supplements continuing: {supp_summary}
+- Nutrition pattern: {nutrition_pattern or 'see initial letter'}
+- Foods to emphasise from initial plan: {', '.join(nutrition_add[:8]) if nutrition_add else 'see initial letter'}
+- Foods to reduce from initial plan: {', '.join(nutrition_reduce[:8]) if nutrition_reduce else 'see initial letter'}
+{coach_notes_block}
+
+DOCUMENT STRUCTURE — keep TIGHT, no extra sections:
+
+1. **Warm 2-sentence opener** — name the week range, acknowledge momentum
+   (e.g. "Hi {first_name} — you've made it through the first couple of weeks,
+   and your gut is starting to settle into a new rhythm. Here's what
+   {phase_label_short} look like.")
+
+2. **What's evolving this phase** — 1 short paragraph (3-5 sentences).
+   Reference the protocol stage. E.g. for weeks 3–4 of 5R: "Now that you've
+   removed the main triggers and started replacing digestive support, we're
+   layering in more reinoculation foods…" — concrete, specific, NOT generic.
+
+3. **{span_weeks} × 7-day meal plan tables** — one per week in the range
+   {phase_label_short}. Use this exact format:
+
+   ## 🗓 Week {phase_start} Meal Plan{(' — Target: ' + str(kcal) + ' kcal/day') if cal else ''}
+   | Meal | Mon | Tue | Wed | Thu | Fri | Sat | Sun |
+   |------|-----|-----|-----|-----|-----|-----|-----|
+   | **Breakfast** | ... |
+   | **Mid-morning snack** | ... |
+   | **Lunch** | ... |
+   | **Evening snack** | ... |
+   | **Dinner** | ... |
+   | **Bedtime** | ... |
+   {"| *~kcal* | ... |" if cal else ""}
+
+   {(
+       "Repeat the table for each week in range (Week " + str(phase_start) + " through Week " + str(phase_end) + ")."
+       if span_weeks > 1 else ""
+   )}
+
+4. **A few new dishes to try** — list 3–5 NEW recipes/dishes introduced
+   this phase (different from initial-letter weeks). Tag each with ✦
+   and add full recipes in the Appendix.
+
+5. **What to notice in {phase_label_short}** — 3–4 curiosity prompts
+   tied to phase outcomes (e.g. "Notice if your post-meal bloating
+   has reduced", "Track energy at 4pm — should be steadier than week 1").
+
+6. **Recipe Appendix** — `## ✦ Recipe Appendix` — full ingredient
+   lists + steps for every ✦ dish.
+
+7. **A note from your coach** — 2–3 sentence warm close, Shivani's name.
+
+RULES:
+- NO supplement tables — {first_name}'s supplement routine continues from
+  the initial letter. Just reference it ("alongside your magnesium and
+  ashwagandha as before").
+- NO 12-week overview, NO roadmap — this letter is laser-focused on
+  {phase_label_short}.
+- SEASONAL produce for {location_str}, current season: {season}.
+- Respect dietary preference ({diet_pref}), avoid ({foods_to_avoid}).
+- CRITICAL: NEVER suggest reported-trigger foods: {reported_triggers}.
+- Vegetarian Jain: NO root vegetables.
+- Indian context unless said otherwise — ragi, dal, paneer, ghee, coconut.
+- {span_weeks} weeks of meals — keep variety, don't repeat the same
+  dinner 3 nights in a row. Use seasonal swaps to keep it interesting.
+
+{INDIAN_BRANDS}
+"""
+    return prompt
+
+
 def _build_prompt(plan: dict, client: dict, weight_loss: dict | None = None,
                   letter_type: str = "consolidated", coach_notes: str = "",
                   existing_partials: dict | None = None,
-                  has_exercise_plan: bool = False) -> str:
+                  has_exercise_plan: bool = False,
+                  phase_start: int | None = None,
+                  phase_end: int | None = None) -> str:
     """Build the full prompt for Claude. Dispatches to type-specific builders for non-consolidated types.
 
     `existing_partials` is a dict like {"meal_plan": "...md content...",
@@ -2094,6 +2327,18 @@ def _build_prompt(plan: dict, client: dict, weight_loss: dict | None = None,
 
     if letter_type == "meal_plan":
         return _build_prompt_meal_plan(plan, client, weight_loss, coach_notes)
+    if letter_type == "meal_plan_phase":
+        # Phase letter — coach specified start/end weeks via payload.
+        # Default to weeks 3–4 if missing (safe fallback for the most-
+        # common continuation case after the initial 2-week meal plan).
+        return _build_prompt_meal_plan_phase(
+            plan,
+            client,
+            weight_loss,
+            coach_notes,
+            phase_start or 3,
+            phase_end or 4,
+        )
     if letter_type == "supplement_plan":
         return _build_prompt_supplement_plan(plan, client, coach_notes)
     if letter_type == "lifestyle_guide":
@@ -2743,6 +2988,12 @@ def main() -> int:
     coach_notes = (payload.get("coach_notes") or "").strip()
     existing_partials = payload.get("existing_partials") or {}
     has_exercise_plan = bool(payload.get("has_exercise_plan"))
+    # Phase letters (mid-cycle meal plan continuation) — coach picks
+    # the week range. Ignored for non-phase letter types.
+    phase_start_raw = payload.get("phase_start")
+    phase_end_raw = payload.get("phase_end")
+    phase_start = int(phase_start_raw) if isinstance(phase_start_raw, (int, str)) and str(phase_start_raw).strip() else None
+    phase_end = int(phase_end_raw) if isinstance(phase_end_raw, (int, str)) and str(phase_end_raw).strip() else None
 
     if not plan_slug:
         json.dump({"ok": False, "markdown": "", "error": "plan_slug is required"}, sys.stdout)
@@ -2790,6 +3041,8 @@ def main() -> int:
             coach_notes=coach_notes,
             existing_partials=existing_partials if isinstance(existing_partials, dict) else {},
             has_exercise_plan=has_exercise_plan,
+            phase_start=phase_start,
+            phase_end=phase_end,
         )
     except Exception as e:
         import traceback
@@ -2862,6 +3115,14 @@ def main() -> int:
         display_name = client.get("display_name") or ""
         type_meta = {
             "meal_plan":       ("Your Personalised Meal Plan",    "Meal Plan"),
+            "meal_plan_phase": (
+                # Phase letter title surfaces the week range so coach +
+                # client know which letter they're looking at when there
+                # are multiple meal-plan letters on file.
+                f"Meal Plan — {('Week ' + str(phase_start)) if phase_start == phase_end else ('Weeks ' + str(phase_start) + '–' + str(phase_end))}"
+                if phase_start and phase_end else "Meal Plan — Continuation",
+                "Meal Plan Continuation",
+            ),
             "supplement_plan": ("Your Supplement Protocol",        "Supplement Plan"),
             "lifestyle_guide":  ("Your Lifestyle Guide",             "Lifestyle Guide"),
             "exercise_plan":   ("Your Personalised Exercise Plan", "Exercise Plan"),

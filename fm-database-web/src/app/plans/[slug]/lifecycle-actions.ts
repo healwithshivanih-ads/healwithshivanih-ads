@@ -508,11 +508,26 @@ async function getMealPlanDir(clientId: string): Promise<string> {
   return dir;
 }
 
-export type LetterType = "consolidated" | "meal_plan" | "supplement_plan" | "lifestyle_guide" | "exercise_plan";
+export type LetterType =
+  | "consolidated"
+  | "meal_plan"
+  | "meal_plan_phase"
+  | "supplement_plan"
+  | "lifestyle_guide"
+  | "exercise_plan";
 
-/** File stem for a given letter type — consolidated keeps the bare planSlug for backwards compat. */
-function letterFileStem(planSlug: string, letterType: LetterType): string {
-  return letterType === "consolidated" ? planSlug : `${planSlug}-${letterType}`;
+/** File stem for a given letter type — consolidated keeps the bare planSlug for backwards compat.
+ *  Phase letters get a -wk{start}-{end} suffix so each phase has its own file. */
+function letterFileStem(
+  planSlug: string,
+  letterType: LetterType,
+  phase?: { startWeek: number; endWeek: number } | null,
+): string {
+  if (letterType === "consolidated") return planSlug;
+  if (letterType === "meal_plan_phase" && phase) {
+    return `${planSlug}-meal_plan-wk${phase.startWeek}-${phase.endWeek}`;
+  }
+  return `${planSlug}-${letterType}`;
 }
 
 export async function saveMealPlan(
@@ -572,6 +587,182 @@ export async function loadMealPlan(
   } catch {
     return { ok: false };
   }
+}
+
+// ---------------------------------------------------------------------------
+// Phase / continuation meal-plan letters — generate mid-cycle meal plan for
+// weeks N–M of an active published plan WITHOUT creating a successor.
+// Supplements + protocol stay locked; the AI just produces a fresh 7-day
+// meal-plan grid for the requested phase.
+// ---------------------------------------------------------------------------
+
+export interface PhaseMealPlanData {
+  ok: boolean;
+  markdown?: string;
+  html?: string;
+  savedAt?: string;
+  startWeek: number;
+  endWeek: number;
+  error?: string;
+}
+
+export interface SavedPhase {
+  startWeek: number;
+  endWeek: number;
+  savedAt: string; // ISO mtime
+}
+
+/** Path stem helper exposed so the UI can build deep-links to a phase
+ *  letter when needed. Internal to this module otherwise. */
+function phaseStem(planSlug: string, startWeek: number, endWeek: number): string {
+  return `${planSlug}-meal_plan-wk${startWeek}-${endWeek}`;
+}
+
+/**
+ * Generate a phase meal-plan letter for the active plan. Same caching
+ * pattern as generateClientLetter — cache hit returns existing file
+ * unless forceRegenerate=true. Python letter_type="meal_plan_phase"
+ * builds a focused prompt that references the active routine but only
+ * outputs meal tables for the requested week range.
+ */
+export async function generatePhaseMealPlanAction(
+  planSlug: string,
+  clientId: string,
+  startWeek: number,
+  endWeek: number,
+  coachNotes?: string,
+  forceRegenerate = false,
+): Promise<PhaseMealPlanData> {
+  if (!Number.isFinite(startWeek) || !Number.isFinite(endWeek)) {
+    return {
+      ok: false,
+      startWeek,
+      endWeek,
+      error: "startWeek and endWeek must be numbers",
+    };
+  }
+  if (startWeek < 1 || endWeek < startWeek || endWeek - startWeek > 4) {
+    return {
+      ok: false,
+      startWeek,
+      endWeek,
+      error:
+        "Phase must span 1–5 weeks. For a longer continuation, generate two phases.",
+    };
+  }
+
+  const dir = await getMealPlanDir(clientId);
+  const stem = phaseStem(planSlug, startWeek, endWeek);
+  const mdPath = path.join(dir, `${stem}.md`);
+  const htmlPath = path.join(dir, `${stem}.html`);
+
+  // 1. Cache hit
+  if (!forceRegenerate) {
+    try {
+      const cached = await fs.readFile(mdPath, "utf-8");
+      let cachedHtml: string | undefined;
+      try {
+        cachedHtml = await fs.readFile(htmlPath, "utf-8");
+      } catch {
+        /* html optional */
+      }
+      const stat = await fs.stat(mdPath);
+      return {
+        ok: true,
+        markdown: cached,
+        html: cachedHtml,
+        savedAt: stat.mtime.toISOString(),
+        startWeek,
+        endWeek,
+      };
+    } catch {
+      /* cache miss — generate fresh */
+    }
+  }
+
+  // 2. Fresh AI generation
+  const result = await runShim<ClientLetterResult>(
+    "render-client-letter.py",
+    {
+      plan_slug: planSlug,
+      client_id: clientId,
+      letter_type: "meal_plan_phase",
+      phase_start: startWeek,
+      phase_end: endWeek,
+      coach_notes: coachNotes ?? "",
+      weight_loss: null, // pulled from plan metadata if needed
+    },
+    600_000, // 10 min
+  );
+
+  if (!result.ok || !result.markdown) {
+    return {
+      ok: false,
+      startWeek,
+      endWeek,
+      error: result.error ?? "Phase letter generation failed",
+    };
+  }
+
+  // 3. Persist md + html
+  await fs.writeFile(mdPath, result.markdown, "utf-8");
+  if (result.html) {
+    await fs.writeFile(htmlPath, result.html, "utf-8");
+  }
+  const stat = await fs.stat(mdPath);
+
+  revalidatePath(`/clients-v2/${clientId}/communicate`);
+  return {
+    ok: true,
+    markdown: result.markdown,
+    html: result.html ?? undefined,
+    savedAt: stat.mtime.toISOString(),
+    startWeek,
+    endWeek,
+  };
+}
+
+/**
+ * List every saved phase meal-plan letter on disk for this plan.
+ * Reads filenames matching `<planSlug>-meal_plan-wk{N}-{M}.md` and
+ * pulls the mtime as savedAt. Sorted by start week ascending so the
+ * UI can render in protocol order.
+ */
+export async function listSavedPhasesAction(
+  planSlug: string,
+  clientId: string,
+): Promise<SavedPhase[]> {
+  const dir = path.join(getPlansRoot(), "clients", clientId, "meal-plans");
+  let entries: string[] = [];
+  try {
+    entries = await fs.readdir(dir);
+  } catch {
+    return [];
+  }
+  // Filename pattern: <planSlug>-meal_plan-wk<start>-<end>.md
+  const re = new RegExp(
+    `^${planSlug.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\$&")}-meal_plan-wk(\\d+)-(\\d+)\\.md$`,
+  );
+  const out: SavedPhase[] = [];
+  for (const name of entries) {
+    const m = name.match(re);
+    if (!m) continue;
+    const startWeek = parseInt(m[1], 10);
+    const endWeek = parseInt(m[2], 10);
+    if (!Number.isFinite(startWeek) || !Number.isFinite(endWeek)) continue;
+    try {
+      const stat = await fs.stat(path.join(dir, name));
+      out.push({
+        startWeek,
+        endWeek,
+        savedAt: stat.mtime.toISOString(),
+      });
+    } catch {
+      /* skip if stat fails */
+    }
+  }
+  out.sort((a, b) => a.startWeek - b.startWeek);
+  return out;
 }
 
 // ---------------------------------------------------------------------------
