@@ -80,6 +80,14 @@ export function FmMarkerPanel({ groups, subtitle }: FmMarkerPanelProps) {
 
   const [collapsed, setCollapsed] = useState<Record<number, boolean>>(initialCollapsed);
   const toggle = (i: number) => setCollapsed((s) => ({ ...s, [i]: !s[i] }));
+  const expandAll = () => setCollapsed({});
+  const collapseAll = () => {
+    const all: Record<number, boolean> = {};
+    groups.forEach((_, i) => {
+      all[i] = true;
+    });
+    setCollapsed(all);
+  };
 
   const totalMarkers = groups.reduce((n, g) => n + g.markers.length, 0);
   const flagged = groups.flatMap((g) =>
@@ -117,8 +125,8 @@ export function FmMarkerPanel({ groups, subtitle }: FmMarkerPanelProps) {
           }}
         >
           {[
-            { id: "by-group", l: "By group" },
-            { id: "flagged", l: `Flagged · ${flagged.length}` },
+            { id: "by-group", l: `By group · ${totalMarkers}` },
+            { id: "flagged", l: `Flagged only · ${flagged.length}` },
           ].map((o) => (
             <button
               key={o.id}
@@ -143,48 +151,97 @@ export function FmMarkerPanel({ groups, subtitle }: FmMarkerPanelProps) {
         </div>
       }
     >
-      {/* Search bar */}
+      {/* Search bar + Expand/Collapse-all action buttons */}
       <div
         style={{
           display: "flex",
           alignItems: "center",
           gap: 8,
-          background: "var(--fm-surface)",
-          border: "1px solid var(--fm-border)",
-          borderRadius: "var(--fm-radius-sm)",
-          padding: "5px 10px",
           marginBottom: 12,
+          flexWrap: "wrap",
         }}
       >
-        <span style={{ color: "var(--fm-text-tertiary)", fontSize: 12 }}>🔍</span>
-        <input
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          placeholder="Search markers — e.g. TSH, ferritin, HOMA…"
+        <div
           style={{
             flex: 1,
-            border: 0,
-            outline: "none",
-            background: "transparent",
-            fontSize: 12,
-            fontFamily: "inherit",
+            minWidth: 220,
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+            background: "var(--fm-surface)",
+            border: "1px solid var(--fm-border)",
+            borderRadius: "var(--fm-radius-sm)",
+            padding: "5px 10px",
           }}
-        />
-        {q && (
-          <button
-            type="button"
-            onClick={() => setQ("")}
+        >
+          <span style={{ color: "var(--fm-text-tertiary)", fontSize: 12 }}>🔍</span>
+          <input
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            placeholder={`Search across all ${totalMarkers} markers…`}
             style={{
+              flex: 1,
               border: 0,
+              outline: "none",
               background: "transparent",
-              color: "var(--fm-text-tertiary)",
-              fontSize: 14,
-              cursor: "pointer",
+              fontSize: 12,
+              fontFamily: "inherit",
             }}
-            aria-label="Clear search"
-          >
-            ×
-          </button>
+          />
+          {q && (
+            <button
+              type="button"
+              onClick={() => setQ("")}
+              style={{
+                border: 0,
+                background: "transparent",
+                color: "var(--fm-text-tertiary)",
+                fontSize: 14,
+                cursor: "pointer",
+              }}
+              aria-label="Clear search"
+            >
+              ×
+            </button>
+          )}
+        </div>
+        {mode === "by-group" && (
+          <>
+            <button
+              type="button"
+              onClick={expandAll}
+              style={{
+                padding: "5px 10px",
+                fontSize: 10.5,
+                fontWeight: 600,
+                border: "1px solid var(--fm-border)",
+                borderRadius: "var(--fm-radius-sm)",
+                background: "var(--fm-surface)",
+                color: "var(--fm-text-secondary)",
+                cursor: "pointer",
+                fontFamily: "inherit",
+              }}
+            >
+              Expand all
+            </button>
+            <button
+              type="button"
+              onClick={collapseAll}
+              style={{
+                padding: "5px 10px",
+                fontSize: 10.5,
+                fontWeight: 600,
+                border: "1px solid var(--fm-border)",
+                borderRadius: "var(--fm-radius-sm)",
+                background: "var(--fm-surface)",
+                color: "var(--fm-text-secondary)",
+                cursor: "pointer",
+                fontFamily: "inherit",
+              }}
+            >
+              Collapse all
+            </button>
+          </>
         )}
       </div>
 
@@ -239,7 +296,13 @@ function ByGroup({
           >
             <button
               type="button"
-              onClick={() => toggle(gi)}
+              onClick={() => {
+                // Force-open groups can't be collapsed — clicking is a
+                // no-op (with a `disabled` cursor as the visual cue).
+                if (isForceOpen) return;
+                toggle(gi);
+              }}
+              aria-disabled={isForceOpen}
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -248,7 +311,7 @@ function ByGroup({
                 padding: "10px 14px",
                 background: "transparent",
                 border: 0,
-                cursor: "pointer",
+                cursor: isForceOpen ? "default" : "pointer",
                 fontFamily: "inherit",
                 textAlign: "left",
               }}
@@ -324,6 +387,24 @@ function ByGroup({
                     <span style={{ color: "var(--fm-text-tertiary)" }}>
                       {flagged} flagged
                     </span>
+                    {isForceOpen && (
+                      <span
+                        title="Cannot collapse — group has flagged markers"
+                        style={{
+                          fontSize: 9,
+                          fontWeight: 700,
+                          color: "var(--fm-danger)",
+                          background: "rgba(231, 76, 60, 0.10)",
+                          padding: "1px 6px",
+                          borderRadius: "var(--fm-radius-pill)",
+                          textTransform: "uppercase",
+                          letterSpacing: 0.4,
+                          marginLeft: 4,
+                        }}
+                      >
+                        forced open
+                      </span>
+                    )}
                   </>
                 ) : (
                   <>
@@ -344,7 +425,9 @@ function ByGroup({
               <span
                 style={{
                   fontSize: 11,
-                  color: "var(--fm-text-tertiary)",
+                  color: isForceOpen
+                    ? "transparent"
+                    : "var(--fm-text-tertiary)",
                   transform: isCollapsed ? "rotate(-90deg)" : "rotate(0deg)",
                   transition: "transform 160ms var(--fm-ease-out)",
                   display: "inline-block",
