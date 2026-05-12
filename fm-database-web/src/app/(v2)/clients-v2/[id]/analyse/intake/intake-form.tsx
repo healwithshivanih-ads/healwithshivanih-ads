@@ -121,6 +121,29 @@ interface PregnancyContext {
   lactation_started: string;
 }
 
+interface ExistingMeasurements {
+  height_cm: string;
+  weight_kg: string;
+  waist_cm: string;
+  hip_cm: string;
+  bp_systolic: string;
+  bp_diastolic: string;
+  hr_bpm: string;
+}
+
+interface ExistingPrefs {
+  dietary_preference: string;
+  foods_to_avoid: string;
+  non_negotiables: string;
+  reported_triggers: string;
+}
+
+interface ExistingTimelineRow {
+  year: string;
+  category: string;
+  event: string;
+}
+
 export function IntakeForm({
   clientId,
   displayName,
@@ -133,6 +156,11 @@ export function IntakeForm({
   existingFm,
   existingCycle,
   existingPregnancy,
+  existingMeasurements,
+  existingMedications,
+  existingFamilyHistory,
+  existingPrefs,
+  existingTimeline,
 }: {
   clientId: string;
   displayName: string;
@@ -145,6 +173,11 @@ export function IntakeForm({
   existingFm: FmIntakeFields;
   existingCycle: CycleContext;
   existingPregnancy: PregnancyContext;
+  existingMeasurements: ExistingMeasurements;
+  existingMedications: string;
+  existingFamilyHistory: string;
+  existingPrefs: ExistingPrefs;
+  existingTimeline: ExistingTimelineRow[];
 }) {
   const router = useRouter();
   const [pending, start] = useTransition();
@@ -230,25 +263,26 @@ export function IntakeForm({
   const [hpi, setHpi] = useState("");
   const [transcriptNotes, setTranscriptNotes] = useState("");
 
-  // 2 · Body composition baseline
-  const [height, setHeight] = useState("");
-  const [weight, setWeight] = useState("");
+  // 2 · Body composition baseline — pre-filled from client.measurements +
+  //     latest health_snapshot (snapshot wins per-field when present).
+  const [height, setHeight] = useState(existingMeasurements.height_cm);
+  const [weight, setWeight] = useState(existingMeasurements.weight_kg);
   const [bodyFat, setBodyFat] = useState(""); // captured as note, not part of measurements model yet
-  const [waist, setWaist] = useState("");
-  const [hip, setHip] = useState("");
-  const [bpSys, setBpSys] = useState("");
-  const [bpDia, setBpDia] = useState("");
-  const [hr, setHr] = useState("");
+  const [waist, setWaist] = useState(existingMeasurements.waist_cm);
+  const [hip, setHip] = useState(existingMeasurements.hip_cm);
+  const [bpSys, setBpSys] = useState(existingMeasurements.bp_systolic);
+  const [bpDia, setBpDia] = useState(existingMeasurements.bp_diastolic);
+  const [hr, setHr] = useState(existingMeasurements.hr_bpm);
 
-  // 3 · Food & lifestyle
-  const [dietaryPreference, setDietaryPreference] = useState("");
-  const [foodsToAvoid, setFoodsToAvoid] = useState("");
-  const [nonNegotiables, setNonNegotiables] = useState("");
-  const [reportedTriggers, setReportedTriggers] = useState("");
+  // 3 · Food & lifestyle — pre-filled from client.yaml
+  const [dietaryPreference, setDietaryPreference] = useState(existingPrefs.dietary_preference);
+  const [foodsToAvoid, setFoodsToAvoid] = useState(existingPrefs.foods_to_avoid);
+  const [nonNegotiables, setNonNegotiables] = useState(existingPrefs.non_negotiables);
+  const [reportedTriggers, setReportedTriggers] = useState(existingPrefs.reported_triggers);
 
-  // 4 · Meds + family hx
-  const [medications, setMedications] = useState("");
-  const [familyHx, setFamilyHx] = useState("");
+  // 4 · Meds + family hx — pre-filled
+  const [medications, setMedications] = useState(existingMedications);
+  const [familyHx, setFamilyHx] = useState(existingFamilyHistory);
 
   // Debounced depletion check — fires 600 ms after coach stops typing
   // medications. Catches metformin → B12, PPIs → Mg / B12, OCPs → folate
@@ -291,10 +325,12 @@ export function IntakeForm({
   const [whatWorked, setWhatWorked] = useState("");
   const [whatDidntWork, setWhatDidntWork] = useState("");
 
-  // 7 · FM timeline
-  const [timeline, setTimeline] = useState<TimelineEntry[]>([
-    { year: "", category: "", event: "" },
-  ]);
+  // 7 · FM timeline — seed with saved events, else a blank row
+  const [timeline, setTimeline] = useState<TimelineEntry[]>(
+    existingTimeline.length > 0
+      ? existingTimeline.map((r) => ({ year: r.year, category: r.category, event: r.event }))
+      : [{ year: "", category: "", event: "" }],
+  );
   const addTimelineRow = () =>
     setTimeline((t) => [...t, { year: "", category: "", event: "" }]);
   const updateTimelineRow = (i: number, patch: Partial<TimelineEntry>) =>
@@ -414,6 +450,9 @@ export function IntakeForm({
       if (pregnancyStatus) prefsPayload.pregnancy_status = pregnancyStatus as typeof prefsPayload.pregnancy_status;
       if (pregnancyDueDate) prefsPayload.pregnancy_due_date = pregnancyDueDate;
       if (lactationStarted) prefsPayload.lactation_started = lactationStarted;
+      // Family history — only write if the coach actually changed it
+      if (familyHx.trim() !== existingFamilyHistory.trim())
+        prefsPayload.family_history = familyHx.trim();
 
       // Only fire if any field is set beyond client_id.
       if (Object.keys(prefsPayload).length > 1) {
@@ -452,6 +491,18 @@ export function IntakeForm({
       if (arrChanged(goals, existingGoals)) profilePatch.goals = goals;
       if (arrChanged(medicalHistory, existingMedicalHistory))
         profilePatch.medical_history = medicalHistory;
+      // Current medications list — split textarea back into an array and
+      // only persist if it actually differs from what's on disk.
+      const medsArr = medications
+        .split("\n")
+        .map((l) => l.trim())
+        .filter(Boolean);
+      const existingMedsArr = existingMedications
+        .split("\n")
+        .map((l) => l.trim())
+        .filter(Boolean);
+      if (arrChanged(medsArr, existingMedsArr))
+        profilePatch.medications = medsArr;
       if (Object.keys(profilePatch).length > 1) {
         sideWrites.push(updateClientProfile(profilePatch));
       }
