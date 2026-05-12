@@ -574,6 +574,78 @@ export async function loadMealPlan(
   }
 }
 
+// ---------------------------------------------------------------------------
+// Letter staleness — has the plan been edited since the letter was saved?
+// ---------------------------------------------------------------------------
+
+export interface LetterStalenessEntry {
+  type: LetterType;
+  savedAt: string; // ISO
+  stale: boolean;
+}
+
+export interface LetterStalenessResult {
+  ok: true;
+  anyStale: boolean;
+  staleCount: number;
+  entries: LetterStalenessEntry[];
+  planUpdatedAt: string | null;
+}
+
+const ALL_LETTER_TYPES: LetterType[] = [
+  "consolidated",
+  "meal_plan",
+  "supplement_plan",
+  "lifestyle_guide",
+  "exercise_plan",
+];
+
+/**
+ * For a given plan, walk all 5 letter file stems and check whether each saved
+ * letter's mtime is older than the plan's updated_at. Returns the list of
+ * existing letters with a stale flag per type.
+ *
+ * "Stale" = the plan YAML was edited after the letter was generated, so the
+ * letter content no longer reflects the current plan. The coach should
+ * regenerate before sending.
+ */
+export async function getLetterStalenessAction(
+  planSlug: string,
+  clientId: string,
+): Promise<LetterStalenessResult> {
+  const plan = await loadPlanBySlug(planSlug);
+  const planUpdatedRaw =
+    (plan?.updated_at as string | undefined) ??
+    (plan?.created_at as string | undefined) ??
+    null;
+  const planUpdatedAt = planUpdatedRaw ? new Date(planUpdatedRaw).toISOString() : null;
+  const planUpdatedMs = planUpdatedAt ? new Date(planUpdatedAt).getTime() : 0;
+
+  const entries: LetterStalenessEntry[] = [];
+  for (const t of ALL_LETTER_TYPES) {
+    const data = await loadMealPlan(planSlug, clientId, t);
+    if (!data.ok || !data.savedAt) continue;
+    const savedMs = new Date(data.savedAt).getTime();
+    entries.push({
+      type: t,
+      savedAt: data.savedAt,
+      // Allow 2-second slack — saveMealPlan + plan write may race on the same
+      // user action, and filesystem mtime resolution can produce a false
+      // positive of < 1s. Real edits are typically minutes apart.
+      stale: planUpdatedMs > 0 && savedMs + 2000 < planUpdatedMs,
+    });
+  }
+
+  const staleCount = entries.filter((e) => e.stale).length;
+  return {
+    ok: true,
+    anyStale: staleCount > 0,
+    staleCount,
+    entries,
+    planUpdatedAt,
+  };
+}
+
 /**
  * Pull the content of one section out of a consolidated markdown letter.
  * Section markers look like:

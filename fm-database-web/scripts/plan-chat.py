@@ -32,8 +32,25 @@ SYSTEM_PROMPT = """You are a functional medicine coaching assistant helping a co
 
 You have access to the full plan and client profile. When the coach asks for changes:
 1. Make the requested modification thoughtfully
-2. Return the updated field(s) as a patch (complete replacement arrays — never partial)
-3. Give a brief, friendly confirmation reply
+2. Return the updated plan field(s) as `patch` (complete replacement arrays — never partial)
+3. ALSO update the client profile via `client_patch` when the coach shares
+   information that should persist BEYOND this plan — preferences, dislikes,
+   observed triggers, what worked. This is how the client profile learns over time.
+4. Give a brief, friendly confirmation reply
+
+WHEN TO USE client_patch (writes to client.yaml — persists across all future plans):
+- "she doesn't like onions" / "no garlic" / "vegetarian" → update foods_to_avoid (append to existing if present) or dietary_preference
+- "she won't give up coffee" / "loves dosa" → update non_negotiables (append to existing)
+- "gluten triggers her bloating" / "dairy seems to flare joint pain" → update reported_triggers (append to existing)
+- "removing gluten helped her sleep" → reported_triggers (note the response)
+RULES for client_patch:
+- ALWAYS preserve and APPEND to existing string content; do not replace.
+  e.g. if foods_to_avoid is "onions; garlic" and coach adds "no eggplant",
+  new value is "onions; garlic; eggplant".
+- Only patch client fields when the coach gave new ENDURING info — not for a
+  one-time plan tweak.
+- If the request is just a plan tweak (e.g. "remove onions from this plan's
+  nutrition add list"), only patch the plan, not the client profile.
 
 PLAN STRUCTURE (reference only — only patch fields that need changing):
 - primary_topics: list of topic slugs
@@ -101,7 +118,7 @@ CLIENT PROFILE:
 
     tool_schema = {
         "name": "update_plan",
-        "description": "Apply the requested changes to the plan and provide a reply to the coach.",
+        "description": "Apply the requested changes to the plan (and optionally the client profile) and provide a reply to the coach.",
         "input_schema": {
             "type": "object",
             "required": ["reply", "patch"],
@@ -109,6 +126,16 @@ CLIENT PROFILE:
                 "reply": {
                     "type": "string",
                     "description": "Short conversational reply to the coach (1-3 sentences)."
+                },
+                "client_patch": {
+                    "type": "object",
+                    "description": "Optional persistent updates to the CLIENT profile. Only include for enduring info (preferences, triggers). String fields should APPEND to existing content, not replace.",
+                    "properties": {
+                        "dietary_preference": {"type": "string"},
+                        "foods_to_avoid": {"type": "string"},
+                        "non_negotiables": {"type": "string"},
+                        "reported_triggers": {"type": "string"}
+                    }
                 },
                 "patch": {
                     "type": "object",
@@ -290,11 +317,13 @@ CLIENT PROFILE:
         result = tool_use.input
         reply = result.get("reply", "Done.")
         patch = result.get("patch", {})
+        client_patch = result.get("client_patch", {}) or {}
 
         print(json.dumps({
             "ok": True,
             "reply": reply,
             "patch": patch,
+            "client_patch": client_patch,
             "usage": {
                 "input_tokens": response.usage.input_tokens,
                 "output_tokens": response.usage.output_tokens,
