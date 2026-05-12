@@ -39,6 +39,7 @@ import {
   FmWorkflowBanner,
   FmCoachNotes,
   FmSupplementGrid,
+  FmRecheckPanel,
 } from "@/components/fm";
 import type { FmWorkflowStage } from "@/components/fm";
 import { PlanPageShell } from "./plan-page-shell";
@@ -299,6 +300,40 @@ export default async function PlanTabPage({
   const status = activePlan ? planStatusOf(activePlan) : undefined;
   const isPublished = status === "published";
 
+  // Recheck context — used by FmRecheckPanel when stage === "recheck".
+  let recheckDate: string | undefined =
+    activePlan?.plan_period_recheck_date as string | undefined;
+  if (
+    !recheckDate &&
+    activePlan?.plan_period_start &&
+    activePlan?.plan_period_weeks
+  ) {
+    const d = new Date(`${activePlan.plan_period_start}T00:00:00`);
+    d.setDate(d.getDate() + (activePlan.plan_period_weeks as number) * 7);
+    recheckDate = d.toISOString().slice(0, 10);
+  }
+  // Auto-detection signals for the recheck panel:
+  //   - hasFreshAssessment: at least one Full Assessment with synthesis
+  //     notes recorded AFTER the recheck date
+  //   - freshLabSnapshots: count of lab snapshots dated after the
+  //     recheck date
+  const sessionsAfterRecheck = recheckDate
+    ? (
+        (client as unknown as Record<string, unknown>).health_snapshots as
+          | Array<{ date?: string; lab_values?: unknown[] }>
+          | undefined
+      ) ?? []
+    : [];
+  const freshLabSnapshots = sessionsAfterRecheck.filter(
+    (s) =>
+      s.date &&
+      recheckDate &&
+      s.date > recheckDate &&
+      Array.isArray(s.lab_values) &&
+      s.lab_values.length > 0,
+  ).length;
+  const hasFreshAssessment = !!pendingDraft;
+
   // Plan summary digest (only meaningful when activePlan exists). Supplements
   // are now passed full-shape to FmSupplementGrid (timing bubble + detail).
   const supplementItems = (activePlan?.supplement_protocol as
@@ -460,6 +495,23 @@ export default async function PlanTabPage({
         </div>
       )}
 
+      {/* Recheck workflow panel — only when the published plan's period
+          is done. Drives the 5-step recheck cycle (order labs → book
+          call → confirm measurements → run AI synthesis → activate
+          Phase 2). Plan content below dims to anchor focus. */}
+      {stage.stage === "recheck" && activePlan && (
+        <div style={{ marginTop: 12 }}>
+          <FmRecheckPanel
+            clientId={id}
+            activePlanSlug={activePlan.slug}
+            recheckDate={recheckDate}
+            pendingDraftSlug={pendingDraft?.slug}
+            hasFreshAssessment={hasFreshAssessment}
+            freshLabSnapshots={freshLabSnapshots}
+          />
+        </div>
+      )}
+
       {!activePlan ? (
         <NoPlanEmpty clientId={id} archivedCount={archivedPlans.length} />
       ) : (
@@ -470,6 +522,11 @@ export default async function PlanTabPage({
             gridTemplateColumns: "minmax(0, 1fr) 360px",
             gap: 20,
             alignItems: "start",
+            // Dim the plan body when the protocol period is done — the
+            // recheck panel above is where focus should land. Still
+            // readable, but visually demoted.
+            opacity: stage.stage === "recheck" ? 0.65 : 1,
+            transition: "opacity 160ms ease",
           }}
         >
           {/* LEFT — active plan details */}

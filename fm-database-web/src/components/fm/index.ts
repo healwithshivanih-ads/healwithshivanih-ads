@@ -103,3 +103,6 @@ export type {
   FmSupplementGridProps,
   FmSupplementGridItem,
 } from "./FmSupplementGrid";
+
+export { FmRecheckPanel } from "./FmRecheckPanel";
+export type { FmRecheckPanelProps } from "./FmRecheckPanel";
