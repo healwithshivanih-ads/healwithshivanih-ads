@@ -138,9 +138,19 @@ def main() -> int:
                 data["conditions"] = merged_conds
             updated_fields.append("conditions")
 
-    if not updated_fields:
+    # A pure-lab upload (lab_values only, no new measurements / meds /
+    # conditions) wouldn't otherwise be persisted because `updated_fields`
+    # tracks profile-merge edits — not snapshot additions. Treat the
+    # presence of lab_values OR a non-default source as a reason to
+    # still append the snapshot below.
+    new_lab_values = payload.get("lab_values") or []
+    if not updated_fields and not new_lab_values:
         json.dump({"ok": True, "updated_fields": [], "message": "nothing to update"}, sys.stdout)
         return 0
+    if not updated_fields and new_lab_values:
+        # Surface that we're still adding a snapshot even though no
+        # profile merge happened. Useful in audit logs.
+        updated_fields.append("lab_snapshot_only")
 
     # ── Append health snapshot ────────────────────────────────────────────────
     # Every apply-call adds an immutable snapshot so we can build trend charts.
