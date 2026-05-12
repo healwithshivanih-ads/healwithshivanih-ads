@@ -116,7 +116,14 @@ function PhotoSlot({
 }) {
   const router = useRouter();
   const fileRef = useRef<HTMLInputElement>(null);
-  const [photoUrl, setPhotoUrl] = useState<string | null>(initialPhotoUrl);
+  // Always START by trying the photo API. If the file doesn't exist on disk,
+  // the <img> below fires onError and we drop back to the empty-state UI.
+  // This way we don't depend on client.photo_filename being patched after
+  // upload — the file itself is the source of truth.
+  const [photoUrl, setPhotoUrl] = useState<string | null>(
+    initialPhotoUrl ?? `/api/client-photo/${clientId}`,
+  );
+  const [photoFailed, setPhotoFailed] = useState(false);
   const [hover, setHover] = useState(false);
   const [drag, setDrag] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -141,6 +148,7 @@ function PhotoSlot({
     if (r.ok) {
       // Swap blob for stable API URL (cache-bust)
       setPhotoUrl(`/api/client-photo/${clientId}?t=${Date.now()}`);
+      setPhotoFailed(false);
       toast.success(`Photo set for ${displayName.split(" ")[0]}`);
       router.refresh();
     } else {
@@ -156,8 +164,10 @@ function PhotoSlot({
     await handleFile(file);
   };
 
-  // Filled photo state — clicking still opens picker.
-  if (photoUrl && !uploading) {
+  // Filled photo state — clicking still opens picker. We render an actual
+  // <img> so onError can fire when the file doesn't exist (HTTP 404 from
+  // /api/client-photo) and we fall through to the empty dropzone below.
+  if (photoUrl && !photoFailed && !uploading) {
     return (
       <>
         <input
@@ -169,16 +179,55 @@ function PhotoSlot({
         />
         <div
           onClick={() => fileRef.current?.click()}
-          title={`${displayName} — replace photo`}
+          onDragOver={(e) => {
+            e.preventDefault();
+            setDrag(true);
+          }}
+          onDragLeave={() => setDrag(false)}
+          onDrop={onDrop}
+          title={`${displayName} — drop or click to replace`}
           style={{
             width: 120,
             height: 120,
             borderRadius: "var(--fm-radius-md)",
-            background: `url(${photoUrl}) center/cover`,
-            border: "1px solid var(--fm-border-light)",
+            overflow: "hidden",
+            border: drag
+              ? "2px solid var(--fm-primary)"
+              : "1px solid var(--fm-border-light)",
             cursor: "pointer",
+            position: "relative",
           }}
-        />
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={photoUrl}
+            alt={displayName}
+            onError={() => setPhotoFailed(true)}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              display: "block",
+            }}
+          />
+          {drag && (
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background: "rgba(255, 107, 53, 0.35)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#fff",
+                fontWeight: 700,
+                fontSize: 11,
+              }}
+            >
+              ⤓ Drop to replace
+            </div>
+          )}
+        </div>
       </>
     );
   }
