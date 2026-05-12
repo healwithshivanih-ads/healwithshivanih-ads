@@ -44,13 +44,22 @@ export default async function CommunicateTabPage({
     );
   }
 
-  // Active plan (drives the letters availability)
+  // Active plan (drives the letters availability). Prefer published over
+  // draft when both exist — otherwise a fresh draft from a recent Full
+  // Assessment masks the actually-live plan and disables letter sending.
   const plans = allPlans.filter((p) => p.client_id === id);
-  const activePlan = plans.find((p) =>
-    ACTIVE_STATUSES.has(
-      (p.status as string | undefined) ?? (p._bucket as string | undefined) ?? "",
-    ),
-  );
+  const statusOf = (p: typeof plans[number]) =>
+    (p.status as string | undefined) ?? (p._bucket as string | undefined) ?? "";
+  const STATUS_RANK: Record<string, number> = {
+    published: 3,
+    ready_to_publish: 2,
+    draft: 1,
+  };
+  const activePlan = plans
+    .filter((p) => ACTIVE_STATUSES.has(statusOf(p)))
+    .sort(
+      (a, b) => (STATUS_RANK[statusOf(b)] ?? 0) - (STATUS_RANK[statusOf(a)] ?? 0),
+    )[0];
   const activePlanInfo = activePlan
     ? {
         slug: activePlan.slug,
