@@ -191,7 +191,11 @@ export function LifecyclePanel({
       if (r.ok) {
         notify(true, `Follow-up plan created: ${r.newSlug}`);
         setFollowUpSummary(r.adjustmentSummary ?? null);
-        router.push(`/plans/${r.newSlug}`);
+        router.push(
+          clientId
+            ? `/clients-v2/${clientId}/plan/edit/${r.newSlug}`
+            : `/plans/${r.newSlug}`,
+        );
       } else {
         notify(false, r.error ?? "Failed to generate follow-up plan.");
       }

@@ -76,9 +76,9 @@ function Section({
   );
 }
 
-export function NewClientForm() {
+export function NewClientForm({ initialOpen = false }: { initialOpen?: boolean } = {}) {
   const router = useRouter();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(initialOpen);
   const [pending, startTransition] = useTransition();
   const [isParsing, startParseTransition] = useTransition();
   const fileRef = useRef<HTMLInputElement>(null);
@@ -341,7 +341,7 @@ export function NewClientForm() {
         toast.success(`Created ${res.client_id}`);
         reset();
         setOpen(false);
-        router.push(`/clients/${res.client_id}`);
+        router.push(`/clients-v2/${res.client_id}`);
       } else {
         toast.error(res.error);
       }

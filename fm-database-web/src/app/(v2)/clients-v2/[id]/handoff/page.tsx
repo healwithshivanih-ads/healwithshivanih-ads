@@ -93,7 +93,7 @@ export default async function HandoffPage({
     return (
       <div style={{ padding: 40, fontFamily: "system-ui" }}>
         <p>Client not found.</p>
-        <Link href="/clients">← back</Link>
+        <Link href="/clients-v2">← back</Link>
       </div>
     );
   }

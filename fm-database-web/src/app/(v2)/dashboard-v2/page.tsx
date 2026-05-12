@@ -366,7 +366,7 @@ export default async function DashboardV2() {
               protocol view fills in from real client data — nothing is faked.
             </p>
             <Link
-              href="/clients?new=1"
+              href="/clients-v2/new"
               style={{
                 display: "inline-block",
                 padding: "11px 22px",

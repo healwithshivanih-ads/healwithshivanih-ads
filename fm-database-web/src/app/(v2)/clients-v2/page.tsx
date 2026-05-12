@@ -21,7 +21,7 @@
  *
  * Click a card → /clients-v2/[id] (the existing v2 Overview).
  * "+ New client" deep-links to the existing inline form on legacy
- * /clients?new=1 (preserved as a single source of truth until the
+ * /clients-v2/new (preserved as a single source of truth until the
  * intake form gets its own v2 surface).
  */
 import Link from "next/link";
@@ -289,7 +289,7 @@ export default async function ClientsListV2Page({
         subtitle="Your roster. Filter by workflow stage, search by name or ID, click any card to open."
         rightSlot={
           <Link
-            href="/clients?new=1"
+            href="/clients-v2/new"
             style={{
               padding: "8px 14px",
               fontSize: 13,
@@ -357,7 +357,7 @@ export default async function ClientsListV2Page({
             </Link>
           ) : (
             <Link
-              href="/clients?new=1"
+              href="/clients-v2/new"
               style={{
                 display: "inline-block",
                 background: "var(--fm-primary)",

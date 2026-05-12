@@ -30,7 +30,7 @@ const DEFAULT_QUICK_ACTIONS: FmFloatingActionItem[] = [
     icon: "👤",
     label: "New client",
     hint: "Intake form, fresh profile",
-    href: "/clients?new=1",
+    href: "/clients-v2/new",
   },
   {
     id: "search",
@@ -60,7 +60,7 @@ const NAV: FmNavSection[] = [
   {
     label: "Tools",
     items: [
-      { id: "new-client", label: "New client", icon: "➕", href: "/clients?new=1" },
+      { id: "new-client", label: "New client", icon: "➕", href: "/clients-v2/new" },
       { id: "messages", label: "Messages", icon: "💬", href: "/messages" },
     ],
   },

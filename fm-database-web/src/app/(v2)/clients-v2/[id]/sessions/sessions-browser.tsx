@@ -761,16 +761,6 @@ function SessionInspector({
       {/* Footer link out */}
       <div style={{ display: "flex", gap: 10, fontSize: 11 }}>
         <Link
-          href={`/clients/${clientId}?tab=sessions&session=${session.session_id}`}
-          style={{
-            color: "var(--fm-text-secondary)",
-            textDecoration: "underline",
-          }}
-        >
-          ↗ Open in classic Sessions tab
-        </Link>
-        <span style={{ color: "var(--fm-text-tertiary)" }}>·</span>
-        <Link
           href={`/clients-v2/${clientId}/analyse`}
           style={{
             color: "var(--fm-text-secondary)",

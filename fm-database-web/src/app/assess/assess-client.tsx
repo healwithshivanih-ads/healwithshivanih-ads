@@ -3048,7 +3048,7 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
                       sessionId={s.session_id}
                       onDone={(slug) => {
                         toast.success(`Draft plan created: ${slug}`);
-                        router.push(`/plans/${slug}`);
+                        router.push(`/clients-v2/${clientId}/plan/edit/${slug}`);
                       }}
                       onError={(err) => toast.error(`Failed to regenerate plan: ${err}`)}
                     />
