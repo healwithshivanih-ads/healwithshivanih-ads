@@ -47,6 +47,7 @@ import { FmFivePillarsWithSendCheckIn } from "./five-pillars-bridge";
 import { SOAPNotePanel } from "@/app/clients/[id]/soap-note-panel";
 import { loadClientSessionsAction } from "@/app/assess/actions";
 import { clientQuickActions } from "./client-quick-actions";
+import { clientSubnavTabs } from "./client-subnav";
 
 export const dynamic = "force-dynamic";
 
@@ -809,13 +810,7 @@ function QuickActionLink({
 }
 
 function SubNav({ id, active }: { id: string; active: string }) {
-  const tabs = [
-    { id: "overview", label: "Overview", href: `/clients-v2/${id}` },
-    { id: "analyse", label: "Analyse", href: `/clients-v2/${id}/analyse` },
-    { id: "plan", label: "Plan", href: `/clients-v2/${id}/plan` },
-    { id: "communicate", label: "Communicate", href: `/clients-v2/${id}/communicate` },
-    { id: "catalogue", label: "Catalogue", href: "/catalogue" },
-  ];
+  const tabs = clientSubnavTabs(id);
   return (
     <div
       style={{

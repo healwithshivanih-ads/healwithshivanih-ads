@@ -36,6 +36,13 @@ export function clientQuickActions(clientId: string): FmFloatingActionItem[] {
       href: `/clients-v2/${clientId}/communicate`,
     },
     {
+      id: "sessions",
+      icon: "🗓",
+      label: "Past sessions",
+      hint: "Every prior session + AI synthesis inspector",
+      href: `/clients-v2/${clientId}/sessions`,
+    },
+    {
       id: "handoff",
       icon: "🏥",
       label: "Doctor handoff PDF",

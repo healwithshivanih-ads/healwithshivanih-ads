@@ -810,7 +810,7 @@ export default async function PlanTabPage({
                   label="Lifecycle (submit / publish)"
                 />
                 <ActionLink
-                  href={`/clients-v2/${id}/analyse`}
+                  href={`/clients-v2/${id}/sessions`}
                   icon="🗓"
                   label="Past sessions + analyses"
                 />
