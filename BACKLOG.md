@@ -5,7 +5,7 @@ the queue. Items here have been explicitly deferred — listed roughly by area.
 When picking one up, move its entry to a v0.x commit message and delete it
 from this file.
 
-Last updated: 2026-05-12 (post v0.67 — v1→v2 migration completed in 3 phases: redirect / + link-rot + v2 plan editor + sidebar repointed)
+Last updated: 2026-05-12 (post v0.68 — v1→v2 migration FULLY complete. Every v1 URL now redirects to its v2 equivalent. Zero v1 surfaces are reachable through normal navigation.)
 
 ---
 
@@ -21,31 +21,6 @@ Last updated: 2026-05-12 (post v0.67 — v1→v2 migration completed in 3 phases
 ### Upload flow
 - **Prior-transcript picker** — surface previous session transcripts on the Uploads card so coach can attach an earlier one ("use transcript from 2026-04-29 session") instead of re-uploading. Equivalent to the lab "files already on this client" picker already shipped.
 - **Unified upload box with AI classifier** — replace the four separate upload panels (transcript / lab / functional test / genetic / other reports) with one upload zone. AI classifies the document and routes to the right pipeline. Bigger redesign — needs an AI routing layer on the backend.
-
----
-
-## v2 migration — finishing items (2026-05-12)
-
-The bulk of the v1→v2 migration shipped in Phases 1-3 today (root
-redirect, link-rot fixes, v2 plan editor, v1 sidebar repointed,
-/assess redirected, shared-component v1 router pushes redirected to
-v2). Three small follow-ups remain:
-
-- **v2 new-client form** — `/clients?new=1` (v1) is still the only
-  client-creation surface. FmAppShell's "+ New client" button + the
-  v2 /clients-v2 page "+ New client" CTAs both link there. Build a
-  v2 form so the coach never leaves v2 chrome. ~30 min.
-- **Decide fate of /clients/[id] (v1)** — still functional as the
-  "↗ Open in classic Sessions tab" escape hatch from v2 sessions-browser.
-  Now that v2 has full feature parity (overview / analyse / plan / plan
-  editor / communicate / sessions / handoff), this is decorative. Decide:
-  drop the escape-hatch link + leave the v1 route as orphaned, or
-  redirect /clients/[id] → /clients-v2/[id]. ~5 min once decided.
-- **Decide fate of /plans + /plans/[slug] (v1)** — global plans list
-  still exists at /plans (not linked from v2). v1 plan editor at
-  /plans/[slug] still works (and its internal back-button now correctly
-  points to v2 client). Decide: keep as power-user fallback, or redirect
-  /plans/[slug] → /clients-v2/[id]/plan/edit/[slug]. ~10 min.
 
 ---
 
