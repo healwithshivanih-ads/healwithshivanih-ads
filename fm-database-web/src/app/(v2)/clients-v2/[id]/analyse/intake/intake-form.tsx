@@ -37,17 +37,39 @@ import { toast } from "sonner";
 import {
   saveSessionAction,
   applyTranscriptDataAction,
+  parseHealthTextAction,
   type FivePillarsData,
 } from "@/app/assess/actions";
+/** Inline shape mirroring ExtractedHealthData from lib/fmdb/anthropic.ts
+ *  (which is "use server" — types from there don't cross the boundary
+ *  cleanly into this client component). */
+interface ExtractedHealthData {
+  lab_values: Array<{ test_name: string; value: string; unit: string; date_drawn?: string | null }>;
+  measurements: {
+    height_cm?: number | null;
+    weight_kg?: number | null;
+    bp_systolic?: number | null;
+    bp_diastolic?: number | null;
+    hr_bpm?: number | null;
+    waist_cm?: number | null;
+    hip_cm?: number | null;
+  };
+  medications: string[];
+  conditions: string[];
+}
 import {
   updateClientPreferences,
   updateClientTimeline,
+  updateClientProfile,
+  uploadReportAction,
 } from "@/app/clients/actions";
 import {
   FmField,
   FmInput,
   FmTextarea,
   FmFormSection,
+  FmSymptomPicker,
+  type FmSymptomOption,
 } from "@/components/fm";
 import { IFM_NODES } from "@/lib/fmdb/ifm-matrix";
 import { LabUploadPanel } from "@/app/clients/[id]/lab-upload-panel";
@@ -77,12 +99,48 @@ const TIMELINE_CATEGORIES = [
 export function IntakeForm({
   clientId,
   displayName,
+  symptomCatalogue,
+  existingConditions,
+  existingAllergies,
 }: {
   clientId: string;
   displayName: string;
+  symptomCatalogue: FmSymptomOption[];
+  existingConditions: string[];
+  existingAllergies: string[];
 }) {
   const router = useRouter();
   const [pending, start] = useTransition();
+
+  // 0 · Catalogue picks
+  const [symptoms, setSymptoms] = useState<string[]>([]);
+  const [conditions, setConditions] = useState<string[]>(existingConditions);
+  const [allergiesArr, setAllergiesArr] = useState<string[]>(existingAllergies);
+
+  // Helpers to manage simple text-chip arrays (conditions, allergies)
+  const [conditionDraft, setConditionDraft] = useState("");
+  const [allergyDraft, setAllergyDraft] = useState("");
+  const addCondition = (v: string) => {
+    const t = v.trim();
+    if (!t || conditions.includes(t)) return;
+    setConditions((c) => [...c, t]);
+    setConditionDraft("");
+  };
+  const addAllergy = (v: string) => {
+    const t = v.trim();
+    if (!t || allergiesArr.includes(t)) return;
+    setAllergiesArr((c) => [...c, t]);
+    setAllergyDraft("");
+  };
+
+  // 9b · Food journal upload state
+  const [foodJournalFiles, setFoodJournalFiles] = useState<string[]>([]);
+  const [foodJournalUploading, setFoodJournalUploading] = useState(false);
+
+  // 9c · Manual health-data paste state
+  const [healthText, setHealthText] = useState("");
+  const [healthExtracted, setHealthExtracted] = useState<ExtractedHealthData | null>(null);
+  const [healthParsing, setHealthParsing] = useState(false);
 
   // 1 · Presenting picture
   const [chiefComplaint, setChiefComplaint] = useState("");
@@ -102,7 +160,6 @@ export function IntakeForm({
   // 3 · Food & lifestyle
   const [dietaryPreference, setDietaryPreference] = useState("");
   const [foodsToAvoid, setFoodsToAvoid] = useState("");
-  const [allergies, setAllergies] = useState("");
   const [nonNegotiables, setNonNegotiables] = useState("");
   const [reportedTriggers, setReportedTriggers] = useState("");
 
@@ -185,6 +242,7 @@ export function IntakeForm({
         coach_notes: sections.join("\n\n"),
         presenting_complaints: `[session_type: intake] ${chiefComplaint.trim() || hpi.trim().slice(0, 120)}`,
         five_pillars: hasPillars ? fp : undefined,
+        selected_symptoms: symptoms.length > 0 ? symptoms : undefined,
       });
       if (!sessionResult.ok) {
         toast.error(sessionResult.error ?? "Save session failed");
@@ -252,19 +310,24 @@ export function IntakeForm({
         );
       }
 
-      // Allergies are special — we store them as known_allergies array.
-      // For now we route through applyTranscriptDataAction's conditions
-      // bucket. A dedicated action lands later.
-      if (allergies.trim()) {
-        const allergyList = allergies
-          .split(/[,;\n]/)
-          .map((a) => a.trim())
-          .filter(Boolean);
-        if (allergyList.length > 0) {
-          // Build a coach note since we don't have a direct allergies-setter
-          // yet — the coach can update via the legacy New Client form.
-          // (Phase 3.5: add a setKnownAllergies action.)
-        }
+      // Active conditions + allergies → client.yaml via updateClientProfile.
+      // Only write if either changed from baseline (avoids clobbering when
+      // coach didn't touch those sections).
+      const conditionsChanged =
+        conditions.length !== existingConditions.length ||
+        conditions.some((c, i) => c !== existingConditions[i]);
+      const allergiesChanged =
+        allergiesArr.length !== existingAllergies.length ||
+        allergiesArr.some((a, i) => a !== existingAllergies[i]);
+
+      if (conditionsChanged || allergiesChanged) {
+        sideWrites.push(
+          updateClientProfile({
+            client_id: clientId,
+            active_conditions: conditionsChanged ? conditions : undefined,
+            allergies: allergiesChanged ? allergiesArr : undefined,
+          }),
+        );
       }
 
       await Promise.all(sideWrites);
@@ -326,6 +389,44 @@ export function IntakeForm({
             />
           </div>
         </details>
+      </FmFormSection>
+
+      {/* 1b · Symptoms · conditions */}
+      <FmFormSection
+        title="1b · Symptoms & active conditions"
+        description="Picked symptoms drive the Full Assessment's catalogue subgraph + AI synthesis. Active conditions go to client.active_conditions for the dashboard signal + meal plan generation."
+      >
+        <FmField
+          label="Symptoms (catalogue + free-text)"
+          hint="type to search 378-symptom catalogue — Enter for free-text"
+        >
+          {() => (
+            <FmSymptomPicker
+              catalogue={symptomCatalogue}
+              value={symptoms}
+              onChange={setSymptoms}
+              placeholder="bloating, brain fog, joint pain…"
+            />
+          )}
+        </FmField>
+        <FmField
+          label="Active conditions"
+          hint="Enter to add — saves to client.active_conditions"
+        >
+          {() => (
+            <ChipListInput
+              values={conditions}
+              draft={conditionDraft}
+              setDraft={setConditionDraft}
+              onAdd={addCondition}
+              onRemove={(v) =>
+                setConditions((arr) => arr.filter((c) => c !== v))
+              }
+              placeholder="Hashimoto's, PCOS, IBS, anxiety…"
+              tone="primary"
+            />
+          )}
+        </FmField>
       </FmFormSection>
 
       {/* 2 · Body composition baseline */}
@@ -399,14 +500,18 @@ export function IntakeForm({
               />
             )}
           </FmField>
-          <FmField label="Allergies" hint="comma or newline separated">
-            {({ id }) => (
-              <FmTextarea
-                id={id}
-                value={allergies}
-                onChange={(e) => setAllergies(e.target.value)}
-                placeholder={`Penicillin, shellfish, latex`}
-                rows={2}
+          <FmField label="Allergies" hint="Enter to add — saves to client.known_allergies">
+            {() => (
+              <ChipListInput
+                values={allergiesArr}
+                draft={allergyDraft}
+                setDraft={setAllergyDraft}
+                onAdd={addAllergy}
+                onRemove={(v) =>
+                  setAllergiesArr((arr) => arr.filter((a) => a !== v))
+                }
+                placeholder="Penicillin, shellfish, latex…"
+                tone="warning"
               />
             )}
           </FmField>
@@ -724,6 +829,117 @@ export function IntakeForm({
         <LabUploadPanel clientId={clientId} />
       </FmFormSection>
 
+      {/* 9b · Food journal upload */}
+      <FmFormSection
+        title="9b · Food journal"
+        description="Upload the food journal the client returned after Discovery. PDFs, images, or markdown. Saves to client reports."
+      >
+        <FoodJournalUploadSection
+          clientId={clientId}
+          uploaded={foodJournalFiles}
+          uploading={foodJournalUploading}
+          setUploading={setFoodJournalUploading}
+          setUploaded={setFoodJournalFiles}
+        />
+      </FmFormSection>
+
+      {/* 9c · Manual health data paste */}
+      <FmFormSection
+        title="9c · Health data — paste & parse"
+        description="Paste verbal-report values the client mentioned on the call (e.g. weight, BP, lab values, recent symptoms). Haiku extracts the structured data; review before applying."
+      >
+        <FmField
+          label="Free-form coach text"
+          hint="e.g. 'TSH 4.2 last week, fasting glucose 102, weight 68 kg, BP 118/76. On levothyroxine 50mcg. Diagnosed Hashimoto's 2018.'"
+        >
+          {({ id }) => (
+            <FmTextarea
+              id={id}
+              value={healthText}
+              onChange={(e) => setHealthText(e.target.value)}
+              placeholder="Paste or type verbal-report values…"
+              rows={4}
+            />
+          )}
+        </FmField>
+        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          <button
+            type="button"
+            disabled={!healthText.trim() || healthParsing}
+            onClick={async () => {
+              setHealthParsing(true);
+              try {
+                const r = await parseHealthTextAction({ text: healthText });
+                if (r.ok && r.extracted_data) {
+                  setHealthExtracted(r.extracted_data);
+                  toast.success("Parsed — review below before applying");
+                } else {
+                  toast.error(r.error ?? "Parse failed");
+                }
+              } finally {
+                setHealthParsing(false);
+              }
+            }}
+            style={{
+              padding: "7px 14px",
+              background: "var(--fm-secondary)",
+              color: "#fff",
+              border: 0,
+              borderRadius: "var(--fm-radius-sm)",
+              fontSize: 12,
+              fontWeight: 700,
+              cursor: !healthText.trim() || healthParsing ? "not-allowed" : "pointer",
+              opacity: !healthText.trim() || healthParsing ? 0.5 : 1,
+              fontFamily: "inherit",
+            }}
+          >
+            {healthParsing ? "Parsing…" : "✨ Parse with AI"}
+          </button>
+          {healthExtracted && (
+            <button
+              type="button"
+              onClick={() => {
+                setHealthExtracted(null);
+                setHealthText("");
+              }}
+              style={{
+                fontSize: 11.5,
+                color: "var(--fm-text-tertiary)",
+                background: "transparent",
+                border: 0,
+                cursor: "pointer",
+                fontFamily: "inherit",
+              }}
+            >
+              Clear
+            </button>
+          )}
+        </div>
+        {healthExtracted && (
+          <HealthDataPreview
+            data={healthExtracted}
+            onApply={async () => {
+              const r = await applyTranscriptDataAction({
+                client_id: clientId,
+                measurements: healthExtracted.measurements,
+                lab_values: healthExtracted.lab_values,
+                medications: healthExtracted.medications,
+                conditions: healthExtracted.conditions,
+                source: `intake-manual-${new Date().toISOString().slice(0, 10)}`,
+              });
+              if (r.ok) {
+                toast.success("Health data applied to client profile");
+                setHealthExtracted(null);
+                setHealthText("");
+                router.refresh();
+              } else {
+                toast.error(r.error ?? "Apply failed");
+              }
+            }}
+          />
+        )}
+      </FmFormSection>
+
       {/* 10 · Special FM reports upload */}
       <FmFormSection
         title="10 · Special FM reports"
@@ -798,6 +1014,423 @@ export function IntakeForm({
           {pending ? "Saving…" : "💾 Save intake →"}
         </button>
       </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Helpers — kept in the same file because they're tightly coupled to the form.
+// ─────────────────────────────────────────────────────────────────────────────
+
+function ChipListInput({
+  values,
+  draft,
+  setDraft,
+  onAdd,
+  onRemove,
+  placeholder,
+  tone = "primary",
+}: {
+  values: string[];
+  draft: string;
+  setDraft: (v: string) => void;
+  onAdd: (v: string) => void;
+  onRemove: (v: string) => void;
+  placeholder?: string;
+  tone?: "primary" | "warning";
+}) {
+  const bg =
+    tone === "warning"
+      ? "rgba(243, 156, 18, 0.10)"
+      : "rgba(255, 107, 53, 0.10)";
+  const fg =
+    tone === "warning"
+      ? "#B8770A"
+      : "var(--fm-primary)";
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        gap: 4,
+        alignItems: "center",
+        background: "var(--fm-surface)",
+        border: "1px solid var(--fm-border)",
+        borderRadius: "var(--fm-radius-sm)",
+        padding: 6,
+      }}
+    >
+      {values.map((v) => (
+        <span
+          key={v}
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 5,
+            padding: "3px 8px",
+            background: bg,
+            color: fg,
+            borderRadius: "var(--fm-radius-pill)",
+            fontSize: 11,
+            fontWeight: 600,
+          }}
+        >
+          {v}
+          <button
+            type="button"
+            onClick={() => onRemove(v)}
+            style={{
+              background: "transparent",
+              border: 0,
+              cursor: "pointer",
+              color: "inherit",
+              fontSize: 11,
+              padding: 0,
+              marginLeft: 2,
+              lineHeight: 1,
+            }}
+            aria-label={`Remove ${v}`}
+          >
+            ×
+          </button>
+        </span>
+      ))}
+      <input
+        value={draft}
+        onChange={(e) => setDraft(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            onAdd(draft);
+          }
+          if (
+            e.key === "Backspace" &&
+            draft === "" &&
+            values.length > 0
+          ) {
+            onRemove(values[values.length - 1]);
+          }
+          if (e.key === "," || e.key === ";") {
+            // Treat comma/semicolon as a separator
+            e.preventDefault();
+            onAdd(draft);
+          }
+        }}
+        onBlur={() => draft.trim() && onAdd(draft)}
+        placeholder={values.length === 0 ? placeholder : ""}
+        style={{
+          flex: 1,
+          minWidth: 140,
+          padding: "4px 6px",
+          border: 0,
+          outline: "none",
+          background: "transparent",
+          fontSize: 12,
+          fontFamily: "inherit",
+          color: "var(--fm-text-primary)",
+        }}
+      />
+    </div>
+  );
+}
+
+function FoodJournalUploadSection({
+  clientId,
+  uploaded,
+  uploading,
+  setUploading,
+  setUploaded,
+}: {
+  clientId: string;
+  uploaded: string[];
+  uploading: boolean;
+  setUploading: (v: boolean) => void;
+  setUploaded: React.Dispatch<React.SetStateAction<string[]>>;
+}) {
+  return (
+    <div>
+      <label
+        style={{
+          display: "block",
+          padding: 20,
+          border: "2px dashed var(--fm-border)",
+          borderRadius: "var(--fm-radius-md)",
+          background: "rgba(0,78,137,0.04)",
+          textAlign: "center",
+          cursor: uploading ? "wait" : "pointer",
+          fontSize: 12,
+          color: "var(--fm-text-secondary)",
+        }}
+      >
+        <div style={{ fontSize: 22, marginBottom: 6 }}>🍽️</div>
+        <strong>
+          {uploading ? "Uploading…" : "Click or drop food journal files"}
+        </strong>
+        <div
+          style={{
+            marginTop: 4,
+            fontSize: 11,
+            color: "var(--fm-text-tertiary)",
+          }}
+        >
+          PDF · image · markdown · text. Multiple files OK.
+        </div>
+        <input
+          type="file"
+          accept=".pdf,.png,.jpg,.jpeg,.webp,.md,.txt,application/pdf,image/*,text/markdown,text/plain"
+          multiple
+          disabled={uploading}
+          onChange={async (e) => {
+            const files = Array.from(e.target.files ?? []);
+            if (files.length === 0) return;
+            setUploading(true);
+            try {
+              for (const file of files) {
+                const buf = await file.arrayBuffer();
+                const fileDataBase64 = Buffer.from(buf).toString("base64");
+                const r = await uploadReportAction({
+                  clientId,
+                  reportType: "food_journal",
+                  fileDataBase64,
+                  fileName: file.name,
+                });
+                if (r.ok && r.report) {
+                  setUploaded((s) => [...s, r.report!.file_name]);
+                  toast.success(`${file.name} uploaded`);
+                } else {
+                  toast.error(`${file.name}: ${r.error ?? "upload failed"}`);
+                }
+              }
+            } finally {
+              setUploading(false);
+              e.target.value = "";
+            }
+          }}
+          style={{ display: "none" }}
+        />
+      </label>
+      {uploaded.length > 0 && (
+        <div
+          style={{
+            marginTop: 8,
+            display: "flex",
+            flexWrap: "wrap",
+            gap: 6,
+          }}
+        >
+          {uploaded.map((name) => (
+            <span
+              key={name}
+              style={{
+                fontSize: 11.5,
+                padding: "4px 10px",
+                background: "rgba(46, 204, 113, 0.10)",
+                color: "var(--fm-success)",
+                borderRadius: "var(--fm-radius-pill)",
+                fontWeight: 600,
+              }}
+            >
+              ✓ {name}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function HealthDataPreview({
+  data,
+  onApply,
+}: {
+  data: ExtractedHealthData;
+  onApply: () => Promise<void>;
+}) {
+  const labs = data.lab_values ?? [];
+  const meds = data.medications ?? [];
+  const conds = data.conditions ?? [];
+  const meas = data.measurements ?? {};
+  const measEntries = Object.entries(meas).filter(([, v]) => v != null);
+  const hasAny =
+    labs.length > 0 ||
+    meds.length > 0 ||
+    conds.length > 0 ||
+    measEntries.length > 0;
+
+  return (
+    <div
+      style={{
+        marginTop: 8,
+        padding: 12,
+        background: "var(--fm-bg-cool)",
+        border: "1px solid var(--fm-border-light)",
+        borderRadius: "var(--fm-radius-md)",
+      }}
+    >
+      <div
+        style={{
+          fontSize: 11,
+          fontWeight: 700,
+          textTransform: "uppercase",
+          letterSpacing: 0.7,
+          color: "var(--fm-text-tertiary)",
+          marginBottom: 8,
+        }}
+      >
+        AI extracted — review before applying
+      </div>
+
+      {!hasAny && (
+        <div style={{ fontSize: 12, color: "var(--fm-text-tertiary)", fontStyle: "italic" }}>
+          Nothing extractable in that text — try adding numbers/units (e.g. &quot;TSH 4.2&quot;).
+        </div>
+      )}
+
+      {labs.length > 0 && (
+        <div style={{ marginBottom: 8 }}>
+          <div
+            style={{
+              fontSize: 10.5,
+              fontWeight: 700,
+              color: "var(--fm-text-secondary)",
+              marginBottom: 4,
+            }}
+          >
+            Lab values ({labs.length})
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+            {labs.map((l, i) => (
+              <span
+                key={i}
+                style={{
+                  fontSize: 11,
+                  padding: "3px 8px",
+                  background: "var(--fm-surface)",
+                  border: "1px solid var(--fm-border-light)",
+                  borderRadius: "var(--fm-radius-sm)",
+                }}
+              >
+                {l.test_name}: <strong>{l.value}</strong> {l.unit}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {measEntries.length > 0 && (
+        <div style={{ marginBottom: 8 }}>
+          <div
+            style={{
+              fontSize: 10.5,
+              fontWeight: 700,
+              color: "var(--fm-text-secondary)",
+              marginBottom: 4,
+            }}
+          >
+            Measurements
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+            {measEntries.map(([k, v]) => (
+              <span
+                key={k}
+                style={{
+                  fontSize: 11,
+                  padding: "3px 8px",
+                  background: "var(--fm-surface)",
+                  border: "1px solid var(--fm-border-light)",
+                  borderRadius: "var(--fm-radius-sm)",
+                }}
+              >
+                {k}: <strong>{String(v)}</strong>
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {meds.length > 0 && (
+        <div style={{ marginBottom: 8 }}>
+          <div
+            style={{
+              fontSize: 10.5,
+              fontWeight: 700,
+              color: "var(--fm-text-secondary)",
+              marginBottom: 4,
+            }}
+          >
+            Medications
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+            {meds.map((m) => (
+              <span
+                key={m}
+                style={{
+                  fontSize: 11,
+                  padding: "3px 8px",
+                  background: "var(--fm-surface)",
+                  border: "1px solid var(--fm-border-light)",
+                  borderRadius: "var(--fm-radius-sm)",
+                }}
+              >
+                💊 {m}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {conds.length > 0 && (
+        <div style={{ marginBottom: 8 }}>
+          <div
+            style={{
+              fontSize: 10.5,
+              fontWeight: 700,
+              color: "var(--fm-text-secondary)",
+              marginBottom: 4,
+            }}
+          >
+            Conditions
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+            {conds.map((c) => (
+              <span
+                key={c}
+                style={{
+                  fontSize: 11,
+                  padding: "3px 8px",
+                  background: "rgba(255, 107, 53, 0.10)",
+                  color: "var(--fm-primary)",
+                  borderRadius: "var(--fm-radius-sm)",
+                  fontWeight: 600,
+                }}
+              >
+                {c}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {hasAny && (
+        <button
+          type="button"
+          onClick={onApply}
+          style={{
+            marginTop: 8,
+            padding: "7px 14px",
+            background: "var(--fm-primary)",
+            color: "#fff",
+            border: 0,
+            borderRadius: "var(--fm-radius-sm)",
+            fontSize: 12,
+            fontWeight: 700,
+            cursor: "pointer",
+            fontFamily: "inherit",
+          }}
+        >
+          ✓ Apply to client profile
+        </button>
+      )}
     </div>
   );
 }
