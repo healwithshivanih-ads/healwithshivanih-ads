@@ -62,11 +62,59 @@ async function findExistingPlanFile(slug: string): Promise<string | null> {
 }
 
 /**
+ * One-draft-per-client policy (2026-05-12).
+ *
+ * When a NEW draft is written for a client, delete every OTHER draft
+ * file in drafts/ that has the same `client_id`. Keeps the drafts/
+ * bucket from accumulating stale empty placeholders, intermediate AI
+ * synthesis output, and abandoned manual scaffolds — each of which
+ * shows up as a "pendingDraft" callout on the v2 Plan tab and clutters
+ * the coach's view.
+ *
+ * Scope:
+ *   - Only `drafts/` is touched (NOT ready_to_publish, published,
+ *     superseded, revoked — those are part of the audit trail).
+ *   - Only runs when the caller is writing a NEW file (i.e. nothing
+ *     was previously on disk under this slug). Updates to an existing
+ *     draft via plan-chat / inline edit don't trigger pruning.
+ *   - Reads each candidate's client_id from its YAML; skips entries
+ *     that fail to parse instead of nuking the whole bucket.
+ */
+async function pruneOldDrafts(
+  newPlanSlug: string,
+  newPlanClientId: string | undefined,
+): Promise<void> {
+  if (!newPlanClientId) return;
+  const draftsDir = bucketDir("draft");
+  let entries: string[] = [];
+  try {
+    entries = await fs.readdir(draftsDir);
+  } catch {
+    return; // no drafts dir yet — nothing to prune
+  }
+  for (const name of entries) {
+    if (!name.endsWith(".yaml")) continue;
+    if (name === `${newPlanSlug}.yaml`) continue; // never delete the one we just wrote
+    const fpath = path.join(draftsDir, name);
+    try {
+      const raw = await fs.readFile(fpath, "utf-8");
+      const parsed = yaml.load(raw) as { client_id?: string } | null;
+      if (parsed?.client_id !== newPlanClientId) continue;
+      await fs.unlink(fpath);
+    } catch {
+      // best-effort — bad YAML or unlink failure is non-fatal
+    }
+  }
+}
+
+/**
  * Persist a Plan to disk in the bucket dictated by `plan.status`.
  *
  * - Bumps `updated_at` to current ISO timestamp.
  * - Removes any pre-existing copy of this slug from any bucket BEFORE
  *   writing, so a status transition doesn't leave orphans behind.
+ * - Auto-prunes older drafts for the same client when this is a NEW
+ *   draft file (one-draft-per-client policy).
  * - Uses js-yaml dump with sortKeys: false to roughly preserve order.
  */
 export async function writePlan(plan: Plan): Promise<void> {
@@ -100,4 +148,11 @@ export async function writePlan(plan: Plan): Promise<void> {
     noRefs: true,
   });
   await fs.writeFile(target, dump, "utf-8");
+
+  // One-draft-per-client: when we just wrote a NEW draft (the file didn't
+  // exist anywhere before this call), purge older drafts for this client.
+  // Skip when we were just updating an existing draft.
+  if (status === "draft" && existing === null) {
+    await pruneOldDrafts(plan.slug, plan.client_id as string | undefined);
+  }
 }

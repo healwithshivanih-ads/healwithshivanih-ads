@@ -383,15 +383,67 @@ def list_plans(root: Path) -> list[Plan]:
 
 
 def write_plan(root: Path, plan: Plan) -> Path:
-    """Write a plan to the bucket matching its current status. Idempotent."""
+    """Write a plan to the bucket matching its current status. Idempotent.
+
+    One-draft-per-client policy (2026-05-12): when this call is creating
+    a NEW draft (file didn't exist anywhere on disk for this slug),
+    delete every OTHER draft file for the same client_id. Keeps the
+    drafts/ bucket from accumulating stale placeholders / abandoned
+    AI synthesis output / orphaned manual scaffolds. Updates to an
+    existing draft (chat edit, inline tweak, status transition) are
+    unaffected — only NEW draft creation triggers the prune.
+
+    Never touches published / superseded / revoked — those are part of
+    the audit trail.
+    """
     ensure_layout(root)
     bucket = _STATUS_DIR[plan.status]
     if plan.status in (PlanStatus.draft, PlanStatus.ready_to_publish):
         p = root / bucket / f"{plan.slug}.yaml"
     else:
         p = root / bucket / _versioned_filename(plan.slug, plan.version)
+
+    # Detect "this is a brand-new file" BEFORE writing, so the prune
+    # logic below doesn't get confused into thinking we're updating.
+    is_new_file = not p.exists()
+    # Also check that nothing exists in any OTHER bucket under this slug
+    # (status transitions land here too and aren't "new"). Cheap scan.
+    if is_new_file:
+        for other_bucket in _STATUS_DIR.values():
+            if other_bucket == bucket:
+                continue
+            other_dir = root / other_bucket
+            if not other_dir.exists():
+                continue
+            # match either unversioned or any -vN.yaml
+            for candidate in other_dir.glob(f"{plan.slug}*.yaml"):
+                if candidate.name == f"{plan.slug}.yaml" or candidate.name.startswith(f"{plan.slug}-v"):
+                    is_new_file = False
+                    break
+            if not is_new_file:
+                break
+
     plan.updated_at = datetime.now(timezone.utc)
     p.write_text(yaml.safe_dump(plan.model_dump(mode="json"), sort_keys=False, allow_unicode=True))
+
+    # One-draft-per-client prune. Best-effort — read each YAML and unlink
+    # if client_id matches. Bad YAML / missing client_id / unlink failure
+    # is non-fatal: we just leave the file in place.
+    if is_new_file and plan.status == PlanStatus.draft and plan.client_id:
+        drafts_dir = root / "drafts"
+        try:
+            for candidate in drafts_dir.glob("*.yaml"):
+                if candidate.name == f"{plan.slug}.yaml":
+                    continue  # the one we just wrote
+                try:
+                    raw = yaml.safe_load(candidate.read_text()) or {}
+                    if raw.get("client_id") == plan.client_id:
+                        candidate.unlink()
+                except Exception:
+                    continue
+        except FileNotFoundError:
+            pass
+
     return p
 
 
