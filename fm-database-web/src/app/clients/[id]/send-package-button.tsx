@@ -160,6 +160,11 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
   // field flashed empty after every save → reopen.
   const [currentClientEmail, setCurrentClientEmail] = useState<string>(clientEmail ?? "");
   const [emailTo, setEmailTo] = useState(currentClientEmail);
+  const [emailCc, setEmailCc] = useState("");
+  // Save-to-profile is opt-in now (was silent auto-save before). Coach
+  // sees a contextual checkbox when the typed To differs from what's on
+  // file, and explicitly confirms before client.yaml is overwritten.
+  const [saveAsClientEmail, setSaveAsClientEmail] = useState<boolean>(false);
   const [emailSubject, setEmailSubject] = useState("");
   const [emailIntro, setEmailIntro] = useState(
     `Hi ${clientName?.split(" ")[0] ?? "there"},\n\nPlease find your personalised plan attached below. Let me know if you have any questions.\n\nWith care,\nShivani`
@@ -307,6 +312,11 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
     for (const p of doneTypes) next[p.type] = true;
     setEmailInclude(next);
     setEmailTo(currentClientEmail);
+    setEmailCc("");
+    // Default the save-to-profile checkbox ON when there's NO email on
+    // file (common "fill missing email" case), OFF otherwise so a stray
+    // typed value doesn't silently replace a known address.
+    setSaveAsClientEmail(!currentClientEmail);
     setEmailPanelOpen(true);
     setEmailError(null);
   };
@@ -342,28 +352,45 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
       }));
 
     try {
+      const ccTrimmed = emailCc.trim();
       const result = await sendClientLettersAction({
         to: emailTo.trim(),
+        cc: ccTrimmed || undefined,
         subject: emailSubject,
         intro: emailIntro,
         letters: selectedLetters,
         attachments,
       });
       if (result.ok) {
-        toast.success(`Email sent to ${emailTo.trim()}`);
-        // If the coach typed an email that wasn't already on the client's
-        // profile, persist it so the next send auto-fills. Update the
-        // local mirror IMMEDIATELY (so reopening the panel before the
-        // server round-trip completes still pre-fills correctly) and
-        // call router.refresh() so the rest of the page (contact widget
-        // etc.) picks up the new value via fresh server-component data.
+        const ccNote = ccTrimmed ? ` (cc ${ccTrimmed})` : "";
+        toast.success(`Email sent to ${emailTo.trim()}${ccNote}`);
+        // Save the To value to the client's profile ONLY when the coach
+        // explicitly ticked the checkbox AND it differs from what's on
+        // file. Previously this fired silently after every send — a
+        // stray typo could overwrite the canonical email with no
+        // confirmation. Now opt-in via the checkbox.
         const typed = emailTo.trim();
-        if (typed && typed !== currentClientEmail) {
+        if (
+          saveAsClientEmail &&
+          typed &&
+          typed !== currentClientEmail
+        ) {
           setCurrentClientEmail(typed);
           try {
-            await updateClientFieldsAction(clientId, { email: typed });
-            router.refresh();
-          } catch { /* non-fatal */ }
+            const saveRes = await updateClientFieldsAction(clientId, { email: typed });
+            if (saveRes.ok) {
+              toast.success(`Saved ${typed} to client profile`);
+              router.refresh();
+            } else {
+              toast.warning(
+                `Sent, but couldn't save the email to profile: ${saveRes.error}`,
+              );
+            }
+          } catch (e) {
+            toast.warning(
+              `Sent, but couldn't save the email to profile: ${(e as Error).message}`,
+            );
+          }
         }
         setEmailPanelOpen(false);
       } else {
@@ -795,6 +822,57 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
                       className="w-full rounded-md border border-input bg-background px-3 py-1.5 text-sm focus:outline-none focus:ring-1"
                       placeholder="client@example.com"
                     />
+                    {/* Contextual save-to-profile checkbox. Renders when
+                        the typed value differs from what's on file —
+                        either filling a missing email or overwriting an
+                        existing one. Coach has to consciously tick before
+                        client.yaml gets updated. */}
+                    {emailTo.trim() &&
+                      emailTo.trim().toLowerCase() !==
+                        currentClientEmail.trim().toLowerCase() && (
+                        <label className="mt-2 flex items-start gap-2 text-[11px] cursor-pointer">
+                          <input
+                            type="checkbox"
+                            checked={saveAsClientEmail}
+                            onChange={(e) => setSaveAsClientEmail(e.target.checked)}
+                            className="mt-0.5 rounded"
+                          />
+                          <span className="text-muted-foreground leading-snug">
+                            {currentClientEmail ? (
+                              <>
+                                💾 Also save{" "}
+                                <code className="font-mono text-[10px]">{emailTo.trim()}</code>{" "}
+                                as this client&apos;s email (replaces{" "}
+                                <code className="font-mono text-[10px]">{currentClientEmail}</code>)
+                              </>
+                            ) : (
+                              <>
+                                💾 Save{" "}
+                                <code className="font-mono text-[10px]">{emailTo.trim()}</code>{" "}
+                                to this client&apos;s profile (no email on file yet)
+                              </>
+                            )}
+                          </span>
+                        </label>
+                      )}
+                  </div>
+
+                  {/* Cc */}
+                  <div>
+                    <label className="text-xs font-medium text-muted-foreground block mb-1">
+                      Cc <span className="font-normal opacity-70">(optional — comma-separated)</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={emailCc}
+                      onChange={(e) => setEmailCc(e.target.value)}
+                      className="w-full rounded-md border border-input bg-background px-3 py-1.5 text-sm focus:outline-none focus:ring-1"
+                      placeholder="partner@example.com, doctor@clinic.com"
+                    />
+                    <p className="text-[10px] text-muted-foreground mt-1">
+                      Loop in a family member, partner, or referring clinician.
+                      They&apos;ll see all recipients.
+                    </p>
                   </div>
 
                   {/* Subject */}
