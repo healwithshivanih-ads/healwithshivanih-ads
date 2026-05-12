@@ -517,12 +517,9 @@ export default async function PlanTabPage({
         <NoPlanEmpty clientId={id} archivedCount={archivedPlans.length} />
       ) : (
         <div
+          className="fm-v2-2col"
           style={{
             marginTop: 16,
-            display: "grid",
-            gridTemplateColumns: "minmax(0, 1fr) 360px",
-            gap: 20,
-            alignItems: "start",
             // Dim the plan body when the protocol period is done — the
             // recheck panel above is where focus should land. Still
             // readable, but visually demoted.
@@ -777,22 +774,11 @@ export default async function PlanTabPage({
             )}
           </div>
 
-          {/* RIGHT — send + meta. Sticky AND scrollable: if the rail
-              content is taller than the viewport, the rail itself scrolls
-              internally. Without max-height + overflow, sticky just clips
-              the bottom of the rail (status history + other plans got cut
-              off on tall plans). */}
-          <div
-            style={{
-              position: "sticky",
-              top: 24,
-              maxHeight: "calc(100vh - 48px)",
-              overflowY: "auto",
-              paddingRight: 4,
-              display: "grid",
-              gap: 14,
-            }}
-          >
+          {/* RIGHT — send + meta. Sticky + internally scrollable on
+              wide viewports; under 1180px the parent grid collapses to
+              single-column and the rail un-sticks (handled by the
+              .fm-v2-2col-rail CSS class in fm-v2.css). */}
+          <div className="fm-v2-2col-rail">
             {/* Quick actions — primary navigation hub. Letters live on
                 Communicate (one source of truth); past sessions / plans
                 are surfaced via deep-links. */}
