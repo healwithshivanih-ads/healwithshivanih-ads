@@ -810,7 +810,7 @@ function SubNav({ id, active }: { id: string; active: string }) {
   const tabs = [
     { id: "overview", label: "Overview", href: `/clients-v2/${id}` },
     { id: "analyse", label: "Analyse", href: `/clients-v2/${id}/analyse` },
-    { id: "plan", label: "Plan", href: `/clients/${id}?tab=plan` },
+    { id: "plan", label: "Plan", href: `/clients-v2/${id}/plan` },
     { id: "communicate", label: "Communicate", href: `/clients/${id}?tab=plan` },
     { id: "catalogue", label: "Catalogue", href: "/catalogue" },
   ];
