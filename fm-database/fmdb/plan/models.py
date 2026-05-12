@@ -164,6 +164,7 @@ class Client(BaseModel):
     dietary_preference: str = ""   # Vegetarian | Non-vegetarian | Vegan | Eggetarian | Pescatarian | Other
     foods_to_avoid: str = ""       # Free form: "brinjal, bitter gourd, raw onion"
     non_negotiables: str = ""      # Things they won't give up: "morning chai, weekly mutton"
+    reported_triggers: str = ""    # n=1 observations: "gluten triggers bloating; afternoon coffee → poor sleep"
     city: str = ""                 # e.g. "Mumbai", "Chennai" — used for seasonal/regional meal planning
     country: str = ""              # e.g. "India", "UK" — used for seasonal produce and recipes
     mobile_number: Optional[str] = None   # for duplicate-check; stored hashed or partial if needed

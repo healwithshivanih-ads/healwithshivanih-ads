@@ -248,6 +248,14 @@ def main() -> int:
         "date_of_birth": client.date_of_birth.isoformat() if client.date_of_birth else None,
         "sex": client.sex,
         "dietary_preference": client.dietary_preference or "Vegetarian",
+        # Persisted coach-observed prefs (written by Intake form, profile
+        # editor, and plan-chat client_patch). All free-form strings; pass
+        # through as-is. The AI is instructed to treat foods_to_avoid as a
+        # hard exclusion, non_negotiables as soft preference, and
+        # reported_triggers as causal hypotheses to weight toward.
+        "foods_to_avoid": getattr(client, "foods_to_avoid", None) or None,
+        "non_negotiables": getattr(client, "non_negotiables", None) or None,
+        "reported_triggers": getattr(client, "reported_triggers", None) or None,
         "active_conditions": client.active_conditions,
         "medical_history": client.medical_history,
         "current_medications": client.current_medications,

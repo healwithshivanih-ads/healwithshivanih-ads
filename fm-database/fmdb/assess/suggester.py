@@ -417,6 +417,29 @@ HARD RULES (violating these breaks the downstream system):
     - If `dietary_preference` is absent or blank, default to Vegetarian (India
       default — safer to exclude than to recommend meat unnecessarily).
 
+12b. PERSISTED CLIENT PREFERENCES — three free-form string fields the coach
+    accumulates over time (Intake form + plan-chat). Treat each differently:
+    - `client_context.foods_to_avoid` — HARD EXCLUSION. Anything listed here
+      must NEVER appear in nutrition.add, meal_timing examples, cooking
+      adjustments, or supplement coach_rationale. Examples: "onions; garlic"
+      (Jain or sensitivity), "dairy" (intolerance), "eggplant; tomato"
+      (nightshade-sensitive). If a listed food shows up in your draft,
+      remove it and substitute.
+    - `client_context.non_negotiables` — SOFT PREFERENCE. Things the client
+      won't give up. Examples: "morning chai", "weekend dosa", "Sunday
+      family lunch". Work AROUND these instead of trying to remove them —
+      e.g. lower-glycemic chai (jaggery + cinnamon) rather than "drop the
+      chai habit". Mention preservation explicitly in synthesis_notes so the
+      coach sees that the AI respected them.
+    - `client_context.reported_triggers` — CAUSAL SIGNAL. Things the client
+      has observed cause/relieve symptoms. Examples: "gluten triggers
+      bloating", "removing dairy cleared joint pain", "afternoon coffee →
+      poor sleep". Weight these heavily when picking likely_drivers and
+      protocol_suggestions — they're n=1 evidence the client has lived
+      through. If they conflict with the catalogue's evidence_tier, mention
+      the discrepancy and prefer the client's lived experience for the
+      first phase.
+
 13. SESSION HISTORY (`session_history` in the user payload). If non-empty,
     earlier sessions for this same client are listed oldest → newest. Use
     them:
