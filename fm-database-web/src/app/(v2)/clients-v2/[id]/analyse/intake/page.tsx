@@ -8,6 +8,14 @@ import { IntakeForm } from "./intake-form";
 
 export const dynamic = "force-dynamic";
 
+type StrOrUndef = string | undefined;
+function s(v: unknown): string {
+  return typeof v === "string" ? v : "";
+}
+function asStrArray(v: unknown): string[] {
+  return Array.isArray(v) ? v.filter((x): x is string => typeof x === "string") : [];
+}
+
 export default async function IntakePage({
   params,
 }: {
@@ -33,6 +41,13 @@ export default async function IntakePage({
       severity: s.severity,
     }));
 
+  // Cycle / pregnancy / FM fields are stringly-typed coming off the YAML.
+  // Cast through unknown for safety.
+  const c = client as unknown as Record<string, unknown>;
+  const cycleStatus = (c.cycle_status as StrOrUndef) ?? null;
+  const cycleRegularity = (c.cycle_regularity as StrOrUndef) ?? null;
+  const pregnancyStatus = (c.pregnancy_status as StrOrUndef) ?? null;
+
   return (
     <AnalysePageShell
       clientId={id}
@@ -48,13 +63,38 @@ export default async function IntakePage({
       <IntakeForm
         clientId={id}
         displayName={displayName}
+        clientSex={client.sex === "F" || client.sex === "M" ? client.sex : null}
         symptomCatalogue={symptomCatalogue}
-        existingConditions={client.active_conditions ?? []}
+        existingConditions={asStrArray(c.active_conditions)}
         existingAllergies={
-          (client.known_allergies as string[] | undefined) ??
-          (client.allergies as string[] | undefined) ??
-          []
+          asStrArray(c.known_allergies).length > 0
+            ? asStrArray(c.known_allergies)
+            : asStrArray(c.allergies)
         }
+        existingGoals={asStrArray(c.goals)}
+        existingMedicalHistory={asStrArray(c.medical_history)}
+        existingFm={{
+          digestion_notes: s(c.digestion_notes),
+          sleep_notes: s(c.sleep_notes),
+          energy_pattern: s(c.energy_pattern),
+          menstrual_notes: s(c.menstrual_notes),
+          stress_response: s(c.stress_response),
+          childhood_history: s(c.childhood_history),
+          toxic_exposures: s(c.toxic_exposures),
+        }}
+        existingCycle={{
+          cycle_status: cycleStatus,
+          last_menstrual_period: s(c.last_menstrual_period),
+          cycle_length_days:
+            typeof c.cycle_length_days === "number" ? c.cycle_length_days : null,
+          cycle_regularity: cycleRegularity,
+          menopause_started: s(c.menopause_started),
+        }}
+        existingPregnancy={{
+          pregnancy_status: pregnancyStatus,
+          pregnancy_due_date: s(c.pregnancy_due_date),
+          lactation_started: s(c.lactation_started),
+        }}
       />
     </AnalysePageShell>
   );

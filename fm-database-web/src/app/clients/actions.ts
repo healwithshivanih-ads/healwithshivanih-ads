@@ -757,6 +757,36 @@ export interface UpdatePreferencesInput {
   non_negotiables?: string;
   city?: string;
   country?: string;
+
+  // FM body-systems review (deep intake)
+  digestion_notes?: string;
+  sleep_notes?: string;
+  energy_pattern?: string;
+  menstrual_notes?: string;
+  stress_response?: string;
+  childhood_history?: string;
+  toxic_exposures?: string;
+  what_has_worked?: string;
+  what_hasnt_worked?: string;
+
+  // Cycle context (women clients)
+  cycle_status?: "menstruating" | "perimenopausal" | "postmenopausal" | "not_applicable";
+  last_menstrual_period?: string;
+  cycle_length_days?: number;
+  cycle_regularity?: "regular" | "irregular" | "very_irregular";
+  menopause_started?: string;
+
+  // Pregnancy / lactation
+  pregnancy_status?:
+    | "not_applicable"
+    | "not_pregnant"
+    | "trying_to_conceive"
+    | "pregnant_first_trimester"
+    | "pregnant_second_trimester"
+    | "pregnant_third_trimester"
+    | "lactating";
+  pregnancy_due_date?: string;
+  lactation_started?: string;
 }
 
 export type UpdatePreferencesResult =
@@ -787,10 +817,31 @@ export async function updateClientPreferences(
       data.reported_triggers = input.reported_triggers;
     if (input.non_negotiables !== undefined)
       data.non_negotiables = input.non_negotiables;
-    if (input.city !== undefined)
-      data.city = input.city;
-    if (input.country !== undefined)
-      data.country = input.country;
+    if (input.city !== undefined) data.city = input.city;
+    if (input.country !== undefined) data.country = input.country;
+
+    // FM body-systems
+    if (input.digestion_notes !== undefined) data.digestion_notes = input.digestion_notes;
+    if (input.sleep_notes !== undefined) data.sleep_notes = input.sleep_notes;
+    if (input.energy_pattern !== undefined) data.energy_pattern = input.energy_pattern;
+    if (input.menstrual_notes !== undefined) data.menstrual_notes = input.menstrual_notes;
+    if (input.stress_response !== undefined) data.stress_response = input.stress_response;
+    if (input.childhood_history !== undefined) data.childhood_history = input.childhood_history;
+    if (input.toxic_exposures !== undefined) data.toxic_exposures = input.toxic_exposures;
+    if (input.what_has_worked !== undefined) data.what_has_worked = input.what_has_worked;
+    if (input.what_hasnt_worked !== undefined) data.what_hasnt_worked = input.what_hasnt_worked;
+
+    // Cycle context
+    if (input.cycle_status !== undefined) data.cycle_status = input.cycle_status;
+    if (input.last_menstrual_period !== undefined) data.last_menstrual_period = input.last_menstrual_period;
+    if (input.cycle_length_days !== undefined) data.cycle_length_days = input.cycle_length_days;
+    if (input.cycle_regularity !== undefined) data.cycle_regularity = input.cycle_regularity;
+    if (input.menopause_started !== undefined) data.menopause_started = input.menopause_started;
+
+    // Pregnancy / lactation
+    if (input.pregnancy_status !== undefined) data.pregnancy_status = input.pregnancy_status;
+    if (input.pregnancy_due_date !== undefined) data.pregnancy_due_date = input.pregnancy_due_date;
+    if (input.lactation_started !== undefined) data.lactation_started = input.lactation_started;
 
     // bump updated_at
     data.updated_at = new Date().toISOString();
@@ -1539,6 +1590,98 @@ export async function checkMedicationImpactsAction(
       }
     }
 
+    return { ok: true, matches, unmatched };
+  } catch (e) {
+    return { ok: false, matches: [], unmatched: [], error: String(e) };
+  }
+}
+
+/**
+ * Inline depletion check — takes a list of medication strings directly,
+ * returns matches against the drug_depletions catalogue. Unlike
+ * checkMedicationImpactsAction this does NOT read client.yaml, so it can
+ * preview against meds being typed into the Intake form before save.
+ */
+export async function checkMedsAgainstCatalogueAction(
+  medications: string[],
+): Promise<MedicationImpactResult> {
+  try {
+    const { loadAllOfKind } = await import("@/lib/fmdb/loader");
+    const dedupedMeds = (() => {
+      const seen = new Set<string>();
+      return medications
+        .map((m) => (m ?? "").trim())
+        .filter(Boolean)
+        .filter((m) => {
+          const k = m.toLowerCase();
+          if (seen.has(k)) return false;
+          seen.add(k);
+          return true;
+        });
+    })();
+    if (dedupedMeds.length === 0) {
+      return { ok: true, matches: [], unmatched: [] };
+    }
+
+    const records = await loadAllOfKind<{
+      slug: string;
+      drug_name: string;
+      drug_aliases?: string[];
+      drug_class?: string;
+      summary?: string;
+      depletes?: Array<{
+        nutrient: string;
+        severity?: string;
+        mechanism?: string;
+        monitoring_recommendation?: string;
+        typical_supplement_dose?: string;
+      }>;
+      timing_separations?: string[];
+      contraindicated_supplements?: string[];
+      monitoring_labs?: string[];
+      coach_notes?: string;
+      evidence_tier?: string;
+    }>("drug_depletions");
+
+    const matches: MedicationImpactMatch[] = [];
+    const unmatched: string[] = [];
+
+    for (const med of dedupedMeds) {
+      const medLower = med.toLowerCase();
+      let hit: typeof records[number] | null = null;
+      let matchedAlias = "";
+
+      outer: for (const rec of records) {
+        const candidates = [rec.drug_name, ...(rec.drug_aliases ?? [])].filter(Boolean);
+        for (const c of candidates) {
+          const cLower = c.toLowerCase();
+          if (medLower.includes(cLower) || cLower.includes(medLower)) {
+            hit = rec;
+            matchedAlias = c;
+            break outer;
+          }
+        }
+      }
+
+      if (hit) {
+        matches.push({
+          client_med_text: med,
+          drug_slug: hit.slug,
+          drug_name: hit.drug_name,
+          drug_class: hit.drug_class,
+          matched_alias: matchedAlias,
+          summary: hit.summary,
+          depletes: (hit.depletes ?? []).map((d) => ({ ...d })),
+          timing_separations: hit.timing_separations,
+          contraindicated_supplements: hit.contraindicated_supplements,
+          monitoring_labs: hit.monitoring_labs,
+          coach_notes: hit.coach_notes,
+          evidence_tier: hit.evidence_tier,
+        });
+      } else {
+        unmatched.push(med);
+      }
+    }
     return { ok: true, matches, unmatched };
   } catch (e) {
     return { ok: false, matches: [], unmatched: [], error: String(e) };
