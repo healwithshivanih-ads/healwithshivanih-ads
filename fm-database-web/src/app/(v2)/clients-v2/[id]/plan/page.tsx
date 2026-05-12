@@ -21,6 +21,10 @@ import Link from "next/link";
 import { loadClientById } from "@/lib/fmdb/loader-extras";
 import { loadAllPlans } from "@/lib/fmdb/loader";
 import { loadCatalogueChipDict } from "@/lib/fmdb/catalogue-chip-dict";
+import {
+  loadLetterSendLogAction,
+  type LetterSendEntry,
+} from "@/app/api/email/actions";
 import type { Plan, PlanStatus } from "@/lib/fmdb/types";
 
 const PLAN_STATUSES = new Set<PlanStatus>([
@@ -238,10 +242,11 @@ export default async function PlanTabPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const [client, allPlans, catalogueChips] = await Promise.all([
+  const [client, allPlans, catalogueChips, sendLog] = await Promise.all([
     loadClientById(id),
     loadAllPlans(),
     loadCatalogueChipDict(),
+    loadLetterSendLogAction(id),
   ]);
   if (!client) {
     return (
@@ -425,6 +430,32 @@ export default async function PlanTabPage({
   const presentingSymptoms = (activePlan?.presenting_symptoms ?? []) as string[];
   const notesForCoach = (activePlan?.notes_for_coach as string | undefined) ?? "";
   const planPeriodWeeks = activePlan?.plan_period_weeks;
+  // Plan timeline dates — already on disk, surfaced here so the coach can
+  // see when the AI generated the draft / when it went live / when the
+  // last edit landed without inspecting the YAML directly.
+  function fmtDateOnly(s: string | undefined): string | undefined {
+    if (!s) return undefined;
+    try {
+      const d = new Date(s);
+      if (Number.isNaN(d.getTime())) return s;
+      return d.toLocaleDateString("en-IN", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      });
+    } catch {
+      return s;
+    }
+  }
+  const planCreatedAt = fmtDateOnly(activePlan?.created_at as string | undefined);
+  const planUpdatedAt = fmtDateOnly(activePlan?.updated_at as string | undefined);
+  // first "published" entry in status_history → when the plan went live
+  const publishedEvent = (
+    (activePlan?.status_history as Array<Record<string, unknown>> | undefined) ?? []
+  ).find((ev) => ev.state === "published");
+  const planPublishedAt = fmtDateOnly(
+    publishedEvent?.at as string | undefined,
+  );
   const planPeriodStart = activePlan?.plan_period_start;
   const supersedes = activePlan?.supersedes as string | undefined;
   const statusHistory =
@@ -579,6 +610,26 @@ export default async function PlanTabPage({
                 </div>
               }
             >
+              {(planCreatedAt || planPublishedAt || planUpdatedAt) && (
+                <div
+                  style={{
+                    fontSize: 11,
+                    color: "var(--fm-text-tertiary)",
+                    marginBottom: 10,
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: 10,
+                  }}
+                >
+                  {planCreatedAt && <span>Generated {planCreatedAt}</span>}
+                  {planPublishedAt && (
+                    <span>· Published {planPublishedAt}</span>
+                  )}
+                  {planUpdatedAt && planUpdatedAt !== planCreatedAt && (
+                    <span>· Updated {planUpdatedAt}</span>
+                  )}
+                </div>
+              )}
               {supersedes && (
                 <div
                   style={{
@@ -840,6 +891,88 @@ export default async function PlanTabPage({
                 />
               </div>
             </FmPanel>
+
+            {/* Letter send history — filter to this plan only so the
+                panel stays scoped + scannable. Newest first. */}
+            {sendLog.filter((e) => e.plan_slug === activePlan.slug).length > 0 && (
+              <FmPanel
+                title="📤 Letter send history"
+                subtitle="Every email this plan has been mailed out from."
+              >
+                <div style={{ display: "grid", gap: 6 }}>
+                  {sendLog
+                    .filter((e) => e.plan_slug === activePlan.slug)
+                    .slice(0, 8)
+                    .map((e: LetterSendEntry, i) => {
+                      const dt = new Date(e.sent_at);
+                      const sentLabel = Number.isNaN(dt.getTime())
+                        ? e.sent_at
+                        : dt.toLocaleString("en-IN", {
+                            day: "numeric",
+                            month: "short",
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          });
+                      return (
+                        <div
+                          key={`${e.sent_at}-${i}`}
+                          style={{
+                            fontSize: 11,
+                            padding: "6px 9px",
+                            borderLeft: "2px solid var(--fm-primary)",
+                            background: "var(--fm-bg-warm)",
+                            borderRadius: "0 var(--fm-radius-sm) var(--fm-radius-sm) 0",
+                          }}
+                        >
+                          <div style={{ fontWeight: 700, color: "var(--fm-text-primary)" }}>
+                            ✉ {sentLabel}
+                          </div>
+                          <div
+                            style={{
+                              fontSize: 10.5,
+                              color: "var(--fm-text-secondary)",
+                              marginTop: 2,
+                            }}
+                          >
+                            To {e.to}
+                            {e.cc && (
+                              <span style={{ color: "var(--fm-text-tertiary)" }}>
+                                {" "}· cc {e.cc}
+                              </span>
+                            )}
+                          </div>
+                          {e.letter_types.length > 0 && (
+                            <div
+                              style={{
+                                marginTop: 4,
+                                display: "flex",
+                                flexWrap: "wrap",
+                                gap: 3,
+                              }}
+                            >
+                              {e.letter_types.map((t) => (
+                                <span
+                                  key={t}
+                                  style={{
+                                    fontSize: 9.5,
+                                    padding: "1px 6px",
+                                    background: "rgba(255, 107, 53, 0.10)",
+                                    color: "var(--fm-primary)",
+                                    borderRadius: "var(--fm-radius-pill)",
+                                    fontWeight: 600,
+                                  }}
+                                >
+                                  {t.replace(/_/g, " ")}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                </div>
+              </FmPanel>
+            )}
 
             {/* Status history timeline */}
             {statusHistory.length > 0 && (

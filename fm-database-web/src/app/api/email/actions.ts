@@ -390,3 +390,102 @@ export async function updateClientFieldsAction(
     return { ok: false, error: String(err) };
   }
 }
+
+// ── Letter-send log ───────────────────────────────────────────────────────
+// Persisted per-client at ~/fm-plans/clients/<id>/meal-plans/_send_log.yaml.
+// Each successful email-send appends an entry; coach can see "last sent"
+// timestamps on the SendPackage panel + Plan tab without trusting Gmail's
+// sent folder.
+//
+// Schema:
+//   sends:
+//     - sent_at:      "2026-05-12T16:43:00.000Z"   ISO timestamp (server clock)
+//       plan_slug:    "geetika-plan-1-2026-05-09-cl-006"
+//       letter_types: ["meal_plan", "supplement_plan"]   each entry per type
+//       to:           "client@example.com"
+//       cc:           "partner@example.com"               optional, omitted when blank
+//
+// Schema kept flat + append-only — no migrations, easy to grep in YAML.
+
+export interface LetterSendEntry {
+  sent_at: string;
+  plan_slug: string;
+  letter_types: string[];
+  to: string;
+  cc?: string;
+}
+
+interface SendLogFile {
+  sends?: LetterSendEntry[];
+}
+
+function sendLogPath(clientId: string): string {
+  return path.join(getPlansRoot(), "clients", clientId, "meal-plans", "_send_log.yaml");
+}
+
+export async function recordLetterSendAction(input: {
+  clientId: string;
+  planSlug: string;
+  letterTypes: string[];
+  to: string;
+  cc?: string;
+}): Promise<{ ok: true } | { ok: false; error: string }> {
+  if (!input.clientId || !input.planSlug || !input.to) {
+    return { ok: false, error: "clientId, planSlug, and to are required" };
+  }
+  try {
+    const filePath = sendLogPath(input.clientId);
+    // Ensure dir exists (matches getMealPlanDir's path; saveMealPlan
+    // would have created it already in most paths).
+    await fs.mkdir(path.dirname(filePath), { recursive: true });
+
+    let log: SendLogFile = { sends: [] };
+    try {
+      const raw = await fs.readFile(filePath, "utf-8");
+      const parsed = yaml.load(raw) as SendLogFile | null;
+      if (parsed && Array.isArray(parsed.sends)) log = parsed;
+    } catch {
+      // first send for this client — start fresh
+    }
+
+    const entry: LetterSendEntry = {
+      sent_at: new Date().toISOString(),
+      plan_slug: input.planSlug,
+      letter_types: input.letterTypes,
+      to: input.to,
+    };
+    if (input.cc?.trim()) entry.cc = input.cc.trim();
+    (log.sends ??= []).push(entry);
+
+    await fs.writeFile(
+      filePath,
+      yaml.dump(log, { noRefs: true, sortKeys: false }),
+      "utf-8",
+    );
+    revalidatePath(`/clients/${input.clientId}`);
+    revalidatePath(`/clients-v2/${input.clientId}/plan`);
+    revalidatePath(`/clients-v2/${input.clientId}/communicate`);
+    return { ok: true };
+  } catch (err) {
+    return { ok: false, error: String(err) };
+  }
+}
+
+export async function loadLetterSendLogAction(
+  clientId: string,
+): Promise<LetterSendEntry[]> {
+  if (!clientId) return [];
+  try {
+    const raw = await fs.readFile(sendLogPath(clientId), "utf-8");
+    const parsed = yaml.load(raw) as SendLogFile | null;
+    if (parsed && Array.isArray(parsed.sends)) {
+      // Sort newest first so consumers can `[0]` for "last sent"
+      return [...parsed.sends].sort((a, b) =>
+        (b.sent_at ?? "").localeCompare(a.sent_at ?? ""),
+      );
+    }
+  } catch {
+    /* no log yet */
+  }
+  return [];
+}
