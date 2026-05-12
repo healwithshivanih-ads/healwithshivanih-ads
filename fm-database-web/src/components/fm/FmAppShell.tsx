@@ -1,0 +1,156 @@
+"use client";
+
+/**
+ * FmAppShell — the v2 chrome. Renders the gradient sidebar, sticky topbar,
+ * and a scrollable main content area, with a ⌘K listener wired up for the
+ * quick-actions / search palette.
+ *
+ * Used by every Phase 1+ v2 route (/dashboard-v2, /calendar, /messages,
+ * /settings, /help). Each route picks its own `activeNavId` + `crumbs` and
+ * renders its content as children.
+ *
+ * Renders as a fixed inset:0 z:100 overlay so the legacy root layout (which
+ * still owns the old SidebarNav) stays untouched. Once Phase 5 ships, the
+ * legacy layout can drop and this becomes the only shell.
+ */
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { FmSidebarNav, type FmNavSection } from "./FmSidebarNav";
+import { FmTopBar, type FmBreadcrumb } from "./FmTopBar";
+
+const NAV: FmNavSection[] = [
+  {
+    label: "Workspace",
+    items: [
+      { id: "dashboard", label: "Dashboard", icon: "📊", href: "/dashboard-v2" },
+      { id: "clients", label: "All clients", icon: "👥", href: "/clients" },
+      { id: "calendar", label: "Calendar", icon: "🗓️", href: "/calendar" },
+    ],
+  },
+  {
+    label: "Tools",
+    items: [
+      { id: "new-client", label: "New client", icon: "➕", href: "/clients?new=1" },
+      { id: "messages", label: "Messages", icon: "💬", href: "/messages" },
+    ],
+  },
+  {
+    label: "Knowledge base",
+    items: [
+      { id: "resources", label: "Resources", icon: "📚", href: "/resources" },
+      { id: "mindmap", label: "Mind maps", icon: "🧭", href: "/mindmap" },
+      { id: "backlog", label: "Backlog", icon: "📝", href: "/backlog" },
+      { id: "ingest", label: "Ingest", icon: "⬆️", href: "/ingest" },
+    ],
+  },
+  {
+    label: "Settings",
+    items: [
+      { id: "settings", label: "Settings", icon: "⚙️", href: "/settings" },
+      { id: "help", label: "Help", icon: "❔", href: "/help" },
+    ],
+  },
+];
+
+export interface FmAppShellProps {
+  activeNavId: string;
+  crumbs?: FmBreadcrumb[];
+  /** Right-aligned slot in the topbar (next to the search button). */
+  topbarRightSlot?: React.ReactNode;
+  children: React.ReactNode;
+}
+
+export function FmAppShell({
+  activeNavId,
+  crumbs,
+  topbarRightSlot,
+  children,
+}: FmAppShellProps) {
+  const router = useRouter();
+  const [, setKbarOpen] = useState(false);
+
+  // ⌘K → existing /search route (Phase 5 replaces this with an inline palette
+  // overlay; for now we just route there because /search already does the
+  // full-text catalogue + client search).
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      const k = e.key.toLowerCase();
+      if ((e.metaKey || e.ctrlKey) && k === "k") {
+        e.preventDefault();
+        setKbarOpen(true);
+        router.push("/search");
+      }
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [router]);
+
+  return (
+    <div
+      className="fm-v2"
+      style={{
+        position: "fixed",
+        inset: 0,
+        overflow: "hidden",
+        zIndex: 100,
+        display: "flex",
+      }}
+    >
+      <FmSidebarNav
+        sections={NAV}
+        activeId={activeNavId}
+        brand={{
+          name: "shivani hari",
+          eyebrow: "functional medicine",
+          href: "/dashboard-v2",
+        }}
+        footer={
+          <>
+            <Link
+              href="/"
+              style={{ color: "rgba(255,255,255,0.7)", textDecoration: "underline" }}
+            >
+              ← Legacy UI
+            </Link>
+            <div style={{ marginTop: 6, fontSize: 10.5 }}>v2 preview · phase 1</div>
+          </>
+        }
+      />
+      <div
+        style={{
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          minWidth: 0,
+          overflow: "hidden",
+        }}
+      >
+        <FmTopBar
+          crumbs={crumbs}
+          rightSlot={topbarRightSlot}
+          onSearchClick={() => router.push("/search")}
+          user={{ initials: "SH", name: "Shivani Hari" }}
+        />
+        <main
+          style={{
+            flex: 1,
+            padding: "var(--fm-page-pad)",
+            overflowY: "auto",
+            overflowX: "hidden",
+          }}
+        >
+          <div
+            style={{
+              maxWidth: 1400,
+              margin: "0 auto",
+              width: "100%",
+            }}
+          >
+            {children}
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+}
