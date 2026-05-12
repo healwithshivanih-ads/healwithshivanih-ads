@@ -24,3 +24,6 @@ export type { FmStatTileProps } from "./FmStatTile";
 
 export { FmChip, FmStatusPill } from "./FmChip";
 export type { FmChipProps, FmStatusPillKind } from "./FmChip";
+
+export { FmAppShell } from "./FmAppShell";
+export type { FmAppShellProps } from "./FmAppShell";
