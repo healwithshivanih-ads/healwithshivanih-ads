@@ -43,7 +43,8 @@ import {
 } from "@/components/fm";
 import type { FmWorkflowStage } from "@/components/fm";
 import { PlanPageShell } from "./plan-page-shell";
-import { PlanSendPanel } from "./plan-send-panel";
+// Letters live on Communicate now — single source of truth.
+import { PlanChatAndPreview } from "./plan-chat-and-preview";
 
 export const dynamic = "force-dynamic";
 
@@ -531,6 +532,19 @@ export default async function PlanTabPage({
         >
           {/* LEFT — active plan details */}
           <div style={{ minWidth: 0, display: "grid", gap: 16 }}>
+            {/* AI assistant + client-letter preview (both collapsible).
+                Coach asked for an in-tab chat + plan preview; both pull
+                from the same legacy plumbing (PlanChatPanel, renderPlan)
+                so behaviour matches the classic editor exactly. */}
+            <PlanChatAndPreview
+              clientId={id}
+              planSlug={activePlan.slug}
+              isLocked={
+                status === "superseded" ||
+                status === "revoked"
+              }
+            />
+
             {/* Plan header card */}
             <FmPanel
               title={
@@ -779,46 +793,23 @@ export default async function PlanTabPage({
               gap: 14,
             }}
           >
-            {/* Send letters */}
+            {/* Quick actions — primary navigation hub. Letters live on
+                Communicate (one source of truth); past sessions / plans
+                are surfaced via deep-links. */}
             <FmPanel
-              title="📤 Client letters"
-              subtitle={
-                isPublished
-                  ? "Generate + send. Each letter renders with the brand template."
-                  : "Letters unlock once the plan is published. Activate first to lock the version + catalogue snapshot."
-              }
+              title="⚙ Actions"
+              subtitle="Edit, preview and ship. Letter sending lives on Communicate."
             >
-              {isPublished ? (
-                <PlanSendPanel
-                  planSlug={activePlan.slug}
-                  clientId={id}
-                  clientEmail={(client as { email?: string }).email}
-                  clientName={
-                    (client.display_name as string | undefined) ??
-                    client.client_id
+              <div style={{ display: "grid", gap: 6 }}>
+                <ActionLink
+                  href={`/clients-v2/${id}/communicate`}
+                  icon="📤"
+                  label={
+                    isPublished
+                      ? "Send client letters →"
+                      : "Communicate (locks at publish)"
                   }
                 />
-              ) : (
-                <div
-                  style={{
-                    fontSize: 12,
-                    color: "var(--fm-text-tertiary)",
-                    padding: "10px 12px",
-                    background: "var(--fm-bg-warm)",
-                    border: "1px dashed rgba(255, 107, 53, 0.4)",
-                    borderRadius: "var(--fm-radius-sm)",
-                  }}
-                >
-                  Plan is <strong>{status?.replace(/_/g, " ")}</strong>. Open
-                  in classic editor to submit + publish, then letters will
-                  generate here.
-                </div>
-              )}
-            </FmPanel>
-
-            {/* Quick actions */}
-            <FmPanel title="⚙ Actions" subtitle="The editor still lives in classic for now.">
-              <div style={{ display: "grid", gap: 6 }}>
                 <ActionLink
                   href={`/plans/${activePlan.slug}`}
                   icon="✏️"
@@ -828,6 +819,11 @@ export default async function PlanTabPage({
                   href={`/plans/${activePlan.slug}?tab=lifecycle`}
                   icon="🚀"
                   label="Lifecycle (submit / publish)"
+                />
+                <ActionLink
+                  href={`/clients-v2/${id}/analyse`}
+                  icon="🗓"
+                  label="Past sessions + analyses"
                 />
                 <ActionLink
                   href={`/clients-v2/${id}/analyse/full`}
