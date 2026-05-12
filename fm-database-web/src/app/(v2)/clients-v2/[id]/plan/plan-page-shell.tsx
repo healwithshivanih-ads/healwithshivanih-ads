@@ -8,6 +8,7 @@ import { loadClientById } from "@/lib/fmdb/loader-extras";
 import { FmAppShell } from "@/components/fm";
 import { HeaderAvatar } from "../analyse/header-avatar";
 import { clientQuickActions } from "../client-quick-actions";
+import { clientSubnavTabs } from "../client-subnav";
 
 export interface PlanPageShellProps {
   clientId: string;
@@ -22,17 +23,7 @@ export async function PlanPageShell({
   if (!client) notFound();
   const displayName = client.display_name ?? client.client_id;
 
-  const tabs = [
-    { id: "overview", label: "Overview", href: `/clients-v2/${clientId}` },
-    { id: "analyse", label: "Analyse", href: `/clients-v2/${clientId}/analyse` },
-    { id: "plan", label: "Plan", href: `/clients-v2/${clientId}/plan` },
-    {
-      id: "communicate",
-      label: "Communicate",
-      href: `/clients-v2/${clientId}/communicate`,
-    },
-    { id: "catalogue", label: "Catalogue", href: "/catalogue" },
-  ];
+  const tabs = clientSubnavTabs(clientId);
 
   return (
     <FmAppShell

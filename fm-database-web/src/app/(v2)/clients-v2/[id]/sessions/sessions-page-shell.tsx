@@ -1,5 +1,5 @@
 /**
- * Communicate-tab shell — identity strip + 5-tab subnav (Communicate active).
+ * Sessions-tab shell — identity strip + 6-tab subnav (Sessions active).
  */
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -9,19 +9,18 @@ import { HeaderAvatar } from "../analyse/header-avatar";
 import { clientQuickActions } from "../client-quick-actions";
 import { clientSubnavTabs } from "../client-subnav";
 
-export interface CommunicatePageShellProps {
+export interface SessionsPageShellProps {
   clientId: string;
   children: React.ReactNode;
 }
 
-export async function CommunicatePageShell({
+export async function SessionsPageShell({
   clientId,
   children,
-}: CommunicatePageShellProps) {
+}: SessionsPageShellProps) {
   const client = await loadClientById(clientId);
   if (!client) notFound();
   const displayName = client.display_name ?? client.client_id;
-
   const tabs = clientSubnavTabs(clientId);
 
   return (
@@ -29,12 +28,11 @@ export async function CommunicatePageShell({
       activeNavId="clients"
       quickActions={clientQuickActions(clientId)}
       crumbs={[
-        { label: "Clients", href: "/clients" },
+        { label: "Clients", href: "/clients-v2" },
         { label: displayName, href: `/clients-v2/${clientId}` },
-        { label: "Communicate" },
+        { label: "Sessions" },
       ]}
     >
-      {/* Compact client identity strip */}
       <div
         style={{
           display: "flex",
@@ -79,13 +77,13 @@ export async function CommunicatePageShell({
         </Link>
       </div>
 
-      {/* 5-tab subnav — Communicate active */}
       <div
         style={{
           display: "flex",
           gap: 4,
           marginBottom: 20,
           borderBottom: "1px solid var(--fm-border)",
+          flexWrap: "wrap",
         }}
       >
         {tabs.map((t) => (
@@ -95,12 +93,12 @@ export async function CommunicatePageShell({
             style={{
               padding: "9px 16px",
               fontSize: 13,
-              fontWeight: t.id === "communicate" ? 700 : 500,
+              fontWeight: t.id === "sessions" ? 700 : 500,
               color:
-                t.id === "communicate"
+                t.id === "sessions"
                   ? "var(--fm-text-primary)"
                   : "var(--fm-text-tertiary)",
-              borderBottom: `2px solid ${t.id === "communicate" ? "var(--fm-primary)" : "transparent"}`,
+              borderBottom: `2px solid ${t.id === "sessions" ? "var(--fm-primary)" : "transparent"}`,
               textDecoration: "none",
               marginBottom: -1,
             }}
