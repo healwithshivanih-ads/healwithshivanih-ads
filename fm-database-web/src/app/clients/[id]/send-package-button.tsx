@@ -589,6 +589,21 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
                               {isPreviewOpen ? "✕ Close preview" : "👁 Preview"}
                             </button>
                           )}
+                          {/* v2 dual-palette letter editor — opens the full-page
+                              editor with section nav, validation rewrites and
+                              the Deep Mind canvas. Single source of truth on
+                              disk so anything saved here re-loads correctly. */}
+                          {state.mdBlob && (
+                            <a
+                              href={`/clients-v2/${clientId}/letter-editor?plan=${encodeURIComponent(
+                                planSlug,
+                              )}&type=${pkg.type}`}
+                              className="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-1 rounded-md border border-indigo-300 text-indigo-800 bg-indigo-50 hover:bg-indigo-100 transition-colors"
+                              title="Open the v2 letter editor — section nav + AI rewrites + Deep Mind canvas"
+                            >
+                              ✏️ Open editor →
+                            </a>
+                          )}
                           {/* ✏️ Edit letter */}
                           {state.mdBlob && (
                             <button

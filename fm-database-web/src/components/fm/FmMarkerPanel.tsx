@@ -13,7 +13,7 @@
  *
  * Per confirmation A, "any not-OK forces the group open" — watch counts too.
  */
-import { useState, useMemo } from "react";
+import { useState, useMemo, useTransition } from "react";
 import { FmPanel } from "./FmPanel";
 import { FmChip } from "./FmChip";
 
@@ -42,6 +42,17 @@ export interface FmMarkerPanelProps {
   groups: FmMarkerGroup[];
   /** Optional subtitle, e.g. "Lab values from May 9, 2026". */
   subtitle?: React.ReactNode;
+  /**
+   * When provided, renders a "🔄 Re-run markers" button next to the
+   * segmented toggle. Use it to force a recompute over the client's
+   * snapshot lab_values when extraction drift / stale entries are
+   * suspected. Returns { ok, markersCount } so the panel can toast.
+   */
+  onRecompute?: () => Promise<{
+    ok: boolean;
+    markersCount?: number;
+    error?: string;
+  }>;
 }
 
 function groupHasNotOk(g: FmMarkerGroup): boolean {
@@ -65,7 +76,29 @@ const FLAG_COLOR: Record<MarkerFlag, string> = {
   high: "var(--fm-danger)",
 };
 
-export function FmMarkerPanel({ groups, subtitle }: FmMarkerPanelProps) {
+export function FmMarkerPanel({ groups, subtitle, onRecompute }: FmMarkerPanelProps) {
+  const [recomputeMsg, setRecomputeMsg] = useState<string | null>(null);
+  const [recomputing, startRecompute] = useTransition();
+  const handleRecompute = () => {
+    if (!onRecompute) return;
+    setRecomputeMsg(null);
+    startRecompute(async () => {
+      try {
+        const r = await onRecompute();
+        if (r.ok) {
+          setRecomputeMsg(
+            r.markersCount != null
+              ? `✓ ${r.markersCount} markers refreshed from snapshots`
+              : "✓ Refreshed",
+          );
+        } else {
+          setRecomputeMsg(`× ${r.error ?? "Recompute failed"}`);
+        }
+      } catch (e) {
+        setRecomputeMsg(`× ${(e as Error).message.slice(0, 80)}`);
+      }
+    });
+  };
   const [mode, setMode] = useState<"by-group" | "flagged">("by-group");
   const [q, setQ] = useState("");
 
@@ -115,15 +148,52 @@ export function FmMarkerPanel({ groups, subtitle }: FmMarkerPanelProps) {
         )
       }
       rightSlot={
-        <div
-          style={{
-            display: "inline-flex",
-            border: "1px solid var(--fm-border)",
-            borderRadius: "var(--fm-radius-pill)",
-            padding: 2,
-            background: "var(--fm-surface)",
-          }}
-        >
+        <div style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+          {onRecompute && (
+            <button
+              type="button"
+              onClick={handleRecompute}
+              disabled={recomputing}
+              title="Walk all snapshots and recompute FM markers"
+              style={{
+                padding: "4px 10px",
+                fontSize: 10.5,
+                fontWeight: 700,
+                border: "1px solid var(--fm-border)",
+                borderRadius: "var(--fm-radius-pill)",
+                background: "var(--fm-surface)",
+                color: "var(--fm-text-secondary)",
+                cursor: recomputing ? "wait" : "pointer",
+                fontFamily: "inherit",
+                opacity: recomputing ? 0.6 : 1,
+                whiteSpace: "nowrap",
+              }}
+            >
+              {recomputing ? "Recomputing…" : "🔄 Re-run markers"}
+            </button>
+          )}
+          {recomputeMsg && (
+            <span
+              style={{
+                fontSize: 10.5,
+                color: recomputeMsg.startsWith("✓")
+                  ? "#1e8449"
+                  : "var(--fm-danger)",
+                fontWeight: 600,
+              }}
+            >
+              {recomputeMsg}
+            </span>
+          )}
+          <div
+            style={{
+              display: "inline-flex",
+              border: "1px solid var(--fm-border)",
+              borderRadius: "var(--fm-radius-pill)",
+              padding: 2,
+              background: "var(--fm-surface)",
+            }}
+          >
           {[
             { id: "by-group", l: `By group · ${totalMarkers}` },
             { id: "flagged", l: `Flagged only · ${flagged.length}` },
@@ -148,6 +218,7 @@ export function FmMarkerPanel({ groups, subtitle }: FmMarkerPanelProps) {
               {o.l}
             </button>
           ))}
+          </div>
         </div>
       }
     >
