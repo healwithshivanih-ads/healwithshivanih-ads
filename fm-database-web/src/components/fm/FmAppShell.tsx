@@ -53,7 +53,7 @@ const NAV: FmNavSection[] = [
     label: "Workspace",
     items: [
       { id: "dashboard", label: "Dashboard", icon: "📊", href: "/dashboard-v2" },
-      { id: "clients", label: "All clients", icon: "👥", href: "/clients" },
+      { id: "clients", label: "All clients", icon: "👥", href: "/clients-v2" },
       { id: "calendar", label: "Calendar", icon: "🗓️", href: "/calendar" },
     ],
   },
