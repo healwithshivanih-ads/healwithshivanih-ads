@@ -34,7 +34,7 @@ function asPlanStatus(s: string | undefined): PlanStatus | undefined {
   return s && PLAN_STATUSES.has(s as PlanStatus) ? (s as PlanStatus) : undefined;
 }
 import { PlanStatusBadge } from "@/components/plan-status-badge";
-import { FmPanel, FmWorkflowBanner } from "@/components/fm";
+import { FmPanel, FmWorkflowBanner, FmCoachNotes } from "@/components/fm";
 import type { FmWorkflowStage } from "@/components/fm";
 import { PlanPageShell } from "./plan-page-shell";
 import { PlanSendPanel } from "./plan-send-panel";
@@ -596,21 +596,19 @@ export default async function PlanTabPage({
               </FmPanel>
             )}
 
-            {/* Notes for coach */}
+            {/* Notes for coach — auto-sectioned + hazard pull-quotes +
+                catalogue chips + show-less/more collapse + print-friendly.
+                Replaces the inline <div whiteSpace: pre-wrap> wall of
+                text — see Group E1 in the FM Backlog Explorations design. */}
             {notesForCoach.trim() && (
               <FmPanel
                 title="📝 Notes for coach"
                 subtitle="Private — never appears on client letters."
               >
-                <div
-                  style={{
-                    fontSize: 12.5,
-                    lineHeight: 1.55,
-                    whiteSpace: "pre-wrap",
-                  }}
-                >
-                  {notesForCoach}
-                </div>
+                <FmCoachNotes
+                  text={notesForCoach}
+                  planSlug={activePlan.slug}
+                />
               </FmPanel>
             )}
           </div>

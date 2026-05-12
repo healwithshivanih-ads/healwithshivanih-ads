@@ -94,3 +94,6 @@ export type {
   FmFloatingActionsProps,
   FmFloatingActionItem,
 } from "./FmFloatingActions";
+
+export { FmCoachNotes } from "./FmCoachNotes";
+export type { FmCoachNotesProps, CatalogueChip } from "./FmCoachNotes";
