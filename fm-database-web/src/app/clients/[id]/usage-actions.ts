@@ -4,6 +4,98 @@ import path from "node:path";
 import fs from "node:fs/promises";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 
+export interface ApiUsageMtdRollup {
+  ok: boolean;
+  this_month_cost_inr: number;
+  this_month_cost_usd: number;
+  this_month_calls: number;
+  /** Per-client MTD breakdown — sorted by cost desc. */
+  by_client: { client_id: string; cost_inr: number; calls: number }[];
+  error?: string;
+}
+
+/** Aggregate MTD API spend across every client. Cheap — scans the
+ *  per-client jsonl files only. Returns zeros when no clients have logged
+ *  any calls this month yet. */
+export async function loadApiUsageMtdAllClients(): Promise<ApiUsageMtdRollup> {
+  const root = getPlansRoot();
+  const clientsDir = path.join(root, "clients");
+  let entries: string[] = [];
+  try {
+    entries = await fs.readdir(clientsDir);
+  } catch {
+    return {
+      ok: true,
+      this_month_cost_inr: 0,
+      this_month_cost_usd: 0,
+      this_month_calls: 0,
+      by_client: [],
+    };
+  }
+
+  const monthStart = new Date();
+  monthStart.setDate(1);
+  monthStart.setHours(0, 0, 0, 0);
+  const monthStartIso = monthStart.toISOString();
+
+  let totalInr = 0;
+  let totalUsd = 0;
+  let totalCalls = 0;
+  const byClient: ApiUsageMtdRollup["by_client"] = [];
+
+  await Promise.all(
+    entries.map(async (clientId) => {
+      const filePath = path.join(clientsDir, clientId, "_api_usage.jsonl");
+      let raw: string;
+      try {
+        raw = await fs.readFile(filePath, "utf-8");
+      } catch {
+        return;
+      }
+      let clientInr = 0;
+      let clientCalls = 0;
+      for (const line of raw.split("\n")) {
+        const trimmed = line.trim();
+        if (!trimmed) continue;
+        try {
+          const e = JSON.parse(trimmed) as {
+            ts?: string;
+            cost_inr?: number;
+            cost_usd?: number;
+          };
+          if (!e.ts || e.ts < monthStartIso) continue;
+          const inr = Number(e.cost_inr ?? 0);
+          const usd = Number(e.cost_usd ?? 0);
+          totalInr += inr;
+          totalUsd += usd;
+          totalCalls += 1;
+          clientInr += inr;
+          clientCalls += 1;
+        } catch {
+          // skip
+        }
+      }
+      if (clientCalls > 0) {
+        byClient.push({
+          client_id: clientId,
+          cost_inr: Math.round(clientInr * 100) / 100,
+          calls: clientCalls,
+        });
+      }
+    }),
+  );
+
+  byClient.sort((a, b) => b.cost_inr - a.cost_inr);
+
+  return {
+    ok: true,
+    this_month_cost_inr: Math.round(totalInr * 100) / 100,
+    this_month_cost_usd: Math.round(totalUsd * 10000) / 10000,
+    this_month_calls: totalCalls,
+    by_client: byClient,
+  };
+}
+
 export interface ApiUsageEntry {
   ts: string;
   script: string;
