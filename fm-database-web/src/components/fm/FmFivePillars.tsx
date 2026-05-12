@@ -128,16 +128,78 @@ export function FmFivePillars({
       {isEmpty && (
         <div
           style={{
-            padding: "10px 12px",
-            background: "var(--fm-bg-cool)",
-            border: "1px dashed var(--fm-border)",
+            padding: "12px 14px",
+            background: "var(--fm-bg-warm)",
+            border: "1.5px dashed var(--fm-primary)",
             borderRadius: "var(--fm-radius-sm)",
-            fontSize: 11.5,
+            fontSize: 12,
             color: "var(--fm-text-secondary)",
             marginBottom: 12,
           }}
         >
-          No five-pillars data captured yet. First check-in will populate this panel.
+          <div style={{ fontSize: 22, marginBottom: 4 }}>🌿</div>
+          <div
+            style={{
+              fontSize: 13,
+              fontWeight: 700,
+              color: "var(--fm-text-primary)",
+              marginBottom: 4,
+            }}
+          >
+            No check-in yet
+          </div>
+          <p
+            style={{
+              margin: "0 0 10px",
+              lineHeight: 1.55,
+            }}
+          >
+            Capture sleep, stress, movement, nutrition + connection in your next check-in
+            session, or ask the client to fill them in via WhatsApp.
+          </p>
+          <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+            {onSendCheckIn && (
+              <button
+                type="button"
+                onClick={onSendCheckIn}
+                title="Opens templates panel pre-filtered to check-in templates"
+                style={{
+                  background: "var(--fm-surface)",
+                  border: "1px solid var(--fm-border)",
+                  color: "var(--fm-text-primary)",
+                  padding: "5px 11px",
+                  fontSize: 11.5,
+                  fontWeight: 600,
+                  borderRadius: "var(--fm-radius-sm)",
+                  cursor: "pointer",
+                  fontFamily: "inherit",
+                }}
+              >
+                💬 Ask client via WhatsApp
+              </button>
+            )}
+            <a
+              href={onSendCheckIn ? "#capture-checkin" : "#"}
+              onClick={(e) => {
+                // Routes to the existing Analyse / Check-in form. Bridge
+                // component (in pages that use this primitive) can override
+                // by passing onSendCheckIn that does the routing instead.
+                e.preventDefault();
+                onSendCheckIn?.();
+              }}
+              style={{
+                background: "var(--fm-primary)",
+                color: "#fff",
+                padding: "5px 11px",
+                fontSize: 11.5,
+                fontWeight: 700,
+                borderRadius: "var(--fm-radius-sm)",
+                textDecoration: "none",
+              }}
+            >
+              📝 Capture from check-in
+            </a>
+          </div>
         </div>
       )}
 
