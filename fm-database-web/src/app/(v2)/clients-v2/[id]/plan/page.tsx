@@ -615,11 +615,18 @@ export default async function PlanTabPage({
             )}
           </div>
 
-          {/* RIGHT — send + meta */}
+          {/* RIGHT — send + meta. Sticky AND scrollable: if the rail
+              content is taller than the viewport, the rail itself scrolls
+              internally. Without max-height + overflow, sticky just clips
+              the bottom of the rail (status history + other plans got cut
+              off on tall plans). */}
           <div
             style={{
               position: "sticky",
               top: 24,
+              maxHeight: "calc(100vh - 48px)",
+              overflowY: "auto",
+              paddingRight: 4,
               display: "grid",
               gap: 14,
             }}
