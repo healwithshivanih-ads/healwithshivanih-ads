@@ -1,6 +1,5 @@
 /**
- * Plan-tab shell — identity strip + 5-tab subnav (Plan active).
- * Matches the analyse-page-shell pattern so the v2 chrome stays consistent.
+ * Communicate-tab shell — identity strip + 5-tab subnav (Communicate active).
  */
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -8,15 +7,15 @@ import { loadClientById } from "@/lib/fmdb/loader-extras";
 import { FmAppShell } from "@/components/fm";
 import { HeaderAvatar } from "../analyse/header-avatar";
 
-export interface PlanPageShellProps {
+export interface CommunicatePageShellProps {
   clientId: string;
   children: React.ReactNode;
 }
 
-export async function PlanPageShell({
+export async function CommunicatePageShell({
   clientId,
   children,
-}: PlanPageShellProps) {
+}: CommunicatePageShellProps) {
   const client = await loadClientById(clientId);
   if (!client) notFound();
   const displayName = client.display_name ?? client.client_id;
@@ -39,7 +38,7 @@ export async function PlanPageShell({
       crumbs={[
         { label: "Clients", href: "/clients" },
         { label: displayName, href: `/clients-v2/${clientId}` },
-        { label: "Plan" },
+        { label: "Communicate" },
       ]}
     >
       {/* Compact client identity strip */}
@@ -87,7 +86,7 @@ export async function PlanPageShell({
         </Link>
       </div>
 
-      {/* 5-tab subnav — Plan active */}
+      {/* 5-tab subnav — Communicate active */}
       <div
         style={{
           display: "flex",
@@ -103,12 +102,12 @@ export async function PlanPageShell({
             style={{
               padding: "9px 16px",
               fontSize: 13,
-              fontWeight: t.id === "plan" ? 700 : 500,
+              fontWeight: t.id === "communicate" ? 700 : 500,
               color:
-                t.id === "plan"
+                t.id === "communicate"
                   ? "var(--fm-text-primary)"
                   : "var(--fm-text-tertiary)",
-              borderBottom: `2px solid ${t.id === "plan" ? "var(--fm-primary)" : "transparent"}`,
+              borderBottom: `2px solid ${t.id === "communicate" ? "var(--fm-primary)" : "transparent"}`,
               textDecoration: "none",
               marginBottom: -1,
             }}
