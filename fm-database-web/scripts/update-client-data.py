@@ -181,6 +181,49 @@ def main() -> int:
     existing_snaps.append(snap)
     data["health_snapshots"] = existing_snaps
 
+    # ── Compute FM-interpreted lab_markers from the merged-lab history ────────
+    # Previously only the Full Assessment AI pass wrote client.lab_markers,
+    # so the Overview FM markers panel only updated after an expensive
+    # synthesis run. Now any lab-bearing snapshot rebuilds the markers from
+    # the union of all snapshot lab_values so the panel reflects fresh data
+    # immediately. Saves ~$0.20 + ~3 min per upload.
+    if snap_labs or any((s.get("lab_values") or []) for s in existing_snaps):
+        try:
+            from fmdb.assess.lab_ratios import compute_ratios  # type: ignore
+
+            # Walk all snapshots, flatten their lab_values. compute_ratios's
+            # _find() uses date_drawn to pick the most-recent value per
+            # marker, so older snapshots are naturally superseded by newer
+            # entries with the same test_name.
+            all_labs: list = []
+            for s in existing_snaps:
+                for lv in (s.get("lab_values") or []):
+                    if not isinstance(lv, dict):
+                        continue
+                    # date_drawn falls back to the snapshot's date if the
+                    # extracted lab didn't carry one.
+                    if not lv.get("date_drawn") and s.get("date"):
+                        lv = dict(lv)
+                        lv["date_drawn"] = s["date"]
+                    all_labs.append(lv)
+            if all_labs:
+                markers = compute_ratios(all_labs)
+                if markers:
+                    data["lab_markers"] = markers
+                    # Pick the newest date across all labs as the marker date
+                    all_dates = sorted(
+                        [lv.get("date_drawn") or "" for lv in all_labs],
+                        reverse=True,
+                    )
+                    if all_dates and all_dates[0]:
+                        data["lab_markers_date"] = all_dates[0]
+                    if "lab_markers" not in updated_fields:
+                        updated_fields.append("lab_markers")
+        except Exception as e:
+            # Don't fail the whole save if marker compute breaks — surface
+            # in the response so the UI can warn.
+            updated_fields.append(f"lab_markers_compute_skipped: {e}")
+
     # Bump version
     data["version"] = (data.get("version") or 1) + 1
 
