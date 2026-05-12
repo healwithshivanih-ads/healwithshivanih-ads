@@ -434,10 +434,20 @@ class LabOrderItem(BaseModel):
     """A lab test the coach is asking the client to obtain through their clinician.
 
     `test` is freeform for v1 — will become a slug when the LabTest entity
-    type is built (per CLAUDE.md roadmap)."""
+    type is built (per CLAUDE.md roadmap).
+
+    `kind` distinguishes:
+      - "new"    — coach hasn't seen this on a prior report; order it fresh.
+      - "repeat" — already on file; this is a follow-up re-check at
+                   `due_in_weeks` weeks from the session date.
+    The AI synthesis surfaces this distinction so the Plan tab doesn't
+    show 15 "new orders" that are really 3 new + 12 re-checks of existing
+    labs."""
     model_config = ConfigDict(extra="forbid")
     test: str
     reason: str = ""
+    kind: Optional[str] = None  # "new" | "repeat"
+    due_in_weeks: Optional[int] = None
 
 
 class ReferralItem(BaseModel):

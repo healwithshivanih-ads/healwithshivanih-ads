@@ -207,9 +207,13 @@ def main() -> int:
 
     for i, lf in enumerate(suggestions.get("lab_followups", []) or []):
         if picks.get(f"lab_{i}_{lf.get('test', '')}", True):
+            kind = lf.get("kind") or None
+            due = lf.get("due_in_weeks")
             plan.lab_orders.append(LabOrderItem(
                 test=lf.get("test", ""),
                 reason=lf.get("reason", ""),
+                kind=kind if kind in ("new", "repeat") else None,
+                due_in_weeks=int(due) if isinstance(due, (int, float)) and due else None,
             ))
 
     for i, r in enumerate(suggestions.get("referral_triggers", []) or []):
