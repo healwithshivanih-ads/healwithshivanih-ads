@@ -1,0 +1,1005 @@
+"use client";
+
+/**
+ * Full Assessment v2 — delta-from-intake form.
+ *
+ * Design principle: intake is where heavy data capture happens. Full
+ * Assessment is the synthesis pass — it should READ what's already on
+ * the client (intake fields, body comp, FM body-systems review, food
+ * prefs, FM timeline, prior labs / reports / messages) and only ask the
+ * coach for the delta.
+ *
+ * Sections:
+ *   1. Intake recap (read-only, with "Edit on intake" link)
+ *   2. Symptoms + conditions to focus on — pre-loaded from latest intake
+ *      session's selections (coach can prune / add)
+ *   3. What's new since intake (textarea + new-report upload)
+ *   4. Prior protocol review (only if a prior plan / assessment exists)
+ *   5. Analyze button → AI synthesis
+ *   6. After analyze: SuggestionsView + Chat + PlanBriefCard + Generate
+ *      draft (all imported from legacy assess-client)
+ */
+import { useEffect, useMemo, useState, useTransition } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import {
+  runAssessAction,
+  generateDraftAction,
+  uploadFileAction,
+  type SessionSummary,
+} from "@/app/assess/actions";
+import type { AssessResult, PlanBrief } from "@/lib/fmdb/anthropic-types";
+import {
+  SuggestionsView,
+  ChatPanel,
+  ComputedRatiosCard,
+  PlanBriefCard,
+} from "@/app/assess/assess-client";
+import { FmPanel } from "@/components/fm";
+
+interface IntakeSnapshot {
+  chief_complaint?: string;
+  conditions: string[];
+  medications: string[];
+  allergies: string[];
+  goals: string[];
+  medical_history: string[];
+  body_comp: {
+    height_cm?: number;
+    weight_kg?: number;
+    bmi?: number;
+    bp_systolic?: number;
+    bp_diastolic?: number;
+    hr_bpm?: number;
+    waist_cm?: number;
+    hip_cm?: number;
+  };
+  fm_body_systems: {
+    digestion_notes?: string;
+    sleep_notes?: string;
+    energy_pattern?: string;
+    stress_response?: string;
+    menstrual_notes?: string;
+    childhood_history?: string;
+    toxic_exposures?: string;
+  };
+  food_prefs: {
+    dietary_preference?: string;
+    foods_to_avoid?: string;
+    non_negotiables?: string;
+    reported_triggers?: string;
+  };
+  family_history?: string;
+  timeline_count: number;
+  /** Most recent intake session id + date (for the "Edit on intake" link). */
+  intake_session_id?: string;
+  intake_date?: string;
+}
+
+interface CatalogueOption {
+  slug: string;
+  label: string;
+}
+
+export interface FullAssessmentFormProps {
+  clientId: string;
+  displayName: string;
+  intake: IntakeSnapshot;
+  /** Slugs pre-selected from most recent intake's symptoms / topics. */
+  prefilledSymptoms: string[];
+  prefilledTopics: string[];
+  /** Full catalogue for adding more. */
+  symptomCatalogue: CatalogueOption[];
+  topicCatalogue: CatalogueOption[];
+  /** Prior full assessments (for repeat-assessment outcomes capture). */
+  priorAssessments: Array<{ session_id: string; date: string }>;
+  /** Active plan slug + status, if any. */
+  activePlan: { slug: string; status: string } | null;
+  /** Recent prior sessions — informs the "since intake" framing. */
+  recentSessions: SessionSummary[];
+}
+
+function Chip({ children, color = "var(--fm-text-secondary)" }: { children: React.ReactNode; color?: string }) {
+  return (
+    <span
+      style={{
+        display: "inline-block",
+        padding: "3px 9px",
+        background: "var(--fm-bg-cool)",
+        color,
+        border: "1px solid var(--fm-border-light)",
+        borderRadius: "var(--fm-radius-pill)",
+        fontSize: 11,
+        fontWeight: 600,
+        marginRight: 5,
+        marginBottom: 5,
+      }}
+    >
+      {children}
+    </span>
+  );
+}
+
+function ChipList({ items, color }: { items: string[]; color?: string }) {
+  if (items.length === 0) {
+    return (
+      <span style={{ fontSize: 12, color: "var(--fm-text-tertiary)" }}>—</span>
+    );
+  }
+  return (
+    <div style={{ display: "flex", flexWrap: "wrap", marginTop: 4 }}>
+      {items.map((s, i) => (
+        <Chip key={`${s}-${i}`} color={color}>
+          {s}
+        </Chip>
+      ))}
+    </div>
+  );
+}
+
+function MiniLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <div
+      style={{
+        fontSize: 10,
+        textTransform: "uppercase",
+        letterSpacing: 0.6,
+        fontWeight: 700,
+        color: "var(--fm-text-tertiary)",
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+function MetricChip({ label, value, unit }: { label: string; value?: number; unit?: string }) {
+  return (
+    <div
+      style={{
+        padding: "8px 10px",
+        background: "var(--fm-bg-cool)",
+        borderRadius: "var(--fm-radius-sm)",
+        minWidth: 80,
+      }}
+    >
+      <div
+        style={{
+          fontSize: 9.5,
+          textTransform: "uppercase",
+          letterSpacing: 0.6,
+          fontWeight: 700,
+          color: "var(--fm-text-tertiary)",
+        }}
+      >
+        {label}
+      </div>
+      <div style={{ fontSize: 15, fontWeight: 700, marginTop: 2 }}>
+        {value != null ? (
+          <>
+            {value % 1 === 0 ? value : value.toFixed(1)}
+            {unit && (
+              <span style={{ fontSize: 10, fontWeight: 500, marginLeft: 3 }}>
+                {unit}
+              </span>
+            )}
+          </>
+        ) : (
+          <span style={{ fontSize: 13, color: "var(--fm-text-tertiary)" }}>—</span>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function SlugMultiPicker({
+  label,
+  selected,
+  setSelected,
+  options,
+  placeholder,
+}: {
+  label: string;
+  selected: string[];
+  setSelected: (next: string[]) => void;
+  options: CatalogueOption[];
+  placeholder: string;
+}) {
+  const [q, setQ] = useState("");
+  const selectedSet = new Set(selected);
+  const filtered = useMemo(() => {
+    const needle = q.trim().toLowerCase();
+    if (!needle) return [];
+    return options
+      .filter(
+        (o) =>
+          !selectedSet.has(o.slug) &&
+          (o.slug.toLowerCase().includes(needle) ||
+            o.label.toLowerCase().includes(needle)),
+      )
+      .slice(0, 8);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [q, options, selected]);
+
+  const labelFor = (slug: string) =>
+    options.find((o) => o.slug === slug)?.label ?? slug;
+
+  return (
+    <div>
+      <MiniLabel>{label}</MiniLabel>
+      <div style={{ display: "flex", flexWrap: "wrap", marginTop: 6, gap: 4 }}>
+        {selected.length === 0 && (
+          <span style={{ fontSize: 11, color: "var(--fm-text-tertiary)" }}>
+            (none selected)
+          </span>
+        )}
+        {selected.map((s) => (
+          <span
+            key={s}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 5,
+              padding: "3px 9px",
+              background: "rgba(255, 107, 53, 0.10)",
+              color: "var(--fm-primary)",
+              borderRadius: "var(--fm-radius-pill)",
+              fontSize: 11,
+              fontWeight: 600,
+            }}
+          >
+            {labelFor(s)}
+            <button
+              type="button"
+              onClick={() => setSelected(selected.filter((x) => x !== s))}
+              style={{
+                background: "transparent",
+                border: 0,
+                color: "inherit",
+                cursor: "pointer",
+                fontSize: 11,
+                padding: 0,
+              }}
+              aria-label={`Remove ${labelFor(s)}`}
+            >
+              ×
+            </button>
+          </span>
+        ))}
+      </div>
+      <div style={{ position: "relative", marginTop: 6 }}>
+        <input
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+          placeholder={placeholder}
+          style={{
+            width: "100%",
+            padding: "6px 10px",
+            border: "1px solid var(--fm-border)",
+            borderRadius: "var(--fm-radius-sm)",
+            fontSize: 12,
+            fontFamily: "inherit",
+            background: "var(--fm-surface)",
+          }}
+        />
+        {filtered.length > 0 && (
+          <div
+            style={{
+              position: "absolute",
+              top: "calc(100% + 2px)",
+              left: 0,
+              right: 0,
+              background: "var(--fm-surface)",
+              border: "1px solid var(--fm-border)",
+              borderRadius: "var(--fm-radius-sm)",
+              boxShadow: "0 4px 18px rgba(0,0,0,0.08)",
+              zIndex: 10,
+            }}
+          >
+            {filtered.map((o) => (
+              <button
+                key={o.slug}
+                type="button"
+                onMouseDown={(e) => {
+                  e.preventDefault();
+                  setSelected([...selected, o.slug]);
+                  setQ("");
+                }}
+                style={{
+                  display: "block",
+                  width: "100%",
+                  padding: "5px 10px",
+                  background: "transparent",
+                  border: 0,
+                  borderBottom: "1px solid var(--fm-border-light)",
+                  textAlign: "left",
+                  cursor: "pointer",
+                  fontSize: 12,
+                  fontFamily: "inherit",
+                }}
+              >
+                {o.label}{" "}
+                <span
+                  style={{ color: "var(--fm-text-tertiary)", fontSize: 10 }}
+                >
+                  · {o.slug}
+                </span>
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+interface UploadedFile {
+  filePath: string;
+  filename: string;
+  mime_type: string;
+  kind: "lab_report" | "food_journal";
+}
+
+export function FullAssessmentForm({
+  clientId,
+  displayName,
+  intake,
+  prefilledSymptoms,
+  prefilledTopics,
+  symptomCatalogue,
+  topicCatalogue,
+  priorAssessments,
+  activePlan,
+  recentSessions,
+}: FullAssessmentFormProps) {
+  const router = useRouter();
+  const [pending, startTransition] = useTransition();
+  const [draftPending, startDraft] = useTransition();
+
+  // Pre-loaded from intake; coach can prune / add.
+  const [symptoms, setSymptoms] = useState<string[]>(prefilledSymptoms);
+  const [topics, setTopics] = useState<string[]>(prefilledTopics);
+
+  // Delta inputs
+  const [deltaNotes, setDeltaNotes] = useState("");
+  const [protocolReview, setProtocolReview] = useState("");
+  const [coachObservations, setCoachObservations] = useState("");
+
+  // New report uploads
+  const [uploads, setUploads] = useState<UploadedFile[]>([]);
+  const [uploadPending, startUpload] = useTransition();
+
+  // Result
+  const [result, setResult] = useState<AssessResult | null>(null);
+  const [picks, setPicks] = useState<Record<string, boolean>>({});
+  const [planBrief, setPlanBrief] = useState<PlanBrief>({});
+  const [error, setError] = useState<string | null>(null);
+
+  // Elapsed-time tracker for the long-running Analyze call (1–5 min).
+  const [analyzeStartedAt, setAnalyzeStartedAt] = useState<number | null>(null);
+  const [analyzeElapsedMs, setAnalyzeElapsedMs] = useState(0);
+  useEffect(() => {
+    if (!pending || analyzeStartedAt === null) return;
+    const id = window.setInterval(() => {
+      setAnalyzeElapsedMs(Date.now() - analyzeStartedAt);
+    }, 500);
+    return () => window.clearInterval(id);
+  }, [pending, analyzeStartedAt]);
+
+  const isRepeatAssessment = priorAssessments.length > 0;
+  const lastAssessmentDate = priorAssessments[0]?.date;
+
+  const onUpload = (
+    files: FileList | null,
+    kind: "lab_report" | "food_journal",
+  ) => {
+    if (!files || files.length === 0) return;
+    startUpload(async () => {
+      for (const file of Array.from(files)) {
+        const fd = new FormData();
+        fd.append("client_id", clientId);
+        fd.append("file", file);
+        try {
+          const filePath = await uploadFileAction(fd);
+          setUploads((prev) => [
+            ...prev,
+            {
+              filePath,
+              filename: file.name,
+              mime_type: file.type || "application/octet-stream",
+              kind,
+            },
+          ]);
+          toast.success(`Uploaded ${file.name}`);
+        } catch (e) {
+          toast.error(`Failed: ${(e as Error).message.slice(0, 80)}`);
+        }
+      }
+    });
+  };
+
+  const onAnalyze = () => {
+    setError(null);
+    // Combine delta inputs into one complaints payload for the AI.
+    const complaintSections: string[] = [];
+    if (deltaNotes.trim())
+      complaintSections.push(`What's new since intake:\n${deltaNotes.trim()}`);
+    if (coachObservations.trim())
+      complaintSections.push(`Coach observations:\n${coachObservations.trim()}`);
+    if (isRepeatAssessment && protocolReview.trim())
+      complaintSections.push(
+        `How the prior protocol went (since ${lastAssessmentDate}):\n${protocolReview.trim()}`,
+      );
+    const complaints = complaintSections.join("\n\n");
+
+    if (!complaints && uploads.length === 0) {
+      const msg = "Add a note about what's new, or upload a report.";
+      setError(msg);
+      toast.error(msg);
+      return;
+    }
+
+    setAnalyzeStartedAt(Date.now());
+    setAnalyzeElapsedMs(0);
+    startTransition(async () => {
+      try {
+        const res = await runAssessAction({
+          client_id: clientId,
+          symptoms,
+          topics,
+          complaints,
+          attachments: uploads.map((u) => ({
+            path: u.filePath,
+            mime_type: u.mime_type,
+            kind: u.kind,
+          })),
+          dry_run: false,
+          session_date: new Date().toISOString().slice(0, 10),
+        });
+        if (!res.ok) {
+          setError(res.error || "Analyze failed");
+          toast.error(res.error?.slice(0, 120) || "Analyze failed");
+          setResult(null);
+        } else {
+          setResult(res);
+          setPicks({});
+          if (res.suggestions?.synthesis_notes) {
+            setPlanBrief((prev) => ({
+              ...prev,
+              root_cause_hypothesis:
+                prev.root_cause_hypothesis ||
+                res.suggestions!.synthesis_notes.slice(0, 500),
+            }));
+          }
+        }
+      } catch (e) {
+        const msg = (e as Error).message ?? "";
+        setError(msg);
+        toast.error(msg.slice(0, 120) || "Analyze failed");
+      }
+    });
+  };
+
+  const onGenerateDraft = () => {
+    if (!result?.session_id) return;
+    startDraft(async () => {
+      try {
+        const res = await generateDraftAction({
+          client_id: clientId,
+          session_id: result.session_id!,
+          picks,
+          plan_brief: Object.keys(planBrief).some(
+            (k) => !!(planBrief as Record<string, unknown>)[k],
+          )
+            ? planBrief
+            : undefined,
+        });
+        if (!res.ok) {
+          toast.error(res.error || "Draft generation failed");
+        } else if (res.slug) {
+          toast.success(`Draft plan created at ${res.slug}`);
+          router.push(`/plans/${res.slug}`);
+        }
+      } catch (e) {
+        toast.error((e as Error).message.slice(0, 120));
+      }
+    });
+  };
+
+  const analyzeSecs = Math.floor(analyzeElapsedMs / 1000);
+  const analyzePhase =
+    analyzeSecs < 15
+      ? "Building catalogue subgraph…"
+      : analyzeSecs < 60
+        ? "Sending to AI…"
+        : analyzeSecs < 150
+          ? "AI is reasoning over your client's data…"
+          : analyzeSecs < 240
+            ? "Still synthesizing — long history takes longer…"
+            : "Almost done…";
+
+  return (
+    <div style={{ display: "grid", gap: 16 }}>
+      {/* ── 1. Intake recap ─────────────────────────────────────────── */}
+      <FmPanel
+        title="📋 What we already know"
+        subtitle={
+          intake.intake_date
+            ? `Captured at intake on ${intake.intake_date}. Anything wrong → fix it on the Intake form.`
+            : "No intake on record. Most of this section will be empty — run an Intake first for a richer Full Assessment."
+        }
+        rightSlot={
+          intake.intake_session_id ? (
+            <Link
+              href={`/clients-v2/${clientId}/analyse/intake`}
+              style={{
+                fontSize: 11,
+                color: "var(--fm-text-secondary)",
+                textDecoration: "underline",
+              }}
+            >
+              ✏️ Edit on Intake
+            </Link>
+          ) : (
+            <Link
+              href={`/clients-v2/${clientId}/analyse/intake`}
+              style={{
+                fontSize: 11,
+                color: "var(--fm-primary)",
+                fontWeight: 700,
+                textDecoration: "underline",
+              }}
+            >
+              + Run Intake first
+            </Link>
+          )
+        }
+      >
+        {intake.chief_complaint && (
+          <div style={{ marginBottom: 12 }}>
+            <MiniLabel>Chief complaint at intake</MiniLabel>
+            <div style={{ fontSize: 13, marginTop: 4, lineHeight: 1.5 }}>
+              {intake.chief_complaint}
+            </div>
+          </div>
+        )}
+
+        {/* Body comp summary row */}
+        <div style={{ marginBottom: 12 }}>
+          <MiniLabel>Body composition</MiniLabel>
+          <div
+            style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 6 }}
+          >
+            <MetricChip label="Wt" value={intake.body_comp.weight_kg} unit="kg" />
+            <MetricChip label="Ht" value={intake.body_comp.height_cm} unit="cm" />
+            <MetricChip label="BMI" value={intake.body_comp.bmi} />
+            <MetricChip label="BP sys" value={intake.body_comp.bp_systolic} />
+            <MetricChip label="BP dia" value={intake.body_comp.bp_diastolic} />
+            <MetricChip label="HR" value={intake.body_comp.hr_bpm} unit="bpm" />
+            <MetricChip label="Waist" value={intake.body_comp.waist_cm} unit="cm" />
+          </div>
+        </div>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 12,
+            marginBottom: 12,
+          }}
+        >
+          <div>
+            <MiniLabel>Active conditions</MiniLabel>
+            <ChipList items={intake.conditions} />
+          </div>
+          <div>
+            <MiniLabel>Medications</MiniLabel>
+            <ChipList items={intake.medications} />
+          </div>
+          <div>
+            <MiniLabel>Allergies</MiniLabel>
+            <ChipList items={intake.allergies} />
+          </div>
+          <div>
+            <MiniLabel>Goals</MiniLabel>
+            <ChipList items={intake.goals} color="var(--fm-primary)" />
+          </div>
+        </div>
+
+        {/* FM body-systems compact */}
+        {(intake.fm_body_systems.digestion_notes ||
+          intake.fm_body_systems.sleep_notes ||
+          intake.fm_body_systems.energy_pattern ||
+          intake.fm_body_systems.stress_response) && (
+          <details style={{ marginBottom: 10 }}>
+            <summary
+              style={{
+                fontSize: 11.5,
+                fontWeight: 700,
+                cursor: "pointer",
+                color: "var(--fm-text-secondary)",
+              }}
+            >
+              FM body-systems review
+            </summary>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: 8,
+                marginTop: 8,
+                fontSize: 11.5,
+                lineHeight: 1.5,
+              }}
+            >
+              {intake.fm_body_systems.digestion_notes && (
+                <div>
+                  <MiniLabel>Digestion</MiniLabel>
+                  {intake.fm_body_systems.digestion_notes}
+                </div>
+              )}
+              {intake.fm_body_systems.sleep_notes && (
+                <div>
+                  <MiniLabel>Sleep</MiniLabel>
+                  {intake.fm_body_systems.sleep_notes}
+                </div>
+              )}
+              {intake.fm_body_systems.energy_pattern && (
+                <div>
+                  <MiniLabel>Energy</MiniLabel>
+                  {intake.fm_body_systems.energy_pattern}
+                </div>
+              )}
+              {intake.fm_body_systems.stress_response && (
+                <div>
+                  <MiniLabel>Stress response</MiniLabel>
+                  {intake.fm_body_systems.stress_response}
+                </div>
+              )}
+              {intake.fm_body_systems.menstrual_notes && (
+                <div>
+                  <MiniLabel>Menstrual / cycle</MiniLabel>
+                  {intake.fm_body_systems.menstrual_notes}
+                </div>
+              )}
+              {intake.fm_body_systems.childhood_history && (
+                <div>
+                  <MiniLabel>Childhood / early hx</MiniLabel>
+                  {intake.fm_body_systems.childhood_history}
+                </div>
+              )}
+              {intake.fm_body_systems.toxic_exposures && (
+                <div>
+                  <MiniLabel>Toxic exposures</MiniLabel>
+                  {intake.fm_body_systems.toxic_exposures}
+                </div>
+              )}
+            </div>
+          </details>
+        )}
+
+        {(intake.food_prefs.dietary_preference ||
+          intake.food_prefs.foods_to_avoid ||
+          intake.food_prefs.non_negotiables) && (
+          <div style={{ fontSize: 11.5, color: "var(--fm-text-secondary)" }}>
+            {intake.food_prefs.dietary_preference && (
+              <span style={{ marginRight: 14 }}>
+                <strong>Diet:</strong> {intake.food_prefs.dietary_preference}
+              </span>
+            )}
+            {intake.food_prefs.foods_to_avoid && (
+              <span style={{ marginRight: 14 }}>
+                <strong>Avoiding:</strong> {intake.food_prefs.foods_to_avoid}
+              </span>
+            )}
+            {intake.food_prefs.non_negotiables && (
+              <span>
+                <strong>Non-negotiables:</strong>{" "}
+                {intake.food_prefs.non_negotiables}
+              </span>
+            )}
+          </div>
+        )}
+
+        {intake.timeline_count > 0 && (
+          <div
+            style={{
+              fontSize: 11,
+              marginTop: 10,
+              color: "var(--fm-text-tertiary)",
+            }}
+          >
+            FM timeline: {intake.timeline_count} event
+            {intake.timeline_count === 1 ? "" : "s"} on file.
+          </div>
+        )}
+      </FmPanel>
+
+      {/* ── 2. Symptoms + conditions to focus on ──────────────────── */}
+      <FmPanel
+        title="🎯 Symptoms + conditions to focus on"
+        subtitle="Pre-loaded from the most recent intake. The AI will pull the catalogue subgraph for these. Prune or add as needed."
+      >
+        <div style={{ display: "grid", gap: 14 }}>
+          <SlugMultiPicker
+            label="Symptoms"
+            selected={symptoms}
+            setSelected={setSymptoms}
+            options={symptomCatalogue}
+            placeholder="Search symptoms — bloating, brain-fog, …"
+          />
+          <SlugMultiPicker
+            label="Conditions / topics"
+            selected={topics}
+            setSelected={setTopics}
+            options={topicCatalogue}
+            placeholder="Search conditions — hashimoto, perimenopause, …"
+          />
+        </div>
+      </FmPanel>
+
+      {/* ── 3. What's new since intake ──────────────────────────────── */}
+      <FmPanel
+        title={
+          isRepeatAssessment
+            ? `📝 What's new since last assessment (${lastAssessmentDate})`
+            : "📝 What's new since intake"
+        }
+        subtitle="New symptoms, life events, things the client reported between sessions. The AI weaves this into the synthesis."
+      >
+        <textarea
+          value={deltaNotes}
+          onChange={(e) => setDeltaNotes(e.target.value)}
+          placeholder="e.g. Energy improved on protocol weeks 1–4, then dipped. New symptom: heart palpitations 2× last week. Travelled abroad → digestion off."
+          rows={5}
+          style={{
+            width: "100%",
+            padding: 10,
+            border: "1px solid var(--fm-border)",
+            borderRadius: "var(--fm-radius-sm)",
+            fontSize: 13,
+            fontFamily: "inherit",
+            resize: "vertical",
+            lineHeight: 1.5,
+          }}
+        />
+
+        <div style={{ marginTop: 14 }}>
+          <MiniLabel>New reports (labs, functional tests, transcripts)</MiniLabel>
+          <div
+            style={{
+              display: "flex",
+              gap: 8,
+              flexWrap: "wrap",
+              marginTop: 6,
+              alignItems: "center",
+            }}
+          >
+            <label
+              style={{
+                cursor: "pointer",
+                padding: "6px 12px",
+                background: "var(--fm-bg-warm)",
+                border: "1px dashed var(--fm-primary)",
+                borderRadius: "var(--fm-radius-sm)",
+                fontSize: 11.5,
+                fontWeight: 600,
+                color: "var(--fm-primary)",
+              }}
+            >
+              + Upload report
+              <input
+                type="file"
+                accept=".pdf,.md,.txt,.png,.jpg,.jpeg,.webp"
+                multiple
+                onChange={(e) => onUpload(e.target.files, "lab_report")}
+                style={{ display: "none" }}
+              />
+            </label>
+            {uploadPending && (
+              <span style={{ fontSize: 11, color: "var(--fm-text-tertiary)" }}>
+                Uploading…
+              </span>
+            )}
+            {uploads.map((u) => (
+              <Chip key={u.filePath}>
+                📎 {u.filename} ·{" "}
+                {u.kind === "lab_report" ? "lab" : "food journal"}
+              </Chip>
+            ))}
+          </div>
+        </div>
+
+        <div style={{ marginTop: 14 }}>
+          <MiniLabel>Coach observations from the consult (optional)</MiniLabel>
+          <textarea
+            value={coachObservations}
+            onChange={(e) => setCoachObservations(e.target.value)}
+            placeholder="e.g. Visibly fatigued today. Skin clearer than last visit. Tongue coating thick."
+            rows={2}
+            style={{
+              width: "100%",
+              padding: 10,
+              border: "1px solid var(--fm-border)",
+              borderRadius: "var(--fm-radius-sm)",
+              fontSize: 12,
+              fontFamily: "inherit",
+              resize: "vertical",
+              marginTop: 6,
+              lineHeight: 1.5,
+            }}
+          />
+        </div>
+      </FmPanel>
+
+      {/* ── 4. Repeat assessment — prior protocol review ─────────── */}
+      {isRepeatAssessment && (
+        <FmPanel
+          title="🔁 How did the prior protocol go?"
+          subtitle={`Prior plan: ${activePlan ? activePlan.slug : "(none active)"}${activePlan ? ` · ${activePlan.status}` : ""}. The AI uses this to weight adjustments vs restart.`}
+        >
+          <textarea
+            value={protocolReview}
+            onChange={(e) => setProtocolReview(e.target.value)}
+            placeholder="e.g. Took ashwagandha + magnesium consistently — sleep improved week 3. NAC made nausea, stopped at week 2. Movement 4×/wk holding. Stress still high — work pressure."
+            rows={4}
+            style={{
+              width: "100%",
+              padding: 10,
+              border: "1px solid var(--fm-border)",
+              borderRadius: "var(--fm-radius-sm)",
+              fontSize: 13,
+              fontFamily: "inherit",
+              resize: "vertical",
+              lineHeight: 1.5,
+            }}
+          />
+          <div
+            style={{
+              fontSize: 11,
+              color: "var(--fm-text-tertiary)",
+              marginTop: 6,
+            }}
+          >
+            Tip: capture adherence per supplement / practice, what worked, what
+            didn&apos;t, side-effects. The AI compares against the prior plan.
+          </div>
+        </FmPanel>
+      )}
+
+      {/* ── 5. Analyze ─────────────────────────────────────────────── */}
+      <div
+        style={{
+          padding: 16,
+          background: "var(--fm-bg-warm)",
+          border: "1px solid rgba(255, 107, 53, 0.25)",
+          borderRadius: "var(--fm-radius-md)",
+          display: "flex",
+          alignItems: "center",
+          gap: 14,
+        }}
+      >
+        <button
+          type="button"
+          onClick={onAnalyze}
+          disabled={pending}
+          style={{
+            background: "var(--fm-primary)",
+            color: "#fff",
+            border: 0,
+            padding: "11px 22px",
+            fontSize: 14,
+            fontWeight: 700,
+            borderRadius: "var(--fm-radius-sm)",
+            cursor: pending ? "wait" : "pointer",
+            fontFamily: "inherit",
+            opacity: pending ? 0.7 : 1,
+          }}
+        >
+          {pending ? `🧠 Analysing… ${analyzeSecs}s` : "🧠 Run AI synthesis"}
+        </button>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ fontSize: 12, fontWeight: 700 }}>
+            {pending ? analyzePhase : "Ready to synthesise"}
+          </div>
+          <div style={{ fontSize: 11, color: "var(--fm-text-tertiary)" }}>
+            {pending
+              ? "AI calls take 1–5 minutes. Don't refresh."
+              : `AI reads intake, ${recentSessions.length} prior session${recentSessions.length === 1 ? "" : "s"}, ${uploads.length} new report${uploads.length === 1 ? "" : "s"}, your delta notes. Output: drivers, supplements, draft plan.`}
+          </div>
+        </div>
+      </div>
+      {error && (
+        <div
+          style={{
+            padding: 10,
+            background: "rgba(220,38,38,0.08)",
+            border: "1px solid rgba(220,38,38,0.3)",
+            borderRadius: "var(--fm-radius-sm)",
+            color: "#9b1c1c",
+            fontSize: 12,
+          }}
+        >
+          {error}
+        </div>
+      )}
+
+      {/* ── 6. Results ─────────────────────────────────────────────── */}
+      {result?.ok && result.suggestions && (
+        <>
+          {result.computed_ratios && result.computed_ratios.length > 0 && (
+            <ComputedRatiosCard ratios={result.computed_ratios} />
+          )}
+
+          <FmPanel
+            title="✨ AI suggestions"
+            subtitle="Review each item. Untick to exclude before draft generation."
+          >
+            <SuggestionsView
+              suggestions={result.suggestions}
+              picks={picks}
+              setPicks={setPicks}
+              selectedTopics={topics}
+              computedRatios={result.computed_ratios}
+            />
+          </FmPanel>
+
+          <PlanBriefCard
+            brief={planBrief}
+            onChange={setPlanBrief}
+            synthesisNotes={result.suggestions.synthesis_notes}
+          />
+
+          <div
+            style={{
+              padding: 16,
+              background: "rgba(43, 45, 66, 0.04)",
+              border: "1px solid var(--fm-border)",
+              borderRadius: "var(--fm-radius-md)",
+              display: "flex",
+              alignItems: "center",
+              gap: 14,
+            }}
+          >
+            <button
+              type="button"
+              onClick={onGenerateDraft}
+              disabled={draftPending}
+              style={{
+                background: "var(--fm-primary)",
+                color: "#fff",
+                border: 0,
+                padding: "10px 18px",
+                fontSize: 13,
+                fontWeight: 700,
+                borderRadius: "var(--fm-radius-sm)",
+                cursor: draftPending ? "wait" : "pointer",
+                fontFamily: "inherit",
+              }}
+            >
+              {draftPending ? "Generating…" : "📋 Generate draft plan →"}
+            </button>
+            <div style={{ flex: 1, fontSize: 11.5 }}>
+              Drops a structured draft into <code>/plans/</code>. You can edit,
+              preview, and activate from there.
+            </div>
+          </div>
+
+          {result.session_id && (
+            <FmPanel
+              title="💬 Refine with chat"
+              subtitle="Ask follow-up questions about this synthesis. The conversation persists with the session."
+            >
+              <ChatPanel
+                clientId={clientId}
+                sessionId={result.session_id}
+                dryRun={false}
+              />
+            </FmPanel>
+          )}
+        </>
+      )}
+    </div>
+  );
+}

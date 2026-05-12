@@ -785,7 +785,7 @@ function CollapsibleCard({
   );
 }
 
-function ComputedRatiosCard({ ratios }: { ratios: ComputedRatio[] }) {
+export function ComputedRatiosCard({ ratios }: { ratios: ComputedRatio[] }) {
   if (!ratios || ratios.length === 0) return null;
   return (
     <CollapsibleCard title="📊 Key FM markers" storageKey="fm_markers">
@@ -827,7 +827,7 @@ function UsageStats({ usage, subgraphBytes }: { usage?: AssessUsage; subgraphByt
   );
 }
 
-function SuggestionsView({
+export function SuggestionsView({
   suggestions,
   picks,
   setPicks,
@@ -1338,7 +1338,7 @@ function SuggestionsView({
   );
 }
 
-function ChatPanel({
+export function ChatPanel({
   clientId,
   sessionId,
   dryRun,
@@ -2101,7 +2101,7 @@ function RegeneratePlanButton({
 // pick a protocol template, edit the root cause hypothesis, set plan period and add
 // coaching notes. All fields are optional — skip to use AI suggestions as-is.
 
-function PlanBriefCard({
+export function PlanBriefCard({
   brief,
   onChange,
   synthesisNotes,

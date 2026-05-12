@@ -616,9 +616,15 @@ export default async function ClientV2Page({
           <FmBodyCompGrid
             metrics={bodyComp}
             lastEntryDate={
-              client.health_snapshots && client.health_snapshots.length > 0
-                ? client.health_snapshots[client.health_snapshots.length - 1].date
-                : undefined
+              // Latest snapshot by DATE (not array order) — snapshots are
+              // appended over time but the YAML order isn't guaranteed
+              // chronological. Only count snapshots that actually carry
+              // measurements; lab-only snapshots aren't body-comp entries.
+              (client.health_snapshots ?? [])
+                .filter((s) => s.measurements && Object.keys(s.measurements).length > 0)
+                .map((s) => s.date)
+                .sort()
+                .pop() ?? undefined
             }
           />
 
