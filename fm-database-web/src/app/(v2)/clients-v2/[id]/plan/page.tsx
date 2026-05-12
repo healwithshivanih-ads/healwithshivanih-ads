@@ -41,6 +41,7 @@ import {
   FmCoachNotes,
   FmSupplementGrid,
   FmRecheckPanel,
+  FmNutritionPanel,
 } from "@/components/fm";
 import type { FmWorkflowStage } from "@/components/fm";
 import { PlanPageShell } from "./plan-page-shell";
@@ -643,6 +644,24 @@ export default async function PlanTabPage({
               subtitle="Daily timing bubbles + the same data the client letter ships. Click a slot to filter; click a row to read the coach rationale."
             >
               <FmSupplementGrid items={supplementGridItems} />
+            </FmPanel>
+
+            {/* Nutrition — pattern + add/reduce + meal timing + cooking
+                adjustments + home remedies. The 7-day meal grid itself
+                lives in the generated client letter. */}
+            <FmPanel
+              title="🥗 Nutrition guidance"
+              subtitle="Pattern · foods to add or reduce · meal timing · cooking + home remedies. 7-day meal grid lives in the client letter."
+            >
+              <FmNutritionPanel
+                nutrition={
+                  activePlan.nutrition as
+                    | Record<string, unknown>
+                    | null
+                    | undefined
+                }
+                planSlug={activePlan.slug}
+              />
             </FmPanel>
 
             {/* Lifestyle */}
