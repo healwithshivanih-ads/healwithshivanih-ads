@@ -27,3 +27,24 @@ export type { FmChipProps, FmStatusPillKind } from "./FmChip";
 
 export { FmAppShell } from "./FmAppShell";
 export type { FmAppShellProps } from "./FmAppShell";
+
+export { FmWorkflowBanner } from "./FmWorkflowBanner";
+export type { FmWorkflowBannerProps, FmWorkflowStage } from "./FmWorkflowBanner";
+
+export { FmClientHeader } from "./FmClientHeader";
+export type { FmClientHeaderProps } from "./FmClientHeader";
+
+export { FmContactPanel } from "./FmContactPanel";
+export type { FmContactPanelProps, FmContactRow } from "./FmContactPanel";
+
+export { FmFivePillars } from "./FmFivePillars";
+export type { FmFivePillarsProps, FivePillarsValue } from "./FmFivePillars";
+
+export { FmDepletionBanner } from "./FmDepletionBanner";
+export type { FmDepletionBannerProps, DepletionRow } from "./FmDepletionBanner";
+
+export { FmMarkerPanel } from "./FmMarkerPanel";
+export type { FmMarkerPanelProps, FmMarker, FmMarkerGroup, MarkerFlag } from "./FmMarkerPanel";
+
+export { FmBodyCompGrid } from "./FmBodyCompGrid";
+export type { FmBodyCompGridProps, BodyCompMetric } from "./FmBodyCompGrid";

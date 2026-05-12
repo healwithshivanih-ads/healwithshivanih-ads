@@ -244,7 +244,7 @@ export function TriageSections({ grouped }: TriageSectionsProps) {
 function TriageCard({ row, meta }: { row: TriageRow; meta: SectionMeta }) {
   return (
     <Link
-      href={`/clients/${row.client_id}`}
+      href={`/clients-v2/${row.client_id}`}
       style={{ textDecoration: "none", color: "inherit" }}
     >
       <FmPanel
