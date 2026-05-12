@@ -55,6 +55,10 @@ export interface SendEmailInput {
   subject: string;
   htmlBody: string;
   textBody?: string;
+  /** Optional CC recipient(s). String OR comma-separated string. */
+  cc?: string;
+  /** Optional BCC recipient(s). */
+  bcc?: string;
 }
 
 export async function sendClientEmailAction(
@@ -78,6 +82,8 @@ export async function sendClientEmailAction(
     await transporter.sendMail({
       from: `Shivani Hari <${user}>`,
       to: input.to,
+      cc: input.cc || undefined,
+      bcc: input.bcc || undefined,
       subject: input.subject,
       html: input.htmlBody,
       text: input.textBody,
