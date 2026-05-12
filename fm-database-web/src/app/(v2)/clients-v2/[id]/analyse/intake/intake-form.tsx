@@ -161,6 +161,9 @@ export function IntakeForm({
   existingFamilyHistory,
   existingPrefs,
   existingTimeline,
+  existingWhatWorked,
+  existingWhatDidntWork,
+  existingNotes,
 }: {
   clientId: string;
   displayName: string;
@@ -178,6 +181,9 @@ export function IntakeForm({
   existingFamilyHistory: string;
   existingPrefs: ExistingPrefs;
   existingTimeline: ExistingTimelineRow[];
+  existingWhatWorked: string;
+  existingWhatDidntWork: string;
+  existingNotes: string;
 }) {
   const router = useRouter();
   const [pending, start] = useTransition();
@@ -321,9 +327,14 @@ export function IntakeForm({
   const [connection, setConnection] = useState("");
 
   // 6 · Trial-and-error
+  // Supplement-history textarea is session-scoped (different supplements
+  // come up between visits) — left empty. "What worked / didn't" lives
+  // on client.yaml so we pre-fill from there.
   const [supplementHx, setSupplementHx] = useState("");
-  const [whatWorked, setWhatWorked] = useState("");
-  const [whatDidntWork, setWhatDidntWork] = useState("");
+  const [whatWorked, setWhatWorked] = useState(existingWhatWorked);
+  const [whatDidntWork, setWhatDidntWork] = useState(existingWhatDidntWork);
+  // `notes` on client.yaml is rendered into the Coach notes textarea
+  // (initialised at coachNotes useState below).
 
   // 7 · FM timeline — seed with saved events, else a blank row
   const [timeline, setTimeline] = useState<TimelineEntry[]>(
@@ -343,7 +354,7 @@ export function IntakeForm({
   const [ifmNotes, setIfmNotes] = useState<Record<string, string>>({});
 
   // 11 · Coach notes
-  const [coachNotes, setCoachNotes] = useState("");
+  const [coachNotes, setCoachNotes] = useState(existingNotes);
 
   const onSave = () => {
     // Detect whether the coach actually changed anything. An intake
@@ -528,6 +539,12 @@ export function IntakeForm({
       // Family history — only write if the coach actually changed it
       if (familyHx.trim() !== existingFamilyHistory.trim())
         prefsPayload.family_history = familyHx.trim();
+      // What worked / didn't — same diff guard so we don't overwrite
+      // existing values with stale form state.
+      if (whatWorked.trim() !== existingWhatWorked.trim())
+        prefsPayload.what_has_worked = whatWorked.trim();
+      if (whatDidntWork.trim() !== existingWhatDidntWork.trim())
+        prefsPayload.what_hasnt_worked = whatDidntWork.trim();
 
       // Only fire if any field is set beyond client_id.
       if (Object.keys(prefsPayload).length > 1) {

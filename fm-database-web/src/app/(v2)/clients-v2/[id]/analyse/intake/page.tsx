@@ -195,6 +195,9 @@ export default async function IntakePage({
           reported_triggers: s(c.reported_triggers),
         }}
         existingTimeline={timelineEvents}
+        existingWhatWorked={s(c.what_has_worked)}
+        existingWhatDidntWork={s(c.what_hasnt_worked)}
+        existingNotes={s(c.notes)}
       />
     </AnalysePageShell>
   );

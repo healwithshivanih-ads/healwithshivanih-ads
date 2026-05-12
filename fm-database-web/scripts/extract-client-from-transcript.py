@@ -190,7 +190,19 @@ EXTRACTION RULES:
 - timeline_events: important health events in time order. Categories:
   "life_event" | "symptom_onset" | "diagnosis" | "surgery" | "medication_change" | "other"
   Include: diagnoses, surgeries, major life stressors, when symptoms started, med changes.
-  Use year (int) if only year is known; use date (YYYY-MM-DD) if date is stated.
+  RESOLVE RELATIVE TIME REFERENCES to absolute years. The consultation date
+  appears as {TODAY} below — use it as the anchor:
+    "5 years ago"              → year = {TODAY_YEAR} - 5
+    "in my late 20s"           → year = (year of birth, if known) + ~28; else estimated_age - 10
+    "around the pandemic"      → year ≈ 2020
+    "after my second child"    → leave year null, set event with that context
+    "last March"               → date = "{LAST_MARCH_YEAR}-03-01"
+    "a few months ago"         → year = {TODAY_YEAR}, date null
+    "as a child"               → category = "childhood", year null
+  If both date and year can be derived, prefer date (YYYY-MM-DD). If only the
+  year is derivable, set year (int) and leave date null. If nothing is
+  derivable, leave both null but STILL emit the event so the coach can
+  date it later.
 - what_has_worked: "going dairy-free helped a lot", "the B12 injection was a game changer",
   "yoga made my stress manageable".
 - what_hasnt_worked: "I tried keto and felt terrible", "antidepressants didn't help",
@@ -350,6 +362,18 @@ def main() -> int:
         return 2
 
     # ── Build Claude message ─────────────────────────────────────────────────
+    # Substitute relative-date anchors into the prompt so the AI can resolve
+    # phrases like "5 years ago" into absolute years.
+    from datetime import date as _date
+    today = _date.today()
+    last_march_year = today.year if today.month >= 3 else today.year - 1
+    prompt = (
+        EXTRACTION_PROMPT
+        .replace("{TODAY}", today.isoformat())
+        .replace("{TODAY_YEAR}", str(today.year))
+        .replace("{LAST_MARCH_YEAR}", str(last_march_year))
+    )
+
     user_content: list[dict] = []
     if pdf_bytes:
         data_b64 = base64.b64encode(pdf_bytes).decode()
@@ -358,9 +382,9 @@ def main() -> int:
             "source": {"type": "base64", "media_type": "application/pdf", "data": data_b64},
             "title": Path(transcript_path).name if transcript_path else "transcript.pdf",
         })
-        user_content.append({"type": "text", "text": EXTRACTION_PROMPT})
+        user_content.append({"type": "text", "text": prompt})
     else:
-        user_content.append({"type": "text", "text": EXTRACTION_PROMPT + (text_content or "")[:20000]})
+        user_content.append({"type": "text", "text": prompt + (text_content or "")[:20000]})
 
     # ── Call Claude (Sonnet for richer extraction) ───────────────────────────
     try:
