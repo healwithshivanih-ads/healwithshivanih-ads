@@ -34,7 +34,12 @@ function asPlanStatus(s: string | undefined): PlanStatus | undefined {
   return s && PLAN_STATUSES.has(s as PlanStatus) ? (s as PlanStatus) : undefined;
 }
 import { PlanStatusBadge } from "@/components/plan-status-badge";
-import { FmPanel, FmWorkflowBanner, FmCoachNotes } from "@/components/fm";
+import {
+  FmPanel,
+  FmWorkflowBanner,
+  FmCoachNotes,
+  FmSupplementGrid,
+} from "@/components/fm";
 import type { FmWorkflowStage } from "@/components/fm";
 import { PlanPageShell } from "./plan-page-shell";
 import { PlanSendPanel } from "./plan-send-panel";
@@ -294,18 +299,23 @@ export default async function PlanTabPage({
   const status = activePlan ? planStatusOf(activePlan) : undefined;
   const isPublished = status === "published";
 
-  // Plan summary digest (only meaningful when activePlan exists)
-  const supplements = activePlan
-    ? summariseSection(
-        activePlan.supplement_protocol,
-        (it) => (it.supplement_slug as string) ?? (it.name as string),
-        (it) => {
-          const dose = it.dose as string | undefined;
-          const timing = it.timing as string | undefined;
-          return [dose, timing].filter(Boolean).join(" · ");
-        },
-      )
-    : [];
+  // Plan summary digest (only meaningful when activePlan exists). Supplements
+  // are now passed full-shape to FmSupplementGrid (timing bubble + detail).
+  const supplementItems = (activePlan?.supplement_protocol as
+    | Array<Record<string, unknown>>
+    | undefined) ?? [];
+  const supplementGridItems = supplementItems
+    .filter((it): it is Record<string, unknown> => !!it && typeof it === "object")
+    .map((it) => ({
+      supplement_slug: (it.supplement_slug as string | undefined) ?? "",
+      dose: (it.dose as string | undefined) ?? "",
+      timing: (it.timing as string | undefined) ?? "",
+      form: (it.form as string | undefined) ?? "",
+      coach_rationale: (it.coach_rationale as string | undefined) ?? "",
+      duration_weeks:
+        typeof it.duration_weeks === "number" ? it.duration_weeks : null,
+    }))
+    .filter((it) => it.supplement_slug);
 
   const practices = activePlan
     ? summariseSection(
@@ -555,20 +565,14 @@ export default async function PlanTabPage({
               </div>
             </FmPanel>
 
-            {/* Supplements */}
+            {/* Supplements — timing bubble row + click-to-filter detail list.
+                Slot classification matches render-client-letter.py exactly
+                so the coach view + the client letter bucket the same way. */}
             <FmPanel
-              title={`💊 Supplements (${supplements.length})`}
-              subtitle="The supplement protocol. Letter generators inject this verbatim into the client-facing schedule."
+              title={`💊 Supplements (${supplementGridItems.length})`}
+              subtitle="Daily timing bubbles + the same data the client letter ships. Click a slot to filter; click a row to read the coach rationale."
             >
-              {supplements.length === 0 ? (
-                <EmptyHint>No supplements in the protocol yet.</EmptyHint>
-              ) : (
-                <div style={{ display: "grid", gap: 6 }}>
-                  {supplements.map((s, i) => (
-                    <Row key={`${s.label}-${i}`} label={s.label} detail={s.detail} />
-                  ))}
-                </div>
-              )}
+              <FmSupplementGrid items={supplementGridItems} />
             </FmPanel>
 
             {/* Lifestyle */}
