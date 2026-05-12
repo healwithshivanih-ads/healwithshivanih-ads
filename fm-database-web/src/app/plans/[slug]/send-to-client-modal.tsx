@@ -2,15 +2,20 @@
 
 import { useState, useCallback } from "react";
 import { toast } from "sonner";
-import { renderPlanHtmlAction, sendClientEmailAction } from "@/app/api/email/actions";
+import {
+  renderPlanHtmlAction,
+  sendClientEmailAction,
+  updateClientFieldsAction,
+} from "@/app/api/email/actions";
 
 interface Props {
   planSlug: string;
+  clientId?: string;
   clientEmail?: string;
   clientName?: string;
 }
 
-export function SendToClientButton({ planSlug, clientEmail, clientName }: Props) {
+export function SendToClientButton({ planSlug, clientId, clientEmail, clientName }: Props) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -24,6 +29,7 @@ export function SendToClientButton({ planSlug, clientEmail, clientName }: Props)
       {open && (
         <SendModal
           planSlug={planSlug}
+          clientId={clientId}
           clientEmail={clientEmail}
           clientName={clientName}
           onClose={() => setOpen(false)}
@@ -37,11 +43,13 @@ export function SendToClientButton({ planSlug, clientEmail, clientName }: Props)
 
 function SendModal({
   planSlug,
+  clientId,
   clientEmail,
   clientName,
   onClose,
 }: {
   planSlug: string;
+  clientId?: string;
   clientEmail?: string;
   clientName?: string;
   onClose: () => void;
@@ -49,6 +57,12 @@ function SendModal({
   const [step,      setStep]      = useState<"compose" | "preview" | "done">("compose");
   const [isSending, setIsSending] = useState(false);
   const [to, setTo]           = useState(clientEmail ?? "");
+  const [cc, setCc]           = useState("");
+  // The "save this email to the client's profile" checkbox is shown when the
+  // To value differs from the on-file client email, OR when the client has
+  // no email on file at all. Default ON when client has no email so the
+  // common case (filling in a missing email) just works.
+  const [saveAsClientEmail, setSaveAsClientEmail] = useState<boolean>(false);
   const [subject, setSubject] = useState(`Your personalised health plan – ${planSlug}`);
   const [intro, setIntro]     = useState(
     clientName
@@ -88,6 +102,7 @@ ${renderedHtml}`;
 
     const result = await sendClientEmailAction({
       to,
+      cc: cc.trim() || undefined,
       subject,
       htmlBody: introHtml,
     });
@@ -95,11 +110,32 @@ ${renderedHtml}`;
     setIsSending(false);
     if (!result.ok) {
       toast.error(result.error);
-    } else {
-      setStep("done");
-      toast.success(`Plan sent to ${to}`);
+      return;
     }
-  }, [to, subject, intro, renderedHtml]);
+
+    // If the coach checked "save to client's profile" AND we know the
+    // client_id, persist the To value back as client.email. Runs after
+    // the send so a successful send is the gating event.
+    if (saveAsClientEmail && clientId && to.trim()) {
+      try {
+        const r = await updateClientFieldsAction(clientId, { email: to.trim() });
+        if (!r.ok) {
+          // Don't fail the whole flow — send already succeeded.
+          toast.warning(`Sent, but couldn't save the email to profile: ${r.error}`);
+        } else {
+          toast.success(`Saved ${to.trim()} to client profile`);
+        }
+      } catch (e) {
+        toast.warning(
+          `Sent, but couldn't save the email to profile: ${(e as Error).message}`,
+        );
+      }
+    }
+
+    setStep("done");
+    const ccNote = cc.trim() ? ` (cc ${cc.trim()})` : "";
+    toast.success(`Plan sent to ${to}${ccNote}`);
+  }, [to, cc, subject, intro, renderedHtml, saveAsClientEmail, clientId]);
 
   // Backdrop click closes
   const handleBackdropClick = (e: React.MouseEvent) => {
@@ -134,7 +170,10 @@ ${renderedHtml}`;
           <div className="flex flex-col items-center justify-center gap-4 p-10 text-center">
             <div className="text-4xl">✅</div>
             <div className="font-semibold">Plan sent successfully!</div>
-            <div className="text-sm text-muted-foreground">Sent to {to}</div>
+            <div className="text-sm text-muted-foreground">
+              Sent to {to}
+              {cc.trim() && <> · cc <span className="font-mono text-xs">{cc.trim()}</span></>}
+            </div>
             <button
               onClick={onClose}
               className="mt-2 text-sm px-4 py-2 rounded-lg border hover:bg-muted/50"
@@ -205,11 +244,75 @@ ${renderedHtml}`;
                   placeholder="client@example.com"
                   className="w-full rounded-lg border px-3 py-2 text-sm bg-background focus:outline-none focus:ring-2 focus:ring-primary/30"
                 />
-                {!clientEmail && (
+                {/* "Save to client profile" checkbox.
+                    Show when: (a) client has NO email on file AND coach typed
+                    something, OR (b) coach typed something different from the
+                    saved email. Default ON when client had no email (the
+                    common "fill missing email" case); OFF when overwriting
+                    so we don't surprise the coach. */}
+                {clientId &&
+                  to.trim() &&
+                  to.trim().toLowerCase() !==
+                    (clientEmail ?? "").trim().toLowerCase() && (
+                    <label className="mt-2 flex items-start gap-2 text-[11px] cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={saveAsClientEmail}
+                        onChange={(e) => setSaveAsClientEmail(e.target.checked)}
+                        className="mt-0.5 rounded"
+                      />
+                      <span className="text-muted-foreground leading-snug">
+                        {clientEmail
+                          ? (
+                              <>
+                                💾 Also save{" "}
+                                <code className="font-mono text-[10px]">
+                                  {to.trim()}
+                                </code>{" "}
+                                as this client&apos;s email (replaces the
+                                current{" "}
+                                <code className="font-mono text-[10px]">
+                                  {clientEmail}
+                                </code>
+                                )
+                              </>
+                            )
+                          : (
+                              <>
+                                💾 Save{" "}
+                                <code className="font-mono text-[10px]">
+                                  {to.trim()}
+                                </code>{" "}
+                                to this client&apos;s profile (no email on
+                                file yet)
+                              </>
+                            )}
+                      </span>
+                    </label>
+                  )}
+                {!clientEmail && !to.trim() && (
                   <p className="text-[10px] text-muted-foreground mt-1">
-                    No email saved for this client — save one on the client page to pre-fill.
+                    No email saved for this client — type one above. Tick the
+                    save checkbox to persist it to the client profile.
                   </p>
                 )}
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-1">
+                  Cc <span className="font-normal normal-case text-muted-foreground/70">(optional — comma-separated)</span>
+                </label>
+                <input
+                  type="text"
+                  value={cc}
+                  onChange={(e) => setCc(e.target.value)}
+                  placeholder="partner@example.com, doctor@clinic.com"
+                  className="w-full rounded-lg border px-3 py-2 text-sm bg-background focus:outline-none focus:ring-2 focus:ring-primary/30"
+                />
+                <p className="text-[10px] text-muted-foreground mt-1">
+                  Useful when looping in a family member, partner, or referring
+                  clinician. They&apos;ll see the recipient list.
+                </p>
               </div>
 
               <div>

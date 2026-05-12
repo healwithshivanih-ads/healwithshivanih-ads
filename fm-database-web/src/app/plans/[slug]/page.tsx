@@ -113,6 +113,7 @@ export default async function PlanDetailPage({
         <div className="ml-auto flex items-center gap-2">
           <SendToClientButton
             planSlug={plan.slug}
+            clientId={plan.client_id}
             clientEmail={planClient?.email}
             clientName={planClient?.display_name ?? planClient?.client_id}
           />
