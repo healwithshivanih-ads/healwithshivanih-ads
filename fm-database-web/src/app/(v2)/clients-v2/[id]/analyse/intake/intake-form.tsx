@@ -31,7 +31,7 @@
  * Lab + special-report uploads save inline through their own panel
  * components — they don't wait for the form save.
  */
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import {
@@ -62,6 +62,7 @@ import {
   updateClientTimeline,
   updateClientProfile,
   uploadReportAction,
+  checkMedsAgainstCatalogueAction,
 } from "@/app/clients/actions";
 import {
   FmField,
@@ -96,18 +97,54 @@ const TIMELINE_CATEGORIES = [
   "Other",
 ];
 
+interface FmIntakeFields {
+  digestion_notes: string;
+  sleep_notes: string;
+  energy_pattern: string;
+  menstrual_notes: string;
+  stress_response: string;
+  childhood_history: string;
+  toxic_exposures: string;
+}
+
+interface CycleContext {
+  cycle_status: string | null;
+  last_menstrual_period: string;
+  cycle_length_days: number | null;
+  cycle_regularity: string | null;
+  menopause_started: string;
+}
+
+interface PregnancyContext {
+  pregnancy_status: string | null;
+  pregnancy_due_date: string;
+  lactation_started: string;
+}
+
 export function IntakeForm({
   clientId,
   displayName,
+  clientSex,
   symptomCatalogue,
   existingConditions,
   existingAllergies,
+  existingGoals,
+  existingMedicalHistory,
+  existingFm,
+  existingCycle,
+  existingPregnancy,
 }: {
   clientId: string;
   displayName: string;
+  clientSex?: "F" | "M" | null;
   symptomCatalogue: FmSymptomOption[];
   existingConditions: string[];
   existingAllergies: string[];
+  existingGoals: string[];
+  existingMedicalHistory: string[];
+  existingFm: FmIntakeFields;
+  existingCycle: CycleContext;
+  existingPregnancy: PregnancyContext;
 }) {
   const router = useRouter();
   const [pending, start] = useTransition();
@@ -116,6 +153,52 @@ export function IntakeForm({
   const [symptoms, setSymptoms] = useState<string[]>([]);
   const [conditions, setConditions] = useState<string[]>(existingConditions);
   const [allergiesArr, setAllergiesArr] = useState<string[]>(existingAllergies);
+  const [goals, setGoals] = useState<string[]>(existingGoals);
+  const [medicalHistory, setMedicalHistory] = useState<string[]>(existingMedicalHistory);
+  const [goalDraft, setGoalDraft] = useState("");
+  const [mhDraft, setMhDraft] = useState("");
+  const addGoal = (v: string) => {
+    const t = v.trim();
+    if (!t || goals.includes(t)) return;
+    setGoals((c) => [...c, t]);
+    setGoalDraft("");
+  };
+  const addMh = (v: string) => {
+    const t = v.trim();
+    if (!t || medicalHistory.includes(t)) return;
+    setMedicalHistory((c) => [...c, t]);
+    setMhDraft("");
+  };
+
+  // FM body-systems review — preload existing
+  const [digestionNotes, setDigestionNotes] = useState(existingFm.digestion_notes);
+  const [sleepNotes, setSleepNotes] = useState(existingFm.sleep_notes);
+  const [energyPattern, setEnergyPattern] = useState(existingFm.energy_pattern);
+  const [menstrualNotes, setMenstrualNotes] = useState(existingFm.menstrual_notes);
+  const [stressResponse, setStressResponse] = useState(existingFm.stress_response);
+  const [childhoodHistory, setChildhoodHistory] = useState(existingFm.childhood_history);
+  const [toxicExposures, setToxicExposures] = useState(existingFm.toxic_exposures);
+
+  // Cycle (women)
+  const [cycleStatus, setCycleStatus] = useState<string>(existingCycle.cycle_status ?? "");
+  const [lmp, setLmp] = useState(existingCycle.last_menstrual_period);
+  const [cycleLen, setCycleLen] = useState(
+    existingCycle.cycle_length_days ? String(existingCycle.cycle_length_days) : "",
+  );
+  const [cycleReg, setCycleReg] = useState<string>(existingCycle.cycle_regularity ?? "");
+  const [menopauseStarted, setMenopauseStarted] = useState(existingCycle.menopause_started);
+
+  // Pregnancy / lactation
+  const [pregnancyStatus, setPregnancyStatus] = useState<string>(
+    existingPregnancy.pregnancy_status ?? "",
+  );
+  const [pregnancyDueDate, setPregnancyDueDate] = useState(existingPregnancy.pregnancy_due_date);
+  const [lactationStarted, setLactationStarted] = useState(existingPregnancy.lactation_started);
+
+  // Inline medication depletion preview (fires on debounced medications change)
+  const [depletionMatches, setDepletionMatches] = useState<
+    Array<{ drug_name: string; depletes: Array<{ nutrient: string; severity?: string }> }>
+  >([]);
 
   // Helpers to manage simple text-chip arrays (conditions, allergies)
   const [conditionDraft, setConditionDraft] = useState("");
@@ -166,6 +249,35 @@ export function IntakeForm({
   // 4 · Meds + family hx
   const [medications, setMedications] = useState("");
   const [familyHx, setFamilyHx] = useState("");
+
+  // Debounced depletion check — fires 600 ms after coach stops typing
+  // medications. Catches metformin → B12, PPIs → Mg / B12, OCPs → folate
+  // / B6, levothyroxine ↔ Ca/Fe timing, etc.
+  useEffect(() => {
+    const lines = medications
+      .split("\n")
+      .map((l) => l.split("·")[0].trim()) // drop dose/timing tail
+      .filter(Boolean);
+    if (lines.length === 0) {
+      setDepletionMatches([]);
+      return;
+    }
+    const t = setTimeout(async () => {
+      const r = await checkMedsAgainstCatalogueAction(lines);
+      if (r.ok) {
+        setDepletionMatches(
+          r.matches.map((m) => ({
+            drug_name: m.drug_name,
+            depletes: m.depletes.map((d) => ({
+              nutrient: d.nutrient,
+              severity: d.severity,
+            })),
+          })),
+        );
+      }
+    }, 600);
+    return () => clearTimeout(t);
+  }, [medications]);
 
   // 5 · Five Pillars
   const [sleep, setSleep] = useState("");
@@ -275,22 +387,37 @@ export function IntakeForm({
         );
       }
 
-      // Food + lifestyle prefs
-      if (
-        dietaryPreference.trim() ||
-        foodsToAvoid.trim() ||
-        nonNegotiables.trim() ||
-        reportedTriggers.trim()
-      ) {
-        sideWrites.push(
-          updateClientPreferences({
-            client_id: clientId,
-            dietary_preference: dietaryPreference.trim() || undefined,
-            foods_to_avoid: foodsToAvoid.trim() || undefined,
-            non_negotiables: nonNegotiables.trim() || undefined,
-            reported_triggers: reportedTriggers.trim() || undefined,
-          }),
-        );
+      // Food + lifestyle prefs + FM body-systems narratives + cycle + pregnancy
+      // — all live as text fields on client.yaml. One call writes them all.
+      const prefsPayload: Parameters<typeof updateClientPreferences>[0] = {
+        client_id: clientId,
+      };
+      if (dietaryPreference.trim()) prefsPayload.dietary_preference = dietaryPreference.trim();
+      if (foodsToAvoid.trim()) prefsPayload.foods_to_avoid = foodsToAvoid.trim();
+      if (nonNegotiables.trim()) prefsPayload.non_negotiables = nonNegotiables.trim();
+      if (reportedTriggers.trim()) prefsPayload.reported_triggers = reportedTriggers.trim();
+      // FM body-systems
+      if (digestionNotes.trim()) prefsPayload.digestion_notes = digestionNotes.trim();
+      if (sleepNotes.trim()) prefsPayload.sleep_notes = sleepNotes.trim();
+      if (energyPattern.trim()) prefsPayload.energy_pattern = energyPattern.trim();
+      if (menstrualNotes.trim()) prefsPayload.menstrual_notes = menstrualNotes.trim();
+      if (stressResponse.trim()) prefsPayload.stress_response = stressResponse.trim();
+      if (childhoodHistory.trim()) prefsPayload.childhood_history = childhoodHistory.trim();
+      if (toxicExposures.trim()) prefsPayload.toxic_exposures = toxicExposures.trim();
+      // Cycle
+      if (cycleStatus) prefsPayload.cycle_status = cycleStatus as typeof prefsPayload.cycle_status;
+      if (lmp) prefsPayload.last_menstrual_period = lmp;
+      if (cycleLen) prefsPayload.cycle_length_days = Number(cycleLen);
+      if (cycleReg) prefsPayload.cycle_regularity = cycleReg as typeof prefsPayload.cycle_regularity;
+      if (menopauseStarted) prefsPayload.menopause_started = menopauseStarted;
+      // Pregnancy
+      if (pregnancyStatus) prefsPayload.pregnancy_status = pregnancyStatus as typeof prefsPayload.pregnancy_status;
+      if (pregnancyDueDate) prefsPayload.pregnancy_due_date = pregnancyDueDate;
+      if (lactationStarted) prefsPayload.lactation_started = lactationStarted;
+
+      // Only fire if any field is set beyond client_id.
+      if (Object.keys(prefsPayload).length > 1) {
+        sideWrites.push(updateClientPreferences(prefsPayload));
       }
 
       // FM timeline
@@ -310,24 +437,23 @@ export function IntakeForm({
         );
       }
 
-      // Active conditions + allergies → client.yaml via updateClientProfile.
-      // Only write if either changed from baseline (avoids clobbering when
-      // coach didn't touch those sections).
-      const conditionsChanged =
-        conditions.length !== existingConditions.length ||
-        conditions.some((c, i) => c !== existingConditions[i]);
-      const allergiesChanged =
-        allergiesArr.length !== existingAllergies.length ||
-        allergiesArr.some((a, i) => a !== existingAllergies[i]);
-
-      if (conditionsChanged || allergiesChanged) {
-        sideWrites.push(
-          updateClientProfile({
-            client_id: clientId,
-            active_conditions: conditionsChanged ? conditions : undefined,
-            allergies: allergiesChanged ? allergiesArr : undefined,
-          }),
-        );
+      // Active conditions + allergies + goals + medical history →
+      // client.yaml via updateClientProfile. Write only the lists the
+      // coach actually changed (avoids stomping fields she didn't touch).
+      const arrChanged = (a: string[], b: string[]) =>
+        a.length !== b.length || a.some((x, i) => x !== b[i]);
+      const profilePatch: Parameters<typeof updateClientProfile>[0] = {
+        client_id: clientId,
+      };
+      if (arrChanged(conditions, existingConditions))
+        profilePatch.active_conditions = conditions;
+      if (arrChanged(allergiesArr, existingAllergies))
+        profilePatch.allergies = allergiesArr;
+      if (arrChanged(goals, existingGoals)) profilePatch.goals = goals;
+      if (arrChanged(medicalHistory, existingMedicalHistory))
+        profilePatch.medical_history = medicalHistory;
+      if (Object.keys(profilePatch).length > 1) {
+        sideWrites.push(updateClientProfile(profilePatch));
       }
 
       await Promise.all(sideWrites);
@@ -423,6 +549,47 @@ export function IntakeForm({
                 setConditions((arr) => arr.filter((c) => c !== v))
               }
               placeholder="Hashimoto's, PCOS, IBS, anxiety…"
+              tone="primary"
+            />
+          )}
+        </FmField>
+      </FmFormSection>
+
+      {/* 1c · Goals & medical history */}
+      <FmFormSection
+        title="1c · Goals & medical history"
+        description="What does success look like for this client + every past diagnosis worth carrying forward. Both lists live on client.yaml."
+      >
+        <FmField
+          label="Client goals"
+          hint="Enter / comma to add — saves to client.goals"
+        >
+          {() => (
+            <ChipListInput
+              values={goals}
+              draft={goalDraft}
+              setDraft={setGoalDraft}
+              onAdd={addGoal}
+              onRemove={(v) => setGoals((arr) => arr.filter((g) => g !== v))}
+              placeholder="lose 6kg in 6 mo · resolve afternoon brain fog · cycle stays regular…"
+              tone="primary"
+            />
+          )}
+        </FmField>
+        <FmField
+          label="Medical history"
+          hint="Past diagnoses with status — saves to client.medical_history"
+        >
+          {() => (
+            <ChipListInput
+              values={medicalHistory}
+              draft={mhDraft}
+              setDraft={setMhDraft}
+              onAdd={addMh}
+              onRemove={(v) =>
+                setMedicalHistory((arr) => arr.filter((m) => m !== v))
+              }
+              placeholder="Hashimoto's dx 2018 · D&C 2021 · gestational diabetes 2019…"
               tone="primary"
             />
           )}
@@ -568,6 +735,93 @@ export function IntakeForm({
             rows={7}
             style={{ fontFamily: "var(--fm-font-mono)", fontSize: 12 }}
           />
+          {depletionMatches.length > 0 && (
+            <div
+              style={{
+                padding: "10px 12px",
+                background:
+                  "linear-gradient(135deg, rgba(243,156,18,0.10), rgba(247,147,30,0.06))",
+                border: "1.5px solid rgba(243,156,18,0.35)",
+                borderRadius: "var(--fm-radius-md)",
+                fontSize: 11.5,
+              }}
+            >
+              <div
+                style={{
+                  fontSize: 11,
+                  fontWeight: 700,
+                  color: "#8a5a08",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 6,
+                  marginBottom: 6,
+                }}
+              >
+                💊 {depletionMatches.length} drug-nutrient depletion
+                {depletionMatches.length === 1 ? "" : "s"} flagged
+                <span
+                  style={{
+                    fontSize: 9.5,
+                    padding: "1px 6px",
+                    borderRadius: 3,
+                    background: "rgba(0,0,0,0.06)",
+                    color: "#B8770A",
+                    letterSpacing: 0.6,
+                    textTransform: "uppercase",
+                  }}
+                >
+                  catalogue
+                </span>
+              </div>
+              <div style={{ display: "grid", gap: 4 }}>
+                {depletionMatches.map((m) => (
+                  <div
+                    key={m.drug_name}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 8,
+                      flexWrap: "wrap",
+                    }}
+                  >
+                    <span
+                      style={{
+                        width: 6,
+                        height: 6,
+                        borderRadius: "50%",
+                        background: m.depletes.some(
+                          (d) => d.severity === "high" || d.severity === "severe",
+                        )
+                          ? "var(--fm-danger)"
+                          : "#B8770A",
+                      }}
+                    />
+                    <strong style={{ color: "var(--fm-text-primary)" }}>
+                      {m.drug_name}
+                    </strong>
+                    <span style={{ color: "var(--fm-text-tertiary)", fontSize: 10 }}>
+                      depletes
+                    </span>
+                    <span style={{ color: "var(--fm-text-secondary)" }}>
+                      {m.depletes.map((d) => d.nutrient).join(" · ")}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <div
+                style={{
+                  marginTop: 6,
+                  fontSize: 10.5,
+                  color: "var(--fm-text-tertiary)",
+                  fontStyle: "italic",
+                }}
+              >
+                Order these lab markers in section 9 or surface in the next
+                check-in. Same banner re-appears on the Overview tab once the
+                intake is saved.
+              </div>
+            </div>
+          )}
         </FmFormSection>
         <FmFormSection title="4b · Family history" description="Genetic and FM-relevant patterns.">
           <FmTextarea
@@ -641,6 +895,275 @@ export function IntakeForm({
           </FmField>
         </div>
       </FmFormSection>
+
+      {/* 6b · FM body-systems review */}
+      <FmFormSection
+        title="6b · FM body-systems review"
+        description="Qualitative narratives the AI synthesis reads. Quick paragraph each; leave blank if not asked."
+      >
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+          <FmField
+            label="Digestion"
+            hint="bowel pattern · bloating · reflux · gas · transit time"
+          >
+            {({ id }) => (
+              <FmTextarea
+                id={id}
+                value={digestionNotes}
+                onChange={(e) => setDigestionNotes(e.target.value)}
+                placeholder="BM 1×/day morning, type 4 Bristol. Bloating after meals 4 PM. No reflux. Mild gas legumes."
+                rows={4}
+              />
+            )}
+          </FmField>
+          <FmField
+            label="Sleep narrative"
+            hint="onset · maintenance · wake-time · dreams · daytime nap"
+          >
+            {({ id }) => (
+              <FmTextarea
+                id={id}
+                value={sleepNotes}
+                onChange={(e) => setSleepNotes(e.target.value)}
+                placeholder="Falls asleep 11 PM, wakes 3 AM each night for 45 min, then back. No daytime nap. Vivid dreams since postpartum."
+                rows={4}
+              />
+            )}
+          </FmField>
+          <FmField
+            label="Energy pattern"
+            hint="when peaks · when crashes · post-meal · post-exercise"
+          >
+            {({ id }) => (
+              <FmTextarea
+                id={id}
+                value={energyPattern}
+                onChange={(e) => setEnergyPattern(e.target.value)}
+                placeholder="Best at 10 AM, crash 3-4 PM, second wind 8 PM. Coffee at 11 AM helps; needed by 1 PM = bad day."
+                rows={4}
+              />
+            )}
+          </FmField>
+          <FmField
+            label="Stress response"
+            hint="how stress shows up · coping baseline"
+          >
+            {({ id }) => (
+              <FmTextarea
+                id={id}
+                value={stressResponse}
+                onChange={(e) => setStressResponse(e.target.value)}
+                placeholder="Stress → sugar cravings + jaw clenching at night. Yoga 1×/wk. No alcohol since OCP came off."
+                rows={4}
+              />
+            )}
+          </FmField>
+          {clientSex === "F" && (
+            <FmField
+              label="Menstrual narrative"
+              hint="cycle pattern · PMS · flow · pain · perimenopause"
+            >
+              {({ id }) => (
+                <FmTextarea
+                  id={id}
+                  value={menstrualNotes}
+                  onChange={(e) => setMenstrualNotes(e.target.value)}
+                  placeholder="Regular 28-day. Heavier since 6 mo postpartum. PMS — irritable + bloated 4 days before. No clotting."
+                  rows={4}
+                />
+              )}
+            </FmField>
+          )}
+          <FmField
+            label="Childhood / ACEs"
+            hint="adverse childhood events worth carrying forward"
+          >
+            {({ id }) => (
+              <FmTextarea
+                id={id}
+                value={childhoodHistory}
+                onChange={(e) => setChildhoodHistory(e.target.value)}
+                placeholder="Parental divorce age 9. No major illness. Strict diet rules in teens. Mother emotionally absent during stress."
+                rows={4}
+              />
+            )}
+          </FmField>
+          <FmField
+            label="Toxic exposures"
+            hint="mould · pesticides · solvents · heavy metals · workplace"
+          >
+            {({ id }) => (
+              <FmTextarea
+                id={id}
+                value={toxicExposures}
+                onChange={(e) => setToxicExposures(e.target.value)}
+                placeholder="Lived in damp house 2019-21 (suspected mould). No occupational chemical exposure. Amalgam fillings × 3."
+                rows={4}
+              />
+            )}
+          </FmField>
+        </div>
+      </FmFormSection>
+
+      {/* 6c · Cycle + pregnancy / lactation (women only) */}
+      {clientSex === "F" && (
+        <FmFormSection
+          title="6c · Cycle · pregnancy · lactation"
+          description="Drives cycle-synced meal plans + supplement safety overlay. Sets once at intake, coach updates over time."
+        >
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+            <FmField label="Cycle status">
+              {({ id }) => (
+                <select
+                  id={id}
+                  value={cycleStatus}
+                  onChange={(e) => setCycleStatus(e.target.value)}
+                  style={{
+                    padding: "8px 10px",
+                    background: "var(--fm-surface)",
+                    border: "1px solid var(--fm-border)",
+                    borderRadius: "var(--fm-radius-sm)",
+                    fontSize: 12.5,
+                    fontFamily: "inherit",
+                    outline: "none",
+                    width: "100%",
+                  }}
+                >
+                  <option value="">—</option>
+                  <option value="menstruating">Menstruating</option>
+                  <option value="perimenopausal">Perimenopausal</option>
+                  <option value="postmenopausal">Postmenopausal</option>
+                  <option value="not_applicable">Not applicable</option>
+                </select>
+              )}
+            </FmField>
+            <FmField label="Cycle regularity">
+              {({ id }) => (
+                <select
+                  id={id}
+                  value={cycleReg}
+                  onChange={(e) => setCycleReg(e.target.value)}
+                  style={{
+                    padding: "8px 10px",
+                    background: "var(--fm-surface)",
+                    border: "1px solid var(--fm-border)",
+                    borderRadius: "var(--fm-radius-sm)",
+                    fontSize: 12.5,
+                    fontFamily: "inherit",
+                    outline: "none",
+                    width: "100%",
+                  }}
+                >
+                  <option value="">—</option>
+                  <option value="regular">Regular</option>
+                  <option value="irregular">Irregular</option>
+                  <option value="very_irregular">Very irregular</option>
+                </select>
+              )}
+            </FmField>
+            <FmField label="LMP" hint="last menstrual period (YYYY-MM-DD)">
+              {({ id }) => (
+                <FmInput
+                  id={id}
+                  type="date"
+                  value={lmp}
+                  onChange={(e) => setLmp(e.target.value)}
+                />
+              )}
+            </FmField>
+            <FmField label="Cycle length" hint="days, defaults 28">
+              {({ id }) => (
+                <FmInput
+                  id={id}
+                  type="number"
+                  min={20}
+                  max={60}
+                  value={cycleLen}
+                  onChange={(e) => setCycleLen(e.target.value)}
+                  placeholder="28"
+                />
+              )}
+            </FmField>
+            <FmField
+              label="Menopause started"
+              hint="if postmenopausal — first date of 12-mo flow-free"
+            >
+              {({ id }) => (
+                <FmInput
+                  id={id}
+                  type="date"
+                  value={menopauseStarted}
+                  onChange={(e) => setMenopauseStarted(e.target.value)}
+                />
+              )}
+            </FmField>
+            <FmField label="Pregnancy status">
+              {({ id }) => (
+                <select
+                  id={id}
+                  value={pregnancyStatus}
+                  onChange={(e) => setPregnancyStatus(e.target.value)}
+                  style={{
+                    padding: "8px 10px",
+                    background: "var(--fm-surface)",
+                    border: "1px solid var(--fm-border)",
+                    borderRadius: "var(--fm-radius-sm)",
+                    fontSize: 12.5,
+                    fontFamily: "inherit",
+                    outline: "none",
+                    width: "100%",
+                  }}
+                >
+                  <option value="">—</option>
+                  <option value="not_applicable">Not applicable</option>
+                  <option value="not_pregnant">Not pregnant</option>
+                  <option value="trying_to_conceive">Trying to conceive</option>
+                  <option value="pregnant_first_trimester">Pregnant · T1</option>
+                  <option value="pregnant_second_trimester">Pregnant · T2</option>
+                  <option value="pregnant_third_trimester">Pregnant · T3</option>
+                  <option value="lactating">Lactating</option>
+                </select>
+              )}
+            </FmField>
+            {pregnancyStatus.startsWith("pregnant") && (
+              <FmField label="Due date">
+                {({ id }) => (
+                  <FmInput
+                    id={id}
+                    type="date"
+                    value={pregnancyDueDate}
+                    onChange={(e) => setPregnancyDueDate(e.target.value)}
+                  />
+                )}
+              </FmField>
+            )}
+            {pregnancyStatus === "lactating" && (
+              <FmField label="Lactation started">
+                {({ id }) => (
+                  <FmInput
+                    id={id}
+                    type="date"
+                    value={lactationStarted}
+                    onChange={(e) => setLactationStarted(e.target.value)}
+                  />
+                )}
+              </FmField>
+            )}
+          </div>
+          <div
+            style={{
+              fontSize: 11,
+              color: "var(--fm-text-tertiary)",
+              fontStyle: "italic",
+              marginTop: 8,
+            }}
+          >
+            Pregnancy / lactation gates the Pregnancy Safety panel on Overview
+            — any supplement contraindicated for the current trimester will
+            light up red.
+          </div>
+        </FmFormSection>
+      )}
 
       {/* 7 · FM timeline */}
       <FmFormSection
