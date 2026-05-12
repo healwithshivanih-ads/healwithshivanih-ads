@@ -1319,7 +1319,11 @@ def _cycle_block(client: dict) -> str:
     note = cyc.get("note", "")
 
     if status == "postmenopausal":
-        return f"""
+        # Plain string (not f-string) — the literal "{first_name}" inside is
+        # a placeholder for the .replace() at the bottom. Using an f-string
+        # here would make Python try to interpolate {first_name} at parse
+        # time and crash with NameError before .replace() ever runs.
+        return """
 🌙 CYCLE STATUS — POSTMENOPAUSAL:
 This client is postmenopausal. Use a STABLE protocol — no phase-syncing.
 - Phytoestrogen support DAILY: 1–2 tbsp ground flaxseed; phytoestrogenic
@@ -2153,15 +2157,112 @@ def _build_prompt_meal_plan_phase(
     nutrition_add = nutrition.get("add") or []
     nutrition_reduce = nutrition.get("reduce") or []
 
-    # Active supplements — referenced as "your routine continues", NOT re-listed in detail.
+    # Active supplements — classified by phase relationship:
+    #   • continuing — supplements the client has been taking since wk 1
+    #   • introducing — first appears in the current phase window
+    #   • titrating_up — phase-N dose differs from the prior dose
+    # The AI prompt below references continuing supplements as a backdrop
+    # ("alongside your magnesium and ashwagandha as before") but CALLS OUT
+    # introduce/titrate items as foreground changes that need attention.
     supplements = plan.get("supplement_protocol") or []
-    supp_names = []
+    continuing: list[str] = []
+    introducing: list[dict] = []     # {name, dose, timing, rationale}
+    titrating_up: list[dict] = []    # {name, titration, rationale}
+    _titrate_up_re = re.compile(
+        r"(?:then\s+|increase\s+to\s+|step\s+up\s+to\s+|from\s+wk?\s*|from\s+week\s+)(\d+)",
+        re.IGNORECASE,
+    )
+
     for s in supplements:
-        if isinstance(s, dict):
-            name = s.get("display_name") or (s.get("supplement_slug") or "").replace("-", " ").title()
-            if name:
-                supp_names.append(name)
-    supp_summary = ", ".join(supp_names) if supp_names else "your current supplement routine"
+        if not isinstance(s, dict):
+            continue
+        name = (
+            s.get("display_name")
+            or (s.get("supplement_slug") or "").replace("-", " ").title()
+        )
+        if not name:
+            continue
+        titration = s.get("titration") or ""
+        rationale = (s.get("coach_rationale") or "").strip()
+        start_week = _detect_start_week(titration, rationale)
+
+        # Step-up detection first — if the titration contains a "then X
+        # from week N" / "increase to X from week N" pattern AND N is in
+        # this phase window, it's a dose change on a supplement that was
+        # already running. This wins over the introduce classification
+        # because the wording implies a prior dose existed.
+        uplift_weeks = [
+            int(m.group(1)) for m in _titrate_up_re.finditer(titration)
+        ]
+        is_step_up = any(phase_start <= w <= phase_end for w in uplift_weeks)
+        # An introduce is a clean start where the titration's earliest
+        # week reference is the FIRST mention (not "weeks 1-4 then ..."
+        # → that's a step-up). Heuristic: a step-up titration usually
+        # contains the word "then" / "increase" / "step up". Treat as
+        # introduce only when no step-up cue is present.
+        has_step_up_cue = bool(
+            re.search(
+                r"\b(then|increase|step\s+up|step-?up)\b",
+                titration,
+                re.IGNORECASE,
+            )
+        )
+
+        if is_step_up:
+            titrating_up.append({
+                "name": name,
+                "titration": titration,
+                "rationale": rationale.split("\n")[0] if rationale else "",
+            })
+        elif (
+            phase_start <= start_week <= phase_end
+            and not has_step_up_cue
+        ):
+            introducing.append({
+                "name": name,
+                "dose": s.get("dose") or "",
+                "timing": s.get("timing") or "",
+                "rationale": rationale.split("\n")[0] if rationale else "",
+                "titration": titration,
+            })
+        else:
+            continuing.append(name)
+
+    supp_summary = ", ".join(continuing) if continuing else "your current supplement routine"
+
+    # Build phase-supplement instruction block for the AI. Only emit
+    # sections that have entries — keeps the prompt tight.
+    supp_phase_block_parts: list[str] = []
+    if introducing:
+        lines = [
+            f"NEW SUPPLEMENTS TO INTRODUCE THIS PHASE ({phase_label_short if False else 'wks ' + str(phase_start) + '–' + str(phase_end)}):"
+        ]
+        for it in introducing:
+            bits = [it["name"]]
+            if it["dose"]:
+                bits.append(it["dose"])
+            if it["timing"]:
+                bits.append(f"({it['timing']})")
+            line = " — ".join(bits) if len(bits) > 1 else bits[0]
+            if it["titration"]:
+                line += f" · titration: {it['titration']}"
+            if it["rationale"]:
+                line += f" · why: {it['rationale']}"
+            lines.append(f"- {line}")
+        supp_phase_block_parts.append("\n".join(lines))
+    if titrating_up:
+        lines = ["SUPPLEMENTS WITH A DOSE STEP-UP IN THIS PHASE:"]
+        for it in titrating_up:
+            line = it["name"]
+            if it["titration"]:
+                line += f" · {it['titration']}"
+            if it["rationale"]:
+                line += f" · {it['rationale']}"
+            lines.append(f"- {line}")
+        supp_phase_block_parts.append("\n".join(lines))
+    supp_phase_block = (
+        "\n\n".join(supp_phase_block_parts) if supp_phase_block_parts else ""
+    )
 
     # Phase calorie target (if weight loss config). Select the bucket
     # that maps to the requested week range — phases are weeks 1–2,
@@ -2241,10 +2342,12 @@ CLIENT PROFILE:
 {calorie_block}
 
 CURRENT ROUTINE (already prescribed — DO NOT re-list, just reference):
-- Supplements continuing: {supp_summary}
+- Supplements continuing (in the background): {supp_summary}
 - Nutrition pattern: {nutrition_pattern or 'see initial letter'}
 - Foods to emphasise from initial plan: {', '.join(nutrition_add[:8]) if nutrition_add else 'see initial letter'}
 - Foods to reduce from initial plan: {', '.join(nutrition_reduce[:8]) if nutrition_reduce else 'see initial letter'}
+
+{supp_phase_block}
 {coach_notes_block}
 
 DOCUMENT STRUCTURE — keep TIGHT, no extra sections:
@@ -2258,6 +2361,17 @@ DOCUMENT STRUCTURE — keep TIGHT, no extra sections:
    Reference the protocol stage. E.g. for weeks 3–4 of 5R: "Now that you've
    removed the main triggers and started replacing digestive support, we're
    layering in more reinoculation foods…" — concrete, specific, NOT generic.
+
+2b. **🆕 What's new in your supplement routine this phase** — INCLUDE ONLY
+    IF the NEW SUPPLEMENTS or STEP-UP blocks above have entries. Format as
+    a small section with one bullet per supplement: name + dose + timing
+    + brief one-sentence "why this, why now" rationale that ties to the
+    phase intent (e.g. "Adding ashwagandha 600mg in the morning from this
+    week — your adrenal markers showed up depleted on the wk-2 review and
+    we're ready to support cortisol pattern recovery"). For step-ups
+    say "Stepping up <name> to <new dose>". DO NOT include continuing-
+    background supplements here — only changes this phase. SKIP this
+    entire section if there are no new/titrating supplements.
 
 3. **{span_weeks} × 7-day meal plan tables** — one per week in the range
    {phase_label_short}. Use this exact format:

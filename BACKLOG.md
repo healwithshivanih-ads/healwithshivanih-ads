@@ -5,7 +5,7 @@ the queue. Items here have been explicitly deferred — listed roughly by area.
 When picking one up, move its entry to a v0.x commit message and delete it
 from this file.
 
-Last updated: 2026-05-12 (post v0.68 — v1→v2 migration FULLY complete. Every v1 URL now redirects to its v2 equivalent. Zero v1 surfaces are reachable through normal navigation.)
+Last updated: 2026-05-13 (post v0.71 — phase / continuation meal-plan letters live: coach can mid-cycle generate a fresh 7-day meal plan for any week range of the active plan without superseding it; the AI classifies supplements as continuing / introducing-this-phase / titrating-up-this-phase and surfaces only the changes in the letter)
 
 ---
 
