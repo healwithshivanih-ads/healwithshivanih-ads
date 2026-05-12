@@ -20,6 +20,7 @@
 import Link from "next/link";
 import { loadClientById } from "@/lib/fmdb/loader-extras";
 import { loadAllPlans } from "@/lib/fmdb/loader";
+import { loadCatalogueChipDict } from "@/lib/fmdb/catalogue-chip-dict";
 import type { Plan, PlanStatus } from "@/lib/fmdb/types";
 
 const PLAN_STATUSES = new Set<PlanStatus>([
@@ -236,9 +237,10 @@ export default async function PlanTabPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const [client, allPlans] = await Promise.all([
+  const [client, allPlans, catalogueChips] = await Promise.all([
     loadClientById(id),
     loadAllPlans(),
+    loadCatalogueChipDict(),
   ]);
   if (!client) {
     return (
@@ -769,6 +771,7 @@ export default async function PlanTabPage({
                 <FmCoachNotes
                   text={notesForCoach}
                   planSlug={activePlan.slug}
+                  catalogue={catalogueChips}
                 />
               </FmPanel>
             )}

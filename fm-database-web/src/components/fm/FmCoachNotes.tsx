@@ -51,12 +51,32 @@ export interface FmCoachNotesProps {
 }
 
 export interface CatalogueChip {
-  /** Case-insensitive regex with the `g` flag — used to find inline mentions. */
-  term: RegExp;
+  /** Regex source — case-insensitive `g` flag added at use-time. RegExp
+   *  itself can't cross the React Server Components → Client Components
+   *  boundary, so we ship the source string and re-build the RegExp
+   *  inside the component. Server callers pass `.source` of their regex;
+   *  in-file defaults below use a tiny helper to keep the call site
+   *  readable. */
+  term: string | RegExp;
+  /** Optional regex flag override — defaults to "gi" if omitted. */
+  flags?: string;
   /** Kind segment in the catalogue URL: /catalogue/{kind}/{slug}. */
   kind: "supplement" | "mechanism" | "condition" | "marker" | "practice" | "topic";
   /** Slug segment in the catalogue URL. */
   slug: string;
+}
+
+/** Normalise a CatalogueChip's `term` (string OR RegExp) to a RegExp.
+ *  Used inside the tokenizer where we need the regex form. */
+function chipRegex(c: CatalogueChip): RegExp {
+  if (c.term instanceof RegExp) {
+    // Make sure 'g' flag is present so .exec advances lastIndex.
+    return c.term.flags.includes("g")
+      ? c.term
+      : new RegExp(c.term.source, c.term.flags + "g");
+  }
+  const flags = c.flags ?? "gi";
+  return new RegExp(c.term, flags.includes("g") ? flags : flags + "g");
 }
 
 // ───────────────────────────────────────────────────────────────────
@@ -284,7 +304,7 @@ function tokenizeInline(text: string, catalogue: CatalogueChip[]): InlineToken[]
   };
   const matches: Match[] = [];
   for (const c of catalogue) {
-    const re = new RegExp(c.term.source, c.term.flags.includes("g") ? c.term.flags : c.term.flags + "g");
+    const re = chipRegex(c);
     let m: RegExpExecArray | null;
     while ((m = re.exec(text)) !== null) {
       matches.push({
