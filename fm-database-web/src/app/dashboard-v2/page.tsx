@@ -12,6 +12,7 @@
  */
 import Link from "next/link";
 import { loadAllClients, loadAllPlans } from "@/lib/fmdb/loader";
+import { loadApiUsageMtdAllClients } from "@/app/clients/[id]/usage-actions";
 import {
   FmSidebarNav,
   FmTopBar,
@@ -182,7 +183,11 @@ const NAV: FmNavSection[] = [
 
 export default async function DashboardV2() {
   const todayStr = new Date().toISOString().slice(0, 10);
-  const [clients, plans] = await Promise.all([loadAllClients(), loadAllPlans()]);
+  const [clients, plans, apiMtd] = await Promise.all([
+    loadAllClients(),
+    loadAllPlans(),
+    loadApiUsageMtdAllClients(),
+  ]);
 
   const plansByClient = new Map<string, PlanRow[]>();
   for (const p of plans) {
@@ -202,7 +207,11 @@ export default async function DashboardV2() {
   for (const r of rows) grouped.get(r.signal.kind)!.push(r);
 
   const totalClients = clients.length;
-  const totalPlans = plans.length;
+  // The "Plans" tile used to count every plan record on disk (drafts +
+  // superseded + revoked) — confusing, since a single client routinely has
+  // several historical versions. Replaced with API spend MTD which is the
+  // real-time cost signal across all clients.
+  const monthLabel = new Date().toLocaleDateString("en-GB", { month: "short" });
   const needsAttention =
     (grouped.get("follow_up_due")?.length ?? 0) +
     (grouped.get("protocol_complete")?.length ?? 0) +
@@ -264,7 +273,23 @@ export default async function DashboardV2() {
             rightSlot={
               <FmStatGrid cols={3}>
                 <FmStatTile label="Clients" value={totalClients} />
-                <FmStatTile label="Plans" value={totalPlans} />
+                <FmStatTile
+                  label={`API spend · ${monthLabel} MTD`}
+                  value={
+                    <span>
+                      <span style={{ fontSize: 16, fontWeight: 600, color: "var(--fm-text-tertiary)", marginRight: 2 }}>₹</span>
+                      {apiMtd.this_month_cost_inr.toLocaleString("en-IN", { maximumFractionDigits: 0 })}
+                    </span>
+                  }
+                  delta={
+                    apiMtd.this_month_calls > 0
+                      ? {
+                          text: `${apiMtd.this_month_calls} call${apiMtd.this_month_calls === 1 ? "" : "s"} · ${apiMtd.by_client.length} client${apiMtd.by_client.length === 1 ? "" : "s"}`,
+                          trend: "flat",
+                        }
+                      : undefined
+                  }
+                />
                 <FmStatTile
                   label="Need attention"
                   value={needsAttention}
