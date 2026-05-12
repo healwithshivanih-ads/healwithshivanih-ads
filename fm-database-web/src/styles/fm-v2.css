@@ -1,0 +1,162 @@
+/* =========================================================
+   FM Coach v2 — design tokens
+
+   Scoped to .fm-v2 so the new visual system doesn't leak into
+   the existing UI while the two run side-by-side during the
+   redesign. Once Phase 5 lands, the scope can drop.
+
+   Palette is the "bold orange/blue" the coach + design tool
+   settled on. Client-facing letters use a different palette
+   (Deep Mind brand, bone/indigo/rose/serif) — that lives in a
+   separate stylesheet, not here.
+   ========================================================= */
+
+.fm-v2 {
+  /* ---------- Brand ---------- */
+  --fm-primary:        #FF6B35;
+  --fm-primary-light:  #FF8C5A;
+  --fm-primary-dark:   #E65527;
+
+  --fm-secondary:      #004E89;
+  --fm-secondary-light:#1A7FBB;
+  --fm-secondary-dark: #003860;
+
+  --fm-accent:         #F7931E;
+  --fm-accent-light:   #FFA84D;
+  --fm-accent-dark:    #D97E0F;
+
+  --fm-success:        #2ECC71;
+  --fm-warning:        #F39C12;
+  --fm-danger:         #E74C3C;
+
+  /* ---------- Surfaces ---------- */
+  --fm-bg:             #FAFAFA;
+  --fm-bg-warm:        #FFF5F0;
+  --fm-bg-cool:        #F0F4F8;
+  --fm-surface:        #FFFFFF;
+  --fm-surface-2:      #F5F5F5;
+
+  /* ---------- Text ---------- */
+  --fm-text-primary:   #1A1A1A;
+  --fm-text-secondary: #5A5A5A;
+  --fm-text-tertiary:  #999999;
+  --fm-text-inverse:   #FFFFFF;
+
+  /* ---------- Lines ---------- */
+  --fm-border:         #E8E8E8;
+  --fm-border-light:   #F0F0F0;
+  --fm-border-strong:  #D0D0D0;
+
+  /* ---------- Radii ---------- */
+  --fm-radius-sm:      6px;
+  --fm-radius-md:      8px;
+  --fm-radius-lg:      12px;
+  --fm-radius-pill:    999px;
+
+  /* ---------- Motion ---------- */
+  --fm-ease:           cubic-bezier(0.34, 1.56, 0.64, 1);
+  --fm-ease-out:       cubic-bezier(0.16, 1, 0.3, 1);
+  --fm-dur-micro:      160ms;
+  --fm-dur-1:          200ms;
+  --fm-dur-2:          400ms;
+
+  /* ---------- Typography ---------- */
+  --fm-font-display:   "Libre Baskerville", Georgia, "Times New Roman", serif;
+  --fm-font-body:      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                       "Helvetica Neue", system-ui, sans-serif;
+  --fm-font-mono:      ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* ---------- Layout ---------- */
+  --fm-sidebar-w:      260px;
+  --fm-topbar-h:       64px;
+  --fm-page-pad:       32px;
+
+  background: var(--fm-bg);
+  color: var(--fm-text-primary);
+  font-family: var(--fm-font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =========================================================
+   Headings — Libre Baskerville for display, sans for body
+   ========================================================= */
+
+.fm-v2 h1,
+.fm-v2 h2,
+.fm-v2 h3,
+.fm-v2 .fm-display {
+  font-family: var(--fm-font-display);
+  color: var(--fm-text-primary);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.fm-v2 .fm-eyebrow {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: var(--fm-text-tertiary);
+  font-weight: 700;
+}
+
+/* =========================================================
+   Buttons — neutral .fm-btn with .primary modifier
+   ========================================================= */
+
+.fm-v2 .fm-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--fm-text-primary);
+  background: var(--fm-surface);
+  border: 1px solid var(--fm-border);
+  border-radius: var(--fm-radius-sm);
+  cursor: pointer;
+  transition: all var(--fm-dur-1) var(--fm-ease-out);
+  text-decoration: none;
+  font-family: inherit;
+  line-height: 1.2;
+}
+.fm-v2 .fm-btn:hover:not(:disabled) {
+  border-color: var(--fm-border-strong);
+  background: var(--fm-surface-2);
+}
+.fm-v2 .fm-btn.primary {
+  background: var(--fm-primary);
+  border-color: var(--fm-primary);
+  color: var(--fm-text-inverse);
+}
+.fm-v2 .fm-btn.primary:hover:not(:disabled) {
+  background: var(--fm-primary-dark);
+  border-color: var(--fm-primary-dark);
+}
+.fm-v2 .fm-btn.secondary {
+  background: var(--fm-secondary);
+  border-color: var(--fm-secondary);
+  color: var(--fm-text-inverse);
+}
+.fm-v2 .fm-btn.secondary:hover:not(:disabled) {
+  background: var(--fm-secondary-dark);
+  border-color: var(--fm-secondary-dark);
+}
+.fm-v2 .fm-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   Scrollbar polish
+   ========================================================= */
+
+.fm-v2 ::-webkit-scrollbar { width: 10px; height: 10px; }
+.fm-v2 ::-webkit-scrollbar-track { background: transparent; }
+.fm-v2 ::-webkit-scrollbar-thumb {
+  background: var(--fm-border);
+  border-radius: 5px;
+}
+.fm-v2 ::-webkit-scrollbar-thumb:hover { background: var(--fm-border-strong); }
