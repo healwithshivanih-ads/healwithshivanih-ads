@@ -337,6 +337,99 @@ def main() -> int:
             if proto_slug not in plan.attached_protocols:
                 plan.attached_protocols.append(proto_slug)
 
+    # ── Merge attached Protocol catalogue content into the plan ────────────────
+    # When a coach attaches a Protocol (e.g. 5R Gut, AIP, Whole30), the
+    # catalogue entry contains supplements_typically_used, foods_to_emphasise,
+    # foods_to_remove, phases, etc. — the structured "how to actually run
+    # this protocol" data. Without this merge the attached_protocols field
+    # was just a label; the plan body had only what the AI proposed from
+    # the general subgraph, and protocol-specific staples didn't make it in.
+    #
+    # Coach's rule: AI suggestions take precedence (already in the plan).
+    # Protocol content fills in any gaps. Dedup by slug / string match.
+    try:
+        import yaml as _yaml  # type: ignore
+        proto_dir = FMDB_ROOT / "data" / "protocols"
+        if not plan.nutrition:
+            plan.nutrition = NutritionPlan()
+        existing_supp_slugs = {s.supplement_slug for s in plan.supplement_protocol}
+        existing_add = {x.lower() for x in plan.nutrition.add}
+        existing_reduce = {x.lower() for x in plan.nutrition.reduce}
+        notes_protocol_blocks: list[str] = []
+
+        for ps_slug in plan.attached_protocols:
+            proto_file = proto_dir / f"{ps_slug}.yaml"
+            if not proto_file.exists():
+                # Try aliased slug — Protocols don't have aliases on file,
+                # but we accept the user's slug as-is.
+                continue
+            try:
+                proto = _yaml.safe_load(proto_file.read_text()) or {}
+            except Exception:
+                continue
+
+            # Supplements: append those not already present (brand-mapped).
+            for sl in proto.get("supplements_typically_used", []) or []:
+                if not isinstance(sl, str):
+                    continue
+                mapped = _apply_brand_map(sl, brand_map)
+                if mapped and mapped not in existing_supp_slugs:
+                    plan.supplement_protocol.append(SupplementItem(
+                        supplement_slug=mapped,
+                        form="",
+                        dose="",
+                        timing="",
+                        coach_rationale=(
+                            f"[from {proto.get('display_name', ps_slug)}] "
+                            f"Typical {proto.get('category', 'protocol').replace('_', ' ')} supplement — "
+                            f"set dose + timing during plan review."
+                        ),
+                    ))
+                    existing_supp_slugs.add(mapped)
+
+            # Foods to emphasise → nutrition.add (dedup case-insensitive)
+            for food in proto.get("foods_to_emphasise", []) or []:
+                if not isinstance(food, str) or not food.strip():
+                    continue
+                if food.strip().lower() not in existing_add:
+                    plan.nutrition.add.append(food.strip())
+                    existing_add.add(food.strip().lower())
+
+            # Foods to remove → nutrition.reduce
+            for food in proto.get("foods_to_remove", []) or []:
+                if not isinstance(food, str) or not food.strip():
+                    continue
+                if food.strip().lower() not in existing_reduce:
+                    plan.nutrition.reduce.append(food.strip())
+                    existing_reduce.add(food.strip().lower())
+
+            # Phase summary → notes_for_coach (compact, scannable)
+            phases = proto.get("phases", []) or []
+            if phases:
+                phase_lines = [f"📋 {proto.get('display_name', ps_slug)} phases:"]
+                for ph in phases:
+                    if isinstance(ph, dict) and ph.get("name"):
+                        phase_lines.append(f"- {ph['name']}: {ph.get('summary', '').strip().splitlines()[0] if ph.get('summary') else ''}")
+                if len(phase_lines) > 1:
+                    notes_protocol_blocks.append("\n".join(phase_lines))
+
+            # Cautions → notes_for_coach as a Do not block
+            cautions = proto.get("cautions", []) or []
+            if cautions:
+                do_not_lines = [f"⊘ {proto.get('display_name', ps_slug)} cautions:"]
+                for c in cautions:
+                    if isinstance(c, str):
+                        do_not_lines.append(f"- {c}")
+                notes_protocol_blocks.append("\n".join(do_not_lines))
+
+        # Stash protocol content for the notes_for_coach assembly block below.
+        # It'll be appended at the same point as other note sections.
+        _protocol_notes_blocks = notes_protocol_blocks
+    except Exception:
+        # Catalogue read failure shouldn't kill draft generation. Log and
+        # continue with whatever the AI proposed.
+        _protocol_notes_blocks = []
+
     # ── Apply protocol template (merged on top of AI suggestions) ─────────────
     # resolved_template is the full ProtocolTemplate object serialized from TS.
     if resolved_template:
@@ -435,6 +528,11 @@ def main() -> int:
         # (FmCoachNotes) recognises those headers. No "AI synthesis
         # notes:" wrapper needed — the sub-headers do the labelling.
         notes_parts.append(suggestions["synthesis_notes"])
+
+    # Protocol phase + caution notes (built above when attached_protocols
+    # were merged from catalogue). Empty when no protocol attached.
+    for block in _protocol_notes_blocks:
+        notes_parts.append(block)
 
     # IFM Timeline insights — group AI-classified events by ATM bucket
     ifm_timeline = suggestions.get("ifm_timeline", []) or []

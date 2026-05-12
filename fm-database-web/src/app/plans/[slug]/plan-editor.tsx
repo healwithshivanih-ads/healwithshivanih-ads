@@ -775,6 +775,21 @@ function SupplementCombobox({
   const [text, setText] = useState(() => catalog?.label ?? value);
   const [open, setOpen] = useState(false);
 
+  // Resync the displayed text when the `value` prop changes from outside —
+  // this matters when a supplement row is removed and the array shifts up:
+  // the React component at key={i} keeps mounted but now hosts a different
+  // supplement's slug. Without this useEffect the visible text stayed
+  // stuck on the previous-row label, making it look like the WRONG row got
+  // removed (the one below the clicked Remove button).
+  // Skip the resync while the dropdown is open / user is typing — would
+  // overwrite their in-progress edit.
+  useEffect(() => {
+    if (!open) {
+      setText(catalog?.label ?? value);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value, catalog?.label]);
+
   const filtered = text.trim().length === 0
     ? options.slice(0, 30)
     : options.filter(
