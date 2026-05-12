@@ -1605,6 +1605,37 @@ export async function checkMedicationImpactsAction(
  * checkMedicationImpactsAction this does NOT read client.yaml, so it can
  * preview against meds being typed into the Intake form before save.
  */
+/** Walk all of a client's health_snapshots → run compute_ratios on the
+ *  flattened lab_values → write back to client.lab_markers + date.
+ *  Returns { ok, markers_count, lab_markers_date }. */
+export async function recomputeLabMarkersAction(clientId: string): Promise<{
+  ok: boolean;
+  markers_count?: number;
+  lab_markers_date?: string | null;
+  error?: string;
+}> {
+  if (!clientId) return { ok: false, error: "client_id missing" };
+  try {
+    const res = (await runScript("recompute-lab-markers.py", {
+      client_id: clientId,
+    })) as {
+      ok: boolean;
+      markers_count?: number;
+      lab_markers_date?: string | null;
+      error?: string;
+      message?: string;
+    };
+    if (res.ok) {
+      // Refresh any page using the client's lab_markers.
+      revalidatePath(`/clients-v2/${clientId}`);
+      revalidatePath(`/clients/${clientId}`);
+    }
+    return res;
+  } catch (err) {
+    return { ok: false, error: (err as Error).message };
+  }
+}
+
 export async function checkMedsAgainstCatalogueAction(
   medications: string[],
 ): Promise<MedicationImpactResult> {

@@ -48,6 +48,7 @@ import { SOAPNotePanel } from "@/app/clients/[id]/soap-note-panel";
 import { loadClientSessionsAction } from "@/app/assess/actions";
 import { clientQuickActions } from "./client-quick-actions";
 import { clientSubnavTabs } from "./client-subnav";
+import { MarkerPanelWithRecompute } from "./marker-panel-with-recompute";
 
 export const dynamic = "force-dynamic";
 
@@ -632,12 +633,13 @@ export default async function ClientV2Page({
           />
 
           {markerGroups.length > 0 ? (
-            <FmMarkerPanel
+            <MarkerPanelWithRecompute
+              clientId={client.client_id}
               groups={markerGroups}
               subtitle={
                 client.lab_markers_date
-                  ? `Lab values from ${client.lab_markers_date}. Computed ratios highlighted.`
-                  : undefined
+                  ? `Lab values from ${client.lab_markers_date}. Computed ratios highlighted. Use 🔄 to rebuild from snapshots if anything looks off.`
+                  : "Use 🔄 Re-run markers to compute from any uploaded lab snapshots."
               }
             />
           ) : (
