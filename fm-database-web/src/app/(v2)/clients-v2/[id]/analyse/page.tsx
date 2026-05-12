@@ -249,7 +249,10 @@ export default async function AnalysePage({
                 intake: `/clients/${id}?tab=sessions&type=intake`,
                 full: `/clients/${id}?tab=sessions&type=full_assessment`,
                 checkin: `/clients/${id}?tab=sessions&type=check_in`,
-                quick: `/clients/${id}?tab=sessions&type=quick_note`,
+                // Quick note has a v2 native form — others still fall through
+                // to the legacy /clients/[id] flow until Phase 3 part 2 ports
+                // them.
+                quick: `/clients-v2/${id}/analyse/quick`,
               }}
             />
           )}
