@@ -8,11 +8,14 @@
  *
  * Photo upload UX per design 1G — idle (dashed frame + camera icon),
  * hover (highlighted), drag-over (filled + drop-to-upload), uploading
- * (spinner). For Phase 2 the dropzone is just visual; wiring through
- * to the existing photo upload action lands in a follow-up commit.
+ * (spinner). Wired through to the existing uploadClientPhotoAction so the
+ * dropzone is functional, not just visual.
  */
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { toast } from "sonner";
+import { uploadClientPhotoAction } from "@/app/clients/actions";
 import { FmWorkflowBanner, type FmWorkflowStage } from "./FmWorkflowBanner";
 
 export interface FmClientHeaderProps {
@@ -103,7 +106,7 @@ export function FmClientHeader({
 }
 
 function PhotoSlot({
-  photoUrl,
+  photoUrl: initialPhotoUrl,
   clientId,
   displayName,
 }: {
@@ -111,97 +114,172 @@ function PhotoSlot({
   clientId: string;
   displayName: string;
 }) {
+  const router = useRouter();
+  const fileRef = useRef<HTMLInputElement>(null);
+  const [photoUrl, setPhotoUrl] = useState<string | null>(initialPhotoUrl);
   const [hover, setHover] = useState(false);
   const [drag, setDrag] = useState(false);
+  const [uploading, setUploading] = useState(false);
 
-  if (photoUrl) {
+  const handleFile = async (file: File | undefined) => {
+    if (!file) return;
+    if (!file.type.startsWith("image/")) {
+      toast.error("Photo must be an image (JPG, PNG, HEIC)");
+      return;
+    }
+    setUploading(true);
+    // Optimistic blob preview
+    const blob = URL.createObjectURL(file);
+    setPhotoUrl(blob);
+
+    const fd = new FormData();
+    fd.append("client_id", clientId);
+    fd.append("file", file);
+    const r = await uploadClientPhotoAction(fd);
+    setUploading(false);
+
+    if (r.ok) {
+      // Swap blob for stable API URL (cache-bust)
+      setPhotoUrl(`/api/client-photo/${clientId}?t=${Date.now()}`);
+      toast.success(`Photo set for ${displayName.split(" ")[0]}`);
+      router.refresh();
+    } else {
+      toast.error(r.error ?? "Photo upload failed");
+      setPhotoUrl(initialPhotoUrl); // revert
+    }
+  };
+
+  const onDrop = async (e: React.DragEvent) => {
+    e.preventDefault();
+    setDrag(false);
+    const file = e.dataTransfer.files?.[0];
+    await handleFile(file);
+  };
+
+  // Filled photo state — clicking still opens picker.
+  if (photoUrl && !uploading) {
     return (
-      <Link
-        href={`/clients/${clientId}/files`}
-        style={{ display: "block" }}
-        title={`${displayName} — replace photo`}
-      >
+      <>
+        <input
+          ref={fileRef}
+          type="file"
+          accept="image/*"
+          style={{ display: "none" }}
+          onChange={(e) => void handleFile(e.target.files?.[0])}
+        />
         <div
+          onClick={() => fileRef.current?.click()}
+          title={`${displayName} — replace photo`}
           style={{
             width: 120,
             height: 120,
             borderRadius: "var(--fm-radius-md)",
             background: `url(${photoUrl}) center/cover`,
             border: "1px solid var(--fm-border-light)",
+            cursor: "pointer",
           }}
         />
-      </Link>
+      </>
     );
   }
 
   return (
-    <div
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      onDragOver={(e) => {
-        e.preventDefault();
-        setDrag(true);
-      }}
-      onDragLeave={() => setDrag(false)}
-      onDrop={(e) => {
-        e.preventDefault();
-        setDrag(false);
-        // TODO: wire to existing photo upload API in a follow-up.
-      }}
-      style={{
-        width: 120,
-        height: 120,
-        borderRadius: "var(--fm-radius-md)",
-        background: drag
-          ? "rgba(255, 107, 53, 0.10)"
-          : hover
-            ? "rgba(255, 107, 53, 0.06)"
-            : "var(--fm-bg-warm)",
-        border: drag
-          ? "2px solid var(--fm-primary)"
-          : hover
-            ? "2px dashed var(--fm-primary)"
-            : "2px dashed var(--fm-border)",
-        color: drag || hover ? "var(--fm-primary)" : "var(--fm-text-tertiary)",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: 6,
-        cursor: "pointer",
-        transition: "all 160ms var(--fm-ease-out)",
-        textAlign: "center",
-      }}
-    >
-      {drag ? (
-        <>
-          <span style={{ fontSize: 22 }}>⤓</span>
-          <span style={{ fontSize: 10, fontWeight: 700 }}>Drop to upload</span>
-        </>
-      ) : hover ? (
-        <>
-          <span style={{ fontSize: 22 }}>＋</span>
-          <span style={{ fontSize: 10, fontWeight: 700 }}>Choose file</span>
-          <span style={{ fontSize: 9, opacity: 0.7 }}>or drop here</span>
-        </>
-      ) : (
-        <>
-          <svg
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M3 7h3l2-3h8l2 3h3v13H3z" />
-            <circle cx="12" cy="13" r="4" />
-          </svg>
-          <span style={{ fontSize: 10, fontWeight: 600 }}>Add photo</span>
-        </>
-      )}
-    </div>
+    <>
+      <input
+        ref={fileRef}
+        type="file"
+        accept="image/*"
+        style={{ display: "none" }}
+        onChange={(e) => void handleFile(e.target.files?.[0])}
+      />
+      <div
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        onDragOver={(e) => {
+          e.preventDefault();
+          setDrag(true);
+        }}
+        onDragLeave={() => setDrag(false)}
+        onDrop={onDrop}
+        onClick={() => !uploading && fileRef.current?.click()}
+        style={{
+          width: 120,
+          height: 120,
+          borderRadius: "var(--fm-radius-md)",
+          background: uploading
+            ? "rgba(0, 78, 137, 0.06)"
+            : drag
+              ? "rgba(255, 107, 53, 0.10)"
+              : hover
+                ? "rgba(255, 107, 53, 0.06)"
+                : "var(--fm-bg-warm)",
+          border: uploading
+            ? "2px solid var(--fm-secondary)"
+            : drag
+              ? "2px solid var(--fm-primary)"
+              : hover
+                ? "2px dashed var(--fm-primary)"
+                : "2px dashed var(--fm-border)",
+          color: uploading
+            ? "var(--fm-secondary)"
+            : drag || hover
+              ? "var(--fm-primary)"
+              : "var(--fm-text-tertiary)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 6,
+          cursor: uploading ? "wait" : "pointer",
+          transition: "all 160ms var(--fm-ease-out)",
+          textAlign: "center",
+        }}
+      >
+        {uploading ? (
+          <>
+            <div
+              style={{
+                width: 22,
+                height: 22,
+                borderRadius: "50%",
+                border: "2.5px solid rgba(0,78,137,0.2)",
+                borderTopColor: "var(--fm-secondary)",
+                animation: "fm-spin 0.8s linear infinite",
+              }}
+            />
+            <span style={{ fontSize: 10, fontWeight: 700 }}>Uploading…</span>
+            <style>{`@keyframes fm-spin { to { transform: rotate(360deg); } }`}</style>
+          </>
+        ) : drag ? (
+          <>
+            <span style={{ fontSize: 22 }}>⤓</span>
+            <span style={{ fontSize: 10, fontWeight: 700 }}>Drop to upload</span>
+          </>
+        ) : hover ? (
+          <>
+            <span style={{ fontSize: 22 }}>＋</span>
+            <span style={{ fontSize: 10, fontWeight: 700 }}>Choose file</span>
+            <span style={{ fontSize: 9, opacity: 0.7 }}>or drop here</span>
+          </>
+        ) : (
+          <>
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M3 7h3l2-3h8l2 3h3v13H3z" />
+              <circle cx="12" cy="13" r="4" />
+            </svg>
+            <span style={{ fontSize: 10, fontWeight: 600 }}>Add photo</span>
+          </>
+        )}
+      </div>
+    </>
   );
 }
