@@ -37,14 +37,7 @@ export function CommunicateClient({
   const isPublished = activePlan?.status === "published";
 
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "minmax(0, 1fr) 340px",
-        gap: 20,
-        alignItems: "start",
-      }}
-    >
+    <div className="fm-v2-2col tight">
       {/* LEFT — main comms surfaces */}
       <div style={{ minWidth: 0, display: "grid", gap: 16 }}>
         {/* Letters package */}
@@ -175,18 +168,8 @@ export function CommunicateClient({
         )}
       </div>
 
-      {/* RIGHT — sticky sidebar: contact + recent inbound */}
-      <div
-        style={{
-          position: "sticky",
-          top: 24,
-          maxHeight: "calc(100vh - 48px)",
-          overflowY: "auto",
-          paddingRight: 4,
-          display: "grid",
-          gap: 14,
-        }}
-      >
+      {/* RIGHT — sticky on wide; stacks under 1180px. */}
+      <div className="fm-v2-2col-rail">
         {/* Contact */}
         <FmPanel title="📞 Contact" subtitle="Channels we can reach this client on.">
           <div style={{ display: "grid", gap: 8 }}>

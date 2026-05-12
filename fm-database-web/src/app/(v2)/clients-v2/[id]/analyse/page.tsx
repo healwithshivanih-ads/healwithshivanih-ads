@@ -231,15 +231,8 @@ export default async function AnalysePage({
       {/* Sub-nav matching /clients-v2/[id]/page.tsx — Analyse active */}
       <SubNav id={id} active="analyse" />
 
-      {/* 2-col body */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "minmax(0, 1fr) 360px",
-          gap: 20,
-          alignItems: "start",
-        }}
-      >
+      {/* 2-col body — stacks single-col under 1180px via fm-v2.css */}
+      <div className="fm-v2-2col">
         {/* LEFT — picker + form area */}
         <div style={{ minWidth: 0 }}>
           {timeline.length === 0 ? (
@@ -304,7 +297,7 @@ export default async function AnalysePage({
         </div>
 
         {/* RIGHT — sticky session timeline */}
-        <div style={{ position: "sticky", top: 24 }}>
+        <div className="fm-v2-2col-rail">
           <FmPanel>
             <FmSessionTimeline entries={timeline} />
           </FmPanel>

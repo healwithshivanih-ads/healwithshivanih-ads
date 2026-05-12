@@ -166,3 +166,41 @@
   from { opacity: 0; transform: translateY(6px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* ─── Shared 2-col layout used by Plan / Communicate / Analyse ────
+ *  Default: main content + 360px right rail
+ *  Under 1180px: collapse to single column. Right rail loses its
+ *    sticky pinning (handled by an inner class) so it flows naturally
+ *    after the main content.
+ *  Under 720px: tighter padding for mobile.
+ */
+.fm-v2-2col {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 20px;
+  align-items: start;
+}
+.fm-v2-2col.tight {
+  grid-template-columns: minmax(0, 1fr) 340px;
+}
+.fm-v2-2col-rail {
+  position: sticky;
+  top: 24px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  padding-right: 4px;
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+@media (max-width: 1180px) {
+  .fm-v2-2col,
+  .fm-v2-2col.tight {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .fm-v2-2col-rail {
+    position: static;
+    max-height: none;
+    overflow-y: visible;
+  }
+}
