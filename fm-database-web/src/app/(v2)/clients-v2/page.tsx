@@ -255,21 +255,14 @@ export default async function ClientsListV2Page({
       if (filterId === "recheck") return r.stage === "recheck";
       return true;
     })
-    .sort((a, b) => {
-      // Active first, then draft, then no_plan, then recheck. Within tier,
-      // most recent last_session date wins.
-      const tierOrder: Record<string, number> = {
-        recheck: 0, // surface action-required at top
-        active: 1,
-        draft: 2,
-        no_plan: 3,
-      };
-      const dt = (tierOrder[a.stage] ?? 9) - (tierOrder[b.stage] ?? 9);
-      if (dt !== 0) return dt;
-      return (b.last_session?.date ?? "").localeCompare(
-        a.last_session?.date ?? "",
-      );
-    });
+    .sort((a, b) =>
+      // Match the legacy /clients page: alphabetical by client_id.
+      // Coach preference — stage-based sort kept jumping rows around as
+      // protocols moved through draft → active → recheck. Stable
+      // alphabetical order makes the page predictable session over
+      // session.
+      (a.client_id ?? "").localeCompare(b.client_id ?? ""),
+    );
 
   // Counts for the filter chips
   const counts: Record<FilterId, number> = {
