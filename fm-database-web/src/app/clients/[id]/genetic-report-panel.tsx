@@ -71,7 +71,9 @@ export function GeneticReportPanel({ clientId }: Props) {
           toast.success(`✅ Genetic report parsed — ${snpCount} SNPs extracted`);
           await refresh();
 
-          // Fire-and-forget AI rework assessment.
+          // Fire-and-forget AI rework assessment — result is persisted on the
+          // client.yaml and surfaced via the ReworkBanner on the Overview tab,
+          // where the coach decides whether the benefit warrants reworking.
           const flaggedSnps = (result.snps ?? [])
             .filter((s) => s.zygosity === "homozygous_risk" || s.zygosity === "heterozygous")
             .slice(0, 6)

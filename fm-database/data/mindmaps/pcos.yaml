@@ -371,8 +371,8 @@ tree:
       notes: ''
     - label: Walk After Meals (glucose disposal)
       children: []
-      linked_kind: topic
-      linked_slug: antigravity-exercise-for-blood-sugar
+      linked_kind: null
+      linked_slug: null
       notes: ''
     - label: Sleep 7–9 hrs, Same Time Daily
       children: []

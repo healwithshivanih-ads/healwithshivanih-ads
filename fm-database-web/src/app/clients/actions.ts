@@ -1905,6 +1905,47 @@ export async function dismissReworkSuggestionAction(
   }
 }
 
+/**
+ * Apply the stored rework_suggestion: clone the active plan (or scaffold a new
+ * one) as a fresh draft and layer in the AI-suggested supplements / topics /
+ * lab orders / education / practices. Returns the new draft slug so the UI can
+ * navigate directly to the plan editor.
+ */
+export interface ApplyReworkResult {
+  ok: boolean;
+  slug?: string | null;
+  successor?: boolean;
+  applied_count?: number;
+  parent_slug?: string | null;
+  error?: string | null;
+}
+
+export async function applyReworkSuggestionAction(input: {
+  clientId: string;
+  newSlug?: string;
+  phaseWeeks?: number;
+}): Promise<ApplyReworkResult> {
+  try {
+    const result = (await runScript(
+      "apply-rework.py",
+      {
+        client_id: input.clientId,
+        new_slug: input.newSlug ?? null,
+        phase_weeks: input.phaseWeeks ?? null,
+      },
+      60_000,
+    )) as ApplyReworkResult;
+    if (result.ok) {
+      revalidatePath(`/clients/${input.clientId}`);
+      revalidatePath("/plans");
+      if (result.slug) revalidatePath(`/plans/${result.slug}`);
+    }
+    return result;
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : String(e) };
+  }
+}
+
 /** Snooze the current rework_suggestion for N days (default 7). */
 export async function snoozeReworkSuggestionAction(
   clientId: string,

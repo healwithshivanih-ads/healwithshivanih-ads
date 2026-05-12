@@ -6,8 +6,9 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EvidenceTierBadge } from "@/components/evidence-tier-badge";
-import { loadOne } from "@/lib/fmdb/loader";
+import { loadOne, loadAllOfKind } from "@/lib/fmdb/loader";
 import { KIND_LABELS } from "@/lib/fmdb/kinds";
+import { ReclassifyPanel } from "./reclassify-panel";
 import type {
   CatalogueKind,
   Topic,
@@ -1301,6 +1302,23 @@ export default async function CatalogueDetailPage({
 
   const kindMeta = KIND_LABELS[kind as keyof typeof KIND_LABELS];
 
+  // Load slim lists of candidate merge targets so the ReclassifyPanel has
+  // something to autocomplete against without re-querying client-side.
+  // Limited to kinds that support aliases (the only safe merge targets).
+  const MERGE_KINDS = ["topics", "mechanisms", "symptoms", "supplements", "protocols"] as const;
+  const mergeCandidates: Partial<Record<(typeof MERGE_KINDS)[number], Array<{ slug: string; display_name?: string }>>> = {};
+  await Promise.all(MERGE_KINDS.map(async (k) => {
+    try {
+      const rows = await loadAllOfKind<{ slug: string; display_name?: string }>(k);
+      mergeCandidates[k] = rows
+        .filter((r) => !!r.slug)
+        .map((r) => ({ slug: r.slug, display_name: r.display_name }))
+        .sort((a, b) => a.slug.localeCompare(b.slug));
+    } catch {
+      mergeCandidates[k] = [];
+    }
+  }));
+
   return (
     <div>
       <Link
@@ -1316,6 +1334,7 @@ export default async function CatalogueDetailPage({
         </p>
       )}
       <div className="mt-2">{body}</div>
+      <ReclassifyPanel kind={kind} slug={slug} knownEntities={mergeCandidates} />
     </div>
   );
 }

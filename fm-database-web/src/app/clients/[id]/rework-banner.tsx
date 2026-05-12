@@ -10,6 +10,7 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import {
+  applyReworkSuggestionAction,
   dismissReworkSuggestionAction,
   snoozeReworkSuggestionAction,
 } from "@/app/clients/actions";
@@ -74,6 +75,22 @@ export function ReworkBanner({ clientId, suggestion }: Props) {
         router.refresh();
       } else {
         toast.error(r.error ?? "Snooze failed");
+      }
+    });
+  };
+
+  const onRework = () => {
+    start(async () => {
+      const r = await applyReworkSuggestionAction({ clientId });
+      if (r.ok && r.slug) {
+        toast.success(
+          `✅ ${r.successor ? "Successor" : "Draft"} plan created — ` +
+            `${r.applied_count ?? 0} change${r.applied_count === 1 ? "" : "s"} applied`,
+        );
+        setOpen(false);
+        router.push(`/plans/${r.slug}`);
+      } else {
+        toast.error(r.error ?? "Rework failed");
       }
     });
   };
@@ -214,13 +231,10 @@ export function ReworkBanner({ clientId, suggestion }: Props) {
               </button>
               <button
                 disabled={pending}
-                onClick={() => {
-                  toast.info("Open the Plan tab to create a successor draft with these changes.");
-                  setOpen(false);
-                }}
+                onClick={onRework}
                 className="px-3 py-1.5 rounded text-xs bg-emerald-600 text-white hover:bg-emerald-700 disabled:opacity-50"
               >
-                Open Plan tab →
+                {pending ? "⏳ Reworking…" : "🔄 Rework plan now"}
               </button>
             </div>
           </div>
