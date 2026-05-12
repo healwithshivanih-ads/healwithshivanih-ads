@@ -243,9 +243,46 @@ export default async function PlanTabPage({
 
   const todayStr = new Date().toISOString().slice(0, 10);
   const plans = allPlans.filter((p) => p.client_id === id);
-  const activePlan = plans.find((p) => ACTIVE_STATUSES.has(planStatusOf(p)));
+  // Pick the "active" plan with this precedence:
+  //   1. published   (the protocol that's actually live with the client)
+  //   2. ready_to_publish
+  //   3. draft       (only when nothing is live yet)
+  // Within a status tier, latest by version then updated_at wins.
+  //
+  // Before this fix the Plan tab showed whichever active-bucket plan came
+  // first from disk — so a fresh AI draft would visually replace the
+  // currently-published plan, making the coach think her active protocol
+  // had been silently rewritten. Bug surfaced after re-running assess on
+  // Geetika (cl-006); plan-1 (published) is the live protocol but plan-2
+  // (newly generated draft) was rendering as the headline plan.
+  const STATUS_PRIORITY: Record<string, number> = {
+    published: 3,
+    ready_to_publish: 2,
+    draft: 1,
+  };
+  const activeSorted = plans
+    .filter((p) => ACTIVE_STATUSES.has(planStatusOf(p)))
+    .sort((a, b) => {
+      const dp = (STATUS_PRIORITY[planStatusOf(b)] ?? 0) - (STATUS_PRIORITY[planStatusOf(a)] ?? 0);
+      if (dp !== 0) return dp;
+      const dv = planVersionOf(b) - planVersionOf(a);
+      if (dv !== 0) return dv;
+      return ((b.updated_at ?? "") as string).localeCompare(
+        (a.updated_at ?? "") as string,
+      );
+    });
+  const activePlan = activeSorted[0];
+  // If a separate draft exists alongside a published plan, call it out
+  // so the coach knows there's an in-progress next version.
+  const pendingDraft = activePlan && planStatusOf(activePlan) === "published"
+    ? activeSorted.find(
+        (p) =>
+          p !== activePlan &&
+          (planStatusOf(p) === "draft" || planStatusOf(p) === "ready_to_publish"),
+      )
+    : undefined;
   const archivedPlans = plans
-    .filter((p) => p !== activePlan)
+    .filter((p) => p !== activePlan && p !== pendingDraft)
     .sort((a, b) =>
       (planVersionOf(b) - planVersionOf(a)) ||
       ((b.updated_at ?? "") as string).localeCompare(
@@ -360,6 +397,58 @@ export default async function PlanTabPage({
             : undefined)
         }
       />
+
+      {/* Pending-draft callout — only when there's a draft sitting next
+          to the published plan. Without this surface the coach has no
+          visual cue that a newer AI synthesis exists and is waiting for
+          review. */}
+      {pendingDraft && (
+        <div
+          style={{
+            marginTop: 12,
+            padding: "10px 14px",
+            background: "rgba(110, 76, 200, 0.06)",
+            border: "1.5px solid rgba(110, 76, 200, 0.35)",
+            borderRadius: "var(--fm-radius-md)",
+            display: "flex",
+            alignItems: "center",
+            gap: 12,
+          }}
+        >
+          <span style={{ fontSize: 18 }}>📋</span>
+          <div style={{ flex: 1, minWidth: 0, fontSize: 12 }}>
+            <div style={{ fontWeight: 700, color: "#5a3fb0" }}>
+              A new draft is waiting for review —{" "}
+              <span
+                style={{ fontFamily: "var(--fm-font-mono)", fontWeight: 600 }}
+              >
+                {pendingDraft.slug}
+              </span>
+            </div>
+            <div style={{ color: "var(--fm-text-secondary)", marginTop: 1 }}>
+              This card below still shows your <strong>live</strong>{" "}
+              published plan. The draft is a candidate next-version generated
+              from a recent Full Assessment — review and activate to
+              supersede.
+            </div>
+          </div>
+          <Link
+            href={`/plans/${pendingDraft.slug}`}
+            style={{
+              padding: "7px 14px",
+              fontSize: 11.5,
+              fontWeight: 700,
+              background: "#5a3fb0",
+              color: "#fff",
+              borderRadius: "var(--fm-radius-sm)",
+              textDecoration: "none",
+              whiteSpace: "nowrap",
+            }}
+          >
+            Open draft →
+          </Link>
+        </div>
+      )}
 
       {!activePlan ? (
         <NoPlanEmpty clientId={id} archivedCount={archivedPlans.length} />

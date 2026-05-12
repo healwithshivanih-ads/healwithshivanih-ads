@@ -174,13 +174,22 @@ export default async function FullAssessmentPage({
     .map((t) => ({ slug: t.slug, label: t.display_name || t.slug }))
     .sort((a, b) => a.label.localeCompare(b.label));
 
-  // Active plan (drives the repeat-assessment context line).
+  // Active plan (drives the repeat-assessment context line). Prefer
+  // published over draft so the AI compares against the live protocol,
+  // not a half-finished candidate draft.
   const plans = allPlans.filter((p) => p.client_id === id);
-  const activePlan = plans.find((p) =>
-    ["draft", "ready_to_publish", "published"].includes(
-      (p.status as string | undefined) ?? (p._bucket as string | undefined) ?? "",
-    ),
-  );
+  const statusOf = (p: typeof plans[number]) =>
+    (p.status as string | undefined) ?? (p._bucket as string | undefined) ?? "";
+  const STATUS_RANK: Record<string, number> = {
+    published: 3,
+    ready_to_publish: 2,
+    draft: 1,
+  };
+  const activePlan = plans
+    .filter((p) => ["draft", "ready_to_publish", "published"].includes(statusOf(p)))
+    .sort(
+      (a, b) => (STATUS_RANK[statusOf(b)] ?? 0) - (STATUS_RANK[statusOf(a)] ?? 0),
+    )[0];
   const activePlanInfo = activePlan
     ? {
         slug: activePlan.slug,
