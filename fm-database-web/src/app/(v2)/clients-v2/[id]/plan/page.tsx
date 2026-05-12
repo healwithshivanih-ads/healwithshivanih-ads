@@ -703,10 +703,37 @@ export default async function PlanTabPage({
                 so behaviour matches the classic editor exactly. */}
             <PlanChatAndPreview
               clientId={id}
-              planSlug={activePlan.slug}
+              // When there's a pending draft sitting next to a published
+              // plan, target the DRAFT — that's the editable surface.
+              // The published plan stays untouched. Without this, the
+              // chat would aim at the published plan, the server action
+              // would refuse the write ("only draft + ready_to_publish
+              // can be edited"), and the coach would just see a toast.
+              planSlug={pendingDraft ? (pendingDraft.slug as string) : activePlan.slug}
               isLocked={
+                // Lock when there's NO editable plan in scope:
+                //   - active plan is published AND no pending draft exists
+                //   - active plan is archived (superseded / revoked)
+                (status === "published" && !pendingDraft) ||
                 status === "superseded" ||
                 status === "revoked"
+              }
+              lockReason={
+                status === "published" && !pendingDraft
+                  ? "published"
+                  : status === "superseded" || status === "revoked"
+                    ? "archived"
+                    : undefined
+              }
+              createDraftHref={
+                status === "published" && !pendingDraft
+                  ? "#follow-up-panel"
+                  : undefined
+              }
+              draftTargetNote={
+                pendingDraft && status === "published"
+                  ? `Editing pending draft ${pendingDraft.slug} — the published plan stays untouched until you publish this one in its place.`
+                  : undefined
               }
             />
 
