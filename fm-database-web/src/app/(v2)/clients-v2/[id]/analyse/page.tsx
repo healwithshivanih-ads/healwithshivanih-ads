@@ -146,7 +146,7 @@ export default async function AnalysePage({
       summary: summariseSession(sRec),
       drivers: extractDrivers(sRec),
       supplements: extractSupplements(sRec),
-      href: `/clients/${id}?tab=sessions&session=${s.session_id ?? ""}`,
+      href: `/clients-v2/${id}/sessions?sid=${s.session_id ?? ""}`,
     };
   });
 
@@ -278,7 +278,7 @@ export default async function AnalysePage({
                   return.
                 </div>
                 <Link
-                  href={`/clients/${id}?tab=sessions`}
+                  href={`/clients-v2/${id}/sessions`}
                   style={{
                     background: "var(--fm-primary)",
                     color: "#fff",
@@ -358,7 +358,7 @@ function EmptyState({ clientId }: { clientId: string }) {
         call — chief concern + lab order is enough.
       </p>
       <Link
-        href={`/clients/${clientId}?tab=sessions&type=discovery_consultation`}
+        href={`/clients-v2/${clientId}/analyse/discovery`}
         style={{
           display: "inline-block",
           background: "var(--fm-primary)",
@@ -381,7 +381,7 @@ function EmptyState({ clientId }: { clientId: string }) {
       >
         Or jump straight to{" "}
         <Link
-          href={`/clients/${clientId}?tab=sessions&type=intake`}
+          href={`/clients-v2/${clientId}/analyse/intake`}
           style={{ color: "var(--fm-text-secondary)", textDecoration: "underline" }}
         >
           Intake

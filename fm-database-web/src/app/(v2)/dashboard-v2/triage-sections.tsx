@@ -54,7 +54,7 @@ const SECTION_META: Record<SignalKind, SectionMeta> = {
     border: "rgba(155, 89, 182, 0.30)",
     badgeColor: "#7d3c98",
     cta: "📞 Contact",
-    ctaHref: (r) => `/clients/${r.client_id}`,
+    ctaHref: (r) => `/clients-v2/${r.client_id}`,
   },
   protocol_complete: {
     title: "Protocol complete — reassess",
@@ -63,7 +63,7 @@ const SECTION_META: Record<SignalKind, SectionMeta> = {
     border: "rgba(46, 204, 113, 0.30)",
     badgeColor: "var(--fm-success)",
     cta: "🧠 Record session",
-    ctaHref: (r) => `/clients/${r.client_id}?tab=sessions`,
+    ctaHref: (r) => `/clients-v2/${r.client_id}/sessions`,
   },
   labs_pending: {
     title: "Labs pending",
@@ -72,7 +72,7 @@ const SECTION_META: Record<SignalKind, SectionMeta> = {
     border: "rgba(214, 162, 162, 0.40)",
     badgeColor: "#a85858",
     cta: "🧪 Record results",
-    ctaHref: (r) => `/clients/${r.client_id}?tab=sessions`,
+    ctaHref: (r) => `/clients-v2/${r.client_id}/sessions`,
   },
   returning: {
     title: "Returning clients",
@@ -81,7 +81,7 @@ const SECTION_META: Record<SignalKind, SectionMeta> = {
     border: "rgba(26, 127, 187, 0.30)",
     badgeColor: "var(--fm-secondary)",
     cta: "🗓 Record session",
-    ctaHref: (r) => `/clients/${r.client_id}?tab=sessions`,
+    ctaHref: (r) => `/clients-v2/${r.client_id}/sessions`,
   },
   new_client: {
     title: "New — awaiting assessment",
@@ -90,7 +90,7 @@ const SECTION_META: Record<SignalKind, SectionMeta> = {
     border: "rgba(247, 147, 30, 0.30)",
     badgeColor: "var(--fm-accent-dark)",
     cta: "🗓 Record session",
-    ctaHref: (r) => `/clients/${r.client_id}?tab=sessions`,
+    ctaHref: (r) => `/clients-v2/${r.client_id}/sessions`,
   },
   active: {
     title: "Active protocols",
@@ -99,7 +99,7 @@ const SECTION_META: Record<SignalKind, SectionMeta> = {
     border: "var(--fm-border)",
     badgeColor: "var(--fm-text-secondary)",
     cta: "View plan",
-    ctaHref: (r) => (r.signal.planSlug ? `/plans/${r.signal.planSlug}` : `/clients/${r.client_id}`),
+    ctaHref: (r) => (r.signal.planSlug ? `/clients-v2/${r.client_id}/plan` : `/clients-v2/${r.client_id}`),
   },
 };
 

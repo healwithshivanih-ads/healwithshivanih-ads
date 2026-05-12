@@ -553,17 +553,17 @@ export default async function ClientV2Page({
                 ? `/plans/${plansForClient.find((p) => (p._bucket ?? p.status) === "published")?.slug ?? ""}`
                 : stageInfo.stage === "recheck"
                   ? `/clients-v2/${id}/plan#follow-up-panel`
-                  : `/clients/${id}?tab=sessions`
+                  : `/clients-v2/${id}/sessions`
         }
         quickActions={
           <>
-            <QuickActionLink href={`/clients/${id}?tab=sessions`}>
+            <QuickActionLink href={`/clients-v2/${id}/sessions`}>
               📝 Record session
             </QuickActionLink>
-            <QuickActionLink href={`/clients/${id}?tab=plan`}>
+            <QuickActionLink href={`/clients-v2/${id}/communicate`}>
               💬 Send message
             </QuickActionLink>
-            <QuickActionLink href={`/clients/${id}?tab=plan`}>
+            <QuickActionLink href={`/clients-v2/${id}/plan`}>
               📊 View plan
             </QuickActionLink>
           </>
@@ -714,7 +714,7 @@ export default async function ClientV2Page({
                   out-of-range values.
                 </p>
                 <Link
-                  href={`/clients/${id}?tab=sessions`}
+                  href={`/clients-v2/${id}/sessions`}
                   style={{
                     display: "inline-block",
                     padding: "8px 14px",

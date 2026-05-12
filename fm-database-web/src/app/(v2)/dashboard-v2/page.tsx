@@ -307,7 +307,7 @@ export default async function DashboardV2() {
                 {upcoming.map((c) => (
                   <Link
                     key={c.client_id}
-                    href={`/clients/${c.client_id}`}
+                    href={`/clients-v2/${c.client_id}`}
                     style={{
                       display: "inline-flex",
                       gap: 6,
