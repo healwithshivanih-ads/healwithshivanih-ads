@@ -85,3 +85,6 @@ export type {
   FmPillOption,
   FmPillGroupProps,
 } from "./FmField";
+
+export { FmSymptomPicker } from "./FmSymptomPicker";
+export type { FmSymptomPickerProps, FmSymptomOption } from "./FmSymptomPicker";
