@@ -157,29 +157,110 @@ type MeasurementKey =
   | "waist_cm"
   | "hip_cm";
 
-/** Convert health_snapshots into 8 body-composition metric series. */
+type SnapshotMeasurements = Partial<Record<MeasurementKey, number | null | undefined>>;
+type DatedMeasurement = { date: string; measurements: SnapshotMeasurements; source?: string };
+
+/** Normalise a flat client.measurements object (legacy key names) to the
+ *  snapshot's MeasurementKey shape. Returns undefined if no values present. */
+function flatMeasurementsToSnapshot(
+  flat: Record<string, unknown> | undefined,
+): SnapshotMeasurements | undefined {
+  if (!flat) return undefined;
+  const mapped: SnapshotMeasurements = {
+    height_cm: typeof flat.height_cm === "number" ? flat.height_cm : undefined,
+    weight_kg: typeof flat.weight_kg === "number" ? flat.weight_kg : undefined,
+    waist_cm: typeof flat.waist_cm === "number" ? flat.waist_cm : undefined,
+    hip_cm: typeof flat.hip_cm === "number" ? flat.hip_cm : undefined,
+    bp_systolic:
+      typeof flat.bp_systolic === "number"
+        ? flat.bp_systolic
+        : typeof flat.blood_pressure_systolic === "number"
+          ? flat.blood_pressure_systolic
+          : undefined,
+    bp_diastolic:
+      typeof flat.bp_diastolic === "number"
+        ? flat.bp_diastolic
+        : typeof flat.blood_pressure_diastolic === "number"
+          ? flat.blood_pressure_diastolic
+          : undefined,
+    hr_bpm:
+      typeof flat.hr_bpm === "number"
+        ? flat.hr_bpm
+        : typeof flat.resting_heart_rate === "number"
+          ? flat.resting_heart_rate
+          : undefined,
+  };
+  const hasAny = (Object.keys(mapped) as MeasurementKey[]).some(
+    (k) => typeof mapped[k] === "number",
+  );
+  return hasAny ? mapped : undefined;
+}
+
+/** Build the unified time-series of body measurements by merging:
+ *    - every health_snapshots entry that has a `measurements` block
+ *    - the flat client.measurements object (synthesized as a snapshot dated
+ *      by client.measurements.measured_on or today) when it has fresh values
+ *      not already represented in any snapshot.
+ *
+ *  This handles three real cases:
+ *    1. Manual entry via /assess → update-client-data.py writes BOTH
+ *       (snapshot + flat). Snapshot wins.
+ *    2. Old transcript-parser runs that only updated client.measurements
+ *       (no snapshot appended). Flat is synthesized so values surface.
+ *    3. Legacy clients with only the flat object (no snapshot history).
+ */
 function buildBodyCompMetrics(
   snapshots: NonNullable<ClientWithMeta["health_snapshots"]>,
-  fallback: Record<string, unknown> | undefined,
+  flat: Record<string, unknown> | undefined,
 ): BodyCompMetric[] {
-  const dated = [...snapshots]
-    .filter((s) => s.measurements)
-    .sort((a, b) => a.date.localeCompare(b.date));
+  const allDated: DatedMeasurement[] = [];
+
+  // Real snapshots first.
+  for (const s of snapshots) {
+    if (s.measurements) {
+      allDated.push({
+        date: s.date,
+        measurements: s.measurements as SnapshotMeasurements,
+        source: s.source,
+      });
+    }
+  }
+
+  // Synthesize a snapshot from flat measurements if any field is present.
+  // Use measured_on as the date, else today. If a snapshot with the same
+  // date already exists, MERGE the flat values into it (per-field) so we
+  // don't lose anything from the flat layer.
+  const flatSnap = flatMeasurementsToSnapshot(flat);
+  if (flatSnap) {
+    const flatDate =
+      typeof flat?.measured_on === "string" && flat.measured_on
+        ? (flat.measured_on as string)
+        : new Date().toISOString().slice(0, 10);
+    const existing = allDated.find((d) => d.date === flatDate);
+    if (existing) {
+      for (const k of Object.keys(flatSnap) as MeasurementKey[]) {
+        if (
+          existing.measurements[k] == null &&
+          typeof flatSnap[k] === "number"
+        ) {
+          existing.measurements[k] = flatSnap[k];
+        }
+      }
+    } else {
+      allDated.push({
+        date: flatDate,
+        measurements: flatSnap,
+        source: "client-profile",
+      });
+    }
+  }
+
+  allDated.sort((a, b) => a.date.localeCompare(b.date));
 
   function series(key: MeasurementKey): number[] {
     const out: number[] = [];
-    for (const s of dated) {
-      const v = (s.measurements as Record<MeasurementKey, number | null | undefined> | undefined)?.[key];
-      if (typeof v === "number" && !Number.isNaN(v)) out.push(v);
-    }
-    // If no time series yet, fall back to the flat measurements object so
-    // tiles still show a value (single-point sparkline disabled in component).
-    if (out.length === 0 && fallback) {
-      const v =
-        fallback[key] ??
-        (key === "bp_systolic" ? fallback.blood_pressure_systolic : undefined) ??
-        (key === "bp_diastolic" ? fallback.blood_pressure_diastolic : undefined) ??
-        (key === "hr_bpm" ? fallback.resting_heart_rate : undefined);
+    for (const s of allDated) {
+      const v = s.measurements[key];
       if (typeof v === "number" && !Number.isNaN(v)) out.push(v);
     }
     return out;
