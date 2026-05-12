@@ -65,24 +65,27 @@ export interface FmSessionTypePickerProps {
   dense?: boolean;
   /** Card click handler. Receives the selected type. */
   onSelect?: (id: FmSessionTypeId) => void;
-  /** Optional href for each card — if provided, cards become Links. */
-  cardHref?: (id: FmSessionTypeId) => string;
+  /** Optional href per card — if provided, cards render as Next Links.
+   *  Use a map (not a function) so Server Components can pass it through
+   *  to this Client primitive without tripping the RSC serialisation
+   *  boundary. */
+  hrefMap?: Partial<Record<FmSessionTypeId, string>>;
 }
 
 export function FmSessionTypePicker({
   selectedId,
   dense = false,
   onSelect,
-  cardHref,
+  hrefMap,
 }: FmSessionTypePickerProps) {
-  if (dense) return <PickerDense selectedId={selectedId} onSelect={onSelect} cardHref={cardHref} />;
-  return <PickerFull selectedId={selectedId} onSelect={onSelect} cardHref={cardHref} />;
+  if (dense) return <PickerDense selectedId={selectedId} onSelect={onSelect} hrefMap={hrefMap} />;
+  return <PickerFull selectedId={selectedId} onSelect={onSelect} hrefMap={hrefMap} />;
 }
 
 function PickerFull({
   selectedId,
   onSelect,
-  cardHref,
+  hrefMap,
 }: Omit<FmSessionTypePickerProps, "dense">) {
   return (
     <div>
@@ -197,11 +200,12 @@ function PickerFull({
               </div>
             </div>
           );
-          if (cardHref) {
+          const href = hrefMap?.[s.id];
+          if (href) {
             return (
               <Link
                 key={s.id}
-                href={cardHref(s.id)}
+                href={href}
                 style={{ textDecoration: "none", color: "inherit" }}
               >
                 {inner}
@@ -234,7 +238,7 @@ function PickerFull({
 function PickerDense({
   selectedId,
   onSelect,
-  cardHref,
+  hrefMap,
 }: Omit<FmSessionTypePickerProps, "dense">) {
   return (
     <div style={{ marginBottom: 18 }}>
@@ -298,11 +302,12 @@ function PickerDense({
               </div>
             </div>
           );
-          if (cardHref) {
+          const href = hrefMap?.[s.id];
+          if (href) {
             return (
               <Link
                 key={s.id}
-                href={cardHref(s.id)}
+                href={href}
                 style={{ textDecoration: "none", color: "inherit" }}
               >
                 {inner}

@@ -33,6 +33,7 @@ import {
   type FmSessionTimelineEntry,
   type FmSessionTypeId,
 } from "@/components/fm";
+import { HeaderAvatar } from "./header-avatar";
 
 export const dynamic = "force-dynamic";
 
@@ -174,26 +175,7 @@ export default async function AnalysePage({
           marginBottom: 16,
         }}
       >
-        <div
-          style={{
-            width: 36,
-            height: 36,
-            borderRadius: 6,
-            background: "var(--fm-bg-warm)",
-            border: "1px solid var(--fm-border-light)",
-            overflow: "hidden",
-          }}
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={`/api/client-photo/${id}`}
-            alt={displayName}
-            onError={(e) => {
-              (e.currentTarget as HTMLImageElement).style.display = "none";
-            }}
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          />
-        </div>
+        <HeaderAvatar clientId={id} displayName={displayName} />
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ fontSize: 15, fontWeight: 700 }}>
             {displayName}
@@ -262,17 +244,13 @@ export default async function AnalysePage({
             <EmptyState clientId={id} />
           ) : (
             <FmSessionTypePicker
-              cardHref={(t) =>
-                t === "full"
-                  ? `/clients/${id}?tab=sessions&type=full_assessment`
-                  : t === "checkin"
-                    ? `/clients/${id}?tab=sessions&type=check_in`
-                    : t === "quick"
-                      ? `/clients/${id}?tab=sessions&type=quick_note`
-                      : t === "discovery"
-                        ? `/clients/${id}?tab=sessions&type=discovery_consultation`
-                        : `/clients/${id}?tab=sessions&type=intake`
-              }
+              hrefMap={{
+                discovery: `/clients/${id}?tab=sessions&type=discovery_consultation`,
+                intake: `/clients/${id}?tab=sessions&type=intake`,
+                full: `/clients/${id}?tab=sessions&type=full_assessment`,
+                checkin: `/clients/${id}?tab=sessions&type=check_in`,
+                quick: `/clients/${id}?tab=sessions&type=quick_note`,
+              }}
             />
           )}
 
