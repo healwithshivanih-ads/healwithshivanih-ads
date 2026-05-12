@@ -97,3 +97,9 @@ export type {
 
 export { FmCoachNotes } from "./FmCoachNotes";
 export type { FmCoachNotesProps, CatalogueChip } from "./FmCoachNotes";
+
+export { FmSupplementGrid } from "./FmSupplementGrid";
+export type {
+  FmSupplementGridProps,
+  FmSupplementGridItem,
+} from "./FmSupplementGrid";
