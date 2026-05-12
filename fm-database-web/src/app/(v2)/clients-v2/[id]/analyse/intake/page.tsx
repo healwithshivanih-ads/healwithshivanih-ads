@@ -48,6 +48,63 @@ export default async function IntakePage({
   const cycleRegularity = (c.cycle_regularity as StrOrUndef) ?? null;
   const pregnancyStatus = (c.pregnancy_status as StrOrUndef) ?? null;
 
+  // ── Pre-fill body composition from client.measurements + latest health_snapshot.
+  //     Snapshot wins per-field when present (it's the more recent capture).
+  const flatMeas = (c.measurements as Record<string, unknown> | undefined) ?? {};
+  const snaps = (c.health_snapshots as Array<{ date?: string; measurements?: Record<string, unknown> }> | undefined) ?? [];
+  const latestSnap = snaps
+    .filter((s) => s.measurements && Object.keys(s.measurements).length > 0)
+    .sort((a, b) => (a.date ?? "").localeCompare(b.date ?? ""))
+    .pop();
+  const snapMeas = latestSnap?.measurements ?? {};
+  const numOrEmpty = (k: string): string => {
+    const v = snapMeas[k] ?? flatMeas[k];
+    return typeof v === "number" && !Number.isNaN(v) ? String(v) : "";
+  };
+  // measurement field naming differs between the snapshot schema and the legacy
+  // flat schema (blood_pressure_systolic vs bp_systolic) — try both.
+  const bpSysVal =
+    numOrEmpty("bp_systolic") ||
+    (typeof flatMeas.blood_pressure_systolic === "number"
+      ? String(flatMeas.blood_pressure_systolic)
+      : "");
+  const bpDiaVal =
+    numOrEmpty("bp_diastolic") ||
+    (typeof flatMeas.blood_pressure_diastolic === "number"
+      ? String(flatMeas.blood_pressure_diastolic)
+      : "");
+  const hrVal =
+    numOrEmpty("hr_bpm") ||
+    (typeof flatMeas.resting_heart_rate === "number"
+      ? String(flatMeas.resting_heart_rate)
+      : "");
+
+  const existingMeasurements = {
+    height_cm: numOrEmpty("height_cm"),
+    weight_kg: numOrEmpty("weight_kg"),
+    waist_cm: numOrEmpty("waist_cm"),
+    hip_cm: numOrEmpty("hip_cm"),
+    bp_systolic: bpSysVal,
+    bp_diastolic: bpDiaVal,
+    hr_bpm: hrVal,
+  };
+
+  // Current meds: prefer `current_medications`, fall back to `medications`.
+  const medsList = asStrArray(c.current_medications).length > 0
+    ? asStrArray(c.current_medications)
+    : asStrArray(c.medications);
+
+  // Timeline events
+  const timelineEvents = Array.isArray(c.timeline_events)
+    ? (c.timeline_events as Array<{ year?: number | string; category?: string; event?: string }>)
+        .filter((e) => e && typeof e.event === "string" && e.event.trim().length > 0)
+        .map((e) => ({
+          year: e.year != null ? String(e.year) : "",
+          category: e.category ?? "",
+          event: e.event ?? "",
+        }))
+    : [];
+
   return (
     <AnalysePageShell
       clientId={id}
@@ -95,6 +152,16 @@ export default async function IntakePage({
           pregnancy_due_date: s(c.pregnancy_due_date),
           lactation_started: s(c.lactation_started),
         }}
+        existingMeasurements={existingMeasurements}
+        existingMedications={medsList.join("\n")}
+        existingFamilyHistory={s(c.family_history)}
+        existingPrefs={{
+          dietary_preference: s(c.dietary_preference),
+          foods_to_avoid: s(c.foods_to_avoid),
+          non_negotiables: s(c.non_negotiables),
+          reported_triggers: s(c.reported_triggers),
+        }}
+        existingTimeline={timelineEvents}
       />
     </AnalysePageShell>
   );

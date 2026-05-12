@@ -758,6 +758,8 @@ export interface UpdatePreferencesInput {
   city?: string;
   country?: string;
 
+  family_history?: string;
+
   // FM body-systems review (deep intake)
   digestion_notes?: string;
   sleep_notes?: string;
@@ -819,6 +821,7 @@ export async function updateClientPreferences(
       data.non_negotiables = input.non_negotiables;
     if (input.city !== undefined) data.city = input.city;
     if (input.country !== undefined) data.country = input.country;
+    if (input.family_history !== undefined) data.family_history = input.family_history;
 
     // FM body-systems
     if (input.digestion_notes !== undefined) data.digestion_notes = input.digestion_notes;
