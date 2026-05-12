@@ -346,8 +346,72 @@ export function IntakeForm({
   const [coachNotes, setCoachNotes] = useState("");
 
   const onSave = () => {
-    if (!chiefComplaint.trim() && !hpi.trim()) {
-      toast.error("Add a chief complaint or HPI first");
+    // Detect whether the coach actually changed anything. An intake
+    // update doesn't need a chief complaint — many edits are just body
+    // comp / cycle / FM body-systems / meds. Block only the truly
+    // empty case (no fields touched, no chips changed).
+    const hasAnyTextField =
+      !!(
+        chiefComplaint.trim() ||
+        hpi.trim() ||
+        transcriptNotes.trim() ||
+        medications.trim() ||
+        supplementHx.trim() ||
+        familyHx.trim() ||
+        whatWorked.trim() ||
+        whatDidntWork.trim() ||
+        coachNotes.trim() ||
+        digestionNotes.trim() ||
+        sleepNotes.trim() ||
+        energyPattern.trim() ||
+        menstrualNotes.trim() ||
+        stressResponse.trim() ||
+        childhoodHistory.trim() ||
+        toxicExposures.trim() ||
+        dietaryPreference.trim() ||
+        foodsToAvoid.trim() ||
+        nonNegotiables.trim() ||
+        reportedTriggers.trim()
+      );
+    const hasAnyMeasurement = !!(
+      height || weight || bodyFat || waist || hip || bpSys || bpDia || hr
+    );
+    const hasAnyCycle = !!(
+      cycleStatus ||
+      lmp ||
+      cycleLen ||
+      cycleReg ||
+      menopauseStarted ||
+      pregnancyStatus ||
+      pregnancyDueDate ||
+      lactationStarted
+    );
+    const hasAnyChip =
+      symptoms.length > 0 ||
+      conditions.length > 0 ||
+      allergiesArr.length > 0 ||
+      goals.length > 0 ||
+      medicalHistory.length > 0;
+    const hasAnyTimeline = timeline.some((e) => e.event.trim().length > 0);
+    const hasAnyIfm =
+      Object.values(ifmScores).some(Boolean) ||
+      Object.values(ifmNotes).some((v) => v.trim().length > 0);
+    const hasAnyPillar = !!(
+      sleep || stress || movement || nutrition || connection
+    );
+
+    if (
+      !hasAnyTextField &&
+      !hasAnyMeasurement &&
+      !hasAnyCycle &&
+      !hasAnyChip &&
+      !hasAnyTimeline &&
+      !hasAnyIfm &&
+      !hasAnyPillar
+    ) {
+      toast.error(
+        "Nothing to save yet — fill in at least one field (body comp, meds, cycle, symptoms, …).",
+      );
       return;
     }
     start(async () => {
@@ -1610,7 +1674,14 @@ export function IntakeForm({
         <button
           type="button"
           onClick={onSave}
-          disabled={pending || (!chiefComplaint.trim() && !hpi.trim())}
+          // The earlier hard gate required chief complaint OR HPI to
+          // enable the button — which silently blocked saves when the
+          // coach was just updating body comp / cycle / FM body-systems
+          // / meds (no chief-complaint change needed for an update).
+          // We now disable ONLY while a save is in flight. The onSave
+          // handler itself surfaces an inline error if literally
+          // nothing was filled in.
+          disabled={pending}
           style={{
             padding: "10px 22px",
             background: PRIMARY,
