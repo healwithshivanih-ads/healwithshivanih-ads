@@ -51,6 +51,9 @@ import type { FmWorkflowStage } from "@/components/fm";
 import { PlanPageShell } from "./plan-page-shell";
 // Letters live on Communicate now — single source of truth.
 import { PlanChatAndPreview } from "./plan-chat-and-preview";
+import { ReworkBanner } from "@/app/clients/[id]/rework-banner";
+import { AttachedProtocolsPanel } from "./attached-protocols-panel";
+import { loadAllOfKind } from "@/lib/fmdb/loader";
 
 export const dynamic = "force-dynamic";
 
@@ -242,11 +245,12 @@ export default async function PlanTabPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const [client, allPlans, catalogueChips, sendLog] = await Promise.all([
+  const [client, allPlans, catalogueChips, sendLog, allProtocols] = await Promise.all([
     loadClientById(id),
     loadAllPlans(),
     loadCatalogueChipDict(),
     loadLetterSendLogAction(id),
+    loadAllOfKind<{ slug: string; display_name?: string; category?: string; summary?: string }>("protocols"),
   ]);
   if (!client) {
     return (
@@ -464,6 +468,12 @@ export default async function PlanTabPage({
 
   return (
     <PlanPageShell clientId={id}>
+      {client.rework_suggestion && (
+        <div style={{ marginBottom: 12 }}>
+          <ReworkBanner clientId={id} suggestion={client.rework_suggestion} />
+        </div>
+      )}
+
       {/* Workflow stage banner */}
       <FmWorkflowBanner
         stage={stage.stage}
@@ -686,6 +696,16 @@ export default async function PlanTabPage({
                 )}
               </div>
             </FmPanel>
+
+            {/* Attached FM protocol(s) — 5R, AIP, Whole30, etc. */}
+            <AttachedProtocolsPanel
+              planSlug={activePlan.slug}
+              attached={
+                (activePlan.attached_protocols as string[] | undefined) ?? []
+              }
+              allProtocols={allProtocols}
+              locked={status !== "draft"}
+            />
 
             {/* Supplements — timing bubble row + click-to-filter detail list.
                 Slot classification matches render-client-letter.py exactly
