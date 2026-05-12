@@ -73,10 +73,18 @@ export async function runAssess(input: AssessInput): Promise<AssessResult> {
 export async function generateDraftFromSuggestions(
   input: GenerateDraftInput
 ): Promise<GenerateDraftResult> {
+  // Bumped 30s → 120s (2026-05-12). generate-draft.py is deterministic
+  // (no LLM call) but for clients with large session history + lots of
+  // accumulated AI suggestions, Python startup + YAML I/O + catalogue
+  // loading can exceed 30s on a warm machine. When that happens, the
+  // draft DOES land on disk but the UI gets a timeout toast and the
+  // coach never sees the new plan in their drafts list. cl-004
+  // (dhanishta) hit this: draft was written cleanly (456 lines, plan-check
+  // 0 critical) but the action returned ok=false.
   const result = (await runShim(
     "generate-draft.py",
     input,
-    30_000
+    120_000
   )) as GenerateDraftResult;
   return result;
 }
