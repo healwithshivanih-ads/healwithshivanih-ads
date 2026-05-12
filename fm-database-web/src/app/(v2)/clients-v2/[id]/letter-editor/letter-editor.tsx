@@ -19,6 +19,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import {
   saveMealPlan,
+  generateClientLetter,
   type LetterType,
   type LetterValidationChange,
 } from "@/app/plans/[slug]/lifecycle-actions";
@@ -90,6 +91,13 @@ export function LetterEditor({
   );
   const [pending, startSave] = useTransition();
   const [lastSavedAt, setLastSavedAt] = useState<string | null>(null);
+  // 🪄 Regenerate-with-AI state.  Two-step: clicking the button arms
+  // the confirm modal; only the modal's explicit "Yes, regenerate"
+  // actually fires generateClientLetter with forceRegenerate=true.
+  // This is deliberately heavy-handed because a regen burns ~$0.20
+  // and wipes any in-progress edits the coach hasn't saved.
+  const [regenConfirmOpen, setRegenConfirmOpen] = useState(false);
+  const [regenerating, startRegen] = useTransition();
 
   const sections = useMemo(() => parseSections(markdown), [markdown]);
   const wordCount = useMemo(
@@ -126,6 +134,42 @@ export function LetterEditor({
         );
       } else {
         toast.error(`Save failed: ${res.error}`);
+      }
+    });
+  };
+
+  const onRegenerate = () => {
+    setRegenConfirmOpen(false);
+    startRegen(async () => {
+      try {
+        const res = await generateClientLetter(
+          planSlug,
+          clientId,
+          undefined,        // weightLoss — let the AI re-pick from plan
+          letterType,
+          undefined,        // coachNotes — fresh regen, no carry-over
+          true,             // forceRegenerate — bypass cache
+        );
+        if (!res.ok || !res.markdown) {
+          toast.error(`Regenerate failed: ${res.error ?? "unknown error"}`);
+          return;
+        }
+        // Replace local state with the fresh AI output. acceptedRewrites
+        // is cleared since the old validation report is now stale.
+        setMarkdown(res.markdown);
+        setValidation(res.validation_report ?? []);
+        setAcceptedRewrites(new Set());
+        setLastSavedAt(
+          new Date().toLocaleTimeString("en-IN", {
+            hour: "2-digit",
+            minute: "2-digit",
+          }),
+        );
+        toast.success(
+          `🪄 Letter regenerated — ${res.markdown.split(/\s+/).filter(Boolean).length} words`,
+        );
+      } catch (e) {
+        toast.error(`Regenerate failed: ${(e as Error).message.slice(0, 120)}`);
       }
     });
   };
@@ -279,6 +323,29 @@ export function LetterEditor({
             >
               👁 Preview / HTML
             </Link>
+            <button
+              type="button"
+              onClick={() => setRegenConfirmOpen(true)}
+              disabled={regenerating}
+              title="Rebuild the letter from scratch using the current plan"
+              style={{
+                padding: "6px 12px",
+                fontSize: 11.5,
+                fontWeight: 700,
+                background: regenerating
+                  ? "var(--fm-bg-cool)"
+                  : "rgba(110, 76, 200, 0.10)",
+                border: "1px solid rgba(110, 76, 200, 0.40)",
+                borderRadius: "var(--fm-radius-sm)",
+                color: regenerating
+                  ? "var(--fm-text-tertiary)"
+                  : "#5a3fb0",
+                cursor: regenerating ? "wait" : "pointer",
+                fontFamily: "inherit",
+              }}
+            >
+              {regenerating ? "🪄 Regenerating…" : "🪄 Regenerate with AI"}
+            </button>
             <button
               type="button"
               onClick={onSave}
@@ -657,6 +724,113 @@ export function LetterEditor({
           </aside>
         </div>
       </div>
+
+      {/* 🪄 Regenerate confirmation modal — overlays the editor.
+          Two-step confirm because regen burns ~$0.20 + wipes unsaved
+          edits. Coach has to click "Yes, regenerate" before the AI
+          call fires. */}
+      {regenConfirmOpen && (
+        <div
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setRegenConfirmOpen(false);
+          }}
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "rgba(15, 15, 20, 0.65)",
+            zIndex: 250,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: 24,
+          }}
+        >
+          <div
+            style={{
+              maxWidth: 460,
+              background: "var(--fm-surface)",
+              border: "1.5px solid rgba(110, 76, 200, 0.40)",
+              borderRadius: "var(--fm-radius-md)",
+              padding: "24px 26px",
+              boxShadow: "0 20px 60px rgba(0,0,0,0.30)",
+            }}
+          >
+            <div style={{ fontSize: 28, marginBottom: 10 }}>🪄</div>
+            <h2
+              style={{
+                fontFamily: "var(--fm-font-display)",
+                fontSize: 18,
+                fontWeight: 400,
+                margin: "0 0 8px",
+                color: "var(--fm-text-primary)",
+                letterSpacing: "-0.2px",
+              }}
+            >
+              Regenerate this letter with AI?
+            </h2>
+            <p
+              style={{
+                fontSize: 12.5,
+                color: "var(--fm-text-secondary)",
+                lineHeight: 1.55,
+                margin: "0 0 14px",
+              }}
+            >
+              The {letterLabel.toLowerCase()} will be rebuilt from scratch
+              against the current plan ({planSlug}).{" "}
+              {isDirty && (
+                <strong style={{ color: "#c0392b" }}>
+                  Your unsaved edits will be replaced.
+                </strong>
+              )}{" "}
+              Existing AI validation findings will reset. Cost ≈ $0.20,
+              time ~60–120s.
+            </p>
+            <div
+              style={{
+                display: "flex",
+                gap: 8,
+                justifyContent: "flex-end",
+              }}
+            >
+              <button
+                type="button"
+                onClick={() => setRegenConfirmOpen(false)}
+                style={{
+                  padding: "7px 14px",
+                  fontSize: 12,
+                  fontWeight: 600,
+                  background: "var(--fm-surface)",
+                  border: "1px solid var(--fm-border)",
+                  borderRadius: "var(--fm-radius-sm)",
+                  color: "var(--fm-text-secondary)",
+                  cursor: "pointer",
+                  fontFamily: "inherit",
+                }}
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={onRegenerate}
+                style={{
+                  padding: "7px 14px",
+                  fontSize: 12,
+                  fontWeight: 700,
+                  background: "#5a3fb0",
+                  color: "#fff",
+                  border: 0,
+                  borderRadius: "var(--fm-radius-sm)",
+                  cursor: "pointer",
+                  fontFamily: "inherit",
+                }}
+              >
+                🪄 Yes, regenerate
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
