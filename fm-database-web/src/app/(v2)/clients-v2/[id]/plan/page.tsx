@@ -21,10 +21,8 @@ import Link from "next/link";
 import { loadClientById } from "@/lib/fmdb/loader-extras";
 import { loadAllPlans } from "@/lib/fmdb/loader";
 import { loadCatalogueChipDict } from "@/lib/fmdb/catalogue-chip-dict";
-import {
-  loadLetterSendLogAction,
-  type LetterSendEntry,
-} from "@/app/api/email/actions";
+// Letter send history moved to Communicate tab — single source of truth
+// for all client comms. Plan tab no longer reads the send log.
 import { getLetterStalenessAction } from "@/app/plans/[slug]/lifecycle-actions";
 import type { Plan, PlanStatus } from "@/lib/fmdb/types";
 
@@ -236,7 +234,7 @@ function deriveStage(
         ? `Next follow-up ${recheckDate}.`
         : "Letters can go out now.",
       cta: "Generate letters",
-      ctaHref: undefined,
+      ctaHref: `/clients-v2/${clientId}/communicate`,
     };
   }
   return {
@@ -254,11 +252,10 @@ export default async function PlanTabPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const [client, allPlans, catalogueChips, sendLog, allProtocols] = await Promise.all([
+  const [client, allPlans, catalogueChips, allProtocols] = await Promise.all([
     loadClientById(id),
     loadAllPlans(),
     loadCatalogueChipDict(),
-    loadLetterSendLogAction(id),
     loadAllOfKind<{ slug: string; display_name?: string; category?: string; summary?: string }>("protocols"),
   ]);
   if (!client) {
@@ -1059,87 +1056,9 @@ export default async function PlanTabPage({
               </div>
             )}
 
-            {/* Letter send history — filter to this plan only so the
-                panel stays scoped + scannable. Newest first. */}
-            {sendLog.filter((e) => e.plan_slug === activePlan.slug).length > 0 && (
-              <FmPanel
-                title="📤 Letter send history"
-                subtitle="Every email this plan has been mailed out from."
-              >
-                <div style={{ display: "grid", gap: 6 }}>
-                  {sendLog
-                    .filter((e) => e.plan_slug === activePlan.slug)
-                    .slice(0, 8)
-                    .map((e: LetterSendEntry, i) => {
-                      const dt = new Date(e.sent_at);
-                      const sentLabel = Number.isNaN(dt.getTime())
-                        ? e.sent_at
-                        : dt.toLocaleString("en-IN", {
-                            day: "numeric",
-                            month: "short",
-                            hour: "2-digit",
-                            minute: "2-digit",
-                          });
-                      return (
-                        <div
-                          key={`${e.sent_at}-${i}`}
-                          style={{
-                            fontSize: 11,
-                            padding: "6px 9px",
-                            borderLeft: "2px solid var(--fm-primary)",
-                            background: "var(--fm-bg-warm)",
-                            borderRadius: "0 var(--fm-radius-sm) var(--fm-radius-sm) 0",
-                          }}
-                        >
-                          <div style={{ fontWeight: 700, color: "var(--fm-text-primary)" }}>
-                            ✉ {sentLabel}
-                          </div>
-                          <div
-                            style={{
-                              fontSize: 10.5,
-                              color: "var(--fm-text-secondary)",
-                              marginTop: 2,
-                            }}
-                          >
-                            To {e.to}
-                            {e.cc && (
-                              <span style={{ color: "var(--fm-text-tertiary)" }}>
-                                {" "}· cc {e.cc}
-                              </span>
-                            )}
-                          </div>
-                          {e.letter_types.length > 0 && (
-                            <div
-                              style={{
-                                marginTop: 4,
-                                display: "flex",
-                                flexWrap: "wrap",
-                                gap: 3,
-                              }}
-                            >
-                              {e.letter_types.map((t) => (
-                                <span
-                                  key={t}
-                                  style={{
-                                    fontSize: 9.5,
-                                    padding: "1px 6px",
-                                    background: "rgba(255, 107, 53, 0.10)",
-                                    color: "var(--fm-primary)",
-                                    borderRadius: "var(--fm-radius-pill)",
-                                    fontWeight: 600,
-                                  }}
-                                >
-                                  {t.replace(/_/g, " ")}
-                                </span>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      );
-                    })}
-                </div>
-              </FmPanel>
-            )}
+            {/* Letter send history lives on the Communicate tab now —
+                all client comms (send + history + clickable letter
+                preview) live in one place. */}
 
             {/* Status history timeline */}
             {statusHistory.length > 0 && (

@@ -16,12 +16,17 @@ import { loadClientById } from "@/lib/fmdb/loader-extras";
 import { loadAllPlans } from "@/lib/fmdb/loader";
 import { getRecentAisensyMessages } from "@/lib/fmdb/loader-extras";
 import { checkAisensyConfigAction } from "@/app/api/aisensy-webhook/actions";
-import { FmPageHeader } from "@/components/fm";
+import { FmPageHeader, FmPanel } from "@/components/fm";
 import { CommunicatePageShell } from "./communicate-page-shell";
 import { CommunicateClient } from "./communicate-client";
 import { ReworkBanner } from "@/app/clients/[id]/rework-banner";
 import { getLetterStalenessAction } from "@/app/plans/[slug]/lifecycle-actions";
 import { RegenerateStaleButton } from "./regenerate-stale-button";
+import {
+  loadLetterSendLogAction,
+  type LetterSendEntry,
+} from "@/app/api/email/actions";
+import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
@@ -34,10 +39,11 @@ export default async function CommunicateTabPage({
 }) {
   const { id } = await params;
 
-  const [client, allPlans, aisensyConfig] = await Promise.all([
+  const [client, allPlans, aisensyConfig, sendLog] = await Promise.all([
     loadClientById(id),
     loadAllPlans(),
     checkAisensyConfigAction(),
+    loadLetterSendLogAction(id),
   ]);
   if (!client) {
     return (
@@ -189,6 +195,131 @@ export default async function CommunicateTabPage({
           text: m.text,
         }))}
       />
+
+      {/* Letter send history — single source of truth for "what went
+          out + when". Click any row to open the actual letter that
+          was sent in the v2 letter editor. */}
+      {sendLog.length > 0 && (
+        <div style={{ marginTop: 20 }}>
+          <FmPanel
+            title="📤 Letter send history"
+            subtitle="Every email that's gone out to this client. Click any row to open the letter that was sent."
+          >
+            <div style={{ display: "grid", gap: 6 }}>
+              {sendLog.slice(0, 20).map((e: LetterSendEntry, i) => {
+                const dt = new Date(e.sent_at);
+                const sentLabel = Number.isNaN(dt.getTime())
+                  ? e.sent_at
+                  : dt.toLocaleString("en-IN", {
+                      day: "numeric",
+                      month: "short",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    });
+                const primaryType = e.letter_types[0] ?? "consolidated";
+                const openHref = `/clients-v2/${id}/letter-editor?plan=${e.plan_slug}&type=${primaryType}`;
+                return (
+                  <Link
+                    key={`${e.sent_at}-${i}`}
+                    href={openHref}
+                    style={{
+                      fontSize: 11,
+                      padding: "7px 10px",
+                      borderLeft: "3px solid var(--fm-primary)",
+                      background: "var(--fm-bg-warm)",
+                      borderRadius:
+                        "0 var(--fm-radius-sm) var(--fm-radius-sm) 0",
+                      textDecoration: "none",
+                      color: "inherit",
+                      display: "block",
+                      transition: "background 0.15s",
+                    }}
+                    className="fm-comm-log-row"
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        gap: 8,
+                        alignItems: "baseline",
+                      }}
+                    >
+                      <div
+                        style={{
+                          fontWeight: 700,
+                          color: "var(--fm-text-primary)",
+                        }}
+                      >
+                        ✉ {sentLabel}
+                      </div>
+                      <div
+                        style={{
+                          fontSize: 10,
+                          color: "var(--fm-text-tertiary)",
+                          fontFamily: "var(--fm-font-mono)",
+                        }}
+                      >
+                        {e.plan_slug}
+                      </div>
+                    </div>
+                    <div
+                      style={{
+                        fontSize: 10.5,
+                        color: "var(--fm-text-secondary)",
+                        marginTop: 2,
+                      }}
+                    >
+                      To {e.to}
+                      {e.cc && (
+                        <span style={{ color: "var(--fm-text-tertiary)" }}>
+                          {" "}· cc {e.cc}
+                        </span>
+                      )}
+                    </div>
+                    {e.letter_types.length > 0 && (
+                      <div
+                        style={{
+                          marginTop: 4,
+                          display: "flex",
+                          flexWrap: "wrap",
+                          gap: 3,
+                          alignItems: "center",
+                        }}
+                      >
+                        {e.letter_types.map((t) => (
+                          <span
+                            key={t}
+                            style={{
+                              fontSize: 9.5,
+                              padding: "1px 6px",
+                              background: "rgba(255, 107, 53, 0.10)",
+                              color: "var(--fm-primary)",
+                              borderRadius: "var(--fm-radius-pill)",
+                              fontWeight: 600,
+                            }}
+                          >
+                            {t.replace(/_/g, " ")}
+                          </span>
+                        ))}
+                        <span
+                          style={{
+                            fontSize: 10,
+                            color: "var(--fm-text-secondary)",
+                            marginLeft: "auto",
+                            fontWeight: 600,
+                          }}
+                        >
+                          Open letter →
+                        </span>
+                      </div>
+                    )}
+                  </Link>
+                );
+              })}
+            </div>
+          </FmPanel>
+        </div>
+      )}
     </CommunicatePageShell>
   );
 }

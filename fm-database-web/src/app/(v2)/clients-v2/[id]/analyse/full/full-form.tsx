@@ -951,6 +951,24 @@ export function FullAssessmentForm({
             synthesisNotes={result.suggestions.synthesis_notes}
           />
 
+          {result.session_id && (
+            <FmPanel
+              title="💬 Refine with chat"
+              subtitle="Ask follow-up questions about this synthesis. The conversation persists with the session — anything you tell the AI here is also factored into the draft when you click Generate below."
+            >
+              <ChatPanel
+                clientId={clientId}
+                sessionId={result.session_id}
+                dryRun={false}
+              />
+            </FmPanel>
+          )}
+
+          {/* Generate-draft sits BELOW the chat so it visually captures
+              both the AI suggestions AND any chat refinement — not just
+              the suggestions cards. Without this ordering the button
+              looked like it only acted on what was directly above it
+              and coaches missed using the chat. */}
           <div
             style={{
               padding: 16,
@@ -981,23 +999,11 @@ export function FullAssessmentForm({
               {draftPending ? "Generating…" : "📋 Generate draft plan →"}
             </button>
             <div style={{ flex: 1, fontSize: 11.5 }}>
-              Drops a structured draft into <code>/plans/</code>. You can edit,
-              preview, and activate from there.
+              Captures everything above — AI suggestions you ticked +
+              anything refined in the chat — into a structured draft.
+              You can edit, preview, and activate from there.
             </div>
           </div>
-
-          {result.session_id && (
-            <FmPanel
-              title="💬 Refine with chat"
-              subtitle="Ask follow-up questions about this synthesis. The conversation persists with the session."
-            >
-              <ChatPanel
-                clientId={clientId}
-                sessionId={result.session_id}
-                dryRun={false}
-              />
-            </FmPanel>
-          )}
         </>
       )}
     </div>

@@ -43,6 +43,27 @@ WHEN TO USE client_patch (writes to client.yaml — persists across all future p
 - "she won't give up coffee" / "loves dosa" → update non_negotiables (append to existing)
 - "gluten triggers her bloating" / "dairy seems to flare joint pain" → update reported_triggers (append to existing)
 - "removing gluten helped her sleep" → reported_triggers (note the response)
+TITRATION (when editing a supplement's `titration` field): India has no
+compounding pharmacies — titrations MUST use what's available off the shelf.
+Default to "every-other-day for week 1, then daily." If a sub-dose is
+medically important, give a PRACTICAL split specific to that supplement's
+form: "Open the capsule, stir half the powder into water, drink it,
+discard the rest" / "Cut a 500mg tablet in half — 250mg week 1, full
+tablet from week 2" / "Start with ¼ scoop, increase by ¼ scoop every
+3 days" / "5 drops, then build by 5 drops every 3 days". Whole capsules
+and tablets only — never invent an arbitrary mg dose that requires
+compounding. If the dose is low and well-tolerated, leave titration empty.
+
+LIFESTYLE / NUTRITION CHANGES — never generic. Every practice or food
+addition must tie to a specific signal in this client's data (a named
+symptom, lab value, medication, condition, goal). BANNED phrases unless
+tied to a specific client signal in the same sentence: "drink more water",
+"manage stress", "improve sleep hygiene", "exercise regularly", "get
+sunlight", "eat balanced meals", "limit screen time". If the coach asks
+for a generic tip, ground it: "screens off by 8:45 — your client's bedtime
+is 10 and the cortisol curve shows late-evening spike; closes the melatonin
+window" — not just "limit screen time."
+
 RULES for client_patch:
 - ALWAYS preserve and APPEND to existing string content; do not replace.
   e.g. if foods_to_avoid is "onions; garlic" and coach adds "no eggplant",

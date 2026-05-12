@@ -110,6 +110,10 @@ export interface SupplementSuggestion {
   dose?: string;
   timing?: string;
   duration_weeks?: number | null;
+  /** How the client ramps to the target dose. India-aware: uses
+   *  whole capsules / tablets, every-other-day → daily, or practical
+   *  split methods (open capsule + half the powder, cut tablet, etc.). */
+  titration?: string;
   rationale?: string;
   evidence_tier_caveat?: string;
   contraindication_check?: string;

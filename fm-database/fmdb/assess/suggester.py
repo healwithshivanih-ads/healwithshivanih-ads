@@ -122,7 +122,7 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
                     "name": {"type": "string", "description": "Freeform practice name (e.g. 'morning sunlight')."},
                     "cadence": {"type": "string", "description": "daily | nightly | weekly | etc."},
                     "details": {"type": "string"},
-                    "rationale": {"type": "string"},
+                    "rationale": {"type": "string", "description": "WHY this practice for THIS client — reference a specific symptom, lab, medication, or life event from client_context. Avoid generic 'good for stress' / 'helps sleep'. If you can't tie it to a specific signal in this client's data, drop the suggestion."},
                     "addresses_mechanism": {"type": "array", "items": {"type": "string"}, "description": "mechanism slugs this targets"},
                 },
             },
@@ -150,6 +150,7 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
                     "dose": {"type": "string"},
                     "timing": {"type": "string"},
                     "duration_weeks": {"type": "integer"},
+                    "titration": {"type": "string", "description": "How the client ramps to the target dose. CRITICAL: India has no compounding pharmacies, so titrate using what's available off the shelf. Use the catalogue's typical_dose_range + forms_available + dosage info to know what comes in what strength. If you need a sub-dose: (a) every-other-day → daily (simplest, default), or (b) when split-dose is medically important: 'Open the capsule and stir half the powder into water, drink it; discard the rest' OR 'split a 500mg tablet in half'. Be specific to THIS supplement's actual format. Empty string when the dose can be taken as-is from day 1."},
                     "rationale": {"type": "string"},
                     "evidence_tier_caveat": {"type": "string", "description": "If catalogue tier is fm_specific_thin or confirm_with_clinician, surface that."},
                     "contraindication_check": {"type": "string", "description": "Any flagged conflicts with client meds/conditions."},
@@ -340,6 +341,30 @@ HARD RULES (violating these breaks the downstream system):
    warm, plain-English, second-person, free of jargon. Examples in the catalogue
    show the voice.
 
+5b. CLIENT-SPECIFIC, NEVER GENERIC. Every lifestyle suggestion, nutrition
+    tip, supplement rationale, and education topic MUST tie back to a
+    specific piece of THIS client's data — a named symptom, a lab value,
+    a medication, a condition, a goal, a timeline event, a measurement.
+    BAD ("drink more water", "manage stress", "improve sleep hygiene",
+    "eat more vegetables", "get 30 min of movement daily") — these
+    apply to every client and the coach hates that they're showing up
+    on every plan. GOOD ("Sleep is the lever for you specifically —
+    cortisol 28 at 11pm + fragmented night-waking tells me the HPA
+    axis isn't downshifting. Try a 9pm magnesium glycinate + cool
+    bedroom 18°C + screens off by 8:45pm for the next 2 weeks."). If
+    you can't ground a suggestion in a specific signal you see in this
+    client's record, DROP IT. The whole point of the AI synthesis is
+    to NOT regurgitate generic FM advice — that's already in the catalogue.
+
+5c. NO GENERIC LIFESTYLE BOILERPLATE — banned phrases (unless you
+    explicitly tie to a named client signal in the SAME sentence):
+    "drink more water", "manage stress", "improve sleep hygiene",
+    "exercise regularly", "get sunlight", "deep breathing", "limit
+    screen time", "eat balanced meals". If one of these is genuinely
+    the right call, give the client-specific dose: "screens off by
+    8:45 — your bedtime is 10 and you reported scrolling till 9:45;
+    that's the gap closing your melatonin window."
+
 6. `additional_symptoms_to_screen` is your chance to surface symptoms the coach
    didn't pick that fit the cluster — saves a follow-up call.
 
@@ -439,6 +464,34 @@ HARD RULES (violating these breaks the downstream system):
       through. If they conflict with the catalogue's evidence_tier, mention
       the discrepancy and prefer the client's lived experience for the
       first phase.
+
+12c. TITRATION — write the `titration` field on every supplement that
+    benefits from ramping. India does not have compounding pharmacies,
+    so we cannot prescribe arbitrary sub-doses. The titration plan MUST
+    use forms that exist off the shelf in the catalogue's
+    `typical_dose_range` + `forms_available`:
+    - DEFAULT: every-other-day for week 1, then daily. Cheap, no waste.
+      Example: "200mg every other day for week 1, then 200mg daily."
+    - WHEN HIGHER DOSE INTRODUCED LATER: "200mg daily for weeks 1–4,
+      then 400mg daily from week 5". Use whole capsules / tablets only.
+    - WHEN A SUB-DOSE IS MEDICALLY IMPORTANT (e.g. sensitive nervous
+      system, high histamine, drug interaction): give a PRACTICAL split
+      method specific to the supplement's actual form:
+        * capsule  → "Open the capsule, stir half the powder into water,
+                      drink it slowly. Discard the rest. Build up to a
+                      full capsule over 7-10 days."
+        * tablet   → "Cut a 500mg tablet in half — 250mg for week 1.
+                      Increase to full tablet from week 2."
+        * powder   → "Start with ¼ scoop in water for 3 days, ½ scoop
+                      for 3 days, then full scoop."
+        * liquid   → "Start with 5 drops, build by 5 drops every 3 days
+                      until you reach the full dose."
+    - IF DOSE IS LOW + WELL-TOLERATED (e.g. magnesium glycinate 200mg,
+      vitamin D3 1000IU, fish oil 1g): no titration needed — empty
+      string. Don't overcomplicate.
+    - Honest about FORM: if the catalogue's `forms_available` is just
+      `capsule` and dose is 200mg, don't say "split a tablet". Use the
+      form that exists.
 
 13. SESSION HISTORY (`session_history` in the user payload). If non-empty,
     earlier sessions for this same client are listed oldest → newest. Use
