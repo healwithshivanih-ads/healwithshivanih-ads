@@ -2893,7 +2893,7 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
           toast.error(msg);
         } else if (res.slug) {
           toast.success(`Draft plan created at ${res.slug}`);
-          router.push(`/plans/${res.slug}`);
+          router.push(`/clients-v2/${clientId}/plan/edit/${res.slug}`);
         }
       } catch (e) {
         setError((e as Error).message);

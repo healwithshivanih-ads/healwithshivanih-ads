@@ -5,7 +5,7 @@ the queue. Items here have been explicitly deferred — listed roughly by area.
 When picking one up, move its entry to a v0.x commit message and delete it
 from this file.
 
-Last updated: 2026-05-12 (post v0.66 work — chat learns prefs, v2 follow-up + protocol picker + staleness banner + pre-session brief + session brief PDF + rework banner full coverage)
+Last updated: 2026-05-12 (post v0.67 — v1→v2 migration completed in 3 phases: redirect / + link-rot + v2 plan editor + sidebar repointed)
 
 ---
 
@@ -21,6 +21,31 @@ Last updated: 2026-05-12 (post v0.66 work — chat learns prefs, v2 follow-up + 
 ### Upload flow
 - **Prior-transcript picker** — surface previous session transcripts on the Uploads card so coach can attach an earlier one ("use transcript from 2026-04-29 session") instead of re-uploading. Equivalent to the lab "files already on this client" picker already shipped.
 - **Unified upload box with AI classifier** — replace the four separate upload panels (transcript / lab / functional test / genetic / other reports) with one upload zone. AI classifies the document and routes to the right pipeline. Bigger redesign — needs an AI routing layer on the backend.
+
+---
+
+## v2 migration — finishing items (2026-05-12)
+
+The bulk of the v1→v2 migration shipped in Phases 1-3 today (root
+redirect, link-rot fixes, v2 plan editor, v1 sidebar repointed,
+/assess redirected, shared-component v1 router pushes redirected to
+v2). Three small follow-ups remain:
+
+- **v2 new-client form** — `/clients?new=1` (v1) is still the only
+  client-creation surface. FmAppShell's "+ New client" button + the
+  v2 /clients-v2 page "+ New client" CTAs both link there. Build a
+  v2 form so the coach never leaves v2 chrome. ~30 min.
+- **Decide fate of /clients/[id] (v1)** — still functional as the
+  "↗ Open in classic Sessions tab" escape hatch from v2 sessions-browser.
+  Now that v2 has full feature parity (overview / analyse / plan / plan
+  editor / communicate / sessions / handoff), this is decorative. Decide:
+  drop the escape-hatch link + leave the v1 route as orphaned, or
+  redirect /clients/[id] → /clients-v2/[id]. ~5 min once decided.
+- **Decide fate of /plans + /plans/[slug] (v1)** — global plans list
+  still exists at /plans (not linked from v2). v1 plan editor at
+  /plans/[slug] still works (and its internal back-button now correctly
+  points to v2 client). Decide: keep as power-user fallback, or redirect
+  /plans/[slug] → /clients-v2/[id]/plan/edit/[slug]. ~10 min.
 
 ---
 
@@ -60,7 +85,7 @@ Last updated: 2026-05-12 (post v0.66 work — chat learns prefs, v2 follow-up + 
 ## /plan
 
 - **Multi-coach support** — currently `updated_by: shivani` is hardcoded. When other coaches join, need a `coach_id` selector + per-coach branding on letters.
-- **v2 plan editor (Phase 4.5)** — the v2 `/clients-v2/[id]/plan` is a read-only dashboard; editing still drops to legacy `/plans/[slug]`. Rebuild the 3-tab editor (Protocol / Documents / Lifecycle) in v2 chrome with the same plan-chat surface. Largest open piece of v2 migration. ~3-5 hours.
+- ~~**v2 plan editor (Phase 4.5)**~~ — shipped 2026-05-12 as Phase 2 of the v1→v2 migration. /clients-v2/[id]/plan/edit/[slug] mounts the existing v1 PlanEditor (verbatim, no fork) inside the v2 shell. All Edit-in-classic CTAs across v2 surfaces now point here.
 - **Inline plan editor on client page** — alternative / overlapping with v2 plan editor: expand the editor inline on the Plan tab instead of navigating. Pick one approach.
 - **Bulk regenerate letters** — when the plan changes after letters were generated, surface a "regenerate all stale letters" button on v2 Communicate (right above SendPackageButton, only when staleness banner is showing). Coach currently has to re-tick each type. ~20 min.
 - **Notes-for-coach formatting** — `notes_for_coach` renders as a wall of text. Coach wants it structured (subheadings, bullets). Either (a) extend the AI prompt in generate-draft.py and the chat tool to emit markdown-friendly structure, OR (b) parse it on render. Open question: should the AI structure it from the start, or should the human structure it during the chat session?

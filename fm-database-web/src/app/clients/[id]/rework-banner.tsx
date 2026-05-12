@@ -88,7 +88,10 @@ export function ReworkBanner({ clientId, suggestion }: Props) {
             `${r.applied_count ?? 0} change${r.applied_count === 1 ? "" : "s"} applied`,
         );
         setOpen(false);
-        router.push(`/plans/${r.slug}`);
+        // v2 is the default surface now — drop the coach into the v2
+        // editor for the newly-created rework draft so they stay in the
+        // shell they came from.
+        router.push(`/clients-v2/${clientId}/plan/edit/${r.slug}`);
       } else {
         toast.error(r.error ?? "Rework failed");
       }

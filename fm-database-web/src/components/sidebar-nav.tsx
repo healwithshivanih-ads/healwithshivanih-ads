@@ -5,9 +5,16 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { cn } from "@/lib/utils";
 
+// v1 legacy sidebar. Only rendered on routes that still use the root
+// layout (catalogue, search, ingest, resources, mindmap, backlog,
+// dashboard-legacy, /clients, /plans, /assess). The v2 surfaces use
+// FmAppShell which has its own nav.
+//
+// Client-area entries point at /clients-v2 so even if a coach is on a
+// v1 page she gets bumped into the v2 shell on next nav.
 const CLIENT_NAV = [
-  { href: "/",        label: "🏠 Dashboard" },
-  { href: "/clients", label: "👥 Clients" },
+  { href: "/dashboard-v2", label: "🏠 Dashboard" },
+  { href: "/clients-v2",   label: "👥 Clients" },
 ];
 
 const KB_NAV = [
