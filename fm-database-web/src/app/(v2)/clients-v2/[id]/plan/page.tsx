@@ -278,13 +278,33 @@ export default async function PlanTabPage({
       )
     : [];
 
-  const labs = activePlan
-    ? summariseSection(
-        activePlan.lab_orders,
-        (it) => it.test as string | undefined,
-        (it) => it.reason as string | undefined,
-      )
-    : [];
+  // Lab orders split into "new" (order now) and "repeat" (re-check on file).
+  // Pre-AI plans didn't have `kind`; default to "new" for backward compat.
+  function labKind(it: Record<string, unknown>): "new" | "repeat" {
+    return it.kind === "repeat" ? "repeat" : "new";
+  }
+  function labDueText(it: Record<string, unknown>): string | undefined {
+    const w = it.due_in_weeks;
+    return typeof w === "number" && w > 0 ? `re-test in ${w} wks` : undefined;
+  }
+  function labDetail(it: Record<string, unknown>): string | undefined {
+    const reason = it.reason as string | undefined;
+    const due = labDueText(it);
+    return [due, reason].filter(Boolean).join(" — ");
+  }
+  const rawLabOrders = (activePlan?.lab_orders as Array<Record<string, unknown>> | undefined) ?? [];
+  const newLabs = rawLabOrders
+    .filter((it) => labKind(it) === "new")
+    .map((it) => ({
+      label: (it.test as string) ?? "",
+      detail: it.reason as string | undefined,
+    }))
+    .filter((x) => x.label);
+  const repeatLabs = rawLabOrders
+    .filter((it) => labKind(it) === "repeat")
+    .map((it) => ({ label: (it.test as string) ?? "", detail: labDetail(it) }))
+    .filter((x) => x.label);
+  // Total used in section header — kept inline; legacy `labs` removed below.
 
   const referrals = activePlan
     ? summariseSection(
@@ -478,17 +498,62 @@ export default async function PlanTabPage({
               )}
             </FmPanel>
 
-            {/* Labs ordered */}
-            {labs.length > 0 && (
+            {/* Labs — split into NEW (order now) and REPEAT (re-check) */}
+            {(newLabs.length > 0 || repeatLabs.length > 0) && (
               <FmPanel
-                title={`🧪 Labs ordered (${labs.length})`}
-                subtitle="Marker requests on this plan. Order via PrognoHealth / Thyrocare."
+                title={`🧪 Labs (${newLabs.length + repeatLabs.length})`}
+                subtitle="Lab markers attached to this plan. Repeats are re-checks of values already on file."
               >
-                <div style={{ display: "grid", gap: 6 }}>
-                  {labs.map((l, i) => (
-                    <Row key={`${l.label}-${i}`} label={l.label} detail={l.detail} />
-                  ))}
-                </div>
+                {newLabs.length > 0 && (
+                  <div style={{ marginBottom: repeatLabs.length > 0 ? 14 : 0 }}>
+                    <div
+                      style={{
+                        fontSize: 10,
+                        textTransform: "uppercase",
+                        letterSpacing: 0.6,
+                        fontWeight: 700,
+                        color: "var(--fm-primary)",
+                        marginBottom: 6,
+                      }}
+                    >
+                      🆕 Order fresh ({newLabs.length})
+                    </div>
+                    <div style={{ display: "grid", gap: 6 }}>
+                      {newLabs.map((l, i) => (
+                        <Row
+                          key={`new-${l.label}-${i}`}
+                          label={l.label}
+                          detail={l.detail}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {repeatLabs.length > 0 && (
+                  <div>
+                    <div
+                      style={{
+                        fontSize: 10,
+                        textTransform: "uppercase",
+                        letterSpacing: 0.6,
+                        fontWeight: 700,
+                        color: "var(--fm-text-secondary)",
+                        marginBottom: 6,
+                      }}
+                    >
+                      🔁 Re-test on file ({repeatLabs.length})
+                    </div>
+                    <div style={{ display: "grid", gap: 6 }}>
+                      {repeatLabs.map((l, i) => (
+                        <Row
+                          key={`rep-${l.label}-${i}`}
+                          label={l.label}
+                          detail={l.detail}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
               </FmPanel>
             )}
 

@@ -175,6 +175,10 @@ export const FACTOR_LABELS: Record<keyof FactorScores, string> = {
 export interface LabFollowup {
   test: string;
   reason: string;
+  /** "new" (default — coach should order) or "repeat" (already on file, re-check). */
+  kind?: "new" | "repeat";
+  /** When kind=repeat: weeks from session date to re-test. */
+  due_in_weeks?: number;
 }
 
 export interface ReferralTrigger {

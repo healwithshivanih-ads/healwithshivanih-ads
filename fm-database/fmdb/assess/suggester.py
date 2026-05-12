@@ -193,13 +193,28 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
         },
         "lab_followups": {
             "type": "array",
-            "description": "Labs the coach should ask the clinician to order.",
+            "description": (
+                "Labs the coach should ask the clinician to order. ONLY include "
+                "tests that are NOT already in client_context.known_labs or "
+                "client_context.recent_lab_history (and not in this session's "
+                "extracted_labs). For a test that's already on file but is due "
+                "for a re-check, include it with `kind: repeat` and an explicit "
+                "`due_in_weeks` so it's clearly a follow-up, not a fresh order."
+            ),
             "items": {
                 "type": "object",
                 "required": ["test", "reason"],
                 "properties": {
                     "test": {"type": "string"},
                     "reason": {"type": "string"},
+                    "kind": {
+                        "type": "string",
+                        "description": "new | repeat (default new). 'repeat' means the test is already on file and we want a time-bound re-check."
+                    },
+                    "due_in_weeks": {
+                        "type": "integer",
+                        "description": "For kind=repeat: how many weeks from today to re-test."
+                    },
                 },
             },
         },
@@ -301,6 +316,25 @@ HARD RULES (violating these breaks the downstream system):
    vit D 50-80 ng/mL — these are FM-specific not consensus). Flag interpretation
    in `fm_interpretation` and note when standard-range "normal" hides FM-relevant
    suboptimal.
+
+   EXISTING LABS. `client_context.known_labs` lists the FM-interpreted markers
+   already on file from prior reports (marker_name + value + unit + flag +
+   reference_range + fm_interpretation). `client_context.recent_lab_history`
+   has the last 90 days' raw lab values per snapshot. Treat these as the
+   ground-truth baseline:
+   - DO NOT add a test to `lab_followups` if its value is already in
+     known_labs or any recent_lab_history snapshot, UNLESS you're explicitly
+     recommending a follow-up re-test. In that case set `kind: "repeat"` and
+     `due_in_weeks: N` so the coach can see it's a re-check, not a fresh
+     order. (Wrong: re-ordering Ferritin when it's on file as 29.4.
+     Right: `{test: "Ferritin", kind: "repeat", due_in_weeks: 12, reason:
+     "Ferritin 29.4 below FM optimal 70 — retest after 12 wks of iron
+     repletion to confirm response."}`.)
+   - When you reference a known value in any `reason`, cite the value and
+     date if available — proves you saw it.
+   - Tests NOT in known_labs but worth doing now (e.g., RBC magnesium when
+     only serum magnesium is on file, or a hormonal panel when none exists)
+     are valid `lab_followups` with default `kind: "new"`.
 
 5. Tone of `client_facing_summary` and `coaching_translation`-style fields:
    warm, plain-English, second-person, free of jargon. Examples in the catalogue

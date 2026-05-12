@@ -15,7 +15,7 @@ parse without change.
 
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, Optional
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
@@ -252,6 +252,11 @@ class LabFollowup(BaseModel):
     _coerce = model_validator(mode="before")(_coerce_none_strings)
     test: str
     reason: str
+    # "new" (default — coach should order it) or "repeat" (already on file,
+    # this is a follow-up re-check). When kind=repeat, due_in_weeks should
+    # be set so the coach can scheduling the re-test relative to today.
+    kind: Optional[str] = None
+    due_in_weeks: Optional[int] = None
 
 
 class ReferralTrigger(BaseModel):

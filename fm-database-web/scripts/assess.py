@@ -282,6 +282,53 @@ def main() -> int:
     except Exception:
         pass
 
+    # ----- existing labs already on file --------------------------------
+    # Without this, the AI re-orders tests that were done weeks ago because
+    # it has no idea the values exist. Two surfaces feed in:
+    #   1. client.lab_markers — most-recent FM-interpreted markers (one
+    #      record per marker, with FM ranges + flag + value). Compact +
+    #      decision-ready, this is what we surface as "known_labs".
+    #   2. health_snapshots[].lab_values — every prior report's raw values
+    #      indexed by date. We bundle the LAST 60 days' worth so the AI
+    #      can also see freshness without ballooning the prompt.
+    known_labs: list[dict] = []
+    for m_lab in (client.lab_markers or []):
+        known_labs.append({
+            "marker_name": m_lab.get("marker_name"),
+            "value": m_lab.get("value"),
+            "unit": m_lab.get("unit"),
+            "flag": m_lab.get("flag"),
+            "reference_range": m_lab.get("reference_range"),
+            "fm_interpretation": m_lab.get("fm_interpretation"),
+        })
+    if known_labs:
+        client_ctx["known_labs"] = known_labs
+        client_ctx["known_labs_date"] = (
+            client.lab_markers_date if hasattr(client, "lab_markers_date") else None
+        )
+
+    # Recent raw snapshots — for cross-report comparison (e.g. ferritin
+    # trend over 3 reports). Last 90 days only to keep prompt size in check.
+    cutoff = (today - __import__("datetime").timedelta(days=90)).isoformat()
+    recent_lab_history: list[dict] = []
+    for snap in (client.health_snapshots or []):
+        snap_date = snap.get("date") or ""
+        if snap_date < cutoff:
+            continue
+        lvs = snap.get("lab_values") or []
+        if not lvs:
+            continue
+        recent_lab_history.append({
+            "date": snap_date,
+            "source": snap.get("source"),
+            "lab_values": [
+                {"test_name": lv.get("test_name"), "value": lv.get("value"), "unit": lv.get("unit")}
+                for lv in lvs
+            ],
+        })
+    if recent_lab_history:
+        client_ctx["recent_lab_history"] = recent_lab_history
+
     # Session-history bundle: compact prior-session summaries.
     #
     # synthesis_notes is trimmed to ~1500 chars per prior session. Coaches
