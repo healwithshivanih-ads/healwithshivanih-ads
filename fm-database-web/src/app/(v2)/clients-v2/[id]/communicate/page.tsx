@@ -19,6 +19,7 @@ import { checkAisensyConfigAction } from "@/app/api/aisensy-webhook/actions";
 import { FmPageHeader } from "@/components/fm";
 import { CommunicatePageShell } from "./communicate-page-shell";
 import { CommunicateClient } from "./communicate-client";
+import { ReworkBanner } from "@/app/clients/[id]/rework-banner";
 
 export const dynamic = "force-dynamic";
 
@@ -88,6 +89,12 @@ export default async function CommunicateTabPage({
 
   return (
     <CommunicatePageShell clientId={id}>
+      {client.rework_suggestion && (
+        <div style={{ marginBottom: 12 }}>
+          <ReworkBanner clientId={id} suggestion={client.rework_suggestion} />
+        </div>
+      )}
+
       <FmPageHeader
         as="h2"
         size="md"

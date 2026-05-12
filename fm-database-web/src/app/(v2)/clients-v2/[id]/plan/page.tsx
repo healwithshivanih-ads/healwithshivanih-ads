@@ -54,6 +54,7 @@ import { PlanPageShell } from "./plan-page-shell";
 import { PlanChatAndPreview } from "./plan-chat-and-preview";
 import { ReworkBanner } from "@/app/clients/[id]/rework-banner";
 import { AttachedProtocolsPanel } from "./attached-protocols-panel";
+import { FollowUpPanel } from "./follow-up-panel";
 import { loadAllOfKind } from "@/lib/fmdb/loader";
 
 export const dynamic = "force-dynamic";
@@ -352,6 +353,27 @@ export default async function PlanTabPage({
       s.lab_values.length > 0,
   ).length;
   const hasFreshAssessment = !!pendingDraft;
+
+  // Follow-up plan: suggest the next slug by bumping the plan number
+  // embedded in the active slug. Pattern from generate-draft.py is
+  // `<first-name>-plan-N-YYYY-MM-DD-<client-id>`. Falls back to a
+  // generic `<slug>-followup-<today>` when the pattern doesn't match,
+  // so a published plan with an unconventional slug still gets a
+  // sensible suggestion.
+  let suggestedFollowUpSlug = "";
+  if (activePlan) {
+    const m = (activePlan.slug as string).match(
+      /^(.*?)-plan-(\d+)-\d{4}-\d{2}-\d{2}-(.+)$/,
+    );
+    if (m) {
+      const [, namePart, nStr, clientPart] = m;
+      const n = Number.parseInt(nStr, 10);
+      suggestedFollowUpSlug = `${namePart}-plan-${n + 1}-${todayStr}-${clientPart}`;
+    } else {
+      suggestedFollowUpSlug = `${activePlan.slug}-followup-${todayStr}`;
+    }
+  }
+  const followUpOverdue = !!(recheckDate && recheckDate < todayStr);
 
   // Plan summary digest (only meaningful when activePlan exists). Supplements
   // are now passed full-shape to FmSupplementGrid (timing bubble + detail).
@@ -988,6 +1010,24 @@ export default async function PlanTabPage({
                 />
               </div>
             </FmPanel>
+
+            {/* Follow-up plan generator — only when the live plan is
+                published. Closes the v1/v2 workflow gap: previously the
+                coach had to drop into /clients/<id> (v1) to spin up a
+                phase-2 successor. */}
+            {isPublished && activePlan && (
+              <FollowUpPanel
+                activePlanSlug={activePlan.slug}
+                clientId={id}
+                clientName={
+                  (client as unknown as { display_name?: string })
+                    .display_name
+                }
+                recheckDate={recheckDate}
+                isOverdue={followUpOverdue}
+                suggestedSlug={suggestedFollowUpSlug}
+              />
+            )}
 
             {/* Letter send history — filter to this plan only so the
                 panel stays scoped + scannable. Newest first. */}

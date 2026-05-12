@@ -21,6 +21,7 @@ import { loadClientById } from "@/lib/fmdb/loader-extras";
 import { loadClientSessionsAction } from "@/app/assess/actions";
 import { SessionsPageShell } from "./sessions-page-shell";
 import { SessionsBrowser } from "./sessions-browser";
+import { ReworkBanner } from "@/app/clients/[id]/rework-banner";
 
 export const dynamic = "force-dynamic";
 
@@ -55,12 +56,21 @@ export default async function SessionsPage({
 
   return (
     <SessionsPageShell clientId={id}>
+      {client.rework_suggestion && (
+        <div style={{ marginBottom: 12 }}>
+          <ReworkBanner clientId={id} suggestion={client.rework_suggestion} />
+        </div>
+      )}
       <SessionsBrowser
         clientId={id}
         displayName={displayName}
         sessions={sortedDesc}
         selectedSid={sid}
         filterType={type}
+        clientAgeBand={client.age_band ?? null}
+        clientSex={client.sex ?? null}
+        clientConditions={client.active_conditions ?? []}
+        clientMedications={client.current_medications ?? client.medications ?? []}
       />
     </SessionsPageShell>
   );
