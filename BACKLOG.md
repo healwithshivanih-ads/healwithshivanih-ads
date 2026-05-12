@@ -64,7 +64,7 @@ Last updated: 2026-05-12 (post v0.68 — v1→v2 migration FULLY complete. Every
 - **Inline plan editor on client page** — alternative / overlapping with v2 plan editor: expand the editor inline on the Plan tab instead of navigating. Pick one approach.
 - **Bulk regenerate letters** — when the plan changes after letters were generated, surface a "regenerate all stale letters" button on v2 Communicate (right above SendPackageButton, only when staleness banner is showing). Coach currently has to re-tick each type. ~20 min.
 - **Notes-for-coach formatting** — `notes_for_coach` renders as a wall of text. Coach wants it structured (subheadings, bullets). Either (a) extend the AI prompt in generate-draft.py and the chat tool to emit markdown-friendly structure, OR (b) parse it on render. Open question: should the AI structure it from the start, or should the human structure it during the chat session?
-- **Letter QA validation report viewer** — the Haiku letter QA pass writes `{stem}.validation.json` alongside saved letters. Surface a viewer that shows which tips it rewrote + why, so coach can audit the QA. Currently the data is on disk but no UI reads it.
+- ~~**Letter QA validation report viewer**~~ — done. Surfaces on the right column of v2 letter-editor (`/clients-v2/[id]/letter-editor`). Reads the `{stem}.validation.json` sidecar via loadMealPlan, renders per-finding cards (score / reason / rewrite) with "Apply rewrite to letter" buttons. Tone-coded gold (score ≤2) / violet (3) / green (4+).
 
 ---
 
