@@ -18,6 +18,7 @@
  * page is the permanent inspector.
  */
 import { loadClientById } from "@/lib/fmdb/loader-extras";
+import { loadAllPlans } from "@/lib/fmdb/loader";
 import { loadClientSessionsAction } from "@/app/assess/actions";
 import { SessionsPageShell } from "./sessions-page-shell";
 import { SessionsBrowser } from "./sessions-browser";
@@ -35,9 +36,10 @@ export default async function SessionsPage({
   const { id } = await params;
   const { sid, type } = await searchParams;
 
-  const [client, sessions] = await Promise.all([
+  const [client, sessions, allPlans] = await Promise.all([
     loadClientById(id),
     loadClientSessionsAction(id),
+    loadAllPlans(),
   ]);
   if (!client) {
     return (
@@ -53,6 +55,16 @@ export default async function SessionsPage({
   );
 
   const displayName = client.display_name ?? client.client_id;
+
+  // Published plan info for the pre-session brief (active supplements +
+  // practices + plan period). Falls back gracefully if no published plan.
+  const publishedPlan = allPlans
+    .filter((p) => (p as { client_id?: string }).client_id === id)
+    .find(
+      (p) =>
+        ((p as { status?: string; _bucket?: string }).status ??
+          (p as { status?: string; _bucket?: string })._bucket) === "published",
+    );
 
   return (
     <SessionsPageShell clientId={id}>
@@ -71,6 +83,17 @@ export default async function SessionsPage({
         clientSex={client.sex ?? null}
         clientConditions={client.active_conditions ?? []}
         clientMedications={client.current_medications ?? client.medications ?? []}
+        // PreSessionBrief props — coach can launch the prep card right
+        // here on Sessions, where she's reviewing prior session history.
+        // Same modal as the one mounted on /clients-v2/[id] overview.
+        client={client}
+        activePlanSlug={publishedPlan?.slug as string | undefined}
+        activePlanStart={
+          publishedPlan?.plan_period_start as string | undefined
+        }
+        activePlanRecheck={
+          publishedPlan?.plan_period_recheck_date as string | undefined
+        }
       />
     </SessionsPageShell>
   );

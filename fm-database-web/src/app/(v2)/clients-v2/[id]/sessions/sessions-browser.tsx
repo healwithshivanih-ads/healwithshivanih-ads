@@ -16,8 +16,10 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import type { SessionSummary } from "@/app/assess/actions";
+import type { Client } from "@/lib/fmdb/types";
 import { FmPanel } from "@/components/fm";
 import { SessionBriefModal } from "@/app/clients/[id]/session-brief-modal";
+import { PreSessionBrief } from "@/app/clients/[id]/pre-session-brief";
 
 const TYPE_META: Record<
   string,
@@ -68,6 +70,10 @@ export function SessionsBrowser({
   clientSex,
   clientConditions,
   clientMedications,
+  client,
+  activePlanSlug,
+  activePlanStart,
+  activePlanRecheck,
 }: {
   clientId: string;
   displayName: string;
@@ -78,6 +84,12 @@ export function SessionsBrowser({
   clientSex?: string | null;
   clientConditions?: string[];
   clientMedications?: string[];
+  // PreSessionBrief inputs — passed through from the page so the modal
+  // can render the full prep card without re-loading.
+  client?: Client;
+  activePlanSlug?: string;
+  activePlanStart?: string;
+  activePlanRecheck?: string;
 }) {
   const router = useRouter();
   const params = useSearchParams();
@@ -171,6 +183,29 @@ export function SessionsBrowser({
   }
 
   return (
+    <>
+      {/* Pre-session brief launcher — same modal as on overview, second
+          mount so coach can hit it from where she's reviewing prior
+          history. PreSessionBrief renders its own button + modal. */}
+      {client && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            marginBottom: 8,
+          }}
+        >
+          <PreSessionBrief
+            client={client}
+            clientId={clientId}
+            sessions={sessions}
+            activePlanSlug={activePlanSlug}
+            activePlanStart={activePlanStart}
+            activePlanRecheck={activePlanRecheck}
+          />
+        </div>
+      )}
+
     <div className="fm-v2-2col" style={{ gridTemplateColumns: "340px minmax(0, 1fr)" }}>
       {/* LEFT — filter chips + session list */}
       <aside className="fm-v2-2col-rail" style={{ padding: 0 }}>
@@ -375,6 +410,7 @@ export function SessionsBrowser({
         );
       })()}
     </div>
+    </>
   );
 }
 

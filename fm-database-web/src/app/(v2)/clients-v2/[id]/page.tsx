@@ -44,6 +44,7 @@ import {
   type FivePillarsValue,
 } from "@/components/fm";
 import { FmFivePillarsWithSendCheckIn } from "./five-pillars-bridge";
+import { MemoryPanel } from "./memory-panel";
 import { SOAPNotePanel } from "@/app/clients/[id]/soap-note-panel";
 import { ReworkBanner } from "@/app/clients/[id]/rework-banner";
 import { PreSessionBrief } from "@/app/clients/[id]/pre-session-brief";
@@ -805,6 +806,15 @@ export default async function ClientV2Page({
             latest={latestPillars ?? null}
             daysSinceLastEntry={daysSincePillars}
             clientId={id}
+          />
+
+          <MemoryPanel
+            dietaryPreference={client.dietary_preference}
+            foodsToAvoid={client.foods_to_avoid}
+            nonNegotiables={client.non_negotiables}
+            reportedTriggers={
+              (client as { reported_triggers?: string }).reported_triggers
+            }
           />
         </div>
       </div>

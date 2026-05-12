@@ -56,6 +56,7 @@ import { ReworkBanner } from "@/app/clients/[id]/rework-banner";
 import { AttachedProtocolsPanel } from "./attached-protocols-panel";
 import { FollowUpPanel } from "./follow-up-panel";
 import { ActivateDraftButton } from "./activate-draft-button";
+import { RegenerateStaleButton } from "../communicate/regenerate-stale-button";
 import { loadAllOfKind } from "@/lib/fmdb/loader";
 
 export const dynamic = "force-dynamic";
@@ -604,21 +605,13 @@ export default async function PlanTabPage({
               </div>
             </div>
           </div>
-          <Link
-            href={`/clients-v2/${id}/communicate`}
-            style={{
-              fontSize: 11.5,
-              fontWeight: 700,
-              padding: "6px 12px",
-              background: "#92400e",
-              color: "#fff",
-              borderRadius: "var(--fm-radius-sm)",
-              textDecoration: "none",
-              whiteSpace: "nowrap",
-            }}
-          >
-            🔄 Regenerate letters →
-          </Link>
+          <RegenerateStaleButton
+            planSlug={activePlan.slug as string}
+            clientId={id}
+            staleTypes={staleness.entries
+              .filter((e) => e.stale)
+              .map((e) => e.type)}
+          />
         </div>
       )}
 

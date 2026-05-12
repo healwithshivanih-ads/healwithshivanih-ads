@@ -21,6 +21,7 @@ import { CommunicatePageShell } from "./communicate-page-shell";
 import { CommunicateClient } from "./communicate-client";
 import { ReworkBanner } from "@/app/clients/[id]/rework-banner";
 import { getLetterStalenessAction } from "@/app/plans/[slug]/lifecycle-actions";
+import { RegenerateStaleButton } from "./regenerate-stale-button";
 
 export const dynamic = "force-dynamic";
 
@@ -155,16 +156,13 @@ export default async function CommunicateTabPage({
               </div>
             </div>
           </div>
-          <span
-            style={{
-              fontSize: 11.5,
-              fontWeight: 700,
-              color: "#92400e",
-              whiteSpace: "nowrap",
-            }}
-          >
-            ↓ Regenerate below before sending
-          </span>
+          <RegenerateStaleButton
+            planSlug={activePlan.slug as string}
+            clientId={id}
+            staleTypes={staleness.entries
+              .filter((e) => e.stale)
+              .map((e) => e.type)}
+          />
         </div>
       )}
 
