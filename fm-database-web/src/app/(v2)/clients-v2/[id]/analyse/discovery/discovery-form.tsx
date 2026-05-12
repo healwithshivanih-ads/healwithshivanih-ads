@@ -1,19 +1,23 @@
 "use client";
 
 /**
- * DiscoveryForm v2 — curated FM lab panel + food journal duration +
- * chief concern + outcome chip.
+ * DiscoveryForm v2 — design C2 with full lab catalog.
  *
- * Per design C2. Wraps saveSessionAction with session_type "discovery".
- * The chosen labs are passed as requested_labs so the dashboard
- * "labs_pending" signal can pick the client up after Discovery.
+ * Lab panels: all 16 from src/lib/fmdb/lab-panels.ts (the same list the
+ * legacy /clients/[id] discovery form uses). Each panel card:
+ *   - Header chip toggles ALL labs in the panel on/off
+ *   - Click body → expands inline list of labs with individual checkboxes,
+ *     cost chip per lab (₹ / ₹₹ / ₹₹₹), and a "specialty" tag for
+ *     labs that need a third-party FM provider (DUTCH, OAT, NMR, etc.)
+ *   - Panel count badge updates as labs toggle
  *
- * Lab catalog is a curated subset of the 15-panel legacy LAB_PANELS list —
- * the 6 most-common FM panels for first-touch labs. Coach falls through
- * to legacy for niche panels (DUTCH, OAT, NMR lipoprofile etc.) until
- * Phase 3.5 ports the full catalog.
+ * 6 panels start pre-selected (DEFAULT_DISCOVERY_PANELS). Sex-specific
+ * panels filter out when the client's sex doesn't match.
+ *
+ * Saves through saveSessionAction with session_type "discovery" and the
+ * flat list of selected lab names as requested_labs.
  */
-import { useState, useTransition } from "react";
+import { useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { saveSessionAction } from "@/app/assess/actions";
@@ -24,42 +28,14 @@ import {
   FmFormSection,
   type FmPillOption,
 } from "@/components/fm";
+import {
+  LAB_PANELS,
+  DEFAULT_DISCOVERY_PANELS,
+  type LabPanel,
+  type LabSex,
+} from "@/lib/fmdb/lab-panels";
 
 const PRIMARY = "#B8770A";
-
-// 6 curated FM panels. Each label = group · count of labs included.
-const LAB_PANELS = [
-  {
-    id: "thyroid",
-    label: "🦋 Thyroid full",
-    labs: ["TSH", "Free T3", "Free T4", "Reverse T3", "TPO Antibodies", "Thyroglobulin Antibodies"],
-  },
-  {
-    id: "metabolic",
-    label: "🍬 Metabolic / IR",
-    labs: ["Fasting Glucose", "Fasting Insulin", "HbA1c", "Triglycerides"],
-  },
-  {
-    id: "inflammation",
-    label: "🔥 Inflammation",
-    labs: ["hsCRP", "Homocysteine", "ESR", "Ferritin"],
-  },
-  {
-    id: "lipid",
-    label: "💧 Lipid full + ApoB",
-    labs: ["Total Cholesterol", "LDL-C", "HDL-C", "Triglycerides", "ApoB", "Lp(a)"],
-  },
-  {
-    id: "nutrients",
-    label: "🌱 Core nutrients",
-    labs: ["Vitamin D (25-OH)", "Vitamin B12", "RBC Folate", "Ferritin", "Serum Iron", "TIBC"],
-  },
-  {
-    id: "hpa",
-    label: "⚡ HPA + adrenal",
-    labs: ["AM Cortisol", "PM Cortisol", "DHEA-S"],
-  },
-] as const;
 
 const FOOD_JOURNAL: FmPillOption[] = [
   { value: "3", label: "3 days" },
@@ -76,28 +52,91 @@ const OUTCOMES: FmPillOption[] = [
 export function DiscoveryForm({
   clientId,
   displayName,
+  clientSex,
 }: {
   clientId: string;
   displayName: string;
+  clientSex?: LabSex | null;
 }) {
   const router = useRouter();
   const [pending, start] = useTransition();
 
   const [chiefConcern, setChiefConcern] = useState("");
   const [clientWords, setClientWords] = useState("");
-  const [panels, setPanels] = useState<string[]>(["thyroid", "metabolic", "nutrients"]);
   const [foodDays, setFoodDays] = useState<string>("7");
   const [outcome, setOutcome] = useState<string>("good_fit");
+  const [expandedPanels, setExpandedPanels] = useState<Set<string>>(new Set());
 
-  const togglePanel = (id: string) =>
-    setPanels((p) => (p.includes(id) ? p.filter((x) => x !== id) : [...p, id]));
-
-  // Flatten selected panels into the lab name list saved on the session.
-  const selectedLabs = LAB_PANELS.flatMap((p) =>
-    panels.includes(p.id) ? p.labs : [],
+  // Filter to panels relevant for this client's sex (if known).
+  const visiblePanels = useMemo(
+    () =>
+      LAB_PANELS.filter((p) => !p.sex || !clientSex || p.sex === clientSex),
+    [clientSex],
   );
-  const labsCount = selectedLabs.length;
-  const panelsCount = panels.length;
+
+  // Selected lab names — flat set across panels.
+  const initialLabs = useMemo(() => {
+    const out = new Set<string>();
+    for (const p of visiblePanels) {
+      if (DEFAULT_DISCOVERY_PANELS.has(p.group)) {
+        for (const l of p.labs) {
+          // Default: pick everything in default panels EXCEPT specialty +
+          // sex-mismatch labs. Coach can toggle on individual specialty
+          // labs from the expanded view.
+          if (l.specialty) continue;
+          if (l.sex && clientSex && l.sex !== clientSex) continue;
+          out.add(l.name);
+        }
+      }
+    }
+    return out;
+  }, [visiblePanels, clientSex]);
+  const [selectedLabs, setSelectedLabs] = useState<Set<string>>(initialLabs);
+
+  const togglePanel = (group: string) =>
+    setExpandedPanels((s) => {
+      const next = new Set(s);
+      if (next.has(group)) next.delete(group);
+      else next.add(group);
+      return next;
+    });
+
+  const toggleLab = (name: string) =>
+    setSelectedLabs((s) => {
+      const next = new Set(s);
+      if (next.has(name)) next.delete(name);
+      else next.add(name);
+      return next;
+    });
+
+  const togglePanelAll = (p: LabPanel) => {
+    const relevant = p.labs.filter(
+      (l) => !l.sex || !clientSex || l.sex === clientSex,
+    );
+    const allOn = relevant.every((l) => selectedLabs.has(l.name));
+    setSelectedLabs((s) => {
+      const next = new Set(s);
+      for (const l of relevant) {
+        if (allOn) next.delete(l.name);
+        else next.add(l.name);
+      }
+      return next;
+    });
+  };
+
+  // Per-panel counts
+  function panelStats(p: LabPanel) {
+    const relevant = p.labs.filter(
+      (l) => !l.sex || !clientSex || l.sex === clientSex,
+    );
+    const selected = relevant.filter((l) => selectedLabs.has(l.name)).length;
+    return { selected, total: relevant.length };
+  }
+
+  const totalLabs = selectedLabs.size;
+  const panelsTouched = visiblePanels.filter(
+    (p) => panelStats(p).selected > 0,
+  ).length;
 
   const onSave = () => {
     if (!chiefConcern.trim()) {
@@ -112,8 +151,8 @@ export function DiscoveryForm({
         clientWords.trim() ? `In client's words: ${clientWords.trim()}` : "",
         `Food journal requested: ${foodDays} days`,
         `Outcome: ${outcomeLabel}`,
-        labsCount > 0
-          ? `Labs requested: ${labsCount} markers across ${panelsCount} panels (${panels.join(", ")})`
+        totalLabs > 0
+          ? `Labs requested (${totalLabs} markers across ${panelsTouched} panels):\n${[...selectedLabs].map((l) => "  • " + l).join("\n")}`
           : "No labs ordered",
       ]
         .filter(Boolean)
@@ -124,10 +163,12 @@ export function DiscoveryForm({
         session_type: "discovery",
         coach_notes: summary,
         presenting_complaints: `[session_type: discovery_consultation] ${chiefConcern.trim()}`,
-        requested_labs: selectedLabs,
+        requested_labs: [...selectedLabs],
       });
       if (result.ok) {
-        toast.success(`Discovery saved for ${displayName.split(" ")[0]} — ${labsCount} labs queued`);
+        toast.success(
+          `Discovery saved for ${displayName.split(" ")[0]} — ${totalLabs} labs queued`,
+        );
         router.push(`/clients-v2/${clientId}/analyse`);
         router.refresh();
       } else {
@@ -137,7 +178,7 @@ export function DiscoveryForm({
   };
 
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr)", gap: 0 }}>
+    <div>
       <FmFormSection
         title="Chief concern"
         description="What brought them in today? Single paragraph is enough."
@@ -163,7 +204,7 @@ export function DiscoveryForm({
               id={id}
               value={clientWords}
               onChange={(e) => setClientWords(e.target.value)}
-              placeholder={`"My energy crashes around 3pm. I used to work out 4x a week, now I can barely manage walks."`}
+              placeholder={`"My energy crashes around 3 pm. I used to work out 4× a week, now I can barely manage walks."`}
               rows={3}
             />
           )}
@@ -171,35 +212,190 @@ export function DiscoveryForm({
       </FmFormSection>
 
       <FmFormSection
-        title="Recommended lab panel"
-        description="Pick the FM panels for this client's case. Client books direct with Thyrocare; we don't route payment for labs."
+        title={`Recommended lab panel · ${totalLabs} of all selected`}
+        description="Click any panel to expand. Header chip toggles the whole panel; checkbox toggles per lab. ₹ / ₹₹ / ₹₹₹ indicates cost band. ★ specialty labs need a third-party FM provider."
       >
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-          {LAB_PANELS.map((p) => {
-            const sel = panels.includes(p.id);
+        <div style={{ display: "grid", gap: 8 }}>
+          {visiblePanels.map((p) => {
+            const stats = panelStats(p);
+            const expanded = expandedPanels.has(p.group);
+            const allOn = stats.selected === stats.total && stats.total > 0;
+            const someOn = stats.selected > 0 && !allOn;
             return (
-              <button
-                key={p.id}
-                type="button"
-                onClick={() => togglePanel(p.id)}
+              <div
+                key={p.group}
                 style={{
-                  padding: "8px 12px",
+                  border: `1.5px solid ${
+                    allOn ? PRIMARY : someOn ? `${PRIMARY}80` : "var(--fm-border-light)"
+                  }`,
                   borderRadius: "var(--fm-radius-md)",
-                  border: `1.5px solid ${sel ? PRIMARY : "var(--fm-border-light)"}`,
-                  background: sel ? `${PRIMARY}10` : "var(--fm-surface)",
-                  color: sel ? PRIMARY : "var(--fm-text-secondary)",
-                  fontSize: 11.5,
-                  fontWeight: 700,
-                  cursor: "pointer",
-                  fontFamily: "inherit",
+                  background: allOn || someOn ? `${PRIMARY}08` : "var(--fm-surface)",
+                  overflow: "hidden",
                 }}
-                title={p.labs.join(" · ")}
               >
-                {p.label}
-                <span style={{ marginLeft: 6, fontSize: 9.5, opacity: 0.7 }}>
-                  · {p.labs.length} markers
-                </span>
-              </button>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    padding: "10px 12px",
+                  }}
+                >
+                  <button
+                    type="button"
+                    onClick={() => togglePanelAll(p)}
+                    title={allOn ? "Clear panel" : "Select all in panel"}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 8,
+                      background: "transparent",
+                      border: 0,
+                      cursor: "pointer",
+                      fontFamily: "inherit",
+                    }}
+                  >
+                    <span style={{ fontSize: 16 }}>{p.icon}</span>
+                    <span
+                      style={{
+                        fontSize: 12.5,
+                        fontWeight: 700,
+                        color: allOn || someOn ? PRIMARY : "var(--fm-text-primary)",
+                      }}
+                    >
+                      {p.group}
+                    </span>
+                    <span
+                      style={{
+                        fontSize: 10.5,
+                        color: "var(--fm-text-tertiary)",
+                        fontWeight: 600,
+                      }}
+                    >
+                      {stats.selected}/{stats.total}
+                    </span>
+                  </button>
+                  <span style={{ flex: 1 }} />
+                  <button
+                    type="button"
+                    onClick={() => togglePanel(p.group)}
+                    style={{
+                      fontSize: 11.5,
+                      color: "var(--fm-text-secondary)",
+                      background: "transparent",
+                      border: "1px solid var(--fm-border)",
+                      padding: "4px 10px",
+                      borderRadius: "var(--fm-radius-sm)",
+                      cursor: "pointer",
+                      fontFamily: "inherit",
+                      fontWeight: 600,
+                    }}
+                  >
+                    {expanded ? "Hide" : "Show"} labs
+                    <span
+                      style={{
+                        marginLeft: 4,
+                        fontSize: 10,
+                        display: "inline-block",
+                        transform: expanded ? "rotate(180deg)" : "none",
+                        transition: "transform 160ms",
+                      }}
+                    >
+                      ▾
+                    </span>
+                  </button>
+                </div>
+                {expanded && (
+                  <div
+                    style={{
+                      padding: "0 12px 12px",
+                      display: "grid",
+                      gridTemplateColumns: "1fr 1fr",
+                      gap: 4,
+                    }}
+                  >
+                    {p.labs
+                      .filter((l) => !l.sex || !clientSex || l.sex === clientSex)
+                      .map((l) => {
+                        const on = selectedLabs.has(l.name);
+                        return (
+                          <button
+                            key={l.name}
+                            type="button"
+                            onClick={() => toggleLab(l.name)}
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              gap: 8,
+                              padding: "6px 10px",
+                              background: on
+                                ? "var(--fm-surface)"
+                                : "transparent",
+                              border: `1px solid ${on ? PRIMARY : "var(--fm-border-light)"}`,
+                              borderRadius: "var(--fm-radius-sm)",
+                              cursor: "pointer",
+                              fontFamily: "inherit",
+                              textAlign: "left",
+                              fontSize: 11.5,
+                            }}
+                          >
+                            <span
+                              style={{
+                                width: 14,
+                                height: 14,
+                                borderRadius: 3,
+                                border: `1.5px solid ${on ? PRIMARY : "var(--fm-border)"}`,
+                                background: on ? PRIMARY : "transparent",
+                                color: "#fff",
+                                display: "inline-flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                fontSize: 9,
+                                fontWeight: 700,
+                                flexShrink: 0,
+                              }}
+                            >
+                              {on && "✓"}
+                            </span>
+                            <span
+                              style={{
+                                flex: 1,
+                                color: on
+                                  ? "var(--fm-text-primary)"
+                                  : "var(--fm-text-secondary)",
+                                fontWeight: on ? 600 : 500,
+                              }}
+                            >
+                              {l.name}
+                            </span>
+                            {l.specialty && (
+                              <span
+                                title="Specialty — third-party FM lab"
+                                style={{
+                                  fontSize: 9.5,
+                                  color: "#5a3fb0",
+                                  fontWeight: 700,
+                                }}
+                              >
+                                ★
+                              </span>
+                            )}
+                            <span
+                              style={{
+                                fontSize: 10,
+                                color: "var(--fm-text-tertiary)",
+                                fontWeight: 600,
+                                fontFamily: "var(--fm-font-mono)",
+                              }}
+                            >
+                              {l.cost}
+                            </span>
+                          </button>
+                        );
+                      })}
+                  </div>
+                )}
+              </div>
             );
           })}
         </div>
@@ -215,11 +411,11 @@ export function DiscoveryForm({
           }}
         >
           <span>
-            {panelsCount} panel{panelsCount === 1 ? "" : "s"} selected · {labsCount}{" "}
-            marker{labsCount === 1 ? "" : "s"} total
+            {panelsTouched} panel{panelsTouched === 1 ? "" : "s"} touched ·{" "}
+            {totalLabs} marker{totalLabs === 1 ? "" : "s"} total
           </span>
           <span style={{ fontWeight: 700, color: "var(--fm-text-secondary)" }}>
-            Home draw available · ₹3k–5k typical
+            Home draw available · client books direct with Thyrocare
           </span>
         </div>
       </FmFormSection>
@@ -270,7 +466,17 @@ export function DiscoveryForm({
         <button
           type="button"
           onClick={() => router.push(`/clients-v2/${clientId}/analyse`)}
-          style={btnStyle("ghost")}
+          style={{
+            padding: "8px 14px",
+            background: "var(--fm-surface)",
+            color: "var(--fm-text-primary)",
+            border: "1px solid var(--fm-border)",
+            borderRadius: "var(--fm-radius-sm)",
+            fontSize: 12,
+            fontWeight: 600,
+            cursor: "pointer",
+            fontFamily: "inherit",
+          }}
         >
           Cancel
         </button>
@@ -279,9 +485,16 @@ export function DiscoveryForm({
           onClick={onSave}
           disabled={pending || !chiefConcern.trim()}
           style={{
-            ...btnStyle("primary"),
+            padding: "8px 16px",
             background: PRIMARY,
-            borderColor: PRIMARY,
+            color: "#fff",
+            border: 0,
+            borderRadius: "var(--fm-radius-sm)",
+            fontSize: 12,
+            fontWeight: 700,
+            cursor: pending ? "wait" : "pointer",
+            fontFamily: "inherit",
+            opacity: pending ? 0.6 : 1,
           }}
         >
           {pending ? "Saving…" : "💾 Save discovery & order labs →"}
@@ -289,30 +502,4 @@ export function DiscoveryForm({
       </div>
     </div>
   );
-}
-
-function btnStyle(kind: "primary" | "ghost"): React.CSSProperties {
-  if (kind === "ghost") {
-    return {
-      padding: "8px 14px",
-      background: "var(--fm-surface)",
-      color: "var(--fm-text-primary)",
-      border: "1px solid var(--fm-border)",
-      borderRadius: "var(--fm-radius-sm)",
-      fontSize: 12,
-      fontWeight: 600,
-      cursor: "pointer",
-      fontFamily: "inherit",
-    };
-  }
-  return {
-    padding: "8px 16px",
-    color: "#fff",
-    border: 0,
-    borderRadius: "var(--fm-radius-sm)",
-    fontSize: 12,
-    fontWeight: 700,
-    cursor: "pointer",
-    fontFamily: "inherit",
-  };
 }

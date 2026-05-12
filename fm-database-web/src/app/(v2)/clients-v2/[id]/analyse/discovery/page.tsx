@@ -28,7 +28,13 @@ export default async function DiscoveryPage({
         title={<span style={{ color: "#B8770A" }}>🔍 Discovery</span>}
         subtitle="Free 15-minute fit call. Capture the presenting concern, pick the FM lab panel, and decide on a food journal."
       />
-      <DiscoveryForm clientId={id} displayName={displayName} />
+      <DiscoveryForm
+        clientId={id}
+        displayName={displayName}
+        clientSex={
+          client.sex === "F" || client.sex === "M" ? client.sex : null
+        }
+      />
     </AnalysePageShell>
   );
 }
