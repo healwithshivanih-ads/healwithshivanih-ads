@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
-import { loadClientById } from "@/lib/fmdb/loader-extras";
+import { loadClientById, loadClientSessions } from "@/lib/fmdb/loader-extras";
 import { loadAllOfKind } from "@/lib/fmdb/loader";
+import { parseSessionType } from "@/lib/fmdb/session-utils";
 import type { Symptom } from "@/lib/fmdb/types";
 import { FmPageHeader, type FmSymptomOption } from "@/components/fm";
 import { AnalysePageShell } from "../analyse-page-shell";
@@ -22,12 +23,32 @@ export default async function IntakePage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const [client, symptoms] = await Promise.all([
+  const [client, symptoms, sessions] = await Promise.all([
     loadClientById(id),
     loadAllOfKind<Symptom>("symptoms"),
+    loadClientSessions(id),
   ]);
   if (!client) notFound();
   const displayName = client.display_name ?? client.client_id;
+
+  // Detect whether this is the first intake or an update of an existing one.
+  // Intake sessions (per the v0.59 rename) include any session whose
+  // [session_type:] tag parses to "intake". Sorted newest-first for the
+  // "last captured" timestamp.
+  const intakeSessions = sessions
+    .map((sess) => ({
+      session_id: sess.session_id,
+      date: sess.date as string | undefined,
+      type: parseSessionType(
+        (sess as unknown as Record<string, unknown>).presenting_complaints as
+          | string
+          | undefined,
+      ),
+    }))
+    .filter((sess) => sess.type === "intake")
+    .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
+  const isUpdate = intakeSessions.length > 0;
+  const lastIntakeDate = intakeSessions[0]?.date;
 
   // Project the symptom catalogue down to the shape FmSymptomPicker needs.
   // Keeping just slug/label/aliases/category/severity keeps payload small.
@@ -108,14 +129,26 @@ export default async function IntakePage({
   return (
     <AnalysePageShell
       clientId={id}
-      formLabel="Intake"
-      formHint="📋 Intake · one-time deep history call · 60 min"
+      formLabel={isUpdate ? "Update intake" : "Intake"}
+      formHint={
+        isUpdate
+          ? `📋 Update intake · last captured ${lastIntakeDate ?? "earlier"} · ${intakeSessions.length} prior intake${intakeSessions.length === 1 ? "" : "s"} on file`
+          : "📋 Intake · first deep history call · 60 min"
+      }
     >
       <FmPageHeader
         as="h2"
         size="md"
-        title={<span style={{ color: "#3a4250" }}>📋 Intake</span>}
-        subtitle="First paid session — full history, meds, family hx, lifestyle baseline, supplement history. No plan yet; that's Full assessment."
+        title={
+          <span style={{ color: "#3a4250" }}>
+            {isUpdate ? "📋 Update intake" : "📋 Intake"}
+          </span>
+        }
+        subtitle={
+          isUpdate
+            ? `This client already has an intake on file (last ${lastIntakeDate}). Everything below is pre-filled with what we know — edit any field that's changed (new diagnosis, life event, meds, etc.). Saving updates the living profile and appends an intake-update record.`
+            : "First deep history call — full history, meds, family hx, lifestyle baseline, supplement history. The Full Assessment runs the AI synthesis on top of this."
+        }
       />
       <IntakeForm
         clientId={id}
