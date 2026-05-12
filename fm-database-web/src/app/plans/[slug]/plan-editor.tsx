@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -881,6 +882,15 @@ export function PlanEditor(props: PlanEditorProps) {
     lifecycleProps,
   } = props;
 
+  // Deep-link support: callers can pass ?tab=protocol|documents|lifecycle
+  // to land on a specific tab. Default is Protocol. Used by the v2
+  // plan page's "Lifecycle (submit / publish)" ActionLink so clicking
+  // it actually shows the Lifecycle tab, not the default Protocol view.
+  const searchParams = useSearchParams();
+  const tabParam = searchParams.get("tab");
+  const initialTab: "protocol" | "documents" | "lifecycle" =
+    tabParam === "documents" || tabParam === "lifecycle" ? tabParam : "protocol";
+
   const [plan, setPlan] = useState<Plan>(() => clone(initial));
   const [sources, setSources] = useState<SupplementSourcesMap>(() => clone(initialSources));
   const [dirty, setDirty] = useState(false);
@@ -1129,7 +1139,7 @@ export function PlanEditor(props: PlanEditorProps) {
         <SupplementScheduleCard supplements={(plan.supplement_protocol as SupplementItem[]) ?? []} />
       )}
 
-      <Tabs defaultValue="protocol">
+      <Tabs defaultValue={initialTab}>
         <TabsList>
           <TabsTrigger value="protocol">📋 Protocol</TabsTrigger>
           <TabsTrigger value="documents">📄 Documents</TabsTrigger>

@@ -1046,7 +1046,11 @@ export default async function PlanTabPage({
                   label="Edit plan"
                 />
                 <ActionLink
-                  href={`/clients-v2/${id}/plan/edit/${activePlan.slug}`}
+                  // Deep-links to the Lifecycle tab inside the editor
+                  // (PlanEditor reads ?tab=lifecycle on mount). Without
+                  // this query param the editor opened on Protocol and
+                  // it looked like the click did nothing.
+                  href={`/clients-v2/${id}/plan/edit/${activePlan.slug}?tab=lifecycle`}
                   icon="🚀"
                   label="Lifecycle (submit / publish)"
                 />
