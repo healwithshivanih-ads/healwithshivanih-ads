@@ -397,8 +397,17 @@ export function IntakeForm({
         return;
       }
 
-      // ── Side writes (parallel) ────────────────────────────────
-      const sideWrites: Promise<{ ok: boolean; error?: string | null }>[] = [];
+      // ── Side writes (SEQUENTIAL on purpose) ──────────────────
+      // Every entry below does a read-modify-write on the same
+      // ~/fm-plans/clients/<id>/client.yaml file. Running them in
+      // parallel races them — last writer wins, so e.g. body-comp
+      // writes can clobber a freshly-saved menstrual_notes (coach
+      // reported this happening). Serialise the queue: each write
+      // sees the result of every earlier one.
+      const sideWrites: Array<{
+        label: string;
+        run: () => Promise<{ ok: boolean; error?: string | null }>;
+      }> = [];
 
       // Body composition → client.measurements + new health_snapshot
       const meas: Record<string, number> = {};
@@ -410,17 +419,19 @@ export function IntakeForm({
       if (bpDia) meas.bp_diastolic = Number(bpDia);
       if (hr) meas.hr_bpm = Number(hr);
       if (Object.keys(meas).length > 0) {
-        sideWrites.push(
-          applyTranscriptDataAction({
-            client_id: clientId,
-            measurements: meas,
-            medications: [],
-            conditions: [],
-            lab_values: [],
-            source: `intake-${new Date().toISOString().slice(0, 10)}`,
-            linked_session_id: sessionResult.session_id,
-          }),
-        );
+        sideWrites.push({
+          label: "body composition",
+          run: () =>
+            applyTranscriptDataAction({
+              client_id: clientId,
+              measurements: meas,
+              medications: [],
+              conditions: [],
+              lab_values: [],
+              source: `intake-${new Date().toISOString().slice(0, 10)}`,
+              linked_session_id: sessionResult.session_id,
+            }),
+        });
       }
 
       // Food + lifestyle prefs + FM body-systems narratives + cycle + pregnancy
@@ -456,7 +467,10 @@ export function IntakeForm({
 
       // Only fire if any field is set beyond client_id.
       if (Object.keys(prefsPayload).length > 1) {
-        sideWrites.push(updateClientPreferences(prefsPayload));
+        sideWrites.push({
+          label: "preferences + FM body-systems + cycle / pregnancy",
+          run: () => updateClientPreferences(prefsPayload),
+        });
       }
 
       // FM timeline
@@ -468,12 +482,14 @@ export function IntakeForm({
           event: e.event.trim(),
         }));
       if (cleanedTimeline.length > 0) {
-        sideWrites.push(
-          updateClientTimeline({
-            client_id: clientId,
-            timeline_events: cleanedTimeline,
-          }),
-        );
+        sideWrites.push({
+          label: "FM timeline events",
+          run: () =>
+            updateClientTimeline({
+              client_id: clientId,
+              timeline_events: cleanedTimeline,
+            }),
+        });
       }
 
       // Active conditions + allergies + goals + medical history →
@@ -504,12 +520,35 @@ export function IntakeForm({
       if (arrChanged(medsArr, existingMedsArr))
         profilePatch.medications = medsArr;
       if (Object.keys(profilePatch).length > 1) {
-        sideWrites.push(updateClientProfile(profilePatch));
+        sideWrites.push({
+          label: "conditions / meds / allergies / goals / medical history",
+          run: () => updateClientProfile(profilePatch),
+        });
       }
 
-      await Promise.all(sideWrites);
+      // Run side-writes one at a time. If any fails, surface the
+      // failing step's label in a toast so the coach knows which
+      // field group didn't persist — much better than silent loss.
+      const failures: string[] = [];
+      for (const sw of sideWrites) {
+        try {
+          const r = await sw.run();
+          if (!r.ok) {
+            failures.push(`${sw.label}: ${r.error ?? "unknown error"}`);
+          }
+        } catch (e) {
+          failures.push(`${sw.label}: ${(e as Error).message}`);
+        }
+      }
 
-      toast.success(`Intake saved for ${displayName.split(" ")[0]}`);
+      if (failures.length > 0) {
+        toast.error(
+          `Saved session but ${failures.length} write failed: ${failures.join(" · ").slice(0, 240)}`,
+          { duration: 12000 },
+        );
+      } else {
+        toast.success(`Intake saved for ${displayName.split(" ")[0]}`);
+      }
       router.push(`/clients-v2/${clientId}/analyse`);
       router.refresh();
     });
