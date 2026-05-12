@@ -28,7 +28,6 @@ import {
   FmAppShell,
   FmClientHeader,
   FmContactPanel,
-  FmFivePillars,
   FmDepletionBanner,
   FmMarkerPanel,
   FmBodyCompGrid,
@@ -44,6 +43,7 @@ import {
   type DepletionRow,
   type FivePillarsValue,
 } from "@/components/fm";
+import { FmFivePillarsWithSendCheckIn } from "./five-pillars-bridge";
 
 export const dynamic = "force-dynamic";
 
@@ -745,9 +745,10 @@ export default async function ClientV2Page({
             </div>
           </FmPanel>
 
-          <FmFivePillars
+          <FmFivePillarsWithSendCheckIn
             latest={latestPillars ?? null}
             daysSinceLastEntry={daysSincePillars}
+            clientId={id}
           />
         </div>
       </div>

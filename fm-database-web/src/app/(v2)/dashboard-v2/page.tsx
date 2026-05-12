@@ -18,7 +18,6 @@ import { loadClientSessions, getRecentAisensyMessages } from "@/lib/fmdb/loader-
 import { parseRequestedLabs } from "@/lib/fmdb/session-utils";
 import { loadApiUsageMtdAllClients } from "@/app/clients/[id]/usage-actions";
 import { getCatalogueStatus } from "@/app/catalogue-commit-action";
-import { CatalogueCommitButton } from "@/app/catalogue-commit-button";
 import { BroadcastPanel } from "@/app/broadcast-panel";
 import {
   FmAppShell,
@@ -27,6 +26,8 @@ import {
   FmStatTile,
   FmStatGrid,
   FmChip,
+  FmCatalogueCommitBanner,
+  FmAisensyBanner,
 } from "@/components/fm";
 import { TriageSections, type TriageRow, type SignalKind } from "./triage-sections";
 
@@ -264,88 +265,11 @@ export default async function DashboardV2() {
 
       {/* Banners + strips above the triage sections */}
       <div style={{ display: "grid", gap: 14, marginBottom: 24 }}>
-        {/* Catalogue commit — only renders when there are uncommitted changes */}
-        <div className="fm-v2-banner-host">
-          <CatalogueCommitButton initialStatus={catalogueStatus} />
-        </div>
+        {/* Catalogue commit — design 9A with change list disclosure */}
+        <FmCatalogueCommitBanner initialStatus={catalogueStatus} />
 
-        {/* AiSensy inbound messages strip */}
-        {aisensyMessages.length > 0 && (
-          <FmPanel
-            style={{
-              background: "rgba(46, 204, 113, 0.06)",
-              borderColor: "rgba(46, 204, 113, 0.30)",
-              padding: "12px 16px",
-            }}
-          >
-            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              <div
-                style={{
-                  fontSize: 11,
-                  textTransform: "uppercase",
-                  letterSpacing: 0.7,
-                  fontWeight: 700,
-                  color: "var(--fm-success)",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 6,
-                }}
-              >
-                <span>💬</span>
-                <span>
-                  {aisensyMessages.length} new WhatsApp message
-                  {aisensyMessages.length !== 1 ? "s" : ""} (last 7 days)
-                </span>
-              </div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                {aisensyMessages.slice(0, 6).map((msg, i) => (
-                  <Link
-                    key={i}
-                    href={`/clients/${msg.client_id}?tab=sessions`}
-                    style={{
-                      display: "inline-flex",
-                      gap: 6,
-                      alignItems: "center",
-                      padding: "4px 10px",
-                      background: "var(--fm-surface)",
-                      border: "1px solid rgba(46, 204, 113, 0.25)",
-                      borderRadius: "var(--fm-radius-pill)",
-                      textDecoration: "none",
-                      fontSize: 11.5,
-                      maxWidth: 260,
-                    }}
-                  >
-                    <span style={{ color: "var(--fm-success)", fontWeight: 600 }}>
-                      {msg.display_name ?? msg.client_id}
-                    </span>
-                    <span style={{ color: "var(--fm-text-tertiary)" }}>·</span>
-                    <span
-                      style={{
-                        color: "var(--fm-text-secondary)",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                        whiteSpace: "nowrap",
-                      }}
-                    >
-                      {msg.text || "—"}
-                    </span>
-                  </Link>
-                ))}
-                {aisensyMessages.length > 6 && (
-                  <span
-                    style={{
-                      fontSize: 11,
-                      color: "var(--fm-success)",
-                      alignSelf: "center",
-                    }}
-                  >
-                    +{aisensyMessages.length - 6} more
-                  </span>
-                )}
-              </div>
-            </div>
-          </FmPanel>
-        )}
+        {/* AiSensy inbound messages — design 10A with unread badges */}
+        <FmAisensyBanner messages={aisensyMessages} windowDays={7} inboxHref="/messages" />
 
         {/* Upcoming follow-ups (next 7 days, not yet due) */}
         {upcoming.length > 0 && (
