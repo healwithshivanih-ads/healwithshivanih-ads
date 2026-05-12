@@ -322,11 +322,20 @@ def main() -> int:
     # Picks key format: `protocol_<slug>` is True when the coach selected
     # that protocol via the radio in the SuggestionsView. Drives meal/
     # supplement/exercise/lifestyle letter generation downstream.
+    #
+    # IMPORTANT: this loop used to bind `slug` directly, which silently
+    # shadowed the outer plan-slug variable. The shadowed value then
+    # leaked into `sess.generated_plan_slug = slug` ~150 lines below,
+    # so the session would record a Protocol catalogue slug
+    # (e.g. "5r-gut-protocol") as if it were the generated Plan slug —
+    # and clicking "Open generated plan" from the v2 sessions browser
+    # 404'd because no Plan exists at that slug. Renamed to proto_slug
+    # to make the scope explicit.
     for ps in suggestions.get("suggested_protocols", []) or []:
-        slug = ps.get("protocol_slug", "")
-        if slug and picks.get(f"protocol_{slug}"):
-            if slug not in plan.attached_protocols:
-                plan.attached_protocols.append(slug)
+        proto_slug = ps.get("protocol_slug", "")
+        if proto_slug and picks.get(f"protocol_{proto_slug}"):
+            if proto_slug not in plan.attached_protocols:
+                plan.attached_protocols.append(proto_slug)
 
     # ── Apply protocol template (merged on top of AI suggestions) ─────────────
     # resolved_template is the full ProtocolTemplate object serialized from TS.

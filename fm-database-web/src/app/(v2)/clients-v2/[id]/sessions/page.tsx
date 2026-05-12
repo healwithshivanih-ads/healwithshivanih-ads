@@ -94,6 +94,10 @@ export default async function SessionsPage({
         activePlanRecheck={
           publishedPlan?.plan_period_recheck_date as string | undefined
         }
+        // All known plan slugs (across every bucket) — used by the
+        // inspector to detect a stale generated_plan_slug ref and show
+        // "plan deleted" instead of a Link that 404s on the v2 editor.
+        knownPlanSlugs={allPlans.map((p) => p.slug as string)}
       />
     </SessionsPageShell>
   );

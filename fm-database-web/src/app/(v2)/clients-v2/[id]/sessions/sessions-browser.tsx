@@ -74,6 +74,7 @@ export function SessionsBrowser({
   activePlanSlug,
   activePlanStart,
   activePlanRecheck,
+  knownPlanSlugs,
 }: {
   clientId: string;
   displayName: string;
@@ -90,6 +91,11 @@ export function SessionsBrowser({
   activePlanSlug?: string;
   activePlanStart?: string;
   activePlanRecheck?: string;
+  /** All known plan slugs across all buckets — used by SessionInspector
+   *  to suppress the "Open generated plan" CTA when the referenced
+   *  slug no longer exists on disk (deleted draft / stale ref). Without
+   *  this, clicking the button 404'd on the v2 plan editor. */
+  knownPlanSlugs?: string[];
 }) {
   const router = useRouter();
   const params = useSearchParams();
@@ -381,6 +387,7 @@ export function SessionsBrowser({
             clientId={clientId}
             session={selected}
             onOpenBrief={(sid) => setBriefSid(sid)}
+            knownPlanSlugs={knownPlanSlugs ?? []}
           />
         ) : (
           <FmPanel>
@@ -418,12 +425,17 @@ function SessionInspector({
   clientId,
   session,
   onOpenBrief,
+  knownPlanSlugs,
 }: {
   clientId: string;
   session: SessionSummary;
   onOpenBrief: (sid: string) => void;
+  knownPlanSlugs: string[];
 }) {
   const meta = TYPE_META[session.session_type] ?? TYPE_META.intake;
+  const planExists =
+    !!session.generated_plan_slug &&
+    knownPlanSlugs.includes(session.generated_plan_slug);
   const presenting = stripTag(session.presenting_complaints);
   const symptoms = session.selected_symptoms ?? [];
   const topics = session.selected_topics ?? [];
@@ -503,7 +515,7 @@ function SessionInspector({
                 📄 Brief / Print
               </button>
             )}
-            {session.generated_plan_slug && (
+            {session.generated_plan_slug && planExists && (
               <Link
                 href={`/clients-v2/${clientId}/plan/edit/${session.generated_plan_slug}`}
                 style={{
@@ -518,6 +530,23 @@ function SessionInspector({
               >
                 📋 Open generated plan →
               </Link>
+            )}
+            {session.generated_plan_slug && !planExists && (
+              <span
+                title={`Plan slug "${session.generated_plan_slug}" no longer exists on disk — likely deleted or pruned by the one-draft-per-client policy.`}
+                style={{
+                  padding: "7px 12px",
+                  fontSize: 10.5,
+                  fontWeight: 600,
+                  background: "var(--fm-bg-cool)",
+                  color: "var(--fm-text-tertiary)",
+                  border: "1px dashed var(--fm-border)",
+                  borderRadius: "var(--fm-radius-sm)",
+                  fontFamily: "var(--fm-font-mono)",
+                }}
+              >
+                ⚠ generated plan deleted
+              </span>
             )}
           </div>
         </div>
