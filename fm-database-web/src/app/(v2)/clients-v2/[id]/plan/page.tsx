@@ -214,12 +214,15 @@ function deriveStage(
       recheckDate = d.toISOString().slice(0, 10);
     }
     if (recheckDate && recheckDate < todayStr) {
+      // Point at the in-page Follow-up panel (carries forward the prior
+      // plan + AI adjustments) rather than a blank Full Assessment. The
+      // anchor id is set on the FollowUpPanel wrapper below.
       return {
         stage: "recheck",
         title: "Re-check due",
-        detail: `Protocol ended ${recheckDate} · run a new Full Assessment.`,
-        cta: "New full assessment",
-        ctaHref: undefined,
+        detail: `Protocol ended ${recheckDate} · generate a follow-up plan ↓`,
+        cta: "Go to follow-up panel",
+        ctaHref: "#follow-up-panel",
       };
     }
     return {
@@ -1016,17 +1019,19 @@ export default async function PlanTabPage({
                 coach had to drop into /clients/<id> (v1) to spin up a
                 phase-2 successor. */}
             {isPublished && activePlan && (
-              <FollowUpPanel
-                activePlanSlug={activePlan.slug}
-                clientId={id}
-                clientName={
-                  (client as unknown as { display_name?: string })
-                    .display_name
-                }
-                recheckDate={recheckDate}
-                isOverdue={followUpOverdue}
-                suggestedSlug={suggestedFollowUpSlug}
-              />
+              <div id="follow-up-panel" style={{ scrollMarginTop: 16 }}>
+                <FollowUpPanel
+                  activePlanSlug={activePlan.slug}
+                  clientId={id}
+                  clientName={
+                    (client as unknown as { display_name?: string })
+                      .display_name
+                  }
+                  recheckDate={recheckDate}
+                  isOverdue={followUpOverdue}
+                  suggestedSlug={suggestedFollowUpSlug}
+                />
+              </div>
             )}
 
             {/* Letter send history — filter to this plan only so the

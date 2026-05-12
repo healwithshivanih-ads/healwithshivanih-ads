@@ -46,6 +46,7 @@ import {
 import { FmFivePillarsWithSendCheckIn } from "./five-pillars-bridge";
 import { SOAPNotePanel } from "@/app/clients/[id]/soap-note-panel";
 import { ReworkBanner } from "@/app/clients/[id]/rework-banner";
+import { PreSessionBrief } from "@/app/clients/[id]/pre-session-brief";
 import { loadClientSessionsAction } from "@/app/assess/actions";
 import { clientQuickActions } from "./client-quick-actions";
 import { clientSubnavTabs } from "./client-subnav";
@@ -350,8 +351,8 @@ function deriveStage(plans: PlanRow[], todayStr: string): {
       return {
         stage: "recheck",
         title: "Re-check due",
-        detail: `Protocol ended ${recheckDate} · order recheck panel.`,
-        cta: "Time for new session",
+        detail: `Protocol ended ${recheckDate} · generate a follow-up plan.`,
+        cta: "Generate follow-up plan",
       };
     }
     return {
@@ -398,6 +399,12 @@ export default async function ClientV2Page({
 
   const plansForClient = (allPlans as unknown as PlanRow[]).filter(
     (p) => p.client_id === id,
+  );
+
+  // Active published plan — used by PreSessionBrief to load supplements +
+  // practices + plan period when the coach is prepping for a session.
+  const publishedPlan = plansForClient.find(
+    (p) => (p._bucket ?? p.status) === "published",
   );
 
   // Workflow stage
@@ -544,7 +551,9 @@ export default async function ClientV2Page({
               ? `/plans/${plansForClient.find((p) => (p._bucket ?? p.status) !== "published")?.slug ?? ""}`
               : stageInfo.stage === "active"
                 ? `/plans/${plansForClient.find((p) => (p._bucket ?? p.status) === "published")?.slug ?? ""}`
-                : `/clients/${id}?tab=sessions`
+                : stageInfo.stage === "recheck"
+                  ? `/clients-v2/${id}/plan#follow-up-panel`
+                  : `/clients/${id}?tab=sessions`
         }
         quickActions={
           <>
@@ -561,7 +570,30 @@ export default async function ClientV2Page({
         }
       />
 
-      <SubNav id={id} active="overview" />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          gap: 12,
+          flexWrap: "wrap",
+          marginBottom: 0,
+        }}
+      >
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <SubNav id={id} active="overview" />
+        </div>
+        <div style={{ paddingBottom: 8 }}>
+          <PreSessionBrief
+            client={client}
+            clientId={id}
+            sessions={sessionSummaries}
+            activePlanSlug={publishedPlan?.slug}
+            activePlanStart={publishedPlan?.plan_period_start}
+            activePlanRecheck={publishedPlan?.plan_period_recheck_date}
+          />
+        </div>
+      </div>
 
       {client.rework_suggestion && (
         <div style={{ marginBottom: 16 }}>
