@@ -5,7 +5,7 @@ the queue. Items here have been explicitly deferred — listed roughly by area.
 When picking one up, move its entry to a v0.x commit message and delete it
 from this file.
 
-Last updated: 2026-05-15
+Last updated: 2026-05-12 (post v0.66 work — chat learns prefs, v2 follow-up + protocol picker + staleness banner + pre-session brief + session brief PDF + rework banner full coverage)
 
 ---
 
@@ -27,11 +27,19 @@ Last updated: 2026-05-15
 ## /clients (Client overview)
 
 - **Multiple draft plans** — `activePlan = plans.find(...)` currently shows only the first matching plan. If coach has more than one draft for the same client, the rest are invisible. Either surface a "N other drafts" picker or change to "most recent".
-- **Session notes PDF export** — clean PDF of session notes shareable with a referring doctor or specialist.
+- **Session notes PDF export** — `SessionBriefModal` shipped 2026-05-12 in v2 Sessions (`📄 Brief / Print` button) + v1 client-tabs. Print CSS isolates `#session-brief-print`, so Cmd+P → clean A4. Optional follow-up: also mount on the v2 Plan tab and Communicate tab if coach wants to print without leaving those surfaces.
+- **🧠 Memory panel** — small card on overview that surfaces what the AI has learned about this client via plan-chat (last N writes to `foods_to_avoid` / `non_negotiables` / `reported_triggers` / `dietary_preference`). Currently the only signal is the per-turn 👤 chip in the chat; coach can't see the cumulative profile at a glance.
+- **Pre-session brief on Sessions tab** — `<PreSessionBrief>` is mounted on v2 overview (2026-05-12). Cheap second mount on `/clients-v2/[id]/sessions` so coach can launch it from where she's reviewing prior session history. ~10 min.
 
 ---
 
 ## Catalogue
+
+- **Expand lab_tests catalogue** — ~30 missing FM markers identified during the v0.64 mindmap mining pass: ApoB, Lp(a), oxidized LDL, fibrinogen, Lp-PLA2, MPO, LH/FSH ratio, free / total testosterone, SHBG, AMH, prolactin, 17-OH progesterone, salivary cortisol curve, DUTCH metabolites (oestrone / oestriol / 2-OH / 4-OH / 16-OH / cortisol / cortisone), organic acids (OAT) markers, CoQ10 status, carnitine profile, lactate, ESR, PTH, CTX, P1NP, alkaline phosphatase, urinary calcium, mycotoxin urine, EBV / viral panel, heavy metals panel, food sensitivity IgG, GI-MAP. Each gets a YAML in `data/lab_tests/` with `conventional_low/high` + `fm_optimal_low/high` + India `typical_cost_inr`. ~2-3 hours; can agent-parallelise per panel.
+- **Add missing FM mechanisms** — 7 referenced in mindmaps as free-text but not canonicalised: `hla-genetics-immune-tolerance`, `ebv-reactivation`, `sympathetic-overdrive`, `late-light-melatonin-suppression`, `cortisol-awakening-response`, `post-viral-fatigue`, `pacing-energy-envelope`. ~1 hour to seed all 7 with summary + parent mechanisms + linked topics.
+- **Re-run catalogue cleanup tool** — `/catalogue/cleanup` last ran in v0.64. New ingest since may have introduced new duplicates / miscategorisations. Re-run + triage. ~1 hour.
+- **Promote freeform → catalogue entities** — Practice, TrackingHabit, Food, LabTest, Recipe, EducationalModule. Watch for duplication in real plans first; only promote when ≥3 plans repeat the same string.
+- **Commit pending `fm-database/data/` YAML changes** — check `git status` from `fm-database/` and commit any uncommitted catalogue edits before they accumulate. ~5 min.
 
 - **Additional lab markers** — still pending (not yet shipped):
   - **Mycotoxin urine panel** — water-damaged-building / mould exposure
@@ -52,8 +60,11 @@ Last updated: 2026-05-15
 ## /plan
 
 - **Multi-coach support** — currently `updated_by: shivani` is hardcoded. When other coaches join, need a `coach_id` selector + per-coach branding on letters.
-- **Inline plan editor on client page** — instead of navigating to `/plans/[slug]`, expand the editor inline on the Plan tab. Faster session workflow.
-- **Bulk regenerate letters** — when the plan changes after letters were generated, surface a "regenerate all letters" button instead of clicking each.
+- **v2 plan editor (Phase 4.5)** — the v2 `/clients-v2/[id]/plan` is a read-only dashboard; editing still drops to legacy `/plans/[slug]`. Rebuild the 3-tab editor (Protocol / Documents / Lifecycle) in v2 chrome with the same plan-chat surface. Largest open piece of v2 migration. ~3-5 hours.
+- **Inline plan editor on client page** — alternative / overlapping with v2 plan editor: expand the editor inline on the Plan tab instead of navigating. Pick one approach.
+- **Bulk regenerate letters** — when the plan changes after letters were generated, surface a "regenerate all stale letters" button on v2 Communicate (right above SendPackageButton, only when staleness banner is showing). Coach currently has to re-tick each type. ~20 min.
+- **Notes-for-coach formatting** — `notes_for_coach` renders as a wall of text. Coach wants it structured (subheadings, bullets). Either (a) extend the AI prompt in generate-draft.py and the chat tool to emit markdown-friendly structure, OR (b) parse it on render. Open question: should the AI structure it from the start, or should the human structure it during the chat session?
+- **Letter QA validation report viewer** — the Haiku letter QA pass writes `{stem}.validation.json` alongside saved letters. Surface a viewer that shows which tips it rewrote + why, so coach can audit the QA. Currently the data is on disk but no UI reads it.
 
 ---
 
@@ -71,3 +82,15 @@ Last updated: 2026-05-15
 - **WhatsApp inbound** (when AiSensy plan upgrades) — currently inbound is manual paste via Message Capture Panel; webhook handler exists but skipped on free tier.
 - **`fm_checkin_nudge` template** — pending AiSensy review; works automatically once approved.
 - **Validator integration of new lab tests** — 25+ lab_tests added in v0.63 and v0.66+; ensure validator's pending-refs run shows clean.
+- **Persistent public URL** — `cloudflared tunnel --url http://localhost:3002` if coach wants the app reachable from her phone / outside Wi-Fi. ~15 min infra; only needed if remote access becomes a real workflow.
+- **Client letter design finalisation** — review `hariharan-plan-3-2026-05-06-cl-005.html` and decide on layout / branding changes. Human review task, can't be coded.
+
+---
+
+## UI polish (low priority — pick up when bored)
+
+- **Mindmap node click-to-recenter** — clicking a linked node on `/mindmap/[slug]` should recenter the Mermaid diagram on that node, not just navigate to its catalogue page.
+- **Plan diff split colored view** — current `plan-diff` viewer is unified diff (green +, red -). Side-by-side split view is easier to scan.
+- **Backlog pagination** — `/backlog` lists everything in one scroll; paginate to 50/page once it grows past ~200 open items.
+- **Health trends chart axis labels** — sparklines have no Y-axis labels; date axis would help.
+- **JSON export contract for Project 2 (client mobile app)** — explicitly deferred indefinitely per CLAUDE.md ("desktop-first").
