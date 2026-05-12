@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { loadClientById } from "@/lib/fmdb/loader-extras";
 import { FmAppShell } from "@/components/fm";
 import { HeaderAvatar } from "../analyse/header-avatar";
+import { clientQuickActions } from "../client-quick-actions";
 
 export interface CommunicatePageShellProps {
   clientId: string;
@@ -35,6 +36,7 @@ export async function CommunicatePageShell({
   return (
     <FmAppShell
       activeNavId="clients"
+      quickActions={clientQuickActions(clientId)}
       crumbs={[
         { label: "Clients", href: "/clients" },
         { label: displayName, href: `/clients-v2/${clientId}` },

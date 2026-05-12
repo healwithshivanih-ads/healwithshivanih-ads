@@ -18,6 +18,35 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { FmSidebarNav, type FmNavSection } from "./FmSidebarNav";
 import { FmTopBar, type FmBreadcrumb } from "./FmTopBar";
+import {
+  FmFloatingActions,
+  type FmFloatingActionItem,
+} from "./FmFloatingActions";
+
+/** Global quick-action defaults — used by routes that don't pass `quickActions`. */
+const DEFAULT_QUICK_ACTIONS: FmFloatingActionItem[] = [
+  {
+    id: "new-client",
+    icon: "👤",
+    label: "New client",
+    hint: "Intake form, fresh profile",
+    href: "/clients?new=1",
+  },
+  {
+    id: "search",
+    icon: "🔍",
+    label: "Search catalogue + clients",
+    hint: "⌘K · full-text",
+    href: "/search",
+  },
+  {
+    id: "ingest",
+    icon: "⬆️",
+    label: "Ingest a document",
+    hint: "PDF / markdown / URL → catalogue",
+    href: "/ingest",
+  },
+];
 
 const NAV: FmNavSection[] = [
   {
@@ -58,6 +87,12 @@ export interface FmAppShellProps {
   crumbs?: FmBreadcrumb[];
   /** Right-aligned slot in the topbar (next to the search button). */
   topbarRightSlot?: React.ReactNode;
+  /**
+   * Override the floating-action items. Pass page-specific actions
+   * (e.g. "new quick note for this client", "send template"). If omitted,
+   * a sensible global default set is shown. Pass `null` to hide the FAB.
+   */
+  quickActions?: FmFloatingActionItem[] | null;
   children: React.ReactNode;
 }
 
@@ -65,6 +100,7 @@ export function FmAppShell({
   activeNavId,
   crumbs,
   topbarRightSlot,
+  quickActions,
   children,
 }: FmAppShellProps) {
   const router = useRouter();
@@ -151,6 +187,14 @@ export function FmAppShell({
           </div>
         </main>
       </div>
+      {/* Floating quick-action button — pinned bottom-right. Pages pass
+          `quickActions={null}` to hide; otherwise pass a custom list, or
+          rely on the global DEFAULT_QUICK_ACTIONS. */}
+      {quickActions !== null && (
+        <FmFloatingActions
+          actions={quickActions ?? DEFAULT_QUICK_ACTIONS}
+        />
+      )}
     </div>
   );
 }

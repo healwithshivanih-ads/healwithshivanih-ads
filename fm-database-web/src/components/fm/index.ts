@@ -88,3 +88,9 @@ export type {
 
 export { FmSymptomPicker } from "./FmSymptomPicker";
 export type { FmSymptomPickerProps, FmSymptomOption } from "./FmSymptomPicker";
+
+export { FmFloatingActions } from "./FmFloatingActions";
+export type {
+  FmFloatingActionsProps,
+  FmFloatingActionItem,
+} from "./FmFloatingActions";

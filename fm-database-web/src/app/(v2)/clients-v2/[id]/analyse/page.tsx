@@ -34,6 +34,7 @@ import {
   type FmSessionTypeId,
 } from "@/components/fm";
 import { HeaderAvatar } from "./header-avatar";
+import { clientQuickActions } from "../client-quick-actions";
 
 export const dynamic = "force-dynamic";
 
@@ -155,6 +156,7 @@ export default async function AnalysePage({
   return (
     <FmAppShell
       activeNavId="clients"
+      quickActions={clientQuickActions(id)}
       crumbs={[
         { label: "Clients", href: "/clients" },
         { label: displayName, href: `/clients-v2/${id}` },

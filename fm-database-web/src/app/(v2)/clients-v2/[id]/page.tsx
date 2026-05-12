@@ -46,6 +46,7 @@ import {
 import { FmFivePillarsWithSendCheckIn } from "./five-pillars-bridge";
 import { SOAPNotePanel } from "@/app/clients/[id]/soap-note-panel";
 import { loadClientSessionsAction } from "@/app/assess/actions";
+import { clientQuickActions } from "./client-quick-actions";
 
 export const dynamic = "force-dynamic";
 
@@ -517,6 +518,7 @@ export default async function ClientV2Page({
   return (
     <FmAppShell
       activeNavId="clients"
+      quickActions={clientQuickActions(client.client_id)}
       crumbs={[
         { label: "Clients", href: "/clients" },
         { label: client.display_name ?? client.client_id },
