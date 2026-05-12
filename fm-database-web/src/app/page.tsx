@@ -296,6 +296,14 @@ export default async function Dashboard() {
           </h1>
           <p className="text-muted-foreground mt-1 text-sm">
             {new Date().toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}
+            <span className="mx-2">·</span>
+            <Link
+              href="/dashboard-v2"
+              className="text-orange-600 font-medium hover:underline"
+              title="Phase 0 preview of the new visual system"
+            >
+              ✨ Try new UI (Phase 0 preview)
+            </Link>
           </p>
         </div>
         {/* Quick stats */}
