@@ -1,0 +1,42 @@
+slug: lh-fsh-ratio
+display_name: LH/FSH ratio
+full_name: Luteinizing Hormone to Follicle Stimulating Hormone Ratio
+aliases:
+- lh:fsh
+- lh fsh ratio
+- lh to fsh ratio
+- gonadotropin ratio
+units: ratio
+sample_type: blood
+conventional_low: 0.5
+conventional_high: 2.0
+fm_optimal_low: 0.5
+fm_optimal_high: 1.5
+interpretation_low: Hypothalamic amenorrhea, pituitary suppression, very low body weight,
+  excessive exercise stress
+interpretation_high: '> 2:1 strongly suggests PCOS (LH-dominant pattern driving ovarian
+  androgen production); also seen in primary ovarian insufficiency'
+when_to_order: PCOS workup (paired LH + FSH on cycle day 2-3); irregular cycles; hyperandrogenism
+  evaluation; differentiating PCOS from hypothalamic amenorrhea
+fasting_required: false
+typical_cost_inr: 800
+linked_to_topics:
+- pcos
+- pcos-fertility
+- perimenopause
+linked_to_mechanisms:
+- ovarian-androgen-excess
+- insulin-resistance
+- estrogen-decline
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation — LH/FSH ratio in PCOS
+evidence_tier: plausible_emerging
+notes_for_coach: Classic PCOS pattern is LH:FSH > 2:1 on cycle day 2-3 — but only
+  about 60% of PCOS cases show this. Normal ratio doesn't rule out PCOS. Must be drawn
+  on day 2-3 of menses; mid-cycle LH surge will distort the ratio. Use alongside AMH,
+  free testosterone, and SHBG for a fuller PCOS picture.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: shivani
