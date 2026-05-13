@@ -449,18 +449,98 @@ def main() -> int:
         json.dump({"ok": False, "error": f"anthropic not installed: {e}"}, sys.stdout)
         return 1
 
+    # ── Tool schema — forces structured output ───────────────────────────────
+    # Anthropic's tool-use API validates the model's output against this
+    # schema before we ever see it. Previous text-JSON approach hit a
+    # parse error roughly 1 in 10 long transcripts (unescaped quote,
+    # missing comma, truncated string at max_tokens) — tool_use makes
+    # those failure modes impossible by construction.
+    EXTRACT_TOOL = {
+        "name": "record_extracted_client",
+        "description": (
+            "Record the structured information extracted from a consultation "
+            "transcript. Every field is optional — set to null / empty list if "
+            "not clearly stated. Be conservative; do not infer."
+        ),
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "display_name": {"type": ["string", "null"]},
+                "email": {"type": ["string", "null"]},
+                "date_of_birth": {"type": ["string", "null"], "description": "YYYY-MM-DD if explicit"},
+                "estimated_age": {"type": ["integer", "null"]},
+                "sex": {"type": ["string", "null"], "enum": ["F", "M", "other", None]},
+                "mobile_number": {"type": ["string", "null"]},
+                "city": {"type": ["string", "null"]},
+                "state": {"type": ["string", "null"]},
+                "country": {"type": ["string", "null"]},
+                "active_conditions": {"type": "array", "items": {"type": "string"}},
+                "current_medications": {"type": "array", "items": {"type": "string"}},
+                "known_allergies": {"type": "array", "items": {"type": "string"}},
+                "goals": {"type": "array", "items": {"type": "string"}},
+                "key_symptoms": {"type": "array", "items": {"type": "string"}},
+                "dietary_preference": {"type": ["string", "null"]},
+                "foods_to_avoid": {"type": ["string", "null"]},
+                "non_negotiables": {"type": ["string", "null"]},
+                "reported_triggers": {"type": ["string", "null"]},
+                "family_history": {"type": ["string", "null"]},
+                "digestion_notes": {"type": ["string", "null"]},
+                "sleep_notes": {"type": ["string", "null"]},
+                "energy_pattern": {"type": ["string", "null"]},
+                "menstrual_notes": {"type": ["string", "null"]},
+                "stress_response": {"type": ["string", "null"]},
+                "childhood_history": {"type": ["string", "null"]},
+                "toxic_exposures": {"type": ["string", "null"]},
+                "what_has_worked": {"type": ["string", "null"]},
+                "what_hasnt_worked": {"type": ["string", "null"]},
+                "five_pillars": {
+                    "type": ["object", "null"],
+                    "properties": {
+                        "sleep_hours": {"type": ["number", "null"]},
+                        "sleep_quality": {"type": ["integer", "null"]},
+                        "sleep_issues": {"type": ["string", "null"]},
+                        "stress_level": {"type": ["integer", "null"]},
+                        "stress_type": {"type": ["string", "null"]},
+                        "movement_days_per_week": {"type": ["integer", "null"]},
+                        "movement_type": {"type": ["string", "null"]},
+                        "movement_intensity": {"type": ["string", "null"]},
+                        "nutrition_quality": {"type": ["integer", "null"]},
+                        "connection_quality": {"type": ["integer", "null"]},
+                        "connection_notes": {"type": ["string", "null"]},
+                    },
+                },
+                "timeline_events": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "year": {"type": ["integer", "null"]},
+                            "date": {"type": ["string", "null"]},
+                            "event": {"type": "string"},
+                            "category": {"type": ["string", "null"]},
+                        },
+                        "required": ["event"],
+                    },
+                },
+                "presenting_complaints": {"type": ["string", "null"]},
+                "notes": {"type": ["string", "null"]},
+                "intake_date": {"type": ["string", "null"]},
+            },
+        },
+    }
+
     client_ai = Anthropic(api_key=api_key)
     try:
         resp = client_ai.messages.create(
             model="claude-haiku-4-5",
-            # Bumped from 3000 — rich IFM-style transcripts with a long
-            # timeline + body-systems narratives + family hx routinely
-            # hit the cap mid-JSON and the result fails to parse.
-            # Haiku-4-5 supports up to 64K output tokens; 8000 is a safe
-            # ceiling for the largest realistic intake.
-            max_tokens=8000,
+            # 16K is a comfortable ceiling for the largest IFM-style intake.
+            # Tool-use overhead is minimal — most of this is for long
+            # narrative fields (childhood_history, family_history, etc.).
+            max_tokens=16000,
             system=SYSTEM_PROMPT,
             messages=[{"role": "user", "content": user_content}],
+            tools=[EXTRACT_TOOL],
+            tool_choice={"type": "tool", "name": "record_extracted_client"},
         )
         try:
             from fmdb.usage import log_usage as _log_usage
@@ -469,7 +549,7 @@ def main() -> int:
                 script="extract-client-from-transcript.py",
                 model="claude-haiku-4-5",
                 usage=resp.usage,
-                notes="intake transcript parse",
+                notes="intake transcript parse (tool_use)",
             )
         except Exception:
             pass
@@ -477,19 +557,45 @@ def main() -> int:
         json.dump({"ok": False, "error": f"API call failed: {e}"}, sys.stdout)
         return 1
 
-    raw_text = resp.content[0].text.strip() if resp.content else ""
+    # Tool-use response shape: resp.content contains a ToolUseBlock whose
+    # `.input` is already a parsed dict matching the schema. No JSON
+    # parsing of free-text needed; the only failure mode here is the
+    # model refusing to call the tool, which we treat as a soft empty.
+    extracted: dict = {}
+    for block in resp.content or []:
+        if getattr(block, "type", None) == "tool_use" and getattr(block, "name", None) == "record_extracted_client":
+            tool_input = getattr(block, "input", None)
+            if isinstance(tool_input, dict):
+                extracted = tool_input
+                break
 
-    # Strip markdown fences
-    if raw_text.startswith("```"):
-        lines = raw_text.split("\n")
-        raw_text = "\n".join(lines[1:])
-        raw_text = raw_text.rsplit("```", 1)[0].strip()
-
-    try:
-        extracted = json.loads(raw_text)
-    except json.JSONDecodeError as e:
-        json.dump({"ok": False, "error": f"model returned non-JSON: {e}\n{raw_text[:400]}"}, sys.stdout)
-        return 1
+    if not extracted:
+        # Fall back to text-block JSON parsing for the unlikely case where
+        # tool_choice was ignored (Anthropic occasionally returns just a
+        # text block when the schema rejects the input).
+        raw_text = ""
+        for block in resp.content or []:
+            if getattr(block, "type", None) == "text":
+                raw_text = (getattr(block, "text", "") or "").strip()
+                break
+        if raw_text.startswith("```"):
+            lines = raw_text.split("\n")
+            raw_text = "\n".join(lines[1:]).rsplit("```", 1)[0].strip()
+        try:
+            extracted = json.loads(raw_text) if raw_text else {}
+        except json.JSONDecodeError as e:
+            stop_reason = getattr(resp, "stop_reason", "unknown")
+            json.dump(
+                {
+                    "ok": False,
+                    "error": (
+                        f"Model didn't return structured output (stop_reason={stop_reason}). "
+                        f"Try a shorter transcript or split it into sections. JSON error: {e}"
+                    ),
+                },
+                sys.stdout,
+            )
+            return 1
 
     # ── Sanitise ─────────────────────────────────────────────────────────────
     def clean_list(v: object) -> list[str]:
