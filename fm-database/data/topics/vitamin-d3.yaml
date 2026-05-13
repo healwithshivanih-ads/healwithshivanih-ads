@@ -2,8 +2,15 @@ slug: vitamin-d3
 display_name: Vitamin D3
 aliases:
 - cholecalciferol
-- vitamin D
 - vitamin D3 supplementation
+- vitamin D
+- vitamin-d-deficiency
+- low vitamin D
+- hypovitaminosis D
+- vitamin D insufficiency
+- vitamin-d-nutrition
+- dietary vitamin D
+- vitamin D deficiency
 summary: Vitamin D3 (cholecalciferol) is a fat-soluble vitamin primarily produced
   in the skin via UV exposure and obtained from animal food sources. It undergoes
   hepatic and renal conversion to its active form (calcitriol) and plays critical
@@ -39,6 +46,16 @@ sources:
   location: Introduction / Vitamin D Overview
   quote: Vitamin D is a very important fat soluble vitamin. Primarily, it is produced
     when the sun's UV rays fall on our skin.
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Vitamin D'
+  quote: Research indicates that the current RDAs may be too low for supporting optimal,
+    non-skeletal health. Much higher intake may be required to maintain adequate blood
+    levels.
+- id: vitaone-health-coaching-toolkit
+  location: 'Food Sources: Vitamin D'
+  quote: Vitamin D helps the body absorb calcium and regulates both calcium and phosphorous
+    levels in the blood. It plays an important role in bone growth and maintenance,
+    influences cell growth and development, and is required for proper immune function.
 version: 1
 status: active
 updated_at: '2026-05-05'

@@ -5,6 +5,12 @@ aliases:
 - methylcobalamin
 - cyanocobalamin
 - B12
+- vitamin-b12-deficiency
+- low B12
+- cobalamin deficiency
+- pernicious anemia risk
+- vitamin-b12-nutrition
+- B12 deficiency
 summary: Vitamin B12 is a water-soluble vitamin required for red blood cell synthesis,
   DNA synthesis, neurological function, and homocysteine-to-methionine conversion.
   Absorption is complex, requiring intrinsic factor and an intact terminal ileum.
@@ -40,6 +46,16 @@ sources:
   location: Vitamin B12 section
   quote: Vitamin B12 has many forms in which it is available including cyanocobalamin,
     methylcobalamin, deoxyadenosylcobalamin and hydroxycobalamin.
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Vitamin B12'
+  quote: Vitamin B12 is a water-soluble nutrient required to make healthy red blood
+    cells, support brain health, make DNA, metabolize homocysteine, and prevent pernicious
+    anemia.
+- id: vitaone-health-coaching-toolkit
+  location: 'Food Sources: Vitamin B12'
+  quote: Vitamin B12 is a water-soluble nutrient required to make healthy red blood
+    cells, support brain health, make DNA, metabolize homocysteine, and prevent pernicious
+    anemia.
 version: 1
 status: active
 updated_at: '2026-05-05'

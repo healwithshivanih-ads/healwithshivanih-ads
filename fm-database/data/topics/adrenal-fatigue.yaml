@@ -1,10 +1,16 @@
 slug: adrenal-fatigue
 display_name: Adrenal Fatigue / HPA-Axis Burnout
 aliases:
-- adrenal burnout
 - adrenal exhaustion
 - HPA-axis overload
 - cortisol dysregulation
+- adrenal burnout
+- adrenal-dysfunction
+- adrenal fatigue
+- HPA exhaustion
+- adrenal-cortisol-resilience
+- HPA axis
+- stress physiology
 summary: Functional medicine framing of cortisol dysregulation, low DHEA, HPA-axis
   overload, burnout, low resilience, and adrenal support strategies. Not a conventional
   medical diagnosis.
@@ -45,6 +51,14 @@ sources:
   location: Topics Covered
   quote: Functional medicine framing of cortisol dysregulation, low DHEA, HPA-axis
     overload, burnout, low resilience, and adrenal support strategies.
+- id: vitaone-adrenal-cheatsheet
+  location: How Chronic Stress, Anger, or Grief Translate into Physical Diseases (p.10)
+  quote: Persistent HPA activation → ↑ Cortisol, ↓ DHEA → Mitochondrial suppression,
+    altered glucose metabolism
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXg8Y9NjIwF/
+  quote: The true antidote to stress lies in rebuilding anti-stress hormones - DHEA,
+    progesterone, oxytocin, melatonin, serotonin, and growth hormone.
 version: 1
 status: active
 updated_at: '2026-05-06'

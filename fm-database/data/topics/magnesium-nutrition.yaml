@@ -4,6 +4,11 @@ aliases:
 - dietary magnesium
 - magnesium deficiency
 - magnesium inadequacy
+- magnesium-deficiency
+- hypomagnesemia
+- low magnesium
+- magnesium insufficiency
+- magnesium-insufficiency
 summary: Magnesium supports energy production, blood pressure, blood sugar metabolism,
   bone health, mood, and digestive regularity. Nearly half of US adults consume less
   than the RDA, making insufficiency very common.
@@ -32,6 +37,14 @@ sources:
     blood pressure, blood sugar metabolism, bone health, mood, digestive regularity,
     and much more. Magnesium inadequacy is very common, with almost half of adults
     in the US getting less than the RDA.
+- id: coconote-fm-magnesium-deficiency
+  location: Introduction
+  quote: Most of us in today's world are deficient in magnesium because of the low
+    availability of magnesium in our food sources, because of the environmental conditions.
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Magnesium'
+  quote: Magnesium inadequacy is very common, with almost half of adults in the US
+    getting less than the RDA.
 version: 1
 status: active
 updated_at: '2026-05-04'
