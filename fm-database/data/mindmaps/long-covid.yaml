@@ -1,0 +1,906 @@
+slug: long-covid
+display_name: Long COVID / Post-Viral Syndrome
+description: 'Functional medicine approach to Long COVID (Post-Acute Sequelae of SARS-CoV-2,
+  PASC) — persistent multi-system symptoms lasting 12+ weeks after acute SARS-CoV-2
+  infection that are not explained by another diagnosis. Heavy overlap with ME/CFS
+  (myalgic encephalomyelitis / chronic fatigue syndrome) and POTS (postural orthostatic
+  tachycardia syndrome) — post-exertional malaise (PEM) is the cardinal feature that
+  separates this from ordinary fatigue and must be respected.
+
+  India context: coach regularly sees chronic post-Delta-wave fatigue, breathlessness,
+  hair loss at 3-4 months, and post-viral IBS in clients 1-3 years out from infection.
+  Ayurvedic adjuncts (tulsi, giloy, ashwagandha) and gentle abhyanga commonly stacked
+  with FM repletion. Heightened vigilance needed against well-meaning advice to
+  "push through" or do graded exercise — this reliably worsens PEM-positive cases.
+
+  Coaching scope: education, pacing support, nutrient repletion guidance, lifestyle
+  rebuilding. Refer for MCAS / POTS / microclot workup, LDN, and any chest pain or
+  neurological deficits. Evidence base is still emerging — many interventions are
+  fm_specific_thin and should be framed as such.
+
+  '
+aliases:
+- post-covid-syndrome
+- post-acute-sequelae-of-sars-cov-2
+- pasc
+- long-haul-covid
+- post-viral-fatigue-syndrome
+related_topics:
+- mitochondrial-health-nutrients
+- chronic-inflammation
+- hpa-axis-dysregulation
+- adrenal-fatigue
+- autoimmunity-leaky-gut-connection
+- oxidative-stress
+- breathwork-for-health
+- stress-management
+- vagal-tone
+- anti-inflammatory-diet
+related_mechanisms:
+- mitochondrial-dysfunction
+- chronic-systemic-inflammation
+- endothelial-dysfunction
+- mast-cell-degranulation-histamine-release
+- post-viral-fatigue
+- oxidative-stress-and-inflammation
+- glutathione-depletion
+- hpa-axis-dysregulation
+- neuroinflammation
+- cytokine-dysregulation
+- gut-microbiome-dysbiosis
+tree:
+- label: 🔴 Clinical Presentation
+  children:
+  - label: Cardinal Symptoms
+    children:
+    - label: Persistent Fatigue 12+ Weeks Post-Acute Infection
+      children: []
+      linked_kind: symptom
+      linked_slug: post-viral-fatigue
+      notes: ''
+    - label: Post-Exertional Malaise (worsens 24-72h after activity)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: PEM is the cardinal feature — separates Long COVID from ordinary fatigue.
+        If present, graded exercise is contraindicated.
+    - label: Brain Fog / Cognitive Dysfunction
+      children: []
+      linked_kind: symptom
+      linked_slug: brain-fog
+      notes: ''
+    - label: Dyspnoea on Exertion
+      children: []
+      linked_kind: symptom
+      linked_slug: shortness-of-breath
+      notes: ''
+    - label: Palpitations / POTS (HR rise >30 bpm on standing)
+      children: []
+      linked_kind: symptom
+      linked_slug: palpitations
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Neuro & Sensory
+    children:
+    - label: Sleep Disturbance
+      children: []
+      linked_kind: symptom
+      linked_slug: sleep-disturbance
+      notes: ''
+    - label: Headache
+      children: []
+      linked_kind: symptom
+      linked_slug: headache
+      notes: ''
+    - label: Loss / Distortion of Smell-Taste (parosmia, anosmia, phantosmia)
+      children: []
+      linked_kind: symptom
+      linked_slug: loss-of-taste-and-smell
+      notes: ''
+    - label: Orthostatic Dizziness
+      children: []
+      linked_kind: symptom
+      linked_slug: orthostatic-dizziness
+      notes: ''
+    - label: Mood Changes (anxiety, low mood, irritability)
+      children: []
+      linked_kind: symptom
+      linked_slug: mood-changes-anxiety
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Musculoskeletal & Systemic
+    children:
+    - label: Joint / Muscle Pain
+      children: []
+      linked_kind: symptom
+      linked_slug: joint-muscle-pain
+      notes: ''
+    - label: Muscle Pain / Myalgia
+      children: []
+      linked_kind: symptom
+      linked_slug: muscle-pain-myalgia
+      notes: ''
+    - label: Hair Shedding (telogen effluvium at 3-4 months)
+      children: []
+      linked_kind: symptom
+      linked_slug: hair-loss
+      notes: India coaches regularly see this in clients 3-4mo post-Delta.
+    - label: Menstrual Disturbance
+      children: []
+      linked_kind: symptom
+      linked_slug: menstrual-irregularities
+      notes: ''
+    - label: Malaise
+      children: []
+      linked_kind: symptom
+      linked_slug: malaise
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: GI & Autonomic
+    children:
+    - label: GI Symptoms (post-infectious IBS pattern)
+      children: []
+      linked_kind: symptom
+      linked_slug: ibs-bloating-gut-symptoms
+      notes: ''
+    - label: Histamine Intolerance Pattern
+      children: []
+      linked_kind: symptom
+      linked_slug: histamine-intolerance
+      notes: ''
+    - label: Temperature Dysregulation (cold intolerance, sweats)
+      children: []
+      linked_kind: symptom
+      linked_slug: cold-intolerance
+      notes: ''
+    - label: Skin Rash / Urticaria (MCAS-pattern)
+      children: []
+      linked_kind: symptom
+      linked_slug: skin-rash-urticaria
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Red Flags (refer urgently)
+    children:
+    - label: Chest Pain → cardiac workup
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: Refer immediately. Do not coach through chest pain.
+    - label: Neurological Deficits → urgent referral
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Mental Health Crisis / Suicidal Ideation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Severe / Worsening Dyspnoea
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: ⚙️ Root Mechanisms
+  children:
+  - label: Viral Persistence
+    children:
+    - label: Spike Protein / RNA in Tissue Reservoirs (gut, brain, vasculature)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Latent Virus Reactivation (EBV, HHV-6, CMV)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Persistent Post-Viral Fatigue Mechanism
+      children: []
+      linked_kind: mechanism
+      linked_slug: post-viral-fatigue
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Vascular & Microclot
+    children:
+    - label: Fibrin Amyloid Microclots (capillary hypoxia)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: Clinician-managed. Coach educates, does not direct D-dimer-led therapy.
+    - label: Endothelial Dysfunction
+      children: []
+      linked_kind: mechanism
+      linked_slug: endothelial-dysfunction
+      notes: ''
+    - label: Endothelial Injury
+      children: []
+      linked_kind: mechanism
+      linked_slug: endothelial-injury
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Cellular Energy Failure
+    children:
+    - label: Mitochondrial Dysfunction
+      children: []
+      linked_kind: mechanism
+      linked_slug: mitochondrial-dysfunction
+      notes: ''
+    - label: Oxidative Stress & Inflammation
+      children: []
+      linked_kind: mechanism
+      linked_slug: oxidative-stress-and-inflammation
+      notes: ''
+    - label: Glutathione Depletion
+      children: []
+      linked_kind: mechanism
+      linked_slug: glutathione-depletion
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Immune Dysregulation
+    children:
+    - label: Mast Cell Activation Syndrome (MCAS)
+      children: []
+      linked_kind: mechanism
+      linked_slug: mast-cell-degranulation-histamine-release
+      notes: ''
+    - label: Cytokine Dysregulation (IL-6, TNF-α elevation)
+      children: []
+      linked_kind: mechanism
+      linked_slug: cytokine-dysregulation
+      notes: ''
+    - label: Chronic Systemic Inflammation
+      children: []
+      linked_kind: mechanism
+      linked_slug: chronic-systemic-inflammation
+      notes: ''
+    - label: Histamine Excess (enzyme inhibition)
+      children: []
+      linked_kind: mechanism
+      linked_slug: histamine-enzyme-inhibition
+      notes: ''
+    - label: Neuroinflammation (microglial activation)
+      children: []
+      linked_kind: mechanism
+      linked_slug: neuroinflammation
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Autonomic & Endocrine
+    children:
+    - label: Autonomic Nervous System Dysregulation (POTS, vagal dysfunction)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: HPA Axis Exhaustion
+      children: []
+      linked_kind: mechanism
+      linked_slug: hpa-axis-dysregulation
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Gut & Nutrient
+    children:
+    - label: Dysbiosis + Post-Infectious IBS
+      children: []
+      linked_kind: mechanism
+      linked_slug: gut-microbiome-dysbiosis
+      notes: ''
+    - label: Intestinal Permeability
+      children: []
+      linked_kind: mechanism
+      linked_slug: intestinal-permeability
+      notes: ''
+    - label: Micronutrient Depletion (zinc, D, B12, selenium, magnesium)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🧬 FM Approach
+  children:
+  - label: History & Timeline
+    children:
+    - label: Map Symptom Timeline to Acute Infection Date
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: PEM 5-Day Diary (activity → crash pattern)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: FACIT-Fatigue or Similar Severity Score
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Clinical Screens
+    children:
+    - label: Active Stand Test (10-min, HR rise >30 bpm = POTS suspicion)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: MCAS Clinical Screen (flushing, hives, GI, sensitivities)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Sleep Apnea Screen (if obesity / snoring)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Autoimmune Screen (ANA, complement) — clinician
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Labs Ordering Strategy
+    children:
+    - label: Comprehensive Metabolic + Inflammatory Panel
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: EBV Antibodies (early antigen + EBNA — reactivation pattern)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: D-Dimer + Fibrinogen (microclot suspicion — clinician)
+      children: []
+      linked_kind: lab_test
+      linked_slug: fibrinogen
+      notes: ''
+    - label: Micronutrient Repletion Check
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Pacing Foundation
+    children:
+    - label: Heart-Rate-Limited Activity (<55% max)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Energy Envelope Awareness
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Reject "Push Through" Mindset
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🛠 Interventions
+  children:
+  - label: Pacing (CRITICAL)
+    children:
+    - label: PACE Management (HR <55% max + interrupt every 20-30 min)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Aggressive Rest in 3-6 Month Flare
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Graded Exercise REJECTED if PEM present
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: Do NOT push graded exercise on PEM-positive patient. Reliably worsens.
+    - label: Gentle Movement (yoga / Tai Chi / 5-min walks) only after stable
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Nutrition
+    children:
+    - label: Anti-Inflammatory Diet (omega-3, polyphenols, low-sugar)
+      children: []
+      linked_kind: topic
+      linked_slug: anti-inflammatory-diet
+      notes: ''
+    - label: Low-Histamine Diet Trial 4-6 Weeks (if MCAS suspected)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Steady Protein + Healthy Fats Each Meal
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Hydration + Electrolytes (esp. POTS)
+      children: []
+      linked_kind: supplement
+      linked_slug: electrolytes
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Supplements (foundational repletion)
+    children:
+    - label: Vitamin D3 5000 IU → target 60-80 ng/mL
+      children: []
+      linked_kind: supplement
+      linked_slug: vitamin-d3
+      notes: ''
+    - label: Zinc 30 mg
+      children: []
+      linked_kind: supplement
+      linked_slug: zinc
+      notes: ''
+    - label: Methylated B-Complex + B12
+      children: []
+      linked_kind: supplement
+      linked_slug: methylated-b-complex
+      notes: ''
+    - label: Selenium 200 mcg
+      children: []
+      linked_kind: supplement
+      linked_slug: selenium
+      notes: ''
+    - label: Magnesium Glycinate 400 mg
+      children: []
+      linked_kind: supplement
+      linked_slug: magnesium-glycinate
+      notes: ''
+    - label: Omega-3 EPA/DHA
+      children: []
+      linked_kind: supplement
+      linked_slug: omega-3
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Supplements (targeted)
+    children:
+    - label: CoQ10 / Ubiquinol 100-300 mg + PQQ
+      children: []
+      linked_kind: supplement
+      linked_slug: coq10-ubiquinone
+      notes: ''
+    - label: NAC 600-1800 mg (glutathione + may reduce viral persistence)
+      children: []
+      linked_kind: supplement
+      linked_slug: nac
+      notes: ''
+    - label: Liposomal Glutathione
+      children: []
+      linked_kind: supplement
+      linked_slug: glutathione-liposomal
+      notes: ''
+    - label: Quercetin 500 mg 2x (mast cell + antiviral)
+      children: []
+      linked_kind: supplement
+      linked_slug: quercetin
+      notes: ''
+    - label: Vitamin C
+      children: []
+      linked_kind: supplement
+      linked_slug: vitamin-c
+      notes: ''
+    - label: Alpha-Lipoic Acid (antioxidant)
+      children: []
+      linked_kind: supplement
+      linked_slug: alpha-lipoic-acid
+      notes: ''
+    - label: L-Carnitine (mitochondrial fat transport)
+      children: []
+      linked_kind: supplement
+      linked_slug: l-carnitine
+      notes: ''
+    - label: Nattokinase 2000 FU 2x (microclot — clinician dispensed)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: Coach scope is education only. Clinician manages dose + monitoring.
+    - label: Low-Dose Naltrexone (LDN — clinician-only)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: Clinician prescription required.
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Lifestyle & Vagal
+    children:
+    - label: Vagal Toning (cold splash, gargling, humming, breathwork)
+      children: []
+      linked_kind: topic
+      linked_slug: vagal-tone
+      notes: ''
+    - label: Breathwork (slow nasal, box breathing)
+      children: []
+      linked_kind: topic
+      linked_slug: breathwork-for-health
+      notes: ''
+    - label: Stress Management / Nervous System Regulation
+      children: []
+      linked_kind: topic
+      linked_slug: stress-management
+      notes: ''
+    - label: Sleep Hygiene (8-9 hours, dark room, consistent bedtime)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: India / Ayurvedic Context
+    children:
+    - label: Tulsi (Holy Basil) Tea (adaptogenic, anti-viral lore)
+      children: []
+      linked_kind: supplement
+      linked_slug: holy-basil
+      notes: ''
+    - label: Giloy Kashayam (post-viral convalescence)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Ashwagandha (fatigue + HPA support)
+      children: []
+      linked_kind: supplement
+      linked_slug: ashwagandha
+      notes: ''
+    - label: Turmeric-Curcumin 500-1000 mg
+      children: []
+      linked_kind: supplement
+      linked_slug: curcumin
+      notes: ''
+    - label: Ginger (digestive + anti-inflammatory)
+      children: []
+      linked_kind: supplement
+      linked_slug: ginger
+      notes: ''
+    - label: Gentle Abhyanga (warm oil self-massage)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Address Persistent Dampness / Cough Patterns
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🎯 Coaching Goals
+  children:
+  - label: Symptom Reduction
+    children:
+    - label: 50% Symptom-Burden Reduction in 12-16 Weeks
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Identify & Respect Personal PEM Threshold
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Reduce Crash Frequency
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Functional Restoration
+    children:
+    - label: Restore Cook / Light Work / Social Interaction Without Crash
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Tolerate Gentle Movement 10-15 Min Without PEM
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Stable Sleep & Energy Through the Day
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Nutrient & Mindset
+    children:
+    - label: Nutrient Repletion to Target Ranges
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Off "Push Through" Mindset
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Trust Slow Healing Process
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Referral Triggers
+    children:
+    - label: Refer to Long-COVID Specialist If Available
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Refer for MCAS / POTS / Dysautonomia Workup
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Refer for Microclot / LDN Evaluation (clinician)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 📊 Labs to Track
+  children:
+  - label: Inflammation & Acute Phase
+    children:
+    - label: hsCRP
+      children: []
+      linked_kind: lab_test
+      linked_slug: hscrp
+      notes: ''
+    - label: ESR
+      children: []
+      linked_kind: lab_test
+      linked_slug: esr
+      notes: ''
+    - label: Ferritin (also acute phase reactant)
+      children: []
+      linked_kind: lab_test
+      linked_slug: ferritin
+      notes: ''
+    - label: Fibrinogen (clinician-ordered)
+      children: []
+      linked_kind: lab_test
+      linked_slug: fibrinogen
+      notes: ''
+    - label: D-Dimer (clinician-ordered — microclot suspicion)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: CBC & Metabolic
+    children:
+    - label: CBC + Differential (lymphocyte ratio)
+      children: []
+      linked_kind: lab_test
+      linked_slug: neutrophil-lymphocyte-ratio
+      notes: ''
+    - label: Fasting Glucose
+      children: []
+      linked_kind: lab_test
+      linked_slug: fasting-glucose
+      notes: ''
+    - label: Fasting Insulin
+      children: []
+      linked_kind: lab_test
+      linked_slug: fasting-insulin
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Micronutrients
+    children:
+    - label: Vitamin D 25-OH
+      children: []
+      linked_kind: lab_test
+      linked_slug: vitamin-d-25-oh
+      notes: ''
+    - label: Vitamin B12
+      children: []
+      linked_kind: lab_test
+      linked_slug: vitamin-b12
+      notes: ''
+    - label: Methylmalonic Acid + Folate RBC
+      children: []
+      linked_kind: lab_test
+      linked_slug: folate-rbc
+      notes: ''
+    - label: Magnesium RBC
+      children: []
+      linked_kind: lab_test
+      linked_slug: magnesium-rbc
+      notes: ''
+    - label: Homocysteine
+      children: []
+      linked_kind: lab_test
+      linked_slug: homocysteine
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Infection & Reactivation
+    children:
+    - label: EBV Panel (VCA-IgG, VCA-IgM, EBNA, Early Antigen)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: HHV-6 / CMV (if clinical suspicion)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Endocrine & Autoimmune
+    children:
+    - label: TSH
+      children: []
+      linked_kind: lab_test
+      linked_slug: tsh
+      notes: ''
+    - label: Free T3 / Free T4
+      children: []
+      linked_kind: lab_test
+      linked_slug: free-t3
+      notes: ''
+    - label: TPO / Tg Antibodies (autoimmune screen)
+      children: []
+      linked_kind: lab_test
+      linked_slug: tpo-antibodies
+      notes: ''
+    - label: AM Cortisol
+      children: []
+      linked_kind: lab_test
+      linked_slug: am-cortisol
+      notes: ''
+    - label: 4-Point Salivary Cortisol Curve
+      children: []
+      linked_kind: lab_test
+      linked_slug: salivary-cortisol-curve
+      notes: ''
+    - label: DHEA-S
+      children: []
+      linked_kind: lab_test
+      linked_slug: dhea-s
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Mast Cell & Autonomic
+    children:
+    - label: Tryptase (mast cell marker)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Histamine (plasma / urinary)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: HRV (heart rate variability tracking)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Active Stand Test (POTS screen)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: If MECFS-Overlap Suspected
+    children:
+    - label: Organic Acids Test (OAT — mitochondrial markers)
+      children: []
+      linked_kind: lab_test
+      linked_slug: oat-organic-acids
+      notes: ''
+    - label: CoQ10 Status (if available)
+      children: []
+      linked_kind: lab_test
+      linked_slug: coq10-status
+      notes: ''
+    - label: Carnitine Profile
+      children: []
+      linked_kind: lab_test
+      linked_slug: carnitine-profile
+      notes: ''
+    - label: Lactate (if exercise-intolerant)
+      children: []
+      linked_kind: lab_test
+      linked_slug: lactate
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+sources:
+- id: vitaone-mind-map-tool
+  quote: null
+  location: Long COVID / Post-Viral Syndrome
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: shivani
