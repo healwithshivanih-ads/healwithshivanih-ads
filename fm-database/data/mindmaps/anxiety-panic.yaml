@@ -1,0 +1,933 @@
+slug: anxiety-panic
+display_name: Anxiety & Panic Disorder
+description: 'Functional medicine approach to generalized anxiety, panic attacks, social
+  anxiety, and phobic anxiety. Maps the GABA–glutamate imbalance, HPA-axis cortisol
+  dysregulation, blood-sugar hypoglycaemia driving adrenaline surges, gut–brain serotonin
+  deficit, B6/magnesium/zinc deficiencies, methylation issues (MTHFR/COMT), and perimenopausal
+  hormone-driven anxiety. Distinct from the broader emotional-wellbeing mindmap — focused
+  specifically on anxiety + panic mechanisms and interventions. Includes India context:
+  high-pressure family/career culture, late-night work, chai/caffeine load, joint-family
+  stress, perimenopausal women juggling care-giving + career.
+
+  '
+aliases:
+- generalized-anxiety-disorder
+- gad
+- panic-disorder
+- panic-attacks
+- social-anxiety
+related_topics:
+- anxiety
+- chronic-stress
+- hpa-axis-dysregulation
+- blood-sugar-dysfunction
+- gut-brain-axis
+- perimenopause
+- methylation-mthfr
+- stress-management
+related_mechanisms:
+- gaba-receptor-modulation
+- hpa-axis-dysregulation
+- cortisol-elevation
+- gut-serotonin-production
+- vagal-tone-dysregulation
+- comt-cyp-pathway-activity
+- noradrenaline-signaling
+tree:
+- label: 🔴 Clinical Presentation
+  children:
+  - label: Anxiety Patterns
+    children:
+    - label: Generalized Anxiety (chronic worry)
+      children: []
+      linked_kind: symptom
+      linked_slug: anxiety
+      notes: ''
+    - label: Panic Attacks (acute surges)
+      children: []
+      linked_kind: symptom
+      linked_slug: panic-attacks
+      notes: ''
+    - label: Social Anxiety
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Phobic / Situational Anxiety
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Anxiety with Gut Symptoms
+      children: []
+      linked_kind: symptom
+      linked_slug: anxiety-with-gut-issues
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Somatic Symptoms
+    children:
+    - label: Racing Heart / Palpitations
+      children: []
+      linked_kind: symptom
+      linked_slug: palpitations
+      notes: ''
+    - label: Chest Tightness
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Shortness of Breath / Hyperventilation
+      children: []
+      linked_kind: symptom
+      linked_slug: shortness-of-breath
+      notes: ''
+    - label: GI Distress (nausea, butterflies, urgency)
+      children: []
+      linked_kind: symptom
+      linked_slug: nausea
+      notes: ''
+    - label: Muscle Tension / Jaw Clenching
+      children: []
+      linked_kind: symptom
+      linked_slug: muscle-tension
+      notes: ''
+    - label: Tremor / Trembling
+      children: []
+      linked_kind: symptom
+      linked_slug: tremors
+      notes: ''
+    - label: Dizziness / Lightheadedness
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Derealization / Depersonalization
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Behavioural Patterns
+    children:
+    - label: Sleep Onset Insomnia
+      children: []
+      linked_kind: symptom
+      linked_slug: insomnia
+      notes: ''
+    - label: Hypervigilance
+      children: []
+      linked_kind: symptom
+      linked_slug: hypervigilance
+      notes: ''
+    - label: Avoidance Behaviour
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Caffeine / Sugar Self-Medication
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Panic Mimics — Rule Out First
+    children:
+    - label: Hypoglycaemia (post-meal crash, fasting drop)
+      children: []
+      linked_kind: symptom
+      linked_slug: hypoglycemia-dizziness
+      notes: 'Adrenaline surge from low glucose feels identical to panic.'
+    - label: Hyperthyroidism
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Check TSH + free T3/T4 + anti-TPO.'
+    - label: Anaemia / Low Ferritin
+      children: []
+      linked_kind: symptom
+      linked_slug: pallor-dizziness-breathlessness
+      notes: ''
+    - label: Mitral Valve Prolapse
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Vestibular Disorder (BPPV, Meniere''s)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Red Flags — Refer
+    children:
+    - label: Suicidal Ideation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Immediate referral to mental health professional.'
+    - label: Severe Agoraphobia (housebound)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Trauma History / Active PTSD
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Refer to trauma-informed therapist (somatic experiencing, EMDR).'
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: ⚙️ Root Mechanisms
+  children:
+  - label: HPA Axis Dysregulation
+    children:
+    - label: Cortisol Spikes (acute + chronic)
+      children: []
+      linked_kind: mechanism
+      linked_slug: cortisol-elevation
+      notes: ''
+    - label: HPA Overactivation
+      children: []
+      linked_kind: mechanism
+      linked_slug: hpa-axis-overactivation
+      notes: ''
+    - label: Adrenaline / Noradrenaline Surge
+      children: []
+      linked_kind: mechanism
+      linked_slug: noradrenaline-signaling
+      notes: ''
+    - label: Adrenal–Catecholamine Dysregulation
+      children: []
+      linked_kind: mechanism
+      linked_slug: adrenal-catecholamine-dysregulation
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: GABA–Glutamate Imbalance
+    children:
+    - label: Low GABA Tone (insufficient inhibition)
+      children: []
+      linked_kind: mechanism
+      linked_slug: gaba-receptor-modulation
+      notes: ''
+    - label: Glutamate Excess (excitatory overdrive)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Low Neurosteroid Allopregnanolone (perimenopause)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Falls with progesterone — major driver of perimenopausal anxiety.'
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Blood Sugar Instability
+    children:
+    - label: Reactive Hypoglycaemia → Adrenaline Spike
+      children: []
+      linked_kind: topic
+      linked_slug: blood-sugar-dysfunction
+      notes: ''
+    - label: Skipped Meals + Caffeine on Empty Stomach
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Insulin Resistance + Cortisol Coupling
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Gut–Brain Axis
+    children:
+    - label: Gut Serotonin Production Deficit (~90% in gut)
+      children: []
+      linked_kind: mechanism
+      linked_slug: gut-serotonin-production
+      notes: ''
+    - label: Microbiome Dysbiosis → Low Vagal Tone
+      children: []
+      linked_kind: mechanism
+      linked_slug: vagal-tone-dysregulation
+      notes: ''
+    - label: Leaky Gut → Systemic Inflammation → Brain
+      children: []
+      linked_kind: topic
+      linked_slug: gut-brain-axis
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Methylation & Genetic Variants
+    children:
+    - label: MTHFR Slow (low methylfolate → low neurotransmitters)
+      children: []
+      linked_kind: topic
+      linked_slug: methylation-mthfr
+      notes: ''
+    - label: COMT Slow (delayed catecholamine clearance)
+      children: []
+      linked_kind: mechanism
+      linked_slug: comt-cyp-pathway-activity
+      notes: 'Worriers — adrenaline lingers; very caffeine-sensitive.'
+    - label: Pyroluria (B6 + zinc loss in urine)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Nutrient Deficiencies
+    children:
+    - label: Magnesium Depletion
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Most common silent driver. Calms NMDA/glutamate receptors.'
+    - label: Vitamin B6 (P5P) Low
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Required cofactor for GABA + serotonin synthesis.'
+    - label: Zinc Deficiency
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Vitamin D Insufficiency
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Triggers & Modifiers
+    children:
+    - label: Caffeine Load (chai, coffee, energy drinks)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'India-specific — multiple chai/day on empty stomach.'
+    - label: Alcohol (GABA rebound 4–6 hrs later)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Disrupts deep sleep and triggers 3am anxiety wakeups.'
+    - label: Histamine Load
+      children: []
+      linked_kind: mechanism
+      linked_slug: mast-cell-degranulation-histamine-release
+      notes: ''
+    - label: Sleep Deprivation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Perimenopausal Estrogen–Progesterone Swings
+      children: []
+      linked_kind: topic
+      linked_slug: perimenopause
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🧬 FM Approach
+  children:
+  - label: Map the Triggers
+    children:
+    - label: Food–Mood Journal (7 days)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Catch caffeine, sugar, alcohol, skipped-meal patterns.'
+    - label: Caffeine Load Inventory
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Screen / Late-Night Work Audit
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Trigger Mapping (people, situations, body cues)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Assess HPA Axis
+    children:
+    - label: DUTCH Cortisol + Metabolites
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 4-Point Salivary Cortisol Curve
+      children: []
+      linked_kind: lab_test
+      linked_slug: salivary-cortisol-curve
+      notes: ''
+    - label: DHEA-S (resilience reserve)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Check Blood Sugar Stability
+    children:
+    - label: Fasting Glucose + Insulin → HOMA-IR
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Continuous Glucose Monitor (1–2 weeks)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Watch for crashes that precede anxiety/panic episodes.'
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Screen Nutrient Status
+    children:
+    - label: Magnesium RBC, B12, Folate, Homocysteine
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Vitamin D, Ferritin, Zinc
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Rule Out Thyroid + Anaemia
+    children:
+    - label: Full Thyroid Panel + Anti-TPO
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Hyperthyroid presents identically — must rule out.'
+    - label: CBC + Ferritin
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Gut Health Screen
+    children:
+    - label: GI-MAP / Stool Test (if GI symptoms)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: SIBO Breath Test (if bloating + anxiety)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Genetics (one-time)
+    children:
+    - label: MTHFR (C677T, A1298C)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: COMT (Val158Met)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🛠 Interventions
+  children:
+  - label: Foundational Supplements
+    children:
+    - label: Magnesium Glycinate (300–600 mg)
+      children: []
+      linked_kind: supplement
+      linked_slug: magnesium-glycinate
+      notes: 'Calms NMDA / glutamate; best evening dose.'
+    - label: L-Theanine (100–400 mg)
+      children: []
+      linked_kind: supplement
+      linked_slug: l-theanine
+      notes: ''
+    - label: Vitamin B6 (P5P form, 25–50 mg)
+      children: []
+      linked_kind: supplement
+      linked_slug: pyridoxal-5-phosphate-p5p
+      notes: 'Cofactor for GABA and serotonin synthesis.'
+    - label: Zinc Bisglycinate (15–30 mg, if low)
+      children: []
+      linked_kind: supplement
+      linked_slug: zinc-bisglycinate
+      notes: ''
+    - label: Methylated B-Complex (if MTHFR)
+      children: []
+      linked_kind: supplement
+      linked_slug: methylated-b-complex
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Targeted Calming Herbs
+    children:
+    - label: Ashwagandha KSM-66 (300–600 mg)
+      children: []
+      linked_kind: supplement
+      linked_slug: ashwagandha-ksm66
+      notes: 'Caution if hyperthyroid or on thyroid meds.'
+    - label: L-Theanine (acute calm)
+      children: []
+      linked_kind: supplement
+      linked_slug: l-theanine
+      notes: ''
+    - label: Lemon Balm (acute or evening)
+      children: []
+      linked_kind: supplement
+      linked_slug: lemon-balm
+      notes: ''
+    - label: Passionflower (acute panic / sleep onset)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: GABA (acute, if blood-brain barrier permeable)
+      children: []
+      linked_kind: supplement
+      linked_slug: gaba
+      notes: ''
+    - label: Glycine (3–5 g bedtime)
+      children: []
+      linked_kind: supplement
+      linked_slug: glycine
+      notes: ''
+    - label: Taurine (1–3 g)
+      children: []
+      linked_kind: supplement
+      linked_slug: taurine
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Breath & Vagal Tone
+    children:
+    - label: 4-7-8 Breath (4 in, 7 hold, 8 out)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Activates parasympathetic; rescue tool.'
+    - label: Box Breathing (4-4-4-4)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Buteyko Method (for hyperventilators)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Cold Water Splash / Face Plunge
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Triggers mammalian dive reflex → vagal activation.'
+    - label: Humming / Singing / Gargling
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Stimulates vagus nerve through larynx.'
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Blood Sugar Stability
+    children:
+    - label: Protein at Every Meal + Snack (every 3–4 hrs)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: No Caffeine on Empty Stomach
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Eat first, then chai/coffee 30–60 min later.'
+    - label: Reduce Refined Carbs / Sugar
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Bedtime Protein Snack (if 3am wakeup)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Lifestyle Anchors
+    children:
+    - label: Screens Off 90 Min Before Bed
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Weighted Blanket (4–7 kg)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Gentle Movement (yoga, walking — not HIIT)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'HIIT spikes cortisol; defer until baseline stable.'
+    - label: Caffeine Taper / Elimination Trial
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Alcohol Elimination (especially evening)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: India-Specific Context
+    children:
+    - label: Brahmi (Bacopa monnieri)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Traditional Ayurvedic anxiolytic + cognition support.'
+    - label: Jatamansi (Nardostachys jatamansi)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Calming Ayurvedic herb for nervous tension.'
+    - label: Tulsi (Holy Basil) — decaf evening tea
+      children: []
+      linked_kind: supplement
+      linked_slug: holy-basil
+      notes: ''
+    - label: Gotu Kola (Centella asiatica)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Abhyanga (warm-oil self-massage)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Calms vata; daily morning practice.'
+    - label: Pranayama (anuloma viloma, bhramari)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Early Dinner Before 7 PM
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Hard in joint family — negotiate gradual shift.'
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Mental Health Referral
+    children:
+    - label: CBT (cognitive behavioural therapy)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Somatic Experiencing / EMDR (trauma-rooted)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Psychiatrist if Severe / Disabling
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🎯 Coaching Goals
+  children:
+  - label: Trigger Awareness
+    children:
+    - label: Identify Top 3 Triggers (2–3 weeks)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Build Personal Rescue Kit (breath + grounding + cold splash)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Symptom Reduction
+    children:
+    - label: Panic Frequency Cut 70%+ in 8–12 Weeks
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Resting HR Down 5–10 bpm
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: HRV Trending Up (wearable data)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Lifestyle Stability
+    children:
+    - label: Off Caffeine — Or Tolerant of Low Dose After Food
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Full-Night Sleep with Stable Onset
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Blood Sugar Stable All Day (no crashes)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Daily Breath / Vagal Practice
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Refer Out When Indicated
+    children:
+    - label: Therapist for Structural / Trauma-Rooted Anxiety
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Psychiatrist if Suicidality or Severe Impairment
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 📊 Labs to Track
+  children:
+  - label: HPA Axis
+    children:
+    - label: DUTCH Cortisol + Metabolites
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: 4-Point Salivary Cortisol Curve
+      children: []
+      linked_kind: lab_test
+      linked_slug: salivary-cortisol-curve
+      notes: ''
+    - label: AM Cortisol
+      children: []
+      linked_kind: lab_test
+      linked_slug: am-cortisol
+      notes: ''
+    - label: DHEA-S
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Blood Sugar
+    children:
+    - label: Fasting Glucose
+      children: []
+      linked_kind: lab_test
+      linked_slug: fasting-glucose
+      notes: ''
+    - label: Fasting Insulin
+      children: []
+      linked_kind: lab_test
+      linked_slug: fasting-insulin
+      notes: ''
+    - label: HbA1c
+      children: []
+      linked_kind: lab_test
+      linked_slug: hba1c
+      notes: ''
+    - label: HOMA-IR
+      children: []
+      linked_kind: lab_test
+      linked_slug: homa-ir
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Nutrients
+    children:
+    - label: Magnesium RBC
+      children: []
+      linked_kind: lab_test
+      linked_slug: magnesium-rbc
+      notes: ''
+    - label: Vitamin D 25-OH
+      children: []
+      linked_kind: lab_test
+      linked_slug: vitamin-d-25-oh
+      notes: ''
+    - label: Vitamin B12 + Folate
+      children: []
+      linked_kind: lab_test
+      linked_slug: vitamin-b12
+      notes: ''
+    - label: Homocysteine (methylation marker)
+      children: []
+      linked_kind: lab_test
+      linked_slug: homocysteine
+      notes: ''
+    - label: Ferritin (rule out anaemia mimic)
+      children: []
+      linked_kind: lab_test
+      linked_slug: ferritin
+      notes: ''
+    - label: Zinc (serum or RBC)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Thyroid (rule out hyperthyroid mimic)
+    children:
+    - label: TSH
+      children: []
+      linked_kind: lab_test
+      linked_slug: tsh
+      notes: ''
+    - label: Free T3
+      children: []
+      linked_kind: lab_test
+      linked_slug: free-t3
+      notes: ''
+    - label: Free T4
+      children: []
+      linked_kind: lab_test
+      linked_slug: free-t4
+      notes: ''
+    - label: Anti-TPO Antibodies
+      children: []
+      linked_kind: lab_test
+      linked_slug: tpo-antibodies
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Genetics (one-time)
+    children:
+    - label: MTHFR (C677T, A1298C)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: COMT (Val158Met)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: HRV Tracking
+    children:
+    - label: HRV via Wearable (Oura, Whoop, Apple Watch)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Rising HRV = improving vagal tone + recovery.'
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+sources:
+- id: vitaone-mind-map-tool
+  quote: null
+  location: Anxiety & Panic Disorder
+- id: vitaone-health-coaching-toolkit
+  quote: null
+  location: Mood & Anxiety
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: shivani
