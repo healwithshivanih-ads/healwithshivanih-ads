@@ -278,8 +278,15 @@ export async function createClient(
     }
   }
 
+  // Revalidate BOTH v1 and v2 routes — the new-client form redirects to
+  // /clients-v2/<id> by default, so v1-only revalidation was leaving the
+  // v2 detail page serving a stale "client not found" 404 right after
+  // creation. (Reported 2026-05-13.)
   revalidatePath("/clients");
   revalidatePath(`/clients/${clientId}`);
+  revalidatePath("/clients-v2");
+  revalidatePath(`/clients-v2/${clientId}`);
+  revalidatePath("/dashboard-v2");
   return { ok: true, client_id: clientId };
 }
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition, useRef } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -10,6 +10,10 @@ import { Badge } from "@/components/ui/badge";
 import { createClient, parseTranscriptForClient, type ParsedClientData } from "./actions";
 
 const today = () => new Date().toISOString().slice(0, 10);
+
+// localStorage key for in-progress new-client form state. Survives page
+// reloads, 404s, browser crashes, etc. Cleared after a successful create.
+const DRAFT_KEY = "fm-new-client-draft-v1";
 
 function AutoBadge() {
   return (
@@ -167,6 +171,105 @@ export function NewClientForm({ initialOpen = false }: { initialOpen?: boolean }
   const removeTimelineEvent = (idx: number) => {
     setTimelineEvents((prev) => prev.filter((_, i) => i !== idx));
   };
+
+  // ── Draft persistence — survives 404s, navigation, browser crashes ──
+  //
+  // Snapshot of every form input goes into localStorage on every change.
+  // If the coach hits create and lands on a 404, or accidentally closes
+  // the tab, or refreshes the page, the draft is rehydrated on next mount
+  // so nothing is lost. Cleared explicitly only after a successful create.
+  //
+  // Rationale: prior bug (2026-05-13) — createClient was succeeding but the
+  // v2 client page 404'd briefly because revalidatePath only covered v1
+  // routes; the form had already called reset() and the data was gone.
+  // Even with the route fix, network errors / API timeouts shouldn't ever
+  // wipe a coach's 20-minute intake-form session.
+  const hydratedRef = useRef(false);
+  useEffect(() => {
+    if (hydratedRef.current) return;
+    hydratedRef.current = true;
+    try {
+      const raw = localStorage.getItem(DRAFT_KEY);
+      if (!raw) return;
+      const d = JSON.parse(raw) as Record<string, unknown>;
+      // Restore every field — defensive .?? "" so a missing key doesn't crash.
+      if (typeof d.displayName === "string")        setDisplayName(d.displayName);
+      if (typeof d.intakeDate === "string")         setIntakeDate(d.intakeDate);
+      if (typeof d.dateOfBirth === "string")        setDateOfBirth(d.dateOfBirth);
+      if (d.sex === "F" || d.sex === "M" || d.sex === "other") setSex(d.sex);
+      if (typeof d.mobileNumber === "string")       setMobileNumber(d.mobileNumber);
+      if (typeof d.email === "string")              setEmail(d.email);
+      if (typeof d.addressLine1 === "string")       setAddressLine1(d.addressLine1);
+      if (typeof d.addressLine2 === "string")       setAddressLine2(d.addressLine2);
+      if (typeof d.city === "string")               setCity(d.city);
+      if (typeof d.state === "string")              setState(d.state);
+      if (typeof d.pincode === "string")            setPincode(d.pincode);
+      if (typeof d.country === "string")            setCountry(d.country);
+      if (typeof d.conditions === "string")         setConditions(d.conditions);
+      if (typeof d.medications === "string")        setMedications(d.medications);
+      if (typeof d.allergies === "string")          setAllergies(d.allergies);
+      if (typeof d.goals === "string")              setGoals(d.goals);
+      if (typeof d.notes === "string")              setNotes(d.notes);
+      if (typeof d.familyHistory === "string")      setFamilyHistory(d.familyHistory);
+      if (typeof d.dietaryPreference === "string")  setDietaryPreference(d.dietaryPreference);
+      if (typeof d.foodsToAvoid === "string")       setFoodsToAvoid(d.foodsToAvoid);
+      if (typeof d.nonNegotiables === "string")     setNonNegotiables(d.nonNegotiables);
+      if (typeof d.digestionNotes === "string")     setDigestionNotes(d.digestionNotes);
+      if (typeof d.sleepNotes === "string")         setSleepNotes(d.sleepNotes);
+      if (typeof d.energyPattern === "string")      setEnergyPattern(d.energyPattern);
+      if (typeof d.menstrualNotes === "string")     setMenstrualNotes(d.menstrualNotes);
+      if (d.cycleStatus === "menstruating" || d.cycleStatus === "perimenopausal" || d.cycleStatus === "postmenopausal" || d.cycleStatus === "not_applicable" || d.cycleStatus === "") setCycleStatus(d.cycleStatus);
+      if (typeof d.lastMenstrualPeriod === "string") setLastMenstrualPeriod(d.lastMenstrualPeriod);
+      if (typeof d.cycleLengthDays === "string")    setCycleLengthDays(d.cycleLengthDays);
+      if (d.cycleRegularity === "regular" || d.cycleRegularity === "irregular" || d.cycleRegularity === "very_irregular" || d.cycleRegularity === "") setCycleRegularity(d.cycleRegularity);
+      if (typeof d.menopauseStarted === "string")   setMenopauseStarted(d.menopauseStarted);
+      if (typeof d.stressResponse === "string")     setStressResponse(d.stressResponse);
+      if (typeof d.childhoodHistory === "string")   setChildhoodHistory(d.childhoodHistory);
+      if (typeof d.toxicExposures === "string")     setToxicExposures(d.toxicExposures);
+      if (typeof d.whatHasWorked === "string")      setWhatHasWorked(d.whatHasWorked);
+      if (typeof d.whatHasntWorked === "string")    setWhatHasntWorked(d.whatHasntWorked);
+      if (typeof d.sleepQuality === "number")       setSleepQuality(d.sleepQuality);
+      if (typeof d.sleepHours === "string")         setSleepHours(d.sleepHours);
+      if (typeof d.stressLevel === "number")        setStressLevel(d.stressLevel);
+      if (typeof d.movementDays === "string")       setMovementDays(d.movementDays);
+      if (typeof d.movementType === "string")       setMovementType(d.movementType);
+      if (typeof d.nutritionQuality === "number")   setNutritionQuality(d.nutritionQuality);
+      if (typeof d.connectionQuality === "number")  setConnectionQuality(d.connectionQuality);
+      if (Array.isArray(d.timelineEvents))          setTimelineEvents(d.timelineEvents as TimelineEntry[]);
+      toast.message("📋 Restored your in-progress draft", {
+        description: "Last unsaved entries were recovered. Submit when ready or click Cancel to discard.",
+        duration: 6000,
+      });
+    } catch {
+      // Corrupt draft — drop it silently.
+      try { localStorage.removeItem(DRAFT_KEY); } catch { /* noop */ }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Save every form change to localStorage. Debounced via a microtask;
+  // the cost is negligible (≤4KB JSON, no network).
+  useEffect(() => {
+    if (!hydratedRef.current) return;
+    try {
+      localStorage.setItem(
+        DRAFT_KEY,
+        JSON.stringify({
+          displayName, intakeDate, dateOfBirth, sex, mobileNumber, email,
+          addressLine1, addressLine2, city, state, pincode, country,
+          conditions, medications, allergies, goals, notes, familyHistory,
+          dietaryPreference, foodsToAvoid, nonNegotiables,
+          digestionNotes, sleepNotes, energyPattern, menstrualNotes,
+          cycleStatus, lastMenstrualPeriod, cycleLengthDays, cycleRegularity, menopauseStarted,
+          stressResponse, childhoodHistory, toxicExposures,
+          whatHasWorked, whatHasntWorked,
+          sleepQuality, sleepHours, stressLevel, movementDays, movementType,
+          nutritionQuality, connectionQuality,
+          timelineEvents,
+        }),
+      );
+    } catch { /* quota / privacy mode — ignore */ }
+  });
 
   const reset = () => {
     setDisplayName(""); setIntakeDate(today()); setDateOfBirth(""); setSex("F");
@@ -339,11 +442,19 @@ export function NewClientForm({ initialOpen = false }: { initialOpen?: boolean }
       });
       if (res.ok) {
         toast.success(`Created ${res.client_id}`);
+        // Clear the in-progress draft NOW that we know the YAML is saved.
+        try { localStorage.removeItem(DRAFT_KEY); } catch { /* noop */ }
+        // Reset + navigate. If the v2 detail page somehow 404s briefly,
+        // the draft is already cleared and the client really does exist
+        // on disk — refreshing the destination URL will resolve it.
         reset();
         setOpen(false);
         router.push(`/clients-v2/${res.client_id}`);
       } else {
-        toast.error(res.error);
+        // Error path — leave the form populated so the coach can fix
+        // whatever was wrong (usually duplicate mobile number / missing
+        // required field) and resubmit. Draft also stays in localStorage.
+        toast.error(res.error, { duration: 12000 });
       }
     });
   };
@@ -362,7 +473,11 @@ export function NewClientForm({ initialOpen = false }: { initialOpen?: boolean }
     <Card>
       <CardHeader className="flex-row items-center justify-between">
         <CardTitle>New client intake</CardTitle>
-        <Button variant="ghost" size="sm" onClick={() => { setOpen(false); reset(); }}>Cancel</Button>
+        <Button variant="ghost" size="sm" onClick={() => {
+  setOpen(false);
+  reset();
+  try { localStorage.removeItem(DRAFT_KEY); } catch { /* noop */ }
+}}>Cancel</Button>
       </CardHeader>
       <CardContent className="space-y-6">
 
@@ -696,7 +811,11 @@ export function NewClientForm({ initialOpen = false }: { initialOpen?: boolean }
 
           <div className="flex gap-2">
             <Button type="submit" disabled={pending}>{pending ? "Creating…" : "Create client"}</Button>
-            <Button type="button" variant="outline" onClick={() => { setOpen(false); reset(); }}>Cancel</Button>
+            <Button type="button" variant="outline" onClick={() => {
+  setOpen(false);
+  reset();
+  try { localStorage.removeItem(DRAFT_KEY); } catch { /* noop */ }
+}}>Cancel</Button>
           </div>
         </form>
       </CardContent>
