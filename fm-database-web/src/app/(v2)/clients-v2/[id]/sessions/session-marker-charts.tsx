@@ -17,10 +17,13 @@ import {
 } from "@/app/clients/actions";
 import {
   SessionMarkerChartsClient,
-  pickDefaultMarkers,
   type MarkerWithData,
   type MarkerGroup,
 } from "./session-marker-charts-client";
+// pickDefaultMarkers lives in a non-"use client" sibling module because
+// Next 16 forbids server components from invoking functions exported by
+// a "use client" file (the function becomes a client-reference proxy).
+import { pickDefaultMarkers } from "./marker-defaults";
 
 const DEFAULT_CAP = 6;
 
