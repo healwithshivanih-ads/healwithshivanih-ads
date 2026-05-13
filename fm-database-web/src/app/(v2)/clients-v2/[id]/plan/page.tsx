@@ -57,6 +57,8 @@ import { PhaseLetterPanel } from "./phase-letter-panel";
 import { ActivateDraftButton } from "./activate-draft-button";
 import { RegenerateStaleButton } from "../communicate/regenerate-stale-button";
 import { loadAllOfKind } from "@/lib/fmdb/loader";
+import { detectPlanConflicts } from "@/lib/fmdb/plan-conflicts";
+import { PlanConflictPanel } from "./plan-conflict-panel";
 
 export const dynamic = "force-dynamic";
 
@@ -329,6 +331,17 @@ export default async function PlanTabPage({
   const stage = deriveStage(activePlan, todayStr, id);
   const status = activePlan ? planStatusOf(activePlan) : undefined;
   const isPublished = status === "published";
+
+  // Plan-conflict check — rules-based detector that flags client.dietary_preference
+  // vs client.non_negotiables / allergies contradictions. Runs whenever there's
+  // any plan (draft, ready_to_publish, or published) so the coach sees the
+  // signal both during authoring and after publication.
+  const planConflicts = activePlan
+    ? detectPlanConflicts(
+        client as unknown as Parameters<typeof detectPlanConflicts>[0],
+        activePlan as unknown as Record<string, unknown>,
+      )
+    : [];
 
   // Recheck context — used by FmRecheckPanel when stage === "recheck".
   let recheckDate: string | undefined =
@@ -616,6 +629,14 @@ export default async function PlanTabPage({
               .map((e) => e.type)}
           />
         </div>
+      )}
+
+      {/* Plan-conflict check — dietary preference vs non-negotiables vs
+          allergies. Renders only when the rules-based detector finds
+          something; each item has an optional one-click apply that
+          patches the underlying client.yaml. */}
+      {planConflicts.length > 0 && (
+        <PlanConflictPanel clientId={id} conflicts={planConflicts} />
       )}
 
       {/* Pending-draft callout — only when there's a draft sitting next

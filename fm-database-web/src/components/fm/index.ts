@@ -34,6 +34,9 @@ export type { FmWorkflowBannerProps, FmWorkflowStage } from "./FmWorkflowBanner"
 export { FmClientHeader } from "./FmClientHeader";
 export type { FmClientHeaderProps } from "./FmClientHeader";
 
+export { FmFormDraftClear } from "./FmFormDraftClear";
+export type { FmFormDraftClearProps } from "./FmFormDraftClear";
+
 export { FmClientJourneyStrip } from "./FmClientJourneyStrip";
 
 export { FmContactPanel } from "./FmContactPanel";
