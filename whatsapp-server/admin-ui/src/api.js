@@ -51,4 +51,44 @@ export const api = {
   createTag: (data) => req('/api/tags', { method: 'POST', body: JSON.stringify(data) }),
 
   messages: (p) => req(`/api/messages${qs(p)}`),
+
+  // Appointments
+  appointments: (p) => req(`/api/appointments${qs(p)}`),
+  appointment: (id) => req(`/api/appointments/${id}`),
+  createAppointment: (data) => req('/api/appointments', { method: 'POST', body: JSON.stringify(data) }),
+  patchAppointment: (id, data) => req(`/api/appointments/${id}`, { method: 'PATCH', body: JSON.stringify(data) }),
+  cancelAppointment: (id, reason) =>
+    req(`/api/appointments/${id}${qs({ reason })}`, { method: 'DELETE' }),
+
+  // Integrations
+  integrations: () => req('/api/integrations'),
+  saveIntegration: (data) => req('/api/integrations', { method: 'POST', body: JSON.stringify(data) }),
+  testIntegration: (id) => req(`/api/integrations/${id}/test`, { method: 'POST' }),
+  syncIntegration: (id) => req(`/api/integrations/${id}/sync`, { method: 'POST' }),
+  deleteIntegration: (id) => req(`/api/integrations/${id}`, { method: 'DELETE' }),
+
+  // Imports
+  imports: (p) => req(`/api/imports${qs(p)}`),
+  import: (id) => req(`/api/imports/${id}`),
+  uploadImport: (file, config) => {
+    const fd = new FormData();
+    fd.append('file', file);
+    fd.append('config', JSON.stringify(config || {}));
+    const key = getKey();
+    return fetch('/api/imports', {
+      method: 'POST',
+      headers: key ? { 'x-api-key': key } : {},
+      body: fd,
+    }).then(async (r) => {
+      const t = await r.text();
+      let d;
+      try { d = t ? JSON.parse(t) : null; } catch { d = { raw: t }; }
+      if (!r.ok) {
+        const e = new Error(d?.message || d?.error || `HTTP ${r.status}`);
+        e.status = r.status;
+        throw e;
+      }
+      return d;
+    });
+  },
 };

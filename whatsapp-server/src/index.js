@@ -9,10 +9,11 @@ import { config, configSummary } from './config.js';
 import { logger } from './logger.js';
 import { healthRouter } from './routes/health.js';
 import { webhookRouter } from './routes/webhook.js';
+import { webhooksRouter } from './routes/webhooks/index.js';
 import { apiRouter } from './routes/api/index.js';
 import { webhookLimiter } from './middleware/rateLimit.js';
 import { errorHandler, notFound } from './middleware/errorHandler.js';
-import { start as startScheduler } from './scheduler/index.js';
+import { start as startScheduler, stop as stopScheduler } from './scheduler/index.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -29,6 +30,10 @@ app.use(healthRouter);
 
 // Meta WhatsApp webhook — raw body captured BEFORE express.json (signature verify needs bytes).
 app.use('/webhook', webhookLimiter, webhookRouter);
+
+// Third-party webhooks (calendly / wix / meta-ad / form). Each mounts its own
+// express.json() locally so it doesn't clash with the raw-body path above.
+app.use('/webhooks', webhookLimiter, webhooksRouter);
 
 // Admin REST API — JSON parser is mounted INSIDE the apiRouter so it doesn't
 // clash with the raw-body path above.
@@ -69,6 +74,7 @@ const server = app.listen(config.port, () => {
 
 function shutdown(sig) {
   logger.info({ sig }, 'shutting down');
+  try { stopScheduler(); } catch (e) { logger.warn({ err: e.message }, 'stopScheduler failed'); }
   server.close(() => process.exit(0));
   setTimeout(() => process.exit(1), 10_000).unref();
 }

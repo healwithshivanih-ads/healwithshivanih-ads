@@ -6,7 +6,11 @@ import Layout from './components/Layout.jsx';
 import Inbox from './pages/Inbox.jsx';
 import Contacts from './pages/Contacts.jsx';
 import ContactDetail from './pages/ContactDetail.jsx';
+import Appointments from './pages/Appointments.jsx';
 import Settings from './pages/Settings.jsx';
+import Integrations from './pages/Settings/Integrations.jsx';
+import Imports from './pages/Settings/Imports.jsx';
+import Workspace from './pages/Settings/Workspace.jsx';
 
 function Guard({ children }) {
   if (!isLoggedIn()) return <Navigate to="/login" replace />;
@@ -23,7 +27,12 @@ export default function App() {
         <Route path="inbox/:id" element={<Inbox />} />
         <Route path="contacts" element={<Contacts />} />
         <Route path="contacts/:id" element={<ContactDetail />} />
-        <Route path="settings" element={<Settings />} />
+        <Route path="appointments" element={<Appointments />} />
+        <Route path="settings" element={<Settings />}>
+          <Route path="integrations" element={<Integrations />} />
+          <Route path="imports" element={<Imports />} />
+          <Route path="workspace" element={<Workspace />} />
+        </Route>
         <Route path="*" element={<Navigate to="/inbox" replace />} />
       </Route>
     </Routes>

@@ -3,9 +3,10 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { setKey } from '../api.js';
 
 const NAV = [
-  { to: '/inbox',    label: 'Inbox',    icon: '💬' },
-  { to: '/contacts', label: 'Contacts', icon: '👥' },
-  { to: '/settings', label: 'Settings', icon: '⚙️' },
+  { to: '/inbox',        label: 'Inbox',        icon: '💬' },
+  { to: '/contacts',     label: 'Contacts',     icon: '👥' },
+  { to: '/appointments', label: 'Appointments', icon: '📅' },
+  { to: '/settings',     label: 'Settings',     icon: '⚙️' },
 ];
 
 export default function Layout() {

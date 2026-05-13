@@ -1,29 +1,38 @@
 import React from 'react';
-import Button from '../components/Button.jsx';
-import { setKey } from '../api.js';
+import { NavLink, Outlet, useLocation, Navigate } from 'react-router-dom';
+
+const SUB = [
+  { to: '/settings/integrations', label: 'Integrations' },
+  { to: '/settings/imports', label: 'Imports' },
+  { to: '/settings/workspace', label: 'Workspace' },
+];
 
 export default function Settings() {
+  const loc = useLocation();
+  // Default to /settings/integrations when landing on /settings exactly.
+  if (loc.pathname === '/settings' || loc.pathname === '/settings/') {
+    return <Navigate to="/settings/integrations" replace />;
+  }
   return (
-    <div className="p-6">
-      <h1 className="mb-1 text-lg font-semibold">Settings</h1>
-      <p className="text-xs text-slate-500">Workspace settings UI lands in a later round.</p>
-
-      <div className="mt-4 grid gap-4 lg:grid-cols-2">
-        <section className="card p-4">
-          <h2 className="text-sm font-semibold">Workspace</h2>
-          <p className="mt-2 text-sm text-slate-600">Single workspace today (multi-tenant data model).</p>
-          <p className="mt-1 text-xs text-slate-500">Update name + WA tier from <code className="rounded bg-slate-100 px-1">workspaces</code> in the DB until the UI lands.</p>
-        </section>
-        <section className="card p-4">
-          <h2 className="text-sm font-semibold">Admin API key</h2>
-          <p className="mt-2 text-sm text-slate-600">
-            Set on the server via the <code className="rounded bg-slate-100 px-1">ADMIN_API_KEY</code> env var. To rotate, change the env var on the server then sign in again with the new key.
-          </p>
-          <Button variant="ghost" className="mt-3" onClick={() => { setKey(''); window.location = '/login'; }}>
-            Reset stored key + log out
-          </Button>
-        </section>
-      </div>
+    <div>
+      <nav className="border-b border-slate-200 bg-white px-6">
+        <div className="flex gap-1 py-2">
+          {SUB.map((s) => (
+            <NavLink
+              key={s.to}
+              to={s.to}
+              className={({ isActive }) =>
+                `rounded-md px-3 py-1.5 text-sm transition ${
+                  isActive ? 'bg-emerald-100 text-emerald-800' : 'text-slate-600 hover:bg-slate-100'
+                }`
+              }
+            >
+              {s.label}
+            </NavLink>
+          ))}
+        </div>
+      </nav>
+      <Outlet />
     </div>
   );
 }
