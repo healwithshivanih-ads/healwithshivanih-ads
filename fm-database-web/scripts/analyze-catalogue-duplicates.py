@@ -459,18 +459,18 @@ def main() -> int:
     raw_groups = tool_input.get("groups") or []
     enriched: list[dict] = []
     for g in raw_groups:
-        kind = g.get("kind")
+        g_kind = g.get("kind")
         canonical = (g.get("canonical") or "").strip()
         members = g.get("members") or []
-        if not kind or not isinstance(members, list) or not members:
+        if not g_kind or not isinstance(members, list) or not members:
             continue
         # Defensive de-dup of members
         members = list(dict.fromkeys(m for m in members if isinstance(m, str) and m))
         if not members:
             continue
         enriched.append({
-            "id": _hash_group(kind, canonical, members),
-            "kind": kind,
+            "id": _hash_group(g_kind, canonical, members),
+            "kind": g_kind,
             "canonical": canonical,
             "members": members,
             "reason": g.get("reason", ""),
