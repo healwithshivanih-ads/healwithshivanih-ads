@@ -1,0 +1,930 @@
+slug: acne
+display_name: Acne (Functional Medicine)
+description: 'Functional medicine approach to acne — adolescent comedonal acne and
+  adult/hormonal acne mapped to root drivers: hyperandrogenism, insulin resistance,
+  dairy + IGF-1, gut dysbiosis + leaky gut, oxidative stress, zinc / vitamin A
+  insufficiency, and slow phase-1/2 hepatic clearance of hormones. Distribution
+  patterns (jawline = hormonal, forehead = gut, cheeks = liver/lymph) used as
+  coaching hypotheses, not diagnoses. India context: kasturi haldi, neem, multani
+  mitti, sweat + sunscreen layering, late-dinner + insulin connection, post-pill
+  rebound androgens.
+
+  '
+aliases:
+- acne-vulgaris
+- adult-acne
+- hormonal-acne
+- cystic-acne
+related_topics:
+- pcos
+- insulin-resistance
+- gut-skin-hormone-axis
+- estrogen-metabolism
+- liver-detoxification
+- testosterone-dht-conversion
+- dysbiosis
+- chronic-inflammation
+related_mechanisms:
+- insulin-resistance
+- compensatory-hyperinsulinemia
+- gut-dysbiosis
+- leaky-gut
+- hepatic-estrogen-detoxification
+- chronic-inflammation
+- hpa-axis-dysregulation
+- oxidative-stress-and-inflammation
+tree:
+- label: 🔴 Clinical Presentation
+  children:
+  - label: Adolescent Comedonal Acne
+    children:
+    - label: Whiteheads / Blackheads (T-zone)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Oily Skin / Excess Sebum
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Mild Inflammatory Papules
+      children: []
+      linked_kind: symptom
+      linked_slug: skin-breakouts
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Adult / Hormonal Acne
+    children:
+    - label: Jawline + Chin Distribution (hormonal read)
+      children: []
+      linked_kind: symptom
+      linked_slug: acne-hormonal
+      notes: ''
+    - label: Premenstrual Flares (luteal)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Sudden Onset Adult Acne (screen endocrine)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Red flag — refer to derm + endo'
+    - label: Post-Pill Rebound (after stopping OCPs)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Severity Subtypes
+    children:
+    - label: Cystic / Nodular Acne
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Inflammatory Papulopustular
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Comedonal (non-inflammatory)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Distribution Patterns (FM read)
+    children:
+    - label: Jawline = Hormonal
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Forehead = Gut
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Cheeks = Liver / Lymph
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Back / Chest = Insulin-driven
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: PCOS-Associated Signs
+    children:
+    - label: Hirsutism
+      children: []
+      linked_kind: symptom
+      linked_slug: hirsutism
+      notes: ''
+    - label: Irregular Cycles
+      children: []
+      linked_kind: symptom
+      linked_slug: irregular-cycles
+      notes: ''
+    - label: Weight Gain / Central Adiposity
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Scalp Thinning (androgenic)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: topic
+    linked_slug: pcos
+    notes: ''
+  - label: Red Flags
+    children:
+    - label: Severe Scarring → Derm Referral
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Sudden Severe Adult Acne → Endocrine Screen
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Signs of Virilisation → Urgent Referral
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: ⚙️ Root Mechanisms
+  children:
+  - label: Hyperandrogenism
+    children:
+    - label: Raised Free Testosterone
+      children: []
+      linked_kind: lab_test
+      linked_slug: free-testosterone
+      notes: ''
+    - label: DHT Conversion at Sebaceous Gland
+      children: []
+      linked_kind: topic
+      linked_slug: testosterone-dht-conversion
+      notes: ''
+    - label: Low SHBG (more free hormone)
+      children: []
+      linked_kind: mechanism
+      linked_slug: shbg-hormone-binding
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Insulin Resistance + Hyperinsulinemia
+    children:
+    - label: Insulin Drives Ovarian Androgen Production
+      children: []
+      linked_kind: mechanism
+      linked_slug: insulin-resistance-sex-hormone
+      notes: ''
+    - label: Compensatory Hyperinsulinemia
+      children: []
+      linked_kind: mechanism
+      linked_slug: compensatory-hyperinsulinemia
+      notes: ''
+    - label: Insulin Suppresses SHBG
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: mechanism
+    linked_slug: insulin-resistance
+    notes: ''
+  - label: Dairy + IGF-1 Axis
+    children:
+    - label: Milk Stimulates IGF-1
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: IGF-1 Promotes Sebum + Keratinocyte Proliferation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Skim Milk Worst (whey-driven insulinemic response)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: High Glycaemic Load
+    children:
+    - label: Refined Carbs Spike Insulin → Androgens
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Added Sugar + Sweetened Beverages
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: mechanism
+    linked_slug: glycemic-load-reduction
+    notes: ''
+  - label: Gut Dysbiosis + Leaky Gut
+    children:
+    - label: Dysbiosis → LPS Translocation
+      children: []
+      linked_kind: mechanism
+      linked_slug: gut-dysbiosis
+      notes: ''
+    - label: Leaky Gut → Systemic Inflammation
+      children: []
+      linked_kind: mechanism
+      linked_slug: leaky-gut
+      notes: ''
+    - label: Gut-Skin Axis Feedback
+      children: []
+      linked_kind: topic
+      linked_slug: gut-skin-hormone-axis
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Hepatic Clearance Bottleneck
+    children:
+    - label: Slow Phase-1 CYP Activity
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Slow Phase-2 Conjugation (sulfation, glucuronidation)
+      children: []
+      linked_kind: mechanism
+      linked_slug: phase-1-phase-2-detox-imbalance
+      notes: ''
+    - label: Beta-Glucuronidase → Estrogen Recirculation
+      children: []
+      linked_kind: mechanism
+      linked_slug: beta-glucuronidase-estrogen-reabsorption
+      notes: ''
+    linked_kind: topic
+    linked_slug: liver-detoxification
+    notes: ''
+  - label: Nutrient Deficits
+    children:
+    - label: Low Zinc (anti-androgenic, anti-inflammatory)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Low Vitamin A (sebum + keratinisation)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Low Omega-3 (inflammation tilt)
+      children: []
+      linked_kind: mechanism
+      linked_slug: omega-3-deficiency-inflammation
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Stress / Cortisol
+    children:
+    - label: HPA-Axis Dysregulation
+      children: []
+      linked_kind: mechanism
+      linked_slug: hpa-axis-dysregulation
+      notes: ''
+    - label: Cortisol → Sebum + Inflammation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Oxidative Stress + Inflammation
+    children:
+    - label: Sebum Lipid Peroxidation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: NF-kB Signalling
+      children: []
+      linked_kind: mechanism
+      linked_slug: nf-kb-inflammatory-signalling
+      notes: ''
+    linked_kind: mechanism
+    linked_slug: chronic-inflammation
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🧬 FM Approach
+  children:
+  - label: Hormone Panel
+    children:
+    - label: Free + Total Testosterone
+      children: []
+      linked_kind: lab_test
+      linked_slug: free-testosterone
+      notes: ''
+    - label: DHEA-S
+      children: []
+      linked_kind: lab_test
+      linked_slug: dhea-s
+      notes: ''
+    - label: SHBG
+      children: []
+      linked_kind: lab_test
+      linked_slug: shbg
+      notes: ''
+    - label: LH / FSH
+      children: []
+      linked_kind: lab_test
+      linked_slug: lh-fsh-ratio
+      notes: ''
+    - label: Prolactin
+      children: []
+      linked_kind: lab_test
+      linked_slug: prolactin
+      notes: ''
+    - label: 17-OH Progesterone (rule out CAH)
+      children: []
+      linked_kind: lab_test
+      linked_slug: 17-oh-progesterone
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Metabolic Markers
+    children:
+    - label: Fasting Insulin
+      children: []
+      linked_kind: lab_test
+      linked_slug: fasting-insulin
+      notes: ''
+    - label: HbA1c
+      children: []
+      linked_kind: lab_test
+      linked_slug: hba1c
+      notes: ''
+    - label: HOMA-IR
+      children: []
+      linked_kind: lab_test
+      linked_slug: homa-ir
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Thyroid Panel
+    children:
+    - label: TSH / fT3 / fT4
+      children: []
+      linked_kind: lab_test
+      linked_slug: tsh
+      notes: ''
+    - label: Anti-TPO
+      children: []
+      linked_kind: lab_test
+      linked_slug: tpo-antibodies
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Gut Assessment
+    children:
+    - label: Comprehensive Stool Test (GI-MAP)
+      children: []
+      linked_kind: lab_test
+      linked_slug: gi-map
+      notes: ''
+    - label: Food Sensitivities (IgG screen)
+      children: []
+      linked_kind: lab_test
+      linked_slug: food-sensitivity-igg
+      notes: ''
+    - label: Elimination Trial (dairy / gluten / sugar)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Nutrient Status
+    children:
+    - label: Zinc-RBC
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Vitamin A (retinol)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Vitamin D 25-OH
+      children: []
+      linked_kind: lab_test
+      linked_slug: vitamin-d-25-oh
+      notes: ''
+    - label: Omega-3 Index
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Liver Detox Screen
+    children:
+    - label: ALT / AST / GGT
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Alkaline Phosphatase
+      children: []
+      linked_kind: lab_test
+      linked_slug: alkaline-phosphatase
+      notes: ''
+    - label: DUTCH (estrogen metabolites)
+      children: []
+      linked_kind: lab_test
+      linked_slug: dutch-2-oh-estrogen
+      notes: ''
+    linked_kind: topic
+    linked_slug: liver-detoxification
+    notes: ''
+  - label: Cycle + Photo Tracking
+    children:
+    - label: Menstrual Cycle Mapping (flare-day log)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Weekly Photo Diary (same light, no makeup)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🛠 Interventions
+  children:
+  - label: Nutrition — Eliminate / Reduce
+    children:
+    - label: Dairy Elimination 6–8 Weeks
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Strongest single dietary lever'
+    - label: Low Glycaemic Load (cap sugar, refined grain)
+      children: []
+      linked_kind: mechanism
+      linked_slug: glycemic-load-reduction
+      notes: ''
+    - label: Reduce Omega-6 Seed Oils
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Limit Alcohol (liver burden)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Nutrition — Emphasise
+    children:
+    - label: Protein at Every Meal
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Fibre 25–35 g (estrogen clearance)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Healthy Fats (ghee, olive, avocado, nuts)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Cruciferous Veg (DIM precursors)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Supplements — Core
+    children:
+    - label: Zinc 30–50 mg/day (with copper if long-term)
+      children: []
+      linked_kind: supplement
+      linked_slug: zinc-bisglycinate
+      notes: ''
+    - label: Vitamin A (food form preferred — liver, ghee, CLO)
+      children: []
+      linked_kind: supplement
+      linked_slug: vitamin-a-retinol
+      notes: ''
+    - label: Omega-3 EPA/DHA (2–3 g/day)
+      children: []
+      linked_kind: supplement
+      linked_slug: omega-3-epa-dha
+      notes: ''
+    - label: Vitamin D3 (if low on labs)
+      children: []
+      linked_kind: supplement
+      linked_slug: vitamin-d3
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Supplements — Hormonal / Targeted
+    children:
+    - label: Spearmint Tea 2 cups/day (anti-androgen)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: DIM 100–200 mg (estrogen clearance)
+      children: []
+      linked_kind: supplement
+      linked_slug: dim
+      notes: ''
+    - label: Saw Palmetto (DHT modulation)
+      children: []
+      linked_kind: supplement
+      linked_slug: saw-palmetto
+      notes: ''
+    - label: Inositol (myo + d-chiro, if PCOS)
+      children: []
+      linked_kind: supplement
+      linked_slug: myo-inositol
+      notes: ''
+    - label: Berberine (insulin resistance)
+      children: []
+      linked_kind: supplement
+      linked_slug: berberine
+      notes: ''
+    - label: NAC 600–1200 mg
+      children: []
+      linked_kind: supplement
+      linked_slug: nac
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Gut Repair
+    children:
+    - label: Probiotic (Lactobacillus + Bifidobacterium)
+      children: []
+      linked_kind: supplement
+      linked_slug: probiotics-lactobacillus-bifidobacterium
+      notes: ''
+    - label: Fermented Foods (curd alternative if dairy-free)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Prebiotic Fibre (inulin, FOS, slowly titrated)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Topical Skincare
+    children:
+    - label: Gentle pH-Balanced Cleanser
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Niacinamide 4–5%
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Azelaic Acid 10–15%
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Avoid Harsh Scrubs / Over-Exfoliation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Avoid Coconut Oil on Face (comedogenic)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Non-Comedogenic Sunscreen (daily)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: India Context
+    children:
+    - label: Kasturi Haldi Paste (wild turmeric, anti-inflammatory)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Neem Leaves Boiled-Water Rinse
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Multani Mitti Pack (oil-control, 1–2x/wk)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Late Dinner → Insulin Spike → Acne
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Move dinner before 8pm'
+    - label: Sweat + Sunscreen Layering (cleanse mid-day)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Avoid Ghee on Face (no comedogenic oils)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Stress + Sleep
+    children:
+    - label: 7–9 hrs Sleep (cortisol regulation)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Daily Movement (insulin sensitivity)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Stress Modulation (yoga nidra, breathwork)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🎯 Coaching Goals
+  children:
+  - label: 60–70% Skin Clearer by 12 Weeks
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Identify Top 3 Personal Triggers
+    children:
+    - label: Dairy?
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Sugar / Refined Carb?
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Cycle Phase (luteal flare)?
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Restore Cycle Regularity (if irregular)
+    children: []
+    linked_kind: symptom
+    linked_slug: irregular-cycles
+    notes: ''
+  - label: Off Comedogenic Actives + Harsh Skincare
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Build Confidence in Bare Skin
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Derm Referral If Scarring / Sudden Severe
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: 'Scope guard — coach refers'
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 📊 Labs to Track
+  children:
+  - label: Androgens
+    children:
+    - label: Free Testosterone
+      children: []
+      linked_kind: lab_test
+      linked_slug: free-testosterone
+      notes: ''
+    - label: Total Testosterone
+      children: []
+      linked_kind: lab_test
+      linked_slug: total-testosterone
+      notes: ''
+    - label: DHEA-S
+      children: []
+      linked_kind: lab_test
+      linked_slug: dhea-s
+      notes: ''
+    - label: SHBG
+      children: []
+      linked_kind: lab_test
+      linked_slug: shbg
+      notes: ''
+    - label: 17-OH Progesterone
+      children: []
+      linked_kind: lab_test
+      linked_slug: 17-oh-progesterone
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Pituitary / Cycle
+    children:
+    - label: LH / FSH
+      children: []
+      linked_kind: lab_test
+      linked_slug: lh-fsh-ratio
+      notes: ''
+    - label: Prolactin
+      children: []
+      linked_kind: lab_test
+      linked_slug: prolactin
+      notes: ''
+    - label: Estradiol
+      children: []
+      linked_kind: lab_test
+      linked_slug: estradiol-e2
+      notes: ''
+    - label: Progesterone (luteal day 21)
+      children: []
+      linked_kind: lab_test
+      linked_slug: progesterone
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Metabolic
+    children:
+    - label: Fasting Insulin
+      children: []
+      linked_kind: lab_test
+      linked_slug: fasting-insulin
+      notes: ''
+    - label: HbA1c
+      children: []
+      linked_kind: lab_test
+      linked_slug: hba1c
+      notes: ''
+    - label: HOMA-IR
+      children: []
+      linked_kind: lab_test
+      linked_slug: homa-ir
+      notes: ''
+    - label: Fasting Glucose
+      children: []
+      linked_kind: lab_test
+      linked_slug: fasting-glucose
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Thyroid
+    children:
+    - label: TSH
+      children: []
+      linked_kind: lab_test
+      linked_slug: tsh
+      notes: ''
+    - label: Free T3
+      children: []
+      linked_kind: lab_test
+      linked_slug: free-t3
+      notes: ''
+    - label: Free T4
+      children: []
+      linked_kind: lab_test
+      linked_slug: free-t4
+      notes: ''
+    - label: Anti-TPO
+      children: []
+      linked_kind: lab_test
+      linked_slug: tpo-antibodies
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Nutrients + Inflammation
+    children:
+    - label: Zinc-RBC
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Vitamin D 25-OH
+      children: []
+      linked_kind: lab_test
+      linked_slug: vitamin-d-25-oh
+      notes: ''
+    - label: Ferritin
+      children: []
+      linked_kind: lab_test
+      linked_slug: ferritin
+      notes: ''
+    - label: hsCRP
+      children: []
+      linked_kind: lab_test
+      linked_slug: hscrp
+      notes: ''
+    - label: Omega-3 Index
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: IGF-1 (if dairy-driven)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+sources:
+- id: vitaone-mind-map-tool
+  quote: null
+  location: Acne (Functional Medicine)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: shivani
