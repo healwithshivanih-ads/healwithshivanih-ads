@@ -1,22 +1,83 @@
 slug: methylmalonic-acid
 display_name: MMA
-full_name: Methylmalonic Acid
+full_name: Methylmalonic Acid (Serum)
 aliases:
 - mma
+- serum mma
+- s-mma
+- methylmalonic-acid-serum
 units: nmol/L
 sample_type: blood
+# Conventional lab reference range varies by lab — typical "normal" is
+# <378 nmol/L (some labs report 73-376 or 0-271). Many clients are flagged
+# only when MMA > 400 nmol/L, by which point neurological symptoms can
+# already be present.
+conventional_high: 378
+# FM-optimal: <180 nmol/L. Functional B12 deficiency starts surfacing
+# above this even when serum B12 looks "normal". Above 250 nmol/L is a
+# strong signal regardless of serum B12.
+fm_optimal_low: 0
+fm_optimal_high: 180
 interpretation_low: ''
-interpretation_high: Functional B12 deficiency
-when_to_order: Sensitive marker of functional B12 deficiency — elevates before serum B12 drops.
+interpretation_high: |
+  Elevated MMA = functional B12 deficiency. MMA accumulates when B12 is
+  insufficient because methylmalonyl-CoA can't be converted to succinyl-CoA
+  (requires methylcobalamin / adenosylcobalamin). Sensitive marker that
+  rises BEFORE serum B12 drops — especially useful when serum B12 looks
+  "normal" but clinical signs (peripheral neuropathy, brain fog, glossitis,
+  fatigue, macrocytosis) suggest insufficiency. Also elevates in renal
+  insufficiency (false positive in eGFR < 60).
+when_to_order: |
+  Suspected functional B12 deficiency despite "normal" serum B12 — especially
+  with peripheral neuropathy, paraesthesia, glossitis, macrocytosis (MCV > 100),
+  or unexplained fatigue / cognitive decline. Pair with homocysteine for
+  comprehensive methylation workup. Coach scope: order alongside elevated
+  homocysteine + active B12 (holotranscobalamin) when serum B12 is borderline
+  (200-400 pg/mL). Useful in:
+    - Vegetarians / vegans
+    - PPI / metformin long-term users
+    - Elderly clients (atrophic gastritis impairs B12 absorption)
+    - Hashimoto's clients (autoimmune gastritis comorbidity)
+    - Post-bariatric clients
+    - MTHFR-suspected clients with normal serum B12
 fasting_required: false
-linked_to_topics: []
-linked_to_mechanisms: []
+typical_cost_inr: 2500
+linked_to_topics:
+- vitamin-b12
+- methylation-mthfr
+- mthfr-variants
+- homocysteine-and-methylation
+linked_to_mechanisms:
+- b12-absorption-impairment
+- methylation-cycle-dysfunction
 sources:
+- id: coach-shivani
+  location: Coach Observation 2026-05-14
+  quote: MMA is the most sensitive marker for functional B12 deficiency — rises before serum B12 drops.
 - id: vitaone-mind-map-tool
   location: mindmap-shortlist 2026-05-13
-evidence_tier: fm_specific_thin
-notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
-version: 1
+evidence_tier: strong
+notes_for_coach: |
+  Use as a tie-breaker when serum B12 is borderline (200-400 pg/mL) or
+  when symptoms suggest B12 deficiency despite normal serum B12.
+
+  Interpretation in context:
+    - MMA < 180 + serum B12 > 400: B12 status likely adequate
+    - MMA 180-270 + symptoms: early functional deficit; trial methyl-B12
+      or hydroxocobalamin and re-test in 3 months
+    - MMA > 270: functional B12 deficiency confirmed; supplement +
+      investigate cause (vegetarian diet / PPI / autoimmune gastritis /
+      ileal pathology)
+    - MMA > 500 with renal function normal: clinically significant
+      deficiency — clinician referral if neurological symptoms
+
+  Renal caveat: elevated creatinine / eGFR < 60 can cause false-positive
+  elevation. Always interpret MMA against renal function.
+
+  India context: serum MMA is widely available (NMR-based) at major labs
+  (Quest, Thyrocare, Metropolis, SRL). Typical cost ₹1500-2500. Urinary
+  MMA is cheaper but blood is the gold standard.
+version: 2
 status: active
-updated_at: '2026-05-13'
+updated_at: '2026-05-14'
 updated_by: shivani
