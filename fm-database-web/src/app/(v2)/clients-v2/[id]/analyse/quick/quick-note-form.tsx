@@ -14,6 +14,7 @@ import { toast } from "sonner";
 import { saveSessionAction } from "@/app/assess/actions";
 import {
   FmField,
+  FmInput,
   FmTextarea,
   FmPillGroup,
   type FmPillOption,
@@ -37,6 +38,9 @@ export function QuickNoteForm({
 }) {
   const router = useRouter();
   const [pending, start] = useTransition();
+  const [sessionDate, setSessionDate] = useState(
+    () => new Date().toISOString().slice(0, 10),
+  );
   const [body, setBody] = useState("");
   const [source, setSource] = useState<string>("coach");
 
@@ -51,6 +55,7 @@ export function QuickNoteForm({
       const result = await saveSessionAction({
         client_id: clientId,
         session_type: "quick_note",
+        session_date: sessionDate,
         // The save-session.py shim reads coach_notes; we store the source
         // tag inline so the timeline view can render the icon back.
         coach_notes: body.trim(),
@@ -68,6 +73,21 @@ export function QuickNoteForm({
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+      <FmField
+        label="Date of session"
+        hint="Defaults to today — change if you're logging a past session. This date is what shows as 'Last contact'."
+      >
+        {({ id }) => (
+          <FmInput
+            id={id}
+            type="date"
+            value={sessionDate}
+            onChange={(e) => setSessionDate(e.target.value)}
+            style={{ maxWidth: 200 }}
+          />
+        )}
+      </FmField>
+
       <FmField label="Source">
         {() => (
           <FmPillGroup
