@@ -1,54 +1,75 @@
+// Env loading + validation. Fails fast in production for missing required vars;
+// in development, missing vars log a warning and return '' so you can boot the
+// scaffold and explore the UI without secrets.
 import dotenv from 'dotenv';
 dotenv.config();
 
-function required(name, fallback) {
-  const v = process.env[name] ?? fallback;
-  if (v === undefined || v === '') {
-    if (process.env.NODE_ENV === 'production') {
-      throw new Error(`Missing required env var: ${name}`);
-    }
-    console.warn(`[config] WARNING: ${name} is not set (dev mode — proceeding)`);
-    return '';
-  }
-  return v;
+const REQUIRED = [
+  'WHATSAPP_TOKEN',
+  'PHONE_NUMBER_ID',
+  'VERIFY_TOKEN',
+  'META_APP_SECRET',
+  'SUPABASE_URL',
+  'SUPABASE_SERVICE_ROLE_KEY',
+  'ADMIN_API_KEY',
+];
+
+const env = process.env.NODE_ENV || 'development';
+const missing = REQUIRED.filter((k) => !process.env[k]);
+
+if (missing.length && env === 'production') {
+  // eslint-disable-next-line no-console
+  console.error(`[config] Missing required env vars in production: ${missing.join(', ')}`);
+  process.exit(1);
+}
+if (missing.length) {
+  // eslint-disable-next-line no-console
+  console.warn(`[config] WARNING: missing env vars (dev mode — proceeding): ${missing.join(', ')}`);
 }
 
 export const config = {
-  env: process.env.NODE_ENV || 'development',
+  env,
   port: parseInt(process.env.PORT || '3000', 10),
-  logLevel: process.env.LOG_LEVEL || 'info',
+  logLevel: process.env.LOG_LEVEL || (env === 'production' ? 'info' : 'debug'),
   baseUrl: process.env.BASE_URL || `http://localhost:${process.env.PORT || 3000}`,
 
+  // Optional default workspace ID. If unset, services/workspaces.getDefault()
+  // returns the first row in the workspaces table (creating one if absent).
+  workspaceId: process.env.WORKSPACE_ID || null,
+  workspaceName: process.env.WORKSPACE_NAME || 'Heal With Shivani',
+
   whatsapp: {
-    token: required('WHATSAPP_TOKEN'),
-    phoneNumberId: required('PHONE_NUMBER_ID'),
-    businessAccountId: required('WHATSAPP_BUSINESS_ACCOUNT_ID'),
-    verifyToken: required('VERIFY_TOKEN'),
-    appSecret: required('META_APP_SECRET'),
-    graphVersion: 'v21.0',
+    token: process.env.WHATSAPP_TOKEN || '',
+    phoneNumberId: process.env.PHONE_NUMBER_ID || '',
+    businessAccountId: process.env.WHATSAPP_BUSINESS_ACCOUNT_ID || '',
+    verifyToken: process.env.VERIFY_TOKEN || '',
+    appSecret: process.env.META_APP_SECRET || '',
+    graphVersion: process.env.META_GRAPH_VERSION || 'v21.0',
   },
 
   supabase: {
-    url: required('SUPABASE_URL'),
-    serviceRoleKey: required('SUPABASE_SERVICE_ROLE_KEY'),
+    url: process.env.SUPABASE_URL || '',
+    serviceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY || '',
   },
 
   admin: {
-    apiKey: required('ADMIN_API_KEY'),
+    apiKey: process.env.ADMIN_API_KEY || '',
   },
 
-  calendly: {
-    signingSecret: process.env.CALENDLY_SIGNING_SECRET || '',
-  },
+  // Round 2: Wix encryption key for storing OAuth tokens at rest.
+  // 32 bytes, base64-encoded. Generated once with:
+  //   node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"
+  integrationEncryptionKey: process.env.INTEGRATION_ENCRYPTION_KEY || '',
 };
 
-// Masked summary at boot (never log full secrets)
 export function configSummary() {
   const mask = (s) => (s ? `${s.slice(0, 4)}…${s.slice(-2)} (${s.length} chars)` : '(empty)');
   return {
     env: config.env,
     port: config.port,
     baseUrl: config.baseUrl,
+    workspaceId: config.workspaceId || '(auto)',
+    workspaceName: config.workspaceName,
     whatsapp: {
       phoneNumberId: config.whatsapp.phoneNumberId,
       businessAccountId: config.whatsapp.businessAccountId,
@@ -62,6 +83,6 @@ export function configSummary() {
       serviceRoleKey: mask(config.supabase.serviceRoleKey),
     },
     admin: { apiKey: mask(config.admin.apiKey) },
-    calendly: { signingSecret: mask(config.calendly.signingSecret) },
+    integrationEncryptionKey: mask(config.integrationEncryptionKey),
   };
 }

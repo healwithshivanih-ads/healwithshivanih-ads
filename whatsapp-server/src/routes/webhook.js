@@ -3,105 +3,115 @@ import { config } from '../config.js';
 import { logger } from '../logger.js';
 import { db } from '../db.js';
 import { rawJson, parseRawJson } from '../middleware/rawBody.js';
-import { verifyMetaSignature } from '../whatsapp/signature.js';
-import { parseIncoming } from '../whatsapp/parse.js';
-import { upsertContact } from '../services/contacts.js';
-import { getOrCreateConversation, touchInbound } from '../services/conversations.js';
-import { logInbound, markStatus } from '../services/messages.js';
+import { verify } from '../channels/whatsapp/signature.js';
+import { parseIncoming } from '../channels/whatsapp/parse.js';
+import { matchContact } from '../services/contacts/matcher.js';
+import { getOrCreate } from '../services/conversations/index.js';
+import { logInbound, updateStatus } from '../services/messages/index.js';
+import { getDefault as getDefaultWorkspace } from '../services/workspaces.js';
 
 export const webhookRouter = Router();
 
-// GET /webhook — Meta hub verification handshake
+// Meta verification handshake
 webhookRouter.get('/', (req, res) => {
   const mode = req.query['hub.mode'];
   const token = req.query['hub.verify_token'];
   const challenge = req.query['hub.challenge'];
   if (mode === 'subscribe' && token && token === config.whatsapp.verifyToken) {
-    logger.info('webhook verified by Meta');
-    return res.status(200).send(challenge);
+    logger.info('webhook verification ok');
+    return res.status(200).send(String(challenge ?? ''));
   }
   logger.warn({ mode, tokenMatches: token === config.whatsapp.verifyToken }, 'webhook verify failed');
   return res.sendStatus(403);
 });
 
-// POST /webhook — Meta delivers events here. Must respond within 5s.
+// Inbound events. Signature validated against raw body. Always 200 on valid
+// signature; invalid signature → 401 (still logged to webhook_events).
 webhookRouter.post('/', rawJson, parseRawJson, async (req, res) => {
   const signature = req.header('x-hub-signature-256') || '';
-  const valid = verifyMetaSignature(req.rawBody, signature);
-  // Always ack quickly; log the event regardless.
-  res.sendStatus(200);
+  const valid = verify(req.rawBody, signature, config.whatsapp.appSecret);
+  const body = req.body || {};
 
-  // Fire-and-forget processing
-  processMetaWebhook(req.body, valid).catch((err) => {
+  // Always persist the raw event before doing anything else.
+  let webhookRowId = null;
+  try {
+    const ws = await getDefaultWorkspace().catch(() => null);
+    const { data } = await db().from('webhook_events').insert({
+      workspace_id: ws?.id || null,
+      source: 'meta_whatsapp',
+      event_type: body?.entry?.[0]?.changes?.[0]?.field || null,
+      signature_valid: valid,
+      payload: body,
+      headers: scrubHeaders(req.headers),
+      processed: false,
+    }).select('id').single();
+    webhookRowId = data?.id || null;
+  } catch (e) {
+    logger.error({ err: e.message }, 'webhook_events insert failed');
+  }
+
+  if (!valid) {
+    logger.warn('rejecting meta webhook — invalid signature');
+    return res.status(401).json({ error: 'invalid_signature' });
+  }
+
+  // Ack quickly; process async.
+  res.sendStatus(200);
+  processMetaWebhook(body, webhookRowId).catch((err) => {
     logger.error({ err: err.message, stack: err.stack }, 'webhook processing failed');
   });
 });
 
-async function processMetaWebhook(body, signatureValid) {
-  // Persist the raw event first
-  let webhookRowId = null;
-  try {
-    const { data } = await db()
-      .from('webhook_events')
-      .insert({
-        source: 'meta',
-        event_type: body?.entry?.[0]?.changes?.[0]?.field || null,
-        payload: body,
-        signature_valid: signatureValid,
-        processed: false,
-      })
-      .select('id')
-      .single();
-    webhookRowId = data?.id || null;
-  } catch (e) {
-    logger.warn({ err: e.message }, 'webhook_events insert failed');
+function scrubHeaders(h) {
+  const out = {};
+  for (const [k, v] of Object.entries(h)) {
+    const kl = k.toLowerCase();
+    if (kl === 'authorization' || kl === 'x-api-key') continue;
+    out[k] = v;
   }
+  return out;
+}
 
-  if (!signatureValid) {
-    logger.warn('rejecting meta webhook — invalid signature');
-    return;
-  }
-
+async function processMetaWebhook(body, webhookRowId) {
+  const ws = await getDefaultWorkspace();
   const events = parseIncoming(body);
+
   for (const ev of events) {
     try {
       if (ev.kind === 'message') {
-        const contact = await upsertContact({
-          waId: ev.wa_id,
-          phone: `+${ev.wa_id}`,
-          name: ev.name,
-          source: 'whatsapp',
+        const { contact } = await matchContact(ws.id, {
+          phone: ev.wa_id,
+          display_name: ev.profile_name,
         });
-        const conv = await getOrCreateConversation(contact.id);
+        const conv = await getOrCreate(ws.id, contact.id, 'whatsapp');
         await logInbound({
+          workspaceId: ws.id,
           conversationId: conv.id,
           contactId: contact.id,
-          waMessageId: ev.wa_message_id,
+          channel: 'whatsapp',
+          externalMessageId: ev.external_message_id,
           type: ev.type,
           body: ev.body,
           payload: ev.payload,
+          timestamp: ev.timestamp,
         });
-        await touchInbound(conv.id, ev.timestamp);
         logger.info(
-          { waId: ev.wa_id, type: ev.type, body: ev.body?.slice?.(0, 80) },
-          'inbound message',
+          { wa_id: ev.wa_id, type: ev.type, body: (ev.body || '').slice(0, 80) },
+          'inbound',
         );
       } else if (ev.kind === 'status') {
-        await markStatus({
-          waMessageId: ev.wa_message_id,
-          status: ev.status,
-          errors: ev.errors,
-        });
+        const errPayload = ev.errors ? { errors: ev.errors } : null;
+        await updateStatus(ev.external_message_id, 'whatsapp', ev.status, errPayload);
       }
     } catch (e) {
-      logger.error({ err: e.message, ev: ev.kind }, 'event handler failed');
+      logger.error({ err: e.message, kind: ev.kind }, 'event handler failed');
     }
   }
 
   if (webhookRowId) {
-    await db()
-      .from('webhook_events')
-      .update({ processed: true })
-      .eq('id', webhookRowId);
+    await db().from('webhook_events')
+      .update({ processed: true, processed_at: new Date().toISOString() })
+      .eq('id', webhookRowId)
+      .catch((e) => logger.warn({ err: e.message }, 'webhook_events processed flag failed'));
   }
 }

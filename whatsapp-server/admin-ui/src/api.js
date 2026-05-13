@@ -2,16 +2,11 @@
 
 const LS_KEY = 'wa_admin_key';
 
-export function getKey() {
-  return localStorage.getItem(LS_KEY) || '';
-}
+export function getKey() { return localStorage.getItem(LS_KEY) || ''; }
 export function setKey(k) {
-  if (k) localStorage.setItem(LS_KEY, k);
-  else localStorage.removeItem(LS_KEY);
+  if (k) localStorage.setItem(LS_KEY, k); else localStorage.removeItem(LS_KEY);
 }
-export function isLoggedIn() {
-  return !!getKey();
-}
+export function isLoggedIn() { return !!getKey(); }
 
 async function req(path, opts = {}) {
   const headers = { 'Content-Type': 'application/json', ...(opts.headers || {}) };
@@ -22,38 +17,38 @@ async function req(path, opts = {}) {
   let data;
   try { data = text ? JSON.parse(text) : null; } catch { data = { raw: text }; }
   if (!res.ok) {
-    const err = new Error(data?.error || data?.message || `HTTP ${res.status}`);
+    const err = new Error(data?.message || data?.error || `HTTP ${res.status}`);
     err.status = res.status;
+    err.code = data?.code || data?.error;
     err.body = data;
     throw err;
   }
   return data;
 }
 
+const qs = (p = {}) => {
+  const e = Object.entries(p).filter(([, v]) => v !== undefined && v !== null && v !== '');
+  return e.length ? `?${new URLSearchParams(Object.fromEntries(e)).toString()}` : '';
+};
+
 export const api = {
   stats: () => req('/api/stats'),
-  contacts: (params = {}) => {
-    const qs = new URLSearchParams(params).toString();
-    return req(`/api/contacts${qs ? `?${qs}` : ''}`);
-  },
+
+  contacts: (p) => req(`/api/contacts${qs(p)}`),
   contact: (id) => req(`/api/contacts/${id}`),
-  addTag: (id, tag) => req(`/api/contacts/${id}/tags`, { method: 'POST', body: JSON.stringify({ tag }) }),
-  removeTag: (id, tag) => req(`/api/contacts/${id}/tags/${encodeURIComponent(tag)}`, { method: 'DELETE' }),
-  conversations: (params = {}) => {
-    const qs = new URLSearchParams(params).toString();
-    return req(`/api/conversations${qs ? `?${qs}` : ''}`);
-  },
-  conversationMessages: (id) => req(`/api/conversations/${id}/messages`),
-  reply: (id, body) => req(`/api/conversations/${id}/reply`, { method: 'POST', body: JSON.stringify({ body }) }),
-  appointments: (params = {}) => {
-    const qs = new URLSearchParams(params).toString();
-    return req(`/api/appointments${qs ? `?${qs}` : ''}`);
-  },
-  createAppointment: (data) => req('/api/appointments', { method: 'POST', body: JSON.stringify(data) }),
-  sendTemplate: (data) => req('/api/send-template', { method: 'POST', body: JSON.stringify(data) }),
+  createContact: (data) => req('/api/contacts', { method: 'POST', body: JSON.stringify(data) }),
+  patchContact: (id, data) => req(`/api/contacts/${id}`, { method: 'PATCH', body: JSON.stringify(data) }),
+  addTag: (id, name) => req(`/api/contacts/${id}/tags`, { method: 'POST', body: JSON.stringify({ name }) }),
+  removeTag: (id, name) => req(`/api/contacts/${id}/tags/${encodeURIComponent(name)}`, { method: 'DELETE' }),
+
+  conversations: (p) => req(`/api/conversations${qs(p)}`),
+  conversation: (id) => req(`/api/conversations/${id}`),
+  reply: (id, data) => req(`/api/conversations/${id}/reply`, { method: 'POST', body: JSON.stringify(data) }),
+  markRead: (id) => req(`/api/conversations/${id}/read`, { method: 'POST' }),
+  patchConversation: (id, data) => req(`/api/conversations/${id}`, { method: 'PATCH', body: JSON.stringify(data) }),
+
   tags: () => req('/api/tags'),
-  messages: (params = {}) => {
-    const qs = new URLSearchParams(params).toString();
-    return req(`/api/messages${qs ? `?${qs}` : ''}`);
-  },
+  createTag: (data) => req('/api/tags', { method: 'POST', body: JSON.stringify(data) }),
+
+  messages: (p) => req(`/api/messages${qs(p)}`),
 };

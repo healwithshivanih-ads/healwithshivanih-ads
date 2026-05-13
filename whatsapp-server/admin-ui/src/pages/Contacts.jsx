@@ -1,121 +1,132 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { api } from '../api.js';
 import { Table } from '../components/Table.jsx';
+import Button from '../components/Button.jsx';
 import Input from '../components/Input.jsx';
-import Badge from '../components/Badge.jsx';
-import TagInput from '../components/TagInput.jsx';
+
+function fmtAgo(iso) {
+  if (!iso) return '—';
+  const d = new Date(iso);
+  return d.toLocaleDateString();
+}
 
 export default function Contacts() {
-  const [rows, setRows] = useState([]);
   const [search, setSearch] = useState('');
-  const [tagFilter, setTagFilter] = useState('');
-  const [tags, setTags] = useState([]);
-  const [selected, setSelected] = useState(null);
-  const [detail, setDetail] = useState(null);
-  const [err, setErr] = useState(null);
+  const [items, setItems] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [showNew, setShowNew] = useState(false);
 
-  const load = useCallback(async () => {
+  async function load() {
+    setLoading(true);
     try {
-      const params = { limit: 100 };
-      if (search) params.search = search;
-      if (tagFilter) params.tag = tagFilter;
-      const data = await api.contacts(params);
-      setRows(data.rows || []);
-      const t = await api.tags();
-      setTags((t.rows || []).map((r) => r.name));
-    } catch (e) { setErr(e.message); }
-  }, [search, tagFilter]);
-
-  useEffect(() => { load(); }, [load]);
-
-  async function openDetail(c) {
-    setSelected(c);
-    setDetail(null);
-    try {
-      const d = await api.contact(c.id);
-      setDetail(d);
-    } catch (e) { setErr(e.message); }
+      const r = await api.contacts({ search: search || undefined, limit: 100 });
+      setItems(r.items || []);
+      setTotal(r.total || 0);
+    } finally { setLoading(false); }
   }
+  useEffect(() => { load(); /* eslint-disable-next-line */ }, []);
 
-  async function addTag(tag) {
-    if (!detail) return;
-    await api.addTag(detail.contact.id, tag);
-    const d = await api.contact(detail.contact.id);
-    setDetail(d);
-    load();
-  }
-  async function removeTag(tag) {
-    if (!detail) return;
-    await api.removeTag(detail.contact.id, tag);
-    const d = await api.contact(detail.contact.id);
-    setDetail(d);
-    load();
-  }
-
-  const columns = [
-    { key: 'name', header: 'Name', render: (r) => r.name || <span className="text-slate-400">—</span> },
-    { key: 'wa_id', header: 'WhatsApp ID' },
-    { key: 'opt_in_source', header: 'Source', render: (r) => r.opt_in_source ? <Badge tone="blue">{r.opt_in_source}</Badge> : '—' },
-    { key: 'tags', header: 'Tags', render: (r) => (
-      <div className="flex flex-wrap gap-1">
-        {(r.tags || []).map((t) => <Badge key={t} tone="brand">{t}</Badge>)}
-      </div>
-    ) },
-    { key: 'last_seen_at', header: 'Last seen', render: (r) => r.last_seen_at ? new Date(r.last_seen_at).toLocaleString() : '—' },
-  ];
+  function onSubmit(e) { e.preventDefault(); load(); }
 
   return (
-    <div className="grid h-full grid-cols-1 lg:grid-cols-[1fr_360px]">
-      <div className="overflow-y-auto p-6">
-        <div className="mb-4 flex items-center justify-between gap-3">
-          <h1 className="text-2xl font-semibold">Contacts</h1>
+    <div className="p-6">
+      <header className="mb-4 flex items-center justify-between">
+        <div>
+          <h1 className="text-lg font-semibold">Contacts</h1>
+          <p className="text-xs text-slate-500">{total} total</p>
         </div>
-        {err && <div className="mb-3 rounded-lg border border-red-200 bg-red-50 p-2 text-sm text-red-700">{err}</div>}
-        <div className="mb-3 grid grid-cols-2 gap-2">
-          <Input placeholder="Search name, phone, wa_id…" value={search} onChange={(e) => setSearch(e.target.value)} />
-          <select className="input" value={tagFilter} onChange={(e) => setTagFilter(e.target.value)}>
-            <option value="">All tags</option>
-            {tags.map((t) => <option key={t} value={t}>{t}</option>)}
-          </select>
-        </div>
-        <Table columns={columns} rows={rows} onRowClick={openDetail} empty="No contacts yet" />
-      </div>
+        <Button onClick={() => setShowNew(true)}>+ New contact</Button>
+      </header>
 
-      <aside className="hidden border-l border-slate-200 bg-white lg:block">
-        {!selected && <div className="p-6 text-sm text-slate-400">Select a contact to view details.</div>}
-        {selected && (
-          <div className="space-y-4 p-6">
-            <div>
-              <div className="text-lg font-semibold">{detail?.contact?.name || selected.name || '—'}</div>
-              <div className="text-sm text-slate-500">{detail?.contact?.phone || `+${selected.wa_id}`}</div>
-            </div>
-            <div>
-              <h3 className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">Tags</h3>
-              <TagInput
-                tags={(detail?.tags || []).map((t) => t.name)}
-                onAdd={addTag}
-                onRemove={removeTag}
-                suggestions={tags}
-              />
-            </div>
-            <div>
-              <h3 className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">Appointments</h3>
-              {(!detail?.appointments || detail.appointments.length === 0) && <div className="text-sm text-slate-400">None yet.</div>}
-              <ul className="space-y-1.5">
-                {detail?.appointments?.map((a) => (
-                  <li key={a.id} className="rounded-lg border border-slate-200 p-2 text-sm">
-                    <div className="flex items-center justify-between">
-                      <span className="font-medium">{a.title || 'Appointment'}</span>
-                      <Badge tone={a.status === 'cancelled' ? 'red' : a.status === 'completed' ? 'green' : 'amber'}>{a.status}</Badge>
-                    </div>
-                    <div className="text-xs text-slate-500">{new Date(a.starts_at).toLocaleString()}</div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        )}
-      </aside>
+      <form onSubmit={onSubmit} className="mb-3 flex gap-2">
+        <Input
+          placeholder="Search name, phone, or email…"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <Button variant="ghost" type="submit">Search</Button>
+      </form>
+
+      <Table
+        columns={[
+          { key: 'display_name', header: 'Name', render: (r) => (
+            <Link to={`/contacts/${r.id}`} className="font-medium text-emerald-700 hover:underline">
+              {r.display_name || '(unnamed)'}
+            </Link>
+          )},
+          { key: 'primary_phone', header: 'Phone', render: (r) => r.primary_phone || '—' },
+          { key: 'primary_email', header: 'Email', render: (r) => r.primary_email || '—' },
+          { key: 'opt_in_status', header: 'Opt-in' },
+          { key: 'last_inbound_at', header: 'Last inbound', render: (r) => fmtAgo(r.last_inbound_at) },
+        ]}
+        rows={loading ? [] : items}
+        empty={loading ? 'Loading…' : 'No contacts yet.'}
+      />
+
+      {showNew && <NewContactModal onClose={() => setShowNew(false)} onCreated={load} />}
+    </div>
+  );
+}
+
+function NewContactModal({ onClose, onCreated }) {
+  const [form, setForm] = useState({
+    display_name: '',
+    primary_phone: '',
+    primary_email: '',
+    opt_in_status: 'unknown',
+    opt_in_source: '',
+  });
+  const [err, setErr] = useState('');
+  const [busy, setBusy] = useState(false);
+  function patch(k, v) { setForm((f) => ({ ...f, [k]: v })); }
+
+  async function submit(e) {
+    e.preventDefault();
+    setBusy(true); setErr('');
+    try {
+      await api.createContact({
+        display_name: form.display_name || undefined,
+        primary_phone: form.primary_phone || undefined,
+        primary_email: form.primary_email || undefined,
+        opt_in_status: form.opt_in_status,
+        opt_in_source: form.opt_in_source || undefined,
+      });
+      onCreated?.();
+      onClose();
+    } catch (e) { setErr(e.message); } finally { setBusy(false); }
+  }
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 p-4" onClick={onClose}>
+      <form
+        className="card w-full max-w-md p-5 space-y-3"
+        onClick={(e) => e.stopPropagation()}
+        onSubmit={submit}
+      >
+        <h2 className="text-base font-semibold">New contact</h2>
+        <Input label="Display name" value={form.display_name} onChange={(e) => patch('display_name', e.target.value)} />
+        <Input label="Phone (any format)" placeholder="+91 98924-45555" value={form.primary_phone} onChange={(e) => patch('primary_phone', e.target.value)} />
+        <Input label="Email" type="email" value={form.primary_email} onChange={(e) => patch('primary_email', e.target.value)} />
+        <div className="grid grid-cols-2 gap-2">
+          <label className="block">
+            <span className="mb-1 block text-xs font-medium text-slate-600">Opt-in status</span>
+            <select className="input" value={form.opt_in_status} onChange={(e) => patch('opt_in_status', e.target.value)}>
+              <option value="unknown">unknown</option>
+              <option value="pending">pending</option>
+              <option value="opted_in">opted_in</option>
+              <option value="opted_out">opted_out</option>
+            </select>
+          </label>
+          <Input label="Source" value={form.opt_in_source} onChange={(e) => patch('opt_in_source', e.target.value)} />
+        </div>
+        {err && <div className="text-xs text-red-600">{err}</div>}
+        <div className="flex justify-end gap-2 pt-2">
+          <Button variant="ghost" type="button" onClick={onClose}>Cancel</Button>
+          <Button disabled={busy}>{busy ? 'Saving…' : 'Create'}</Button>
+        </div>
+      </form>
     </div>
   );
 }
