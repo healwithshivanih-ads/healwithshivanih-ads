@@ -1,10 +1,17 @@
 slug: autoimmune-flares-low-immunity
 display_name: Autoimmune Flares & Low Immunity
 aliases:
-- recurrent infections
 - immune suppression
-- autoimmune worsening
+- recurrent infections
 - getting sick all the time
+- autoimmune worsening
+- impaired-immune-function
+- frequent infections
+- poor immune response
+- lowered immunity
+- getting sick often
+- recurrent-infections
+- low immunity
 category: constitutional
 severity: concerning
 description: Autoimmune flares, low immunity, recurrent infections linked to stress,
@@ -26,6 +33,13 @@ sources:
   quote: Autoimmune flares, low immunity, recurrent infections, and low-grade infections
     — Linked to stress, cytokines, low DHEA, loneliness, thymosin, gut barrier breakdown,
     and immune dysregulation.
+- id: coconote-fm-zinc-deficiency
+  location: Signs and Symptoms
+  quote: If zinc is deficient, the immune cells could be compensated for formation,
+    their activity could be compensated, thus decreasing your immune function.
+- id: coconote-fm-iron-deficiency-anemia
+  location: Symptoms of Iron Deficiency section
+  quote: Infections because the immune system is on the lower side.
 version: 1
 status: active
 updated_at: '2026-05-06'

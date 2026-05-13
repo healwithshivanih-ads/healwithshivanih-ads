@@ -1,14 +1,15 @@
 slug: abdominal-pain
 display_name: Abdominal Pain
 aliases:
-- stomach pain
 - belly pain
-- gut pain
-- stomach cramps
-- tummy ache
-- abdominal cramping
 - epigastric pain
 - visceral pain
+- abdominal cramping
+- stomach cramps
+- gut pain
+- tummy ache
+- stomach pain
+- abdominal-pain-cramping
 category: gi
 severity: common
 description: Pain or cramping in the abdominal region related to gas production, intestinal
@@ -52,6 +53,9 @@ sources:
   location: Symptoms Section
   quote: You may have diarrhea, constipation, bloating, abdominal pain, reactive to
     multiple foods.
+- id: coconote-fm-food-allergies-sensitivities
+  location: IgE Symptoms Section
+  quote: In the gastrointestinal system, you can see pain, cramping, vomiting, diarrhea.
 version: 5
 status: active
 updated_at: '2026-05-05'

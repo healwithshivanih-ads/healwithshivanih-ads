@@ -2,19 +2,35 @@ slug: low-mood
 display_name: Low Mood
 aliases:
 - sadness
-- feeling down
-- apathy
 - emotional flatness
-- low motivation
-- mood changes
-- low affect
-- joylessness
-- depressed mood
 - melancholy
-- unhappiness
+- low motivation
+- low affect
 - lack of joy
+- joylessness
 - low spirits
+- unhappiness
 - feeling blue
+- mood changes
+- feeling down
+- depressed mood
+- apathy
+- depression
+- low mood
+- depressive symptoms
+- feeling depressed
+- moodiness
+- feeling restless
+- dysthymia
+- depressed feeling
+- feeling hopeless
+- persistent sadness
+- mood depression
+- anhedonia
+- loss of interest
+- chemical imbalance
+- gut-brain depression
+- depressive-symptoms
 category: mood
 severity: common
 description: Persistent or recurrent feelings of sadness, diminished interest, or
@@ -58,6 +74,43 @@ sources:
   location: Nutrients for Mitochondrial Health
   quote: Restoring the body's magnesium can have a protective role in heart health,
     blood pressure, and is associated with improvements in depressive symptoms.
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 4: Functions of Thyroid Hormones'
+  quote: Low T3 Production contributes to depression, Anxiety and Sadness
+- id: vitaone-thyroid-toolkit
+  location: Symptoms of Hashimoto's Hypothyroidism
+  quote: Depression and Anxiety
+- id: vitaone-cv-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Practitioners'
+  quote: Beta blocker therapy has been associated with increased rates of depression,
+    fatigue, constipation, erectile dysfunction, and cognitive slowing.
+- id: vitaone-health-coaching-cheatsheet
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: Depression, low motivation, poor healing outcomes.
+- id: coconote-fm-magnesium-deficiency
+  location: Depression section
+  quote: Magnesium plays an important role in its production and the formation of
+    serotonin as well.
+- id: coconote-fm-reality-of-statins
+  location: Low Cholesterol Associations Section
+  quote: What they did find an association with is low cholesterol and... depression,
+    and a significant increase in suicide attempts in men and women.
+- id: coconote-fm-sibo-sifo
+  location: Endotoxemia / Non-GI Symptoms
+  quote: LPS kind of or endotoxinia kind of for leaky gut, these kind of patients
+    have a lot of symptoms... depression, fatigue, autism, anxiety.
+- id: barbara-oneil-healing-mind
+  location: Introduction
+  quote: the title of my lecture tonight is Healing the Mind and Safeguarding Against
+    Depression.
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Endotoxemia systemic effects discussion
+  quote: That's how bowel flora can be responsible for effects on the brain, like
+    depression, anxiety, cognitive impairment.
+- id: espeland-2022-cold-water-immersion
+  location: Mental Health
+  quote: Regular CWI increased plasma noradrenaline and beta-endorphin, potentially
+    relieving depressive symptoms.
 version: 5
 status: active
 updated_at: '2026-05-04'

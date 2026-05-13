@@ -2,12 +2,18 @@ slug: dry-skin
 display_name: Dry & Rough Skin
 aliases:
 - skin dryness
-- scaling skin
-- thick skin
-- skin thickening
-- rough skin
 - scaly skin
+- thick skin
+- rough skin
 - itchy skin
+- skin thickening
+- scaling skin
+- dry-skin-brittle-hair
+- coarse skin
+- breaking hair
+- hair loss
+- brittle nails
+- dry nails
 category: skin
 severity: common
 description: Skin becomes rough, coarse, dry, scaly, itchy, or thick due to reduced
@@ -26,6 +32,11 @@ sources:
 - id: vitaone-thyroid-toolkit
   location: Thyroid Screening Questionnaire
   quote: My skin is rough, coarse, dry, scaly, itchy, and thick
+- id: vitaone-health-coaching-toolkit
+  location: Thyroid Screening Questionnaire — Signs and Symptoms
+  quote: My hair is rough, coarse dry, breaking, brittle, or falling out. My skin
+    is rough, coarse, dry, scaly, itchy, and thick. My nails have been dry and brittle,
+    and break more easily.
 version: 2
 status: active
 updated_at: '2026-05-02'

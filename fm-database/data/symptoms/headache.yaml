@@ -1,15 +1,29 @@
 slug: headache
 display_name: Headache
 aliases:
-- tension headache
-- stress headache
-- migraines
-- head pain
-- toxic headache
-- migraine
-- head pressure
-- cephalgia
 - dehydration headache
+- head pressure
+- head pain
+- migraines
+- stress headache
+- tension headache
+- cephalgia
+- migraine
+- toxic headache
+- headaches
+- chronic headaches
+- inflammatory headaches
+- chronic headache
+- frequent headaches
+- headache-migraine
+- low-carb headache
+- elimination headache
+- migraine-headache
+- vascular headache
+- migraine with aura
+- migraines-headaches
+- recurrent-headaches
+- migraine-like headaches
 category: neurological
 severity: common
 description: One of the first signs of brain dehydration. Also associated with caffeine
@@ -51,6 +65,19 @@ sources:
 - id: barbara-oneil-healing-mind
   location: Hydration Section
   quote: One of the first signs of dehydration in the brain is actually headache.
+- id: vitaone-inflammation-cheatsheet
+  location: Food Allergy vs Food Sensitivity — Page 04
+  quote: 'NERVOUS: Brain fog, headaches, migraines'
+- id: coconote-fm-magnesium-deficiency
+  location: Nervous system section
+  quote: A good way is to give IV magnesium in such cases or maybe a B6 or vitamin
+    C also helps in terms of treating the migraine headaches.
+- id: coconote-fm-food-allergies-sensitivities
+  location: IgG Symptoms Section
+  quote: they feel some kind of brain fog or migraines
+- id: coconote-fm-iron-deficiency-anemia
+  location: Symptoms of Iron Deficiency section
+  quote: Recurrent and ducted headaches.
 version: 5
 status: active
 updated_at: '2026-05-05'

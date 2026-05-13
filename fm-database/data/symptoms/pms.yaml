@@ -1,11 +1,22 @@
 slug: pms
 display_name: PMS (Premenstrual Syndrome)
 aliases:
-- premenstrual syndrome
-- premenstrual symptoms
-- luteal phase symptoms
-- period mood changes
 - cycle-related mood changes
+- premenstrual symptoms
+- premenstrual syndrome
+- period mood changes
+- luteal phase symptoms
+- pms-symptoms
+- PMS
+- pms-irregular-cycles-low-libido
+- hormonal PMS
+- cycle irregularity
+- low sex drive
+- estrogen dominance
+- PCOS symptoms
+- premenstrual-tension
+- premenstrual mood changes
+- cycle-related mood swings
 category: hormonal
 severity: common
 description: Cluster of physical and emotional symptoms in the luteal phase linked
@@ -31,6 +42,18 @@ sources:
   location: 50 Hormones Cheatsheet — Progesterone row (p.4)
   quote: '↓ PMS, infertility, anxiety, irregular cycles. Solution: Vit B6, Mg, Vitex,
     stress reduction.'
+- id: vitaone-health-coaching-toolkit
+  location: Estrogen Metabolism
+  quote: Estrogen Dominance can exacerbate endometriosis, premenstrual syndrome (PMS),
+    polycystic ovarian syndrome (PCOS), premenstrual dysphoric disorder (PMDD).
+- id: vitaone-fm-adrenal-hormones
+  location: Symptoms Discussed
+  quote: PMS, infertility, irregular cycles, estrogen dominance, fibroids, PCOS, low
+    libido, and low sperm count — Linked to progesterone, estrogen, testosterone,
+    FSH, LH, prolactin, stress, insulin resistance, and HPO-axis disruption.
+- id: barbara-oneil-healing-mind
+  location: Hormonal Depression Section
+  quote: It's one of the main causes of premenstrual tension.
 version: 2
 status: active
 updated_at: '2026-05-02'

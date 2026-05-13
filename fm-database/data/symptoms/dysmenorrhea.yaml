@@ -4,6 +4,9 @@ aliases:
 - painful periods
 - menstrual cramps
 - period pain
+- painful-periods
+- dysmenorrhoea
+- painful menstruation
 category: hormonal
 severity: common
 description: Painful menstruation (dysmenorrhea) is associated with elevated prostaglandin
@@ -21,6 +24,9 @@ sources:
   location: Clinical Conditions Amenable to EFA Treatment
   quote: dysmenorrhea, cancer cachexia. So these are the conditions...a separate supplement
     for omega-3 to see improvements.
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Patient Timeline
+  quote: After that her periods started becoming painful.
 version: 1
 status: active
 updated_at: '2026-05-05'

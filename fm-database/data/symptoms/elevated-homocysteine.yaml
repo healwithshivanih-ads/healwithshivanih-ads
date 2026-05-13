@@ -1,11 +1,14 @@
 slug: elevated-homocysteine
 display_name: Elevated Homocysteine
 aliases:
-- high homocysteine
 - hyperhomocysteinemia
+- high homocysteine
 - methylation marker
 - methylation marker elevated
 - raised homocysteine
+- high-homocysteine
+- raised-homocysteine
+- elevated homocysteine
 category: cardiovascular
 severity: concerning
 description: Above-normal blood homocysteine levels indicating impaired methylation,
@@ -50,6 +53,14 @@ sources:
   location: Homocysteine section
   quote: Raised levels of homocysteine generally indicate a potential risk of getting
     heart attacks as well as many neurological disorders like stroke and dementia.
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Young patient cardiac arrest mechanism section
+  quote: Your high homocysteine, all the factors they actually increase your clotting
+    mechanism.
+- id: vitaone-cvs-risk-assessment
+  location: Lab Results (Slide 16)
+  quote: Men with extremely high homocysteine levels were three times more likely
+    to have a heart attack than others.
 version: 4
 status: active
 updated_at: '2026-05-05'

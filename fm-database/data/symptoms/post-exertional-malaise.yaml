@@ -2,16 +2,36 @@ slug: post-exertional-malaise
 display_name: Post Exertional Malaise
 aliases:
 - pem
+- delayed-muscle-recovery
+- doms
+- post-workout soreness
+- slow recovery
+- muscle soreness after exercise
+- post-exercise-muscle-soreness
+- DOMS
+- delayed onset muscle soreness
+- muscle aches after training
+- sore muscles
 category: constitutional
 severity: concerning
-description: Disproportionate worsening of fatigue and symptoms 12–72 hours after minimal physical or cognitive exertion. Hallmark of ME/CFS and long-COVID.
+description: Disproportionate worsening of fatigue and symptoms 12–72 hours after
+  minimal physical or cognitive exertion. Hallmark of ME/CFS and long-COVID.
 when_to_refer: ''
 linked_to_topics: []
 linked_to_mechanisms: []
-notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
+notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh out
+  before clinical use.
 sources:
 - id: vitaone-mind-map-tool
   location: mindmap-shortlist 2026-05-13
+- id: coconote-fm-magnesium-deficiency
+  location: Musculoskeletal system
+  quote: I do a workout I do not have problems that I'm working on but post-recovery
+    is what is your concern for me the soreness stays for a longer time then we should
+    be thinking about magnesium deficiency.
+- id: espeland-2022-cold-water-immersion
+  location: Pain and Inflammation
+  quote: CWI is used as a recovery tool in sports medicine.
 version: 1
 status: active
 updated_at: '2026-05-13'

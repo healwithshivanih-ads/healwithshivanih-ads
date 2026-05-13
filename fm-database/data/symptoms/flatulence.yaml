@@ -1,11 +1,21 @@
 slug: flatulence
 display_name: Flatulence / Excessive Gas
 aliases:
+- farting
+- intestinal gas
+- excessive gas
 - wind
 - passing gas
-- farting
-- excessive gas
-- intestinal gas
+- flatulence-after-meals
+- post-meal gas
+- upper digestive tract gassiness
+- gas-flatulence
+- passing wind
+- gas
+- excessive-gas
+- eructation
+- burping
+- flatulence (excessive)
 category: gi
 severity: common
 description: Passage of excess intestinal gas. In hypochlorhydria, undigested food
@@ -36,6 +46,12 @@ sources:
     effect that there is a bacterial or microbial growth which is present, eventually
     producing more gas and that is why the patient feels painful or having more of
     flatulence also in that case.
+- id: vitaone-health-coaching-toolkit
+  location: Testing for Low Stomach Acidity
+  quote: Bloating, belching, burning, and flatulence immediately after meals [listed
+    as a common symptom of hypochlorhydria].
+- id: thurlow-microbiome-mondays
+  location: Sessions 1, 6
 version: 3
 status: active
 updated_at: '2026-05-05'

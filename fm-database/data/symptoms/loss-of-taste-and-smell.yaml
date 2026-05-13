@@ -1,11 +1,18 @@
 slug: loss-of-taste-and-smell
 display_name: Loss of Taste and Smell
 aliases:
-- anosmia
 - ageusia
+- anosmia
+- food tastes bland
 - can't taste food
 - reduced sense of smell
-- food tastes bland
+- loss-of-taste-or-smell
+- dysgeusia
+- poor taste
+- reduced smell
+- hypogeusia
+- reduced sense of taste
+- taste changes
 category: neurological
 severity: common
 description: Diminished or absent sense of taste (ageusia) and smell (anosmia) linked
@@ -19,6 +26,15 @@ sources:
   location: Signs and Symptoms
   quote: Loss of taste and smell, skin disorders including acne, decreased production
     or sexual function especially in men.
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Zinc'
+  quote: Zinc is necessary for normal growth and development, immune and neurological
+    function, proper sense of taste and smell.
+- id: vitaone-health-coaching-toolkit
+  location: 'Food Sources: Zinc'
+  quote: Zinc is necessary for normal growth and development, immune and neurological
+    function, proper sense of taste and smell, and maintaining the structure of cell
+    membranes.
 version: 1
 status: active
 updated_at: '2026-05-05'

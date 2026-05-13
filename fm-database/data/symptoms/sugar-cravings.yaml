@@ -1,14 +1,18 @@
 slug: sugar-cravings
 display_name: Sugar Cravings
 aliases:
-- carb cravings
 - sweet cravings
-- craving sweets
 - wanting sugar
+- poor glucose control
+- craving sweets
 - sweet tooth
 - blood sugar swings
-- poor glucose control
 - intensified cravings
+- carb cravings
+- sweet-cravings
+- sugar cravings
+- carbohydrate cravings
+- craving-sweets
 category: metabolic
 severity: common
 description: Intense desire for sweet or high-carbohydrate foods, driven by glucose
@@ -44,6 +48,15 @@ sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DX1jE67jI4m/
   quote: Sugar cravings reduce when metabolic flexibility improves
+- id: vitaone-health-coaching-toolkit
+  location: 'HPA Axis Questionnaire — Section 2: Elevated cortisol state'
+  quote: Craving sweets.
+- id: coconote-fm-approach-inflammation
+  location: Fungal Overgrowth – Sweet Cravings
+  quote: If they have sweet tooth, they say it's a fungal infection.
+- id: vitaone-adrenal-toolkit
+  location: 'HPA Axis Questionnaire — Section 2: Elevated cortisol state'
+  quote: Craving sweets
 version: 5
 status: active
 updated_at: '2026-05-05'

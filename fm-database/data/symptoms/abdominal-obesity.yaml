@@ -1,10 +1,27 @@
 slug: abdominal-obesity
 display_name: Abdominal Obesity / Increased Waist Circumference
 aliases:
-- belly fat
 - central adiposity
-- visceral fat
 - apple shape
+- visceral fat
+- belly fat
+- central-obesity
+- visceral adiposity
+- abdominal obesity
+- apple-shaped body
+- belly-fat
+- central obesity
+- abdominal weight gain
+- abdominal fat
+- truncal fat
+- central-weight-gain
+- cortisol belly
+- weight-gain-abdomen
+- belly weight gain
+- truncal obesity
+- weight gain around abdomen
+- buffalo hump
+- moon face
 category: metabolic
 severity: concerning
 description: Excess fat concentrated around the abdomen, often indicating visceral
@@ -21,6 +38,27 @@ sources:
   location: Metabolic Dysfunction
   quote: Patient is patient is obese. What is their waist circumference? What What
     is the base and tip ratio?
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Causes of Inflammation
+  quote: Central obesity. That's the lowest hanging fruit. Central obesity is an inflammatory
+    producing organ.
+- id: vitaone-blood-sugar-cheatsheet
+  location: Insulin Resistance Cheatsheet — Clinical Symptoms
+  quote: Belly fat, PCOD/PCOS
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXWoFj6jGCY/
+  quote: Refined carbs derail glucose control → PCOS, cravings, belly fat
+- id: vitaone-adrenal-cheatsheet
+  location: Stress & Chronic Diseases Link (p.9)
+  quote: 'Cortisol dysregulation → visceral fat deposition. Key Mechanisms: Insulin
+    resistance, appetite dysregulation via leptin/ghrelin.'
+- id: vitaone-fm-adrenal-hormones
+  location: Symptoms Discussed
+  quote: Central weight gain and obesity - Linked to high cortisol, insulin resistance,
+    leptin resistance, stress eating, metabolic syndrome, and low adiponectin.
+- id: vitaone-adrenal-toolkit
+  location: 'HPA Axis Questionnaire — Section 2: Elevated cortisol state'
+  quote: Weight gain around your abdomen, back of neck, and in the face and cheeks*
 version: 1
 status: active
 updated_at: '2026-05-05'

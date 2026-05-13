@@ -2,9 +2,17 @@ slug: excess-body-weight
 display_name: Excess Body Weight / Obesity
 aliases:
 - overweight
-- obesity
-- high BMI
 - weight gain
+- high BMI
+- obesity
+- excess-weight
+- belly fat
+- central adiposity
+- excess-body-fat
+- high body fat percentage
+- over fat
+- overfat
+- high adiposity
 category: metabolic
 severity: concerning
 description: Excess adiposity driving insulin resistance, inflammation, and cardiometabolic
@@ -23,6 +31,14 @@ sources:
   quote: Shorter-duration human & animal studies show that fasting may be beneficial
     for insulin resistance, blood sugar, blood pressure, inflammation, short-term
     weight loss, and brain health.
+- id: vitaone-cardiometabolic-recipes
+  location: Quinoa Upma
+  quote: Soak 1 cup of Quinoa overnight or at least for 2 hours.
+- id: coconote-fm-body-composition-bmi
+  location: Body Composition Scenarios Section
+  quote: They are considered ideal. The second scenario is what we see with some of
+    our athletes. So their BMI is high... but then you go on to do his waist-hip ratio.
+    And it's 0.85, which is completely normal with a very good waist circumference.
 version: 1
 status: active
 updated_at: '2026-05-04'

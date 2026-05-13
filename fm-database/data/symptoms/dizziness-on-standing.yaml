@@ -2,9 +2,20 @@ slug: dizziness-on-standing
 display_name: Dizziness / Lightheadedness
 aliases:
 - lightheadedness
-- feeling dizzy
-- orthostatic dizziness
 - fasting dizziness
+- orthostatic dizziness
+- feeling dizzy
+- orthostatic-dizziness
+- lightheadedness when standing
+- orthostatic hypotension
+- dizzy when bending
+- orthostatic-hypotension
+- blood pressure drop on standing
+- dizziness on standing
+- postural hypotension
+- low-blood-pressure
+- lightheaded when standing
+- drop in BP on standing
 category: neurological
 severity: common
 description: Dizziness or lightheadedness especially on standing, commonly experienced
@@ -20,6 +31,13 @@ sources:
   location: Intermittent Fasting — General Recommendations for Fasting
   quote: Be aware of your movement as you may feel dizzy or lightheaded, especially
     when first starting a fast.
+- id: coconote-fm-biomarkers-cvs
+  location: Autonomic Nervous System
+  quote: When patients stand from lying down, they may be having a dizziness or they
+    may be having a fall of blood pressure by 20 points. So that is orthostatic hypotension.
+- id: vitaone-adrenal-toolkit
+  location: 'HPA Axis Questionnaire — Section 1: Low cortisol state'
+  quote: Low blood pressure and/or drop of blood pressure on standing*
 version: 1
 status: active
 updated_at: '2026-05-04'

@@ -1,9 +1,19 @@
 slug: weak-peeling-nails
 display_name: Weak, Peeling & Cracked Fingernails
 aliases:
-- brittle nails
-- peeling nails
 - cracked nails
+- peeling nails
+- brittle nails
+- weak-peeling-cracked-fingernails
+- nail fragility
+- brittle-nails
+- weak nails
+- nail breakage
+- koilonychia
+- nail ridging
+- soft nails
+- white nail spots
+- nail brittleness
 category: skin
 severity: common
 description: Fragile or splitting fingernails often associated with nutrient malabsorption
@@ -18,6 +28,17 @@ sources:
 - id: vitaone-gut-toolkit
   location: Testing for Low Stomach Acidity — Common Symptoms of Hypochlorhydria
   quote: Weak, peeling, and cracked fingernails
+- id: vitaone-health-coaching-toolkit
+  location: Testing for Low Stomach Acidity
+  quote: Weak, peeling, and cracked fingernails [listed as a common symptom of hypochlorhydria].
+- id: coconote-fm-iron-deficiency-anemia
+  location: Symptoms of Iron Deficiency section
+  quote: Physical fatigue, brittle nails, restless leg, cold intolerance because of
+    lack of oxygen.
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Symptoms Discussed
+  quote: Pallor, dizziness, breathlessness, restless legs, and brittle nails - Linked
+    to iron deficiency.
 version: 1
 status: active
 updated_at: '2026-05-02'

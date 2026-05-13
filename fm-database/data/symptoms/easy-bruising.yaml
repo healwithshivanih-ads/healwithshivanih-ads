@@ -4,6 +4,10 @@ aliases:
 - ecchymosis
 - bruising easily
 - skin bruising
+- easy-bruising-bleeding
+- gum bleeding
+- bleeding gums
+- corkscrew hairs
 category: cardiovascular
 severity: concerning
 description: Spontaneous or disproportionate bruising, often presenting as ecchymosis,
@@ -20,6 +24,10 @@ sources:
   quote: if there is a deficiency in vitamin K2, it can manifest as glupus, anechymosis,
     hematiduia, GI bleeding, intracranial bleeding, prolonged bleeding or clotting
     time.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Symptoms Discussed
+  quote: Easy bruising, bleeding, calcified arteries, kidney stones, and weak bones
+    - Linked to vitamin K deficiency.
 version: 1
 status: active
 updated_at: '2026-05-05'

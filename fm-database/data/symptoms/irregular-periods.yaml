@@ -1,25 +1,34 @@
 slug: irregular-periods
 display_name: Irregular Periods
 aliases:
-- irregular cycles
-- oligomenorrhea
-- missed periods
-- anovulatory cycles
-- menstrual irregularities
 - skipped periods
-- cycle disruption
-- irregular menstrual cycles
-- cycle irregularity
-- scanty menstruation
-- delayed menstruation
 - oligomenorrhoea
 - infrequent periods
-- cycle lengthening
-- irregular bleeding
-- menstrual irregularity
-- variable cycles
-- irregular menstrual cycle
 - erratic periods
+- menstrual irregularities
+- menstrual irregularity
+- cycle disruption
+- delayed menstruation
+- cycle lengthening
+- scanty menstruation
+- irregular cycles
+- oligomenorrhea
+- irregular menstrual cycle
+- anovulatory cycles
+- irregular menstrual cycles
+- variable cycles
+- missed periods
+- irregular bleeding
+- cycle irregularity
+- irregular-cycles
+- anovulation
+- irregular-menstrual-cycles
+- irregular periods
+- heavy periods
+- frequent periods
+- abnormal periods
+- menstrual-irregularities
+- stress-related amenorrhea
 category: hormonal
 severity: common
 description: Disruption to regular menstrual cycling, increasingly common in younger
@@ -73,6 +82,23 @@ sources:
   location: Premature Hormonal Decline and Endocrine Disruption
   quote: We have more and more young women with irregular cycles and going into menstruating
     earlier and going into perimenopause, even in their 20s.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DX1jE67jI4m/
+  quote: PCOS patients regain cycles when insulin resistance is corrected
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 4: Functions of Thyroid Hormones'
+  quote: Irregular menstruation and decreased or increased menstrual flow. Fertility
+    can also be affected.
+- id: vitaone-thyroid-toolkit
+  location: Symptoms of Hashimoto's Hypothyroidism
+  quote: Irregular Menstrual Cycles
+- id: vitaone-health-coaching-toolkit
+  location: Thyroid Screening Questionnaire — Signs and Symptoms
+  quote: 'Women: I am having irregular menstrual cycles (longer, or heavier, or more
+    frequent)'
+- id: vitaone-thyroid-cheatsheet
+  location: Biohacking Thyroid Function Cheatsheet — Thyroid Dysfunction Symptoms
+  quote: Menstrual irregularities
 version: 6
 status: active
 updated_at: '2026-05-05'

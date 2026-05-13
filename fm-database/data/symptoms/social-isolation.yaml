@@ -1,13 +1,16 @@
 slug: social-isolation
 display_name: Social Isolation & Loneliness
 aliases:
-- loneliness
-- lack of social support
+- isolated
 - feeling disconnected
-- feeling alone
+- loneliness
 - disconnected
 - no close friends
-- isolated
+- lack of social support
+- feeling alone
+- social-disconnection
+- isolation
+- feeling unsupported
 category: mood
 severity: concerning
 description: A chronic state of insufficient meaningful social connection, which itself

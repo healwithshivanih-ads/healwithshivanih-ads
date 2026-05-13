@@ -1,10 +1,19 @@
 slug: energy-crashes
 display_name: Energy Crashes
 aliases:
-- afternoon energy slump
-- blood sugar crash
 - post-prandial energy crash
 - wired but tired
+- blood sugar crash
+- afternoon energy slump
+- fatigue-after-meals
+- fatigue after eating
+- post-prandial tiredness
+- food coma
+- afternoon energy crash
+- post-meal-fatigue
+- after-eating tiredness
+- postprandial drowsiness
+- energy crash after eating
 category: metabolic
 severity: common
 description: Sudden drops in energy, often mid-afternoon or 1–2 hours after meals,
@@ -20,6 +29,9 @@ sources:
   location: Section 4.2.2 — Progressing Insulin Resistance
   quote: Energy 'crashes,' intensified cravings, increased thirst, mood swings, expanding
     waist circumference.
+- id: vitaone-blood-sugar-cheatsheet
+  location: Insulin Resistance Cheatsheet — Clinical Symptoms
+  quote: Fatigue after meals
 version: 1
 status: active
 updated_at: '2026-05-02'

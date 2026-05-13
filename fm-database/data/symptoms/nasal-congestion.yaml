@@ -1,11 +1,17 @@
 slug: nasal-congestion
 display_name: Nasal Congestion / Runny Nose / Sinusitis
 aliases:
-- stuffy nose
 - runny nose
+- sinusitis
 - nasal polyps
 - sneezing
-- sinusitis
+- stuffy nose
+- stuffy-runny-nose
+- nasal congestion
+- rhinitis
+- sinus symptoms
+- rhinosinusitis-rhinorrhea
+- nasal drip
 category: other
 severity: common
 description: Upper respiratory symptoms including nasal congestion, rhinorrhoea, sneezing,
@@ -22,6 +28,12 @@ sources:
 - id: vitaone-elimination-diet-toolkit
   location: Salicylate Food Triggers — Symptoms
   quote: 'Respiratory: stuffy nose, runny nose, sinusitis, nasal polyps, asthma'
+- id: vitaone-health-coaching-toolkit
+  location: Salicylate Food Triggers — Symptoms of Salicylate Reactions
+  quote: 'Respiratory: stuffy nose, runny nose, sinusitis, nasal polyps, asthma'
+- id: coconote-fm-food-allergies-sensitivities
+  location: IgE Symptoms Section
+  quote: you can see rhinosinusitis or rhinorrhea in the nose
 version: 1
 status: active
 updated_at: '2026-05-02'

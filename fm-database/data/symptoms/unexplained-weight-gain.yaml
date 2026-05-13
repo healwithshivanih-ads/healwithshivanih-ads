@@ -1,9 +1,43 @@
 slug: unexplained-weight-gain
 display_name: Unexplained Weight Gain
 aliases:
-- weight gain from toxins
 - obesogen effect
+- weight gain from toxins
 - toxic weight gain
+- weight-gain
+- weight gain
+- midlife-weight-gain
+- abdominal-spare-tire
+- weight-gain-around-the-middle
+- meno-belly
+- abdominal weight gain
+- weight gain (especially abdominal)
+- central weight gain
+- unexplained weight gain
+- can't lose weight
+- metabolic weight gain
+- slow metabolism
+- difficulty losing weight
+- gaining weight for no reason
+- weight loss resistance
+- metabolic sluggishness
+- obesity
+- increased fat mass
+- belly fat
+- visceral fat
+- gaining weight
+- increasing BMI
+- visceral fat accumulation
+- stress weight
+- cortisol belly
+- belly fat accumulation
+- stubborn weight
+- menopausal weight gain
+- midlife weight gain
+- adiposity
+- love handles
+- resistant-weight-gain
+- inflammation-related weight
 category: metabolic
 severity: common
 description: Weight gain that is disproportionate to caloric intake, potentially linked
@@ -20,6 +54,50 @@ sources:
   location: Why Detox?
   quote: No matter what the diet may be, when toxins are injected into animals, they
     have a greater chance of gaining weight.
+- id: thurlow-microbiome-session-4
+  location: Session 4 — Midlife Weight Gain & Metabolic Shifts
+- id: vitaone-thyroid-cheatsheet
+  location: Biohacking Thyroid Function Cheatsheet — Thyroid Dysfunction Symptoms
+  quote: Weight changes (gain in hypo, loss in hyper)
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 4: Functions of Thyroid Hormones'
+  quote: Slows body's metabolism which can lead to weight gain
+- id: vitaone-thyroid-toolkit
+  location: Why is it Important to Address Hashimoto's Hypothyroidism?
+  quote: 'Weight Gain and Metabolic Issues: Hypothyroidism slows down metabolism,
+    often leading to unexplained weight gain and difficulty losing weight, even with
+    diet and exercise.'
+- id: vitaone-sex-hormones-toolkit
+  location: Sex Hormone Binding Globulin (SHBG) — Page 01
+  quote: This can cause symptoms associated with testosterone deficiency, including
+    fatigue, decreased libido, weight gain, mood changes.
+- id: vitaone-health-coaching-toolkit
+  location: Understanding Hashimoto's Hypothyroidism — Why is it Important to Address
+    Hashimoto's?
+  quote: Hypothyroidism slows down metabolism, often leading to unexplained weight
+    gain and difficulty losing weight, even with diet and exercise.
+- id: vitaone-cvs-risk-assessment
+  location: Functional Medicine Timeline (Slide 4)
+  quote: Weight gain,
+- id: vitaone-health-coaching-cheatsheet
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: Fatigue, insomnia, anxiety, weight gain, hormonal imbalance.
+- id: coconote-fm-estrogen-dominance
+  location: Inflammation and Estrogen Cycle
+  quote: I go to the gym, 2-3 months I am absolutely fine but then again I gain my
+    weight. Why? Because we are not treating the addressing process that is inflammation
+    and insulin resistant by fixing the diet.
+- id: coconote-fm-sex-hormones
+  location: Symptoms of Menopause Transition
+  quote: weight gain, problems with urinary bladder, vaginal dryness, loss of interest
+    in sex
+- id: ask-expert-hormonal-health-bhrt
+  location: FSH and Anti-Aging Hormone Targets
+  quote: I'm not really getting anywhere and I'm not losing my love handles and my
+    bones... You've got to bring that FSH down because it causes all those issues.
+- id: vitaone-inflammation-cheatsheet
+  location: Inflammation Cheatsheet — Page 02
+  quote: Resistant weight gain
 version: 1
 status: active
 updated_at: '2026-05-02'

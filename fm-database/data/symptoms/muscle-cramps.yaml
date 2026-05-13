@@ -3,12 +3,15 @@ display_name: Muscle Cramps & Restless Legs
 aliases:
 - leg cramps
 - restless legs
-- muscle spasms
-- night cramps
 - charley horse
-- cramping
+- night cramps
 - tetany
 - cramps
+- muscle spasms
+- cramping
+- muscle-cramps-and-restless-legs
+- restless leg syndrome
+- nocturnal cramps
 category: musculoskeletal
 severity: common
 description: Muscle cramps, restless legs, and palpitations linked to magnesium deficiency
@@ -50,6 +53,10 @@ sources:
   quote: Many patients come to you with fatigue, muscle cramps, mood swings, or neuropathy…
     and yet their labs look 'normal.'
 - id: vitaone-fm-nutrition-cheatsheets
+  location: Symptoms Discussed
+  quote: Muscle cramps, restless legs, palpitations, migraines, PMS, constipation,
+    and asthma/hypertension smooth muscle context - Linked to magnesium.
+- id: Vitaone-fm-nutrition-cheatsheets
   location: Symptoms Discussed
   quote: Muscle cramps, restless legs, palpitations, migraines, PMS, constipation,
     and asthma/hypertension smooth muscle context - Linked to magnesium.

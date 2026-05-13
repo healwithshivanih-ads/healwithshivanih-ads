@@ -1,10 +1,18 @@
 slug: muscle-pain
 display_name: Muscle Pain / Myalgia
 aliases:
-- muscle ache
-- muscular pain
-- body aches
 - sore muscles
+- muscular pain
+- muscle ache
+- body aches
+- muscle-pain-myalgia
+- statin-induced myopathy
+- muscle aches
+- muscle soreness on statins
+- musculoskeletal pain
+- myalgia
+- muscle soreness
+- statin myalgia
 category: musculoskeletal
 severity: common
 description: Diffuse or localised muscle pain not attributable to acute injury; linked
@@ -21,6 +29,13 @@ sources:
   location: Personal Case Study
   quote: I felt like a muscle pain. So I thought maybe I did some exercise or something,
     I pulled it... after starting a high omega-3, my dyspnea went away.
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Statin side effects / case discussion
+  quote: He has muscle pain and he's taking the medication over there. And he was
+    in pain and he called me and I got, I don't have pain now.
+- id: coconote-fm-reality-of-statins
+  location: Side Effects of Statins Section
+  quote: It may cause myalgia and atrophy and atrophy.
 version: 1
 status: active
 updated_at: '2026-05-05'

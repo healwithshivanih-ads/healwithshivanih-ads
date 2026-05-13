@@ -2,8 +2,26 @@ slug: edema
 display_name: Edema
 aliases:
 - swelling
-- fluid retention
 - pitting edema
+- fluid retention
+- fluid-retention
+- water retention
+- puffiness
+- bloating from hormones
+- bloating from water
+- puffiness-edema
+- facial puffiness
+- eyelid swelling
+- puffy face
+- hand swelling
+- foot swelling
+- myxedema
+- periorbital edema
+- swollen hands and feet
+- water-retention
+- edema from stress
+- water-retention-edema
+- weight gain from inflammation
 category: cardiovascular
 severity: concerning
 description: Peripheral fluid accumulation, potentially related to low serum protein
@@ -18,6 +36,30 @@ sources:
 - id: coconote-fm-pancreatic-insufficiency
   location: Signs and Symptoms
   quote: Feeling excessive bloating, gas, edema.
+- id: vitaone-sex-hormones-toolkit
+  location: Sex Hormone Binding Globulin (SHBG) — Page 01
+  quote: This can lead to increased free testosterone and estrogen in the body, which
+    can lead to symptoms like hair loss, acne, and excess fluid retention.
+- id: vitaone-health-coaching-toolkit
+  location: Sex Hormone Binding Globulin (SHBG)
+  quote: This can lead to increased free testosterone and estrogen in the body, which
+    can lead to symptoms like hair loss, acne, and excess fluid retention.
+- id: coconote-fm-body-composition-bmi
+  location: BIA / Extracellular Water Section
+  quote: If somebody has too much extracellular water, it can be a sign of inflammation
+    in their body, right? Maybe under your matrix, you're seeing signs of allergy
+    or hypersensitivity to foods or inflammation in the body.
+- id: vitaone-thyroid-toolkit
+  location: Thyroid Screening Questionnaire
+  quote: I have puffiness and swelling around the eyes, eyelids, face, feet, hands
+    and feet
+- id: coconote-fm-food-allergies-sensitivities
+  location: IgG Symptoms Section
+  quote: Many patients you see that might be having an IgG sensitivity, they go out
+    for two days and they eat some kind of gluten or dairy. And when they come back,
+    they increase their weight. And that weight is not because of fat... your increase
+    of your weight is because of your IgG sensitivity and usually we have seen that
+    maybe water retention because of inflammation.
 version: 1
 status: active
 updated_at: '2026-05-05'

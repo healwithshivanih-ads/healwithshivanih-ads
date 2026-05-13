@@ -1,30 +1,51 @@
 slug: insomnia
 display_name: Insomnia & Restless Sleep
 aliases:
-- poor sleep
-- sleep disturbance
-- waking at night
-- can't sleep
-- 3am-wakeups
 - trouble sleeping
-- restless sleep
-- difficulty falling asleep
-- difficulty sleeping
-- wakefulness
-- trouble falling asleep
-- trouble staying asleep
-- wired at bedtime
-- night-waking
 - night-time-alertness
+- waking at night
+- sleep difficulty
+- poor sleep quality
+- trouble falling asleep
+- sleep issues
 - wired but tired
+- difficulty falling asleep
 - non-restorative sleep
 - night-time alertness
 - sleep problems
-- sleep difficulty
-- poor sleep quality
+- sleep disturbance
+- wakefulness
+- difficulty sleeping
+- restless sleep
+- trouble staying asleep
 - 3am wakeups
-- sleep issues
+- poor sleep
+- can't sleep
+- wired at bedtime
 - can't fall asleep
+- night-waking
+- 3am-wakeups
+- insomnia-poor-sleep
+- delayed sleep onset
+- poor REM
+- jet lag
+- light sleeping
+- poor-sleep
+- unrefreshing sleep
+- waking tired
+- not sleeping well
+- waking unrefreshed
+- wired at night
+- poor-sleep-quality
+- bad sleep
+- broken sleep
+- disturbed-sleep
+- sleep disruption
+- night waking
+- sleep-disturbance
+- sleep-disturbances
+- disrupted sleep
+- disturbed sleep
 category: sleep
 severity: common
 description: Insomnia and restless sleep linked to B5, B6, vitamin D, magnesium, and
@@ -124,6 +145,30 @@ sources:
   location: Symptoms Discussed
   quote: Insomnia and restless sleep - Linked to B5, B6, vitamin D, magnesium, sodium/potassium
     imbalance, and depression-mimicking magnesium patterns.
+- id: vitaone-fm-adrenal-hormones
+  location: Symptoms Discussed
+  quote: Poor sleep, jet lag, poor REM, and delayed sleep onset — Linked to low melatonin,
+    digital overstimulation, blue light exposure, cortisol dysregulation, GABA-glutamate
+    imbalance, and poor circadian recovery.
+- id: coconote-fm-chronic-pain-fatigue
+  location: Sleep Hygiene Section
+  quote: people who are in chronic pain, they are not able to sleep enough because
+    they are having so much of pain that their sleep is compromised.
+- id: coach-shivani
+  location: Coach Observation — Plant-Derived Adaptogens and Herbs
+  quote: Consuming 1 gram of chamomile flower tea daily has been shown to reduce cortisol
+    levels and improve sleep quality in individuals with primary insomnia.
+- id: coconote-fm-estrogen-dominance
+  location: Signs and Symptoms of Estrogen Dominance
+  quote: 'Signs and symptoms of estrogen dominance: mood swings, bare strenuous, acne,
+    anxiety, fatigue, disturbed sleep, hot flashes, low libido.'
+- id: vitaone-elimination-diet-toolkit
+  location: Low Fodmap Diet Symptom Tracker — Section 2
+  quote: Sleep disturbances
+- id: coconote-fm-sex-hormones
+  location: Case Study — Rekha
+  quote: had very low energy levels, now here are the very menopausal symptoms appearing.
+    Disturbed sleep and was diagnosed with hypothyroidism also.
 version: 14
 status: active
 updated_at: '2026-05-06'

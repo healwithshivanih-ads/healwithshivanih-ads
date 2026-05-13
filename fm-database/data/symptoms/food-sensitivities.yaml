@@ -1,23 +1,39 @@
 slug: food-sensitivities
 display_name: New or Worsening Food Sensitivities
 aliases:
-- new food sensitivities
-- food-intolerances
-- delayed-food-reactions
-- foods-i-used-to-tolerate
-- delayed food reactions
-- food intolerances
-- food-reactions
-- new food reactions
-- reactive foods
-- reacting to foods
-- can't tolerate foods
-- new food allergies
-- food reactions
 - food intolerance
-- multiple food reactions
 - food allergies
+- reacting to foods
+- food intolerances
+- food-intolerances
+- delayed food reactions
+- new food reactions
+- new food sensitivities
+- foods-i-used-to-tolerate
+- reactive foods
+- delayed-food-reactions
+- food reactions
+- multiple food reactions
+- can't tolerate foods
 - dietary sensitivities
+- food-reactions
+- new food allergies
+- food-reactivity
+- new food intolerances
+- multiple food sensitivities
+- multiple-food-sensitivities
+- reactive to multiple foods
+- progressive food reactions
+- multiple-food-reactions
+- reacting to many foods
+- progressive food intolerances
+- worsening food reactions
+- new-food-sensitivities
+- food sensitivity expansion
+- gluten sensitivity
+- casein sensitivity
+- increasing food reactions
+- multiple-food-allergies
 category: gi
 severity: common
 description: Adverse reactions to previously tolerated foods, often linked to compromised
@@ -76,6 +92,33 @@ sources:
 - id: barbara-oneil-gi-tract
   location: Leaky Gut Section
   quote: Things are coming in there that should never come in there.
+- id: vitaone-inflammation-cheatsheet
+  location: Inflammation Cheatsheet — Page 02
+  quote: Gut – Bloating, food reactivity, ↑ Zonulin
+- id: coconote-fm-sibo-sifo
+  location: Leaky Gut / Transcellular Section
+  quote: At times patients come with a company, doctor first time sensitive to gluten.
+    Then after six months, I became sensitive to milk. After that, I had multiple
+    food sensitivities.
+- id: coconote-fm-food-allergies-sensitivities
+  location: Low Stomach Acid Section
+  quote: patients start with one food allergy or one food sensitivity and because
+    they have chronic low stomach acid and because of that increased intestinal permeability
+    they start having second food reaction or third food reaction
+- id: vitaone-elimination-diet-cheatsheet
+  location: FODMAP Food Cheatsheet — Legumes & Pulses row
+  quote: Legume reintroduction signals improved gut tolerance post-dysbiosis correction.
+- id: coconote-fm-intestinal-permeability
+  location: Three Factors for Autoimmunity
+  quote: if somebody is exposed to a gluten or a gluten or wheat even they will not
+    develop the gluten sensitivity because third important factor is required and
+    that is because say leaky small intestine or leaky gut.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXy9b_KjJT2/
+  quote: Chronic gut issues impair absorption silently
+- id: vitaone-gut-toolkit
+  location: Testing for Low Stomach Acidity — Common Symptoms of Hypochlorhydria
+  quote: Multiple food allergies
 version: 7
 status: active
 updated_at: '2026-05-05'

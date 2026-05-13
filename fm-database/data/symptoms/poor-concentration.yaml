@@ -1,15 +1,71 @@
 slug: poor-concentration
 display_name: Poor Concentration
 aliases:
-- difficulty concentrating
-- brain fog
-- lack of focus
-- scattered thinking
-- difficulty focusing
 - mental cloudiness
+- scattered thinking
 - trouble concentrating
-- inattention
 - mental fog
+- lack of focus
+- inattention
+- difficulty focusing
+- brain fog
+- difficulty concentrating
+- brain-fog
+- neuroinflammation symptoms
+- cognitive cloudiness
+- cognitive-fog
+- cognitive impairment
+- cognitive sluggishness
+- forgetfulness
+- poor mental flexibility
+- trouble thinking clearly
+- cognitive dullness
+- feeling-foggy
+- low concentration
+- slow thinking
+- foggy head
+- trouble concentration
+- poor focus
+- poor concentration
+- feeling foggy
+- fuzzy thinking
+- cloudy thinking
+- cant-think-clearly
+- lack of concentration
+- poor memory
+- mental fatigue
+- memory problems
+- poor-focus
+- foggy mind
+- cognitive-fatigue
+- cognitive slowing
+- cognitive fog
+- cognitive fatigue
+- mental-fog
+- poor brain function
+- memory issues
+- reduced mental clarity
+- difficulty thinking
+- mental-fatigue
+- slow-thinking
+- mental fuzziness
+- cognitive decline
+- cognitive difficulties
+- can't think clearly
+- mental-cloudiness
+- cognitive dulling
+- brain-fog-poor-focus
+- cognitive-decline
+- memory loss
+- mild cognitive impairment
+- MCI
+- memory decline
+- mental confusion
+- dementia risk
+- Alzheimer's risk
+- declining cognition
+- age-related cognitive impairment
+- cognitive-impairment
 category: neurological
 severity: common
 description: Difficulty sustaining attention or mental clarity. May be improved through
@@ -29,6 +85,136 @@ sources:
 - id: vitaone-health-coaching-toolkit
   location: Mindful Breathing
   quote: Mindful, deep breathing can also help sharpen your ability to concentrate.
+- id: vitaone-skill-practice-guide
+  location: practice_guide.md, Brain Fog cluster
+- id: thurlow-microbiome-mondays
+  location: Sessions 1, 5 — gut-brain
+- id: vitaone-thyroid-cheatsheet
+  location: Biohacking Thyroid Function Cheatsheet — Thyroid Dysfunction Symptoms
+  quote: Cognitive slowing, brain fog
+- id: vitaone-adrenal-cheatsheet
+  location: How Digital Overstimulation Blunts Emotional Awareness — Mechanism 5 (p.14)
+  quote: Brain fog, fatigue, irritability, and mood instability.
+- id: vitaone-liver-detox-cheatsheet
+  location: Top Superfoods for Detoxification
+  quote: Use in metal toxicity, brain fog, fatigue.
+- id: vitaone-ldn-article
+  location: LDN potential side effects
+  quote: 'Central Nervous System: Anxiety, Drowsiness, Headache, Insomnia, Vivid Dreams,
+    Mood Change, Trouble Concentration'
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: Functional Medicine Clinical Applications
+  quote: Enhances ketone supply to brain
+- id: vitaone-gut-cheatsheet
+  location: 100 Gut Symptoms — Systemic Manifestations
+  quote: Brain fog — Leaky gut — Endotoxins cross BBB — Glutamine + NAC + probiotics
+- id: vitaone-inflammation-cheatsheet
+  location: Inflammation Cheatsheet — Page 02
+  quote: Neuro – Brain fog, mood issues, poor sleep
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamins & Minerals Your Patient's Body Might Be Crying Out For
+  quote: Neuropathy, brain fog, fatigue
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 7: Impact of Thyroid Diseases on the Whole Body'
+  quote: Brain fog, depression, neuropathy
+- id: vitaone-blood-sugar-ebook
+  location: Section 4.2.1 — Compensated Insulin Resistance (Early IR)
+  quote: Post-meal fatigue, sugar cravings, brain fog, mild weight gain around the
+    abdomen.
+- id: vitaone-thyroid-toolkit
+  location: Symptoms of Hashimoto's Hypothyroidism
+  quote: Memory Issues and Brain Fog
+- id: vitaone-inflammation-toolkit
+  location: Anti Inflammatory Diet — Benefits of Following an Anti-Inflammatory Diet
+  quote: Reduction in brain fog and improvement in mood disorders like depression
+    and anxiety.
+- id: vitaone-nutrition-toolkit
+  location: Nutrients for Mitochondrial Health
+  quote: Studies also indicate that supplementing with omega-3 fatty acids can enhance
+    cognitive function.
+- id: vitaone-liver-detox-toolkit
+  location: Detox Food Plan — Body Burden
+  quote: Medical researchers are recognizing more symptoms related to the buildup
+    of toxins, including... cognitive difficulties.
+- id: vitaone-elimination-diet-toolkit
+  location: Low Fodmap Diet Symptom Tracker — Section 2
+  quote: Brain fog / difficulty concentrating
+- id: vitaone-health-coaching-cheatsheet
+  location: How to Reset the Nervous System
+  quote: Brain fog, depression, pain sensitivity, poor focus.
+- id: coconote-fm-chronic-pain-fatigue
+  location: Hydration Section
+  quote: They are not able to think clearly because they are not hydrated.
+- id: coconote-fm-food-allergies-sensitivities
+  location: IgG Symptoms Section
+  quote: patient having a brain fog or maybe migraine or maybe inflammation will last
+    for more than one or two days
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Rebalance Section
+  quote: their brain should be healed and that's the fire program
+- id: coconote-fm-iron-deficiency-anemia
+  location: Symptoms of Iron Deficiency section
+  quote: Patients could have mental fatigue, feeling very busy, lack of concentration.
+- id: coconote-fm-omega-3-fatty-acids
+  location: DHA and Alzheimer's Disease Study Slide
+  quote: early supplementation of DHA in ApoE4 carriers, those who have a genetic
+    defect may decrease the risk of Alzheimer's disease but must be started prior
+    to symptom onset.
+- id: coconote-fm-sibo-sifo
+  location: Non-GI Symptoms of SIBO
+  quote: Non-gastrointestinal symptoms, acne, eczema, psoriasis, pains and aches,
+    brain fog, depression, fatigue, insomnia, autoimmune conditions.
+- id: coconote-fm-sex-hormones
+  location: Symptoms of Menopause Transition
+  quote: forgetfulness, headache, backache, loss of hair on the head
+- id: barbara-oneil-healing-mind
+  location: Hydration Section
+  quote: What influences that majorly is water... our brain is 85% water, whereas
+    the rest of our body is 75% water. That's why the brain feels it so keenly when
+    we're dehydrated.
+- id: barbara-oneil-ph-balance
+  location: Gluten and Hybridised Wheat Section
+  quote: The two most common symptoms are brain fog and bloating.
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Endotoxemia systemic effects discussion
+  quote: That's the driver. That's how bowel flora can be responsible for effects
+    on the brain, like depression, anxiety, cognitive impairment.
+- id: ask-expert-hormonal-health-bhrt
+  location: FSH and Anti-Aging Hormone Targets
+  quote: brain fog... low set steroid hormones drive aging and elevated FSH drives
+    aging
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXy9b_KjJT2/
+  quote: Normal Hb but fatigue, hair loss and brain fog persist
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Symptoms Discussed
+  quote: Poor mental flexibility, infertility, and developmental issues in newborns
+    - Linked to folate deficiency.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Symptoms Discussed
+  quote: Fatty liver, poor memory, low concentration, anxiety, poor detox, infertility,
+    and gallbladder issues - Linked to choline deficiency.
+- id: vitaone-fm-adrenal-hormones
+  location: Symptoms Discussed
+  quote: Poor focus, brain fog, poor concentration, and cognitive issues — Linked
+    to low adrenaline, low noradrenaline, digital overstimulation, sensory fatigue,
+    low pregnenolone, and chronic stress.
+- id: vitaone-cv-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
+  quote: these drugs are associated with increased rates of depression, fatigue, constipation,
+    erectile dysfunction, and cognitive decline.
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: Homocysteine section / MMCM section
+  quote: Neurological disorders like stroke and dementia... fatigue, in terms of confusion,
+    mental issues.
+- id: coconote-fm-vitamin-d3-k2
+  location: Vitamin D Functions
+  quote: Also helps in cancer prevention, also improves cognitive function because
+    vitamin D aids as an important vitamin which helps in the formation and production
+    of many neurotransmitters.
+- id: coconote-fm-reality-of-statins
+  location: Side Effects of Statins Section
+  quote: It may increase your risk of mild cognitive impairment and Alzheimer's disease.
 version: 3
 status: active
 updated_at: '2026-05-04'

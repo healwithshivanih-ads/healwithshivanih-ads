@@ -1,12 +1,31 @@
 slug: numbness-tingling
 display_name: Numbness and Tingling
 aliases:
+- numbness in extremities
+- tingling hands feet
 - pins and needles
+- paresthesia
 - neuropathy symptoms
 - peripheral numbness
-- tingling hands feet
-- paresthesia
-- numbness in extremities
+- tingling-numbness-neuropathy
+- burning hands or feet
+- peripheral neuropathy
+- burning sensations
+- tingling-numbness-paresthesia
+- numbness
+- burning feet
+- burning hands
+- neuropathy
+- tingling in hands and feet
+- burning sensation
+- nerve pain
+- tingling
+- diabetic neuropathy
+- peripheral-neuropathy
+- numbness in hands and feet
+- tingling feet
+- numbness and tingling
+- statin neuropathy
 category: neurological
 severity: common
 description: Abnormal sensations in extremities associated with magnesium deficiency
@@ -31,6 +50,33 @@ sources:
   location: Clinical impacts section
   quote: Certain other symptoms, burning pain, muscle weakness, seizures, convergence,
     confusion, staining, numbness.
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Symptoms Discussed
+  quote: Tingling, numbness, burning, neuropathy, and paresthesia - Linked to B1,
+    B5, B7, B12, vitamin E, and low B12 patterns that can be mistaken for depression.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Symptoms Discussed
+  quote: Tingling, numbness, burning, neuropathy, and paresthesia - Linked to B1,
+    B5, B7, B12, vitamin E, and low B12 patterns that can be mistaken for depression.
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin B1 (Thiamin)
+  quote: Deficiency can lead to poor glucose control; tingling, numbness, or burning
+    in the hands/feet; weakness of eye muscles; rapid heartbeat; loss of coordination;
+    apathy or confusion.
+- id: vitaone-health-coaching-toolkit
+  location: Nutrients for Mitochondrial Health
+  quote: Studies indicate that ALA can improve diabetic neuropathy and insulin sensitivity.
+- id: vitaone-blood-sugar-ebook
+  location: Section 4.2.4 — Type 2 Diabetes Mellitus
+  quote: Persistent fatigue, peripheral neuropathic symptoms (numbness, tingling),
+    visual changes, weight fluctuations, erectile dysfunction, frequent infections.
+- id: coconote-fm-reality-of-statins
+  location: Side Effects of Statins Section
+  quote: It may increase your risk of neuropathy.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXjjIqJjMSR/
+  quote: Every diabetic on metformin is walking around B12 and folate deficient accelerating
+    fatigue and neuropathy long before labs show it.
 version: 2
 status: active
 updated_at: '2026-05-05'

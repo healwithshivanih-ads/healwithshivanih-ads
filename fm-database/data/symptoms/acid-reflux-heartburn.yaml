@@ -1,10 +1,28 @@
 slug: acid-reflux-heartburn
 display_name: Acid Reflux / Heartburn
 aliases:
+- acid coming up
+- burning in chest
 - reflux
 - GERD symptoms
-- burning in chest
-- acid coming up
+- acid-reflux
+- GERD
+- acid indigestion
+- burning in chest after eating
+- acid regurgitation
+- burning in throat
+- acidity
+- gastric-reflux
+- acid reflux
+- regurgitation
+- gastro-oesophageal reflux
+- heartburn-reflux
+- heartburn
+- burning chest
+- acid burning
+- pyrosis
+- rebound acid reflux
+- chest burning after meals
 category: gi
 severity: concerning
 description: Burning sensation in the chest or throat caused by stomach acid rising
@@ -24,6 +42,35 @@ sources:
   location: Stomach & Acid Section
   quote: There are some people who are suffering from something called reflux heartburn
     where the acid is coming up into the esophagus.
+- id: vitaone-elimination-diet-cheatsheet
+  location: LOW FODMAP FRUITS — Practitioner Insight
+  quote: High-fructose fruits worsen fructose malabsorption with SIBO, causing bloating
+    & acid reflux.
+- id: coconote-fm-chronic-pain-fatigue
+  location: Case Study
+  quote: she has a very severe acid reflux. So this is after creating the time line...
+    she's taking like six or seven or eight and acid every single day. So if she's
+    constipated, not assuming anything, she's taking acid, that's a clear sign of
+    low stomach acid.
+- id: coconote-fm-hypochlorhydria
+  location: Clinical Presentation of Low Stomach Acid
+  quote: The undigested food tends to regurgitate out from the lower sphincter of
+    your esophagus and it goes up into the esophagus giving a feeling of reflux, giving
+    a feeling of burning sensation.
+- id: vitaone-health-coaching-toolkit
+  location: Low Fodmap Diet Symptom Tracker — Section 1
+  quote: Heartburn / reflux
+- id: vitaone-gut-cheatsheet
+  location: 100 Gut Symptoms — Reflux & Belching
+  quote: 'Heartburn — GERD — LES dysfunction — Lifestyle: elevate bed, avoid late
+    meals'
+- id: vitaone-gut-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Patients'
+  quote: It is common to experience some reflux symptoms while tapering. This is known
+    as rebound acid reflux, which is a reversible and short term effect.
+- id: vitaone-elimination-diet-toolkit
+  location: Low Fodmap Diet Symptom Tracker — Section 1
+  quote: Heartburn / reflux
 version: 1
 status: active
 updated_at: '2026-05-05'

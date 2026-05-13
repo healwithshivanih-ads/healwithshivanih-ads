@@ -2,8 +2,17 @@ slug: elevated-blood-glucose
 display_name: Elevated Blood Glucose / New-Onset Diabetes
 aliases:
 - statin-induced diabetes
-- hyperglycemia from statins
 - increased diabetes risk
+- hyperglycemia from statins
+- elevated-blood-sugar
+- hyperglycemia
+- high fasting glucose
+- blood sugar imbalance
+- unbalanced blood sugar
+- high blood sugar after meals
+- glucose spikes
+- sugar crash
+- feeling shaky after eating
 category: metabolic
 severity: concerning
 description: Statin use is associated with increased risk of new-onset type 2 diabetes,
@@ -19,6 +28,14 @@ sources:
 - id: coconote-fm-reality-of-statins
   location: Side Effects of Statins Section
   quote: Statins may increase your risk of diabetes.
+- id: vitaone-cardiometabolic-toolkit
+  location: Intermittent Fasting — Who Should not Fast or Fast with Caution?
+  quote: For those with type 2 diabetes, metabolic syndrome, or symptoms related to
+    unbalanced blood sugar, it is strongly advised to work with an experienced healthcare
+    practitioner.
+- id: vitaone-cardiometabolic-recipes
+  location: Millet-Tofu Khichdi
+  quote: ¼ cup millet (foxtail, barnyard, kodo, or little millet)
 version: 1
 status: active
 updated_at: '2026-05-05'

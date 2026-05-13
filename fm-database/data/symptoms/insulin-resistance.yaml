@@ -1,10 +1,13 @@
 slug: insulin-resistance
 display_name: Insulin Resistance
 aliases:
-- high fasting insulin
-- poor blood sugar control
 - glucose dysregulation
+- high fasting insulin
 - pre-diabetes metabolic pattern
+- poor blood sugar control
+- insulin-resistance-symptom
+- postprandial glucose spikes
+- carb cravings
 category: metabolic
 severity: concerning
 description: A state in which cells fail to respond efficiently to insulin, requiring
@@ -24,6 +27,9 @@ sources:
   quote: Studies found that repeated CWI significantly increased insulin sensitivity
     and decreased insulin concentrations, suggesting protective effects against type
     2 diabetes and insulin resistance.
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: The Science of Low-Carb Diets
+  quote: Monitor fasting insulin, HOMA-IR, & postprandial glucose.
 version: 1
 status: active
 updated_at: '2026-05-05'

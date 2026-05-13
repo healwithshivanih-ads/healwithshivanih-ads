@@ -4,6 +4,14 @@ aliases:
 - chin hair
 - new hair on chin
 - androgenic hair
+- hirsutism
+- extra facial hair
+- unwanted hair growth
+- female facial hair
+- facial hair
+- excess body hair
+- male-pattern hair growth
+- unwanted hair
 category: hormonal
 severity: common
 description: New or increased hair growth on the face (especially chin) in women,
@@ -22,6 +30,15 @@ sources:
   location: Symptoms of Menopause Transition
   quote: new hair on the chin, so facial hair also tends to happen, muscle and joint
     pains as well.
+- id: vitaone-health-coaching-toolkit
+  location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors'
+  quote: This can result in conditions such as enlargement of the prostate in men,
+    hair loss in both men and women, and extra facial hair and acne in women.
+- id: coconote-fm-estrogen-dominance
+  location: Case Study 1 — Hormone Profile
+  quote: She also complained of facial hair. Because maybe the total testosterone
+    must have binded to the sex hormone bovine and the free testosterone is a bit
+    on the higher side.
 version: 1
 status: active
 updated_at: '2026-05-05'

@@ -1,13 +1,37 @@
 slug: skin-rash
 display_name: Skin Rash / Skin Reactivity
 aliases:
-- skin rashes
-- skin issues
-- eczema-flare
-- itchy-skin
-- new-skin-rash
 - skin-eruptions
+- itchy-skin
+- eczema-flare
+- new-skin-rash
+- skin issues
+- skin rashes
 - skin manifestations
+- skin-rash-hives
+- urticaria
+- hives
+- itchy skin
+- skin flushing
+- redness
+- skin-rash-urticaria
+- skin itching
+- rash
+- skin-rashes
+- rashes
+- eczema
+- skin breakouts
+- gut-skin connection
+- skin-itching
+- pruritus
+- anal itching
+- genital itching
+- itching in private parts
+- skin-breakouts
+- skin detox reactions
+- breakouts
+- pimples
+- skin congestion
 category: skin
 severity: common
 description: 'New-onset or worsening skin reactivity — eczema, urticaria, dermatitis
@@ -33,6 +57,23 @@ linked_to_mechanisms:
 sources:
 - id: thurlow-microbiome-session-2
   location: Session 2 — Food Sensitivities & Gut Permeability
+- id: vitaone-elimination-diet-toolkit
+  location: Histamine Food Triggers — Symptoms
+  quote: 'Skin: itching, redness, flushing, hives'
+- id: vitaone-health-coaching-toolkit
+  location: Histamine Food Triggers — Symptoms of Histamine Reactions
+  quote: 'Skin: itching, redness, flushing, hives'
+- id: vitaone-gut-cheatsheet
+  location: 100 Gut Symptoms — Systemic Manifestations
+  quote: Skin rashes — Gut permeability — Gut-skin axis — Zinc + probiotics + elimination
+    diet
+- id: coconote-fm-approach-inflammation
+  location: Infection Triggers – Fungal Infection
+  quote: Itching is a classical sign of fungal infection. So you find out any itching
+    in your private parts or itching in a skin.
+- id: vitaone-liver-detox-cheatsheet
+  location: Functional Detox Phases — Clinical Tips
+  quote: Skin Breakouts / Acne — Liver + gut detox — Beets + crucifers + flaxseed.
 version: 1
 status: active
 updated_at: 2026-04-29

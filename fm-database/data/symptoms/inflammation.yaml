@@ -1,11 +1,19 @@
 slug: inflammation
 display_name: Inflammation
 aliases:
-- systemic inflammation
-- inflammatory state
-- inflamed body
-- body inflammation
 - chronic inflammation
+- inflammatory state
+- systemic inflammation
+- body inflammation
+- inflamed body
+- chronic-inflammation
+- low-grade inflammation
+- systemic inflammation symptoms
+- systemic-inflammation
+- inflammatory burden
+- whole-body inflammation
+- widespread inflammation
+- inflammatory pattern
 category: metabolic
 severity: concerning
 description: A chronic low-grade inflammatory state proposed to arise from an overly
@@ -37,6 +45,22 @@ sources:
 - id: barbara-oneil-fresh-cheeses-ph
   location: Carbohydrates and Acid Load
   quote: Potatoes aren't acid, but if you have inflammation in your body, it can be.
+- id: vitaone-cardiometabolic-toolkit
+  location: Intermittent Fasting — Improves/Decreases Table
+  quote: 'Fasting Decreases: Inflammation.'
+- id: vitaone-health-coaching-toolkit
+  location: Intermittent Fasting — summary table
+  quote: 'Decreases: Inflammation'
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Therapeutic Options Introduction
+  quote: whenever you see this kind of we should consider probiotics... use appropriate
+    remote protocol over there and what are the therapeutic options when you see this
+    kind of chronic systemic inflammation
+- id: coconote-fm-intestinal-permeability-anish
+  location: Consequences of Intestinal Permeability
+  quote: That leads to systemic inflammation and your toxic load will be increased.
+    And if your toxic load is increased, then eventually you start developing inflammation
+    in the system and that leads to systemic disease.
 version: 3
 status: active
 updated_at: '2026-05-05'

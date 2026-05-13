@@ -1,11 +1,20 @@
 slug: eczema-psoriasis-skin
 display_name: Eczema / Psoriasis / Skin Inflammation
 aliases:
-- eczema
 - psoriasis
-- atopic dermatitis
-- inflamed skin
 - itchy skin
+- inflamed skin
+- atopic dermatitis
+- eczema
+- skin-flares
+- skin issues
+- rashes
+- skin inflammation
+- skin plaques
+- skin-manifestations-sibo
+- skin rash
+- urticaria
+- hives
 category: skin
 severity: common
 description: Skin inflammatory conditions such as eczema and psoriasis are linked
@@ -23,6 +32,13 @@ sources:
   quote: allergies, asthma, eczema, certain autoimmune diseases like rheumatoid arthritis,
     systemic lupus erythematosus, psoriasis...these conditions need treatment, a separate
     supplement for omega-3 to see improvements.
+- id: vitaone-inflammation-cheatsheet
+  location: Inflammation Cheatsheet — Page 02
+  quote: Skin issues (eczema, acne)
+- id: coconote-fm-sibo-sifo
+  location: Non-GI Symptoms of SIBO
+  quote: Non-gastrointestinal symptoms, acne, eczema, psoriasis, pains and aches,
+    brain fog, depression, fatigue, insomnia, autoimmune conditions.
 version: 1
 status: active
 updated_at: '2026-05-05'

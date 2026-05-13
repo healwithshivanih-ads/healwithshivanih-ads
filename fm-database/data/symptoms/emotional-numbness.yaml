@@ -1,10 +1,16 @@
 slug: emotional-numbness
 display_name: Emotional Numbness / Flatness
 aliases:
+- apathy
+- anhedonia
 - emotional blunting
 - inability to feel joy
-- anhedonia
-- apathy
+- emotional-numbness-poor-body-awareness
+- blunted emotions
+- disconnected from body
+- poor interoception
+- somatic disconnection
+- can't read hunger cues
 category: mood
 severity: common
 description: Reduced capacity to experience or express emotions, often linked to dopaminergic
@@ -22,6 +28,11 @@ sources:
 - id: vitaone-adrenal-cheatsheet
   location: Clinical Patterns Seen in Practice (p.15)
   quote: 'Mental–Emotional: Low motivation, inability to feel joy or sadness, "numbness"'
+- id: vitaone-fm-adrenal-hormones
+  location: Symptoms Discussed
+  quote: Emotional numbness, poor decision-making, poor body-signal awareness, poor
+    compliance, and somatic disconnection — Linked to digital overstimulation and
+    blunted interoception.
 version: 1
 status: active
 updated_at: '2026-05-02'
