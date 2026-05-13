@@ -487,11 +487,19 @@ export default async function ClientV2Page({
     engagement,
   });
 
-  // Last contact date — pick the newest of: any saved session, the
-  // client's intake date, or the YAML's created_at. A freshly-created
-  // client whose discovery info was entered into the new-client form
-  // would otherwise read "Never" because no session YAML had been
-  // written yet — the intake itself IS a touch point.
+  // Last contact date — the date of the most recent ACTUAL touch point
+  // with the client, as entered by the coach. Priority cascade (not max):
+  //   1. The newest session.date — coach types this on save (discovery /
+  //      intake / check-in / quick note).
+  //   2. Fall back to client.intake_date when no sessions exist yet but
+  //      an intake date was recorded on the client record itself.
+  //   3. Otherwise show "Never" — don't fall back to created_at, which
+  //      is just the system clock when the YAML was first written and
+  //      doesn't represent an actual contact.
+  //
+  // Bug fixed 2026-05-13: previously this took the MAX across all three,
+  // so Sudarshan's 2026-05-05 discovery call lost to his 2026-05-13
+  // created_at and rendered as "13 May 2026" instead of "5 May 2026".
   const sortedSessions = [...sessions].sort((a, b) =>
     (a.date ?? "").localeCompare(b.date ?? ""),
   );
@@ -499,11 +507,12 @@ export default async function ClientV2Page({
     | string
     | undefined;
   const _intakeDate = (client as unknown as { intake_date?: string }).intake_date;
-  const _createdAt = (client as unknown as { created_at?: string }).created_at;
-  const lastSessionDate =
-    [newestSession, _intakeDate, _createdAt?.slice(0, 10)]
-      .filter((d): d is string => typeof d === "string" && d.length > 0)
-      .sort((a, b) => b.localeCompare(a))[0];
+  const lastSessionDate: string | undefined =
+    newestSession?.trim()
+      ? newestSession
+      : _intakeDate?.trim()
+        ? _intakeDate
+        : undefined;
   const age = derivedAge(client);
 
   // Pinned + more contact rows
