@@ -1,0 +1,29 @@
+slug: vaginal-estrogen-hrt-proven-for-vaginal-symptoms
+statement: Vaginal application of oestrogen (HRT) is a proven treatment for vaginal
+  symptoms including itching in menopausal women.
+evidence_tier: strong
+rationale: Local vaginal oestrogen is well-supported by multiple RCTs and clinical
+  guidelines for the treatment of genitourinary syndrome of menopause (GSM), including
+  vaginal dryness, itching, and atrophy. This is outside coaching scope and must be
+  managed by a clinician.
+coaching_translation: If your client's vaginal symptoms are significant or not responding
+  to lifestyle/supplement approaches, this is a strong prompt to refer to their GP
+  or gynaecologist — vaginal oestrogen is a well-evidenced medical option.
+out_of_scope_notes: Prescribing and managing HRT/vaginal oestrogen is strictly clinician
+  scope. Coaches should refer, not recommend.
+linked_to_topics:
+- vaginal-microbiome-dysbiosis
+- perimenopause
+caveats:
+- Prescribing is outside coaching scope. Always refer to a qualified clinician for
+  HRT discussions.
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coach-shivani
+  location: Coach Observation
+  quote: HRT is proven - vaginal application of estrogen.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

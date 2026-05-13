@@ -1,0 +1,34 @@
+slug: vaginal-microbiome-dysbiosis
+display_name: Vaginal Microbiome Dysbiosis in Perimenopause/Menopause
+aliases:
+- vaginal dysbiosis
+- vaginal microbiome imbalance
+summary: Disruption of the vaginal microbiome, particularly loss of Lactobacillus
+  dominance, is a clinically recognised contributor to vaginal symptoms such as itching
+  in perimenopausal and menopausal women. Declining oestrogen reduces glycogen availability,
+  which supports Lactobacillus populations and maintains a protective acidic pH.
+common_symptoms:
+- vaginal-itching
+related_topics:
+- perimenopause
+- vaginal-atrophy
+key_mechanisms:
+- vaginal-microbiome-dysbiosis-mechanism
+- estrogen-decline
+coaching_scope_notes: Coach can support awareness of vaginal microbiome health and
+  lifestyle/supplement options such as probiotics and Vitamin E. Refer to clinician
+  for HRT, prescription treatments, or persistent/severe symptoms.
+clinician_scope_notes: Vaginal estrogen and HRT are clinician-prescribed interventions.
+  Persistent or worsening symptoms warrant gynaecological evaluation to rule out infection,
+  atrophy, or other pathology.
+evidence_tier: plausible_emerging
+red_flags: []
+sources:
+- id: coach-shivani
+  location: Coach Observation
+  quote: In cases of vaginal itching in perimenopause/menopausal aged women it could
+    be because of vaginal microbiome.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

@@ -1,0 +1,27 @@
+slug: very-high-serum-b12-unexplained
+display_name: Very High Serum B12 (Unexplained)
+aliases:
+- high B12 on blood test
+- elevated B12 labs
+- B12 above range
+category: metabolic
+severity: concerning
+description: Serum B12 significantly above the reference range, which may indicate
+  poor cellular utilisation (as in MTHFR-related issues), excess supplementation,
+  or serious medical causes such as liver disease or haematological malignancy.
+when_to_refer: Always refer to a clinician. Very high B12 not explained by supplementation
+  may indicate serious underlying pathology and requires medical investigation.
+linked_to_topics:
+- mthfr-variants
+linked_to_mechanisms:
+- impaired-folate-to-5-mthf-conversion
+sources:
+- id: coach-shivani
+  location: Coach Observation
+  quote: If B12 is very high on labs check functional markers like homocysteine and
+    methylmalonic acid, and review supplements and medical causes. It could indicate
+    MTHFR
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

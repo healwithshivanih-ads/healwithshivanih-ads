@@ -1,0 +1,29 @@
+slug: vaginal-microbiome-dysbiosis-vaginal-itching
+statement: Vaginal itching in perimenopausal and menopausal women may be caused by
+  vaginal microbiome dysbiosis.
+evidence_tier: plausible_emerging
+rationale: Declining oestrogen during perimenopause and menopause reduces vaginal
+  glycogen, lowering Lactobacillus populations and raising pH, which can lead to dysbiosis
+  and associated symptoms including itching. This is clinically recognised though
+  RCT evidence for the dysbiosis-itch pathway specifically is limited.
+coaching_translation: If your client is experiencing vaginal itching around perimenopause
+  or menopause, consider whether vaginal microbiome imbalance may be a contributing
+  factor — not just dryness or atrophy.
+linked_to_topics:
+- vaginal-microbiome-dysbiosis
+- perimenopause
+caveats:
+- Source is expert clinical observation, not primary literature. Refer to clinician
+  to rule out infection, atrophic vaginitis, or other gynaecological causes.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coach-shivani
+  location: Coach Observation
+  quote: In cases of vaginal itching in perimenopause/menopausal aged women it could
+    be because of vaginal microbiome.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

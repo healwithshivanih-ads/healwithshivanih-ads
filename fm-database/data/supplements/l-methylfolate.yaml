@@ -7,11 +7,11 @@ forms_available:
 typical_dose_range:
   capsule:
     min: 400
-    max: 15000
+    max: 1000
     unit: mcg
   tablet:
     min: 400
-    max: 15000
+    max: 1000
     unit: mcg
 timing_options:
 - with_breakfast
@@ -22,20 +22,24 @@ linked_to_topics:
 - nutrient-deficiency-depression
 - mthfr-polymorphisms
 - methylation-cycle
+- mthfr-variants
 linked_to_claims:
 - avoid-synthetic-folic-acid-prefer-methylfolate
 - high-folate-masks-b12-deficiency
 - methylfolate-bypasses-mthfr-bottleneck
 - high-dose-methylfolate-can-cause-side-effects
 - methylfolate-supports-b12-dependent-homocysteine-remethylation
-notes_for_coach: Discuss with clients that this is the active, pre-converted form
-  of folate that bypasses the MTHFR conversion step. Emphasize starting low — some
-  individuals experience anxiety, irritability, or insomnia at higher doses. Dose
-  selection and escalation should be clinician-guided.
-notes_for_client: L-methylfolate is a form of folate your body can use directly, without
-  needing the MTHFR enzyme to convert it. Some people start with a lower dose and
-  increase slowly because higher amounts can cause side effects like anxiety or sleep
-  issues in sensitive individuals.
+- mthfr-impairs-folate-conversion-not-absorption
+- active-folate-forms-preferred-in-mthfr
+- avoid-high-dose-methylfolate-if-methyl-sensitive
+notes_for_coach: Start low (e.g. 400 mcg) and titrate slowly. Some clients are sensitive
+  to methyl donors and may experience anxiety, irritability, or insomnia with higher
+  doses. Always pair folate decisions with B12 status assessment. Prefer active forms
+  (5-MTHF / L-methylfolate) over folic acid for MTHFR clients. Dosing decisions should
+  be confirmed with a clinician.
+notes_for_client: This is the active, ready-to-use form of folate — your body doesn't
+  need to convert it, which makes it more suitable if you have an MTHFR variant. Start
+  with a low dose and increase only under practitioner guidance.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -45,7 +49,11 @@ sources:
 - id: Notebook LM
   location: Supplement Forms Mentioned
   quote: L-methylfolate or 5-MTHF instead of relying only on folic acid conversion.
-version: 2
+- id: coach-shivani
+  location: Coach Observation
+  quote: use active folate such as low-dose L-methylfolate for a short while, pair
+    folate decisions with B12 status
+version: 3
 status: active
 updated_at: '2026-05-13'
 updated_by: Shivani

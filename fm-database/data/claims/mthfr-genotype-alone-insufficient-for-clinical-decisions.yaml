@@ -1,0 +1,32 @@
+slug: mthfr-genotype-alone-insufficient-for-clinical-decisions
+statement: Routine MTHFR genetic testing is often not clinically useful in isolation;
+  homocysteine, MMA, B12, folate status, symptoms, blood pressure, and clinical context
+  matter more than genotype alone.
+evidence_tier: plausible_emerging
+rationale: Multiple clinical guidelines and reviews have concluded that isolated MTHFR
+  genotyping has limited utility without functional marker assessment. This aligns
+  with ACMG and other bodies that discourage routine population MTHFR testing. The
+  coach's observation is consistent with emerging clinical consensus.
+coaching_translation: 'Knowing you have an MTHFR variant is just a starting point
+  — it doesn''t tell you whether it''s actually causing a problem for you. What matters
+  more is how your body is actually functioning: your homocysteine, your B12 and folate
+  levels, your symptoms, and your blood pressure.'
+out_of_scope_notes: Ordering or interpreting MTHFR genetic tests and functional labs
+  is outside coaching scope.
+caveats:
+- Source is expert/clinical observation. Recommendation aligns with broader FM and
+  genetics consensus but verify with clinician.
+linked_to_topics:
+- mthfr-variants
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coach-shivani
+  location: Coach Observation
+  quote: Routine MTHFR genetic testing is often not useful by itself; homocysteine,
+    MMA, B12, folate status, symptoms, blood pressure, and clinical context matter
+    more.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

@@ -1,5 +1,5 @@
 slug: vaginal-itching
-display_name: Vaginal itching / irritation
+display_name: Vaginal Itching
 aliases:
 - vulval itching
 - vulvar itching
@@ -7,13 +7,26 @@ aliases:
 - vulvovaginal itching
 - vulval discomfort
 - private parts itching
-category: womens_health
-severity: common
-description: Persistent or intermittent itching in the vulvovaginal area. Can reflect
-  oestrogen decline (atrophic vaginitis), candidiasis, microbiome disruption, allergy
-  to products, or skin conditions. Important to differentiate aetiology before
-  treating.
+- vaginal itch
+- intimate itching
+category: urinary
+severity: concerning
+description: Itching or irritation of the vaginal or vulvar area, commonly reported
+  by perimenopausal and menopausal women. May be related to vaginal microbiome dysbiosis,
+  declining oestrogen, or vaginal atrophy.
 status: active
-version: 1
-updated_at: '2026-05-09'
-updated_by: shivani
+version: 2
+updated_at: '2026-05-13'
+updated_by: Shivani
+when_to_refer: Refer to clinician if symptoms are severe, persistent, associated with
+  discharge, odour, pain, or if infection or atrophic vaginitis is suspected.
+linked_to_topics:
+- vaginal-microbiome-dysbiosis
+- perimenopause
+linked_to_mechanisms:
+- estrogen-decline
+sources:
+- id: coach-shivani
+  location: Coach Observation
+  quote: In cases of vaginal itching in perimenopause/menopausal aged women it could
+    be because of vaginal microbiome.

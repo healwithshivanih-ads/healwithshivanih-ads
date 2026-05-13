@@ -10,14 +10,14 @@ aliases:
 - raised-homocysteine
 - elevated homocysteine
 - homocysteine elevation
+- hyperhomocysteinaemia
 category: cardiovascular
 severity: concerning
-description: Elevated plasma homocysteine resulting from impaired remethylation, often
-  a downstream marker of MTHFR dysfunction, low folate, low B12, low B6, or riboflavin
-  insufficiency. Associated with cardiovascular risk and serves as a functional marker
-  of methylation pathway adequacy.
-when_to_refer: Refer to clinician if homocysteine is persistently elevated, especially
-  with cardiovascular risk factors, neurological symptoms, or pregnancy.
+description: Above-normal serum homocysteine, reflecting impaired methylation and/or
+  B12/folate insufficiency. Associated with cardiovascular, neurological, and pregnancy
+  risks.
+when_to_refer: Any confirmed elevation should be assessed and managed by a clinician
+  to rule out serious underlying causes and determine treatment.
 linked_to_topics:
 - methylation-mthfr
 - homocysteine-and-methylation
@@ -31,6 +31,7 @@ linked_to_topics:
 - vitamin-b12
 - mthfr-polymorphisms
 - methylation-cycle
+- mthfr-variants
 linked_to_mechanisms:
 - homocysteine-elevation
 - impaired-methylation
@@ -42,6 +43,8 @@ linked_to_mechanisms:
 - mthfr-enzyme-dysfunction
 - homocysteine-remethylation
 - methyl-trap
+- hyperhomocysteinemia
+- impaired-folate-to-5-mthf-conversion
 sources:
 - id: vitaone-liver-detox-cheatsheet
   location: Methylation & MTHFR Cheatsheet — Who Should You Test
@@ -70,7 +73,11 @@ sources:
   location: Practical Testing Markers Mentioned
   quote: 'Homocysteine: may rise when folate, B12, B6, riboflavin, or methylation
     pathways are under-supported.'
-version: 5
+- id: coach-shivani
+  location: Coach Observation
+  quote: they can reduce conversion of folate into active 5-MTHF, which may impair
+    B12 function and raise homocysteine
+version: 6
 status: active
 updated_at: '2026-05-13'
 updated_by: Shivani

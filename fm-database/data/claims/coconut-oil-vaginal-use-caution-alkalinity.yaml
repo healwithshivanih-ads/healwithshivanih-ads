@@ -1,0 +1,29 @@
+slug: coconut-oil-vaginal-use-caution-alkalinity
+statement: Coconut oil used vaginally should be approached with caution as it may
+  raise vaginal pH and disrupt the vaginal microbiome.
+evidence_tier: fm_specific_thin
+rationale: The vaginal environment relies on an acidic pH (3.8–4.5) maintained by
+  Lactobacillus-produced lactic acid. Oils that are alkaline or alter pH may reduce
+  the protective acidity, potentially promoting dysbiosis. Specific evidence for coconut
+  oil's effect on vaginal pH is limited but the mechanism is biologically plausible.
+coaching_translation: If a client is using coconut oil vaginally for dryness or irritation,
+  flag that it could actually disrupt the vaginal microbiome by altering its natural
+  acidity — caution is warranted.
+linked_to_topics:
+- vaginal-microbiome-dysbiosis
+linked_to_supplements:
+- coconut-oil-vaginal
+caveats:
+- Source is expert clinical observation. Specific RCT evidence for coconut oil's effect
+  on vaginal pH is not cited.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coach-shivani
+  location: Coach Observation
+  quote: Coconut oil to be used with caution as can affect the alkalinity of the vaginal
+    microbiome.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

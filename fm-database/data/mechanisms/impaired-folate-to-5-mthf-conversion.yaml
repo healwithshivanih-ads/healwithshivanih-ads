@@ -1,0 +1,32 @@
+slug: impaired-folate-to-5-mthf-conversion
+display_name: Impaired Folate → 5-MTHF Conversion
+aliases:
+- reduced MTHFR enzyme activity
+- folate conversion block
+- methylfolate deficiency
+category: metabolic
+summary: MTHFR enzyme variants reduce the efficiency of converting dietary folate
+  (and folic acid) into the active form 5-methyltetrahydrofolate (5-MTHF), limiting
+  the methyl groups available for the methylation cycle, impairing B12-dependent reactions,
+  and potentially raising homocysteine.
+upstream_drivers:
+- mthfr-variants
+- riboflavin-deficiency
+downstream_effects:
+- hyperhomocysteinemia
+- impaired-dna-methylation
+- reduced-b12-functional-activity
+related_mechanisms:
+- hyperhomocysteinemia
+linked_to_topics:
+- mthfr-variants
+evidence_tier: plausible_emerging
+sources:
+- id: coach-shivani
+  location: Coach Observation
+  quote: they can reduce conversion of folate into active 5-MTHF, which may impair
+    B12 function and raise homocysteine
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

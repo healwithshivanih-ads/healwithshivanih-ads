@@ -1,0 +1,33 @@
+slug: riboflavin-stabilises-mthfr-enzyme-c677t
+statement: Riboflavin (B2) helps stabilise the MTHFR enzyme and is especially relevant
+  for C677T homozygotes; low-dose riboflavin has evidence for lowering blood pressure
+  in 677TT individuals.
+evidence_tier: plausible_emerging
+rationale: The MTHFR enzyme is FAD-dependent; riboflavin (as FAD) is its cofactor.
+  Studies by McNulty and colleagues have shown that riboflavin supplementation lowers
+  blood pressure specifically in C677T homozygotes. This is one of the better-evidenced,
+  more specific MTHFR-riboflavin links in the literature.
+coaching_translation: 'If you have the C677T MTHFR variant (homozygous — two copies),
+  riboflavin (vitamin B2) isn''t just a nice-to-have: it helps keep the MTHFR enzyme
+  working as well as it can, and there''s research showing it may help lower blood
+  pressure in people with this specific variant.'
+caveats:
+- Evidence is primarily from McNulty et al. studies in hypertensive populations; generalisability
+  to all C677T homozygotes is uncertain.
+- Source document is clinical observation — verify specific dosing with a clinician.
+linked_to_topics:
+- mthfr-variants
+linked_to_supplements:
+- riboflavin-b2
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coach-shivani
+  location: Coach Observation
+  quote: Riboflavin/B2 is especially relevant for C677T homozygotes because it helps
+    stabilize the MTHFR enzyme, and low-dose riboflavin has evidence for lowering
+    blood pressure in 677TT individuals.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

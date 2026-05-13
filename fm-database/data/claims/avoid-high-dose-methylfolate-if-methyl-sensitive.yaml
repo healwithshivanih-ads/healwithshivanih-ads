@@ -1,0 +1,28 @@
+slug: avoid-high-dose-methylfolate-if-methyl-sensitive
+statement: Individuals sensitive to methyl donors should avoid jumping to high-dose
+  methylfolate, as it may worsen symptoms.
+evidence_tier: fm_specific_thin
+rationale: 'Methyl donor sensitivity is a recognised clinical phenomenon in FM practice:
+  excess methyl groups can deplete SAM-e, disrupt neurotransmitter balance, or cause
+  anxiety, irritability, and insomnia in susceptible individuals. Peer-reviewed evidence
+  is thin but the mechanism is biologically plausible.'
+coaching_translation: More isn't always better with methylfolate. Some people feel
+  worse — anxious, irritable, or wired — if they take too much. Start with a very
+  low dose and build slowly, or check with your practitioner before increasing.
+caveats:
+- Source is clinical observation. Methyl sensitivity thresholds are individual and
+  not reliably predictable.
+linked_to_topics:
+- mthfr-variants
+linked_to_supplements:
+- l-methylfolate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coach-shivani
+  location: Coach Observation
+  quote: avoid jumping to high-dose methylfolate if you are sensitive to methyl donors
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

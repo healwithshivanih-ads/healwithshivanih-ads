@@ -1,0 +1,20 @@
+slug: comprehensive-stool-analysis
+display_name: Comprehensive Stool Analysis
+full_name: Antinuclear Antibody
+aliases: []
+units: titer
+sample_type: blood
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-mind-map-tool
+  location: mindmap-mining 2026-05-13 (haiku classify)
+  quote: ''
+evidence_tier: fm_specific_thin
+notes_for_coach: Stub created 2026-05-13 from backlog via Haiku classifier. Flesh
+  out conventional + FM-optimal ranges, interpretation, when_to_order before clinical
+  use.
+version: 1
+status: active
+updated_at: '2026-05-14'
+updated_by: shivani

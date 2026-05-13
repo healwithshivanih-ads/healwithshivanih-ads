@@ -1,0 +1,34 @@
+slug: mthfr-impairs-folate-conversion-not-absorption
+statement: MTHFR variants do not typically block B12 or folate absorption but reduce
+  conversion of folate to active 5-MTHF, which may impair B12 function and raise homocysteine.
+evidence_tier: plausible_emerging
+rationale: 'Well-established biochemistry: the MTHFR enzyme catalyses the conversion
+  of 5,10-methylenetetrahydrofolate to 5-MTHF; variants reduce enzyme efficiency but
+  not intestinal absorption. Homocysteine elevation as a downstream consequence is
+  well-documented. Source is expert consensus/clinical observation.'
+coaching_translation: Having an MTHFR variant doesn't mean your body can't absorb
+  B12 or folate from food or supplements — it means your body may struggle to convert
+  folate into the active form it needs. This is why active forms like methylfolate
+  and methylcobalamin are often preferred.
+caveats:
+- Source is clinical observation, not primary literature. Tier reflects biological
+  plausibility and FM consensus.
+- Individual expression of MTHFR variants varies widely; heterozygotes may have minimal
+  functional impact.
+linked_to_topics:
+- mthfr-variants
+linked_to_supplements:
+- l-methylfolate
+- methylcobalamin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coach-shivani
+  location: Coach Observation
+  quote: MTHFR variants usually do not block B12 or folate absorption; they can reduce
+    conversion of folate into active 5-MTHF, which may impair B12 function and raise
+    homocysteine.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

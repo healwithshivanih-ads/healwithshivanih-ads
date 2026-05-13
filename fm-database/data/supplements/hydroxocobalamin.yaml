@@ -1,18 +1,23 @@
 slug: hydroxocobalamin
-display_name: Hydroxocobalamin (Hydroxo B12)
+display_name: Hydroxocobalamin (B12)
 category: vitamin
 forms_available:
 - capsule
 - tablet
 - liquid
+- lozenge
 typical_dose_range:
   capsule:
     min: 500
-    max: 5000
+    max: 1000
     unit: mcg
   liquid:
     min: 500
     max: 5000
+    unit: mcg
+  lozenge:
+    min: 500
+    max: 1000
     unit: mcg
 timing_options:
 - morning
@@ -21,15 +26,16 @@ take_with_food: optional
 linked_to_topics:
 - mthfr-polymorphisms
 - methylation-cycle
+- mthfr-variants
 linked_to_claims:
 - serum-b12-may-not-reflect-cellular-utilization
 - methylcobalamin-preferred-over-cyanocobalamin-in-mthfr-protocols
-notes_for_coach: Sometimes preferred for individuals sensitive to methyl donors, as
-  it is less directly methyl-donating than methylcobalamin. Form selection should
-  be individualised and ideally clinician-guided.
-notes_for_client: Hydroxocobalamin is another active form of B12 that some people
-  tolerate better than methylcobalamin, especially if they are sensitive to methyl
-  donors. Your practitioner can help determine which form is best for you.
+- active-folate-forms-preferred-in-mthfr
+notes_for_coach: An alternative to methylcobalamin; preferred for clients who are
+  sensitive to methyl donors, as hydroxocobalamin is a non-methyl B12 form that the
+  body can convert as needed. Avoids the methyl-donor loading effect of methylcobalamin.
+notes_for_client: Hydroxocobalamin is a form of B12 that's gentle on the system —
+  it's a good option if you find you're sensitive to methyl donors or react to methylcobalamin.
 evidence_tier: fm_specific_thin
 linked_to_mechanisms: []
 sources:
@@ -37,7 +43,10 @@ sources:
   location: Supplement Forms Mentioned
   quote: Methylcobalamin or hydroxocobalamin instead of cyanocobalamin in some individualized
     protocols.
-version: 1
+- id: coach-shivani
+  location: Coach Observation
+  quote: consider methylcobalamin or hydroxocobalamin rather than cyanocobalamin
+version: 2
 status: active
 updated_at: '2026-05-13'
 updated_by: Shivani

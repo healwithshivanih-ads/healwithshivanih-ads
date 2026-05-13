@@ -1,0 +1,36 @@
+slug: active-folate-forms-preferred-in-mthfr
+statement: In individuals with suspected MTHFR-related methylation issues, using active
+  folate (low-dose L-methylfolate) paired with B12 status assessment is more actionable
+  than standard folic acid supplementation.
+evidence_tier: fm_specific_thin
+rationale: Because MTHFR variants reduce conversion of folic acid to 5-MTHF, supplementing
+  directly with the active form bypasses this conversion step. This is mechanistically
+  sound and widely used in FM practice; large RCT evidence specific to MTHFR supplementation
+  outcomes is limited.
+coaching_translation: If MTHFR is a concern, choosing a folate supplement that's already
+  in the active form (look for 'L-methylfolate' or '5-MTHF' on the label) means your
+  body doesn't have to do the conversion step that MTHFR makes difficult. Start low
+  and pair with your B12 status.
+caveats:
+- Source is clinical observation. Dose selection and duration should be confirmed
+  with a clinician.
+- Some individuals are sensitive to methyl donors — high-dose methylfolate should
+  be avoided without clinical guidance.
+linked_to_topics:
+- mthfr-variants
+linked_to_supplements:
+- l-methylfolate
+- methylcobalamin
+- hydroxocobalamin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coach-shivani
+  location: Coach Observation
+  quote: use active folate such as low-dose L-methylfolate for a short while, pair
+    folate decisions with B12 status, consider methylcobalamin or hydroxocobalamin
+    rather than cyanocobalamin
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

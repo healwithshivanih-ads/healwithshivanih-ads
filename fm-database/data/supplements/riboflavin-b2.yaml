@@ -1,28 +1,39 @@
 slug: riboflavin-b2
-display_name: Vitamin B2 (Riboflavin)
+display_name: Riboflavin (Vitamin B2)
 category: vitamin
 forms_available:
 - capsule
 - tablet
 typical_dose_range:
   capsule:
-    min: 2
+    min: 10
+    max: 400
+    unit: mg
+  tablet:
+    min: 10
     max: 400
     unit: mg
 timing_options:
 - with_breakfast
 - with_lunch
+- morning
 take_with_food: required
 linked_to_topics:
 - vitamin-b-complex-deficiency
+- mthfr-variants
 linked_to_claims:
 - riboflavin-fat-metabolism-signal
 - riboflavin-400mg-migraine-reduction
-notes_for_coach: 'Preferred form: Riboflavin-5''-phosphate (active coenzyme form).
-  Typical maintenance 2–5 mg/day; 200–400 mg/day for migraine (clinician-supervised).
-  Urine turns bright yellow — reassure clients this is normal.'
-notes_for_client: This B vitamin is best taken with food. Your urine may turn bright
-  yellow — that's normal and harmless.
+- riboflavin-stabilises-mthfr-enzyme-c677t
+notes_for_coach: Particularly relevant for C677T homozygotes (677TT genotype). Riboflavin
+  is the FAD cofactor for the MTHFR enzyme; supplementation may help stabilise enzyme
+  activity and has evidence for blood pressure reduction in 677TT individuals. Exact
+  dose should be confirmed with a clinician — 'low-dose' in the literature typically
+  refers to 1.6–2 mg/day riboflavin, though clinical protocols vary. Best absorbed
+  with food.
+notes_for_client: Riboflavin (vitamin B2) is an important supporting nutrient for
+  the MTHFR enzyme — especially if you have two copies of the C677T variant. It may
+  also help support healthy blood pressure.
 evidence_tier: strong
 linked_to_mechanisms: []
 sources:
@@ -30,7 +41,12 @@ sources:
   location: Vitamin B2 (Riboflavin)
   quote: Riboflavin-5'-phosphate is the preferred active supplement form; taken with
     meals.
-version: 1
+- id: coach-shivani
+  location: Coach Observation
+  quote: Riboflavin/B2 is especially relevant for C677T homozygotes because it helps
+    stabilize the MTHFR enzyme, and low-dose riboflavin has evidence for lowering
+    blood pressure in 677TT individuals.
+version: 2
 status: active
-updated_at: '2026-05-02'
-updated_by: shivani
+updated_at: '2026-05-13'
+updated_by: Shivani

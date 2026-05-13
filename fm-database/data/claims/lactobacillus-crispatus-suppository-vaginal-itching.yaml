@@ -1,0 +1,29 @@
+slug: lactobacillus-crispatus-suppository-vaginal-itching
+statement: Lactobacillus crispatus suppositories may help relieve vaginal itching
+  associated with vaginal microbiome dysbiosis in perimenopausal and menopausal women.
+evidence_tier: plausible_emerging
+rationale: L. crispatus is the dominant species in a healthy vaginal microbiome and
+  is associated with low pH and protection against dysbiosis. Vaginal probiotic suppositories
+  containing L. crispatus have early clinical evidence for restoring vaginal flora,
+  though large RCTs are limited.
+coaching_translation: Lactobacillus crispatus vaginal suppositories are a targeted
+  probiotic option that may help restore vaginal microbiome balance and ease itching.
+  Recommend client discusses with their clinician or pharmacist.
+linked_to_topics:
+- vaginal-microbiome-dysbiosis
+linked_to_supplements:
+- lactobacillus-crispatus-suppository
+caveats:
+- Source is expert clinical observation. Product selection and use should be guided
+  by a clinician or pharmacist.
+- Not a substitute for evaluation of infection or atrophy.
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coach-shivani
+  location: Coach Observation
+  quote: Lactobacillus crispatus suppositories help.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

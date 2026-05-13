@@ -1,0 +1,35 @@
+slug: high-serum-b12-check-functional-markers-mthfr
+statement: Very high serum B12 on labs warrants investigation with functional markers
+  (homocysteine, methylmalonic acid), supplement review, and consideration of MTHFR-related
+  impaired utilisation.
+evidence_tier: fm_specific_thin
+rationale: High serum B12 can reflect poor cellular uptake or utilisation rather than
+  true sufficiency, especially in the context of MTHFR variants. Functional markers
+  like MMA and homocysteine better reflect intracellular B12 status. This is a clinical
+  observation from a FM coach; peer-reviewed evidence is limited but biologically
+  coherent.
+coaching_translation: A high B12 result on a blood test doesn't always mean your body
+  is using it properly. If B12 is very elevated, it's worth checking homocysteine
+  and methylmalonic acid — and flagging it to your doctor — to understand whether
+  the B12 is actually working at the cellular level.
+out_of_scope_notes: Lab interpretation (homocysteine, MMA, B12 levels) and identifying
+  medical causes of high B12 (e.g. liver disease, haematological malignancy) are outside
+  coaching scope and must be referred to a clinician.
+caveats:
+- Source is expert/clinical observation only.
+- Very high B12 can have serious medical causes unrelated to MTHFR — clinician referral
+  is essential.
+linked_to_topics:
+- mthfr-variants
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coach-shivani
+  location: Coach Observation
+  quote: If B12 is very high on labs check functional markers like homocysteine and
+    methylmalonic acid, and review supplements and medical causes. It could indicate
+    MTHFR
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani
