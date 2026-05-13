@@ -1,0 +1,683 @@
+slug: migraine
+display_name: Migraine & Recurrent Headaches
+description: 'Functional medicine approach to migraine and recurrent headaches. Maps
+  triggers and root drivers — mitochondrial dysfunction, magnesium deficiency, blood
+  sugar instability, estrogen withdrawal, histamine excess, food triggers, gut–brain
+  axis disruption, dehydration, and sleep/cervical contributors — back to a structured
+  trigger map + targeted nutrient repletion + lifestyle scaffolding. India context:
+  late dinners, dehydration in hot climate, common food triggers (aged cheese, MSG-heavy
+  street food, chocolate, red wine, leftovers high in histamine), perimenopausal hormonal
+  swings.
+
+  '
+aliases:
+- migraines
+- recurrent-headaches
+- chronic-headache
+related_topics:
+- chronic-inflammation
+- mitochondrial-health-nutrients
+- magnesium-neurological-mental-health
+- blood-sugar-dysfunction
+- food-sensitivity
+- histamine-intolerance
+- gut-brain-axis
+- perimenopause
+- hydration-and-brain-function
+- sleep
+- stress-management
+related_mechanisms:
+- mitochondrial-dysfunction
+- neuroinflammation
+- gut-brain-axis-disruption
+- hpa-axis-dysregulation
+- estrogen-decline
+- mast-cell-degranulation-histamine-release
+- calcium-magnesium-imbalance
+- neurotransmitter-synthesis-impairment
+tree:
+- label: 🔴 Clinical Presentation
+  children:
+  - label: Migraine Subtypes
+    children:
+    - label: Migraine Without Aura
+      children: []
+      linked_kind: symptom
+      linked_slug: migraine-headache
+      notes: ''
+    - label: Migraine With Aura (visual/sensory)
+      children: []
+      linked_kind: symptom
+      linked_slug: migraine-headache
+      notes: ''
+    - label: Menstrual / Hormonal Migraine
+      children: []
+      linked_kind: symptom
+      linked_slug: migraines-headaches
+      notes: cyclic, often 2 days before or first 2 days of period
+    - label: Vestibular Migraine (with dizziness)
+      children: []
+      linked_kind: symptom
+      linked_slug: dizziness-on-standing
+      notes: ''
+    - label: Tension-Type Headache (overlap)
+      children: []
+      linked_kind: symptom
+      linked_slug: tension-headache
+      notes: ''
+    - label: Morning Headache
+      children: []
+      linked_kind: symptom
+      linked_slug: morning-headaches
+      notes: 'consider sleep apnea, nocturnal hypoglycemia, dehydration'
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Prodrome (hours to 2 days before)
+    children:
+    - label: Yawning / Fatigue
+      children: []
+      linked_kind: symptom
+      linked_slug: fatigue
+      notes: ''
+    - label: Food Cravings (often sweet)
+      children: []
+      linked_kind: symptom
+      linked_slug: sugar-cravings
+      notes: ''
+    - label: Mood Change / Irritability
+      children: []
+      linked_kind: symptom
+      linked_slug: mood-changes-irritability
+      notes: ''
+    - label: Neck Stiffness
+      children: []
+      linked_kind: symptom
+      linked_slug: muscle-tension
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Associated Symptoms
+    children:
+    - label: Nausea / Vomiting
+      children: []
+      linked_kind: symptom
+      linked_slug: nausea
+      notes: ''
+    - label: Photophobia (light sensitivity)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Phonophobia (sound sensitivity)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Blurred Vision
+      children: []
+      linked_kind: symptom
+      linked_slug: blurry-vision
+      notes: ''
+    - label: Jaw / Cervical Tension
+      children: []
+      linked_kind: symptom
+      linked_slug: jaw-tension
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: 🚩 Red Flags (refer immediately)
+    children:
+    - label: Thunderclap headache (sudden, severe, peak <1 min)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: refer ER
+    - label: New-onset headache after age 50
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Headache with fever / stiff neck
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: rule out meningitis
+    - label: Headache with focal neurological deficit
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Progressive worsening over weeks
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: ⚙️ Root Mechanisms
+  children:
+  - label: Cortical Spreading Depression
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: slow wave of depolarization across cortex; underlies aura
+  - label: Trigeminovascular Activation
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: CGRP release, vasodilation, perivascular inflammation
+  - label: Neuroinflammation
+    children: []
+    linked_kind: mechanism
+    linked_slug: neuroinflammation
+    notes: ''
+  - label: Mitochondrial Dysfunction
+    children:
+    - label: ATP Production Deficit in Neurons
+      children: []
+      linked_kind: mechanism
+      linked_slug: mitochondrial-atp-production
+      notes: ''
+    - label: CoQ10 Depletion
+      children: []
+      linked_kind: mechanism
+      linked_slug: mitochondrial-coq10-depletion
+      notes: ''
+    linked_kind: mechanism
+    linked_slug: mitochondrial-dysfunction
+    notes: ''
+  - label: Magnesium Deficiency
+    children: []
+    linked_kind: mechanism
+    linked_slug: calcium-magnesium-imbalance
+    notes: low intracellular Mg → cortical hyperexcitability
+  - label: Blood Sugar Instability
+    children: []
+    linked_kind: topic
+    linked_slug: blood-sugar-dysfunction
+    notes: reactive hypoglycemia, skipped meals as trigger
+  - label: Estrogen Withdrawal
+    children: []
+    linked_kind: mechanism
+    linked_slug: estrogen-decline
+    notes: late luteal / early menstrual estrogen drop
+  - label: Histamine Excess / Mast Cell Activation
+    children: []
+    linked_kind: mechanism
+    linked_slug: mast-cell-degranulation-histamine-release
+    notes: ''
+  - label: Food Triggers
+    children: []
+    linked_kind: topic
+    linked_slug: food-sensitivity
+    notes: ''
+  - label: Gut–Brain Axis Disruption
+    children: []
+    linked_kind: mechanism
+    linked_slug: gut-brain-axis-disruption
+    notes: ''
+  - label: Dehydration
+    children: []
+    linked_kind: topic
+    linked_slug: hydration-and-brain-function
+    notes: ''
+  - label: Sleep Disruption
+    children: []
+    linked_kind: topic
+    linked_slug: sleep
+    notes: both too little and too much can trigger
+  - label: Cervical / TMJ Tension
+    children: []
+    linked_kind: symptom
+    linked_slug: jaw-tension
+    notes: ''
+  - label: HPA Axis Dysregulation
+    children: []
+    linked_kind: mechanism
+    linked_slug: hpa-axis-dysregulation
+    notes: 'let-down" migraine post-stress is classic'
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🧬 FM Approach
+  children:
+  - label: Trigger Mapping
+    children:
+    - label: Headache + Food + Sleep Diary (4-6 wk)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: log time, severity, food in prior 24h, sleep, cycle day, stress
+    - label: Identify Cyclic / Menstrual Pattern
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Map to Common Triggers
+      children:
+      - label: Aged Cheese, Red Wine, Chocolate
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: tyramine and histamine
+      - label: MSG / Processed Foods
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: common in Indian street food
+      - label: Gluten / Dairy
+        children: []
+        linked_kind: topic
+        linked_slug: food-sensitivity
+        notes: ''
+      - label: Skipped Meals / Long Fasts
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Caffeine Withdrawal
+        children: []
+        linked_kind: symptom
+        linked_slug: caffeine-sensitivity
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Rule Out Structural Drivers
+    children:
+    - label: Cervical Spine / Posture Assessment
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: TMJ / Bruxism Screen
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Sleep Apnea Screen (if morning headache)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Screen Gut Health
+    children:
+    - label: SIBO / Dysbiosis
+      children: []
+      linked_kind: topic
+      linked_slug: gut-brain-axis
+      notes: ''
+    - label: Histamine Intolerance Pattern
+      children: []
+      linked_kind: topic
+      linked_slug: histamine-intolerance
+      notes: DAO deficiency, fermented foods worsening
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Hormone Pattern (women)
+    children:
+    - label: Premenstrual Pattern
+      children: []
+      linked_kind: symptom
+      linked_slug: pms-symptoms
+      notes: ''
+    - label: Perimenopausal Worsening
+      children: []
+      linked_kind: topic
+      linked_slug: perimenopause
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Nutrient Repletion Focus
+    children: []
+    linked_kind: topic
+    linked_slug: mitochondrial-health-nutrients
+    notes: Mg, B2, CoQ10, Vit D, omega-3 are the migraine 'big 4+1'
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🛠 Interventions
+  children:
+  - label: Core Nutrient Stack
+    children:
+    - label: Magnesium Glycinate 400-600mg/day
+      children: []
+      linked_kind: supplement
+      linked_slug: magnesium-glycinate
+      notes: bedtime; titrate to bowel tolerance
+    - label: Riboflavin (B2) 400mg/day
+      children: []
+      linked_kind: supplement
+      linked_slug: riboflavin-b2
+      notes: '6-12 weeks for full effect; urine turns bright yellow (harmless)'
+    - label: CoQ10 100-300mg/day
+      children: []
+      linked_kind: supplement
+      linked_slug: coq10
+      notes: ubiquinol preferred if over 40 or on statins
+    - label: Vitamin D3 (if deficient)
+      children: []
+      linked_kind: supplement
+      linked_slug: vitamin-d3
+      notes: ''
+    - label: Omega-3 EPA/DHA
+      children: []
+      linked_kind: supplement
+      linked_slug: omega-3-epa-dha
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Botanicals (with cautions)
+    children:
+    - label: Feverfew
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'avoid in pregnancy; can interact with blood thinners'
+    - label: Butterbur (PA-free only)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: only use pyrrolizidine-alkaloid-free; clinician-supervised
+    - label: Ginger (for nausea + abortive)
+      children: []
+      linked_kind: supplement
+      linked_slug: ginger
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Trigger Elimination
+    children:
+    - label: 4-Week Elimination Trial (top 6 triggers)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Low-Histamine Diet (if HI suspected)
+      children: []
+      linked_kind: topic
+      linked_slug: histamine-intolerance
+      notes: avoid aged, leftover, fermented foods
+    - label: Stable Meal Timing (no >4-5h gaps)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: protein + fat at each meal
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Hydration Protocol
+    children:
+    - label: 30-35 ml/kg/day baseline water
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Salted Lemon Water (morning)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: pinch sea salt + lemon in 250ml water
+    - label: Electrolytes in Hot Climate
+      children: []
+      linked_kind: supplement
+      linked_slug: magnesium-electrolyte-blend
+      notes: ''
+    linked_kind: topic
+    linked_slug: hydration-and-brain-function
+    notes: ''
+  - label: Lifestyle Scaffolding
+    children:
+    - label: Consistent Sleep-Wake Times (incl. weekends)
+      children: []
+      linked_kind: topic
+      linked_slug: sleep-hygiene
+      notes: ''
+    - label: Jaw / Neck Stretches Daily
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Nasal Breathing / Box Breathing for Prodrome
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Biofeedback / HRV Training
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Stress Management
+      children: []
+      linked_kind: topic
+      linked_slug: stress-management
+      notes: 'let-down" migraines respond to gradual unwinding'
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Rescue / Acute Care
+    children:
+    - label: Dark Quiet Room + Cool Compress
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Ginger Tea for Nausea
+      children: []
+      linked_kind: supplement
+      linked_slug: ginger
+      notes: ''
+    - label: Coordinate Rescue Meds with Clinician
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: avoid medication overuse headache (>2 days/wk of triptans/NSAIDs)
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: 🇮🇳 India-Specific
+    children:
+    - label: Methi (Fenugreek) Soaked Water Morning
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Jeera (Cumin) Water for Digestion
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: reduces histamine-triggered GI flares
+    - label: Sesame-Oil Head Massage (Shiroabhyanga)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: weekly; warm slightly
+    - label: Ayurvedic Kashayam (clinician-guided)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Avoid Reheated Leftovers (histamine)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🎯 Coaching Goals
+  children:
+  - label: Build Trigger Map in 4-6 Weeks
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: client can name top 3 personal triggers
+  - label: Reduce Frequency 50% in 8-12 Weeks
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: from baseline diary
+  - label: Reduce Severity / Duration of Attacks
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Reduce Rescue Med Use
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: coordinate with prescribing clinician; avoid MOH
+  - label: Restore Sleep Architecture
+    children: []
+    linked_kind: topic
+    linked_slug: sleep
+    notes: ''
+  - label: Restore Magnesium / B-Vitamin Status
+    children: []
+    linked_kind: topic
+    linked_slug: magnesium-neurological-mental-health
+    notes: serum + RBC Mg into optimal range
+  - label: Identify Hormonal vs Non-Hormonal Pattern
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: 'guides whether cyclic protocol or daily protocol fits'
+  - label: Stable Meal + Hydration Rhythm
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 📊 Labs to Track
+  children:
+  - label: Magnesium Status
+    children:
+    - label: Serum Magnesium
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'often normal even when intracellular is low — interpret with caution'
+    - label: RBC Magnesium (preferred)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Inflammation
+    children:
+    - label: hsCRP
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Homocysteine
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'elevated → methylation insufficiency; B12/folate/B6 driver'
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Nutrients
+    children:
+    - label: Vitamin D (25-OH)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'optimal 60-80 ng/ml'
+    - label: B12 + Folate
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Ferritin / Iron Panel
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: low ferritin worsens migraine in women
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Blood Sugar Driver
+    children:
+    - label: Fasting Insulin
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: HbA1c
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: HOMA-IR
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: topic
+    linked_slug: blood-sugar-dysfunction
+    notes: ''
+  - label: Hormones (if cyclic pattern)
+    children:
+    - label: Estradiol + Progesterone (cycle day 21)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: DUTCH (if perimenopausal)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: topic
+    linked_slug: perimenopause
+    notes: ''
+  - label: Food Sensitivity Panel (if suspected)
+    children: []
+    linked_kind: topic
+    linked_slug: food-sensitivity-igg-iga-mediated
+    notes: IgG/IgA-mediated; interpret with elimination/reintroduction
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+sources:
+- id: vitaone-mind-map-tool
+  quote: null
+  location: Migraine & Recurrent Headaches
+- id: vitaone-evidence-tiers
+  quote: null
+  location: Migraine triggers and FM nutrient repletion
+- id: vitaone-supplementation-dosage
+  quote: null
+  location: Magnesium, B2, CoQ10 dose ranges
+evidence_tier: fm_specific_thin
+updated_at: '2026-05-13'
+updated_by: shivani
+version: 1
+status: active
