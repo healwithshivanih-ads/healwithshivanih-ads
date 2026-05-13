@@ -1,0 +1,15 @@
+{
+  "eventType": "BookingCreated",
+  "id": "wix-booking-abc-123",
+  "phone": "+919876543210",
+  "name": "Priya Test",
+  "startsAt": "2026-05-14T10:00:00.000Z",
+  "endsAt": "2026-05-14T10:45:00.000Z",
+  "title": "Health Coaching Discovery",
+  "serviceName": "Health Coaching Discovery",
+  "booking": {
+    "id": "wix-booking-abc-123",
+    "startTime": "2026-05-14T10:00:00.000Z",
+    "formInfo": { "phone": "+919876543210", "email": "priya@example.com" }
+  }
+}

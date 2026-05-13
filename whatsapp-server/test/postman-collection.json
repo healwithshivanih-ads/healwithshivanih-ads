@@ -1,0 +1,154 @@
+{
+  "info": {
+    "name": "WhatsApp Server",
+    "_postman_id": "f3c2e4a0-1111-2222-3333-444444444444",
+    "description": "Webhook + admin API collection for whatsapp-server",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:3000" },
+    { "key": "admin_key", "value": "changeme" },
+    { "key": "verify_token", "value": "pick-any-long-random-string" }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": { "method": "GET", "url": "{{base_url}}/healthz" }
+    },
+    {
+      "name": "Webhook — Verify (GET)",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/webhook?hub.mode=subscribe&hub.verify_token={{verify_token}}&hub.challenge=test-1234"
+      }
+    },
+    {
+      "name": "Webhook — Incoming text (POST)",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/webhook",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"object\": \"whatsapp_business_account\",\n  \"entry\": [{\"id\":\"WBA\",\"changes\":[{\"field\":\"messages\",\"value\":{\"messaging_product\":\"whatsapp\",\"metadata\":{\"display_phone_number\":\"919999999999\",\"phone_number_id\":\"PNID\"},\"contacts\":[{\"profile\":{\"name\":\"Priya\"},\"wa_id\":\"919876543210\"}],\"messages\":[{\"from\":\"919876543210\",\"id\":\"wamid.TEST_1\",\"timestamp\":\"1715600000\",\"type\":\"text\",\"text\":{\"body\":\"Hi from Postman\"}}]}}]}]\n}"
+        }
+      }
+    },
+    {
+      "name": "External — Calendly invitee.created",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/webhooks/calendly",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"event\":\"invitee.created\",\"payload\":{\"uuid\":\"AAAA\",\"scheduled_event\":{\"start_time\":\"2026-05-14T10:00:00Z\",\"name\":\"Discovery Call\"},\"invitee\":{\"uri\":\"https://calendly/AAAA/BBBB\",\"name\":\"Priya\",\"text_reminder_number\":\"+919876543210\"}}}" }
+      }
+    },
+    {
+      "name": "External — Wix booking",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/webhooks/wix-booking",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"id\":\"wix-1\",\"phone\":\"+919876543210\",\"name\":\"Priya\",\"startsAt\":\"2026-05-14T10:00:00Z\",\"title\":\"Discovery\"}" }
+      }
+    },
+    {
+      "name": "External — Meta CTWA lead",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/webhooks/meta-ad",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"phone_number\":\"+919876543210\",\"full_name\":\"Priya\",\"campaign_name\":\"cortisol-belly\"}" }
+      }
+    },
+    {
+      "name": "External — Generic form",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/webhooks/form",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"phone\":\"+919876543210\",\"name\":\"Priya\",\"tags\":[\"follow-up-due\"]}" }
+      }
+    },
+    {
+      "name": "Admin — Stats",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/api/stats",
+        "header": [{ "key": "x-api-key", "value": "{{admin_key}}" }]
+      }
+    },
+    {
+      "name": "Admin — List contacts",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/api/contacts?limit=50",
+        "header": [{ "key": "x-api-key", "value": "{{admin_key}}" }]
+      }
+    },
+    {
+      "name": "Admin — Add tag",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/api/contacts/:id/tags",
+        "header": [
+          { "key": "x-api-key", "value": "{{admin_key}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": { "mode": "raw", "raw": "{\"tag\":\"follow-up-due\"}" }
+      }
+    },
+    {
+      "name": "Admin — Conversations",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/api/conversations",
+        "header": [{ "key": "x-api-key", "value": "{{admin_key}}" }]
+      }
+    },
+    {
+      "name": "Admin — Conversation messages",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/api/conversations/:id/messages",
+        "header": [{ "key": "x-api-key", "value": "{{admin_key}}" }]
+      }
+    },
+    {
+      "name": "Admin — Reply (text, 24h window)",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/api/conversations/:id/reply",
+        "header": [
+          { "key": "x-api-key", "value": "{{admin_key}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": { "mode": "raw", "raw": "{\"body\":\"Hi from Postman\"}" }
+      }
+    },
+    {
+      "name": "Admin — Create appointment",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/api/appointments",
+        "header": [
+          { "key": "x-api-key", "value": "{{admin_key}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": { "mode": "raw", "raw": "{\"contact_id\":\"<uuid>\",\"starts_at\":\"2026-05-14T10:00:00Z\",\"title\":\"Discovery Call\"}" }
+      }
+    },
+    {
+      "name": "Admin — Send template",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/api/send-template",
+        "header": [
+          { "key": "x-api-key", "value": "{{admin_key}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": { "mode": "raw", "raw": "{\"contact_id\":\"<uuid>\",\"template_name\":\"appt_reminder_24h\",\"language_code\":\"en\",\"variables\":{\"body\":[\"Priya\",\"Wed 10:00 AM\",\"Discovery Call\"]}}" }
+      }
+    }
+  ]
+}
