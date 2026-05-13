@@ -21,7 +21,9 @@ lactation_safety: unknown
 linked_to_topics: []
 linked_to_mechanisms: []
 linked_to_claims: []
-notes_for_coach: Use only PA-free extracts. Liver toxicity reported with unpurified preparations. Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
+notes_for_coach: Use only PA-free extracts. Liver toxicity reported with unpurified
+  preparations. Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before
+  clinical use.
 sources:
 - id: vitaone-mind-map-tool
   location: mindmap-shortlist 2026-05-13
@@ -30,3 +32,5 @@ version: 1
 status: active
 updated_at: '2026-05-13'
 updated_by: shivani
+aliases:
+- butterbur (pa-free only)
