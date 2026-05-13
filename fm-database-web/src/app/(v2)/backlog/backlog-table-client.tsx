@@ -84,6 +84,19 @@ function parseParentLabel(why: string | undefined): string | null {
   return m?.[1] ?? null;
 }
 
+// Substring matches against 1-3 character labels / aliases / slugs cause
+// catastrophic false positives ("IF" → intermittent-fasting matches inside
+// "modifications", "MMA" inside "gamma", etc.). Require both sides ≥ this
+// many chars before allowing a containment match.
+const MIN_SUBSTR_LEN = 4;
+
+function _substrSafe(haystack: string, needle: string): boolean {
+  if (haystack.length < MIN_SUBSTR_LEN || needle.length < MIN_SUBSTR_LEN) {
+    return false;
+  }
+  return haystack.includes(needle);
+}
+
 function suggestTarget(
   needle: string | null,
   options: CatalogueOption[]
@@ -92,7 +105,7 @@ function suggestTarget(
   const low = needle.toLowerCase().trim();
   const slugged = slugify(needle);
 
-  // 1. Exact label / slug / alias match
+  // 1. Exact label / slug / alias match (length-agnostic — exact is exact)
   const exact = options.find(
     (o) =>
       o.label.toLowerCase() === low ||
@@ -102,19 +115,23 @@ function suggestTarget(
   );
   if (exact) return exact.slug;
 
-  // 2. Slug contains needle or needle contains slug
+  // 2. Slug contains needle or needle contains slug — both sides must
+  // be ≥ MIN_SUBSTR_LEN to avoid 2-3 char slug false positives.
   const slugMatch = options.find(
-    (o) => o.slug.includes(slugged) || slugged.includes(o.slug)
+    (o) =>
+      _substrSafe(o.slug, slugged) || _substrSafe(slugged, o.slug)
   );
   if (slugMatch) return slugMatch.slug;
 
-  // 3. Label/alias partial match (needle in label or label in needle)
+  // 3. Label/alias partial match — same length guard.
   const partial = options.find(
     (o) =>
-      o.label.toLowerCase().includes(low) ||
-      low.includes(o.label.toLowerCase()) ||
+      _substrSafe(o.label.toLowerCase(), low) ||
+      _substrSafe(low, o.label.toLowerCase()) ||
       o.aliases.some(
-        (a) => a.toLowerCase().includes(low) || low.includes(a.toLowerCase())
+        (a) =>
+          _substrSafe(a.toLowerCase(), low) ||
+          _substrSafe(low, a.toLowerCase())
       )
   );
   return partial?.slug ?? null;
