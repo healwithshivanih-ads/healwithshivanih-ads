@@ -272,6 +272,18 @@ export default async function DashboardV2() {
 
       {/* Banners + strips above the triage sections */}
       <div style={{ display: "grid", gap: 14, marginBottom: 24 }}>
+        {/* Broadcast — outbound WhatsApp to groups of clients. Promoted to
+            the top per coach feedback 2026-05-13 — it's a primary daily
+            action, not a "tucked at the bottom" panel. */}
+        {aisensyApiKeySet && (
+          <BroadcastPanel
+            clients={broadcastClientRows}
+            followUpDueIds={followUpDueIds}
+            recheckDueIds={recheckDueIds}
+            activeIds={activeIds}
+          />
+        )}
+
         {/* Catalogue commit — design 9A with change list disclosure */}
         <FmCatalogueCommitBanner initialStatus={catalogueStatus} />
 
@@ -386,17 +398,7 @@ export default async function DashboardV2() {
         <TriageSections grouped={grouped} />
       )}
 
-      {/* Broadcast — outbound WhatsApp to groups of clients */}
-      {aisensyApiKeySet && (
-        <div style={{ marginTop: 24 }}>
-          <BroadcastPanel
-            clients={broadcastClientRows}
-            followUpDueIds={followUpDueIds}
-            recheckDueIds={recheckDueIds}
-            activeIds={activeIds}
-          />
-        </div>
-      )}
+      {/* (Broadcast panel moved to the top — above triage sections.) */}
     </FmAppShell>
   );
 }

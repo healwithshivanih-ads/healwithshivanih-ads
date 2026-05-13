@@ -8,6 +8,7 @@ import {
   upsertSupplementLink,
   deleteSupplementLink,
   type SupplementLink,
+  type ProductCategory,
 } from "./supplement-links-actions";
 
 const SOURCE_OPTIONS: { value: SupplementLink["source"]; label: string }[] = [
@@ -20,6 +21,20 @@ const SOURCE_BADGE: Record<SupplementLink["source"], string> = {
   amazon: "bg-amber-100 text-amber-800",
   iherb:  "bg-blue-100 text-blue-800",
   other:  "bg-gray-100 text-gray-700",
+};
+
+const CATEGORY_OPTIONS: { value: ProductCategory; label: string; hint: string }[] = [
+  { value: "supplement", label: "💊 Supplement", hint: "vitamins, herbs, minerals" },
+  { value: "food",       label: "🥗 Food / pantry", hint: "protein powder, ghee, organic grains, kombucha cultures" },
+  { value: "device",     label: "🔦 Device", hint: "infrared red-light, PEMF mat, blue-blockers, Oura ring" },
+  { value: "other",      label: "📦 Other",  hint: "anything else" },
+];
+
+const CATEGORY_BADGE: Record<ProductCategory, string> = {
+  supplement: "bg-emerald-50 text-emerald-800 border-emerald-200",
+  food:       "bg-rose-50 text-rose-800 border-rose-200",
+  device:     "bg-indigo-50 text-indigo-800 border-indigo-200",
+  other:      "bg-slate-50 text-slate-700 border-slate-200",
 };
 
 function LinkRow({
@@ -64,6 +79,19 @@ function LinkRow({
             className="h-7 text-sm"
             placeholder="Display name"
           />
+        </td>
+        <td className="px-3 py-2">
+          <select
+            value={form.category}
+            onChange={(e) =>
+              setForm({ ...form, category: e.target.value as ProductCategory })
+            }
+            className="text-sm border rounded px-2 py-1 bg-background"
+          >
+            {CATEGORY_OPTIONS.map((o) => (
+              <option key={o.value} value={o.value}>{o.label}</option>
+            ))}
+          </select>
         </td>
         <td className="px-3 py-2">
           <Input
@@ -113,6 +141,11 @@ function LinkRow({
     <tr className="border-b hover:bg-muted/30 group">
       <td className="px-3 py-2 font-medium text-sm">{link.display_name}</td>
       <td className="px-3 py-2">
+        <span className={`text-xs px-2 py-0.5 rounded-full font-medium border ${CATEGORY_BADGE[link.category]}`}>
+          {CATEGORY_OPTIONS.find((c) => c.value === link.category)?.label ?? link.category}
+        </span>
+      </td>
+      <td className="px-3 py-2">
         <a
           href={link.url}
           target="_blank"
@@ -155,6 +188,7 @@ function AddLinkForm({ onAdded }: { onAdded: () => void }) {
     display_name: "",
     url: "",
     source: "amazon",
+    category: "supplement",
     notes: "",
   });
   const [form, setForm] = useState(blank());
@@ -195,20 +229,37 @@ function AddLinkForm({ onAdded }: { onAdded: () => void }) {
   return (
     <Card className="mt-4">
       <CardHeader className="pb-2 pt-4 px-4">
-        <CardTitle className="text-sm">Add affiliate link</CardTitle>
+        <CardTitle className="text-sm">Add product link</CardTitle>
       </CardHeader>
       <CardContent className="px-4 pb-4 space-y-3">
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-3 gap-3">
           <div className="space-y-1">
-            <label className="text-xs text-muted-foreground">Supplement name *</label>
+            <label className="text-xs text-muted-foreground">Product name *</label>
             <Input
               value={form.display_name}
               onChange={(e) => setForm({ ...form, display_name: e.target.value })}
-              placeholder="Slippery Elm"
+              placeholder="Slippery Elm / WPI Protein / Hooga red light…"
               className="text-sm h-8"
             />
             <p className="text-[11px] text-muted-foreground">
-              Used as the link label in the plan. Also used for matching — make it match how you write the supplement in the plan editor.
+              Used as the link label in plans + the matching key — keep it close to how you write the product in protocols.
+            </p>
+          </div>
+          <div className="space-y-1">
+            <label className="text-xs text-muted-foreground">Category *</label>
+            <select
+              value={form.category}
+              onChange={(e) =>
+                setForm({ ...form, category: e.target.value as ProductCategory })
+              }
+              className="w-full text-sm border rounded px-2 py-1.5 bg-background"
+            >
+              {CATEGORY_OPTIONS.map((o) => (
+                <option key={o.value} value={o.value}>{o.label}</option>
+              ))}
+            </select>
+            <p className="text-[11px] text-muted-foreground">
+              {CATEGORY_OPTIONS.find((c) => c.value === form.category)?.hint}
             </p>
           </div>
           <div className="space-y-1">
@@ -277,25 +328,27 @@ export function SupplementLinksClient({
     <div className="space-y-4">
       <div>
         <p className="text-sm text-muted-foreground">
-          Affiliate or referral links for supplements that aren&apos;t on VitaOne.
-          These are used automatically when generating client plan letters — the supplement name
-          just needs to contain the keyword you save here.
+          Affiliate / referral links for any <strong>supplement, food, device, or product</strong>{" "}
+          you reference in client plans. Auto-substituted into the letter
+          when the matched name appears — protein powders, organic grains,
+          red-light panels, ghee, anything.
         </p>
         <p className="text-xs text-muted-foreground mt-1">
-          <strong>VitaOne</strong> links are already built in — only add supplements here that need a different source (Amazon, iHerb, brand website, etc.).
+          <strong>VitaOne</strong> supplements are already built in — only add products here that need a different source (Amazon, iHerb, brand site, manufacturer page).
         </p>
       </div>
 
       {links.length === 0 ? (
         <div className="text-sm text-muted-foreground border rounded-md p-6 text-center">
-          No custom links yet. Add one below — for example, Slippery Elm, Selenium, CoQ10, or any protein powder with an affiliate link.
+          No custom links yet. Add one below — supplements, foods (protein powder / organic grains), devices (infrared, Oura, blue blockers), or anything else with an affiliate URL.
         </div>
       ) : (
         <div className="overflow-x-auto rounded-md border">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b bg-muted/40">
-                <th className="text-left px-3 py-2 text-xs font-medium text-muted-foreground">Supplement</th>
+                <th className="text-left px-3 py-2 text-xs font-medium text-muted-foreground">Product</th>
+                <th className="text-left px-3 py-2 text-xs font-medium text-muted-foreground">Category</th>
                 <th className="text-left px-3 py-2 text-xs font-medium text-muted-foreground">URL</th>
                 <th className="text-left px-3 py-2 text-xs font-medium text-muted-foreground">Source</th>
                 <th className="text-left px-3 py-2 text-xs font-medium text-muted-foreground">Notes</th>

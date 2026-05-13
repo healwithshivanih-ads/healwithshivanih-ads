@@ -70,7 +70,10 @@ const NAV: FmNavSection[] = [
       { id: "catalogue", label: "Catalogue", icon: "📖", href: "/catalogue" },
       { id: "resources", label: "Resources", icon: "📚", href: "/resources" },
       { id: "mindmap", label: "Mind maps", icon: "🧭", href: "/mindmap" },
-      { id: "backlog", label: "Backlog", icon: "📝", href: "/backlog" },
+      // Renamed 2026-05-13 — "Catalogue queue" is clearer than "Backlog" and
+      // better signals the workflow (items waiting to be authored into the
+      // catalogue from ingest / mindmap mining / coach observations).
+      { id: "backlog", label: "Catalogue queue", icon: "📝", href: "/backlog" },
       { id: "ingest", label: "Ingest", icon: "⬆️", href: "/ingest" },
     ],
   },

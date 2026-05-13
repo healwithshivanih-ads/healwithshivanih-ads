@@ -91,20 +91,21 @@ export default async function BacklogPage({
   const STATUS_OPTIONS = ["open", "added", "rejected", "all"];
 
   return (
-    <FmAppShell activeNavId="backlog" crumbs={[{ label: "Backlog" }]}>
+    <FmAppShell activeNavId="backlog" crumbs={[{ label: "Catalogue queue" }]}>
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold">Backlog</h1>
+        <h1 className="text-3xl font-bold">Catalogue queue</h1>
         <p className="text-muted-foreground mt-1">
-          Catalogue suggestions and supplement affiliate links.
+          Items waiting to be authored into the catalogue, plus product
+          links (supplements, foods, devices) used in client letters.
         </p>
       </div>
 
       {/* Tab bar */}
       <div className="flex gap-1 border-b">
         {[
-          { id: "backlog", label: "📝 Catalogue Backlog" },
-          { id: "links", label: `🔗 Supplement Links${suppLinks.length ? ` (${suppLinks.length})` : ""}` },
+          { id: "backlog", label: "📝 Catalogue queue" },
+          { id: "links", label: `🔗 Product links${suppLinks.length ? ` (${suppLinks.length})` : ""}` },
         ].map(({ id, label }) => (
           <Link
             key={id}
