@@ -1,5 +1,5 @@
 # --- Stage 1: build admin UI -------------------------------------------------
-FROM node:20-alpine AS ui-build
+FROM node:22-alpine AS ui-build
 WORKDIR /app/admin-ui
 COPY admin-ui/package*.json ./
 RUN npm install
@@ -7,13 +7,14 @@ COPY admin-ui/ ./
 RUN npm run build
 
 # --- Stage 2: install server deps -------------------------------------------
-FROM node:20-alpine AS server-deps
+FROM node:22-alpine AS server-deps
 WORKDIR /app
 COPY package*.json ./
 RUN npm install --omit=dev --ignore-scripts
 
 # --- Stage 3: runtime -------------------------------------------------------
-FROM node:20-alpine
+# Node 22 — native WebSocket support (Supabase Realtime client requires it).
+FROM node:22-alpine
 WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3000
