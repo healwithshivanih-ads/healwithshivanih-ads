@@ -1,0 +1,730 @@
+slug: ibs
+display_name: IBS (Irritable Bowel Syndrome)
+description: 'Functional medicine mindmap for Irritable Bowel Syndrome — covers
+  the three subtypes (IBS-C constipation-dominant, IBS-D diarrhoea-dominant, IBS-M
+  mixed), root mechanisms (SIBO, dysbiosis, gut-brain axis dysregulation, visceral
+  hypersensitivity, post-infectious IBS), 5R-style FM workup, interventions
+  (low-FODMAP staging, targeted probiotics, peppermint oil, herbal antimicrobials,
+  vagal tone work), coaching goals, and labs to track.
+
+  India context: jeera water, ajwain, hing (asafoetida), buttermilk with mint,
+  kanji, and methi seeds are integrated alongside Western FM tools. IBS is the
+  most common functional gut disorder seen in Indian urban practice and is
+  almost always multifactorial — never treat as a single-cause condition.
+
+  '
+aliases:
+- irritable-bowel-syndrome
+- spastic-colon
+- functional-bowel-disorder
+related_topics:
+- ibs
+- sibo
+- gut-dysbiosis
+- gut-brain-axis
+- food-sensitivities
+- low-fodmap-diet
+- elimination-diet
+- candida-overgrowth
+- h-pylori-infection
+- ibs-ibd-differentiation
+- chronic-stress
+- vagal-tone
+related_mechanisms:
+- sibo-dysbiosis
+- gut-dysbiosis
+- gut-barrier-dysfunction
+- gut-brain-axis-dysregulation
+- gut-motility-dysregulation
+- vagal-tone-dysregulation
+- hpa-axis-dysregulation
+- low-stomach-acid
+- bile-acid-insufficiency
+- fodmap-fermentation-gas-production
+- histamine-enzyme-inhibition
+tree:
+- label: "\U0001F534 Clinical Presentation"
+  children:
+  - label: Subtypes
+    children:
+    - label: IBS-C (Constipation-dominant)
+      children:
+      - label: Hard / lumpy stools (Bristol 1-2)
+        children: []
+        linked_kind: symptom
+        linked_slug: constipation
+        notes: ''
+      - label: Infrequent bowel movements
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Straining and incomplete evacuation
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: IBS-D (Diarrhoea-dominant)
+      children:
+      - label: Loose / watery stools (Bristol 6-7)
+        children: []
+        linked_kind: symptom
+        linked_slug: diarrhea
+        notes: ''
+      - label: Urgency to defecate
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Loose stools after meals
+        children: []
+        linked_kind: symptom
+        linked_slug: loose-stools
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: IBS-M (Mixed / Alternating)
+      children:
+      - label: Alternating constipation and diarrhoea
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      - label: Unpredictable patterns week to week
+        children: []
+        linked_kind: null
+        linked_slug: null
+        notes: ''
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Cardinal Symptoms
+    children:
+    - label: Post-prandial bloating
+      children: []
+      linked_kind: symptom
+      linked_slug: bloating
+      notes: ''
+    - label: Abdominal pain relieved by defecation
+      children: []
+      linked_kind: symptom
+      linked_slug: abdominal-pain
+      notes: ''
+    - label: Abdominal cramping
+      children: []
+      linked_kind: symptom
+      linked_slug: abdominal-cramping
+      notes: ''
+    - label: Excessive gas / flatulence
+      children: []
+      linked_kind: symptom
+      linked_slug: gas
+      notes: ''
+    - label: Mucus in stool
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Incomplete evacuation sensation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Abdominal distension
+      children: []
+      linked_kind: symptom
+      linked_slug: abdominal-distension
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Systemic / Overlap Symptoms
+    children:
+    - label: Fatigue
+      children: []
+      linked_kind: symptom
+      linked_slug: fatigue
+      notes: ''
+    - label: Brain fog
+      children: []
+      linked_kind: symptom
+      linked_slug: brain-fog
+      notes: ''
+    - label: Anxiety with gut symptoms
+      children: []
+      linked_kind: symptom
+      linked_slug: anxiety-with-gut-issues
+      notes: ''
+    - label: Multiple food sensitivities
+      children: []
+      linked_kind: symptom
+      linked_slug: food-sensitivities
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: "\U0001F6A8 Red Flags (refer to GI)"
+    children:
+    - label: Blood in stool (visible or occult)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Rule out IBD, colorectal cancer, haemorrhoids.'
+    - label: Unintentional weight loss
+      children: []
+      linked_kind: symptom
+      linked_slug: unintentional-weight-loss
+      notes: ''
+    - label: Nocturnal symptoms (waking with pain / diarrhoea)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Functional IBS rarely wakes patient — suggests organic disease.'
+    - label: Family history colorectal cancer or IBD
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Anaemia
+      children: []
+      linked_kind: symptom
+      linked_slug: anemia
+      notes: ''
+    - label: Onset after age 50
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: "⚙️ Root Mechanisms"
+  children:
+  - label: SIBO (Small Intestinal Bacterial Overgrowth)
+    children:
+    - label: Hydrogen-dominant SIBO (often IBS-D)
+      children: []
+      linked_kind: mechanism
+      linked_slug: sibo-fermentation
+      notes: ''
+    - label: Methane-dominant (IMO, often IBS-C)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: SIBO from low stomach acid
+      children: []
+      linked_kind: mechanism
+      linked_slug: sibo-from-low-acid
+      notes: ''
+    linked_kind: mechanism
+    linked_slug: sibo-dysbiosis
+    notes: ''
+  - label: Gut Dysbiosis (colonic microbiome imbalance)
+    children: []
+    linked_kind: mechanism
+    linked_slug: gut-dysbiosis
+    notes: ''
+  - label: Intestinal Hyperpermeability (Leaky Gut)
+    children: []
+    linked_kind: mechanism
+    linked_slug: gut-barrier-dysfunction
+    notes: ''
+  - label: Visceral Hypersensitivity
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: 'Lowered pain threshold in gut wall — characteristic of IBS.'
+  - label: Gut-Brain Axis Dysregulation
+    children: []
+    linked_kind: mechanism
+    linked_slug: gut-brain-axis-dysregulation
+    notes: ''
+  - label: Vagal Tone / Autonomic Dysfunction
+    children: []
+    linked_kind: mechanism
+    linked_slug: vagal-tone-dysregulation
+    notes: ''
+  - label: Post-Infectious IBS
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: 'Onset after gastroenteritis (traveller''s diarrhoea, food poisoning).'
+  - label: Motility Disorders
+    children: []
+    linked_kind: mechanism
+    linked_slug: gut-motility-dysregulation
+    notes: ''
+  - label: Low Stomach Acid (Hypochlorhydria)
+    children: []
+    linked_kind: mechanism
+    linked_slug: low-stomach-acid
+    notes: ''
+  - label: Bile Flow Insufficiency
+    children: []
+    linked_kind: mechanism
+    linked_slug: bile-acid-insufficiency
+    notes: ''
+  - label: Food Sensitivities (FODMAPs, gluten, dairy, histamine)
+    children:
+    - label: FODMAP fermentation gas production
+      children: []
+      linked_kind: mechanism
+      linked_slug: fodmap-fermentation-gas-production
+      notes: ''
+    - label: Histamine enzyme inhibition (DAO deficiency)
+      children: []
+      linked_kind: mechanism
+      linked_slug: histamine-enzyme-inhibition
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: HPA-Axis Stress Driver
+    children: []
+    linked_kind: mechanism
+    linked_slug: hpa-axis-dysregulation
+    notes: 'Chronic stress is both trigger and perpetuator of IBS.'
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: "\U0001F9EC FM Approach"
+  children:
+  - label: Thorough Symptom History
+    children:
+    - label: Bristol stool chart tracking
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Timing of symptoms relative to meals
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Food trigger diary (2-4 weeks)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Stress / sleep / travel correlations
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Targeted Testing
+    children:
+    - label: SIBO breath test (lactulose, 3-hour)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Comprehensive stool test (GI-MAP / GI Effects)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Food sensitivity panel
+      children: []
+      linked_kind: topic
+      linked_slug: food-sensitivities
+      notes: ''
+    - label: Rule out IBD / coeliac first
+      children: []
+      linked_kind: topic
+      linked_slug: ibs-ibd-differentiation
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: 5R Protocol Staging
+    children:
+    - label: Remove (triggers, pathogens)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Replace (acid, enzymes, bile)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Reinoculate (probiotics, prebiotics if appropriate)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Repair (gut lining)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Rebalance (stress, sleep, vagal tone)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Address Root Infections
+    children:
+    - label: H. pylori
+      children: []
+      linked_kind: topic
+      linked_slug: h-pylori-infection
+      notes: ''
+    - label: Candida overgrowth
+      children: []
+      linked_kind: topic
+      linked_slug: candida-overgrowth
+      notes: ''
+    - label: Parasites
+      children: []
+      linked_kind: topic
+      linked_slug: parasite-infection
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: "\U0001F6E0 Interventions"
+  children:
+  - label: Dietary
+    children:
+    - label: Low-FODMAP elimination (4-6 weeks)
+      children: []
+      linked_kind: topic
+      linked_slug: low-fodmap-diet
+      notes: 'Then structured reintroduction — NOT a permanent diet.'
+    - label: Elimination diet (gluten, dairy, eggs, soy, corn)
+      children: []
+      linked_kind: topic
+      linked_slug: elimination-diet
+      notes: ''
+    - label: Histamine-lowering diet (if DAO-mediated)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Reintroduction to maximise food diversity
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Probiotics (strain-specific)
+    children:
+    - label: Saccharomyces boulardii (IBS-D, post-antibiotic)
+      children: []
+      linked_kind: supplement
+      linked_slug: saccharomyces-boulardii
+      notes: ''
+    - label: Lactobacillus rhamnosus GG
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: VSL#3 / multi-strain
+      children: []
+      linked_kind: supplement
+      linked_slug: probiotic-vsl3-spore-biotic
+      notes: ''
+    - label: Spore-based probiotics
+      children: []
+      linked_kind: supplement
+      linked_slug: probiotic-spore-based
+      notes: ''
+    - label: 'Caution: avoid prebiotics if SIBO active'
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Targeted Supplements
+    children:
+    - label: Peppermint oil (enteric-coated)
+      children: []
+      linked_kind: supplement
+      linked_slug: peppermint-oil-enteric
+      notes: 'Antispasmodic for cramping and bloating.'
+    - label: L-glutamine (gut barrier repair)
+      children: []
+      linked_kind: supplement
+      linked_slug: l-glutamine
+      notes: ''
+    - label: Digestive enzymes
+      children: []
+      linked_kind: supplement
+      linked_slug: digestive-enzymes
+      notes: ''
+    - label: Betaine HCl (if low stomach acid)
+      children: []
+      linked_kind: supplement
+      linked_slug: betaine-hcl
+      notes: ''
+    - label: Ox bile (if bile insufficiency)
+      children: []
+      linked_kind: supplement
+      linked_slug: ox-bile
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Herbal Antimicrobials (for SIBO)
+    children:
+    - label: Oregano oil
+      children: []
+      linked_kind: supplement
+      linked_slug: oregano-oil
+      notes: ''
+    - label: Berberine
+      children: []
+      linked_kind: supplement
+      linked_slug: berberine
+      notes: ''
+    - label: Neem
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Allicin (garlic extract)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Vagal Tone / Stress Regulation
+    children:
+    - label: Gargling, humming, singing (vagal)
+      children: []
+      linked_kind: topic
+      linked_slug: vagal-tone
+      notes: ''
+    - label: Cold water face immersion
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Box breathing / 4-7-8 breath
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Stress management
+      children: []
+      linked_kind: topic
+      linked_slug: stress-management
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: "\U0001F1EE\U0001F1F3 India Context (kitchen remedies)"
+    children:
+    - label: Jeera (cumin) water — antispasmodic, carminative
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Ajwain (carom seed) — bloating, gas
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Hing (asafoetida) in dals & sabzis
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Reduces gas from legumes; antimicrobial.'
+    - label: Buttermilk with roasted jeera + mint
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Cooling, mild probiotic, post-meal digestion.'
+    - label: Kanji (fermented carrot/beetroot drink)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Methi (fenugreek) seeds soaked overnight
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Helpful in IBS-C — gentle fibre and motility support.'
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: "\U0001F3AF Coaching Goals"
+  children:
+  - label: Symptom-free 80% of days by week 12
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Identify top 3 personal food triggers
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Reintroduce as many foods as possible (no permanent elimination)
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: 'Avoiding food fear and disordered eating is a non-negotiable.'
+  - label: Repair gut barrier integrity
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Normalise bowel pattern (1-2 formed BMs/day)
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Build stress resilience and vagal tone
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Restore appetite-fullness signalling
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Reduce dependency on antispasmodics / antacids
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: "\U0001F4CA Labs to Track"
+  children:
+  - label: Functional GI Tests
+    children:
+    - label: SIBO breath test (lactulose, 3-hour H2 + CH4)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Comprehensive stool test (GI-MAP / Doctor''s Data)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Faecal calprotectin (rule out IBD)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Critical to distinguish IBS from IBD.'
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Inflammation Markers
+    children:
+    - label: hsCRP
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: ESR
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Food Sensitivity / Allergy
+    children:
+    - label: IgG food sensitivity panel
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Controversial — interpret alongside symptom diary, not in isolation.'
+    - label: Coeliac panel (tTG-IgA + total IgA)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Must rule out before low-FODMAP / gluten removal.'
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Nutrient Status
+    children:
+    - label: Vitamin D (25-OH)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Ferritin + iron studies
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Vitamin B12 + active B12
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Folate
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Stress / HPA Axis
+    children:
+    - label: 4-point salivary cortisol or DUTCH
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+sources:
+- id: vitaone-mind-map-tool
+  quote: null
+  location: IBS clinical pattern reference
+- id: vitaone-gut-toolkit
+  quote: null
+  location: Gut Health Toolkit — IBS & SIBO sections
+- id: vitaone-health-coaching-toolkit
+  quote: null
+  location: IBS coaching framework
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: shivani
