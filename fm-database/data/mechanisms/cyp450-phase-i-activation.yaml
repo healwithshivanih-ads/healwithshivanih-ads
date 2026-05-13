@@ -1,9 +1,20 @@
 slug: cyp450-phase-i-activation
 display_name: CYP450 Phase I Activation
 aliases:
-- phase I detoxification
 - cytochrome P450 activation
 - toxin bioactivation
+- phase I detoxification
+- cyp450-phase1-bioactivation
+- phase 1 detox
+- cytochrome P450 oxidation
+- phase 1 biotransformation
+- cytochrome-p450-phase1
+- CYP450 enzymes
+- phase 1 liver detox
+- hepatic oxidation
+- phase-i-cytochrome-p450
+- Phase I liver enzymes
+- oxidative biotransformation
 category: metabolic
 summary: Phase I of liver detoxification converts lipophilic toxins into reactive
   intermediates via cytochrome P450 enzymes. Key nutritional activators include green
@@ -25,6 +36,21 @@ sources:
 - id: vitaone-liver-detox-cheatsheet
   location: Functional Detox Phases
   quote: 'Phase I – Activation: Converts toxins → reactive intermediates via CYP450.'
+- id: coconote-fm-liver-detox-part1
+  location: Phase 1 Detoxification Explanation
+  quote: So the active intermediate form again finally convert to a water-soluble
+    compound and this water-soluble compound will go out of body... these P450 enzymes,
+    they do oxidation, reduction, or hydrolysis in that parent compound.
+- id: vitaone-liver-detox-toolkit
+  location: Features of the Detox Food Plan
+  quote: Enzymes involved in detoxification (phase I, phase II) within the liver are
+    well recognized.
+- id: vitaone-health-coaching-toolkit
+  location: Nutrients for Phase 1 and Phase 2 Detoxification
+  quote: 'PHASE I (Cytochrome P450 Enzymes) — Reactions: Oxidation, Reduction, Hydrolysis,
+    Hydration, Dehalogenation; Nutrients Used: Riboflavin (Vit B2), Niacin (Vit B3),
+    Pyridoxine (Vit B6), Folic acid, Vitamin B12, Glutathione, Branched-chain amino
+    acids, Flavonoids, Phospholipids'
 version: 1
 status: active
 updated_at: '2026-05-02'

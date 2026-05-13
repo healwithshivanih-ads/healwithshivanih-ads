@@ -1,12 +1,23 @@
 slug: heme-vs-nonheme-iron-absorption
 display_name: Heme vs. Non-Heme Iron Absorption Differential
 aliases:
-- iron bioavailability
-- heme iron
-- nonheme iron
-- dietary iron bioavailability
-- plant iron absorption
 - animal iron absorption
+- iron bioavailability
+- plant iron absorption
+- nonheme iron
+- heme iron
+- dietary iron bioavailability
+- gut-barrier-iron-absorption
+- intestinal iron absorption
+- gut-iron axis
+- leaky-gut-iron
+- low-stomach-acid-iron-absorption
+- hypochlorhydria iron malabsorption
+- HCl iron conversion
+- PPI-induced iron malabsorption
+- mineral-malabsorption-hcl-dependent
+- acid-dependent mineral absorption
+- iron malabsorption low acid
 category: metabolic
 summary: Heme iron (from animal sources) is absorbed at 20–40%, while non-heme iron
   (from plant sources) is absorbed at only 3–12%. Non-heme iron absorption is further
@@ -44,6 +55,14 @@ sources:
     food source is around 3-12%. On the other side, the animal source, they are very
     high absorption rate inside the bag. So again, the absorption rate for animal
     source supplements is somewhere around, I would say 20-40%.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXy9b_KjJT2/
+  quote: Gut integrity determines iron utilization → Investigate root causes like
+    H. pylori, celiac or GI bleed
+- id: coconote-fm-hypochlorhydria
+  location: Functions of Gastric Acid
+  quote: Whenever gastric acid is present, it increases absorption of certain nutritions
+    like calcium, iron and zinc, magnesium, copper.
 version: 2
 status: active
 updated_at: '2026-05-05'

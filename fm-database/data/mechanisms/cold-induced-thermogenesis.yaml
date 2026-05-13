@@ -1,9 +1,17 @@
 slug: cold-induced-thermogenesis
 display_name: Cold-Induced Thermogenesis
 aliases:
-- cold thermogenesis
-- non-shivering thermogenesis
 - shivering thermogenesis
+- non-shivering thermogenesis
+- cold thermogenesis
+- bat-activation
+- BAT activation
+- brown fat thermogenesis
+- UCP1 activation
+- cold-shock-response
+- cold water shock
+- cold immersion reflex
+- cold gasp reflex
 category: metabolic
 summary: Exposure to cold triggers thermogenic processes — both shivering (muscle-based)
   and non-shivering (BAT-based) — that increase metabolic rate. This thermogenic response

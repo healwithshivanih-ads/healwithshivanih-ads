@@ -1,12 +1,15 @@
 slug: calcium-magnesium-imbalance
 display_name: Calcium–Magnesium Imbalance in Cardiac Tissue
 aliases:
+- magnesium depletion
 - calcium-magnesium-dysregulation
 - intracellular-calcium-overload
 - calcium-channel-dysregulation
 - intracellular calcium overload
-- magnesium depletion
 - electrolyte imbalance cardiac
+- magnesium-calcium-intracellular-shift
+- calcium shift into cell
+- magnesium-calcium reciprocal relationship
 category: metabolic
 summary: Magnesium is the predominant intracellular mineral in cardiac cells and is
   essential for maintaining the calcium-magnesium balance required for normal electrical
@@ -50,6 +53,12 @@ sources:
   quote: What is the meaning of the simple information is the extracellular calcium
     is now in the cell in the cell that's the question. Now you know why the calcium
     is moving in the cell because you have magnesium deficiency.
+- id: coconote-fm-calcium-deficiency
+  location: Magnesium and Calcium Relationship
+  quote: if you have deficiency of magnesium then calcium is going to move in the
+    cell and that way you can see low serum calcium level. So if you correct the intracellular
+    magnesium level this calcium going to come out from the cell and it will maintain
+    your serum magnesium level.
 version: 2
 status: active
 updated_at: '2026-05-05'

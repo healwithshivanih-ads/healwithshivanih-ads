@@ -2,11 +2,19 @@ slug: mitochondrial-dysfunction
 display_name: Mitochondrial Dysfunction (Stress-Induced)
 aliases:
 - low ATP production
-- oxidative phosphorylation impairment
-- mitochondrial impairment
 - cellular-energy-depletion
+- mitochondrial impairment
 - mitochondrial-stress
+- oxidative phosphorylation impairment
 - ros-mitochondrial-suppression
+- mitochondrial-atp-production
+- cellular energy production
+- oxidative phosphorylation
+- electron transport chain
+- atp-mitochondrial-production
+- magnesium-atp
+- mitochondrial-function
+- cellular-energy-production
 category: metabolic
 summary: Chronic stress and unprocessed emotions suppress mitochondrial function via
   reactive oxygen species (ROS) and excess cortisol, causing neuronal mitochondria
@@ -42,6 +50,15 @@ sources:
 - id: vitaone-health-coaching-toolkit
   location: Why Emotional Healing Is Important in Chronic Diseases
   quote: Stress & emotion suppress mitochondrial function (via ROS & cortisol).
+- id: vitaone-nutrition-toolkit
+  location: Nutrients for Mitochondrial Health
+  quote: Mitochondria are the parts of cells responsible for creating energy. They
+    are like tiny power plants in every cell of the body, converting food and oxygen
+    into cellular energy in the form of adenosine triphosphate ('ATP').
+- id: coconote-fm-magnesium-deficiency
+  location: Chronic fatigue syndrome section
+  quote: Magnesium is important for ATP production also and mitochondrial functions
+    as well.
 version: 2
 status: active
 updated_at: '2026-05-04'

@@ -1,11 +1,15 @@
 slug: gut-barrier-and-nutrient-absorption
 display_name: Gut Barrier & Nutrient Absorption
 aliases:
-- intestinal barrier function
-- gut permeability
-- leaky gut mechanism
-- intestinal hyperpermeability
 - gut barrier integrity
+- leaky gut mechanism
+- gut permeability
+- intestinal barrier function
+- intestinal hyperpermeability
+- gut-immune-barrier-function
+- gut barrier
+- intestinal immune defence
+- mucosa-associated lymphoid tissue
 category: gut
 summary: Gut health, probiotics, zinc, glutamine, and fermented foods support nutrient
   absorption and barrier integrity. Dysbiosis, antibiotics, PPIs, and autoimmune patterns
@@ -55,6 +59,11 @@ sources:
   location: Key Mechanisms Explained — gut-barrier-and-nutrient-absorption
   quote: The document links gut health, probiotics, zinc, glutamine, fermented foods,
     and digestive function to better nutrient absorption and barrier integrity.
+- id: barbara-oneil-gi-tract
+  location: Microbiome Section
+  quote: These microorganisms play a protective role. They are actually an integral
+    part of our immune system. They're protecting our blood against any harmful pathogens
+    that might be in the gut.
 version: 2
 status: active
 updated_at: '2026-05-06'

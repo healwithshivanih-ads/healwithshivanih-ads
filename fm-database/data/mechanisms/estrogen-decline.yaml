@@ -1,11 +1,14 @@
 slug: estrogen-decline
 display_name: Estrogen Decline (Perimenopause/Menopause)
 aliases:
+- falling estrogen
 - estrogen-fluctuation
 - estrogen-driven-gut-barrier-integrity
-- falling estrogen
-- ovarian estrogen decline
 - menopausal estrogen loss
+- ovarian estrogen decline
+- estrogen-progesterone-decline
+- sex hormone deficiency
+- ovarian hormone insufficiency
 category: endocrine
 summary: Progressive decline in ovarian estradiol production during perimenopause
   and menopause, contributing to vasomotor symptoms, mood changes, bone loss, and
@@ -52,6 +55,10 @@ sources:
 - id: vitaone-sex-hormones-cheatsheet
   location: Common Triggers for Low Progesterone
   quote: Perimenopause & menopause → Natural decline in ovarian progesterone.
+- id: coconote-fm-sex-hormones
+  location: Risk Factors and Hormone Actions
+  quote: Initially the progesterone goes down or secondary to any kind of a progesterone
+    going down, then it happens in estrogen dominance.
 evidence_tier: strong
 version: 2
 status: active

@@ -1,9 +1,12 @@
 slug: fungal-overgrowth-toxin-production
 display_name: Fungal Overgrowth and Mycotoxin Production
 aliases:
-- candida overgrowth
 - intestinal fungal toxin release
 - yeast overgrowth
+- candida overgrowth
+- immune-activation-by-mycotoxins
+- mold immune response
+- mycotoxin immune burden
 category: gut
 summary: Fungal overgrowth (primarily Candida species) in the small intestine produces
   toxins that disrupt the gut barrier, suppress beneficial bacteria, and drive systemic
@@ -32,6 +35,11 @@ sources:
   quote: The probiotic strain, Saccharomyces boulari, which we say has been shown
     to reduce the fungus inside the gut. It is also responsible for moving out the
     fungus toxins from the body as well.
+- id: vitaone-health-coaching-toolkit
+  location: Foods Rich in Mold Protein Allergens
+  quote: Molds and mycotoxins can cause adverse symptoms ranging from mild to severe,
+    depending on the person. Some common symptoms include itching, watery eyes, fatigue,
+    and breathing difficulty.
 version: 1
 status: active
 updated_at: '2026-05-05'

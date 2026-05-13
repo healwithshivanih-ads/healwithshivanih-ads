@@ -3,6 +3,14 @@ display_name: LDN Endorphin Rebound Mechanism
 aliases:
 - low-dose naltrexone mechanism
 - opioid receptor rebound
+- ldn-opioid-rebound-immune-modulation
+- naltrexone endorphin rebound
+- opioid receptor blockade rebound
+- LDN mechanism
+- opioid-rebound-upregulation
+- endorphin rebound
+- OGF receptor rebound
+- compensatory opioid elevation
 category: immune
 summary: At low doses (1.5–4.5 mg), naltrexone transiently blocks opioid receptors
   for 4–6 hours, creating a perceived opioid deficiency. The body compensates with
@@ -27,6 +35,17 @@ sources:
   quote: Discovered that at lower doses, Naltrexone acted as a short-term antagonist
     (4-6 hours) and then had a 'rebound' effect of increasing the production of endogenous
     opioids such as endorphins and enkephalins.
+- id: vitaone-health-coaching-toolkit
+  location: Low Dose Naltrexone (LDN) and Autoimmune Disease — LDN History
+  quote: Discovered that at lower doses, Naltrexone acted as a short-term antagonist
+    (4-6 hours) and then had a 'rebound' effect of increasing the production of endogenous
+    opioids such as endorphins and enkephalins.
+- id: vitaone-ldn-article
+  location: So, how does LDN work?
+  quote: 'Interference of opioid peptide–opioid receptor interactions for a short
+    time each day (from 4-6 hours) with LDN provided a subsequent window of time (18–20
+    hours) for the increased levels of endogenous opioids and opioid receptors to
+    elicit a robust functional response: the inhibition of cell proliferation.'
 version: 1
 status: active
 updated_at: '2026-05-02'

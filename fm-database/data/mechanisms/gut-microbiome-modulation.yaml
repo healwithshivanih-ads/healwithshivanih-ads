@@ -1,9 +1,17 @@
 slug: gut-microbiome-modulation
 display_name: Gut Microbiome Modulation
 aliases:
-- gut flora balance
 - microbiome support
 - gut health
+- gut flora balance
+- gut-microbiome-colonisation
+- microbiome seeding
+- gut flora establishment
+- probiotic colonisation
+- microbiome-nutrient-synthesis
+- gut flora nutrient production
+- endogenous glutathione synthesis
+- gut melatonin production
 category: gut
 summary: The gut microbiome plays a critical role in immune regulation and inflammation.
   Fermented foods and fiber-rich whole foods support a balanced microbiome, which
@@ -27,6 +35,11 @@ sources:
 - id: vitaone-inflammation-toolkit
   location: Anti Inflammatory Diet — Benefits of Following an Anti-Inflammatory Diet
   quote: Supports gut health, which is critical for controlling inflammation.
+- id: barbara-oneil-gi-tract
+  location: Microbiome Section
+  quote: 70% of our immune system is established by our gut flora. How important is
+    the gut for it? Hippocrates, father of medicine, he said all disease begins in
+    the gut.
 version: 1
 status: active
 updated_at: '2026-05-02'

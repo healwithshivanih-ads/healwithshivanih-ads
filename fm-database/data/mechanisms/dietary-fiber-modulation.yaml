@@ -1,9 +1,16 @@
 slug: dietary-fiber-modulation
 display_name: Dietary Fibre Modulation
 aliases:
+- soluble fibre effect
 - fibre-gut axis
 - prebiotic effect
-- soluble fibre effect
+- colonic-peristalsis-and-fibre-motility
+- bowel motility
+- colonic transit
+- fibre and peristalsis
+- soluble-fibre-glucose-absorption-blunting
+- galactomannan glucose buffering
+- viscous fibre glucose slowing
 category: metabolic
 summary: High-fibre foods (legumes, millets, vegetables) modulate the gut microbiome
   by providing prebiotic substrates, reduce LDL cholesterol via bile acid sequestration,
@@ -28,6 +35,16 @@ sources:
   location: Lentil Idli
   quote: In a bowl add all the lentils – toor dal, moong dal, masoor dal, chana dal,
     urad dal with oats and fenugreek seeds.
+- id: barbara-oneil-gi-tract
+  location: Colon & Defaecation Section
+  quote: Fibre also stimulates peristalsis from movement through the colon... In the
+    squatting position, pubo rectalis relaxes and when pubo rectalis relaxes, that
+    causes the colon, that last part of the colon to open right up and the contents
+    pass with much greater ease.
+- id: coach-shivani
+  location: Coach Observation
+  quote: Soak methi seeds in water overnight and drink the sieved water the next morning.
+    Good for insulin resistance and diabetes.
 version: 1
 status: active
 updated_at: '2026-05-04'

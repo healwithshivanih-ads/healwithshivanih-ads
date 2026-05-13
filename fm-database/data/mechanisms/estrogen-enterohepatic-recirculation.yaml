@@ -1,16 +1,29 @@
 slug: estrogen-enterohepatic-recirculation
 display_name: Estrogen Enterohepatic Recirculation
 aliases:
-- estrogen-enterohepatic-circulation
 - enterohepatic-estrogen-recirculation
-- estrobolome-activity
 - beta-glucuronidase-activity
-- phase-3-estrogen-detoxification
 - estrogen reabsorption
+- estrogen-enterohepatic-circulation
+- phase-3-estrogen-detoxification
 - beta-glucuronidase-driven estrogen recycling
-- gut estrogen reconversion
-- estrogen recycling
 - estrogen gut excretion
+- estrobolome-activity
+- estrogen recycling
+- gut estrogen reconversion
+- gut-estrogen-reabsorption
+- enterohepatic estrogen circulation
+- estrogen recirculation
+- beta-glucuronidase-estrogen-reabsorption
+- beta-glucuronidase activity
+- estrogen deconjugation
+- gut estrogen recycling
+- beta-glucuronidase-reabsorption
+- estrobolome dysfunction
+- estrogen-recirculation-via-beta-glucuronidase
+- beta-glucuronidase-driven estrogen reabsorption
+- estrogen enterohepatic recirculation
+- gut-driven estrogen dominance
 category: gut
 summary: After use, estrogen is metabolized by the liver and excreted into the gut
   via bile. With adequate fiber and transit time, it is eliminated in stool. When
@@ -67,6 +80,23 @@ sources:
   quote: fiber helps the body process estrogen. You make estrogen, use it and poop
     it out. You make estrogen, use it and poop it out. A big part of estrogen homeostasis
     is if we had more time, it's transit time.
+- id: vitaone-health-coaching-toolkit
+  location: Estrogen Metabolism — Promotes Healthy Estrogen Metabolism
+  quote: Fiber binds harmful estrogen metabolites and other toxins in the digestive
+    tract, which can be eliminated by the body.
+- id: coconote-fm-estrogen-dominance
+  location: Causes of Estrogen Dominance
+  quote: Bad bacteria produces an enzyme which is known as beta-glucuronidase. Beta-glucuronidase
+    is responsible for the reabsorption of estrogen again into the bloodstream.
+- id: coconote-fm-sex-hormones
+  location: Hormone Metabolism and Detoxification
+  quote: high enzymatic production of beta glucolidase in their gut which causes the
+    detoxification and excretion of the hormone to be absolutely dysfunctional
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Estrogen Detoxification Discussion
+  quote: Beta glucuronidase actually unesterifies the estrogen and it leads to a lot
+    of estrogen circulation in the blood, it basically stops its excretion from the
+    body.
 evidence_tier: plausible_emerging
 version: 3
 status: active

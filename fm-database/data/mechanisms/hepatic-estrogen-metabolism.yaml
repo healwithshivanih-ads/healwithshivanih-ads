@@ -1,10 +1,19 @@
 slug: hepatic-estrogen-metabolism
 display_name: Hepatic Estrogen Metabolism (Phase I/II Detoxification)
 aliases:
-- liver estrogen clearance
-- estrogen hydroxylation
-- CYP enzyme estrogen metabolism
 - COMT methylation of estrogen
+- liver estrogen clearance
+- CYP enzyme estrogen metabolism
+- estrogen hydroxylation
+- hepatic-estrogen-detoxification
+- estrogen liver metabolism
+- CYP estrogen hydroxylation
+- COMT methylation of estrogens
+- estrogen phase II conjugation
+- phase-1-phase-2-liver-detox
+- liver estrogen conjugation
+- hepatic biotransformation
+- estrogen methylation
 category: metabolic
 summary: Estrogens are metabolized in the liver via CYP enzymes (CYP1A1, CYP1B1) to
   hydroxylated intermediates (2-OHE1, 4-OHE1, 16-OHE1), then methylated by COMT to
@@ -36,6 +45,15 @@ sources:
   quote: Disruptions in estrogen metabolism can damage DNA, and in some cases, predispose
     individuals to cancer. Some estrogen metabolites have been associated with a higher
     risk of cancers, including breast, ovarian, and prostate.
+- id: vitaone-sex-hormones-toolkit
+  location: Estrogen Metabolism — Page 02
+  quote: Estrogen metabolites which are primarily metabolized in the liver & excreted
+    from the body through the digestive and urinary tracts.
+- id: coconote-fm-estrogen-dominance
+  location: Dysbiosis and Estrogen
+  quote: The estrogen that it has to throw outside the body — the excretion that is
+    to happen after the functioning of estrogen — phase 1 phase 2 metabolism of estrogen
+    happens in the liver.
 version: 1
 status: active
 updated_at: '2026-05-04'

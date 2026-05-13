@@ -1,8 +1,14 @@
 slug: coq10-depletion
 display_name: CoQ10 Depletion via Mevalonate Pathway Blockade
 aliases:
-- ubiquinone depletion
 - statin-induced CoQ10 deficiency
+- ubiquinone depletion
+- coq10-depletion-by-beta-blockers
+- statin-induced CoQ10 depletion
+- drug-induced CoQ10 deficiency
+- mitochondrial-coq10-depletion
+- statin-CoQ10 depletion
+- ubiquinone deficiency
 category: metabolic
 summary: Statins block the mevalonate pathway upstream of CoQ10 (ubiquinone) synthesis.
   CoQ10 is critical for mitochondrial electron transport and ATP production in muscle
@@ -26,6 +32,12 @@ sources:
 - id: coconote-fm-reality-of-statins
   location: Side Effects of Statins Section
   quote: It may cause myalgia and atrophy and atrophy.
+- id: vitaone-health-coaching-toolkit
+  location: Cardiovascular Drugs and Potential Nutrient Deficiency
+  quote: 'Beta Blockers: CoQ10, Melatonin'
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXjjIqJjMSR/
+  quote: Every statin that lowers cholesterol also drains CoQ10 and vitamin D.
 version: 1
 status: active
 updated_at: '2026-05-05'

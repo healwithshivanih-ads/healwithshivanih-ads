@@ -1,12 +1,21 @@
 slug: nrf2-pathway-activation
 display_name: Nrf2 Pathway Activation & Glutathione Production
 aliases:
-- Nrf2 upregulation
 - nuclear factor erythroid 2
-- antioxidant response element
-- Nrf2 detoxification
 - glutathione synthesis
+- Nrf2 detoxification
 - sulforaphane pathway
+- Nrf2 upregulation
+- antioxidant response element
+- nrf2-antioxidant-pathway
+- nuclear factor erythroid 2-related factor 2
+- Nrf2 pathway
+- nrf2-glutathione-pathway
+- Nrf2 activation
+- sulforaphane-Nrf2
+- glutathione production
+- nrf2-pathway
+- phase II detox
 category: signaling
 summary: Nrf2 is a transcription factor activated by compounds like sulforaphane (from
   cruciferous vegetables). Its activation upregulates antioxidant and detoxification
@@ -40,6 +49,16 @@ sources:
   location: Estrogen Metabolism — Promotes Healthy Estrogen Metabolism
   quote: Sulphoraphane supports the body in producing glutathione, a key antioxidant,
     and also upregulates another important detoxification pathway called Nrf2.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXZNALUjPBQ/
+  quote: Crucifers activate Nrf2 - your internal antioxidant switch.
+- id: vitaone-sex-hormones-toolkit
+  location: Estrogen Metabolism — Page 02
+  quote: Sulphoraphane supports the body in producing glutathione, a key antioxidant,
+    and also upregulates another important detoxification pathway called Nrf2.
+- id: vitaone-inflammation-cheatsheet
+  location: 100 Anti-Inflammatory Foods — Page 06
+  quote: 'Kale: Sulforaphane activates Nrf2 → Detox, Cancer prevention'
 version: 2
 status: active
 updated_at: '2026-05-04'

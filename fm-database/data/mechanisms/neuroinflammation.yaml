@@ -1,12 +1,15 @@
 slug: neuroinflammation
 display_name: Neuroinflammation
 aliases:
-- brain inflammation
-- central nervous system inflammation
-- neuro-inflammatory pathway
 - glial-activation
-- central-nervous-system-inflammation
 - neuro-cytokine-load
+- central nervous system inflammation
+- central-nervous-system-inflammation
+- neuro-inflammatory pathway
+- brain inflammation
+- neuroinflammation-gut-axis
+- gut-brain inflammation
+- neuroinflammation via gut
 category: immune
 summary: Glial cell activation triggered by toxins, leaky gut, viral load, and oxidative
   stress increases inflammatory cytokine output (IL-6, TNF-α). Emotional suppression

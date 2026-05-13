@@ -1,9 +1,18 @@
 slug: tight-junction-dysfunction
 display_name: Tight Junction Dysfunction
 aliases:
-- paracellular leak
-- epithelial barrier breakdown
 - zonulin-mediated permeability
+- epithelial barrier breakdown
+- paracellular leak
+- tight-junction-dysregulation
+- tight junction breakdown
+- intestinal barrier disruption
+- gut barrier dysfunction
+- zonulin-upregulation
+- zonulin pathway
+- tight junction opening
+- elevated zonulin
+- zonulin signaling
 category: gut
 summary: Tight junctions between epithelial cells normally prevent paracellular transport
   of large molecules. When disrupted — by stress, infection, dysbiosis, food antigens,
@@ -40,6 +49,14 @@ sources:
   quote: We have tight junctions at the epithelial border. From the epithelium to
     epithelium, we have a very sophisticated structure that prevents any kind of pathologies
     or any kind of food particle that is entering in our human body or bloodstream.
+- id: coconote-fm-intestinal-permeability
+  location: Diagnostic Testing – Zonulin
+  quote: another test is zonulin and it is discovered in a 20 years back and that's
+    the enzyme or peptide secreted by the intestinal mucosa and they they regulate
+    the tight junctions.
+- id: vitaone-gut-cheatsheet
+  location: Leaky Gut & Inflammation — Why Leaky Gut Creates Chronic Inflammation
+  quote: Zonulin upregulation — Opens tight junctions — Persistent permeability
 version: 1
 status: active
 updated_at: '2026-05-05'

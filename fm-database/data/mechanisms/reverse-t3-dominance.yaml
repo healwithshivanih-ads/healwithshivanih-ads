@@ -2,8 +2,16 @@ slug: reverse-t3-dominance
 display_name: Reverse T3 Dominance
 aliases:
 - high rT3
-- rT3 elevation
 - metabolic brake
+- rT3 elevation
+- reverse-t3-elevation
+- rT3 dominance
+- functional hypothyroidism
+- thyroid resistance
+- rt3-t3-competition
+- RT3 dominance
+- reverse T3 block
+- RT3/T3 receptor competition
 category: endocrine
 summary: When T4 is preferentially converted to inactive reverse T3 (rT3) instead
   of active T3, rT3 competes with T3 for receptor binding sites, blocking thyroid
@@ -33,6 +41,12 @@ sources:
   location: 'Chapter 3: Thyroid Hormones'
   quote: High rT3 with low free T3 can create symptoms of hypothyroidism even when
     labs appear 'normal.'
+- id: vitaone-thyroid-cheatsheet
+  location: Biohacking Thyroid Function Cheatsheet — Balance Stress Response
+  quote: Chronic stress → high cortisol → ↑ rT3 → functional hypothyroidism
+- id: vitaone-health-coaching-toolkit
+  location: Factors that Affect Thyroid Function
+  quote: RT3 and T3 compete for binding sites
 version: 1
 status: active
 updated_at: '2026-05-02'

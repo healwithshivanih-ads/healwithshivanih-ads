@@ -1,9 +1,16 @@
 slug: vitamin-k2-calcium-trafficking
 display_name: Vitamin K2 Calcium Trafficking
 aliases:
-- calcium routing by K2
 - osteocalcin activation
+- calcium routing by K2
 - matrix Gla protein activation
+- matrix-gla-protein-activation
+- GLA protein activation
+- vascular calcification prevention
+- MGP
+- coagulation-factor-activation
+- vitamin K clotting
+- coagulation cascade vitamin K
 category: structural
 summary: Vitamin K2 activates osteocalcin and matrix Gla protein (MGP), directing
   calcium into bones and preventing arterial and soft-tissue calcification. MK-7 has
@@ -25,6 +32,11 @@ sources:
   location: Vitamin K (K1 & K2)
   quote: Vitamin K = calcium traffic controller - puts calcium into bone, keeps it
     out of arteries, kidneys, cartilage.
+- id: coconote-fm-vitamin-d3-k2
+  location: Vitamin K2 Functions
+  quote: vitamin K activates a protein which is called as GLA protein. This protein
+    is responsible that calcium doesn't deposit inside the blood vessels or the kidney,
+    but it gets mobilized and mineralized in the bone.
 version: 1
 status: active
 updated_at: '2026-05-02'

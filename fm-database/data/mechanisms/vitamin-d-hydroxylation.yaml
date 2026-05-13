@@ -1,9 +1,12 @@
 slug: vitamin-d-hydroxylation
 display_name: Vitamin D Hepatic and Renal Hydroxylation
 aliases:
-- 25-hydroxylation
 - 1-alpha-hydroxylation
+- 25-hydroxylation
 - calcidiol to calcitriol conversion
+- calcium-intestinal-absorption
+- vitamin D calcium uptake
+- gut calcium transport
 category: metabolic
 summary: Inactive vitamin D (from sun, food, or supplements) is first converted in
   the liver to 25-hydroxyvitamin D (calcidiol), then further converted in the kidneys

@@ -2,8 +2,32 @@ slug: dysbiosis-gut-microbiome-imbalance
 display_name: Dysbiosis (Gut Microbiome Imbalance)
 aliases:
 - gut dysbiosis
-- microbiome imbalance
 - chronic gut infection
+- microbiome imbalance
+- dysbiosis
+- gut flora imbalance
+- gut-dysbiosis-microbiome-imbalance
+- dysbiotic pattern
+- gut flora disruption
+- gut-dysbiosis
+- intestinal microbiome imbalance
+- dysbiotic bacteria
+- SIBO
+- candida overgrowth
+- intestinal dysbiosis
+- microbial imbalance
+- dysbacteriosis
+- abnormal gut flora
+- disrupted gut flora
+- altered microbiome
+- gut microbiome imbalance
+- microbiota disruption
+- polymicrobial dysbiosis
+- gut-microbiome-dysbiosis
+- microbiome disruption
+- fungal overgrowth
+- probiotic depletion
+- loss of gut flora
 category: gut
 summary: Dysbiosis refers to an imbalance between beneficial and pathogenic microorganisms
   in the gut. Unlike acute infection (e.g., gastroenteritis), dysbiosis represents
@@ -32,6 +56,54 @@ sources:
   quote: Dysbiosis means your imbalance in your gut microbiome, good versus bad bacteria
     or bad microbiome, so you have a deficiency of good or prebiotic and your increased
     growth of either pathogens or increased growth of some kind of unwanted microbes
+- id: coconote-fm-chronic-pain-fatigue
+  location: Digestion Section
+  quote: association between dysbiosis and neurological conditions often manifest
+    with chronic pain.
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Gut Dysbiosis and Pathogens Lecture
+  quote: whenever you use any kind of antimicrobial protocol make sure you understand
+    that patient or these microbes are very intelligent they know how to it is they
+    can change their genetics and they become resistance
+- id: vitaone-cv-cheatsheet
+  location: Dyslipidemia Cheatsheet — Section 4
+  quote: Gut health → Dysbiosis, increased intestinal permeability.
+- id: vitaone-cardiometabolic-diet-cheatsheet
+  location: The Science of Low-Carb Diets
+  quote: Reducing fermentable carbs starves dysbiotic bacteria.
+- id: vitaone-inflammation-cheatsheet
+  location: Autoimmune Disease Cheatsheet — Page 24
+  quote: Low Akkermansia & Faecalibacterium linked with immune dysfunction. Probiotic
+    monotherapy rarely sufficient—diet & prebiotics are crucial.
+- id: vitaone-gut-toolkit
+  location: The 5R Framework for Gut Restoration — Reinoculate
+  quote: Use of antibiotics kills both good and bad bacteria. Probiotics in the form
+    of supplements or food are often needed to help reestablish a balanced gut flora.
+- id: vitaone-health-coaching-toolkit
+  location: The 5R Framework for Gut Restoration
+  quote: Use of antibiotics kills both good and bad bacteria. Probiotics in the form
+    of supplements or food are often needed to help reestablish a balanced gut flora.
+- id: coconote-fm-sibo-sifo
+  location: Bacterial Count / Normal Gut Function
+  quote: This biosis happens when these bacteria either overgrow or there is a disproportion
+    between the good and the bad bacteria. So the good bacteria goes down and the
+    bad bacteria get a chance to have a rise and then they start producing the methane
+    gas and the hydrogen gas.
+- id: coconote-fm-intestinal-permeability
+  location: 5R Protocol – Re-inoculate
+  quote: if you have an infection or dysbiosis or deficiency of any kind of good bacteria,
+    then you have to replace that bacteria with probiotics.
+- id: coconote-fm-intestinal-permeability-anish
+  location: Triggers and Mediators of Intestinal Permeability
+  quote: Infection and dysbiosis if somebody having a chronic infection or maybe it's
+    an imbalance in your gut microbiome like you might be having an increase in a
+    fungal overgrowth or maybe decrease in your probiotic that dysbiosis can leads
+    to increase intestinal permeability.
+- id: barbara-oneil-healing-mind
+  location: Gut-Brain Connection Section
+  quote: Every cell that lines the gut is fed by the microbiome. Now if the microbiome
+    is compromised, we looked at how antibiotics can kill it off, we looked at how
+    statin drugs can kill it off, long-term painkillers can do it.
 version: 1
 status: active
 updated_at: '2026-05-05'

@@ -1,9 +1,25 @@
 slug: lps-endotoxemia
 display_name: LPS Endotoxemia
 aliases:
-- lipopolysaccharide translocation
 - metabolic endotoxemia
 - endotoxin load
+- lipopolysaccharide translocation
+- endotoxemia
+- lipopolysaccharide endotoxemia
+- LPS translocation
+- lps-translocation
+- LPS leakage
+- bacterial endotoxin leak
+- auto-intoxication
+- lps-endotoxin-production
+- lipopolysaccharide toxicity
+- gram-negative bacterial toxins
+- lps-mediated-immune-activation
+- lipopolysaccharide trigger
+- gram-negative endotoxin
+- lps-signaling
+- lipopolysaccharide signaling
+- TLR-4 activation
 category: immune
 summary: When gram-negative bacteria cross a disrupted intestinal barrier, their lipopolysaccharide
   (LPS) cell wall components enter systemic circulation, driving chronic inflammation,
@@ -44,6 +60,34 @@ sources:
     kind of or endotoxinia kind of for leaky gut, these kind of patients have a lot
     of symptoms. They also have gastrointestinal symptoms and they have non-gastrointestinal
     symptoms, depression, fatigue, autism, anxiety.
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: SIBO and endotoxemia mechanism discussion
+  quote: Those microbes die. And when they die, especially those fecal microbes, they
+    shed their components, especially components of their cell walls, like something
+    called lipopolysaccharide endotoxin. That enters the bloodstream. That's called
+    endotoxemia.
+- id: coconote-fm-intestinal-permeability
+  location: Diagnostic Testing – Cyrex Array 2
+  quote: LPS is lipopolysaccharide and what is LPS? They are the bioproducts of bacteria,
+    mostly the gram-negative bacteria. They secrete the LPS and LPS can pass locate
+    from the lumen and our immune system is highly reactive to LPS.
+- id: coconote-fm-intestinal-permeability-anish
+  location: Introduction / Barrier Function
+  quote: Endotoxemia means translocation of gram-negative or bacterial toxins from
+    the intestinal lumen to the body or bloodstream that is endotoxemia… if we have
+    a leaky gut then this translocation of these toxins from the lumen to the bloodstream
+    create immune response.
+- id: coconote-fm-liver-detox-part1
+  location: Internal Toxin Sources
+  quote: If your bad bacteria are not negative bacteria, they fertilize your fiber
+    and they create a lipopolysaccharide. So they're all becoming toxic from this.
+- id: coconote-fm-approach-inflammation
+  location: Gut Dysbiosis – Gram-Negative Bacteria and LPS
+  quote: this gram-negative bacteria, they ferment the fiber and they release the
+    lipopolysaccharide, LPS. And this LPS is actually a trigger for the immune system.
+- id: vitaone-gut-cheatsheet
+  location: Leaky Gut & Inflammation — Why Leaky Gut Creates Chronic Inflammation
+  quote: LPS signaling — Activates TLR-4 pathway — Metabolic inflammation
 version: 2
 status: active
 updated_at: '2026-05-05'

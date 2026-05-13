@@ -1,9 +1,12 @@
 slug: pancreatic-beta-cell-dysfunction
 display_name: Pancreatic β-Cell Dysfunction
 aliases:
-- beta-cell fatigue
-- beta-cell failure
 - beta-cell apoptosis
+- beta-cell failure
+- beta-cell fatigue
+- compensatory-hyperinsulinemia
+- postprandial hyperinsulinemia
+- reactive hyperinsulinemia
 category: endocrine
 summary: Sustained demand for compensatory insulin secretion exhausts β-cell reserve,
   leading to progressive β-cell fatigue, reduced insulin output, and ultimately apoptosis.
@@ -30,6 +33,10 @@ sources:
   location: Section 3.4 — Continuum of Blood-Sugar Dysfunction
   quote: Later, as pancreatic β-cells tire, insulin levels may normalise or fall even
     while glucose climbs.
+- id: coconote-fm-gtir
+  location: Glucose Tolerance Insulin Response Test Explanation
+  quote: dr craft many years back in the study and he find out insulin increase in
+    the initial resistance very early even before the blood sugar gets raised
 version: 1
 status: active
 updated_at: '2026-05-02'

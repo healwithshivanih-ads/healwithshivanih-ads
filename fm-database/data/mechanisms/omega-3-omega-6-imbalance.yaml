@@ -4,6 +4,28 @@ aliases:
 - n-3/n-6 ratio
 - PUFAs imbalance
 - pro-inflammatory lipid environment
+- omega-3-deficiency-inflammation
+- low omega-3
+- ALA-to-DHA conversion failure
+- plant-based omega-3 gap
+- omega-6-excess
+- excess omega-6
+- pro-inflammatory fat intake
+- linoleic acid excess
+- omega-6-to-omega-3-imbalance
+- pro-inflammatory fatty acid ratio
+- excess dietary omega-6
+- omega-6-omega-3-ratio
+- LA:ALA ratio
+- inflammatory fatty acid balance
+- n-6:n-3 ratio
+- cox-lox-enzyme-competition
+- delta-5 desaturase competition
+- fatty acid enzyme competition
+- omega6-omega3-competitive-inhibition
+- desaturase competition
+- elongase competition
+- fatty acid pathway competition
 category: metabolic
 summary: A modern dietary pattern with an estimated 20:1 omega-6 to omega-3 ratio
   (vs. a target of approximately 3:1) creates a pro-inflammatory environment that
@@ -30,6 +52,33 @@ sources:
   quote: If the patient is not taking an omega 3 for the last 30 years, they are having
     a ratio is 20:1. Now if we understand this ratio 20:1 omega 6 versus omega 3,
     what is our goal? Our goal is to maintain this 3:1.
+- id: coconote-fm-chronic-pain-fatigue
+  location: Personal Case Study / Omega-3
+  quote: So that was the culprit and I started now good quality omega-3 supplement
+    and now my acne went away completely and the only pain as if I think through that
+    when my CRP was elevated, the only pain I had... I felt like a muscle pain.
+- id: vitaone-cv-toolkit
+  location: A Guide to Cooking with Fats and Oils
+  quote: These fats and oils are also high in omega-6 fatty acids, which can contribute
+    to chronic inflammation in the body.
+- id: vitaone-health-coaching-toolkit
+  location: A Guide to Cooking with Fats and Oils
+  quote: These fats and oils are also high in omega-6 fatty acids, which can contribute
+    to chronic inflammation in the body.
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Essential Fatty Acids'
+  quote: Some research suggests that ratios 4:1 and lower may reduce inflammation
+    and lower the risk of chronic disease. Emphasis should be placed on increasing
+    EPA and DHA omega-3 consumption.
+- id: coconote-fm-approach-inflammation
+  location: Diet – Omega-3/6 Enzyme Competition
+  quote: the enzyme that work for omega-3 pathway and omega-6 pathway is same. It's
+    basically delta-5 is H2S. So if you have high omega-3 and low omega-6, then this
+    enzyme will move for omega-3.
+- id: coconote-fm-omega-3-fatty-acids
+  location: Omega-3 Metabolic Pathway Overview
+  quote: omega 3 and omega 6 families both they rely on same enzymes for conversion
+    to their end products. This means they compete with each other in the body.
 version: 1
 status: active
 updated_at: '2026-05-05'

@@ -1,13 +1,22 @@
 slug: low-progesterone
 display_name: Low Progesterone
 aliases:
-- progesterone-decline
-- progesterone-insufficiency
-- progesterone deficiency
-- progesterone insufficiency
-- low luteal progesterone
-- luteal phase defect
 - estrogen dominance relative
+- progesterone deficiency
+- progesterone-insufficiency
+- progesterone-decline
+- progesterone insufficiency
+- luteal phase defect
+- low luteal progesterone
+- pregnenolone-steal
+- cortisol steal
+- progesterone steal
+- pregnenolone shunting
+- cortisol-steal
+- pregnenolone steal
+- cortisol shunt
+- progesterone conversion to cortisol
+- HPA-axis hijack
 category: endocrine
 summary: Progesterone depletion resulting from pregnenolone steal, chronic stress,
   or poor luteal function. Manifests as PMS, anxiety, insomnia, estrogen dominance,
@@ -61,6 +70,17 @@ sources:
   location: 50 Hormones Cheatsheet — Progesterone row (p.4)
   quote: 'Anxiety, insomnia, PMS, estrogen dominance, PCOS. Solution: Vit B6, Mg,
     Vitex, stress reduction.'
+- id: coconote-fm-estrogen-dominance
+  location: Causes of Estrogen Dominance
+  quote: If you are having a lot of stress, the entire progesterone is going to convert
+    into 17 OH and the cortisol will consume everything to actually maintain your
+    stressors or maintain the inflammations going on inside the body.
+- id: coconote-fm-sex-hormones
+  location: Cortisol Steal
+  quote: as a part of stress response, the body tries to maintain cortisol level due
+    to its central role in mounting a stress response. So, what happens, that whatever
+    pregnenol is secreted from the cholesterol, the pregnenol will convert into 17-hydroxypregnenol
+    and everything is going to convert into cortisol only
 evidence_tier: plausible_emerging
 version: 3
 status: active

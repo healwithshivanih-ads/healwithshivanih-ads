@@ -5,6 +5,10 @@ aliases:
 - GSH deficiency
 - antioxidant depletion
 - master antioxidant deficiency
+- glutathione-synthesis
+- GSH synthesis
+- glutathione pathway
+- redox balance
 category: metabolic
 summary: Glutathione is the primary intracellular antioxidant, composed of cysteine,
   glycine, and glutamic acid. Depletion is common in chronic disease and inflammation,
@@ -46,6 +50,10 @@ sources:
   quote: There is a master antioxidant in the cell we call is Glutathione. Most patients
     with chronic disease and most patients with any kind of inflammation, they were
     actually low Glutathione.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXZNALUjPBQ/
+  quote: NAC-rich foods (eggs, garlic, onions) build glutathione faster than supplements
+    alone.
 version: 2
 status: active
 updated_at: '2026-05-05'

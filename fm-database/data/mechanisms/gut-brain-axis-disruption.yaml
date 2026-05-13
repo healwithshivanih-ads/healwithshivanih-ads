@@ -1,10 +1,20 @@
 slug: gut-brain-axis-disruption
 display_name: Gut-Brain Axis Disruption
 aliases:
-- gut-brain-axis
-- gut-brain dysregulation
-- enteric nervous system dysregulation
 - microbiome-mood axis disruption
+- gut-brain dysregulation
+- gut-brain-axis
+- enteric nervous system dysregulation
+- gut-brain-axis-dysregulation
+- gut-brain imbalance
+- ENS dysfunction
+- vagus nerve dysregulation
+- serotonin-gut-brain
+- mind-gut dysregulation
+- gut-brain-signaling
+- gut-brain axis pathway
+- enteric-CNS communication
+- microbiome-brain crosstalk
 category: gut
 summary: Stress disrupts gut motility, permeability, microbiome balance, vagal tone,
   mast cell activation, and neurotransmitter-related gut signaling, producing IBS,
@@ -41,6 +51,17 @@ sources:
   location: Key Mechanisms Explained — gut-brain-axis-disruption
   quote: Stress is described as disrupting gut motility, permeability, microbiome
     balance, vagal tone, mast cell activation, and neurotransmitter-related gut signaling.
+- id: vitaone-gut-cheatsheet
+  location: Gut Health Cheatsheet
+  quote: IBS = functional, not structural. Treat gut-brain axis.
+- id: vitaone-health-coaching-toolkit
+  location: Low FODMAP Vegetarian Diet Plan introduction
+  quote: Your gut listens to your nervous system, so we'll pair the food plan with
+    vagus-calming lifestyle rituals.
+- id: vitaone-gut-toolkit
+  location: 'Gut-Brain Axis: Nutrition''s Impact on Mental Health'
+  quote: The gut produces around 90% of the body's serotonin, the 'feel-good' neurotransmitter,
+    linking it directly to mental well-being.
 version: 1
 status: active
 updated_at: '2026-05-06'

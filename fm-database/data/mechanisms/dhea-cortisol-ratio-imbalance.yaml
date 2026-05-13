@@ -1,8 +1,15 @@
 slug: dhea-cortisol-ratio-imbalance
 display_name: DHEA:Cortisol Ratio Imbalance
 aliases:
-- cortisol DHEA ratio
 - adrenal androgen depletion
+- cortisol DHEA ratio
+- cortisol-dhea-imbalance
+- adrenal exhaustion
+- DHEA depletion
+- cortisol-DHEA ratio shift
+- cortisol-DHEA ratio dysregulation
+- stress adaptation imbalance
+- adrenal ratio shift
 category: endocrine
 summary: Chronic HPA activation preferentially shunts adrenal steroidogenesis toward
   cortisol, depleting DHEA and its downstream hormones. Low DHEA relative to cortisol
@@ -27,6 +34,14 @@ sources:
   location: POST https://www.instagram.com/p/DXg8Y9NjIwF/
   quote: Patients with 'normal cortisol' but low DHEA, progesterone, or melatonin
     — still anxious, fatigued, and inflamed.
+- id: vitaone-health-coaching-toolkit
+  location: Hypercortisolism
+  quote: If this becomes chronic, the adrenals can no longer keep up with the demand,
+    and DHEA levels begin to fall, signifying adrenal exhaustion.
+- id: vitaone-fm-adrenal-hormones
+  location: Key Mechanisms Explained — cortisol-dhea-imbalance
+  quote: Cortisol and DHEA are framed as opposing or balancing stress-adaptation markers,
+    with high cortisol and low DHEA reflecting impaired resilience.
 version: 1
 status: active
 updated_at: '2026-05-05'

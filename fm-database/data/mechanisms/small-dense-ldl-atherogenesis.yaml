@@ -1,9 +1,15 @@
 slug: small-dense-ldl-atherogenesis
 display_name: Small Dense LDL Particle Atherogenesis
 aliases:
-- LDL pattern B
 - sdLDL
+- LDL pattern B
 - small particle LDL
+- small-dense-ldl-endothelial-penetration
+- Pattern B LDL
+- ldl-particle-size-atherogenicity
+- small dense LDL
+- LDL particle number
+- pattern B LDL
 category: metabolic
 summary: Small, dense LDL particles are more atherogenic than large, buoyant LDL particles.
   They penetrate arterial walls more readily and are more susceptible to oxidation.
@@ -31,6 +37,14 @@ sources:
   location: LDL Particle Number and Risk
   quote: These small particles, what we called years ago, LDL pattern B are much more
     aggressive, much more likely to get into the lining of the blood vessel.
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: LDL particle size section
+  quote: Small means they are the size is very small so they can enter endothelium
+    easy so you can see the large number they can go and they can cross the endothelial
+    wall and they are actually getting the risk.
+- id: coconote-fm-biomarkers-cvs
+  location: LDL Size and Atherogenicity
+  quote: So here, the LDL size is matter compared to the concentration of LDL.
 version: 1
 status: active
 updated_at: '2026-05-05'

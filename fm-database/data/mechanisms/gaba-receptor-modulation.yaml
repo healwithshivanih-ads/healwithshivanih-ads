@@ -1,8 +1,14 @@
 slug: gaba-receptor-modulation
 display_name: GABA Receptor Modulation by Magnesium
 aliases:
-- gaba-a-receptor-activation
 - magnesium-gaba-pathway
+- gaba-a-receptor-activation
+- gaba-a-receptor-modulation
+- gabaergic-tone
+- allopregnanolone-signaling
+- GABA deficiency
+- excitatory dominance
+- glutamate excess
 category: neurological
 summary: Magnesium is required for the production and activation of GABA receptors
   in the brain, which mediate calming and inhibitory neurotransmission. Deficiency
@@ -27,6 +33,12 @@ sources:
   location: Vicious cycle of magnesium deficiency / nervous system section
   quote: Magnesium is responsible for the production of certain receptors which give
     a calming effect like the GABA receptors.
+- id: vitaone-skill-practice-guide
+  location: practice_guide.md, Sleep & Nervous System sections
+- id: vitaone-adrenal-cheatsheet
+  location: The Biochemical-Emotional Link (p.15)
+  quote: 'GABA-Glutamate Balance: Excitatory dominance → Restlessness, racing thoughts,
+    insomnia.'
 version: 1
 status: active
 updated_at: '2026-05-05'

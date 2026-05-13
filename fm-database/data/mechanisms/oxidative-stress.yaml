@@ -1,18 +1,27 @@
 slug: oxidative-stress
 display_name: Oxidative Stress / Free Radical Burden
 aliases:
+- ROS accumulation
 - reactive oxygen species excess
 - antioxidant deficiency
-- reactive oxygen species
-- ROS elevation
 - glutathione depletion
-- free radical burden
-- free radical damage
-- ROS accumulation
-- ROS overload
-- ROS imbalance
-- ROS burden
 - antioxidant insufficiency
+- free radical burden
+- reactive oxygen species
+- free radical damage
+- ROS imbalance
+- ROS overload
+- ROS elevation
+- ROS burden
+- oxidative-stress-and-inflammation
+- ROS-driven inflammation
+- antioxidant defense
+- NF-kB activation
+- oxidative-stress-and-ages
+- glycation
+- AGEs
+- advanced glycation end products
+- glycated proteins
 category: metabolic
 summary: Imbalance between free radical production and antioxidant defence, driving
   cellular damage. Fasting and polyphenol-rich foods (berries, pomegranate, turmeric,
@@ -103,6 +112,16 @@ sources:
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
   quote: N-acetylcysteine promotes the production of glutathione, a potent antioxidant
     that supports immune function.
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Key Mechanisms Explained – oxidative-stress-and-inflammation
+  quote: The source frames vitamin C, vitamin E, selenium, copper, manganese, omega-3,
+    CoQ10, NAC, curcumin, boswellia, green tea extract, and antioxidant foods as supports
+    against oxidative stress and inflammation.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Key Mechanisms Explained — oxidative-stress-and-inflammation
+  quote: The source frames vitamin C, vitamin E, selenium, copper, manganese, omega-3,
+    CoQ10, NAC, curcumin, boswellia, green tea extract, and antioxidant foods as supports
+    against oxidative stress and inflammation.
 version: 7
 status: active
 updated_at: '2026-05-04'

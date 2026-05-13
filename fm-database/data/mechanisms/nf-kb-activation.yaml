@@ -3,6 +3,14 @@ display_name: NF-κB Activation
 aliases:
 - nuclear factor kappa B
 - NF-kB inflammatory pathway
+- nf-kappa-b-activation
+- NF-kappaB pathway
+- NF-kB signaling
+- nf-kb-inflammatory-signalling
+- NF-kB pathway
+- cytokine signalling
+- nfkb-activation
+- pro-inflammatory gene expression
 category: signaling
 summary: Master transcription factor that upregulates pro-inflammatory cytokines (TNF-α,
   IL-6, IL-1β) and drives chronic inflammation. Inhibited by curcumin, omega-3s, EGCG,
@@ -31,6 +39,18 @@ sources:
 - id: vitaone-inflammation-cheatsheet
   location: 100 Anti-Inflammatory Foods — Page 06
   quote: 'Turmeric (Curcumin): Inhibits NF-κB, lowers CRP'
+- id: coconote-fm-approach-inflammation
+  location: NF-kB Pathway – Million Dollar Slide
+  quote: when your cells see like, you know, pattern, it may be a pathological pattern,
+    it may be an infective pattern, it may be just food. But whatever the inflammatory
+    trigger, when your NF-kappa-B activated, then you have downstream pathways.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXZNALUjPBQ/
+  quote: Omega-3s, turmeric, and green tea modulate NF-κB and cytokine expression
+    at the cellular level.
+- id: vitaone-gut-cheatsheet
+  location: Leaky Gut & Inflammation — Why Leaky Gut Creates Chronic Inflammation
+  quote: NF-κB activation — Pro-inflammatory gene expression — Pain, fatigue
 version: 1
 status: active
 updated_at: '2026-05-02'

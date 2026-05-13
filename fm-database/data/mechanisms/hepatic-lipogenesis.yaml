@@ -3,6 +3,9 @@ display_name: Hepatic Lipogenesis
 aliases:
 - de novo lipogenesis
 - liver fat synthesis
+- vldl-overproduction-from-excess-carbs
+- hepatic VLDL synthesis
+- carbohydrate-driven lipogenesis
 category: metabolic
 summary: Conversion of excess dietary carbohydrates and sugars into triglycerides
   in the liver. A key driver of NAFLD. Suppressed by low-carb diets.
@@ -24,6 +27,9 @@ sources:
 - id: vitaone-cardiometabolic-diet-cheatsheet
   location: Functional Medicine Clinical Applications
   quote: Decreases hepatic lipogenesis and inflammation
+- id: vitaone-cvs-risk-assessment
+  location: Understand Blood Lipid (Slide 6)
+  quote: VLDL is synthesized in the liver, from excess dietary carbohydrates.
 version: 1
 status: active
 updated_at: '2026-05-02'

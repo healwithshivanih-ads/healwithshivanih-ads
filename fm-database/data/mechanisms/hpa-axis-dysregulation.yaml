@@ -2,44 +2,52 @@ slug: hpa-axis-dysregulation
 display_name: HPA Axis Dysregulation
 aliases:
 - hpa-axis-dysfunction
-- chronic-stress-response
-- cortisol-dysregulation
-- adrenal-thyroid axis imbalance
-- cortisol dysregulation
-- adrenal fatigue
-- cortisol steal
-- pregnenolone steal
-- adrenal stress response
-- HPA dysfunction
-- HPA overdrive
-- cortisol-DHEA imbalance
-- adrenal axis dysfunction
 - allostatic overload
-- chronic cortisol elevation
-- stress-glucose axis
-- adrenal-gut axis
-- stress response gut
-- adrenal dysfunction
-- stress-immune axis
-- chronic stress response
-- adrenal-thyroid connection
-- cortisol excess
-- stress hyperglycaemia
-- hypothalamic-pituitary-adrenal axis dysfunction
-- stress axis dysregulation
-- hypothalamic-pituitary-adrenal dysregulation
-- stress axis overactivation
-- chronic-cortisol-activation
-- adrenal-overdrive
-- stress axis dysfunction
-- cortisol rhythm disruption
-- adrenal dysregulation
-- stress-axis imbalance
 - stress hormone imbalance
-- adrenal-thyroid-sex hormone axis
-- hypothalamic-pituitary-adrenal dysfunction
-- stress-hormone imbalance
+- adrenal-thyroid connection
+- adrenal axis dysfunction
+- stress axis dysfunction
+- chronic stress response
 - hypothalamic-pituitary-adrenal axis
+- cortisol-dysregulation
+- adrenal fatigue
+- chronic-cortisol-activation
+- cortisol excess
+- stress-immune axis
+- hypothalamic-pituitary-adrenal dysregulation
+- adrenal-overdrive
+- hypothalamic-pituitary-adrenal dysfunction
+- chronic cortisol elevation
+- chronic-stress-response
+- adrenal-gut axis
+- HPA dysfunction
+- stress axis overactivation
+- cortisol steal
+- adrenal dysregulation
+- adrenal-thyroid axis imbalance
+- adrenal dysfunction
+- adrenal-thyroid-sex hormone axis
+- stress response gut
+- hypothalamic-pituitary-adrenal axis dysfunction
+- pregnenolone steal
+- stress-hormone imbalance
+- stress axis dysregulation
+- cortisol rhythm disruption
+- cortisol dysregulation
+- adrenal stress response
+- cortisol-DHEA imbalance
+- stress-glucose axis
+- stress-axis imbalance
+- stress hyperglycaemia
+- HPA overdrive
+- hpa-axis-gut-stress-response
+- stress-gut axis
+- cortisol gut permeability
+- sympathetic nervous system gut effect
+- hpa-axis-regulation
+- hypothalamic-pituitary-adrenal axis regulation
+- cortisol regulation
+- stress axis modulation
 category: endocrine
 summary: Chronic psychological and physiological stress chronically activates the
   HPA axis, eventually disrupting the diurnal cortisol rhythm and depleting DHEA and
@@ -294,6 +302,11 @@ sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXtzQLWjKjv/
   quote: 'Forgetting stress biology: high cortisol alone can derail ovulation.'
+- id: coconote-fm-intestinal-permeability-anish
+  location: Triggers and Mediators of Intestinal Permeability
+  quote: Stress as we know stress is going to change your autonomic nervous system
+    and you put on sympathetic nervous system and cortisol and then adrenaline, non-adrenaline
+    or the stress hormone can increase the intestinal permeability.
 evidence_tier: plausible_emerging
 version: 20
 status: active

@@ -1,8 +1,17 @@
 slug: aromatase-activity
 display_name: Aromatase Activity
 aliases:
-- aromatization
 - androgen-to-estrogen conversion
+- aromatization
+- aromatase-overactivity
+- excess aromatization
+- high aromatase
+- aromatase-upregulation
+- aromatase activity
+- testosterone-to-estrogen conversion
+- aromatase-upregulation-by-arachidonic-acid
+- AA-driven estrogen excess
+- inflammation-driven aromatase
 category: endocrine
 summary: Aromatase enzyme converts androgens (androstenedione, testosterone) into
   estrogens (estrone, estradiol). Elevated aromatase activity — particularly in adipose
@@ -28,6 +37,18 @@ sources:
   quote: aromatase activity is very important, you always check and piece away the
     endosteic deion because the endosteic deion is appropriately constantly converting
     into estrogen or estrone which is causing the estrogen dominance.
+- id: vitaone-sex-hormones-cheatsheet
+  location: Top Nutrients to Balance Estrogen
+  quote: Regulates aromatase enzyme, balancing estrogen–testosterone ratio.
+- id: coconote-fm-estrogen-dominance
+  location: How Does Inflammation Relate to Estrogen?
+  quote: If there is a lot of inflammation, these inflammatory markers will upregulate
+    the aromatase activity, they will form estrogen. The insulin resistance is also
+    forming this estrogen.
+- id: coconote-fm-omega-3-fatty-acids
+  location: Arachidonic Acid Cascade Slide
+  quote: arachidonic acid increases the aromatase enzyme activity. So aromatase...is
+    an enzyme which converts androgens like testosterone into estrogen.
 version: 1
 status: active
 updated_at: '2026-05-05'

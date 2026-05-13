@@ -1,18 +1,21 @@
 slug: chronic-inflammation
 display_name: Chronic Systemic Inflammation
 aliases:
+- cytokine load
+- meta-inflammation
+- inflammatory-cytokine-transmission
+- inflammatory cytokine production
+- low-grade systemic inflammation
+- systemic inflammation
+- low-grade inflammation
+- inflammaging
+- inflammatory burden
+- systemic inflammatory state
 - inflammatory-cytokine-release
 - inflammatory-cytokine-signaling
-- inflammatory-cytokine-transmission
-- low-grade inflammation
-- systemic inflammatory state
-- systemic inflammation
-- inflammaging
-- cytokine load
-- low-grade systemic inflammation
-- meta-inflammation
-- inflammatory cytokine production
-- inflammatory burden
+- chronic-systemic-inflammation
+- systemic inflammatory burden
+- inflammation
 category: immune
 summary: Persistent low-grade inflammation drives all six primary cardiometabolic
   risk patterns. It is reflected by elevated hsCRP, ESR, ferritin, and IL-6. Sources
@@ -136,6 +139,11 @@ sources:
   quote: if your immune system is active, immune system has a chronic inflammation
     in the body, then you can find out chronic inflammation by just taking an HSE
     or ESR level.
+- id: coconote-fm-body-composition-bmi
+  location: Case Discussion Section
+  quote: Her pain in her body, her inflammation, her signs of increased intestinal
+    permeability, her uncertainty, her fear, the injury, her poor diet, it's all interconnected
+    and influencing the inflammation in her body.
 evidence_tier: strong
 version: 8
 status: active

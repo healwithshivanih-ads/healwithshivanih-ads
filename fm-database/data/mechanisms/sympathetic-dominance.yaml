@@ -1,9 +1,34 @@
 slug: sympathetic-dominance
 display_name: Sympathetic Dominance (Fight-or-Flight)
 aliases:
-- fight-or-flight activation
-- SNS overactivation
 - catecholamine excess
+- SNS overactivation
+- fight-or-flight activation
+- sympathetic-nervous-system-activation
+- fight-or-flight response
+- sympathoadrenal activation
+- adrenaline surge
+- fight-or-flight
+- SNS overdrive
+- sympathetic dominance
+- stress response
+- SNS activation
+- adrenergic activation
+- sympathetic-overdrive
+- chronic stress response
+- autonomic dysregulation
+- vagal underactivity
+- low vagal tone
+- sympathetic hyperactivation
+- chronic sns activation
+- autonomic imbalance
+- low hrv
+- reduced heart rate variability
+- sustained stress arousal
+- anxiety physiology
+- sympathoadrenal-activation
+- sympathetic nervous system activation
+- noradrenaline release
 category: neurological
 summary: Persistent fight-or-flight activation increases catecholamines, heart rate,
   blood pressure, and shallow breathing, suppressing parasympathetic recovery and
@@ -41,6 +66,24 @@ sources:
   location: Key Mechanisms Explained — sympathetic-dominance
   quote: Persistent fight-or-flight activation is described as increasing catecholamines,
     heart rate, blood pressure, shallow breathing, and alert-mode physiology.
+- id: vitaone-adrenal-toolkit
+  location: Hypercortisolism
+  quote: As adrenaline surges during stress, digestive enzymes are simultaneously
+    lowered, and blood sugar levels initially rise.
+- id: ask-expert-coaching-stress-kids
+  location: Stress Client Topic Discussion
+  quote: just to get out of her sympathetic nervous system. I just kind of explain
+    it to her what it does.
+- id: espeland-2022-cold-water-immersion
+  location: Pain and Inflammation
+  quote: Potential analgesic effects via noradrenaline release and sympathetic nervous
+    system activation.
+- id: vitaone-skill-practice-guide
+  location: practice_guide.md, Stress + Autonomic Balance section
+- id: vitaone-health-coaching-toolkit
+  location: Hypercortisolism
+  quote: As adrenaline surges during stress, digestive enzymes are simultaneously
+    lowered, and blood sugar levels initially rise.
 version: 1
 status: active
 updated_at: '2026-05-06'

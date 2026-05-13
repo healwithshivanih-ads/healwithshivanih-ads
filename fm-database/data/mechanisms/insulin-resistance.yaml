@@ -1,37 +1,38 @@
 slug: insulin-resistance
 display_name: Insulin Resistance
 aliases:
-- hyperinsulinemia
-- blood-sugar-instability
-- metabolic-dysfunction
-- impaired insulin signaling
-- metabolic insulin resistance
-- glucose dysregulation
-- metabolic syndrome
-- impaired insulin signalling
-- peripheral insulin resistance
-- cellular insulin insensitivity
-- impaired glucose metabolism
 - impaired insulin sensitivity
-- hyperinsulinaemia
-- IR
-- metabolic inflammation
-- poor insulin sensitivity
-- dysglycemia
-- blood sugar dysregulation
-- IRS-1 pathway dysfunction
-- GLUT-4 translocation failure
-- tissue insulin unresponsiveness
-- lowered insulin sensitivity
-- tissue insulin resistance
-- metabolic insulin dysfunction
-- metabolic syndrome pathway
-- glucose intolerance
-- Syndrome X
-- cellular insulin resistance
-- carbohydrate metabolic dysfunction
 - pre-diabetes metabolic pattern
+- impaired insulin signaling
+- GLUT-4 translocation failure
+- poor insulin sensitivity
+- metabolic syndrome
+- glucose dysregulation
+- dysglycemia
+- glucose intolerance
+- cellular insulin insensitivity
+- carbohydrate metabolic dysfunction
+- tissue insulin resistance
+- blood sugar dysregulation
+- blood-sugar-instability
+- impaired glucose metabolism
+- metabolic inflammation
+- peripheral insulin resistance
+- IRS-1 pathway dysfunction
+- metabolic insulin dysfunction
+- impaired insulin signalling
+- hyperinsulinemia
+- cellular insulin resistance
+- tissue insulin unresponsiveness
+- metabolic syndrome pathway
+- metabolic-dysfunction
+- hyperinsulinaemia
 - insulin dysregulation
+- lowered insulin sensitivity
+- metabolic insulin resistance
+- Syndrome X
+- IR
+- insulin-receptor-resistance
 category: metabolic
 summary: Reduced cellular sensitivity to insulin, driven by excess refined carbohydrate
   intake, sedentary behaviour, visceral adiposity, and chronic inflammation. Central
@@ -335,6 +336,10 @@ sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DX1jE67jI4m/
   quote: Insulin resistance is the primary driver in most metabolic diseases
+- id: coconote-fm-gtir
+  location: Glucose Tolerance Insulin Response Test Explanation
+  quote: when patients start having insulin resistance they alter the initial receptor
+    and insulin secretion pattern
 evidence_tier: strong
 version: 25
 status: active

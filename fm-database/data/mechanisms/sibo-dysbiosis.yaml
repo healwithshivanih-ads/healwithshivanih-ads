@@ -1,9 +1,15 @@
 slug: sibo-dysbiosis
 display_name: Small Intestinal Bacterial Overgrowth / Gut Dysbiosis
 aliases:
-- SIBO
 - gut dysbiosis
+- SIBO
 - microbial imbalance
+- sibo-fermentation
+- small intestinal bacterial overgrowth
+- fermentation dysbiosis
+- sibo-from-low-acid
+- bacterial overgrowth from low stomach acid
+- gastric acid antimicrobial failure
 category: gut
 summary: Overgrowth of pathogenic or imbalanced gut bacteria produces excess beta-glucuronidase,
   which reabsorbs excreted estrogen. Gut dysbiosis also impairs absorption of key
@@ -32,6 +38,15 @@ sources:
   quote: a classical case of small intestinal bacterial overgrowth, dysbiosis. will
     have constant reabsorption of estrogen in their body causing an estrogen dominance
     because the detoxification is poor.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXbyLyYjP__/
+  quote: Onion & garlic sensitivity usually indicates fructan intolerance + SIBO,
+    not an allergy
+- id: coconote-fm-hypochlorhydria
+  location: Consequences of Chronic Low Stomach Acid
+  quote: Whenever there is low stomach acid, it could use in urban growth. There could
+    be a small intestinal bacterial overgrowth which would be covered in the further
+    modules.
 version: 1
 status: active
 updated_at: '2026-05-05'

@@ -3,6 +3,14 @@ display_name: Stress-Induced Cortisol Elevation
 aliases:
 - HPA-axis activation
 - hypercortisolism
+- cortisol-excess
+- hypercortisolaemia
+- elevated cortisol
+- glucocorticoid excess
+- hpa-axis-overactivation
+- HPA dysregulation
+- chronic HPA activation
+- cortisol overproduction
 category: endocrine
 summary: Chronic stress raises cortisol levels, which can dysregulate pancreatic secretory
   function and contribute to downstream enzyme imbalances and digestive dysfunction.
@@ -21,6 +29,14 @@ sources:
   location: Causes of Enzyme Deficiency
   quote: Stress increases the cortisol hormone, definitely, that is why it increases
     the production of pancreatic enzymes.
+- id: vitaone-adrenal-toolkit
+  location: Hypercortisolism
+  quote: Lowered insulin sensitivity, with a higher susceptibility to diabetes, Loss
+    of the capacity to produce sufficient DHEA.
+- id: vitaone-fm-adrenal-hormones
+  location: Key Mechanisms Explained — hpa-axis-overactivation
+  quote: The source describes chronic perceived stress as activating the HPA axis,
+    raising cortisol and lowering DHEA.
 version: 1
 status: active
 updated_at: '2026-05-05'

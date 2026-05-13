@@ -1,10 +1,17 @@
 slug: altered-gi-motility
 display_name: Altered GI Motility
 aliases:
-- dysmotility
-- gut dysmotility
-- intestinal stasis
 - slow transit
+- gut dysmotility
+- dysmotility
+- intestinal stasis
+- impaired-gut-motility
+- slow motility
+- stasis
+- migrating motor complex dysfunction
+- gut-motility-dysregulation
+- altered intestinal motility
+- MMC dysfunction
 category: gut
 summary: Reduced or dysregulated movement of intestinal contents creates stasis that
   allows bacterial and fungal overgrowth. Can be structural (anatomic abnormalities,
@@ -31,6 +38,13 @@ sources:
   location: Pathogenesis of SIBO
   quote: And altered GI motility, it could be structural one also or it could be a
     functional one as well.
+- id: vitaone-gut-cheatsheet
+  location: SIBO Cheatsheet — Root Causes
+  quote: Impaired motility (vagus dysfunction, hypothyroidism, diabetes, adhesions,
+    opioid use) — Root Causes [of SIBO]
+- id: vitaone-elimination-diet-toolkit
+  location: FODMAP Plan SOS Solutions — Bloating and Gas
+  quote: Enhances MMC (migrating motor complex).
 version: 1
 status: active
 updated_at: '2026-05-05'
