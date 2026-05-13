@@ -34,6 +34,8 @@ import {
   type LabPanel,
   type LabSex,
 } from "@/lib/fmdb/lab-panels";
+import { useFormDraft } from "@/lib/fmdb/use-form-draft";
+import { FmFormDraftClear } from "@/components/fm";
 
 const PRIMARY = "#B8770A";
 
@@ -92,6 +94,23 @@ export function DiscoveryForm({
     return out;
   }, [visiblePanels, clientSex]);
   const [selectedLabs, setSelectedLabs] = useState<Set<string>>(initialLabs);
+
+  // Persist a serialisable mirror of selectedLabs so the draft survives reloads.
+  // Set<string> doesn't roundtrip through JSON, so we use a derived array.
+  const selectedLabsArr = useMemo(() => [...selectedLabs], [selectedLabs]);
+  const setSelectedLabsArr = (arr: string[]) => setSelectedLabs(new Set(arr));
+
+  const { clearDraft, hasSavedDraft } = useFormDraft(
+    `fm-discovery-draft-${clientId}`,
+    { chiefConcern, clientWords, foodDays, outcome, selectedLabsArr },
+    {
+      chiefConcern: setChiefConcern,
+      clientWords: setClientWords,
+      foodDays: setFoodDays,
+      outcome: setOutcome,
+      selectedLabsArr: setSelectedLabsArr,
+    },
+  );
 
   const togglePanel = (group: string) =>
     setExpandedPanels((s) => {
@@ -166,6 +185,7 @@ export function DiscoveryForm({
         requested_labs: [...selectedLabs],
       });
       if (result.ok) {
+        clearDraft();
         toast.success(
           `Discovery saved for ${displayName.split(" ")[0]} — ${totalLabs} labs queued`,
         );
@@ -179,6 +199,20 @@ export function DiscoveryForm({
 
   return (
     <div>
+      <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 8 }}>
+        <FmFormDraftClear
+          onClear={() => {
+            setChiefConcern("");
+            setClientWords("");
+            setFoodDays("7");
+            setOutcome("good_fit");
+            setSelectedLabs(new Set(initialLabs));
+            clearDraft();
+          }}
+          hasDraft={hasSavedDraft}
+          title="Clear every field and discard the saved in-progress draft"
+        />
+      </div>
       <FmFormSection
         title="Chief concern"
         description="What brought them in today? Single paragraph is enough."

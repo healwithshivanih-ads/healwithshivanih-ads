@@ -8,6 +8,10 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { generateInfoPack } from "./actions";
+import { useFormDraft } from "@/lib/fmdb/use-form-draft";
+import { FmFormDraftClear } from "@/components/fm";
+
+const DRAFT_KEY = "fm-info-pack-draft-v1";
 
 // Pre-built topic templates to make it quick to start
 const TEMPLATES = [
@@ -65,6 +69,19 @@ export function InfoPackGeneratorForm() {
   const [slug, setSlug] = useState("");
   const [preview, setPreview] = useState<null | { papers_used: number; pmids: string[] }>(null);
 
+  const { clearDraft, hasSavedDraft } = useFormDraft(
+    DRAFT_KEY,
+    { topic, keywordInput, keywords, audience, maxPapers, slug },
+    {
+      topic: setTopic,
+      keywordInput: setKeywordInput,
+      keywords: setKeywords,
+      audience: setAudience,
+      maxPapers: setMaxPapers,
+      slug: setSlug,
+    },
+  );
+
   const applyTemplate = (t: (typeof TEMPLATES)[0]) => {
     setTopic(t.topic);
     setKeywords(t.keywords);
@@ -105,6 +122,7 @@ export function InfoPackGeneratorForm() {
     }).then(
       (res) => {
         if (res.ok) {
+          clearDraft();
           toast.success(
             `✓ Evidence brief "${res.title}" saved — ${res.papers_used} papers, ~${res.word_count} words.`,
             { duration: 10000 },
@@ -129,6 +147,22 @@ export function InfoPackGeneratorForm() {
 
   return (
     <div className="space-y-6">
+      <div className="flex justify-end">
+        <FmFormDraftClear
+          onClear={() => {
+            setTopic("");
+            setKeywordInput("");
+            setKeywords([]);
+            setAudience("patient");
+            setMaxPapers(12);
+            setSlug("");
+            setPreview(null);
+            clearDraft();
+          }}
+          hasDraft={hasSavedDraft}
+          title="Clear every field and discard the saved in-progress draft"
+        />
+      </div>
       {/* Quick-start templates */}
       <div>
         <p className="text-sm font-medium mb-2">Quick-start templates</p>

@@ -72,8 +72,10 @@ import {
   FmTextarea,
   FmFormSection,
   FmSymptomPicker,
+  FmFormDraftClear,
   type FmSymptomOption,
 } from "@/components/fm";
+import { useFormDraft } from "@/lib/fmdb/use-form-draft";
 import { IFM_NODES } from "@/lib/fmdb/ifm-matrix";
 import { LabUploadPanel } from "@/app/clients/[id]/lab-upload-panel";
 import { FunctionalTestPanel } from "@/app/clients/[id]/functional-test-panel";
@@ -381,6 +383,62 @@ export function IntakeForm({
   // 11 · Coach notes
   const [coachNotes, setCoachNotes] = useState(existingNotes);
 
+  // ── Draft persistence ──────────────────────────────────────────────
+  // Snapshots every text/number/array form field to localStorage on every
+  // change. Per-client key so each client's intake has its own draft.
+  // Survives 404s, refreshes, tab closes, browser crashes. Cleared on
+  // successful save.
+  const { clearDraft, hasSavedDraft } = useFormDraft(
+    `fm-intake-draft-${clientId}`,
+    {
+      symptoms, conditions, allergiesArr, goals, medicalHistory,
+      digestionNotes, sleepNotes, energyPattern, menstrualNotes,
+      stressResponse, childhoodHistory, toxicExposures,
+      cycleStatus, lmp, cycleLen, cycleReg, menopauseStarted,
+      pregnancyStatus, pregnancyDueDate, lactationStarted,
+      chiefComplaint, hpi, transcriptNotes,
+      height, weight, bodyFat, waist, hip, bpSys, bpDia, hr,
+      dietaryPreference, foodsToAvoid, nonNegotiables, reportedTriggers,
+      medications, familyHx,
+      sleep, stress, movement, nutrition, connection,
+      supplementHx, whatWorked, whatDidntWork,
+      timeline, ifmScores, ifmNotes,
+      coachNotes,
+    },
+    {
+      symptoms: setSymptoms, conditions: setConditions,
+      allergiesArr: setAllergiesArr, goals: setGoals,
+      medicalHistory: setMedicalHistory,
+      digestionNotes: setDigestionNotes, sleepNotes: setSleepNotes,
+      energyPattern: setEnergyPattern, menstrualNotes: setMenstrualNotes,
+      stressResponse: setStressResponse,
+      childhoodHistory: setChildhoodHistory,
+      toxicExposures: setToxicExposures,
+      cycleStatus: setCycleStatus, lmp: setLmp, cycleLen: setCycleLen,
+      cycleReg: setCycleReg, menopauseStarted: setMenopauseStarted,
+      pregnancyStatus: setPregnancyStatus,
+      pregnancyDueDate: setPregnancyDueDate,
+      lactationStarted: setLactationStarted,
+      chiefComplaint: setChiefComplaint, hpi: setHpi,
+      transcriptNotes: setTranscriptNotes,
+      height: setHeight, weight: setWeight, bodyFat: setBodyFat,
+      waist: setWaist, hip: setHip, bpSys: setBpSys, bpDia: setBpDia,
+      hr: setHr,
+      dietaryPreference: setDietaryPreference,
+      foodsToAvoid: setFoodsToAvoid,
+      nonNegotiables: setNonNegotiables,
+      reportedTriggers: setReportedTriggers,
+      medications: setMedications, familyHx: setFamilyHx,
+      sleep: setSleep, stress: setStress, movement: setMovement,
+      nutrition: setNutrition, connection: setConnection,
+      supplementHx: setSupplementHx, whatWorked: setWhatWorked,
+      whatDidntWork: setWhatDidntWork,
+      timeline: setTimeline, ifmScores: setIfmScores,
+      ifmNotes: setIfmNotes,
+      coachNotes: setCoachNotes,
+    },
+  );
+
   const onSave = () => {
     // Detect whether the coach actually changed anything. An intake
     // update doesn't need a chief complaint — many edits are just body
@@ -655,6 +713,9 @@ export function IntakeForm({
       } else {
         toast.success(`Intake saved for ${displayName.split(" ")[0]}`);
       }
+      // Session was saved successfully (we early-returned otherwise) — drop
+      // the in-progress draft so the next intake on this client starts clean.
+      clearDraft();
       router.push(`/clients-v2/${clientId}/analyse`);
       router.refresh();
     });
@@ -662,6 +723,13 @@ export function IntakeForm({
 
   return (
     <div>
+      <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 8 }}>
+        <FmFormDraftClear
+          onClear={clearDraft}
+          hasDraft={hasSavedDraft}
+          title="Discard the saved in-progress intake draft (does not clear fields already on the page)"
+        />
+      </div>
       {discoveryContext && (
         <div
           style={{
