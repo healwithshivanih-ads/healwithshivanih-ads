@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { loadAllClients, loadAllPlans, loadAllOfKind } from "@/lib/fmdb/loader";
 import type { Topic, Symptom, Supplement, Mechanism } from "@/lib/fmdb/types";
+import { FmAppShell } from "@/components/fm";
 import { SearchInput } from "./search-input";
 
 export const dynamic = "force-dynamic";
@@ -76,19 +77,21 @@ export default async function SearchPage({
 
   if (!query) {
     return (
-      <div className="max-w-2xl mx-auto space-y-6">
-        <div>
-          <h1 className="text-2xl font-bold mb-1">🔍 Search</h1>
-          <p className="text-sm text-muted-foreground">
-            Clients · Plans · Catalogue · Sessions
-          </p>
+      <FmAppShell activeNavId="search" crumbs={[{ label: "Search" }]}>
+        <div className="max-w-2xl mx-auto space-y-6">
+          <div>
+            <h1 className="text-2xl font-bold mb-1">🔍 Search</h1>
+            <p className="text-sm text-muted-foreground">
+              Clients · Plans · Catalogue · Sessions
+            </p>
+          </div>
+          <SearchInput initialValue="" />
+          <div className="text-center py-12 text-muted-foreground text-sm">
+            Start typing to search across everything
+            <div className="mt-2 text-xs opacity-60">⌘K from anywhere to open search</div>
+          </div>
         </div>
-        <SearchInput initialValue="" />
-        <div className="text-center py-12 text-muted-foreground text-sm">
-          Start typing to search across everything
-          <div className="mt-2 text-xs opacity-60">⌘K from anywhere to open search</div>
-        </div>
-      </div>
+      </FmAppShell>
     );
   }
 
@@ -113,7 +116,8 @@ export default async function SearchPage({
     matchedSymptoms.length + matchedSupps.length + matchedMechanisms.length;
 
   return (
-    <div className="max-w-2xl mx-auto space-y-6">
+    <FmAppShell activeNavId="search" crumbs={[{ label: "Search" }, ...(query ? [{ label: query }] : [])]}>
+      <div className="max-w-2xl mx-auto space-y-6">
       {/* Header + input */}
       <div>
         <h1 className="text-2xl font-bold mb-3">🔍 Search</h1>
@@ -134,7 +138,7 @@ export default async function SearchPage({
         {matchedClients.map((c) => (
           <Row
             key={c.client_id}
-            href={`/clients/${c.client_id}`}
+            href={`/clients-v2/${c.client_id}`}
             label={c.display_name ?? c.client_id}
             sub={(c.active_conditions ?? []).slice(0, 3).join(" · ") || c.client_id}
             tag={<Chip color="blue">client</Chip>}
@@ -147,7 +151,7 @@ export default async function SearchPage({
         {matchedPlans.map((p) => (
           <Row
             key={p.slug}
-            href={`/plans/${p.slug}`}
+            href={p.client_id ? `/clients-v2/${p.client_id}/plan/edit/${p.slug}` : `/plans/${p.slug}`}
             label={p.slug}
             sub={`${p.client_id ?? "–"} · ${p._bucket ?? p.status ?? "draft"}`}
             tag={<Chip color={p._bucket === "published" ? "emerald" : p._bucket === "draft" ? "amber" : "default"}>{p._bucket ?? p.status ?? "draft"}</Chip>}
@@ -206,6 +210,7 @@ export default async function SearchPage({
           />
         ))}
       </Section>
-    </div>
+      </div>
+    </FmAppShell>
   );
 }

@@ -66,7 +66,33 @@ async function writePlan(plan: CleanupPlan): Promise<void> {
   await fs.writeFile(PLAN_PATH, yaml.dump(plan, { sortKeys: false }));
 }
 
-/** Run the Haiku analyzer. Stores plan on disk + returns it. */
+/** Invoke scripts/classify-cleanup.py against a plan file. The script
+ *  mutates the YAML in place — adds triage_bucket + triage_note to every
+ *  group. We re-read the plan from disk on success. Failure is non-fatal:
+ *  the analyzer's plan is still usable, just without bucket badges. */
+async function classifyPlan(planRelPath: string): Promise<void> {
+  const scriptPath = path.join(SCRIPTS_DIR, "classify-cleanup.py");
+  const child = execFile(PYTHON, [scriptPath], {
+    timeout: 20_000,
+    maxBuffer: 4 * 1024 * 1024,
+    env: { ...process.env, PLAN_PATH_OVERRIDE: planRelPath },
+  });
+  let stderr = "";
+  child.stderr?.on("data", (c: Buffer) => (stderr += c));
+  await new Promise<void>((resolve) => {
+    child.on("error", () => resolve());     // non-fatal
+    child.on("close", () => resolve());
+  });
+  if (stderr.trim()) {
+    // Surface classifier failures in server logs but don't bubble up — the
+    // analyzer's plan is still valid; coach just won't see triage badges.
+    console.warn(`[cleanup] classify-cleanup.py stderr: ${stderr.slice(0, 300)}`);
+  }
+}
+
+/** Run the Haiku analyzer, then auto-classify the resulting plan so the
+ *  UI shows triage buckets without a second manual step. Stores plan on
+ *  disk + returns it. */
 export async function analyzeCleanupAction(
   opts: { dryRun?: boolean; limit?: number | null } = {}
 ): Promise<AnalyzeResult> {
@@ -76,7 +102,16 @@ export async function analyzeCleanupAction(
       { dry_run: !!opts.dryRun, limit: opts.limit ?? null },
       180_000, // 3 min — 318 topics + structured output
     )) as AnalyzeResult;
-    if (result.ok) revalidatePath("/catalogue/cleanup");
+    if (result.ok) {
+      // Auto-classify against the default topic plan path. (Other plan
+      // kinds — mechanism / symptom / supplement — are invoked via the
+      // CLI today and don't pass through this action.)
+      await classifyPlan("fm-database/data/_cleanup/latest_plan.yaml");
+      // Re-read from disk so the returned plan reflects the new buckets.
+      const refreshed = await readPlan();
+      if (refreshed) result.plan = refreshed;
+      revalidatePath("/catalogue/cleanup");
+    }
     return result;
   } catch (e) {
     return { ok: false, error: String(e) };
