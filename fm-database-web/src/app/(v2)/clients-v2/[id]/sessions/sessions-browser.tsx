@@ -76,6 +76,7 @@ export function SessionsBrowser({
   activePlanRecheck,
   knownPlanSlugs,
   markerChartsSlot,
+  trackingChartsSlot,
 }: {
   clientId: string;
   displayName: string;
@@ -99,6 +100,8 @@ export function SessionsBrowser({
   knownPlanSlugs?: string[];
   /** Server-rendered marker-charts panel mounted above the 2-col grid. */
   markerChartsSlot?: React.ReactNode;
+  /** Longitudinal tracking charts (outcome / adherence / IFM / lab compare). */
+  trackingChartsSlot?: React.ReactNode;
 }) {
   const router = useRouter();
   const params = useSearchParams();
@@ -217,6 +220,10 @@ export function SessionsBrowser({
 
       {markerChartsSlot && (
         <div style={{ marginBottom: 14 }}>{markerChartsSlot}</div>
+      )}
+
+      {trackingChartsSlot && (
+        <div style={{ marginBottom: 14 }}>{trackingChartsSlot}</div>
       )}
 
     <div className="fm-v2-2col" style={{ gridTemplateColumns: "340px minmax(0, 1fr)" }}>

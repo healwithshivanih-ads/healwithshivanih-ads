@@ -23,6 +23,7 @@ import { loadClientSessionsAction } from "@/app/assess/actions";
 import { SessionsPageShell } from "./sessions-page-shell";
 import { SessionsBrowser } from "./sessions-browser";
 import { SessionMarkerCharts } from "./session-marker-charts";
+import { V2TrackingCharts } from "./v2-tracking-charts";
 import { ReworkBanner } from "@/app/clients/[id]/rework-banner";
 import type { Client } from "@/lib/fmdb/types";
 
@@ -103,6 +104,16 @@ export default async function SessionsPage({
         // Client-relevant clinical-marker trend charts above the 2-col grid.
         markerChartsSlot={
           <SessionMarkerCharts clientId={id} client={client as unknown as Client} />
+        }
+        // Longitudinal tracking surface — outcome progress, protocol adherence,
+        // IFM trend, lab comparison. Each panel self-hides until its data
+        // threshold is met. Design punchlist refs #16-19.
+        trackingChartsSlot={
+          <V2TrackingCharts
+            clientId={id}
+            client={client as unknown as Client}
+            sessions={sortedDesc}
+          />
         }
       />
     </SessionsPageShell>
