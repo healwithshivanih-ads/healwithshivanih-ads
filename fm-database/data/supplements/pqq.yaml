@@ -1,0 +1,30 @@
+slug: pqq
+display_name: PQQ (Pyrroloquinoline Quinone)
+category: vitamin
+forms_available:
+- capsule
+typical_dose_range: {}
+timing_options: []
+take_with_food: optional
+contraindications:
+  conditions: []
+  medications: []
+  life_stages: []
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications: []
+pregnancy_safety: unknown
+lactation_safety: unknown
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_coach: 'Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use. Also known as: pyrroloquinoline-quinone.'
+sources:
+- id: vitaone-mind-map-tool
+  location: mindmap-shortlist 2026-05-13
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: shivani

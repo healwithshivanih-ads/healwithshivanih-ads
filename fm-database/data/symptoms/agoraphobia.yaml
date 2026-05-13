@@ -1,0 +1,17 @@
+slug: agoraphobia
+display_name: Agoraphobia
+aliases: []
+category: mood
+severity: concerning
+description: Fear or avoidance of places or situations where escape might be difficult, often co-occurring with panic disorder.
+when_to_refer: ''
+linked_to_topics: []
+linked_to_mechanisms: []
+notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
+sources:
+- id: vitaone-mind-map-tool
+  location: mindmap-shortlist 2026-05-13
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: shivani

@@ -1,0 +1,21 @@
+slug: omega-3-index
+display_name: Omega-3 Index
+full_name: Omega-3 Index (EPA + DHA in RBC membranes)
+aliases: []
+units: '%'
+sample_type: blood
+interpretation_low: '<4% high CV risk; FM target ≥8%'
+interpretation_high: ''
+when_to_order: Cardiovascular + inflammation workup; baseline before EPA/DHA supplementation.
+fasting_required: false
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-mind-map-tool
+  location: mindmap-shortlist 2026-05-13
+evidence_tier: fm_specific_thin
+notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: shivani

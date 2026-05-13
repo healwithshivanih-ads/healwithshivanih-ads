@@ -1,0 +1,22 @@
+slug: hrv
+display_name: HRV (Heart Rate Variability)
+full_name: Heart Rate Variability
+aliases:
+- heart-rate-variability
+units: ms
+sample_type: other
+interpretation_low: Low HRV — sympathetic dominance, poor recovery
+interpretation_high: ''
+when_to_order: Autonomic nervous system tone — vagal tone, stress recovery, training load.
+fasting_required: false
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-mind-map-tool
+  location: mindmap-shortlist 2026-05-13
+evidence_tier: fm_specific_thin
+notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: shivani

@@ -1,0 +1,21 @@
+slug: ebv-vca-igm
+display_name: EBV VCA-IgM
+full_name: EBV Viral Capsid Antigen IgM
+aliases: []
+units: index
+sample_type: blood
+interpretation_low: ''
+interpretation_high: Acute / recent EBV infection
+when_to_order: Acute or recent EBV infection.
+fasting_required: false
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-mind-map-tool
+  location: mindmap-shortlist 2026-05-13
+evidence_tier: fm_specific_thin
+notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: shivani

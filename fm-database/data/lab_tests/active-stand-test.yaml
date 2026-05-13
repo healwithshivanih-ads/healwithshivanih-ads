@@ -1,0 +1,22 @@
+slug: active-stand-test
+display_name: Active Stand Test
+full_name: 'Active Stand Test (Poor-Man''s Tilt)'
+aliases:
+- poor-mans-tilt-test
+units: bpm
+sample_type: other
+interpretation_low: ''
+interpretation_high: HR rise >30 bpm suggests POTS
+when_to_order: Suspected POTS / orthostatic intolerance.
+fasting_required: false
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-mind-map-tool
+  location: mindmap-shortlist 2026-05-13
+evidence_tier: fm_specific_thin
+notes_for_coach: 10-min lying then standing — HR rise >30bpm suggests POTS. Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: shivani

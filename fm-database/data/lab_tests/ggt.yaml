@@ -1,0 +1,21 @@
+slug: ggt
+display_name: GGT
+full_name: Gamma-Glutamyl Transferase
+aliases: []
+units: U/L
+sample_type: blood
+interpretation_low: ''
+interpretation_high: Alcohol / biliary / NAFLD / oxidative stress
+when_to_order: Liver detox capacity + biliary tract status — sensitive marker of oxidative stress and alcohol use.
+fasting_required: false
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-mind-map-tool
+  location: mindmap-shortlist 2026-05-13
+evidence_tier: fm_specific_thin
+notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: shivani

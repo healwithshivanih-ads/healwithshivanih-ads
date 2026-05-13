@@ -1,0 +1,21 @@
+slug: alt
+display_name: ALT
+full_name: Alanine Aminotransferase
+aliases: []
+units: U/L
+sample_type: blood
+interpretation_low: ''
+interpretation_high: Liver injury (NAFLD, hepatitis, drug effect)
+when_to_order: Liver function panel — primary marker of hepatocellular injury.
+fasting_required: false
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-mind-map-tool
+  location: mindmap-shortlist 2026-05-13
+evidence_tier: fm_specific_thin
+notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: shivani

@@ -1,0 +1,20 @@
+slug: mast-cell-activation
+display_name: Mast Cell Activation
+aliases:
+- mcas
+- mast-cell-activation-syndrome
+category: immune
+summary: Pathological release of histamine and inflammatory mediators from mast cells in response to non-allergic triggers. Drives MCAS, food sensitivities, anxiety, flushing.
+upstream_drivers: []
+downstream_effects: []
+related_mechanisms: []
+linked_to_topics: []
+notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
+sources:
+- id: vitaone-mind-map-tool
+  location: mindmap-shortlist 2026-05-13
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: shivani

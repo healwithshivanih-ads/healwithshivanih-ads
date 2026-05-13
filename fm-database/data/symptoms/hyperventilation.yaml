@@ -1,0 +1,17 @@
+slug: hyperventilation
+display_name: Hyperventilation
+aliases: []
+category: neurological
+severity: concerning
+description: Rapid or deep breathing pattern, often anxiety-driven, causing CO2 dropoff with tingling, dizziness, and chest tightness.
+when_to_refer: ''
+linked_to_topics: []
+linked_to_mechanisms: []
+notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
+sources:
+- id: vitaone-mind-map-tool
+  location: mindmap-shortlist 2026-05-13
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: shivani

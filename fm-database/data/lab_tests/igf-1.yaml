@@ -1,0 +1,21 @@
+slug: igf-1
+display_name: IGF-1
+full_name: Insulin-like Growth Factor 1
+aliases: []
+units: ng/mL
+sample_type: blood
+interpretation_low: GH deficiency / chronic illness / malnutrition
+interpretation_high: Acromegaly / excess GH
+when_to_order: Growth hormone status, anabolic/catabolic balance, longevity workup.
+fasting_required: false
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-mind-map-tool
+  location: mindmap-shortlist 2026-05-13
+evidence_tier: fm_specific_thin
+notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: shivani

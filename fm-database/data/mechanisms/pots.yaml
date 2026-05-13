@@ -1,0 +1,20 @@
+slug: pots
+display_name: POTS / Postural Orthostatic Tachycardia
+aliases:
+- postural-orthostatic-tachycardia-syndrome
+- orthostatic-intolerance
+category: signaling
+summary: Sustained heart rate rise of >30 bpm within 10 min of standing without significant blood pressure drop — autonomic dysfunction common in long-COVID and EDS.
+upstream_drivers: []
+downstream_effects: []
+related_mechanisms: []
+linked_to_topics: []
+notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
+sources:
+- id: vitaone-mind-map-tool
+  location: mindmap-shortlist 2026-05-13
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: shivani
