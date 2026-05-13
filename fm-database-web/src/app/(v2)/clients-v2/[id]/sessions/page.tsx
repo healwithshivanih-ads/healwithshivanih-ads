@@ -21,6 +21,8 @@ import { loadClientById } from "@/lib/fmdb/loader-extras";
 import { loadClientSessionsAction } from "@/app/assess/actions";
 import { SessionsPageShell } from "./sessions-page-shell";
 import { SessionsBrowser } from "./sessions-browser";
+import { SessionMarkerCharts } from "./session-marker-charts";
+import type { Client } from "@/lib/fmdb/types";
 
 export const dynamic = "force-dynamic";
 
@@ -61,6 +63,13 @@ export default async function SessionsPage({
         sessions={sortedDesc}
         selectedSid={sid}
         filterType={type}
+        clientAgeBand={client.age_band ?? null}
+        clientSex={client.sex ?? null}
+        clientConditions={client.active_conditions ?? []}
+        clientMedications={client.current_medications ?? client.medications ?? []}
+        markerChartsSlot={
+          <SessionMarkerCharts clientId={id} client={client as unknown as Client} />
+        }
       />
     </SessionsPageShell>
   );

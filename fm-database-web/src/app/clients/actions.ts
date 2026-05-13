@@ -1426,6 +1426,58 @@ export async function loadLabReferenceRangesAction(
   }
 }
 
+// ────────────────────────────────────────────────────────────────────────────
+// Session-tab marker chart picks — sticky per-client list of marker names the
+// coach has chosen to display as trend tiles on the v2 Sessions tab. Stored at
+// `~/fm-plans/clients/<id>/ui_preferences.yaml` under `session_chart_markers`.
+// File is created on first save; reads tolerate missing file.
+// ────────────────────────────────────────────────────────────────────────────
+
+function uiPreferencesPath(clientId: string): string {
+  return path.join(getPlansRoot(), "clients", clientId, "ui_preferences.yaml");
+}
+
+export async function loadSessionChartMarkersAction(
+  clientId: string,
+): Promise<string[]> {
+  try {
+    const yaml = await import("js-yaml");
+    const raw = await fs.readFile(uiPreferencesPath(clientId), "utf8");
+    const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
+    const arr = data.session_chart_markers;
+    if (Array.isArray(arr)) return arr.filter((x): x is string => typeof x === "string");
+    return [];
+  } catch {
+    return [];
+  }
+}
+
+export async function saveSessionChartMarkersAction(
+  clientId: string,
+  markers: string[],
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  try {
+    const yaml = await import("js-yaml");
+    const filePath = uiPreferencesPath(clientId);
+    let data: Record<string, unknown> = {};
+    try {
+      const raw = await fs.readFile(filePath, "utf8");
+      data = (yaml.load(raw) as Record<string, unknown>) ?? {};
+    } catch {
+      // file doesn't exist yet — start fresh
+    }
+    data.session_chart_markers = markers;
+    data.updated_at = new Date().toISOString();
+    // Ensure parent dir exists
+    await fs.mkdir(path.dirname(filePath), { recursive: true });
+    await fs.writeFile(filePath, yaml.dump(data, { noRefs: true, sortKeys: false }), "utf8");
+    return { ok: true };
+  } catch (err) {
+    const e = err as { message?: string };
+    return { ok: false, error: e.message ?? "Failed to save chart markers" };
+  }
+}
+
 /**
  * Resolve an existing file already in `~/fm-plans/clients/<id>/files/<name>`
  * to its absolute path + mime type, so the assess flow can attach a

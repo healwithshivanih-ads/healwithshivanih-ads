@@ -13,10 +13,11 @@
  *   Quick note). Filter param lives in URL ?type= for shareability.
  */
 import { useRouter, useSearchParams } from "next/navigation";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import type { SessionSummary } from "@/app/assess/actions";
 import { FmPanel } from "@/components/fm";
+import { SessionBriefModal } from "@/app/clients/[id]/session-brief-modal";
 
 const TYPE_META: Record<
   string,
@@ -63,15 +64,27 @@ export function SessionsBrowser({
   sessions,
   selectedSid,
   filterType,
+  clientAgeBand,
+  clientSex,
+  clientConditions,
+  clientMedications,
+  markerChartsSlot,
 }: {
   clientId: string;
   displayName: string;
   sessions: SessionSummary[];
   selectedSid?: string;
   filterType?: string;
+  clientAgeBand?: string | null;
+  clientSex?: string | null;
+  clientConditions?: string[];
+  clientMedications?: string[];
+  /** Server-rendered marker charts panel mounted above the 2-col grid. */
+  markerChartsSlot?: React.ReactNode;
 }) {
   const router = useRouter();
   const params = useSearchParams();
+  const [briefSid, setBriefSid] = useState<string | null>(null);
 
   const activeFilter = filterType ?? "all";
 
@@ -161,7 +174,9 @@ export function SessionsBrowser({
   }
 
   return (
-    <div className="fm-v2-2col" style={{ gridTemplateColumns: "340px minmax(0, 1fr)" }}>
+    <div style={{ display: "grid", gap: 14 }}>
+      {markerChartsSlot}
+      <div className="fm-v2-2col" style={{ gridTemplateColumns: "340px minmax(0, 1fr)" }}>
       {/* LEFT — filter chips + session list */}
       <aside className="fm-v2-2col-rail" style={{ padding: 0 }}>
         <div
@@ -332,7 +347,11 @@ export function SessionsBrowser({
       {/* RIGHT — inspector */}
       <div style={{ minWidth: 0 }}>
         {selected ? (
-          <SessionInspector clientId={clientId} session={selected} />
+          <SessionInspector
+            clientId={clientId}
+            session={selected}
+            onOpenBrief={(sid) => setBriefSid(sid)}
+          />
         ) : (
           <FmPanel>
             <div style={{ fontSize: 12, color: "var(--fm-text-tertiary)" }}>
@@ -341,6 +360,26 @@ export function SessionsBrowser({
           </FmPanel>
         )}
       </div>
+      </div>
+
+      {/* Session brief modal (print / save-as-PDF for doctor hand-off) */}
+      {briefSid && (() => {
+        const briefSession = sessions.find(
+          (s, i) => (s.session_id ?? `idx-${i}`) === briefSid,
+        );
+        if (!briefSession) return null;
+        return (
+          <SessionBriefModal
+            session={briefSession}
+            clientName={displayName}
+            clientAgeBand={clientAgeBand ?? null}
+            clientSex={clientSex ?? null}
+            clientConditions={clientConditions ?? []}
+            clientMedications={clientMedications ?? []}
+            onClose={() => setBriefSid(null)}
+          />
+        );
+      })()}
     </div>
   );
 }
@@ -348,9 +387,11 @@ export function SessionsBrowser({
 function SessionInspector({
   clientId,
   session,
+  onOpenBrief,
 }: {
   clientId: string;
   session: SessionSummary;
+  onOpenBrief: (sid: string) => void;
 }) {
   const meta = TYPE_META[session.session_type] ?? TYPE_META.intake;
   const presenting = stripTag(session.presenting_complaints);
@@ -411,22 +452,44 @@ function SessionInspector({
               {session.session_id}
             </div>
           </div>
-          {session.generated_plan_slug && (
-            <Link
-              href={`/plans/${session.generated_plan_slug}`}
-              style={{
-                padding: "7px 14px",
-                fontSize: 11.5,
-                fontWeight: 700,
-                background: "var(--fm-primary)",
-                color: "#fff",
-                borderRadius: "var(--fm-radius-sm)",
-                textDecoration: "none",
-              }}
-            >
-              📋 Open generated plan →
-            </Link>
-          )}
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+            {session.session_id && (
+              <button
+                type="button"
+                onClick={() => onOpenBrief(session.session_id!)}
+                title="Print or save as PDF — for sharing with a doctor / specialist"
+                style={{
+                  padding: "7px 14px",
+                  fontSize: 11.5,
+                  fontWeight: 700,
+                  background: "var(--fm-surface)",
+                  color: "var(--fm-text-primary)",
+                  border: "1px solid var(--fm-border)",
+                  borderRadius: "var(--fm-radius-sm)",
+                  cursor: "pointer",
+                  fontFamily: "inherit",
+                }}
+              >
+                📄 Brief / Print
+              </button>
+            )}
+            {session.generated_plan_slug && (
+              <Link
+                href={`/plans/${session.generated_plan_slug}`}
+                style={{
+                  padding: "7px 14px",
+                  fontSize: 11.5,
+                  fontWeight: 700,
+                  background: "var(--fm-primary)",
+                  color: "#fff",
+                  borderRadius: "var(--fm-radius-sm)",
+                  textDecoration: "none",
+                }}
+              >
+                📋 Open generated plan →
+              </Link>
+            )}
+          </div>
         </div>
         {presenting && (
           <div
