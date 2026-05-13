@@ -22,7 +22,13 @@ import { parseSessionType } from "./session-utils";
 export type JourneyStepStatus = "done" | "active" | "pending" | "na";
 
 export interface JourneyStep {
-  id: "discovery" | "intake" | "plan" | "week" | "next_plan";
+  id:
+    | "discovery"
+    | "intake"
+    | "plan"
+    | "week"
+    | "next_phase"
+    | "plan_end";
   label: string;
   status: JourneyStepStatus;
   /** Free-text caption beneath the label — usually a date. */
@@ -120,6 +126,45 @@ export async function loadClientJourney(
     recheckDateIso = asString(pluck(publishedPlan, "plan_period_recheck_date")) ?? null;
   }
 
+  // ── Compute next-phase-letter window (mid-cycle communication).
+  //     Convention from PhaseLetterPanel: phases are 2 weeks long
+  //     (weeks 1-2 ship with the consolidated letter; weeks 3-4 is the
+  //     first phase letter; weeks 5-6 second; etc.). The "next batch"
+  //     step shows the date when the upcoming phase letter is due —
+  //     i.e. the start of the next 2-week pair after the current week.
+  let nextPhaseStartIso: string | null = null;
+  let nextPhaseRange: { start: number; end: number } | null = null;
+  if (publishedPlan && currentWeek != null && planWeeks && planStart) {
+    const start = new Date(`${planStart}T00:00:00`);
+    // Phase pairs: [1,2], [3,4], [5,6], ...
+    // The phase currently active = ceil(currentWeek / 2)
+    // The NEXT phase = currentPhase + 1, starting at week = currentPhase*2 + 1
+    const currentPhase = Math.ceil(currentWeek / 2);
+    const nextPhaseStartWeek = currentPhase * 2 + 1;
+    const nextPhaseEndWeek = Math.min(nextPhaseStartWeek + 1, planWeeks);
+    if (nextPhaseStartWeek <= planWeeks) {
+      const d = new Date(start);
+      // The phase letter is sent at the END of the previous phase (i.e. at the
+      // start of the new phase). Subtract a couple of days so the coach has
+      // breathing room — convention: send 2 days before the new phase starts.
+      d.setDate(d.getDate() + (nextPhaseStartWeek - 1) * 7 - 2);
+      nextPhaseStartIso = d.toISOString().slice(0, 10);
+      nextPhaseRange = { start: nextPhaseStartWeek, end: nextPhaseEndWeek };
+    }
+  }
+
+  // Plan completion date — end of the protocol window.
+  let planEndIso: string | null = null;
+  if (publishedPlan && planStart && planWeeks) {
+    const start = new Date(`${planStart}T00:00:00`);
+    start.setDate(start.getDate() + planWeeks * 7);
+    planEndIso = start.toISOString().slice(0, 10);
+  } else if (recheckDateIso) {
+    planEndIso = recheckDateIso;
+  }
+
+  const todayMs = new Date(`${todayIso}T00:00:00`).getTime();
+
   // ── Build the steps array.
   const steps: JourneyStep[] = [];
 
@@ -139,7 +184,7 @@ export async function loadClientJourney(
     caption: (asString(pluck(intake, "date")) as string | undefined) ?? "—",
   });
 
-  // Step 3 — Plan
+  // Step 3 — Plan active (start date)
   if (publishedPlan) {
     steps.push({
       id: "plan",
@@ -163,13 +208,19 @@ export async function loadClientJourney(
     });
   }
 
-  // Step 4 — Week N (only if a published plan with start + period)
+  // Step 4 — Week N progress. No date — start date already shown on step 3.
   if (publishedPlan && currentWeek != null && planWeeks) {
+    // "X days in" caption is cleaner than restating the start date.
+    let daysIn: number | null = null;
+    if (planStart) {
+      const start = new Date(`${planStart}T00:00:00`).getTime();
+      daysIn = Math.max(0, Math.floor((todayMs - start) / (24 * 60 * 60 * 1000)));
+    }
     steps.push({
       id: "week",
       label: `Week ${currentWeek} of ${planWeeks}`,
       status: "active",
-      caption: planStart ? `started ${planStart}` : undefined,
+      caption: daysIn != null ? `${daysIn} day${daysIn === 1 ? "" : "s"} in` : undefined,
     });
   } else {
     steps.push({
@@ -180,21 +231,43 @@ export async function loadClientJourney(
     });
   }
 
-  // Step 5 — Next plan due (recheck)
-  if (recheckDateIso) {
-    const today = new Date(`${todayIso}T00:00:00`).getTime();
-    const rec = new Date(`${recheckDateIso}T00:00:00`).getTime();
-    const overdue = rec < today;
+  // Step 5 — Next phase letter due (mid-cycle communication batch).
+  //   If no published plan, this step is n/a.
+  //   If we're past the last phase, it folds into "Plan complete".
+  if (nextPhaseStartIso && nextPhaseRange) {
+    const due = new Date(`${nextPhaseStartIso}T00:00:00`).getTime();
+    const overdue = due < todayMs;
     steps.push({
-      id: "next_plan",
-      label: overdue ? "Next plan overdue" : "Next plan due",
+      id: "next_phase",
+      label: overdue
+        ? `Phase letter overdue (wk ${nextPhaseRange.start}–${nextPhaseRange.end})`
+        : `Next phase letter (wk ${nextPhaseRange.start}–${nextPhaseRange.end})`,
       status: overdue ? "active" : "pending",
-      caption: recheckDateIso,
+      caption: nextPhaseStartIso,
     });
   } else {
     steps.push({
-      id: "next_plan",
-      label: "Next plan due",
+      id: "next_phase",
+      label: "Next phase letter",
+      status: "na",
+      caption: publishedPlan ? "final phase" : "—",
+    });
+  }
+
+  // Step 6 — Plan completion (recheck / supersede window).
+  if (planEndIso) {
+    const endMs = new Date(`${planEndIso}T00:00:00`).getTime();
+    const overdue = endMs < todayMs;
+    steps.push({
+      id: "plan_end",
+      label: overdue ? "Plan complete — reassess" : "Plan completion",
+      status: overdue ? "active" : "pending",
+      caption: planEndIso,
+    });
+  } else {
+    steps.push({
+      id: "plan_end",
+      label: "Plan completion",
       status: "na",
       caption: "—",
     });

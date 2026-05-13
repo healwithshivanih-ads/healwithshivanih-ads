@@ -103,13 +103,20 @@ const SECTION_META: Record<SignalKind, SectionMeta> = {
   },
 };
 
+// Priority order per coach (2026-05-13):
+//   1. Follow-ups due — needs a reply / next contact today.
+//   2. Active protocols — clients currently in-flight; coach checks weekly.
+//   3. Protocol complete — recheck time, generate next plan.
+//   4. Labs pending — waiting on results.
+//   5. Returning — re-engaged, no current plan.
+//   6. New — awaiting first assessment.
 const SECTION_ORDER: SignalKind[] = [
   "follow_up_due",
+  "active",
   "protocol_complete",
   "labs_pending",
   "returning",
   "new_client",
-  "active",
 ];
 
 interface TriageSectionsProps {
