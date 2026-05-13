@@ -53,6 +53,7 @@ import { PlanPageShell } from "./plan-page-shell";
 import { ReworkBanner } from "@/app/clients/[id]/rework-banner";
 import { AttachedProtocolsPanel } from "./attached-protocols-panel";
 import { FollowUpPanel } from "./follow-up-panel";
+import { PhaseLetterPanel } from "./phase-letter-panel";
 import { ActivateDraftButton } from "./activate-draft-button";
 import { RegenerateStaleButton } from "../communicate/regenerate-stale-button";
 import { loadAllOfKind } from "@/lib/fmdb/loader";
@@ -1049,6 +1050,23 @@ export default async function PlanTabPage({
                 />
               </div>
             </FmPanel>
+
+            {/* Continue meal plan — mid-cycle continuation letters.
+                Moved here from Communicate (2026-05-13) — this is plan
+                content, not outbound comms. Only visible when the live
+                plan is published. */}
+            {isPublished && activePlan && (
+              <PhaseLetterPanel
+                clientId={id}
+                planSlug={activePlan.slug as string}
+                planPeriodWeeks={
+                  (activePlan.plan_period_weeks as number | undefined) ?? 12
+                }
+                planPeriodStart={
+                  activePlan.plan_period_start as string | undefined
+                }
+              />
+            )}
 
             {/* Follow-up plan generator — only when the live plan is
                 published. Closes the v1/v2 workflow gap: previously the

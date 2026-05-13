@@ -22,7 +22,6 @@ import { CommunicateClient } from "./communicate-client";
 import { ReworkBanner } from "@/app/clients/[id]/rework-banner";
 import { getLetterStalenessAction } from "@/app/plans/[slug]/lifecycle-actions";
 import { RegenerateStaleButton } from "./regenerate-stale-button";
-import { PhaseLetterPanel } from "./phase-letter-panel";
 import {
   loadLetterSendLogAction,
   type LetterSendEntry,
@@ -184,24 +183,10 @@ export default async function CommunicateTabPage({
         subtitle="Everything that goes out (or comes in) lives here — letters, WhatsApp templates, email, recent inbound. One surface after every session."
       />
 
-      {/* Phase / continuation meal-plan letters — moved to the TOP of
-          the page (per coach request). This is the most common
-          mid-cycle action; SendPackageButton (full letter package)
-          and message templates live below. */}
-      {activePlan && activePlanInfo?.status === "published" && (
-        <div style={{ marginTop: 16, marginBottom: 16 }}>
-          <PhaseLetterPanel
-            clientId={id}
-            planSlug={activePlan.slug as string}
-            planPeriodWeeks={
-              (activePlan.plan_period_weeks as number | undefined) ?? 12
-            }
-            planPeriodStart={
-              activePlan.plan_period_start as string | undefined
-            }
-          />
-        </div>
-      )}
+      {/* Continue meal plan now lives on the Plan tab (where the
+          protocol is authored + lives). Removed from Communicate per
+          coach request 2026-05-13 — Communicate is for outbound sends
+          / templates / history, not for spinning up new content. */}
 
       <CommunicateClient
         clientId={id}

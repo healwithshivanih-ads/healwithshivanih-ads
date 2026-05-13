@@ -5,7 +5,7 @@ the queue. Items here have been explicitly deferred — listed roughly by area.
 When picking one up, move its entry to a v0.x commit message and delete it
 from this file.
 
-Last updated: 2026-05-13 (post v0.74 — quick-wins sweep: multiple-drafts picker on Plan tab (lists every pending draft, not just first), verified PreSessionBrief on v2 Sessions tab already mounted, verified 7 FM mechanisms already seeded, catalogue validates clean.)
+Last updated: 2026-05-13 (post v0.75 — Continue meal plan moved from Communicate to Plan tab; FmClientJourneyStrip breadcrumb (Discovery → Intake → Plan → Week N of N → Next plan due) mounted on every v2 client subpage; multi-coach support benched.)
 
 ---
 
@@ -94,10 +94,10 @@ landed:
 
 ## /plan
 
-- **Multi-coach support** — currently `updated_by: shivani` is hardcoded. When other coaches join, need a `coach_id` selector + per-coach branding on letters.
+- 🪑 **BENCHED: Multi-coach support** — currently `updated_by: shivani` is hardcoded. Bench until another coach actually joins the practice; revisit then. Touches `coach_id` selector + per-coach branding on letters + ownership filter on dashboard.
 - ~~**v2 plan editor (Phase 4.5)**~~ — shipped 2026-05-12 as Phase 2 of the v1→v2 migration. /clients-v2/[id]/plan/edit/[slug] mounts the existing v1 PlanEditor (verbatim, no fork) inside the v2 shell. All Edit-in-classic CTAs across v2 surfaces now point here.
 - **Inline plan editor on client page** — alternative / overlapping with v2 plan editor: expand the editor inline on the Plan tab instead of navigating. Pick one approach.
-- **Bulk regenerate letters** — when the plan changes after letters were generated, surface a "regenerate all stale letters" button on v2 Communicate (right above SendPackageButton, only when staleness banner is showing). Coach currently has to re-tick each type. ~20 min.
+- ~~**Bulk regenerate letters**~~ — shipped earlier (`regenerate-stale-button.tsx`). "🔄 Regenerate all stale letters" button on Communicate above SendPackageButton, visible when the amber stale-letters banner is showing.
 - **Notes-for-coach formatting** — `notes_for_coach` renders as a wall of text. Coach wants it structured (subheadings, bullets). Either (a) extend the AI prompt in generate-draft.py and the chat tool to emit markdown-friendly structure, OR (b) parse it on render. Open question: should the AI structure it from the start, or should the human structure it during the chat session?
 - ~~**Letter QA validation report viewer**~~ — done. Surfaces on the right column of v2 letter-editor (`/clients-v2/[id]/letter-editor`). Reads the `{stem}.validation.json` sidecar via loadMealPlan, renders per-finding cards (score / reason / rewrite) with "Apply rewrite to letter" buttons. Tone-coded gold (score ≤2) / violet (3) / green (4+).
 

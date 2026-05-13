@@ -4,7 +4,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { loadClientById } from "@/lib/fmdb/loader-extras";
-import { FmAppShell } from "@/components/fm";
+import { loadClientJourney } from "@/lib/fmdb/client-journey";
+import { FmAppShell, FmClientJourneyStrip } from "@/components/fm";
 import { HeaderAvatar } from "../analyse/header-avatar";
 import { clientQuickActions } from "../client-quick-actions";
 import { clientSubnavTabs } from "../client-subnav";
@@ -22,6 +23,8 @@ export async function SessionsPageShell({
   if (!client) notFound();
   const displayName = client.display_name ?? client.client_id;
   const tabs = clientSubnavTabs(clientId);
+  const todayStr = new Date().toISOString().slice(0, 10);
+  const journey = await loadClientJourney(clientId, todayStr);
 
   return (
     <FmAppShell
@@ -33,6 +36,8 @@ export async function SessionsPageShell({
         { label: "Sessions" },
       ]}
     >
+      <FmClientJourneyStrip journey={journey} />
+
       <div
         style={{
           display: "flex",

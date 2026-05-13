@@ -18,6 +18,9 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import {
   loadClientById,
+} from "@/lib/fmdb/loader-extras";
+import { loadClientJourney } from "@/lib/fmdb/client-journey";
+import {
   loadClientSessions,
   type ClientWithMeta,
   type ClientSession,
@@ -27,6 +30,7 @@ import { checkMedicationImpactsAction } from "@/app/clients/actions";
 import {
   FmAppShell,
   FmClientHeader,
+  FmClientJourneyStrip,
   FmContactPanel,
   FmDepletionBanner,
   FmMarkerPanel,
@@ -389,11 +393,12 @@ export default async function ClientV2Page({
   const { id } = await params;
   const todayStr = new Date().toISOString().slice(0, 10);
 
-  const [client, sessions, allPlans, sessionSummaries] = await Promise.all([
+  const [client, sessions, allPlans, sessionSummaries, journey] = await Promise.all([
     loadClientById(id),
     loadClientSessions(id),
     loadAllPlans(),
     loadClientSessionsAction(id),
+    loadClientJourney(id, todayStr),
   ]);
 
   if (!client) notFound();
@@ -535,6 +540,7 @@ export default async function ClientV2Page({
         { label: client.display_name ?? client.client_id },
       ]}
     >
+      <FmClientJourneyStrip journey={journey} />
       <FmClientHeader
         clientId={client.client_id}
         displayName={client.display_name ?? client.client_id}
