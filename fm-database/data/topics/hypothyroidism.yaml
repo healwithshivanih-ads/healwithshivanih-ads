@@ -1,10 +1,13 @@
 slug: hypothyroidism
 display_name: Hypothyroidism
 aliases:
-- underactive thyroid
-- overt hypothyroidism
 - subclinical hypothyroidism
 - low thyroid
+- underactive thyroid
+- overt hypothyroidism
+- subclinical-hypothyroidism
+- early hypothyroidism
+- mild thyroid insufficiency
 summary: A condition in which the thyroid gland produces insufficient thyroid hormones,
   slowing metabolism and affecting energy, mood, weight, and many other bodily functions.
   Can be primary, subclinical, or autoimmune (Hashimoto's) in origin.
@@ -62,6 +65,12 @@ sources:
   quote: Hashimoto's hypothyroidism, also known simply as Hashimoto's disease, is
     an autoimmune disorder in which the immune system mistakenly attacks the thyroid
     gland, leading to chronic inflammation & gradual destruction of thyroid tissue.
+- id: vitaone-health-coaching-toolkit
+  location: Understanding Hashimoto's Hypothyroidism — How is Hashimoto's Different
+    from Subclinical Hypothyroidism?
+  quote: Subclinical hypothyroidism is a milder form of hypothyroidism that is characterized
+    by elevated levels of thyroid-stimulating hormone (TSH) with normal levels of
+    free thyroxine (T4).
 version: 2
 status: active
 updated_at: '2026-05-02'

@@ -1,10 +1,10 @@
 slug: arachidonic-acid-cascade
 display_name: Arachidonic Acid Inflammatory Cascade
 aliases:
-- AA cascade
-- eicosanoid pathway
-- omega-6 pro-inflammatory pathway
 - eicosanoid inflammatory pathway
+- AA cascade
+- omega-6 pro-inflammatory pathway
+- eicosanoid pathway
 - COX-LOX cascade
 category: immune
 summary: Phospholipase A2, activated by injury or immune stimuli, releases arachidonic

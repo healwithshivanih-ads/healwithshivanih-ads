@@ -1,14 +1,18 @@
 slug: sibo
 display_name: Small Intestinal Bacterial Overgrowth (SIBO)
 aliases:
-- small intestinal bacterial overgrowth
-- methane SIBO
-- hydrogen SIBO
-- small bowel overgrowth
-- SIBO
-- overgrowth of normal bacteria
-- bacterial overgrowth
 - polymicrobial gut dysbiosis
+- methane SIBO
+- SIBO
+- small bowel overgrowth
+- overgrowth of normal bacteria
+- small intestinal bacterial overgrowth
+- bacterial overgrowth
+- hydrogen SIBO
+- gut-health-fodmap-sibo
+- low-FODMAP
+- IBS
+- gut dysbiosis
 summary: SIBO occurs when colonic fecal microbes (e.g., E. coli, Klebsiella, Pseudomonas)
   overpopulate the small intestine, leading to endotoxemia via lipopolysaccharide
   release. This systemic endotoxemia is linked to diverse downstream conditions including
@@ -113,6 +117,11 @@ sources:
   location: SIBO and endotoxemia discussion
   quote: In excess of 150 million people have SIBO. That is, colonic fecal microbes
     have been allowed to overproliferate.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXbyLyYjP__/
+  quote: 'Low-FODMAP is a therapeutic phase, not a long-term diet (2–6 weeks only)
+    → Gut healing requires nutrients: glutamine, zinc carnosine, omega-3, B-complex,
+    bitters'
 version: 5
 status: active
 updated_at: '2026-05-05'

@@ -1,0 +1,46 @@
+slug: hpa-axis-cortisol-regulation
+display_name: HPA Axis & Cortisol Regulation
+aliases:
+- hypothalamic-pituitary-adrenal axis
+- cortisol dysregulation
+- adrenal stress response
+summary: The hypothalamic–pituitary–adrenal (HPA) axis governs the body's stress response
+  and cortisol secretion. Chronic HPA hyperactivation elevates cortisol, disrupts
+  sleep architecture, impairs neuroplasticity, and promotes systemic inflammation.
+  Multiple plant-derived adaptogens, postbiotics, and dietary compounds have been
+  identified as modulators of this axis.
+common_symptoms:
+- poor-sleep-quality
+- high-morning-cortisol
+- stress-sensitivity
+- anxiety
+- brain-fog
+red_flags:
+- severely-elevated-cortisol-suspect-cushings
+- adrenal-insufficiency
+related_topics:
+- sleep-quality
+- gut-microbiome-hpa-axis
+- neuroinflammation
+key_mechanisms:
+- hpa-axis-dysregulation
+- gabaergic-modulation
+- gut-microbiome-hpa-axis-pathway
+coaching_scope_notes: Coaches can support HPA regulation through adaptogen protocols,
+  sleep hygiene, and dietary strategies. Lab interpretation (cortisol panels, cytokine
+  levels) is clinician scope.
+clinician_scope_notes: Assess with salivary Adrenal Stress Profile (cortisol/DHEA)
+  and/or plasma cytokine panels (IL-6, TNF-α, IL-1β via ELISA). Consider 24-hour sampling
+  given circadian rhythm of cytokines.
+evidence_tier: plausible_emerging
+sources:
+- id: coach-shivani
+  location: Coach Observation — Introduction
+  quote: Several bioactive compounds, primarily plant-derived adaptogens, flavonoids,
+    and postbiotics, have been identified in the sources for their ability to modulate
+    the hypothalamic–pituitary–adrenal (HPA) axis, lower cortisol levels, and promote
+    restorative sleep.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

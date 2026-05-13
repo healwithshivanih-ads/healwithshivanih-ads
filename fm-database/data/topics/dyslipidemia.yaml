@@ -1,13 +1,17 @@
 slug: dyslipidemia
 display_name: Dyslipidemia
 aliases:
-- lipid imbalance
-- abnormal cholesterol
-- hyperlipidemia
-- high cholesterol
 - abnormal lipid profile
+- abnormal cholesterol
+- high cholesterol
+- hyperlipidemia
 - lipid abnormalities
+- lipid imbalance
 - hypercholesterolemia
+- dyslipidemia-management
+- high cholesterol natural treatment
+- lipid optimization
+- cholesterol management without statins
 summary: Dyslipidemia encompasses elevated LDL (especially small dense LDL particles),
   low HDL, elevated triglycerides, and elevated ApoB. Advanced lipid particle testing
   (LDL-P, ApoB) outperforms calculated LDL-C for cardiovascular risk stratification.
@@ -67,6 +71,11 @@ sources:
   quote: LDL particle number, even better as you'll see in a minute. ApoB, what is
     the HDL particle number? And then you have to decide, based on the guidelines,
     of course, what are my treatment goals?
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Lifestyle intervention for dyslipidemia section
+  quote: What you will do, you will start working on insulin resistance. You put down
+    the carb, you increase the good fat. Low carb diet, plus good protein, good fat,
+    increase the good fat.
 version: 3
 status: active
 updated_at: '2026-05-05'

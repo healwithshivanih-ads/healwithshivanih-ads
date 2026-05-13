@@ -4,6 +4,10 @@ aliases:
 - sleep disruption
 - circadian rhythm
 - sleep recovery
+- sleep-hygiene
+- sleep and mental health
+- glymphatic system
+- sleep and depression
 summary: Low melatonin, digital overstimulation, blue light exposure, cortisol dysregulation,
   GABA-glutamate imbalance, and poor circadian recovery are linked to sleep issues.
 common_symptoms:
@@ -34,6 +38,10 @@ sources:
   quote: Poor sleep, jet lag, poor REM, and delayed sleep onset — Linked to low melatonin,
     digital overstimulation, blue light exposure, cortisol dysregulation, GABA-glutamate
     imbalance, and poor circadian recovery.
+- id: barbara-oneil-healing-mind
+  location: Sleep Section
+  quote: Dr. Matthew Walker, in his book, Why We Sleep, he shows that 10 nights of
+    six-hour sleep a night, 50% greater risk of developing depression.
 version: 1
 status: active
 updated_at: '2026-05-06'

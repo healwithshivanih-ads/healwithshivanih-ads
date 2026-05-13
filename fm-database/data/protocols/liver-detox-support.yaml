@@ -1,136 +1,190 @@
 slug: liver-detox-support
 display_name: Liver Detox Support Protocol
 aliases:
-  - liver-detox
-  - detox-protocol
-  - phase-1-2-liver-support
-  - biotransformation-support
+- biotransformation-support
+- phase-1-2-liver-support
+- liver-detox
+- detox-protocol
+- liver-detox-food-plan
+- detox food plan
+- metabolic detox diet
+- FM detox diet
+- liver-detox-phase-1-and-phase-2
+- hepatic biotransformation
+- detox pathways
+- xenobiotic metabolism
+- liver-detoxification-phases
+- biotransformation
+- hepatic detox
+- liver detox
+- liver-detoxification
+- liver cleansing
+- detox phases
+- metabolic detoxification
+- phase 1 phase 2 detox
 category: detox_liver_support
-summary: |
-  A 6–8 week protocol to support the liver's two-phase detox pathways
+summary: 'A 6–8 week protocol to support the liver''s two-phase detox pathways
+
   (Phase I oxidation + Phase II conjugation). Focuses on sulphur-rich
+
   foods, methylation support, glutathione precursors, and bile flow. NOT
-  a juice cleanse — designed to gently support the liver's natural
+
+  a juice cleanse — designed to gently support the liver''s natural
+
   pathways with food + targeted nutrients. Best for clients with elevated
+
   toxic burden, sluggish digestion, hormonal imbalance, or
+
   environmental-toxin exposure.
+
+  '
 indications:
-  - elevated liver enzymes (ALT / AST / GGT) without other cause
-  - skin issues — acne, eczema, dull complexion
-  - hormonal estrogen dominance — heavy / painful periods, fibroids
-  - chemical sensitivity / multiple chemical sensitivities
-  - history of high alcohol / medication / pesticide / mould exposure
-  - sluggish digestion, post-meal fatigue, fatty stools
-  - fibromyalgia + chronic fatigue (often have detox impairment)
+- elevated liver enzymes (ALT / AST / GGT) without other cause
+- skin issues — acne, eczema, dull complexion
+- hormonal estrogen dominance — heavy / painful periods, fibroids
+- chemical sensitivity / multiple chemical sensitivities
+- history of high alcohol / medication / pesticide / mould exposure
+- sluggish digestion, post-meal fatigue, fatty stools
+- fibromyalgia + chronic fatigue (often have detox impairment)
 contraindications:
-  - active liver disease — hepatitis, cirrhosis (refer)
-  - on multiple medications — drug interactions with detox-supporting herbs
-  - pregnancy / lactation
+- active liver disease — hepatitis, cirrhosis (refer)
+- on multiple medications — drug interactions with detox-supporting herbs
+- pregnancy / lactation
 typical_duration_weeks: 8
 phases:
-  - name: "Reduce toxic load (weeks 1–2)"
-    weeks: 2
-    summary: |
-      Stop adding to the burden. Clean inputs.
-    key_actions:
-      - eliminate alcohol completely
-      - remove all processed seed oils (canola, sunflower, soybean)
-      - filter drinking water (chlorine + fluoride + heavy metals)
-      - swap conventional skincare for clean alternatives (low-tox)
-      - remove plastic food storage — switch to glass / stainless
-      - eliminate non-stick cookware (PFAS / Teflon) — see cooking adjustments
-      - sweat 3–4× / week (sauna or vigorous exercise)
-  - name: "Support Phase I + II (weeks 3–6)"
-    weeks: 4
-    summary: |
-      Provide nutrient cofactors for liver pathways. Increase bile flow.
-    key_actions:
-      - 1–2 cups cruciferous vegetables daily (broccoli, cauliflower, kale, cabbage)
-      - sulphur-rich foods 3+ times/week — onions, garlic, eggs (if tolerated)
-      - 1 cup beetroot or daily pomegranate (Phase II glucuronidation support)
-      - bitter greens before meals (arugula, dandelion, kale) for bile flow
-      - milk thistle 200mg 2× / day
-      - NAC 600mg 1–2× / day
-      - B-complex with active methyl folate + B12
-      - turmeric 500mg 2× / day with black pepper / fat
-      - 30g fibre/day for bile excretion (chia + flax + vegetables + fruit)
-  - name: "Glutathione + repair (weeks 7–8)"
-    weeks: 2
-    summary: |
-      Push glutathione synthesis. Reduce inflammatory load.
-    key_actions:
-      - liposomal glutathione 250mg / day OR continue NAC 600mg 2× / day
-      - alpha-lipoic acid 300mg / day
-      - re-test ALT / AST / GGT at week 8
+- name: Reduce toxic load (weeks 1–2)
+  weeks: 2
+  summary: 'Stop adding to the burden. Clean inputs.
+
+    '
+  key_actions:
+  - eliminate alcohol completely
+  - remove all processed seed oils (canola, sunflower, soybean)
+  - filter drinking water (chlorine + fluoride + heavy metals)
+  - swap conventional skincare for clean alternatives (low-tox)
+  - remove plastic food storage — switch to glass / stainless
+  - eliminate non-stick cookware (PFAS / Teflon) — see cooking adjustments
+  - sweat 3–4× / week (sauna or vigorous exercise)
+- name: Support Phase I + II (weeks 3–6)
+  weeks: 4
+  summary: 'Provide nutrient cofactors for liver pathways. Increase bile flow.
+
+    '
+  key_actions:
+  - 1–2 cups cruciferous vegetables daily (broccoli, cauliflower, kale, cabbage)
+  - sulphur-rich foods 3+ times/week — onions, garlic, eggs (if tolerated)
+  - 1 cup beetroot or daily pomegranate (Phase II glucuronidation support)
+  - bitter greens before meals (arugula, dandelion, kale) for bile flow
+  - milk thistle 200mg 2× / day
+  - NAC 600mg 1–2× / day
+  - B-complex with active methyl folate + B12
+  - turmeric 500mg 2× / day with black pepper / fat
+  - 30g fibre/day for bile excretion (chia + flax + vegetables + fruit)
+- name: Glutathione + repair (weeks 7–8)
+  weeks: 2
+  summary: 'Push glutathione synthesis. Reduce inflammatory load.
+
+    '
+  key_actions:
+  - liposomal glutathione 250mg / day OR continue NAC 600mg 2× / day
+  - alpha-lipoic acid 300mg / day
+  - re-test ALT / AST / GGT at week 8
 key_steps: []
 foods_to_emphasise:
-  - cruciferous — broccoli, cauliflower, kale, cabbage, brussels sprouts (1–2 cups/day)
-  - alliums — onion, garlic, leek (3+ servings/week)
-  - sulphur-rich — eggs, pasture-raised meat
-  - beetroot + carrot (raw or cooked, 1 cup/day)
-  - bitter greens before meals — arugula, dandelion, mustard
-  - berries — wild blueberries, blackberries (antioxidants)
-  - turmeric + ginger + black pepper
-  - filtered water 2–3 L/day
-  - lemon water on waking (gentle bile stimulation)
+- cruciferous — broccoli, cauliflower, kale, cabbage, brussels sprouts (1–2 cups/day)
+- alliums — onion, garlic, leek (3+ servings/week)
+- sulphur-rich — eggs, pasture-raised meat
+- beetroot + carrot (raw or cooked, 1 cup/day)
+- bitter greens before meals — arugula, dandelion, mustard
+- berries — wild blueberries, blackberries (antioxidants)
+- turmeric + ginger + black pepper
+- filtered water 2–3 L/day
+- lemon water on waking (gentle bile stimulation)
 foods_to_remove:
-  - all alcohol
-  - processed seed oils (canola, sunflower, soybean, corn)
-  - high-mercury fish — tuna, swordfish, king mackerel
-  - artificial sweeteners + colours + preservatives
-  - charred / grilled meat (HCAs increase Phase I burden)
-  - excess refined carbs + sugar
+- all alcohol
+- processed seed oils (canola, sunflower, soybean, corn)
+- high-mercury fish — tuna, swordfish, king mackerel
+- artificial sweeteners + colours + preservatives
+- charred / grilled meat (HCAs increase Phase I burden)
+- excess refined carbs + sugar
 supplements_typically_used:
-  - milk-thistle
-  - nac
-  - glutathione-liposomal
-  - alpha-lipoic-acid
-  - turmeric
-  - b-complex
-  - magnesium-glycinate
+- milk-thistle
+- nac
+- glutathione-liposomal
+- alpha-lipoic-acid
+- turmeric
+- b-complex
+- magnesium-glycinate
 expected_outcomes:
-  - improved skin clarity (acne / eczema reduction by week 4)
-  - clearer complexion + reduced under-eye darkness
-  - normalised liver enzymes by week 8
-  - lighter / less painful periods (estrogen detox improvement)
-  - reduced "post-meal fog"
-  - better tolerance of fatty foods
-  - increased energy + clarity
+- improved skin clarity (acne / eczema reduction by week 4)
+- clearer complexion + reduced under-eye darkness
+- normalised liver enzymes by week 8
+- lighter / less painful periods (estrogen detox improvement)
+- reduced "post-meal fog"
+- better tolerance of fatty foods
+- increased energy + clarity
 cautions:
-  - "Some clients have die-off reactions in week 1–2 (headaches, fatigue) — slow taper helps"
-  - "Combine with stool support (chia + flax + magnesium) — mobilised toxins MUST be excreted, not reabsorbed"
-  - "Glutathione + NAC can lower copper — supplement with copper-rich foods if extending past 8 weeks"
-  - "Milk thistle can interact with chemo / immunosuppressants — clinician check first"
+- Some clients have die-off reactions in week 1–2 (headaches, fatigue) — slow taper
+  helps
+- Combine with stool support (chia + flax + magnesium) — mobilised toxins MUST be
+  excreted, not reabsorbed
+- Glutathione + NAC can lower copper — supplement with copper-rich foods if extending
+  past 8 weeks
+- Milk thistle can interact with chemo / immunosuppressants — clinician check first
 prerequisites:
-  - 5r-gut-protocol
+- 5r-gut-protocol
 recommended_followup:
-  - cycle-sync-protocol
-  - anti-inflammatory-reset
+- cycle-sync-protocol
+- anti-inflammatory-reset
 incompatible_with:
-  - autoimmune-paleo-aip
+- autoimmune-paleo-aip
 linked_to_topics:
-  - liver-detoxification
-  - estrogen-dominance
-  - skin-issues
-  - fibromyalgia
+- liver-detoxification
+- estrogen-dominance
+- skin-issues
+- fibromyalgia
 linked_to_mechanisms:
-  - chronic-inflammation
+- chronic-inflammation
 linked_to_symptoms:
-  - fatigue
-  - skin-rash
-  - brain-fog
+- fatigue
+- skin-rash
+- brain-fog
 sources:
-  - id: vitaone-skill-practice-guide
-    location: liver detox section
-  - id: vitaone-liver-detox-toolkit
-    location: phase 1+2 support
+- id: vitaone-skill-practice-guide
+  location: liver detox section
+- id: vitaone-liver-detox-toolkit
+  location: phase 1+2 support
+- id: vitaone-health-coaching-toolkit
+  location: Detox Food Plan — Sequencing a Detoxification Program
+  quote: The Detox Food Plan, more than any other food plan within the Functional
+    Medicine Food Suites, is designed to support not just the gut but the liver. The
+    liver is the hub of detoxification processes.
+- id: coconote-fm-liver-detox-part2
+  location: Phase 1 & Phase 2 Explanation
+  quote: Phase 1 is active when your patient is exposed to toxin. Either it could
+    be a xenobiotic means external toxins or maybe they are exposed to internal toxins
+    from your inflammation, from your blood microbiome or from your mitochondria that
+    is reactive oxygen or oxidative species.
+- id: coconote-fm-liver-detox-part1
+  location: Phase 1 and Phase 2 Detoxification Overview
+  quote: So here the main process of detoxification of this lipid soluble compound
+    in our liver is phase 1 and phase 2.
+- id: vitaone-liver-detox-cheatsheet
+  location: Functional Detox Phases
+  quote: Detoxification isn't about pushing toxins out — It's about supporting pathways
+    that process, neutralize, and eliminate safely.
 evidence_tier: plausible_emerging
-notes_for_coach: |
-  Most clients don't realise how much the liver mediates skin, hormones,
+notes_for_coach: 'Most clients don''t realise how much the liver mediates skin, hormones,
+
   and energy. Pair this with the cooking adjustments protocol (cast iron,
-  ghee swap) for environmental toxin reduction. Don't recommend more
-  aggressive "detoxes" (juice cleanses, master cleanse) — they're
+
+  ghee swap) for environmental toxin reduction. Don''t recommend more
+
+  aggressive "detoxes" (juice cleanses, master cleanse) — they''re
+
   counterproductive and can mobilise toxins faster than excretion handles.
+
+  '
 version: 1
 status: active
 updated_at: 2026-05-09

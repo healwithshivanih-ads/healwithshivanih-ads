@@ -2,15 +2,20 @@ slug: cortisol-elevation
 display_name: Stress-Induced Cortisol Elevation
 aliases:
 - HPA-axis activation
+- chronic HPA activation
+- cortisol overproduction
+- elevated cortisol
+- glucocorticoid excess
 - hypercortisolism
 - cortisol-excess
 - hypercortisolaemia
-- elevated cortisol
-- glucocorticoid excess
-- hpa-axis-overactivation
 - HPA dysregulation
-- chronic HPA activation
-- cortisol overproduction
+- hpa-axis-overactivation
+- high cortisol state
+- Cushing's-like pattern
+- high cortisol
+- cortisol excess
+- chronic cortisol elevation
 category: endocrine
 summary: Chronic stress raises cortisol levels, which can dysregulate pancreatic secretory
   function and contribute to downstream enzyme imbalances and digestive dysfunction.
@@ -37,6 +42,13 @@ sources:
   location: Key Mechanisms Explained — hpa-axis-overactivation
   quote: The source describes chronic perceived stress as activating the HPA axis,
     raising cortisol and lowering DHEA.
+- id: vitaone-health-coaching-toolkit
+  location: Hypercortisolism
+  quote: 'The results of high cortisol and adrenaline levels from prolonged stress
+    include: Diminished immune function, Depletion of cortisol, resulting in low blood
+    sugar, Less restful sleep, Increased lipid levels of blood fats, Water retention,
+    Loss of cellular potassium, Lowered insulin sensitivity, with a higher susceptibility
+    to diabetes, Loss of the capacity to produce sufficient DHEA.'
 version: 1
 status: active
 updated_at: '2026-05-05'

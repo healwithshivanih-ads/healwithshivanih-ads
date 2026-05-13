@@ -2,8 +2,14 @@ slug: homocysteine-and-methylation
 display_name: Homocysteine & Methylation
 aliases:
 - methylation defect
-- MTHFR pathway
 - hyperhomocysteinemia
+- MTHFR pathway
+- homocysteine-elevation
+- high homocysteine
+- methylation-defect-elevated-homocysteine
+- MTHFR
+- folate cycle dysfunction
+- methylation impairment
 summary: Elevated homocysteine is an independent cardiovascular risk factor that promotes
   LDL oxidation, endothelial damage, and thrombosis. It reflects impaired methylation,
   often driven by deficiencies of B6, B9 (methylfolate), and B12 (methylcobalamin),
@@ -36,6 +42,13 @@ sources:
     apart from cardiovascular disease, homocysteine is linked to many other diseases
     like it can lead to immune dysfunction, autoimmunity, depression, anxiety and
     so many other diseases.
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: Homocysteine section
+  quote: Raised levels of homocysteine generally indicate a potential risk of getting
+    heart attacks as well as many neurological disorders like stroke and dementia.
+- id: vitaone-cvs-risk-assessment
+  location: Functional Medicine Matrix (Slide 5)
+  quote: Methylation defect (elevated homocysteine)
 version: 1
 status: active
 updated_at: '2026-05-05'

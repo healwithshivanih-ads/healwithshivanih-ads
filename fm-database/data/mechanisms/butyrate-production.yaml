@@ -1,8 +1,25 @@
 slug: butyrate-production
 display_name: Colonic Butyrate Production
 aliases:
-- short-chain fatty acid production
 - SCFA butyrate
+- short-chain fatty acid production
+- gut-butyrate-production
+- SCFA
+- butyrate colon
+- scfa-production
+- short-chain-fatty-acid-production
+- short-chain-fatty-acid-signaling
+- scfa-reduction
+- impaired-scfa-production
+- microbial-fermentation
+- colonocyte-fermentation
+- soluble-fiber-fermentation
+- blood-brain-barrier-crossing-butyrate
+- SCFA production
+- butyrate production
+- microbial fermentation
+- microbial fermentation of fiber
+- colonic fermentation
 category: gut
 summary: Microbial fermentation of dietary fiber produces butyrate, the primary energy
   source for colonocytes; butyrate supports gut barrier integrity, reduces colonic
@@ -26,6 +43,22 @@ sources:
 - id: vitaone-elimination-diet-toolkit
   location: FODMAP Plan SOS Solutions — Constipation
   quote: Ghee provides butyrate → improves colon motility.
+- id: vitaone-health-coaching-toolkit
+  location: FODMAP Plan SOS Solutions — CONSTIPATION
+  quote: Ghee provides butyrate → improves colon motility.
+- id: thurlow-microbiome-session-7
+  location: Session 7 — Fiber Gap & Feeding the Microbiome
+- id: thurlow-microbiome-mondays
+  location: Session 1 — Microbiome Foundations
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Gut Dysbiosis
+    / Endotoxemia
+  quote: Support microbiota diversity and SCFA production.
+- id: vitaone-gut-toolkit
+  location: 'Gut-Brain Axis: Nutrition''s Impact on Mental Health — Fiber-Rich Foods'
+  quote: A high-fiber diet promotes the growth of diverse gut bacteria, which produce
+    short-chain fatty acids (SCFAs) that support brain health by reducing inflammation
+    and promoting a healthy brain-gut connection.
 version: 1
 status: active
 updated_at: '2026-05-02'
