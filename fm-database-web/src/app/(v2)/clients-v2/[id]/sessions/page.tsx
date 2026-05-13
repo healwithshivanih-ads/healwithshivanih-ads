@@ -22,7 +22,9 @@ import { loadAllPlans } from "@/lib/fmdb/loader";
 import { loadClientSessionsAction } from "@/app/assess/actions";
 import { SessionsPageShell } from "./sessions-page-shell";
 import { SessionsBrowser } from "./sessions-browser";
+import { SessionMarkerCharts } from "./session-marker-charts";
 import { ReworkBanner } from "@/app/clients/[id]/rework-banner";
+import type { Client } from "@/lib/fmdb/types";
 
 export const dynamic = "force-dynamic";
 
@@ -98,6 +100,10 @@ export default async function SessionsPage({
         // inspector to detect a stale generated_plan_slug ref and show
         // "plan deleted" instead of a Link that 404s on the v2 editor.
         knownPlanSlugs={allPlans.map((p) => p.slug as string)}
+        // Client-relevant clinical-marker trend charts above the 2-col grid.
+        markerChartsSlot={
+          <SessionMarkerCharts clientId={id} client={client as unknown as Client} />
+        }
       />
     </SessionsPageShell>
   );

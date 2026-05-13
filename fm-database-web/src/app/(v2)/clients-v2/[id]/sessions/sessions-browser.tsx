@@ -75,6 +75,7 @@ export function SessionsBrowser({
   activePlanStart,
   activePlanRecheck,
   knownPlanSlugs,
+  markerChartsSlot,
 }: {
   clientId: string;
   displayName: string;
@@ -96,6 +97,8 @@ export function SessionsBrowser({
    *  slug no longer exists on disk (deleted draft / stale ref). Without
    *  this, clicking the button 404'd on the v2 plan editor. */
   knownPlanSlugs?: string[];
+  /** Server-rendered marker-charts panel mounted above the 2-col grid. */
+  markerChartsSlot?: React.ReactNode;
 }) {
   const router = useRouter();
   const params = useSearchParams();
@@ -210,6 +213,10 @@ export function SessionsBrowser({
             activePlanRecheck={activePlanRecheck}
           />
         </div>
+      )}
+
+      {markerChartsSlot && (
+        <div style={{ marginBottom: 14 }}>{markerChartsSlot}</div>
       )}
 
     <div className="fm-v2-2col" style={{ gridTemplateColumns: "340px minmax(0, 1fr)" }}>
