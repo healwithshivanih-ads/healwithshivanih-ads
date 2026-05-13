@@ -8,6 +8,7 @@ import {
 } from "@/lib/fmdb/loader-extras";
 import { renderMindmap } from "./actions";
 import { MindMapMermaid } from "./mindmap-mermaid";
+import { MindMapRadial } from "./mindmap-radial";
 import { FmAppShell } from "@/components/fm";
 
 export const dynamic = "force-dynamic";
@@ -79,15 +80,23 @@ export default async function MindMapDetailPage({
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Tree</CardTitle>
+          <CardTitle className="text-base">Map</CardTitle>
         </CardHeader>
         <CardContent>
           {m.tree && m.tree.length > 0 ? (
-            <MindMapMermaid
+            <MindMapRadial
               slug={slug}
-              mermaidSource={mermaidSource}
-              renderError={renderError}
-              fallbackTree={m.tree}
+              tree={m.tree}
+              centerLabel={m.display_name ?? m.slug}
+              description={m.description ?? undefined}
+              mermaidSlot={
+                <MindMapMermaid
+                  slug={slug}
+                  mermaidSource={mermaidSource}
+                  renderError={renderError}
+                  fallbackTree={m.tree}
+                />
+              }
             />
           ) : (
             <p className="italic text-muted-foreground text-sm">No nodes.</p>
