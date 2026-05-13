@@ -868,6 +868,61 @@ export function SuggestionsView({
   const extracted = suggestions.extracted_labs;
   const synthesisNotes = suggestions.synthesis_notes;
 
+  // ── Action queue — every pick key that gets a checkbox on this page,
+  // bucketed by category. Lets the sticky bar count "N of M selected"
+  // and lets Select-all / Clear-all flip everything at once.
+  const allKeys: { category: string; keys: string[] }[] = [
+    {
+      category: "Drivers",
+      keys: drivers.map((d) => `driver_${d.mechanism_slug}`),
+    },
+    {
+      category: "Topics",
+      keys: topics.map((t) => `topic_${t.topic_slug}_${t.role}`),
+    },
+    {
+      category: "Lifestyle",
+      keys: lifestyles.map((l, i) => `lifestyle_${i}_${l.name}`),
+    },
+    { category: "Nutrition", keys: nutrition ? ["nutrition_block"] : [] },
+    {
+      category: "Supplements",
+      keys: supplements.map((s) => `supp_${s.supplement_slug}`),
+    },
+    {
+      category: "Protocols",
+      keys: protocols.map((p) => `protocol_${p.protocol_slug}`),
+    },
+    {
+      category: "Labs",
+      keys: labs.map((l, i) => `lab_${i}_${String(l.test ?? "")}`),
+    },
+    { category: "Referrals", keys: refs.map((_r, i) => `ref_${i}`) },
+    {
+      category: "Education",
+      keys: edu.map((e, i) => `edu_${i}_${String(e.target_slug ?? "")}`),
+    },
+  ];
+  const totalKeys = allKeys.reduce((s, c) => s + c.keys.length, 0);
+  const selectedKeys = allKeys.reduce(
+    (s, c) => s + c.keys.filter((k) => picks[k] ?? true).length,
+    0,
+  );
+  const allOn = totalKeys > 0 && selectedKeys === totalKeys;
+  const allOff = selectedKeys === 0;
+
+  const flipAll = (on: boolean) => {
+    const next: Record<string, boolean> = {};
+    for (const cat of allKeys) for (const k of cat.keys) next[k] = on;
+    setPicks(next);
+  };
+  const flipCategory = (cat: string, on: boolean) => {
+    const next = { ...picks };
+    const found = allKeys.find((c) => c.category === cat);
+    if (found) for (const k of found.keys) next[k] = on;
+    setPicks(next);
+  };
+
   // ── One-sentence read — first sentence of synthesis_notes ──────────
   // If the AI's synthesis is "Primary picture is HPA-axis dysregulation
   // + insulin resistance driving fatigue + central adiposity. Underlying
@@ -1564,6 +1619,211 @@ export function SuggestionsView({
             })}
           </CardContent>
         </CollapsibleCard>
+      )}
+
+      {/* ── Action queue summary — sticky-feeling bar at the bottom of
+            the suggestions block. Tells the coach exactly how many of
+            the AI's suggestions are queued to flow into the next draft
+            plan, with Select-all / Clear-all + per-category controls. */}
+      {totalKeys > 0 && (
+        <div
+          style={{
+            position: "sticky",
+            bottom: 0,
+            zIndex: 5,
+            marginTop: 12,
+            padding: "12px 14px",
+            background: "var(--fm-surface, #fff)",
+            border: "1.5px solid var(--fm-primary, #ff6b35)",
+            borderRadius: "var(--fm-radius-md, 10px)",
+            boxShadow: "0 -4px 12px rgba(0, 0, 0, 0.06)",
+            display: "grid",
+            gap: 10,
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 12,
+              flexWrap: "wrap",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "baseline",
+                gap: 8,
+                fontSize: 12.5,
+              }}
+            >
+              <span style={{ fontSize: 16 }}>✅</span>
+              <span style={{ fontWeight: 700, color: "var(--fm-text-primary, #1a1a1a)" }}>
+                Action queue
+              </span>
+              <span
+                style={{
+                  fontFamily: "var(--fm-font-mono, ui-monospace, monospace)",
+                  fontSize: 12,
+                  color: "var(--fm-text-secondary, #5a5a5a)",
+                }}
+              >
+                <strong style={{ color: "var(--fm-primary, #ff6b35)" }}>
+                  {selectedKeys}
+                </strong>{" "}
+                of {totalKeys} selected
+              </span>
+            </div>
+            <div style={{ marginLeft: "auto", display: "flex", gap: 6 }}>
+              <button
+                type="button"
+                onClick={() => flipAll(true)}
+                disabled={allOn}
+                style={{
+                  padding: "5px 10px",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  background: allOn ? "var(--fm-bg-cool, #f0f4f8)" : "var(--fm-surface)",
+                  color: "var(--fm-text-secondary, #5a5a5a)",
+                  border: "1px solid var(--fm-border, #e8e8e8)",
+                  borderRadius: "var(--fm-radius-sm, 6px)",
+                  cursor: allOn ? "default" : "pointer",
+                  fontFamily: "inherit",
+                  opacity: allOn ? 0.5 : 1,
+                }}
+              >
+                ☑ Select all
+              </button>
+              <button
+                type="button"
+                onClick={() => flipAll(false)}
+                disabled={allOff}
+                style={{
+                  padding: "5px 10px",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  background: allOff ? "var(--fm-bg-cool, #f0f4f8)" : "var(--fm-surface)",
+                  color: "var(--fm-text-secondary, #5a5a5a)",
+                  border: "1px solid var(--fm-border, #e8e8e8)",
+                  borderRadius: "var(--fm-radius-sm, 6px)",
+                  cursor: allOff ? "default" : "pointer",
+                  fontFamily: "inherit",
+                  opacity: allOff ? 0.5 : 1,
+                }}
+              >
+                ☐ Clear all
+              </button>
+            </div>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: 5,
+              fontSize: 11,
+            }}
+          >
+            {allKeys
+              .filter((c) => c.keys.length > 0)
+              .map((c) => {
+                const onCount = c.keys.filter((k) => picks[k] ?? true).length;
+                const catAllOn = onCount === c.keys.length;
+                const catAllOff = onCount === 0;
+                return (
+                  <span
+                    key={c.category}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 4,
+                      padding: "3px 8px",
+                      background: catAllOff
+                        ? "var(--fm-bg-warm, #fff5f0)"
+                        : catAllOn
+                          ? "rgba(46, 204, 113, 0.10)"
+                          : "rgba(243, 156, 18, 0.10)",
+                      border: `1px solid ${
+                        catAllOff
+                          ? "var(--fm-border)"
+                          : catAllOn
+                            ? "rgba(46, 204, 113, 0.30)"
+                            : "rgba(243, 156, 18, 0.30)"
+                      }`,
+                      borderRadius: 999,
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontWeight: 600,
+                        color: "var(--fm-text-secondary, #5a5a5a)",
+                      }}
+                    >
+                      {c.category}
+                    </span>
+                    <span
+                      style={{
+                        fontFamily: "var(--fm-font-mono, ui-monospace, monospace)",
+                        color: catAllOff
+                          ? "var(--fm-text-tertiary, #999)"
+                          : catAllOn
+                            ? "#1E8449"
+                            : "#8a5a08",
+                      }}
+                    >
+                      {onCount}/{c.keys.length}
+                    </span>
+                    {/* Per-category mini controls */}
+                    {!catAllOn && (
+                      <button
+                        type="button"
+                        onClick={() => flipCategory(c.category, true)}
+                        title={`Tick every ${c.category}`}
+                        style={{
+                          background: "transparent",
+                          border: "none",
+                          padding: 0,
+                          cursor: "pointer",
+                          fontSize: 11,
+                          color: "var(--fm-text-tertiary, #999)",
+                          fontFamily: "inherit",
+                        }}
+                      >
+                        ☑
+                      </button>
+                    )}
+                    {!catAllOff && (
+                      <button
+                        type="button"
+                        onClick={() => flipCategory(c.category, false)}
+                        title={`Untick every ${c.category}`}
+                        style={{
+                          background: "transparent",
+                          border: "none",
+                          padding: 0,
+                          cursor: "pointer",
+                          fontSize: 11,
+                          color: "var(--fm-text-tertiary, #999)",
+                          fontFamily: "inherit",
+                        }}
+                      >
+                        ☐
+                      </button>
+                    )}
+                  </span>
+                );
+              })}
+          </div>
+          <div
+            style={{
+              fontSize: 10.5,
+              color: "var(--fm-text-tertiary, #999)",
+              fontStyle: "italic",
+            }}
+          >
+            Only the {selectedKeys} ticked item{selectedKeys === 1 ? "" : "s"} flow into
+            the draft plan when you click <strong>Generate draft plan</strong> below.
+          </div>
+        </div>
       )}
     </div>
   );
@@ -3469,7 +3729,20 @@ export function AssessClient({ clients = [], symptoms, topics, initialClientId, 
             disabled={draftPending}
             className="w-full"
           >
-            {draftPending ? "Generating draft plan…" : "📝 Generate draft plan"}
+            {draftPending
+              ? "Generating draft plan…"
+              : (() => {
+                  // Count selected picks — same logic as SuggestionsView's
+                  // sticky bar, derived from the same `picks` state. Lets
+                  // the button read "Generate plan from 12 selections"
+                  // instead of a generic "Generate draft plan".
+                  const total = Object.keys(picks).length;
+                  const selected = Object.values(picks).filter((v) => v).length;
+                  // If picks haven't been touched yet, total is 0 and the
+                  // server-side default (all suggestions in) applies.
+                  if (total === 0) return "📝 Generate draft plan (all suggestions)";
+                  return `📝 Generate draft plan from ${selected} selection${selected === 1 ? "" : "s"}`;
+                })()}
           </Button>
           {planBrief.protocol_template_id && (
             <p className="text-xs text-center text-indigo-700">
