@@ -9,12 +9,32 @@ import {
   checkAisensyConfigAction,
   type MessageTemplate,
 } from "@/app/api/aisensy-webhook/actions";
+import { sendClientEmailAction } from "@/app/api/email/actions";
 
 interface Props {
   clientId: string;
   clientName: string;
   clientPhone?: string;
+  clientEmail?: string;
   aisensyConfigured?: boolean;
+}
+
+/**
+ * AiSensy campaigns that have been registered + approved on the dashboard.
+ * Templates whose slug matches one of these can be sent over WhatsApp.
+ * Others are local-only (copy/paste or send-as-email).
+ *
+ * Keep in sync with the AiSensy console.
+ */
+const APPROVED_AISENSY_CAMPAIGNS = new Set<string>([
+  "fm_lab_reminder",
+  "fm_session_confirm",
+  "fm_supplement_instructions",
+  "fm_encouragement",
+]);
+
+function isAisensyApproved(slug: string): boolean {
+  return APPROVED_AISENSY_CAMPAIGNS.has(slug);
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -91,6 +111,17 @@ function AddTemplateForm({
         <span className="text-xs font-semibold">New template</span>
         <button onClick={onCancel} className="text-[11px] text-muted-foreground hover:text-foreground">Cancel</button>
       </div>
+      <p className="text-[11px] leading-relaxed text-muted-foreground bg-amber-50 border border-amber-200 rounded px-2 py-1.5">
+        <strong>How sending works:</strong> templates saved here are stored
+        locally and can always be <strong>copied</strong> or <strong>sent as
+        email</strong>. To send over <strong>WhatsApp / AiSensy</strong>, the
+        slug must <em>also</em> be registered + approved on the AiSensy
+        dashboard as a campaign with the exact same name. Approved today:{" "}
+        <code className="text-[10px]">fm_lab_reminder</code>,{" "}
+        <code className="text-[10px]">fm_session_confirm</code>,{" "}
+        <code className="text-[10px]">fm_supplement_instructions</code>,{" "}
+        <code className="text-[10px]">fm_encouragement</code>.
+      </p>
       <div className="grid grid-cols-2 gap-2">
         <label className="space-y-0.5">
           <span className="text-[10px] text-muted-foreground">Name</span>
@@ -149,12 +180,14 @@ function ComposeView({
   template,
   clientName,
   clientPhone,
+  clientEmail,
   aisensyConfigured,
   onBack,
 }: {
   template: MessageTemplate;
   clientName: string;
   clientPhone?: string;
+  clientEmail?: string;
   aisensyConfigured?: boolean;
   onBack: () => void;
 }) {
@@ -170,7 +203,12 @@ function ComposeView({
   const [sending, setSending] = useState(false);
   const [sendResult, setSendResult] = useState<{ ok: boolean; error?: string } | null>(null);
 
+  const aisensyApproved = isAisensyApproved(template.slug);
   const filled = fillTemplate(template.body, values);
+
+  // Default email subject derived from the template name.
+  const defaultSubject = `${template.name} — from Shivani`;
+  const [emailSubject, setEmailSubject] = useState(defaultSubject);
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(filled);
@@ -182,6 +220,29 @@ function ComposeView({
     if (!clientPhone) return;
     setSending(true); setSendResult(null);
     const res = await sendWhatsAppAction(clientPhone, template.slug, Object.values(values));
+    setSending(false);
+    setSendResult(res);
+  };
+
+  const handleSendEmail = async () => {
+    if (!clientEmail) return;
+    setSending(true); setSendResult(null);
+    // Plain text → minimal HTML wrapping so paragraphs render in mail clients.
+    const htmlBody = `<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 14px; line-height: 1.6; color: #222;">${
+      filled
+        .split(/\n{2,}/)
+        .map(
+          (para) =>
+            `<p style="margin: 0 0 12px 0;">${para.replace(/\n/g, "<br>")}</p>`,
+        )
+        .join("")
+    }<p style="margin-top: 24px; font-size: 13px; color: #555;">— Shivani</p></div>`;
+    const res = await sendClientEmailAction({
+      to: clientEmail,
+      subject: emailSubject.trim() || defaultSubject,
+      htmlBody,
+      textBody: filled,
+    });
     setSending(false);
     setSendResult(res);
   };
@@ -225,6 +286,49 @@ function ComposeView({
         />
       </div>
 
+      {/* Email subject — only when an email is on file */}
+      {clientEmail && (
+        <label className="block space-y-0.5">
+          <span className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wide">
+            Email subject (used if sending as email)
+          </span>
+          <input
+            type="text"
+            value={emailSubject}
+            onChange={(e) => setEmailSubject(e.target.value)}
+            className="w-full rounded border border-input bg-background px-2 py-1.5 text-xs focus:outline-none"
+          />
+        </label>
+      )}
+
+      {/* Channel availability banner */}
+      <div className="flex flex-wrap gap-2 text-[10px]">
+        <span
+          className={`px-1.5 py-0.5 rounded border ${
+            aisensyApproved
+              ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+              : "bg-amber-50 text-amber-700 border-amber-200"
+          }`}
+          title={
+            aisensyApproved
+              ? "Template name is registered + approved on AiSensy. WhatsApp send will work."
+              : "Template name isn't registered on AiSensy. Email and copy still work; WhatsApp send is disabled."
+          }
+        >
+          {aisensyApproved ? "✓ AiSensy approved" : "⚠ Not on AiSensy"}
+        </span>
+        {clientEmail && (
+          <span className="px-1.5 py-0.5 rounded border bg-blue-50 text-blue-700 border-blue-200">
+            ✉ Email on file
+          </span>
+        )}
+        {clientPhone && (
+          <span className="px-1.5 py-0.5 rounded border bg-pink-50 text-pink-700 border-pink-200">
+            📱 Phone on file
+          </span>
+        )}
+      </div>
+
       {/* Actions */}
       <div className="flex flex-wrap gap-2 items-center">
         <button
@@ -234,19 +338,44 @@ function ComposeView({
           {copied ? "✓ Copied" : "📋 Copy"}
         </button>
 
-        {aisensyConfigured && clientPhone && (
+        {clientEmail && (
           <button
-            onClick={handleSend}
+            onClick={handleSendEmail}
             disabled={sending}
             className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg text-white disabled:opacity-50 transition-opacity"
             style={{ background: "var(--brand-indigo, #2B2D42)" }}
           >
-            {sending ? "Sending…" : "📤 Send via AiSensy"}
+            {sending ? "Sending…" : "✉ Send as email"}
           </button>
         )}
 
+        {aisensyConfigured && clientPhone && aisensyApproved && (
+          <button
+            onClick={handleSend}
+            disabled={sending}
+            className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg text-white disabled:opacity-50 transition-opacity"
+            style={{ background: "#25D366" }}
+            title="Sends via AiSensy WhatsApp"
+          >
+            {sending ? "Sending…" : "📤 Send via WhatsApp"}
+          </button>
+        )}
+
+        {aisensyConfigured && clientPhone && !aisensyApproved && (
+          <span
+            className="text-[10px] text-muted-foreground italic"
+            title="Template slug must be registered + approved on AiSensy first"
+          >
+            WhatsApp disabled — template not on AiSensy
+          </span>
+        )}
+
         {aisensyConfigured && !clientPhone && (
-          <span className="text-[10px] text-muted-foreground italic">No phone number on file for this client</span>
+          <span className="text-[10px] text-muted-foreground italic">No phone number on file</span>
+        )}
+
+        {!clientEmail && !clientPhone && (
+          <span className="text-[10px] text-muted-foreground italic">No contact details — copy and paste manually</span>
         )}
       </div>
 
@@ -261,7 +390,7 @@ function ComposeView({
 
 // ── Main panel ────────────────────────────────────────────────────────────────
 
-export function MessageTemplatesPanel({ clientId, clientName, clientPhone, aisensyConfigured: aisensyConfiguredProp }: Props) {
+export function MessageTemplatesPanel({ clientId, clientName, clientPhone, clientEmail, aisensyConfigured: aisensyConfiguredProp }: Props) {
   const [open, setOpen] = useState(false);
   const [templates, setTemplates] = useState<MessageTemplate[]>([]);
   const [loading, setLoading] = useState(false);
@@ -395,6 +524,7 @@ export function MessageTemplatesPanel({ clientId, clientName, clientPhone, aisen
               template={selected}
               clientName={clientName}
               clientPhone={clientPhone}
+              clientEmail={clientEmail}
               aisensyConfigured={aisensyConfigured}
               onBack={() => setSelected(null)}
             />

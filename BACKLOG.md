@@ -5,47 +5,39 @@ the queue. Items here have been explicitly deferred — listed roughly by area.
 When picking one up, move its entry to a v0.x commit message and delete it
 from this file.
 
-Last updated: 2026-05-13 (post v0.72 — Phase letters live + coach UX batch: tab rename Analyse→Sessions / Sessions→Timeline, SOAP-note label, last-assessment header strip, FM lab catalogue expanded with HOMA-IR/QUICKI/H. pylori UBT/UCAR/UACR + custom-lab input, long-date format helper, classic-flow hint dropped from Sessions tab, PhaseLetterPanel moved to top of Communicate)
+Last updated: 2026-05-13 (post v0.73 — Intake transcript upload + discovery context block on intake page + 9c/section 11 description audit + Communicate channel picker (WhatsApp / Email) + AiSensy-approved template guard. All five remaining coach-UX items from the May-13 batch landed.)
 
 ---
 
-## Coach UX — open follow-ups (from 2026-05-13 session)
+## Coach UX — open follow-ups
 
-Three items deferred from the May-13 batch (the rest landed; see commit
-log). Listed in priority order.
+None at this time. All items from the May-13 coach feedback batch have
+landed:
 
-- **Intake-form transcript upload (PDF / TXT / MD / image)** — current
-  intake page only takes pasted text for the discovery-call transcript.
-  Coach: should also accept .pdf, .txt, .md, image uploads (when client
-  sends a screenshot). Wire into the existing extract-symptoms.py +
-  extract-client-from-transcript.py shims (both already accept binary
-  attachments). New `<TranscriptDropZone>` component on the v2 intake
-  form. ~30 min.
-- **Intake background block on discovery context** — what was discussed
-  on the discovery call (chief complaint, lab order, food journal
-  request)? Coach asks "is symptoms field pre-populated from discovery
-  call?". Currently no — the intake form starts blank. Add a "📞 From
-  your discovery call" recap card at the top of /analyse/intake that
-  surfaces the discovery session's selected_symptoms + presenting_complaints
-  + requested_labs as read-only context AND pre-populates the intake
-  form's symptom picker with whatever discovery flagged. ~45 min.
-- **Communicate · Send message — email-or-WhatsApp picker + template
-  dropdown** — current MessageTemplatesPanel only sends via AiSensy
-  WhatsApp. Coach wants a top-level "Send as: [WhatsApp ▾] [Email ▾]"
-  toggle, with the existing template list appearing only when WhatsApp
-  is chosen, and the email path using the existing Gmail SMTP send
-  action. Also clarify: "+ Add template" creates a NEW reusable template
-  for the templates library (NOT a one-off message). ~1 hour.
-- **Catalogue + Resources + Mind Map + Backlog + Ingest pages in v2
-  chrome** — these are still on the legacy SidebarNav layout. Wrap each
-  in FmAppShell + restyle to v2 tokens. ~3-4 hours per page; do
-  catalogue first (most-used). Each is a self-contained refactor.
-- **Section 9c vs coach notes (Intake form clarification)** — coach
-  asked what the difference is between two fields she sees. Audit the
-  intake form: probably section 9c is a structured field (e.g. "Goals
-  for this protocol") and coach_notes is the freeform append-anything
-  field. Either rename for clarity OR merge if they're truly the same.
-  ~15 min audit + 15 min fix.
+- ✅ Intake-form transcript upload (PDF / TXT / MD / image) — wired to
+  `extractTranscriptAction` + `uploadFileAction` via a new
+  `TranscriptUploadBox` component inside intake-form.tsx. Returns
+  matched symptom slugs which auto-merge into the picker.
+- ✅ Intake discovery-call context block — `/analyse/intake/page.tsx`
+  now loads the most-recent `discovery` session and passes
+  `discoveryContext` to `IntakeForm`. Renders a "📞 From the discovery
+  call" card with chief concern + labs ordered + full coach notes,
+  and seeds the transcript field with the same context.
+- ✅ Section 9c vs Section 11 — descriptions clarified. 9c =
+  "Verbal labs & vitals — paste & parse" (numeric / structured).
+  11 = "Coach observations" (non-numeric, mood / dynamics / affect).
+- ✅ Communicate channel picker — `MessageTemplatesPanel` now accepts
+  `clientEmail`. ComposeView surfaces an "✉ Send as email" button next
+  to the WhatsApp button when an email is on file. Channel-availability
+  banner shows AiSensy / Email / Phone on-file status as colored chips.
+- ✅ AiSensy-template guard — APPROVED_AISENSY_CAMPAIGNS const lists
+  the 4 Meta-approved campaign slugs. ComposeView marks any template
+  whose slug isn't on that list as "⚠ Not on AiSensy" and disables the
+  WhatsApp send button with an inline hint. AddTemplateForm now ships
+  with an explainer banner clarifying that templates are local-only
+  unless registered on AiSensy.
+- ✅ Catalogue + Resources + Mind Map + Backlog + Ingest pages in v2
+  chrome (landed in 99998d5).
 
 ---
 

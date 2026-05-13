@@ -38,6 +38,8 @@ import {
   saveSessionAction,
   applyTranscriptDataAction,
   parseHealthTextAction,
+  extractTranscriptAction,
+  uploadFileAction,
   type FivePillarsData,
 } from "@/app/assess/actions";
 /** Inline shape mirroring ExtractedHealthData from lib/fmdb/anthropic.ts
@@ -144,11 +146,19 @@ interface ExistingTimelineRow {
   event: string;
 }
 
+export type DiscoveryContext = {
+  date: string;
+  chief_concern: string;
+  coach_notes: string;
+  requested_labs: string[];
+} | null;
+
 export function IntakeForm({
   clientId,
   displayName,
   clientSex,
   symptomCatalogue,
+  discoveryContext,
   existingConditions,
   existingAllergies,
   existingGoals,
@@ -169,6 +179,7 @@ export function IntakeForm({
   displayName: string;
   clientSex?: "F" | "M" | null;
   symptomCatalogue: FmSymptomOption[];
+  discoveryContext: DiscoveryContext;
   existingConditions: string[];
   existingAllergies: string[];
   existingGoals: string[];
@@ -267,7 +278,21 @@ export function IntakeForm({
   // 1 · Presenting picture
   const [chiefComplaint, setChiefComplaint] = useState("");
   const [hpi, setHpi] = useState("");
-  const [transcriptNotes, setTranscriptNotes] = useState("");
+  // Seed transcript notes with discovery-call context so the AI synthesis
+  // pass has the chief concern + labs requested before this intake.
+  const [transcriptNotes, setTranscriptNotes] = useState(() => {
+    if (!discoveryContext) return "";
+    const lines = [
+      `[Discovery call · ${discoveryContext.date || "earlier"}]`,
+      discoveryContext.chief_concern
+        ? `Chief concern: ${discoveryContext.chief_concern}`
+        : "",
+      discoveryContext.requested_labs.length > 0
+        ? `Labs ordered: ${discoveryContext.requested_labs.join(", ")}`
+        : "",
+    ].filter(Boolean);
+    return lines.join("\n");
+  });
 
   // 2 · Body composition baseline — pre-filled from client.measurements +
   //     latest health_snapshot (snapshot wins per-field when present).
@@ -637,6 +662,72 @@ export function IntakeForm({
 
   return (
     <div>
+      {discoveryContext && (
+        <div
+          style={{
+            border: "1px solid var(--fm-border)",
+            borderLeft: "3px solid var(--fm-primary)",
+            background: "var(--fm-bg-subtle)",
+            borderRadius: "var(--fm-radius-sm)",
+            padding: "10px 14px",
+            marginBottom: 14,
+            fontSize: 12.5,
+            display: "grid",
+            gap: 6,
+          }}
+        >
+          <div style={{ fontWeight: 700, color: "var(--fm-text)" }}>
+            📞 From the discovery call · {discoveryContext.date || "earlier"}
+          </div>
+          {discoveryContext.chief_concern && (
+            <div>
+              <span style={{ fontWeight: 600 }}>Chief concern: </span>
+              {discoveryContext.chief_concern}
+            </div>
+          )}
+          {discoveryContext.requested_labs.length > 0 && (
+            <div>
+              <span style={{ fontWeight: 600 }}>
+                Labs ordered ({discoveryContext.requested_labs.length}):
+              </span>{" "}
+              <span style={{ color: "var(--fm-text-muted)" }}>
+                {discoveryContext.requested_labs.slice(0, 8).join(", ")}
+                {discoveryContext.requested_labs.length > 8
+                  ? ` + ${discoveryContext.requested_labs.length - 8} more`
+                  : ""}
+              </span>
+            </div>
+          )}
+          {discoveryContext.coach_notes && (
+            <details>
+              <summary
+                style={{
+                  cursor: "pointer",
+                  fontSize: 11.5,
+                  color: "var(--fm-text-secondary)",
+                }}
+              >
+                Full coach notes from discovery
+              </summary>
+              <pre
+                style={{
+                  whiteSpace: "pre-wrap",
+                  fontFamily: "var(--fm-font-mono)",
+                  fontSize: 11,
+                  marginTop: 6,
+                  color: "var(--fm-text-muted)",
+                }}
+              >
+                {discoveryContext.coach_notes}
+              </pre>
+            </details>
+          )}
+          <div style={{ fontSize: 11, color: "var(--fm-text-muted)" }}>
+            The discovery context has been seeded into the transcript field
+            below — edit or replace as you go through the intake call.
+          </div>
+        </div>
+      )}
       {/* 1 · Presenting */}
       <FmFormSection
         title="1 · Presenting picture"
@@ -674,15 +765,37 @@ export function IntakeForm({
               padding: "4px 0",
             }}
           >
-            Live transcript / paste
+            Live transcript / paste / upload
           </summary>
-          <div style={{ marginTop: 8 }}>
+          <div style={{ marginTop: 8, display: "grid", gap: 10 }}>
             <FmTextarea
               value={transcriptNotes}
               onChange={(e) => setTranscriptNotes(e.target.value)}
-              placeholder="Paste the call transcript here (or use the Transcript Upload section in legacy Overview)."
+              placeholder="Paste the call transcript here, OR drop a file below (PDF / TXT / MD / image). The AI will pre-populate the symptoms picker below."
               rows={5}
               style={{ fontFamily: "var(--fm-font-mono)", fontSize: 12 }}
+            />
+            <TranscriptUploadBox
+              clientId={clientId}
+              symptomCatalogue={symptomCatalogue}
+              onExtracted={(matched, paths) => {
+                // Merge matched symptoms into the picker — dedup.
+                const next = Array.from(new Set([...symptoms, ...matched]));
+                setSymptoms(next);
+                // Append a marker into transcript notes so the AI synthesis
+                // pass downstream knows transcripts were ingested + where
+                // they live on disk.
+                setTranscriptNotes((prev) =>
+                  [
+                    prev.trim(),
+                    paths.length > 0
+                      ? `[transcripts ingested: ${paths.join(", ")}]`
+                      : "",
+                  ]
+                    .filter(Boolean)
+                    .join("\n\n"),
+                );
+              }}
             />
           </div>
         </details>
@@ -1539,8 +1652,8 @@ export function IntakeForm({
 
       {/* 9c · Manual health data paste */}
       <FmFormSection
-        title="9c · Health data — paste & parse"
-        description="Paste verbal-report values the client mentioned on the call (e.g. weight, BP, lab values, recent symptoms). Haiku extracts the structured data; review before applying."
+        title="9c · Verbal labs & vitals — paste & parse"
+        description="Numbers the client said out loud (weight, BP, “my TSH was 4.2 last week”) that haven't been uploaded as a PDF. Haiku turns them into structured lab values + measurements; review and apply to the client's health snapshot. → Numeric / structured. Coach observations (mood, dynamics, anything non-numeric) go into section 11 instead."
       >
         <FmField
           label="Free-form coach text"
@@ -1646,7 +1759,10 @@ export function IntakeForm({
       </FmFormSection>
 
       {/* 11 · Coach notes */}
-      <FmFormSection title="11 · Coach notes">
+      <FmFormSection
+        title="11 · Coach observations"
+        description="Free-text, non-numeric. Mood / affect, body language, relationship dynamics, sense of motivation, anything that won't show up in labs or fit the structured fields above. Gets saved as session.coach_notes — distinct from 9c which captures numeric / structured data."
+      >
         <FmField label="Anything else worth recording">
           {({ id }) => (
             <FmTextarea
@@ -2131,6 +2247,123 @@ function HealthDataPreview({
         >
           ✓ Apply to client profile
         </button>
+      )}
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * TranscriptUploadBox
+ * Accepts PDF / TXT / MD / image. Streams file → uploadFileAction →
+ * extractTranscriptAction. Calls onExtracted with matched symptom slugs
+ * and the saved file path so the intake form can merge symptoms + record
+ * the on-disk path in transcript_notes.
+ * ──────────────────────────────────────────────────────────────────────── */
+function TranscriptUploadBox({
+  clientId,
+  symptomCatalogue,
+  onExtracted,
+}: {
+  clientId: string;
+  symptomCatalogue: FmSymptomOption[];
+  onExtracted: (matchedSlugs: string[], savedPaths: string[]) => void;
+}) {
+  const [fileName, setFileName] = useState("");
+  const [savedPath, setSavedPath] = useState<string | null>(null);
+  const [matched, setMatched] = useState<string[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [busy, startBusy] = useTransition();
+
+  const catalogueForExtract = symptomCatalogue.map((s) => ({
+    slug: s.slug,
+    label: s.label ?? s.slug,
+    aliases: s.aliases ?? [],
+  }));
+
+  const onPick = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const f = e.target.files?.[0];
+    if (!f) return;
+    setFileName(f.name);
+    setError(null);
+    setMatched([]);
+    setSavedPath(null);
+
+    startBusy(async () => {
+      try {
+        const fd = new FormData();
+        fd.append("client_id", clientId);
+        fd.append("file", f);
+        const path = await uploadFileAction(fd);
+        setSavedPath(path);
+
+        const result = await extractTranscriptAction(
+          path,
+          f.type || "application/octet-stream",
+          catalogueForExtract,
+          false,
+        );
+        if (!result.ok) {
+          setError(result.error ?? "Extraction failed");
+          toast.error("Transcript extraction failed");
+          return;
+        }
+        const slugs = result.matched_slugs ?? [];
+        setMatched(slugs);
+        onExtracted(slugs, [path]);
+        toast.success(
+          `Transcript ingested · ${slugs.length} symptom${slugs.length === 1 ? "" : "s"} matched`,
+        );
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err);
+        setError(msg.slice(0, 300));
+        toast.error("Upload failed");
+      }
+    });
+  };
+
+  return (
+    <div
+      style={{
+        border: "1px dashed var(--fm-border)",
+        borderRadius: "var(--fm-radius-sm)",
+        padding: 12,
+        background: "var(--fm-bg-subtle)",
+        display: "grid",
+        gap: 8,
+      }}
+    >
+      <div style={{ fontSize: 12, fontWeight: 600, color: "var(--fm-text)" }}>
+        📎 Or upload a transcript file
+      </div>
+      <div style={{ fontSize: 11, color: "var(--fm-text-muted)" }}>
+        PDF, TXT, MD, or image. The AI reads it and pre-populates the symptoms
+        picker below. File is saved to{" "}
+        <code style={{ fontSize: 10 }}>~/fm-plans/clients/{clientId}/files/</code>.
+      </div>
+      <input
+        type="file"
+        accept=".pdf,.txt,.md,.markdown,image/*,application/pdf,text/plain,text/markdown"
+        onChange={onPick}
+        disabled={busy}
+        style={{ fontSize: 12 }}
+      />
+      {busy && (
+        <div style={{ fontSize: 11, color: "var(--fm-text-muted)" }}>
+          Extracting symptoms from {fileName}…
+        </div>
+      )}
+      {savedPath && !busy && (
+        <div style={{ fontSize: 11, color: "var(--fm-success, #15803d)" }}>
+          ✓ Saved to {savedPath}
+          {matched.length > 0 && (
+            <> · {matched.length} symptom{matched.length === 1 ? "" : "s"} added to picker</>
+          )}
+        </div>
+      )}
+      {error && (
+        <div style={{ fontSize: 11, color: "var(--fm-danger, #b91c1c)" }}>
+          ✗ {error}
+        </div>
       )}
     </div>
   );

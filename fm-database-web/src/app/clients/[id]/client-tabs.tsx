@@ -765,6 +765,7 @@ export function ClientPageTabs({
             clientId={clientId}
             clientName={(client as Record<string, unknown>).display_name as string ?? clientId}
             clientPhone={(client as Record<string, unknown>).mobile_number as string | undefined}
+            clientEmail={(client as Record<string, unknown>).email as string | undefined}
           />
 
           <ClientProfileEditor

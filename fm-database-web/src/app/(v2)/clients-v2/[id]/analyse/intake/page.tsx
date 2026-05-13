@@ -35,20 +35,44 @@ export default async function IntakePage({
   // Intake sessions (per the v0.59 rename) include any session whose
   // [session_type:] tag parses to "intake". Sorted newest-first for the
   // "last captured" timestamp.
-  const intakeSessions = sessions
-    .map((sess) => ({
+  const sessionsTyped = sessions.map((sess) => {
+    const rec = sess as unknown as Record<string, unknown>;
+    return {
       session_id: sess.session_id,
       date: sess.date as string | undefined,
-      type: parseSessionType(
-        (sess as unknown as Record<string, unknown>).presenting_complaints as
-          | string
-          | undefined,
-      ),
-    }))
+      type: parseSessionType(rec.presenting_complaints as string | undefined),
+      presenting_complaints: (rec.presenting_complaints as string | undefined) ?? "",
+      coach_notes: (rec.coach_notes as string | undefined) ?? "",
+      requested_labs: Array.isArray(rec.requested_labs)
+        ? ((rec.requested_labs as unknown[]).filter(
+            (x): x is string => typeof x === "string",
+          ))
+        : [],
+    };
+  });
+  const intakeSessions = sessionsTyped
     .filter((sess) => sess.type === "intake")
     .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
   const isUpdate = intakeSessions.length > 0;
   const lastIntakeDate = intakeSessions[0]?.date;
+
+  // Most recent discovery — used to seed the intake with chief concern,
+  // requested labs, and the food-journal expectation captured on that call.
+  const discoverySessions = sessionsTyped
+    .filter((sess) => sess.type === "discovery")
+    .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
+  const latestDiscovery = discoverySessions[0] ?? null;
+  // Strip the [session_type: discovery_consultation] tag for display.
+  const discoveryContext = latestDiscovery
+    ? {
+        date: latestDiscovery.date ?? "",
+        chief_concern: latestDiscovery.presenting_complaints
+          .replace(/^\[session_type:\s*discovery_consultation\]\s*/i, "")
+          .trim(),
+        coach_notes: latestDiscovery.coach_notes,
+        requested_labs: latestDiscovery.requested_labs,
+      }
+    : null;
 
   // Project the symptom catalogue down to the shape FmSymptomPicker needs.
   // Keeping just slug/label/aliases/category/severity keeps payload small.
@@ -153,6 +177,7 @@ export default async function IntakePage({
       <IntakeForm
         clientId={id}
         displayName={displayName}
+        discoveryContext={discoveryContext}
         clientSex={client.sex === "F" || client.sex === "M" ? client.sex : null}
         symptomCatalogue={symptomCatalogue}
         existingConditions={asStrArray(c.active_conditions)}

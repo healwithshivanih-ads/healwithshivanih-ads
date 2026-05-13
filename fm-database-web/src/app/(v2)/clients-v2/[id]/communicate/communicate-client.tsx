@@ -104,6 +104,7 @@ export function CommunicateClient({
           clientId={clientId}
           clientName={firstName}
           clientPhone={clientPhone}
+          clientEmail={clientEmail}
           aisensyConfigured={aisensyConfigured}
         />
 
