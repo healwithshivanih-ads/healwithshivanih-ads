@@ -14,7 +14,74 @@ published plans as JSON artifacts.
 
 ## Status
 
-**v0.66 (current)** — 15-commit coach-UX hardening pass + /assess major upgrade + form draft persistence:
+**v0.67 (current)** — Catalogue cleanup sweep + AI sanity check field-test + tracking UI + v1 retirement:
+
+**Tip: 33 commits beyond v0.66 (`e072e00..e7cdf10`).** PM2 still serving fm-coach on port 3002. All validator clean (0 errors).
+
+Catalogue cleanup — three full passes (topic / mechanism / symptom / supplement):
+- **Topic pass** (`91b00f6` + `044a69d`): Analyzer surfaced 46 duplicate-topic groups; coach reviewed all 22 coach_eye groups manually. Net: 21 merges, 13 dismisses, -33 files. Big wins: `5r-gut-protocol` (auto-routed → protocol, 4-way merge), `gut-barrier-dysfunction` (auto-routed → mechanism, 4-way leaky-gut merge), `liver-detox-support` (new protocol stub from 4 liver-detox topic dupes), `hpa-axis-dysregulation`, `adrenal-fatigue`, `autoimmune-thyroiditis`, `vitamin-d3 / b12`, `magnesium-nutrition`, `zinc-nutrition`, `dyslipidemia`, `folate-nutrition`, `homocysteine-and-methylation`, `hypothyroidism`, `sibo`, `sleep`, `cortisol-elevation`, `bloating`. **Coach edits applied per-group** (e.g. hypothyroidism kept t3-conversion-disorder separate; sleep kept insomnia as symptom; vagal kept reduction separate).
+- **Mechanism pass** (`0db6ce1` + `c0f800a`): Parameterised analyzer to accept `kind: mechanism|symptom|supplement` on stdin. Mechanism analyzer flagged 70 groups; 66 auto + 4 coach_eye. Applied 62 (5 absorbed-by-earlier-merge skips, all benign). **-126 mechanism files**. Top: leaky-gut (+6 incl. intestinal-permeability / impaired-gut-barrier), omega-3-omega-6-imbalance (+6), lps-endotoxemia (+5), dysbiosis-gut-microbiome-imbalance (+4), estrogen-enterohepatic-recirculation (+4), methylation-cycle-dysfunction (+4).
+- **Symptom pass** (`1bf31a8` + `51f4d0f`): 97 groups flagged, 50 auto + 47 coach_eye, all 47 coach_eye reviewed manually. Net: 45 applied (incl. 6 partial with member drops), 23 dismissed. Big wins: depression-symptoms (+5), blood-sugar-dysregulation (+3), daytime-fatigue (+3), craving-salt (+2), elevated-* trio.
+- **Supplement pass** (`401f3c3` + `51f4d0f`): 43 groups flagged, 13 auto + 30 coach_eye, all 30 coach_eye reviewed manually. Net: 22 applied (incl. 5 partial), 5 dismissed (betaine-tmg / folate-vs-methylfolate / ginger / phosphatidylcholine-vs-cdp-choline / turmeric-vs-curcumin all kept distinct).
+- **Backlog sweep** (`8737527`): policy-B aggressive auto-triage over the regenerated mindmap-mined backlog (~1,275 candidates). 629 rejected (intervention prose 5+ words + composite-with-/&), 27 added (catalogue-already-has-it), 16 supplement-isolate aliases attached, 11 home_remedy stubs created (abhyanga, bhringraj-oil-scalp-massage, methi-coconut-hair-pack, neem-rinse, salted-lemon-water, etc.). 786 still open for /backlog UI manual triage.
+- **Coach-reviewed cleanups summary**: 111 manual review decisions applied across 4 rounds (22 + 4 + 47 + 30 coach_eye groups). Roughly 200+ duplicate YAML files merged. **`scripts/classify-cleanup.py`** (`7a2ddf9`) auto-triages plan groups into auto/coach_eye/dismiss buckets via heuristics — read by `/catalogue/cleanup` UI to show triage badges.
+
+Cleanup tooling polish:
+- **`/catalogue/cleanup` auto-classify on analyze** (`2c9522e`): `analyzeCleanupAction` now invokes `classify-cleanup.py` automatically after the analyzer succeeds, so triage buckets render immediately without a shell step.
+- **Apply-all-auto button + bucket badges** (`2a9ce34`): bulk-apply every auto-bucket merge in one click. Triage summary bar at top of /catalogue/cleanup.
+- **Smart-merge no-downgrade** (`2e0bce9`): `_smart_merge` now preserves stronger `evidence_tier` and `Source.quality` — staged value only wins on tie/upgrade. Rank tables in `fmdb/ingest/staging.py`. `--overwrite` still wins for genuine downgrades.
+- **Plan-checker alias-aware lookup** (`5ab512d`): supplement / cooking_adjustment / home_remedy slug checks now use `_resolve_index()` like topic/mech/symptom already did. `niacin-b3` (alias of `niacin`) no longer flagged as unknown. `supp_by_slug` lookup resolves canonical so downstream contraindication / interaction / form checks fire on aliased refs.
+- **`monitor_symptoms` → `symptoms_to_monitor`** (`d6fd0d7`): Pydantic field name was `symptoms_to_monitor` but `protocol-template-picker.tsx` was writing `monitor_symptoms`. Read-time fallbacks dropped from `render-client-letter.py` (×2) + v2 catalogue page; the picker now writes the canonical key.
+
+Mindmap library — 6 new curated maps (now 23 total, ~2,343 nodes, ~684 linked):
+- `migraine.yaml` (`7f34cca`) — 126 nodes / 51 linked
+- `ibs.yaml` (`7f58a00`) — 134 nodes / 46 linked
+- `anxiety-panic.yaml` (`351770c`) — 177 nodes / 53 linked
+- `acne.yaml` (`fcfdeab`) — 110 nodes / 41 linked
+- `alopecia.yaml` (`17d5d96`) — 124 nodes / 61 linked
+- `long-covid.yaml` (`5b085d0`) — 169 nodes / 77 linked
+- All follow the 6-branch template (🔴 Clinical Presentation / ⚙️ Root Mechanisms / 🧬 FM Approach / 🛠 Interventions / 🎯 Coaching Goals / 📊 Labs to Track) and include India-context (methi/jeera/giloy/brahmi/jatamansi/abhyanga where clinically appropriate).
+- **`/clients-v2/[id]/catalogue`** queries mindmaps by topic match (existing surface, no code change).
+
+AI sanity check broadening + first hot-fire field test:
+- **Two new categories** (`d1723a5`) — `sequencing` (supplement load relative to client tolerance, foundational-phase skipping, conflicting timing windows, continuous use of pulse-only items) and `regional_availability` (dietary_preference contradictions, foods_to_avoid re-appearing, India-specific scarcity → ghee/A2/sprouted-moong/methi-water/kashayams substitutions). `_client_snapshot()` now passes `dietary_preference / foods_to_avoid / non_negotiables / reported_triggers / city / country` to the model.
+- **Field test on `geetika-plan-1`** ran clean: 3 critical / 7 warning / 2 info findings, all genuinely useful. Critical findings caught insulinoma+fasting+berberine safety risk (cross-section synthesis), berberine vs microbiome topic (cited catalogue claim slugs), niacin-b3 scope concern. Warnings caught omega-3 rationale claiming "supports T4→T3" (translation fidelity — not in catalogue), 8-supplement stack with no phasing (sequencing fired), duplicate lifestyle entries, ashwagandha + pending ANA caveat (read catalogue notes_for_coach). Regional-availability fired on Indian fish recommendation. **Production-ready.** First-call cost ~$0.10 with cache warmup; warm calls cheaper.
+- **Two bugs surfaced + fixed during test**: (a) plan-checker supplement alias-aware bug (above), (b) cleanup-induced drift on 2 published plans (`liver-detoxification` topic deleted; `leaky-gut` topic deleted). Fixed by adding both as aliases on closest semantically-related still-existing topics (`metabolic-detoxification` and `autoimmunity-leaky-gut-triad`). All 5 published plans now 0 CRITICAL.
+
+v2 Sessions tracking + Calendar:
+- **Longitudinal tracking on Sessions tab** (`80ef27c`): new `V2TrackingCharts` wraps four v1 components in `FmPanel` chrome — `OutcomeProgressCard` (symptom burden + Five Pillars deltas), `ProtocolAdherenceChart` (supplement+practice status grid across check-ins), `IFMTrend` (7-node functional matrix across full assessments), `LabComparison` (side-by-side two health_snapshots). Each panel self-hides until its data threshold is met. Mounted via new `trackingChartsSlot` on `SessionsBrowser`. Design punchlist #16-19 closed.
+- **`/calendar`** (`0bcf1a2`): month-view with 4 event types — 📋 sessions (every Discovery / Intake / Check-in / Quick note), 🔴 follow-up overdue (client.next_contact_date < today), 🟡 follow-up upcoming (≤7d), 🟣 plan recheck due (plan_period_recheck_date OR plan_period_start + plan_period_weeks×7). URL-driven via `?ym=YYYY-MM` for deep-linking. Day-cell chips deep-link to v2 sessions / overview / plan editor. Design punchlist #32 closed.
+
+v1 retirement (almost-complete):
+- **`/sources` retired** (`f4f2ccd`): page → redirect to `/ingest`; `source-client.tsx` + v1 `actions.ts` deleted (v2 ingest has its own copies).
+- **`/search` ported to v2** (`2c9522e`): moved from `src/app/search/` → `src/app/(v2)/search/`. Wrapped in `FmAppShell`. Internal links updated to v2 paths.
+- Already-redirected at session start: `/clients`, `/clients/[id]` (with ?tab=X mapping), `/plans` (list), `/plans/[slug]` (with slug→client_id lookup), `/plans/new`, `/assess`, `/dashboard-legacy`.
+- **Only v1 surface still serving real UI: none.** All page-level routes either retired or redirect. Shared component files under `src/app/clients/[id]/*.tsx` (pre-session-brief, health-trends, lab-comparison, outcome-progress-card, lab-reference-ranges, etc.) remain as a UI library imported by v2. Moving them to `src/components/` or `src/lib/` is a mechanical refactor that doesn't change behaviour.
+
+Other:
+- **`Supplement.aliases` first-class field** (`1fd58bf` + `d9f606c`): Pydantic model added the field; validator now checks supplement alias collisions; 15 aliases promoted from `notes_for_coach` "Also known as:" stashes (amla / giloy / jatamansi / pqq / gotu-kola / curry-leaves / bhringraj) + brahmi → bacopa-monnieri, methi → fenugreek, tulsi → holy-basil. Resolution verified: methi→fenugreek, tulsi→holy-basil, brahmi→bacopa-monnieri, etc.
+- **54 catalogue stubs** (`8cf6d7b`) from the mindmap-agent missing-slug shortlist: 14 symptoms (oily-skin, parosmia, derealization, etc.), 9 mechanisms (cortical-spreading-depression, mast-cell-activation, microclot-formation, viral-persistence, POTS, etc.), 12 supplements (feverfew, butterbur, nattokinase, passionflower, bhringraj-as-supplement, etc.), 19 lab_tests (mthfr-genetics, comt-genetics, hrv, active-stand-test, organic-acids, d-dimer, fibrinogen, EBV panel, etc.).
+- **Plant-Derived Adaptogens coach knowledge ingest** (`937d6a9`): 12 new claims + GABAergic-modulation mechanism + ashwagandha/ginseng/reishi/gotu-kola enrichments from a Coach Knowledge `/ingest` session.
+- **Settings page reads `fm-database/.env`** (`a8d37ee`): new `envVarSet()` / `envVarValue()` helpers check both `process.env` (Next's `.env.local`) AND the dotenv file at `fm-database/.env` (where Python shims read `ANTHROPIC_API_KEY` from). All 6 integration chips now reflect real end-to-end state.
+- **Broadcast panel default-collapsed** (`a8d37ee`): start `open=false` — broadcast is a deliberate action, not a default surface.
+- **`storage.py` WARN prints → stderr** (`e7cdf10`): `print(f"WARN: skipping {p}: {e}")` in `fmdb/plan/storage.py` (×4) + `fmdb/resources/storage.py` (×1) were writing to stdout, poisoning shim JSON output (TS shim captures stdout for `JSON.parse`). Both files now `import sys` + use `file=sys.stderr`. Surfaced because coach hit "Unexpected token 'W', \"WARN: skip\"... is not valid JSON" toast on the v2 client overview rework-suggestions panel.
+- **apply-rework itemized change log** (forthcoming commit): `scripts/apply-rework.py` now records every applied change in `applied_log: list[str]` and prepends the list to `plan.notes_for_coach` alongside the rationale block. Coach sees the whole change set at the top of a reworked plan instead of hunting per-section for `[rework]` tags. Format: `  + supplement n-acetyl-cysteine — Add NAC 600–1000 mg daily` per line.
+
+Operational state at end of session:
+- Catalogue (after ALL cleanups): topics ~284 / mechanisms 299 / symptoms 278 / supplements 246 / sources 82 / claims 1494 / cooking_adjustments 3 / home_remedies 14 (was 3, +11 from backlog) / mindmaps 23 (was 17, +6) / protocols (5r-gut-protocol, liver-detox-support, etc.) / lab_tests ~50 (+19 stubs). Validator: 0 errors, ~1637 non-blocking warnings.
+- Backlog: 786 open / 629 rejected / 27 added (file at `fm-database/data/_backlog.yaml` is gitignored — regenerable via `fmdb mindmap-mine --add-to-backlog`).
+- Plans on disk: 5 published, all 0 CRITICAL after cleanup-drift fix. Archana's rework draft `archana-rework-2-2026-05-13-cl-007-2` has the [rework] tags per supplement; future reworks will also get the itemized notes_for_coach log.
+- 4 mechanism + 47 symptom + 30 supplement coach_eye groups all manually reviewed and resolved this session.
+
+**Deferred to 3-6 month future development** (per coach):
+- **HeyGen avatar video generation** for client educational explainers (script tested on insulin-resistance, free-tier credits exhausted, needs $24/mo Creator plan upgrade to batch-produce ~12 condition videos).
+- **NotebookLM batch** for longer-form audio/video deep-dives per common condition (manual UI workflow — checklist of 12 topics ready in earlier handover).
+- **JSON export contract for Project 2** (client mobile app).
+- **VitaOne order-through-coach** (awaiting their partner support reply since 2026-05-09).
+
+---
+
+**v0.66** — 15-commit coach-UX hardening pass + /assess major upgrade + form draft persistence:
 
 Workflow & client lifecycle:
 - **🤝 Engagement step** between Discovery and Intake. New `engagement_status` field on `client.yaml` (`pending | signed_up | declined`). 7-step journey strip: Discovery → **Sign-up** → Intake → Plan active → Week N → Next phase letter → Plan completion. Sign-up step shows amber "decide?" callout above FmClientHeader when discovery is done but undecided. 3-button picker (✅ Signed up / 🤔 Still deciding / 🚫 Declined). Declined flips downstream steps to N/A. Compact pill row in right column lets coach flip the decision anytime. `deriveStage` reads sessions + engagement to produce smarter banner copy ("Awaiting sign-up confirmation" / "Discovery done · schedule intake" / "Intake captured · draft a plan" / etc.) instead of generic "Run a Discovery or Full Assessment".
