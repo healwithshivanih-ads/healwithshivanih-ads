@@ -1,0 +1,678 @@
+slug: alopecia
+display_name: Alopecia (Hair Loss)
+description: 'Functional medicine approach to hair loss across phenotypes — androgenic
+  alopecia (female- and male-pattern), telogen effluvium (diffuse shedding 3–4 months
+  post-stressor), alopecia areata (autoimmune patchy loss), traction alopecia, and
+  postpartum hair loss. Maps the dominant root drivers in Indian women: iron / ferritin
+  deficiency (very common, often missed when Hb is normal), thyroid dysfunction,
+  protein malnutrition on vegetarian diets, zinc and vitamin D deficiency, HPA-axis
+  driven telogen shifts, and hyperandrogenism (PCOS, 5-alpha-reductase activity).
+  India context: postpartum confinement diet (often iron- and protein-poor), chronic
+  ferritin depletion in menstruating women, amla / bhringraj / methi / curry-leaf
+  traditions, abhyanga scalp massage.
+
+  '
+aliases:
+- hair-loss
+- hair-thinning
+- androgenic-alopecia
+- female-pattern-hair-loss
+- male-pattern-baldness
+- telogen-effluvium
+- alopecia-areata
+related_topics:
+- hair-loss
+- hairfall
+- iron-deficiency
+- iron-deficiency-anemia
+- thyroid-dysfunction
+- hypothyroidism
+- autoimmune-thyroiditis
+- pcos
+- chronic-stress
+- autoimmune-disease
+- hormonal-nutrition-foundations
+related_mechanisms:
+- ferritin-storage-depletion
+- 5-alpha-reductase-activity
+- hpa-axis-dysregulation
+- cortisol-elevation
+- thyroid-hormone-conversion
+- hashimotos-autoimmune-cascade
+- impaired-protein-digestion
+- low-stomach-acid-iron-absorption
+- chronic-inflammation
+tree:
+- label: 🔴 Clinical Presentation
+  children:
+  - label: Pattern Phenotypes
+    children:
+    - label: Female-Pattern (widening part, vertex thinning)
+      children: []
+      linked_kind: symptom
+      linked_slug: hair-thinning
+      notes: ''
+    - label: Male-Pattern (hairline + crown recession)
+      children: []
+      linked_kind: symptom
+      linked_slug: hair-loss
+      notes: ''
+    - label: Telogen Effluvium (diffuse shedding 3–4 months post-stressor)
+      children: []
+      linked_kind: symptom
+      linked_slug: unexplained-hair-loss
+      notes: 'Onset typically 3–4 months after fever, surgery, weight loss, COVID,
+        starvation diet, starting/stopping OCP.'
+    - label: Alopecia Areata (patchy autoimmune loss)
+      children: []
+      linked_kind: topic
+      linked_slug: autoimmune-disease
+      notes: ''
+    - label: Traction Alopecia (tight hairstyles)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Postpartum Hair Loss (4–9 months PP)
+      children: []
+      linked_kind: symptom
+      linked_slug: hair-loss
+      notes: 'Estrogen withdrawal drives synchronous telogen shift; usually self-resolves
+        but worsened by iron/protein deficits common in confinement diets.'
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Co-Markers
+    children:
+    - label: Brittle Hair
+      children: []
+      linked_kind: symptom
+      linked_slug: brittle-hair
+      notes: ''
+    - label: Brittle / Peeling Nails
+      children: []
+      linked_kind: symptom
+      linked_slug: brittle-nails
+      notes: ''
+    - label: Dry Skin + Brittle Hair
+      children: []
+      linked_kind: symptom
+      linked_slug: dry-skin-brittle-hair
+      notes: ''
+    - label: Facial Hair (hyperandrogenism)
+      children: []
+      linked_kind: symptom
+      linked_slug: facial-hair
+      notes: ''
+    - label: Scalp Itch / Burning
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Red Flags
+    children:
+    - label: Scarring Alopecia → Dermatology Referral
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Irreversible if untreated — refer urgently.'
+    - label: Sudden Patches → Autoimmune Workup
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Hair Loss + Severe Fatigue / Cold Intolerance
+      children: []
+      linked_kind: symptom
+      linked_slug: cold-intolerance
+      notes: 'Screen thyroid + anemia.'
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: ⚙️ Root Mechanisms
+  children:
+  - label: Iron / Ferritin Deficiency
+    children:
+    - label: Ferritin Storage Depletion
+      children: []
+      linked_kind: mechanism
+      linked_slug: ferritin-storage-depletion
+      notes: 'Ferritin <70 ng/mL associated with shedding even when Hb is normal —
+        the dominant missed driver in Indian menstruating women.'
+    - label: Low Stomach Acid → Poor Iron Absorption
+      children: []
+      linked_kind: mechanism
+      linked_slug: low-stomach-acid-iron-absorption
+      notes: ''
+    - label: Heme vs Non-Heme Iron Absorption Gap
+      children: []
+      linked_kind: mechanism
+      linked_slug: heme-vs-nonheme-iron-absorption
+      notes: 'Vegetarian diets supply non-heme iron (~5–12% absorbed) vs heme (~25%).'
+    - label: Hepcidin-Mediated Iron Block (chronic inflammation)
+      children: []
+      linked_kind: mechanism
+      linked_slug: hepcidin-mediated-iron-block
+      notes: ''
+    linked_kind: topic
+    linked_slug: iron-deficiency
+    notes: ''
+  - label: Thyroid Dysfunction
+    children:
+    - label: Hypothyroidism
+      children: []
+      linked_kind: topic
+      linked_slug: hypothyroidism
+      notes: ''
+    - label: Autoimmune Thyroid Attack (Hashimoto's)
+      children: []
+      linked_kind: mechanism
+      linked_slug: hashimotos-autoimmune-cascade
+      notes: ''
+    - label: Impaired T4 → T3 Conversion
+      children: []
+      linked_kind: mechanism
+      linked_slug: thyroid-hormone-conversion
+      notes: ''
+    linked_kind: topic
+    linked_slug: thyroid-dysfunction
+    notes: ''
+  - label: Protein Malnutrition
+    children:
+    - label: Impaired Protein Digestion (low HCl)
+      children: []
+      linked_kind: mechanism
+      linked_slug: impaired-protein-digestion
+      notes: ''
+    - label: Vegetarian Diet Under-Protein
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Common in Indian women — target 1.2–1.6 g/kg/day.'
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Micronutrient Deficits
+    children:
+    - label: Zinc Deficiency
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Vitamin D Deficiency
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Biotin Deficiency (rare alone — marker of broader gap)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Hyperandrogenism / 5-Alpha-Reductase
+    children:
+    - label: High DHT / 5-Alpha-Reductase Activity
+      children: []
+      linked_kind: mechanism
+      linked_slug: 5-alpha-reductase-activity
+      notes: ''
+    - label: PCOS-Driven Hyperandrogenism
+      children: []
+      linked_kind: topic
+      linked_slug: pcos
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: HPA-Axis / Stress-Driven Telogen
+    children:
+    - label: Cortisol Elevation
+      children: []
+      linked_kind: mechanism
+      linked_slug: cortisol-elevation
+      notes: ''
+    - label: HPA-Axis Dysregulation
+      children: []
+      linked_kind: mechanism
+      linked_slug: hpa-axis-dysregulation
+      notes: ''
+    linked_kind: topic
+    linked_slug: chronic-stress
+    notes: ''
+  - label: Hormonal Transitions
+    children:
+    - label: Postpartum Estrogen Withdrawal
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Perimenopausal Hormone Flux
+      children: []
+      linked_kind: mechanism
+      linked_slug: estrogen-progesterone-decline
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Gut / Inflammation Drivers
+    children:
+    - label: SIBO + Nutrient Malabsorption
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Chronic Inflammation
+      children: []
+      linked_kind: mechanism
+      linked_slug: chronic-inflammation
+      notes: ''
+    - label: Post-COVID Telogen Effluvium
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🧬 FM Approach
+  children:
+  - label: Detailed Shedding Timeline
+    children:
+    - label: Stressors at 3–4 Months Prior (illness, surgery, weight loss, pregnancy,
+        COVID, OCP changes, starvation diet)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Pull Test Interpretation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Scalp / Hair Shaft Photography for Tracking
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Comprehensive Nutrient + Hormone Workup
+    children:
+    - label: Full Iron Panel + Ferritin
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Thyroid + Autoimmune Screen
+      children: []
+      linked_kind: topic
+      linked_slug: autoimmune-thyroiditis
+      notes: ''
+    - label: Female Hormone Panel (androgens, cycle phase)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Stool / SIBO if Malabsorption Suspected
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🛠 Interventions
+  children:
+  - label: Iron Repletion (if ferritin <70)
+    children:
+    - label: Iron Bisglycinate (gentle, low GI upset)
+      children: []
+      linked_kind: supplement
+      linked_slug: iron-bisglycinate
+      notes: ''
+    - label: Iron Ferrous Bisglycinate
+      children: []
+      linked_kind: supplement
+      linked_slug: iron-ferrous-bisglycinate
+      notes: ''
+    - label: Heme Iron from Liver / Blackstrap Molasses
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Avoid ferrous sulfate — GI upset common.'
+    - label: Pair with Vitamin C for Non-Heme Absorption
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: supplement
+    linked_slug: iron
+    notes: ''
+  - label: Protein Audit (1.2–1.6 g/kg/day)
+    children:
+    - label: Paneer, Dal+Rice Combo, Sprouts, Eggs
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Whey Protein Powder
+      children: []
+      linked_kind: supplement
+      linked_slug: whey-protein
+      notes: ''
+    - label: Plant-Based Protein Powder
+      children: []
+      linked_kind: supplement
+      linked_slug: plant-based-protein-powder
+      notes: ''
+    - label: Collagen Peptides
+      children: []
+      linked_kind: supplement
+      linked_slug: collagen-peptides
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Micronutrient Support
+    children:
+    - label: Zinc 15–30 mg
+      children: []
+      linked_kind: supplement
+      linked_slug: zinc
+      notes: ''
+    - label: Zinc Bisglycinate
+      children: []
+      linked_kind: supplement
+      linked_slug: zinc-bisglycinate
+      notes: ''
+    - label: Vitamin D3 (target 60–80 ng/mL)
+      children: []
+      linked_kind: supplement
+      linked_slug: vitamin-d
+      notes: '2000–5000 IU/day depending on baseline.'
+    - label: Biotin 1–2 mg/day
+      children: []
+      linked_kind: supplement
+      linked_slug: biotin-b7
+      notes: 'Stop 48h before any lab draw — biotin skews thyroid + troponin assays.'
+    - label: Omega-3 Fish Oil
+      children: []
+      linked_kind: supplement
+      linked_slug: omega-3-fish-oil
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Stress / Hormonal Support
+    children:
+    - label: Ashwagandha (telogen + HPA support)
+      children: []
+      linked_kind: supplement
+      linked_slug: ashwagandha
+      notes: ''
+    - label: Rhodiola Rosea
+      children: []
+      linked_kind: supplement
+      linked_slug: rhodiola-rosea
+      notes: ''
+    - label: Saw Palmetto (high-DHT phenotype, with caution)
+      children: []
+      linked_kind: supplement
+      linked_slug: saw-palmetto
+      notes: ''
+    - label: Spearmint Tea (androgenic / PCOS)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Topical + Lifestyle
+    children:
+    - label: Rosemary Oil Scalp Massage
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Minoxidil (with clinician supervision)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: India-Specific Traditions
+    children:
+    - label: Amla (Vit C + Iron Synergy)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Curry Leaves (daily in tadka)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Bhringraj Oil Scalp Massage
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Methi-Coconut Hair Pack
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Abhyanga (warm oil massage)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Address Postpartum Confinement Diet Iron Gap
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Add iron+vit-C foods (amla, lemon over dal, jaggery, ragi).'
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 🎯 Coaching Goals
+  children:
+  - label: Identify Root Driver Within 4–6 Weeks
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: 'Ferritin / thyroid / protein / hormonal / autoimmune / stress.'
+  - label: Achieve Ferritin >70 ng/mL by Week 12
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Regrowth Visible by Month 4–6
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: 'Normal hair-cycle timeline — set expectation early.'
+  - label: Reverse Telogen Pattern if Event-Driven
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Screen + Treat Thyroid / PCOS Where Indicated
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Build Sustainable Protein Routine
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+- label: 📊 Labs to Track
+  children:
+  - label: Iron Status
+    children:
+    - label: Ferritin (target 70–150)
+      children: []
+      linked_kind: lab_test
+      linked_slug: ferritin
+      notes: ''
+    - label: Serum Iron
+      children: []
+      linked_kind: lab_test
+      linked_slug: iron-serum
+      notes: ''
+    - label: TIBC
+      children: []
+      linked_kind: lab_test
+      linked_slug: tibc
+      notes: ''
+    - label: Transferrin Saturation
+      children: []
+      linked_kind: lab_test
+      linked_slug: transferrin-saturation
+      notes: ''
+    - label: CBC + Reticulocyte Count
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Thyroid Panel
+    children:
+    - label: TSH
+      children: []
+      linked_kind: lab_test
+      linked_slug: tsh
+      notes: ''
+    - label: Free T3
+      children: []
+      linked_kind: lab_test
+      linked_slug: free-t3
+      notes: ''
+    - label: Free T4
+      children: []
+      linked_kind: lab_test
+      linked_slug: free-t4
+      notes: ''
+    - label: Anti-TPO
+      children: []
+      linked_kind: lab_test
+      linked_slug: tpo-antibodies
+      notes: ''
+    - label: Anti-Tg
+      children: []
+      linked_kind: lab_test
+      linked_slug: tg-antibodies
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Hormones
+    children:
+    - label: Total Testosterone
+      children: []
+      linked_kind: lab_test
+      linked_slug: total-testosterone
+      notes: ''
+    - label: Free Testosterone
+      children: []
+      linked_kind: lab_test
+      linked_slug: free-testosterone
+      notes: ''
+    - label: DHEA-S
+      children: []
+      linked_kind: lab_test
+      linked_slug: dhea-s
+      notes: ''
+    - label: SHBG
+      children: []
+      linked_kind: lab_test
+      linked_slug: shbg
+      notes: ''
+    - label: Prolactin (if cycle changes)
+      children: []
+      linked_kind: lab_test
+      linked_slug: prolactin
+      notes: ''
+    - label: AM Cortisol / Diurnal Curve
+      children: []
+      linked_kind: lab_test
+      linked_slug: am-cortisol
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  - label: Nutrient + Inflammation
+    children:
+    - label: Vitamin D 25-OH
+      children: []
+      linked_kind: lab_test
+      linked_slug: vitamin-d-25-oh
+      notes: ''
+    - label: Vitamin B12
+      children: []
+      linked_kind: lab_test
+      linked_slug: vitamin-b12
+      notes: ''
+    - label: Folate RBC
+      children: []
+      linked_kind: lab_test
+      linked_slug: folate-rbc
+      notes: ''
+    - label: Zinc-RBC
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Total Protein + Albumin
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: hsCRP
+      children: []
+      linked_kind: lab_test
+      linked_slug: hscrp
+      notes: ''
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+  linked_kind: null
+  linked_slug: null
+  notes: ''
+sources:
+- id: vitaone-mind-map-tool
+  quote: null
+  location: Alopecia (Hair Loss)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: shivani
