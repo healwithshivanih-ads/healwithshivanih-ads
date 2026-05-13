@@ -208,9 +208,8 @@ export default async function ClientCataloguePage({
   // Symptoms — pull from active_conditions text + plan symptoms_to_monitor
   const planSymptomSlugs: string[] = [];
   if (activePlan) {
-    const tracking = (activePlan as unknown as { tracking?: { monitor_symptoms?: string[]; symptoms_to_monitor?: string[] } }).tracking;
-    const monitor =
-      tracking?.monitor_symptoms ?? tracking?.symptoms_to_monitor ?? [];
+    const tracking = (activePlan as unknown as { tracking?: { symptoms_to_monitor?: string[] } }).tracking;
+    const monitor = tracking?.symptoms_to_monitor ?? [];
     for (const s of monitor) {
       if (typeof s === "string") planSymptomSlugs.push(s);
     }

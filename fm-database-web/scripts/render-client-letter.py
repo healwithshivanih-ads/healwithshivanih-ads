@@ -1809,11 +1809,7 @@ def _build_prompt_lifestyle_guide(plan: dict, client: dict, coach_notes: str) ->
     labs = plan.get("lab_orders") or []
     tracking = plan.get("tracking") or {}
     tracking_habits = _stringify_list(tracking.get("habits"))
-    # Pydantic field is `symptoms_to_monitor`; older code read `monitor_symptoms`
-    # which silently returned []. Read both for compat.
-    tracking_symptoms = _stringify_list(
-        tracking.get("symptoms_to_monitor") or tracking.get("monitor_symptoms")
-    )
+    tracking_symptoms = _stringify_list(tracking.get("symptoms_to_monitor"))
     recheck_questions = _stringify_list(tracking.get("recheck_questions"))
 
     lifestyle_block = "\n".join(f"- {p}" for p in lifestyle) if lifestyle else "None specified."
@@ -2575,11 +2571,7 @@ Use these tips in relevant sections — don't dump them all in one place. Make t
 
     lifestyle_block = "\n".join(f"- {p}" for p in lifestyle) if lifestyle else ""
     tracking_habits = _stringify_list(tracking.get("habits"))
-    # Pydantic field is `symptoms_to_monitor`; older code read `monitor_symptoms`
-    # which silently returned []. Read both for compat.
-    tracking_symptoms = _stringify_list(
-        tracking.get("symptoms_to_monitor") or tracking.get("monitor_symptoms")
-    )
+    tracking_symptoms = _stringify_list(tracking.get("symptoms_to_monitor"))
 
     # ── Calorie targets (weight loss only) ───────────────────────────────────
     cal = _calc_calorie_targets(client, weight_loss or {})

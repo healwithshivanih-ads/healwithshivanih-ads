@@ -88,8 +88,8 @@ function mergeTemplate(plan: Plan, tpl: ProtocolTemplate, phase: PhaseKey = "wk1
   const tracking = {
     ...existingTracking,
     habits: [...existingHabits, ...newHabits],
-    monitor_symptoms: dedup([
-      ...((existingTracking.monitor_symptoms as string[]) ?? []),
+    symptoms_to_monitor: dedup([
+      ...((existingTracking.symptoms_to_monitor as string[]) ?? []),
       ...(tpl.tracking_symptoms ?? []),
     ]),
   };
