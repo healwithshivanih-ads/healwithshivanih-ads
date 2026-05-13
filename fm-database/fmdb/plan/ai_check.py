@@ -198,6 +198,13 @@ def _client_snapshot(client: Client | None) -> dict[str, Any]:
         "known_allergies": client.known_allergies,
         "goals": client.goals,
         "notes": (client.notes or "")[:500],
+        # Diet + region — used for regional_availability checks
+        "dietary_preference": client.dietary_preference,
+        "foods_to_avoid": client.foods_to_avoid,
+        "non_negotiables": client.non_negotiables,
+        "reported_triggers": client.reported_triggers,
+        "city": client.city,
+        "country": client.country,
     }
 
 
@@ -257,7 +264,7 @@ following — DO NOT re-flag any of these:
 - Supplements tagged `evidence_tier: confirm_with_clinician` without acknowledgement
 - Form/dose-unit mismatches against the supplement entity
 
-You should focus on FOUR categories of concern:
+You should focus on SIX categories of concern:
 
 1. COHERENCE — does the protocol address the assessment?
    - Are there primary_topics with NO corresponding supplement/practice/education?
@@ -290,6 +297,41 @@ You should focus on FOUR categories of concern:
    intervention (supplement, practice, nutrition adjustment, or
    education module)?
 
+5. SEQUENCING — is the protocol load realistic for THIS client at
+   THIS phase?
+   - Too many supplements introduced at once for a newly-intolerant or
+     dysregulated gut (≥5–6 new supplements in week 1 is a red flag;
+     stage them or sequence by phase instead).
+   - Foundational steps skipped — e.g. jumping to adrenal adaptogens or
+     thyroid support before addressing sleep, blood-sugar regulation, or
+     gut barrier when the assessment clearly indicates dysbiosis first.
+   - Conflicting timing windows (e.g. multiple supplements demanding
+     "empty stomach first thing" — physically not possible).
+   - Phase duration mismatch (8-week elimination diet asked of someone
+     whose `notes_for_coach` says they're already overwhelmed).
+   - Supplements that should be cycled or pulsed (e.g. iodine, high-dose
+     biotin, some adaptogens) listed as continuous for >12 weeks.
+
+6. REGIONAL_AVAILABILITY — does the protocol fit the client's diet
+   and locale?
+   - Suggestions that contradict `dietary_preference` (e.g. grass-fed
+     beef / wild salmon / bone broth for a Vegetarian; eggs for a Vegan;
+     ghee or dairy-based remedies for someone with a confirmed dairy
+     allergy or non-negotiable "no dairy").
+   - Foods in `foods_to_avoid` or contradicting `non_negotiables`
+     reappearing in the plan.
+   - Items that are impractical or expensive in the client's `city` /
+     `country`. Specifically for India: wild-caught fatty fish, raw
+     grass-fed dairy, organic kombucha, MCT oil, and unprocessed nut
+     butters are scarce or premium-priced — prefer Indian equivalents
+     (ghee, A2 dairy if tolerated, sprouted moong, dahi, methi-soaked
+     water, kanji, kashayams) where the catalogue supports them.
+   - Cooking adjustments / home remedies that assume kitchen equipment
+     or ingredients the client likely doesn't have given location and
+     `notes_for_coach`.
+   - Do NOT flag if the client's `non_negotiables` or `notes` explicitly
+     say they already source / consume the item.
+
 Severity gradient:
 - "critical": do not publish until fixed (real risk to client).
 - "warning":  review before publishing (likely needs adjustment).
@@ -321,7 +363,15 @@ _TOOL_SCHEMA: dict[str, Any] = {
                     "severity": {"type": "string", "enum": ["critical", "warning", "info"]},
                     "category": {
                         "type": "string",
-                        "enum": ["coherence", "evidence", "client_fit", "translation", "completeness"],
+                        "enum": [
+                            "coherence",
+                            "evidence",
+                            "client_fit",
+                            "translation",
+                            "completeness",
+                            "sequencing",
+                            "regional_availability",
+                        ],
                     },
                     "message": {"type": "string"},
                     "where": {"type": "string"},
