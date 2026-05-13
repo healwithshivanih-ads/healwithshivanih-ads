@@ -205,6 +205,7 @@ export default async function DashboardV2() {
     client_id: c.client_id,
     display_name: c.display_name,
     mobile_number: c.mobile_number,
+    email: c.email,
     next_contact_date: c.next_contact_date,
   }));
   const followUpDueIds = grouped.follow_up_due.map((r) => r.client_id);

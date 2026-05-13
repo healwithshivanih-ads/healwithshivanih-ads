@@ -2,11 +2,14 @@
 
 import { useMemo, useState } from "react";
 import { broadcastAction } from "@/app/api/aisensy-webhook/actions";
+import { broadcastEmailAction } from "@/app/api/email/actions";
 
 interface ClientRow {
   client_id: string;
   display_name?: string;
   mobile_number?: string;
+  /** Optional — only set when the dashboard loader populates it. */
+  email?: string;
   next_contact_date?: string;
   plan_status?: string;
 }
@@ -19,6 +22,7 @@ interface Props {
 }
 
 type RecipientMode = "follow_up_due" | "recheck_due" | "all_active" | "custom";
+type Channel = "whatsapp" | "email";
 
 /**
  * AiSensy campaign templates that are registered + Meta-approved on the
@@ -29,30 +33,69 @@ type RecipientMode = "follow_up_due" | "recheck_due" | "all_active" | "custom";
  * APPROVED_AISENSY_CAMPAIGNS so the per-client preview + broadcast both
  * use the same single source of truth.
  */
-const AISENSY_TEMPLATES: { slug: string; label: string; hint: string; params: string[] }[] = [
+interface BroadcastTemplate {
+  slug: string;
+  label: string;
+  hint: string;
+  /** Per-position param hints — matches AiSensy template {{1}}, {{2}}, {{3}}. */
+  params: string[];
+  /** Email subject when broadcasting via email channel. Uses {{1}}, {{name}} placeholders. */
+  emailSubject: string;
+  /** Email body when broadcasting via email channel. */
+  emailBody: string;
+}
+
+const AISENSY_TEMPLATES: BroadcastTemplate[] = [
   {
     slug: "fm_lab_reminder",
     label: "🧪 Lab reminder",
     hint: "Nudge to book / complete pending lab work.",
     params: ["client first name", "labs panel name", "deadline / date"],
+    emailSubject: "{{name}} — your {{2}} labs",
+    emailBody:
+      `Hi {{name}},\n\n` +
+      `Quick reminder to book / complete your {{2}} labs — ideally by {{3}}.\n\n` +
+      `The earlier we have the results, the sooner we can refine your protocol. ` +
+      `Let me know if you need a referral to the lab or help reading the requisition.\n\n` +
+      `Warmly,`,
   },
   {
     slug: "fm_session_confirm",
     label: "📅 Session confirmation",
     hint: "Confirm an upcoming consultation.",
     params: ["client first name", "session date", "session type"],
+    emailSubject: "Confirming your {{3}} session on {{2}}",
+    emailBody:
+      `Hi {{name}},\n\n` +
+      `Confirming your upcoming {{3}} session on {{2}}.\n\n` +
+      `If you haven't already, please complete the pre-session prep ` +
+      `(intake form / food journal / lab uploads) so we can use our time well.\n\n` +
+      `Looking forward to it,`,
   },
   {
     slug: "fm_supplement_instructions",
     label: "💊 Supplement instructions",
     hint: "Restate dosing / timing for an active protocol.",
     params: ["client first name", "supplement name", "instruction line"],
+    emailSubject: "{{name}} — quick note on your {{2}}",
+    emailBody:
+      `Hi {{name}},\n\n` +
+      `Just a quick reminder on your {{2}}:\n\n` +
+      `{{3}}\n\n` +
+      `Reply with any questions or side effects — happy to adjust if needed.\n\n` +
+      `Warmly,`,
   },
   {
     slug: "fm_encouragement",
     label: "✨ Encouragement",
     hint: "Mid-protocol motivational nudge.",
     params: ["client first name", "milestone / progress note", ""],
+    emailSubject: "{{name}} — a midway check-in 🌱",
+    emailBody:
+      `Hi {{name}},\n\n` +
+      `Just wanted to drop in mid-protocol with a quick note: {{2}}\n\n` +
+      `Small consistent wins compound — keep going. I'm here if anything's coming up.\n\n` +
+      `Cheering you on,`,
   },
 ];
 
@@ -67,8 +110,19 @@ export function BroadcastPanel({ clients, followUpDueIds, recheckDueIds, activeI
   // computed group without having to switch to "custom" mode + recheck.
   const [excludedIds, setExcludedIds] = useState<Set<string>>(new Set());
   const [params, setParams] = useState(["", "", ""]);
+  // Channel picker — WhatsApp and/or Email. Both default on; the coach
+  // ticks/unticks before sending.
+  const [channels, setChannels] = useState<Set<Channel>>(new Set(["whatsapp"]));
+  // Email subject + body, pre-filled from the selected template, editable.
+  const initialTemplate = AISENSY_TEMPLATES[0];
+  const [emailSubject, setEmailSubject] = useState<string>(initialTemplate.emailSubject);
+  const [emailBody, setEmailBody] = useState<string>(initialTemplate.emailBody);
+  const [emailEdited, setEmailEdited] = useState<boolean>(false);
   const [sending, setSending] = useState(false);
-  const [result, setResult] = useState<{ sent: number; failed: number; errors: string[] } | null>(null);
+  const [result, setResult] = useState<{
+    whatsapp?: { sent: number; failed: number; errors: string[] };
+    email?: { sent: number; failed: number; errors: string[] };
+  } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   function getRecipientIds(): string[] {
@@ -92,20 +146,62 @@ export function BroadcastPanel({ clients, followUpDueIds, recheckDueIds, activeI
   const activeTemplate = AISENSY_TEMPLATES.find((t) => t.slug === campaignName);
 
   const handleSend = async () => {
-    if (!campaignName.trim()) { setError("Campaign name is required"); return; }
+    if (!campaignName.trim()) { setError("Pick a template"); return; }
+    if (channels.size === 0) { setError("Pick at least one channel (WhatsApp / Email)"); return; }
     if (recipientCount === 0) { setError("No recipients selected"); return; }
     setError(null);
     setSending(true);
     setResult(null);
     try {
       const filledParams = params.filter((p) => p.trim());
-      const res = await broadcastAction(recipientIds, campaignName.trim(), filledParams);
-      setResult(res);
+      const next: NonNullable<typeof result> = {};
+      // Run in parallel — both fan out client-by-client server-side, and a
+      // single request can drive both endpoints in flight at once.
+      const promises: Promise<void>[] = [];
+      if (channels.has("whatsapp")) {
+        promises.push(
+          broadcastAction(recipientIds, campaignName.trim(), filledParams).then(
+            (r) => { next.whatsapp = r; },
+          ),
+        );
+      }
+      if (channels.has("email")) {
+        promises.push(
+          broadcastEmailAction(recipientIds, emailSubject, emailBody, params).then(
+            (r) => { next.email = r; },
+          ),
+        );
+      }
+      await Promise.all(promises);
+      setResult(next);
     } catch (e) {
       setError((e as Error).message ?? "Unknown error");
     } finally {
       setSending(false);
     }
+  };
+
+  const handleTemplateChange = (slug: string) => {
+    setCampaignName(slug);
+    setResult(null);
+    // If coach hasn't manually touched the email fields yet, swap in the
+    // new template's email defaults. Otherwise preserve her edits.
+    if (!emailEdited) {
+      const t = AISENSY_TEMPLATES.find((x) => x.slug === slug);
+      if (t) {
+        setEmailSubject(t.emailSubject);
+        setEmailBody(t.emailBody);
+      }
+    }
+  };
+
+  const toggleChannel = (c: Channel) => {
+    setChannels((prev) => {
+      const next = new Set(prev);
+      if (next.has(c)) next.delete(c); else next.add(c);
+      return next;
+    });
+    setResult(null);
   };
 
   const toggleCustom = (id: string) => {
@@ -215,10 +311,7 @@ export function BroadcastPanel({ clients, followUpDueIds, recheckDueIds, activeI
             </label>
             <select
               value={campaignName}
-              onChange={(e) => {
-                setCampaignName(e.target.value);
-                setResult(null);
-              }}
+              onChange={(e) => handleTemplateChange(e.target.value)}
               className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
             >
               {AISENSY_TEMPLATES.map((t) => (
@@ -232,6 +325,48 @@ export function BroadcastPanel({ clients, followUpDueIds, recheckDueIds, activeI
                 {activeTemplate.hint}
               </p>
             )}
+          </div>
+
+          {/* Channel picker — WhatsApp / Email / both. Coach toggles either
+              or both. Counts in parens show how many recipients in the
+              current group have the channel's contact field on file. */}
+          <div className="space-y-1">
+            <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+              Channels
+            </label>
+            <div className="flex flex-wrap gap-3">
+              <label className="flex items-center gap-1.5 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={channels.has("whatsapp")}
+                  onChange={() => toggleChannel("whatsapp")}
+                  className="accent-emerald-600"
+                />
+                <span className="text-xs">
+                  📱 WhatsApp{" "}
+                  <span className="text-muted-foreground">
+                    ({recipientClients.filter((c) => c.mobile_number).length})
+                  </span>
+                </span>
+              </label>
+              <label className="flex items-center gap-1.5 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={channels.has("email")}
+                  onChange={() => toggleChannel("email")}
+                  className="accent-indigo-600"
+                />
+                <span className="text-xs">
+                  ✉️ Email{" "}
+                  <span className="text-muted-foreground">
+                    ({recipientClients.filter((c) => c.email).length})
+                  </span>
+                </span>
+              </label>
+            </div>
+            <p className="text-[11px] text-muted-foreground">
+              Clients with no contact field for a checked channel are skipped silently.
+            </p>
           </div>
 
           {/* Template params — labels come from the selected template's
@@ -262,7 +397,71 @@ export function BroadcastPanel({ clients, followUpDueIds, recheckDueIds, activeI
                 );
               })}
             </div>
+            <p className="text-[10px] text-muted-foreground">
+              These fill in <code>{`{{1}}`}</code>, <code>{`{{2}}`}</code>,{" "}
+              <code>{`{{3}}`}</code> in both the WhatsApp template and the
+              email subject + body. <code>{`{{name}}`}</code> is auto-filled
+              with each client&apos;s first name on send.
+            </p>
           </div>
+
+          {/* Email subject + body — only relevant when the email channel is
+              checked. Pre-filled from the selected template; coach can edit
+              freely. Once she edits, switching templates won't overwrite. */}
+          {channels.has("email") && (
+            <div className="space-y-2 rounded-lg border border-indigo-100 bg-indigo-50/30 p-3">
+              <p className="text-xs font-semibold text-indigo-900 uppercase tracking-wide">
+                Email subject + body
+                {emailEdited && (
+                  <span className="ml-2 normal-case tracking-normal text-[10px] font-medium text-indigo-700">
+                    (edited — switching templates won&apos;t overwrite)
+                  </span>
+                )}
+              </p>
+              <label className="block space-y-0.5">
+                <span className="text-[10px] text-indigo-900">Subject</span>
+                <input
+                  type="text"
+                  value={emailSubject}
+                  onChange={(e) => {
+                    setEmailSubject(e.target.value);
+                    setEmailEdited(true);
+                  }}
+                  placeholder="{{name}} — your labs"
+                  className="w-full rounded border border-indigo-200 bg-white px-2 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-indigo-400"
+                />
+              </label>
+              <label className="block space-y-0.5">
+                <span className="text-[10px] text-indigo-900">Body</span>
+                <textarea
+                  value={emailBody}
+                  onChange={(e) => {
+                    setEmailBody(e.target.value);
+                    setEmailEdited(true);
+                  }}
+                  rows={8}
+                  placeholder="Hi {{name}}, ..."
+                  className="w-full rounded border border-indigo-200 bg-white px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-indigo-400 font-sans"
+                />
+              </label>
+              {emailEdited && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    const t = AISENSY_TEMPLATES.find((x) => x.slug === campaignName);
+                    if (t) {
+                      setEmailSubject(t.emailSubject);
+                      setEmailBody(t.emailBody);
+                    }
+                    setEmailEdited(false);
+                  }}
+                  className="text-[11px] text-indigo-700 hover:underline"
+                >
+                  ↺ Reset to template defaults
+                </button>
+              )}
+            </div>
+          )}
 
           {/* Preview — each chip has an × to drop that client from the broadcast
               without switching the recipient mode. Excluded chips show below
@@ -330,24 +529,44 @@ export function BroadcastPanel({ clients, followUpDueIds, recheckDueIds, activeI
             <p className="text-xs text-red-600 rounded-md border border-red-200 bg-red-50 px-3 py-2">{error}</p>
           )}
 
-          {/* Result */}
+          {/* Result — per-channel block, expanded so the coach can see
+              exactly which side succeeded / failed when sending to both. */}
           {result && (
-            <div className={`rounded-md border px-3 py-2 text-xs space-y-1 ${result.failed === 0 ? "border-emerald-300 bg-emerald-50 text-emerald-800" : "border-amber-300 bg-amber-50 text-amber-800"}`}>
-              <p className="font-semibold">
-                {result.sent} sent · {result.failed} failed
-              </p>
-              {result.errors.length > 0 && (
-                <ul className="list-disc list-inside space-y-0.5 text-[10px]">
-                  {result.errors.map((e, i) => <li key={i}>{e}</li>)}
-                </ul>
-              )}
+            <div className="space-y-2">
+              {(["whatsapp", "email"] as Channel[])
+                .filter((ch) => result[ch] != null)
+                .map((ch) => {
+                  const r = result[ch]!;
+                  const allOk = r.failed === 0;
+                  const label = ch === "whatsapp" ? "📱 WhatsApp" : "✉️ Email";
+                  return (
+                    <div
+                      key={ch}
+                      className={`rounded-md border px-3 py-2 text-xs space-y-1 ${allOk ? "border-emerald-300 bg-emerald-50 text-emerald-800" : "border-amber-300 bg-amber-50 text-amber-800"}`}
+                    >
+                      <p className="font-semibold">
+                        {label}: {r.sent} sent · {r.failed} failed
+                      </p>
+                      {r.errors.length > 0 && (
+                        <ul className="list-disc list-inside space-y-0.5 text-[10px]">
+                          {r.errors.map((e, i) => <li key={i}>{e}</li>)}
+                        </ul>
+                      )}
+                    </div>
+                  );
+                })}
             </div>
           )}
 
-          {/* Send button */}
+          {/* Send button — label changes with selected channels. */}
           <button
             onClick={handleSend}
-            disabled={sending || recipientCount === 0 || !campaignName.trim()}
+            disabled={
+              sending ||
+              recipientCount === 0 ||
+              !campaignName.trim() ||
+              channels.size === 0
+            }
             className="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-white transition-opacity disabled:opacity-40"
             style={{ background: "var(--brand-indigo, #2B2D42)" }}
           >
@@ -359,9 +578,13 @@ export function BroadcastPanel({ clients, followUpDueIds, recheckDueIds, activeI
                 </svg>
                 Sending…
               </>
-            ) : (
-              `📤 Send to ${recipientCount} client${recipientCount !== 1 ? "s" : ""}`
-            )}
+            ) : (() => {
+              const parts: string[] = [];
+              if (channels.has("whatsapp")) parts.push("WhatsApp");
+              if (channels.has("email")) parts.push("email");
+              const via = parts.length === 0 ? "no channel" : parts.join(" + ");
+              return `📤 Send via ${via} to ${recipientCount} client${recipientCount !== 1 ? "s" : ""}`;
+            })()}
           </button>
         </div>
       )}

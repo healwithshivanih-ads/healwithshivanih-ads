@@ -471,6 +471,110 @@ export async function recordLetterSendAction(input: {
   }
 }
 
+// ── Email broadcast ───────────────────────────────────────────────────────
+//
+// Fan-out version of sendClientEmailAction. Sends the same subject + body
+// to a list of clients (each looked up by clientId → email). Mirrors the
+// shape of broadcastAction in aisensy-webhook/actions.ts so the dashboard
+// can drive both from a single panel.
+//
+// Per-client template substitution: occurrences of {{1}} {{2}} {{3}} in
+// the subject + body are replaced with `templateParams[0..2]` once and
+// then {{name}} is replaced with the client's first name.
+//
+// Sequential send with a 250ms pacing breather between mails to stay
+// under Gmail's anti-spam thresholds (~100/min for personal accounts).
+export async function broadcastEmailAction(
+  clientIds: string[],
+  subject: string,
+  body: string,
+  templateParams: string[] = [],
+): Promise<{ sent: number; failed: number; errors: string[] }> {
+  const errors: string[] = [];
+  let sent = 0;
+  let failed = 0;
+
+  const user = process.env.GMAIL_USER;
+  const pass = process.env.GMAIL_APP_PASSWORD;
+  if (!user || !pass) {
+    return {
+      sent: 0,
+      failed: clientIds.length,
+      errors: [
+        "Gmail not configured — set GMAIL_USER + GMAIL_APP_PASSWORD in .env.local",
+      ],
+    };
+  }
+
+  // Lazy import to avoid a require cycle (loader.ts pulls in path helpers
+  // that re-export from this module via plan-letter actions).
+  const { loadAllClients } = await import("@/lib/fmdb/loader");
+  const allClients = await loadAllClients();
+  type ClientLike = {
+    client_id?: string;
+    email?: string;
+    display_name?: string;
+  };
+  const byId = new Map<string, ClientLike>();
+  for (const c of allClients as unknown as ClientLike[]) {
+    if (c.client_id) byId.set(c.client_id, c);
+  }
+
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: { user, pass },
+  });
+
+  function fillTemplate(s: string, firstName: string): string {
+    let out = s;
+    for (let i = 0; i < templateParams.length; i++) {
+      const re = new RegExp(`\\{\\{${i + 1}\\}\\}`, "g");
+      out = out.replace(re, templateParams[i] ?? "");
+    }
+    out = out.replace(/\{\{name\}\}/gi, firstName);
+    return out;
+  }
+
+  function paragraphsToHtml(text: string): string {
+    return `<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 14px; line-height: 1.6; color: #222;">${text
+      .split(/\n{2,}/)
+      .map(
+        (p) =>
+          `<p style="margin: 0 0 12px 0;">${p.replace(/\n/g, "<br>")}</p>`,
+      )
+      .join("")}<p style="margin-top: 24px; font-size: 13px; color: #555;">— Shivani</p></div>`;
+  }
+
+  for (const clientId of clientIds) {
+    const c = byId.get(clientId);
+    const email = c?.email?.trim();
+    if (!email) {
+      errors.push(`${clientId}: no email on file`);
+      failed++;
+      continue;
+    }
+    const firstName = (c?.display_name ?? clientId).split(" ")[0];
+    const filledSubject = fillTemplate(subject, firstName).trim();
+    const filledBody = fillTemplate(body, firstName);
+    try {
+      await transporter.sendMail({
+        from: `Shivani Hari <${user}>`,
+        to: email,
+        subject: filledSubject || "Note from your coach",
+        html: paragraphsToHtml(filledBody),
+        text: filledBody,
+      });
+      sent++;
+      await new Promise((r) => setTimeout(r, 250));
+    } catch (err) {
+      errors.push(`${clientId}: ${(err as Error).message ?? String(err)}`);
+      failed++;
+    }
+  }
+
+  return { sent, failed, errors };
+}
+
 export async function loadLetterSendLogAction(
   clientId: string,
 ): Promise<LetterSendEntry[]> {
