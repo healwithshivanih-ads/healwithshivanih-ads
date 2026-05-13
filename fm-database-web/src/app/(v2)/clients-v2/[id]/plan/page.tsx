@@ -302,17 +302,22 @@ export default async function PlanTabPage({
   const staleness = activePlan
     ? await getLetterStalenessAction(activePlan.slug as string, id)
     : null;
-  // If a separate draft exists alongside a published plan, call it out
-  // so the coach knows there's an in-progress next version.
-  const pendingDraft = activePlan && planStatusOf(activePlan) === "published"
-    ? activeSorted.find(
+  // If separate drafts exist alongside a published plan, call them out
+  // so the coach knows in-progress next versions are waiting. Multiple
+  // drafts can accumulate when a coach re-runs Assess more than once
+  // without activating the previous draft — the BACKLOG flagged the bug
+  // that all but the first were hidden in "archivedPlans".
+  const pendingDrafts = activePlan && planStatusOf(activePlan) === "published"
+    ? activeSorted.filter(
         (p) =>
           p !== activePlan &&
           (planStatusOf(p) === "draft" || planStatusOf(p) === "ready_to_publish"),
       )
-    : undefined;
+    : [];
+  const pendingDraft = pendingDrafts[0];
+  const pendingDraftSet = new Set(pendingDrafts);
   const archivedPlans = plans
-    .filter((p) => p !== activePlan && p !== pendingDraft)
+    .filter((p) => p !== activePlan && !pendingDraftSet.has(p))
     .sort((a, b) =>
       (planVersionOf(b) - planVersionOf(a)) ||
       ((b.updated_at ?? "") as string).localeCompare(
@@ -616,7 +621,7 @@ export default async function PlanTabPage({
           to the published plan. Without this surface the coach has no
           visual cue that a newer AI synthesis exists and is waiting for
           review. */}
-      {pendingDraft && (
+      {pendingDrafts.length > 0 && (
         <div
           style={{
             marginTop: 12,
@@ -625,42 +630,55 @@ export default async function PlanTabPage({
             border: "1.5px solid rgba(110, 76, 200, 0.35)",
             borderRadius: "var(--fm-radius-md)",
             display: "flex",
-            alignItems: "center",
+            alignItems: "flex-start",
             gap: 12,
+            flexWrap: "wrap",
           }}
         >
-          <span style={{ fontSize: 18 }}>📋</span>
-          <div style={{ flex: 1, minWidth: 0, fontSize: 12 }}>
+          <span style={{ fontSize: 18, lineHeight: "20px" }}>📋</span>
+          <div style={{ flex: 1, minWidth: 240, fontSize: 12 }}>
             <div style={{ fontWeight: 700, color: "#5a3fb0" }}>
-              A new draft is waiting for review —{" "}
-              <span
-                style={{ fontFamily: "var(--fm-font-mono)", fontWeight: 600 }}
-              >
-                {pendingDraft.slug}
-              </span>
+              {pendingDrafts.length === 1
+                ? "A new draft is waiting for review"
+                : `${pendingDrafts.length} drafts are waiting for review`}
             </div>
             <div style={{ color: "var(--fm-text-secondary)", marginTop: 1 }}>
               This card below still shows your <strong>live</strong>{" "}
-              published plan. The draft is a candidate next-version generated
-              from a recent Full Assessment — review and activate to
-              supersede.
+              published plan.{" "}
+              {pendingDrafts.length === 1 ? "The draft is a" : "Drafts are"}{" "}
+              candidate next-version{pendingDrafts.length === 1 ? "" : "s"}{" "}
+              generated from recent Full Assessment runs — review and activate
+              to supersede.
+            </div>
+            <div
+              style={{
+                marginTop: 8,
+                display: "flex",
+                gap: 6,
+                flexWrap: "wrap",
+              }}
+            >
+              {pendingDrafts.map((d) => (
+                <Link
+                  key={d.slug as string}
+                  href={`/clients-v2/${id}/plan/edit/${d.slug}`}
+                  style={{
+                    padding: "5px 10px",
+                    fontSize: 11,
+                    fontWeight: 700,
+                    fontFamily: "var(--fm-font-mono)",
+                    background: "#5a3fb0",
+                    color: "#fff",
+                    borderRadius: "var(--fm-radius-sm)",
+                    textDecoration: "none",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {d.slug} →
+                </Link>
+              ))}
             </div>
           </div>
-          <Link
-            href={`/clients-v2/${id}/plan/edit/${pendingDraft.slug}`}
-            style={{
-              padding: "7px 14px",
-              fontSize: 11.5,
-              fontWeight: 700,
-              background: "#5a3fb0",
-              color: "#fff",
-              borderRadius: "var(--fm-radius-sm)",
-              textDecoration: "none",
-              whiteSpace: "nowrap",
-            }}
-          >
-            Open draft →
-          </Link>
         </div>
       )}
 

@@ -5,7 +5,7 @@ the queue. Items here have been explicitly deferred — listed roughly by area.
 When picking one up, move its entry to a v0.x commit message and delete it
 from this file.
 
-Last updated: 2026-05-13 (post v0.73 — Intake transcript upload + discovery context block on intake page + 9c/section 11 description audit + Communicate channel picker (WhatsApp / Email) + AiSensy-approved template guard. All five remaining coach-UX items from the May-13 batch landed.)
+Last updated: 2026-05-13 (post v0.74 — quick-wins sweep: multiple-drafts picker on Plan tab (lists every pending draft, not just first), verified PreSessionBrief on v2 Sessions tab already mounted, verified 7 FM mechanisms already seeded, catalogue validates clean.)
 
 ---
 
@@ -61,17 +61,17 @@ landed:
 
 ## /clients (Client overview)
 
-- **Multiple draft plans** — `activePlan = plans.find(...)` currently shows only the first matching plan. If coach has more than one draft for the same client, the rest are invisible. Either surface a "N other drafts" picker or change to "most recent".
+- ✅ **Multiple draft plans** — `/clients-v2/[id]/plan` now derives `pendingDrafts` as a list (not a single record), renders all draft slugs as chips inside the purple callout. No more drafts hidden in "archivedPlans".
 - **Session notes PDF export** — `SessionBriefModal` shipped 2026-05-12 in v2 Sessions (`📄 Brief / Print` button) + v1 client-tabs. Print CSS isolates `#session-brief-print`, so Cmd+P → clean A4. Optional follow-up: also mount on the v2 Plan tab and Communicate tab if coach wants to print without leaving those surfaces.
 - **🧠 Memory panel** — small card on overview that surfaces what the AI has learned about this client via plan-chat (last N writes to `foods_to_avoid` / `non_negotiables` / `reported_triggers` / `dietary_preference`). Currently the only signal is the per-turn 👤 chip in the chat; coach can't see the cumulative profile at a glance.
-- **Pre-session brief on Sessions tab** — `<PreSessionBrief>` is mounted on v2 overview (2026-05-12). Cheap second mount on `/clients-v2/[id]/sessions` so coach can launch it from where she's reviewing prior session history. ~10 min.
+- ✅ **Pre-session brief on Sessions tab** — `<PreSessionBrief>` mounted on `/clients-v2/[id]/sessions` (sessions-browser.tsx) — coach can launch from where she's reviewing prior session history.
 
 ---
 
 ## Catalogue
 
 - **Expand lab_tests catalogue** — ~30 missing FM markers identified during the v0.64 mindmap mining pass: ApoB, Lp(a), oxidized LDL, fibrinogen, Lp-PLA2, MPO, LH/FSH ratio, free / total testosterone, SHBG, AMH, prolactin, 17-OH progesterone, salivary cortisol curve, DUTCH metabolites (oestrone / oestriol / 2-OH / 4-OH / 16-OH / cortisol / cortisone), organic acids (OAT) markers, CoQ10 status, carnitine profile, lactate, ESR, PTH, CTX, P1NP, alkaline phosphatase, urinary calcium, mycotoxin urine, EBV / viral panel, heavy metals panel, food sensitivity IgG, GI-MAP. Each gets a YAML in `data/lab_tests/` with `conventional_low/high` + `fm_optimal_low/high` + India `typical_cost_inr`. ~2-3 hours; can agent-parallelise per panel.
-- **Add missing FM mechanisms** — 7 referenced in mindmaps as free-text but not canonicalised: `hla-genetics-immune-tolerance`, `ebv-reactivation`, `sympathetic-overdrive`, `late-light-melatonin-suppression`, `cortisol-awakening-response`, `post-viral-fatigue`, `pacing-energy-envelope`. ~1 hour to seed all 7 with summary + parent mechanisms + linked topics.
+- ✅ **Add missing FM mechanisms** — all 7 already seeded in `data/mechanisms/` (verified 2026-05-13): `hla-genetics-immune-tolerance`, `ebv-reactivation`, `sympathetic-overdrive`, `late-light-melatonin-suppression`, `cortisol-awakening-response`, `post-viral-fatigue`, `pacing-energy-envelope`. 73–91 lines each. Catalogue validates clean.
 - **Re-run catalogue cleanup tool** — `/catalogue/cleanup` last ran in v0.64. New ingest since may have introduced new duplicates / miscategorisations. Re-run + triage. ~1 hour.
 - **Promote freeform → catalogue entities** — Practice, TrackingHabit, Food, LabTest, Recipe, EducationalModule. Watch for duplication in real plans first; only promote when ≥3 plans repeat the same string.
 - **Commit pending `fm-database/data/` YAML changes** — check `git status` from `fm-database/` and commit any uncommitted catalogue edits before they accumulate. ~5 min.
