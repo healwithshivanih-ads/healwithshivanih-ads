@@ -85,7 +85,11 @@ PLAN STRUCTURE (reference only — only patch fields that need changing):
 - lab_orders: list of {test, reason?}
 - referrals: list of {to, reason, urgency: routine|soon|urgent|emergency}
 - tracking: {habits?: [{name, cadence}], symptoms_to_monitor?: [], recheck_questions?: []}
-- notes_for_coach: string
+- notes_for_coach: structured markdown — H2 (`##`) headings + `-` bullets.
+  Canonical sections (in order): `## Why this plan`, `## Key drivers identified`,
+  `## Why these supplements`, `## What to monitor`, `## Coach reminders`.
+  Never a wall of prose. When patching, return the COMPLETE updated notes
+  preserving any sections the coach didn't ask to change.
 
 RULES:
 - Always include the COMPLETE updated array when changing a list field (not just the new item)
@@ -267,7 +271,21 @@ CLIENT PROFILE:
                                 "recheck_questions": {"type": "array", "items": {"type": "string"}}
                             }
                         },
-                        "notes_for_coach": {"type": "string"}
+                        "notes_for_coach": {
+                            "type": "string",
+                            "description": (
+                                "Coach-facing notes. Write as STRUCTURED MARKDOWN with H2 "
+                                "(`##`) headings and `-` bullets — never a wall of prose. "
+                                "Use these section headings (in this order, omit any that "
+                                "don't apply): `## Why this plan`, `## Key drivers identified`, "
+                                "`## Why these supplements`, `## What to monitor`, "
+                                "`## Coach reminders`. When patching this field, return the "
+                                "COMPLETE updated notes (keep existing H2 sections the coach "
+                                "wants preserved, edit/add/remove sections as requested). "
+                                "Headings must start with `## ` on their own line. Use only "
+                                "single-level `-` bullets. Whole blob under ~350 words."
+                            ),
+                        }
                     }
                 }
             }

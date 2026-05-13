@@ -412,20 +412,20 @@ def main() -> int:
                     plan.nutrition.reduce.append(food.strip())
                     existing_reduce.add(food.strip().lower())
 
-            # Phase summary → notes_for_coach (compact, scannable)
+            # Phase summary → notes_for_coach (compact, scannable, H2 markdown)
             phases = proto.get("phases", []) or []
             if phases:
-                phase_lines = [f"📋 {proto.get('display_name', ps_slug)} phases:"]
+                phase_lines = [f"## {proto.get('display_name', ps_slug)} phases"]
                 for ph in phases:
                     if isinstance(ph, dict) and ph.get("name"):
                         phase_lines.append(f"- {ph['name']}: {ph.get('summary', '').strip().splitlines()[0] if ph.get('summary') else ''}")
                 if len(phase_lines) > 1:
                     notes_protocol_blocks.append("\n".join(phase_lines))
 
-            # Cautions → notes_for_coach as a Do not block
+            # Cautions → folded into the Coach reminders block (H2 markdown)
             cautions = proto.get("cautions", []) or []
             if cautions:
-                do_not_lines = [f"⊘ {proto.get('display_name', ps_slug)} cautions:"]
+                do_not_lines = [f"## Coach reminders — {proto.get('display_name', ps_slug)} cautions"]
                 for c in cautions:
                     if isinstance(c, str):
                         do_not_lines.append(f"- {c}")
@@ -518,24 +518,26 @@ def main() -> int:
                 plan.tracking.symptoms_to_monitor.append(ts)
 
     # ── Notes for coach ────────────────────────────────────────────────────────
+    # Assembled as structured markdown with H2 (`##`) headings so the plan
+    # page renders subheadings + bullets instead of a wall of prose. The AI
+    # synthesis_notes already arrives with H2 sections (see suggester.py
+    # schema); we wrap the other contextual blobs in matching H2 headings.
     notes_parts = []
     if plan_brief.get("root_cause_hypothesis"):
-        notes_parts.append(f"🧬 Root cause hypothesis:\n{plan_brief['root_cause_hypothesis']}")
+        notes_parts.append(f"## Root cause hypothesis\n{plan_brief['root_cause_hypothesis']}")
     if plan_brief.get("coaching_notes"):
-        notes_parts.append(f"📝 Coaching notes:\n{plan_brief['coaching_notes']}")
+        notes_parts.append(f"## Coaching notes\n{plan_brief['coaching_notes']}")
     if resolved_template:
         notes_parts.append(
-            f"📋 Protocol template applied: {resolved_template.get('display_name', resolved_template.get('id', ''))}"
+            f"## Protocol template applied\n- {resolved_template.get('display_name', resolved_template.get('id', ''))}"
         )
     if free_text_notes:
-        notes_parts.append(f"Free-text intake: {free_text_notes}")
+        notes_parts.append(f"## Free-text intake\n{free_text_notes}")
     if suggestions.get("synthesis_notes"):
-        # The AI synthesis_notes is already structured into labelled
-        # sub-sections per suggester.py system prompt (Synthesis:,
-        # Key drivers:, Supplement rationale:, Lifestyle priorities:,
-        # Watch for:, Follow-up timing:, Do not:). The v2 renderer
-        # (FmCoachNotes) recognises those headers. No "AI synthesis
-        # notes:" wrapper needed — the sub-headers do the labelling.
+        # The AI synthesis_notes is already structured into H2 markdown
+        # sections per suggester.py system prompt (## Why this plan,
+        # ## Key drivers identified, ## Why these supplements,
+        # ## What to monitor, ## Coach reminders). Drop in as-is.
         notes_parts.append(suggestions["synthesis_notes"])
 
     # Protocol phase + caution notes (built above when attached_protocols
@@ -567,7 +569,7 @@ def main() -> int:
                 line += f"  → {', '.join(drivers)}"
             atm_buckets[atm].append(line)
 
-        timeline_section = ["📅 IFM Timeline (AI-classified):"]
+        timeline_section = ["## IFM Timeline (AI-classified)"]
         for label, key in [
             ("Antecedents (predisposing)", "antecedent"),
             ("Triggers (initiated)", "trigger"),
@@ -575,7 +577,7 @@ def main() -> int:
             ("Resolution / what helped", "resolution"),
         ]:
             if atm_buckets[key]:
-                timeline_section.append(f"\n{label}:")
+                timeline_section.append(f"\n**{label}:**")
                 timeline_section.extend(atm_buckets[key])
         if len(timeline_section) > 1:
             notes_parts.append("\n".join(timeline_section))
