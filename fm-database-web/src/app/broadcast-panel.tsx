@@ -100,9 +100,9 @@ const AISENSY_TEMPLATES: BroadcastTemplate[] = [
 ];
 
 export function BroadcastPanel({ clients, followUpDueIds, recheckDueIds, activeIds }: Props) {
-  // Promoted to top of dashboard 2026-05-13 — start expanded so the coach
-  // doesn't have to click to reveal it.
-  const [open, setOpen] = useState(true);
+  // Default collapsed — broadcast is a deliberate action, not something the
+  // coach wants front-and-center on every dashboard open. Click to expand.
+  const [open, setOpen] = useState(false);
   const [mode, setMode] = useState<RecipientMode>("follow_up_due");
   const [customIds, setCustomIds] = useState<Set<string>>(new Set());
   const [campaignName, setCampaignName] = useState<string>(AISENSY_TEMPLATES[0].slug);

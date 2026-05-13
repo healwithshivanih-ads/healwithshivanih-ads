@@ -12,10 +12,48 @@
  * via env vars. A future v0.7 iteration will pull all into here once
  * the data persistence shapes settle.
  */
+import fs from "node:fs";
+import path from "node:path";
 import { FmAppShell, FmPageHeader, FmPanel, FmInfoRow, FmChip } from "@/components/fm";
 import { DEFAULT_FM_RANGES } from "@/app/clients/[id]/lab-reference-ranges";
+import { getCataloguePath } from "@/lib/fmdb/paths";
 
 export const dynamic = "force-dynamic";
+
+/** Check whether a given env-var key is set, either in process.env (web's
+ *  .env.local) OR in the Python side's fm-database/.env file (where keys
+ *  for plan-ai-check / ingest / etc. live). Mirrors the dotenv-parser that
+ *  the Python shims use. */
+function envVarSet(key: string): boolean {
+  if (process.env[key]) return true;
+  try {
+    const cataloguePath = getCataloguePath();
+    const fmdbEnv = path.resolve(cataloguePath, "..", ".env");
+    if (!fs.existsSync(fmdbEnv)) return false;
+    const raw = fs.readFileSync(fmdbEnv, "utf-8");
+    const re = new RegExp(`^\\s*(?:export\\s+)?${key}\\s*=\\s*\\S`, "m");
+    return re.test(raw);
+  } catch {
+    return false;
+  }
+}
+
+function envVarValue(key: string): string | undefined {
+  if (process.env[key]) return process.env[key];
+  try {
+    const cataloguePath = getCataloguePath();
+    const fmdbEnv = path.resolve(cataloguePath, "..", ".env");
+    if (!fs.existsSync(fmdbEnv)) return undefined;
+    const raw = fs.readFileSync(fmdbEnv, "utf-8");
+    const re = new RegExp(`^\\s*(?:export\\s+)?${key}\\s*=\\s*([^\\n]+)`, "m");
+    const m = re.exec(raw);
+    if (!m) return undefined;
+    const v = m[1].trim().replace(/^['"]|['"]$/g, "");
+    return v || undefined;
+  } catch {
+    return undefined;
+  }
+}
 
 function tableHeaderStyle(): React.CSSProperties {
   return {
@@ -82,12 +120,13 @@ function StatusDot({ ok }: { ok: boolean }) {
 }
 
 export default function SettingsPage() {
-  const aisensy = !!process.env.AISENSY_API_KEY;
-  const gmail = !!(process.env.GMAIL_USER && process.env.GMAIL_APP_PASSWORD);
-  const anthropic = !!process.env.ANTHROPIC_API_KEY;
-  const vitaone = !!process.env.VITAONE_AFFILIATE_CODE;
-  const heygenKey = !!process.env.HEYGEN_API_KEY;
-  const aisensyWebhook = !!process.env.AISENSY_WEBHOOK_SECRET;
+  const aisensy = envVarSet("AISENSY_API_KEY");
+  const gmail = envVarSet("GMAIL_USER") && envVarSet("GMAIL_APP_PASSWORD");
+  const anthropic = envVarSet("ANTHROPIC_API_KEY");
+  const vitaone = envVarSet("VITAONE_AFFILIATE_CODE");
+  const vitaoneCode = envVarValue("VITAONE_AFFILIATE_CODE");
+  const heygenKey = envVarSet("HEYGEN_API_KEY");
+  const aisensyWebhook = envVarSet("AISENSY_WEBHOOK_SECRET");
 
   return (
     <FmAppShell activeNavId="settings" crumbs={[{ label: "Settings" }]}>
@@ -144,7 +183,7 @@ export default function SettingsPage() {
                 <span>
                   <StatusDot ok={vitaone} />
                   {vitaone ? (
-                    <FmChip tone="success">{process.env.VITAONE_AFFILIATE_CODE}</FmChip>
+                    <FmChip tone="success">{vitaoneCode}</FmChip>
                   ) : (
                     <FmChip>Default (vita13720sh)</FmChip>
                   )}
