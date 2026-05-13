@@ -1,10 +1,9 @@
 // Reminders service.
 //
-// 4 reminder kinds per appointment:
+// 3 reminder kinds per appointment:
 //   - confirmation   → scheduled_for = now() (sent immediately on create)
 //   - t_minus_24h    → starts_at - 24h
 //   - t_minus_2h     → starts_at - 2h
-//   - post_session   → starts_at + 1h (follow-up nudge)
 //
 // Schema enforces unique(appointment_id, kind) so scheduleForAppointment is
 // idempotent — re-running it on the same appointment doesn't double-insert.
@@ -15,7 +14,7 @@ import { NotFoundError } from '../../errors.js';
 
 const HOUR_MS = 3_600_000;
 
-export const REMINDER_KINDS = ['confirmation', 't_minus_24h', 't_minus_2h', 'post_session'];
+export const REMINDER_KINDS = ['confirmation', 't_minus_24h', 't_minus_2h'];
 
 // Template names per reminder kind. Hindi variants are best-effort — if they
 // don't exist in the Meta template registry the send will fail and we log it.
@@ -23,7 +22,6 @@ export const REMINDER_TEMPLATES = {
   confirmation:  'appt_confirmation',
   t_minus_24h:   'appt_reminder_24h',
   t_minus_2h:    'appt_reminder_2h',
-  post_session:  'appt_post_session',
 };
 
 /** Compute the scheduled timestamp (ms epoch) for a kind given starts_at ms. */
@@ -32,7 +30,6 @@ function scheduledMsFor(kind, startsMs, nowMs) {
     case 'confirmation': return nowMs;
     case 't_minus_24h':  return startsMs - 24 * HOUR_MS;
     case 't_minus_2h':   return startsMs - 2 * HOUR_MS;
-    case 'post_session': return startsMs + 1 * HOUR_MS;
     default: return null;
   }
 }
@@ -106,7 +103,7 @@ export async function rescheduleForAppointment(appointment) {
   }
 
   // Add any kind rows that are missing entirely (e.g. appointment moved
-  // forward and we never created post_session because it was already past).
+  // forward and we never created t_minus_24h because it was already past).
   const haveKinds = new Set((existing || []).map((r) => r.kind));
   const missing = REMINDER_KINDS.filter((k) => !haveKinds.has(k));
   if (missing.length) {

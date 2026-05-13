@@ -67,11 +67,12 @@ async function sendOne(reminder, attempts) {
     }).eq('id', reminder.id);
     return;
   }
-  // For post_session: skip if no_show or cancelled (handled above).
-  if (reminder.kind === 'post_session' && appt.status === 'no_show') {
+  // Defensive: old rows from before post_session was dropped may still exist
+  // in the table. Skip them silently — the schema CHECK still allows the value.
+  if (reminder.kind === 'post_session') {
     await db().from('reminders').update({
       status: 'skipped',
-      error: { reason: 'appointment_no_show' },
+      error: { reason: 'post_session_kind_deprecated' },
     }).eq('id', reminder.id);
     return;
   }
