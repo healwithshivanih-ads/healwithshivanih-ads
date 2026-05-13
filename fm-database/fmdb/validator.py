@@ -207,6 +207,7 @@ def validate_loaded(loaded: Loaded) -> tuple[list[str], list[Warning_]]:
         (loaded.mechanisms, "mechanism"),
         (loaded.topics, "topic"),
         (loaded.symptoms, "symptom"),
+        (loaded.supplements, "supplement"),
         (loaded.cooking_adjustments, "cooking_adjustment"),
         (loaded.home_remedies, "home_remedy"),
         (loaded.protocols, "protocol"),
@@ -229,16 +230,17 @@ def validate_loaded(loaded: Loaded) -> tuple[list[str], list[Warning_]]:
 
     valid_source_ids = {s.id for s in loaded.sources}
     valid_claim_slugs = {c.slug for c in loaded.claims}
-    valid_supplement_slugs = {s.slug for s in loaded.supplements}
 
     # Alias-aware indexes: lookup an alias and get back the canonical slug.
     # Keeps `valid_topic_slugs` etc. semantics for backward compat (use `in`).
     topic_index = _resolve_index(loaded.topics)
     mech_index = _resolve_index(loaded.mechanisms)
     sym_index = _resolve_index(loaded.symptoms)
+    supp_index = _resolve_index(loaded.supplements)
     valid_topic_slugs = set(topic_index)        # both canonical + aliases
     valid_mechanism_slugs = set(mech_index)
     valid_symptom_slugs = set(sym_index)
+    valid_supplement_slugs = set(supp_index)
 
     def _slugify_for_lookup(s: str) -> str:
         """Normalize a free-form symptom string into a slug-comparable form."""

@@ -625,6 +625,11 @@ class Supplement(BaseModel):
 
     slug: str
     display_name: str
+    # Alternate names / regional synonyms — used by the alias-aware validator
+    # so `linked_to_supplements: methi` resolves to the canonical `fenugreek`
+    # supplement, and `linked_to_supplements: bacopa-monnieri` resolves to
+    # `brahmi`. Same pattern as topics / mechanisms / symptoms.
+    aliases: list[str] = Field(default_factory=list)
     category: SupplementCategory
     forms_available: list[SupplementForm]
     typical_dose_range: dict[str, DoseRange]
