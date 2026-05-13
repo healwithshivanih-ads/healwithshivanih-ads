@@ -102,13 +102,16 @@ def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Fin
     findings: list[Finding] = []
 
     # ---------- Build resolution indexes (alias-aware) ----------
+    # All entity kinds that carry .aliases get alias-aware lookup so a
+    # plan can reference "niacin-b3" and resolve to canonical "niacin"
+    # without a CRITICAL "unknown slug" finding.
     topic_idx = _resolve_index(catalogue.topics)
     mech_idx = _resolve_index(catalogue.mechanisms)
     sym_idx = _resolve_index(catalogue.symptoms)
-    supp_slugs = {s.slug for s in catalogue.supplements}
-    ca_slugs = {ca.slug for ca in catalogue.cooking_adjustments}
-    hr_slugs = {hr.slug for hr in catalogue.home_remedies}
-    claim_slugs = {c.slug for c in catalogue.claims}
+    supp_idx = _resolve_index(catalogue.supplements)
+    ca_idx = _resolve_index(catalogue.cooking_adjustments)
+    hr_idx = _resolve_index(catalogue.home_remedies)
+    claim_slugs = {c.slug for c in catalogue.claims}     # Claim has no aliases
     supp_by_slug = {s.slug: s for s in catalogue.supplements}
 
     def _xref(section, field, target, idx_or_set, kind):
@@ -135,9 +138,9 @@ def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Fin
 
     # ---------- Nutrition (CookingAdjustment + HomeRemedy slugs) ----------
     for slug in plan.nutrition.cooking_adjustments:
-        _xref("nutrition", "cooking_adjustments", slug, ca_slugs, "cooking_adjustment")
+        _xref("nutrition", "cooking_adjustments", slug, ca_idx, "cooking_adjustment")
     for slug in plan.nutrition.home_remedies:
-        _xref("nutrition", "home_remedies", slug, hr_slugs, "home_remedy")
+        _xref("nutrition", "home_remedies", slug, hr_idx, "home_remedy")
 
     # ---------- Education modules ----------
     for em in plan.education:
@@ -156,7 +159,10 @@ def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Fin
 
     # ---------- Supplement protocol ----------
     for item in plan.supplement_protocol:
-        if item.supplement_slug not in supp_slugs:
+        # Alias-aware: resolve to canonical slug; if not in index at all,
+        # genuinely unknown.
+        canonical_supp = supp_idx.get(item.supplement_slug)
+        if canonical_supp is None:
             findings.append(Finding(
                 "CRITICAL", "supplement_protocol", "supplement_slug",
                 f"references unknown supplement {item.supplement_slug!r}",
@@ -164,7 +170,7 @@ def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Fin
             ))
             continue
 
-        supp = supp_by_slug[item.supplement_slug]
+        supp = supp_by_slug[canonical_supp]
 
         # Evidence-tier honesty: confirm_with_clinician supplements warrant a flag
         if supp.evidence_tier.value == "confirm_with_clinician":
