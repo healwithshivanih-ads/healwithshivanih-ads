@@ -1,0 +1,33 @@
+slug: gabaergic-modulation
+display_name: GABAergic Receptor Modulation
+aliases:
+- GABA-A receptor activity
+- GABAergic signalling
+- GABA/glutamate balance
+category: neurological
+summary: Certain plant flavonoids (e.g., apigenin from chamomile) and postbiotic metabolites
+  interact with GABA-A receptors to reduce neuronal excitability, dampening HPA hyperactivation
+  and promoting sedation and sleep onset.
+upstream_drivers:
+- flavonoid-consumption
+- postbiotic-supplementation
+downstream_effects:
+- reduced-hpa-hyperactivation
+- improved-sleep-onset
+- anxiolysis
+related_mechanisms:
+- hpa-axis-dysregulation
+- melatonin-secretion
+linked_to_topics:
+- hpa-axis-cortisol-regulation
+- sleep-quality
+evidence_tier: plausible_emerging
+sources:
+- id: coach-shivani
+  location: Coach Observation — Plant-Derived Adaptogens and Herbs
+  quote: This herb contains flavonoids, specifically apigenin, which interact with
+    GABAergic receptors to reduce HPA hyperactivation.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

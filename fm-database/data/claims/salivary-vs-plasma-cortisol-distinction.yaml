@@ -1,0 +1,28 @@
+slug: salivary-vs-plasma-cortisol-distinction
+statement: Cortisol can be measured in both blood plasma and saliva (e.g., Adrenal
+  Stress Profile), while pro-inflammatory cytokines (IL-6, TNF-α, IL-1β) are primarily
+  assessed via plasma ELISA and are not reliably captured by salivary testing.
+evidence_tier: confirm_with_clinician
+rationale: Clinically important distinction for test selection and interpretation.
+  Relevant for coaches to understand when supporting clients undergoing functional
+  medicine testing.
+coaching_translation: Your stress hormone (cortisol) can be checked via a saliva test,
+  but inflammation markers like IL-6 need a blood test — these are two different types
+  of testing your practitioner may recommend.
+out_of_scope_notes: Lab test selection and interpretation is clinician scope. Coaches
+  may use this to contextualise test results shared by clients.
+caveats:
+- Do not advise clients to self-order cytokine panels without clinician guidance.
+linked_to_topics:
+- hpa-axis-cortisol-regulation
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coach-shivani
+  location: Coach Observation — Lab Testing Notes
+  quote: While cortisol can be measured in both blood plasma and saliva, cytokines
+    are primarily discussed in the context of plasma levels.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

@@ -1,0 +1,39 @@
+slug: postbiotics-heat-inactivated
+display_name: Postbiotics (Heat-Inactivated Microbial Preparations)
+category: probiotic
+forms_available:
+- capsule
+- powder
+timing_options:
+- morning
+- with_breakfast
+- bedtime
+take_with_food: optional
+linked_to_topics:
+- hpa-axis-cortisol-regulation
+- sleep-quality
+linked_to_claims:
+- postbiotics-lower-cortisol-increase-melatonin-sleep
+- heat-killed-lactobacillus-gasseri-improves-sleep
+notes_for_coach: 'Postbiotics are inanimate (heat-killed) microbial preparations.
+  Key strains: Limosilactobacillus fermentum PS150 (↓ nighttime cortisol, ↑ melatonin),
+  Bifidobacterium breve BB091109 (↓ cortisol, ↓ IL-6), Lactobacillus gasseri heat-killed
+  (↓ sleep latency, ↑ duration). Food source: natto (heat-inactivated Bacillus subtilis
+  subsp. natto, strain QOL) — remains active even after heating. Standardised concentration
+  is critical for efficacy. Source: Coach Shivani clinical observations.'
+notes_for_client: Postbiotics are beneficial compounds from specific heat-treated
+  bacteria that can help balance your stress hormones and support deeper sleep — even
+  found in natto, a traditional Japanese food.
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: coach-shivani
+  location: Coach Observation — Microbial and Dietary Compounds
+  quote: Specific postbiotics, such as those from Limosilactobacillus fermentum PS150
+    and Bifidobacterium breve BB091109, can lower cortisol, increase melatonin secretion,
+    and improve sleep quality by rebalancing neurotransmitters like GABA and glutamate.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

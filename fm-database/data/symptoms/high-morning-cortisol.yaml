@@ -1,0 +1,28 @@
+slug: high-morning-cortisol
+display_name: Elevated Morning Cortisol
+aliases:
+- high cortisol on waking
+- morning stress response
+- wired on waking
+- cortisol spike
+category: hormonal
+severity: common
+description: Abnormally high cortisol levels in the morning, associated with chronic
+  stress, HPA hyperactivation, and poor sleep quality. Can manifest as feeling wired,
+  anxious, or fatigued despite waking.
+when_to_refer: Refer if Cushing's syndrome is suspected (very high cortisol with physical
+  signs such as central weight gain, stretch marks, moon face) or if adrenal insufficiency
+  is possible.
+linked_to_topics:
+- hpa-axis-cortisol-regulation
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+sources:
+- id: coach-shivani
+  location: Coach Observation — Plant-Derived Adaptogens and Herbs
+  quote: Clinical studies show that standardized extracts can reduce morning cortisol
+    by over 60% and improve overall sleep performance.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

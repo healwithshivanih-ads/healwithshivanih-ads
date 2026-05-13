@@ -1,0 +1,28 @@
+slug: scfas-reduce-cortisol-improve-sleep
+statement: Higher gut production of short-chain fatty acids (acetate, propionate,
+  butyrate) is associated with lower stress-induced cortisol responses and better
+  sleep quality via the HPA axis–gut microbiome pathway.
+evidence_tier: plausible_emerging
+rationale: Specific SCFA metabolites named with mechanistic pathway (HPA axis–gut
+  microbiome). Association-level evidence cited; mechanistic plausibility is strong.
+coaching_translation: Eating more fibre-rich foods to support SCFA production in your
+  gut may help buffer your body's stress response and improve your sleep.
+caveats:
+- Source is expert synthesis; direction of causality between SCFAs and cortisol not
+  fully established.
+- Dietary fibre is the primary lever for SCFA production — coach-appropriate intervention.
+linked_to_topics:
+- hpa-axis-cortisol-regulation
+- sleep-quality
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coach-shivani
+  location: Coach Observation — Microbial and Dietary Compounds
+  quote: Higher production of SCFAs in the gut is associated with better sleep quality
+    and a healthier HPA axis-gut microbiome pathway.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

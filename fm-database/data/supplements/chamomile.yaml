@@ -1,0 +1,37 @@
+slug: chamomile
+display_name: Chamomile (Matricaria chamomilla)
+category: herb
+forms_available:
+- powder
+- liquid
+- capsule
+typical_dose_range:
+  powder:
+    min: 1000
+    max: 1000
+    unit: mg
+timing_options:
+- evening
+- bedtime
+take_with_food: optional
+linked_to_topics:
+- hpa-axis-cortisol-regulation
+- sleep-quality
+linked_to_claims:
+- chamomile-apigenin-gaba-cortisol-sleep
+notes_for_coach: '1g chamomile flower tea daily shown to reduce cortisol and improve
+  sleep quality in primary insomnia. Active constituent: apigenin (flavonoid) — acts
+  via GABA-A receptors. Source: Coach Shivani clinical observations.'
+notes_for_client: Chamomile tea contains a calming compound called apigenin that interacts
+  with your brain's relaxation receptors, helping to ease stress and support sleep.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: coach-shivani
+  location: Coach Observation — Plant-Derived Adaptogens and Herbs
+  quote: Consuming 1 gram of chamomile flower tea daily has been shown to reduce cortisol
+    levels and improve sleep quality in individuals with primary insomnia.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

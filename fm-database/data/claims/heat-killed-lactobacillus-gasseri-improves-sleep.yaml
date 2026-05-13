@@ -1,0 +1,26 @@
+slug: heat-killed-lactobacillus-gasseri-improves-sleep
+statement: Heat-killed Lactobacillus gasseri postbiotic may improve sleep latency
+  and duration in clinical trials.
+evidence_tier: plausible_emerging
+rationale: Specific strain (L. gasseri heat-killed) with specific outcomes (sleep
+  latency and duration) cited in trials. Trials not named.
+coaching_translation: A postbiotic supplement using heat-killed Lactobacillus gasseri
+  may help you fall asleep faster and stay asleep longer.
+caveats:
+- Strain specificity is critical — ensure product specifies heat-killed L. gasseri.
+- Source is expert synthesis without named trial references.
+linked_to_topics:
+- sleep-quality
+linked_to_supplements:
+- postbiotics-heat-inactivated
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coach-shivani
+  location: Coach Observation — Microbial and Dietary Compounds
+  quote: 'Heat-killed Lactobacillus gasseri: This specific postbiotic has been used
+    in trials to improve sleep latency and duration.'
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

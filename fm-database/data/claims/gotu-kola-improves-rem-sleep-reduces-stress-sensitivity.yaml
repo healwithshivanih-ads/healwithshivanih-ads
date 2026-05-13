@@ -1,0 +1,27 @@
+slug: gotu-kola-improves-rem-sleep-reduces-stress-sensitivity
+statement: Centella asiatica (Gotu Kola) triterpenes may improve REM sleep architecture
+  and reduce stress sensitivity through cortisol regulation and neuroprotection.
+evidence_tier: fm_specific_thin
+rationale: Specific claims about REM improvement are cited but mechanism evidence
+  is thin in peer-reviewed literature. Plausible given neuroprotective triterpene
+  activity.
+coaching_translation: Gotu kola may help improve the quality of your deep sleep and
+  make you less reactive to daily stressors over time.
+caveats:
+- Thin peer-reviewed support for REM-specific effects — source is expert synthesis.
+- Verify dose and form with clinician.
+linked_to_topics:
+- sleep-quality
+- hpa-axis-cortisol-regulation
+linked_to_supplements:
+- gotu-kola
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coach-shivani
+  location: Coach Observation — Plant-Derived Adaptogens and Herbs
+  quote: It has been shown to improve REM sleep architecture and reduce stress sensitivity.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

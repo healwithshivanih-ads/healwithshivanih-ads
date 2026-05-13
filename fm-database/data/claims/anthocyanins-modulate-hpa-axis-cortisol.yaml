@@ -1,0 +1,27 @@
+slug: anthocyanins-modulate-hpa-axis-cortisol
+statement: Anthocyanins from berries such as blueberries and raspberries may influence
+  HPA axis activity and cortisol levels.
+evidence_tier: fm_specific_thin
+rationale: Plausible mechanism implied but no specific study or dose cited. Common
+  in functional medicine dietary protocols; peer-reviewed support for this specific
+  effect is thin.
+coaching_translation: Including anthocyanin-rich berries like blueberries and raspberries
+  regularly in your diet may gently support your body's stress-hormone balance.
+caveats:
+- Very preliminary — specific mechanism and dose not established in source.
+- Dietary inclusion is low-risk; no clinical concern for coaching context.
+linked_to_topics:
+- hpa-axis-cortisol-regulation
+linked_to_supplements:
+- anthocyanin-rich-fruits
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coach-shivani
+  location: Coach Observation — Microbial and Dietary Compounds
+  quote: Fruits such as blueberries and raspberries contain anthocyanins that may
+    influence HPA axis activity and ultimately affect cortisol levels.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

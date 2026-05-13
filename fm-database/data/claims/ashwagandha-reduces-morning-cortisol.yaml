@@ -1,0 +1,28 @@
+slug: ashwagandha-reduces-morning-cortisol
+statement: Standardised ashwagandha extract may reduce morning cortisol by over 60%
+  in adults with chronic stress.
+evidence_tier: plausible_emerging
+rationale: Clinical studies cited in source using standardised withanolide extracts.
+  Specific study authors/journals not named, source is expert synthesis — cannot confirm
+  strong tier.
+coaching_translation: A standardised ashwagandha supplement, taken consistently, may
+  significantly lower your morning stress hormone levels.
+caveats:
+- Source is an expert synthesis without named studies — verify with clinician before
+  recommending high doses.
+- Effect size (>60% reduction) is notable; individual variation expected.
+linked_to_topics:
+- hpa-axis-cortisol-regulation
+linked_to_supplements:
+- ashwagandha
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coach-shivani
+  location: Coach Observation — Plant-Derived Adaptogens and Herbs
+  quote: Clinical studies show that standardized extracts can reduce morning cortisol
+    by over 60% and improve overall sleep performance.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

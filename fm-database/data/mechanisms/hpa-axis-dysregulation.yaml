@@ -48,11 +48,12 @@ aliases:
 - hypothalamic-pituitary-adrenal axis regulation
 - cortisol regulation
 - stress axis modulation
+- HPA hyperactivation
 category: endocrine
-summary: Chronic psychological and physiological stress chronically activates the
-  HPA axis, eventually disrupting the diurnal cortisol rhythm and depleting DHEA and
-  other counter-regulatory hormones. High cortisol can suppress ovulation and impair
-  thyroid conversion.
+summary: Chronic activation of the hypothalamic–pituitary–adrenal axis leads to sustained
+  elevation of cortisol, impairing neuroplasticity (particularly in the hippocampus),
+  disrupting sleep architecture, and promoting systemic inflammation via pro-inflammatory
+  cytokines such as IL-6, TNF-α, and IL-1β.
 upstream_drivers:
 - chronic psychological stress
 - chronic inflammation
@@ -94,6 +95,7 @@ upstream_drivers:
 - gut-dysbiosis
 - vagal-nerve-dysregulation
 - blood-sugar-instability
+- systemic-inflammation
 downstream_effects:
 - reduced T4→T3 conversion (raises reverse T3)
 - leaky gut via cortisol effects on tight junctions
@@ -156,6 +158,8 @@ downstream_effects:
 - pcos
 - depression
 - thyroid-suppression
+- elevated-morning-cortisol
+- hippocampal-neuroplasticity-loss
 related_mechanisms:
 - leaky-gut
 - insulin-resistance
@@ -191,6 +195,9 @@ related_mechanisms:
 - gut-dysbiosis
 - dhea-cortisol-ratio-imbalance
 - circadian-rhythm-disruption
+- gabaergic-modulation
+- gut-microbiome-hpa-axis-pathway
+- melatonin-secretion
 linked_to_topics:
 - anxiety
 - insomnia
@@ -236,6 +243,8 @@ linked_to_topics:
 - adrenal-cortisol-resilience
 - pcos-fertility
 - gut-health-fodmap-sibo
+- hpa-axis-cortisol-regulation
+- sleep-quality
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Nervous System & HPA section
@@ -307,8 +316,13 @@ sources:
   quote: Stress as we know stress is going to change your autonomic nervous system
     and you put on sympathetic nervous system and cortisol and then adrenaline, non-adrenaline
     or the stress hormone can increase the intestinal permeability.
-evidence_tier: plausible_emerging
-version: 20
+- id: coach-shivani
+  location: Coach Observation — Plant-Derived Adaptogens and Herbs
+  quote: It has been reported to reduce acute exercise-induced cortisol and improve
+    neuroplasticity in the hippocampus, which is often damaged by chronic cortisol
+    elevation.
+evidence_tier: strong
+version: 21
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-05-13'
+updated_by: Shivani

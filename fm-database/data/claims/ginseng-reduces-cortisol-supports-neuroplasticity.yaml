@@ -1,0 +1,30 @@
+slug: ginseng-reduces-cortisol-supports-neuroplasticity
+statement: Panax ginseng ginsenosides may reduce acute cortisol release and support
+  neuroplasticity in the hippocampus, a region vulnerable to chronic cortisol-induced
+  damage.
+evidence_tier: plausible_emerging
+rationale: Mechanism (ginsenosides modulating stress hormone release and hippocampal
+  neuroplasticity) is biologically plausible and supported by the cited observation.
+  Studies not named.
+coaching_translation: Ginseng may help buffer your stress hormone response and protect
+  brain resilience — important when stress has been chronic.
+caveats:
+- Source is expert synthesis without named studies.
+- Ginseng can have stimulating effects — morning timing preferred; consult clinician
+  for those on anticoagulants or immunosuppressants.
+linked_to_topics:
+- hpa-axis-cortisol-regulation
+linked_to_supplements:
+- panax-ginseng
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coach-shivani
+  location: Coach Observation — Plant-Derived Adaptogens and Herbs
+  quote: It has been reported to reduce acute exercise-induced cortisol and improve
+    neuroplasticity in the hippocampus, which is often damaged by chronic cortisol
+    elevation.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

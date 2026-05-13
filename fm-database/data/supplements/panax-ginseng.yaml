@@ -1,9 +1,10 @@
 slug: panax-ginseng
-display_name: Panax Ginseng
+display_name: Ginseng (Panax ginseng)
 category: herb
 forms_available:
 - capsule
 - tablet
+- liquid
 typical_dose_range:
   capsule:
     min: 200
@@ -15,19 +16,29 @@ typical_dose_range:
     unit: mg
 timing_options:
 - morning
+- with_breakfast
 take_with_food: optional
-notes_for_coach: Adaptogen for energy, cognition, and immunity; morning dosing only
-  — can be stimulating and disrupt sleep if taken late in the day.
+notes_for_coach: 'Active constituents: ginsenosides. Reduces acute exercise-induced
+  cortisol and may improve neuroplasticity in the hippocampus — a region vulnerable
+  to chronic cortisol elevation. Source: Coach Shivani clinical observations.'
 evidence_tier: plausible_emerging
-linked_to_topics: []
+linked_to_topics:
+- hpa-axis-cortisol-regulation
 linked_to_mechanisms: []
-linked_to_claims: []
-notes_for_client: ''
+linked_to_claims:
+- ginseng-reduces-cortisol-supports-neuroplasticity
+notes_for_client: Ginseng may help your body adapt to stress by moderating stress
+  hormone release and supporting brain resilience.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 3 - Supplement Table
   quote: Panax Ginseng - Energy, cognition, immunity - 200–400 mg/day - Morning
-version: 1
+- id: coach-shivani
+  location: Coach Observation — Plant-Derived Adaptogens and Herbs
+  quote: It has been reported to reduce acute exercise-induced cortisol and improve
+    neuroplasticity in the hippocampus, which is often damaged by chronic cortisol
+    elevation.
+version: 2
 status: active
-updated_at: '2026-04-30'
-updated_by: shivani
+updated_at: '2026-05-13'
+updated_by: Shivani

@@ -1,0 +1,711 @@
+generated_at: '2026-05-13T09:44:14.026040+00:00'
+kind: mechanism
+entity_count: 425
+topic_count: 425
+groups:
+- id: 9eea0269a8dd
+  kind: duplicate_mechanisms
+  canonical: leaky-gut
+  members:
+  - leaky-gut
+  - gut-barrier-dysfunction
+  - intestinal-hyperpermeability
+  - intestinal-permeability
+  - intestinal-barrier-dysfunction
+  - impaired-gut-barrier
+  - leaky-gut-mechanism
+  reason: 'All describe the same physiological mechanism: disruption of intestinal
+    epithelial tight junctions allowing translocation of antigens and pathogens.'
+  triage_bucket: auto
+  triage_note: strong reason language · 7 members
+- id: add93936ed7e
+  kind: duplicate_mechanisms
+  canonical: dysbiosis-gut-microbiome-imbalance
+  members:
+  - dysbiosis-gut-microbiome-imbalance
+  - dysbiosis
+  - gut-dysbiosis-microbiome-imbalance
+  - gut-dysbiosis
+  - gut-microbiome-dysbiosis
+  reason: 'All describe the same mechanism: imbalance between beneficial and pathogenic
+    microorganisms in the gut microbiome.'
+  triage_bucket: auto
+  triage_note: strong reason language · 5 members
+- id: 9c1575fa22c5
+  kind: duplicate_mechanisms
+  canonical: cortisol-elevation
+  members:
+  - cortisol-elevation
+  - cortisol-excess
+  - hpa-axis-overactivation
+  reason: All describe chronic elevation of cortisol as a stress response mechanism.
+  triage_bucket: auto
+  triage_note: strong reason language · 3 members
+- id: 2c09d4afda1a
+  kind: duplicate_mechanisms
+  canonical: hpa-axis-dysregulation
+  members:
+  - hpa-axis-dysregulation
+  - hpa-axis-gut-stress-response
+  - hpa-axis-regulation
+  - hpa-axis-overactivation
+  reason: All describe dysregulation of the hypothalamic-pituitary-adrenal axis in
+    response to chronic stress.
+  triage_bucket: auto
+  triage_note: strong reason + 2-word shared prefix · 4 members
+- id: 4f23eaad86e8
+  kind: duplicate_mechanisms
+  canonical: chronic-inflammation
+  members:
+  - chronic-inflammation
+  - chronic-systemic-inflammation
+  reason: Both describe persistent low-grade systemic inflammation driven by multiple
+    upstream factors.
+  triage_bucket: auto
+  triage_note: strong reason + 1-word shared prefix · 2 members
+- id: 90c72ce9b301
+  kind: duplicate_mechanisms
+  canonical: insulin-resistance
+  members:
+  - insulin-resistance
+  - insulin-receptor-resistance
+  reason: Both describe reduced cellular sensitivity to insulin signaling.
+  triage_bucket: auto
+  triage_note: strong reason + 1-word shared prefix · 2 members
+- id: 80743cae972e
+  kind: duplicate_mechanisms
+  canonical: mitochondrial-dysfunction
+  members:
+  - mitochondrial-dysfunction
+  - mitochondrial-atp-production
+  - atp-mitochondrial-production
+  reason: All describe impaired ATP production and mitochondrial energy metabolism.
+  triage_bucket: auto
+  triage_note: strong reason language · 3 members
+- id: 2b3c201cdf5e
+  kind: duplicate_mechanisms
+  canonical: dhea-cortisol-ratio-imbalance
+  members:
+  - dhea-cortisol-ratio-imbalance
+  - cortisol-dhea-imbalance
+  reason: Both describe the same hormonal imbalance between cortisol and DHEA under
+    chronic stress.
+  triage_bucket: auto
+  triage_note: strong reason language · 2 members
+- id: d421edd4f6c6
+  kind: duplicate_mechanisms
+  canonical: estrogen-enterohepatic-recirculation
+  members:
+  - estrogen-enterohepatic-recirculation
+  - gut-estrogen-reabsorption
+  - beta-glucuronidase-estrogen-reabsorption
+  - beta-glucuronidase-reabsorption
+  - estrogen-recirculation-via-beta-glucuronidase
+  reason: All describe the mechanism by which dysbiotic bacteria and beta-glucuronidase
+    prevent estrogen excretion, allowing reabsorption.
+  triage_bucket: auto
+  triage_note: strong reason language · 5 members
+- id: aa0d474d6997
+  kind: duplicate_mechanisms
+  canonical: aromatase-activity
+  members:
+  - aromatase-activity
+  - aromatase-overactivity
+  - aromatase-upregulation
+  - aromatase-upregulation-by-arachidonic-acid
+  reason: All describe the conversion of androgens to estrogens via aromatase enzyme
+    activity and its regulation.
+  triage_bucket: auto
+  triage_note: strong reason + 1-word shared prefix · 4 members
+- id: d5e43425da74
+  kind: duplicate_mechanisms
+  canonical: low-stomach-acid
+  members:
+  - low-stomach-acid
+  - achlorhydria-hypochlorhydria
+  - hypochlorhydria-mechanism
+  - reduced-hcl-production
+  reason: All describe insufficient hydrochloric acid production in the stomach.
+  triage_bucket: auto
+  triage_note: strong reason language · 4 members
+- id: b522d7182127
+  kind: duplicate_mechanisms
+  canonical: cyp450-phase-i-activation
+  members:
+  - cyp450-phase-i-activation
+  - cyp450-phase1-bioactivation
+  - cytochrome-p450-phase1
+  - phase-i-cytochrome-p450
+  reason: All describe Phase I liver detoxification via cytochrome P450 enzyme activation.
+  triage_bucket: auto
+  triage_note: strong reason language · 4 members
+- id: cab7e4408daf
+  kind: duplicate_mechanisms
+  canonical: impaired-t4-to-t3-conversion
+  members:
+  - impaired-t4-to-t3-conversion
+  - t4-to-t3-conversion-block
+  - t4-to-t3-conversion-impairment
+  - thyroid-hormone-conversion
+  reason: All describe impaired peripheral conversion of inactive T4 to active T3
+    thyroid hormone.
+  triage_bucket: auto
+  triage_note: strong reason language · 4 members
+- id: 01943ee69287
+  kind: duplicate_mechanisms
+  canonical: endothelial-dysfunction
+  members:
+  - endothelial-dysfunction
+  - endothelial-dysfunction-nitric-oxide
+  - endothelial-injury
+  reason: All describe damage or dysfunction of the arterial endothelial lining.
+  triage_bucket: auto
+  triage_note: strong reason + 1-word shared prefix · 3 members
+- id: 8b0f6a6b5fde
+  kind: duplicate_mechanisms
+  canonical: elevated-homocysteine
+  members:
+  - elevated-homocysteine
+  - homocysteine-elevation
+  reason: Both describe high circulating homocysteine as a cardiovascular and neurological
+    risk factor.
+  triage_bucket: auto
+  triage_note: strong reason language · 2 members
+- id: 92ef2c092999
+  kind: duplicate_mechanisms
+  canonical: methylation-cycle-dysfunction
+  members:
+  - methylation-cycle-dysfunction
+  - methylation-defect
+  - methylation-defect-homocysteine
+  - poor-methylation
+  - impaired-methylation
+  reason: All describe impaired methylation capacity in the one-carbon cycle.
+  triage_bucket: auto
+  triage_note: strong reason language · 5 members
+- id: 594cb4aba748
+  kind: duplicate_mechanisms
+  canonical: sibo-dysbiosis
+  members:
+  - sibo-dysbiosis
+  - sibo-fermentation
+  - sibo-from-low-acid
+  reason: All describe small intestinal bacterial overgrowth and its fermentation
+    consequences.
+  triage_bucket: auto
+  triage_note: strong reason + 1-word shared prefix · 3 members
+- id: 6244a68150ca
+  kind: duplicate_mechanisms
+  canonical: phase-ii-conjugation
+  members:
+  - phase-ii-conjugation
+  - phase2-conjugation
+  - methylation-detox
+  reason: All describe Phase II liver detoxification via conjugation pathways including
+    methylation.
+  triage_bucket: auto
+  triage_note: strong reason language · 3 members
+- id: 6e7c56f1f42d
+  kind: duplicate_mechanisms
+  canonical: nf-kb-activation
+  members:
+  - nf-kappa-b-activation
+  - nf-kb-activation
+  - nf-kb-inflammatory-signalling
+  - nfkb-activation
+  reason: All describe NF-κB transcription factor activation and pro-inflammatory
+    gene expression.
+  triage_bucket: auto
+  triage_note: strong reason language · 4 members
+- id: 2bf2f6fd95ec
+  kind: duplicate_mechanisms
+  canonical: oxidative-stress
+  members:
+  - oxidative-stress
+  - oxidative-stress-and-inflammation
+  - oxidative-stress-and-ages
+  reason: All describe imbalance between free radical production and antioxidant defense.
+  triage_bucket: auto
+  triage_note: strong reason + 2-word shared prefix · 3 members
+- id: 6c24e134cfbd
+  kind: duplicate_mechanisms
+  canonical: parasympathetic-activation
+  members:
+  - parasympathetic-activation
+  - parasympathetic-activation-via-nose-breathing
+  - autonomic-nervous-system-modulation
+  - relaxation-response
+  reason: All describe activation of the parasympathetic nervous system and vagal
+    tone.
+  triage_bucket: auto
+  triage_note: strong reason language · 4 members
+- id: 83b7bd57fa05
+  kind: duplicate_mechanisms
+  canonical: sympathetic-dominance
+  members:
+  - sympathetic-dominance
+  - sympathetic-nervous-system-activation
+  - sympathetic-overdrive
+  - sympathoadrenal-activation
+  reason: All describe chronic activation of the sympathetic 'fight-or-flight' nervous
+    system.
+  triage_bucket: auto
+  triage_note: strong reason language · 4 members
+- id: 4389b5a891b2
+  kind: duplicate_mechanisms
+  canonical: methylation-cycle
+  members:
+  - methylation-cycle
+  - methylation-support
+  - methylation-impairment
+  reason: All describe the one-carbon/methylation cycle essential for detoxification
+    and neurotransmitter synthesis.
+  triage_bucket: auto
+  triage_note: strong reason + 1-word shared prefix · 3 members
+- id: 4f56df7e4a79
+  kind: duplicate_mechanisms
+  canonical: glutathione-depletion
+  members:
+  - glutathione-depletion
+  - glutathione-synthesis
+  reason: Both describe the status of glutathione, the primary intracellular antioxidant
+    and detoxification molecule.
+  triage_bucket: auto
+  triage_note: strong reason + 1-word shared prefix · 2 members
+- id: c00dfe17f62b
+  kind: duplicate_mechanisms
+  canonical: gut-brain-axis-disruption
+  members:
+  - gut-brain-axis-disruption
+  - gut-brain-axis-dysregulation
+  - gut-brain-signaling
+  reason: All describe bidirectional communication between gut and brain that becomes
+    dysregulated.
+  triage_bucket: auto
+  triage_note: strong reason + 2-word shared prefix · 3 members
+- id: bed7875fa1a3
+  kind: duplicate_mechanisms
+  canonical: estrogen-decline
+  members:
+  - estrogen-decline
+  - estrogen-progesterone-decline
+  reason: Both describe declining sex hormone production during perimenopause/menopause.
+  triage_bucket: auto
+  triage_note: strong reason + 1-word shared prefix · 2 members
+- id: b5653c677f1c
+  kind: duplicate_mechanisms
+  canonical: altered-gi-motility
+  members:
+  - altered-gi-motility
+  - impaired-gut-motility
+  - gut-motility-dysregulation
+  reason: All describe dysregulation of intestinal contractile patterns and transit
+    time.
+  triage_bucket: auto
+  triage_note: strong reason language · 3 members
+- id: 8ce1c5bc72ca
+  kind: duplicate_mechanisms
+  canonical: ldl-oxidation
+  members:
+  - ldl-oxidation
+  - oxidized-ldl-inflammasome-activation
+  reason: Both describe oxidation of LDL particles and downstream inflammatory cascade.
+  triage_bucket: auto
+  triage_note: strong reason language · 2 members
+- id: 8f71bcd43645
+  kind: duplicate_mechanisms
+  canonical: coq10-depletion
+  members:
+  - coq10-depletion
+  - coq10-depletion-by-beta-blockers
+  - mitochondrial-coq10-depletion
+  reason: All describe depletion of coenzyme Q10 by medication or reduced synthesis.
+  triage_bucket: auto
+  triage_note: strong reason language · 3 members
+- id: 1e8358fd60f5
+  kind: duplicate_mechanisms
+  canonical: nrf2-pathway-activation
+  members:
+  - nrf2-pathway-activation
+  - nrf2-antioxidant-pathway
+  - nrf2-glutathione-pathway
+  - nrf2-pathway
+  reason: All describe Nrf2 transcription factor activation and antioxidant/detoxification
+    gene expression.
+  triage_bucket: auto
+  triage_note: strong reason + 1-word shared prefix · 4 members
+- id: 871bd8f277d1
+  kind: duplicate_mechanisms
+  canonical: lps-endotoxemia
+  members:
+  - lps-endotoxemia
+  - endotoxemia
+  - lps-translocation
+  - lps-endotoxin-production
+  - lps-mediated-immune-activation
+  - lps-signaling
+  reason: All describe lipopolysaccharide-driven systemic endotoxemia and inflammation.
+  triage_bucket: auto
+  triage_note: strong reason language · 6 members
+- id: 09ce6ea79474
+  kind: duplicate_mechanisms
+  canonical: impaired-methylation
+  members:
+  - impaired-methylation
+  - estrogen-phase-ii-methylation-deficit
+  reason: Both describe deficits in Phase II methylation detoxification pathways.
+  triage_bucket: auto
+  triage_note: strong reason language · 2 members
+- id: 0c49b6494986
+  kind: duplicate_mechanisms
+  canonical: gut-dysbiosis-microbiome-imbalance
+  members:
+  - gut-dysbiosis-microbiome-imbalance
+  - microbial-diversity-decline
+  reason: Both describe loss of healthy gut bacterial composition and diversity.
+  triage_bucket: auto
+  triage_note: strong reason language · 2 members
+- id: d9926cb3ea1a
+  kind: duplicate_mechanisms
+  canonical: reverse-t3-dominance
+  members:
+  - reverse-t3-dominance
+  - reverse-t3-elevation
+  - rt3-t3-competition
+  reason: All describe preferential conversion of T4 to inactive reverse T3 and its
+    blocking of active T3.
+  triage_bucket: auto
+  triage_note: strong reason language · 3 members
+- id: 736da21d0619
+  kind: duplicate_mechanisms
+  canonical: low-progesterone
+  members:
+  - low-progesterone
+  - pregnenolone-steal
+  - cortisol-steal
+  reason: All describe depletion of progesterone due to preferential shunting toward
+    cortisol synthesis under stress.
+  triage_bucket: auto
+  triage_note: strong reason language · 3 members
+- id: 35e782ecd34e
+  kind: duplicate_mechanisms
+  canonical: hcl-and-pepsin-protein-digestion
+  members:
+  - hcl-and-pepsin-protein-digestion
+  - impaired-protein-digestion
+  reason: Both describe protein digestion via gastric HCl and pepsin activation.
+  triage_bucket: auto
+  triage_note: strong reason language · 2 members
+- id: 8b0f9b9fcd25
+  kind: duplicate_mechanisms
+  canonical: exocrine-pancreatic-enzyme-deficiency
+  members:
+  - exocrine-pancreatic-enzyme-deficiency
+  - impaired-pancreatic-function
+  - pancreatic-enzyme-function
+  reason: All describe insufficient production or secretion of pancreatic digestive
+    enzymes.
+  triage_bucket: auto
+  triage_note: strong reason language · 3 members
+- id: 347c0fc942a8
+  kind: duplicate_mechanisms
+  canonical: hepatic-estrogen-metabolism
+  members:
+  - hepatic-estrogen-metabolism
+  - hepatic-estrogen-detoxification
+  - phase-1-phase-2-liver-detox
+  reason: All describe liver-mediated Phase I and Phase II estrogen detoxification
+    pathways.
+  triage_bucket: auto
+  triage_note: strong reason language · 3 members
+- id: 2ff0b2b03ebb
+  kind: duplicate_mechanisms
+  canonical: gut-barrier-and-nutrient-absorption
+  members:
+  - gut-barrier-and-nutrient-absorption
+  - gut-immune-barrier-function
+  reason: Both describe gut barrier integrity and its relationship to nutrient absorption
+    and immune function.
+  triage_bucket: auto
+  triage_note: strong reason + 1-word shared prefix · 2 members
+- id: 75f8465778c5
+  kind: duplicate_mechanisms
+  canonical: fungal-overgrowth-toxin-production
+  members:
+  - fungal-overgrowth-toxin-production
+  - immune-activation-by-mycotoxins
+  reason: Both describe fungal/yeast overgrowth and associated toxin-driven immune
+    activation.
+  triage_bucket: auto
+  triage_note: strong reason language · 2 members
+- id: 941d04ecf1fb
+  kind: duplicate_mechanisms
+  canonical: small-dense-ldl-atherogenesis
+  members:
+  - small-dense-ldl-atherogenesis
+  - small-dense-ldl-endothelial-penetration
+  - ldl-particle-size-atherogenicity
+  reason: All describe how small dense LDL particles penetrate the endothelium and
+    drive atherosclerosis.
+  triage_bucket: auto
+  triage_note: strong reason language · 3 members
+- id: 5b1f32e56fe1
+  kind: duplicate_mechanisms
+  canonical: pancreatic-beta-cell-dysfunction
+  members:
+  - pancreatic-beta-cell-dysfunction
+  - compensatory-hyperinsulinemia
+  reason: Both describe beta-cell response and eventual failure under sustained glucose
+    demand.
+  triage_bucket: auto
+  triage_note: strong reason language · 2 members
+- id: bae17aa4e22f
+  kind: duplicate_mechanisms
+  canonical: neuroinflammation
+  members:
+  - neuroinflammation
+  - neuroinflammation-gut-axis
+  reason: Both describe central nervous system inflammation driven by glial activation
+    and immune mediators.
+  triage_bucket: auto
+  triage_note: strong reason + 1-word shared prefix · 2 members
+- id: 627686e7ced2
+  kind: duplicate_mechanisms
+  canonical: calcium-magnesium-imbalance
+  members:
+  - calcium-magnesium-imbalance
+  - magnesium-calcium-intracellular-shift
+  reason: Both describe dysregulation of the calcium-magnesium balance in cellular/cardiac
+    function.
+  triage_bucket: auto
+  triage_note: strong reason language · 2 members
+- id: 3cd13d4b75dd
+  kind: duplicate_mechanisms
+  canonical: vitamin-d-hydroxylation
+  members:
+  - vitamin-d-hydroxylation
+  - calcium-intestinal-absorption
+  reason: Both describe vitamin D-dependent calcium absorption and activation.
+  triage_bucket: auto
+  triage_note: strong reason language · 2 members
+- id: b63d7b94e21f
+  kind: duplicate_mechanisms
+  canonical: hepatic-insulin-sensitivity
+  members:
+  - hepatic-insulin-sensitivity
+  - hepatic-ampk-activation
+  reason: Both describe AMPK-mediated improvements in hepatic glucose production and
+    insulin sensitivity.
+  triage_bucket: auto
+  triage_note: strong reason + 1-word shared prefix · 2 members
+- id: a5a90b729ce1
+  kind: duplicate_mechanisms
+  canonical: dietary-fiber-modulation
+  members:
+  - dietary-fiber-modulation
+  - colonic-peristalsis-and-fibre-motility
+  - soluble-fibre-glucose-absorption-blunting
+  reason: All describe how dietary fiber modulates gut function, motility, and glucose
+    absorption.
+  triage_bucket: auto
+  triage_note: strong reason language · 3 members
+- id: a81244dc14d6
+  kind: duplicate_mechanisms
+  canonical: homocysteine-metabolism
+  members:
+  - homocysteine-metabolism
+  - impaired-homocysteine-remethylation
+  reason: Both describe the metabolism and remethylation of homocysteine in the methylation
+    cycle.
+  triage_bucket: auto
+  triage_note: strong reason language · 2 members
+- id: f65c5811febb
+  kind: duplicate_mechanisms
+  canonical: omega-3-omega-6-imbalance
+  members:
+  - omega-3-omega-6-imbalance
+  - omega-3-deficiency-inflammation
+  - omega-6-excess
+  - omega-6-to-omega-3-imbalance
+  - omega-6-omega-3-ratio
+  - cox-lox-enzyme-competition
+  - omega6-omega3-competitive-inhibition
+  reason: All describe the inflammatory consequences of excess omega-6 relative to
+    omega-3 fatty acids.
+  triage_bucket: auto
+  triage_note: strong reason language · 7 members
+- id: b4b1759ed450
+  kind: duplicate_mechanisms
+  canonical: estrogen-dominance-thyroid-blunting
+  members:
+  - estrogen-dominance-thyroid-blunting
+  - tbg-elevation
+  reason: Both describe how estrogen excess raises thyroid-binding globulin and reduces
+    free thyroid hormone availability.
+  triage_bucket: auto
+  triage_note: strong reason language · 2 members
+- id: a1f994807c85
+  kind: duplicate_mechanisms
+  canonical: thyroid-autoimmunity
+  members:
+  - thyroid-autoimmunity
+  - autoimmune-thyroid-attack
+  - hashimotos-autoimmune-cascade
+  reason: All describe autoimmune attack on thyroid tissue via TPO/Tg antibody production.
+  triage_bucket: auto
+  triage_note: strong reason language · 3 members
+- id: 8988622298ce
+  kind: duplicate_mechanisms
+  canonical: gut-microbiome-modulation
+  members:
+  - gut-microbiome-modulation
+  - gut-microbiome-colonisation
+  - microbiome-nutrient-synthesis
+  reason: All describe gut microbiome composition and its role in nutrient production
+    and immune regulation.
+  triage_bucket: auto
+  triage_note: strong reason language · 3 members
+- id: 7fb047bff187
+  kind: duplicate_mechanisms
+  canonical: gaba-receptor-modulation
+  members:
+  - gaba-receptor-modulation
+  - gaba-a-receptor-modulation
+  reason: Both describe magnesium-dependent GABA receptor activation and GABAergic
+    neurotransmission.
+  triage_bucket: auto
+  triage_note: strong reason + 1-word shared prefix · 2 members
+- id: f1015f6151da
+  kind: duplicate_mechanisms
+  canonical: mitochondrial-energy-production
+  members:
+  - mitochondrial-energy-production
+  - nutrient-dependent-energy-metabolism
+  reason: Both describe B vitamin and mineral cofactors for ATP production and mitochondrial
+    function.
+  triage_bucket: auto
+  triage_note: strong reason language · 2 members
+- id: cf546be06e0c
+  kind: duplicate_mechanisms
+  canonical: tight-junction-dysfunction
+  members:
+  - tight-junction-dysfunction
+  - tight-junction-dysregulation
+  - zonulin-upregulation
+  reason: All describe disruption of intestinal tight junctions and increased paracellular
+    permeability.
+  triage_bucket: auto
+  triage_note: strong reason language · 3 members
+- id: 53b738410f30
+  kind: duplicate_mechanisms
+  canonical: colonic-fermentation
+  members:
+  - colonic-fermentation
+  - fodmap-fermentation-gas-production
+  - gut-fermentation-dysbiosis
+  reason: All describe bacterial fermentation of poorly absorbed carbohydrates producing
+    gas and osmotic effects.
+  triage_bucket: auto
+  triage_note: strong reason language · 3 members
+- id: d9e8513bfd51
+  kind: duplicate_mechanisms
+  canonical: hepatic-lipogenesis
+  members:
+  - hepatic-lipogenesis
+  - vldl-overproduction-from-excess-carbs
+  reason: Both describe conversion of excess dietary carbohydrates into triglycerides
+    and VLDL production.
+  triage_bucket: auto
+  triage_note: strong reason language · 2 members
+- id: 4993ac35d780
+  kind: duplicate_mechanisms
+  canonical: estrogen-zinc-antagonism
+  members:
+  - estrogen-zinc-antagonism
+  reason: Single mechanism; consider reviewing for potential related mechanisms but
+    no clear duplicates identified.
+  triage_bucket: auto
+  triage_note: 3-word shared prefix · 1 members
+- id: c03046922840
+  kind: duplicate_mechanisms
+  canonical: ldn-endorphin-rebound
+  members:
+  - ldn-endorphin-rebound
+  - ldn-opioid-rebound-immune-modulation
+  - opioid-rebound-upregulation
+  reason: All describe low-dose naltrexone's mechanism of opioid receptor blockade
+    and endorphin rebound.
+  triage_bucket: auto
+  triage_note: strong reason language · 3 members
+- id: 57bf6f159015
+  kind: duplicate_mechanisms
+  canonical: heme-vs-nonheme-iron-absorption
+  members:
+  - heme-vs-nonheme-iron-absorption
+  - gut-barrier-iron-absorption
+  - low-stomach-acid-iron-absorption
+  - mineral-malabsorption-hcl-dependent
+  reason: All describe iron and mineral absorption mechanisms dependent on stomach
+    acid and gut integrity.
+  triage_bucket: auto
+  triage_note: strong reason language · 4 members
+- id: b0f3e7f4115b
+  kind: duplicate_mechanisms
+  canonical: anti-inflammatory-signaling
+  members:
+  - anti-inflammatory-signaling
+  - nf-kappab-suppression
+  reason: Both describe anti-inflammatory pathways and NF-κB suppression via polyphenols
+    and botanicals.
+  triage_bucket: auto
+  triage_note: strong reason language · 2 members
+- id: c1f6e86422b4
+  kind: duplicate_mechanisms
+  canonical: vitamin-k2-calcium-trafficking
+  members:
+  - vitamin-k2-calcium-trafficking
+  - matrix-gla-protein-activation
+  - coagulation-factor-activation
+  reason: All describe vitamin K2-dependent activation of GLA proteins for calcium
+    routing and coagulation.
+  triage_bucket: auto
+  triage_note: strong reason language · 3 members
+- id: c9b7eef17ed3
+  kind: duplicate_mechanisms
+  canonical: cold-induced-thermogenesis
+  members:
+  - cold-induced-thermogenesis
+  - bat-activation
+  - cold-shock-response
+  reason: All describe cold exposure-induced thermogenic processes and brown adipose
+    tissue activation.
+  triage_bucket: auto
+  triage_note: strong reason language · 3 members
+- id: 76c47809cbd9
+  kind: duplicate_mechanisms
+  canonical: autoimmune-thyroid-attack
+  members:
+  - autoimmune-thyroid-attack
+  reason: Already covered under thyroid-autoimmunity cluster; marked as duplicate
+    for clarity.
+  triage_bucket: auto
+  triage_note: 3-word shared prefix · 1 members
+- id: 4ea3a5ad615c
+  kind: duplicate_mechanisms
+  canonical: gut-immune-dysregulation
+  members:
+  - gut-immune-dysregulation
+  - gut-immune-axis-dysregulation
+  reason: Both describe dysregulation of gut mucosal immunity and chronic antigen
+    translocation.
+  triage_bucket: auto
+  triage_note: strong reason + 2-word shared prefix · 2 members
+- id: 1423ad5168e7
+  kind: duplicate_mechanisms
+  canonical: impaired-gut-barrier
+  members:
+  - impaired-gut-barrier
+  reason: Covered under leaky-gut cluster; keeping separate entry but marking as duplicate
+    of core mechanism.
+  triage_bucket: auto
+  triage_note: 3-word shared prefix · 1 members

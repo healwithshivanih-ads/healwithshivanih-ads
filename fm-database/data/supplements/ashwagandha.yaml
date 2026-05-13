@@ -38,6 +38,8 @@ linked_to_topics:
 - nervous-system-regulation
 - thyroid-dysfunction
 - emotional-healing-in-chronic-disease
+- hpa-axis-cortisol-regulation
+- sleep-quality
 linked_to_claims:
 - ashwagandha-cortisol-hair-loss
 - high-cortisol-inhibits-t4-to-t3-conversion
@@ -46,12 +48,13 @@ linked_to_claims:
 - ashwagandha-600mg-improves-tsh-t3-t4
 - adaptogens-regulate-hpa-axis
 - ashwagandha-reduces-cortisol-fatigue
-notes_for_coach: Ashwagandha is a well-researched adaptogen for HPA axis regulation.
-  Appropriate for clients with fatigue, burnout, and adrenal imbalance. Avoid in pregnancy
-  and thyroid conditions without clinician clearance. Doses should be verified with
-  a clinician.
-notes_for_client: Ashwagandha is an adaptogenic herb that helps your body manage stress
-  more effectively, reducing feelings of fatigue and burnout over time.
+- ashwagandha-reduces-morning-cortisol
+- ashwagandha-improves-sleep-onset
+notes_for_coach: 'Look for standardized extracts (withanolide content). Studies cited
+  show >60% reduction in morning cortisol and improved overall sleep performance.
+  Somnifera means ''sleep inducer''. Source: Coach Shivani clinical observations.'
+notes_for_client: Ashwagandha is an adaptogenic herb that may help your body manage
+  stress hormones and support deeper, more restful sleep.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -79,10 +82,14 @@ sources:
   location: Key Nutrients & Botanicals for Emotional Healing Support
   quote: 'Adaptogens (Ashwagandha, Rhodiola) — Regulate HPA axis response. Clinical
     use: Fatigue, burnout, adrenal imbalance.'
-version: 8
+- id: coach-shivani
+  location: Coach Observation — Plant-Derived Adaptogens and Herbs
+  quote: Clinical studies show that standardized extracts can reduce morning cortisol
+    by over 60% and improve overall sleep performance.
+version: 9
 status: active
-updated_at: '2026-05-04'
-updated_by: shivani
+updated_at: '2026-05-13'
+updated_by: Shivani
 pregnancy_safety: contraindicated
 lactation_safety: caution
 pregnancy_safety_note: 'Insufficient safety data; uterine stimulant; avoid throughout

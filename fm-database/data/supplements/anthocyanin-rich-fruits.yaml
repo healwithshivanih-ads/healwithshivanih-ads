@@ -1,0 +1,29 @@
+slug: anthocyanin-rich-fruits
+display_name: Anthocyanin-Rich Fruits (e.g. Blueberries, Raspberries)
+category: other
+forms_available:
+- powder
+timing_options:
+- with_breakfast
+- morning
+take_with_food: optional
+linked_to_topics:
+- hpa-axis-cortisol-regulation
+linked_to_claims:
+- anthocyanins-modulate-hpa-axis-cortisol
+notes_for_coach: 'Blueberries and raspberries cited. Mechanism and dose not well-specified
+  in source — flag as emerging/dietary. Source: Coach Shivani clinical observations.'
+notes_for_client: Berries like blueberries and raspberries contain anthocyanins —
+  natural pigments that may help support a healthier stress response.
+evidence_tier: fm_specific_thin
+typical_dose_range: {}
+linked_to_mechanisms: []
+sources:
+- id: coach-shivani
+  location: Coach Observation — Microbial and Dietary Compounds
+  quote: Fruits such as blueberries and raspberries contain anthocyanins that may
+    influence HPA axis activity and ultimately affect cortisol levels.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

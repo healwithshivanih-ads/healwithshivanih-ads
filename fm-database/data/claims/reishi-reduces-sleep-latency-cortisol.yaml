@@ -1,0 +1,29 @@
+slug: reishi-reduces-sleep-latency-cortisol
+statement: Reishi mushroom triterpenoids may reduce sleep latency, increase total
+  sleep time, and improve cortisol responses, possibly via microbiome-mediated and
+  serotonin modulation pathways.
+evidence_tier: plausible_emerging
+rationale: Multiple plausible mechanisms cited (triterpenoids, microbiome, serotonin).
+  Research cited but not named specifically.
+coaching_translation: Reishi mushroom supplements may help you fall asleep faster
+  and sleep longer by supporting your gut-brain stress axis.
+caveats:
+- Source is expert synthesis; specific studies not cited by name.
+- Dose standardisation required — triterpenoid content should be specified.
+linked_to_topics:
+- sleep-quality
+- hpa-axis-cortisol-regulation
+linked_to_supplements:
+- reishi-mushroom
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coach-shivani
+  location: Coach Observation — Plant-Derived Adaptogens and Herbs
+  quote: Research suggests it can reduce sleep latency, increase total sleep time,
+    and improve cortisol responses, possibly through microbiome-mediated mechanisms
+    and serotonin modulation.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

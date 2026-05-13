@@ -1,0 +1,31 @@
+slug: postbiotics-lower-cortisol-increase-melatonin-sleep
+statement: Specific postbiotic preparations (Limosilactobacillus fermentum PS150 and
+  Bifidobacterium breve BB091109) may lower cortisol, increase melatonin secretion,
+  and improve sleep quality by rebalancing GABA and glutamate neurotransmitters.
+evidence_tier: plausible_emerging
+rationale: Named specific strains with described mechanisms (GABA/glutamate rebalancing,
+  melatonin increase) and outcomes. Clinical studies cited but not named.
+coaching_translation: Certain heat-treated probiotic preparations can act like a 'reset
+  button' for your stress-sleep cycle by lowering your stress hormones and boosting
+  your sleep hormone melatonin.
+caveats:
+- Specific strains matter — generic probiotics will not replicate this effect; look
+  for heat-inactivated/postbiotic formulations.
+- Source is expert synthesis; clinician review recommended for specific strain selection.
+linked_to_topics:
+- hpa-axis-cortisol-regulation
+- sleep-quality
+linked_to_supplements:
+- postbiotics-heat-inactivated
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coach-shivani
+  location: Coach Observation — Microbial and Dietary Compounds
+  quote: Specific postbiotics, such as those from Limosilactobacillus fermentum PS150
+    and Bifidobacterium breve BB091109, can lower cortisol, increase melatonin secretion,
+    and improve sleep quality by rebalancing neurotransmitters like GABA and glutamate.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

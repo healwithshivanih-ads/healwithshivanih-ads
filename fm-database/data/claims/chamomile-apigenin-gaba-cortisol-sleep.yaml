@@ -1,0 +1,30 @@
+slug: chamomile-apigenin-gaba-cortisol-sleep
+statement: 1g daily chamomile flower tea may reduce cortisol levels and improve sleep
+  quality in people with primary insomnia, acting via apigenin's interaction with
+  GABA-A receptors.
+evidence_tier: plausible_emerging
+rationale: Specific dose (1g), condition (primary insomnia), and mechanism (apigenin
+  → GABA-A) are cited. Mechanism is well-established; studies not named so cannot
+  confirm strong tier.
+coaching_translation: A cup of chamomile tea (from 1g flower) each evening may help
+  calm your nervous system and support better sleep — especially if stress keeps you
+  wired at bedtime.
+caveats:
+- Specific RCTs not named in source.
+- Chamomile may interact with blood thinners — flag for clinical review if relevant.
+linked_to_topics:
+- sleep-quality
+- hpa-axis-cortisol-regulation
+linked_to_supplements:
+- chamomile
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coach-shivani
+  location: Coach Observation — Plant-Derived Adaptogens and Herbs
+  quote: Consuming 1 gram of chamomile flower tea daily has been shown to reduce cortisol
+    levels and improve sleep quality in individuals with primary insomnia.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

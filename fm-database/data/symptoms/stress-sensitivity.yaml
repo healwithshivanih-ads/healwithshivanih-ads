@@ -1,0 +1,25 @@
+slug: stress-sensitivity
+display_name: Stress Sensitivity
+aliases:
+- heightened stress response
+- easily overwhelmed
+- low stress tolerance
+- reactive to stress
+category: mood
+severity: common
+description: Exaggerated emotional or physiological reactivity to everyday stressors,
+  often reflecting a dysregulated HPA axis and reduced neuroplasticity.
+when_to_refer: Refer if anxiety is severe, persistent, or significantly impairing
+  function — may require psychological or psychiatric assessment.
+linked_to_topics:
+- hpa-axis-cortisol-regulation
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+sources:
+- id: coach-shivani
+  location: Coach Observation — Plant-Derived Adaptogens and Herbs
+  quote: It has been shown to improve REM sleep architecture and reduce stress sensitivity.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

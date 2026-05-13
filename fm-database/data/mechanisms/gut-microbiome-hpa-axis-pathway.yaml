@@ -1,0 +1,37 @@
+slug: gut-microbiome-hpa-axis-pathway
+display_name: Gut–Microbiome–HPA Axis Pathway
+aliases:
+- gut-brain-stress axis
+- microbiome-cortisol axis
+- gut-HPA axis
+category: gut
+summary: The gut microbiome communicates bidirectionally with the HPA axis. Microbial
+  metabolites (SCFAs), postbiotics, and neurotransmitter precursors modulate cortisol
+  secretion and sleep quality. Dysbiosis can amplify HPA reactivity, while beneficial
+  microbiota and their postbiotic derivatives can attenuate it.
+upstream_drivers:
+- gut-dysbiosis
+- low-fiber-diet
+- antibiotic-use
+downstream_effects:
+- altered-cortisol-levels
+- neurotransmitter-imbalance
+- disrupted-sleep
+related_mechanisms:
+- hpa-axis-dysregulation
+- melatonin-secretion
+- scfa-production
+linked_to_topics:
+- hpa-axis-cortisol-regulation
+- sleep-quality
+evidence_tier: plausible_emerging
+sources:
+- id: coach-shivani
+  location: Coach Observation — Plant-Derived Adaptogens and Herbs
+  quote: Research suggests it can reduce sleep latency, increase total sleep time,
+    and improve cortisol responses, possibly through microbiome-mediated mechanisms
+    and serotonin modulation.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

@@ -1,0 +1,31 @@
+slug: cytokine-testing-requires-24hr-sampling
+statement: Because pro-inflammatory cytokines (IL-6, TNF-α, IL-1β) follow a strict
+  circadian rhythm with peaks at 19:00–20:00 and 04:00–05:00, a single daytime blood
+  draw is insufficient — 24-hour sampling is recommended for accurate assessment.
+evidence_tier: confirm_with_clinician
+rationale: Clinically important point about test interpretation methodology. Out of
+  scope for coaching but important for referral and communication with clinicians.
+coaching_translation: If a client's inflammation markers are being tested, let their
+  doctor know that a single morning blood draw may miss the full picture — time-of-day
+  matters for these tests.
+out_of_scope_notes: Lab ordering, interpretation, and timing of cytokine panels is
+  strictly clinician scope. Coaches should not advise on this directly.
+caveats:
+- This is a testing methodology note — strictly for clinician communication.
+- Coaches can note to clinicians that 24-hour sampling is preferred per functional
+  medicine literature.
+linked_to_topics:
+- hpa-axis-cortisol-regulation
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coach-shivani
+  location: Coach Observation — Lab Testing Notes
+  quote: Because cytokines like IL-6 follow a strict circadian rhythm (with peaks
+    typically occurring at 19:00–20:00 and 04:00–05:00), research often utilizes frequent
+    blood sampling over a 24-hour period to get a comprehensive view of their secretion
+    patterns rather than a single daytime measurement.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

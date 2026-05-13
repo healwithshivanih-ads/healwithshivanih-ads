@@ -1,33 +1,45 @@
 slug: reishi-mushroom
-display_name: Reishi Mushroom
+display_name: Reishi Mushroom (Ganoderma lucidum)
 category: herb
 forms_available:
 - capsule
 - powder
+- liquid
 typical_dose_range:
   capsule:
-    min: 300
-    max: 900
+    min: 500
+    max: 2000
     unit: mg
   powder:
-    min: 300
-    max: 900
+    min: 500
+    max: 2000
     unit: mg
 timing_options:
 - evening
+- bedtime
 take_with_food: optional
-notes_for_coach: Calming adaptogenic mushroom; evening dosing supports sleep and immune
-  regulation; may be sedating for some clients.
+notes_for_coach: 'Triterpenoids exert anxiolytic/sedative effects. May work via microbiome-mediated
+  mechanisms and serotonin modulation. Standardised triterpenoid content preferred.
+  Source: Coach Shivani clinical observations.'
 evidence_tier: plausible_emerging
-linked_to_topics: []
+linked_to_topics:
+- hpa-axis-cortisol-regulation
+- sleep-quality
 linked_to_mechanisms: []
-linked_to_claims: []
-notes_for_client: ''
+linked_to_claims:
+- reishi-reduces-sleep-latency-cortisol
+notes_for_client: Reishi mushroom contains calming compounds called triterpenoids
+  that may help reduce stress and support deeper sleep.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 3 - Supplement Table
   quote: Reishi Mushroom - Calm, immunity, sleep - 300–900 mg/day - Evening
-version: 1
+- id: coach-shivani
+  location: Coach Observation — Plant-Derived Adaptogens and Herbs
+  quote: Research suggests it can reduce sleep latency, increase total sleep time,
+    and improve cortisol responses, possibly through microbiome-mediated mechanisms
+    and serotonin modulation.
+version: 2
 status: active
-updated_at: '2026-04-30'
-updated_by: shivani
+updated_at: '2026-05-13'
+updated_by: Shivani

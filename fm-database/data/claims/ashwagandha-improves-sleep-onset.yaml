@@ -1,0 +1,28 @@
+slug: ashwagandha-improves-sleep-onset
+statement: Standardised ashwagandha extract may improve sleep onset and overall sleep
+  performance, consistent with its traditional use as a sleep inducer.
+evidence_tier: plausible_emerging
+rationale: Supported by the clinical observations note and the etymology of Withania
+  somnifera ('sleep inducer'). Mechanism plausibly via HPA downregulation and cortisol
+  lowering.
+coaching_translation: Taking ashwagandha regularly may help you fall asleep more easily
+  and wake up feeling more refreshed.
+caveats:
+- Source is expert synthesis; specific RCTs not cited by name.
+- Dosage standardisation is key — look for confirmed withanolide content.
+linked_to_topics:
+- sleep-quality
+- hpa-axis-cortisol-regulation
+linked_to_supplements:
+- ashwagandha
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: coach-shivani
+  location: Coach Observation — Plant-Derived Adaptogens and Herbs
+  quote: Ashwagandha contains withanolides that help downregulate cortisol and improve
+    sleep onset.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

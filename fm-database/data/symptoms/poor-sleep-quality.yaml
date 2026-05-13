@@ -6,26 +6,36 @@ aliases:
 - trouble sleeping
 - not sleeping well
 - waking unrefreshed
+- non-restorative sleep
+- light sleeping
+- broken sleep
 category: sleep
 severity: common
-description: Difficulty falling asleep, staying asleep, or waking feeling unrefreshed
-  despite adequate time in bed. Associated with HPA axis dysregulation and amenable
-  to lifestyle interventions including gratitude journaling, stress reduction, and
-  breathing exercises.
-when_to_refer: Refer if sleep disruption is severe, long-standing, or associated with
-  sleep apnoea symptoms (snoring, gasping, witnessed apnoeas).
+description: Difficulty achieving deep, restorative sleep — may include trouble falling
+  asleep, frequent waking, or waking unrefreshed. Often linked to elevated nocturnal
+  cortisol and GABA/melatonin dysregulation.
+when_to_refer: Refer to clinician if sleep apnoea is suspected, if insomnia is severe
+  or longstanding, or if prescription sleep aids are being used.
 linked_to_topics:
 - gratitude-practice
 - self-care
+- sleep-quality
+- hpa-axis-cortisol-regulation
 linked_to_mechanisms:
 - hpa-axis-dysregulation
+- gabaergic-modulation
+- melatonin-secretion
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Practicing Gratitude with the IFM Gratitude Journal
   quote: These benefits include decreased stress levels, lowered blood pressure, better
     sleep quality, stronger immune systems, and increased feelings of joy, happiness,
     forgiveness, and compassion.
-version: 1
+- id: coach-shivani
+  location: Coach Observation — Plant-Derived Adaptogens and Herbs
+  quote: Consuming 1 gram of chamomile flower tea daily has been shown to reduce cortisol
+    levels and improve sleep quality in individuals with primary insomnia.
+version: 2
 status: active
-updated_at: '2026-05-04'
-updated_by: shivani
+updated_at: '2026-05-13'
+updated_by: Shivani
