@@ -8,6 +8,8 @@ import { revalidatePath } from "next/cache";
 import { PYTHON, SCRIPTS_DIR, runShim } from "@/lib/fmdb/shim";
 import { getCataloguePath } from "@/lib/fmdb/paths";
 
+export type TriageBucket = "auto" | "coach_eye" | "dismiss";
+
 export interface CleanupGroup {
   id: string;
   kind: "duplicate_topics" | "topic_is_protocol" | "topic_is_mechanism" | "topic_is_symptom";
@@ -15,6 +17,10 @@ export interface CleanupGroup {
   members: string[];
   reason: string;
   dismissed_at?: string;
+  /** Pre-classified bucket from scripts/classify-cleanup.py (optional). */
+  triage_bucket?: TriageBucket;
+  /** Human-readable rationale for the bucket. */
+  triage_note?: string;
 }
 
 export interface CleanupPlan {
@@ -121,6 +127,51 @@ export async function applyCleanupGroupAction(
   } catch (e) {
     return { ok: false, error: String(e) };
   }
+}
+
+export interface BulkApplyResult {
+  ok: boolean;
+  applied: string[];
+  failed: Array<{ id: string; canonical: string; error: string }>;
+  total: number;
+}
+
+/** Apply every group whose triage_bucket === "auto". Sequential — alias
+ *  unions could race across canonicals if we parallelised. Each apply
+ *  rewrites latest_plan.yaml, so we re-read after every call to stay
+ *  consistent with disk. */
+export async function applyAllAutoAction(): Promise<BulkApplyResult> {
+  const plan = await readPlan();
+  if (!plan) {
+    return { ok: false, applied: [], failed: [], total: 0 };
+  }
+  const autoGroups = plan.groups.filter((g) => g.triage_bucket === "auto");
+  const applied: string[] = [];
+  const failed: Array<{ id: string; canonical: string; error: string }> = [];
+
+  for (const g of autoGroups) {
+    const res = await applyCleanupGroupAction(g, false, false);
+    if (res.ok) {
+      applied.push(g.id);
+    } else {
+      failed.push({ id: g.id, canonical: g.canonical, error: res.error ?? "unknown" });
+    }
+  }
+
+  revalidatePath("/catalogue");
+  revalidatePath("/catalogue/cleanup");
+  return { ok: failed.length === 0, applied, failed, total: autoGroups.length };
+}
+
+/** Dismiss every group whose triage_bucket === "dismiss". */
+export async function dismissAllAutoAction(): Promise<{ ok: boolean; dismissed: number }> {
+  const plan = await readPlan();
+  if (!plan) return { ok: true, dismissed: 0 };
+  const toDismiss = plan.groups.filter((g) => g.triage_bucket === "dismiss");
+  for (const g of toDismiss) {
+    await dismissCleanupGroupAction(g.id);
+  }
+  return { ok: true, dismissed: toDismiss.length };
 }
 
 /** Mark a group as dismissed (coach reviewed and rejected — keep all topics). */

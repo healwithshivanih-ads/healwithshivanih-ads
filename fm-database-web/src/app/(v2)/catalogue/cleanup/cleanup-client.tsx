@@ -6,11 +6,20 @@ import Link from "next/link";
 import { toast } from "sonner";
 import {
   analyzeCleanupAction,
+  applyAllAutoAction,
   applyCleanupGroupAction,
+  dismissAllAutoAction,
   dismissCleanupGroupAction,
   type CleanupPlan,
   type CleanupGroup,
+  type TriageBucket,
 } from "./actions";
+
+const BUCKET_META: Record<TriageBucket, { label: string; emoji: string; chipClass: string }> = {
+  auto:      { label: "auto",       emoji: "✨", chipClass: "bg-emerald-100 text-emerald-800 border-emerald-300" },
+  coach_eye: { label: "review",     emoji: "👀", chipClass: "bg-amber-100 text-amber-800 border-amber-300" },
+  dismiss:   { label: "dismiss",    emoji: "✕",  chipClass: "bg-rose-100 text-rose-800 border-rose-300" },
+};
 
 const KIND_META: Record<CleanupGroup["kind"], { label: string; emoji: string; color: string; explainer: string }> = {
   duplicate_topics: {
@@ -119,6 +128,63 @@ export function CleanupClient({ initialPlan }: Props) {
     });
   };
 
+  const applyAllAuto = () => {
+    const autoCount = (plan?.groups ?? []).filter((g) => g.triage_bucket === "auto").length;
+    if (autoCount === 0) {
+      toast.info("No groups in the auto bucket. Run scripts/classify-cleanup.py first.");
+      return;
+    }
+    if (!window.confirm(
+      `Apply all ${autoCount} auto-bucket merges?\n\n` +
+      `Each one will: merge non-canonical slugs as aliases on the canonical, ` +
+      `union sources, and delete the non-canonical YAML files. Reversible only ` +
+      `via git revert.`
+    )) return;
+    startApply(async () => {
+      toast.info(`Applying ${autoCount} merges sequentially…`);
+      const res = await applyAllAutoAction();
+      if (res.failed.length === 0) {
+        toast.success(`✅ Applied all ${res.applied.length} auto merges`);
+      } else if (res.applied.length > 0) {
+        toast.warning(
+          `Applied ${res.applied.length} / ${res.total}. ${res.failed.length} failed — see the remaining groups below for details.`
+        );
+      } else {
+        toast.error(`All ${res.failed.length} apply attempts failed: ${res.failed[0]?.error ?? ""}`);
+      }
+      // Refresh plan from disk
+      setPlan((p) => p ? {
+        ...p,
+        groups: p.groups.filter((g) => !res.applied.includes(g.id)),
+      } : p);
+      router.refresh();
+    });
+  };
+
+  const dismissAllAuto = () => {
+    const dismissCount = (plan?.groups ?? []).filter((g) => g.triage_bucket === "dismiss").length;
+    if (dismissCount === 0) {
+      toast.info("Nothing in the dismiss bucket.");
+      return;
+    }
+    if (!window.confirm(`Dismiss all ${dismissCount} flagged-for-dismissal group(s)?`)) return;
+    startApply(async () => {
+      const res = await dismissAllAutoAction();
+      toast.success(`Dismissed ${res.dismissed} group${res.dismissed === 1 ? "" : "s"}`);
+      setPlan((p) => p ? {
+        ...p,
+        groups: p.groups.filter((g) => g.triage_bucket !== "dismiss"),
+      } : p);
+    });
+  };
+
+  // Pre-classification summary — only present when classify-cleanup.py has been run.
+  const triageCounts: Record<TriageBucket, number> = { auto: 0, coach_eye: 0, dismiss: 0 };
+  for (const g of plan?.groups ?? []) {
+    if (g.triage_bucket) triageCounts[g.triage_bucket]++;
+  }
+  const hasTriage = (triageCounts.auto + triageCounts.coach_eye + triageCounts.dismiss) > 0;
+
   const groupsByKind = (plan?.groups ?? []).reduce<Record<string, CleanupGroup[]>>((acc, g) => {
     (acc[g.kind] ||= []).push(g);
     return acc;
@@ -147,6 +213,54 @@ export function CleanupClient({ initialPlan }: Props) {
           </span>
         )}
       </div>
+
+      {/* Triage summary — only renders when classify-cleanup.py has been run.
+          Coach can sweep auto-bucket merges or dismiss-bucket noise in one click. */}
+      {hasTriage && plan && plan.groups.length > 0 && (
+        <div className="rounded-lg border-2 border-emerald-200 bg-emerald-50/60 p-4 space-y-3">
+          <div className="flex flex-wrap items-baseline gap-4 text-sm">
+            <span className="font-semibold">📊 Triage:</span>
+            <span>
+              <span className="font-bold text-emerald-700">{triageCounts.auto}</span>
+              <span className="text-xs text-muted-foreground ml-1">✨ auto-mergeable</span>
+            </span>
+            <span>
+              <span className="font-bold text-amber-700">{triageCounts.coach_eye}</span>
+              <span className="text-xs text-muted-foreground ml-1">👀 needs review</span>
+            </span>
+            <span>
+              <span className="font-bold text-rose-700">{triageCounts.dismiss}</span>
+              <span className="text-xs text-muted-foreground ml-1">✕ dismiss-recommended</span>
+            </span>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <button
+              onClick={applyAllAuto}
+              disabled={pending || triageCounts.auto === 0}
+              className="px-3 py-1.5 rounded text-xs font-medium bg-emerald-600 text-white hover:bg-emerald-700 disabled:opacity-50"
+            >
+              ✨ Apply all {triageCounts.auto} auto-merges
+            </button>
+            <button
+              onClick={dismissAllAuto}
+              disabled={pending || triageCounts.dismiss === 0}
+              className="px-3 py-1.5 rounded text-xs font-medium border border-rose-300 text-rose-700 hover:bg-rose-50 disabled:opacity-50"
+            >
+              ✕ Dismiss all {triageCounts.dismiss} flagged
+            </button>
+            <p className="text-[11px] text-muted-foreground self-center">
+              Bulk actions only touch their bucket. Coach_eye groups stay below for manual review.
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Run-triage hint — visible when plan exists but no triage_bucket field has been set */}
+      {plan && plan.groups.length > 0 && !hasTriage && (
+        <div className="rounded-lg border bg-muted/30 p-3 text-xs text-muted-foreground">
+          💡 Run <code className="px-1 py-0.5 rounded bg-white border font-mono">fm-database-web/scripts/classify-cleanup.py</code> to pre-classify groups into auto / review / dismiss buckets and unlock bulk actions.
+        </div>
+      )}
 
       {!plan && (
         <div className="rounded-lg border-2 border-dashed bg-muted/30 p-8 text-center space-y-2">
@@ -184,6 +298,16 @@ export function CleanupClient({ initialPlan }: Props) {
                 const memberSlugs = g.members.filter((m) => m !== effCanonical);
                 return (
                   <li key={g.id} className={`rounded-lg border-2 p-3 space-y-2 ${meta.color}`}>
+                    {g.triage_bucket && (
+                      <div className="flex items-baseline gap-2 text-[11px]">
+                        <span className={`inline-block px-1.5 py-0.5 rounded border font-mono ${BUCKET_META[g.triage_bucket].chipClass}`}>
+                          {BUCKET_META[g.triage_bucket].emoji} {BUCKET_META[g.triage_bucket].label}
+                        </span>
+                        {g.triage_note && (
+                          <span className="text-muted-foreground italic">{g.triage_note}</span>
+                        )}
+                      </div>
+                    )}
                     <p className="text-xs italic text-muted-foreground">{g.reason}</p>
 
                     {isEditing && (
