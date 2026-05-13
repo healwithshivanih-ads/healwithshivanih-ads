@@ -1714,6 +1714,40 @@ export async function resolveClientFileAction(
   return { ok: true, filePath, mimeType };
 }
 
+/**
+ * List filenames already saved under `~/fm-plans/clients/<id>/files/`.
+ *
+ * Used by the assess / full-assessment forms so the coach can re-attach
+ * a transcript / lab / report from a prior session without re-uploading.
+ * Returns name + size + mtime (ISO) so the UI can sort newest-first and
+ * show a hint of recency. Hidden files (dotfiles) are skipped.
+ */
+export async function listClientFilesAction(
+  clientId: string,
+): Promise<{ ok: true; files: Array<{ filename: string; size: number; mtime: string }> } | { ok: false; error: string }> {
+  if (!clientId) return { ok: false, error: "clientId is required" };
+  const filesDir = path.join(getPlansRoot(), "clients", clientId, "files");
+  try {
+    const entries = await fs.readdir(filesDir);
+    const out: Array<{ filename: string; size: number; mtime: string }> = [];
+    for (const name of entries) {
+      if (name.startsWith(".")) continue;
+      const full = path.join(filesDir, name);
+      try {
+        const st = await fs.stat(full);
+        if (!st.isFile()) continue;
+        out.push({ filename: name, size: st.size, mtime: st.mtime.toISOString() });
+      } catch { /* skip unreadable */ }
+    }
+    // Newest first
+    out.sort((a, b) => b.mtime.localeCompare(a.mtime));
+    return { ok: true, files: out };
+  } catch {
+    // No files dir yet — return empty rather than error
+    return { ok: true, files: [] };
+  }
+}
+
 // ────────────────────────────────────────────────────────────────────────────
 // Drug-nutrient depletion auto-flag — matches client.current_medications
 // (or client.medications) against the drug-depletion catalogue and returns

@@ -29,6 +29,10 @@ import {
   uploadFileAction,
   type SessionSummary,
 } from "@/app/assess/actions";
+import {
+  listClientFilesAction,
+  resolveClientFileAction,
+} from "@/app/clients/actions";
 import type { AssessResult, PlanBrief } from "@/lib/fmdb/anthropic-types";
 import {
   SuggestionsView,
@@ -369,6 +373,51 @@ export function FullAssessmentForm({
   // New report uploads
   const [uploads, setUploads] = useState<UploadedFile[]>([]);
   const [uploadPending, startUpload] = useTransition();
+
+  // Existing files already saved on this client (from prior sessions /
+  // intake / lab uploads). Lets the coach re-attach without re-uploading.
+  const [existingFiles, setExistingFiles] = useState<
+    Array<{ filename: string; size: number; mtime: string }>
+  >([]);
+  const [showExistingPicker, setShowExistingPicker] = useState(false);
+  const [pickerPending, startPicker] = useTransition();
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const res = await listClientFilesAction(clientId);
+      if (cancelled) return;
+      if (res.ok) setExistingFiles(res.files);
+    })();
+    return () => { cancelled = true; };
+  }, [clientId]);
+
+  const attachExistingFile = (filename: string) => {
+    if (uploads.some((u) => u.filename === filename)) {
+      toast.info(`${filename}: already attached`);
+      return;
+    }
+    startPicker(async () => {
+      const res = await resolveClientFileAction(clientId, filename);
+      if (!res.ok) {
+        toast.error(`${filename}: ${res.error}`);
+        return;
+      }
+      setUploads((prev) => {
+        if (prev.some((u) => u.filename === filename)) return prev;
+        return [
+          ...prev,
+          {
+            filePath: res.filePath,
+            filename,
+            mime_type: res.mimeType,
+            kind: "lab_report",
+          },
+        ];
+      });
+      toast.success(`Attached ${filename}`);
+    });
+  };
 
   // Result
   const [result, setResult] = useState<AssessResult | null>(null);
@@ -809,6 +858,127 @@ export function FullAssessmentForm({
               </Chip>
             ))}
           </div>
+
+          {/* ── Pre-uploaded files picker ─────────────────────────── */}
+          {existingFiles.length > 0 && (
+            <div style={{ marginTop: 10 }}>
+              <button
+                type="button"
+                onClick={() => setShowExistingPicker((v) => !v)}
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  padding: 0,
+                  cursor: "pointer",
+                  fontSize: 11.5,
+                  color: "var(--fm-primary)",
+                  fontWeight: 600,
+                }}
+              >
+                {showExistingPicker ? "▾" : "▸"} 📁 Or pick a transcript already on this client ({existingFiles.length})
+              </button>
+              {showExistingPicker && (
+                <div
+                  style={{
+                    marginTop: 8,
+                    padding: 10,
+                    background: "var(--fm-bg-warm)",
+                    border: "1px solid var(--fm-border)",
+                    borderRadius: "var(--fm-radius-sm)",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: 11,
+                      color: "var(--fm-text-tertiary)",
+                      marginBottom: 8,
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    Re-attach a file already saved on this client (from prior intake, discovery, or report uploads). Skips the re-upload.
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                    {(() => {
+                      const transcriptLike = /\.(pdf|md|txt|png|jpe?g|webp)$/i;
+                      const items = existingFiles.filter((f) => transcriptLike.test(f.filename));
+                      if (items.length === 0) {
+                        return (
+                          <div style={{ fontSize: 11, color: "var(--fm-text-tertiary)" }}>
+                            No transcript-compatible files on this client yet.
+                          </div>
+                        );
+                      }
+                      return items.map((f) => {
+                        const isAttached = uploads.some((u) => u.filename === f.filename);
+                        const mtime = new Date(f.mtime);
+                        const dateStr = mtime.toLocaleDateString(undefined, {
+                          year: "numeric",
+                          month: "short",
+                          day: "numeric",
+                        });
+                        const sizeKB = Math.max(1, Math.round(f.size / 1024));
+                        return (
+                          <div
+                            key={f.filename}
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              gap: 8,
+                              padding: "4px 6px",
+                              background: "var(--fm-bg-card)",
+                              border: "1px solid var(--fm-border)",
+                              borderRadius: "var(--fm-radius-sm)",
+                            }}
+                          >
+                            <div style={{ flex: 1, minWidth: 0 }}>
+                              <div
+                                style={{
+                                  fontSize: 12,
+                                  fontWeight: 500,
+                                  overflow: "hidden",
+                                  textOverflow: "ellipsis",
+                                  whiteSpace: "nowrap",
+                                }}
+                                title={f.filename}
+                              >
+                                {f.filename}
+                              </div>
+                              <div style={{ fontSize: 10.5, color: "var(--fm-text-tertiary)" }}>
+                                {dateStr} · {sizeKB} KB
+                              </div>
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => attachExistingFile(f.filename)}
+                              disabled={isAttached || pickerPending}
+                              style={{
+                                padding: "4px 10px",
+                                fontSize: 11,
+                                fontWeight: 600,
+                                background: isAttached
+                                  ? "var(--fm-bg-warm)"
+                                  : "var(--fm-primary)",
+                                color: isAttached ? "var(--fm-text-tertiary)" : "white",
+                                border: "1px solid",
+                                borderColor: isAttached
+                                  ? "var(--fm-border)"
+                                  : "var(--fm-primary)",
+                                borderRadius: "var(--fm-radius-sm)",
+                                cursor: isAttached || pickerPending ? "default" : "pointer",
+                                whiteSpace: "nowrap",
+                              }}
+                            >
+                              {isAttached ? "✓ attached" : "Use this"}
+                            </button>
+                          </div>
+                        );
+                      });
+                    })()}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         <div style={{ marginTop: 14 }}>
