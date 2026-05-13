@@ -399,6 +399,20 @@ export function DiscoveryForm({
             );
           })}
         </div>
+
+        {/* Manual / custom lab entry — escape hatch for any test that
+            isn't in our 16-panel catalogue. Coach types the lab name +
+            optional inline note, hit Enter, lands as a custom marker
+            in the requested_labs list with a "(custom)" suffix so the
+            audit trail is obvious. */}
+        <CustomLabInput
+          onAdd={(name) => {
+            const tagged = `${name} (custom)`;
+            setSelectedLabs((prev) => new Set([...prev, tagged]));
+          }}
+          existing={selectedLabs}
+        />
+
         <div
           style={{
             fontSize: 10.5,
@@ -500,6 +514,106 @@ export function DiscoveryForm({
           {pending ? "Saving…" : "💾 Save discovery & order labs →"}
         </button>
       </div>
+    </div>
+  );
+}
+
+/**
+ * CustomLabInput — text-input affordance below the panel grid for any
+ * lab that's NOT in our catalogue. Enter or click "Add" appends as
+ * "<name> (custom)" so the suffix marks it as outside the standard
+ * panel set. Prevents duplicates against the existing selected set
+ * (case-insensitive match).
+ */
+function CustomLabInput({
+  onAdd,
+  existing,
+}: {
+  onAdd: (name: string) => void;
+  existing: Set<string>;
+}) {
+  const [value, setValue] = useState("");
+  const trimmed = value.trim();
+  const duplicate =
+    !!trimmed &&
+    [...existing].some(
+      (e) => e.toLowerCase().replace(/\s*\(custom\)$/i, "") === trimmed.toLowerCase(),
+    );
+  const valid = trimmed.length >= 2 && !duplicate;
+
+  const submit = () => {
+    if (!valid) return;
+    onAdd(trimmed);
+    setValue("");
+  };
+
+  return (
+    <div
+      style={{
+        marginTop: 10,
+        padding: "10px 12px",
+        background: "var(--fm-bg-warm)",
+        border: "1px dashed var(--fm-border)",
+        borderRadius: "var(--fm-radius-sm)",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 6,
+          marginBottom: 6,
+        }}
+      >
+        <span style={{ fontSize: 11, fontWeight: 700, color: "var(--fm-text-secondary)" }}>
+          ➕ Add a custom lab (not in the panels above)
+        </span>
+      </div>
+      <div style={{ display: "flex", gap: 6 }}>
+        <input
+          type="text"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              submit();
+            }
+          }}
+          placeholder="e.g. Antibody panel — anti-TPO IgG / oxLDL / Folate (Serum)"
+          style={{
+            flex: 1,
+            padding: "7px 10px",
+            fontSize: 12,
+            border: "1px solid var(--fm-border)",
+            borderRadius: "var(--fm-radius-sm)",
+            fontFamily: "inherit",
+          }}
+        />
+        <button
+          type="button"
+          onClick={submit}
+          disabled={!valid}
+          style={{
+            padding: "7px 14px",
+            fontSize: 12,
+            fontWeight: 700,
+            background: valid ? "var(--fm-primary)" : "var(--fm-border-light)",
+            color: valid ? "#fff" : "var(--fm-text-tertiary)",
+            border: 0,
+            borderRadius: "var(--fm-radius-sm)",
+            cursor: valid ? "pointer" : "not-allowed",
+            fontFamily: "inherit",
+          }}
+        >
+          Add
+        </button>
+      </div>
+      {duplicate && (
+        <div style={{ fontSize: 10.5, color: "#c0392b", marginTop: 4 }}>
+          Already on the list
+        </div>
+      )}
     </div>
   );
 }

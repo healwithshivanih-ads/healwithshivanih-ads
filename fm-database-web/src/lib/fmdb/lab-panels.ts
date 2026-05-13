@@ -53,6 +53,12 @@ export const LAB_PANELS: LabPanel[] = [
       { name: "C-Peptide", cost: "₹₹" },
       { name: "Post-prandial Glucose + Insulin (2-hr)", cost: "₹₹" },
       { name: "Glucose Tolerance Test with Insulin Response (GTT-IR)", cost: "₹₹₹", specialty: true },
+      // Computed insulin-resistance markers — lab can derive these or
+      // coach can compute from fasting glucose + insulin. Listed
+      // separately because they show up named on many panels.
+      { name: "HOMA-IR (Insulin Resistance Index)", cost: "₹" },
+      { name: "QUICKI (Quantitative Insulin Sensitivity Check Index)", cost: "₹" },
+      { name: "Adiponectin", cost: "₹₹₹", specialty: true },
     ],
   },
   {
@@ -94,6 +100,11 @@ export const LAB_PANELS: LabPanel[] = [
       { name: "Comprehensive Metabolic Panel (CMP)", cost: "₹" },
       { name: "Liver Function Tests (LFT)", cost: "₹" },
       { name: "Cystatin C", cost: "₹₹" },
+      // Kidney clearance ratios — useful for early kidney function
+      // assessment. UCAR = Urea-to-Creatinine Ratio.
+      { name: "BUN / Creatinine Ratio (UCAR)", cost: "₹" },
+      { name: "Urinary Albumin / Creatinine Ratio (UACR)", cost: "₹" },
+      { name: "eGFR (CKD-EPI)", cost: "₹" },
     ],
   },
   {
@@ -208,6 +219,8 @@ export const LAB_PANELS: LabPanel[] = [
     icon: "🦠",
     labs: [
       { name: "H. pylori (Stool Antigen)", cost: "₹₹" },
+      { name: "H. pylori Urea Breath Test (UBT)", cost: "₹₹" },
+      { name: "H. pylori IgG Antibodies", cost: "₹₹" },
       { name: "Calprotectin (Stool)", cost: "₹₹" },
       { name: "Zonulin", cost: "₹₹₹", specialty: true },
       { name: "Pancreatic Elastase", cost: "₹₹₹", specialty: true },

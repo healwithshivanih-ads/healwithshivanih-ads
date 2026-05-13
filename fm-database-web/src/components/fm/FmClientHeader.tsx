@@ -16,6 +16,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { toast } from "sonner";
 import { uploadClientPhotoAction } from "@/app/clients/actions";
+import { formatLongDate } from "@/lib/fmdb/format-date";
 import { FmWorkflowBanner, type FmWorkflowStage } from "./FmWorkflowBanner";
 
 export interface FmClientHeaderProps {
@@ -84,7 +85,7 @@ export function FmClientHeader({
         >
           {age != null && <span>🎂 {age} years</span>}
           <span style={{ fontFamily: "var(--fm-font-mono)" }}>📋 {clientId}</span>
-          <span>🕐 Last: {lastSessionDate ?? "Never"}</span>
+          <span>🕐 Last contact: {lastSessionDate ? formatLongDate(lastSessionDate) : "Never"}</span>
         </div>
 
         <FmWorkflowBanner

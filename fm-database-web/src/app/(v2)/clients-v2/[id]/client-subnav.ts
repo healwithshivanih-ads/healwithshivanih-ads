@@ -18,8 +18,13 @@ export interface ClientSubnavTab {
 export function clientSubnavTabs(clientId: string): ClientSubnavTab[] {
   return [
     { id: "overview", label: "Overview", href: `/clients-v2/${clientId}` },
-    { id: "analyse", label: "Analyse", href: `/clients-v2/${clientId}/analyse` },
-    { id: "sessions", label: "Sessions", href: `/clients-v2/${clientId}/sessions` },
+    // "Analyse" was misleading — this tab is where every client contact
+    // gets recorded (discovery, intake, full assessment, check-in, quick
+    // note). Renamed to "Sessions" per coach.
+    { id: "analyse", label: "Sessions", href: `/clients-v2/${clientId}/analyse` },
+    // The old "Sessions" tab is a chronological inspector of prior
+    // sessions — renamed to "Timeline" to disambiguate.
+    { id: "sessions", label: "Timeline", href: `/clients-v2/${clientId}/sessions` },
     { id: "plan", label: "Plan", href: `/clients-v2/${clientId}/plan` },
     {
       id: "communicate",

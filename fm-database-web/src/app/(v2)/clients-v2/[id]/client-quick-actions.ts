@@ -44,9 +44,9 @@ export function clientQuickActions(clientId: string): FmFloatingActionItem[] {
     },
     {
       id: "handoff",
-      icon: "🏥",
-      label: "Doctor handoff PDF",
-      hint: "Print-ready summary for a referring clinician",
+      icon: "📋",
+      label: "SOAP Note",
+      hint: "Print-ready SOAP note — for a referring doctor / specialist",
       href: `/clients-v2/${clientId}/handoff`,
     },
   ];

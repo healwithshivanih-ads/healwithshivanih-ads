@@ -184,24 +184,12 @@ export default async function CommunicateTabPage({
         subtitle="Everything that goes out (or comes in) lives here — letters, WhatsApp templates, email, recent inbound. One surface after every session."
       />
 
-      <CommunicateClient
-        clientId={id}
-        displayName={displayName}
-        clientEmail={clientEmail}
-        clientPhone={clientPhone}
-        activePlan={activePlanInfo}
-        aisensyConfigured={aisensyConfig.configured}
-        recentInbound={recentInbound.map((m) => ({
-          date: m.date,
-          text: m.text,
-        }))}
-      />
-
-      {/* Phase / continuation meal-plan letters — generate a fresh
-          meal plan for any week range mid-cycle without superseding
-          the plan. Only when published. */}
+      {/* Phase / continuation meal-plan letters — moved to the TOP of
+          the page (per coach request). This is the most common
+          mid-cycle action; SendPackageButton (full letter package)
+          and message templates live below. */}
       {activePlan && activePlanInfo?.status === "published" && (
-        <div style={{ marginTop: 20 }}>
+        <div style={{ marginTop: 16, marginBottom: 16 }}>
           <PhaseLetterPanel
             clientId={id}
             planSlug={activePlan.slug as string}
@@ -214,6 +202,19 @@ export default async function CommunicateTabPage({
           />
         </div>
       )}
+
+      <CommunicateClient
+        clientId={id}
+        displayName={displayName}
+        clientEmail={clientEmail}
+        clientPhone={clientPhone}
+        activePlan={activePlanInfo}
+        aisensyConfigured={aisensyConfig.configured}
+        recentInbound={recentInbound.map((m) => ({
+          date: m.date,
+          text: m.text,
+        }))}
+      />
 
       {/* Letter send history — single source of truth for "what went
           out + when". Click any row to open the actual letter that

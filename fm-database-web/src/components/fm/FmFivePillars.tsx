@@ -146,7 +146,7 @@ export function FmFivePillars({
               marginBottom: 4,
             }}
           >
-            No check-in yet
+            No 5-pillars check-in on file yet
           </div>
           <p
             style={{

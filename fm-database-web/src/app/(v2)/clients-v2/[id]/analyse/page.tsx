@@ -36,6 +36,7 @@ import {
 import { HeaderAvatar } from "./header-avatar";
 import { clientQuickActions } from "../client-quick-actions";
 import { clientSubnavTabs } from "../client-subnav";
+import { formatLongDate } from "@/lib/fmdb/format-date";
 
 export const dynamic = "force-dynamic";
 
@@ -154,6 +155,27 @@ export default async function AnalysePage({
   const age = deriveAge(client);
   const lastSession = sortedDesc[0]?.date as string | undefined;
 
+  // Most-recent assessment-class session — gets its own header strip.
+  // v2 parseSessionType returns "discovery" | "intake" | "check_in" |
+  // "quick_note"; "intake" is what we treat as a Full Assessment
+  // (discovery is the pre-call lab-order). Coach asked to see "date of
+  // last assessment + link to open" at a glance.
+  const lastAssessment = sortedDesc.find((s) => {
+    const t = parseSessionType(
+      (s as Record<string, unknown>).presenting_complaints as string | undefined,
+    );
+    return t === "intake" || t === "discovery";
+  });
+  const lastAssessmentDate = lastAssessment?.date as string | undefined;
+  const lastAssessmentSid = lastAssessment?.session_id as string | undefined;
+  const lastAssessmentType = lastAssessment
+    ? parseSessionType(
+        (lastAssessment as Record<string, unknown>).presenting_complaints as
+          | string
+          | undefined,
+      )
+    : null;
+
   return (
     <FmAppShell
       activeNavId="clients"
@@ -210,7 +232,7 @@ export default async function AnalysePage({
           </div>
           <div style={{ fontSize: 11, color: "var(--fm-text-tertiary)" }}>
             {lastSession
-              ? `Last session: ${lastSession} (${relativeAge(lastSession, todayStr)})`
+              ? `Last session: ${formatLongDate(lastSession)} (${relativeAge(lastSession, todayStr)})`
               : "No sessions on record yet"}
           </div>
         </div>
@@ -228,6 +250,54 @@ export default async function AnalysePage({
           ← Overview
         </Link>
       </div>
+
+      {/* Last full assessment / intake header strip — coach asked to
+          see "date of last assessment + link to open" at the top of
+          this tab. Linked to the Timeline inspector with the session
+          pre-selected. Hidden when no assessment on file. */}
+      {lastAssessmentDate && (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 10,
+            padding: "8px 14px",
+            background: "rgba(46, 110, 213, 0.06)",
+            border: "1px solid rgba(46, 110, 213, 0.30)",
+            borderRadius: "var(--fm-radius-md)",
+            marginBottom: 16,
+            flexWrap: "wrap",
+          }}
+        >
+          <span style={{ fontSize: 14 }}>
+            {lastAssessmentType === "discovery" ? "🔍" : "🔬"}
+          </span>
+          <div style={{ flex: 1, minWidth: 0, fontSize: 12 }}>
+            <strong style={{ color: "var(--fm-text-primary)" }}>
+              Last {lastAssessmentType === "discovery" ? "discovery call" : "full assessment"}:
+            </strong>{" "}
+            <span style={{ color: "var(--fm-text-secondary)" }}>
+              {formatLongDate(lastAssessmentDate)} ·{" "}
+              {relativeAge(lastAssessmentDate, todayStr)}
+            </span>
+          </div>
+          <Link
+            href={`/clients-v2/${id}/sessions?sid=${lastAssessmentSid ?? ""}`}
+            style={{
+              fontSize: 11.5,
+              fontWeight: 700,
+              color: "#fff",
+              background: "var(--fm-primary)",
+              textDecoration: "none",
+              padding: "6px 12px",
+              borderRadius: "var(--fm-radius-sm)",
+              whiteSpace: "nowrap",
+            }}
+          >
+            Open assessment →
+          </Link>
+        </div>
+      )}
 
       {/* Sub-nav matching /clients-v2/[id]/page.tsx — Analyse active */}
       <SubNav id={id} active="analyse" />
@@ -251,50 +321,10 @@ export default async function AnalysePage({
             />
           )}
 
-          {/* Form area placeholder — Phase 3.5 fills this with v2 forms.
-              For now we direct coach to legacy /clients/[id]?tab=sessions
-              where the forms are fully wired. */}
-          {timeline.length > 0 && (
-            <FmPanel
-              title="Recording a session"
-              subtitle="Pick a session type above. The form opens in the classic Sessions tab; Phase 3.5 brings the form inside the v2 shell."
-              style={{ marginTop: 16 }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 12,
-                  padding: "10px 14px",
-                  background: "var(--fm-bg-cool)",
-                  borderRadius: "var(--fm-radius-sm)",
-                }}
-              >
-                <span style={{ fontSize: 24 }}>📝</span>
-                <div style={{ flex: 1, fontSize: 12 }}>
-                  <strong>Forms live in the classic flow today.</strong> Picking a
-                  type above routes through to the existing session form which
-                  saves to the same place — appears on the timeline here on
-                  return.
-                </div>
-                <Link
-                  href={`/clients-v2/${id}/sessions`}
-                  style={{
-                    background: "var(--fm-primary)",
-                    color: "#fff",
-                    padding: "6px 12px",
-                    fontSize: 11.5,
-                    fontWeight: 700,
-                    borderRadius: "var(--fm-radius-sm)",
-                    textDecoration: "none",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  Open classic →
-                </Link>
-              </div>
-            </FmPanel>
-          )}
+          {/* The v2 forms have been live since Phase 3.5 — each session
+              type tile above is a direct link to its own /analyse/<type>
+              page (discovery, intake, full, checkin, quick). No more
+              "classic flow" detour. */}
         </div>
 
         {/* RIGHT — sticky session timeline */}

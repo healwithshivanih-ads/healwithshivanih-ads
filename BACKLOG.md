@@ -5,7 +5,50 @@ the queue. Items here have been explicitly deferred — listed roughly by area.
 When picking one up, move its entry to a v0.x commit message and delete it
 from this file.
 
-Last updated: 2026-05-13 (post v0.71 — phase / continuation meal-plan letters live: coach can mid-cycle generate a fresh 7-day meal plan for any week range of the active plan without superseding it; the AI classifies supplements as continuing / introducing-this-phase / titrating-up-this-phase and surfaces only the changes in the letter)
+Last updated: 2026-05-13 (post v0.72 — Phase letters live + coach UX batch: tab rename Analyse→Sessions / Sessions→Timeline, SOAP-note label, last-assessment header strip, FM lab catalogue expanded with HOMA-IR/QUICKI/H. pylori UBT/UCAR/UACR + custom-lab input, long-date format helper, classic-flow hint dropped from Sessions tab, PhaseLetterPanel moved to top of Communicate)
+
+---
+
+## Coach UX — open follow-ups (from 2026-05-13 session)
+
+Three items deferred from the May-13 batch (the rest landed; see commit
+log). Listed in priority order.
+
+- **Intake-form transcript upload (PDF / TXT / MD / image)** — current
+  intake page only takes pasted text for the discovery-call transcript.
+  Coach: should also accept .pdf, .txt, .md, image uploads (when client
+  sends a screenshot). Wire into the existing extract-symptoms.py +
+  extract-client-from-transcript.py shims (both already accept binary
+  attachments). New `<TranscriptDropZone>` component on the v2 intake
+  form. ~30 min.
+- **Intake background block on discovery context** — what was discussed
+  on the discovery call (chief complaint, lab order, food journal
+  request)? Coach asks "is symptoms field pre-populated from discovery
+  call?". Currently no — the intake form starts blank. Add a "📞 From
+  your discovery call" recap card at the top of /analyse/intake that
+  surfaces the discovery session's selected_symptoms + presenting_complaints
+  + requested_labs as read-only context AND pre-populates the intake
+  form's symptom picker with whatever discovery flagged. ~45 min.
+- **Communicate · Send message — email-or-WhatsApp picker + template
+  dropdown** — current MessageTemplatesPanel only sends via AiSensy
+  WhatsApp. Coach wants a top-level "Send as: [WhatsApp ▾] [Email ▾]"
+  toggle, with the existing template list appearing only when WhatsApp
+  is chosen, and the email path using the existing Gmail SMTP send
+  action. Also clarify: "+ Add template" creates a NEW reusable template
+  for the templates library (NOT a one-off message). ~1 hour.
+- **Catalogue + Resources + Mind Map + Backlog + Ingest pages in v2
+  chrome** — these are still on the legacy SidebarNav layout. Wrap each
+  in FmAppShell + restyle to v2 tokens. ~3-4 hours per page; do
+  catalogue first (most-used). Each is a self-contained refactor.
+- **Section 9c vs coach notes (Intake form clarification)** — coach
+  asked what the difference is between two fields she sees. Audit the
+  intake form: probably section 9c is a structured field (e.g. "Goals
+  for this protocol") and coach_notes is the freeform append-anything
+  field. Either rename for clarity OR merge if they're truly the same.
+  ~15 min audit + 15 min fix.
+
+---
+
 
 ---
 
