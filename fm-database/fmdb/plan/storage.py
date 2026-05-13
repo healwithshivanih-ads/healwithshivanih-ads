@@ -20,6 +20,7 @@ between buckets happens at lifecycle transitions (transition() helper).
 from __future__ import annotations
 
 import os
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterable
@@ -202,7 +203,7 @@ def list_clients(root: Path) -> list[Client]:
         try:
             out.append(Client(**yaml.safe_load(cyaml.read_text())))
         except Exception as e:
-            print(f"WARN: skipping {cyaml}: {e}")
+            print(f"WARN: skipping {cyaml}: {e}", file=sys.stderr)
     return out
 
 
@@ -283,7 +284,7 @@ def list_sessions(root: Path, client_id: str) -> list[Session]:
         try:
             out.append(Session(**yaml.safe_load(p.read_text())))
         except Exception as e:
-            print(f"WARN: skipping {p}: {e}")
+            print(f"WARN: skipping {p}: {e}", file=sys.stderr)
     out.sort(key=lambda s: (s.date, s.created_at))
     return out
 
@@ -354,7 +355,7 @@ def list_plans(root: Path) -> list[Plan]:
                     out.append(p)
                     seen_slugs.add(p.slug)
             except Exception as e:
-                print(f"WARN: skipping {path.name}: {e}")
+                print(f"WARN: skipping {path.name}: {e}", file=sys.stderr)
 
     # versioned buckets — group by slug, take highest version
     for bucket in ("published", "superseded", "revoked"):
@@ -377,7 +378,7 @@ def list_plans(root: Path) -> list[Plan]:
                 out.append(p)
                 seen_slugs.add(p.slug)
             except Exception as e:
-                print(f"WARN: skipping {paths[-1].name}: {e}")
+                print(f"WARN: skipping {paths[-1].name}: {e}", file=sys.stderr)
 
     return out
 

@@ -10,6 +10,7 @@ Layout:
 from __future__ import annotations
 
 import os
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -60,7 +61,7 @@ def list_resources(root: Path) -> list[Resource]:
         try:
             out.append(Resource(**yaml.safe_load(path.read_text())))
         except Exception as e:
-            print(f"WARN: skipping {path}: {e}")
+            print(f"WARN: skipping {path}: {e}", file=sys.stderr)
     return out
 
 
