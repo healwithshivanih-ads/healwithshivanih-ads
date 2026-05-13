@@ -21,15 +21,25 @@ by bucket. Both files are gitignored — local triage aid only.
 """
 from __future__ import annotations
 
+import os
 import re
 from pathlib import Path
 
 import yaml
 
 REPO = Path("/Users/shivani/code/healwithshivanih-ads")
-PLAN = REPO / "fm-database/data/_cleanup/latest_plan.yaml"
 DATA = REPO / "fm-database/data"
-TRIAGE = REPO / "fm-database/data/_cleanup/triage.md"
+
+# PLAN_PATH_OVERRIDE env var lets us classify per-kind plan files
+# (e.g. latest_mechanism_plan.yaml) without touching the default topic plan.
+_plan_override = os.environ.get("PLAN_PATH_OVERRIDE")
+if _plan_override:
+    PLAN = (REPO / _plan_override).resolve() if not Path(_plan_override).is_absolute() else Path(_plan_override)
+else:
+    PLAN = REPO / "fm-database/data/_cleanup/latest_plan.yaml"
+
+# Triage markdown sits next to the plan file.
+TRIAGE = PLAN.parent / (PLAN.stem.replace("latest_", "triage_").replace("_plan", "") + ".md") if _plan_override else REPO / "fm-database/data/_cleanup/triage.md"
 
 
 _DISMISS_REASON_PATTERNS = [
@@ -94,23 +104,35 @@ def classify(group: dict) -> tuple[str, str]:
         return "dismiss", "<2 members — nothing to merge"
 
     # --- AUTO rules -------------------------------------------------------
-    if kind == "duplicate_topics":
-        # Canonical must exist as a topic/protocol/mechanism/symptom YAML.
-        canonical_exists = (
-            _slug_exists("topic", canonical)
-            or _slug_exists("protocol", canonical)
-            or _slug_exists("mechanism", canonical)
-            or _slug_exists("symptom", canonical)
-        )
-        if not canonical_exists:
-            return "coach_eye", f"canonical {canonical!r} not present in any catalogue kind"
+    if kind in ("duplicate_topics", "duplicate_mechanisms", "duplicate_symptoms"):
+        # Map kind → entity-kind for slug-existence lookups
+        entity_kind = {
+            "duplicate_topics":     "topic",
+            "duplicate_mechanisms": "mechanism",
+            "duplicate_symptoms":   "symptom",
+        }[kind]
 
-        # All members exist as topics.
+        if kind == "duplicate_topics":
+            # Topic mode allows canonical to be in any catalogue kind (auto-route
+            # in apply-cleanup.py turns these into topic_is_* moves).
+            canonical_exists = (
+                _slug_exists("topic", canonical)
+                or _slug_exists("protocol", canonical)
+                or _slug_exists("mechanism", canonical)
+                or _slug_exists("symptom", canonical)
+            )
+        else:
+            canonical_exists = _slug_exists(entity_kind, canonical)
+
+        if not canonical_exists:
+            return "coach_eye", f"canonical {canonical!r} not present in {entity_kind}s/"
+
+        # All members exist as the same entity kind.
         non_canonical_members = [m for m in members if m != canonical]
-        all_present = all(_slug_exists("topic", m) for m in non_canonical_members)
+        all_present = all(_slug_exists(entity_kind, m) for m in non_canonical_members)
         if not all_present:
-            missing = [m for m in non_canonical_members if not _slug_exists("topic", m)]
-            return "coach_eye", f"missing topic files: {', '.join(missing)}"
+            missing = [m for m in non_canonical_members if not _slug_exists(entity_kind, m)]
+            return "coach_eye", f"missing {entity_kind} files: {', '.join(missing)}"
 
         # Strong reason language + ≥1 word shared prefix → auto.
         has_strong_lang = any(p.search(reason) for p in _HIGH_CONFIDENCE_REASON_PATTERNS)
@@ -124,7 +146,7 @@ def classify(group: dict) -> tuple[str, str]:
         if shared >= 2:
             return "auto", f"{shared}-word shared prefix · {len(members)} members"
 
-        return "coach_eye", "duplicate_topics — review reason text"
+        return "coach_eye", f"{kind} — review reason text"
 
     if kind in ("topic_is_protocol", "topic_is_mechanism", "topic_is_symptom"):
         target_kind = kind.split("_")[-1]

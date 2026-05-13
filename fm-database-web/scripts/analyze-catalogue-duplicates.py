@@ -1,12 +1,21 @@
 #!/usr/bin/env python3
 """Catalogue duplicate analyzer.
 
-Scans every topic in fm-database/data/topics/ and (with Haiku) groups them by:
+Scans every entity of the given kind in fm-database/data/<kind>s/ and (with
+Haiku) groups them. For kind=topic (default):
 
   1. duplicate_topics    — same clinical concept, different slugs
   2. topic_is_protocol   — should be in protocols/, not topics/
   3. topic_is_mechanism  — should be in mechanisms/, not topics/
   4. topic_is_symptom    — should be in symptoms/, not topics/
+
+For kind=mechanism:
+
+  1. duplicate_mechanisms — same physiological mechanism, different slugs
+
+For kind=symptom:
+
+  1. duplicate_symptoms — same client-experienced symptom, different slugs
 
 Outputs a structured cleanup plan that the /catalogue/cleanup UI then lets
 the coach review + apply one group at a time.
@@ -14,7 +23,8 @@ the coach review + apply one group at a time.
 Reads JSON from stdin:
 {
   "dry_run": bool,
-  "limit":   int | null    # cap on number of topics analysed (for testing)
+  "limit":   int | null,             # cap on number of entities analysed (for testing)
+  "kind":    "topic" | "mechanism" | "symptom"  # default "topic"
 }
 
 Writes JSON to stdout:
@@ -106,7 +116,7 @@ def _hash_group(kind: str, canonical: str, members: list[str]) -> str:
     return h.hexdigest()[:12]
 
 
-_TOOL_SCHEMA = {
+_TOOL_SCHEMA_TOPIC = {
     "name": "catalogue_cleanup_plan",
     "description": "Produce a cleanup plan for the topics catalogue: duplicates to merge + topics that should be other entity kinds.",
     "input_schema": {
@@ -170,7 +180,81 @@ _TOOL_SCHEMA = {
 }
 
 
-_SYSTEM = """You are auditing a functional medicine catalogue. Each Topic is \
+_TOOL_SCHEMA_MECHANISM = {
+    "name": "catalogue_cleanup_plan",
+    "description": "Produce a cleanup plan for the mechanisms catalogue: duplicate physiological mechanisms to merge.",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "groups": {
+                "type": "array",
+                "description": "Each group is one cleanup action.",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "kind": {
+                            "type": "string",
+                            "enum": ["duplicate_mechanisms"],
+                            "description": (
+                                "duplicate_mechanisms: members are different slugs for the SAME "
+                                "physiological mechanism / driver / pathway; merge into canonical."
+                            ),
+                        },
+                        "canonical": {
+                            "type": "string",
+                            "description": (
+                                "The mechanism slug that should remain (cleanest name, richest summary, "
+                                "most aliases / cross-links)."
+                            ),
+                        },
+                        "members": {
+                            "type": "array",
+                            "items": {"type": "string"},
+                            "description": (
+                                "ALL mechanism slugs in the duplicate group, INCLUDING the canonical."
+                            ),
+                            "minItems": 2,
+                        },
+                        "reason": {
+                            "type": "string",
+                            "description": "One-sentence rationale.",
+                        },
+                    },
+                    "required": ["kind", "canonical", "members", "reason"],
+                },
+            },
+        },
+        "required": ["groups"],
+    },
+}
+
+
+_TOOL_SCHEMA_SYMPTOM = {
+    "name": "catalogue_cleanup_plan",
+    "description": "Produce a cleanup plan for the symptoms catalogue: duplicate client-experienced symptoms to merge.",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "groups": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "kind": {"type": "string", "enum": ["duplicate_symptoms"]},
+                        "canonical": {"type": "string"},
+                        "members": {"type": "array", "items": {"type": "string"}, "minItems": 2},
+                        "reason": {"type": "string"},
+                    },
+                    "required": ["kind", "canonical", "members", "reason"],
+                },
+            },
+        },
+        "required": ["groups"],
+    },
+}
+
+
+_SYSTEM_TOPIC = """You are auditing a functional medicine catalogue. Each Topic is \
 supposed to be a CLINICAL AREA / CONDITION (e.g. Hashimoto's thyroiditis, PCOS, \
 insulin resistance, perimenopause, anxiety, leaky gut as a condition).
 
@@ -206,6 +290,46 @@ Output groups should be COMPLETE — list ALL slugs in each duplicate cluster (n
 just two). Don't fragment one cluster into multiple groups."""
 
 
+_SYSTEM_MECHANISM = """You are auditing a functional medicine catalogue. Each \
+Mechanism is supposed to be a PHYSIOLOGICAL PATHWAY / DRIVER (e.g. HPA-axis \
+dysregulation, leaky gut / intestinal hyperpermeability, mitochondrial \
+dysfunction, chronic low-grade inflammation, insulin resistance as a pathway, \
+gut dysbiosis).
+
+Your job: find DUPLICATES — multiple mechanism slugs covering the SAME \
+underlying physiology. Group them. Pick the canonical (cleanest display name, \
+richest summary, most aliases / cross-links). Merge ALL slugs that describe \
+the same mechanism into one group.
+
+Concrete examples of TRUE duplicate clusters:
+- leaky-gut + intestinal-permeability + intestinal-hyperpermeability + \
+  gut-barrier-dysfunction + impaired-gut-barrier — all the same mechanism.
+- cortisol-elevation + chronic-cortisol-elevation + elevated-cortisol + \
+  hypercortisolaemia — same.
+- gut-dysbiosis + microbial-dysbiosis + intestinal-dysbiosis — same.
+- hpa-axis-dysregulation + hpa-axis-activation + dysregulated-hpa-axis — same.
+
+DO NOT merge mechanisms that are CLOSE but DIFFERENT:
+- Insulin resistance ≠ hyperinsulinaemia (the second is a consequence; keep separate).
+- HPA-axis dysregulation ≠ adrenal fatigue (overlapping but distinct framings).
+- Chronic inflammation ≠ acute inflammation.
+
+When in doubt, leave it alone. The coach reviews every group and can dismiss.
+
+Output groups should be COMPLETE — list ALL slugs in each duplicate cluster \
+(not just two). Don't fragment one cluster into multiple groups. Don't propose \
+moving mechanisms to other kinds — the coach has already curated their kind."""
+
+
+_SYSTEM_SYMPTOM = """You are auditing a functional medicine catalogue. Each \
+Symptom is supposed to be a CLIENT-EXPERIENCED COMPLAINT (e.g. bloating, brain \
+fog, joint pain, morning fatigue).
+
+Find DUPLICATES — multiple symptom slugs covering the same felt experience. \
+Pick the canonical (cleanest name, richest description, most aliases). Be \
+conservative — only merge if TRULY identical."""
+
+
 def main() -> int:
     _load_env()
 
@@ -217,20 +341,33 @@ def main() -> int:
 
     dry_run = bool(payload.get("dry_run", False))
     limit = payload.get("limit")
+    kind = (payload.get("kind") or "topic").strip().lower()
+    if kind not in {"topic", "mechanism", "symptom"}:
+        json.dump({"ok": False, "error": f"unsupported kind: {kind}"}, sys.stdout)
+        return 1
 
     root = _catalogue_root()
-    topics = _load_entity_summaries(root / "topics")
-    protocols = _load_entity_summaries(root / "protocols", max_summary=120)
-    mechanisms = [{"slug": e["slug"], "display_name": e["display_name"]} for e in _load_entity_summaries(root / "mechanisms", max_summary=0)]
-    symptoms = [{"slug": e["slug"], "display_name": e["display_name"]} for e in _load_entity_summaries(root / "symptoms", max_summary=0)]
+    kind_dir = {"topic": "topics", "mechanism": "mechanisms", "symptom": "symptoms"}[kind]
+    entities = _load_entity_summaries(root / kind_dir)
+
+    # Cross-kind reference lists only needed for topic mode.
+    protocols: list[dict] = []
+    mechanisms_ref: list[dict] = []
+    symptoms_ref: list[dict] = []
+    if kind == "topic":
+        protocols = _load_entity_summaries(root / "protocols", max_summary=120)
+        mechanisms_ref = [{"slug": e["slug"], "display_name": e["display_name"]} for e in _load_entity_summaries(root / "mechanisms", max_summary=0)]
+        symptoms_ref = [{"slug": e["slug"], "display_name": e["display_name"]} for e in _load_entity_summaries(root / "symptoms", max_summary=0)]
 
     if limit:
-        topics = topics[: int(limit)]
+        entities = entities[: int(limit)]
 
     if dry_run:
         plan = {
             "generated_at": datetime.now(timezone.utc).isoformat(),
-            "topic_count": len(topics),
+            "kind": kind,
+            "entity_count": len(entities),
+            "topic_count": len(entities),  # legacy alias for backward compat
             "groups": [],
         }
         json.dump({"ok": True, "plan": plan}, sys.stdout)
@@ -247,29 +384,32 @@ def main() -> int:
         json.dump({"ok": False, "error": f"anthropic not installed: {e}"}, sys.stdout)
         return 1
 
-    # Build context. Topics are the bulk; protocols/mechanisms/symptoms are
-    # passed as reference lists so the model can map miscategorisations.
+    # Build context. Topic mode includes cross-kind references for
+    # miscategorisation detection. Mechanism/symptom modes audit one kind only.
     ctx_lines: list[str] = []
-    ctx_lines.append("# EXISTING PROTOCOLS (target kind for topic_is_protocol)")
-    for p in protocols:
-        aliases = ", ".join(p["aliases"][:3]) if p["aliases"] else ""
-        ctx_lines.append(f"- {p['slug']} · {p['display_name']}" + (f" · aliases: {aliases}" if aliases else ""))
+    if kind == "topic":
+        ctx_lines.append("# EXISTING PROTOCOLS (target kind for topic_is_protocol)")
+        for p in protocols:
+            aliases = ", ".join(p["aliases"][:3]) if p["aliases"] else ""
+            ctx_lines.append(f"- {p['slug']} · {p['display_name']}" + (f" · aliases: {aliases}" if aliases else ""))
+        ctx_lines.append("")
+        ctx_lines.append("# EXISTING MECHANISMS (slug + display only — target kind for topic_is_mechanism)")
+        for m in mechanisms_ref[:200]:
+            ctx_lines.append(f"- {m['slug']} · {m['display_name']}")
+        if len(mechanisms_ref) > 200:
+            ctx_lines.append(f"- ... + {len(mechanisms_ref) - 200} more (omitted)")
+        ctx_lines.append("")
+        ctx_lines.append("# EXISTING SYMPTOMS (slug + display only — target kind for topic_is_symptom)")
+        for s in symptoms_ref[:200]:
+            ctx_lines.append(f"- {s['slug']} · {s['display_name']}")
+        if len(symptoms_ref) > 200:
+            ctx_lines.append(f"- ... + {len(symptoms_ref) - 200} more (omitted)")
+        ctx_lines.append("")
+
+    header_label = {"topic": "TOPICS", "mechanism": "MECHANISMS", "symptom": "SYMPTOMS"}[kind]
+    ctx_lines.append(f"# {header_label} TO AUDIT ({len(entities)} total)")
     ctx_lines.append("")
-    ctx_lines.append("# EXISTING MECHANISMS (slug + display only — target kind for topic_is_mechanism)")
-    for m in mechanisms[:200]:  # cap context
-        ctx_lines.append(f"- {m['slug']} · {m['display_name']}")
-    if len(mechanisms) > 200:
-        ctx_lines.append(f"- ... + {len(mechanisms) - 200} more (omitted)")
-    ctx_lines.append("")
-    ctx_lines.append("# EXISTING SYMPTOMS (slug + display only — target kind for topic_is_symptom)")
-    for s in symptoms[:200]:
-        ctx_lines.append(f"- {s['slug']} · {s['display_name']}")
-    if len(symptoms) > 200:
-        ctx_lines.append(f"- ... + {len(symptoms) - 200} more (omitted)")
-    ctx_lines.append("")
-    ctx_lines.append(f"# TOPICS TO AUDIT ({len(topics)} total)")
-    ctx_lines.append("")
-    for t in topics:
+    for t in entities:
         aliases = ", ".join(t["aliases"][:4]) if t["aliases"] else ""
         summary = t["summary"].replace("\n", " ")
         ctx_lines.append(
@@ -280,13 +420,24 @@ def main() -> int:
 
     context = "\n".join(ctx_lines)
 
+    system_prompt = {
+        "topic": _SYSTEM_TOPIC,
+        "mechanism": _SYSTEM_MECHANISM,
+        "symptom": _SYSTEM_SYMPTOM,
+    }[kind]
+    tool_schema = {
+        "topic": _TOOL_SCHEMA_TOPIC,
+        "mechanism": _TOOL_SCHEMA_MECHANISM,
+        "symptom": _TOOL_SCHEMA_SYMPTOM,
+    }[kind]
+
     aclient = Anthropic(api_key=api_key)
     try:
         with aclient.messages.stream(
             model="claude-haiku-4-5",
             max_tokens=8192,
-            system=_SYSTEM,
-            tools=[_TOOL_SCHEMA],
+            system=system_prompt,
+            tools=[tool_schema],
             tool_choice={"type": "tool", "name": "catalogue_cleanup_plan"},
             messages=[{"role": "user", "content": context}],
         ) as stream:
@@ -327,14 +478,19 @@ def main() -> int:
 
     plan = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "topic_count": len(topics),
+        "kind": kind,
+        "entity_count": len(entities),
+        "topic_count": len(entities),  # legacy alias for backward compat
         "groups": enriched,
     }
 
     # Persist plan to the catalogue-cleanup state file alongside the catalogue.
+    # Topic mode writes to latest_plan.yaml (the default); other kinds get their
+    # own file so plans don't collide.
     state_dir = root / "_cleanup"
     state_dir.mkdir(exist_ok=True)
-    (state_dir / "latest_plan.yaml").write_text(yaml.dump(plan, sort_keys=False, allow_unicode=True))
+    plan_filename = "latest_plan.yaml" if kind == "topic" else f"latest_{kind}_plan.yaml"
+    (state_dir / plan_filename).write_text(yaml.dump(plan, sort_keys=False, allow_unicode=True))
 
     json.dump({"ok": True, "plan": plan}, sys.stdout)
     return 0

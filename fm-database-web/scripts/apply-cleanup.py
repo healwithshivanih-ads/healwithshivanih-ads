@@ -201,6 +201,31 @@ def main() -> int:
         json.dump({"ok": True, "summary": summary}, sys.stdout)
         return 0
 
+    if kind in ("duplicate_mechanisms", "duplicate_symptoms"):
+        entity_dir = "mechanisms" if kind == "duplicate_mechanisms" else "symptoms"
+        if not canonical:
+            json.dump({"ok": False, "error": f"{kind} requires a canonical slug"}, sys.stdout)
+            return 1
+        if canonical not in members:
+            members = [canonical] + members
+        canonical_path = root / entity_dir / f"{canonical}.yaml"
+        canonical_data = _load_yaml(canonical_path)
+        if canonical_data is None:
+            json.dump({"ok": False, "error": f"canonical {entity_dir[:-1]} not found: {canonical}"}, sys.stdout)
+            return 1
+        members_to_absorb = []
+        for m in members:
+            if m == canonical:
+                continue
+            mp = root / entity_dir / f"{m}.yaml"
+            md = _load_yaml(mp)
+            if md is None:
+                continue
+            members_to_absorb.append((mp, md, m))
+        summary = _merge_into_canonical(canonical_path, canonical_data, members_to_absorb, dry_run)
+        json.dump({"ok": True, "summary": summary}, sys.stdout)
+        return 0
+
     if kind in ("topic_is_protocol", "topic_is_mechanism", "topic_is_symptom"):
         target_kind = {
             "topic_is_protocol":  "protocol",
