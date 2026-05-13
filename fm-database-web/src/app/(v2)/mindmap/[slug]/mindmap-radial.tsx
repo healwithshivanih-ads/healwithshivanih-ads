@@ -13,9 +13,14 @@
  * Anthropic design handoff. Tone palette + pixel positions match.
  */
 
-import { useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
 import type { MindMapNode } from "@/lib/fmdb/loader-extras";
+
+// Avoid useLayoutEffect-on-server warning in Next.js dev — fall back to
+// useEffect when window is undefined.
+const useIsoLayoutEffect =
+  typeof window === "undefined" ? useEffect : useLayoutEffect;
 
 /* ─────────────────────────────────────────────────────────────────────
  *  Tone palette (6 hues at matched lightness/chroma — read as one family)
@@ -165,16 +170,81 @@ function MMRadial({
   branches: NormalisedBranch[];
   centerLabel: string;
 }) {
-  // Hand-laid layout matching fm-explorations-8.jsx. Stretches to fill the
-  // available width via CSS grid but keeps the curved-connector SVG inside
-  // a viewBox so it scales gracefully.
-  // For ≤6 branches we use 3-top / 3-bottom. For >6 we wrap into a third row.
+  // Layout: 3 cards top, central black hub, 3 cards bottom. For >6 branches we
+  // wrap extras into a third row underneath. Connector lines are SVG curves
+  // measured from real DOM positions (the cards stretch to fill width, so
+  // we can't pixel-position them ahead of time).
   const topRow = branches.slice(0, 3);
   const botRow = branches.slice(3, 6);
   const extras = branches.slice(6);
 
+  const containerRef = useRef<HTMLDivElement>(null);
+  const hubRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<Map<string, HTMLDivElement | null>>(new Map());
+  const [paths, setPaths] = useState<{ d: string; color: string }[]>([]);
+  const [svgBox, setSvgBox] = useState({ w: 0, h: 0 });
+
+  const recompute = () => {
+    const container = containerRef.current;
+    const hub = hubRef.current;
+    if (!container || !hub) return;
+    const cRect = container.getBoundingClientRect();
+    const hRect = hub.getBoundingClientRect();
+    const hubCx = hRect.left - cRect.left + hRect.width / 2;
+    const hubCy = hRect.top - cRect.top + hRect.height / 2;
+    const hubR = hRect.width / 2;
+
+    const out: { d: string; color: string }[] = [];
+    for (const b of branches) {
+      const card = cardRefs.current.get(b.id);
+      if (!card) continue;
+      const r = card.getBoundingClientRect();
+      const cardCx = r.left - cRect.left + r.width / 2;
+      const cardTop = r.top - cRect.top;
+      const cardBot = r.bottom - cRect.top;
+      // Anchor on the card edge that faces the hub.
+      const cardEdgeY = cardBot < hubCy ? cardBot : cardTop;
+
+      const dx = cardCx - hubCx;
+      const dy = cardEdgeY - hubCy;
+      const len = Math.hypot(dx, dy) || 1;
+      const hubX = hubCx + (dx / len) * hubR;
+      const hubY = hubCy + (dy / len) * hubR;
+      // Cubic bezier: control points pulled vertically halfway (matches the
+      // original F1 prototype's curve feel).
+      const c1x = hubX;
+      const c1y = (hubY + cardEdgeY) / 2;
+      const c2x = cardCx;
+      const c2y = (hubY + cardEdgeY) / 2;
+      const d = `M${hubX.toFixed(1)},${hubY.toFixed(1)} C${c1x.toFixed(1)},${c1y.toFixed(1)} ${c2x.toFixed(1)},${c2y.toFixed(1)} ${cardCx.toFixed(1)},${cardEdgeY.toFixed(1)}`;
+      out.push({ d, color: TONES[b.tone].edge });
+    }
+    setPaths(out);
+    setSvgBox({ w: cRect.width, h: cRect.height });
+  };
+
+  useIsoLayoutEffect(() => {
+    recompute();
+    const ro = new ResizeObserver(() => recompute());
+    if (containerRef.current) ro.observe(containerRef.current);
+    // Also recompute on window resize (covers font-load / scrollbar shifts).
+    window.addEventListener("resize", recompute);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", recompute);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [branches]);
+
+  // Helper for card refs by id.
+  const setCardRef = (id: string) => (el: HTMLDivElement | null) => {
+    if (el) cardRefs.current.set(id, el);
+    else cardRefs.current.delete(id);
+  };
+
   return (
     <div
+      ref={containerRef}
       style={{
         position: "relative",
         background: "#FAFAFA",
@@ -185,6 +255,32 @@ function MMRadial({
         minHeight: 760,
       }}
     >
+      {/* SVG connectors layer — sits behind cards (zIndex 1). */}
+      {svgBox.w > 0 && (
+        <svg
+          width={svgBox.w}
+          height={svgBox.h}
+          viewBox={`0 0 ${svgBox.w} ${svgBox.h}`}
+          style={{
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
+            zIndex: 1,
+          }}
+        >
+          {paths.map((p, i) => (
+            <path
+              key={i}
+              d={p.d}
+              stroke={p.color}
+              strokeWidth={1.4}
+              fill="none"
+              strokeLinecap="round"
+            />
+          ))}
+        </svg>
+      )}
+
       {/* Top row */}
       <div
         style={{
@@ -197,7 +293,7 @@ function MMRadial({
         }}
       >
         {topRow.map((b) => (
-          <ClusterCard key={b.id} branch={b} />
+          <ClusterCard key={b.id} branch={b} cardRef={setCardRef(b.id)} />
         ))}
       </div>
 
@@ -213,6 +309,7 @@ function MMRadial({
         }}
       >
         <div
+          ref={hubRef}
           style={{
             width: 172,
             height: 172,
@@ -251,7 +348,7 @@ function MMRadial({
           }}
         >
           {botRow.map((b) => (
-            <ClusterCard key={b.id} branch={b} />
+            <ClusterCard key={b.id} branch={b} cardRef={setCardRef(b.id)} />
           ))}
         </div>
       )}
@@ -269,7 +366,7 @@ function MMRadial({
           }}
         >
           {extras.map((b) => (
-            <ClusterCard key={b.id} branch={b} />
+            <ClusterCard key={b.id} branch={b} cardRef={setCardRef(b.id)} />
           ))}
         </div>
       )}
@@ -286,10 +383,17 @@ interface NormalisedBranch {
   leafTotal: number;
 }
 
-function ClusterCard({ branch }: { branch: NormalisedBranch }) {
+function ClusterCard({
+  branch,
+  cardRef,
+}: {
+  branch: NormalisedBranch;
+  cardRef?: (el: HTMLDivElement | null) => void;
+}) {
   const tone = TONES[branch.tone];
   return (
     <div
+      ref={cardRef}
       style={{
         background: "#fff",
         borderRadius: 8,
@@ -379,6 +483,209 @@ function ClusterCard({ branch }: { branch: NormalisedBranch }) {
           </div>
         </div>
       ))}
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+ *  F2 · Column groups — newspaper layout, one column per branch.
+ *  Used for the on-screen "Outline" mode (visually distinct from Print).
+ * ─────────────────────────────────────────────────────────────────────*/
+function MMColumns({
+  branches,
+  centerLabel,
+  totalLeaves,
+}: {
+  branches: NormalisedBranch[];
+  centerLabel: string;
+  totalLeaves: number;
+}) {
+  const subgroupTotal = branches.reduce((s, b) => s + b.groups.length, 0);
+  return (
+    <div
+      style={{
+        background: "#FAFAFA",
+        border: "1px solid var(--fm-border-light)",
+        borderRadius: "var(--fm-radius-md)",
+        overflow: "hidden",
+      }}
+    >
+      {/* Hero strip — black bar, serif title, mono node count */}
+      <div
+        style={{
+          padding: "22px 24px 18px",
+          background: "#0D0D0D",
+          color: "#FAFAFA",
+          display: "flex",
+          alignItems: "baseline",
+          gap: 18,
+          flexWrap: "wrap",
+        }}
+      >
+        <div
+          style={{
+            fontFamily:
+              '"Libre Baskerville", Georgia, var(--fm-font-display), serif',
+            fontSize: 26,
+            lineHeight: 1.1,
+            letterSpacing: "-0.5px",
+            fontWeight: 400,
+            maxWidth: 540,
+          }}
+        >
+          {centerLabel.replace(/\n/g, " ")}
+        </div>
+        <div style={{ flex: 1, height: 1, background: "rgba(255,255,255,0.20)", minWidth: 60 }} />
+        <div
+          style={{
+            fontSize: 11.5,
+            opacity: 0.7,
+            fontFamily: "var(--fm-font-mono, ui-monospace, monospace)",
+            whiteSpace: "nowrap",
+          }}
+        >
+          {branches.length} branches · {subgroupTotal} subgroups · {totalLeaves} nodes
+        </div>
+      </div>
+
+      <div style={{ padding: "18px", overflowX: "auto" }}>
+        <div
+          style={{
+            display: "grid",
+            // Up to 6 columns on wide screens, wraps gracefully on narrow.
+            gridTemplateColumns: `repeat(${Math.min(branches.length, 6)}, minmax(180px, 1fr))`,
+            gap: 14,
+            alignItems: "flex-start",
+          }}
+        >
+          {branches.map((b) => {
+            const tone = TONES[b.tone];
+            return (
+              <div
+                key={b.id}
+                style={{
+                  background: "#fff",
+                  border: `1px solid ${tone.edge}`,
+                  borderTop: `4px solid ${tone.ink}`,
+                  borderRadius: "0 0 6px 6px",
+                  overflow: "hidden",
+                }}
+              >
+                <div
+                  style={{
+                    padding: "12px 14px 10px",
+                    borderBottom: "1px solid var(--fm-border-light)",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: 10,
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      letterSpacing: 1,
+                      color: tone.ink,
+                      marginBottom: 4,
+                    }}
+                  >
+                    {b.icon} &nbsp; Branch
+                  </div>
+                  <div
+                    style={{
+                      fontFamily:
+                        '"Libre Baskerville", Georgia, var(--fm-font-display), serif',
+                      fontSize: 16,
+                      fontWeight: 400,
+                      color: "var(--fm-text-primary)",
+                      letterSpacing: "-0.2px",
+                      lineHeight: 1.2,
+                    }}
+                  >
+                    {b.label}
+                  </div>
+                </div>
+                <div style={{ padding: "10px 14px 14px" }}>
+                  {b.groups.map((g, i) => (
+                    <div key={i} style={{ marginBottom: 12 }}>
+                      <div
+                        style={{
+                          fontSize: 9.5,
+                          fontWeight: 700,
+                          textTransform: "uppercase",
+                          letterSpacing: 0.7,
+                          color: "var(--fm-text-tertiary)",
+                          marginBottom: 6,
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 6,
+                        }}
+                      >
+                        <span
+                          style={{
+                            width: 4,
+                            height: 4,
+                            borderRadius: "50%",
+                            background: tone.ink,
+                          }}
+                        />
+                        {g.label}
+                        <span
+                          style={{
+                            marginLeft: "auto",
+                            color: "var(--fm-text-tertiary)",
+                            fontFamily:
+                              "var(--fm-font-mono, ui-monospace, monospace)",
+                            fontWeight: 600,
+                          }}
+                        >
+                          {g.items.length}
+                        </span>
+                      </div>
+                      <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
+                        {g.items.map((it, j) => {
+                          const linked =
+                            it.linked_kind &&
+                            it.linked_slug &&
+                            KIND_URL[it.linked_kind];
+                          return (
+                            <li
+                              key={j}
+                              style={{
+                                fontSize: 11.5,
+                                color: "var(--fm-text-primary)",
+                                fontWeight: 500,
+                                padding: "4px 0",
+                                borderBottom:
+                                  j === g.items.length - 1
+                                    ? "none"
+                                    : "1px dashed var(--fm-border-light)",
+                                lineHeight: 1.35,
+                              }}
+                            >
+                              {linked ? (
+                                <Link
+                                  href={`/catalogue/${KIND_URL[it.linked_kind!]}/${it.linked_slug}`}
+                                  style={{
+                                    color: "var(--fm-text-primary)",
+                                    textDecoration: "none",
+                                  }}
+                                >
+                                  {cleanLabel(it.label)}
+                                </Link>
+                              ) : (
+                                cleanLabel(it.label)
+                              )}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }
@@ -828,7 +1135,14 @@ export function MindMapRadial({
       {mode === "radial" && (
         <MMRadial branches={branches} centerLabel={centerLabel} />
       )}
-      {(mode === "outline" || mode === "print") && (
+      {mode === "outline" && (
+        <MMColumns
+          branches={branches}
+          centerLabel={centerLabel}
+          totalLeaves={totalLeaves}
+        />
+      )}
+      {mode === "print" && (
         <MMOutline
           branches={branches}
           centerLabel={centerLabel}

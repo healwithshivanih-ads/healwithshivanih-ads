@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -55,7 +55,7 @@ function slugify(s: string) {
 
 export function InfoPackGeneratorForm() {
   const router = useRouter();
-  const [pending, startTransition] = useTransition();
+  const [submitted, setSubmitted] = useState(false);
 
   const [topic, setTopic] = useState("");
   const [keywordInput, setKeywordInput] = useState("");
@@ -86,25 +86,45 @@ export function InfoPackGeneratorForm() {
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    startTransition(async () => {
-      toast.loading("Searching PubMed and synthesising evidence…", { id: "gen" });
-      const res = await generateInfoPack({
-        topic: topic.trim(),
-        keywords,
-        audience,
-        max_papers: maxPapers,
-        save_slug: slug.trim(),
-      });
-      toast.dismiss("gen");
-      if (res.ok) {
-        toast.success(
-          `Generated "${res.title}" — ${res.papers_used} papers, ~${res.word_count} words`
-        );
-        router.push(`/resources/${res.slug}`);
-      } else {
-        toast.error(res.error);
-      }
-    });
+    if (!topic.trim() || !slug.trim()) {
+      toast.error("Topic and slug are required");
+      return;
+    }
+    setSubmitted(true);
+    // Fire-and-forget: Node keeps the python child process alive
+    // independent of this request's lifecycle, so the brief still saves
+    // even after the coach navigates away. The .then handlers below will
+    // surface success / error toasts whenever the work finishes — sonner
+    // queues them so they appear even if she's now on a different page.
+    void generateInfoPack({
+      topic: topic.trim(),
+      keywords,
+      audience,
+      max_papers: maxPapers,
+      save_slug: slug.trim(),
+    }).then(
+      (res) => {
+        if (res.ok) {
+          toast.success(
+            `✓ Evidence brief "${res.title}" saved — ${res.papers_used} papers, ~${res.word_count} words.`,
+            { duration: 10000 },
+          );
+        } else {
+          toast.error(`Brief failed: ${res.error}`, { duration: 20000 });
+        }
+      },
+      (err) => {
+        toast.error(`Brief failed: ${err instanceof Error ? err.message : String(err)}`, { duration: 20000 });
+      },
+    );
+    toast.message(
+      `🔬 Generating evidence brief — searching PubMed + Haiku synthesis. Takes 1–3 min; carry on with other work.`,
+      { duration: 8000 },
+    );
+    // Send the coach back to the Resources list immediately. The brief
+    // will appear there once the script finishes (resources/page revalidates
+    // automatically on save via revalidatePath in actions.ts).
+    router.push("/resources");
   };
 
   return (
@@ -223,21 +243,13 @@ export function InfoPackGeneratorForm() {
             </label>
 
             <div className="flex gap-3 items-center pt-1">
-              <Button type="submit" disabled={pending || !topic.trim() || !slug.trim()}>
-                {pending ? "⏳ Generating…" : "🔬 Generate evidence brief"}
+              <Button type="submit" disabled={submitted || !topic.trim() || !slug.trim()}>
+                {submitted ? "🔬 Generating in background…" : "🔬 Generate evidence brief"}
               </Button>
               <p className="text-xs text-muted-foreground">
-                ~30–60 seconds · searches PubMed + synthesises with Claude
+                ~1–3 min · PubMed + Haiku · runs in background, navigate anywhere
               </p>
             </div>
-
-            {pending && (
-              <div className="text-xs text-muted-foreground bg-muted/50 rounded-md px-3 py-2 space-y-1">
-                <p>⏳ Searching PubMed for recent systematic reviews and RCTs…</p>
-                <p>✍️ Synthesising into a readable evidence brief…</p>
-                <p>💾 Saving to Resources…</p>
-              </div>
-            )}
           </form>
         </CardContent>
       </Card>
