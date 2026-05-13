@@ -37,7 +37,14 @@ sources:
 - id: vitaone-health-coaching-toolkit
   location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
   quote: 'Protect: Alginate, pectin, DGL, slippery elm.'
+- id: barbara-oneil-gi-tract
+  location: Slippery Elm Section
+  quote: There's a herb called slippery elm. And slippery elm is the pounded bark
+    of the slippery elm tree. And slippery elm coats, soothes and heals the lining
+    of the gut.
 version: 2
 status: active
 updated_at: '2026-05-04'
 updated_by: shivani
+aliases:
+- slippery-elm-bark

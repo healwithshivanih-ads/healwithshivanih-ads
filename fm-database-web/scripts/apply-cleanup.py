@@ -201,8 +201,12 @@ def main() -> int:
         json.dump({"ok": True, "summary": summary}, sys.stdout)
         return 0
 
-    if kind in ("duplicate_mechanisms", "duplicate_symptoms"):
-        entity_dir = "mechanisms" if kind == "duplicate_mechanisms" else "symptoms"
+    if kind in ("duplicate_mechanisms", "duplicate_symptoms", "duplicate_supplements"):
+        entity_dir = {
+            "duplicate_mechanisms": "mechanisms",
+            "duplicate_symptoms":   "symptoms",
+            "duplicate_supplements": "supplements",
+        }[kind]
         if not canonical:
             json.dump({"ok": False, "error": f"{kind} requires a canonical slug"}, sys.stdout)
             return 1

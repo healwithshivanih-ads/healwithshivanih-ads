@@ -59,7 +59,13 @@ sources:
 - id: coconote-fm-pancreatic-insufficiency
   location: Causes of Enzyme Deficiency
   quote: Nutritional deficiency like vitamin A, B, E, zinc, copper.
+- id: vitaone-supplementation-dosage
+  location: Page 3 - Supplement Table
+  quote: Vitamin E (Mixed Tocopherols) - Antioxidant, skin & heart health - 100–400
+    IU/day - With meals
 version: 6
 status: active
 updated_at: '2026-05-05'
 updated_by: shivani
+aliases:
+- vitamin-e-mixed-tocopherols

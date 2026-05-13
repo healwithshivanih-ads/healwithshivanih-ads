@@ -28,7 +28,11 @@ sources:
   location: Constipation Protocol
   quote: Most of my people, they get really better with just incorporating two tablespoons
     of chia seeds and the flat seeds.
+- id: thurlow-microbiome-session-7
+  location: Session 7 — Fiber Gap & Feeding the Microbiome
 version: 1
 status: active
 updated_at: '2026-05-05'
 updated_by: shivani
+aliases:
+- chia-seed

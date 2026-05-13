@@ -35,7 +35,21 @@ sources:
   location: Management — Supplementation
   quote: Vitamin D is very important when it comes to supporting in Vitamin K2 and
     when it comes to supporting the reproductive health.
+- id: coconote-fm-vitamin-d3-k2
+  location: Vitamin D + K2 Synergy Section
+  quote: a synergy of both is required for the optimal functioning and ideally a supplementation
+    of vitamin D of 5000 international units and K1200 MCG is preferred.
+- id: vitaone-supplementation-dosage
+  location: Page 2 - Supplement Table
+  quote: Vitamin K2 (MK-7) - Calcium metabolism, bone health - 100–180 mcg/day - With
+    meals, especially with D3
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin K (K1 & K2)
+  quote: 'Supplement: Blend of MK-4 + MK-7 ideal.'
 version: 2
 status: active
 updated_at: '2026-05-05'
 updated_by: shivani
+aliases:
+- vitamin-k2-supplement
+- vitamin-k2-mk7

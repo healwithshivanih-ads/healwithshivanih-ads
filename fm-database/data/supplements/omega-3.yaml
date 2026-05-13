@@ -67,6 +67,65 @@ sources:
   location: Nutrient Optimization
   quote: 'Omega-3 Fatty Acids: Anti-inflammatory properties that can help reduce autoimmune
     activity.'
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 9: Targeted Supplements'
+  quote: 'Omega-3 fatty acids (EPA/DHA): Anti-inflammatory, supports immune regulation.'
+- id: vitaone-health-coaching-toolkit
+  location: How to Reset the Nervous System
+  quote: 'Anti-inflammatory nutrients: omega-3 (2g EPA/DHA), curcumin, resveratrol,
+    NAC, alpha-lipoic acid.'
+- id: vitaone-cvs-risk-assessment
+  location: Nutrition supplements (Slide 21)
+  quote: 'The Nutritional parameters of the patient were corrected with the following
+    supplements: 4. Omega 3'
+- id: vitaone-health-coaching-cheatsheet
+  location: Key Nutrients & Botanicals for Emotional Healing Support
+  quote: 'Omega-3 Fatty Acids — Anti-inflammatory for neuroinflammation. Clinical
+    use: Depression, trauma, chronic pain.'
+- id: coconote-fm-estrogen-dominance
+  location: Estrogen Metabolite Pathways
+  quote: Checking on the omega-3s as well when you are managing any kind of hormone
+    abnormalities also is very important.
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Repair Section
+  quote: We require short-chain fatty acids and we require omega-3 fatty acids. They
+    can help in rebuilding your epithelium.
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Key Supplements Discussion
+  quote: Omega 3 for good fats.
+- id: coconote-fm-intestinal-permeability
+  location: Diagnostic Markers – Secretory IgA
+  quote: I have seen the patient having malnutrition. They are either deficient in
+    omega-3 or protein because as you say, all the immune cells, all the antibodies,
+    they are actually a protein or peptides.
+- id: coconote-fm-intestinal-permeability-anish
+  location: Nutritional Drivers of Intestinal Permeability
+  quote: Just think about if somebody is having a chronic deficiency of protein or
+    omega-3 deficiency, vitamin deficiency, zinc deficiency because these are the
+    nutrients required to integrate this mucous membrane.
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Triglyceride Treatment — Omega-3s
+  quote: Omega-3s you definitely want to do omega-3s four grams a day camo triglycerides
+    fifty percent.
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Omega-3 intervention section
+  quote: You can take around three to six to build that ratio order and once you actually
+    you can find this you can reduce your omega-6 you can just move to a TG and walnut
+    and flexes.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXZNALUjPBQ/
+  quote: Omega-3s, turmeric, and green tea modulate NF-κB and cytokine expression
+    at the cellular level.
+- id: vitaone-nutrition-cheatsheet
+  location: How Nutrient Deficiencies (B12, Folate, Omega-3, Magnesium) Mimic Depression
+  quote: Anti-inflammatory, modulate serotonin/dopamine receptors, neuronal fluidity
+- id: vitaone-blood-sugar-ebook
+  location: Section 7.2 — Targeted Supplementation
+  quote: 'Omega-3 (EPA + DHA): Anti-inflammatory; enhances adipocyte insulin sensitivity.
+    1-2 g combined.'
+- id: vitaone-cv-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
+  quote: EFA supplementation including EPA+DHA and GLA
 version: 6
 status: active
 updated_at: '2026-05-02'
@@ -75,3 +134,7 @@ pregnancy_safety: safe
 lactation_safety: safe
 pregnancy_safety_note: Recommended — DHA critical for fetal brain development. 1-2g
   EPA+DHA. Choose fish oil or algae (vegetarian).
+aliases:
+- omega-3-fatty-acids
+- omega-3-epa-dha
+- omega-3-epa-dha-gla

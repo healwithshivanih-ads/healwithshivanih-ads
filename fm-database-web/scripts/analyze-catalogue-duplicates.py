@@ -330,6 +330,54 @@ Pick the canonical (cleanest name, richest description, most aliases). Be \
 conservative — only merge if TRULY identical."""
 
 
+_TOOL_SCHEMA_SUPPLEMENT = {
+    "name": "catalogue_cleanup_plan",
+    "description": "Produce a cleanup plan for the supplements catalogue: duplicate supplement entries to merge.",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "groups": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "kind": {"type": "string", "enum": ["duplicate_supplements"]},
+                        "canonical": {"type": "string"},
+                        "members": {"type": "array", "items": {"type": "string"}, "minItems": 2},
+                        "reason": {"type": "string"},
+                    },
+                    "required": ["kind", "canonical", "members", "reason"],
+                },
+            },
+        },
+        "required": ["groups"],
+    },
+}
+
+
+_SYSTEM_SUPPLEMENT = """You are auditing a functional medicine catalogue. Each \
+Supplement is supposed to be a SINGLE distinct compound or formulation (e.g. \
+magnesium-glycinate, vitamin-d3, ashwagandha, n-acetyl-cysteine).
+
+Find DUPLICATES — multiple supplement slugs covering the SAME compound. \
+Pick the canonical (cleanest name, richest data, most aliases / sources). \
+
+Concrete examples of TRUE duplicates:
+- vitamin-c + ascorbic-acid + vitamin-c-ascorbic-acid — same compound.
+- magnesium-glycinate + magnesium-bisglycinate — synonymous forms.
+- omega-3 + omega-3-fatty-acids + fish-oil-omega-3 — usually same supplement.
+- n-acetyl-cysteine + nac + n-acetylcysteine — same.
+- vitamin-b12 + methylcobalamin + cyanocobalamin — DIFFERENT forms; keep separate.
+- magnesium-glycinate ≠ magnesium-citrate ≠ magnesium-malate — different forms,
+  different bioavailability/uses; KEEP SEPARATE.
+
+Be conservative. Different FORMS of the same nutrient (citrate vs glycinate vs
+oxide, methylcobalamin vs cyanocobalamin, d2 vs d3) are usually DIFFERENT
+supplements with different clinical uses — do not merge. Only merge when slugs
+clearly refer to the IDENTICAL compound (synonyms, plural/singular, hyphenation,
+common-name vs chemical-name pairs)."""
+
+
 def main() -> int:
     _load_env()
 
@@ -342,12 +390,12 @@ def main() -> int:
     dry_run = bool(payload.get("dry_run", False))
     limit = payload.get("limit")
     kind = (payload.get("kind") or "topic").strip().lower()
-    if kind not in {"topic", "mechanism", "symptom"}:
+    if kind not in {"topic", "mechanism", "symptom", "supplement"}:
         json.dump({"ok": False, "error": f"unsupported kind: {kind}"}, sys.stdout)
         return 1
 
     root = _catalogue_root()
-    kind_dir = {"topic": "topics", "mechanism": "mechanisms", "symptom": "symptoms"}[kind]
+    kind_dir = {"topic": "topics", "mechanism": "mechanisms", "symptom": "symptoms", "supplement": "supplements"}[kind]
     entities = _load_entity_summaries(root / kind_dir)
 
     # Cross-kind reference lists only needed for topic mode.
@@ -406,7 +454,7 @@ def main() -> int:
             ctx_lines.append(f"- ... + {len(symptoms_ref) - 200} more (omitted)")
         ctx_lines.append("")
 
-    header_label = {"topic": "TOPICS", "mechanism": "MECHANISMS", "symptom": "SYMPTOMS"}[kind]
+    header_label = {"topic": "TOPICS", "mechanism": "MECHANISMS", "symptom": "SYMPTOMS", "supplement": "SUPPLEMENTS"}[kind]
     ctx_lines.append(f"# {header_label} TO AUDIT ({len(entities)} total)")
     ctx_lines.append("")
     for t in entities:
@@ -424,18 +472,20 @@ def main() -> int:
         "topic": _SYSTEM_TOPIC,
         "mechanism": _SYSTEM_MECHANISM,
         "symptom": _SYSTEM_SYMPTOM,
+        "supplement": _SYSTEM_SUPPLEMENT,
     }[kind]
     tool_schema = {
         "topic": _TOOL_SCHEMA_TOPIC,
         "mechanism": _TOOL_SCHEMA_MECHANISM,
         "symptom": _TOOL_SCHEMA_SYMPTOM,
+        "supplement": _TOOL_SCHEMA_SUPPLEMENT,
     }[kind]
 
     aclient = Anthropic(api_key=api_key)
     try:
         with aclient.messages.stream(
             model="claude-haiku-4-5",
-            max_tokens=8192,
+            max_tokens=16384,
             system=system_prompt,
             tools=[tool_schema],
             tool_choice={"type": "tool", "name": "catalogue_cleanup_plan"},
@@ -453,7 +503,8 @@ def main() -> int:
             break
 
     if not tool_input:
-        json.dump({"ok": False, "error": "model did not return tool_use block"}, sys.stdout)
+        stop_reason = getattr(resp, "stop_reason", "unknown")
+        json.dump({"ok": False, "error": f"model did not return tool_use block (stop_reason={stop_reason})"}, sys.stdout)
         return 1
 
     raw_groups = tool_input.get("groups") or []

@@ -32,7 +32,12 @@ sources:
 - id: vitaone-health-coaching-toolkit
   location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
   quote: 'Repair: Zinc l-carnosine, aloe vera.'
+- id: vitaone-gut-cheatsheet
+  location: H. Pylori Infection Cheatsheet — Gut Healing Nutrients
+  quote: 'Aloe vera extract: 1–2 oz juice or 300 mg capsule/day'
 version: 2
 status: active
 updated_at: '2026-05-04'
 updated_by: shivani
+aliases:
+- aloe-vera-extract

@@ -59,10 +59,11 @@ _HIGH_CONFIDENCE_REASON_PATTERNS = [
 
 def _target_dir(kind: str) -> Path:
     return DATA / {
-        "topic":     "topics",
-        "protocol":  "protocols",
-        "mechanism": "mechanisms",
-        "symptom":   "symptoms",
+        "topic":      "topics",
+        "protocol":   "protocols",
+        "mechanism":  "mechanisms",
+        "symptom":    "symptoms",
+        "supplement": "supplements",
     }.get(kind, "topics")
 
 
@@ -104,12 +105,13 @@ def classify(group: dict) -> tuple[str, str]:
         return "dismiss", "<2 members — nothing to merge"
 
     # --- AUTO rules -------------------------------------------------------
-    if kind in ("duplicate_topics", "duplicate_mechanisms", "duplicate_symptoms"):
+    if kind in ("duplicate_topics", "duplicate_mechanisms", "duplicate_symptoms", "duplicate_supplements"):
         # Map kind → entity-kind for slug-existence lookups
         entity_kind = {
             "duplicate_topics":     "topic",
             "duplicate_mechanisms": "mechanism",
             "duplicate_symptoms":   "symptom",
+            "duplicate_supplements": "supplement",
         }[kind]
 
         if kind == "duplicate_topics":

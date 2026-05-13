@@ -27,7 +27,12 @@ sources:
 - id: vitaone-health-coaching-toolkit
   location: Building a Better Smoothie — Base Liquids
   quote: Hawthorne, dried – 2 T
+- id: vitaone-cv-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
+  quote: Hawthorne berry extract
 version: 1
 status: active
 updated_at: '2026-05-04'
 updated_by: shivani
+aliases:
+- hawthorn-berry-extract
