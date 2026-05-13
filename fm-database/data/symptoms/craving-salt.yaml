@@ -1,9 +1,13 @@
 slug: craving-salt
 display_name: Salt Cravings
 aliases:
-- craving salty foods
-- craving pretzels or pickles
 - salty food cravings
+- craving pretzels or pickles
+- craving salty foods
+- salt-cravings
+- sodium craving
+- salt-craving
+- electrolyte craving
 category: metabolic
 severity: common
 description: Intense craving for salty foods, associated with low cortisol and aldosterone
@@ -17,6 +21,13 @@ sources:
 - id: vitaone-adrenal-toolkit
   location: 'HPA Axis Questionnaire — Section 1: Low cortisol state'
   quote: Craving salty foods-pretzels, pickles etc.
+- id: vitaone-health-coaching-toolkit
+  location: 'HPA Axis Questionnaire — Section 1: Low cortisol state'
+  quote: Craving salty foods-pretzels, pickles etc.
+- id: vitaone-adrenal-cheatsheet
+  location: 50 Hormones Cheatsheet — Cortisol row (p.4)
+  quote: '↓ Fatigue, low BP, salt craving, Addison''s-like. Solution: Salt, Vit C,
+    adrenal support (B5, licorice).'
 version: 1
 status: active
 updated_at: '2026-05-02'

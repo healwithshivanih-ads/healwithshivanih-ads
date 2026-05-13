@@ -26,7 +26,18 @@ sources:
 - id: vitaone-health-coaching-toolkit
   location: Building a Better Smoothie — Base Liquids
   quote: Green tea, loose – 4 T
+- id: vitaone-liver-detox-cheatsheet
+  location: Top Superfoods for Detoxification
+  quote: Polyphenols upregulate Nrf2 pathway → enhances antioxidant enzymes (SOD,
+    catalase, GSH).
+- id: coconote-fm-sex-hormones
+  location: Steroidogenesis Pathway — Aromatase Activity
+  quote: The one solution that we can do is give a green tea, right. Green tea is
+    an actual decrease of aromatase activity which will reduce the estrogen dominance
+    inside the body.
 version: 1
 status: active
 updated_at: '2026-05-04'
 updated_by: shivani
+aliases:
+- green-tea-egcg

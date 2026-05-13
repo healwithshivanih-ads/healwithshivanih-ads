@@ -1,41 +1,48 @@
 slug: bloating
 display_name: Bloating
 aliases:
-- belly bloat
-- stomach distension
-- gut distension
-- gassy
-- abdominal distension
-- abdominal distension from stress
-- belly-swelling
-- gassy abdomen
-- distended abdomen
-- puffy-belly
-- abdominal bloating
-- gut-bloat
-- post-meal discomfort
-- belly bloating
-- gassiness
-- gassy and bloated
-- post-meal bloating
-- feeling-puffy
-- abdominal discomfort
-- belly-distension
-- stomach bloating
-- bloated
-- puffy belly
-- gassy stomach
-- gas and bloat
-- feeling full
-- stomach bloat
-- gassy belly
-- gassy feeling
-- distension
 - feeling full and gassy
-- gas and bloating
-- belly swelling
+- puffy belly
 - persistent bloating
+- abdominal bloating
+- abdominal distension
+- puffy-belly
+- belly-distension
+- gut distension
+- gas and bloating
+- gassy stomach
+- abdominal discomfort
+- gassy belly
+- gas and bloat
+- gassy and bloated
+- gut-bloat
+- belly-swelling
+- post-meal discomfort
+- stomach distension
+- distended abdomen
+- abdominal distension from stress
+- post-meal bloating
+- belly swelling
+- belly bloating
+- gassy abdomen
+- feeling full
+- stomach bloating
+- gassy feeling
+- gassy
+- feeling-puffy
+- belly bloat
+- stomach bloat
+- bloated
 - feeling full and tight
+- distension
+- gassiness
+- ibs-bloating-gut-symptoms
+- bloated belly
+- poor digestion
+- stomach pain
+- food sensitivities
+- low stomach acid
+- loose stools
 category: gi
 severity: common
 description: Abdominal fullness, distension, or gassiness commonly triggered by FODMAP
@@ -220,6 +227,11 @@ sources:
   location: POST https://www.instagram.com/p/DXbyLyYjP__/
   quote: Fruit-triggered bloating often reflects fructose malabsorption or microbial
     overgrowth
+- id: vitaone-fm-adrenal-hormones
+  location: Symptoms Discussed
+  quote: IBS, IBD, gut dysmotility, bloating, poor digestion, low stomach acid, and
+    food sensitivities — Linked to stress, serotonin, gastrin, secretin, CCK, gut-brain
+    disruption, vagal tone reduction, and dysbiosis.
 version: 29
 status: active
 updated_at: '2026-05-05'

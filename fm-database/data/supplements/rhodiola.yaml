@@ -28,6 +28,28 @@ sources:
 - id: vitaone-inflammation-cheatsheet
   location: Inflammation Cheatsheet — Page 02
   quote: Use adaptogens (ashwagandha, rhodiola)
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Rhodiola Rosea - Adaptogen, mental performance - 200–500 mg/day - Morning
+    or before stress events
+- id: vitaone-thyroid-cheatsheet
+  location: Clinical Action Steps — Reduce Reverse T3
+  quote: Adaptogens (ashwagandha, rhodiola), magnesium Glycinate, good sleep hygiene
+- id: vitaone-sex-hormones-cheatsheet
+  location: Progesterone Is Anti-Inflammatory — Supplement Approach
+  quote: Adaptogens (Ashwagandha, Rhodiola) → Support HPA axis and ovulation.
+- id: vitaone-adrenal-cheatsheet
+  location: Functional Medicine Interventions — Loneliness section (p.19)
+  quote: Adaptogens (Rhodiola, Ashwagandha), Liposoma/Buffered Vitamin C, Active B5,
+    lifestyle circadian repair.
+- id: vitaone-health-coaching-toolkit
+  location: Key Nutrients & Botanicals for Emotional Healing Support
+  quote: 'Adaptogens (Ashwagandha, Rhodiola): Regulate HPA axis response. Fatigue,
+    burnout, adrenal imbalance.'
+- id: vitaone-health-coaching-cheatsheet
+  location: Why Emotional Healing Is Important in Chronic Diseases
+  quote: 'Adrenal support: adaptogens (ashwagandha, rhodiola), breathwork, morning
+    sunlight, magnesium, sleep hygiene.'
 version: 1
 status: active
 updated_at: '2026-05-02'
@@ -36,3 +58,5 @@ pregnancy_safety: caution
 lactation_safety: caution
 pregnancy_safety_note: Insufficient pregnancy safety data; use only with clinician
   oversight.
+aliases:
+- rhodiola-rosea

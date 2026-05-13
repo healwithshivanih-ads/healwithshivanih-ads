@@ -1,11 +1,13 @@
 slug: dyslipidemia
 display_name: Dyslipidemia
 aliases:
-- high cholesterol
-- elevated LDL
 - high triglycerides
 - low HDL
 - abnormal lipid panel
+- high cholesterol
+- elevated LDL
+- dyslipidemia-symptoms
+- abnormal lipids
 category: metabolic
 severity: common
 description: Abnormal lipid profile including elevated total cholesterol, LDL, VLDL,
@@ -25,6 +27,10 @@ sources:
   location: Cholesterol profile overview
   quote: You see many patients who either came to the pipe cholesterol or either they
     come to you or they are already taking the statin drug.
+- id: vitaone-cardiometabolic-recipes
+  location: Lemony Steamed Fish
+  quote: 1 small fish (like sardine, mackerel, or a fillet of salmon/herring — about
+    100–120g)
 version: 1
 status: active
 updated_at: '2026-05-05'

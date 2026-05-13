@@ -37,7 +37,19 @@ sources:
   location: Candida Infection — Supplement Stack
   quote: Oregano Oil (Carvacrol ≥ 70%) — 100–200 mg softgel, 2x/day — Broad-spectrum
     antifungal; strong against resistant Candida
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Removal Section
+  quote: garlic oil, berberine, OOC, oil of oregano, and oleoleflexic, they are the
+    blood spectrum. And they are effective against migraines, they are effective against
+    your fungus, and also they are effective against your parasite.
+- id: coconote-fm-sibo-sifo
+  location: Antimicrobial / Antifungal Herbal Section
+  quote: oil of oregano, garlic oil, Indian barberry root extract, right? All of these
+    basically are responsible, even amla itself, they are all responsible for healing
+    down the gut.
 version: 1
 status: active
 updated_at: '2026-05-02'
 updated_by: shivani
+aliases:
+- oil-of-oregano

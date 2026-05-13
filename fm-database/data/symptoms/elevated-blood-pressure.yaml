@@ -3,6 +3,12 @@ display_name: Elevated Blood Pressure
 aliases:
 - high blood pressure
 - BP elevation
+- high-blood-pressure
+- elevated blood pressure
+- elevated BP
+- high BP
+- HTN
+- blood pressure too high
 category: cardiovascular
 severity: concerning
 description: Blood pressure above normal ranges, associated with increased risk of
@@ -23,6 +29,18 @@ sources:
   location: Blood Pressure Section
   quote: With every 10 millimeter decrease in blood pressure, we get a 20% decrease
     in stroke or heart disease.
+- id: vitaone-cardiometabolic-toolkit
+  location: Intermittent Fasting — Fasting Mimicking Diet
+  quote: This 5-day, very low-calorie, low carbohydrate, structured food plan has
+    been shown in a limited number of studies to improve body composition and lower
+    blood pressure after three consecutive cycles (3 months).
+- id: vitaone-health-coaching-toolkit
+  location: Intermittent Fasting — summary table
+  quote: 'Improves: Blood pressure'
+- id: vitaone-cvs-risk-assessment
+  location: Progress (Slide 25)
+  quote: 'Insulin Resistance improved : HbA1c Reduced, Hypertension controlled, Lipid
+    Profile Improved'
 version: 1
 status: active
 updated_at: '2026-05-05'

@@ -26,7 +26,26 @@ sources:
   location: Dental Amalgam Removal Protocol; Nutrients for Phase 1 and Phase 2 Detoxification
   quote: 'B-complex vitamins... PHASE I Nutrients Used: Riboflavin (Vit B2), Niacin
     (Vit B3), Pyridoxine (Vit B6), Folic acid, Vitamin B12'
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet — 6 Ways to Overcome MTHFR
+  quote: Use Activated Nutrients – Always choose methylated or coenzyme forms.
+- id: vitaone-thyroid-ebook
+  location: 'Chapter 9: Targeted Supplements'
+  quote: 'B-complex vitamins: Needed for methylation and energy metabolism.'
+- id: vitaone-blood-sugar-ebook
+  location: Section 7.2 — Targeted Supplementation
+  quote: 'B-complex- B12, B9: Supports methylation; lowers homocysteine. B12- 1500mcg,
+    B9- 100mg.'
+- id: coconote-fm-intestinal-permeability
+  location: 5R Protocol – Repair
+  quote: Vitamin D and all the B vitamins are important.
+- id: coconote-fm-intestinal-permeability-anish
+  location: 5R Protocol — Repair
+  quote: Vitamin D and all the B vitamins are important.
 version: 1
 status: active
 updated_at: '2026-05-04'
 updated_by: shivani
+aliases:
+- b-complex
+- b-vitamins-complex

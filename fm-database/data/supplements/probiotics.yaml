@@ -82,6 +82,35 @@ sources:
   location: Gut Health and Estrogen Management
   quote: Probiotics rich food, these can be included in the diet as well when it comes
     to managing the microbial health of the gut.
+- id: coconote-fm-chronic-pain-fatigue
+  location: Supplements Section
+  quote: incorporating a good quality probiotic and help to turn them into powder
+    I'm sure you have learned in your course and when you are talking about the supplement
+    it has to be the high quality not from the Amazon buying.
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Probiotics (multi-strain) - Gut health, immunity, digestion - 10–50 billion
+    CFU/day - Empty stomach or bedtime
+- id: vitaone-thyroid-cheatsheet
+  location: What Nutritionists/Health Coaches Miss — Ignore Gut Health
+  quote: Repair gut with probiotics, prebiotics, L-glutamine, and zinc carnosine
+- id: vitaone-sex-hormones-cheatsheet
+  location: Estrogen Dominance Supplement Cheatsheet
+  quote: 'Probiotics (L. Rhamnosus, B. Longum): Rebalances estrobolome; reduces β-glucuronidase;
+    Daily; choose multi-strain for gut symptoms.'
+- id: vitaone-adrenal-cheatsheet
+  location: The Anti-Stress Hormones / Clinical Interventions (p.22, p.12)
+  quote: 'Heal gut microbiome; add probiotics (L. plantarum, B. longum). Gut–Brain
+    Axis Repair: Restore microbial + vagal health. Polyphenols, Prebiotics, Butyrate,
+    Mindful eating.'
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Gut Dysbiosis
+    / Endotoxemia
+  quote: Probiotic (10–50B CFU)
+- id: vitaone-gut-cheatsheet
+  location: Gut Health Cheatsheet — Gut Dysbiosis
+  quote: Broad-spectrum probiotics, Prebiotics, Polyphenols, Butyrate — Balance =
+    feed good microbes, not just kill bad ones. Diet is key.
 version: 7
 status: active
 updated_at: '2026-05-05'
@@ -90,3 +119,7 @@ pregnancy_safety: likely_safe
 lactation_safety: likely_safe
 pregnancy_safety_note: Most strains well-tolerated. Lactobacillus + Bifidobacterium
   standard. Some evidence reduces postpartum eczema in baby.
+aliases:
+- probiotic
+- probiotic-multi-strain
+- broad-spectrum-probiotics

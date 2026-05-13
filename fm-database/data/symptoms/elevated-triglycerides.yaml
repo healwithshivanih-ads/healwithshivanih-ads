@@ -2,9 +2,14 @@ slug: elevated-triglycerides
 display_name: Elevated Triglycerides
 aliases:
 - high TG
-- hypertriglyceridemia
 - high triglycerides
+- hypertriglyceridemia
 - high blood fats
+- high-triglycerides
+- hypertriglyceridaemia
+- elevated blood fats
+- elevated TG
+- raised blood fats
 category: metabolic
 severity: concerning
 description: Elevated serum triglycerides (>175 mg/dL is a risk-enhancing factor;
@@ -41,6 +46,17 @@ sources:
   location: Risk-Enhancing Factors
   quote: Triglycerides greater than 175, LDL greater than 160, ApoB greater than 30,
     high LP little a, metabolic syndrome.
+- id: vitaone-health-coaching-toolkit
+  location: Intermittent Fasting — summary table
+  quote: 'Decreases: Triglycerides'
+- id: vitaone-cvs-risk-assessment
+  location: Lab Results (Slide 16)
+  quote: Studies have implicated triglycerides in the progression of coronary atherosclerosis
+- id: coconote-fm-biomarkers-cvs
+  location: Metabolic Dysfunction
+  quote: the liquid abnormal lipid-decafnanol metabolism function is actually high
+    triglyceride and low STL. So if we just look at the ratio of triglyceride versus
+    STL, you can find out the insulin resistance.
 version: 4
 status: active
 updated_at: '2026-05-05'

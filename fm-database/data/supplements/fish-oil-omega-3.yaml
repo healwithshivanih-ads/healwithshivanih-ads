@@ -75,7 +75,47 @@ sources:
   quote: Omega-3 fatty acids (EPA & DHA) are used by mitochondria to produce energy.
     Both EPA and DHA reduce inflammation, which indirectly protects the health of
     mitochondria.
+- id: coconote-fm-omega-3-fatty-acids
+  location: Omega-3 Supplementation Recommendations Slide
+  quote: EPA and DHA supplementation is an effective lifestyle strategy for CVD prevention...3
+    to 6 grams per day would be effective. Greater than 7 grams is not efficient.
+    Less than 1.5 grams is also not effective.
+- id: vitaone-health-coaching-toolkit
+  location: Estrogen Metabolism — Promotes Healthy Estrogen Metabolism
+  quote: Omega 3 fats from fish, fish oil, and flax have been shown to reduce levels
+    of inflammation in the body, which may indirectly support healthy estrogen metabolism.
+- id: vitaone-gut-toolkit
+  location: 'Gut-Brain Axis: Nutrition''s Impact on Mental Health — Omega-3 Fatty
+    Acids'
+  quote: Omega-3 fatty acids, found in fatty fish (salmon, mackerel, sardines) & plant
+    sources like flaxseeds & walnuts, have potent anti-inflammatory properties.
+- id: vitaone-inflammation-cheatsheet
+  location: Inflammation Cheatsheet — Page 02
+  quote: Omega-3 (2–3g/day)
+- id: vitaone-sex-hormones-toolkit
+  location: Estrogen Metabolism — Page 02
+  quote: Omega 3 fats from fish, fish oil, and flax have been shown to reduce levels
+    of inflammation in the body, which may indirectly support healthy estrogen metabolism.
+- id: coconote-fm-chronic-pain-fatigue
+  location: Supplements Section
+  quote: High-quality omega-3 are my biggest example. I'm taking at least four grams
+    that Dr. Musa recommended me.
+- id: coconote-fm-approach-inflammation
+  location: Diet – Omega-3 Supplementation Protocol
+  quote: our therapeutic dose is more than two grams. So don't just assume that you
+    prescribe the 180 or 300 milligram of capsule once a day, and the patient will
+    have an anti-inflammatory effect.
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Omega-3 and vaginal microbiome discussion
+  quote: Fish oil plays a big role in the vaginal microbiome, so much so that if a
+    woman takes omega-3s during pregnancy, the likelihood of premature labor drops
+    precipitously.
 version: 7
 status: active
 updated_at: '2026-05-02'
 updated_by: shivani
+aliases:
+- epa-dha-fish-oil
+- fish-oil-epa-dha
+- fish-oil
+- omega-3-fish-oil

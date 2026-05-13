@@ -1,10 +1,19 @@
 slug: blood-sugar-dysregulation
 display_name: Blood Sugar Dysregulation
 aliases:
-- unbalanced blood sugar
 - glucose fluctuation
-- blood sugar swings
 - pre-diabetes symptoms
+- unbalanced blood sugar
+- blood sugar swings
+- blood-sugar-spikes
+- postprandial glucose spike
+- sugar crash
+- energy crash after eating
+- glucose surge
+- glucose-spikes
+- blood sugar spikes
+- postprandial hyperglycemia
+- energy crash after meals
 category: metabolic
 severity: concerning
 description: Unstable or impaired fasting glucose and post-meal glucose responses,
@@ -21,6 +30,10 @@ sources:
 - id: vitaone-health-coaching-toolkit
   location: Intermittent Fasting — summary table
   quote: 'Improves: Blood sugar metabolism'
+- id: vitaone-blood-sugar-toolkit
+  location: Antigravity Exercises
+  quote: This exercise helps decrease glucose spikes by 30-50%, builds strong ankles,
+    strengthens feet, and improves blood circulation and lymph flow.
 version: 1
 status: active
 updated_at: '2026-05-04'

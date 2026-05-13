@@ -28,7 +28,12 @@ sources:
 - id: vitaone-cardiometabolic-toolkit
   location: Intermittent Fasting — Personalized Recommendations
   quote: Electrolytes (calcium, magnesium, sodium, potassium, chloride)
+- id: vitaone-health-coaching-toolkit
+  location: Intermittent Fasting — Personalized Recommendations
+  quote: Electrolytes (calcium, magnesium, sodium, potassium, chloride)
 version: 1
 status: active
 updated_at: '2026-05-02'
 updated_by: shivani
+aliases:
+- electrolyte-blend

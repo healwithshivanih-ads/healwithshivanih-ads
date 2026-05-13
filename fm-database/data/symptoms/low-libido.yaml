@@ -1,18 +1,19 @@
 slug: low-libido
 display_name: Low Libido / Loss of Interest in Sex
 aliases:
-- reduced sex drive
-- low sexual desire
 - decreased sex drive
-- low sex drive
-- reduced libido
-- reduced fertility
-- reproductive effects of stress
 - loss of sexual interest
-- low desire
-- reduced sexual desire
 - loss of interest in sex
+- reduced fertility
+- low desire
 - sexual dysfunction
+- low sexual desire
+- low sex drive
+- reproductive effects of stress
+- reduced sex drive
+- reduced sexual desire
+- reduced libido
+- decreased-libido
 category: hormonal
 severity: common
 description: Decreased sexual desire associated with declining estrogen, progesterone,
@@ -58,6 +59,10 @@ sources:
   location: Symptoms of Menopause Transition
   quote: loss of interest in sex, mood changes, sleep disturbances, forgetfulness,
     headache, backache
+- id: vitaone-sex-hormones-toolkit
+  location: Sex Hormone Binding Globulin (SHBG) — Page 01
+  quote: This can cause symptoms associated with testosterone deficiency, including
+    fatigue, decreased libido, weight gain, mood changes, decreased muscle mass.
 version: 6
 status: active
 updated_at: '2026-05-05'

@@ -112,7 +112,88 @@ sources:
   location: Vitamin D and vaginal microbiome discussion
   quote: Getting vitamin D to a healthy level. I aim for 60 to 70 nanograms per milliliter.
     Also shifts the vaginal microbiome to favor crispatus.
+- id: vitaone-evidence-tiers
+  location: TOPIC 3 — PCOS / Claim 4 (Vitamin D range debate)
+- id: vitaone-practice-guide
+  location: Autoimmune & Inflammation sections
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Vitamin D3 + K2 - Bone health, immune support, hormone balance - 2000–5000
+    IU/day - Morning or afternoon with meal or small meal
+- id: vitaone-thyroid-cheatsheet
+  location: Thyroid Disorders Cheatsheet — Anti-TPO Clinical Action Steps
+  quote: Gluten-free diet, gut repair (L-glutamine, probiotics), vitamin D optimization
+- id: vitaone-sex-hormones-cheatsheet
+  location: PCOS Supplement Cheatsheet
+  quote: 'Vitamin D3: Regulates AMH, insulin, and ovarian receptors; Better ovulation
+    and mood; Keep levels 50–80 ng/mL; 2000–5000 IU/day.'
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Chronic Inflammation
+  quote: Vitamin D3 (50–70 ng/mL)
+- id: vitaone-liver-detox-cheatsheet
+  location: Liver Disease Cheatsheet — Viral Hepatitis
+  quote: Vitamin D, Zinc, Omega-3, Silymarin
+- id: vitaone-thyroid-toolkit
+  location: Nutrient Optimization
+  quote: 'Vitamin D: Deficiency is common in autoimmune diseases; supplementation
+    may help modulate the immune response.'
+- id: vitaone-sex-hormones-toolkit
+  location: Sex Hormone Binding Globulin (SHBG) — Page 01
+  quote: Vitamin D [Increases SHBG — Medications and Supplements]
+- id: vitaone-inflammation-toolkit
+  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
+  quote: Vitamin D enhances immune system function, reduces viral growth, and can
+    reduce upper respiratory infections.
+- id: vitaone-cv-toolkit
+  location: Cardiovascular Drugs and Potential Nutrient Deficiency
+  quote: 'HMG-CoA Reductase: ...Vitamin D'
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Vitamin D'
+  quote: In some instances, optimal vitamin D levels can only be achieved with supplementation.
+    Your functional medicine practitioner may suggest supplementing above the RDA
+    based upon laboratory values, your individual health concerns, and other factors.
+- id: coconote-fm-calcium-deficiency
+  location: Causes of High Serum Calcium
+  quote: Low vitamin D high dose supplementation. So in conventional medicine, you
+    can see 60,000 IU of vitamin D that most doctors prescribe, but I don't believe
+    that we should prescribe vitamin D in high doses for vitamin D deficiency. For
+    deficiency of vitamin D, we should consider a low dose, maybe 5,000, 10,000 IU
+    a day.
+- id: coconote-fm-intestinal-permeability
+  location: 5R Protocol – Repair
+  quote: Vitamin D and all the B vitamins are important.
+- id: coconote-fm-intestinal-permeability-anish
+  location: 5R Protocol — Repair
+  quote: Vitamin D and all the B vitamins are important.
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Micronutrients in Clinical Practice
+  quote: Every one of my patients leaves the office with vitamin D, vitamin K.
+- id: coconote-fm-sibo-sifo
+  location: GI Map / Nutritional Analysis
+  quote: Fix the base foundation of the body first. Please do not go into the complexities
+    of the patient... let us fix on the vitamin D, folate first, I guess 40% of this
+    or her problem will be solved.
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Natural alternatives to statins section
+  quote: We can use the nutrition like vitamin D and magnesium. We can be like the
+    home city level.
+- id: ask-expert-hormonal-health-bhrt
+  location: Vitamin D and Gene Signaling
+  quote: The only other thing that can signal genes is vitamin D... regularity of
+    supplementation of vitamin D is more effective than episodic supplementation of
+    vitamin D. There's lots of papers on that.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXjjIqJjMSR/
+  quote: Every statin that lowers cholesterol also drains CoQ10 and vitamin D.
+- id: coconote-fm-vitamin-d3-k2
+  location: Vitamin D Supplementation Dosing
+  quote: Anybody whose BMI is under the age of 30 requires in the times of deficiency
+    requires at least 6000 international units per day with the maintenance that can
+    be achieved at 15,000 to 2000 international units per day.
 version: 11
 status: active
 updated_at: '2026-05-05'
 updated_by: shivani
+aliases:
+- vitamin-d
+- vitamin-d3-supplement

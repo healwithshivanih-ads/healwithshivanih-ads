@@ -1,9 +1,13 @@
 slug: white-tongue-coating
 display_name: White Tongue Coating
 aliases:
-- coated tongue
-- oral thrush sign
 - tongue fur
+- oral thrush sign
+- coated tongue
+- white-coating-on-tongue
+- oral thrush
+- tongue coating
+- white tongue
 category: gi
 severity: common
 description: White or creamy coating on the tongue, indicative of oral or intestinal
@@ -20,6 +24,11 @@ sources:
   location: Infection Triggers – Fungal Infection
   quote: if you see the white coating in your tongue, the white coating is also the
     sign of fungal infection.
+- id: coconote-fm-sibo-sifo
+  location: SIFO Clinical Signs
+  quote: If there is a white plastic sign, white coating on the tongue, the patient
+    may come with that particular sign. It's definitely to cover diaclosing the patient
+    is having C4.
 version: 1
 status: active
 updated_at: '2026-05-05'

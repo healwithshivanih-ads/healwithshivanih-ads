@@ -27,7 +27,13 @@ sources:
   location: The 5R Framework for Gut Restoration — Reinoculate
   quote: Another good prebiotic source is a supplement called 'fructo-oligosaccharide'
     or FOS.
+- id: vitaone-health-coaching-toolkit
+  location: The 5R Framework for Gut Restoration
+  quote: Another good prebiotic source is a supplement called 'fructo-oligosaccharide'
+    or FOS.
 version: 1
 status: active
 updated_at: '2026-05-02'
 updated_by: shivani
+aliases:
+- fos-prebiotic-supplement

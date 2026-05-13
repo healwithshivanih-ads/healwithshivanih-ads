@@ -33,7 +33,28 @@ sources:
 - id: vitaone-cv-cheatsheet
   location: Dyslipidemia Cheatsheet — Section 5
   quote: 'Niacin: ↑HDL, ↓Lp(a) (monitor liver enzymes).'
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin B3 (Niacin)
+  quote: 'Typical doses: 100–2000 mg depending on use. Higher doses should be balanced
+    with methylation support.'
+- id: vitaone-cvs-risk-assessment
+  location: Nutrition supplements (Slide 21)
+  quote: 'The Nutritional parameters of the patient were corrected with the following
+    supplements: 5. B3'
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Niacin for HDL and Triglycerides
+  quote: Niacin 11 trials over 9,000 people 34 reduction in cardiac events cardiovascular
+    disease 25 reduction in major events. What does niacin do raises HDL lowest triglycerides
+    lowest LDL-P.
+- id: coconote-fm-approach-inflammation
+  location: Nutrition – Anti-Inflammatory Vitamins
+  quote: Vitamin C is anti-inflammatory, vitamin B3 is anti-inflammatory, and vitamin
+    B6 is anti-inflammatory.
 version: 1
 status: active
 updated_at: '2026-05-02'
 updated_by: shivani
+aliases:
+- niacin-b3
+- niacin-vitamin-b3
+- vitamin-b3-niacin

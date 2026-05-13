@@ -1,10 +1,19 @@
 slug: chemical-sensitivities
 display_name: Multiple Chemical Sensitivities
 aliases:
-- chemical sensitivity
-- MCS
-- toxin sensitivities
 - environmental sensitivities
+- chemical sensitivity
+- toxin sensitivities
+- MCS
+- chemical-sensitivity
+- multiple chemical sensitivity
+- toxic reactivity
+- environmental intolerance
+- reacting to smells or chemicals
+- blood reactions
+- chemical reactions
+- xenobiotic sensitivity
+- drug intolerance
 category: other
 severity: concerning
 description: Heightened reactivity to environmental chemicals, often associated with
@@ -24,6 +33,14 @@ sources:
 - id: vitaone-liver-detox-cheatsheet
   location: Methylation & MTHFR Cheatsheet — Who Should You Test
   quote: Detoxification issues (multiple chemical sensitivities)
+- id: coconote-fm-liver-detox-part1
+  location: CYP450 Genetic Variation Examples
+  quote: those patients who have hypersensitivity of any drug reaction, just think
+    about they have some kind of genetic variation in the phase one pathway.
+- id: coconote-fm-liver-detox-part2
+  location: History & Environmental Exposure Section
+  quote: If the patient is having any kind of blood reaction or chemical reaction,
+    that means there is some kind of genetic variation in their phase 1 enzymes.
 version: 1
 status: active
 updated_at: '2026-05-02'

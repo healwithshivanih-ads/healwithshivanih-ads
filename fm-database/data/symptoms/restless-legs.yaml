@@ -1,13 +1,18 @@
 slug: restless-legs
 display_name: Restless Legs Syndrome
 aliases:
-- RLS
-- restless legs
 - legs won't stay still at night
+- RLS
 - creeping leg sensation
-- leg restlessness at night
-- restless leg
 - legs need to move at night
+- restless legs
+- restless leg
+- leg restlessness at night
+- restless-leg-syndrome
+- rls
+- leg restlessness
+- calf dragging sensation
+- willis-ekbom disease
 category: neurological
 severity: common
 description: Uncomfortable urge to move legs at rest, strongly associated with brain
@@ -36,6 +41,11 @@ sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXy9b_KjJT2/
   quote: Restless legs and anxiety linked to brain iron deficiency
+- id: coconote-fm-magnesium-deficiency
+  location: Musculoskeletal system
+  quote: There is excessive accumulation of calcium at the level of the calf muscles
+    which increase the contractility giving you a dragging sensation at the level
+    of the calf muscles.
 version: 3
 status: active
 updated_at: '2026-05-05'

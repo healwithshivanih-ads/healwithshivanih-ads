@@ -1,38 +1,39 @@
 slug: joint-pain
 display_name: Joint Pain
 aliases:
-- joint pain
-- arthralgia
-- achy-joints
-- joint-aches
-- joint-stiffness
-- joint stiffness
-- morning stiffness
-- joint aches
-- muscle and joint pain
-- knee pain
-- achy joints
-- stiff joints
-- arthritis pain
-- muscle cramps
-- arthritis
 - achy muscles
-- muscle weakness
-- muscle stiffness
+- arthritis
+- joint aching
+- muscle and joint pain
+- morning stiffness
+- muscle cramps
+- swollen joints
+- rheumatic pain
+- knee pain
+- joint aches
+- joint stiffness
+- sore joints
+- arthritis pain
+- muscle pain
 - tingling in joints
 - joint inflammation
-- joint aching
-- joint discomfort
-- arthralgias
-- swollen joints
-- sore joints
-- joint swelling
-- rheumatic pain
+- joint-aches
 - inflamed joints
-- aches and pains
-- muscle pain
-- gout
+- joint discomfort
+- muscle weakness
+- joint pain
+- stiff joints
+- arthralgia
+- joint swelling
 - musculoskeletal pain
+- gout
+- muscle stiffness
+- joint-stiffness
+- aches and pains
+- achy joints
+- arthralgias
+- achy-joints
+- joint-pain-stiffness
 category: musculoskeletal
 severity: common
 description: Diffuse joint or muscle pain associated with systemic endotoxemia from
@@ -152,6 +153,9 @@ sources:
 - id: ask-expert-womens-health-vaginal-microbiome
   location: SIBO symptoms discussion
   quote: You've got SIBO, you've got bloating and diarrhea and joint pain and anxiety.
+- id: coconote-fm-food-allergies-sensitivities
+  location: IgG Symptoms Section
+  quote: we have seen stiffness, itching after one or two days we see
 version: 17
 status: active
 updated_at: '2026-05-05'

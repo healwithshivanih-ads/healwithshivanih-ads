@@ -1,10 +1,16 @@
 slug: intestinal-dysbiosis-symptoms
 display_name: Intestinal Dysbiosis
 aliases:
-- gut imbalance
+- gut flora imbalance
 - bad gut bacteria
 - microbiome disruption
-- gut flora imbalance
+- gut imbalance
+- bloating-diarrhea-food-sensitivities
+- chronic diarrhea
+- loose stools
+- new food sensitivities
+- gut symptoms
+- GI distress
 category: gi
 severity: concerning
 description: Imbalance in gut microbiome composition reduces first-line defense against
@@ -24,6 +30,10 @@ sources:
   quote: intestinal dysbiosis so let me explain you what is how intestinal bacteria
     can protect you from random toxins... if you have intestinal dysbiosis and the
     long end of bacteria over there, then you are not protected.
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Topics Covered
+  quote: Gut health is linked to thiamin absorption, nutrient absorption, autoimmune
+    joint pain, and hair loss support.
 version: 1
 status: active
 updated_at: '2026-05-05'

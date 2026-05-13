@@ -4,6 +4,10 @@ aliases:
 - mood changes
 - emotional instability
 - short temper
+- mood-changes-irritability
+- mood swings
+- emotional sensitivity
+- anxious gut
 category: mood
 severity: common
 description: Mood disturbances including irritability associated with folate or B12
@@ -20,6 +24,9 @@ sources:
   location: Folate Deficiency Signs & Symptoms
   quote: Fatigue, irritability and cognitive decline are also some other signs and
     symptoms.
+- id: vitaone-health-coaching-toolkit
+  location: Low Fodmap Diet Symptom Tracker — Section 2
+  quote: Mood changes / irritability
 version: 1
 status: active
 updated_at: '2026-05-05'

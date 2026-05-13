@@ -1,9 +1,12 @@
 slug: elevated-cholesterol
 display_name: Elevated Cholesterol
 aliases:
-- hypercholesterolaemia
 - high LDL
 - dyslipidaemia
+- hypercholesterolaemia
+- high-cholesterol
+- elevated cholesterol
+- high total cholesterol
 category: cardiovascular
 severity: concerning
 description: Elevated total or LDL cholesterol contributing to atherosclerosis and
@@ -20,6 +23,9 @@ sources:
 - id: vitaone-health-coaching-toolkit
   location: Intermittent Fasting — summary table
   quote: 'Decreases: Cholesterol'
+- id: vitaone-cvs-risk-assessment
+  location: History (Slide 2)
+  quote: Recently diagnosed with High cholesterol
 version: 1
 status: active
 updated_at: '2026-05-04'

@@ -1,0 +1,44 @@
+slug: infertility-male
+display_name: Male Infertility
+aliases:
+- male factor infertility
+- male reproductive dysfunction
+- low sperm count
+- low sperm motility
+- abnormal sperm morphology
+- oligospermia
+- asthenospermia
+- teratospermia
+- azoospermia
+category: hormonal
+severity: concerning
+description: Male factor infertility — impaired sperm production, motility, or morphology
+  contributing to a couple's difficulty conceiving. Functional medicine drivers include
+  oxidative stress (smoking, alcohol, ultra-processed-food load, EMF, heat exposure),
+  hormone dysregulation (low testosterone, elevated estradiol, high SHBG, elevated
+  prolactin), nutrient deficits (zinc, selenium, vitamin D, B12, folate, CoQ10),
+  varicocele, and chronic inflammation. Often missed because workups are female-first.
+when_to_refer: Persistent inability to conceive after 12 months of regular unprotected
+  intercourse (6 months if female partner over 35). Semen analysis + reproductive
+  endocrinology workup (TT, fT, SHBG, FSH, LH, prolactin, estradiol) required before
+  empirical coaching support.
+linked_to_topics:
+- infertility
+- oxidative-stress
+- hpa-axis-dysregulation
+- chronic-inflammation
+linked_to_mechanisms: []
+sources:
+- id: vitaone-mind-map-tool
+  location: mindmap-shortlist 2026-05-13
+  quote: ''
+notes_for_coach: 'Stub created 2026-05-13 to give catalogue parity with infertility-female.
+  Flesh out before clinical use — confirm FM-appropriate labs (sperm DNA fragmentation
+  if available; comprehensive zinc/selenium/CoQ10/Vit D panel; full hormone panel).
+  Lifestyle modifiables to surface: alcohol, smoking, heat exposure (saunas, hot
+  baths, laptop on lap), tight underwear, EMF, weight (BMI >30 doubles risk), diet
+  quality, sleep, stress.'
+updated_at: '2026-05-13'
+updated_by: shivani
+version: 1
+status: active

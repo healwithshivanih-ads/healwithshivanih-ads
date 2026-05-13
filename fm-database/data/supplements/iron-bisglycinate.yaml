@@ -37,6 +37,19 @@ sources:
   quote: Iron-based glycinate, not initially again. Since you are working on calming
     the gut down, iron would not work immediately because the lining itself has gotten
     impacted.
+- id: coconote-fm-iron-deficiency-anemia
+  location: Supplements / Management section
+  quote: There is something that we use particularly is ferrous bisglycinate. The
+    advantage of ferrous bisglycinate over the rest is it has a better viability,
+    number one. So the absorption is much better inside the body than the ferrous
+    fumarate and sulphate.
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Iron (Ferrous Bisglycinate) - Hemoglobin, oxygen transport - 18–30 mg/day
+    - post any meal or with vitamin C
+- id: vitaone-thyroid-cheatsheet
+  location: Clinical Action Steps — Support T4→T3 Conversion
+  quote: Selenium (100–200 µg/day), Zinc Glycinate (20–30 mg/day), Iron, Active B2/B6/B12
 version: 2
 status: active
 updated_at: '2026-05-05'
@@ -45,3 +58,6 @@ pregnancy_safety: safe
 lactation_safety: safe
 pregnancy_safety_note: Better tolerated than ferrous sulfate; less constipation. Standard
   30 mg/day if ferritin < 50.
+aliases:
+- ferrous-bisglycinate
+- iron-ferrous-bisglycinate

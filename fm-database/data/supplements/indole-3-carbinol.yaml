@@ -26,7 +26,13 @@ sources:
   location: Estrogen Metabolism — Page 02
   quote: Two commonly recommended supplements, diindolylmethane (DIM), and Indole-3-carbinol
     (I3C), are extracted from cruciferous vegetables.
+- id: vitaone-health-coaching-toolkit
+  location: Estrogen Metabolism — Promotes Healthy Estrogen Metabolism
+  quote: Two commonly recommended supplements, diindolylmethane (DIM), and Indole-3-carbinol
+    (I3C), are extracted from cruciferous vegetables.
 version: 1
 status: active
 updated_at: '2026-05-02'
 updated_by: shivani
+aliases:
+- i3c-indole-3-carbinol

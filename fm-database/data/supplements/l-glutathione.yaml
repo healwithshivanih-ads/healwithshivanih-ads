@@ -33,7 +33,16 @@ sources:
     Now this is actually useful in a certain number of patients in which the B vitamins
     are actually not absorbed or maybe the supplementation of B vitamin is not providing
     or not making any change to the homocysteine.
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet — 6 Ways to Overcome MTHFR
+  quote: Balance Glutathione – NAC, liposomal glutathione, glycine.
+- id: coconote-fm-liver-detox-part1
+  location: Phase 2 Conjugation Pathways
+  quote: The other important pathway is glutathione, there's about 20 oxygens, so
+    we can bind glutathione with anything.
 version: 1
 status: active
 updated_at: '2026-05-05'
 updated_by: shivani
+aliases:
+- glutathione

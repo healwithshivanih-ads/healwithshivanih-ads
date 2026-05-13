@@ -1,10 +1,17 @@
 slug: abdominal-bloating
 display_name: Abdominal Bloating
 aliases:
+- GI bloating
 - belly bloating
 - puffy belly
 - stomach bloating
-- GI bloating
+- gas-and-bloating
+- abdominal bloating
+- gassy stomach
+- digestive discomfort
+- abdominal distension
+- feeling bloated
+- excessive bloating
 category: gi
 severity: common
 description: Slowed movement of food through the digestive tract and decreased gastric
@@ -19,6 +26,17 @@ sources:
   location: 'Chapter 4: Functions of Thyroid Hormones'
   quote: Slows the movement of food through digestive tract, decreased secretion of
     gastric juices which can leave belly bloated.
+- id: vitaone-blood-sugar-toolkit
+  location: Micronutrients for Insulin Sensitivity
+  quote: Some of the well documented benefits associated with probiotics are improvement
+    in digestive symptoms, like gas & bloating.
+- id: vitaone-health-coaching-toolkit
+  location: Micronutrients for Insulin Sensitivity — INSULIN SENSITIZERS (cont.)
+  quote: Some of the well documented benefits associated with probiotics are improvement
+    in digestive symptoms, like gas & bloating.
+- id: coconote-fm-pancreatic-insufficiency
+  location: Signs and Symptoms
+  quote: Feeling excessive bloating, gas, edema.
 version: 1
 status: active
 updated_at: '2026-05-02'

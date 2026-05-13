@@ -26,7 +26,13 @@ sources:
   location: Estrogen Metabolism — Page 02
   quote: N-acetyl-cystine, & methylated B vitamins may support healthy estrogen metabolism
     as well.
+- id: vitaone-health-coaching-toolkit
+  location: Estrogen Metabolism — Promotes Healthy Estrogen Metabolism
+  quote: There is also some evidence that melatonin, N-acetyl-cystine, & methylated
+    B vitamins may support healthy estrogen metabolism as well.
 version: 1
 status: active
 updated_at: '2026-05-02'
 updated_by: shivani
+aliases:
+- methylated-b-vitamins

@@ -104,6 +104,37 @@ sources:
   location: POST https://www.instagram.com/p/DXoqNqijE3d/
   quote: Patients need a broader antioxidant shield (CoQ10, Lycopene, NAC, Astaxanthin,
     etc.).
+- id: vitaone-sex-hormones-toolkit
+  location: Estrogen Metabolism — Page 02
+  quote: There is also some evidence that melatonin, N-acetyl-cystine, & methylated
+    B vitamins may support healthy estrogen metabolism as well.
+- id: vitaone-cv-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
+  quote: N-Acetyl cysteine
+- id: vitaone-liver-detox-toolkit
+  location: Dental Amalgam Removal Protocol
+  quote: 'N-Acetyl-Cysteine (NAC): 600–1200 mg'
+- id: vitaone-health-coaching-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients
+    — Supplement Schedule'
+  quote: N-Acetyl cysteine
+- id: coconote-fm-approach-inflammation
+  location: Oxidative Stress – Glutathione Precursors
+  quote: you can increase the glycine and you can increase the NH-cysteine, you will
+    really have a benefit in your butadiene. So you can, they are very bioavailable.
+- id: vitaone-nutrition-toolkit
+  location: Nutrients for Mitochondrial Health
+  quote: N-acetyl cysteine (NAC) is an antioxidant that indirectly protects mitochondria
+    from oxidative stress. Supplementing with NAC helps to restore the body's level
+    of glutathione.
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Estrogen Detoxification Discussion
+  quote: NAC, alpha lipoic acid, okay, would help. So this would be phase two where
+    all your high beta glucuronidase levels would be taken care of.
+- id: coconote-fm-preventing-cvd-cholesterol
+  location: Nutraceuticals — NAC
+  quote: NAC is capable of 600 milligrams three times a day is involved in reducing
+    oxidative stress.
 version: 10
 status: active
 updated_at: '2026-05-05'
@@ -113,3 +144,7 @@ lactation_safety: caution
 pregnancy_safety_note: Generally well-tolerated but very high doses (> 1800 mg) reduce
   in pregnancy unless clinician-directed for specific indication (e.g., acetaminophen
   toxicity).
+aliases:
+- n-acetyl-cysteine
+- n-acetylcysteine
+- nac-n-acetyl-cysteine

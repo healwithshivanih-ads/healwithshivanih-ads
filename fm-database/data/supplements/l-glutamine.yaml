@@ -127,6 +127,14 @@ sources:
   location: 5Rs Treatment Protocol – Repair
   quote: When you go to complex cities, we also recommend zinc and the vitamin A and
     the L-butamine, all of these things, repair is important.
+- id: coconote-fm-liver-detox-part1
+  location: Phase 2 Conjugation Pathways
+  quote: So chlorine, glycine, and glutamine, and glutamine and glutamine, we can
+    say, they are the primary amino acid they use for conjugation.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXbyLyYjP__/
+  quote: 'Gut healing requires nutrients: glutamine, zinc carnosine, omega-3, B-complex,
+    bitters'
 version: 16
 status: active
 updated_at: '2026-05-05'
@@ -135,3 +143,5 @@ pregnancy_safety: caution
 lactation_safety: likely_safe
 pregnancy_safety_note: Limited pregnancy data; food amounts (lentils, cabbage, beef)
   are fine. Supplemental 5-10 g/day caution unless clinician-directed.
+aliases:
+- glutamine

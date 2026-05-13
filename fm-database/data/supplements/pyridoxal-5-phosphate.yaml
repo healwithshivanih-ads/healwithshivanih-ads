@@ -43,7 +43,33 @@ sources:
     open it up. And the movement of B6 and enough B6 adequately in local tissues rules
     the signaling duration of hormones... Over 100 milligrams a day is linked to reversible
     neurologic issues.
+- id: coconote-fm-biomarkers-cvs
+  location: Homocysteine and Clotting
+  quote: if the patient is having a metallurgy defect, then you should give them active
+    forms of vitamin B6, vitamin B12, and vitamin B9.
+- id: vitaone-nutrition-cheatsheet
+  location: Vitamin B6 (Pyridoxine)
+  quote: 'Supplement: P5P (active form) preferred over pyridoxine HCl. Safety: Keep
+    under 100 mg/day; higher doses risk neuropathy.'
+- id: vitaone-supplementation-dosage
+  location: Page 1 - Supplement Table
+  quote: Vitamin B6 (Pyridoxal-5-Phosphate) - Mood, hormone, B6 metabolism - 15–50
+    mg/day - Homocysteine defence formula
+- id: vitaone-thyroid-cheatsheet
+  location: Clinical Action Steps — Support T4→T3 Conversion
+  quote: Selenium (100–200 µg/day), Zinc Glycinate (20–30 mg/day), Iron, Active B2/B6/B12
+- id: vitaone-sex-hormones-cheatsheet
+  location: Progesterone Is Anti-Inflammatory — Supplement Approach
+  quote: Vitamin B6 (P5P form) → Essential for progesterone synthesis.
+- id: vitaone-adrenal-cheatsheet
+  location: 50 Hormones Cheatsheet — Progesterone row (p.4)
+  quote: '↓ PMS, infertility, anxiety, irregular cycles. Solution: Vit B6, Mg, Vitex,
+    stress reduction.'
 version: 1
 status: active
 updated_at: '2026-05-05'
 updated_by: shivani
+aliases:
+- pyridoxal-5-phosphate-b6
+- pyridoxal-5-phosphate-p5p
+- vitamin-b6-p5p

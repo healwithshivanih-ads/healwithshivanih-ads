@@ -1,12 +1,15 @@
 slug: elevated-hscrp
 display_name: Elevated High-Sensitivity CRP (hsCRP)
 aliases:
+- elevated CRP
+- high hsCRP
+- systemic inflammatory marker
+- systemic inflammation marker
 - high-sensitivity CRP
 - raised CRP
-- systemic inflammatory marker
-- high hsCRP
-- elevated CRP
-- systemic inflammation marker
+- high-crp
+- high C-reactive protein
+- elevated inflammatory marker
 category: cardiovascular
 severity: concerning
 description: Elevated hsCRP reflects systemic low-grade inflammation and is a cardiovascular
@@ -34,6 +37,10 @@ sources:
   quote: If you have an underlying hsCRP that is pro-inflammatory that you can say
     clotting mechanism is high your spike protein your high homocysteine all the factors
     they actually increase your clotting mechanism.
+- id: coconote-fm-body-composition-bmi
+  location: Metabolic Dysfunction / Biomarkers Section
+  quote: Am I thinking, is there C-reactive protein high? Are there some persistent
+    or organic pollutants or bisphenol A that may be triggering this insulin resistance?
 version: 2
 status: active
 updated_at: '2026-05-05'

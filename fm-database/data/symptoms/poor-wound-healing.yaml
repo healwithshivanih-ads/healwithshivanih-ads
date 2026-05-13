@@ -1,16 +1,22 @@
 slug: poor-wound-healing
 display_name: Poor Wound Healing & Frequent Infections
 aliases:
-- slow healing cuts
-- easy bruising
-- impaired tissue repair
-- slow healing
-- wounds not healing
-- frequent infections
+- loss of taste
 - poor immunity
 - white nail spots
-- loss of taste
+- slow healing cuts
+- wounds not healing
 - loss of smell
+- slow healing
+- impaired tissue repair
+- frequent infections
+- easy bruising
+- slow-wound-healing
+- delayed healing
+- wounds that won't heal
+- poor wound healing
+- wounds heal slowly
+- cuts take long to heal
 category: constitutional
 severity: common
 description: Poor wound healing, frequent infections, white nail spots, and loss of
@@ -39,6 +45,13 @@ sources:
   location: Symptoms Discussed
   quote: Frequent infections, poor wound healing, white nail spots, and loss of taste
     or smell - Linked to zinc deficiency.
+- id: vitaone-blood-sugar-ebook
+  location: Section 4.2.3 — Prediabetes
+  quote: Blurry vision, frequent urination, persistent fatigue, slower wound healing,
+    abdominal obesity, recurrent skin infections.
+- id: coconote-fm-zinc-deficiency
+  location: Signs and Symptoms
+  quote: Slow wound healing, non-responsive anemia.
 version: 3
 status: active
 updated_at: '2026-05-06'

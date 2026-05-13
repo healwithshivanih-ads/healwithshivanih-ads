@@ -69,8 +69,32 @@ sources:
   location: Estrogen Dominance Supplement Cheatsheet
   quote: 'Flaxseed (Lignans): Modulates estrogen receptors & increases SHBG; Improves
     cycle regularity; 1–2 tbsp/day ground flax; avoid in histamine flare.'
+- id: vitaone-cardiometabolic-recipes
+  location: Jowar-Flax Roti
+  quote: 1 cup Jowar flour, ¼ cup Flaxseed powder
+- id: vitaone-cardiometabolic-toolkit
+  location: Building a Better Smoothie — Flax Seeds
+  quote: Add 1 to 2 tablespoons of ground flax seeds (or flax meal) to the blender.
+    Store extra ground flax seed or flax meal in fridge for up to 3 to 4 weeks.
+- id: vitaone-health-coaching-toolkit
+  location: Building a Better Smoothie — Flax Seeds
+  quote: Add 1 to 2 tablespoons of ground flax seeds (or flax meal) to the blender.
+    Store extra ground flax seed or flax meal in fridge for up to 3 to 4 weeks.
+- id: coconote-fm-chronic-pain-fatigue
+  location: Constipation Protocol / Case Study
+  quote: chia seeds and the ground flax seeds are number one when people are talking
+    about the constipation
+- id: coconote-fm-omega-3-fatty-acids
+  location: Omega-3 Supplementation Recommendations Slide
+  quote: if someone is a vegetarian and going for ALA in the form of ground flax,
+    they have to consume 1 to 2 tablespoons per day. That will give them approximately
+    5 grams of ALA per day.
 evidence_tier: plausible_emerging
 version: 2
 status: active
 updated_at: '2026-05-02'
 updated_by: shivani
+aliases:
+- flaxseed-ground
+- ground-flax-seed
+- ground-flaxseed

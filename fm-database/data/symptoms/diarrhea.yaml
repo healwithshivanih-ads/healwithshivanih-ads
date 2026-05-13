@@ -1,17 +1,22 @@
 slug: diarrhea
 display_name: Diarrhea
 aliases:
-- loose stools
-- frequent bowel movements
+- frequent loose bowel movements
+- watery stool
+- runny stool
+- frequent loose motions
+- frequent stools
 - watery stools
 - running stomach
-- watery stool
-- frequent loose motions
 - acute loose motions
-- runny stool
-- frequent stools
 - runs
-- frequent loose bowel movements
+- frequent bowel movements
+- loose stools
+- loose-stools
+- watery-stools
+- urgent-bowel-movements
+- frequent-stools
+- urgency
 category: gi
 severity: common
 description: Loose or watery stools, which may occur both as a symptom of SIBO/dysbiosis
@@ -93,6 +98,8 @@ sources:
   quote: When you introduce Lactobacillus reuteri or some other beneficial microbes,
     it introduces a tidal wave of change in the composition of the GI tract. And one
     of the consequences could be diarrhea.
+- id: thurlow-microbiome-session-6
+  location: Session 6 — Bowel Patterns
 version: 11
 status: active
 updated_at: '2026-05-05'

@@ -35,7 +35,16 @@ sources:
 - id: vitaone-gut-cheatsheet
   location: H. Pylori Infection Cheatsheet — Antimicrobial Support
   quote: 'DGL (Deglycyrrhizinated Licorice): 400 mg, 2–3x/day before meals'
+- id: vitaone-gut-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
+    — Supplement recommendations'
+  quote: 'Protect: Alginate, pectin, DGL, slippery elm'
+- id: vitaone-health-coaching-toolkit
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
+  quote: 'Protect: Alginate, pectin, DGL, slippery elm.'
 version: 1
 status: active
 updated_at: '2026-05-02'
 updated_by: shivani
+aliases:
+- dgl
