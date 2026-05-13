@@ -17,11 +17,14 @@
  * suggested slug, pick a phase-weeks label, hit generate, wait ~60s
  * for Sonnet, redirect to the legacy plan editor for the new draft.
  */
-import { useState, useTransition } from "react";
+import { useState, useTransition, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { FmPanel } from "@/components/fm";
-import { generateFollowUpPlan } from "@/app/plans/[slug]/lifecycle-actions";
+import {
+  generateFollowUpPlan,
+  type FollowUpIntent,
+} from "@/app/plans/[slug]/lifecycle-actions";
 
 interface Props {
   activePlanSlug: string;
@@ -47,32 +50,52 @@ export function FollowUpPanel({
   void clientName; // reserved for future copy
   const router = useRouter();
   const [pending, start] = useTransition();
-  const [slug, setSlug] = useState<string>(suggestedSlug);
+  const [intent, setIntent] = useState<FollowUpIntent>("next_phase");
   const [phaseWeeks, setPhaseWeeks] = useState<string>("12");
 
+  // Maintenance graduation gets a different slug stem (.../maintenance...)
+  // and a 26-week default. Next-phase uses the original 12-week suggestion.
+  const slug = useMemo(() => {
+    if (intent === "maintenance") {
+      return suggestedSlug.replace(/-plan-\d+-/, "-maintenance-");
+    }
+    return suggestedSlug;
+  }, [intent, suggestedSlug]);
+  const [slugOverride, setSlugOverride] = useState<string | null>(null);
+  const effectiveSlug = slugOverride ?? slug;
+
+  const phaseDefault = intent === "maintenance" ? "26" : "12";
+  const effectivePhaseWeeks = phaseWeeks || phaseDefault;
+
   const subtitle = isOverdue
-    ? `Recheck date${recheckDate ? ` (${recheckDate})` : ""} passed — time for a phase-2 plan.`
-    : "Generate next phase when the current protocol ends.";
+    ? `Recheck date${recheckDate ? ` (${recheckDate})` : ""} passed — time to create the next plan.`
+    : "End-of-protocol: pick what comes next.";
 
   const onGenerate = () => {
-    const trimmed = slug.trim();
+    const trimmed = effectiveSlug.trim();
     if (!trimmed) {
-      toast.error("Enter a slug for the follow-up plan");
+      toast.error("Enter a slug for the new plan");
       return;
     }
     if (trimmed === activePlanSlug) {
-      toast.error("Follow-up slug must differ from the current plan");
+      toast.error("New plan slug must differ from the current plan");
       return;
     }
     start(async () => {
       const r = await generateFollowUpPlan(
         activePlanSlug,
         trimmed,
-        phaseWeeks.trim() || "next phase",
+        effectivePhaseWeeks.trim() ||
+          (intent === "maintenance" ? "maintenance" : "next phase"),
         clientId,
+        intent,
       );
       if (r.ok && r.newSlug) {
-        toast.success(`Follow-up plan created: ${r.newSlug}`);
+        toast.success(
+          intent === "maintenance"
+            ? `Maintenance plan created: ${r.newSlug}`
+            : `Next-phase plan created: ${r.newSlug}`,
+        );
         router.push(`/clients-v2/${clientId}/plan/edit/${r.newSlug}`);
       } else {
         toast.error(r.error ?? "Generation failed");
@@ -94,7 +117,7 @@ export function FollowUpPanel({
     <FmPanel
       title={
         <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
-          🔄 Generate follow-up plan
+          🚀 Create the next plan
           {isOverdue && (
             <span
               style={{
@@ -117,6 +140,31 @@ export function FollowUpPanel({
       style={panelStyle}
     >
       <div style={{ display: "grid", gap: 10 }}>
+        {/* Intent picker — two distinct end-of-protocol moves */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 8,
+            marginBottom: 4,
+          }}
+        >
+          <IntentCard
+            active={intent === "next_phase"}
+            onClick={() => setIntent("next_phase")}
+            emoji="🔁"
+            title="Next phase"
+            body="Continue active care with adjusted supplements + lifestyle based on check-in outcomes."
+          />
+          <IntentCard
+            active={intent === "maintenance"}
+            onClick={() => setIntent("maintenance")}
+            emoji="🌿"
+            title="Maintenance"
+            body="Client has finished the program. Lighter plan — anchor habits, fewer supplements, quarterly check-ins."
+          />
+        </div>
+
         <label style={{ display: "grid", gap: 4 }}>
           <span
             style={{
@@ -131,10 +179,14 @@ export function FollowUpPanel({
           </span>
           <input
             type="text"
-            value={slug}
-            onChange={(e) => setSlug(e.target.value)}
+            value={effectiveSlug}
+            onChange={(e) => setSlugOverride(e.target.value)}
             disabled={pending}
-            placeholder="e.g. firstname-plan-2-yyyy-mm-dd-cl-006"
+            placeholder={
+              intent === "maintenance"
+                ? "e.g. firstname-maintenance-yyyy-mm-dd-cl-006"
+                : "e.g. firstname-plan-2-yyyy-mm-dd-cl-006"
+            }
             style={{
               fontSize: 12,
               fontFamily: "var(--fm-font-mono)",
@@ -157,14 +209,14 @@ export function FollowUpPanel({
               color: "var(--fm-text-tertiary)",
             }}
           >
-            Phase weeks
+            {intent === "maintenance" ? "Maintenance period (weeks)" : "Phase weeks"}
           </span>
           <input
             type="text"
             value={phaseWeeks}
             onChange={(e) => setPhaseWeeks(e.target.value)}
             disabled={pending}
-            placeholder="12"
+            placeholder={phaseDefault}
             style={{
               fontSize: 12,
               padding: "7px 9px",
@@ -175,8 +227,9 @@ export function FollowUpPanel({
             }}
           />
           <span style={{ fontSize: 10.5, color: "var(--fm-text-tertiary)" }}>
-            Free text — flows into the AI prompt as the phase label
-            (e.g. <code>12</code>, <code>3-8</code>, <code>maintenance</code>).
+            {intent === "maintenance"
+              ? <>Default <code>26</code> weeks (6 months) until next reassessment. Coach can shorten or extend.</>
+              : <>Default <code>12</code>. Free text — also accepts ranges like <code>3-8</code>.</>}
           </span>
         </label>
 
@@ -212,8 +265,10 @@ export function FollowUpPanel({
               </span>
               Generating (~60s)…
             </>
+          ) : intent === "maintenance" ? (
+            <>🌿 Generate maintenance plan</>
           ) : (
-            <>🤖 Generate follow-up plan</>
+            <>🔁 Generate next-phase plan</>
           )}
         </button>
 
@@ -225,9 +280,21 @@ export function FollowUpPanel({
             lineHeight: 1.5,
           }}
         >
-          AI reads the current plan + check-in notes and proposes an
-          adjusted phase-2 draft. You land in the classic plan editor to
-          review and activate.
+          {intent === "maintenance" ? (
+            <>
+              AI reads the current plan + check-in outcomes and proposes a
+              lighter maintenance draft — strips symptom-targeted supplements,
+              keeps anchor habits, schedules quarterly touchpoints + yearly
+              labs. You land in the plan editor to review + activate.
+            </>
+          ) : (
+            <>
+              AI reads the current plan + check-in notes and proposes an
+              adjusted next-phase draft (graduates doses, adds new supplements,
+              progresses lifestyle). You land in the plan editor to review +
+              activate.
+            </>
+          )}
         </p>
       </div>
 
@@ -239,5 +306,53 @@ export function FollowUpPanel({
         }
       `}</style>
     </FmPanel>
+  );
+}
+
+function IntentCard({
+  active,
+  onClick,
+  emoji,
+  title,
+  body,
+}: {
+  active: boolean;
+  onClick: () => void;
+  emoji: string;
+  title: string;
+  body: string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={active}
+      style={{
+        textAlign: "left",
+        display: "block",
+        padding: "9px 11px",
+        background: active ? "rgba(255, 107, 53, 0.07)" : "var(--fm-surface)",
+        border: `2px solid ${active ? "var(--fm-primary)" : "var(--fm-border)"}`,
+        borderRadius: "var(--fm-radius-sm)",
+        cursor: "pointer",
+        fontFamily: "inherit",
+        color: "var(--fm-text-primary)",
+        transition: "all 120ms ease-out",
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 3 }}>
+        <span style={{ fontSize: 13 }}>{emoji}</span>
+        <span style={{ fontSize: 12.5, fontWeight: 700 }}>{title}</span>
+      </div>
+      <div
+        style={{
+          fontSize: 10.5,
+          lineHeight: 1.45,
+          color: "var(--fm-text-secondary)",
+        }}
+      >
+        {body}
+      </div>
+    </button>
   );
 }

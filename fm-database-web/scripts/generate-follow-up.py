@@ -28,7 +28,7 @@ load_dotenv(FMDB_ROOT / ".env", override=True)
 
 import anthropic
 
-SYSTEM_PROMPT = """You are a functional medicine coaching assistant helping a coach create a follow-up care plan for the next phase of a client's protocol.
+SYSTEM_PROMPT_NEXT_PHASE = """You are a functional medicine coaching assistant helping a coach create the NEXT-PHASE plan for a client whose current protocol is ending. The client is continuing active care — the new plan progresses the protocol based on how they responded.
 
 You will receive:
 - The previous plan (phase 1)
@@ -58,6 +58,65 @@ FORMAT:
 Return ONLY the fields that need to change vs the old plan.
 The plan will be cloned from the previous version, so omit anything that stays the same.
 """
+
+
+SYSTEM_PROMPT_MAINTENANCE = """You are a functional medicine coaching assistant helping a coach create a MAINTENANCE plan. The client has FINISHED their active protocol — symptoms are largely resolved, key habits are established, and they're transitioning to lighter ongoing care.
+
+You will receive:
+- The previous plan (the protocol that just finished)
+- The client profile
+- Check-in notes (how the client responded across the protocol)
+
+Your job is to return a MAINTENANCE plan tuned for the post-protocol phase. Rules:
+
+CORE PRINCIPLE: lighter touch. The client has done the work; the maintenance plan is the durable framework they live on long-term. Strip aggression, keep anchors.
+
+ADJUSTMENTS TO MAKE:
+1. Supplements:
+   - KEEP only the foundational ones the client should stay on long-term
+     (e.g. vitamin D, magnesium glycinate at lower dose, omega-3, B12 if
+     vegetarian — depending on bloodwork). Aim for 2–4 supplements total.
+   - REMOVE anything that was symptom-targeted (gut-healing protocols,
+     adrenal recovery formulas, anti-inflammatory loading doses, etc.).
+     These were corrective, not maintenance.
+   - Titrate DOWN where appropriate (e.g. magnesium 600mg → 200mg).
+   - Add a single "as-needed" supplement for flare situations (e.g.
+     adaptogen for stress weeks, digestive enzymes for travel).
+2. Lifestyle: keep the 3–5 habits the client demonstrably internalised.
+   Drop the ones they struggled with or only did during active care.
+   Add ONE "challenge" if the client is ready (e.g. cold exposure,
+   strength training progression).
+3. Nutrition: simplify to a 1-sentence pattern + 2–3 non-negotiables.
+   Remove the active-care eliminations unless still clinically required.
+4. Labs: minimal yearly check-in panel (TSH/fT3/fT4, ferritin, vitamin D,
+   B12, HbA1c, lipid panel, hsCRP) PLUS any client-specific markers that
+   were elevated and now need long-term monitoring (Lp(a), MMA,
+   antibodies if Hashimoto's, etc.). Drop the diagnostic deep-dive labs.
+5. Education: shift to self-management topics — "how to recognise a
+   flare", "when to come back", "annual reassessment cadence".
+6. Tracking: lighter cadence. Monthly self-check-in journal entry,
+   quarterly coach touchpoint, annual deep retest. Symptoms-to-monitor
+   shrinks to the 2–3 that were the original presenting concerns.
+7. Notes for coach: summarise what was removed, why, and what flare-
+   triggers should prompt a return to active care.
+8. Plan period: extend to 26 weeks (6 months). Recheck date = 6 months out.
+
+KEEP UNCHANGED:
+- Primary/contributing topics (still relevant for context)
+- Presenting symptoms (history, even if resolved)
+- Hypothesized drivers (history)
+- Referrals (only if still active/relevant)
+
+FORMAT:
+Return ONLY the fields that need to change vs the old plan.
+The plan will be cloned from the previous version, so omit anything that stays the same.
+"""
+
+
+def system_prompt_for(intent: str) -> str:
+    if intent == "maintenance":
+        return SYSTEM_PROMPT_MAINTENANCE
+    return SYSTEM_PROMPT_NEXT_PHASE
 
 def extract_checkin_blocks(notes: str) -> str:
     """Extract check-in blocks from notes_for_coach."""
@@ -227,7 +286,14 @@ def main():
         }
     }
 
-    phase_label = f"weeks {phase_weeks}" if phase_weeks else "next phase"
+    intent = (data.get("intent") or "next_phase").strip()
+    if intent not in ("next_phase", "maintenance"):
+        intent = "next_phase"
+
+    if intent == "maintenance":
+        phase_label = "maintenance graduation"
+    else:
+        phase_label = f"weeks {phase_weeks}" if phase_weeks else "next phase"
     checkin_block = f"\n\nCHECK-IN NOTES FROM PREVIOUS PLAN:\n{check_in_notes}" if check_in_notes else "\n\n(No check-in notes available — adjust based on standard phase progression)"
 
     user_message = f"""Please generate an adjusted follow-up plan for {phase_label}.
@@ -254,7 +320,7 @@ Generate the plan_patch with adjustments appropriate for {phase_label}. Keep wha
         response = client.messages.create(
             model="claude-haiku-4-5",
             max_tokens=8192,
-            system=[{"type": "text", "text": SYSTEM_PROMPT, "cache_control": {"type": "ephemeral"}}],
+            system=[{"type": "text", "text": system_prompt_for(intent), "cache_control": {"type": "ephemeral"}}],
             tools=[tool_schema],
             tool_choice={"type": "tool", "name": "generate_follow_up_plan"},
             messages=[{"role": "user", "content": user_message}],

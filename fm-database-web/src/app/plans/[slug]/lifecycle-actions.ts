@@ -339,11 +339,17 @@ export interface FollowUpResult {
  * The AI reads the previous plan + check-in notes from notes_for_coach
  * and returns a patch (changed fields only) for the follow-up phase.
  */
+/** "next_phase" = continue active care with adjustments (default).
+ *  "maintenance" = graduation; lighter plan with anchored habits + quarterly
+ *  check-ins. Branches the AI prompt to apply different rules. */
+export type FollowUpIntent = "next_phase" | "maintenance";
+
 export async function generateFollowUpPlan(
   oldSlug: string,
   newSlug: string,
   phaseWeeks: string,
-  clientId: string
+  clientId: string,
+  intent: FollowUpIntent = "next_phase",
 ): Promise<FollowUpResult> {
   if (!newSlug?.trim()) return { ok: false, error: "New plan slug is required." };
   if (newSlug === oldSlug) return { ok: false, error: "New slug must differ from old slug." };
@@ -367,6 +373,7 @@ export async function generateFollowUpPlan(
     new_slug: newSlug,
     phase_weeks: phaseWeeks,
     check_in_notes: "", // AI will extract from notes_for_coach
+    intent,
   }, 120_000);
 
   const result = shimResult as {
@@ -393,9 +400,11 @@ export async function generateFollowUpPlan(
     status_history: [],
     catalogue_snapshot: undefined,
     updated_at: today,
-    // Prepend AI summary to notes_for_coach
+    // Prepend AI summary to notes_for_coach. Header reflects intent so
+    // coach can scan and see whether this draft is a next-phase
+    // continuation or a maintenance graduation.
     notes_for_coach: summary
-      ? `[Phase ${phaseWeeks} adjustments]\n${summary}\n\n---\n\n${(oldRest.notes_for_coach as string) ?? ""}`
+      ? `[${intent === "maintenance" ? "Maintenance graduation" : `Next phase (${phaseWeeks})`} adjustments]\n${summary}\n\n---\n\n${(oldRest.notes_for_coach as string) ?? ""}`
       : (patch.notes_for_coach as string ?? (oldRest.notes_for_coach as string) ?? ""),
   };
 

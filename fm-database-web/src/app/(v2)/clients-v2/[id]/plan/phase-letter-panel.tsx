@@ -166,8 +166,8 @@ export function PhaseLetterPanel({
 
   return (
     <FmPanel
-      title="📅 Continue meal plan (mid-cycle)"
-      subtitle="Generate a fresh meal-plan letter for any week range of the active protocol. Supplements + lifestyle stay locked — this only refreshes meals."
+      title="🍽 Refresh meal plan — same protocol"
+      subtitle="Mid-cycle inspiration: while the current 12-week protocol is still running, generate a fresh meal-plan letter for the next week range (seasonal swap, food variety). Supplements + lifestyle stay locked — only the meals change."
     >
       {currentWeek != null && (
         <div
