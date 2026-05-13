@@ -56,6 +56,10 @@ export function CheckInForm({
   const router = useRouter();
   const [pending, start] = useTransition();
 
+  const [sessionDate, setSessionDate] = useState(
+    () => new Date().toISOString().slice(0, 10),
+  );
+
   const [adherence, setAdherence] = useState<number | null>(4); // default "mostly"
   const [adherenceNotes, setAdherenceNotes] = useState("");
 
@@ -117,6 +121,7 @@ export function CheckInForm({
       const result = await saveSessionAction({
         client_id: clientId,
         session_type: "check_in",
+        session_date: sessionDate,
         coach_notes: sections.join("\n\n"),
         presenting_complaints: `[session_type: check_in] adherence ${adherence}/5`,
         requested_labs: labs.length ? labs : undefined,
@@ -134,6 +139,23 @@ export function CheckInForm({
 
   return (
     <div>
+      <div style={{ marginBottom: 14 }}>
+        <FmField
+          label="Date of session"
+          hint="Defaults to today — change if you're logging a past session. This date is what shows as 'Last contact'."
+        >
+          {({ id }) => (
+            <FmInput
+              id={id}
+              type="date"
+              value={sessionDate}
+              onChange={(e) => setSessionDate(e.target.value)}
+              style={{ maxWidth: 200 }}
+            />
+          )}
+        </FmField>
+      </div>
+
       {/* Adherence + measurements */}
       <div
         style={{

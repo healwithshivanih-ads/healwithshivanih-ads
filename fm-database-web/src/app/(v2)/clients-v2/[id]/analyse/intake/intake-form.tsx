@@ -202,6 +202,9 @@ export function IntakeForm({
   const [pending, start] = useTransition();
 
   // 0 · Catalogue picks
+  const [sessionDate, setSessionDate] = useState(
+    () => new Date().toISOString().slice(0, 10),
+  );
   const [symptoms, setSymptoms] = useState<string[]>([]);
   const [conditions, setConditions] = useState<string[]>(existingConditions);
   const [allergiesArr, setAllergiesArr] = useState<string[]>(existingAllergies);
@@ -545,6 +548,7 @@ export function IntakeForm({
       const sessionResult = await saveSessionAction({
         client_id: clientId,
         session_type: "intake",
+        session_date: sessionDate,
         coach_notes: sections.join("\n\n"),
         presenting_complaints: `[session_type: intake] ${chiefComplaint.trim() || hpi.trim().slice(0, 120)}`,
         five_pillars: hasPillars ? fp : undefined,
@@ -801,6 +805,20 @@ export function IntakeForm({
         title="1 · Presenting picture"
         description="What the client is here to solve. The Full Assessment will read this back later."
       >
+        <FmField
+          label="Date of session"
+          hint="Defaults to today — change if you're logging a past session. This date is what shows as 'Last contact'."
+        >
+          {({ id }) => (
+            <FmInput
+              id={id}
+              type="date"
+              value={sessionDate}
+              onChange={(e) => setSessionDate(e.target.value)}
+              style={{ maxWidth: 200 }}
+            />
+          )}
+        </FmField>
         <FmField label="Chief complaint">
           {({ id }) => (
             <FmTextarea
