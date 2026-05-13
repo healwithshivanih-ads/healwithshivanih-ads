@@ -1,5 +1,5 @@
 slug: methylcobalamin
-display_name: Methylcobalamin (Active B12)
+display_name: Methylcobalamin (Methyl B12)
 category: vitamin
 forms_available:
 - tablet
@@ -16,16 +16,23 @@ linked_to_topics:
 - mthfr-gene-variant
 - homocysteine-elevation
 - methylation
+- mthfr-polymorphisms
+- methylation-cycle
 linked_to_claims:
 - methylcobalamin-b12-mthfr-homocysteine
 - methylcobalamin-preferred-active-b12-form
 - methylcobalamin-required-for-homocysteine-to-methionine
 - b12-deficiency-causes-neurological-damage
-notes_for_coach: Active form of B12; preferred over cyanocobalamin for MTHFR clients
-  and those with absorption issues. Sublingual/lozenge forms can improve absorption
-  by bypassing GI tract. Higher doses are generally well-tolerated as excess is excreted.
-notes_for_client: This is the active, ready-to-use form of vitamin B12. Important
-  for nerve health, energy, and keeping homocysteine levels in check.
+- serum-b12-may-not-reflect-cellular-utilization
+- methylcobalamin-preferred-over-cyanocobalamin-in-mthfr-protocols
+notes_for_coach: Methylcobalamin is the active, methylated form of B12 often preferred
+  in MTHFR-related protocols. However, if serum B12 is already very high, adding more
+  B12 should be reviewed with a clinician first to rule out underlying medical causes
+  of high B12.
+notes_for_client: Methylcobalamin is a ready-to-use form of vitamin B12. Some people
+  with MTHFR variants or functional B12 concerns use this form because it doesn't
+  require as much conversion as other forms. If your B12 labs are already high, talk
+  to your doctor before adding more.
 evidence_tier: plausible_emerging
 typical_dose_range:
   tablet:
@@ -33,6 +40,10 @@ typical_dose_range:
     max: 5000
     unit: mcg
   lozenge:
+    min: 500
+    max: 5000
+    unit: mcg
+  capsule:
     min: 500
     max: 5000
     unit: mcg
@@ -49,10 +60,14 @@ sources:
   location: Homocysteine and Clotting
   quote: also vitamin B12. The active form of vitamin B12 is methylglycerol, I mean,
     methyl donor.
-version: 2
+- id: Notebook LM
+  location: Supplement Forms Mentioned
+  quote: Methylcobalamin or hydroxocobalamin instead of cyanocobalamin in some individualized
+    protocols.
+version: 3
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-05-13'
+updated_by: Shivani
 pregnancy_safety: safe
 lactation_safety: safe
 pregnancy_safety_note: Preferred B12 form in pregnancy.

@@ -1,0 +1,31 @@
+slug: riboflavin-stabilizes-mthfr-c677t-enzyme
+statement: Riboflavin (vitamin B2), via its role as the FAD cofactor for MTHFR, may
+  help stabilize the C677T variant enzyme and improve its activity, supporting 5-MTHF
+  production and homocysteine handling.
+evidence_tier: plausible_emerging
+rationale: The document explains that MTHFR requires FAD (riboflavin-derived) as a
+  cofactor, and that the C677T variant enzyme loses this cofactor more easily. Riboflavin
+  supplementation may compensate for this instability.
+coaching_translation: Think of riboflavin as helping 'glue' the MTHFR enzyme together
+  — especially for people with the 677TT variant whose enzyme tends to fall apart.
+caveats:
+- Source is an LLM synthesis; specific RCTs for enzyme stabilization per se are not
+  individually cited.
+- Effect is most relevant for 677TT individuals; less evidence in CT or CC genotypes.
+linked_to_topics:
+- mthfr-polymorphisms
+- riboflavin-and-blood-pressure-mthfr
+linked_to_supplements:
+- riboflavin-vitamin-b2
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: Notebook LM
+  location: Riboflavin and MTHFR
+  quote: For people with the 677TT genotype, riboflavin may help stabilize the enzyme
+    and improve its activity. This can support production of 5-MTHF, improve homocysteine
+    handling, and indirectly support B12 use within the methylation cycle.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

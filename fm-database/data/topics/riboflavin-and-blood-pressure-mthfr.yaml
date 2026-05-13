@@ -1,0 +1,39 @@
+slug: riboflavin-and-blood-pressure-mthfr
+display_name: Riboflavin & Blood Pressure in MTHFR 677TT
+aliases:
+- riboflavin hypertension
+- vitamin B2 blood pressure
+- MTHFR-specific hypertension
+summary: Riboflavin supplementation has been reported to lower blood pressure specifically
+  in individuals homozygous for MTHFR C677T (677TT genotype), with systolic reductions
+  of 5–13 mmHg in some studies. The effect appears genotype-specific and independent
+  of antihypertensive medications.
+common_symptoms:
+- elevated-blood-pressure
+red_flags:
+- uncontrolled-hypertension
+related_topics:
+- mthfr-polymorphisms
+key_mechanisms:
+- mthfr-enzyme-dysfunction
+- nitric-oxide-bioavailability
+- homocysteine-remethylation
+coaching_scope_notes: Coaches can share that riboflavin is a B-vitamin with a strong
+  safety profile. However, blood pressure management is a clinical concern; coaches
+  should not recommend riboflavin as a treatment for hypertension without clinician
+  involvement.
+clinician_scope_notes: One trial reported systolic reduction of 13.2 mmHg and diastolic
+  7.5 mmHg with 1.6 mg/day riboflavin in 677TT individuals. Effects described as independent
+  of antihypertensive medication type or number. Genotype testing relevant in this
+  specific context.
+evidence_tier: plausible_emerging
+sources:
+- id: Notebook LM
+  location: Riboflavin and Blood Pressure
+  quote: Research described in the source material suggests riboflavin may lower blood
+    pressure specifically in people who are homozygous for MTHFR C677T, also called
+    the 677TT genotype.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

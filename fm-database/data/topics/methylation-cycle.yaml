@@ -1,0 +1,40 @@
+slug: methylation-cycle
+display_name: Methylation Cycle
+aliases:
+- one-carbon metabolism
+- methionine cycle
+- homocysteine methylation
+summary: The methylation cycle converts homocysteine back to methionine using 5-MTHF
+  (active folate) and vitamin B12 as cofactors. MTHFR variants can create bottlenecks
+  in this cycle, impairing cellular methylation even when serum B12 and folate appear
+  normal.
+common_symptoms:
+- elevated-homocysteine
+- functional-b12-deficiency-symptoms
+- fatigue
+- brain-fog
+red_flags:
+- persistently-elevated-homocysteine
+- neurological-symptoms
+related_topics:
+- mthfr-polymorphisms
+- homocysteine-regulation
+key_mechanisms:
+- homocysteine-remethylation
+- mthfr-enzyme-dysfunction
+- methyl-trap
+coaching_scope_notes: Coaches can discuss dietary support for the methylation cycle
+  (folate-rich foods, B12-containing foods, riboflavin) and lifestyle factors. Supplement
+  selection and dosing require clinician guidance.
+evidence_tier: strong
+clinician_scope_notes: ''
+sources:
+- id: Notebook LM
+  location: B12 and Folate Utilization
+  quote: MTHFR helps convert folate into 5-MTHF, the active folate form needed to
+    remethylate homocysteine into methionine. Vitamin B12 is also required for this
+    reaction.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

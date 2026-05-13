@@ -1,0 +1,36 @@
+slug: serum-b12-may-not-reflect-cellular-utilization
+statement: Serum B12 may appear normal or elevated in individuals with MTHFR variants
+  while cellular B12 utilization remains impaired, making serum B12 alone an insufficient
+  marker of functional B12 status.
+evidence_tier: plausible_emerging
+rationale: The document describes a 'methyl trap' scenario where B12 appears adequate
+  on serum testing but is poorly utilized at the cellular level, and recommends homocysteine
+  and methylmalonic acid as more informative functional markers.
+coaching_translation: A normal B12 on a blood test doesn't always mean your body is
+  actually using B12 efficiently — especially if MTHFR is involved. Other markers
+  like homocysteine and MMA give a fuller picture.
+out_of_scope_notes: Lab interpretation and testing decisions are clinician scope.
+  Coaches can discuss the concept of functional markers but should not advise clients
+  to order specific tests.
+caveats:
+- Source is an LLM synthesis; specific studies supporting functional B12 deficiency
+  in MTHFR variants are not cited by name.
+- High serum B12 has multiple causes including liver disease, malignancy, and supplementation
+  — should not be attributed to MTHFR alone.
+linked_to_topics:
+- mthfr-polymorphisms
+- methylation-cycle
+linked_to_supplements:
+- methylcobalamin
+- hydroxocobalamin
+linked_to_mechanisms: []
+sources:
+- id: Notebook LM
+  location: B12 and Folate Utilization
+  quote: Serum B12 may appear adequate or elevated. B12 may still be poorly utilized
+    at the cellular level. Symptoms can resemble B12 deficiency despite apparently
+    normal lab values.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

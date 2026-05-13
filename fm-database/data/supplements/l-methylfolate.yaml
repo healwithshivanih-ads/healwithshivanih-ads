@@ -1,5 +1,5 @@
 slug: l-methylfolate
-display_name: L-Methylfolate (5-MTHF / Folate)
+display_name: L-Methylfolate (5-MTHF)
 category: vitamin
 forms_available:
 - capsule
@@ -7,7 +7,11 @@ forms_available:
 typical_dose_range:
   capsule:
     min: 400
-    max: 5000
+    max: 15000
+    unit: mcg
+  tablet:
+    min: 400
+    max: 15000
     unit: mcg
 timing_options:
 - with_breakfast
@@ -16,21 +20,32 @@ take_with_food: optional
 linked_to_topics:
 - vitamin-b-complex-deficiency
 - nutrient-deficiency-depression
+- mthfr-polymorphisms
+- methylation-cycle
 linked_to_claims:
 - avoid-synthetic-folic-acid-prefer-methylfolate
 - high-folate-masks-b12-deficiency
-notes_for_coach: 'Use L-methylfolate (5-MTHF) rather than folic acid, especially in
-  those with MTHFR variants. Always assess B12 alongside folate. Optimal RBC folate
-  target: 400–637 ng/mL.'
-notes_for_client: This is the most usable form of folate, suitable for people with
-  the MTHFR gene variant. Always pair folate supplementation with B12 checks.
+- methylfolate-bypasses-mthfr-bottleneck
+- high-dose-methylfolate-can-cause-side-effects
+- methylfolate-supports-b12-dependent-homocysteine-remethylation
+notes_for_coach: Discuss with clients that this is the active, pre-converted form
+  of folate that bypasses the MTHFR conversion step. Emphasize starting low — some
+  individuals experience anxiety, irritability, or insomnia at higher doses. Dose
+  selection and escalation should be clinician-guided.
+notes_for_client: L-methylfolate is a form of folate your body can use directly, without
+  needing the MTHFR enzyme to convert it. Some people start with a lower dose and
+  increase slowly because higher amounts can cause side effects like anxiety or sleep
+  issues in sensitive individuals.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
 - id: vitaone-nutrition-cheatsheet
   location: Vitamin & Mineral Inactive vs Bio-Available Form Cheatsheet
   quote: Many people can't convert folic acid effectively.
-version: 1
+- id: Notebook LM
+  location: Supplement Forms Mentioned
+  quote: L-methylfolate or 5-MTHF instead of relying only on folic acid conversion.
+version: 2
 status: active
-updated_at: '2026-05-02'
-updated_by: shivani
+updated_at: '2026-05-13'
+updated_by: Shivani

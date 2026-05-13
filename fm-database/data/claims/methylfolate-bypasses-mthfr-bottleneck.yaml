@@ -1,0 +1,33 @@
+slug: methylfolate-bypasses-mthfr-bottleneck
+statement: L-methylfolate (5-MTHF) can bypass the MTHFR conversion step, potentially
+  improving active folate availability in individuals with reduced MTHFR enzyme activity.
+evidence_tier: plausible_emerging
+rationale: The document explains that 5-MTHF is the active form that supports B12-dependent
+  homocysteine remethylation, and that supplementing with the pre-converted form avoids
+  dependence on the impaired MTHFR enzyme.
+coaching_translation: Using the active form of folate (methylfolate) is like going
+  around a traffic jam — it skips the step your MTHFR enzyme might be struggling with.
+caveats:
+- Source is an LLM synthesis; RCT evidence specifically for methylfolate supplementation
+  in MTHFR variants is not cited by name.
+- High doses can cause methyl-donor sensitivity symptoms (anxiety, insomnia, irritability,
+  headaches).
+- Dose selection should be clinician-guided, especially when serum B12 is already
+  elevated.
+linked_to_topics:
+- mthfr-polymorphisms
+- methylation-cycle
+linked_to_supplements:
+- l-methylfolate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: Notebook LM
+  location: Methylfolate and High B12 Labs
+  quote: Methylfolate may help when low active folate is contributing to poor B12
+    utilization, because 5-MTHF supports the B12-dependent conversion of homocysteine
+    to methionine.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

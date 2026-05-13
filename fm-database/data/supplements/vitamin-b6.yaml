@@ -1,20 +1,22 @@
 slug: vitamin-b6
-display_name: Vitamin B6 (Pyridoxine)
+display_name: Vitamin B6 (Pyridoxine / P5P)
 category: vitamin
 forms_available:
 - capsule
 - tablet
 evidence_tier: plausible_emerging
-notes_for_coach: B6 is a cofactor for serotonin and GABA synthesis. Commonly used
-  alongside folate and magnesium for mood, PMS, and anxiety. High-dose B6 (>100mg/day)
-  can cause peripheral neuropathy — clinician verification required.
-notes_for_client: Vitamin B6 helps your body make serotonin and GABA — your natural
-  mood-balancing and calming chemicals. Best taken with food.
+notes_for_coach: B6 supports the transsulfuration pathway, providing an alternative
+  route for homocysteine clearance independent of MTHFR. Mentioned as part of broader
+  methylation-cycle support. High-dose B6 can cause peripheral neuropathy — clinician
+  guidance is warranted for doses above dietary levels.
+notes_for_client: Vitamin B6 is part of the methylation pathway team and helps your
+  body process homocysteine through a different route than folate and B12. It's often
+  included in B-complex or methylation support formulas.
 timing_options:
 - with_breakfast
 - with_lunch
 - morning
-take_with_food: required
+take_with_food: optional
 linked_to_topics:
 - drug-induced-nutrient-depletion
 - beta-blocker-deprescribing
@@ -23,16 +25,23 @@ linked_to_topics:
 - hpa-axis-dysregulation
 - emotional-healing-in-chronic-disease
 - nervous-system-regulation
+- mthfr-polymorphisms
+- methylation-cycle
 linked_to_mechanisms:
 - elevated-homocysteine
 typical_dose_range:
   capsule:
-    min: 25
+    min: 10
+    max: 100
+    unit: mg
+  tablet:
+    min: 10
     max: 100
     unit: mg
 linked_to_claims:
 - vitamin-b6-folate-support-serotonin-gaba
 - b6-folate-support-serotonin-gaba-synthesis
+- b6-supports-broader-methylation-cycle
 sources:
 - id: vitaone-cv-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
@@ -45,9 +54,12 @@ sources:
   location: Key Nutrients & Botanicals for Emotional Healing Support
   quote: 'Vitamin B6 & Folate — Support serotonin, GABA synthesis. Clinical use: PMS,
     mood swings, chronic anxiety.'
-version: 3
+- id: Notebook LM
+  location: Supplement Forms Mentioned
+  quote: Vitamin B6 and other B vitamins as broader methylation-cycle support.
+version: 4
 status: active
-updated_at: '2026-05-04'
-updated_by: shivani
+updated_at: '2026-05-13'
+updated_by: Shivani
 aliases:
 - vitamin b6 (pyridoxine)

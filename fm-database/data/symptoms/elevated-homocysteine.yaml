@@ -9,14 +9,15 @@ aliases:
 - high-homocysteine
 - raised-homocysteine
 - elevated homocysteine
+- homocysteine elevation
 category: cardiovascular
 severity: concerning
-description: Above-normal blood homocysteine levels indicating impaired methylation,
-  B vitamin deficiency, or MTHFR dysfunction. Associated with cardiovascular disease,
-  stroke, dementia, and neural tube defects.
-when_to_refer: Refer to clinician for plasma homocysteine testing and cardiovascular
-  risk assessment, especially if levels are chronically elevated despite B vitamin
-  supplementation.
+description: Elevated plasma homocysteine resulting from impaired remethylation, often
+  a downstream marker of MTHFR dysfunction, low folate, low B12, low B6, or riboflavin
+  insufficiency. Associated with cardiovascular risk and serves as a functional marker
+  of methylation pathway adequacy.
+when_to_refer: Refer to clinician if homocysteine is persistently elevated, especially
+  with cardiovascular risk factors, neurological symptoms, or pregnancy.
 linked_to_topics:
 - methylation-mthfr
 - homocysteine-and-methylation
@@ -28,6 +29,8 @@ linked_to_topics:
 - mthfr-gene-variant
 - folate-vitamin-b9
 - vitamin-b12
+- mthfr-polymorphisms
+- methylation-cycle
 linked_to_mechanisms:
 - homocysteine-elevation
 - impaired-methylation
@@ -37,6 +40,8 @@ linked_to_mechanisms:
 - methylation-defect
 - impaired-homocysteine-remethylation
 - mthfr-enzyme-dysfunction
+- homocysteine-remethylation
+- methyl-trap
 sources:
 - id: vitaone-liver-detox-cheatsheet
   location: Methylation & MTHFR Cheatsheet — Who Should You Test
@@ -61,7 +66,11 @@ sources:
   location: Lab Results (Slide 16)
   quote: Men with extremely high homocysteine levels were three times more likely
     to have a heart attack than others.
-version: 4
+- id: Notebook LM
+  location: Practical Testing Markers Mentioned
+  quote: 'Homocysteine: may rise when folate, B12, B6, riboflavin, or methylation
+    pathways are under-supported.'
+version: 5
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-05-13'
+updated_by: Shivani

@@ -9,21 +9,26 @@ aliases:
 - high BP
 - HTN
 - blood pressure too high
+- hypertension
 category: cardiovascular
 severity: concerning
-description: Blood pressure above normal ranges, associated with increased risk of
-  stroke, heart disease, and organ damage. Modifiable through dietary interventions
-  (DASH diet, potassium, phytonutrients, L-arginine, anthocyanins), weight loss, and
-  exercise.
-when_to_refer: Refer when medication initiation is warranted based on risk stratification
-  and organ damage markers. Diet and lifestyle should always be co-initiated.
+description: Blood pressure elevation that, in individuals homozygous for MTHFR C677T,
+  may be partially driven by impaired nitric oxide bioavailability related to reduced
+  active folate. Riboflavin supplementation has been specifically studied in this
+  subgroup.
+when_to_refer: Always refer for blood pressure management. Do not recommend supplements
+  as a standalone treatment for hypertension.
 linked_to_topics:
 - blood-pressure-management
 - visceral-adiposity
 - metabolic-syndrome
+- mthfr-polymorphisms
+- riboflavin-and-blood-pressure-mthfr
 linked_to_mechanisms:
 - nitric-oxide-production
 - insulin-resistance
+- nitric-oxide-bioavailability
+- mthfr-enzyme-dysfunction
 sources:
 - id: coconote-fm-body-composition-bmi
   location: Blood Pressure Section
@@ -41,7 +46,12 @@ sources:
   location: Progress (Slide 25)
   quote: 'Insulin Resistance improved : HbA1c Reduced, Hypertension controlled, Lipid
     Profile Improved'
-version: 1
+- id: Notebook LM
+  location: Riboflavin and Blood Pressure
+  quote: Research described in the source material suggests riboflavin may lower blood
+    pressure specifically in people who are homozygous for MTHFR C677T, also called
+    the 677TT genotype.
+version: 2
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-05-13'
+updated_by: Shivani

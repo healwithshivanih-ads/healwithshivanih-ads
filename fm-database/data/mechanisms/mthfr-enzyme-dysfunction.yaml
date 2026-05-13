@@ -3,37 +3,56 @@ display_name: MTHFR Enzyme Dysfunction
 aliases:
 - MTHFR deficiency
 - methylenetetrahydrofolate reductase impairment
+- MTHFR reduced activity
+- thermolabile MTHFR
+- C677T enzyme instability
 category: endocrine
-summary: Genetic variants in the MTHFR gene reduce activity of the MTHFR enzyme, impairing
-  conversion of 5,10-methyleneTHF to 5-methylTHF (active folate). This downstream
-  impairs homocysteine remethylation to methionine, reduces SAM availability, and
-  disrupts DNA methylation, neurotransmitter synthesis, and glutathione production.
+summary: The C677T polymorphism substitutes cytosine with thymidine at position 677,
+  making the MTHFR enzyme thermolabile and structurally less stable. CT heterozygotes
+  retain ~65% of typical enzyme activity; TT homozygotes retain only ~30%. Reduced
+  enzyme activity impairs conversion of folate to 5-MTHF.
 upstream_drivers:
 - mthfr-c677t-polymorphism
 - mthfr-a1298c-polymorphism
+- mthfr-c677t-genotype
+- riboflavin-deficiency
 downstream_effects:
 - elevated-homocysteine
 - impaired-methylation
 - reduced-sam
 - reduced-glutathione
 - neurotransmitter-deficiency
+- reduced-5-mthf-production
+- methyl-trap
+- functional-b12-deficiency
 related_mechanisms:
 - impaired-homocysteine-remethylation
 - methylation
 - sam-cycle
+- methyl-trap
+- homocysteine-remethylation
+- nitric-oxide-bioavailability
 linked_to_topics:
 - mthfr-gene-variant
 - folate-vitamin-b9
 - homocysteine-elevation
 - methylation
-evidence_tier: plausible_emerging
+- mthfr-polymorphisms
+- methylation-cycle
+- riboflavin-and-blood-pressure-mthfr
+evidence_tier: strong
 sources:
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Summary / MTHFR section
   quote: MTHFR enzyme plays a key role in the metabolism of folate as we have seen
     in the folate pathway where it converts the 5,10-methylene tetrahydrofolate to
     5-methyl tetrahydrofolate, which is the active form.
-version: 1
+- id: Notebook LM
+  location: C677T Variant
+  quote: The C677T MTHFR polymorphism involves substitution of cytosine with thymidine
+    at position 677 of the gene. This changes the enzyme structure and makes it more
+    thermolabile, meaning less stable under certain conditions.
+version: 2
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-05-13'
+updated_by: Shivani

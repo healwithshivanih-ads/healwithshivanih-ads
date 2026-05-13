@@ -1,0 +1,33 @@
+slug: methylcobalamin-preferred-over-cyanocobalamin-in-mthfr-protocols
+statement: In individualised protocols for people with MTHFR-related methylation concerns,
+  methylcobalamin or hydroxocobalamin are often preferred over cyanocobalamin as B12
+  forms requiring less conversion.
+evidence_tier: fm_specific_thin
+rationale: The document lists these forms as discussed alternatives in MTHFR-related
+  supplement protocols. This preference is common in functional medicine practice
+  but lacks robust RCT support comparing B12 forms specifically in MTHFR populations.
+coaching_translation: When it comes to B12 supplements, methylcobalamin and hydroxocobalamin
+  are forms that your body can use more directly — they're often recommended when
+  MTHFR is a concern.
+caveats:
+- Source is an LLM synthesis; comparative RCT evidence between B12 forms in MTHFR
+  populations is limited.
+- Form selection should be individualised and clinician-guided, especially when serum
+  B12 is already elevated.
+linked_to_topics:
+- mthfr-polymorphisms
+- methylation-cycle
+linked_to_supplements:
+- methylcobalamin
+- hydroxocobalamin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: Notebook LM
+  location: Supplement Forms Mentioned
+  quote: Methylcobalamin or hydroxocobalamin instead of cyanocobalamin in some individualized
+    protocols.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

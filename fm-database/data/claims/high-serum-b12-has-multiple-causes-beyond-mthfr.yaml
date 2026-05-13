@@ -1,0 +1,31 @@
+slug: high-serum-b12-has-multiple-causes-beyond-mthfr
+statement: Persistently high serum B12 should not be attributed to MTHFR alone; possible
+  causes include supplementation, reduced cellular uptake, liver disease, kidney disease,
+  and malignancy, and should be interpreted clinically.
+evidence_tier: confirm_with_clinician
+rationale: The document explicitly warns that high serum B12 may reflect multiple
+  underlying medical causes and must be interpreted by a clinician rather than assumed
+  to result from MTHFR status.
+coaching_translation: If a client's B12 lab is very high, that's a conversation for
+  their doctor — it's not automatically explained by MTHFR variants and could signal
+  something that needs medical attention.
+out_of_scope_notes: Interpreting high serum B12 is clinician scope. Coaches should
+  refer clients with persistently very high B12 to their healthcare provider.
+caveats:
+- This is a clinical red flag requiring physician evaluation, not a coaching talking
+  point for supplement recommendations.
+linked_to_topics:
+- mthfr-polymorphisms
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: Notebook LM
+  location: B12 and Folate Utilization
+  quote: High serum B12 in someone with MTHFR variants does not automatically prove
+    good B12 function. It may reflect supplementation, reduced cellular uptake, liver
+    or kidney issues, inflammation, or other medical causes. Persistently high B12
+    should be interpreted clinically rather than assumed to be caused by MTHFR alone.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

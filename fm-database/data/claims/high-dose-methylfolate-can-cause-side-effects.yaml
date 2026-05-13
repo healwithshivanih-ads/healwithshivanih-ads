@@ -1,0 +1,29 @@
+slug: high-dose-methylfolate-can-cause-side-effects
+statement: High-dose methylfolate is not universally appropriate and may cause anxiety,
+  insomnia, irritability, or headaches in sensitive individuals, particularly if B12
+  status is also functionally inadequate.
+evidence_tier: plausible_emerging
+rationale: The document cautions that high-dose methylfolate can cause methyl-donor
+  sensitivity symptoms and may worsen imbalance if B12 is functionally low. A cautious,
+  low-and-slow approach is recommended.
+coaching_translation: More methylfolate is not always better — some people feel worse
+  with high doses. Starting low and going slow is a sensible approach.
+out_of_scope_notes: Dosing decisions for methylfolate, especially in therapeutic contexts
+  (e.g., treatment-resistant depression), require clinician oversight.
+caveats:
+- Source is an LLM synthesis; individual variation is significant and not fully characterised.
+linked_to_topics:
+- mthfr-polymorphisms
+linked_to_supplements:
+- l-methylfolate
+linked_to_mechanisms: []
+sources:
+- id: Notebook LM
+  location: Methylfolate and High B12 Labs
+  quote: 'High-dose methylfolate is not automatically the right answer. Potential
+    concerns include: Anxiety, insomnia, irritability, headaches, or other methyl-donor
+    sensitivity symptoms.'
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

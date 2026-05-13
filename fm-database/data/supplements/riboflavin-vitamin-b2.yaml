@@ -1,0 +1,48 @@
+slug: riboflavin-vitamin-b2
+display_name: Riboflavin (Vitamin B2)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 1.6
+    max: 100
+    unit: mg
+  tablet:
+    min: 1.6
+    max: 100
+    unit: mg
+timing_options:
+- morning
+- with_breakfast
+- with_lunch
+take_with_food: optional
+linked_to_topics:
+- mthfr-polymorphisms
+- riboflavin-and-blood-pressure-mthfr
+linked_to_claims:
+- riboflavin-stabilizes-mthfr-c677t-enzyme
+- riboflavin-lowers-blood-pressure-in-677tt
+- riboflavin-blood-pressure-effect-genotype-specific
+notes_for_coach: 'Riboflavin has a strong safety profile as a B-vitamin. It is specifically
+  relevant for individuals with the 677TT MTHFR genotype, where it may stabilize the
+  enzyme and support active folate production. Blood pressure effects are clinically
+  significant — always defer to clinician for BP management. Note: urine turns bright
+  yellow at higher doses, which is harmless.'
+notes_for_client: Riboflavin (vitamin B2) helps your MTHFR enzyme work better, especially
+  if you have the 677TT variant. It may also help support healthy blood pressure in
+  people with this genotype. It is a B-vitamin with a good safety record. High doses
+  may turn your urine bright yellow — this is normal and harmless.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: Notebook LM
+  location: Riboflavin and MTHFR
+  quote: Riboflavin, or vitamin B2, is important because the MTHFR enzyme depends
+    on flavin adenine dinucleotide (FAD), a riboflavin-derived cofactor. The MTHFR
+    C677T variant produces a less stable enzyme that may lose this cofactor more easily.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

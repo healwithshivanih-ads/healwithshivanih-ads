@@ -1,0 +1,28 @@
+slug: b6-supports-broader-methylation-cycle
+statement: Vitamin B6, alongside folate, B12, and riboflavin, supports broader methylation
+  cycle function, including the transsulfuration pathway for homocysteine clearance.
+evidence_tier: plausible_emerging
+rationale: The document mentions B6 as part of broader methylation-cycle support and
+  notes that homocysteine may rise when B6 is under-supported. B6's role in the transsulfuration
+  pathway (homocysteine → cystathionine via CBS) is well-established biochemistry,
+  though RCT evidence specific to MTHFR populations is thin.
+coaching_translation: Vitamin B6 helps your body clear homocysteine through a separate
+  pathway — think of it as a parallel route when the main folate/B12 highway is congested.
+caveats:
+- Source is an LLM synthesis; B6 role in homocysteine metabolism is biochemically
+  established but evidence specific to MTHFR supplementation protocols is thin.
+linked_to_topics:
+- mthfr-polymorphisms
+- methylation-cycle
+linked_to_supplements:
+- vitamin-b6
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: Notebook LM
+  location: Supplement Forms Mentioned
+  quote: Vitamin B6 and other B vitamins as broader methylation-cycle support.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani

@@ -1,0 +1,29 @@
+slug: mthfr-affects-folate-processing-not-absorption
+statement: MTHFR variants primarily affect folate processing and utilization after
+  absorption, not gut absorption of folate or B12 itself.
+evidence_tier: strong
+rationale: The document states that MTHFR variants do not usually impair gut absorption
+  of vitamin B12 or folate directly, and that their main effect is on nutrient processing
+  within the methylation cycle. This is consistent with well-established biochemistry.
+coaching_translation: Having an MTHFR variant doesn't mean you can't absorb folate
+  or B12 — it means your body may struggle to convert them into the active forms it
+  needs.
+caveats:
+- Source is an LLM synthesis/notebook summary; underlying primary literature not directly
+  verified here.
+linked_to_topics:
+- mthfr-polymorphisms
+- methylation-cycle
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: Notebook LM
+  location: Overview
+  quote: These variants do not usually impair gut absorption of vitamin B12 or folate
+    directly. Their main effect is on nutrient processing and utilization after absorption,
+    especially within the methylation cycle.
+version: 1
+status: active
+updated_at: '2026-05-13'
+updated_by: Shivani
