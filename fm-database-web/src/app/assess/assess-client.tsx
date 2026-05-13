@@ -835,12 +835,32 @@ export function SuggestionsView({
   setPicks,
   selectedTopics,
   computedRatios,
+  priorSession,
+  currentSymptoms,
 }: {
   suggestions: AssessSuggestions;
   picks: Record<string, boolean>;
   setPicks: (next: Record<string, boolean>) => void;
   selectedTopics: string[];
   computedRatios?: ComputedRatio[];
+  /**
+   * Most recent prior session for this client (if any). Used to compute
+   * the "What changed since last session" delta chip — symptoms that
+   * appeared / resolved, five-pillars deltas, plan staleness.
+   */
+  priorSession?: {
+    date?: string;
+    selected_symptoms?: string[];
+    five_pillars?: {
+      sleep_quality?: number;
+      stress_level?: number;
+      nutrition_quality?: number;
+      connection_quality?: number;
+      movement_days_per_week?: number;
+    };
+  };
+  /** Symptoms ticked for THIS session. Compared against priorSession.selected_symptoms. */
+  currentSymptoms?: string[];
 }) {
   const isOn = (k: string) => picks[k] ?? true;
   const set = (k: string, v: boolean) => setPicks({ ...picks, [k]: v });
@@ -929,6 +949,31 @@ export function SuggestionsView({
   // ..." we surface ONLY the first sentence at the very top, giving the
   // coach the headline before the detailed cards. Coach feedback
   // (2026-05-13) — buried-synthesis problem.
+  // ── Δ Delta chip — what's different since last session ────────────
+  // Compares the THIS-session symptom selection vs the prior session's
+  // selected_symptoms. Surfaces new (in current, not prior), resolved
+  // (in prior, not current), and carryover counts. Plus five-pillars
+  // direction deltas when both sides have a value. Surfaces at the very
+  // top so the coach sees the trajectory before reading any details.
+  const delta = (() => {
+    if (!priorSession || !priorSession.date) return null;
+    const prior = new Set((priorSession.selected_symptoms ?? []).map((s) => s.toLowerCase()));
+    const curr = new Set((currentSymptoms ?? []).map((s) => s.toLowerCase()));
+    const newSyms = [...curr].filter((s) => !prior.has(s));
+    const resolved = [...prior].filter((s) => !curr.has(s));
+    const carryover = [...curr].filter((s) => prior.has(s));
+    const pillarDeltas: { label: string; dir: "up" | "down" | "flat"; from: number; to: number }[] = [];
+    // Compare against the synthesis_notes inferred five pillars? Tricky —
+    // skip for now and only show symptom deltas. Five-pillars on the
+    // CURRENT session aren't in this view's props (only prior is). Add
+    // later if the coach asks for the pillar comparison too.
+    void pillarDeltas; // reserved
+    if (newSyms.length === 0 && resolved.length === 0 && carryover.length === 0) {
+      return null;
+    }
+    return { priorDate: priorSession.date, newSyms, resolved, carryover };
+  })();
+
   const oneSentence = (() => {
     if (!synthesisNotes) return null;
     // Match first sentence ending in `.`, `!`, or `?` followed by a
@@ -952,6 +997,101 @@ export function SuggestionsView({
 
   return (
     <div className="space-y-4">
+      {/* ⓪ Δ delta chip — only when there's a prior session to compare. */}
+      {delta && (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 10,
+            padding: "10px 14px",
+            background: "rgba(110, 76, 200, 0.06)",
+            border: "1.5px solid rgba(110, 76, 200, 0.30)",
+            borderRadius: "var(--fm-radius-md, 8px)",
+            flexWrap: "wrap",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "baseline",
+              gap: 8,
+            }}
+          >
+            <span style={{ fontSize: 14 }}>Δ</span>
+            <span
+              style={{
+                fontSize: 10.5,
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: 0.8,
+                color: "#5a3fb0",
+              }}
+            >
+              Since last session
+            </span>
+            <span
+              style={{
+                fontSize: 10.5,
+                color: "var(--fm-text-tertiary, #999)",
+                fontFamily: "var(--fm-font-mono, ui-monospace, monospace)",
+              }}
+            >
+              {delta.priorDate}
+            </span>
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 5, fontSize: 11 }}>
+            {delta.newSyms.length > 0 && (
+              <span
+                title={delta.newSyms.join(", ")}
+                style={{
+                  padding: "3px 9px",
+                  background: "rgba(231, 76, 60, 0.10)",
+                  color: "#a32c1c",
+                  border: "1px solid rgba(231, 76, 60, 0.30)",
+                  borderRadius: 999,
+                  fontWeight: 600,
+                }}
+              >
+                ▲ {delta.newSyms.length} new ({delta.newSyms.slice(0, 3).join(", ")}
+                {delta.newSyms.length > 3 ? ` +${delta.newSyms.length - 3}` : ""})
+              </span>
+            )}
+            {delta.resolved.length > 0 && (
+              <span
+                title={delta.resolved.join(", ")}
+                style={{
+                  padding: "3px 9px",
+                  background: "rgba(46, 204, 113, 0.10)",
+                  color: "#1E8449",
+                  border: "1px solid rgba(46, 204, 113, 0.30)",
+                  borderRadius: 999,
+                  fontWeight: 600,
+                }}
+              >
+                ▼ {delta.resolved.length} resolved ({delta.resolved.slice(0, 3).join(", ")}
+                {delta.resolved.length > 3 ? ` +${delta.resolved.length - 3}` : ""})
+              </span>
+            )}
+            {delta.carryover.length > 0 && (
+              <span
+                title={delta.carryover.join(", ")}
+                style={{
+                  padding: "3px 9px",
+                  background: "var(--fm-surface, #fff)",
+                  color: "var(--fm-text-secondary, #5a5a5a)",
+                  border: "1px solid var(--fm-border, #e8e8e8)",
+                  borderRadius: 999,
+                  fontWeight: 600,
+                }}
+              >
+                → {delta.carryover.length} carrying over
+              </span>
+            )}
+          </div>
+        </div>
+      )}
+
       {/* ① One-sentence read — most prominent surface */}
       {oneSentence && (
         <div

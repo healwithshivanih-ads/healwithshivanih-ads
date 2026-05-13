@@ -40,7 +40,7 @@ import {
   ComputedRatiosCard,
   PlanBriefCard,
 } from "@/app/assess/assess-client";
-import { FmPanel } from "@/components/fm";
+import { FmPanel, FmCollapsibleStep } from "@/components/fm";
 
 interface IntakeSnapshot {
   chief_complaint?: string;
@@ -571,13 +571,19 @@ export function FullAssessmentForm({
   return (
     <div style={{ display: "grid", gap: 16 }}>
       {/* ── 1. Intake recap ─────────────────────────────────────────── */}
-      <FmPanel
+      <FmCollapsibleStep
         title="📋 What we already know"
         subtitle={
           intake.intake_date
             ? `Captured at intake on ${intake.intake_date}. Anything wrong → fix it on the Intake form.`
             : "No intake on record. Most of this section will be empty — run an Intake first for a richer Full Assessment."
         }
+        summary={
+          intake.intake_date
+            ? `Intake ${intake.intake_date} · ${intake.conditions?.length ?? 0} condition${(intake.conditions?.length ?? 0) === 1 ? "" : "s"} · ${intake.medications?.length ?? 0} med${(intake.medications?.length ?? 0) === 1 ? "" : "s"}`
+            : "no intake on record"
+        }
+        storageKey={`fm-step-intake-${clientId}`}
         rightSlot={
           intake.intake_session_id ? (
             <Link
@@ -763,12 +769,14 @@ export function FullAssessmentForm({
             {intake.timeline_count === 1 ? "" : "s"} on file.
           </div>
         )}
-      </FmPanel>
+      </FmCollapsibleStep>
 
       {/* ── 2. Symptoms + conditions to focus on ──────────────────── */}
-      <FmPanel
+      <FmCollapsibleStep
         title="🎯 Symptoms + conditions to focus on"
         subtitle="Pre-loaded from the most recent intake. The AI will pull the catalogue subgraph for these. Prune or add as needed."
+        summary={`${symptoms.length} symptom${symptoms.length === 1 ? "" : "s"} · ${topics.length} topic${topics.length === 1 ? "" : "s"} picked`}
+        storageKey={`fm-step-symptoms-${clientId}`}
       >
         <div style={{ display: "grid", gap: 14 }}>
           <SlugMultiPicker
@@ -786,16 +794,18 @@ export function FullAssessmentForm({
             placeholder="Search conditions — hashimoto, perimenopause, …"
           />
         </div>
-      </FmPanel>
+      </FmCollapsibleStep>
 
       {/* ── 3. What's new since intake ──────────────────────────────── */}
-      <FmPanel
+      <FmCollapsibleStep
         title={
           isRepeatAssessment
             ? `📝 What's new since last assessment (${lastAssessmentDate})`
             : "📝 What's new since intake"
         }
         subtitle="New symptoms, life events, things the client reported between sessions. The AI weaves this into the synthesis."
+        summary={`${deltaNotes.trim().length === 0 ? "no delta notes" : `${deltaNotes.trim().split(/\s+/).length} word${deltaNotes.trim().split(/\s+/).length === 1 ? "" : "s"} of delta`} · ${uploads.length} new report${uploads.length === 1 ? "" : "s"}`}
+        storageKey={`fm-step-delta-${clientId}`}
       >
         <textarea
           value={deltaNotes}
@@ -1001,13 +1011,15 @@ export function FullAssessmentForm({
             }}
           />
         </div>
-      </FmPanel>
+      </FmCollapsibleStep>
 
       {/* ── 4. Repeat assessment — prior protocol review ─────────── */}
       {isRepeatAssessment && (
-        <FmPanel
+        <FmCollapsibleStep
           title="🔁 How did the prior protocol go?"
           subtitle={`Prior plan: ${activePlan ? activePlan.slug : "(none active)"}${activePlan ? ` · ${activePlan.status}` : ""}. The AI uses this to weight adjustments vs restart.`}
+          summary={`${protocolReview.trim().length === 0 ? "no review captured yet" : `${protocolReview.trim().split(/\s+/).length} word${protocolReview.trim().split(/\s+/).length === 1 ? "" : "s"} of protocol review`}`}
+          storageKey={`fm-step-protocol-review-${clientId}`}
         >
           <textarea
             value={protocolReview}
@@ -1035,7 +1047,7 @@ export function FullAssessmentForm({
             Tip: capture adherence per supplement / practice, what worked, what
             didn&apos;t, side-effects. The AI compares against the prior plan.
           </div>
-        </FmPanel>
+        </FmCollapsibleStep>
       )}
 
       {/* ── 5. Analyze ─────────────────────────────────────────────── */}
@@ -1112,6 +1124,16 @@ export function FullAssessmentForm({
               setPicks={setPicks}
               selectedTopics={topics}
               computedRatios={result.computed_ratios}
+              priorSession={
+                recentSessions.length > 0
+                  ? {
+                      date: recentSessions[0].date,
+                      selected_symptoms: recentSessions[0].selected_symptoms,
+                      five_pillars: recentSessions[0].five_pillars,
+                    }
+                  : undefined
+              }
+              currentSymptoms={symptoms}
             />
           </FmPanel>
 

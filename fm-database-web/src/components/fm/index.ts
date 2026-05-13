@@ -37,6 +37,9 @@ export type { FmClientHeaderProps } from "./FmClientHeader";
 export { FmFormDraftClear } from "./FmFormDraftClear";
 export type { FmFormDraftClearProps } from "./FmFormDraftClear";
 
+export { FmCollapsibleStep } from "./FmCollapsibleStep";
+export type { FmCollapsibleStepProps } from "./FmCollapsibleStep";
+
 export { FmClientJourneyStrip } from "./FmClientJourneyStrip";
 
 export { FmContactPanel } from "./FmContactPanel";
