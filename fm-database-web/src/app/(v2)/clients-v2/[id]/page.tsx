@@ -29,6 +29,7 @@ import { loadAllPlans } from "@/lib/fmdb/loader";
 import { checkMedicationImpactsAction } from "@/app/clients/actions";
 import { ClientIdentityEditor } from "./client-identity-editor";
 import { EngagementPicker } from "./engagement-picker";
+import { ClientMemoryPanel } from "./client-memory-panel";
 import { parseSessionType } from "@/lib/fmdb/session-utils";
 import {
   FmAppShell,
@@ -874,6 +875,22 @@ export default async function ClientV2Page({
 
           {/* Identity editor moved into FmClientHeader.quickActions so
               it's always visible under the client name. */}
+
+          {/* 🧠 Profile memory — five dietary / lifestyle fields the AI
+              learns about the client over time (via plan-chat) and that
+              the meal-plan letter respects as hard rules. Coach can
+              inline-edit any field. */}
+          <ClientMemoryPanel
+            clientId={client.client_id}
+            initial={{
+              dietary_preference: (client as unknown as { dietary_preference?: string }).dietary_preference,
+              foods_to_avoid: (client as unknown as { foods_to_avoid?: string }).foods_to_avoid,
+              non_negotiables: (client as unknown as { non_negotiables?: string }).non_negotiables,
+              reported_triggers: (client as unknown as { reported_triggers?: string }).reported_triggers,
+              family_history: (client as unknown as { family_history?: string }).family_history,
+            }}
+            lastUpdatedAt={(client as unknown as { updated_at?: string }).updated_at}
+          />
 
           {/* Sign-up status pill row — always available so the coach can
               flip the decision later (e.g. client signs up after weeks

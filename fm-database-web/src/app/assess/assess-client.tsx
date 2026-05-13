@@ -868,8 +868,237 @@ export function SuggestionsView({
   const extracted = suggestions.extracted_labs;
   const synthesisNotes = suggestions.synthesis_notes;
 
+  // ── One-sentence read — first sentence of synthesis_notes ──────────
+  // If the AI's synthesis is "Primary picture is HPA-axis dysregulation
+  // + insulin resistance driving fatigue + central adiposity. Underlying
+  // ..." we surface ONLY the first sentence at the very top, giving the
+  // coach the headline before the detailed cards. Coach feedback
+  // (2026-05-13) — buried-synthesis problem.
+  const oneSentence = (() => {
+    if (!synthesisNotes) return null;
+    // Match first sentence ending in `.`, `!`, or `?` followed by a
+    // space or end-of-string. Trim leading "Primary picture: " etc.
+    const m = synthesisNotes.match(/^.*?[.!?](?=\s|$)/);
+    if (!m) {
+      return synthesisNotes.slice(0, 180);
+    }
+    return m[0];
+  })();
+
+  // ── Differential — top 3 drivers by rank with confidence bars ──────
+  // Confidence is derived from rank (rank 1 = 95% / rank 2 = 75% /
+  // rank 3 = 55%) since the LikelyDriver shape doesn't expose a
+  // confidence_pct. Reasoning stays short on the card; click to expand.
+  const top3 = [...drivers]
+    .sort((a, b) => (a.rank ?? 99) - (b.rank ?? 99))
+    .slice(0, 3);
+  const confFromRank = (r: number): number =>
+    r === 1 ? 95 : r === 2 ? 75 : r === 3 ? 55 : Math.max(30, 50 - r * 5);
+
   return (
     <div className="space-y-4">
+      {/* ① One-sentence read — most prominent surface */}
+      {oneSentence && (
+        <div
+          style={{
+            padding: "14px 18px",
+            background:
+              "linear-gradient(135deg, rgba(43, 45, 66, 0.04), rgba(43, 45, 66, 0.08))",
+            border: "1.5px solid rgba(43, 45, 66, 0.25)",
+            borderRadius: "var(--fm-radius-md, 10px)",
+          }}
+        >
+          <div
+            style={{
+              fontSize: 10.5,
+              fontWeight: 700,
+              textTransform: "uppercase",
+              letterSpacing: 0.8,
+              color: "var(--fm-text-tertiary, #999)",
+              marginBottom: 4,
+            }}
+          >
+            ✨ AI&apos;s read
+          </div>
+          <div
+            style={{
+              fontFamily:
+                '"Libre Baskerville", Georgia, var(--fm-font-display, serif), serif',
+              fontSize: 16,
+              lineHeight: 1.4,
+              color: "var(--fm-text-primary, #1a1a1a)",
+              letterSpacing: "-0.2px",
+            }}
+          >
+            {oneSentence}
+          </div>
+        </div>
+      )}
+
+      {/* ② Differential — top 3 ranked drivers with confidence bars */}
+      {top3.length > 0 && (
+        <div
+          style={{
+            padding: "12px 14px",
+            background: "var(--fm-surface, #fff)",
+            border: "1px solid var(--fm-border-light, #f0f0f0)",
+            borderRadius: "var(--fm-radius-md, 8px)",
+            display: "grid",
+            gap: 8,
+          }}
+        >
+          <div
+            style={{
+              fontSize: 10.5,
+              fontWeight: 700,
+              textTransform: "uppercase",
+              letterSpacing: 0.8,
+              color: "var(--fm-text-tertiary, #999)",
+            }}
+          >
+            🩺 Differential — top {top3.length} root cause{top3.length === 1 ? "" : "s"}
+          </div>
+          {top3.map((d) => {
+            const conf = confFromRank(d.rank ?? 99);
+            const name = (d.mechanism_slug ?? "unknown")
+              .replace(/-/g, " ")
+              .replace(/\b\w/g, (c) => c.toUpperCase());
+            const barColor =
+              conf >= 80 ? "#1E8449" : conf >= 60 ? "#F39C12" : "#8a99af";
+            return (
+              <details
+                key={`${d.mechanism_slug}-${d.rank}`}
+                style={{
+                  border: "1px solid var(--fm-border-light, #f0f0f0)",
+                  borderRadius: 6,
+                  padding: "8px 10px",
+                  background: "#fff",
+                }}
+              >
+                <summary
+                  style={{
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    listStyle: "none",
+                  }}
+                >
+                  <span
+                    style={{
+                      width: 22,
+                      height: 22,
+                      borderRadius: "50%",
+                      background: barColor,
+                      color: "#fff",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: 11,
+                      fontWeight: 700,
+                      flexShrink: 0,
+                    }}
+                  >
+                    {d.rank ?? "?"}
+                  </span>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div
+                      style={{
+                        fontSize: 13,
+                        fontWeight: 700,
+                        color: "var(--fm-text-primary, #1a1a1a)",
+                      }}
+                    >
+                      {name}
+                      {d.atm_role && (
+                        <span
+                          style={{
+                            marginLeft: 8,
+                            fontSize: 9.5,
+                            fontWeight: 600,
+                            padding: "1px 7px",
+                            borderRadius: 999,
+                            background: "rgba(110, 76, 200, 0.08)",
+                            color: "#5a3fb0",
+                            textTransform: "uppercase",
+                            letterSpacing: 0.4,
+                          }}
+                        >
+                          {d.atm_role}
+                        </span>
+                      )}
+                    </div>
+                    {/* Confidence bar */}
+                    <div
+                      style={{
+                        position: "relative",
+                        height: 4,
+                        background: "var(--fm-border-light, #f0f0f0)",
+                        borderRadius: 2,
+                        marginTop: 5,
+                        overflow: "hidden",
+                      }}
+                    >
+                      <div
+                        style={{
+                          position: "absolute",
+                          left: 0,
+                          top: 0,
+                          bottom: 0,
+                          width: `${conf}%`,
+                          background: barColor,
+                        }}
+                      />
+                    </div>
+                  </div>
+                  <span
+                    style={{
+                      fontFamily: "var(--fm-font-mono, ui-monospace, monospace)",
+                      fontSize: 10.5,
+                      fontWeight: 700,
+                      color: barColor,
+                      flexShrink: 0,
+                    }}
+                  >
+                    {conf}%
+                  </span>
+                </summary>
+                <div
+                  style={{
+                    paddingTop: 8,
+                    paddingLeft: 32,
+                    fontSize: 12,
+                    color: "var(--fm-text-secondary, #5a5a5a)",
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {d.reasoning}
+                  {d.chain_evidence && (
+                    <div
+                      style={{
+                        marginTop: 6,
+                        fontSize: 11.5,
+                        color: "var(--fm-text-tertiary, #999)",
+                        fontStyle: "italic",
+                      }}
+                    >
+                      ↳ {d.chain_evidence}
+                    </div>
+                  )}
+                  {d.supporting_evidence && d.supporting_evidence.length > 0 && (
+                    <ul style={{ marginTop: 6, paddingLeft: 18, fontSize: 11.5 }}>
+                      {d.supporting_evidence.map((e, i) => (
+                        <li key={i}>{e}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </details>
+            );
+          })}
+        </div>
+      )}
+
       {synthesisNotes && (
         <CollapsibleCard title="🧐 Synthesis notes" storageKey="synthesis_notes">
           <CardContent>

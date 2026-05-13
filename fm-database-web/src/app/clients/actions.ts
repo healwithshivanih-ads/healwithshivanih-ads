@@ -769,6 +769,14 @@ export interface UpdateClientProfileInput {
   // `engagement_status` on client.yaml. Drives the new "Engagement" step
   // on the journey strip + the stage-banner copy on Overview.
   engagement_status?: EngagementStatus;
+  // Dietary / lifestyle memory — also written by plan-chat as the AI
+  // learns about the client. Exposing them here so the Memory panel
+  // on Overview can let the coach edit / clear them directly.
+  dietary_preference?: string;
+  foods_to_avoid?: string;
+  non_negotiables?: string;
+  reported_triggers?: string;
+  family_history?: string;
   // Clinical
   active_conditions?: string[];
   medications?: string[];
@@ -817,6 +825,17 @@ export async function updateClientProfile(
       data.country = input.country.trim() || undefined;
     if (input.engagement_status !== undefined)
       data.engagement_status = input.engagement_status;
+    // Dietary / lifestyle memory — accept empty string as "clear".
+    if (input.dietary_preference !== undefined)
+      data.dietary_preference = input.dietary_preference.trim() || undefined;
+    if (input.foods_to_avoid !== undefined)
+      data.foods_to_avoid = input.foods_to_avoid.trim() || undefined;
+    if (input.non_negotiables !== undefined)
+      data.non_negotiables = input.non_negotiables.trim() || undefined;
+    if (input.reported_triggers !== undefined)
+      data.reported_triggers = input.reported_triggers.trim() || undefined;
+    if (input.family_history !== undefined)
+      data.family_history = input.family_history.trim() || undefined;
 
     if (input.active_conditions !== undefined)
       data.active_conditions = input.active_conditions;

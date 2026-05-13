@@ -23,6 +23,7 @@ import { toast } from "sonner";
 import { saveSessionAction } from "@/app/assess/actions";
 import {
   FmField,
+  FmInput,
   FmTextarea,
   FmPillGroup,
   FmFormSection,
@@ -63,6 +64,12 @@ export function DiscoveryForm({
   const router = useRouter();
   const [pending, start] = useTransition();
 
+  // Date of the discovery call — defaults to today; coach can change if
+  // she's logging a past call. Whatever's in this field is what gets
+  // saved to session_date.
+  const [sessionDate, setSessionDate] = useState(
+    () => new Date().toISOString().slice(0, 10),
+  );
   const [chiefConcern, setChiefConcern] = useState("");
   const [clientWords, setClientWords] = useState("");
   const [foodDays, setFoodDays] = useState<string>("7");
@@ -102,8 +109,9 @@ export function DiscoveryForm({
 
   const { clearDraft, hasSavedDraft } = useFormDraft(
     `fm-discovery-draft-${clientId}`,
-    { chiefConcern, clientWords, foodDays, outcome, selectedLabsArr },
+    { sessionDate, chiefConcern, clientWords, foodDays, outcome, selectedLabsArr },
     {
+      sessionDate: setSessionDate,
       chiefConcern: setChiefConcern,
       clientWords: setClientWords,
       foodDays: setFoodDays,
@@ -180,6 +188,7 @@ export function DiscoveryForm({
       const result = await saveSessionAction({
         client_id: clientId,
         session_type: "discovery",
+        session_date: sessionDate,
         coach_notes: summary,
         presenting_complaints: `[session_type: discovery_consultation] ${chiefConcern.trim()}`,
         requested_labs: [...selectedLabs],
@@ -217,6 +226,20 @@ export function DiscoveryForm({
         title="Chief concern"
         description="What brought them in today? Single paragraph is enough."
       >
+        <FmField
+          label="Date of call"
+          hint="Defaults to today — change if you're logging a past call. This date is what shows as 'Last contact'."
+        >
+          {({ id }) => (
+            <FmInput
+              id={id}
+              type="date"
+              value={sessionDate}
+              onChange={(e) => setSessionDate(e.target.value)}
+              style={{ maxWidth: 200 }}
+            />
+          )}
+        </FmField>
         <FmField label="Coach summary">
           {({ id }) => (
             <FmTextarea
