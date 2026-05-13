@@ -20,7 +20,9 @@ lactation_safety: unknown
 linked_to_topics: []
 linked_to_mechanisms: []
 linked_to_claims: []
-notes_for_coach: 'Traditional ayurvedic hair tonic — topical oil scalp massage, internal powder for shedding. Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use. Also known as: eclipta-alba.'
+notes_for_coach: Traditional ayurvedic hair tonic — topical oil scalp massage, internal
+  powder for shedding. Stub created from mindmap-agent shortlist 2026-05-13 — flesh
+  out before clinical use.
 sources:
 - id: vitaone-mind-map-tool
   location: mindmap-shortlist 2026-05-13
@@ -29,3 +31,5 @@ version: 1
 status: active
 updated_at: '2026-05-13'
 updated_by: shivani
+aliases:
+- eclipta-alba

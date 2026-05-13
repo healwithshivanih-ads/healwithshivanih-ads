@@ -1,5 +1,8 @@
 slug: holy-basil
 display_name: Holy Basil (Tulsi)
+aliases:
+- tulsi
+- ocimum-sanctum
 category: herb
 forms_available:
 - capsule
