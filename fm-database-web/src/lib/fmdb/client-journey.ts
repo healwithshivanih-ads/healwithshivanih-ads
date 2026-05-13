@@ -19,11 +19,17 @@ import { parseSessionType } from "./session-utils";
  * each one re-running session/plan loads.
  */
 
-export type JourneyStepStatus = "done" | "active" | "pending" | "na";
+export type JourneyStepStatus =
+  | "done"
+  | "active"
+  | "pending"
+  | "na"
+  | "declined";
 
 export interface JourneyStep {
   id:
     | "discovery"
+    | "engagement"
     | "intake"
     | "plan"
     | "week"
@@ -60,6 +66,12 @@ export async function loadClientJourney(
   clientId: string,
   todayIso: string,
 ): Promise<ClientJourney> {
+  // We need the client.yaml for the engagement_status field. Lazy import
+  // to avoid a circular load — `loader-extras` is already imported here
+  // for sessions; `loadClientById` lives in the same module.
+  const { loadClientById } = await import("./loader-extras");
+  const client = await loadClientById(clientId);
+
   const [sessions, allPlans] = await Promise.all([
     loadClientSessions(clientId),
     loadAllPlans(),
@@ -176,11 +188,65 @@ export async function loadClientJourney(
     caption: (asString(pluck(discovery, "date")) as string | undefined) ?? "—",
   });
 
-  // Step 2 — Intake
+  // Step 2 — Engagement decision. Sits between Discovery and Intake
+  // because not every discovery client signs up — coach explicitly
+  // flagged this gap 2026-05-13. Three states:
+  //   pending  — discovery done, waiting for the coach to mark it
+  //   signed_up — moving forward
+  //   declined — politely passed
+  const engagementRaw = asString(pluck(client, "engagement_status"));
+  const engagement =
+    engagementRaw === "signed_up"
+      ? "signed_up"
+      : engagementRaw === "declined"
+        ? "declined"
+        : "pending";
+  if (!discovery) {
+    // No discovery yet — engagement step is just an upcoming slot.
+    steps.push({
+      id: "engagement",
+      label: "Sign-up",
+      status: "pending",
+      caption: "—",
+    });
+  } else if (engagement === "signed_up") {
+    steps.push({
+      id: "engagement",
+      label: "Sign-up",
+      status: "done",
+      caption: "Confirmed",
+    });
+  } else if (engagement === "declined") {
+    steps.push({
+      id: "engagement",
+      label: "Sign-up",
+      status: "declined",
+      caption: "Declined",
+    });
+  } else {
+    // Discovery done but no decision yet.
+    steps.push({
+      id: "engagement",
+      label: "Sign-up · decide?",
+      status: "active",
+      caption: "Click to confirm",
+    });
+  }
+
+  // If client declined after discovery, the rest of the journey is N/A.
+  const declined = engagement === "declined";
+
+  // Step 3 — Intake
   steps.push({
     id: "intake",
     label: "Intake",
-    status: intake ? "done" : discovery ? "active" : "pending",
+    status: declined
+      ? "na"
+      : intake
+        ? "done"
+        : engagement === "signed_up"
+          ? "active"
+          : "pending",
     caption: (asString(pluck(intake, "date")) as string | undefined) ?? "—",
   });
 

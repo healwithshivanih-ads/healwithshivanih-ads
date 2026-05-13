@@ -225,6 +225,10 @@ export async function createClient(
 
     if (str(input.email))              extraFields.email              = input.email!.trim();
     if (str(input.family_history))     extraFields.family_history     = input.family_history!.trim();
+    // Mark engagement_status=pending so the journey strip shows the
+    // "Did they sign up?" step immediately after creation. Coach can
+    // flip it to "signed_up" or "declined" from the overview.
+    extraFields.engagement_status = "pending";
     if (str(input.dietary_preference)) extraFields.dietary_preference = input.dietary_preference!.trim();
     if (str(input.foods_to_avoid))     extraFields.foods_to_avoid     = input.foods_to_avoid!.trim();
     if (str(input.non_negotiables))    extraFields.non_negotiables    = input.non_negotiables!.trim();
@@ -741,6 +745,14 @@ export async function generateTopicBrief(
 // Update clinical profile (medications, conditions, history, allergies, goals)
 // ---------------------------------------------------------------------------
 
+/**
+ * Engagement after the discovery call:
+ *   pending  — discovery done, no decision yet (default once discovery is recorded)
+ *   signed_up — client is going forward; intake can be scheduled
+ *   declined — politely passed; further outreach is opt-out by default
+ */
+export type EngagementStatus = "pending" | "signed_up" | "declined";
+
 export interface UpdateClientProfileInput {
   client_id: string;
   // Identity (added 2026-05-13 — coach needs to fix typos / second names
@@ -753,6 +765,10 @@ export interface UpdateClientProfileInput {
   city?: string;
   state?: string;
   country?: string;
+  // Did the client sign on after discovery? Stored as
+  // `engagement_status` on client.yaml. Drives the new "Engagement" step
+  // on the journey strip + the stage-banner copy on Overview.
+  engagement_status?: EngagementStatus;
   // Clinical
   active_conditions?: string[];
   medications?: string[];
@@ -799,6 +815,8 @@ export async function updateClientProfile(
     if (input.state !== undefined) data.state = input.state.trim() || undefined;
     if (input.country !== undefined)
       data.country = input.country.trim() || undefined;
+    if (input.engagement_status !== undefined)
+      data.engagement_status = input.engagement_status;
 
     if (input.active_conditions !== undefined)
       data.active_conditions = input.active_conditions;

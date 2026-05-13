@@ -47,6 +47,13 @@ const STATUS_STYLE: Record<
     labelCol: "var(--fm-text-tertiary)",
     captionCol: "var(--fm-text-tertiary)",
   },
+  declined: {
+    dotBg: "#E74C3C",
+    dotBorder: "#E74C3C",
+    dotIcon: "✕",
+    labelCol: "#a32c1c",
+    captionCol: "#a32c1c",
+  },
 };
 
 function isIsoDate(s: string | undefined): boolean {

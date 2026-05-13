@@ -28,6 +28,8 @@ import {
 import { loadAllPlans } from "@/lib/fmdb/loader";
 import { checkMedicationImpactsAction } from "@/app/clients/actions";
 import { ClientIdentityEditor } from "./client-identity-editor";
+import { EngagementPicker } from "./engagement-picker";
+import { parseSessionType } from "@/lib/fmdb/session-utils";
 import {
   FmAppShell,
   FmClientHeader,
@@ -327,7 +329,15 @@ function derivedAge(client: ClientWithMeta): number | undefined {
   return undefined;
 }
 
-function deriveStage(plans: PlanRow[], todayStr: string): {
+function deriveStage(
+  plans: PlanRow[],
+  todayStr: string,
+  ctx?: {
+    hasDiscoverySession: boolean;
+    hasIntakeSession: boolean;
+    engagement?: "pending" | "signed_up" | "declined";
+  },
+): {
   stage: FmWorkflowStage;
   title: React.ReactNode;
   detail?: React.ReactNode;
@@ -335,6 +345,42 @@ function deriveStage(plans: PlanRow[], todayStr: string): {
 } {
   const active = plans.filter((p) => ACTIVE_BUCKETS.has(p._bucket ?? p.status ?? ""));
   if (active.length === 0) {
+    // No plan yet — the message depends on where they are in the funnel.
+    // Coach feedback (2026-05-13): "Sudarshan has discovery done but the
+    // overview still says 'Run a Discovery or Full Assessment'." Use the
+    // session record + engagement_status to give a more useful next-step.
+    if (ctx?.engagement === "declined") {
+      return {
+        stage: "no_plan",
+        title: "Discovery only — declined",
+        detail: "Client politely passed after discovery. No further action queued.",
+        cta: "View discovery",
+      };
+    }
+    if (ctx?.hasDiscoverySession && ctx.engagement !== "signed_up" && !ctx.hasIntakeSession) {
+      return {
+        stage: "no_plan",
+        title: "Awaiting sign-up confirmation",
+        detail: "Discovery captured. Mark whether the client is signing up before scheduling intake.",
+        cta: "Confirm sign-up",
+      };
+    }
+    if (ctx?.hasDiscoverySession && ctx.engagement === "signed_up" && !ctx.hasIntakeSession) {
+      return {
+        stage: "no_plan",
+        title: "Discovery done · schedule intake",
+        detail: "Client signed up. Run a Full Assessment / Intake to capture full history.",
+        cta: "Start intake",
+      };
+    }
+    if (ctx?.hasIntakeSession) {
+      return {
+        stage: "no_plan",
+        title: "Intake captured · draft a plan",
+        detail: "Run the Full Assessment AI synthesis on this intake to draft a protocol.",
+        cta: "Run Full Assessment",
+      };
+    }
     return {
       stage: "no_plan",
       title: "No plan yet",
@@ -414,8 +460,32 @@ export default async function ClientV2Page({
     (p) => (p._bucket ?? p.status) === "published",
   );
 
+  // Has the client done a discovery / intake session yet? Used by
+  // deriveStage to give a more accurate "next step" banner than the
+  // plans-only signal. parseSessionType reads the [session_type: xxx]
+  // tag the discovery + intake forms both prefix into
+  // presenting_complaints.
+  const _sessionTypes = sessions.map((s) =>
+    parseSessionType(
+      (s as unknown as Record<string, unknown>).presenting_complaints as
+        | string
+        | undefined,
+    ),
+  );
+  const hasDiscoverySession = _sessionTypes.some((t) => t === "discovery");
+  const hasIntakeSession = _sessionTypes.some((t) => t === "intake");
+  const engagementRaw = (client as unknown as { engagement_status?: string }).engagement_status;
+  const engagement =
+    engagementRaw === "signed_up" || engagementRaw === "declined" || engagementRaw === "pending"
+      ? (engagementRaw as "signed_up" | "declined" | "pending")
+      : undefined;
+
   // Workflow stage
-  const stageInfo = deriveStage(plansForClient, todayStr);
+  const stageInfo = deriveStage(plansForClient, todayStr, {
+    hasDiscoverySession,
+    hasIntakeSession,
+    engagement,
+  });
 
   // Last contact date — pick the newest of: any saved session, the
   // client's intake date, or the YAML's created_at. A freshly-created
@@ -554,6 +624,21 @@ export default async function ClientV2Page({
       ]}
     >
       <FmClientJourneyStrip journey={journey} />
+
+      {/* Sign-up callout — only when discovery is done AND the coach
+          hasn't yet marked the client as signed_up or declined. Helps
+          surface the "did they sign up?" decision so it doesn't fall
+          through the cracks before intake. */}
+      {hasDiscoverySession && engagement !== "signed_up" && engagement !== "declined" && (
+        <div style={{ marginBottom: 12 }}>
+          <EngagementPicker
+            clientId={client.client_id}
+            current={engagement}
+            callout
+          />
+        </div>
+      )}
+
       <FmClientHeader
         clientId={client.client_id}
         displayName={client.display_name ?? client.client_id}
@@ -780,6 +865,39 @@ export default async function ClientV2Page({
 
           {/* Identity editor moved into FmClientHeader.quickActions so
               it's always visible under the client name. */}
+
+          {/* Sign-up status pill row — always available so the coach can
+              flip the decision later (e.g. client signs up after weeks
+              of deliberation). The bigger callout above only renders
+              when the decision is unset / pending. */}
+          {hasDiscoverySession && (
+            <div
+              style={{
+                padding: "10px 12px",
+                background: "var(--fm-surface)",
+                border: "1px solid var(--fm-border-light)",
+                borderRadius: "var(--fm-radius-md)",
+                display: "grid",
+                gap: 6,
+              }}
+            >
+              <div
+                style={{
+                  fontSize: 10.5,
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  letterSpacing: 0.6,
+                  color: "var(--fm-text-tertiary)",
+                }}
+              >
+                Sign-up status
+              </div>
+              <EngagementPicker
+                clientId={client.client_id}
+                current={engagement}
+              />
+            </div>
+          )}
 
           <FmPanel title="Active medications">
             {medList.length === 0 ? (
