@@ -31,6 +31,14 @@ export function clientSubnavTabs(clientId: string): ClientSubnavTab[] {
       label: "Communicate",
       href: `/clients-v2/${clientId}/communicate`,
     },
-    { id: "catalogue", label: "Catalogue", href: "/catalogue" },
+    // Client-scoped catalogue — shows only the catalogue entries this
+    // client is touching (their active conditions, root causes flagged
+    // in plan, supplements in their protocol, mind maps relevant to
+    // their conditions). Each card links out to the global catalogue.
+    {
+      id: "catalogue",
+      label: "Catalogue",
+      href: `/clients-v2/${clientId}/catalogue`,
+    },
   ];
 }

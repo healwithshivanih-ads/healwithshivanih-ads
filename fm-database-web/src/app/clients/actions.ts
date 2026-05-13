@@ -632,6 +632,17 @@ export async function generateTopicBrief(
 
 export interface UpdateClientProfileInput {
   client_id: string;
+  // Identity (added 2026-05-13 — coach needs to fix typos / second names
+  // / wrong DOB / wrong sex without re-creating the client).
+  display_name?: string;
+  date_of_birth?: string;
+  sex?: "F" | "M" | "other";
+  mobile_number?: string;
+  email?: string;
+  city?: string;
+  state?: string;
+  country?: string;
+  // Clinical
   active_conditions?: string[];
   medications?: string[];
   medical_history?: string[];
@@ -657,6 +668,26 @@ export async function updateClientProfile(
     const yaml = await import("js-yaml");
     const raw = await fs.readFile(clientYaml, "utf8");
     const data = yaml.load(raw) as Record<string, unknown>;
+
+    // Identity fields — apply if present, including empty-string-to-clear
+    // semantics. We trim before writing so trailing whitespace from copy-
+    // paste doesn't pollute the YAML.
+    if (input.display_name !== undefined)
+      data.display_name = input.display_name.trim() || undefined;
+    if (input.date_of_birth !== undefined) {
+      // Accept "" to mean "clear" but only YYYY-MM-DD otherwise.
+      const v = input.date_of_birth.trim();
+      data.date_of_birth = v || undefined;
+    }
+    if (input.sex !== undefined) data.sex = input.sex;
+    if (input.mobile_number !== undefined)
+      data.mobile_number = input.mobile_number.trim() || undefined;
+    if (input.email !== undefined)
+      data.email = input.email.trim() || undefined;
+    if (input.city !== undefined) data.city = input.city.trim() || undefined;
+    if (input.state !== undefined) data.state = input.state.trim() || undefined;
+    if (input.country !== undefined)
+      data.country = input.country.trim() || undefined;
 
     if (input.active_conditions !== undefined)
       data.active_conditions = input.active_conditions;
@@ -688,7 +719,16 @@ export async function updateClientProfile(
       "utf8"
     );
 
+    // Revalidate both v1 + v2 client routes so the new name / DOB / contact
+    // fields refresh in the header, journey strip, and dashboard listings.
     revalidatePath(`/clients/${input.client_id}`);
+    revalidatePath(`/clients-v2/${input.client_id}`);
+    revalidatePath(`/clients-v2/${input.client_id}/plan`);
+    revalidatePath(`/clients-v2/${input.client_id}/sessions`);
+    revalidatePath(`/clients-v2/${input.client_id}/communicate`);
+    revalidatePath(`/clients-v2/${input.client_id}/catalogue`);
+    revalidatePath("/clients-v2");
+    revalidatePath("/dashboard-v2");
     return { ok: true };
   } catch (err) {
     const e = err as { message?: string };

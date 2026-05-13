@@ -27,6 +27,7 @@ import {
 } from "@/lib/fmdb/loader-extras";
 import { loadAllPlans } from "@/lib/fmdb/loader";
 import { checkMedicationImpactsAction } from "@/app/clients/actions";
+import { ClientIdentityEditor } from "./client-identity-editor";
 import {
   FmAppShell,
   FmClientHeader,
@@ -743,6 +744,60 @@ export default async function ClientV2Page({
         {/* RIGHT COLUMN */}
         <div style={{ display: "grid", gap: 16, minWidth: 0 }}>
           <FmContactPanel pinned={pinned} more={more} />
+
+          {/* Identity editor — name typos, missing surname, wrong DOB
+              or sex from intake all get fixed here without re-creating
+              the client. Sits next to FmContactPanel since they're
+              both "who is this client" data. */}
+          <div
+            style={{
+              padding: "10px 12px",
+              border: "1px dashed var(--fm-border)",
+              background: "var(--fm-bg-warm, #fff5f0)",
+              borderRadius: "var(--fm-radius-md)",
+              display: "grid",
+              gap: 6,
+            }}
+          >
+            <div
+              style={{
+                fontSize: 10.5,
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: 0.6,
+                color: "var(--fm-text-tertiary)",
+              }}
+            >
+              Identity & contact
+            </div>
+            <div
+              style={{
+                fontSize: 11.5,
+                color: "var(--fm-text-secondary)",
+                lineHeight: 1.4,
+              }}
+            >
+              Edit display name (incl. surname), date of birth, sex,
+              mobile, email, city — any field that needs correcting
+              after intake.
+            </div>
+            <ClientIdentityEditor
+              clientId={client.client_id}
+              initial={{
+                display_name: client.display_name,
+                date_of_birth: client.date_of_birth ?? undefined,
+                sex:
+                  client.sex === "F" || client.sex === "M" || client.sex === "other"
+                    ? (client.sex as "F" | "M" | "other")
+                    : undefined,
+                mobile_number: (client as unknown as { mobile_number?: string }).mobile_number,
+                email: (client as unknown as { email?: string }).email,
+                city: (client as unknown as { city?: string }).city,
+                state: (client as unknown as { state?: string }).state,
+                country: (client as unknown as { country?: string }).country,
+              }}
+            />
+          </div>
 
           <FmPanel title="Active medications">
             {medList.length === 0 ? (
