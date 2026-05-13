@@ -67,6 +67,7 @@ const NAV: FmNavSection[] = [
   {
     label: "Knowledge base",
     items: [
+      { id: "catalogue", label: "Catalogue", icon: "📖", href: "/catalogue" },
       { id: "resources", label: "Resources", icon: "📚", href: "/resources" },
       { id: "mindmap", label: "Mind maps", icon: "🧭", href: "/mindmap" },
       { id: "backlog", label: "Backlog", icon: "📝", href: "/backlog" },

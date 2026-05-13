@@ -3,6 +3,7 @@ import { CatalogueTable } from "@/components/catalogue-table";
 import { loadAllOfKind } from "@/lib/fmdb/loader";
 import { KIND_LABELS, type CatalogueKind } from "@/lib/fmdb/kinds";
 import { CatalogueChatPanel } from "./catalogue-chat-panel";
+import { FmAppShell } from "@/components/fm";
 import type {
   BaseEntity,
   Topic,
@@ -86,39 +87,44 @@ export default async function CataloguePage() {
   };
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold">Catalogue</h1>
-        <p className="text-muted-foreground mt-1">
-          Browse the knowledge base. Click any row for full detail.
-        </p>
-      </div>
+    <FmAppShell
+      activeNavId="catalogue"
+      crumbs={[{ label: "Catalogue" }]}
+    >
+      <div className="space-y-6">
+        <div>
+          <h1 className="text-3xl font-bold">Catalogue</h1>
+          <p className="text-muted-foreground mt-1">
+            Browse the knowledge base. Click any row for full detail.
+          </p>
+        </div>
 
-      <Tabs defaultValue="topics" className="w-full">
-        <TabsList>
+        <Tabs defaultValue="topics" className="w-full">
+          <TabsList>
+            {tabOrder.map((kind) => {
+              const meta = KIND_LABELS[kind];
+              return (
+                <TabsTrigger key={kind} value={kind} title={meta.description}>
+                  <span className="mr-1">{meta.emoji}</span>
+                  {meta.plural} ({counts[kind]})
+                </TabsTrigger>
+              );
+            })}
+          </TabsList>
+
           {tabOrder.map((kind) => {
             const meta = KIND_LABELS[kind];
             return (
-              <TabsTrigger key={kind} value={kind} title={meta.description}>
-                <span className="mr-1">{meta.emoji}</span>
-                {meta.plural} ({counts[kind]})
-              </TabsTrigger>
+              <TabsContent key={kind} value={kind} className="space-y-3">
+                <p className="text-xs text-muted-foreground italic">{meta.description}</p>
+                <CatalogueTable kind={kind} rows={tabContent[kind]} />
+              </TabsContent>
             );
           })}
-        </TabsList>
+        </Tabs>
 
-        {tabOrder.map((kind) => {
-          const meta = KIND_LABELS[kind];
-          return (
-            <TabsContent key={kind} value={kind} className="space-y-3">
-              <p className="text-xs text-muted-foreground italic">{meta.description}</p>
-              <CatalogueTable kind={kind} rows={tabContent[kind]} />
-            </TabsContent>
-          );
-        })}
-      </Tabs>
-
-      <CatalogueChatPanel />
-    </div>
+        <CatalogueChatPanel />
+      </div>
+    </FmAppShell>
   );
 }

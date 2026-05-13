@@ -11,6 +11,7 @@ import type {
 import { BacklogTableClient } from "./backlog-table-client";
 import { loadSupplementLinks } from "./supplement-links-actions";
 import { SupplementLinksClient } from "./supplement-links-client";
+import { FmAppShell } from "@/components/fm";
 
 export const dynamic = "force-dynamic";
 
@@ -90,6 +91,7 @@ export default async function BacklogPage({
   const STATUS_OPTIONS = ["open", "added", "rejected", "all"];
 
   return (
+    <FmAppShell activeNavId="backlog" crumbs={[{ label: "Backlog" }]}>
     <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-bold">Backlog</h1>
@@ -192,5 +194,6 @@ export default async function BacklogPage({
       <BacklogTableClient items={sorted} catalogue={catalogue} />
       </>}
     </div>
+    </FmAppShell>
   );
 }

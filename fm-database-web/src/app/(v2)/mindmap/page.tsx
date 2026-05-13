@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FmAppShell } from "@/components/fm";
 import {
   Table,
   TableBody,
@@ -22,6 +23,7 @@ export default async function MindMapsPage() {
   );
 
   return (
+    <FmAppShell activeNavId="mindmap" crumbs={[{ label: "Mind maps" }]}>
     <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-bold">Mind Maps</h1>
@@ -75,5 +77,6 @@ export default async function MindMapsPage() {
         </div>
       )}
     </div>
+    </FmAppShell>
   );
 }

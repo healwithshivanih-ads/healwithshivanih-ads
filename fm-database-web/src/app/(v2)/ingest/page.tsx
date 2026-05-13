@@ -1,9 +1,11 @@
 import { IngestClient } from "./ingest-client";
+import { FmAppShell } from "@/components/fm";
 
 export const dynamic = "force-dynamic";
 
 export default function IngestPage() {
   return (
+    <FmAppShell activeNavId="ingest" crumbs={[{ label: "Ingest" }]}>
     <div className="max-w-2xl mx-auto space-y-6">
       <div>
         <h1 className="text-3xl font-bold">⬆️ Ingest</h1>
@@ -26,5 +28,6 @@ export default function IngestPage() {
 
       <IngestClient />
     </div>
+    </FmAppShell>
   );
 }

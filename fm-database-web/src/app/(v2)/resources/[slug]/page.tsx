@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { loadResourceBySlug } from "@/lib/fmdb/loader-extras";
+import { FmAppShell } from "@/components/fm";
 
 export const dynamic = "force-dynamic";
 
@@ -17,6 +18,13 @@ export default async function ResourceDetailPage({
   if (!r) notFound();
 
   return (
+    <FmAppShell
+      activeNavId="resources"
+      crumbs={[
+        { label: "Resources", href: "/resources" },
+        { label: r.title ?? r.slug },
+      ]}
+    >
     <div className="space-y-6">
       <div>
         <Link
@@ -179,5 +187,6 @@ export default async function ResourceDetailPage({
         </Card>
       )}
     </div>
+    </FmAppShell>
   );
 }

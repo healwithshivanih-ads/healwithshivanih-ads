@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { FmAppShell } from "@/components/fm";
 import {
   Card,
   CardContent,
@@ -1320,21 +1321,30 @@ export default async function CatalogueDetailPage({
   }));
 
   return (
-    <div>
-      <Link
-        href="/catalogue"
-        className="text-sm text-muted-foreground hover:underline"
-      >
-        ← Back to catalogue
-      </Link>
-      {kindMeta && (
-        <p className="mt-3 text-xs uppercase tracking-wide text-muted-foreground font-semibold">
-          <span className="mr-1">{kindMeta.emoji}</span>
-          {kindMeta.singular}
-        </p>
-      )}
-      <div className="mt-2">{body}</div>
-      <ReclassifyPanel kind={kind} slug={slug} knownEntities={mergeCandidates} />
-    </div>
+    <FmAppShell
+      activeNavId="catalogue"
+      crumbs={[
+        { label: "Catalogue", href: "/catalogue" },
+        { label: kindMeta?.plural ?? kind, href: `/catalogue?tab=${kind}` },
+        { label: slug },
+      ]}
+    >
+      <div>
+        <Link
+          href="/catalogue"
+          className="text-sm text-muted-foreground hover:underline"
+        >
+          ← Back to catalogue
+        </Link>
+        {kindMeta && (
+          <p className="mt-3 text-xs uppercase tracking-wide text-muted-foreground font-semibold">
+            <span className="mr-1">{kindMeta.emoji}</span>
+            {kindMeta.singular}
+          </p>
+        )}
+        <div className="mt-2">{body}</div>
+        <ReclassifyPanel kind={kind} slug={slug} knownEntities={mergeCandidates} />
+      </div>
+    </FmAppShell>
   );
 }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { FmAppShell } from "@/components/fm";
 import {
   Table,
   TableBody,
@@ -52,6 +53,7 @@ export default async function ResourcesPage({
   }
 
   return (
+    <FmAppShell activeNavId="resources" crumbs={[{ label: "Resources" }]}>
     <div className="space-y-6">
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div>
@@ -172,5 +174,6 @@ export default async function ResourcesPage({
         </div>
       )}
     </div>
+    </FmAppShell>
   );
 }

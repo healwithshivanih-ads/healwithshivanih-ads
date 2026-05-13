@@ -8,6 +8,7 @@ import {
 } from "@/lib/fmdb/loader-extras";
 import { renderMindmap } from "./actions";
 import { MindMapMermaid } from "./mindmap-mermaid";
+import { FmAppShell } from "@/components/fm";
 
 export const dynamic = "force-dynamic";
 
@@ -26,6 +27,13 @@ export default async function MindMapDetailPage({
   const renderError = rendered.ok ? null : (rendered.error ?? "Render failed");
 
   return (
+    <FmAppShell
+      activeNavId="mindmap"
+      crumbs={[
+        { label: "Mind maps", href: "/mindmap" },
+        { label: m.display_name ?? m.slug },
+      ]}
+    >
     <div className="space-y-6">
       <div>
         <Link
@@ -87,5 +95,6 @@ export default async function MindMapDetailPage({
         </CardContent>
       </Card>
     </div>
+    </FmAppShell>
   );
 }
