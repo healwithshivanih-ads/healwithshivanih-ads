@@ -310,6 +310,26 @@ def load_batch(data_dir: Path, batch_id: str) -> dict[str, Any]:
     return json.loads(meta.read_text())
 
 
+# Evidence-tier rank: higher = stronger evidence claim. Used to refuse
+# silent downgrades during smart-merge — a new candidate citing a weaker
+# tier shouldn't overwrite an existing canonical's stronger tier just
+# because the model summarising the new source happened to default down.
+# Use --overwrite if you genuinely intend to weaken the canonical tier.
+_EVIDENCE_TIER_RANK = {
+    "strong": 4,
+    "plausible_emerging": 3,
+    "fm_specific_thin": 2,
+    "confirm_with_clinician": 1,
+}
+
+# Source.quality rank — same intent as above for Source records.
+_SOURCE_QUALITY_RANK = {
+    "high": 3,
+    "moderate": 2,
+    "low": 1,
+}
+
+
 def _smart_merge(canonical: dict, staged: dict, *, slug_field: str) -> dict:
     """Conservative merge for --update.
 
@@ -318,6 +338,8 @@ def _smart_merge(canonical: dict, staged: dict, *, slug_field: str) -> dict:
       (`id`/`slug`/`food_slug`/`medication`).
     - Dicts (typical_dose_range): canonical wins per-key unless staged has a non-empty value.
     - Scalars: prefer staged when non-empty/truthy; else keep canonical.
+    - Evidence rank (evidence_tier, source.quality): never downgrade — keep the
+      stronger of canonical vs staged. Caller must use --overwrite to weaken.
     - Lifecycle: version = canonical.version + 1; updated_at/updated_by from staged.
 
     The result is always a SUPERSET of canonical fields — nothing is silently dropped.
@@ -361,6 +383,17 @@ def _smart_merge(canonical: dict, staged: dict, *, slug_field: str) -> dict:
             for sk, sv in s_val.items():
                 merged[sk] = sv if sv else merged.get(sk, sv)
             out[k] = merged
+        elif k == "evidence_tier" and isinstance(c_val, str) and isinstance(s_val, str):
+            # Never downgrade evidence_tier on smart-merge — keep the stronger.
+            c_rank = _EVIDENCE_TIER_RANK.get(c_val, 0)
+            s_rank = _EVIDENCE_TIER_RANK.get(s_val, 0)
+            out[k] = s_val if s_rank >= c_rank else c_val
+        elif k == "quality" and isinstance(c_val, str) and isinstance(s_val, str):
+            # Source.quality follows the same rule — keep the higher-quality
+            # rating rather than silently downgrading on re-ingest.
+            c_rank = _SOURCE_QUALITY_RANK.get(c_val, 0)
+            s_rank = _SOURCE_QUALITY_RANK.get(s_val, 0)
+            out[k] = s_val if s_rank >= c_rank else c_val
         else:
             # Scalar: take staged if it's non-empty / truthy, else keep canonical.
             if s_val not in (None, "", [], {}):
