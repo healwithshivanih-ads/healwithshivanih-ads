@@ -210,6 +210,26 @@ def main() -> int:
 
     # ---- apply suggested_changes ----
     applied = 0
+    applied_log: list[str] = []   # one human-readable line per applied change
+
+    _op_emoji = {
+        "add": "+",
+        "escalate": "↑",
+        "deescalate": "↓",
+        "remove": "-",
+        "swap": "⇄",
+    }
+    def _record(op_: str, kind_: str, slug_or_desc: str, note: str = "") -> None:
+        symbol = _op_emoji.get(op_, "·")
+        label = slug_or_desc or "(no slug)"
+        line = f"  {symbol} {kind_} {label}"
+        if note:
+            # First line of note only, kept short
+            head = note.splitlines()[0].strip()
+            if head and head != label:
+                line += f" — {head[:90]}"
+        applied_log.append(line)
+
     for c in changes:
         op = (c.get("op") or "").strip()
         kind = (c.get("target_kind") or "").strip()
@@ -228,6 +248,7 @@ def main() -> int:
                         coach_rationale=f"[rework] {description}\n{reason}".strip(),
                     ))
                     applied += 1
+                    _record(op, kind, description[:60] or "(no slug)", reason)
                     continue
                 existing = next((s for s in plan.supplement_protocol if s.supplement_slug == slug), None)
                 if existing is None:
@@ -236,11 +257,13 @@ def main() -> int:
                         coach_rationale=f"[rework] {description}\n{reason}".strip(),
                     ))
                     applied += 1
+                    _record(op, kind, slug, description)
                 else:
                     existing.coach_rationale = (
                         existing.coach_rationale + f"\n[rework] {description}\n{reason}"
                     ).strip()
                     applied += 1
+                    _record(op, kind, slug + " (already present — rationale enriched)", description)
             elif op == "escalate":
                 # If already present, append rework note; else add
                 existing = next((s for s in plan.supplement_protocol if s.supplement_slug == slug), None) if slug else None
@@ -249,12 +272,14 @@ def main() -> int:
                         existing.coach_rationale + f"\n[rework — escalate] {description}\n{reason}"
                     ).strip()
                     applied += 1
+                    _record(op, kind, slug, description)
                 elif slug:
                     plan.supplement_protocol.append(SupplementItem(
                         supplement_slug=slug,
                         coach_rationale=f"[rework — escalate] {description}\n{reason}".strip(),
                     ))
                     applied += 1
+                    _record(op, kind, slug, description)
             elif op in ("remove", "deescalate"):
                 if slug:
                     before = len(plan.supplement_protocol)
@@ -263,6 +288,7 @@ def main() -> int:
                     ]
                     if len(plan.supplement_protocol) < before:
                         applied += 1
+                        _record(op, kind, slug, description)
             elif op == "swap":
                 if slug:
                     existing = next((s for s in plan.supplement_protocol if s.supplement_slug == slug), None)
@@ -271,12 +297,14 @@ def main() -> int:
                             existing.coach_rationale + f"\n[rework — swap] {description}\n{reason}"
                         ).strip()
                         applied += 1
+                        _record(op, kind, slug, description)
 
         elif kind == "topic":
             if op == "add" and slug:
                 if slug not in plan.primary_topics and slug not in plan.contributing_topics:
                     plan.contributing_topics.append(slug)
                     applied += 1
+                    _record(op, kind, slug, description)
             elif op == "add" and not slug:
                 # Topic without slug → push into education as a teach-this item
                 plan.education.append(EducationModule(
@@ -285,11 +313,13 @@ def main() -> int:
                     client_facing_summary=f"{description}\n{reason}".strip(),
                 ))
                 applied += 1
+                _record(op, "education", description[:80] or "(no slug)", reason)
 
         elif kind == "lab_order":
             test = description or slug or "(lab order — coach to specify)"
             plan.lab_orders.append(LabOrderItem(test=test, reason=reason or rationale[:200]))
             applied += 1
+            _record(op, kind, test[:80], reason)
 
         elif kind == "education":
             plan.education.append(EducationModule(
@@ -298,6 +328,7 @@ def main() -> int:
                 client_facing_summary=f"{description}\n{reason}".strip(),
             ))
             applied += 1
+            _record(op, kind, slug or description[:80] or "(no slug)", description if slug else "")
 
         elif kind == "practice":
             plan.lifestyle_practices.append(PracticeItem(
@@ -306,12 +337,21 @@ def main() -> int:
                 details=reason,
             ))
             applied += 1
+            _record(op, kind, description[:80] or slug or "(no name)", reason)
 
-    # ---- prepend rework rationale to coach notes ----
+    # ---- prepend rework rationale + itemized change log to coach notes ----
+    change_log_section = ""
+    if applied_log:
+        change_log_section = (
+            f"\nChanges applied ({applied}):\n"
+            + "\n".join(applied_log)
+            + "\n"
+        )
     rework_block = (
         f"[AI Rework — {benefit_pct}% benefit · {confidence} confidence · "
         f"triggered by {triggered_by} · {today.isoformat()}]\n"
-        f"{rationale}\n"
+        f"RATIONALE: {rationale}\n"
+        f"{change_log_section}"
     )
     plan.notes_for_coach = (
         rework_block + ("\n---\n\n" + plan.notes_for_coach if plan.notes_for_coach else "")
