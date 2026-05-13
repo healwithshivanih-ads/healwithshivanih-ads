@@ -278,6 +278,115 @@ export async function createClient(
     }
   }
 
+  // ── Auto-write a Discovery session ───────────────────────────────────
+  // The new-client form captures the full discovery-call content:
+  // chief complaints / symptoms / goals / dietary preferences / family
+  // history / five pillars / timeline. Coach feedback (2026-05-13):
+  // entering all of that and then seeing "Last contact: Never" + no
+  // session in the Timeline feels wrong — the intake IS the discovery.
+  //
+  // So if the coach captured ANY of the discovery-shaped data during
+  // create, we also write a session YAML at
+  // clients/<id>/sessions/<sid>.yaml tagged session_type=discovery.
+  // Best-effort — a failure here doesn't roll back the client itself.
+  try {
+    const hasDiscoveryContent =
+      (input.conditions && input.conditions.length > 0) ||
+      (input.goals && input.goals.length > 0) ||
+      (input.medications && input.medications.length > 0) ||
+      (input.allergies && input.allergies.length > 0) ||
+      !!input.digestion_notes ||
+      !!input.sleep_notes ||
+      !!input.energy_pattern ||
+      !!input.menstrual_notes ||
+      !!input.stress_response ||
+      !!input.childhood_history ||
+      !!input.toxic_exposures ||
+      !!input.what_has_worked ||
+      !!input.what_hasnt_worked ||
+      !!input.notes ||
+      !!input.dietary_preference ||
+      !!input.foods_to_avoid ||
+      !!input.non_negotiables ||
+      !!input.family_history ||
+      (input.timeline_events && input.timeline_events.length > 0) ||
+      !!input.five_pillars;
+
+    if (hasDiscoveryContent) {
+      // Compose presenting_complaints as a one-paragraph summary so the
+      // Sessions/Timeline tab shows something meaningful for this entry.
+      // Marks the session as discovery via the standard [session_type:]
+      // tag prefix the rest of the app uses to filter sessions.
+      const summaryParts: string[] = [];
+      if (input.conditions && input.conditions.length > 0) {
+        summaryParts.push(`Active conditions: ${input.conditions.join(", ")}`);
+      }
+      if (input.goals && input.goals.length > 0) {
+        summaryParts.push(`Goals: ${input.goals.join("; ")}`);
+      }
+      if (input.notes) summaryParts.push(input.notes.trim());
+      const presenting =
+        "[session_type: discovery_consultation] " +
+        (summaryParts.join(" · ") || "Initial intake captured via new-client form.");
+
+      // Build a coach_notes block that mirrors what the dedicated
+      // discovery form writes. Keeps Sessions tab inspector rich.
+      const coachNotesLines: string[] = [];
+      if (input.digestion_notes) coachNotesLines.push(`Digestion: ${input.digestion_notes}`);
+      if (input.sleep_notes) coachNotesLines.push(`Sleep: ${input.sleep_notes}`);
+      if (input.energy_pattern) coachNotesLines.push(`Energy: ${input.energy_pattern}`);
+      if (input.menstrual_notes) coachNotesLines.push(`Menstrual: ${input.menstrual_notes}`);
+      if (input.stress_response) coachNotesLines.push(`Stress response: ${input.stress_response}`);
+      if (input.childhood_history) coachNotesLines.push(`Childhood: ${input.childhood_history}`);
+      if (input.toxic_exposures) coachNotesLines.push(`Toxic exposures: ${input.toxic_exposures}`);
+      if (input.what_has_worked) coachNotesLines.push(`What has worked: ${input.what_has_worked}`);
+      if (input.what_hasnt_worked) coachNotesLines.push(`What hasn't worked: ${input.what_hasnt_worked}`);
+      if (input.family_history) coachNotesLines.push(`Family history: ${input.family_history}`);
+      if (input.dietary_preference) coachNotesLines.push(`Dietary preference: ${input.dietary_preference}`);
+      if (input.foods_to_avoid) coachNotesLines.push(`Foods to avoid: ${input.foods_to_avoid}`);
+      if (input.non_negotiables) coachNotesLines.push(`Non-negotiables: ${input.non_negotiables}`);
+      if (input.notes) coachNotesLines.push(`Notes: ${input.notes}`);
+      const coachNotes = coachNotesLines.join("\n");
+
+      // Use a stable per-day session id slug so re-creating doesn't
+      // collide with itself; save-session.py appends an ordinal suffix
+      // if the date already has a session.
+      const sessionDate = input.intake_date || new Date().toISOString().slice(0, 10);
+
+      // Invoke save-session.py the same way saveSessionAction does — but
+      // inline here so we don't pull a circular import (assess/actions.ts
+      // imports nothing from clients/actions.ts but the reverse would be
+      // a new edge).
+      const sessionInput: Record<string, unknown> = {
+        client_id: clientId,
+        session_type: "discovery",
+        session_date: sessionDate,
+        presenting_complaints: presenting,
+        coach_notes: coachNotes,
+      };
+      if (input.five_pillars) sessionInput.five_pillars = input.five_pillars;
+
+      const sessionScript = path.join(SCRIPTS_DIR, "save-session.py");
+      await new Promise<void>((resolve) => {
+        const child = execFile(PYTHON, [sessionScript], {
+          timeout: 15_000,
+          maxBuffer: 2 * 1024 * 1024,
+        });
+        child.stdin?.end(JSON.stringify(sessionInput));
+        // Drain output so the process doesn't deadlock; we don't care
+        // about the result — this is best-effort.
+        child.stdout?.on("data", () => undefined);
+        child.stderr?.on("data", () => undefined);
+        child.on("close", () => resolve());
+        child.on("error", () => resolve());
+      });
+    }
+  } catch {
+    // Auto-discovery is non-fatal — if save-session fails for any
+    // reason (script error, race condition, file system), the client
+    // still exists and the coach can re-enter the session manually.
+  }
+
   // Revalidate BOTH v1 and v2 routes — the new-client form redirects to
   // /clients-v2/<id> by default, so v1-only revalidation was leaving the
   // v2 detail page serving a stale "client not found" 404 right after
@@ -286,6 +395,8 @@ export async function createClient(
   revalidatePath(`/clients/${clientId}`);
   revalidatePath("/clients-v2");
   revalidatePath(`/clients-v2/${clientId}`);
+  revalidatePath(`/clients-v2/${clientId}/sessions`);
+  revalidatePath(`/clients-v2/${clientId}/analyse`);
   revalidatePath("/dashboard-v2");
   return { ok: true, client_id: clientId };
 }
