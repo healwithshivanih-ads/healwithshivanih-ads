@@ -14,7 +14,250 @@ published plans as JSON artifacts.
 
 ## Status
 
-**v0.68 (current)** — Plan-editor rethink + rework-AI lab-dedup + backlog Haiku classifier + full v1 structural retirement:
+**v0.73 (current)** — First production deploy: intake form on Fly.io at `intake.theochretree.com`, coach UI stays on Mac.
+
+Architectural split: the **public-facing intake form** runs on Fly (Mumbai, single 1 GB machine, 3 GB persistent volume). The **coach UI** (`/clients-v2`, `/plans`, `/assess`, `/dashboard-v2`, `/catalogue`, etc.) stays on the Mac mini + laptop exactly as before — no auth changes, no migration. Client PHI stays in `~/fm-plans/` on the Macs; Fly has a writable replica at `/data/fm-plans/` synced bidirectionally via Mutagen.
+
+**The deploy is a hard split, not "two halves of the same app":**
+- Fly machine returns **404** on every coach-UI route (`/clients-v2`, `/plans`, etc.), regardless of auth state. The route doesn't exist as far as the public is concerned. Enforced by `FLY_INTAKE_ONLY=1` env in `fly.toml` + `middleware.ts` check.
+- Coach UI on `localhost:3002` (Mac mini/laptop, PM2-managed) is unchanged — no middleware activates because the env var is unset locally.
+- Public hostname `intake.theochretree.com` resolves only to the Fly machine. There is no `shivani.theochretree.com` (originally planned but dropped — coach uses localhost).
+
+**Files added (all at repo root unless noted):**
+- `Dockerfile` — 4-stage build. Stage `web-build` (Node 22 + Next.js build, `npm ci --include=dev` for Tailwind v4 postcss plugin); stage `python-build` (Python 3.12 + venv + Anthropic SDK + pyyaml + python-dotenv + html2text); stage `mutagen-agent-fetch` (downloads linux_amd64 Mutagen agent from GitHub release v0.18.1); stage `runtime` (Node + Python + venv + Next build + Mutagen agent baked at both `WORKDIR/.mutagen/agents/0.18.1/...` AND `/root/.mutagen/agents/0.18.1/...`). Final image ~388 MB.
+- `.dockerignore` — excludes `.git`, all `node_modules`, `.venv`, `__pycache__`, secrets (`.env*`, `google_service_account.json`), client PHI (`fm-plans`, `fm-resources`), worktrees, screenshots.
+- `fly.toml` — app `theochretree-coach`, region `bom`, mount `fmcoach_data` at `/data`, internal_port 3002, health check on `/api/health`, `auto_stop_machines = "off"` (clients submit async, no cold starts), `FLY_INTAKE_ONLY=1` in `[env]`.
+- `fm-database-web/src/middleware.ts` — three operating modes: INTAKE-ONLY (return 404 for any non-public path), COACH UI WITH AUTH (HTTP Basic Auth, unused by current deploy), LOCAL DEV (no-op when neither env var set). Public path allowlist: `/intake/*`, `/start/*`, `/api/aisensy-webhook`, `/api/whatsapp-poll-webhook`, `/api/health`, `/_next/*`, `/favicon.ico`. Uses Edge-runtime-safe `atob()` for base64 decode.
+- `fm-database-web/src/app/api/health/route.ts` — returns `{ok, service, ts}` for Fly LB.
+- `DEPLOY_FLY.md` — 11-step runbook (Fly app create → volume create → secrets set → first deploy → Mutagen setup → custom domain → DNS at Wix → cert verify → smoke test → Nidhi link → cleanup). ~2-3 hr end-to-end.
+- `MUTAGEN_SYNC.md` — bidirectional sync runbook + 3 empirical gotchas (iCloud-symlink path resolution, agent placement at WORKDIR not HOME, slim image missing scp/tar) + ongoing-ops section (SSH cert 72h refresh cron, LaunchAgent SSH_AUTH_SOCK survivability, MacBook bridge-vs-direct decision).
+
+**Production reality (deployed 2026-05-14):**
+- Fly app `theochretree-coach` in `bom`, machine `81107ef9461078`, IPv4 `66.241.125.67`, IPv6 `2a09:8280:1::115:bbff:0`.
+- Volume `fmcoach_data` (3 GB, daily snapshots enabled).
+- Custom domain `intake.theochretree.com` (CNAME at Wix DNS → `qj0gpyy.theochretree-coach.fly.dev`), Let's Encrypt cert (RSA + ECDSA), ~60 day renewal cycle.
+- Secrets: ANTHROPIC_API_KEY, AISENSY_API_KEY, AISENSY_WEBHOOK_SECRET (`627e6e285b202002c81b792478d274ba` — saved to Obsidian vault), GMAIL_USER, GMAIL_APP_PASSWORD. COACH_AUTH_* skipped (FLY_INTAKE_ONLY makes them unused).
+- Mutagen 0.18.1 daemon on Mac mini, sync session `fm-plans` between `/Users/shivani/Library/Mobile Documents/com~apple~CloudDocs/fm-plans/` (resolved iCloud path, NOT the `~/fm-plans` symlink) and `root@theochretree-coach.internal:/data/fm-plans/` over WireGuard tunnel. Mode `two-way-safe`. Initial scan: 31 dirs / 139 files / 160 MB. Status: `Watching for changes`.
+- All 6 existing clients (cl-004 through cl-008, plus nidhi-jain) visible at `/data/fm-plans/clients/` on Fly volume after Mutagen converged.
+
+**Smoke-test results (post-deploy):**
+| Surface | Expected | Got |
+|---|---|---|
+| `GET /api/health` | `200 {"ok":true,...}` | ✅ 200, 57ms |
+| `GET /intake/<Nidhi's token>` (real) | 200 | ✅ 200, 62ms |
+| `GET /clients-v2` on public host | 404 | ✅ 404 |
+| `GET /plans`, `/catalogue`, `/dashboard-v2`, `/assess` | 404 each | ✅ 404 each |
+| `POST /api/aisensy-webhook` (no secret) | 401 | ✅ 401 |
+| `POST /api/aisensy-webhook` (bad secret) | 401 | ✅ 401 |
+| `POST /api/aisensy-webhook` (good secret) | 200 (matched:false for fake phone) | ✅ 200 |
+| Cert | Issued by Let's Encrypt | ✅ RSA + ECDSA |
+
+**Workflow now operational for real clients**:
+- Coach generates intake token on Mac (writes to `client.yaml#intake_token`). Mutagen propagates to Fly volume in <2s.
+- Coach WhatsApps client the link `https://intake.theochretree.com/intake/<token>` (via existing one-click WA share button — updated message text: dropped "from Shivani's office", signed "Shivani").
+- Client opens link on phone, fills form, autosaves every 5s. Each save writes `client.yaml#intake_form_draft` on Fly. Mutagen propagates back to Mac in ~1s — coach can watch fields populate live on localhost UI.
+- Client hits Submit. ~60 structured fields land + tagged `[source: client_intake_form]` quick_note session. Token revoked.
+- Coach opens `/clients-v2/<id>` on Mac (localhost) → IntakeInsightsCard offers "✨ Generate insights" → ~$0.003 Haiku call → 4 sections of patterns/red flags/hypotheses/verify-in-session populate.
+- Before session with client, coach opens `/clients-v2/<id>/analyse/intake` → sticky VerifyChecklist sidebar shows AI-generated questions to ask in person.
+
+**First real client onboarded**: Nidhi Jain (cl-id `nidhi-jain`, age 53, F, perimenopausal). Intake token `ZrRNZjBHdrICRajl7RtD1LuROFOXh1Pg` issued 2026-05-14, valid until 2026-05-28. URL `https://intake.theochretree.com/intake/ZrRNZjBHdrICRajl7RtD1LuROFOXh1Pg` confirmed HTTP 200 on Fly.
+
+**Key invariants:**
+- `FLY_INTAKE_ONLY=1` is set in `fly.toml` `[env]`, NOT a Fly secret. The middleware reads it at request time; if it ever gets unset on Fly, the coach UI becomes accessible to anyone who finds the URL — major data leak. To verify: `flyctl env list -a theochretree-coach` should show `FLY_INTAKE_ONLY = "1"`.
+- Mutagen versions on Mac client + Fly agent MUST match exactly. The Dockerfile pins `MUTAGEN_VERSION=0.18.1` as an ARG. When you `brew upgrade mutagen`, bump the ARG + redeploy in the same session.
+- The `--include=dev` flag on `npm ci` in Dockerfile stage `web-build` is non-negotiable — Tailwind v4's `@tailwindcss/postcss` plugin lives in `devDependencies` and is needed at build time even with `NODE_ENV=production`. Removing the flag breaks the next deploy with a Tailwind compile error.
+- Fly SSH certs are 72h. Without the cert-refresh cron (see MUTAGEN_SYNC.md §1 in "Ongoing ops"), Mutagen sync silently stops after 3 days. Set this up before relying on the system unattended for more than ~48h.
+- Coach data on the Mac is authoritative. Fly volume is a writable replica that surfaces public form submissions. If Mutagen ever shows `Conflicts: N`, treat the Mac's version as source of truth unless investigation proves otherwise.
+
+**v0.72** — Structured intake form v2.2 + AI insights pipeline + recommendation traceability:
+
+The intake form now captures ~60 structured fields and feeds an AI-summarised clinical map into every downstream call (assess / rework / letter / sanity check) plus a recommendation-level audit trail.
+
+**Phase 1 — storage** (Pydantic + intake shim):
+- `fm-database/fmdb/plan/models.py` — 5 new sub-models (`ContraceptionEntry`, `PregnancyEntry`, `MedicationCategoryEntry`, `IntakeInsightHypothesis`, `IntakeInsights`) + ~60 new `Client` fields organised by section (weight trajectory + work pattern, family chip list, COVID infection + vaccine history, 9 layered medication category buckets, postprandial pattern + cold/heat tolerance, sleep depth + energy crashes + CGM/tracker, Bristol multi-tick + bowel pattern + hair/nails/skin/pain/oral subsections, period pain severity + contraception_history + pregnancies repeaters, sun + vit D, recent labs + readiness slider). All `Optional` with empty defaults — existing client.yaml files load unchanged.
+- `fm-database-web/scripts/intake-token-action.py` — extended allowlist with `_FLOAT_FIELDS` (kg measurements), `_INTAKE_LIST_FIELDS` (chip arrays, overwrite-on-submit not additive), `_INTAKE_INT_LIST_FIELDS` (Bristol 1-7 multi-tick with range validation + dedup + sort), `_INTAKE_REPEATER_FIELDS` (light-validation list-of-dicts for medication category entries, contraception, pregnancies). End-to-end smoke test on cl-004: 57 fields submit-then-Pydantic-reload clean.
+
+**Phase 2 — AI summarisation + coach UI** (BG agent):
+- New shim `fm-database-web/scripts/generate-intake-insights.py` — single Haiku tool-use call (`claude-haiku-4-5`, max_tokens=2048, `record_intake_insights` tool with strict schema). System prompt: "FM-trained clinical reasoning assistant preparing Shivani for first session." Returns `{patterns: 3-5, red_flags: ≤6, top_hypotheses: 1-3 ranked by confidence, verify_in_session: 1-5}`. ~$0.02 per intake. Dry-run mode supported.
+- New server actions `src/lib/server-actions/intake-insights.ts` — `generateIntakeInsights(clientId, dryRun?)`, `loadIntakeInsights(clientId)`, `updateInsightsCoachNotes(clientId, coachNotes)`. Coach can edit `coach_notes_for_ai` without regenerating (cheap write); regeneration is the manual 🔄 Refresh button (~$0.02).
+- New `src/app/(v2)/clients-v2/[id]/intake-insights-card.tsx` mounted at the TOP of the right column on v2 client overview. Three states: no-intake / submitted-but-not-generated / fully-summarised. FmPanel + FmChip styling, traffic-light tinting for red flags. Inline-editable `coach_notes_for_ai` with blur-save.
+- New read-only `src/app/(v2)/clients-v2/[id]/intake-view/page.tsx` — RSC dense definition-list rendering every captured intake field grouped by section. Linked from IntakeInsightsCard header strip ("📄 View full intake").
+
+**Phase 3 — insights flow into all 4 AI calls**:
+- `ai_check.py` `_client_snapshot()` includes the full `intake_insights` block (patterns + red_flags + top_hypotheses + verify_in_session + coach_notes_for_ai) for the deterministic-checker-plus-AI plan sanity layer.
+- `assess-rework.py` `_build_context()` renders a `# INTAKE INSIGHTS (AI-summarised at submit)` block in the rework prompt with patterns, red flags, ranked hypotheses with confidence %, and coach corrections.
+- `render-client-letter.py` `_top_of_mind_block()` surfaces red flags + patterns + top hypotheses + coach corrections in the letter generator's bullet list so the AI references them in every tip (BANNED-GENERIC rule).
+- `assess.py` `client_ctx` carries the full insights structure through to the suggester's `synthesize()` call.
+
+All 4 paths return `null` cleanly when `intake_insights` isn't generated yet — existing clients keep working unchanged.
+
+**Phase 3.5 — recommendation-level intake_evidence (the audit trail)**:
+- New `intake_evidence: list[str]` field on `HypothesizedDriver`, `SupplementItem`, `PracticeItem`, `LabOrderItem`. Free-text coach-readable phrases citing intake observations that drove each recommendation. AI populates them during assess + rework; coach can edit / remove freely.
+- `suggester.py` tool schema gains `intake_evidence` array on `likely_drivers`, `lifestyle_suggestions`, `supplement_suggestions`, `lab_followups` properties. System-prompt rule #27 (INTAKE-EVIDENCE TRACEABILITY) instructs the AI to populate using the format `"observation (source_field)"` e.g. `"PPI use 3+ years (acid_suppressants)"`, `"On Ozempic 0.5mg (glp1_medications)"`, `"Wakes at 3am (wake_time_pattern)"`. Most-decisive observation first; up to 4 items per recommendation; empty list when not intake-driven (don't fabricate).
+- `assess-rework.py` tool schema gains `intake_evidence` on `suggested_changes` + system-prompt INTAKE-EVIDENCE TRACEABILITY block. Coach corrections in `coach_notes_for_ai` override raw-field AI inferences.
+- `apply-rework.py` propagates `intake_evidence` from each suggested_change onto the target Plan sub-model. New `_merge_evidence()` helper unions existing + incoming citations with case-insensitive dedup, preserves order. Education modules embed evidence as parenthetical in `client_facing_summary` (EducationModule doesn't carry the structured field).
+- `plan-editor.tsx` new `<IntakeEvidenceChips>` component — small indigo-tinted panel labelled "💡 From intake · N" with removable chip per citation. Mounted under SupplementItem's coach_rationale textarea + HypothesizedDriver's reasoning textarea. Hides entirely when `intake_evidence` is empty. Respects `effectiveLocked` / `locked` so published plans show citations read-only.
+
+**Design v2.2 — intake form port** (BG agent):
+- `fm-database-web/src/app/intake/_design/form.css` upgraded 822 → 1171 lines (+ `.fm-stool__icon:has(svg)` override to drop placeholder stripes when a real glyph is rendered). New `--terracotta` token. New atoms: `.fm-subcard` (Bristol gets its own card), `.fm-stool` / `.fm-stool-list` (7 interactive cards stacked vertically), `.fm-medcard` / `.fm-medstack` (layered chip→mini-card pattern for Section 7 medications), `.fm-stepper` (number input with - / + buttons), `.fm-repcard` (contraception + pregnancy repeater rows), `.fm-select`, `.fm-microcopy`, `.fm-chip--xs`, `.fm-input--small`, `.fm-fieldgrid`, `.fm-section--subcard`.
+- `intake-form.tsx` rewritten in place 1516 → 1799 lines. Five new reusable components: `MedMiniCardForm`, `MedicationStack` (per bucket — chip toggles AND inserts/removes mini-cards), `BristolStoolPicker`, `Stepper`, `GradedSlider` (1–10 with caption tiers; reused for `period_pain_severity` and `readiness_confidence`), `ContraceptionRepeater`, `PregnancyRepeater`, `ChipMulti`. Pain body-map is a dashed placeholder rectangle (interactive SVG silhouette is dev backlog).
+- Section count now **13 (male)** / **14 (female)**. Welcome screen "About 25 minutes" up from 20. `FormChrome` adaptive — passes `totalSections` and renders that many dots. Scroll-spy + autosave + onBlur save + submit untouched.
+- 5 hard-coded option lists imported verbatim from design reference: `MED_BUCKETS` (9 categories), `BRISTOL_TYPES` (7 types), `BOWEL_PATTERN` chips, `CONTRACEPTION_TYPES`, `PREG_COMPLICATIONS`.
+
+**Section 11e pain body map** (dev-implemented per design brief — replaces the dashed placeholder rectangle):
+- New `src/app/intake/[token]/pain-body-map.tsx` (377 lines). Hand-authored stylised humanoid silhouette via SVG `<rect>` + `<ellipse>` shapes (no external assets, no npm deps). Front + back views render side-by-side with flex-wrap → stack on mobile.
+- All 40 region slugs from the brief are wired as tappable elements: front 26 (head / face / jaw / neck_front / chest / shoulder_left/right / arm_left/right / elbow_left/right / hand_left/right / upper_abdomen / lower_abdomen / pelvis / hip_left/right / thigh_left/right / knee_left/right / shin_left/right / foot_left/right) + back 14 (head_back / neck_back / upper_back / mid_back / lower_back / scapula_left/right / sacrum / buttock_left/right / calf_left/right / achilles_left/right).
+- Selected regions fill `rgba(43, 45, 66, 0.30)` (indigo at 30% opacity) + 1.5px indigo stroke per the brief. Hover (desktop only) at 15% opacity.
+- Accessibility: each region is `role="button"` + `tabIndex={0}` + `aria-pressed` + Enter/Space toggle. SVG containers are `role="group"` with their own `aria-label`. Each region has 24×24px minimum tap target.
+- Chip readback row below the silhouettes — selected regions render as removable chips (`Lower back ×`). Empty state shows "Tap any region above to mark where you have pain". Reuses existing `.fm-chip` / `.fm-chip--on` / `.fm-chip__x` classes.
+
+**Bristol stool icons** (dev-implemented per design brief — replaces 7 placeholder squares):
+- New `src/app/intake/[token]/bristol-stool-icon.tsx` (~150 lines). 7 minimal stylised SVG glyphs in `var(--terracotta)`, one per Bristol type:
+  - Type 1: three separate filled circles (hard lumps)
+  - Type 2: overlapping circles (lumpy sausage)
+  - Type 3: rounded rect + crack hatches (sausage with cracks)
+  - Type 4: smooth rounded rect (healthy)
+  - Type 5: soft ellipses (blobs with clear edges)
+  - Type 6: irregular path + speck circles (mushy ragged edges)
+  - Type 7: wavy fluid path + ripple line (watery)
+- `BristolStoolIcon` mounted inside `.fm-stool__icon` slots in the form's `BristolStoolPicker`. CSS override `.fm-stool__icon:has(svg)` drops the placeholder stripes when a real glyph is rendered.
+
+**Phase 3.5c expansion — IntakeEvidenceChips on PracticeItem + LabOrderItem**:
+- Original Phase 3.5c mounted the audit-trail chips on SupplementItem + HypothesizedDriver only. Now also rendered under `PracticeItem.details` textarea (Lifestyle section) and `LabOrderItem.reason` textarea (Lab Orders editor in `LabOrdersEditor` component). Same `<IntakeEvidenceChips>` component, same hide-when-empty behaviour, same locked-respecting. All four AI-derived recommendation types now display the `💡 From intake · N` audit chip-row inline when the suggester / rework AI cited intake observations.
+
+**Architectural decisions locked in v0.72**:
+- **Free strings throughout** for chip values (`list[str]`, not Pydantic Enums) — AI handles variant spellings, easier to add chip options without migrations.
+- **Single Haiku summarisation pass** on intake submit, not on every AI call. Coach `🔄 Refresh insights` for manual regen. `coach_notes_for_ai` is the cheap-edit field that flows into downstream AI without regenerating.
+- **Bristol illustrations + body map deferred to dev** (out of design pass). Bristol slug list + body region slug list documented in `docs/INTAKE_FORM_DESIGN_BRIEF.md` dev backlog.
+- **Pattern B chosen for Bristol** (7 interactive cards stacked) — design's call, locked in form.css.
+- **Warm terracotta `#B85C3E`** reserved as `--terracotta` token for Bristol icons.
+
+**Key invariants**:
+- The field-name dev contract in `docs/INTAKE_FORM_DESIGN_BRIEF.md` is the source of truth. Anything generated under a different name is silently dropped at submit.
+- `MedicationCategoryEntry.side_effects` is a `str`, not a chip list — the design reference showed chips but the contract says string; the form went with the contract.
+- Conditional rendering rules preserved: Section 12 (women's) only renders when `sex === "F"` / `"f"`. `weight_change_trigger` only renders when `weight_trend_current === "changed_sharply"`. `covid_long_symptoms` only renders when long-COVID ticked.
+- Existing intakes (pre-v0.72) load cleanly — every new field defaults to empty / null / `[]`. No migration needed.
+- `intake_evidence` empty list = recommendation came from symptoms/labs only with no intake contribution. AI is told NOT to fabricate citations.
+- Insights regeneration is MANUAL (per coach decision). Coach edits a structured field → insights stay frozen until coach taps 🔄 Refresh on IntakeInsightsCard.
+
+**v0.71** — Client-side start-date confirmation (3 patterns + reminder panel):
+
+Building on v0.70's coach-side editor. Three independent layers let the client confirm or change their actual meal-plan start date, each requiring less infra than the next. All three stack cleanly:
+
+**Pattern A — Letter explicitly names the date + invites WhatsApp pushback** (`render-client-letter.py`):
+- `_start_when_block()` rewritten with `_human()` formatter (turns YYYY-MM-DD into "Sunday 17 May 2026"). Each scope (`meal` / `supplement` / `both`) now contains a `GREETING REQUIREMENT` instruction that forces the AI to name the start date in **bold** and invite pushback ("If that day doesn't suit you, just reply to this WhatsApp with the date you'd prefer and I'll shift everything.")
+- Coach-confirmed mode (when `meal_plan_started_on` is set): warmer language, no re-invitation to push back ("Now that Day 1 is locked in for Tuesday 19 May...").
+
+**Pattern B — WhatsApp buttons in the printed letter HTML** (`brand_html.py` + `src/lib/start-date-parser.ts` + webhook):
+- New `_start_date_buttons_html()` injects up to 3 `wa.me` deep-link buttons into the letter directly below the title block. Pre-composed structured messages:
+  - `✅ Yes — {date} works` → `wa.me/918850176753?text=✅%20START:%20YYYY-MM-DD%20[plan:%20<slug>]`
+  - `📅 I'll start a different day` → soft pre-fill, coach reviews
+  - `📦 My supplements have arrived` → only on `supplement_plan` + `consolidated` letter types
+- Buttons styled sage-green / indigo / amber, hidden on print (`.no-print-buttons` class added to the existing print CSS rules).
+- `wrap_in_brand_html()` gains 4 optional params: `meal_start_ymd`, `supplements_start_ymd`, `plan_slug`, `letter_type`. Python 3.9-safe (no `str | None` annotations — uses untyped defaults). Returns `""` when no start date available; the f-string template renders an empty slot.
+- `render-client-letter.py` computes effective dates inline and passes them through. Mirrors the Python Plan helpers exactly: `meal_actual or (plan_period_start + 3d)`.
+- New pure helper `src/lib/start-date-parser.ts` exports `parseInboundStartDateIntent(text)` returning `{kind: 'meal_start_date' | 'supplements_arrived', date: YYYY-MM-DD} | null`. Recognises ISO dates, Indian DD/MM/YYYY format, textual "19 May 2026" / "May 19", with a sanity check (±60 days from today) to reject typos / "I had a flare on 2026-05-19" false positives. Requires an explicit "Start" prefix or verb phrase — refuses to interpret bare dates.
+- Webhook route (`api/aisensy-webhook/route.ts`) gains a Pattern-B branch BEFORE the existing poll classifier. When `parseInboundStartDateIntent` returns a hit, finds the client's latest published plan and calls `updatePlanStartDates(slug, {meal_plan_started_on: date})` or `{supplements_started_on: today}` directly. Falls through to the existing quick_note path on any failure so messages are never lost.
+
+**Pattern C — Tokenised `/start/[token]` landing page** (built by parallel sub-agent):
+- New Pydantic fields on Plan: `start_confirmation_token`, `start_confirmation_expires_at`, `start_confirmation_used_at`. All `Optional`, default `None` — existing plans load cleanly under `extra="forbid"`.
+- New shim `scripts/start-date-action.py` (~290 lines) — JSON dispatcher with `generate` / `lookup` / `confirm` / `revoke` actions. Scans all 5 plan buckets (`drafts`, `ready`, `published`, `superseded`, `revoked`) to resolve token → plan. Writes via direct `yaml.safe_dump` (avoids Pydantic v2 / Python 3.9 round-trip brittleness).
+- New server actions in `lib/server-actions/plans.ts`: `generateStartConfirmToken`, `lookupStartConfirmToken`, `confirmStartDate` (chains into the existing `updatePlanStartDates` to fire the same revalidation set as the coach-side editor), `revokeStartConfirmToken`.
+- New public route `/start/[token]` — server component validates token, renders friendly error cards for `invalid_or_expired` / `expired` / `already_used`, otherwise hands off to a mobile-first form. Form: big sage-green "✓ Yes, confirm {date}" primary button + secondary date-picker path + thank-you state on success. Standalone layout (no app sidebar).
+- New coach-side button `start-confirm-link-button.tsx` mounted as a sibling panel after `<PlanStartDatesPanel>` on the plan-edit page (the existing coach-types-date and new client-taps-link concerns kept cleanly separated). Single button "📅 Get client confirm link" → token + 📋 Copy + 💬 WhatsApp share. Hides under "✓ Client confirmed" once `start_confirmation_used_at` is set.
+
+**Dashboard reminder panel** (`src/components/start-date-reminder-panel.tsx`):
+- Auto-loads on mount via `listUnconfirmedStartDatesAction(staleDays=5)`. Lists every published plan whose `meal_plan_started_on` is still null AND whose publish event was >5 days ago. Sorted most-stale first.
+- Each row: client name (links to plan editor), days since publish, assumed Day 1 (period_start + 3d), plan slug. Per-row "📨 Send reminder" button calls `sendStartDateReminderAction(clientId)` which fires the `fm_start_date_check_v1` AiSensy template (one-time setup in dashboard).
+- Self-hides when the list is empty. Disabled state when `AISENSY_API_KEY` unset.
+- Inbound replies parsed by Pattern B's parser → list clears itself once client confirms.
+
+**Key invariants:**
+- The four `wa.me` confirm/edit/supps buttons all point to the coach's number (`918850176753` — hardcoded in `brand_html.py` matching the existing footer link). If the coach number changes, update in both places.
+- The `[plan: <slug>]` tag in the structured pre-composed message is forward-compatible — the webhook today resolves to "latest published plan" regardless of the tag. We could later parse it and let a client confirm against a specific plan if they have multiple.
+- `parseInboundStartDateIntent` REQUIRES either an explicit "START:" prefix OR a verb phrase like "I'll start on / starting on / start". Bare dates ("had a headache 2026-05-19") are deliberately ignored to avoid false positives. If users start typing plain dates, the failure mode is "message lands in coach inbox as quick_note" — never silent data loss.
+- The 60-day sanity window on the parser catches typos like 2027 instead of 2026. Adjust in `start-date-parser.ts` if a use case ever crosses it.
+- `updatePlanStartDates` (v0.70) is still the ONLY write path for the two start-date fields. Both Pattern B (webhook → action) and Pattern C (`confirmStartDate` chains into it) funnel through it so revalidation paths fire consistently.
+- AiSensy templates to register (one-time, manual): `fm_start_date_check_v1` ("Hi {{1}} 👋 Quick check-in from Shivani — have you started your plan yet? If yes, just reply with the date you began..."). Webhook delivery still requires the custom forwarder per `docs/INBOUND_WEBHOOK_HANDOFF.md`.
+- The dashboard reminder panel is in addition to, not replacing, the WeeklyPollPanel. Different concerns: WeeklyPollPanel checks adherence over time; StartDateReminderPanel checks confirmation has been captured at all.
+
+**v0.70** — Effective start dates (meal plan +3d / supplements +7d adoption lag):
+
+Coach feedback 2026-05-14: clients don't actually start a meal plan the day it's sent — they take ~3 days to grocery shop and prep. Supplements take ~1 week (have to be ordered + delivered). Computing recheck from `plan_period_start + plan_period_weeks × 7` shaves 3–7 days off the protocol window. Fix: introduce effective-start fields with sensible defaults, drive recheck off the meal-plan effective start, and frame the client letters relative to "your Day 1, not the date you received this letter."
+
+**Pydantic Plan model** (`fm-database/fmdb/plan/models.py`):
+- New nullable fields: `meal_plan_started_on: Optional[date]`, `supplements_started_on: Optional[date]`. Coach captures these AFTER publish when the client confirms.
+- Class constants `MEAL_PLAN_DEFAULT_DELAY_DAYS = 3`, `SUPPLEMENTS_DEFAULT_DELAY_DAYS = 7`.
+- Methods: `effective_meal_plan_start()`, `effective_supplements_start()`, `effective_recheck_date()`. Each returns coach-asserted value if set, else `plan_period_start + default_delay`. `effective_recheck_date = effective_meal_plan_start + plan_period_weeks × 7` — this is what every coach-facing surface should call. The stored `plan_period_recheck_date` becomes a legacy / audit field; effective recheck shifts live when the coach updates the actual start.
+
+**Shared TS util** `src/lib/fmdb/plan-timing.ts`:
+- Mirrors the Python helpers: `effectiveMealPlanStart`, `effectiveSupplementsStart`, `effectiveRecheckDate`, `isRecheckOverdue`, `hasAssertedStart`. Pure functions, no React. Imported anywhere recheck dates are displayed or compared.
+
+**Three TS callsites updated** to use `effectiveRecheckDate`:
+- `dashboard-v2/page.tsx` `computeSignal()` — recheck-overdue check now reflects effective dates; "Recheck due" badges shift 3 days later by default.
+- `(v2)/calendar/page.tsx` — recheck events on the calendar grid land on the effective date.
+- `(v2)/clients-v2/page.tsx` — clients list "Recheck due" column.
+
+Each callsite still references the stored `plan_period_recheck_date` as a fallback when `effectiveRecheckDate()` returns null (no plan_period_start).
+
+**Server action `updatePlanStartDates(slug, patch)`** in `lib/server-actions/plans.ts`:
+- Dedicated endpoint that BYPASSES the draft-only gate in `updatePlan()` — coach typically learns the actual start dates after the plan is published. Touches ONLY `meal_plan_started_on` + `supplements_started_on` + `updated_at`, so it can never accidentally rewrite the rest of a published record. Revalidates `/plans/<slug>`, `/clients-v2/<id>`, `/dashboard-v2`, `/calendar`.
+
+**Coach editor: `<PlanStartDatesPanel>`** at `src/app/(v2)/clients-v2/[id]/plan/edit/[slug]/plan-start-dates-panel.tsx`:
+- Mounted between `AIReadCard` and `PlanEditor` on the v2 plan-edit view.
+- Two date inputs, both optional. When unset, shows the assumed-default date in muted text ("Default assumption: 17 May 2026 — 3d after plan published").
+- Coach-confirmed dates get a green ✓ chip.
+- Live preview of the effective recheck date below — shifts as the coach types.
+- "Clear (back to defaults)" link to revert to the +3d / +7d assumption.
+
+**Letter framing** (`fm-database-web/scripts/render-client-letter.py`):
+- New `_start_when_block(plan, scope)` helper. `scope` ∈ `{'meal', 'supplement', 'both'}`. Three modes:
+  - No `plan_period_start` available → soft framing: "Day 1 is whenever the client is ready — 2–3 days for the meal plan to settle in, ~1 week for supplements."
+  - `plan_period_start` set, no coach actuals → "Plan sent {date}. Meal-plan Day 1 ~{+3d}, Supplements Day 1 ~{+7d}. All week numbering RELATIVE to her Day 1."
+  - Coach-asserted actuals → "Client confirmed she started on {date}. Week 1 begins that date."
+- Injected into all 4 prompt builders: `_build_prompt_meal_plan` (scope=meal), `_build_prompt_supplement_plan` (scope=supplement), `_build_prompt_lifestyle_guide` (scope=both), the consolidated prompt at line ~2735 (scope=both).
+- AI now generates greetings that explicitly tell the client "Day 1 is when YOU are ready, no rush." Week numbering throughout the letter is framed as relative to the client's personal Day 1.
+
+**Key invariants:**
+- The Plan model's stored `plan_period_recheck_date` is now a legacy / audit field — read-only display only. Anything that COMPARES against today (overdue checks, calendar events, dashboard signals) MUST go through `effectiveRecheckDate()` or `isRecheckOverdue()`. Don't add new comparisons against `plan_period_recheck_date` directly.
+- `effectiveRecheckDate(plan)` returns `null` if either `plan_period_start` or `plan_period_weeks` is missing. Callsites should fall back to `plan.plan_period_recheck_date` for display, OR skip the recheck signal entirely.
+- `updatePlanStartDates` is the ONLY way to write the two new fields. `updatePlan()` still gates on draft. Don't try to set them via the general patch path on a published plan — it'll reject.
+- Existing plans without the new fields load cleanly because both fields are `Optional[date] = None`. No migration needed.
+- The default delays (3 + 7) are class constants — change them in one place if FM evidence warrants different defaults later.
+
+**v0.69** — Client intake web form + ATM/timeline into AI sanity + weekly WhatsApp poll:
+
+Three independent builds landed on `2026-05-14`. All ship behind `npm run build` clean.
+
+**📝 Client-facing intake form** (tokenised public link, no auth):
+- New Pydantic fields on `Client`: `intake_token`, `intake_token_expires_at`, `intake_form_draft`, `intake_submitted_at` (`fm-database/fmdb/plan/models.py`).
+- New shim `fm-database-web/scripts/intake-token-action.py` — dispatcher for 5 actions: `generate` (token + 14d TTL), `lookup` (token → prefill + draft), `save_draft` (autosave per-section), `submit` (merge into `client.yaml` + append `[source: client_intake_form]` quick_note + revoke token), `revoke`. Field-allowlists (`_SCALAR_FIELDS`, `_LIST_FIELDS`, `_DATE_FIELDS`, `_INT_FIELDS`) gate what the form can write; everything else is silently dropped. Five-pillars short-key remap (`stress → stress_level`, `movement_days → movement_days_per_week`) so the form payload round-trips through `FivePillarsAssessment` without `extra_forbidden`.
+- New server actions `src/lib/server-actions/intake.ts`: `generateIntakeToken`, `lookupIntakeToken`, `saveIntakeDraft`, `submitIntakeForm`, `revokeIntakeToken`. All shell out via the standard `runScript` pattern.
+- New public route `/intake/[token]` (NOT under `(v2)` — no app sidebar, no auth). Standalone `layout.tsx` for the brand header. Server component calls `lookupIntakeToken` and either renders the form (with prefill + draft merged) or a friendly error card (invalid / expired / already_submitted).
+- New client form `src/app/intake/[token]/intake-form.tsx` (~810 lines). 11 sections single-page (mobile-first scroll): Welcome → About you → Concerns → What's going on → Timeline (repeater) → Day-to-day (5 narrative fields) → Five Pillars (rating buttons + day-chips) → Past & environment → Diet → For women (conditional on `sex==F`) → Anything else. Debounced 5s autosave + on-blur save. Sticky "Saved HH:MM:SS ✓" indicator. Submit replaces the form with a thank-you card.
+- New coach-side component `src/app/(v2)/clients-v2/[id]/send-intake-form-button.tsx` — clickable panel on v2 client overview right column. "📨 Send intake form" → generates token → shows public URL + 📋 Copy + 💬 Send via WhatsApp (`wa.me/{e164}?text={prefilled-msg}`) + Revoke. Hides under "✓ Form submitted on …" if `intake_submitted_at` is set.
+- Smoke-tested: generate → lookup → submit cycle on a real client backs and restored cleanly; `Client(**yaml.load(...))` round-trip after submit succeeds. Token correctly revoked. Test session cleaned up post-verification.
+
+**🧭 IFM timeline + ATM synthesis flow into AI sanity layers**:
+- `fm-database/fmdb/plan/ai_check.py` `_client_snapshot()` now includes a structured `timeline_events` array — antecedents / triggers / mediators across the client's history. AI sanity check can now flag "protocol doesn't address the 2018 mold exposure".
+- `fm-database-web/scripts/assess-rework.py` `_build_context()` prompt gains two new blocks: `# IFM TIMELINE (N events)` (chronological dump of every `timeline_events` entry sorted by year/date), and `# COACH/AI ATM SYNTHESIS (from plan notes)` (extracts the `## IFM Timeline` or `## ATM` block out of `plan.notes_for_coach` if present). Rework AI now sees the upstream synthesis the assess-pipeline made, instead of just the symptom-du-jour summary.
+- Tiny surgical edits, no schema changes — just better context for the AI calls already happening.
+
+**📣 Weekly WhatsApp check-in poll via AiSensy** (uses existing direct-API plumbing):
+- New pure helper `src/lib/poll-labels.ts` — `classifyPollReply(text)` matches inbound text against 13 button-label substrings (`"all good"`, `"all taken"`, `"missed 1-2"`, `"struggling"`, `"none"`, ...) → returns `{dim: 'overall'|'supplements'|'meals'|'movement', score: 'good'|'partial'|'struggling'}` or null.
+- New server actions `src/lib/server-actions/weekly-poll.ts`: `sendWeeklyPollAction(clientIds?, campaignName='fm_weekly_check_in_v1')` — auto-selects clients with published plan if no IDs passed, calls `sendWhatsAppAction` per client with `[name]` as template param, writes audit row to `~/fm-plans/_weekly_poll_log.yaml`. `detectAdherenceDropsAction(windowDays=28)` — scans every client's `sessions/` dir for `[source: weekly_check_in_poll]` quick_notes, reads structured `poll_response` field, applies 3-strike rule (2+ struggling OR 3+ partial in trailing 28d).
+- Webhook extended (`src/app/api/aisensy-webhook/route.ts`): after client-phone match, runs `classifyPollReply` on the message text. If it matches a button label, routes through new dedicated shim `scripts/save-poll-response.py` which writes a session with `presenting_complaints: "[source: weekly_check_in_poll]"` and a structured `poll_response: {dim, score, raw_text, received_at}` field. Generic free-form messages still go through `save-session.py` as before.
+- New dashboard panel `src/components/weekly-poll-panel.tsx` — mounted in `dashboard-v2/page.tsx` right under BroadcastPanel. Two actions: "📣 Send poll to all active clients" (calls `sendWeeklyPollAction`, shows sent/skipped/failed chips + collapsible error list), "🚨 Scan for adherence drops" (calls `detectAdherenceDropsAction`, lists flagged clients with strike count + dimensions + "🔁 Run rework" button per flag that fires `assessReworkBenefitAction({clientId, triggeredBy:'quick_note', eventSummary:'...'})`).
+- Coach must register 4 templates manually in AiSensy dashboard (one-time): `fm_weekly_check_in_v1`, `fm_weekly_supplement_v1`, `fm_weekly_meals_v1`, `fm_weekly_movement_v1`. Template body `"Hi {{1}} 👋 Quick weekly check-in..."` + 3 interactive reply buttons per template (labels documented in `weekly-poll.ts` and mirrored in `poll-labels.ts`). Hidden behind `AISENSY_API_KEY` env-var check.
+
+**Key invariants:**
+- `intake_token` is single-use: cleared by the submit shim. Coach can re-issue via "Send a new intake form" — replaces the prior token; old link returns "invalid_or_expired". Submitted records live forever in the tagged quick_note session for audit.
+- Public route `/intake/[token]` has NO auth and NO app shell. URL token is the only auth surface; coach should send via WhatsApp (URL-shortening optional).
+- Pure helpers must NOT live in `"use server"` files. `classifyPollReply` had to be extracted from `weekly-poll.ts` into `lib/poll-labels.ts` — server-action files only allow async function exports. Same rule applies to any new helper.
+- `assessReworkBenefitAction`'s `triggeredBy` enum is `"check_in" | "quick_note" | "functional_test" | "lab_snapshot" | "genetic_report"`. Weekly-poll adherence-drop triggers use `"quick_note"` (the closest match; the underlying Python is permissive). Add a dedicated enum value later if we want analytics to split it out.
+- Five-pillars form keys (`stress`, `movement_days`) → Pydantic keys (`stress_level`, `movement_days_per_week`) remap lives in `intake-token-action.py` `_FP_KEY_MAP`. If anyone adds a new pillar to the form, update both `_FP_KEY_MAP` and `_FP_ALLOWED`.
+
+**v0.68** — Plan-editor rethink + rework-AI lab-dedup + backlog Haiku classifier + full v1 structural retirement:
 
 **Tip: 12 commits beyond v0.67 (`1c7ec4a..57ed0b7`).** PM2 still serving fm-coach on port 3002. Validator clean (0 errors). Tsc + build clean.
 

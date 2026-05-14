@@ -1,0 +1,68 @@
+# Keep the Docker build context lean.
+# Anything here is NOT copied into the build, even if Dockerfile says COPY .
+
+# Version control
+.git
+.gitignore
+.gitattributes
+
+# Node
+**/node_modules
+**/.next
+**/.turbo
+**/coverage
+**/.pnp
+**/.pnp.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python
+**/__pycache__
+**/*.pyc
+**/*.pyo
+**/.pytest_cache
+**/.mypy_cache
+fm-database/.venv
+.venv
+
+# Secrets — must never ship in the image
+**/.env
+**/.env.local
+**/.env.*.local
+**/.env.production
+**/responder.env
+**/google_service_account.json
+**/zoom_start_url.txt
+
+# Ephemeral / dev-only
+**/.DS_Store
+**/*.log
+**/leads.db
+**/leads.log
+**/reminders.log
+**/wix_contacts_cache.json
+**/wix_upload_progress.json
+
+# Editor / OS
+.vscode
+.idea
+*.swp
+
+# Catalogue staging area (gitignored, only meaningful on dev Mac)
+fm-database/data/staging
+fm-database/data/_audit.jsonl
+fm-database/data/_backlog.yaml
+
+# Client PHI — must NEVER be baked into the image. Lives on the Fly
+# volume at /data, migrated separately via flyctl ssh.
+fm-plans
+fm-resources
+
+# Worktrees + tooling
+.claude/worktrees
+
+# Existing screenshots / dev artefacts
+events
+*.png
+fm-database-web/dev-screenshots

@@ -1,0 +1,71 @@
+# Fly.io app config for FM Coach intake-only public node (v0.73).
+#
+# This Fly machine serves ONLY the public-facing routes:
+#   /intake/[token]              — client-facing intake form
+#   /start/[token]               — client-facing plan-start confirmation
+#   /api/aisensy-webhook         — inbound WhatsApp
+#   /api/whatsapp-poll-webhook   — inbound poll replies
+#   /api/health                  — Fly LB health check
+#
+# Coach UI (`/clients-v2`, `/plans`, `/assess`, …) STAYS on her Macs
+# (mini + laptop). The middleware gates everything else to 404 when
+# FLY_INTAKE_ONLY=1, so even if someone learns about the routes they
+# can't reach them through Fly.
+#
+# Data: ~/fm-plans/ on the Macs ↔ /data/fm-plans/ on Fly is kept in
+# bidirectional sync by Mutagen (see MUTAGEN_SYNC.md).
+#
+# Hostnames (configured via `flyctl certs add`):
+#   intake.theochretree.com    — only public hostname; no coach UI here
+#
+# Region: bom (Mumbai) — most clients are in India, lowest latency.
+# Volume: fmcoach_data, 3 GB, mounted at /data for client.yaml + sessions.
+# Auto-stop: OFF — clients submit async over hours, no cold starts.
+
+app = "theochretree-coach"
+primary_region = "bom"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  NODE_ENV = "production"
+  PORT = "3002"
+  NEXT_TELEMETRY_DISABLED = "1"
+  # CRITICAL: marks this machine as intake-only. The middleware reads
+  # this to return 404 for any non-public route. Don't unset on Fly.
+  FLY_INTAKE_ONLY = "1"
+  FMDB_PLANS_DIR = "/data/fm-plans"
+  FMDB_RESOURCES_DIR = "/data/fm-resources"
+  NEXT_PUBLIC_APP_URL = "https://intake.theochretree.com"
+
+[[mounts]]
+  source = "fmcoach_data"
+  destination = "/data"
+
+[http_service]
+  internal_port = 3002
+  force_https = true
+  # Never stop the machine — clients fill the form async over hours,
+  # cold starts would 502 on first request after sleep.
+  auto_stop_machines = "off"
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ["app"]
+
+  [[http_service.checks]]
+    interval = "30s"
+    timeout = "5s"
+    grace_period = "60s"
+    method = "GET"
+    path = "/api/health"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "1gb"
+
+# Background process group — keep this single-process for now. If we
+# ever want a separate worker for batch jobs, add a [processes] block.
+[deploy]
+  release_command = ""        # set to a migration script later if needed
+  strategy = "rolling"
