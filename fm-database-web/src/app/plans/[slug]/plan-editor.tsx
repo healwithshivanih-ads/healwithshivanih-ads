@@ -897,14 +897,21 @@ export function PlanEditor(props: PlanEditorProps) {
     lifecycleProps,
   } = props;
 
-  // Deep-link support: callers can pass ?tab=protocol|documents|lifecycle
-  // to land on a specific tab. Default is Protocol. Used by the v2
-  // plan page's "Lifecycle (submit / publish)" ActionLink so clicking
-  // it actually shows the Lifecycle tab, not the default Protocol view.
+  // Deep-link support: callers can pass ?tab=protocol|advanced. The
+  // Submit / Activate flow has moved to the inline status bar above the
+  // editor (in the v2 edit page wrapper, 2026-05-14), so the old
+  // "lifecycle" tab is now a smaller "advanced" tab covering only the
+  // rare actions (revoke / supersede / diff / export / save-as-template
+  // / successor draft). Documents tab was killed in the same pass — it
+  // was a stub cross-link to the client page.
+  // Legacy ?tab=lifecycle / ?tab=documents redirect to advanced /
+  // protocol respectively for backward compat.
   const searchParams = useSearchParams();
   const tabParam = searchParams.get("tab");
-  const initialTab: "protocol" | "documents" | "lifecycle" =
-    tabParam === "documents" || tabParam === "lifecycle" ? tabParam : "protocol";
+  const initialTab: "protocol" | "advanced" =
+    tabParam === "advanced" || tabParam === "lifecycle"
+      ? "advanced"
+      : "protocol";
 
   const [plan, setPlan] = useState<Plan>(() => clone(initial));
   const [sources, setSources] = useState<SupplementSourcesMap>(() => clone(initialSources));
@@ -1157,8 +1164,7 @@ export function PlanEditor(props: PlanEditorProps) {
       <Tabs defaultValue={initialTab}>
         <TabsList>
           <TabsTrigger value="protocol">📋 Protocol</TabsTrigger>
-          <TabsTrigger value="documents">📄 Documents</TabsTrigger>
-          <TabsTrigger value="lifecycle">🚀 Lifecycle</TabsTrigger>
+          <TabsTrigger value="advanced">⚙️ Advanced</TabsTrigger>
         </TabsList>
 
         {/* ═══════════════════════════════════════════════════════════════════
@@ -2012,39 +2018,14 @@ export function PlanEditor(props: PlanEditorProps) {
         </TabsContent>
 
         {/* ═══════════════════════════════════════════════════════════════════
-            📄 DOCUMENTS TAB — link to client page for letter generation
+            ⚙️ ADVANCED TAB — rare lifecycle actions (revoke, supersede,
+            diff, export, save-as-template, successor draft). Daily-use
+            Submit / Activate buttons live in the inline status bar at the
+            top of the editor page (v2 wrapper). Documents tab killed —
+            client-facing letters are generated from the client page's
+            "Send package" surface.
         ═══════════════════════════════════════════════════════════════════ */}
-        <TabsContent value="documents">
-          <div className="pt-4 space-y-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Client-facing letters</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <p className="text-sm text-muted-foreground">
-                  Generate client-facing documents (consolidated letter, meal plan, supplement plan, lifestyle guide) from the client page.
-                </p>
-                {clientId ? (
-                  <a
-                    href={`/clients-v2/${clientId}/plan`}
-                    className="inline-flex items-center gap-1.5 rounded-md border border-border bg-muted/40 px-4 py-2 text-sm font-medium hover:bg-muted transition-colors"
-                  >
-                    Go to client page → Documents tab ↗
-                  </a>
-                ) : (
-                  <p className="text-sm text-amber-600 dark:text-amber-400">
-                    No client linked to this plan. Assign a client ID to enable letter generation.
-                  </p>
-                )}
-              </CardContent>
-            </Card>
-          </div>
-        </TabsContent>
-
-        {/* ═══════════════════════════════════════════════════════════════════
-            🚀 LIFECYCLE TAB — plan lifecycle transitions + export
-        ═══════════════════════════════════════════════════════════════════ */}
-        <TabsContent value="lifecycle">
+        <TabsContent value="advanced">
           <div className="pt-2">
             <LifecyclePanel
               slug={plan.slug as string}

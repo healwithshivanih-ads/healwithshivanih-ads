@@ -38,6 +38,10 @@ import type { MultiSelectOption } from "@/components/multi-select";
 import { PlanEditor } from "@/app/plans/[slug]/plan-editor";
 import { PlanCheckPanel } from "@/app/plans/[slug]/plan-check-panel";
 import { FloatingChatBubble } from "./floating-chat-bubble";
+import { ClientSnapshotCard } from "./client-snapshot-card";
+import { AIReadCard } from "./ai-read-card";
+import { InlineStatusBar } from "./inline-status-bar";
+import { loadClientById, loadClientSessions } from "@/lib/fmdb/loader-extras";
 import { DeletePlanButton } from "@/app/plans/[slug]/delete-plan-button";
 import { SendToClientButton } from "@/app/plans/[slug]/send-to-client-modal";
 import { loadSupplementSources } from "@/app/plans/[slug]/actions";
@@ -109,6 +113,8 @@ export default async function V2PlanEditorPage({
     allPlans,
     supplementSources,
     allClients,
+    rawClient,
+    clientSessions,
   ] = await Promise.all([
     loadAllOfKind<Topic>("topics"),
     loadAllOfKind<Symptom>("symptoms"),
@@ -120,6 +126,8 @@ export default async function V2PlanEditorPage({
     loadAllPlans(),
     loadSupplementSources(),
     loadAllClients(),
+    plan.client_id ? loadClientById(plan.client_id) : Promise.resolve(null),
+    plan.client_id ? loadClientSessions(plan.client_id) : Promise.resolve([]),
   ]);
 
   const allPlanSlugs = allPlans.map((p) => p.slug).sort();
@@ -134,6 +142,71 @@ export default async function V2PlanEditorPage({
   const { _bucket, _file, ...editable } = plan;
   void _bucket;
   void _file;
+
+  // ── Derived data for the new top-of-editor cards ─────────────────────
+  // Last contact date — most recent session.date in clientSessions.
+  // clientSessions is sorted newest-first by the loader.
+  const lastContactDate =
+    (clientSessions[0] as { date?: string } | undefined)?.date ?? undefined;
+
+  // Top likely drivers — from the most recent session with ai_analysis.
+  type LDriver = {
+    mechanism_slug?: string;
+    mechanism?: string;
+    name?: string;
+    confidence?: number;
+    rank?: number;
+    reasoning?: string;
+  };
+  const topDrivers: LDriver[] = (() => {
+    for (const s of clientSessions) {
+      const ai = (s as { ai_analysis?: { likely_drivers?: LDriver[] } }).ai_analysis;
+      const drivers = ai?.likely_drivers;
+      if (drivers && drivers.length > 0) {
+        return drivers.slice(0, 3);
+      }
+    }
+    return [];
+  })();
+
+  // AI sanity check is stored on the plan itself (when run via the
+  // right-rail PlanCheckPanel).
+  const sanityCheck =
+    (plan.ai_sanity_check as
+      | {
+          overall_assessment?: string;
+          coherence_score?: number;
+          client_fit_score?: number;
+          concerns?: Array<{
+            severity?: string;
+            category?: string;
+            message?: string;
+            where?: string;
+            suggested_fix?: string;
+          }>;
+        }
+      | undefined) ?? null;
+
+  // Rework suggestion lives on the raw client YAML (not in the strict
+  // Pydantic Client model, so loadClientById sees it as an extra field).
+  const reworkSuggestion =
+    (rawClient as { rework_suggestion?: unknown } | null)?.rework_suggestion as
+      | {
+          generated_at?: string;
+          triggered_by?: string;
+          benefit_pct?: number;
+          confidence?: string;
+          rationale?: string;
+          suggested_changes?: Array<{
+            op?: string;
+            target_kind?: string;
+            target_slug?: string | null;
+            description?: string;
+            reason?: string;
+          }>;
+        }
+      | null
+      | undefined;
 
   return (
     <PlanPageShell clientId={id}>
@@ -202,6 +275,36 @@ export default async function V2PlanEditorPage({
         }}
       >
         <div style={{ minWidth: 0, maxWidth: "100%" }}>
+          {/* ────────────────────────────────────────────────────────────
+              NEW (2026-05-14): three context+action surfaces ABOVE the
+              editor, so the coach lands with everything they need to
+              decide without switching tabs. Replaces the 🚀 Lifecycle
+              tab as the primary action site (Documents tab killed in
+              the same pass — it was a stub cross-link).
+          ──────────────────────────────────────────────────────────── */}
+          <InlineStatusBar
+            planSlug={plan.slug}
+            status={status}
+            version={plan.version}
+            catalogueSnapshot={
+              (plan.catalogue_snapshot as
+                | { git_sha?: string; snapshot_date?: string }
+                | undefined) ?? null
+            }
+          />
+          <ClientSnapshotCard
+            client={rawClient}
+            lastContactDate={lastContactDate}
+            sessionCount={clientSessions.length}
+          />
+          <AIReadCard
+            planSlug={plan.slug}
+            clientId={plan.client_id as string | undefined}
+            sanityCheck={sanityCheck}
+            topDrivers={topDrivers}
+            reworkSuggestion={reworkSuggestion ?? null}
+          />
+
           <PlanEditor
             plan={editable}
             topicOptions={toOptions(topics)}
