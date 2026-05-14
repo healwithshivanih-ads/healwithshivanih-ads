@@ -60,6 +60,15 @@ export const config = {
   // 32 bytes, base64-encoded. Generated once with:
   //   node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"
   integrationEncryptionKey: process.env.INTEGRATION_ENCRYPTION_KEY || '',
+
+  // External webhook forwarder. When set, inbound WhatsApp messages (after
+  // they're persisted to the messages table) are forwarded to this URL.
+  // Used by the FM coach app to ingest WhatsApp messages as session quick-notes.
+  // HMAC-SHA256 signature is sent in X-Whatsapp-Signature-256 header.
+  fmCoachWebhook: {
+    url: process.env.FM_COACH_WEBHOOK_URL || '',
+    secret: process.env.FM_COACH_WEBHOOK_SECRET || '',
+  },
 };
 
 export function configSummary() {

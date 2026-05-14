@@ -10,6 +10,7 @@ import { statsRouter } from './stats.js';
 import { appointmentsRouter } from './appointments.js';
 import { integrationsRouter } from './integrations.js';
 import { importsRouter } from './imports.js';
+import { sendRouter } from './send.js';
 
 export const apiRouter = Router();
 
@@ -29,3 +30,4 @@ apiRouter.use('/stats', statsRouter);
 apiRouter.use('/appointments', appointmentsRouter);
 apiRouter.use('/integrations', integrationsRouter);
 apiRouter.use('/imports', importsRouter);
+apiRouter.use('/send', sendRouter);

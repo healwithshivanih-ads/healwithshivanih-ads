@@ -9,6 +9,7 @@ import { matchContact } from '../services/contacts/matcher.js';
 import { getOrCreate } from '../services/conversations/index.js';
 import { logInbound, updateStatus } from '../services/messages/index.js';
 import { getDefault as getDefaultWorkspace } from '../services/workspaces.js';
+import { forwardInbound } from '../services/forwarder/index.js';
 
 export const webhookRouter = Router();
 
@@ -84,7 +85,7 @@ async function processMetaWebhook(body, webhookRowId) {
           display_name: ev.profile_name,
         });
         const conv = await getOrCreate(ws.id, contact.id, 'whatsapp');
-        await logInbound({
+        const message = await logInbound({
           workspaceId: ws.id,
           conversationId: conv.id,
           contactId: contact.id,
@@ -99,6 +100,8 @@ async function processMetaWebhook(body, webhookRowId) {
           { wa_id: ev.wa_id, type: ev.type, body: (ev.body || '').slice(0, 80) },
           'inbound',
         );
+        // Fire-and-forget forward to FM coach webhook (no-op if not configured).
+        forwardInbound({ event: ev, contact, conversation: conv, message }).catch(() => {});
       } else if (ev.kind === 'status') {
         const errPayload = ev.errors ? { errors: ev.errors } : null;
         await updateStatus(ev.external_message_id, 'whatsapp', ev.status, errPayload);
