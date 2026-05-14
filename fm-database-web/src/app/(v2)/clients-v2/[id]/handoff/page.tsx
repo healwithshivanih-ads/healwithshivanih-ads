@@ -16,7 +16,7 @@
 import Link from "next/link";
 import { loadClientById } from "@/lib/fmdb/loader-extras";
 import { loadAllPlans } from "@/lib/fmdb/loader";
-import { loadClientSessionsAction } from "@/app/assess/actions";
+import { loadClientSessionsAction } from "@/lib/server-actions/assess";
 import { HandoffActions, HandoffNote } from "./handoff-print";
 
 export const dynamic = "force-dynamic";

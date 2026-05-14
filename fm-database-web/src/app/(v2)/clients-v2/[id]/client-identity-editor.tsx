@@ -16,7 +16,7 @@
  */
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
-import { updateClientProfile } from "@/app/clients/actions";
+import { updateClientProfile } from "@/lib/server-actions/clients";
 
 export interface ClientIdentityInitial {
   display_name?: string;

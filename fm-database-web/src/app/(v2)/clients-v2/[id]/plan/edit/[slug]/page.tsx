@@ -35,16 +35,16 @@ import type {
   Topic,
 } from "@/lib/fmdb/types";
 import type { MultiSelectOption } from "@/components/multi-select";
-import { PlanEditor } from "@/app/plans/[slug]/plan-editor";
-import { PlanCheckPanel } from "@/app/plans/[slug]/plan-check-panel";
+import { PlanEditor } from "@/components/plan-editor/plan-editor";
+import { PlanCheckPanel } from "@/components/plan-editor/plan-check-panel";
 import { FloatingChatBubble } from "./floating-chat-bubble";
 import { ClientSnapshotCard } from "./client-snapshot-card";
 import { AIReadCard } from "./ai-read-card";
 import { InlineStatusBar } from "./inline-status-bar";
 import { loadClientById, loadClientSessions } from "@/lib/fmdb/loader-extras";
-import { DeletePlanButton } from "@/app/plans/[slug]/delete-plan-button";
-import { SendToClientButton } from "@/app/plans/[slug]/send-to-client-modal";
-import { loadSupplementSources } from "@/app/plans/[slug]/actions";
+import { DeletePlanButton } from "@/components/plan-editor/delete-plan-button";
+import { SendToClientButton } from "@/components/plan-editor/send-to-client-modal";
+import { loadSupplementSources } from "@/lib/server-actions/plans";
 import { PlanStatusBadge } from "@/components/plan-status-badge";
 import { PlanPageShell } from "../../plan-page-shell";
 

@@ -9,7 +9,7 @@
  * action's snake_case response here.
  */
 import { FmMarkerPanel, type FmMarkerGroup } from "@/components/fm";
-import { recomputeLabMarkersAction } from "@/app/clients/actions";
+import { recomputeLabMarkersAction } from "@/lib/server-actions/clients";
 
 export function MarkerPanelWithRecompute({
   clientId,

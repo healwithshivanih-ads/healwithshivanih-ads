@@ -22,7 +22,7 @@ import {
   saveSessionChartMarkersAction,
   type CatalogueLabRange,
   type LabReferenceRanges,
-} from "@/app/clients/actions";
+} from "@/lib/server-actions/clients";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 

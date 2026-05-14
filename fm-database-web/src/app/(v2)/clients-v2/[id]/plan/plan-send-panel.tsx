@@ -1,6 +1,6 @@
 "use client";
 
-import { SendPackageButton } from "@/app/clients/[id]/send-package-button";
+import { SendPackageButton } from "@/components/client-widgets/send-package-button";
 
 export function PlanSendPanel({
   planSlug,

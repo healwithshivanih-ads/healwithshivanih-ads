@@ -19,12 +19,12 @@
  */
 import { loadClientById } from "@/lib/fmdb/loader-extras";
 import { loadAllPlans } from "@/lib/fmdb/loader";
-import { loadClientSessionsAction } from "@/app/assess/actions";
+import { loadClientSessionsAction } from "@/lib/server-actions/assess";
 import { SessionsPageShell } from "./sessions-page-shell";
 import { SessionsBrowser } from "./sessions-browser";
 import { SessionMarkerCharts } from "./session-marker-charts";
 import { V2TrackingCharts } from "./v2-tracking-charts";
-import { ReworkBanner } from "@/app/clients/[id]/rework-banner";
+import { ReworkBanner } from "@/components/client-widgets/rework-banner";
 import type { Client } from "@/lib/fmdb/types";
 
 export const dynamic = "force-dynamic";

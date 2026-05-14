@@ -10,7 +10,7 @@
  */
 import Link from "next/link";
 import { FmAppShell, FmPageHeader } from "@/components/fm";
-import { NewClientForm } from "@/app/clients/new-client-form";
+import { NewClientForm } from "@/components/client-widgets/new-client-form";
 
 export const dynamic = "force-dynamic";
 

@@ -15,7 +15,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { FmAppShell, FmPageHeader, FmPanel, FmInfoRow, FmChip } from "@/components/fm";
-import { DEFAULT_FM_RANGES } from "@/app/clients/[id]/lab-reference-ranges";
+import { DEFAULT_FM_RANGES } from "@/components/client-widgets/lab-reference-ranges";
 import { getCataloguePath } from "@/lib/fmdb/paths";
 
 export const dynamic = "force-dynamic";

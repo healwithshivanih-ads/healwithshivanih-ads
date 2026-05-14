@@ -17,12 +17,12 @@
  * "missing: everything ACROSS time").
  */
 
-import { OutcomeProgressCard } from "@/app/clients/[id]/outcome-progress-card";
-import { ProtocolAdherenceChart } from "@/app/clients/[id]/protocol-adherence-chart";
-import { IFMTrend } from "@/app/clients/[id]/ifm-trend";
-import { LabComparison } from "@/app/clients/[id]/lab-comparison";
+import { OutcomeProgressCard } from "@/components/client-widgets/outcome-progress-card";
+import { ProtocolAdherenceChart } from "@/components/client-widgets/protocol-adherence-chart";
+import { IFMTrend } from "@/components/client-widgets/ifm-trend";
+import { LabComparison } from "@/components/client-widgets/lab-comparison";
 import { FmPanel } from "@/components/fm";
-import type { SessionSummary } from "@/app/assess/actions";
+import type { SessionSummary } from "@/lib/server-actions/assess";
 import type { Client } from "@/lib/fmdb/types";
 
 export function V2TrackingCharts({

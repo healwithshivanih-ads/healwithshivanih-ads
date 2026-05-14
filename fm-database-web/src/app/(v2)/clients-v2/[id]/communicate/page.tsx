@@ -19,8 +19,8 @@ import { checkAisensyConfigAction } from "@/app/api/aisensy-webhook/actions";
 import { FmPageHeader, FmPanel } from "@/components/fm";
 import { CommunicatePageShell } from "./communicate-page-shell";
 import { CommunicateClient } from "./communicate-client";
-import { ReworkBanner } from "@/app/clients/[id]/rework-banner";
-import { getLetterStalenessAction } from "@/app/plans/[slug]/lifecycle-actions";
+import { ReworkBanner } from "@/components/client-widgets/rework-banner";
+import { getLetterStalenessAction } from "@/lib/server-actions/plan-lifecycle";
 import { RegenerateStaleButton } from "./regenerate-stale-button";
 import {
   loadLetterSendLogAction,

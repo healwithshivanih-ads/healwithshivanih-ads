@@ -15,11 +15,11 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import type { SessionSummary } from "@/app/assess/actions";
+import type { SessionSummary } from "@/lib/server-actions/assess";
 import type { Client } from "@/lib/fmdb/types";
 import { FmPanel } from "@/components/fm";
-import { SessionBriefModal } from "@/app/clients/[id]/session-brief-modal";
-import { PreSessionBrief } from "@/app/clients/[id]/pre-session-brief";
+import { SessionBriefModal } from "@/components/client-widgets/session-brief-modal";
+import { PreSessionBrief } from "@/components/client-widgets/pre-session-brief";
 
 const TYPE_META: Record<
   string,

@@ -20,7 +20,7 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { submitPlan, publishPlan } from "@/app/plans/[slug]/lifecycle-actions";
+import { submitPlan, publishPlan } from "@/lib/server-actions/plan-lifecycle";
 
 interface Props {
   planSlug: string;

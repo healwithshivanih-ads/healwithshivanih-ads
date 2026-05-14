@@ -29,7 +29,7 @@ import os from "node:os";
 import { execFile } from "child_process";
 import { promisify } from "util";
 import yaml from "js-yaml";
-import { findClientByPhoneAction } from "@/app/clients/actions";
+import { findClientByPhoneAction } from "@/lib/server-actions/clients";
 
 const _execFileP = promisify(execFile);
 const FMDB_REPO = path.resolve(process.cwd(), "../fm-database");

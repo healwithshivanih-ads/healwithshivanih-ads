@@ -23,7 +23,7 @@ import { loadAllPlans } from "@/lib/fmdb/loader";
 import { loadCatalogueChipDict } from "@/lib/fmdb/catalogue-chip-dict";
 // Letter send history moved to Communicate tab — single source of truth
 // for all client comms. Plan tab no longer reads the send log.
-import { getLetterStalenessAction } from "@/app/plans/[slug]/lifecycle-actions";
+import { getLetterStalenessAction } from "@/lib/server-actions/plan-lifecycle";
 import type { Plan, PlanStatus } from "@/lib/fmdb/types";
 
 const PLAN_STATUSES = new Set<PlanStatus>([
@@ -50,7 +50,7 @@ import type { FmWorkflowStage } from "@/components/fm";
 import { PlanPageShell } from "./plan-page-shell";
 // Letters live on Communicate now — single source of truth.
 // PlanChatAndPreview moved to draft editor only (per coach feedback).
-import { ReworkBanner } from "@/app/clients/[id]/rework-banner";
+import { ReworkBanner } from "@/components/client-widgets/rework-banner";
 import { AttachedProtocolsPanel } from "./attached-protocols-panel";
 import { FollowUpPanel } from "./follow-up-panel";
 import { PhaseLetterPanel } from "./phase-letter-panel";

@@ -23,7 +23,7 @@ import { loadAllPlans, loadAllOfKind } from "@/lib/fmdb/loader";
 import type { Symptom, Topic } from "@/lib/fmdb/types";
 import { AnalysePageShell } from "../analyse-page-shell";
 import { FmPageHeader } from "@/components/fm";
-import { loadClientSessionsAction } from "@/app/assess/actions";
+import { loadClientSessionsAction } from "@/lib/server-actions/assess";
 import { FullAssessmentForm } from "./full-form";
 
 export const dynamic = "force-dynamic";

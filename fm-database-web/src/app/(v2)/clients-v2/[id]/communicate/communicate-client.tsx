@@ -5,8 +5,8 @@
  * Server-rendered data flows in via props; client interactions live here.
  */
 import Link from "next/link";
-import { SendPackageButton } from "@/app/clients/[id]/send-package-button";
-import { MessageTemplatesPanel } from "@/app/clients/[id]/message-templates-panel";
+import { SendPackageButton } from "@/components/client-widgets/send-package-button";
+import { MessageTemplatesPanel } from "@/components/client-widgets/message-templates-panel";
 import { FmPanel } from "@/components/fm";
 
 interface AisensyMsg {

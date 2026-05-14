@@ -31,7 +31,7 @@ import { loadClientById } from "@/lib/fmdb/loader-extras";
 import {
   loadMealPlan,
   type LetterType,
-} from "@/app/plans/[slug]/lifecycle-actions";
+} from "@/lib/server-actions/plan-lifecycle";
 import { LetterEditor } from "./letter-editor";
 
 export const dynamic = "force-dynamic";

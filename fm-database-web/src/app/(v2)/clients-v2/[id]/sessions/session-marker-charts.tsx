@@ -14,7 +14,7 @@ import {
   loadLabReferenceRangesAction,
   loadLabTestsCatalogueAction,
   loadSessionChartMarkersAction,
-} from "@/app/clients/actions";
+} from "@/lib/server-actions/clients";
 import {
   SessionMarkerChartsClient,
   type MarkerWithData,

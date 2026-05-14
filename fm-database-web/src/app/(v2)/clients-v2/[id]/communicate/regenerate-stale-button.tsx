@@ -16,7 +16,7 @@ import { toast } from "sonner";
 import {
   generateClientLetter,
   type LetterType,
-} from "@/app/plans/[slug]/lifecycle-actions";
+} from "@/lib/server-actions/plan-lifecycle";
 
 interface Props {
   planSlug: string;

@@ -29,7 +29,7 @@ import {
   generatePhaseMealPlanAction,
   listSavedPhasesAction,
   type SavedPhase,
-} from "@/app/plans/[slug]/lifecycle-actions";
+} from "@/lib/server-actions/plan-lifecycle";
 
 interface Props {
   clientId: string;

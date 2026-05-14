@@ -19,7 +19,7 @@
  * revoked) — caller decides via `isLocked` prop.
  */
 import { useState, useEffect } from "react";
-import { PlanChatPanel } from "@/app/plans/[slug]/plan-chat-panel";
+import { PlanChatPanel } from "@/components/plan-editor/plan-chat-panel";
 
 interface Props {
   slug: string;

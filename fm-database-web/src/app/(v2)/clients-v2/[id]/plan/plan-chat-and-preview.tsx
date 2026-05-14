@@ -21,8 +21,8 @@
  * needed during the consult.
  */
 import { useState, useTransition } from "react";
-import { PlanChatPanel } from "@/app/plans/[slug]/plan-chat-panel";
-import { renderPlan, type RenderResult } from "@/app/plans/[slug]/lifecycle-actions";
+import { PlanChatPanel } from "@/components/plan-editor/plan-chat-panel";
+import { renderPlan, type RenderResult } from "@/lib/server-actions/plan-lifecycle";
 
 export interface PlanChatAndPreviewProps {
   clientId: string;

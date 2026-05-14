@@ -16,7 +16,7 @@ import Link from "next/link";
 import { loadAllClients, loadAllPlans } from "@/lib/fmdb/loader";
 import { loadClientSessions, getRecentAisensyMessages } from "@/lib/fmdb/loader-extras";
 import { parseRequestedLabs } from "@/lib/fmdb/session-utils";
-import { loadApiUsageMtdAllClients } from "@/app/clients/[id]/usage-actions";
+import { loadApiUsageMtdAllClients } from "@/lib/server-actions/usage";
 import { getCatalogueStatus } from "@/app/catalogue-commit-action";
 import { BroadcastPanel } from "@/app/broadcast-panel";
 import {

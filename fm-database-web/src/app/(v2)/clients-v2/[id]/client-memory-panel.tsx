@@ -22,7 +22,7 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { updateClientProfile } from "@/app/clients/actions";
+import { updateClientProfile } from "@/lib/server-actions/clients";
 
 interface Props {
   clientId: string;

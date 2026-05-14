@@ -28,18 +28,18 @@ import {
   generateDraftAction,
   uploadFileAction,
   type SessionSummary,
-} from "@/app/assess/actions";
+} from "@/lib/server-actions/assess";
 import {
   listClientFilesAction,
   resolveClientFileAction,
-} from "@/app/clients/actions";
+} from "@/lib/server-actions/clients";
 import type { AssessResult, PlanBrief } from "@/lib/fmdb/anthropic-types";
 import {
   SuggestionsView,
   ChatPanel,
   ComputedRatiosCard,
   PlanBriefCard,
-} from "@/app/assess/assess-client";
+} from "@/components/assess/assess-client";
 import { FmPanel, FmCollapsibleStep } from "@/components/fm";
 
 interface IntakeSnapshot {

@@ -26,7 +26,7 @@ import {
   type ClientSession,
 } from "@/lib/fmdb/loader-extras";
 import { loadAllPlans } from "@/lib/fmdb/loader";
-import { checkMedicationImpactsAction } from "@/app/clients/actions";
+import { checkMedicationImpactsAction } from "@/lib/server-actions/clients";
 import { ClientIdentityEditor } from "./client-identity-editor";
 import { EngagementPicker } from "./engagement-picker";
 import { ClientMemoryPanel } from "./client-memory-panel";
@@ -53,10 +53,10 @@ import {
 } from "@/components/fm";
 import { FmFivePillarsWithSendCheckIn } from "./five-pillars-bridge";
 import { MemoryPanel } from "./memory-panel";
-import { SOAPNotePanel } from "@/app/clients/[id]/soap-note-panel";
-import { ReworkBanner } from "@/app/clients/[id]/rework-banner";
-import { PreSessionBrief } from "@/app/clients/[id]/pre-session-brief";
-import { loadClientSessionsAction } from "@/app/assess/actions";
+import { SOAPNotePanel } from "@/components/client-widgets/soap-note-panel";
+import { ReworkBanner } from "@/components/client-widgets/rework-banner";
+import { PreSessionBrief } from "@/components/client-widgets/pre-session-brief";
+import { loadClientSessionsAction } from "@/lib/server-actions/assess";
 import { clientQuickActions } from "./client-quick-actions";
 import { clientSubnavTabs } from "./client-subnav";
 import { MarkerPanelWithRecompute } from "./marker-panel-with-recompute";

@@ -22,7 +22,7 @@ import {
   generateClientLetter,
   type LetterType,
   type LetterValidationChange,
-} from "@/app/plans/[slug]/lifecycle-actions";
+} from "@/lib/server-actions/plan-lifecycle";
 
 // Deep Mind brand palette — only used inside the letter canvas.
 const DEEP_MIND = {

@@ -15,7 +15,7 @@ import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { toast } from "sonner";
-import { uploadClientPhotoAction } from "@/app/clients/actions";
+import { uploadClientPhotoAction } from "@/lib/server-actions/clients";
 import { formatLongDate } from "@/lib/fmdb/format-date";
 import { FmWorkflowBanner, type FmWorkflowStage } from "./FmWorkflowBanner";
 

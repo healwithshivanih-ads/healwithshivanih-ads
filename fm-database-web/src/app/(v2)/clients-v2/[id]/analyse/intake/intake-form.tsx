@@ -41,7 +41,7 @@ import {
   extractTranscriptAction,
   uploadFileAction,
   type FivePillarsData,
-} from "@/app/assess/actions";
+} from "@/lib/server-actions/assess";
 /** Inline shape mirroring ExtractedHealthData from lib/fmdb/anthropic.ts
  *  (which is "use server" — types from there don't cross the boundary
  *  cleanly into this client component). */
@@ -65,7 +65,7 @@ import {
   updateClientProfile,
   uploadReportAction,
   checkMedsAgainstCatalogueAction,
-} from "@/app/clients/actions";
+} from "@/lib/server-actions/clients";
 import {
   FmField,
   FmInput,
@@ -77,9 +77,9 @@ import {
 } from "@/components/fm";
 import { useFormDraft } from "@/lib/fmdb/use-form-draft";
 import { IFM_NODES } from "@/lib/fmdb/ifm-matrix";
-import { LabUploadPanel } from "@/app/clients/[id]/lab-upload-panel";
-import { FunctionalTestPanel } from "@/app/clients/[id]/functional-test-panel";
-import { GeneticReportPanel } from "@/app/clients/[id]/genetic-report-panel";
+import { LabUploadPanel } from "@/components/client-widgets/lab-upload-panel";
+import { FunctionalTestPanel } from "@/components/client-widgets/functional-test-panel";
+import { GeneticReportPanel } from "@/components/client-widgets/genetic-report-panel";
 
 const PRIMARY = "#3a4250";
 

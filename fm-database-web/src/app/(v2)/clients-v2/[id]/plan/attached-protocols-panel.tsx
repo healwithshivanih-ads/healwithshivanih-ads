@@ -17,7 +17,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { toast } from "sonner";
 import { FmPanel } from "@/components/fm";
-import { updatePlan } from "@/app/plans/[slug]/actions";
+import { updatePlan } from "@/lib/server-actions/plans";
 
 interface ProtocolMeta {
   slug: string;

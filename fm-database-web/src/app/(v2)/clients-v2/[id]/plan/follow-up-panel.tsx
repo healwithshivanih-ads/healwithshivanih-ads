@@ -24,7 +24,7 @@ import { FmPanel } from "@/components/fm";
 import {
   generateFollowUpPlan,
   type FollowUpIntent,
-} from "@/app/plans/[slug]/lifecycle-actions";
+} from "@/lib/server-actions/plan-lifecycle";
 
 interface Props {
   activePlanSlug: string;

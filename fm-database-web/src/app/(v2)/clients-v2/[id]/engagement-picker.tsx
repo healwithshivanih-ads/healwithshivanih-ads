@@ -19,7 +19,7 @@ import { toast } from "sonner";
 import {
   updateClientProfile,
   type EngagementStatus,
-} from "@/app/clients/actions";
+} from "@/lib/server-actions/clients";
 
 interface Props {
   clientId: string;
