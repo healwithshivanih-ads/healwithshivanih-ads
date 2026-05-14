@@ -14,7 +14,82 @@ published plans as JSON artifacts.
 
 ## Status
 
-**v0.67 (current)** — Catalogue cleanup sweep + AI sanity check field-test + tracking UI + v1 retirement:
+**v0.68 (current)** — Plan-editor rethink + rework-AI lab-dedup + backlog Haiku classifier + full v1 structural retirement:
+
+**Tip: 12 commits beyond v0.67 (`1c7ec4a..57ed0b7`).** PM2 still serving fm-coach on port 3002. Validator clean (0 errors). Tsc + build clean.
+
+Plan-editor rethink (`ca3f511`, biggest UX shift this round):
+- Coach asked "why is the documents tab needed? what's the value of lifecycle? just create an approve button on the left panel. add overview + what the AI knows about the client". Result: kill Documents tab, demote Lifecycle to ⚙️ Advanced (only rare actions: revoke / supersede / diff / export / save-as-template / successor draft), promote Submit/Activate to a sticky **InlineStatusBar** at the top of the editor, surface **ClientSnapshotCard** (bio + active conditions + medical history + meds + allergies + goals + diet + ALL labs on file) and **AIReadCard** (top 3 likely drivers from latest assessment + plan.ai_sanity_check concerns colour-coded by severity + active rework_suggestion) ABOVE the editor.
+- Three new components in `(v2)/clients-v2/[id]/plan/edit/[slug]/`: `client-snapshot-card.tsx`, `ai-read-card.tsx`, `inline-status-bar.tsx`. Server-rendered for the snapshot/AI-read cards (they're pure context); InlineStatusBar is client-side because Submit/Activate are interactive.
+- Backward-compat: `?tab=lifecycle` → advanced, `?tab=documents` → protocol. Old deep-links still resolve.
+- Editor now shows: status header → client snapshot → AI's read → AI Plan Assistant → protocol sections → Advanced (collapsed). Single scrolling page; coach sees everything before deciding.
+
+Rework AI honesty (belt-and-braces, `7db5e7d` + `086808e`):
+- Coach hit Archana's rework adding `Order Baseline 25-OH Vitamin D` even though her result (24.64 ng/mL) was 5 days old on file. Plus the SAME oestrogen-metabolite order appended 6 times across repeated apply-rework clicks. Two fixes — upstream prevention + apply-time safety net.
+- **Upstream** (`scripts/assess-rework.py`): now feeds `# LABS ALREADY ON FILE (N markers)` block into the Haiku prompt with every `test_name` + most-recent `value`/`unit`/`date` from `client.health_snapshots`. System-prompt rule: "ONLY propose lab_order for markers NOT already in the LABS ON FILE block. If a marker is on file, reference its value in your rationale instead — never re-order it."
+- **Apply-time** (`scripts/apply-rework.py`): `_client_already_has_lab()` helper walks the same snapshots and skips proposed lab_orders that reference markers on file (or known aliases — vit D / 25-oh / HbA1c). Dedup against existing `plan.lab_orders` too, case-insensitively. Skips recorded as `(skipped — X already on file)` lines in the change log so they remain visible to the coach.
+- Also fleshed out the rework's itemized change log (`9e09f1a` already shipped in v0.67) — every applied change now appears as `+ supplement n-acetyl-cysteine — Add NAC 600–1000 mg daily` in `notes_for_coach`, prevents the per-section hunt.
+
+Backlog Haiku classifier sweep (`1e039ff` + `20a8236` + `da02b66`):
+- Catalogue queue was 786 → 287 open in one Haiku pass. 246 noise rejected, 110 tagged as lab-test candidates, 247 entity candidates left for manual triage, 2 alias-suggestions.
+- `scripts/haiku-classify-backlog.py`: claude-haiku-4-5 with tool-use, 16 batches × 40 items, ~$0.10. Categories: reject / entity / lab_test / attach_alias.
+- `scripts/promote-lab-tests.py`: of the 110 lab-test candidates, 34 promoted to `lab_tests/` stubs with `units` + `full_name` auto-filled from a ~50-marker reference table (TSH, fT3/fT4, HOMA-IR, vit D, ferritin, B12, DUTCH, anti-TPO/Tg, lipid panel, liver enzymes, etc.). 38 already existed. 38 had unknown units (left open for hand-promotion).
+- Policy-C dose-bearing aliases on 12 supplements (Asian Ginseng 200-400mg → ashwagandha alias, etc.).
+- **Suggestion-chip 1-3 char alias bug fixed** (`da02b66`): "Hypnosis" and "Spiritual + Religious Practices" backlog items were being suggested as aliases of `intermittent-fasting` because the IF alias matched as a substring inside "Behavior Mod**if**ications". `suggestTarget()` now requires both sides ≥ 4 chars before containment match. Exact match still works for `IF` typed alone.
+
+Sessions Timeline restoration (`914504b` + `1024f4b`):
+- Coach hit 404 on `/clients-v2/[id]/timeline`. Two bugs masking each other: tab labelled "Timeline" but routed to `/sessions`; meanwhile `/sessions` itself was 500-ing because `pickDefaultMarkers()` was being called server-side from a `"use client"` module (forbidden in Next 16 — becomes a client-reference proxy).
+- Fixes: `marker-defaults.ts` extracts pickDefaultMarkers + GOAL_RULES + helpers into a pure-TS module (no "use client"). Both server wrapper AND client component now import from there. Plus a new `(v2)/clients-v2/[id]/timeline/page.tsx` alias that redirects to `/sessions` (preserves `?sid=` and `?type=` query params).
+
+Lab-test MMA fleshed out (`ac346dc`):
+- Was a minimal stub. Now full clinical reference card: conventional <378, FM-optimal <180 nmol/L. 4-tier interpretation table in `notes_for_coach`. Renal caveat (false-positive in eGFR < 60). When-to-order indications (vegetarians, PPI/metformin, elderly with atrophic gastritis, Hashimoto's, post-bariatric, MTHFR-suspected with normal serum B12). Linked to 4 topics + 2 mechanisms. India context: ₹1500-2500 at Quest/Thyrocare/Metropolis/SRL. Evidence_tier upgraded `fm_specific_thin → strong`.
+
+Follow-up plan maintenance intent (`7fa3277`):
+- Coach asked "what's the difference between Continue Meal Plan and Generate Follow-up Plan, and how are maintenance plans created?". Result: split the Follow-up panel into two intents — **🔁 Next phase** (continue active care with adjustments) and **🌿 Maintenance** (client graduated; lighter plan with anchor habits + quarterly check-ins + yearly labs).
+- Intent picker drives slug stem (`-plan-N-` vs `-maintenance-`), phase weeks default (12 vs 26), button label, AI prompt branch.
+- `scripts/generate-follow-up.py`: new `SYSTEM_PROMPT_MAINTENANCE` with rules for graduation — strip symptom-targeted supplements (keep only 2-4 foundational), titrate down, add one as-needed supplement for flares, keep 3-5 internalised habits, lighter tracking (monthly journal + quarterly coach + annual deep retest), plan period 26 weeks.
+- Continue Meal Plan panel subtitle clarified: "Mid-cycle inspiration: while the current 12-week protocol is still running, generate a fresh meal-plan letter ... Supplements + lifestyle stay locked — only the meals change."
+
+v1 → shared structural refactor (`57ed0b7`, the biggest move this session):
+- Coach asked "any v1 files still in use?". 26 paths were imported by v2 from misleadingly-named directories (`src/app/clients/[id]/*`, `src/app/plans/[slug]/*`, `src/app/assess/*`). Page-level routes had retired but the files lived at v1 paths because they were also imported as a shared library.
+- 59 files moved + 125+ import references updated in one atomic commit. New clean structure:
+  - `src/lib/server-actions/`: clients.ts, plans.ts, plan-lifecycle.ts, plan-chat.ts, assess.ts, mindmap.ts, usage.ts
+  - `src/lib/fmdb/`: plan-diff.ts (pure utility)
+  - `src/components/plan-editor/`: 8 components incl. plan-editor.tsx, plan-chat-panel.tsx, plan-check-panel.tsx, lifecycle-panel.tsx, delete-plan-button.tsx, send-to-client-modal.tsx, protocol-template-picker.tsx, new-plan-wizard.tsx
+  - `src/components/client-widgets/`: 39 per-client widgets (every .tsx that was under `clients/[id]/` except page.tsx) + new-client-form.tsx
+  - `src/components/assess/`: 2 widgets (assess-client.tsx, ifm-matrix-card.tsx)
+- Kept at v1 paths (intentionally): `src/app/{clients,plans,assess,sources}/page.tsx` + `clients/[id]/page.tsx` + `plans/[slug]/page.tsx` + `plans/new/page.tsx` — all redirect-only shims that bounce legacy URLs to v2. Removing them would break old bookmarks.
+- Automation: `/tmp/refactor-v1-to-shared.py` did the moves + absolute-path rewrites; `/tmp/fix-relative-imports.py` cleaned up the relative `./actions` / `../actions` imports inside moved files that the first pass missed.
+- The "is this v1 code?" question now has a clean answer: only redirect shims live at v1 paths; everything else is properly under `src/lib/` or `src/components/`.
+
+Operational state at end of session:
+- Catalogue (unchanged from v0.67): 0 errors, ~1637 warnings (non-blocking).
+- Backlog: 287 open / 1041 rejected / 114 added. 38 lab-test candidates have unknown units (open for manual unit-attribution).
+- Plans on disk: 5 published, all 0 CRITICAL. Archana's rework draft cleaned in place (7 lab_orders → 1, the 5 duplicate oestrogen-metabolite entries + the on-file Vitamin D order all removed).
+- PM2 fm-coach reloaded multiple times; all v2 routes verified 200.
+
+**Deferred (3-6 month per coach):**
+- HeyGen avatar video library (free-tier exhausted; needs Creator upgrade)
+- NotebookLM batch (manual UI workflow — checklist of 12 topics ready)
+- JSON export contract for Project 2 (mobile app)
+- VitaOne order-through-coach (awaiting their partner support reply since 2026-05-09)
+
+**Real pending items the coach should tackle:**
+- 287 backlog items at `/backlog` with the now-clean suggestion-chip flow (~45 min)
+- 38 unknown-units lab-test stubs (hand-promote each with right units)
+- 34 lab-test stubs created with auto-inferred units — need conventional + FM-optimal ranges + interpretation_low/high fleshed out before clinical use
+- 11 home_remedy stubs (abhyanga, bhringraj, kashayams, etc.) need indications + contraindications + preparation + typical_dose filled
+- Custom WhatsApp app integration (replacing AiSensy) — see next session
+
+**Design punchlist gaps still real:**
+- #27 Inbound message thread (only outbound exists today; coach reads on phone)
+- #50 Help page is a stub
+- #52 Empty + error states across the app
+- #10 Edit-vs-share toggle on plans (partial — letter editor covers it)
+
+---
+
+**v0.67** — Catalogue cleanup sweep + AI sanity check field-test + tracking UI + v1 retirement:
 
 **Tip: 33 commits beyond v0.66 (`e072e00..e7cdf10`).** PM2 still serving fm-coach on port 3002. All validator clean (0 errors).
 
