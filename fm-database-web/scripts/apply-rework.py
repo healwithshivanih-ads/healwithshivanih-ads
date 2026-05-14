@@ -108,6 +108,38 @@ def main() -> int:
             "error": "no rework_suggestion on this client — generate one first via the rework assessor",
         })
 
+    # Build a set of lab-marker names the client already has values for in
+    # health_snapshots. Used downstream to skip redundant lab_order
+    # suggestions — coach hit this when a rework proposed "Order Vitamin D"
+    # despite a value being on file 5 days ago.
+    _existing_labs: set[str] = set()
+    for snap in raw.get("health_snapshots") or []:
+        for lv in (snap or {}).get("lab_values") or []:
+            name = (lv or {}).get("test_name")
+            if isinstance(name, str) and name.strip():
+                _existing_labs.add(name.strip().lower())
+
+    def _client_already_has_lab(query_text: str) -> str | None:
+        """If the proposed lab-order test text references a marker that's
+        already on file, return the matched marker name. Else None."""
+        q = (query_text or "").lower()
+        for n in _existing_labs:
+            # Use 3+ char match to avoid the "if" / "MMA" false-positive trap.
+            if len(n) >= 4 and n in q:
+                return n
+        # Also catch common label variants
+        for marker, aliases in {
+            "25-oh vitamin d": ("25-oh vitamin d", "vitamin d (25-oh)",
+                                 "vitamin-d 25-oh", "vit d", "vitamin d total"),
+            "ferritin":        ("ferritin",),
+            "hba1c":           ("hba1c", "haemoglobin a1c"),
+            "tsh":             ("tsh",),
+        }.items():
+            if any(a in n for n in _existing_labs for a in aliases) and \
+               any(a in q for a in aliases):
+                return marker
+        return None
+
     changes = rework.get("suggested_changes") or []
     rationale = rework.get("rationale") or ""
     benefit_pct = rework.get("benefit_pct") or 0
@@ -317,6 +349,25 @@ def main() -> int:
 
         elif kind == "lab_order":
             test = description or slug or "(lab order — coach to specify)"
+            # Dedup #1: same test text already in plan.lab_orders (case-
+            # insensitive). Prevents the same rework from re-adding the
+            # same order across multiple apply runs.
+            test_lower = test.strip().lower()
+            if any(
+                (existing_lab.test or "").strip().lower() == test_lower
+                for existing_lab in plan.lab_orders
+            ):
+                _record(op, kind, test[:80] + " (skipped — already in plan)", "")
+                continue
+            # Dedup #2: marker already on file in client.health_snapshots.
+            # Skip — the client doesn't need to re-test something we just
+            # received results for.
+            on_file = _client_already_has_lab(test)
+            if on_file:
+                _record(op, kind,
+                        test[:80] + f" (skipped — {on_file} already on file)",
+                        "")
+                continue
             plan.lab_orders.append(LabOrderItem(test=test, reason=reason or rationale[:200]))
             applied += 1
             _record(op, kind, test[:80], reason)
