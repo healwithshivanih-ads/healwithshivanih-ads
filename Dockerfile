@@ -80,21 +80,41 @@ RUN mkdir -p /agent && cd /agent && \
       "https://github.com/mutagen-io/mutagen/releases/download/v${MUTAGEN_VERSION}/mutagen_${MUTAGEN_PLATFORM}_v${MUTAGEN_VERSION}.tar.gz" \
       -o mutagen.tar.gz && \
     tar -xzf mutagen.tar.gz && \
-    tar -xzf mutagen-agents.tar.gz && \
-    ls -lh "${MUTAGEN_PLATFORM}/mutagen-agent" && \
-    chmod +x "${MUTAGEN_PLATFORM}/mutagen-agent"
+    # mutagen-agents.tar.gz contains files NAMED after platforms (not
+    # subdirs) — i.e. `linux_amd64` IS the agent binary, not a directory.
+    # Extract just the one we want and rename it to mutagen-agent for the
+    # stage-3 COPY to pick up.
+    tar -xzf mutagen-agents.tar.gz "${MUTAGEN_PLATFORM}" && \
+    mv "${MUTAGEN_PLATFORM}" mutagen-agent && \
+    chmod +x mutagen-agent && \
+    ls -lh mutagen-agent
 
 
 # ─── Stage 2: Python venv ──────────────────────────────────────────────
-FROM python:3.12-slim-bookworm AS python-build
+#
+# IMPORTANT: build the venv using the SAME Python the runtime stage has.
+# The runtime is `node:22-bookworm-slim` + `apt install python3` which
+# gives Debian Bookworm's system Python 3.11 at /usr/bin/python3. If
+# stage 2 uses `python:3.12-slim-bookworm` (Python 3.12 at
+# /usr/local/bin/python3), the venv's internal symlinks point at the
+# 3.12 binary — which doesn't exist in the runtime stage. Every shell-out
+# from Next.js to a Python shim then fails with "No such file or directory"
+# (which renders as "This link can't be opened" on /intake/[token]).
+#
+# Fix: use the same `node:22-bookworm-slim` base + apt-install Python 3.11
+# + python3-venv. Now the venv's interpreter symlinks resolve to a binary
+# that IS present in the runtime image.
+FROM node:22-bookworm-slim AS python-build
 
 WORKDIR /app/fm-database
 ENV PIP_NO_CACHE_DIR=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1
 
-# Build deps so `pip install` can compile wheels if needed (lxml, etc.)
+# Debian's system Python + venv module + build deps for any wheels that
+# need compilation (lxml, cffi, etc.).
 RUN apt-get update -y && \
-    apt-get install -y --no-install-recommends build-essential && \
+    apt-get install -y --no-install-recommends \
+      python3 python3-venv python3-pip build-essential && \
     rm -rf /var/lib/apt/lists/*
 
 COPY fm-database/requirements.txt ./
@@ -142,12 +162,11 @@ COPY --from=python-build /app/fm-database ./fm-database
 # MUTAGEN_VERSION ARG in stage 1b. If you `brew upgrade mutagen` to a
 # newer version, bump the ARG + redeploy too, or sync stops working.
 ARG MUTAGEN_VERSION=0.18.1
-ARG MUTAGEN_PLATFORM=linux_amd64
 COPY --from=mutagen-agent-fetch \
-  /agent/${MUTAGEN_PLATFORM}/mutagen-agent \
+  /agent/mutagen-agent \
   /app/fm-database-web/.mutagen/agents/${MUTAGEN_VERSION}/mutagen-agent
 COPY --from=mutagen-agent-fetch \
-  /agent/${MUTAGEN_PLATFORM}/mutagen-agent \
+  /agent/mutagen-agent \
   /root/.mutagen/agents/${MUTAGEN_VERSION}/mutagen-agent
 RUN chmod +x /app/fm-database-web/.mutagen/agents/${MUTAGEN_VERSION}/mutagen-agent \
             /root/.mutagen/agents/${MUTAGEN_VERSION}/mutagen-agent
