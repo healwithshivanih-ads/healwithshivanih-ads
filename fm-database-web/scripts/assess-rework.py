@@ -174,6 +174,34 @@ def _build_context(client: dict, plan: dict | None, sessions: list[dict],
         lines.append("(none — client has no active plan)")
     lines.append("")
 
+    # Surface every lab the client already has values for so the AI doesn't
+    # propose redundant orders. This block is the upstream fix for the
+    # apply-time dedup we added in 086808e — better to never suggest it
+    # in the first place than to silently drop at apply.
+    on_file: dict[str, list[tuple[str, str, str]]] = {}  # name → [(date, value, unit)]
+    for snap in client.get("health_snapshots") or []:
+        date = (snap or {}).get("date", "")
+        for lv in (snap or {}).get("lab_values") or []:
+            name = ((lv or {}).get("test_name") or "").strip()
+            if not name:
+                continue
+            value = (lv or {}).get("value")
+            unit = (lv or {}).get("unit") or ""
+            on_file.setdefault(name, []).append((date, str(value) if value is not None else "?", unit))
+    if on_file:
+        lines.append(f"# LABS ALREADY ON FILE ({len(on_file)} markers)")
+        lines.append(
+            "Do NOT propose lab_order for any of these markers — the client "
+            "already has results. Reference the value in your rationale if "
+            "relevant. Only propose new labs that aren't listed here."
+        )
+        for name, entries in sorted(on_file.items()):
+            # Most recent value (entries are in insertion order; sort by date desc)
+            entries_sorted = sorted(entries, key=lambda e: e[0], reverse=True)
+            date, value, unit = entries_sorted[0]
+            lines.append(f"- {name}: {value} {unit}".rstrip() + f"  ({date})")
+        lines.append("")
+
     lines.append("# TRIGGERING EVENT")
     lines.append(f"- Type: {triggered_by}")
     lines.append(f"- Summary: {event_summary}")
@@ -265,7 +293,13 @@ Rationale must be specific:
 
 Suggested changes must use real catalogue slugs when possible (e.g. supplement \
 slug 'mastic-gum' not 'mastic gum'). Use null for target_slug when proposing \
-something not in the catalogue."""
+something not in the catalogue.
+
+Lab-order rule: ONLY propose lab_order for markers NOT already in the \
+'LABS ALREADY ON FILE' block. If a marker is on file, reference its value \
+in your rationale instead — never re-order it. If you're unsure whether a \
+client has had a marker tested, default to not proposing it (apply-time \
+dedup will skip it anyway, but you waste tokens)."""
 
 
 def main() -> int:
