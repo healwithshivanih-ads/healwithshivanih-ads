@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { broadcastAction } from "@/app/api/aisensy-webhook/actions";
+import { broadcastAction } from "@/app/api/whatsapp/actions";
 
 interface ClientRow {
   client_id: string;

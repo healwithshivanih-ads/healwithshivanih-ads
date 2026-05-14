@@ -104,7 +104,7 @@ export interface ClientSession {
   [key: string]: unknown;
 }
 
-// ── AiSensy inbound message count ─────────────────────────────────────────────
+// ── Recent inbound WhatsApp message count ─────────────────────────────────────
 
 export interface AisensyMessage {
   client_id: string;
@@ -114,8 +114,12 @@ export interface AisensyMessage {
 }
 
 /**
- * Scans all client session dirs for quick_note sessions tagged [source: aisensy_webhook]
- * within the last `daysBack` days. Cheap: only reads files whose names contain a recent date.
+ * Scans all client session dirs for quick_note sessions tagged
+ * `[source: whatsapp_webhook]` within the last `daysBack` days.
+ *
+ * Cheap: only reads files whose name encodes a date ≥ cutoff. The interface
+ * name keeps `Aisensy` for historical reasons; AiSensy never posted webhooks
+ * on our plan so all data here comes from the self-hosted WhatsApp server.
  */
 export async function getRecentAisensyMessages(
   clientIds: string[],
@@ -150,8 +154,7 @@ export async function getRecentAisensyMessages(
         const data = await readYaml<Record<string, unknown>>(path.join(dir, name));
         if (!data) continue;
         const complaints = String(data.presenting_complaints ?? "");
-        if (!complaints.includes("[source: aisensy_webhook]")) continue;
-        // It's an inbound AiSensy message
+        if (!complaints.includes("[source: whatsapp_webhook]")) continue;
         const text = complaints.replace(/^\[source:[^\]]+\]\s*/i, "").trim().slice(0, 120);
         results.push({
           client_id: id,

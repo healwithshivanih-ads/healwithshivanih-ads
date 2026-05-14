@@ -7,43 +7,132 @@ import yaml from "js-yaml";
 import { loadAllClients } from "@/lib/fmdb/loader";
 
 const PLANS_ROOT = process.env.FMDB_PLANS_DIR ?? path.join(os.homedir(), "fm-plans");
+
+// ── Backend selection (dual-mode during transition) ───────────────────────────
+// Outbound WhatsApp sends pick a backend at runtime:
+//   1. If WHATSAPP_SERVER_URL + WHATSAPP_SERVER_API_KEY are set, route through
+//      the self-hosted server (Fly app: whatsapp-server-shivani).
+//   2. Else if AISENSY_API_KEY is set, fall back to the AiSensy direct API.
+//   3. Else return an error.
+//
+// To force AiSensy even when the WA server is also configured (useful during
+// testing while the WA server is still on Meta's test number), set
+// WHATSAPP_PREFER=aisensy.
+
+const WA_SERVER_URL = (process.env.WHATSAPP_SERVER_URL ?? "").replace(/\/$/, "");
+const WA_SERVER_API_KEY = process.env.WHATSAPP_SERVER_API_KEY ?? "";
+const AISENSY_API_KEY = process.env.AISENSY_API_KEY ?? "";
 const AISENSY_API_URL = "https://backend.aisensy.com/direct-apis/t1/create-message";
 
-// ── Phone normalisation ───────────────────────────────────────────────────────
+function pickBackend(): "wa_server" | "aisensy" | null {
+  const haveServer = !!(WA_SERVER_URL && WA_SERVER_API_KEY);
+  const haveAisensy = !!AISENSY_API_KEY;
+  const prefer = (process.env.WHATSAPP_PREFER ?? "").toLowerCase();
+  if (prefer === "aisensy" && haveAisensy) return "aisensy";
+  if (prefer === "wa_server" && haveServer) return "wa_server";
+  if (haveServer) return "wa_server";
+  if (haveAisensy) return "aisensy";
+  return null;
+}
 
-/**
- * Normalise a phone number to E.164 format without the leading +.
- * - Strips spaces, dashes, parens, dots
- * - Strips leading + if present
- * - Prepends "91" if exactly 10 digits (Indian mobile)
- */
+/** Normalise to E.164-without-plus (matches AiSensy + WA-server expectation). */
 function normaliseToE164(phone: string): string {
   let n = phone.replace(/[\s\-().+]/g, "");
-  if (n.length === 10 && /^[6-9]/.test(n)) {
-    n = "91" + n;
-  }
+  if (n.length === 10 && /^[6-9]/.test(n)) n = "91" + n;
   return n;
 }
 
 // ── Single send ───────────────────────────────────────────────────────────────
 
+/**
+ * Send a templated WhatsApp message. Auto-selects backend:
+ *   - WhatsApp server (preferred when configured)
+ *   - AiSensy direct API (fallback during transition)
+ *
+ * `campaignName` is the Meta template name (kept the parameter name for
+ * backward compatibility with AiSensy-shaped callers).
+ */
 export async function sendWhatsAppAction(
   phone: string,
   campaignName: string,
-  templateParams: string[]
-): Promise<{ ok: boolean; error?: string }> {
-  const apiKey = process.env.AISENSY_API_KEY;
-  if (!apiKey) {
-    return { ok: false, error: "AISENSY_API_KEY not set in environment" };
+  templateParams: string[],
+  opts?: { name?: string; templateLanguage?: string }
+): Promise<{ ok: boolean; error?: string; backend?: "wa_server" | "aisensy" }> {
+  if (!phone?.trim()) return { ok: false, error: "Phone number required" };
+
+  const backend = pickBackend();
+  if (!backend) {
+    return {
+      ok: false,
+      error:
+        "No WhatsApp backend configured. Set either WHATSAPP_SERVER_URL+WHATSAPP_SERVER_API_KEY or AISENSY_API_KEY.",
+    };
   }
 
+  if (backend === "wa_server") {
+    return sendViaWaServer(phone, campaignName, templateParams, opts);
+  }
+  return sendViaAisensy(phone, campaignName, templateParams);
+}
+
+async function sendViaWaServer(
+  phone: string,
+  templateName: string,
+  templateParams: string[],
+  opts?: { name?: string; templateLanguage?: string }
+): Promise<{ ok: boolean; error?: string; backend: "wa_server" }> {
+  const body = {
+    phone,
+    name: opts?.name,
+    type: "template",
+    templateName,
+    templateLanguage: opts?.templateLanguage ?? "en",
+    templateParams,
+    origin: "api",
+    originRef: "fm-coach",
+  };
+
+  try {
+    const res = await fetch(`${WA_SERVER_URL}/api/send`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "x-api-key": WA_SERVER_API_KEY },
+      body: JSON.stringify(body),
+    });
+
+    const json = (await res.json().catch(() => ({}))) as {
+      ok?: boolean;
+      error?: string;
+      code?: string;
+    };
+
+    if (!res.ok || json.ok === false) {
+      const detail = json.error ?? `HTTP ${res.status}`;
+      const code = json.code ? ` [${json.code}]` : "";
+      return { ok: false, error: `WhatsApp server${code}: ${detail}`, backend: "wa_server" };
+    }
+    return { ok: true, backend: "wa_server" };
+  } catch (err) {
+    const e = err as { message?: string };
+    return {
+      ok: false,
+      error: e.message ?? "Network error calling WhatsApp server",
+      backend: "wa_server",
+    };
+  }
+}
+
+async function sendViaAisensy(
+  phone: string,
+  campaignName: string,
+  templateParams: string[]
+): Promise<{ ok: boolean; error?: string; backend: "aisensy" }> {
   const destination = normaliseToE164(phone);
   if (!destination || destination.length < 10) {
-    return { ok: false, error: `Invalid phone number: ${phone}` };
+    return { ok: false, error: `Invalid phone number: ${phone}`, backend: "aisensy" };
   }
 
   const body = {
-    apiKey,
+    apiKey: AISENSY_API_KEY,
     campaignName,
     destination,
     userName: "Shivani Hari",
@@ -60,16 +149,22 @@ export async function sendWhatsAppAction(
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     });
-
     if (!res.ok) {
       const text = await res.text();
-      return { ok: false, error: `AiSensy API error ${res.status}: ${text.slice(0, 200)}` };
+      return {
+        ok: false,
+        error: `AiSensy API error ${res.status}: ${text.slice(0, 200)}`,
+        backend: "aisensy",
+      };
     }
-
-    return { ok: true };
+    return { ok: true, backend: "aisensy" };
   } catch (err) {
     const e = err as { message?: string };
-    return { ok: false, error: e.message ?? "Network error calling AiSensy API" };
+    return {
+      ok: false,
+      error: e.message ?? "Network error calling AiSensy API",
+      backend: "aisensy",
+    };
   }
 }
 
@@ -84,24 +179,28 @@ export async function broadcastAction(
   let sent = 0;
   let failed = 0;
 
-  // Load all clients to get phone numbers
   const allClients = await loadAllClients();
   const clientMap = new Map(
     (allClients as Array<Record<string, unknown>>).map((c) => [
       c.client_id as string,
-      c.mobile_number as string | undefined,
+      {
+        phone: c.mobile_number as string | undefined,
+        name: c.display_name as string | undefined,
+      },
     ])
   );
 
   for (const clientId of clientIds) {
-    const phone = clientMap.get(clientId);
-    if (!phone?.trim()) {
+    const entry = clientMap.get(clientId);
+    if (!entry?.phone?.trim()) {
       errors.push(`${clientId}: no mobile number on file`);
       failed++;
       continue;
     }
 
-    const result = await sendWhatsAppAction(phone, campaignName, templateParams);
+    const result = await sendWhatsAppAction(entry.phone, campaignName, templateParams, {
+      name: entry.name,
+    });
     if (result.ok) {
       sent++;
     } else {
@@ -115,8 +214,12 @@ export async function broadcastAction(
 
 // ── Config check ──────────────────────────────────────────────────────────────
 
-export async function checkAisensyConfigAction(): Promise<{ configured: boolean }> {
-  return { configured: !!(process.env.AISENSY_API_KEY) };
+export async function checkWhatsAppConfigAction(): Promise<{
+  configured: boolean;
+  backend: "wa_server" | "aisensy" | null;
+}> {
+  const backend = pickBackend();
+  return { configured: !!backend, backend };
 }
 
 // ── Message templates ─────────────────────────────────────────────────────────
@@ -179,7 +282,6 @@ export async function loadMessageTemplatesAction(): Promise<MessageTemplate[]> {
   } catch {
     // File doesn't exist — write defaults and return them
   }
-  // Write defaults
   try {
     await fs.mkdir(PLANS_ROOT, { recursive: true });
     await fs.writeFile(TEMPLATES_FILE, yaml.dump(DEFAULT_TEMPLATES, { lineWidth: 120 }), "utf-8");

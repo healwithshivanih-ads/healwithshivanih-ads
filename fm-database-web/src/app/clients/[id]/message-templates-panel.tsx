@@ -6,9 +6,9 @@ import {
   saveMessageTemplateAction,
   deleteMessageTemplateAction,
   sendWhatsAppAction,
-  checkAisensyConfigAction,
+  checkWhatsAppConfigAction,
   type MessageTemplate,
-} from "@/app/api/aisensy-webhook/actions";
+} from "@/app/api/whatsapp/actions";
 
 interface Props {
   clientId: string;
@@ -273,7 +273,7 @@ export function MessageTemplatesPanel({ clientId, clientName, clientPhone, aisen
     setLoading(true);
     const [ts, cfg] = await Promise.all([
       loadMessageTemplatesAction(),
-      checkAisensyConfigAction(),
+      checkWhatsAppConfigAction(),
     ]);
     setTemplates(ts);
     setAisensyConfigured(cfg.configured);

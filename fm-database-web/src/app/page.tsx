@@ -263,8 +263,11 @@ export default async function Dashboard() {
     + (sections.get("labs_pending")?.length ?? 0)
     + (sections.get("returning")?.length ?? 0);
 
-  // Broadcast panel — only shown when AISENSY_API_KEY is configured
-  const aisensyApiKeySet = !!(process.env.AISENSY_API_KEY);
+  // Broadcast panel — shown when any WhatsApp backend is configured
+  // (self-hosted WA server preferred, AiSensy as fallback during transition).
+  const aisensyApiKeySet =
+    !!(process.env.WHATSAPP_SERVER_URL && process.env.WHATSAPP_SERVER_API_KEY) ||
+    !!process.env.AISENSY_API_KEY;
   const broadcastClientRows = (clients as ClientRow[]).map((c) => ({
     client_id: c.client_id,
     display_name: c.display_name,
