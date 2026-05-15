@@ -6,6 +6,10 @@ import { getDefault as getDefaultWorkspace } from '../../services/workspaces.js'
 import { normalizePhone } from '../../util/phone.js';
 import { OutsideServiceWindowError, ValidationError } from '../../errors.js';
 
+// origin_ref is a uuid column. Reject non-UUID strings (like "fm-coach")
+// rather than passing them through and tripping a Postgres error per send.
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
 export const sendRouter = Router();
 
 // POST /api/send
@@ -68,7 +72,7 @@ sendRouter.post('/', async (req, res, next) => {
       channel: 'whatsapp',
       type,
       origin,
-      originRef,
+      originRef: originRef && UUID_RE.test(originRef) ? originRef : undefined,
     };
 
     if (type === 'text') {

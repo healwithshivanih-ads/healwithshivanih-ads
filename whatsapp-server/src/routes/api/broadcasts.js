@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { randomUUID } from 'node:crypto';
 import * as contactsSvc from '../../services/contacts/index.js';
 import * as convSvc from '../../services/conversations/index.js';
 import * as msgsSvc from '../../services/messages/index.js';
@@ -6,6 +7,12 @@ import { getDefault as getDefaultWorkspace } from '../../services/workspaces.js'
 import { normalizePhone } from '../../util/phone.js';
 import { OutsideServiceWindowError, ValidationError } from '../../errors.js';
 import { logger } from '../../logger.js';
+
+// origin_ref is a uuid column in the messages table — anything else triggers
+// `invalid input syntax for type uuid`. If the caller hands us a UUID we use
+// it; otherwise we mint one per broadcast so all recipients share it (useful
+// for "show me all messages from broadcast X").
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 export const broadcastsRouter = Router();
 
@@ -62,6 +69,11 @@ broadcastsRouter.post('/', async (req, res, next) => {
     }
 
     const ws = await getDefaultWorkspace();
+    // Stable UUID for this broadcast — every recipient row's origin_ref points
+    // to it. Caller can override by passing a real UUID; non-UUID strings
+    // (like "admin_ui" or "broadcast/phones/2026-…") are ignored and a fresh
+    // one is minted.
+    const broadcastId = originRef && UUID_RE.test(originRef) ? originRef : randomUUID();
     const results = [];
     let sent = 0;
     let failed = 0;
@@ -125,7 +137,7 @@ broadcastsRouter.post('/', async (req, res, next) => {
             }
             : undefined,
           origin,
-          originRef,
+          originRef: broadcastId,
         });
 
         results.push({
@@ -151,6 +163,7 @@ broadcastsRouter.post('/', async (req, res, next) => {
 
     return res.json({
       ok: true,
+      broadcast_id: broadcastId,
       total: recipients.length,
       sent,
       failed,
