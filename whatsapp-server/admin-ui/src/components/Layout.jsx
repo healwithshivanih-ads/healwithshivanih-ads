@@ -4,6 +4,7 @@ import { setKey } from '../api.js';
 
 const NAV = [
   { to: '/inbox',        label: 'Inbox',        icon: '💬' },
+  { to: '/broadcast',    label: 'Broadcast',    icon: '📣' },
   { to: '/contacts',     label: 'Contacts',     icon: '👥' },
   { to: '/appointments', label: 'Appointments', icon: '📅' },
   { to: '/settings',     label: 'Settings',     icon: '⚙️' },
