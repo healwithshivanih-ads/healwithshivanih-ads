@@ -212,6 +212,13 @@ function ComposeView({
 
   const whatsappApproved = isWhatsappApproved(template);
   const filled = fillTemplate(template.body, values);
+  // Meta rejects template sends with empty {{N}} placeholders (the WA
+  // server bubbles this up as a generic `internal_error`). Disable the
+  // WhatsApp button when any variable is missing, and surface a clear
+  // "Fill in {{X}}" hint instead of letting the coach trigger an
+  // unhelpful error.
+  const missingVars = vars.filter((v) => !values[v]?.trim());
+  const allVarsFilled = missingVars.length === 0;
 
   // Default email subject derived from the template name.
   const defaultSubject = `${template.name} — from Shivani`;
@@ -229,14 +236,23 @@ function ComposeView({
       setSendResult({ ok: false, error: "Template has no Meta-approved name mapping" });
       return;
     }
+    if (missingVars.length > 0) {
+      setSendResult({
+        ok: false,
+        error: `Fill in: ${missingVars.map((v) => `{{${v}}}`).join(", ")} — Meta rejects empty placeholders.`,
+      });
+      return;
+    }
     setSending(true); setSendResult(null);
     // Send by Meta template NAME (e.g. "fm_lab_reminder"), not local slug.
-    // Previously sent the slug — Meta rejected silently because no such
-    // template existed. Fixed 2026-05-15.
+    // Pass params in the body-declared order (vars array), not
+    // Object.values(values) which depends on insertion order — Meta
+    // requires {{1}}, {{2}}, … in the exact body sequence.
+    const params = vars.map((v) => values[v] ?? "");
     const res = await sendWhatsAppAction(
       clientPhone,
       template.whatsapp_template_name,
-      Object.values(values),
+      params,
     );
     setSending(false);
     setSendResult(res);
@@ -347,6 +363,16 @@ function ComposeView({
         )}
       </div>
 
+      {/* Missing-variable hint — only when WhatsApp send is otherwise enabled
+          but a placeholder is still empty. Meta rejects template sends with
+          empty {{N}} placeholders, surfaced as a generic `internal_error`
+          from the WA server. Surfacing it here BEFORE the coach clicks. */}
+      {whatsappConfigured && clientPhone && whatsappApproved && !allVarsFilled && (
+        <p className="text-[11px] text-amber-700 bg-amber-50 border border-amber-200 rounded px-2 py-1.5">
+          ⚠ Fill in <strong>{missingVars.map((v) => `{{${v}}}`).join(", ")}</strong> before sending via WhatsApp — Meta rejects empty placeholders.
+        </p>
+      )}
+
       {/* Actions */}
       <div className="flex flex-wrap gap-2 items-center">
         <button
@@ -370,10 +396,14 @@ function ComposeView({
         {whatsappConfigured && clientPhone && whatsappApproved && (
           <button
             onClick={handleSend}
-            disabled={sending}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg text-white disabled:opacity-50 transition-opacity"
+            disabled={sending || !allVarsFilled}
+            className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg text-white disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
             style={{ background: "#25D366" }}
-            title="Sends via WhatsApp Cloud API"
+            title={
+              allVarsFilled
+                ? "Sends via WhatsApp Cloud API"
+                : `Fill in: ${missingVars.map((v) => `{{${v}}}`).join(", ")} — Meta rejects empty placeholders`
+            }
           >
             {sending ? "Sending…" : "📤 Send via WhatsApp"}
           </button>
