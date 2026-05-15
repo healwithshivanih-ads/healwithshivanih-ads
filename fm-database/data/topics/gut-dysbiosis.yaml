@@ -1,88 +1,145 @@
 slug: gut-dysbiosis
 display_name: Gut Dysbiosis
 aliases:
+- dysbiosis
+- microbial imbalance
+- microbiome dysbiosis
 - microbiome imbalance
 - intestinal dysbiosis
 - dysbiotic bacteria
-- good vs bad bacteria imbalance
 - dysbiotic pattern
 - gut flora imbalance
+- good vs bad bacteria imbalance
 - gut health
-summary: Stress, loneliness, digital overstimulation, gut-brain disruption, altered
-  microbiome, IBS/IBD, and probiotic or prebiotic support are discussed.
+- LPS endotoxemia
+summary: An imbalance in the gut microbial community characterised by decline in
+  beneficial bacteria and overgrowth of pathogenic species. Drives hypochlorhydria,
+  intestinal barrier compromise, nutrient malabsorption, elevated beta-glucuronidase,
+  and chronic immune activation. LPS endotoxemia from dysbiosis raises systemic
+  inflammation and insulin resistance. Common drivers include poor diet, antibiotics,
+  PPIs, chronic stress, low fibre, alcohol, and acute infection — and in
+  perimenopause/menopause the estrobolome shifts toward more inflammatory species.
+  Antibiotic exposure can cause dysbiosis lasting 18 months to 8 years per emerging
+  research.
 common_symptoms:
 - bloating
-- irregular-stools
-- fatigue
-- food-cravings
-- skin-rashes
+- progressive-bloating
 - abdominal-gas
-- new-food-sensitivities
-- diarrhea
+- belching
+- flatulence
 - constipation
-- skin-itching
-- sweet-cravings
-- white-tongue-coating
-- food-sensitivities
-- brain-fog
-- systemic-inflammation
-- digestive-discomfort
+- diarrhea
 - chronic-diarrhea
-- nutrient-deficiency-despite-supplementation
+- irregular-stools
+- food-sensitivities
+- new-food-sensitivities
+- food-cravings
+- sweet-cravings
+- digestive-discomfort
+- poor-digestion
+- fatigue
+- low-energy
+- brain-fog
+- skin-rashes
+- skin-itching
+- white-tongue-coating
 - joint-pain
 - hair-loss
-- nutrient-deficiency
+- weight-gain
 - ibs-symptoms
-- poor-digestion
+- nutrient-deficiency
+- nutrient-deficiency-despite-supplementation
+- systemic-inflammation
 red_flags:
-- autoimmune flares
-- severe unrelenting diarrhea
+- Severe or persistent dysbiosis with opportunistic pathogens — requires clinician management
 - Persistent diarrhea with blood or mucus
 - Acute diarrhea with dehydration — refer to physician
-- Suspected parasitic infection requiring stool testing
 - severe-autoimmune-flare
-- acute-gastroenteritis
-- autoimmune triggers requiring clinical diagnosis
 - autoimmune-triggers
 - persistent-diarrhea-unresponsive-to-diet
+- Suspected parasitic infection requiring stool testing
 - IBD flare requiring medication
 - SIBO requiring antibiotic treatment
-- severe GI disease
+- severe-nutrient-malabsorption
+- unintentional-weight-loss
+- acute-gastroenteritis
+- severe-gi-disease
 related_topics:
+- microbiome
 - sibo
+- ibs
 - leaky-gut
+- intestinal-permeability
 - hypochlorhydria
 - candida-overgrowth
-- ibs
+- fungal-overgrowth
+- parasite-infection
 - low-fodmap-diet
 - chronic-inflammation
-- fungal-overgrowth
-- intestinal-permeability
-- parasite-infection
+- inflammation
+- autoimmune
+- insulin-resistance
+- gut-hormone-axis
+- gut-skin-hormone-axis
+- gut-barrier-dysfunction
+- estrogen-dominance
+- estrogen-recirculation
+- perimenopause
+- chronic-pain-and-fatigue
+- chronic-stress
+- depression-like-symptoms
 - nutrition-deficiency
 - hair-loss
 - joint-pain
-- chronic-stress
-- depression-like-symptoms
 key_mechanisms:
-- gut-dysbiosis-mechanism
-- reduced-scfas
-- leaky-gut
-- gut-fermentation-dysbiosis
-- lps-mediated-immune-activation
-- gut-immune-axis-dysregulation
+- microbial-diversity-decline
+- dysbiosis-gut-microbiome-imbalance
 - gut-dysbiosis-microbiome-imbalance
-- low-stomach-acid
+- gut-fermentation-dysbiosis
+- reduced-scfas
+- scfa-production
+- leaky-gut
+- leaky-gut-intestinal-hyperpermeability
 - impaired-gut-barrier
+- gut-barrier-dysfunction
 - gut-barrier-and-nutrient-absorption
+- lps-mediated-immune-activation
+- inflammatory-cytokine-signaling
+- chronic-inflammation
+- systemic-inflammation
+- gut-immune-axis-dysregulation
+- gut-immune-dysregulation
 - gut-brain-axis-disruption
 - neuroimmune-inflammation-loop
-coaching_scope_notes: Probiotic-rich foods, prebiotic fiber, fermented foods, stress
-  reduction, and circadian-aligned eating are coaching-appropriate.
-clinician_scope_notes: SIBO breath testing, IBD diagnosis, stool microbiome testing
-  interpretation, and medication-related gut effects require clinician oversight.
-evidence_tier: plausible_emerging
+- low-stomach-acid
+- estrogen-recirculation-via-beta-glucuronidase
+coaching_scope_notes: Coaches can guide elimination diets, low-FODMAP approaches,
+  5R protocol sequencing, prebiotic/probiotic introduction timing, probiotic-rich
+  and fermented foods, prebiotic fibre, stress reduction, and circadian-aligned
+  eating.
+clinician_scope_notes: GI-MAP or similar stool tests can identify specific dysbiotic
+  organisms (e.g., Strep, Enterococcus) as well as inflammatory markers and
+  compromised digestive function. SIBO breath testing, IBD diagnosis, and
+  medication-related gut effects require clinician oversight.
+evidence_tier: strong
 sources:
+- id: thurlow-microbiome-mondays
+  location: 'Session 1: Microbiome Foundations and Hormone Shifts'
+  quote: In perimenopause and menopause, we tend to have more inflammatory species.
+    We start to have more dysbiotic organisms.
+- id: vitaone-blood-sugar-cheatsheet
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Gut Dysbiosis / Endotoxemia
+  quote: LPS from dysbiosis increases insulin resistance. Support microbiota diversity
+    and SCFA production.
+- id: coconote-fm-chronic-pain-fatigue
+  location: Digestion Section
+  quote: Dysbiosis is a number one another cause to feel that chronic, we know that
+    microbiome is very important and microbiome We need our good bacteria and bad
+    bacteria in balance.
+- id: coconote-fm-gut-skin-hormone-axis
+  location: Blood Report Analysis
+  quote: Dysbiosis — when the number or the bacterial composition in your gut changes,
+    the good ones decline, the bad ones are on the rise.
 - id: vitaone-gut-cheatsheet
   location: Gut Health Cheatsheet
   quote: Imbalance of gut microbiota (good vs bad bacteria) — Poor diet, antibiotics,
@@ -100,10 +157,6 @@ sources:
   location: Gut Dysbiosis and Pathogens Lecture
   quote: So whenever you want to treat any kind of infection, consider doing them
     once and all. Don't try and wait and don't try and wait.
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Topics Covered
-  quote: Gut health is linked to thiamin absorption, nutrient absorption, autoimmune
-    joint pain, and hair loss support.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Topics Covered
   quote: Gut health is linked to thiamin absorption, nutrient absorption, autoimmune
@@ -112,7 +165,7 @@ sources:
   location: Topics Covered
   quote: Stress, loneliness, digital overstimulation, gut-brain disruption, altered
     microbiome, IBS/IBD, and probiotic or prebiotic support are discussed.
-version: 7
+version: 8
 status: active
-updated_at: '2026-05-06'
+updated_at: '2026-05-15'
 updated_by: shivani

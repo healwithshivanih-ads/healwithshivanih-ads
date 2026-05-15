@@ -1,0 +1,83 @@
+slug: functional-b12-excess-umfa
+display_name: Functional B12 Excess & Unmetabolised Folic Acid (UMFA)
+aliases:
+- high serum B12 unexplained
+- B12 excess
+- unmetabolised folic acid
+- UMFA
+- methylation block pattern
+- functional B12 deficiency despite high serum
+- paradoxical B12 elevation
+- high B12 high folate pattern
+- MTHFR methylation block on labs
+summary: A counter-intuitive lab pattern where serum B12 is elevated (often >900
+  pg/mL) and/or serum folate is at or above the lab's reportable upper limit (often
+  ≥24 ng/mL), despite the client having symptoms suggestive of B12 or folate
+  deficiency. The picture reflects a methylation bottleneck — most commonly an
+  MTHFR variant (C677T, A1298C) — where cells can't convert folic acid → 5-MTHF
+  and can't utilise cyanocobalamin → methylcobalamin. Synthetic folic acid and
+  cyanocobalamin (the cheap forms used in fortified foods + most cheap supplements)
+  accumulate in the bloodstream as unmetabolised folic acid (UMFA) and unused B12,
+  paradoxically signalling "high" while the client is functionally deficient at
+  the cellular level. Other causes of true serum B12 elevation must be ruled out
+  (liver disease, myeloproliferative disorders, recent supplementation) before
+  attributing solely to methylation block.
+common_symptoms:
+- fatigue
+- brain-fog
+- low-mood
+- tingling-numbness
+- functional-b12-deficiency-symptoms
+- very-high-serum-b12-unexplained
+red_flags:
+- unexplained-very-high-b12-with-hepatomegaly
+- unexplained-very-high-b12-with-abnormal-cbc
+related_topics:
+- vitamin-b12
+- folate-vitamin-b9
+- methylation-mthfr
+- mthfr-variants
+- homocysteine-and-methylation
+- methylation-cycle
+key_mechanisms:
+- mthfr-enzyme-dysfunction
+- methylation-cycle-dysfunction
+- methyl-trap
+- homocysteine-remethylation
+coaching_scope_notes: |
+  Coaches can flag the pattern when both serum B12 and folate sit at or above the
+  upper end of their lab ranges without supplementation explaining it. Education
+  points: (1) "high on the panel" does not mean "in surplus at the cell"; (2) the
+  fix is rarely to take more B12 — it's usually to switch from synthetic folic
+  acid and cyanocobalamin to methylated forms (methylfolate / 5-MTHF and
+  methylcobalamin); (3) check what's in the multivitamin or prenatal — most cheap
+  formulations use folic acid. Recommend a clinician-ordered workup to confirm
+  functional status (homocysteine, MMA, active B12/holoTC, MTHFR genotype) before
+  any supplementation change.
+clinician_scope_notes: |
+  Order homocysteine (target <7 µmol/L), MMA (target <0.27 µmol/L), holoTC (active
+  B12), and MTHFR C677T + A1298C variants. Rule out non-methylation causes of high
+  serum B12: liver disease (LFTs, ultrasound), myeloproliferative disorders (CBC
+  with differential, JAK2 if indicated), recent IM/IV B12 administration. If
+  methylation block is confirmed, switch to methylfolate + methylcobalamin;
+  consider riboflavin (B2) to stabilise the MTHFR enzyme in C677T carriers; assess
+  the wider methylation cycle (B6 / SAMe / glycine / choline). Caution with
+  methylated forms in clients with anxiety / overmethylation tendency — start low,
+  titrate.
+evidence_tier: plausible_emerging
+sources:
+- id: coach-shivani
+  location: Coach Observation — Nidhi Jain case (May 2026)
+  quote: Client presented with serum B12 1331 pg/mL and serum folate >24 ng/mL
+    without active supplementation, alongside fatigue, brain fog, and peripheral
+    neuropathy — textbook functional B12 excess + UMFA picture pointing to MTHFR
+    methylation block.
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: MTHFR and methylation section
+  quote: MTHFR variants impair the conversion of folic acid to active 5-MTHF,
+    leading to accumulation of unmetabolised folic acid and functional folate
+    deficiency despite high serum levels.
+version: 1
+status: active
+updated_at: '2026-05-15'
+updated_by: shivani
