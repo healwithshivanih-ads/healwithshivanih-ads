@@ -88,6 +88,37 @@ const TEMPLATES = [
 
   // ── FM coach automated templates (cron / dashboard) ────────────────────────
   {
+    // Programme welcome — auto-sent by /api/handover/programme-signup the
+    // moment ochre-followup confirms a paid programme signup. Combines the
+    // intake-form link + the Cal.com Programme Intake Session booking link
+    // in one welcome so the client only gets one message, not two.
+    name: 'fm_programme_welcome',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      "Hi {{1}}, welcome to the programme — really glad to have you. Two short things before our first session:\n\n" +
+      "1. Fill the intake form (~25 min, saves as you go): {{2}}\n" +
+      "2. Book your 60-min Programme Intake Session: {{3}}\n\n" +
+      "I'll review everything once both are done and send you next steps. Looking forward to working together.\n\n" +
+      "Shivani",
+    example: [['Asha', 'https://app.healwithshivanih.com/intake/abc123', 'https://cal.com/shivani-hariharan-0xyy3l/programme-intake-session']],
+  },
+  {
+    // Sunday motivational cron (slice c). Link-based on purpose: the
+    // reflection text + the 1-question response form live on a dynamic
+    // /reflect/<token> page so the template body never needs to be
+    // re-approved when the weekly content changes. Replies on the page
+    // become quick_note sessions on the client.
+    name: 'fm_weekly_motivation',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      'Hi {{1}}, your week-{{2}} reflection from your plan is here: {{3}}\n\n' +
+      'A short read — 90 seconds. There\'s a one-line "how are you feeling" question at the bottom. Tap to send back so I can adjust the plan if needed.\n\n' +
+      'Shivani',
+    example: [['Asha', '3', 'https://app.healwithshivanih.com/reflect/xyz789']],
+  },
+  {
     // First-touch intake invite. Sent when coach clicks "Send intake form" on
     // the v2 client overview. Replaces the wa.me click-to-chat fallback so
     // the send goes via Meta Cloud API (one tap from dashboard, no manual
@@ -109,9 +140,13 @@ const TEMPLATES = [
     name: 'fm_intake_reminder',
     category: 'UTILITY',
     language: 'en',
+    // v2 body per fm-database-web/docs/whatsapp-templates.md (2026-05-15
+    // handover). Replaces the earlier terse version. Submitting this with
+    // the same name triggers Meta's edit-template flow (PATCH on existing
+    // template id) — see submitOne() below.
     body:
-      'Hi {{1}}, gentle nudge — your intake form is still open. Expires {{2}}.\n\n{{3}}\n\n— Shivani Hari\nYour Functional Health Coach',
-    example: [['Priya', '20 May', 'https://fm-coach.example.com/intake/abc123xyz']],
+      'Hi {{1}}, just a gentle nudge — your intake form is still open and helps me prepare the best plan for our session. The link is valid until {{2}}: {{3}}\n\nYour progress saves automatically, so you can pause and come back any time.\n\nWarmly, Shivani',
+    example: [['Asha', '28 May', 'https://app.healwithshivanih.com/intake/abc123']],
   },
   {
     name: 'fm_start_date_check_v1',
@@ -202,8 +237,7 @@ function fail(msg) {
 // ---------------------------------------------------------------------------
 // Graph API calls
 // ---------------------------------------------------------------------------
-async function submitOne(wabaId, token, tpl) {
-  const url = `https://graph.facebook.com/${GRAPH_VERSION}/${wabaId}/message_templates`;
+function buildComponents(tpl) {
   const components = [
     {
       type: 'BODY',
@@ -221,11 +255,47 @@ async function submitOne(wabaId, token, tpl) {
       })),
     });
   }
+  return components;
+}
+
+function isDuplicateNameError(body) {
+  // Meta surfaces this in two places:
+  //   error.message       — usually generic "Invalid parameter"
+  //   error.error_user_msg — actual "...already exists" sentence
+  // and either of two subcodes:
+  //   2388023 — generic "already exists"
+  //   2388024 — "Content in this language already exists"
+  const msg = String(
+    body?.error?.error_user_msg || body?.error?.message || '',
+  ).toLowerCase();
+  const sub = body?.error?.error_subcode;
+  return (
+    msg.includes('already exists') ||
+    msg.includes('exists with same') ||
+    sub === 2388023 ||
+    sub === 2388024
+  );
+}
+
+async function findTemplateIdByName(wabaId, token, name, language) {
+  const url = `https://graph.facebook.com/${GRAPH_VERSION}/${wabaId}/message_templates`
+    + `?name=${encodeURIComponent(name)}&fields=id,name,language,status&limit=20`;
+  const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+  const body = await res.json().catch(() => ({}));
+  if (!res.ok) return null;
+  // Meta returns ALL languages for a name. Match the language too.
+  const match = (body.data || []).find(
+    (t) => t.name === name && t.language === language,
+  );
+  return match?.id || null;
+}
+
+async function editTemplate(templateId, token, tpl) {
+  const url = `https://graph.facebook.com/${GRAPH_VERSION}/${templateId}`;
   const payload = {
-    name: tpl.name,
-    category: tpl.category,
-    language: tpl.language,
-    components,
+    // Meta lets you edit BODY (and BUTTONS/FOOTER/etc.) but NOT name /
+    // category / language on an existing template. Components only.
+    components: buildComponents(tpl),
   };
   const res = await fetch(url, {
     method: 'POST',
@@ -236,6 +306,38 @@ async function submitOne(wabaId, token, tpl) {
     body: JSON.stringify(payload),
   });
   const body = await res.json().catch(() => ({}));
+  return { ok: res.ok, status: res.status, body };
+}
+
+async function submitOne(wabaId, token, tpl) {
+  const url = `https://graph.facebook.com/${GRAPH_VERSION}/${wabaId}/message_templates`;
+  const payload = {
+    name: tpl.name,
+    category: tpl.category,
+    language: tpl.language,
+    components: buildComponents(tpl),
+  };
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(payload),
+  });
+  const body = await res.json().catch(() => ({}));
+  if (res.ok) return { ok: true, status: res.status, body, mode: 'created' };
+
+  // If Meta says "name already exists" we fall over to the edit path:
+  // look up the existing template id by name+language, PATCH components.
+  // Useful for body refinements without re-numbering the template name.
+  if (isDuplicateNameError(body)) {
+    const existingId = await findTemplateIdByName(wabaId, token, tpl.name, tpl.language);
+    if (!existingId) return { ok: false, status: res.status, body };
+    const edit = await editTemplate(existingId, token, tpl);
+    return { ...edit, body: { ...(edit.body || {}), id: existingId }, mode: 'edited' };
+  }
+
   return { ok: res.ok, status: res.status, body };
 }
 
@@ -304,8 +406,9 @@ for (const tpl of targets) {
   try {
     const r = await submitOne(WABA_ID, TOKEN, tpl);
     if (r.ok) {
-      console.log(`✓ ${r.body.id || ''} (${r.body.status || 'queued'})`);
-      results.push({ name: tpl.name, ok: true, id: r.body.id, status: r.body.status });
+      const tag = r.mode === 'edited' ? '✎ edited' : '✓ created';
+      console.log(`${tag} ${r.body.id || ''} (${r.body.status || 'queued'})`);
+      results.push({ name: tpl.name, ok: true, id: r.body.id, status: r.body.status, mode: r.mode });
     } else {
       const errMsg = r.body?.error?.message || JSON.stringify(r.body);
       console.log(`✗ ${r.status} — ${errMsg}`);
