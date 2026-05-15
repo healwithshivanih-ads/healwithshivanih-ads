@@ -88,6 +88,32 @@ const TEMPLATES = [
 
   // ── FM coach automated templates (cron / dashboard) ────────────────────────
   {
+    // First-touch intake invite. Sent when coach clicks "Send intake form" on
+    // the v2 client overview. Replaces the wa.me click-to-chat fallback so
+    // the send goes via Meta Cloud API (one tap from dashboard, no manual
+    // step on the coach's phone). Body mirrors the warm/personal copy from
+    // SendIntakeFormButton.buildWhatsappLink() so the recipient experience
+    // matches the previous flow.
+    name: 'fm_intake_invite',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      'Hi {{1}}, please fill in this intake form before our session — it takes about 25 minutes and helps me prepare the best plan for you.\n\n{{2}}\n\nYour progress saves automatically, so feel free to pause and come back. Looking forward to it.\n\n— Shivani Hari\nYour Functional Health Coach',
+    example: [['Priya', 'https://fm-coach.example.com/intake/abc123xyz']],
+  },
+  {
+    // Sent by POST /api/cron/intake-reminders when a client has an open intake
+    // token they haven't submitted yet. Capped at 2 reminders per token, ≥5 d
+    // apart. The URL in {{3}} is the unique tokenised intake link, e.g.
+    // https://<fm-coach-public-url>/intake/<token>.
+    name: 'fm_intake_reminder',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      'Hi {{1}}, gentle nudge — your intake form is still open. Expires {{2}}.\n\n{{3}}\n\n— Shivani Hari\nYour Functional Health Coach',
+    example: [['Priya', '20 May', 'https://fm-coach.example.com/intake/abc123xyz']],
+  },
+  {
     name: 'fm_start_date_check_v1',
     category: 'UTILITY',
     language: 'en',
