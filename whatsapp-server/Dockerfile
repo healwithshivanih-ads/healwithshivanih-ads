@@ -23,6 +23,7 @@ COPY --from=server-deps /app/node_modules ./node_modules
 COPY package*.json ./
 COPY src ./src
 COPY sql ./sql
+COPY scripts ./scripts
 COPY --from=ui-build /app/admin-ui/dist ./admin-ui/dist
 
 EXPOSE 3000

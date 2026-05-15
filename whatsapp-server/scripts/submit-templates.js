@@ -26,6 +26,7 @@ const GRAPH_VERSION = 'v21.0';
 // Template definitions. Edit/add here.
 // ---------------------------------------------------------------------------
 const TEMPLATES = [
+  // ── Appointment templates (existing on WABA) ───────────────────────────────
   {
     name: 'appt_confirmation',
     category: 'UTILITY',
@@ -47,12 +48,102 @@ const TEMPLATES = [
     body: 'Hi {{1}}, your {{4}} session is in 2 hours — at {{3}} today. See you soon! — Shivani',
     example: [['Priya', '15 May 2026', '5:00 PM', 'Cortisol Reset']],
   },
+
+  // ── FM coach manual templates (Message Templates panel on client page) ─────
+  {
+    name: 'fm_lab_reminder',
+    category: 'UTILITY',
+    language: 'en',
+    body: 'Hi {{1}}, a gentle reminder to get your labs done before our next session. Here are the tests we discussed: {{2}}. Please share the report at least 2 days before our appointment. 🙏',
+    example: [['Priya', 'TSH, Vitamin D, Ferritin']],
+  },
+  {
+    name: 'fm_supplement_instructions',
+    category: 'UTILITY',
+    language: 'en',
+    body: 'Hi {{1}}, here are your supplement instructions for this week: {{2}}. Take them as discussed and note any changes. Feel free to message if you have questions! 💊',
+    example: [['Priya', 'Magnesium glycinate 200mg before bed; B-complex with breakfast']],
+  },
+  {
+    name: 'fm_session_confirm',
+    category: 'UTILITY',
+    language: 'en',
+    body: 'Hi {{1}}, confirming our session on {{2}} at {{3}}. Please come prepared with your food journal and any new lab reports. See you then! 📋',
+    example: [['Priya', '15 May 2026', '5:00 PM']],
+  },
+  {
+    name: 'fm_encouragement',
+    category: 'UTILITY',
+    language: 'en',
+    body: "Hi {{1}}, you're doing great! Healing takes time and consistency — be patient with yourself. Keep going with {{2}}. Rooting for you! 💚",
+    example: [['Priya', 'your morning routine and consistent sleep']],
+  },
+  {
+    name: 'fm_checkin_nudge',
+    category: 'UTILITY',
+    language: 'en',
+    body: 'Hi {{1}}, just checking in! How are you feeling on the protocol? Any changes in {{2}}? Would love to hear how things are going. 🌿',
+    example: [['Priya', 'energy or digestion']],
+  },
+
+  // ── FM coach automated templates (cron / dashboard) ────────────────────────
+  {
+    name: 'fm_start_date_check_v1',
+    category: 'UTILITY',
+    language: 'en',
+    body: "Hi {{1}} 👋 Quick check-in from Shivani — have you started your plan yet? If yes, just reply with the date you began (e.g. 'Started 19 May'). If you'd like more time, no rush!",
+    example: [['Priya']],
+  },
+
+  // Weekly poll templates — each has 3 quick-reply buttons. Button labels
+  // MUST match POLL_BUTTON_LABELS in src/lib/server-actions/weekly-poll.ts
+  // so the webhook parser can map a button click back to a structured score.
+  {
+    name: 'fm_weekly_check_in_v1',
+    category: 'UTILITY',
+    language: 'en',
+    body: "Hi {{1}} 👋 Quick weekly check-in from Shivani. How's it going overall this week?",
+    example: [['Priya']],
+    // Meta rejects emojis / variables / newlines / formatting in button text.
+    // The parser in `lib/poll-labels.ts` uses .includes("all good") so dropping
+    // the 🌿 doesn't break webhook classification.
+    buttons: ['All good', 'Some struggles', 'Need help'],
+  },
+  {
+    name: 'fm_weekly_supplement_v1',
+    category: 'UTILITY',
+    language: 'en',
+    body: 'Hi {{1}}, how are the supplements going this week?',
+    example: [['Priya']],
+    buttons: ['All taken', 'Missed 1-2 days', 'Stopped'],
+  },
+  {
+    name: 'fm_weekly_meals_v1',
+    category: 'UTILITY',
+    language: 'en',
+    body: 'Hi {{1}}, sticking to the meal plan this week?',
+    example: [['Priya']],
+    buttons: ['Yes mostly', 'Half the time', 'Struggling'],
+  },
+  {
+    name: 'fm_weekly_movement_v1',
+    category: 'UTILITY',
+    language: 'en',
+    body: 'Hi {{1}}, movement this week?',
+    example: [['Priya']],
+    buttons: ['Most days', 'A few times', 'None'],
+  },
 ];
 
 // ---------------------------------------------------------------------------
 // .env loader (no dep on dotenv — keeps the script self-contained)
 // ---------------------------------------------------------------------------
 function loadEnv() {
+  // If the required vars are already in process.env (e.g. running inside the
+  // Fly container where they're injected as secrets), skip the .env file.
+  if (process.env.WHATSAPP_TOKEN && process.env.WHATSAPP_BUSINESS_ACCOUNT_ID) {
+    return { ...process.env };
+  }
   const envPath = resolve(ROOT, '.env');
   let raw;
   try {
@@ -87,17 +178,28 @@ function fail(msg) {
 // ---------------------------------------------------------------------------
 async function submitOne(wabaId, token, tpl) {
   const url = `https://graph.facebook.com/${GRAPH_VERSION}/${wabaId}/message_templates`;
+  const components = [
+    {
+      type: 'BODY',
+      text: tpl.body,
+      ...(tpl.example ? { example: { body_text: tpl.example } } : {}),
+    },
+  ];
+  // Quick-reply buttons (max 3 per template per Meta spec).
+  if (Array.isArray(tpl.buttons) && tpl.buttons.length > 0) {
+    components.push({
+      type: 'BUTTONS',
+      buttons: tpl.buttons.slice(0, 3).map((label) => ({
+        type: 'QUICK_REPLY',
+        text: String(label).slice(0, 25), // Meta hard limit
+      })),
+    });
+  }
   const payload = {
     name: tpl.name,
     category: tpl.category,
     language: tpl.language,
-    components: [
-      {
-        type: 'BODY',
-        text: tpl.body,
-        ...(tpl.example ? { example: { body_text: tpl.example } } : {}),
-      },
-    ],
+    components,
   };
   const res = await fetch(url, {
     method: 'POST',
@@ -128,7 +230,9 @@ if (args.includes('--list')) {
   console.log(`Local template definitions (${TEMPLATES.length}):\n`);
   for (const t of TEMPLATES) {
     console.log(`  ${t.name}  [${t.category}, ${t.language}]`);
-    console.log(`    ${t.body}\n`);
+    console.log(`    ${t.body}`);
+    if (t.buttons) console.log(`    buttons: ${t.buttons.join(' | ')}`);
+    console.log();
   }
   process.exit(0);
 }
