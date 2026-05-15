@@ -60,8 +60,8 @@ export type { FmBodyCompGridProps, BodyCompMetric } from "./FmBodyCompGrid";
 export { FmCatalogueCommitBanner } from "./FmCatalogueCommitBanner";
 export type { FmCatalogueCommitBannerProps } from "./FmCatalogueCommitBanner";
 
-export { FmAisensyBanner } from "./FmAisensyBanner";
-export type { FmAisensyBannerProps } from "./FmAisensyBanner";
+export { FmInboundMessagesBanner } from "./FmInboundMessagesBanner";
+export type { FmInboundMessagesBannerProps } from "./FmInboundMessagesBanner";
 
 export { FmWhatsAppDraftPanel } from "./FmWhatsAppDraftPanel";
 export type { FmWhatsAppDraftPanelProps } from "./FmWhatsAppDraftPanel";

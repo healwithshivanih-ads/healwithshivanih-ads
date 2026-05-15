@@ -21,6 +21,7 @@ crashing the upload pipeline.
 from __future__ import annotations
 
 import base64
+import hashlib
 import json
 import os
 import sys
@@ -68,19 +69,53 @@ DUTCH_KEYWORDS = [
     "free cortisol pattern",
 ]
 GIMAP_KEYWORDS = [
+    # Brand markers — GI-MAP (Diagnostic Solutions) — primary target.
     "gi-map",
     "gi map",
+    "gimap",
     "diagnostic solutions",
+    # Other gut-microbiome panel brands the coach actually receives. Same
+    # schema works for all — the Sonnet extractor reads field names from the
+    # PDF directly and maps to our normalised findings.
+    "bugspeaks",
+    "sova ",          # Indian lab Sova / Sova Health (trailing space to avoid matching "sovaldi" etc.)
+    "sova health",
+    "gut microbiome test",
+    "gut microbiome summary",
+    "gut microbiome report",
+    "microbiome score",
+    "microbiome composition",
+    # Marker / category names common to any decent gut panel.
     "h. pylori",
     "h pylori virulence",
+    "helicobacter pylori",
     "secretory iga",
+    "secretory-iga",
     "calprotectin",
     "beta-glucuronidase",
+    "β-glucuronidase",
     "elastase-1",
+    "pancreatic elastase",
     "anti-gliadin",
     "akkermansia muciniphila",
+    "akkermansia",
     "faecalibacterium",
+    "f. prausnitzii",
     "zonulin",
+    "occult blood",
+    "candida albicans",
+    "stool pcr",
+    "microbial assay",
+    "opportunistic bacteria",
+    "dysbiotic bacteria",
+    "beneficial bacteria",
+    "commensal bacteria",
+    "firmicutes",
+    "bacteroidetes",
+    "proteobacteria",
+    "actinobacteria",
+    "bifidobacterium",
+    "lactobacillus",
 ]
 
 
@@ -91,9 +126,13 @@ def _detect_test_type(text: str) -> str:
     t = (text or "").lower()
     dutch_hits = sum(1 for kw in DUTCH_KEYWORDS if kw in t)
     gimap_hits = sum(1 for kw in GIMAP_KEYWORDS if kw in t)
-    if dutch_hits >= 2 and dutch_hits > gimap_hits:
+    # Looser threshold: any unambiguous lead wins. PDFs vary in how cleanly
+    # the header logo / branding extracts as text — some Indian-lab GI-MAP
+    # exports lose the brand header entirely and only the marker names
+    # come through, hitting just 1-2 keywords reliably.
+    if dutch_hits >= 1 and dutch_hits > gimap_hits:
         return "dutch"
-    if gimap_hits >= 2 and gimap_hits > dutch_hits:
+    if gimap_hits >= 1 and gimap_hits > dutch_hits:
         return "gi_map"
     return "unknown"
 
@@ -288,7 +327,17 @@ rather than fabricate. Use catalogue mechanism slugs in flagged_drivers
 methylation-impairment, mtor-pathway-overactive).
 """
 
-GIMAP_SYSTEM = """You are a Functional Medicine clinician analysing a GI-MAP stool PCR test.
+GIMAP_SYSTEM = """You are a Functional Medicine clinician analysing a gut microbiome / stool test.
+The report may be a GI-MAP (Diagnostic Solutions), BugSpeaks / Sova (Indian labs),
+Genova GI Effects, Doctor's Data, Vibrant Gut Zoomer, or any similar gut panel.
+The naming of categories will vary by brand — extract what's present, leaving
+fields empty if the lab didn't measure them. Don't fabricate. Map whatever the
+report calls things into our normalised categories below; e.g. "Beneficial Bacteria"
+or "Commensal Score" → beneficial_bacteria; "Opportunistic / Dysbiotic" → opportunistic;
+"Pathogenic" or "Pathobionts" → pathogens. If the report gives a phylum-level
+breakdown (Firmicutes / Bacteroidetes ratio etc.) and no species-level data,
+record the phylum data and note the limitation in the summary.
+
 Extract findings into the report_gimap tool with the following clinical lens:
 
 H. PYLORI — virulence factor matters. Positive H. pylori with CagA / VacA /
@@ -321,6 +370,60 @@ Be honest. Use catalogue mechanism slugs in flagged_drivers.
 
 
 # ── Extraction pipeline ──────────────────────────────────────────────────────
+
+def _detect_with_vision(raw_pdf: bytes, api_key: str) -> str:
+    """Vision-based fallback when keyword detection finds nothing — happens
+    when the PDF is image-only (scanned / rasterised header, common for
+    Indian-lab GI-MAPs). Sends the PDF to Haiku with a one-shot classify
+    question. Returns 'dutch' / 'gi_map' / 'unknown'. Costs ~$0.02.
+    """
+    try:
+        from anthropic import Anthropic
+    except ImportError:
+        return "unknown"
+    try:
+        api = Anthropic(api_key=api_key)
+        resp = api.messages.create(
+            model="claude-haiku-4-5",
+            max_tokens=20,
+            messages=[{
+                "role": "user",
+                "content": [
+                    {
+                        "type": "document",
+                        "source": {
+                            "type": "base64",
+                            "media_type": "application/pdf",
+                            "data": base64.standard_b64encode(raw_pdf).decode("ascii"),
+                        },
+                    },
+                    {
+                        "type": "text",
+                        "text": (
+                            "Classify this report. Reply with EXACTLY one word:\n"
+                            "  - 'dutch' if it's a DUTCH urine hormone panel (Precision Analytical)\n"
+                            "  - 'gi_map' if it's ANY gut microbiome / stool PCR / stool culture panel "
+                            "    (GI-MAP, BugSpeaks, Sova, Genova GI Effects, Doctor's Data, "
+                            "    Vibrant Gut Zoomer, etc. — anything reporting bacterial composition, "
+                            "    dysbiosis, pathogens, parasites, or beneficial bacteria)\n"
+                            "  - 'unknown' otherwise"
+                        ),
+                    },
+                ],
+            }],
+        )
+        for blk in resp.content:
+            if getattr(blk, "type", None) == "text":
+                ans = (blk.text or "").strip().lower()
+                if "gi_map" in ans or "gi-map" in ans or "gimap" in ans:
+                    return "gi_map"
+                if "dutch" in ans:
+                    return "dutch"
+                return "unknown"
+    except BaseException:
+        return "unknown"
+    return "unknown"
+
 
 def _read_pdf(path: Path) -> tuple[bytes, str]:
     """Return (raw_bytes, extracted_text). Text used for cheap test-type
@@ -405,11 +508,25 @@ def main() -> int:
             return 1
 
     test_type = forced_type if forced_type in ("dutch", "gi_map") else _detect_test_type(text)
+    # If keyword detection failed AND we have an API key + raw PDF bytes
+    # (i.e. it isn't a text/markdown upload), try a vision-based classify.
+    # Many scanned reports have no extractable text — keyword scan can't help.
+    if test_type == "unknown" and api_key and raw_pdf:
+        test_type = _detect_with_vision(raw_pdf, api_key)
+
+    # Hash the source so re-uploading the same PDF is recognised as a
+    # duplicate (was creating dutch-2025-09-20-1.yaml, …-2.yaml, … with
+    # subtly different LLM outputs each time, which confused the coach).
+    source_bytes = raw_pdf if raw_pdf else (text or "").encode("utf-8", errors="replace")
+    source_sha = hashlib.sha256(source_bytes).hexdigest() if source_bytes else ""
     if test_type == "unknown":
         json.dump({
             "ok": False,
             "test_type": "unknown",
-            "error": "Could not identify test type. Currently supported: DUTCH, GI-MAP. Pass `test_type` explicitly to force.",
+            "error": (
+                "Could not identify test type. Currently supported: DUTCH, GI-MAP. "
+                "If the auto-detect missed it, click the override button to force a type."
+            ),
         }, sys.stdout)
         return 0
 
@@ -424,6 +541,33 @@ def main() -> int:
             "file_path": "",
         }, sys.stdout)
         return 0
+
+    # Look for an existing record with the same source hash for this
+    # client + test_type. If we find one, return it instead of re-parsing
+    # — saves a $0.30–0.60 Sonnet call and prevents duplicate cards.
+    if source_sha:
+        existing_dir = PLANS_ROOT / "clients" / client_id / "functional_tests"
+        if existing_dir.exists():
+            for yp in existing_dir.glob("*.yaml"):
+                try:
+                    existing = yaml.safe_load(yp.read_text())
+                    if not isinstance(existing, dict):
+                        continue
+                    if existing.get("source_sha") == source_sha and existing.get("test_type") == test_type:
+                        json.dump({
+                            "ok": True,
+                            "test_type": test_type,
+                            "summary": existing.get("summary"),
+                            "findings": existing,
+                            "flagged_drivers": existing.get("flagged_drivers") or [],
+                            "clinical_recommendations": existing.get("clinical_recommendations") or [],
+                            "file_path": str(yp),
+                            "duplicate": True,
+                            "error": None,
+                        }, sys.stdout)
+                        return 0
+                except Exception:
+                    continue
 
     try:
         from anthropic import Anthropic
@@ -463,11 +607,21 @@ def main() -> int:
         ]
 
     client_api = Anthropic(api_key=api_key)
-    _fn_model = os.environ.get("FMDB_FUNCTIONAL_TEST_MODEL", "claude-sonnet-4-6")
+    # Default to Haiku. Sonnet is ~5-10x more expensive and the structured
+    # tool-output for GI-MAP / DUTCH / Sova / OAT works fine on Haiku in
+    # testing — the schema is rigid enough that the smaller model doesn't
+    # drift. If a specific lab format starts producing junk, set
+    # FMDB_FUNCTIONAL_TEST_MODEL=claude-sonnet-4-6 for that run only.
+    _fn_model = os.environ.get("FMDB_FUNCTIONAL_TEST_MODEL", "claude-haiku-4-5")
     try:
         with client_api.messages.stream(
             model=_fn_model,
             max_tokens=8000,
+            # temperature=0 keeps repeat parses of the same report
+            # deterministic. The default (~1.0) sampled differently each
+            # call — the coach uploaded the same Sova/BugSpeaks PDF twice
+            # and got 5 vs 7 flagged drivers. Same input → same output now.
+            temperature=0,
             system=system,
             tools=[tool],
             tool_choice={"type": "tool", "name": tool_name},
@@ -485,8 +639,8 @@ def main() -> int:
             )
         except Exception:
             pass
-    except Exception as e:
-        json.dump({"ok": False, "test_type": test_type, "error": f"API call failed: {e}"}, sys.stdout)
+    except BaseException as e:
+        json.dump({"ok": False, "test_type": test_type, "error": f"API call failed: {type(e).__name__}: {e}"}, sys.stdout)
         return 1
 
     tool_use = next((b for b in resp.content if getattr(b, "type", None) == "tool_use"), None)
@@ -496,12 +650,14 @@ def main() -> int:
 
     findings = tool_use.input or {}
 
-    # Persist
+    # Persist. `source_sha` lets future uploads of the same PDF skip the
+    # ~$0.50 re-parse and dedupe (see dup-check above).
     record = {
         "test_type": test_type,
         "client_id": client_id,
         "extracted_at": date.today().isoformat(),
         "source_file": file_path.name,
+        "source_sha": source_sha,
         **findings,
     }
     out_path = _save_findings(client_id, test_type, record)
@@ -520,4 +676,12 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    # Safety net: surface ANY uncaught error as JSON to stdout so the action
+    # gets a useful toast ("...: details") instead of "produced no output".
+    try:
+        sys.exit(main())
+    except SystemExit:
+        raise
+    except BaseException as e:
+        json.dump({"ok": False, "error": f"{type(e).__name__}: {e}"}, sys.stdout)
+        sys.exit(1)

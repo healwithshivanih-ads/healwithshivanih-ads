@@ -16,25 +16,23 @@ export interface ClientSubnavTab {
 }
 
 export function clientSubnavTabs(clientId: string): ClientSubnavTab[] {
+  // Ordered to follow the coaching workflow left → right:
+  //   1. Overview    — who is this client? (snapshot, always first)
+  //   2. Sessions    — record discovery / intake / check-in
+  //   3. Plan        — synthesise findings into a protocol
+  //   4. Communicate — deliver the plan + ongoing messages
+  //   5. Timeline    — history of everything done with this client
+  //   6. Catalogue   — reference material (end of the bar)
   return [
     { id: "overview", label: "Overview", href: `/clients-v2/${clientId}` },
-    // "Analyse" was misleading — this tab is where every client contact
-    // gets recorded (discovery, intake, full assessment, check-in, quick
-    // note). Renamed to "Sessions" per coach.
     { id: "analyse", label: "Sessions", href: `/clients-v2/${clientId}/analyse` },
-    // The old "Sessions" tab is a chronological inspector of prior
-    // sessions — renamed to "Timeline" to disambiguate.
-    { id: "sessions", label: "Timeline", href: `/clients-v2/${clientId}/sessions` },
     { id: "plan", label: "Plan", href: `/clients-v2/${clientId}/plan` },
     {
       id: "communicate",
       label: "Communicate",
       href: `/clients-v2/${clientId}/communicate`,
     },
-    // Client-scoped catalogue — shows only the catalogue entries this
-    // client is touching (their active conditions, root causes flagged
-    // in plan, supplements in their protocol, mind maps relevant to
-    // their conditions). Each card links out to the global catalogue.
+    { id: "sessions", label: "Timeline", href: `/clients-v2/${clientId}/sessions` },
     {
       id: "catalogue",
       label: "Catalogue",

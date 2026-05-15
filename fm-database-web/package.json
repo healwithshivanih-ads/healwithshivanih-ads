@@ -21,6 +21,7 @@
     "lucide-react": "^1.14.0",
     "mermaid": "^11.14.0",
     "next": "16.2.4",
+    "node-cron": "^3.0.3",
     "nodemailer": "^8.0.7",
     "react": "19.2.4",
     "react-dom": "19.2.4",

@@ -1,5 +1,12 @@
 /**
- * FmAisensyBanner — design 10A.
+ * FmInboundMessagesBanner — WhatsApp inbox banner on the dashboard.
+ *
+ * Renamed from FmAisensyBanner 2026-05-15 as part of the AiSensy
+ * decommission. Inbound messages now come from the self-hosted WhatsApp
+ * Cloud API server (whatsapp-server-shivani on Fly) via the
+ * /api/whatsapp-webhook endpoint. Messages get tagged
+ * `[source: whatsapp_webhook]` on the session record;
+ * getRecentInboundMessages() scans for that tag.
  *
  * WhatsApp green (distinct from orange CTAs so it reads as "inbound", not
  * "you must act"). Lists clients with new messages as chips with unread
@@ -10,27 +17,27 @@
  */
 import Link from "next/link";
 import { FmPanel } from "./FmPanel";
-import type { AisensyMessage } from "@/lib/fmdb/loader-extras";
+import type { InboundMessage } from "@/lib/fmdb/loader-extras";
 
-export interface FmAisensyBannerProps {
-  messages: AisensyMessage[];
+export interface FmInboundMessagesBannerProps {
+  messages: InboundMessage[];
   /** Days back the loader queried — surfaced as a chip in the title. */
   windowDays?: number;
   /** Inbox CTA href (defaults to the legacy session view). */
   inboxHref?: string;
 }
 
-export function FmAisensyBanner({
+export function FmInboundMessagesBanner({
   messages,
   windowDays = 7,
   inboxHref = "/messages",
-}: FmAisensyBannerProps) {
+}: FmInboundMessagesBannerProps) {
   if (messages.length === 0) return null;
 
   // Group by client_id, keep the most recent message as the preview.
   const grouped = new Map<
     string,
-    { client_id: string; display_name?: string; latest: AisensyMessage; count: number }
+    { client_id: string; display_name?: string; latest: InboundMessage; count: number }
   >();
   for (const m of messages) {
     const g = grouped.get(m.client_id);

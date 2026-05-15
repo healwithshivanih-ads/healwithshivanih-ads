@@ -623,11 +623,22 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
 
     if hemoglobin is not None:
         # Use women's optimal range (most common FM patient base); could be sex-aware
-        flag = "low" if hemoglobin < 12.0 else ("optimal" if hemoglobin <= 14.5 else "suboptimal")
+        if hemoglobin < 12.0:
+            flag = "low"
+            hgb_interp = "Low — anaemia; assess iron, B12, folate; fatigue, brain fog, poor oxygenation"
+        elif hemoglobin <= 14.5:
+            flag = "optimal"
+            hgb_interp = "FM optimal range"
+        elif hemoglobin <= 16.0:
+            flag = "suboptimal"
+            hgb_interp = f"Above typical women's range ({hemoglobin}) — assess haemoconcentration / dehydration; for men within optimal upper-normal"
+        else:
+            flag = "high"
+            hgb_interp = f"High ({hemoglobin}) — polycythemia screen: hydration status, smoking, sleep apnoea, EPO, JAK2; recheck CBC + ferritin + EPO"
         add("Hemoglobin", hemoglobin, "g/dL",
-            "12.0–14.5 women; 13.5–16.0 men (FM optimal upper-normal)",
+            "12.0–14.5 women; 13.5–16.0 men (FM optimal upper-normal); >16 = polycythemia signal",
             flag,
-            f"Hgb {hemoglobin}: {'Low — anaemia; assess iron, B12, folate; fatigue, brain fog, poor oxygenation' if hemoglobin<12 else 'FM optimal range' if hemoglobin<=14.5 else 'Above typical range — assess haemoconcentration'}",
+            f"Hgb {hemoglobin}: {hgb_interp}",
             PANEL_IRON)
 
     if ferritin is not None:
@@ -733,27 +744,83 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
         r"\bzinc\b|serum zinc|plasma zinc")
 
     if vitd is not None:
-        flag = "low" if vitd < 40 else ("optimal" if vitd >= 60 else "suboptimal")
+        if vitd < 20:
+            flag = "low"
+            vitd_interp = "Deficient — supplement urgently; impacts immunity, mood, thyroid, insulin sensitivity"
+        elif vitd < 40:
+            flag = "low"
+            vitd_interp = "Insufficient — supplementation needed"
+        elif vitd < 60:
+            flag = "suboptimal"
+            vitd_interp = "Sub-optimal — titrate to 60–80"
+        elif vitd <= 80:
+            flag = "optimal"
+            vitd_interp = "FM optimal"
+        elif vitd <= 100:
+            flag = "suboptimal"
+            vitd_interp = f"Above FM optimal ({vitd}) — reduce supplementation; monitor calcium + PTH"
+        elif vitd <= 150:
+            flag = "high"
+            vitd_interp = f"High ({vitd}) — stop supplementation; risk of hypercalcaemia, kidney stones; check ionised calcium + 24h urine calcium"
+        else:
+            flag = "very_high"
+            vitd_interp = f"Toxic range ({vitd}) — STOP vit D immediately; urgent ionised calcium, PTH, kidney function; risk of vit D toxicity / hypercalcaemia"
         add("25-OH Vitamin D", vitd, "ng/mL",
-            "60–80 FM optimal (lab: 30–100; deficient <20)",
+            "60–80 FM optimal (lab: 30–100; deficient <20; toxicity >150)",
             flag,
-            f"Vit D {vitd}: {'Deficient — supplement urgently; impacts immunity, mood, thyroid, insulin sensitivity' if vitd<20 else 'Insufficient — supplementation needed' if vitd<40 else 'Sub-optimal — titrate to 60–80' if vitd<60 else 'FM optimal'}",
+            f"Vit D {vitd}: {vitd_interp}",
             PANEL_NUTRIENTS)
 
     if b12 is not None:
-        flag = "low" if b12 < 400 else ("optimal" if b12 >= 600 else "suboptimal")
+        if b12 < 400:
+            flag = "low"
+            b12_interp = "Functionally deficient — neurological, methylation and energy impact; consider active B12 (MMA test)"
+        elif b12 < 600:
+            flag = "suboptimal"
+            b12_interp = "Low-normal — may be functionally deficient; assess MMA and homocysteine"
+        elif b12 <= 900:
+            flag = "optimal"
+            b12_interp = "FM optimal"
+        elif b12 <= 1500:
+            flag = "high"
+            b12_interp = f"High ({b12}) without supplementation is a RED FLAG — check MTHFR variants, methylation block (cells can't utilise B12 → serum accumulates), liver dysfunction, or myeloproliferative disorder. Test MMA + homocysteine + active B12 (holoTC); paradoxically may be functionally deficient. See claim: high-serum-b12-check-functional-markers-mthfr"
+        else:
+            flag = "very_high"
+            b12_interp = f"Very high ({b12}) — urgent workup: MTHFR + methylation panel, liver enzymes, CBC for myeloproliferative screen, MMA + homocysteine to confirm functional status. Despite high serum, cellular utilization may be impaired"
         add("Vitamin B12", b12, "pg/mL",
-            "400–900 FM optimal (lab range 200–900 misses functional deficiency)",
+            "400–900 FM optimal; >900 needs MTHFR/methylation workup (lab range 200–900 misses both functional deficiency AND functional excess)",
             flag,
-            f"B12 {b12}: {'Functionally deficient — neurological, methylation and energy impact; consider active B12 (MMA test)' if b12<400 else 'FM optimal' if b12>=600 else 'Low-normal — may be functionally deficient; assess MMA and homocysteine'}",
+            f"B12 {b12}: {b12_interp}",
             PANEL_NUTRIENTS)
 
     if folate is not None:
-        flag = "low" if folate < 15 else ("optimal" if folate >= 20 else "suboptimal")
-        add("Folate", folate, "nmol/L",
-            ">20 FM optimal; <15 = methylation/DNA synthesis risk",
+        # Note: serum folate often reported in ng/mL (lab range ~3–17) or nmol/L
+        # (lab range ~7–40). Most Indian labs report ng/mL. We treat the numeric
+        # value as ng/mL when <30, nmol/L otherwise — and flag >24 ng/mL (or
+        # >54 nmol/L equivalent) as high since that pattern combined with high
+        # serum B12 strongly suggests MTHFR / methylation block + unmetabolized
+        # folic acid accumulation.
+        if folate < 15:
+            flag = "low"
+            folate_interp = "Low — methylation burden, neural tube risk, elevated homocysteine; increase leafy greens and consider methylfolate"
+        elif folate < 20:
+            flag = "suboptimal"
+            folate_interp = "Sub-optimal — optimise with food and/or methylfolate"
+        elif folate < 24:
+            flag = "optimal"
+            folate_interp = "FM optimal"
+        else:
+            flag = "high"
+            folate_interp = (
+                f"High ({folate}) — when paired with high serum B12, classic methylation block / MTHFR pattern: "
+                "unmetabolized folic acid (UMFA) accumulates because cells can't convert folic acid → "
+                "methylfolate. Test MTHFR variants, homocysteine, MMA. Stop synthetic folic acid; "
+                "switch to methylfolate. See claim: high-serum-b12-check-functional-markers-mthfr"
+            )
+        add("Folate", folate, "ng/mL or nmol/L",
+            "15–24 FM optimal; <15 = methylation/DNA synthesis risk; >24 + high B12 = MTHFR/methylation block signal",
             flag,
-            f"Folate {folate}: {'Low — methylation burden, neural tube risk, elevated homocysteine; increase leafy greens and consider methylfolate' if folate<15 else 'FM optimal' if folate>=20 else 'Sub-optimal — optimise with food and/or methylfolate'}",
+            f"Folate {folate}: {folate_interp}",
             PANEL_NUTRIENTS)
 
     # RBC Magnesium (preferred — reflects intracellular status)

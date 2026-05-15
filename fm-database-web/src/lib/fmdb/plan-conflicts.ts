@@ -86,7 +86,7 @@ const DAIRY_TOKENS = [
 // status so we leave it off the default list).
 const PLANT_MILK_SUGGESTIONS = ["almond milk", "oat milk", "cashew milk", "coconut milk"];
 
-// Vegan-incompatible animal products.
+// Vegan-incompatible animal products (everything from animals).
 const ANIMAL_TOKENS = [
   ...DAIRY_TOKENS,
   "egg",
@@ -97,6 +97,23 @@ const ANIMAL_TOKENS = [
   "pork",
   "honey",
   "gelatin",
+];
+
+// Vegetarian-Jain / strict-vegetarian incompatible products. Jain diet is
+// LACTO-VEGETARIAN — dairy (milk, ghee, paneer, dahi, etc.) is fully
+// permitted. Only flesh foods, eggs, honey (ahimsa — bees are harmed) and
+// gelatin are excluded. Coach correction 2026-05-15.
+const NON_VEGAN_VEG_ANIMAL_TOKENS = [
+  "egg",
+  "fish",
+  "chicken",
+  "mutton",
+  "beef",
+  "pork",
+  "gelatin",
+  // Honey: strict-orthodox Jain excludes, but most lay-Jain followers in
+  // India consume it. Leaving out of the auto-flag — coach can flag manually
+  // if needed for a strict-orthodox client.
 ];
 
 // Jain-incompatible roots.
@@ -199,12 +216,17 @@ export function detectPlanConflicts(
   }
 
   // ── Rule 2: vegan / vegetarian-strict vs animal products ──────────
+  // IMPORTANT: Jain vegetarian ≠ vegan. Jain is LACTO-VEGETARIAN — dairy
+  // is permitted (milk, ghee, paneer, dahi). Only flesh/eggs/gelatin
+  // (and strict-orthodox: honey) are excluded. Use the narrower token
+  // set for strict-veg / Jain to avoid false positives like "Jain client
+  // listed milk in non-negotiables".
   const vegan = dietary.includes("vegan");
   const vegStrict = dietary.includes("strict vegetarian") || dietary.includes("jain");
   if ((vegan || vegStrict) && nonNeg) {
     const animals = vegan
       ? tokenMatches(nonNeg, ANIMAL_TOKENS)
-      : tokenMatches(nonNeg, ANIMAL_TOKENS.filter((t) => t !== "honey"));
+      : tokenMatches(nonNeg, NON_VEGAN_VEG_ANIMAL_TOKENS);
     if (animals.length > 0) {
       out.push({
         id: `vegan-non-neg-${slug(animals.join("-"))}`,
@@ -212,7 +234,7 @@ export function detectPlanConflicts(
         kind: "dietary_vs_nonnegotiable",
         summary: `Dietary preference is "${client.dietary_preference}" but non-negotiables mention ${animals.join(", ")}`,
         details:
-          `${vegan ? "Vegan diets exclude all animal products" : "Strict vegetarian / Jain diets exclude meat, fish and eggs"}, ` +
+          `${vegan ? "Vegan diets exclude all animal products" : "Strict vegetarian / Jain diets exclude meat, fish, eggs and gelatin (dairy is allowed in Jain — lacto-vegetarian)"}, ` +
           `but the non-negotiable list mentions ${animals.join(", ")}. Reconcile before the meal plan goes out — ` +
           `the AI will otherwise either silently drop the non-negotiable or include the animal product in the plan.`,
       });

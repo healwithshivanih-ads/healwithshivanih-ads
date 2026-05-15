@@ -11,7 +11,8 @@ export async function getMindMapPathways(
   topicSlugs: string[],
   clientSex?: string | null,
 ): Promise<MindMapPathwayResult[]> {
-  return findMindMapPathways(symptomSlugs, topicSlugs, clientSex);
+  void clientSex;
+  return findMindMapPathways(symptomSlugs, topicSlugs);
 }
 
 export interface SubgraphReadiness {

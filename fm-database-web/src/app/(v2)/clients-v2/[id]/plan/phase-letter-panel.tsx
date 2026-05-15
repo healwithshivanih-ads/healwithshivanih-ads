@@ -30,6 +30,7 @@ import {
   listSavedPhasesAction,
   type SavedPhase,
 } from "@/lib/server-actions/plan-lifecycle";
+import { SpecialRequestsPanel } from "@/components/client-widgets/special-requests-panel";
 
 interface Props {
   clientId: string;
@@ -87,6 +88,17 @@ export function PhaseLetterPanel({
   const [pending, start] = useTransition();
   const [startWeek, setStartWeek] = useState(3);
   const [endWeek, setEndWeek] = useState(4);
+  const [coachNotes, setCoachNotes] = useState("");
+  const [specialRequestsBlock, setSpecialRequestsBlock] = useState("");
+
+  // Same merge logic as SendPackageButton — structured panel output prepended
+  // to the freeform notes so the prompt builder sees one combined string.
+  const combinedCoachNotes = (() => {
+    const parts: string[] = [];
+    if (specialRequestsBlock.trim()) parts.push(specialRequestsBlock.trim());
+    if (coachNotes.trim()) parts.push(coachNotes.trim());
+    return parts.join("\n\n");
+  })();
 
   // Load saved phases on mount.
   useEffect(() => {
@@ -133,6 +145,10 @@ export function PhaseLetterPanel({
         clientId,
         startWeek,
         endWeek,
+        combinedCoachNotes || undefined,
+        // Force regenerate when coach has supplied special requests or
+        // notes — otherwise a cached letter from a prior run masks them.
+        Boolean(combinedCoachNotes),
       );
       if (!res.ok) {
         toast.error(res.error ?? "Phase letter generation failed");
@@ -245,6 +261,46 @@ export function PhaseLetterPanel({
         </div>
       )}
 
+      {/* Special requests + coach notes — same shape as SendPackageButton
+          so per-letter context flows into phase letters too: meal-prefs
+          chips, travel window with destination + cooking access, and
+          freeform additions. Combined and passed to the prompt builder. */}
+      <div style={{ display: "grid", gap: 10, marginBottom: 14 }}>
+        <SpecialRequestsPanel
+          onChange={(req) => setSpecialRequestsBlock(req.block)}
+          disabled={pending}
+        />
+        <div>
+          <label
+            style={{
+              fontSize: 11,
+              fontWeight: 600,
+              color: "var(--fm-text-secondary)",
+              display: "block",
+              marginBottom: 4,
+            }}
+          >
+            Coach notes for this phase letter (optional)
+          </label>
+          <textarea
+            rows={2}
+            value={coachNotes}
+            onChange={(e) => setCoachNotes(e.target.value)}
+            disabled={pending}
+            placeholder="e.g. She liked the dal-makhani sub last week — keep that. Lighter dinners; she's feeling bloated by 9pm."
+            style={{
+              width: "100%",
+              fontSize: 11.5,
+              padding: "6px 8px",
+              border: "1px solid var(--fm-border)",
+              borderRadius: "var(--fm-radius-sm)",
+              resize: "none",
+              background: "var(--fm-surface)",
+            }}
+          />
+        </div>
+      </div>
+
       {/* Picker */}
       <div
         style={{
@@ -349,9 +405,14 @@ export function PhaseLetterPanel({
             lineHeight: 1.5,
           }}
         >
-          ✦ The AI references the client&apos;s current supplement protocol +
-          dietary preferences + reported triggers + season + city. Phase
-          letters reference the existing routine — they don&apos;t re-prescribe.
+          ✦ Phase letters inherit ALL the client&apos;s personalisation:
+          dietary preference, foods to avoid, reported triggers, allergies,
+          active conditions, medications, pregnancy / lactation safety overlay,
+          family + medical history, FM body-systems intake (digestion / sleep /
+          energy / menstrual / stress), out-of-range lab markers, cycle phase,
+          plus current season + city. Supplements + protocol stay locked
+          (referenced, not re-prescribed). Special requests + travel above
+          flow in for this letter only.
         </p>
       </div>
     </FmPanel>

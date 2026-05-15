@@ -12,6 +12,7 @@
  * Server component — pure rendering of the journey computed by
  * loadClientJourney() in lib/fmdb/client-journey.ts.
  */
+import Link from "next/link";
 import type { ClientJourney, JourneyStep } from "@/lib/fmdb/client-journey";
 import { formatLongDate } from "@/lib/fmdb/format-date";
 
@@ -85,6 +86,60 @@ export function FmClientJourneyStrip({ journey }: { journey: ClientJourney }) {
           step.caption && isIsoDate(step.caption)
             ? formatLongDate(step.caption)
             : step.caption ?? "";
+        // The dot + label + caption stack. Becomes a <Link> when the
+        // step has an href (coach: "these should be clickable").
+        const chipStyle: React.CSSProperties = {
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          gap: 2,
+          minWidth: 0,
+          textDecoration: "none",
+          color: "inherit",
+          padding: "2px 6px",
+          marginLeft: -6,
+          borderRadius: 4,
+          cursor: step.href ? "pointer" : "default",
+        };
+        const chipBody = (
+          <>
+            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              <span
+                aria-hidden="true"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: 18,
+                  height: 18,
+                  borderRadius: "50%",
+                  background: sty.dotBg,
+                  border: `1.5px solid ${sty.dotBorder}`,
+                  color: step.status === "done" || step.status === "active" ? "#fff" : sty.labelCol,
+                  fontSize: 10,
+                  fontWeight: 700,
+                  lineHeight: 1,
+                  flexShrink: 0,
+                }}
+              >
+                {sty.dotIcon}
+              </span>
+              <span style={{ fontSize: 11.5, fontWeight: 700, color: sty.labelCol, whiteSpace: "nowrap" }}>
+                {step.label}
+              </span>
+            </div>
+            <span
+              style={{
+                fontSize: 10.5,
+                color: sty.captionCol,
+                marginLeft: 24,
+                whiteSpace: "nowrap",
+              }}
+            >
+              {caption}
+            </span>
+          </>
+        );
         return (
           <div
             key={step.id}
@@ -95,68 +150,13 @@ export function FmClientJourneyStrip({ journey }: { journey: ClientJourney }) {
               minWidth: 110,
             }}
           >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-start",
-                gap: 2,
-                minWidth: 0,
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 6,
-                }}
-              >
-                <span
-                  aria-hidden="true"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    width: 18,
-                    height: 18,
-                    borderRadius: "50%",
-                    background: sty.dotBg,
-                    border: `1.5px solid ${sty.dotBorder}`,
-                    color: step.status === "done" || step.status === "active" ? "#fff" : sty.labelCol,
-                    fontSize: 10,
-                    fontWeight: 700,
-                    lineHeight: 1,
-                    flexShrink: 0,
-                  }}
-                >
-                  {sty.dotIcon}
-                </span>
-                <span
-                  style={{
-                    fontSize: 11.5,
-                    fontWeight: 700,
-                    color: sty.labelCol,
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {step.label}
-                </span>
-              </div>
-              <span
-                style={{
-                  fontSize: 10.5,
-                  color: sty.captionCol,
-                  marginLeft: 24,
-                  whiteSpace: "nowrap",
-                  fontFamily:
-                    isIsoDate(step.caption)
-                      ? "inherit"
-                      : "inherit",
-                }}
-              >
-                {caption}
-              </span>
-            </div>
+            {step.href ? (
+              <Link href={step.href} style={chipStyle} title={`Go to ${step.label}`}>
+                {chipBody}
+              </Link>
+            ) : (
+              <div style={chipStyle}>{chipBody}</div>
+            )}
             {!isLast && (
               <div
                 aria-hidden="true"

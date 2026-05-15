@@ -269,14 +269,20 @@ def main() -> int:
 
     client = Anthropic(api_key=api_key)
 
+    # Streaming required for max_tokens > 8192 and for long-running calls
+    # over a multi-page lab PDF. Mirrors the pattern in parse-genetic-report.py
+    # and the ingest extractor. Wrapped in BaseException so even SDK-level
+    # validation errors (which the regular `except Exception` sometimes lets
+    # through during request body construction) get reported as JSON to stdout.
     try:
-        resp = client.messages.create(
+        with client.messages.stream(
             model="claude-haiku-4-5",
-            max_tokens=8192,   # large lab panels (78+ markers) + full symptom catalogue need the full Haiku limit
+            max_tokens=16000,
             messages=[{"role": "user", "content": user_content}],
-        )
-    except Exception as e:
-        json.dump({"ok": False, "error": f"API call failed: {e}"}, sys.stdout)
+        ) as stream:
+            resp = stream.get_final_message()
+    except BaseException as e:
+        json.dump({"ok": False, "error": f"API call failed: {type(e).__name__}: {e}"}, sys.stdout)
         return 1
 
     # Best-effort: pull client_id from the file path. Lab/transcript uploads
@@ -360,4 +366,13 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    # Top-level safety net: if anything in main() (or its imports / arg parsing /
+    # PDF loading) explodes, surface it as a JSON error to stdout so the Next.js
+    # action can render a clean toast instead of "produced no output. stderr: …".
+    try:
+        sys.exit(main())
+    except SystemExit:
+        raise
+    except BaseException as e:
+        json.dump({"ok": False, "error": f"{type(e).__name__}: {e}"}, sys.stdout)
+        sys.exit(1)

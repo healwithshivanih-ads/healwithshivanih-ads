@@ -25,6 +25,7 @@ import {
   parseSessionType,
   type SessionType,
 } from "@/lib/fmdb/session-utils";
+import { loadClientJourney } from "@/lib/fmdb/client-journey";
 import {
   FmAppShell,
   FmSessionTypePicker,
@@ -122,11 +123,45 @@ export default async function AnalysePage({
   const { id } = await params;
   const todayStr = new Date().toISOString().slice(0, 10);
 
-  const [client, sessions] = await Promise.all([
+  const [client, sessions, journey] = await Promise.all([
     loadClientById(id),
     loadClientSessions(id),
+    loadClientJourney(id, todayStr),
   ]);
   if (!client) notFound();
+
+  // Translate journey state → per-session-card completion. Discovery is
+  // considered done when the journey says so (or transitively when intake
+  // is done, since you can't have an intake without a discovery —
+  // computed inside loadClientJourney). Mirrors the "Run X" → "Review X"
+  // relabelling the picker does.
+  const journeyDiscovery = journey.steps.find((s) => s.id === "discovery");
+  const journeyIntake = journey.steps.find((s) => s.id === "intake");
+  const fullDone = sessions.some((s) => {
+    const t = parseSessionType((s as Record<string, unknown>).presenting_complaints as string | undefined);
+    return t === "intake";
+  });
+  const completionState = {
+    discovery: (journeyDiscovery?.status === "done" || journeyIntake?.status === "done")
+      ? ("done" as const) : ("pending" as const),
+    intake: journeyIntake?.status === "done" ? ("done" as const) : ("pending" as const),
+    full: fullDone ? ("done" as const) : ("pending" as const),
+    checkin: ("pending" as const),
+    quick: ("pending" as const),
+  };
+
+  // Recommend the next session card. The journey's nextStep label tells
+  // us which kind, but its href points at a specific surface — map back
+  // to picker IDs.
+  let recommendedId: FmSessionTypeId | null = null;
+  const ns = journey.nextStep;
+  if (ns) {
+    if (ns.href.includes("/analyse/discovery")) recommendedId = "discovery";
+    else if (ns.href.includes("/intake-view") || ns.href.includes("/analyse/intake"))
+      recommendedId = "intake";
+    else if (ns.href.includes("/analyse/full")) recommendedId = "full";
+    else if (ns.href.includes("/analyse/checkin")) recommendedId = "checkin";
+  }
 
   // Sort newest first
   const sortedDesc = [...sessions].sort((a, b) =>
@@ -142,6 +177,9 @@ export default async function AnalysePage({
       id: (s.session_id as string) ?? `${s.date}-${Math.random()}`,
       type: visualType,
       date: (s.date as string) ?? "",
+      // Pass the full ISO created_at so the timeline can render HH:MM
+      // IST — distinguishes multiple synthesis runs on the same day.
+      timestamp: (sRec.created_at as string | undefined) ?? undefined,
       age: relativeAge(s.date as string | undefined, todayStr),
       title: SESSION_TYPE_TITLE[visualType] ?? "Session",
       summary: summariseSession(sRec),
@@ -309,16 +347,65 @@ export default async function AnalysePage({
           {timeline.length === 0 ? (
             <EmptyState clientId={id} />
           ) : (
-            <FmSessionTypePicker
-              hrefMap={{
-                // v2 native forms — Discovery, Intake, Check-in, Quick note
-                discovery: `/clients-v2/${id}/analyse/discovery`,
-                intake: `/clients-v2/${id}/analyse/intake`,
-                checkin: `/clients-v2/${id}/analyse/checkin`,
-                quick: `/clients-v2/${id}/analyse/quick`,
-                full: `/clients-v2/${id}/analyse/full`,
-              }}
-            />
+            <>
+              {/* 🧭 Next-step recommendation. Single sentence pulled from
+                  the client journey — kills the "I'm staring at 5 generic
+                  buttons, what do I click" hunt the coach flagged. */}
+              {journey.nextStep && (
+                <Link
+                  href={journey.nextStep.href}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 12,
+                    padding: "10px 14px",
+                    marginBottom: 14,
+                    background: "linear-gradient(135deg, rgba(243,156,18,0.10), rgba(243,156,18,0.03))",
+                    border: "1px solid rgba(243,156,18,0.35)",
+                    borderRadius: "var(--fm-radius-sm)",
+                    textDecoration: "none",
+                    color: "inherit",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontSize: 9.5,
+                      fontWeight: 800,
+                      letterSpacing: 0.8,
+                      textTransform: "uppercase",
+                      color: "#8a5a08",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    ★ Next step
+                  </span>
+                  <span style={{ flex: 1, fontSize: 13, color: "#1f1f1f" }}>
+                    <strong>{journey.nextStep.label}</strong>
+                    <span style={{ opacity: 0.75, marginLeft: 8 }}>{journey.nextStep.reason}</span>
+                  </span>
+                  <span style={{ fontSize: 12, fontWeight: 700, color: "#8a5a08", whiteSpace: "nowrap" }}>
+                    Open →
+                  </span>
+                </Link>
+              )}
+
+              <FmSessionTypePicker
+                hrefMap={{
+                  // Discovery + Intake route to the REVIEW surface once
+                  // already done so the coach lands on the filled record,
+                  // not a blank form. New runs route to the entry form.
+                  discovery: `/clients-v2/${id}/analyse/discovery`,
+                  intake: completionState.intake === "done"
+                    ? `/clients-v2/${id}/intake-view`
+                    : `/clients-v2/${id}/analyse/intake`,
+                  checkin: `/clients-v2/${id}/analyse/checkin`,
+                  quick: `/clients-v2/${id}/analyse/quick`,
+                  full: `/clients-v2/${id}/analyse/full`,
+                }}
+                completionState={completionState}
+                recommendedId={recommendedId}
+              />
+            </>
           )}
 
           {/* The v2 forms have been live since Phase 3.5 — each session

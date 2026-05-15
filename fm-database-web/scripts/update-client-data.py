@@ -154,9 +154,26 @@ def main() -> int:
 
     # ── Append health snapshot ────────────────────────────────────────────────
     # Every apply-call adds an immutable snapshot so we can build trend charts.
+    # For OLDER lab reports, derive the snapshot date from the labs themselves
+    # (their `date_drawn` field) rather than today's date — otherwise the
+    # trend chart shows a flat-line bunch on the day-of-upload instead of
+    # the actual chronological history. Coach: "older reports should help
+    # generate client history over time."
     import datetime
+    snap_date = datetime.date.today().isoformat()
+    snap_labs_in = payload.get("lab_values") or []
+    if isinstance(snap_labs_in, list) and snap_labs_in:
+        # Use the EARLIEST date_drawn across the bundle as the snapshot
+        # date (a single report is usually one collection day; if multiple
+        # dates leak in, earliest captures the report's primary draw).
+        drawn_dates = sorted(
+            d for d in (lv.get("date_drawn") for lv in snap_labs_in if isinstance(lv, dict))
+            if d and isinstance(d, str)
+        )
+        if drawn_dates:
+            snap_date = drawn_dates[0]
     snap: dict = {
-        "date": datetime.date.today().isoformat(),
+        "date": snap_date,
         "source": source,
     }
     # Optional: link this snapshot to the session that ordered the report.

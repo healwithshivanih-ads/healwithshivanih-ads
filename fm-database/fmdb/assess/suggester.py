@@ -85,6 +85,11 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
                         "type": "string",
                         "description": "1-2 sentences explaining why this driver sits at this position in the chain. E.g. 'Trigger — client's symptoms started after 3-week course of doxycycline in 2023, prior history was unremarkable.' Or 'Mediator — chronic work stress 4+ years documented in intake, drives cortisol patterns visible on saliva test.'",
                     },
+                    "intake_evidence": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "description": "Short coach-readable phrases citing the intake observations that justified this driver. Populate WHEN client_context.intake_insights or any structured intake field (medications, COVID history, environmental exposures, bowel pattern, etc.) drove this inference. Each entry should be a single observation, e.g. 'PPI use 3+ years (acid_suppressants)', 'Wakes at 3am consistently (wake_time_pattern)', 'On Ozempic 0.5mg weekly (glp1_medications)'. Empty list when this driver came from symptoms or labs only with no intake contribution. The coach reads these inline as a 💡 audit chip; she can edit / remove freely.",
+                    },
                 },
             },
         },
@@ -124,6 +129,11 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
                     "details": {"type": "string"},
                     "rationale": {"type": "string", "description": "WHY this practice for THIS client — reference a specific symptom, lab, medication, or life event from client_context. Avoid generic 'good for stress' / 'helps sleep'. If you can't tie it to a specific signal in this client's data, drop the suggestion."},
                     "addresses_mechanism": {"type": "array", "items": {"type": "string"}, "description": "mechanism slugs this targets"},
+                    "intake_evidence": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "description": "Short coach-readable phrases citing the intake observations that justified this practice (see likely_drivers.intake_evidence for the convention). Empty list when not intake-driven.",
+                    },
                 },
             },
         },
@@ -153,8 +163,15 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
                     "titration": {"type": "string", "description": "How the client ramps to the target dose. CRITICAL: India has no compounding pharmacies, so titrate using what's available off the shelf. Use the catalogue's typical_dose_range + forms_available + dosage info to know what comes in what strength. If you need a sub-dose: (a) every-other-day → daily (simplest, default), or (b) when split-dose is medically important: 'Open the capsule and stir half the powder into water, drink it; discard the rest' OR 'split a 500mg tablet in half'. Be specific to THIS supplement's actual format. Empty string when the dose can be taken as-is from day 1."},
                     "rationale": {"type": "string"},
                     "evidence_tier_caveat": {"type": "string", "description": "If catalogue tier is fm_specific_thin or confirm_with_clinician, surface that."},
-                    "contraindication_check": {"type": "string", "description": "Any flagged conflicts with client meds/conditions."},
+                    "contraindication_check": {"type": "string", "description": "Any flagged conflicts with client meds/conditions. For supplements the client is ALREADY taking (per client_context.current_supplements), this is where you call out interactions with current_medications, inappropriate-for-profile concerns (e.g. high-dose iron without confirmed deficiency, ashwagandha + thyroid meds), or duplicate/poly-pharmacy issues. Empty string if no concerns."},
+                    "is_existing": {"type": "boolean", "description": "True when this supplement is in client_context.current_supplements — i.e. the client is already taking it. The coach uses this to render a 'continue' or 'adjust' badge instead of a 'new' badge."},
+                    "continue_or_change": {"type": "string", "enum": ["new", "continue", "adjust", "stop"], "description": "When is_existing=true, declare the decision: 'continue' (keep as-is), 'adjust' (form/dose/timing change), or 'stop' (contraindication / inappropriate / duplicate). For brand-new recommendations use 'new'."},
                     "vitaone_url": {"type": "string", "description": "If this supplement maps to a product in `vitaone_inventory`, set this to that product's `url` verbatim. Empty string when no VitaOne match exists. The coach uses this to point clients at the affiliate-stocked product."},
+                    "intake_evidence": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "description": "Short coach-readable phrases citing the intake observations that justified this supplement (see likely_drivers.intake_evidence for the convention). Examples: 'PPI use (acid_suppressants) → B12 + Mg depletion suspected', 'Hair widening part (hair_loss_pattern) → iron / ferritin', 'On GLP-1 (glp1_medications) → digestive bitters / enzymes'. Empty list when not intake-driven.",
+                    },
                 },
             },
         },
@@ -215,6 +232,11 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
                     "due_in_weeks": {
                         "type": "integer",
                         "description": "For kind=repeat: how many weeks from today to re-test."
+                    },
+                    "intake_evidence": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "description": "Short coach-readable phrases citing the intake observations that justified ordering this lab (see likely_drivers.intake_evidence for the convention). Examples: 'Sister has Hashimoto's at 32 (family_history)', 'Long-COVID brain fog (covid_long_symptoms)', 'On levothyroxine (thyroid_medication) — TPO + reverse T3 for completeness'. Empty list when not intake-driven.",
                     },
                 },
             },
@@ -376,6 +398,17 @@ HARD RULES (violating these breaks the downstream system):
    - Tests NOT in known_labs but worth doing now (e.g., RBC magnesium when
      only serum magnesium is on file, or a hormonal panel when none exists)
      are valid `lab_followups` with default `kind: "new"`.
+   - GROUPING RULE — the coach renders lab_followups in two sections:
+     "Order now" (immediate panel handed to the client today) and "Recheck
+     in N weeks" (time-bound re-tests). To land in the right bucket:
+       * If the lab is needed at session start → `kind: "new"`, OMIT
+         `due_in_weeks` (or set it to 0).
+       * If it's a recheck of a protocol response → `kind: "repeat"` AND
+         set `due_in_weeks` to a realistic interval (typically 6 for
+         inflammation/glucose markers, 8–12 for hormones, 12 for nutrient
+         status). Never set `due_in_weeks` on a `kind: "new"` entry — it
+         confuses the grouping and the coach has handed clients lists
+         mixing "right now" with "in 3 months".
 
 5. Tone of `client_facing_summary` and `coaching_translation`-style fields:
    warm, plain-English, second-person, free of jargon. Examples in the catalogue
@@ -466,6 +499,133 @@ HARD RULES (violating these breaks the downstream system):
     options should always be offered; ragi / sesame / dals / leafy greens
     over kale-and-quinoa stereotypes; ghee / coconut oil over avocado oil
     when both are reasonable.
+
+11z. INTAKE EXTRAS — `client_context.intake_extras` is a structured bundle
+    of EVERY intake-form field beyond the basics (which are already at
+    top level). Subsections only present when the client filled them:
+      - `weight_history` — highest/lowest adult weight, current trend,
+        what triggered any sharp change. Use for metabolic + thyroid
+        + stress framing.
+      - `medications_layered` — STRUCTURED med categories with dose,
+        duration, side-effects. Way richer than the free-text
+        `current_medications`. Cross-check supplement suggestions against
+        these (e.g. PPI long-term → B12 / Mg depletion; GLP-1 →
+        digestive enzymes / B-complex; antibiotics in last 12mo →
+        probiotic repletion priority).
+      - `covid` — infection count + long-symptoms + vaccine + reactions.
+        Drives post-COVID neuroinflammation / dysautonomia / fatigue
+        hypotheses.
+      - `family.specific_conditions` — chip-list of inheritable risks
+        (T2DM <50, breast cancer, cardiovascular early, autoimmune,
+        depression, etc.). Promotes specific screening / lab orders.
+      - `body_systems` — bowel/bristol/hair/skin/nail/acne/pain/oral
+        signs / belly_fat_pattern / histamine / chemical_sensitivity /
+        postprandial / cold-heat tolerance. EACH carries diagnostic
+        signal: e.g. tongue coating → fungal load; diffuse hair thinning
+        → ferritin/thyroid/protein; pins-and-needles → B12/glucose;
+        central adiposity → insulin resistance. Reference specific
+        observations in driver reasoning.
+      - `sleep_depth` — time to fall asleep, wake pattern, snore/apnoea,
+        restless legs, tracker ownership. Wake at 3am consistently
+        is a cortisol pattern. Snore is OSA suspicion. Restless legs
+        is iron / dopamine.
+      - `energy` — caffeine dependency / morning state / crash pattern.
+        "Cannot function without caffeine" + "afternoon crash" is HPA
+        + reactive hypoglycaemia.
+      - `stress_work` — stress response style (shut down / fight-flight)
+        + work_pattern (sedentary / nights / commute). HPA framing.
+      - `environment` — sun exposure / sunscreen / vit D supp / barefoot
+        outdoors / toxic exposures. Drives vit D recommendations,
+        grounding, toxin-clearance protocols.
+      - `reproductive_depth` — period_pain_severity, PMDD signs,
+        perimenopause inventory, contraception history, pregnancies
+        (count, complications, breastfeeding), repro_diagnoses. Adds
+        depth beyond cycle_context. Pregnancy / lactation status is
+        a SAFETY GATE for supplement choices.
+      - `past_history` — childhood history + what worked / hasn't.
+        Honour what hasn't worked (don't re-suggest); what worked is
+        a head start.
+      - `readiness` — readiness_confidence (1-10), recent_labs_done
+        chip-list, willing_to_share_labs, willing_to_test_further.
+        Low readiness → simplify the protocol; willing-to-test-further=no
+        → drop expensive lab follow-ups, prefer in-clinic basics.
+
+    Use specific values from these subsections as `intake_evidence`
+    entries on drivers / supplements / lifestyle suggestions. Each
+    observation that drives a recommendation gets cited (e.g. "Wake at
+    3am consistently (sleep_depth.wake_pattern) → cortisol pattern").
+
+11y. EXTERNAL REPORTS — `client_context.external_reports` is a list of
+    parsed reports from the Reports tab (genetic / food_sensitivity /
+    OAT / imaging / DEXA / etc.). Treat each report's `key_findings`
+    + `summary` the same way you treat functional_test_findings —
+    promote into drivers + recommendations.
+      - `food_sensitivity` reports carry `reactive_foods` bucketed by
+        severity (severe_high / moderate / mild_borderline). Move
+        severe_high items into nutrition.reduce AND add them to the
+        client's effective foods_to_avoid for the meal plan. Don't
+        silently ignore.
+      - `genetic_test` reports may carry `fm_relevant_variants` (MTHFR,
+        COMT, VDR, GST, MAO, BDNF, etc.) — use these to justify
+        methylated-B choices, slow-COMT precaution against high-dose
+        adaptogens, vit D dose if VDR variant, etc.
+      - `organic_acids` reports carry yeast_fungal / bacterial_dysbiosis
+        / mitochondrial_function / neurotransmitter_metabolism / oxalates
+        / detox_capacity. Cite specific markers in driver reasoning.
+
+11a. FUNCTIONAL TEST FINDINGS — `client_context.functional_test_findings`
+    is a list of parsed reports (DUTCH / GI-MAP / Sova / BugSpeaks /
+    Genova / OAT etc.) the coach has uploaded. Each entry carries:
+    - `test_type` + `test_date`
+    - `summary` (2-3 sentence Sonnet-generated overview)
+    - `flagged_drivers` — mechanism slugs the parser already flagged
+      (e.g. dysbiosis, leaky-gut, candida-overgrowth, scfa-deficiency,
+      cortisol-pattern-disruption, oestrogen-metabolism-imbalance).
+      These are STRONG signals, not weak hypotheses — promote them
+      into `likely_drivers` with appropriate ranks, citing the test
+      date in the reasoning.
+    - `clinical_recommendations` — actionable items from the parser
+      (probiotic protocols, dietary shifts, follow-up tests). Weave
+      these into `supplement_suggestions` / `nutrition_suggestions` /
+      `lab_followups`. Don't just paraphrase; tailor to THIS client's
+      other findings.
+    - `key_findings` dict — structured per-panel detail (h_pylori,
+      pathogens_detected, opportunistic_overgrowth, commensal_dysbiosis,
+      bacterial_dysbiosis, yeast_fungal, estrogen_metabolism, etc.).
+      Quote specific findings when they justify a recommendation
+      (e.g. "Candida tropicalis detected → S. boulardii 5–10B CFU").
+
+    A plan that uploaded a gut-microbiome panel but barely mentions
+    gut dysbiosis is a failure — the coach paid $X to run the test;
+    surface the findings prominently in synthesis_notes AND in at
+    least 2-3 supplement/nutrition/lab suggestions. Same for DUTCH
+    (hormone metabolites) and OAT (organic acids) — if a panel is on
+    file, its findings should be load-bearing in the resulting plan.
+
+11b. CURRENT SUPPLEMENTS — `client_context.current_supplements` lists what
+    the client is already taking (OTC vitamins, minerals, herbs, probiotics,
+    ayurvedic mixes). EVERY entry on that list MUST get an explicit decision
+    in `supplement_suggestions`. Don't silently skip a supplement just
+    because it's already in their cupboard. Three valid decisions per entry:
+    - CONTINUE: appropriate for the FM picture → include in
+      supplement_suggestions with `is_existing: true` and a `continue_or_change:
+      "continue"`-style note in `coach_rationale`. Coach needs the supplement
+      visible in the protocol so it carries forward into the letter.
+    - ADJUST: right supplement, wrong form/dose/timing → suggest the
+      corrected version with `coach_rationale` explicitly calling out the
+      change (e.g. "switch from magnesium oxide to glycinate — better
+      absorption for sleep + neuropathic pain").
+    - STOP / FLAG: contraindicated with a current medication, inappropriate
+      for the profile (e.g. high-dose iron without confirmed deficiency,
+      St John's wort on SSRIs, ashwagandha during pregnancy or with
+      hyperthyroidism), or pure poly-pharmacy duplication. Surface as a
+      red flag in `additional_symptoms_to_screen` or in the relevant driver's
+      reasoning, AND mention in `synthesis_notes` so the coach sees it.
+
+    Cross-check every current supplement against current_medications for
+    interactions (turmeric + blood thinners, magnesium + amlodipine BP-lowering
+    synergy, ashwagandha + thyroid meds, vitamin K + warfarin, etc.). Flag
+    interactions even when "minor" — the coach decides, you surface.
 
 12. DIETARY PREFERENCE is a hard constraint. `client_context.dietary_preference`
     will be one of: Vegetarian | Vegetarian Jain | Vegan | Eggetarian |
@@ -817,6 +977,38 @@ HARD RULES (violating these breaks the downstream system):
       - "Mother had Hashimoto's" → antecedent (genetic predisposition)
       Add these as new entries with `category: "extracted_from_narrative"`.
     - Sort the result chronologically (oldest → newest, undated last).
+
+27. INTAKE-EVIDENCE TRACEABILITY — populate the `intake_evidence` array on
+    every recommendation type (`likely_drivers`, `lifestyle_suggestions`,
+    `supplement_suggestions`, `lab_followups`) WHENEVER an intake observation
+    drove the inference. This is the coach's audit trail — she needs to see
+    WHY you recommended something. Rules:
+
+    - Pull from `client_context.intake_insights` (patterns, red_flags,
+      top_hypotheses, coach_notes_for_ai) AND from any structured intake
+      field: medication category lists (glp1_medications, acid_suppressants,
+      nsaids_daily, antibiotics_last_12mo, etc.), covid_vaccine_history,
+      covid_long_symptoms, bowel_pattern, bristol_stool_typical,
+      hair_loss_pattern, pain_locations, work_pattern, weight_trend_current,
+      etc.
+    - Each entry is ONE SHORT COACH-READABLE PHRASE that names the
+      observation in plain English and parenthetically tags the source
+      field. Examples (use this format):
+        "PPI use 3+ years (acid_suppressants)"
+        "On Ozempic 0.5mg (glp1_medications)"
+        "Wakes at 3am consistently (wake_time_pattern)"
+        "Family Hashimoto's at 32 (family_specific_conditions)"
+        "Long-COVID brain fog (covid_long_symptoms)"
+        "3 antibiotic courses last year (antibiotics_last_12mo)"
+        "Coach correction: client stopped GLP-1 2 weeks ago (coach_notes_for_ai)"
+    - If a recommendation came from symptoms or labs only (no intake
+      contribution), use an empty list `[]`. Don't fabricate citations.
+    - If multiple intake observations contributed, list them — up to 4
+      items per recommendation. Most-decisive observation first.
+    - Coach corrections in `intake_insights.coach_notes_for_ai` OVERRIDE
+      AI inferences from raw fields — if the coach said "client stopped X",
+      treat X as not-current and skip recommendations that assumed it.
+      Cite the coach correction as your evidence.
 
 Call `synthesize_assessment` exactly once with your structured result."""
 

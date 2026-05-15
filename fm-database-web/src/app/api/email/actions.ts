@@ -9,6 +9,29 @@ import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { buildEmailSafeBody } from "@/lib/email-html";
 
+// Stubs preserved across the WhatsApp cutover so old callers compile. The
+// send log used to live at ~/fm-plans/clients/<id>/meal-plans/_send_log.yaml;
+// it's no longer written from this worktree. Reads return empty.
+export interface LetterSendEntry {
+  sent_at: string;
+  letter_types: string[];
+  to: string;
+  cc?: string;
+  plan_slug?: string;
+}
+export async function loadLetterSendLogAction(_clientId: string): Promise<LetterSendEntry[]> {
+  return [];
+}
+export async function recordLetterSendAction(_input: {
+  clientId: string;
+  planSlug: string;
+  letterTypes: string[];
+  to: string;
+  cc?: string;
+}): Promise<{ ok: true }> {
+  return { ok: true };
+}
+
 const PYTHON = path.resolve(process.cwd(), "..", "fm-database", ".venv/bin/python");
 const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
 
@@ -52,13 +75,10 @@ export async function renderPlanHtmlAction(
 
 export interface SendEmailInput {
   to: string;
+  cc?: string;
   subject: string;
   htmlBody: string;
   textBody?: string;
-  /** Optional CC recipient(s). String OR comma-separated string. */
-  cc?: string;
-  /** Optional BCC recipient(s). */
-  bcc?: string;
 }
 
 export async function sendClientEmailAction(
@@ -82,8 +102,6 @@ export async function sendClientEmailAction(
     await transporter.sendMail({
       from: `Shivani Hari <${user}>`,
       to: input.to,
-      cc: input.cc || undefined,
-      bcc: input.bcc || undefined,
       subject: input.subject,
       html: input.htmlBody,
       text: input.textBody,
@@ -389,207 +407,4 @@ export async function updateClientFieldsAction(
   } catch (err) {
     return { ok: false, error: String(err) };
   }
-}
-
-// ── Letter-send log ───────────────────────────────────────────────────────
-// Persisted per-client at ~/fm-plans/clients/<id>/meal-plans/_send_log.yaml.
-// Each successful email-send appends an entry; coach can see "last sent"
-// timestamps on the SendPackage panel + Plan tab without trusting Gmail's
-// sent folder.
-//
-// Schema:
-//   sends:
-//     - sent_at:      "2026-05-12T16:43:00.000Z"   ISO timestamp (server clock)
-//       plan_slug:    "geetika-plan-1-2026-05-09-cl-006"
-//       letter_types: ["meal_plan", "supplement_plan"]   each entry per type
-//       to:           "client@example.com"
-//       cc:           "partner@example.com"               optional, omitted when blank
-//
-// Schema kept flat + append-only — no migrations, easy to grep in YAML.
-
-export interface LetterSendEntry {
-  sent_at: string;
-  plan_slug: string;
-  letter_types: string[];
-  to: string;
-  cc?: string;
-}
-
-interface SendLogFile {
-  sends?: LetterSendEntry[];
-}
-
-function sendLogPath(clientId: string): string {
-  return path.join(getPlansRoot(), "clients", clientId, "meal-plans", "_send_log.yaml");
-}
-
-export async function recordLetterSendAction(input: {
-  clientId: string;
-  planSlug: string;
-  letterTypes: string[];
-  to: string;
-  cc?: string;
-}): Promise<{ ok: true } | { ok: false; error: string }> {
-  if (!input.clientId || !input.planSlug || !input.to) {
-    return { ok: false, error: "clientId, planSlug, and to are required" };
-  }
-  try {
-    const filePath = sendLogPath(input.clientId);
-    // Ensure dir exists (matches getMealPlanDir's path; saveMealPlan
-    // would have created it already in most paths).
-    await fs.mkdir(path.dirname(filePath), { recursive: true });
-
-    let log: SendLogFile = { sends: [] };
-    try {
-      const raw = await fs.readFile(filePath, "utf-8");
-      const parsed = yaml.load(raw) as SendLogFile | null;
-      if (parsed && Array.isArray(parsed.sends)) log = parsed;
-    } catch {
-      // first send for this client — start fresh
-    }
-
-    const entry: LetterSendEntry = {
-      sent_at: new Date().toISOString(),
-      plan_slug: input.planSlug,
-      letter_types: input.letterTypes,
-      to: input.to,
-    };
-    if (input.cc?.trim()) entry.cc = input.cc.trim();
-    (log.sends ??= []).push(entry);
-
-    await fs.writeFile(
-      filePath,
-      yaml.dump(log, { noRefs: true, sortKeys: false }),
-      "utf-8",
-    );
-    revalidatePath(`/clients/${input.clientId}`);
-    revalidatePath(`/clients-v2/${input.clientId}/plan`);
-    revalidatePath(`/clients-v2/${input.clientId}/communicate`);
-    return { ok: true };
-  } catch (err) {
-    return { ok: false, error: String(err) };
-  }
-}
-
-// ── Email broadcast ───────────────────────────────────────────────────────
-//
-// Fan-out version of sendClientEmailAction. Sends the same subject + body
-// to a list of clients (each looked up by clientId → email). Mirrors the
-// shape of broadcastAction in aisensy-webhook/actions.ts so the dashboard
-// can drive both from a single panel.
-//
-// Per-client template substitution: occurrences of {{1}} {{2}} {{3}} in
-// the subject + body are replaced with `templateParams[0..2]` once and
-// then {{name}} is replaced with the client's first name.
-//
-// Sequential send with a 250ms pacing breather between mails to stay
-// under Gmail's anti-spam thresholds (~100/min for personal accounts).
-export async function broadcastEmailAction(
-  clientIds: string[],
-  subject: string,
-  body: string,
-  templateParams: string[] = [],
-): Promise<{ sent: number; failed: number; errors: string[] }> {
-  const errors: string[] = [];
-  let sent = 0;
-  let failed = 0;
-
-  const user = process.env.GMAIL_USER;
-  const pass = process.env.GMAIL_APP_PASSWORD;
-  if (!user || !pass) {
-    return {
-      sent: 0,
-      failed: clientIds.length,
-      errors: [
-        "Gmail not configured — set GMAIL_USER + GMAIL_APP_PASSWORD in .env.local",
-      ],
-    };
-  }
-
-  // Lazy import to avoid a require cycle (loader.ts pulls in path helpers
-  // that re-export from this module via plan-letter actions).
-  const { loadAllClients } = await import("@/lib/fmdb/loader");
-  const allClients = await loadAllClients();
-  type ClientLike = {
-    client_id?: string;
-    email?: string;
-    display_name?: string;
-  };
-  const byId = new Map<string, ClientLike>();
-  for (const c of allClients as unknown as ClientLike[]) {
-    if (c.client_id) byId.set(c.client_id, c);
-  }
-
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: { user, pass },
-  });
-
-  function fillTemplate(s: string, firstName: string): string {
-    let out = s;
-    for (let i = 0; i < templateParams.length; i++) {
-      const re = new RegExp(`\\{\\{${i + 1}\\}\\}`, "g");
-      out = out.replace(re, templateParams[i] ?? "");
-    }
-    out = out.replace(/\{\{name\}\}/gi, firstName);
-    return out;
-  }
-
-  function paragraphsToHtml(text: string): string {
-    return `<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 14px; line-height: 1.6; color: #222;">${text
-      .split(/\n{2,}/)
-      .map(
-        (p) =>
-          `<p style="margin: 0 0 12px 0;">${p.replace(/\n/g, "<br>")}</p>`,
-      )
-      .join("")}<p style="margin-top: 24px; font-size: 13px; color: #555;">— Shivani</p></div>`;
-  }
-
-  for (const clientId of clientIds) {
-    const c = byId.get(clientId);
-    const email = c?.email?.trim();
-    if (!email) {
-      errors.push(`${clientId}: no email on file`);
-      failed++;
-      continue;
-    }
-    const firstName = (c?.display_name ?? clientId).split(" ")[0];
-    const filledSubject = fillTemplate(subject, firstName).trim();
-    const filledBody = fillTemplate(body, firstName);
-    try {
-      await transporter.sendMail({
-        from: `Shivani Hari <${user}>`,
-        to: email,
-        subject: filledSubject || "Note from your coach",
-        html: paragraphsToHtml(filledBody),
-        text: filledBody,
-      });
-      sent++;
-      await new Promise((r) => setTimeout(r, 250));
-    } catch (err) {
-      errors.push(`${clientId}: ${(err as Error).message ?? String(err)}`);
-      failed++;
-    }
-  }
-
-  return { sent, failed, errors };
-}
-
-export async function loadLetterSendLogAction(
-  clientId: string,
-): Promise<LetterSendEntry[]> {
-  if (!clientId) return [];
-  try {
-    const raw = await fs.readFile(sendLogPath(clientId), "utf-8");
-    const parsed = yaml.load(raw) as SendLogFile | null;
-    if (parsed && Array.isArray(parsed.sends)) {
-      // Sort newest first so consumers can `[0]` for "last sent"
-      return [...parsed.sends].sort((a, b) =>
-        (b.sent_at ?? "").localeCompare(a.sent_at ?? ""),
-      );
-    }
-  } catch {
-    /* no log yet */
-  }
-  return [];
 }

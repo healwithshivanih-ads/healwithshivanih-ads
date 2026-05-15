@@ -76,10 +76,11 @@ import {
   type FmSymptomOption,
 } from "@/components/fm";
 import { useFormDraft } from "@/lib/fmdb/use-form-draft";
-import { IFM_NODES } from "@/lib/fmdb/ifm-matrix";
+import { IFM_NODES, computeIFMMatrix, type IFMNodeId } from "@/lib/fmdb/ifm-matrix";
 import { LabUploadPanel } from "@/components/client-widgets/lab-upload-panel";
 import { FunctionalTestPanel } from "@/components/client-widgets/functional-test-panel";
 import { GeneticReportPanel } from "@/components/client-widgets/genetic-report-panel";
+import { VerifyChecklist, useVerifyChecklist } from "./verify-checklist";
 
 const PRIMARY = "#3a4250";
 
@@ -176,6 +177,8 @@ export function IntakeForm({
   existingWhatWorked,
   existingWhatDidntWork,
   existingNotes,
+  verifyInSession,
+  insightsModelLabel,
 }: {
   clientId: string;
   displayName: string;
@@ -197,9 +200,21 @@ export function IntakeForm({
   existingWhatWorked: string;
   existingWhatDidntWork: string;
   existingNotes: string;
+  // v0.72: AI-generated questions to ask in person, sourced from
+  // Client.intake_insights.verify_in_session. Empty array when no
+  // insights have been generated yet (or the client hasn't submitted
+  // intake). Rendered in a sticky sidebar by VerifyChecklist; Q+A
+  // responses are auto-appended to session.coach_notes on save.
+  verifyInSession: string[];
+  insightsModelLabel?: string;
 }) {
   const router = useRouter();
   const [pending, start] = useTransition();
+
+  // v0.72: AI-generated questions to ask in this session. Sticky sidebar
+  // panel + Q+A responses get appended to session.coach_notes on save.
+  // See verify-checklist.tsx for the component + hook.
+  const verifyState = useVerifyChecklist(verifyInSession);
 
   // 0 · Catalogue picks
   const [sessionDate, setSessionDate] = useState(
@@ -530,6 +545,9 @@ export function IntakeForm({
       });
 
       // ── Build session coach_notes ─────────────────────────────
+      // v0.72: append the verify-in-session Q+A audit trail. Block is "" when
+      // coach didn't tick any question, so it falls out of the filter naturally.
+      const verifyBlock = verifyState.getNotesBlock();
       const sections: string[] = [
         chiefComplaint.trim() && `Chief complaint:\n${chiefComplaint.trim()}`,
         hpi.trim() && `History of present illness:\n${hpi.trim()}`,
@@ -541,6 +559,7 @@ export function IntakeForm({
         whatDidntWork.trim() && `What hasn't worked: ${whatDidntWork.trim()}`,
         ifmLines.length > 0 && `IFM 7-node baseline:\n${ifmLines.join("\n")}`,
         bodyFat && `Body fat (manual): ${bodyFat}%`,
+        verifyBlock,
         coachNotes.trim() && `Coach notes:\n${coachNotes.trim()}`,
       ].filter(Boolean) as string[];
 
@@ -726,6 +745,29 @@ export function IntakeForm({
   };
 
   return (
+    // v0.72: two-column grid — main intake form on the left, sticky
+    // VerifyChecklist sidebar on the right. Single-column on mobile
+    // (<900px), with the checklist appearing as a regular block above
+    // the form. The grid syntax + media-query inline is awkward; we
+    // use a class so the @media rule below works via a <style> tag.
+    <div
+      className="intake-with-verify"
+      style={{
+        display: "grid",
+        gap: 20,
+        gridTemplateColumns: verifyState.questions.length > 0 ? "minmax(0, 1fr) 300px" : "1fr",
+        alignItems: "start",
+      }}
+    >
+      <style>{`
+        @media (max-width: 900px) {
+          .intake-with-verify { grid-template-columns: 1fr !important; }
+          .intake-with-verify > aside.intake-verify-rail {
+            position: static !important;
+            order: -1;
+          }
+        }
+      `}</style>
     <div>
       <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 8 }}>
         <FmFormDraftClear
@@ -1632,6 +1674,84 @@ export function IntakeForm({
         title="8 · 7 IFM nodes — baseline assessment"
         description="Score each functional-medicine node 1–5 based on the call. Becomes the baseline for the IFM Matrix card. Leave blank if not assessed."
       >
+        {/* ✨ Auto-score from the symptoms / conditions captured above.
+            Local computation (no API call) — runs computeIFMMatrix on the
+            current symptoms + active_conditions, buckets the 0–100 burden
+            score into 1–5, and only fills nodes the coach hasn't already
+            scored manually. Coach can override any cell after auto-score. */}
+        {(symptoms.length > 0 || conditions.length > 0) && (
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 10,
+              padding: "8px 10px",
+              marginBottom: 10,
+              background: "rgba(20, 83, 45, 0.04)",
+              border: "1px dashed rgba(20, 83, 45, 0.25)",
+              borderRadius: "var(--fm-radius-sm)",
+            }}
+          >
+            <button
+              type="button"
+              onClick={() => {
+                // Combine symptom slugs + condition labels (the burden
+                // mapper checks both as catalogue slugs / aliases).
+                const allSignals = [
+                  ...symptoms,
+                  ...conditions.map((c) => c.toLowerCase().replace(/\s+/g, "-")),
+                ];
+                const matrix = computeIFMMatrix([], [], allSignals);
+                // 0-100 burden → 1-5 bucket. Higher burden = higher score
+                // (matches existing IFM matrix card's "more dysfunction" reading).
+                const bucket = (s: number): number => {
+                  if (s <= 0) return 0;
+                  if (s <= 20) return 1;
+                  if (s <= 40) return 2;
+                  if (s <= 60) return 3;
+                  if (s <= 80) return 4;
+                  return 5;
+                };
+                setIfmScores((prev) => {
+                  const next = { ...prev };
+                  let filled = 0;
+                  for (const n of matrix.nodes) {
+                    if (next[n.node] != null) continue; // don't overwrite coach edits
+                    const b = bucket(n.score);
+                    if (b > 0) {
+                      next[n.node as IFMNodeId] = b;
+                      filled += 1;
+                    }
+                  }
+                  if (filled === 0) {
+                    setIfmNotes((notes) => notes || "");
+                  }
+                  return next;
+                });
+              }}
+              style={{
+                fontSize: 12,
+                fontWeight: 700,
+                padding: "6px 12px",
+                background: "var(--fm-success, #14532d)",
+                color: "white",
+                border: 0,
+                borderRadius: "var(--fm-radius-sm)",
+                cursor: "pointer",
+                fontFamily: "inherit",
+                whiteSpace: "nowrap",
+              }}
+            >
+              ✨ Auto-score from symptoms
+            </button>
+            <span style={{ fontSize: 11, color: "var(--fm-text-secondary)" }}>
+              Pre-fills any blank nodes from {symptoms.length} symptom
+              {symptoms.length === 1 ? "" : "s"}
+              {conditions.length > 0 && ` + ${conditions.length} condition${conditions.length === 1 ? "" : "s"}`}.
+              Edit any cell after to override.
+            </span>
+          </div>
+        )}
         <div style={{ display: "grid", gap: 8 }}>
           {IFM_NODES.map((n) => {
             const score = ifmScores[n.id];
@@ -1917,6 +2037,31 @@ export function IntakeForm({
           {pending ? "Saving…" : "💾 Save intake →"}
         </button>
       </div>
+    </div>
+
+      {/* v0.72: sticky sidebar with AI verify-in-session questions.
+          Only renders when intake_insights has been generated on the
+          client. Width pinned to 300px on desktop; collapses to a normal
+          block above the form on mobile (via the .intake-with-verify
+          @media rule above). */}
+      {verifyState.questions.length > 0 && (
+        <aside
+          className="intake-verify-rail"
+          style={{
+            position: "sticky",
+            top: 16,
+            alignSelf: "start",
+            maxHeight: "calc(100vh - 32px)",
+            overflowY: "auto",
+          }}
+        >
+          <VerifyChecklist
+            state={verifyState}
+            modelLabel={insightsModelLabel}
+            emptyHint="No verify-in-session questions on file."
+          />
+        </aside>
+      )}
     </div>
   );
 }

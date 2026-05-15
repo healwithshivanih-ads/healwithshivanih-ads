@@ -107,11 +107,101 @@ class TimelineEvent(BaseModel):
     #                  stress | recovery | surgery | medication_change
 
 
+# ── Intake form repeaters (v0.72) ─────────────────────────────────────────────
+# Used by the v2 intake form's contraception history + pregnancies repeaters.
+# All fields Optional so client.yaml round-trips cleanly when only partial data
+# is captured (which is most clients).
+
+class ContraceptionEntry(BaseModel):
+    """A single hormonal contraception / IUD / implant entry on the
+    client's intake — used to reconstruct lifetime hormonal exposure."""
+    model_config = ConfigDict(extra="forbid")
+
+    type: str = ""                  # combined pill / progesterone-only pill / hormonal IUD /
+                                    # copper IUD / implant / depo / patch / vaginal ring /
+                                    # barrier / none
+    started_year: Optional[int] = None
+    stopped_year: Optional[int] = None     # None means "still on it"
+    side_effects: list[str] = Field(default_factory=list)
+
+
+class PregnancyEntry(BaseModel):
+    """A single pregnancy entry on the client's intake. Each pregnancy is its
+    own row so we capture per-pregnancy complications (preeclampsia in one,
+    GDM in another, etc.)."""
+    model_config = ConfigDict(extra="forbid")
+
+    year: Optional[int] = None
+    outcome: str = ""                # live birth / miscarriage / termination / stillbirth
+    complications: list[str] = Field(default_factory=list)  # gestational diabetes /
+                                     # pre-eclampsia / gestational hypertension / hyperemesis /
+                                     # postpartum thyroiditis / postpartum depression / anaemia / other
+    birth_type: str = ""             # vaginal / C-section / forceps / N/A
+    breastfeeding_months: Optional[int] = None
+
+
+class MedicationCategoryEntry(BaseModel):
+    """A structured entry for the v2 intake form's "Have you ever taken X?"
+    layered medication prompts (GLP-1s, PPIs, NSAIDs, hormonal contraception,
+    thyroid meds, psych meds, biologics, statins/BP/diabetes).
+
+    The chip on the form picks the bucket; this captures the details that
+    expand under the chip.
+    """
+    model_config = ConfigDict(extra="forbid")
+
+    name: str = ""                   # which drug (Ozempic, Pantoprazole, etc.)
+    dose: str = ""                   # free text
+    started: str = ""                # "2 years ago" / "since 2021" / etc.
+    still_taking: Optional[bool] = None
+    side_effects: str = ""           # free text
+
+
+class IntakeInsightHypothesis(BaseModel):
+    """A single FM-driver hypothesis derived by Haiku from the structured
+    intake. Surfaced in the IntakeInsightsCard on the client overview AND
+    fed to downstream AI calls (assess / rework / letter / sanity check)
+    so they all see the same starter map."""
+    model_config = ConfigDict(extra="forbid")
+
+    driver: str                      # short label, e.g. "post-antibiotic dysbiosis"
+    confidence: float = 0.5          # 0-1
+    reasoning: str = ""              # one sentence
+
+
+class IntakeInsights(BaseModel):
+    """AI-generated clinical summary of the structured intake. Generated once
+    by Haiku after intake submission, refreshed on demand by the coach via the
+    🔄 Refresh button in IntakeInsightsCard. Lives on Client.intake_insights.
+
+    The four lists are deliberately small (3-5 items each) — this is the
+    map, not the full picture. Coach reads it in 90 seconds before a session.
+
+    coach_notes_for_ai is editable by the coach without regenerating the AI
+    summary — corrections / additions flow into every downstream AI call
+    (assess / rework / letter / sanity check).
+    """
+    model_config = ConfigDict(extra="forbid")
+
+    generated_at: datetime
+    model: str = "claude-haiku-4-5"
+    patterns: list[str] = Field(default_factory=list)            # 3-5 specific FM patterns
+    red_flags: list[str] = Field(default_factory=list)           # protocol-gating concerns
+    top_hypotheses: list[IntakeInsightHypothesis] = Field(default_factory=list)
+    verify_in_session: list[str] = Field(default_factory=list)   # questions for first call
+    coach_notes_for_ai: str = ""                                 # editable; flows into downstream AI
+
+
 class FivePillarsAssessment(BaseModel):
     """Quick baseline assessment of the five foundational health pillars.
     These are assessed at intake and updated at each session.
     Ratings: 1=very poor, 5=excellent."""
-    model_config = ConfigDict(extra="forbid")
+    # extra="ignore" — older intake submissions wrote `stress` and
+    # `movement_days` (since renamed to `stress_level` and
+    # `movement_days_per_week` in the form serializer). Without this,
+    # loading those legacy sessions fails Pydantic and breaks the
+    # whole client view ("Failed to fetch" on the Plan tab).
+    model_config = ConfigDict(extra="ignore")
 
     # Pillar 1: Sleep
     sleep_hours: Optional[float] = None            # average hours per night
@@ -134,7 +224,7 @@ class FivePillarsAssessment(BaseModel):
     connection_quality: Optional[int] = None       # 1-5
     connection_notes: str = ""                     # isolation, strong support, work-life balance, etc.
 
-    notes: str = ""
+    notes: Optional[str] = ""
 
 
 class Client(BaseModel):
@@ -146,7 +236,13 @@ class Client(BaseModel):
     - `display_name` is optional and intended for a coach's eyes only —
       can be a pseudonym.
     """
-    model_config = ConfigDict(extra="forbid")
+    # `extra="ignore"` — historically this was forbid, but every new
+    # surface that wrote into client.yaml (uploadReportAction's
+    # external_reports list, intake form's evolving sections, etc.)
+    # tripped the validator and crashed assess loads. ignore lets us
+    # ship features without race-coupling the model. The validator
+    # warns on truly-unknown fields elsewhere.
+    model_config = ConfigDict(extra="ignore")
 
     client_id: str
     display_name: str = ""              # for coach's reference; can be pseudonym
@@ -157,6 +253,10 @@ class Client(BaseModel):
     active_conditions: list[str] = Field(default_factory=list)
     medical_history: list[str] = Field(default_factory=list)  # past diagnoses, in-remission conditions, surgeries, prior dx with current status
     current_medications: list[str] = Field(default_factory=list)
+    # v2.4 — supplements split from medications so the AI doesn't confuse
+    # OTC vitamins/herbs with prescription drugs (e.g. when checking
+    # contraindications or building the supplement protocol).
+    current_supplements: list[str] = Field(default_factory=list)
     known_allergies: list[str] = Field(default_factory=list)
     goals: list[str] = Field(default_factory=list)
     notes: str = ""
@@ -165,12 +265,150 @@ class Client(BaseModel):
     foods_to_avoid: str = ""       # Free form: "brinjal, bitter gourd, raw onion"
     non_negotiables: str = ""      # Things they won't give up: "morning chai, weekly mutton"
     reported_triggers: str = ""    # n=1 observations: "gluten triggers bloating; afternoon coffee → poor sleep"
+    # v2.5 — per-client letter preferences. Some clients refuse supplements,
+    # others don't want the exercise plan, others just need the consolidated
+    # all-in-one. Default: consolidated only (the most common ship). Coach
+    # toggles per-letter via the profile editor; Communicate's send-package
+    # surface reads this to decide which letter cards to render.
+    # Allowed values match LetterType: consolidated | meal_plan |
+    # supplement_plan | lifestyle_guide | exercise_plan.
+    letter_types_active: list[str] = Field(
+        default_factory=lambda: ["consolidated"]
+    )
     city: str = ""                 # e.g. "Mumbai", "Chennai" — used for seasonal/regional meal planning
     country: str = ""              # e.g. "India", "UK" — used for seasonal produce and recipes
     mobile_number: Optional[str] = None   # for duplicate-check; stored hashed or partial if needed
     email: Optional[str] = None           # client email — used by "Send to client" feature
     next_contact_date: Optional[str] = None  # YYYY-MM-DD follow-up reminder date
     family_history: Optional[str] = None  # hereditary diseases / family health history
+
+    # ── Client-facing intake form (tokenised public link) ─────────────────────
+    # Coach generates a one-time token, WhatsApps the link /intake/<token>,
+    # client fills the form, submission merges payload into this client.yaml
+    # and appends a [source: client_intake_form] quick_note session.
+    intake_token: Optional[str] = None              # URL-safe random token
+    intake_token_expires_at: Optional[datetime] = None
+    intake_form_draft: Optional[dict] = None        # in-progress payload, save-per-section
+    intake_submitted_at: Optional[datetime] = None  # set on final submit; token revoked after
+
+    # ── v0.72 structured intake form fields ───────────────────────────────────
+    # ~60 new fields captured by the v2 intake form, organised by section
+    # (matching docs/INTAKE_FORM_DESIGN_BRIEF.md). All Optional / default-empty
+    # so client.yaml files pre-v0.72 load cleanly. Free strings throughout
+    # (per coach decision 2026-05-14) — AI handles variant spellings, easier
+    # to add chip options without migrations. See IntakeInsights for the
+    # AI-summarised view of all this fed to downstream calls.
+
+    # Section 2 — Who you are
+    weight_highest_adult: Optional[float] = None     # kg
+    weight_lowest_adult: Optional[float] = None      # kg
+    weight_trend_current: str = ""        # stable / gaining slowly / losing slowly /
+                                          # fluctuating / recently changed sharply
+    weight_change_trigger: str = ""       # free text, only when trend = sharp change
+    work_pattern: list[str] = Field(default_factory=list)   # chip multi
+
+    # v2.3 body composition today (intake). Both unit variants accepted —
+    # client fills whichever is natural. Coach normalises to metric in the
+    # measurements block during a session.
+    height_cm: Optional[float] = None
+    height_ft: Optional[float] = None
+    height_in: Optional[float] = None
+    weight_now_kg: Optional[float] = None
+    weight_now_lb: Optional[float] = None
+    waist_cm: Optional[float] = None
+    waist_in: Optional[float] = None
+    hip_cm: Optional[float] = None
+    hip_in: Optional[float] = None
+    bp_systolic: Optional[int] = None
+    bp_diastolic: Optional[int] = None
+
+    # Section 5 — Family history (specific conditions chip group)
+    family_specific_conditions: list[str] = Field(default_factory=list)
+
+    # Section 6 — Medical history (COVID + vaccines)
+    covid_history: list[str] = Field(default_factory=list)
+    covid_long_symptoms: list[str] = Field(default_factory=list)
+    covid_vaccine_history: list[str] = Field(default_factory=list)
+    covid_vaccine_brand: list[str] = Field(default_factory=list)
+    covid_vaccine_reactions: list[str] = Field(default_factory=list)
+    covid_vaccine_reaction_detail: str = ""
+
+    # Section 7 — Medications (layered category buckets — each is a list of
+    # entries because the client may have been on multiple drugs in the
+    # bucket over time)
+    glp1_medications: list[MedicationCategoryEntry] = Field(default_factory=list)
+    acid_suppressants: list[MedicationCategoryEntry] = Field(default_factory=list)
+    nsaids_daily: list[MedicationCategoryEntry] = Field(default_factory=list)
+    antibiotics_last_12mo: list[MedicationCategoryEntry] = Field(default_factory=list)
+    hormonal_contraception_hrt: list[MedicationCategoryEntry] = Field(default_factory=list)
+    thyroid_medication: list[MedicationCategoryEntry] = Field(default_factory=list)
+    psych_medications: list[MedicationCategoryEntry] = Field(default_factory=list)
+    biologics_immunosuppressants: list[MedicationCategoryEntry] = Field(default_factory=list)
+    statins_bp_diabetes: list[MedicationCategoryEntry] = Field(default_factory=list)
+
+    # Section 8 — Eating patterns
+    postprandial_pattern: list[str] = Field(default_factory=list)
+    cold_heat_tolerance: str = ""
+
+    # Section 10 — Sleep + energy (extension of existing fields + five_pillars)
+    time_to_fall_asleep: str = ""         # under 15 min / 15-30 / 30-60 / 60+
+    wake_time_pattern: list[str] = Field(default_factory=list)
+    snore_or_apnoea: str = ""             # no / sometimes / often / diagnosed / CPAP
+    restless_legs: str = ""
+    sleep_tracker_owned: list[str] = Field(default_factory=list)
+    cgm_owned: str = ""                   # yes-current / yes-past / no / interested
+    energy_crashes: list[str] = Field(default_factory=list)
+    caffeine_dependency: str = ""
+    morning_state: str = ""
+
+    # Section 11 — Body systems (deeper subsections)
+    bristol_stool_typical: list[int] = Field(default_factory=list)   # 1-7, multi
+    bowel_frequency_per_day: Optional[int] = None
+    bowel_pattern: list[str] = Field(default_factory=list)
+    bowel_historical: str = ""
+    hair_loss_pattern: str = ""
+    hair_texture_change: str = ""
+    hair_other: list[str] = Field(default_factory=list)
+    nail_signs: list[str] = Field(default_factory=list)
+    acne_pattern: list[str] = Field(default_factory=list)
+    skin_signs: list[str] = Field(default_factory=list)
+    pain_locations: list[str] = Field(default_factory=list)   # body-map region slugs (dev-built)
+    headache_type: list[str] = Field(default_factory=list)
+    pain_pattern: list[str] = Field(default_factory=list)
+    pain_quality: list[str] = Field(default_factory=list)
+    belly_fat_pattern: str = ""
+    histamine_signals: list[str] = Field(default_factory=list)
+    chemical_sensitivity: list[str] = Field(default_factory=list)
+    oral_signs: list[str] = Field(default_factory=list)
+
+    # Section 12 — Periods (women only) — depth fields + repeaters
+    period_pain_severity: Optional[int] = None       # 1-10 slider
+    period_pain_impact: str = ""
+    pmdd_signs: str = ""
+    contraception_history: list[ContraceptionEntry] = Field(default_factory=list)
+    pregnancies: list[PregnancyEntry] = Field(default_factory=list)
+    repro_diagnoses: list[str] = Field(default_factory=list)
+    perimenopause_inventory: list[str] = Field(default_factory=list)
+
+    # Section 14 — Environment (sun + vit D + grounding)
+    sun_exposure_daily: str = ""
+    sunscreen_use: str = ""
+    vit_d_supplement: str = ""
+    barefoot_outdoors: str = ""
+
+    # Section 16 — Readiness (labs + confidence)
+    recent_labs_done: list[str] = Field(default_factory=list)
+    recent_labs_when: str = ""
+    willing_to_share_labs: str = ""
+    willing_to_test_further: str = ""
+    readiness_confidence: Optional[int] = None       # 1-10 slider
+
+    # AI-generated summary of the structured intake. Lives on disk so every
+    # downstream AI call (assess / rework / letter / sanity check) reads the
+    # same map without re-generating it. Coach can edit coach_notes_for_ai
+    # without regenerating the rest; full regeneration via the 🔄 Refresh
+    # button on IntakeInsightsCard. See scripts/generate-intake-insights.py.
+    intake_insights: Optional[IntakeInsights] = None
 
     # ── Location / CRM ────────────────────────────────────────────────────────
     address_line1: str = ""              # street address
@@ -196,7 +434,7 @@ class Client(BaseModel):
     last_menstrual_period: Optional[date] = None  # ISO date of LMP — start of most recent cycle
     cycle_length_days: Optional[int] = None       # typical cycle length, default 28 if unset
     cycle_regularity: Optional[str] = None        # regular | irregular | very_irregular
-    menopause_started: Optional[date] = None      # date menopause was reached (12+ months no period)
+    menopause_started: Optional[str] = None       # freeform (e.g. "2019" or "around age 51")
 
     # Pregnancy / lactation status — drives supplement safety overlay.
     # Coach updates as the client's status changes. Values mirror
@@ -235,6 +473,33 @@ class Client(BaseModel):
     # Shape: {generated_at, triggered_by, benefit_pct (0-100), confidence,
     #         rationale, suggested_changes: [...], dismissed_at?, snoozed_until?}
     rework_suggestion: Optional[dict] = None
+
+    # ── 2-stage handover from ochre-followup (the funnel app) ──────────────
+    # Added 2026-05-15 as part of the clean-boundary design. State machine:
+    #
+    #   prospect ── handover/programme-signup ──▶ programme_active
+    #                                                  │
+    #                            ┌─────────────────────┴─────────────────────┐
+    #                            ▼                                            ▼
+    #                       paused (coach-set)                  completed (12wk wrap)
+    #                                                                         ▼
+    #                                                                     dropped
+    #
+    # Every outbound cron/webhook checks lifecycle_state — see
+    # docs/HANDOVER_SPEC.md for the full contract with ochre-followup.
+    #
+    # `prospect` clients exist in fm-coach as read-only data; nothing
+    # outbound fires for them. ochre-followup still owns marketing until
+    # programme payment lands, at which point /api/handover/programme-signup
+    # flips to `programme_active` + fires the onboarding kit.
+    lifecycle_state: str = "programme_active"   # back-compat default for manually-created clients
+    handover_source: Optional[str] = None       # "ochre-followup" | "legacy-manual" | None
+    handover_received_at: Optional[datetime] = None
+    discovery_completed_at: Optional[datetime] = None
+    discovery_call_notes: str = ""               # free-form text from ochre's discovery
+    programme_started_at: Optional[datetime] = None
+    programme_payment_id: Optional[str] = None
+
     version: int = 1
     status: EntityStatus = EntityStatus.active
     created_at: datetime
@@ -390,6 +655,11 @@ class HypothesizedDriver(BaseModel):
     model_config = ConfigDict(extra="forbid")
     mechanism: str                       # mechanism slug
     reasoning: str                       # why this is in play for this client
+    # v0.72: free-text phrases citing the intake observations that justified
+    # this hypothesis. Populated by the suggester / rework AI when intake
+    # data drove the inference. Coach can edit / remove freely. See
+    # IntakeInsights for the upstream summary the AI references.
+    intake_evidence: list[str] = Field(default_factory=list)
 
 
 class PracticeItem(BaseModel):
@@ -398,6 +668,7 @@ class PracticeItem(BaseModel):
     name: str                            # freeform — promote to Practice entity later if dup
     cadence: str                         # daily | nightly | weekly | mid-morning | etc.
     details: str = ""
+    intake_evidence: list[str] = Field(default_factory=list)  # v0.72 — see HypothesizedDriver
 
 
 class NutritionPlan(BaseModel):
@@ -429,6 +700,7 @@ class SupplementItem(BaseModel):
     duration_weeks: Optional[int] = None
     titration: str = ""
     coach_rationale: str = ""            # why for this client
+    intake_evidence: list[str] = Field(default_factory=list)  # v0.72 — see HypothesizedDriver
 
 
 class LabOrderItem(BaseModel):
@@ -449,6 +721,7 @@ class LabOrderItem(BaseModel):
     reason: str = ""
     kind: Optional[str] = None  # "new" | "repeat"
     due_in_weeks: Optional[int] = None
+    intake_evidence: list[str] = Field(default_factory=list)  # v0.72 — see HypothesizedDriver
 
 
 class ReferralItem(BaseModel):
@@ -517,7 +790,11 @@ class Session(BaseModel):
 
     Stored at ~/fm-plans/clients/<client_id>/sessions/<session_id>.yaml
     """
-    model_config = ConfigDict(extra="forbid")
+    # Older session YAMLs (intake-form sessions written before this model
+    # tightened) carry top-level `version` / `updated_at` / `updated_by`
+    # fields. Switch to `ignore` so loads stay silent instead of spewing
+    # ValidationWarnings on every assess run.
+    model_config = ConfigDict(extra="ignore")
 
     session_id: str             # e.g. "cl-001-2026-04-29-001"
     client_id: str
@@ -572,6 +849,28 @@ class Plan(BaseModel):
     plan_period_weeks: int
     plan_period_recheck_date: date
 
+    # ── Effective start dates (delivery-to-adoption lag) ──────────────────
+    # Coaches send the plan; clients don't start immediately. Empirically:
+    # meal plan starts ~3 days after delivery, supplements ~1 week (they
+    # have to order them, receive them, then build the habit).
+    # Coach sets these when the client tells her, otherwise the
+    # `effective_*_start()` helpers below fall back to plan_period_start +
+    # the default delay. Recheck date should be computed off the effective
+    # meal-plan start, not the plan_period_start, so the 12-week window
+    # actually covers 12 weeks of doing-the-thing.
+    meal_plan_started_on: Optional[date] = None
+    supplements_started_on: Optional[date] = None
+
+    # ── Client-facing start-date confirmation (tokenised public link) ──────
+    # Coach clicks "Get client confirm link" on the plan editor → generates a
+    # tokenised /start/<token> URL that the client opens to confirm or change
+    # their meal_plan_started_on. See start-date-action.py shim + the
+    # /start/[token] route. Same pattern as Client.intake_token but lives
+    # on the Plan because the confirmation is per-plan.
+    start_confirmation_token: Optional[str] = None
+    start_confirmation_expires_at: Optional[datetime] = None
+    start_confirmation_used_at: Optional[datetime] = None
+
     # ---- assessment (coach) ----
     primary_topics: list[str] = Field(default_factory=list)         # topic slugs
     contributing_topics: list[str] = Field(default_factory=list)    # topic slugs
@@ -616,6 +915,15 @@ class Plan(BaseModel):
     updated_by: str
     supersedes: Optional[str] = None     # slug of plan this replaces (if any)
 
+    # ── Defaults for the delivery-to-adoption lag ──────────────────────────
+    # If the coach didn't capture the actual start date, the helpers below
+    # fall back to plan_period_start + these defaults. Empirically observed
+    # by Shivani 2026-05-14: clients take 2-3 days to start the meal plan
+    # (need to grocery shop, prep) and ~1 week to start supplements (have
+    # to be ordered, delivered, then habit-built).
+    MEAL_PLAN_DEFAULT_DELAY_DAYS: int = 3
+    SUPPLEMENTS_DEFAULT_DELAY_DAYS: int = 7
+
     @field_validator("slug")
     @classmethod
     def _slug_format(cls, v: str) -> str:
@@ -624,3 +932,36 @@ class Plan(BaseModel):
         if v.startswith("-") or v.endswith("-") or "--" in v:
             raise ValueError(f"plan slug has malformed hyphens: {v!r}")
         return v
+
+    def effective_meal_plan_start(self) -> date:
+        """Date the client actually started (or is assumed to have started)
+        the meal plan. Coach-asserted value wins; otherwise plan_period_start
+        + MEAL_PLAN_DEFAULT_DELAY_DAYS."""
+        if self.meal_plan_started_on:
+            return self.meal_plan_started_on
+        from datetime import timedelta
+        return self.plan_period_start + timedelta(days=self.MEAL_PLAN_DEFAULT_DELAY_DAYS)
+
+    def effective_supplements_start(self) -> date:
+        """Date the client actually started supplements. Coach-asserted
+        value wins; otherwise plan_period_start + SUPPLEMENTS_DEFAULT_DELAY_DAYS."""
+        if self.supplements_started_on:
+            return self.supplements_started_on
+        from datetime import timedelta
+        return self.plan_period_start + timedelta(days=self.SUPPLEMENTS_DEFAULT_DELAY_DAYS)
+
+    def effective_recheck_date(self) -> date:
+        """Computed recheck date based on EFFECTIVE meal-plan start, not the
+        plan-period-start. This is what the dashboard, calendar, and coach
+        nudges should use — the 12-week protocol window should give the
+        client 12 weeks of actually doing the thing, not 12 weeks counting
+        from the day the letter was emailed.
+
+            effective_meal_plan_start + plan_period_weeks × 7
+
+        Note: the stored `plan_period_recheck_date` field stays as the
+        originally-scheduled date (audit / legacy display); coach-facing
+        UI should call this method to get the live one.
+        """
+        from datetime import timedelta
+        return self.effective_meal_plan_start() + timedelta(weeks=self.plan_period_weeks)

@@ -6,9 +6,9 @@ import {
   saveMessageTemplateAction,
   deleteMessageTemplateAction,
   sendWhatsAppAction,
-  checkAisensyConfigAction,
+  checkWhatsAppConfigAction,
   type MessageTemplate,
-} from "@/app/api/aisensy-webhook/actions";
+} from "@/app/api/whatsapp/actions";
 import { sendClientEmailAction } from "@/app/api/email/actions";
 
 interface Props {
@@ -16,25 +16,25 @@ interface Props {
   clientName: string;
   clientPhone?: string;
   clientEmail?: string;
-  aisensyConfigured?: boolean;
+  whatsappConfigured?: boolean;
 }
 
 /**
- * AiSensy campaigns that have been registered + approved on the dashboard.
+ * Meta-approved WhatsApp templates registered on the self-hosted WA server.
  * Templates whose slug matches one of these can be sent over WhatsApp.
  * Others are local-only (copy/paste or send-as-email).
  *
- * Keep in sync with the AiSensy console.
+ * Keep in sync with the WhatsApp Business Manager template list.
  */
-const APPROVED_AISENSY_CAMPAIGNS = new Set<string>([
+const APPROVED_WHATSAPP_TEMPLATES = new Set<string>([
   "fm_lab_reminder",
   "fm_session_confirm",
   "fm_supplement_instructions",
   "fm_encouragement",
 ]);
 
-function isAisensyApproved(slug: string): boolean {
-  return APPROVED_AISENSY_CAMPAIGNS.has(slug);
+function isWhatsappApproved(slug: string): boolean {
+  return APPROVED_WHATSAPP_TEMPLATES.has(slug);
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -114,9 +114,9 @@ function AddTemplateForm({
       <p className="text-[11px] leading-relaxed text-muted-foreground bg-amber-50 border border-amber-200 rounded px-2 py-1.5">
         <strong>How sending works:</strong> templates saved here are stored
         locally and can always be <strong>copied</strong> or <strong>sent as
-        email</strong>. To send over <strong>WhatsApp / AiSensy</strong>, the
-        slug must <em>also</em> be registered + approved on the AiSensy
-        dashboard as a campaign with the exact same name. Approved today:{" "}
+        email</strong>. To send over <strong>WhatsApp</strong>, the slug must
+        <em>also</em> be a Meta-approved template registered on the
+        self-hosted WhatsApp Cloud API server. Approved today:{" "}
         <code className="text-[10px]">fm_lab_reminder</code>,{" "}
         <code className="text-[10px]">fm_session_confirm</code>,{" "}
         <code className="text-[10px]">fm_supplement_instructions</code>,{" "}
@@ -181,14 +181,14 @@ function ComposeView({
   clientName,
   clientPhone,
   clientEmail,
-  aisensyConfigured,
+  whatsappConfigured,
   onBack,
 }: {
   template: MessageTemplate;
   clientName: string;
   clientPhone?: string;
   clientEmail?: string;
-  aisensyConfigured?: boolean;
+  whatsappConfigured?: boolean;
   onBack: () => void;
 }) {
   const vars = extractVariables(template.body);
@@ -203,7 +203,7 @@ function ComposeView({
   const [sending, setSending] = useState(false);
   const [sendResult, setSendResult] = useState<{ ok: boolean; error?: string } | null>(null);
 
-  const aisensyApproved = isAisensyApproved(template.slug);
+  const whatsappApproved = isWhatsappApproved(template.slug);
   const filled = fillTemplate(template.body, values);
 
   // Default email subject derived from the template name.
@@ -305,17 +305,17 @@ function ComposeView({
       <div className="flex flex-wrap gap-2 text-[10px]">
         <span
           className={`px-1.5 py-0.5 rounded border ${
-            aisensyApproved
+            whatsappApproved
               ? "bg-emerald-50 text-emerald-700 border-emerald-200"
               : "bg-amber-50 text-amber-700 border-amber-200"
           }`}
           title={
-            aisensyApproved
-              ? "Template name is registered + approved on AiSensy. WhatsApp send will work."
-              : "Template name isn't registered on AiSensy. Email and copy still work; WhatsApp send is disabled."
+            whatsappApproved
+              ? "Template is Meta-approved + registered on the WhatsApp server. Send will work."
+              : "Template isn't Meta-approved yet. Email and copy still work; WhatsApp send is disabled."
           }
         >
-          {aisensyApproved ? "✓ AiSensy approved" : "⚠ Not on AiSensy"}
+          {whatsappApproved ? "✓ WhatsApp approved" : "⚠ Not approved"}
         </span>
         {clientEmail && (
           <span className="px-1.5 py-0.5 rounded border bg-blue-50 text-blue-700 border-blue-200">
@@ -349,28 +349,28 @@ function ComposeView({
           </button>
         )}
 
-        {aisensyConfigured && clientPhone && aisensyApproved && (
+        {whatsappConfigured && clientPhone && whatsappApproved && (
           <button
             onClick={handleSend}
             disabled={sending}
             className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg text-white disabled:opacity-50 transition-opacity"
             style={{ background: "#25D366" }}
-            title="Sends via AiSensy WhatsApp"
+            title="Sends via WhatsApp Cloud API"
           >
             {sending ? "Sending…" : "📤 Send via WhatsApp"}
           </button>
         )}
 
-        {aisensyConfigured && clientPhone && !aisensyApproved && (
+        {whatsappConfigured && clientPhone && !whatsappApproved && (
           <span
             className="text-[10px] text-muted-foreground italic"
-            title="Template slug must be registered + approved on AiSensy first"
+            title="Template must be Meta-approved + registered on the WhatsApp server first"
           >
-            WhatsApp disabled — template not on AiSensy
+            WhatsApp disabled — template not approved
           </span>
         )}
 
-        {aisensyConfigured && !clientPhone && (
+        {whatsappConfigured && !clientPhone && (
           <span className="text-[10px] text-muted-foreground italic">No phone number on file</span>
         )}
 
@@ -381,7 +381,7 @@ function ComposeView({
 
       {sendResult && (
         <p className={`text-xs rounded border px-3 py-2 ${sendResult.ok ? "border-emerald-200 bg-emerald-50 text-emerald-800" : "border-red-200 bg-red-50 text-red-700"}`}>
-          {sendResult.ok ? "✓ Message sent via AiSensy" : `Error: ${sendResult.error}`}
+          {sendResult.ok ? "✓ Message sent via WhatsApp" : `Error: ${sendResult.error}`}
         </p>
       )}
     </div>
@@ -390,19 +390,19 @@ function ComposeView({
 
 // ── Main panel ────────────────────────────────────────────────────────────────
 
-export function MessageTemplatesPanel({ clientId, clientName, clientPhone, clientEmail, aisensyConfigured: aisensyConfiguredProp }: Props) {
+export function MessageTemplatesPanel({ clientId, clientName, clientPhone, clientEmail, whatsappConfigured: whatsappConfiguredProp }: Props) {
   const [open, setOpen] = useState(false);
   const [templates, setTemplates] = useState<MessageTemplate[]>([]);
   const [loading, setLoading] = useState(false);
   const [selected, setSelected] = useState<MessageTemplate | null>(null);
   const [showAddForm, setShowAddForm] = useState(false);
-  const [aisensyConfigured, setAisensyConfigured] = useState<boolean>(aisensyConfiguredProp ?? false);
+  const [whatsappConfigured, setAisensyConfigured] = useState<boolean>(whatsappConfiguredProp ?? false);
 
   const loadTemplates = useCallback(async () => {
     setLoading(true);
     const [ts, cfg] = await Promise.all([
       loadMessageTemplatesAction(),
-      checkAisensyConfigAction(),
+      checkWhatsAppConfigAction(),
     ]);
     setTemplates(ts);
     setAisensyConfigured(cfg.configured);
@@ -525,7 +525,7 @@ export function MessageTemplatesPanel({ clientId, clientName, clientPhone, clien
               clientName={clientName}
               clientPhone={clientPhone}
               clientEmail={clientEmail}
-              aisensyConfigured={aisensyConfigured}
+              whatsappConfigured={whatsappConfigured}
               onBack={() => setSelected(null)}
             />
           </div>

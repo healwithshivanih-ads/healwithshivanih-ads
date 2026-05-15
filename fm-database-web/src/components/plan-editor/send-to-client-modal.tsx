@@ -6,7 +6,6 @@ import {
   renderPlanHtmlAction,
   sendClientEmailAction,
   updateClientFieldsAction,
-  recordLetterSendAction,
 } from "@/app/api/email/actions";
 
 interface Props {
@@ -114,20 +113,8 @@ ${renderedHtml}`;
       return;
     }
 
-    // Persist this send to _send_log.yaml — fire-and-forget so failures
-    // here don't block the success flow.
     if (clientId) {
-      try {
-        void recordLetterSendAction({
-          clientId,
-          planSlug,
-          // "consolidated" matches what renderPlanHtmlAction renders —
-          // this modal sends the full plan, not partials.
-          letterTypes: ["consolidated"],
-          to: to.trim(),
-          cc: cc.trim() || undefined,
-        });
-      } catch { /* non-fatal */ }
+      // recordLetterSendAction removed in WhatsApp cutover; send log no-op.
     }
 
     // If the coach checked "save to client's profile" AND we know the

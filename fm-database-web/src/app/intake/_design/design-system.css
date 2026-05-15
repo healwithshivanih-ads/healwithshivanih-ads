@@ -1,0 +1,394 @@
+/* =========================================================
+   Deep Mind — Shivani Design System
+   colors_and_type.css
+
+   Single source of truth for color, type, spacing, radii,
+   shadows, motion. Import from any artifact:
+     <link rel="stylesheet" href="../colors_and_type.css">
+   ========================================================= */
+
+/* ---------- Webfonts ---------- */
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap");
+
+:root {
+  /* ---------- Color: raw palette ---------- */
+  --bone: #F7F4F3;
+  --ink: #0D0D0D;
+  --indigo: #2B2D42;
+  --lavender: #8D99AE;
+  --rose: #D6A2A2;
+  --sage: #A4B5A0;
+
+  /* tonal extensions, used sparingly */
+  --bone-warm: #EFEAE8;     /* one step deeper than bone, for hover surfaces */
+  --indigo-soft: #4A4D6B;   /* indigo at lower contrast, for secondary text on bone */
+  --lavender-30: rgba(141, 153, 174, 0.30);
+  --lavender-15: rgba(141, 153, 174, 0.15);
+  --ink-04: rgba(13, 13, 13, 0.04);
+  --indigo-06: rgba(43, 45, 66, 0.06);
+  --indigo-12: rgba(43, 45, 66, 0.12);
+
+  /* ---------- Color: semantic ---------- */
+  --bg: var(--bone);
+  --bg-inverse: var(--indigo);
+  --bg-soft: var(--bone-warm);
+
+  --fg: var(--ink);
+  --fg-1: var(--ink);            /* primary text on bone */
+  --fg-2: var(--indigo-soft);    /* secondary text on bone */
+  --fg-3: var(--lavender);       /* tertiary / metadata */
+  --fg-inverse: var(--bone);     /* text on indigo */
+
+  --accent: var(--rose);
+  --anchor: var(--indigo);
+  --support: var(--lavender);
+
+  --border: var(--lavender-30);
+  --border-strong: var(--indigo);
+  --divider: var(--indigo);
+
+  /* ---------- Typography: families ---------- */
+  --font-serif: "Libre Baskerville", Georgia, "Times New Roman", serif;
+  --font-sans:  "Inter", Arial, system-ui, -apple-system, "Helvetica Neue", sans-serif;
+
+  --font-display: var(--font-serif);
+  --font-body:    var(--font-sans);
+
+  /* ---------- Typography: scale ---------- */
+  /* Tight tracking on display, airy line-height on body. */
+  --fs-display: 64px;   --lh-display: 1.08;  --tr-display: -0.02em;
+  --fs-h1:      48px;   --lh-h1:      1.12;  --tr-h1:      -0.015em;
+  --fs-h2:      32px;   --lh-h2:      1.18;  --tr-h2:      -0.01em;
+  --fs-h3:      24px;   --lh-h3:      1.25;  --tr-h3:      -0.005em;
+  --fs-lead:    20px;   --lh-lead:    1.55;  --tr-lead:    0;
+  --fs-body:    17px;   --lh-body:    1.65;  --tr-body:    0;
+  --fs-small:   14px;   --lh-small:   1.55;  --tr-small:   0.005em;
+  --fs-eyebrow: 12px;   --lh-eyebrow: 1.4;   --tr-eyebrow: 0.14em;  /* uppercase ONLY for eyebrow */
+
+  /* ---------- Spacing (8px base) ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 64px;
+  --space-8: 96px;
+  --space-9: 128px;
+
+  /* ---------- Radii ---------- */
+  --radius-0: 0;
+  --radius-1: 2px;     /* default — buttons, cards, inputs */
+  --radius-2: 4px;     /* used rarely, e.g. nested chips */
+  --radius-pill: 999px;
+
+  /* ---------- Borders ---------- */
+  --bw-hair: 1px;
+  --bw-1: 1px;
+  --bw-2: 2px;
+
+  /* ---------- Shadows (almost none) ---------- */
+  --shadow-0: none;
+  --shadow-1: 0 1px 2px var(--ink-04), 0 8px 24px var(--indigo-06);
+  --shadow-2: 0 24px 60px var(--indigo-12);
+
+  /* ---------- Motion ---------- */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-micro: 160ms;
+  --dur-1: 200ms;
+  --dur-2: 400ms;
+  --dur-3: 800ms;
+
+  /* ---------- Layout ---------- */
+  --measure: 64ch;            /* max line length for body copy */
+  --container: 1200px;        /* web container width */
+  --gutter: var(--space-6);
+}
+
+/* =========================================================
+   Base elements
+   ========================================================= */
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg-1);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  letter-spacing: var(--tr-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Headings — display family, tight, sentence case */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--fg-1);
+  font-weight: 400;        /* Libre Baskerville at 400 is the default weight */
+  margin: 0 0 var(--space-3) 0;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--fs-h1);
+  line-height: var(--lh-h1);
+  letter-spacing: var(--tr-h1);
+}
+
+h2 {
+  font-size: var(--fs-h2);
+  line-height: var(--lh-h2);
+  letter-spacing: var(--tr-h2);
+}
+
+h3 {
+  font-size: var(--fs-h3);
+  line-height: var(--lh-h3);
+  letter-spacing: var(--tr-h3);
+}
+
+p {
+  margin: 0 0 var(--space-3) 0;
+  max-width: var(--measure);
+  text-wrap: pretty;
+}
+
+/* Display (used for hero / cover slides) */
+.display {
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tr-display);
+  font-weight: 400;
+}
+
+/* Lead paragraph */
+.lead {
+  font-family: var(--font-body);
+  font-size: var(--fs-lead);
+  line-height: var(--lh-lead);
+  color: var(--fg-1);
+}
+
+/* Eyebrow — the only place uppercase is allowed */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  line-height: var(--lh-eyebrow);
+  letter-spacing: var(--tr-eyebrow);
+  text-transform: uppercase;
+  color: var(--fg-2);
+  font-weight: 500;
+}
+
+small, .small {
+  font-size: var(--fs-small);
+  line-height: var(--lh-small);
+  color: var(--fg-2);
+}
+
+/* Italic emphasis is preferred over bold */
+em, i { font-style: italic; }
+
+/* Inline rose highlight — at most ONE per composition */
+.rose, .accent-text {
+  color: var(--rose);
+  font-style: italic;
+}
+
+/* Indigo emphasis */
+.indigo { color: var(--indigo); }
+
+/* Quote — pulled from body, set in italic display */
+blockquote, .quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--fs-h3);
+  line-height: 1.4;
+  color: var(--fg-1);
+  margin: 0;
+  max-width: var(--measure);
+  text-wrap: balance;
+}
+
+/* Links */
+a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--lavender-30);
+  transition: color var(--dur-1) var(--ease),
+              text-decoration-color var(--dur-1) var(--ease);
+}
+a:hover {
+  color: var(--indigo);
+  text-decoration-color: var(--indigo);
+}
+
+/* =========================================================
+   Signature elements
+   ========================================================= */
+
+/* The thin indigo divider — short by default, not full width */
+.divider {
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: var(--divider);
+  border: 0;
+  margin: var(--space-4) 0;
+}
+.divider--wide { width: 80px; }
+.divider--full { width: 100%; }
+
+/* The pulse marker — symbol of signal */
+.pulse {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--indigo);
+  vertical-align: middle;
+  margin-right: var(--space-2);
+  position: relative;
+}
+.pulse--ringed::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 1px solid var(--lavender);
+  border-radius: 50%;
+}
+
+/* =========================================================
+   Buttons
+   ========================================================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  padding: 14px 24px;
+  border-radius: var(--radius-1);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background var(--dur-1) var(--ease),
+              color var(--dur-1) var(--ease),
+              border-color var(--dur-1) var(--ease),
+              opacity var(--dur-1) var(--ease),
+              transform var(--dur-1) var(--ease);
+  text-decoration: none;
+}
+
+.btn--primary {
+  background: var(--indigo);
+  color: var(--bone);
+  border-color: var(--indigo);
+}
+.btn--primary:hover { background: var(--ink); border-color: var(--ink); color: var(--bone); }
+.btn--primary:active { opacity: 0.9; transform: translateY(1px); }
+
+.btn--secondary {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--lavender);
+}
+.btn--secondary:hover { color: var(--indigo); border-color: var(--indigo); }
+.btn--secondary:active { opacity: 0.9; transform: translateY(1px); }
+
+.btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+}
+.btn--ghost:hover { color: var(--indigo); }
+
+.btn[disabled] { opacity: 0.4; cursor: not-allowed; }
+
+/* =========================================================
+   Inputs
+   ========================================================= */
+
+.field {
+  display: block;
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--lavender);
+  padding: 12px 0;
+  outline: none;
+  transition: border-color var(--dur-1) var(--ease);
+}
+.field::placeholder { color: var(--lavender); }
+.field:focus { border-color: var(--indigo); }
+
+.label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tr-eyebrow);
+  text-transform: uppercase;
+  color: var(--fg-2);
+  margin-bottom: var(--space-2);
+  font-weight: 500;
+}
+
+/* =========================================================
+   Cards
+   ========================================================= */
+
+.card {
+  background: var(--bone);
+  border: 1px solid var(--lavender-30);
+  border-radius: var(--radius-1);
+  padding: var(--space-5);
+  transition: box-shadow var(--dur-1) var(--ease),
+              border-color var(--dur-1) var(--ease);
+}
+.card--inverse {
+  background: var(--indigo);
+  color: var(--fg-inverse);
+  border-color: var(--indigo);
+}
+.card--inverse h1, .card--inverse h2, .card--inverse h3, .card--inverse p {
+  color: var(--fg-inverse);
+}
+.card--clickable:hover {
+  box-shadow: var(--shadow-1);
+  border-color: var(--lavender);
+}
+
+/* =========================================================
+   Utility
+   ========================================================= */
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.stack-1 > * + * { margin-top: var(--space-2); }
+.stack-2 > * + * { margin-top: var(--space-3); }
+.stack-3 > * + * { margin-top: var(--space-4); }
+.stack-4 > * + * { margin-top: var(--space-5); }
+.stack-5 > * + * { margin-top: var(--space-6); }
+
+.muted { color: var(--fg-2); }
+.subtle { color: var(--fg-3); }
+.center { text-align: center; }

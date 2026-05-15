@@ -1,17 +1,16 @@
 "use client";
 
-import { useState, useTransition, useRef, useEffect } from "react";
+import { useState, useTransition, useEffect } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import {
   generateClientLetter,
-  refineLetter,
   loadMealPlan,
   saveMealPlan,
-  type ChatTurn,
   type WeightLossParams,
   type LetterType,
 } from "@/lib/server-actions/plan-lifecycle";
+import { LetterRefinementChat } from "./letter-refinement-chat";
 
 interface Props {
   planSlug: string;
@@ -46,7 +45,7 @@ function downloadAs(filename: string, content: string, mime: string) {
 
 // ── Weight loss questionnaire ──────────────────────────────────────────────────
 
-function WeightLossForm({
+export function WeightLossForm({
   onGenerate,
   onSkip,
 }: {
@@ -169,7 +168,6 @@ function WeightLossForm({
 
 export function ClientLetterButton({ planSlug, clientId }: Props) {
   const [, startGen] = useTransition();
-  const [refinePending, startRefine] = useTransition();
   const [stage, setStage] = useState<Stage>("loading");
   const [letterType, setLetterType] = useState<LetterType>("consolidated");
   const [coachNotes, setCoachNotes] = useState("");
@@ -177,10 +175,11 @@ export function ClientLetterButton({ planSlug, clientId }: Props) {
   const [savedAt, setSavedAt] = useState<string | null>(null);
   // Track which types have been saved: type → savedAt timestamp
   const [savedTypes, setSavedTypes] = useState<Partial<Record<LetterType, string>>>({});
-  const [chatHistory, setChatHistory] = useState<ChatTurn[]>([]);
-  const [input, setInput] = useState("");
   const [showPreview, setShowPreview] = useState(false);
-  const chatEndRef = useRef<HTMLDivElement>(null);
+  // Inline edit chat now uses the shared <LetterRefinementChat> component
+  // (discuss → finalise pattern). The old chatHistory / input / chatEndRef
+  // / refinePending state lived here and got nuked when we adopted that
+  // shared component — see the JSX where <LetterRefinementChat /> mounts.
 
   // On mount: check disk for saved consolidated plan (backward compat) + scan other types
   useEffect(() => {
@@ -215,14 +214,9 @@ export function ClientLetterButton({ planSlug, clientId }: Props) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [planSlug, clientId]);
 
-  useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [chatHistory]);
-
   const runGenerate = (weightLoss?: WeightLossParams) => {
     setStage("generating");
     setLetter(null);
-    setChatHistory([]);
     startGen(async () => {
       const meta = LETTER_TYPES.find((l) => l.type === letterType)!;
       toast.info(`Generating ${meta.label}… this takes 2–3 minutes`);
@@ -241,39 +235,13 @@ export function ClientLetterButton({ planSlug, clientId }: Props) {
     });
   };
 
-  /** Switch to a different letter type that's already saved */
+  /** Switch to a different letter type that's already saved. */
   const switchToType = (type: LetterType) => {
     loadMealPlan(planSlug, clientId, type).then((data) => {
       if (data.ok && data.markdown) {
         setLetterType(type);
         setLetter({ markdown: data.markdown, html: data.html ?? null });
         setSavedAt(data.savedAt ?? null);
-        setChatHistory([]);
-      }
-    });
-  };
-
-  const sendMessage = () => {
-    const msg = input.trim();
-    if (!msg || !letter) return;
-    setInput("");
-    const newHistory: ChatTurn[] = [...chatHistory, { role: "user", content: msg }];
-    setChatHistory(newHistory);
-    startRefine(async () => {
-      const res = await refineLetter(letter.markdown, msg, chatHistory, planSlug, clientId);
-      if (res.ok && res.markdown) {
-        setLetter({ markdown: res.markdown, html: res.html ?? null });
-        const ts = new Date().toISOString();
-        setSavedAt(ts);
-        setSavedTypes((prev) => ({ ...prev, [letterType]: ts }));
-        await saveMealPlan(planSlug, clientId, res.markdown, res.html ?? null, letterType);
-        setChatHistory((prev) => [
-          ...prev,
-          { role: "assistant", content: res.reply ?? "Updated." },
-        ]);
-      } else {
-        toast.error(res.error ?? "Failed to refine");
-        setChatHistory(chatHistory);
       }
     });
   };
@@ -417,7 +385,6 @@ export function ClientLetterButton({ planSlug, clientId }: Props) {
       <div className="flex flex-wrap gap-2 items-center">
         <Button size="sm" variant="outline"
           className="border-emerald-500 text-emerald-700 hover:bg-emerald-50 text-xs"
-          disabled={refinePending}
           onClick={() => setStage("asking")}
         >
           ↺ Regenerate {meta.label}
@@ -449,55 +416,28 @@ export function ClientLetterButton({ planSlug, clientId }: Props) {
         </p>
       )}
 
-      {/* Refinement chat */}
-      <div className="border rounded-lg overflow-hidden bg-white">
-        <div className="px-3 py-2 bg-muted/40 border-b flex items-center justify-between">
-          <p className="text-xs font-medium text-muted-foreground">
-            💬 Refine with AI — swap meals, adjust tone, add a tip…
-          </p>
-          {refinePending && (
-            <span className="text-xs text-amber-600 animate-pulse">Updating…</span>
-          )}
-        </div>
-        {chatHistory.length > 0 && (
-          <div className="max-h-56 overflow-y-auto p-3 space-y-3">
-            {chatHistory.map((turn, i) => (
-              <div key={i} className={`flex ${turn.role === "user" ? "justify-end" : "justify-start"}`}>
-                <div className={`max-w-[85%] rounded-lg px-3 py-2 text-xs leading-relaxed ${
-                  turn.role === "user"
-                    ? "bg-indigo-50 text-indigo-900 border border-indigo-100"
-                    : "bg-emerald-50 text-emerald-900 border border-emerald-100"
-                }`}>
-                  {turn.role === "assistant" && (
-                    <span className="block text-[10px] text-emerald-600 mb-1 font-medium">✓ Updated</span>
-                  )}
-                  {turn.content}
-                </div>
-              </div>
-            ))}
-            <div ref={chatEndRef} />
-          </div>
-        )}
-        <div className="p-3 border-t flex gap-2">
-          <textarea
-            className="flex-1 text-xs border rounded px-2 py-1.5 resize-none focus:outline-none focus:ring-1 focus:ring-indigo-300 min-h-[36px] max-h-[80px]"
-            placeholder="e.g. Swap day 3 dinner… make the tone warmer… add a morning tea ritual…"
-            value={input}
-            disabled={refinePending}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMessage(); }
-            }}
-            rows={1}
-          />
-          <Button size="sm" className="text-xs shrink-0 self-end"
-            disabled={refinePending || !input.trim()}
-            onClick={sendMessage}
-          >
-            {refinePending ? "…" : "Send"}
-          </Button>
-        </div>
-      </div>
+      {/* Refinement chat — discuss-then-finalise. Coach proposes edits in
+          chat (Haiku, conversational, no save); a running pending-changes
+          list appears; clicking "Finalise & apply" runs Sonnet once to
+          commit every queued change. Shared component used by both this
+          surface and the inline meal-plan viewer. */}
+      <LetterRefinementChat
+        clientId={clientId}
+        planSlug={planSlug}
+        letterType={letterType}
+        onSaved={() => {
+          // Re-load the just-saved letter into local state so the preview
+          // + download buttons reflect the new content.
+          loadMealPlan(planSlug, clientId, letterType).then((data) => {
+            if (data.ok && data.markdown) {
+              setLetter({ markdown: data.markdown, html: data.html ?? null });
+              const ts = new Date().toISOString();
+              setSavedAt(ts);
+              setSavedTypes((prev) => ({ ...prev, [letterType]: ts }));
+            }
+          });
+        }}
+      />
 
       {/* Markdown preview */}
       {showPreview && (

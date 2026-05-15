@@ -1,0 +1,166 @@
+# Motivational message bank — used by slice (c).
+#
+# Each week of the protocol has 3 condition-tagged messages + 1 "default"
+# fallback. The cron picks the right entry for each client based on:
+#   - Weeks-since-meal_plan_started_on  (1..12, capped at 12)
+#   - Primary condition tag derived from client.active_conditions:
+#       ir_metabolic     — insulin resistance, pre-diabetes, T2D, PCOS, metabolic syndrome
+#       perimenopause_hormonal — perimenopause, hot flushes, menopause, irregular cycles
+#       gut_digestive    — IBS, SIBO, dysbiosis, leaky gut, GERD, bloating-dominant
+#       default          — anything else (fallback)
+#
+# Shivani's voice: first-person, warm, no clinical jargon, ≤120 words,
+# India-specific examples (chai, dal, walks, mum, sister, etc.). AI does
+# the final personalisation on send — substitutes {{name}} and may tweak
+# the opening to reference one specific fact from the client's top_of_mind
+# block. The body text below is the spine; AI adds the flesh.
+#
+# Coach edits freely — no schema validation. Add new conditions, new
+# weeks, swap any line, tweak the tone. The cron is tolerant of missing
+# entries (falls back to "default" tag if a condition has no entry for
+# that week).
+
+# ── Week 1 — Welcome + rhythm ─────────────────────────────────────────
+week_1:
+  default: |
+    {{name}}, you're one week into your plan. The single best thing you can do this week is build the rhythm — same wake time, same walks, same supplement timings. Consistency beats intensity right now. Your body's just starting to notice the change. Don't grade yourself yet — just keep showing up. I'm here.
+  ir_metabolic: |
+    {{name}}, day 7 of the plan. The insulin signalling work is invisible right now but it's happening — every walk after dinner, every protein-first breakfast, every chai without sugar is teaching your cells to listen again. Don't expect the scale yet. Watch the 3pm energy first — that shifts before anything else.
+  perimenopause_hormonal: |
+    {{name}}, week 1 done. In perimenopause the wins come in patches, not lines — one good night's sleep, one even-temper day, one cycle that surprises you. Don't compare back-to-back days. We're rebuilding the rhythm, not racing. Notice the magnesium-glycinate sleep — that's usually the first signal.
+  gut_digestive: |
+    {{name}}, week 1. The gut takes the longest to respond — give it 3-4 weeks before judging. What you can notice this week: post-meal bloating window, stool pattern, energy after eating. Keep the food diary loose — just the meal + how you felt 90 min after. That's the data.
+
+# ── Week 2 — First micro-shifts ───────────────────────────────────────
+week_2:
+  default: |
+    {{name}}, two weeks in. By now you should be feeling at least one tiny shift — even just "the chai feels less critical" or "I slept through Wednesday." Those count. Tell me what you're noticing — I'd rather know the small things now than wait for the big ones.
+  ir_metabolic: |
+    {{name}}, two weeks of insulin work. The 3pm crash should be softening. If it isn't, look at lunch — is there real protein (≥25g) and fibre, or are you having dal + rice with no veg/eggs/paneer? Lunch composition is the single biggest 3pm lever. Send me what yesterday's looked like.
+  perimenopause_hormonal: |
+    {{name}}, week 2. Cycle-aware: if you're in the second half of your cycle (luteal), expect higher cravings + tougher sleep this week. That's biology, not weakness. Lean on protein + magnesium-glycinate + earlier dinners. The plan still works — just bend it slightly to meet the phase.
+  gut_digestive: |
+    {{name}}, gut week 2. Notice the difference between "full and content" vs "full and distended" after meals. If still distended, look at what you ate 6-12h before, not the current meal — that's the real lag. Send me the previous-evening pattern when it happens.
+
+# ── Week 3 — Cravings dip / detox ─────────────────────────────────────
+week_3:
+  default: |
+    {{name}}, week 3 can feel weirdly hard — cravings spike, mood dips, sometimes a tired afternoon comes back. This is a normal recalibration. It passes in 4-7 days. Don't read it as "the plan isn't working." Push through with extra protein and water; if you genuinely can't, message me and we'll adjust.
+  ir_metabolic: |
+    {{name}}, week 3 dip is the insulin-receptor reset talking. The sugar cravings spike right before they fall off. Trick: bridge the craving with 1 tsp ghee + a pinch of salt on the tongue, or a handful of soaked almonds. Sweet-craving is a magnesium + chromium signal more than a sugar one — both are already in your protocol.
+  perimenopause_hormonal: |
+    {{name}}, perimenopause week 3 — emotional volatility can be amplified by the protocol's metabolic shifts in the first month. This is temporary. If anything feels overwhelming, prioritise sleep and movement over food precision for these few days. The protocol catches up. You don't have to white-knuckle it.
+  gut_digestive: |
+    {{name}}, sometimes week 3 is when the gut starts mildly rebelling — that's bacteria recalibrating, not failure. Loose stool 1-2 days or a brief flare is normal. If it persists past 4 days, message me — we may slow your fibre ramp.
+
+# ── Week 4 — First check-in mindset ───────────────────────────────────
+week_4:
+  default: |
+    {{name}}, end of month one. Track for honesty, not perfection. What's working: keep doing it. What's slipping: tell me so we adjust the plan, not your willpower. Two specific things I want to hear about this week — energy at 11am, and how the supplements feel. Reply when you can.
+  ir_metabolic: |
+    {{name}}, month one done. Insulin sensitivity is starting to come back. If you're seeing waist measurement drop OR steadier energy OR less afternoon cravings — those are all the same signal. Don't need all three. We retest fasting insulin + HbA1c at week 8 — start thinking about a lab visit window.
+  perimenopause_hormonal: |
+    {{name}}, month one. Perimenopause progress shows up in week-to-week deltas, not day-to-day. Compare this week's sleep + mood to week 1 — that's the meaningful comparison. If your cycle just arrived, notice if PMS was different. That's data.
+  gut_digestive: |
+    {{name}}, month one. By now the bloating window should be shorter or the bowel pattern more predictable. If either has shifted, we're on the right track. If neither — we may need to investigate further (SIBO breath test, stool analysis). Tell me what you've seen and we'll decide at the next session.
+
+# ── Week 5 — Mid-protocol re-anchor ───────────────────────────────────
+week_5:
+  default: |
+    {{name}}, halfway-ish through. The middle is where motivation thins out — that's normal. Re-anchor on the original reason you started. Was it the energy? The labs? The how-you-feel-in-clothes? Hold that one thing in mind this week. Reply with whatever it was for you — sometimes naming it out loud is enough.
+  ir_metabolic: |
+    {{name}}, mid-protocol. Your fasting insulin lab is in 3 weeks. The work you're doing now is what shows up there. The one habit I want airtight this week: protein-first breakfast, every day, no exceptions. The rest of the protocol can flex; that one is non-negotiable for the lab to move.
+  perimenopause_hormonal: |
+    {{name}}, week 5. If your cycle has come and gone since starting, compare it to your last 3 cycles before the protocol — flow, PMS, length. We're looking for any of: shorter PMS, fewer hot flushes, lighter flow, more regular timing. Even one of those four is meaningful.
+  gut_digestive: |
+    {{name}}, gut work is a marathon. Mid-protocol you may feel "this is fine but not transformed" — that's accurate. The transformation comes in months 3-6, not month 1. Stay on the food-out (no triggers), keep the food-in (fibre + fermented), and we'll see the shifts in the stool retest at week 8.
+
+# ── Week 6 — Lab retest planning ──────────────────────────────────────
+week_6:
+  default: |
+    {{name}}, week 6. Two weeks until your lab retest window opens. Use this week to make sure you're hitting protocol consistently — labs reflect the LAST 2 weeks the most, not the whole 8. So tighten everything now: supplements, sleep window, post-meal walks. Send me a photo of your week's plate variety if you can — I'd love to see what you're actually eating.
+  ir_metabolic: |
+    {{name}}, 2 weeks to your HbA1c retest. HbA1c lags 6-8 weeks behind actual glucose control, so the work you do this week + next IS what shows up on the report. No surprises: cut any sneaky sugar (kheer at relatives', sweet tea at office), no late-night carbs, walks after every meal. Trust the system.
+  perimenopause_hormonal: |
+    {{name}}, 2 weeks to your hormone retest. Day-21 (mid-luteal) is when we draw progesterone — if your cycles are irregular, watch for ~7 days post-ovulation. We may move the draw day based on your cycle. Send me your last 2 cycle dates so I can pick the right window.
+  gut_digestive: |
+    {{name}}, 2 weeks to gut retests (stool / SIBO breath if ordered). Important: NO probiotic supplements for 2 weeks before the stool test, no antibiotics for 4 weeks. If you've taken either recently for any reason — tell me now so we can plan the timing.
+
+# ── Week 7 — Habit stacking ───────────────────────────────────────────
+week_7:
+  default: |
+    {{name}}, week 7. By now some habits should feel automatic — the walk after lunch, the magnesium at bedtime, the chai without sugar. The ones that aren't automatic yet are the ones that need a "stack" — attach them to an existing habit. Examples: methi seeds soak when you put the rice cooker on. Vit D drops when you brush teeth. Tell me one habit that's still effortful and I'll suggest a stack for it.
+  ir_metabolic: |
+    {{name}}, week 7. The strength + walks combo is what reverses insulin resistance long-term. Walks shift glucose disposal acutely; strength training increases muscle (your biggest glucose sink) chronically. Don't skip the strength even if you don't see scale changes — it's the muscle mass that protects you for the next 20 years.
+  perimenopause_hormonal: |
+    {{name}}, week 7. Sleep is the single highest leverage thing in perimenopause. Even 30 min earlier bedtime + 22°C room + magnesium glycinate = measurable cortisol drop. If 3am wakes are still happening, send me your bedroom temp + last-meal time. We can usually fix 80% of 3am wakes with two tweaks.
+  gut_digestive: |
+    {{name}}, week 7. Notice what you eat at home vs out — the gut tells the truth about cooking oils + spice quantities. If symptoms are 70% at home + 30% out, your home oils may need a swap (refined → ghee/cold-pressed). If reverse, the eating-out food is the trigger. Send me one example of each.
+
+# ── Week 8 — Lab insights ─────────────────────────────────────────────
+week_8:
+  default: |
+    {{name}}, lab retest window. Get the bloods done this week if you haven't already — share the report with me as soon as it's in (WhatsApp or email both fine). I'll have the analysis back to you within 48 hours. Don't read the report yourself first — let me give you the FM lens before the conventional one scares you about a number that's actually moving in the right direction.
+  ir_metabolic: |
+    {{name}}, retest week. Looking for: HbA1c trending down from 6.2 → ideally 5.6 or lower. Fasting insulin from 17 → ideally <10. HOMA-IR from 4.6 → ideally <2. Triglycerides down, HDL up. The trajectory is more important than the exact number — every value moving the right way means the protocol is working.
+  perimenopause_hormonal: |
+    {{name}}, hormone retest week. Looking for: progesterone day-21 ≥5 ng/mL (was lower), estradiol in range for cycle phase, TSH closer to 1-2, free T3 climbing. If progesterone is still low and you're trying to feel less anxious, we may add a bioidentical progesterone conversation with the gynae.
+  gut_digestive: |
+    {{name}}, gut retest week. Looking for: stool calprotectin / inflammation markers dropping, microbiome diversity moving up if you tested baseline, SIBO breath either negative or showing improvement. Even a partial improvement on first round means the protocol is the right shape — we just need more time at the dose.
+
+# ── Week 9 — Conditional cycle work ───────────────────────────────────
+week_9:
+  default: |
+    {{name}}, week 9. The protocol is in its second phase now — the easy wins have happened, the deeper shifts are underway. This is also where people get bored of the routine. If that's you, tell me what's feeling stale — we can mix up the meals or movement without changing the medicine.
+  ir_metabolic: |
+    {{name}}, week 9. Insulin work is now compounding — every week from here lowers the long-term diabetes risk meaningfully. If labs at week 8 moved in the right direction, this is the moment to lock in the habits for life, not just for the protocol. Think about what's worth keeping after week 12.
+  perimenopause_hormonal: |
+    {{name}}, week 9. Cycle-sync this week: if you're approaching your period, prioritise iron-rich foods (ragi, dates, dal, leafy greens) to refill what you lose. If you're in the follicular phase post-period, this is your highest-energy window — use it for strength training + cognitively heavy work.
+  gut_digestive: |
+    {{name}}, week 9. The microbiome is genuinely shifting now — the species you're feeding (with fibre + fermented + cooked-and-cooled rice) are out-competing the ones you've stopped feeding (sugar + refined carbs). This is the slow-build phase. Stay the course; you'll see the biggest gut shifts in months 4-6.
+
+# ── Week 10 — Sustaining gains ────────────────────────────────────────
+week_10:
+  default: |
+    {{name}}, week 10. The plan is no longer a project — it's becoming a default. If you skipped a walk this week and noticed yourself feeling off, that's the system working. If you "cheated" with a sweet and felt awful for the next 12 hours, that's also the system working. Your body's now your honest mirror. Don't fight it.
+  ir_metabolic: |
+    {{name}}, week 10. Protein at every meal + walks after meals + strength 3×/week — those three things, if you keep doing them for the next 30 years, are the single largest determinant of whether you become diabetic. The protocol is teaching you the habits. The supplements are training wheels. The habits are the bike.
+  perimenopause_hormonal: |
+    {{name}}, week 10. By now you should know your own cycle pattern better than you did 10 weeks ago — when PMS lands, when sleep gets bad, when cravings spike. This self-knowledge is the foundation for the rest of perimenopause. Keep tracking even after the protocol ends.
+  gut_digestive: |
+    {{name}}, week 10. The gut is rebuilding its lining + microbial balance. If you've reintroduced one or two previously-triggering foods, notice if the reaction has softened — that's epithelial healing. If everything still triggers, we're not done — and that's fine, we'll plan phase 2.
+
+# ── Week 11 — Plan the next phase ─────────────────────────────────────
+week_11:
+  default: |
+    {{name}}, week 11. Start thinking about what comes next — for most clients, the answer is "the same protocol for another 4-8 weeks at lower intensity" + "one new focus area." We'll discuss at the wrap-up session. What's one thing you wish we'd addressed this round that we didn't? Tell me now so I can build it into the next plan.
+  ir_metabolic: |
+    {{name}}, week 11. Next phase for IR usually means: lower supplement doses (or stop berberine, keep magnesium + Vit D), keep the habits exactly the same, add a 1-week-per-month "tight" period for maintenance. The goal is sustainability, not perpetual protocol. Let's talk about what your "maintenance" looks like.
+  perimenopause_hormonal: |
+    {{name}}, week 11. Next phase for perimenopause might add: cycle-sync training, seed cycling, bioidentical progesterone if labs warrant. Or it might just be "keep doing what's working." We'll decide based on labs + how you feel — both matter equally. Send me your top 3 wins from this round so I can build on them.
+  gut_digestive: |
+    {{name}}, week 11. Gut work usually needs a second phase — reintroduction protocol, biofilm work if SIBO was found, targeted herbal antimicrobials. We'll review the retest labs together and decide. Don't stop the current protocol abruptly at week 12 — we'll taper.
+
+# ── Week 12 — Graduation reflection ───────────────────────────────────
+week_12:
+  default: |
+    {{name}}, end of 12 weeks. Whatever changed, you did. The supplements are tools, the plan is a map, but the work was yours. Take stock this week — energy, sleep, mood, body, labs. Send me one sentence on each. Whatever's still bothering us, that's where phase 2 starts. I'm proud of you.
+  ir_metabolic: |
+    {{name}}, you finished the protocol. If HbA1c dropped and insulin came down, the cellular machinery is back online — and that's permanent, not temporary, as long as the habits stick. Send me your week-12 retest when it lands. We'll plan phase 2 from there.
+  perimenopause_hormonal: |
+    {{name}}, 12 weeks of perimenopause work done. The win in this round is rarely "all symptoms gone" — it's "I understand my body now, and I have tools." That foundation is the protective layer for the next 5-10 years. Excellent work. Let's plan the next chapter.
+  gut_digestive: |
+    {{name}}, end of phase 1. Gut work compounds — what you've laid down in 12 weeks will keep healing for 6-12 more months even with looser maintenance. Keep the foods-out rule for now; we'll talk reintroduction in phase 2 once retest is in.
+
+# ── Beyond week 12 — coast / maintenance ──────────────────────────────
+# If a client is still on a published plan past week 12 (no recheck plan yet)
+# we cycle these gentler reminders.
+week_13_plus:
+  default: |
+    {{name}}, you're past the 12-week mark. The protocol's done its initial work — now we're in maintenance until the next phase kicks off. Keep the rhythms going: protein-first meals, walks after eating, sleep window, supplements at the lower dose. If anything's drifting, tell me before it cascades.
+  ir_metabolic: |
+    {{name}}, maintenance phase for IR. The single biggest thing now: don't lose the muscle mass you built. Strength 2-3× weekly is non-negotiable. The cells that take up glucose during a walk are the ones you grew in the gym. Keep them.
+  perimenopause_hormonal: |
+    {{name}}, perimenopause maintenance. Lean on the habits that helped most in the protocol — for most clients that's the sleep window + magnesium combo. Keep tracking the cycle. We'll formally review in 4-6 weeks for phase 2.
+  gut_digestive: |
+    {{name}}, gut maintenance. The food rules can soften slowly. Try adding back ONE previously-eliminated food per week and notice — if symptoms return, that food stays out for another 3 months. If no reaction, it's back in. Slow and curious.

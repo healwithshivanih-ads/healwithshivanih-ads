@@ -11,6 +11,7 @@
 import { FmAppShell, FmPageHeader, FmPanel } from "@/components/fm";
 import { loadAllClients, loadAllPlans } from "@/lib/fmdb/loader";
 import { loadClientSessions } from "@/lib/fmdb/loader-extras";
+import { effectiveRecheckDate } from "@/lib/fmdb/plan-timing";
 import { CalendarMonthGrid, type CalendarEvent } from "./calendar-month-grid";
 
 export const dynamic = "force-dynamic";
@@ -114,21 +115,15 @@ export default async function CalendarPage({
   }
 
   // ── Plan recheck dates ───────────────────────────────────────────────
-  // plan_period_recheck_date on a published plan (or compute from
-  // plan_period_start + plan_period_weeks if explicit field missing).
+  // Uses EFFECTIVE recheck (lib/fmdb/plan-timing.ts) which accounts for
+  // the 3-day meal-plan-adoption lag, or coach-asserted meal_plan_started_on.
   for (const p of plans) {
     const status = (p as { status?: string; _bucket?: string }).status
       ?? (p as { _bucket?: string })._bucket;
     if (status !== "published") continue;
     const clientId = (p as { client_id?: string }).client_id;
     if (!clientId) continue;
-    let recheck = (p as { plan_period_recheck_date?: string }).plan_period_recheck_date;
-    if (!recheck) {
-      const start = (p as { plan_period_start?: string; created_at?: string }).plan_period_start
-        ?? (p as { created_at?: string }).created_at?.slice(0, 10);
-      const weeks = (p as { plan_period_weeks?: number }).plan_period_weeks ?? 12;
-      if (start) recheck = addDays(start, weeks * 7);
-    }
+    const recheck = effectiveRecheckDate(p as Parameters<typeof effectiveRecheckDate>[0]);
     if (!recheck) continue;
     const client = clients.find((c) => c.client_id === clientId);
     events.push({

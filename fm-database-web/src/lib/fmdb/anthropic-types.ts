@@ -118,6 +118,15 @@ export interface SupplementSuggestion {
   evidence_tier_caveat?: string;
   contraindication_check?: string;
   vitaone_url?: string;
+  /** v2.4 — `true` when the client is already taking this supplement
+   *  (matched against `client_context.current_supplements`). Drives the
+   *  badge in the UI: "✓ Continue" / "↻ Adjust" / "✕ Stop" instead of
+   *  the default "+ New". */
+  is_existing?: boolean;
+  /** v2.4 — explicit decision for already-on-file supplements. "new"
+   *  for fresh recommendations; "continue" / "adjust" / "stop" for
+   *  current supplements. */
+  continue_or_change?: "new" | "continue" | "adjust" | "stop";
 }
 
 /** Per-factor 1–5 fit scores. Server-side computes the weighted overall %. */

@@ -28,6 +28,9 @@ import {
 import { loadAllPlans } from "@/lib/fmdb/loader";
 import { checkMedicationImpactsAction } from "@/lib/server-actions/clients";
 import { ClientIdentityEditor } from "./client-identity-editor";
+import { SendIntakeFormButton } from "./send-intake-form-button";
+import { IntakeInsightsCard } from "./intake-insights-card";
+import { loadIntakeInsights } from "@/lib/server-actions/intake-insights";
 import { EngagementPicker } from "./engagement-picker";
 import { ClientMemoryPanel } from "./client-memory-panel";
 import { parseSessionType } from "@/lib/fmdb/session-utils";
@@ -441,12 +444,13 @@ export default async function ClientV2Page({
   const { id } = await params;
   const todayStr = new Date().toISOString().slice(0, 10);
 
-  const [client, sessions, allPlans, sessionSummaries, journey] = await Promise.all([
+  const [client, sessions, allPlans, sessionSummaries, journey, intakeInsights] = await Promise.all([
     loadClientById(id),
     loadClientSessions(id),
     loadAllPlans(),
     loadClientSessionsAction(id),
     loadClientJourney(id, todayStr),
+    loadIntakeInsights(id),
   ]);
 
   if (!client) notFound();
@@ -797,6 +801,21 @@ export default async function ClientV2Page({
 
           <FmBodyCompGrid
             metrics={bodyComp}
+            clientId={client.client_id}
+            prefill={{
+              height_cm:
+                (client as unknown as { height_cm?: number }).height_cm ?? null,
+              weight_kg:
+                (client as unknown as { weight_now_kg?: number }).weight_now_kg ?? null,
+              waist_cm:
+                (client as unknown as { waist_cm?: number }).waist_cm ?? null,
+              hip_cm:
+                (client as unknown as { hip_cm?: number }).hip_cm ?? null,
+              blood_pressure_systolic:
+                (client as unknown as { bp_systolic?: number }).bp_systolic ?? null,
+              blood_pressure_diastolic:
+                (client as unknown as { bp_diastolic?: number }).bp_diastolic ?? null,
+            }}
             lastEntryDate={
               // Latest snapshot by DATE (not array order) — snapshots are
               // appended over time but the YAML order isn't guaranteed
@@ -871,7 +890,53 @@ export default async function ClientV2Page({
 
         {/* RIGHT COLUMN */}
         <div style={{ display: "grid", gap: 16, minWidth: 0 }}>
+          {/* 📋 Intake insights — Haiku-summarised view of the structured
+              intake. Always rendered (states: no-intake / submitted-no-AI /
+              full insights). Sits ABOVE FmContactPanel so it's the first
+              thing the coach sees in the right column. */}
+          <IntakeInsightsCard
+            clientId={client.client_id}
+            initial={intakeInsights}
+            submittedAt={
+              (client as unknown as { intake_submitted_at?: string })
+                .intake_submitted_at ?? null
+            }
+          />
+
           <FmContactPanel pinned={pinned} more={more} />
+
+          {/* 📝 Tokenised intake form — coach clicks to generate a one-time
+              link, WhatsApps to client, client fills on their phone.
+              Submission writes back to client.yaml + appends a tagged
+              quick_note session. See send-intake-form-button.tsx. */}
+          <SendIntakeFormButton
+            clientId={client.client_id}
+            mobileNumber={
+              (client as unknown as { mobile_number?: string }).mobile_number
+            }
+            displayName={
+              (client as unknown as { display_name?: string }).display_name
+            }
+            existingToken={
+              (client as unknown as { intake_token?: string }).intake_token
+            }
+            existingExpiresAt={
+              (client as unknown as { intake_token_expires_at?: string })
+                .intake_token_expires_at
+            }
+            submittedAt={
+              (client as unknown as { intake_submitted_at?: string })
+                .intake_submitted_at
+            }
+            lastSubmittedAt={
+              (client as unknown as { intake_last_submitted_at?: string })
+                .intake_last_submitted_at
+            }
+            finalisedAt={
+              (client as unknown as { intake_finalised_at?: string })
+                .intake_finalised_at
+            }
+          />
 
           {/* Identity editor moved into FmClientHeader.quickActions so
               it's always visible under the client name. */}

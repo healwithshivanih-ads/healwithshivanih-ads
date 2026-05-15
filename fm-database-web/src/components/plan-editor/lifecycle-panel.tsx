@@ -27,7 +27,6 @@ import {
   generateFollowUpPlan,
 } from "@/lib/server-actions/plan-lifecycle";
 import { ClientLetterButton } from "@/components/client-widgets/client-letter-button";
-import { PlanChatPanel } from "./plan-chat-panel";
 import { saveAsTemplateAction } from "@/lib/server-actions/plans";
 import type { PlanStatus } from "@/lib/fmdb/types";
 
@@ -77,7 +76,7 @@ export function LifecyclePanel({
   allPlanSlugs,
 }: LifecyclePanelProps) {
   const router = useRouter();
-  const [tab, setTab] = useState<"lifecycle" | "export" | "chat">("lifecycle");
+  const [tab, setTab] = useState<"lifecycle" | "export">("lifecycle");
 
   // Shared pending state
   const [isPending, startTransition] = useTransition();
@@ -248,12 +247,16 @@ export function LifecyclePanel({
     <Card>
       <CardHeader className="pb-0">
         <CardTitle className="text-base sr-only">Plan actions</CardTitle>
-        {/* Tab bar */}
+        {/* Tab bar.
+            Chat tab removed — the floating 💬 bubble is the same component
+            and is reachable from any tab, so the duplicate was just noise.
+            Export renamed → "Plan brief" so it isn't confused with the
+            client-facing letter under the Communicate tab (different
+            audience, different output). */}
         <div className="flex gap-1 border-b">
           {([
             ["lifecycle", "🚀 Lifecycle"],
-            ["export", "📤 Export"],
-            ["chat", "💬 Chat"],
+            ["export", "📄 Plan brief (internal)"],
           ] as const).map(([key, label]) => (
             <button
               key={key}
@@ -353,7 +356,11 @@ export function LifecyclePanel({
                   onClick={handleActivate}
                   disabled={isPending}
                 >
-                  {isPending ? "Activating…" : "🚀 Activate plan"}
+                  {isPending
+                    ? "Activating…"
+                    : status === "ready_to_publish"
+                      ? "🚀 Publish plan (make live)"
+                      : "🚀 Activate plan (runs plan-check + publishes)"}
                 </Button>
               </div>
             )}
@@ -680,16 +687,8 @@ export function LifecyclePanel({
           </>
         )}
 
-        {/* ══════════════════════════════════════════════════════
-            CHAT TAB
-        ══════════════════════════════════════════════════════ */}
-        {tab === "chat" && (
-          <PlanChatPanel
-            slug={slug}
-            clientId={clientId ?? ""}
-            isLocked={status !== "draft"}
-          />
-        )}
+        {/* Chat tab removed in favour of the floating 💬 bubble, which
+            embeds the same PlanChatPanel and is reachable from any tab. */}
 
       </CardContent>
     </Card>

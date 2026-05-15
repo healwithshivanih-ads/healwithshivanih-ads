@@ -6,6 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { updateClientPreferences } from "@/lib/server-actions/clients";
 
+const LETTER_TYPE_OPTIONS: { value: string; label: string; desc: string }[] = [
+  { value: "consolidated", label: "📄 Consolidated", desc: "All-in-one letter (most common ship)" },
+  { value: "meal_plan", label: "🍽 Meal plan", desc: "Standalone 7-day meal plan" },
+  { value: "supplement_plan", label: "💊 Supplement plan", desc: "Skip for clients refusing supplements" },
+  { value: "lifestyle_guide", label: "🌿 Lifestyle guide", desc: "Habits, education, labs, tracking" },
+  { value: "exercise_plan", label: "🏃 Exercise plan", desc: "Opt-in detailed exercise prescription" },
+];
+
 interface Props {
   clientId: string;
   initial: {
@@ -15,6 +23,7 @@ interface Props {
     non_negotiables?: string;
     city?: string;
     country?: string;
+    letter_types_active?: string[];
   };
 }
 
@@ -36,6 +45,16 @@ export function PreferencesEditor({ clientId, initial }: Props) {
   );
   const [city, setCity] = useState(initial.city ?? "");
   const [country, setCountry] = useState(initial.country ?? "");
+  const [letterTypesActive, setLetterTypesActive] = useState<string[]>(
+    initial.letter_types_active && initial.letter_types_active.length > 0
+      ? initial.letter_types_active
+      : ["consolidated"]
+  );
+  const toggleLetterType = (v: string) => {
+    setLetterTypesActive((prev) =>
+      prev.includes(v) ? prev.filter((x) => x !== v) : [...prev, v]
+    );
+  };
 
   const hasData =
     initial.dietary_preference ||
@@ -55,6 +74,7 @@ export function PreferencesEditor({ clientId, initial }: Props) {
         non_negotiables: nonNegotiables,
         city,
         country,
+        letter_types_active: letterTypesActive.length > 0 ? letterTypesActive : ["consolidated"],
       });
       if (res.ok) {
         toast.success("Preferences saved");
@@ -113,6 +133,17 @@ export function PreferencesEditor({ clientId, initial }: Props) {
                 <span className="text-muted-foreground">{initial.non_negotiables}</span>
               </div>
             ) : null}
+            <div>
+              <span className="text-xs uppercase text-muted-foreground">Letters: </span>
+              <span className="text-muted-foreground">
+                {(initial.letter_types_active && initial.letter_types_active.length > 0
+                  ? initial.letter_types_active
+                  : ["consolidated"]
+                )
+                  .map((t) => t.replace(/_/g, " "))
+                  .join(", ")}
+              </span>
+            </div>
             {!hasData && (
               <p className="text-xs text-muted-foreground">
                 No preferences on file — click Add to set them. These are used when generating the client letter.
@@ -205,6 +236,40 @@ export function PreferencesEditor({ clientId, initial }: Props) {
                 placeholder="e.g. morning chai with milk and sugar, rice at dinner"
                 className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm resize-none"
               />
+            </div>
+
+            <div>
+              <label className="text-xs font-medium block mb-1">
+                📤 Letter preferences
+              </label>
+              <p className="text-[11px] text-muted-foreground mb-2">
+                Which letters this client should receive. Default is consolidated only.
+                Skip supplements for clients refusing them; skip exercise plan unless requested.
+              </p>
+              <div className="grid grid-cols-1 gap-1.5">
+                {LETTER_TYPE_OPTIONS.map((opt) => {
+                  const checked = letterTypesActive.includes(opt.value);
+                  return (
+                    <label
+                      key={opt.value}
+                      className={`flex items-start gap-2 px-2.5 py-1.5 rounded-md border cursor-pointer text-xs transition-colors ${
+                        checked ? "bg-amber-100/60 border-amber-300" : "bg-background border-input hover:bg-muted/30"
+                      }`}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={checked}
+                        onChange={() => toggleLetterType(opt.value)}
+                        className="mt-0.5"
+                      />
+                      <div>
+                        <div className="font-medium">{opt.label}</div>
+                        <div className="text-[10.5px] text-muted-foreground">{opt.desc}</div>
+                      </div>
+                    </label>
+                  );
+                })}
+              </div>
             </div>
 
             <div className="flex gap-2">

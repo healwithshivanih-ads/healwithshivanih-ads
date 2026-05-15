@@ -452,6 +452,73 @@ _CSS = f"""
     font-weight: 700;
   }}
 
+  /* ── Start-date confirm buttons (WhatsApp) ── */
+  .start-buttons-panel {{
+    margin: 18px 0 24px;
+    padding: 18px 20px;
+    background: linear-gradient(135deg, rgba(5,150,105,0.07), rgba(214,162,162,0.06));
+    border: 1px solid rgba(5,150,105,0.18);
+    border-radius: 12px;
+  }}
+  .start-buttons-heading {{
+    font-family: 'Cormorant Garamond', 'Libre Baskerville', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--indigo);
+    margin: 0 0 4px;
+  }}
+  .start-buttons-sub {{
+    font-size: 13px;
+    color: var(--lavender);
+    margin: 0 0 14px;
+    line-height: 1.5;
+  }}
+  .start-buttons-sub strong {{
+    color: var(--indigo);
+    font-weight: 600;
+  }}
+  .start-buttons-row {{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }}
+  .start-btn {{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    text-decoration: none !important;
+    color: white !important;
+    font-size: 14px;
+    line-height: 1.3;
+    transition: transform 80ms ease;
+    flex: 1 1 220px;
+    min-height: 56px;
+  }}
+  .start-btn:hover {{ transform: translateY(-1px); }}
+  .start-btn-icon {{
+    font-size: 22px;
+    flex-shrink: 0;
+  }}
+  .start-btn-body {{
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    text-align: left;
+  }}
+  .start-btn-body small {{
+    font-size: 11px;
+    opacity: 0.85;
+    font-weight: 400;
+  }}
+  .start-btn-confirm {{ background: #059669; }}
+  .start-btn-confirm:hover {{ background: #047857; }}
+  .start-btn-edit {{ background: #6366f1; }}
+  .start-btn-edit:hover {{ background: #4f46e5; }}
+  .start-btn-supps {{ background: #d97706; }}
+  .start-btn-supps:hover {{ background: #b45309; }}
+
   /* ── Per-week print buttons ── */
   .week-print-bar {{
     display: flex;
@@ -750,6 +817,7 @@ _CSS = f"""
 
     /* Hide referral / supplement link / recipe appendix / product guide sections */
     .no-print {{ display: none !important; }}
+    .no-print-buttons {{ display: none !important; }}
 
     /* Always hide the screen print buttons */
     .week-print-bar {{ display: none !important; }}
@@ -906,12 +974,102 @@ _CSS = f"""
 """
 
 
+def _start_date_buttons_html(
+    meal_start_ymd,            # Optional[str]
+    supplements_start_ymd,     # Optional[str]
+    plan_slug,                 # Optional[str]
+    letter_type,               # Optional[str]
+    coach_phone_e164: str = "918850176753",
+    include_supplements: bool = False,
+) -> str:
+    """Inject WhatsApp 'confirm or change start date' buttons into the letter.
+
+    Pattern B of the client-side start-date confirmation flow (see CLAUDE.md
+    v0.71). Generates one or two wa.me deep links that pre-compose structured
+    messages the webhook recognises:
+        ✅ START: YYYY-MM-DD [plan: <slug>]    → meal-plan start confirmed
+        📅 I'd like to start ...               → free-form, falls to coach
+        📦 supplements arrived                  → supplements_started_on = today
+
+    The webhook parser is at src/lib/start-date-parser.ts.
+
+    Args:
+        meal_start_ymd: assumed meal-plan start date (default +3d or coach-set)
+        supplements_start_ymd: same for supplements
+        plan_slug: included in the structured message so the webhook can pick
+            the right plan even if the client has multiple (the webhook
+            currently picks "latest published" but the slug tag is forward-
+            compatible).
+        include_supplements: only render the 📦 button for supplement_plan
+            and consolidated letter types — would be noise on a pure meal plan.
+
+    Buttons are hidden on print via the .no-print-buttons CSS class.
+    Returns "" if no dates are available (graceful degrade for letters
+    generated before this feature shipped).
+    """
+    if not meal_start_ymd:
+        return ""
+
+    from urllib.parse import quote
+    import datetime as _dt
+    try:
+        meal_d = _dt.date.fromisoformat(meal_start_ymd)
+        meal_human = meal_d.strftime("%a %-d %b")
+    except Exception:
+        meal_human = meal_start_ymd
+
+    slug_tag = f" [plan: {plan_slug}]" if plan_slug else ""
+
+    # ✅ Confirm meal start — pre-composed structured message
+    confirm_text = f"✅ START: {meal_start_ymd}{slug_tag}"
+    confirm_url = f"https://wa.me/{coach_phone_e164}?text={quote(confirm_text)}"
+
+    # 📅 Pick a different day — soft pre-fill, coach will follow up
+    edit_text = "📅 I'd like to start my plan on a different day — I'll start on "
+    edit_url = f"https://wa.me/{coach_phone_e164}?text={quote(edit_text)}"
+
+    buttons = [
+        f'<a class="start-btn start-btn-confirm" href="{confirm_url}" target="_blank" rel="noopener">'
+        f'<span class="start-btn-icon">✅</span>'
+        f'<span class="start-btn-body"><strong>Yes — {meal_human} works</strong>'
+        f'<small>Tap to confirm via WhatsApp</small></span></a>',
+        f'<a class="start-btn start-btn-edit" href="{edit_url}" target="_blank" rel="noopener">'
+        f'<span class="start-btn-icon">📅</span>'
+        f'<span class="start-btn-body"><strong>I&rsquo;ll start a different day</strong>'
+        f'<small>Tap to reply via WhatsApp</small></span></a>',
+    ]
+
+    if include_supplements and supplements_start_ymd:
+        supp_text = f"📦 supplements arrived [plan: {plan_slug}]" if plan_slug else "📦 supplements arrived"
+        supp_url = f"https://wa.me/{coach_phone_e164}?text={quote(supp_text)}"
+        buttons.append(
+            f'<a class="start-btn start-btn-supps" href="{supp_url}" target="_blank" rel="noopener">'
+            f'<span class="start-btn-icon">📦</span>'
+            f'<span class="start-btn-body"><strong>My supplements have arrived</strong>'
+            f'<small>Tap when they land — I&rsquo;ll start the count</small></span></a>'
+        )
+
+    return f"""
+    <aside class="start-buttons-panel no-print-buttons" aria-label="Confirm your start date">
+      <div class="start-buttons-heading">📅 Confirm your Day 1</div>
+      <div class="start-buttons-sub">Your Day 1 is set to <strong>{meal_human}</strong>. Tap to confirm or pick a different day.</div>
+      <div class="start-buttons-row">
+        {''.join(buttons)}
+      </div>
+    </aside>
+    """
+
+
 def wrap_in_brand_html(
     markdown_content: str,
     title: str,
     subtitle: str = "",
     doc_type: str = "Personalised Health Plan",
     client_name: str = "",
+    meal_start_ymd=None,            # Optional[str] YYYY-MM-DD
+    supplements_start_ymd=None,     # Optional[str] YYYY-MM-DD
+    plan_slug=None,                 # Optional[str]
+    letter_type=None,               # Optional[str]
 ) -> str:
     logo_uri = _logo_data_uri()
     logo_tag = (
@@ -931,6 +1089,20 @@ def wrap_in_brand_html(
         )
     )
     today = date.today().strftime("%-d %B %Y")
+
+    # Pattern B: WhatsApp confirm/edit buttons for the client's start date.
+    # Hidden on print (no-print-buttons class). Returns "" if no start date
+    # is available — letters generated before this feature shipped still render.
+    # Supplements arrived button only renders for letter types that include
+    # supplements (supplement_plan + consolidated).
+    include_supps = (letter_type or "") in ("supplement_plan", "consolidated")
+    start_buttons_html = _start_date_buttons_html(
+        meal_start_ymd=meal_start_ymd,
+        supplements_start_ymd=supplements_start_ymd,
+        plan_slug=plan_slug,
+        letter_type=letter_type,
+        include_supplements=include_supps,
+    )
 
     return f"""<!doctype html>
 <html lang="en">
@@ -957,6 +1129,8 @@ def wrap_in_brand_html(
       <h1>{title}</h1>
       {f'<p class="doc-subtitle">{subtitle}<span class="rose-dot"></span>Prepared with care</p>' if subtitle else ''}
     </div>
+
+    {start_buttons_html}
 
     <!-- Body -->
     <div class="content">

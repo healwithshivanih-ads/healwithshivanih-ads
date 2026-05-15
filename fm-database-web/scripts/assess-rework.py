@@ -146,6 +146,36 @@ def _build_context(client: dict, plan: dict | None, sessions: list[dict],
     lines.append(f"- Goals: {', '.join(client.get('goals', []) or []) or '—'}")
     lines.append("")
 
+    # AI-summarised intake insights (v0.72). One Haiku call after intake
+    # submit produces this map — patterns + red flags + top hypotheses +
+    # what coach should verify in session. Flows into the rework AI here
+    # so the rework hypothesis lands in the right clinical frame.
+    insights = client.get("intake_insights")
+    if insights and isinstance(insights, dict):
+        lines.append("# INTAKE INSIGHTS (AI-summarised at submit)")
+        patterns = insights.get("patterns") or []
+        if patterns:
+            lines.append("Patterns:")
+            for p in patterns:
+                lines.append(f"- {p}")
+        red_flags = insights.get("red_flags") or []
+        if red_flags:
+            lines.append("Red flags (protocol-gating):")
+            for r in red_flags:
+                lines.append(f"- ⚠ {r}")
+        hyps = insights.get("top_hypotheses") or []
+        if hyps:
+            lines.append("Top FM hypotheses:")
+            for h in hyps:
+                if isinstance(h, dict):
+                    conf = h.get("confidence")
+                    conf_str = f" ({int(conf * 100)}%)" if isinstance(conf, (int, float)) else ""
+                    lines.append(f"- {h.get('driver','?')}{conf_str} — {h.get('reasoning','')}")
+        coach_notes = (insights.get("coach_notes_for_ai") or "").strip()
+        if coach_notes:
+            lines.append(f"Coach correction / addition: {coach_notes}")
+        lines.append("")
+
     if plan:
         lines.append("# CURRENT ACTIVE PLAN")
         lines.append(f"- Slug: {plan.get('slug')}")
@@ -201,6 +231,49 @@ def _build_context(client: dict, plan: dict | None, sessions: list[dict],
             date, value, unit = entries_sorted[0]
             lines.append(f"- {name}: {value} {unit}".rstrip() + f"  ({date})")
         lines.append("")
+
+    # IFM timeline — antecedents/triggers/mediators chronologically.
+    # Surfaces upstream drivers (toxic exposures, surgeries, big life
+    # stress) the rework AI should consider before just chasing the
+    # symptom du jour. Fed into the AI sanity check too (ai_check.py).
+    timeline = client.get("timeline_events") or []
+    if timeline:
+        lines.append(f"# IFM TIMELINE ({len(timeline)} events)")
+        lines.append(
+            "Antecedents / triggers / mediators in the client's history. "
+            "If the current plan ignores an upstream driver flagged here, "
+            "raise it in your rationale and propose follow_up_action."
+        )
+        # Sort by year/date for chronology; events without dates trail.
+        def _sort_key(ev: dict) -> tuple:
+            y = ev.get("year") or 9999
+            d = ev.get("date") or ""
+            return (y, d)
+        for ev in sorted(timeline, key=_sort_key):
+            when = ev.get("date") or (str(ev.get("year")) if ev.get("year") else "?")
+            cat = ev.get("category", "life_event")
+            lines.append(f"- {when} [{cat}] {ev.get('event', '')}")
+        lines.append("")
+
+    # Coach-authored timeline / ATM notes from plan.notes_for_coach.
+    # The assess pipeline writes a "## IFM Timeline (AI-classified)" section
+    # into notes when the suggester returned ifm_timeline. Surface it here
+    # so the rework AI sees the upstream synthesis it (or a prior turn) made.
+    notes = (plan or {}).get("notes_for_coach") or ""
+    if "## IFM Timeline" in notes or "## ATM" in notes:
+        # Pull the relevant block — everything from the first IFM/ATM heading
+        # to the next top-level heading or end.
+        idx = notes.find("## IFM Timeline")
+        if idx < 0:
+            idx = notes.find("## ATM")
+        if idx >= 0:
+            tail = notes[idx:]
+            # Stop at next ## that isn't a sub-heading of the same block
+            next_idx = tail.find("\n## ", 4)
+            block = tail if next_idx < 0 else tail[:next_idx]
+            lines.append("# COACH/AI ATM SYNTHESIS (from plan notes)")
+            lines.append(block.strip())
+            lines.append("")
 
     lines.append("# TRIGGERING EVENT")
     lines.append(f"- Type: {triggered_by}")
@@ -259,6 +332,25 @@ _TOOL_SCHEMA = {
                         "target_slug": {"type": ["string", "null"]},
                         "description": {"type": "string"},
                         "reason": {"type": "string"},
+                        "intake_evidence": {
+                            "type": "array",
+                            "items": {"type": "string"},
+                            "description": (
+                                "Short coach-readable phrases citing the intake observations "
+                                "that justify THIS change. Pull from `INTAKE INSIGHTS` block "
+                                "(patterns / red_flags / hypotheses / coach corrections) AND "
+                                "any structured intake field (medications, COVID history, "
+                                "bowel pattern, etc.) that drove this revision. Format each "
+                                "entry as the observation plus a parenthetical tag of the "
+                                "source field, e.g. 'PPI use 3+ years (acid_suppressants)', "
+                                "'Wakes at 3am (wake_time_pattern)', 'Coach correction: "
+                                "client stopped GLP-1 (coach_notes_for_ai)'. Empty list when "
+                                "the revision came from the triggering event alone with no "
+                                "intake contribution. Most-decisive observation first; up to "
+                                "4 items per change. Coach reads these inline as a 💡 audit "
+                                "chip on the rework suggestion."
+                            ),
+                        },
                     },
                     "required": ["op", "target_kind", "description", "reason"],
                 },
@@ -299,7 +391,31 @@ Lab-order rule: ONLY propose lab_order for markers NOT already in the \
 'LABS ALREADY ON FILE' block. If a marker is on file, reference its value \
 in your rationale instead — never re-order it. If you're unsure whether a \
 client has had a marker tested, default to not proposing it (apply-time \
-dedup will skip it anyway, but you waste tokens)."""
+dedup will skip it anyway, but you waste tokens).
+
+INTAKE-EVIDENCE TRACEABILITY (v0.72): populate `intake_evidence` on every \
+suggested_change WHEN an intake observation justified or strengthens the \
+change. Pull from:
+  - the INTAKE INSIGHTS block at the top of the prompt (patterns, red flags,
+    top FM hypotheses, coach corrections)
+  - the COACH/AI ATM SYNTHESIS block if present
+  - the IFM TIMELINE block
+  - any specific medication / lab / symptom field surfaced elsewhere in the
+    context
+
+Format each entry as ONE short coach-readable phrase naming the observation
+in plain English with a parenthetical source tag. Examples:
+  "PPI use 3+ years (acid_suppressants)"
+  "On Ozempic 0.5mg weekly (glp1_medications)"
+  "3 antibiotic courses last year (antibiotics_last_12mo)"
+  "Wakes consistently at 3am (wake_time_pattern)"
+  "Coach correction: client stopped GLP-1 (coach_notes_for_ai)"
+
+If a change came solely from the triggering event (e.g. new lab finding)
+and no intake observation reinforced it, use an empty list `[]`. Don't
+fabricate citations. Coach corrections in `coach_notes_for_ai` OVERRIDE
+AI inferences from raw fields — if the coach said something contradicts
+the intake form, treat the coach's note as ground truth and cite it."""
 
 
 def main() -> int:

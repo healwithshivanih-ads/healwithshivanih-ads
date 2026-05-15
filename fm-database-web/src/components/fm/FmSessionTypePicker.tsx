@@ -70,6 +70,15 @@ export interface FmSessionTypePickerProps {
    *  to this Client primitive without tripping the RSC serialisation
    *  boundary. */
   hrefMap?: Partial<Record<FmSessionTypeId, string>>;
+  /** What's already on file for this client — drives the CTA label per
+   *  card. With this set, "Run intake" becomes "Review intake →" once an
+   *  intake exists; the recommended next session also gets a "Next" badge.
+   *  Coach feedback: "if intake is done, what's the point of saying run
+   *  again — should say update intake". */
+  completionState?: Partial<Record<FmSessionTypeId, "done" | "active" | "pending">>;
+  /** Highlights the single card the journey says is the recommended
+   *  next action. Drawn from ClientJourney.nextStep on the server. */
+  recommendedId?: FmSessionTypeId | null;
 }
 
 export function FmSessionTypePicker({
@@ -77,15 +86,27 @@ export function FmSessionTypePicker({
   dense = false,
   onSelect,
   hrefMap,
+  completionState,
+  recommendedId,
 }: FmSessionTypePickerProps) {
   if (dense) return <PickerDense selectedId={selectedId} onSelect={onSelect} hrefMap={hrefMap} />;
-  return <PickerFull selectedId={selectedId} onSelect={onSelect} hrefMap={hrefMap} />;
+  return (
+    <PickerFull
+      selectedId={selectedId}
+      onSelect={onSelect}
+      hrefMap={hrefMap}
+      completionState={completionState}
+      recommendedId={recommendedId}
+    />
+  );
 }
 
 function PickerFull({
   selectedId,
   onSelect,
   hrefMap,
+  completionState,
+  recommendedId,
 }: Omit<FmSessionTypePickerProps, "dense">) {
   return (
     <div>
@@ -118,23 +139,87 @@ function PickerFull({
       >
         {FM_SESSION_TYPES.map((s) => {
           const sel = s.id === selectedId;
+          const state = completionState?.[s.id];
+          const isDone = state === "done";
+          const isRecommended = recommendedId === s.id;
+          const ctaLabel = (() => {
+            // Once an intake / discovery is on file, the natural action
+            // is to REVIEW it, not to start a fresh one (coach pain
+            // point — kept clicking "Run intake" thinking it'd open the
+            // existing record). Check-in / quick note can always repeat.
+            if (s.id === "discovery") return isDone ? "Review discovery →" : "Run discovery →";
+            if (s.id === "intake") return isDone ? "Review intake →" : "Run intake →";
+            if (s.id === "full") return isDone ? "Re-run assessment →" : "Run assessment →";
+            if (s.id === "checkin") return "Log check-in →";
+            return "Add note →";
+          })();
           const inner = (
             <div
               style={{
+                position: "relative",
                 padding: "20px 18px",
                 borderRadius: "var(--fm-radius-lg)",
-                border: `2px solid ${sel ? s.tint : "var(--fm-border-light)"}`,
+                border: `2px solid ${
+                  isRecommended
+                    ? "#F39C12"
+                    : sel
+                      ? s.tint
+                      : "var(--fm-border-light)"
+                }`,
                 background: sel
                   ? `linear-gradient(135deg, ${s.tint}12, ${s.tint}04)`
-                  : "var(--fm-surface)",
+                  : isRecommended
+                    ? "linear-gradient(135deg, rgba(243,156,18,0.10), rgba(243,156,18,0.03))"
+                    : "var(--fm-surface)",
                 boxShadow: sel ? `0 4px 18px ${s.tint}25` : "none",
                 cursor: "pointer",
                 transition: "all 200ms var(--fm-ease-out)",
                 height: "100%",
                 display: "flex",
                 flexDirection: "column",
+                opacity: isDone && !isRecommended ? 0.78 : 1,
               }}
             >
+              {/* ★ "Next" badge — the single card the journey says is the
+                  recommended next move for this client. */}
+              {isRecommended && (
+                <div
+                  style={{
+                    position: "absolute",
+                    top: -10,
+                    left: 12,
+                    background: "#F39C12",
+                    color: "#fff",
+                    fontSize: 10,
+                    fontWeight: 700,
+                    letterSpacing: 0.6,
+                    textTransform: "uppercase",
+                    padding: "2px 8px",
+                    borderRadius: 4,
+                  }}
+                >
+                  ★ Next
+                </div>
+              )}
+              {/* ✓ tick on done sessions — coach knows it's already on
+                  file at a glance, and the CTA reads "Review" not "Run". */}
+              {isDone && (
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 10,
+                    right: 10,
+                    background: "rgba(30, 132, 73, 0.12)",
+                    color: "#1E8449",
+                    fontSize: 10,
+                    fontWeight: 700,
+                    padding: "2px 6px",
+                    borderRadius: 4,
+                  }}
+                >
+                  ✓ Done
+                </div>
+              )}
               <div style={{ fontSize: 28, marginBottom: 10 }}>{s.icon}</div>
               <div
                 style={{
@@ -196,7 +281,7 @@ function PickerFull({
                   textAlign: "center",
                 }}
               >
-                Start {s.label.toLowerCase()} →
+                {ctaLabel}
               </div>
             </div>
           );

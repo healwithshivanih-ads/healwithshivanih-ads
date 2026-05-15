@@ -359,6 +359,92 @@ AMAZON_CATALOG: dict[str, tuple[str, str]] = {
 # ---------------------------------------------------------------------------
 _CUSTOM_LINKS_PATH = PLANS_ROOT / "supplement_links.yaml"
 
+# ---------------------------------------------------------------------------
+# Indian food seasonality reference — lives next to this file. Coach edits
+# the YAML freely. The renderer injects the in-season grain list + out-of-
+# season "AVOID" list into the meal-plan prompt so the AI doesn't default
+# to oats-quinoa-heavy plans (its Western FM training bias) and instead
+# picks bajra/jowar/ragi/millets appropriate to the client's month + region.
+# ---------------------------------------------------------------------------
+_SEASONAL_FOODS_PATH = Path(__file__).resolve().parent / "seasonal_foods.yaml"
+
+def _load_seasonal_foods() -> dict:
+    if not _SEASONAL_FOODS_PATH.exists():
+        return {}
+    try:
+        import yaml
+        return yaml.safe_load(_SEASONAL_FOODS_PATH.read_text()) or {}
+    except Exception:
+        return {}
+
+
+def _seasonality_block(month: int, country: str) -> str:
+    """Build a prompt block listing IN-SEASON grains + OUT-OF-SEASON-AVOID
+    grains for the current month. Tolerant of missing fields in the YAML.
+
+    Only fires for India for now — non-Indian clients get an empty string
+    and the AI uses generic FM seasonality logic.
+    """
+    if (country or "").strip().lower() not in ("india", ""):
+        return ""
+    data = _load_seasonal_foods() or {}
+    grains = (data.get("grains") or {})
+    if not isinstance(grains, dict) or not grains:
+        return ""
+
+    in_season: list[str] = []
+    out_of_season: list[str] = []
+    for name, info in grains.items():
+        if not isinstance(info, dict):
+            continue
+        months_in = info.get("months_in")
+        if not isinstance(months_in, list) or len(months_in) == 0:
+            # No restriction — counts as in-season (e.g. rice all year)
+            continue
+        is_in = month in months_in
+        aka = info.get("aka")
+        label = f"{name}" + (f" ({aka})" if aka else "")
+        props = info.get("properties") or []
+        props_str = ", ".join(props[:3]) if isinstance(props, list) else ""
+        good_for = info.get("good_for") or []
+        good_str = ", ".join(good_for[:3]) if isinstance(good_for, list) else ""
+        note = (info.get("coach_note") or "").strip()
+
+        if is_in:
+            # Surface properties + good_for + note for in-season picks
+            bits = [label]
+            if props_str:
+                bits.append(f"[{props_str}]")
+            if good_str:
+                bits.append(f"good for: {good_str}")
+            if note:
+                bits.append(f"coach: {note}")
+            in_season.append("  - " + " · ".join(bits))
+        else:
+            avoid_when = info.get("avoid_when") or []
+            avoid_str = ", ".join(avoid_when[:2]) if isinstance(avoid_when, list) else ""
+            bits = [label]
+            if avoid_str:
+                bits.append(f"avoid: {avoid_str}")
+            out_of_season.append("  - " + " · ".join(bits))
+
+    if not in_season and not out_of_season:
+        return ""
+
+    pieces = ["INDIAN GRAIN SEASONALITY — bias the meal plan toward these (region-specific knowledge the AI shouldn't override):"]
+    if in_season:
+        pieces.append("")
+        pieces.append(f"✓ IN-SEASON this month (use freely):")
+        pieces.extend(in_season)
+    if out_of_season:
+        pieces.append("")
+        pieces.append("✗ OUT-OF-SEASON this month (prefer alternatives unless client explicitly asks):")
+        pieces.extend(out_of_season)
+    pieces.append("")
+    pieces.append("Apply this BEFORE defaulting to oats / quinoa / wheat. If the client is on a heating-focused protocol (postpartum, perimenopause, vata) in winter, push bajra / ragi / buckwheat. If on a cooling protocol (PCOS, IR, summer pitta) in summer, push jowar / foxtail / kodo millet. Rotate 3-4 grains across the week — don't pick one and repeat.")
+    return "\n".join(pieces)
+
+
 def _load_custom_links() -> dict[str, tuple[str, str]]:
     """Load coach-managed affiliate links from supplement_links.yaml."""
     if not _CUSTOM_LINKS_PATH.exists():
@@ -518,7 +604,11 @@ def _attached_protocol_block(plan: dict) -> str:
                  "include meat / fish / eggs for a vegetarian client, SUBSTITUTE "
                  "with plant-based equivalents (paneer, tofu, dal, hemp, sprouted "
                  "legumes). For a Jain client, ALSO exclude onion / garlic / "
-                 "potato / carrot / beetroot from the protocol foods.")
+                 "potato / carrot / beetroot from the protocol foods. "
+                 "NOTE: Jain is LACTO-VEGETARIAN — dairy (milk, ghee, paneer, "
+                 "dahi, buttermilk) is fully permitted and central to the diet; "
+                 "do NOT confuse Jain with vegan. Only flesh foods, fish, eggs "
+                 "and gelatin are excluded for Jain.")
     lines.append("  2. CLIENT LOCATION + SEASON drives produce availability — "
                  "use the season + city rules already established in the prompt.")
     lines.append("  3. CYCLE PHASE (women) — cycle-aware modifications (menstrual "
@@ -1240,13 +1330,136 @@ def _top_of_mind_block(client: dict, plan: dict) -> str:
     if foods_avoid:
         bullets.append(f"- Foods to avoid (preferences / intolerances): {foods_avoid}")
 
+    # 🚨 Allergies — promoted from profile-only into TOP-OF-MIND with the same
+    # NEVER framing as reported triggers. Anaphylactic risk doesn't get to
+    # live in a footer the AI might gloss over.
+    allergies = client.get("known_allergies") or client.get("allergies") or []
+    if isinstance(allergies, list) and allergies:
+        bullets.append(
+            f"- 🚨 Known ALLERGIES (NEVER suggest — anaphylactic / hypersensitivity risk): {', '.join(allergies)}"
+        )
+
     conditions = client.get("active_conditions") or []
     if conditions:
         bullets.append(f"- Active conditions: {', '.join(conditions)}")
 
+    # 📋 Medical history (past diagnoses + current state, e.g. "Hashimoto's
+    # diagnosed 2018, antibodies normalised, on levothyroxine"). Distinct
+    # from active_conditions — these are background facts the recommendations
+    # must respect (e.g., cholecystectomy → low-fat caveat; UC remission →
+    # avoid trigger foods even when not currently flaring).
+    med_hx = client.get("medical_history") or []
+    if isinstance(med_hx, list) and med_hx:
+        bullets.append(f"- 📋 Medical history (respect when planning): {', '.join(med_hx[:5])}")
+    elif isinstance(med_hx, str) and med_hx.strip():
+        bullets.append(f"- 📋 Medical history (respect when planning): {med_hx.strip()[:240]}")
+
+    # 🧬 Family history — drives preventive nutrition emphasis (T2D parent →
+    # low-glycaemic emphasis; CVD parent → cardiometabolic; breast Ca →
+    # cruciferous + lignans; osteoporosis → bone-supportive).
+    fam_hx = (client.get("family_history") or "").strip()
+    if fam_hx:
+        bullets.append(f"- 🧬 Family history (preventive emphasis): {fam_hx[:240]}")
+
     meds = client.get("current_medications") or []
     if meds:
         bullets.append(f"- Medications (check interactions): {', '.join(meds)}")
+
+    # 🤰 Pregnancy / lactation safety overlay — protocol-gating. Hides high-
+    # mercury fish, raw sprouts, unpasteurised dairy, liver organ meats,
+    # adaptogens (ashwagandha, holy basil), and certain bitters from any
+    # meal plan or supplement schedule. The AI is told below to apply the
+    # pregnancy-safe rule set when this flag is set.
+    preg_status = (client.get("pregnancy_status") or "").strip()
+    if preg_status and preg_status not in ("not_applicable", "not_pregnant", ""):
+        bullets.append(
+            f"- 🤰 PREGNANCY / LACTATION SAFETY OVERLAY — status: {preg_status.replace('_', ' ')}. "
+            "Apply pregnancy-safe rules: NO high-mercury fish (king mackerel, swordfish, tilefish, bigeye tuna), "
+            "NO raw sprouts, NO unpasteurised dairy or soft cheeses, NO liver / organ meats (Vit A excess), "
+            "NO ashwagandha / holy basil / licorice / pennyroyal / blue cohosh, "
+            "limit caffeine to ≤200mg/day, NO alcohol. Folate + iron + DHA emphasis."
+        )
+    lact_started = (client.get("lactation_started") or "").strip()
+    if lact_started and not preg_status:
+        bullets.append(
+            f"- 🍼 LACTATING (started {lact_started}) — galactagogue-supportive foods OK "
+            "(fenugreek, fennel, oats); avoid sage, peppermint (oversupply risk), and ashwagandha."
+        )
+
+    # 🧪 Out-of-range lab markers — when lab_reference_ranges are set on the
+    # client, compare each lab_marker to its range and surface only the ones
+    # that are abnormal. Drives meal-plan emphasis (high HbA1c → low GL,
+    # low ferritin → iron-rich foods, low Vit D → fortified + sun exposure,
+    # high homocysteine → folate / B12 emphasis, etc.). When no ranges are
+    # configured we still surface the top 5 markers so AI has data to work
+    # with — the AI is FM-trained and knows the optimal ranges.
+    markers = client.get("lab_markers") or []
+    ranges = client.get("lab_reference_ranges") or {}
+    if isinstance(markers, list) and markers:
+        abnormal_lines: list[str] = []
+        normal_count = 0
+        for m in markers[:25]:
+            if not isinstance(m, dict):
+                continue
+            mname = m.get("marker") or m.get("name") or ""
+            mval = m.get("value")
+            munit = m.get("unit") or ""
+            if not mname or mval is None:
+                continue
+            rng = ranges.get(mname) if isinstance(ranges, dict) else None
+            if isinstance(rng, dict):
+                try:
+                    lo = float(rng.get("optimal_low")) if rng.get("optimal_low") is not None else None
+                    hi = float(rng.get("optimal_high")) if rng.get("optimal_high") is not None else None
+                    v = float(mval)
+                    if (lo is not None and v < lo) or (hi is not None and v > hi):
+                        direction = "low" if (lo is not None and v < lo) else "high"
+                        abnormal_lines.append(
+                            f"  · 🔴 {mname}: {v} {munit} ({direction}; optimal {lo or '—'}–{hi or '—'})"
+                        )
+                    else:
+                        normal_count += 1
+                except (TypeError, ValueError):
+                    pass
+        if abnormal_lines:
+            bullets.append(
+                "- 🧪 Lab markers FLAGGED (drive meal choices to address these):\n"
+                + "\n".join(abnormal_lines[:8])
+                + (f"\n  · ✅ {normal_count} other markers within optimal" if normal_count else "")
+            )
+        elif not ranges:
+            # No FM ranges configured — surface the most recent 5 markers raw
+            # so AI has visibility even without our optimal annotations.
+            raw_lines = []
+            for m in markers[:5]:
+                if isinstance(m, dict):
+                    raw_lines.append(f"  · {m.get('marker', '?')}: {m.get('value', '?')} {m.get('unit', '')}")
+            if raw_lines:
+                bullets.append(
+                    "- 🧪 Recent lab markers (no FM ranges set — interpret per FM optimal):\n"
+                    + "\n".join(raw_lines)
+                )
+
+    # FM body-systems intake — only show fields with substance. These are
+    # the deep intake prose fields the coach captures during onboarding.
+    # Important for nuance: digestion_notes shapes meal textures + fermented
+    # food tolerance; sleep_notes drives caffeine cutoff + carb timing;
+    # stress_response informs adaptogen + nervine choices.
+    body_systems = [
+        ("💩 Digestion", client.get("digestion_notes")),
+        ("😴 Sleep", client.get("sleep_notes")),
+        ("⚡ Energy pattern", client.get("energy_pattern")),
+        ("🌙 Menstrual / hormonal", client.get("menstrual_notes")),
+        ("🌀 Stress response", client.get("stress_response")),
+        ("👶 Childhood history", client.get("childhood_history")),
+        ("☣ Toxic exposures", client.get("toxic_exposures")),
+    ]
+    body_sys_lines: list[str] = []
+    for label, val in body_systems:
+        if isinstance(val, str) and val.strip():
+            body_sys_lines.append(f"  · {label}: {val.strip()[:180]}")
+    if body_sys_lines:
+        bullets.append("- 🩺 FM body-systems intake (refer to these when relevant):\n" + "\n".join(body_sys_lines))
 
     # IFM Timeline highlights — last 3 events of any kind, with year.
     timeline = client.get("timeline_events") or []
@@ -1283,6 +1496,37 @@ def _top_of_mind_block(client: dict, plan: dict) -> str:
     cycle_phase = client.get("_computed_cycle_phase")
     if cycle_phase:
         bullets.append(f"- 🌙 Cycle phase today: {cycle_phase}")
+
+    # AI-summarised intake insights (v0.72). Generated once after intake
+    # submit; surface here so the letter generator references the same
+    # clinical map as every other AI call. Coach-edited corrections in
+    # coach_notes_for_ai are appended too — those override AI inference
+    # without needing a full regenerate.
+    insights = client.get("intake_insights")
+    if insights and isinstance(insights, dict):
+        red_flags = insights.get("red_flags") or []
+        if red_flags:
+            bullets.append(
+                "- ⚠ Intake red flags (protocol-gating): "
+                + "; ".join(red_flags[:4])
+            )
+        patterns = insights.get("patterns") or []
+        if patterns:
+            bullets.append(
+                "- 🧬 Intake patterns: "
+                + "; ".join(patterns[:3])
+            )
+        hyps = insights.get("top_hypotheses") or []
+        if hyps:
+            hyp_strs = []
+            for h in hyps[:2]:
+                if isinstance(h, dict):
+                    hyp_strs.append(h.get("driver", "?"))
+            if hyp_strs:
+                bullets.append(f"- 🎯 Top FM hypotheses: {' · '.join(hyp_strs)}")
+        coach_notes = (insights.get("coach_notes_for_ai") or "").strip()
+        if coach_notes:
+            bullets.append(f"- ✍ Coach correction / addition (overrides AI): {coach_notes[:220]}")
 
     if not bullets:
         return ""
@@ -1483,6 +1727,135 @@ maintenance. Calorie discipline matters either way.
 
 # Generic-tip banlist — same wording across all 4 builders so behaviour is
 # consistent. Insert near the writing rules in each prompt.
+def _start_when_block(plan: dict, scope: str) -> str:
+    """Frame the start-of-protocol timing for the client.
+
+    Coaches send plans on day X but clients don't start on day X — empirically
+    +3d for the meal plan (grocery shop, prep, settle in) and +7d for
+    supplements (have to be ordered + delivered + habit-built).
+
+    Coach can capture the actual start date in plan.meal_plan_started_on /
+    plan.supplements_started_on; otherwise we use plan_period_start + the
+    default delays. This block is injected into all 4 letter prompts so the
+    client understands the timeline labels are RELATIVE to their personal
+    Day 1, not the date the letter landed in their inbox.
+
+    scope: 'meal' | 'supplement' | 'both' — controls which dates appear.
+    """
+    from datetime import datetime as _dt, timedelta as _td
+
+    def _coerce_date(v):
+        if v is None or v == "":
+            return None
+        if isinstance(v, str):
+            try:
+                return _dt.fromisoformat(v[:10]).date()
+            except Exception:
+                return None
+        if hasattr(v, "year"):  # date / datetime
+            return v.date() if isinstance(v, _dt) else v
+        return None
+
+    period_start = _coerce_date(plan.get("plan_period_start"))
+    meal_actual = _coerce_date(plan.get("meal_plan_started_on"))
+    supp_actual = _coerce_date(plan.get("supplements_started_on"))
+
+    if period_start is None:
+        # No start info at all — give a soft "start when you're ready" framing.
+        if scope == "meal":
+            return "TIMING NOTE: Week 1 of this meal plan starts whenever the client is ready — typically 2–3 days after receiving this letter, to allow time for grocery shopping and prep. The week numbering is RELATIVE to her Day 1, not the date she received this letter."
+        if scope == "supplement":
+            return "TIMING NOTE: The supplement Week 1 starts when she's received her supplements and is ready to begin — typically about 1 week after this plan is sent. The week numbering is RELATIVE to her Day 1, not the date she received this plan."
+        return "TIMING NOTE: Week 1 of this plan starts when the client is ready — give 2–3 days for the meal plan to settle in, and about 1 week before she expects supplements to arrive. All week numbering is RELATIVE to her personal Day 1, not the date the plan was sent."
+
+    meal_eff = meal_actual or (period_start + _td(days=3))
+    supp_eff = supp_actual or (period_start + _td(days=7))
+
+    def _human(d) -> str:
+        # "Monday 19 May 2026" — warm format for the client-facing letter.
+        return d.strftime("%A %-d %B %Y") if hasattr(d, "strftime") else str(d)
+
+    # Coach-facing pushback instruction — woven into the AI prompt so the
+    # letter explicitly names the start date AND invites the client to
+    # message back if it doesn't suit her. The webhook (once configured)
+    # parses replies starting with "START:" or "✅ Start:" / "📅 Start:"
+    # and auto-updates plan.meal_plan_started_on via the start-date parser
+    # in src/lib/start-date-parser.ts. Until the webhook is live the coach
+    # reads the inbox and updates manually via PlanStartDatesPanel.
+    pushback_meal_instruction = (
+        "GREETING REQUIREMENT — name the start date EXPLICITLY: write a sentence like "
+        f"\"I've set your Day 1 for **{_human(meal_eff)}** — that gives you the weekend "
+        f"to grocery shop and settle in.\" Then in the SAME paragraph, invite pushback "
+        f"warmly: \"If that day doesn't suit you, just reply to this WhatsApp with the "
+        f"date you'd prefer and I'll shift everything.\" The date must appear in BOLD. "
+        f"Do not skip this — the client needs to see the date and know she can change it."
+    )
+    pushback_supp_instruction = (
+        "ADDITIONAL: warmly tell her to message back the day her supplements actually "
+        f"arrive (e.g. \"Once they land, just reply with 'supplements arrived' and I'll "
+        f"start the count from that day.\") so we can update Day 1 for the supplement protocol."
+    )
+
+    if scope == "meal":
+        if meal_actual:
+            return (
+                f"TIMING NOTE: Client confirmed she actually started the meal plan on "
+                f"{_human(meal_eff)}. Week 1 is the week beginning that date — write "
+                f"the letter as though Week 1 begins on her Day 1, not today. Mention "
+                f"the date warmly in the greeting (\"Now that Day 1 is locked in for "
+                f"{_human(meal_eff)}...\") but DON'T re-invite pushback (it's already "
+                f"confirmed)."
+            )
+        return (
+            f"TIMING NOTE: Plan sent {period_start.isoformat()}. Empirically clients start "
+            f"the meal plan ~3 days later — Week 1 begins ~{_human(meal_eff)}.\n"
+            f"\n"
+            f"{pushback_meal_instruction}\n"
+            f"\n"
+            f"All week numbering throughout the letter is RELATIVE to her Day 1, not today."
+        )
+
+    if scope == "supplement":
+        if supp_actual:
+            return (
+                f"TIMING NOTE: Client confirmed she started supplements on "
+                f"{_human(supp_eff)}. Week 1 of the supplement protocol begins that date — "
+                f"name the date warmly in the greeting and frame timeline labels RELATIVE."
+            )
+        return (
+            f"TIMING NOTE: Plan sent {period_start.isoformat()}. Supplements typically take "
+            f"~1 week to arrive — Day 1 best framed as ~{_human(supp_eff)}.\n"
+            f"\n"
+            f"GREETING REQUIREMENT — name the date EXPLICITLY: \"I've pencilled in "
+            f"**{_human(supp_eff)}** as the day your supplements should arrive and you'll "
+            f"begin.\" {pushback_supp_instruction}\n"
+            f"\n"
+            f"All supplement week numbering is RELATIVE to her Day 1."
+        )
+
+    # scope == 'both'
+    meal_line = (
+        f"  - **Meal plan Day 1**: {_human(meal_eff)} "
+        f"({'coach-confirmed' if meal_actual else 'default +3d for grocery shop / prep'})"
+    )
+    supp_line = (
+        f"  - **Supplements Day 1**: {_human(supp_eff)} "
+        f"({'coach-confirmed' if supp_actual else 'default +7d for order / delivery'})"
+    )
+    pushback_block = ""
+    if not meal_actual:
+        pushback_block += "\n\n" + pushback_meal_instruction
+    if not supp_actual:
+        pushback_block += "\n\n" + pushback_supp_instruction
+    return (
+        f"TIMING NOTE: Plan sent {period_start.isoformat()}. The week numbering throughout "
+        f"this document is RELATIVE to her personal Day 1, not the date she received this letter.\n"
+        f"\n"
+        f"{meal_line}\n"
+        f"{supp_line}{pushback_block}"
+    )
+
+
 _BANNED_GENERIC_RULE = """
 BANNED-GENERIC RULE — READ TWICE:
 Every coaching tip and meal suggestion in this document MUST reference at
@@ -1515,6 +1888,52 @@ If a tip would apply equally to ANY client, REWRITE it to apply uniquely
 to this client OR REMOVE it entirely. We'd rather a shorter document
 that reads like it was written FOR this person than a long one of FM
 boilerplate.
+"""
+
+
+def _coach_notes_block(coach_notes: str) -> str:
+    """Wrap freeform coach notes + the structured SPECIAL REQUESTS block
+    (from the SendPackageButton panel) into a single prompt section. When
+    a 🧳 TRAVEL line is detected, force the AI to render a dedicated
+    "Travel week" subsection in the meal plan with restaurant-ordering
+    rules for the named destination — cost ~2¢ for a much more useful
+    artifact (coach decision log 2026-05-15)."""
+    if not coach_notes:
+        return ""
+    has_travel = "🧳 TRAVEL" in coach_notes or "Travel:" in coach_notes
+    has_structured = "=== SPECIAL REQUESTS ===" in coach_notes
+    if has_structured:
+        instr = (
+            "COACH'S SPECIAL REQUESTS + CUSTOM KNOWLEDGE — these are PROTOCOL-"
+            "GATING. The structured block below carries (a) meal preference "
+            "chips to honour throughout the plan (e.g. eggs at breakfast, IF "
+            "until 11am — apply EVERY relevant day), (b) optional TRAVEL "
+            "window with destination + cooking-access flag, (c) any freeform "
+            "additions. Weave them naturally — don't dump in one place."
+        )
+    else:
+        instr = "COACH'S CUSTOM KNOWLEDGE (weave naturally into the relevant sections):"
+    travel_rule = (
+        "\n\nTRAVEL HANDLING — a 🧳 TRAVEL block IS present in the requests above.\n"
+        "Insert a clearly-labelled '## 🧳 Travel week: <destination> (<dates>)' "
+        "subsection inside the meal plan (right after the regular week tables for "
+        "those dates). Include:\n"
+        "  - 6-10 specific dishes the client can ORDER at restaurants in the "
+        "named destination that fit her protocol (respect allergies, dietary "
+        "preference, reported triggers, glycaemic load for diabetes / IR clients, "
+        "pregnancy-safety overlay if active).\n"
+        "  - 2-3 common local dishes to AVOID, with a one-line why each.\n"
+        "  - Travel-specific hydration + meal-timing guidance (jet lag, long flights).\n"
+        "  - If cooking access = 'restaurants only': skip the daily-table grid for "
+        "those exact dates and replace with a 'flexible ordering' card. If 'can "
+        "cook' or 'mixed': keep simplified versions of usual meals (~3-4 ingredient).\n"
+        "Stay warm and practical — no lectures.\n"
+    ) if has_travel else ""
+    return f"""
+{instr}
+{coach_notes}
+{travel_rule}
+Use these tips in the RELEVANT meal / lifestyle / lab section — don't dump them all in one place. Make them feel like natural personalised advice, not bolted-on notes.
 """
 
 
@@ -1554,6 +1973,7 @@ def _build_prompt_meal_plan(plan: dict, client: dict, weight_loss: dict | None, 
             season = "Autumn/Fall"
         else:
             season = "Winter"
+    grain_seasonality = _seasonality_block(_month, country)
     age = None
     if client.get("date_of_birth"):
         from datetime import date
@@ -1612,17 +2032,12 @@ MOVEMENT & WELLNESS:
 - Frame movement as supportive of hormonal balance, energy, and mood.
 """
 
-    coach_notes_block = ""
-    if coach_notes:
-        coach_notes_block = f"""
-COACH'S CUSTOM KNOWLEDGE (weave these naturally into the nutrition plan):
-{coach_notes}
-Use these tips in relevant meal sections — don't dump them all in one place. Make them feel like natural advice.
-"""
+    coach_notes_block = _coach_notes_block(coach_notes)
 
     top_of_mind = _top_of_mind_block(client, plan)
     cycle = _cycle_block(client)
     attached_protocol = _attached_protocol_block(plan)
+    start_when = _start_when_block(plan, "meal")
 
     prompt = f"""You are writing a warm, friendly {plan_weeks}-week MEAL PLAN document for a client.
 The coach (Shivani Hariharan) has prepared a structured plan. Turn the nutrition data into a beautiful, practical meal plan the client can actually USE.
@@ -1630,6 +2045,7 @@ The coach (Shivani Hariharan) has prepared a structured plan. Turn the nutrition
 {top_of_mind}
 {cycle}
 {attached_protocol}
+{start_when}
 {_BANNED_GENERIC_RULE}
 
 CLIENT PROFILE:
@@ -1661,6 +2077,16 @@ DOCUMENT STRUCTURE:
 1. **Warm greeting** — 2–3 sentences welcoming {first_name}, naming this as a {plan_weeks}-week nutrition journey.
 
 2. **Your {plan_weeks}-Week Nutrition Overview** — brief half-page map of the phases, nutrition lens only.
+
+2b. **How to swap meals** — `## 🔁 How to use this plan`
+   Insert this short, warm box (≤ 8 lines, plain English) so {first_name} knows the rules of swapping BEFORE she reads the tables. Use bullets. Cover EXACTLY these rules and no more:
+   - You can swap a meal with the SAME meal on a different day in the same week. (e.g. if you'd rather have Wednesday's breakfast on Monday, just swap them — eat eggs both days if you like, and shift the ragi porridge to Wednesday.)
+   - You can NOT swap across meal slots — don't move breakfast into the lunch column or dinner into breakfast. The slot matters because each meal's nutrient density and timing are designed together (e.g. breakfast is the lower-glycaemic anchor, dinner is lighter).
+   - If something doesn't fit your week, repeat a meal you liked from the same slot earlier in the week rather than skipping. Two breakfasts of eggs in a week is fine; eggs at dinner is not.
+   - Mid-morning, evening, and bedtime snacks follow the same rule — they're independent slots, not "spare" meals.
+   - If you genuinely can't eat what's on the plan for a meal slot, fall back to a simple safe option: dal + sabzi + 1 roti for lunch/dinner; oats + nuts for breakfast.
+
+   Keep the tone soft — this is freedom + structure, not rigidity.
 
 3. **WEEKS 1 & 2 — Full Detail**
    3a. Theme & goals for weeks 1–2 (1 short paragraph)
@@ -1694,10 +2120,14 @@ DOCUMENT STRUCTURE:
 RULES:
 - NO supplement tables or lists (see separate supplement document)
 - SEASONAL produce for {location_str}, current season: {season}
+
+{grain_seasonality}
+
 - Respect dietary preference ({diet_pref}), avoid ({foods_to_avoid})
 - CRITICAL: NEVER suggest foods listed as reported triggers: {reported_triggers}
 - No clinical jargon — write like a knowledgeable friend
 - If Vegetarian Jain: NO root vegetables (onion, garlic, potato, carrot, beetroot, radish, turnip)
+- {"INCLUDE a *~kcal* row at the bottom of each weekly table with the per-day total (±50 kcal of the phase target)." if cal else "DO NOT add a *~kcal* row or any per-day calorie totals — this client is NOT on a weight-loss plan. Calorie counts are off-topic and create unnecessary anxiety."}
 
 {INDIAN_BRANDS}
 """
@@ -1729,22 +2159,19 @@ def _build_prompt_supplement_plan(plan: dict, client: dict, coach_notes: str) ->
 
     supp_text = "\n".join(supp_list) if supp_list else "No supplements specified."
 
-    coach_notes_block = ""
-    if coach_notes:
-        coach_notes_block = f"""
-COACH'S CUSTOM KNOWLEDGE (weave naturally into the intro and tips):
-{coach_notes}
-"""
+    coach_notes_block = _coach_notes_block(coach_notes)
 
     top_of_mind = _top_of_mind_block(client, plan)
     cycle = _cycle_block(client)
     attached_protocol = _attached_protocol_block(plan)
+    start_when = _start_when_block(plan, "supplement")
 
     prompt = f"""You are writing a short supplement protocol introduction letter for a client.
 
 {top_of_mind}
 {cycle}
 {attached_protocol}
+{start_when}
 {_BANNED_GENERIC_RULE}
 
 
@@ -1838,16 +2265,12 @@ def _build_prompt_lifestyle_guide(plan: dict, client: dict, coach_notes: str) ->
     else:
         labs_block = "None specified."
 
-    coach_notes_block = ""
-    if coach_notes:
-        coach_notes_block = f"""
-COACH'S CUSTOM KNOWLEDGE (weave naturally into relevant sections):
-{coach_notes}
-"""
+    coach_notes_block = _coach_notes_block(coach_notes)
 
     top_of_mind = _top_of_mind_block(client, plan)
     cycle = _cycle_block(client)
     attached_protocol = _attached_protocol_block(plan)
+    start_when = _start_when_block(plan, "both")
 
     prompt = f"""You are writing a warm, practical {plan_weeks}-week COACHING PLAN for a client — covering lifestyle, learning, labs, and tracking.
 This document is the companion to the meal plan and supplement plan. It covers everything EXCEPT food and supplements.
@@ -1856,6 +2279,7 @@ The coach (Shivani Hariharan) has prepared the structured data below.
 {top_of_mind}
 {cycle}
 {attached_protocol}
+{start_when}
 {_BANNED_GENERIC_RULE}
 
 CLIENT PROFILE:
@@ -1917,7 +2341,22 @@ DOCUMENT STRUCTURE:
    Present the education modules as a phased reading/learning plan. Group by phase. For each module explain WHY it matters in plain language (no jargon).
 
 6. **Labs to Order** — `## 🔬 Labs to Order`
-   Present the lab orders in plain English ("Ask your doctor for..."). Explain what each test reveals in simple terms. Group by when to order (baseline / mid-plan / end-of-plan).
+   Present the lab orders in plain English ("Ask your doctor for...").
+   Group FIRST by sample type so {first_name} knows exactly what to give on
+   the day (one blood draw vs collect-at-home stool kit vs urine 24-hr vs
+   breath test vs saliva). Use these subheadings IN THIS ORDER, skipping any
+   that have no tests:
+     ### 🩸 Blood draw — single visit
+     ### 💩 Stool sample (collect at home)
+     ### 💧 Urine (spot or 24-hr — instructions per test)
+     ### 🌬️ Breath test (at clinic, ~2-3 hours)
+     ### 🧪 Saliva
+     ### 🩻 Imaging / scans (separate appointment)
+   Under each subheading, give the test name, what it reveals (one sentence),
+   and any prep ("fasting 10-12 hrs", "morning sample", "before any antibiotic").
+   At the end, add a tiny "When to time these" line summarising baseline vs
+   mid-plan vs end-of-plan ordering — don't repeat the full list, just say
+   things like "Most are baseline; SIBO breath retest at 12 weeks."
 
 7. **What to Track** — `## 📊 What to Track`
    Present tracking habits and symptoms as a simple daily/weekly check-in framework. Use bullet lists. Frame as curiosity, not pressure.
@@ -1961,12 +2400,7 @@ def _build_prompt_exercise_plan(plan: dict, client: dict, coach_notes: str) -> s
     movement_intensity = five_pillars.get("movement_intensity") or ""
     notes = client.get("notes") or ""
 
-    coach_notes_block = ""
-    if coach_notes:
-        coach_notes_block = f"""
-COACH'S CUSTOM KNOWLEDGE (weave naturally into the plan):
-{coach_notes}
-"""
+    coach_notes_block = _coach_notes_block(coach_notes)
 
     top_of_mind = _top_of_mind_block(client, plan)
     cycle = _cycle_block(client)
@@ -2136,6 +2570,7 @@ def _build_prompt_meal_plan_phase(
             season = "Autumn/Fall"
         else:
             season = "Winter"
+    grain_seasonality = _seasonality_block(_month, country)
 
     age = None
     if client.get("date_of_birth"):
@@ -2293,12 +2728,7 @@ Per meal split (MUST roughly match):
   Breakfast ~{bk} · Mid-morning ~{sn1} · Lunch ~{lu} · Evening snack ~{sn2} · Dinner ~{di}
 """
 
-    coach_notes_block = ""
-    if coach_notes:
-        coach_notes_block = f"""
-COACH'S CUSTOM KNOWLEDGE (weave naturally into the meals):
-{coach_notes}
-"""
+    coach_notes_block = _coach_notes_block(coach_notes)
 
     top_of_mind = _top_of_mind_block(client, plan)
     cycle = _cycle_block(client)
@@ -2369,6 +2799,15 @@ DOCUMENT STRUCTURE — keep TIGHT, no extra sections:
     background supplements here — only changes this phase. SKIP this
     entire section if there are no new/titrating supplements.
 
+2c. **🔁 Quick reminder — how to swap meals** — short box (3 bullets,
+    ≤ 4 lines total):
+    - Swap within the same meal slot across days (eggs on Tue if you'd
+      rather have Tuesday's breakfast on Wednesday — fine).
+    - Don't move breakfast into the lunch column, or dinner into
+      breakfast — each slot is timing-designed.
+    - If a meal doesn't fit, repeat one you liked from the same slot
+      earlier in the week rather than skipping.
+
 3. **{span_weeks} × 7-day meal plan tables** — one per week in the range
    {phase_label_short}. Use this exact format:
 
@@ -2408,6 +2847,9 @@ RULES:
 - NO 12-week overview, NO roadmap — this letter is laser-focused on
   {phase_label_short}.
 - SEASONAL produce for {location_str}, current season: {season}.
+
+{grain_seasonality}
+
 - Respect dietary preference ({diet_pref}), avoid ({foods_to_avoid}).
 - CRITICAL: NEVER suggest reported-trigger foods: {reported_triggers}.
 - Vegetarian Jain: NO root vegetables.
@@ -2501,6 +2943,7 @@ def _build_prompt(plan: dict, client: dict, weight_loss: dict | None = None,
             season = "Autumn/Fall"
         else:
             season = "Winter"
+    grain_seasonality = _seasonality_block(_month, country)
     age = None
     if client.get("date_of_birth"):
         from datetime import date
@@ -2554,13 +2997,7 @@ def _build_prompt(plan: dict, client: dict, weight_loss: dict | None = None,
 
     supp_block = "\n".join(supp_guide) if supp_guide else "No supplements in this plan."
 
-    coach_notes_block = ""
-    if coach_notes:
-        coach_notes_block = f"""
-COACH'S CUSTOM KNOWLEDGE (weave these naturally into the plan):
-{coach_notes}
-Use these tips in relevant sections — don't dump them all in one place. Make them feel like natural advice, not a list.
-"""
+    coach_notes_block = _coach_notes_block(coach_notes)
 
     nutrition_pattern = nutrition.get("pattern") or ""
     nutrition_add = nutrition.get("add") or []
@@ -2639,6 +3076,7 @@ MOVEMENT & WELLNESS:
     top_of_mind = _top_of_mind_block(client, plan)
     cycle = _cycle_block(client)
     attached_protocol = _attached_protocol_block(plan)
+    start_when = _start_when_block(plan, "both")
 
     prompt = f"""You are writing a warm, friendly, practical {plan_weeks}-week wellness plan letter for a client.
 The coach (Shivani Hariharan, a functional medicine health coach) has prepared this structured plan.
@@ -2647,6 +3085,7 @@ Your job is to turn the coach's structured data into a beautiful, easy-to-read d
 {top_of_mind}
 {cycle}
 {attached_protocol}
+{start_when}
 {_BANNED_GENERIC_RULE}
 
 CLIENT PROFILE:
@@ -2740,7 +3179,7 @@ The plan must have a logical therapeutic progression — each phase builds on th
 
    Table rules:
    - Each cell: dish name only, short (e.g. "Ragi dosa + chutney ✦"). Flag recipes with ✦.
-   - Every day total in the *~kcal* row must be within ±50 kcal of the phase target.
+   - {"Every day total in the *~kcal* row must be within ±50 kcal of the phase target." if cal else "DO NOT add a *~kcal* row or any per-day calorie totals — this client is NOT on a weight-loss plan. Calorie counts are off-topic."}
    - Meals MUST respect dietary preference ({diet_pref}) and avoid ({foods_to_avoid}).
    - CRITICAL: NEVER use reported triggers in any meal: {reported_triggers}
    - INCORPORATE non-negotiables ({non_negotiables}) with a workaround if needed.
@@ -2797,13 +3236,16 @@ The plan must have a logical therapeutic progression — each phase builds on th
 
 LOCATION & SEASONAL NOTES:
 - Client is in {location_str}. Current season: {season}.
+
+{grain_seasonality}
+
 - ALL meal suggestions must use produce that is IN SEASON and LOCALLY AVAILABLE in {location_str} right now.
 - Do not suggest out-of-season produce (e.g. strawberries in December in India, or mangoes in winter in the UK).
 - Where possible, name specific local varieties (e.g. "Alphonso mango" for Mumbai, "Cox apple" for UK autumn).
 - Account for local cooking culture, available spices, and typical grocery access in {location_str}.
 
 SPECIAL DIET NOTES:
-- If dietary_preference is "Vegetarian Jain": strictly NO root vegetables (onion, garlic, potato, carrot, beetroot, radish, turnip). No underground vegetables at all. Also no eating after sunset traditionally. Reflect this in every meal suggestion.
+- If dietary_preference is "Vegetarian Jain": strictly NO root vegetables (onion, garlic, potato, carrot, beetroot, radish, turnip). No underground vegetables at all. Also no eating after sunset traditionally. Reflect this in every meal suggestion. IMPORTANT: Jain is LACTO-VEGETARIAN — dairy is fully permitted and traditionally central (milk, ghee, paneer, dahi/curd, buttermilk/chaas, malai, kheer). Do NOT exclude dairy when generating Jain meal plans; it is one of the primary protein and fat sources for this diet. Only flesh/fish/eggs/gelatin are excluded.
 
 WRITING RULES (very important):
 - NEVER use clinical terms: no "HPA axis", "T3/T4", "cortisol dysregulation", "gut permeability", "microbiome diversity"
@@ -3235,12 +3677,43 @@ def main() -> int:
             "consolidated":    ("Your Personalised Wellness Plan", "Personalised Wellness Plan"),
         }
         doc_title, doc_type = type_meta.get(letter_type, type_meta["consolidated"])
+
+        # Compute effective start dates for the in-letter WhatsApp confirm
+        # buttons (brand_html._start_date_buttons_html). Mirrors the Python
+        # Plan.effective_*_start helpers — if the coach has asserted actual
+        # dates use those, else fall back to plan_period_start + 3d/7d.
+        from datetime import datetime as _dt, timedelta as _td
+
+        def _coerce_ymd(v):
+            if v is None or v == "":
+                return None
+            if isinstance(v, str):
+                try:
+                    return _dt.fromisoformat(v[:10]).date()
+                except Exception:
+                    return None
+            if hasattr(v, "year"):
+                return v.date() if isinstance(v, _dt) else v
+            return None
+
+        _ps = _coerce_ymd(plan.get("plan_period_start"))
+        _ma = _coerce_ymd(plan.get("meal_plan_started_on"))
+        _sa = _coerce_ymd(plan.get("supplements_started_on"))
+        meal_ymd = (_ma or (_ps + _td(days=3)) if _ps else None) if _ma is None else _ma
+        if meal_ymd is None and _ps:
+            meal_ymd = _ps + _td(days=3)
+        supp_ymd = _sa if _sa else (_ps + _td(days=7) if _ps else None)
+
         html = wrap_in_brand_html(
             markdown,
             title=doc_title,
             subtitle=display_name,
             doc_type=doc_type,
             client_name=display_name,
+            meal_start_ymd=meal_ymd.isoformat() if meal_ymd else None,
+            supplements_start_ymd=supp_ymd.isoformat() if supp_ymd else None,
+            plan_slug=plan.get("slug"),
+            letter_type=letter_type,
         )
         # Inject Python-generated supplement sections (guaranteed complete +
         # buy-link-correct regardless of what the AI wrote). Two pieces:

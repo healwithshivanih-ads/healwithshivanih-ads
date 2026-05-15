@@ -150,6 +150,27 @@ export default async function IntakePage({
         }))
     : [];
 
+  // v0.72: pull verify-in-session questions from the Haiku-generated intake
+  // insights so the IntakeForm can render them as a sticky sidebar panel
+  // during the coach's actual intake call. Empty array when no insights
+  // have been generated yet — sidebar self-hides via verifyState.questions.length.
+  const insightsRaw = c.intake_insights as
+    | { verify_in_session?: unknown; generated_at?: unknown; model?: unknown }
+    | undefined;
+  const verifyInSession: string[] = Array.isArray(insightsRaw?.verify_in_session)
+    ? (insightsRaw!.verify_in_session as unknown[]).filter(
+        (x): x is string => typeof x === "string" && x.trim().length > 0,
+      )
+    : [];
+  const insightsModelLabel: string | undefined = (() => {
+    if (!insightsRaw) return undefined;
+    const model = typeof insightsRaw.model === "string" ? insightsRaw.model : undefined;
+    const at = typeof insightsRaw.generated_at === "string" ? insightsRaw.generated_at : undefined;
+    if (!model && !at) return undefined;
+    const datePart = at ? at.slice(0, 16).replace("T", " ") : "";
+    return [model, datePart].filter(Boolean).join(" · ");
+  })();
+
   return (
     <AnalysePageShell
       clientId={id}
@@ -223,6 +244,8 @@ export default async function IntakePage({
         existingWhatWorked={s(c.what_has_worked)}
         existingWhatDidntWork={s(c.what_hasnt_worked)}
         existingNotes={s(c.notes)}
+        verifyInSession={verifyInSession}
+        insightsModelLabel={insightsModelLabel}
       />
     </AnalysePageShell>
   );

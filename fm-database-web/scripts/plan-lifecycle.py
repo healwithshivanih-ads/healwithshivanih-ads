@@ -153,9 +153,21 @@ def main() -> int:
 
     except (RuntimeError, ValueError, FileNotFoundError) as e:
         return _emit({"ok": False, "error": f"{type(e).__name__}: {e}"})
-    except Exception as e:  # noqa: BLE001
+    except BaseException as e:  # noqa: BLE001 — never let anything leak to stderr
         return _emit({"ok": False, "error": f"unexpected {type(e).__name__}: {e}"})
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    # Safety net for any failure at import time / outside main()'s try block.
+    # Without this the script would exit with a stderr-only traceback, and
+    # the Next.js action shows the raw Python error to the coach.
+    try:
+        sys.exit(main())
+    except SystemExit:
+        raise
+    except BaseException as e:
+        json.dump(
+            {"ok": False, "error": f"crashed: {type(e).__name__}: {e}"},
+            sys.stdout,
+        )
+        sys.exit(1)

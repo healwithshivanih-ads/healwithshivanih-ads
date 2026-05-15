@@ -5,9 +5,15 @@
  * Server-rendered data flows in via props; client interactions live here.
  */
 import Link from "next/link";
+import { useState } from "react";
 import { SendPackageButton } from "@/components/client-widgets/send-package-button";
+import { LetterTypesToggle } from "@/components/client-widgets/letter-types-toggle";
 import { MessageTemplatesPanel } from "@/components/client-widgets/message-templates-panel";
 import { FmPanel } from "@/components/fm";
+// GeneratedLettersPanel was mounted here briefly to surface the meal plan
+// inline with a chat. Removed 2026-05-15 — SendPackageButton already
+// renders a preview + the same discuss→finalise refinement chat per
+// letter type. Single edit surface, no duplication.
 
 interface AisensyMsg {
   date: string;
@@ -20,7 +26,8 @@ export interface CommunicateClientProps {
   clientEmail?: string;
   clientPhone?: string;
   activePlan: { slug: string; status: string } | null;
-  aisensyConfigured: boolean;
+  whatsappConfigured: boolean;
+  activeLetterTypes?: string[];
   recentInbound: AisensyMsg[];
 }
 
@@ -30,11 +37,21 @@ export function CommunicateClient({
   clientEmail,
   clientPhone,
   activePlan,
-  aisensyConfigured,
+  whatsappConfigured,
+  activeLetterTypes,
   recentInbound,
 }: CommunicateClientProps) {
   const firstName = displayName.split(" ")[0];
   const isPublished = activePlan?.status === "published";
+  // Live letter-types list — seeded from server prop, mutated by the
+  // inline LetterTypesToggle. Lifting the state here means SendPackageButton
+  // re-filters its checkbox grid the moment the coach toggles a chip;
+  // no page refresh required.
+  const seedLetterTypes =
+    activeLetterTypes && activeLetterTypes.length > 0
+      ? activeLetterTypes
+      : ["consolidated"];
+  const [liveLetterTypes, setLiveLetterTypes] = useState<string[]>(seedLetterTypes);
 
   return (
     <div className="fm-v2-2col tight">
@@ -66,12 +83,21 @@ export function CommunicateClient({
           }
         >
           {isPublished && activePlan ? (
-            <SendPackageButton
-              planSlug={activePlan.slug}
-              clientId={clientId}
-              clientEmail={clientEmail}
-              clientName={displayName}
-            />
+            <>
+              <LetterTypesToggle
+                clientId={clientId}
+                initial={liveLetterTypes}
+                onChange={setLiveLetterTypes}
+              />
+              <SendPackageButton
+                key={liveLetterTypes.join(",")}
+                planSlug={activePlan.slug}
+                clientId={clientId}
+                clientEmail={clientEmail}
+                clientName={displayName}
+                activeLetterTypes={liveLetterTypes}
+              />
+            </>
           ) : (
             <div
               style={{
@@ -99,13 +125,18 @@ export function CommunicateClient({
           )}
         </FmPanel>
 
+        {/* Inline meal-plan viewer + chat USED to live here. Removed —
+            SendPackageButton above already shows each saved letter with
+            👁 Preview + the discuss→finalise chat inside the preview pane.
+            One edit surface, one source of truth. */}
+
         {/* Quick message templates */}
         <MessageTemplatesPanel
           clientId={clientId}
           clientName={firstName}
           clientPhone={clientPhone}
           clientEmail={clientEmail}
-          aisensyConfigured={aisensyConfigured}
+          whatsappConfigured={whatsappConfigured}
         />
 
         {/* Email — link to legacy modal flow until v2 native */}
@@ -193,43 +224,47 @@ export function CommunicateClient({
           </div>
         </FmPanel>
 
-        {/* AiSensy status */}
+        {/* WhatsApp send status (self-hosted Cloud API server) */}
         <FmPanel
-          title="📡 AiSensy"
+          title="📡 WhatsApp"
           subtitle={
-            aisensyConfigured
-              ? "Outbound configured. Templates go via the WhatsApp Business API."
-              : "Outbound NOT configured. Set AISENSY_API_KEY in .env.local."
+            whatsappConfigured
+              ? "Outbound configured via the self-hosted WhatsApp Cloud API server."
+              : "Outbound NOT configured. Set WHATSAPP_SERVER_URL + WHATSAPP_SERVER_API_KEY in .env.local."
           }
         >
           <div
             style={{
               fontSize: 11,
-              color: aisensyConfigured
+              color: whatsappConfigured
                 ? "var(--fm-text-secondary)"
                 : "var(--fm-text-tertiary)",
             }}
           >
-            {aisensyConfigured ? (
+            {whatsappConfigured ? (
               <>
-                Approved templates: fm_lab_reminder, fm_session_confirm,
-                fm_supplement_instructions, fm_encouragement.{" "}
-                <em>fm_checkin_nudge</em> pending AiSensy review — will auto-work
-                once approved.
+                Templates sent via the self-hosted WhatsApp Cloud API server.
+                Template names + approval status are managed in the WhatsApp
+                Business Manager — see <code>docs/whatsapp-templates.md</code>.
               </>
             ) : (
               <>
-                Add <code>AISENSY_API_KEY</code> to <code>.env.local</code> and{" "}
-                <code>pm2 restart fm-coach</code> to enable WhatsApp send.
+                Add <code>WHATSAPP_SERVER_URL</code> + <code>WHATSAPP_SERVER_API_KEY</code>{" "}
+                to <code>.env.local</code> and <code>pm2 reload all</code> to enable
+                WhatsApp send.
               </>
             )}
           </div>
         </FmPanel>
 
-        {/* Recent inbound */}
+        {/* Recent inbound — captured by the self-hosted WhatsApp Cloud
+            API server (whatsapp-server-shivani on Fly) → forwarded to
+            /api/whatsapp-webhook → saved as quick_note sessions tagged
+            [source: whatsapp_webhook]. The panel reads those tagged
+            sessions and shows them here per client. */}
         <FmPanel
           title={`📥 Recent inbound (${recentInbound.length})`}
-          subtitle="WhatsApp messages from this client in the last 30 days, captured via AiSensy webhook."
+          subtitle="Every WhatsApp message this client sends comes through the self-hosted WhatsApp Cloud API server, lands as a tagged quick_note on this client, and shows up here within seconds. Last 30 days."
         >
           {recentInbound.length === 0 ? (
             <div
@@ -241,8 +276,10 @@ export function CommunicateClient({
                 borderRadius: "var(--fm-radius-sm)",
               }}
             >
-              No inbound messages from this client in the last 30 days. Webhook
-              must be live for capture (paid AiSensy plan).
+              No inbound messages from this client in the last 30 days. The
+              whatsapp-server-shivani Fly app must be running and the
+              <code>WHATSAPP_WEBHOOK_SECRET</code> env var must match for
+              incoming messages to land here.
             </div>
           ) : (
             <div style={{ display: "grid", gap: 6 }}>

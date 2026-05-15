@@ -9,6 +9,7 @@ import {
   getClientReportsAction,
   deleteReportAction,
 } from "@/lib/server-actions/clients";
+import { checkDuplicateUploadAction } from "@/lib/server-actions/assess";
 import type { ExternalReport } from "@/lib/server-actions/clients";
 
 // ── Report type catalogue ─────────────────────────────────────────────────────
@@ -415,7 +416,32 @@ function UploadReportForm({ clientId, onUploaded }: { clientId: string; onUpload
     setUploading(true);
     try {
       const buf = await file.arrayBuffer();
-      const b64 = Buffer.from(buf).toString("base64");
+      // `Buffer` doesn't exist in the browser — previous version threw
+      // ReferenceError on click and the whole form silently hung. Chunked
+      // btoa is the safe browser-side base64. Same pattern as the lab +
+      // functional-test panels.
+      const bin = new Uint8Array(buf);
+      let bs = "";
+      const CHUNK = 0x8000;
+      for (let i = 0; i < bin.length; i += CHUNK) {
+        bs += String.fromCharCode.apply(null, Array.from(bin.subarray(i, i + CHUNK)));
+      }
+      const b64 = window.btoa(bs);
+      // SHA-256 dedup before paying for an extraction call. Same PDF
+      // renamed twice still matches because we hash bytes, not filenames.
+      const dupCheck = await checkDuplicateUploadAction(clientId, b64);
+      if (dupCheck.ok && dupCheck.duplicate) {
+        const proceed = window.confirm(
+          `This file is already on disk for this client as:\n\n` +
+          `  📄 ${dupCheck.existing_filename}\n` +
+          `  uploaded ${dupCheck.existing_uploaded_at?.slice(0, 10) ?? "earlier"}\n\n` +
+          `OK = upload + re-extract anyway · Cancel = leave the existing record`,
+        );
+        if (!proceed) {
+          setUploading(false);
+          return;
+        }
+      }
       const result = await uploadReportAction({
         clientId,
         reportType: def.id,

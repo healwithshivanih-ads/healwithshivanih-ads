@@ -1,0 +1,112 @@
+# Indian food seasonality — Ayurvedic + practical-coaching reference.
+# Read by scripts/render-client-letter.py and injected into meal-plan prompts
+# so the AI picks grains/veg/fruits that are in season for the client's
+# month + region. Without this the AI defaults to oats/quinoa-heavy plans
+# (Western FM training bias) and ignores Indian seasonal staples.
+#
+# Edit freely. No schema validation — the renderer is tolerant:
+#   - missing fields are skipped
+#   - missing months_in means "all year"
+#   - missing properties / good_for just means no extra hint to the AI
+#
+# Coach can keep adding grains, veg, fruits, spices, dairy as the
+# knowledge base grows. Seasonal_foods.yaml is the right home for ALL
+# food-level seasonality logic.
+
+# Months are 1-12 (January = 1, December = 12).
+
+grains:
+  bajra:
+    aka: pearl millet
+    months_in: [11, 12, 1, 2]                # Nov-Feb
+    properties: [warming, heaty, dense, high-fibre]
+    good_for: [cold weather, vata pacifying, kapha pacifying, perimenopausal bone density]
+    avoid_when: [summer heat, pitta imbalance, acid reflux flares]
+    coach_note: "Bajra rotis are a winter staple in Rajasthan / Gujarat / North India — warming, builds heat, satisfying. Sub one bajra roti for one wheat roti in winter for IR / diabetic clients (lower GI)."
+
+  jowar:
+    aka: sorghum
+    months_in: [3, 4, 5, 6, 7, 8, 9]         # Mar-Sep (summer + monsoon)
+    properties: [cooling, light, neutral-to-cooling]
+    good_for: [hot weather, pitta pacifying, summer digestion, IR / diabetic clients]
+    avoid_when: [cold weather + vata aggravation]
+    coach_note: "Jowar roti / jowar bhakri is a summer staple in Maharashtra / Karnataka — cooling, low GI, ideal for IR + PCOS clients in summer. Pair with thick curd + leafy sabzi."
+
+  ragi:
+    aka: finger millet
+    months_in: [6, 7, 8, 11, 12, 1, 2]       # monsoon + winter
+    properties: [warming, dense, high-calcium, high-iron]
+    good_for: [postpartum, perimenopause, low ferritin, bone density, children]
+    avoid_when: [summer peak heat, pitta imbalance]
+    coach_note: "Ragi is calcium + iron rich — prioritise for ferritin <50, perimenopausal bone density, postpartum recovery. Ragi mudde / ragi dosa / ragi porridge."
+
+  foxtail_millet:
+    aka: kangni / kakum / thinai
+    months_in: [4, 5, 6, 7, 8, 9]            # summer + monsoon
+    properties: [cooling, light, low-GI]
+    good_for: [IR, PCOS, summer digestion]
+    coach_note: "Foxtail upma / foxtail pulao — cooling summer alternative to rice for IR clients."
+
+  little_millet:
+    aka: sama / kutki / samai
+    months_in: [4, 5, 6, 7, 8, 9, 10]        # summer + monsoon + early autumn
+    properties: [cooling, light, gluten-free]
+    good_for: [IR, fasting periods (navratri), gluten-sensitive]
+    coach_note: "Sama rice — sub for white rice during fasting / cleansing weeks. Lower GI than basmati."
+
+  barnyard_millet:
+    aka: sama / sanwa / mordhan
+    months_in: [4, 5, 6, 7, 8, 9, 10]        # summer + monsoon
+    properties: [neutral, light, gluten-free]
+    good_for: [fasting, navratri, post-gut-cleanse]
+
+  kodo_millet:
+    aka: kodra / varagu
+    months_in: [4, 5, 6, 7, 8, 9, 10]
+    properties: [cooling, light, slightly bitter]
+    good_for: [IR, diabetes, weight loss]
+
+  amaranth:
+    aka: rajgira / chaulai
+    months_in: [6, 7, 8, 9, 10]              # monsoon + early winter
+    properties: [warming, dense, high-protein, gluten-free]
+    good_for: [fasting, perimenopause, low-protein vegetarians]
+
+  buckwheat:
+    aka: kuttu
+    months_in: [10, 11, 12, 1, 2]            # late autumn + winter
+    properties: [warming, dense, gluten-free]
+    good_for: [winter, fasting (navratri), gluten-sensitive]
+    avoid_when: [summer, pitta imbalance]
+
+  wheat:
+    aka: gehun (whole / atta only — NOT maida)
+    months_in: [10, 11, 12, 1, 2, 3]         # late autumn through spring
+    properties: [neutral-to-heating, gluten-rich]
+    avoid_when: [summer peak (May-Jun), known sensitivities, IR + bloating triggers]
+    coach_note: "Default Indian grain — but for IR / PCOS / gluten-bloating clients, rotate with bajra / jowar / ragi rather than 3-wheat-rotis-daily."
+
+  rice:
+    aka: chawal (prefer red / brown / black over white basmati)
+    months_in: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]   # all year
+    properties: [neutral, hydrating]
+    good_for: [pitta pacifying, summer, monsoon recovery]
+    avoid_when: [IR + dinner timing (causes glucose spike + 3am wake)]
+    coach_note: "Default Indian grain — but for IR clients, push toward red/brown rice (or millets) + small portion + paired with protein/fibre to flatten glucose curve."
+
+  quinoa:
+    months_in: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]   # imported, no season
+    properties: [neutral, high-protein, gluten-free]
+    coach_note: "OK as occasional sub for rice — but don't make it the hero. Indian millets do the same nutritional work cheaper + lower-carbon."
+
+  oats:
+    months_in: [11, 12, 1, 2, 3]             # winter friendly; avoid summer
+    properties: [warming-when-cooked, hydrating]
+    avoid_when: [summer (too heating in hot weather), IR clients who can't moderate portion]
+    coach_note: "Oats are the AI's default — push back unless winter or specific use (overnight oats with chia + seeds for IR breakfast)."
+
+# Future expansion — vegetables / fruits / dairy / spices follow same shape.
+vegetables: {}
+fruits: {}
+spices: {}
+dairy: {}

@@ -940,6 +940,7 @@ export function ClientPageTabs({
               non_negotiables: (client as { non_negotiables?: string }).non_negotiables,
               city: (client as { city?: string }).city,
               country: (client as { country?: string }).country,
+              letter_types_active: (client as { letter_types_active?: string[] }).letter_types_active,
             }}
           />
 

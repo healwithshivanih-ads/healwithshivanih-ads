@@ -25,6 +25,11 @@ interface SupplementItem {
   duration_weeks?: number | null;
   titration?: string;
   coach_rationale?: string;
+  // v0.72: short coach-readable phrases the suggester / rework AI used
+  // to cite the intake observations that justified this recommendation.
+  // Empty when not intake-driven. Rendered as a 💡 audit chip-row below
+  // the recommendation card. Coach can edit / remove freely.
+  intake_evidence?: string[];
 }
 
 interface TrackingHabit {
@@ -41,12 +46,14 @@ interface Tracking {
 interface HypothesizedDriver {
   mechanism: string;
   reasoning: string;
+  intake_evidence?: string[];   // v0.72 — see SupplementItem
 }
 
 interface PracticeItem {
   name: string;
   cadence: string;
   details?: string;
+  intake_evidence?: string[];   // v0.72 — see SupplementItem
 }
 
 interface EducationModuleItem {
@@ -58,6 +65,7 @@ interface EducationModuleItem {
 interface LabOrderItem {
   test: string;
   reason?: string;
+  intake_evidence?: string[];   // v0.72 — see SupplementItem
 }
 
 interface ReferralItem {
@@ -210,6 +218,69 @@ export interface PlanEditorProps {
     supersedes?: string;
     allPlanSlugs: string[];
   };
+}
+
+/**
+ * Render the AI's intake-citation audit chips below a recommendation
+ * (SupplementItem / HypothesizedDriver / PracticeItem / LabOrderItem).
+ *
+ * The AI populates `intake_evidence: string[]` on each recommendation when
+ * an intake observation justified it — see suggester.py system-prompt rule
+ * #27 and assess-rework.py's INTAKE-EVIDENCE TRACEABILITY block. This
+ * surface lets the coach see WHY each recommendation came up, inline,
+ * without scrolling away to the IntakeInsightsCard on the client overview.
+ *
+ * Coach can edit / remove citations freely. Empty when not intake-driven —
+ * the whole panel hides in that case to stay quiet.
+ */
+function IntakeEvidenceChips({
+  value,
+  onChange,
+  locked,
+}: {
+  value?: string[];
+  onChange?: (next: string[]) => void;
+  locked?: boolean;
+}) {
+  const items = value ?? [];
+  if (items.length === 0) return null;
+  const handleRemove = (idx: number) => {
+    if (!onChange || locked) return;
+    onChange(items.filter((_, i) => i !== idx));
+  };
+  return (
+    <div
+      className="mt-2 px-2.5 py-2 rounded border border-indigo-100 bg-indigo-50/30"
+      title="Intake observations the AI cited when generating this recommendation. Coach can edit / remove."
+    >
+      <div className="flex items-center gap-1.5 text-[10.5px] uppercase tracking-wider text-indigo-700/80 font-medium mb-1.5">
+        <span aria-hidden>💡</span>
+        <span>From intake</span>
+        <span className="opacity-50">·</span>
+        <span className="opacity-70">{items.length}</span>
+      </div>
+      <div className="flex flex-wrap gap-1.5">
+        {items.map((ev, i) => (
+          <span
+            key={i}
+            className="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-full bg-white border border-indigo-200 text-indigo-900"
+          >
+            <span>{ev}</span>
+            {!locked && onChange && (
+              <button
+                type="button"
+                onClick={() => handleRemove(i)}
+                className="opacity-50 hover:opacity-100 text-[12px] leading-none"
+                aria-label={`Remove citation: ${ev}`}
+              >
+                ×
+              </button>
+            )}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 function clone<T>(x: T): T {
@@ -719,6 +790,16 @@ function LabOrdersEditor({
                     onChange={(e) => updateReason(i, e.target.value)}
                     className="w-full text-sm border rounded-md p-2 min-h-[56px] bg-background resize-none"
                   />
+                  {/* v0.72: AI's intake citations for this lab order. */}
+                  <IntakeEvidenceChips
+                    value={lo.intake_evidence}
+                    locked={locked}
+                    onChange={(next_ev) => {
+                      const next = [...labOrders];
+                      next[i] = { ...next[i], intake_evidence: next_ev };
+                      onChange(next);
+                    }}
+                  />
                 </div>
               );
             })}
@@ -1062,57 +1143,31 @@ export function PlanEditor(props: PlanEditorProps) {
         </div>
       )}
 
-      {/* ── Next-step action card ── */}
+      {/* ── Next-step strip ──
+          Tight single-line cue tied to plan status. Earlier this was a fat
+          card that shouted "Build the protocol, then activate" even when
+          the plan was already ready_to_publish — pure dashboard clutter.
+          Now: nothing on draft (the Lifecycle tab is right there), a
+          one-line nudge on ready_to_publish, and a CTA only on published
+          where the next action is in a different surface (client page). */}
       {(() => {
         const st = lifecycleProps.status;
-        if (st === "draft" || st === "ready_to_publish") {
+        if (st === "ready_to_publish") {
           return (
-            <div className="rounded-lg border border-emerald-200 bg-emerald-50/50 px-4 py-3 flex flex-col sm:flex-row sm:items-center gap-3">
-              <div className="flex-1 min-w-0">
-                <p className="text-xs text-emerald-700 font-semibold uppercase tracking-wide">Next step</p>
-                <p className="text-sm font-semibold text-emerald-900 mt-0.5">
-                  Build the protocol, then activate the plan
-                </p>
-                <p className="text-xs text-emerald-700 mt-0.5">
-                  Fill in supplements, nutrition, and lifestyle below — then go to the <strong>Lifecycle tab</strong> to activate.
-                </p>
-              </div>
-              <button
-                onClick={() => {
-                  // scroll to the Lifecycle tab trigger
-                  document
-                    .querySelector<HTMLButtonElement>('[data-state][value="lifecycle"], button[aria-label*="lifecycle"], [data-radix-collection-item]')
-                    ?.click();
-                  // fallback: find by text
-                  const tabs = document.querySelectorAll<HTMLButtonElement>('[role="tab"]');
-                  tabs.forEach((t) => { if (t.textContent?.includes("Lifecycle")) t.click(); });
-                }}
-                className="shrink-0 text-sm font-semibold px-4 py-2 rounded-lg bg-emerald-700 text-white hover:bg-emerald-800 transition-colors"
-              >
-                🚀 Go to Lifecycle tab →
-              </button>
+            <div className="text-xs text-emerald-800 bg-emerald-50/60 border border-emerald-200 rounded-md px-3 py-1.5">
+              ✓ Ready to publish — open the <strong>🚀 Lifecycle</strong> tab to go live.
             </div>
           );
         }
         if (st === "published" && clientId) {
           return (
-            <div className="rounded-lg border border-violet-200 bg-violet-50/50 px-4 py-3 flex flex-col sm:flex-row sm:items-center gap-3">
-              <div className="flex-1 min-w-0">
-                <p className="text-xs text-violet-700 font-semibold uppercase tracking-wide">Next step</p>
-                <p className="text-sm font-semibold text-violet-900 mt-0.5">
-                  Generate and send client letters
-                </p>
-                <p className="text-xs text-violet-700 mt-0.5">
-                  Plan is active. Go to the client page to generate the meal plan, supplement guide, and lifestyle letter.
-                </p>
-              </div>
-              <a
-                href={`/clients-v2/${clientId}/plan`}
-                className="shrink-0 text-sm font-semibold px-4 py-2 rounded-lg bg-violet-700 text-white hover:bg-violet-800 transition-colors"
-              >
-                📤 Go to client → Documents →
-              </a>
-            </div>
+            <a
+              href={`/clients-v2/${clientId}/communicate`}
+              className="text-xs text-violet-900 bg-violet-50/60 border border-violet-200 rounded-md px-3 py-1.5 flex items-center justify-between gap-3 hover:bg-violet-100/60 transition-colors no-underline"
+            >
+              <span>📤 Plan is live — generate the client letter from the <strong>Communicate</strong> tab.</span>
+              <span className="font-semibold whitespace-nowrap">Open →</span>
+            </a>
           );
         }
         return null;
@@ -1164,7 +1219,7 @@ export function PlanEditor(props: PlanEditorProps) {
       <Tabs defaultValue={initialTab}>
         <TabsList>
           <TabsTrigger value="protocol">📋 Protocol</TabsTrigger>
-          <TabsTrigger value="advanced">⚙️ Advanced</TabsTrigger>
+          <TabsTrigger value="advanced">🚀 Plan actions</TabsTrigger>
         </TabsList>
 
         {/* ═══════════════════════════════════════════════════════════════════
@@ -1268,6 +1323,16 @@ export function PlanEditor(props: PlanEditorProps) {
                           }}
                           placeholder="Reasoning — why this is in play for this client"
                           className="w-full text-sm border rounded-md p-2 min-h-[60px] bg-background"
+                        />
+                        {/* v0.72: AI's intake citations for this hypothesis. */}
+                        <IntakeEvidenceChips
+                          value={d.intake_evidence}
+                          locked={locked}
+                          onChange={(next_ev) => {
+                            const next = [...drivers];
+                            next[i] = { ...next[i], intake_evidence: next_ev };
+                            patch("hypothesized_drivers", next);
+                          }}
                         />
                       </div>
                     ))}
@@ -1422,6 +1487,18 @@ export function PlanEditor(props: PlanEditorProps) {
                         patch("supplement_protocol", next);
                       }}
                       className="w-full text-sm border rounded-md p-2 min-h-[60px] bg-background"
+                    />
+                    {/* v0.72: intake citations from the AI — coach sees why
+                        the recommendation came up, can prune anything she
+                        disagrees with. Empty list ⇒ panel hides. */}
+                    <IntakeEvidenceChips
+                      value={s.intake_evidence}
+                      locked={effectiveLocked}
+                      onChange={(next_ev) => {
+                        const next = [...supplements];
+                        next[i] = { ...next[i], intake_evidence: next_ev };
+                        patch("supplement_protocol", next);
+                      }}
                     />
                     {s.supplement_slug && (
                       <details className="mt-1">
@@ -1619,6 +1696,16 @@ export function PlanEditor(props: PlanEditorProps) {
                         patch("lifestyle_practices", next);
                       }}
                       className="w-full text-sm border rounded-md p-2 min-h-[60px] bg-background"
+                    />
+                    {/* v0.72: AI's intake citations for this practice. */}
+                    <IntakeEvidenceChips
+                      value={p.intake_evidence}
+                      locked={locked}
+                      onChange={(next_ev) => {
+                        const next = [...lifestyle];
+                        next[i] = { ...next[i], intake_evidence: next_ev };
+                        patch("lifestyle_practices", next);
+                      }}
                     />
                   </div>
                 ))}

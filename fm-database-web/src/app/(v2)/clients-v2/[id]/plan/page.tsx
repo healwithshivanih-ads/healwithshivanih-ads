@@ -25,6 +25,7 @@ import { loadCatalogueChipDict } from "@/lib/fmdb/catalogue-chip-dict";
 // for all client comms. Plan tab no longer reads the send log.
 import { getLetterStalenessAction } from "@/lib/server-actions/plan-lifecycle";
 import type { Plan, PlanStatus } from "@/lib/fmdb/types";
+import { LabsViewPanel } from "./labs-view-panel";
 
 const PLAN_STATUSES = new Set<PlanStatus>([
   "draft",
@@ -55,6 +56,8 @@ import { AttachedProtocolsPanel } from "./attached-protocols-panel";
 import { FollowUpPanel } from "./follow-up-panel";
 import { PhaseLetterPanel } from "./phase-letter-panel";
 import { ActivateDraftButton } from "./activate-draft-button";
+// GeneratedLettersPanel moved to Communicate tab — see plan/page.tsx
+// around line 745 for the pointer card that replaced it.
 import { RegenerateStaleButton } from "../communicate/regenerate-stale-button";
 import { loadAllOfKind } from "@/lib/fmdb/loader";
 import { detectPlanConflicts } from "@/lib/fmdb/plan-conflicts";
@@ -438,6 +441,55 @@ export default async function PlanTabPage({
     const due = labDueText(it);
     return [due, reason].filter(Boolean).join(" — ");
   }
+  // Anchor for retest dates — in priority:
+  //   1. meal_plan_started_on (client-confirmed; locks the dates)
+  //   2. supplements_started_on (also coach-confirmed for supps)
+  //   3. **letter-emailed date + 3 days** — when neither is set, fall
+  //      back to the earliest savedAt of the meal_plan / consolidated
+  //      letter on disk + a 3-day adoption lag (the typical gap
+  //      between "I got the letter" and "I actually started"). The
+  //      panel marks this status as "derived" so the coach knows to
+  //      confirm with the client to lock it in.
+  //   4. plan_period_start — last resort if no letters exist.
+  const planAny = activePlan as Record<string, unknown> | undefined;
+  let derivedFromLetter: string | null = null;
+  if (!planAny?.meal_plan_started_on && !planAny?.supplements_started_on && staleness?.entries) {
+    const candidates = staleness.entries
+      .filter((e) => e.type === "meal_plan" || e.type === "consolidated")
+      .map((e) => new Date(e.savedAt).getTime())
+      .filter((t) => !Number.isNaN(t));
+    if (candidates.length > 0) {
+      const earliest = Math.min(...candidates);
+      const plus3 = new Date(earliest + 3 * 24 * 60 * 60 * 1000);
+      derivedFromLetter = plus3.toISOString().slice(0, 10);
+    }
+  }
+  const planStartAnchor =
+    (planAny?.meal_plan_started_on as string | undefined) ||
+    (planAny?.supplements_started_on as string | undefined) ||
+    derivedFromLetter ||
+    (planAny?.plan_period_start as string | undefined) ||
+    null;
+  const planStartConfirmed = Boolean(planAny?.meal_plan_started_on);
+  const planStartSource: "confirmed" | "supplements" | "letter+3d" | "plan_period" | "none" =
+    planAny?.meal_plan_started_on
+      ? "confirmed"
+      : planAny?.supplements_started_on
+        ? "supplements"
+        : derivedFromLetter
+          ? "letter+3d"
+          : planAny?.plan_period_start
+            ? "plan_period"
+            : "none";
+
+  function computeDueIso(weeks: number | undefined): string | null {
+    if (!planStartAnchor || !weeks || weeks <= 0) return null;
+    const start = new Date(`${planStartAnchor}T00:00:00`);
+    if (Number.isNaN(start.getTime())) return null;
+    const due = new Date(start.getTime() + weeks * 7 * 24 * 60 * 60 * 1000);
+    return due.toISOString().slice(0, 10);
+  }
+
   const rawLabOrders = (activePlan?.lab_orders as Array<Record<string, unknown>> | undefined) ?? [];
   const newLabs = rawLabOrders
     .filter((it) => labKind(it) === "new")
@@ -448,7 +500,18 @@ export default async function PlanTabPage({
     .filter((x) => x.label);
   const repeatLabs = rawLabOrders
     .filter((it) => labKind(it) === "repeat")
-    .map((it) => ({ label: (it.test as string) ?? "", detail: labDetail(it) }))
+    .map((it) => {
+      const weeks =
+        typeof it.due_in_weeks === "number" && it.due_in_weeks > 0
+          ? (it.due_in_weeks as number)
+          : 8; // sensible default for "follow-up bloods" mid-protocol
+      return {
+        label: (it.test as string) ?? "",
+        detail: labDetail(it),
+        dueInWeeks: weeks,
+        dueDate: computeDueIso(weeks),
+      };
+    })
     .filter((x) => x.label);
   // Total used in section header — kept inline; legacy `labs` removed below.
 
@@ -742,6 +805,48 @@ export default async function PlanTabPage({
                 Coach asked: the chat shouldn't clutter the plan overview
                 — only show up where editing actually happens. */}
 
+            {/* Meal plan / letters used to live here (GeneratedLettersPanel).
+                Moved to Communicate tab — coach feedback 2026-05-15: protocol
+                lives on Plan, letters live on Communicate, no duplication. A
+                pointer card replaces the panel so coach can still jump there
+                in one click while reviewing the protocol. */}
+            {(() => {
+              const planSlug = activePlan.slug as string;
+              return (
+                <a
+                  href={`/clients-v2/${id}/communicate`}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 12,
+                    padding: "10px 14px",
+                    background: "rgba(75, 110, 175, 0.06)",
+                    border: "1px dashed rgba(75, 110, 175, 0.30)",
+                    borderRadius: "var(--fm-radius-md)",
+                    textDecoration: "none",
+                    color: "inherit",
+                    marginBottom: 12,
+                  }}
+                  title="The meal plan, supplement guide and other letters live on the Communicate tab"
+                >
+                  <span style={{ fontSize: 20 }}>📬</span>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: 12.5, fontWeight: 700, color: "var(--fm-text-primary)" }}>
+                      Letters for the client live on Communicate
+                    </div>
+                    <div style={{ fontSize: 11, color: "var(--fm-text-secondary)" }}>
+                      Meal plan, supplement guide, lifestyle guide, consolidated letter — preview, refine and send from there.
+                    </div>
+                  </div>
+                  <span style={{ fontSize: 12, color: "var(--fm-primary)", fontWeight: 700 }}>
+                    Open Communicate →
+                  </span>
+                  {/* keep planSlug referenced so the hint chip below can use it if needed */}
+                  <span style={{ display: "none" }}>{planSlug}</span>
+                </a>
+              );
+            })()}
+
             {/* Plan header card */}
             <FmPanel
               title={
@@ -875,7 +980,7 @@ export default async function PlanTabPage({
 
             {/* Nutrition — pattern + add/reduce + meal timing + cooking
                 adjustments + home remedies. The 7-day meal grid itself
-                lives in the generated client letter. */}
+                lives in the generated client letter (panel pinned at top). */}
             <FmPanel
               title="🥗 Nutrition guidance"
               subtitle="Pattern · foods to add or reduce · meal timing · cooking + home remedies. 7-day meal grid lives in the client letter."
@@ -907,64 +1012,24 @@ export default async function PlanTabPage({
               )}
             </FmPanel>
 
-            {/* Labs — split into NEW (order now) and REPEAT (re-check) */}
-            {(newLabs.length > 0 || repeatLabs.length > 0) && (
-              <FmPanel
-                title={`🧪 Labs (${newLabs.length + repeatLabs.length})`}
-                subtitle="Lab markers attached to this plan. Repeats are re-checks of values already on file."
-              >
-                {newLabs.length > 0 && (
-                  <div style={{ marginBottom: repeatLabs.length > 0 ? 14 : 0 }}>
-                    <div
-                      style={{
-                        fontSize: 10,
-                        textTransform: "uppercase",
-                        letterSpacing: 0.6,
-                        fontWeight: 700,
-                        color: "var(--fm-primary)",
-                        marginBottom: 6,
-                      }}
-                    >
-                      🆕 Order fresh ({newLabs.length})
-                    </div>
-                    <div style={{ display: "grid", gap: 6 }}>
-                      {newLabs.map((l, i) => (
-                        <Row
-                          key={`new-${l.label}-${i}`}
-                          label={l.label}
-                          detail={l.detail}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
-                {repeatLabs.length > 0 && (
-                  <div>
-                    <div
-                      style={{
-                        fontSize: 10,
-                        textTransform: "uppercase",
-                        letterSpacing: 0.6,
-                        fontWeight: 700,
-                        color: "var(--fm-text-secondary)",
-                        marginBottom: 6,
-                      }}
-                    >
-                      🔁 Re-test on file ({repeatLabs.length})
-                    </div>
-                    <div style={{ display: "grid", gap: 6 }}>
-                      {repeatLabs.map((l, i) => (
-                        <Row
-                          key={`rep-${l.label}-${i}`}
-                          label={l.label}
-                          detail={l.detail}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </FmPanel>
-            )}
+            {/* Labs — two view modes via LabsViewPanel: cadence (when to
+                order) or sample type (what client gives on the day, with
+                "order now" vs "at recheck" split inside each bucket).
+                Retest due dates derive from the coach-confirmed
+                meal_plan_started_on; the panel auto-surfaces a reminder
+                banner when any retest is overdue or due within 14 days. */}
+            <LabsViewPanel
+              newLabs={newLabs}
+              repeatLabs={repeatLabs}
+              planStartAnchor={planStartAnchor}
+              planStartConfirmed={planStartConfirmed}
+              planStartSource={planStartSource}
+              planSlug={activePlan.slug as string}
+              clientId={id}
+              clientEmail={
+                (client as { email?: string } | null)?.email ?? null
+              }
+            />
 
             {/* Referrals */}
             {referrals.length > 0 && (
@@ -1028,20 +1093,30 @@ export default async function PlanTabPage({
               single-column and the rail un-sticks (handled by the
               .fm-v2-2col-rail CSS class in fm-v2.css). */}
           <div className="fm-v2-2col-rail">
-            {/* Quick actions — primary navigation hub. Letters live on
-                Communicate (one source of truth); past sessions / plans
-                are surfaced via deep-links. */}
+            {/* Quick actions — 4 evergreen verbs, kept lean (Framing A
+                from 2026-05-15 brainstorm). The "next big thing to do"
+                primary action lives in the workflow banner at the top
+                of the page (computed from plan stage), so this panel
+                is just the everyday verbs. SOAP note + handoff packet +
+                run-another-assessment are reachable via the FAB.
+                Quick note is the highest-frequency action (capture a
+                thought / call / message) so it leads. */}
             <FmPanel
-              title="⚙ Actions"
-              subtitle="Edit, preview and ship. Letter sending lives on Communicate."
+              title="⚙ Quick actions"
+              subtitle="Everyday verbs. Big next-step CTA lives in the banner at the top of the page."
             >
               <div style={{ display: "grid", gap: 6 }}>
+                <ActionLink
+                  href={`/clients-v2/${id}/analyse/quick`}
+                  icon="📝"
+                  label="Quick note"
+                />
                 <ActionLink
                   href={`/clients-v2/${id}/communicate`}
                   icon="📤"
                   label={
                     isPublished
-                      ? "Send client letters →"
+                      ? "Send letter / message"
                       : "Communicate (locks at publish)"
                   }
                 />
@@ -1051,23 +1126,9 @@ export default async function PlanTabPage({
                   label="Edit plan"
                 />
                 <ActionLink
-                  // Deep-links to the Lifecycle tab inside the editor
-                  // (PlanEditor reads ?tab=lifecycle on mount). Without
-                  // this query param the editor opened on Protocol and
-                  // it looked like the click did nothing.
-                  href={`/clients-v2/${id}/plan/edit/${activePlan.slug}?tab=lifecycle`}
-                  icon="🚀"
-                  label="Lifecycle (submit / publish)"
-                />
-                <ActionLink
-                  href={`/clients-v2/${id}/sessions`}
-                  icon="🗓"
-                  label="Past sessions + analyses"
-                />
-                <ActionLink
-                  href={`/clients-v2/${id}/analyse/full`}
-                  icon="🔬"
-                  label="Run another full assessment"
+                  href={`/clients-v2/${id}/soap`}
+                  icon="📋"
+                  label="SOAP note (1-pager)"
                 />
               </div>
             </FmPanel>

@@ -39,10 +39,26 @@ export interface JourneyStep {
   status: JourneyStepStatus;
   /** Free-text caption beneath the label — usually a date. */
   caption?: string;
+  /** Click target. When set, FmClientJourneyStrip renders the chip as a
+   *  link to this URL so the coach can jump from any step into the
+   *  relevant surface (e.g. discovery → run/review the discovery form,
+   *  plan → the plan editor, week → check-in form). */
+  href?: string;
+}
+
+/** A single concrete "do this next" recommendation surfaced above the
+ *  session-type picker. Computed from the same journey state — saves the
+ *  coach from staring at five generic Run-X buttons and guessing. */
+export interface NextStep {
+  label: string;
+  href: string;
+  /** One-line explanation of why this is the suggested next move. */
+  reason: string;
 }
 
 export interface ClientJourney {
   steps: JourneyStep[];
+  nextStep: NextStep | null;
 }
 
 const PUBLISHED_BUCKET = new Set(["published"]);
@@ -339,5 +355,63 @@ export async function loadClientJourney(
     });
   }
 
-  return { steps };
+  // ── Wire every step to its natural destination so the chip is
+  //    clickable (coach asked: "these should be clickable"). Each
+  //    step's href is computed once we know what plan / sessions
+  //    exist on disk.
+  // clientId is already a parameter on this function.
+  const draftSlug = asString(pluck(draftPlan, "slug"));
+  const publishedSlug = asString(pluck(publishedPlan, "slug"));
+
+  const hrefByStep: Record<string, string | undefined> = {
+    discovery: `/clients-v2/${clientId}/analyse/discovery`,
+    engagement: `/clients-v2/${clientId}`,
+    intake: intake
+      ? `/clients-v2/${clientId}/intake-view`
+      : `/clients-v2/${clientId}/analyse/intake`,
+    plan: publishedSlug
+      ? `/clients-v2/${clientId}/plan/edit/${publishedSlug}`
+      : draftSlug
+        ? `/clients-v2/${clientId}/plan/edit/${draftSlug}`
+        : `/clients-v2/${clientId}/plan`,
+    week: `/clients-v2/${clientId}/analyse/checkin`,
+    next_phase: `/clients-v2/${clientId}/communicate`,
+    plan_end: publishedSlug
+      ? `/clients-v2/${clientId}/plan/edit/${publishedSlug}`
+      : `/clients-v2/${clientId}/plan`,
+  };
+  for (const s of steps) {
+    s.href = hrefByStep[s.id];
+  }
+
+  // ── nextStep: the single recommendation the coach should see at the
+  //    top of the analyse page. Picks the FIRST step that's "active"
+  //    (in progress / overdue) or, if everything's done so far, the
+  //    first "pending" one. Stops the "hunting for what next" feeling.
+  const candidate =
+    steps.find((s) => s.status === "active") ??
+    steps.find((s) => s.status === "pending");
+  let nextStep: NextStep | null = null;
+  if (candidate && candidate.href) {
+    const reasonByStep: Record<string, string> = {
+      discovery: "No discovery session on file yet — run the 15-minute fit call.",
+      engagement: "Discovery captured. Mark whether the client is signing up.",
+      intake: intake
+        ? "Intake submitted — review the filled form."
+        : "Client signed up. Run the 60-minute intake.",
+      plan: draftSlug
+        ? "Draft plan ready — activate it to make it live for the client."
+        : "Build the protocol from the AI synthesis.",
+      week: "Plan is live — log this week's check-in.",
+      next_phase: "Phase letter due — generate and send.",
+      plan_end: "Plan period complete — reassess and supersede.",
+    };
+    nextStep = {
+      label: candidate.label,
+      href: candidate.href,
+      reason: reasonByStep[candidate.id] ?? "Continue from here.",
+    };
+  }
+
+  return { steps, nextStep };
 }

@@ -23,12 +23,15 @@ import {
   loadMealPlan,
   type LetterType,
   type LetterValidationChange,
+  type WeightLossParams,
 } from "@/lib/server-actions/plan-lifecycle";
 import {
   sendClientLettersAction,
   updateClientFieldsAction,
-  recordLetterSendAction,
 } from "@/app/api/email/actions";
+import { WeightLossForm } from "./client-letter-button";
+import { LetterRefinementChat } from "./letter-refinement-chat";
+import { SpecialRequestsPanel } from "./special-requests-panel";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -117,20 +120,44 @@ interface SendPackageButtonProps {
   clientId: string;
   clientEmail?: string;
   clientName?: string;
+  /**
+   * Per-client opt-in list of letter types this client should receive.
+   * Reads `Client.letter_types_active` (default: `["consolidated"]`).
+   * Empty/undefined falls back to showing all types — keeps existing
+   * call sites working until the profile editor is wired up.
+   */
+  activeLetterTypes?: string[];
 }
 
-export function SendPackageButton({ planSlug, clientId, clientEmail, clientName }: SendPackageButtonProps) {
+export function SendPackageButton({ planSlug, clientId, clientEmail, clientName, activeLetterTypes }: SendPackageButtonProps) {
+  const effectivePackageTypes = (activeLetterTypes && activeLetterTypes.length > 0)
+    ? PACKAGE_TYPES.filter((p) => activeLetterTypes.includes(p.type))
+    : PACKAGE_TYPES;
+  const activeTypeSet = new Set(effectivePackageTypes.map((p) => p.type));
+
   // Per-type state
   const [types, setTypes] = useState<Record<LetterType, TypeState>>(() =>
     Object.fromEntries(
       PACKAGE_TYPES.map((p) => [
         p.type,
-        { checked: p.defaultChecked, status: "idle" as TypeStatus },
+        { checked: p.defaultChecked && activeTypeSet.has(p.type), status: "idle" as TypeStatus },
       ])
     ) as Record<LetterType, TypeState>
   );
 
   const [coachNotes, setCoachNotes] = useState("");
+  const [specialRequestsBlock, setSpecialRequestsBlock] = useState("");
+
+  // Combine free-form coach notes with the structured special-requests
+  // block (meal chips + travel window + freeform) so the prompt builder
+  // sees one merged string. Order matters: special requests are first
+  // (they're more likely to be protocol-gating) followed by coach notes.
+  const combinedCoachNotes = (() => {
+    const parts: string[] = [];
+    if (specialRequestsBlock.trim()) parts.push(specialRequestsBlock.trim());
+    if (coachNotes.trim()) parts.push(coachNotes.trim());
+    return parts.join("\n\n");
+  })();
   const [isOpen, setIsOpen] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
   const [, startTransition] = useTransition();
@@ -202,16 +229,34 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
     })();
   }, [planSlug, clientId]);
 
-  const checkedTypes = PACKAGE_TYPES.filter((p) => types[p.type].checked);
+  const checkedTypes = effectivePackageTypes.filter((p) => types[p.type].checked);
   const anyChecked = checkedTypes.length > 0;
   const anyPending = Object.values(types).some((t) => t.status === "pending");
   const allDone = checkedTypes.length > 0 && checkedTypes.every((p) => types[p.type].status === "done");
 
   // Done types (for email include checkboxes)
-  const doneTypes = PACKAGE_TYPES.filter((p) => types[p.type].status === "done" && types[p.type].htmlBlob);
+  const doneTypes = effectivePackageTypes.filter((p) => types[p.type].status === "done" && types[p.type].htmlBlob);
+
+  // Weight-loss gate. When the package includes a meal plan (or
+  // consolidated, which contains one), we surface a yes/no panel before
+  // burning Sonnet credits. "Yes" expands the questionnaire (goal kg,
+  // weeks, activity, pace, current/desired exercise); "No" proceeds with
+  // wellness-only calorie maintenance. Coach asked for this — earlier
+  // builds skipped it and produced a wellness plan when she expected the
+  // weight-loss framing.
+  const [weightLossAnswered, setWeightLossAnswered] = useState(false);
+  const [weightLossParams, setWeightLossParams] = useState<WeightLossParams | undefined>(undefined);
+  const needsWeightLossQuestion = checkedTypes.some(
+    (p) => p.type === "meal_plan" || p.type === "consolidated",
+  );
+  const [showWeightLossGate, setShowWeightLossGate] = useState(false);
 
   const handleGenerate = () => {
     if (!anyChecked || isGenerating) return;
+    if (needsWeightLossQuestion && !weightLossAnswered) {
+      setShowWeightLossGate(true);
+      return;
+    }
     runGenerate(checkedTypes, false);
   };
 
@@ -248,9 +293,9 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
           const result = await generateClientLetter(
             planSlug,
             clientId,
-            undefined,        // weightLossParams — not used in quick package flow
+            weightLossParams,   // captured via the weight-loss gate above
             pkg.type,
-            coachNotes.trim() || undefined,
+            combinedCoachNotes || undefined,
             force,
           );
           setTypes((prev) => ({
@@ -365,19 +410,6 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
       if (result.ok) {
         const ccNote = ccTrimmed ? ` (cc ${ccTrimmed})` : "";
         toast.success(`Email sent to ${emailTo.trim()}${ccNote}`);
-        // Persist send to ~/fm-plans/clients/<id>/meal-plans/_send_log.yaml.
-        // Fire-and-forget; failures shouldn't block the success flow.
-        try {
-          void recordLetterSendAction({
-            clientId,
-            planSlug,
-            letterTypes: doneTypes
-              .filter((p) => emailInclude[p.type])
-              .map((p) => p.type),
-            to: emailTo.trim(),
-            cc: ccTrimmed || undefined,
-          });
-        } catch { /* non-fatal */ }
         // Save the To value to the client's profile ONLY when the coach
         // explicitly ticked the checkbox AND it differs from what's on
         // file. Previously this fired silently after every send — a
@@ -418,7 +450,7 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
   };
 
   // Count saved types for the collapsed trigger label
-  const savedCount = PACKAGE_TYPES.filter((p) => types[p.type].savedAt).length;
+  const savedCount = effectivePackageTypes.filter((p) => types[p.type].savedAt).length;
 
   return (
     <div className="space-y-3">
@@ -458,7 +490,7 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
 
           {/* Type checkboxes */}
           <div className="space-y-2">
-            {PACKAGE_TYPES.map((pkg) => {
+            {effectivePackageTypes.map((pkg) => {
               const state = types[pkg.type];
               const isChecked = state.checked;
               const statusIcon =
@@ -737,6 +769,37 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
                         title={`Preview: ${pkg.label}`}
                         sandbox="allow-same-origin"
                       />
+
+                      {/* 💬 Discuss → finalise AI chat — refine THIS letter
+                          (per letter type) inline without leaving the preview.
+                          Coach proposes edits in chat (Haiku, conversational,
+                          no save); a running pending-changes list appears;
+                          clicking "Finalise & apply" runs Sonnet once to
+                          commit every queued change to disk. Auto-reloads
+                          the iframe contents after a save. */}
+                      {state.status === "done" && (
+                        <div className="mt-3">
+                          <LetterRefinementChat
+                            clientId={clientId}
+                            planSlug={planSlug}
+                            letterType={pkg.type}
+                            onSaved={async () => {
+                              const r = await loadMealPlan(planSlug, clientId, pkg.type);
+                              if (r.savedAt) {
+                                setTypes((prev) => ({
+                                  ...prev,
+                                  [pkg.type]: {
+                                    ...prev[pkg.type],
+                                    savedAt: r.savedAt,
+                                    htmlBlob: r.html ?? null,
+                                    mdBlob: r.markdown ?? null,
+                                  },
+                                }));
+                              }
+                            }}
+                          />
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
@@ -744,7 +807,16 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
             })}
           </div>
 
-          {/* Coach notes */}
+          {/* Special requests + travel — structured pre-generation context.
+              Chips for common meal preferences, a travel window block (with
+              destination + cooking-access toggle), and a freeform field.
+              Output is appended to coach notes and woven into the prompt. */}
+          <SpecialRequestsPanel
+            onChange={(req) => setSpecialRequestsBlock(req.block)}
+            disabled={isGenerating}
+          />
+
+          {/* Coach notes (freeform — kept separate from structured panel) */}
           <div>
             <label className="text-xs font-medium text-muted-foreground block mb-1">
               Coach notes (optional) — woven into all selected letters
@@ -758,6 +830,51 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName 
               disabled={isGenerating}
             />
           </div>
+
+          {/* Weight-loss gate — only shown when a meal plan / consolidated
+              letter is in the package. Coach picks "Yes" (collects goal +
+              activity + pace) or "No" (general wellness, calorie maintenance).
+              Answer persists for re-runs in this session via weightLossAnswered. */}
+          {needsWeightLossQuestion && showWeightLossGate && !weightLossAnswered && (
+            <WeightLossForm
+              onGenerate={(params) => {
+                setWeightLossParams(params);
+                setWeightLossAnswered(true);
+                setShowWeightLossGate(false);
+                runGenerate(checkedTypes, false);
+              }}
+              onSkip={() => {
+                setWeightLossParams(undefined);
+                setWeightLossAnswered(true);
+                setShowWeightLossGate(false);
+                runGenerate(checkedTypes, false);
+              }}
+            />
+          )}
+          {needsWeightLossQuestion && weightLossAnswered && !isGenerating && (
+            <div className="text-[11px] text-muted-foreground flex items-center gap-2">
+              {weightLossParams ? (
+                <>
+                  ⚖ Weight-loss framing on
+                  {weightLossParams.goal_kg && weightLossParams.goal_weeks
+                    ? ` — ${weightLossParams.goal_kg} kg in ${weightLossParams.goal_weeks} weeks (${weightLossParams.pace} pace)`
+                    : ""}
+                  .
+                </>
+              ) : (
+                <>🌱 General wellness framing (no weight-loss calorie deficit).</>
+              )}
+              <button
+                onClick={() => {
+                  setWeightLossAnswered(false);
+                  setShowWeightLossGate(true);
+                }}
+                className="underline hover:text-foreground"
+              >
+                change
+              </button>
+            </div>
+          )}
 
           {/* Actions */}
           <div className="flex flex-wrap items-center gap-3 pt-1">

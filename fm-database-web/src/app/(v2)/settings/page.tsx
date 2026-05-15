@@ -120,13 +120,14 @@ function StatusDot({ ok }: { ok: boolean }) {
 }
 
 export default function SettingsPage() {
-  const aisensy = envVarSet("AISENSY_API_KEY");
+  const whatsappOutbound =
+    envVarSet("WHATSAPP_SERVER_URL") && envVarSet("WHATSAPP_SERVER_API_KEY");
+  const whatsappInboundWebhook = envVarSet("WHATSAPP_WEBHOOK_SECRET");
   const gmail = envVarSet("GMAIL_USER") && envVarSet("GMAIL_APP_PASSWORD");
   const anthropic = envVarSet("ANTHROPIC_API_KEY");
   const vitaone = envVarSet("VITAONE_AFFILIATE_CODE");
   const vitaoneCode = envVarValue("VITAONE_AFFILIATE_CODE");
   const heygenKey = envVarSet("HEYGEN_API_KEY");
-  const aisensyWebhook = envVarSet("AISENSY_WEBHOOK_SECRET");
 
   return (
     <FmAppShell activeNavId="settings" crumbs={[{ label: "Settings" }]}>
@@ -152,12 +153,12 @@ export default function SettingsPage() {
               }
             />
             <FmInfoRow
-              label="AiSensy WhatsApp"
+              label="WhatsApp outbound (self-hosted Cloud API)"
               value={
                 <span>
-                  <StatusDot ok={aisensy} />
-                  {aisensy ? (
-                    <FmChip tone="success">API key set</FmChip>
+                  <StatusDot ok={whatsappOutbound} />
+                  {whatsappOutbound ? (
+                    <FmChip tone="success">Connected</FmChip>
                   ) : (
                     <FmChip>Not configured</FmChip>
                   )}
@@ -204,11 +205,11 @@ export default function SettingsPage() {
               }
             />
             <FmInfoRow
-              label="AiSensy inbound webhook"
+              label="WhatsApp inbound webhook"
               value={
                 <span>
-                  <StatusDot ok={aisensyWebhook} />
-                  {aisensyWebhook ? (
+                  <StatusDot ok={whatsappInboundWebhook} />
+                  {whatsappInboundWebhook ? (
                     <FmChip tone="success">Secret set</FmChip>
                   ) : (
                     <FmChip>Not configured</FmChip>

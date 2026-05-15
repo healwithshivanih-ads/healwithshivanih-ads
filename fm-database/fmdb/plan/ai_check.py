@@ -205,6 +205,42 @@ def _client_snapshot(client: Client | None) -> dict[str, Any]:
         "reported_triggers": client.reported_triggers,
         "city": client.city,
         "country": client.country,
+        # IFM timeline — antecedents/triggers/mediators in chronological order.
+        # The model uses this to check whether the protocol addresses upstream
+        # triggers (toxic exposures, surgeries, life-stress events) rather than
+        # just chasing the current symptom set.
+        "timeline_events": [
+            {
+                "year": ev.year,
+                "date": ev.date,
+                "event": ev.event,
+                "category": ev.category,
+            }
+            for ev in (client.timeline_events or [])
+        ],
+        # AI-summarised intake insights (v0.72) — patterns, red flags, top
+        # hypotheses, and coach corrections. Replaces the need to dump all
+        # ~60 structured intake fields into the sanity-check prompt.
+        # Generated once by Haiku post-intake; flows here so the sanity
+        # check sees the same map every downstream AI call sees.
+        "intake_insights": (
+            {
+                "patterns": client.intake_insights.patterns,
+                "red_flags": client.intake_insights.red_flags,
+                "top_hypotheses": [
+                    {
+                        "driver": h.driver,
+                        "confidence": h.confidence,
+                        "reasoning": h.reasoning,
+                    }
+                    for h in client.intake_insights.top_hypotheses
+                ],
+                "verify_in_session": client.intake_insights.verify_in_session,
+                "coach_notes_for_ai": client.intake_insights.coach_notes_for_ai,
+            }
+            if client.intake_insights
+            else None
+        ),
     }
 
 

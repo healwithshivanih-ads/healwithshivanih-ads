@@ -1,0 +1,292 @@
+#!/usr/bin/env python3
+"""
+ingest-from-paste — receive a ChatGPT/Claude.ai ingest output, save the
+YAML files to disk, run validation, and print a clean go/no-go report.
+
+Usage
+─────
+  # Pipe from clipboard
+  pbpaste | python scripts/ingest-from-paste.py
+
+  # Or from a file
+  python scripts/ingest-from-paste.py < /tmp/claude_ingest.md
+
+  # Default mode writes to canonical (data/<entity>/<slug>.yaml).
+  # Pass --staging <batch-id> to drop into data/staging/<batch-id>/ instead
+  # (safer for big batches — review via `fmdb review <batch-id>` first).
+
+What it does
+────────────
+1. Extracts every fenced ```yaml block whose first content line is
+   `# path: data/<entity>/<slug>.yaml` (or a comment that contains a path).
+2. Writes each file to its declared path (creating parent dirs).
+3. Parses the optional `missing_dependencies:` block at the end of the
+   paste and lists slugs to stub before approving.
+4. Runs `fmdb validate` and `fmdb pending-refs` and prints a summary.
+
+Output is colour-coded:
+  ✓ green  = clean write
+  ⚠ yellow = warning (e.g. missing source, forward reference)
+  ✗ red    = error — file written but catalogue still inconsistent
+
+Exits non-zero on errors so a wrapper script (or git commit hook) can
+gate further action.
+"""
+from __future__ import annotations
+
+import os
+import re
+import subprocess
+import sys
+from pathlib import Path
+
+# ─────────────────────────────────────────────────────────────────────
+# Repo + path resolution
+# ─────────────────────────────────────────────────────────────────────
+REPO_ROOT = Path(__file__).resolve().parent.parent  # fm-database/
+DATA_DIR = REPO_ROOT / "data"
+VENV_PY = REPO_ROOT / ".venv/bin/python"
+
+VALID_KINDS = {
+    "sources", "topics", "mechanisms", "symptoms", "claims",
+    "supplements", "cooking_adjustments", "home_remedies", "mindmaps",
+}
+
+# ─────────────────────────────────────────────────────────────────────
+# Tiny ANSI helpers — avoids pulling in a colour lib
+# ─────────────────────────────────────────────────────────────────────
+def _isatty() -> bool:
+    return sys.stdout.isatty()
+
+def green(s: str) -> str:  return f"\x1b[32m{s}\x1b[0m" if _isatty() else s
+def yellow(s: str) -> str: return f"\x1b[33m{s}\x1b[0m" if _isatty() else s
+def red(s: str) -> str:    return f"\x1b[31m{s}\x1b[0m" if _isatty() else s
+def dim(s: str) -> str:    return f"\x1b[2m{s}\x1b[0m" if _isatty() else s
+def bold(s: str) -> str:   return f"\x1b[1m{s}\x1b[0m" if _isatty() else s
+
+
+# ─────────────────────────────────────────────────────────────────────
+# Extract YAML blocks from the AI's paste
+# ─────────────────────────────────────────────────────────────────────
+#
+# We accept either:
+#   ```yaml
+#   # path: data/topics/foo.yaml
+#   slug: foo
+#   ...
+#   ```
+#
+# OR the older variant where path is on the closing fence's line.
+# We're permissive about whitespace + language tag (yaml | yml | y).
+BLOCK_RE = re.compile(
+    r"```(?:yaml|yml|y)?\s*\n"
+    r"(?P<body>.*?)"
+    r"\n```",
+    re.DOTALL,
+)
+
+PATH_RE = re.compile(r"^\s*#\s*path:\s*(?P<path>[^\s\n]+)", re.MULTILINE)
+
+
+def extract_blocks(paste: str) -> list[tuple[str, str]]:
+    """Returns [(target_path, yaml_body), ...]. Skips blocks without a path."""
+    out: list[tuple[str, str]] = []
+    for m in BLOCK_RE.finditer(paste):
+        body = m.group("body")
+        p = PATH_RE.search(body)
+        if not p:
+            continue
+        path = p.group("path").strip().rstrip(",;")
+        # Strip the path comment line itself + any blank line right after.
+        body_clean = PATH_RE.sub("", body, count=1).lstrip("\n").rstrip() + "\n"
+        out.append((path, body_clean))
+    return out
+
+
+def extract_missing_deps(paste: str) -> dict[str, list[str]]:
+    """Pull the `missing_dependencies:` block from the end of the paste."""
+    m = re.search(
+        r"missing_dependencies\s*:\s*\n(?P<body>(?:\s{2,}\w[^\n]*\n?)+)",
+        paste,
+    )
+    if not m:
+        return {}
+    body = m.group("body")
+    deps: dict[str, list[str]] = {}
+    for line in body.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        # `topics: [foo, bar]` or `topics: ["foo", "bar"]` or `topics: []`
+        cm = re.match(r"^(\w+)\s*:\s*\[(.*)\]\s*$", line)
+        if cm:
+            kind = cm.group(1)
+            items = [
+                t.strip().strip('"').strip("'")
+                for t in cm.group(2).split(",")
+                if t.strip()
+            ]
+            if items:
+                deps[kind] = items
+    return deps
+
+
+# ─────────────────────────────────────────────────────────────────────
+# Write + validate
+# ─────────────────────────────────────────────────────────────────────
+def _normalise_path(declared: str, staging_batch: str | None) -> Path:
+    # AI sometimes prefixes with "fm-database/" or "./" — strip it.
+    declared = re.sub(r"^(?:fm-database/|\./)", "", declared)
+    p = Path(declared)
+    # Re-route to staging if requested.
+    if staging_batch and p.parts[:1] == ("data",) and len(p.parts) >= 3:
+        # data/<entity>/<slug>.yaml → data/staging/<batch>/<entity>/<slug>.yaml
+        new_parts = ("data", "staging", staging_batch) + p.parts[1:]
+        p = Path(*new_parts)
+    return REPO_ROOT / p
+
+
+def write_blocks(blocks: list[tuple[str, str]], staging_batch: str | None) -> list[tuple[Path, str, bool]]:
+    """Write each YAML block. Returns (path, declared, ok)."""
+    out: list[tuple[Path, str, bool]] = []
+    for declared, body in blocks:
+        target = _normalise_path(declared, staging_batch)
+        ok = True
+        try:
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(body, encoding="utf-8")
+        except Exception as e:
+            print(red(f"✗ failed to write {target}: {e}"), file=sys.stderr)
+            ok = False
+        out.append((target, declared, ok))
+    return out
+
+
+def run_cli(args: list[str]) -> tuple[int, str, str]:
+    py = str(VENV_PY) if VENV_PY.exists() else sys.executable
+    proc = subprocess.run(
+        [py, "-m", "fmdb.cli", *args],
+        cwd=str(REPO_ROOT),
+        capture_output=True,
+        text=True,
+    )
+    return proc.returncode, proc.stdout, proc.stderr
+
+
+# ─────────────────────────────────────────────────────────────────────
+# Main
+# ─────────────────────────────────────────────────────────────────────
+def main() -> int:
+    # ── Parse args ──
+    staging_batch: str | None = None
+    args = sys.argv[1:]
+    i = 0
+    while i < len(args):
+        a = args[i]
+        if a in ("-h", "--help"):
+            print(__doc__)
+            return 0
+        if a == "--staging":
+            i += 1
+            if i >= len(args):
+                print(red("✗ --staging needs a batch-id"), file=sys.stderr)
+                return 2
+            staging_batch = args[i]
+        i += 1
+
+    # ── Slurp stdin ──
+    paste = sys.stdin.read()
+    if not paste.strip():
+        print(red("✗ no input on stdin. Pipe the AI's reply, e.g.:\n"
+                  "  pbpaste | python scripts/ingest-from-paste.py"),
+              file=sys.stderr)
+        return 2
+
+    # ── Extract blocks ──
+    blocks = extract_blocks(paste)
+    if not blocks:
+        print(red("✗ no fenced ```yaml blocks with a `# path:` header found."),
+              file=sys.stderr)
+        print(dim("hint: every YAML block in the AI's reply should start with "
+                  "`# path: data/<entity>/<slug>.yaml`"),
+              file=sys.stderr)
+        return 2
+
+    deps = extract_missing_deps(paste)
+
+    # ── Write ──
+    print(bold(f"\n→ Writing {len(blocks)} YAML file(s)"))
+    if staging_batch:
+        print(dim(f"  routing into data/staging/{staging_batch}/"))
+    results = write_blocks(blocks, staging_batch)
+    all_ok = True
+    for target, declared, ok in results:
+        rel = target.relative_to(REPO_ROOT)
+        if ok:
+            print(f"  {green('✓')} {rel}  {dim(f'(declared: {declared})') if str(rel) != declared else ''}")
+        else:
+            print(f"  {red('✗')} {rel}")
+            all_ok = False
+
+    # ── Missing dependencies ──
+    if deps:
+        print(bold("\n→ Forward references the AI flagged (stub before approving):"))
+        for kind, items in deps.items():
+            print(f"  {yellow('⚠')} {kind}: {', '.join(items)}")
+
+    # ── Validate ──
+    # `fmdb validate` exits 0 on warnings-only. We trust the exit code, not
+    # string-matching on the output (the "No errors. Warnings are
+    # non-blocking" footer string contains the word "errors" and tripped
+    # an earlier naive substring check).
+    print(bold("\n→ Running fmdb validate"))
+    rc, out, err = run_cli(["validate"])
+    text = (out + err).strip()
+    if rc == 0:
+        warn_match = re.search(r"(\d+)\s*warning", text, re.IGNORECASE)
+        warns = warn_match.group(1) if warn_match else "0"
+        print(f"  {green('✓ catalogue valid')} ({warns} warnings — non-blocking)")
+    else:
+        print(red(f"  ✗ validation failed (exit {rc}):"))
+        for line in text.splitlines()[:30]:
+            print(f"    {line}")
+        all_ok = False
+
+    # ── Pending refs ──
+    # pending-refs lists every unresolved cross-reference IN THE WHOLE
+    # CATALOGUE, not just from this ingest. Treat as informational, not as
+    # an ingest failure. We surface a count + the first few names so the
+    # coach knows the backlog exists, but it doesn't flip ok→fail.
+    print(bold("\n→ Running fmdb pending-refs"))
+    rc2, out2, err2 = run_cli(["pending-refs"])
+    pend = (out2 + err2).strip()
+    if not pend or "no unresolved" in pend.lower():
+        print(f"  {green('✓ no unresolved cross-references')}")
+    else:
+        # Approximate the count from non-indented header lines.
+        lines = [ln for ln in pend.splitlines() if ln.strip()]
+        ref_lines = [ln for ln in lines if not ln.startswith(" ") and "←" not in ln]
+        print(f"  {dim(f'(catalogue-wide backlog: ~{len(ref_lines)} pending refs — informational, not from this ingest)')}")
+        for line in lines[:6]:
+            print(f"  {yellow('⚠')} {line}")
+        if len(lines) > 6:
+            print(dim(f"  … +{len(lines) - 6} more (see `fmdb pending-refs` for full list)"))
+
+    # ── Summary ──
+    print()
+    if all_ok:
+        print(green(bold("✓ Ingest complete.")))
+        if staging_batch:
+            print(dim(f"  Next: review with `fmdb review {staging_batch}` then "
+                      f"`fmdb approve {staging_batch} --update`"))
+        else:
+            print(dim("  Next: `git diff data/` to inspect, then `git add` + commit."))
+    else:
+        print(red(bold("✗ Ingest had errors — see above.")))
+        print(dim("  Files are written. Fix issues and re-run validate, or"))
+        print(dim("  `git checkout -- data/` to revert all writes."))
+    return 0 if all_ok else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

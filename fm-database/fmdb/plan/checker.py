@@ -229,10 +229,16 @@ def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Fin
             "WARNING", "assessment", "primary_topics",
             "no primary_topics declared — assessment is unanchored",
         ))
-    if not plan.presenting_symptoms:
+    # Only flag an empty presenting_symptoms list when the plan also lacks
+    # any primary_topics — i.e. the entire assessment block is bare. If
+    # primary_topics exist, the coach has clearly anchored the plan even
+    # without symptom slugs, and the warning was just noise.
+    if not plan.presenting_symptoms and not plan.primary_topics:
         findings.append(Finding(
             "INFO", "assessment", "presenting_symptoms",
-            "no presenting_symptoms — was this captured at intake?",
+            "presenting_symptoms is empty — add the symptom slugs the client "
+            "presented with (or carry them over from the assess session's "
+            "selected_symptoms).",
         ))
     if (plan.supplement_protocol and not plan.hypothesized_drivers):
         findings.append(Finding(

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useTransition } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { detectLabPatterns, IFM_NODES } from "@/lib/fmdb/ifm-matrix";
@@ -8,6 +8,8 @@ import {
   uploadFileAction,
   extractTranscriptAction,
   applyTranscriptDataAction,
+  loadLatestLabSnapshotAction,
+  checkDuplicateUploadAction,
 } from "@/lib/server-actions/assess";
 import { findExpectingSessionAction, assessReworkBenefitAction } from "@/lib/server-actions/clients";
 import type { ExtractedLabValue, ExtractedMeasurements } from "@/lib/fmdb/anthropic";
@@ -113,6 +115,31 @@ export function LabUploadPanel({ clientId }: Props) {
   const [extractError, setExtractError] = useState<string | null>(null);
   const [filePath, setFilePath] = useState<string | null>(null);
   const [saved, setSaved] = useState(false);
+  const [savedSnapshotDate, setSavedSnapshotDate] = useState<string | null>(null);
+
+  // Rehydrate the most recent saved lab snapshot on mount. Without this the
+  // widget reset to empty on every refresh, making the coach think the
+  // extraction had vanished even though it was persisted to client.yaml.
+  useEffect(() => {
+    let stale = false;
+    (async () => {
+      const r = await loadLatestLabSnapshotAction(clientId);
+      if (stale || !r.ok || r.lab_values.length === 0) return;
+      const labs = r.lab_values.map((lv) => ({
+        test_name: lv.test_name,
+        value: String(lv.value ?? ""),
+        unit: lv.unit ?? "",
+        date_drawn: lv.date_drawn ?? null,
+      })) as ExtractedLabValue[];
+      setExtractedLabs(labs);
+      setSavedSnapshotDate(r.date);
+      setSaved(true);
+      if (r.measurements) {
+        setExtractedMeasurements(r.measurements as ExtractedMeasurements);
+      }
+    })();
+    return () => { stale = true; };
+  }, [clientId]);
 
   const reset = () => {
     setExtractedLabs([]);
@@ -134,6 +161,36 @@ export function LabUploadPanel({ clientId }: Props) {
 
     startExtract(async () => {
       try {
+        // 0. Pre-upload duplicate check by SHA-256 of the bytes. Catches
+        // re-uploads of the same lab PDF across renames so the coach
+        // doesn't burn another extraction call or end up with two
+        // contradictory copies on file.
+        const buf0 = await file.arrayBuffer();
+        const bin = new Uint8Array(buf0);
+        let b64 = "";
+        const CHUNK = 0x8000;
+        for (let i = 0; i < bin.length; i += CHUNK) {
+          b64 += String.fromCharCode.apply(
+            null,
+            Array.from(bin.subarray(i, i + CHUNK)),
+          );
+        }
+        const base64Bytes = typeof window !== "undefined" ? window.btoa(b64) : "";
+        const dupCheck = await checkDuplicateUploadAction(clientId, base64Bytes);
+        if (dupCheck.ok && dupCheck.duplicate) {
+          const proceed = window.confirm(
+            `This file (or an identical copy) was already uploaded for this client as:\n\n` +
+            `  📄 ${dupCheck.existing_filename}\n` +
+            `  uploaded ${dupCheck.existing_uploaded_at?.slice(0, 10) ?? "earlier"}\n\n` +
+            `OK = re-extract this upload anyway (uses a fresh API call)\n` +
+            `Cancel = leave the existing record as-is`,
+          );
+          if (!proceed) {
+            setExtractError(null);
+            return;
+          }
+        }
+
         // 1. Upload file to client's files directory via FormData
         // (Next 16 RSC can't serialize multi-MB Uint8Array — FormData streams.)
         const fd = new FormData();
@@ -247,22 +304,37 @@ export function LabUploadPanel({ clientId }: Props) {
             ref={fileRef}
             type="file"
             accept=".pdf,.png,.jpg,.jpeg,.webp,.md,.txt,application/pdf,image/*,text/markdown,text/plain"
-            onChange={(e) => setFileName(e.target.files?.[0]?.name ?? "")}
+            disabled={isExtracting}
+            onChange={(e) => {
+              const f = e.target.files?.[0];
+              if (!f) return;
+              setFileName(f.name);
+              // Auto-fire extraction. Coach was getting tripped up clicking a
+              // separate "Extract" button after the file picker already closed
+              // (every other upload widget in the app auto-extracts on pick).
+              onExtract();
+            }}
             className="block w-full text-sm text-muted-foreground file:mr-3 file:py-1.5 file:px-3 file:rounded file:border-0 file:text-xs file:font-medium file:bg-teal-100 file:text-teal-700 hover:file:bg-teal-200 cursor-pointer"
           />
-          {fileName && <p className="text-xs text-teal-700">📄 {fileName}</p>}
+          {fileName && (
+            <p className="text-xs text-teal-700">
+              📄 {fileName}
+              {isExtracting && <span className="ml-2 animate-pulse">⏳ Extracting…</span>}
+            </p>
+          )}
           {extractError && (
             <p className="text-xs text-red-600 bg-red-50 border border-red-200 rounded px-3 py-2">{extractError}</p>
           )}
-          <Button
-            type="button"
-            onClick={onExtract}
-            disabled={isExtracting || !fileName}
-            variant="outline"
-            className="border-teal-300 text-teal-800 hover:bg-teal-100 text-sm"
-          >
-            {isExtracting ? "Extracting…" : "✨ Extract lab values"}
-          </Button>
+          {extractError && fileName && !isExtracting && (
+            <Button
+              type="button"
+              onClick={onExtract}
+              variant="outline"
+              className="border-teal-300 text-teal-800 hover:bg-teal-100 text-sm"
+            >
+              🔁 Retry extraction
+            </Button>
+          )}
         </div>
       )}
 
@@ -298,9 +370,13 @@ export function LabUploadPanel({ clientId }: Props) {
               </Button>
             </div>
           ) : (
-            <div className="rounded-lg bg-emerald-50 border border-emerald-200 px-3 py-2 text-xs text-emerald-800">
-              ✓ Saved to health history. Trends will update on next page load.
-              <button onClick={() => { reset(); setOpen(false); }} className="ml-2 underline">Close</button>
+            <div className="rounded-lg bg-emerald-50 border border-emerald-200 px-3 py-2 text-xs text-emerald-800 flex items-center gap-2 flex-wrap">
+              <span>
+                ✓ {extractedLabs.length} lab value{extractedLabs.length === 1 ? "" : "s"} saved
+                {savedSnapshotDate ? ` (drawn ${savedSnapshotDate})` : ""}.
+              </span>
+              <button onClick={reset} className="underline">↩ Upload a new report</button>
+              <button onClick={() => setOpen(false)} className="underline">Close</button>
             </div>
           )}
         </div>

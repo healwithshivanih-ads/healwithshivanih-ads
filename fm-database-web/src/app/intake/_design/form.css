@@ -1,0 +1,1177 @@
+/* =========================================================
+   Intake form — extension of the Deep Mind design system
+   Atoms specific to the form: chips, sliders, accordion,
+   repeaters, consent, autosave indicator, section nav.
+   ========================================================= */
+
+.fm {
+  background: var(--bone);
+  color: var(--fg-1);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  width: 375px;
+  position: relative;
+}
+
+/* ── Chrome ───────────────────────────────────────────────── */
+
+.fm-chrome {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: rgba(247, 244, 243, 0.92);
+  backdrop-filter: saturate(160%) blur(12px);
+  -webkit-backdrop-filter: saturate(160%) blur(12px);
+  border-bottom: 1px solid var(--lavender-15);
+}
+
+.fm-chrome__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px 10px;
+}
+
+.fm-chrome__brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: -0.005em;
+  color: var(--indigo);
+}
+
+.fm-save {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--fg-2);
+  letter-spacing: 0.02em;
+}
+.fm-save__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sage, #A4B5A0);
+}
+.fm-save--saving .fm-save__dot {
+  background: var(--rose);
+  animation: fmpulse 1.4s var(--ease) infinite;
+}
+@keyframes fmpulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.5; transform: scale(0.7); }
+}
+
+/* Section progress — row of 16 dots */
+.fm-progress {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 20px 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.fm-progress::-webkit-scrollbar { display: none; }
+.fm-progress__dot {
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+.fm-progress__dot::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--lavender-30);
+  transition: all var(--dur-1) var(--ease);
+}
+.fm-progress__dot--done::before { background: var(--lavender); }
+.fm-progress__dot--current::before {
+  background: var(--indigo);
+  width: 8px;
+  height: 8px;
+  box-shadow: 0 0 0 1px var(--lavender) inset;
+}
+.fm-progress__num {
+  font-size: 11px;
+  color: var(--fg-3);
+  margin-right: 6px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+/* ── Sections ─────────────────────────────────────────────── */
+
+.fm-section {
+  padding: 32px 20px 40px;
+  border-bottom: 1px solid var(--lavender-15);
+}
+.fm-section--soft {
+  background: var(--bone-warm);
+  border-bottom-color: transparent;
+}
+.fm-section__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--fg-2);
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+.fm-section__title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 1.16;
+  letter-spacing: -0.012em;
+  color: var(--fg-1);
+  margin: 0 0 12px 0;
+  text-wrap: balance;
+}
+.fm-section__sub {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--fg-2);
+  margin: 0 0 24px 0;
+  max-width: 32ch;
+  text-wrap: pretty;
+  font-style: italic;
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+.fm-section__sub--prose {
+  font-style: normal;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Field group */
+.fm-fg { margin-bottom: 24px; }
+.fm-fg__label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fg-1);
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+.fm-fg__hint {
+  display: block;
+  font-size: 12.5px;
+  color: var(--fg-2);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+.fm-fg__optional {
+  font-size: 11px;
+  color: var(--fg-3);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin-left: 6px;
+}
+
+/* ── Text inputs ──────────────────────────────────────────── */
+
+.fm-input,
+.fm-textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--lavender);
+  padding: 8px 0 10px;
+  outline: none;
+  border-radius: 0;
+  transition: border-color var(--dur-1) var(--ease);
+}
+.fm-input::placeholder,
+.fm-textarea::placeholder {
+  color: var(--lavender);
+  font-style: italic;
+}
+.fm-input:focus,
+.fm-textarea:focus {
+  border-color: var(--indigo);
+}
+.fm-textarea {
+  resize: none;
+  min-height: 72px;
+}
+
+.fm-input--filled,
+.fm-textarea--filled { color: var(--ink); }
+
+/* read-only display chip (for email/phone prefilled) */
+.fm-readonly {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--fg-2);
+  background: var(--lavender-15);
+  padding: 6px 10px;
+  border-radius: var(--radius-1);
+}
+
+/* ── Chips (multi-select tags) ───────────────────────────── */
+
+.fm-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.fm-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 11px;
+  border: 1px solid var(--lavender-30);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1;
+  color: var(--fg-1);
+  cursor: pointer;
+  transition: all var(--dur-1) var(--ease);
+}
+.fm-chip:hover { border-color: var(--lavender); }
+.fm-chip--on {
+  background: var(--indigo);
+  color: var(--bone);
+  border-color: var(--indigo);
+}
+.fm-chip--add {
+  border-style: dashed;
+  color: var(--fg-2);
+}
+.fm-chip__x {
+  font-size: 14px;
+  opacity: 0.6;
+  margin-left: 2px;
+}
+.fm-chip--free {
+  background: var(--bone-warm);
+  border-color: var(--lavender-30);
+  color: var(--ink);
+}
+
+/* ── Radio (segmented list) ───────────────────────────────── */
+
+.fm-radios {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.fm-radio {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--lavender-15);
+  cursor: pointer;
+  position: relative;
+}
+.fm-radio:last-child { border-bottom: 0; }
+.fm-radio input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.fm-radio__dot {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid var(--lavender);
+  background: transparent;
+  margin-top: 2px;
+  position: relative;
+  transition: all var(--dur-1) var(--ease);
+}
+.fm-radio--on .fm-radio__dot {
+  border-color: var(--indigo);
+}
+.fm-radio--on .fm-radio__dot::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  background: var(--indigo);
+  border-radius: 50%;
+}
+.fm-radio__label {
+  flex: 1;
+  font-size: 14.5px;
+  line-height: 1.45;
+  color: var(--fg-1);
+}
+.fm-radio__sub {
+  display: block;
+  font-size: 12.5px;
+  color: var(--fg-2);
+  margin-top: 2px;
+}
+
+/* Radio — horizontal pill row (for short option sets) */
+.fm-radios--row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.fm-radios--row .fm-radio {
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 14px;
+  border: 1px solid var(--lavender-30);
+  border-bottom: 1px solid var(--lavender-30);
+  border-radius: var(--radius-pill);
+  background: transparent;
+}
+.fm-radios--row .fm-radio .fm-radio__dot { display: none; }
+.fm-radios--row .fm-radio--on {
+  background: var(--indigo);
+  border-color: var(--indigo);
+  color: var(--bone);
+}
+.fm-radios--row .fm-radio--on .fm-radio__label { color: var(--bone); }
+.fm-radios--row .fm-radio__label { font-size: 13px; line-height: 1.2; }
+
+/* ── Slider ───────────────────────────────────────────────── */
+
+.fm-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.fm-slider__track {
+  position: relative;
+  height: 28px;
+  display: flex;
+  align-items: center;
+}
+.fm-slider__rail {
+  position: absolute;
+  inset: 0 0 0 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 1px;
+  background: var(--lavender);
+}
+.fm-slider__fill {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 1px;
+  background: var(--indigo);
+}
+.fm-slider__thumb {
+  position: absolute;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--indigo);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 6px var(--bone);
+  border: 1px solid var(--indigo);
+}
+.fm-slider__scale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--fg-3);
+  letter-spacing: 0.02em;
+  padding: 0 2px;
+}
+.fm-slider__value {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--indigo);
+}
+.fm-slider__caption {
+  font-size: 13px;
+  color: var(--fg-2);
+  font-style: italic;
+  margin-top: 2px;
+}
+
+/* Color-graded variant: stress / severity */
+.fm-slider--graded .fm-slider__fill {
+  height: 3px;
+  background: linear-gradient(to right, var(--sage) 0%, var(--lavender) 40%, var(--rose) 100%);
+}
+
+/* ── Rating (1-5 dots) ────────────────────────────────────── */
+
+.fm-rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.fm-rating__opts {
+  display: flex;
+  gap: 8px;
+}
+.fm-rating__btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--lavender-30);
+  background: transparent;
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--fg-1);
+  cursor: pointer;
+  transition: all var(--dur-1) var(--ease);
+}
+.fm-rating__btn:hover { border-color: var(--lavender); }
+.fm-rating__btn--on {
+  background: var(--indigo);
+  color: var(--bone);
+  border-color: var(--indigo);
+}
+.fm-rating__caption {
+  font-size: 12px;
+  color: var(--fg-2);
+}
+
+/* Day-of-week chips (movement) */
+.fm-days {
+  display: flex;
+  gap: 6px;
+}
+.fm-day {
+  flex: 1;
+  height: 38px;
+  border: 1px solid var(--lavender-30);
+  border-radius: var(--radius-1);
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--fg-1);
+  cursor: pointer;
+  transition: all var(--dur-1) var(--ease);
+}
+.fm-day--on {
+  background: var(--indigo);
+  border-color: var(--indigo);
+  color: var(--bone);
+}
+
+/* ── Accordion (Section 11 body systems) ──────────────────── */
+
+.fm-acc {
+  border-bottom: 1px solid var(--lavender-15);
+}
+.fm-acc:first-of-type { border-top: 1px solid var(--lavender-15); }
+.fm-acc__head {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-body);
+}
+.fm-acc__title {
+  font-size: 14.5px;
+  color: var(--fg-1);
+  font-weight: 500;
+}
+.fm-acc__count {
+  font-size: 12px;
+  color: var(--fg-2);
+  margin-left: 8px;
+}
+.fm-acc__count--ticked {
+  color: var(--indigo);
+  font-weight: 500;
+}
+.fm-acc__chev {
+  font-size: 14px;
+  color: var(--fg-3);
+  transition: transform var(--dur-1) var(--ease);
+  font-family: var(--font-body);
+}
+.fm-acc--open .fm-acc__chev {
+  transform: rotate(180deg);
+  color: var(--indigo);
+}
+.fm-acc__body {
+  display: none;
+  padding: 4px 0 20px;
+}
+.fm-acc--open .fm-acc__body { display: block; }
+
+/* ── Repeater ─────────────────────────────────────────────── */
+
+.fm-rep {
+  border-left: 1px solid var(--lavender-30);
+  padding: 4px 0 4px 14px;
+  margin-bottom: 14px;
+  position: relative;
+}
+.fm-rep__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 16px;
+  margin-bottom: 10px;
+}
+.fm-rep__row--full { grid-template-columns: 1fr; }
+.fm-rep__remove {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: transparent;
+  border: 0;
+  font-size: 11px;
+  color: var(--fg-3);
+  cursor: pointer;
+  padding: 4px;
+  letter-spacing: 0.02em;
+}
+.fm-rep__remove:hover { color: var(--rose); }
+
+.fm-add {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 0;
+  padding: 8px 0;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  color: var(--indigo);
+  cursor: pointer;
+  letter-spacing: 0.005em;
+}
+.fm-add:hover { color: var(--ink); }
+.fm-add .pulse {
+  margin-right: 0;
+  background: var(--indigo);
+}
+
+/* ── Consent + submit ─────────────────────────────────────── */
+
+.fm-consent {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  background: var(--bone-warm);
+  border-left: 2px solid var(--indigo);
+  cursor: pointer;
+  margin: 24px 0 20px;
+}
+.fm-consent input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.fm-consent__box {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--indigo);
+  border-radius: 2px;
+  background: transparent;
+  position: relative;
+  margin-top: 2px;
+  transition: all var(--dur-1) var(--ease);
+}
+.fm-consent--on .fm-consent__box { background: var(--indigo); }
+.fm-consent--on .fm-consent__box::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid var(--bone);
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(45deg);
+}
+.fm-consent__text {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--fg-1);
+}
+.fm-consent__text strong { font-weight: 500; }
+
+.fm-submit {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 24px;
+  background: var(--indigo);
+  color: var(--bone);
+  border: 0;
+  border-radius: var(--radius-1);
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background var(--dur-1) var(--ease);
+}
+.fm-submit:hover { background: var(--ink); }
+.fm-submit__sub {
+  display: block;
+  font-size: 12px;
+  color: var(--fg-3);
+  text-align: center;
+  margin-top: 10px;
+  font-style: italic;
+  font-family: var(--font-display);
+}
+
+/* ── Welcome screen ───────────────────────────────────────── */
+
+.fm-welcome {
+  padding: 56px 28px 48px;
+  background: var(--bone);
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+.fm-welcome__eyebrow {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--fg-2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+.fm-welcome__hi {
+  font-family: var(--font-display);
+  font-size: 34px;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  color: var(--fg-1);
+  margin: 0 0 24px 0;
+}
+.fm-welcome__hi em {
+  color: var(--rose);
+  font-style: italic;
+}
+.fm-welcome__body {
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: var(--fg-1);
+  max-width: 30ch;
+  margin: 0 0 16px 0;
+}
+.fm-welcome__meta {
+  font-size: 13px;
+  color: var(--fg-2);
+  margin: 28px 0 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.fm-welcome__meta-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.fm-welcome__meta-row .fm-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--indigo);
+  flex: 0 0 auto;
+}
+
+.fm-divider-thin {
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: var(--indigo);
+  border: 0;
+  margin: 24px 0;
+}
+
+/* ── Thank-you state ──────────────────────────────────────── */
+
+.fm-thanks {
+  padding: 80px 28px 56px;
+  background: var(--bone);
+  min-height: 720px;
+  display: flex;
+  flex-direction: column;
+}
+.fm-thanks__eyebrow {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--fg-2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+.fm-thanks__title {
+  font-family: var(--font-display);
+  font-size: 38px;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--fg-1);
+  margin: 0 0 24px 0;
+}
+.fm-thanks__title em {
+  color: var(--rose);
+  font-style: italic;
+}
+.fm-thanks__body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--fg-1);
+  margin: 0 0 14px 0;
+}
+.fm-thanks__card {
+  border-left: 1px solid var(--indigo);
+  padding: 16px 0 16px 18px;
+  margin: 28px 0;
+}
+.fm-thanks__card-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--fg-2);
+  margin-bottom: 8px;
+}
+.fm-thanks__card-date {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--fg-1);
+}
+.fm-thanks__card-sub {
+  font-size: 13px;
+  color: var(--fg-2);
+  margin-top: 4px;
+}
+
+/* ── Helper utilities ─────────────────────────────────────── */
+
+.fm-stack-12 > * + * { margin-top: 12px; }
+.fm-stack-16 > * + * { margin-top: 16px; }
+.fm-stack-24 > * + * { margin-top: 24px; }
+.fm-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.fm-row-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+.fm-readonly-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 4px 0;
+}
+
+/* Footnote / privacy line at section base */
+.fm-foot {
+  font-size: 11.5px;
+  color: var(--fg-3);
+  letter-spacing: 0.005em;
+  font-style: italic;
+  font-family: var(--font-display);
+  margin-top: 24px;
+}
+
+/* Inline pulse used in body copy */
+.fm-pulse {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--indigo);
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+/* =========================================================
+   v2.2 — additions for Section 7 layered meds, Section 11a
+   Bristol sub-card, Section 12 repeaters. Reuses the same
+   tokens; no new visual primitives.
+   ========================================================= */
+
+:root {
+  /* Reserved for the Bristol chart illustrations (dev will draw
+     the 7 stool-type icons in this hue against bone). Warm
+     terracotta — sits in the same warm family as --rose but
+     deeper, so it reads against bone without competing with
+     --indigo or muddying the lavender greys. */
+  --terracotta: #B85C3E;
+  --terracotta-15: rgba(184, 92, 62, 0.15);
+}
+
+/* ── Sub-card (one notch deeper than fm-section) ─────────── */
+/* Used for Section 11a Bristol bowel-habits inside Section 11. */
+.fm-subcard {
+  background: var(--bone-warm);
+  border: 1px solid var(--lavender-15);
+  border-radius: var(--radius-1);
+  padding: 22px 18px 20px;
+  margin: 8px 0 20px;
+}
+.fm-subcard__title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.008em;
+  color: var(--fg-1);
+  margin: 0 0 8px 0;
+}
+.fm-subcard__sub {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--fg-2);
+  margin: 0 0 18px 0;
+  max-width: 36ch;
+}
+.fm-subcard__helper {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--fg-2);
+  margin: 0 0 14px 0;
+}
+
+/* ── Bristol stool cards (Option B) ──────────────────────── */
+.fm-stool-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.fm-stool {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 12px 10px 10px;
+  background: var(--bone);
+  border: 1px solid var(--lavender-15);
+  border-radius: var(--radius-1);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color var(--dur-1) var(--ease),
+              background var(--dur-1) var(--ease);
+}
+.fm-stool:hover { border-color: var(--lavender-30); }
+.fm-stool--on {
+  border-color: var(--indigo);
+  background: var(--bone);
+}
+.fm-stool__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-1);
+  background:
+    repeating-linear-gradient(
+      135deg,
+      var(--terracotta-15) 0 6px,
+      transparent 6px 12px
+    ),
+    var(--bone-warm);
+  border: 1px solid var(--lavender-15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: ui-monospace, "SF Mono", "Menlo", monospace;
+  font-size: 9.5px;
+  color: var(--terracotta);
+  letter-spacing: 0.02em;
+  text-align: center;
+  line-height: 1.15;
+  padding: 4px;
+  box-sizing: border-box;
+}
+/* Once a real SVG icon is rendered inside the slot (BristolStoolIcon),
+   drop the placeholder stripes so the terracotta glyph reads cleanly. */
+.fm-stool__icon:has(svg) {
+  background: var(--bone-warm);
+  padding: 0;
+}
+.fm-stool__body { min-width: 0; }
+.fm-stool__name {
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--fg-1);
+  line-height: 1.3;
+  margin: 0 0 2px;
+}
+.fm-stool__desc {
+  font-size: 12.5px;
+  color: var(--fg-2);
+  line-height: 1.4;
+  margin: 0;
+}
+.fm-stool__check {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  border: 1px solid var(--lavender);
+  background: transparent;
+  position: relative;
+  transition: all var(--dur-1) var(--ease);
+}
+.fm-stool--on .fm-stool__check {
+  background: var(--indigo);
+  border-color: var(--indigo);
+}
+.fm-stool--on .fm-stool__check::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 11px;
+  border: solid var(--bone);
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(45deg);
+}
+
+/* ── Medication mini-card (Section 7 layered) ───────────── */
+.fm-medstack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
+.fm-medstack--desktop {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.fm-medcard {
+  background: var(--bone-warm);
+  border: 1px solid var(--lavender-15);
+  border-left: 2px solid var(--indigo);
+  border-radius: var(--radius-1);
+  padding: 14px 14px 16px;
+}
+.fm-medcard__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.fm-medcard__title {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fg-1);
+  line-height: 1.3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.fm-medcard__emoji {
+  font-size: 16px;
+  line-height: 1;
+}
+.fm-medcard__close {
+  background: transparent;
+  border: 0;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: var(--fg-3);
+  cursor: pointer;
+  padding: 2px 4px;
+}
+.fm-medcard__close:hover { color: var(--rose); }
+.fm-medcard__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 14px;
+}
+.fm-medcard__grid > .fm-medcard__full { grid-column: 1 / -1; }
+.fm-medcard__minilabel {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--fg-2);
+  margin-bottom: 2px;
+  font-weight: 500;
+}
+.fm-medcard .fm-input,
+.fm-medcard .fm-textarea {
+  font-size: 14px;
+  padding: 6px 0 8px;
+}
+.fm-medcard__still {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* Smaller chip variant used inside med mini-cards + bowel pattern */
+.fm-chip--xs {
+  padding: 5px 9px;
+  font-size: 12px;
+}
+
+/* Number stepper (bowel frequency) */
+.fm-stepper {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid var(--lavender-30);
+  border-radius: var(--radius-1);
+  overflow: hidden;
+  background: var(--bone);
+}
+.fm-stepper__btn {
+  width: 38px;
+  height: 38px;
+  background: transparent;
+  border: 0;
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--indigo);
+  cursor: pointer;
+}
+.fm-stepper__btn:hover { background: var(--bone-warm); }
+.fm-stepper__btn[disabled] { color: var(--lavender); cursor: not-allowed; }
+.fm-stepper__val {
+  min-width: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--fg-1);
+  border-left: 1px solid var(--lavender-15);
+  border-right: 1px solid var(--lavender-15);
+  background: var(--bone-warm);
+}
+
+/* Repeater card — distinct from inline fm-rep for the heftier
+   pregnancies/contraception rows. */
+.fm-repcard {
+  background: var(--bone);
+  border: 1px solid var(--lavender-30);
+  border-radius: var(--radius-1);
+  padding: 14px 14px 12px;
+  position: relative;
+  margin-bottom: 10px;
+}
+.fm-repcard__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.fm-repcard__num {
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--fg-2);
+  letter-spacing: 0.02em;
+}
+.fm-repcard__num em {
+  font-style: italic;
+  color: var(--indigo);
+  font-size: 15px;
+  margin-right: 6px;
+}
+.fm-repcard__remove {
+  background: transparent;
+  border: 0;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: var(--fg-3);
+  cursor: pointer;
+  padding: 2px 4px;
+}
+.fm-repcard__remove:hover { color: var(--rose); }
+.fm-repcard__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 14px;
+}
+.fm-repcard__grid > .fm-repcard__full { grid-column: 1 / -1; }
+
+/* Select styled like an underline input */
+.fm-select {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--ink);
+  background:
+    linear-gradient(45deg, transparent 50%, var(--lavender) 50%) calc(100% - 12px) calc(50% + 2px) / 5px 5px no-repeat,
+    linear-gradient(135deg, var(--lavender) 50%, transparent 50%) calc(100% - 7px) calc(50% + 2px) / 5px 5px no-repeat,
+    transparent;
+  border: 0;
+  border-bottom: 1px solid var(--lavender);
+  padding: 7px 18px 9px 0;
+  outline: none;
+  border-radius: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: border-color var(--dur-1) var(--ease);
+}
+.fm-select:focus { border-color: var(--indigo); }
+
+/* Section subhead microcopy (used in Section 6 covid vax block) */
+.fm-microcopy {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--fg-2);
+  max-width: 38ch;
+  padding: 12px 14px;
+  background: var(--bone-warm);
+  border-left: 2px solid var(--lavender);
+  margin: 8px 0 18px;
+}
+
+/* Desktop frame around a section composition */
+.fm--desktop {
+  width: 640px;
+}
+.fm--desktop .fm-section { padding: 36px 36px 44px; }
+.fm--desktop .fm-section__title { font-size: 32px; }
+.fm--desktop .fm-medstack {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}

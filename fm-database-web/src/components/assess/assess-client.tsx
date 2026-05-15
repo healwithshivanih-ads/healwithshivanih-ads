@@ -1040,95 +1040,119 @@ export function SuggestionsView({
               {delta.priorDate}
             </span>
           </div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 5, fontSize: 11 }}>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 6, fontSize: 11 }}>
+            {/* Each chip is now a <details> so the coach can click to see
+                the actual symptom names inline. The hover-only `title`
+                tooltip was unreadable / undiscoverable. */}
             {delta.newSyms.length > 0 && (
-              <span
-                title={delta.newSyms.join(", ")}
-                style={{
-                  padding: "3px 9px",
-                  background: "rgba(231, 76, 60, 0.10)",
-                  color: "#a32c1c",
-                  border: "1px solid rgba(231, 76, 60, 0.30)",
-                  borderRadius: 999,
-                  fontWeight: 600,
-                }}
-              >
-                ▲ {delta.newSyms.length} new ({delta.newSyms.slice(0, 3).join(", ")}
-                {delta.newSyms.length > 3 ? ` +${delta.newSyms.length - 3}` : ""})
-              </span>
+              <details style={{ display: "inline-block" }}>
+                <summary
+                  style={{
+                    padding: "3px 9px",
+                    background: "rgba(231, 76, 60, 0.10)",
+                    color: "#a32c1c",
+                    border: "1px solid rgba(231, 76, 60, 0.30)",
+                    borderRadius: 999,
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    listStyle: "none",
+                    display: "inline-block",
+                  }}
+                >
+                  ▲ {delta.newSyms.length} new
+                </summary>
+                <div
+                  style={{
+                    marginTop: 6,
+                    padding: "8px 10px",
+                    fontSize: 11,
+                    background: "rgba(231, 76, 60, 0.05)",
+                    border: "1px solid rgba(231, 76, 60, 0.25)",
+                    borderRadius: 6,
+                    color: "#a32c1c",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {delta.newSyms.join(", ")}
+                </div>
+              </details>
             )}
             {delta.resolved.length > 0 && (
-              <span
-                title={delta.resolved.join(", ")}
-                style={{
-                  padding: "3px 9px",
-                  background: "rgba(46, 204, 113, 0.10)",
-                  color: "#1E8449",
-                  border: "1px solid rgba(46, 204, 113, 0.30)",
-                  borderRadius: 999,
-                  fontWeight: 600,
-                }}
-              >
-                ▼ {delta.resolved.length} resolved ({delta.resolved.slice(0, 3).join(", ")}
-                {delta.resolved.length > 3 ? ` +${delta.resolved.length - 3}` : ""})
-              </span>
+              <details style={{ display: "inline-block" }}>
+                <summary
+                  style={{
+                    padding: "3px 9px",
+                    background: "rgba(46, 204, 113, 0.10)",
+                    color: "#1E8449",
+                    border: "1px solid rgba(46, 204, 113, 0.30)",
+                    borderRadius: 999,
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    listStyle: "none",
+                    display: "inline-block",
+                  }}
+                >
+                  ▼ {delta.resolved.length} resolved
+                </summary>
+                <div
+                  style={{
+                    marginTop: 6,
+                    padding: "8px 10px",
+                    fontSize: 11,
+                    background: "rgba(46, 204, 113, 0.05)",
+                    border: "1px solid rgba(46, 204, 113, 0.25)",
+                    borderRadius: 6,
+                    color: "#1E8449",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {delta.resolved.join(", ")}
+                </div>
+              </details>
             )}
             {delta.carryover.length > 0 && (
-              <span
-                title={delta.carryover.join(", ")}
-                style={{
-                  padding: "3px 9px",
-                  background: "var(--fm-surface, #fff)",
-                  color: "var(--fm-text-secondary, #5a5a5a)",
-                  border: "1px solid var(--fm-border, #e8e8e8)",
-                  borderRadius: 999,
-                  fontWeight: 600,
-                }}
-              >
-                → {delta.carryover.length} carrying over
-              </span>
+              <details style={{ display: "inline-block" }}>
+                <summary
+                  style={{
+                    padding: "3px 9px",
+                    background: "var(--fm-surface, #fff)",
+                    color: "var(--fm-text-secondary, #5a5a5a)",
+                    border: "1px solid var(--fm-border, #e8e8e8)",
+                    borderRadius: 999,
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    listStyle: "none",
+                    display: "inline-block",
+                  }}
+                >
+                  → {delta.carryover.length} carrying over
+                </summary>
+                <div
+                  style={{
+                    marginTop: 6,
+                    padding: "8px 10px",
+                    fontSize: 11,
+                    background: "var(--fm-surface, #fff)",
+                    border: "1px solid var(--fm-border, #e8e8e8)",
+                    borderRadius: 6,
+                    color: "var(--fm-text-secondary, #5a5a5a)",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {delta.carryover.join(", ")}
+                </div>
+              </details>
             )}
           </div>
         </div>
       )}
 
-      {/* ① One-sentence read — most prominent surface */}
-      {oneSentence && (
-        <div
-          style={{
-            padding: "14px 18px",
-            background:
-              "linear-gradient(135deg, rgba(43, 45, 66, 0.04), rgba(43, 45, 66, 0.08))",
-            border: "1.5px solid rgba(43, 45, 66, 0.25)",
-            borderRadius: "var(--fm-radius-md, 10px)",
-          }}
-        >
-          <div
-            style={{
-              fontSize: 10.5,
-              fontWeight: 700,
-              textTransform: "uppercase",
-              letterSpacing: 0.8,
-              color: "var(--fm-text-tertiary, #999)",
-              marginBottom: 4,
-            }}
-          >
-            ✨ AI&apos;s read
-          </div>
-          <div
-            style={{
-              fontFamily:
-                '"Libre Baskerville", Georgia, var(--fm-font-display, serif), serif',
-              fontSize: 16,
-              lineHeight: 1.4,
-              color: "var(--fm-text-primary, #1a1a1a)",
-              letterSpacing: "-0.2px",
-            }}
-          >
-            {oneSentence}
-          </div>
-        </div>
-      )}
+      {/* The "AI's read" one-sentence panel that used to live here was a
+          truncated copy of synthesis_notes (the full text renders in the
+          🤔 Synthesis notes panel below). It cut mid-word on
+          markdown-headed notes like "## Why this plan -" because the
+          regex didn't recognise the markdown. Removed — synthesis notes
+          is the canonical surface for the AI's read. */}
 
       {/* ② Differential — top 3 ranked drivers with confidence bars */}
       {top3.length > 0 && (
@@ -1659,10 +1683,44 @@ export function SuggestionsView({
               const k = `supp_${slug}`;
               const vitaoneUrl = sp.vitaone_url ?? "";
               return (
-                <div key={k} className="flex items-start justify-between gap-3 border rounded-md p-2">
+                <div
+                  key={k}
+                  className={`flex items-start justify-between gap-3 border rounded-md p-2 ${
+                    sp.continue_or_change === "stop"
+                      ? "border-red-300 bg-red-50/40"
+                      : sp.continue_or_change === "adjust"
+                        ? "border-amber-300 bg-amber-50/40"
+                        : sp.continue_or_change === "continue"
+                          ? "border-emerald-300 bg-emerald-50/30"
+                          : ""
+                  }`}
+                >
                   <div className="flex-1">
                     <div className="font-medium flex items-center gap-2 flex-wrap">
                       <span>{slug}</span>
+                      {/* Decision badge — drives the coach's eye to existing
+                          supplements that need attention (continue vs adjust
+                          vs stop) rather than treating every row as "new". */}
+                      {sp.continue_or_change === "continue" && (
+                        <span className="text-[10px] bg-emerald-100 text-emerald-800 border border-emerald-300 rounded px-1.5 py-0.5 font-bold">
+                          ✓ Continue
+                        </span>
+                      )}
+                      {sp.continue_or_change === "adjust" && (
+                        <span className="text-[10px] bg-amber-100 text-amber-800 border border-amber-300 rounded px-1.5 py-0.5 font-bold">
+                          ↻ Adjust
+                        </span>
+                      )}
+                      {sp.continue_or_change === "stop" && (
+                        <span className="text-[10px] bg-red-100 text-red-800 border border-red-300 rounded px-1.5 py-0.5 font-bold">
+                          ✕ Stop
+                        </span>
+                      )}
+                      {(!sp.continue_or_change || sp.continue_or_change === "new") && sp.is_existing && (
+                        <span className="text-[10px] bg-slate-100 text-slate-700 border border-slate-300 rounded px-1.5 py-0.5">
+                          already on file
+                        </span>
+                      )}
                       {vitaoneUrl ? (
                         <a
                           href={vitaoneUrl}
@@ -1702,19 +1760,75 @@ export function SuggestionsView({
 
       {labs.length > 0 && (
         <CollapsibleCard title="🔬 Lab follow-ups" storageKey="lab_followups">
-          <CardContent className="space-y-1 text-sm">
-            {labs.map((lf, i) => {
-              const k = `lab_${i}_${String(lf.test ?? "")}`;
-              return (
-                <div key={k} className="flex items-start justify-between gap-3 border rounded-md p-2">
-                  <div className="flex-1">
-                    <div className="font-medium">{String(lf.test ?? "?")}</div>
-                    <div className="text-xs text-muted-foreground">{String(lf.reason ?? "")}</div>
+          <CardContent className="space-y-3 text-sm">
+            {(() => {
+              // Group by timing so "order now" doesn't get mixed in with
+              // 6-/12-week rechecks (coach reported this was misleading —
+              // she'd hand the whole list to the client without realising
+              // half were future rechecks).
+              // Bucket rule: kind=new OR no due_in_weeks → "now". Otherwise
+              // a header per unique due_in_weeks value, sorted ascending.
+              type Indexed = { lf: typeof labs[number]; i: number };
+              const withIdx: Indexed[] = labs.map((lf, i) => ({ lf, i }));
+              const now: Indexed[] = [];
+              const later: Map<number, Indexed[]> = new Map();
+              for (const r of withIdx) {
+                const wks = typeof r.lf.due_in_weeks === "number" ? r.lf.due_in_weeks : undefined;
+                if (r.lf.kind === "repeat" && wks && wks > 0) {
+                  const arr = later.get(wks) ?? [];
+                  arr.push(r);
+                  later.set(wks, arr);
+                } else {
+                  now.push(r);
+                }
+              }
+              const laterGroups = [...later.entries()].sort((a, b) => a[0] - b[0]);
+
+              const renderRow = ({ lf, i }: Indexed) => {
+                const k = `lab_${i}_${String(lf.test ?? "")}`;
+                return (
+                  <div key={k} className="flex items-start justify-between gap-3 border rounded-md p-2">
+                    <div className="flex-1">
+                      <div className="font-medium">
+                        {String(lf.test ?? "?")}
+                        {lf.kind === "repeat" && (
+                          <Badge variant="outline" className="ml-2 text-[10px]">recheck</Badge>
+                        )}
+                      </div>
+                      <div className="text-xs text-muted-foreground">{String(lf.reason ?? "")}</div>
+                    </div>
+                    <Pick k={k} />
                   </div>
-                  <Pick k={k} />
-                </div>
+                );
+              };
+
+              return (
+                <>
+                  {now.length > 0 && (
+                    <section className="space-y-1">
+                      <h4 className="text-[11px] uppercase tracking-wide font-semibold text-emerald-800">
+                        📋 Order now ({now.length})
+                      </h4>
+                      <p className="text-[11px] text-muted-foreground -mt-0.5 mb-1">
+                        Hand these to the client as the immediate lab request.
+                      </p>
+                      {now.map(renderRow)}
+                    </section>
+                  )}
+                  {laterGroups.map(([wks, group]) => (
+                    <section key={wks} className="space-y-1">
+                      <h4 className="text-[11px] uppercase tracking-wide font-semibold text-indigo-800">
+                        🗓 Recheck in {wks} {wks === 1 ? "week" : "weeks"} ({group.length})
+                      </h4>
+                      <p className="text-[11px] text-muted-foreground -mt-0.5 mb-1">
+                        Re-test these to assess protocol response. Don&apos;t order at the same time as the &quot;now&quot; panel.
+                      </p>
+                      {group.map(renderRow)}
+                    </section>
+                  ))}
+                </>
               );
-            })}
+            })()}
           </CardContent>
         </CollapsibleCard>
       )}
@@ -1799,7 +1913,7 @@ export function SuggestionsView({
             >
               <span style={{ fontSize: 16 }}>✅</span>
               <span style={{ fontWeight: 700, color: "var(--fm-text-primary, #1a1a1a)" }}>
-                Action queue
+                What goes into the draft plan
               </span>
               <span
                 style={{
@@ -1811,7 +1925,7 @@ export function SuggestionsView({
                 <strong style={{ color: "var(--fm-primary, #ff6b35)" }}>
                   {selectedKeys}
                 </strong>{" "}
-                of {totalKeys} selected
+                of {totalKeys} ticked
               </span>
             </div>
             <div style={{ marginLeft: "auto", display: "flex", gap: 6 }}>
@@ -1957,11 +2071,20 @@ export function SuggestionsView({
             style={{
               fontSize: 10.5,
               color: "var(--fm-text-tertiary, #999)",
-              fontStyle: "italic",
+              lineHeight: 1.55,
             }}
           >
-            Only the {selectedKeys} ticked item{selectedKeys === 1 ? "" : "s"} flow into
-            the draft plan when you click <strong>Generate draft plan</strong> below.
+            Triage what the AI proposed: scroll up and{" "}
+            <strong>untick</strong> anything you don&apos;t agree with on the
+            individual rows. Use the chips above to toggle a whole category
+            (click the ☐/☑ next to each chip), or the buttons on the right to
+            flip everything. Only the{" "}
+            <strong style={{ color: "var(--fm-primary, #ff6b35)" }}>
+              {selectedKeys}
+            </strong>{" "}
+            ticked item{selectedKeys === 1 ? "" : "s"} will be written into the
+            new draft plan when you click <strong>Generate draft plan</strong>{" "}
+            below.
           </div>
         </div>
       )}

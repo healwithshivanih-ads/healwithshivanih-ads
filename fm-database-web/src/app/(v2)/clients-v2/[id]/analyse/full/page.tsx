@@ -69,8 +69,17 @@ export default async function FullAssessmentPage({
   // Note: in the v0.59 rename, full_assessment was folded into intake at the
   // data-model level. Intake sessions WITH ai_analysis (driver_count > 0 OR
   // synthesis_notes present) are the prior "full assessments".
+  //
+  // Also consider client-submitted intake-form quick_notes (tagged
+  // `[source: client_intake_form]`) — these are the freshest intake signal
+  // and carry derived selected_symptoms from the structured form payload.
   const intakeSessions = sessions
-    .filter((sess) => sess.session_type === "intake")
+    .filter(
+      (sess) =>
+        sess.session_type === "intake" ||
+        (sess.session_type === "quick_note" &&
+          (sess.presenting_complaints ?? "").includes("[source: client_intake_form]")),
+    )
     .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
   const latestIntake = intakeSessions[0];
 

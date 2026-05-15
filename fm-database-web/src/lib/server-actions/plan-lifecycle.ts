@@ -461,9 +461,16 @@ export interface WeightLossParams {
 
 export interface RefinedLetterResult {
   ok: boolean;
+  /** "discuss" — chat-only, no save. "finalise" — full rewrite + save. */
+  mode?: "discuss" | "finalise";
   markdown?: string | null;
   html?: string | null;
   reply?: string | null;
+  /** Pending-edits list maintained by the discuss prompt. Empty in finalise mode. */
+  pending?: string[];
+  /** True when we deliberately didn't write to disk (discuss reply, or
+   *  finalise that came back too short to trust). */
+  no_update?: boolean;
   error?: string | null;
 }
 
@@ -477,7 +484,8 @@ export async function refineLetter(
   message: string,
   history: ChatTurn[],
   planSlug?: string,
-  clientId?: string
+  clientId?: string,
+  mode: "discuss" | "finalise" = "discuss",
 ): Promise<RefinedLetterResult> {
   const result = await runShim<RefinedLetterResult>(
     "refine-letter.py",
@@ -485,13 +493,21 @@ export async function refineLetter(
       markdown: currentMarkdown,
       message,
       history,
+      mode,
       plan_slug: planSlug ?? "",
       client_id: clientId ?? "",
     },
     180_000
   );
-  // Auto-save refined version to disk
-  if (result.ok && result.markdown && planSlug && clientId) {
+  // Only saves on finalise mode AND when a real document came back.
+  if (
+    result.ok &&
+    result.mode === "finalise" &&
+    result.markdown &&
+    !result.no_update &&
+    planSlug &&
+    clientId
+  ) {
     await saveMealPlan(planSlug, clientId, result.markdown, result.html ?? null);
   }
   return result;
@@ -989,4 +1005,150 @@ export async function generateClientLetter(
   }
 
   return result;
+}
+
+
+// ---------------------------------------------------------------------------
+// v0.73 — Letter inline section extraction.
+//
+// The plan tab's GeneratedLettersPanel now embeds each week's meal grid +
+// the supplement schedule directly in collapsible iframes (no detour to a
+// new tab). This action reads the saved branded HTML once and reports the
+// section IDs present so the client component can render one iframe per
+// section, each scoped via `body[data-print-week="N"]` or
+// `body[data-print-supplement]` to leverage the existing brand-CSS
+// isolation rules in scripts/brand_html.py.
+//
+// Returns the full HTML untouched. The client component injects the body
+// attribute per iframe at render time — see plan/letter-inline-viewer.tsx.
+// ---------------------------------------------------------------------------
+
+/**
+ * One slot in the inline viewer — either a week (with its source HTML
+ * for the iframe srcdoc) or the supplement schedule. `sourceLabel` is a
+ * coach-readable tag like "consolidated" / "weeks 3–4 phase letter" so
+ * the UI can show provenance per section.
+ */
+export interface LetterWeekSource {
+  weekNumber: number;             // 1, 2, 3, …
+  html: string;                   // the full HTML doc this week lives in
+  sourceLabel: string;            // "consolidated" | "phase weeks 3–4" | …
+  savedAt: string;                // ISO mtime of the source file
+}
+
+export interface LetterSupplementsSource {
+  html: string;                   // typically from the consolidated letter
+  sourceLabel: string;
+  savedAt: string;
+}
+
+export interface LetterSectionsResult {
+  ok: boolean;
+  /** All week-N sections aggregated from consolidated + every phase letter,
+   *  deduped so each weekNumber appears at most once (phase letter wins on
+   *  conflict — it's the more recent / specific edit). Sorted ascending. */
+  weekSources?: LetterWeekSource[];
+  supplements?: LetterSupplementsSource | null;
+  /** When `ok=false` AND the consolidated letter exists as markdown-only,
+   *  caller can still link out. */
+  consolidatedSavedAt?: string;
+  error?: string;
+}
+
+/**
+ * Helper — extract week IDs (1, 2, …) present in a letter HTML string by
+ * scanning for `id="print-week-N"` anchors emitted by brand_html.py.
+ */
+function extractWeekIds(html: string): number[] {
+  return Array.from(
+    new Set(
+      Array.from(html.matchAll(/id="print-week-(\d+)"/g)).map((m) => parseInt(m[1], 10)),
+    ),
+  )
+    .filter((n) => Number.isFinite(n))
+    .sort((a, b) => a - b);
+}
+
+export async function getLetterSectionsAction(
+  planSlug: string,
+  clientId: string,
+  letterType: LetterType = "consolidated",
+): Promise<LetterSectionsResult> {
+  // 1. Load the primary letter (consolidated, by default). This is the
+  //    canonical source of the supplement schedule + weeks 1-2.
+  const primary = await loadMealPlan(planSlug, clientId, letterType);
+  if (!primary.ok || !primary.html) {
+    return {
+      ok: false,
+      error: primary.ok ? "No HTML letter saved (markdown-only)" : "Letter not found",
+      consolidatedSavedAt: primary.savedAt,
+    };
+  }
+
+  // 2. Seed weekSources from the consolidated letter.
+  const weekMap = new Map<number, LetterWeekSource>();
+  for (const n of extractWeekIds(primary.html)) {
+    weekMap.set(n, {
+      weekNumber: n,
+      html: primary.html,
+      sourceLabel: "consolidated letter",
+      savedAt: primary.savedAt ?? "",
+    });
+  }
+
+  // 3. Discover phase letters (weeks 3-4, 5-6, …) and merge their week
+  //    HTMLs in. Phase letters live on disk as
+  //    `{planSlug}-meal_plan-wk{N}-{M}.html` — read each one directly so
+  //    we don't have to special-case loadMealPlan's phase signature.
+  try {
+    const phases = await listSavedPhasesAction(planSlug, clientId);
+    const dir = path.join(getPlansRoot(), "clients", clientId, "meal-plans");
+    for (const phase of phases) {
+      const stem = `${planSlug}-meal_plan-wk${phase.startWeek}-${phase.endWeek}`;
+      const htmlPath = path.join(dir, `${stem}.html`);
+      let phaseHtml: string;
+      try {
+        phaseHtml = await fs.readFile(htmlPath, "utf-8");
+      } catch {
+        // No HTML for this phase (markdown-only generation) — skip.
+        continue;
+      }
+      const label = `phase ${phase.startWeek}–${phase.endWeek}`;
+      for (const n of extractWeekIds(phaseHtml)) {
+        // Phase letter wins over consolidated for the same week (phase
+        // letters are the most recent / targeted regeneration).
+        weekMap.set(n, {
+          weekNumber: n,
+          html: phaseHtml,
+          sourceLabel: label,
+          savedAt: phase.savedAt,
+        });
+      }
+    }
+  } catch (e) {
+    // Phase-discovery failure is non-fatal — coach still gets weeks 1-2.
+    console.error("getLetterSectionsAction: phase discovery failed", e);
+  }
+
+  // 4. Supplements section — comes from the consolidated letter only.
+  //    Phase letters intentionally don't restate the schedule (it
+  //    shouldn't drift between phases).
+  const supplements: LetterSupplementsSource | null = /id="supplement-schedule"/.test(primary.html)
+    ? {
+        html: primary.html,
+        sourceLabel: "consolidated letter",
+        savedAt: primary.savedAt ?? "",
+      }
+    : null;
+
+  const weekSources = Array.from(weekMap.values()).sort(
+    (a, b) => a.weekNumber - b.weekNumber,
+  );
+
+  return {
+    ok: true,
+    weekSources,
+    supplements,
+    consolidatedSavedAt: primary.savedAt,
+  };
 }

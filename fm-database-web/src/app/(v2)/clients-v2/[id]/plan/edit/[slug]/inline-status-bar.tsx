@@ -118,9 +118,11 @@ export function InlineStatusBar({
         </span>
       )}
 
-      {catalogueSnapshot?.git_sha && (
+      {catalogueSnapshot?.git_sha != null && catalogueSnapshot.git_sha !== "" && (
         <span style={{ fontSize: 10, color: "var(--fm-text-tertiary)", fontFamily: "var(--fm-font-mono)" }}>
-          catalogue {catalogueSnapshot.git_sha.slice(0, 7)}
+          {/* git_sha may be number when YAML parses an unquoted hex-looking
+              value (e.g. "0829934") as int. Coerce defensively. */}
+          catalogue {String(catalogueSnapshot.git_sha).slice(0, 7)}
           {catalogueSnapshot.snapshot_date ? ` @ ${catalogueSnapshot.snapshot_date}` : ""}
         </span>
       )}

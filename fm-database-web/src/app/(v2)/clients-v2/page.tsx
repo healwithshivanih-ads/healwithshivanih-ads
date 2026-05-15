@@ -31,6 +31,7 @@ import { loadAllClients, loadAllPlans } from "@/lib/fmdb/loader";
 import { loadClientSessions } from "@/lib/fmdb/loader-extras";
 import { parseSessionType } from "@/lib/fmdb/session-utils";
 import { getPlansRoot } from "@/lib/fmdb/paths";
+import { effectiveRecheckDate } from "@/lib/fmdb/plan-timing";
 import type { Client } from "@/lib/fmdb/types";
 import { FmAppShell, FmPanel, FmPageHeader } from "@/components/fm";
 import { ClientCard, ClientFilters } from "./list-client";
@@ -180,22 +181,11 @@ export default async function ClientsListV2Page({
           (activeRaw.status as string | undefined) ??
           (activeRaw._bucket as string | undefined) ??
           "draft";
-        let recheckDate = activeRaw.plan_period_recheck_date as
-          | string
-          | undefined;
-        if (
-          !recheckDate &&
-          activeRaw.plan_period_start &&
-          activeRaw.plan_period_weeks
-        ) {
-          const d = new Date(
-            `${activeRaw.plan_period_start as string}T00:00:00`,
-          );
-          d.setDate(
-            d.getDate() + (activeRaw.plan_period_weeks as number) * 7,
-          );
-          recheckDate = d.toISOString().slice(0, 10);
-        }
+        // Effective recheck date accounts for the meal-plan adoption lag
+        // (3-day default) and coach-asserted meal_plan_started_on.
+        // See lib/fmdb/plan-timing.ts.
+        const recheckDate = effectiveRecheckDate(activeRaw as Parameters<typeof effectiveRecheckDate>[0])
+          ?? (activeRaw.plan_period_recheck_date as string | undefined);
         activePlan = { slug: activeRaw.slug as string, status, recheckDate };
       }
 

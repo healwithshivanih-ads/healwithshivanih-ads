@@ -1,24 +1,29 @@
 /**
  * /dashboard-v2 — Phase 1 dashboard.
  *
- * Server-fetches client + plan + API spend + AiSensy inbox + catalogue commit
+ * Server-fetches client + plan + API spend + WhatsApp inbox + catalogue commit
  * data; renders inside <FmAppShell>. Triage sections are collapsible (client
  * component) with zero-count buckets showing a green badge + dashed empty
  * panel.
  *
  * All four engine surfaces from the legacy dashboard are preserved:
  *  - Catalogue commit banner (when files are uncommitted)
- *  - AiSensy inbound message strip (last 7 days)
+ *  - WhatsApp inbound message strip (last 7 days)
  *  - Upcoming follow-ups strip (next 7 days)
- *  - Broadcast panel (when AISENSY_API_KEY is set)
+ *  - Broadcast panel (when WHATSAPP_SERVER_URL is set)
  */
 import Link from "next/link";
 import { loadAllClients, loadAllPlans } from "@/lib/fmdb/loader";
-import { loadClientSessions, getRecentAisensyMessages } from "@/lib/fmdb/loader-extras";
+import { loadClientSessions, getRecentInboundMessages } from "@/lib/fmdb/loader-extras";
 import { parseRequestedLabs } from "@/lib/fmdb/session-utils";
+import { effectiveRecheckDate, isRecheckOverdue } from "@/lib/fmdb/plan-timing";
 import { loadApiUsageMtdAllClients } from "@/lib/server-actions/usage";
 import { getCatalogueStatus } from "@/app/catalogue-commit-action";
 import { BroadcastPanel } from "@/app/broadcast-panel";
+import { WeeklyPollPanel } from "@/components/weekly-poll-panel";
+// CatalogueIngestPanel moved to /ingest page 2026-05-15 — coach feedback:
+// belongs next to the file-upload flow, not on the dashboard.
+import { StartDateReminderPanel } from "@/components/start-date-reminder-panel";
 import {
   FmAppShell,
   FmPageHeader,
@@ -27,7 +32,7 @@ import {
   FmStatGrid,
   FmChip,
   FmCatalogueCommitBanner,
-  FmAisensyBanner,
+  FmInboundMessagesBanner,
 } from "@/components/fm";
 import { TriageSections, type TriageRow, type SignalKind } from "./triage-sections";
 
@@ -50,6 +55,11 @@ interface PlanRow {
   plan_period_recheck_date?: string;
   plan_period_start?: string;
   plan_period_weeks?: number;
+  // Coach-asserted actual start dates (delivery-to-adoption lag).
+  // When unset, effectiveRecheckDate() falls back to plan_period_start
+  // + 3 days for the meal plan. See lib/fmdb/plan-timing.ts.
+  meal_plan_started_on?: string | null;
+  supplements_started_on?: string | null;
 }
 
 const ACTIVE_BUCKETS = new Set(["draft", "ready_to_publish", "published"]);
@@ -68,22 +78,19 @@ async function computeSignal(
     return { kind: "follow_up_due", daysOverdue };
   }
 
-  // Published plan past its recheck → protocol complete.
+  // Published plan past its EFFECTIVE recheck → protocol complete.
+  // Effective recheck = effectiveMealPlanStart + plan_period_weeks × 7,
+  // i.e. it accounts for the 3-day meal-plan-adoption lag (or whatever the
+  // coach has captured via meal_plan_started_on). See lib/fmdb/plan-timing.ts.
   const overduePlan = clientPlans.find((p) => {
     if ((p._bucket ?? p.status) !== "published") return false;
-    if (p.plan_period_recheck_date) return p.plan_period_recheck_date < todayStr;
-    if (p.plan_period_start && p.plan_period_weeks && p.plan_period_weeks > 0) {
-      const recheck = new Date(p.plan_period_start + "T00:00:00");
-      recheck.setDate(recheck.getDate() + p.plan_period_weeks * 7);
-      return recheck.toISOString().slice(0, 10) < todayStr;
-    }
-    return false;
+    return isRecheckOverdue(p, todayStr);
   });
   if (overduePlan) {
     return {
       kind: "protocol_complete",
       planSlug: overduePlan.slug,
-      recheckDate: overduePlan.plan_period_recheck_date,
+      recheckDate: effectiveRecheckDate(overduePlan) ?? overduePlan.plan_period_recheck_date,
     };
   }
 
@@ -99,7 +106,7 @@ async function computeSignal(
     return {
       kind: "active",
       planSlug: activePlan.slug,
-      recheckDate: activePlan.plan_period_recheck_date,
+      recheckDate: effectiveRecheckDate(activePlan) ?? activePlan.plan_period_recheck_date,
     };
   }
 
@@ -138,11 +145,11 @@ export default async function DashboardV2() {
     getCatalogueStatus(),
   ]);
 
-  // AiSensy inbound (last 7 days)
+  // WhatsApp inbound (last 7 days)
   const clientNameMap = new Map(
     (clients as ClientRow[]).map((c) => [c.client_id, c.display_name ?? c.client_id]),
   );
-  const aisensyMessages = await getRecentAisensyMessages(
+  const inboundMessages = await getRecentInboundMessages(
     (clients as ClientRow[]).map((c) => c.client_id),
     clientNameMap,
     7,
@@ -199,8 +206,11 @@ export default async function DashboardV2() {
     )
     .sort((a, b) => (a.next_contact_date ?? "").localeCompare(b.next_contact_date ?? ""));
 
-  // Broadcast panel
-  const aisensyApiKeySet = !!process.env.AISENSY_API_KEY;
+  // Outbound WhatsApp flows via the self-hosted whatsapp-server-shivani
+  // Fly app. The broadcast / weekly-poll / start-date-reminder UIs surface
+  // as "configured" when WHATSAPP_SERVER_URL is set in .env.local.
+  // AiSensy fully decommissioned 2026-05-15.
+  const whatsappConfigured = !!process.env.WHATSAPP_SERVER_URL;
   const broadcastClientRows = (clients as ClientRow[]).map((c) => ({
     client_id: c.client_id,
     display_name: c.display_name,
@@ -276,7 +286,7 @@ export default async function DashboardV2() {
         {/* Broadcast — outbound WhatsApp to groups of clients. Promoted to
             the top per coach feedback 2026-05-13 — it's a primary daily
             action, not a "tucked at the bottom" panel. */}
-        {aisensyApiKeySet && (
+        {whatsappConfigured && (
           <BroadcastPanel
             clients={broadcastClientRows}
             followUpDueIds={followUpDueIds}
@@ -285,11 +295,29 @@ export default async function DashboardV2() {
           />
         )}
 
+        {/* 📣 Weekly check-in poll + 3-strike adherence-drop scan.
+            Always rendered so coach sees setup hint even when
+            WHATSAPP_SERVER_URL isn't set. See lib/server-actions/weekly-poll.ts
+            for the send + scan logic and api/whatsapp-webhook/route.ts
+            for inbound button-reply classification (classifyPollReply). */}
+        <WeeklyPollPanel whatsappConfigured={whatsappConfigured} />
+
+        {/* 📅 Start-date reminders — clients whose plan published >5d ago
+            but haven't confirmed meal_plan_started_on. Auto-loads on mount;
+            self-hides when the list is empty. Per-row "📨 Send reminder"
+            fires the fm_start_date_check_v1 WhatsApp template. Inbound
+            "Started 19 May" replies are parsed by start-date-parser.ts and
+            auto-update plan.meal_plan_started_on — list clears itself once
+            client confirms. See lib/server-actions/start-date-reminders.ts. */}
+        <StartDateReminderPanel whatsappConfigured={whatsappConfigured} />
+
+        {/* CatalogueIngestPanel moved to /ingest page — see ingest/page.tsx */}
+
         {/* Catalogue commit — design 9A with change list disclosure */}
         <FmCatalogueCommitBanner initialStatus={catalogueStatus} />
 
-        {/* AiSensy inbound messages — design 10A with unread badges */}
-        <FmAisensyBanner messages={aisensyMessages} windowDays={7} inboxHref="/messages" />
+        {/* WhatsApp inbound messages — design 10A with unread badges */}
+        <FmInboundMessagesBanner messages={inboundMessages} windowDays={7} inboxHref="/messages" />
 
         {/* Upcoming follow-ups (next 7 days, not yet due) */}
         {upcoming.length > 0 && (

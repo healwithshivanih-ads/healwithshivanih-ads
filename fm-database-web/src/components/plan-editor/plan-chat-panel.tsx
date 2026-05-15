@@ -119,7 +119,53 @@ function ChatBubble({ turn }: { turn: Turn }) {
 }
 
 export function PlanChatPanel({ slug, clientId, isLocked }: Props) {
+  // Chat history persistence.
+  //
+  // First attempt (yesterday) read localStorage inside `useState(() => …)`.
+  // Trouble: this component server-renders to `[]` (no window on the server)
+  // but hydrates to whatever's in localStorage on the client. React detects
+  // the state mismatch during hydration and silently discards the client
+  // state, leaving you with an empty thread — exactly the "glitch and reset"
+  // the coach was seeing.
+  //
+  // Correct pattern: start at `[]` on both server and client, then a
+  // post-mount useEffect rehydrates from localStorage. No SSR/CSR mismatch,
+  // history reliably survives every refresh / navigation.
+  const storageKey = `fm-plan-chat:${slug}`;
   const [history, setHistory] = useState<Turn[]>([]);
+  const [hydrated, setHydrated] = useState(false);
+
+  // Rehydrate once on mount. Only runs in the browser, after React has
+  // finished its initial commit, so it can't conflict with hydration.
+  useEffect(() => {
+    try {
+      const raw = window.localStorage.getItem(storageKey);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setHistory(parsed as Turn[]);
+        }
+      }
+    } catch { /* storage blocked, parse error — fall through with empty */ }
+    setHydrated(true);
+    // We intentionally only run this on mount (per storageKey). Including
+    // storageKey in deps is harmless — slug doesn't change for a given
+    // mounted instance.
+  }, [storageKey]);
+
+  // Persist on change. Guarded by `hydrated` so we never wipe a stored
+  // thread with the initial empty state before rehydration completes.
+  useEffect(() => {
+    if (!hydrated) return;
+    try {
+      if (history.length === 0) {
+        window.localStorage.removeItem(storageKey);
+      } else {
+        window.localStorage.setItem(storageKey, JSON.stringify(history));
+      }
+    } catch { /* storage may be blocked / full */ }
+  }, [history, hydrated, storageKey]);
+
   const [input, setInput] = useState("");
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
@@ -132,6 +178,13 @@ export function PlanChatPanel({ slug, clientId, isLocked }: Props) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   }, [history.length]);
+
+  function clearHistory() {
+    if (history.length === 0) return;
+    if (!confirm("Clear this chat thread? You can't undo this.")) return;
+    setHistory([]);
+    setError(null);
+  }
 
   function handleSend() {
     const msg = input.trim();
@@ -177,12 +230,29 @@ export function PlanChatPanel({ slug, clientId, isLocked }: Props) {
     <div className="flex flex-col gap-3">
       {/* Intro */}
       <div className="rounded-md bg-muted/40 border px-3 py-2.5 text-xs text-muted-foreground space-y-1">
-        <p className="font-medium text-foreground/80">💬 Ask me to modify this plan</p>
+        <div className="flex items-baseline justify-between gap-2">
+          <p className="font-medium text-foreground/80">💬 Ask me to modify this plan</p>
+          {history.length > 0 && (
+            <button
+              type="button"
+              onClick={clearHistory}
+              className="text-[10.5px] text-muted-foreground hover:text-foreground underline"
+              title="Reset this chat thread"
+            >
+              🗑 Clear ({history.length})
+            </button>
+          )}
+        </div>
         <p>Try: <em>&ldquo;Add magnesium glycinate 400mg at bedtime&rdquo;</em>, <em>&ldquo;Remove the second lab test&rdquo;</em>, <em>&ldquo;Change lifestyle to include daily 20-min walk&rdquo;</em></p>
         {isLocked ? (
           <p className="text-amber-700 font-medium">⚠ Making changes will move this plan back to Draft status.</p>
         ) : (
           <p className="text-[11px]">For meal plan letter edits, use the Export tab → Generate client documents → refinement chat.</p>
+        )}
+        {history.length > 0 && (
+          <p className="text-[10.5px] text-emerald-700">
+            ✓ Conversation auto-saved — survives refresh, navigation, and reloads.
+          </p>
         )}
       </div>
 

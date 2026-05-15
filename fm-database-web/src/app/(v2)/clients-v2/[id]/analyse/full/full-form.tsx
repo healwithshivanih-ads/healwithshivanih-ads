@@ -19,7 +19,7 @@
  *   6. After analyze: SuggestionsView + Chat + PlanBriefCard + Generate
  *      draft (all imported from legacy assess-client)
  */
-import { useEffect, useMemo, useState, useTransition } from "react";
+import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
@@ -27,6 +27,8 @@ import {
   runAssessAction,
   generateDraftAction,
   uploadFileAction,
+  loadLatestSynthesisAction,
+  autoRouteUploadedReportAction,
   type SessionSummary,
 } from "@/lib/server-actions/assess";
 import {
@@ -421,9 +423,49 @@ export function FullAssessmentForm({
 
   // Result
   const [result, setResult] = useState<AssessResult | null>(null);
+  const [rehydratedFrom, setRehydratedFrom] = useState<{ date?: string; createdAt?: string; planSlug?: string | null } | null>(null);
   const [picks, setPicks] = useState<Record<string, boolean>>({});
   const [planBrief, setPlanBrief] = useState<PlanBrief>({});
   const [error, setError] = useState<string | null>(null);
+  // Ref + freshness flag for the post-synthesis scroll. After a successful
+  // run we scroll the new results into view so the coach immediately sees
+  // the AI output — previously the button reset and the report rendered
+  // below the fold, making it look like the click hadn't gone through.
+  const resultRef = useRef<HTMLDivElement | null>(null);
+  const [justFinished, setJustFinished] = useState(false);
+
+  // Rehydrate the most recent saved synthesis on mount. Without this,
+  // every page navigation reset the button to "Run AI synthesis" even
+  // when the AI had clearly already analysed this client — coach saw a
+  // fresh button on Nidhi's page despite having a generated plan + full
+  // ai_analysis on disk, and was about to click again and burn ~$0.20.
+  useEffect(() => {
+    if (!clientId || result) return;
+    let cancelled = false;
+    (async () => {
+      const r = await loadLatestSynthesisAction(clientId);
+      if (cancelled || !r.ok || !("found" in r) || !r.found || !r.ai_analysis) return;
+      const ai = r.ai_analysis as Record<string, unknown>;
+      // Two storage shapes have existed: ai_analysis with the suggestion
+      // keys flat at the top, OR nested under ai_analysis.suggestions.
+      // Detect and reconstruct an AssessResult-shaped object either way.
+      const sugg = (ai.suggestions as Record<string, unknown> | undefined) ?? ai;
+      const rehydrated = {
+        ok: true,
+        session_id: r.session_id,
+        suggestions: sugg,
+        computed_ratios: ai.computed_ratios,
+      } as unknown as AssessResult;
+      setResult(rehydrated);
+      setRehydratedFrom({
+        date: r.date,
+        createdAt: r.created_at,
+        planSlug: r.generated_plan_slug,
+      });
+    })();
+    return () => { cancelled = true; };
+    // Only run once per client. clientId is stable for a mounted page.
+  }, [clientId, result]);
 
   // Elapsed-time tracker for the long-running Analyze call (1–5 min).
   const [analyzeStartedAt, setAnalyzeStartedAt] = useState<number | null>(null);
@@ -461,6 +503,35 @@ export function FullAssessmentForm({
             },
           ]);
           toast.success(`Uploaded ${file.name}`);
+
+          // Auto-route to the right structured pipeline so the upload
+          // also persists as a parseable record (gi_map / dutch /
+          // food_sensitivity / genetic / oat / lab_snapshot) — not just
+          // an attached PDF. This way: (1) re-runs of synthesis next
+          // week still have the findings, (2) reactive foods flow into
+          // foods_to_avoid, (3) older blood reports build chronological
+          // history via the lab_drawn snapshot date.
+          //
+          // Fire-and-forget for the food_journal kind — those aren't
+          // medical reports.
+          if (kind === "lab_report") {
+            void (async () => {
+              const route = await autoRouteUploadedReportAction(
+                clientId,
+                filePath,
+                file.name,
+                file.type || "application/pdf",
+              );
+              if (route.ok && route.summary) {
+                toast.info(route.summary, { duration: 7000 });
+              } else if (!route.ok && route.error) {
+                toast.warning(
+                  `Couldn't auto-parse ${file.name}: ${route.error.slice(0, 80)} — AI will still read the PDF inline.`,
+                  { duration: 8000 },
+                );
+              }
+            })();
+          }
         } catch (e) {
           toast.error(`Failed: ${(e as Error).message.slice(0, 80)}`);
         }
@@ -482,12 +553,35 @@ export function FullAssessmentForm({
       );
     const complaints = complaintSections.join("\n\n");
 
-    if (!complaints && uploads.length === 0) {
-      const msg = "Add a note about what's new, or upload a report.";
+    // Accept if ANY signal is present: notes/uploads OR pre-loaded
+    // symptoms/topics from intake OR a meaningful intake snapshot
+    // (chief complaint, conditions, medications, body comp). Coach should
+    // not have to re-type what the intake form already captured.
+    const hasIntakeContext =
+      !!intake?.chief_complaint?.trim() ||
+      (intake?.conditions?.length ?? 0) > 0 ||
+      (intake?.medications?.length ?? 0) > 0 ||
+      (intake?.goals?.length ?? 0) > 0 ||
+      !!intake?.body_comp?.weight_kg;
+    const hasPickedSlugs = symptoms.length > 0 || topics.length > 0;
+    if (
+      !complaints &&
+      uploads.length === 0 &&
+      !hasPickedSlugs &&
+      !hasIntakeContext
+    ) {
+      const msg = "Add a symptom, a note, or upload a report.";
       setError(msg);
       toast.error(msg);
       return;
     }
+    // If complaints is empty but other signals exist, send a brief
+    // marker so the AI knows this is an intake-driven run (no delta).
+    const effectiveComplaints =
+      complaints ||
+      (hasPickedSlugs || hasIntakeContext
+        ? "[intake-driven analysis — see attached intake snapshot + pre-loaded symptoms/topics]"
+        : "");
 
     setAnalyzeStartedAt(Date.now());
     setAnalyzeElapsedMs(0);
@@ -497,7 +591,7 @@ export function FullAssessmentForm({
           client_id: clientId,
           symptoms,
           topics,
-          complaints,
+          complaints: effectiveComplaints,
           attachments: uploads.map((u) => ({
             path: u.filePath,
             mime_type: u.mime_type,
@@ -513,6 +607,14 @@ export function FullAssessmentForm({
         } else {
           setResult(res);
           setPicks({});
+          setJustFinished(true);
+          // Bring the new synthesis into view + briefly highlight the
+          // "✓ Synthesis ready" pill so the coach doesn't think their click
+          // failed (the button itself sits above the results in the layout).
+          setTimeout(() => {
+            resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+          }, 60);
+          setTimeout(() => setJustFinished(false), 6000);
           if (res.suggestions?.synthesis_notes) {
             setPlanBrief((prev) => ({
               ...prev,
@@ -1064,10 +1166,22 @@ export function FullAssessmentForm({
       >
         <button
           type="button"
-          onClick={onAnalyze}
+          onClick={() => {
+            // Already have a result? Scroll to it rather than re-running.
+            // Re-run requires an explicit "Re-run" click via the ghost
+            // button below — protects against accidental double-spend
+            // (~$0.20 + 2 min each).
+            if (result?.ok && !pending) {
+              resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+              return;
+            }
+            onAnalyze();
+          }}
           disabled={pending}
           style={{
-            background: "var(--fm-primary)",
+            background: result?.ok
+              ? "var(--fm-success, #15803d)"
+              : "var(--fm-primary)",
             color: "#fff",
             border: 0,
             padding: "11px 22px",
@@ -1079,16 +1193,68 @@ export function FullAssessmentForm({
             opacity: pending ? 0.7 : 1,
           }}
         >
-          {pending ? `🧠 Analysing… ${analyzeSecs}s` : "🧠 Run AI synthesis"}
+          {pending
+            ? `🧠 Analysing… ${analyzeSecs}s`
+            : result?.ok
+              ? "✓ Synthesis ready — jump to results ↓"
+              : "🧠 Run AI synthesis"}
         </button>
+        {result?.ok && !pending && (
+          <button
+            type="button"
+            onClick={onAnalyze}
+            title="Discards the current synthesis and re-runs from scratch (~$0.20)"
+            style={{
+              background: "transparent",
+              color: "var(--fm-text-secondary)",
+              border: "1px solid var(--fm-border)",
+              padding: "8px 12px",
+              fontSize: 12,
+              fontWeight: 600,
+              borderRadius: "var(--fm-radius-sm)",
+              cursor: "pointer",
+              fontFamily: "inherit",
+              whiteSpace: "nowrap",
+            }}
+          >
+            🔁 Re-run
+          </button>
+        )}
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ fontSize: 12, fontWeight: 700 }}>
-            {pending ? analyzePhase : "Ready to synthesise"}
+            {pending
+              ? analyzePhase
+              : result?.ok
+                ? justFinished
+                  ? "✨ Just synthesised — scroll down for drivers, supplements, draft plan"
+                  : "Synthesised — see results below"
+                : "Ready to synthesise"}
           </div>
           <div style={{ fontSize: 11, color: "var(--fm-text-tertiary)" }}>
             {pending
               ? "AI calls take 1–5 minutes. Don't refresh."
-              : `AI reads intake, ${recentSessions.length} prior session${recentSessions.length === 1 ? "" : "s"}, ${uploads.length} new report${uploads.length === 1 ? "" : "s"}, your delta notes. Output: drivers, supplements, draft plan.`}
+              : result?.ok
+                ? rehydratedFrom?.date
+                  ? (() => {
+                      let timePart = "";
+                      if (rehydratedFrom.createdAt) {
+                        try {
+                          const d = new Date(rehydratedFrom.createdAt);
+                          if (!Number.isNaN(d.getTime())) {
+                            timePart = ` at ${d.toLocaleTimeString("en-IN", {
+                              timeZone: "Asia/Kolkata",
+                              hour: "numeric",
+                              minute: "2-digit",
+                              hour12: true,
+                            })} IST`;
+                          }
+                        } catch { /* ignore */ }
+                      }
+                      const planPart = rehydratedFrom.planSlug ? ` — generated plan ${rehydratedFrom.planSlug}` : "";
+                      return `Last synthesised ${rehydratedFrom.date}${timePart}${planPart}. Hit Re-run only after adding new uploads or delta notes (~$0.20).`;
+                    })()
+                  : "Hit Re-run only after you've added new uploads or delta notes — every run costs ~$0.20."
+                : `AI reads intake, ${recentSessions.length} prior session${recentSessions.length === 1 ? "" : "s"}, ${uploads.length} new report${uploads.length === 1 ? "" : "s"}, your delta notes. Output: drivers, supplements, draft plan.`}
           </div>
         </div>
       </div>
@@ -1109,7 +1275,23 @@ export function FullAssessmentForm({
 
       {/* ── 6. Results ─────────────────────────────────────────────── */}
       {result?.ok && result.suggestions && (
-        <>
+        <div ref={resultRef} style={{ scrollMarginTop: 90 }}>
+          {justFinished && (
+            <div
+              style={{
+                padding: "10px 14px",
+                background: "rgba(21,128,61,0.10)",
+                border: "1px solid rgba(21,128,61,0.35)",
+                borderRadius: "var(--fm-radius-sm)",
+                color: "#14532d",
+                fontSize: 12.5,
+                fontWeight: 600,
+                marginBottom: 10,
+              }}
+            >
+              ✓ Synthesis complete. Review the AI&apos;s findings below.
+            </div>
+          )}
           {result.computed_ratios && result.computed_ratios.length > 0 && (
             <ComputedRatiosCard ratios={result.computed_ratios} />
           )}
@@ -1196,7 +1378,7 @@ export function FullAssessmentForm({
               You can edit, preview, and activate from there.
             </div>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

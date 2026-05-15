@@ -232,6 +232,12 @@ export function ReworkBanner({ clientId, suggestion }: Props) {
               >
                 Snooze 7 days
               </button>
+              <a
+                href={`/clients-v2/${clientId}/analyse/full`}
+                className="px-3 py-1.5 rounded text-xs border border-indigo-300 bg-indigo-50 text-indigo-700 hover:bg-indigo-100"
+              >
+                🧠 Run full assessment now
+              </a>
               <button
                 disabled={pending}
                 onClick={onRework}

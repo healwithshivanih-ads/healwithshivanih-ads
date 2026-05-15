@@ -1,4 +1,5 @@
 import { IngestClient } from "./ingest-client";
+import { CatalogueIngestPanel } from "@/components/catalogue-ingest-panel";
 import { FmAppShell } from "@/components/fm";
 
 export const dynamic = "force-dynamic";
@@ -27,6 +28,13 @@ export default function IngestPage() {
       </div>
 
       <IngestClient />
+
+      {/* 📚 Catalogue paste-ingest — moved from dashboard 2026-05-15.
+          Drop YAML from a Claude.ai subscription chat into the textarea
+          and run it through the same validator without spending API credit
+          on synthesis. Better home than the dashboard since both flows
+          (file upload above + paste below) belong to the same surface. */}
+      <CatalogueIngestPanel />
     </div>
     </FmAppShell>
   );

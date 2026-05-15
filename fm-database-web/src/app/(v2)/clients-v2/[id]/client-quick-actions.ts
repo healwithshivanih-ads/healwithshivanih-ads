@@ -2,6 +2,15 @@
  * Shared client-context quick-action list — used by every /clients-v2/[id]/*
  * shell so the floating FAB shows the same client-scoped actions everywhere
  * the coach is "inside" a client.
+ *
+ * Curated to ONLY things truly "quick" — coach launches in <2 min, often
+ * mid-conversation or right after hanging up. Workflows and viewers go
+ * elsewhere:
+ *   - Full assessment → primary CTA on the client page header (30–45 min
+ *     workflow, not a side-action).
+ *   - Past sessions → the Sessions tab (`?tab=sessions`).
+ *   - Send letters → Plan tab → 📤 Send package.
+ *   - Doctor handoff packet → per-session button or page header overflow.
  */
 import type { FmFloatingActionItem } from "@/components/fm";
 
@@ -22,32 +31,18 @@ export function clientQuickActions(clientId: string): FmFloatingActionItem[] {
       href: `/clients-v2/${clientId}/analyse/checkin`,
     },
     {
-      id: "full-assessment",
-      icon: "🔬",
-      label: "Full assessment",
-      hint: "AI synthesis from intake + reports",
-      href: `/clients-v2/${clientId}/analyse/full`,
-    },
-    {
-      id: "communicate",
+      id: "quick-message",
       icon: "📤",
-      label: "Send letters / message",
-      hint: "Letters, templates, WhatsApp",
+      label: "Quick message",
+      hint: "Templated WhatsApp — one-tap send",
       href: `/clients-v2/${clientId}/communicate`,
     },
     {
-      id: "sessions",
-      icon: "🗓",
-      label: "Past sessions",
-      hint: "Every prior session + AI synthesis inspector",
-      href: `/clients-v2/${clientId}/sessions`,
-    },
-    {
-      id: "handoff",
+      id: "soap",
       icon: "📋",
       label: "SOAP Note",
-      hint: "Print-ready SOAP note — for a referring doctor / specialist",
-      href: `/clients-v2/${clientId}/handoff`,
+      hint: "One-page S/O/A/P record — print or share for the file",
+      href: `/clients-v2/${clientId}/soap`,
     },
   ];
 }

@@ -128,7 +128,7 @@ export function MessageCapturePanel({ clientId, onNoteSaved }: Props) {
         <div>
           <div className="font-medium text-sm flex items-center gap-1.5">💬 Capture client message</div>
           <p className="text-xs text-muted-foreground mt-0.5">
-            Paste a WhatsApp / AiSensy / email message. AI extracts clinical content and creates a quick note.
+            Paste a WhatsApp or email message. AI extracts clinical content and creates a quick note.
           </p>
         </div>
         <button

@@ -17,7 +17,7 @@ import {
   assessReworkBenefitAction,
   type FunctionalTestSummary,
 } from "@/lib/server-actions/clients";
-import { uploadFileAction } from "@/lib/server-actions/assess";
+import { uploadFileAction, checkDuplicateUploadAction } from "@/lib/server-actions/assess";
 
 interface Props {
   clientId: string;
@@ -42,6 +42,11 @@ export function FunctionalTestPanel({ clientId }: Props) {
   const [parseError, setParseError] = useState<string | null>(null);
   const [, startTransition] = useTransition();
   const [expandedFile, setExpandedFile] = useState<string | null>(null);
+  // Last uploaded file path — kept so the coach can override the test type
+  // when auto-detection fails (some lab PDFs lose the brand header on
+  // extraction; the rest of the report is still parseable).
+  const [lastFilePath, setLastFilePath] = useState<string | null>(null);
+  const [forcedType, setForcedType] = useState<"dutch" | "gi_map" | null>(null);
 
   useEffect(() => {
     let alive = true;
@@ -57,40 +62,102 @@ export function FunctionalTestPanel({ clientId }: Props) {
     setTests(r.tests);
   };
 
+  const runParse = (filePath: string, testType?: "dutch" | "gi_map") => {
+    setIsParsing(true);
+    setParseError(null);
+    startTransition(async () => {
+      const result = await parseFunctionalTestAction(
+        clientId,
+        filePath,
+        testType ? { testType } : undefined,
+      );
+      if (!result.ok) {
+        setParseError(result.error ?? "Parse failed");
+        toast.error(`Parse failed: ${(result.error ?? "").slice(0, 80)}`);
+      } else if (result.test_type === "unknown") {
+        setParseError(
+          "Could not identify test type. Pick the test below and we'll re-parse the same file.",
+        );
+        toast.error("Test type not recognised — pick manually below");
+      } else {
+        const label = TEST_LABEL[result.test_type ?? "unknown"];
+        if (result.duplicate) {
+          toast.info(
+            `📎 ${label} — this file was already parsed for this client. Showing existing record (no re-parse).`,
+            { duration: 6000 },
+          );
+        } else {
+          toast.success(`✅ ${label} parsed — ${result.flagged_drivers?.length ?? 0} drivers flagged`);
+        }
+        setLastFilePath(null);
+        setForcedType(null);
+        await refresh();
+
+        // Fire-and-forget AI rework assessment.
+        const drivers = (result.flagged_drivers ?? []).slice(0, 8).join(", ");
+        const summary = result.summary ? `${result.summary}` : `${label} parsed`;
+        void assessReworkBenefitAction({
+          clientId,
+          triggeredBy: "functional_test",
+          eventSummary: `${label} findings: ${summary}${drivers ? ` | Drivers: ${drivers}` : ""}`,
+        });
+      }
+      setIsParsing(false);
+    });
+  };
+
   const handleFile = async (file: File) => {
     setIsParsing(true);
     setParseError(null);
     try {
+      // Pre-upload SHA-256 dedup. If the same PDF (any filename) is already
+      // on file for this client, ask before re-parsing — a Sonnet parse is
+      // ~$0.30–0.60. The parser also dedupes server-side, but blocking on
+      // the UI side avoids a confusing "duplicate" toast appearing AFTER
+      // a 60-second wait.
+      const buf0 = await file.arrayBuffer();
+      const bin = new Uint8Array(buf0);
+      let b64 = "";
+      const CHUNK = 0x8000;
+      for (let i = 0; i < bin.length; i += CHUNK) {
+        b64 += String.fromCharCode.apply(
+          null,
+          Array.from(bin.subarray(i, i + CHUNK)),
+        );
+      }
+      const base64Bytes = typeof window !== "undefined" ? window.btoa(b64) : "";
+      const dupCheck = await checkDuplicateUploadAction(clientId, base64Bytes);
+      if (dupCheck.ok && dupCheck.duplicate) {
+        const proceed = window.confirm(
+          `This file is already on disk for this client:\n\n` +
+          `  📄 ${dupCheck.existing_filename}\n` +
+          `  uploaded ${dupCheck.existing_uploaded_at?.slice(0, 10) ?? "earlier"}\n\n` +
+          `If a functional-test parse already exists for it, the existing record will be shown. ` +
+          `Otherwise we'll parse the existing copy without re-uploading.\n\n` +
+          `OK = continue · Cancel = leave it`,
+        );
+        if (!proceed) {
+          setIsParsing(false);
+          return;
+        }
+        // Use the existing path — no re-upload.
+        setLastFilePath(dupCheck.existing_path ?? null);
+        setForcedType(null);
+        if (dupCheck.existing_path) {
+          runParse(dupCheck.existing_path);
+        } else {
+          setIsParsing(false);
+        }
+        return;
+      }
+
       const fd = new FormData();
       fd.append("client_id", clientId);
       fd.append("file", file);
       const filePath = await uploadFileAction(fd);
-      startTransition(async () => {
-        const result = await parseFunctionalTestAction(clientId, filePath);
-        if (!result.ok) {
-          setParseError(result.error ?? "Parse failed");
-          toast.error(`Parse failed: ${(result.error ?? "").slice(0, 80)}`);
-        } else {
-          if (result.test_type === "unknown") {
-            setParseError("Could not identify test type. Currently supported: DUTCH, GI-MAP.");
-            toast.error("Test type not recognised");
-          } else {
-            const label = TEST_LABEL[result.test_type ?? "unknown"];
-            toast.success(`✅ ${label} parsed — ${result.flagged_drivers?.length ?? 0} drivers flagged`);
-            await refresh();
-
-            // Fire-and-forget AI rework assessment.
-            const drivers = (result.flagged_drivers ?? []).slice(0, 8).join(", ");
-            const summary = result.summary ? `${result.summary}` : `${label} parsed`;
-            void assessReworkBenefitAction({
-              clientId,
-              triggeredBy: "functional_test",
-              eventSummary: `${label} findings: ${summary}${drivers ? ` | Drivers: ${drivers}` : ""}`,
-            });
-          }
-        }
-        setIsParsing(false);
-      });
+      setLastFilePath(filePath);
+      setForcedType(null);
+      runParse(filePath);
     } catch (e) {
       setParseError(String(e));
       setIsParsing(false);
@@ -153,9 +220,35 @@ export function FunctionalTestPanel({ clientId }: Props) {
           </label>
 
           {parseError && (
-            <p className="text-xs rounded-md bg-red-50 border border-red-200 px-2 py-1.5 text-red-700">
-              {parseError}
-            </p>
+            <div className="text-xs rounded-md bg-red-50 border border-red-200 px-2 py-2 text-red-700 space-y-2">
+              <p>{parseError}</p>
+              {lastFilePath && parseError.toLowerCase().includes("identify test type") && (
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="text-[11px] text-red-800/80">Force as:</span>
+                  <button
+                    type="button"
+                    onClick={() => { setForcedType("gi_map"); runParse(lastFilePath, "gi_map"); }}
+                    disabled={isParsing}
+                    className="text-[11px] font-semibold px-2 py-1 rounded bg-white border border-red-300 text-red-900 hover:bg-red-100"
+                  >
+                    🦠 GI-MAP
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => { setForcedType("dutch"); runParse(lastFilePath, "dutch"); }}
+                    disabled={isParsing}
+                    className="text-[11px] font-semibold px-2 py-1 rounded bg-white border border-red-300 text-red-900 hover:bg-red-100"
+                  >
+                    🧬 DUTCH
+                  </button>
+                  {isParsing && forcedType && (
+                    <span className="text-[11px] text-red-800 animate-pulse">
+                      Re-parsing as {forcedType === "gi_map" ? "GI-MAP" : "DUTCH"}…
+                    </span>
+                  )}
+                </div>
+              )}
+            </div>
           )}
 
           {/* Test list */}

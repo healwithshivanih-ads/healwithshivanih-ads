@@ -1,7 +1,8 @@
 /**
- * /messages — Phase 1 stub. Phase 5 will host: AiSensy unmatched inbox
- * (~/fm-plans/_aisensy_unmatched.yaml), per-client thread view, manual
- * paste capture, message templates editor, mail-merge UI.
+ * /messages — Phase 1 stub. Phase 5 will host: WhatsApp unmatched inbox
+ * (unmatched messages from the self-hosted WA server webhook),
+ * per-client thread view, manual paste capture, message templates editor,
+ * mail-merge UI.
  *
  * For now the dashboard banner + per-client Communicate tab cover the
  * paths the coach actually uses today.
@@ -16,7 +17,7 @@ export default function MessagesStub() {
     <FmAppShell activeNavId="messages" crumbs={[{ label: "Messages" }]}>
       <FmPageHeader
         title="Messages"
-        subtitle="Coming in Phase 5 — AiSensy unmatched inbox + per-client threads + templates editor."
+        subtitle="Coming in Phase 5 — WhatsApp unmatched inbox + per-client threads + templates editor."
       />
       <FmPanel>
         <div style={{ padding: "32px 16px", textAlign: "center" }}>
@@ -40,9 +41,9 @@ export default function MessagesStub() {
               lineHeight: 1.55,
             }}
           >
-            Will surface AiSensy unmatched messages (the green banner on the
-            dashboard) as a proper inbox, plus per-client threads and the
-            existing message templates panel.
+            Will surface unmatched WhatsApp messages (the green banner on
+            the dashboard) as a proper inbox, plus per-client threads and
+            the existing message templates panel.
           </p>
           <div style={{ display: "flex", gap: 8, justifyContent: "center" }}>
             <Link

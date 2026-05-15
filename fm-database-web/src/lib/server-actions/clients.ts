@@ -984,6 +984,12 @@ export interface UpdatePreferencesInput {
     | "lactating";
   pregnancy_due_date?: string;
   lactation_started?: string;
+
+  // Per-client letter preferences. Coach toggles which letter types this
+  // client should receive (some refuse supplements, exercise plan is opt-in).
+  // Allowed values: consolidated | meal_plan | supplement_plan |
+  // lifestyle_guide | exercise_plan. Default on Python model: ["consolidated"].
+  letter_types_active?: string[];
 }
 
 export type UpdatePreferencesResult =
@@ -1040,6 +1046,8 @@ export async function updateClientPreferences(
     if (input.pregnancy_status !== undefined) data.pregnancy_status = input.pregnancy_status;
     if (input.pregnancy_due_date !== undefined) data.pregnancy_due_date = input.pregnancy_due_date;
     if (input.lactation_started !== undefined) data.lactation_started = input.lactation_started;
+
+    if (input.letter_types_active !== undefined) data.letter_types_active = input.letter_types_active;
 
     // bump updated_at
     data.updated_at = new Date().toISOString();
@@ -1293,7 +1301,7 @@ export async function deleteReportAction(clientId: string, reportId: string): Pr
   }
 }
 
-// ── Parse client message (WhatsApp / AiSensy) ────────────────────────────────
+// ── Parse client message (WhatsApp inbound or pasted text) ───────────────────
 
 export interface ParsedClientMessage {
   symptoms_improved: string[];
@@ -1369,7 +1377,7 @@ export async function loadActivePlanItemsAction(planSlug: string): Promise<LoadP
   }
 }
 
-// ── AiSensy webhook — match phone to client ───────────────────────────────────
+// ── WhatsApp webhook — match phone to client ─────────────────────────────────
 
 export interface WebhookClientMatch {
   ok: boolean;
@@ -2130,6 +2138,10 @@ export interface FunctionalTestResult {
   flagged_drivers?: string[];
   clinical_recommendations?: string[];
   file_path?: string;
+  /** True when the parser recognised this exact PDF was already on file
+   *  (by SHA-256 of source bytes) and returned the existing record
+   *  instead of re-parsing. No new $0.30–0.60 Sonnet call charged. */
+  duplicate?: boolean;
   error?: string;
 }
 

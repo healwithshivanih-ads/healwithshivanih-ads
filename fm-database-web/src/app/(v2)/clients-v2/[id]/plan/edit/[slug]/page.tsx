@@ -41,6 +41,8 @@ import { FloatingChatBubble } from "./floating-chat-bubble";
 import { ClientSnapshotCard } from "./client-snapshot-card";
 import { AIReadCard } from "./ai-read-card";
 import { InlineStatusBar } from "./inline-status-bar";
+import { PlanStartDatesPanel } from "./plan-start-dates-panel";
+import { StartConfirmLinkButton } from "./start-confirm-link-button";
 import { loadClientById, loadClientSessions } from "@/lib/fmdb/loader-extras";
 import { DeletePlanButton } from "@/components/plan-editor/delete-plan-button";
 import { SendToClientButton } from "@/components/plan-editor/send-to-client-modal";
@@ -304,6 +306,73 @@ export default async function V2PlanEditorPage({
             topDrivers={topDrivers}
             reworkSuggestion={reworkSuggestion ?? null}
           />
+
+          {/* 📅 Effective-start capture — only meaningful AFTER the plan
+              is published. Pre-publish, the PlanTimelineCard inside the
+              editor handles start-date / duration / recheck planning;
+              showing this panel too created a confusing overlap with two
+              start-date inputs and two recheck readouts on the same page.
+              Once the plan is live, this panel takes over to capture the
+              client's actual start date (typically days after delivery)
+              which drives the effective recheck. See plan-timing.ts. */}
+          {status === "published" && (
+            <PlanStartDatesPanel
+              planSlug={plan.slug}
+              planPeriodStart={
+                (plan as { plan_period_start?: string }).plan_period_start ?? null
+              }
+              planPeriodWeeks={
+                (plan as { plan_period_weeks?: number }).plan_period_weeks ?? null
+              }
+              mealPlanStartedOn={
+                (plan as { meal_plan_started_on?: string | null }).meal_plan_started_on ?? null
+              }
+              supplementsStartedOn={
+                (plan as { supplements_started_on?: string | null }).supplements_started_on ?? null
+              }
+            />
+          )}
+
+          {/* 📅 Sibling panel: tokenised /start/<token> public link that the
+              client taps to confirm meal_plan_started_on herself. Only
+              meaningful for PUBLISHED plans — there's nothing for the
+              client to "start" until the plan is live. Hiding it on
+              draft / ready_to_publish removes a chunk of dashboard noise.
+              See start-confirm-link-button.tsx + start-date-action.py. */}
+          {status === "published" && (() => {
+            const planPeriodStart = (plan as { plan_period_start?: string }).plan_period_start ?? null;
+            let defaultStartDate: string | null = null;
+            if (planPeriodStart) {
+              try {
+                const d = new Date(planPeriodStart + "T00:00:00");
+                d.setDate(d.getDate() + 3);
+                defaultStartDate = d.toISOString().slice(0, 10);
+              } catch {
+                defaultStartDate = planPeriodStart;
+              }
+            }
+            const planTyped = plan as {
+              start_confirmation_token?: string | null;
+              start_confirmation_expires_at?: string | null;
+              start_confirmation_used_at?: string | null;
+              meal_plan_started_on?: string | null;
+            };
+            return (
+              <StartConfirmLinkButton
+                planSlug={plan.slug}
+                displayName={planClient?.display_name ?? null}
+                mobileNumber={
+                  (planClient as { mobile_number?: string | null } | undefined)
+                    ?.mobile_number ?? null
+                }
+                defaultStartDate={defaultStartDate}
+                existingToken={planTyped.start_confirmation_token ?? null}
+                existingExpiresAt={planTyped.start_confirmation_expires_at ?? null}
+                usedAt={planTyped.start_confirmation_used_at ?? null}
+                confirmedDate={planTyped.meal_plan_started_on ?? null}
+              />
+            );
+          })()}
 
           <PlanEditor
             plan={editable}

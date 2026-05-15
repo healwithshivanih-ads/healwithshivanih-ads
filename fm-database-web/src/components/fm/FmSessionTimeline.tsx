@@ -21,6 +21,10 @@ export interface FmSessionTimelineEntry {
   type: FmSessionTypeId | string;
   /** "May 1" or ISO date. */
   date: string;
+  /** Optional full ISO timestamp (created_at) — when present, renders
+   *  HH:MM IST next to the date so multiple runs on the same day are
+   *  distinguishable. */
+  timestamp?: string;
   /** Pre-computed relative age string e.g. "11 days ago". */
   age?: string;
   /** Title shown next to the date. */
@@ -158,6 +162,24 @@ export function FmSessionTimeline({
                       }}
                     >
                       {s.date}
+                      {s.timestamp && (() => {
+                        // Render the HH:MM IST tag next to the date so
+                        // multiple synthesis runs on the same day are
+                        // distinguishable at a glance.
+                        try {
+                          const d = new Date(s.timestamp);
+                          if (Number.isNaN(d.getTime())) return null;
+                          const t = d.toLocaleTimeString("en-IN", {
+                            timeZone: "Asia/Kolkata",
+                            hour: "numeric",
+                            minute: "2-digit",
+                            hour12: true,
+                          });
+                          return ` · ${t} IST`;
+                        } catch {
+                          return null;
+                        }
+                      })()}
                       {s.age && ` · ${s.age}`}
                     </span>
                   </div>

@@ -154,6 +154,11 @@ class SupplementSuggestion(BaseModel):
     evidence_tier_caveat: str = ""
     contraindication_check: str = ""
     vitaone_url: str = ""  # Set when this suggestion maps to a product in vitaone_inventory.
+    # v2.4: surface explicit continue/adjust/stop decisions for supplements
+    # the client is already taking. Coach renders different badges per
+    # decision so she can scan the protocol in seconds.
+    is_existing: bool = False
+    continue_or_change: str = "new"  # "new" | "continue" | "adjust" | "stop"
 
 
 class FactorScores(BaseModel):

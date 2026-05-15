@@ -8,10 +8,11 @@
  * Send via WhatsApp.
  *
  * Wraps the existing draftFollowUpMessageAction (Haiku, Shivani's voice).
- * The "Send via WhatsApp" wiring uses the existing AiSensy direct-API flow;
- * since that requires a registered campaign template (not free-form text),
- * the button defaults to Copy + open WhatsApp Web. A later commit can wire
- * a freeform-text campaign once we register one with AiSensy.
+ * The "Send via WhatsApp" wiring uses the self-hosted WhatsApp server;
+ * since template send requires a Meta-approved template (not free-form
+ * text), the button defaults to Copy + open WhatsApp Web. A later commit
+ * can wire a freeform-text send through the server once we have a
+ * registered "open-text" template approved.
  */
 import { useEffect, useState, useTransition } from "react";
 import { toast } from "sonner";

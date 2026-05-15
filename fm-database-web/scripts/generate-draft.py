@@ -211,6 +211,18 @@ def main() -> int:
         updated_by="shivani",
     )
 
+    # Carry the symptoms the coach actually selected during the analyse
+    # session into plan.presenting_symptoms. Without this every fresh draft
+    # tripped the "no presenting_symptoms — was this captured at intake?"
+    # INFO finding on plan-check, which was misleading: the symptoms WERE
+    # captured (on the session), they just weren't being copied across.
+    # Filter to catalogue-valid slugs so the xref check stays clean.
+    if getattr(sess, "selected_symptoms", None):
+        valid_sym_slugs = {s.slug for s in _cat.symptoms}
+        plan.presenting_symptoms = [
+            s for s in sess.selected_symptoms if s in valid_sym_slugs
+        ]
+
     # Track drivers so we don't double-add when a "topic" slug is really a mechanism.
     _driver_slugs_seen: set[str] = set()
 

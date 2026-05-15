@@ -7,71 +7,97 @@ import yaml from "js-yaml";
 import { loadAllClients } from "@/lib/fmdb/loader";
 
 const PLANS_ROOT = process.env.FMDB_PLANS_DIR ?? path.join(os.homedir(), "fm-plans");
-const AISENSY_API_URL = "https://backend.aisensy.com/direct-apis/t1/create-message";
 
-// ── Phone normalisation ───────────────────────────────────────────────────────
+// ── Backend: self-hosted WhatsApp Cloud API server only ──────────────────────
+// AiSensy backend removed 2026-05-15 — fully decommissioned in favour of the
+// self-hosted WA server (Fly app: whatsapp-server-shivani). Single source of
+// truth for outbound WhatsApp across fm-coach + ochre-followup. AISENSY_*
+// env vars on Fly secrets are safe to delete after deploy.
 
-/**
- * Normalise a phone number to E.164 format without the leading +.
- * - Strips spaces, dashes, parens, dots
- * - Strips leading + if present
- * - Prepends "91" if exactly 10 digits (Indian mobile)
- */
-function normaliseToE164(phone: string): string {
-  let n = phone.replace(/[\s\-().+]/g, "");
-  if (n.length === 10 && /^[6-9]/.test(n)) {
-    n = "91" + n;
-  }
-  return n;
+const WA_SERVER_URL = (process.env.WHATSAPP_SERVER_URL ?? "").replace(/\/$/, "");
+const WA_SERVER_API_KEY = process.env.WHATSAPP_SERVER_API_KEY ?? "";
+
+function isWhatsappConfigured(): boolean {
+  return !!(WA_SERVER_URL && WA_SERVER_API_KEY);
 }
+
+// normaliseToE164 removed 2026-05-15 — only used by the removed AiSensy
+// backend. The WA server accepts the phone string as-is and handles
+// normalisation server-side.
 
 // ── Single send ───────────────────────────────────────────────────────────────
 
+/**
+ * Send a templated WhatsApp message via the self-hosted WhatsApp Cloud API
+ * server. `campaignName` is the Meta-approved template name (parameter name
+ * kept for back-compat with existing call sites).
+ */
 export async function sendWhatsAppAction(
   phone: string,
   campaignName: string,
-  templateParams: string[]
-): Promise<{ ok: boolean; error?: string }> {
-  const apiKey = process.env.AISENSY_API_KEY;
-  if (!apiKey) {
-    return { ok: false, error: "AISENSY_API_KEY not set in environment" };
+  templateParams: string[],
+  opts?: { name?: string; templateLanguage?: string }
+): Promise<{ ok: boolean; error?: string; backend?: "wa_server" }> {
+  if (!phone?.trim()) return { ok: false, error: "Phone number required" };
+
+  if (!isWhatsappConfigured()) {
+    return {
+      ok: false,
+      error:
+        "WhatsApp not configured. Set WHATSAPP_SERVER_URL and WHATSAPP_SERVER_API_KEY in .env.local.",
+    };
   }
 
-  const destination = normaliseToE164(phone);
-  if (!destination || destination.length < 10) {
-    return { ok: false, error: `Invalid phone number: ${phone}` };
-  }
+  return sendViaWaServer(phone, campaignName, templateParams, opts);
+}
 
+async function sendViaWaServer(
+  phone: string,
+  templateName: string,
+  templateParams: string[],
+  opts?: { name?: string; templateLanguage?: string }
+): Promise<{ ok: boolean; error?: string; backend: "wa_server" }> {
   const body = {
-    apiKey,
-    campaignName,
-    destination,
-    userName: "Shivani Hari",
-    source: "fm-coach",
-    media: {},
+    phone,
+    name: opts?.name,
+    type: "template",
+    templateName,
+    templateLanguage: opts?.templateLanguage ?? "en",
     templateParams,
-    tags: [],
-    attributes: {},
+    origin: "api",
+    originRef: "fm-coach",
   };
 
   try {
-    const res = await fetch(AISENSY_API_URL, {
+    const res = await fetch(`${WA_SERVER_URL}/api/send`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "x-api-key": WA_SERVER_API_KEY },
       body: JSON.stringify(body),
     });
 
-    if (!res.ok) {
-      const text = await res.text();
-      return { ok: false, error: `AiSensy API error ${res.status}: ${text.slice(0, 200)}` };
-    }
+    const json = (await res.json().catch(() => ({}))) as {
+      ok?: boolean;
+      error?: string;
+      code?: string;
+    };
 
-    return { ok: true };
+    if (!res.ok || json.ok === false) {
+      const detail = json.error ?? `HTTP ${res.status}`;
+      const code = json.code ? ` [${json.code}]` : "";
+      return { ok: false, error: `WhatsApp server${code}: ${detail}`, backend: "wa_server" };
+    }
+    return { ok: true, backend: "wa_server" };
   } catch (err) {
     const e = err as { message?: string };
-    return { ok: false, error: e.message ?? "Network error calling AiSensy API" };
+    return {
+      ok: false,
+      error: e.message ?? "Network error calling WhatsApp server",
+      backend: "wa_server",
+    };
   }
 }
+
+// sendViaAisensy removed 2026-05-15. AiSensy fully decommissioned.
 
 // ── Broadcast ─────────────────────────────────────────────────────────────────
 
@@ -84,24 +110,28 @@ export async function broadcastAction(
   let sent = 0;
   let failed = 0;
 
-  // Load all clients to get phone numbers
   const allClients = await loadAllClients();
   const clientMap = new Map(
     (allClients as Array<Record<string, unknown>>).map((c) => [
       c.client_id as string,
-      c.mobile_number as string | undefined,
+      {
+        phone: c.mobile_number as string | undefined,
+        name: c.display_name as string | undefined,
+      },
     ])
   );
 
   for (const clientId of clientIds) {
-    const phone = clientMap.get(clientId);
-    if (!phone?.trim()) {
+    const entry = clientMap.get(clientId);
+    if (!entry?.phone?.trim()) {
       errors.push(`${clientId}: no mobile number on file`);
       failed++;
       continue;
     }
 
-    const result = await sendWhatsAppAction(phone, campaignName, templateParams);
+    const result = await sendWhatsAppAction(entry.phone, campaignName, templateParams, {
+      name: entry.name,
+    });
     if (result.ok) {
       sent++;
     } else {
@@ -115,8 +145,14 @@ export async function broadcastAction(
 
 // ── Config check ──────────────────────────────────────────────────────────────
 
-export async function checkAisensyConfigAction(): Promise<{ configured: boolean }> {
-  return { configured: !!(process.env.AISENSY_API_KEY) };
+export async function checkWhatsAppConfigAction(): Promise<{
+  configured: boolean;
+  backend: "wa_server" | null;
+}> {
+  return {
+    configured: isWhatsappConfigured(),
+    backend: isWhatsappConfigured() ? "wa_server" : null,
+  };
 }
 
 // ── Message templates ─────────────────────────────────────────────────────────
@@ -179,7 +215,6 @@ export async function loadMessageTemplatesAction(): Promise<MessageTemplate[]> {
   } catch {
     // File doesn't exist — write defaults and return them
   }
-  // Write defaults
   try {
     await fs.mkdir(PLANS_ROOT, { recursive: true });
     await fs.writeFile(TEMPLATES_FILE, yaml.dump(DEFAULT_TEMPLATES, { lineWidth: 120 }), "utf-8");

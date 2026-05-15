@@ -262,12 +262,34 @@ def main() -> int:
                 line += f" — {head[:90]}"
         applied_log.append(line)
 
+    def _merge_evidence(existing: list[str], incoming: list[str]) -> list[str]:
+        """Union of existing + incoming intake_evidence, dedup case-insensitive,
+        preserve order. Used when a rework change targets an existing plan
+        item — we keep the original citations and append any new ones the
+        rework AI surfaced."""
+        seen = {e.strip().lower() for e in (existing or [])}
+        out = list(existing or [])
+        for e in incoming or []:
+            e2 = e.strip()
+            if e2 and e2.lower() not in seen:
+                out.append(e2)
+                seen.add(e2.lower())
+        return out
+
     for c in changes:
         op = (c.get("op") or "").strip()
         kind = (c.get("target_kind") or "").strip()
         slug = (c.get("target_slug") or "").strip() or None
         description = (c.get("description") or "").strip()
         reason = (c.get("reason") or "").strip()
+        # v0.72: intake_evidence — short coach-readable phrases the rework AI
+        # populated to cite the intake observations that justified this change.
+        # Propagated onto the target Plan sub-model so the coach sees the
+        # audit chip inline on the SupplementItem / PracticeItem / LabOrderItem.
+        change_evidence = c.get("intake_evidence") or []
+        if not isinstance(change_evidence, list):
+            change_evidence = []
+        change_evidence = [str(e).strip() for e in change_evidence if str(e).strip()]
         if not op or not kind:
             continue
 
@@ -278,6 +300,7 @@ def main() -> int:
                     plan.supplement_protocol.append(SupplementItem(
                         supplement_slug=_slug_from_name(description[:60] or "supplement-tbd"),
                         coach_rationale=f"[rework] {description}\n{reason}".strip(),
+                        intake_evidence=change_evidence,
                     ))
                     applied += 1
                     _record(op, kind, description[:60] or "(no slug)", reason)
@@ -287,6 +310,7 @@ def main() -> int:
                     plan.supplement_protocol.append(SupplementItem(
                         supplement_slug=slug,
                         coach_rationale=f"[rework] {description}\n{reason}".strip(),
+                        intake_evidence=change_evidence,
                     ))
                     applied += 1
                     _record(op, kind, slug, description)
@@ -294,6 +318,9 @@ def main() -> int:
                     existing.coach_rationale = (
                         existing.coach_rationale + f"\n[rework] {description}\n{reason}"
                     ).strip()
+                    existing.intake_evidence = _merge_evidence(
+                        existing.intake_evidence, change_evidence
+                    )
                     applied += 1
                     _record(op, kind, slug + " (already present — rationale enriched)", description)
             elif op == "escalate":
@@ -303,12 +330,16 @@ def main() -> int:
                     existing.coach_rationale = (
                         existing.coach_rationale + f"\n[rework — escalate] {description}\n{reason}"
                     ).strip()
+                    existing.intake_evidence = _merge_evidence(
+                        existing.intake_evidence, change_evidence
+                    )
                     applied += 1
                     _record(op, kind, slug, description)
                 elif slug:
                     plan.supplement_protocol.append(SupplementItem(
                         supplement_slug=slug,
                         coach_rationale=f"[rework — escalate] {description}\n{reason}".strip(),
+                        intake_evidence=change_evidence,
                     ))
                     applied += 1
                     _record(op, kind, slug, description)
@@ -328,6 +359,9 @@ def main() -> int:
                         existing.coach_rationale = (
                             existing.coach_rationale + f"\n[rework — swap] {description}\n{reason}"
                         ).strip()
+                        existing.intake_evidence = _merge_evidence(
+                            existing.intake_evidence, change_evidence
+                        )
                         applied += 1
                         _record(op, kind, slug, description)
 
@@ -368,15 +402,28 @@ def main() -> int:
                         test[:80] + f" (skipped — {on_file} already on file)",
                         "")
                 continue
-            plan.lab_orders.append(LabOrderItem(test=test, reason=reason or rationale[:200]))
+            plan.lab_orders.append(LabOrderItem(
+                test=test,
+                reason=reason or rationale[:200],
+                intake_evidence=change_evidence,
+            ))
             applied += 1
             _record(op, kind, test[:80], reason)
 
         elif kind == "education":
+            # EducationModule doesn't carry intake_evidence today (deferred per
+            # design doc — less clinical weight). Embed the citations in the
+            # client_facing_summary as a parenthetical so they're not lost.
+            evidence_suffix = (
+                f"\n\n(Intake evidence: {'; '.join(change_evidence)})"
+                if change_evidence else ""
+            )
             plan.education.append(EducationModule(
                 target_kind="topic",
                 target_slug=slug or "(coach-to-fill)",
-                client_facing_summary=f"{description}\n{reason}".strip(),
+                client_facing_summary=(
+                    f"{description}\n{reason}".strip() + evidence_suffix
+                ),
             ))
             applied += 1
             _record(op, kind, slug or description[:80] or "(no slug)", description if slug else "")
@@ -386,6 +433,7 @@ def main() -> int:
                 name=description[:80] or (slug or "practice"),
                 cadence="daily",
                 details=reason,
+                intake_evidence=change_evidence,
             ))
             applied += 1
             _record(op, kind, description[:80] or slug or "(no name)", reason)

@@ -23,7 +23,7 @@
  * PUBLIC PATHS (always reachable, in all modes):
  *     /intake/[token]         — client-facing intake form (token = auth)
  *     /start/[token]          — client-facing plan-start confirmation
- *     /api/aisensy-webhook    — inbound WhatsApp (X-AiSensy-Secret)
+ *     /api/whatsapp-webhook   — inbound WhatsApp (X-WhatsApp-Signature)
  *     /api/whatsapp-poll-webhook
  *     /api/health             — Fly health check
  *     /_next/static/*, /favicon.ico — Next.js statics (handled by matcher)
@@ -39,9 +39,23 @@ import { NextRequest, NextResponse } from "next/server";
 const PUBLIC_PATH_PREFIXES = [
   "/intake/",
   "/start/",
-  "/api/aisensy-webhook",
+  // v0.73 WhatsApp cutover — inbound from the self-hosted Fly app
+  // (whatsapp-server-shivani) lands here. HMAC-verified by route handler
+  // using WHATSAPP_WEBHOOK_SECRET. /api/aisensy-webhook removed
+  // (AiSensy no longer used; its plan never delivered webhooks anyway).
+  "/api/whatsapp-webhook",
   "/api/whatsapp-poll-webhook",
   "/api/health",
+  // Cron endpoints — hit by the fm-coach-cron PM2 sidecar. Auth is
+  // enforced at the route level via x-cron-secret header (CRON_SECRET
+  // env). Public middleware bypass needed because there's no Basic Auth
+  // session in the cron process.
+  "/api/cron/",
+  // Handover endpoints — fired by ochre-followup via HMAC-signed POST.
+  // Auth at route level via x-handover-signature + HANDOVER_SECRET env.
+  // The /api/handover/test route uses x-cron-secret for the same reason
+  // (coach-only smoke test, no Basic Auth session available).
+  "/api/handover/",
 ];
 
 function isPublicPath(path: string): boolean {

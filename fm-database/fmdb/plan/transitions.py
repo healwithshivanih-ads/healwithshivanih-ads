@@ -205,7 +205,82 @@ def publish_plan(
     ready_path = root / "ready" / f"{slug}.yaml"
     if ready_path.exists():
         ready_path.unlink()
+
+    # Auto-supersede: when the coach publishes a NEW plan for a client who
+    # already has one or more published plans, flip every other published
+    # plan for the same client_id to `superseded`. This stops stale plans
+    # from polluting "active plan" surfaces (start-date-reminder list,
+    # dashboard recheck timers, SOAP "P" section, etc.) when the coach
+    # forgets to manually supersede.
+    #
+    # Coach decision 2026-05-15: a client can only have one active plan
+    # at a time. Two plans in `published/` for the same client is always
+    # a leak — the previous publish forgot to flip the old one.
+    _auto_supersede_siblings(root, plan, by)
+
     return plan, written, sha
+
+
+def _auto_supersede_siblings(root: Path, new_plan: Plan, by: str) -> list[str]:
+    """Find every other published plan for new_plan.client_id and flip them
+    to superseded. Returns the list of slugs that were flipped.
+
+    Skips:
+      - the just-published plan itself
+      - plans that aren't currently in `published/` status (already
+        superseded, revoked, or draft — leave them alone)
+
+    Each flipped plan gets a status_history event tying it to new_plan.slug
+    so the audit trail is complete.
+    """
+    pub_dir = root / "published"
+    if not pub_dir.exists():
+        return []
+    flipped: list[str] = []
+    # Build a slug → highest_version map of published files for this client
+    by_slug: dict[str, int] = {}
+    for f in pub_dir.glob("*-v*.yaml"):
+        # Cheap pre-filter: load to confirm client_id match
+        try:
+            data = yaml.safe_load(f.read_text())
+        except Exception:
+            continue
+        if not isinstance(data, dict):
+            continue
+        if data.get("client_id") != new_plan.client_id:
+            continue
+        slug = data.get("slug")
+        if not isinstance(slug, str) or slug == new_plan.slug:
+            continue
+        try:
+            v = int(f.stem.rsplit("-v", 1)[1])
+        except (ValueError, IndexError):
+            continue
+        by_slug[slug] = max(by_slug.get(slug, 0), v)
+
+    for old_slug, _v in by_slug.items():
+        try:
+            old_plan = plan_storage.load_plan(root, old_slug)
+        except Exception:
+            continue
+        if old_plan.status != PlanStatus.published:
+            continue
+        old_version = old_plan.version
+        old_plan.status = PlanStatus.superseded
+        old_plan.updated_by = by
+        _append_event(
+            old_plan,
+            PlanStatus.superseded,
+            by,
+            f"auto-superseded by {new_plan.slug} v{new_plan.version}",
+        )
+        plan_storage.write_plan(root, old_plan)
+        # Remove the now-stale published/ file
+        old_pub = root / "published" / f"{old_slug}-v{old_version}.yaml"
+        if old_pub.exists():
+            old_pub.unlink()
+        flipped.append(old_slug)
+    return flipped
 
 
 # ---------------------------------------------------------------------------

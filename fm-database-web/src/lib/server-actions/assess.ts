@@ -322,6 +322,81 @@ export async function uploadFileAction(formData: FormData): Promise<string> {
 }
 
 /**
+ * Hash-based duplicate check. Before any upload, the UI can call this to
+ * see whether the exact same file (by SHA-256 of bytes) is already on
+ * disk for this client. Returns the existing path + filename so the coach
+ * can choose "use the existing copy" instead of re-uploading.
+ *
+ * The check ignores filename — matches purely on content — so the same
+ * PDF renamed twice will still be recognised as a duplicate.
+ *
+ * Walks ~/fm-plans/clients/<id>/files/. ~10–50 files per client; ~50ms
+ * per 5MB hash. Acceptable; no caching layer needed yet.
+ */
+export interface DuplicateFileMatch {
+  ok: true;
+  duplicate: boolean;
+  /** When duplicate=true: the existing file on disk that matches. */
+  existing_path?: string;
+  existing_filename?: string;
+  existing_uploaded_at?: string; // file mtime ISO (best-effort)
+}
+export async function checkDuplicateUploadAction(
+  clientId: string,
+  base64Bytes: string,
+): Promise<DuplicateFileMatch | { ok: false; error: string }> {
+  try {
+    const crypto = await import("node:crypto");
+    const fs = await import("node:fs/promises");
+    const pathMod = await import("node:path");
+    const { getPlansRoot } = await import("@/lib/fmdb/paths");
+
+    const buf = Buffer.from(base64Bytes, "base64");
+    const sha = crypto.createHash("sha256").update(buf).digest("hex");
+
+    const dir = pathMod.join(getPlansRoot(), "clients", clientId, "files");
+    let entries: string[];
+    try {
+      entries = await fs.readdir(dir);
+    } catch {
+      return { ok: true, duplicate: false };
+    }
+
+    for (const name of entries) {
+      if (name.startsWith(".")) continue;
+      const fp = pathMod.join(dir, name);
+      let stat;
+      try {
+        stat = await fs.stat(fp);
+      } catch {
+        continue;
+      }
+      if (!stat.isFile()) continue;
+      // Quick win — size mismatch can't be the same file.
+      if (stat.size !== buf.byteLength) continue;
+      try {
+        const existing = await fs.readFile(fp);
+        const existingSha = crypto.createHash("sha256").update(existing).digest("hex");
+        if (existingSha === sha) {
+          return {
+            ok: true,
+            duplicate: true,
+            existing_path: fp,
+            existing_filename: name,
+            existing_uploaded_at: stat.mtime.toISOString(),
+          };
+        }
+      } catch {
+        /* unreadable — skip */
+      }
+    }
+    return { ok: true, duplicate: false };
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : String(e) };
+  }
+}
+
+/**
  * Extract symptoms/health data from a file that is already saved on disk.
  * Accepts a filePath (returned by uploadFileAction) instead of raw bytes so
  * that no binary data crosses the Server Action serialization boundary.
@@ -469,6 +544,290 @@ export async function computeRatiosAction(
     return JSON.parse(stdout) as ComputeRatiosResult;
   } catch {
     return { ok: false, ratios: [], error: `compute-ratios.py returned invalid JSON: ${stdout.slice(0, 200)}` };
+  }
+}
+
+/**
+ * Load the most recently saved lab-bearing snapshot for a client so the lab
+ * upload panel can rehydrate after refresh. Returns the snapshot's
+ * `lab_values` + `measurements` so the panel renders the saved state instead
+ * of an empty form. Picks the snapshot with the latest `date_drawn` across
+ * all health_snapshots — falls back to `date` if `date_drawn` is missing.
+ */
+/**
+ * Returns the most recent saved session for a client that already has an
+ * `ai_analysis` payload (i.e. someone hit "Run AI synthesis" and it
+ * completed). Used by the full-assessment form to rehydrate the result
+ * panel on mount — without this, every page navigation reset the button
+ * to "🧠 Run AI synthesis" even when synthesis had clearly already been
+ * run, leading the coach to double-click and burn another ~$0.20.
+ */
+export interface LatestSynthesis {
+  ok: true;
+  found: boolean;
+  session_id?: string;
+  date?: string;
+  /** Full ISO created_at — coach can't tell multiple same-day synthesis
+   *  runs apart without this. UI formats to "10:38 AM IST". */
+  created_at?: string;
+  ai_analysis?: Record<string, unknown>;
+  generated_plan_slug?: string | null;
+}
+export async function loadLatestSynthesisAction(
+  clientId: string,
+): Promise<LatestSynthesis | { ok: false; error: string }> {
+  try {
+    const sessionsDir = path.join(getPlansRoot(), "clients", clientId, "sessions");
+    let names: string[];
+    try {
+      names = await fs.readdir(sessionsDir);
+    } catch {
+      return { ok: true, found: false };
+    }
+    const yamlFiles = names
+      .filter((n) => n.endsWith(".yaml") || n.endsWith(".yml"))
+      .sort()
+      .reverse(); // newest filename first (sessions are dated YYYY-MM-DD-NNN)
+
+    for (const fn of yamlFiles) {
+      const fp = path.join(sessionsDir, fn);
+      try {
+        const raw = await fs.readFile(fp, "utf-8");
+        const s = yaml.load(raw) as Record<string, unknown> | null;
+        if (!s) continue;
+        const ai = (s.ai_analysis as Record<string, unknown> | undefined) ?? {};
+        // Skip intake-form sessions which only carry raw_intake_payload.
+        const keys = Object.keys(ai).filter((k) => k !== "raw_intake_payload");
+        if (keys.length === 0) continue;
+        return {
+          ok: true,
+          found: true,
+          session_id: (s.session_id as string | undefined) ?? path.basename(fp, ".yaml"),
+          date: s.date as string | undefined,
+          created_at: (s.created_at as string | undefined) ?? undefined,
+          ai_analysis: ai,
+          generated_plan_slug: (s.generated_plan_slug as string | null | undefined) ?? null,
+        };
+      } catch {
+        continue;
+      }
+    }
+    return { ok: true, found: false };
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : String(e) };
+  }
+}
+
+export async function loadLatestLabSnapshotAction(
+  clientId: string,
+): Promise<{
+  ok: true;
+  date: string | null;
+  source: string | null;
+  lab_values: Array<{ test_name: string; value: string; unit: string; date_drawn?: string | null }>;
+  measurements: Record<string, unknown> | null;
+} | { ok: false; error: string }> {
+  try {
+    const yaml = await import("js-yaml");
+    const fs = await import("node:fs/promises");
+    const { getPlansRoot } = await import("@/lib/fmdb/paths");
+    const root = getPlansRoot();
+    const fp = path.join(root, "clients", clientId, "client.yaml");
+    const raw = await fs.readFile(fp, "utf-8");
+    const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
+    const snaps = (data.health_snapshots as Array<Record<string, unknown>>) ?? [];
+    const labSnaps = snaps.filter(
+      (s) => Array.isArray(s.lab_values) && (s.lab_values as unknown[]).length > 0,
+    );
+    if (labSnaps.length === 0) {
+      return { ok: true, date: null, source: null, lab_values: [], measurements: null };
+    }
+    labSnaps.sort((a, b) =>
+      String(b.date ?? "").localeCompare(String(a.date ?? "")),
+    );
+    const latest = labSnaps[0];
+
+    // Flatten + sanitise. React 19's RSC payload serializer threw
+    // "Maximum array nesting exceeded" when handing 71 lab_values back
+    // through this action boundary — likely because some YAML values
+    // round-tripped as nested arrays or strings carrying YAML-list shape.
+    // Coerce every cell to a plain string and strip anything else.
+    const rawLabs = Array.isArray(latest.lab_values)
+      ? (latest.lab_values as Array<Record<string, unknown>>)
+      : [];
+    const cleanLabs = rawLabs.slice(0, 200).map((lv) => ({
+      test_name: String((lv?.test_name ?? lv?.name ?? "") as string),
+      value: String((lv?.value ?? "") as string),
+      unit: String((lv?.unit ?? "") as string),
+      date_drawn: lv?.date_drawn != null ? String(lv.date_drawn as string) : null,
+    }));
+
+    // Measurements is a flat dict on disk; coerce values to primitives.
+    const rawMeas = (latest.measurements as Record<string, unknown> | null) ?? null;
+    let cleanMeas: Record<string, string | number | null> | null = null;
+    if (rawMeas && typeof rawMeas === "object") {
+      cleanMeas = {};
+      for (const [k, v] of Object.entries(rawMeas)) {
+        if (v == null) cleanMeas[k] = null;
+        else if (typeof v === "number" || typeof v === "string") cleanMeas[k] = v;
+        else cleanMeas[k] = String(v);
+      }
+    }
+
+    return {
+      ok: true,
+      date: latest.date != null ? String(latest.date) : null,
+      source: latest.source != null ? String(latest.source) : null,
+      lab_values: cleanLabs,
+      measurements: cleanMeas,
+    };
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : String(e) };
+  }
+}
+
+/**
+ * Auto-route a freshly uploaded report to the right structured pipeline
+ * so it persists as a parseable record (not just an attached PDF).
+ *
+ * Filename + first-page text heuristic decides:
+ *   - GI-MAP / DUTCH / Sova / BugSpeaks → parse-functional-test.py
+ *   - Food sensitivity (IgG / ALCAT / MRT) → extract-report (food_sensitivity)
+ *   - Genetic / SNP → extract-report (genetic_test)
+ *   - OAT → extract-report (organic_acids)
+ *   - Anything else → extract-symptoms + apply (lab snapshot built from
+ *     date_drawn so older reports build chronological history)
+ *
+ * Returns the routing decision + a one-line summary so the UI can toast
+ * exactly what happened (e.g. "🦠 GI-MAP parsed — 7 drivers flagged",
+ * "🩸 Lab values extracted as snapshot for 2024-08-12 (14 labs)").
+ */
+export interface AutoRouteResult {
+  ok: boolean;
+  routed_to?: "functional_test" | "external_report" | "lab_snapshot" | "skipped";
+  detected_kind?: string;
+  summary?: string;
+  saved_path?: string;
+  error?: string;
+}
+export async function autoRouteUploadedReportAction(
+  clientId: string,
+  filePath: string,
+  filename: string,
+  mimeType: string,
+): Promise<AutoRouteResult> {
+  try {
+    // Cheap filename + path classifier first. Falls back to body parsing
+    // only when the filename is uninformative.
+    const lc = filename.toLowerCase();
+    const isFunctionalTest =
+      /gi[-_ ]?map|dutch|sova|bugspeaks|gut\W?microbiome|stool\W?pcr|microbial\W?assay/.test(lc);
+    const isFoodSensitivity =
+      /food[-_ ]?(sensitiv|intoler|allerg)|igg\b|alcat|mrt|us\W?biotek|cyrex/.test(lc);
+    const isGenetic = /genetic|nutrigenom|snp|mthfr|23andme/.test(lc);
+    const isOAT = /\boat\b|organic\W?acids?|great\W?plains\W?oat|genova\W?organix/.test(lc);
+
+    // ── Functional test (DUTCH / GI-MAP / Sova / BugSpeaks) ──
+    if (isFunctionalTest) {
+      const { parseFunctionalTestAction } = await import("@/lib/server-actions/clients");
+      const r = await parseFunctionalTestAction(clientId, filePath);
+      if (r.ok && r.test_type && r.test_type !== "unknown") {
+        return {
+          ok: true,
+          routed_to: "functional_test",
+          detected_kind: r.test_type,
+          summary: `${r.test_type === "gi_map" ? "🦠 GI-MAP" : "🧬 DUTCH"} parsed — ${(r.flagged_drivers ?? []).length} driver${(r.flagged_drivers ?? []).length === 1 ? "" : "s"} flagged`,
+          saved_path: r.file_path,
+        };
+      }
+      // Detection failed at the parser. Fall through to lab snapshot path.
+    }
+
+    // ── External reports (food sensitivity / genetic / OAT) ──
+    let reportType: "food_sensitivity" | "genetic_test" | "organic_acids" | null = null;
+    if (isFoodSensitivity) reportType = "food_sensitivity";
+    else if (isGenetic) reportType = "genetic_test";
+    else if (isOAT) reportType = "organic_acids";
+
+    if (reportType) {
+      const fs = await import("node:fs/promises");
+      const buf = await fs.readFile(filePath);
+      const b64 = buf.toString("base64");
+      const { uploadReportAction } = await import("@/lib/server-actions/clients");
+      const r = await uploadReportAction({
+        clientId,
+        reportType,
+        fileDataBase64: b64,
+        fileName: filename,
+      });
+      if (r.ok) {
+        return {
+          ok: true,
+          routed_to: "external_report",
+          detected_kind: reportType,
+          summary:
+            reportType === "food_sensitivity"
+              ? "🌾 Food sensitivity parsed — reactive foods saved"
+              : reportType === "genetic_test"
+                ? "🧬 Genetic report parsed"
+                : "🔬 OAT parsed",
+          saved_path: r.report?.file_path,
+        };
+      }
+    }
+
+    // ── Default: extract lab values + apply as health snapshot ──
+    const EMPTY_CATALOGUE: Array<{ slug: string; label: string; aliases?: string[] }> = [];
+    const ext = await extractTranscriptAction(
+      filePath,
+      mimeType || "application/pdf",
+      EMPTY_CATALOGUE,
+      false,
+    );
+    if (!ext.ok) {
+      return {
+        ok: false,
+        routed_to: "skipped",
+        error: ext.error ?? "Lab extraction failed",
+      };
+    }
+    const labs = ext.extracted_data?.lab_values ?? [];
+    const measurements = ext.extracted_data?.measurements ?? null;
+    if (labs.length === 0 && !measurements) {
+      return {
+        ok: true,
+        routed_to: "skipped",
+        summary: "No lab values or measurements found — keeping the file attached for the AI to read inline.",
+      };
+    }
+    const apply = await applyTranscriptDataAction({
+      client_id: clientId,
+      lab_values: labs.map((l) => ({
+        test_name: l.test_name,
+        value: l.value,
+        unit: l.unit,
+        date_drawn: l.date_drawn ?? null,
+      })),
+      measurements: measurements ?? undefined,
+      source: "lab_report",
+    });
+    if (!apply.ok) {
+      return { ok: false, routed_to: "skipped", error: apply.error ?? "apply failed" };
+    }
+    // Pull the earliest date_drawn for the toast (older reports → history).
+    const drawnDates = labs
+      .map((l) => l.date_drawn)
+      .filter((d): d is string => !!d)
+      .sort();
+    const dateLabel = drawnDates[0] ? `drawn ${drawnDates[0]}` : "no date on file";
+    return {
+      ok: true,
+      routed_to: "lab_snapshot",
+      detected_kind: "lab_report",
+      summary: `🩸 ${labs.length} lab value${labs.length === 1 ? "" : "s"} extracted (${dateLabel}) — saved to client history.`,
+    };
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : String(e) };
   }
 }
 
