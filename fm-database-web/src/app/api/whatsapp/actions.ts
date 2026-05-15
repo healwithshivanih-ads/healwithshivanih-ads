@@ -163,6 +163,16 @@ export interface MessageTemplate {
   category: string;
   body: string;
   variables: string[];
+  /**
+   * Meta-approved template name on the WhatsApp Business Account. Without
+   * this, the panel previously sent the slug (e.g. "lab-reminder") which
+   * doesn't exist on Meta — the actual approved name is e.g.
+   * "fm_lab_reminder". When set, the panel uses this to (a) check approval
+   * status against APPROVED_WHATSAPP_TEMPLATES, (b) pass the correct name
+   * to sendWhatsAppAction. When absent, panel falls back to slug (legacy
+   * coach-added templates that never had a Meta side).
+   */
+  whatsapp_template_name?: string;
 }
 
 const TEMPLATES_FILE = path.join(PLANS_ROOT, "message_templates.yaml");
@@ -174,6 +184,7 @@ const DEFAULT_TEMPLATES: MessageTemplate[] = [
     category: "labs",
     body: "Hi {{name}}, a gentle reminder to get your labs done before our next session. Here are the tests we discussed: {{labs}}. Please share the report at least 2 days before our appointment. 🙏",
     variables: ["name", "labs"],
+    whatsapp_template_name: "fm_lab_reminder",
   },
   {
     slug: "supplement-instructions",
@@ -181,6 +192,7 @@ const DEFAULT_TEMPLATES: MessageTemplate[] = [
     category: "protocol",
     body: "Hi {{name}}, here are your supplement instructions for this week: {{instructions}}. Take them as discussed and note any changes. Feel free to message if you have questions! 💊",
     variables: ["name", "instructions"],
+    whatsapp_template_name: "fm_supplement_instructions",
   },
   {
     slug: "check-in-nudge",
@@ -188,6 +200,7 @@ const DEFAULT_TEMPLATES: MessageTemplate[] = [
     category: "follow-up",
     body: "Hi {{name}}, just checking in! How are you feeling on the protocol? Any changes in {{symptom}}? Would love to hear how things are going. 🌿",
     variables: ["name", "symptom"],
+    whatsapp_template_name: "fm_checkin_nudge",
   },
   {
     slug: "session-confirmation",
@@ -195,6 +208,7 @@ const DEFAULT_TEMPLATES: MessageTemplate[] = [
     category: "appointment",
     body: "Hi {{name}}, confirming our session on {{date}} at {{time}}. Please come prepared with your food journal and any new lab reports. See you then! 📋",
     variables: ["name", "date", "time"],
+    whatsapp_template_name: "fm_session_confirm",
   },
   {
     slug: "encouragement",
@@ -202,15 +216,30 @@ const DEFAULT_TEMPLATES: MessageTemplate[] = [
     category: "support",
     body: "Hi {{name}}, you're doing great! Healing takes time and consistency — be patient with yourself. Keep going with {{protocol_highlight}}. Rooting for you! 💚",
     variables: ["name", "protocol_highlight"],
+    whatsapp_template_name: "fm_encouragement",
   },
 ];
 
 export async function loadMessageTemplatesAction(): Promise<MessageTemplate[]> {
+  // Backfill map — for legacy YAML written before `whatsapp_template_name`
+  // existed (pre-2026-05-15). Looks up the default by slug and copies its
+  // Meta template name onto the loaded entry. Coach-added templates without
+  // a matching default just stay unmapped → panel shows "⚠ Not approved"
+  // until coach edits the YAML to add the field.
+  const defaultByName = new Map(DEFAULT_TEMPLATES.map((t) => [t.slug, t]));
+  const backfill = (t: MessageTemplate): MessageTemplate => {
+    if (t.whatsapp_template_name) return t;
+    const def = defaultByName.get(t.slug);
+    return def?.whatsapp_template_name
+      ? { ...t, whatsapp_template_name: def.whatsapp_template_name }
+      : t;
+  };
+
   try {
     const raw = await fs.readFile(TEMPLATES_FILE, "utf-8");
     const parsed = yaml.load(raw);
     if (Array.isArray(parsed) && parsed.length > 0) {
-      return parsed as MessageTemplate[];
+      return (parsed as MessageTemplate[]).map(backfill);
     }
   } catch {
     // File doesn't exist — write defaults and return them

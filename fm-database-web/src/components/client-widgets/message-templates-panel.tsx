@@ -21,20 +21,27 @@ interface Props {
 
 /**
  * Meta-approved WhatsApp templates registered on the self-hosted WA server.
- * Templates whose slug matches one of these can be sent over WhatsApp.
- * Others are local-only (copy/paste or send-as-email).
+ * Inventory is the source of truth — see
+ * ~/.claude/projects/-Users-shivani-code-healwithshivanih-ads/memory/project_whatsapp_templates.md
+ * for the live mapping (template name → status → call site).
  *
- * Keep in sync with the WhatsApp Business Manager template list.
+ * Each MessageTemplate's `whatsapp_template_name` field is the Meta-approved
+ * template; the check is against THAT name, not the local slug. Previous
+ * implementation checked the slug ("lab-reminder") against template names
+ * ("fm_lab_reminder") — they never matched, so the panel always showed
+ * "Not approved". Fixed 2026-05-15.
  */
 const APPROVED_WHATSAPP_TEMPLATES = new Set<string>([
   "fm_lab_reminder",
   "fm_session_confirm",
   "fm_supplement_instructions",
   "fm_encouragement",
+  "fm_checkin_nudge",       // approved 2026-05-15 (per inventory)
 ]);
 
-function isWhatsappApproved(slug: string): boolean {
-  return APPROVED_WHATSAPP_TEMPLATES.has(slug);
+function isWhatsappApproved(template: { whatsapp_template_name?: string }): boolean {
+  if (!template.whatsapp_template_name) return false;
+  return APPROVED_WHATSAPP_TEMPLATES.has(template.whatsapp_template_name);
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -203,7 +210,7 @@ function ComposeView({
   const [sending, setSending] = useState(false);
   const [sendResult, setSendResult] = useState<{ ok: boolean; error?: string } | null>(null);
 
-  const whatsappApproved = isWhatsappApproved(template.slug);
+  const whatsappApproved = isWhatsappApproved(template);
   const filled = fillTemplate(template.body, values);
 
   // Default email subject derived from the template name.
@@ -218,8 +225,19 @@ function ComposeView({
 
   const handleSend = async () => {
     if (!clientPhone) return;
+    if (!template.whatsapp_template_name) {
+      setSendResult({ ok: false, error: "Template has no Meta-approved name mapping" });
+      return;
+    }
     setSending(true); setSendResult(null);
-    const res = await sendWhatsAppAction(clientPhone, template.slug, Object.values(values));
+    // Send by Meta template NAME (e.g. "fm_lab_reminder"), not local slug.
+    // Previously sent the slug — Meta rejected silently because no such
+    // template existed. Fixed 2026-05-15.
+    const res = await sendWhatsAppAction(
+      clientPhone,
+      template.whatsapp_template_name,
+      Object.values(values),
+    );
     setSending(false);
     setSendResult(res);
   };
