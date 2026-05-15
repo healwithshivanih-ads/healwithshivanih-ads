@@ -54,35 +54,48 @@ const TEMPLATES = [
     name: 'fm_lab_reminder',
     category: 'UTILITY',
     language: 'en',
-    body: 'Hi {{1}}, a gentle reminder to get your labs done before our next session. Here are the tests we discussed: {{2}}. Please share the report at least 2 days before our appointment. 🙏',
+    body:
+      'Hi {{1}}, a gentle reminder to get your labs done before our next session. Here are the tests we discussed: {{2}}. Please share the report at least 2 days before our appointment. 🙏\n\n— Shivani Hari\nYour Functional Health Coach',
     example: [['Priya', 'TSH, Vitamin D, Ferritin']],
   },
   {
     name: 'fm_supplement_instructions',
     category: 'UTILITY',
     language: 'en',
-    body: 'Hi {{1}}, here are your supplement instructions for this week: {{2}}. Take them as discussed and note any changes. Feel free to message if you have questions! 💊',
+    body:
+      'Hi {{1}}, here are your supplement instructions for this week: {{2}}. Take them as discussed and note any changes. Feel free to message if you have questions! 💊\n\n— Shivani Hari\nYour Functional Health Coach',
     example: [['Priya', 'Magnesium glycinate 200mg before bed; B-complex with breakfast']],
   },
   {
     name: 'fm_session_confirm',
     category: 'UTILITY',
     language: 'en',
-    body: 'Hi {{1}}, confirming our session on {{2}} at {{3}}. Please come prepared with your food journal and any new lab reports. See you then! 📋',
+    body:
+      'Hi {{1}}, confirming our session on {{2}} at {{3}}. Please come prepared with your food journal and any new lab reports. See you then! 📋\n\n— Shivani Hari\nYour Functional Health Coach',
     example: [['Priya', '15 May 2026', '5:00 PM']],
   },
   {
     name: 'fm_encouragement',
-    category: 'UTILITY',
+    // Meta auto-reclassified UTILITY → MARKETING at original approval (the
+    // "Rooting for you!" framing reads as engagement, not transactional).
+    // Local definition kept in sync to avoid category-mismatch errors on
+    // future edits. Cost implication: marketing rate (~₹0.78/msg) vs utility
+    // rate (~₹0.115/msg). Used sparingly so this is fine.
+    category: 'MARKETING',
     language: 'en',
-    body: "Hi {{1}}, you're doing great! Healing takes time and consistency — be patient with yourself. Keep going with {{2}}. Rooting for you! 💚",
+    body:
+      "Hi {{1}}, you're doing great! Healing takes time and consistency — be patient with yourself. Keep going with {{2}}. Rooting for you! 💚\n\n— Shivani Hari\nYour Functional Health Coach",
     example: [['Priya', 'your morning routine and consistent sleep']],
   },
   {
     name: 'fm_checkin_nudge',
-    category: 'UTILITY',
+    // Meta auto-reclassified UTILITY → MARKETING at original approval
+    // ("just checking in" = engagement, not transactional). Same as
+    // fm_encouragement — cost is ~₹0.78/msg when sent.
+    category: 'MARKETING',
     language: 'en',
-    body: 'Hi {{1}}, just checking in! How are you feeling on the protocol? Any changes in {{2}}? Would love to hear how things are going. 🌿',
+    body:
+      'Hi {{1}}, just checking in! How are you feeling on the protocol? Any changes in {{2}}? Would love to hear how things are going. 🌿\n\n— Shivani Hari\nYour Functional Health Coach',
     example: [['Priya', 'energy or digestion']],
   },
 
