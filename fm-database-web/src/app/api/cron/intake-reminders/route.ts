@@ -68,6 +68,13 @@ export async function POST(req: NextRequest) {
     const token = c.intake_token as string | undefined;
     if (!token) continue;
     if (c.intake_finalised_at) continue;
+    // Coach-opt-in: only nudge clients where the coach explicitly
+    // generated a fresh intake link via the SendIntakeFormButton (which
+    // sets intake_reminder_enabled=true). Legacy clients onboarded
+    // before the intake form existed, or those who don't need to fill it,
+    // are skipped. Coach can also flip the flag off via the UI to stop
+    // future reminders mid-cycle.
+    if (c.intake_reminder_enabled !== true) continue;
 
     const expiresIso = c.intake_token_expires_at as string | undefined;
     if (expiresIso) {

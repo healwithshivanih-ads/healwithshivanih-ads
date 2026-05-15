@@ -382,12 +382,56 @@ export default async function SoapNotePage({
           </div>
         )}
 
+        {/* ── Quick-context strip — the "get me up to speed" bar ── */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "8px 18px",
+            padding: "10px 12px",
+            background: "#f8fafc",
+            border: "1px solid #e5e7eb",
+            borderRadius: 6,
+            marginBottom: 14,
+            fontSize: 11.5,
+            lineHeight: 1.4,
+          }}
+        >
+          <div>
+            <strong style={{ color: "#6b7280" }}>Conditions:</strong>{" "}
+            {conditions.length > 0 ? conditions.join(", ") : <span style={{ color: "#9ca3af", fontStyle: "italic" }}>—</span>}
+          </div>
+          <div>
+            <strong style={{ color: "#6b7280" }}>Medications:</strong>{" "}
+            {medications.length > 0 ? medications.join(", ") : <span style={{ color: "#9ca3af", fontStyle: "italic" }}>none</span>}
+          </div>
+          <div>
+            <strong style={{ color: "#6b7280" }}>Allergies:</strong>{" "}
+            {allergies.length > 0 ? allergies.join(", ") : <span style={{ color: "#9ca3af", fontStyle: "italic" }}>none reported</span>}
+          </div>
+          <div>
+            <strong style={{ color: "#6b7280" }}>Diet:</strong>{" "}
+            {dietaryPref ? dietaryPref : <span style={{ color: "#9ca3af", fontStyle: "italic" }}>—</span>}
+            {nonNegotiables ? ` · NN: ${nonNegotiables}` : ""}
+          </div>
+          {goals.length > 0 && (
+            <div style={{ gridColumn: "1 / -1" }}>
+              <strong style={{ color: "#6b7280" }}>Goals:</strong> {goals.join(" · ")}
+            </div>
+          )}
+          {familyHistory && (
+            <div style={{ gridColumn: "1 / -1" }}>
+              <strong style={{ color: "#6b7280" }}>Family hx:</strong> {familyHistory}
+            </div>
+          )}
+        </div>
+
         {/* ── S ── */}
         <SoapSection letter="S" name="Subjective" subtitle="Client-reported · this session">
           {presenting ? (
             <p style={{ margin: "0 0 6px", whiteSpace: "pre-wrap" }}>{presenting}</p>
           ) : (
-            <p style={{ margin: 0, color: "#9ca3af", fontStyle: "italic" }}>No presenting complaints captured.</p>
+            <p style={{ margin: 0, color: "#9ca3af", fontStyle: "italic" }}>No presenting complaints captured this session.</p>
           )}
           {subjectiveBullets.length > 0 && (
             <div style={{ marginTop: 4, fontSize: 11, color: "#4b5563" }}>
@@ -398,20 +442,46 @@ export default async function SoapNotePage({
         </SoapSection>
 
         {/* ── O ── */}
-        <SoapSection letter="O" name="Objective" subtitle="Measurements + out-of-range labs">
+        <SoapSection letter="O" name="Objective" subtitle="Measurements + flagged labs">
           {objectiveBullets.length > 0 ? (
             <div style={{ marginBottom: 6 }}>{objectiveBullets.join(" · ")}</div>
           ) : (
             <div style={{ color: "#9ca3af", fontStyle: "italic", marginBottom: 6 }}>No measurements on file.</div>
           )}
           {flaggedLabs.length > 0 ? (
-            <ul style={{ margin: 0, paddingLeft: 18 }}>
-              {flaggedLabs.slice(0, 10).map((l, i) => (
-                <li key={i}>{l}</li>
-              ))}
-            </ul>
+            <div>
+              <div style={{ fontSize: 10.5, color: "#6b7280", marginBottom: 3 }}>
+                <strong>Flagged labs ({flaggedLabs.length}):</strong>
+              </div>
+              <ul style={{ margin: 0, paddingLeft: 18 }}>
+                {flaggedLabs.slice(0, 14).map((l, i) => {
+                  const name = l.marker_name ?? l.marker ?? l.name ?? "";
+                  const val = l.value != null ? String(l.value) : "";
+                  const unit = l.unit ? ` ${l.unit}` : "";
+                  const arrow =
+                    l.flag === "high" || l.flag === "very_high" ? " ↑" :
+                    l.flag === "low" ? " ↓" :
+                    l.flag === "suboptimal" ? " ◇" : "";
+                  return (
+                    <li key={i} style={{ marginBottom: 2 }}>
+                      <span style={{ color: flagColor(l.flag), fontWeight: 600 }}>
+                        {name} {val}{unit}{arrow}
+                      </span>
+                      {l.reference_range ? (
+                        <span style={{ color: "#9ca3af", fontSize: 10.5 }}> · {l.reference_range}</span>
+                      ) : null}
+                    </li>
+                  );
+                })}
+                {flaggedLabs.length > 14 && (
+                  <li style={{ color: "#9ca3af", fontStyle: "italic" }}>+{flaggedLabs.length - 14} more</li>
+                )}
+              </ul>
+            </div>
+          ) : allMarkers.length > 0 ? (
+            <div style={{ color: "#6b7280", fontStyle: "italic" }}>All {allMarkers.length} computed lab markers within FM-optimal range.</div>
           ) : (
-            <div style={{ color: "#9ca3af", fontStyle: "italic" }}>No labs flagged out of FM-optimal range.</div>
+            <div style={{ color: "#9ca3af", fontStyle: "italic" }}>No lab markers computed yet.</div>
           )}
         </SoapSection>
 
@@ -422,16 +492,40 @@ export default async function SoapNotePage({
               <strong>Primary driver:</strong> {primaryDriver}
             </div>
           )}
-          {conditions.length > 0 && (
+          {!primaryDriver && fallbackHypothesis && (
             <div style={{ marginBottom: 4 }}>
-              <strong>Active conditions:</strong> {conditions.join(", ")}
+              <strong>Top hypothesis (from intake AI):</strong> {fallbackHypothesis}
             </div>
           )}
-          {session?.synthesis_notes && (
-            <p style={{ margin: "4px 0 0", whiteSpace: "pre-wrap" }}>{session.synthesis_notes}</p>
+          {/* Intake AI patterns + red flags — surface when synthesis is thin. */}
+          {(!synth || synth.length < 100) && intakeInsights?.patterns && intakeInsights.patterns.length > 0 && (
+            <div style={{ marginBottom: 4 }}>
+              <strong>Patterns (intake AI):</strong>
+              <ul style={{ margin: "2px 0 0", paddingLeft: 18, fontSize: 11.5 }}>
+                {intakeInsights.patterns.slice(0, 3).map((p, i) => (
+                  <li key={i}>{p}</li>
+                ))}
+              </ul>
+            </div>
           )}
-          {!primaryDriver && conditions.length === 0 && !session?.synthesis_notes && (
-            <div style={{ color: "#9ca3af", fontStyle: "italic" }}>No clinical assessment on file.</div>
+          {intakeInsights?.red_flags && intakeInsights.red_flags.length > 0 && (
+            <div style={{ marginBottom: 4, color: "#b91c1c" }}>
+              <strong>Red flags:</strong>
+              <ul style={{ margin: "2px 0 0", paddingLeft: 18, fontSize: 11.5 }}>
+                {intakeInsights.red_flags.slice(0, 3).map((r, i) => (
+                  <li key={i}>{r}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {synth && (
+            <p style={{ margin: "4px 0 0", whiteSpace: "pre-wrap" }}>
+              <strong style={{ color: "#6b7280" }}>Synthesis: </strong>
+              {synth}
+            </p>
+          )}
+          {!primaryDriver && !fallbackHypothesis && !synth && conditions.length === 0 && (
+            <div style={{ color: "#9ca3af", fontStyle: "italic" }}>No clinical assessment on file yet — run a Full Assessment.</div>
           )}
         </SoapSection>
 

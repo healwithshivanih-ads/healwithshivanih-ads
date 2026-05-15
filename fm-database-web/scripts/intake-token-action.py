@@ -133,6 +133,13 @@ def action_generate(payload: dict) -> dict:
     # without orphaning the previous one. (Submitted records still live in
     # quick_note sessions for audit.)
     data["intake_submitted_at"] = None
+    # Enable the auto-reminder cron for this client — coach is actively
+    # sending an intake link, so the daily nudge is appropriate until they
+    # submit. Reset reminder history so the new token gets its own 2-strike
+    # quota. Coach can disable per-client via the SendIntakeFormButton UI
+    # (intake_reminder_enabled toggle).
+    data["intake_reminder_enabled"] = True
+    data["intake_reminders_sent_at"] = []
     _save_client(client_id, data)
 
     return {

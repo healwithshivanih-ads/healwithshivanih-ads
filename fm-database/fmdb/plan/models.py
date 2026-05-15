@@ -290,6 +290,16 @@ class Client(BaseModel):
     intake_token_expires_at: Optional[datetime] = None
     intake_form_draft: Optional[dict] = None        # in-progress payload, save-per-section
     intake_submitted_at: Optional[datetime] = None  # set on final submit; token revoked after
+    # Coach-opt-in flag for the daily auto-reminder cron. Default False —
+    # legacy clients onboarded before the intake form existed (e.g., manual
+    # creates, or clients who never need to fill it) are left alone. The
+    # "📨 Send intake form" button auto-enables this when generating a
+    # token; coach can toggle off via UI. The cron in
+    # /api/cron/intake-reminders filters on this flag.
+    intake_reminder_enabled: bool = False
+    intake_reminders_sent_at: list[str] = Field(default_factory=list)
+    intake_last_submitted_at: Optional[datetime] = None  # Path A — bumps on every re-submit
+    intake_finalised_at: Optional[datetime] = None      # coach-locked, no more edits
 
     # ── v0.72 structured intake form fields ───────────────────────────────────
     # ~60 new fields captured by the v2 intake form, organised by section
