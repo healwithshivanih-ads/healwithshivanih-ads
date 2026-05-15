@@ -6,13 +6,17 @@ import Button from '../components/Button.jsx';
 import ServiceWindowBadge from '../components/ServiceWindowBadge.jsx';
 import ConversationThread from '../components/ConversationThread.jsx';
 
-// Static template fallback list. Round 2 will pull these from the
-// /api/templates endpoint backed by Meta + local registry.
+// Approved templates on our WABA. Update when new templates are approved by
+// Meta. Round 2 will pull these dynamically from /api/templates.
 const STATIC_TEMPLATES = [
-  { name: 'fm_checkin_nudge', language: 'en' },
-  { name: 'fm_lab_reminder', language: 'en' },
-  { name: 'fm_session_confirm', language: 'en' },
+  { name: 'appt_reminder_2h', language: 'en' },
+  { name: 'appt_reminder_24h', language: 'en' },
+  { name: 'appt_confirmation', language: 'en' },
 ];
+
+// Poll interval for the inbox list (ms). 10 s feels live enough for a
+// human-paced support inbox without hammering Supabase.
+const POLL_MS = 10_000;
 
 function fmtAgo(iso) {
   if (!iso) return '—';
@@ -32,14 +36,21 @@ export default function Inbox() {
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  async function refresh() {
-    setLoading(true);
+  // `silent` = true skips the loading flash so the auto-poll doesn't flicker
+  // the left rail every 10 s.
+  async function refresh(silent = false) {
+    if (!silent) setLoading(true);
     try {
       const res = await api.conversations({ status: 'open', limit: 100 });
       setList(res.items || []);
-    } finally { setLoading(false); }
+    } finally { if (!silent) setLoading(false); }
   }
-  useEffect(() => { refresh(); }, []);
+
+  useEffect(() => {
+    refresh();
+    const t = setInterval(() => { refresh(true); }, POLL_MS);
+    return () => clearInterval(t);
+  }, []);
 
   return (
     <div className="flex h-screen">
@@ -103,13 +114,24 @@ function ConversationPane({ id, onChange }) {
   const [contact, setContact] = useState(null);
   const [tab, setTab] = useState('reply'); // 'reply' | 'template'
 
-  async function load() {
-    const conv = await api.conversation(id);
-    setData(conv);
-    api.markRead(id).catch(() => {});
-    if (conv?.contact_id) api.contact(conv.contact_id).then(setContact).catch(() => setContact(null));
+  async function load(silent = false) {
+    try {
+      const conv = await api.conversation(id);
+      setData(conv);
+      if (!silent) api.markRead(id).catch(() => {});
+      if (conv?.contact_id && !contact) {
+        api.contact(conv.contact_id).then(setContact).catch(() => setContact(null));
+      }
+    } catch { /* ignore poll errors */ }
   }
-  useEffect(() => { load(); /* eslint-disable-next-line */ }, [id]);
+
+  useEffect(() => {
+    setContact(null);
+    load();
+    const t = setInterval(() => { load(true); }, POLL_MS);
+    return () => clearInterval(t);
+    /* eslint-disable-next-line */
+  }, [id]);
 
   if (!data) {
     return <div className="flex flex-1 items-center justify-center text-sm text-slate-400">Loading…</div>;

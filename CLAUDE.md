@@ -14,7 +14,46 @@ published plans as JSON artifacts.
 
 ## Status
 
-**v0.62 (current)** — Lab reference ranges + custom protocol templates + AiSensy broadcast + message templates + session brief quick note:
+**v0.63 (current)** — AiSensy ⇒ self-hosted WhatsApp Cloud API server cutover (2026-05-14):
+
+- **🚀 Migrated WhatsApp messaging from AiSensy to self-hosted Cloud API server.** Fly app `whatsapp-server-shivani` (region `bom`, repo at `~/healwithshivanih-ads/whatsapp-server`) is now the production WhatsApp backend. Real Indian phone number **`+91 89765 63971`** (Airtel annual prepaid SIM, ₹1,849/yr) registered to WABA "Ochre Tree Website" (phone_number_id `1173609982498346`). Display name "Heal With Shivani" (pending Meta review — cosmetic, non-blocking). All 3 production templates approved: `appt_reminder_2h`, `appt_reminder_24h`, `appt_confirmation` (all UTILITY).
+
+- **🗂 File changes** — `src/app/api/aisensy-webhook/` **deleted** entirely. Replaced by:
+  - `src/app/api/whatsapp/actions.ts` — unified `sendWhatsAppAction`, `broadcastAction`, `checkWhatsAppConfigAction`, message-templates CRUD. Auto-picks backend: `wa_server` if `WHATSAPP_SERVER_URL + WHATSAPP_SERVER_API_KEY` set, else `aisensy` if `AISENSY_API_KEY` set. Force override with `WHATSAPP_PREFER=aisensy|wa_server`.
+  - `src/app/api/whatsapp-webhook/route.ts` — receives forwarded inbound messages from the WA server. HMAC-SHA256 sig in `X-Whatsapp-Signature-256` header, secret `WHATSAPP_WEBHOOK_SECRET`. Matches phone → client via `findClientByPhoneAction`, saves as `quick_note` session tagged `[source: whatsapp_webhook]`. Unmatched → `~/fm-plans/_whatsapp_unmatched.yaml`.
+
+- **🪦 AiSensy is OUTBOUND-ONLY** — AiSensy plan doesn't expose inbound webhooks, so the old `/api/aisensy-webhook` route was dead code (never actually fired). Inbound from clients still on AiSensy's number is invisible to FM coach — same gap as before this migration, will close as clients move to the new number.
+
+- **📞 `sendWhatsAppAction` signature unchanged** — `(phone, campaignName, templateParams[], opts?)`. `campaignName` is the Meta template name (same string AiSensy used). Callers (`broadcast-panel.tsx`, `message-templates-panel.tsx`) updated to import from `@/app/api/whatsapp/actions`.
+
+- **🏷 Variable / function renames:**
+  - `checkAisensyConfigAction` → `checkWhatsAppConfigAction` (returns `{configured, backend: "wa_server"|"aisensy"|null}`)
+  - Dashboard env check (`page.tsx`) now true when either backend configured: `!!(WHATSAPP_SERVER_URL && WHATSAPP_SERVER_API_KEY) || !!AISENSY_API_KEY`
+  - `getRecentAisensyMessages` in `loader-extras.ts` kept name for stability but now scans only `[source: whatsapp_webhook]` (the `aisensy_webhook` tag was never produced in practice)
+  - Legacy var names like `aisensyApiKeySet` and the `aisensyConfigured` prop kept for diff hygiene — now reflect unified backend state.
+
+- **🔧 Env vars FM coach reads** (`.env.local`, gitignored, created 2026-05-14):
+  - `WHATSAPP_SERVER_URL` = `https://whatsapp-server-shivani.fly.dev`
+  - `WHATSAPP_SERVER_API_KEY` = same value as Fly's `ADMIN_API_KEY` secret (`98cd330e55568b15…`)
+  - `WHATSAPP_WEBHOOK_SECRET` = shared HMAC secret with Fly's `FM_COACH_WEBHOOK_SECRET` (`74b2bc7a…`)
+  - `WHATSAPP_PREFER` = optional override
+  - `AISENSY_API_KEY` = blank/unset by default; only set if using AiSensy fallback during transition
+
+- **🔧 Env vars Fly side (still TODO when FM coach is exposed publicly):**
+  - `FM_COACH_WEBHOOK_URL` = `<fm-coach-public-url>/api/whatsapp-webhook` (TBD — needs Cloudflare Tunnel since FM coach runs on localhost:3002)
+  - `FM_COACH_WEBHOOK_SECRET` = same hex as FM coach's `WHATSAPP_WEBHOOK_SECRET`
+  - **Until these are set, inbound messages get received by the WA server but not forwarded to FM coach.** Real test phones can message `+91 89765 63971`; messages live in the WA server DB only.
+
+- **💸 Cost:** Real WABA needs billing configured (currency INR + payment method) — done 2026-05-14. Per-message rates: utility ~₹0.115, marketing ~₹0.78, service-window free. Estimated ~₹170–200/month for ~50 clients vs AiSensy's ~₹999–2399/month flat.
+
+- **📞 Outbound smoke-test verified 2026-05-14** — message id `22f1c387…`, delivered to `+91 91371 64133`. Status callback `delivered` ✅.
+
+- **⏳ What's left to complete cutover** (FM coach side):
+  1. Run `cloudflared tunnel --url http://localhost:3002` and set `FM_COACH_WEBHOOK_URL` + `FM_COACH_WEBHOOK_SECRET` on Fly for inbound forwards.
+  2. Notify existing clients of the new number (deferred — coach handles personally, not via automation).
+  3. Cancel AiSensy subscription once all clients have migrated.
+
+**v0.62** — Lab reference ranges + custom protocol templates + AiSensy broadcast + message templates + session brief quick note:
 
 - **🔬 Lab reference ranges** (`lab-reference-ranges.tsx`): `LabReferenceRangesEditor` collapsible card in client Overview. 14 FM optimal defaults (TSH 1–2, Vit D 60–80, Ferritin 70–150, hsCRP 0–0.5, HOMA-IR 0–1.5, etc.). Table with Marker/Low/High/Unit/Remove columns. "📋 Load FM defaults" button. Saves via `saveLabReferenceRangesAction` → `client.yaml`. `health-trends.tsx` shows 🟢/🔴 dot + "optimal: X–Y unit" next to each metric using `rangeStatus()`.
 - **💾 Custom protocol template saving** (`lifecycle-panel.tsx`): "💾 Save as template" section in Lifecycle tab (published plans only). Name/description/tags inputs → `saveAsTemplateAction` copies topics/symptoms/supplement_protocol/lifestyle_practices/nutrition to `~/fm-plans/custom_templates/{slug}.yaml`. `loadCustomTemplatesAction` in assess actions. Assess page shows "⭐ Your templates" section above built-in grid (purple/indigo accent, `custom:{slug}` prefix).
@@ -1207,17 +1246,22 @@ fm-database-web/                  # Path B — Next.js + shadcn rebuild of the c
                                   #   BatchPanel + ApproveAllPanel
     actions.ts                    # runIngestAction, approveAllPendingAction,
                                   #   countPendingBatchesAction, etc.
-  src/app/api/aisensy-webhook/
-    route.ts                      # POST webhook: waId→client→quick_note session.
-                                  #   Unmatched phones → _aisensy_unmatched.yaml.
-    actions.ts                    # NEW v0.62: sendWhatsAppAction (E.164 normalisation,
-                                  #   AiSensy direct API POST). broadcastAction (per
-                                  #   clientId list, returns {sent, failed, errors[]}).
-                                  #   checkAisensyConfigAction. loadMessageTemplatesAction,
+  src/app/api/whatsapp/           # v0.63: replaced src/app/api/aisensy-webhook/
+    actions.ts                    # sendWhatsAppAction (auto-picks WA server vs AiSensy
+                                  #   backend at runtime). broadcastAction (per clientId
+                                  #   list, returns {sent, failed, errors[]}).
+                                  #   checkWhatsAppConfigAction. loadMessageTemplatesAction,
                                   #   saveMessageTemplateAction, deleteMessageTemplateAction
                                   #   (backed by ~/fm-plans/message_templates.yaml).
-  src/app/broadcast-panel.tsx     # NEW v0.62: "use client". "📢 Broadcast" collapsible
-                                  #   panel on dashboard (gated by aisensyApiKeySet).
+  src/app/api/whatsapp-webhook/   # v0.63: receives forwarded inbound messages from
+    route.ts                      #   the self-hosted WhatsApp server (Fly app
+                                  #   whatsapp-server-shivani). HMAC-SHA256 sig verified
+                                  #   via WHATSAPP_WEBHOOK_SECRET. Saves matched messages
+                                  #   as quick_note sessions tagged [source: whatsapp_webhook].
+                                  #   Unmatched → ~/fm-plans/_whatsapp_unmatched.yaml.
+  src/app/broadcast-panel.tsx     # v0.62: "use client". "📢 Broadcast" collapsible
+                                  #   panel on dashboard (gated by aisensyApiKeySet,
+                                  #   which v0.63 makes true for either WA backend).
                                   #   Modes: follow-up due / recheck due / all active /
                                   #   custom. Campaign name + 3 param inputs. Live preview.
   src/app/api/email/actions.ts    # renderPlanHtmlAction, sendClientEmailAction,
@@ -1309,8 +1353,11 @@ npm run build && npm run type-check          # before committing
 - `save-session.py` now extracts `five_pillars` from payload and builds `FivePillarsAssessment` before calling `Session(...)`. Guards: only build if any value is non-None; silently ignores exceptions (session still saves without five_pillars if malformed).
 - `FollowUpDraftPanel` only shown for `sessionType !== "full_assessment"` (full assessments have their own AI flow). Triggered by `savedSessionId` state in `client-tabs.tsx`.
 - `draftFollowUpMessageAction` in `clients/actions.ts`: 30s timeout, 1MB buffer. `draft-followup-message.py` reads `.env` from `FMDB_ROOT` for `ANTHROPIC_API_KEY` via `_load_env()`.
-- `AISENSY_API_KEY` env var (`.env.local`) gates `BroadcastPanel` on dashboard and enables 📤 Send in `MessageTemplatesPanel`. Without it, broadcast panel is hidden and send button is disabled. (v0.62)
-- `broadcastAction` normalises phone to E.164: 10-digit numbers get `91` prefix. Sends to `backend.aisensy.com/direct-apis/t1/create-message`. Campaign name must match a registered AiSensy template exactly.
+- **v0.63 WhatsApp backend selection** (`src/app/api/whatsapp/actions.ts`): `pickBackend()` returns `wa_server` if `WHATSAPP_SERVER_URL + WHATSAPP_SERVER_API_KEY` set, else `aisensy` if `AISENSY_API_KEY` set, else `null`. Override with `WHATSAPP_PREFER`. `aisensyApiKeySet` in `page.tsx` is true if EITHER backend is configured — gates `BroadcastPanel` visibility.
+- **v0.63 outbound** — when `wa_server` backend: POST to `https://whatsapp-server-shivani.fly.dev/api/send` with `x-api-key: <ADMIN_API_KEY>`. Body: `{phone, name?, type:"template", templateName, templateLanguage:"en", templateParams[]}`. The WA server internally finds-or-creates contact/conversation, sends via `messages.send`. Phone normalisation handled server-side (libphonenumber-js, default IN).
+- **v0.63 outbound** — when `aisensy` backend (legacy fallback): same call as before — POST to `backend.aisensy.com/direct-apis/t1/create-message`. Phone normalised E.164-without-plus inline. Plus AiSensy plan doesn't expose inbound webhooks.
+- **v0.63 inbound** — only via self-hosted WA server. `/api/whatsapp-webhook` route verifies HMAC-SHA256 sig (`X-Whatsapp-Signature-256: sha256=<hex>`, secret `WHATSAPP_WEBHOOK_SECRET` matches Fly's `FM_COACH_WEBHOOK_SECRET`). Tags saved sessions `[source: whatsapp_webhook]`. Unmatched → `~/fm-plans/_whatsapp_unmatched.yaml`. `getRecentAisensyMessages` only scans this tag now.
+- **v0.63 prod number**: `+91 89765 63971` (phone_number_id `1173609982498346`). Verified, registered, all 3 utility templates approved.
 - `message_templates.yaml` at `~/fm-plans/message_templates.yaml`. Written with 5 defaults on first `loadMessageTemplatesAction` call. Fields: `{id, name, category, body, variables[]}`. (v0.62)
 - `custom_templates/` at `~/fm-plans/custom_templates/{slug}.yaml`. Created by `saveAsTemplateAction`. Loaded by `loadCustomTemplatesAction` in assess. Selection prefix: `custom:{slug}`. (v0.62)
 - `lab_reference_ranges` stored in `client.yaml` as `{marker: {optimal_low, optimal_high, unit}}`. Saved by `saveLabReferenceRangesAction`, loaded by `loadLabReferenceRangesAction`. `rangeStatus(value, range)` in `health-trends.tsx` returns `"optimal" | "outside" | null`. (v0.62)
@@ -1453,7 +1500,14 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 
 ### 🔴 Setup (one-time, coach does these)
 1. **Configure email** — add `GMAIL_USER` + `GMAIL_APP_PASSWORD` to `.env.local`. Needs Google App Password: https://myaccount.google.com/apppasswords
-2. **AiSensy webhook live** — add `AISENSY_WEBHOOK_SECRET=<secret>` to `.env.local`. Run `cloudflared tunnel --url http://localhost:3002`. Paste tunnel URL into AiSensy → Settings → Webhook URL. Set header `X-AiSensy-Secret`. Test: `GET /api/aisensy-webhook` shows setup status.
+2. **(v0.63) WhatsApp inbound capture live** — run `cloudflared tunnel --url http://localhost:3002`, then on Fly:
+   ```bash
+   flyctl secrets set \
+     FM_COACH_WEBHOOK_URL=https://<tunnel-url>/api/whatsapp-webhook \
+     FM_COACH_WEBHOOK_SECRET=<same hex as WHATSAPP_WEBHOOK_SECRET in .env.local> \
+     -a whatsapp-server-shivani
+   ```
+   Then text the production number `+91 89765 63971` from a saved-as-client phone to verify a `quick_note` session lands tagged `[source: whatsapp_webhook]`.
 3. **Triage 444 open backlog items** via `/backlog` — suggestion chips make it fast. Coach work, no code.
 
 ### 🟡 Client management (next few sessions)
@@ -1504,7 +1558,9 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 
 **Outstanding (in rough priority order):**
 1. **Coach uses it daily.** Real bugs from real use are more valuable than speculative code.
-2. **AiSensy setup** (one-time): add `AISENSY_API_KEY` to `.env.local` for broadcast/send to work. Also `AISENSY_WEBHOOK_SECRET` + Cloudflare Tunnel for inbound webhook.
-3. **Register AiSensy templates in dashboard** — 5 templates to create manually: `fm_checkin_nudge`, `fm_lab_reminder`, `fm_session_confirm`, `fm_supplement_instructions`, `fm_encouragement`. All UTILITY / English / `{{1}}` `{{2}}` params.
-4. **Client letter design finalisation** — review `hariharan-plan-3-2026-05-06-cl-005.html` and decide on layout/branding changes. Server at `python3 -m http.server 9099` in `~/fm-plans/clients/cl-005/meal-plans/`.
-5. **Session notes PDF export** (#7) — clean PDF of session notes for doctors/specialists.
+2. **(v0.63) Finish WhatsApp inbound capture** — see Setup task #2. FM coach `.env.local` already has `WHATSAPP_SERVER_URL`, `WHATSAPP_SERVER_API_KEY`, `WHATSAPP_WEBHOOK_SECRET`. Just need to expose FM coach via Cloudflare Tunnel and set the two `FM_COACH_WEBHOOK_*` Fly secrets. Outbound already cut over to self-hosted (verified 2026-05-14).
+3. **Notify existing clients of new WhatsApp number** `+91 89765 63971` — coach handles personally, not via automation.
+4. **Cancel AiSensy subscription** once all clients are on the new number.
+5. **Templates on new WABA** — only 3 production templates registered (`appt_reminder_2h`, `appt_reminder_24h`, `appt_confirmation`). If coach wants `fm_checkin_nudge`, `fm_lab_reminder`, `fm_session_confirm`, `fm_supplement_instructions`, `fm_encouragement`, register via `node scripts/submit-templates.js` in the whatsapp-server repo.
+6. **Client letter design finalisation** — review `hariharan-plan-3-2026-05-06-cl-005.html` and decide on layout/branding changes. Server at `python3 -m http.server 9099` in `~/fm-plans/clients/cl-005/meal-plans/`.
+7. **Session notes PDF export** — clean PDF of session notes for doctors/specialists.
