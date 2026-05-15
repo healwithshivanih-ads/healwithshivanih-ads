@@ -99,6 +99,128 @@ async function sendViaWaServer(
 
 // sendViaAisensy removed 2026-05-15. AiSensy fully decommissioned.
 
+// ── Outbound logging (for chat-thread view) ──────────────────────────────────
+//
+// When a coach sends via the message-templates panel, log the rendered
+// message body to the client's sessions/ as a quick_note tagged
+// `[source: whatsapp_outbound]`. Mirrors the inbound write pattern in
+// /api/whatsapp-webhook (which tags `[source: whatsapp_webhook]`).
+// Combined later by loadWhatsAppThread() → chat-bubble UI.
+
+import { execFile } from "node:child_process";
+
+const FMDB_REPO = path.resolve(process.cwd(), "..", "fm-database");
+const PYTHON = path.join(FMDB_REPO, ".venv/bin/python");
+const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
+
+export async function recordOutboundMessageAction(input: {
+  clientId: string;
+  templateName: string;       // e.g. "fm_encouragement"
+  renderedBody: string;       // the message with {{vars}} filled in
+}): Promise<{ ok: boolean; session_id?: string; error?: string }> {
+  if (!input.clientId || !input.renderedBody) {
+    return { ok: false, error: "clientId + renderedBody required" };
+  }
+  const presenting = `[source: whatsapp_outbound] [template: ${input.templateName}]\n\n${input.renderedBody}`;
+  const payload = JSON.stringify({
+    client_id: input.clientId,
+    session_type: "quick_note",
+    presenting_complaints: presenting,
+  });
+
+  return new Promise((resolve) => {
+    const child = execFile(
+      PYTHON,
+      [path.join(SCRIPTS_DIR, "save-session.py")],
+      { cwd: FMDB_REPO, timeout: 30_000, maxBuffer: 2 * 1024 * 1024 },
+    );
+    child.stdin?.end(payload);
+
+    let stdout = "";
+    let stderr = "";
+    child.stdout?.on("data", (chunk: Buffer | string) => (stdout += chunk));
+    child.stderr?.on("data", (chunk: Buffer | string) => (stderr += chunk));
+    child.on("error", (err) => resolve({ ok: false, error: err.message }));
+    child.on("close", () => {
+      if (!stdout.trim()) {
+        resolve({ ok: false, error: `save-session produced no output. stderr: ${stderr.slice(0, 400)}` });
+        return;
+      }
+      try {
+        resolve(JSON.parse(stdout) as { ok: boolean; session_id?: string; error?: string });
+      } catch (e) {
+        resolve({ ok: false, error: `parse error: ${(e as Error).message}` });
+      }
+    });
+  });
+}
+
+// ── Chat thread loader (combines inbound + outbound for a client) ────────────
+
+export interface ChatThreadMessage {
+  direction: "outbound" | "inbound";
+  date: string;                 // ISO timestamp (date or full)
+  text: string;                 // the message body (tags stripped)
+  template_name?: string;       // only for outbound — the Meta template used
+  session_id?: string;
+}
+
+export async function loadWhatsAppThreadAction(
+  clientId: string,
+  daysBack = 90,
+): Promise<ChatThreadMessage[]> {
+  const dir = path.join(PLANS_ROOT, "clients", clientId, "sessions");
+  let names: string[];
+  try {
+    names = await fs.readdir(dir);
+  } catch {
+    return [];
+  }
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - daysBack);
+  const cutoffStr = cutoff.toISOString().slice(0, 10);
+
+  const messages: ChatThreadMessage[] = [];
+  for (const name of names) {
+    if (!(name.endsWith(".yaml") || name.endsWith(".yml"))) continue;
+    const dateMatch = name.match(/(\d{4}-\d{2}-\d{2})/);
+    if (!dateMatch || dateMatch[1] < cutoffStr) continue;
+    try {
+      const raw = await fs.readFile(path.join(dir, name), "utf8");
+      const data = yaml.load(raw) as Record<string, unknown>;
+      const complaints = String(data?.presenting_complaints ?? "");
+      const isInbound = complaints.includes("[source: whatsapp_webhook]");
+      const isOutbound = complaints.includes("[source: whatsapp_outbound]");
+      if (!isInbound && !isOutbound) continue;
+
+      // Extract template name from outbound tag if present
+      let templateName: string | undefined;
+      const tplMatch = complaints.match(/\[template:\s*([^\]]+)\]/);
+      if (tplMatch) templateName = tplMatch[1].trim();
+
+      // Strip all [source:...] [template:...] tags from display text
+      const text = complaints
+        .replace(/\[source:[^\]]+\]/gi, "")
+        .replace(/\[template:[^\]]+\]/gi, "")
+        .trim();
+
+      messages.push({
+        direction: isOutbound ? "outbound" : "inbound",
+        date: String(data?.created_at ?? data?.date ?? "").trim(),
+        text,
+        template_name: templateName,
+        session_id: data?.session_id as string | undefined,
+      });
+    } catch {
+      // ignore unparseable session
+    }
+  }
+
+  // Chronological — oldest first, so the bubble view feels like a chat
+  messages.sort((a, b) => a.date.localeCompare(b.date));
+  return messages;
+}
+
 // ── Broadcast ─────────────────────────────────────────────────────────────────
 
 export async function broadcastAction(

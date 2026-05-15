@@ -9,16 +9,12 @@ import { useState } from "react";
 import { SendPackageButton } from "@/components/client-widgets/send-package-button";
 import { LetterTypesToggle } from "@/components/client-widgets/letter-types-toggle";
 import { MessageTemplatesPanel } from "@/components/client-widgets/message-templates-panel";
+import { WhatsAppThreadPanel } from "@/components/client-widgets/whatsapp-thread-panel";
 import { FmPanel } from "@/components/fm";
 // GeneratedLettersPanel was mounted here briefly to surface the meal plan
 // inline with a chat. Removed 2026-05-15 — SendPackageButton already
 // renders a preview + the same discuss→finalise refinement chat per
 // letter type. Single edit surface, no duplication.
-
-interface AisensyMsg {
-  date: string;
-  text: string;
-}
 
 export interface CommunicateClientProps {
   clientId: string;
@@ -28,7 +24,6 @@ export interface CommunicateClientProps {
   activePlan: { slug: string; status: string } | null;
   whatsappConfigured: boolean;
   activeLetterTypes?: string[];
-  recentInbound: AisensyMsg[];
 }
 
 export function CommunicateClient({
@@ -39,7 +34,6 @@ export function CommunicateClient({
   activePlan,
   whatsappConfigured,
   activeLetterTypes,
-  recentInbound,
 }: CommunicateClientProps) {
   const firstName = displayName.split(" ")[0];
   const isPublished = activePlan?.status === "published";
@@ -257,66 +251,20 @@ export function CommunicateClient({
           </div>
         </FmPanel>
 
-        {/* Recent inbound — captured by the self-hosted WhatsApp Cloud
-            API server (whatsapp-server-shivani on Fly) → forwarded to
-            /api/whatsapp-webhook → saved as quick_note sessions tagged
-            [source: whatsapp_webhook]. The panel reads those tagged
-            sessions and shows them here per client. */}
+        {/* 💬 Full chat thread — combines outbound sends (logged here by
+            recordOutboundMessageAction when the coach clicks Send via
+            WhatsApp on a template) AND inbound replies (saved by
+            /api/whatsapp-webhook as quick_note sessions tagged
+            [source: whatsapp_webhook]). Rendered as chat bubbles —
+            right-aligned green for outbound, left-aligned grey for
+            inbound. Auto-refreshes every 30s. */}
         <FmPanel
-          title={`📥 Recent inbound (${recentInbound.length})`}
-          subtitle="Every WhatsApp message this client sends comes through the self-hosted WhatsApp Cloud API server, lands as a tagged quick_note on this client, and shows up here within seconds. Last 30 days."
+          title="💬 WhatsApp conversation"
+          subtitle="Full thread — what we sent + what the client replied. Bubbles auto-refresh every 30s; new replies show up within a minute of landing on the WhatsApp server."
         >
-          {recentInbound.length === 0 ? (
-            <div
-              style={{
-                fontSize: 11,
-                color: "var(--fm-text-tertiary)",
-                padding: "6px 10px",
-                background: "var(--fm-bg-cool)",
-                borderRadius: "var(--fm-radius-sm)",
-              }}
-            >
-              No inbound messages from this client in the last 30 days. The
-              whatsapp-server-shivani Fly app must be running and the
-              <code>WHATSAPP_WEBHOOK_SECRET</code> env var must match for
-              incoming messages to land here.
-            </div>
-          ) : (
-            <div style={{ display: "grid", gap: 6 }}>
-              {recentInbound.map((m, i) => (
-                <div
-                  key={`${m.date}-${i}`}
-                  style={{
-                    padding: "7px 10px",
-                    background: "var(--fm-surface)",
-                    border: "1px solid var(--fm-border-light)",
-                    borderRadius: "var(--fm-radius-sm)",
-                  }}
-                >
-                  <div
-                    style={{
-                      fontSize: 10,
-                      color: "var(--fm-text-tertiary)",
-                      fontWeight: 600,
-                    }}
-                  >
-                    {m.date}
-                  </div>
-                  <div
-                    style={{
-                      fontSize: 12,
-                      marginTop: 2,
-                      lineHeight: 1.4,
-                    }}
-                  >
-                    {m.text}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+          <WhatsAppThreadPanel clientId={clientId} clientName={displayName} />
           <Link
-            href={`/clients-v2/${clientId}/analyse`}
+            href={`/clients-v2/${clientId}/sessions`}
             style={{
               display: "inline-block",
               marginTop: 8,
@@ -325,7 +273,7 @@ export function CommunicateClient({
               textDecoration: "underline",
             }}
           >
-            ↗ View full session timeline
+            ↗ View full session timeline (includes intake, check-ins, etc.)
           </Link>
         </FmPanel>
       </div>

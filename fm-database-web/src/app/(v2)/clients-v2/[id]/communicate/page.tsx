@@ -16,7 +16,6 @@
  */
 import { loadClientById } from "@/lib/fmdb/loader-extras";
 import { loadAllPlans } from "@/lib/fmdb/loader";
-import { getRecentInboundMessages } from "@/lib/fmdb/loader-extras";
 import { checkWhatsAppConfigAction } from "@/app/api/whatsapp/actions";
 import { FmPageHeader, FmPanel } from "@/components/fm";
 import { CommunicatePageShell } from "./communicate-page-shell";
@@ -88,11 +87,11 @@ export default async function CommunicateTabPage({
     ? await getLetterStalenessAction(activePlan.slug as string, id)
     : null;
 
-  // Recent inbound — 30-day window (vs the dashboard's 7d). Coach wants more
-  // historical context on a per-client surface than on the global dashboard.
+  // Recent inbound was a server-side load → prop-passed list. Now the
+  // child WhatsAppThreadPanel loads its own thread via server-action
+  // (combines outbound + inbound, auto-refreshes), so we don't need to
+  // prefetch here.
   const displayName = client.display_name ?? client.client_id;
-  const nameMap = new Map<string, string>([[id, displayName]]);
-  const recentInbound = await getRecentInboundMessages([id], nameMap, 30);
 
   const c = client as unknown as Record<string, unknown>;
   const clientEmail =
@@ -201,10 +200,6 @@ export default async function CommunicateTabPage({
         activePlan={activePlanInfo}
         whatsappConfigured={whatsappConfig.configured}
         activeLetterTypes={activeLetterTypes}
-        recentInbound={recentInbound.map((m) => ({
-          date: m.date,
-          text: m.text,
-        }))}
       />
 
       {/* Letter send history — single source of truth for "what went

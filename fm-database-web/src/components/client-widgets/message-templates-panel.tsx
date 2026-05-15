@@ -7,6 +7,7 @@ import {
   deleteMessageTemplateAction,
   sendWhatsAppAction,
   checkWhatsAppConfigAction,
+  recordOutboundMessageAction,
   type MessageTemplate,
 } from "@/app/api/whatsapp/actions";
 import { sendClientEmailAction } from "@/app/api/email/actions";
@@ -185,6 +186,7 @@ function AddTemplateForm({
 
 function ComposeView({
   template,
+  clientId,
   clientName,
   clientPhone,
   clientEmail,
@@ -192,6 +194,7 @@ function ComposeView({
   onBack,
 }: {
   template: MessageTemplate;
+  clientId: string;
   clientName: string;
   clientPhone?: string;
   clientEmail?: string;
@@ -256,6 +259,22 @@ function ComposeView({
     );
     setSending(false);
     setSendResult(res);
+
+    // Log the outbound to client's sessions/ with [source: whatsapp_outbound]
+    // tag so the chat-thread view can combine it with inbound replies.
+    // Best-effort — failures are silent (the send already succeeded; this
+    // is just for the thread view).
+    if (res.ok) {
+      try {
+        await recordOutboundMessageAction({
+          clientId,
+          templateName: template.whatsapp_template_name,
+          renderedBody: filled,
+        });
+      } catch {
+        /* silent — thread view will just be missing this entry */
+      }
+    }
   };
 
   const handleSendEmail = async () => {
@@ -570,6 +589,7 @@ export function MessageTemplatesPanel({ clientId, clientName, clientPhone, clien
           <div className="pt-2">
             <ComposeView
               template={selected}
+              clientId={clientId}
               clientName={clientName}
               clientPhone={clientPhone}
               clientEmail={clientEmail}
