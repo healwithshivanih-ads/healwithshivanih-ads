@@ -2,11 +2,37 @@ import React, { useState } from 'react';
 import { api } from '../api.js';
 import Button from '../components/Button.jsx';
 
-// Approved templates on our WABA. Update when new templates are approved.
+// Approved templates on our WABA. Update when new ones are approved.
+// `params` defines each placeholder in order: label shown above the input
+// (matches the {{N}} index) + placeholder text shown inside the empty input.
 const TEMPLATES = [
-  { name: 'appt_reminder_2h', language: 'en', paramCount: 3, hint: '{{1}}=name, {{2}}=time, {{3}}=session type' },
-  { name: 'appt_reminder_24h', language: 'en', paramCount: 3, hint: '{{1}}=name, {{2}}=date, {{3}}=time' },
-  { name: 'appt_confirmation', language: 'en', paramCount: 3, hint: '{{1}}=name, {{2}}=date, {{3}}=time' },
+  {
+    name: 'appt_reminder_2h',
+    language: 'en',
+    params: [
+      { label: 'Name', placeholder: 'Priya' },
+      { label: 'Time', placeholder: '5:00 PM' },
+      { label: 'Session type', placeholder: 'Cortisol Reset' },
+    ],
+  },
+  {
+    name: 'appt_reminder_24h',
+    language: 'en',
+    params: [
+      { label: 'Name', placeholder: 'Priya' },
+      { label: 'Date', placeholder: '15 May 2026' },
+      { label: 'Time', placeholder: '5:00 PM' },
+    ],
+  },
+  {
+    name: 'appt_confirmation',
+    language: 'en',
+    params: [
+      { label: 'Name', placeholder: 'Priya' },
+      { label: 'Date', placeholder: '15 May 2026' },
+      { label: 'Time', placeholder: '5:00 PM' },
+    ],
+  },
 ];
 
 // Parses a freeform recipient blob:
@@ -26,18 +52,27 @@ function parseRecipients(text) {
 export default function Broadcast() {
   const [tplName, setTplName] = useState(TEMPLATES[0].name);
   const [tplLang, setTplLang] = useState(TEMPLATES[0].language);
-  const [paramsText, setParamsText] = useState('');
+  // paramValues is keyed by template name so switching templates doesn't wipe
+  // half-filled inputs in the other.
+  const [paramValues, setParamValues] = useState({});
   const [recipientsText, setRecipientsText] = useState('');
   const [stage, setStage] = useState('compose'); // compose | confirm | sending | done
   const [result, setResult] = useState(null);
   const [err, setErr] = useState('');
 
   const tpl = TEMPLATES.find((t) => t.name === tplName) || TEMPLATES[0];
-  const params = paramsText
-    .split(/\r?\n/)
-    .map((s) => s.trim())
-    .filter(Boolean);
+  const currentValues = paramValues[tpl.name] || [];
+  const params = tpl.params.map((_, i) => (currentValues[i] || '').trim());
+  const allParamsFilled = params.every((p) => p.length > 0);
   const recipients = parseRecipients(recipientsText);
+
+  function updateParam(i, val) {
+    setParamValues((prev) => {
+      const next = [...(prev[tpl.name] || [])];
+      next[i] = val;
+      return { ...prev, [tpl.name]: next };
+    });
+  }
 
   function reset() {
     setStage('compose');
@@ -51,10 +86,8 @@ export default function Broadcast() {
       setErr('Add at least one recipient.');
       return;
     }
-    if (params.length !== tpl.paramCount) {
-      setErr(
-        `Template "${tpl.name}" expects ${tpl.paramCount} params; you provided ${params.length}.`,
-      );
+    if (!allParamsFilled) {
+      setErr(`Fill all ${tpl.params.length} param fields for "${tpl.name}".`);
       return;
     }
     setStage('confirm');
@@ -112,12 +145,11 @@ export default function Broadcast() {
           setTplName={setTplName}
           tplLang={tplLang}
           setTplLang={setTplLang}
-          paramsText={paramsText}
-          setParamsText={setParamsText}
+          params={params}
+          updateParam={updateParam}
           recipientsText={recipientsText}
           setRecipientsText={setRecipientsText}
           recipients={recipients}
-          params={params}
           err={err}
           onReview={review}
         />
@@ -142,8 +174,8 @@ export default function Broadcast() {
 
 function ComposeStep({
   tpl, tplName, setTplName, tplLang, setTplLang,
-  paramsText, setParamsText, recipientsText, setRecipientsText,
-  recipients, params, err, onReview,
+  params, updateParam, recipientsText, setRecipientsText,
+  recipients, err, onReview,
 }) {
   return (
     <div className="space-y-6 rounded-lg border border-slate-200 bg-white p-5">
@@ -160,7 +192,7 @@ function ComposeStep({
           >
             {TEMPLATES.map((t) => (
               <option key={t.name} value={t.name}>
-                {t.name} ({t.paramCount} params)
+                {t.name} ({t.params.length} params)
               </option>
             ))}
           </select>
@@ -170,20 +202,29 @@ function ComposeStep({
             <option value="hi">hi</option>
           </select>
         </div>
-        <p className="mt-2 text-xs text-slate-500">{tpl.hint}</p>
       </Section>
 
-      <Section title={`2 · Params (one per line, ${tpl.paramCount} expected)`}>
-        <textarea
-          className="input min-h-[80px] resize-y font-mono text-sm"
-          placeholder={`Shivani\n5:00 PM\nCortisol Reset`}
-          value={paramsText}
-          onChange={(e) => setParamsText(e.target.value)}
-        />
-        <p className="mt-1 text-xs text-slate-500">
-          Provided: <span className="font-medium">{params.length}</span> · expected:{' '}
-          <span className="font-medium">{tpl.paramCount}</span>. Same params sent to every
-          recipient (per-recipient personalisation comes later when broadcasting from ochre-followup).
+      <Section title={`2 · Params`}>
+        <div className="grid gap-3 sm:grid-cols-2">
+          {tpl.params.map((p, i) => (
+            <label key={i} className="block">
+              <div className="mb-1 text-xs font-medium text-slate-700">
+                {p.label}{' '}
+                <span className="font-mono text-slate-400">{`{{${i + 1}}}`}</span>
+              </div>
+              <input
+                type="text"
+                className="input w-full"
+                placeholder={p.placeholder}
+                value={params[i] || ''}
+                onChange={(e) => updateParam(i, e.target.value)}
+              />
+            </label>
+          ))}
+        </div>
+        <p className="mt-2 text-xs text-slate-500">
+          Same params sent to every recipient. (Per-recipient personalisation comes later when
+          broadcasting from ochre-followup.)
         </p>
       </Section>
 
