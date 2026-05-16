@@ -188,18 +188,17 @@ export async function recordOutboundMessageAction(input: {
     ? "[source: whatsapp_outbound] [type: text]"
     : `[source: whatsapp_outbound] [template: ${input.templateName}]`;
   const presenting = `${tags}\n\n${input.renderedBody}`;
-  // Roll all outbound WhatsApp sends for one client on one day into a
-  // SINGLE quick_note session. Same pattern as the inbound rollup —
-  // keeps the Sessions list clean when coach fires multiple templates
-  // in a day. The append marker matches the [source:] tag specifically
-  // so inbound webhook sessions and outbound coach sessions never get
-  // collapsed together (they should remain visually distinct in the
-  // thread).
+  // Roll same-day WhatsApp activity for one client into ONE session
+  // covering both directions. Prefix marker `[source: whatsapp_`
+  // matches inbound (whatsapp_webhook) AND outbound (whatsapp_outbound)
+  // so back-and-forth interleaves chronologically — coach reads the
+  // thread with conversation context intact instead of two parallel
+  // logs that lose the call-and-response.
   const payload = JSON.stringify({
     client_id: input.clientId,
     session_type: "quick_note",
     presenting_complaints: presenting,
-    append_if_today_match: "[source: whatsapp_outbound]",
+    append_if_today_match: "[source: whatsapp_",
   });
 
   return new Promise((resolve) => {
@@ -263,35 +262,68 @@ export async function loadWhatsAppThreadAction(
       const raw = await fs.readFile(path.join(dir, name), "utf8");
       const data = yaml.load(raw) as Record<string, unknown>;
       const complaints = String(data?.presenting_complaints ?? "");
-      const isInbound = complaints.includes("[source: whatsapp_webhook]");
-      const isOutbound = complaints.includes("[source: whatsapp_outbound]");
-      if (!isInbound && !isOutbound) continue;
+      if (!complaints.includes("[source: whatsapp_")) continue;
 
-      // Extract template name from outbound tag if present
-      let templateName: string | undefined;
-      const tplMatch = complaints.match(/\[template:\s*([^\]]+)\]/);
-      if (tplMatch) templateName = tplMatch[1].trim();
+      // Sessions may now contain MULTIPLE messages (inbound + outbound
+      // interleaved chronologically, separated by `---`). Split per
+      // segment and emit one ChatThreadMessage per chunk, with direction
+      // resolved from the segment's own [source: whatsapp_*] tag. Falls
+      // back to the previous segment's direction if a chunk has no tag
+      // (legacy single-message sessions still work).
+      const segments = complaints.split(/\n\s*---\s*\n/);
+      const sessionDate = String(data?.created_at ?? data?.date ?? "").trim();
+      const sessionId = data?.session_id as string | undefined;
 
-      // Strip ALL internal-metadata tags from the display text — coach
-      // sees only what was sent to / received from the client. None of
-      // these went to the client; they're for our local audit only.
-      //   - [session_type:...]  added by save-session.py (every session)
-      //   - [source:...]        added by webhook (inbound) + outbound logger
-      //   - [template:...]      added by outbound logger (template name)
-      //   - [type:...]          added by free-text outbound (vs template)
-      const text = complaints
-        .replace(/\[session_type:[^\]]+\]/gi, "")
-        .replace(/\[source:[^\]]+\]/gi, "")
-        .replace(/\[template:[^\]]+\]/gi, "")
-        .replace(/\[type:[^\]]+\]/gi, "")
-        .trim();
+      // Sub-second offsets per segment within the same session, so
+      // chronological sort orders segments by their position in the
+      // file when they share the parent session's timestamp.
+      segments.forEach((segment, idx) => {
+        const seg = segment.trim();
+        if (!seg) return;
+        const segInbound = seg.includes("[source: whatsapp_webhook]");
+        const segOutbound = seg.includes("[source: whatsapp_outbound]");
+        // If no direction tag, fall back to whichever tag appears first
+        // in the whole session (covers very-old sessions with the tag
+        // only at the top).
+        let direction: "inbound" | "outbound";
+        if (segInbound) direction = "inbound";
+        else if (segOutbound) direction = "outbound";
+        else {
+          const firstInbound = complaints.indexOf("[source: whatsapp_webhook]");
+          const firstOutbound = complaints.indexOf("[source: whatsapp_outbound]");
+          direction =
+            firstInbound !== -1 &&
+            (firstOutbound === -1 || firstInbound < firstOutbound)
+              ? "inbound"
+              : "outbound";
+        }
 
-      messages.push({
-        direction: isOutbound ? "outbound" : "inbound",
-        date: String(data?.created_at ?? data?.date ?? "").trim(),
-        text,
-        template_name: templateName,
-        session_id: data?.session_id as string | undefined,
+        const tplMatch = seg.match(/\[template:\s*([^\]]+)\]/);
+        const templateName = tplMatch ? tplMatch[1].trim() : undefined;
+
+        // Strip all internal-metadata tags from the display text.
+        const text = seg
+          .replace(/\[session_type:[^\]]+\]/gi, "")
+          .replace(/\[source:[^\]]+\]/gi, "")
+          .replace(/\[template:[^\]]+\]/gi, "")
+          .replace(/\[type:[^\]]+\]/gi, "")
+          .trim();
+        if (!text) return;
+
+        // Synthesise a per-segment date so segments order within their
+        // session. Adds 1ms × idx to the base session timestamp.
+        const baseMs = Date.parse(sessionDate);
+        const segDate = !Number.isNaN(baseMs)
+          ? new Date(baseMs + idx).toISOString()
+          : sessionDate;
+
+        messages.push({
+          direction,
+          date: segDate,
+          text,
+          template_name: templateName,
+          session_id: sessionId,
+        });
       });
     } catch {
       // ignore unparseable session

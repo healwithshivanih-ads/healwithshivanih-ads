@@ -68,19 +68,19 @@ async function saveQuickNote(
   text: string
 ): Promise<{ ok: boolean; session_id?: string; error?: string }> {
   const scriptPath = path.join(SCRIPTS_DIR, "save-session.py");
-  // Roll all WhatsApp-webhook inbound messages for one client on one
-  // day into a SINGLE quick_note session. Previously every inbound
-  // created its own session file — coach saw 9 "Quick note" entries
-  // in the Sessions list for a chatty client. The `append_if_today_match`
-  // flag tells save-session.py to find any same-day session containing
-  // `[source: whatsapp_webhook]` and append the new body to it (with
-  // a `---` divider), instead of creating a new one. First message of
-  // the day still creates the session; subsequent messages roll up.
+  // Roll same-day WhatsApp activity (BOTH directions) for one client
+  // into a SINGLE quick_note session. The prefix marker matches both
+  // inbound (whatsapp_webhook) AND outbound (whatsapp_outbound) so a
+  // chat back-and-forth interleaves chronologically in one file —
+  // preserves the conversation context coach needs to read the thread.
+  //
+  // Each segment keeps its own [source: whatsapp_*] tag so the thread
+  // panel can render direction per segment after splitting on `---`.
   const payload = {
     client_id: clientId,
     session_type: "quick_note",
     presenting_complaints: `[source: whatsapp_webhook]\n\n${text}`,
-    append_if_today_match: "[source: whatsapp_webhook]",
+    append_if_today_match: "[source: whatsapp_",
   };
 
   const child = execFile(PYTHON, [scriptPath], {

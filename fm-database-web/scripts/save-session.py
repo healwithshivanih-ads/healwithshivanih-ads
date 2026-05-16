@@ -86,20 +86,26 @@ def main() -> int:
     full_complaints = f"{meta_prefix}{presenting_complaints}" if presenting_complaints else meta_prefix.strip()
 
     # ── Append-if-today mode ────────────────────────────────────────────
-    # When the caller sets `append_if_today_match: "[source: foo]"`, look
-    # for an existing same-day session whose presenting_complaints
-    # contains that marker string. If found → load it, append the new
-    # body separated by a divider, save, return its session_id. Used by
-    # the WhatsApp inbound webhook so 9 messages in a day don't create
-    # 9 separate session files — they all roll up into one "WhatsApp
-    # 2026-05-16" quick_note for that client.
+    # `append_if_today_match` is a SUBSTRING. If any same-day session's
+    # presenting_complaints contains it, append this body there instead
+    # of creating a new file.
+    #
+    # For WhatsApp messages the caller passes the prefix
+    # "[source: whatsapp_" — which matches both whatsapp_webhook (inbound)
+    # AND whatsapp_outbound (outbound). Inbound + outbound for the same
+    # client on the same day merge into ONE session so the chat thread's
+    # back-and-forth context is preserved.
+    #
+    # We KEEP the per-segment [source:] tag on each appended chunk so
+    # the WhatsApp thread loader can split on `---` and parse direction
+    # per segment. Only `[session_type: …]` is stripped from non-first
+    # chunks (it's identical across the whole session).
     append_marker = payload.get("append_if_today_match")
     if append_marker and isinstance(append_marker, str):
         try:
             import yaml as _yaml  # type: ignore
             sessions_dir = root / "clients" / client_id / "sessions"
             if sessions_dir.exists():
-                # Same-day filenames: <cid>-YYYY-MM-DD-NNN.yaml
                 date_prefix = session_date.isoformat()
                 same_day = sorted(
                     p for p in sessions_dir.glob("*.yaml")
@@ -113,17 +119,14 @@ def main() -> int:
                     existing_complaints = str(existing.get("presenting_complaints") or "")
                     if append_marker not in existing_complaints:
                         continue
-                    # Match — append the new body. Strip the meta_prefix
-                    # because the existing session already has one.
-                    new_body = presenting_complaints
-                    if append_marker in (new_body or ""):
-                        # Webhook re-includes the [source: …] tag; strip
-                        # so we don't repeat it on every append.
-                        new_body = new_body.replace(append_marker, "", 1).lstrip("\n")
+                    # Match — append the new body. Strip only the shared
+                    # session_type prefix; KEEP the per-segment [source:]
+                    # tag (the thread loader needs it to decide direction).
+                    new_body = presenting_complaints or ""
+                    new_body = new_body.replace("[session_type: quick_note]", "", 1).lstrip()
                     divider = "\n\n---\n\n"
                     appended = existing_complaints.rstrip() + divider + new_body
                     existing["presenting_complaints"] = appended
-                    # Bump updated_at, keep created_at original
                     existing["updated_at"] = datetime.now(timezone.utc).isoformat()
                     p.write_text(
                         _yaml.dump(existing, sort_keys=False,
@@ -139,7 +142,7 @@ def main() -> int:
                     return 0
         except Exception:
             # Best-effort — if anything goes wrong, fall through to the
-            # normal create-new path so a real message isn't lost.
+            # normal create-new path so a real message is never lost.
             pass
 
     session_id = next_session_id(root, client_id, session_date)
