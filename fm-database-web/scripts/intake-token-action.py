@@ -200,6 +200,18 @@ def action_lookup(payload: dict) -> dict:
                 return {"ok": False, "error": "expired", "message": "Link expired. Contact your coach for a new one."}
         except Exception:
             pass
+    # Stamp first-opened timestamp — once. Lets coach see on the client
+    # Overview "client opened the form" vs "still hasn't clicked the
+    # link". Subsequent reopens (e.g. client comes back to edit a draft)
+    # don't overwrite this; the saved-draft timestamp covers that.
+    if not data.get("intake_first_opened_at"):
+        data["intake_first_opened_at"] = _now_iso()
+        try:
+            _save_client(client_id, data)
+        except Exception:
+            # Best effort — even if we can't persist, the lookup itself
+            # should succeed (the client is staring at a loading form).
+            pass
     return {
         "ok": True,
         "client_id": client_id,
@@ -225,9 +237,11 @@ def action_save_draft(payload: dict) -> dict:
     # PATH A: still-editable until coach finalises (see action_lookup).
     if data.get("intake_finalised_at"):
         return {"ok": False, "error": "locked"}
+    saved_at = _now_iso()
     data["intake_form_draft"] = draft
+    data["intake_form_draft_saved_at"] = saved_at
     _save_client(client_id, data)
-    return {"ok": True, "saved_at": _now_iso()}
+    return {"ok": True, "saved_at": saved_at}
 
 
 # ── action: submit ───────────────────────────────────────────────────────────

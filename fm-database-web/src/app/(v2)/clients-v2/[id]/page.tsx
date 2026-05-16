@@ -30,6 +30,7 @@ import { checkMedicationImpactsAction } from "@/lib/server-actions/clients";
 import { ClientIdentityEditor } from "./client-identity-editor";
 import { SendIntakeFormButton } from "./send-intake-form-button";
 import { IntakeInsightsCard } from "./intake-insights-card";
+import { IntakeProgressCard } from "./intake-progress-card";
 import { loadIntakeInsights } from "@/lib/server-actions/intake-insights";
 import { EngagementPicker } from "./engagement-picker";
 import { ClientMemoryPanel } from "./client-memory-panel";
@@ -890,6 +891,52 @@ export default async function ClientV2Page({
 
         {/* RIGHT COLUMN */}
         <div style={{ display: "grid", gap: 16, minWidth: 0 }}>
+          {/* 📝 Intake form progress — at-a-glance lifecycle status:
+              has the client opened the link? started filling? submitted?
+              Sits ABOVE IntakeInsightsCard because the insights card only
+              renders meaningful state AFTER submit; the coach needs to
+              see "still not opened" / "in progress / 12 fields filled" /
+              etc. while the intake is in flight. */}
+          <IntakeProgressCard
+            clientId={client.client_id}
+            firstName={(client.display_name ?? client.client_id).split(" ")[0]}
+            intakeToken={
+              (client as unknown as { intake_token?: string | null }).intake_token
+            }
+            intakeTokenExpiresAt={
+              (client as unknown as { intake_token_expires_at?: string | null })
+                .intake_token_expires_at
+            }
+            intakeFirstOpenedAt={
+              (client as unknown as { intake_first_opened_at?: string | null })
+                .intake_first_opened_at
+            }
+            intakeFormDraft={
+              (client as unknown as { intake_form_draft?: Record<string, unknown> | null })
+                .intake_form_draft
+            }
+            intakeFormDraftSavedAt={
+              (client as unknown as { intake_form_draft_saved_at?: string | null })
+                .intake_form_draft_saved_at
+            }
+            intakeSubmittedAt={
+              (client as unknown as { intake_submitted_at?: string | null })
+                .intake_submitted_at
+            }
+            intakeLastSubmittedAt={
+              (client as unknown as { intake_last_submitted_at?: string | null })
+                .intake_last_submitted_at
+            }
+            intakeFinalisedAt={
+              (client as unknown as { intake_finalised_at?: string | null })
+                .intake_finalised_at
+            }
+            intakeRemindersSentAt={
+              (client as unknown as { intake_reminders_sent_at?: string[] | null })
+                .intake_reminders_sent_at
+            }
+          />
+
           {/* 📋 Intake insights — Haiku-summarised view of the structured
               intake. Always rendered (states: no-intake / submitted-no-AI /
               full insights). Sits ABOVE FmContactPanel so it's the first

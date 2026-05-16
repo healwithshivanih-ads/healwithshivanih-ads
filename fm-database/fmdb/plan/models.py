@@ -290,6 +290,13 @@ class Client(BaseModel):
     intake_token_expires_at: Optional[datetime] = None
     intake_form_draft: Optional[dict] = None        # in-progress payload, save-per-section
     intake_submitted_at: Optional[datetime] = None  # set on final submit; token revoked after
+    # First time the public form page rendered for this token. Lets coach
+    # tell at-a-glance whether the client has opened the link at all.
+    intake_first_opened_at: Optional[datetime] = None
+    # Last time the form draft auto-saved. Distinct from intake_submitted_at:
+    # this advances on every per-section save while the client is still
+    # filling. Used by IntakeStatusCard to show "Last touched 3 hours ago".
+    intake_form_draft_saved_at: Optional[datetime] = None
     # Coach-opt-in flag for the daily auto-reminder cron. Default False —
     # legacy clients onboarded before the intake form existed (e.g., manual
     # creates, or clients who never need to fill it) are left alone. The
