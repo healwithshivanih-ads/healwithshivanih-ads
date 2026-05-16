@@ -561,6 +561,124 @@ def _load_protocol_yaml(slug: str) -> dict | None:
         return None
 
 
+def _recent_client_voice_block(client_id: str, days_back: int = 14) -> str:
+    """Compact block of between-session client/coach messages the letter
+    generator should incorporate into the next week's meal plan.
+
+    Scans `~/fm-plans/clients/<id>/sessions/*.yaml` for sessions in the
+    last `days_back` days. For each one with a webhook-saved message,
+    pre-session coach observation, or hand-typed quick_note, extract:
+       - the body (with [audit-tag] prefixes + WhatsApp envelope stripped)
+       - which channel it came from (so AI weights client voice as primary)
+       - a relative date label
+
+    Returns an empty string when there's nothing recent → prompt skips
+    the block entirely (no stray "RECENT MESSAGES" header with zero
+    items). When non-empty, this lives inside the meal-plan prompt as
+    BINDING coach-priority instructions: "Dhanishta said X → reflect Y
+    in this week's plan."
+
+    Why a separate helper: the meal-plan and meal-plan-phase prompts
+    both need this signal; the supplement-plan / lifestyle-guide /
+    exercise-plan prompts don't (their content domain is locked to the
+    structured plan + protocol, not week-to-week chatter).
+    """
+    if not client_id:
+        return ""
+    import yaml as _yaml
+    from datetime import date, timedelta
+    sessions_dir = PLANS_ROOT / "clients" / client_id / "sessions"
+    if not sessions_dir.exists():
+        return ""
+
+    today = date.today()
+    cutoff = today - timedelta(days=days_back)
+
+    _TAG_PREFIX_RE = re.compile(r"^(\s*\[[^\]]+\]\s*)+", re.MULTILINE)
+    _WA_ENVELOPE_RE = re.compile(
+        r"^WhatsApp message from [^\n]+\n+Received:[^\n]+\n+",
+        re.IGNORECASE,
+    )
+
+    entries: list[tuple[date, str, str]] = []  # (date, channel_label, body)
+    for f in sorted(sessions_dir.glob("*.yaml")):
+        try:
+            data = _yaml.safe_load(f.read_text()) or {}
+        except Exception:
+            continue
+        d_raw = data.get("date") or ""
+        try:
+            sess_date = date.fromisoformat(str(d_raw)[:10])
+        except Exception:
+            continue
+        if sess_date < cutoff:
+            continue
+        complaints = data.get("presenting_complaints") or ""
+        coach_notes = (data.get("coach_notes") or "").strip()
+
+        # Decide channel
+        if "[source: whatsapp_webhook]" in complaints:
+            channel = "client WhatsApp"
+        elif "[source: whatsapp_outbound]" in complaints:
+            # Skip outbound — we don't want the prompt re-echoing what
+            # the coach already sent. Inbound and coach-observation only.
+            continue
+        elif "[source: pre_session_brief]" in complaints:
+            channel = "coach observation"
+        elif coach_notes:
+            channel = "coach note"
+        else:
+            channel = "client"
+
+        # Extract body
+        if coach_notes:
+            body = coach_notes
+        else:
+            body = _TAG_PREFIX_RE.sub("", complaints).strip()
+            body = _WA_ENVELOPE_RE.sub("", body).strip()
+        body = " ".join(body.split())  # collapse newlines for prompt density
+        if len(body) > 400:
+            body = body[:400].rstrip() + "…"
+        if not body:
+            continue
+        entries.append((sess_date, channel, body))
+
+    if not entries:
+        return ""
+
+    # Newest first — most actionable signal up top so it weights heavier
+    # in the AI's response.
+    entries.sort(key=lambda t: t[0], reverse=True)
+
+    lines = [
+        "## BETWEEN-SESSION VOICE — INCORPORATE INTO THIS WEEK",
+        "",
+        f"The following messages came in since the last full session. Treat",
+        f"`client WhatsApp` items as PRIMARY EVIDENCE — they're what the",
+        f"client is actually experiencing in real life. When something here",
+        f"contradicts or extends the existing plan.nutrition.add/reduce,",
+        f"adjust the menu this week accordingly. Examples of what to act on:",
+        f"  • \"Can't eat enough veggies, stools impacted\" → swap heavy",
+        f"    grains for vegetable-forward meals + add a daily fresh",
+        f"    vegetable juice or soluble-fibre dish in the menu tables.",
+        f"  • \"Travelling next week\" → simplify breakfasts/lunches to",
+        f"    portable options, note it in the intro.",
+        f"  • \"Loving the X dish\" → keep / repeat that pattern.",
+        f"  • \"Skipping breakfast\" → propose protein-rich, fast options.",
+        f"Quote the client's own words inside the intro paragraph so they",
+        f"feel heard. Don't invent — only act on what's in this list.",
+        "",
+    ]
+    for d, channel, body in entries:
+        days_ago = (today - d).days
+        when = "today" if days_ago == 0 else (
+            "yesterday" if days_ago == 1 else f"{days_ago}d ago"
+        )
+        lines.append(f"- **{d.isoformat()} ({when}, {channel}):** {body}")
+    lines.append("")
+    return "\n".join(lines)
+
+
 def _attached_protocol_block(plan: dict) -> str:
     """Format `plan.attached_protocols` as a binding-protocol prompt block.
 
@@ -2038,6 +2156,12 @@ MOVEMENT & WELLNESS:
     cycle = _cycle_block(client)
     attached_protocol = _attached_protocol_block(plan)
     start_when = _start_when_block(plan, "meal")
+    # Between-session client/coach voice — pulled live from the last 14
+    # days of session files. When the client has been WhatsApping the
+    # coach about adherence problems, food triggers, travel, etc., this
+    # block carries that signal into the meal-plan prompt so the next
+    # week's menu reflects it WITHOUT needing a full reassessment.
+    recent_voice = _recent_client_voice_block(client.get("client_id") or "")
 
     prompt = f"""You are writing a warm, friendly {plan_weeks}-week MEAL PLAN document for a client.
 The coach (Shivani Hariharan) has prepared a structured plan. Turn the nutrition data into a beautiful, practical meal plan the client can actually USE.
@@ -2046,6 +2170,7 @@ The coach (Shivani Hariharan) has prepared a structured plan. Turn the nutrition
 {cycle}
 {attached_protocol}
 {start_when}
+{recent_voice}
 {_BANNED_GENERIC_RULE}
 
 CLIENT PROFILE:
@@ -2733,6 +2858,14 @@ Per meal split (MUST roughly match):
     top_of_mind = _top_of_mind_block(client, plan)
     cycle = _cycle_block(client)
     attached_protocol = _attached_protocol_block(plan)
+    # Between-session voice — the MOST important block for phase letters.
+    # The whole point of a phase letter is "what should the NEXT week look
+    # like given what's changed?" — and what's changed is precisely what
+    # the client has been WhatsApping about: adherence wins, food
+    # struggles, travel, side effects. This block forces the AI to
+    # adjust the next week's menu to those signals instead of just
+    # re-rendering the plan.yaml verbatim.
+    recent_voice = _recent_client_voice_block(client.get("client_id") or "")
 
     phase_label_short = (
         f"Week {phase_start}"
@@ -2752,6 +2885,7 @@ the past weeks. Don't re-prescribe — continue + evolve.
 {top_of_mind}
 {cycle}
 {attached_protocol}
+{recent_voice}
 {_BANNED_GENERIC_RULE}
 
 CLIENT PROFILE:
@@ -3091,6 +3225,10 @@ MOVEMENT & WELLNESS:
     cycle = _cycle_block(client)
     attached_protocol = _attached_protocol_block(plan)
     start_when = _start_when_block(plan, "both")
+    # Between-session voice (last 14 days of WhatsApp inbound + coach
+    # quick notes). Lets a consolidated regenerate pick up "low veg
+    # intake, constipation" without needing a full reassessment first.
+    recent_voice = _recent_client_voice_block(client.get("client_id") or "")
 
     # ── Pre-compute the section 3 body ──
     # Two alternate prompt fragments depending on whether the coach has
@@ -3220,6 +3358,7 @@ Your job is to turn the coach's structured data into a beautiful, easy-to-read d
 {cycle}
 {attached_protocol}
 {start_when}
+{recent_voice}
 {_BANNED_GENERIC_RULE}
 
 CLIENT PROFILE:
