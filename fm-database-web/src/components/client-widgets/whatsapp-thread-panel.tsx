@@ -96,8 +96,24 @@ export function WhatsAppThreadPanel({ clientId, clientName, daysBack = 90 }: Pro
     void refresh();
     // Light polling so new inbound replies show up without manual refresh
     const id = window.setInterval(() => void refresh(), 30_000);
-    return () => window.clearInterval(id);
-  }, [refresh]);
+
+    // Instant refresh when MessageTemplatesPanel fires after a successful
+    // outbound send — the green bubble shows up in <1s instead of waiting
+    // up to 30s for the next poll. Inbound replies still rely on polling
+    // since we don't know when one lands.
+    const onSent = (e: Event) => {
+      const detail = (e as CustomEvent<{ clientId?: string }>).detail;
+      if (!detail?.clientId || detail.clientId === clientId) {
+        void refresh();
+      }
+    };
+    window.addEventListener("whatsapp-message-sent", onSent);
+
+    return () => {
+      window.clearInterval(id);
+      window.removeEventListener("whatsapp-message-sent", onSent);
+    };
+  }, [refresh, clientId]);
 
   const grouped = groupByDay(messages);
   const firstName = (clientName ?? "").split(" ")[0] || "this client";

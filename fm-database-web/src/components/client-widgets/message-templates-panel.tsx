@@ -271,6 +271,16 @@ function ComposeView({
           templateName: template.whatsapp_template_name,
           renderedBody: filled,
         });
+        // Tell WhatsAppThreadPanel (and any other listener) to re-fetch
+        // immediately — your own outbound bubble shows up in <1s instead
+        // of waiting up to 30s for the next auto-poll tick. CustomEvent
+        // is decoupled (no prop drilling) and survives across page-level
+        // unrelated re-renders.
+        if (typeof window !== "undefined") {
+          window.dispatchEvent(
+            new CustomEvent("whatsapp-message-sent", { detail: { clientId } }),
+          );
+        }
       } catch {
         /* silent — thread view will just be missing this entry */
       }
