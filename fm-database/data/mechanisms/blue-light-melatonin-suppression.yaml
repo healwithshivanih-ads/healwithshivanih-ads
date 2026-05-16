@@ -1,0 +1,51 @@
+slug: blue-light-melatonin-suppression
+display_name: Blue Light Suppression of Melatonin
+aliases:
+- evening screen light melatonin disruption
+- pineal blue light disruption
+- circadian light pollution
+category: neurological
+summary: 'Light in the blue wavelength range (~460-490 nm) emitted by phones,
+
+  tablets, computer screens, and LED lighting reaches the
+
+  intrinsically photosensitive retinal ganglion cells and the
+
+  suprachiasmatic nucleus, suppressing pineal melatonin production
+
+  even at low intensity. Evening blue light exposure delays sleep
+
+  onset, reduces sleep depth, and shifts the circadian phase later.
+
+  Sustained high-volume daily blue light exposure (10-12+ hours
+
+  on screens) also appears to deplete retinal carotenoids (lutein,
+
+  lycopene), with implications for macular health that are still
+
+  being characterized.
+
+  '
+upstream_drivers:
+- evening-screen-exposure
+- artificial-light-at-night
+downstream_effects:
+- delayed-sleep-onset
+- reduced-melatonin-output
+- circadian-rhythm-disruption
+related_mechanisms:
+- cortisol-melatonin-rhythm-coupling
+- clock-gene-misalignment
+linked_to_topics:
+- insomnia
+- circadian-rhythm-disruption
+evidence_tier: strong
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Pineal gland and blue light section
+  quote: the light that the pineal gland gets exposed to through the eye is crucial
+    in keeping that melatonin production
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

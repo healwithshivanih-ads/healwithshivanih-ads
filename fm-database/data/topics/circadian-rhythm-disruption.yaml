@@ -1,0 +1,67 @@
+slug: circadian-rhythm-disruption
+display_name: Circadian Rhythm Disruption
+aliases:
+- circadian misalignment
+- clock gene disruption
+- biological rhythm disorder
+- shift work disorder
+summary: 'Circadian rhythm is the body''s ~24-hour clock encoded in dedicated
+
+  "clock genes" expressed in the suprachiasmatic nucleus and
+
+  peripheral tissues. It coordinates cortisol release, melatonin
+
+  production, body temperature, hormone cycling, digestion, and gene
+
+  expression. Disruption — from shift work, jet lag, irregular
+
+  eat/sleep timing, late-night light exposure, or chronic stress —
+
+  is independently associated with reduced longevity, metabolic
+
+  disease, mood disorders, and cancer risk. Consistency of routine
+
+  (same bedtime, wake time, mealtimes) appears as protective as
+
+  total sleep hours.
+
+  '
+common_symptoms:
+- daytime-sleepiness
+- non-restorative-sleep
+- irregular-energy
+red_flags: []
+related_topics:
+- sleep-deprivation
+- insomnia
+- jet-lag
+key_mechanisms:
+- clock-gene-misalignment
+- blue-light-melatonin-suppression
+- cortisol-melatonin-rhythm-coupling
+coaching_scope_notes: 'Coach reinforces consistent daily anchors: same bedtime and
+  wake
+
+  time (including weekends), morning light exposure within 30
+
+  minutes of waking, no electronics in the last hour before bed,
+
+  meals at consistent times. For shift workers, focus harm-reduction
+
+  on light hygiene and meal timing during awake hours.
+
+  '
+clinician_scope_notes: 'Diagnosed circadian rhythm sleep-wake disorders (delayed/advanced
+
+  sleep phase, non-24-hour sleep-wake) belong to a sleep specialist.
+
+  '
+evidence_tier: strong
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Clock genes and routine section
+  quote: we now have clock genes, that our DNA has coding for time
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

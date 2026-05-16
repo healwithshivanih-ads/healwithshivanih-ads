@@ -1,5 +1,5 @@
 slug: insomnia
-display_name: Insomnia & Sleep Disruption
+display_name: Insomnia
 aliases:
 - poor-sleep
 - sleep-onset-difficulty
@@ -8,8 +8,32 @@ aliases:
 - sleep disturbance
 - delayed sleep onset
 - poor REM
-summary: Sleep disruption driven by cortisol dysregulation, low melatonin, GABA-glutamate
-  imbalance, blue light exposure, and circadian mismatch.
+- difficulty sleeping
+- trouble falling asleep
+- trouble staying asleep
+- sleep onset insomnia
+- sleep maintenance insomnia
+summary: 'Insomnia presents as difficulty falling asleep (sleep onset), staying
+
+  asleep (sleep maintenance), or early morning awakening. In FM
+
+  framing, the pattern points to the likely root: 2-3 a.m. wide-awake
+
+  awakening suggests cortisol/HPA dysregulation; difficulty falling
+
+  asleep often points to evening sympathetic dominance, blue light
+
+  exposure, or caffeine clearance issues; non-restorative sleep with
+
+  poor dream recall suggests sleep apnea or insufficient deep-sleep
+
+  architecture. Insomnia is a symptom pattern — the underlying drivers
+
+  (toxin load, dysbiosis, HPA dysregulation, blood sugar instability,
+
+  sleep apnea, mental-emotional load) determine the coaching plan.
+
+  '
 common_symptoms:
 - difficulty falling asleep
 - waking 2-4am unable to return to sleep
@@ -20,6 +44,8 @@ common_symptoms:
 - 3am-wakeups
 - non-restorative-sleep
 - daytime-fatigue
+- middle-of-night-awakening
+- early-morning-awakening
 red_flags:
 - persistent insomnia with low mood / suicidality (refer mental health)
 - witnessed apnea, loud snoring, gasping (refer for sleep study)
@@ -31,17 +57,35 @@ related_topics:
 - hpa-axis-dysregulation
 - gut-brain-axis
 - vagal-tone
+- sleep-deprivation
+- circadian-rhythm-disruption
 key_mechanisms:
 - hpa-axis-dysregulation
 - low-progesterone
 - blood-sugar-instability
 - gaba-a-receptor-modulation
-coaching_scope_notes: Sleep hygiene, magnesium glycinate, melatonin, glycine, no-blue-light
-  routines, circadian reset are within scope.
-clinician_scope_notes: 'Persistent >3 weeks unresponsive to lifestyle, suspected OSA,
-  or insomnia
+- 2-3am-cortisol-spike-pattern
+- blue-light-melatonin-suppression
+- parasympathetic-restoration-failure
+coaching_scope_notes: 'Coach maps the insomnia pattern (onset vs maintenance vs early
 
-  with mood disorder requires clinician.
+  awakening), screens for sleep hygiene gaps, and supports the
+
+  upstream drivers. Often the highest-leverage early intervention
+
+  is a detox/gut-cleanup phase combined with evening parasympathetic
+
+  support — many cases improve significantly without any sleep-
+
+  specific supplementation.
+
+  '
+clinician_scope_notes: 'Chronic insomnia, suspected sleep apnea, or insomnia accompanied
+  by
+
+  mood disorder, suicidal ideation, or treatment-resistant patterns
+
+  belongs in clinician care.
 
   '
 sources:
@@ -50,9 +94,13 @@ sources:
 - id: vitaone-adrenal-cheatsheet
   location: 50 Hormones Cheatsheet — Melatonin row (p.4)
   quote: '↓ Insomnia, jet lag. Solution: Sleep hygiene, magnesium, melatonin support.'
-evidence_tier: plausible_emerging
-version: 2
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Sleep disorder patterns section
+  quote: Sleep disorders are often defined about what are the challenges, falling
+    asleep, staying asleep, or the waking pattern
+evidence_tier: strong
+version: 3
 status: active
-updated_at: '2026-05-06'
+updated_at: '2026-05-16'
 updated_by: shivani
 notes_for_coach: ''

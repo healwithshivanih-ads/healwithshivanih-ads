@@ -1,0 +1,60 @@
+slug: sleep-quality-questionnaire-and-journal-coaching-tools
+statement: 'A food-mood-energy-sleep journal kept for 1-4 weeks is a
+
+  high-leverage, low-cost coaching tool that surfaces patterns
+
+  the client cannot describe in a single visit — pinpointing
+
+  late caffeine, late eating, late screens, evening alcohol,
+
+  weekly stress patterns, or specific food-mood-sleep
+
+  associations. Especially useful before any supplement-based
+
+  intervention.
+
+  '
+evidence_tier: strong
+rationale: 'Self-monitoring journals are a foundational tool in behavioral
+
+  health, CBT-I, and lifestyle medicine — consistently shown to
+
+  increase awareness, surface patterns, and improve outcomes
+
+  even without specific intervention. Long-standing best practice
+
+  in coaching and behavior change.
+
+  '
+coaching_translation: 'Before we change anything, let''s track. For 1-2 weeks, jot
+  down
+
+  what you eat, your mood, your energy through the day, and your
+
+  sleep — bedtime, wake time, how rested you felt, whether you
+
+  dreamed. Patterns usually become visible within a week — late
+
+  caffeine, an alcohol-poor-sleep link, a stress-evening-eating
+
+  loop. The journal does a lot of the diagnostic work for us.
+
+  '
+caveats:
+- In clients with disordered eating history, journaling food can be a trigger — modify
+  or skip the food column.
+out_of_scope_notes: ''
+linked_to_topics:
+- insomnia
+- sleep-deprivation
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Sleep journal section
+  quote: I like to have them do is keep a food, mood, energy, sleep journal, so we
+    can see what those patterns are
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

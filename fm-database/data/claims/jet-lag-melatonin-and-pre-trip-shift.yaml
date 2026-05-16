@@ -1,0 +1,60 @@
+slug: jet-lag-melatonin-and-pre-trip-shift
+statement: 'Jet lag is a real circadian phase displacement (not just fatigue)
+
+  and responds to two strategies: (1) gradually shifting sleep and
+
+  meal timing toward the destination time zone in the days before
+
+  travel, and (2) high-quality melatonin supplementation at
+
+  destination bedtime to accelerate phase re-entrainment.
+
+  '
+evidence_tier: strong
+rationale: 'Melatonin''s role in shortening jet lag recovery time is one of
+
+  the better-supported supplement claims in the sleep literature,
+
+  with multiple controlled trials. Pre-trip phase shifting is a
+
+  standard chronobiology recommendation for high-performance
+
+  travel (athletes, executives).
+
+  '
+coaching_translation: 'Two things actually work for jet lag. First, start shifting
+  your
+
+  bedtime toward the destination time a few days before you fly —
+
+  go to bed 30-60 minutes earlier or later each day depending on
+
+  direction. Second, take a quality melatonin (form and brand
+
+  matter — cheap supermarket melatonin has very variable potency)
+
+  at destination bedtime for a few nights. Magnesium also helps.
+
+  '
+caveats:
+- Melatonin quality varies significantly between brands.
+- East-west travel affects different individuals differently.
+out_of_scope_notes: ''
+linked_to_topics:
+- jet-lag
+- circadian-rhythm-disruption
+linked_to_mechanisms:
+- cortisol-melatonin-rhythm-coupling
+- clock-gene-misalignment
+linked_to_supplements:
+- melatonin
+- magnesium
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Jet lag section
+  quote: Melatonin has been clinically proven, high quality melatonin, to reduce jet
+    lag
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

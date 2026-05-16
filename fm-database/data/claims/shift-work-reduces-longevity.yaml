@@ -1,0 +1,70 @@
+slug: shift-work-reduces-longevity
+statement: 'Long-term shift work, particularly rotating schedules with
+
+  alternating overnight blocks, is associated with reduced
+
+  longevity, elevated chronic disease risk (cardiovascular,
+
+  metabolic, certain cancers), and higher rates of mood disorders
+
+  — driven by chronic circadian misalignment between central
+
+  and peripheral clocks.
+
+  '
+evidence_tier: strong
+rationale: 'Epidemiological evidence is consistent: night-shift work and
+
+  rotating shifts are associated with elevated all-cause mortality,
+
+  cardiovascular disease, type 2 diabetes, breast cancer, and
+
+  depression in multiple large cohort studies. The IARC classifies
+
+  shift work involving circadian disruption as probably
+
+  carcinogenic. Mechanism involves clock-gene misalignment,
+
+  chronic melatonin suppression, and metabolic dysregulation.
+
+  '
+coaching_translation: 'This is one of the harder coaching situations — many clients
+  have
+
+  to work shifts and can''t change that. The data is clear that
+
+  long-term rotating shift work shortens life expectancy and raises
+
+  chronic disease risk. The coaching focus then becomes harm
+
+  reduction: protecting sleep when off-shift, using blackout
+
+  curtains during day sleep, careful light exposure timing, meal
+
+  timing, and aggressive lifestyle support for the things shift
+
+  work degrades.
+
+  '
+caveats:
+- Effect size varies with shift pattern, duration of exposure, and individual resilience.
+- Cannot change occupational reality for many clients — focus on harm-reduction strategies.
+out_of_scope_notes: 'Occupational health and shift-work medical management belongs
+
+  to the clinician.
+
+  '
+linked_to_topics:
+- circadian-rhythm-disruption
+linked_to_mechanisms:
+- clock-gene-misalignment
+- circadian-rhythm-disruption
+linked_to_supplements: []
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Shift work section
+  quote: shift workers don't live as long as people who don't do shift work
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

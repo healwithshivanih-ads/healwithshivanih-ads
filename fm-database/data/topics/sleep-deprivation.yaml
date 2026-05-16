@@ -1,0 +1,72 @@
+slug: sleep-deprivation
+display_name: Sleep Deprivation
+aliases:
+- insufficient sleep
+- short sleep duration
+- chronic sleep loss
+summary: 'Sleep deprivation in a functional medicine frame is typically defined
+
+  as fewer than 7-8 hours of consistent quality sleep per night.
+
+  Functions as a hormone disruptor (parallel to environmental
+
+  toxicants), impairs glucose regulation and weight loss capacity,
+
+  elevates inflammatory cytokines, raises cardiovascular risk, and
+
+  measurably reduces cognitive performance (one cited example:
+
+  sharpshooter accuracy drops from ~99% at 8 hours to 35% at 5 hours,
+
+  equivalent to driving impairment). Both quantity (hours) and quality
+
+  (depth, dream recall, restorative architecture) matter. Chronic
+
+  presenteeism — being at work but functionally impaired — is the
+
+  costly hidden consequence in working-age adults.
+
+  '
+common_symptoms:
+- chronic-fatigue
+- brain-fog
+- irritability
+- daytime-sleepiness
+red_flags: []
+related_topics:
+- insomnia
+- circadian-rhythm-disruption
+- hpa-axis-dysregulation
+key_mechanisms:
+- parasympathetic-restoration-failure
+- inflammatory-cytokine-elevation
+- sleep-as-hormone-disruptor
+coaching_scope_notes: 'Coach educates on sleep hygiene (consistent bedtime, sleep
+  ritual,
+
+  bedroom for sleep and sex only, no electronics in the last hour),
+
+  asks about dream recall as a quality marker, suggests a food-mood-
+
+  energy-sleep journal, and frames sleep as foundational rather than
+
+  optional. Coach does NOT diagnose sleep disorders.
+
+  '
+clinician_scope_notes: 'Sleep apnea screening (overnight oximetry, polysomnography),
+
+  pharmacological sleep aids, and treatment of underlying psychiatric
+
+  or neurological causes belong to the clinician.
+
+  '
+evidence_tier: strong
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Defining sleep deprivation section
+  quote: The technical term of sleep deprivation is really less than eight hours of
+    sleep
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

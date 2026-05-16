@@ -1,0 +1,66 @@
+slug: caffeine-tolerance-reflects-cyp450-capacity
+statement: 'Individual sensitivity to caffeine — whether someone tolerates
+
+  espresso at dinner without sleep disruption, or cannot have any
+
+  caffeine after mid-morning — is a useful clinical proxy for that
+
+  individual''s Phase 1 / Phase 2 hepatic biotransformation capacity,
+
+  particularly CYP1A2 activity. People with marked caffeine
+
+  sensitivity are likely also sensitive to medications and
+
+  supplements processed through the same pathways.
+
+  '
+evidence_tier: strong
+rationale: 'Caffeine is metabolized primarily by CYP1A2, with downstream
+
+  Phase 2 conjugation. CYP1A2 activity varies ~40-fold across
+
+  individuals due to genetic polymorphism, smoking status, hormonal
+
+  factors (oral contraceptives slow it significantly), and dietary
+
+  inducers. Caffeine half-life thus serves as a practical functional
+
+  test of CYP1A2 capacity that the client can self-report.
+
+  '
+coaching_translation: 'Here''s a useful question I can ask: how late in the day can
+  you
+
+  drink coffee and still sleep? If you can have an espresso at
+
+  dinner, your liver clears caffeine quickly. If you can''t have
+
+  anything caffeinated after 10 a.m., your liver clears it slowly —
+
+  and you''re probably also more sensitive to medications and
+
+  supplements in general. This is one of the easiest ways to get a
+
+  read on detoxification capacity without a lab test.
+
+  '
+caveats:
+- Caffeine sensitivity is influenced by many factors beyond CYP1A2 (oral contraceptives,
+  pregnancy, smoking history, gene variants).
+- This is a coaching conversation tool, not a diagnostic test.
+out_of_scope_notes: ''
+linked_to_topics:
+- detoxification
+- insomnia
+linked_to_mechanisms:
+- phase-1-biotransformation
+linked_to_supplements: []
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Caffeine and detox section
+  quote: a great simple question to ask people if you want to know how well their
+    phase one, phase two systems work is to ask them that question about coffee
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

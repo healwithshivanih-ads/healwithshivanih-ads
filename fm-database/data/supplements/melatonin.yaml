@@ -9,12 +9,12 @@ forms_available:
 - lozenge
 typical_dose_range:
   tablet:
-    min: 5
-    max: 20
+    min: 1
+    max: 3
     unit: mg
   capsule:
-    min: 0.5
-    max: 10
+    min: 1
+    max: 3
     unit: mg
   liquid:
     min: 0.5
@@ -40,6 +40,8 @@ linked_to_topics:
 - immune-support
 - chronic-inflammation
 - immune-support-covid-19
+- circadian-rhythm-disruption
+- jet-lag
 linked_to_claims:
 - magnesium-supports-cortisol-gaba-sleep
 - melatonin-as-acid-suppressor-gerd
@@ -47,16 +49,39 @@ linked_to_claims:
 - melatonin-reduces-inflammation-sleep
 - melatonin-supports-estrogen-metabolism
 - melatonin-reduces-inflammation-and-promotes-sleep
-notes_for_coach: Doses above 5 mg are above typical consumer use and may cause morning
-  grogginess. The 5–20 mg range in this toolkit is therapeutic for COVID-19 adjuvant
-  context and requires clinician guidance. For general sleep/anti-inflammatory support,
-  0.5–3 mg is typical. Interactions with SSRIs and anticoagulants. Avoid in autoimmune
-  conditions without clinician input.
+notes_for_coach: 'Pineal hormone synthesized from serotonin, released in response
+  to
+
+  darkness. Source (Menolascino transcript) cites 3 mg as the dose
+
+  used in clinical trials and notes wide variability in clinical
+
+  response — roughly one-third benefit substantially, one-third no
+
+  benefit, one-third paradoxically wired. Source also notes most
+
+  high-quality studies originate in Germany / Europe where supplement
+
+  consistency is better regulated; product quality matters. Current
+
+  literature increasingly favors lower physiologic doses (0.3-0.5 mg)
+
+  for circadian-replacement purposes, with higher doses reserved for
+
+  jet lag and specific clinical contexts — confirm dose with a
+
+  peer-reviewed source for individual client use. Clinically proven
+
+  to reduce jet lag.
+
+  '
 notes_for_client: Melatonin helps signal your body when it's time to sleep and also
   has anti-inflammatory properties. Start with the lowest effective dose and take
   it 30–60 minutes before bed in a dark room.
-evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+evidence_tier: strong
+linked_to_mechanisms:
+- blue-light-melatonin-suppression
+- cortisol-melatonin-rhythm-coupling
 sources:
 - id: vitaone-practice-guide
   location: Sleep Optimization > Sleep-supporting supplements
@@ -85,7 +110,23 @@ sources:
   location: Estrogen Metabolism — Promotes Healthy Estrogen Metabolism
   quote: There is also some evidence that melatonin, N-acetyl-cystine, & methylated
     B vitamins may support healthy estrogen metabolism as well.
-version: 8
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Melatonin dosing and quality section
+  quote: The clinical trials I believe were on three milligrams. That seemed to be
+    the dose that worked
+version: 9
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-05-16'
 updated_by: shivani
+contraindications:
+  conditions:
+  - paradoxical activation in a subset of clients — start with lowest dose available
+    and pause if it produces wired/anxious state
+  - autoimmune conditions and pregnancy — coordinate with clinician
+  - children and adolescents — clinician guidance only
+  medications: []
+  life_stages: []
+interactions:
+  with_medications: []
+  with_supplements: []
+  with_foods: []

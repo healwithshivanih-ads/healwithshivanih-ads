@@ -1,0 +1,63 @@
+slug: magnesium-supports-sleep-and-jet-lag-recovery
+statement: 'Magnesium supports sleep quality and jet-lag recovery by modulating
+
+  GABA, NMDA, and melatonin pathways and supporting parasympathetic
+
+  tone. Roughly half of the adult population is functionally
+
+  magnesium-insufficient, making it a high-leverage foundational
+
+  supplement for clients with sleep disruption.
+
+  '
+evidence_tier: strong
+rationale: 'Magnesium acts as an NMDA antagonist and GABA-A receptor
+
+  modulator, contributing to nervous-system calming. Magnesium
+
+  status correlates with sleep quality in observational studies,
+
+  and supplementation improves subjective sleep measures in
+
+  deficient individuals. Population magnesium intake is well-
+
+  documented to fall below RDA in roughly half of US adults.
+
+  '
+coaching_translation: 'Magnesium is one of the simplest, safest, highest-leverage
+
+  starting points for sleep support, especially since roughly half
+
+  of adults don''t get enough through diet. The form matters: for
+
+  sleep and nervous-system support, glycinate and threonate are
+
+  preferred — they''re calming and well-absorbed. Oxide and citrate
+
+  are mostly laxative and not ideal as sleep aids. Take in the
+
+  evening with dinner or before bed.
+
+  '
+caveats:
+- Form matters significantly — recommend glycinate or threonate for sleep, not oxide
+  or citrate (which are primarily laxative).
+- High doses can cause loose stools regardless of form.
+- Coordinate with clinician in severe renal impairment.
+out_of_scope_notes: ''
+linked_to_topics:
+- insomnia
+- sleep-deprivation
+linked_to_mechanisms:
+- parasympathetic-restoration-failure
+linked_to_supplements:
+- magnesium
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Magnesium and sleep section
+  quote: I find magnesium for my pro athletes that travel a lot, they really do well
+    taking magnesium not only for regular sleep but also for jet lag
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

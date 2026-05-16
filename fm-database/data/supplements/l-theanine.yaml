@@ -37,14 +37,27 @@ linked_to_claims:
 - magnesium-supports-cortisol-gaba-sleep
 - l-theanine-glycine-increase-alpha-waves-relaxation
 - l-theanine-increases-alpha-waves-relaxation
-notes_for_coach: L-theanine promotes calm without sedation by increasing alpha brain
-  wave activity. Often stacked with magnesium for sleep support. Dose verification
-  with clinician is recommended for therapeutic use.
+notes_for_coach: 'Amino acid found naturally in green tea; promotes GABA-pathway
+
+  calming without sedation. Source (Menolascino transcript) does NOT
+
+  give dosing and mentions L-theanine indirectly through GABA-pathway
+
+  discussion. Confirm dose from a peer-reviewed source before client
+
+  use. Commonly used in the evening parasympathetic-support phase of
+
+  an insomnia protocol. Often paired with magnesium glycinate.
+
+  Generally well-tolerated.
+
+  '
 notes_for_client: L-theanine is an amino acid found in green tea that promotes a calm,
   focused state of mind without making you drowsy. It's gentle and can be used during
   the day or before bed.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- parasympathetic-restoration-failure
 sources:
 - id: vitaone-practice-guide
   location: Sleep Optimization > Sleep-supporting supplements
@@ -64,9 +77,20 @@ sources:
   location: Key Nutrients & Botanicals for Emotional Healing Support
   quote: 'L-Theanine / Glycine — Increase alpha brain waves, relaxation. Clinical
     use: Mental tension, sleep support.'
-version: 5
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: GABA and natural sleep aids section
+  quote: the GABA you mentioned. 5-hydroxy-triptophan to help with the serotonin system
+version: 6
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-05-16'
 updated_by: shivani
 aliases:
 - l-theanine 200-1200mg
+contraindications:
+  conditions: []
+  medications: []
+  life_stages: []
+interactions:
+  with_medications: []
+  with_supplements: []
+  with_foods: []

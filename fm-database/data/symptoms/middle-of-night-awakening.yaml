@@ -1,0 +1,45 @@
+slug: middle-of-night-awakening
+display_name: Middle-of-Night Awakening
+aliases:
+- 2am wakeup
+- early morning awakening
+- middle insomnia
+- sleep maintenance insomnia
+category: sleep
+severity: common
+description: 'Awakening in the middle of the night — classically 2-3 a.m. —
+
+  often with abrupt wide-awake alertness rather than rouseable
+
+  grogginess. Without bathroom urgency. Highly characteristic of
+
+  HPA axis dysregulation with premature cortisol rise. Distinguish
+
+  from rouseable awakening with bathroom need (more often hydration
+
+  or prostate-related), and from awakenings driven by snoring/apnea
+
+  (witnessed gasping, partner report, morning headache).
+
+  '
+when_to_refer: 'Refer if associated with witnessed apneic episodes, gasping,
+
+  hypertension, or daytime sleepiness severe enough to impair driving
+
+  or work — clinician evaluation for sleep apnea.
+
+  '
+linked_to_topics:
+- insomnia
+- hpa-axis-dysregulation
+linked_to_mechanisms:
+- 2-3am-cortisol-spike-pattern
+- cortisol-melatonin-rhythm-coupling
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Adrenal pattern awakening section
+  quote: they'll have a classic two to three a.m. wide awake awakening
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

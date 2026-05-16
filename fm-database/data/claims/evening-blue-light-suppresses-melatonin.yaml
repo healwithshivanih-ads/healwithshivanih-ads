@@ -1,0 +1,58 @@
+slug: evening-blue-light-suppresses-melatonin
+statement: 'Exposure to blue-wavelength light from screens (phones, tablets,
+
+  computers, televisions) and LED lighting in the hour before bed
+
+  suppresses pineal melatonin release, delays sleep onset, and
+
+  fragments sleep architecture — even at moderate light intensities.
+
+  '
+evidence_tier: strong
+rationale: 'Well-established in chronobiology: blue light (~460-490 nm)
+
+  activates intrinsically photosensitive retinal ganglion cells
+
+  that project to the suprachiasmatic nucleus, suppressing nocturnal
+
+  melatonin production within minutes of exposure. Multiple
+
+  controlled studies confirm dose-dependent melatonin suppression
+
+  and phase delay.
+
+  '
+coaching_translation: 'The biggest, cheapest, easiest sleep upgrade for most people:
+
+  no screens in the last hour before bed. Phone, laptop, tablet,
+
+  TV all emit blue light that tells your brain it''s still daytime
+
+  and shuts down melatonin production. If you can''t avoid screens
+
+  entirely, blue-light-blocking glasses or "night shift" settings
+
+  help — but a real wind-down without screens is better.
+
+  '
+caveats:
+- Blue-light-blocking glasses and screen filters have less robust evidence than simply
+  reducing exposure, but are reasonable harm-reduction tools.
+- Some chronic sleep-disrupted individuals also benefit from morning bright-light
+  exposure to entrain the circadian phase.
+out_of_scope_notes: ''
+linked_to_topics:
+- insomnia
+- circadian-rhythm-disruption
+linked_to_mechanisms:
+- blue-light-melatonin-suppression
+linked_to_supplements: []
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Blue light and pineal section
+  quote: screen time before bed is particularly, I think, disrupting for that whole
+    pineal system and your melatonin production
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

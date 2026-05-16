@@ -1,0 +1,64 @@
+slug: altitude-can-unmask-subclinical-lung-or-sleep-pathology
+statement: 'Clients who sleep well at sea level but develop fatigue, poor
+
+  sleep, or nocturnal symptoms at altitude (e.g., visiting or
+
+  living above ~5000 feet) frequently have an underlying lung
+
+  pathology (smoking history, occupational silica or petroleum
+
+  exposure, undiagnosed COPD or restrictive lung disease) or
+
+  sleep apnea that the altitude unmasks. Worth flagging for
+
+  clinical workup.
+
+  '
+evidence_tier: plausible_emerging
+rationale: 'Altitude reduces partial pressure of inspired oxygen, narrowing
+
+  the margin between baseline arterial oxygen saturation and the
+
+  desaturation threshold. Subclinical respiratory pathology can
+
+  remain asymptomatic at sea level but produce nocturnal hypoxia
+
+  at altitude. Clinical pattern reported by Menolascino practicing
+
+  at 7000 feet in Jackson Hole, Wyoming.
+
+  '
+coaching_translation: 'If a client tells you they sleep fine at home but feel terrible
+
+  whenever they travel to higher altitudes (or live somewhere
+
+  high), it''s worth flagging for their clinician. Sometimes
+
+  altitude reveals lung or sleep-breathing issues that don''t
+
+  show up at sea level.
+
+  '
+caveats:
+- Many people simply find altitude uncomfortable for reasons unrelated to pathology
+  (dehydration, lower humidity).
+- This is a flag-for-clinician note, not a coaching diagnosis.
+out_of_scope_notes: 'Pulmonary workup and sleep apnea evaluation belong to the
+
+  clinician.
+
+  '
+linked_to_topics:
+- sleep-apnea
+linked_to_mechanisms:
+- nocturnal-hypoxia
+linked_to_supplements: []
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Altitude and sleep section
+  quote: we'll do an oximetry at sea level and they'll do fine, and we bring them
+    to altitude they'll have trouble. All of those people have an etiology
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

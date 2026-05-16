@@ -1,0 +1,59 @@
+slug: seven-eight-hours-sleep-required-for-cognitive-performance
+statement: 'Adult cognitive performance, reaction time, and decision-making
+
+  accuracy degrade measurably below ~7-8 hours of sleep, with the
+
+  performance decrement at 5 hours of sleep comparable to the
+
+  impairment of mild-to-moderate alcohol intoxication.
+
+  '
+evidence_tier: strong
+rationale: 'Established in sleep deprivation research across military, aviation,
+
+  medical, and transportation cohorts. Specific quantitative example
+
+  cited (army sharpshooter accuracy: ~99% at 8 hours, 79% at 6 hours,
+
+  35% at 5 hours, comparable to 2-3 alcoholic drinks) is widely
+
+  attributed to military performance research. Mechanism includes
+
+  prefrontal cortex hypoactivity, slowed reaction time, and impaired
+
+  working memory after partial sleep deprivation.
+
+  '
+coaching_translation: 'Five hours of sleep impairs your performance about as much
+  as
+
+  drinking 2-3 alcoholic beverages would. Most of us would never
+
+  drive to work drunk — but many of us drive to work sleep-deprived,
+
+  which is functionally similar. This is one of the strongest
+
+  arguments for treating sleep as foundational, not optional.
+
+  '
+caveats:
+- Individual sleep needs vary; some adults function well on 6-7 hours while others
+  need 8-9.
+- The specific army sharpshooter percentages are widely cited but pin down the original
+  study for any high-stakes use.
+out_of_scope_notes: ''
+linked_to_topics:
+- sleep-deprivation
+linked_to_mechanisms:
+- parasympathetic-restoration-failure
+linked_to_supplements: []
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Sleep deprivation and performance section
+  quote: their accuracy is almost 99% when they get eight hours of sleep. It drops
+    to 35% when they get five hours of sleep, which is the equivalent of drinking
+    two to three alcoholic beverages
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

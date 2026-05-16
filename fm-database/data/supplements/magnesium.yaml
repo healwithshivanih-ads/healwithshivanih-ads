@@ -1,5 +1,5 @@
 slug: magnesium
-display_name: Magnesium
+display_name: Magnesium (Generic)
 category: mineral
 forms_available:
 - capsule
@@ -34,6 +34,8 @@ linked_to_topics:
 - dyslipidemia-management
 - atherosclerosis-pathogenesis
 - gut-microbiome
+- insomnia
+- sleep-deprivation
 linked_to_claims:
 - magnesium-phase-ii-cofactor
 - magnesium-deficiency-increases-t2d-risk
@@ -52,14 +54,33 @@ linked_to_claims:
 - magnesium-deficiency-causes-intracellular-calcium-excess
 - magnesium-reduces-statin-side-effects
 - magnesium-depletion-from-water-filtration
-notes_for_coach: Dr. Davis identifies magnesium as a restoration supplement—water
-  filtration removes magnesium, making supplementation necessary. Specific form and
-  dose not discussed in this document; coaches should verify appropriate forms (glycinate,
-  malate, etc.) with clinician guidance.
+notes_for_coach: 'Source (Menolascino transcript) cites magnesium as a foundational
+
+  sleep nutrient and notes ~59% of Americans are deficient. Source
+
+  does NOT specify a dose range for sleep applications. Form matters
+
+  significantly: glycinate and threonate are preferred for sleep and
+
+  nervous-system support (calming, well-absorbed, low GI effect);
+
+  oxide and citrate are primarily laxative-acting (poorly absorbed,
+
+  loose-stool effect). Use this generic entry as a placeholder —
+
+  prefer form-specific entries (magnesium-glycinate, magnesium-oxide,
+
+  magnesium-citrate, magnesium-threonate) for client recommendations
+
+  when dosing-sourced batches are created. Magnesium glycinate
+
+  already exists in the catalogue.
+
+  '
 notes_for_client: Because we filter our drinking water, most of the magnesium that
   used to come from natural water sources is removed. Supplementing magnesium helps
   restore what modern water treatment takes away.
-evidence_tier: plausible_emerging
+evidence_tier: strong
 typical_dose_range:
   capsule:
     min: 200
@@ -73,7 +94,8 @@ typical_dose_range:
     min: 200
     max: 400
     unit: mg
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- parasympathetic-restoration-failure
 sources:
 - id: vitaone-liver-detox-cheatsheet
   location: Functional Detox Phases
@@ -125,9 +147,23 @@ sources:
   quote: There are supplements that you need, like magnesium, you need it because
     we have to filter our drinking water. Water filtration removes all magnesium.
     So we have to restore magnesium.
-version: 13
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Magnesium and sleep section
+  quote: I love magnesium. That's one of my favorite nutrients. The government has
+    told us that about 59% Americans are deficient in magnesium
+version: 14
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-05-16'
 updated_by: shivani
 aliases:
 - magnesium 400-600mg
+contraindications:
+  conditions:
+  - severe renal impairment — coordinate with clinician
+  - high doses may cause loose stools (form-dependent)
+  medications: []
+  life_stages: []
+interactions:
+  with_medications: []
+  with_supplements: []
+  with_foods: []

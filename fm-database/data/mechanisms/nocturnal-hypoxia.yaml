@@ -1,0 +1,47 @@
+slug: nocturnal-hypoxia
+display_name: Nocturnal Hypoxia
+aliases:
+- nighttime oxygen desaturation
+- sleep-related hypoxia
+category: other
+summary: 'Drops in blood oxygen saturation during sleep, most often from
+
+  obstructive sleep apnea but also seen with central apnea, altitude,
+
+  underlying lung disease (smoking history, occupational silica or
+
+  petroleum exposure, COPD), and cardiac causes. Repeated overnight
+
+  desaturation events drive sympathetic surges, elevate cardiovascular
+
+  risk, fragment restorative sleep architecture, and contribute to
+
+  daytime fatigue, cognitive decline, and in vulnerable adults,
+
+  accelerated dementia progression. Often missed because clients
+
+  attribute fatigue to other causes.
+
+  '
+upstream_drivers:
+- sleep-apnea
+- altitude-exposure
+- underlying-lung-disease
+downstream_effects:
+- increased-cardiovascular-risk
+- chronic-fatigue
+- cognitive-decline
+related_mechanisms: []
+linked_to_topics:
+- sleep-apnea
+- sleep-deprivation
+evidence_tier: strong
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Nocturnal hypoxia and altitude section
+  quote: a lot of people with cognitive disorders have nocturnal hypoxia. They drop
+    their oxygen at night and their brain gets starved at night
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

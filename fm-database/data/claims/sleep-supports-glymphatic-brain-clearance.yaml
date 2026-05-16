@@ -1,0 +1,61 @@
+slug: sleep-supports-glymphatic-brain-clearance
+statement: 'Sleep is the dominant window for parasympathetic restoration and
+
+  glymphatic clearance of metabolic waste from the brain, including
+
+  protein aggregates implicated in neurodegenerative disease.
+
+  Chronic insufficient sleep accumulates a measurable cognitive and
+
+  inflammatory burden that compounds over years.
+
+  '
+evidence_tier: plausible_emerging
+rationale: 'The glymphatic system, characterized in the 2010s, clears
+
+  interstitial fluid waste (including amyloid-beta) from the
+
+  central nervous system predominantly during slow-wave sleep,
+
+  with interstitial fluid volume expanding overnight to facilitate
+
+  clearance. Established in animal models and supported by
+
+  emerging human MRI evidence; specific long-term clinical
+
+  implications for dementia prevention are still being
+
+  characterized.
+
+  '
+coaching_translation: 'Your brain has a nightly cleaning system that only really runs
+
+  during deep sleep. It clears out metabolic waste, including some
+
+  of the proteins linked to dementia. Cutting sleep short doesn''t
+
+  just leave you tired the next day — it interferes with the
+
+  cleanup process, and that effect compounds over years.
+
+  '
+caveats:
+- Most glymphatic-clearance research is in animal models; direct human implications
+  are still being characterized.
+- Avoid framing this as definitive dementia-prevention messaging — coaching scope
+  is education on sleep importance, not disease prevention claims.
+out_of_scope_notes: ''
+linked_to_topics:
+- sleep-deprivation
+linked_to_mechanisms:
+- parasympathetic-restoration-failure
+linked_to_supplements: []
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Restorative sleep section
+  quote: With sleep, it's such a restorative process where we live so sympathetic
+    all day long
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

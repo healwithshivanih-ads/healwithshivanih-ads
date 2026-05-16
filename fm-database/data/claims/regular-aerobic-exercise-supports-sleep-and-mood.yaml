@@ -1,0 +1,66 @@
+slug: regular-aerobic-exercise-supports-sleep-and-mood
+statement: 'Regular moderate aerobic exercise (approximately 30 minutes,
+
+  4-5 times per week) measurably improves sleep quality and mood
+
+  in adults, with effect sizes comparable to common pharmacological
+
+  interventions in some studies. Exercise should be earlier in the
+
+  day, not within ~3 hours of bedtime.
+
+  '
+evidence_tier: plausible_emerging
+rationale: 'Multiple meta-analyses confirm aerobic exercise improves both
+
+  subjective and objective sleep quality and depression severity.
+
+  Specific equivalence claims comparing exercise to Prozac (for
+
+  mood) or Ambien (for sleep) are widely cited in functional
+
+  medicine literature but are simplifications of effect-size
+
+  comparisons rather than rigorous direct head-to-head equivalence.
+
+  Mechanism includes circadian phase entrainment via daytime body
+
+  temperature elevation followed by overnight cooling.
+
+  '
+coaching_translation: 'Moving your body during the day is one of the most consistent
+
+  drivers of better sleep at night. About 30 minutes of moderate
+
+  aerobic activity, 4-5 days a week, has been shown in research
+
+  to improve sleep and mood comparably to some medications. Time
+
+  it earlier in the day rather than within 2-3 hours of bedtime,
+
+  because exercise heats the body up and your body needs to cool
+
+  down to sleep.
+
+  '
+caveats:
+- Equivalence to medications is suggestive, not proven for individual cases — clients
+  on prescribed medication should consult their prescriber before changing anything.
+- Evening exercise affects different individuals differently; some people tolerate
+  it fine.
+out_of_scope_notes: ''
+linked_to_topics:
+- insomnia
+- sleep-deprivation
+linked_to_mechanisms:
+- parasympathetic-restoration-failure
+linked_to_supplements: []
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Exercise and sleep section
+  quote: aerobic exercise four to five times a week, moderate, 30 minutes is equal
+    to Prozac for mood and may be equal to low dose Ambien for sleep
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

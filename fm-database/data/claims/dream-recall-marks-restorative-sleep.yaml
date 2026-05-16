@@ -1,0 +1,63 @@
+slug: dream-recall-marks-restorative-sleep
+statement: 'Asking a client whether they dream — and recall dreams — is a
+
+  useful proxy screening question for whether they are achieving
+
+  the deeper REM-rich sleep architecture associated with restorative
+
+  sleep. Absent dream recall over time suggests insufficient deep
+
+  sleep and warrants a closer look (sleep apnea, alcohol, certain
+
+  medications, or chronic HPA dysregulation).
+
+  '
+evidence_tier: plausible_emerging
+rationale: 'Dream recall is dominantly associated with awakening from or near
+
+  REM sleep. Consistent inability to recall any dreams over an
+
+  extended period correlates with reduced REM duration in
+
+  polysomnography studies and is anecdotally common in clients with
+
+  sleep apnea (frequent micro-arousals fragment REM) and chronic
+
+  alcohol use (REM suppression). Not diagnostic on its own but a
+
+  cheap, useful coaching question.
+
+  '
+coaching_translation: 'Here''s a quick question that often opens up more than expected:
+
+  "Do you dream? Do you remember your dreams?" People who never
+
+  remember dreaming often aren''t getting into the deep REM stages
+
+  where the brain does its most restorative work. It doesn''t
+
+  diagnose anything on its own, but it''s a useful flag — especially
+
+  if combined with snoring, daytime sleepiness, or alcohol use.
+
+  '
+caveats:
+- Some people genuinely never recall dreams even with normal sleep architecture —
+  absence of recall isn't pathognomonic.
+out_of_scope_notes: ''
+linked_to_topics:
+- insomnia
+- sleep-apnea
+linked_to_mechanisms:
+- parasympathetic-restoration-failure
+- nocturnal-hypoxia
+linked_to_supplements: []
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Dream recall section
+  quote: people that don't dream probably aren't getting that deep stage restorative
+    sleep
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

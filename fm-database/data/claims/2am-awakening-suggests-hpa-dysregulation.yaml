@@ -1,0 +1,67 @@
+slug: 2am-awakening-suggests-hpa-dysregulation
+statement: 'A pattern of waking wide-awake (not rouseable, not bathroom-driven)
+
+  at a consistent time between 2-3 a.m. is clinically suggestive of
+
+  HPA axis dysregulation with premature nocturnal cortisol rise.
+
+  Can be confirmed by salivary cortisol and melatonin sampling at
+
+  the wake time.
+
+  '
+evidence_tier: plausible_emerging
+rationale: 'The diurnal cortisol nadir normally falls in this window; a sharp
+
+  early cortisol surge displaces melatonin and fragments sleep.
+
+  Pattern is widely recognized in functional medicine practice and
+
+  is consistent with HPA axis literature on dysregulated cortisol
+
+  rhythms in chronic stress, though the specific 2-3 a.m. timing
+
+  is more clinical pattern than RCT-supported finding.
+
+  '
+coaching_translation: 'If you wake up at almost exactly the same time every night,
+
+  somewhere between 2 and 3 a.m., wide awake like someone flipped
+
+  a switch — not needing the bathroom, not just stirring — that''s
+
+  a distinctive pattern. It usually points to your stress hormone
+
+  system firing too early. The fix isn''t a sleeping pill; it''s
+
+  supporting the HPA axis: blood sugar stability before bed,
+
+  evening parasympathetic support, daytime stress modulation.
+
+  '
+caveats:
+- This pattern is suggestive, not diagnostic. A clinician can confirm with salivary
+  or urinary cortisol rhythm testing.
+- Other causes of middle-of-night awakening exist (sleep apnea, pain, medication,
+  alcohol).
+out_of_scope_notes: 'Salivary cortisol panel interpretation and HPA axis treatment
+
+  planning belong to the clinician.
+
+  '
+linked_to_topics:
+- insomnia
+- hpa-axis-dysregulation
+linked_to_mechanisms:
+- 2-3am-cortisol-spike-pattern
+- cortisol-melatonin-rhythm-coupling
+linked_to_supplements: []
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Adrenal pattern awakening section
+  quote: the person who has a groundhog day every night at 2:13 a.m. … you wake up
+    wide awake like you had an adrenaline shot
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

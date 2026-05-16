@@ -1,0 +1,59 @@
+slug: sleep-deprivation-blocks-weight-loss-in-women
+statement: 'In women attempting weight loss, consistent sleep duration below
+
+  ~7-7.5 hours appears to block weight loss despite adherent diet and
+
+  exercise — by acting as a hormone disruptor (cortisol, leptin,
+
+  ghrelin, insulin) analogous to environmental endocrine disruptors.
+
+  '
+evidence_tier: plausible_emerging
+rationale: 'Sleep restriction studies in women show altered glucose tolerance,
+
+  reduced insulin sensitivity, elevated evening cortisol, lower
+
+  leptin (satiety signal), and higher ghrelin (hunger signal) —
+
+  collectively favoring fat retention and increased caloric intake.
+
+  Clinical observation in FM practice consistently identifies
+
+  insufficient sleep as a primary driver of stalled weight loss in
+
+  women already adherent to diet and exercise interventions.
+
+  '
+coaching_translation: 'If you''re eating well, exercising, and not losing weight,
+  look at
+
+  sleep before adjusting the diet further. Less than 7 hours a night
+
+  acts on your hormones the same way exposure to certain plastics
+
+  does — it can keep your body from letting go of fat regardless of
+
+  what you eat. Often the highest-leverage change is moving bedtime
+
+  earlier and protecting the wind-down hour.
+
+  '
+caveats:
+- Threshold (7 vs 7.5 hours) and effect size are individual.
+- Men are also affected but the literature in women is stronger.
+out_of_scope_notes: ''
+linked_to_topics:
+- sleep-deprivation
+- insulin-resistance
+linked_to_mechanisms:
+- sleep-as-hormone-disruptor
+linked_to_supplements: []
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Sleep deprivation and hormone disruption section
+  quote: particularly in women, that lack of sleep is a hormone disrupter just like
+    toxins can be
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

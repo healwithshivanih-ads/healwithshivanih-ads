@@ -1,0 +1,78 @@
+slug: evening-detox-support-improves-sleep
+statement: 'In clients presenting with insomnia, a foundational evening
+
+  detoxification-support intervention (broad-reaching liver and gut
+
+  support dosed morning and night) frequently resolves or
+
+  substantially improves sleep within ~4 weeks — even without
+
+  sleep-specific supplements. The liver performs the majority of
+
+  detoxification overnight; supporting it before bed appears
+
+  clinically high-leverage.
+
+  '
+evidence_tier: fm_specific_thin
+rationale: 'Clinical pattern reported in naturopathic and functional medicine
+
+  practice. Hughes (the interviewer, a naturopathic doctor with
+
+  19+ years experience) describes consistent results from a
+
+  detox-first approach to insomnia. Specific mechanism plausible
+
+  (overnight bile production and Phase 2 conjugation, gut-liver
+
+  axis impact on parasympathetic tone) but not rigorously tested in
+
+  controlled trials. Captured as fm_specific_thin given strong
+
+  clinical observation but limited published evidence.
+
+  '
+coaching_translation: 'Before reaching for sleep supplements, it''s often worth trying
+
+  4 weeks of solid liver-and-gut support — taken both morning and
+
+  evening — alongside basic sleep hygiene. Many people find their
+
+  insomnia substantially improves just from that, because their
+
+  liver is doing detoxification work overnight and the cleaner
+
+  the underlying terrain, the easier sleep gets. If sleep is
+
+  still disrupted after that, then we know to look deeper at HPA
+
+  axis, sleep apnea, or mental-emotional load.
+
+  '
+caveats:
+- This is clinical observation, not rigorously studied.
+- Not appropriate if the underlying cause is sleep apnea, severe HPA dysregulation,
+  or psychiatric illness — those need direct address.
+- Detox support should be a coach-appropriate food-and-lifestyle plan, not aggressive
+  clinical-only protocols.
+out_of_scope_notes: 'Specific clinical detox protocols (chelation, IV nutrients, high-
+
+  dose binders) are outside coaching scope.
+
+  '
+linked_to_topics:
+- insomnia
+- detoxification
+linked_to_mechanisms:
+- phase-2-conjugation
+- parasympathetic-restoration-failure
+linked_to_supplements: []
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Detox and sleep section (Hughes contribution)
+  quote: my go-to plan for insomnia has always been to give a good broad reaching
+    detoxification aid given in the morning and given at night
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

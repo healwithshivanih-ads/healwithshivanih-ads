@@ -1,0 +1,59 @@
+slug: late-eating-disrupts-sleep-via-postprandial-inflammation
+statement: 'Eating close to bedtime disrupts sleep quality via postprandial
+
+  blood-flow redistribution toward the gut, transient
+
+  lipopolysaccharide translocation from physiological intestinal
+
+  hyperpermeability after meals, and consequent short-lived
+
+  inflammatory activation — incompatible with the parasympathetic
+
+  shift needed for restorative sleep.
+
+  '
+evidence_tier: plausible_emerging
+rationale: 'Established in chrononutrition research: late-night eating shifts
+
+  peripheral clock genes out of phase with the central SCN clock,
+
+  alters glucose tolerance, and elevates inflammatory markers.
+
+  Postprandial LPS translocation is documented in metabolic
+
+  endotoxemia literature, though its specific role in
+
+  sleep-onset impairment is more inference than RCT.
+
+  '
+coaching_translation: 'Eating right before bed creates a small inflammatory wave just
+  as
+
+  your body is trying to shift into rest mode. Aim to stop eating
+
+  2-3 hours before bedtime. If you''re hungry late, a small protein
+
+  or fat snack is far less disruptive than carbohydrates or a full
+
+  meal.
+
+  '
+caveats:
+- Some individuals (athletes, people with reactive hypoglycemia) do better with a
+  small protein-fat snack before bed.
+- 2-3 hours is a guideline, not a hard rule.
+out_of_scope_notes: ''
+linked_to_topics:
+- insomnia
+linked_to_mechanisms:
+- inflammatory-cytokine-elevation
+linked_to_supplements: []
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Late eating and inflammation section
+  quote: When you eat late at night, you might be creating an inflammatory state in
+    the body for a short period of time
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

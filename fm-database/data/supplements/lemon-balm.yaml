@@ -1,10 +1,11 @@
 slug: lemon-balm
-display_name: Lemon Balm
+display_name: Lemon Balm (Melissa officinalis)
 category: herb
 forms_available:
 - capsule
 - tablet
 - liquid
+- whole_food
 timing_options:
 - morning
 - evening
@@ -15,15 +16,29 @@ linked_to_topics:
 - gerd
 - gut-brain-axis
 - gerd-ppi-tapering
+- insomnia
 linked_to_claims:
 - lemon-balm-reduces-anxiety-gerd
 - ppi-tapering-supplement-support-repair-protect-antioxidant
-notes_for_coach: Listed for 'Anxiety' support in PPI tapering protocol. Anxiety can
-  exacerbate GERD; lemon balm (Melissa officinalis) has calming properties and may
-  reduce stress-related GI symptoms.
+notes_for_coach: 'Calming herb in the mint family with mild anxiolytic and sleep-
+
+  supportive effects. Source (Menolascino transcript) lists lemon
+
+  balm among evidence-supported natural sleep aids but does NOT give
+
+  dosing. Confirm dose from peer-reviewed source before client use.
+
+  Available as standardized extract, tincture, or as a culinary
+
+  herb in tea. Often combined with passionflower, lavender, or
+
+  valerian.
+
+  '
 evidence_tier: plausible_emerging
 typical_dose_range: {}
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- parasympathetic-restoration-failure
 notes_for_client: Lemon balm is a calming herb that may help reduce anxiety and stress-related
   digestive symptoms while tapering off acid-blocking medications.
 sources:
@@ -34,7 +49,22 @@ sources:
 - id: vitaone-health-coaching-toolkit
   location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
   quote: 'Anxiety: Lemon balm.'
-version: 2
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Natural sleep aids section
+  quote: There's some lavender supplements that have shown in clinical trials some
+    benefit, lemon balm, passion flower
+version: 3
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-05-16'
 updated_by: shivani
+contraindications:
+  conditions:
+  - hypothyroidism — may have mild thyroid-suppressive effects in high doses, coordinate
+    with clinician
+  - pregnancy and lactation — coordinate with clinician
+  medications: []
+  life_stages: []
+interactions:
+  with_medications: []
+  with_supplements: []
+  with_foods: []

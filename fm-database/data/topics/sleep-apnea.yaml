@@ -1,0 +1,70 @@
+slug: sleep-apnea
+display_name: Sleep Apnea
+aliases:
+- obstructive sleep apnea
+- OSA
+- central sleep apnea
+- nocturnal hypoxia
+summary: 'Sleep apnea is recurrent partial or complete cessation of breathing
+
+  during sleep, leading to fragmented sleep and intermittent hypoxia.
+
+  Obstructive sleep apnea (OSA) results from upper airway collapse
+
+  (tongue falling back, narrow airway, inability to visualize the
+
+  uvula in open-mouth view is a screening sign). Central sleep apnea
+
+  arises from impaired CNS respiratory drive (stroke, concussion,
+
+  traumatic brain injury). Sleep apnea is a larger cardiovascular
+
+  risk than most cardiac biomarkers, and nocturnal hypoxia in
+
+  cognitively-declining adults can drive brain hypoxic stress
+
+  overnight. Frequently undiagnosed across body habitus types —
+
+  the "Pickwickian" stereotype misses many thin presenters.
+
+  '
+common_symptoms:
+- chronic-fatigue
+- snoring
+- witnessed-apneic-episodes
+- non-restorative-sleep
+- morning-headache
+red_flags:
+- witnessed apneic episodes with gasping
+- cardiovascular disease with fatigue
+- cognitive decline with poor sleep quality
+related_topics:
+- sleep-deprivation
+- insomnia
+key_mechanisms:
+- nocturnal-hypoxia
+coaching_scope_notes: 'Coach screens for risk signs (loud snoring, witnessed apneic
+
+  episodes from a partner, unrefreshing sleep, morning headaches,
+
+  hypertension at altitude) and refers to a clinician for overnight
+
+  oximetry or polysomnography. Coach does NOT diagnose or treat.
+
+  '
+clinician_scope_notes: 'Diagnosis (home oximetry, polysomnography), CPAP/BiPAP titration,
+
+  oral appliance fitting, and surgical management belong to a sleep
+
+  physician.
+
+  '
+evidence_tier: strong
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Sleep apnea section
+  quote: sleep apnea is a bigger cardiovascular risk than any biomarker for the heart
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

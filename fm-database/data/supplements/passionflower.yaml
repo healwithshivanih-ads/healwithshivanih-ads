@@ -1,14 +1,17 @@
 slug: passionflower
-display_name: Passionflower
+display_name: Passionflower (Passiflora incarnata)
 category: herb
 forms_available:
 - liquid
 - capsule
 typical_dose_range: {}
-timing_options: []
+timing_options:
+- bedtime
 take_with_food: optional
 contraindications:
-  conditions: []
+  conditions:
+  - pregnancy and lactation — coordinate with clinician
+  - may potentiate sedative medications — coordinate with prescriber
   medications: []
   life_stages: []
 interactions:
@@ -17,15 +20,35 @@ interactions:
   with_medications: []
 pregnancy_safety: unknown
 lactation_safety: unknown
-linked_to_topics: []
-linked_to_mechanisms: []
+linked_to_topics:
+- insomnia
+linked_to_mechanisms:
+- parasympathetic-restoration-failure
 linked_to_claims: []
-notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
+notes_for_coach: 'Calming herb with mild anxiolytic and sleep-onset support effects;
+
+  GABA-pathway mechanism. Source (Menolascino transcript) lists
+
+  passionflower among evidence-supported natural sleep aids but does
+
+  NOT give dosing. Confirm dose from peer-reviewed source before
+
+  client use. Standardized extracts and tincture forms are most
+
+  commonly studied. Often used in combination formulas with lemon
+
+  balm, lavender, and magnesium for evening parasympathetic support.
+
+  '
 sources:
 - id: vitaone-mind-map-tool
   location: mindmap-shortlist 2026-05-13
-evidence_tier: fm_specific_thin
-version: 1
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Natural sleep aids section
+  quote: There's some lavender supplements that have shown in clinical trials some
+    benefit, lemon balm, passion flower
+evidence_tier: plausible_emerging
+version: 2
 status: active
-updated_at: '2026-05-13'
+updated_at: '2026-05-16'
 updated_by: shivani

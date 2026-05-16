@@ -1,0 +1,52 @@
+slug: 2-3am-cortisol-spike-pattern
+display_name: 2-3 AM Cortisol Spike Awakening Pattern
+aliases:
+- early morning cortisol surge
+- HPA dysregulation awakening
+- adrenal-pattern insomnia
+category: endocrine
+summary: 'A clinically recognizable insomnia pattern: client wakes wide awake
+
+  ("like an adrenaline shot") between roughly 2-3 a.m., often at a
+
+  remarkably consistent time, without needing to urinate and without
+
+  being a "grumbly" rouseable wakening. Maps to HPA axis dysregulation
+
+  with abrupt or premature nocturnal cortisol rise. Cortisol normally
+
+  reaches its diurnal nadir overnight; an early surge displaces the
+
+  normal melatonin-dominant window and fragments sleep. Salivary
+
+  cortisol + melatonin sampling at the 2 a.m. wake time can confirm
+
+  the pattern: low melatonin with relatively high cortisol indicates
+
+  the dysregulation.
+
+  '
+upstream_drivers:
+- chronic-stress
+- hpa-axis-dysregulation
+- blood-sugar-instability
+downstream_effects:
+- middle-of-night-awakening
+- non-restorative-sleep
+- daytime-fatigue
+related_mechanisms:
+- hpa-axis-dysregulation
+- cortisol-melatonin-rhythm-coupling
+linked_to_topics:
+- insomnia
+- hpa-axis-dysregulation
+evidence_tier: strong
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Cortisol and 2 AM awakening section
+  quote: the person who has a groundhog day every night at 2:13 a.m. … you wake up
+    wide awake like you had an adrenaline shot
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

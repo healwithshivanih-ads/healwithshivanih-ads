@@ -1,0 +1,49 @@
+slug: cortisol-melatonin-rhythm-coupling
+display_name: Cortisol-Melatonin Diurnal Rhythm Coupling
+aliases:
+- cortisol melatonin reciprocal rhythm
+- HPA pineal axis coupling
+category: endocrine
+summary: 'Cortisol and melatonin run in reciprocal diurnal rhythm: cortisol
+
+  peaks shortly after waking (the cortisol awakening response) and
+
+  declines through the day to a nocturnal nadir; melatonin rises
+
+  in the evening as light fades, peaks in the early hours of sleep,
+
+  and declines toward morning. The two rhythms anchor sleep-wake,
+
+  alertness, immune activity, and tissue repair cycles. Disruption
+
+  of either axis (chronic stress flattening cortisol curve, blue
+
+  light suppressing melatonin) propagates to the other and to
+
+  downstream circadian-dependent functions.
+
+  '
+upstream_drivers:
+- chronic-stress
+- blue-light-melatonin-suppression
+- hpa-axis-dysregulation
+downstream_effects:
+- insomnia
+- circadian-rhythm-disruption
+related_mechanisms:
+- hpa-axis-dysregulation
+- blue-light-melatonin-suppression
+- 2-3am-cortisol-spike-pattern
+linked_to_topics:
+- insomnia
+- circadian-rhythm-disruption
+- hpa-axis-dysregulation
+evidence_tier: strong
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Cortisol and adrenal section
+  quote: Cortisol peaks during the day, then comes down slowly at night
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

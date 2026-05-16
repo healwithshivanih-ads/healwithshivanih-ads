@@ -1,0 +1,42 @@
+slug: daytime-sleepiness
+display_name: Daytime Sleepiness
+aliases:
+- excessive daytime sleepiness
+- afternoon energy crash
+- need to nap
+category: sleep
+severity: common
+description: 'Persistent drowsiness during waking hours, often peaking mid-
+
+  afternoon, with reduced alertness, microsleeps, or a strong urge
+
+  to nap. Common drivers: insufficient nighttime sleep duration,
+
+  fragmented sleep from apnea or maintenance insomnia, blood sugar
+
+  instability, hypothyroidism, anemia, and circadian misalignment
+
+  (shift work, jet lag). In someone who insists they sleep adequate
+
+  hours, this symptom should prompt screening for sleep apnea.
+
+  '
+when_to_refer: 'Refer if severe enough to risk safety (drowsy driving), or
+
+  accompanied by signs of sleep apnea or narcolepsy.
+
+  '
+linked_to_topics:
+- sleep-deprivation
+- sleep-apnea
+linked_to_mechanisms:
+- nocturnal-hypoxia
+- circadian-rhythm-disruption
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Sleep deprivation performance section
+  quote: sleep deprivation is like driving drunk
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

@@ -1,0 +1,45 @@
+slug: non-restorative-sleep
+display_name: Non-Restorative Sleep
+aliases:
+- unrefreshing sleep
+- poor sleep quality
+- no dream recall
+category: sleep
+severity: common
+description: 'Adequate sleep duration on paper but waking unrefreshed, with
+
+  persistent daytime fatigue and poor cognitive performance. A useful
+
+  screening question: "Do you dream?" Absent dream recall often
+
+  signals insufficient deep/REM sleep architecture — the restorative
+
+  stages — and points toward sleep apnea, alcohol use, certain
+
+  medications, or chronically high cortisol. Sleeping medications
+
+  often produce a suspended state without restoring this
+
+  architecture.
+
+  '
+when_to_refer: 'Refer for sleep study if accompanied by snoring, witnessed apneic
+
+  episodes, morning headaches, or hypertension.
+
+  '
+linked_to_topics:
+- insomnia
+- sleep-apnea
+linked_to_mechanisms:
+- nocturnal-hypoxia
+- parasympathetic-restoration-failure
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Dream recall and deep sleep section
+  quote: people that don't dream probably aren't getting that deep stage restorative
+    sleep
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

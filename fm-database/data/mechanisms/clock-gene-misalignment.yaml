@@ -1,0 +1,50 @@
+slug: clock-gene-misalignment
+display_name: Clock Gene Misalignment
+aliases:
+- circadian gene disruption
+- BMAL1 CLOCK disruption
+- peripheral clock dysynchrony
+category: signaling
+summary: 'Clock genes (CLOCK, BMAL1, PER, CRY families) encode the molecular
+
+  oscillators that drive ~24-hour rhythms in nearly every cell. The
+
+  central suprachiasmatic nucleus clock entrains peripheral tissue
+
+  clocks (liver, gut, adipose, muscle) via light, feeding, and
+
+  hormonal cues. Misalignment between central and peripheral clocks
+
+  — driven by shift work, jet lag, irregular meal timing, late-night
+
+  eating, or chronic blue light exposure — disrupts metabolic gene
+
+  expression, glucose handling, lipid metabolism, and DNA repair
+
+  cycles. Cited mechanism behind the association between shift work
+
+  and reduced lifespan.
+
+  '
+upstream_drivers:
+- shift-work
+- jet-lag
+- irregular-meal-timing
+- blue-light-melatonin-suppression
+downstream_effects:
+- metabolic-disruption
+- circadian-rhythm-disruption
+related_mechanisms:
+- blue-light-melatonin-suppression
+- cortisol-melatonin-rhythm-coupling
+linked_to_topics:
+- circadian-rhythm-disruption
+evidence_tier: strong
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Clock genes and DNA timing section
+  quote: we now have clock genes, that our DNA has coding for time
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

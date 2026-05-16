@@ -1,0 +1,43 @@
+slug: inflammatory-cytokine-elevation
+display_name: Sleep-Loss Inflammatory Cytokine Elevation
+aliases:
+- sleep deprivation inflammation
+- sleep loss cytokine response
+- circadian inflammation
+category: immune
+summary: 'Shortened or fragmented sleep elevates pro-inflammatory cytokines
+
+  (IL-6, TNF-alpha, CRP) and shifts the inflammatory tone toward a
+
+  chronic low-grade activated state. This connects sleep loss
+
+  mechanistically to cardiovascular disease, depression (the cytokine
+
+  hypothesis of depression), metabolic dysfunction, and accelerated
+
+  aging. Effects are detectable after even a single night of
+
+  partial sleep deprivation.
+
+  '
+upstream_drivers:
+- sleep-deprivation
+- parasympathetic-restoration-failure
+- circadian-rhythm-disruption
+downstream_effects:
+- chronic-inflammation
+- increased-cardiovascular-risk
+- mood-disorder-risk
+related_mechanisms:
+- parasympathetic-restoration-failure
+linked_to_topics:
+- sleep-deprivation
+evidence_tier: strong
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Cytokine and inflammation section
+  quote: The less sleep you get, the more inflammatory cytokines you have
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

@@ -1,0 +1,56 @@
+slug: parasympathetic-restoration-failure
+display_name: Parasympathetic Restoration Failure
+aliases:
+- sympathetic dominance
+- autonomic imbalance
+- vagal tone deficiency
+category: neurological
+summary: 'Sleep is the dominant restorative window for parasympathetic
+
+  (vagal) tone — the autonomic state that drives digestion, immune
+
+  surveillance, tissue repair, and cardiovascular recovery. Chronic
+
+  sympathetic dominance from stress, late-night activity, evening
+
+  exercise, screen use, or unresolved emotional load prevents the
+
+  full parasympathetic shift required for restorative sleep. The
+
+  vagus nerve, the major parasympathetic efferent, modulates heart
+
+  rate, breath, digestion, and inflammatory tone — and is the
+
+  target of vagal nerve stimulation for treatment-resistant
+
+  depression. Insufficient nocturnal parasympathetic activation is
+
+  a mechanism linking poor sleep to elevated inflammation, AM heart
+
+  attack risk, and chronic disease progression.
+
+  '
+upstream_drivers:
+- chronic-stress
+- evening-sympathetic-activation
+- inadequate-sleep-duration
+downstream_effects:
+- inflammatory-cytokine-elevation
+- non-restorative-sleep
+- increased-cardiovascular-risk
+related_mechanisms:
+- hpa-axis-dysregulation
+- inflammatory-cytokine-elevation
+linked_to_topics:
+- sleep-deprivation
+- insomnia
+evidence_tier: strong
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Sympathetic-parasympathetic restoration section
+  quote: we live so sympathetic all day long … The parasympathetic nervous system
+    … gets restored with sleep
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

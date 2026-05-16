@@ -321,6 +321,23 @@ def _normalise_yaml_body(body: str) -> str:
         data.pop("missing_dependencies")
         changed = True
 
+    # 3b. Topic-specific: rename `linked_to_mechanisms` → `key_mechanisms`.
+    #     Topic model uses `key_mechanisms`; symptoms/supplements/claims
+    #     use `linked_to_mechanisms`. AI conflates them. Three sub-cases:
+    #       - Topic file with only `linked_to_mechanisms` → rename.
+    #       - Topic file with BOTH (AI emitted both): merge values into
+    #         `key_mechanisms`, drop the wrong key.
+    #       - Topic file with empty `linked_to_mechanisms: []` (AI
+    #         emitted both as defensive empty stubs): drop the extra key.
+    is_topic = any(k in data for k in ("common_symptoms", "coaching_scope_notes", "red_flags", "key_mechanisms"))
+    if is_topic and "linked_to_mechanisms" in data:
+        extra = data.pop("linked_to_mechanisms") or []
+        existing = data.get("key_mechanisms") or []
+        merged = list(dict.fromkeys([*existing, *extra]))  # preserve order, dedup
+        if merged:
+            data["key_mechanisms"] = merged
+        changed = True
+
     # 4. Enum value remaps — the AI sometimes uses stale or fuzzy names.
     #    Map to the closest valid enum value rather than failing the
     #    whole batch.

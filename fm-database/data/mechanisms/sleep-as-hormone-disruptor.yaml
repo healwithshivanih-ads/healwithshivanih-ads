@@ -1,0 +1,47 @@
+slug: sleep-as-hormone-disruptor
+display_name: Sleep Loss as Hormone Disruptor
+aliases:
+- sleep deprivation hormone effect
+- sleep loss metabolic disruption
+category: endocrine
+summary: 'Insufficient sleep functions analogously to an endocrine-disrupting
+
+  chemical — particularly in women — by altering insulin sensitivity,
+
+  appetite hormones (leptin, ghrelin), cortisol rhythm, sex hormone
+
+  cycling, and growth hormone release. A practical implication: in
+
+  caloric-deficit weight-loss attempts, women sleeping less than
+
+  ~7 hours often fail to lose weight despite adherent diet and
+
+  exercise, because the hormonal disruption blocks the metabolic
+
+  shift. Restoring sleep duration is sometimes the lowest-hanging
+
+  intervention for stalled weight loss.
+
+  '
+upstream_drivers:
+- sleep-deprivation
+- circadian-rhythm-disruption
+downstream_effects:
+- insulin-resistance
+- leptin-ghrelin-dysregulation
+- weight-loss-resistance
+related_mechanisms:
+- sleep-deprivation
+- cortisol-melatonin-rhythm-coupling
+linked_to_topics:
+- sleep-deprivation
+- insulin-resistance
+evidence_tier: strong
+sources:
+- id: menolascino-sleep-fm-perspective-fmca-transcript
+  location: Sleep as hormone disruptor section
+  quote: lack of sleep is a hormone disrupter just like toxins can be
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani
