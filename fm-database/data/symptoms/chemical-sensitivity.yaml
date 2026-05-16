@@ -1,0 +1,28 @@
+slug: chemical-sensitivity
+display_name: Chemical Sensitivity
+aliases:
+  - sensitivity to fragrances
+  - environmental sensitivity
+  - reactive to chemicals
+category: neurological
+severity: concerning
+description: |
+  Chemical sensitivity refers to heightened physiological reactions to
+  low levels of environmental chemicals, fragrances, solvents,
+  plastics, or cleaning products. Symptoms may include headaches,
+  brain fog, fatigue, dizziness, mood changes, or irritation after
+  exposure to everyday products.
+when_to_refer: 'Refer if symptoms are severe, progressive, neurological, respiratory, or interfere significantly with daily functioning.'
+linked_to_topics:
+  - detoxification-support
+linked_to_mechanisms:
+  - toxin-load-accumulation
+  - impaired-phase-2-conjugation
+sources:
+  - id: fmca-detoxification-basics-minich
+    location: 'Pages 2-3'
+    quote: 'Some people might be more sensitive to these low levels.'
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

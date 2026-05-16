@@ -1,0 +1,39 @@
+slug: impaired-phase-2-conjugation
+display_name: Impaired Phase 2 Conjugation
+aliases:
+  - poor phase-2 detoxification
+  - impaired conjugation pathways
+  - phase-2 insufficiency
+category: metabolic
+summary: |
+  Phase 2 conjugation is the process of attaching compounds such as
+  sulfur, amino acids, methyl groups, or glutathione to activated
+  intermediates from Phase 1 detoxification, making them more
+  water-soluble for elimination through bile, urine, sweat, and stool.
+  Inadequate protein intake, nutrient insufficiency, dysbiosis, or
+  genetic polymorphisms may impair this process, increasing oxidative
+  stress and toxin retention.
+upstream_drivers:
+  - low-protein-intake
+  - dysbiosis
+  - chronic-toxicant-exposure
+  - micronutrient-deficiency
+downstream_effects:
+  - oxidative-stress
+  - toxin-retention
+  - fatigue
+  - chemical-sensitivity
+related_mechanisms:
+  - toxin-load-accumulation
+  - mitochondrial-disruption
+linked_to_topics:
+  - detoxification-support
+evidence_tier: plausible_emerging
+sources:
+  - id: fmca-detoxification-basics-minich
+    location: 'Pages 11-15'
+    quote: 'We want to ensure that we have what is referred to as balanced detoxification.'
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

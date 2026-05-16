@@ -1,0 +1,37 @@
+slug: protein-and-plants-support-detoxification
+statement: |
+  Adequate protein intake combined with diverse plant foods supports
+  Phase 1 and Phase 2 detoxification pathways by providing amino
+  acids, sulfur compounds, antioxidants, phytonutrients, vitamins,
+  minerals, and fiber.
+evidence_tier: plausible_emerging
+rationale: |
+  Phase 2 detoxification pathways require amino acids such as glycine,
+  glutamine, taurine, and sulfur-containing compounds for conjugation
+  reactions. Plant foods provide antioxidants and phytochemicals such
+  as sulforaphane that may support Phase 2 enzyme activity and reduce
+  oxidative stress generated during detoxification.
+coaching_translation: |
+  Detoxification is not about extreme cleanses. The body needs enough
+  protein, colorful plants, hydration, fiber, bowel regularity, and
+  sleep to process and eliminate everyday toxins effectively.
+caveats:
+  - Detoxification symptoms may worsen in people with constipation or poor elimination.
+  - Severe toxic exposures require clinician supervision.
+out_of_scope_notes: |
+  Coaches should not recommend aggressive detoxification protocols or
+  imply treatment of poisoning, cancer, or liver disease.
+linked_to_topics:
+  - detoxification-support
+linked_to_mechanisms:
+  - impaired-phase-2-conjugation
+  - toxin-load-accumulation
+linked_to_supplements: []
+sources:
+  - id: fmca-detoxification-basics-minich
+    location: 'Pages 15-17'
+    quote: 'Protein plus plants, in order to feed-forward Phase 1 and Phase 2.'
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

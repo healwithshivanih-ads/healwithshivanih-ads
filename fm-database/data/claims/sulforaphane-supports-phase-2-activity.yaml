@@ -1,0 +1,31 @@
+slug: sulforaphane-supports-phase-2-activity
+statement: |
+  Sulforaphane-containing cruciferous vegetables may support Phase 2
+  detoxification enzyme activity and antioxidant defense pathways.
+evidence_tier: plausible_emerging
+rationale: |
+  The transcript identifies sulforaphane as a phytochemical capable
+  of inducing Phase 2 detoxification pathways while antioxidants help
+  neutralize reactive intermediates generated during detoxification.
+coaching_translation: |
+  Regular intake of cruciferous vegetables such as broccoli,
+  broccoli sprouts, cabbage, cauliflower, and kale may support the
+  body's natural detoxification systems.
+caveats:
+  - Food tolerance varies in people with digestive conditions.
+  - Excessive supplementation may not be appropriate for all individuals.
+out_of_scope_notes: ''
+linked_to_topics:
+  - detoxification-support
+linked_to_mechanisms:
+  - impaired-phase-2-conjugation
+linked_to_supplements:
+  - sulforaphane
+sources:
+  - id: fmca-detoxification-basics-minich
+    location: 'Page 16'
+    quote: 'Sulforaphane can help to induce Phase 2.'
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

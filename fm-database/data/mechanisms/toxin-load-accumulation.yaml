@@ -1,0 +1,38 @@
+slug: toxin-load-accumulation
+display_name: Toxin Load Accumulation
+aliases:
+  - total-toxic-burden
+  - chemical-body-burden
+  - cumulative-toxic-exposure
+category: metabolic
+summary: |
+  Toxin load accumulation refers to the combined burden of
+  environmental toxicants, endocrine disruptors, pollutants,
+  pharmaceuticals, and lifestyle exposures that exceed the body's
+  capacity for metabolism and elimination. Chronic low-dose exposure
+  may contribute to inflammation, oxidative stress, mitochondrial
+  dysfunction, endocrine disruption, and altered microbiome function.
+upstream_drivers:
+  - chronic-toxicant-exposure
+  - endocrine-disrupting-chemicals
+  - poor-detoxification-capacity
+  - chronic-stress
+downstream_effects:
+  - fatigue
+  - brain-fog
+  - hormonal-dysregulation
+  - oxidative-stress
+related_mechanisms:
+  - impaired-phase-2-conjugation
+  - mitochondrial-disruption
+linked_to_topics:
+  - detoxification-support
+evidence_tier: plausible_emerging
+sources:
+  - id: fmca-detoxification-basics-minich
+    location: 'Pages 7-9'
+    quote: 'The total toxin load results from our exposures minus what we can actually get rid of.'
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani
