@@ -21,18 +21,23 @@
  * tiny chip on outbound bubbles. Auto-refreshes every 30s while open.
  */
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useMemo } from "react";
 import {
   loadWhatsAppThreadAction,
+  sendWhatsAppTextAction,
+  recordOutboundMessageAction,
   type ChatThreadMessage,
 } from "@/app/api/whatsapp/actions";
 
 interface Props {
   clientId: string;
   clientName?: string;
+  clientPhone?: string;
   /** Days back to scan (default 90). */
   daysBack?: number;
 }
+
+const WINDOW_MS = 24 * 60 * 60 * 1000;
 
 function fmtTimestamp(iso: string): string {
   if (!iso) return "";
@@ -78,9 +83,34 @@ function fmtDayHeader(day: string): string {
   }
 }
 
-export function WhatsAppThreadPanel({ clientId, clientName, daysBack = 90 }: Props) {
+export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBack = 90 }: Props) {
   const [messages, setMessages] = useState<ChatThreadMessage[]>([]);
   const [loading, setLoading] = useState(true);
+  const [replyText, setReplyText] = useState("");
+  const [replyStatus, setReplyStatus] = useState<{ ok?: boolean; error?: string } | null>(null);
+  const [sending, setSending] = useState(false);
+
+  // 24-hour conversation window — derived from the most recent inbound
+  // message. Meta allows free-text only within 24h of client's last
+  // message; outside it requires an approved template.
+  const within24h = useMemo(() => {
+    const lastInbound = messages
+      .filter((m) => m.direction === "inbound")
+      .sort((a, b) => b.date.localeCompare(a.date))[0];
+    if (!lastInbound?.date) return false;
+    try {
+      return Date.now() - new Date(lastInbound.date).getTime() < WINDOW_MS;
+    } catch {
+      return false;
+    }
+  }, [messages]);
+
+  const lastInboundAt = useMemo(() => {
+    const lastInbound = messages
+      .filter((m) => m.direction === "inbound")
+      .sort((a, b) => b.date.localeCompare(a.date))[0];
+    return lastInbound?.date ?? null;
+  }, [messages]);
 
   const refresh = useCallback(async () => {
     setLoading(true);
@@ -117,6 +147,44 @@ export function WhatsAppThreadPanel({ clientId, clientName, daysBack = 90 }: Pro
 
   const grouped = groupByDay(messages);
   const firstName = (clientName ?? "").split(" ")[0] || "this client";
+
+  const handleReplySend = async () => {
+    if (!clientPhone || !replyText.trim()) return;
+    setSending(true);
+    setReplyStatus(null);
+    const res = await sendWhatsAppTextAction(clientPhone, replyText.trim(), {
+      name: clientName,
+    });
+    if (res.ok) {
+      // Log + clear + instant-refresh via the same event the templates
+      // panel uses, so the bubble shows up in <1s.
+      try {
+        await recordOutboundMessageAction({
+          clientId,
+          templateName: "(free-text reply)",
+          renderedBody: replyText.trim(),
+        });
+      } catch {
+        /* silent — best effort */
+      }
+      setReplyText("");
+      setReplyStatus({ ok: true });
+      void refresh();
+      // Auto-dismiss success badge after 3s
+      setTimeout(() => setReplyStatus(null), 3000);
+    } else {
+      setReplyStatus({ ok: false, error: res.error });
+    }
+    setSending(false);
+  };
+
+  const onReplyKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    // Cmd+Enter / Ctrl+Enter to send — Enter alone is newline
+    if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
+      e.preventDefault();
+      void handleReplySend();
+    }
+  };
 
   if (loading && messages.length === 0) {
     return (
@@ -242,6 +310,116 @@ export function WhatsAppThreadPanel({ clientId, clientName, daysBack = 90 }: Pro
           </div>
         </div>
       ))}
+
+      {/* ── Reply box ── Only shown when within Meta's 24-hour
+          conversation window (last inbound message <24h old). Outside
+          that window, the WA server returns error 131047 and free-text
+          is blocked — coach must use a template from the panel above. */}
+      {clientPhone && within24h && (
+        <div
+          style={{
+            marginTop: 4,
+            padding: "8px 10px",
+            background: "var(--fm-surface)",
+            border: "1px solid rgba(37,211,102,0.30)",
+            borderRadius: "var(--fm-radius-sm)",
+            display: "grid",
+            gap: 6,
+          }}
+        >
+          <div
+            style={{
+              fontSize: 10,
+              fontWeight: 700,
+              textTransform: "uppercase",
+              letterSpacing: 0.6,
+              color: "#0E6B3E",
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              flexWrap: "wrap",
+            }}
+          >
+            💬 Reply to {firstName}
+            <span
+              style={{
+                fontSize: 9,
+                fontWeight: 500,
+                color: "var(--fm-text-tertiary)",
+                letterSpacing: 0,
+                textTransform: "none",
+              }}
+            >
+              within 24-hr conversation window
+            </span>
+          </div>
+          <textarea
+            value={replyText}
+            onChange={(e) => setReplyText(e.target.value)}
+            onKeyDown={onReplyKeyDown}
+            placeholder={`Type a reply to ${firstName}… (⌘+Enter to send)`}
+            rows={3}
+            disabled={sending}
+            style={{
+              width: "100%",
+              fontSize: 12.5,
+              padding: "6px 8px",
+              border: "1px solid var(--fm-border)",
+              borderRadius: "var(--fm-radius-sm)",
+              resize: "vertical",
+              fontFamily: "inherit",
+              lineHeight: 1.4,
+            }}
+          />
+          <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+            <button
+              onClick={handleReplySend}
+              disabled={sending || !replyText.trim()}
+              style={{
+                fontSize: 11.5,
+                fontWeight: 700,
+                padding: "5px 12px",
+                background: replyText.trim() && !sending ? "#25D366" : "var(--fm-border)",
+                color: "#fff",
+                border: 0,
+                borderRadius: "var(--fm-radius-sm)",
+                cursor: sending || !replyText.trim() ? "not-allowed" : "pointer",
+              }}
+            >
+              {sending ? "Sending…" : "📤 Send"}
+            </button>
+            {replyStatus?.ok && (
+              <span style={{ fontSize: 10.5, color: "#0E6B3E", fontWeight: 600 }}>
+                ✓ Sent
+              </span>
+            )}
+            {replyStatus?.ok === false && (
+              <span style={{ fontSize: 10.5, color: "#991b1b", fontWeight: 600 }}>
+                {replyStatus.error}
+              </span>
+            )}
+          </div>
+        </div>
+      )}
+
+      {clientPhone && !within24h && lastInboundAt && (
+        <div
+          style={{
+            marginTop: 4,
+            padding: "7px 10px",
+            background: "rgba(245, 158, 11, 0.06)",
+            border: "1px dashed rgba(245, 158, 11, 0.35)",
+            borderRadius: "var(--fm-radius-sm)",
+            fontSize: 10.5,
+            color: "#92400e",
+            lineHeight: 1.5,
+          }}
+        >
+          ⏰ Free-text reply window closed ({firstName}&apos;s last message was over
+          24h ago). Meta only allows approved templates outside the window — use
+          one from the &quot;Send message&quot; panel above to start a fresh conversation.
+        </div>
+      )}
 
       <div
         style={{

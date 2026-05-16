@@ -262,7 +262,11 @@ export function CommunicateClient({
           title="💬 WhatsApp conversation"
           subtitle="Full thread — what we sent + what the client replied. Bubbles auto-refresh every 30s; new replies show up within a minute of landing on the WhatsApp server."
         >
-          <WhatsAppThreadPanel clientId={clientId} clientName={displayName} />
+          <WhatsAppThreadPanel
+            clientId={clientId}
+            clientName={displayName}
+            clientPhone={clientPhone}
+          />
           <Link
             href={`/clients-v2/${clientId}/sessions`}
             style={{

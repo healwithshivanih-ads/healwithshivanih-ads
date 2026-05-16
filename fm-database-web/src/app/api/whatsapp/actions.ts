@@ -99,6 +99,66 @@ async function sendViaWaServer(
 
 // sendViaAisensy removed 2026-05-15. AiSensy fully decommissioned.
 
+// ── Free-text send (within Meta's 24-hour conversation window) ───────────────
+//
+// Meta WhatsApp Cloud API allows free-form text WITHOUT a template, BUT
+// only within 24 hours of the client's last inbound message. Outside
+// that window only approved templates work — the WA server returns an
+// error code in that case which we surface as-is.
+//
+// Used by the WhatsAppThreadPanel reply box.
+
+export async function sendWhatsAppTextAction(
+  phone: string,
+  text: string,
+  opts?: { name?: string }
+): Promise<{ ok: boolean; error?: string }> {
+  if (!phone?.trim()) return { ok: false, error: "Phone number required" };
+  if (!text?.trim()) return { ok: false, error: "Message text required" };
+  if (!isWhatsappConfigured()) {
+    return {
+      ok: false,
+      error: "WhatsApp not configured. Set WHATSAPP_SERVER_URL + WHATSAPP_SERVER_API_KEY in .env.local.",
+    };
+  }
+  const body = {
+    phone,
+    name: opts?.name,
+    type: "text",
+    text: text.trim(),
+    origin: "api",
+    originRef: "fm-coach",
+  };
+  try {
+    const res = await fetch(`${WA_SERVER_URL}/api/send`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "x-api-key": WA_SERVER_API_KEY },
+      body: JSON.stringify(body),
+    });
+    const json = (await res.json().catch(() => ({}))) as {
+      ok?: boolean;
+      error?: string;
+      code?: string;
+    };
+    if (!res.ok || json.ok === false) {
+      const detail = json.error ?? `HTTP ${res.status}`;
+      const code = json.code ? ` [${json.code}]` : "";
+      // Meta returns error 131047 "re-engagement message" when outside
+      // the 24-hour window — surface that clearly so coach knows to
+      // use a template instead.
+      const friendly =
+        json.code === "131047" || /re-engagement|24.hour/i.test(detail)
+          ? "24-hour reply window closed — use an approved template to start a fresh conversation."
+          : `WhatsApp server${code}: ${detail}`;
+      return { ok: false, error: friendly };
+    }
+    return { ok: true };
+  } catch (err) {
+    const e = err as { message?: string };
+    return { ok: false, error: e.message ?? "Network error calling WhatsApp server" };
+  }
+}
+
 // ── Outbound logging (for chat-thread view) ──────────────────────────────────
 //
 // When a coach sends via the message-templates panel, log the rendered
@@ -115,13 +175,19 @@ const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
 
 export async function recordOutboundMessageAction(input: {
   clientId: string;
-  templateName: string;       // e.g. "fm_encouragement"
+  templateName: string;       // e.g. "fm_encouragement" — or "(free-text reply)" for raw sends within 24h window
   renderedBody: string;       // the message with {{vars}} filled in
 }): Promise<{ ok: boolean; session_id?: string; error?: string }> {
   if (!input.clientId || !input.renderedBody) {
     return { ok: false, error: "clientId + renderedBody required" };
   }
-  const presenting = `[source: whatsapp_outbound] [template: ${input.templateName}]\n\n${input.renderedBody}`;
+  // Free-text replies use a sentinel templateName so the chat-thread
+  // loader can render them WITHOUT a template chip (just the prose).
+  const isFreeText = input.templateName === "(free-text reply)";
+  const tags = isFreeText
+    ? "[source: whatsapp_outbound] [type: text]"
+    : `[source: whatsapp_outbound] [template: ${input.templateName}]`;
+  const presenting = `${tags}\n\n${input.renderedBody}`;
   const payload = JSON.stringify({
     client_id: input.clientId,
     session_type: "quick_note",
@@ -198,10 +264,18 @@ export async function loadWhatsAppThreadAction(
       const tplMatch = complaints.match(/\[template:\s*([^\]]+)\]/);
       if (tplMatch) templateName = tplMatch[1].trim();
 
-      // Strip all [source:...] [template:...] tags from display text
+      // Strip ALL internal-metadata tags from the display text — coach
+      // sees only what was sent to / received from the client. None of
+      // these went to the client; they're for our local audit only.
+      //   - [session_type:...]  added by save-session.py (every session)
+      //   - [source:...]        added by webhook (inbound) + outbound logger
+      //   - [template:...]      added by outbound logger (template name)
+      //   - [type:...]          added by free-text outbound (vs template)
       const text = complaints
+        .replace(/\[session_type:[^\]]+\]/gi, "")
         .replace(/\[source:[^\]]+\]/gi, "")
         .replace(/\[template:[^\]]+\]/gi, "")
+        .replace(/\[type:[^\]]+\]/gi, "")
         .trim();
 
       messages.push({
