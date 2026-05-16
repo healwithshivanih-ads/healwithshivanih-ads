@@ -21,6 +21,7 @@ import {
   ingestFromPasteAction,
   type IngestFromPasteResult,
 } from "@/lib/server-actions/catalogue-ingest";
+import { approveBatchAction, rejectBatchAction } from "@/app/(v2)/ingest/actions";
 import { FmPanel } from "@/components/fm";
 import { CATALOGUE_INGEST_BRIEFING } from "@/lib/catalogue-ingest-briefing";
 
@@ -313,10 +314,27 @@ function ResultPanel({
         <div style={{ fontSize: 12, color: "#7f1d1d" }}>{result.error}</div>
       )}
 
+      {/* Staging next-step CTA — only renders when the run was a
+          "Stage first" run AND files actually landed AND validate
+          passed. Coach clicks Approve to promote staging → canonical
+          via the existing approveBatchAction (fmdb approve --update). */}
+      {result.stagingBatch && result.filesWritten.length > 0 && (
+        <StagingApproveCta
+          batchId={result.stagingBatch}
+          fileCount={result.filesWritten.length}
+          validateOk={result.validateOk}
+        />
+      )}
+
       {result.filesWritten.length > 0 && (
         <section>
           <div style={{ fontSize: 10.5, fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5, color: "var(--fm-text-tertiary)", marginBottom: 4 }}>
             Files written ({result.filesWritten.length})
+            {result.stagingBatch && (
+              <span style={{ fontWeight: 500, textTransform: "none", letterSpacing: 0, color: "var(--fm-text-tertiary)", marginLeft: 6 }}>
+                — staged under <code>data/staging/{result.stagingBatch}/</code>
+              </span>
+            )}
           </div>
           <ul style={{ margin: 0, paddingLeft: 18, fontSize: 11.5, fontFamily: "ui-monospace, monospace", color: "var(--fm-text-secondary)" }}>
             {result.filesWritten.slice(0, 25).map((f) => (
@@ -403,5 +421,176 @@ function ResultPanel({
         </pre>
       )}
     </div>
+  );
+}
+
+/**
+ * Approve / Reject buttons that appear after a "Stage first" ingest run.
+ * Wraps the existing approveBatchAction (fmdb approve <batch> --update)
+ * and rejectBatchAction so coach doesn't have to drop to a terminal.
+ *
+ * Approve uses --update by default so a re-run smart-merges rather than
+ * refusing on collisions — same default the /ingest page uses.
+ */
+function StagingApproveCta({
+  batchId,
+  fileCount,
+  validateOk,
+}: {
+  batchId: string;
+  fileCount: number;
+  validateOk: boolean;
+}) {
+  const [pending, startTransition] = useTransition();
+  const [done, setDone] = useState<"approved" | "rejected" | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  const onApprove = () => {
+    if (!validateOk) {
+      if (
+        !confirm(
+          `Validate failed for batch "${batchId}". Approving anyway will leave the canonical catalogue with errors. Continue?`,
+        )
+      ) {
+        return;
+      }
+    }
+    setError(null);
+    startTransition(async () => {
+      const r = await approveBatchAction(batchId, /* update= */ true);
+      if (r.ok) {
+        setDone("approved");
+        toast.success(`✓ Approved ${fileCount} file${fileCount === 1 ? "" : "s"} from "${batchId}"`);
+      } else {
+        setError(r.error ?? "Approve failed");
+        toast.error(r.error ?? "Approve failed");
+      }
+    });
+  };
+
+  const onReject = () => {
+    if (
+      !confirm(
+        `Reject + delete staging batch "${batchId}"? This removes the ${fileCount} staged file${fileCount === 1 ? "" : "s"} without writing to canonical.`,
+      )
+    ) {
+      return;
+    }
+    setError(null);
+    startTransition(async () => {
+      const r = await rejectBatchAction(batchId);
+      if (r.ok) {
+        setDone("rejected");
+        toast.success(`Rejected staging batch "${batchId}"`);
+      } else {
+        setError(r.error ?? "Reject failed");
+        toast.error(r.error ?? "Reject failed");
+      }
+    });
+  };
+
+  if (done === "approved") {
+    return (
+      <section
+        style={{
+          padding: "10px 12px",
+          background: "rgba(30,132,73,0.10)",
+          border: "1px solid rgba(30,132,73,0.35)",
+          borderRadius: "var(--fm-radius-sm)",
+          fontSize: 12.5,
+          color: "#14532d",
+        }}
+      >
+        ✓ Approved. {fileCount} file{fileCount === 1 ? "" : "s"} now live in the
+        canonical catalogue under <code>fm-database/data/</code>. The dashboard&apos;s
+        commit panel should show them shortly.
+      </section>
+    );
+  }
+
+  if (done === "rejected") {
+    return (
+      <section
+        style={{
+          padding: "10px 12px",
+          background: "rgba(148,163,184,0.10)",
+          border: "1px solid rgba(148,163,184,0.30)",
+          borderRadius: "var(--fm-radius-sm)",
+          fontSize: 12.5,
+          color: "#475569",
+        }}
+      >
+        Staging batch &ldquo;{batchId}&rdquo; rejected — nothing landed in the
+        catalogue.
+      </section>
+    );
+  }
+
+  return (
+    <section
+      style={{
+        padding: "10px 12px",
+        background: "rgba(243,156,18,0.08)",
+        border: "1px solid rgba(243,156,18,0.35)",
+        borderRadius: "var(--fm-radius-sm)",
+        display: "grid",
+        gap: 6,
+      }}
+    >
+      <div style={{ fontSize: 12, fontWeight: 700, color: "#8a5a08" }}>
+        ⏸ Staged — not yet in the catalogue
+      </div>
+      <div style={{ fontSize: 11.5, color: "var(--fm-text-secondary)", lineHeight: 1.5 }}>
+        {fileCount} file{fileCount === 1 ? "" : "s"} written to{" "}
+        <code>data/staging/{batchId}/</code>. Review the file list below, then
+        approve to promote them into the live catalogue (smart-merges over any
+        existing entries with the same slug).
+      </div>
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center", marginTop: 4 }}>
+        <button
+          type="button"
+          onClick={onApprove}
+          disabled={pending}
+          style={{
+            background: "#1E8449",
+            color: "#fff",
+            border: 0,
+            padding: "6px 14px",
+            fontSize: 12,
+            fontWeight: 700,
+            borderRadius: "var(--fm-radius-sm)",
+            cursor: pending ? "wait" : "pointer",
+            opacity: pending ? 0.6 : 1,
+            fontFamily: "inherit",
+          }}
+        >
+          {pending ? "Working…" : `✓ Approve batch (--update)`}
+        </button>
+        <button
+          type="button"
+          onClick={onReject}
+          disabled={pending}
+          style={{
+            background: "transparent",
+            color: "#7f1d1d",
+            border: "1px solid rgba(176,70,70,0.35)",
+            padding: "6px 14px",
+            fontSize: 12,
+            fontWeight: 600,
+            borderRadius: "var(--fm-radius-sm)",
+            cursor: pending ? "wait" : "pointer",
+            opacity: pending ? 0.6 : 1,
+            fontFamily: "inherit",
+          }}
+        >
+          ✗ Reject
+        </button>
+        {!validateOk && (
+          <span style={{ fontSize: 10.5, color: "#7f1d1d", marginLeft: 4 }}>
+            ⚠ validate failed — approve will warn
+          </span>
+        )}
+      </div>
+    </section>
   );
 }

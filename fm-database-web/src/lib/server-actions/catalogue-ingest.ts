@@ -32,6 +32,10 @@ export interface IngestFromPasteResult {
   pendingRefsPreview: string[];
   rawOutput: string;
   error?: string;
+  /** Batch id passed in by the UI when "Stage first" was ticked. Echoed
+   *  back so the panel knows whether the just-finished run was a
+   *  staging run (→ show Approve button) vs a direct write. */
+  stagingBatch?: string;
 }
 
 export async function ingestFromPasteAction(
@@ -68,7 +72,11 @@ export async function ingestFromPasteAction(
           }));
           return;
         }
-        resolve(_parse(raw, !err));
+        const parsed = _parse(raw, !err);
+        if (stagingBatch && stagingBatch.trim()) {
+          parsed.stagingBatch = stagingBatch.trim();
+        }
+        resolve(parsed);
       },
     );
     child.stdin?.end(pasteText);
