@@ -193,10 +193,18 @@ function countDraftFields(draft: unknown): number {
  *
  * Used by the dashboard banner so coach gets a passive heads-up when an
  * outstanding intake moves forward — no need to poll each client page.
+ *
+ * `clientLatestPlanUpdates` (optional) maps client_id → ISO timestamp of
+ * the most-recent plan update. When a plan was updated AFTER the
+ * client's intake submission, coach has clearly actioned the
+ * submission — drop the chip so it doesn't linger as a stale "1
+ * submitted" badge for days. Same logic for `intake_finalised_at` —
+ * explicit coach-lock signals "I'm done with this intake".
  */
 export async function getRecentIntakeActivity(
   clients: Array<Record<string, unknown>>,
   daysBack = 7,
+  clientLatestPlanUpdates?: Map<string, string>,
 ): Promise<IntakeActivityEntry[]> {
   const cutoffMs = Date.now() - daysBack * 86_400_000;
   // Use a tighter 1-day window for "started" / "opened" — submissions
@@ -217,6 +225,21 @@ export async function getRecentIntakeActivity(
     // see "Sudarshan submitted" even if it was 5 days ago and they
     // haven't reviewed yet.
     if (!Number.isNaN(submittedMs) && submittedMs >= cutoffMs) {
+      // BUT — if coach has already actioned the submission, drop it.
+      // Two signals count as "actioned":
+      //   1. intake_finalised_at is set → coach explicitly locked the
+      //      form post-review.
+      //   2. A plan exists for this client with updated_at AFTER the
+      //      submission timestamp → coach has clearly used the intake
+      //      data (regenerated / activated a plan from it).
+      // Either signal drops the stale "1 submitted" chip — coach
+      // doesn't need a reminder for clients she's already moved on.
+      const finalisedAt = c.intake_finalised_at as string | undefined;
+      if (finalisedAt) continue;
+      const planUpdatedAt = clientLatestPlanUpdates?.get(clientId);
+      if (planUpdatedAt && Date.parse(planUpdatedAt) >= submittedMs) {
+        continue;
+      }
       out.push({
         client_id: clientId,
         display_name: displayName,

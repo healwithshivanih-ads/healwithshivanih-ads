@@ -160,16 +160,9 @@ export default async function DashboardV2() {
     7,
   );
 
-  // Intake-form activity (submitted in last 7d / started or opened in last 24h).
-  // Reads off client.yaml fields — no extra fs walks. Sits next to the
-  // WhatsApp inbound banner so coach has a single "what's new" strip
-  // at the top of the dashboard.
-  const intakeActivity = await getRecentIntakeActivity(
-    clients as Array<Record<string, unknown>>,
-    7,
-  );
-
-  // Per-client plan lookup
+  // Per-client plan lookup — needed both for triage signals AND for the
+  // intake-activity banner (so we can drop "Nidhi submitted" chips once
+  // a plan has been generated from her intake).
   const plansByClient = new Map<string, PlanRow[]>();
   for (const p of plans) {
     const cid = (p as Record<string, unknown>).client_id as string | undefined;
@@ -177,6 +170,29 @@ export default async function DashboardV2() {
     if (!plansByClient.has(cid)) plansByClient.set(cid, []);
     plansByClient.get(cid)!.push(p as unknown as PlanRow);
   }
+
+  // Latest plan-update timestamp per client (any status). When this is
+  // newer than a client's intake_submitted_at, the coach has clearly
+  // actioned the intake — the banner drops them.
+  const latestPlanUpdateByClient = new Map<string, string>();
+  for (const [cid, rows] of plansByClient.entries()) {
+    let latest = "";
+    for (const r of rows) {
+      const ts = (r as unknown as Record<string, unknown>).updated_at;
+      if (typeof ts === "string" && ts > latest) latest = ts;
+    }
+    if (latest) latestPlanUpdateByClient.set(cid, latest);
+  }
+
+  // Intake-form activity (submitted in last 7d / started or opened in last 24h).
+  // Reads off client.yaml fields — no extra fs walks. Sits next to the
+  // WhatsApp inbound banner so coach has a single "what's new" strip
+  // at the top of the dashboard.
+  const intakeActivity = await getRecentIntakeActivity(
+    clients as Array<Record<string, unknown>>,
+    7,
+    latestPlanUpdateByClient,
+  );
 
   // Compute signals
   const rows: TriageRow[] = await Promise.all(
