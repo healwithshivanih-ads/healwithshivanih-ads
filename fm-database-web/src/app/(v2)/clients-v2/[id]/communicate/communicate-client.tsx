@@ -218,38 +218,25 @@ export function CommunicateClient({
           </div>
         </FmPanel>
 
-        {/* WhatsApp send status (self-hosted Cloud API server) */}
-        <FmPanel
-          title="📡 WhatsApp"
-          subtitle={
-            whatsappConfigured
-              ? "Outbound configured via the self-hosted WhatsApp Cloud API server."
-              : "Outbound NOT configured. Set WHATSAPP_SERVER_URL + WHATSAPP_SERVER_API_KEY in .env.local."
-          }
-        >
-          <div
-            style={{
-              fontSize: 11,
-              color: whatsappConfigured
-                ? "var(--fm-text-secondary)"
-                : "var(--fm-text-tertiary)",
-            }}
+        {/* 📡 WhatsApp config-status panel removed 2026-05-16 — was
+            developer-facing config info that duplicated /settings.
+            When misconfigured, the SendPackageButton + reply box +
+            template panel each surface their own "not configured"
+            states with actionable guidance. */}
+        {!whatsappConfigured && (
+          <FmPanel
+            title="⚠ WhatsApp not configured"
+            subtitle="Outbound sends will fail until WHATSAPP_SERVER_URL + WHATSAPP_SERVER_API_KEY are set in .env.local."
           >
-            {whatsappConfigured ? (
-              <>
-                Templates sent via the self-hosted WhatsApp Cloud API server.
-                Template names + approval status are managed in the WhatsApp
-                Business Manager — see <code>docs/whatsapp-templates.md</code>.
-              </>
-            ) : (
-              <>
-                Add <code>WHATSAPP_SERVER_URL</code> + <code>WHATSAPP_SERVER_API_KEY</code>{" "}
-                to <code>.env.local</code> and <code>pm2 reload all</code> to enable
-                WhatsApp send.
-              </>
-            )}
-          </div>
-        </FmPanel>
+            <div style={{ fontSize: 11, color: "var(--fm-text-tertiary)" }}>
+              Add the env vars and <code>pm2 reload all</code>. See{" "}
+              <Link href="/settings" style={{ color: "var(--fm-primary)" }}>
+                Settings →
+              </Link>{" "}
+              for the full integration status.
+            </div>
+          </FmPanel>
+        )}
 
         {/* 💬 Full chat thread — combines outbound sends (logged here by
             recordOutboundMessageAction when the coach clicks Send via
