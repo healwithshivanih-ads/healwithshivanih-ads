@@ -63,6 +63,9 @@ export type { FmCatalogueCommitBannerProps } from "./FmCatalogueCommitBanner";
 export { FmInboundMessagesBanner } from "./FmInboundMessagesBanner";
 export type { FmInboundMessagesBannerProps } from "./FmInboundMessagesBanner";
 
+export { FmIntakeActivityBanner } from "./FmIntakeActivityBanner";
+export type { FmIntakeActivityBannerProps } from "./FmIntakeActivityBanner";
+
 export { FmWhatsAppDraftPanel } from "./FmWhatsAppDraftPanel";
 export type { FmWhatsAppDraftPanelProps } from "./FmWhatsAppDraftPanel";
 

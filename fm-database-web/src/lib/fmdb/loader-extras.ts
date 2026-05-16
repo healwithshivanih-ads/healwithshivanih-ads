@@ -155,6 +155,106 @@ function stripSessionTags(complaints: string): string {
   return complaints.replace(/^(\s*\[[^\]]+\]\s*)+/, "").trim();
 }
 
+// ── Recent intake-form activity ────────────────────────────────────────────
+
+export type IntakeActivityKind = "submitted" | "started" | "opened";
+
+export interface IntakeActivityEntry {
+  client_id: string;
+  display_name?: string;
+  kind: IntakeActivityKind;
+  /** ISO timestamp of the latest event that put this client in this kind. */
+  at: string;
+  /** For 'started' rows: how many fields the client has filled so far. */
+  fields_filled?: number;
+}
+
+/** Count non-empty entries in a draft dict — matches the rule used in
+ *  IntakeProgressCard so dashboard + Overview agree on "in progress". */
+function countDraftFields(draft: unknown): number {
+  if (!draft || typeof draft !== "object" || Array.isArray(draft)) return 0;
+  let n = 0;
+  for (const v of Object.values(draft as Record<string, unknown>)) {
+    if (v == null) continue;
+    if (typeof v === "string" && v.trim() === "") continue;
+    if (Array.isArray(v) && v.length === 0) continue;
+    if (typeof v === "object" && Object.keys(v as object).length === 0) continue;
+    if (typeof v === "boolean" && v === false) continue;
+    n++;
+  }
+  return n;
+}
+
+/**
+ * Scan all clients for fresh intake form activity in the last `daysBack`
+ * days. Returns one entry per client; the most "advanced" stage wins
+ * (submitted > started > opened), so a client who opened the form 5 days
+ * ago and submitted yesterday appears once as `submitted`.
+ *
+ * Used by the dashboard banner so coach gets a passive heads-up when an
+ * outstanding intake moves forward — no need to poll each client page.
+ */
+export async function getRecentIntakeActivity(
+  clients: Array<Record<string, unknown>>,
+  daysBack = 7,
+): Promise<IntakeActivityEntry[]> {
+  const cutoffMs = Date.now() - daysBack * 86_400_000;
+  // Use a tighter 1-day window for "started" / "opened" — submissions
+  // are rare, opens / drafts happen more often and become noise fast.
+  const stickyCutoffMs = Date.now() - 1 * 86_400_000;
+
+  const out: IntakeActivityEntry[] = [];
+  for (const c of clients) {
+    const clientId = c.client_id as string | undefined;
+    if (!clientId) continue;
+    const displayName = c.display_name as string | undefined;
+
+    const submittedAt =
+      (c.intake_last_submitted_at as string | undefined) ??
+      (c.intake_submitted_at as string | undefined);
+    const submittedMs = submittedAt ? Date.parse(submittedAt) : NaN;
+    // Submitted has the longest window — coach almost always wants to
+    // see "Sudarshan submitted" even if it was 5 days ago and they
+    // haven't reviewed yet.
+    if (!Number.isNaN(submittedMs) && submittedMs >= cutoffMs) {
+      out.push({
+        client_id: clientId,
+        display_name: displayName,
+        kind: "submitted",
+        at: submittedAt!,
+      });
+      continue;
+    }
+
+    const draftSavedAt = c.intake_form_draft_saved_at as string | undefined;
+    const draftMs = draftSavedAt ? Date.parse(draftSavedAt) : NaN;
+    if (!Number.isNaN(draftMs) && draftMs >= stickyCutoffMs) {
+      out.push({
+        client_id: clientId,
+        display_name: displayName,
+        kind: "started",
+        at: draftSavedAt!,
+        fields_filled: countDraftFields(c.intake_form_draft),
+      });
+      continue;
+    }
+
+    const openedAt = c.intake_first_opened_at as string | undefined;
+    const openedMs = openedAt ? Date.parse(openedAt) : NaN;
+    if (!Number.isNaN(openedMs) && openedMs >= stickyCutoffMs) {
+      out.push({
+        client_id: clientId,
+        display_name: displayName,
+        kind: "opened",
+        at: openedAt!,
+      });
+    }
+  }
+
+  // Newest first — coach skims top-to-bottom.
+  return out.sort((a, b) => b.at.localeCompare(a.at));
+}
+
 /**
  * Scans all client session dirs for quick_note sessions tagged
  * `[source: whatsapp_webhook]` within the last `daysBack` days.

@@ -14,7 +14,11 @@
  */
 import Link from "next/link";
 import { loadAllClients, loadAllPlans } from "@/lib/fmdb/loader";
-import { loadClientSessions, getRecentInboundMessages } from "@/lib/fmdb/loader-extras";
+import {
+  loadClientSessions,
+  getRecentInboundMessages,
+  getRecentIntakeActivity,
+} from "@/lib/fmdb/loader-extras";
 import { parseRequestedLabs } from "@/lib/fmdb/session-utils";
 import { effectiveRecheckDate, isRecheckOverdue } from "@/lib/fmdb/plan-timing";
 import { loadApiUsageMtdAllClients } from "@/lib/server-actions/usage";
@@ -33,6 +37,7 @@ import {
   FmChip,
   FmCatalogueCommitBanner,
   FmInboundMessagesBanner,
+  FmIntakeActivityBanner,
 } from "@/components/fm";
 import { TriageSections, type TriageRow, type SignalKind } from "./triage-sections";
 
@@ -152,6 +157,15 @@ export default async function DashboardV2() {
   const inboundMessages = await getRecentInboundMessages(
     (clients as ClientRow[]).map((c) => c.client_id),
     clientNameMap,
+    7,
+  );
+
+  // Intake-form activity (submitted in last 7d / started or opened in last 24h).
+  // Reads off client.yaml fields — no extra fs walks. Sits next to the
+  // WhatsApp inbound banner so coach has a single "what's new" strip
+  // at the top of the dashboard.
+  const intakeActivity = await getRecentIntakeActivity(
+    clients as Array<Record<string, unknown>>,
     7,
   );
 
@@ -337,6 +351,7 @@ export default async function DashboardV2() {
         <FmCatalogueCommitBanner initialStatus={catalogueStatus} />
 
         {/* WhatsApp inbound messages — design 10A with unread badges */}
+        <FmIntakeActivityBanner entries={intakeActivity} />
         <FmInboundMessagesBanner messages={inboundMessages} windowDays={7} inboxHref="/messages" />
 
         {/* Upcoming follow-ups (next 7 days, not yet due) */}
