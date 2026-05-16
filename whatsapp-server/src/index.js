@@ -11,6 +11,7 @@ import { healthRouter } from './routes/health.js';
 import { webhookRouter } from './routes/webhook.js';
 import { webhooksRouter } from './routes/webhooks/index.js';
 import { apiRouter } from './routes/api/index.js';
+import { flowEndpointRouter } from './routes/flow-endpoint.js';
 import { webhookLimiter } from './middleware/rateLimit.js';
 import { errorHandler, notFound } from './middleware/errorHandler.js';
 import { start as startScheduler, stop as stopScheduler } from './scheduler/index.js';
@@ -47,12 +48,22 @@ app.use('/webhooks', webhookLimiter, webhooksRouter);
 // clash with the raw-body path above.
 app.use('/api', apiRouter);
 
+// Meta WhatsApp Flow endpoint — encrypted data exchange. Mounted outside
+// /api/* so it bypasses adminAuth (Meta doesn't send a key; auth is via
+// the encryption itself). Mounts its own express.json() locally.
+app.use('/whatsapp-flow-endpoint', flowEndpointRouter);
+
 // Serve admin UI in production from admin-ui/dist (built by `npm run build:ui`).
 const distDir = path.resolve(__dirname, '../admin-ui/dist');
 if (fs.existsSync(distDir)) {
   app.use(express.static(distDir));
   app.get('*', (req, res, next) => {
-    if (req.path.startsWith('/api/') || req.path.startsWith('/webhook') || req.path.startsWith('/healthz')) {
+    if (
+      req.path.startsWith('/api/') ||
+      req.path.startsWith('/webhook') ||
+      req.path.startsWith('/whatsapp-flow-endpoint') ||
+      req.path.startsWith('/healthz')
+    ) {
       return next();
     }
     const index = path.join(distDir, 'index.html');

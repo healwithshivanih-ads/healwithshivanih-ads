@@ -11,6 +11,7 @@ import { logInbound, updateStatus } from '../services/messages/index.js';
 import { getDefault as getDefaultWorkspace } from '../services/workspaces.js';
 import { forwardInbound } from '../services/forwarder/index.js';
 import { publish, EVENTS } from '../services/events/index.js';
+import { handleFlowCompletion } from '../services/flow-completion/index.js';
 
 export const webhookRouter = Router();
 
@@ -116,6 +117,15 @@ async function processMetaWebhook(body, webhookRowId) {
         });
         // Fire-and-forget forward to FM coach webhook (no-op if not configured).
         forwardInbound({ event: ev, contact, conversation: conv, message }).catch(() => {});
+        // If this is a WhatsApp Flow submission (user completed a Flow
+        // attached to a CTWA ad), kick off the follow-up: build a
+        // personalised LP link + send it back as a free-form message
+        // inside the post-click 24h window. Fire-and-forget — failures
+        // log but don't block the rest of inbound processing.
+        if (ev.type === 'flow') {
+          handleFlowCompletion({ event: ev, contact, conversation: conv })
+            .catch((err) => logger.error({ err: err.message }, 'flow completion failed'));
+        }
       } else if (ev.kind === 'status') {
         const errPayload = ev.errors ? { errors: ev.errors } : null;
         await updateStatus(ev.external_message_id, 'whatsapp', ev.status, errPayload);
@@ -131,9 +141,12 @@ async function processMetaWebhook(body, webhookRowId) {
   }
 
   if (webhookRowId) {
-    await db().from('webhook_events')
-      .update({ processed: true, processed_at: new Date().toISOString() })
-      .eq('id', webhookRowId)
-      .catch((e) => logger.warn({ err: e.message }, 'webhook_events processed flag failed'));
+    try {
+      await db().from('webhook_events')
+        .update({ processed: true, processed_at: new Date().toISOString() })
+        .eq('id', webhookRowId);
+    } catch (e) {
+      logger.warn({ err: e.message }, 'webhook_events processed flag failed');
+    }
   }
 }
