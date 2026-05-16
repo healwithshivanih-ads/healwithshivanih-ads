@@ -9,6 +9,7 @@ import { useState } from "react";
 import { SendPackageButton } from "@/components/client-widgets/send-package-button";
 import { LetterTypesToggle } from "@/components/client-widgets/letter-types-toggle";
 import { MessageTemplatesPanel } from "@/components/client-widgets/message-templates-panel";
+import { SendBookingLinkPanel } from "@/components/client-widgets/send-booking-link-panel";
 import { WhatsAppThreadPanel } from "@/components/client-widgets/whatsapp-thread-panel";
 import { FmPanel } from "@/components/fm";
 // GeneratedLettersPanel was mounted here briefly to surface the meal plan
@@ -123,6 +124,16 @@ export function CommunicateClient({
             SendPackageButton above already shows each saved letter with
             👁 Preview + the discuss→finalise chat inside the preview pane.
             One edit surface, one source of truth. */}
+
+        {/* Cal.com booking link — free-text WhatsApp send via 24h window.
+            Reads ~/fm-plans/_calcom_links.yaml so coach can edit event
+            types without redeploying. */}
+        <SendBookingLinkPanel
+          clientId={clientId}
+          firstName={firstName}
+          clientPhone={clientPhone}
+          whatsappConfigured={whatsappConfigured}
+        />
 
         {/* Quick message templates */}
         <MessageTemplatesPanel
