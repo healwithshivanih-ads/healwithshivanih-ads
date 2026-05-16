@@ -1,0 +1,69 @@
+slug: antioxidant-network-protects-against-phase-1-intermediates
+statement: 'An adequate dietary and endogenous antioxidant network — carotenes,
+
+  vitamin C, vitamin E, selenium, copper, zinc, manganese, CoQ10,
+
+  thiols from garlic/onion/cruciferous vegetables, bioflavonoids,
+
+  silymarin, and pycnogenol — is required to neutralize Phase 1
+
+  reactive oxygen intermediates and prevent secondary tissue damage
+
+  during biotransformation.
+
+  '
+evidence_tier: strong
+rationale: 'Phase 1 generates superoxide and free radicals as obligate byproducts.
+
+  Mineral cofactors (selenium for glutathione peroxidase; copper, zinc,
+
+  manganese for superoxide dismutase) and dietary antioxidants
+
+  (carotenoids, vitamin C, vitamin E, polyphenols) form an integrated
+
+  network. Endogenous antioxidants (glutathione, CoQ10) interlock
+
+  with this network. Inadequate antioxidant status during high
+
+  toxicant exposure is a primary cause of detox-associated symptoms
+
+  and oxidative tissue damage.
+
+  '
+coaching_translation: 'Phase 1 of detox creates some "exhaust" — reactive molecules
+  that
+
+  need to be neutralized before they damage your cells. That''s what
+
+  antioxidants do. Eat the rainbow daily — colorful vegetables and
+
+  fruits, garlic, onions, cruciferous vegetables, herbs and spices.
+
+  Specific nutrients like selenium, zinc, vitamin C, vitamin E, and
+
+  CoQ10 each cover a different angle of antioxidant defense.
+
+  '
+caveats:
+- Isolated high-dose single antioxidants (e.g., vitamin E alone) can disrupt the network
+  balance — prefer food-first and multi-nutrient approaches.
+out_of_scope_notes: ''
+linked_to_topics:
+- detoxification
+linked_to_mechanisms:
+- antioxidant-buffering-of-phase-1-intermediates
+- oxidative-stress-from-toxicants
+linked_to_supplements:
+- selenium
+- vitamin-c
+- vitamin-e
+- silymarin
+sources:
+- id: ifm-textbook-fig-3-5-liver-detox-pathways
+  location: Antioxidant Protective Nutrients and Plant Derivatives panel
+  quote: Carotenes (Vit A), Ascorbic acid (Vit C), Tocopherols (Vit E), Selenium,
+    Copper, Zinc, Manganese, Coenzyme Q10, Thiols, Bioflavonoids, Silymarin, Pycnogenol
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

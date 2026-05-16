@@ -1,0 +1,46 @@
+slug: phase-1-b-vitamin-cofactor-dependency
+display_name: Phase 1 B-Vitamin and Cofactor Dependency
+aliases:
+- CYP450 cofactor requirements
+- Phase 1 nutrient cofactors
+- B-vitamin detox cofactors
+category: metabolic
+summary: 'Phase 1 CYP450 reactions require a defined set of nutrient cofactors
+
+  to function: riboflavin (B2), niacin (B3), pyridoxine (B6), folate,
+
+  vitamin B12, glutathione, branched-chain amino acids, flavonoids,
+
+  and phospholipids. Deficiency in any of these slows Phase 1 throughput,
+
+  allowing parent toxicants to accumulate. Conversely, Phase 1 activity
+
+  is itself energy- and nutrient-consuming — sustained toxicant load
+
+  raises functional requirements for these cofactors above standard
+
+  RDA assumptions.
+
+  '
+upstream_drivers:
+- dietary-b-vitamin-intake
+- protein-amino-acid-availability
+- phospholipid-status
+downstream_effects:
+- phase-1-biotransformation
+related_mechanisms:
+- phase-1-biotransformation
+- phase-2-amino-acid-cofactor-dependency
+linked_to_topics:
+- detoxification
+evidence_tier: strong
+sources:
+- id: ifm-textbook-fig-3-5-liver-detox-pathways
+  location: Phase I — Nutrients Used panel
+  quote: 'Nutrients Used: Riboflavin (Vit B2), Niacin (Vit B3), Pyridoxine (Vit B6),
+    Folic acid, Vitamin B12, Glutathione, Branched-chain amino acids, Flavonoids,
+    Phospholipids'
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

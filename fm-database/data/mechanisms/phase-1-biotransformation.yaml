@@ -1,0 +1,55 @@
+slug: phase-1-biotransformation
+display_name: Phase 1 Biotransformation (CYP450)
+aliases:
+- Phase I detoxification
+- cytochrome P450 oxidation
+- functionalization phase
+category: metabolic
+summary: 'Phase 1 is the first step of biotransformation, primarily carried out
+
+  by the cytochrome P450 (CYP450) enzyme family — ~60 iron-containing
+
+  enzymes that introduce or expose a functional group (typically hydroxyl)
+
+  onto a lipophilic toxicant. Generates an "activated intermediate" that
+
+  is often more reactive and oxidatively damaging than the parent
+
+  compound. Phase 1 is inducible (toxicant exposure, phytochemicals,
+
+  medications, hormones) and can be inhibited (grapefruit juice inhibits
+
+  CYP3A4). Activity varies by genetic polymorphism, age, sex, nutrient
+
+  status, and gut microbiome. Occurs in liver, gut, lungs, kidneys, skin,
+
+  and blood-brain barrier.
+
+  '
+upstream_drivers:
+- toxicant-exposure
+- cyp450-genetic-polymorphism
+downstream_effects:
+- reactive-intermediate-formation
+- oxidative-stress-from-toxicants
+- phase-2-conjugation
+related_mechanisms:
+- phase-2-conjugation
+- balanced-detoxification
+- oxidative-stress-from-toxicants
+linked_to_topics:
+- detoxification
+- toxin-load
+evidence_tier: strong
+sources:
+- id: minich-detox-basics-fmca-transcript
+  location: Phase 1 and Phase 2 section
+  quote: Phase 1 reaction will introduce or expose a functional group on the parent
+    compound, which makes it more hydrophilic
+- id: ifm-textbook-fig-3-5-liver-detox-pathways
+  location: Phase I (Cytochrome P450 Enzymes) panel — Reactions and Nutrients Used
+  quote: 'Reactions: Oxidation, Reduction, Hydrolysis, Hydration, Dehalogenation'
+version: 2
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

@@ -1,0 +1,44 @@
+slug: mitochondrial-toxin-disruption
+display_name: Mitochondrial Disruption by Toxicants
+aliases:
+- mitochondrial toxicant injury
+- mitotoxicity
+- mitochondrial poisoning
+category: metabolic
+summary: 'Mitochondria are highly susceptible to environmental toxicants
+
+  (pesticides, heavy metals, plasticizers, air pollutants). Toxicant
+
+  exposure impairs electron transport chain function and reduces ATP
+
+  output, manifesting clinically as fatigue and low exercise tolerance.
+
+  Creates a double bind: biotransformation is an ATP-dependent process,
+
+  so toxicant-induced mitochondrial dysfunction simultaneously reduces
+
+  detox capacity, allowing further toxicant accumulation.
+
+  '
+upstream_drivers:
+- toxicant-exposure
+- heavy-metal-exposure
+downstream_effects:
+- chronic-fatigue
+- reduced-detox-capacity
+related_mechanisms:
+- oxidative-stress-from-toxicants
+linked_to_topics:
+- detoxification
+- toxin-load
+- chronic-fatigue
+evidence_tier: plausible_emerging
+sources:
+- id: minich-detox-basics-fmca-transcript
+  location: Mitochondria and detoxification section
+  quote: the mitochondria are susceptible to these different toxicants. They actually
+    worked as disruptors to mitochondrial function
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

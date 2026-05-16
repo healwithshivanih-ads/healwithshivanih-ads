@@ -1,0 +1,57 @@
+slug: exposome
+display_name: Exposome
+aliases:
+- exposomics
+- environmental exposome
+- total environmental exposure
+summary: 'The exposome is the sum of all environmental exposures across the
+
+  lifespan — external (radiation, pollution, diet, drugs, personal care,
+
+  household products) and internal (psychological stress, inflammation,
+
+  oxidative stress, microbiome shifts) — and how they interact with
+
+  the body''s internal chemistry. Sits alongside the genome, proteome,
+
+  and metabolome as a domain of "omics" research. In FM, used to frame
+
+  the cumulative biological impact of lifestyle and environment on a
+
+  client''s health timeline.
+
+  '
+common_symptoms: []
+red_flags: []
+related_topics:
+- toxin-load
+- detoxification
+- endocrine-disruption
+key_mechanisms:
+- chemical-cocktail-synergy
+- oxidative-stress-from-toxicants
+coaching_scope_notes: 'Coach uses the exposome lens to build a client''s exposure
+  timeline:
+
+  what they eat, drink, breathe, touch, and apply, plus stress and
+
+  lifestyle factors. Frames "we are what we eat, drink, breathe, and
+
+  touch — and what we cannot metabolize and eliminate."
+
+  '
+clinician_scope_notes: 'Exposomics research and biomarker panels (urinary toxicant
+
+  metabolites) are clinical-research domain.
+
+  '
+evidence_tier: plausible_emerging
+sources:
+- id: minich-detox-basics-fmca-transcript
+  location: Exposome section
+  quote: combined exposures from all the sources on the outside… interacting with
+    the body's internal chemical environment
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

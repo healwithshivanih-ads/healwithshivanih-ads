@@ -1,0 +1,56 @@
+slug: phase-2-conjugation
+display_name: Phase 2 Conjugation
+aliases:
+- Phase II detoxification
+- conjugation phase
+- hepatic conjugation
+category: metabolic
+summary: 'Phase 2 attaches a water-soluble conjugate (glucuronic acid, sulfate,
+
+  glutathione, methyl group, acetyl group, amino acids like glycine,
+
+  taurine, glutamine) to the Phase-1 activated intermediate, rendering
+
+  it inactive and excretable via bile, urine, or sweat. Key Phase 2
+
+  pathways: glucuronidation (UGTs), sulfation, glutathione conjugation
+
+  (GSTs), methylation, N-acetylation (NAT), amino acid conjugation.
+
+  Under basal conditions Phase 2 enzymes operate well below maximum
+
+  capacity and must be induced — typically by phytochemicals (notably
+
+  sulforaphane) or toxicant exposure. Heavily protein-dependent:
+
+  amino acids supply both the enzymes and the conjugating groups.
+
+  '
+upstream_drivers:
+- phase-1-biotransformation
+- phytochemical-phase-2-induction
+- protein-amino-acid-availability
+downstream_effects:
+- phase-3-elimination
+- reduced-reactive-intermediate-burden
+related_mechanisms:
+- phase-1-biotransformation
+- balanced-detoxification
+- beta-glucuronidase-deconjugation
+linked_to_topics:
+- detoxification
+- toxin-load
+evidence_tier: strong
+sources:
+- id: minich-detox-basics-fmca-transcript
+  location: Phase 2 section
+  quote: we are bringing in another compound… connecting that compound onto the functionalized
+    compound… makes the active intermediate more inactive and more able to be excreted
+- id: ifm-textbook-fig-3-5-liver-detox-pathways
+  location: Phase II (Conjugated Pathways) panel — Reactions and Nutrients Used
+  quote: 'Reactions: Sulfation, Glucuronidation, Glutathione conjugation, Acetylation,
+    Amino acid conjugation, Methylation'
+version: 2
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

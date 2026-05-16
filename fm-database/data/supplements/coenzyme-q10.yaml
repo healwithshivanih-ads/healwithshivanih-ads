@@ -1,0 +1,45 @@
+slug: coenzyme-q10
+display_name: Coenzyme Q10 (CoQ10 / Ubiquinol)
+category: other
+forms_available:
+- capsule
+typical_dose_range: {}
+timing_options:
+- with_breakfast
+- with_lunch
+take_with_food: required
+notes_for_coach: 'Mitochondrial electron-transport-chain cofactor and lipid-soluble
+
+  antioxidant. Source (Minich transcript) names CoQ10 as an
+
+  endogenous antioxidant relevant to detoxification but does NOT give
+
+  dosing. Confirm dose from peer-reviewed source before client use.
+
+  Ubiquinol form is the reduced/active form preferred in older adults
+
+  and those on statins. Fat-soluble — take with a meal containing fat.
+
+  '
+contraindications:
+  conditions: []
+  medications: []
+  life_stages: []
+interactions:
+  with_medications: []
+  with_supplements: []
+  with_foods: []
+evidence_tier: plausible_emerging
+linked_to_topics:
+- detoxification
+linked_to_mechanisms:
+- mitochondrial-toxin-disruption
+sources:
+- id: minich-detox-basics-fmca-transcript
+  location: Antioxidant nutrients section
+  quote: upregulating endogenous antioxidants like glutathione, cysteine, coenzyme
+    Q10, lipoic acid
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

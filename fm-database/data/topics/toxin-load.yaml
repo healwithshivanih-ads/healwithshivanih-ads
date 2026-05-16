@@ -1,0 +1,64 @@
+slug: toxin-load
+display_name: Toxin Load
+aliases:
+- total toxic load
+- body burden
+- chemical body burden
+- toxicant burden
+summary: 'Toxin load is the cumulative result of lifetime toxicant exposures
+
+  minus the body''s capacity to biotransform and excrete them. Whether
+
+  a given exposure produces symptoms depends on lifetime exposure,
+
+  potency, the chemical cocktail effect of multiple low-dose toxicants
+
+  combining synergistically, and individual susceptibility (genetic
+
+  variants, nutrient status, mitochondrial function, gut and excretory
+
+  health). Even low-dose chronic exposures can have non-linear effects,
+
+  with immune, neurological, gastrointestinal, and endocrine systems
+
+  typically affected first.
+
+  '
+common_symptoms:
+- fatigue
+- brain-fog
+- cold-intolerance
+red_flags: []
+related_topics:
+- detoxification
+- exposome
+- endocrine-disruption
+key_mechanisms:
+- chemical-cocktail-synergy
+- mitochondrial-toxin-disruption
+- oxidative-stress-from-toxicants
+- bpa-endocrine-disruption
+coaching_scope_notes: 'Coach helps clients map their exposure timeline (occupational
+  history,
+
+  residential history, personal care, food/water sources) and identify
+
+  avoidable exposures. Frame avoidance as the first-line detox strategy.
+
+  '
+clinician_scope_notes: 'Quantitative assessment of toxin load (urinary metabolites,
+  biomarkers
+
+  of exposure, provoked challenge tests) belongs to the clinician.
+
+  '
+evidence_tier: strong
+sources:
+- id: minich-detox-basics-fmca-transcript
+  location: Calculating Toxic Load section
+  quote: total toxin load results from our exposures minus what we can actually get
+    rid of
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

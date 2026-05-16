@@ -1,0 +1,51 @@
+slug: sulforaphane-induces-phase-2-enzymes
+statement: 'Sulforaphane, derived from cruciferous vegetables (especially broccoli
+
+  sprouts), is one of the most well-characterized dietary inducers of
+
+  Phase 2 conjugation enzymes via activation of the Nrf2 pathway.
+
+  '
+evidence_tier: strong
+rationale: 'Sulforaphane is the prototypical Nrf2 activator in the food supply.
+
+  Nrf2 activation upregulates transcription of glutathione-S-transferases,
+
+  NAD(P)H quinone oxidoreductase, UGTs, and other Phase 2 enzymes,
+
+  alongside endogenous antioxidant systems (glutathione synthesis).
+
+  Mechanism is well-established in cell, animal, and human studies.
+
+  '
+coaching_translation: 'If you eat one thing for your detox pathways, make it cruciferous
+
+  vegetables — broccoli, cauliflower, cabbage, kale, and especially
+
+  broccoli sprouts. They contain a compound called sulforaphane that
+
+  flips on the genes your liver uses to package up toxins. Aim for some
+
+  form of cruciferous most days.
+
+  '
+caveats:
+- Very high cruciferous intake in iodine-deficient individuals with untreated thyroid
+  disease may be a concern — coordinate with clinician for thyroid clients.
+- Lightly steaming or chopping raw, then waiting a few minutes before cooking, preserves
+  more sulforaphane.
+out_of_scope_notes: ''
+linked_to_topics:
+- detoxification
+linked_to_mechanisms:
+- phase-2-conjugation
+linked_to_supplements:
+- sulforaphane
+sources:
+- id: minich-detox-basics-fmca-transcript
+  location: Phytonutrients section
+  quote: One of my favorites is sulforaphane, which can help to induce Phase 2
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

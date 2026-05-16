@@ -1,0 +1,50 @@
+slug: beta-glucuronidase-deconjugation
+display_name: Beta-Glucuronidase Deconjugation
+aliases:
+- bacterial deconjugation
+- gut microbiome estrogen reabsorption
+- enterohepatic recirculation of conjugates
+category: gut
+summary: 'Beta-glucuronidase is an enzyme produced by certain gut bacteria that
+
+  cleaves the glucuronide group off Phase-2-conjugated metabolites
+
+  (notably estrogens and other lipophilic toxins) destined for fecal
+
+  excretion. This deconjugation releases the original compound back
+
+  into the gut lumen where it can be reabsorbed via enterohepatic
+
+  recirculation, raising systemic burden. Elevated gut beta-glucuronidase
+
+  activity is linked to estrogen dominance patterns and reduced toxicant
+
+  clearance. The microbial population producing beta-glucuronidase is
+
+  often called the "estrobolome."
+
+  '
+upstream_drivers:
+- dysbiosis
+- low-fiber-diet
+- constipation
+downstream_effects:
+- estrogen-recirculation
+- reduced-toxicant-clearance
+related_mechanisms:
+- phase-2-conjugation
+- phase-3-elimination
+linked_to_topics:
+- estrobolome
+- detoxification
+- endocrine-disruption
+evidence_tier: plausible_emerging
+sources:
+- id: minich-detox-basics-fmca-transcript
+  location: Phase 2 conjugation and gut microbiome section
+  quote: depending on your gut microbiome, you can have increased levels of beta-glucuronidase
+    that cleave off that glucuronide group
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

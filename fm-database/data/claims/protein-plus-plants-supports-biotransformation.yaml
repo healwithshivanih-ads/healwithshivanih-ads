@@ -1,0 +1,59 @@
+slug: protein-plus-plants-supports-biotransformation
+statement: 'A dietary pattern of adequate protein plus diverse, colorful plant
+
+  foods supports both phases of biotransformation: protein supplies
+
+  amino acid conjugating substrates and enzyme building blocks for
+
+  Phase 2; plants provide phytochemicals that induce Phase 2 enzymes
+
+  and antioxidants that neutralize Phase 1 reactive intermediates.
+
+  '
+evidence_tier: strong
+rationale: 'Phase 2 conjugation pathways (glutathione, sulfation, glucuronidation,
+
+  amino acid conjugation, methylation, N-acetylation) all depend on
+
+  amino-acid-derived substrates and methyl donors. Cruciferous-derived
+
+  sulforaphane and other phytochemicals are well-characterized inducers
+
+  of Phase 2 enzymes via Nrf2. Carotenoids, vitamin C, and vitamin E
+
+  scavenge ROS produced during Phase 1.
+
+  '
+coaching_translation: 'My go-to detox phrase: protein plus plants. Build every meal
+  around
+
+  a good protein source and a rainbow of vegetables. The protein gives
+
+  your liver the raw materials it needs to package up toxins for
+
+  removal; the colorful plants give it the on-switch and the antioxidant
+
+  protection it needs to do that work safely.
+
+  '
+caveats:
+- High-sugar, low-protein diets actively impair detoxification.
+- Specific protein and phytochemical needs vary by individual biochemistry, gut health,
+  and toxicant load.
+out_of_scope_notes: ''
+linked_to_topics:
+- detoxification
+linked_to_mechanisms:
+- phase-1-biotransformation
+- phase-2-conjugation
+- balanced-detoxification
+linked_to_supplements: []
+sources:
+- id: minich-detox-basics-fmca-transcript
+  location: Phase 2 section and clinical emphasis section
+  quote: my mantra as it relates to detoxification… is protein plus plants… to feed-forward
+    Phase 1 and Phase 2
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

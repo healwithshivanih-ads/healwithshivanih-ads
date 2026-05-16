@@ -1,0 +1,46 @@
+slug: lipid-soluble-toxin-adipose-storage
+display_name: Lipid-Soluble Toxin Storage in Adipose Tissue
+aliases:
+- fat storage of toxicants
+- lipophilic toxin sequestration
+- adipose toxicant depot
+category: metabolic
+summary: 'Nonpolar, lipid-soluble toxicants (many pesticides, PCBs, dioxins,
+
+  flame retardants, BPA, certain heavy-metal complexes) preferentially
+
+  partition into adipose tissue, where they can be stored for years.
+
+  This buffering protects other tissues acutely but creates a hidden
+
+  body burden. Weight loss, fasting, lactation, and significant fat
+
+  mobilization can release these stored toxicants into circulation,
+
+  contributing to symptoms during rapid weight-loss interventions —
+
+  especially if Phase 1/2/3 capacity is not concurrently supported.
+
+  '
+upstream_drivers:
+- toxicant-exposure
+- lipophilic-toxicant-properties
+downstream_effects:
+- mobilized-toxin-burden-with-weight-loss
+- prolonged-toxicant-half-life
+related_mechanisms:
+- phase-1-biotransformation
+- balanced-detoxification
+linked_to_topics:
+- toxin-load
+- detoxification
+evidence_tier: strong
+sources:
+- id: ifm-textbook-fig-3-5-liver-detox-pathways
+  location: Toxin storage annotation (left side of diagram)
+  quote: Lipid-soluble (nonpolar) toxins are stored in adipose (fat) tissue and contribute
+    to increased / mobilized toxin load with weight loss
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

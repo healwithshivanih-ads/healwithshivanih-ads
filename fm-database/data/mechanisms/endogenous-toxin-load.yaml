@@ -1,0 +1,49 @@
+slug: endogenous-toxin-load
+display_name: Endogenous Toxin Load (Endotoxins)
+aliases:
+- internal toxin burden
+- metabolic endotoxin load
+- LPS endotoxin burden
+category: metabolic
+summary: 'Endotoxins are toxic substances generated internally — including end
+
+  products of normal metabolism (ammonia, reactive aldehydes, oxidized
+
+  lipids, hormone metabolites) and bacterial endotoxins (lipopolysaccharide
+
+  from gram-negative gut bacteria, especially relevant in dysbiosis and
+
+  intestinal hyperpermeability). The liver biotransforms endogenous and
+
+  exogenous toxins through the same Phase 1 / Phase 2 pathways — so
+
+  endotoxin load competes with exotoxin clearance for finite enzymatic
+
+  capacity. Frequently overlooked in detox conversations that focus
+
+  only on environmental exposures.
+
+  '
+upstream_drivers:
+- dysbiosis
+- intestinal-hyperpermeability
+- metabolic-byproducts
+downstream_effects:
+- phase-1-biotransformation
+- phase-2-conjugation
+- chronic-inflammation
+related_mechanisms:
+- exogenous-toxicant-load
+- phase-2-conjugation
+linked_to_topics:
+- toxin-load
+- detoxification
+evidence_tier: strong
+sources:
+- id: ifm-textbook-fig-3-5-liver-detox-pathways
+  location: Endotoxins panel
+  quote: 'Endotoxins: End products of metabolism, Bacterial endotoxins'
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

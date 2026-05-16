@@ -1,0 +1,63 @@
+slug: endotoxins-and-exotoxins-share-detox-pathways
+statement: 'Internally generated endotoxins (metabolic byproducts, bacterial
+
+  lipopolysaccharide) and externally introduced exotoxins (drugs,
+
+  agricultural chemicals, food additives, household chemicals,
+
+  pollutants, microbial toxins) both feed through the same hepatic
+
+  Phase 1 / Phase 2 / Phase 3 pathways — so endogenous and
+
+  exogenous loads compete for the same finite enzymatic and cofactor
+
+  capacity.
+
+  '
+evidence_tier: strong
+rationale: 'Hepatic biotransformation does not distinguish between toxin source.
+
+  This is why dysbiosis, intestinal hyperpermeability, hormone-clearance
+
+  pathologies, and other endotoxin-generating conditions can present
+
+  with classic "high toxin load" symptoms even in clients with low
+
+  environmental exposure — and why supporting detoxification in such
+
+  clients requires addressing both gut and exposure simultaneously.
+
+  '
+coaching_translation: 'Your detox pathways don''t care where the toxin came from —
+  a
+
+  pesticide from outside and a bacterial toxin from a leaky gut go
+
+  through the exact same liver enzymes. This is why fixing the gut
+
+  is often the first step in any detox-focused plan: it lowers the
+
+  background load so the liver has more capacity for everything else.
+
+  '
+caveats: []
+out_of_scope_notes: ''
+linked_to_topics:
+- toxin-load
+- detoxification
+linked_to_mechanisms:
+- endogenous-toxin-load
+- exogenous-toxicant-load
+- phase-1-biotransformation
+- phase-2-conjugation
+linked_to_supplements: []
+sources:
+- id: ifm-textbook-fig-3-5-liver-detox-pathways
+  location: Endotoxins and Exotoxins panels
+  quote: 'Endotoxins: End products of metabolism, Bacterial endotoxins. Exotoxins:
+    Drugs, Agricultural chemicals, Food additives, Household, Pollutants/contaminants,
+    Microbial'
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

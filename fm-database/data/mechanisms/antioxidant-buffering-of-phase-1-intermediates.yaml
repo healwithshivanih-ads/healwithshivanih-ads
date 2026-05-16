@@ -1,0 +1,52 @@
+slug: antioxidant-buffering-of-phase-1-intermediates
+display_name: Antioxidant Buffering of Phase 1 Reactive Intermediates
+aliases:
+- antioxidant protection during detox
+- reactive intermediate quenching
+- detox antioxidant defense
+category: metabolic
+summary: 'Phase 1 generates reactive oxygen intermediates, superoxide, and
+
+  free radicals that, if not neutralized, cause secondary tissue
+
+  damage. A dietary and endogenous antioxidant network buffers these
+
+  intermediates between Phase 1 and Phase 2 completion: carotenes
+
+  (vitamin A precursors), ascorbic acid (vitamin C), tocopherols
+
+  (vitamin E), selenium, copper, zinc, manganese, coenzyme Q10,
+
+  thiols (from garlic, onion, cruciferous vegetables), bioflavonoids,
+
+  silymarin (milk thistle), and pycnogenol. Inadequate antioxidant
+
+  status during high Phase 1 activity is a primary cause of
+
+  detox-associated symptoms and oxidative damage.
+
+  '
+upstream_drivers:
+- phase-1-biotransformation
+- dietary-antioxidant-intake
+- endogenous-antioxidant-status
+downstream_effects:
+- reduced-secondary-tissue-damage
+- reduced-reactive-intermediate-burden
+related_mechanisms:
+- phase-1-biotransformation
+- oxidative-stress-from-toxicants
+- balanced-detoxification
+linked_to_topics:
+- detoxification
+evidence_tier: strong
+sources:
+- id: ifm-textbook-fig-3-5-liver-detox-pathways
+  location: Antioxidant Protective Nutrients and Plant Derivatives panel
+  quote: Carotenes (Vit A), Ascorbic acid (Vit C), Tocopherols (Vit E), Selenium,
+    Copper, Zinc, Manganese, Coenzyme Q10, Thiols (garlic, onions, cruciferous vegetables),
+    Bioflavonoids, Silymarin, Pycnogenol
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

@@ -1,0 +1,51 @@
+slug: balanced-detoxification
+display_name: Balanced Phase 1 / Phase 2 Detoxification
+aliases:
+- detox phase balance
+- Phase 1 Phase 2 coupling
+- detoxification pathway balance
+category: metabolic
+summary: 'Phase 1 and Phase 2 must be functionally coupled — like a relay race
+
+  with a baton handoff. When Phase 1 is upregulated (by toxicant load,
+
+  alcohol, certain medications, smoking, or some phytochemicals) without
+
+  parallel Phase 2 capacity, reactive intermediates accumulate and drive
+
+  oxidative stress, DNA damage, and inflammation. Conversely, sluggish
+
+  Phase 1 leaves parent toxicants un-metabolized. Clinical goal: upregulate
+
+  both phases together via protein (Phase 2 substrate), phytochemicals
+
+  (Phase 2 induction, e.g., sulforaphane), and antioxidant cofactors
+
+  (to neutralize Phase 1 intermediates).
+
+  '
+upstream_drivers:
+- phase-1-biotransformation
+- phase-2-conjugation
+- protein-amino-acid-availability
+- antioxidant-status
+downstream_effects:
+- reduced-reactive-intermediate-burden
+- phase-3-elimination
+related_mechanisms:
+- phase-1-biotransformation
+- phase-2-conjugation
+- oxidative-stress-from-toxicants
+linked_to_topics:
+- detoxification
+- toxin-load
+evidence_tier: strong
+sources:
+- id: minich-detox-basics-fmca-transcript
+  location: Balanced detoxification section
+  quote: like a race where the runner is running, they have a baton, then they hand
+    off that baton to the next runner
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

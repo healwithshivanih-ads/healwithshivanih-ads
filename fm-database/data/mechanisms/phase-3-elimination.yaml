@@ -1,0 +1,53 @@
+slug: phase-3-elimination
+display_name: Phase 3 Elimination
+aliases:
+- excretion phase
+- toxin excretion
+- elimination phase
+category: metabolic
+summary: 'Phase 3 is the final step of detoxification — physical excretion of
+
+  water-soluble conjugated metabolites via bile-to-stool, urine, sweat,
+
+  sebum, and exhaled breath. Effective elimination requires adequate
+
+  bowel motility (regular daily stools), hydration (kidney output), sweat
+
+  capacity, and a healthy gut microbiome (to prevent deconjugation and
+
+  reabsorption via beta-glucuronidase). Constipation, oliguria, or
+
+  inability to sweat each create a bottleneck that raises net toxin
+
+  load despite adequate Phase 1/2 activity.
+
+  '
+upstream_drivers:
+- phase-2-conjugation
+- bowel-motility
+- hydration-status
+- sweat-capacity
+downstream_effects:
+- reduced-systemic-toxin-load
+related_mechanisms:
+- phase-2-conjugation
+- beta-glucuronidase-deconjugation
+- balanced-detoxification
+linked_to_topics:
+- detoxification
+- toxin-load
+evidence_tier: strong
+sources:
+- id: minich-detox-basics-fmca-transcript
+  location: Excretion and elimination section
+  quote: Excretion can happen through the gut, through the stool, through the urine,
+    through sweat, through the skin
+- id: ifm-textbook-fig-3-5-liver-detox-pathways
+  location: Excretory Derivatives panel — Bile / Serum / Kidneys / Feces / Stool /
+    Urine routes
+  quote: 'Excretory Derivatives (polar / water soluble): Bile → Feces/Stool; Serum
+    → Kidneys → Urine'
+version: 2
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

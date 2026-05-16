@@ -1,0 +1,41 @@
+slug: chronic-fatigue
+display_name: Chronic Fatigue
+aliases:
+- persistent tiredness
+- exhaustion
+- low energy
+- post-exertional malaise
+category: constitutional
+severity: common
+description: 'Persistent low energy out of proportion to activity, often with
+
+  reduced exercise tolerance and slow recovery. In a toxicant-load
+
+  context, frequently reflects mitochondrial disruption — toxicants
+
+  poison the same ATP-producing organelles needed to power
+
+  detoxification, creating a self-reinforcing low-energy loop.
+
+  '
+when_to_refer: 'Refer if fatigue is severe, progressive, accompanied by weight loss,
+
+  fevers, lymphadenopathy, or unexplained anemia. ME/CFS-pattern
+
+  presentations warrant specialist referral.
+
+  '
+linked_to_topics:
+- toxin-load
+- detoxification
+linked_to_mechanisms:
+- mitochondrial-toxin-disruption
+sources:
+- id: minich-detox-basics-fmca-transcript
+  location: Mitochondria section
+  quote: loss of energy, which is a common complaint for people who tend to have a
+    high toxin load
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

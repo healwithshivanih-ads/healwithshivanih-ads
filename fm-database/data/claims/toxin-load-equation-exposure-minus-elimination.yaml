@@ -1,0 +1,53 @@
+slug: toxin-load-equation-exposure-minus-elimination
+statement: 'Total toxin load equals cumulative toxicant exposures minus the
+
+  body''s capacity to biotransform and eliminate them. Symptoms emerge
+
+  when exposure outpaces elimination capacity — not at any fixed
+
+  exposure threshold.
+
+  '
+evidence_tier: strong
+rationale: 'This is the core organizing equation of the FM detoxification framework.
+
+  Explains individual variability: two people with identical exposure
+
+  histories can present very differently based on genetic polymorphisms
+
+  in detox enzymes, nutrient status, gut and excretory function, and
+
+  mitochondrial capacity.
+
+  '
+coaching_translation: 'Think of it like a sink: exposure is the tap, elimination is
+  the
+
+  drain. If the tap runs faster than the drain, water rises — symptoms
+
+  appear. We have two levers: turn down the tap (avoid exposures) and
+
+  unclog the drain (support Phase 1, 2, and 3 with food, hydration,
+
+  movement, sleep, and bowel regularity).
+
+  '
+caveats: []
+out_of_scope_notes: ''
+linked_to_topics:
+- toxin-load
+- detoxification
+linked_to_mechanisms:
+- phase-1-biotransformation
+- phase-2-conjugation
+- phase-3-elimination
+linked_to_supplements: []
+sources:
+- id: minich-detox-basics-fmca-transcript
+  location: Toxic load calculation section
+  quote: total toxin load results from our exposures minus what we can actually get
+    rid of
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

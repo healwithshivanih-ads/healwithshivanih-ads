@@ -1,0 +1,61 @@
+slug: phase-2-conjugation-substrates-are-amino-acid-derived
+statement: 'Phase 2 conjugation reactions consume specific amino-acid and
+
+  sulfur-containing substrates as their conjugating groups — glycine,
+
+  taurine, glutamine, N-acetylcysteine, cysteine, and methionine —
+
+  making adequate protein intake and sulfur amino acid status a
+
+  rate-limiting determinant of Phase 2 capacity.
+
+  '
+evidence_tier: strong
+rationale: 'Each Phase 2 pathway draws on distinct amino-acid-derived substrates:
+
+  glutathione conjugation (cysteine, glycine, glutamate), sulfation
+
+  (sulfate from cysteine and methionine), amino acid conjugation
+
+  (glycine, taurine), methylation (methionine-derived methyl groups).
+
+  Low protein intake or chronically high toxicant load depletes these
+
+  pools and rate-limits Phase 2 capacity, leaving Phase 1 reactive
+
+  intermediates inadequately conjugated.
+
+  '
+coaching_translation: 'Phase 2 of detoxification literally consumes amino acids to
+  package
+
+  toxins for removal. This is the biochemistry behind the "protein
+
+  plus plants" mantra — without adequate protein at every meal, your
+
+  body runs out of the building blocks it needs to finish the
+
+  detoxification process safely. Sulfur-rich foods (eggs, garlic,
+
+  onions, cruciferous vegetables) are particularly important.
+
+  '
+caveats:
+- Specific protein needs vary by body weight, activity, and toxicant load — work with
+  your coach or dietitian for individualized targets.
+out_of_scope_notes: ''
+linked_to_topics:
+- detoxification
+linked_to_mechanisms:
+- phase-2-amino-acid-cofactor-dependency
+- phase-2-conjugation
+linked_to_supplements: []
+sources:
+- id: ifm-textbook-fig-3-5-liver-detox-pathways
+  location: Phase II — Nutrients Used panel
+  quote: 'Nutrients Used: Glycine, Taurine, Glutamine, N-acetylcysteine, Cysteine,
+    Methionine'
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

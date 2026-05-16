@@ -1,0 +1,61 @@
+slug: phase-1-requires-b-vitamin-cofactors
+statement: 'Phase 1 CYP450 biotransformation is dependent on adequate status of
+
+  B-vitamin cofactors (riboflavin, niacin, pyridoxine, folate, B12),
+
+  glutathione, branched-chain amino acids, flavonoids, and phospholipids.
+
+  Deficiency in any of these slows Phase 1 throughput and allows parent
+
+  toxicants to accumulate.
+
+  '
+evidence_tier: strong
+rationale: 'CYP450 enzymes are heme-containing oxidoreductases requiring NADPH
+
+  (regenerated through niacin- and riboflavin-dependent pathways),
+
+  with B6, folate, and B12 supporting upstream methylation and
+
+  one-carbon metabolism. Glutathione provides a redox buffer. This
+
+  cofactor set is standard across functional medicine biochemistry
+
+  references and biochemistry textbooks.
+
+  '
+coaching_translation: 'Your liver runs on B vitamins. Riboflavin, niacin, B6, folate,
+  and
+
+  B12 are the gears that keep Phase 1 of detoxification turning. A
+
+  varied diet with whole grains, legumes, leafy greens, eggs, and
+
+  quality animal protein covers most of this; a methylated B-complex
+
+  can help fill gaps when toxicant load is high.
+
+  '
+caveats:
+- Methylated forms (methylfolate, methylcobalamin, P5P) are often better tolerated,
+  especially in clients with MTHFR variants.
+- High-dose biotin interferes with thyroid and hormone immunoassays — pause before
+  lab draw.
+out_of_scope_notes: ''
+linked_to_topics:
+- detoxification
+linked_to_mechanisms:
+- phase-1-b-vitamin-cofactor-dependency
+- phase-1-biotransformation
+linked_to_supplements:
+- b-complex
+sources:
+- id: ifm-textbook-fig-3-5-liver-detox-pathways
+  location: Phase I — Nutrients Used panel
+  quote: 'Nutrients Used: Riboflavin (Vit B2), Niacin (Vit B3), Pyridoxine (Vit B6),
+    Folic acid, Vitamin B12, Glutathione, Branched-chain amino acids, Flavonoids,
+    Phospholipids'
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

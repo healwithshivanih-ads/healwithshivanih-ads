@@ -14,18 +14,17 @@ linked_to_topics:
 - metabolic-detoxification
 linked_to_claims:
 - b-vitamins-support-phase-i-detox-enzymes
-notes_for_coach: B-complex is used in the amalgam removal protocol and B vitamins
-  (B2, B3, B6, B12, folate) are key nutrients for Phase I cytochrome P450 enzyme function.
-  Specific doses not stated in document — verify with clinician.
-notes_for_client: B vitamins are essential cofactors for your liver's detox enzymes.
-  They help your body process and clear toxins efficiently.
+notes_for_coach: B-complex is used in the amalgam removal protocol and B vitamins (B2, B3, B6, B12, folate) are key nutrients
+  for Phase I cytochrome P450 enzyme function. Specific doses not stated in document — verify with clinician.
+notes_for_client: B vitamins are essential cofactors for your liver's detox enzymes. They help your body process and clear
+  toxins efficiently.
 evidence_tier: strong
 linked_to_mechanisms: []
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Dental Amalgam Removal Protocol; Nutrients for Phase 1 and Phase 2 Detoxification
-  quote: 'B-complex vitamins... PHASE I Nutrients Used: Riboflavin (Vit B2), Niacin
-    (Vit B3), Pyridoxine (Vit B6), Folic acid, Vitamin B12'
+  quote: 'B-complex vitamins... PHASE I Nutrients Used: Riboflavin (Vit B2), Niacin (Vit B3), Pyridoxine (Vit B6), Folic acid,
+    Vitamin B12'
 - id: vitaone-liver-detox-cheatsheet
   location: Methylation & MTHFR Cheatsheet — 6 Ways to Overcome MTHFR
   quote: Use Activated Nutrients – Always choose methylated or coenzyme forms.
@@ -34,8 +33,7 @@ sources:
   quote: 'B-complex vitamins: Needed for methylation and energy metabolism.'
 - id: vitaone-blood-sugar-ebook
   location: Section 7.2 — Targeted Supplementation
-  quote: 'B-complex- B12, B9: Supports methylation; lowers homocysteine. B12- 1500mcg,
-    B9- 100mg.'
+  quote: 'B-complex- B12, B9: Supports methylation; lowers homocysteine. B12- 1500mcg, B9- 100mg.'
 - id: coconote-fm-intestinal-permeability
   location: 5R Protocol – Repair
   quote: Vitamin D and all the B vitamins are important.
@@ -47,5 +45,4 @@ status: active
 updated_at: '2026-05-04'
 updated_by: shivani
 aliases:
-- b-complex
 - b-vitamins-complex

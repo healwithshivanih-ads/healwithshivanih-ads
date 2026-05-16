@@ -34,6 +34,7 @@ gate further action.
 """
 from __future__ import annotations
 
+import json
 import os
 import re
 import subprocess
@@ -255,6 +256,130 @@ def _normalise_path(declared: str, staging_batch: str | None) -> Path:
     return REPO_ROOT / p
 
 
+# Shape-normalisers — auto-correct common AI shape mistakes BEFORE
+# writing to disk. Parsed YAML round-trip (rather than regex over the
+# raw text) so we don't break multi-line string continuations or nested
+# structures. Each fix is documented inline — these are mismatches
+# between what the AI produces and what the Pydantic models accept.
+
+def _normalise_yaml_body(body: str) -> str:
+    """Apply field-name fixes to one entity's YAML body before writing.
+
+    Uses PyYAML to parse + re-dump. If parsing fails (e.g. malformed
+    YAML), returns the original body unchanged so we don't make things
+    worse — the validator will surface the real syntax error later.
+    """
+    # Strip leaked "yaml…" prefix artifacts from backtick-stripped paste
+    # boundaries BEFORE parsing — they aren't valid YAML and would crash
+    # the load.
+    cleaned = re.sub(r"^yaml#\s*[^\n]*\n", "", body, flags=re.MULTILINE)
+    cleaned = re.sub(
+        r"^yaml(missing_dependencies|version|status):",
+        r"\1:",
+        cleaned,
+        flags=re.MULTILINE,
+    )
+
+    try:
+        import yaml as _yaml
+        data = _yaml.safe_load(cleaned)
+    except Exception:
+        return cleaned  # leave it; let approval surface the parse error
+    if not isinstance(data, dict):
+        return cleaned
+
+    changed = False
+
+    # 1. interactions.{medications, supplements, foods}
+    #    → interactions.{with_medications, with_supplements, with_foods}
+    inter = data.get("interactions")
+    if isinstance(inter, dict):
+        for old, new in (
+            ("medications", "with_medications"),
+            ("supplements", "with_supplements"),
+            ("foods", "with_foods"),
+        ):
+            if old in inter and new not in inter:
+                inter[new] = inter.pop(old)
+                changed = True
+
+    # 2. contraindications: flat list → {conditions: [...], medications: [],
+    #    life_stages: []}. Pydantic model uses the dict form.
+    contra = data.get("contraindications")
+    if isinstance(contra, list):
+        data["contraindications"] = {
+            "conditions": [str(x) for x in contra if x is not None],
+            "medications": [],
+            "life_stages": [],
+        }
+        changed = True
+
+    # 3. Drop the `missing_dependencies` key if the AI accidentally
+    #    embedded it inside a single entity (it belongs at the very end
+    #    of the whole paste, not on each entity).
+    if "missing_dependencies" in data:
+        data.pop("missing_dependencies")
+        changed = True
+
+    # 4. Enum value remaps — the AI sometimes uses stale or fuzzy names.
+    #    Map to the closest valid enum value rather than failing the
+    #    whole batch.
+    _supp_cat_map = {"nutraceutical": "other", "antioxidant": "other"}
+    _take_food_map = {"empty_stomach": "avoid", "anytime": "optional"}
+    _timing_map = {
+        "early_morning": "on_waking",
+        "empty_stomach": "on_empty_stomach",
+        "afternoon": "mid_afternoon",
+        "anytime": "with_breakfast",   # fall-back to a slot the schedule renderer handles
+        "bedtime_or_evening": "bedtime",
+    }
+    _supp_form_map = {"sublingual": "lozenge", "softgel": "capsule", "topical": "other"}
+
+    if data.get("category") in _supp_cat_map:
+        data["category"] = _supp_cat_map[data["category"]]
+        changed = True
+    if data.get("take_with_food") in _take_food_map:
+        data["take_with_food"] = _take_food_map[data["take_with_food"]]
+        changed = True
+    if isinstance(data.get("timing_options"), list):
+        new_timings: list[str] = []
+        for t in data["timing_options"]:
+            mapped = _timing_map.get(t, t)
+            if mapped not in new_timings:
+                new_timings.append(mapped)
+        if new_timings != data["timing_options"]:
+            data["timing_options"] = new_timings
+            changed = True
+    if isinstance(data.get("forms_available"), list):
+        new_forms: list[str] = []
+        for f in data["forms_available"]:
+            mapped = _supp_form_map.get(f, f)
+            if mapped == "other":
+                continue  # drop unmappable forms entirely
+            if mapped not in new_forms:
+                new_forms.append(mapped)
+        if new_forms != data["forms_available"]:
+            data["forms_available"] = new_forms
+            changed = True
+    # typical_dose_range keys must match forms_available — drop any
+    # form-specific dose entries for forms we just dropped.
+    if isinstance(data.get("typical_dose_range"), dict) and isinstance(data.get("forms_available"), list):
+        allowed = set(data["forms_available"])
+        cleaned_doses = {k: v for k, v in data["typical_dose_range"].items() if k in allowed}
+        if cleaned_doses != data["typical_dose_range"]:
+            data["typical_dose_range"] = cleaned_doses
+            changed = True
+
+    if not changed:
+        return cleaned
+
+    # Re-dump preserving as much of the original style as possible. We
+    # use default_flow_style=False + sort_keys=False so blocks stay
+    # readable and the original field order survives.
+    import yaml as _yaml
+    return _yaml.dump(data, sort_keys=False, default_flow_style=False, allow_unicode=True, width=120)
+
+
 def write_blocks(blocks: list[tuple[str, str]], staging_batch: str | None) -> list[tuple[Path, str, bool]]:
     """Write each YAML block. Returns (path, declared, ok)."""
     out: list[tuple[Path, str, bool]] = []
@@ -263,7 +388,8 @@ def write_blocks(blocks: list[tuple[str, str]], staging_batch: str | None) -> li
         ok = True
         try:
             target.parent.mkdir(parents=True, exist_ok=True)
-            target.write_text(body, encoding="utf-8")
+            body_fixed = _normalise_yaml_body(body)
+            target.write_text(body_fixed, encoding="utf-8")
         except Exception as e:
             print(red(f"✗ failed to write {target}: {e}"), file=sys.stderr)
             ok = False
@@ -383,6 +509,53 @@ def main() -> int:
         else:
             print(f"  {red('✗')} {rel}")
             all_ok = False
+
+    # ── Write the _meta.json manifest in staging mode ──
+    # fmdb approve <batch> reads this manifest to know which (entity, slug)
+    # tuples to promote. Paste-ingest used to skip this, which meant
+    # staged batches were invisible to `fmdb approve` — coach could see
+    # the files on disk but the dashboard's Approve button (and the CLI)
+    # returned "batch not found". This block restores parity with the
+    # fmdb-ingest pipeline.
+    if staging_batch:
+        from datetime import datetime, timezone
+        entries = []
+        for target, declared, ok in results:
+            if not ok:
+                continue
+            # data/staging/<batch>/<entity>/<slug>.yaml → entity, slug
+            rel = target.relative_to(REPO_ROOT)
+            parts = rel.parts  # ("fm-database","data","staging",<batch>,<entity>,<slug>.yaml)
+            try:
+                stage_idx = parts.index("staging")
+                entity = parts[stage_idx + 2]
+                slug = parts[stage_idx + 3].removesuffix(".yaml")
+            except (ValueError, IndexError):
+                continue
+            entries.append({
+                "entity": entity,
+                "slug": slug,
+                "status": "new",
+                "source": "paste-ingest",
+                "declared_path": declared,
+            })
+        manifest = {
+            "batch_id": staging_batch,
+            "source_id": "paste-ingest",
+            "source_title": staging_batch,
+            "source_type": "llm_synthesis",
+            "doc_hash": None,
+            "doc_chars": None,
+            "created_at": datetime.now(timezone.utc).isoformat(),
+            "updated_by": "shivani",
+            "usage": {},
+            "entries": entries,
+        }
+        meta_path = REPO_ROOT / "data" / "staging" / staging_batch / "_meta.json"
+        meta_path.parent.mkdir(parents=True, exist_ok=True)
+        meta_path.write_text(json.dumps(manifest, indent=2))
+        print(dim(f"  → wrote manifest with {len(entries)} entries → "
+                  f"data/staging/{staging_batch}/_meta.json"))
 
     # ── Missing dependencies ──
     if deps:

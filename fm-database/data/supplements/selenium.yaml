@@ -4,7 +4,7 @@ category: mineral
 forms_available:
 - capsule
 - tablet
-evidence_tier: plausible_emerging
+evidence_tier: strong
 linked_to_topics:
 - thyroid
 - autoimmune-disease
@@ -22,6 +22,7 @@ linked_to_topics:
 - metabolic-detoxification
 - medication-induced-nutrient-depletion
 - immune-nutrition
+- detoxification
 linked_to_claims:
 - selenium-supplementation-reduces-tpo-antibodies-in-hashimotos
 - selenium-zinc-iron-required-for-t4-to-t3-conversion
@@ -38,8 +39,23 @@ linked_to_claims:
 - selenium-supports-t4-to-t3-conversion
 - selenium-antioxidant-support-phase-i-detox
 - antioxidant-nutrients-restore-metabolic-resilience
-notes_for_coach: Selenium supports glutathione peroxidase activity and thyroid hormone
-  conversion. Do not exceed upper tolerable limit (~400 mcg/day). Dosing must be clinician-directed.
+notes_for_coach: 'Source (IFM Fig 3.5) names selenium as an antioxidant cofactor
+
+  protective during Phase 1 biotransformation but does NOT give dosing
+
+  in this figure. From prior thyroid work in this catalogue, 100-200
+
+  mcg/day is the routinely cited range with 400 mcg/day as the safe
+
+  upper limit. Selenomethionine is the preferred form. Brazil nuts
+
+  (1-2 daily) are a food-first option; one Brazil nut ≈ 70-90 mcg.
+
+  Selenium is a cofactor for both glutathione peroxidase (antioxidant
+
+  defense) and deiodinase enzymes (T4 → T3 conversion).
+
+  '
 notes_for_client: Selenium is a trace mineral that supports your immune system, thyroid,
   and antioxidant defences.
 typical_dose_range:
@@ -57,7 +73,9 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: optional
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- antioxidant-buffering-of-phase-1-intermediates
+- oxidative-stress-from-toxicants
 sources:
 - id: vitaone-evidence-tiers
   location: TOPIC 1 — Thyroid / Claims & Tiers / Claim 3
@@ -95,10 +113,22 @@ sources:
   location: POST https://www.instagram.com/p/DXjjIqJjMSR/
   quote: Functional repletion with active B-vitamins, magnesium glycinate, CoQ10,
     selenium, zinc, and antioxidants helps restore metabolic resilience.
-version: 12
+- id: ifm-textbook-fig-3-5-liver-detox-pathways
+  location: Antioxidant Protective Nutrients and Plant Derivatives panel
+  quote: Selenium
+version: 13
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-05-16'
 updated_by: shivani
 aliases:
 - selenium (deiodinase enzymes)
 - selenium (plasma)
+contraindications:
+  conditions:
+  - high-dose selenium with concurrent levothyroxine — coordinate timing with prescriber
+  medications: []
+  life_stages: []
+interactions:
+  with_medications: []
+  with_supplements: []
+  with_foods: []

@@ -5,6 +5,7 @@ forms_available:
 - capsule
 - tablet
 - powder
+- whole_food
 typical_dose_range:
   capsule:
     min: 30
@@ -20,14 +21,31 @@ timing_options:
 - with_dinner
 - morning
 take_with_food: optional
-notes_for_coach: Nrf2 pathway activator — induces endogenous antioxidant production.
-  Liver detox support for anger/hepatic stagnation. Broccoli sprout source preferred.
-evidence_tier: plausible_emerging
+notes_for_coach: 'Isothiocyanate from cruciferous vegetables — especially broccoli
+
+  sprouts (highest concentration), broccoli, cauliflower, cabbage, kale.
+
+  Activates Nrf2 pathway, inducing Phase 2 enzymes. Source (Minich
+
+  transcript) names sulforaphane as a Phase 2 inducer but does NOT
+
+  give dosing. Confirm dose from peer-reviewed source before
+
+  supplemental use. Food-first option: 1 tablespoon broccoli sprouts
+
+  daily is a commonly cited culinary dose. Heat-sensitive — raw or
+
+  lightly steamed cruciferous preserve more activity.
+
+  '
+evidence_tier: strong
 linked_to_topics:
 - estrogen-dominance
 - inflammation
 - autoimmune
-linked_to_mechanisms: []
+- detoxification
+linked_to_mechanisms:
+- phase-2-conjugation
 linked_to_claims:
 - emotional-stress-cascade-chronic-disease
 notes_for_client: Sulforaphane, found in broccoli sprouts, activates your body's own
@@ -45,7 +63,18 @@ sources:
   location: Organ–Emotion Axis (p.11)
   quote: 'Liver: Anger, resentment. Detox support (Sulforaphane, NAC, bitters), emotional
     release practices.'
-version: 3
+- id: minich-detox-basics-fmca-transcript
+  location: Phytonutrients and Phase 2 section
+  quote: One of my favorites is sulforaphane, which can help to induce Phase 2
+version: 4
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-16'
 updated_by: shivani
+contraindications:
+  conditions: []
+  medications: []
+  life_stages: []
+interactions:
+  with_medications: []
+  with_supplements: []
+  with_foods: []

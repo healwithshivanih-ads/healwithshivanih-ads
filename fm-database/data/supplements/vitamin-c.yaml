@@ -34,9 +34,21 @@ timing_options:
 - on_empty_stomach
 - evening
 take_with_food: optional
-notes_for_coach: Vitamin C taken simultaneously with iron-rich foods or supplements
-  enhances non-haem iron absorption. Also an adrenal nutrient and antioxidant. High
-  doses (>2g) may cause GI upset.
+notes_for_coach: 'Source (IFM Fig 3.5) names ascorbic acid as an antioxidant protective
+
+  nutrient buffering Phase 1 reactive intermediates but does NOT give
+
+  dosing. Water-soluble; split doses across the day for better tissue
+
+  saturation. Buffered forms (calcium or sodium ascorbate) are gentler
+
+  on GI tract. High doses can cause loose stools — titrate to bowel
+
+  tolerance. Liposomal vitamin C and IV vitamin C are higher-absorption
+
+  options for clinical use (IV is clinician-only).
+
+  '
 evidence_tier: strong
 linked_to_topics:
 - thyroid
@@ -65,7 +77,10 @@ linked_to_topics:
 - adrenal-cortisol-resilience
 - male-infertility-oxidative-stress
 - immune-nutrition
-linked_to_mechanisms: []
+- detoxification
+linked_to_mechanisms:
+- antioxidant-buffering-of-phase-1-intermediates
+- oxidative-stress-from-toxicants
 linked_to_claims:
 - adaptogens-rebalance-hpa-axis
 - low-dhea-high-cortisol-indicates-adrenal-burnout
@@ -131,10 +146,23 @@ sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXy9b_KjJT2/
   quote: Pair iron with Vitamin C for better absorption
-version: 14
+- id: ifm-textbook-fig-3-5-liver-detox-pathways
+  location: Antioxidant Protective Nutrients and Plant Derivatives panel
+  quote: Ascorbic acid (Vit C)
+version: 15
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-05-16'
 updated_by: shivani
 aliases:
 - vitamin-c-ascorbic-acid
 - vitamin c 1-2g
+contraindications:
+  conditions:
+  - very high doses contraindicated in oxalate kidney stone history
+  - G6PD deficiency — high doses may cause hemolysis
+  medications: []
+  life_stages: []
+interactions:
+  with_medications: []
+  with_supplements: []
+  with_foods: []

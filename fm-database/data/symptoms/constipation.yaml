@@ -28,11 +28,24 @@ aliases:
 - difficulty pooping
 category: gi
 severity: common
-description: Infrequent or difficult bowel movements associated with low-fibre diet,
-  dysbiosis, impaired motility, and insufficient water intake. May also occur with
-  iron supplementation.
-when_to_refer: Refer if chronic (>3 months), accompanied by blood, or significantly
-  worsening despite dietary changes.
+description: 'Infrequent (fewer than one per day in a coaching/FM frame), hard,
+
+  or difficult-to-pass bowel movements. Highly relevant to detoxification
+
+  because the bile-to-stool route is a primary elimination pathway for
+
+  Phase-2-conjugated toxicants; constipation prolongs gut transit time,
+
+  enabling beta-glucuronidase deconjugation and toxicant reabsorption.
+
+  '
+when_to_refer: 'Refer for new-onset constipation in adults over 50, blood in stool,
+
+  unexplained weight loss, severe abdominal pain, or constipation
+
+  unresponsive to fiber, hydration, and lifestyle measures.
+
+  '
 linked_to_topics:
 - perimenopause
 - estrobolome
@@ -67,6 +80,8 @@ linked_to_topics:
 - hormonal-nutrition-foundations
 - gut-health-fodmap-sibo
 - modern-diet-systemic-dysfunction
+- detoxification
+- toxin-load
 linked_to_mechanisms:
 - estrogen-enterohepatic-recirculation
 - microbial-diversity-decline
@@ -93,6 +108,8 @@ linked_to_mechanisms:
 - altered-gi-motility
 - colonic-peristalsis-and-fibre-motility
 - sibo-fermentation
+- phase-3-elimination
+- beta-glucuronidase-deconjugation
 sources:
 - id: thurlow-microbiome-mondays
   location: Session 6 — Bowel Patterns
@@ -162,7 +179,10 @@ sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXWoFj6jGCY/
   quote: Low-fiber diets starve the microbiome → constipation + estrogen imbalance
-version: 22
+- id: minich-detox-basics-fmca-transcript
+  location: Constipation and elimination section
+  quote: one in three people suffer from some degree of constipation
+version: 23
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-05-16'
 updated_by: shivani

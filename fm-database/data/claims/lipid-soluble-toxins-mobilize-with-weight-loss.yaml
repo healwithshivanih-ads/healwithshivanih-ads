@@ -1,0 +1,66 @@
+slug: lipid-soluble-toxins-mobilize-with-weight-loss
+statement: 'Lipid-soluble toxicants stored in adipose tissue can be mobilized
+
+  into circulation during rapid weight loss, fasting, or significant
+
+  fat loss — temporarily raising effective toxin load. Weight-loss
+
+  protocols in clients with known high body burden should pace fat
+
+  loss and concurrently support Phase 1, 2, and 3 capacity.
+
+  '
+evidence_tier: strong
+rationale: 'Adipose tissue is the primary depot for nonpolar toxicants
+
+  (organochlorines, PCBs, dioxins, certain flame retardants, lipid-
+
+  soluble pesticides). Lipolysis during caloric deficit releases
+
+  these compounds into circulation, raising serum levels until they
+
+  are biotransformed or redistributed. Documented in human weight-loss
+
+  cohorts and bariatric surgery follow-up studies.
+
+  '
+coaching_translation: 'When you lose fat, you also release whatever toxins have been
+
+  stored in that fat over the years. Most of the time the body
+
+  handles this fine, but if someone has a high exposure history or
+
+  symptoms of sluggish detox, rapid weight loss can trigger fatigue,
+
+  headaches, or brain fog. Pacing weight loss and supporting all
+
+  three detox phases — bowel regularity, hydration, sweating, sleep,
+
+  protein and plants — helps the body keep up.
+
+  '
+caveats:
+- This is not a reason to avoid weight loss in clients who need it.
+- Relevant to keep in mind for clients reporting unexpected symptoms during a fat-loss
+  phase.
+out_of_scope_notes: 'Specific weight-loss protocols and bariatric medical management
+  are
+
+  outside coaching scope.
+
+  '
+linked_to_topics:
+- toxin-load
+- detoxification
+linked_to_mechanisms:
+- lipid-soluble-toxin-adipose-storage
+linked_to_supplements: []
+sources:
+- id: ifm-textbook-fig-3-5-liver-detox-pathways
+  location: Toxin storage annotation (left side of diagram)
+  quote: Lipid-soluble (nonpolar) toxins are stored in adipose (fat) tissue and contribute
+    to increased / mobilized toxin load with weight loss
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

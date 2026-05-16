@@ -1,0 +1,55 @@
+slug: silymarin
+display_name: Silymarin (Milk Thistle Extract)
+category: herb
+forms_available:
+- capsule
+- tablet
+- liquid
+typical_dose_range: {}
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: optional
+notes_for_coach: 'Source (IFM Fig 3.5) names silymarin as an antioxidant protective
+
+  plant derivative buffering Phase 1 intermediates but does NOT give
+
+  dosing. Silymarin is the standardized flavonoid complex (silybin,
+
+  silydianin, silychristin) from Silybum marianum (milk thistle seed).
+
+  Hepatoprotective via glutathione preservation, membrane stabilization,
+
+  and antioxidant activity. Standardized extracts (typically 70-80%
+
+  silymarin) are preferred; bioavailability is improved with
+
+  phosphatidylcholine-complexed forms (silybin-phytosome).
+
+  '
+contraindications:
+  conditions:
+  - ragweed-family allergy — possible cross-reactivity
+  - may alter CYP3A4 and CYP2C9 metabolism — coordinate with prescriber if client
+    is on metabolized medications
+  medications: []
+  life_stages: []
+interactions:
+  with_medications: []
+  with_supplements: []
+  with_foods: []
+evidence_tier: strong
+linked_to_topics:
+- detoxification
+linked_to_mechanisms:
+- antioxidant-buffering-of-phase-1-intermediates
+- phase-1-biotransformation
+sources:
+- id: ifm-textbook-fig-3-5-liver-detox-pathways
+  location: Antioxidant Protective Nutrients and Plant Derivatives panel
+  quote: Silymarin
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

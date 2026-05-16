@@ -1,0 +1,52 @@
+slug: exogenous-toxicant-load
+display_name: Exogenous Toxicant Load (Exotoxins)
+aliases:
+- external toxin burden
+- environmental toxicant load
+- exotoxin burden
+category: other
+summary: 'Exotoxins are toxicants entering the body from outside sources:
+
+  prescription and recreational drugs, agricultural chemicals (pesticides,
+
+  herbicides, fungicides), food additives and preservatives, household
+
+  products, environmental pollutants and contaminants, and microbial
+
+  toxins (mycotoxins, bacterial exotoxins from food). All converge on
+
+  the same hepatic Phase 1 / Phase 2 / Phase 3 pathways as endogenous
+
+  toxins, contributing to total system load. The exposure mapping
+
+  framework in FM coaching centers on identifying and reducing avoidable
+
+  exotoxin sources.
+
+  '
+upstream_drivers:
+- drug-exposure
+- agricultural-chemical-exposure
+- food-additive-exposure
+- household-chemical-exposure
+- environmental-pollutant-exposure
+- microbial-toxin-exposure
+downstream_effects:
+- phase-1-biotransformation
+- phase-2-conjugation
+related_mechanisms:
+- endogenous-toxin-load
+- chemical-cocktail-synergy
+linked_to_topics:
+- toxin-load
+- exposome
+evidence_tier: strong
+sources:
+- id: ifm-textbook-fig-3-5-liver-detox-pathways
+  location: Exotoxins panel
+  quote: 'Exotoxins: Drugs (prescription, OTC, recreational), Agricultural chemicals,
+    Food additives, Household, Pollutants/contaminants, Microbial'
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

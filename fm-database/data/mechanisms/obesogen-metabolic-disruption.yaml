@@ -1,0 +1,43 @@
+slug: obesogen-metabolic-disruption
+display_name: Obesogen Effect on Metabolism
+aliases:
+- obesogen exposure
+- metabolic disruptor effect
+category: endocrine
+summary: 'Certain endocrine-disrupting chemicals — termed "obesogens" — alter
+
+  adipocyte biology, beta-cell function, and insulin signaling, promoting
+
+  increased fat mass, reduced lean mass, and predisposing to type 2
+
+  diabetes. Common obesogens include BPA, phthalates, certain pesticides,
+
+  PFAS, and air pollutants. Provides a toxicant root-cause framing for
+
+  unexplained body-composition changes resistant to diet and exercise.
+
+  '
+upstream_drivers:
+- bpa-endocrine-disruption
+- phthalate-exposure
+- air-pollutant-exposure
+downstream_effects:
+- insulin-resistance
+- increased-adiposity
+related_mechanisms:
+- bpa-endocrine-disruption
+- endocrine-disruption
+linked_to_topics:
+- endocrine-disruption
+- insulin-resistance
+- toxin-load
+evidence_tier: plausible_emerging
+sources:
+- id: minich-detox-basics-fmca-transcript
+  location: Obesogens section
+  quote: endocrine disruptors are having some impact on metabolism and changing up
+    body composition
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

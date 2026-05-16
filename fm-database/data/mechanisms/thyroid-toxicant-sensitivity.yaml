@@ -1,0 +1,41 @@
+slug: thyroid-toxicant-sensitivity
+display_name: Thyroid as Sentinel Organ for Toxicants
+aliases:
+- thyroid first-responder toxicity
+- thyroid sentinel organ
+category: endocrine
+summary: 'The thyroid is among the earliest organs to register toxicant exposure
+
+  ("sentinel organ"). Endocrine disruptors — particularly BPA, phthalates,
+
+  perchlorate, and certain flame retardants — impair thyroid hormone
+
+  synthesis, transport, receptor binding, and peripheral T4-to-T3
+
+  conversion. Individuals with existing thyroid disease (Hashimoto''s,
+
+  hypothyroidism) appear more susceptible to toxicant-driven worsening.
+
+  '
+upstream_drivers:
+- bpa-endocrine-disruption
+- endocrine-disruption
+downstream_effects:
+- hypothyroid-symptoms
+- autoimmune-thyroid-flare
+related_mechanisms:
+- bpa-endocrine-disruption
+linked_to_topics:
+- endocrine-disruption
+- hypothyroidism
+- autoimmune-thyroid-disease
+evidence_tier: plausible_emerging
+sources:
+- id: minich-detox-basics-fmca-transcript
+  location: BPA and thyroid section
+  quote: the thyroid is the sentinel organ, meaning that it is one of the first-line
+    responders to toxicity
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

@@ -1,0 +1,58 @@
+slug: b-complex
+display_name: B-Complex (B-Vitamin Complex)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+- liquid
+typical_dose_range: {}
+timing_options:
+- with_breakfast
+- with_lunch
+take_with_food: required
+notes_for_coach: 'Source (IFM Fig 3.5) names riboflavin (B2), niacin (B3), pyridoxine
+
+  (B6), folate, and vitamin B12 as Phase 1 cofactors but does NOT
+
+  give dosing. Confirm dose ranges from peer-reviewed source or
+
+  clinical guideline before client use. Methylated forms (methylfolate,
+
+  methylcobalamin, P5P) are often preferred in FM contexts,
+
+  especially for clients with MTHFR or other one-carbon-cycle variants.
+
+  Activated B6 (P5P) was used in the previous client case at 25mg/day.
+
+  Best taken earlier in the day — B vitamins can be mildly stimulating.
+
+  Always check for biotin if testing thyroid or hormone immunoassays,
+
+  as biotin interferes with these labs.
+
+  '
+contraindications:
+  conditions:
+  - high-dose biotin interferes with thyroid and hormone immunoassays — discontinue
+    before lab draw per ordering clinician
+  medications: []
+  life_stages: []
+interactions:
+  with_medications: []
+  with_supplements: []
+  with_foods: []
+evidence_tier: strong
+linked_to_topics:
+- detoxification
+linked_to_mechanisms:
+- phase-1-b-vitamin-cofactor-dependency
+- phase-1-biotransformation
+sources:
+- id: ifm-textbook-fig-3-5-liver-detox-pathways
+  location: Phase I — Nutrients Used panel
+  quote: Riboflavin (Vit B2), Niacin (Vit B3), Pyridoxine (Vit B6), Folic acid, Vitamin
+    B12
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

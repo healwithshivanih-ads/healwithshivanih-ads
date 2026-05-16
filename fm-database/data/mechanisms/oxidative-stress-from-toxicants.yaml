@@ -1,0 +1,46 @@
+slug: oxidative-stress-from-toxicants
+display_name: Toxicant-Induced Oxidative Stress
+aliases:
+- reactive intermediate oxidative damage
+- Phase 1 oxidative stress
+category: metabolic
+summary: 'Phase 1 biotransformation produces highly reactive intermediates that,
+
+  if not promptly conjugated by Phase 2, generate reactive oxygen species
+
+  and damage cellular DNA, proteins, and lipids. Toxicants also directly
+
+  induce oxidative stress via mitochondrial disruption and glutathione
+
+  depletion. A primary mechanism linking chronic toxicant exposure to
+
+  inflammation, accelerated aging, and chronic disease risk.
+
+  '
+upstream_drivers:
+- phase-1-biotransformation
+- reactive-intermediate-formation
+- glutathione-depletion
+downstream_effects:
+- chronic-inflammation
+- dna-damage
+- mitochondrial-toxin-disruption
+related_mechanisms:
+- phase-1-biotransformation
+- balanced-detoxification
+linked_to_topics:
+- detoxification
+- toxin-load
+evidence_tier: strong
+sources:
+- id: minich-detox-basics-fmca-transcript
+  location: Activated intermediate section
+  quote: Sometimes we see heightened oxidative stress with that activated intermediate
+- id: ifm-textbook-fig-3-5-liver-detox-pathways
+  location: Reactive Oxygen Intermediates / Superoxide / Free Radicals loop
+  quote: Reactive Oxygen Intermediates → Superoxide → Free Radicals → Secondary Tissue
+    Damage
+version: 2
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

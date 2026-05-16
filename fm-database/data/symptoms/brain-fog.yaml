@@ -1,0 +1,40 @@
+slug: brain-fog
+display_name: Brain Fog
+aliases:
+- cognitive cloudiness
+- mental fogginess
+- difficulty concentrating
+category: neurological
+severity: common
+description: 'Subjective sense of impaired clarity, slowed thinking, poor recall,
+
+  and difficulty concentrating. Common across many FM presentations
+
+  including toxin-load patterns, dysbiosis, blood-sugar dysregulation,
+
+  thyroid dysfunction, perimenopause, post-viral states, and chronic
+
+  inflammation.
+
+  '
+when_to_refer: 'Refer to clinician if brain fog is sudden-onset, accompanied by
+
+  neurological deficits (weakness, vision change, speech change), follows
+
+  head injury, or is severe enough to impair daily function.
+
+  '
+linked_to_topics:
+- toxin-load
+- detoxification
+linked_to_mechanisms:
+- mitochondrial-toxin-disruption
+- oxidative-stress-from-toxicants
+sources:
+- id: minich-detox-basics-fmca-transcript
+  location: Conditions associated with detox issues section
+  quote: complaining of brain fog… anxiety… issues with blood sugar… immune issues
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

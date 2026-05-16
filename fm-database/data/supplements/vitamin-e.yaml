@@ -1,5 +1,5 @@
 slug: vitamin-e
-display_name: Vitamin E
+display_name: Vitamin E (Mixed Tocopherols)
 category: vitamin
 forms_available:
 - capsule
@@ -22,6 +22,7 @@ linked_to_topics:
 - dental-amalgam-mercury
 - metabolic-detoxification
 - pancreatic-insufficiency
+- detoxification
 linked_to_claims:
 - vitamin-e-antioxidant-nafld
 - vitamin-e-antioxidant-gi-protection
@@ -30,18 +31,32 @@ linked_to_claims:
 - gut-lining-repair-nutrients-zinc-vitamins-glutamine
 - vitamin-e-antioxidant-protection-phase-i-detox
 - nutritional-deficiencies-zinc-copper-vitamins-impair-enzyme-production
-notes_for_coach: Fat-soluble antioxidant at risk of deficiency in fat malabsorption
-  states. Also supports reduction of oxidative stress that can damage pancreatic tissue.
-  Monitor levels with clinician.
+notes_for_coach: 'Source (IFM Fig 3.5) names tocopherols as an antioxidant protective
+
+  nutrient buffering Phase 1 reactive intermediates but does NOT give
+
+  dosing. Fat-soluble — take with a meal containing fat. Mixed
+
+  tocopherols (alpha + beta + gamma + delta) are preferred over
+
+  alpha-tocopherol alone, which can suppress the others at high
+
+  doses. Synthetic dl-alpha-tocopherol is less bioactive than natural
+
+  d-alpha-tocopherol.
+
+  '
 notes_for_client: Vitamin E is an antioxidant that helps protect pancreatic cells
   from damage. Like vitamin A, it requires adequate fat digestion to be absorbed properly.
-evidence_tier: plausible_emerging
+evidence_tier: strong
 typical_dose_range:
   capsule:
     min: 200
     max: 400
     unit: mg
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- antioxidant-buffering-of-phase-1-intermediates
+- oxidative-stress-from-toxicants
 sources:
 - id: vitaone-liver-detox-cheatsheet
   location: Liver Disease Cheatsheet — NAFLD
@@ -63,9 +78,22 @@ sources:
   location: Page 3 - Supplement Table
   quote: Vitamin E (Mixed Tocopherols) - Antioxidant, skin & heart health - 100–400
     IU/day - With meals
-version: 6
+- id: ifm-textbook-fig-3-5-liver-detox-pathways
+  location: Antioxidant Protective Nutrients and Plant Derivatives panel
+  quote: Tocopherols (Vit E)
+version: 7
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-05-16'
 updated_by: shivani
 aliases:
 - vitamin-e-mixed-tocopherols
+contraindications:
+  conditions:
+  - high doses (>400 IU/day) may increase bleeding risk with anticoagulants or antiplatelet
+    medications — coordinate with prescriber
+  medications: []
+  life_stages: []
+interactions:
+  with_medications: []
+  with_supplements: []
+  with_foods: []

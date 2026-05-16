@@ -1,0 +1,51 @@
+slug: sweat-is-effective-toxicant-excretion-route
+statement: 'Sweating — via sauna, intentional heat exposure, or exercise — is a
+
+  meaningful route of toxicant excretion. Clients who do not sweat well
+
+  may have higher net toxin load unless they compensate through other
+
+  elimination routes.
+
+  '
+evidence_tier: plausible_emerging
+rationale: 'Small studies have documented excretion of heavy metals, BPA,
+
+  phthalates, and certain persistent organic pollutants in sweat.
+
+  Quantitative significance vs. urinary and biliary excretion remains
+
+  debated, but sweat appears to be a non-trivial supplementary route,
+
+  especially for certain lipophilic toxicants.
+
+  '
+coaching_translation: 'A regular sweat — sauna, hot yoga, brisk walk on a warm day
+  — is
+
+  one of the simplest detox supports. If you notice you rarely sweat,
+
+  it''s worth flagging; we want to make sure the other exits (bowels,
+
+  urine) are working well to compensate.
+
+  '
+caveats:
+- Sauna access in India varies; outdoor heat exposure or hot-yoga can substitute.
+- Contraindicated or modified for cardiac disease, pregnancy, dysautonomia, and certain
+  medications — defer to clinician.
+- Replace fluids and electrolytes after heavy sweating.
+out_of_scope_notes: ''
+linked_to_topics:
+- detoxification
+linked_to_mechanisms:
+- phase-3-elimination
+linked_to_supplements: []
+sources:
+- id: minich-detox-basics-fmca-transcript
+  location: Excretion routes section
+  quote: sweat is such an effective way to excrete
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

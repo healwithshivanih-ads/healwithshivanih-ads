@@ -76,27 +76,34 @@ mechanism.category:
 
 symptom.category:
   gi | musculoskeletal | neurological | mood | sleep | skin | hormonal |
-  metabolic | constitutional | cardiovascular | urinary | other
+  womens_health | mens_health | metabolic | constitutional |
+  cardiovascular | urinary | other
 
 symptom.severity:
   common | concerning | red_flag
 
 supplement.category:
-  vitamin | mineral | amino_acid | herb | enzyme | probiotic |
-  nutraceutical | other
+  mineral | vitamin | herb | amino_acid | probiotic | fatty_acid | enzyme | other
+  # No 'nutraceutical' — use 'other' for general nutraceuticals.
 
 supplement.forms_available (each list entry):
-  capsule | tablet | powder | liquid | gummy | sublingual | topical | whole_food
+  capsule | tablet | powder | liquid | gummy | lozenge | whole_food
+  # No 'sublingual' or 'topical' — use 'lozenge' for sublingual; topicals
+  # don't fit the model. No 'softgel' — use 'capsule'.
 
 supplement.timing_options (each list entry):
-  early_morning | with_breakfast | mid_morning | with_lunch | afternoon |
-  with_dinner | bedtime | empty_stomach | anytime
+  on_waking | on_empty_stomach | morning | mid_morning | with_breakfast |
+  with_lunch | mid_afternoon | with_dinner | evening | bedtime
+  # No 'early_morning' (use 'on_waking' or 'morning'). No 'empty_stomach'
+  # bare (use 'on_empty_stomach'). No 'anytime' (pick the closest slot).
 
 supplement.take_with_food:
-  required | optional | empty_stomach | anytime
+  required | optional | avoid
+  # 'avoid' replaces the old 'empty_stomach'. No 'anytime' — use 'optional'.
 
 DoseUnit (for typical_dose_range):
-  mg | mcg | g | IU | billion_CFU | tablespoons | drops
+  mg | mcg | g | IU | ml | drops | capsules | tablets | scoops |
+  teaspoons | tablespoons | billion_CFU
 
 ──────────────────────────────────────────────────────────────────────
 5. EXACT YAML SHAPES (copy these as templates)
@@ -295,12 +302,13 @@ notes_for_coach: |
   mcg/day is the safe upper limit. Brazil nuts (1-2 daily) are a food-first
   alternative; a single Brazil nut ≈ 70-90 mcg selenium.
 contraindications:
-  - high-dose selenium with concurrent levothyroxine — coordinate timing with
-    prescriber
+  conditions: []                    # list of strings; e.g. ["hashimoto's"]
+  medications: []                   # list of strings; medication names
+  life_stages: []                   # list of strings; e.g. ["pregnancy","lactation"]
 interactions:
-  medications: []
-  supplements: []
-  foods: []
+  with_medications: []              # ← prefix is \`with_\`, not bare \`medications:\`
+  with_supplements: []              # ← prefix is \`with_\`
+  with_foods: []                    # ← prefix is \`with_\`
 evidence_tier: strong
 linked_to_topics:
   - hypothyroidism

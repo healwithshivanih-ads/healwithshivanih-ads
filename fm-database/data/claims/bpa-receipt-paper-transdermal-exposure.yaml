@@ -1,0 +1,48 @@
+slug: bpa-receipt-paper-transdermal-exposure
+statement: 'Bisphenol A is absorbed transdermally from thermal receipt paper,
+
+  and hand sanitizer use increases this absorption — making receipt
+
+  handling a meaningful, often overlooked, daily BPA exposure source.
+
+  '
+evidence_tier: strong
+rationale: 'Thermal receipt paper uses BPA (or BPS analogues) as a developer in
+
+  free, unbound form on the paper surface. Skin penetration is
+
+  significantly enhanced by alcohol-based hand sanitizers, which act
+
+  as transdermal permeation enhancers. Hand-to-mouth transfer (food
+
+  handling after touching receipts) adds an oral exposure route.
+
+  '
+coaching_translation: 'An easy invisible exposure: those glossy paper receipts at
+  every
+
+  store contain BPA on the surface. Hand sanitizer right before
+
+  handling one actually makes your skin absorb more of it. Practical
+
+  swaps: decline the receipt, ask for email receipts, handle by an
+
+  edge, or wash hands before eating after shopping.
+
+  '
+caveats: []
+out_of_scope_notes: ''
+linked_to_topics:
+- endocrine-disruption
+- toxin-load
+linked_to_mechanisms:
+- bpa-endocrine-disruption
+linked_to_supplements: []
+sources:
+- id: minich-detox-basics-fmca-transcript
+  location: BPA exposure routes section
+  quote: hand sanitizer… can even enhance the penetration of bisphenol A
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

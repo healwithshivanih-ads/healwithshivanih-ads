@@ -1,0 +1,66 @@
+slug: endocrine-disruption
+display_name: Endocrine Disruption
+aliases:
+- endocrine disrupting chemicals
+- EDC exposure
+- xenoestrogen exposure
+- hormone disruptors
+summary: 'Endocrine-disrupting chemicals (EDCs) are exogenous substances —
+
+  notably bisphenol A (BPA), phthalates, parabens, certain pesticides
+
+  and air pollutants — that mimic, block, or alter endogenous hormone
+
+  signaling. Linked to metabolic dysfunction (obesogen effect, beta-cell
+
+  changes, type 2 diabetes risk), reproductive issues (fertility, lower
+
+  sperm concentration and motility, menstrual irregularities, PCOS,
+
+  perimenopause symptoms), thyroid dysfunction (the "sentinel organ"),
+
+  and cardiovascular and inflammatory disease. Fetal development and
+
+  puberty are the most sensitive windows of exposure.
+
+  '
+common_symptoms: []
+red_flags: []
+related_topics:
+- toxin-load
+- exposome
+- hypothyroidism
+- pcos
+- perimenopause
+- infertility
+key_mechanisms:
+- bpa-endocrine-disruption
+- obesogen-metabolic-disruption
+- thyroid-toxicant-sensitivity
+coaching_scope_notes: 'Coach educates on common EDC sources (thermal receipt paper,
+  plastics,
+
+  food packaging, personal care, fragrance, household cleaners, lawn
+
+  chemicals) and avoidance strategies. Particularly relevant when client
+
+  presents with PCOS, perimenopause symptoms, low fertility, thyroid
+
+  symptoms, or unexplained metabolic shifts.
+
+  '
+clinician_scope_notes: 'Diagnosis and management of endocrine disease, fertility workup,
+  and
+
+  EDC biomarker testing belong to the clinician.
+
+  '
+evidence_tier: strong
+sources:
+- id: minich-detox-basics-fmca-transcript
+  location: Endocrine-disrupting chemicals section
+  quote: endocrine-disrupting chemicals… anytime there is a hormone-related issue
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

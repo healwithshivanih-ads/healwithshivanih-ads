@@ -1,0 +1,73 @@
+slug: detoxification
+display_name: Detoxification
+aliases:
+- biotransformation
+- detoxication
+- exposome elimination
+summary: 'Detoxification is the body''s process of metabolizing and eliminating
+
+  toxins — both endogenous (hormones, metabolic byproducts) and exogenous
+
+  (toxicants from food, water, air, personal care, household products).
+
+  Active, energy-dependent, nutrient-dependent process occurring in liver,
+
+  gut, kidneys, skin, lungs, and blood-brain barrier via three phases:
+
+  Phase 1 (functionalization, primarily CYP450), Phase 2 (conjugation),
+
+  Phase 3 (elimination via bile, urine, sweat, stool). Balanced Phase 1
+
+  and Phase 2 activity is critical — unbalanced Phase 1 generates
+
+  reactive intermediates that damage DNA and proteins.
+
+  '
+common_symptoms:
+- fatigue
+- brain-fog
+- cold-intolerance
+- constipation
+red_flags: []
+related_topics:
+- toxin-load
+- exposome
+- endocrine-disruption
+- estrobolome
+key_mechanisms:
+- phase-1-biotransformation
+- phase-2-conjugation
+- phase-3-elimination
+- balanced-detoxification
+- mitochondrial-toxin-disruption
+coaching_scope_notes: 'Coach educates on toxicant exposure sources (food, water, air,
+  personal
+
+  care, household), avoidance strategies, and supportive nutrition
+
+  (protein + plants, rainbow phytochemicals, hydration, fiber) and
+
+  lifestyle (sweat via sauna or movement, sleep, stress reduction).
+
+  Coach does NOT prescribe detox protocols for diagnosed disease,
+
+  recommend chelation, or interpret toxicant lab panels.
+
+  '
+clinician_scope_notes: 'Clinical detox protocols, heavy-metal chelation, toxicant
+  lab
+
+  interpretation (urine porphyrins, DMSA-provoked metals, mycotoxin
+
+  panels) and pharmaceutical interaction management belong to clinician.
+
+  '
+evidence_tier: strong
+sources:
+- id: minich-detox-basics-fmca-transcript
+  location: Introduction and Learning Objectives
+  quote: detoxification basics for health coaches… toxin load and how to reduce it
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

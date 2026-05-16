@@ -1,0 +1,64 @@
+slug: unbalanced-phase-1-generates-reactive-intermediates
+statement: 'Upregulating Phase 1 biotransformation without parallel Phase 2
+
+  capacity generates a buildup of reactive activated intermediates
+
+  that drive oxidative stress, DNA damage, and inflammation —
+
+  potentially more harmful than the parent toxicant.
+
+  '
+evidence_tier: strong
+rationale: 'Phase 1 (CYP450) reactions produce electrophilic intermediates
+
+  intended to be immediately conjugated by Phase 2. When Phase 2
+
+  is rate-limited (by low protein, glutathione depletion, methyl-donor
+
+  deficiency, gene variants, or simply not being induced), these
+
+  intermediates accumulate, react with cellular DNA, lipids, and
+
+  proteins, and amplify oxidative damage. Well-established in
+
+  pharmacology and toxicology.
+
+  '
+coaching_translation: 'Pushing Phase 1 hard without supporting Phase 2 is like flooring
+
+  the accelerator with the parking brake on — you don''t go faster,
+
+  you just create damage. This is why "detox" approaches that focus
+
+  only on stimulating the liver, without supplying the protein, sulfur,
+
+  and plant compounds Phase 2 needs, can leave people feeling worse.
+
+  '
+caveats:
+- Coach does not assess Phase 1/2 imbalance from labs — that is clinician territory.
+  Coach focuses on dietary breadth.
+out_of_scope_notes: 'Interpretation of organic-acid or comprehensive detox panels
+  is
+
+  outside coaching scope.
+
+  '
+linked_to_topics:
+- detoxification
+- toxin-load
+linked_to_mechanisms:
+- phase-1-biotransformation
+- phase-2-conjugation
+- balanced-detoxification
+- oxidative-stress-from-toxicants
+linked_to_supplements: []
+sources:
+- id: minich-detox-basics-fmca-transcript
+  location: Balanced detoxification section
+  quote: when we upregulate a lot of Phase 1, and we don't keep up on the side of
+    Phase 2, then we have the proliferation of a lot of these highly toxic compounds
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

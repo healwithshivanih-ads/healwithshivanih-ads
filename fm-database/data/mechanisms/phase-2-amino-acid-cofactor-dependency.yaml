@@ -1,0 +1,48 @@
+slug: phase-2-amino-acid-cofactor-dependency
+display_name: Phase 2 Amino Acid and Sulfur Cofactor Dependency
+aliases:
+- Phase 2 conjugating substrates
+- amino acid conjugation cofactors
+- sulfur amino acid detox dependency
+category: metabolic
+summary: 'Phase 2 conjugation reactions consume specific amino-acid and
+
+  sulfur-containing substrates as their conjugating groups: glycine,
+
+  taurine, glutamine, N-acetylcysteine (NAC), cysteine, and methionine.
+
+  Each conjugation pathway has its own substrate — sulfation uses
+
+  sulfate (from cysteine and methionine), glutathione conjugation
+
+  uses glutathione (synthesized from cysteine, glycine, glutamate),
+
+  amino acid conjugation uses glycine and taurine, methylation uses
+
+  methionine-derived methyl groups. Low dietary protein or chronically
+
+  high toxicant load can deplete these substrates and rate-limit
+
+  Phase 2.
+
+  '
+upstream_drivers:
+- protein-amino-acid-availability
+- sulfur-amino-acid-intake
+downstream_effects:
+- phase-2-conjugation
+related_mechanisms:
+- phase-2-conjugation
+- phase-1-b-vitamin-cofactor-dependency
+linked_to_topics:
+- detoxification
+evidence_tier: strong
+sources:
+- id: ifm-textbook-fig-3-5-liver-detox-pathways
+  location: Phase II — Nutrients Used panel
+  quote: 'Nutrients Used: Glycine, Taurine, Glutamine, N-acetylcysteine, Cysteine,
+    Methionine'
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

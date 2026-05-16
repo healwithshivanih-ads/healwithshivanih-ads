@@ -1,0 +1,46 @@
+slug: n-acetylcysteine
+display_name: N-Acetylcysteine (NAC)
+category: amino_acid
+forms_available:
+- capsule
+- tablet
+typical_dose_range: {}
+timing_options:
+- on_empty_stomach
+- with_breakfast
+take_with_food: avoid
+notes_for_coach: 'Cysteine donor for glutathione synthesis; supports Phase 2
+
+  conjugation. Source (Minich transcript) names cysteine as an
+
+  endogenous antioxidant but does NOT give NAC dosing. Confirm dose
+
+  from peer-reviewed source before client use. Has a sulfurous odor;
+
+  some clients tolerate it poorly. NAC supplement availability varies
+
+  by jurisdiction (regulatory status has shifted in the US).
+
+  '
+contraindications:
+  conditions: []
+  medications: []
+  life_stages: []
+interactions:
+  with_medications: []
+  with_supplements: []
+  with_foods: []
+evidence_tier: plausible_emerging
+linked_to_topics:
+- detoxification
+linked_to_mechanisms:
+- phase-2-conjugation
+sources:
+- id: minich-detox-basics-fmca-transcript
+  location: Antioxidant nutrients section
+  quote: upregulating endogenous antioxidants like glutathione, cysteine, coenzyme
+    Q10, lipoic acid
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

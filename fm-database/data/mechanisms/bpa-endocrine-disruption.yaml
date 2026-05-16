@@ -1,0 +1,48 @@
+slug: bpa-endocrine-disruption
+display_name: BPA Endocrine Disruption
+aliases:
+- bisphenol A hormone mimicry
+- BPA xenoestrogen effect
+category: endocrine
+summary: 'Bisphenol A binds estrogen receptors and disrupts hormonal signaling,
+
+  metabolism, and cellular communication. Exposure routes include thermal
+
+  receipt paper (transdermal absorption, enhanced by hand sanitizer),
+
+  food and beverage packaging, plastic containers, and canned-food
+
+  linings. Higher urinary BPA is associated with type 2 diabetes,
+
+  obesity, cardiovascular disease, hepatic inflammation, certain
+
+  cancers, thyroid dysfunction, and infertility (both sexes).
+
+  BPA is relatively rapidly metabolized (days) — chronic exposure
+
+  rather than persistence drives the body burden.
+
+  '
+upstream_drivers:
+- thermal-receipt-paper-exposure
+- plastic-food-packaging-exposure
+downstream_effects:
+- endocrine-disruption
+- obesogen-metabolic-disruption
+- thyroid-toxicant-sensitivity
+related_mechanisms:
+- obesogen-metabolic-disruption
+- thyroid-toxicant-sensitivity
+linked_to_topics:
+- endocrine-disruption
+- toxin-load
+evidence_tier: strong
+sources:
+- id: minich-detox-basics-fmca-transcript
+  location: BPA section
+  quote: Bisphenol A is an endocrine disruptor… can disrupt hormones. It can look
+    like a hormone to the body
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

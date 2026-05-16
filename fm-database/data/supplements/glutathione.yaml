@@ -1,0 +1,53 @@
+slug: glutathione
+display_name: Glutathione (Reduced / GSH)
+category: other
+forms_available:
+- capsule
+- liquid
+- lozenge
+typical_dose_range: {}
+timing_options:
+- on_empty_stomach
+- with_breakfast
+take_with_food: avoid
+notes_for_coach: 'Source (Minich transcript) names glutathione as a primary Phase
+  2
+
+  conjugating substrate and endogenous antioxidant but does NOT give
+
+  dosing. Do not recommend doses from this entry alone — confirm dose
+
+  range from a peer-reviewed source or clinical guideline before client
+
+  use. Common forms include liposomal liquid, S-acetyl glutathione,
+
+  and sublingual; oral reduced GSH absorption is debated. Often
+
+  preferred as N-acetylcysteine (NAC) precursor for systemic GSH
+
+  support — see NAC entry.
+
+  '
+contraindications:
+  conditions: []
+  medications: []
+  life_stages: []
+interactions:
+  with_medications: []
+  with_supplements: []
+  with_foods: []
+evidence_tier: strong
+linked_to_topics:
+- detoxification
+linked_to_mechanisms:
+- phase-2-conjugation
+- oxidative-stress-from-toxicants
+sources:
+- id: minich-detox-basics-fmca-transcript
+  location: Phase 2 enzymes section
+  quote: we have a couple of different ways to get glutathione. That tells me that
+    glutathione is pretty important
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

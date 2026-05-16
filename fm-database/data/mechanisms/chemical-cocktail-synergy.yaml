@@ -1,0 +1,41 @@
+slug: chemical-cocktail-synergy
+display_name: Chemical Cocktail (Synergistic Low-Dose Toxicant Effect)
+aliases:
+- toxicant synergy
+- low-dose mixture effect
+- chemical mixture toxicity
+category: other
+summary: 'Multiple toxicants present simultaneously at individually sub-threshold
+
+  doses can produce amplified or synergistic biological effects greater
+
+  than the sum of their parts. Explains why regulatory single-chemical
+
+  safety thresholds may underestimate real-world risk, since humans are
+
+  exposed to thousands of chemicals concurrently via food, water, air,
+
+  personal care, and household products.
+
+  '
+upstream_drivers:
+- toxicant-exposure
+- exposome
+downstream_effects:
+- oxidative-stress-from-toxicants
+- endocrine-disruption
+related_mechanisms:
+- bpa-endocrine-disruption
+linked_to_topics:
+- toxin-load
+- exposome
+evidence_tier: plausible_emerging
+sources:
+- id: minich-detox-basics-fmca-transcript
+  location: Chemical cocktail section
+  quote: multiple toxicants coming together even at low doses to create an amplified
+    or synergistic effect
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani
