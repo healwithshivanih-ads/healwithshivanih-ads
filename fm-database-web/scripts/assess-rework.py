@@ -282,13 +282,43 @@ def _build_context(client: dict, plan: dict | None, sessions: list[dict],
 
     if sessions:
         lines.append(f"# RECENT SESSIONS (last {len(sessions)})")
+        # Strip the audit tag prefixes ([session_type:…] [source:…]
+        # [template:…] [type:…]) AND the webhook envelope
+        # ("WhatsApp message from <name>...") so the AI sees the body the
+        # client actually wrote, not provenance metadata.
+        import re as _re
+        _TAG_PREFIX = _re.compile(r"^(\s*\[[^\]]+\]\s*)+", _re.MULTILINE)
+        _WA_ENVELOPE = _re.compile(
+            r"^WhatsApp message from [^\n]+\n+Received:[^\n]+\n+",
+            _re.IGNORECASE,
+        )
         for s in sessions[:5]:
+            complaints = s.get("presenting_complaints", "") or ""
             stype = "?"
-            if s.get("presenting_complaints", "").startswith("[session_type:"):
-                end = s["presenting_complaints"].find("]")
+            channel = ""
+            if complaints.startswith("[session_type:"):
+                end = complaints.find("]")
                 if end > 0:
-                    stype = s["presenting_complaints"][len("[session_type:"):end].strip()
-            lines.append(f"- {s.get('date', '?')} {stype}: {s.get('coach_notes', '')[:200]}")
+                    stype = complaints[len("[session_type:"):end].strip()
+            if "[source: whatsapp_webhook]" in complaints:
+                channel = " · CLIENT WHATSAPP"
+            elif "[source: whatsapp_outbound]" in complaints:
+                channel = " · coach WhatsApp out"
+
+            # Body extraction: prefer coach_notes (set by hand-typed
+            # forms); fall back to the stripped presenting_complaints
+            # (set by webhook). Webhook sessions almost always have
+            # empty coach_notes — that was the bug.
+            coach_notes = (s.get("coach_notes") or "").strip()
+            body = coach_notes
+            if not body:
+                body = _TAG_PREFIX.sub("", complaints)
+                body = _WA_ENVELOPE.sub("", body).strip()
+            body = body[:400]
+            if body:
+                lines.append(f"- {s.get('date', '?')} {stype}{channel}: {body}")
+            else:
+                lines.append(f"- {s.get('date', '?')} {stype}{channel}: (no body)")
 
     return "\n".join(lines)
 

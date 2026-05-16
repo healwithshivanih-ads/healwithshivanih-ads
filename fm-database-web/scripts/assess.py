@@ -33,6 +33,7 @@ from __future__ import annotations
 import base64
 import json
 import os
+import re
 import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
@@ -712,6 +713,28 @@ def main() -> int:
     # context for the model to "remember" the prior take without re-sending the
     # whole prior assessment.
     _SYNTH_TRIM = 1500
+    _MSG_TRIM = 1200  # client_message preview per session
+    # Strip leading [key: value] tag pairs (session_type, source, template,
+    # type) that webhook + outbound code prepends to presenting_complaints.
+    # We want the AI to read the actual message body, not the audit tags.
+    _TAG_PREFIX_RE = re.compile(r"^(\s*\[[^\]]+\]\s*)+", re.MULTILINE)
+    # Webhook-saved messages also carry a "WhatsApp message from <name>
+    # (<phone>) Received: <ts>" envelope before the body. Strip that too —
+    # the AI doesn't need provenance, just substance.
+    _WEBHOOK_ENVELOPE_RE = re.compile(
+        r"^WhatsApp message from [^\n]+\n+Received:[^\n]+\n+",
+        re.IGNORECASE,
+    )
+
+    def _extract_client_message(complaints: str) -> str:
+        if not complaints:
+            return ""
+        s = _TAG_PREFIX_RE.sub("", complaints).strip()
+        s = _WEBHOOK_ENVELOPE_RE.sub("", s).strip()
+        if len(s) > _MSG_TRIM:
+            s = s[:_MSG_TRIM].rstrip() + " …[truncated]"
+        return s
+
     prior = plan_storage.list_sessions(root, client.client_id)
     history_bundle = []
     for s in prior:
@@ -719,6 +742,28 @@ def main() -> int:
         notes = ai.get("synthesis_notes", "") or ""
         if len(notes) > _SYNTH_TRIM:
             notes = notes[:_SYNTH_TRIM].rstrip() + " …[truncated]"
+        # presenting_complaints carries either:
+        #  - the coach's notes from a full session, OR
+        #  - the raw WhatsApp body from a webhook-saved quick_note, OR
+        #  - the rendered template body from an outbound send.
+        # All three are useful to the AI between sessions — they're the
+        # only place the client's voice + new symptoms / blockers live
+        # for sessions that haven't been AI-analysed yet. Strip the audit
+        # tags before passing.
+        complaints_raw = (s.presenting_complaints or "") if hasattr(s, "presenting_complaints") else ""
+        client_message = _extract_client_message(complaints_raw)
+        # Tag the message channel so the AI can weight inbound client
+        # voice differently from outbound coach sends.
+        channel: str | None = None
+        if "[source: whatsapp_webhook]" in complaints_raw:
+            channel = "client_whatsapp"
+        elif "[source: whatsapp_outbound]" in complaints_raw:
+            channel = "coach_whatsapp"
+        elif "[source: pre_session_brief]" in complaints_raw:
+            channel = "coach_notes"
+        elif client_message and not s.selected_symptoms and not s.selected_topics:
+            channel = "coach_notes"
+
         history_bundle.append({
             "session_id": s.session_id,
             "date": s.date.isoformat(),
@@ -731,6 +776,8 @@ def main() -> int:
                 for sp in (ai.get("supplement_suggestions") or [])
             ],
             "synthesis_notes": notes,
+            "client_message": client_message,
+            "channel": channel,
         })
 
     # Calculate days_since_last_prescription from history_bundle

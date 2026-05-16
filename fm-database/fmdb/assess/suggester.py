@@ -708,6 +708,31 @@ HARD RULES (violating these breaks the downstream system):
     - When suggesting changes that depart from the prior plan, explicitly
       explain "this changes X from last session because Y."
 
+    Between-session messages live on history entries as `client_message`
+    (the body) plus a `channel` tag:
+      - `channel="client_whatsapp"` — the client wrote this themselves
+        on WhatsApp. This is GOLD: real-world feedback on adherence,
+        what's working, what's hard, new symptoms, life events that
+        derail the protocol. Examples worth acting on:
+          • "Not eating enough veggies, impact on stools" → propose a
+            veg-juice habit or a fibre supplement in `lifestyle` /
+            `nutrition.add` and reflect it in the next meal plan.
+          • "Travelling next 2 weeks" → simplify protocol for that
+            window; add to `notes_for_coach`.
+          • "Down 1kg, feeling lighter" → reinforce what's working in
+            `synthesis_notes`; don't disrupt.
+        Quote the client's own words in `synthesis_notes` when citing
+        these — "Dhanishta said …" — so the coach can verify against
+        the WhatsApp thread.
+      - `channel="coach_whatsapp"` — outbound. The coach already sent
+        this; mostly useful as context, not a new fact.
+      - `channel="coach_notes"` — coach typed observations into the
+        client page. Treat as primary evidence.
+    If the client_message contradicts an old plan element (e.g. low
+    veg intake while the prior plan emphasised salads), surface the
+    mismatch in `synthesis_notes` and propose the substitution. Don't
+    silently ignore between-session voice.
+
 14. CATALOGUE ADDITIONS. When you'd have suggested something useful but the
     slug isn't in the subgraph, populate `catalogue_additions_suggested` with
     the item — kind (topic/mechanism/symptom/supplement/claim/cooking_adjustment/
