@@ -1,35 +1,30 @@
 slug: low-folate-can-reduce-ssri-response
-statement: Folate deficiency presents with low mood, irritability, poor SSRI response,
-  and emotional flatness.
+statement: Folate deficiency presents with low mood, irritability, poor SSRI response, and emotional flatness.
 evidence_tier: confirm_with_clinician
-rationale: Folate augmentation of antidepressant response has RCT evidence; SSRI interaction
-  and folate status is clinician scope.
-out_of_scope_notes: SSRI response optimization and folate augmentation require prescribing
-  clinician oversight.
+rationale: Folate augmentation of antidepressant response has RCT evidence; SSRI interaction and folate status is clinician
+  scope.
+out_of_scope_notes: SSRI response optimization and folate augmentation require prescribing clinician oversight.
 caveats:
 - Source is a practitioner cheatsheet without citation to specific RCT.
 - Do not modify SSRI protocols without clinician involvement.
 - Source is practitioner cheatsheet.
-- Any discussion of SSRI response with clients must be deferred to their prescribing
-  clinician.
+- Any discussion of SSRI response with clients must be deferred to their prescribing clinician.
 linked_to_topics:
 - depression-like-symptoms
 - methylation
 linked_to_supplements:
 - folate
-- methylfolate
+- l-methylfolate
 - l-5-mthf
 coaching_translation: ''
 linked_to_mechanisms: []
 sources:
 - id: Vitaone-fm-nutrition-cheatsheets
   location: Page 23
-  quote: Folate deficiency is described as presenting with low mood, irritability,
-    poor SSRI response, and emotional flatness.
+  quote: Folate deficiency is described as presenting with low mood, irritability, poor SSRI response, and emotional flatness.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 23
-  quote: Folate deficiency is described as presenting with low mood, irritability,
-    poor SSRI response, and emotional flatness.
+  quote: Folate deficiency is described as presenting with low mood, irritability, poor SSRI response, and emotional flatness.
 version: 2
 status: active
 updated_at: '2026-05-06'

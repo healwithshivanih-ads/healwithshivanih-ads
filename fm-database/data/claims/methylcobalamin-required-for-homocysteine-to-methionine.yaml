@@ -1,12 +1,11 @@
 slug: methylcobalamin-required-for-homocysteine-to-methionine
-statement: Methylcobalamin (active B12) and methylfolate (active B9) are both required
-  cofactors for the enzyme methionine synthase to convert homocysteine to methionine.
+statement: Methylcobalamin (active B12) and methylfolate (active B9) are both required cofactors for the enzyme methionine
+  synthase to convert homocysteine to methionine.
 evidence_tier: strong
-rationale: 'Well-established biochemistry: methionine synthase requires methylcobalamin
-  as a direct cofactor and 5-MTHF as the methyl donor. Deficiency in either leads
-  to homocysteine accumulation.'
-coaching_translation: To keep homocysteine levels healthy, both active B12 and active
-  folate need to be present together — neither works in isolation for this conversion.
+rationale: 'Well-established biochemistry: methionine synthase requires methylcobalamin as a direct cofactor and 5-MTHF as
+  the methyl donor. Deficiency in either leads to homocysteine accumulation.'
+coaching_translation: To keep homocysteine levels healthy, both active B12 and active folate need to be present together —
+  neither works in isolation for this conversion.
 caveats:
 - Dosing for therapeutic homocysteine reduction requires clinical supervision.
 linked_to_topics:
@@ -16,15 +15,15 @@ linked_to_topics:
 - methylation
 linked_to_supplements:
 - methylcobalamin
-- methylfolate
+- l-methylfolate
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Cofactors / Supplementation section
-  quote: For the conversion of homocysteine to methionine, we need methionine synthase
-    enzyme to be working. But with this enzyme, we need two important cofactors of
-    B vitamin. That is one is methylcobalamin B12 and next is vitamin B9 that is methylfolate.
+  quote: For the conversion of homocysteine to methionine, we need methionine synthase enzyme to be working. But with this
+    enzyme, we need two important cofactors of B vitamin. That is one is methylcobalamin B12 and next is vitamin B9 that is
+    methylfolate.
 version: 1
 status: active
 updated_at: '2026-05-05'

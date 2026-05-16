@@ -23,6 +23,10 @@ linked_to_topics:
 - mthfr-polymorphisms
 - methylation-cycle
 - mthfr-variants
+- folate-vitamin-b9
+- mthfr-gene-variant
+- homocysteine-elevation
+- methylation
 linked_to_claims:
 - avoid-synthetic-folic-acid-prefer-methylfolate
 - high-folate-masks-b12-deficiency
@@ -32,14 +36,14 @@ linked_to_claims:
 - mthfr-impairs-folate-conversion-not-absorption
 - active-folate-forms-preferred-in-mthfr
 - avoid-high-dose-methylfolate-if-methyl-sensitive
-notes_for_coach: Start low (e.g. 400 mcg) and titrate slowly. Some clients are sensitive
-  to methyl donors and may experience anxiety, irritability, or insomnia with higher
-  doses. Always pair folate decisions with B12 status assessment. Prefer active forms
-  (5-MTHF / L-methylfolate) over folic acid for MTHFR clients. Dosing decisions should
-  be confirmed with a clinician.
-notes_for_client: This is the active, ready-to-use form of folate — your body doesn't
-  need to convert it, which makes it more suitable if you have an MTHFR variant. Start
-  with a low dose and increase only under practitioner guidance.
+- methylfolate-preferred-over-folic-acid-for-mthfr
+- methylfolate-required-for-homocysteine-to-methionine
+- folate-supplementation-prevents-neural-tube-defects
+notes_for_coach: Start low (e.g. 400 mcg) and titrate slowly. Some clients are sensitive to methyl donors and may experience
+  anxiety, irritability, or insomnia with higher doses. Always pair folate decisions with B12 status assessment. Prefer active
+  forms (5-MTHF / L-methylfolate) over folic acid for MTHFR clients. Dosing decisions should be confirmed with a clinician.
+notes_for_client: This is the active, ready-to-use form of folate — your body doesn't need to convert it, which makes it more
+  suitable if you have an MTHFR variant. Start with a low dose and increase only under practitioner guidance.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -51,9 +55,14 @@ sources:
   quote: L-methylfolate or 5-MTHF instead of relying only on folic acid conversion.
 - id: coach-shivani
   location: Coach Observation
-  quote: use active folate such as low-dose L-methylfolate for a short while, pair
-    folate decisions with B12 status
+  quote: use active folate such as low-dose L-methylfolate for a short while, pair folate decisions with B12 status
+- id: coconote-fm-vitamin-b9-b12-mthfr
+  location: Supplementation for MTHFR section
+  quote: The first most important supplement is as you have seen the folate supplement but it should be in the form of methylfolate
+    which is the active form.
 version: 3
 status: active
 updated_at: '2026-05-13'
 updated_by: Shivani
+aliases:
+- methylfolate

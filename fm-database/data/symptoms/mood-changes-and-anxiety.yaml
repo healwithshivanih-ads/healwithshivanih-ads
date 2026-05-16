@@ -7,15 +7,14 @@ aliases:
 - poor mood
 - OCD tendencies
 - low motivation
+- mood-changes-anxiety
 category: mood
 severity: common
-description: Mood disturbances including anxiety, irritability, apathy, rumination,
-  OCD tendencies, and low motivation linked to methylation nutrients, B vitamins,
-  magnesium, omega-3, copper, choline, and depression-mimicking nutrient deficiency
+description: Mood disturbances including anxiety, irritability, apathy, rumination, OCD tendencies, and low motivation linked
+  to methylation nutrients, B vitamins, magnesium, omega-3, copper, choline, and depression-mimicking nutrient deficiency
   patterns.
-when_to_refer: Refer for clinical assessment if mood symptoms are severe, persistent,
-  or meet criteria for a mood disorder. Do not use supplementation to replace psychiatric
-  care.
+when_to_refer: Refer for clinical assessment if mood symptoms are severe, persistent, or meet criteria for a mood disorder.
+  Do not use supplementation to replace psychiatric care.
 linked_to_topics:
 - depression-like-symptoms
 - methylation
@@ -28,9 +27,12 @@ linked_to_mechanisms:
 sources:
 - id: Vitaone-fm-nutrition-cheatsheets
   location: Symptoms Discussed
-  quote: Mood changes, anxiety, irritability, poor mood, apathy, rumination, OCD tendencies,
-    and low motivation - Linked to methylation nutrients, B vitamins, magnesium, omega-3,
-    copper, choline, and depression-mimicking nutrient deficiency patterns.
+  quote: Mood changes, anxiety, irritability, poor mood, apathy, rumination, OCD tendencies, and low motivation - Linked to
+    methylation nutrients, B vitamins, magnesium, omega-3, copper, choline, and depression-mimicking nutrient deficiency patterns.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Symptoms Discussed
+  quote: Mood changes, anxiety, irritability, poor mood, apathy, rumination, OCD tendencies, and low motivation - Linked to
+    methylation nutrients, B vitamins, magnesium, omega-3, copper, choline, and depression-mimicking nutrient deficiency patterns.
 version: 1
 status: active
 updated_at: '2026-05-06'

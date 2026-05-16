@@ -5,9 +5,8 @@ aliases:
 - mineral deficiency
 - nutrient insufficiency
 - micronutrient deficiency
-summary: Patterns of vitamin, mineral, omega-3, and nutrient insufficiency with associated
-  symptoms, food sources, preferred supplement forms, and dosing considerations across
-  multiple body systems.
+summary: Patterns of vitamin, mineral, omega-3, and nutrient insufficiency with associated symptoms, food sources, preferred
+  supplement forms, and dosing considerations across multiple body systems.
 common_symptoms:
 - fatigue
 - tingling-numbness-neuropathy
@@ -20,7 +19,7 @@ common_symptoms:
 - cramps
 - restless-legs
 - tingling-numbness-paresthesia
-- mood-changes-anxiety
+- mood-changes-and-anxiety
 - frequent-infections
 red_flags:
 - anemia unresponsive to iron
@@ -49,21 +48,20 @@ key_mechanisms:
 - nutrient-dependent-energy-metabolism
 - methylation-support
 - gut-barrier-and-nutrient-absorption
-coaching_scope_notes: Focus on food-first strategies, symptom tracking, and referral
-  for labs. Avoid dosing guidance, lab interpretation, and pregnancy-specific supplementation
-  without clinician oversight.
-clinician_scope_notes: Multiple entries include therapeutic doses, lab ranges, pregnancy
-  guidance, and medication interactions — all require clinician oversight.
+coaching_scope_notes: Focus on food-first strategies, symptom tracking, and referral for labs. Avoid dosing guidance, lab
+  interpretation, and pregnancy-specific supplementation without clinician oversight.
+clinician_scope_notes: Multiple entries include therapeutic doses, lab ranges, pregnancy guidance, and medication interactions
+  — all require clinician oversight.
 evidence_tier: plausible_emerging
 sources:
 - id: Vitaone-fm-nutrition-cheatsheets
   location: Topics Covered
-  quote: Vitamin, mineral, omega-3, and nutrient insufficiency patterns with symptoms,
-    food sources, supplement forms, and dosing pearls.
+  quote: Vitamin, mineral, omega-3, and nutrient insufficiency patterns with symptoms, food sources, supplement forms, and
+    dosing pearls.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Topics Covered
-  quote: Vitamin, mineral, omega-3, and nutrient insufficiency patterns with symptoms,
-    food sources, supplement forms, and dosing pearls.
+  quote: Vitamin, mineral, omega-3, and nutrient insufficiency patterns with symptoms, food sources, supplement forms, and
+    dosing pearls.
 version: 2
 status: active
 updated_at: '2026-05-06'

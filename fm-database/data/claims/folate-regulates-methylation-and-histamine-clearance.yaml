@@ -1,11 +1,10 @@
 slug: folate-regulates-methylation-and-histamine-clearance
-statement: Folate regulates DNA synthesis, neurotransmitters, histamine clearance,
-  and creatine or choline production.
+statement: Folate regulates DNA synthesis, neurotransmitters, histamine clearance, and creatine or choline production.
 evidence_tier: plausible_emerging
-rationale: Folate's roles in one-carbon metabolism, DNA synthesis, and neurotransmitter
-  precursor availability are credibly established in biochemical literature.
-coaching_translation: Encourage leafy greens, legumes, and liver as folate-rich foods.
-  Methylfolate forms are preferred over synthetic folic acid.
+rationale: Folate's roles in one-carbon metabolism, DNA synthesis, and neurotransmitter precursor availability are credibly
+  established in biochemical literature.
+coaching_translation: Encourage leafy greens, legumes, and liver as folate-rich foods. Methylfolate forms are preferred over
+  synthetic folic acid.
 caveats:
 - Source is a practitioner cheatsheet without primary citations.
 - Source is practitioner cheatsheet.
@@ -15,18 +14,18 @@ linked_to_topics:
 - nutrition-deficiency
 linked_to_supplements:
 - folate
-- methylfolate
+- l-methylfolate
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: Vitaone-fm-nutrition-cheatsheets
   location: Page 6
-  quote: Folate is described as regulating DNA synthesis, neurotransmitters, histamine
-    clearance, and creatine or choline production.
+  quote: Folate is described as regulating DNA synthesis, neurotransmitters, histamine clearance, and creatine or choline
+    production.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 6
-  quote: Folate is described as regulating DNA synthesis, neurotransmitters, histamine
-    clearance, and creatine or choline production.
+  quote: Folate is described as regulating DNA synthesis, neurotransmitters, histamine clearance, and creatine or choline
+    production.
 version: 2
 status: active
 updated_at: '2026-05-06'

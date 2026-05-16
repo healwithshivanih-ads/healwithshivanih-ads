@@ -4,19 +4,16 @@ aliases:
 - amalgam removal
 - mercury fillings
 - silver fillings toxicity
-summary: Dental amalgam fillings contain mercury that can contribute to toxic body
-  burden via galvanic forces in the mouth. Safe removal protocols include pre- and
-  post-procedure nutritional support (glutathione, NAC, Vitamin C, selenium, chlorella,
-  activated charcoal) and strict dental safety measures to minimize mercury vapor
-  exposure.
+summary: Dental amalgam fillings contain mercury that can contribute to toxic body burden via galvanic forces in the mouth.
+  Safe removal protocols include pre- and post-procedure nutritional support (glutathione, NAC, Vitamin C, selenium, chlorella,
+  activated charcoal) and strict dental safety measures to minimize mercury vapor exposure.
 common_symptoms:
 - fatigue
 - cognitive-difficulties
 - neurological-symptoms
 - heavy-metal-toxicity-symptoms
 red_flags:
-- ongoing gingival inflammation or periodontal infections prior to removal — must
-  be resolved first
+- ongoing gingival inflammation or periodontal infections prior to removal — must be resolved first
 - signs of acute mercury toxicity — refer to physician immediately
 related_topics:
 - toxic-body-burden
@@ -24,19 +21,16 @@ related_topics:
 - environmental-toxin-exposure
 key_mechanisms:
 - heavy-metal-toxicity
-- phase-ii-conjugation
-coaching_scope_notes: Coaches can educate on the pre- and post-procedure nutritional
-  support protocol and help clients prepare questions for their dentist. Actual amalgam
-  removal decisions and medical oversight are clinician scope.
-clinician_scope_notes: Pre-procedure labs (CBC, CMP, GFR, Vitamin D) and supplement
-  dose protocols are clinician-directed. IV Vitamin C and Myers cocktail on procedure
-  day are medical interventions.
+- phase-2-conjugation
+coaching_scope_notes: Coaches can educate on the pre- and post-procedure nutritional support protocol and help clients prepare
+  questions for their dentist. Actual amalgam removal decisions and medical oversight are clinician scope.
+clinician_scope_notes: Pre-procedure labs (CBC, CMP, GFR, Vitamin D) and supplement dose protocols are clinician-directed.
+  IV Vitamin C and Myers cocktail on procedure day are medical interventions.
 evidence_tier: fm_specific_thin
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Dental Amalgam Removal Protocol
-  quote: Ask your dentist if they use all of these protective measures before agreeing
-    to any mercury amalgam removal procedures.
+  quote: Ask your dentist if they use all of these protective measures before agreeing to any mercury amalgam removal procedures.
 version: 1
 status: active
 updated_at: '2026-05-04'

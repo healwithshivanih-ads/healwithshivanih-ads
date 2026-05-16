@@ -12,10 +12,9 @@ aliases:
 - ATP production
 - B-vitamin energy metabolism
 category: metabolic
-summary: Magnesium is a cofactor for >300 enzymes including those central to ATP production.
-  B1 (thiamin), B2 (riboflavin), B3 (niacin), and B5 (pantothenic acid) are all required
-  for the electron transport chain and Krebs cycle. CoQ10 is also essential and is
-  depleted by statins.
+summary: Magnesium is a cofactor for >300 enzymes including those central to ATP production. B1 (thiamin), B2 (riboflavin),
+  B3 (niacin), and B5 (pantothenic acid) are all required for the electron transport chain and Krebs cycle. CoQ10 is also
+  essential and is depleted by statins.
 upstream_drivers:
 - magnesium-deficiency
 - b-vitamin-deficiency
@@ -29,7 +28,7 @@ related_mechanisms:
 - methylation-cycle-dysfunction
 linked_to_topics:
 - vitamin-b-complex-deficiency
-- medicine-nutrient-interactions
+- medication-nutrient-interactions
 evidence_tier: strong
 sources:
 - id: vitaone-nutrition-cheatsheet
@@ -37,12 +36,12 @@ sources:
   quote: Co-factor for >300 enzymes - central to ATP production and energy metabolism.
 - id: Vitaone-fm-nutrition-cheatsheets
   location: Key Mechanisms Explained – nutrient-dependent-energy-metabolism
-  quote: B vitamins and minerals are described as cofactors for ATP production, carbohydrate
-    metabolism, fat metabolism, and mitochondrial protection.
+  quote: B vitamins and minerals are described as cofactors for ATP production, carbohydrate metabolism, fat metabolism, and
+    mitochondrial protection.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Key Mechanisms Explained — nutrient-dependent-energy-metabolism
-  quote: B vitamins and minerals are described as cofactors for ATP production, carbohydrate
-    metabolism, fat metabolism, and mitochondrial protection.
+  quote: B vitamins and minerals are described as cofactors for ATP production, carbohydrate metabolism, fat metabolism, and
+    mitochondrial protection.
 version: 1
 status: active
 updated_at: '2026-05-02'

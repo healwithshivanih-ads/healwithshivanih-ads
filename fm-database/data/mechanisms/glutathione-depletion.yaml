@@ -10,11 +10,10 @@ aliases:
 - glutathione pathway
 - redox balance
 category: metabolic
-summary: Glutathione is the primary intracellular antioxidant, composed of cysteine,
-  glycine, and glutamic acid. Depletion is common in chronic disease and inflammation,
-  driving oxidative stress and NF-κB activation. Oral glutathione supplements have
-  poor bioavailability; precursors NAC and glycine are more effective at raising cellular
-  glutathione. IV glutathione is the most clinically effective route.
+summary: Glutathione is the primary intracellular antioxidant, composed of cysteine, glycine, and glutamic acid. Depletion
+  is common in chronic disease and inflammation, driving oxidative stress and NF-κB activation. Oral glutathione supplements
+  have poor bioavailability; precursors NAC and glycine are more effective at raising cellular glutathione. IV glutathione
+  is the most clinically effective route.
 upstream_drivers:
 - impaired-methylation
 - oxidative-stress
@@ -32,7 +31,7 @@ downstream_effects:
 related_mechanisms:
 - impaired-methylation
 - oxidative-stress
-- phase-ii-conjugation
+- phase-2-conjugation
 - nf-kappa-b-activation
 linked_to_topics:
 - methylation-mthfr
@@ -47,13 +46,11 @@ sources:
   quote: Reduce glutathione, increasing oxidative stress.
 - id: coconote-fm-approach-inflammation
   location: Oxidative Stress and Glutathione
-  quote: There is a master antioxidant in the cell we call is Glutathione. Most patients
-    with chronic disease and most patients with any kind of inflammation, they were
-    actually low Glutathione.
+  quote: There is a master antioxidant in the cell we call is Glutathione. Most patients with chronic disease and most patients
+    with any kind of inflammation, they were actually low Glutathione.
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXZNALUjPBQ/
-  quote: NAC-rich foods (eggs, garlic, onions) build glutathione faster than supplements
-    alone.
+  quote: NAC-rich foods (eggs, garlic, onions) build glutathione faster than supplements alone.
 version: 2
 status: active
 updated_at: '2026-05-05'

@@ -6,9 +6,11 @@ aliases:
 - iatrogenic nutrient deficiency
 - drug-nutrient depletions
 - medication side effects on nutrition
-summary: Common drug classes including metformin, PPIs, statins, antibiotics, NSAIDs,
-  oral contraceptives, diuretics, warfarin, and chemotherapy agents are listed with
-  associated nutrient depletions, monitoring considerations, and supplement cautions.
+- medicine-nutrient-interactions
+- medication-nutrient depletion
+- drug-induced nutrient deficiency
+summary: Common drug classes including metformin, PPIs, statins, antibiotics, NSAIDs, oral contraceptives, diuretics, warfarin,
+  and chemotherapy agents are listed with associated nutrient depletions, monitoring considerations, and supplement cautions.
 red_flags:
 - warfarin-fish oil-aspirin bleeding risk requiring INR monitoring
 - chemotherapy antioxidant timing requiring oncology coordination
@@ -18,6 +20,8 @@ red_flags:
 - chemotherapy-antioxidant-timing
 - prescription-retinoic-acid
 - high-dose-supplement-toxicity
+- warfarin + fish oil + aspirin combination — bleeding risk
+- chemotherapy antioxidant interaction — refer to oncologist
 related_topics:
 - nutrition-deficiency
 - methylation
@@ -25,30 +29,36 @@ related_topics:
 - gut-dysbiosis
 - bone-health
 - cardiovascular-health
+- vitamin-b-complex-deficiency
+- magnesium-deficiency
 key_mechanisms:
 - medication-related-nutrient-depletion
-coaching_scope_notes: Encourage clients to disclose all medications and supplements
-  to their prescribing clinician. Do not adjust medication-adjacent supplement protocols
-  without clinician approval.
-clinician_scope_notes: Metformin depletes B12 and folate; PPIs deplete magnesium,
-  calcium, iron, B12, and zinc; statins deplete CoQ10; warfarin interactions with
-  vitamin K and fish oil require INR monitoring.
+- nutrient-depletion-by-drugs
+- mitochondrial-dysfunction
+coaching_scope_notes: Encourage clients to disclose all medications and supplements to their prescribing clinician. Do not
+  adjust medication-adjacent supplement protocols without clinician approval.
+clinician_scope_notes: Metformin depletes B12 and folate; PPIs deplete magnesium, calcium, iron, B12, and zinc; statins deplete
+  CoQ10; warfarin interactions with vitamin K and fish oil require INR monitoring.
 evidence_tier: confirm_with_clinician
 common_symptoms:
 - fatigue
 - muscle-pain
-- mood-changes-anxiety
+- mood-changes-and-anxiety
 - bone-density-concerns
 - anemia
+- neuropathy
+- brain-fog
+- mood-disturbances
 sources:
 - id: Vitaone-fm-nutrition-cheatsheets
   location: Topics Covered
-  quote: Common drug classes are listed with nutrient depletions, monitoring considerations,
-    and supplement cautions.
+  quote: Common drug classes are listed with nutrient depletions, monitoring considerations, and supplement cautions.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Topics Covered
-  quote: Common drug classes are listed with nutrient depletions, monitoring considerations,
-    and supplement cautions.
+  quote: Common drug classes are listed with nutrient depletions, monitoring considerations, and supplement cautions.
+- id: vitaone-nutrition-cheatsheet
+  location: Medicine-Nutrient Interactions Cheatsheet
+  quote: Clinician-focused For Function Medicine Doctors, Nutritionist & Health Coaches.
 version: 2
 status: active
 updated_at: '2026-05-06'

@@ -1,29 +1,25 @@
 slug: folate-supplementation-prevents-neural-tube-defects
-statement: Adequate folate intake, particularly 400–600 mcg/day, before and during
-  early pregnancy (up to 12 weeks gestation) reduces the risk of neural tube defects
-  in the developing foetus.
+statement: Adequate folate intake, particularly 400–600 mcg/day, before and during early pregnancy (up to 12 weeks gestation)
+  reduces the risk of neural tube defects in the developing foetus.
 evidence_tier: strong
-rationale: Neural tube defects from folate deficiency are well-established in obstetric
-  literature. The document states folate is required for neural tube closure at ~12
-  weeks gestation and that deficiency causes neural tube defects.
-coaching_translation: Women of reproductive age and those planning pregnancy should
-  prioritise folate-rich foods and a folate/methylfolate supplement, ideally starting
-  1–3 months before conception.
+rationale: Neural tube defects from folate deficiency are well-established in obstetric literature. The document states folate
+  is required for neural tube closure at ~12 weeks gestation and that deficiency causes neural tube defects.
+coaching_translation: Women of reproductive age and those planning pregnancy should prioritise folate-rich foods and a folate/methylfolate
+  supplement, ideally starting 1–3 months before conception.
 caveats:
-- Folic acid is the standard recommended form in most guidelines; methylfolate may
-  be preferable for those with MTHFR variants — confirm with clinician.
+- Folic acid is the standard recommended form in most guidelines; methylfolate may be preferable for those with MTHFR variants
+  — confirm with clinician.
 - Fortified foods alone may provide only ~160 mcg, well below the 400–600 mcg recommended.
 linked_to_topics:
 - folate-vitamin-b9
 linked_to_supplements:
-- methylfolate
+- l-methylfolate
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Folate in Pregnancy section
-  quote: If there is folate deficiency in a pregnant mother then it can lead to neural
-    tube defects in the child as well.
+  quote: If there is folate deficiency in a pregnant mother then it can lead to neural tube defects in the child as well.
 version: 1
 status: active
 updated_at: '2026-05-05'

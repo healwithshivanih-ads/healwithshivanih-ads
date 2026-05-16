@@ -1,12 +1,10 @@
 slug: synthetic-folic-acid-is-discouraged
-statement: Synthetic folic acid should be avoided in favour of natural folates or
-  methylfolate supplements.
+statement: Synthetic folic acid should be avoided in favour of natural folates or methylfolate supplements.
 evidence_tier: fm_specific_thin
-rationale: The preference for methylfolate over synthetic folic acid is common in
-  FM practice, particularly for MTHFR variants, but evidence comparing outcomes between
-  forms is limited.
-coaching_translation: When discussing folate supplementation, note that methylfolate
-  is generally preferred over synthetic folic acid in functional medicine contexts.
+rationale: The preference for methylfolate over synthetic folic acid is common in FM practice, particularly for MTHFR variants,
+  but evidence comparing outcomes between forms is limited.
+coaching_translation: When discussing folate supplementation, note that methylfolate is generally preferred over synthetic
+  folic acid in functional medicine contexts.
 caveats:
 - Source is a practitioner cheatsheet without primary citations.
 - The evidence base for avoiding folic acid universally is not yet consensus.
@@ -16,18 +14,18 @@ linked_to_topics:
 - methylation
 - nutrition-deficiency
 linked_to_supplements:
-- methylfolate
+- l-methylfolate
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: Vitaone-fm-nutrition-cheatsheets
   location: Page 6
-  quote: The source advises avoiding synthetic folic acid and prioritizing natural
-    folates or methylfolate supplements if needed.
+  quote: The source advises avoiding synthetic folic acid and prioritizing natural folates or methylfolate supplements if
+    needed.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 6
-  quote: The source advises avoiding synthetic folic acid and prioritizing natural
-    folates or methylfolate supplements if needed.
+  quote: The source advises avoiding synthetic folic acid and prioritizing natural folates or methylfolate supplements if
+    needed.
 version: 2
 status: active
 updated_at: '2026-05-06'

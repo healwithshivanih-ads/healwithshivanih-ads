@@ -5,9 +5,8 @@ aliases:
 - metal accumulation
 - heavy metal burden
 category: metabolic
-summary: Accumulation of heavy metals (mercury, lead, arsenic, cadmium) in body tissues
-  impairs detoxification enzyme activity, neurological function, and immune response.
-  Mercury from dental amalgam is a significant source; binding agents (chlorella,
+summary: Accumulation of heavy metals (mercury, lead, arsenic, cadmium) in body tissues impairs detoxification enzyme activity,
+  neurological function, and immune response. Mercury from dental amalgam is a significant source; binding agents (chlorella,
   activated charcoal, glutathione, NAC) are used to support clearance.
 upstream_drivers:
 - dental-amalgam-exposure
@@ -18,7 +17,7 @@ downstream_effects:
 - immune-dysregulation
 - phase-ii-enzyme-inhibition
 related_mechanisms:
-- phase-ii-conjugation
+- phase-2-conjugation
 - endocrine-disruption-by-toxicants
 linked_to_topics:
 - dental-amalgam-mercury
@@ -27,8 +26,8 @@ evidence_tier: strong
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Dental Amalgam Removal Protocol
-  quote: 'Glutathione (liposomal, standard): 500 mg–1000 mg or N-Acetyl-Cysteine (NAC):
-    600–1200 mg... The chlorella can help bind and prevent mercury absorption.'
+  quote: 'Glutathione (liposomal, standard): 500 mg–1000 mg or N-Acetyl-Cysteine (NAC): 600–1200 mg... The chlorella can help
+    bind and prevent mercury absorption.'
 version: 1
 status: active
 updated_at: '2026-05-04'

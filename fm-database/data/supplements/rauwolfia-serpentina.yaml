@@ -5,12 +5,10 @@ forms_available:
 - capsule
 - tablet
 evidence_tier: plausible_emerging
-notes_for_coach: Listed as nutraceutical support during beta blocker tapering. Contains
-  reserpine-like alkaloids with antihypertensive properties. This is a potent herb;
-  use only under direct clinician supervision. Out of coaching scope for specific
-  dosing.
-notes_for_client: Rauwolfia is a traditional botanical used for blood pressure support.
-  It should only be used under the direct supervision of your clinician.
+notes_for_coach: Listed as nutraceutical support during beta blocker tapering. Contains reserpine-like alkaloids with antihypertensive
+  properties. This is a potent herb; use only under direct clinician supervision. Out of coaching scope for specific dosing.
+notes_for_client: Rauwolfia is a traditional botanical used for blood pressure support. It should only be used under the direct
+  supervision of your clinician.
 timing_options:
 - with_breakfast
 - with_dinner
@@ -25,7 +23,12 @@ sources:
 - id: vitaone-cv-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
   quote: Rauwolfia serpentine
+- id: vitaone-health-coaching-toolkit
+  location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients — Supplement Schedule'
+  quote: Rauwolfia serpentine
 version: 1
 status: active
 updated_at: '2026-05-02'
 updated_by: shivani
+aliases:
+- rauwolfia-serpentine

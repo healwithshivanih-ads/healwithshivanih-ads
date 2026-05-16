@@ -12,9 +12,8 @@ aliases:
 - apathy
 - emotional flatness
 - low reward sensitivity
-summary: Chronic stress, low serotonin, low dopamine, low endorphins, loneliness,
-  digital overstimulation, low DHEA, and nutrient insufficiency are linked to mood
-  symptoms.
+summary: Chronic stress, low serotonin, low dopamine, low endorphins, loneliness, digital overstimulation, low DHEA, and nutrient
+  insufficiency are linked to mood symptoms.
 common_symptoms:
 - low-mood
 - apathy
@@ -25,7 +24,7 @@ common_symptoms:
 - cognitive-decline
 - low-motivation
 - sadness
-- mood-changes-anxiety
+- mood-changes-and-anxiety
 - anhedonia
 - emotional-flatness
 - poor-focus
@@ -55,25 +54,24 @@ key_mechanisms:
 - hpa-axis-overactivation
 - gut-brain-axis-disruption
 - digital-overstimulation
-coaching_scope_notes: Community connection, movement, gratitude journaling, digital
-  hygiene, nutrition for neurotransmitter precursors, and sleep optimization are coaching-appropriate.
-clinician_scope_notes: Antidepressant or psychiatric medication decisions, neurotransmitter
-  testing interpretation, and bipolar/mania risk assessment are clinician-scope.
+coaching_scope_notes: Community connection, movement, gratitude journaling, digital hygiene, nutrition for neurotransmitter
+  precursors, and sleep optimization are coaching-appropriate.
+clinician_scope_notes: Antidepressant or psychiatric medication decisions, neurotransmitter testing interpretation, and bipolar/mania
+  risk assessment are clinician-scope.
 evidence_tier: plausible_emerging
 sources:
 - id: Vitaone-fm-nutrition-cheatsheets
   location: Page 23
-  quote: The source states that depression can be a biochemical signal of unmet nutritional
-    needs affecting neurotransmitter synthesis, mitochondrial function, and inflammation.
+  quote: The source states that depression can be a biochemical signal of unmet nutritional needs affecting neurotransmitter
+    synthesis, mitochondrial function, and inflammation.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 23
-  quote: The source states that depression can be a biochemical signal of unmet nutritional
-    needs affecting neurotransmitter synthesis, mitochondrial function, and inflammation.
+  quote: The source states that depression can be a biochemical signal of unmet nutritional needs affecting neurotransmitter
+    synthesis, mitochondrial function, and inflammation.
 - id: vitaone-fm-adrenal-hormones
   location: Topics Covered
-  quote: Chronic stress, low serotonin, low dopamine, low endorphins, loneliness,
-    digital overstimulation, low DHEA, and nutrient insufficiency are linked to mood
-    symptoms.
+  quote: Chronic stress, low serotonin, low dopamine, low endorphins, loneliness, digital overstimulation, low DHEA, and nutrient
+    insufficiency are linked to mood symptoms.
 version: 3
 status: active
 updated_at: '2026-05-06'

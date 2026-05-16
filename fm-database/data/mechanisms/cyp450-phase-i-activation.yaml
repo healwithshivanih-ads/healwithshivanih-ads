@@ -16,9 +16,8 @@ aliases:
 - Phase I liver enzymes
 - oxidative biotransformation
 category: metabolic
-summary: Phase I of liver detoxification converts lipophilic toxins into reactive
-  intermediates via cytochrome P450 enzymes. Key nutritional activators include green
-  tea, citrus, cruciferous vegetables, and turmeric. Over-activation without Phase
+summary: Phase I of liver detoxification converts lipophilic toxins into reactive intermediates via cytochrome P450 enzymes.
+  Key nutritional activators include green tea, citrus, cruciferous vegetables, and turmeric. Over-activation without Phase
   II support can increase reactive intermediate burden.
 upstream_drivers:
 - toxin-exposure
@@ -27,7 +26,7 @@ downstream_effects:
 - reactive-intermediate-formation
 - oxidative-stress
 related_mechanisms:
-- phase-ii-conjugation
+- phase-2-conjugation
 - oxidative-stress
 linked_to_topics:
 - liver-detoxification
@@ -38,19 +37,16 @@ sources:
   quote: 'Phase I – Activation: Converts toxins → reactive intermediates via CYP450.'
 - id: coconote-fm-liver-detox-part1
   location: Phase 1 Detoxification Explanation
-  quote: So the active intermediate form again finally convert to a water-soluble
-    compound and this water-soluble compound will go out of body... these P450 enzymes,
-    they do oxidation, reduction, or hydrolysis in that parent compound.
+  quote: So the active intermediate form again finally convert to a water-soluble compound and this water-soluble compound
+    will go out of body... these P450 enzymes, they do oxidation, reduction, or hydrolysis in that parent compound.
 - id: vitaone-liver-detox-toolkit
   location: Features of the Detox Food Plan
-  quote: Enzymes involved in detoxification (phase I, phase II) within the liver are
-    well recognized.
+  quote: Enzymes involved in detoxification (phase I, phase II) within the liver are well recognized.
 - id: vitaone-health-coaching-toolkit
   location: Nutrients for Phase 1 and Phase 2 Detoxification
-  quote: 'PHASE I (Cytochrome P450 Enzymes) — Reactions: Oxidation, Reduction, Hydrolysis,
-    Hydration, Dehalogenation; Nutrients Used: Riboflavin (Vit B2), Niacin (Vit B3),
-    Pyridoxine (Vit B6), Folic acid, Vitamin B12, Glutathione, Branched-chain amino
-    acids, Flavonoids, Phospholipids'
+  quote: 'PHASE I (Cytochrome P450 Enzymes) — Reactions: Oxidation, Reduction, Hydrolysis, Hydration, Dehalogenation; Nutrients
+    Used: Riboflavin (Vit B2), Niacin (Vit B3), Pyridoxine (Vit B6), Folic acid, Vitamin B12, Glutathione, Branched-chain
+    amino acids, Flavonoids, Phospholipids'
 version: 1
 status: active
 updated_at: '2026-05-02'

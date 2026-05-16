@@ -5,9 +5,8 @@ aliases:
 - sauna detoxification
 - perspiration detox
 category: metabolic
-summary: Sweat glands serve as an organ of elimination for certain toxins. Infrared
-  sauna therapy stimulates sweating, potentially mobilizing stored toxins. Mineral
-  loss (especially magnesium) during sweating must be replenished. This pathway complements
+summary: Sweat glands serve as an organ of elimination for certain toxins. Infrared sauna therapy stimulates sweating, potentially
+  mobilizing stored toxins. Mineral loss (especially magnesium) during sweating must be replenished. This pathway complements
   hepatic and renal excretion.
 upstream_drivers:
 - infrared-heat-exposure
@@ -16,7 +15,7 @@ downstream_effects:
 - mineral-depletion
 - toxin-elimination-via-skin
 related_mechanisms:
-- phase-ii-conjugation
+- phase-2-conjugation
 linked_to_topics:
 - infrared-sauna-therapy
 - metabolic-detoxification
@@ -24,10 +23,9 @@ evidence_tier: fm_specific_thin
 sources:
 - id: vitaone-health-coaching-toolkit
   location: How to Make an Infrared Sauna Lamp — Protocol
-  quote: Make sure you replace minerals that are lost from sweating. Definitely work
-    with a knowledgeable practitioner on this, as minerals are a tricky thing, and
-    I do advise Starting with Magnesium because you will loose lot of magnesium through
-    sweat.
+  quote: Make sure you replace minerals that are lost from sweating. Definitely work with a knowledgeable practitioner on
+    this, as minerals are a tricky thing, and I do advise Starting with Magnesium because you will loose lot of magnesium
+    through sweat.
 version: 1
 status: active
 updated_at: '2026-05-04'

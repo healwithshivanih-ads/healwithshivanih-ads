@@ -11,11 +11,10 @@ aliases:
 - hyperestrogenism
 - estrogen-progesterone imbalance
 - relative hyperestrogenism
-summary: A state where estrogen is relatively elevated compared to progesterone, which
-  can arise from low progesterone (not necessarily high estrogen), increased aromatase
-  activity, or impaired estrogen detoxification/excretion (e.g., via beta-glucuronidase
-  activity in gut dysbiosis). Associated with fibroids, mood changes, heavy periods,
-  and increased cancer risk with prolonged synthetic estrogen use.
+summary: A state where estrogen is relatively elevated compared to progesterone, which can arise from low progesterone (not
+  necessarily high estrogen), increased aromatase activity, or impaired estrogen detoxification/excretion (e.g., via beta-glucuronidase
+  activity in gut dysbiosis). Associated with fibroids, mood changes, heavy periods, and increased cancer risk with prolonged
+  synthetic estrogen use.
 common_symptoms:
 - pms
 - heavy-periods
@@ -48,8 +47,7 @@ red_flags:
 - suspected fibroid or endometriosis requiring imaging
 - fibroids-rapid-growth
 - breast-mass
-- Increased risk of breast, ovarian, and prostate cancers with unaddressed estrogen
-  dominance
+- Increased risk of breast, ovarian, and prostate cancers with unaddressed estrogen dominance
 - prolonged heavy bleeding lasting more than 7 days
 - fibroid size >7-9mm requiring myomectomy
 - breast lumps or confirmed breast cancer
@@ -83,7 +81,7 @@ key_mechanisms:
 - estrogen-phase-ii-methylation-deficit
 - aromatase-overactivity
 - impaired-methylation
-- phase-ii-conjugation
+- phase-2-conjugation
 - hepatic-estrogen-metabolism
 - gut-estrogen-reabsorption
 - insulin-resistance
@@ -94,46 +92,38 @@ key_mechanisms:
 - aromatase-activity
 - beta-glucuronidase-reabsorption
 - estrogen-progesterone-decline
-coaching_scope_notes: Coaches can support dietary changes (reduce sugar, alcohol,
-  increase fiber, probiotics), gut health, and aromatase-reducing strategies like
-  green tea. Clinical evaluation required for diagnosis.
-clinician_scope_notes: BHRT (bioidentical hormone replacement therapy) is prescription-only
-  and requires individualized lab-guided dosing. Clinicians should assess estrogen
-  metabolites (2-OH vs 4-OH vs 16α-OH estrone via Dutch test), beta-glucuronidase
+coaching_scope_notes: Coaches can support dietary changes (reduce sugar, alcohol, increase fiber, probiotics), gut health,
+  and aromatase-reducing strategies like green tea. Clinical evaluation required for diagnosis.
+clinician_scope_notes: BHRT (bioidentical hormone replacement therapy) is prescription-only and requires individualized lab-guided
+  dosing. Clinicians should assess estrogen metabolites (2-OH vs 4-OH vs 16α-OH estrone via Dutch test), beta-glucuronidase
   on GI-MAP, thyroid function (free T3), fasting insulin, DHEA-S, cortisol, and SHBG.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-sex-hormones-cheatsheet
   location: Functional Wisdom — Estrogen Dominance Supplement Cheatsheet
-  quote: Estrogen dominance isn't 'too much estrogen'. It's poor metabolism, poor
-    clearance, poor gut reconversion, and low progesterone balance.
+  quote: Estrogen dominance isn't 'too much estrogen'. It's poor metabolism, poor clearance, poor gut reconversion, and low
+    progesterone balance.
 - id: vitaone-liver-detox-cheatsheet
   location: Methylation & MTHFR Cheatsheet
-  quote: With MTHFR mutations, impaired methylation can lead to toxin build-up, estrogen
-    dominance, and histamine intolerance.
+  quote: With MTHFR mutations, impaired methylation can lead to toxin build-up, estrogen dominance, and histamine intolerance.
 - id: vitaone-health-coaching-toolkit
   location: Estrogen Metabolism
-  quote: When there is too much estrogen in the body, a condition called 'Estrogen
-    Dominance' may be present. Estrogen Dominance can exacerbate endometriosis, premenstrual
-    syndrome (PMS), polycystic ovarian syndrome (PCOS), premenstrual dysphoric disorder
-    (PMDD), and, as stated, put women and men at higher risk for certain cancers.
+  quote: When there is too much estrogen in the body, a condition called 'Estrogen Dominance' may be present. Estrogen Dominance
+    can exacerbate endometriosis, premenstrual syndrome (PMS), polycystic ovarian syndrome (PCOS), premenstrual dysphoric
+    disorder (PMDD), and, as stated, put women and men at higher risk for certain cancers.
 - id: coconote-fm-estrogen-dominance
   location: What is Estrogen Dominance?
-  quote: Estrogen dominance is increased estrogen levels relative to progesterone
-    levels inside the body. Either there is an overproduction of estrogen, or the
-    estrogen is absolutely fine but relatively the progesterone is very low, or the
-    estrogen and progesterone is absolutely fine but the excretion of estrogen is
-    not happening properly from the body.
+  quote: Estrogen dominance is increased estrogen levels relative to progesterone levels inside the body. Either there is
+    an overproduction of estrogen, or the estrogen is absolutely fine but relatively the progesterone is very low, or the
+    estrogen and progesterone is absolutely fine but the excretion of estrogen is not happening properly from the body.
 - id: coconote-fm-gut-skin-hormone-axis
   location: Estrogen Detoxification Discussion
-  quote: Beta glucuronidase actually unesterifies the estrogen and it leads to a lot
-    of estrogen circulation in the blood, it basically stops its excretion from the
-    body.
+  quote: Beta glucuronidase actually unesterifies the estrogen and it leads to a lot of estrogen circulation in the blood,
+    it basically stops its excretion from the body.
 - id: coconote-fm-sex-hormones
   location: Hormone Metabolism and Detoxification
-  quote: Improper, a classical case of small intestinal bacterial overgrowth, dysbiosis.
-    will have constant reabsorption of estrogen in their body causing an estrogen
-    dominance because the detoxification is poor.
+  quote: Improper, a classical case of small intestinal bacterial overgrowth, dysbiosis. will have constant reabsorption of
+    estrogen in their body causing an estrogen dominance because the detoxification is poor.
 version: 6
 status: active
 updated_at: '2026-05-05'

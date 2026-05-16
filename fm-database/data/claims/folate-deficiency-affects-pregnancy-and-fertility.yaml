@@ -1,11 +1,9 @@
 slug: folate-deficiency-affects-pregnancy-and-fertility
 statement: Folate deficiency causes infertility and developmental issues in newborns.
 evidence_tier: confirm_with_clinician
-rationale: Folate's role in neural tube development is among the strongest evidence
-  in nutritional science; management in pregnancy and fertility contexts requires
-  clinician oversight.
-out_of_scope_notes: Prenatal folate and fertility supplementation must be managed
-  by a licensed clinician.
+rationale: Folate's role in neural tube development is among the strongest evidence in nutritional science; management in
+  pregnancy and fertility contexts requires clinician oversight.
+out_of_scope_notes: Prenatal folate and fertility supplementation must be managed by a licensed clinician.
 caveats:
 - Pregnancy supplementation is outside coaching scope.
 - Pregnancy and fertility nutrition is outside coaching scope.
@@ -14,18 +12,16 @@ linked_to_topics:
 - methylation
 linked_to_supplements:
 - folate
-- methylfolate
+- l-methylfolate
 coaching_translation: ''
 linked_to_mechanisms: []
 sources:
 - id: Vitaone-fm-nutrition-cheatsheets
   location: Page 6
-  quote: Folate deficiency is described as causing infertility and developmental issues
-    in newborns.
+  quote: Folate deficiency is described as causing infertility and developmental issues in newborns.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 6
-  quote: Folate deficiency is described as causing infertility and developmental issues
-    in newborns.
+  quote: Folate deficiency is described as causing infertility and developmental issues in newborns.
 version: 2
 status: active
 updated_at: '2026-05-06'

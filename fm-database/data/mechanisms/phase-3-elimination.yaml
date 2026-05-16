@@ -4,6 +4,10 @@ aliases:
 - excretion phase
 - toxin excretion
 - elimination phase
+- phase-iii-elimination
+- toxin elimination
+- hepatic elimination
+- biliary elimination
 category: metabolic
 summary: 'Phase 3 is the final step of detoxification — physical excretion of
 
@@ -29,6 +33,8 @@ upstream_drivers:
 - sweat-capacity
 downstream_effects:
 - reduced-systemic-toxin-load
+- toxin-recirculation-if-impaired
+- bowel-regularity
 related_mechanisms:
 - phase-2-conjugation
 - beta-glucuronidase-deconjugation
@@ -36,17 +42,18 @@ related_mechanisms:
 linked_to_topics:
 - detoxification
 - toxin-load
+- liver-detoxification
 evidence_tier: strong
 sources:
 - id: minich-detox-basics-fmca-transcript
   location: Excretion and elimination section
-  quote: Excretion can happen through the gut, through the stool, through the urine,
-    through sweat, through the skin
+  quote: Excretion can happen through the gut, through the stool, through the urine, through sweat, through the skin
 - id: ifm-textbook-fig-3-5-liver-detox-pathways
-  location: Excretory Derivatives panel — Bile / Serum / Kidneys / Feces / Stool /
-    Urine routes
-  quote: 'Excretory Derivatives (polar / water soluble): Bile → Feces/Stool; Serum
-    → Kidneys → Urine'
+  location: Excretory Derivatives panel — Bile / Serum / Kidneys / Feces / Stool / Urine routes
+  quote: 'Excretory Derivatives (polar / water soluble): Bile → Feces/Stool; Serum → Kidneys → Urine'
+- id: vitaone-liver-detox-cheatsheet
+  location: Functional Detox Phases
+  quote: 'Phase III – Elimination: Eliminates conjugated toxins via bile, stool, urine.'
 version: 2
 status: active
 updated_at: '2026-05-16'

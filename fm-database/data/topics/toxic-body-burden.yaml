@@ -5,10 +5,9 @@ aliases:
 - body burden
 - cumulative toxin load
 - chemical body burden
-summary: The accumulated total of environmental toxins, heavy metals, pesticides,
-  plasticizers, and endogenous metabolic byproducts stored in the body's tissues.
-  Influenced by exposure levels, genetic detox enzyme efficiency, and nutritional
-  status. Scientists estimate the average adult carries at least 700 toxins.
+summary: The accumulated total of environmental toxins, heavy metals, pesticides, plasticizers, and endogenous metabolic byproducts
+  stored in the body's tissues. Influenced by exposure levels, genetic detox enzyme efficiency, and nutritional status. Scientists
+  estimate the average adult carries at least 700 toxins.
 common_symptoms:
 - fatigue
 - unexplained-weight-gain
@@ -38,24 +37,22 @@ key_mechanisms:
 - endocrine-disruption
 - oxidative-stress
 - phase-i-cytochrome-p450
-- phase-ii-conjugation
+- phase-2-conjugation
 - endocrine-disruption-by-toxicants
-coaching_scope_notes: Coaches can educate on sources of toxin exposure, support organic
-  food choices, and facilitate completion of toxin exposure questionnaires. Lab interpretation
-  and diagnosis are clinician scope.
-clinician_scope_notes: Clinicians assess toxic load via MSQ, environmental exposure
-  history, and relevant labs. Detox protocols requiring fasting, medical foods, or
-  chelation are clinician-directed.
+coaching_scope_notes: Coaches can educate on sources of toxin exposure, support organic food choices, and facilitate completion
+  of toxin exposure questionnaires. Lab interpretation and diagnosis are clinician scope.
+clinician_scope_notes: Clinicians assess toxic load via MSQ, environmental exposure history, and relevant labs. Detox protocols
+  requiring fasting, medical foods, or chelation are clinician-directed.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-liver-detox-toolkit
   location: Detox Food Plan — What is Detox?
-  quote: Scientists estimate that the average adult carries within her or his body
-    at least 700 toxins and that a newborn's body can contain over 200 toxins.
+  quote: Scientists estimate that the average adult carries within her or his body at least 700 toxins and that a newborn's
+    body can contain over 200 toxins.
 - id: vitaone-health-coaching-toolkit
   location: Detox Food Plan — What is Detox?
-  quote: Scientists estimate that the average adult carries within her or his body
-    at least 700 toxins and that a newborn's body can contain over 200 toxins.
+  quote: Scientists estimate that the average adult carries within her or his body at least 700 toxins and that a newborn's
+    body can contain over 200 toxins.
 version: 2
 status: active
 updated_at: '2026-05-04'

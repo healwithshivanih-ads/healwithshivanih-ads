@@ -6,9 +6,8 @@ aliases:
 - toxin clearance
 - metabolic detox
 - liver-detoxification
-summary: The body's physiologic process of rendering chemicals, compounds, hormones,
-  and toxicants less harmful, primarily through Phase I and Phase II liver enzyme
-  pathways, with excretion via kidneys, intestines, and skin. The organs of detoxification
+summary: The body's physiologic process of rendering chemicals, compounds, hormones, and toxicants less harmful, primarily
+  through Phase I and Phase II liver enzyme pathways, with excretion via kidneys, intestines, and skin. The organs of detoxification
   include the liver, kidneys, large intestine, lymphatic system, and sweat glands.
 common_symptoms:
 - fatigue
@@ -28,21 +27,18 @@ related_topics:
 - mold-mycotoxin-exposure
 key_mechanisms:
 - phase-i-cytochrome-p450
-- phase-ii-conjugation
+- phase-2-conjugation
 - gut-liver-axis
-coaching_scope_notes: Coaches can support dietary choices, elimination of toxin sources,
-  hydration, fiber intake, and lifestyle practices. Supplement protocols and fasting
-  interventions require clinician oversight.
-clinician_scope_notes: Clinicians may prescribe specific phase I/II nutrient support,
-  medical food powders, fasting protocols, and lab testing (CBC, CMP, GFR, Vitamin
-  D). Genetic enzyme variability testing is clinician-directed.
+coaching_scope_notes: Coaches can support dietary choices, elimination of toxin sources, hydration, fiber intake, and lifestyle
+  practices. Supplement protocols and fasting interventions require clinician oversight.
+clinician_scope_notes: Clinicians may prescribe specific phase I/II nutrient support, medical food powders, fasting protocols,
+  and lab testing (CBC, CMP, GFR, Vitamin D). Genetic enzyme variability testing is clinician-directed.
 evidence_tier: strong
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Detox Food Plan — What is Detox?
-  quote: In other words, there are well-defined metabolic pathways in the body that
-    are responsible for converting toxins into chemical compounds, making it easy
-    for the body to eliminate them (primarily through the urine or stools).
+  quote: In other words, there are well-defined metabolic pathways in the body that are responsible for converting toxins
+    into chemical compounds, making it easy for the body to eliminate them (primarily through the urine or stools).
 version: 1
 status: active
 updated_at: '2026-05-04'

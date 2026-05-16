@@ -45,11 +45,9 @@ aliases:
 - loose stools
 category: gi
 severity: common
-description: Abdominal fullness, distension, or gassiness commonly triggered by FODMAP
-  fermentation in SIBO or dysbiosis. Fructan-containing foods (onion, garlic) are
-  frequent triggers.
-when_to_refer: Sudden onset, significant unintentional weight loss, or blood in stool—refer
-  to gastroenterology.
+description: Abdominal fullness, distension, or gassiness commonly triggered by FODMAP fermentation in SIBO or dysbiosis.
+  Fructan-containing foods (onion, garlic) are frequent triggers.
+when_to_refer: Sudden onset, significant unintentional weight loss, or blood in stool—refer to gastroenterology.
 linked_to_topics:
 - microbiome
 - dysbiosis
@@ -96,7 +94,7 @@ linked_to_mechanisms:
 - leaky-gut
 - estrogen-enterohepatic-recirculation
 - bile-flow-regulation
-- phase-iii-elimination
+- phase-3-elimination
 - bacterial-fermentation-carbs
 - impaired-gut-motility
 - gut-dysbiosis
@@ -150,22 +148,20 @@ sources:
   quote: Use in bloating, poor digestion, skin detox.
 - id: vitaone-gut-cheatsheet
   location: Gut Dysbiosis vs SIBO vs SIFO vs Hypochlorhydria
-  quote: Gas, bloating — Irregular stools — Fatigue — Food cravings — Skin issues
-    [Gut Dysbiosis symptoms]
+  quote: Gas, bloating — Irregular stools — Fatigue — Food cravings — Skin issues [Gut Dysbiosis symptoms]
 - id: vitaone-inflammation-cheatsheet
   location: Inflammation Cheatsheet — Page 02
   quote: Gut – Bloating, food reactivity, ↑ Zonulin
 - id: vitaone-elimination-diet-cheatsheet
   location: FODMAP Diet Cheatsheet — Introduction
-  quote: They're not 'bad foods' - they're poorly absorbed carbs that ferment and
-    feed dysbiotic bacteria, driving IBS, SIBO, and bloating.
+  quote: They're not 'bad foods' - they're poorly absorbed carbs that ferment and feed dysbiotic bacteria, driving IBS, SIBO,
+    and bloating.
 - id: vitaone-gut-toolkit
   location: Testing for Low Stomach Acidity — Common Symptoms of Hypochlorhydria
   quote: Bloating, belching, burning, and flatulence immediately after meals
 - id: vitaone-inflammation-toolkit
   location: Anti Inflammatory Diet — Who is the Anti-Inflammatory Diet Useful For?
-  quote: 'Digestive Disorders: Such as inflammatory bowel disease (IBD) and irritable
-    bowel syndrome (IBS).'
+  quote: 'Digestive Disorders: Such as inflammatory bowel disease (IBD) and irritable bowel syndrome (IBS).'
 - id: vitaone-adrenal-toolkit
   location: Effects of Chronic Stress — Digestion
   quote: Can trigger digestive pain, gas, bloating, nausea and loss of appetite
@@ -180,58 +176,50 @@ sources:
   quote: Bloating, food sensitivities, mood swings, brain fog.
 - id: coconote-fm-chronic-pain-fatigue
   location: Digestion Section
-  quote: Lot of people they just feel lot of bloating or gas because they are chewing
-    their food.
+  quote: Lot of people they just feel lot of bloating or gas because they are chewing their food.
 - id: coconote-fm-approach-inflammation
   location: Gut Dysbiosis – Location and Type
   quote: SIBO means patient having a bloating after one and a half hours.
 - id: coconote-fm-gut-dysbiosis-pathogens
   location: Probiotic Dosing by Pattern Section
-  quote: if you see overgrowth of normal bacteria consider them also a dysbiotic pattern
-    and don't consider giving them probiotic
+  quote: if you see overgrowth of normal bacteria consider them also a dysbiotic pattern and don't consider giving them probiotic
 - id: coconote-fm-hypochlorhydria
   location: Case Presentation
-  quote: It leads to water brush, severe discomfort, bloating, nausea, epigastric
-    burning pain.
+  quote: It leads to water brush, severe discomfort, bloating, nausea, epigastric burning pain.
 - id: coconote-fm-intestinal-permeability
   location: 5R Protocol – Remove
   quote: So, remove fundamental means we have to remove either food or infections.
 - id: coconote-fm-intestinal-permeability-anish
   location: Triggers and Mediators
-  quote: Infection and dysbiosis if somebody having a chronic infection or maybe it's
-    an imbalance in your gut microbiome… that dysbiosis can leads to increase intestinal
-    permeability.
+  quote: Infection and dysbiosis if somebody having a chronic infection or maybe it's an imbalance in your gut microbiome…
+    that dysbiosis can leads to increase intestinal permeability.
 - id: coconote-fm-preventing-cvd-cholesterol
   location: Gut Inflammation and CVD
-  quote: If someone tells me they have gas, bloating, diarrhea, heartburn, if I'm
-    suspicious about their gut, I'll do a food sensitivity test.
+  quote: If someone tells me they have gas, bloating, diarrhea, heartburn, if I'm suspicious about their gut, I'll do a food
+    sensitivity test.
 - id: coconote-fm-sibo-sifo
   location: Triggers for SIBO / Symptoms
-  quote: Increased susceptibility for SIBO and recurrence presenting as bloating after
-    meals and these are all the symptoms.
+  quote: Increased susceptibility for SIBO and recurrence presenting as bloating after meals and these are all the symptoms.
 - id: coconote-fm-sex-hormones
   location: Case Study — Rekha
   quote: she was anxious, lot of bloating and there was a lot of hair loss as well.
 - id: barbara-oneil-gi-tract
   location: Meal Timing Section
-  quote: If they ate breakfast and had a morning tea, then just before lunch they
-    tested the contents of the stomach, there's still a bit of breakfast there.
+  quote: If they ate breakfast and had a morning tea, then just before lunch they tested the contents of the stomach, there's
+    still a bit of breakfast there.
 - id: barbara-oneil-ph-balance
   location: Gluten and Hybridised Wheat Section
-  quote: The two most common symptoms are brain fog and bloating. And how many people
-    have that and just live with that?
+  quote: The two most common symptoms are brain fog and bloating. And how many people have that and just live with that?
 - id: ask-expert-womens-health-vaginal-microbiome
   location: SIBO symptoms and elimination diet discussion
   quote: You've got SIBO, you've got bloating and diarrhea and joint pain and anxiety.
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXbyLyYjP__/
-  quote: Fruit-triggered bloating often reflects fructose malabsorption or microbial
-    overgrowth
+  quote: Fruit-triggered bloating often reflects fructose malabsorption or microbial overgrowth
 - id: vitaone-fm-adrenal-hormones
   location: Symptoms Discussed
-  quote: IBS, IBD, gut dysmotility, bloating, poor digestion, low stomach acid, and
-    food sensitivities — Linked to stress, serotonin, gastrin, secretin, CCK, gut-brain
-    disruption, vagal tone reduction, and dysbiosis.
+  quote: IBS, IBD, gut dysmotility, bloating, poor digestion, low stomach acid, and food sensitivities — Linked to stress,
+    serotonin, gastrin, secretin, CCK, gut-brain disruption, vagal tone reduction, and dysbiosis.
 version: 29
 status: active
 updated_at: '2026-05-05'
