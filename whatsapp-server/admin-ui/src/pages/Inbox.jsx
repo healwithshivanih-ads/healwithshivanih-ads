@@ -138,7 +138,13 @@ function ConversationPane({ id, onChange }) {
     try {
       const conv = await api.conversation(id);
       setData(conv);
-      if (!silent) api.markRead(id).catch(() => {});
+      if (!silent) {
+        // After server resets unread_count to 0, refresh the outer list so
+        // the badge in the left rail clears immediately. Without this the
+        // badge stuck around until the next 10 s poll. onChange points at
+        // the parent Inbox's silent `refresh`.
+        api.markRead(id).then(() => onChange?.(true)).catch(() => {});
+      }
       if (conv?.contact_id && !contact) {
         api.contact(conv.contact_id).then(setContact).catch(() => setContact(null));
       }

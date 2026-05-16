@@ -207,6 +207,96 @@ const TEMPLATES = [
     example: [['Priya']],
     buttons: ['Most days', 'A few times', 'None'],
   },
+
+  // ── Upcoming-webinar broadcast templates ────────────────────────────────────
+  //
+  // Three-template progression around any upcoming workshop:
+  //   1. webinar_invite_v1     — first-touch invite (sent ~7 days out)
+  //   2. webinar_tomorrow_v1   — 24h reminder for whole list (registered or not)
+  //   3. webinar_last_call_v1  — day-of urgency push (a few hours before start)
+  //
+  // All three use a URL CTA button "Register" pointing at
+  //   https://lp.theochretree.com/lp/{{1}}
+  // where {{1}} is the workshop slug. Meta requires the prefix to be static
+  // and only the suffix variable — locks down the domain (anti-phishing).
+  //
+  // Body {{5}} on the invite template is a multi-line "details block" —
+  // the coach assembles "WHO IT'S FOR:" + 3 bullets at send time. Packing
+  // into one param keeps the total param count manageable; otherwise we'd
+  // need 10+ params and Meta would balk at validation.
+  //
+  // All three will likely be auto-classified MARKETING by Meta (URLs +
+  // promotional framing). Marketing rate ~₹0.78/msg — a 200-person triple
+  // blast around one webinar is ~₹470 total.
+  {
+    name: 'webinar_invite_v1',
+    category: 'MARKETING',
+    language: 'en',
+    body:
+      'Hi {{1}}, want to join my next session?\n\n' +
+      '📅 "{{2}}"\n' +
+      '{{3}} at {{4}}\n\n' +
+      '{{5}}\n\n' +
+      'Tap below to reserve your spot.\n\n' +
+      '— Shivani Hari\nYour Functional Health Coach',
+    example: [[
+      'Priya',
+      'Reset Your Cortisol',
+      'Wednesday 21 May',
+      '5:00 PM IST',
+      "WHO IT'S FOR: Women in their 40s+ noticing afternoon energy crashes and stubborn weight around the middle.\n\nWHAT YOU'LL GET:\n• Why morning cortisol matters for mid-life weight gain\n• 3 practical resets you can start tomorrow morning\n• Live Q&A — bring anything you've been wrestling with",
+    ]],
+    buttons: [{
+      type: 'URL',
+      text: 'Register',
+      url: 'https://lp.theochretree.com/lp/{{1}}',
+      exampleSuffix: 'cortisol-belly-may21',
+    }],
+  },
+  {
+    name: 'webinar_tomorrow_v1',
+    category: 'MARKETING',
+    language: 'en',
+    body:
+      'Hi {{1}}, quick reminder — "{{2}}" is tomorrow at {{3}}.\n\n' +
+      '{{4}}\n\n' +
+      "If you've already registered you'll get the join link separately. " +
+      'If not, tap below to grab a spot.\n\n' +
+      '— Shivani Hari\nYour Functional Health Coach',
+    example: [[
+      'Priya',
+      'Reset Your Cortisol',
+      '5:00 PM IST',
+      "It's a 60-min session — practical, no theory waffle.",
+    ]],
+    buttons: [{
+      type: 'URL',
+      text: 'Register',
+      url: 'https://lp.theochretree.com/lp/{{1}}',
+      exampleSuffix: 'cortisol-belly-may21',
+    }],
+  },
+  {
+    name: 'webinar_last_call_v1',
+    category: 'MARKETING',
+    language: 'en',
+    body:
+      'Hi {{1}}, last call — "{{2}}" starts at {{3}} today.\n\n' +
+      "If you're on the fence, this is the one. Tap below and I'll send " +
+      'the join link right away.\n\n' +
+      '— Shivani Hari\nYour Functional Health Coach',
+    example: [[
+      'Priya',
+      'Reset Your Cortisol',
+      '5:00 PM IST',
+    ]],
+    buttons: [{
+      type: 'URL',
+      text: 'Register now',
+      url: 'https://lp.theochretree.com/lp/{{1}}',
+      exampleSuffix: 'cortisol-belly-may21',
+    }],
+  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -258,14 +348,37 @@ function buildComponents(tpl) {
       ...(tpl.example ? { example: { body_text: tpl.example } } : {}),
     },
   ];
-  // Quick-reply buttons (max 3 per template per Meta spec).
+  // Buttons (max 3 per template per Meta spec). Two flavours:
+  //   - plain string  → QUICK_REPLY (existing behaviour, weekly polls etc.)
+  //   - { type, text, url, exampleSuffix } → URL CTA. Meta requires:
+  //       url:     "https://prefix.example.com/path/{{1}}"
+  //       example: ["https://prefix.example.com/path/concrete-value"]
+  //     where the {{1}} is filled in at send time. The hardcoded prefix
+  //     locks down the domain (anti-phishing); only the suffix is dynamic.
   if (Array.isArray(tpl.buttons) && tpl.buttons.length > 0) {
     components.push({
       type: 'BUTTONS',
-      buttons: tpl.buttons.slice(0, 3).map((label) => ({
-        type: 'QUICK_REPLY',
-        text: String(label).slice(0, 25), // Meta hard limit
-      })),
+      buttons: tpl.buttons.slice(0, 3).map((b) => {
+        if (typeof b === 'string') {
+          return { type: 'QUICK_REPLY', text: b.slice(0, 25) };
+        }
+        if (b?.type === 'URL') {
+          const btn = {
+            type: 'URL',
+            text: String(b.text || 'Open').slice(0, 25),
+            url: b.url,
+          };
+          // Example is required by Meta when the URL contains a {{N}} var.
+          if (b.url && b.url.includes('{{')) {
+            btn.example = b.example || [b.exampleSuffix
+              ? b.url.replace(/\{\{\d+\}\}/, b.exampleSuffix)
+              : b.url.replace(/\{\{\d+\}\}/, 'sample')];
+          }
+          return btn;
+        }
+        // Fallback — treat unknown shape as a quick reply.
+        return { type: 'QUICK_REPLY', text: String(b.text || b).slice(0, 25) };
+      }),
     });
   }
   return components;
