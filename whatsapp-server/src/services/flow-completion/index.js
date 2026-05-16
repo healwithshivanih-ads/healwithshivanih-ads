@@ -40,6 +40,9 @@ async function forwardFlowCompletionToOchre({ campaign, formData, waId, contact 
     type: 'flow_completion',
     campaign: campaign.slug,
     campaign_title: campaign.title,
+    // Short, CRM-friendly display name for the per-campaign Wix label.
+    // Falls back to title on the ochre side if absent.
+    campaign_label: campaign.wix_campaign_label || campaign.title,
     wa_id: waId,
     first_name: formData.first_name || null,
     email: formData.email || null,
@@ -93,11 +96,17 @@ const CAMPAIGNS = {
   '40s-decade-jun11': {
     slug: '40s-decade-jun11',
     title: '40s: The Decade No One Prepared You For',
+    wix_campaign_label: "40's Decade",
     date_label: 'Thursday 11 June',
     time_label: '7:00 PM IST',
     price_label: '₹199',
     lp_base: 'https://lp.theochretree.com/lp/40s-decade-jun11',
     concerns: ['sleep', 'energy', 'weight', 'mood', 'all'],
+    // Poster shown as the image header on Touch 0 + Touch 1. Must be a
+    // publicly reachable JPG/PNG ≤5 MB. Square (1:1) renders best in
+    // WhatsApp's interactive bubble. Leave null until the poster is ready
+    // — the cta_url message is still valid without a header.
+    header_image_url: null,
   },
 };
 
@@ -156,34 +165,40 @@ function greeting(firstName) {
   return firstName ? `Hi ${firstName}` : 'Hi there';
 }
 
-function buildFollowUpText(campaign, formData, lpUrl) {
+// Touch 0 body — sent immediately after Flow submission. Adds context (who
+// Shivani is + which workshop they came in for) before the concern-specific
+// acknowledgement, because CTWA leads may have forgotten the ad already by
+// the time they finish the Flow. Body text only — the URL is moved to a
+// CTA button so the user sees a clean "Reserve my seat" tap target instead
+// of a raw URL.
+function buildFollowUpBody(campaign, formData) {
   const ack = CONCERN_ACK[formData.concern] || '';
   return [
-    `${greeting(formData.first_name)} — so glad you reached out.`,
+    `${greeting(formData.first_name)} — so glad you reached out!`,
+    '',
+    `I'm Shivani Hariharan, a Functional Health Coach. You signed up through my ad for *${campaign.title}* — my upcoming live workshop on the hormone shifts behind sleep, mood, weight and brain fog in your 40s.`,
+    '',
+    `📅 ${campaign.date_label} · ${campaign.time_label} · ${campaign.price_label} · 60 min on Zoom · recording yours for life.`,
     '',
     ack,
     '',
-    `Your spot: ${lpUrl}`,
-    `${campaign.price_label} · ${campaign.date_label} · ${campaign.time_label} · 60 min on Zoom · recording yours for life.`,
-    '',
-    'Any questions, just reply here.',
-    '',
-    '— Shivani Hari',
+    'Tap below to reserve your spot — or reply with any questions, I\'m here.',
   ].join('\n');
 }
 
-function buildNudgeText(campaign, formData, lpUrl) {
+// Touch 1 body — +2h nudge. Keeps the context (workshop name + date) so a
+// distracted user re-orients instantly. The button takes them to the same
+// pre-filled LP.
+function buildNudgeBody(campaign, formData) {
   const nudge = CONCERN_NUDGE[formData.concern] || '';
   return [
-    `${greeting(formData.first_name)} — quick check-in.`,
+    `${greeting(formData.first_name)} — quick nudge.`,
     '',
-    `${nudge} The recording stays yours for life, so even if Thursday doesn't work, you won't miss out.`,
+    `Just checking in case my earlier message slipped past your inbox — this is about *${campaign.title}* on ${campaign.date_label}, ${campaign.time_label}.`,
     '',
-    `Your spot: ${lpUrl}`,
+    `${nudge} The recording stays yours for life, so even if ${campaign.date_label.split(' ')[0]} doesn\'t work, you won\'t miss out.`,
     '',
-    "Any questions? I'm here.",
-    '',
-    '— Shivani Hari',
+    'Tap below to reserve your spot, or reply with any questions.',
   ].join('\n');
 }
 
@@ -212,7 +227,7 @@ export async function handleFlowCompletion({ event, contact /* , conversation */
   }
 
   const lpUrl = buildLpUrl(campaign, formData, event.wa_id);
-  const text = buildFollowUpText(campaign, formData, lpUrl);
+  const body = buildFollowUpBody(campaign, formData);
 
   logger.info(
     {
@@ -224,13 +239,20 @@ export async function handleFlowCompletion({ event, contact /* , conversation */
       concern: formData.concern,
       lp_url: lpUrl,
     },
-    'flow completion: sending LP link',
+    'flow completion: sending Touch 0 (cta_url button)',
   );
 
   try {
-    await wa.sendText({ to: event.wa_id, body: text });
+    await wa.sendCtaUrl({
+      to: event.wa_id,
+      body,
+      headerImageUrl: campaign.header_image_url || undefined,
+      footerText: '— Shivani Hari',
+      displayText: 'Reserve my seat',
+      url: lpUrl,
+    });
   } catch (e) {
-    logger.error({ err: e.message, wa_id: event.wa_id }, 'flow completion: failed to send LP link');
+    logger.error({ err: e.message, wa_id: event.wa_id }, 'flow completion: Touch 0 send failed');
     throw e;
   }
 
@@ -255,10 +277,17 @@ export async function handleFlowCompletion({ event, contact /* , conversation */
   // Touches at +24h and +3d will need persistence (template-based) when
   // we add them.
   const waId = event.wa_id;
-  const nudgeText = buildNudgeText(campaign, formData, lpUrl);
+  const nudgeBody = buildNudgeBody(campaign, formData);
   const TWO_HOURS_MS = 2 * 60 * 60 * 1000;
   const t = setTimeout(() => {
-    wa.sendText({ to: waId, body: nudgeText })
+    wa.sendCtaUrl({
+      to: waId,
+      body: nudgeBody,
+      headerImageUrl: campaign.header_image_url || undefined,
+      footerText: '— Shivani Hari',
+      displayText: 'Reserve my seat',
+      url: lpUrl,
+    })
       .then(() => logger.info({ wa_id: waId, campaign: campaign.slug }, 'flow completion: Touch 1 (+2h) sent'))
       .catch((err) => logger.error({ err: err.message, wa_id: waId }, 'flow completion: Touch 1 send failed'));
   }, TWO_HOURS_MS);

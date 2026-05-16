@@ -24,7 +24,7 @@ const RULES = [
     // Multi-word keywords are matched as a substring (so "tell me about 40s"
     // matches "40s"). Anchor with word boundaries via the substring check
     // below so "abc40s" doesn't trigger.
-    keywords: ['40s', '40s decade', 'decade', 'workshop', '40s workshop'],
+    keywords: ['40', '40s', '40s decade', 'decade', 'workshop', '40s workshop'],
     flow: {
       id: '2486049711910777',
       token: '40s-decade-jun11',
