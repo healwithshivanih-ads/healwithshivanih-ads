@@ -309,6 +309,10 @@ export interface PlanFields {
   updated_at?: string;
   updated_by?: string;
   catalogue_snapshot?: Record<string, unknown>;
+  /** Outcome-tracking baseline captured at plan publish (or backfilled
+   *  from the closest pre-publish health_snapshot). Empty for plans
+   *  published before Phase 1 of outcome tracking landed. */
+  baseline_snapshot?: Record<string, unknown>;
   // Loader-only metadata (set when reading from disk).
   _bucket?: string;
   _file?: string;

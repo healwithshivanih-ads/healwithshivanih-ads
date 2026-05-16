@@ -193,6 +193,49 @@ def publish_plan(
         snapshot_date=date.today(),
     )
 
+    # ── Capture baseline_snapshot for outcome tracking (Phase 1) ─────────
+    # Records the client's lab markers / measurements / presenting symptoms
+    # at publish time so downstream delta computation can attribute
+    # changes ("TSH dropped 1.4 over 12 weeks") to the interventions in
+    # this plan rather than to ambient noise.
+    if client is not None:
+        client_dict = client.model_dump(mode="json") if hasattr(client, "model_dump") else {}
+        # Pull the latest five-pillars assessment from sessions if available
+        # within the last 30 days — keeps the snapshot synced with the
+        # client's recent self-rating, not an outdated one.
+        latest_pillars = None
+        try:
+            sessions = plan_storage.list_sessions(root, plan.client_id)
+            recent = [s for s in sessions if getattr(s, "five_pillars", None)]
+            if recent:
+                # newest by date
+                recent.sort(key=lambda s: s.date, reverse=True)
+                cutoff = date.today().toordinal() - 30
+                if recent[0].date.toordinal() >= cutoff:
+                    fp = recent[0].five_pillars
+                    if hasattr(fp, "model_dump"):
+                        latest_pillars = fp.model_dump(mode="json")
+        except Exception:
+            pass
+
+        plan.baseline_snapshot = {
+            "captured_at": datetime.now(timezone.utc).isoformat(),
+            "plan_period_start": plan.plan_period_start.isoformat(),
+            "plan_slug": plan.slug,
+            "plan_version_at_capture": (_max_published_version(root, plan.slug) + 1),
+            "lab_markers": client_dict.get("lab_markers") or [],
+            "lab_markers_date": client_dict.get("lab_markers_date"),
+            "measurements": client_dict.get("measurements") or {},
+            "presenting_symptoms": list(plan.presenting_symptoms),
+            "active_conditions": client_dict.get("active_conditions") or [],
+            "current_medications": (
+                client_dict.get("current_medications")
+                or client_dict.get("medications")
+                or []
+            ),
+            "five_pillars": latest_pillars,
+        }
+
     # Bump version
     new_version = _max_published_version(root, slug) + 1
     plan.version = new_version

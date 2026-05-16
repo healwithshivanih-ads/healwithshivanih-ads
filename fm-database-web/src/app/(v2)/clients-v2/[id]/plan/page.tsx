@@ -55,6 +55,7 @@ import { ReworkBanner } from "@/components/client-widgets/rework-banner";
 import { AttachedProtocolsPanel } from "./attached-protocols-panel";
 import { FollowUpPanel } from "./follow-up-panel";
 import { PhaseLetterPanel } from "./phase-letter-panel";
+import { PlanOutcomesPanel } from "./plan-outcomes-panel";
 import { ActivateDraftButton } from "./activate-draft-button";
 // GeneratedLettersPanel moved to Communicate tab — see plan/page.tsx
 // around line 745 for the pointer card that replaced it.
@@ -1132,6 +1133,19 @@ export default async function PlanTabPage({
                 />
               </div>
             </FmPanel>
+
+            {/* 📊 Outcomes since plan publish — Phase 1 of the outcome
+                feedback loop. Pulls Plan.baseline_snapshot (captured at
+                publish, or backfilled from the closest pre-publish
+                health_snapshot) and diffs it against the latest client
+                state. Lab + measurement deltas surfaced with FM-direction
+                colouring (improving / worsening / unchanged). */}
+            {isPublished && activePlan && (
+              <PlanOutcomesPanel
+                planSlug={activePlan.slug as string}
+                clientId={id}
+              />
+            )}
 
             {/* Continue meal plan — mid-cycle continuation letters.
                 Moved here from Communicate (2026-05-13) — this is plan

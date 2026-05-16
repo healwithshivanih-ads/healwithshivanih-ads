@@ -926,6 +926,29 @@ class Plan(BaseModel):
     catalogue_snapshot: CatalogueSnapshot
     ai_sanity_check: dict = Field(default_factory=dict)    # filled by `plan check` command
     notes_for_coach: str = ""                              # private working notes
+    # ── Outcome tracking (Phase 1) ─────────────────────────────────────────
+    # Captured at plan publish time. Anchors "what was this client like
+    # BEFORE this plan?" so downstream delta computation can attribute
+    # changes (lab movements, symptom resolution, weight changes) to the
+    # interventions in this plan rather than to free-floating "they just
+    # got better".
+    # Shape (free dict — Pydantic doesn't enforce the inner schema; the
+    # capture function in transitions.py emits a stable structure):
+    #   {
+    #     "captured_at": "2026-05-16T..."  (ISO timestamp),
+    #     "plan_period_start": "2026-05-16",
+    #     "lab_markers": [{"marker_name", "value", "unit", "flag",
+    #                       "reference_range"}, ...],
+    #     "measurements": {"weight_kg", "height_cm", "waist_cm",
+    #                       "blood_pressure_systolic", ...},
+    #     "presenting_symptoms": ["fatigue", "brain-fog", ...],
+    #     "active_conditions": ["hashimotos", "postmenopausal", ...],
+    #     "five_pillars": {...}  (most recent if within 30d),
+    #     "source_snapshot_date": "2026-04-30"  (the source
+    #                       client.lab_markers_date used for labs),
+    #   }
+    # Empty dict for plans published before this field landed.
+    baseline_snapshot: dict = Field(default_factory=dict)
     version: int = 1
     created_at: datetime
     updated_at: datetime
