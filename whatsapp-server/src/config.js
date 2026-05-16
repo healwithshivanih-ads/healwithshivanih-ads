@@ -69,6 +69,16 @@ export const config = {
     url: process.env.FM_COACH_WEBHOOK_URL || '',
     secret: process.env.FM_COACH_WEBHOOK_SECRET || '',
   },
+
+  // Ochre-followup Flow completion webhook. When a user finishes a
+  // WhatsApp Flow (e.g. the 40s-decade lead capture), the captured fields
+  // (name, email, concern, wa_id, campaign) get POSTed here so ochre can
+  // upsert a Contact + push to Wix CRM. Same HMAC-SHA256 pattern as the
+  // FM coach forwarder. No-op if unset.
+  ochreFlowWebhook: {
+    url: process.env.OCHRE_FLOW_WEBHOOK_URL || '',
+    secret: process.env.OCHRE_FLOW_WEBHOOK_SECRET || '',
+  },
 };
 
 export function configSummary() {

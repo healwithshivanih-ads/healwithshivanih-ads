@@ -18,8 +18,67 @@
 // message id, so Meta retries on this completion event won't double-
 // send. We don't track our own "did we already follow up?" state.
 
+import { createHmac } from 'node:crypto';
+import { config } from '../../config.js';
 import { logger } from '../../logger.js';
 import * as wa from '../../channels/whatsapp/client.js';
+
+const OCHRE_FORWARD_TIMEOUT_MS = 5000;
+
+/**
+ * Fire-and-forget POST to the Ochre flow-completion webhook so the FM /
+ * coaching app can upsert a Contact + push to Wix CRM. Signed with
+ * HMAC-SHA256 over the JSON body bytes (X-Ochre-Flow-Signature-256). No-op
+ * if config.ochreFlowWebhook.url is unset.
+ */
+async function forwardFlowCompletionToOchre({ campaign, formData, waId, contact }) {
+  const url = config.ochreFlowWebhook.url;
+  const secret = config.ochreFlowWebhook.secret;
+  if (!url) return;
+
+  const payload = {
+    type: 'flow_completion',
+    campaign: campaign.slug,
+    campaign_title: campaign.title,
+    wa_id: waId,
+    first_name: formData.first_name || null,
+    email: formData.email || null,
+    concern: formData.concern || null,
+    contact_id: contact?.id || null,
+    contact_display_name: contact?.display_name || null,
+    submitted_at: new Date().toISOString(),
+    raw_form_data: formData,
+  };
+  const bodyStr = JSON.stringify(payload);
+  const headers = { 'Content-Type': 'application/json' };
+  if (secret) {
+    const sig = createHmac('sha256', secret).update(bodyStr).digest('hex');
+    headers['X-Ochre-Flow-Signature-256'] = `sha256=${sig}`;
+  }
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), OCHRE_FORWARD_TIMEOUT_MS);
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers,
+      body: bodyStr,
+      signal: controller.signal,
+    });
+    if (!res.ok) {
+      const text = await res.text().catch(() => '');
+      logger.warn(
+        { status: res.status, url, body: text.slice(0, 200) },
+        'ochre flow-completion forward returned non-2xx',
+      );
+    } else {
+      logger.info({ wa_id: waId, campaign: campaign.slug, url }, 'ochre flow-completion forwarded');
+    }
+  } catch (err) {
+    logger.warn({ err: err.message, url }, 'ochre flow-completion forward failed');
+  } finally {
+    clearTimeout(timer);
+  }
+}
 
 // Map Flow → campaign metadata. Add entries as new Flows ship.
 //
@@ -129,6 +188,7 @@ function buildNudgeText(campaign, formData, lpUrl) {
 }
 
 export async function handleFlowCompletion({ event, contact /* , conversation */ }) {
+  // (forwarder fires after we extract formData below)
   // Pull the encrypted form response Meta put on the inbound event.
   // parse.js stores it as ev.payload._normalized.response_json (a JSON
   // string).
@@ -173,6 +233,17 @@ export async function handleFlowCompletion({ event, contact /* , conversation */
     logger.error({ err: e.message, wa_id: event.wa_id }, 'flow completion: failed to send LP link');
     throw e;
   }
+
+  // Fire-and-forget POST to ochre so it can upsert the Contact + push to
+  // Wix CRM. Errors logged but don't block the rest of the handler. Runs
+  // AFTER the LP link send so the user-visible follow-up isn't delayed by
+  // ochre being slow.
+  forwardFlowCompletionToOchre({
+    campaign,
+    formData,
+    waId: event.wa_id,
+    contact,
+  }).catch(() => {});
 
   // Touch 1 — +2h soft nudge if they haven't replied or paid yet. Stays
   // inside the 24h customer-service window so we can keep it freeform (no

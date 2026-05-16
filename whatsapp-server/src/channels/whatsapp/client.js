@@ -123,6 +123,57 @@ export async function sendInteractiveList({ to, body, button, sections }) {
   return { externalMessageId: pickExternalId(res), payload, raw: res };
 }
 
+/**
+ * Send a published Meta WhatsApp Flow to a user as an interactive message.
+ * Triggered by inbound keyword matches (services/keywords) — when someone
+ * texts "40s" to the WABA number, we reply with this so the Flow opens
+ * in their chat. Same Flow we attach to CTWA ads; different entry point.
+ *
+ * `flow_token` is a string we choose; it comes back to us on completion
+ * via the inbound webhook (encrypted in response_json). Use it for
+ * attribution / dedup if needed. For now we set it to the campaign slug.
+ *
+ * `cta` is the chat-bubble button label (<= 20 chars per Meta spec).
+ */
+export async function sendFlow({
+  to,
+  flowId,
+  flowToken,
+  cta = 'Open form',
+  headerText,
+  bodyText,
+  footerText,
+  initialScreen = 'WELCOME',
+}) {
+  const payload = {
+    messaging_product: 'whatsapp',
+    to,
+    type: 'interactive',
+    interactive: {
+      type: 'flow',
+      ...(headerText ? { header: { type: 'text', text: headerText } } : {}),
+      body: { text: bodyText || 'Tap below to continue.' },
+      ...(footerText ? { footer: { text: footerText } } : {}),
+      action: {
+        name: 'flow',
+        parameters: {
+          flow_message_version: '3',
+          flow_token: flowToken,
+          flow_id: flowId,
+          flow_cta: String(cta).slice(0, 20),
+          flow_action: 'navigate',
+          flow_action_payload: {
+            screen: initialScreen,
+            data: {},
+          },
+        },
+      },
+    },
+  };
+  const res = await _post(payload);
+  return { externalMessageId: pickExternalId(res), payload, raw: res };
+}
+
 export async function markRead(externalMessageId) {
   await _post({
     messaging_product: 'whatsapp',

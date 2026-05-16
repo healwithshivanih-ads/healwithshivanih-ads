@@ -12,6 +12,8 @@ import { getDefault as getDefaultWorkspace } from '../services/workspaces.js';
 import { forwardInbound } from '../services/forwarder/index.js';
 import { publish, EVENTS } from '../services/events/index.js';
 import { handleFlowCompletion } from '../services/flow-completion/index.js';
+import { matchKeyword } from '../services/keywords/index.js';
+import { sendFlow } from '../channels/whatsapp/client.js';
 
 export const webhookRouter = Router();
 
@@ -125,6 +127,32 @@ async function processMetaWebhook(body, webhookRowId) {
         if (ev.type === 'flow') {
           handleFlowCompletion({ event: ev, contact, conversation: conv })
             .catch((err) => logger.error({ err: err.message }, 'flow completion failed'));
+        }
+        // Inbound text keyword → Flow trigger. If the user texted "40s"
+        // or another configured keyword, fire the Flow back as an
+        // interactive message so it pops open in their chat. Same Flow
+        // that CTWA ads use; different entry point — unlocks wa.me/
+        // IG-DM-funnel/coach-manual-share paths without any new ad spend.
+        if (ev.type === 'text') {
+          const rule = matchKeyword(ev.body);
+          if (rule) {
+            sendFlow({
+              to: ev.wa_id,
+              flowId: rule.flow.id,
+              flowToken: rule.flow.token,
+              cta: rule.flow.cta,
+              headerText: rule.flow.header,
+              bodyText: rule.flow.body,
+              footerText: rule.flow.footer,
+            }).then((sent) => {
+              logger.info(
+                { wa_id: ev.wa_id, rule: rule.name, external_id: sent.externalMessageId },
+                'keyword → flow sent',
+              );
+            }).catch((err) => {
+              logger.error({ err: err.message, wa_id: ev.wa_id, rule: rule.name }, 'keyword → flow failed');
+            });
+          }
         }
       } else if (ev.kind === 'status') {
         const errPayload = ev.errors ? { errors: ev.errors } : null;
