@@ -373,12 +373,20 @@ export interface MessageTemplate {
 
 const TEMPLATES_FILE = path.join(PLANS_ROOT, "message_templates.yaml");
 
+// Bodies mirror the Meta-APPROVED WhatsApp template bodies on the WABA
+// (synced 2026-05-16 from whatsapp-server/scripts/submit-templates.js).
+// All 5 carry the canonical sign-off so the preview shown to the coach
+// matches what the client actually receives on WhatsApp.
+// If you edit a body here, also edit the matching TEMPLATES entry in
+// submit-templates.js and re-run the script — Meta will re-approve.
+const SIGNOFF = "\n\n— Shivani Hari\nYour Functional Health Coach";
+
 const DEFAULT_TEMPLATES: MessageTemplate[] = [
   {
     slug: "lab-reminder",
     name: "Lab Reminder",
     category: "labs",
-    body: "Hi {{name}}, a gentle reminder to get your labs done before our next session. Here are the tests we discussed: {{labs}}. Please share the report at least 2 days before our appointment. 🙏",
+    body: `Hi {{name}}, a gentle reminder to get your labs done before our next session. Here are the tests we discussed: {{labs}}. Please share the report at least 2 days before our appointment. 🙏${SIGNOFF}`,
     variables: ["name", "labs"],
     whatsapp_template_name: "fm_lab_reminder",
   },
@@ -386,7 +394,7 @@ const DEFAULT_TEMPLATES: MessageTemplate[] = [
     slug: "supplement-instructions",
     name: "Supplement Instructions",
     category: "protocol",
-    body: "Hi {{name}}, here are your supplement instructions for this week: {{instructions}}. Take them as discussed and note any changes. Feel free to message if you have questions! 💊",
+    body: `Hi {{name}}, here are your supplement instructions for this week: {{instructions}}. Take them as discussed and note any changes. Feel free to message if you have questions! 💊${SIGNOFF}`,
     variables: ["name", "instructions"],
     whatsapp_template_name: "fm_supplement_instructions",
   },
@@ -394,7 +402,7 @@ const DEFAULT_TEMPLATES: MessageTemplate[] = [
     slug: "check-in-nudge",
     name: "Check-in Nudge",
     category: "follow-up",
-    body: "Hi {{name}}, just checking in! How are you feeling on the protocol? Any changes in {{symptom}}? Would love to hear how things are going. 🌿",
+    body: `Hi {{name}}, just checking in! How are you feeling on the protocol? Any changes in {{symptom}}? Would love to hear how things are going. 🌿${SIGNOFF}`,
     variables: ["name", "symptom"],
     whatsapp_template_name: "fm_checkin_nudge",
   },
@@ -402,7 +410,7 @@ const DEFAULT_TEMPLATES: MessageTemplate[] = [
     slug: "session-confirmation",
     name: "Session Confirmation",
     category: "appointment",
-    body: "Hi {{name}}, confirming our session on {{date}} at {{time}}. Please come prepared with your food journal and any new lab reports. See you then! 📋",
+    body: `Hi {{name}}, confirming our session on {{date}} at {{time}}. Please come prepared with your food journal and any new lab reports. See you then! 📋${SIGNOFF}`,
     variables: ["name", "date", "time"],
     whatsapp_template_name: "fm_session_confirm",
   },
@@ -410,32 +418,66 @@ const DEFAULT_TEMPLATES: MessageTemplate[] = [
     slug: "encouragement",
     name: "Encouragement",
     category: "support",
-    body: "Hi {{name}}, you're doing great! Healing takes time and consistency — be patient with yourself. Keep going with {{protocol_highlight}}. Rooting for you! 💚",
+    body: `Hi {{name}}, you're doing great! Healing takes time and consistency — be patient with yourself. Keep going with {{protocol_highlight}}. Rooting for you! 💚${SIGNOFF}`,
     variables: ["name", "protocol_highlight"],
     whatsapp_template_name: "fm_encouragement",
   },
 ];
 
 export async function loadMessageTemplatesAction(): Promise<MessageTemplate[]> {
-  // Backfill map — for legacy YAML written before `whatsapp_template_name`
-  // existed (pre-2026-05-15). Looks up the default by slug and copies its
-  // Meta template name onto the loaded entry. Coach-added templates without
-  // a matching default just stay unmapped → panel shows "⚠ Not approved"
-  // until coach edits the YAML to add the field.
-  const defaultByName = new Map(DEFAULT_TEMPLATES.map((t) => [t.slug, t]));
+  // Backfill — covers two legacy YAML cases:
+  //   1. `whatsapp_template_name` missing (pre-2026-05-15 templates)
+  //   2. Body without the canonical sign-off (pre-2026-05-16 templates,
+  //      before the Meta body edits were rolled out). When the on-disk
+  //      body matches a default slug AND is missing the sign-off, we
+  //      adopt the new default body so the panel preview matches what
+  //      the client actually receives on WhatsApp.
+  // Coach-added templates without a matching default slug pass through
+  // untouched.
+  const defaultBySlug = new Map(DEFAULT_TEMPLATES.map((t) => [t.slug, t]));
   const backfill = (t: MessageTemplate): MessageTemplate => {
-    if (t.whatsapp_template_name) return t;
-    const def = defaultByName.get(t.slug);
-    return def?.whatsapp_template_name
-      ? { ...t, whatsapp_template_name: def.whatsapp_template_name }
-      : t;
+    const def = defaultBySlug.get(t.slug);
+    let next = t;
+    if (!next.whatsapp_template_name && def?.whatsapp_template_name) {
+      next = { ...next, whatsapp_template_name: def.whatsapp_template_name };
+    }
+    // Body sign-off self-heal: if it's a default-slug template and the
+    // current body doesn't already include the canonical sign-off, swap
+    // in the new default body. Coach edits to bodies of NON-default
+    // slugs are preserved.
+    if (def && !next.body.includes("Your Functional Health Coach")) {
+      next = { ...next, body: def.body };
+    }
+    return next;
   };
 
   try {
     const raw = await fs.readFile(TEMPLATES_FILE, "utf-8");
     const parsed = yaml.load(raw);
     if (Array.isArray(parsed) && parsed.length > 0) {
-      return (parsed as MessageTemplate[]).map(backfill);
+      const healed = (parsed as MessageTemplate[]).map(backfill);
+      // If we changed anything, persist the healed YAML so the next load
+      // doesn't have to re-heal (and the file on disk matches what we
+      // serve, easier to inspect during debugging).
+      const changed = healed.some((h, i) => {
+        const before = (parsed as MessageTemplate[])[i];
+        return (
+          h.body !== before.body ||
+          h.whatsapp_template_name !== before.whatsapp_template_name
+        );
+      });
+      if (changed) {
+        try {
+          await fs.writeFile(
+            TEMPLATES_FILE,
+            yaml.dump(healed, { lineWidth: 120 }),
+            "utf-8",
+          );
+        } catch {
+          /* read-only filesystem etc. — heal in memory only */
+        }
+      }
+      return healed;
     }
   } catch {
     // File doesn't exist — write defaults and return them
