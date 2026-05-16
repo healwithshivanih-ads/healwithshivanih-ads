@@ -44,11 +44,77 @@ interface AdherenceFlag {
   last_response_at?: string;
 }
 
-interface Props {
-  whatsappConfigured: boolean;
+interface PollClient {
+  client_id: string;
+  display_name?: string;
+  mobile_number?: string;
 }
 
-export function WeeklyPollPanel({ whatsappConfigured }: Props) {
+interface Props {
+  whatsappConfigured: boolean;
+  /** Clients eligible for polling — must have a published plan + mobile.
+   *  Filtered server-side; we render all of them pre-checked and let coach
+   *  untick anyone they don't want included in THIS poll send (e.g. a
+   *  client travelling, or someone who specifically asked not to be polled
+   *  this week). Selection is per-send, not persistent. */
+  pollClients?: PollClient[];
+}
+
+/** All 4 weekly poll variants. Each is an APPROVED Meta UTILITY template
+ *  on the WABA (verified 2026-05-16) with the same 1-param + 3-button
+ *  shape: name + 3 quick-reply buttons. Bodies differ only in which
+ *  dimension they're asking about. */
+const POLL_VARIANTS: { key: string; campaign: string; label: string; emoji: string; buttons: string[]; body: string }[] = [
+  {
+    key: "overall",
+    campaign: "fm_weekly_check_in_v1",
+    label: "Overall check-in",
+    emoji: "🌿",
+    buttons: ["All good", "Some struggles", "Need help"],
+    body: "How are you doing overall this week?",
+  },
+  {
+    key: "supplement",
+    campaign: "fm_weekly_supplement_v1",
+    label: "Supplements",
+    emoji: "💊",
+    buttons: ["All taken", "Missed 1–2 days", "Stopped"],
+    body: "How are the supplements going?",
+  },
+  {
+    key: "meals",
+    campaign: "fm_weekly_meals_v1",
+    label: "Meals",
+    emoji: "🍽",
+    buttons: ["Yes mostly", "Half the time", "Struggling"],
+    body: "Sticking to the meal plan?",
+  },
+  {
+    key: "movement",
+    campaign: "fm_weekly_movement_v1",
+    label: "Movement",
+    emoji: "🏃",
+    buttons: ["Most days", "A few times", "None"],
+    body: "Movement this week?",
+  },
+];
+
+export function WeeklyPollPanel({ whatsappConfigured, pollClients = [] }: Props) {
+  const [variantKey, setVariantKey] = useState(POLL_VARIANTS[0].key);
+  const variant = POLL_VARIANTS.find((v) => v.key === variantKey) ?? POLL_VARIANTS[0];
+
+  // Selected recipients — pre-checked from props, freely editable per send.
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(
+    () => new Set(pollClients.map((c) => c.client_id)),
+  );
+  const toggleClient = (id: string) =>
+    setSelectedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id); else next.add(id);
+      return next;
+    });
+  const selectedCount = selectedIds.size;
+
   const [sendLoading, setSendLoading] = useState(false);
   const [sendResult, setSendResult] = useState<SendResult | null>(null);
   const [sendError, setSendError] = useState<string | null>(null);
@@ -62,7 +128,16 @@ export function WeeklyPollPanel({ whatsappConfigured }: Props) {
   const [reworkDone, setReworkDone] = useState<Record<string, boolean>>({});
 
   async function handleSend() {
-    if (!confirm("Send the weekly check-in poll to every client with a published plan?")) return;
+    if (selectedCount === 0) {
+      setSendError("Select at least one recipient");
+      return;
+    }
+    if (
+      !confirm(
+        `Send the ${variant.label} poll to ${selectedCount} client${selectedCount !== 1 ? "s" : ""}?`,
+      )
+    )
+      return;
     setSendLoading(true);
     setSendError(null);
     setSendResult(null);
@@ -70,7 +145,10 @@ export function WeeklyPollPanel({ whatsappConfigured }: Props) {
       const { sendWeeklyPollAction } = await import(
         "@/lib/server-actions/weekly-poll"
       );
-      const r = await sendWeeklyPollAction();
+      const r = await sendWeeklyPollAction(
+        Array.from(selectedIds),
+        variant.campaign,
+      );
       setSendResult(r);
     } catch (e) {
       setSendError(e instanceof Error ? e.message : "Failed");
@@ -156,25 +234,223 @@ export function WeeklyPollPanel({ whatsappConfigured }: Props) {
           </div>
         )}
 
+        {/* ── Poll variant picker ── */}
+        <div style={{ display: "grid", gap: 6 }}>
+          <div
+            style={{
+              fontSize: 10.5,
+              fontWeight: 700,
+              textTransform: "uppercase",
+              letterSpacing: 0.6,
+              color: "rgba(0,0,0,0.55)",
+            }}
+          >
+            Pick a poll
+          </div>
+          <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+            {POLL_VARIANTS.map((v) => {
+              const active = v.key === variantKey;
+              return (
+                <button
+                  key={v.key}
+                  type="button"
+                  onClick={() => setVariantKey(v.key)}
+                  style={{
+                    padding: "6px 12px",
+                    borderRadius: 999,
+                    border: active ? "0" : "1px solid rgba(0,0,0,0.15)",
+                    background: active ? "#059669" : "white",
+                    color: active ? "white" : "#1d1d1f",
+                    fontSize: 12,
+                    fontWeight: active ? 700 : 500,
+                    cursor: "pointer",
+                    fontFamily: "inherit",
+                  }}
+                  title={`Template: ${v.campaign}`}
+                >
+                  {v.emoji} {v.label}
+                </button>
+              );
+            })}
+          </div>
+          <div
+            style={{
+              fontSize: 11.5,
+              color: "rgba(0,0,0,0.6)",
+              background: "rgba(5,150,105,0.06)",
+              border: "1px solid rgba(5,150,105,0.2)",
+              borderRadius: 6,
+              padding: "8px 10px",
+              lineHeight: 1.5,
+            }}
+          >
+            <div>
+              <strong>Sends:</strong> {variant.body} (template:{" "}
+              <code style={{ fontSize: 10.5 }}>{variant.campaign}</code>
+              {" · "}<span style={{ color: "#065f46" }}>✓ Meta-approved UTILITY</span>)
+            </div>
+            <div style={{ marginTop: 4 }}>
+              <strong>Buttons:</strong>{" "}
+              {variant.buttons.map((b, i) => (
+                <span key={i}>
+                  <em>{b}</em>
+                  {i < variant.buttons.length - 1 ? " · " : ""}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* ── Recipient checklist ── */}
+        <div style={{ display: "grid", gap: 6 }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 10,
+              fontSize: 10.5,
+            }}
+          >
+            <span
+              style={{
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: 0.6,
+                color: "rgba(0,0,0,0.55)",
+              }}
+            >
+              Recipients — {selectedCount} of {pollClients.length} selected
+            </span>
+            <button
+              type="button"
+              style={{
+                background: "none",
+                border: 0,
+                color: "rgba(0,0,0,0.55)",
+                textDecoration: "underline",
+                cursor: "pointer",
+                fontSize: 10.5,
+              }}
+              disabled={selectedCount === pollClients.length || pollClients.length === 0}
+              onClick={() => setSelectedIds(new Set(pollClients.map((c) => c.client_id)))}
+            >
+              Select all
+            </button>
+            <button
+              type="button"
+              style={{
+                background: "none",
+                border: 0,
+                color: "rgba(0,0,0,0.55)",
+                textDecoration: "underline",
+                cursor: "pointer",
+                fontSize: 10.5,
+              }}
+              disabled={selectedCount === 0}
+              onClick={() => setSelectedIds(new Set())}
+            >
+              Clear
+            </button>
+          </div>
+          {pollClients.length === 0 && (
+            <div
+              style={{
+                fontSize: 11.5,
+                color: "rgba(0,0,0,0.5)",
+                fontStyle: "italic",
+                padding: "8px 10px",
+                background: "rgba(0,0,0,0.03)",
+                borderRadius: 6,
+              }}
+            >
+              No clients with a published plan + mobile number on file.
+              Activate a plan and add a phone number to enable polling.
+            </div>
+          )}
+          {pollClients.length > 0 && (
+            <div
+              style={{
+                maxHeight: 180,
+                overflowY: "auto",
+                border: "1px solid rgba(0,0,0,0.1)",
+                borderRadius: 6,
+                background: "white",
+                padding: 6,
+                display: "grid",
+                gap: 2,
+              }}
+            >
+              {pollClients.map((c) => {
+                const checked = selectedIds.has(c.client_id);
+                return (
+                  <label
+                    key={c.client_id}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 8,
+                      padding: "4px 8px",
+                      borderRadius: 4,
+                      background: checked ? "rgba(5,150,105,0.08)" : "transparent",
+                      cursor: "pointer",
+                      fontSize: 12,
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={checked}
+                      onChange={() => toggleClient(c.client_id)}
+                      style={{ accentColor: "#059669" }}
+                    />
+                    <span style={{ fontWeight: 500 }}>
+                      {c.display_name ?? c.client_id}
+                    </span>
+                    {c.mobile_number && (
+                      <span
+                        style={{
+                          marginLeft: "auto",
+                          fontSize: 10.5,
+                          color: "rgba(0,0,0,0.5)",
+                        }}
+                      >
+                        {c.mobile_number}
+                      </span>
+                    )}
+                  </label>
+                );
+              })}
+            </div>
+          )}
+        </div>
+
         {/* ── Send poll ── */}
         <div style={{ display: "grid", gap: 8 }}>
           <button
             type="button"
             onClick={handleSend}
-            disabled={!whatsappConfigured || sendLoading}
+            disabled={!whatsappConfigured || sendLoading || selectedCount === 0}
             style={{
               padding: "10px 14px",
               borderRadius: 8,
-              background: whatsappConfigured ? "#059669" : "rgba(0,0,0,0.1)",
+              background:
+                whatsappConfigured && selectedCount > 0
+                  ? "#059669"
+                  : "rgba(0,0,0,0.1)",
               color: "white",
               border: "none",
-              cursor: sendLoading ? "wait" : whatsappConfigured ? "pointer" : "not-allowed",
+              cursor: sendLoading
+                ? "wait"
+                : whatsappConfigured && selectedCount > 0
+                  ? "pointer"
+                  : "not-allowed",
               fontWeight: 600,
               fontSize: 13,
               width: "fit-content",
             }}
           >
-            {sendLoading ? "Sending…" : "📣 Send poll to all active clients"}
+            {sendLoading
+              ? "Sending…"
+              : `📣 Send ${variant.label.toLowerCase()} poll to ${selectedCount} client${selectedCount !== 1 ? "s" : ""}`}
           </button>
           {sendResult && (
             <div

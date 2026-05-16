@@ -21,56 +21,53 @@ interface Props {
 type RecipientMode = "follow_up_due" | "recheck_due" | "all_active" | "custom";
 
 /**
- * All 17 templates APPROVED on the Heal With Shivani WABA as of 2026-05-16.
- * Source of truth:
+ * Templates suitable for BROADCAST (one-to-many to a list of clients).
+ * Curated from the 17-template WABA inventory at
  *   ~/.claude/projects/-Users-shivani-code-healwithshivanih-ads/memory/project_whatsapp_templates.md
  *
+ * Deliberately excluded from this dropdown — they belong on other surfaces:
+ *   - fm_session_confirm / appt_*       per-session, sent from the calendar
+ *   - fm_intake_invite / _reminder      handover flow, fires on programme signup
+ *   - fm_programme_welcome              fires once when ochre handoff lands
+ *   - fm_weekly_motivation              cron-driven (Sunday)
+ *   - fm_start_date_check_v1            start-date cron
+ *   - fm_weekly_*_v1 polls              live on the Weekly Check-in Poll panel
+ *
  * MARKETING-category templates cost ~7× UTILITY per-message (~₹0.78 vs
- * ₹0.115). Surface that warning in the picker so the coach doesn't bulk-
- * blast a 50-recipient broadcast on fm_encouragement and burn ~₹40 when
- * UTILITY would have done.
+ * ₹0.115). Surface that warning when one is picked so the coach doesn't
+ * bulk-blast a 50-recipient broadcast on fm_encouragement.
  */
 const APPROVED_TEMPLATES: { name: string; category: "UTILITY" | "MARKETING"; params: number; note?: string }[] = [
   { name: "fm_lab_reminder", category: "UTILITY", params: 2, note: "name / labs" },
   { name: "fm_supplement_instructions", category: "UTILITY", params: 2, note: "name / instructions" },
-  { name: "fm_session_confirm", category: "UTILITY", params: 3, note: "name / date / time" },
   { name: "fm_encouragement", category: "MARKETING", params: 2, note: "name / protocolHighlight" },
   { name: "fm_checkin_nudge", category: "MARKETING", params: 2, note: "name / symptom" },
-  { name: "fm_intake_invite", category: "UTILITY", params: 2, note: "name / intakeUrl" },
-  { name: "fm_intake_reminder", category: "UTILITY", params: 3, note: "name / expiryLabel / intakeUrl" },
-  { name: "fm_programme_welcome", category: "UTILITY", params: 3, note: "name / intakeUrl / calComUrl" },
-  { name: "fm_weekly_motivation", category: "UTILITY", params: 3, note: "name / weekNumber / reflectionUrl" },
-  { name: "fm_start_date_check_v1", category: "UTILITY", params: 1, note: "name (+ buttons)" },
-  { name: "fm_weekly_check_in_v1", category: "UTILITY", params: 1, note: "name (+ buttons)" },
-  { name: "fm_weekly_supplement_v1", category: "UTILITY", params: 1, note: "name (+ buttons)" },
-  { name: "fm_weekly_meals_v1", category: "UTILITY", params: 1, note: "name (+ buttons)" },
-  { name: "fm_weekly_movement_v1", category: "UTILITY", params: 1, note: "name (+ buttons)" },
-  { name: "appt_confirmation", category: "UTILITY", params: 4, note: "legacy AiSensy era" },
-  { name: "appt_reminder_24h", category: "UTILITY", params: 4, note: "legacy" },
-  { name: "appt_reminder_2h", category: "UTILITY", params: 4, note: "legacy" },
 ];
 
 export function BroadcastPanel({ clients, followUpDueIds, recheckDueIds, activeIds }: Props) {
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState<RecipientMode>("follow_up_due");
-  const [customIds, setCustomIds] = useState<Set<string>>(new Set());
+  // Selected client ids — independently editable regardless of mode.
+  // Mode preset is just a one-click "select these" shortcut; the coach
+  // can always tick/untick individual clients afterwards. That was the
+  // confusing bit in v1 — coach picked "All active" but couldn't drop
+  // one off without flipping to "Custom" and re-checking the rest.
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set(followUpDueIds));
   const [campaignName, setCampaignName] = useState("");
   const [params, setParams] = useState(["", "", ""]);
   const [sending, setSending] = useState(false);
   const [result, setResult] = useState<{ sent: number; failed: number; errors: string[] } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  function getRecipientIds(): string[] {
-    switch (mode) {
-      case "follow_up_due":  return followUpDueIds;
-      case "recheck_due":    return recheckDueIds;
-      case "all_active":     return activeIds;
-      case "custom":         return Array.from(customIds);
-    }
+  function applyMode(next: RecipientMode) {
+    setMode(next);
+    if (next === "follow_up_due") setSelectedIds(new Set(followUpDueIds));
+    else if (next === "recheck_due") setSelectedIds(new Set(recheckDueIds));
+    else if (next === "all_active") setSelectedIds(new Set(activeIds));
+    else setSelectedIds(new Set());
   }
 
-  const recipientIds = getRecipientIds();
-  const recipientClients = clients.filter((c) => recipientIds.includes(c.client_id));
+  const recipientClients = clients.filter((c) => selectedIds.has(c.client_id));
   const recipientCount = recipientClients.length;
 
   const handleSend = async () => {
@@ -81,7 +78,7 @@ export function BroadcastPanel({ clients, followUpDueIds, recheckDueIds, activeI
     setResult(null);
     try {
       const filledParams = params.filter((p) => p.trim());
-      const res = await broadcastAction(recipientIds, campaignName.trim(), filledParams);
+      const res = await broadcastAction(Array.from(selectedIds), campaignName.trim(), filledParams);
       setResult(res);
     } catch (e) {
       setError((e as Error).message ?? "Unknown error");
@@ -90,10 +87,13 @@ export function BroadcastPanel({ clients, followUpDueIds, recheckDueIds, activeI
     }
   };
 
-  const toggleCustom = (id: string) => {
-    setCustomIds((prev) => {
+  const toggleClient = (id: string) => {
+    setSelectedIds((prev) => {
       const next = new Set(prev);
       if (next.has(id)) next.delete(id); else next.add(id);
+      // Drop out of preset modes the instant the coach edits the list —
+      // the radio chip stops claiming the selection matches a preset.
+      setMode("custom");
       return next;
     });
   };
@@ -113,14 +113,16 @@ export function BroadcastPanel({ clients, followUpDueIds, recheckDueIds, activeI
         <div className="px-4 pb-4 space-y-4">
           {/* Recipient selector */}
           <div className="space-y-2">
-            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Recipients</p>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+              Quick-pick preset
+            </p>
             <div className="flex flex-wrap gap-2">
               {(
                 [
                   { value: "follow_up_due",  label: `Follow-up due (${followUpDueIds.length})` },
                   { value: "recheck_due",    label: `Recheck due (${recheckDueIds.length})` },
                   { value: "all_active",     label: `All active (${activeIds.length})` },
-                  { value: "custom",         label: "Custom selection" },
+                  { value: "custom",         label: "Start blank" },
                 ] as { value: RecipientMode; label: string }[]
               ).map(({ value, label }) => (
                 <label key={value} className="flex items-center gap-1.5 cursor-pointer">
@@ -129,40 +131,81 @@ export function BroadcastPanel({ clients, followUpDueIds, recheckDueIds, activeI
                     name="broadcast-mode"
                     value={value}
                     checked={mode === value}
-                    onChange={() => { setMode(value); setCustomIds(new Set()); }}
+                    onChange={() => applyMode(value)}
                     className="accent-indigo-600"
                   />
                   <span className="text-xs">{label}</span>
                 </label>
               ))}
             </div>
+            <p className="text-[10px] text-muted-foreground italic">
+              Tick / untick individual clients below to fine-tune. Selection is
+              independent of the preset — coach has final say.
+            </p>
           </div>
 
-          {/* Custom selection checkboxes */}
-          {mode === "custom" && (
-            <div className="rounded-lg border bg-white p-3 max-h-48 overflow-y-auto space-y-1">
-              {clients.length === 0 && (
-                <p className="text-xs text-muted-foreground italic">No clients found.</p>
-              )}
-              {clients.map((c) => (
-                <label key={c.client_id} className="flex items-center gap-2 cursor-pointer hover:bg-muted/30 px-1 py-0.5 rounded">
-                  <input
-                    type="checkbox"
-                    checked={customIds.has(c.client_id)}
-                    onChange={() => toggleCustom(c.client_id)}
-                    className="accent-indigo-600"
-                  />
-                  <span className="text-xs font-medium">{c.display_name ?? c.client_id}</span>
-                  {c.mobile_number && (
-                    <span className="text-[10px] text-muted-foreground ml-auto">{c.mobile_number}</span>
-                  )}
-                  {!c.mobile_number && (
-                    <span className="text-[10px] text-red-400 ml-auto">no phone</span>
-                  )}
-                </label>
-              ))}
+          {/* Recipient checklist — always visible. The preset above seeds
+              what's pre-checked; checkboxes below override at any time. */}
+          <div className="space-y-1.5">
+            <div className="flex items-center gap-3 text-[10px] text-muted-foreground">
+              <span className="font-semibold uppercase tracking-wide">
+                {recipientCount} selected
+              </span>
+              <button
+                type="button"
+                className="underline hover:text-foreground disabled:opacity-40 disabled:no-underline"
+                disabled={recipientCount === clients.length || clients.length === 0}
+                onClick={() => setSelectedIds(new Set(clients.map((c) => c.client_id)))}
+              >
+                Select all visible
+              </button>
+              <button
+                type="button"
+                className="underline hover:text-foreground disabled:opacity-40 disabled:no-underline"
+                disabled={recipientCount === 0}
+                onClick={() => setSelectedIds(new Set())}
+              >
+                Clear
+              </button>
             </div>
-          )}
+            <div className="rounded-lg border bg-white p-2 max-h-56 overflow-y-auto space-y-0.5">
+              {clients.length === 0 && (
+                <p className="text-xs text-muted-foreground italic px-2 py-1">
+                  No clients found.
+                </p>
+              )}
+              {clients.map((c) => {
+                const checked = selectedIds.has(c.client_id);
+                return (
+                  <label
+                    key={c.client_id}
+                    className={`flex items-center gap-2 cursor-pointer px-2 py-1 rounded ${
+                      checked ? "bg-indigo-50/60" : "hover:bg-muted/30"
+                    }`}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={checked}
+                      onChange={() => toggleClient(c.client_id)}
+                      className="accent-indigo-600"
+                    />
+                    <span className="text-xs font-medium">
+                      {c.display_name ?? c.client_id}
+                    </span>
+                    {c.mobile_number ? (
+                      <span className="text-[10px] text-muted-foreground ml-auto">
+                        {c.mobile_number}
+                      </span>
+                    ) : (
+                      <span className="text-[10px] text-red-400 ml-auto">
+                        no phone
+                      </span>
+                    )}
+                  </label>
+                );
+              })}
+            </div>
+          </div>
 
           {/* Campaign name — dropdown of all 17 approved templates. */}
           {(() => {

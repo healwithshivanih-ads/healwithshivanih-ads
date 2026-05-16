@@ -224,6 +224,23 @@ export default async function DashboardV2() {
     ...grouped.active.map((r) => r.client_id),
     ...grouped.protocol_complete.map((r) => r.client_id),
   ];
+  // Weekly poll eligibility — same gating rule the send action uses
+  // server-side: must have a published plan AND a mobile number on file.
+  // Surface those clients pre-checked so coach sees who'd receive the
+  // poll and can untick anyone they don't want to include this round.
+  const activeIdSet = new Set(activeIds);
+  const pollClients = (clients as ClientRow[])
+    .filter(
+      (c) =>
+        activeIdSet.has(c.client_id) &&
+        typeof c.mobile_number === "string" &&
+        c.mobile_number.trim().length > 0,
+    )
+    .map((c) => ({
+      client_id: c.client_id,
+      display_name: c.display_name,
+      mobile_number: c.mobile_number,
+    }));
 
   const dateLabel = new Date().toLocaleDateString("en-GB", {
     weekday: "long",
@@ -300,7 +317,10 @@ export default async function DashboardV2() {
             WHATSAPP_SERVER_URL isn't set. See lib/server-actions/weekly-poll.ts
             for the send + scan logic and api/whatsapp-webhook/route.ts
             for inbound button-reply classification (classifyPollReply). */}
-        <WeeklyPollPanel whatsappConfigured={whatsappConfigured} />
+        <WeeklyPollPanel
+          whatsappConfigured={whatsappConfigured}
+          pollClients={pollClients}
+        />
 
         {/* 📅 Start-date reminders — clients whose plan published >5d ago
             but haven't confirmed meal_plan_started_on. Auto-loads on mount;
