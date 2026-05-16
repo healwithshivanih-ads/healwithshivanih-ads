@@ -126,9 +126,10 @@ function AddTemplateForm({
         <em>also</em> be a Meta-approved template registered on the
         self-hosted WhatsApp Cloud API server. Approved today:{" "}
         <code className="text-[10px]">fm_lab_reminder</code>,{" "}
-        <code className="text-[10px]">fm_session_confirm</code>,{" "}
         <code className="text-[10px]">fm_supplement_instructions</code>,{" "}
-        <code className="text-[10px]">fm_encouragement</code>.
+        <code className="text-[10px]">fm_session_confirm</code>,{" "}
+        <code className="text-[10px]">fm_encouragement</code>,{" "}
+        <code className="text-[10px]">fm_checkin_nudge</code>.
       </p>
       <div className="grid grid-cols-2 gap-2">
         <label className="space-y-0.5">

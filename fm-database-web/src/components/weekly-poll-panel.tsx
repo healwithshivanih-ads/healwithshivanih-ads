@@ -148,10 +148,11 @@ export function WeeklyPollPanel({ whatsappConfigured }: Props) {
           >
             <strong>WhatsApp outbound not configured.</strong> Add{" "}
             <code>WHATSAPP_SERVER_URL</code> + <code>WHATSAPP_SERVER_API_KEY</code> to{" "}
-            <code>.env.local</code> (points at <code>whatsapp-server-shivani.fly.dev</code>),
-            and register the <code>fm_weekly_check_in_v1</code> template in your WABA with
-            interactive reply buttons: <em>All good 🌿</em> / <em>Some struggles</em> /
-            <em>Need help</em>.
+            <code>.env.local</code> (points at <code>whatsapp-server-shivani.fly.dev</code>).
+            The <code>fm_weekly_check_in_v1</code> template + sibling polls are already
+            approved on the WABA — buttons: <em>All good</em> / <em>Some struggles</em> /{" "}
+            <em>Need help</em>. (Meta strips emojis from button text, so no 🌿 — webhook
+            parser still matches case-insensitive substrings.)
           </div>
         )}
 

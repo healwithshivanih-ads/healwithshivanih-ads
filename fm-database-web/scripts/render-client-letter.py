@@ -2900,6 +2900,20 @@ def _build_prompt(plan: dict, client: dict, weight_loss: dict | None = None,
     # else: consolidated — fall through to existing code
     plan_weeks = int(plan.get("plan_period_weeks") or 12)
 
+    # Per-client letter preferences. When `meal_plan` is NOT in
+    # letter_types_active, the consolidated letter omits the 14-day meal
+    # plan tables and replaces them with nutrition principles. Coach
+    # explicitly opted this client out of day-to-day meal planning
+    # (e.g., "give me overall guidance, I'll figure out the meals").
+    letter_types_active = client.get("letter_types_active") or ["consolidated"]
+    include_daily_meal_plan = "meal_plan" in letter_types_active
+
+    # Pre-compute the section 3 body — either daily meal-plan tables OR
+    # nutrition principles. Held as a plain string so the main f-string
+    # below stays readable (Python 3.9 chokes on nested f-strings + can't
+    # have backslashes inside f-string expressions). NB: this string gets
+    # interpolated, then the AI uses it as the prompt for section 3.
+
     client_name = client.get("display_name") or "the client"
     first_name = client_name.split()[0] if client_name else "there"
     diet_pref = client.get("dietary_preference") or "Not specified"
@@ -3078,6 +3092,126 @@ MOVEMENT & WELLNESS:
     attached_protocol = _attached_protocol_block(plan)
     start_when = _start_when_block(plan, "both")
 
+    # ── Pre-compute the section 3 body ──
+    # Two alternate prompt fragments depending on whether the coach has
+    # opted this client into day-to-day meal planning. Built as plain
+    # strings so the giant f-string prompt below stays readable.
+    if include_daily_meal_plan:
+        if cal:
+            calorie_callout = (
+                "Then include this callout block immediately after the paragraph:\n"
+                "   > 🎯 **Weeks 1–2 daily calorie target: ~"
+                + str(cal['phases']['wk1_2']) + " kcal/day**"
+                + " *(BMR " + str(cal['bmr']) + " kcal · TDEE "
+                + str(cal['tdee']) + " kcal · daily deficit "
+                + str(cal['full_deficit']) + " kcal)*"
+            )
+            target_label = " — Target: " + str(cal['phases']['wk1_2']) + " kcal/day"
+            calorie_warn = "⚠️ WEIGHT LOSS PLAN — each day MUST total the target below. Choose portion sizes accordingly."
+            calorie_band = ("Week 1 & 2 target: " + str(cal['phases']['wk1_2'])
+                            + " kcal/day (±50 kcal). Portions must reflect this — not a typical 1800-1900 kcal adult plate.")
+            kcal_row = ("| *~kcal* | *" + str(cal['phases']['wk1_2'])
+                        + "* | *" + str(cal['phases']['wk1_2'])
+                        + "* | *...* | *...* | *...* | *...* | *...* |")
+            week2_kcal_target = " Each day must still total ~" + str(cal['phases']['wk1_2']) + " kcal."
+            table_kcal_rule = "Every day total in the *~kcal* row must be within ±50 kcal of the phase target."
+        else:
+            calorie_callout = ""
+            target_label = ""
+            calorie_warn = ""
+            calorie_band = ""
+            kcal_row = ""
+            week2_kcal_target = ""
+            table_kcal_rule = ("DO NOT add a *~kcal* row or any per-day calorie totals "
+                               "— this client is NOT on a weight-loss plan. Calorie counts are off-topic.")
+
+        meal_plan_section = (
+            "**3b. 14-Day Meal Plan — TWO 7-day tables. CALORIE TARGETS ARE BINDING.**\n\n"
+            + calorie_warn + "\n" + calorie_band + "\n\n"
+            "USE THIS EXACT TABLE FORMAT. Do NOT use bullet points or prose for the meal plan.\n\n"
+            "## 🗓 Week 1 Meal Plan" + target_label + "\n"
+            "| Meal | Mon | Tue | Wed | Thu | Fri | Sat | Sun |\n"
+            "|------|-----|-----|-----|-----|-----|-----|-----|\n"
+            "| **Breakfast** | dish | dish | dish | dish | dish | dish | dish |\n"
+            "| **Mid-morning snack** | snack | snack | snack | snack | snack | snack | snack |\n"
+            "| **Lunch** | dish | dish | dish | dish | dish | dish | dish |\n"
+            "| **Evening snack** | snack | snack | snack | snack | snack | snack | snack |\n"
+            "| **Dinner** | dish | dish | dish | dish | dish | dish | dish |\n"
+            "| **Bedtime** | drink/✗ | drink/✗ | drink/✗ | drink/✗ | drink/✗ | drink/✗ | drink/✗ |\n"
+            + kcal_row + "\n\n"
+            "## 🗓 Week 2 Meal Plan" + target_label + "\n"
+            "(Same structure, vary the dishes." + week2_kcal_target + ")\n\n"
+            "Table rules:\n"
+            "- Each cell: dish name only, short (e.g. \"Ragi dosa + chutney ✦\"). Flag recipes with ✦.\n"
+            "- " + table_kcal_rule + "\n"
+            "- Meals MUST respect dietary preference (" + diet_pref + ") and avoid (" + foods_to_avoid + ").\n"
+            "- CRITICAL: NEVER use reported triggers in any meal: " + reported_triggers + "\n"
+            "- INCORPORATE non-negotiables (" + non_negotiables + ") with a workaround if needed.\n"
+            "- Use specific Indian dish names. Week 2 should vary from Week 1."
+        )
+        recipe_appendix_instr = (
+            "Detailed recipes for every ✦ dish. Format each as:\n"
+            "   ### ✦ Recipe name\n"
+            "   **Serves:** 1–2 | **Time:** X min\n"
+            "   **Ingredients:** (bullets) | **Method:** (numbered steps) | **Tip:** (optional)"
+        )
+        roadmap_calorie_lines = ""
+        if cal:
+            roadmap_calorie_lines = (
+                "Calorie targets for this roadmap section (mention briefly per phase):\n"
+                "   • Weeks 5–8: " + str(cal['phases']['wk5_8']) + " kcal/day (full deficit)\n"
+                "   • Weeks 9–10: " + str(cal['phases']['wk9_10']) + " kcal/day (ease back)\n"
+                "   • Weeks 11–12: " + str(cal['phases']['wk11_12']) + " kcal/day (sustain)"
+            )
+        weeks_3_4_calorie_line = ""
+        if cal:
+            weeks_3_4_calorie_line = ("Mention that calorie targets will adjust to ~"
+                                      + str(cal['phases']['wk3_4']) + " kcal/day as the body adapts.")
+    else:
+        # Client opted OUT of day-to-day meal plans. Replace with principles.
+        calorie_callout = ""
+        meal_plan_section = (
+            "**3b. Nutrition Principles — NO daily meal tables for this client.**\n\n"
+            "This client explicitly opted OUT of day-to-day meal planning. Coach decision: "
+            + first_name + " wants overall nutrition guidance, NOT prescriptive daily menus. "
+            "They will plan their own meals using these principles.\n\n"
+            "DO NOT include any weekly meal-plan table, daily meal schedule, sample-day breakdown, "
+            "recipe appendix, or kcal targets. Replace with the following structured guidance instead:\n\n"
+            "## 🥗 Daily Eating Principles\n"
+            "5–7 short, specific principles that apply across every meal. Make each tied to "
+            + first_name + "'s actual situation (conditions / triggers / non-negotiables surfaced "
+            "in TOP-OF-MIND above). Examples (rewrite to be specific):\n"
+            "  - Protein at every meal — aim ≥20 g; helps with [client-specific reason]\n"
+            "  - Veg + fibre fill half the plate at lunch + dinner\n"
+            "  - Refined carbs OUT (maida, white rice, biscuits); complex carbs IN (millets, dal, brown rice)\n"
+            "  - Stop eating 3 hrs before bed\n"
+            "  - [client-specific principle, e.g. \"chai with milk OK in the morning — your non-negotiable — but no sugar after week 2\"]\n\n"
+            "## 🍽 Foods to emphasise\n"
+            "Two short paragraphs (NOT a daily plan):\n"
+            "  - **In-season picks for " + location_str + " this " + season + "**: 6–10 specific items "
+            "(vegetables, fruits, grains, fats, proteins) that suit the client's protocol AND respect "
+            "dietary preference (" + diet_pref + ").\n"
+            "  - **What to bias toward at each meal slot** (breakfast / lunch / snack / dinner / bedtime): "
+            "1–2 dishes or food-types per slot. PROSE, not a table. E.g. \"For breakfast lean on eggs or "
+            "paneer-bhurji with a small fruit; avoid the sweet upma or sugar-loaded poha that spike "
+            "mid-morning energy.\"\n\n"
+            "## 🚫 Foods to reduce or avoid\n"
+            "- Reported triggers (NEVER eat): " + reported_triggers + "\n"
+            "- Dietary exclusions: " + foods_to_avoid + "\n"
+            "- 4–6 more items specific to this client's protocol — name them, brief reason each "
+            "(\"sugar — drives the 3pm energy crash you mentioned\")\n\n"
+            "## 💡 Coach's note on flexibility\n"
+            "One warm paragraph from Shivani: \"" + first_name + ", I've kept the day-to-day food flexible "
+            "because you wanted that. If you ever change your mind and want a structured daily breakdown — "
+            "say the word, I'll send one through.\""
+        )
+        recipe_appendix_instr = (
+            "SKIP this entire section. No daily meal plan in this letter "
+            "(per client preference) → no ✦ recipes to expand. Move directly to the Product guide below."
+        )
+        roadmap_calorie_lines = ""
+        weeks_3_4_calorie_line = ""
+
     prompt = f"""You are writing a warm, friendly, practical {plan_weeks}-week wellness plan letter for a client.
 The coach (Shivani Hariharan, a functional medicine health coach) has prepared this structured plan.
 Your job is to turn the coach's structured data into a beautiful, easy-to-read document the client can actually USE.
@@ -3153,37 +3287,9 @@ The plan must have a logical therapeutic progression — each phase builds on th
    (This section is fully detailed. Weeks 3–12 have an outline only — full detail is sent before each new phase begins.)
 
    **3a. Theme & goals for weeks 1–2** — 1 short paragraph. What is the body doing in this phase? What should {first_name} focus on?
-   Then include this callout block immediately after the paragraph:
-   > 🎯 **Weeks 1–2 daily calorie target: ~{cal['phases']['wk1_2'] if cal else 'N/A'} kcal/day**{"" if not cal else f" *(BMR {cal['bmr']} kcal · TDEE {cal['tdee']} kcal · daily deficit {cal['full_deficit']} kcal)*"}
+   {calorie_callout}
 
-   **3b. 14-Day Meal Plan — TWO 7-day tables. CALORIE TARGETS ARE BINDING.**
-
-   {"⚠️ WEIGHT LOSS PLAN — each day MUST total the target below. Choose portion sizes accordingly." if cal else ""}
-   {"Week 1 & 2 target: " + str(cal['phases']['wk1_2']) + " kcal/day (±50 kcal). Portions must reflect this — not a typical 1800-1900 kcal adult plate." if cal else ""}
-
-   USE THIS EXACT TABLE FORMAT. Do NOT use bullet points or prose for the meal plan.
-
-   ## 🗓 Week 1 Meal Plan {"— Target: " + str(cal['phases']['wk1_2']) + " kcal/day" if cal else ""}
-   | Meal | Mon | Tue | Wed | Thu | Fri | Sat | Sun |
-   |------|-----|-----|-----|-----|-----|-----|-----|
-   | **Breakfast** | dish | dish | dish | dish | dish | dish | dish |
-   | **Mid-morning snack** | snack | snack | snack | snack | snack | snack | snack |
-   | **Lunch** | dish | dish | dish | dish | dish | dish | dish |
-   | **Evening snack** | snack | snack | snack | snack | snack | snack | snack |
-   | **Dinner** | dish | dish | dish | dish | dish | dish | dish |
-   | **Bedtime** | drink/✗ | drink/✗ | drink/✗ | drink/✗ | drink/✗ | drink/✗ | drink/✗ |
-   {"| *~kcal* | *" + str(cal['phases']['wk1_2']) + "* | *" + str(cal['phases']['wk1_2']) + "* | *...* | *...* | *...* | *...* | *...* |" if cal else ""}
-
-   ## 🗓 Week 2 Meal Plan {"— Target: " + str(cal['phases']['wk1_2']) + " kcal/day" if cal else ""}
-   (Same structure, vary the dishes. Each day must still total ~{cal['phases']['wk1_2'] if cal else 'N/A'} kcal.)
-
-   Table rules:
-   - Each cell: dish name only, short (e.g. "Ragi dosa + chutney ✦"). Flag recipes with ✦.
-   - {"Every day total in the *~kcal* row must be within ±50 kcal of the phase target." if cal else "DO NOT add a *~kcal* row or any per-day calorie totals — this client is NOT on a weight-loss plan. Calorie counts are off-topic."}
-   - Meals MUST respect dietary preference ({diet_pref}) and avoid ({foods_to_avoid}).
-   - CRITICAL: NEVER use reported triggers in any meal: {reported_triggers}
-   - INCORPORATE non-negotiables ({non_negotiables}) with a workaround if needed.
-   - Use specific Indian dish names. Week 2 should vary from Week 1.
+   {meal_plan_section}
 
    **3c. Supplement note** — Add ONLY this single short paragraph (NO table, NO list):
    > *The supplement schedule for this plan — including timings, doses, and where to get each one — is included as a separate printable section in this document.*
@@ -3206,26 +3312,26 @@ The plan must have a logical therapeutic progression — each phase builds on th
 
 4. **Coming Up: Weeks 3–4 Preview** — heading `## 🌿 Coming Up: Weeks 3 & 4`
    Write a SHORT PARAGRAPH ONLY — 3 to 5 warm sentences describing what the theme of weeks 3–4 will be and what {first_name} can look forward to.
-   {"Mention that calorie targets will adjust to ~" + str(cal['phases']['wk3_4']) + " kcal/day as the body adapts." if cal else ""}
+   {"Mention that calorie targets will adjust to ~" + str(cal['phases']['wk3_4']) + " kcal/day as the body adapts." if (cal and include_daily_meal_plan) else ""}
    DO NOT write a meal plan table, meal schedule, or day-by-day plan for week 3 or week 4.
    DO NOT add a print button or any print-ready formatting for this section.
    This is a teaser paragraph only — the full weeks 3–4 detail will be sent separately.
 
 5. **Roadmap: Weeks 5–12 at a Glance** — heading `## 🗺 Your 12-Week Roadmap`
-   {"Calorie targets for this roadmap section (mention briefly per phase):" if cal else ""}
-   {"• Weeks 5–8: " + str(cal['phases']['wk5_8']) + " kcal/day (full deficit)" if cal else ""}
-   {"• Weeks 9–10: " + str(cal['phases']['wk9_10']) + " kcal/day (ease back)" if cal else ""}
-   {"• Weeks 11–12: " + str(cal['phases']['wk11_12']) + " kcal/day (sustain)" if cal else ""}
+   {"Calorie targets for this roadmap section (mention briefly per phase):" if (cal and include_daily_meal_plan) else ""}
+   {"• Weeks 5–8: " + str(cal['phases']['wk5_8']) + " kcal/day (full deficit)" if (cal and include_daily_meal_plan) else ""}
+   {"• Weeks 9–10: " + str(cal['phases']['wk9_10']) + " kcal/day (ease back)" if (cal and include_daily_meal_plan) else ""}
+   {"• Weeks 11–12: " + str(cal['phases']['wk11_12']) + " kcal/day (sustain)" if (cal and include_daily_meal_plan) else ""}
    One short paragraph per phase. 2–3 sentences each. No meal plans — roadmap only.
 
 6. **Home Remedies & Teas** — use heading `## 🌿 Home Remedies & Daily Teas`
    Any from the plan, simply described.
 
 7. **Recipe Appendix** — use heading `## ✦ Recipe Appendix`
-   Detailed recipes for every ✦ dish. Format each as:
-   ### ✦ Recipe name
-   **Serves:** 1–2 | **Time:** X min
-   **Ingredients:** (bullets) | **Method:** (numbered steps) | **Tip:** (optional)
+   {"Detailed recipes for every ✦ dish. Format each as:" if include_daily_meal_plan else "SKIP this entire section. No daily meal plan in this letter (per client preference) → no ✦ recipes to expand. Move directly to the Product guide below."}
+   {"### ✦ Recipe name" if include_daily_meal_plan else ""}
+   {"**Serves:** 1–2 | **Time:** X min" if include_daily_meal_plan else ""}
+   {"**Ingredients:** (bullets) | **Method:** (numbered steps) | **Tip:** (optional)" if include_daily_meal_plan else ""}
 
 8. **Product guide** — use heading `## 🛒 Recommended Products`
    Only the specific brands from the approved list below that are relevant to THIS plan.
