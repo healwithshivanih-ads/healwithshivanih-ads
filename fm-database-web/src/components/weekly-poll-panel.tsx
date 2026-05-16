@@ -208,11 +208,67 @@ export function WeeklyPollPanel({ whatsappConfigured, pollClients = [] }: Props)
     }
   }
 
+  // Panel is collapsed by default on the dashboard — coach only opens it
+  // when actively sending a poll or scanning for adherence drops. Closed
+  // it reads as a single "📣 Weekly check-in poll ▾" header strip.
+  // Anything in flight (a send in progress, a result chip showing the
+  // last send, or a freshly returned scan with flags) forces it open so
+  // results don't vanish on first click of the panel toggle.
+  const [open, setOpen] = useState(
+    () => sendLoading || scanLoading || sendResult !== null || (flags?.length ?? 0) > 0,
+  );
+
   return (
     <FmPanel
-      title="📣 Weekly check-in poll"
-      subtitle="WhatsApp pulse — adherence on supplements, meals, movement"
+      title={
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          style={{
+            background: "transparent",
+            border: 0,
+            padding: 0,
+            font: "inherit",
+            color: "inherit",
+            cursor: "pointer",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            width: "100%",
+            textAlign: "left",
+          }}
+        >
+          <span>📣 Weekly check-in poll</span>
+          <span
+            style={{
+              fontSize: 11,
+              color: "var(--fm-text-tertiary)",
+              fontWeight: 400,
+              transition: "transform 0.15s",
+              transform: open ? "rotate(0deg)" : "rotate(-90deg)",
+              display: "inline-block",
+            }}
+          >
+            ▾
+          </span>
+          {!open && pollClients.length > 0 && (
+            <span
+              style={{
+                fontSize: 10.5,
+                fontWeight: 500,
+                color: "var(--fm-text-tertiary)",
+                marginLeft: "auto",
+              }}
+            >
+              {pollClients.length} eligible client{pollClients.length === 1 ? "" : "s"}
+            </span>
+          )}
+        </button>
+      }
+      subtitle={open ? "WhatsApp pulse — adherence on supplements, meals, movement" : undefined}
     >
+      {!open ? null : (
       <div style={{ display: "grid", gap: 14 }}>
         {!whatsappConfigured && (
           <div
@@ -588,6 +644,7 @@ export function WeeklyPollPanel({ whatsappConfigured, pollClients = [] }: Props)
           )}
         </div>
       </div>
+      )}
     </FmPanel>
   );
 }
