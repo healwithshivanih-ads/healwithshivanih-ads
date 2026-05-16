@@ -22,11 +22,15 @@
  * Quick Note form.
  */
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { loadClientById } from "@/lib/fmdb/loader-extras";
 import { loadAllPlans } from "@/lib/fmdb/loader";
 import { loadCatalogueChipDict } from "@/lib/fmdb/catalogue-chip-dict";
 import { loadMealPlan, type LetterType } from "@/lib/server-actions/plan-lifecycle";
 import type { Plan, PlanStatus } from "@/lib/fmdb/types";
+import { FmAppShell } from "@/components/fm";
+import { HeaderAvatar } from "../analyse/header-avatar";
+import { clientQuickActions } from "../client-quick-actions";
 import { ReferenceClient } from "./reference-client";
 import {
   extractLetterSections,
@@ -156,25 +160,81 @@ export default async function ReferencePage({
   if (currentWeek !== null && currentWeek > planWeeks) currentWeek = planWeeks;
 
   return (
-    <ReferenceClient
-      clientId={id}
-      displayName={displayName}
-      firstName={firstName}
-      activePlanSlug={activePlanSlug}
-      activePlanStatus={activePlan ? planStatusOf(activePlan) : null}
-      activePlanVersion={activePlan ? planVersionOf(activePlan) : null}
-      planUpdatedAt={(activePlan?.updated_at as string | undefined) ?? null}
-      planPeriodStart={(activePlan?.plan_period_start as string | undefined) ?? null}
-      planPeriodWeeks={planWeeks}
-      currentWeek={currentWeek}
-      supplements={supplements}
-      supplementNameMap={supplementNameMap}
-      nutrition={nutrition}
-      lifestyle={lifestyle}
-      notesForCoach={(activePlan?.notes_for_coach as string | undefined) ?? null}
-      letterSections={letterSections}
-      hasMealPlanLetter={hasMealPlan}
-      hasConsolidatedLetter={hasConsolidated}
-    />
+    <FmAppShell
+      activeNavId="clients"
+      quickActions={clientQuickActions(id)}
+      crumbs={[
+        { label: "Clients", href: "/clients" },
+        { label: displayName, href: `/clients-v2/${id}` },
+        { label: "Active plan reference" },
+      ]}
+    >
+      {/* v2 client identity strip — same shape as SOAP / Sessions pages so
+          the reference doesn't feel like a standalone legacy view. */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 12,
+          padding: "12px 16px",
+          background: "var(--fm-surface)",
+          border: "1px solid var(--fm-border-light)",
+          borderRadius: "var(--fm-radius-md)",
+          marginBottom: 16,
+        }}
+      >
+        <HeaderAvatar clientId={id} displayName={displayName} />
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ fontSize: 15, fontWeight: 700 }}>
+            {displayName}
+            <span
+              style={{
+                fontSize: 11,
+                color: "var(--fm-text-tertiary)",
+                fontFamily: "var(--fm-font-mono)",
+                fontWeight: 500,
+                marginLeft: 8,
+              }}
+            >
+              {id}
+            </span>
+          </div>
+          <div style={{ fontSize: 12, color: "var(--fm-text-secondary)" }}>
+            Active plan reference
+          </div>
+        </div>
+        <Link
+          href={`/clients-v2/${id}`}
+          style={{
+            fontSize: 12,
+            color: "var(--fm-text-secondary)",
+            textDecoration: "none",
+          }}
+        >
+          ← Overview
+        </Link>
+      </div>
+
+      <ReferenceClient
+        clientId={id}
+        displayName={displayName}
+        firstName={firstName}
+        activePlanSlug={activePlanSlug}
+        activePlanStatus={activePlan ? planStatusOf(activePlan) : null}
+        activePlanVersion={activePlan ? planVersionOf(activePlan) : null}
+        planUpdatedAt={(activePlan?.updated_at as string | undefined) ?? null}
+        planPeriodStart={(activePlan?.plan_period_start as string | undefined) ?? null}
+        planPeriodWeeks={planWeeks}
+        currentWeek={currentWeek}
+        supplements={supplements}
+        supplementNameMap={supplementNameMap}
+        nutrition={nutrition}
+        lifestyle={lifestyle}
+        notesForCoach={(activePlan?.notes_for_coach as string | undefined) ?? null}
+        letterSections={letterSections}
+        hasMealPlanLetter={hasMealPlan}
+        hasConsolidatedLetter={hasConsolidated}
+      />
+    </FmAppShell>
   );
 }

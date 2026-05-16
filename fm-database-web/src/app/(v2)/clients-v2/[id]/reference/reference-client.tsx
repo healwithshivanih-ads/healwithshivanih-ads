@@ -375,24 +375,15 @@ export function ReferenceClient({
       style={{
         maxWidth: 880,
         margin: "0 auto",
-        padding: "28px 24px 80px",
-        fontFamily:
-          "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
-        color: "#1d1d1f",
+        padding: "20px 4px 60px",
+        fontFamily: "var(--fm-font-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif)",
+        color: "var(--fm-text-primary, #1d1d1f)",
       }}
     >
-      {/* ── Warm header ── */}
-      <Link
-        href={`/clients-v2/${clientId}`}
-        style={{ fontSize: 12, color: "#6b7280", textDecoration: "none" }}
-      >
-        ← Back to {firstName}
-      </Link>
-
       <h1
         style={{
-          fontSize: 26,
-          margin: "10px 0 4px",
+          fontSize: 24,
+          margin: "0 0 6px",
           fontWeight: 700,
           letterSpacing: "-0.01em",
         }}
@@ -402,7 +393,7 @@ export function ReferenceClient({
       <p
         style={{
           fontSize: 14,
-          color: "#6b7280",
+          color: "var(--fm-text-secondary, #6b7280)",
           margin: "0 0 26px",
           lineHeight: 1.55,
         }}
