@@ -163,6 +163,52 @@ def extract_blocks(paste: str) -> list[tuple[str, str]]:
             count=1,
         ).lstrip("\n")
         out.append((path, body_clean))
+
+    # ── Fence-less fallback ──────────────────────────────────────────────
+    # If we found zero fenced blocks but the paste contains multiple
+    # path declarations, the user has likely copy-pasted from a rendered
+    # Claude.ai / ChatGPT message — the visual code blocks render fine
+    # but copying them STRIPS THE BACKTICKS. What lands in the textarea
+    # looks like:
+    #
+    #   yaml# path: data/sources/foo.yaml
+    #   id: foo
+    #   …
+    #   yaml# path: data/topics/bar.yaml
+    #   slug: bar
+    #   …
+    #
+    # (The language tag "yaml" leaks through as a glued prefix to the
+    # next line.) Split on each "[yaml]# path:" / "[yaml]## path:"
+    # boundary and treat each chunk as a block. Same logic for tilde
+    # fences and bare path lines.
+    if not out:
+        # Boundary marker: optional "yaml" / "yml" prefix (case-insensitive)
+        # immediately followed by a "# path:" or "## path:" declaration,
+        # OR a "path:" / "file:" key at the start of a line. We accept
+        # either form so AIs that drop the # work too.
+        boundary_re = re.compile(
+            r"^[ \t]*(?:yaml|yml|y)?[ \t]*"
+            r"(?:#+\s*)?(?:path|file)\s*:\s*(?P<path>data/[a-z_]+/[a-z0-9][a-z0-9\-]*\.ya?ml)",
+            re.MULTILINE | re.IGNORECASE,
+        )
+        boundaries: list[tuple[int, int, str]] = []
+        for m in boundary_re.finditer(paste):
+            boundaries.append((m.start(), m.end(), m.group("path").strip()))
+        for i, (_, end, path) in enumerate(boundaries):
+            body_start = end
+            body_end = boundaries[i + 1][0] if i + 1 < len(boundaries) else len(paste)
+            body = paste[body_start:body_end].strip("\n")
+            # Strip trailing fence remnants if the AI sometimes ended
+            # with ``` or ~~~ but the opening fence was stripped.
+            body = re.sub(r"\n[`~]{3,}\s*$", "", body)
+            # Trim any trailing markdown like "---" separators between
+            # entities the AI inserted.
+            body = re.sub(r"\n[-]{3,}\s*$", "", body)
+            body = body.rstrip() + "\n"
+            if body.strip():
+                out.append((path, body))
+
     return out
 
 
@@ -288,7 +334,19 @@ def main() -> int:
             f"`# path:` markers detected: {path_count}  ·  "
             f"bare `data/.../foo.yaml` mentions: {bare_path_count}"
         ), file=sys.stderr)
-        if fence_count == 0:
+        if fence_count == 0 and bare_path_count > 1:
+            print(yellow(
+                "  → No fences detected but multiple `data/.../foo.yaml` "
+                "paths are present. This usually means you copy-pasted "
+                "from a RENDERED Claude.ai / ChatGPT message — the visual "
+                "code blocks copy as plain text and the backticks get "
+                "stripped (you may see `yaml# path:` glued together at "
+                "block boundaries). The fence-less fallback should have "
+                "caught this; if you're seeing this error, the boundary "
+                "regex didn't match — check the first-chars snippet "
+                "below and report to dev."
+            ), file=sys.stderr)
+        elif fence_count == 0:
             print(yellow(
                 "  → No fenced code blocks at all. The AI replied as plain "
                 "prose. Re-prompt: 'wrap each entity in a ```yaml … ``` block "
