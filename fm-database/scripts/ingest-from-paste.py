@@ -82,10 +82,16 @@ def bold(s: str) -> str:   return f"\x1b[1m{s}\x1b[0m" if _isatty() else s
 # for path declarations (AI often puts "# path: data/..." above the fence
 # rather than inside it).
 BLOCK_RE = re.compile(
-    r"```(?:yaml|yml|y)?\s*\n"
+    # ` characters: backtick fences (3+) OR tilde fences (3+) — both
+    # are valid markdown.
+    r"(?:`{3,}|~{3,})"
+    # Optional language tag: yaml | yml | y | YAML — case-insensitive.
+    # We also accept "yaml" prefixed with anything (eg "yaml-heredoc")
+    # to be forgiving of variants we haven't seen yet.
+    r"(?:[^\n]*)?\n"
     r"(?P<body>.*?)"
-    r"\n```",
-    re.DOTALL,
+    r"\n(?:`{3,}|~{3,})",
+    re.DOTALL | re.IGNORECASE,
 )
 
 # Tolerant of the variants we see in the wild:
@@ -262,10 +268,45 @@ def main() -> int:
     # ── Extract blocks ──
     blocks = extract_blocks(paste)
     if not blocks:
-        print(red("✗ no fenced ```yaml blocks with a `# path:` header found."),
+        # Diagnose: WHY did we find zero blocks? Coach sees this in the
+        # raw log so she can fix the AI prompt or the paste rather than
+        # staring at a generic error.
+        fence_count = len(list(BLOCK_RE.finditer(paste)))
+        path_count = len(list(PATH_RE.finditer(paste)))
+        bare_path_count = len(list(BARE_PATH_RE.finditer(paste)))
+        paste_len = len(paste)
+        head_snippet = paste[:400].replace("\n", "\\n")
+        print(red("✗ no fenced YAML blocks with a # path: header found."),
               file=sys.stderr)
-        print(dim("hint: every YAML block in the AI's reply should start with "
-                  "`# path: data/<entity>/<slug>.yaml`"),
+        print(dim(
+            f"hint: receiver looked for ```yaml (or ```, ~~~, ```YAML) "
+            f"blocks containing `# path: data/<entity>/<slug>.yaml`."
+        ), file=sys.stderr)
+        print(dim(
+            f"  paste size: {paste_len} chars  ·  "
+            f"fenced blocks detected: {fence_count}  ·  "
+            f"`# path:` markers detected: {path_count}  ·  "
+            f"bare `data/.../foo.yaml` mentions: {bare_path_count}"
+        ), file=sys.stderr)
+        if fence_count == 0:
+            print(yellow(
+                "  → No fenced code blocks at all. The AI replied as plain "
+                "prose. Re-prompt: 'wrap each entity in a ```yaml … ``` block "
+                "with `# path: data/<entity>/<slug>.yaml` as the first line.'"
+            ), file=sys.stderr)
+        elif fence_count > 0 and path_count == 0 and bare_path_count == 0:
+            print(yellow(
+                "  → Fences were found but no path declaration. The AI "
+                "forgot the path header. Re-prompt: 'every fenced YAML "
+                "block must start with `# path: data/<entity>/<slug>.yaml`.'"
+            ), file=sys.stderr)
+        elif fence_count > 0 and bare_path_count > 0:
+            print(yellow(
+                "  → Path-like strings exist but didn't parse. Likely the "
+                "AI put the path OUTSIDE the fence, or the fence used an "
+                "unrecognised syntax. Check the raw log for the format."
+            ), file=sys.stderr)
+        print(dim(f"  first 400 chars of paste: {head_snippet}"),
               file=sys.stderr)
         return 2
 

@@ -178,5 +178,26 @@ function _parse(raw: string, processOk: boolean): IngestFromPasteResult {
     result.ok = true;
   }
 
+  // "No fenced YAML blocks found" is a top-level pre-validate failure
+  // (the script exits before fmdb validate runs, so validateError stays
+  // empty and the UI would otherwise show only "✗ failed"). Promote the
+  // diagnostic into validateError so it surfaces in the panel without
+  // requiring the coach to expand the raw log.
+  if (/no fenced YAML blocks with a # path: header found/i.test(clean)) {
+    // Capture the block from the verdict line through the "first 400 chars"
+    // line so the coach gets the full diagnosis (paste size, fence count,
+    // path-marker count, action hint, first-chars snippet).
+    const diag = clean.match(
+      /✗\s*no fenced YAML blocks[\s\S]*?(?=\n→\s*Running|\n✓\s*Ingest|\n✗\s*Ingest|$)/i,
+    );
+    if (diag) {
+      result.validateError = diag[0]
+        .split("\n")
+        .map((l) => l.replace(/^ {2,4}/, ""))
+        .join("\n")
+        .trim();
+    }
+  }
+
   return result;
 }
