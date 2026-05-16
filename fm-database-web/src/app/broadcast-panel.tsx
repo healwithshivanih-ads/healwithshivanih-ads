@@ -37,12 +37,60 @@ type RecipientMode = "follow_up_due" | "recheck_due" | "all_active" | "custom";
  * ₹0.115). Surface that warning when one is picked so the coach doesn't
  * bulk-blast a 50-recipient broadcast on fm_encouragement.
  */
-const APPROVED_TEMPLATES: { name: string; category: "UTILITY" | "MARKETING"; params: number; note?: string }[] = [
-  { name: "fm_lab_reminder", category: "UTILITY", params: 2, note: "name / labs" },
-  { name: "fm_supplement_instructions", category: "UTILITY", params: 2, note: "name / instructions" },
-  { name: "fm_encouragement", category: "MARKETING", params: 2, note: "name / protocolHighlight" },
-  { name: "fm_checkin_nudge", category: "MARKETING", params: 2, note: "name / symptom" },
+interface ApprovedTemplate {
+  name: string;
+  category: "UTILITY" | "MARKETING";
+  /** Param labels in {{1}}, {{2}} order — drives the input field labels
+   *  in the panel so coach knows what each slot means. */
+  paramLabels: string[];
+  /** Exact body verbatim as APPROVED by Meta on the WABA. Mirrors the
+   *  TEMPLATES entries in whatsapp-server/scripts/submit-templates.js
+   *  — keep both in sync. Coach sees this rendered with {{1}}/{{2}}
+   *  filled from the inputs as a live preview. */
+  body: string;
+}
+
+const SIGNOFF = "\n\n— Shivani Hari\nYour Functional Health Coach";
+
+const APPROVED_TEMPLATES: ApprovedTemplate[] = [
+  {
+    name: "fm_lab_reminder",
+    category: "UTILITY",
+    paramLabels: ["name", "labs"],
+    body: `Hi {{1}}, a gentle reminder to get your labs done before our next session. Here are the tests we discussed: {{2}}. Please share the report at least 2 days before our appointment. 🙏${SIGNOFF}`,
+  },
+  {
+    name: "fm_supplement_instructions",
+    category: "UTILITY",
+    paramLabels: ["name", "instructions"],
+    body: `Hi {{1}}, here are your supplement instructions for this week: {{2}}. Take them as discussed and note any changes. Feel free to message if you have questions! 💊${SIGNOFF}`,
+  },
+  {
+    name: "fm_encouragement",
+    category: "MARKETING",
+    paramLabels: ["name", "protocolHighlight"],
+    body: `Hi {{1}}, you're doing great! Healing takes time and consistency — be patient with yourself. Keep going with {{2}}. Rooting for you! 💚${SIGNOFF}`,
+  },
+  {
+    name: "fm_checkin_nudge",
+    category: "MARKETING",
+    paramLabels: ["name", "symptom"],
+    body: `Hi {{1}}, just checking in! How are you feeling on the protocol? Any changes in {{2}}? Would love to hear how things are going. 🌿${SIGNOFF}`,
+  },
 ];
+
+/** Render {{N}} placeholders with the coach's typed values. Unfilled
+ *  slots stay as {{paramLabel}} so the preview reads cleanly instead
+ *  of "Hi  ,". */
+function renderBodyPreview(template: ApprovedTemplate, params: string[]): string {
+  return template.body.replace(/\{\{(\d+)\}\}/g, (_, idxStr) => {
+    const i = parseInt(idxStr, 10) - 1;
+    const val = (params[i] ?? "").trim();
+    if (val) return val;
+    const label = template.paramLabels[i] ?? `param${i + 1}`;
+    return `{{${label}}}`;
+  });
+}
 
 export function BroadcastPanel({ clients, followUpDueIds, recheckDueIds, activeIds }: Props) {
   const [open, setOpen] = useState(false);
@@ -73,12 +121,27 @@ export function BroadcastPanel({ clients, followUpDueIds, recheckDueIds, activeI
   const handleSend = async () => {
     if (!campaignName.trim()) { setError("Campaign name is required"); return; }
     if (recipientCount === 0) { setError("No recipients selected"); return; }
+    // Send exactly N params where N = the template's declared paramLabels.
+    // Trailing empties become "" so Meta receives a placeholder for each
+    // slot — better than dropping (which makes the {{N}} render as
+    // literally "{{2}}" in the client's WhatsApp bubble).
+    const selected = APPROVED_TEMPLATES.find((t) => t.name === campaignName.trim());
+    const slotCount = selected?.paramLabels.length ?? 0;
+    const sendParams = Array.from({ length: slotCount }, (_, i) => (params[i] ?? "").trim());
+    const missing = selected
+      ? sendParams
+          .map((v, i) => (v ? null : selected.paramLabels[i]))
+          .filter((x): x is string => !!x)
+      : [];
+    if (missing.length > 0) {
+      setError(`Fill in ${missing.map((m) => `{{${m}}}`).join(", ")} before sending`);
+      return;
+    }
     setError(null);
     setSending(true);
     setResult(null);
     try {
-      const filledParams = params.filter((p) => p.trim());
-      const res = await broadcastAction(Array.from(selectedIds), campaignName.trim(), filledParams);
+      const res = await broadcastAction(Array.from(selectedIds), campaignName.trim(), sendParams);
       setResult(res);
     } catch (e) {
       setError((e as Error).message ?? "Unknown error");
@@ -225,18 +288,43 @@ export function BroadcastPanel({ clients, followUpDueIds, recheckDueIds, activeI
                   <optgroup label="UTILITY (~₹0.115/msg)">
                     {APPROVED_TEMPLATES.filter((t) => t.category === "UTILITY").map((t) => (
                       <option key={t.name} value={t.name}>
-                        {t.name} · {t.params} param{t.params !== 1 ? "s" : ""}{t.note ? ` (${t.note})` : ""}
+                        {t.name} · {t.paramLabels.length} param{t.paramLabels.length !== 1 ? "s" : ""}{" "}
+                        ({t.paramLabels.join(" / ")})
                       </option>
                     ))}
                   </optgroup>
                   <optgroup label="MARKETING — 7× cost (~₹0.78/msg)">
                     {APPROVED_TEMPLATES.filter((t) => t.category === "MARKETING").map((t) => (
                       <option key={t.name} value={t.name}>
-                        ⚠ {t.name} · {t.params} param{t.params !== 1 ? "s" : ""}{t.note ? ` (${t.note})` : ""}
+                        ⚠ {t.name} · {t.paramLabels.length} param{t.paramLabels.length !== 1 ? "s" : ""}{" "}
+                        ({t.paramLabels.join(" / ")})
                       </option>
                     ))}
                   </optgroup>
                 </select>
+
+                {/* Live message preview — show the actual approved body
+                    with {{1}}/{{2}} substituted by what the coach has
+                    typed. Reads like the WhatsApp bubble the client will
+                    see, so coach can sanity-check tone + spelling before
+                    sending. Unfilled slots stay as {{paramLabel}}. */}
+                {selected && (
+                  <div className="mt-2 rounded-lg border border-emerald-200 bg-emerald-50/60 p-3 space-y-1.5">
+                    <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-wide text-emerald-800">
+                      <span>💬</span>
+                      <span>Message preview</span>
+                      <span className="text-emerald-700/70 font-normal lowercase tracking-normal">
+                        — exactly what each client sees on WhatsApp
+                      </span>
+                    </div>
+                    <pre
+                      className="whitespace-pre-wrap font-sans text-[12.5px] leading-relaxed text-emerald-950 m-0"
+                      style={{ fontFamily: "inherit" }}
+                    >
+                      {renderBodyPreview(selected, params)}
+                    </pre>
+                  </div>
+                )}
                 {isMarketing && recipientCount > 0 && (
                   <p className="text-[11px] text-rose-700 bg-rose-50 border border-rose-200 rounded px-2 py-1.5">
                     ⚠ <strong>{selected.name}</strong> is Meta-classified
@@ -251,28 +339,46 @@ export function BroadcastPanel({ clients, followUpDueIds, recheckDueIds, activeI
             );
           })()}
 
-          {/* Template params */}
-          <div className="space-y-2">
-            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Template parameters</p>
-            <div className="grid grid-cols-3 gap-2">
-              {params.map((p, i) => (
-                <label key={i} className="space-y-0.5">
-                  <span className="text-[10px] text-muted-foreground">Param {i + 1}</span>
-                  <input
-                    type="text"
-                    value={p}
-                    onChange={(e) => {
-                      const next = [...params];
-                      next[i] = e.target.value;
-                      setParams(next);
-                    }}
-                    placeholder={`{{param${i + 1}}}`}
-                    className="w-full rounded border border-input bg-background px-2 py-1 text-xs focus:outline-none"
-                  />
-                </label>
-              ))}
-            </div>
-          </div>
+          {/* Template params — render ONLY the slots the picked template
+              defines. Previous version always rendered 3, which was both
+              wasteful and confusing for 2-param templates (the 3rd input
+              just silently sent an extra param Meta ignores). */}
+          {(() => {
+            const selected = APPROVED_TEMPLATES.find((t) => t.name === campaignName.trim());
+            const slotCount = selected?.paramLabels.length ?? 0;
+            if (slotCount === 0) return null;
+            return (
+              <div className="space-y-2">
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                  Template parameters
+                </p>
+                <div
+                  className="grid gap-2"
+                  style={{ gridTemplateColumns: `repeat(${Math.min(slotCount, 3)}, minmax(0, 1fr))` }}
+                >
+                  {selected!.paramLabels.map((label, i) => (
+                    <label key={i} className="space-y-0.5">
+                      <span className="text-[10px] text-muted-foreground">
+                        {`{{${label}}}`}
+                      </span>
+                      <input
+                        type="text"
+                        value={params[i] ?? ""}
+                        onChange={(e) => {
+                          const next = [...params];
+                          while (next.length <= i) next.push("");
+                          next[i] = e.target.value;
+                          setParams(next);
+                        }}
+                        placeholder={label === "name" ? "Hariharan" : `e.g. ${label}…`}
+                        className="w-full rounded border border-input bg-background px-2 py-1 text-xs focus:outline-none"
+                      />
+                    </label>
+                  ))}
+                </div>
+              </div>
+            );
+          })()}
 
           {/* Preview */}
           {recipientCount > 0 && (
