@@ -399,8 +399,29 @@ For each document the coach pastes, reply in this order:
 
       Coach stubs these manually OR adds them in a later batch.
 
-Each YAML is a fenced \`\`\`yaml block whose FIRST line is:
+Each YAML is a fenced \`\`\`yaml block whose FIRST line MUST be exactly:
   # path: data/<entity>/<slug>.yaml
+
+CRITICAL — the receiver regex is strict about this. Common mistakes
+that cause "no fenced yaml blocks with # path: header found":
+  ❌ Path on a markdown heading ABOVE the fence (\`**path:**\` etc.)
+     — must be INSIDE the \`\`\`yaml block, on its first line.
+  ❌ Missing the literal \`# path:\` prefix. \`# data/topics/foo.yaml\`
+     alone is rejected; you must write \`# path: data/topics/foo.yaml\`.
+  ❌ Capitalised "Path" — must be lowercase: \`# path:\` not \`# Path:\`.
+  ❌ Path as a YAML key without the comment marker (\`path: data/...\`)
+     — it must be a comment, with the \`#\` and a space.
+  ❌ Forgetting the .yaml extension.
+  ❌ Wrong fence language — must be \`\`\`yaml (not \`\`\`yml or \`\`\` alone).
+
+Concrete template — copy this verbatim:
+
+  \`\`\`yaml
+  # path: data/topics/hypothyroidism.yaml
+  slug: hypothyroidism
+  display_name: Hypothyroidism
+  …
+  \`\`\`
 
 ──────────────────────────────────────────────────────────────────────
 10. DISCIPLINE (what NOT to do)

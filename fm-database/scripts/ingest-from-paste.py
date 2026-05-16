@@ -78,6 +78,9 @@ def bold(s: str) -> str:   return f"\x1b[1m{s}\x1b[0m" if _isatty() else s
 #
 # OR the older variant where path is on the closing fence's line.
 # We're permissive about whitespace + language tag (yaml | yml | y).
+# Need the start index so we can also look at the LINE before the fence
+# for path declarations (AI often puts "# path: data/..." above the fence
+# rather than inside it).
 BLOCK_RE = re.compile(
     r"```(?:yaml|yml|y)?\s*\n"
     r"(?P<body>.*?)"
@@ -85,7 +88,48 @@ BLOCK_RE = re.compile(
     re.DOTALL,
 )
 
-PATH_RE = re.compile(r"^\s*#\s*path:\s*(?P<path>[^\s\n]+)", re.MULTILINE)
+# Tolerant of the variants we see in the wild:
+#   # path: data/topics/foo.yaml
+#   ## path: data/topics/foo.yaml
+#   # Path: data/topics/foo.yaml
+#   # file: data/topics/foo.yaml
+#   # File: data/topics/foo.yaml
+# Plus the YAML-style "path: data/..." as a bare key (no comment marker)
+# which a few AI replies have used despite the spec.
+PATH_RE = re.compile(
+    r"^\s*(?:#+\s*)?(?:path|file)\s*:\s*(?P<path>[^\s\n]+)",
+    re.MULTILINE | re.IGNORECASE,
+)
+
+# Last-resort recovery: a raw "data/<entity>/<slug>.yaml" mention,
+# either as a bare comment in the block, in the line immediately
+# preceding the fence (markdown heading style), or as the YAML's first
+# line. Catches "# data/topics/foo.yaml" and **path:** data/... markdown.
+BARE_PATH_RE = re.compile(
+    r"data/(?P<entity>[a-z_]+)/(?P<slug>[a-z0-9][a-z0-9\-]*?)\.ya?ml",
+    re.IGNORECASE,
+)
+
+
+def _path_from_body(body: str, preamble: str) -> str | None:
+    """Try every known marker style + a last-resort bare-path regex.
+
+    `preamble` is the text immediately before the fence (~3 lines) — AI
+    chats sometimes put "**path: data/...**" as a markdown heading
+    rather than inside the fence. We accept either location."""
+    m = PATH_RE.search(body)
+    if m:
+        return m.group("path").strip().rstrip(",;")
+    # Try the preamble for a path-marker line
+    m = PATH_RE.search(preamble)
+    if m:
+        return m.group("path").strip().rstrip(",;")
+    # Last resort: bare "data/<kind>/<slug>.yaml" anywhere in the block
+    # or the preamble.
+    m = BARE_PATH_RE.search(body) or BARE_PATH_RE.search(preamble)
+    if m:
+        return m.group(0)
+    return None
 
 
 def extract_blocks(paste: str) -> list[tuple[str, str]]:
@@ -93,12 +137,25 @@ def extract_blocks(paste: str) -> list[tuple[str, str]]:
     out: list[tuple[str, str]] = []
     for m in BLOCK_RE.finditer(paste):
         body = m.group("body")
-        p = PATH_RE.search(body)
-        if not p:
+        # Grab the ~150 chars preceding the fence so we can pick up a
+        # markdown-heading-style path declaration like
+        # "**path:** data/topics/foo.yaml" on its own line above ```yaml.
+        preamble_start = max(0, m.start() - 200)
+        preamble = paste[preamble_start:m.start()]
+
+        path = _path_from_body(body, preamble)
+        if not path:
             continue
-        path = p.group("path").strip().rstrip(",;")
-        # Strip the path comment line itself + any blank line right after.
+        # Strip ANY path-marker line we matched inside the body so the
+        # writer doesn't emit it as a stray "# path:" inside the YAML.
         body_clean = PATH_RE.sub("", body, count=1).lstrip("\n").rstrip() + "\n"
+        # Also strip a leading bare "# data/..." comment line if present.
+        body_clean = re.sub(
+            r"^\s*#\s*data/[^\n]+\n",
+            "",
+            body_clean,
+            count=1,
+        ).lstrip("\n")
         out.append((path, body_clean))
     return out
 
