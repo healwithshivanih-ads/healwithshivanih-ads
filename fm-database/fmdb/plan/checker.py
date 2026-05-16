@@ -101,6 +101,63 @@ def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Fin
     """Run deterministic checks. Returns findings sorted by severity."""
     findings: list[Finding] = []
 
+    # ---------- Sanity-check the client's active_conditions list ----------
+    # Real-use bug 2026-05-16: cl-006 (Geetika) had Type 1 diabetes + Type 2
+    # diabetes + Insulinoma co-listed (clinically incompatible). The AI's
+    # plan generator then surfaced safety warnings about this bogus combo.
+    # Cleaner to catch the bad data here at check-time so coach sees a
+    # WARNING on the plan editor BEFORE the AI runs downstream.
+    if client is not None:
+        existing_conds = list(getattr(client, "active_conditions", []) or [])
+
+        # Clinically-incompatible pairs that are almost always extraction
+        # noise rather than dual diagnoses.
+        INCOMPATIBLE_PAIRS = [
+            ({"type 1 diabetes", "t1dm"}, {"type 2 diabetes", "t2dm"}),
+            ({"insulinoma"}, {"type 1 diabetes", "t1dm", "type 2 diabetes", "t2dm",
+                              "prediabetes"}),
+        ]
+        for a_set, b_set in INCOMPATIBLE_PAIRS:
+            a_hit = next((c for c in existing_conds
+                          if any(t in c.lower() for t in a_set)), None)
+            b_hit = next((c for c in existing_conds
+                          if any(t in c.lower() for t in b_set)), None)
+            if a_hit and b_hit:
+                findings.append(Finding(
+                    "WARNING", "client", "active_conditions",
+                    (f"Co-listed clinically-incompatible conditions: "
+                     f"{a_hit!r} + {b_hit!r}. Likely extraction noise — "
+                     f"verify with the client and prune the bogus entry "
+                     f"from client.yaml.active_conditions."),
+                ))
+
+        # "At risk for X" framings — coach assessments, not diagnoses.
+        for c in existing_conds:
+            cl = c.lower()
+            if "at risk for " in cl or "at risk of " in cl:
+                findings.append(Finding(
+                    "INFO", "client", "active_conditions",
+                    (f"{c!r} reads as a coach assessment, not a confirmed "
+                     f"diagnosis. Consider moving to notes_for_coach or "
+                     f"presenting_symptoms."),
+                ))
+
+        # Substring-duplicate detection (e.g. "Prediabetes" alongside
+        # "Prediabetes (HbA1c 6.20%)") — surface so coach can keep the
+        # one with more detail.
+        for i, a in enumerate(existing_conds):
+            al = a.lower().strip()
+            for j, b in enumerate(existing_conds):
+                if i >= j: continue
+                bl = b.lower().strip()
+                if al == bl or al in bl or bl in al:
+                    findings.append(Finding(
+                        "INFO", "client", "active_conditions",
+                        (f"Possible duplicate: {a!r} and {b!r}. Keep "
+                         f"whichever carries more detail."),
+                    ))
+                    break  # one warning per pair is enough
+
     # ---------- Build resolution indexes (alias-aware) ----------
     # All entity kinds that carry .aliases get alias-aware lookup so a
     # plan can reference "niacin-b3" and resolve to canonical "niacin"

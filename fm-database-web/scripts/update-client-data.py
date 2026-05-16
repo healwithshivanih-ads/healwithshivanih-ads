@@ -126,17 +126,115 @@ def main() -> int:
             updated_fields.append("medications")
 
     # ── Merge conditions ─────────────────────────────────────────────────────
+    # Real-use bug surfaced 2026-05-16: cl-006 (Geetika) had 14 active
+    # conditions including Type 1 diabetes, Type 2 diabetes, Insulinoma, PCOS,
+    # "At risk for diabetes", plus duplicates of real diagnoses. Likely
+    # injected by an early extractor reading a lab report whose reference
+    # text mentioned those topics — the extractor treated topical mentions
+    # as the client's own diagnoses.
+    #
+    # Three guards against recurrence:
+    #   1. BLOCKLIST: never add conditions that look like "at risk for X"
+    #      ("at risk" is a coach assessment, not a diagnosis).
+    #   2. SUSPICIOUS_PATTERNS: skip + log conditions that look like topic
+    #      labels rather than diagnoses (single noun-phrase from a
+    #      well-known FM topic taxonomy). The caller can re-add explicitly.
+    #   3. DEDUP: case-insensitive AND substring-aware — "Prediabetes"
+    #      and "Prediabetes (HbA1c 6.20%)" are treated as the same
+    #      condition (longer wins, since it carries more detail).
     if new_conditions:
         existing_conds: list[str] = data.get("active_conditions") or data.get("conditions") or []
-        existing_lower = {c.lower() for c in existing_conds}
-        added_conds = [c for c in new_conditions if c.lower() not in existing_lower]
-        if added_conds:
-            merged_conds = existing_conds + added_conds
-            if "active_conditions" in data:
-                data["active_conditions"] = merged_conds
+
+        # Guard 1: blocklist phrases.
+        BLOCKLIST_SUBSTRINGS = (
+            "at risk for ",
+            "at risk of ",
+            "risk for ",  # generic "risk for X" framings
+        )
+        # Guard 2: extraction-noise patterns that historically slipped in.
+        # These are concepts the AI sometimes confuses with diagnoses when
+        # they appear as topics in source material (lab references, FM
+        # textbooks, articles). If they show up here without the client
+        # ALREADY having them in existing_conds, drop them — coach can
+        # add manually if it's a real diagnosis.
+        EXTRACTION_NOISE = {
+            "type 1 diabetes", "t1dm", "type 1 diabetes mellitus",
+            "type 2 diabetes",  "t2dm", "type 2 diabetes mellitus",
+            "insulinoma",
+            "polycystic ovary syndrome", "pcos",
+            "celiac disease",  # frequently appears in gut-health articles
+            "lupus", "sle",
+            "rheumatoid arthritis", "ra",
+            "multiple sclerosis", "ms",
+        }
+
+        suspicious_dropped: list[str] = []
+        def keep(c: str) -> bool:
+            cl = c.lower().strip()
+            if any(b in cl for b in BLOCKLIST_SUBSTRINGS):
+                suspicious_dropped.append(c)
+                return False
+            # Only block extraction-noise if it's not ALREADY on the
+            # client's record (coach added it manually before, presumably
+            # because it IS the diagnosis).
+            existing_lower_set = {e.lower().strip() for e in existing_conds}
+            if cl in EXTRACTION_NOISE and cl not in existing_lower_set:
+                suspicious_dropped.append(c)
+                return False
+            return True
+
+        filtered_new = [c for c in new_conditions if keep(c)]
+
+        # Guard 3: substring-aware dedup. Build a working list of
+        # (canonical_form, original) pairs; if a new entry's canonical
+        # form is a substring of an existing canonical form (or vice
+        # versa), treat them as the same condition. Longer (more detail)
+        # wins.
+        def canonicalise(s: str) -> str:
+            # Strip parens content, punctuation, normalise whitespace.
+            import re
+            s2 = re.sub(r"\(.*?\)", "", s).lower()
+            s2 = re.sub(r"[^a-z0-9 ]+", " ", s2)
+            s2 = re.sub(r"\s+", " ", s2).strip()
+            return s2
+
+        merged = list(existing_conds)  # start with existing
+        for new_c in filtered_new:
+            new_canon = canonicalise(new_c)
+            if not new_canon:
+                continue
+            dup_idx = None
+            for i, ex in enumerate(merged):
+                ex_canon = canonicalise(ex)
+                if not ex_canon:
+                    continue
+                # Match: exact, substring either direction, or token-set equality.
+                if new_canon == ex_canon:
+                    dup_idx = i; break
+                if new_canon in ex_canon or ex_canon in new_canon:
+                    dup_idx = i; break
+            if dup_idx is None:
+                merged.append(new_c)
             else:
-                data["conditions"] = merged_conds
+                # Longer (more detail) wins — keep whichever has more
+                # information.
+                if len(new_c) > len(merged[dup_idx]):
+                    merged[dup_idx] = new_c
+
+        if merged != existing_conds:
+            if "active_conditions" in data:
+                data["active_conditions"] = merged
+            else:
+                data["conditions"] = merged
             updated_fields.append("conditions")
+
+        if suspicious_dropped:
+            print(
+                f"[update-client-data] Dropped {len(suspicious_dropped)} suspicious "
+                f"condition(s) (extraction-noise / blocklist): "
+                f"{suspicious_dropped}",
+                file=sys.stderr,
+            )
 
     # A pure-lab upload (lab_values only, no new measurements / meds /
     # conditions) wouldn't otherwise be persisted because `updated_fields`

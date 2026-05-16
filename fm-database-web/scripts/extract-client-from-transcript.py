@@ -159,6 +159,25 @@ REQUIRED JSON SHAPE:
 }
 
 EXTRACTION RULES:
+
+CRITICAL — active_conditions guardrail (real-use bug 2026-05-16):
+- active_conditions is for **confirmed clinical diagnoses the CLIENT has been told they
+  have BY A CLINICIAN, or that are stated explicitly in their own labs / medical records**.
+  Examples that BELONG: "Hashimoto's thyroiditis (diagnosed 2018)", "Postmenopausal",
+  "Iron deficiency (ferritin 18, confirmed Apr 2026)", "Prediabetes (HbA1c 6.20%)".
+- DO NOT include topics the client / coach / doctor merely DISCUSSED, ASKED ABOUT, or
+  was RULED OUT for. If the transcript says "we ruled out diabetes" or "she was concerned
+  about PCOS but tests were normal" or "the lab reference range mentions T1D / T2D /
+  insulinoma" — those are NOT her conditions. Don't add them.
+- DO NOT include "at risk for X" framings. "At risk for diabetes" is a coach assessment,
+  not a diagnosis. Capture the risk pattern under `notes` or `key_symptoms`, not here.
+- DO NOT include family-history conditions (e.g. "mother had thyroid issues") — those
+  go in `family_history`, not active_conditions.
+- DO NOT pad. If unclear whether something IS the client's confirmed diagnosis vs a
+  topic she was discussing, leave it out and surface in `notes` for the coach to verify.
+  Empty active_conditions is fine; bogus active_conditions are HARMFUL (the AI's
+  downstream plan generation will flag dangerous protocol combinations based on them).
+
 - display_name: first name or full name the patient uses. Not the doctor.
 - email: only if clearly stated (not inferred).
 - dietary_preference: listen for "I'm vegetarian", "we don't eat meat", "I'm vegan",

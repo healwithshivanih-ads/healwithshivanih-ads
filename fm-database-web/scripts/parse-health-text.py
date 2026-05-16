@@ -140,7 +140,15 @@ def main() -> int:
         "- For lab values, always include the unit if mentioned.\n"
         "- If a value is missing or unclear, use null for measurements.\n"
         "- Include ALL medications and supplements mentioned, with dose if given.\n"
-        "- Include ALL diagnoses and conditions mentioned.\n"
+        "- CONDITIONS — only confirmed diagnoses the client actually has. NOT:\n"
+        "    • topics mentioned for discussion / education / reference\n"
+        "    • conditions the client was ruled out for\n"
+        "    • 'at risk for X' framings (these are assessments, not diagnoses)\n"
+        "    • family-history conditions (mother/father/sibling had X)\n"
+        "  Example: if text says 'lab reference range covers T1D, T2D, insulinoma,\n"
+        "  PCOS' — those are reference notes, NOT her diagnoses. Don't include.\n"
+        "  When unsure, leave it out — empty conditions is fine; bogus conditions\n"
+        "  break downstream AI plan generation.\n"
         "- Do not invent values — only extract what is explicitly stated."
     )
 
