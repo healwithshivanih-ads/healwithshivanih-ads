@@ -187,18 +187,20 @@ export async function recordOutboundMessageAction(input: {
   const tags = isFreeText
     ? "[source: whatsapp_outbound] [type: text]"
     : `[source: whatsapp_outbound] [template: ${input.templateName}]`;
-  const presenting = `${tags}\n\n${input.renderedBody}`;
-  // Roll same-day WhatsApp activity for one client into ONE session
-  // covering both directions. Prefix marker `[source: whatsapp_`
-  // matches inbound (whatsapp_webhook) AND outbound (whatsapp_outbound)
-  // so back-and-forth interleaves chronologically — coach reads the
-  // thread with conversation context intact instead of two parallel
-  // logs that lose the call-and-response.
+  // Per-plan rollup: every WhatsApp message (in OR out) during a
+  // published plan's lifetime accumulates in ONE session tagged
+  // `[plan: <slug>]`. Plan supersede → next message starts a new
+  // session. Pre-programme clients accumulate under `[plan: prospect]`.
+  const { getActivePlanSlugForClient } = await import("@/lib/fmdb/active-plan-slug");
+  const planSlug = await getActivePlanSlugForClient(input.clientId);
+  const planMarker = `[plan: ${planSlug}]`;
+  const presenting = `${planMarker} ${tags}\n\n${input.renderedBody}`;
   const payload = JSON.stringify({
     client_id: input.clientId,
     session_type: "quick_note",
     presenting_complaints: presenting,
-    append_if_today_match: "[source: whatsapp_",
+    append_if_today_match: planMarker,
+    match_anywhere: true,
   });
 
   return new Promise((resolve) => {
@@ -307,6 +309,7 @@ export async function loadWhatsAppThreadAction(
           .replace(/\[source:[^\]]+\]/gi, "")
           .replace(/\[template:[^\]]+\]/gi, "")
           .replace(/\[type:[^\]]+\]/gi, "")
+          .replace(/\[plan:[^\]]+\]/gi, "")
           .trim();
         if (!text) return;
 

@@ -68,19 +68,25 @@ async function saveQuickNote(
   text: string
 ): Promise<{ ok: boolean; session_id?: string; error?: string }> {
   const scriptPath = path.join(SCRIPTS_DIR, "save-session.py");
-  // Roll same-day WhatsApp activity (BOTH directions) for one client
-  // into a SINGLE quick_note session. The prefix marker matches both
-  // inbound (whatsapp_webhook) AND outbound (whatsapp_outbound) so a
-  // chat back-and-forth interleaves chronologically in one file —
-  // preserves the conversation context coach needs to read the thread.
+  // Per-plan rollup: every WhatsApp message (in OR out) for the
+  // duration of a published plan rolls into ONE session tagged
+  // `[plan: <slug>]`. When the plan supersedes, the next message
+  // naturally starts a fresh session with the new plan slug.
+  // Pre-programme clients use the sentinel `[plan: prospect]` so they
+  // also get one rolling thread.
   //
-  // Each segment keeps its own [source: whatsapp_*] tag so the thread
-  // panel can render direction per segment after splitting on `---`.
+  // Each segment keeps its own [source: whatsapp_webhook] /
+  // [source: whatsapp_outbound] tag so the thread panel renders
+  // direction correctly after splitting on `---`.
+  const { getActivePlanSlugForClient } = await import("@/lib/fmdb/active-plan-slug");
+  const planSlug = await getActivePlanSlugForClient(clientId);
+  const planMarker = `[plan: ${planSlug}]`;
   const payload = {
     client_id: clientId,
     session_type: "quick_note",
-    presenting_complaints: `[source: whatsapp_webhook]\n\n${text}`,
-    append_if_today_match: "[source: whatsapp_",
+    presenting_complaints: `${planMarker} [source: whatsapp_webhook]\n\n${text}`,
+    append_if_today_match: planMarker,
+    match_anywhere: true,
   };
 
   const child = execFile(PYTHON, [scriptPath], {

@@ -101,17 +101,30 @@ def main() -> int:
     # per segment. Only `[session_type: …]` is stripped from non-first
     # chunks (it's identical across the whole session).
     append_marker = payload.get("append_if_today_match")
+    # `match_anywhere: true` widens the search beyond same-day — the
+    # matcher scans every session for the marker. Used by the per-plan
+    # WhatsApp rollup (one rolling thread per client per published plan,
+    # tagged `[plan: <slug>]`). When false (default), preserves the
+    # original same-day behaviour for callers that want it.
+    match_anywhere = bool(payload.get("match_anywhere", False))
     if append_marker and isinstance(append_marker, str):
         try:
             import yaml as _yaml  # type: ignore
             sessions_dir = root / "clients" / client_id / "sessions"
             if sessions_dir.exists():
-                date_prefix = session_date.isoformat()
-                same_day = sorted(
-                    p for p in sessions_dir.glob("*.yaml")
-                    if date_prefix in p.name
-                )
-                for p in same_day:
+                if match_anywhere:
+                    candidates = sorted(
+                        sessions_dir.glob("*.yaml"),
+                        key=lambda p: p.stat().st_mtime,
+                        reverse=True,  # newest first — most likely to match
+                    )
+                else:
+                    date_prefix = session_date.isoformat()
+                    candidates = sorted(
+                        p for p in sessions_dir.glob("*.yaml")
+                        if date_prefix in p.name
+                    )
+                for p in candidates:
                     try:
                         existing = _yaml.safe_load(p.read_text()) or {}
                     except Exception:
