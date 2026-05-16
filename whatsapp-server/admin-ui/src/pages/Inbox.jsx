@@ -48,8 +48,28 @@ export default function Inbox() {
 
   useEffect(() => {
     refresh();
+    // Polling fallback. SSE below is the fast path; the 10 s poll catches
+    // anything SSE missed (dropped connection, restart, multi-VM split).
     const t = setInterval(() => { refresh(true); }, POLL_MS);
-    return () => clearInterval(t);
+
+    // SSE — refresh the conversation list the moment a new inbound lands.
+    // Pulls the API key from localStorage and passes it as ?key= since
+    // EventSource can't set custom headers. Reconnects automatically on
+    // network blips (browser-native behaviour).
+    const key = encodeURIComponent(localStorage.getItem('wa_admin_key') || '');
+    const evt = new EventSource(`/api/events?key=${key}`);
+    evt.addEventListener('inbound.message', () => { refresh(true); });
+    evt.addEventListener('outbound.status', () => { refresh(true); });
+    evt.onerror = () => {
+      // Browser auto-reconnects with exponential backoff; nothing to do.
+      // If auth fails (?key wrong) the server returns 401 and the connection
+      // closes immediately — fall back to polling silently.
+    };
+
+    return () => {
+      clearInterval(t);
+      evt.close();
+    };
   }, []);
 
   return (
@@ -128,8 +148,26 @@ function ConversationPane({ id, onChange }) {
   useEffect(() => {
     setContact(null);
     load();
+    // Same dual fallback as the list pane: 10 s poll + SSE for instant
+    // refresh when a new inbound lands in THIS conversation.
     const t = setInterval(() => { load(true); }, POLL_MS);
-    return () => clearInterval(t);
+    const key = encodeURIComponent(localStorage.getItem('wa_admin_key') || '');
+    const evt = new EventSource(`/api/events?key=${key}`);
+    evt.addEventListener('inbound.message', (e) => {
+      try {
+        const payload = JSON.parse(e.data);
+        // Only refresh if the event is for THIS conversation. Cheap check
+        // saves us re-fetching the whole thread for every other inbound.
+        if (payload.conversation_id === id) load(true);
+      } catch {
+        load(true);
+      }
+    });
+    evt.addEventListener('outbound.status', () => load(true));
+    return () => {
+      clearInterval(t);
+      evt.close();
+    };
     /* eslint-disable-next-line */
   }, [id]);
 

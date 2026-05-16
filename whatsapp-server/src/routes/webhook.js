@@ -10,6 +10,7 @@ import { getOrCreate } from '../services/conversations/index.js';
 import { logInbound, updateStatus } from '../services/messages/index.js';
 import { getDefault as getDefaultWorkspace } from '../services/workspaces.js';
 import { forwardInbound } from '../services/forwarder/index.js';
+import { publish, EVENTS } from '../services/events/index.js';
 
 export const webhookRouter = Router();
 
@@ -100,11 +101,29 @@ async function processMetaWebhook(body, webhookRowId) {
           { wa_id: ev.wa_id, type: ev.type, body: (ev.body || '').slice(0, 80) },
           'inbound',
         );
+        // Notify in-process SSE subscribers (admin Inbox, Ochre /messages
+        // when proxied) so their UIs refresh instantly instead of waiting
+        // for the next 10 s poll. Lightweight summary only — full message
+        // is fetched by the client through the existing GET endpoints.
+        publish(EVENTS.INBOUND_MESSAGE, {
+          workspace_id: ws.id,
+          conversation_id: conv.id,
+          contact_id: contact.id,
+          wa_id: ev.wa_id,
+          message_id: message?.id,
+          type: ev.type,
+          ts: new Date().toISOString(),
+        });
         // Fire-and-forget forward to FM coach webhook (no-op if not configured).
         forwardInbound({ event: ev, contact, conversation: conv, message }).catch(() => {});
       } else if (ev.kind === 'status') {
         const errPayload = ev.errors ? { errors: ev.errors } : null;
         await updateStatus(ev.external_message_id, 'whatsapp', ev.status, errPayload);
+        publish(EVENTS.OUTBOUND_STATUS, {
+          external_message_id: ev.external_message_id,
+          status: ev.status,
+          ts: new Date().toISOString(),
+        });
       }
     } catch (e) {
       logger.error({ err: e.message, kind: ev.kind }, 'event handler failed');

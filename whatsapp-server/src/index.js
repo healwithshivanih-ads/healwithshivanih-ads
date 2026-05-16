@@ -18,6 +18,14 @@ import { start as startScheduler, stop as stopScheduler } from './scheduler/inde
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 
+// Trust Fly's edge proxy (single hop). Without this, express-rate-limit
+// throws ERR_ERL_UNEXPECTED_X_FORWARDED_FOR on every request because it
+// doesn't know how many hops to trust when reading the client IP from
+// X-Forwarded-For. `1` = trust exactly one proxy in front of us (Fly's
+// load balancer). Anything higher would let clients spoof their own IP
+// via X-Forwarded-For headers.
+app.set('trust proxy', 1);
+
 app.disable('x-powered-by');
 app.use(helmet({
   contentSecurityPolicy: false, // admin-ui needs inline tailwind output

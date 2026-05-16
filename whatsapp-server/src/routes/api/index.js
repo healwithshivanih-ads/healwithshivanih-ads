@@ -12,6 +12,7 @@ import { integrationsRouter } from './integrations.js';
 import { importsRouter } from './imports.js';
 import { sendRouter } from './send.js';
 import { broadcastsRouter } from './broadcasts.js';
+import { eventsRouter } from './events.js';
 
 export const apiRouter = Router();
 
@@ -33,3 +34,4 @@ apiRouter.use('/integrations', integrationsRouter);
 apiRouter.use('/imports', importsRouter);
 apiRouter.use('/send', sendRouter);
 apiRouter.use('/broadcasts', broadcastsRouter);
+apiRouter.use('/events', eventsRouter);

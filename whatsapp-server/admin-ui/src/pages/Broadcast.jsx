@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { api } from '../api.js';
 import Button from '../components/Button.jsx';
 
@@ -333,10 +333,12 @@ function ResultStep({ result, onReset }) {
         </p>
       </div>
 
+      {result.broadcast_id && <DeliveryStatusPanel broadcastId={result.broadcast_id} />}
+
       {failed.length > 0 && (
         <div className="rounded-md bg-white p-3 text-sm">
           <div className="mb-2 text-xs uppercase tracking-wide text-slate-500">
-            Failures ({failed.length})
+            Dispatch failures ({failed.length})
           </div>
           <ul>
             {failed.map((r, i) => (
@@ -352,6 +354,104 @@ function ResultStep({ result, onReset }) {
       <div className="flex justify-end">
         <Button onClick={onReset}>New broadcast</Button>
       </div>
+    </div>
+  );
+}
+
+// Polls the broadcast rollup endpoint until counts settle. Meta's lifecycle:
+// queued → sent → delivered → read (or failed). We re-fetch every 10 s for
+// the first 2 minutes (catches most deliveries), then stop. Coach can
+// always reload the page later to see the final state; the broadcast_id is
+// just discarded once they navigate away (fine — the rows persist server-
+// side and the rollup query keeps working forever).
+function DeliveryStatusPanel({ broadcastId }) {
+  const [data, setData] = useState(null);
+  const [err, setErr] = useState('');
+
+  useEffect(() => {
+    let cancelled = false;
+    let ticks = 0;
+    const MAX_TICKS = 12; // 12 × 10s = 2 min of live polling
+
+    async function load() {
+      try {
+        const res = await fetch(`/api/broadcasts/${broadcastId}`, {
+          headers: { 'x-api-key': localStorage.getItem('wa_admin_key') || '' },
+        });
+        const j = await res.json();
+        if (cancelled) return;
+        if (!res.ok || j.ok === false) {
+          setErr(j.error || `HTTP ${res.status}`);
+          return;
+        }
+        setData(j);
+      } catch (e) {
+        if (!cancelled) setErr(e.message);
+      }
+    }
+
+    load();
+    const id = setInterval(() => {
+      ticks += 1;
+      if (ticks >= MAX_TICKS) {
+        clearInterval(id);
+        return;
+      }
+      load();
+    }, 10_000);
+    return () => { cancelled = true; clearInterval(id); };
+  }, [broadcastId]);
+
+  if (err) {
+    return (
+      <div className="rounded-md bg-white p-3 text-xs text-amber-700">
+        Couldn't load live status: {err}
+      </div>
+    );
+  }
+  if (!data) {
+    return (
+      <div className="rounded-md bg-white p-3 text-xs text-slate-500">
+        Loading delivery status…
+      </div>
+    );
+  }
+
+  const c = data.counts;
+  return (
+    <div className="rounded-md bg-white p-3 text-sm">
+      <div className="mb-2 flex items-center justify-between">
+        <div className="text-xs uppercase tracking-wide text-slate-500">
+          Live delivery status
+        </div>
+        <div className="text-[10px] text-slate-400 font-mono">{data.broadcast_id.slice(0, 8)}…</div>
+      </div>
+      <div className="flex flex-wrap gap-3 text-xs">
+        <Stat label="Queued" value={c.queued} tone="slate" />
+        <Stat label="Sent" value={c.sent} tone="blue" />
+        <Stat label="Delivered" value={c.delivered} tone="emerald" />
+        <Stat label="Read" value={c.read} tone="emerald" />
+        <Stat label="Failed" value={c.failed} tone="red" />
+      </div>
+      <div className="mt-2 text-[11px] text-slate-500">
+        Auto-refreshes every 10 s for 2 min. Meta callbacks usually arrive within
+        seconds — `Delivered` + `Read` numbers should climb as recipients open their phones.
+      </div>
+    </div>
+  );
+}
+
+function Stat({ label, value, tone }) {
+  const colours = {
+    slate: 'text-slate-700 bg-slate-100',
+    blue: 'text-blue-800 bg-blue-100',
+    emerald: 'text-emerald-800 bg-emerald-100',
+    red: 'text-red-800 bg-red-100',
+  };
+  return (
+    <div className={`rounded px-2.5 py-1 font-medium ${colours[tone] || colours.slate}`}>
+      <span className="text-[10px] opacity-70 mr-1.5">{label}</span>
+      <span className="font-mono">{value}</span>
     </div>
   );
 }

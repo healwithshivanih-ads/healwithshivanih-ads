@@ -5,8 +5,9 @@ import * as convSvc from '../../services/conversations/index.js';
 import * as msgsSvc from '../../services/messages/index.js';
 import { getDefault as getDefaultWorkspace } from '../../services/workspaces.js';
 import { normalizePhone } from '../../util/phone.js';
-import { OutsideServiceWindowError, ValidationError } from '../../errors.js';
+import { OutsideServiceWindowError, ValidationError, NotFoundError } from '../../errors.js';
 import { logger } from '../../logger.js';
+import { db } from '../../db.js';
 
 // origin_ref is a uuid column in the messages table — anything else triggers
 // `invalid input syntax for type uuid`. If the caller hands us a UUID we use
@@ -173,6 +174,79 @@ broadcastsRouter.post('/', async (req, res, next) => {
   } catch (e) {
     if (e instanceof ValidationError) {
       return res.status(400).json({ ok: false, code: 'validation_error', error: e.message });
+    }
+    next(e);
+  }
+});
+
+// GET /api/broadcasts/:id — rollup of delivery status for a broadcast.
+//
+// `:id` is the UUID returned by the POST endpoint as `broadcast_id`. We use
+// it as origin_ref on every recipient's `messages` row, so the rollup is a
+// simple aggregation by status over messages.origin_ref.
+//
+// Meta callbacks asynchronously update the status column (queued → sent →
+// delivered → read, or → failed with an error payload). The dispatch-time
+// numbers from the POST response are first-touch — call this endpoint
+// later to get true delivery / read counts.
+broadcastsRouter.get('/:id', async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    // Validate UUID shape — origin_ref is a uuid column; a malformed value
+    // would error inside Postgres rather than returning a 404.
+    const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+    if (!UUID_RE.test(id)) {
+      throw new ValidationError('broadcast id must be a UUID');
+    }
+
+    const { data, error } = await db()
+      .from('messages')
+      .select('id,status,sent_at,external_message_id,error,contact_id,conversation_id')
+      .eq('origin_ref', id)
+      .eq('direction', 'outbound')
+      .order('sent_at', { ascending: true });
+    if (error) throw error;
+
+    if (!data || data.length === 0) {
+      throw new NotFoundError(`no messages found for broadcast ${id}`);
+    }
+
+    // Status rollup. Meta's lifecycle: queued → sent → delivered → read,
+    // or → failed at any point. Group counts plus surface failures so the
+    // coach can see which recipients didn't make it.
+    const counts = { queued: 0, sent: 0, delivered: 0, read: 0, failed: 0, other: 0 };
+    const failures = [];
+    for (const m of data) {
+      const s = m.status || 'other';
+      if (s in counts) counts[s] += 1;
+      else counts.other += 1;
+      if (s === 'failed') {
+        failures.push({
+          message_id: m.id,
+          external_message_id: m.external_message_id,
+          contact_id: m.contact_id,
+          error: m.error,
+        });
+      }
+    }
+
+    return res.json({
+      ok: true,
+      broadcast_id: id,
+      total: data.length,
+      counts,
+      // Quick top-line: how many actually made it to the device vs not yet.
+      delivered_or_read: counts.delivered + counts.read,
+      first_sent_at: data[0]?.sent_at || null,
+      last_sent_at: data[data.length - 1]?.sent_at || null,
+      failures,
+    });
+  } catch (e) {
+    if (e instanceof ValidationError) {
+      return res.status(400).json({ ok: false, code: 'validation_error', error: e.message });
+    }
+    if (e instanceof NotFoundError) {
+      return res.status(404).json({ ok: false, code: 'not_found', error: e.message });
     }
     next(e);
   }
