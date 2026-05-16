@@ -1,0 +1,121 @@
+{
+  "version": "7.0",
+  "data_api_version": "3.0",
+  "routing_model": {
+    "WELCOME": ["DETAILS"],
+    "DETAILS": []
+  },
+  "screens": [
+    {
+      "id": "WELCOME",
+      "title": "Save your spot",
+      "data": {},
+      "layout": {
+        "type": "SingleColumnLayout",
+        "children": [
+          {
+            "type": "TextHeading",
+            "text": "40s: The Decade No One Prepared You For"
+          },
+          {
+            "type": "TextBody",
+            "text": "Wired at 3am. Tired at 4pm. Not crazy. Not lazy. Just unprepared.\n\n📅 11 June 2026 · 7:00 PM IST\n🎟 ₹199"
+          },
+          {
+            "type": "Form",
+            "name": "welcome_form",
+            "children": [
+              {
+                "type": "TextInput",
+                "name": "first_name",
+                "label": "First name (optional)",
+                "required": false
+              },
+              {
+                "type": "TextInput",
+                "name": "email",
+                "label": "Email (optional)",
+                "input-type": "email",
+                "required": false
+              },
+              {
+                "type": "Footer",
+                "label": "Continue",
+                "on-click-action": {
+                  "name": "navigate",
+                  "next": {
+                    "type": "screen",
+                    "name": "DETAILS"
+                  },
+                  "payload": {
+                    "first_name": "${form.first_name}",
+                    "email": "${form.email}"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "DETAILS",
+      "title": "What brings you?",
+      "data": {
+        "first_name": {
+          "type": "string",
+          "__example__": "Priya"
+        },
+        "email": {
+          "type": "string",
+          "__example__": "priya@example.com"
+        }
+      },
+      "terminal": true,
+      "layout": {
+        "type": "SingleColumnLayout",
+        "children": [
+          {
+            "type": "TextHeading",
+            "text": "Last thing"
+          },
+          {
+            "type": "TextBody",
+            "text": "What's your biggest 40s concern right now?"
+          },
+          {
+            "type": "Form",
+            "name": "details_form",
+            "children": [
+              {
+                "type": "Dropdown",
+                "name": "concern",
+                "label": "Pick what fits best",
+                "required": true,
+                "data-source": [
+                  { "id": "sleep", "title": "Sleep — waking at 3am" },
+                  { "id": "energy", "title": "Energy — afternoon crashes" },
+                  { "id": "weight", "title": "Weight — middle creeping up" },
+                  { "id": "mood", "title": "Mood — irritability, hot flashes" },
+                  { "id": "all", "title": "All of the above" }
+                ]
+              },
+              {
+                "type": "Footer",
+                "label": "Save my spot",
+                "on-click-action": {
+                  "name": "complete",
+                  "payload": {
+                    "first_name": "${data.first_name}",
+                    "email": "${data.email}",
+                    "concern": "${form.concern}"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
