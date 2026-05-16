@@ -31,6 +31,20 @@ export function clientQuickActions(clientId: string): FmFloatingActionItem[] {
       href: `/clients-v2/${clientId}/reference`,
     },
     {
+      // "📅 Send booking link" — routes coach to Communicate with the
+      // booking picker pre-focused (auto-opens via ?picker=book).
+      // Cleanest one-click path from any client page to "send me a
+      // Discovery / Intake / Coaching booking link to <client>". Uses
+      // the approved Meta template fm_book_session_v1 so it works
+      // outside the 24-hour window. See SendBookingLinkPanel for the
+      // 3-button layout that renders on arrival.
+      id: "send-booking-link",
+      icon: "📅",
+      label: "Send booking link",
+      hint: "Cal.com Discovery / Intake / Coaching — one tap",
+      href: `/clients-v2/${clientId}/communicate?picker=book`,
+    },
+    {
       id: "check-in",
       icon: "💬",
       label: "Check-in session",

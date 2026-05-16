@@ -75,8 +75,10 @@ export async function loadCalcomLinksAction(): Promise<CalcomLink[]> {
         .map((x) => ({
           slug: x.slug,
           label: x.label || x.slug,
+          tagline: x.tagline,
           emoji: x.emoji || "📅",
           url: x.url,
+          template_param_url: x.template_param_url || x.url,
           default_body: x.default_body || "",
         }));
     }
@@ -161,4 +163,87 @@ export async function sendCalcomLinkAction(
   }
 
   return { ok: true, rendered: body };
+}
+
+/**
+ * Template-send variant — uses the approved Meta template `fm_book_session_v1`
+ * (params: name, url). Works OUTSIDE the 24-hour conversation window
+ * (template sends don't need a recent inbound). Default path for the
+ * one-click booking buttons.
+ *
+ * Body Meta has approved:
+ *   "Hi {{1}}, ready to book your next session? You can grab a time
+ *    that works for you here: {{2}} — Shivani Hari / Your Functional
+ *    Health Coach"
+ *
+ * Use sendCalcomLinkAction (free-text) only when coach wants to
+ * customise the body — that's the "✏️ customise" disclosure in the UI.
+ */
+export async function sendCalcomLinkTemplateAction(
+  clientId: string,
+  slug: string,
+): Promise<{ ok: true; rendered: string } | { ok: false; error: string }> {
+  const { loadAllClients } = await import("@/lib/fmdb/loader");
+  const { sendWhatsAppAction } = await import("./actions");
+
+  const clients = (await loadAllClients()) as Array<Record<string, unknown>>;
+  const c = clients.find((x) => x.client_id === clientId);
+  if (!c) return { ok: false, error: `Client ${clientId} not found` };
+
+  const phone = (c.mobile_number as string | undefined)?.trim() ?? "";
+  if (!phone) return { ok: false, error: "No mobile number on file" };
+
+  const displayName = (c.display_name as string | undefined) ?? "";
+  const firstName = displayName.split(" ")[0] || "there";
+
+  const links = await loadCalcomLinksAction();
+  const link = links.find((l) => l.slug === slug);
+  if (!link) return { ok: false, error: `Unknown booking link slug: ${slug}` };
+
+  const url = link.template_param_url || link.url;
+  const renderedBody =
+    `Hi ${firstName}, ready to book your next session? ` +
+    `You can grab a time that works for you here: ${url} ` +
+    `— Shivani Hari / Your Functional Health Coach`;
+
+  const res = await sendWhatsAppAction(phone, "fm_book_session_v1", [firstName, url]);
+  if (!res.ok) return { ok: false, error: res.error || "Send failed" };
+
+  try {
+    await recordOutboundMessageAction({
+      clientId,
+      templateName: `fm_book_session_v1:${slug}`,
+      renderedBody,
+    });
+  } catch {
+    /* silent */
+  }
+
+  try {
+    const root = getPlansRoot();
+    const logFile = path.join(root, SEND_LOG_FILE_NAME);
+    let existing: unknown[] = [];
+    try {
+      const raw = await fs.readFile(logFile, "utf-8");
+      const parsed = yaml.load(raw);
+      if (Array.isArray(parsed)) existing = parsed;
+    } catch {
+      /* fresh log */
+    }
+    existing.push({
+      sent_at: new Date().toISOString(),
+      client_id: clientId,
+      display_name: displayName,
+      slug,
+      send_via: "template:fm_book_session_v1",
+      url,
+      body_preview: renderedBody.slice(0, 200),
+    });
+    await fs.mkdir(root, { recursive: true });
+    await fs.writeFile(logFile, yaml.dump(existing, { lineWidth: 140 }), "utf-8");
+  } catch {
+    /* non-fatal */
+  }
+
+  return { ok: true, rendered: renderedBody };
 }

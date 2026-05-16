@@ -1,25 +1,33 @@
 "use client";
 
 /**
- * SendBookingLinkPanel — Communicate-page widget for sending a Cal.com
- * booking link to the open client.
+ * SendBookingLinkPanel — 3-button picker for Cal.com booking links.
  *
- * Why this exists: there's no Meta-approved template with a URL slot
- * for "schedule your next session", so we send free-text via the 24-h
- * WhatsApp conversation window. Coach picks an event type, edits the
- * pre-filled body (default_body from _calcom_links.yaml, with {{name}}
- * + {{url}} substituted), and hits Send.
+ * Always-expanded (no collapsible) — the panel IS the action. Coach
+ * sees the 3 event types side-by-side and taps one to send.
  *
- * Outside the 24-h window Meta refuses free-text; the wa.me fallback
- * button opens the coach's own phone WhatsApp pre-filled with the body
- * — they can hit send from their phone.
+ * Each button uses the Meta-APPROVED template `fm_book_session_v1`:
+ *   body: "Hi {{1}}, ready to book your next session? You can grab a
+ *          time that works for you here: {{2}} — Shivani Hari / Your
+ *          Functional Health Coach"
+ * → params: [firstName, calComUrl]
  *
- * Coach can edit ~/fm-plans/_calcom_links.yaml to add / reorder event
- * types without redeploying.
+ * Why template (not free-text) by default: template sends work outside
+ * Meta's 24-hour conversation window, so coach can send a booking link
+ * to ANY client at any time without first nudging them. Free-text is
+ * still available via the "✏️ Customise message" disclosure for the
+ * "I want to add a personal note" case (only works in 24h window).
+ *
+ * Auto-opens via `?picker=book` query param — wired so the FAB's
+ * "Send booking link" quick action on every client page lands here
+ * with the picker already focused.
  */
 import { useEffect, useState } from "react";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import { toast } from "sonner";
 import {
   loadCalcomLinksAction,
+  sendCalcomLinkTemplateAction,
   sendCalcomLinkAction,
 } from "@/app/api/whatsapp/calcom-actions";
 import { renderCalcomBody, type CalcomLink } from "@/app/api/whatsapp/calcom-types";
@@ -29,8 +37,6 @@ interface Props {
   clientId: string;
   firstName: string;
   clientPhone?: string;
-  /** When false, panel still renders but Send button is disabled with a
-   *  hint about adding WHATSAPP_SERVER_URL to env. */
   whatsappConfigured: boolean;
 }
 
@@ -40,352 +46,319 @@ export function SendBookingLinkPanel({
   clientPhone,
   whatsappConfigured,
 }: Props) {
-  const [open, setOpen] = useState(false);
-  const [links, setLinks] = useState<CalcomLink[] | null>(null);
-  const [selectedSlug, setSelectedSlug] = useState<string>("");
-  const [body, setBody] = useState("");
-  const [sending, setSending] = useState(false);
-  const [result, setResult] = useState<{ ok: boolean; error?: string } | null>(null);
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
-  // Load the picker list on first expand. Refresh on every open so coach
-  // can edit the yaml + reopen the panel to see new entries — no need
-  // to refresh the whole page.
+  const [links, setLinks] = useState<CalcomLink[] | null>(null);
+  const [sendingSlug, setSendingSlug] = useState<string | null>(null);
+  const [lastSent, setLastSent] = useState<{ slug: string; at: number } | null>(null);
+  const [customMode, setCustomMode] = useState(false);
+  const [customSlug, setCustomSlug] = useState<string>("");
+  const [customBody, setCustomBody] = useState("");
+  const [customSending, setCustomSending] = useState(false);
+
+  // Load links on mount; refresh isn't needed unless coach edits yaml
+  // and reloads the page.
   useEffect(() => {
-    if (!open) return;
-    setResult(null);
     void (async () => {
       const r = await loadCalcomLinksAction();
       setLinks(r);
-      if (r.length > 0 && !selectedSlug) {
-        setSelectedSlug(r[0].slug);
-      }
     })();
-  }, [open, selectedSlug]);
+  }, []);
 
-  // Whenever the slug changes (or links load), re-render the body. Coach
-  // edits override this — once they type anything, we stop auto-updating
-  // and respect their text until they switch event type.
-  const [bodyTouched, setBodyTouched] = useState(false);
+  // Auto-open the customise disclosure when ?picker=book&customise=1 is
+  // present. Coach's mid-call FAB drops them here with the picker
+  // focused — they pick a type and send in 1 click.
   useEffect(() => {
-    if (!links) return;
-    const link = links.find((l) => l.slug === selectedSlug);
-    if (!link) return;
-    if (!bodyTouched) {
-      setBody(renderCalcomBody(link, firstName));
+    if (searchParams.get("picker") === "book" && searchParams.get("customise") === "1") {
+      setCustomMode(true);
     }
-  }, [links, selectedSlug, firstName, bodyTouched]);
+  }, [searchParams]);
 
-  const selectedLink = links?.find((l) => l.slug === selectedSlug);
-  const canSend = !!clientPhone && whatsappConfigured && !!selectedLink && !!body.trim() && !sending;
+  // Clear the ?picker=book param after first render so a re-navigation
+  // doesn't keep retriggering. Best-effort; not critical if it lingers.
+  useEffect(() => {
+    if (searchParams.get("picker") === "book") {
+      const params = new URLSearchParams(searchParams.toString());
+      params.delete("picker");
+      params.delete("customise");
+      const next = params.toString();
+      // Replace without scroll so the page doesn't jump
+      router.replace(`${pathname}${next ? "?" + next : ""}`, { scroll: false });
+    }
+    // Only run on initial mount with the param — pathname intentionally omitted
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const handleSend = async () => {
-    if (!selectedLink) return;
-    setSending(true);
-    setResult(null);
-    const r = await sendCalcomLinkAction(clientId, selectedLink.slug, body);
-    setResult(r);
-    setSending(false);
-    if (r.ok) {
-      // Tell the WhatsApp thread panel to refresh immediately so the
-      // outbound bubble appears in <1s instead of waiting for the 30s
-      // auto-poll tick.
-      if (typeof window !== "undefined") {
-        window.dispatchEvent(
-          new CustomEvent("whatsapp-message-sent", { detail: { clientId } }),
-        );
+  if (!clientPhone) {
+    return (
+      <FmPanel
+        title="📅 Send booking link"
+        subtitle="Sends an approved Meta template — works outside the 24h conversation window."
+      >
+        <div
+          style={{
+            fontSize: 12,
+            color: "#7f1d1d",
+            background: "rgba(239, 68, 68, 0.08)",
+            border: "1px solid rgba(239, 68, 68, 0.3)",
+            padding: "8px 12px",
+            borderRadius: 6,
+          }}
+        >
+          No mobile number on file for {firstName}. Add one on the Overview tab first.
+        </div>
+      </FmPanel>
+    );
+  }
+
+  if (!whatsappConfigured) {
+    return (
+      <FmPanel
+        title="📅 Send booking link"
+        subtitle="WhatsApp outbound isn't configured."
+      >
+        <div
+          style={{
+            fontSize: 12,
+            color: "#92400e",
+            background: "rgba(245, 158, 11, 0.08)",
+            border: "1px solid rgba(245, 158, 11, 0.3)",
+            padding: "8px 12px",
+            borderRadius: 6,
+          }}
+        >
+          Add <code>WHATSAPP_SERVER_URL</code> + <code>WHATSAPP_SERVER_API_KEY</code> to <code>.env.local</code> to enable.
+        </div>
+      </FmPanel>
+    );
+  }
+
+  const onSend = async (link: CalcomLink) => {
+    setSendingSlug(link.slug);
+    try {
+      const r = await sendCalcomLinkTemplateAction(clientId, link.slug);
+      if (r.ok) {
+        setLastSent({ slug: link.slug, at: Date.now() });
+        toast.success(`📅 ${link.label} link sent to ${firstName}`);
+        // Tell WhatsApp thread panel to refresh immediately
+        if (typeof window !== "undefined") {
+          window.dispatchEvent(
+            new CustomEvent("whatsapp-message-sent", { detail: { clientId } }),
+          );
+        }
+      } else {
+        toast.error(r.error);
       }
+    } finally {
+      setSendingSlug(null);
     }
   };
 
-  const waMeUrl = clientPhone
-    ? `https://wa.me/${clientPhone.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(body)}`
-    : undefined;
+  const onCustomSend = async () => {
+    if (!customSlug || !customBody.trim()) return;
+    setCustomSending(true);
+    try {
+      const r = await sendCalcomLinkAction(clientId, customSlug, customBody);
+      if (r.ok) {
+        setLastSent({ slug: customSlug, at: Date.now() });
+        toast.success(`📅 Custom booking message sent to ${firstName}`);
+        setCustomMode(false);
+        setCustomSlug("");
+        setCustomBody("");
+        if (typeof window !== "undefined") {
+          window.dispatchEvent(
+            new CustomEvent("whatsapp-message-sent", { detail: { clientId } }),
+          );
+        }
+      } else {
+        toast.error(r.error);
+      }
+    } finally {
+      setCustomSending(false);
+    }
+  };
 
   return (
     <FmPanel
-      title={
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          style={{
-            background: "transparent",
-            border: 0,
-            padding: 0,
-            font: "inherit",
-            color: "inherit",
-            cursor: "pointer",
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 8,
-            width: "100%",
-            textAlign: "left",
-          }}
-        >
-          <span>📅 Send Cal.com booking link</span>
-          <span
+      title="📅 Send booking link"
+      subtitle={`Sends via approved template fm_book_session_v1 — works any time, no 24h window needed.`}
+    >
+      <div style={{ display: "grid", gap: 12 }}>
+        {!links && (
+          <div style={{ fontSize: 12, color: "var(--fm-text-tertiary)" }}>Loading event types…</div>
+        )}
+
+        {links && links.length === 0 && (
+          <div
             style={{
-              fontSize: 11,
-              color: "var(--fm-text-tertiary)",
-              fontWeight: 400,
-              marginLeft: 4,
-              transition: "transform 0.15s",
-              transform: open ? "rotate(0deg)" : "rotate(-90deg)",
-              display: "inline-block",
+              padding: "8px 10px",
+              background: "rgba(245, 158, 11, 0.08)",
+              border: "1px dashed rgba(245, 158, 11, 0.3)",
+              borderRadius: 6,
+              fontSize: 12,
             }}
           >
-            ▾
-          </span>
-          {!open && (
-            <span
-              style={{
-                fontSize: 10.5,
-                fontWeight: 500,
-                color: "var(--fm-text-tertiary)",
-                marginLeft: "auto",
-              }}
-            >
-              free-text · needs 24h window
-            </span>
-          )}
-        </button>
-      }
-      subtitle={
-        open
-          ? `Sends as a regular WhatsApp message — works only when ${firstName} has messaged in the last 24 hours.`
-          : undefined
-      }
-    >
-      {open && (
-        <div style={{ display: "grid", gap: 12 }}>
-          {!links && (
-            <div style={{ fontSize: 12, color: "var(--fm-text-tertiary)" }}>
-              Loading event types…
-            </div>
-          )}
+            No booking links configured. Add entries to{" "}
+            <code>~/fm-plans/_calcom_links.yaml</code>.
+          </div>
+        )}
 
-          {links && links.length === 0 && (
-            <div
-              style={{
-                padding: "8px 10px",
-                background: "rgba(245, 158, 11, 0.08)",
-                border: "1px solid rgba(245, 158, 11, 0.3)",
-                borderRadius: 6,
-                fontSize: 12,
-              }}
-            >
-              No booking links configured. Add entries to{" "}
-              <code>~/fm-plans/_calcom_links.yaml</code> and reopen this panel.
-            </div>
-          )}
-
-          {links && links.length > 0 && (
-            <>
-              {/* Event type picker */}
-              <div>
-                <div
-                  style={{
-                    fontSize: 10.5,
-                    fontWeight: 700,
-                    textTransform: "uppercase",
-                    letterSpacing: 0.6,
-                    color: "var(--fm-text-secondary)",
-                    marginBottom: 6,
-                  }}
-                >
-                  Pick a booking type
-                </div>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                  {links.map((l) => {
-                    const active = l.slug === selectedSlug;
-                    return (
-                      <button
-                        key={l.slug}
-                        type="button"
-                        onClick={() => {
-                          setSelectedSlug(l.slug);
-                          setBodyTouched(false);
-                        }}
-                        style={{
-                          padding: "6px 12px",
-                          borderRadius: 999,
-                          border: active ? "0" : "1px solid var(--fm-border)",
-                          background: active ? "var(--fm-primary)" : "var(--fm-surface)",
-                          color: active ? "#fff" : "var(--fm-text-primary)",
-                          fontWeight: active ? 700 : 500,
-                          fontSize: 12,
-                          cursor: "pointer",
-                          fontFamily: "inherit",
-                        }}
-                        title={l.url}
-                      >
-                        {l.emoji} {l.label}
-                      </button>
-                    );
-                  })}
-                </div>
-                {selectedLink && (
-                  <div
-                    style={{
-                      marginTop: 4,
-                      fontSize: 10.5,
-                      color: "var(--fm-text-tertiary)",
-                      wordBreak: "break-all",
-                    }}
-                  >
-                    URL: <code>{selectedLink.url}</code>
-                  </div>
-                )}
-              </div>
-
-              {/* Message body — editable. {{name}} + {{url}} already
-                  substituted; coach can rephrase before sending. */}
-              <div>
-                <div
-                  style={{
-                    fontSize: 10.5,
-                    fontWeight: 700,
-                    textTransform: "uppercase",
-                    letterSpacing: 0.6,
-                    color: "var(--fm-text-secondary)",
-                    marginBottom: 6,
-                  }}
-                >
-                  Message — edit freely
-                </div>
-                <textarea
-                  value={body}
-                  onChange={(e) => {
-                    setBody(e.target.value);
-                    setBodyTouched(true);
-                  }}
-                  rows={6}
-                  style={{
-                    width: "100%",
-                    padding: "8px 10px",
-                    border: "1px solid var(--fm-border)",
-                    borderRadius: "var(--fm-radius-sm)",
-                    fontSize: 12.5,
-                    fontFamily: "inherit",
-                    lineHeight: 1.5,
-                    resize: "vertical",
-                  }}
-                />
-              </div>
-
-              {/* Status banners */}
-              {!whatsappConfigured && (
-                <div
-                  style={{
-                    fontSize: 11,
-                    padding: "6px 10px",
-                    background: "rgba(245, 158, 11, 0.08)",
-                    border: "1px solid rgba(245, 158, 11, 0.3)",
-                    borderRadius: 6,
-                  }}
-                >
-                  WhatsApp outbound not configured — add{" "}
-                  <code>WHATSAPP_SERVER_URL</code> to <code>.env.local</code>.
-                  You can still use the wa.me fallback below.
-                </div>
-              )}
-              {!clientPhone && (
-                <div
-                  style={{
-                    fontSize: 11,
-                    padding: "6px 10px",
-                    background: "rgba(239, 68, 68, 0.08)",
-                    border: "1px solid rgba(239, 68, 68, 0.3)",
-                    borderRadius: 6,
-                  }}
-                >
-                  No phone number on file for {firstName}. Add one on the
-                  Overview tab first.
-                </div>
-              )}
-
-              {/* Send buttons */}
-              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+        {/* ── 3 one-click buttons ── */}
+        {links && links.length > 0 && (
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: `repeat(${Math.min(links.length, 3)}, minmax(0, 1fr))`,
+              gap: 10,
+            }}
+          >
+            {links.map((link) => {
+              const recentlySent = lastSent?.slug === link.slug && Date.now() - lastSent.at < 4000;
+              const sending = sendingSlug === link.slug;
+              return (
                 <button
+                  key={link.slug}
                   type="button"
-                  onClick={handleSend}
-                  disabled={!canSend}
+                  onClick={() => onSend(link)}
+                  disabled={sending || !!sendingSlug}
                   style={{
-                    padding: "8px 14px",
-                    borderRadius: 6,
-                    background: canSend ? "#25D366" : "rgba(0,0,0,0.1)",
-                    color: "#fff",
-                    border: 0,
-                    fontSize: 12,
-                    fontWeight: 700,
-                    cursor: canSend ? "pointer" : "not-allowed",
+                    padding: "14px 12px",
+                    background: recentlySent ? "rgba(16, 185, 129, 0.12)" : "var(--fm-surface)",
+                    border: `1px solid ${recentlySent ? "rgba(16, 185, 129, 0.45)" : "var(--fm-border)"}`,
+                    borderRadius: 10,
+                    textAlign: "left",
+                    cursor: sending ? "wait" : sendingSlug ? "not-allowed" : "pointer",
                     fontFamily: "inherit",
+                    transition: "background 0.15s, border-color 0.15s",
+                    opacity: sendingSlug && !sending ? 0.5 : 1,
                   }}
                 >
-                  {sending ? "Sending…" : "📤 Send via WhatsApp"}
-                </button>
-                {waMeUrl && (
-                  <a
-                    href={waMeUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      padding: "8px 14px",
-                      borderRadius: 6,
-                      background: "var(--fm-surface)",
-                      border: "1px solid var(--fm-border)",
-                      color: "var(--fm-text-primary)",
-                      fontSize: 12,
-                      fontWeight: 600,
-                      textDecoration: "none",
-                      fontFamily: "inherit",
-                    }}
-                    title="Opens WhatsApp on YOUR phone (not the Cloud API number) — useful as a fallback when the 24h window is closed."
-                  >
-                    Open on my phone (wa.me)
-                  </a>
-                )}
-              </div>
-
-              {result?.ok && (
-                <div
-                  style={{
-                    fontSize: 12,
-                    padding: "8px 10px",
-                    background: "rgba(16, 185, 129, 0.10)",
-                    border: "1px solid rgba(16, 185, 129, 0.35)",
-                    color: "#065f46",
-                    borderRadius: 6,
-                  }}
-                >
-                  ✓ Sent to {firstName}.
-                </div>
-              )}
-              {result && !result.ok && (
-                <div
-                  style={{
-                    fontSize: 12,
-                    padding: "8px 10px",
-                    background: "rgba(239, 68, 68, 0.08)",
-                    border: "1px solid rgba(239, 68, 68, 0.3)",
-                    color: "#7f1d1d",
-                    borderRadius: 6,
-                  }}
-                >
-                  ✗ {result.error}
-                  {result.error?.includes("131047") && (
-                    <div style={{ marginTop: 4, fontSize: 11 }}>
-                      Meta&apos;s 24-hour conversation window is closed. Use
-                      &ldquo;Open on my phone (wa.me)&rdquo; instead — sends
-                      from your personal WhatsApp.
+                  <div style={{ fontSize: 20, marginBottom: 4 }}>{link.emoji}</div>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: "var(--fm-text-primary)" }}>
+                    {link.label}
+                  </div>
+                  {link.tagline && (
+                    <div
+                      style={{
+                        fontSize: 10.5,
+                        color: "var(--fm-text-tertiary)",
+                        marginTop: 4,
+                        lineHeight: 1.4,
+                      }}
+                    >
+                      {link.tagline}
                     </div>
                   )}
-                </div>
+                  <div
+                    style={{
+                      fontSize: 11,
+                      color: recentlySent ? "#065f46" : "#25D366",
+                      fontWeight: 600,
+                      marginTop: 8,
+                    }}
+                  >
+                    {sending ? "Sending…" : recentlySent ? "✓ Sent" : "📤 Send to " + firstName}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        )}
+
+        {/* ── Customise disclosure (free-text, 24h window only) ── */}
+        {links && links.length > 0 && (
+          <details
+            open={customMode}
+            onToggle={(e) => setCustomMode((e.target as HTMLDetailsElement).open)}
+            style={{
+              fontSize: 11,
+              border: "1px solid var(--fm-border-light)",
+              borderRadius: 6,
+              padding: "6px 10px",
+            }}
+          >
+            <summary
+              style={{
+                cursor: "pointer",
+                color: "var(--fm-text-secondary)",
+                userSelect: "none",
+                listStyle: "none",
+              }}
+            >
+              ✏️ Customise message (free-text — only works if {firstName} messaged in the last 24h)
+            </summary>
+            <div style={{ marginTop: 8, display: "grid", gap: 8 }}>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+                {links.map((l) => (
+                  <button
+                    key={l.slug}
+                    type="button"
+                    onClick={() => {
+                      setCustomSlug(l.slug);
+                      setCustomBody(renderCalcomBody(l, firstName));
+                    }}
+                    style={{
+                      padding: "4px 10px",
+                      borderRadius: 999,
+                      border: customSlug === l.slug ? "0" : "1px solid var(--fm-border)",
+                      background:
+                        customSlug === l.slug ? "var(--fm-primary)" : "var(--fm-surface)",
+                      color: customSlug === l.slug ? "#fff" : "var(--fm-text-primary)",
+                      fontWeight: customSlug === l.slug ? 700 : 500,
+                      fontSize: 11,
+                      cursor: "pointer",
+                      fontFamily: "inherit",
+                    }}
+                  >
+                    {l.emoji} {l.label}
+                  </button>
+                ))}
+              </div>
+              {customSlug && (
+                <>
+                  <textarea
+                    value={customBody}
+                    onChange={(e) => setCustomBody(e.target.value)}
+                    rows={5}
+                    style={{
+                      width: "100%",
+                      padding: "8px 10px",
+                      border: "1px solid var(--fm-border)",
+                      borderRadius: 6,
+                      fontSize: 12,
+                      fontFamily: "inherit",
+                      lineHeight: 1.5,
+                      resize: "vertical",
+                    }}
+                  />
+                  <button
+                    type="button"
+                    onClick={onCustomSend}
+                    disabled={customSending || !customBody.trim()}
+                    style={{
+                      padding: "6px 14px",
+                      borderRadius: 6,
+                      background: customSending || !customBody.trim() ? "rgba(0,0,0,0.1)" : "#25D366",
+                      color: "#fff",
+                      border: 0,
+                      fontSize: 12,
+                      fontWeight: 700,
+                      cursor: customSending ? "wait" : !customBody.trim() ? "not-allowed" : "pointer",
+                      fontFamily: "inherit",
+                      width: "fit-content",
+                    }}
+                    title="Free-text send via the 24-hour conversation window. Falls back to error if Meta refuses (window closed)."
+                  >
+                    {customSending ? "Sending…" : "📤 Send free-text"}
+                  </button>
+                </>
               )}
-            </>
-          )}
-        </div>
-      )}
+            </div>
+          </details>
+        )}
+      </div>
     </FmPanel>
   );
 }
