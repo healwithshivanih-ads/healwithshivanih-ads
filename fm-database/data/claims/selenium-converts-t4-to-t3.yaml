@@ -1,11 +1,10 @@
 slug: selenium-converts-t4-to-t3
 statement: Selenium is critical for converting T4 to active T3.
 evidence_tier: plausible_emerging
-rationale: Selenium-dependent iodothyronine deiodinase enzymes converting T4 to T3
-  are established biochemistry with supporting clinical trial evidence in thyroid
-  populations.
-coaching_translation: Brazil nuts (1–2/day) or selenomethionine supplements may support
-  thyroid T4-to-T3 conversion; confirm with clinician in Hashimoto's context.
+rationale: Selenium-dependent iodothyronine deiodinase enzymes converting T4 to T3 are established biochemistry with supporting
+  clinical trial evidence in thyroid populations.
+coaching_translation: Brazil nuts (1–2/day) or selenomethionine supplements may support thyroid T4-to-T3 conversion; confirm
+  with clinician in Hashimoto's context.
 caveats:
 - Source is a practitioner cheatsheet without primary citations.
 - Source is practitioner cheatsheet.
@@ -18,7 +17,7 @@ linked_to_supplements:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
+- id: vitaone-fm-nutrition-cheatsheets
   location: Page 12
   quote: Selenium is described as critical for converting T4 to T3.
 - id: vitaone-fm-nutrition-cheatsheets

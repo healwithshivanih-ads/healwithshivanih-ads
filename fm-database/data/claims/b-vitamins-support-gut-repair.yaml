@@ -1,20 +1,16 @@
 slug: b-vitamins-support-gut-repair
-statement: B vitamins are important for gut epithelial repair and are recommended
-  as part of the nutritional repair phase of leaky gut protocols.
+statement: B vitamins are important for gut epithelial repair and are recommended as part of the nutritional repair phase
+  of leaky gut protocols.
 evidence_tier: fm_specific_thin
-rationale: B vitamins are essential cofactors in cell proliferation and DNA synthesis,
-  both critical for intestinal epithelial turnover. However, specific RCTs on B vitamin
-  supplementation for leaky gut repair are sparse. The claim is biologically plausible
-  but thin in direct evidence.
-coaching_translation: B vitamins are essential for the rapid cell renewal that keeps
-  the gut lining healthy and strong.
+rationale: B vitamins are essential cofactors in cell proliferation and DNA synthesis, both critical for intestinal epithelial
+  turnover. However, specific RCTs on B vitamin supplementation for leaky gut repair are sparse. The claim is biologically
+  plausible but thin in direct evidence.
+coaching_translation: B vitamins are essential for the rapid cell renewal that keeps the gut lining healthy and strong.
 caveats:
-- Source provides no specific B vitamin doses or forms. Recommend clinician guidance,
-  especially for clients with MTHFR variants.
-- Source is expert consensus — thin peer-reviewed evidence specifically for gut barrier
-  repair.
+- Source provides no specific B vitamin doses or forms. Recommend clinician guidance, especially for clients with MTHFR variants.
+- Source is expert consensus — thin peer-reviewed evidence specifically for gut barrier repair.
 linked_to_topics:
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 - 5r-gut-healing-protocol
 linked_to_supplements:
 - b-vitamins-complex

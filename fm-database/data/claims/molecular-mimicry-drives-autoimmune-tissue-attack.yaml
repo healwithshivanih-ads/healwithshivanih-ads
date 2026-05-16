@@ -1,31 +1,26 @@
 slug: molecular-mimicry-drives-autoimmune-tissue-attack
-statement: Molecular mimicry — whereby antibodies produced against food antigens (e.g.,
-  gluten, casein) cross-react with structurally similar host tissues — is a primary
-  mechanism of autoimmune tissue damage.
+statement: Molecular mimicry — whereby antibodies produced against food antigens (e.g., gluten, casein) cross-react with structurally
+  similar host tissues — is a primary mechanism of autoimmune tissue damage.
 evidence_tier: plausible_emerging
-rationale: Molecular mimicry is a well-established immunological concept; its role
-  in specific autoimmune diseases (e.g., rheumatic disease, thyroiditis) is supported
-  by mechanistic studies. The specific examples (gluten/casein to cartilage) are plausible
-  but require individual disease-level evidence.
-coaching_translation: When your gut is leaky, food proteins can enter your bloodstream
-  and confuse your immune system into attacking your own tissues — a case of mistaken
-  identity.
+rationale: Molecular mimicry is a well-established immunological concept; its role in specific autoimmune diseases (e.g.,
+  rheumatic disease, thyroiditis) is supported by mechanistic studies. The specific examples (gluten/casein to cartilage)
+  are plausible but require individual disease-level evidence.
+coaching_translation: When your gut is leaky, food proteins can enter your bloodstream and confuse your immune system into
+  attacking your own tissues — a case of mistaken identity.
 caveats:
-- Specific molecular mimicry targets (e.g., gluten to cartilage) vary by autoimmune
-  condition and are not all equally validated.
+- Specific molecular mimicry targets (e.g., gluten to cartilage) vary by autoimmune condition and are not all equally validated.
 - Antibody testing and autoimmune diagnosis require clinician oversight.
 linked_to_topics:
 - autoimmunity-leaky-gut-connection
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 linked_to_supplements: []
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-intestinal-permeability-anish
   location: Pathophysiology of Autoimmunity
-  quote: Your B cell is actually creating antibody for gluten, but by mistake, targeting
-    your cartilage because the amino acid sequence is matching… and that is called
-    cross reactivity. So in a simple term it's called molecular mimicry.
+  quote: Your B cell is actually creating antibody for gluten, but by mistake, targeting your cartilage because the amino
+    acid sequence is matching… and that is called cross reactivity. So in a simple term it's called molecular mimicry.
 version: 1
 status: active
 updated_at: '2026-05-05'

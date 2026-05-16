@@ -1,11 +1,11 @@
 slug: magnesium-glycinate-or-threonate-used-for-mental-calm
-statement: Magnesium glycinate and threonate are recommended for mental calm, while
-  magnesium oxide is discouraged due to poor absorption.
+statement: Magnesium glycinate and threonate are recommended for mental calm, while magnesium oxide is discouraged due to
+  poor absorption.
 evidence_tier: fm_specific_thin
-rationale: Magnesium glycinate and threonate form preferences for mental health are
-  FM-specific; comparative bioavailability evidence is limited.
-coaching_translation: If a client is using magnesium for sleep or anxiety support,
-  note that glycinate and threonate are generally better absorbed than oxide forms.
+rationale: Magnesium glycinate and threonate form preferences for mental health are FM-specific; comparative bioavailability
+  evidence is limited.
+coaching_translation: If a client is using magnesium for sleep or anxiety support, note that glycinate and threonate are generally
+  better absorbed than oxide forms.
 caveats:
 - Source is a practitioner cheatsheet without comparative RCT citation by form.
 - Magnesium supplementation above food-first levels should be discussed with a clinician.
@@ -20,14 +20,14 @@ linked_to_supplements:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Page 23
-  quote: Magnesium glycinate and threonate are recommended for mental calm, while
-    magnesium oxide is discouraged due to poor absorption.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 23
-  quote: Magnesium glycinate and threonate are recommended for mental calm, while
-    magnesium oxide is discouraged due to poor absorption.
+  quote: Magnesium glycinate and threonate are recommended for mental calm, while magnesium oxide is discouraged due to poor
+    absorption.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 23
+  quote: Magnesium glycinate and threonate are recommended for mental calm, while magnesium oxide is discouraged due to poor
+    absorption.
 version: 2
 status: active
 updated_at: '2026-05-06'

@@ -1,37 +1,32 @@
 slug: fecal-calprotectin-differentiates-ibs-from-ibd
-statement: 'Fecal calprotectin differentiates inflammatory bowel disease (IBD) from
-  irritable bowel syndrome (IBS): levels >200 μg/g confirm intestinal inflammation
-  consistent with IBD, while normal levels make IBS more likely.'
+statement: 'Fecal calprotectin differentiates inflammatory bowel disease (IBD) from irritable bowel syndrome (IBS): levels
+  >200 μg/g confirm intestinal inflammation consistent with IBD, while normal levels make IBS more likely.'
 evidence_tier: strong
-rationale: Fecal calprotectin as a non-invasive marker for distinguishing IBD from
-  IBS is well-validated in peer-reviewed literature and endorsed in clinical guidelines.
-  This is a well-established diagnostic use.
-coaching_translation: A stool test called calprotectin can help distinguish whether
-  gut symptoms are due to irritable bowel syndrome (IBS) or inflammatory bowel disease
-  (IBD). This is a useful test to discuss with your doctor.
-out_of_scope_notes: Ordering and interpreting fecal calprotectin is a clinician task.
-  Coaches should recommend clients discuss this with their GP or gastroenterologist.
+rationale: Fecal calprotectin as a non-invasive marker for distinguishing IBD from IBS is well-validated in peer-reviewed
+  literature and endorsed in clinical guidelines. This is a well-established diagnostic use.
+coaching_translation: A stool test called calprotectin can help distinguish whether gut symptoms are due to irritable bowel
+  syndrome (IBS) or inflammatory bowel disease (IBD). This is a useful test to discuss with your doctor.
+out_of_scope_notes: Ordering and interpreting fecal calprotectin is a clinician task. Coaches should recommend clients discuss
+  this with their GP or gastroenterologist.
 caveats:
 - Ordering and interpreting this test is outside coaching scope.
 - Cut-offs may vary by laboratory.
 linked_to_topics:
 - ibs-ibd-differentiation
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
 - id: coconote-fm-intestinal-permeability
   location: Diagnostic Markers – Calprotectin
-  quote: So if you want to differentiate IBD from IBS, then you should run the calc-reacting
-    test. And if the fecal calc-reacting is negative, then patient having an IBS is
-    likely and if the fecal calprefting is positive, then definitely rule out IBS
+  quote: So if you want to differentiate IBD from IBS, then you should run the calc-reacting test. And if the fecal calc-reacting
+    is negative, then patient having an IBS is likely and if the fecal calprefting is positive, then definitely rule out IBS
     and the patient is having an IBD.
 - id: coconote-fm-intestinal-permeability-anish
   location: Diagnostic Tools — Fecal Calprotectin
-  quote: If you want to differentiate IBS from IBD then you should run the call projecting
-    test and if the fecal calprotectin is negative then patient having an IBS is likely
-    and if the fecal calprotectin is positive that definitely rule out IBS and the
-    patient is having an IBD.
+  quote: If you want to differentiate IBS from IBD then you should run the call projecting test and if the fecal calprotectin
+    is negative then patient having an IBS is likely and if the fecal calprotectin is positive that definitely rule out IBS
+    and the patient is having an IBD.
 version: 2
 status: active
 updated_at: '2026-05-05'

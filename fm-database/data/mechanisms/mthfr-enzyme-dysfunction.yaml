@@ -7,10 +7,9 @@ aliases:
 - thermolabile MTHFR
 - C677T enzyme instability
 category: endocrine
-summary: The C677T polymorphism substitutes cytosine with thymidine at position 677,
-  making the MTHFR enzyme thermolabile and structurally less stable. CT heterozygotes
-  retain ~65% of typical enzyme activity; TT homozygotes retain only ~30%. Reduced
-  enzyme activity impairs conversion of folate to 5-MTHF.
+summary: The C677T polymorphism substitutes cytosine with thymidine at position 677, making the MTHFR enzyme thermolabile
+  and structurally less stable. CT heterozygotes retain ~65% of typical enzyme activity; TT homozygotes retain only ~30%.
+  Reduced enzyme activity impairs conversion of folate to 5-MTHF.
 upstream_drivers:
 - mthfr-c677t-polymorphism
 - mthfr-a1298c-polymorphism
@@ -44,14 +43,8 @@ evidence_tier: strong
 sources:
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Summary / MTHFR section
-  quote: MTHFR enzyme plays a key role in the metabolism of folate as we have seen
-    in the folate pathway where it converts the 5,10-methylene tetrahydrofolate to
-    5-methyl tetrahydrofolate, which is the active form.
-- id: Notebook LM
-  location: C677T Variant
-  quote: The C677T MTHFR polymorphism involves substitution of cytosine with thymidine
-    at position 677 of the gene. This changes the enzyme structure and makes it more
-    thermolabile, meaning less stable under certain conditions.
+  quote: MTHFR enzyme plays a key role in the metabolism of folate as we have seen in the folate pathway where it converts
+    the 5,10-methylene tetrahydrofolate to 5-methyl tetrahydrofolate, which is the active form.
 version: 2
 status: active
 updated_at: '2026-05-13'

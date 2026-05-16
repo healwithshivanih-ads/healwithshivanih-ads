@@ -4,10 +4,9 @@ aliases:
 - omega-6 excess
 - dietary fat imbalance
 - pro-inflammatory diet
-summary: Modern Western diets contain an omega-6 to omega-3 ratio as high as 25:1,
-  far above the evolutionary 1:1 ratio and the dietary recommendation of up to 11:1.
-  This imbalance drives chronic inflammation, which is implicated in most major chronic
-  diseases.
+summary: Modern Western diets contain an omega-6 to omega-3 ratio as high as 25:1, far above the evolutionary 1:1 ratio and
+  the dietary recommendation of up to 11:1. This imbalance drives chronic inflammation, which is implicated in most major
+  chronic diseases.
 common_symptoms:
 - chronic-inflammation
 - joint-pain
@@ -17,23 +16,21 @@ red_flags: []
 related_topics:
 - omega-3-fatty-acids
 - chronic-inflammation
-- cardiovascular-disease
+- cardiometabolic-disease
 - insulin-resistance
 key_mechanisms:
 - omega6-omega3-competitive-inhibition
 - arachidonic-acid-cascade
 - srebp1c-upregulation
-coaching_scope_notes: Coaches can help clients audit their diet for omega-6 rich foods
-  (vegetable oils, processed foods) and identify omega-3 rich replacements (fatty
-  fish, flaxseeds, chia seeds, walnuts).
+coaching_scope_notes: Coaches can help clients audit their diet for omega-6 rich foods (vegetable oils, processed foods) and
+  identify omega-3 rich replacements (fatty fish, flaxseeds, chia seeds, walnuts).
 evidence_tier: strong
 clinician_scope_notes: ''
 sources:
 - id: coconote-fm-omega-3-fatty-acids
   location: Omega-6 to Omega-3 Ratio Discussion
-  quote: our modern diets often contain too much omega 6, sometimes over 15 times
-    more than omega 3 and all this is driving inflammation and leading to chronic
-    diseases.
+  quote: our modern diets often contain too much omega 6, sometimes over 15 times more than omega 3 and all this is driving
+    inflammation and leading to chronic diseases.
 version: 1
 status: active
 updated_at: '2026-05-05'

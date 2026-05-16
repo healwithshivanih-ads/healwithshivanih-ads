@@ -1,0 +1,36 @@
+slug: lactobacillus-crispatus-probiotic
+display_name: Lactobacillus crispatus probiotic
+aliases:
+- lactobacillus crispatus
+- L. crispatus
+- L crispatus probiotic
+category: probiotic
+forms_available:
+- capsule
+typical_dose_range: {}
+timing_options:
+- with_breakfast
+take_with_food: optional
+notes_for_coach: '[STUB — auto-created by Step 2. Dominant healthy vaginal microbiome strain. Topical or oral supplementation
+  supports vaginal pH (~3.8–4.5) and crowds out dysbiotic species. Recent research suggests strain-specific benefit for recurrent
+  BV, UTIs, and post-menopausal vaginal symptoms.]'
+contraindications:
+  conditions: []
+  medications: []
+  life_stages: []
+interactions:
+  with_medications: []
+  with_supplements: []
+  with_foods: []
+evidence_tier: fm_specific_thin
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: notebooklm-synthesis
+  location: '[auto-restored after Step 2 strip]'
+  quote: Original source citation was 'Notebook LM' / 'notebooklmgoogle' — replaced with stub source for validation compliance.
+    Coach should re-verify and link to a peer-reviewed source when next reviewing this entry.
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

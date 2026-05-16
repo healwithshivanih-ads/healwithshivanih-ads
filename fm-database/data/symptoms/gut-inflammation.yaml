@@ -8,13 +8,12 @@ aliases:
 - colitis symptoms
 category: gi
 severity: concerning
-description: Inflammation of the intestinal mucosa, ranging from mild (elevated calprotectin
-  50–200) to severe (calprotectin >200, IBD). May present with cramping, urgency,
-  loose stools, and mucus or blood in stool.
-when_to_refer: Fecal calprotectin >200 requires clinician evaluation to rule out IBD
-  (Crohn's, ulcerative colitis). Blood in stool is a red flag.
+description: Inflammation of the intestinal mucosa, ranging from mild (elevated calprotectin 50–200) to severe (calprotectin
+  >200, IBD). May present with cramping, urgency, loose stools, and mucus or blood in stool.
+when_to_refer: Fecal calprotectin >200 requires clinician evaluation to rule out IBD (Crohn's, ulcerative colitis). Blood
+  in stool is a red flag.
 linked_to_topics:
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 - ibs-ibd-differentiation
 - 5r-gut-healing-protocol
 linked_to_mechanisms:
@@ -26,12 +25,12 @@ linked_to_mechanisms:
 sources:
 - id: coconote-fm-intestinal-permeability
   location: Diagnostic Markers – Calprotectin
-  quote: If the level is more than 200, that confirms the patient having an inflammation
-    in the intestine and further investigation is required.
+  quote: If the level is more than 200, that confirms the patient having an inflammation in the intestine and further investigation
+    is required.
 - id: coconote-fm-intestinal-permeability-anish
   location: Diagnostic Tools — Fecal Calprotectin
-  quote: If the level is more than 200, that confirms the patient having an inflammation
-    in the intestine and further investigation is required.
+  quote: If the level is more than 200, that confirms the patient having an inflammation in the intestine and further investigation
+    is required.
 version: 2
 status: active
 updated_at: '2026-05-05'

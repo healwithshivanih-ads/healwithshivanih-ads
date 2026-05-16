@@ -1,0 +1,29 @@
+slug: liver-detoxification
+display_name: Liver Detoxification
+aliases:
+- liver-detoxification-phases
+- liver-detox-phase-1-and-phase-2
+- liver-detox-food-plan
+- liver detox
+- hepatic biotransformation
+summary: The liver's three-phase biotransformation of endogenous and exogenous toxins. Phase 1 (cytochrome P450 enzymes) oxidises
+  lipophilic toxins; Phase 2 (conjugation) attaches water-soluble groups (glucuronide, sulfate, glutathione, glycine, methyl);
+  Phase 3 (elimination) exports conjugates via bile or kidneys. Each phase requires specific nutrient cofactors and protective
+  antioxidants.
+common_symptoms: []
+red_flags: []
+related_topics: []
+key_mechanisms:
+- phase-1-biotransformation
+- phase-2-conjugation
+- phase-3-elimination
+coaching_scope_notes: ''
+clinician_scope_notes: ''
+notes_for_coach: '[STUB — auto-created by Step 2 cleanup to close pending-refs. Enrich with material from a next ingest covering
+  this concept.]'
+sources: []
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

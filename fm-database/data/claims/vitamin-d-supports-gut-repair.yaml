@@ -1,18 +1,15 @@
 slug: vitamin-d-supports-gut-repair
-statement: Vitamin D is important for gut repair in the context of intestinal permeability
-  and is included as a key repair nutrient in gut healing protocols.
+statement: Vitamin D is important for gut repair in the context of intestinal permeability and is included as a key repair
+  nutrient in gut healing protocols.
 evidence_tier: plausible_emerging
-rationale: Vitamin D receptors are expressed throughout the gut epithelium and vitamin
-  D has demonstrated roles in tight junction regulation and mucosal immune modulation
-  in several studies. The claim is consistent with emerging evidence.
-coaching_translation: Vitamin D doesn't just support bone health — it also plays a
-  role in maintaining the integrity of your gut lining and supporting the immune system
-  there.
+rationale: Vitamin D receptors are expressed throughout the gut epithelium and vitamin D has demonstrated roles in tight junction
+  regulation and mucosal immune modulation in several studies. The claim is consistent with emerging evidence.
+coaching_translation: Vitamin D doesn't just support bone health — it also plays a role in maintaining the integrity of your
+  gut lining and supporting the immune system there.
 caveats:
-- Dose not specified in source. Doses above 5000 IU/day should be monitored by clinician
-  via serum 25-OH-D.
+- Dose not specified in source. Doses above 5000 IU/day should be monitored by clinician via serum 25-OH-D.
 linked_to_topics:
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 - 5r-gut-healing-protocol
 linked_to_supplements:
 - vitamin-d

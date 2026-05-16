@@ -16,8 +16,8 @@ aliases:
 - nail brittleness
 category: skin
 severity: common
-description: Fragile or splitting fingernails often associated with nutrient malabsorption
-  secondary to hypochlorhydria (zinc, iron deficiency).
+description: Fragile or splitting fingernails often associated with nutrient malabsorption secondary to hypochlorhydria (zinc,
+  iron deficiency).
 linked_to_topics:
 - hypochlorhydria
 - gut-dysfunction
@@ -33,12 +33,10 @@ sources:
   quote: Weak, peeling, and cracked fingernails [listed as a common symptom of hypochlorhydria].
 - id: coconote-fm-iron-deficiency-anemia
   location: Symptoms of Iron Deficiency section
-  quote: Physical fatigue, brittle nails, restless leg, cold intolerance because of
-    lack of oxygen.
-- id: Vitaone-fm-nutrition-cheatsheets
+  quote: Physical fatigue, brittle nails, restless leg, cold intolerance because of lack of oxygen.
+- id: vitaone-fm-nutrition-cheatsheets
   location: Symptoms Discussed
-  quote: Pallor, dizziness, breathlessness, restless legs, and brittle nails - Linked
-    to iron deficiency.
+  quote: Pallor, dizziness, breathlessness, restless legs, and brittle nails - Linked to iron deficiency.
 version: 1
 status: active
 updated_at: '2026-05-02'

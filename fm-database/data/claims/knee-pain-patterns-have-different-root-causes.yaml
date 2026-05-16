@@ -1,13 +1,11 @@
 slug: knee-pain-patterns-have-different-root-causes
-statement: Knee pain is categorized into degenerative, autoimmune, post-injury, gout-related,
-  metabolic, and hormonal patterns, each with different nutritional approaches.
+statement: Knee pain is categorized into degenerative, autoimmune, post-injury, gout-related, metabolic, and hormonal patterns,
+  each with different nutritional approaches.
 evidence_tier: fm_specific_thin
-rationale: Root-cause categorization of knee pain for nutritional intervention is
-  FM-specific practice; the individual subtypes (osteoarthritis, RA, gout) have their
-  own evidence bases.
-coaching_translation: Before recommending joint supplements, help the client understand
-  what type of joint issue they may have — different causes respond differently to
-  nutrition and lifestyle.
+rationale: Root-cause categorization of knee pain for nutritional intervention is FM-specific practice; the individual subtypes
+  (osteoarthritis, RA, gout) have their own evidence bases.
+coaching_translation: Before recommending joint supplements, help the client understand what type of joint issue they may
+  have — different causes respond differently to nutrition and lifestyle.
 caveats:
 - Source is a practitioner cheatsheet without primary citations.
 - Clinical diagnosis of knee pain type requires medical assessment including imaging.
@@ -29,14 +27,12 @@ linked_to_supplements:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Page 29
-  quote: Knee pain is categorized into degenerative, autoimmune, post-injury, gout-related,
-    metabolic, and hormonal patterns.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 29
-  quote: Knee pain is categorized into degenerative, autoimmune, post-injury, gout-related,
-    metabolic, and hormonal patterns.
+  quote: Knee pain is categorized into degenerative, autoimmune, post-injury, gout-related, metabolic, and hormonal patterns.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 29
+  quote: Knee pain is categorized into degenerative, autoimmune, post-injury, gout-related, metabolic, and hormonal patterns.
 version: 2
 status: active
 updated_at: '2026-05-06'

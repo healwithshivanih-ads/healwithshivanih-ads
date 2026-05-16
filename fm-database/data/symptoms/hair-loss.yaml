@@ -34,11 +34,10 @@ aliases:
 - dry hair
 category: skin
 severity: common
-description: Hair loss, thinning, brittle hair, slow growth, and brittle nails linked
-  to biotin, zinc, iron, thyroid imbalance, PCOS, postpartum shifts, androgenic alopecia,
-  telogen effluvium, and nutrient deficiency.
-when_to_refer: If hair loss is sudden, patchy (alopecia areata), or associated with
-  autoimmune or thyroid symptoms; if postpartum or hormonal root cause suspected.
+description: Hair loss, thinning, brittle hair, slow growth, and brittle nails linked to biotin, zinc, iron, thyroid imbalance,
+  PCOS, postpartum shifts, androgenic alopecia, telogen effluvium, and nutrient deficiency.
+when_to_refer: If hair loss is sudden, patchy (alopecia areata), or associated with autoimmune or thyroid symptoms; if postpartum
+  or hormonal root cause suspected.
 linked_to_topics:
 - testosterone-health
 - sex-hormone-binding-globulin
@@ -67,37 +66,32 @@ linked_to_mechanisms:
 sources:
 - id: vitaone-sex-hormones-toolkit
   location: Sex Hormone Binding Globulin (SHBG) — Page 01
-  quote: When SHBG levels in the body are low... This can lead to increased free testosterone
-    and estrogen in the body, which can lead to symptoms like hair loss, acne, and
-    excess fluid retention.
+  quote: When SHBG levels in the body are low... This can lead to increased free testosterone and estrogen in the body, which
+    can lead to symptoms like hair loss, acne, and excess fluid retention.
 - id: vitaone-health-coaching-toolkit
   location: Sex Hormone Binding Globulin (SHBG)
-  quote: This can lead to increased free testosterone and estrogen in the body, which
-    can lead to symptoms like hair loss, acne, and excess fluid retention.
+  quote: This can lead to increased free testosterone and estrogen in the body, which can lead to symptoms like hair loss,
+    acne, and excess fluid retention.
 - id: coconote-fm-iron-deficiency-anemia
   location: Symptoms of Iron Deficiency section
   quote: Hair loss, especially breakage from the roots.
 - id: coconote-fm-sex-hormones
   location: Symptoms of Menopause Transition
-  quote: loss of hair on the head, new hair on the chin, so facial hair also tends
-    to happen
+  quote: loss of hair on the head, new hair on the chin, so facial hair also tends to happen
 - id: coconote-fm-zinc-deficiency
   location: Signs and Symptoms
-  quote: Hair loss, macular degeneration, loss of taste and smell, skin disorders
-    including acne.
+  quote: Hair loss, macular degeneration, loss of taste and smell, skin disorders including acne.
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXy9b_KjJT2/
   quote: Normal Hb but fatigue, hair loss and brain fog persist
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Symptoms Discussed
-  quote: Hair loss, hair thinning, brittle hair, slow growth, and brittle nails -
-    Linked to biotin, zinc, iron, thyroid imbalance, PCOS, postpartum shifts, androgenic
-    alopecia, telogen effluvium, and nutrient deficiency.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Symptoms Discussed
-  quote: Hair loss, hair thinning, brittle hair, slow growth, and brittle nails -
-    Linked to biotin, zinc, iron, thyroid imbalance, PCOS, postpartum shifts, androgenic
-    alopecia, telogen effluvium, and nutrient deficiency.
+  quote: Hair loss, hair thinning, brittle hair, slow growth, and brittle nails - Linked to biotin, zinc, iron, thyroid imbalance,
+    PCOS, postpartum shifts, androgenic alopecia, telogen effluvium, and nutrient deficiency.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Symptoms Discussed
+  quote: Hair loss, hair thinning, brittle hair, slow growth, and brittle nails - Linked to biotin, zinc, iron, thyroid imbalance,
+    PCOS, postpartum shifts, androgenic alopecia, telogen effluvium, and nutrient deficiency.
 - id: vitaone-thyroid-cheatsheet
   location: Biohacking Thyroid Function Cheatsheet — Thyroid Dysfunction Symptoms
   quote: Hair thinning, dry skin
@@ -106,15 +100,14 @@ sources:
   quote: Helps acne, hair thinning.
 - id: vitaone-nutrition-cheatsheet
   location: Zinc – The Immune & Repair Mineral
-  quote: Deficiency = poor wound healing, frequent infections, hair loss, white nail
-    spots, loss of taste/smell.
+  quote: Deficiency = poor wound healing, frequent infections, hair loss, white nail spots, loss of taste/smell.
 - id: vitaone-thyroid-ebook
   location: 'Chapter 4: Functions of Thyroid Hormones'
   quote: Hairfall & Thinking of Hair, Coarse Hair on Scalp, face and Body
 - id: coconote-fm-estrogen-dominance
   location: Q&A — Insulin Resistance and Estrogen
-  quote: Male pattern baldness, loss of hair, thinning of hair are all symptoms of
-    high estrogen and high insulin inside the body.
+  quote: Male pattern baldness, loss of hair, thinning of hair are all symptoms of high estrogen and high insulin inside the
+    body.
 - id: coach-shivani
   location: Coach Observation
   quote: For unexplained hair loss, check and treat for H.Pylori even for children

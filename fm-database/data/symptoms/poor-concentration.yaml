@@ -174,7 +174,7 @@ sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXy9b_KjJT2/
   quote: Normal Hb but fatigue, hair loss and brain fog persist
-- id: Vitaone-fm-nutrition-cheatsheets
+- id: vitaone-fm-nutrition-cheatsheets
   location: Symptoms Discussed
   quote: Poor mental flexibility, infertility, and developmental issues in newborns - Linked to folate deficiency.
 - id: vitaone-fm-nutrition-cheatsheets

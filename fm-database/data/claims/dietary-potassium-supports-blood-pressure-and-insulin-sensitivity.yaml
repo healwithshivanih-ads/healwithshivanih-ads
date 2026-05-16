@@ -1,16 +1,14 @@
 slug: dietary-potassium-supports-blood-pressure-and-insulin-sensitivity
-statement: Potassium lowers blood pressure, improves insulin sensitivity, and protects
-  kidneys.
+statement: Potassium lowers blood pressure, improves insulin sensitivity, and protects kidneys.
 evidence_tier: plausible_emerging
-rationale: Potassium's antihypertensive effects and insulin sensitizing role are supported
-  by meta-analyses and observational data.
-coaching_translation: Encourage potassium-rich foods (leafy greens, bananas, avocado,
-  legumes, coconut water) for cardiovascular and metabolic health.
+rationale: Potassium's antihypertensive effects and insulin sensitizing role are supported by meta-analyses and observational
+  data.
+coaching_translation: Encourage potassium-rich foods (leafy greens, bananas, avocado, legumes, coconut water) for cardiovascular
+  and metabolic health.
 caveats:
 - Source is a practitioner cheatsheet without primary citations.
 - Source is practitioner cheatsheet.
-- Potassium supplementation above dietary amounts requires clinician oversight due
-  to hyperkalemia risk.
+- Potassium supplementation above dietary amounts requires clinician oversight due to hyperkalemia risk.
 linked_to_topics:
 - insulin-resistance
 - cardiovascular-health
@@ -19,14 +17,12 @@ linked_to_supplements:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Page 14
-  quote: Potassium is described as lowering blood pressure, improving insulin sensitivity,
-    and protecting kidneys.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 14
-  quote: Potassium is described as lowering blood pressure, improving insulin sensitivity,
-    and protecting kidneys.
+  quote: Potassium is described as lowering blood pressure, improving insulin sensitivity, and protecting kidneys.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 14
+  quote: Potassium is described as lowering blood pressure, improving insulin sensitivity, and protecting kidneys.
 version: 2
 status: active
 updated_at: '2026-05-06'

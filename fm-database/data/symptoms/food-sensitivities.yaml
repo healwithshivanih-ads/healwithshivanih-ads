@@ -36,11 +36,9 @@ aliases:
 - multiple-food-allergies
 category: gi
 severity: common
-description: Adverse reactions to previously tolerated foods, often linked to compromised
-  gut barrier function (leaky gut) and disrupted microbiome, allowing undigested food
-  particles to enter the bloodstream and trigger immune responses.
-when_to_refer: Refer if reactions are severe (anaphylaxis), rapidly expanding, or
-  associated with weight loss and GI bleeding.
+description: Adverse reactions to previously tolerated foods, often linked to compromised gut barrier function (leaky gut)
+  and disrupted microbiome, allowing undigested food particles to enter the bloodstream and trigger immune responses.
+when_to_refer: Refer if reactions are severe (anaphylaxis), rapidly expanding, or associated with weight loss and GI bleeding.
 linked_to_topics:
 - perimenopause
 - microbiome
@@ -50,7 +48,7 @@ linked_to_topics:
 - emotional-healing-in-chronic-disease
 - leaky-gut
 - gut-dysbiosis
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 - gut-microbiome-and-gut-flora
 - inflammatory-bowel-conditions
 linked_to_mechanisms:
@@ -73,8 +71,7 @@ sources:
   location: Session 2 — Food Sensitivities & Gut Permeability
 - id: vitaone-health-coaching-toolkit
   location: Why Emotional Healing Is Important in Chronic Diseases
-  quote: Stress hormones alter microbiome diversity, ↑ intestinal permeability ('leaky
-    gut').
+  quote: Stress hormones alter microbiome diversity, ↑ intestinal permeability ('leaky gut').
 - id: vitaone-health-coaching-cheatsheet
   location: Why Emotional Healing Is Important in Chronic Diseases
   quote: Bloating, food sensitivities, mood swings, brain fog.
@@ -83,12 +80,12 @@ sources:
   quote: new food sensitivities
 - id: coconote-fm-gut-dysbiosis-pathogens
   location: Source and Reinfection Section
-  quote: if the patient having a low stomach acid or patient is eating all the time,
-    all the time, sugary diet then they have a source of the infection.
+  quote: if the patient having a low stomach acid or patient is eating all the time, all the time, sugary diet then they have
+    a source of the infection.
 - id: coconote-fm-intestinal-permeability-anish
   location: Consequences of Intestinal Permeability
-  quote: You can see a lot of full sensitivity, intolerance, and that leads to systemic
-    inflammation and your toxic load will be increased.
+  quote: You can see a lot of full sensitivity, intolerance, and that leads to systemic inflammation and your toxic load will
+    be increased.
 - id: barbara-oneil-gi-tract
   location: Leaky Gut Section
   quote: Things are coming in there that should never come in there.
@@ -97,22 +94,19 @@ sources:
   quote: Gut – Bloating, food reactivity, ↑ Zonulin
 - id: coconote-fm-sibo-sifo
   location: Leaky Gut / Transcellular Section
-  quote: At times patients come with a company, doctor first time sensitive to gluten.
-    Then after six months, I became sensitive to milk. After that, I had multiple
-    food sensitivities.
+  quote: At times patients come with a company, doctor first time sensitive to gluten. Then after six months, I became sensitive
+    to milk. After that, I had multiple food sensitivities.
 - id: coconote-fm-food-allergies-sensitivities
   location: Low Stomach Acid Section
-  quote: patients start with one food allergy or one food sensitivity and because
-    they have chronic low stomach acid and because of that increased intestinal permeability
-    they start having second food reaction or third food reaction
+  quote: patients start with one food allergy or one food sensitivity and because they have chronic low stomach acid and because
+    of that increased intestinal permeability they start having second food reaction or third food reaction
 - id: vitaone-elimination-diet-cheatsheet
   location: FODMAP Food Cheatsheet — Legumes & Pulses row
   quote: Legume reintroduction signals improved gut tolerance post-dysbiosis correction.
 - id: coconote-fm-intestinal-permeability
   location: Three Factors for Autoimmunity
-  quote: if somebody is exposed to a gluten or a gluten or wheat even they will not
-    develop the gluten sensitivity because third important factor is required and
-    that is because say leaky small intestine or leaky gut.
+  quote: if somebody is exposed to a gluten or a gluten or wheat even they will not develop the gluten sensitivity because
+    third important factor is required and that is because say leaky small intestine or leaky gut.
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXy9b_KjJT2/
   quote: Chronic gut issues impair absorption silently

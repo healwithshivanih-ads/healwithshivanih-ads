@@ -23,31 +23,29 @@ linked_to_topics:
 - immune-support-covid-19
 - sibo
 - sifo
-- leaky-gut-syndrome
+- autoimmunity-leaky-gut-triad
 linked_to_claims:
 - licorice-root-antiviral-immune-short-term
 - ginseng-licorice-support-adrenal
 - licorice-root-supports-immune-and-reduces-viral-growth
 - herbal-antimicrobials-effective-in-sibo
-notes_for_coach: Licorice root supports gut mucosal healing and has antimicrobial
-  properties. DGL (deglycyrrhizinated licorice) is preferred to avoid blood pressure
-  effects. Confirm form and duration with clinician.
-notes_for_client: Licorice root helps soothe and repair the gut lining while also
-  having mild antibacterial effects.
+notes_for_coach: Licorice root supports gut mucosal healing and has antimicrobial properties. DGL (deglycyrrhizinated licorice)
+  is preferred to avoid blood pressure effects. Confirm form and duration with clinician.
+notes_for_client: Licorice root helps soothe and repair the gut lining while also having mild antibacterial effects.
 evidence_tier: fm_specific_thin
 linked_to_mechanisms: []
 sources:
 - id: vitaone-inflammation-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
-  quote: Licorice is commonly found in Traditional Chinese Medicine (TCM) formulations
-    and supports immune system function and reduces viral growth.
+  quote: Licorice is commonly found in Traditional Chinese Medicine (TCM) formulations and supports immune system function
+    and reduces viral growth.
 - id: vitaone-health-coaching-toolkit
   location: Hypercortisolism — Restoration
   quote: Consume ginseng and/or licorice tea for support.
 - id: coconote-fm-sibo-sifo
   location: Antimicrobial / Antifungal Herbal Section
-  quote: You take berberine you take a licorice you take a lotus cream all of these
-    medications actually oil of oregano, garlic oil, Indian barberry root extract.
+  quote: You take berberine you take a licorice you take a lotus cream all of these medications actually oil of oregano, garlic
+    oil, Indian barberry root extract.
 version: 4
 status: active
 updated_at: '2026-05-05'

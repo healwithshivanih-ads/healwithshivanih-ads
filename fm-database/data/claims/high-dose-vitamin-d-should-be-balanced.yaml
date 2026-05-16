@@ -1,15 +1,13 @@
 slug: high-dose-vitamin-d-should-be-balanced
-statement: Higher-dose vitamin D requires balance with vitamins A, K, and E, and assessment
-  of calcium and phosphorus.
+statement: Higher-dose vitamin D requires balance with vitamins A, K, and E, and assessment of calcium and phosphorus.
 evidence_tier: confirm_with_clinician
-rationale: Fat-soluble vitamin synergy and potential for vitamin D toxicity via dysregulated
-  calcium metabolism is clinically recognized.
+rationale: Fat-soluble vitamin synergy and potential for vitamin D toxicity via dysregulated calcium metabolism is clinically
+  recognized.
 out_of_scope_notes: High-dose vitamin D protocols are clinician scope.
 caveats:
 - Source is a practitioner cheatsheet without primary citations.
 - High-dose defined contextually; typically applies to doses above 4000 IU/day.
-- Vitamin D supplementation above standard doses requires clinician oversight and
-  lab monitoring.
+- Vitamin D supplementation above standard doses requires clinician oversight and lab monitoring.
 linked_to_topics:
 - nutrition-deficiency
 - bone-health
@@ -21,14 +19,12 @@ linked_to_supplements:
 coaching_translation: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Page 8
-  quote: Higher-dose vitamin D is described as needing balance with vitamins A, K,
-    and E and assessment of calcium and phosphorus.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 8
-  quote: Higher-dose vitamin D is described as needing balance with vitamins A, K,
-    and E and assessment of calcium and phosphorus.
+  quote: Higher-dose vitamin D is described as needing balance with vitamins A, K, and E and assessment of calcium and phosphorus.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 8
+  quote: Higher-dose vitamin D is described as needing balance with vitamins A, K, and E and assessment of calcium and phosphorus.
 version: 2
 status: active
 updated_at: '2026-05-06'

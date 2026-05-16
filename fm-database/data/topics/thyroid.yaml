@@ -10,9 +10,9 @@ aliases:
 - thyroid nutrient synergy
 - Hashimoto's
 - autoimmune thyroiditis
-summary: T4, T3, TSH, thyroid-binding globulin, autoimmune thyroiditis, stress-related
-  thyroid dysfunction, iodine, selenium, zinc, and thyroid medication cautions are
-  discussed.
+- hashimoto-thyroid
+summary: T4, T3, TSH, thyroid-binding globulin, autoimmune thyroiditis, stress-related thyroid dysfunction, iodine, selenium,
+  zinc, and thyroid medication cautions are discussed.
 common_symptoms:
 - fatigue
 - hair loss
@@ -78,33 +78,32 @@ key_mechanisms:
 - oxidative-stress-and-inflammation
 - hpa-axis-overactivation
 - anti-stress-hormone-restoration
-coaching_scope_notes: Selenium-rich foods, stress reduction, iodine-adequate diet,
-  and sleep support are coaching-appropriate. Avoid advising on thyroid medication.
-clinician_scope_notes: TSH, FT3, FT4, reverse T3, thyroid antibodies, TBG interpretation,
-  and thyroid medication management are clinician-scope.
+coaching_scope_notes: Selenium-rich foods, stress reduction, iodine-adequate diet, and sleep support are coaching-appropriate.
+  Avoid advising on thyroid medication.
+clinician_scope_notes: TSH, FT3, FT4, reverse T3, thyroid antibodies, TBG interpretation, and thyroid medication management
+  are clinician-scope.
 evidence_tier: confirm_with_clinician
 sources:
 - id: vitaone-evidence-tiers
   location: TOPIC 1 — Thyroid / Claims & Tiers
-  quote: TSH misses early Hashimoto's, euthyroid-sick syndrome, conversion problems,
-    and autoimmune thyroid disease without elevated TSH.
+  quote: TSH misses early Hashimoto's, euthyroid-sick syndrome, conversion problems, and autoimmune thyroid disease without
+    elevated TSH.
 - id: vitaone-thyroid-cheatsheet
   location: Biohacking Thyroid Function Cheatsheet
-  quote: Thyroid dysfunction, whether hypo, hyper, or autoimmune can persist even
-    with 'normal' TSH if deeper imbalances are missed.
-- id: Vitaone-fm-nutrition-cheatsheets
+  quote: Thyroid dysfunction, whether hypo, hyper, or autoimmune can persist even with 'normal' TSH if deeper imbalances are
+    missed.
+- id: vitaone-fm-nutrition-cheatsheets
   location: Key Mechanisms Explained – thyroid-nutrient-synergy
-  quote: Thyroid hormone production and conversion are described as dependent on iodine,
-    selenium, iron, riboflavin, vitamin A, vitamin D, magnesium, and antioxidant balance.
+  quote: Thyroid hormone production and conversion are described as dependent on iodine, selenium, iron, riboflavin, vitamin
+    A, vitamin D, magnesium, and antioxidant balance.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Key Mechanisms Explained — thyroid-nutrient-synergy
-  quote: Thyroid hormone production and conversion are described as dependent on iodine,
-    selenium, iron, riboflavin, vitamin A, vitamin D, magnesium, and antioxidant balance.
+  quote: Thyroid hormone production and conversion are described as dependent on iodine, selenium, iron, riboflavin, vitamin
+    A, vitamin D, magnesium, and antioxidant balance.
 - id: vitaone-fm-adrenal-hormones
   location: Topics Covered
-  quote: T4, T3, TSH, thyroid-binding globulin, autoimmune thyroiditis, stress-related
-    thyroid dysfunction, iodine, selenium, zinc, and thyroid medication cautions are
-    discussed.
+  quote: T4, T3, TSH, thyroid-binding globulin, autoimmune thyroiditis, stress-related thyroid dysfunction, iodine, selenium,
+    zinc, and thyroid medication cautions are discussed.
 version: 5
 status: active
 updated_at: '2026-05-06'

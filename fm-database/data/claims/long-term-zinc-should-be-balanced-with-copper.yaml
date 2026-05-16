@@ -1,9 +1,7 @@
 slug: long-term-zinc-should-be-balanced-with-copper
-statement: Zinc supplementation above 50 mg/day risks copper deficiency and long-term
-  use should be balanced with copper.
+statement: Zinc supplementation above 50 mg/day risks copper deficiency and long-term use should be balanced with copper.
 evidence_tier: confirm_with_clinician
-rationale: Zinc and copper compete for absorption; high-dose zinc inducing copper
-  deficiency is well-documented.
+rationale: Zinc and copper compete for absorption; high-dose zinc inducing copper deficiency is well-documented.
 out_of_scope_notes: High-dose zinc supplementation is outside coaching scope.
 caveats:
 - Risk increases substantially above 50 mg/day of zinc.
@@ -18,14 +16,14 @@ linked_to_supplements:
 coaching_translation: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Page 10
-  quote: Zinc supplementation above 50 mg/day is described as risking copper deficiency
-    and long-term use is advised to be balanced with copper.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 10
-  quote: Zinc supplementation above 50 mg/day is described as risking copper deficiency
-    and long-term use is advised to be balanced with copper.
+  quote: Zinc supplementation above 50 mg/day is described as risking copper deficiency and long-term use is advised to be
+    balanced with copper.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 10
+  quote: Zinc supplementation above 50 mg/day is described as risking copper deficiency and long-term use is advised to be
+    balanced with copper.
 version: 2
 status: active
 updated_at: '2026-05-06'

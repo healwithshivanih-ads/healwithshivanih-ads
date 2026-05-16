@@ -1,11 +1,10 @@
 slug: pcos-hair-loss-is-linked-to-insulin-resistance-and-androgens
-statement: PCOS or hormonal hair loss involves estrogen dominance, high androgens,
-  and insulin resistance.
+statement: PCOS or hormonal hair loss involves estrogen dominance, high androgens, and insulin resistance.
 evidence_tier: fm_specific_thin
-rationale: PCOS-driven hair loss via androgens and insulin resistance is clinically
-  recognized; the estrogen dominance framing is FM-specific.
-coaching_translation: PCOS hair loss clients benefit from addressing insulin resistance
-  through dietary changes alongside hormonal assessment by a clinician.
+rationale: PCOS-driven hair loss via androgens and insulin resistance is clinically recognized; the estrogen dominance framing
+  is FM-specific.
+coaching_translation: PCOS hair loss clients benefit from addressing insulin resistance through dietary changes alongside
+  hormonal assessment by a clinician.
 caveats:
 - Source is a practitioner cheatsheet without primary citations.
 - Hormonal diagnosis requires clinical assessment.
@@ -22,14 +21,12 @@ linked_to_supplements:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Page 24
-  quote: PCOS or hormonal hair loss is described as involving estrogen dominance,
-    high androgens, and insulin resistance.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 24
-  quote: PCOS or hormonal hair loss is described as involving estrogen dominance,
-    high androgens, and insulin resistance.
+  quote: PCOS or hormonal hair loss is described as involving estrogen dominance, high androgens, and insulin resistance.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 24
+  quote: PCOS or hormonal hair loss is described as involving estrogen dominance, high androgens, and insulin resistance.
 version: 2
 status: active
 updated_at: '2026-05-06'

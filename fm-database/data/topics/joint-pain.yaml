@@ -8,9 +8,8 @@ aliases:
 - musculoskeletal pain
 - gout
 - metabolic joint pain
-summary: Knee pain patterns are categorized into degenerative, autoimmune, post-injury,
-  gout-related, metabolic, and hormonal subtypes. Nutritional and anti-inflammatory
-  approaches vary by root cause.
+summary: Knee pain patterns are categorized into degenerative, autoimmune, post-injury, gout-related, metabolic, and hormonal
+  subtypes. Nutritional and anti-inflammatory approaches vary by root cause.
 common_symptoms:
 - joint-stiffness
 - joint-swelling
@@ -38,21 +37,20 @@ key_mechanisms:
 - oxidative-stress-and-inflammation
 - gut-barrier-and-nutrient-absorption
 - calcium-trafficking-and-bone-mineralization
-coaching_scope_notes: Categorize by root cause before recommending supplements. Anti-inflammatory
-  dietary pattern, movement, weight management, and food-first approach are coaching-appropriate.
-  Autoimmune, gout, and severe structural joint concerns require clinician referral.
-clinician_scope_notes: RA factor, anti-CCP, ANA, uric acid, X-ray, and MRI are relevant
-  depending on the subtype.
+coaching_scope_notes: Categorize by root cause before recommending supplements. Anti-inflammatory dietary pattern, movement,
+  weight management, and food-first approach are coaching-appropriate. Autoimmune, gout, and severe structural joint concerns
+  require clinician referral.
+clinician_scope_notes: RA factor, anti-CCP, ANA, uric acid, X-ray, and MRI are relevant depending on the subtype.
 evidence_tier: fm_specific_thin
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Topics Covered
-  quote: Knee pain patterns include osteoarthritis, rheumatoid arthritis, trauma,
-    gout, metabolic joint pain, and hormonal joint pain.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Topics Covered
-  quote: Knee pain patterns include osteoarthritis, rheumatoid arthritis, trauma,
-    gout, metabolic joint pain, and hormonal joint pain.
+  quote: Knee pain patterns include osteoarthritis, rheumatoid arthritis, trauma, gout, metabolic joint pain, and hormonal
+    joint pain.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Topics Covered
+  quote: Knee pain patterns include osteoarthritis, rheumatoid arthritis, trauma, gout, metabolic joint pain, and hormonal
+    joint pain.
 version: 2
 status: active
 updated_at: '2026-05-06'

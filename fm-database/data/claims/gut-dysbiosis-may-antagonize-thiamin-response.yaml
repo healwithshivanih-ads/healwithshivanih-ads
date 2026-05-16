@@ -1,12 +1,10 @@
 slug: gut-dysbiosis-may-antagonize-thiamin-response
-statement: If thiamin supplementation symptoms persist, gut dysbiosis should be assessed
-  as a potential antagonist.
+statement: If thiamin supplementation symptoms persist, gut dysbiosis should be assessed as a potential antagonist.
 evidence_tier: fm_specific_thin
-rationale: Gut dysbiosis impairing nutrient utilization is biologically plausible
-  but the direct evidence linking dysbiosis to thiamin antagonism is thin in peer-reviewed
-  literature.
-coaching_translation: If a client is taking thiamin but not noticing improvement,
-  gut health and absorption may be a factor worth exploring with their clinician.
+rationale: Gut dysbiosis impairing nutrient utilization is biologically plausible but the direct evidence linking dysbiosis
+  to thiamin antagonism is thin in peer-reviewed literature.
+coaching_translation: If a client is taking thiamin but not noticing improvement, gut health and absorption may be a factor
+  worth exploring with their clinician.
 caveats:
 - Source is a practitioner cheatsheet without primary citations.
 - Persistent symptoms despite supplementation require clinical evaluation.
@@ -20,14 +18,14 @@ linked_to_supplements:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Page 3
-  quote: If symptoms persist despite thiamin supplementation, the source recommends
-    looking for antagonists including gut dysbiosis.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 3
-  quote: If symptoms persist despite thiamin supplementation, the source recommends
-    looking for antagonists including gut dysbiosis.
+  quote: If symptoms persist despite thiamin supplementation, the source recommends looking for antagonists including gut
+    dysbiosis.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 3
+  quote: If symptoms persist despite thiamin supplementation, the source recommends looking for antagonists including gut
+    dysbiosis.
 version: 2
 status: active
 updated_at: '2026-05-06'

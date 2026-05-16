@@ -1,12 +1,10 @@
 slug: riboflavin-needs-rise-with-high-fat-diets
-statement: Riboflavin needs rise with high-fat diets, intense exercise, tanning, weight
-  loss, and certain genetic variants.
+statement: Riboflavin needs rise with high-fat diets, intense exercise, tanning, weight loss, and certain genetic variants.
 evidence_tier: fm_specific_thin
-rationale: Increased B2 demand with exercise and metabolic activity is plausible;
-  the claim about tanning and weight loss is FM-specific extrapolation without strong
-  RCT evidence.
-coaching_translation: Clients following high-fat diets or exercising intensely may
-  benefit from ensuring adequate riboflavin from food or supplementation.
+rationale: Increased B2 demand with exercise and metabolic activity is plausible; the claim about tanning and weight loss
+  is FM-specific extrapolation without strong RCT evidence.
+coaching_translation: Clients following high-fat diets or exercising intensely may benefit from ensuring adequate riboflavin
+  from food or supplementation.
 caveats:
 - Source is a practitioner cheatsheet without primary citations.
 - Source is practitioner cheatsheet without primary citation.
@@ -17,14 +15,14 @@ linked_to_supplements:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Page 3
-  quote: Riboflavin needs are described as rising with high-fat diets, intense exercise,
-    tanning, weight loss, and certain genetic variants.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 3
-  quote: Riboflavin needs are described as rising with high-fat diets, intense exercise,
-    tanning, weight loss, and certain genetic variants.
+  quote: Riboflavin needs are described as rising with high-fat diets, intense exercise, tanning, weight loss, and certain
+    genetic variants.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 3
+  quote: Riboflavin needs are described as rising with high-fat diets, intense exercise, tanning, weight loss, and certain
+    genetic variants.
 version: 2
 status: active
 updated_at: '2026-05-06'

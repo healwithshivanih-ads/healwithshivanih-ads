@@ -6,9 +6,9 @@ aliases:
 - pharmacological nutrient interference
 - iatrogenic nutrient depletion
 category: other
-summary: Common medications such as metformin, PPIs, statins, antibiotics, NSAIDs,
-  oral contraceptives, diuretics, warfarin, and chemotherapy agents deplete or interfere
-  with specific nutrients, alter metabolism, or increase bleeding and toxicity risk.
+summary: Common medications such as metformin, PPIs, statins, antibiotics, NSAIDs, oral contraceptives, diuretics, warfarin,
+  and chemotherapy agents deplete or interfere with specific nutrients, alter metabolism, or increase bleeding and toxicity
+  risk.
 upstream_drivers:
 - aspirin
 - paracetamol
@@ -51,14 +51,14 @@ linked_to_topics:
 - nutrition-deficiency
 evidence_tier: confirm_with_clinician
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
+- id: vitaone-fm-nutrition-cheatsheets
   location: Key Mechanisms Explained – medication-related-nutrient-depletion
-  quote: The source lists common medications that may deplete nutrients, interfere
-    with absorption, alter metabolism, or increase bleeding or toxicity risk.
+  quote: The source lists common medications that may deplete nutrients, interfere with absorption, alter metabolism, or increase
+    bleeding or toxicity risk.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Key Mechanisms Explained — medication-related-nutrient-depletion
-  quote: The source lists common medications that may deplete nutrients, interfere
-    with absorption, alter metabolism, or increase bleeding or toxicity risk.
+  quote: The source lists common medications that may deplete nutrients, interfere with absorption, alter metabolism, or increase
+    bleeding or toxicity risk.
 version: 2
 status: active
 updated_at: '2026-05-06'

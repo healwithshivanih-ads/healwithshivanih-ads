@@ -5,10 +5,9 @@ aliases:
 - endothelial nitric oxide
 - vasodilation via NO
 category: signaling
-summary: Riboflavin-mediated stabilization of the MTHFR enzyme may increase active
-  folate availability, which in turn may improve nitric oxide bioavailability, supporting
-  endothelial vasodilation and blood pressure regulation. This is the proposed mechanism
-  linking riboflavin to blood pressure reduction in 677TT individuals.
+summary: Riboflavin-mediated stabilization of the MTHFR enzyme may increase active folate availability, which in turn may
+  improve nitric oxide bioavailability, supporting endothelial vasodilation and blood pressure regulation. This is the proposed
+  mechanism linking riboflavin to blood pressure reduction in 677TT individuals.
 upstream_drivers:
 - mthfr-enzyme-dysfunction
 - riboflavin-deficiency
@@ -23,12 +22,7 @@ linked_to_topics:
 - riboflavin-and-blood-pressure-mthfr
 - mthfr-polymorphisms
 evidence_tier: plausible_emerging
-sources:
-- id: Notebook LM
-  location: Riboflavin and Blood Pressure
-  quote: The proposed mechanism is that riboflavin stabilizes the variant MTHFR enzyme,
-    increases active folate availability, and may improve nitric oxide bioavailability,
-    supporting vasodilation and blood pressure regulation.
+sources: []
 version: 1
 status: active
 updated_at: '2026-05-13'

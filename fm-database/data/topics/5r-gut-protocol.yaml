@@ -1,0 +1,31 @@
+slug: 5r-gut-protocol
+display_name: 5R Gut Protocol
+aliases:
+- 5r-gut-restoration
+- 5r-gut-healing-protocol
+- five-r-gut-protocol
+- 5R protocol
+- five R gut protocol
+summary: 'The 5R framework (Remove, Replace, Reinoculate, Repair, Rebalance) is a foundational functional medicine approach
+  to restoring gut health. Each R targets a different layer of the gut dysfunction: Remove triggers (food sensitivities, pathogens),
+  Replace digestive support (HCl, enzymes, bile), Reinoculate beneficial bacteria (probiotics, prebiotics, fermented foods),
+  Repair the gut lining (L-glutamine, zinc, omega-3, polyphenols), Rebalance lifestyle factors (stress, sleep, exercise).'
+common_symptoms:
+- bloating
+- constipation
+- loose-stools
+red_flags: []
+related_topics: []
+key_mechanisms:
+- leaky-gut
+- gut-permeability
+coaching_scope_notes: ''
+clinician_scope_notes: ''
+notes_for_coach: '[STUB — auto-created by Step 2 cleanup to close pending-refs. Enrich with material from a next ingest covering
+  this concept.]'
+sources: []
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

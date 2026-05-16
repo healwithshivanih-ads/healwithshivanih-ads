@@ -1,18 +1,16 @@
 slug: zinc-supports-gastric-mucosal-integrity
-statement: Zinc is an essential micronutrient for maintaining gastric and intestinal
-  mucosal integrity, and deficiency contributes to increased intestinal permeability.
+statement: Zinc is an essential micronutrient for maintaining gastric and intestinal mucosal integrity, and deficiency contributes
+  to increased intestinal permeability.
 evidence_tier: plausible_emerging
-rationale: Zinc's role in mucosal integrity and tight junction function is supported
-  by mechanistic studies and some clinical evidence (zinc carnosine for gastric mucosa).
-  The specific claim is plausible and well-cited in functional medicine.
-coaching_translation: Zinc is a key mineral for keeping your gut lining strong. If
-  you're deficient, your gut barrier is more vulnerable.
+rationale: Zinc's role in mucosal integrity and tight junction function is supported by mechanistic studies and some clinical
+  evidence (zinc carnosine for gastric mucosa). The specific claim is plausible and well-cited in functional medicine.
+coaching_translation: Zinc is a key mineral for keeping your gut lining strong. If you're deficient, your gut barrier is more
+  vulnerable.
 caveats:
-- High-dose zinc supplementation (>40mg/day) can displace copper — confirm dose with
-  clinician.
+- High-dose zinc supplementation (>40mg/day) can displace copper — confirm dose with clinician.
 - Source is expert lecture; confirm with clinician before supplementing.
 linked_to_topics:
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 - 5r-gut-healing-protocol
 linked_to_supplements:
 - zinc

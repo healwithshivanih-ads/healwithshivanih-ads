@@ -37,13 +37,12 @@ linked_to_topics:
 - nervous-system-regulation
 - 5r-gut-restoration
 - chronic-pain-and-fatigue
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 - gut-dysbiosis
 - dysbiosis
 - hypochlorhydria
 - gut-skin-hormone-axis
 - 5r-gut-healing-protocol
-- leaky-gut-syndrome
 linked_to_claims:
 - leaky-gut-triggers-hashimotos
 - gluten-free-reduces-hashimotos-triggers
@@ -63,11 +62,9 @@ linked_to_claims:
 - glutamine-is-primary-gut-epithelial-fuel
 - gut-repair-nutrients-support-epithelial-regeneration
 - 5rs-repair-includes-l-glutamine
-notes_for_coach: L-glutamine is a key fuel for enterocytes and helps repair tight
-  junctions. Used in the 'Repair' phase of 5Rs. Dose should be verified with clinician
-  for therapeutic use.
-notes_for_client: L-glutamine is an amino acid that your gut cells use as fuel to
-  repair and restore the intestinal lining.
+notes_for_coach: L-glutamine is a key fuel for enterocytes and helps repair tight junctions. Used in the 'Repair' phase of
+  5Rs. Dose should be verified with clinician for therapeutic use.
+notes_for_client: L-glutamine is an amino acid that your gut cells use as fuel to repair and restore the intestinal lining.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -87,61 +84,54 @@ sources:
   location: Inflammation Cheatsheet — Page 02
   quote: Use probiotics, L-glutamine, zinc carnosine
 - id: vitaone-elimination-diet-cheatsheet
-  location: Functional Medicine Approach to Using Low-FODMAP Clinically — Gut-Healing
-    Phase
+  location: Functional Medicine Approach to Using Low-FODMAP Clinically — Gut-Healing Phase
   quote: Add L-glutamine, zinc carnosine, digestive enzymes, bitters.
 - id: vitaone-gut-toolkit
   location: The 5R Framework for Gut Restoration — Repair
-  quote: Help the lining of the GI tract repair itself by supplying key nutrients
-    that can often be in short supply in a compromised gut, such as zinc, antioxidants
-    (e.g. vitamins A, C, and E), fish oil, and the amino acid glutamine.
+  quote: Help the lining of the GI tract repair itself by supplying key nutrients that can often be in short supply in a compromised
+    gut, such as zinc, antioxidants (e.g. vitamins A, C, and E), fish oil, and the amino acid glutamine.
 - id: vitaone-health-coaching-toolkit
   location: Why Emotional Healing Is Important in Chronic Diseases
-  quote: Combine gut healing (glutamine, probiotics) + vagal activation (gargling,
-    chanting, yoga).
+  quote: Combine gut healing (glutamine, probiotics) + vagal activation (gargling, chanting, yoga).
 - id: vitaone-health-coaching-cheatsheet
   location: Why Emotional Healing Is Important in Chronic Diseases
-  quote: Combine gut healing (glutamine, probiotics) + vagal activation (gargling,
-    chanting, yoga).
+  quote: Combine gut healing (glutamine, probiotics) + vagal activation (gargling, chanting, yoga).
 - id: coconote-fm-chronic-pain-fatigue
   location: Q&A / Constipation Protocol
-  quote: when it comes to the constipation protocol and we normally move to giving
-    L-glutamine, aloe vera and magnesium citrate all generally done in the same sequence
+  quote: when it comes to the constipation protocol and we normally move to giving L-glutamine, aloe vera and magnesium citrate
+    all generally done in the same sequence
 - id: coconote-fm-gut-dysbiosis-pathogens
   location: Repair Section
-  quote: glutamine is an amino acid and apart from glutamine, You can consider other
-    nutrients like zinc, vitamin A, vitamin B, and essential fatty acids including
-    omega-3.
+  quote: glutamine is an amino acid and apart from glutamine, You can consider other nutrients like zinc, vitamin A, vitamin
+    B, and essential fatty acids including omega-3.
 - id: coconote-fm-gut-skin-hormone-axis
   location: 5R Protocol — Repair
   quote: L-glutamine and zinc carnosine help here in repairing the stomach lining.
 - id: coconote-fm-intestinal-permeability
   location: 5R Protocol – Repair
-  quote: if you look at the gut lining, then the primary amino acid is glutamine and
-    that can help in rebuilding your gut epithelial cell.
+  quote: if you look at the gut lining, then the primary amino acid is glutamine and that can help in rebuilding your gut
+    epithelial cell.
 - id: coconote-fm-intestinal-permeability-anish
   location: 5R Protocol — Repair
-  quote: The primary amino acid is glutamine and that can help in rebuilding your
-    gut epithelial cell.
+  quote: The primary amino acid is glutamine and that can help in rebuilding your gut epithelial cell.
 - id: coconote-fm-sibo-sifo
   location: 5Rs Treatment Protocol – Repair
-  quote: When you go to complex cities, we also recommend zinc and the vitamin A and
-    the L-butamine, all of these things, repair is important.
+  quote: When you go to complex cities, we also recommend zinc and the vitamin A and the L-butamine, all of these things,
+    repair is important.
 - id: coconote-fm-liver-detox-part1
   location: Phase 2 Conjugation Pathways
-  quote: So chlorine, glycine, and glutamine, and glutamine and glutamine, we can
-    say, they are the primary amino acid they use for conjugation.
+  quote: So chlorine, glycine, and glutamine, and glutamine and glutamine, we can say, they are the primary amino acid they
+    use for conjugation.
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXbyLyYjP__/
-  quote: 'Gut healing requires nutrients: glutamine, zinc carnosine, omega-3, B-complex,
-    bitters'
+  quote: 'Gut healing requires nutrients: glutamine, zinc carnosine, omega-3, B-complex, bitters'
 version: 16
 status: active
 updated_at: '2026-05-05'
 updated_by: shivani
 pregnancy_safety: caution
 lactation_safety: likely_safe
-pregnancy_safety_note: Limited pregnancy data; food amounts (lentils, cabbage, beef)
-  are fine. Supplemental 5-10 g/day caution unless clinician-directed.
+pregnancy_safety_note: Limited pregnancy data; food amounts (lentils, cabbage, beef) are fine. Supplemental 5-10 g/day caution
+  unless clinician-directed.
 aliases:
 - glutamine

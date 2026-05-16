@@ -1,30 +1,27 @@
 slug: zonulin-regulates-tight-junctions
-statement: Zonulin is a protein secreted by intestinal mucosa that regulates tight
-  junction permeability; elevated serum zonulin correlates with increased intestinal
-  permeability.
+statement: Zonulin is a protein secreted by intestinal mucosa that regulates tight junction permeability; elevated serum zonulin
+  correlates with increased intestinal permeability.
 evidence_tier: plausible_emerging
-rationale: Zonulin was identified by Fasano and its role in tight junction regulation
-  is well-mechanistically established. Serum zonulin as a reliable clinical biomarker
-  has been questioned in recent literature due to assay specificity issues, hence
-  plausible_emerging rather than strong.
-coaching_translation: Zonulin is a molecule that controls how 'open' your gut barrier
-  is. High levels may signal that your gut is more permeable than it should be.
+rationale: Zonulin was identified by Fasano and its role in tight junction regulation is well-mechanistically established.
+  Serum zonulin as a reliable clinical biomarker has been questioned in recent literature due to assay specificity issues,
+  hence plausible_emerging rather than strong.
+coaching_translation: Zonulin is a molecule that controls how 'open' your gut barrier is. High levels may signal that your
+  gut is more permeable than it should be.
 out_of_scope_notes: Zonulin testing and interpretation should be guided by a clinician.
 caveats:
-- Serum zonulin assay specificity has been questioned in some peer-reviewed publications
-  — clinical utility as a standalone biomarker is debated.
+- Serum zonulin assay specificity has been questioned in some peer-reviewed publications — clinical utility as a standalone
+  biomarker is debated.
 - Test ordering and interpretation is outside coaching scope.
 linked_to_topics:
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 linked_to_mechanisms:
 - tight-junction-dysfunction
 linked_to_supplements: []
 sources:
 - id: coconote-fm-intestinal-permeability-anish
   location: Diagnostic Tools — Zonulin
-  quote: Zonulin… is discovered in 20 years back and that's the enzyme or peptide
-    they secreted by the intestinal mucosa and they regulate the tight junctions.
-    So if you have high zonulin that correlate with an intestinal permeability.
+  quote: Zonulin… is discovered in 20 years back and that's the enzyme or peptide they secreted by the intestinal mucosa and
+    they regulate the tight junctions. So if you have high zonulin that correlate with an intestinal permeability.
 version: 1
 status: active
 updated_at: '2026-05-05'

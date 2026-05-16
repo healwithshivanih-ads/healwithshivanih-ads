@@ -1,12 +1,9 @@
 slug: b12-protects-myelin-and-nerves
-statement: Vitamin B12 supports myelin sheath integrity and prevents neurological
-  damage.
+statement: Vitamin B12 supports myelin sheath integrity and prevents neurological damage.
 evidence_tier: plausible_emerging
-rationale: B12's role in myelin synthesis and subacute combined degeneration of the
-  cord is well-established clinically.
-coaching_translation: B12-rich foods (meat, fish, eggs, dairy) or supplementation
-  for vegans/elderly supports nerve health; neurological symptoms warrant clinician
-  assessment.
+rationale: B12's role in myelin synthesis and subacute combined degeneration of the cord is well-established clinically.
+coaching_translation: B12-rich foods (meat, fish, eggs, dairy) or supplementation for vegans/elderly supports nerve health;
+  neurological symptoms warrant clinician assessment.
 caveats:
 - Source is a practitioner cheatsheet without primary citations.
 - Source is practitioner cheatsheet.
@@ -19,14 +16,12 @@ linked_to_supplements:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Page 6
-  quote: Vitamin B12 is described as supporting myelin sheath integrity and preventing
-    neurological damage.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 6
-  quote: Vitamin B12 is described as supporting myelin sheath integrity and preventing
-    neurological damage.
+  quote: Vitamin B12 is described as supporting myelin sheath integrity and preventing neurological damage.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 6
+  quote: Vitamin B12 is described as supporting myelin sheath integrity and preventing neurological damage.
 version: 2
 status: active
 updated_at: '2026-05-06'

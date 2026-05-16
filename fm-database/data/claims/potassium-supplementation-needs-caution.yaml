@@ -1,15 +1,12 @@
 slug: potassium-supplementation-needs-caution
 statement: Potassium supplementation requires caution due to hyperkalemia risk.
 evidence_tier: confirm_with_clinician
-rationale: Hyperkalemia risk from potassium supplementation, particularly in renal
-  impairment or with ACE inhibitors, is well-documented.
-out_of_scope_notes: Potassium supplementation beyond dietary food sources requires
-  clinician oversight.
+rationale: Hyperkalemia risk from potassium supplementation, particularly in renal impairment or with ACE inhibitors, is well-documented.
+out_of_scope_notes: Potassium supplementation beyond dietary food sources requires clinician oversight.
 caveats:
 - Source is a practitioner cheatsheet without primary citations.
 - Risk is highest in kidney disease and with certain medications.
-- Never recommend potassium supplementation without clinician guidance, especially
-  in renal disease or with ACE inhibitors/diuretics.
+- Never recommend potassium supplementation without clinician guidance, especially in renal disease or with ACE inhibitors/diuretics.
 linked_to_topics:
 - medication-nutrient-interactions
 - cardiovascular-health
@@ -18,14 +15,12 @@ linked_to_supplements:
 coaching_translation: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Page 14
-  quote: Potassium supplementation is described as needing caution because of hyperkalemia
-    risk.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 14
-  quote: Potassium supplementation is described as needing caution because of hyperkalemia
-    risk.
+  quote: Potassium supplementation is described as needing caution because of hyperkalemia risk.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 14
+  quote: Potassium supplementation is described as needing caution because of hyperkalemia risk.
 version: 2
 status: active
 updated_at: '2026-05-06'

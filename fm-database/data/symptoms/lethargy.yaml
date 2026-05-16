@@ -147,7 +147,7 @@ sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXjjIqJjMSR/
   quote: Many patients come to you with fatigue, muscle cramps, mood swings, or neuropathy… and yet their labs look 'normal.'
-- id: Vitaone-fm-nutrition-cheatsheets
+- id: vitaone-fm-nutrition-cheatsheets
   location: Symptoms Discussed
   quote: Fatigue - Mentioned with deficiencies of thiamin, B5, B7, B12, iron, copper, iodine, selenium, potassium, sodium,
     vitamin C, and depression-mimicking nutrient patterns.

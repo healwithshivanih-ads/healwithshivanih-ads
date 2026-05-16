@@ -12,12 +12,10 @@ aliases:
 - hypertension
 category: cardiovascular
 severity: concerning
-description: Blood pressure elevation that, in individuals homozygous for MTHFR C677T,
-  may be partially driven by impaired nitric oxide bioavailability related to reduced
-  active folate. Riboflavin supplementation has been specifically studied in this
-  subgroup.
-when_to_refer: Always refer for blood pressure management. Do not recommend supplements
-  as a standalone treatment for hypertension.
+description: Blood pressure elevation that, in individuals homozygous for MTHFR C677T, may be partially driven by impaired
+  nitric oxide bioavailability related to reduced active folate. Riboflavin supplementation has been specifically studied
+  in this subgroup.
+when_to_refer: Always refer for blood pressure management. Do not recommend supplements as a standalone treatment for hypertension.
 linked_to_topics:
 - blood-pressure-management
 - visceral-adiposity
@@ -32,25 +30,17 @@ linked_to_mechanisms:
 sources:
 - id: coconote-fm-body-composition-bmi
   location: Blood Pressure Section
-  quote: With every 10 millimeter decrease in blood pressure, we get a 20% decrease
-    in stroke or heart disease.
+  quote: With every 10 millimeter decrease in blood pressure, we get a 20% decrease in stroke or heart disease.
 - id: vitaone-cardiometabolic-toolkit
   location: Intermittent Fasting — Fasting Mimicking Diet
-  quote: This 5-day, very low-calorie, low carbohydrate, structured food plan has
-    been shown in a limited number of studies to improve body composition and lower
-    blood pressure after three consecutive cycles (3 months).
+  quote: This 5-day, very low-calorie, low carbohydrate, structured food plan has been shown in a limited number of studies
+    to improve body composition and lower blood pressure after three consecutive cycles (3 months).
 - id: vitaone-health-coaching-toolkit
   location: Intermittent Fasting — summary table
   quote: 'Improves: Blood pressure'
 - id: vitaone-cvs-risk-assessment
   location: Progress (Slide 25)
-  quote: 'Insulin Resistance improved : HbA1c Reduced, Hypertension controlled, Lipid
-    Profile Improved'
-- id: Notebook LM
-  location: Riboflavin and Blood Pressure
-  quote: Research described in the source material suggests riboflavin may lower blood
-    pressure specifically in people who are homozygous for MTHFR C677T, also called
-    the 677TT genotype.
+  quote: 'Insulin Resistance improved : HbA1c Reduced, Hypertension controlled, Lipid Profile Improved'
 version: 2
 status: active
 updated_at: '2026-05-13'

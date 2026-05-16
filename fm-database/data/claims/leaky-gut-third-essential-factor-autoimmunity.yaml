@@ -1,22 +1,17 @@
 slug: leaky-gut-third-essential-factor-autoimmunity
-statement: 'Intestinal permeability (leaky gut) is the third and essential permissive
-  factor for autoimmune disease: without it, even individuals with genetic predisposition
-  and antigen exposure will not develop autoimmunity.'
+statement: 'Intestinal permeability (leaky gut) is the third and essential permissive factor for autoimmune disease: without
+  it, even individuals with genetic predisposition and antigen exposure will not develop autoimmunity.'
 evidence_tier: plausible_emerging
-rationale: Supported by Fasano's model and celiac disease data. The document argues
-  compellingly using the example of a patient who ate gluten for 30 years without
-  reaction until gut barrier integrity was lost.
-coaching_translation: A client can have the genes and eat the trigger food for decades
-  without developing autoimmunity — the critical variable is gut barrier health. This
-  is the most actionable factor.
+rationale: Supported by Fasano's model and celiac disease data. The document argues compellingly using the example of a patient
+  who ate gluten for 30 years without reaction until gut barrier integrity was lost.
+coaching_translation: A client can have the genes and eat the trigger food for decades without developing autoimmunity — the
+  critical variable is gut barrier health. This is the most actionable factor.
 caveats:
-- Source is expert consensus lecture. Strong evidence for celiac disease; extrapolation
-  to all autoimmune conditions is plausible but emerging.
-- Source type is expert_consensus — verify claims against primary literature before
-  making strong client-facing assertions.
+- Source is expert consensus lecture. Strong evidence for celiac disease; extrapolation to all autoimmune conditions is plausible
+  but emerging.
+- Source type is expert_consensus — verify claims against primary literature before making strong client-facing assertions.
 linked_to_topics:
 - autoimmunity-leaky-gut-triad
-- intestinal-permeability
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 linked_to_supplements: []

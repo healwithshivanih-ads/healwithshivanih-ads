@@ -12,8 +12,8 @@ aliases:
 - abdominal-pain-cramping
 category: gi
 severity: common
-description: Pain or cramping in the abdominal region related to gas production, intestinal
-  inflammation, and visceral hypersensitivity common in SIBO/SIFO.
+description: Pain or cramping in the abdominal region related to gas production, intestinal inflammation, and visceral hypersensitivity
+  common in SIBO/SIFO.
 linked_to_topics:
 - low-dose-naltrexone
 - low-fodmap-diet
@@ -24,7 +24,7 @@ linked_to_topics:
 - histamine-intolerance
 - pancreatic-insufficiency
 - sibo
-- leaky-gut-syndrome
+- autoimmunity-leaky-gut-triad
 linked_to_mechanisms:
 - colonic-fermentation
 - gut-motility-dysregulation
@@ -47,12 +47,10 @@ sources:
   quote: Abdominal pain / cramping
 - id: coconote-fm-pancreatic-insufficiency
   location: Signs and Symptoms
-  quote: Stomach pain, compounded conditions, which are also like Crohn's disease
-    because of inflammation, which is important.
+  quote: Stomach pain, compounded conditions, which are also like Crohn's disease because of inflammation, which is important.
 - id: coconote-fm-sibo-sifo
   location: Symptoms Section
-  quote: You may have diarrhea, constipation, bloating, abdominal pain, reactive to
-    multiple foods.
+  quote: You may have diarrhea, constipation, bloating, abdominal pain, reactive to multiple foods.
 - id: coconote-fm-food-allergies-sensitivities
   location: IgE Symptoms Section
   quote: In the gastrointestinal system, you can see pain, cramping, vomiting, diarrhea.

@@ -1,11 +1,10 @@
 slug: low-b12-can-mimic-depression
-statement: Low B12 mimics depression through fatigue, apathy, brain fog, low motivation,
-  sadness, and cognitive decline.
+statement: Low B12 mimics depression through fatigue, apathy, brain fog, low motivation, sadness, and cognitive decline.
 evidence_tier: plausible_emerging
-rationale: B12 deficiency presenting with neuropsychiatric symptoms including depression-like
-  features is well-described in clinical literature.
-coaching_translation: Low mood with fatigue, foggy thinking, and declining motivation
-  in vegans, older adults, or those on metformin warrants B12 assessment by a clinician.
+rationale: B12 deficiency presenting with neuropsychiatric symptoms including depression-like features is well-described in
+  clinical literature.
+coaching_translation: Low mood with fatigue, foggy thinking, and declining motivation in vegans, older adults, or those on
+  metformin warrants B12 assessment by a clinician.
 caveats:
 - Source is a practitioner cheatsheet without primary citations.
 - B12 deficiency symptoms overlap with many conditions; clinical testing is required.
@@ -19,14 +18,14 @@ linked_to_supplements:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Page 23
-  quote: Low B12 is described as mimicking depression through fatigue, apathy, brain
-    fog, low motivation, sadness, and cognitive decline.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 23
-  quote: Low B12 is described as mimicking depression through fatigue, apathy, brain
-    fog, low motivation, sadness, and cognitive decline.
+  quote: Low B12 is described as mimicking depression through fatigue, apathy, brain fog, low motivation, sadness, and cognitive
+    decline.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 23
+  quote: Low B12 is described as mimicking depression through fatigue, apathy, brain fog, low motivation, sadness, and cognitive
+    decline.
 version: 2
 status: active
 updated_at: '2026-05-06'

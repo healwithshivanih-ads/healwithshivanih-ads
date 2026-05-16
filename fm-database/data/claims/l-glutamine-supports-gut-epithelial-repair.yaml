@@ -1,19 +1,17 @@
 slug: l-glutamine-supports-gut-epithelial-repair
-statement: L-glutamine is the primary protein (amino acid) required for gut epithelial
-  tissue repair and should be included in the gut repair phase of dysbiosis protocols.
+statement: L-glutamine is the primary protein (amino acid) required for gut epithelial tissue repair and should be included
+  in the gut repair phase of dysbiosis protocols.
 evidence_tier: plausible_emerging
-rationale: Glutamine is a well-established fuel source for enterocytes (intestinal
-  epithelial cells) and has supportive evidence for gut barrier integrity in clinical
-  and animal studies. Its use in gut repair protocols is biologically well-grounded.
-coaching_translation: L-glutamine is a gut-healing amino acid that feeds the cells
-  lining your intestines. It's a key part of the repair phase in gut protocols.
+rationale: Glutamine is a well-established fuel source for enterocytes (intestinal epithelial cells) and has supportive evidence
+  for gut barrier integrity in clinical and animal studies. Its use in gut repair protocols is biologically well-grounded.
+coaching_translation: L-glutamine is a gut-healing amino acid that feeds the cells lining your intestines. It's a key part
+  of the repair phase in gut protocols.
 caveats:
 - Source is expert lecture, moderate quality.
 - Specific dosing not provided in the source — verify with clinician.
-- Some sources suggest caution in cancer patients due to glutamine as a potential
-  cancer cell fuel — refer to clinician.
+- Some sources suggest caution in cancer patients due to glutamine as a potential cancer cell fuel — refer to clinician.
 linked_to_topics:
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 - gut-dysbiosis
 linked_to_supplements:
 - l-glutamine
@@ -22,9 +20,8 @@ linked_to_mechanisms: []
 sources:
 - id: coconote-fm-gut-dysbiosis-pathogens
   location: Repair Section
-  quote: So, glutamine is an amino acid and apart from glutamine, You can consider
-    other nutrients like zinc, vitamin A, vitamin B, and essential fatty acids including
-    omega-3.
+  quote: So, glutamine is an amino acid and apart from glutamine, You can consider other nutrients like zinc, vitamin A, vitamin
+    B, and essential fatty acids including omega-3.
 version: 1
 status: active
 updated_at: '2026-05-05'

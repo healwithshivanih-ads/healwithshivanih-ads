@@ -1,31 +1,26 @@
 slug: low-siga-indicates-stress-or-malnutrition
-statement: Low secretory IgA (sIgA) in stool is associated with long-standing mental
-  or physical stress and protein or omega-3 deficiency, reflecting impaired mucosal
-  immune defense.
+statement: Low secretory IgA (sIgA) in stool is associated with long-standing mental or physical stress and protein or omega-3
+  deficiency, reflecting impaired mucosal immune defense.
 evidence_tier: plausible_emerging
-rationale: The association between stress and reduced sIgA is supported by psychoneuroimmunology
-  research. The role of protein and omega-3 as substrates for antibody production
-  is biologically logical. However, specific cut-off values and clinical protocols
-  are not established in this document.
-coaching_translation: If a client's stool test shows low sIgA, it can signal chronic
-  stress or nutritional deficiencies that are undermining the gut's immune defense
-  system.
+rationale: The association between stress and reduced sIgA is supported by psychoneuroimmunology research. The role of protein
+  and omega-3 as substrates for antibody production is biologically logical. However, specific cut-off values and clinical
+  protocols are not established in this document.
+coaching_translation: If a client's stool test shows low sIgA, it can signal chronic stress or nutritional deficiencies that
+  are undermining the gut's immune defense system.
 out_of_scope_notes: Secretory IgA testing and interpretation is clinician-scope.
 caveats:
 - Source is expert consensus; specific threshold values not cited from RCTs.
-- The omega-3 / protein → sIgA link is mechanistically plausible but not confirmed
-  by high-quality RCTs cited in this document.
+- The omega-3 / protein → sIgA link is mechanistically plausible but not confirmed by high-quality RCTs cited in this document.
 linked_to_topics:
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 linked_to_supplements:
 - omega-3-fatty-acids
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-intestinal-permeability
   location: Diagnostic Markers – Secretory IgA
-  quote: if you run a fecal calc-reacting test and IgA antibody is low, then it classically
-    says that patient having a long-standing mental or physical stress and a In the
-    majority of cases, I have seen the patient having malnutrition. They are either
+  quote: if you run a fecal calc-reacting test and IgA antibody is low, then it classically says that patient having a long-standing
+    mental or physical stress and a In the majority of cases, I have seen the patient having malnutrition. They are either
     deficient in omega-3 or protein.
 version: 1
 status: active

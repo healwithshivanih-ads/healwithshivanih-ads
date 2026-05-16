@@ -1,20 +1,17 @@
 slug: glutamine-repairs-gut-epithelium
-statement: L-glutamine is the primary amino acid for rebuilding gut epithelial cells
-  and is a key nutritional intervention in the Repair phase of leaky gut treatment.
+statement: L-glutamine is the primary amino acid for rebuilding gut epithelial cells and is a key nutritional intervention
+  in the Repair phase of leaky gut treatment.
 evidence_tier: plausible_emerging
-rationale: Glutamine is the primary fuel for rapidly dividing enterocytes and is widely
-  used in critical care and functional medicine for gut repair. Multiple studies support
-  its role in gut barrier maintenance, though large-scale RCTs in outpatient leaky
-  gut are limited.
-coaching_translation: Glutamine is an amino acid that acts like fuel for the cells
-  that line your gut, helping them repair and maintain a strong barrier.
+rationale: Glutamine is the primary fuel for rapidly dividing enterocytes and is widely used in critical care and functional
+  medicine for gut repair. Multiple studies support its role in gut barrier maintenance, though large-scale RCTs in outpatient
+  leaky gut are limited.
+coaching_translation: Glutamine is an amino acid that acts like fuel for the cells that line your gut, helping them repair
+  and maintain a strong barrier.
 caveats:
-- Source is expert consensus. Dose and duration not specified in the source document
-  — verify with clinician.
-- Contraindicated or requires caution in clients with certain cancers or severe renal
-  impairment.
+- Source is expert consensus. Dose and duration not specified in the source document — verify with clinician.
+- Contraindicated or requires caution in clients with certain cancers or severe renal impairment.
 linked_to_topics:
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 - 5r-gut-healing-protocol
 linked_to_supplements:
 - l-glutamine
@@ -23,8 +20,8 @@ linked_to_mechanisms: []
 sources:
 - id: coconote-fm-intestinal-permeability
   location: 5R Protocol – Repair
-  quote: if you look at the gut lining, then the primary amino acid is glutamine and
-    that can help in rebuilding your gut epithelial cell.
+  quote: if you look at the gut lining, then the primary amino acid is glutamine and that can help in rebuilding your gut
+    epithelial cell.
 version: 1
 status: active
 updated_at: '2026-05-05'

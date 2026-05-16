@@ -1,16 +1,14 @@
 slug: gut-epithelium-regenerates-every-seven-days
-statement: The intestinal epithelium fully regenerates approximately every seven days,
-  making adequate nutritional status essential for ongoing gut barrier repair.
+statement: The intestinal epithelium fully regenerates approximately every seven days, making adequate nutritional status
+  essential for ongoing gut barrier repair.
 evidence_tier: strong
-rationale: Intestinal epithelial turnover of ~5–7 days is well-established in cell
-  biology literature. This supports the clinical rationale for nutritional interventions
-  targeting gut repair.
-coaching_translation: Your gut lining replaces itself every week. This means that
-  with the right nutrition and lifestyle, you have a real opportunity to improve your
-  gut barrier relatively quickly.
+rationale: Intestinal epithelial turnover of ~5–7 days is well-established in cell biology literature. This supports the clinical
+  rationale for nutritional interventions targeting gut repair.
+coaching_translation: Your gut lining replaces itself every week. This means that with the right nutrition and lifestyle,
+  you have a real opportunity to improve your gut barrier relatively quickly.
 caveats: []
 linked_to_topics:
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 - 5r-gut-healing-protocol
 linked_to_supplements:
 - l-glutamine
@@ -21,9 +19,8 @@ linked_to_mechanisms: []
 sources:
 - id: coconote-fm-intestinal-permeability-anish
   location: Nutritional Drivers of Intestinal Permeability
-  quote: If you look at this intestinal wall or this epithelium, every seven days
-    your epithelium become new and regenerate. So if you want to create a new epithelium
-    or regenerate the epithelium, then you require basic nutrition.
+  quote: If you look at this intestinal wall or this epithelium, every seven days your epithelium become new and regenerate.
+    So if you want to create a new epithelium or regenerate the epithelium, then you require basic nutrition.
 version: 1
 status: active
 updated_at: '2026-05-05'

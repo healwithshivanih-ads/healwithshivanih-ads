@@ -1,24 +1,19 @@
 slug: low-stomach-acid-increases-antigenic-load
-statement: Low stomach acid (hypochlorhydria), including that induced by long-term
-  antacid or proton pump inhibitor (PPI) use, impairs protein digestion, increases
-  undigested peptide load in the intestine, and promotes intestinal permeability and
-  immune reactivity.
+statement: Low stomach acid (hypochlorhydria), including that induced by long-term antacid or proton pump inhibitor (PPI)
+  use, impairs protein digestion, increases undigested peptide load in the intestine, and promotes intestinal permeability
+  and immune reactivity.
 evidence_tier: plausible_emerging
-rationale: The mechanistic chain from PPI use → incomplete protein digestion → increased
-  peptide load → immune reactivity is biologically plausible and discussed in functional
-  medicine. Some clinical evidence supports increased allergy risk with long-term
-  PPI use.
-coaching_translation: Long-term use of antacids or acid-blocking medications can reduce
-  your body's ability to break down proteins properly, which may irritate your gut
-  lining and immune system over time.
-out_of_scope_notes: Advising clients to stop PPIs or antacids is outside coaching
-  scope — refer to prescribing clinician.
+rationale: The mechanistic chain from PPI use → incomplete protein digestion → increased peptide load → immune reactivity
+  is biologically plausible and discussed in functional medicine. Some clinical evidence supports increased allergy risk with
+  long-term PPI use.
+coaching_translation: Long-term use of antacids or acid-blocking medications can reduce your body's ability to break down
+  proteins properly, which may irritate your gut lining and immune system over time.
+out_of_scope_notes: Advising clients to stop PPIs or antacids is outside coaching scope — refer to prescribing clinician.
 caveats:
 - Advising medication changes (stopping PPIs) is outside coaching scope.
-- Evidence for this specific mechanism chain is mechanistic; direct RCT evidence is
-  limited.
+- Evidence for this specific mechanism chain is mechanistic; direct RCT evidence is limited.
 linked_to_topics:
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 linked_to_mechanisms:
 - tight-junction-dysfunction
 - galt-immune-activation
@@ -26,10 +21,9 @@ linked_to_supplements: []
 sources:
 - id: coconote-fm-intestinal-permeability-anish
   location: Triggers and Mediators
-  quote: If somebody is taking an antacids or proton pump inhibitor for longer time,
-    what will happen? They cannot break down this protein and then this protein become
-    allergic and if they have a leaky gut or intestinal problem it is increased, then
-    these peptides is absorbed in the intestinal wall.
+  quote: If somebody is taking an antacids or proton pump inhibitor for longer time, what will happen? They cannot break down
+    this protein and then this protein become allergic and if they have a leaky gut or intestinal problem it is increased,
+    then these peptides is absorbed in the intestinal wall.
 version: 1
 status: active
 updated_at: '2026-05-05'

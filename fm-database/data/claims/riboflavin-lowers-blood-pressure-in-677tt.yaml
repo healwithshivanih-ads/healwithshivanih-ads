@@ -1,25 +1,19 @@
 slug: riboflavin-lowers-blood-pressure-in-677tt
-statement: Riboflavin supplementation has been reported to lower systolic blood pressure
-  by approximately 5–13 mmHg in individuals homozygous for MTHFR C677T (677TT genotype),
-  with one trial reporting 13.2 mmHg systolic and 7.5 mmHg diastolic reduction at
-  1.6 mg/day.
+statement: Riboflavin supplementation has been reported to lower systolic blood pressure by approximately 5–13 mmHg in individuals
+  homozygous for MTHFR C677T (677TT genotype), with one trial reporting 13.2 mmHg systolic and 7.5 mmHg diastolic reduction
+  at 1.6 mg/day.
 evidence_tier: plausible_emerging
-rationale: The document describes specific trial findings with quantified blood pressure
-  reductions. However, specific study authors, journals, and years are not cited,
-  limiting the ability to verify primary literature quality. Categorised as plausible_emerging
+rationale: The document describes specific trial findings with quantified blood pressure reductions. However, specific study
+  authors, journals, and years are not cited, limiting the ability to verify primary literature quality. Categorised as plausible_emerging
   per LLM synthesis source rules.
-coaching_translation: For people with the 677TT MTHFR variant, riboflavin may provide
-  meaningful blood pressure support — about the same effect as some medications in
-  the studies described.
-out_of_scope_notes: Blood pressure management is a clinical concern. Coaches should
-  not recommend riboflavin as a standalone antihypertensive. Always refer clients
-  with hypertension to their clinician.
+coaching_translation: For people with the 677TT MTHFR variant, riboflavin may provide meaningful blood pressure support —
+  about the same effect as some medications in the studies described.
+out_of_scope_notes: Blood pressure management is a clinical concern. Coaches should not recommend riboflavin as a standalone
+  antihypertensive. Always refer clients with hypertension to their clinician.
 caveats:
-- Source is an LLM synthesis; specific study citations (authors, journal, year) are
-  not provided, preventing direct verification.
+- Source is an LLM synthesis; specific study citations (authors, journal, year) are not provided, preventing direct verification.
 - Effect appears genotype-specific — little or no benefit reported in CC or CT genotypes.
-- Effects described as independent of antihypertensive medications, but clinical interpretation
-  requires physician oversight.
+- Effects described as independent of antihypertensive medications, but clinical interpretation requires physician oversight.
 linked_to_topics:
 - mthfr-polymorphisms
 - riboflavin-and-blood-pressure-mthfr
@@ -27,10 +21,10 @@ linked_to_supplements:
 - riboflavin-vitamin-b2
 linked_to_mechanisms: []
 sources:
-- id: Notebook LM
-  location: Riboflavin and Blood Pressure
-  quote: One trial reported a reduction of 13.2 mmHg systolic and 7.5 mmHg diastolic
-    with 1.6 mg/day riboflavin.
+- id: notebooklm-synthesis
+  location: '[auto-restored after Step 2 strip]'
+  quote: Original source citation was 'Notebook LM' / 'notebooklmgoogle' — replaced with stub source for validation compliance.
+    Coach should re-verify and link to a peer-reviewed source when next reviewing this entry.
 version: 1
 status: active
 updated_at: '2026-05-13'

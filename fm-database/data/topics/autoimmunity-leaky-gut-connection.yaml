@@ -3,10 +3,9 @@ display_name: Leaky Gut as Root Driver of Autoimmunity
 aliases:
 - gut-autoimmune axis
 - intestinal permeability and autoimmune disease
-summary: 'Dr. Fasano''s model posits three co-factors for autoimmunity: genetic predisposition,
-  environmental antigen exposure, and increased intestinal permeability. Leaky gut
-  allows foreign antigens to enter the bloodstream where molecular mimicry triggers
-  cross-reactive antibodies that attack host tissues.'
+summary: 'Dr. Fasano''s model posits three co-factors for autoimmunity: genetic predisposition, environmental antigen exposure,
+  and increased intestinal permeability. Leaky gut allows foreign antigens to enter the bloodstream where molecular mimicry
+  triggers cross-reactive antibodies that attack host tissues.'
 common_symptoms:
 - joint-pain
 - thyroid-dysfunction
@@ -17,29 +16,25 @@ red_flags:
 - confirmed autoimmune diagnosis
 - rapidly progressive joint destruction
 related_topics:
-- intestinal-permeability
-- celiac-disease
+- autoimmunity-leaky-gut-triad
+- autoimmune
 - molecular-mimicry
 key_mechanisms:
 - molecular-mimicry
 - tight-junction-dysfunction
 - lps-translocation
-coaching_scope_notes: Coaches can educate clients on the three-factor autoimmune model
-  and support gut healing lifestyle changes. Autoimmune diagnosis and treatment must
-  be managed by a clinician.
-clinician_scope_notes: 'Three-factor model: genetic predisposition (e.g., HLA-DQ2/DQ8)
-  + antigen exposure + leaky gut = autoimmunity. Fasano''s work on zonulin is peer-reviewed
-  and well-established for celiac; extrapolation to other autoimmune conditions is
-  plausible but less uniformly validated.'
+coaching_scope_notes: Coaches can educate clients on the three-factor autoimmune model and support gut healing lifestyle changes.
+  Autoimmune diagnosis and treatment must be managed by a clinician.
+clinician_scope_notes: 'Three-factor model: genetic predisposition (e.g., HLA-DQ2/DQ8) + antigen exposure + leaky gut = autoimmunity.
+  Fasano''s work on zonulin is peer-reviewed and well-established for celiac; extrapolation to other autoimmune conditions
+  is plausible but less uniformly validated.'
 evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-intestinal-permeability-anish
   location: Pathophysiology of Autoimmunity
-  quote: Dr. Fasano had mentioned, it's clearly that there are three factors that
-    are very important for autoimmune conditions and autoimmunity. The one factor
-    that is called genetic predisposition… And here is a classical example… leaky
-    small intestine or leaky gut, that is the third important step or third important
-    mechanism or third important factor.
+  quote: Dr. Fasano had mentioned, it's clearly that there are three factors that are very important for autoimmune conditions
+    and autoimmunity. The one factor that is called genetic predisposition… And here is a classical example… leaky small intestine
+    or leaky gut, that is the third important step or third important mechanism or third important factor.
 version: 1
 status: active
 updated_at: '2026-05-05'

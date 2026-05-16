@@ -31,18 +31,13 @@ linked_to_claims:
 - serum-b12-may-not-reflect-cellular-utilization
 - methylcobalamin-preferred-over-cyanocobalamin-in-mthfr-protocols
 - active-folate-forms-preferred-in-mthfr
-notes_for_coach: An alternative to methylcobalamin; preferred for clients who are
-  sensitive to methyl donors, as hydroxocobalamin is a non-methyl B12 form that the
-  body can convert as needed. Avoids the methyl-donor loading effect of methylcobalamin.
-notes_for_client: Hydroxocobalamin is a form of B12 that's gentle on the system —
-  it's a good option if you find you're sensitive to methyl donors or react to methylcobalamin.
+notes_for_coach: An alternative to methylcobalamin; preferred for clients who are sensitive to methyl donors, as hydroxocobalamin
+  is a non-methyl B12 form that the body can convert as needed. Avoids the methyl-donor loading effect of methylcobalamin.
+notes_for_client: Hydroxocobalamin is a form of B12 that's gentle on the system — it's a good option if you find you're sensitive
+  to methyl donors or react to methylcobalamin.
 evidence_tier: fm_specific_thin
 linked_to_mechanisms: []
 sources:
-- id: Notebook LM
-  location: Supplement Forms Mentioned
-  quote: Methylcobalamin or hydroxocobalamin instead of cyanocobalamin in some individualized
-    protocols.
 - id: coach-shivani
   location: Coach Observation
   quote: consider methylcobalamin or hydroxocobalamin rather than cyanocobalamin

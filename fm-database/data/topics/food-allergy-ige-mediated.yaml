@@ -4,10 +4,9 @@ aliases:
 - type 1 hypersensitivity
 - immediate food allergy
 - IgE food allergy
-summary: IgE-mediated food allergy is a type 1 hypersensitivity reaction characterized
-  by immediate onset (minutes to 2 hours) following allergen exposure. Allergen-IgE
-  complexes bind to mast cells, triggering degranulation and histamine release. Common
-  triggers include dairy, egg, peanut, wheat, soy, fish, shellfish, and nuts.
+summary: IgE-mediated food allergy is a type 1 hypersensitivity reaction characterized by immediate onset (minutes to 2 hours)
+  following allergen exposure. Allergen-IgE complexes bind to mast cells, triggering degranulation and histamine release.
+  Common triggers include dairy, egg, peanut, wheat, soy, fish, shellfish, and nuts.
 common_symptoms:
 - hives
 - urticaria
@@ -19,23 +18,20 @@ common_symptoms:
 - conjunctivitis
 - anaphylaxis
 red_flags:
-- Anaphylaxis with throat edema and loss of consciousness — immediate emergency referral
-  required
+- Anaphylaxis with throat edema and loss of consciousness — immediate emergency referral required
 - Severe respiratory compromise (stridor, wheezing, difficulty breathing)
 related_topics:
 - food-sensitivity-igg-iga-mediated
-- intestinal-permeability-leaky-gut
+- autoimmunity-leaky-gut-triad
 - food-intolerance
 key_mechanisms:
 - mast-cell-degranulation-histamine-release
 - intestinal-permeability
 - ige-antigen-sensitization
-coaching_scope_notes: Coaches can support allergen avoidance, gut healing protocols,
-  and elimination diet planning. Do NOT advise on immunotherapy, anaphylaxis management,
-  or allergy testing interpretation — refer to allergist.
-clinician_scope_notes: Clinician should oversee IgE blood testing, skin prick testing,
-  and food challenge under supervision. Sublingual immunotherapy and anaphylaxis management
-  are clinician domain.
+coaching_scope_notes: Coaches can support allergen avoidance, gut healing protocols, and elimination diet planning. Do NOT
+  advise on immunotherapy, anaphylaxis management, or allergy testing interpretation — refer to allergist.
+clinician_scope_notes: Clinician should oversee IgE blood testing, skin prick testing, and food challenge under supervision.
+  Sublingual immunotherapy and anaphylaxis management are clinician domain.
 evidence_tier: strong
 sources:
 - id: coconote-fm-food-allergies-sensitivities

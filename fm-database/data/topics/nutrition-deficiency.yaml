@@ -54,7 +54,7 @@ clinician_scope_notes: Multiple entries include therapeutic doses, lab ranges, p
   — all require clinician oversight.
 evidence_tier: plausible_emerging
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
+- id: vitaone-fm-nutrition-cheatsheets
   location: Topics Covered
   quote: Vitamin, mineral, omega-3, and nutrient insufficiency patterns with symptoms, food sources, supplement forms, and
     dosing pearls.

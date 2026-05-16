@@ -11,9 +11,8 @@ aliases:
 - intestinal immune defence
 - mucosa-associated lymphoid tissue
 category: gut
-summary: Gut health, probiotics, zinc, glutamine, and fermented foods support nutrient
-  absorption and barrier integrity. Dysbiosis, antibiotics, PPIs, and autoimmune patterns
-  disrupt absorption and contribute to systemic inflammation and nutrient deficiency.
+summary: Gut health, probiotics, zinc, glutamine, and fermented foods support nutrient absorption and barrier integrity. Dysbiosis,
+  antibiotics, PPIs, and autoimmune patterns disrupt absorption and contribute to systemic inflammation and nutrient deficiency.
 upstream_drivers:
 - gut dysbiosis
 - malabsorption
@@ -51,19 +50,18 @@ linked_to_topics:
 - nutrition-deficiency
 evidence_tier: plausible_emerging
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
+- id: vitaone-fm-nutrition-cheatsheets
   location: Key Mechanisms Explained – gut-barrier-and-nutrient-absorption
-  quote: The document links gut health, probiotics, zinc, glutamine, fermented foods,
-    and digestive function to better nutrient absorption and barrier integrity.
+  quote: The document links gut health, probiotics, zinc, glutamine, fermented foods, and digestive function to better nutrient
+    absorption and barrier integrity.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Key Mechanisms Explained — gut-barrier-and-nutrient-absorption
-  quote: The document links gut health, probiotics, zinc, glutamine, fermented foods,
-    and digestive function to better nutrient absorption and barrier integrity.
+  quote: The document links gut health, probiotics, zinc, glutamine, fermented foods, and digestive function to better nutrient
+    absorption and barrier integrity.
 - id: barbara-oneil-gi-tract
   location: Microbiome Section
-  quote: These microorganisms play a protective role. They are actually an integral
-    part of our immune system. They're protecting our blood against any harmful pathogens
-    that might be in the gut.
+  quote: These microorganisms play a protective role. They are actually an integral part of our immune system. They're protecting
+    our blood against any harmful pathogens that might be in the gut.
 version: 2
 status: active
 updated_at: '2026-05-06'

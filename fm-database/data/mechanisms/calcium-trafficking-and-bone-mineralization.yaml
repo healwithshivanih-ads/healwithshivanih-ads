@@ -8,10 +8,9 @@ aliases:
 - calcium homeostasis
 - vitamin K2 calcium routing
 category: structural
-summary: Vitamin K2 directs calcium into bone and away from arteries, kidneys, and
-  cartilage. Calcium, phosphorus, vitamin D, magnesium, boron, and K2 act synergistically
-  as a bone team. Excess phosphorus from processed foods, vitamin K deficiency, and
-  imbalanced supplementation disrupt this system.
+summary: Vitamin K2 directs calcium into bone and away from arteries, kidneys, and cartilage. Calcium, phosphorus, vitamin
+  D, magnesium, boron, and K2 act synergistically as a bone team. Excess phosphorus from processed foods, vitamin K deficiency,
+  and imbalanced supplementation disrupt this system.
 upstream_drivers:
 - vitamin K deficiency
 - vitamin D deficiency
@@ -47,16 +46,14 @@ linked_to_topics:
 - bone-health
 evidence_tier: plausible_emerging
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
+- id: vitaone-fm-nutrition-cheatsheets
   location: Key Mechanisms Explained – calcium-trafficking-and-bone-mineralization
-  quote: The document describes vitamin K as directing calcium into bone and away
-    from arteries, kidneys, and cartilage while calcium, phosphorus, vitamin D, magnesium,
-    boron, and K2 act as a bone team.
+  quote: The document describes vitamin K as directing calcium into bone and away from arteries, kidneys, and cartilage while
+    calcium, phosphorus, vitamin D, magnesium, boron, and K2 act as a bone team.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Key Mechanisms Explained — calcium-trafficking-and-bone-mineralization
-  quote: The document describes vitamin K as directing calcium into bone and away
-    from arteries, kidneys, and cartilage while calcium, phosphorus, vitamin D, magnesium,
-    boron, and K2 act as a bone team.
+  quote: The document describes vitamin K as directing calcium into bone and away from arteries, kidneys, and cartilage while
+    calcium, phosphorus, vitamin D, magnesium, boron, and K2 act as a bone team.
 version: 2
 status: active
 updated_at: '2026-05-06'

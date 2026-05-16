@@ -133,7 +133,7 @@ sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXg8Y9NjIwF/
   quote: Sleep issues are treated with melatonin pills instead of repairing serotonin, gut, and circadian rhythm.
-- id: Vitaone-fm-nutrition-cheatsheets
+- id: vitaone-fm-nutrition-cheatsheets
   location: Symptoms Discussed
   quote: Insomnia and restless sleep - Linked to B5, B6, vitamin D, magnesium, sodium/potassium imbalance, and depression-mimicking
     magnesium patterns.

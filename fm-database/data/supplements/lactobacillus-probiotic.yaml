@@ -20,25 +20,23 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - gut-dysbiosis
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 linked_to_claims:
 - lactobacillus-bifidobacterium-probiotics-have-transient-gut-effect
 - probiotics-contraindicated-in-bacterial-overgrowth
-notes_for_coach: Lactobacillus probiotics have a transient effect and do not permanently
-  colonize the gut lining. Live cultures can be used as fermentation starters to amplify
-  bacteria in food (dairy or non-dairy). Do not recommend in SIBO or bacterial overgrowth
-  states. Best prescribed alongside prebiotic fiber.
-notes_for_client: Lactobacillus probiotics are beneficial but temporary — they support
-  your gut while you're taking them but don't permanently change your gut lining.
-  You can boost their effect by using a live culture capsule to ferment milk or vegetables
-  at home.
+notes_for_coach: Lactobacillus probiotics have a transient effect and do not permanently colonize the gut lining. Live cultures
+  can be used as fermentation starters to amplify bacteria in food (dairy or non-dairy). Do not recommend in SIBO or bacterial
+  overgrowth states. Best prescribed alongside prebiotic fiber.
+notes_for_client: Lactobacillus probiotics are beneficial but temporary — they support your gut while you're taking them but
+  don't permanently change your gut lining. You can boost their effect by using a live culture capsule to ferment milk or
+  vegetables at home.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-gut-dysbiosis-pathogens
   location: Probiotics Section
-  quote: you can find out the good lactobacillus, you can find out the bifidobacterium,
-    that has to be given and then you can consider long-term this spore-based probiotic
+  quote: you can find out the good lactobacillus, you can find out the bifidobacterium, that has to be given and then you
+    can consider long-term this spore-based probiotic
 version: 1
 status: active
 updated_at: '2026-05-05'

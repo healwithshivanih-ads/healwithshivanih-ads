@@ -1,14 +1,11 @@
 slug: b12-needs-rise-with-age-or-pernicious-anemia
-statement: Older adults often require 40 mcg/day of B12, while pernicious anemia requires
-  approximately 1000 mcg/day.
+statement: Older adults often require 40 mcg/day of B12, while pernicious anemia requires approximately 1000 mcg/day.
 evidence_tier: confirm_with_clinician
-rationale: Increased B12 absorption inefficiency with age and intrinsic factor deficiency
-  in pernicious anemia are clinically recognized; dosing is outside coaching scope.
-out_of_scope_notes: B12 dosing for pernicious anemia and elderly populations requires
-  clinician oversight.
+rationale: Increased B12 absorption inefficiency with age and intrinsic factor deficiency in pernicious anemia are clinically
+  recognized; dosing is outside coaching scope.
+out_of_scope_notes: B12 dosing for pernicious anemia and elderly populations requires clinician oversight.
 caveats:
-- Source is a practitioner cheatsheet; specific dose figures should be verified with
-  a clinician.
+- Source is a practitioner cheatsheet; specific dose figures should be verified with a clinician.
 - Source is practitioner cheatsheet without specific primary citations for doses.
 - Doses should be confirmed with clinician.
 linked_to_topics:
@@ -18,14 +15,14 @@ linked_to_supplements:
 coaching_translation: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Page 6
-  quote: Older adults are described as often requiring 40 mcg/day of B12, while pernicious
-    anemia is described as requiring about 1000 mcg/day.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 6
-  quote: Older adults are described as often requiring 40 mcg/day of B12, while pernicious
-    anemia is described as requiring about 1000 mcg/day.
+  quote: Older adults are described as often requiring 40 mcg/day of B12, while pernicious anemia is described as requiring
+    about 1000 mcg/day.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 6
+  quote: Older adults are described as often requiring 40 mcg/day of B12, while pernicious anemia is described as requiring
+    about 1000 mcg/day.
 version: 2
 status: active
 updated_at: '2026-05-06'

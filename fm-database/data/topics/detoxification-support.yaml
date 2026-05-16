@@ -1,44 +1,58 @@
 slug: detoxification-support
 display_name: Detoxification Support
 aliases:
-  - biotransformation support
-  - toxin-load-support
-  - exposome support
-summary: |
-  Detoxification support refers to optimizing the body's ability to
+- biotransformation support
+- toxin-load-support
+- exposome support
+summary: 'Detoxification support refers to optimizing the body''s ability to
+
   metabolize, conjugate, and eliminate environmental toxicants and
+
   endogenous waste products through Phase 1 and Phase 2 pathways,
+
   gut function, hydration, sweating, urination, and bowel regularity.
+
   Functional medicine emphasizes reducing toxin exposure while
+
   supporting nutrient-dependent elimination systems.
+
+  '
 common_symptoms:
-  - fatigue
-  - brain-fog
-  - constipation
-  - chemical-sensitivity
+- fatigue
+- brain-fog
+- constipation
+- chemical-sensitivity
 red_flags: []
 related_topics:
-  - gut-health
-  - mitochondrial-health
-  - endocrine-disruption
+- gastrointestinal-tract-overview
+- mitochondrial-health
+- endocrine-disruption
 key_mechanisms:
-  - impaired-phase-2-conjugation
-  - toxin-load-accumulation
-coaching_scope_notes: |
-  Coaches can support food quality, hydration, bowel regularity,
+- impaired-phase-2-conjugation
+- toxin-load-accumulation
+coaching_scope_notes: 'Coaches can support food quality, hydration, bowel regularity,
+
   sweating, sleep hygiene, and reduction of environmental exposures
+
   such as plastics, fragrances, and ultra-processed foods. Avoid
+
   claims of curing disease or heavy metal chelation without clinician
+
   oversight.
-clinician_scope_notes: |
-  Persistent chemical sensitivity, neurological symptoms, severe
+
+  '
+clinician_scope_notes: 'Persistent chemical sensitivity, neurological symptoms, severe
+
   fatigue, suspected toxic exposure, liver dysfunction, or abnormal
+
   laboratory markers warrant clinician evaluation.
+
+  '
 evidence_tier: plausible_emerging
 sources:
-  - id: fmca-detoxification-basics-minich
-    location: 'Pages 8-16'
-    quote: 'The total toxin load results from our exposures minus what we can actually get rid of.'
+- id: fmca-detoxification-basics-minich
+  location: Pages 8-16
+  quote: The total toxin load results from our exposures minus what we can actually get rid of.
 version: 1
 status: active
 updated_at: '2026-05-16'

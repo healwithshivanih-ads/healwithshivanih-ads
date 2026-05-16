@@ -1,14 +1,12 @@
 slug: vitamin-e-dose-above-200-iu-may-increase-stroke-risk
-statement: High-dose vitamin E above 200 IU may increase stroke risk if not balanced
-  with vitamin K.
+statement: High-dose vitamin E above 200 IU may increase stroke risk if not balanced with vitamin K.
 evidence_tier: confirm_with_clinician
-rationale: High-dose vitamin E increasing hemorrhagic stroke risk is supported by
-  meta-analyses; the vitamin K balancing claim is FM-specific.
+rationale: High-dose vitamin E increasing hemorrhagic stroke risk is supported by meta-analyses; the vitamin K balancing claim
+  is FM-specific.
 out_of_scope_notes: High-dose vitamin E is outside coaching scope.
 caveats:
 - Source is a practitioner cheatsheet without citation to specific trial.
-- Risk appears to apply particularly to synthetic single-isomer (DL-alpha-tocopherol)
-  at high doses.
+- Risk appears to apply particularly to synthetic single-isomer (DL-alpha-tocopherol) at high doses.
 - Confirm with clinician before recommending vitamin E supplementation above 200 IU.
 - Especially relevant in clients on anticoagulants.
 linked_to_topics:
@@ -21,14 +19,14 @@ linked_to_supplements:
 coaching_translation: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Page 8
-  quote: High-dose vitamin E above 200 IU is described as potentially increasing stroke
-    risk if not balanced with vitamin K.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 8
-  quote: High-dose vitamin E above 200 IU is described as potentially increasing stroke
-    risk if not balanced with vitamin K.
+  quote: High-dose vitamin E above 200 IU is described as potentially increasing stroke risk if not balanced with vitamin
+    K.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 8
+  quote: High-dose vitamin E above 200 IU is described as potentially increasing stroke risk if not balanced with vitamin
+    K.
 version: 2
 status: active
 updated_at: '2026-05-06'

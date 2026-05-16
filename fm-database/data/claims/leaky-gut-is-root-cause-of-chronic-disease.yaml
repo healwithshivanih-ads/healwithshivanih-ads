@@ -1,21 +1,18 @@
 slug: leaky-gut-is-root-cause-of-chronic-disease
-statement: Increased intestinal permeability (leaky gut) is a root cause mechanism
-  underlying the majority of chronic systemic diseases.
+statement: Increased intestinal permeability (leaky gut) is a root cause mechanism underlying the majority of chronic systemic
+  diseases.
 evidence_tier: plausible_emerging
-rationale: Supported by Fasano's mechanistic work and >20,000 published articles linking
-  intestinal permeability to chronic conditions. Consensus is strong for celiac and
-  some autoimmune diseases; broader claims for 'majority of chronic disease' are plausible
-  but overreaching for current peer-reviewed consensus.
-coaching_translation: Many chronic health problems may have their roots in a compromised
-  gut lining. Supporting gut barrier health is a foundational strategy in functional
-  medicine.
+rationale: Supported by Fasano's mechanistic work and >20,000 published articles linking intestinal permeability to chronic
+  conditions. Consensus is strong for celiac and some autoimmune diseases; broader claims for 'majority of chronic disease'
+  are plausible but overreaching for current peer-reviewed consensus.
+coaching_translation: Many chronic health problems may have their roots in a compromised gut lining. Supporting gut barrier
+  health is a foundational strategy in functional medicine.
 caveats:
-- The claim that leaky gut is the root cause of 'majority' of chronic diseases is
-  an expert opinion and not uniformly established across all disease categories.
-- Source is expert lecture (moderate quality); individual disease-leaky gut associations
-  vary in evidence strength.
+- The claim that leaky gut is the root cause of 'majority' of chronic diseases is an expert opinion and not uniformly established
+  across all disease categories.
+- Source is expert lecture (moderate quality); individual disease-leaky gut associations vary in evidence strength.
 linked_to_topics:
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 - autoimmunity-leaky-gut-connection
 out_of_scope_notes: ''
 linked_to_mechanisms: []
@@ -23,8 +20,8 @@ linked_to_supplements: []
 sources:
 - id: coconote-fm-intestinal-permeability-anish
   location: Systemic Implications
-  quote: Majority of systemic disease, if you look deep down as a root cause, then
-    you can find out they having a leaky gut or their intestinal permeability is increased.
+  quote: Majority of systemic disease, if you look deep down as a root cause, then you can find out they having a leaky gut
+    or their intestinal permeability is increased.
 version: 1
 status: active
 updated_at: '2026-05-05'

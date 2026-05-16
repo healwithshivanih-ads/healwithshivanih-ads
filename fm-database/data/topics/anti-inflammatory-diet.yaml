@@ -7,9 +7,8 @@ aliases:
 - functional medicine diet for inflammation
 - inflammation control diet
 - low-inflammation eating
-summary: A food-as-medicine approach using specific anti-inflammatory ingredients
-  — including turmeric, ginger, pomegranate, dark leafy greens, and omega-rich foods
-  — to reduce systemic inflammation as a root driver of cardiometabolic disease.
+summary: A food-as-medicine approach using specific anti-inflammatory ingredients — including turmeric, ginger, pomegranate,
+  dark leafy greens, and omega-rich foods — to reduce systemic inflammation as a root driver of cardiometabolic disease.
 common_symptoms:
 - brain-fog
 - joint-pain
@@ -26,7 +25,7 @@ red_flags:
 - Unexplained weight loss with inflammation — refer to clinician
 related_topics:
 - chronic-inflammation
-- gut-health
+- gastrointestinal-tract-overview
 - metabolic-syndrome
 - immune-support
 - immune-support-covid-19
@@ -40,22 +39,20 @@ key_mechanisms:
 - gut-dysbiosis
 - insulin-resistance
 - chronic-systemic-inflammation
-coaching_scope_notes: Coaches can recommend the Inflammation Control Smoothie and
-  recipes featuring turmeric, ginger, dark berries, and pomegranate as practical implementations.
-clinician_scope_notes: When underlying autoimmune, IBD, or metabolic disease is suspected,
-  dietary interventions should complement clinician-supervised treatment.
+coaching_scope_notes: Coaches can recommend the Inflammation Control Smoothie and recipes featuring turmeric, ginger, dark
+  berries, and pomegranate as practical implementations.
+clinician_scope_notes: When underlying autoimmune, IBD, or metabolic disease is suspected, dietary interventions should complement
+  clinician-supervised treatment.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-inflammation-toolkit
   location: Anti Inflammatory Diet — What is an Anti-Inflammatory Diet?
-  quote: An anti-inflammatory diet is a nutritional plan that focuses on reducing
-    chronic inflammation in the body through the consumption of specific foods and
-    the avoidance of others.
+  quote: An anti-inflammatory diet is a nutritional plan that focuses on reducing chronic inflammation in the body through
+    the consumption of specific foods and the avoidance of others.
 - id: vitaone-health-coaching-toolkit
   location: Anti Inflammatory Diet — What is an Anti-Inflammatory Diet?
-  quote: An anti-inflammatory diet is a nutritional plan that focuses on reducing
-    chronic inflammation in the body through the consumption of specific foods and
-    the avoidance of others.
+  quote: An anti-inflammatory diet is a nutritional plan that focuses on reducing chronic inflammation in the body through
+    the consumption of specific foods and the avoidance of others.
 version: 3
 status: active
 updated_at: '2026-05-04'

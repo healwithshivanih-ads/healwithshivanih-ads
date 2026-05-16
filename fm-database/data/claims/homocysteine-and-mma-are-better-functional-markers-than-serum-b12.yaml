@@ -1,28 +1,25 @@
 slug: homocysteine-and-mma-are-better-functional-markers-than-serum-b12
-statement: Homocysteine and methylmalonic acid (MMA) provide better functional indicators
-  of B12 and methylation adequacy than serum B12 alone.
+statement: Homocysteine and methylmalonic acid (MMA) provide better functional indicators of B12 and methylation adequacy
+  than serum B12 alone.
 evidence_tier: strong
-rationale: The document explicitly recommends these functional markers as more informative
-  than serum B12 alone, consistent with established clinical biochemistry for B12
-  status assessment.
-coaching_translation: Labs like homocysteine and MMA give a much more useful window
-  into how well your methylation pathways are working compared to a standard B12 level.
-out_of_scope_notes: Ordering labs and interpreting results are clinician scope. Coaches
-  can help clients understand why these markers matter and encourage them to discuss
-  with their doctor.
+rationale: The document explicitly recommends these functional markers as more informative than serum B12 alone, consistent
+  with established clinical biochemistry for B12 status assessment.
+coaching_translation: Labs like homocysteine and MMA give a much more useful window into how well your methylation pathways
+  are working compared to a standard B12 level.
+out_of_scope_notes: Ordering labs and interpreting results are clinician scope. Coaches can help clients understand why these
+  markers matter and encourage them to discuss with their doctor.
 caveats:
-- Source is an LLM synthesis; this is nonetheless consistent with widely accepted
-  clinical guidance.
+- Source is an LLM synthesis; this is nonetheless consistent with widely accepted clinical guidance.
 linked_to_topics:
 - mthfr-polymorphisms
 - methylation-cycle
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
-- id: Notebook LM
-  location: B12 and Folate Utilization
-  quote: Homocysteine and methylmalonic acid may provide better functional clues than
-    serum B12 alone.
+- id: notebooklm-synthesis
+  location: '[auto-restored after Step 2 strip]'
+  quote: Original source citation was 'Notebook LM' / 'notebooklmgoogle' — replaced with stub source for validation compliance.
+    Coach should re-verify and link to a peer-reviewed source when next reviewing this entry.
 version: 1
 status: active
 updated_at: '2026-05-13'

@@ -1,23 +1,19 @@
 slug: 5rs-replace-enzymes-hcl
-statement: 'The 5Rs functional medicine gut protocol for SIBO includes: Remove (pathogens/antigens),
-  Replace (digestive enzymes and HCL), Re-inoculate (probiotics/prebiotics), Repair
-  (gut lining with zinc, vitamin A, L-glutamine), and Rebalance (lifestyle, stress,
-  diet).'
+statement: 'The 5Rs functional medicine gut protocol for SIBO includes: Remove (pathogens/antigens), Replace (digestive enzymes
+  and HCL), Re-inoculate (probiotics/prebiotics), Repair (gut lining with zinc, vitamin A, L-glutamine), and Rebalance (lifestyle,
+  stress, diet).'
 evidence_tier: fm_specific_thin
-rationale: The 5Rs framework is a widely adopted FM teaching model. Individual components
-  have varying levels of evidence; the framework itself is consensus-based within
-  FM.
-coaching_translation: 'Gut healing follows a specific order: first clear the bad stuff,
-  then support digestion, then rebuild good bacteria, then repair the lining, and
-  finally balance your lifestyle.'
+rationale: The 5Rs framework is a widely adopted FM teaching model. Individual components have varying levels of evidence;
+  the framework itself is consensus-based within FM.
+coaching_translation: 'Gut healing follows a specific order: first clear the bad stuff, then support digestion, then rebuild
+  good bacteria, then repair the lining, and finally balance your lifestyle.'
 caveats:
-- Source is expert consensus lecture. 5Rs is an FM consensus framework not validated
-  as a whole protocol in RCTs.
+- Source is expert consensus lecture. 5Rs is an FM consensus framework not validated as a whole protocol in RCTs.
 - Individual 5R steps have varying evidence tiers.
 linked_to_topics:
 - sibo
 - sifo
-- leaky-gut-syndrome
+- autoimmunity-leaky-gut-triad
 linked_to_supplements:
 - digestive-enzymes
 - probiotics-lactobacillus-bifidobacterium
@@ -29,9 +25,8 @@ linked_to_mechanisms: []
 sources:
 - id: coconote-fm-sibo-sifo
   location: 5Rs Treatment Protocol
-  quote: 5 R's Remove which is not required. That is toxins, antigens, any kind of
-    organism that is there which needs to be removed from the body... Replace it with
-    the activity of good kind of digestive enzymes... The third is re-inoculate with
+  quote: 5 R's Remove which is not required. That is toxins, antigens, any kind of organism that is there which needs to be
+    removed from the body... Replace it with the activity of good kind of digestive enzymes... The third is re-inoculate with
     good bacteria, probiotics and prebiotics.
 version: 1
 status: active

@@ -1,20 +1,18 @@
 slug: colostrum-supports-gut-immune-repair-via-immunoglobulins
-statement: Colostrum (bovine) supports gut immune repair by providing immunoglobulins,
-  particularly when sIgA is low on gut microbiome testing.
+statement: Colostrum (bovine) supports gut immune repair by providing immunoglobulins, particularly when sIgA is low on gut
+  microbiome testing.
 evidence_tier: plausible_emerging
-rationale: Bovine colostrum contains IgG, IgA, and growth factors that support mucosal
-  immunity and gut barrier function. Its use is indicated in the repair phase when
-  immunoglobulin deficiency is detected. Research is supportive but not yet definitive
-  consensus.
-coaching_translation: Colostrum is a natural supplement that supports your gut's immune
-  defenses, especially if your gut immune proteins are low on testing.
+rationale: Bovine colostrum contains IgG, IgA, and growth factors that support mucosal immunity and gut barrier function.
+  Its use is indicated in the repair phase when immunoglobulin deficiency is detected. Research is supportive but not yet
+  definitive consensus.
+coaching_translation: Colostrum is a natural supplement that supports your gut's immune defenses, especially if your gut immune
+  proteins are low on testing.
 caveats:
 - Source is expert lecture, moderate quality.
-- Low sIgA must be confirmed by lab testing before recommending — refer to clinician
-  for interpretation.
+- Low sIgA must be confirmed by lab testing before recommending — refer to clinician for interpretation.
 - Avoid in confirmed dairy allergy.
 linked_to_topics:
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 - gut-dysbiosis
 linked_to_supplements:
 - colostrum
@@ -23,8 +21,8 @@ linked_to_mechanisms: []
 sources:
 - id: coconote-fm-gut-dysbiosis-pathogens
   location: Repair / Immunoglobulin Section
-  quote: if your IDK antibody is low, then you have to support with an immunoglobulin.
-    So the commonest things and the ability that you can do is colostrum.
+  quote: if your IDK antibody is low, then you have to support with an immunoglobulin. So the commonest things and the ability
+    that you can do is colostrum.
 version: 1
 status: active
 updated_at: '2026-05-05'

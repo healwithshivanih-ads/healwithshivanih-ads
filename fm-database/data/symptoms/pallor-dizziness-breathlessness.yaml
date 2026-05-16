@@ -7,21 +7,19 @@ aliases:
 - shortness of breath on exertion
 category: cardiovascular
 severity: concerning
-description: Pallor, dizziness, and breathlessness linked to iron deficiency and anemia.
-  May also reflect copper deficiency causing iron-unresponsive anemia.
-when_to_refer: Refer for ferritin, iron studies, and CRP assessment. Refer immediately
-  if breathlessness is severe or associated with cardiac symptoms. Iron overload (hemochromatosis)
-  requires clinical management.
+description: Pallor, dizziness, and breathlessness linked to iron deficiency and anemia. May also reflect copper deficiency
+  causing iron-unresponsive anemia.
+when_to_refer: Refer for ferritin, iron studies, and CRP assessment. Refer immediately if breathlessness is severe or associated
+  with cardiac symptoms. Iron overload (hemochromatosis) requires clinical management.
 linked_to_topics:
 - nutrition-deficiency
 - hair-loss
 linked_to_mechanisms:
 - nutrient-dependent-energy-metabolism
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
+- id: vitaone-fm-nutrition-cheatsheets
   location: Symptoms Discussed
-  quote: Pallor, dizziness, breathlessness, restless legs, and brittle nails - Linked
-    to iron deficiency.
+  quote: Pallor, dizziness, breathlessness, restless legs, and brittle nails - Linked to iron deficiency.
 version: 1
 status: active
 updated_at: '2026-05-06'

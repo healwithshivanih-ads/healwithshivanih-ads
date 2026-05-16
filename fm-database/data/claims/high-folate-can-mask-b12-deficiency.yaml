@@ -1,13 +1,11 @@
 slug: high-folate-can-mask-b12-deficiency
 statement: High folate intake can mask B12 deficiency and worsen neurological damage.
 evidence_tier: confirm_with_clinician
-rationale: High folate correcting megaloblastic anemia while allowing B12-related
-  neurological damage to progress is a recognized clinical concern.
-out_of_scope_notes: B12 and folate interplay in anemia and neurological health requires
-  clinician assessment.
+rationale: High folate correcting megaloblastic anemia while allowing B12-related neurological damage to progress is a recognized
+  clinical concern.
+out_of_scope_notes: B12 and folate interplay in anemia and neurological health requires clinician assessment.
 caveats:
-- Always assess B12 status before or alongside folate supplementation, especially
-  in vegans and elderly.
+- Always assess B12 status before or alongside folate supplementation, especially in vegans and elderly.
 - Always check B12 status before high-dose folate supplementation.
 linked_to_topics:
 - methylation
@@ -18,14 +16,12 @@ linked_to_supplements:
 coaching_translation: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Page 6
-  quote: High folate intake is described as potentially masking B12 deficiency and
-    worsening neurological damage.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 6
-  quote: High folate intake is described as potentially masking B12 deficiency and
-    worsening neurological damage.
+  quote: High folate intake is described as potentially masking B12 deficiency and worsening neurological damage.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 6
+  quote: High folate intake is described as potentially masking B12 deficiency and worsening neurological damage.
 version: 2
 status: active
 updated_at: '2026-05-06'

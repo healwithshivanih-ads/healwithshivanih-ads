@@ -1,16 +1,14 @@
 slug: reuteri-avoid-high-dose-single-ferment-in-pregnancy
-statement: High-dose single-strain Lactobacillus reuteri fermentation should be avoided
-  during pregnancy due to unknown risk of oxytocin-stimulated uterine contractions.
+statement: High-dose single-strain Lactobacillus reuteri fermentation should be avoided during pregnancy due to unknown risk
+  of oxytocin-stimulated uterine contractions.
 evidence_tier: confirm_with_clinician
-rationale: Dr. Davis explicitly cautions that the oxytocin-stimulating effect of high-count
-  L. reuteri yogurt has unknown safety during pregnancy. If used during pregnancy,
-  he recommends mixed-microbe fermentation to dilute reuteri counts, similar to diversifying
-  a garden to reduce tomato yield.
-coaching_translation: If pregnant, do not make or consume single-strain L. reuteri
-  yogurt at high counts. Use a mixed-microbe version if your doctor approves.
-out_of_scope_notes: Pregnancy supplement decisions must be made with OB/GYN or midwife.
-  Coaches should not recommend any reuteri supplementation to pregnant clients without
-  clinician sign-off.
+rationale: Dr. Davis explicitly cautions that the oxytocin-stimulating effect of high-count L. reuteri yogurt has unknown
+  safety during pregnancy. If used during pregnancy, he recommends mixed-microbe fermentation to dilute reuteri counts, similar
+  to diversifying a garden to reduce tomato yield.
+coaching_translation: If pregnant, do not make or consume single-strain L. reuteri yogurt at high counts. Use a mixed-microbe
+  version if your doctor approves.
+out_of_scope_notes: Pregnancy supplement decisions must be made with OB/GYN or midwife. Coaches should not recommend any reuteri
+  supplementation to pregnant clients without clinician sign-off.
 caveats:
 - Explicitly flagged as unknown safety by Dr. Davis.
 - Source is expert_consensus interview.
@@ -18,14 +16,13 @@ caveats:
 linked_to_topics:
 - vaginal-microbiome
 linked_to_supplements:
-- lactobacillus-reuteri-fermented-yogurt
+- lactobacillus-reuteri
 linked_to_mechanisms: []
 sources:
 - id: ask-expert-womens-health-vaginal-microbiome
   location: Reuteri safety in pregnancy discussion
-  quote: What we don't know is when we get those huge numbers, is that safe during
-    pregnancy? That we don't know, because one of the effects of reuteri... release
-    oxytocin.
+  quote: What we don't know is when we get those huge numbers, is that safe during pregnancy? That we don't know, because
+    one of the effects of reuteri... release oxytocin.
 version: 1
 status: active
 updated_at: '2026-05-05'

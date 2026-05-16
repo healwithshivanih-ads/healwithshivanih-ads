@@ -1,12 +1,10 @@
 slug: vitamin-k2-directs-calcium-to-bone
 statement: Vitamin K2 directs calcium into bone and away from arteries.
 evidence_tier: plausible_emerging
-rationale: K2 activating matrix Gla protein to prevent vascular calcification and
-  osteocalcin to promote bone mineralization is supported by observational studies
-  and some RCTs.
-coaching_translation: Include K2-containing foods (natto, aged cheeses, fermented
-  foods) and consider MK-7 supplementation as part of a bone and cardiovascular health
-  approach.
+rationale: K2 activating matrix Gla protein to prevent vascular calcification and osteocalcin to promote bone mineralization
+  is supported by observational studies and some RCTs.
+coaching_translation: Include K2-containing foods (natto, aged cheeses, fermented foods) and consider MK-7 supplementation
+  as part of a bone and cardiovascular health approach.
 caveats:
 - Source is a practitioner cheatsheet without primary citations.
 - Evidence is more robust for bone than for cardiovascular outcomes.
@@ -23,7 +21,7 @@ linked_to_supplements:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
+- id: vitaone-fm-nutrition-cheatsheets
   location: Page 13
   quote: Vitamin K2 is described as directing calcium into bone and away from arteries.
 - id: vitaone-fm-nutrition-cheatsheets

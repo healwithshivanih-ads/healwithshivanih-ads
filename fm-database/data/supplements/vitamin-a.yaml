@@ -14,11 +14,10 @@ linked_to_topics:
 - gut-dysfunction
 - 5r-gut-restoration
 - immune-support-covid-19
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 - gut-dysbiosis
 - pancreatic-insufficiency
 - sibo
-- leaky-gut-syndrome
 linked_to_claims:
 - vitamin-a-rxr-permission-slip-for-thyroid-and-vitamin-d-signaling
 - vitamin-a-zinc-exercise-improve-thyroid-cell-sensitivity
@@ -30,11 +29,9 @@ linked_to_claims:
 - zinc-vitamin-a-b-support-gut-tissue-repair
 - nutritional-deficiencies-zinc-copper-vitamins-impair-enzyme-production
 - 5rs-repair-includes-l-glutamine
-notes_for_coach: Vitamin A (retinol) is critical for mucosal integrity and secretory
-  IgA production. Therapeutic doses should be confirmed with clinician due to toxicity
-  risk at high doses.
-notes_for_client: Vitamin A helps maintain the protective lining of your gut and supports
-  local immune defenses.
+notes_for_coach: Vitamin A (retinol) is critical for mucosal integrity and secretory IgA production. Therapeutic doses should
+  be confirmed with clinician due to toxicity risk at high doses.
+notes_for_client: Vitamin A helps maintain the protective lining of your gut and supports local immune defenses.
 typical_dose_range:
   capsule:
     min: 5000
@@ -53,25 +50,20 @@ linked_to_mechanisms: []
 sources:
 - id: vitaone-evidence-tiers
   location: TOPIC 1 — Thyroid / Claims & Tiers / Claim 7
-  quote: Note that high-dose retinol can be toxic — food-based retinol (liver, egg
-    yolks, dairy) or beta-carotene from brightly colored vegetables is the safe route
-    for coaching.
+  quote: Note that high-dose retinol can be toxic — food-based retinol (liver, egg yolks, dairy) or beta-carotene from brightly
+    colored vegetables is the safe route for coaching.
 - id: vitaone-supplementation-dosage
   location: Page 2 - Supplement Table
-  quote: Vitamin A (Retinyl Palmitate) - Vision, immune support, skin - 2500–5000
-    IU/day - With fat-containing meals
+  quote: Vitamin A (Retinyl Palmitate) - Vision, immune support, skin - 2500–5000 IU/day - With fat-containing meals
 - id: vitaone-thyroid-toolkit
   location: Factors that Affect Thyroid Function
-  quote: 'Factors that improve cellular sensitivity to thyroid hormones: Vitamin A,
-    Exercise, Zinc.'
+  quote: 'Factors that improve cellular sensitivity to thyroid hormones: Vitamin A, Exercise, Zinc.'
 - id: vitaone-inflammation-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
-  quote: Vitamin A is anti-inflammatory, enhances immune function, and supports the
-    lining of the respiratory tract.
+  quote: Vitamin A is anti-inflammatory, enhances immune function, and supports the lining of the respiratory tract.
 - id: vitaone-health-coaching-toolkit
   location: Factors that Affect Thyroid Function
-  quote: 'Factors that improve cellular sensitivity to thyroid hormones: Vitamin A,
-    Exercise, Zinc'
+  quote: 'Factors that improve cellular sensitivity to thyroid hormones: Vitamin A, Exercise, Zinc'
 - id: coconote-fm-gut-dysbiosis-pathogens
   location: Repair Section
   quote: Micronutrients means vitamins and minerals. Vitamin A and vitamin B we require.
@@ -80,8 +72,8 @@ sources:
   quote: Nutritional deficiency like vitamin A, B, E, zinc, copper.
 - id: coconote-fm-sibo-sifo
   location: 5Rs Treatment Protocol – Repair
-  quote: When you go to complex cities, we also recommend zinc and the vitamin A and
-    the L-butamine, all of these things, repair is important.
+  quote: When you go to complex cities, we also recommend zinc and the vitamin A and the L-butamine, all of these things,
+    repair is important.
 version: 10
 status: active
 updated_at: '2026-05-05'

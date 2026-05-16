@@ -1,11 +1,10 @@
 slug: vitamin-k-controls-calcium-trafficking
-statement: Vitamin K directs calcium into bone and keeps it out of arteries, kidneys,
-  and cartilage.
+statement: Vitamin K directs calcium into bone and keeps it out of arteries, kidneys, and cartilage.
 evidence_tier: plausible_emerging
-rationale: Vitamin K2 activation of matrix Gla protein and osteocalcin for calcium
-  trafficking is credibly supported by mechanistic and observational research.
-coaching_translation: Encourage K2-containing foods (fermented foods, aged cheese,
-  natto) alongside calcium and vitamin D for bone and cardiovascular health.
+rationale: Vitamin K2 activation of matrix Gla protein and osteocalcin for calcium trafficking is credibly supported by mechanistic
+  and observational research.
+coaching_translation: Encourage K2-containing foods (fermented foods, aged cheese, natto) alongside calcium and vitamin D
+  for bone and cardiovascular health.
 caveats:
 - Source is a practitioner cheatsheet without primary citations.
 - K2 MK-7 cardiovascular evidence is emerging but not yet consensus.
@@ -21,14 +20,12 @@ linked_to_supplements:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Page 9
-  quote: Vitamin K is described as putting calcium into bone and keeping it out of
-    arteries, kidneys, and cartilage.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 9
-  quote: Vitamin K is described as putting calcium into bone and keeping it out of
-    arteries, kidneys, and cartilage.
+  quote: Vitamin K is described as putting calcium into bone and keeping it out of arteries, kidneys, and cartilage.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 9
+  quote: Vitamin K is described as putting calcium into bone and keeping it out of arteries, kidneys, and cartilage.
 version: 2
 status: active
 updated_at: '2026-05-06'

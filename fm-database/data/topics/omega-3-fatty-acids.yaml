@@ -7,10 +7,9 @@ aliases:
 - fish oil
 - omega-3s
 - essential fatty acids
-summary: Omega-3 fatty acids (ALA, EPA, DHA) are essential polyunsaturated fats with
-  well-established anti-inflammatory, cardiovascular, neurological, and immune-modulating
-  properties. Modern diets are severely deficient in omega-3s relative to omega-6s,
-  driving chronic inflammation and chronic disease.
+summary: Omega-3 fatty acids (ALA, EPA, DHA) are essential polyunsaturated fats with well-established anti-inflammatory, cardiovascular,
+  neurological, and immune-modulating properties. Modern diets are severely deficient in omega-3s relative to omega-6s, driving
+  chronic inflammation and chronic disease.
 common_symptoms:
 - chronic-inflammation
 - fatigue
@@ -23,28 +22,25 @@ red_flags:
 related_topics:
 - omega-6-fatty-acids
 - chronic-inflammation
-- cardiovascular-disease
+- cardiometabolic-disease
 - insulin-resistance
 - neuroinflammation
 key_mechanisms:
 - omega6-omega3-competitive-inhibition
 - arachidonic-acid-cascade
 - resolvin-spm-production
-coaching_scope_notes: Coaches can educate on dietary sources of omega-3s (fatty fish,
-  flaxseeds, chia seeds, algae), the importance of reducing omega-6 intake, and the
-  general rationale for supplementation. Specific dosing for clinical conditions and
-  monitoring of blood thinners must be deferred to a clinician.
-clinician_scope_notes: Monitor PTT/INR in patients on anticoagulants. Consider omega-3
-  index testing (<4% = high risk, 4-8% = intermediate, >8% = low risk). Assess lipid
-  peroxides in selected patients. Supplementation in immunosuppressed individuals
+coaching_scope_notes: Coaches can educate on dietary sources of omega-3s (fatty fish, flaxseeds, chia seeds, algae), the importance
+  of reducing omega-6 intake, and the general rationale for supplementation. Specific dosing for clinical conditions and monitoring
+  of blood thinners must be deferred to a clinician.
+clinician_scope_notes: Monitor PTT/INR in patients on anticoagulants. Consider omega-3 index testing (<4% = high risk, 4-8%
+  = intermediate, >8% = low risk). Assess lipid peroxides in selected patients. Supplementation in immunosuppressed individuals
   requires caution.
 evidence_tier: strong
 sources:
 - id: coconote-fm-omega-3-fatty-acids
   location: Omega-3 Metabolic Pathway Overview
-  quote: EPA and DHA, are also abundantly found in cold water fish and algae, and
-    are well known for their anti-inflammatory properties and roles in supporting
-    brain, heart, and immune health.
+  quote: EPA and DHA, are also abundantly found in cold water fish and algae, and are well known for their anti-inflammatory
+    properties and roles in supporting brain, heart, and immune health.
 version: 1
 status: active
 updated_at: '2026-05-05'

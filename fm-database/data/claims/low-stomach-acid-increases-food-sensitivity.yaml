@@ -1,32 +1,27 @@
 slug: low-stomach-acid-increases-food-sensitivity
-statement: Low stomach acid (hypochlorhydria), including from long-term PPI use, increases
-  food sensitivity by impairing protein digestion and raising intestinal antigen load.
+statement: Low stomach acid (hypochlorhydria), including from long-term PPI use, increases food sensitivity by impairing protein
+  digestion and raising intestinal antigen load.
 evidence_tier: plausible_emerging
-rationale: 'The mechanism is biologically plausible: gastric acid denatures proteins;
-  impaired denaturation means larger peptides enter the small intestine, increasing
-  antigen load. Association between PPI use and food sensitization has some supportive
+rationale: 'The mechanism is biologically plausible: gastric acid denatures proteins; impaired denaturation means larger peptides
+  enter the small intestine, increasing antigen load. Association between PPI use and food sensitization has some supportive
   literature, though direct causality in clinical RCTs is limited.'
-coaching_translation: Clients on long-term antacids or PPIs may be unknowingly increasing
-  their food sensitivity risk. Support gut health and encourage them to discuss with
-  their doctor whether they still need acid-blocking medication.
-out_of_scope_notes: Coaches should NOT advise clients to stop PPI or acid-blocking
-  medications — this is a clinician decision.
+coaching_translation: Clients on long-term antacids or PPIs may be unknowingly increasing their food sensitivity risk. Support
+  gut health and encourage them to discuss with their doctor whether they still need acid-blocking medication.
+out_of_scope_notes: Coaches should NOT advise clients to stop PPI or acid-blocking medications — this is a clinician decision.
 caveats:
 - Source is expert lecture, moderate quality.
-- Verify PPI–food sensitization research with peer-reviewed sources before citing
-  to clients.
+- Verify PPI–food sensitization research with peer-reviewed sources before citing to clients.
 - PPI discontinuation guidance is strictly clinician scope.
 linked_to_topics:
 - food-sensitivity-igg-iga-mediated
-- intestinal-permeability-leaky-gut
+- autoimmunity-leaky-gut-triad
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
 - id: coconote-fm-food-allergies-sensitivities
   location: Low Stomach Acid Section
-  quote: when you block the stomach acid or when your stomach have a low stomach acid,
-    we actually increase food sensitivity... we call hypoacids or low stomach acid
-    is a risk for increasing food sensitivity
+  quote: when you block the stomach acid or when your stomach have a low stomach acid, we actually increase food sensitivity...
+    we call hypoacids or low stomach acid is a risk for increasing food sensitivity
 version: 1
 status: active
 updated_at: '2026-05-05'

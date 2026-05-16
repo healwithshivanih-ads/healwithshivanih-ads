@@ -1,10 +1,9 @@
 slug: copper-deficiency-can-cause-iron-unresponsive-anemia
 statement: Copper deficiency causes anemia that does not respond to iron supplementation.
 evidence_tier: confirm_with_clinician
-rationale: Copper-dependent ceruloplasmin is required for iron mobilization; copper
-  deficiency anemia unresponsive to iron is clinically documented.
-out_of_scope_notes: Anemia unresponsive to iron requires clinician workup including
-  copper status assessment.
+rationale: Copper-dependent ceruloplasmin is required for iron mobilization; copper deficiency anemia unresponsive to iron
+  is clinically documented.
+out_of_scope_notes: Anemia unresponsive to iron requires clinician workup including copper status assessment.
 caveats:
 - Source is a practitioner cheatsheet without primary citations.
 - Do not assume anemia is iron-deficiency without clinician assessment.
@@ -16,14 +15,12 @@ linked_to_supplements:
 coaching_translation: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Page 11
-  quote: Copper deficiency is described as causing anemia that does not respond to
-    iron.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 11
-  quote: Copper deficiency is described as causing anemia that does not respond to
-    iron.
+  quote: Copper deficiency is described as causing anemia that does not respond to iron.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 11
+  quote: Copper deficiency is described as causing anemia that does not respond to iron.
 version: 2
 status: active
 updated_at: '2026-05-06'

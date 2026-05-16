@@ -1,10 +1,9 @@
 slug: vitamin-a-toxicity-is-a-caution
 statement: Vitamin A toxicity causes hair loss, nausea, and bone pain.
 evidence_tier: confirm_with_clinician
-rationale: Vitamin A toxicity from excessive retinol intake causing hypervitaminosis
-  A with hair loss, hepatotoxicity, and bone pain is well-documented.
-out_of_scope_notes: Vitamin A supplementation above dietary levels requires clinician
-  oversight.
+rationale: Vitamin A toxicity from excessive retinol intake causing hypervitaminosis A with hair loss, hepatotoxicity, and
+  bone pain is well-documented.
+out_of_scope_notes: Vitamin A supplementation above dietary levels requires clinician oversight.
 caveats:
 - Toxicity applies to preformed retinol, not carotenoids.
 - Risk increases significantly with doses above 10,000 IU/day long term.
@@ -18,7 +17,7 @@ linked_to_supplements:
 coaching_translation: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
+- id: vitaone-fm-nutrition-cheatsheets
   location: Page 7
   quote: Vitamin A toxicity is described as causing hair loss, nausea, and bone pain.
 - id: vitaone-fm-nutrition-cheatsheets

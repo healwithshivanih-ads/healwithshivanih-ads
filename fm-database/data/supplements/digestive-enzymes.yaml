@@ -19,8 +19,8 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: required
-notes_for_coach: Prioritize enzyme support early in gut healing protocols before introducing
-  complex herbals or probiotics. Fecal elastase-1 on GI map indicates deficiency.
+notes_for_coach: Prioritize enzyme support early in gut healing protocols before introducing complex herbals or probiotics.
+  Fecal elastase-1 on GI map indicates deficiency.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - liver-detoxification
@@ -31,9 +31,8 @@ linked_to_topics:
 - hypochlorhydria
 - gut-dysbiosis
 - digestive-enzyme-insufficiency
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 - 5r-gut-healing-protocol
-- leaky-gut-syndrome
 linked_to_mechanisms: []
 linked_to_claims:
 - digestive-enzymes-bile-flow-gallstone
@@ -44,44 +43,40 @@ linked_to_claims:
 - digestive-enzymes-support-macronutrient-breakdown
 - fix-digestive-enzymes-first-in-sibo
 - 5rs-replace-enzymes-hcl
-notes_for_client: Digestive enzymes help your body break down food more completely,
-  reducing the fermentable substrate available to overgrown bacteria.
+notes_for_client: Digestive enzymes help your body break down food more completely, reducing the fermentable substrate available
+  to overgrown bacteria.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 2 - Supplement Table
-  quote: Digestive Enzymes - Digestive support - 1–2 caps before meals - Before main
-    meals
+  quote: Digestive Enzymes - Digestive support - 1–2 caps before meals - Before main meals
 - id: vitaone-liver-detox-cheatsheet
   location: Liver Disease Cheatsheet — Gallstone-Related Liver Dysfunction
   quote: Taurine, Phosphatidylcholine, Digestive enzymes
 - id: vitaone-elimination-diet-cheatsheet
-  location: Functional Medicine Approach to Using Low-FODMAP Clinically — Gut-Healing
-    Phase
+  location: Functional Medicine Approach to Using Low-FODMAP Clinically — Gut-Healing Phase
   quote: Add L-glutamine, zinc carnosine, digestive enzymes, bitters.
 - id: vitaone-gut-toolkit
   location: The 5R Framework for Gut Restoration — Replace
-  quote: 'Replace digestive secretions: add back things like digestive enzymes, hydrochloric
-    acid, and bile acids that are required for proper digestion.'
+  quote: 'Replace digestive secretions: add back things like digestive enzymes, hydrochloric acid, and bile acids that are
+    required for proper digestion.'
 - id: coconote-fm-gut-dysbiosis-pathogens
   location: Replace Section
-  quote: when you give any kind of enzymes give your blood spectrum enzymes they should
-    be contained in the lipolysis for your fat and protein to consider them
+  quote: when you give any kind of enzymes give your blood spectrum enzymes they should be contained in the lipolysis for
+    your fat and protein to consider them
 - id: coconote-fm-hypochlorhydria
   location: Treatment / Supports for Gastric Acid
   quote: So the digestive enzymes, stress management can be used.
 - id: coconote-fm-intestinal-permeability
   location: 5R Protocol – Replace
-  quote: if patient having any kind of pancreatic enzyme insufficiency, then we have
-    to replace that pancreatic enzyme.
+  quote: if patient having any kind of pancreatic enzyme insufficiency, then we have to replace that pancreatic enzyme.
 - id: coconote-fm-sibo-sifo
   location: GI Map / Treatment Protocol
-  quote: First fix that. The rest we will see later. The probiotics and the prebiotics.
-    First we have to fix on the digestive enzyme dysfunction.
+  quote: First fix that. The rest we will see later. The probiotics and the prebiotics. First we have to fix on the digestive
+    enzyme dysfunction.
 version: 8
 status: active
 updated_at: '2026-05-05'
 updated_by: shivani
 pregnancy_safety: likely_safe
 lactation_safety: likely_safe
-pregnancy_safety_note: Generally well-tolerated. Avoid plant-based proteases in first
-  trimester out of caution.
+pregnancy_safety_note: Generally well-tolerated. Avoid plant-based proteases in first trimester out of caution.

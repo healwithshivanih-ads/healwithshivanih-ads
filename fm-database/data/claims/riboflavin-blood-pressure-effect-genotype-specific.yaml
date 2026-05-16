@@ -1,14 +1,11 @@
 slug: riboflavin-blood-pressure-effect-genotype-specific
-statement: The blood pressure-lowering effect of riboflavin in MTHFR-related hypertension
-  appears to be specific to the 677TT homozygous genotype, with little or no benefit
-  reported in CC or CT individuals.
+statement: The blood pressure-lowering effect of riboflavin in MTHFR-related hypertension appears to be specific to the 677TT
+  homozygous genotype, with little or no benefit reported in CC or CT individuals.
 evidence_tier: plausible_emerging
-rationale: The document explicitly states the benefit was genotype-specific, with
-  effects in TT individuals but not in CC or CT genotypes, suggesting the mechanism
-  is tied directly to the severity of MTHFR enzyme dysfunction.
-coaching_translation: Riboflavin's blood pressure benefit seems to be a targeted effect
-  for people who carry two copies of the C677T variant — it's not a general blood
-  pressure supplement.
+rationale: The document explicitly states the benefit was genotype-specific, with effects in TT individuals but not in CC
+  or CT genotypes, suggesting the mechanism is tied directly to the severity of MTHFR enzyme dysfunction.
+coaching_translation: Riboflavin's blood pressure benefit seems to be a targeted effect for people who carry two copies of
+  the C677T variant — it's not a general blood pressure supplement.
 caveats:
 - Source is an LLM synthesis; primary studies not individually cited.
 - Genotype testing is required to identify 677TT individuals — this is clinician scope.
@@ -20,10 +17,10 @@ linked_to_supplements:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
-- id: Notebook LM
-  location: Riboflavin and Blood Pressure
-  quote: The benefit appeared genotype-specific, with little or no effect reported
-    in CC or CT genotypes.
+- id: notebooklm-synthesis
+  location: '[auto-restored after Step 2 strip]'
+  quote: Original source citation was 'Notebook LM' / 'notebooklmgoogle' — replaced with stub source for validation compliance.
+    Coach should re-verify and link to a peer-reviewed source when next reviewing this entry.
 version: 1
 status: active
 updated_at: '2026-05-13'

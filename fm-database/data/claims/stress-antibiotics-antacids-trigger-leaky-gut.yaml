@@ -1,19 +1,16 @@
 slug: stress-antibiotics-antacids-trigger-leaky-gut
-statement: Chronic stress, repeated antibiotic use, and prolonged antacid use are
-  key triggers and mediators of intestinal permeability (leaky gut) development.
+statement: Chronic stress, repeated antibiotic use, and prolonged antacid use are key triggers and mediators of intestinal
+  permeability (leaky gut) development.
 evidence_tier: plausible_emerging
-rationale: The roles of stress (via HPA axis and gut motility effects), antibiotics
-  (microbiome disruption), and antacids (reduced gastric acid → dysbiosis) in gut
-  barrier disruption are each supported by mechanistic plausibility and growing evidence,
-  though direct causal RCTs in humans are limited.
-coaching_translation: The gut barrier can be worn down over time by chronic stress,
-  overuse of antibiotics, or long-term use of acid-reducing medications. These are
-  modifiable risk factors coaches can help clients address.
+rationale: The roles of stress (via HPA axis and gut motility effects), antibiotics (microbiome disruption), and antacids
+  (reduced gastric acid → dysbiosis) in gut barrier disruption are each supported by mechanistic plausibility and growing
+  evidence, though direct causal RCTs in humans are limited.
+coaching_translation: The gut barrier can be worn down over time by chronic stress, overuse of antibiotics, or long-term use
+  of acid-reducing medications. These are modifiable risk factors coaches can help clients address.
 caveats:
-- Source is expert consensus. Individual mechanisms are plausible but direct causation
-  in leaky gut is not fully established via RCTs.
+- Source is expert consensus. Individual mechanisms are plausible but direct causation in leaky gut is not fully established
+  via RCTs.
 linked_to_topics:
-- intestinal-permeability
 - autoimmunity-leaky-gut-triad
 out_of_scope_notes: ''
 linked_to_mechanisms: []
@@ -21,11 +18,10 @@ linked_to_supplements: []
 sources:
 - id: coconote-fm-intestinal-permeability
   location: Three Factors for Autoimmunity – Trigger Factors
-  quote: at the age of 30 that patients start having some kind of stress or some kind
-    of chronic infection or maybe he is taking an antacid for for whole six months
-    to one year or maybe he's taking a repeated antibiotics. So all the factors we
-    are discussing trigger and mediator. So if the patients is encountering with this
-    kind of trigger and mediator they start having a leaky gut.
+  quote: at the age of 30 that patients start having some kind of stress or some kind of chronic infection or maybe he is
+    taking an antacid for for whole six months to one year or maybe he's taking a repeated antibiotics. So all the factors
+    we are discussing trigger and mediator. So if the patients is encountering with this kind of trigger and mediator they
+    start having a leaky gut.
 version: 1
 status: active
 updated_at: '2026-05-05'

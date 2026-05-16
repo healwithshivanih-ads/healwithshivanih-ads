@@ -1,22 +1,18 @@
 slug: healing-gut-lining-resolves-food-reactions
-statement: Healing intestinal permeability — by addressing its upstream drivers (stress,
-  dysbiosis, low stomach acid, inflammation, nutritional deficiencies) — is the foundational
-  treatment for both food allergy and food sensitivity.
+statement: Healing intestinal permeability — by addressing its upstream drivers (stress, dysbiosis, low stomach acid, inflammation,
+  nutritional deficiencies) — is the foundational treatment for both food allergy and food sensitivity.
 evidence_tier: plausible_emerging
-rationale: The gut-healing approach to food reactions is central to FM. Plausible
-  mechanistically; some clinical evidence supports gut-healing interventions improving
-  food tolerance, but large RCTs specifically on this endpoint are lacking.
-coaching_translation: Food avoidance alone is not the complete answer. The bigger
-  goal is healing the gut so that the client can eventually tolerate foods they currently
-  react to. Support stress reduction, microbiome health, digestive enzyme sufficiency,
+rationale: The gut-healing approach to food reactions is central to FM. Plausible mechanistically; some clinical evidence
+  supports gut-healing interventions improving food tolerance, but large RCTs specifically on this endpoint are lacking.
+coaching_translation: Food avoidance alone is not the complete answer. The bigger goal is healing the gut so that the client
+  can eventually tolerate foods they currently react to. Support stress reduction, microbiome health, digestive enzyme sufficiency,
   and anti-inflammatory nutrition.
 caveats:
 - Source is expert lecture, moderate quality.
 - Gut healing is a process that may take months to years.
-- Clients with true IgE allergies (especially severe) may not fully resolve even with
-  gut healing — refer to allergist.
+- Clients with true IgE allergies (especially severe) may not fully resolve even with gut healing — refer to allergist.
 linked_to_topics:
-- intestinal-permeability-leaky-gut
+- autoimmunity-leaky-gut-triad
 - food-sensitivity-igg-iga-mediated
 - food-allergy-ige-mediated
 out_of_scope_notes: ''
@@ -25,11 +21,9 @@ linked_to_supplements: []
 sources:
 - id: coconote-fm-food-allergies-sensitivities
   location: Treatment Section
-  quote: if you heal the gut and gut lining... if you can remove the stress, if you
-    can remove the food sensitivity, if you can remove the low stomach acid and you
-    can increase the digestibility, then eventually you can heal the intestine and
-    you can heal the intestinal permeability. In that way, you can remove the full
-    allergy or full sensitivity.
+  quote: if you heal the gut and gut lining... if you can remove the stress, if you can remove the food sensitivity, if you
+    can remove the low stomach acid and you can increase the digestibility, then eventually you can heal the intestine and
+    you can heal the intestinal permeability. In that way, you can remove the full allergy or full sensitivity.
 version: 1
 status: active
 updated_at: '2026-05-05'

@@ -26,7 +26,7 @@ linked_to_topics:
 - calcium-metabolism
 - chronic-inflammation
 - gut-dysbiosis
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 - cardiovascular-disease-prevention
 - metabolic-syndrome
 - menopause
@@ -77,9 +77,8 @@ notes_for_coach: 'Source (Menolascino transcript) cites magnesium as a foundatio
   already exists in the catalogue.
 
   '
-notes_for_client: Because we filter our drinking water, most of the magnesium that
-  used to come from natural water sources is removed. Supplementing magnesium helps
-  restore what modern water treatment takes away.
+notes_for_client: Because we filter our drinking water, most of the magnesium that used to come from natural water sources
+  is removed. Supplementing magnesium helps restore what modern water treatment takes away.
 evidence_tier: strong
 typical_dose_range:
   capsule:
@@ -102,27 +101,24 @@ sources:
   quote: Beets, garlic, sulfur foods, B vitamins, magnesium, NAC.
 - id: vitaone-blood-sugar-toolkit
   location: Micronutrients for Insulin Sensitivity
-  quote: Magnesium is an essential mineral that supports bone health, blood pressure,
-    and insulin function. People who do not get enough magnesium in their diet are
-    at higher risk for type 2 diabetes, heart disease, metabolic syndrome, and osteoporosis.
+  quote: Magnesium is an essential mineral that supports bone health, blood pressure, and insulin function. People who do
+    not get enough magnesium in their diet are at higher risk for type 2 diabetes, heart disease, metabolic syndrome, and
+    osteoporosis.
 - id: vitaone-nutrition-toolkit
   location: Nutrients for Mitochondrial Health
-  quote: Magnesium is a mineral that is necessary for optimal mitochondrial function.
-    Restoring the body's magnesium can have a protective role in heart health, blood
-    pressure, and is associated with improvements in depressive symptoms.
+  quote: Magnesium is a mineral that is necessary for optimal mitochondrial function. Restoring the body's magnesium can have
+    a protective role in heart health, blood pressure, and is associated with improvements in depressive symptoms.
 - id: vitaone-liver-detox-toolkit
   location: How to Make an Infrared Sauna Lamp — Protocol
-  quote: I do advise Starting with Magnesium because you will loose lot of magnesium
-    through sweat.
+  quote: I do advise Starting with Magnesium because you will loose lot of magnesium through sweat.
 - id: vitaone-health-coaching-toolkit
   location: Micronutrients for Insulin Sensitivity
-  quote: Magnesium is an essential mineral that supports bone health, blood pressure,
-    and insulin function. It also participates in hundreds of metabolic reactions
-    in the body.
+  quote: Magnesium is an essential mineral that supports bone health, blood pressure, and insulin function. It also participates
+    in hundreds of metabolic reactions in the body.
 - id: coconote-fm-calcium-deficiency
   location: Magnesium and Calcium Relationship
-  quote: if you correct the intracellular magnesium level this calcium going to come
-    out from the cell and it will maintain your serum magnesium level.
+  quote: if you correct the intracellular magnesium level this calcium going to come out from the cell and it will maintain
+    your serum magnesium level.
 - id: coconote-fm-approach-inflammation
   location: Nutrition – Anti-Inflammatory Minerals
   quote: the minerals, then zinc and magnesium. They are anti-inflammatory.
@@ -131,26 +127,22 @@ sources:
   quote: that is zinc and then you can consider that magnesium is required.
 - id: coconote-fm-preventing-cvd-cholesterol
   location: Micronutrients in Clinical Practice
-  quote: Almost everyone leaves with magnesium, which is my favorite mineral for the
-    heart. Magnesium lowers blood sugar. Magnesium is anti-inflammatory. Magnesium
-    helps people have a bowel movement. Magnesium prevents arrhythmia.
+  quote: Almost everyone leaves with magnesium, which is my favorite mineral for the heart. Magnesium lowers blood sugar.
+    Magnesium is anti-inflammatory. Magnesium helps people have a bowel movement. Magnesium prevents arrhythmia.
 - id: coconote-fm-sex-hormones
   location: Case Study — Rekha Lab Results
-  quote: Now the calcium may be low because the magnesium is also on the lower side
-    at times.
+  quote: Now the calcium may be low because the magnesium is also on the lower side at times.
 - id: coconote-fm-stopping-anti-cholesterol-meds
   location: Natural alternatives to statins section
-  quote: Like magnesium is also anti-steadiness. We can use the nutrition like vitamin
-    D and magnesium.
+  quote: Like magnesium is also anti-steadiness. We can use the nutrition like vitamin D and magnesium.
 - id: ask-expert-womens-health-vaginal-microbiome
   location: Supplement restoration philosophy discussion
-  quote: There are supplements that you need, like magnesium, you need it because
-    we have to filter our drinking water. Water filtration removes all magnesium.
-    So we have to restore magnesium.
+  quote: There are supplements that you need, like magnesium, you need it because we have to filter our drinking water. Water
+    filtration removes all magnesium. So we have to restore magnesium.
 - id: menolascino-sleep-fm-perspective-fmca-transcript
   location: Magnesium and sleep section
-  quote: I love magnesium. That's one of my favorite nutrients. The government has
-    told us that about 59% Americans are deficient in magnesium
+  quote: I love magnesium. That's one of my favorite nutrients. The government has told us that about 59% Americans are deficient
+    in magnesium
 version: 14
 status: active
 updated_at: '2026-05-16'

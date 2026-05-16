@@ -1,10 +1,9 @@
 slug: iodine-is-essential-for-t3-and-t4
 statement: Iodine is essential for thyroid hormone (T3 and T4) production.
 evidence_tier: plausible_emerging
-rationale: Iodine's role as a structural component of thyroid hormones is established
-  biochemistry.
-coaching_translation: Encourage iodine-rich foods (seaweed, fish, iodized salt, dairy)
-  for thyroid support, particularly in clients avoiding these food groups.
+rationale: Iodine's role as a structural component of thyroid hormones is established biochemistry.
+coaching_translation: Encourage iodine-rich foods (seaweed, fish, iodized salt, dairy) for thyroid support, particularly in
+  clients avoiding these food groups.
 caveats:
 - Source is a practitioner cheatsheet without primary citations.
 - Source is practitioner cheatsheet.
@@ -17,7 +16,7 @@ linked_to_supplements:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
+- id: vitaone-fm-nutrition-cheatsheets
   location: Page 12
   quote: Iodine is described as essential for thyroid hormone production.
 - id: vitaone-fm-nutrition-cheatsheets

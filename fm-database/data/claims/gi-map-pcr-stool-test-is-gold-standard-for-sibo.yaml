@@ -1,32 +1,28 @@
 slug: gi-map-pcr-stool-test-is-gold-standard-for-sibo
-statement: Comprehensive GI mapping via quantitative PCR stool testing (GI Map) is
-  considered the gold standard for diagnosing SIBO, SIFO, and other gut disorders,
-  offering high specificity and sensitivity for organisms, zonulin, beta-glucuronidase,
+statement: Comprehensive GI mapping via quantitative PCR stool testing (GI Map) is considered the gold standard for diagnosing
+  SIBO, SIFO, and other gut disorders, offering high specificity and sensitivity for organisms, zonulin, beta-glucuronidase,
   fecal calprotectin, and elastase-1.
 evidence_tier: plausible_emerging
-rationale: GI Map PCR testing is widely used in functional medicine and provides clinically
-  useful quantitative data. Its designation as 'gold standard' is FM-specific; conventional
-  medicine typically uses breath testing and endoscopy.
-coaching_translation: The GI map test gives a detailed picture of what's living in
-  your gut, how permeable your gut lining is, and whether your digestion is working
-  properly.
+rationale: GI Map PCR testing is widely used in functional medicine and provides clinically useful quantitative data. Its
+  designation as 'gold standard' is FM-specific; conventional medicine typically uses breath testing and endoscopy.
+coaching_translation: The GI map test gives a detailed picture of what's living in your gut, how permeable your gut lining
+  is, and whether your digestion is working properly.
 out_of_scope_notes: Ordering and interpreting GI map is clinician scope.
 caveats:
-- '''Gold standard'' designation is FM-specific; not used in conventional gastroenterology
-  consensus.'
+- '''Gold standard'' designation is FM-specific; not used in conventional gastroenterology consensus.'
 - Source is expert consensus lecture.
 linked_to_topics:
 - sibo
 - sifo
-- leaky-gut-syndrome
+- autoimmunity-leaky-gut-triad
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
 - id: coconote-fm-sibo-sifo
   location: GI Mapping Section
-  quote: GI mapping, this is the best... This is the sample report... it's a quantitative,
-    quantitative, quantitative PCR testing of each and every organism that is present
-    at the level of heart. Hence it is very highly specific and highly sensitive test.
+  quote: GI mapping, this is the best... This is the sample report... it's a quantitative, quantitative, quantitative PCR
+    testing of each and every organism that is present at the level of heart. Hence it is very highly specific and highly
+    sensitive test.
 version: 1
 status: active
 updated_at: '2026-05-05'

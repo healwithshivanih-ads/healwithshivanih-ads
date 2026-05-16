@@ -1,11 +1,10 @@
 slug: magnesium-supports-gaba-serotonin-and-sleep
-statement: Magnesium supports GABA and serotonin pathways to improve sleep and reduce
-  anxiety.
+statement: Magnesium supports GABA and serotonin pathways to improve sleep and reduce anxiety.
 evidence_tier: plausible_emerging
-rationale: Magnesium modulation of GABA receptors and its relationship to sleep and
-  anxiety is supported by mechanistic research and some RCTs.
-coaching_translation: Magnesium glycinate or threonate before bed may support sleep
-  quality and calm for anxious clients — discuss with clinician for therapeutic use.
+rationale: Magnesium modulation of GABA receptors and its relationship to sleep and anxiety is supported by mechanistic research
+  and some RCTs.
+coaching_translation: Magnesium glycinate or threonate before bed may support sleep quality and calm for anxious clients —
+  discuss with clinician for therapeutic use.
 caveats:
 - Source is a practitioner cheatsheet without primary citations.
 - RCT evidence for magnesium and sleep is limited and of variable quality.
@@ -20,14 +19,12 @@ linked_to_supplements:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Page 10
-  quote: Magnesium is described as supporting GABA and serotonin pathways to improve
-    sleep and reduce anxiety.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 10
-  quote: Magnesium is described as supporting GABA and serotonin pathways to improve
-    sleep and reduce anxiety.
+  quote: Magnesium is described as supporting GABA and serotonin pathways to improve sleep and reduce anxiety.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 10
+  quote: Magnesium is described as supporting GABA and serotonin pathways to improve sleep and reduce anxiety.
 version: 2
 status: active
 updated_at: '2026-05-06'

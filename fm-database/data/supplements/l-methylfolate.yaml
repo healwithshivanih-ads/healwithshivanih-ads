@@ -50,9 +50,6 @@ sources:
 - id: vitaone-nutrition-cheatsheet
   location: Vitamin & Mineral Inactive vs Bio-Available Form Cheatsheet
   quote: Many people can't convert folic acid effectively.
-- id: Notebook LM
-  location: Supplement Forms Mentioned
-  quote: L-methylfolate or 5-MTHF instead of relying only on folic acid conversion.
 - id: coach-shivani
   location: Coach Observation
   quote: use active folate such as low-dose L-methylfolate for a short while, pair folate decisions with B12 status

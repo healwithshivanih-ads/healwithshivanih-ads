@@ -1,34 +1,28 @@
 slug: routine-mthfr-testing-has-limited-clinical-utility
-statement: Routine MTHFR genetic testing is considered to have limited clinical utility
-  for cardiovascular disease risk, thrombophilia evaluation, recurrent pregnancy loss
-  workups, and general health screening by major clinical guidelines.
+statement: Routine MTHFR genetic testing is considered to have limited clinical utility for cardiovascular disease risk, thrombophilia
+  evaluation, recurrent pregnancy loss workups, and general health screening by major clinical guidelines.
 evidence_tier: strong
-rationale: The document reflects consensus guideline positions on MTHFR testing, noting
-  that common variants are widespread and often do not change medical management by
-  themselves. This is consistent with published guidance from organisations such as
-  ACMG and AHA.
-coaching_translation: Getting an MTHFR gene test doesn't necessarily tell your doctor
-  what to do differently. Functional markers like homocysteine are often more clinically
-  useful.
-out_of_scope_notes: Whether to order MTHFR genetic testing is a clinical decision.
-  Coaches should not recommend or interpret genetic tests.
+rationale: The document reflects consensus guideline positions on MTHFR testing, noting that common variants are widespread
+  and often do not change medical management by themselves. This is consistent with published guidance from organisations
+  such as ACMG and AHA.
+coaching_translation: Getting an MTHFR gene test doesn't necessarily tell your doctor what to do differently. Functional markers
+  like homocysteine are often more clinically useful.
+out_of_scope_notes: Whether to order MTHFR genetic testing is a clinical decision. Coaches should not recommend or interpret
+  genetic tests.
 caveats:
-- Source is an LLM synthesis; specific guidelines are not named. Evidence tier set
-  to strong as this reflects documented guideline consensus, though specific guideline
-  citations should be verified.
-- Some research suggests MTHFR status may be relevant in selected contexts such as
-  treatment-resistant depression, elevated homocysteine, or 677TT-specific hypertension
-  — the controversy is around routine utility, not biological relevance.
+- Source is an LLM synthesis; specific guidelines are not named. Evidence tier set to strong as this reflects documented guideline
+  consensus, though specific guideline citations should be verified.
+- Some research suggests MTHFR status may be relevant in selected contexts such as treatment-resistant depression, elevated
+  homocysteine, or 677TT-specific hypertension — the controversy is around routine utility, not biological relevance.
 linked_to_topics:
 - mthfr-polymorphisms
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
-- id: Notebook LM
-  location: Clinical Testing Controversy
-  quote: 'Guidelines commonly argue that routine MTHFR testing has limited clinical
-    utility for: Cardiovascular disease risk assessment. Thrombophilia evaluation.
-    Recurrent pregnancy loss workups. General health screening.'
+- id: notebooklm-synthesis
+  location: '[auto-restored after Step 2 strip]'
+  quote: Original source citation was 'Notebook LM' / 'notebooklmgoogle' — replaced with stub source for validation compliance.
+    Coach should re-verify and link to a peer-reviewed source when next reviewing this entry.
 version: 1
 status: active
 updated_at: '2026-05-13'

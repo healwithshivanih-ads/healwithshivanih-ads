@@ -1,12 +1,10 @@
 slug: excess-phosphorus-weakens-bone-and-promotes-calcification
-statement: Excess phosphorus from processed foods weakens bone and promotes arterial
-  calcification.
+statement: Excess phosphorus from processed foods weakens bone and promotes arterial calcification.
 evidence_tier: plausible_emerging
-rationale: Elevated dietary phosphorus disrupting FGF-23 and PTH-mediated calcium/phosphorus
-  balance with adverse bone and vascular effects is supported by observational and
-  mechanistic research.
-coaching_translation: Encourage clients to reduce processed foods high in phosphate
-  additives for bone and cardiovascular health.
+rationale: Elevated dietary phosphorus disrupting FGF-23 and PTH-mediated calcium/phosphorus balance with adverse bone and
+  vascular effects is supported by observational and mechanistic research.
+coaching_translation: Encourage clients to reduce processed foods high in phosphate additives for bone and cardiovascular
+  health.
 caveats:
 - Source is a practitioner cheatsheet without primary citations.
 - Most relevant in CKD; evidence in healthy populations is less robust.
@@ -20,14 +18,12 @@ linked_to_supplements:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Page 13
-  quote: Excess phosphorus from processed foods is described as weakening bone and
-    promoting arterial calcification.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 13
-  quote: Excess phosphorus from processed foods is described as weakening bone and
-    promoting arterial calcification.
+  quote: Excess phosphorus from processed foods is described as weakening bone and promoting arterial calcification.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 13
+  quote: Excess phosphorus from processed foods is described as weakening bone and promoting arterial calcification.
 version: 2
 status: active
 updated_at: '2026-05-06'

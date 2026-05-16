@@ -1,18 +1,16 @@
 slug: zinc-supports-gastric-mucosa
-statement: Zinc is important for gastric mucosal integrity and is used as a repair
-  nutrient in leaky gut protocols.
+statement: Zinc is important for gastric mucosal integrity and is used as a repair nutrient in leaky gut protocols.
 evidence_tier: plausible_emerging
-rationale: Zinc carnosine and zinc supplementation have shown benefits for gastric
-  mucosal healing in several clinical studies. The document's statement is consistent
-  with this evidence.
-coaching_translation: Zinc helps protect and repair the lining of your stomach and
-  intestines. It's commonly used as part of a gut healing plan.
+rationale: Zinc carnosine and zinc supplementation have shown benefits for gastric mucosal healing in several clinical studies.
+  The document's statement is consistent with this evidence.
+coaching_translation: Zinc helps protect and repair the lining of your stomach and intestines. It's commonly used as part
+  of a gut healing plan.
 caveats:
-- Specific zinc form and dose not provided in source. Zinc carnosine is commonly used
-  for gut mucosal support. Verify dose with clinician.
+- Specific zinc form and dose not provided in source. Zinc carnosine is commonly used for gut mucosal support. Verify dose
+  with clinician.
 - High-dose zinc (>40 mg/day) can deplete copper.
 linked_to_topics:
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 - 5r-gut-healing-protocol
 linked_to_supplements:
 - zinc

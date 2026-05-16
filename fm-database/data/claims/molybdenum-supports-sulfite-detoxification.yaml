@@ -1,11 +1,10 @@
 slug: molybdenum-supports-sulfite-detoxification
-statement: Molybdenum is required for sulfite oxidase and detoxification of sulfites
-  from wine, dried fruits, and preservatives.
+statement: Molybdenum is required for sulfite oxidase and detoxification of sulfites from wine, dried fruits, and preservatives.
 evidence_tier: plausible_emerging
-rationale: Molybdenum as a cofactor for sulfite oxidase is established biochemistry;
-  clinical relevance for sulfite sensitivity is plausible.
-coaching_translation: Clients with sensitivity to wine, dried fruits, or preserved
-  foods may benefit from molybdenum-rich foods (legumes, liver, whole grains).
+rationale: Molybdenum as a cofactor for sulfite oxidase is established biochemistry; clinical relevance for sulfite sensitivity
+  is plausible.
+coaching_translation: Clients with sensitivity to wine, dried fruits, or preserved foods may benefit from molybdenum-rich
+  foods (legumes, liver, whole grains).
 caveats:
 - Source is a practitioner cheatsheet without primary citations.
 - Source is practitioner cheatsheet.
@@ -17,14 +16,14 @@ linked_to_supplements:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Page 14
-  quote: Molybdenum is described as required for sulfite oxidase and detoxification
-    of sulfites from wine, dried fruits, and preservatives.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 14
-  quote: Molybdenum is described as required for sulfite oxidase and detoxification
-    of sulfites from wine, dried fruits, and preservatives.
+  quote: Molybdenum is described as required for sulfite oxidase and detoxification of sulfites from wine, dried fruits, and
+    preservatives.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 14
+  quote: Molybdenum is described as required for sulfite oxidase and detoxification of sulfites from wine, dried fruits, and
+    preservatives.
 version: 2
 status: active
 updated_at: '2026-05-06'

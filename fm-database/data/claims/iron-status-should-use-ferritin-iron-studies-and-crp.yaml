@@ -1,13 +1,12 @@
 slug: iron-status-should-use-ferritin-iron-studies-and-crp
 statement: Iron evaluation should include ferritin, iron studies, and CRP.
 evidence_tier: confirm_with_clinician
-rationale: Using ferritin alongside CRP to contextualise iron status (ferritin is
-  an acute-phase protein) is standard clinical practice.
+rationale: Using ferritin alongside CRP to contextualise iron status (ferritin is an acute-phase protein) is standard clinical
+  practice.
 out_of_scope_notes: Lab ordering and iron status interpretation is clinician scope.
 caveats:
 - Source is a practitioner cheatsheet without primary citations.
-- Refer clients for iron status assessment rather than recommending supplementation
-  without labs.
+- Refer clients for iron status assessment rather than recommending supplementation without labs.
 linked_to_topics:
 - nutrition-deficiency
 - hair-loss
@@ -16,14 +15,12 @@ linked_to_supplements:
 coaching_translation: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Page 11
-  quote: The source recommends checking ferritin, iron studies, and CRP when evaluating
-    iron.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 11
-  quote: The source recommends checking ferritin, iron studies, and CRP when evaluating
-    iron.
+  quote: The source recommends checking ferritin, iron studies, and CRP when evaluating iron.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 11
+  quote: The source recommends checking ferritin, iron studies, and CRP when evaluating iron.
 version: 2
 status: active
 updated_at: '2026-05-06'

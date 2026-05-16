@@ -1,11 +1,9 @@
 slug: b6-supports-neurotransmitter-and-ammonia-metabolism
-statement: Vitamin B6 converts amino acids into neurotransmitters, glucose, or new
-  proteins while clearing ammonia.
+statement: Vitamin B6 converts amino acids into neurotransmitters, glucose, or new proteins while clearing ammonia.
 evidence_tier: plausible_emerging
-rationale: B6 as a cofactor for aminotransferases and decarboxylases in neurotransmitter
-  synthesis is established biochemistry.
-coaching_translation: Adequate B6 from food (poultry, fish, bananas, chickpeas) supports
-  mood neurotransmitter production and protein metabolism.
+rationale: B6 as a cofactor for aminotransferases and decarboxylases in neurotransmitter synthesis is established biochemistry.
+coaching_translation: Adequate B6 from food (poultry, fish, bananas, chickpeas) supports mood neurotransmitter production
+  and protein metabolism.
 caveats:
 - Source is a practitioner cheatsheet without primary citations.
 - Source is practitioner cheatsheet.
@@ -19,14 +17,14 @@ linked_to_supplements:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Page 5
-  quote: Vitamin B6 is described as converting amino acids into neurotransmitters,
-    glucose, or new proteins while clearing ammonia.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 5
-  quote: Vitamin B6 is described as converting amino acids into neurotransmitters,
-    glucose, or new proteins while clearing ammonia.
+  quote: Vitamin B6 is described as converting amino acids into neurotransmitters, glucose, or new proteins while clearing
+    ammonia.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 5
+  quote: Vitamin B6 is described as converting amino acids into neurotransmitters, glucose, or new proteins while clearing
+    ammonia.
 version: 2
 status: active
 updated_at: '2026-05-06'

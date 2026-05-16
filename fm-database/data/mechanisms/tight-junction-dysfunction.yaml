@@ -14,11 +14,9 @@ aliases:
 - elevated zonulin
 - zonulin signaling
 category: gut
-summary: Tight junctions between epithelial cells normally prevent paracellular transport
-  of large molecules. When disrupted — by stress, infection, dysbiosis, food antigens,
-  toxins, or nutrient deficiency — they allow peptides, LPS, and pathogens to translocate
-  from the intestinal lumen into the bloodstream, triggering immune activation and
-  systemic inflammation.
+summary: Tight junctions between epithelial cells normally prevent paracellular transport of large molecules. When disrupted
+  — by stress, infection, dysbiosis, food antigens, toxins, or nutrient deficiency — they allow peptides, LPS, and pathogens
+  to translocate from the intestinal lumen into the bloodstream, triggering immune activation and systemic inflammation.
 upstream_drivers:
 - stress
 - dysbiosis
@@ -40,20 +38,18 @@ related_mechanisms:
 - molecular-mimicry
 - gut-microbiome-dysbiosis
 linked_to_topics:
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 - autoimmunity-leaky-gut-connection
 evidence_tier: strong
 sources:
 - id: coconote-fm-intestinal-permeability-anish
   location: Barrier Function Overview
-  quote: We have tight junctions at the epithelial border. From the epithelium to
-    epithelium, we have a very sophisticated structure that prevents any kind of pathologies
-    or any kind of food particle that is entering in our human body or bloodstream.
+  quote: We have tight junctions at the epithelial border. From the epithelium to epithelium, we have a very sophisticated
+    structure that prevents any kind of pathologies or any kind of food particle that is entering in our human body or bloodstream.
 - id: coconote-fm-intestinal-permeability
   location: Diagnostic Testing – Zonulin
-  quote: another test is zonulin and it is discovered in a 20 years back and that's
-    the enzyme or peptide secreted by the intestinal mucosa and they they regulate
-    the tight junctions.
+  quote: another test is zonulin and it is discovered in a 20 years back and that's the enzyme or peptide secreted by the
+    intestinal mucosa and they they regulate the tight junctions.
 - id: vitaone-gut-cheatsheet
   location: Leaky Gut & Inflammation — Why Leaky Gut Creates Chronic Inflammation
   quote: Zonulin upregulation — Opens tight junctions — Persistent permeability

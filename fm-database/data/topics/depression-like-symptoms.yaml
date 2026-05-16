@@ -60,7 +60,7 @@ clinician_scope_notes: Antidepressant or psychiatric medication decisions, neuro
   risk assessment are clinician-scope.
 evidence_tier: plausible_emerging
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
+- id: vitaone-fm-nutrition-cheatsheets
   location: Page 23
   quote: The source states that depression can be a biochemical signal of unmet nutritional needs affecting neurotransmitter
     synthesis, mitochondrial function, and inflammation.

@@ -6,22 +6,17 @@ aliases:
 - B12 utilization impairment
 category: neurological
 severity: concerning
-description: Symptoms resembling classical B12 deficiency (fatigue, neurological changes,
-  cognitive fog) occurring even when serum B12 appears normal or elevated, due to
-  poor cellular utilization rather than inadequate intake or absorption.
-when_to_refer: Refer if neurological symptoms are present (numbness, tingling, memory
-  loss) or if serum B12 is persistently very high without explanation — this may indicate
-  underlying medical conditions.
+description: Symptoms resembling classical B12 deficiency (fatigue, neurological changes, cognitive fog) occurring even when
+  serum B12 appears normal or elevated, due to poor cellular utilization rather than inadequate intake or absorption.
+when_to_refer: Refer if neurological symptoms are present (numbness, tingling, memory loss) or if serum B12 is persistently
+  very high without explanation — this may indicate underlying medical conditions.
 linked_to_topics:
 - mthfr-polymorphisms
 - methylation-cycle
 linked_to_mechanisms:
 - methyl-trap
 - mthfr-enzyme-dysfunction
-sources:
-- id: Notebook LM
-  location: B12 and Folate Utilization
-  quote: Symptoms can resemble B12 deficiency despite apparently normal lab values.
+sources: []
 version: 1
 status: active
 updated_at: '2026-05-13'

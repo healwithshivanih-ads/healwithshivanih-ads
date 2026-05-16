@@ -6,9 +6,8 @@ aliases:
 - telogen effluvium
 - androgenic alopecia
 - postpartum hair loss
-summary: Hairfall root causes include nutrient deficiency, thyroid imbalance, PCOS,
-  postpartum shifts, androgenic alopecia, telogen effluvium, stress, and gut absorption
-  issues. Supplementation should be personalized by root cause.
+summary: Hairfall root causes include nutrient deficiency, thyroid imbalance, PCOS, postpartum shifts, androgenic alopecia,
+  telogen effluvium, stress, and gut absorption issues. Supplementation should be personalized by root cause.
 common_symptoms:
 - hair-loss
 - hair-thinning
@@ -35,22 +34,20 @@ key_mechanisms:
 - gut-barrier-and-nutrient-absorption
 - oxidative-stress-and-inflammation
 - nutrient-dependent-energy-metabolism
-coaching_scope_notes: Encourage root-cause lab panel (ferritin, B12, zinc, biotin,
-  folate, TSH, fT3, fT4, anti-TPO) referral before supplementing. Food-first protein
-  and micronutrient approach is coaching-appropriate.
-clinician_scope_notes: Hairfall lab panel (ferritin, B12, zinc, biotin, folate, TSH,
-  free T3/T4, anti-TPO, hormonal labs) and root-cause diagnosis are clinical scope
-  items.
+coaching_scope_notes: Encourage root-cause lab panel (ferritin, B12, zinc, biotin, folate, TSH, fT3, fT4, anti-TPO) referral
+  before supplementing. Food-first protein and micronutrient approach is coaching-appropriate.
+clinician_scope_notes: Hairfall lab panel (ferritin, B12, zinc, biotin, folate, TSH, free T3/T4, anti-TPO, hormonal labs)
+  and root-cause diagnosis are clinical scope items.
 evidence_tier: fm_specific_thin
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Topics Covered
-  quote: Hairfall root causes include nutrient deficiency, thyroid imbalance, PCOS,
-    postpartum shifts, androgenic alopecia, telogen effluvium, stress, and gut absorption.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Topics Covered
-  quote: Hairfall root causes include nutrient deficiency, thyroid imbalance, PCOS,
-    postpartum shifts, androgenic alopecia, telogen effluvium, stress, and gut absorption.
+  quote: Hairfall root causes include nutrient deficiency, thyroid imbalance, PCOS, postpartum shifts, androgenic alopecia,
+    telogen effluvium, stress, and gut absorption.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Topics Covered
+  quote: Hairfall root causes include nutrient deficiency, thyroid imbalance, PCOS, postpartum shifts, androgenic alopecia,
+    telogen effluvium, stress, and gut absorption.
 version: 2
 status: active
 updated_at: '2026-05-06'

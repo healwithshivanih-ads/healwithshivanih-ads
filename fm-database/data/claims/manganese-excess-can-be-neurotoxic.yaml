@@ -1,14 +1,11 @@
 slug: manganese-excess-can-be-neurotoxic
 statement: Excess manganese causes Parkinson-like neurotoxicity.
 evidence_tier: confirm_with_clinician
-rationale: Manganism from occupational or excessive manganese exposure causing Parkinson-like
-  symptoms is clinically documented.
-out_of_scope_notes: Manganese supplementation in high-exposure occupations (welders,
-  miners) requires clinician assessment.
+rationale: Manganism from occupational or excessive manganese exposure causing Parkinson-like symptoms is clinically documented.
+out_of_scope_notes: Manganese supplementation in high-exposure occupations (welders, miners) requires clinician assessment.
 caveats:
 - Source is a practitioner cheatsheet without primary citations.
-- Primarily a risk from occupational inhalation exposure; oral toxicity from food/supplements
-  is less common.
+- Primarily a risk from occupational inhalation exposure; oral toxicity from food/supplements is less common.
 - Assess occupational exposure before recommending manganese supplements.
 linked_to_topics:
 - nutrition-deficiency
@@ -18,7 +15,7 @@ linked_to_supplements:
 coaching_translation: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
+- id: vitaone-fm-nutrition-cheatsheets
   location: Page 13
   quote: Excess manganese is described as causing Parkinson-like neurotoxicity.
 - id: vitaone-fm-nutrition-cheatsheets

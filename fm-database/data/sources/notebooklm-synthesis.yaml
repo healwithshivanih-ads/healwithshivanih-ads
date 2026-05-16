@@ -1,0 +1,13 @@
+id: notebooklm-synthesis
+title: Notebook LM Synthesis (AI-generated)
+source_type: llm_synthesis
+quality: low
+authors:
+- Google Notebook LM
+publisher: Google
+notes: '[STUB — auto-created. Claims citing this source should be validated against peer-reviewed material before clinical
+  use. evidence_tier must be fm_specific_thin or weaker.]'
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

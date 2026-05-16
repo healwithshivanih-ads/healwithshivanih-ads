@@ -23,9 +23,8 @@ aliases:
 - advanced glycation end products
 - glycated proteins
 category: metabolic
-summary: Imbalance between free radical production and antioxidant defence, driving
-  cellular damage. Fasting and polyphenol-rich foods (berries, pomegranate, turmeric,
-  green tea) are proposed to upregulate antioxidant activity and reduce free radicals.
+summary: Imbalance between free radical production and antioxidant defence, driving cellular damage. Fasting and polyphenol-rich
+  foods (berries, pomegranate, turmeric, green tea) are proposed to upregulate antioxidant activity and reduce free radicals.
 upstream_drivers:
 - poor-diet
 - toxin-exposure
@@ -94,34 +93,28 @@ sources:
   quote: Oxidized LDL — Shows oxidative burden — Address antioxidants & inflammation.
 - id: vitaone-inflammation-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations — NAC'
-  quote: N-acetylcysteine promotes the production of glutathione, a potent antioxidant
-    that supports immune function.
+  quote: N-acetylcysteine promotes the production of glutathione, a potent antioxidant that supports immune function.
 - id: vitaone-cardiometabolic-toolkit
   location: Intermittent Fasting — Improves/Decreases Table
   quote: 'Intermittent fasting Improves: Antioxidant activity. Decreases: Free radicals.'
 - id: vitaone-nutrition-toolkit
   location: Nutrients for Mitochondrial Health
-  quote: Free radicals need to be neutralized or they will create damage (often referred
-    to as 'oxidative stress') in the body. Excess free radicals can damage the body
-    by initiating the death of cells, leading to premature aging.
+  quote: Free radicals need to be neutralized or they will create damage (often referred to as 'oxidative stress') in the
+    body. Excess free radicals can damage the body by initiating the death of cells, leading to premature aging.
 - id: vitaone-liver-detox-toolkit
   location: Features of the Detox Food Plan
-  quote: Key antioxidants help protect the body and support biotransformation of these
-    metabolites.
+  quote: Key antioxidants help protect the body and support biotransformation of these metabolites.
 - id: vitaone-health-coaching-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
-  quote: N-acetylcysteine promotes the production of glutathione, a potent antioxidant
-    that supports immune function.
-- id: Vitaone-fm-nutrition-cheatsheets
+  quote: N-acetylcysteine promotes the production of glutathione, a potent antioxidant that supports immune function.
+- id: vitaone-fm-nutrition-cheatsheets
   location: Key Mechanisms Explained – oxidative-stress-and-inflammation
-  quote: The source frames vitamin C, vitamin E, selenium, copper, manganese, omega-3,
-    CoQ10, NAC, curcumin, boswellia, green tea extract, and antioxidant foods as supports
-    against oxidative stress and inflammation.
+  quote: The source frames vitamin C, vitamin E, selenium, copper, manganese, omega-3, CoQ10, NAC, curcumin, boswellia, green
+    tea extract, and antioxidant foods as supports against oxidative stress and inflammation.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Key Mechanisms Explained — oxidative-stress-and-inflammation
-  quote: The source frames vitamin C, vitamin E, selenium, copper, manganese, omega-3,
-    CoQ10, NAC, curcumin, boswellia, green tea extract, and antioxidant foods as supports
-    against oxidative stress and inflammation.
+  quote: The source frames vitamin C, vitamin E, selenium, copper, manganese, omega-3, CoQ10, NAC, curcumin, boswellia, green
+    tea extract, and antioxidant foods as supports against oxidative stress and inflammation.
 version: 7
 status: active
 updated_at: '2026-05-04'

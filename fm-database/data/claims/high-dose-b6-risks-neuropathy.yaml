@@ -1,13 +1,11 @@
 slug: high-dose-b6-risks-neuropathy
-statement: Vitamin B6 supplementation should stay under 100 mg/day because higher
-  doses may cause neuropathy.
+statement: Vitamin B6 supplementation should stay under 100 mg/day because higher doses may cause neuropathy.
 evidence_tier: confirm_with_clinician
-rationale: B6 toxicity causing sensory neuropathy at doses above 200mg/day is well-documented;
-  the 100mg/day threshold is a conservative safety guideline.
+rationale: B6 toxicity causing sensory neuropathy at doses above 200mg/day is well-documented; the 100mg/day threshold is
+  a conservative safety guideline.
 out_of_scope_notes: B6 dosing above routine dietary amounts is outside coaching scope.
 caveats:
-- Evidence for neuropathy risk at doses between 100–200 mg/day is less clear; risk
-  increases substantially above 200 mg/day.
+- Evidence for neuropathy risk at doses between 100–200 mg/day is less clear; risk increases substantially above 200 mg/day.
 - Confirm with clinician before recommending B6 doses approaching 100mg/day.
 linked_to_topics:
 - nutrition-deficiency
@@ -18,14 +16,12 @@ linked_to_supplements:
 coaching_translation: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Page 5
-  quote: Vitamin B6 supplementation is advised to stay under 100 mg/day because higher
-    doses may risk neuropathy.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 5
-  quote: Vitamin B6 supplementation is advised to stay under 100 mg/day because higher
-    doses may risk neuropathy.
+  quote: Vitamin B6 supplementation is advised to stay under 100 mg/day because higher doses may risk neuropathy.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 5
+  quote: Vitamin B6 supplementation is advised to stay under 100 mg/day because higher doses may risk neuropathy.
 version: 2
 status: active
 updated_at: '2026-05-06'

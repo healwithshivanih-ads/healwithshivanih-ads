@@ -5,10 +5,9 @@ aliases:
 - folate trap
 - methylfolate trap
 category: metabolic
-summary: When active folate (5-MTHF) is insufficient due to MTHFR dysfunction, folate
-  becomes 'trapped' in an unusable form and the B12-dependent remethylation of homocysteine
-  stalls. Serum B12 may appear normal or elevated while cellular B12 utilization is
-  impaired.
+summary: When active folate (5-MTHF) is insufficient due to MTHFR dysfunction, folate becomes 'trapped' in an unusable form
+  and the B12-dependent remethylation of homocysteine stalls. Serum B12 may appear normal or elevated while cellular B12 utilization
+  is impaired.
 upstream_drivers:
 - mthfr-enzyme-dysfunction
 - low-dietary-folate
@@ -24,12 +23,7 @@ linked_to_topics:
 - mthfr-polymorphisms
 - methylation-cycle
 evidence_tier: plausible_emerging
-sources:
-- id: Notebook LM
-  location: B12 and Folate Utilization
-  quote: 'This is sometimes described as a ''methyl trap'' or functional B12 deficiency:
-    Serum B12 may appear adequate or elevated. B12 may still be poorly utilized at
-    the cellular level.'
+sources: []
 version: 1
 status: active
 updated_at: '2026-05-13'

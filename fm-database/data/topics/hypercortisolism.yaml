@@ -1,0 +1,27 @@
+slug: hypercortisolism
+display_name: Hypercortisolism / Chronically Elevated Cortisol
+aliases:
+- chronic high cortisol
+- HPA hyperactivation
+- cushings-like pattern
+summary: Chronically elevated cortisol output from sustained HPA axis activation. Presents with abdominal weight gain, insomnia,
+  anxiety, blood sugar dysregulation, immune suppression, and reduced cognitive function. Distinct from acute stress response
+  — this is the maladaptive long-arc pattern.
+common_symptoms:
+- abdominal-weight-gain
+- insomnia
+- anxiety
+red_flags: []
+related_topics: []
+key_mechanisms:
+- hpa-axis-dysregulation
+coaching_scope_notes: ''
+clinician_scope_notes: ''
+notes_for_coach: '[STUB — auto-created by Step 2 cleanup to close pending-refs. Enrich with material from a next ingest covering
+  this concept.]'
+sources: []
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

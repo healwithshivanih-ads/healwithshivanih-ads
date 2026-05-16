@@ -36,10 +36,9 @@ aliases:
 - joint-pain-stiffness
 category: musculoskeletal
 severity: common
-description: Diffuse joint or muscle pain associated with systemic endotoxemia from
-  SIBO. Microbiome-driven inflammation can manifest in musculoskeletal symptoms.
-when_to_refer: Swollen joints, autoimmune arthritis, or fever with joint pain—refer
-  to rheumatology.
+description: Diffuse joint or muscle pain associated with systemic endotoxemia from SIBO. Microbiome-driven inflammation can
+  manifest in musculoskeletal symptoms.
+when_to_refer: Swollen joints, autoimmune arthritis, or fever with joint pain—refer to rheumatology.
 linked_to_topics:
 - perimenopause
 - autoimmune
@@ -59,7 +58,6 @@ linked_to_topics:
 - leaky-gut
 - omega-3-omega-6-balance
 - autoimmunity-leaky-gut-triad
-- intestinal-permeability
 - autoimmunity-leaky-gut-connection
 - omega-3-fatty-acids
 - arachidonic-acid-cascade
@@ -109,8 +107,7 @@ sources:
   quote: Muscle Aches and Joint Pain
 - id: vitaone-inflammation-toolkit
   location: Anti Inflammatory Diet — Who is the Anti-Inflammatory Diet Useful For?
-  quote: 'Autoimmune Diseases: Conditions like rheumatoid arthritis, lupus, and multiple
-    sclerosis.'
+  quote: 'Autoimmune Diseases: Conditions like rheumatoid arthritis, lupus, and multiple sclerosis.'
 - id: vitaone-cv-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
   quote: Joint pain
@@ -119,37 +116,32 @@ sources:
   quote: Joint pain
 - id: coconote-fm-chronic-pain-fatigue
   location: Supplements Section
-  quote: Most of the time when people are complaining about lower back pain or they
-    have like arthritis pain or joint pain, high quality omega and Vitamin high doses
-    of vitamin K2, T3 is super important.
+  quote: Most of the time when people are complaining about lower back pain or they have like arthritis pain or joint pain,
+    high quality omega and Vitamin high doses of vitamin K2, T3 is super important.
 - id: coconote-fm-approach-inflammation
   location: Anti-Inflammatory Herbs and Supplements
-  quote: if somebody having a bone pain or rheumatoid arthritis or joint pain, I would
-    like to use phosphalia.
+  quote: if somebody having a bone pain or rheumatoid arthritis or joint pain, I would like to use phosphalia.
 - id: coconote-fm-intestinal-permeability
   location: Cross Reactivity and Molecular Mimicry
-  quote: so your cartilage amino acid sequence is matching to your gluten amino acid
-    sequence and immune system is creating antibody for gluten but by mistake is targeting
-    your cartilage... and that's why the immune system target your joint and there
-    is a there is an inflammation in the joint.
+  quote: so your cartilage amino acid sequence is matching to your gluten amino acid sequence and immune system is creating
+    antibody for gluten but by mistake is targeting your cartilage... and that's why the immune system target your joint and
+    there is a there is an inflammation in the joint.
 - id: coconote-fm-intestinal-permeability-anish
   location: Pathophysiology of Autoimmunity
-  quote: Your B cell is actually creating antibody for gluten, but by mistake, targeting
-    your cartilage because the amino acid sequence is matching so immune system the
-    antibody is binding to your cartilage… and that's why the immune system target
-    your joint and there is an inflammation in the joint.
+  quote: Your B cell is actually creating antibody for gluten, but by mistake, targeting your cartilage because the amino
+    acid sequence is matching so immune system the antibody is binding to your cartilage… and that's why the immune system
+    target your joint and there is an inflammation in the joint.
 - id: coconote-fm-omega-3-fatty-acids
   location: Rheumatoid Arthritis Study Slide
-  quote: higher rates of remission were seen. And you know, the percent inhibition
-    of inflammatory compounds like TNF-alpha and interleukin-1-beta were seen with
-    EPA and DHA consumption.
+  quote: higher rates of remission were seen. And you know, the percent inhibition of inflammatory compounds like TNF-alpha
+    and interleukin-1-beta were seen with EPA and DHA consumption.
 - id: coconote-fm-sex-hormones
   location: Symptoms of Menopause Transition
   quote: muscle and joint pains as well.
 - id: barbara-oneil-ph-balance
   location: Nightshade Vegetables Section
-  quote: If someone has arthritis or gout, they're best eliminating those nut-shaped
-    vegetables because both of those conditions are high inflammation.
+  quote: If someone has arthritis or gout, they're best eliminating those nut-shaped vegetables because both of those conditions
+    are high inflammation.
 - id: ask-expert-womens-health-vaginal-microbiome
   location: SIBO symptoms discussion
   quote: You've got SIBO, you've got bloating and diarrhea and joint pain and anxiety.

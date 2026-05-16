@@ -15,23 +15,21 @@ timing_options:
 - with_dinner
 take_with_food: required
 linked_to_topics:
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 - 5r-gut-healing-protocol
 linked_to_claims:
 - scfa-from-fiber-heals-intestinal-lining
-notes_for_coach: Dietary fibre is fermented by gut bacteria to produce short-chain
-  fatty acids (SCFAs) like butyrate, which are key nutrients for colonocytes and gut
-  healing. Emphasise whole food fibre sources; fibre supplements can be used adjunctively.
-notes_for_client: Eating enough fibre feeds your good gut bacteria, which produce
-  substances called short-chain fatty acids that help heal your gut lining.
+notes_for_coach: Dietary fibre is fermented by gut bacteria to produce short-chain fatty acids (SCFAs) like butyrate, which
+  are key nutrients for colonocytes and gut healing. Emphasise whole food fibre sources; fibre supplements can be used adjunctively.
+notes_for_client: Eating enough fibre feeds your good gut bacteria, which produce substances called short-chain fatty acids
+  that help heal your gut lining.
 evidence_tier: strong
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-intestinal-permeability-anish
   location: 5R Protocol — Repair
-  quote: Short chain fatty acid. So fiber is very important. They can create the short
-    chain fatty acid and short chain fatty acid is very important as a gut nutrient.
-    They can heal your intestine.
+  quote: Short chain fatty acid. So fiber is very important. They can create the short chain fatty acid and short chain fatty
+    acid is very important as a gut nutrient. They can heal your intestine.
 version: 1
 status: active
 updated_at: '2026-05-05'

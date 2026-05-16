@@ -1,17 +1,16 @@
 slug: omega-3-and-scfa-support-gut-epithelial-rebuilding
-statement: Omega-3 fatty acids and short-chain fatty acids (SCFAs) are essential for
-  rebuilding the gut epithelium in intestinal permeability and dysbiosis.
+statement: Omega-3 fatty acids and short-chain fatty acids (SCFAs) are essential for rebuilding the gut epithelium in intestinal
+  permeability and dysbiosis.
 evidence_tier: plausible_emerging
-rationale: SCFAs (particularly butyrate) are well-established fuels for colonocytes.
-  Omega-3s reduce intestinal inflammation and support membrane integrity. Their role
-  in gut epithelial repair has growing evidence but full consensus is not yet established.
-coaching_translation: Healthy fats — including omega-3s from fish oil and short-chain
-  fats from fermented/fiber-rich foods — help rebuild the gut lining.
+rationale: SCFAs (particularly butyrate) are well-established fuels for colonocytes. Omega-3s reduce intestinal inflammation
+  and support membrane integrity. Their role in gut epithelial repair has growing evidence but full consensus is not yet established.
+coaching_translation: Healthy fats — including omega-3s from fish oil and short-chain fats from fermented/fiber-rich foods
+  — help rebuild the gut lining.
 caveats:
 - Source is expert lecture, moderate quality.
 - SCFA sources and specific supplementation forms not detailed in the document.
 linked_to_topics:
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 - gut-dysbiosis
 linked_to_supplements:
 - omega-3-fatty-acids
@@ -20,8 +19,7 @@ linked_to_mechanisms: []
 sources:
 - id: coconote-fm-gut-dysbiosis-pathogens
   location: Repair Section
-  quote: We require short-chain fatty acids and we require omega-3 fatty acids. They
-    can help in rebuilding your epithelium.
+  quote: We require short-chain fatty acids and we require omega-3 fatty acids. They can help in rebuilding your epithelium.
 version: 1
 status: active
 updated_at: '2026-05-05'

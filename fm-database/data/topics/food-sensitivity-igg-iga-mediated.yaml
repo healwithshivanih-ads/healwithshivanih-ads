@@ -5,9 +5,8 @@ aliases:
 - type 3 hypersensitivity
 - IgG food sensitivity
 - IgA food sensitivity
-summary: Food sensitivity is a delayed immune reaction (2 hours to 2 days post-exposure)
-  mediated by IgG and IgA antibodies. The IgG half-life of 23 days means symptoms
-  can persist and elimination diets must exceed 4 weeks for meaningful improvement.
+summary: Food sensitivity is a delayed immune reaction (2 hours to 2 days post-exposure) mediated by IgG and IgA antibodies.
+  The IgG half-life of 23 days means symptoms can persist and elimination diets must exceed 4 weeks for meaningful improvement.
   Strongly linked to intestinal permeability as the underlying root cause.
 common_symptoms:
 - fatigue
@@ -26,25 +25,23 @@ red_flags:
 - Persistent severe neurological symptoms — refer to clinician
 related_topics:
 - food-allergy-ige-mediated
-- intestinal-permeability-leaky-gut
+- autoimmunity-leaky-gut-triad
 - food-intolerance
 - autoimmune-conditions-igg-food-triggers
 key_mechanisms:
 - intestinal-permeability
 - igg-antigen-immune-complex-complement-activation
 - low-stomach-acid-antigen-load
-coaching_scope_notes: Coaches can support elimination diets (minimum 4 weeks), gut
-  healing, stress reduction, and microbiome support. IgG food sensitivity testing
-  interpretation should involve a clinician.
-clinician_scope_notes: Order total IgG first; if low, IgG food testing is not appropriate.
-  Consider IgG subclass deficiency (e.g., steroid use, toxin exposure). Lab-to-lab
-  variation is significant.
+coaching_scope_notes: Coaches can support elimination diets (minimum 4 weeks), gut healing, stress reduction, and microbiome
+  support. IgG food sensitivity testing interpretation should involve a clinician.
+clinician_scope_notes: Order total IgG first; if low, IgG food testing is not appropriate. Consider IgG subclass deficiency
+  (e.g., steroid use, toxin exposure). Lab-to-lab variation is significant.
 evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-food-allergies-sensitivities
   location: Definition of Food Reactions Section
-  quote: food sensitivity, that the immune reaction with the food that is because
-    of IgA antibody or IgG antibody and we call them as a delayed hypersensitivity
+  quote: food sensitivity, that the immune reaction with the food that is because of IgA antibody or IgG antibody and we call
+    them as a delayed hypersensitivity
 version: 1
 status: active
 updated_at: '2026-05-05'

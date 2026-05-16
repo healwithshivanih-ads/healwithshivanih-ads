@@ -13,11 +13,9 @@ aliases:
 - GI distress
 category: gi
 severity: concerning
-description: Imbalance in gut microbiome composition reduces first-line defense against
-  ingested toxins, increases LPS production from gram-negative bacteria, and elevates
-  total toxic load. Dysbiosis amplifies downstream liver detox burden.
-when_to_refer: Refer if associated with bleeding, severe pain, or signs of inflammatory
-  bowel disease.
+description: Imbalance in gut microbiome composition reduces first-line defense against ingested toxins, increases LPS production
+  from gram-negative bacteria, and elevates total toxic load. Dysbiosis amplifies downstream liver detox burden.
+when_to_refer: Refer if associated with bleeding, severe pain, or signs of inflammatory bowel disease.
 linked_to_topics:
 - gut-microbiome-and-detox
 - total-toxic-load
@@ -27,13 +25,11 @@ linked_to_mechanisms:
 sources:
 - id: coconote-fm-liver-detox-part1
   location: Intestinal Dysbiosis and Detox
-  quote: intestinal dysbiosis so let me explain you what is how intestinal bacteria
-    can protect you from random toxins... if you have intestinal dysbiosis and the
-    long end of bacteria over there, then you are not protected.
-- id: Vitaone-fm-nutrition-cheatsheets
+  quote: intestinal dysbiosis so let me explain you what is how intestinal bacteria can protect you from random toxins...
+    if you have intestinal dysbiosis and the long end of bacteria over there, then you are not protected.
+- id: vitaone-fm-nutrition-cheatsheets
   location: Topics Covered
-  quote: Gut health is linked to thiamin absorption, nutrient absorption, autoimmune
-    joint pain, and hair loss support.
+  quote: Gut health is linked to thiamin absorption, nutrient absorption, autoimmune joint pain, and hair loss support.
 version: 1
 status: active
 updated_at: '2026-05-05'

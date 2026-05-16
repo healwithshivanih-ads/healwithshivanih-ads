@@ -17,29 +17,26 @@ take_with_food: optional
 linked_to_topics:
 - gut-dysbiosis
 - chronic-inflammation
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 linked_to_claims:
 - spore-based-probiotic-6-9-month-protocol-dysbiosis
 - spore-based-probiotics-can-change-gut-lining-long-term
-notes_for_coach: Spore-based probiotics are more resistant to stomach acid and can
-  survive transit to colonize the gut. Recommended for long-term use (6–9 months)
-  to achieve lasting changes to gut flora. Not recommended for home fermentation due
-  to low CFU counts. Suitable for most dysbiosis patterns except active overgrowth/SIBO.
-notes_for_client: Spore-based probiotics are more resilient than regular probiotics
-  — they survive your stomach acid and can help rebuild your gut lining over 6–9 months
-  of consistent use.
+notes_for_coach: Spore-based probiotics are more resistant to stomach acid and can survive transit to colonize the gut. Recommended
+  for long-term use (6–9 months) to achieve lasting changes to gut flora. Not recommended for home fermentation due to low
+  CFU counts. Suitable for most dysbiosis patterns except active overgrowth/SIBO.
+notes_for_client: Spore-based probiotics are more resilient than regular probiotics — they survive your stomach acid and can
+  help rebuild your gut lining over 6–9 months of consistent use.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-approach-inflammation
   location: Probiotics – Spore-Based Probiotic
-  quote: third is a sport-based probiotic... they have a capability to change the
-    environment of the gut and that should be described for longer time. You cannot
-    describe it for 1 or 2 months, it should be 6 to 9 months.
+  quote: third is a sport-based probiotic... they have a capability to change the environment of the gut and that should be
+    described for longer time. You cannot describe it for 1 or 2 months, it should be 6 to 9 months.
 - id: coconote-fm-gut-dysbiosis-pathogens
   location: Probiotics Section
-  quote: Spore-based probiotic, if you give it 6 to 9 months, they can change the
-    flora. They can change the gut lining or gut lining flora.
+  quote: Spore-based probiotic, if you give it 6 to 9 months, they can change the flora. They can change the gut lining or
+    gut lining flora.
 version: 2
 status: active
 updated_at: '2026-05-05'

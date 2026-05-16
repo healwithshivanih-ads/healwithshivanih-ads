@@ -9,11 +9,9 @@ aliases:
 - antigen cross-reactivity
 - immune cross-targeting
 category: immune
-summary: Foreign antigens (e.g., gluten peptides, casein, LPS) that share amino acid
-  sequence homology with host tissues cause B cells to produce antibodies that mistakenly
-  target self-tissues. This mechanism underlies autoimmune destruction of joints,
-  thyroid, and gut lining in genetically predisposed individuals with increased intestinal
-  permeability.
+summary: Foreign antigens (e.g., gluten peptides, casein, LPS) that share amino acid sequence homology with host tissues cause
+  B cells to produce antibodies that mistakenly target self-tissues. This mechanism underlies autoimmune destruction of joints,
+  thyroid, and gut lining in genetically predisposed individuals with increased intestinal permeability.
 upstream_drivers:
 - leaky-gut
 - gluten-exposure
@@ -50,7 +48,6 @@ linked_to_topics:
 - food-sensitivity
 - hashimotos-thyroiditis
 - autoimmunity-leaky-gut-triad
-- intestinal-permeability
 - autoimmunity-leaky-gut-connection
 evidence_tier: plausible_emerging
 sources:
@@ -59,22 +56,19 @@ sources:
   quote: Dairy proteins mimic human tissue = molecular mimicry.
 - id: vitaone-thyroid-ebook
   location: 'Chapter 6: Causes of Thyroid Disorders'
-  quote: Molecular mimicry is when the immune system mistakes the body's own tissues
-    for foreign invaders due to structural similarity, leading to autoimmune attack.
-    The immune system confuses foreign particles (like viruses, gluten) with thyroid
+  quote: Molecular mimicry is when the immune system mistakes the body's own tissues for foreign invaders due to structural
+    similarity, leading to autoimmune attack. The immune system confuses foreign particles (like viruses, gluten) with thyroid
     tissue.
 - id: coconote-fm-intestinal-permeability
   location: Cross Reactivity and Molecular Mimicry
-  quote: in a simple tongue it's called molecular mimicry and that's why the immune
-    system target your joint and there is a there is an inflammation in the joint.
+  quote: in a simple tongue it's called molecular mimicry and that's why the immune system target your joint and there is
+    a there is an inflammation in the joint.
 - id: coconote-fm-intestinal-permeability-anish
   location: Pathophysiology of Autoimmunity
-  quote: Your B cell is actually creating antibody for that antigen but because antigen
-    that is entering in the body, maybe it's a casein protein, maybe it's a wheat
-    protein, they have a similar amino acid sequence that is in your cartilage… and
-    that is called cross reactivity. So your B cell is actually creating antibody
-    for gluten, but by mistake, targeting your cartilage because the amino acid sequence
-    is matching — so in a simple term it's called molecular mimicry.
+  quote: Your B cell is actually creating antibody for that antigen but because antigen that is entering in the body, maybe
+    it's a casein protein, maybe it's a wheat protein, they have a similar amino acid sequence that is in your cartilage…
+    and that is called cross reactivity. So your B cell is actually creating antibody for gluten, but by mistake, targeting
+    your cartilage because the amino acid sequence is matching — so in a simple term it's called molecular mimicry.
 version: 4
 status: active
 updated_at: '2026-05-05'

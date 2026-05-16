@@ -1,16 +1,11 @@
 slug: ppis-interfere-with-mineral-and-b12-absorption
-statement: Proton pump inhibitors interfere with magnesium, calcium, iron, B12, and
-  zinc absorption.
+statement: Proton pump inhibitors interfere with magnesium, calcium, iron, B12, and zinc absorption.
 evidence_tier: confirm_with_clinician
-rationale: PPI-related mineral and B12 absorption impairment is documented in clinical
-  guidelines and pharmacological research.
-out_of_scope_notes: PPI-related nutrient monitoring and supplementation require clinician
-  management.
+rationale: PPI-related mineral and B12 absorption impairment is documented in clinical guidelines and pharmacological research.
+out_of_scope_notes: PPI-related nutrient monitoring and supplementation require clinician management.
 caveats:
-- Source is a practitioner cheatsheet; PPI-mineral interactions are also supported
-  in primary literature.
-- Encourage PPI users to discuss nutrient status monitoring with their prescribing
-  clinician.
+- Source is a practitioner cheatsheet; PPI-mineral interactions are also supported in primary literature.
+- Encourage PPI users to discuss nutrient status monitoring with their prescribing clinician.
 linked_to_topics:
 - medication-nutrient-interactions
 - gut-dysbiosis
@@ -23,14 +18,12 @@ linked_to_supplements:
 coaching_translation: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Page 21
-  quote: Proton pump inhibitors are listed as interfering with magnesium, calcium,
-    iron, B12, and zinc absorption.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 21
-  quote: Proton pump inhibitors are listed as interfering with magnesium, calcium,
-    iron, B12, and zinc absorption.
+  quote: Proton pump inhibitors are listed as interfering with magnesium, calcium, iron, B12, and zinc absorption.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 21
+  quote: Proton pump inhibitors are listed as interfering with magnesium, calcium, iron, B12, and zinc absorption.
 version: 2
 status: active
 updated_at: '2026-05-06'

@@ -1,16 +1,12 @@
 slug: fermented-yogurt-achieves-higher-probiotic-counts-than-capsules
-statement: Home fermentation of probiotic strains (36-hour protocol) achieves 120–300
-  billion CFU per serving, significantly exceeding typical capsule doses of 1–10 billion
-  CFU.
+statement: Home fermentation of probiotic strains (36-hour protocol) achieves 120–300 billion CFU per serving, significantly
+  exceeding typical capsule doses of 1–10 billion CFU.
 evidence_tier: plausible_emerging
-rationale: Dr. Davis explains the exponential doubling of microbes over 36 hours of
-  fermentation, yielding ~120 billion (crispatus) to ~300 billion (reuteri) CFU per
-  half-cup serving. This is a logical consequence of microbial reproduction kinetics.
-  The specific counts are from Dr. Davis's own formulation and are not from independent
-  peer-reviewed studies.
-coaching_translation: Making probiotic yogurt at home gives you many times more live
-  bacteria per serving than any store-bought capsule—making it far more likely to
-  actually work.
+rationale: Dr. Davis explains the exponential doubling of microbes over 36 hours of fermentation, yielding ~120 billion (crispatus)
+  to ~300 billion (reuteri) CFU per half-cup serving. This is a logical consequence of microbial reproduction kinetics. The
+  specific counts are from Dr. Davis's own formulation and are not from independent peer-reviewed studies.
+coaching_translation: Making probiotic yogurt at home gives you many times more live bacteria per serving than any store-bought
+  capsule—making it far more likely to actually work.
 caveats:
 - Counts are from Dr. Davis's own protocol, not independently validated.
 - Source is expert_consensus interview.
@@ -20,14 +16,14 @@ linked_to_topics:
 - vaginal-microbiome
 linked_to_supplements:
 - lactobacillus-crispatus-probiotic
-- lactobacillus-reuteri-fermented-yogurt
+- lactobacillus-reuteri
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: ask-expert-womens-health-vaginal-microbiome
   location: Fermentation counts and yogurt protocol discussion
-  quote: We're going to let crispatus double about 12 times over 36 hours, and we
-    get something like 120 billion counts per half cup or 120 milliliters.
+  quote: We're going to let crispatus double about 12 times over 36 hours, and we get something like 120 billion counts per
+    half cup or 120 milliliters.
 version: 1
 status: active
 updated_at: '2026-05-05'

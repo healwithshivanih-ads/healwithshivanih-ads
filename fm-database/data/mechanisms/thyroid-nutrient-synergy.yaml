@@ -6,10 +6,9 @@ aliases:
 - thyroid cofactor dependency
 - thyroid cofactor support
 category: endocrine
-summary: Thyroid hormone production and conversion are dependent on iodine, selenium,
-  iron, riboflavin, vitamin A, vitamin D, magnesium, and antioxidant balance. Deficiency
-  or excess of any of these can impair thyroid function, trigger autoimmunity, or
-  worsen symptoms such as fatigue, hair loss, and cold intolerance.
+summary: Thyroid hormone production and conversion are dependent on iodine, selenium, iron, riboflavin, vitamin A, vitamin
+  D, magnesium, and antioxidant balance. Deficiency or excess of any of these can impair thyroid function, trigger autoimmunity,
+  or worsen symptoms such as fatigue, hair loss, and cold intolerance.
 upstream_drivers:
 - iodine deficiency or excess
 - selenium insufficiency
@@ -45,14 +44,14 @@ linked_to_topics:
 - nutrition-deficiency
 evidence_tier: plausible_emerging
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
+- id: vitaone-fm-nutrition-cheatsheets
   location: Key Mechanisms Explained – thyroid-nutrient-synergy
-  quote: Thyroid hormone production and conversion are described as dependent on iodine,
-    selenium, iron, riboflavin, vitamin A, vitamin D, magnesium, and antioxidant balance.
+  quote: Thyroid hormone production and conversion are described as dependent on iodine, selenium, iron, riboflavin, vitamin
+    A, vitamin D, magnesium, and antioxidant balance.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Key Mechanisms Explained — thyroid-nutrient-synergy
-  quote: Thyroid hormone production and conversion are described as dependent on iodine,
-    selenium, iron, riboflavin, vitamin A, vitamin D, magnesium, and antioxidant balance.
+  quote: Thyroid hormone production and conversion are described as dependent on iodine, selenium, iron, riboflavin, vitamin
+    A, vitamin D, magnesium, and antioxidant balance.
 version: 2
 status: active
 updated_at: '2026-05-06'

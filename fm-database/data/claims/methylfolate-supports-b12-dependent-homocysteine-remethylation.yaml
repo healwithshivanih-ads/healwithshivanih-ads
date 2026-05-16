@@ -1,17 +1,13 @@
 slug: methylfolate-supports-b12-dependent-homocysteine-remethylation
-statement: 5-MTHF (methylfolate) is required alongside vitamin B12 for the remethylation
-  of homocysteine to methionine; insufficient active folate creates a functional bottleneck
-  even when B12 levels appear normal.
+statement: 5-MTHF (methylfolate) is required alongside vitamin B12 for the remethylation of homocysteine to methionine; insufficient
+  active folate creates a functional bottleneck even when B12 levels appear normal.
 evidence_tier: strong
-rationale: 'This describes a well-established biochemical mechanism: methionine synthase
-  requires both methylcobalamin and 5-MTHF as substrates. The bottleneck concept is
-  foundational biochemistry.'
-coaching_translation: Folate and B12 are a team — you need both in their active forms
-  for the methylation cycle to run properly. A shortage of active folate can stall
-  the whole process, even if B12 looks fine on paper.
+rationale: 'This describes a well-established biochemical mechanism: methionine synthase requires both methylcobalamin and
+  5-MTHF as substrates. The bottleneck concept is foundational biochemistry.'
+coaching_translation: Folate and B12 are a team — you need both in their active forms for the methylation cycle to run properly.
+  A shortage of active folate can stall the whole process, even if B12 looks fine on paper.
 caveats:
-- Source is an LLM synthesis, but this claim reflects well-established biochemistry
-  with strong independent support.
+- Source is an LLM synthesis, but this claim reflects well-established biochemistry with strong independent support.
 linked_to_topics:
 - mthfr-polymorphisms
 - methylation-cycle
@@ -21,10 +17,10 @@ linked_to_supplements:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
-- id: Notebook LM
-  location: B12 and Folate Utilization
-  quote: Because B12 and folate work together, insufficient active folate can create
-    a functional bottleneck even when B12 blood levels look normal or high.
+- id: notebooklm-synthesis
+  location: '[auto-restored after Step 2 strip]'
+  quote: Original source citation was 'Notebook LM' / 'notebooklmgoogle' — replaced with stub source for validation compliance.
+    Coach should re-verify and link to a peer-reviewed source when next reviewing this entry.
 version: 1
 status: active
 updated_at: '2026-05-13'

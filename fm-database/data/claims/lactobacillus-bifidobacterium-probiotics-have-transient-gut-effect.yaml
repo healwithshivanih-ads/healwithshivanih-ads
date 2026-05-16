@@ -1,21 +1,18 @@
 slug: lactobacillus-bifidobacterium-probiotics-have-transient-gut-effect
-statement: Standard Lactobacillus and Bifidobacterium probiotics have only a transient
-  effect on gut flora and do not permanently colonize or change the gut lining.
+statement: Standard Lactobacillus and Bifidobacterium probiotics have only a transient effect on gut flora and do not permanently
+  colonize or change the gut lining.
 evidence_tier: plausible_emerging
-rationale: The lecturer asserts that most commercially available probiotics do not
-  survive stomach acid or permanently alter gut lining flora, providing only short-term
-  fermentation benefits in the intestine. This is consistent with some published literature
-  on probiotic transit but is not fully settled consensus.
-coaching_translation: Explain to clients that standard probiotics are helpful but
-  work best when taken consistently and alongside prebiotic foods. They are not a
-  one-time fix for gut health.
+rationale: The lecturer asserts that most commercially available probiotics do not survive stomach acid or permanently alter
+  gut lining flora, providing only short-term fermentation benefits in the intestine. This is consistent with some published
+  literature on probiotic transit but is not fully settled consensus.
+coaching_translation: Explain to clients that standard probiotics are helpful but work best when taken consistently and alongside
+  prebiotic foods. They are not a one-time fix for gut health.
 caveats:
 - Source is an expert lecture (expert_consensus, moderate quality), not primary literature.
-- Some newer research suggests certain strains may have more durable effects than
-  described here — clinician should confirm.
+- Some newer research suggests certain strains may have more durable effects than described here — clinician should confirm.
 linked_to_topics:
 - gut-dysbiosis
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 linked_to_supplements:
 - lactobacillus-probiotic
 - bifidobacterium-probiotic
@@ -24,9 +21,8 @@ linked_to_mechanisms: []
 sources:
 - id: coconote-fm-gut-dysbiosis-pathogens
   location: Probiotics Section
-  quote: all the probiotics that you are giving to your patient, it will not going
-    to change the gut lining or you can say it's not going to ferment over there.
-    It will not change your pylon. So they have a temporary effect.
+  quote: all the probiotics that you are giving to your patient, it will not going to change the gut lining or you can say
+    it's not going to ferment over there. It will not change your pylon. So they have a temporary effect.
 version: 1
 status: active
 updated_at: '2026-05-05'

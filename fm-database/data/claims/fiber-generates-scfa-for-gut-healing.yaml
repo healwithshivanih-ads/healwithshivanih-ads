@@ -1,16 +1,14 @@
 slug: fiber-generates-scfa-for-gut-healing
-statement: Dietary fiber fermented by gut microbiota generates short-chain fatty acids
-  (SCFAs), which are essential nutrients for intestinal healing and colonocyte health.
+statement: Dietary fiber fermented by gut microbiota generates short-chain fatty acids (SCFAs), which are essential nutrients
+  for intestinal healing and colonocyte health.
 evidence_tier: strong
-rationale: The role of fiber in SCFA production (particularly butyrate) and colonocyte
-  health is well-established in the literature with strong mechanistic and clinical
-  evidence.
-coaching_translation: Eating enough fiber feeds your good gut bacteria, which then
-  produce compounds called short-chain fatty acids that directly nourish and heal
-  the cells lining your gut.
+rationale: The role of fiber in SCFA production (particularly butyrate) and colonocyte health is well-established in the literature
+  with strong mechanistic and clinical evidence.
+coaching_translation: Eating enough fiber feeds your good gut bacteria, which then produce compounds called short-chain fatty
+  acids that directly nourish and heal the cells lining your gut.
 caveats: []
 linked_to_topics:
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 - 5r-gut-healing-protocol
 linked_to_supplements:
 - prebiotic-fiber
@@ -19,8 +17,8 @@ linked_to_mechanisms: []
 sources:
 - id: coconote-fm-intestinal-permeability
   location: 5R Protocol – Repair
-  quote: fiber is very important. They can create the short chain fatty acid and short
-    chain fatty acid is very important as a gut nutrient. They can heal your intestine.
+  quote: fiber is very important. They can create the short chain fatty acid and short chain fatty acid is very important
+    as a gut nutrient. They can heal your intestine.
 version: 1
 status: active
 updated_at: '2026-05-05'

@@ -1,10 +1,9 @@
 slug: high-dose-b5-may-compete-with-biotin
 statement: High-dose vitamin B5 may compete with biotin and lipoic acid.
 evidence_tier: confirm_with_clinician
-rationale: B5 and biotin share transport mechanisms; this is a clinically plausible
-  interaction warranting professional oversight at high doses.
-out_of_scope_notes: High-dose B5 supplementation and biotin/lipoic acid competition
-  require clinician assessment.
+rationale: B5 and biotin share transport mechanisms; this is a clinically plausible interaction warranting professional oversight
+  at high doses.
+out_of_scope_notes: High-dose B5 supplementation and biotin/lipoic acid competition require clinician assessment.
 caveats:
 - Source is a practitioner cheatsheet without primary citations.
 - Relevant primarily at therapeutic (gram-level) doses of B5.
@@ -19,14 +18,12 @@ linked_to_supplements:
 coaching_translation: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Page 4
-  quote: High-dose vitamin B5 is described as potentially competing with biotin and
-    lipoic acid.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 4
-  quote: High-dose vitamin B5 is described as potentially competing with biotin and
-    lipoic acid.
+  quote: High-dose vitamin B5 is described as potentially competing with biotin and lipoic acid.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 4
+  quote: High-dose vitamin B5 is described as potentially competing with biotin and lipoic acid.
 version: 2
 status: active
 updated_at: '2026-05-06'

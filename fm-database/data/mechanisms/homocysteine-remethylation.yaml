@@ -4,9 +4,8 @@ aliases:
 - methionine synthesis
 - homocysteine-to-methionine conversion
 category: metabolic
-summary: 5-MTHF donates a methyl group to cobalamin (B12), which then remethylates
-  homocysteine to methionine via methionine synthase. Both adequate active folate
-  and functional B12 are required. MTHFR variants reduce 5-MTHF supply, slowing this
+summary: 5-MTHF donates a methyl group to cobalamin (B12), which then remethylates homocysteine to methionine via methionine
+  synthase. Both adequate active folate and functional B12 are required. MTHFR variants reduce 5-MTHF supply, slowing this
   reaction and raising homocysteine.
 upstream_drivers:
 - mthfr-enzyme-dysfunction
@@ -24,12 +23,7 @@ linked_to_topics:
 - mthfr-polymorphisms
 - methylation-cycle
 evidence_tier: strong
-sources:
-- id: Notebook LM
-  location: B12 and Folate Utilization
-  quote: MTHFR helps convert folate into 5-MTHF, the active folate form needed to
-    remethylate homocysteine into methionine. Vitamin B12 is also required for this
-    reaction.
+sources: []
 version: 1
 status: active
 updated_at: '2026-05-13'

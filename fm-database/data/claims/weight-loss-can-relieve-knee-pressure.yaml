@@ -1,10 +1,10 @@
 slug: weight-loss-can-relieve-knee-pressure
 statement: Reducing 5–10% of body weight relieves joint pressure in knee pain.
 evidence_tier: plausible_emerging
-rationale: The relationship between weight reduction and reduction in knee joint load
-  is supported by biomechanical research and RCT evidence in osteoarthritis.
-coaching_translation: Gentle, sustainable weight reduction through dietary and movement
-  changes may significantly improve knee pain and function.
+rationale: The relationship between weight reduction and reduction in knee joint load is supported by biomechanical research
+  and RCT evidence in osteoarthritis.
+coaching_translation: Gentle, sustainable weight reduction through dietary and movement changes may significantly improve
+  knee pain and function.
 caveats:
 - Source is a practitioner cheatsheet without primary citations.
 - Source is practitioner cheatsheet.
@@ -15,7 +15,7 @@ out_of_scope_notes: ''
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
+- id: vitaone-fm-nutrition-cheatsheets
   location: Page 30
   quote: Reducing 5-10% of body weight is described as relieving joint pressure.
 - id: vitaone-fm-nutrition-cheatsheets

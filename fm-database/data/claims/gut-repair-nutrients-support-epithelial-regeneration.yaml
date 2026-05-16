@@ -1,21 +1,17 @@
 slug: gut-repair-nutrients-support-epithelial-regeneration
-statement: Adequate protein, omega-3 fatty acids, zinc, vitamin D, and B vitamins
-  are required to support weekly intestinal epithelial regeneration and maintain mucosal
-  barrier function.
+statement: Adequate protein, omega-3 fatty acids, zinc, vitamin D, and B vitamins are required to support weekly intestinal
+  epithelial regeneration and maintain mucosal barrier function.
 evidence_tier: plausible_emerging
-rationale: Individual nutrients listed each have mechanistic support for gut epithelial
-  health. The combined claim is logical given the high turnover rate of the intestinal
-  epithelium. Holistic evidence for this specific nutrient cluster as a protocol is
-  from expert consensus rather than single RCTs.
-coaching_translation: Your gut lining rebuilds itself every week and needs building
-  blocks to do so. Ensuring you get enough protein, healthy fats, zinc, vitamin D,
-  and B vitamins is foundational for gut health.
+rationale: Individual nutrients listed each have mechanistic support for gut epithelial health. The combined claim is logical
+  given the high turnover rate of the intestinal epithelium. Holistic evidence for this specific nutrient cluster as a protocol
+  is from expert consensus rather than single RCTs.
+coaching_translation: Your gut lining rebuilds itself every week and needs building blocks to do so. Ensuring you get enough
+  protein, healthy fats, zinc, vitamin D, and B vitamins is foundational for gut health.
 caveats:
-- Specific therapeutic doses of each nutrient should be confirmed with a clinician,
-  especially vitamin D and zinc.
+- Specific therapeutic doses of each nutrient should be confirmed with a clinician, especially vitamin D and zinc.
 - Source is expert lecture (moderate quality).
 linked_to_topics:
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 - 5r-gut-healing-protocol
 linked_to_supplements:
 - l-glutamine
@@ -28,9 +24,8 @@ linked_to_mechanisms: []
 sources:
 - id: coconote-fm-intestinal-permeability-anish
   location: 5R Protocol — Repair
-  quote: If you want to create a new epithelium or regenerate the epithelium, then
-    you require basic nutrition… Gut lining and the primary amino acid is glutamine
-    and that can help in rebuilding your gut epithelial cell. Zinc is very important
+  quote: If you want to create a new epithelium or regenerate the epithelium, then you require basic nutrition… Gut lining
+    and the primary amino acid is glutamine and that can help in rebuilding your gut epithelial cell. Zinc is very important
     for your gastric mucosa. Vitamin D and all the B vitamins are important.
 version: 1
 status: active

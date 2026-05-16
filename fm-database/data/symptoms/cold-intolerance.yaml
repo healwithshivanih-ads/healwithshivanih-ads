@@ -17,8 +17,8 @@ aliases:
 - hypothyroid-like symptoms
 category: metabolic
 severity: common
-description: Increased sensitivity to cold temperatures due to reduced oxygen delivery
-  to peripheral tissues and impaired thermoregulation in iron deficiency.
+description: Increased sensitivity to cold temperatures due to reduced oxygen delivery to peripheral tissues and impaired
+  thermoregulation in iron deficiency.
 linked_to_topics:
 - thyroid
 - hypothyroidism
@@ -41,19 +41,16 @@ sources:
   quote: Weight gain, fatigue, cold intolerance
 - id: vitaone-thyroid-toolkit
   location: Thyroid Screening Questionnaire
-  quote: My hands and feet are cold to the touch and I frequently feel cold when others
-    do not.
+  quote: My hands and feet are cold to the touch and I frequently feel cold when others do not.
 - id: vitaone-health-coaching-toolkit
   location: Thyroid Screening Questionnaire — Signs and Symptoms
-  quote: My hands and feet are cold to the touch and I frequently feel cold when others
-    do not
+  quote: My hands and feet are cold to the touch and I frequently feel cold when others do not
 - id: coconote-fm-iron-deficiency-anemia
   location: Symptoms of Iron Deficiency section
   quote: Restless leg, cold intolerance because of lack of oxygen.
-- id: Vitaone-fm-nutrition-cheatsheets
+- id: vitaone-fm-nutrition-cheatsheets
   location: Symptoms Discussed
-  quote: Goiter, cold intolerance, weight gain, and poor cognition - Linked to iodine
-    deficiency.
+  quote: Goiter, cold intolerance, weight gain, and poor cognition - Linked to iodine deficiency.
 version: 5
 status: active
 updated_at: '2026-05-05'

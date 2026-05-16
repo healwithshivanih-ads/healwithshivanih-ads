@@ -1,18 +1,16 @@
 slug: glutamine-is-primary-gut-epithelial-fuel
-statement: L-glutamine is the primary amino acid fuel for intestinal epithelial cells
-  and supports rebuilding of the gut lining.
+statement: L-glutamine is the primary amino acid fuel for intestinal epithelial cells and supports rebuilding of the gut lining.
 evidence_tier: plausible_emerging
-rationale: Glutamine is a well-established fuel source for rapidly dividing enterocytes
-  and is used therapeutically in gut permeability and critical illness. Clinical RCT
-  evidence in non-critical populations is less robust but the mechanism is well-supported.
-coaching_translation: Glutamine is like fuel for your gut lining's repair crew. It's
-  one of the key supplements used in gut healing protocols.
+rationale: Glutamine is a well-established fuel source for rapidly dividing enterocytes and is used therapeutically in gut
+  permeability and critical illness. Clinical RCT evidence in non-critical populations is less robust but the mechanism is
+  well-supported.
+coaching_translation: Glutamine is like fuel for your gut lining's repair crew. It's one of the key supplements used in gut
+  healing protocols.
 caveats:
 - Therapeutic dose for gut permeability repair should be confirmed with a clinician.
-- Source is expert lecture; specific RCT evidence for dose-response in non-critical
-  populations is limited.
+- Source is expert lecture; specific RCT evidence for dose-response in non-critical populations is limited.
 linked_to_topics:
-- intestinal-permeability
+- autoimmunity-leaky-gut-triad
 - 5r-gut-healing-protocol
 linked_to_supplements:
 - l-glutamine
@@ -21,8 +19,7 @@ linked_to_mechanisms: []
 sources:
 - id: coconote-fm-intestinal-permeability-anish
   location: 5R Protocol — Repair
-  quote: The primary amino acid is glutamine and that can help in rebuilding your
-    gut epithelial cell.
+  quote: The primary amino acid is glutamine and that can help in rebuilding your gut epithelial cell.
 version: 1
 status: active
 updated_at: '2026-05-05'

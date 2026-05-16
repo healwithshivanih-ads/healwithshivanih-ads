@@ -1,13 +1,10 @@
 slug: riboflavin-supports-red-blood-cells-and-methylation
-statement: Riboflavin supports red blood cell production, lowers homocysteine, and
-  enhances methylation.
+statement: Riboflavin supports red blood cell production, lowers homocysteine, and enhances methylation.
 evidence_tier: plausible_emerging
-rationale: Riboflavin's role as a cofactor for MTHFR and homocysteine metabolism is
-  supported by credible biochemical evidence and some clinical trials, particularly
-  for MTHFR C677T variants.
-coaching_translation: Riboflavin-rich foods (eggs, liver, dairy, nutritional yeast)
-  support both red blood cell health and methylation, particularly for clients with
-  MTHFR variants.
+rationale: Riboflavin's role as a cofactor for MTHFR and homocysteine metabolism is supported by credible biochemical evidence
+  and some clinical trials, particularly for MTHFR C677T variants.
+coaching_translation: Riboflavin-rich foods (eggs, liver, dairy, nutritional yeast) support both red blood cell health and
+  methylation, particularly for clients with MTHFR variants.
 caveats:
 - Source is a practitioner cheatsheet without specific citation to primary RCTs.
 - Source is practitioner cheatsheet.
@@ -20,14 +17,12 @@ linked_to_supplements:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Page 3
-  quote: Riboflavin is described as supporting red blood cell production, lowering
-    homocysteine, and enhancing methylation.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 3
-  quote: Riboflavin is described as supporting red blood cell production, lowering
-    homocysteine, and enhancing methylation.
+  quote: Riboflavin is described as supporting red blood cell production, lowering homocysteine, and enhancing methylation.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 3
+  quote: Riboflavin is described as supporting red blood cell production, lowering homocysteine, and enhancing methylation.
 version: 2
 status: active
 updated_at: '2026-05-06'

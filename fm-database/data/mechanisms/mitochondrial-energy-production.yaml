@@ -34,7 +34,7 @@ sources:
 - id: vitaone-nutrition-cheatsheet
   location: Magnesium – The Calming Mineral
   quote: Co-factor for >300 enzymes - central to ATP production and energy metabolism.
-- id: Vitaone-fm-nutrition-cheatsheets
+- id: vitaone-fm-nutrition-cheatsheets
   location: Key Mechanisms Explained – nutrient-dependent-energy-metabolism
   quote: B vitamins and minerals are described as cofactors for ATP production, carbohydrate metabolism, fat metabolism, and
     mitochondrial protection.

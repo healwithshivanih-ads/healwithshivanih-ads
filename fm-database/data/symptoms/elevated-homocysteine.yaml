@@ -13,11 +13,10 @@ aliases:
 - hyperhomocysteinaemia
 category: cardiovascular
 severity: concerning
-description: Above-normal serum homocysteine, reflecting impaired methylation and/or
-  B12/folate insufficiency. Associated with cardiovascular, neurological, and pregnancy
-  risks.
-when_to_refer: Any confirmed elevation should be assessed and managed by a clinician
-  to rule out serious underlying causes and determine treatment.
+description: Above-normal serum homocysteine, reflecting impaired methylation and/or B12/folate insufficiency. Associated
+  with cardiovascular, neurological, and pregnancy risks.
+when_to_refer: Any confirmed elevation should be assessed and managed by a clinician to rule out serious underlying causes
+  and determine treatment.
 linked_to_topics:
 - methylation-mthfr
 - homocysteine-and-methylation
@@ -54,29 +53,21 @@ sources:
   quote: So if you have high homocysteine, that means you have methylation defect.
 - id: coconote-fm-liver-detox-part2
   location: Homocysteine & Methylation Section
-  quote: if you look at the homosexual level, then you think about the difficulty
-    in phase 2 because the methylation pathway is not optimized. So I teach you that
-    homosexual is the primary indicator of the methylation defect apart from B2M.
+  quote: if you look at the homosexual level, then you think about the difficulty in phase 2 because the methylation pathway
+    is not optimized. So I teach you that homosexual is the primary indicator of the methylation defect apart from B2M.
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Homocysteine section
-  quote: Raised levels of homocysteine generally indicate a potential risk of getting
-    heart attacks as well as many neurological disorders like stroke and dementia.
+  quote: Raised levels of homocysteine generally indicate a potential risk of getting heart attacks as well as many neurological
+    disorders like stroke and dementia.
 - id: coconote-fm-stopping-anti-cholesterol-meds
   location: Young patient cardiac arrest mechanism section
-  quote: Your high homocysteine, all the factors they actually increase your clotting
-    mechanism.
+  quote: Your high homocysteine, all the factors they actually increase your clotting mechanism.
 - id: vitaone-cvs-risk-assessment
   location: Lab Results (Slide 16)
-  quote: Men with extremely high homocysteine levels were three times more likely
-    to have a heart attack than others.
-- id: Notebook LM
-  location: Practical Testing Markers Mentioned
-  quote: 'Homocysteine: may rise when folate, B12, B6, riboflavin, or methylation
-    pathways are under-supported.'
+  quote: Men with extremely high homocysteine levels were three times more likely to have a heart attack than others.
 - id: coach-shivani
   location: Coach Observation
-  quote: they can reduce conversion of folate into active 5-MTHF, which may impair
-    B12 function and raise homocysteine
+  quote: they can reduce conversion of folate into active 5-MTHF, which may impair B12 function and raise homocysteine
 version: 6
 status: active
 updated_at: '2026-05-13'

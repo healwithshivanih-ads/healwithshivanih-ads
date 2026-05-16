@@ -1,9 +1,8 @@
 slug: rbc-magnesium-preferred-over-serum
-statement: Serum magnesium is unreliable and RBC magnesium is a more accurate reflection
-  of magnesium status.
+statement: Serum magnesium is unreliable and RBC magnesium is a more accurate reflection of magnesium status.
 evidence_tier: confirm_with_clinician
-rationale: RBC magnesium better reflects intracellular magnesium status than serum;
-  however lab test ordering and interpretation is clinician scope.
+rationale: RBC magnesium better reflects intracellular magnesium status than serum; however lab test ordering and interpretation
+  is clinician scope.
 out_of_scope_notes: Lab test selection and interpretation is outside coaching scope.
 caveats:
 - Source is a practitioner cheatsheet without primary citations.
@@ -17,7 +16,7 @@ linked_to_supplements:
 coaching_translation: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
+- id: vitaone-fm-nutrition-cheatsheets
   location: Page 10
   quote: The source says serum magnesium is unreliable and RBC magnesium is more accurate.
 - id: vitaone-fm-nutrition-cheatsheets

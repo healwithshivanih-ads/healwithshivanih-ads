@@ -1,12 +1,11 @@
 slug: vitamin-c-supports-collagen-and-hormone-activation
-statement: Vitamin C supports collagen synthesis, adrenal and thyroid hormone activation,
-  neurotransmitters, and antioxidant defense.
+statement: Vitamin C supports collagen synthesis, adrenal and thyroid hormone activation, neurotransmitters, and antioxidant
+  defense.
 evidence_tier: plausible_emerging
-rationale: Vitamin C's role as a cofactor for prolyl hydroxylase (collagen) and dopamine
-  beta-hydroxylase (neurotransmitters) is well-established; adrenal support via cortisol
-  synthesis is credible.
-coaching_translation: Encourage citrus, berries, capsicum, and raw vegetables as vitamin
-  C sources for skin, immunity, and adrenal resilience.
+rationale: Vitamin C's role as a cofactor for prolyl hydroxylase (collagen) and dopamine beta-hydroxylase (neurotransmitters)
+  is well-established; adrenal support via cortisol synthesis is credible.
+coaching_translation: Encourage citrus, berries, capsicum, and raw vegetables as vitamin C sources for skin, immunity, and
+  adrenal resilience.
 caveats:
 - Source is a practitioner cheatsheet without primary citations.
 - Source is practitioner cheatsheet.
@@ -19,14 +18,14 @@ linked_to_supplements:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Page 8
-  quote: Vitamin C is described as supporting collagen synthesis, adrenal and thyroid
-    hormone activation, neurotransmitters, and antioxidant defense.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 8
-  quote: Vitamin C is described as supporting collagen synthesis, adrenal and thyroid
-    hormone activation, neurotransmitters, and antioxidant defense.
+  quote: Vitamin C is described as supporting collagen synthesis, adrenal and thyroid hormone activation, neurotransmitters,
+    and antioxidant defense.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 8
+  quote: Vitamin C is described as supporting collagen synthesis, adrenal and thyroid hormone activation, neurotransmitters,
+    and antioxidant defense.
 version: 2
 status: active
 updated_at: '2026-05-06'

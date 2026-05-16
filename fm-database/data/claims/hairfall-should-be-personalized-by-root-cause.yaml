@@ -1,12 +1,11 @@
 slug: hairfall-should-be-personalized-by-root-cause
-statement: Hairfall supplementation should be personalized based on nutritional, hormonal,
-  stress-related, or autoimmune root cause.
+statement: Hairfall supplementation should be personalized based on nutritional, hormonal, stress-related, or autoimmune root
+  cause.
 evidence_tier: fm_specific_thin
-rationale: Root-cause personalization for hairfall is FM-specific clinical practice
-  without strong RCT evidence but is biologically reasonable given heterogeneous causes
-  of hair loss.
-coaching_translation: 'Before recommending hair supplements, encourage a root-cause
-  assessment: get ferritin, B12, zinc, folate, biotin, TSH, and hormonal labs first.'
+rationale: Root-cause personalization for hairfall is FM-specific clinical practice without strong RCT evidence but is biologically
+  reasonable given heterogeneous causes of hair loss.
+coaching_translation: 'Before recommending hair supplements, encourage a root-cause assessment: get ferritin, B12, zinc, folate,
+  biotin, TSH, and hormonal labs first.'
 caveats:
 - Source is a practitioner cheatsheet without primary citations.
 - Hairfall root-cause diagnosis requires clinical evaluation.
@@ -28,14 +27,14 @@ linked_to_supplements:
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Page 28
-  quote: The source states that hairfall supplementation should be personalized based
-    on nutritional, hormonal, stress-related, or autoimmune root cause.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Page 28
-  quote: The source states that hairfall supplementation should be personalized based
-    on nutritional, hormonal, stress-related, or autoimmune root cause.
+  quote: The source states that hairfall supplementation should be personalized based on nutritional, hormonal, stress-related,
+    or autoimmune root cause.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 28
+  quote: The source states that hairfall supplementation should be personalized based on nutritional, hormonal, stress-related,
+    or autoimmune root cause.
 version: 2
 status: active
 updated_at: '2026-05-06'

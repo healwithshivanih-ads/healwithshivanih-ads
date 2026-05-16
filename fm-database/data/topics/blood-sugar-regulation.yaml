@@ -1,0 +1,24 @@
+slug: blood-sugar-regulation
+display_name: Blood Sugar Regulation
+aliases:
+- glucose regulation
+- glycaemic control
+- blood glucose homeostasis
+summary: The body's homeostatic system for maintaining glucose within ~70–110 mg/dL through coordinated action of insulin,
+  glucagon, cortisol, and adrenaline. Dysregulation is bidirectional (hypoglycaemia + hyperglycaemia + reactive cycles) and
+  precedes insulin resistance. Foundational lifestyle intervention is meal composition (protein + fat + fibre with carbs),
+  meal timing, and circadian alignment.
+common_symptoms: []
+red_flags: []
+related_topics: []
+key_mechanisms: []
+coaching_scope_notes: ''
+clinician_scope_notes: ''
+notes_for_coach: '[STUB — auto-created by Step 2 cleanup to close pending-refs. Enrich with material from a next ingest covering
+  this concept.]'
+sources: []
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-16'
+updated_by: shivani

@@ -1,31 +1,25 @@
 slug: molecular-mimicry-links-leaky-gut-to-joint-autoimmunity
-statement: Molecular mimicry between food antigens (e.g., gluten, casein) and host
-  tissues (e.g., cartilage) — enabled by leaky gut — can cause B cells to produce
-  antibodies that mistakenly attack self-tissue, driving joint inflammation.
+statement: Molecular mimicry between food antigens (e.g., gluten, casein) and host tissues (e.g., cartilage) — enabled by
+  leaky gut — can cause B cells to produce antibodies that mistakenly attack self-tissue, driving joint inflammation.
 evidence_tier: plausible_emerging
-rationale: Molecular mimicry is an established immunological concept. The document
-  provides a mechanistic explanation linking gluten peptide homology with cartilage
-  amino acid sequences to autoimmune joint disease. Direct RCT evidence linking leaky
+rationale: Molecular mimicry is an established immunological concept. The document provides a mechanistic explanation linking
+  gluten peptide homology with cartilage amino acid sequences to autoimmune joint disease. Direct RCT evidence linking leaky
   gut → molecular mimicry → joint damage is limited.
-coaching_translation: When the gut barrier is leaky, food proteins can get into the
-  bloodstream and confuse the immune system into attacking your own joints, thyroid,
-  or other tissues.
+coaching_translation: When the gut barrier is leaky, food proteins can get into the bloodstream and confuse the immune system
+  into attacking your own joints, thyroid, or other tissues.
 caveats:
-- Source is expert consensus. Mechanism is biologically plausible but RCT-level causal
-  evidence linking leaky gut to joint autoimmunity via molecular mimicry in humans
-  is limited.
+- Source is expert consensus. Mechanism is biologically plausible but RCT-level causal evidence linking leaky gut to joint
+  autoimmunity via molecular mimicry in humans is limited.
 linked_to_topics:
 - autoimmunity-leaky-gut-triad
-- intestinal-permeability
 linked_to_supplements: []
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-intestinal-permeability
   location: Cross Reactivity and Molecular Mimicry
-  quote: so your cartilage amino acid sequence is matching to your gluten amino acid
-    sequence and immune system is creating antibody for gluten but by mistake is targeting
-    your cartilage... and that's why the immune system target your joint.
+  quote: so your cartilage amino acid sequence is matching to your gluten amino acid sequence and immune system is creating
+    antibody for gluten but by mistake is targeting your cartilage... and that's why the immune system target your joint.
 version: 1
 status: active
 updated_at: '2026-05-05'

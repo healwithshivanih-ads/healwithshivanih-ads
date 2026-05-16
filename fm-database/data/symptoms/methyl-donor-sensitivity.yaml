@@ -6,20 +6,14 @@ aliases:
 - methyl sensitivity
 category: neurological
 severity: common
-description: A cluster of symptoms — including anxiety, insomnia, irritability, and
-  headaches — that some individuals experience when taking high-dose methylfolate
-  or other methyl donors, particularly those sensitive to changes in methylation capacity.
-when_to_refer: If symptoms are severe or persistent, review supplement protocol with
-  clinician before continuing.
+description: A cluster of symptoms — including anxiety, insomnia, irritability, and headaches — that some individuals experience
+  when taking high-dose methylfolate or other methyl donors, particularly those sensitive to changes in methylation capacity.
+when_to_refer: If symptoms are severe or persistent, review supplement protocol with clinician before continuing.
 linked_to_topics:
 - mthfr-polymorphisms
 linked_to_mechanisms:
 - methyl-trap
-sources:
-- id: Notebook LM
-  location: Methylfolate and High B12 Labs
-  quote: Anxiety, insomnia, irritability, headaches, or other methyl-donor sensitivity
-    symptoms.
+sources: []
 version: 1
 status: active
 updated_at: '2026-05-13'

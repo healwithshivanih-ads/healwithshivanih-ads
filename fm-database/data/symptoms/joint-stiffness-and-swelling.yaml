@@ -13,12 +13,10 @@ aliases:
 - reduced joint mobility
 category: musculoskeletal
 severity: concerning
-description: Joint stiffness, swelling, redness, warmth, and reduced mobility discussed
-  in knee pain patterns including osteoarthritis, rheumatoid arthritis, gout, metabolic
-  joint pain, and hormonal joint pain.
-when_to_refer: Refer for clinical assessment and imaging (X-ray, MRI) if joint pain
-  is severe, persistent, or associated with systemic symptoms (fever, significant
-  weight loss). RA, gout, and post-injury presentations require clinical diagnosis.
+description: Joint stiffness, swelling, redness, warmth, and reduced mobility discussed in knee pain patterns including osteoarthritis,
+  rheumatoid arthritis, gout, metabolic joint pain, and hormonal joint pain.
+when_to_refer: Refer for clinical assessment and imaging (X-ray, MRI) if joint pain is severe, persistent, or associated with
+  systemic symptoms (fever, significant weight loss). RA, gout, and post-injury presentations require clinical diagnosis.
 linked_to_topics:
 - joint-pain
 - chronic-inflammation
@@ -28,14 +26,14 @@ linked_to_mechanisms:
 - oxidative-stress-and-inflammation
 - gut-barrier-and-nutrient-absorption
 sources:
-- id: Vitaone-fm-nutrition-cheatsheets
-  location: Symptoms Discussed
-  quote: Joint stiffness, swelling, redness, warmth, reduced mobility, and cyclic
-    knee stiffness - Discussed in knee pain patterns.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Symptoms Discussed
-  quote: Joint stiffness, swelling, redness, warmth, reduced mobility, and cyclic
-    knee stiffness - Discussed in knee pain patterns.
+  quote: Joint stiffness, swelling, redness, warmth, reduced mobility, and cyclic knee stiffness - Discussed in knee pain
+    patterns.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Symptoms Discussed
+  quote: Joint stiffness, swelling, redness, warmth, reduced mobility, and cyclic knee stiffness - Discussed in knee pain
+    patterns.
 version: 1
 status: active
 updated_at: '2026-05-06'
