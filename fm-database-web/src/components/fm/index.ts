@@ -66,6 +66,9 @@ export type { FmInboundMessagesBannerProps } from "./FmInboundMessagesBanner";
 export { FmIntakeActivityBanner } from "./FmIntakeActivityBanner";
 export type { FmIntakeActivityBannerProps } from "./FmIntakeActivityBanner";
 
+export { FmScheduleDuePanel } from "./FmScheduleDuePanel";
+export type { FmScheduleDuePanelProps } from "./FmScheduleDuePanel";
+
 export { FmWhatsAppDraftPanel } from "./FmWhatsAppDraftPanel";
 export type { FmWhatsAppDraftPanelProps } from "./FmWhatsAppDraftPanel";
 

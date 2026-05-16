@@ -38,6 +38,7 @@ import {
   FmCatalogueCommitBanner,
   FmInboundMessagesBanner,
   FmIntakeActivityBanner,
+  FmScheduleDuePanel,
 } from "@/components/fm";
 import { TriageSections, type TriageRow, type SignalKind } from "./triage-sections";
 
@@ -192,6 +193,18 @@ export default async function DashboardV2() {
     clients as Array<Record<string, unknown>>,
     7,
     latestPlanUpdateByClient,
+  );
+
+  // "Time to schedule next session" rows — clients ≥12d since last
+  // session OR with plan_period_recheck_date overdue. Each row carries
+  // its own auto-picked event type so the bulk-send button respects
+  // per-client journey state (active programme → Coaching, intake
+  // pending → Programme Intake, prospect → Discovery).
+  const { getSchedulingDueRows } = await import("@/lib/fmdb/scheduling-due");
+  const scheduleDueRows = await getSchedulingDueRows(
+    clients as Array<Record<string, unknown> & { client_id: string }>,
+    plans as Array<Record<string, unknown>>,
+    todayStr,
   );
 
   // Compute signals
@@ -367,6 +380,7 @@ export default async function DashboardV2() {
         <FmCatalogueCommitBanner initialStatus={catalogueStatus} />
 
         {/* WhatsApp inbound messages — design 10A with unread badges */}
+        <FmScheduleDuePanel rows={scheduleDueRows} />
         <FmIntakeActivityBanner entries={intakeActivity} />
         <FmInboundMessagesBanner messages={inboundMessages} windowDays={7} inboxHref="/messages" />
 
