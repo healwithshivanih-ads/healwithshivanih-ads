@@ -666,18 +666,26 @@ export default async function ClientV2Page({
         stageCta={stageInfo.cta}
         stageCtaHref={
           stageInfo.stage === "no_plan"
-            ? `/clients/${id}?tab=sessions`
+            ? `/clients-v2/${id}/analyse`
             : stageInfo.stage === "draft"
               ? `/clients-v2/${id}/plan/edit/${plansForClient.find((p) => (p._bucket ?? p.status) !== "published")?.slug ?? ""}`
               : stageInfo.stage === "active"
                 ? `/clients-v2/${id}/plan/edit/${plansForClient.find((p) => (p._bucket ?? p.status) === "published")?.slug ?? ""}`
                 : stageInfo.stage === "recheck"
                   ? `/clients-v2/${id}/plan#follow-up-panel`
-                  : `/clients-v2/${id}/sessions`
+                  : `/clients-v2/${id}/analyse`
         }
         quickActions={
           <>
-            <QuickActionLink href={`/clients-v2/${id}/sessions`}>
+            {/* "Record session" → /analyse, the v2 Sessions tab which
+                hosts the recording forms (discovery / pre-intake / full
+                assess / check-in / quick-note). The /sessions route is
+                the read-only Timeline view — it's labelled "Timeline"
+                in the subnav and shouldn't be the destination of a
+                "Record" action. (Subnav route↔label is the confusingly
+                inverted one: route `/analyse` = label "Sessions",
+                route `/sessions` = label "Timeline".) */}
+            <QuickActionLink href={`/clients-v2/${id}/analyse`}>
               📝 Record session
             </QuickActionLink>
             <QuickActionLink href={`/clients-v2/${id}/communicate`}>
