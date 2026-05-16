@@ -421,6 +421,25 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
         </div>
       )}
 
+      {clientPhone && !within24h && !lastInboundAt && messages.length > 0 && (
+        <div
+          style={{
+            marginTop: 4,
+            padding: "7px 10px",
+            background: "rgba(59, 130, 246, 0.06)",
+            border: "1px dashed rgba(59, 130, 246, 0.35)",
+            borderRadius: "var(--fm-radius-sm)",
+            fontSize: 10.5,
+            color: "#1e40af",
+            lineHeight: 1.5,
+          }}
+        >
+          💬 Free-text reply opens once {firstName} messages back. Meta&apos;s 24-hour
+          conversation window only starts on an inbound message — until then,
+          send approved templates from the &quot;Send message&quot; panel above.
+        </div>
+      )}
+
       <div
         style={{
           fontSize: 10,
