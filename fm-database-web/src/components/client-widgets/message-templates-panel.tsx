@@ -33,16 +33,31 @@ interface Props {
  * "Not approved". Fixed 2026-05-15.
  */
 const APPROVED_WHATSAPP_TEMPLATES = new Set<string>([
+  // All 17 production templates APPROVED on the WABA as of 2026-05-16.
+  // The 5 listed here are the ones surfaced via the message-templates panel
+  // (manual sends). The other 12 are wired into cron / poll / handover code
+  // paths and never reach this UI — they don't need to live in this set.
   "fm_lab_reminder",
   "fm_session_confirm",
   "fm_supplement_instructions",
   "fm_encouragement",
-  "fm_checkin_nudge",       // approved 2026-05-15 (per inventory)
+  "fm_checkin_nudge",
+]);
+
+/** Meta-locked MARKETING category — 7× per-message cost vs UTILITY. */
+const MARKETING_WHATSAPP_TEMPLATES = new Set<string>([
+  "fm_encouragement",
+  "fm_checkin_nudge",
 ]);
 
 function isWhatsappApproved(template: { whatsapp_template_name?: string }): boolean {
   if (!template.whatsapp_template_name) return false;
   return APPROVED_WHATSAPP_TEMPLATES.has(template.whatsapp_template_name);
+}
+
+function isWhatsappMarketing(template: { whatsapp_template_name?: string }): boolean {
+  if (!template.whatsapp_template_name) return false;
+  return MARKETING_WHATSAPP_TEMPLATES.has(template.whatsapp_template_name);
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -122,14 +137,25 @@ function AddTemplateForm({
       <p className="text-[11px] leading-relaxed text-muted-foreground bg-amber-50 border border-amber-200 rounded px-2 py-1.5">
         <strong>How sending works:</strong> templates saved here are stored
         locally and can always be <strong>copied</strong> or <strong>sent as
-        email</strong>. To send over <strong>WhatsApp</strong>, the slug must
-        <em>also</em> be a Meta-approved template registered on the
-        self-hosted WhatsApp Cloud API server. Approved today:{" "}
+        email</strong>. To send over <strong>WhatsApp</strong>, the local
+        template&apos;s <code>whatsapp_template_name</code> must match a
+        Meta-approved template on the self-hosted WhatsApp Cloud API server.
+        Approved for manual sends:{" "}
         <code className="text-[10px]">fm_lab_reminder</code>,{" "}
         <code className="text-[10px]">fm_supplement_instructions</code>,{" "}
         <code className="text-[10px]">fm_session_confirm</code>,{" "}
-        <code className="text-[10px]">fm_encouragement</code>,{" "}
-        <code className="text-[10px]">fm_checkin_nudge</code>.
+        <code className="text-[10px]">fm_encouragement</code>{" "}
+        <span className="text-rose-700">(MARKETING — 7× cost)</span>,{" "}
+        <code className="text-[10px]">fm_checkin_nudge</code>{" "}
+        <span className="text-rose-700">(MARKETING — 7× cost)</span>.
+      </p>
+      <p className="text-[10px] leading-relaxed text-muted-foreground bg-blue-50 border border-blue-200 rounded px-2 py-1.5">
+        <strong>Sender name:</strong> WABA display name &ldquo;The Ochre
+        Tree&rdquo; is still <em>PENDING_REVIEW</em> at Meta. Until it clears,
+        clients see <code>+91 89765 63971</code> as the sender — the in-body
+        sign-off (<em>&mdash; Shivani Hari / Your Functional Health Coach</em>)
+        is the only branding signal. Keep that sign-off on every manual
+        template body.
       </p>
       <div className="grid grid-cols-2 gap-2">
         <label className="space-y-0.5">
@@ -215,6 +241,7 @@ function ComposeView({
   const [sendResult, setSendResult] = useState<{ ok: boolean; error?: string } | null>(null);
 
   const whatsappApproved = isWhatsappApproved(template);
+  const whatsappMarketing = isWhatsappMarketing(template);
   const filled = fillTemplate(template.body, values);
   // Meta rejects template sends with empty {{N}} placeholders (the WA
   // server bubbles this up as a generic `internal_error`). Disable the
@@ -381,6 +408,14 @@ function ComposeView({
         >
           {whatsappApproved ? "✓ WhatsApp approved" : "⚠ Not approved"}
         </span>
+        {whatsappMarketing && (
+          <span
+            className="px-1.5 py-0.5 rounded border bg-rose-50 text-rose-700 border-rose-200"
+            title="Meta classifies this template as MARKETING — ~7× the per-message cost of UTILITY. Send sparingly; avoid bulk broadcasts."
+          >
+            ⚠ MARKETING (7× cost)
+          </span>
+        )}
         {clientEmail && (
           <span className="px-1.5 py-0.5 rounded border bg-blue-50 text-blue-700 border-blue-200">
             ✉ Email on file

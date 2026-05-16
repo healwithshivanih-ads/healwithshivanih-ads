@@ -20,6 +20,36 @@ interface Props {
 
 type RecipientMode = "follow_up_due" | "recheck_due" | "all_active" | "custom";
 
+/**
+ * All 17 templates APPROVED on the Heal With Shivani WABA as of 2026-05-16.
+ * Source of truth:
+ *   ~/.claude/projects/-Users-shivani-code-healwithshivanih-ads/memory/project_whatsapp_templates.md
+ *
+ * MARKETING-category templates cost ~7× UTILITY per-message (~₹0.78 vs
+ * ₹0.115). Surface that warning in the picker so the coach doesn't bulk-
+ * blast a 50-recipient broadcast on fm_encouragement and burn ~₹40 when
+ * UTILITY would have done.
+ */
+const APPROVED_TEMPLATES: { name: string; category: "UTILITY" | "MARKETING"; params: number; note?: string }[] = [
+  { name: "fm_lab_reminder", category: "UTILITY", params: 2, note: "name / labs" },
+  { name: "fm_supplement_instructions", category: "UTILITY", params: 2, note: "name / instructions" },
+  { name: "fm_session_confirm", category: "UTILITY", params: 3, note: "name / date / time" },
+  { name: "fm_encouragement", category: "MARKETING", params: 2, note: "name / protocolHighlight" },
+  { name: "fm_checkin_nudge", category: "MARKETING", params: 2, note: "name / symptom" },
+  { name: "fm_intake_invite", category: "UTILITY", params: 2, note: "name / intakeUrl" },
+  { name: "fm_intake_reminder", category: "UTILITY", params: 3, note: "name / expiryLabel / intakeUrl" },
+  { name: "fm_programme_welcome", category: "UTILITY", params: 3, note: "name / intakeUrl / calComUrl" },
+  { name: "fm_weekly_motivation", category: "UTILITY", params: 3, note: "name / weekNumber / reflectionUrl" },
+  { name: "fm_start_date_check_v1", category: "UTILITY", params: 1, note: "name (+ buttons)" },
+  { name: "fm_weekly_check_in_v1", category: "UTILITY", params: 1, note: "name (+ buttons)" },
+  { name: "fm_weekly_supplement_v1", category: "UTILITY", params: 1, note: "name (+ buttons)" },
+  { name: "fm_weekly_meals_v1", category: "UTILITY", params: 1, note: "name (+ buttons)" },
+  { name: "fm_weekly_movement_v1", category: "UTILITY", params: 1, note: "name (+ buttons)" },
+  { name: "appt_confirmation", category: "UTILITY", params: 4, note: "legacy AiSensy era" },
+  { name: "appt_reminder_24h", category: "UTILITY", params: 4, note: "legacy" },
+  { name: "appt_reminder_2h", category: "UTILITY", params: 4, note: "legacy" },
+];
+
 export function BroadcastPanel({ clients, followUpDueIds, recheckDueIds, activeIds }: Props) {
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState<RecipientMode>("follow_up_due");
@@ -134,19 +164,49 @@ export function BroadcastPanel({ clients, followUpDueIds, recheckDueIds, activeI
             </div>
           )}
 
-          {/* Campaign name */}
-          <div className="space-y-1">
-            <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
-              Campaign / Template name
-            </label>
-            <input
-              type="text"
-              value={campaignName}
-              onChange={(e) => setCampaignName(e.target.value)}
-              placeholder="e.g. fm_lab_reminder (must match Meta-approved template name)"
-              className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
-            />
-          </div>
+          {/* Campaign name — dropdown of all 17 approved templates. */}
+          {(() => {
+            const selected = APPROVED_TEMPLATES.find((t) => t.name === campaignName.trim());
+            const isMarketing = selected?.category === "MARKETING";
+            return (
+              <div className="space-y-1">
+                <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                  Campaign / Template name
+                </label>
+                <select
+                  value={campaignName}
+                  onChange={(e) => setCampaignName(e.target.value)}
+                  className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                >
+                  <option value="">— pick a Meta-approved template —</option>
+                  <optgroup label="UTILITY (~₹0.115/msg)">
+                    {APPROVED_TEMPLATES.filter((t) => t.category === "UTILITY").map((t) => (
+                      <option key={t.name} value={t.name}>
+                        {t.name} · {t.params} param{t.params !== 1 ? "s" : ""}{t.note ? ` (${t.note})` : ""}
+                      </option>
+                    ))}
+                  </optgroup>
+                  <optgroup label="MARKETING — 7× cost (~₹0.78/msg)">
+                    {APPROVED_TEMPLATES.filter((t) => t.category === "MARKETING").map((t) => (
+                      <option key={t.name} value={t.name}>
+                        ⚠ {t.name} · {t.params} param{t.params !== 1 ? "s" : ""}{t.note ? ` (${t.note})` : ""}
+                      </option>
+                    ))}
+                  </optgroup>
+                </select>
+                {isMarketing && recipientCount > 0 && (
+                  <p className="text-[11px] text-rose-700 bg-rose-50 border border-rose-200 rounded px-2 py-1.5">
+                    ⚠ <strong>{selected.name}</strong> is Meta-classified
+                    MARKETING (~₹0.78/msg). Sending to{" "}
+                    <strong>{recipientCount}</strong> recipient
+                    {recipientCount !== 1 ? "s" : ""} ≈{" "}
+                    <strong>₹{(recipientCount * 0.78).toFixed(2)}</strong>. A
+                    UTILITY template would be ~₹{(recipientCount * 0.115).toFixed(2)}.
+                  </p>
+                )}
+              </div>
+            );
+          })()}
 
           {/* Template params */}
           <div className="space-y-2">
@@ -189,6 +249,11 @@ export function BroadcastPanel({ clients, followUpDueIds, recheckDueIds, activeI
                   </span>
                 ))}
               </div>
+              <p className="text-[10px] text-muted-foreground pt-1 border-t border-dashed">
+                Sender shows as <code>+91 89765 63971</code> (WABA display
+                name &ldquo;The Ochre Tree&rdquo; still PENDING_REVIEW at
+                Meta). Branding comes from the in-body sign-off.
+              </p>
             </div>
           )}
           {recipientCount === 0 && mode !== "custom" && (
