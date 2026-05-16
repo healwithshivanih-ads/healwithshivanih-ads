@@ -188,10 +188,18 @@ export async function recordOutboundMessageAction(input: {
     ? "[source: whatsapp_outbound] [type: text]"
     : `[source: whatsapp_outbound] [template: ${input.templateName}]`;
   const presenting = `${tags}\n\n${input.renderedBody}`;
+  // Roll all outbound WhatsApp sends for one client on one day into a
+  // SINGLE quick_note session. Same pattern as the inbound rollup —
+  // keeps the Sessions list clean when coach fires multiple templates
+  // in a day. The append marker matches the [source:] tag specifically
+  // so inbound webhook sessions and outbound coach sessions never get
+  // collapsed together (they should remain visually distinct in the
+  // thread).
   const payload = JSON.stringify({
     client_id: input.clientId,
     session_type: "quick_note",
     presenting_complaints: presenting,
+    append_if_today_match: "[source: whatsapp_outbound]",
   });
 
   return new Promise((resolve) => {

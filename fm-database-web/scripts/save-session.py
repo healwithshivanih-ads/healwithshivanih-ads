@@ -81,6 +81,67 @@ def main() -> int:
         json.dump({"ok": False, "session_id": None, "error": f"client not found: {client_id}"}, sys.stdout)
         return 2
 
+    # Extra metadata stored as coach_notes prefix for now (until Session model gains session_type field)
+    meta_prefix = f"[session_type: {session_type}] "
+    full_complaints = f"{meta_prefix}{presenting_complaints}" if presenting_complaints else meta_prefix.strip()
+
+    # ── Append-if-today mode ────────────────────────────────────────────
+    # When the caller sets `append_if_today_match: "[source: foo]"`, look
+    # for an existing same-day session whose presenting_complaints
+    # contains that marker string. If found → load it, append the new
+    # body separated by a divider, save, return its session_id. Used by
+    # the WhatsApp inbound webhook so 9 messages in a day don't create
+    # 9 separate session files — they all roll up into one "WhatsApp
+    # 2026-05-16" quick_note for that client.
+    append_marker = payload.get("append_if_today_match")
+    if append_marker and isinstance(append_marker, str):
+        try:
+            import yaml as _yaml  # type: ignore
+            sessions_dir = root / "clients" / client_id / "sessions"
+            if sessions_dir.exists():
+                # Same-day filenames: <cid>-YYYY-MM-DD-NNN.yaml
+                date_prefix = session_date.isoformat()
+                same_day = sorted(
+                    p for p in sessions_dir.glob("*.yaml")
+                    if date_prefix in p.name
+                )
+                for p in same_day:
+                    try:
+                        existing = _yaml.safe_load(p.read_text()) or {}
+                    except Exception:
+                        continue
+                    existing_complaints = str(existing.get("presenting_complaints") or "")
+                    if append_marker not in existing_complaints:
+                        continue
+                    # Match — append the new body. Strip the meta_prefix
+                    # because the existing session already has one.
+                    new_body = presenting_complaints
+                    if append_marker in (new_body or ""):
+                        # Webhook re-includes the [source: …] tag; strip
+                        # so we don't repeat it on every append.
+                        new_body = new_body.replace(append_marker, "", 1).lstrip("\n")
+                    divider = "\n\n---\n\n"
+                    appended = existing_complaints.rstrip() + divider + new_body
+                    existing["presenting_complaints"] = appended
+                    # Bump updated_at, keep created_at original
+                    existing["updated_at"] = datetime.now(timezone.utc).isoformat()
+                    p.write_text(
+                        _yaml.dump(existing, sort_keys=False,
+                                   default_flow_style=False, allow_unicode=True,
+                                   width=120)
+                    )
+                    existing_id = str(existing.get("session_id") or p.stem)
+                    json.dump(
+                        {"ok": True, "session_id": existing_id, "error": None,
+                         "appended": True},
+                        sys.stdout,
+                    )
+                    return 0
+        except Exception:
+            # Best-effort — if anything goes wrong, fall through to the
+            # normal create-new path so a real message isn't lost.
+            pass
+
     session_id = next_session_id(root, client_id, session_date)
 
     # Build coach notes including session type tag and requested labs
@@ -90,10 +151,6 @@ def main() -> int:
     if requested_labs:
         notes_parts.append(f"[Requested labs: {', '.join(requested_labs)}]")
     full_notes = "\n".join(notes_parts)
-
-    # Extra metadata stored as coach_notes prefix for now (until Session model gains session_type field)
-    meta_prefix = f"[session_type: {session_type}] "
-    full_complaints = f"{meta_prefix}{presenting_complaints}" if presenting_complaints else meta_prefix.strip()
 
     # Build FivePillarsAssessment if provided
     five_pillars_obj = None
