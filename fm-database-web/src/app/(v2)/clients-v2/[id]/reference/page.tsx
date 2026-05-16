@@ -6,26 +6,33 @@
  * one-screen view of the active protocol without hunting through the
  * Plan tab's editor surfaces or scrolling the long client letter.
  *
- * Shows the published (or, if no published, latest active) plan as:
- *   - Supplements: timing-grouped cards with dose / form / notes,
- *     searchable by name/timing.
- *   - Nutrition: pattern + add[] + reduce[] + cooking notes. If the
- *     client opted out of daily meal plans, this is the only menu
- *     surface they get. Link to the full saved meal-plan letter when
- *     `letter_types_active` includes meal_plan.
- *   - Lifestyle practices: quick chips.
- *   - Notes for coach.
+ * Layout (v2 — human-readable redesign):
+ *   - Warm header: "Here's what <FirstName> is on right now."
+ *   - Two big tile-buttons:
+ *       💊 N supplements        → modal with brand-styled schedule
+ *       📅 Weekly meal plan     → row of week buttons (current highlighted)
+ *                                 → each opens a modal with that week's table
+ *   - Inline nutrition guidance card (always shown — for clients who opted
+ *     OUT of daily meal plans this is their menu reference)
+ *   - Lifestyle practices + notes for coach
+ *   - Subtle footer with plan slug / status / updated-at (the machine
+ *     identifiers — relegated, not foregrounded)
  *
- * Standalone page (not in the 6-tab subnav). Linked from the FAB and
- * inline from the Quick Note form. Print-friendly via @media print.
+ * Standalone page, no sub-nav. Linked from the FAB and inline from the
+ * Quick Note form.
  */
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { loadClientById } from "@/lib/fmdb/loader-extras";
 import { loadAllPlans } from "@/lib/fmdb/loader";
 import { loadCatalogueChipDict } from "@/lib/fmdb/catalogue-chip-dict";
+import { loadMealPlan, type LetterType } from "@/lib/server-actions/plan-lifecycle";
 import type { Plan, PlanStatus } from "@/lib/fmdb/types";
 import { ReferenceClient } from "./reference-client";
+import {
+  extractLetterSections,
+  computeCurrentWeek,
+  type LetterSections,
+} from "./extract-letter-sections";
 
 export const dynamic = "force-dynamic";
 
@@ -60,9 +67,6 @@ interface NutritionShape {
   add?: string[];
   reduce?: string[];
   meal_timing?: string;
-  cooking_adjustments?: unknown[];
-  home_remedies?: unknown[];
-  // Some plans nest free-form keys; we render the whole record best-effort.
   [k: string]: unknown;
 }
 
@@ -89,8 +93,9 @@ export default async function ReferencePage({
   const displayName = client.display_name ?? client.client_id ?? id;
   const firstName = displayName.split(" ")[0];
 
-  // Same precedence rule as the Plan tab:
-  //   published > ready_to_publish > draft, then version DESC, then updated_at DESC.
+  // Active plan precedence: published > ready_to_publish > draft, latest
+  // version, latest updated_at. Matches the Plan tab so the reference
+  // page never disagrees with what the coach sees as "the live plan".
   const activeSorted = allPlans
     .filter((p) => p.client_id === id && ACTIVE_STATUSES.has(planStatusOf(p)))
     .sort((a, b) => {
@@ -103,18 +108,13 @@ export default async function ReferencePage({
       );
     });
   const activePlan = activeSorted[0];
+  const activePlanSlug = (activePlan?.slug as string | undefined) ?? null;
 
-  // Build a slug → display-name lookup for supplements. Chip dict already
-  // includes every catalogue supplement; for slugs that aren't in the chip
-  // dict (custom / not-yet-catalogued slugs), we render the slug verbatim.
+  // Catalogue display-name map for supplements.
   const supplementNameMap: Record<string, string> = {};
   for (const c of chips) {
     if (c.kind !== "supplement") continue;
-    // term is normalised to a string at chip-build time; ?? guard for the
-    // RegExp case (we don't use that path here).
     const term = typeof c.term === "string" ? c.term : String(c.term);
-    // First chip per slug wins (chip dict is sorted by length DESC so the
-    // longest canonical phrase comes first — that's the display name).
     if (!supplementNameMap[c.slug]) supplementNameMap[c.slug] = term;
   }
 
@@ -122,28 +122,59 @@ export default async function ReferencePage({
   const nutrition: NutritionShape = (activePlan?.nutrition as NutritionShape) ?? {};
   const lifestyle: PracticeItem[] = (activePlan?.lifestyle_practices as PracticeItem[]) ?? [];
 
-  // Letter types active on the client — controls whether a daily meal plan
-  // letter exists on disk. When meal_plan ISN'T in the active set, the
-  // nutrition card below is the ONLY menu surface for this client.
   const letterTypesActive = (client.letter_types_active as string[] | undefined) ?? ["consolidated"];
-  const hasMealPlanLetter = letterTypesActive.includes("meal_plan");
+  const hasMealPlan = letterTypesActive.includes("meal_plan");
   const hasConsolidated = letterTypesActive.includes("consolidated");
+
+  // Load the saved meal-plan letter HTML so the modals can show brand-
+  // styled per-week tables + supplement schedule WITHOUT having to
+  // re-render markdown→HTML ourselves. Prefer the dedicated meal_plan
+  // letter; fall back to consolidated (which embeds the same week tables
+  // inline). Best-effort — missing letter just means modal buttons hide.
+  let letterSections: LetterSections | null = null;
+  if (activePlanSlug) {
+    const preferredType: LetterType = hasMealPlan ? "meal_plan" : "consolidated";
+    const fallbackType: LetterType | null = hasMealPlan && hasConsolidated ? "consolidated" : null;
+    let letterData = await loadMealPlan(activePlanSlug, id, preferredType);
+    if ((!letterData.ok || !letterData.html) && fallbackType) {
+      letterData = await loadMealPlan(activePlanSlug, id, fallbackType);
+    }
+    if (letterData.ok && letterData.html) {
+      letterSections = extractLetterSections(letterData.html);
+    }
+  }
+
+  // Current-week computation from plan_period_start. Capped at the
+  // plan_period_weeks (typically 12) so the highlight doesn't wander
+  // off the end of the buttons after the protocol completes.
+  const todayStr = new Date().toISOString().slice(0, 10);
+  const planWeeks = (activePlan?.plan_period_weeks as number | undefined) ?? 12;
+  let currentWeek = computeCurrentWeek(
+    activePlan?.plan_period_start as string | undefined,
+    todayStr,
+  );
+  if (currentWeek !== null && currentWeek > planWeeks) currentWeek = planWeeks;
 
   return (
     <ReferenceClient
       clientId={id}
       displayName={displayName}
       firstName={firstName}
-      activePlanSlug={(activePlan?.slug as string | undefined) ?? null}
+      activePlanSlug={activePlanSlug}
       activePlanStatus={activePlan ? planStatusOf(activePlan) : null}
+      activePlanVersion={activePlan ? planVersionOf(activePlan) : null}
       planUpdatedAt={(activePlan?.updated_at as string | undefined) ?? null}
+      planPeriodStart={(activePlan?.plan_period_start as string | undefined) ?? null}
+      planPeriodWeeks={planWeeks}
+      currentWeek={currentWeek}
       supplements={supplements}
       supplementNameMap={supplementNameMap}
       nutrition={nutrition}
       lifestyle={lifestyle}
       notesForCoach={(activePlan?.notes_for_coach as string | undefined) ?? null}
-      hasMealPlanLetter={hasMealPlanLetter}
-      hasConsolidated={hasConsolidated}
+      letterSections={letterSections}
+      hasMealPlanLetter={hasMealPlan}
+      hasConsolidatedLetter={hasConsolidated}
     />
   );
 }
